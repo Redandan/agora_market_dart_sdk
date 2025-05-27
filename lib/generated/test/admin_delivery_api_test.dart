@@ -1,0 +1,74 @@
+import 'package:test/test.dart';
+import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
+
+
+/// tests for AdminDeliveryApi
+void main() {
+  final instance = AgoraMarketDartSdk().getAdminDeliveryApi();
+
+  group(AdminDeliveryApi, () {
+    // 手動分配配送員
+    //
+    // 管理員可以手動為訂單分配配送員
+    //
+    //Future<DeliveryDetail> assignDeliveryer(String orderId, int deliveryerId) async
+    test('test assignDeliveryer', () async {
+      // TODO
+    });
+
+    // 查看配送訂單詳情
+    //
+    // 管理員可查看配送訂單的詳細信息
+    //
+    //Future<DeliveryDetail> getDeliveryOrderDetail(String orderId) async
+    test('test getDeliveryOrderDetail', () async {
+      // TODO
+    });
+
+    // 配送統計報告
+    //
+    // 獲取配送相關的統計數據
+    //
+    //Future<BuiltMap<String, JsonObject>> getDeliveryStatistics({ DateTime startDate, DateTime endDate }) async
+    test('test getDeliveryStatistics', () async {
+      // TODO
+    });
+
+    // 查看配送員詳情
+    //
+    // 管理員可查看配送員的詳細信息
+    //
+    //Future<Deliveryer> getDeliveryerDetail(int deliveryerId) async
+    test('test getDeliveryerDetail', () async {
+      // TODO
+    });
+
+    // 搜索配送訂單
+    //
+    // 管理員可根據多個條件搜索配送訂單
+    //
+    //Future<BuiltList<DeliveryDetail>> searchDeliveryOrders({ int deliveryerId, String status, DateTime startDate, DateTime endDate }) async
+    test('test searchDeliveryOrders', () async {
+      // TODO
+    });
+
+    // 搜索配送員
+    //
+    // 管理員可根據多個條件搜索配送員，包括位置、狀態等
+    //
+    //Future<BuiltList<Deliveryer>> searchDeliveryers({ bool enabled, bool isDelivering, double longitude, double latitude, double radius, DateTime startDate, DateTime endDate }) async
+    test('test searchDeliveryers', () async {
+      // TODO
+    });
+
+    // 更新配送員狀態
+    //
+    // 管理員可以直接修改配送員的工作狀態（啟用/停用）
+    //
+    //Future<Deliveryer> updateDeliveryerStatus(int deliveryerId, bool enabled) async
+    test('test updateDeliveryerStatus', () async {
+      // TODO
+    });
+
+  });
+}
