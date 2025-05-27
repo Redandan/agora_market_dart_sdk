@@ -1,40 +1,43 @@
 # Agora Market Dart SDK
 
-A Dart SDK for the AgoraMarket API, providing a type-safe and easy-to-use interface for interacting with the AgoraMarket platform.
+Agora Market 平台的 Dart SDK，提供類型安全且易於使用的 API 接口。
 
-## Features
+## 功能特點
 
-- Complete API coverage for AgoraMarket platform
-- Type-safe API calls with built_value serialization
-- Comprehensive error handling
-- Authentication support (Bearer, Basic, API Key)
-- Full documentation
-- Test coverage
+- 完整的 Agora Market 平台 API 覆蓋
+- 使用 built_value 序列化的類型安全 API 調用
+- 全面的錯誤處理
+- 支持多種認證方式（Bearer、Basic、API Key）
+- 完整的文檔
+- 測試覆蓋
 
-## Installation
+## 安裝
 
-Add this to your package's `pubspec.yaml` file:
+在你的項目的 `pubspec.yaml` 文件中添加以下依賴：
 
 ```yaml
 dependencies:
-  agora_market_dart_sdk: ^1.0.0
+  agora_market_dart_sdk:
+    git:
+      url: https://github.com/Redandan/agora_market_dart_sdk.git
+      ref: main  # 或者特定的分支/標籤/commit
 ```
 
-## Usage
+## 使用方法
 
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-// Create API client instance
+// 創建 API 客戶端實例
 final apiClient = ApiClient(
   basePath: 'https://your-api-base-url.com',
 );
 
-// Use specific API
+// 使用特定的 API
 final authApi = AuthApi(apiClient);
 final productsApi = ProductsApi(apiClient);
 
-// Example: Login
+// 示例：登入
 try {
   final loginResult = await authApi.login(
     LoginParam(
@@ -42,16 +45,30 @@ try {
       password: 'pass',
     ),
   );
-  print('Login successful: ${loginResult.token}');
+  print('登入成功：${loginResult.token}');
 } catch (e) {
-  print('Login failed: $e');
+  print('登入失敗：$e');
 }
 ```
 
-## Documentation
+## API 文檔
 
-For detailed API documentation, please refer to the [API Documentation](lib/generated/doc/).
+詳細的 API 文檔請參考 [API 文檔](lib/generated/doc/)。
 
-## License
+## 開發指南
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+要生成 API 客戶端代碼：
+
+1. 運行代碼生成器：
+```bash
+dart run build_runner build
+```
+
+2. 運行測試（如果有）：
+```bash
+dart test
+```
+
+## 授權協議
+
+本項目使用 MIT 授權協議 - 詳見 [LICENSE](LICENSE) 文件。 
