@@ -11,9 +11,11 @@ import 'package:dio/dio.dart';
 import 'package:agora_market_dart_sdk/src/api_util.dart';
 import 'package:agora_market_dart_sdk/src/model/chat_message.dart';
 import 'package:agora_market_dart_sdk/src/model/chat_message_dto.dart';
+import 'package:agora_market_dart_sdk/src/model/chat_message_query_param.dart';
 import 'package:agora_market_dart_sdk/src/model/chat_message_update_dto.dart';
 import 'package:agora_market_dart_sdk/src/model/chat_session.dart';
 import 'package:agora_market_dart_sdk/src/model/chat_session_query_param.dart';
+import 'package:agora_market_dart_sdk/src/model/page_chat_message.dart';
 import 'package:agora_market_dart_sdk/src/model/page_chat_session.dart';
 
 class ChatApi {
@@ -23,6 +25,53 @@ class ChatApi {
   final Serializers _serializers;
 
   const ChatApi(this._dio, this._serializers);
+
+  /// 清空會話
+  /// 清空指定會話的所有消息
+  ///
+  /// Parameters:
+  /// * [sessionId] - 會話ID
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future]
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<void>> clearSession({ 
+    required int sessionId,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/chat/sessions/{sessionId}/messages'.replaceAll('{' r'sessionId' '}', encodeQueryParameter(_serializers, sessionId, const FullType(int)).toString());
+    final _options = Options(
+      method: r'DELETE',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    return _response;
+  }
 
   /// 刪除消息
   /// 刪除指定的聊天消息
@@ -71,11 +120,11 @@ class ChatApi {
     return _response;
   }
 
-  /// 獲取消息詳情
-  /// 根據消息ID獲取消息詳情
+  /// 刪除會話
+  /// 刪除指定的聊天會話及其所有消息
   ///
   /// Parameters:
-  /// * [messageId] - 消息ID
+  /// * [sessionId] - 會話ID
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -83,10 +132,10 @@ class ChatApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ChatMessage] as data
+  /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ChatMessage>> getMessage({ 
-    required int messageId,
+  Future<Response<void>> deleteSession({ 
+    required int sessionId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -94,7 +143,134 @@ class ChatApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/chat/messages/{messageId}'.replaceAll('{' r'messageId' '}', encodeQueryParameter(_serializers, messageId, const FullType(int)).toString());
+    final _path = r'/chat/sessions/{sessionId}'.replaceAll('{' r'sessionId' '}', encodeQueryParameter(_serializers, sessionId, const FullType(int)).toString());
+    final _options = Options(
+      method: r'DELETE',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    return _response;
+  }
+
+  /// 獲取會話消息列表
+  /// 獲取指定會話的消息列表
+  ///
+  /// Parameters:
+  /// * [sessionId] - 會話ID
+  /// * [queryParam] - 查詢參數
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [PageChatMessage] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<PageChatMessage>> getSessionMessages({ 
+    required int sessionId,
+    required ChatMessageQueryParam queryParam,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/chat/sessions/{sessionId}/messages'.replaceAll('{' r'sessionId' '}', encodeQueryParameter(_serializers, sessionId, const FullType(int)).toString());
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      r'queryParam': encodeQueryParameter(_serializers, queryParam, const FullType(ChatMessageQueryParam)),
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    PageChatMessage? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(PageChatMessage),
+      ) as PageChatMessage;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<PageChatMessage>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// 獲取未讀消息數
+  /// 獲取當前用戶的所有未讀消息總數
+  ///
+  /// Parameters:
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [int] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<int>> getUnreadCount({ 
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/chat/unread/count';
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -115,14 +291,11 @@ class ChatApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ChatMessage? _responseData;
+    int? _responseData;
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ChatMessage),
-      ) as ChatMessage;
+      _responseData = rawResponse == null ? null : rawResponse as int;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -134,7 +307,7 @@ class ChatApi {
       );
     }
 
-    return Response<ChatMessage>(
+    return Response<int>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

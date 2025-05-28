@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(SortObject, () {
-    // bool sorted
-    test('to test the property `sorted`', () async {
+    // bool unsorted
+    test('to test the property `unsorted`', () async {
       // TODO
     });
 
-    // bool unsorted
-    test('to test the property `unsorted`', () async {
+    // bool sorted
+    test('to test the property `sorted`', () async {
       // TODO
     });
 

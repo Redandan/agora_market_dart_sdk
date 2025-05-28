@@ -12,6 +12,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(ChangePasswordParam.serializer)
       ..add(ChatMessage.serializer)
       ..add(ChatMessageDTO.serializer)
+      ..add(ChatMessageQueryParam.serializer)
       ..add(ChatMessageUpdateDTO.serializer)
       ..add(ChatSession.serializer)
       ..add(ChatSessionQueryParam.serializer)
@@ -53,6 +54,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(OrderSumbitParam.serializer)
       ..add(OrderSumbitParamDeliveryTypeEnum.serializer)
       ..add(PageCartItem.serializer)
+      ..add(PageChatMessage.serializer)
       ..add(PageChatSession.serializer)
       ..add(PageColdWallet.serializer)
       ..add(PageDispute.serializer)
@@ -106,6 +108,9 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(CartItem)]),
           () => ListBuilder<CartItem>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(ChatMessage)]),
+          () => ListBuilder<ChatMessage>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(ChatSession)]),
           () => ListBuilder<ChatSession>())

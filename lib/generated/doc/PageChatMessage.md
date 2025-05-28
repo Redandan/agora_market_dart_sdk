@@ -1,4 +1,4 @@
-# agora_market_dart_sdk.model.PageTransaction
+# agora_market_dart_sdk.model.PageChatMessage
 
 ## Load the model package
 ```dart
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **last** | **bool** |  | [optional] 
 **pageable** | [**PageableObject**](PageableObject.md) |  | [optional] 
 **size** | **int** |  | [optional] 
-**content** | [**BuiltList&lt;Transaction&gt;**](Transaction.md) |  | [optional] 
+**content** | [**BuiltList&lt;ChatMessage&gt;**](ChatMessage.md) |  | [optional] 
 **number** | **int** |  | [optional] 
 **sort** | [**SortObject**](SortObject.md) |  | [optional] 
 **empty** | **bool** |  | [optional] 

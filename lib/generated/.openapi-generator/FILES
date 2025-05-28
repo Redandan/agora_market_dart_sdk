@@ -15,6 +15,7 @@ doc/ChangePasswordParam.md
 doc/ChatApi.md
 doc/ChatMessage.md
 doc/ChatMessageDTO.md
+doc/ChatMessageQueryParam.md
 doc/ChatMessageUpdateDTO.md
 doc/ChatSession.md
 doc/ChatSessionQueryParam.md
@@ -49,6 +50,7 @@ doc/OrderShipParam.md
 doc/OrderStatisticsDTO.md
 doc/OrderSumbitParam.md
 doc/PageCartItem.md
+doc/PageChatMessage.md
 doc/PageChatSession.md
 doc/PageColdWallet.md
 doc/PageDispute.md
@@ -124,6 +126,7 @@ lib/src/model/cart_summary_dto.dart
 lib/src/model/change_password_param.dart
 lib/src/model/chat_message.dart
 lib/src/model/chat_message_dto.dart
+lib/src/model/chat_message_query_param.dart
 lib/src/model/chat_message_update_dto.dart
 lib/src/model/chat_session.dart
 lib/src/model/chat_session_query_param.dart
@@ -152,6 +155,7 @@ lib/src/model/order_ship_param.dart
 lib/src/model/order_statistics_dto.dart
 lib/src/model/order_sumbit_param.dart
 lib/src/model/page_cart_item.dart
+lib/src/model/page_chat_message.dart
 lib/src/model/page_chat_session.dart
 lib/src/model/page_cold_wallet.dart
 lib/src/model/page_dispute.dart
@@ -202,6 +206,7 @@ test/cart_summary_dto_test.dart
 test/change_password_param_test.dart
 test/chat_api_test.dart
 test/chat_message_dto_test.dart
+test/chat_message_query_param_test.dart
 test/chat_message_test.dart
 test/chat_message_update_dto_test.dart
 test/chat_session_query_param_test.dart
@@ -237,6 +242,7 @@ test/order_statistics_dto_test.dart
 test/order_sumbit_param_test.dart
 test/order_test.dart
 test/page_cart_item_test.dart
+test/page_chat_message_test.dart
 test/page_chat_session_test.dart
 test/page_cold_wallet_test.dart
 test/page_dispute_test.dart

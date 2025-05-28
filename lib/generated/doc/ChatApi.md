@@ -9,14 +9,59 @@ All URIs are relative to *https://agoramarketapi.onrender.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**clearSession**](ChatApi.md#clearsession) | **DELETE** /chat/sessions/{sessionId}/messages | 清空會話
 [**deleteMessage**](ChatApi.md#deletemessage) | **DELETE** /chat/messages/{messageId} | 刪除消息
-[**getMessage**](ChatApi.md#getmessage) | **GET** /chat/messages/{messageId} | 獲取消息詳情
+[**deleteSession**](ChatApi.md#deletesession) | **DELETE** /chat/sessions/{sessionId} | 刪除會話
+[**getSessionMessages**](ChatApi.md#getsessionmessages) | **GET** /chat/sessions/{sessionId}/messages | 獲取會話消息列表
+[**getUnreadCount**](ChatApi.md#getunreadcount) | **GET** /chat/unread/count | 獲取未讀消息數
 [**listSessions**](ChatApi.md#listsessions) | **GET** /chat/sessions | 獲取聊天會話列表
 [**markSessionRead**](ChatApi.md#marksessionread) | **PUT** /chat/sessions/{sessionId}/read | 標記會話為已讀
 [**sendMessage**](ChatApi.md#sendmessage) | **POST** /chat/messages | 發送消息
 [**toggleSessionPin**](ChatApi.md#togglesessionpin) | **PUT** /chat/sessions/{sessionId}/pin | 置頂/取消置頂會話
 [**updateMessage**](ChatApi.md#updatemessage) | **PUT** /chat/messages/{messageId} | 編輯消息
 
+
+# **clearSession**
+> clearSession(sessionId)
+
+清空會話
+
+清空指定會話的所有消息
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api = AgoraMarketDartSdk().getChatApi();
+final int sessionId = 789; // int | 會話ID
+
+try {
+    api.clearSession(sessionId);
+} catch on DioException (e) {
+    print('Exception when calling ChatApi->clearSession: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sessionId** | **int**| 會話ID | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteMessage**
 > deleteMessage(messageId)
@@ -60,25 +105,24 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getMessage**
-> ChatMessage getMessage(messageId)
+# **deleteSession**
+> deleteSession(sessionId)
 
-獲取消息詳情
+刪除會話
 
-根據消息ID獲取消息詳情
+刪除指定的聊天會話及其所有消息
 
 ### Example
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api = AgoraMarketDartSdk().getChatApi();
-final int messageId = 789; // int | 消息ID
+final int sessionId = 789; // int | 會話ID
 
 try {
-    final response = api.getMessage(messageId);
-    print(response);
+    api.deleteSession(sessionId);
 } catch on DioException (e) {
-    print('Exception when calling ChatApi->getMessage: $e\n');
+    print('Exception when calling ChatApi->deleteSession: $e\n');
 }
 ```
 
@@ -86,11 +130,95 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **messageId** | **int**| 消息ID | 
+ **sessionId** | **int**| 會話ID | 
 
 ### Return type
 
-[**ChatMessage**](ChatMessage.md)
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getSessionMessages**
+> PageChatMessage getSessionMessages(sessionId, queryParam)
+
+獲取會話消息列表
+
+獲取指定會話的消息列表
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api = AgoraMarketDartSdk().getChatApi();
+final int sessionId = 789; // int | 會話ID
+final ChatMessageQueryParam queryParam = ; // ChatMessageQueryParam | 查詢參數
+
+try {
+    final response = api.getSessionMessages(sessionId, queryParam);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling ChatApi->getSessionMessages: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sessionId** | **int**| 會話ID | 
+ **queryParam** | [**ChatMessageQueryParam**](.md)| 查詢參數 | 
+
+### Return type
+
+[**PageChatMessage**](PageChatMessage.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getUnreadCount**
+> int getUnreadCount()
+
+獲取未讀消息數
+
+獲取當前用戶的所有未讀消息總數
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api = AgoraMarketDartSdk().getChatApi();
+
+try {
+    final response = api.getUnreadCount();
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling ChatApi->getUnreadCount: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**int**
 
 ### Authorization
 

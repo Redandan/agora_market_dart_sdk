@@ -4,15 +4,15 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:agora_market_dart_sdk/src/model/product.dart';
 import 'package:agora_market_dart_sdk/src/model/sort_object.dart';
 import 'package:agora_market_dart_sdk/src/model/pageable_object.dart';
+import 'package:agora_market_dart_sdk/src/model/chat_message.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'page_product.g.dart';
+part 'page_chat_message.g.dart';
 
-/// PageProduct
+/// PageChatMessage
 ///
 /// Properties:
 /// * [totalPages] 
@@ -27,7 +27,7 @@ part 'page_product.g.dart';
 /// * [sort] 
 /// * [empty] 
 @BuiltValue()
-abstract class PageProduct implements Built<PageProduct, PageProductBuilder> {
+abstract class PageChatMessage implements Built<PageChatMessage, PageChatMessageBuilder> {
   @BuiltValueField(wireName: r'totalPages')
   int? get totalPages;
 
@@ -50,7 +50,7 @@ abstract class PageProduct implements Built<PageProduct, PageProductBuilder> {
   int? get size;
 
   @BuiltValueField(wireName: r'content')
-  BuiltList<Product>? get content;
+  BuiltList<ChatMessage>? get content;
 
   @BuiltValueField(wireName: r'number')
   int? get number;
@@ -61,27 +61,27 @@ abstract class PageProduct implements Built<PageProduct, PageProductBuilder> {
   @BuiltValueField(wireName: r'empty')
   bool? get empty;
 
-  PageProduct._();
+  PageChatMessage._();
 
-  factory PageProduct([void updates(PageProductBuilder b)]) = _$PageProduct;
+  factory PageChatMessage([void updates(PageChatMessageBuilder b)]) = _$PageChatMessage;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(PageProductBuilder b) => b;
+  static void _defaults(PageChatMessageBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PageProduct> get serializer => _$PageProductSerializer();
+  static Serializer<PageChatMessage> get serializer => _$PageChatMessageSerializer();
 }
 
-class _$PageProductSerializer implements PrimitiveSerializer<PageProduct> {
+class _$PageChatMessageSerializer implements PrimitiveSerializer<PageChatMessage> {
   @override
-  final Iterable<Type> types = const [PageProduct, _$PageProduct];
+  final Iterable<Type> types = const [PageChatMessage, _$PageChatMessage];
 
   @override
-  final String wireName = r'PageProduct';
+  final String wireName = r'PageChatMessage';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    PageProduct object, {
+    PageChatMessage object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     if (object.totalPages != null) {
@@ -137,7 +137,7 @@ class _$PageProductSerializer implements PrimitiveSerializer<PageProduct> {
       yield r'content';
       yield serializers.serialize(
         object.content,
-        specifiedType: const FullType(BuiltList, [FullType(Product)]),
+        specifiedType: const FullType(BuiltList, [FullType(ChatMessage)]),
       );
     }
     if (object.number != null) {
@@ -166,7 +166,7 @@ class _$PageProductSerializer implements PrimitiveSerializer<PageProduct> {
   @override
   Object serialize(
     Serializers serializers,
-    PageProduct object, {
+    PageChatMessage object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -177,7 +177,7 @@ class _$PageProductSerializer implements PrimitiveSerializer<PageProduct> {
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required PageProductBuilder result,
+    required PageChatMessageBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -236,8 +236,8 @@ class _$PageProductSerializer implements PrimitiveSerializer<PageProduct> {
         case r'content':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(Product)]),
-          ) as BuiltList<Product>;
+            specifiedType: const FullType(BuiltList, [FullType(ChatMessage)]),
+          ) as BuiltList<ChatMessage>;
           result.content.replace(valueDes);
           break;
         case r'number':
@@ -270,12 +270,12 @@ class _$PageProductSerializer implements PrimitiveSerializer<PageProduct> {
   }
 
   @override
-  PageProduct deserialize(
+  PageChatMessage deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = PageProductBuilder();
+    final result = PageChatMessageBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

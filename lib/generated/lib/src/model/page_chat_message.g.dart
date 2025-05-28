@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'page_staking.dart';
+part of 'page_chat_message.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$PageStaking extends PageStaking {
+class _$PageChatMessage extends PageChatMessage {
   @override
   final int? totalPages;
   @override
@@ -22,7 +22,7 @@ class _$PageStaking extends PageStaking {
   @override
   final int? size;
   @override
-  final BuiltList<Staking>? content;
+  final BuiltList<ChatMessage>? content;
   @override
   final int? number;
   @override
@@ -30,10 +30,10 @@ class _$PageStaking extends PageStaking {
   @override
   final bool? empty;
 
-  factory _$PageStaking([void Function(PageStakingBuilder)? updates]) =>
-      (PageStakingBuilder()..update(updates))._build();
+  factory _$PageChatMessage([void Function(PageChatMessageBuilder)? updates]) =>
+      (PageChatMessageBuilder()..update(updates))._build();
 
-  _$PageStaking._(
+  _$PageChatMessage._(
       {this.totalPages,
       this.totalElements,
       this.first,
@@ -47,16 +47,16 @@ class _$PageStaking extends PageStaking {
       this.empty})
       : super._();
   @override
-  PageStaking rebuild(void Function(PageStakingBuilder) updates) =>
+  PageChatMessage rebuild(void Function(PageChatMessageBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  PageStakingBuilder toBuilder() => PageStakingBuilder()..replace(this);
+  PageChatMessageBuilder toBuilder() => PageChatMessageBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is PageStaking &&
+    return other is PageChatMessage &&
         totalPages == other.totalPages &&
         totalElements == other.totalElements &&
         first == other.first &&
@@ -90,7 +90,7 @@ class _$PageStaking extends PageStaking {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'PageStaking')
+    return (newBuiltValueToStringHelper(r'PageChatMessage')
           ..add('totalPages', totalPages)
           ..add('totalElements', totalElements)
           ..add('first', first)
@@ -106,8 +106,9 @@ class _$PageStaking extends PageStaking {
   }
 }
 
-class PageStakingBuilder implements Builder<PageStaking, PageStakingBuilder> {
-  _$PageStaking? _$v;
+class PageChatMessageBuilder
+    implements Builder<PageChatMessage, PageChatMessageBuilder> {
+  _$PageChatMessage? _$v;
 
   int? _totalPages;
   int? get totalPages => _$this._totalPages;
@@ -140,10 +141,10 @@ class PageStakingBuilder implements Builder<PageStaking, PageStakingBuilder> {
   int? get size => _$this._size;
   set size(int? size) => _$this._size = size;
 
-  ListBuilder<Staking>? _content;
-  ListBuilder<Staking> get content =>
-      _$this._content ??= ListBuilder<Staking>();
-  set content(ListBuilder<Staking>? content) => _$this._content = content;
+  ListBuilder<ChatMessage>? _content;
+  ListBuilder<ChatMessage> get content =>
+      _$this._content ??= ListBuilder<ChatMessage>();
+  set content(ListBuilder<ChatMessage>? content) => _$this._content = content;
 
   int? _number;
   int? get number => _$this._number;
@@ -157,11 +158,11 @@ class PageStakingBuilder implements Builder<PageStaking, PageStakingBuilder> {
   bool? get empty => _$this._empty;
   set empty(bool? empty) => _$this._empty = empty;
 
-  PageStakingBuilder() {
-    PageStaking._defaults(this);
+  PageChatMessageBuilder() {
+    PageChatMessage._defaults(this);
   }
 
-  PageStakingBuilder get _$this {
+  PageChatMessageBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _totalPages = $v.totalPages;
@@ -181,23 +182,23 @@ class PageStakingBuilder implements Builder<PageStaking, PageStakingBuilder> {
   }
 
   @override
-  void replace(PageStaking other) {
-    _$v = other as _$PageStaking;
+  void replace(PageChatMessage other) {
+    _$v = other as _$PageChatMessage;
   }
 
   @override
-  void update(void Function(PageStakingBuilder)? updates) {
+  void update(void Function(PageChatMessageBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  PageStaking build() => _build();
+  PageChatMessage build() => _build();
 
-  _$PageStaking _build() {
-    _$PageStaking _$result;
+  _$PageChatMessage _build() {
+    _$PageChatMessage _$result;
     try {
       _$result = _$v ??
-          _$PageStaking._(
+          _$PageChatMessage._(
             totalPages: totalPages,
             totalElements: totalElements,
             first: first,
@@ -223,7 +224,7 @@ class PageStakingBuilder implements Builder<PageStaking, PageStakingBuilder> {
         _sort?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'PageStaking', _$failedField, e.toString());
+            r'PageChatMessage', _$failedField, e.toString());
       }
       rethrow;
     }

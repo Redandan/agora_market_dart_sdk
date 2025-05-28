@@ -120,8 +120,11 @@ Class | Method | HTTP request | Description
 [*AuthApi*](doc/AuthApi.md) | [**register**](doc/AuthApi.md#register) | **POST** /auth/register | 註冊新用戶
 [*AuthApi*](doc/AuthApi.md) | [**resetPassword**](doc/AuthApi.md#resetpassword) | **POST** /auth/reset-password | 重設密碼
 [*AuthApi*](doc/AuthApi.md) | [**verifyResetToken**](doc/AuthApi.md#verifyresettoken) | **POST** /auth/verify-reset-token | 驗證密碼重置令牌
+[*ChatApi*](doc/ChatApi.md) | [**clearSession**](doc/ChatApi.md#clearsession) | **DELETE** /chat/sessions/{sessionId}/messages | 清空會話
 [*ChatApi*](doc/ChatApi.md) | [**deleteMessage**](doc/ChatApi.md#deletemessage) | **DELETE** /chat/messages/{messageId} | 刪除消息
-[*ChatApi*](doc/ChatApi.md) | [**getMessage**](doc/ChatApi.md#getmessage) | **GET** /chat/messages/{messageId} | 獲取消息詳情
+[*ChatApi*](doc/ChatApi.md) | [**deleteSession**](doc/ChatApi.md#deletesession) | **DELETE** /chat/sessions/{sessionId} | 刪除會話
+[*ChatApi*](doc/ChatApi.md) | [**getSessionMessages**](doc/ChatApi.md#getsessionmessages) | **GET** /chat/sessions/{sessionId}/messages | 獲取會話消息列表
+[*ChatApi*](doc/ChatApi.md) | [**getUnreadCount**](doc/ChatApi.md#getunreadcount) | **GET** /chat/unread/count | 獲取未讀消息數
 [*ChatApi*](doc/ChatApi.md) | [**listSessions**](doc/ChatApi.md#listsessions) | **GET** /chat/sessions | 獲取聊天會話列表
 [*ChatApi*](doc/ChatApi.md) | [**markSessionRead**](doc/ChatApi.md#marksessionread) | **PUT** /chat/sessions/{sessionId}/read | 標記會話為已讀
 [*ChatApi*](doc/ChatApi.md) | [**sendMessage**](doc/ChatApi.md#sendmessage) | **POST** /chat/messages | 發送消息
@@ -182,6 +185,7 @@ Class | Method | HTTP request | Description
  - [ChangePasswordParam](doc/ChangePasswordParam.md)
  - [ChatMessage](doc/ChatMessage.md)
  - [ChatMessageDTO](doc/ChatMessageDTO.md)
+ - [ChatMessageQueryParam](doc/ChatMessageQueryParam.md)
  - [ChatMessageUpdateDTO](doc/ChatMessageUpdateDTO.md)
  - [ChatSession](doc/ChatSession.md)
  - [ChatSessionQueryParam](doc/ChatSessionQueryParam.md)
@@ -209,6 +213,7 @@ Class | Method | HTTP request | Description
  - [OrderStatisticsDTO](doc/OrderStatisticsDTO.md)
  - [OrderSumbitParam](doc/OrderSumbitParam.md)
  - [PageCartItem](doc/PageCartItem.md)
+ - [PageChatMessage](doc/PageChatMessage.md)
  - [PageChatSession](doc/PageChatSession.md)
  - [PageColdWallet](doc/PageColdWallet.md)
  - [PageDispute](doc/PageDispute.md)

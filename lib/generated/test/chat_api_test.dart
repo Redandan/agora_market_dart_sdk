@@ -7,6 +7,15 @@ void main() {
   final instance = AgoraMarketDartSdk().getChatApi();
 
   group(ChatApi, () {
+    // 清空會話
+    //
+    // 清空指定會話的所有消息
+    //
+    //Future clearSession(int sessionId) async
+    test('test clearSession', () async {
+      // TODO
+    });
+
     // 刪除消息
     //
     // 刪除指定的聊天消息
@@ -16,12 +25,30 @@ void main() {
       // TODO
     });
 
-    // 獲取消息詳情
+    // 刪除會話
     //
-    // 根據消息ID獲取消息詳情
+    // 刪除指定的聊天會話及其所有消息
     //
-    //Future<ChatMessage> getMessage(int messageId) async
-    test('test getMessage', () async {
+    //Future deleteSession(int sessionId) async
+    test('test deleteSession', () async {
+      // TODO
+    });
+
+    // 獲取會話消息列表
+    //
+    // 獲取指定會話的消息列表
+    //
+    //Future<PageChatMessage> getSessionMessages(int sessionId, ChatMessageQueryParam queryParam) async
+    test('test getSessionMessages', () async {
+      // TODO
+    });
+
+    // 獲取未讀消息數
+    //
+    // 獲取當前用戶的所有未讀消息總數
+    //
+    //Future<int> getUnreadCount() async
+    test('test getUnreadCount', () async {
       // TODO
     });
 

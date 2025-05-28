@@ -1,12 +1,12 @@
 import 'package:test/test.dart';
 import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
-// tests for PageCartItem
+// tests for PageChatMessage
 void main() {
-  final instance = PageCartItemBuilder();
+  final instance = PageChatMessageBuilder();
   // TODO add properties to the builder and call build()
 
-  group(PageCartItem, () {
+  group(PageChatMessage, () {
     // int totalPages
     test('to test the property `totalPages`', () async {
       // TODO
@@ -42,7 +42,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<CartItem> content
+    // BuiltList<ChatMessage> content
     test('to test the property `content`', () async {
       // TODO
     });
