@@ -37,7 +37,7 @@ UserStatusEnum _$userStatusEnumValueOf(String name) {
 }
 
 final BuiltSet<UserStatusEnum> _$userStatusEnumValues =
-    new BuiltSet<UserStatusEnum>(const <UserStatusEnum>[
+    BuiltSet<UserStatusEnum>(const <UserStatusEnum>[
   _$userStatusEnum_ACTIVE,
   _$userStatusEnum_INACTIVE,
   _$userStatusEnum_SUSPENDED,
@@ -47,7 +47,7 @@ final BuiltSet<UserStatusEnum> _$userStatusEnumValues =
 ]);
 
 Serializer<UserStatusEnum> _$userStatusEnumSerializer =
-    new _$UserStatusEnumSerializer();
+    _$UserStatusEnumSerializer();
 
 class _$UserStatusEnumSerializer
     implements PrimitiveSerializer<UserStatusEnum> {
@@ -118,7 +118,7 @@ class _$User extends User {
   final bool? admin;
 
   factory _$User([void Function(UserBuilder)? updates]) =>
-      (new UserBuilder()..update(updates))._build();
+      (UserBuilder()..update(updates))._build();
 
   _$User._(
       {this.id,
@@ -137,13 +137,12 @@ class _$User extends User {
       this.seller,
       this.admin})
       : super._();
-
   @override
   User rebuild(void Function(UserBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  UserBuilder toBuilder() => new UserBuilder()..replace(this);
+  UserBuilder toBuilder() => UserBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -302,7 +301,6 @@ class UserBuilder implements Builder<User, UserBuilder> {
 
   @override
   void replace(User other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$User;
   }
 
@@ -316,7 +314,7 @@ class UserBuilder implements Builder<User, UserBuilder> {
 
   _$User _build() {
     final _$result = _$v ??
-        new _$User._(
+        _$User._(
           id: id,
           username: username,
           password: password,

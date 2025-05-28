@@ -1,4 +1,4 @@
-# agora_market_dart_sdk.model.PageChatMessage
+# agora_market_dart_sdk.model.PageChatSession
 
 ## Load the model package
 ```dart
@@ -8,14 +8,14 @@ import 'package:agora_market_dart_sdk/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalElements** | **int** |  | [optional] 
 **totalPages** | **int** |  | [optional] 
-**pageable** | [**PageableObject**](PageableObject.md) |  | [optional] 
-**numberOfElements** | **int** |  | [optional] 
+**totalElements** | **int** |  | [optional] 
 **first** | **bool** |  | [optional] 
 **last** | **bool** |  | [optional] 
+**pageable** | [**PageableObject**](PageableObject.md) |  | [optional] 
+**numberOfElements** | **int** |  | [optional] 
 **size** | **int** |  | [optional] 
-**content** | [**BuiltList&lt;ChatMessage&gt;**](ChatMessage.md) |  | [optional] 
+**content** | [**BuiltList&lt;ChatSession&gt;**](ChatSession.md) |  | [optional] 
 **number** | **int** |  | [optional] 
 **sort** | [**SortObject**](SortObject.md) |  | [optional] 
 **empty** | **bool** |  | [optional] 

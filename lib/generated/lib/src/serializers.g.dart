@@ -6,14 +6,15 @@ part of 'serializers.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializers _$serializers = (new Serializers().toBuilder()
+Serializers _$serializers = (Serializers().toBuilder()
       ..add(CartItem.serializer)
       ..add(CartSummaryDTO.serializer)
       ..add(ChangePasswordParam.serializer)
       ..add(ChatMessage.serializer)
       ..add(ChatMessageDTO.serializer)
-      ..add(ChatMessageQueryParam.serializer)
       ..add(ChatMessageUpdateDTO.serializer)
+      ..add(ChatSession.serializer)
+      ..add(ChatSessionQueryParam.serializer)
       ..add(ColdWallet.serializer)
       ..add(ColdWalletProtocolEnum.serializer)
       ..add(ColdWalletStatusEnum.serializer)
@@ -52,7 +53,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(OrderSumbitParam.serializer)
       ..add(OrderSumbitParamDeliveryTypeEnum.serializer)
       ..add(PageCartItem.serializer)
-      ..add(PageChatMessage.serializer)
+      ..add(PageChatSession.serializer)
       ..add(PageColdWallet.serializer)
       ..add(PageDispute.serializer)
       ..add(PageOrder.serializer)
@@ -104,87 +105,87 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(WithdrawStatusEnum.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(CartItem)]),
-          () => new ListBuilder<CartItem>())
+          () => ListBuilder<CartItem>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(ChatMessage)]),
-          () => new ListBuilder<ChatMessage>())
+          const FullType(BuiltList, const [const FullType(ChatSession)]),
+          () => ListBuilder<ChatSession>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(ColdWallet)]),
-          () => new ListBuilder<ColdWallet>())
+          () => ListBuilder<ColdWallet>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Dispute)]),
-          () => new ListBuilder<Dispute>())
+          () => ListBuilder<Dispute>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Order)]),
-          () => new ListBuilder<Order>())
+          () => ListBuilder<Order>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Product)]),
-          () => new ListBuilder<Product>())
+          () => ListBuilder<Product>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Recharge)]),
-          () => new ListBuilder<Recharge>())
+          () => ListBuilder<Recharge>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Staking)]),
-          () => new ListBuilder<Staking>())
+          () => ListBuilder<Staking>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(TopProductDTO)]),
-          () => new ListBuilder<TopProductDTO>())
+          () => ListBuilder<TopProductDTO>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(LowStockWarningDTO)]),
-          () => new ListBuilder<LowStockWarningDTO>())
+          () => ListBuilder<LowStockWarningDTO>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Transaction)]),
-          () => new ListBuilder<Transaction>())
+          () => ListBuilder<Transaction>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(User)]),
-          () => new ListBuilder<User>())
+          () => ListBuilder<User>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Withdraw)]),
-          () => new ListBuilder<Withdraw>())
+          () => ListBuilder<Withdraw>())
       ..addBuilderFactory(
           const FullType(
               BuiltMap, const [const FullType(String), const FullType(int)]),
-          () => new MapBuilder<String, int>())
+          () => MapBuilder<String, int>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(TopProductDTO)]),
-          () => new ListBuilder<TopProductDTO>())
+          () => ListBuilder<TopProductDTO>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(TopSellerDTO)]),
-          () => new ListBuilder<TopSellerDTO>())
+          () => ListBuilder<TopSellerDTO>())
       ..addBuilderFactory(
           const FullType(
               BuiltMap, const [const FullType(String), const FullType(int)]),
-          () => new MapBuilder<String, int>())
+          () => MapBuilder<String, int>())
       ..addBuilderFactory(
           const FullType(
               BuiltMap, const [const FullType(String), const FullType(int)]),
-          () => new MapBuilder<String, int>())
+          () => MapBuilder<String, int>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(TopDisputedProductDTO)]),
-          () => new ListBuilder<TopDisputedProductDTO>())
+          () => ListBuilder<TopDisputedProductDTO>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(TopDisputedSellerDTO)]),
-          () => new ListBuilder<TopDisputedSellerDTO>())
+          () => ListBuilder<TopDisputedSellerDTO>())
       ..addBuilderFactory(
           const FullType(BuiltSet, const [const FullType(String)]),
-          () => new SetBuilder<String>())
+          () => SetBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltSet, const [const FullType(String)]),
-          () => new SetBuilder<String>())
+          () => SetBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltSet, const [const FullType(String)]),
-          () => new SetBuilder<String>())
+          () => SetBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltSet, const [const FullType(String)]),
-          () => new SetBuilder<String>()))
+          () => SetBuilder<String>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

@@ -1,29 +1,19 @@
 import 'package:test/test.dart';
 import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
-// tests for PageChatMessage
+// tests for PageChatSession
 void main() {
-  final instance = PageChatMessageBuilder();
+  final instance = PageChatSessionBuilder();
   // TODO add properties to the builder and call build()
 
-  group(PageChatMessage, () {
-    // int totalElements
-    test('to test the property `totalElements`', () async {
-      // TODO
-    });
-
+  group(PageChatSession, () {
     // int totalPages
     test('to test the property `totalPages`', () async {
       // TODO
     });
 
-    // PageableObject pageable
-    test('to test the property `pageable`', () async {
-      // TODO
-    });
-
-    // int numberOfElements
-    test('to test the property `numberOfElements`', () async {
+    // int totalElements
+    test('to test the property `totalElements`', () async {
       // TODO
     });
 
@@ -37,12 +27,22 @@ void main() {
       // TODO
     });
 
+    // PageableObject pageable
+    test('to test the property `pageable`', () async {
+      // TODO
+    });
+
+    // int numberOfElements
+    test('to test the property `numberOfElements`', () async {
+      // TODO
+    });
+
     // int size
     test('to test the property `size`', () async {
       // TODO
     });
 
-    // BuiltList<ChatMessage> content
+    // BuiltList<ChatSession> content
     test('to test the property `content`', () async {
       // TODO
     });

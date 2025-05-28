@@ -15,18 +15,17 @@ class _$CustomerStats extends CustomerStats {
   final double? averageCustomerValue;
 
   factory _$CustomerStats([void Function(CustomerStatsBuilder)? updates]) =>
-      (new CustomerStatsBuilder()..update(updates))._build();
+      (CustomerStatsBuilder()..update(updates))._build();
 
   _$CustomerStats._(
       {this.newCustomers, this.returningCustomers, this.averageCustomerValue})
       : super._();
-
   @override
   CustomerStats rebuild(void Function(CustomerStatsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  CustomerStatsBuilder toBuilder() => new CustomerStatsBuilder()..replace(this);
+  CustomerStatsBuilder toBuilder() => CustomerStatsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -92,7 +91,6 @@ class CustomerStatsBuilder
 
   @override
   void replace(CustomerStats other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CustomerStats;
   }
 
@@ -106,7 +104,7 @@ class CustomerStatsBuilder
 
   _$CustomerStats _build() {
     final _$result = _$v ??
-        new _$CustomerStats._(
+        _$CustomerStats._(
           newCustomers: newCustomers,
           returningCustomers: returningCustomers,
           averageCustomerValue: averageCustomerValue,

@@ -17,17 +17,16 @@ class _$LoginResult extends LoginResult {
   final String? username;
 
   factory _$LoginResult([void Function(LoginResultBuilder)? updates]) =>
-      (new LoginResultBuilder()..update(updates))._build();
+      (LoginResultBuilder()..update(updates))._build();
 
   _$LoginResult._({this.token, this.refreshToken, this.userId, this.username})
       : super._();
-
   @override
   LoginResult rebuild(void Function(LoginResultBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  LoginResultBuilder toBuilder() => new LoginResultBuilder()..replace(this);
+  LoginResultBuilder toBuilder() => LoginResultBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -98,7 +97,6 @@ class LoginResultBuilder implements Builder<LoginResult, LoginResultBuilder> {
 
   @override
   void replace(LoginResult other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$LoginResult;
   }
 
@@ -112,7 +110,7 @@ class LoginResultBuilder implements Builder<LoginResult, LoginResultBuilder> {
 
   _$LoginResult _build() {
     final _$result = _$v ??
-        new _$LoginResult._(
+        _$LoginResult._(
           token: token,
           refreshToken: refreshToken,
           userId: userId,

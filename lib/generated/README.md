@@ -121,9 +121,11 @@ Class | Method | HTTP request | Description
 [*AuthApi*](doc/AuthApi.md) | [**resetPassword**](doc/AuthApi.md#resetpassword) | **POST** /auth/reset-password | 重設密碼
 [*AuthApi*](doc/AuthApi.md) | [**verifyResetToken**](doc/AuthApi.md#verifyresettoken) | **POST** /auth/verify-reset-token | 驗證密碼重置令牌
 [*ChatApi*](doc/ChatApi.md) | [**deleteMessage**](doc/ChatApi.md#deletemessage) | **DELETE** /chat/messages/{messageId} | 刪除消息
-[*ChatApi*](doc/ChatApi.md) | [**getChatMessages**](doc/ChatApi.md#getchatmessages) | **GET** /chat/messages | 查詢聊天記錄
 [*ChatApi*](doc/ChatApi.md) | [**getMessage**](doc/ChatApi.md#getmessage) | **GET** /chat/messages/{messageId} | 獲取消息詳情
+[*ChatApi*](doc/ChatApi.md) | [**listSessions**](doc/ChatApi.md#listsessions) | **GET** /chat/sessions | 獲取聊天會話列表
+[*ChatApi*](doc/ChatApi.md) | [**markSessionRead**](doc/ChatApi.md#marksessionread) | **PUT** /chat/sessions/{sessionId}/read | 標記會話為已讀
 [*ChatApi*](doc/ChatApi.md) | [**sendMessage**](doc/ChatApi.md#sendmessage) | **POST** /chat/messages | 發送消息
+[*ChatApi*](doc/ChatApi.md) | [**toggleSessionPin**](doc/ChatApi.md#togglesessionpin) | **PUT** /chat/sessions/{sessionId}/pin | 置頂/取消置頂會話
 [*ChatApi*](doc/ChatApi.md) | [**updateMessage**](doc/ChatApi.md#updatemessage) | **PUT** /chat/messages/{messageId} | 編輯消息
 [*ColdWalletApi*](doc/ColdWalletApi.md) | [**createColdWallet**](doc/ColdWalletApi.md#createcoldwallet) | **POST** /cold-wallet | 新增冷錢包
 [*ColdWalletApi*](doc/ColdWalletApi.md) | [**deleteColdWallet**](doc/ColdWalletApi.md#deletecoldwallet) | **DELETE** /cold-wallet/{id} | 刪除冷錢包
@@ -180,8 +182,9 @@ Class | Method | HTTP request | Description
  - [ChangePasswordParam](doc/ChangePasswordParam.md)
  - [ChatMessage](doc/ChatMessage.md)
  - [ChatMessageDTO](doc/ChatMessageDTO.md)
- - [ChatMessageQueryParam](doc/ChatMessageQueryParam.md)
  - [ChatMessageUpdateDTO](doc/ChatMessageUpdateDTO.md)
+ - [ChatSession](doc/ChatSession.md)
+ - [ChatSessionQueryParam](doc/ChatSessionQueryParam.md)
  - [ColdWallet](doc/ColdWallet.md)
  - [CreateRechargeParam](doc/CreateRechargeParam.md)
  - [CreateWithdrawParam](doc/CreateWithdrawParam.md)
@@ -206,7 +209,7 @@ Class | Method | HTTP request | Description
  - [OrderStatisticsDTO](doc/OrderStatisticsDTO.md)
  - [OrderSumbitParam](doc/OrderSumbitParam.md)
  - [PageCartItem](doc/PageCartItem.md)
- - [PageChatMessage](doc/PageChatMessage.md)
+ - [PageChatSession](doc/PageChatSession.md)
  - [PageColdWallet](doc/PageColdWallet.md)
  - [PageDispute](doc/PageDispute.md)
  - [PageOrder](doc/PageOrder.md)

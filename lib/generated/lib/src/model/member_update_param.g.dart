@@ -40,8 +40,8 @@ MemberUpdateParamStatusEnum _$memberUpdateParamStatusEnumValueOf(String name) {
 }
 
 final BuiltSet<MemberUpdateParamStatusEnum>
-    _$memberUpdateParamStatusEnumValues = new BuiltSet<
-        MemberUpdateParamStatusEnum>(const <MemberUpdateParamStatusEnum>[
+    _$memberUpdateParamStatusEnumValues =
+    BuiltSet<MemberUpdateParamStatusEnum>(const <MemberUpdateParamStatusEnum>[
   _$memberUpdateParamStatusEnum_ACTIVE,
   _$memberUpdateParamStatusEnum_INACTIVE,
   _$memberUpdateParamStatusEnum_SUSPENDED,
@@ -52,7 +52,7 @@ final BuiltSet<MemberUpdateParamStatusEnum>
 
 Serializer<MemberUpdateParamStatusEnum>
     _$memberUpdateParamStatusEnumSerializer =
-    new _$MemberUpdateParamStatusEnumSerializer();
+    _$MemberUpdateParamStatusEnumSerializer();
 
 class _$MemberUpdateParamStatusEnumSerializer
     implements PrimitiveSerializer<MemberUpdateParamStatusEnum> {
@@ -109,7 +109,7 @@ class _$MemberUpdateParam extends MemberUpdateParam {
 
   factory _$MemberUpdateParam(
           [void Function(MemberUpdateParamBuilder)? updates]) =>
-      (new MemberUpdateParamBuilder()..update(updates))._build();
+      (MemberUpdateParamBuilder()..update(updates))._build();
 
   _$MemberUpdateParam._(
       {this.id,
@@ -120,14 +120,13 @@ class _$MemberUpdateParam extends MemberUpdateParam {
       this.isSeller,
       this.remark})
       : super._();
-
   @override
   MemberUpdateParam rebuild(void Function(MemberUpdateParamBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   MemberUpdateParamBuilder toBuilder() =>
-      new MemberUpdateParamBuilder()..replace(this);
+      MemberUpdateParamBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -223,7 +222,6 @@ class MemberUpdateParamBuilder
 
   @override
   void replace(MemberUpdateParam other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$MemberUpdateParam;
   }
 
@@ -237,7 +235,7 @@ class MemberUpdateParamBuilder
 
   _$MemberUpdateParam _build() {
     final _$result = _$v ??
-        new _$MemberUpdateParam._(
+        _$MemberUpdateParam._(
           id: id,
           username: username,
           email: email,

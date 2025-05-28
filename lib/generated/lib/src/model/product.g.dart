@@ -51,7 +51,7 @@ ProductCategoryEnum _$productCategoryEnumValueOf(String name) {
 }
 
 final BuiltSet<ProductCategoryEnum> _$productCategoryEnumValues =
-    new BuiltSet<ProductCategoryEnum>(const <ProductCategoryEnum>[
+    BuiltSet<ProductCategoryEnum>(const <ProductCategoryEnum>[
   _$productCategoryEnum_ELECTRONICS,
   _$productCategoryEnum_FOOD,
   _$productCategoryEnum_CLOTHING,
@@ -92,7 +92,7 @@ ProductStatusEnum _$productStatusEnumValueOf(String name) {
 }
 
 final BuiltSet<ProductStatusEnum> _$productStatusEnumValues =
-    new BuiltSet<ProductStatusEnum>(const <ProductStatusEnum>[
+    BuiltSet<ProductStatusEnum>(const <ProductStatusEnum>[
   _$productStatusEnum_ON_SALE,
   _$productStatusEnum_OFF_SALE,
   _$productStatusEnum_SOLD_OUT,
@@ -101,9 +101,9 @@ final BuiltSet<ProductStatusEnum> _$productStatusEnumValues =
 ]);
 
 Serializer<ProductCategoryEnum> _$productCategoryEnumSerializer =
-    new _$ProductCategoryEnumSerializer();
+    _$ProductCategoryEnumSerializer();
 Serializer<ProductStatusEnum> _$productStatusEnumSerializer =
-    new _$ProductStatusEnumSerializer();
+    _$ProductStatusEnumSerializer();
 
 class _$ProductCategoryEnumSerializer
     implements PrimitiveSerializer<ProductCategoryEnum> {
@@ -224,7 +224,7 @@ class _$Product extends Product {
   final String? tags;
 
   factory _$Product([void Function(ProductBuilder)? updates]) =>
-      (new ProductBuilder()..update(updates))._build();
+      (ProductBuilder()..update(updates))._build();
 
   _$Product._(
       {this.id,
@@ -248,13 +248,12 @@ class _$Product extends Product {
       this.salesCount,
       this.tags})
       : super._();
-
   @override
   Product rebuild(void Function(ProductBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ProductBuilder toBuilder() => new ProductBuilder()..replace(this);
+  ProductBuilder toBuilder() => ProductBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -369,7 +368,7 @@ class ProductBuilder implements Builder<Product, ProductBuilder> {
 
   SetBuilder<String>? _imageUrls;
   SetBuilder<String> get imageUrls =>
-      _$this._imageUrls ??= new SetBuilder<String>();
+      _$this._imageUrls ??= SetBuilder<String>();
   set imageUrls(SetBuilder<String>? imageUrls) => _$this._imageUrls = imageUrls;
 
   String? _pickupAddress;
@@ -387,13 +386,13 @@ class ProductBuilder implements Builder<Product, ProductBuilder> {
 
   LocalTimeBuilder? _pickupTimeStartString;
   LocalTimeBuilder get pickupTimeStartString =>
-      _$this._pickupTimeStartString ??= new LocalTimeBuilder();
+      _$this._pickupTimeStartString ??= LocalTimeBuilder();
   set pickupTimeStartString(LocalTimeBuilder? pickupTimeStartString) =>
       _$this._pickupTimeStartString = pickupTimeStartString;
 
   LocalTimeBuilder? _pickupTimeEndString;
   LocalTimeBuilder get pickupTimeEndString =>
-      _$this._pickupTimeEndString ??= new LocalTimeBuilder();
+      _$this._pickupTimeEndString ??= LocalTimeBuilder();
   set pickupTimeEndString(LocalTimeBuilder? pickupTimeEndString) =>
       _$this._pickupTimeEndString = pickupTimeEndString;
 
@@ -459,7 +458,6 @@ class ProductBuilder implements Builder<Product, ProductBuilder> {
 
   @override
   void replace(Product other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Product;
   }
 
@@ -475,7 +473,7 @@ class ProductBuilder implements Builder<Product, ProductBuilder> {
     _$Product _$result;
     try {
       _$result = _$v ??
-          new _$Product._(
+          _$Product._(
             id: id,
             title: title,
             description: description,
@@ -508,7 +506,7 @@ class ProductBuilder implements Builder<Product, ProductBuilder> {
         _$failedField = 'pickupTimeEndString';
         _pickupTimeEndString?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'Product', _$failedField, e.toString());
       }
       rethrow;

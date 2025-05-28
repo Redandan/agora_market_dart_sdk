@@ -27,7 +27,7 @@ class _$Deliveryer extends Deliveryer {
   final double? longitude;
 
   factory _$Deliveryer([void Function(DeliveryerBuilder)? updates]) =>
-      (new DeliveryerBuilder()..update(updates))._build();
+      (DeliveryerBuilder()..update(updates))._build();
 
   _$Deliveryer._(
       {this.id,
@@ -40,13 +40,12 @@ class _$Deliveryer extends Deliveryer {
       this.latitude,
       this.longitude})
       : super._();
-
   @override
   Deliveryer rebuild(void Function(DeliveryerBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  DeliveryerBuilder toBuilder() => new DeliveryerBuilder()..replace(this);
+  DeliveryerBuilder toBuilder() => DeliveryerBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -112,7 +111,7 @@ class DeliveryerBuilder implements Builder<Deliveryer, DeliveryerBuilder> {
 
   SetBuilder<String>? _deliveryAreas;
   SetBuilder<String> get deliveryAreas =>
-      _$this._deliveryAreas ??= new SetBuilder<String>();
+      _$this._deliveryAreas ??= SetBuilder<String>();
   set deliveryAreas(SetBuilder<String>? deliveryAreas) =>
       _$this._deliveryAreas = deliveryAreas;
 
@@ -160,7 +159,6 @@ class DeliveryerBuilder implements Builder<Deliveryer, DeliveryerBuilder> {
 
   @override
   void replace(Deliveryer other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Deliveryer;
   }
 
@@ -176,7 +174,7 @@ class DeliveryerBuilder implements Builder<Deliveryer, DeliveryerBuilder> {
     _$Deliveryer _$result;
     try {
       _$result = _$v ??
-          new _$Deliveryer._(
+          _$Deliveryer._(
             id: id,
             userId: userId,
             enabled: enabled,
@@ -193,7 +191,7 @@ class DeliveryerBuilder implements Builder<Deliveryer, DeliveryerBuilder> {
         _$failedField = 'deliveryAreas';
         _deliveryAreas?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'Deliveryer', _$failedField, e.toString());
       }
       rethrow;

@@ -37,8 +37,8 @@ ProductUpdateParamStatusEnum _$productUpdateParamStatusEnumValueOf(
 }
 
 final BuiltSet<ProductUpdateParamStatusEnum>
-    _$productUpdateParamStatusEnumValues = new BuiltSet<
-        ProductUpdateParamStatusEnum>(const <ProductUpdateParamStatusEnum>[
+    _$productUpdateParamStatusEnumValues =
+    BuiltSet<ProductUpdateParamStatusEnum>(const <ProductUpdateParamStatusEnum>[
   _$productUpdateParamStatusEnum_ON_SALE,
   _$productUpdateParamStatusEnum_OFF_SALE,
   _$productUpdateParamStatusEnum_SOLD_OUT,
@@ -48,7 +48,7 @@ final BuiltSet<ProductUpdateParamStatusEnum>
 
 Serializer<ProductUpdateParamStatusEnum>
     _$productUpdateParamStatusEnumSerializer =
-    new _$ProductUpdateParamStatusEnumSerializer();
+    _$ProductUpdateParamStatusEnumSerializer();
 
 class _$ProductUpdateParamStatusEnumSerializer
     implements PrimitiveSerializer<ProductUpdateParamStatusEnum> {
@@ -109,7 +109,7 @@ class _$ProductUpdateParam extends ProductUpdateParam {
 
   factory _$ProductUpdateParam(
           [void Function(ProductUpdateParamBuilder)? updates]) =>
-      (new ProductUpdateParamBuilder()..update(updates))._build();
+      (ProductUpdateParamBuilder()..update(updates))._build();
 
   _$ProductUpdateParam._(
       {required this.id,
@@ -122,14 +122,7 @@ class _$ProductUpdateParam extends ProductUpdateParam {
       required this.longitude,
       required this.latitude,
       this.status})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'ProductUpdateParam', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        longitude, r'ProductUpdateParam', 'longitude');
-    BuiltValueNullFieldError.checkNotNull(
-        latitude, r'ProductUpdateParam', 'latitude');
-  }
-
+      : super._();
   @override
   ProductUpdateParam rebuild(
           void Function(ProductUpdateParamBuilder) updates) =>
@@ -137,7 +130,7 @@ class _$ProductUpdateParam extends ProductUpdateParam {
 
   @override
   ProductUpdateParamBuilder toBuilder() =>
-      new ProductUpdateParamBuilder()..replace(this);
+      ProductUpdateParamBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -219,7 +212,7 @@ class ProductUpdateParamBuilder
 
   SetBuilder<String>? _imageUrls;
   SetBuilder<String> get imageUrls =>
-      _$this._imageUrls ??= new SetBuilder<String>();
+      _$this._imageUrls ??= SetBuilder<String>();
   set imageUrls(SetBuilder<String>? imageUrls) => _$this._imageUrls = imageUrls;
 
   double? _longitude;
@@ -258,7 +251,6 @@ class ProductUpdateParamBuilder
 
   @override
   void replace(ProductUpdateParam other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ProductUpdateParam;
   }
 
@@ -274,7 +266,7 @@ class ProductUpdateParamBuilder
     _$ProductUpdateParam _$result;
     try {
       _$result = _$v ??
-          new _$ProductUpdateParam._(
+          _$ProductUpdateParam._(
             id: BuiltValueNullFieldError.checkNotNull(
                 id, r'ProductUpdateParam', 'id'),
             name: name,
@@ -295,7 +287,7 @@ class ProductUpdateParamBuilder
         _$failedField = 'imageUrls';
         _imageUrls?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ProductUpdateParam', _$failedField, e.toString());
       }
       rethrow;

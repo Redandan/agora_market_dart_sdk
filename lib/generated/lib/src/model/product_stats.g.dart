@@ -17,7 +17,7 @@ class _$ProductStats extends ProductStats {
   final int? inactiveProducts;
 
   factory _$ProductStats([void Function(ProductStatsBuilder)? updates]) =>
-      (new ProductStatsBuilder()..update(updates))._build();
+      (ProductStatsBuilder()..update(updates))._build();
 
   _$ProductStats._(
       {this.totalProducts,
@@ -25,13 +25,12 @@ class _$ProductStats extends ProductStats {
       this.activeProducts,
       this.inactiveProducts})
       : super._();
-
   @override
   ProductStats rebuild(void Function(ProductStatsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ProductStatsBuilder toBuilder() => new ProductStatsBuilder()..replace(this);
+  ProductStatsBuilder toBuilder() => ProductStatsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -107,7 +106,6 @@ class ProductStatsBuilder
 
   @override
   void replace(ProductStats other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ProductStats;
   }
 
@@ -121,7 +119,7 @@ class ProductStatsBuilder
 
   _$ProductStats _build() {
     final _$result = _$v ??
-        new _$ProductStats._(
+        _$ProductStats._(
           totalProducts: totalProducts,
           averageRating: averageRating,
           activeProducts: activeProducts,

@@ -16,21 +16,13 @@ class _$PasswordResetParam extends PasswordResetParam {
 
   factory _$PasswordResetParam(
           [void Function(PasswordResetParamBuilder)? updates]) =>
-      (new PasswordResetParamBuilder()..update(updates))._build();
+      (PasswordResetParamBuilder()..update(updates))._build();
 
   _$PasswordResetParam._(
       {required this.oldPassword,
       required this.newPassword,
       required this.confirmNewPassword})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        oldPassword, r'PasswordResetParam', 'oldPassword');
-    BuiltValueNullFieldError.checkNotNull(
-        newPassword, r'PasswordResetParam', 'newPassword');
-    BuiltValueNullFieldError.checkNotNull(
-        confirmNewPassword, r'PasswordResetParam', 'confirmNewPassword');
-  }
-
+      : super._();
   @override
   PasswordResetParam rebuild(
           void Function(PasswordResetParamBuilder) updates) =>
@@ -38,7 +30,7 @@ class _$PasswordResetParam extends PasswordResetParam {
 
   @override
   PasswordResetParamBuilder toBuilder() =>
-      new PasswordResetParamBuilder()..replace(this);
+      PasswordResetParamBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -103,7 +95,6 @@ class PasswordResetParamBuilder
 
   @override
   void replace(PasswordResetParam other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PasswordResetParam;
   }
 
@@ -117,7 +108,7 @@ class PasswordResetParamBuilder
 
   _$PasswordResetParam _build() {
     final _$result = _$v ??
-        new _$PasswordResetParam._(
+        _$PasswordResetParam._(
           oldPassword: BuiltValueNullFieldError.checkNotNull(
               oldPassword, r'PasswordResetParam', 'oldPassword'),
           newPassword: BuiltValueNullFieldError.checkNotNull(

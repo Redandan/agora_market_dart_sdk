@@ -14,17 +14,16 @@ class _$OrderQueryResult extends OrderQueryResult {
 
   factory _$OrderQueryResult(
           [void Function(OrderQueryResultBuilder)? updates]) =>
-      (new OrderQueryResultBuilder()..update(updates))._build();
+      (OrderQueryResultBuilder()..update(updates))._build();
 
   _$OrderQueryResult._({this.order, this.deliveryDetail}) : super._();
-
   @override
   OrderQueryResult rebuild(void Function(OrderQueryResultBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   OrderQueryResultBuilder toBuilder() =>
-      new OrderQueryResultBuilder()..replace(this);
+      OrderQueryResultBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -57,12 +56,12 @@ class OrderQueryResultBuilder
   _$OrderQueryResult? _$v;
 
   OrderBuilder? _order;
-  OrderBuilder get order => _$this._order ??= new OrderBuilder();
+  OrderBuilder get order => _$this._order ??= OrderBuilder();
   set order(OrderBuilder? order) => _$this._order = order;
 
   DeliveryDetailBuilder? _deliveryDetail;
   DeliveryDetailBuilder get deliveryDetail =>
-      _$this._deliveryDetail ??= new DeliveryDetailBuilder();
+      _$this._deliveryDetail ??= DeliveryDetailBuilder();
   set deliveryDetail(DeliveryDetailBuilder? deliveryDetail) =>
       _$this._deliveryDetail = deliveryDetail;
 
@@ -82,7 +81,6 @@ class OrderQueryResultBuilder
 
   @override
   void replace(OrderQueryResult other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$OrderQueryResult;
   }
 
@@ -98,7 +96,7 @@ class OrderQueryResultBuilder
     _$OrderQueryResult _$result;
     try {
       _$result = _$v ??
-          new _$OrderQueryResult._(
+          _$OrderQueryResult._(
             order: _order?.build(),
             deliveryDetail: _deliveryDetail?.build(),
           );
@@ -110,7 +108,7 @@ class OrderQueryResultBuilder
         _$failedField = 'deliveryDetail';
         _deliveryDetail?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'OrderQueryResult', _$failedField, e.toString());
       }
       rethrow;

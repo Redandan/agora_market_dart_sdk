@@ -41,7 +41,7 @@ UpdateDeliveryOrderParamReportTypeEnum
 }
 
 final BuiltSet<UpdateDeliveryOrderParamReportTypeEnum>
-    _$updateDeliveryOrderParamReportTypeEnumValues = new BuiltSet<
+    _$updateDeliveryOrderParamReportTypeEnumValues = BuiltSet<
         UpdateDeliveryOrderParamReportTypeEnum>(const <UpdateDeliveryOrderParamReportTypeEnum>[
   _$updateDeliveryOrderParamReportTypeEnum_PICKING_UP,
   _$updateDeliveryOrderParamReportTypeEnum_DELIVERING,
@@ -52,7 +52,7 @@ final BuiltSet<UpdateDeliveryOrderParamReportTypeEnum>
 
 Serializer<UpdateDeliveryOrderParamReportTypeEnum>
     _$updateDeliveryOrderParamReportTypeEnumSerializer =
-    new _$UpdateDeliveryOrderParamReportTypeEnumSerializer();
+    _$UpdateDeliveryOrderParamReportTypeEnumSerializer();
 
 class _$UpdateDeliveryOrderParamReportTypeEnumSerializer
     implements PrimitiveSerializer<UpdateDeliveryOrderParamReportTypeEnum> {
@@ -108,7 +108,7 @@ class _$UpdateDeliveryOrderParam extends UpdateDeliveryOrderParam {
 
   factory _$UpdateDeliveryOrderParam(
           [void Function(UpdateDeliveryOrderParamBuilder)? updates]) =>
-      (new UpdateDeliveryOrderParamBuilder()..update(updates))._build();
+      (UpdateDeliveryOrderParamBuilder()..update(updates))._build();
 
   _$UpdateDeliveryOrderParam._(
       {this.orderId,
@@ -118,7 +118,6 @@ class _$UpdateDeliveryOrderParam extends UpdateDeliveryOrderParam {
       this.currentLocationLongitude,
       this.verifyCode})
       : super._();
-
   @override
   UpdateDeliveryOrderParam rebuild(
           void Function(UpdateDeliveryOrderParamBuilder) updates) =>
@@ -126,7 +125,7 @@ class _$UpdateDeliveryOrderParam extends UpdateDeliveryOrderParam {
 
   @override
   UpdateDeliveryOrderParamBuilder toBuilder() =>
-      new UpdateDeliveryOrderParamBuilder()..replace(this);
+      UpdateDeliveryOrderParamBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -218,7 +217,6 @@ class UpdateDeliveryOrderParamBuilder
 
   @override
   void replace(UpdateDeliveryOrderParam other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UpdateDeliveryOrderParam;
   }
 
@@ -232,7 +230,7 @@ class UpdateDeliveryOrderParamBuilder
 
   _$UpdateDeliveryOrderParam _build() {
     final _$result = _$v ??
-        new _$UpdateDeliveryOrderParam._(
+        _$UpdateDeliveryOrderParam._(
           orderId: orderId,
           reportType: reportType,
           remark: remark,

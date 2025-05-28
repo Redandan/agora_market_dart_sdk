@@ -23,7 +23,7 @@ WithdrawProtocolEnum _$withdrawProtocolEnumValueOf(String name) {
 }
 
 final BuiltSet<WithdrawProtocolEnum> _$withdrawProtocolEnumValues =
-    new BuiltSet<WithdrawProtocolEnum>(const <WithdrawProtocolEnum>[
+    BuiltSet<WithdrawProtocolEnum>(const <WithdrawProtocolEnum>[
   _$withdrawProtocolEnum_TRON,
   _$withdrawProtocolEnum_unknownDefaultOpenApi,
 ]);
@@ -61,7 +61,7 @@ WithdrawStatusEnum _$withdrawStatusEnumValueOf(String name) {
 }
 
 final BuiltSet<WithdrawStatusEnum> _$withdrawStatusEnumValues =
-    new BuiltSet<WithdrawStatusEnum>(const <WithdrawStatusEnum>[
+    BuiltSet<WithdrawStatusEnum>(const <WithdrawStatusEnum>[
   _$withdrawStatusEnum_PENDING,
   _$withdrawStatusEnum_PROCESSING,
   _$withdrawStatusEnum_COMPLETED,
@@ -71,9 +71,9 @@ final BuiltSet<WithdrawStatusEnum> _$withdrawStatusEnumValues =
 ]);
 
 Serializer<WithdrawProtocolEnum> _$withdrawProtocolEnumSerializer =
-    new _$WithdrawProtocolEnumSerializer();
+    _$WithdrawProtocolEnumSerializer();
 Serializer<WithdrawStatusEnum> _$withdrawStatusEnumSerializer =
-    new _$WithdrawStatusEnumSerializer();
+    _$WithdrawStatusEnumSerializer();
 
 class _$WithdrawProtocolEnumSerializer
     implements PrimitiveSerializer<WithdrawProtocolEnum> {
@@ -166,7 +166,7 @@ class _$Withdraw extends Withdraw {
   final DateTime? updatedAt;
 
   factory _$Withdraw([void Function(WithdrawBuilder)? updates]) =>
-      (new WithdrawBuilder()..update(updates))._build();
+      (WithdrawBuilder()..update(updates))._build();
 
   _$Withdraw._(
       {this.id,
@@ -182,13 +182,12 @@ class _$Withdraw extends Withdraw {
       this.createdAt,
       this.updatedAt})
       : super._();
-
   @override
   Withdraw rebuild(void Function(WithdrawBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  WithdrawBuilder toBuilder() => new WithdrawBuilder()..replace(this);
+  WithdrawBuilder toBuilder() => WithdrawBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -323,7 +322,6 @@ class WithdrawBuilder implements Builder<Withdraw, WithdrawBuilder> {
 
   @override
   void replace(Withdraw other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Withdraw;
   }
 
@@ -337,7 +335,7 @@ class WithdrawBuilder implements Builder<Withdraw, WithdrawBuilder> {
 
   _$Withdraw _build() {
     final _$result = _$v ??
-        new _$Withdraw._(
+        _$Withdraw._(
           id: id,
           userId: userId,
           amount: amount,

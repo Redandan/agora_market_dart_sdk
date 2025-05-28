@@ -13,23 +13,16 @@ class _$ChatMessageDTO extends ChatMessageDTO {
   final String content;
 
   factory _$ChatMessageDTO([void Function(ChatMessageDTOBuilder)? updates]) =>
-      (new ChatMessageDTOBuilder()..update(updates))._build();
+      (ChatMessageDTOBuilder()..update(updates))._build();
 
   _$ChatMessageDTO._({required this.receiverId, required this.content})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        receiverId, r'ChatMessageDTO', 'receiverId');
-    BuiltValueNullFieldError.checkNotNull(
-        content, r'ChatMessageDTO', 'content');
-  }
-
+      : super._();
   @override
   ChatMessageDTO rebuild(void Function(ChatMessageDTOBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ChatMessageDTOBuilder toBuilder() =>
-      new ChatMessageDTOBuilder()..replace(this);
+  ChatMessageDTOBuilder toBuilder() => ChatMessageDTOBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -85,7 +78,6 @@ class ChatMessageDTOBuilder
 
   @override
   void replace(ChatMessageDTO other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ChatMessageDTO;
   }
 
@@ -99,7 +91,7 @@ class ChatMessageDTOBuilder
 
   _$ChatMessageDTO _build() {
     final _$result = _$v ??
-        new _$ChatMessageDTO._(
+        _$ChatMessageDTO._(
           receiverId: BuiltValueNullFieldError.checkNotNull(
               receiverId, r'ChatMessageDTO', 'receiverId'),
           content: BuiltValueNullFieldError.checkNotNull(

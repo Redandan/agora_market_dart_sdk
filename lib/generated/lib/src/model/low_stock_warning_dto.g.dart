@@ -14,10 +14,9 @@ class _$LowStockWarningDTO extends LowStockWarningDTO {
 
   factory _$LowStockWarningDTO(
           [void Function(LowStockWarningDTOBuilder)? updates]) =>
-      (new LowStockWarningDTOBuilder()..update(updates))._build();
+      (LowStockWarningDTOBuilder()..update(updates))._build();
 
   _$LowStockWarningDTO._({this.productId, this.currentStock}) : super._();
-
   @override
   LowStockWarningDTO rebuild(
           void Function(LowStockWarningDTOBuilder) updates) =>
@@ -25,7 +24,7 @@ class _$LowStockWarningDTO extends LowStockWarningDTO {
 
   @override
   LowStockWarningDTOBuilder toBuilder() =>
-      new LowStockWarningDTOBuilder()..replace(this);
+      LowStockWarningDTOBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -81,7 +80,6 @@ class LowStockWarningDTOBuilder
 
   @override
   void replace(LowStockWarningDTO other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$LowStockWarningDTO;
   }
 
@@ -95,7 +93,7 @@ class LowStockWarningDTOBuilder
 
   _$LowStockWarningDTO _build() {
     final _$result = _$v ??
-        new _$LowStockWarningDTO._(
+        _$LowStockWarningDTO._(
           productId: productId,
           currentStock: currentStock,
         );

@@ -32,7 +32,7 @@ class _$OrderSearchParam extends OrderSearchParam {
 
   factory _$OrderSearchParam(
           [void Function(OrderSearchParamBuilder)? updates]) =>
-      (new OrderSearchParamBuilder()..update(updates))._build();
+      (OrderSearchParamBuilder()..update(updates))._build();
 
   _$OrderSearchParam._(
       {this.orderId,
@@ -47,14 +47,13 @@ class _$OrderSearchParam extends OrderSearchParam {
       this.page,
       this.size})
       : super._();
-
   @override
   OrderSearchParam rebuild(void Function(OrderSearchParamBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   OrderSearchParamBuilder toBuilder() =>
-      new OrderSearchParamBuilder()..replace(this);
+      OrderSearchParamBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -182,7 +181,6 @@ class OrderSearchParamBuilder
 
   @override
   void replace(OrderSearchParam other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$OrderSearchParam;
   }
 
@@ -196,7 +194,7 @@ class OrderSearchParamBuilder
 
   _$OrderSearchParam _build() {
     final _$result = _$v ??
-        new _$OrderSearchParam._(
+        _$OrderSearchParam._(
           orderId: orderId,
           buyerId: buyerId,
           sellerId: sellerId,

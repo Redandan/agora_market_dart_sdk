@@ -7,23 +7,13 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(PageWithdraw, () {
-    // int totalElements
-    test('to test the property `totalElements`', () async {
-      // TODO
-    });
-
     // int totalPages
     test('to test the property `totalPages`', () async {
       // TODO
     });
 
-    // PageableObject pageable
-    test('to test the property `pageable`', () async {
-      // TODO
-    });
-
-    // int numberOfElements
-    test('to test the property `numberOfElements`', () async {
+    // int totalElements
+    test('to test the property `totalElements`', () async {
       // TODO
     });
 
@@ -34,6 +24,16 @@ void main() {
 
     // bool last
     test('to test the property `last`', () async {
+      // TODO
+    });
+
+    // PageableObject pageable
+    test('to test the property `pageable`', () async {
+      // TODO
+    });
+
+    // int numberOfElements
+    test('to test the property `numberOfElements`', () async {
       // TODO
     });
 

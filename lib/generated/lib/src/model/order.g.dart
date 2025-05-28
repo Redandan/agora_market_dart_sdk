@@ -71,7 +71,7 @@ OrderStatusEnum _$orderStatusEnumValueOf(String name) {
 }
 
 final BuiltSet<OrderStatusEnum> _$orderStatusEnumValues =
-    new BuiltSet<OrderStatusEnum>(const <OrderStatusEnum>[
+    BuiltSet<OrderStatusEnum>(const <OrderStatusEnum>[
   _$orderStatusEnum_PENDING_PAYMENT,
   _$orderStatusEnum_PAID_PENDING_SHIPMENT,
   _$orderStatusEnum_SHIPPED_PENDING_DELIVERY,
@@ -89,7 +89,7 @@ final BuiltSet<OrderStatusEnum> _$orderStatusEnumValues =
 ]);
 
 Serializer<OrderStatusEnum> _$orderStatusEnumSerializer =
-    new _$OrderStatusEnumSerializer();
+    _$OrderStatusEnumSerializer();
 
 class _$OrderStatusEnumSerializer
     implements PrimitiveSerializer<OrderStatusEnum> {
@@ -176,7 +176,7 @@ class _$Order extends Order {
   final Product? product;
 
   factory _$Order([void Function(OrderBuilder)? updates]) =>
-      (new OrderBuilder()..update(updates))._build();
+      (OrderBuilder()..update(updates))._build();
 
   _$Order._(
       {this.id,
@@ -195,13 +195,12 @@ class _$Order extends Order {
       this.refundedAt,
       this.product})
       : super._();
-
   @override
   Order rebuild(void Function(OrderBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  OrderBuilder toBuilder() => new OrderBuilder()..replace(this);
+  OrderBuilder toBuilder() => OrderBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -328,7 +327,7 @@ class OrderBuilder implements Builder<Order, OrderBuilder> {
   set refundedAt(DateTime? refundedAt) => _$this._refundedAt = refundedAt;
 
   ProductBuilder? _product;
-  ProductBuilder get product => _$this._product ??= new ProductBuilder();
+  ProductBuilder get product => _$this._product ??= ProductBuilder();
   set product(ProductBuilder? product) => _$this._product = product;
 
   OrderBuilder() {
@@ -360,7 +359,6 @@ class OrderBuilder implements Builder<Order, OrderBuilder> {
 
   @override
   void replace(Order other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Order;
   }
 
@@ -376,7 +374,7 @@ class OrderBuilder implements Builder<Order, OrderBuilder> {
     _$Order _$result;
     try {
       _$result = _$v ??
-          new _$Order._(
+          _$Order._(
             id: id,
             productId: productId,
             buyerId: buyerId,
@@ -399,8 +397,7 @@ class OrderBuilder implements Builder<Order, OrderBuilder> {
         _$failedField = 'product';
         _product?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            r'Order', _$failedField, e.toString());
+        throw BuiltValueNestedFieldError(r'Order', _$failedField, e.toString());
       }
       rethrow;
     }

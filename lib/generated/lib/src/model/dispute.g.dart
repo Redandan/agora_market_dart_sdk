@@ -35,7 +35,7 @@ DisputeTypeEnum _$disputeTypeEnumValueOf(String name) {
 }
 
 final BuiltSet<DisputeTypeEnum> _$disputeTypeEnumValues =
-    new BuiltSet<DisputeTypeEnum>(const <DisputeTypeEnum>[
+    BuiltSet<DisputeTypeEnum>(const <DisputeTypeEnum>[
   _$disputeTypeEnum_PRODUCT_QUALITY,
   _$disputeTypeEnum_DELIVERY_ISSUE,
   _$disputeTypeEnum_REFUND_REQUEST,
@@ -72,7 +72,7 @@ DisputeStatusEnum _$disputeStatusEnumValueOf(String name) {
 }
 
 final BuiltSet<DisputeStatusEnum> _$disputeStatusEnumValues =
-    new BuiltSet<DisputeStatusEnum>(const <DisputeStatusEnum>[
+    BuiltSet<DisputeStatusEnum>(const <DisputeStatusEnum>[
   _$disputeStatusEnum_PENDING,
   _$disputeStatusEnum_RESOLVED_REFUND,
   _$disputeStatusEnum_RESOLVED_COMPLETED,
@@ -81,9 +81,9 @@ final BuiltSet<DisputeStatusEnum> _$disputeStatusEnumValues =
 ]);
 
 Serializer<DisputeTypeEnum> _$disputeTypeEnumSerializer =
-    new _$DisputeTypeEnumSerializer();
+    _$DisputeTypeEnumSerializer();
 Serializer<DisputeStatusEnum> _$disputeStatusEnumSerializer =
-    new _$DisputeStatusEnumSerializer();
+    _$DisputeStatusEnumSerializer();
 
 class _$DisputeTypeEnumSerializer
     implements PrimitiveSerializer<DisputeTypeEnum> {
@@ -180,7 +180,7 @@ class _$Dispute extends Dispute {
   final DateTime? resolvedAt;
 
   factory _$Dispute([void Function(DisputeBuilder)? updates]) =>
-      (new DisputeBuilder()..update(updates))._build();
+      (DisputeBuilder()..update(updates))._build();
 
   _$Dispute._(
       {this.id,
@@ -196,13 +196,12 @@ class _$Dispute extends Dispute {
       this.updatedAt,
       this.resolvedAt})
       : super._();
-
   @override
   Dispute rebuild(void Function(DisputeBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  DisputeBuilder toBuilder() => new DisputeBuilder()..replace(this);
+  DisputeBuilder toBuilder() => DisputeBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -337,7 +336,6 @@ class DisputeBuilder implements Builder<Dispute, DisputeBuilder> {
 
   @override
   void replace(Dispute other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Dispute;
   }
 
@@ -351,7 +349,7 @@ class DisputeBuilder implements Builder<Dispute, DisputeBuilder> {
 
   _$Dispute _build() {
     final _$result = _$v ??
-        new _$Dispute._(
+        _$Dispute._(
           id: id,
           orderId: orderId,
           buyerId: buyerId,

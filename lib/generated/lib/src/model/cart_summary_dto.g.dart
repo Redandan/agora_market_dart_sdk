@@ -19,7 +19,7 @@ class _$CartSummaryDTO extends CartSummaryDTO {
   final BuiltList<LowStockWarningDTO>? lowStockWarnings;
 
   factory _$CartSummaryDTO([void Function(CartSummaryDTOBuilder)? updates]) =>
-      (new CartSummaryDTOBuilder()..update(updates))._build();
+      (CartSummaryDTOBuilder()..update(updates))._build();
 
   _$CartSummaryDTO._(
       {this.totalItems,
@@ -28,14 +28,12 @@ class _$CartSummaryDTO extends CartSummaryDTO {
       this.topProducts,
       this.lowStockWarnings})
       : super._();
-
   @override
   CartSummaryDTO rebuild(void Function(CartSummaryDTOBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  CartSummaryDTOBuilder toBuilder() =>
-      new CartSummaryDTOBuilder()..replace(this);
+  CartSummaryDTOBuilder toBuilder() => CartSummaryDTOBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -91,13 +89,13 @@ class CartSummaryDTOBuilder
 
   ListBuilder<TopProductDTO>? _topProducts;
   ListBuilder<TopProductDTO> get topProducts =>
-      _$this._topProducts ??= new ListBuilder<TopProductDTO>();
+      _$this._topProducts ??= ListBuilder<TopProductDTO>();
   set topProducts(ListBuilder<TopProductDTO>? topProducts) =>
       _$this._topProducts = topProducts;
 
   ListBuilder<LowStockWarningDTO>? _lowStockWarnings;
   ListBuilder<LowStockWarningDTO> get lowStockWarnings =>
-      _$this._lowStockWarnings ??= new ListBuilder<LowStockWarningDTO>();
+      _$this._lowStockWarnings ??= ListBuilder<LowStockWarningDTO>();
   set lowStockWarnings(ListBuilder<LowStockWarningDTO>? lowStockWarnings) =>
       _$this._lowStockWarnings = lowStockWarnings;
 
@@ -120,7 +118,6 @@ class CartSummaryDTOBuilder
 
   @override
   void replace(CartSummaryDTO other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CartSummaryDTO;
   }
 
@@ -136,7 +133,7 @@ class CartSummaryDTOBuilder
     _$CartSummaryDTO _$result;
     try {
       _$result = _$v ??
-          new _$CartSummaryDTO._(
+          _$CartSummaryDTO._(
             totalItems: totalItems,
             totalValue: totalValue,
             averageCartValue: averageCartValue,
@@ -151,7 +148,7 @@ class CartSummaryDTOBuilder
         _$failedField = 'lowStockWarnings';
         _lowStockWarnings?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CartSummaryDTO', _$failedField, e.toString());
       }
       rethrow;

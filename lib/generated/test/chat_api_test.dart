@@ -16,15 +16,6 @@ void main() {
       // TODO
     });
 
-    // 查詢聊天記錄
-    //
-    // 根據條件查詢聊天記錄列表
-    //
-    //Future<PageChatMessage> getChatMessages(ChatMessageQueryParam queryParam) async
-    test('test getChatMessages', () async {
-      // TODO
-    });
-
     // 獲取消息詳情
     //
     // 根據消息ID獲取消息詳情
@@ -34,12 +25,39 @@ void main() {
       // TODO
     });
 
+    // 獲取聊天會話列表
+    //
+    // 獲取用戶的聊天會話列表，支持未讀和置頂過濾
+    //
+    //Future<PageChatSession> listSessions(ChatSessionQueryParam queryParam) async
+    test('test listSessions', () async {
+      // TODO
+    });
+
+    // 標記會話為已讀
+    //
+    // 將指定會話的所有消息標記為已讀
+    //
+    //Future markSessionRead(int sessionId) async
+    test('test markSessionRead', () async {
+      // TODO
+    });
+
     // 發送消息
     //
     // 發送新的聊天消息
     //
     //Future sendMessage(ChatMessageDTO chatMessageDTO) async
     test('test sendMessage', () async {
+      // TODO
+    });
+
+    // 置頂/取消置頂會話
+    //
+    // 切換會話的置頂狀態
+    //
+    //Future<ChatSession> toggleSessionPin(int sessionId) async
+    test('test toggleSessionPin', () async {
       // TODO
     });
 

@@ -14,17 +14,16 @@ class _$OrderCancelParam extends OrderCancelParam {
 
   factory _$OrderCancelParam(
           [void Function(OrderCancelParamBuilder)? updates]) =>
-      (new OrderCancelParamBuilder()..update(updates))._build();
+      (OrderCancelParamBuilder()..update(updates))._build();
 
   _$OrderCancelParam._({this.orderId, this.reason}) : super._();
-
   @override
   OrderCancelParam rebuild(void Function(OrderCancelParamBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   OrderCancelParamBuilder toBuilder() =>
-      new OrderCancelParamBuilder()..replace(this);
+      OrderCancelParamBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -80,7 +79,6 @@ class OrderCancelParamBuilder
 
   @override
   void replace(OrderCancelParam other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$OrderCancelParam;
   }
 
@@ -94,7 +92,7 @@ class OrderCancelParamBuilder
 
   _$OrderCancelParam _build() {
     final _$result = _$v ??
-        new _$OrderCancelParam._(
+        _$OrderCancelParam._(
           orderId: orderId,
           reason: reason,
         );

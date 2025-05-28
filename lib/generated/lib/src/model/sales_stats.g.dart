@@ -15,17 +15,16 @@ class _$SalesStats extends SalesStats {
   final double? averageOrderValue;
 
   factory _$SalesStats([void Function(SalesStatsBuilder)? updates]) =>
-      (new SalesStatsBuilder()..update(updates))._build();
+      (SalesStatsBuilder()..update(updates))._build();
 
   _$SalesStats._({this.totalSales, this.totalOrders, this.averageOrderValue})
       : super._();
-
   @override
   SalesStats rebuild(void Function(SalesStatsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  SalesStatsBuilder toBuilder() => new SalesStatsBuilder()..replace(this);
+  SalesStatsBuilder toBuilder() => SalesStatsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -89,7 +88,6 @@ class SalesStatsBuilder implements Builder<SalesStats, SalesStatsBuilder> {
 
   @override
   void replace(SalesStats other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SalesStats;
   }
 
@@ -103,7 +101,7 @@ class SalesStatsBuilder implements Builder<SalesStats, SalesStatsBuilder> {
 
   _$SalesStats _build() {
     final _$result = _$v ??
-        new _$SalesStats._(
+        _$SalesStats._(
           totalSales: totalSales,
           totalOrders: totalOrders,
           averageOrderValue: averageOrderValue,

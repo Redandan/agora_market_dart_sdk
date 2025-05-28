@@ -23,7 +23,7 @@ ColdWalletProtocolEnum _$coldWalletProtocolEnumValueOf(String name) {
 }
 
 final BuiltSet<ColdWalletProtocolEnum> _$coldWalletProtocolEnumValues =
-    new BuiltSet<ColdWalletProtocolEnum>(const <ColdWalletProtocolEnum>[
+    BuiltSet<ColdWalletProtocolEnum>(const <ColdWalletProtocolEnum>[
   _$coldWalletProtocolEnum_TRON,
   _$coldWalletProtocolEnum_unknownDefaultOpenApi,
 ]);
@@ -57,7 +57,7 @@ ColdWalletStatusEnum _$coldWalletStatusEnumValueOf(String name) {
 }
 
 final BuiltSet<ColdWalletStatusEnum> _$coldWalletStatusEnumValues =
-    new BuiltSet<ColdWalletStatusEnum>(const <ColdWalletStatusEnum>[
+    BuiltSet<ColdWalletStatusEnum>(const <ColdWalletStatusEnum>[
   _$coldWalletStatusEnum_INACTIVE,
   _$coldWalletStatusEnum_AVAILABLE,
   _$coldWalletStatusEnum_IN_USE,
@@ -66,9 +66,9 @@ final BuiltSet<ColdWalletStatusEnum> _$coldWalletStatusEnumValues =
 ]);
 
 Serializer<ColdWalletProtocolEnum> _$coldWalletProtocolEnumSerializer =
-    new _$ColdWalletProtocolEnumSerializer();
+    _$ColdWalletProtocolEnumSerializer();
 Serializer<ColdWalletStatusEnum> _$coldWalletStatusEnumSerializer =
-    new _$ColdWalletStatusEnumSerializer();
+    _$ColdWalletStatusEnumSerializer();
 
 class _$ColdWalletProtocolEnumSerializer
     implements PrimitiveSerializer<ColdWalletProtocolEnum> {
@@ -155,7 +155,7 @@ class _$ColdWallet extends ColdWallet {
   final String? operator_;
 
   factory _$ColdWallet([void Function(ColdWalletBuilder)? updates]) =>
-      (new ColdWalletBuilder()..update(updates))._build();
+      (ColdWalletBuilder()..update(updates))._build();
 
   _$ColdWallet._(
       {this.id,
@@ -169,13 +169,12 @@ class _$ColdWallet extends ColdWallet {
       this.updatedAt,
       this.operator_})
       : super._();
-
   @override
   ColdWallet rebuild(void Function(ColdWalletBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ColdWalletBuilder toBuilder() => new ColdWalletBuilder()..replace(this);
+  ColdWalletBuilder toBuilder() => ColdWalletBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -295,7 +294,6 @@ class ColdWalletBuilder implements Builder<ColdWallet, ColdWalletBuilder> {
 
   @override
   void replace(ColdWallet other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ColdWallet;
   }
 
@@ -309,7 +307,7 @@ class ColdWalletBuilder implements Builder<ColdWallet, ColdWalletBuilder> {
 
   _$ColdWallet _build() {
     final _$result = _$v ??
-        new _$ColdWallet._(
+        _$ColdWallet._(
           id: id,
           address: address,
           protocol: protocol,

@@ -24,7 +24,7 @@ class _$DisputeStatisticsDTO extends DisputeStatisticsDTO {
 
   factory _$DisputeStatisticsDTO(
           [void Function(DisputeStatisticsDTOBuilder)? updates]) =>
-      (new DisputeStatisticsDTOBuilder()..update(updates))._build();
+      (DisputeStatisticsDTOBuilder()..update(updates))._build();
 
   _$DisputeStatisticsDTO._(
       {this.totalDisputes,
@@ -35,7 +35,6 @@ class _$DisputeStatisticsDTO extends DisputeStatisticsDTO {
       this.topDisputedProducts,
       this.topDisputedSellers})
       : super._();
-
   @override
   DisputeStatisticsDTO rebuild(
           void Function(DisputeStatisticsDTOBuilder) updates) =>
@@ -43,7 +42,7 @@ class _$DisputeStatisticsDTO extends DisputeStatisticsDTO {
 
   @override
   DisputeStatisticsDTOBuilder toBuilder() =>
-      new DisputeStatisticsDTOBuilder()..replace(this);
+      DisputeStatisticsDTOBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -97,13 +96,13 @@ class DisputeStatisticsDTOBuilder
 
   MapBuilder<String, int>? _disputesByStatus;
   MapBuilder<String, int> get disputesByStatus =>
-      _$this._disputesByStatus ??= new MapBuilder<String, int>();
+      _$this._disputesByStatus ??= MapBuilder<String, int>();
   set disputesByStatus(MapBuilder<String, int>? disputesByStatus) =>
       _$this._disputesByStatus = disputesByStatus;
 
   MapBuilder<String, int>? _disputesByType;
   MapBuilder<String, int> get disputesByType =>
-      _$this._disputesByType ??= new MapBuilder<String, int>();
+      _$this._disputesByType ??= MapBuilder<String, int>();
   set disputesByType(MapBuilder<String, int>? disputesByType) =>
       _$this._disputesByType = disputesByType;
 
@@ -119,14 +118,14 @@ class DisputeStatisticsDTOBuilder
 
   ListBuilder<TopDisputedProductDTO>? _topDisputedProducts;
   ListBuilder<TopDisputedProductDTO> get topDisputedProducts =>
-      _$this._topDisputedProducts ??= new ListBuilder<TopDisputedProductDTO>();
+      _$this._topDisputedProducts ??= ListBuilder<TopDisputedProductDTO>();
   set topDisputedProducts(
           ListBuilder<TopDisputedProductDTO>? topDisputedProducts) =>
       _$this._topDisputedProducts = topDisputedProducts;
 
   ListBuilder<TopDisputedSellerDTO>? _topDisputedSellers;
   ListBuilder<TopDisputedSellerDTO> get topDisputedSellers =>
-      _$this._topDisputedSellers ??= new ListBuilder<TopDisputedSellerDTO>();
+      _$this._topDisputedSellers ??= ListBuilder<TopDisputedSellerDTO>();
   set topDisputedSellers(
           ListBuilder<TopDisputedSellerDTO>? topDisputedSellers) =>
       _$this._topDisputedSellers = topDisputedSellers;
@@ -152,7 +151,6 @@ class DisputeStatisticsDTOBuilder
 
   @override
   void replace(DisputeStatisticsDTO other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$DisputeStatisticsDTO;
   }
 
@@ -168,7 +166,7 @@ class DisputeStatisticsDTOBuilder
     _$DisputeStatisticsDTO _$result;
     try {
       _$result = _$v ??
-          new _$DisputeStatisticsDTO._(
+          _$DisputeStatisticsDTO._(
             totalDisputes: totalDisputes,
             disputesByStatus: _disputesByStatus?.build(),
             disputesByType: _disputesByType?.build(),
@@ -190,7 +188,7 @@ class DisputeStatisticsDTOBuilder
         _$failedField = 'topDisputedSellers';
         _topDisputedSellers?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'DisputeStatisticsDTO', _$failedField, e.toString());
       }
       rethrow;

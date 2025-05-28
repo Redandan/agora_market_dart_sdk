@@ -15,16 +15,15 @@ class _$SortObject extends SortObject {
   final bool? empty;
 
   factory _$SortObject([void Function(SortObjectBuilder)? updates]) =>
-      (new SortObjectBuilder()..update(updates))._build();
+      (SortObjectBuilder()..update(updates))._build();
 
   _$SortObject._({this.sorted, this.unsorted, this.empty}) : super._();
-
   @override
   SortObject rebuild(void Function(SortObjectBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  SortObjectBuilder toBuilder() => new SortObjectBuilder()..replace(this);
+  SortObjectBuilder toBuilder() => SortObjectBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -87,7 +86,6 @@ class SortObjectBuilder implements Builder<SortObject, SortObjectBuilder> {
 
   @override
   void replace(SortObject other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SortObject;
   }
 
@@ -101,7 +99,7 @@ class SortObjectBuilder implements Builder<SortObject, SortObjectBuilder> {
 
   _$SortObject _build() {
     final _$result = _$v ??
-        new _$SortObject._(
+        _$SortObject._(
           sorted: sorted,
           unsorted: unsorted,
           empty: empty,

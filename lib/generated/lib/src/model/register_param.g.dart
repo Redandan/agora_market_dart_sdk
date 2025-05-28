@@ -17,26 +17,20 @@ class _$RegisterParam extends RegisterParam {
   final String? email;
 
   factory _$RegisterParam([void Function(RegisterParamBuilder)? updates]) =>
-      (new RegisterParamBuilder()..update(updates))._build();
+      (RegisterParamBuilder()..update(updates))._build();
 
   _$RegisterParam._(
       {required this.username,
       required this.password,
       this.confirmPassword,
       this.email})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        username, r'RegisterParam', 'username');
-    BuiltValueNullFieldError.checkNotNull(
-        password, r'RegisterParam', 'password');
-  }
-
+      : super._();
   @override
   RegisterParam rebuild(void Function(RegisterParamBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  RegisterParamBuilder toBuilder() => new RegisterParamBuilder()..replace(this);
+  RegisterParamBuilder toBuilder() => RegisterParamBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -109,7 +103,6 @@ class RegisterParamBuilder
 
   @override
   void replace(RegisterParam other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$RegisterParam;
   }
 
@@ -123,7 +116,7 @@ class RegisterParamBuilder
 
   _$RegisterParam _build() {
     final _$result = _$v ??
-        new _$RegisterParam._(
+        _$RegisterParam._(
           username: BuiltValueNullFieldError.checkNotNull(
               username, r'RegisterParam', 'username'),
           password: BuiltValueNullFieldError.checkNotNull(

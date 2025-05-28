@@ -53,7 +53,7 @@ class _$Store extends Store {
   final DateTime? updatedAt;
 
   factory _$Store([void Function(StoreBuilder)? updates]) =>
-      (new StoreBuilder()..update(updates))._build();
+      (StoreBuilder()..update(updates))._build();
 
   _$Store._(
       {this.id,
@@ -79,13 +79,12 @@ class _$Store extends Store {
       this.createdAt,
       this.updatedAt})
       : super._();
-
   @override
   Store rebuild(void Function(StoreBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  StoreBuilder toBuilder() => new StoreBuilder()..replace(this);
+  StoreBuilder toBuilder() => StoreBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -215,7 +214,7 @@ class StoreBuilder implements Builder<Store, StoreBuilder> {
       _$this._coverImageUrl = coverImageUrl;
 
   UserBuilder? _owner;
-  UserBuilder get owner => _$this._owner ??= new UserBuilder();
+  UserBuilder get owner => _$this._owner ??= UserBuilder();
   set owner(UserBuilder? owner) => _$this._owner = owner;
 
   bool? _isActive;
@@ -303,7 +302,6 @@ class StoreBuilder implements Builder<Store, StoreBuilder> {
 
   @override
   void replace(Store other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Store;
   }
 
@@ -319,7 +317,7 @@ class StoreBuilder implements Builder<Store, StoreBuilder> {
     _$Store _$result;
     try {
       _$result = _$v ??
-          new _$Store._(
+          _$Store._(
             id: id,
             name: name,
             description: description,
@@ -349,8 +347,7 @@ class StoreBuilder implements Builder<Store, StoreBuilder> {
         _$failedField = 'owner';
         _owner?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            r'Store', _$failedField, e.toString());
+        throw BuiltValueNestedFieldError(r'Store', _$failedField, e.toString());
       }
       rethrow;
     }

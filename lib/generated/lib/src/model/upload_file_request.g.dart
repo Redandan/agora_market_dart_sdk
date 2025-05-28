@@ -12,19 +12,16 @@ class _$UploadFileRequest extends UploadFileRequest {
 
   factory _$UploadFileRequest(
           [void Function(UploadFileRequestBuilder)? updates]) =>
-      (new UploadFileRequestBuilder()..update(updates))._build();
+      (UploadFileRequestBuilder()..update(updates))._build();
 
-  _$UploadFileRequest._({required this.file}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(file, r'UploadFileRequest', 'file');
-  }
-
+  _$UploadFileRequest._({required this.file}) : super._();
   @override
   UploadFileRequest rebuild(void Function(UploadFileRequestBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   UploadFileRequestBuilder toBuilder() =>
-      new UploadFileRequestBuilder()..replace(this);
+      UploadFileRequestBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -71,7 +68,6 @@ class UploadFileRequestBuilder
 
   @override
   void replace(UploadFileRequest other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UploadFileRequest;
   }
 
@@ -85,7 +81,7 @@ class UploadFileRequestBuilder
 
   _$UploadFileRequest _build() {
     final _$result = _$v ??
-        new _$UploadFileRequest._(
+        _$UploadFileRequest._(
           file: BuiltValueNullFieldError.checkNotNull(
               file, r'UploadFileRequest', 'file'),
         );

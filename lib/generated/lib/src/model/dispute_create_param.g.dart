@@ -36,7 +36,7 @@ DisputeCreateParamTypeEnum _$disputeCreateParamTypeEnumValueOf(String name) {
 }
 
 final BuiltSet<DisputeCreateParamTypeEnum> _$disputeCreateParamTypeEnumValues =
-    new BuiltSet<DisputeCreateParamTypeEnum>(const <DisputeCreateParamTypeEnum>[
+    BuiltSet<DisputeCreateParamTypeEnum>(const <DisputeCreateParamTypeEnum>[
   _$disputeCreateParamTypeEnum_PRODUCT_QUALITY,
   _$disputeCreateParamTypeEnum_DELIVERY_ISSUE,
   _$disputeCreateParamTypeEnum_REFUND_REQUEST,
@@ -45,7 +45,7 @@ final BuiltSet<DisputeCreateParamTypeEnum> _$disputeCreateParamTypeEnumValues =
 ]);
 
 Serializer<DisputeCreateParamTypeEnum> _$disputeCreateParamTypeEnumSerializer =
-    new _$DisputeCreateParamTypeEnumSerializer();
+    _$DisputeCreateParamTypeEnumSerializer();
 
 class _$DisputeCreateParamTypeEnumSerializer
     implements PrimitiveSerializer<DisputeCreateParamTypeEnum> {
@@ -92,11 +92,10 @@ class _$DisputeCreateParam extends DisputeCreateParam {
 
   factory _$DisputeCreateParam(
           [void Function(DisputeCreateParamBuilder)? updates]) =>
-      (new DisputeCreateParamBuilder()..update(updates))._build();
+      (DisputeCreateParamBuilder()..update(updates))._build();
 
   _$DisputeCreateParam._({this.orderId, this.type, this.description})
       : super._();
-
   @override
   DisputeCreateParam rebuild(
           void Function(DisputeCreateParamBuilder) updates) =>
@@ -104,7 +103,7 @@ class _$DisputeCreateParam extends DisputeCreateParam {
 
   @override
   DisputeCreateParamBuilder toBuilder() =>
-      new DisputeCreateParamBuilder()..replace(this);
+      DisputeCreateParamBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -168,7 +167,6 @@ class DisputeCreateParamBuilder
 
   @override
   void replace(DisputeCreateParam other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$DisputeCreateParam;
   }
 
@@ -182,7 +180,7 @@ class DisputeCreateParamBuilder
 
   _$DisputeCreateParam _build() {
     final _$result = _$v ??
-        new _$DisputeCreateParam._(
+        _$DisputeCreateParam._(
           orderId: orderId,
           type: type,
           description: description,

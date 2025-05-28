@@ -14,17 +14,16 @@ class _$OrderConfirmParam extends OrderConfirmParam {
 
   factory _$OrderConfirmParam(
           [void Function(OrderConfirmParamBuilder)? updates]) =>
-      (new OrderConfirmParamBuilder()..update(updates))._build();
+      (OrderConfirmParamBuilder()..update(updates))._build();
 
   _$OrderConfirmParam._({this.orderId, this.remark}) : super._();
-
   @override
   OrderConfirmParam rebuild(void Function(OrderConfirmParamBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   OrderConfirmParamBuilder toBuilder() =>
-      new OrderConfirmParamBuilder()..replace(this);
+      OrderConfirmParamBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -80,7 +79,6 @@ class OrderConfirmParamBuilder
 
   @override
   void replace(OrderConfirmParam other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$OrderConfirmParam;
   }
 
@@ -94,7 +92,7 @@ class OrderConfirmParamBuilder
 
   _$OrderConfirmParam _build() {
     final _$result = _$v ??
-        new _$OrderConfirmParam._(
+        _$OrderConfirmParam._(
           orderId: orderId,
           remark: remark,
         );

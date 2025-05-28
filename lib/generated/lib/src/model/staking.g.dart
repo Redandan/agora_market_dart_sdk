@@ -35,7 +35,7 @@ StakingStatusEnum _$stakingStatusEnumValueOf(String name) {
 }
 
 final BuiltSet<StakingStatusEnum> _$stakingStatusEnumValues =
-    new BuiltSet<StakingStatusEnum>(const <StakingStatusEnum>[
+    BuiltSet<StakingStatusEnum>(const <StakingStatusEnum>[
   _$stakingStatusEnum_APPLYING,
   _$stakingStatusEnum_STAKING,
   _$stakingStatusEnum_UNSTAKING,
@@ -44,7 +44,7 @@ final BuiltSet<StakingStatusEnum> _$stakingStatusEnumValues =
 ]);
 
 Serializer<StakingStatusEnum> _$stakingStatusEnumSerializer =
-    new _$StakingStatusEnumSerializer();
+    _$StakingStatusEnumSerializer();
 
 class _$StakingStatusEnumSerializer
     implements PrimitiveSerializer<StakingStatusEnum> {
@@ -111,7 +111,7 @@ class _$Staking extends Staking {
   final String? remark;
 
   factory _$Staking([void Function(StakingBuilder)? updates]) =>
-      (new StakingBuilder()..update(updates))._build();
+      (StakingBuilder()..update(updates))._build();
 
   _$Staking._(
       {this.id,
@@ -129,13 +129,12 @@ class _$Staking extends Staking {
       this.lastSettleReward,
       this.remark})
       : super._();
-
   @override
   Staking rebuild(void Function(StakingBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  StakingBuilder toBuilder() => new StakingBuilder()..replace(this);
+  StakingBuilder toBuilder() => StakingBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -291,7 +290,6 @@ class StakingBuilder implements Builder<Staking, StakingBuilder> {
 
   @override
   void replace(Staking other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Staking;
   }
 
@@ -305,7 +303,7 @@ class StakingBuilder implements Builder<Staking, StakingBuilder> {
 
   _$Staking _build() {
     final _$result = _$v ??
-        new _$Staking._(
+        _$Staking._(
           id: id,
           userId: userId,
           amount: amount,

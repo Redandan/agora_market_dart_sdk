@@ -17,24 +17,20 @@ class _$LoginParam extends LoginParam {
   final String? code;
 
   factory _$LoginParam([void Function(LoginParamBuilder)? updates]) =>
-      (new LoginParamBuilder()..update(updates))._build();
+      (LoginParamBuilder()..update(updates))._build();
 
   _$LoginParam._(
       {required this.username,
       required this.password,
       this.rememberMe,
       this.code})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(username, r'LoginParam', 'username');
-    BuiltValueNullFieldError.checkNotNull(password, r'LoginParam', 'password');
-  }
-
+      : super._();
   @override
   LoginParam rebuild(void Function(LoginParamBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  LoginParamBuilder toBuilder() => new LoginParamBuilder()..replace(this);
+  LoginParamBuilder toBuilder() => LoginParamBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -105,7 +101,6 @@ class LoginParamBuilder implements Builder<LoginParam, LoginParamBuilder> {
 
   @override
   void replace(LoginParam other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$LoginParam;
   }
 
@@ -119,7 +114,7 @@ class LoginParamBuilder implements Builder<LoginParam, LoginParamBuilder> {
 
   _$LoginParam _build() {
     final _$result = _$v ??
-        new _$LoginParam._(
+        _$LoginParam._(
           username: BuiltValueNullFieldError.checkNotNull(
               username, r'LoginParam', 'username'),
           password: BuiltValueNullFieldError.checkNotNull(

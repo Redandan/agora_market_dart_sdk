@@ -18,12 +18,11 @@ class _$TopDisputedProductDTO extends TopDisputedProductDTO {
 
   factory _$TopDisputedProductDTO(
           [void Function(TopDisputedProductDTOBuilder)? updates]) =>
-      (new TopDisputedProductDTOBuilder()..update(updates))._build();
+      (TopDisputedProductDTOBuilder()..update(updates))._build();
 
   _$TopDisputedProductDTO._(
       {this.productId, this.productName, this.disputeCount, this.refundAmount})
       : super._();
-
   @override
   TopDisputedProductDTO rebuild(
           void Function(TopDisputedProductDTOBuilder) updates) =>
@@ -31,7 +30,7 @@ class _$TopDisputedProductDTO extends TopDisputedProductDTO {
 
   @override
   TopDisputedProductDTOBuilder toBuilder() =>
-      new TopDisputedProductDTOBuilder()..replace(this);
+      TopDisputedProductDTOBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -103,7 +102,6 @@ class TopDisputedProductDTOBuilder
 
   @override
   void replace(TopDisputedProductDTO other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$TopDisputedProductDTO;
   }
 
@@ -117,7 +115,7 @@ class TopDisputedProductDTOBuilder
 
   _$TopDisputedProductDTO _build() {
     final _$result = _$v ??
-        new _$TopDisputedProductDTO._(
+        _$TopDisputedProductDTO._(
           productId: productId,
           productName: productName,
           disputeCount: disputeCount,

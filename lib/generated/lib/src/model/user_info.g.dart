@@ -25,7 +25,7 @@ class _$UserInfo extends UserInfo {
   final DateTime? queryTime;
 
   factory _$UserInfo([void Function(UserInfoBuilder)? updates]) =>
-      (new UserInfoBuilder()..update(updates))._build();
+      (UserInfoBuilder()..update(updates))._build();
 
   _$UserInfo._(
       {this.id,
@@ -37,13 +37,12 @@ class _$UserInfo extends UserInfo {
       this.enabled,
       this.queryTime})
       : super._();
-
   @override
   UserInfo rebuild(void Function(UserInfoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  UserInfoBuilder toBuilder() => new UserInfoBuilder()..replace(this);
+  UserInfoBuilder toBuilder() => UserInfoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -147,7 +146,6 @@ class UserInfoBuilder implements Builder<UserInfo, UserInfoBuilder> {
 
   @override
   void replace(UserInfo other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UserInfo;
   }
 
@@ -161,7 +159,7 @@ class UserInfoBuilder implements Builder<UserInfo, UserInfoBuilder> {
 
   _$UserInfo _build() {
     final _$result = _$v ??
-        new _$UserInfo._(
+        _$UserInfo._(
           id: id,
           username: username,
           email: email,

@@ -36,7 +36,7 @@ DisputeQueryResultTypeEnum _$disputeQueryResultTypeEnumValueOf(String name) {
 }
 
 final BuiltSet<DisputeQueryResultTypeEnum> _$disputeQueryResultTypeEnumValues =
-    new BuiltSet<DisputeQueryResultTypeEnum>(const <DisputeQueryResultTypeEnum>[
+    BuiltSet<DisputeQueryResultTypeEnum>(const <DisputeQueryResultTypeEnum>[
   _$disputeQueryResultTypeEnum_PRODUCT_QUALITY,
   _$disputeQueryResultTypeEnum_DELIVERY_ISSUE,
   _$disputeQueryResultTypeEnum_REFUND_REQUEST,
@@ -77,8 +77,8 @@ DisputeQueryResultStatusEnum _$disputeQueryResultStatusEnumValueOf(
 }
 
 final BuiltSet<DisputeQueryResultStatusEnum>
-    _$disputeQueryResultStatusEnumValues = new BuiltSet<
-        DisputeQueryResultStatusEnum>(const <DisputeQueryResultStatusEnum>[
+    _$disputeQueryResultStatusEnumValues =
+    BuiltSet<DisputeQueryResultStatusEnum>(const <DisputeQueryResultStatusEnum>[
   _$disputeQueryResultStatusEnum_PENDING,
   _$disputeQueryResultStatusEnum_RESOLVED_REFUND,
   _$disputeQueryResultStatusEnum_RESOLVED_COMPLETED,
@@ -87,10 +87,10 @@ final BuiltSet<DisputeQueryResultStatusEnum>
 ]);
 
 Serializer<DisputeQueryResultTypeEnum> _$disputeQueryResultTypeEnumSerializer =
-    new _$DisputeQueryResultTypeEnumSerializer();
+    _$DisputeQueryResultTypeEnumSerializer();
 Serializer<DisputeQueryResultStatusEnum>
     _$disputeQueryResultStatusEnumSerializer =
-    new _$DisputeQueryResultStatusEnumSerializer();
+    _$DisputeQueryResultStatusEnumSerializer();
 
 class _$DisputeQueryResultTypeEnumSerializer
     implements PrimitiveSerializer<DisputeQueryResultTypeEnum> {
@@ -190,7 +190,7 @@ class _$DisputeQueryResult extends DisputeQueryResult {
 
   factory _$DisputeQueryResult(
           [void Function(DisputeQueryResultBuilder)? updates]) =>
-      (new DisputeQueryResultBuilder()..update(updates))._build();
+      (DisputeQueryResultBuilder()..update(updates))._build();
 
   _$DisputeQueryResult._(
       {this.dispute,
@@ -206,7 +206,6 @@ class _$DisputeQueryResult extends DisputeQueryResult {
       this.createdAt,
       this.resolvedAt})
       : super._();
-
   @override
   DisputeQueryResult rebuild(
           void Function(DisputeQueryResultBuilder) updates) =>
@@ -214,7 +213,7 @@ class _$DisputeQueryResult extends DisputeQueryResult {
 
   @override
   DisputeQueryResultBuilder toBuilder() =>
-      new DisputeQueryResultBuilder()..replace(this);
+      DisputeQueryResultBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -277,11 +276,11 @@ class DisputeQueryResultBuilder
   _$DisputeQueryResult? _$v;
 
   DisputeBuilder? _dispute;
-  DisputeBuilder get dispute => _$this._dispute ??= new DisputeBuilder();
+  DisputeBuilder get dispute => _$this._dispute ??= DisputeBuilder();
   set dispute(DisputeBuilder? dispute) => _$this._dispute = dispute;
 
   OrderBuilder? _order;
-  OrderBuilder get order => _$this._order ??= new OrderBuilder();
+  OrderBuilder get order => _$this._order ??= OrderBuilder();
   set order(OrderBuilder? order) => _$this._order = order;
 
   int? _buyerId;
@@ -350,7 +349,6 @@ class DisputeQueryResultBuilder
 
   @override
   void replace(DisputeQueryResult other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$DisputeQueryResult;
   }
 
@@ -366,7 +364,7 @@ class DisputeQueryResultBuilder
     _$DisputeQueryResult _$result;
     try {
       _$result = _$v ??
-          new _$DisputeQueryResult._(
+          _$DisputeQueryResult._(
             dispute: _dispute?.build(),
             order: _order?.build(),
             buyerId: buyerId,
@@ -388,7 +386,7 @@ class DisputeQueryResultBuilder
         _$failedField = 'order';
         _order?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'DisputeQueryResult', _$failedField, e.toString());
       }
       rethrow;

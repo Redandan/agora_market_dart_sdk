@@ -8,17 +8,17 @@ part of 'page_cold_wallet.dart';
 
 class _$PageColdWallet extends PageColdWallet {
   @override
-  final int? totalElements;
-  @override
   final int? totalPages;
   @override
-  final PageableObject? pageable;
-  @override
-  final int? numberOfElements;
+  final int? totalElements;
   @override
   final bool? first;
   @override
   final bool? last;
+  @override
+  final PageableObject? pageable;
+  @override
+  final int? numberOfElements;
   @override
   final int? size;
   @override
@@ -31,40 +31,38 @@ class _$PageColdWallet extends PageColdWallet {
   final bool? empty;
 
   factory _$PageColdWallet([void Function(PageColdWalletBuilder)? updates]) =>
-      (new PageColdWalletBuilder()..update(updates))._build();
+      (PageColdWalletBuilder()..update(updates))._build();
 
   _$PageColdWallet._(
-      {this.totalElements,
-      this.totalPages,
-      this.pageable,
-      this.numberOfElements,
+      {this.totalPages,
+      this.totalElements,
       this.first,
       this.last,
+      this.pageable,
+      this.numberOfElements,
       this.size,
       this.content,
       this.number,
       this.sort,
       this.empty})
       : super._();
-
   @override
   PageColdWallet rebuild(void Function(PageColdWalletBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  PageColdWalletBuilder toBuilder() =>
-      new PageColdWalletBuilder()..replace(this);
+  PageColdWalletBuilder toBuilder() => PageColdWalletBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is PageColdWallet &&
-        totalElements == other.totalElements &&
         totalPages == other.totalPages &&
-        pageable == other.pageable &&
-        numberOfElements == other.numberOfElements &&
+        totalElements == other.totalElements &&
         first == other.first &&
         last == other.last &&
+        pageable == other.pageable &&
+        numberOfElements == other.numberOfElements &&
         size == other.size &&
         content == other.content &&
         number == other.number &&
@@ -75,12 +73,12 @@ class _$PageColdWallet extends PageColdWallet {
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, totalElements.hashCode);
     _$hash = $jc(_$hash, totalPages.hashCode);
-    _$hash = $jc(_$hash, pageable.hashCode);
-    _$hash = $jc(_$hash, numberOfElements.hashCode);
+    _$hash = $jc(_$hash, totalElements.hashCode);
     _$hash = $jc(_$hash, first.hashCode);
     _$hash = $jc(_$hash, last.hashCode);
+    _$hash = $jc(_$hash, pageable.hashCode);
+    _$hash = $jc(_$hash, numberOfElements.hashCode);
     _$hash = $jc(_$hash, size.hashCode);
     _$hash = $jc(_$hash, content.hashCode);
     _$hash = $jc(_$hash, number.hashCode);
@@ -93,12 +91,12 @@ class _$PageColdWallet extends PageColdWallet {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'PageColdWallet')
-          ..add('totalElements', totalElements)
           ..add('totalPages', totalPages)
-          ..add('pageable', pageable)
-          ..add('numberOfElements', numberOfElements)
+          ..add('totalElements', totalElements)
           ..add('first', first)
           ..add('last', last)
+          ..add('pageable', pageable)
+          ..add('numberOfElements', numberOfElements)
           ..add('size', size)
           ..add('content', content)
           ..add('number', number)
@@ -112,24 +110,14 @@ class PageColdWalletBuilder
     implements Builder<PageColdWallet, PageColdWalletBuilder> {
   _$PageColdWallet? _$v;
 
-  int? _totalElements;
-  int? get totalElements => _$this._totalElements;
-  set totalElements(int? totalElements) =>
-      _$this._totalElements = totalElements;
-
   int? _totalPages;
   int? get totalPages => _$this._totalPages;
   set totalPages(int? totalPages) => _$this._totalPages = totalPages;
 
-  PageableObjectBuilder? _pageable;
-  PageableObjectBuilder get pageable =>
-      _$this._pageable ??= new PageableObjectBuilder();
-  set pageable(PageableObjectBuilder? pageable) => _$this._pageable = pageable;
-
-  int? _numberOfElements;
-  int? get numberOfElements => _$this._numberOfElements;
-  set numberOfElements(int? numberOfElements) =>
-      _$this._numberOfElements = numberOfElements;
+  int? _totalElements;
+  int? get totalElements => _$this._totalElements;
+  set totalElements(int? totalElements) =>
+      _$this._totalElements = totalElements;
 
   bool? _first;
   bool? get first => _$this._first;
@@ -139,13 +127,23 @@ class PageColdWalletBuilder
   bool? get last => _$this._last;
   set last(bool? last) => _$this._last = last;
 
+  PageableObjectBuilder? _pageable;
+  PageableObjectBuilder get pageable =>
+      _$this._pageable ??= PageableObjectBuilder();
+  set pageable(PageableObjectBuilder? pageable) => _$this._pageable = pageable;
+
+  int? _numberOfElements;
+  int? get numberOfElements => _$this._numberOfElements;
+  set numberOfElements(int? numberOfElements) =>
+      _$this._numberOfElements = numberOfElements;
+
   int? _size;
   int? get size => _$this._size;
   set size(int? size) => _$this._size = size;
 
   ListBuilder<ColdWallet>? _content;
   ListBuilder<ColdWallet> get content =>
-      _$this._content ??= new ListBuilder<ColdWallet>();
+      _$this._content ??= ListBuilder<ColdWallet>();
   set content(ListBuilder<ColdWallet>? content) => _$this._content = content;
 
   int? _number;
@@ -153,7 +151,7 @@ class PageColdWalletBuilder
   set number(int? number) => _$this._number = number;
 
   SortObjectBuilder? _sort;
-  SortObjectBuilder get sort => _$this._sort ??= new SortObjectBuilder();
+  SortObjectBuilder get sort => _$this._sort ??= SortObjectBuilder();
   set sort(SortObjectBuilder? sort) => _$this._sort = sort;
 
   bool? _empty;
@@ -167,12 +165,12 @@ class PageColdWalletBuilder
   PageColdWalletBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _totalElements = $v.totalElements;
       _totalPages = $v.totalPages;
-      _pageable = $v.pageable?.toBuilder();
-      _numberOfElements = $v.numberOfElements;
+      _totalElements = $v.totalElements;
       _first = $v.first;
       _last = $v.last;
+      _pageable = $v.pageable?.toBuilder();
+      _numberOfElements = $v.numberOfElements;
       _size = $v.size;
       _content = $v.content?.toBuilder();
       _number = $v.number;
@@ -185,7 +183,6 @@ class PageColdWalletBuilder
 
   @override
   void replace(PageColdWallet other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PageColdWallet;
   }
 
@@ -201,13 +198,13 @@ class PageColdWalletBuilder
     _$PageColdWallet _$result;
     try {
       _$result = _$v ??
-          new _$PageColdWallet._(
-            totalElements: totalElements,
+          _$PageColdWallet._(
             totalPages: totalPages,
-            pageable: _pageable?.build(),
-            numberOfElements: numberOfElements,
+            totalElements: totalElements,
             first: first,
             last: last,
+            pageable: _pageable?.build(),
+            numberOfElements: numberOfElements,
             size: size,
             content: _content?.build(),
             number: number,
@@ -226,7 +223,7 @@ class PageColdWalletBuilder
         _$failedField = 'sort';
         _sort?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'PageColdWallet', _$failedField, e.toString());
       }
       rethrow;

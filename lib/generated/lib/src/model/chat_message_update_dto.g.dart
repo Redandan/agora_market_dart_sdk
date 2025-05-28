@@ -12,13 +12,9 @@ class _$ChatMessageUpdateDTO extends ChatMessageUpdateDTO {
 
   factory _$ChatMessageUpdateDTO(
           [void Function(ChatMessageUpdateDTOBuilder)? updates]) =>
-      (new ChatMessageUpdateDTOBuilder()..update(updates))._build();
+      (ChatMessageUpdateDTOBuilder()..update(updates))._build();
 
-  _$ChatMessageUpdateDTO._({required this.content}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        content, r'ChatMessageUpdateDTO', 'content');
-  }
-
+  _$ChatMessageUpdateDTO._({required this.content}) : super._();
   @override
   ChatMessageUpdateDTO rebuild(
           void Function(ChatMessageUpdateDTOBuilder) updates) =>
@@ -26,7 +22,7 @@ class _$ChatMessageUpdateDTO extends ChatMessageUpdateDTO {
 
   @override
   ChatMessageUpdateDTOBuilder toBuilder() =>
-      new ChatMessageUpdateDTOBuilder()..replace(this);
+      ChatMessageUpdateDTOBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -73,7 +69,6 @@ class ChatMessageUpdateDTOBuilder
 
   @override
   void replace(ChatMessageUpdateDTO other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ChatMessageUpdateDTO;
   }
 
@@ -87,7 +82,7 @@ class ChatMessageUpdateDTOBuilder
 
   _$ChatMessageUpdateDTO _build() {
     final _$result = _$v ??
-        new _$ChatMessageUpdateDTO._(
+        _$ChatMessageUpdateDTO._(
           content: BuiltValueNullFieldError.checkNotNull(
               content, r'ChatMessageUpdateDTO', 'content'),
         );

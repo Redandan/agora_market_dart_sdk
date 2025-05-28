@@ -17,19 +17,17 @@ class _$OrderShipParam extends OrderShipParam {
   final String? remark;
 
   factory _$OrderShipParam([void Function(OrderShipParamBuilder)? updates]) =>
-      (new OrderShipParamBuilder()..update(updates))._build();
+      (OrderShipParamBuilder()..update(updates))._build();
 
   _$OrderShipParam._(
       {this.orderId, this.shippingCompany, this.trackingNumber, this.remark})
       : super._();
-
   @override
   OrderShipParam rebuild(void Function(OrderShipParamBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  OrderShipParamBuilder toBuilder() =>
-      new OrderShipParamBuilder()..replace(this);
+  OrderShipParamBuilder toBuilder() => OrderShipParamBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -103,7 +101,6 @@ class OrderShipParamBuilder
 
   @override
   void replace(OrderShipParam other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$OrderShipParam;
   }
 
@@ -117,7 +114,7 @@ class OrderShipParamBuilder
 
   _$OrderShipParam _build() {
     final _$result = _$v ??
-        new _$OrderShipParam._(
+        _$OrderShipParam._(
           orderId: orderId,
           shippingCompany: shippingCompany,
           trackingNumber: trackingNumber,

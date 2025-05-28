@@ -54,7 +54,7 @@ ProductCreateParamCategoryEnum _$productCreateParamCategoryEnumValueOf(
 }
 
 final BuiltSet<ProductCreateParamCategoryEnum>
-    _$productCreateParamCategoryEnumValues = new BuiltSet<
+    _$productCreateParamCategoryEnumValues = BuiltSet<
         ProductCreateParamCategoryEnum>(const <ProductCreateParamCategoryEnum>[
   _$productCreateParamCategoryEnum_ELECTRONICS,
   _$productCreateParamCategoryEnum_FOOD,
@@ -69,7 +69,7 @@ final BuiltSet<ProductCreateParamCategoryEnum>
 
 Serializer<ProductCreateParamCategoryEnum>
     _$productCreateParamCategoryEnumSerializer =
-    new _$ProductCreateParamCategoryEnumSerializer();
+    _$ProductCreateParamCategoryEnumSerializer();
 
 class _$ProductCreateParamCategoryEnumSerializer
     implements PrimitiveSerializer<ProductCreateParamCategoryEnum> {
@@ -141,7 +141,7 @@ class _$ProductCreateParam extends ProductCreateParam {
 
   factory _$ProductCreateParam(
           [void Function(ProductCreateParamBuilder)? updates]) =>
-      (new ProductCreateParamBuilder()..update(updates))._build();
+      (ProductCreateParamBuilder()..update(updates))._build();
 
   _$ProductCreateParam._(
       {required this.title,
@@ -155,23 +155,7 @@ class _$ProductCreateParam extends ProductCreateParam {
       this.pickupTimeStartString,
       this.pickupTimeEndString,
       this.pickupAddress})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        title, r'ProductCreateParam', 'title');
-    BuiltValueNullFieldError.checkNotNull(
-        price, r'ProductCreateParam', 'price');
-    BuiltValueNullFieldError.checkNotNull(
-        stock, r'ProductCreateParam', 'stock');
-    BuiltValueNullFieldError.checkNotNull(
-        description, r'ProductCreateParam', 'description');
-    BuiltValueNullFieldError.checkNotNull(
-        category, r'ProductCreateParam', 'category');
-    BuiltValueNullFieldError.checkNotNull(
-        longitude, r'ProductCreateParam', 'longitude');
-    BuiltValueNullFieldError.checkNotNull(
-        latitude, r'ProductCreateParam', 'latitude');
-  }
-
+      : super._();
   @override
   ProductCreateParam rebuild(
           void Function(ProductCreateParamBuilder) updates) =>
@@ -179,7 +163,7 @@ class _$ProductCreateParam extends ProductCreateParam {
 
   @override
   ProductCreateParamBuilder toBuilder() =>
-      new ProductCreateParamBuilder()..replace(this);
+      ProductCreateParamBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -261,7 +245,7 @@ class ProductCreateParamBuilder
 
   SetBuilder<String>? _imageUrls;
   SetBuilder<String> get imageUrls =>
-      _$this._imageUrls ??= new SetBuilder<String>();
+      _$this._imageUrls ??= SetBuilder<String>();
   set imageUrls(SetBuilder<String>? imageUrls) => _$this._imageUrls = imageUrls;
 
   double? _longitude;
@@ -274,13 +258,13 @@ class ProductCreateParamBuilder
 
   LocalTimeBuilder? _pickupTimeStartString;
   LocalTimeBuilder get pickupTimeStartString =>
-      _$this._pickupTimeStartString ??= new LocalTimeBuilder();
+      _$this._pickupTimeStartString ??= LocalTimeBuilder();
   set pickupTimeStartString(LocalTimeBuilder? pickupTimeStartString) =>
       _$this._pickupTimeStartString = pickupTimeStartString;
 
   LocalTimeBuilder? _pickupTimeEndString;
   LocalTimeBuilder get pickupTimeEndString =>
-      _$this._pickupTimeEndString ??= new LocalTimeBuilder();
+      _$this._pickupTimeEndString ??= LocalTimeBuilder();
   set pickupTimeEndString(LocalTimeBuilder? pickupTimeEndString) =>
       _$this._pickupTimeEndString = pickupTimeEndString;
 
@@ -314,7 +298,6 @@ class ProductCreateParamBuilder
 
   @override
   void replace(ProductCreateParam other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ProductCreateParam;
   }
 
@@ -330,7 +313,7 @@ class ProductCreateParamBuilder
     _$ProductCreateParam _$result;
     try {
       _$result = _$v ??
-          new _$ProductCreateParam._(
+          _$ProductCreateParam._(
             title: BuiltValueNullFieldError.checkNotNull(
                 title, r'ProductCreateParam', 'title'),
             price: BuiltValueNullFieldError.checkNotNull(
@@ -361,7 +344,7 @@ class ProductCreateParamBuilder
         _$failedField = 'pickupTimeEndString';
         _pickupTimeEndString?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ProductCreateParam', _$failedField, e.toString());
       }
       rethrow;

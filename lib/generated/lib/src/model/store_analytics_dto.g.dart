@@ -16,19 +16,18 @@ class _$StoreAnalyticsDTO extends StoreAnalyticsDTO {
 
   factory _$StoreAnalyticsDTO(
           [void Function(StoreAnalyticsDTOBuilder)? updates]) =>
-      (new StoreAnalyticsDTOBuilder()..update(updates))._build();
+      (StoreAnalyticsDTOBuilder()..update(updates))._build();
 
   _$StoreAnalyticsDTO._(
       {this.salesStats, this.productStats, this.customerStats})
       : super._();
-
   @override
   StoreAnalyticsDTO rebuild(void Function(StoreAnalyticsDTOBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   StoreAnalyticsDTOBuilder toBuilder() =>
-      new StoreAnalyticsDTOBuilder()..replace(this);
+      StoreAnalyticsDTOBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -65,19 +64,19 @@ class StoreAnalyticsDTOBuilder
 
   SalesStatsBuilder? _salesStats;
   SalesStatsBuilder get salesStats =>
-      _$this._salesStats ??= new SalesStatsBuilder();
+      _$this._salesStats ??= SalesStatsBuilder();
   set salesStats(SalesStatsBuilder? salesStats) =>
       _$this._salesStats = salesStats;
 
   ProductStatsBuilder? _productStats;
   ProductStatsBuilder get productStats =>
-      _$this._productStats ??= new ProductStatsBuilder();
+      _$this._productStats ??= ProductStatsBuilder();
   set productStats(ProductStatsBuilder? productStats) =>
       _$this._productStats = productStats;
 
   CustomerStatsBuilder? _customerStats;
   CustomerStatsBuilder get customerStats =>
-      _$this._customerStats ??= new CustomerStatsBuilder();
+      _$this._customerStats ??= CustomerStatsBuilder();
   set customerStats(CustomerStatsBuilder? customerStats) =>
       _$this._customerStats = customerStats;
 
@@ -98,7 +97,6 @@ class StoreAnalyticsDTOBuilder
 
   @override
   void replace(StoreAnalyticsDTO other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$StoreAnalyticsDTO;
   }
 
@@ -114,7 +112,7 @@ class StoreAnalyticsDTOBuilder
     _$StoreAnalyticsDTO _$result;
     try {
       _$result = _$v ??
-          new _$StoreAnalyticsDTO._(
+          _$StoreAnalyticsDTO._(
             salesStats: _salesStats?.build(),
             productStats: _productStats?.build(),
             customerStats: _customerStats?.build(),
@@ -129,7 +127,7 @@ class StoreAnalyticsDTOBuilder
         _$failedField = 'customerStats';
         _customerStats?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'StoreAnalyticsDTO', _$failedField, e.toString());
       }
       rethrow;

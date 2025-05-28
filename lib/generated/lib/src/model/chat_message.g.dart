@@ -25,7 +25,7 @@ class _$ChatMessage extends ChatMessage {
   final DateTime? deletedAt;
 
   factory _$ChatMessage([void Function(ChatMessageBuilder)? updates]) =>
-      (new ChatMessageBuilder()..update(updates))._build();
+      (ChatMessageBuilder()..update(updates))._build();
 
   _$ChatMessage._(
       {this.id,
@@ -37,13 +37,12 @@ class _$ChatMessage extends ChatMessage {
       this.updatedAt,
       this.deletedAt})
       : super._();
-
   @override
   ChatMessage rebuild(void Function(ChatMessageBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ChatMessageBuilder toBuilder() => new ChatMessageBuilder()..replace(this);
+  ChatMessageBuilder toBuilder() => ChatMessageBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -146,7 +145,6 @@ class ChatMessageBuilder implements Builder<ChatMessage, ChatMessageBuilder> {
 
   @override
   void replace(ChatMessage other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ChatMessage;
   }
 
@@ -160,7 +158,7 @@ class ChatMessageBuilder implements Builder<ChatMessage, ChatMessageBuilder> {
 
   _$ChatMessage _build() {
     final _$result = _$v ??
-        new _$ChatMessage._(
+        _$ChatMessage._(
           id: id,
           senderId: senderId,
           receiverId: receiverId,

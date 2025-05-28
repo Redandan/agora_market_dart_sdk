@@ -21,7 +21,7 @@ class _$PageableObject extends PageableObject {
   final SortObject? sort;
 
   factory _$PageableObject([void Function(PageableObjectBuilder)? updates]) =>
-      (new PageableObjectBuilder()..update(updates))._build();
+      (PageableObjectBuilder()..update(updates))._build();
 
   _$PageableObject._(
       {this.pageNumber,
@@ -31,14 +31,12 @@ class _$PageableObject extends PageableObject {
       this.offset,
       this.sort})
       : super._();
-
   @override
   PageableObject rebuild(void Function(PageableObjectBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  PageableObjectBuilder toBuilder() =>
-      new PageableObjectBuilder()..replace(this);
+  PageableObjectBuilder toBuilder() => PageableObjectBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -103,7 +101,7 @@ class PageableObjectBuilder
   set offset(int? offset) => _$this._offset = offset;
 
   SortObjectBuilder? _sort;
-  SortObjectBuilder get sort => _$this._sort ??= new SortObjectBuilder();
+  SortObjectBuilder get sort => _$this._sort ??= SortObjectBuilder();
   set sort(SortObjectBuilder? sort) => _$this._sort = sort;
 
   PageableObjectBuilder() {
@@ -126,7 +124,6 @@ class PageableObjectBuilder
 
   @override
   void replace(PageableObject other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PageableObject;
   }
 
@@ -142,7 +139,7 @@ class PageableObjectBuilder
     _$PageableObject _$result;
     try {
       _$result = _$v ??
-          new _$PageableObject._(
+          _$PageableObject._(
             pageNumber: pageNumber,
             pageSize: pageSize,
             paged: paged,
@@ -156,7 +153,7 @@ class PageableObjectBuilder
         _$failedField = 'sort';
         _sort?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'PageableObject', _$failedField, e.toString());
       }
       rethrow;

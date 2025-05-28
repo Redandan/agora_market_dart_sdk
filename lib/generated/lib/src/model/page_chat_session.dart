@@ -4,41 +4,35 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
+import 'package:agora_market_dart_sdk/src/model/chat_session.dart';
 import 'package:agora_market_dart_sdk/src/model/sort_object.dart';
 import 'package:agora_market_dart_sdk/src/model/pageable_object.dart';
-import 'package:agora_market_dart_sdk/src/model/chat_message.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'page_chat_message.g.dart';
+part 'page_chat_session.g.dart';
 
-/// PageChatMessage
+/// PageChatSession
 ///
 /// Properties:
-/// * [totalElements] 
 /// * [totalPages] 
-/// * [pageable] 
-/// * [numberOfElements] 
+/// * [totalElements] 
 /// * [first] 
 /// * [last] 
+/// * [pageable] 
+/// * [numberOfElements] 
 /// * [size] 
 /// * [content] 
 /// * [number] 
 /// * [sort] 
 /// * [empty] 
 @BuiltValue()
-abstract class PageChatMessage implements Built<PageChatMessage, PageChatMessageBuilder> {
-  @BuiltValueField(wireName: r'totalElements')
-  int? get totalElements;
-
+abstract class PageChatSession implements Built<PageChatSession, PageChatSessionBuilder> {
   @BuiltValueField(wireName: r'totalPages')
   int? get totalPages;
 
-  @BuiltValueField(wireName: r'pageable')
-  PageableObject? get pageable;
-
-  @BuiltValueField(wireName: r'numberOfElements')
-  int? get numberOfElements;
+  @BuiltValueField(wireName: r'totalElements')
+  int? get totalElements;
 
   @BuiltValueField(wireName: r'first')
   bool? get first;
@@ -46,11 +40,17 @@ abstract class PageChatMessage implements Built<PageChatMessage, PageChatMessage
   @BuiltValueField(wireName: r'last')
   bool? get last;
 
+  @BuiltValueField(wireName: r'pageable')
+  PageableObject? get pageable;
+
+  @BuiltValueField(wireName: r'numberOfElements')
+  int? get numberOfElements;
+
   @BuiltValueField(wireName: r'size')
   int? get size;
 
   @BuiltValueField(wireName: r'content')
-  BuiltList<ChatMessage>? get content;
+  BuiltList<ChatSession>? get content;
 
   @BuiltValueField(wireName: r'number')
   int? get number;
@@ -61,36 +61,29 @@ abstract class PageChatMessage implements Built<PageChatMessage, PageChatMessage
   @BuiltValueField(wireName: r'empty')
   bool? get empty;
 
-  PageChatMessage._();
+  PageChatSession._();
 
-  factory PageChatMessage([void updates(PageChatMessageBuilder b)]) = _$PageChatMessage;
+  factory PageChatSession([void updates(PageChatSessionBuilder b)]) = _$PageChatSession;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(PageChatMessageBuilder b) => b;
+  static void _defaults(PageChatSessionBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PageChatMessage> get serializer => _$PageChatMessageSerializer();
+  static Serializer<PageChatSession> get serializer => _$PageChatSessionSerializer();
 }
 
-class _$PageChatMessageSerializer implements PrimitiveSerializer<PageChatMessage> {
+class _$PageChatSessionSerializer implements PrimitiveSerializer<PageChatSession> {
   @override
-  final Iterable<Type> types = const [PageChatMessage, _$PageChatMessage];
+  final Iterable<Type> types = const [PageChatSession, _$PageChatSession];
 
   @override
-  final String wireName = r'PageChatMessage';
+  final String wireName = r'PageChatSession';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    PageChatMessage object, {
+    PageChatSession object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.totalElements != null) {
-      yield r'totalElements';
-      yield serializers.serialize(
-        object.totalElements,
-        specifiedType: const FullType(int),
-      );
-    }
     if (object.totalPages != null) {
       yield r'totalPages';
       yield serializers.serialize(
@@ -98,17 +91,10 @@ class _$PageChatMessageSerializer implements PrimitiveSerializer<PageChatMessage
         specifiedType: const FullType(int),
       );
     }
-    if (object.pageable != null) {
-      yield r'pageable';
+    if (object.totalElements != null) {
+      yield r'totalElements';
       yield serializers.serialize(
-        object.pageable,
-        specifiedType: const FullType(PageableObject),
-      );
-    }
-    if (object.numberOfElements != null) {
-      yield r'numberOfElements';
-      yield serializers.serialize(
-        object.numberOfElements,
+        object.totalElements,
         specifiedType: const FullType(int),
       );
     }
@@ -126,6 +112,20 @@ class _$PageChatMessageSerializer implements PrimitiveSerializer<PageChatMessage
         specifiedType: const FullType(bool),
       );
     }
+    if (object.pageable != null) {
+      yield r'pageable';
+      yield serializers.serialize(
+        object.pageable,
+        specifiedType: const FullType(PageableObject),
+      );
+    }
+    if (object.numberOfElements != null) {
+      yield r'numberOfElements';
+      yield serializers.serialize(
+        object.numberOfElements,
+        specifiedType: const FullType(int),
+      );
+    }
     if (object.size != null) {
       yield r'size';
       yield serializers.serialize(
@@ -137,7 +137,7 @@ class _$PageChatMessageSerializer implements PrimitiveSerializer<PageChatMessage
       yield r'content';
       yield serializers.serialize(
         object.content,
-        specifiedType: const FullType(BuiltList, [FullType(ChatMessage)]),
+        specifiedType: const FullType(BuiltList, [FullType(ChatSession)]),
       );
     }
     if (object.number != null) {
@@ -166,7 +166,7 @@ class _$PageChatMessageSerializer implements PrimitiveSerializer<PageChatMessage
   @override
   Object serialize(
     Serializers serializers,
-    PageChatMessage object, {
+    PageChatSession object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -177,20 +177,13 @@ class _$PageChatMessageSerializer implements PrimitiveSerializer<PageChatMessage
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required PageChatMessageBuilder result,
+    required PageChatSessionBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'totalElements':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.totalElements = valueDes;
-          break;
         case r'totalPages':
           final valueDes = serializers.deserialize(
             value,
@@ -198,19 +191,12 @@ class _$PageChatMessageSerializer implements PrimitiveSerializer<PageChatMessage
           ) as int;
           result.totalPages = valueDes;
           break;
-        case r'pageable':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(PageableObject),
-          ) as PageableObject;
-          result.pageable.replace(valueDes);
-          break;
-        case r'numberOfElements':
+        case r'totalElements':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(int),
           ) as int;
-          result.numberOfElements = valueDes;
+          result.totalElements = valueDes;
           break;
         case r'first':
           final valueDes = serializers.deserialize(
@@ -226,6 +212,20 @@ class _$PageChatMessageSerializer implements PrimitiveSerializer<PageChatMessage
           ) as bool;
           result.last = valueDes;
           break;
+        case r'pageable':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(PageableObject),
+          ) as PageableObject;
+          result.pageable.replace(valueDes);
+          break;
+        case r'numberOfElements':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.numberOfElements = valueDes;
+          break;
         case r'size':
           final valueDes = serializers.deserialize(
             value,
@@ -236,8 +236,8 @@ class _$PageChatMessageSerializer implements PrimitiveSerializer<PageChatMessage
         case r'content':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ChatMessage)]),
-          ) as BuiltList<ChatMessage>;
+            specifiedType: const FullType(BuiltList, [FullType(ChatSession)]),
+          ) as BuiltList<ChatSession>;
           result.content.replace(valueDes);
           break;
         case r'number':
@@ -270,12 +270,12 @@ class _$PageChatMessageSerializer implements PrimitiveSerializer<PageChatMessage
   }
 
   @override
-  PageChatMessage deserialize(
+  PageChatSession deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = PageChatMessageBuilder();
+    final result = PageChatSessionBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

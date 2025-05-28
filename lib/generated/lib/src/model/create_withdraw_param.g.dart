@@ -25,7 +25,7 @@ CreateWithdrawParamProtocolEnum _$createWithdrawParamProtocolEnumValueOf(
 }
 
 final BuiltSet<CreateWithdrawParamProtocolEnum>
-    _$createWithdrawParamProtocolEnumValues = new BuiltSet<
+    _$createWithdrawParamProtocolEnumValues = BuiltSet<
         CreateWithdrawParamProtocolEnum>(const <CreateWithdrawParamProtocolEnum>[
   _$createWithdrawParamProtocolEnum_TRON,
   _$createWithdrawParamProtocolEnum_unknownDefaultOpenApi,
@@ -33,7 +33,7 @@ final BuiltSet<CreateWithdrawParamProtocolEnum>
 
 Serializer<CreateWithdrawParamProtocolEnum>
     _$createWithdrawParamProtocolEnumSerializer =
-    new _$CreateWithdrawParamProtocolEnumSerializer();
+    _$CreateWithdrawParamProtocolEnumSerializer();
 
 class _$CreateWithdrawParamProtocolEnumSerializer
     implements PrimitiveSerializer<CreateWithdrawParamProtocolEnum> {
@@ -79,12 +79,11 @@ class _$CreateWithdrawParam extends CreateWithdrawParam {
 
   factory _$CreateWithdrawParam(
           [void Function(CreateWithdrawParamBuilder)? updates]) =>
-      (new CreateWithdrawParamBuilder()..update(updates))._build();
+      (CreateWithdrawParamBuilder()..update(updates))._build();
 
   _$CreateWithdrawParam._(
       {this.userId, this.amount, this.currency, this.protocol, this.toAddress})
       : super._();
-
   @override
   CreateWithdrawParam rebuild(
           void Function(CreateWithdrawParamBuilder) updates) =>
@@ -92,7 +91,7 @@ class _$CreateWithdrawParam extends CreateWithdrawParam {
 
   @override
   CreateWithdrawParamBuilder toBuilder() =>
-      new CreateWithdrawParamBuilder()..replace(this);
+      CreateWithdrawParamBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -173,7 +172,6 @@ class CreateWithdrawParamBuilder
 
   @override
   void replace(CreateWithdrawParam other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateWithdrawParam;
   }
 
@@ -187,7 +185,7 @@ class CreateWithdrawParamBuilder
 
   _$CreateWithdrawParam _build() {
     final _$result = _$v ??
-        new _$CreateWithdrawParam._(
+        _$CreateWithdrawParam._(
           userId: userId,
           amount: amount,
           currency: currency,

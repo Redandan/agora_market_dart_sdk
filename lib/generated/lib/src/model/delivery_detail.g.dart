@@ -34,7 +34,7 @@ DeliveryDetailDeliveryTypeEnum _$deliveryDetailDeliveryTypeEnumValueOf(
 }
 
 final BuiltSet<DeliveryDetailDeliveryTypeEnum>
-    _$deliveryDetailDeliveryTypeEnumValues = new BuiltSet<
+    _$deliveryDetailDeliveryTypeEnumValues = BuiltSet<
         DeliveryDetailDeliveryTypeEnum>(const <DeliveryDetailDeliveryTypeEnum>[
   _$deliveryDetailDeliveryTypeEnum_DELIVERY,
   _$deliveryDetailDeliveryTypeEnum_LOGISTICS,
@@ -76,7 +76,7 @@ DeliveryDetailStatusEnum _$deliveryDetailStatusEnumValueOf(String name) {
 }
 
 final BuiltSet<DeliveryDetailStatusEnum> _$deliveryDetailStatusEnumValues =
-    new BuiltSet<DeliveryDetailStatusEnum>(const <DeliveryDetailStatusEnum>[
+    BuiltSet<DeliveryDetailStatusEnum>(const <DeliveryDetailStatusEnum>[
   _$deliveryDetailStatusEnum_PENDING,
   _$deliveryDetailStatusEnum_PICKING_UP,
   _$deliveryDetailStatusEnum_DELIVERING,
@@ -87,9 +87,9 @@ final BuiltSet<DeliveryDetailStatusEnum> _$deliveryDetailStatusEnumValues =
 
 Serializer<DeliveryDetailDeliveryTypeEnum>
     _$deliveryDetailDeliveryTypeEnumSerializer =
-    new _$DeliveryDetailDeliveryTypeEnumSerializer();
+    _$DeliveryDetailDeliveryTypeEnumSerializer();
 Serializer<DeliveryDetailStatusEnum> _$deliveryDetailStatusEnumSerializer =
-    new _$DeliveryDetailStatusEnumSerializer();
+    _$DeliveryDetailStatusEnumSerializer();
 
 class _$DeliveryDetailDeliveryTypeEnumSerializer
     implements PrimitiveSerializer<DeliveryDetailDeliveryTypeEnum> {
@@ -215,7 +215,7 @@ class _$DeliveryDetail extends DeliveryDetail {
   final DateTime? cancelledTime;
 
   factory _$DeliveryDetail([void Function(DeliveryDetailBuilder)? updates]) =>
-      (new DeliveryDetailBuilder()..update(updates))._build();
+      (DeliveryDetailBuilder()..update(updates))._build();
 
   _$DeliveryDetail._(
       {this.orderId,
@@ -244,14 +244,12 @@ class _$DeliveryDetail extends DeliveryDetail {
       this.deliveredTime,
       this.cancelledTime})
       : super._();
-
   @override
   DeliveryDetail rebuild(void Function(DeliveryDetailBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  DeliveryDetailBuilder toBuilder() =>
-      new DeliveryDetailBuilder()..replace(this);
+  DeliveryDetailBuilder toBuilder() => DeliveryDetailBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -441,7 +439,7 @@ class DeliveryDetailBuilder
 
   ListBuilder<String>? _deliveryLogs;
   ListBuilder<String> get deliveryLogs =>
-      _$this._deliveryLogs ??= new ListBuilder<String>();
+      _$this._deliveryLogs ??= ListBuilder<String>();
   set deliveryLogs(ListBuilder<String>? deliveryLogs) =>
       _$this._deliveryLogs = deliveryLogs;
 
@@ -508,7 +506,6 @@ class DeliveryDetailBuilder
 
   @override
   void replace(DeliveryDetail other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$DeliveryDetail;
   }
 
@@ -524,7 +521,7 @@ class DeliveryDetailBuilder
     _$DeliveryDetail _$result;
     try {
       _$result = _$v ??
-          new _$DeliveryDetail._(
+          _$DeliveryDetail._(
             orderId: orderId,
             deliveryId: deliveryId,
             deliveryType: deliveryType,
@@ -557,7 +554,7 @@ class DeliveryDetailBuilder
         _$failedField = 'deliveryLogs';
         _deliveryLogs?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'DeliveryDetail', _$failedField, e.toString());
       }
       rethrow;

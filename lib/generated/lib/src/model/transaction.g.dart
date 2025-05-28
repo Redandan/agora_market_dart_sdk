@@ -51,7 +51,7 @@ TransactionTypeEnum _$transactionTypeEnumValueOf(String name) {
 }
 
 final BuiltSet<TransactionTypeEnum> _$transactionTypeEnumValues =
-    new BuiltSet<TransactionTypeEnum>(const <TransactionTypeEnum>[
+    BuiltSet<TransactionTypeEnum>(const <TransactionTypeEnum>[
   _$transactionTypeEnum_DEPOSIT,
   _$transactionTypeEnum_WITHDRAW,
   _$transactionTypeEnum_PAYMENT,
@@ -64,7 +64,7 @@ final BuiltSet<TransactionTypeEnum> _$transactionTypeEnumValues =
 ]);
 
 Serializer<TransactionTypeEnum> _$transactionTypeEnumSerializer =
-    new _$TransactionTypeEnumSerializer();
+    _$TransactionTypeEnumSerializer();
 
 class _$TransactionTypeEnumSerializer
     implements PrimitiveSerializer<TransactionTypeEnum> {
@@ -133,7 +133,7 @@ class _$Transaction extends Transaction {
   final String? description;
 
   factory _$Transaction([void Function(TransactionBuilder)? updates]) =>
-      (new TransactionBuilder()..update(updates))._build();
+      (TransactionBuilder()..update(updates))._build();
 
   _$Transaction._(
       {this.id,
@@ -148,13 +148,12 @@ class _$Transaction extends Transaction {
       this.updatedAt,
       this.description})
       : super._();
-
   @override
   Transaction rebuild(void Function(TransactionBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  TransactionBuilder toBuilder() => new TransactionBuilder()..replace(this);
+  TransactionBuilder toBuilder() => TransactionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -281,7 +280,6 @@ class TransactionBuilder implements Builder<Transaction, TransactionBuilder> {
 
   @override
   void replace(Transaction other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Transaction;
   }
 
@@ -295,7 +293,7 @@ class TransactionBuilder implements Builder<Transaction, TransactionBuilder> {
 
   _$Transaction _build() {
     final _$result = _$v ??
-        new _$Transaction._(
+        _$Transaction._(
           id: id,
           userId: userId,
           currency: currency,

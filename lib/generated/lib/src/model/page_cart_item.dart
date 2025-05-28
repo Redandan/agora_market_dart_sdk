@@ -15,12 +15,12 @@ part 'page_cart_item.g.dart';
 /// PageCartItem
 ///
 /// Properties:
-/// * [totalElements] 
 /// * [totalPages] 
-/// * [pageable] 
-/// * [numberOfElements] 
+/// * [totalElements] 
 /// * [first] 
 /// * [last] 
+/// * [pageable] 
+/// * [numberOfElements] 
 /// * [size] 
 /// * [content] 
 /// * [number] 
@@ -28,23 +28,23 @@ part 'page_cart_item.g.dart';
 /// * [empty] 
 @BuiltValue()
 abstract class PageCartItem implements Built<PageCartItem, PageCartItemBuilder> {
-  @BuiltValueField(wireName: r'totalElements')
-  int? get totalElements;
-
   @BuiltValueField(wireName: r'totalPages')
   int? get totalPages;
 
-  @BuiltValueField(wireName: r'pageable')
-  PageableObject? get pageable;
-
-  @BuiltValueField(wireName: r'numberOfElements')
-  int? get numberOfElements;
+  @BuiltValueField(wireName: r'totalElements')
+  int? get totalElements;
 
   @BuiltValueField(wireName: r'first')
   bool? get first;
 
   @BuiltValueField(wireName: r'last')
   bool? get last;
+
+  @BuiltValueField(wireName: r'pageable')
+  PageableObject? get pageable;
+
+  @BuiltValueField(wireName: r'numberOfElements')
+  int? get numberOfElements;
 
   @BuiltValueField(wireName: r'size')
   int? get size;
@@ -84,13 +84,6 @@ class _$PageCartItemSerializer implements PrimitiveSerializer<PageCartItem> {
     PageCartItem object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.totalElements != null) {
-      yield r'totalElements';
-      yield serializers.serialize(
-        object.totalElements,
-        specifiedType: const FullType(int),
-      );
-    }
     if (object.totalPages != null) {
       yield r'totalPages';
       yield serializers.serialize(
@@ -98,17 +91,10 @@ class _$PageCartItemSerializer implements PrimitiveSerializer<PageCartItem> {
         specifiedType: const FullType(int),
       );
     }
-    if (object.pageable != null) {
-      yield r'pageable';
+    if (object.totalElements != null) {
+      yield r'totalElements';
       yield serializers.serialize(
-        object.pageable,
-        specifiedType: const FullType(PageableObject),
-      );
-    }
-    if (object.numberOfElements != null) {
-      yield r'numberOfElements';
-      yield serializers.serialize(
-        object.numberOfElements,
+        object.totalElements,
         specifiedType: const FullType(int),
       );
     }
@@ -124,6 +110,20 @@ class _$PageCartItemSerializer implements PrimitiveSerializer<PageCartItem> {
       yield serializers.serialize(
         object.last,
         specifiedType: const FullType(bool),
+      );
+    }
+    if (object.pageable != null) {
+      yield r'pageable';
+      yield serializers.serialize(
+        object.pageable,
+        specifiedType: const FullType(PageableObject),
+      );
+    }
+    if (object.numberOfElements != null) {
+      yield r'numberOfElements';
+      yield serializers.serialize(
+        object.numberOfElements,
+        specifiedType: const FullType(int),
       );
     }
     if (object.size != null) {
@@ -184,13 +184,6 @@ class _$PageCartItemSerializer implements PrimitiveSerializer<PageCartItem> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'totalElements':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.totalElements = valueDes;
-          break;
         case r'totalPages':
           final valueDes = serializers.deserialize(
             value,
@@ -198,19 +191,12 @@ class _$PageCartItemSerializer implements PrimitiveSerializer<PageCartItem> {
           ) as int;
           result.totalPages = valueDes;
           break;
-        case r'pageable':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(PageableObject),
-          ) as PageableObject;
-          result.pageable.replace(valueDes);
-          break;
-        case r'numberOfElements':
+        case r'totalElements':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(int),
           ) as int;
-          result.numberOfElements = valueDes;
+          result.totalElements = valueDes;
           break;
         case r'first':
           final valueDes = serializers.deserialize(
@@ -225,6 +211,20 @@ class _$PageCartItemSerializer implements PrimitiveSerializer<PageCartItem> {
             specifiedType: const FullType(bool),
           ) as bool;
           result.last = valueDes;
+          break;
+        case r'pageable':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(PageableObject),
+          ) as PageableObject;
+          result.pageable.replace(valueDes);
+          break;
+        case r'numberOfElements':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.numberOfElements = valueDes;
           break;
         case r'size':
           final valueDes = serializers.deserialize(

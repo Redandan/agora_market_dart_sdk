@@ -17,16 +17,15 @@ class _$LocalTime extends LocalTime {
   final int? nano;
 
   factory _$LocalTime([void Function(LocalTimeBuilder)? updates]) =>
-      (new LocalTimeBuilder()..update(updates))._build();
+      (LocalTimeBuilder()..update(updates))._build();
 
   _$LocalTime._({this.hour, this.minute, this.second, this.nano}) : super._();
-
   @override
   LocalTime rebuild(void Function(LocalTimeBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  LocalTimeBuilder toBuilder() => new LocalTimeBuilder()..replace(this);
+  LocalTimeBuilder toBuilder() => LocalTimeBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -97,7 +96,6 @@ class LocalTimeBuilder implements Builder<LocalTime, LocalTimeBuilder> {
 
   @override
   void replace(LocalTime other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$LocalTime;
   }
 
@@ -111,7 +109,7 @@ class LocalTimeBuilder implements Builder<LocalTime, LocalTimeBuilder> {
 
   _$LocalTime _build() {
     final _$result = _$v ??
-        new _$LocalTime._(
+        _$LocalTime._(
           hour: hour,
           minute: minute,
           second: second,

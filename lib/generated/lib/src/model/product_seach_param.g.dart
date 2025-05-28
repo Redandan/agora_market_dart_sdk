@@ -36,8 +36,8 @@ ProductSeachParamStatusEnum _$productSeachParamStatusEnumValueOf(String name) {
 }
 
 final BuiltSet<ProductSeachParamStatusEnum>
-    _$productSeachParamStatusEnumValues = new BuiltSet<
-        ProductSeachParamStatusEnum>(const <ProductSeachParamStatusEnum>[
+    _$productSeachParamStatusEnumValues =
+    BuiltSet<ProductSeachParamStatusEnum>(const <ProductSeachParamStatusEnum>[
   _$productSeachParamStatusEnum_ON_SALE,
   _$productSeachParamStatusEnum_OFF_SALE,
   _$productSeachParamStatusEnum_SOLD_OUT,
@@ -93,7 +93,7 @@ ProductSeachParamCategoryEnum _$productSeachParamCategoryEnumValueOf(
 }
 
 final BuiltSet<ProductSeachParamCategoryEnum>
-    _$productSeachParamCategoryEnumValues = new BuiltSet<
+    _$productSeachParamCategoryEnumValues = BuiltSet<
         ProductSeachParamCategoryEnum>(const <ProductSeachParamCategoryEnum>[
   _$productSeachParamCategoryEnum_ELECTRONICS,
   _$productSeachParamCategoryEnum_FOOD,
@@ -108,10 +108,10 @@ final BuiltSet<ProductSeachParamCategoryEnum>
 
 Serializer<ProductSeachParamStatusEnum>
     _$productSeachParamStatusEnumSerializer =
-    new _$ProductSeachParamStatusEnumSerializer();
+    _$ProductSeachParamStatusEnumSerializer();
 Serializer<ProductSeachParamCategoryEnum>
     _$productSeachParamCategoryEnumSerializer =
-    new _$ProductSeachParamCategoryEnumSerializer();
+    _$ProductSeachParamCategoryEnumSerializer();
 
 class _$ProductSeachParamStatusEnumSerializer
     implements PrimitiveSerializer<ProductSeachParamStatusEnum> {
@@ -218,7 +218,7 @@ class _$ProductSeachParam extends ProductSeachParam {
 
   factory _$ProductSeachParam(
           [void Function(ProductSeachParamBuilder)? updates]) =>
-      (new ProductSeachParamBuilder()..update(updates))._build();
+      (ProductSeachParamBuilder()..update(updates))._build();
 
   _$ProductSeachParam._(
       {this.id,
@@ -233,14 +233,13 @@ class _$ProductSeachParam extends ProductSeachParam {
       this.longitude,
       this.latitude})
       : super._();
-
   @override
   ProductSeachParam rebuild(void Function(ProductSeachParamBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   ProductSeachParamBuilder toBuilder() =>
-      new ProductSeachParamBuilder()..replace(this);
+      ProductSeachParamBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -369,7 +368,6 @@ class ProductSeachParamBuilder
 
   @override
   void replace(ProductSeachParam other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ProductSeachParam;
   }
 
@@ -383,7 +381,7 @@ class ProductSeachParamBuilder
 
   _$ProductSeachParam _build() {
     final _$result = _$v ??
-        new _$ProductSeachParam._(
+        _$ProductSeachParam._(
           id: id,
           sellerId: sellerId,
           status: status,

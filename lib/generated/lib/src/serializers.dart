@@ -19,8 +19,9 @@ import 'package:agora_market_dart_sdk/src/model/cart_summary_dto.dart';
 import 'package:agora_market_dart_sdk/src/model/change_password_param.dart';
 import 'package:agora_market_dart_sdk/src/model/chat_message.dart';
 import 'package:agora_market_dart_sdk/src/model/chat_message_dto.dart';
-import 'package:agora_market_dart_sdk/src/model/chat_message_query_param.dart';
 import 'package:agora_market_dart_sdk/src/model/chat_message_update_dto.dart';
+import 'package:agora_market_dart_sdk/src/model/chat_session.dart';
+import 'package:agora_market_dart_sdk/src/model/chat_session_query_param.dart';
 import 'package:agora_market_dart_sdk/src/model/cold_wallet.dart';
 import 'package:agora_market_dart_sdk/src/model/create_recharge_param.dart';
 import 'package:agora_market_dart_sdk/src/model/create_withdraw_param.dart';
@@ -45,7 +46,7 @@ import 'package:agora_market_dart_sdk/src/model/order_ship_param.dart';
 import 'package:agora_market_dart_sdk/src/model/order_statistics_dto.dart';
 import 'package:agora_market_dart_sdk/src/model/order_sumbit_param.dart';
 import 'package:agora_market_dart_sdk/src/model/page_cart_item.dart';
-import 'package:agora_market_dart_sdk/src/model/page_chat_message.dart';
+import 'package:agora_market_dart_sdk/src/model/page_chat_session.dart';
 import 'package:agora_market_dart_sdk/src/model/page_cold_wallet.dart';
 import 'package:agora_market_dart_sdk/src/model/page_dispute.dart';
 import 'package:agora_market_dart_sdk/src/model/page_order.dart';
@@ -90,8 +91,9 @@ part 'serializers.g.dart';
   ChangePasswordParam,
   ChatMessage,
   ChatMessageDTO,
-  ChatMessageQueryParam,
   ChatMessageUpdateDTO,
+  ChatSession,
+  ChatSessionQueryParam,
   ColdWallet,
   CreateRechargeParam,
   CreateWithdrawParam,
@@ -116,7 +118,7 @@ part 'serializers.g.dart';
   OrderStatisticsDTO,
   OrderSumbitParam,
   PageCartItem,
-  PageChatMessage,
+  PageChatSession,
   PageColdWallet,
   PageDispute,
   PageOrder,

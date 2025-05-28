@@ -25,7 +25,7 @@ CreateRechargeParamProtocolEnum _$createRechargeParamProtocolEnumValueOf(
 }
 
 final BuiltSet<CreateRechargeParamProtocolEnum>
-    _$createRechargeParamProtocolEnumValues = new BuiltSet<
+    _$createRechargeParamProtocolEnumValues = BuiltSet<
         CreateRechargeParamProtocolEnum>(const <CreateRechargeParamProtocolEnum>[
   _$createRechargeParamProtocolEnum_TRON,
   _$createRechargeParamProtocolEnum_unknownDefaultOpenApi,
@@ -33,7 +33,7 @@ final BuiltSet<CreateRechargeParamProtocolEnum>
 
 Serializer<CreateRechargeParamProtocolEnum>
     _$createRechargeParamProtocolEnumSerializer =
-    new _$CreateRechargeParamProtocolEnumSerializer();
+    _$CreateRechargeParamProtocolEnumSerializer();
 
 class _$CreateRechargeParamProtocolEnumSerializer
     implements PrimitiveSerializer<CreateRechargeParamProtocolEnum> {
@@ -77,22 +77,14 @@ class _$CreateRechargeParam extends CreateRechargeParam {
 
   factory _$CreateRechargeParam(
           [void Function(CreateRechargeParamBuilder)? updates]) =>
-      (new CreateRechargeParamBuilder()..update(updates))._build();
+      (CreateRechargeParamBuilder()..update(updates))._build();
 
   _$CreateRechargeParam._(
       {this.userId,
       required this.amount,
       required this.currency,
       required this.protocol})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        amount, r'CreateRechargeParam', 'amount');
-    BuiltValueNullFieldError.checkNotNull(
-        currency, r'CreateRechargeParam', 'currency');
-    BuiltValueNullFieldError.checkNotNull(
-        protocol, r'CreateRechargeParam', 'protocol');
-  }
-
+      : super._();
   @override
   CreateRechargeParam rebuild(
           void Function(CreateRechargeParamBuilder) updates) =>
@@ -100,7 +92,7 @@ class _$CreateRechargeParam extends CreateRechargeParam {
 
   @override
   CreateRechargeParamBuilder toBuilder() =>
-      new CreateRechargeParamBuilder()..replace(this);
+      CreateRechargeParamBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -173,7 +165,6 @@ class CreateRechargeParamBuilder
 
   @override
   void replace(CreateRechargeParam other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateRechargeParam;
   }
 
@@ -187,7 +178,7 @@ class CreateRechargeParamBuilder
 
   _$CreateRechargeParam _build() {
     final _$result = _$v ??
-        new _$CreateRechargeParam._(
+        _$CreateRechargeParam._(
           userId: userId,
           amount: BuiltValueNullFieldError.checkNotNull(
               amount, r'CreateRechargeParam', 'amount'),

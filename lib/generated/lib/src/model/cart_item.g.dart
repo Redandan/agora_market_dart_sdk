@@ -25,7 +25,7 @@ class _$CartItem extends CartItem {
   final DateTime? updatedAt;
 
   factory _$CartItem([void Function(CartItemBuilder)? updates]) =>
-      (new CartItemBuilder()..update(updates))._build();
+      (CartItemBuilder()..update(updates))._build();
 
   _$CartItem._(
       {this.id,
@@ -37,13 +37,12 @@ class _$CartItem extends CartItem {
       this.createdAt,
       this.updatedAt})
       : super._();
-
   @override
   CartItem rebuild(void Function(CartItemBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  CartItemBuilder toBuilder() => new CartItemBuilder()..replace(this);
+  CartItemBuilder toBuilder() => CartItemBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -146,7 +145,6 @@ class CartItemBuilder implements Builder<CartItem, CartItemBuilder> {
 
   @override
   void replace(CartItem other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CartItem;
   }
 
@@ -160,7 +158,7 @@ class CartItemBuilder implements Builder<CartItem, CartItemBuilder> {
 
   _$CartItem _build() {
     final _$result = _$v ??
-        new _$CartItem._(
+        _$CartItem._(
           id: id,
           userId: userId,
           productId: productId,

@@ -35,7 +35,7 @@ RechargeStatusEnum _$rechargeStatusEnumValueOf(String name) {
 }
 
 final BuiltSet<RechargeStatusEnum> _$rechargeStatusEnumValues =
-    new BuiltSet<RechargeStatusEnum>(const <RechargeStatusEnum>[
+    BuiltSet<RechargeStatusEnum>(const <RechargeStatusEnum>[
   _$rechargeStatusEnum_PENDING,
   _$rechargeStatusEnum_COMPLETED,
   _$rechargeStatusEnum_EXPIRED,
@@ -60,15 +60,15 @@ RechargeProtocolEnum _$rechargeProtocolEnumValueOf(String name) {
 }
 
 final BuiltSet<RechargeProtocolEnum> _$rechargeProtocolEnumValues =
-    new BuiltSet<RechargeProtocolEnum>(const <RechargeProtocolEnum>[
+    BuiltSet<RechargeProtocolEnum>(const <RechargeProtocolEnum>[
   _$rechargeProtocolEnum_TRON,
   _$rechargeProtocolEnum_unknownDefaultOpenApi,
 ]);
 
 Serializer<RechargeStatusEnum> _$rechargeStatusEnumSerializer =
-    new _$RechargeStatusEnumSerializer();
+    _$RechargeStatusEnumSerializer();
 Serializer<RechargeProtocolEnum> _$rechargeProtocolEnumSerializer =
-    new _$RechargeProtocolEnumSerializer();
+    _$RechargeProtocolEnumSerializer();
 
 class _$RechargeStatusEnumSerializer
     implements PrimitiveSerializer<RechargeStatusEnum> {
@@ -163,7 +163,7 @@ class _$Recharge extends Recharge {
   final DateTime? completedAt;
 
   factory _$Recharge([void Function(RechargeBuilder)? updates]) =>
-      (new RechargeBuilder()..update(updates))._build();
+      (RechargeBuilder()..update(updates))._build();
 
   _$Recharge._(
       {this.id,
@@ -181,13 +181,12 @@ class _$Recharge extends Recharge {
       this.updatedAt,
       this.completedAt})
       : super._();
-
   @override
   Recharge rebuild(void Function(RechargeBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  RechargeBuilder toBuilder() => new RechargeBuilder()..replace(this);
+  RechargeBuilder toBuilder() => RechargeBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -339,7 +338,6 @@ class RechargeBuilder implements Builder<Recharge, RechargeBuilder> {
 
   @override
   void replace(Recharge other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Recharge;
   }
 
@@ -353,7 +351,7 @@ class RechargeBuilder implements Builder<Recharge, RechargeBuilder> {
 
   _$Recharge _build() {
     final _$result = _$v ??
-        new _$Recharge._(
+        _$Recharge._(
           id: id,
           userId: userId,
           amount: amount,

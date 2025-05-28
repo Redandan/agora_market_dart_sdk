@@ -15,16 +15,15 @@ class _$Pageable extends Pageable {
   final BuiltList<String>? sort;
 
   factory _$Pageable([void Function(PageableBuilder)? updates]) =>
-      (new PageableBuilder()..update(updates))._build();
+      (PageableBuilder()..update(updates))._build();
 
   _$Pageable._({this.page, this.size, this.sort}) : super._();
-
   @override
   Pageable rebuild(void Function(PageableBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  PageableBuilder toBuilder() => new PageableBuilder()..replace(this);
+  PageableBuilder toBuilder() => PageableBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -67,7 +66,7 @@ class PageableBuilder implements Builder<Pageable, PageableBuilder> {
   set size(int? size) => _$this._size = size;
 
   ListBuilder<String>? _sort;
-  ListBuilder<String> get sort => _$this._sort ??= new ListBuilder<String>();
+  ListBuilder<String> get sort => _$this._sort ??= ListBuilder<String>();
   set sort(ListBuilder<String>? sort) => _$this._sort = sort;
 
   PageableBuilder() {
@@ -87,7 +86,6 @@ class PageableBuilder implements Builder<Pageable, PageableBuilder> {
 
   @override
   void replace(Pageable other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Pageable;
   }
 
@@ -103,7 +101,7 @@ class PageableBuilder implements Builder<Pageable, PageableBuilder> {
     _$Pageable _$result;
     try {
       _$result = _$v ??
-          new _$Pageable._(
+          _$Pageable._(
             page: page,
             size: size,
             sort: _sort?.build(),
@@ -114,7 +112,7 @@ class PageableBuilder implements Builder<Pageable, PageableBuilder> {
         _$failedField = 'sort';
         _sort?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'Pageable', _$failedField, e.toString());
       }
       rethrow;

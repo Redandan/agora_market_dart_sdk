@@ -22,7 +22,7 @@ class _$OrderStatisticsDTO extends OrderStatisticsDTO {
 
   factory _$OrderStatisticsDTO(
           [void Function(OrderStatisticsDTOBuilder)? updates]) =>
-      (new OrderStatisticsDTOBuilder()..update(updates))._build();
+      (OrderStatisticsDTOBuilder()..update(updates))._build();
 
   _$OrderStatisticsDTO._(
       {this.totalOrders,
@@ -32,7 +32,6 @@ class _$OrderStatisticsDTO extends OrderStatisticsDTO {
       this.topProducts,
       this.topSellers})
       : super._();
-
   @override
   OrderStatisticsDTO rebuild(
           void Function(OrderStatisticsDTOBuilder) updates) =>
@@ -40,7 +39,7 @@ class _$OrderStatisticsDTO extends OrderStatisticsDTO {
 
   @override
   OrderStatisticsDTOBuilder toBuilder() =>
-      new OrderStatisticsDTOBuilder()..replace(this);
+      OrderStatisticsDTOBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -99,19 +98,19 @@ class OrderStatisticsDTOBuilder
 
   MapBuilder<String, int>? _ordersByStatus;
   MapBuilder<String, int> get ordersByStatus =>
-      _$this._ordersByStatus ??= new MapBuilder<String, int>();
+      _$this._ordersByStatus ??= MapBuilder<String, int>();
   set ordersByStatus(MapBuilder<String, int>? ordersByStatus) =>
       _$this._ordersByStatus = ordersByStatus;
 
   ListBuilder<TopProductDTO>? _topProducts;
   ListBuilder<TopProductDTO> get topProducts =>
-      _$this._topProducts ??= new ListBuilder<TopProductDTO>();
+      _$this._topProducts ??= ListBuilder<TopProductDTO>();
   set topProducts(ListBuilder<TopProductDTO>? topProducts) =>
       _$this._topProducts = topProducts;
 
   ListBuilder<TopSellerDTO>? _topSellers;
   ListBuilder<TopSellerDTO> get topSellers =>
-      _$this._topSellers ??= new ListBuilder<TopSellerDTO>();
+      _$this._topSellers ??= ListBuilder<TopSellerDTO>();
   set topSellers(ListBuilder<TopSellerDTO>? topSellers) =>
       _$this._topSellers = topSellers;
 
@@ -135,7 +134,6 @@ class OrderStatisticsDTOBuilder
 
   @override
   void replace(OrderStatisticsDTO other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$OrderStatisticsDTO;
   }
 
@@ -151,7 +149,7 @@ class OrderStatisticsDTOBuilder
     _$OrderStatisticsDTO _$result;
     try {
       _$result = _$v ??
-          new _$OrderStatisticsDTO._(
+          _$OrderStatisticsDTO._(
             totalOrders: totalOrders,
             totalAmount: totalAmount,
             averageOrderAmount: averageOrderAmount,
@@ -169,7 +167,7 @@ class OrderStatisticsDTOBuilder
         _$failedField = 'topSellers';
         _topSellers?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'OrderStatisticsDTO', _$failedField, e.toString());
       }
       rethrow;

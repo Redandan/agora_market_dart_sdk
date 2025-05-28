@@ -28,7 +28,7 @@ class _$StoreUpdateParam extends StoreUpdateParam {
 
   factory _$StoreUpdateParam(
           [void Function(StoreUpdateParamBuilder)? updates]) =>
-      (new StoreUpdateParamBuilder()..update(updates))._build();
+      (StoreUpdateParamBuilder()..update(updates))._build();
 
   _$StoreUpdateParam._(
       {this.name,
@@ -41,14 +41,13 @@ class _$StoreUpdateParam extends StoreUpdateParam {
       this.coverImageUrl,
       this.isActive})
       : super._();
-
   @override
   StoreUpdateParam rebuild(void Function(StoreUpdateParamBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   StoreUpdateParamBuilder toBuilder() =>
-      new StoreUpdateParamBuilder()..replace(this);
+      StoreUpdateParamBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -162,7 +161,6 @@ class StoreUpdateParamBuilder
 
   @override
   void replace(StoreUpdateParam other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$StoreUpdateParam;
   }
 
@@ -176,7 +174,7 @@ class StoreUpdateParamBuilder
 
   _$StoreUpdateParam _build() {
     final _$result = _$v ??
-        new _$StoreUpdateParam._(
+        _$StoreUpdateParam._(
           name: name,
           description: description,
           address: address,

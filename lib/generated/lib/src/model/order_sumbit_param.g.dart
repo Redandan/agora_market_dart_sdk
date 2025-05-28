@@ -36,7 +36,7 @@ OrderSumbitParamDeliveryTypeEnum _$orderSumbitParamDeliveryTypeEnumValueOf(
 }
 
 final BuiltSet<OrderSumbitParamDeliveryTypeEnum>
-    _$orderSumbitParamDeliveryTypeEnumValues = new BuiltSet<
+    _$orderSumbitParamDeliveryTypeEnumValues = BuiltSet<
         OrderSumbitParamDeliveryTypeEnum>(const <OrderSumbitParamDeliveryTypeEnum>[
   _$orderSumbitParamDeliveryTypeEnum_DELIVERY,
   _$orderSumbitParamDeliveryTypeEnum_LOGISTICS,
@@ -46,7 +46,7 @@ final BuiltSet<OrderSumbitParamDeliveryTypeEnum>
 
 Serializer<OrderSumbitParamDeliveryTypeEnum>
     _$orderSumbitParamDeliveryTypeEnumSerializer =
-    new _$OrderSumbitParamDeliveryTypeEnumSerializer();
+    _$OrderSumbitParamDeliveryTypeEnumSerializer();
 
 class _$OrderSumbitParamDeliveryTypeEnumSerializer
     implements PrimitiveSerializer<OrderSumbitParamDeliveryTypeEnum> {
@@ -104,7 +104,7 @@ class _$OrderSumbitParam extends OrderSumbitParam {
 
   factory _$OrderSumbitParam(
           [void Function(OrderSumbitParamBuilder)? updates]) =>
-      (new OrderSumbitParamBuilder()..update(updates))._build();
+      (OrderSumbitParamBuilder()..update(updates))._build();
 
   _$OrderSumbitParam._(
       {required this.productId,
@@ -116,30 +116,14 @@ class _$OrderSumbitParam extends OrderSumbitParam {
       required this.receiverPhone,
       this.remark,
       this.deliveryFee})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        productId, r'OrderSumbitParam', 'productId');
-    BuiltValueNullFieldError.checkNotNull(
-        deliveryType, r'OrderSumbitParam', 'deliveryType');
-    BuiltValueNullFieldError.checkNotNull(
-        shippingAddress, r'OrderSumbitParam', 'shippingAddress');
-    BuiltValueNullFieldError.checkNotNull(
-        longitude, r'OrderSumbitParam', 'longitude');
-    BuiltValueNullFieldError.checkNotNull(
-        latitude, r'OrderSumbitParam', 'latitude');
-    BuiltValueNullFieldError.checkNotNull(
-        receiverName, r'OrderSumbitParam', 'receiverName');
-    BuiltValueNullFieldError.checkNotNull(
-        receiverPhone, r'OrderSumbitParam', 'receiverPhone');
-  }
-
+      : super._();
   @override
   OrderSumbitParam rebuild(void Function(OrderSumbitParamBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   OrderSumbitParamBuilder toBuilder() =>
-      new OrderSumbitParamBuilder()..replace(this);
+      OrderSumbitParamBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -254,7 +238,6 @@ class OrderSumbitParamBuilder
 
   @override
   void replace(OrderSumbitParam other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$OrderSumbitParam;
   }
 
@@ -268,7 +251,7 @@ class OrderSumbitParamBuilder
 
   _$OrderSumbitParam _build() {
     final _$result = _$v ??
-        new _$OrderSumbitParam._(
+        _$OrderSumbitParam._(
           productId: BuiltValueNullFieldError.checkNotNull(
               productId, r'OrderSumbitParam', 'productId'),
           deliveryType: BuiltValueNullFieldError.checkNotNull(
