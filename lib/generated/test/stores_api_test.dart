@@ -21,6 +21,13 @@ void main() {
       // TODO
     });
 
+    // 根據賣家ID獲取商店信息
+    //
+    //Future<Store> getStoreBySellerId(int sellerId) async
+    test('test getStoreBySellerId', () async {
+      // TODO
+    });
+
     // 搜索我的商店商品
     //
     //Future<PageProduct> searchMyStoreProducts({ String keyword, int categoryId, String status, int page, int size }) async

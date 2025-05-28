@@ -18,9 +18,9 @@ part 'page_dispute.g.dart';
 /// * [totalPages] 
 /// * [totalElements] 
 /// * [first] 
-/// * [numberOfElements] 
 /// * [last] 
 /// * [pageable] 
+/// * [numberOfElements] 
 /// * [size] 
 /// * [content] 
 /// * [number] 
@@ -37,14 +37,14 @@ abstract class PageDispute implements Built<PageDispute, PageDisputeBuilder> {
   @BuiltValueField(wireName: r'first')
   bool? get first;
 
-  @BuiltValueField(wireName: r'numberOfElements')
-  int? get numberOfElements;
-
   @BuiltValueField(wireName: r'last')
   bool? get last;
 
   @BuiltValueField(wireName: r'pageable')
   PageableObject? get pageable;
+
+  @BuiltValueField(wireName: r'numberOfElements')
+  int? get numberOfElements;
 
   @BuiltValueField(wireName: r'size')
   int? get size;
@@ -105,13 +105,6 @@ class _$PageDisputeSerializer implements PrimitiveSerializer<PageDispute> {
         specifiedType: const FullType(bool),
       );
     }
-    if (object.numberOfElements != null) {
-      yield r'numberOfElements';
-      yield serializers.serialize(
-        object.numberOfElements,
-        specifiedType: const FullType(int),
-      );
-    }
     if (object.last != null) {
       yield r'last';
       yield serializers.serialize(
@@ -124,6 +117,13 @@ class _$PageDisputeSerializer implements PrimitiveSerializer<PageDispute> {
       yield serializers.serialize(
         object.pageable,
         specifiedType: const FullType(PageableObject),
+      );
+    }
+    if (object.numberOfElements != null) {
+      yield r'numberOfElements';
+      yield serializers.serialize(
+        object.numberOfElements,
+        specifiedType: const FullType(int),
       );
     }
     if (object.size != null) {
@@ -205,13 +205,6 @@ class _$PageDisputeSerializer implements PrimitiveSerializer<PageDispute> {
           ) as bool;
           result.first = valueDes;
           break;
-        case r'numberOfElements':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.numberOfElements = valueDes;
-          break;
         case r'last':
           final valueDes = serializers.deserialize(
             value,
@@ -225,6 +218,13 @@ class _$PageDisputeSerializer implements PrimitiveSerializer<PageDispute> {
             specifiedType: const FullType(PageableObject),
           ) as PageableObject;
           result.pageable.replace(valueDes);
+          break;
+        case r'numberOfElements':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.numberOfElements = valueDes;
           break;
         case r'size':
           final valueDes = serializers.deserialize(

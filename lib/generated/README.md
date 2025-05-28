@@ -170,6 +170,7 @@ Class | Method | HTTP request | Description
 [*StakingApi*](doc/StakingApi.md) | [**unfreezeStaking**](doc/StakingApi.md#unfreezestaking) | **POST** /staking/unfreeze | 申請解除質押
 [*StoresApi*](doc/StoresApi.md) | [**getMyStore**](doc/StoresApi.md#getmystore) | **GET** /stores/my-store | 獲取當前用戶的商店
 [*StoresApi*](doc/StoresApi.md) | [**getStoreAnalytics**](doc/StoresApi.md#getstoreanalytics) | **GET** /stores/analytics | 獲取商店分析數據
+[*StoresApi*](doc/StoresApi.md) | [**getStoreBySellerId**](doc/StoresApi.md#getstorebysellerid) | **GET** /stores/{sellerId} | 根據賣家ID獲取商店信息
 [*StoresApi*](doc/StoresApi.md) | [**searchMyStoreProducts**](doc/StoresApi.md#searchmystoreproducts) | **GET** /stores/products/search | 搜索我的商店商品
 [*StoresApi*](doc/StoresApi.md) | [**updateStore**](doc/StoresApi.md#updatestore) | **POST** /stores/update | 更新商店
 [*TestDataControllerApi*](doc/TestDataControllerApi.md) | [**generateLogisticsOrder**](doc/TestDataControllerApi.md#generatelogisticsorder) | **POST** /test/logistics | 

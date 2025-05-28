@@ -11,6 +11,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getMyStore**](StoresApi.md#getmystore) | **GET** /stores/my-store | 獲取當前用戶的商店
 [**getStoreAnalytics**](StoresApi.md#getstoreanalytics) | **GET** /stores/analytics | 獲取商店分析數據
+[**getStoreBySellerId**](StoresApi.md#getstorebysellerid) | **GET** /stores/{sellerId} | 根據賣家ID獲取商店信息
 [**searchMyStoreProducts**](StoresApi.md#searchmystoreproducts) | **GET** /stores/products/search | 搜索我的商店商品
 [**updateStore**](StoresApi.md#updatestore) | **POST** /stores/update | 更新商店
 
@@ -77,6 +78,47 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**StoreAnalyticsDTO**](StoreAnalyticsDTO.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getStoreBySellerId**
+> Store getStoreBySellerId(sellerId)
+
+根據賣家ID獲取商店信息
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api = AgoraMarketDartSdk().getStoresApi();
+final int sellerId = 789; // int | 賣家ID
+
+try {
+    final response = api.getStoreBySellerId(sellerId);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling StoresApi->getStoreBySellerId: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sellerId** | **int**| 賣家ID | 
+
+### Return type
+
+[**Store**](Store.md)
 
 ### Authorization
 
