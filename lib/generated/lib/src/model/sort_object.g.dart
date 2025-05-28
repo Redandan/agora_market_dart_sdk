@@ -8,16 +8,16 @@ part of 'sort_object.dart';
 
 class _$SortObject extends SortObject {
   @override
-  final bool? sorted;
-  @override
   final bool? unsorted;
   @override
   final bool? empty;
+  @override
+  final bool? sorted;
 
   factory _$SortObject([void Function(SortObjectBuilder)? updates]) =>
       (SortObjectBuilder()..update(updates))._build();
 
-  _$SortObject._({this.sorted, this.unsorted, this.empty}) : super._();
+  _$SortObject._({this.unsorted, this.empty, this.sorted}) : super._();
   @override
   SortObject rebuild(void Function(SortObjectBuilder) updates) =>
       (toBuilder()..update(updates)).build();
@@ -29,17 +29,17 @@ class _$SortObject extends SortObject {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is SortObject &&
-        sorted == other.sorted &&
         unsorted == other.unsorted &&
-        empty == other.empty;
+        empty == other.empty &&
+        sorted == other.sorted;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, sorted.hashCode);
     _$hash = $jc(_$hash, unsorted.hashCode);
     _$hash = $jc(_$hash, empty.hashCode);
+    _$hash = $jc(_$hash, sorted.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -47,19 +47,15 @@ class _$SortObject extends SortObject {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'SortObject')
-          ..add('sorted', sorted)
           ..add('unsorted', unsorted)
-          ..add('empty', empty))
+          ..add('empty', empty)
+          ..add('sorted', sorted))
         .toString();
   }
 }
 
 class SortObjectBuilder implements Builder<SortObject, SortObjectBuilder> {
   _$SortObject? _$v;
-
-  bool? _sorted;
-  bool? get sorted => _$this._sorted;
-  set sorted(bool? sorted) => _$this._sorted = sorted;
 
   bool? _unsorted;
   bool? get unsorted => _$this._unsorted;
@@ -69,6 +65,10 @@ class SortObjectBuilder implements Builder<SortObject, SortObjectBuilder> {
   bool? get empty => _$this._empty;
   set empty(bool? empty) => _$this._empty = empty;
 
+  bool? _sorted;
+  bool? get sorted => _$this._sorted;
+  set sorted(bool? sorted) => _$this._sorted = sorted;
+
   SortObjectBuilder() {
     SortObject._defaults(this);
   }
@@ -76,9 +76,9 @@ class SortObjectBuilder implements Builder<SortObject, SortObjectBuilder> {
   SortObjectBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _sorted = $v.sorted;
       _unsorted = $v.unsorted;
       _empty = $v.empty;
+      _sorted = $v.sorted;
       _$v = null;
     }
     return this;
@@ -100,9 +100,9 @@ class SortObjectBuilder implements Builder<SortObject, SortObjectBuilder> {
   _$SortObject _build() {
     final _$result = _$v ??
         _$SortObject._(
-          sorted: sorted,
           unsorted: unsorted,
           empty: empty,
+          sorted: sorted,
         );
     replace(_$result);
     return _$result;

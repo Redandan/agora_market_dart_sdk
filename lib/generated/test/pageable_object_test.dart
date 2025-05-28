@@ -7,23 +7,13 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(PageableObject, () {
-    // int pageNumber
-    test('to test the property `pageNumber`', () async {
-      // TODO
-    });
-
-    // int pageSize
-    test('to test the property `pageSize`', () async {
+    // bool unpaged
+    test('to test the property `unpaged`', () async {
       // TODO
     });
 
     // bool paged
     test('to test the property `paged`', () async {
-      // TODO
-    });
-
-    // bool unpaged
-    test('to test the property `unpaged`', () async {
       // TODO
     });
 
@@ -34,6 +24,16 @@ void main() {
 
     // SortObject sort
     test('to test the property `sort`', () async {
+      // TODO
+    });
+
+    // int pageNumber
+    test('to test the property `pageNumber`', () async {
+      // TODO
+    });
+
+    // int pageSize
+    test('to test the property `pageSize`', () async {
       // TODO
     });
 

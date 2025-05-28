@@ -16,8 +16,6 @@ class _$PageColdWallet extends PageColdWallet {
   @override
   final bool? last;
   @override
-  final PageableObject? pageable;
-  @override
   final int? numberOfElements;
   @override
   final int? size;
@@ -27,6 +25,8 @@ class _$PageColdWallet extends PageColdWallet {
   final int? number;
   @override
   final SortObject? sort;
+  @override
+  final PageableObject? pageable;
   @override
   final bool? empty;
 
@@ -38,12 +38,12 @@ class _$PageColdWallet extends PageColdWallet {
       this.totalElements,
       this.first,
       this.last,
-      this.pageable,
       this.numberOfElements,
       this.size,
       this.content,
       this.number,
       this.sort,
+      this.pageable,
       this.empty})
       : super._();
   @override
@@ -61,12 +61,12 @@ class _$PageColdWallet extends PageColdWallet {
         totalElements == other.totalElements &&
         first == other.first &&
         last == other.last &&
-        pageable == other.pageable &&
         numberOfElements == other.numberOfElements &&
         size == other.size &&
         content == other.content &&
         number == other.number &&
         sort == other.sort &&
+        pageable == other.pageable &&
         empty == other.empty;
   }
 
@@ -77,12 +77,12 @@ class _$PageColdWallet extends PageColdWallet {
     _$hash = $jc(_$hash, totalElements.hashCode);
     _$hash = $jc(_$hash, first.hashCode);
     _$hash = $jc(_$hash, last.hashCode);
-    _$hash = $jc(_$hash, pageable.hashCode);
     _$hash = $jc(_$hash, numberOfElements.hashCode);
     _$hash = $jc(_$hash, size.hashCode);
     _$hash = $jc(_$hash, content.hashCode);
     _$hash = $jc(_$hash, number.hashCode);
     _$hash = $jc(_$hash, sort.hashCode);
+    _$hash = $jc(_$hash, pageable.hashCode);
     _$hash = $jc(_$hash, empty.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -95,12 +95,12 @@ class _$PageColdWallet extends PageColdWallet {
           ..add('totalElements', totalElements)
           ..add('first', first)
           ..add('last', last)
-          ..add('pageable', pageable)
           ..add('numberOfElements', numberOfElements)
           ..add('size', size)
           ..add('content', content)
           ..add('number', number)
           ..add('sort', sort)
+          ..add('pageable', pageable)
           ..add('empty', empty))
         .toString();
   }
@@ -127,11 +127,6 @@ class PageColdWalletBuilder
   bool? get last => _$this._last;
   set last(bool? last) => _$this._last = last;
 
-  PageableObjectBuilder? _pageable;
-  PageableObjectBuilder get pageable =>
-      _$this._pageable ??= PageableObjectBuilder();
-  set pageable(PageableObjectBuilder? pageable) => _$this._pageable = pageable;
-
   int? _numberOfElements;
   int? get numberOfElements => _$this._numberOfElements;
   set numberOfElements(int? numberOfElements) =>
@@ -154,6 +149,11 @@ class PageColdWalletBuilder
   SortObjectBuilder get sort => _$this._sort ??= SortObjectBuilder();
   set sort(SortObjectBuilder? sort) => _$this._sort = sort;
 
+  PageableObjectBuilder? _pageable;
+  PageableObjectBuilder get pageable =>
+      _$this._pageable ??= PageableObjectBuilder();
+  set pageable(PageableObjectBuilder? pageable) => _$this._pageable = pageable;
+
   bool? _empty;
   bool? get empty => _$this._empty;
   set empty(bool? empty) => _$this._empty = empty;
@@ -169,12 +169,12 @@ class PageColdWalletBuilder
       _totalElements = $v.totalElements;
       _first = $v.first;
       _last = $v.last;
-      _pageable = $v.pageable?.toBuilder();
       _numberOfElements = $v.numberOfElements;
       _size = $v.size;
       _content = $v.content?.toBuilder();
       _number = $v.number;
       _sort = $v.sort?.toBuilder();
+      _pageable = $v.pageable?.toBuilder();
       _empty = $v.empty;
       _$v = null;
     }
@@ -203,25 +203,24 @@ class PageColdWalletBuilder
             totalElements: totalElements,
             first: first,
             last: last,
-            pageable: _pageable?.build(),
             numberOfElements: numberOfElements,
             size: size,
             content: _content?.build(),
             number: number,
             sort: _sort?.build(),
+            pageable: _pageable?.build(),
             empty: empty,
           );
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'pageable';
-        _pageable?.build();
-
         _$failedField = 'content';
         _content?.build();
 
         _$failedField = 'sort';
         _sort?.build();
+        _$failedField = 'pageable';
+        _pageable?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
             r'PageColdWallet', _$failedField, e.toString());

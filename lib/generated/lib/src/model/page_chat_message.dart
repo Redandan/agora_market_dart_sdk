@@ -19,12 +19,12 @@ part 'page_chat_message.g.dart';
 /// * [totalElements] 
 /// * [first] 
 /// * [last] 
-/// * [pageable] 
 /// * [numberOfElements] 
 /// * [size] 
 /// * [content] 
 /// * [number] 
 /// * [sort] 
+/// * [pageable] 
 /// * [empty] 
 @BuiltValue()
 abstract class PageChatMessage implements Built<PageChatMessage, PageChatMessageBuilder> {
@@ -40,9 +40,6 @@ abstract class PageChatMessage implements Built<PageChatMessage, PageChatMessage
   @BuiltValueField(wireName: r'last')
   bool? get last;
 
-  @BuiltValueField(wireName: r'pageable')
-  PageableObject? get pageable;
-
   @BuiltValueField(wireName: r'numberOfElements')
   int? get numberOfElements;
 
@@ -57,6 +54,9 @@ abstract class PageChatMessage implements Built<PageChatMessage, PageChatMessage
 
   @BuiltValueField(wireName: r'sort')
   SortObject? get sort;
+
+  @BuiltValueField(wireName: r'pageable')
+  PageableObject? get pageable;
 
   @BuiltValueField(wireName: r'empty')
   bool? get empty;
@@ -112,13 +112,6 @@ class _$PageChatMessageSerializer implements PrimitiveSerializer<PageChatMessage
         specifiedType: const FullType(bool),
       );
     }
-    if (object.pageable != null) {
-      yield r'pageable';
-      yield serializers.serialize(
-        object.pageable,
-        specifiedType: const FullType(PageableObject),
-      );
-    }
     if (object.numberOfElements != null) {
       yield r'numberOfElements';
       yield serializers.serialize(
@@ -152,6 +145,13 @@ class _$PageChatMessageSerializer implements PrimitiveSerializer<PageChatMessage
       yield serializers.serialize(
         object.sort,
         specifiedType: const FullType(SortObject),
+      );
+    }
+    if (object.pageable != null) {
+      yield r'pageable';
+      yield serializers.serialize(
+        object.pageable,
+        specifiedType: const FullType(PageableObject),
       );
     }
     if (object.empty != null) {
@@ -212,13 +212,6 @@ class _$PageChatMessageSerializer implements PrimitiveSerializer<PageChatMessage
           ) as bool;
           result.last = valueDes;
           break;
-        case r'pageable':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(PageableObject),
-          ) as PageableObject;
-          result.pageable.replace(valueDes);
-          break;
         case r'numberOfElements':
           final valueDes = serializers.deserialize(
             value,
@@ -253,6 +246,13 @@ class _$PageChatMessageSerializer implements PrimitiveSerializer<PageChatMessage
             specifiedType: const FullType(SortObject),
           ) as SortObject;
           result.sort.replace(valueDes);
+          break;
+        case r'pageable':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(PageableObject),
+          ) as PageableObject;
+          result.pageable.replace(valueDes);
           break;
         case r'empty':
           final valueDes = serializers.deserialize(

@@ -10,6 +10,7 @@ All URIs are relative to *https://agoramarketapi.onrender.com/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createProduct**](ProductsApi.md#createproduct) | **POST** /products/create | 創建商品
+[**getMyProducts**](ProductsApi.md#getmyproducts) | **GET** /products/my-products | 獲取賣家自己的商品列表
 [**getProduct**](ProductsApi.md#getproduct) | **GET** /products/{id} | 根據ID獲取商品
 [**getProductsBySearch**](ProductsApi.md#getproductsbysearch) | **GET** /products/search | 搜索商品
 [**updateProduct**](ProductsApi.md#updateproduct) | **POST** /products/update | 更新商品
@@ -52,6 +53,47 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getMyProducts**
+> PageProduct getMyProducts(searchParam)
+
+獲取賣家自己的商品列表
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api = AgoraMarketDartSdk().getProductsApi();
+final ProductSeachParam searchParam = ; // ProductSeachParam | 
+
+try {
+    final response = api.getMyProducts(searchParam);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling ProductsApi->getMyProducts: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchParam** | [**ProductSeachParam**](.md)|  | 
+
+### Return type
+
+[**PageProduct**](PageProduct.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

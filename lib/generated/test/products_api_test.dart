@@ -14,6 +14,13 @@ void main() {
       // TODO
     });
 
+    // 獲取賣家自己的商品列表
+    //
+    //Future<PageProduct> getMyProducts(ProductSeachParam searchParam) async
+    test('test getMyProducts', () async {
+      // TODO
+    });
+
     // 根據ID獲取商品
     //
     //Future<Product> getProduct(int id) async

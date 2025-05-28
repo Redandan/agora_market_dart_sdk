@@ -158,6 +158,7 @@ Class | Method | HTTP request | Description
 [*MemberOrdersApi*](doc/MemberOrdersApi.md) | [**shipOrder**](doc/MemberOrdersApi.md#shiporder) | **POST** /orders/ship | 發貨
 [*MemberOrdersApi*](doc/MemberOrdersApi.md) | [**submitOrder**](doc/MemberOrdersApi.md#submitorder) | **POST** /orders | 提交訂單
 [*ProductsApi*](doc/ProductsApi.md) | [**createProduct**](doc/ProductsApi.md#createproduct) | **POST** /products/create | 創建商品
+[*ProductsApi*](doc/ProductsApi.md) | [**getMyProducts**](doc/ProductsApi.md#getmyproducts) | **GET** /products/my-products | 獲取賣家自己的商品列表
 [*ProductsApi*](doc/ProductsApi.md) | [**getProduct**](doc/ProductsApi.md#getproduct) | **GET** /products/{id} | 根據ID獲取商品
 [*ProductsApi*](doc/ProductsApi.md) | [**getProductsBySearch**](doc/ProductsApi.md#getproductsbysearch) | **GET** /products/search | 搜索商品
 [*ProductsApi*](doc/ProductsApi.md) | [**updateProduct**](doc/ProductsApi.md#updateproduct) | **POST** /products/update | 更新商品
