@@ -3,364 +3,293 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'product_seach_param.g.dart';
 
-/// 商品搜尋參數
-///
-/// Properties:
-/// * [id] - 商品ID
-/// * [sellerId] - 賣家ID
-/// * [status] - 商品狀態
-/// * [category] - 商品分類
-/// * [startDate] - 開始日期
-/// * [endDate] - 結束日期
-/// * [page] - 頁碼
-/// * [size] - 每頁大小
-/// * [postalCode] - 郵遞區號
-/// * [longitude] - 經度
-/// * [latitude] - 緯度
-@BuiltValue()
-abstract class ProductSeachParam implements Built<ProductSeachParam, ProductSeachParamBuilder> {
-  /// 商品ID
-  @BuiltValueField(wireName: r'id')
-  String? get id;
 
-  /// 賣家ID
-  @BuiltValueField(wireName: r'sellerId')
-  int? get sellerId;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class ProductSeachParam {
+  /// Returns a new [ProductSeachParam] instance.
+  ProductSeachParam({
 
-  /// 商品狀態
-  @BuiltValueField(wireName: r'status')
-  ProductSeachParamStatusEnum? get status;
-  // enum statusEnum {  ON_SALE,  OFF_SALE,  SOLD_OUT,  DELETED,  };
+     this.id,
 
-  /// 商品分類
-  @BuiltValueField(wireName: r'category')
-  ProductSeachParamCategoryEnum? get category;
-  // enum categoryEnum {  ELECTRONICS,  FOOD,  CLOTHING,  HOME,  BEAUTY,  BOOKS,  TOYS,  OTHER,  };
+     this.sellerId,
 
-  /// 開始日期
-  @BuiltValueField(wireName: r'startDate')
-  DateTime? get startDate;
+     this.status,
 
-  /// 結束日期
-  @BuiltValueField(wireName: r'endDate')
-  DateTime? get endDate;
+     this.category,
 
-  /// 頁碼
-  @BuiltValueField(wireName: r'page')
-  int? get page;
+     this.startDate,
 
-  /// 每頁大小
-  @BuiltValueField(wireName: r'size')
-  int? get size;
+     this.endDate,
 
-  /// 郵遞區號
-  @BuiltValueField(wireName: r'postalCode')
-  String? get postalCode;
+     this.page,
 
-  /// 經度
-  @BuiltValueField(wireName: r'longitude')
-  double? get longitude;
+     this.size,
 
-  /// 緯度
-  @BuiltValueField(wireName: r'latitude')
-  double? get latitude;
+     this.postalCode,
 
-  ProductSeachParam._();
+     this.longitude,
 
-  factory ProductSeachParam([void updates(ProductSeachParamBuilder b)]) = _$ProductSeachParam;
+     this.latitude,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(ProductSeachParamBuilder b) => b;
+      /// 商品ID
+  @JsonKey(
+    
+    name: r'id',
+    required: false,
+    includeIfNull: false,
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<ProductSeachParam> get serializer => _$ProductSeachParamSerializer();
-}
 
-class _$ProductSeachParamSerializer implements PrimitiveSerializer<ProductSeachParam> {
-  @override
-  final Iterable<Type> types = const [ProductSeachParam, _$ProductSeachParam];
+  final String? id;
 
-  @override
-  final String wireName = r'ProductSeachParam';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    ProductSeachParam object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.sellerId != null) {
-      yield r'sellerId';
-      yield serializers.serialize(
-        object.sellerId,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.status != null) {
-      yield r'status';
-      yield serializers.serialize(
-        object.status,
-        specifiedType: const FullType(ProductSeachParamStatusEnum),
-      );
-    }
-    if (object.category != null) {
-      yield r'category';
-      yield serializers.serialize(
-        object.category,
-        specifiedType: const FullType(ProductSeachParamCategoryEnum),
-      );
-    }
-    if (object.startDate != null) {
-      yield r'startDate';
-      yield serializers.serialize(
-        object.startDate,
-        specifiedType: const FullType(DateTime),
-      );
-    }
-    if (object.endDate != null) {
-      yield r'endDate';
-      yield serializers.serialize(
-        object.endDate,
-        specifiedType: const FullType(DateTime),
-      );
-    }
-    if (object.page != null) {
-      yield r'page';
-      yield serializers.serialize(
-        object.page,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.size != null) {
-      yield r'size';
-      yield serializers.serialize(
-        object.size,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.postalCode != null) {
-      yield r'postalCode';
-      yield serializers.serialize(
-        object.postalCode,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.longitude != null) {
-      yield r'longitude';
-      yield serializers.serialize(
-        object.longitude,
-        specifiedType: const FullType(double),
-      );
-    }
-    if (object.latitude != null) {
-      yield r'latitude';
-      yield serializers.serialize(
-        object.latitude,
-        specifiedType: const FullType(double),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    ProductSeachParam object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+      /// 賣家ID
+  @JsonKey(
+    
+    name: r'sellerId',
+    required: false,
+    includeIfNull: false,
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required ProductSeachParamBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.id = valueDes;
-          break;
-        case r'sellerId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.sellerId = valueDes;
-          break;
-        case r'status':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(ProductSeachParamStatusEnum),
-          ) as ProductSeachParamStatusEnum;
-          result.status = valueDes;
-          break;
-        case r'category':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(ProductSeachParamCategoryEnum),
-          ) as ProductSeachParamCategoryEnum;
-          result.category = valueDes;
-          break;
-        case r'startDate':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.startDate = valueDes;
-          break;
-        case r'endDate':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.endDate = valueDes;
-          break;
-        case r'page':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.page = valueDes;
-          break;
-        case r'size':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.size = valueDes;
-          break;
-        case r'postalCode':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.postalCode = valueDes;
-          break;
-        case r'longitude':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(double),
-          ) as double;
-          result.longitude = valueDes;
-          break;
-        case r'latitude':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(double),
-          ) as double;
-          result.latitude = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final int? sellerId;
+
+
+
+      /// 商品狀態
+  @JsonKey(
+    
+    name: r'status',
+    required: false,
+    includeIfNull: false,
+  unknownEnumValue: ProductSeachParamStatusEnum.unknownDefaultOpenApi,
+  )
+
+
+  final ProductSeachParamStatusEnum? status;
+
+
+
+      /// 商品分類
+  @JsonKey(
+    
+    name: r'category',
+    required: false,
+    includeIfNull: false,
+  unknownEnumValue: ProductSeachParamCategoryEnum.unknownDefaultOpenApi,
+  )
+
+
+  final ProductSeachParamCategoryEnum? category;
+
+
+
+      /// 開始日期
+  @JsonKey(
+    
+    name: r'startDate',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final DateTime? startDate;
+
+
+
+      /// 結束日期
+  @JsonKey(
+    
+    name: r'endDate',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final DateTime? endDate;
+
+
+
+      /// 頁碼
+  @JsonKey(
+    
+    name: r'page',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final int? page;
+
+
+
+      /// 每頁大小
+  @JsonKey(
+    
+    name: r'size',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final int? size;
+
+
+
+      /// 郵遞區號
+  @JsonKey(
+    
+    name: r'postalCode',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? postalCode;
+
+
+
+      /// 經度
+  @JsonKey(
+    
+    name: r'longitude',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final double? longitude;
+
+
+
+      /// 緯度
+  @JsonKey(
+    
+    name: r'latitude',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final double? latitude;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is ProductSeachParam &&
+      other.id == id &&
+      other.sellerId == sellerId &&
+      other.status == status &&
+      other.category == category &&
+      other.startDate == startDate &&
+      other.endDate == endDate &&
+      other.page == page &&
+      other.size == size &&
+      other.postalCode == postalCode &&
+      other.longitude == longitude &&
+      other.latitude == latitude;
+
+    @override
+    int get hashCode =>
+        id.hashCode +
+        sellerId.hashCode +
+        status.hashCode +
+        category.hashCode +
+        startDate.hashCode +
+        endDate.hashCode +
+        page.hashCode +
+        size.hashCode +
+        postalCode.hashCode +
+        longitude.hashCode +
+        latitude.hashCode;
+
+  factory ProductSeachParam.fromJson(Map<String, dynamic> json) => _$ProductSeachParamFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ProductSeachParamToJson(this);
 
   @override
-  ProductSeachParam deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = ProductSeachParamBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 
-class ProductSeachParamStatusEnum extends EnumClass {
+/// 商品狀態
+enum ProductSeachParamStatusEnum {
+    /// 商品狀態
+@JsonValue(r'ON_SALE')
+ON_SALE(r'ON_SALE'),
+    /// 商品狀態
+@JsonValue(r'OFF_SALE')
+OFF_SALE(r'OFF_SALE'),
+    /// 商品狀態
+@JsonValue(r'SOLD_OUT')
+SOLD_OUT(r'SOLD_OUT'),
+    /// 商品狀態
+@JsonValue(r'DELETED')
+DELETED(r'DELETED'),
+    /// 商品狀態
+@JsonValue(r'unknown_default_open_api')
+unknownDefaultOpenApi(r'unknown_default_open_api');
 
-  /// 商品狀態
-  @BuiltValueEnumConst(wireName: r'ON_SALE')
-  static const ProductSeachParamStatusEnum ON_SALE = _$productSeachParamStatusEnum_ON_SALE;
-  /// 商品狀態
-  @BuiltValueEnumConst(wireName: r'OFF_SALE')
-  static const ProductSeachParamStatusEnum OFF_SALE = _$productSeachParamStatusEnum_OFF_SALE;
-  /// 商品狀態
-  @BuiltValueEnumConst(wireName: r'SOLD_OUT')
-  static const ProductSeachParamStatusEnum SOLD_OUT = _$productSeachParamStatusEnum_SOLD_OUT;
-  /// 商品狀態
-  @BuiltValueEnumConst(wireName: r'DELETED')
-  static const ProductSeachParamStatusEnum DELETED = _$productSeachParamStatusEnum_DELETED;
-  /// 商品狀態
-  @BuiltValueEnumConst(wireName: r'unknown_default_open_api', fallback: true)
-  static const ProductSeachParamStatusEnum unknownDefaultOpenApi = _$productSeachParamStatusEnum_unknownDefaultOpenApi;
+const ProductSeachParamStatusEnum(this.value);
 
-  static Serializer<ProductSeachParamStatusEnum> get serializer => _$productSeachParamStatusEnumSerializer;
+final String value;
 
-  const ProductSeachParamStatusEnum._(String name): super(name);
-
-  static BuiltSet<ProductSeachParamStatusEnum> get values => _$productSeachParamStatusEnumValues;
-  static ProductSeachParamStatusEnum valueOf(String name) => _$productSeachParamStatusEnumValueOf(name);
+@override
+String toString() => value;
 }
 
-class ProductSeachParamCategoryEnum extends EnumClass {
 
-  /// 商品分類
-  @BuiltValueEnumConst(wireName: r'ELECTRONICS')
-  static const ProductSeachParamCategoryEnum ELECTRONICS = _$productSeachParamCategoryEnum_ELECTRONICS;
-  /// 商品分類
-  @BuiltValueEnumConst(wireName: r'FOOD')
-  static const ProductSeachParamCategoryEnum FOOD = _$productSeachParamCategoryEnum_FOOD;
-  /// 商品分類
-  @BuiltValueEnumConst(wireName: r'CLOTHING')
-  static const ProductSeachParamCategoryEnum CLOTHING = _$productSeachParamCategoryEnum_CLOTHING;
-  /// 商品分類
-  @BuiltValueEnumConst(wireName: r'HOME')
-  static const ProductSeachParamCategoryEnum HOME = _$productSeachParamCategoryEnum_HOME;
-  /// 商品分類
-  @BuiltValueEnumConst(wireName: r'BEAUTY')
-  static const ProductSeachParamCategoryEnum BEAUTY = _$productSeachParamCategoryEnum_BEAUTY;
-  /// 商品分類
-  @BuiltValueEnumConst(wireName: r'BOOKS')
-  static const ProductSeachParamCategoryEnum BOOKS = _$productSeachParamCategoryEnum_BOOKS;
-  /// 商品分類
-  @BuiltValueEnumConst(wireName: r'TOYS')
-  static const ProductSeachParamCategoryEnum TOYS = _$productSeachParamCategoryEnum_TOYS;
-  /// 商品分類
-  @BuiltValueEnumConst(wireName: r'OTHER')
-  static const ProductSeachParamCategoryEnum OTHER = _$productSeachParamCategoryEnum_OTHER;
-  /// 商品分類
-  @BuiltValueEnumConst(wireName: r'unknown_default_open_api', fallback: true)
-  static const ProductSeachParamCategoryEnum unknownDefaultOpenApi = _$productSeachParamCategoryEnum_unknownDefaultOpenApi;
+/// 商品分類
+enum ProductSeachParamCategoryEnum {
+    /// 商品分類
+@JsonValue(r'ELECTRONICS')
+ELECTRONICS(r'ELECTRONICS'),
+    /// 商品分類
+@JsonValue(r'FOOD')
+FOOD(r'FOOD'),
+    /// 商品分類
+@JsonValue(r'CLOTHING')
+CLOTHING(r'CLOTHING'),
+    /// 商品分類
+@JsonValue(r'HOME')
+HOME(r'HOME'),
+    /// 商品分類
+@JsonValue(r'BEAUTY')
+BEAUTY(r'BEAUTY'),
+    /// 商品分類
+@JsonValue(r'BOOKS')
+BOOKS(r'BOOKS'),
+    /// 商品分類
+@JsonValue(r'TOYS')
+TOYS(r'TOYS'),
+    /// 商品分類
+@JsonValue(r'OTHER')
+OTHER(r'OTHER'),
+    /// 商品分類
+@JsonValue(r'unknown_default_open_api')
+unknownDefaultOpenApi(r'unknown_default_open_api');
 
-  static Serializer<ProductSeachParamCategoryEnum> get serializer => _$productSeachParamCategoryEnumSerializer;
+const ProductSeachParamCategoryEnum(this.value);
 
-  const ProductSeachParamCategoryEnum._(String name): super(name);
+final String value;
 
-  static BuiltSet<ProductSeachParamCategoryEnum> get values => _$productSeachParamCategoryEnumValues;
-  static ProductSeachParamCategoryEnum valueOf(String name) => _$productSeachParamCategoryEnumValueOf(name);
+@override
+String toString() => value;
 }
+
 

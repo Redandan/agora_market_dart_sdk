@@ -3,297 +3,225 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'order_search_param.g.dart';
 
-/// 訂單搜索參數
-///
-/// Properties:
-/// * [orderId] - 訂單ID
-/// * [buyerId] - 買家ID
-/// * [sellerId] - 賣家ID
-/// * [productId] - 商品ID
-/// * [status] - 訂單狀態
-/// * [startTime] - 開始時間
-/// * [endTime] - 結束時間
-/// * [startDate] - 開始日期
-/// * [endDate] - 結束日期
-/// * [page] - 頁碼
-/// * [size] - 每頁大小
-@BuiltValue()
-abstract class OrderSearchParam implements Built<OrderSearchParam, OrderSearchParamBuilder> {
-  /// 訂單ID
-  @BuiltValueField(wireName: r'orderId')
-  String? get orderId;
 
-  /// 買家ID
-  @BuiltValueField(wireName: r'buyerId')
-  int? get buyerId;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class OrderSearchParam {
+  /// Returns a new [OrderSearchParam] instance.
+  OrderSearchParam({
 
-  /// 賣家ID
-  @BuiltValueField(wireName: r'sellerId')
-  int? get sellerId;
+     this.orderId,
 
-  /// 商品ID
-  @BuiltValueField(wireName: r'productId')
-  int? get productId;
+     this.buyerId,
 
-  /// 訂單狀態
-  @BuiltValueField(wireName: r'status')
-  String? get status;
+     this.sellerId,
 
-  /// 開始時間
-  @BuiltValueField(wireName: r'startTime')
-  String? get startTime;
+     this.productId,
 
-  /// 結束時間
-  @BuiltValueField(wireName: r'endTime')
-  String? get endTime;
+     this.status,
 
-  /// 開始日期
-  @BuiltValueField(wireName: r'startDate')
-  DateTime? get startDate;
+     this.startTime,
 
-  /// 結束日期
-  @BuiltValueField(wireName: r'endDate')
-  DateTime? get endDate;
+     this.endTime,
 
-  /// 頁碼
-  @BuiltValueField(wireName: r'page')
-  int? get page;
+     this.startDate,
 
-  /// 每頁大小
-  @BuiltValueField(wireName: r'size')
-  int? get size;
+     this.endDate,
 
-  OrderSearchParam._();
+     this.page,
 
-  factory OrderSearchParam([void updates(OrderSearchParamBuilder b)]) = _$OrderSearchParam;
+     this.size,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(OrderSearchParamBuilder b) => b;
+      /// 訂單ID
+  @JsonKey(
+    
+    name: r'orderId',
+    required: false,
+    includeIfNull: false,
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<OrderSearchParam> get serializer => _$OrderSearchParamSerializer();
-}
 
-class _$OrderSearchParamSerializer implements PrimitiveSerializer<OrderSearchParam> {
-  @override
-  final Iterable<Type> types = const [OrderSearchParam, _$OrderSearchParam];
+  final String? orderId;
 
-  @override
-  final String wireName = r'OrderSearchParam';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    OrderSearchParam object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.orderId != null) {
-      yield r'orderId';
-      yield serializers.serialize(
-        object.orderId,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.buyerId != null) {
-      yield r'buyerId';
-      yield serializers.serialize(
-        object.buyerId,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.sellerId != null) {
-      yield r'sellerId';
-      yield serializers.serialize(
-        object.sellerId,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.productId != null) {
-      yield r'productId';
-      yield serializers.serialize(
-        object.productId,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.status != null) {
-      yield r'status';
-      yield serializers.serialize(
-        object.status,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.startTime != null) {
-      yield r'startTime';
-      yield serializers.serialize(
-        object.startTime,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.endTime != null) {
-      yield r'endTime';
-      yield serializers.serialize(
-        object.endTime,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.startDate != null) {
-      yield r'startDate';
-      yield serializers.serialize(
-        object.startDate,
-        specifiedType: const FullType(DateTime),
-      );
-    }
-    if (object.endDate != null) {
-      yield r'endDate';
-      yield serializers.serialize(
-        object.endDate,
-        specifiedType: const FullType(DateTime),
-      );
-    }
-    if (object.page != null) {
-      yield r'page';
-      yield serializers.serialize(
-        object.page,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.size != null) {
-      yield r'size';
-      yield serializers.serialize(
-        object.size,
-        specifiedType: const FullType(int),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    OrderSearchParam object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+      /// 買家ID
+  @JsonKey(
+    
+    name: r'buyerId',
+    required: false,
+    includeIfNull: false,
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required OrderSearchParamBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'orderId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.orderId = valueDes;
-          break;
-        case r'buyerId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.buyerId = valueDes;
-          break;
-        case r'sellerId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.sellerId = valueDes;
-          break;
-        case r'productId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.productId = valueDes;
-          break;
-        case r'status':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.status = valueDes;
-          break;
-        case r'startTime':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.startTime = valueDes;
-          break;
-        case r'endTime':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.endTime = valueDes;
-          break;
-        case r'startDate':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.startDate = valueDes;
-          break;
-        case r'endDate':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.endDate = valueDes;
-          break;
-        case r'page':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.page = valueDes;
-          break;
-        case r'size':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.size = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final int? buyerId;
+
+
+
+      /// 賣家ID
+  @JsonKey(
+    
+    name: r'sellerId',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final int? sellerId;
+
+
+
+      /// 商品ID
+  @JsonKey(
+    
+    name: r'productId',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final int? productId;
+
+
+
+      /// 訂單狀態
+  @JsonKey(
+    
+    name: r'status',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? status;
+
+
+
+      /// 開始時間
+  @JsonKey(
+    
+    name: r'startTime',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? startTime;
+
+
+
+      /// 結束時間
+  @JsonKey(
+    
+    name: r'endTime',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? endTime;
+
+
+
+      /// 開始日期
+  @JsonKey(
+    
+    name: r'startDate',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final DateTime? startDate;
+
+
+
+      /// 結束日期
+  @JsonKey(
+    
+    name: r'endDate',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final DateTime? endDate;
+
+
+
+      /// 頁碼
+  @JsonKey(
+    
+    name: r'page',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final int? page;
+
+
+
+      /// 每頁大小
+  @JsonKey(
+    
+    name: r'size',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final int? size;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is OrderSearchParam &&
+      other.orderId == orderId &&
+      other.buyerId == buyerId &&
+      other.sellerId == sellerId &&
+      other.productId == productId &&
+      other.status == status &&
+      other.startTime == startTime &&
+      other.endTime == endTime &&
+      other.startDate == startDate &&
+      other.endDate == endDate &&
+      other.page == page &&
+      other.size == size;
+
+    @override
+    int get hashCode =>
+        orderId.hashCode +
+        buyerId.hashCode +
+        sellerId.hashCode +
+        productId.hashCode +
+        status.hashCode +
+        startTime.hashCode +
+        endTime.hashCode +
+        startDate.hashCode +
+        endDate.hashCode +
+        page.hashCode +
+        size.hashCode;
+
+  factory OrderSearchParam.fromJson(Map<String, dynamic> json) => _$OrderSearchParamFromJson(json);
+
+  Map<String, dynamic> toJson() => _$OrderSearchParamToJson(this);
 
   @override
-  OrderSearchParam deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = OrderSearchParamBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

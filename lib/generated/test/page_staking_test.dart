@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for PageStaking
 void main() {
-  final instance = PageStakingBuilder();
-  // TODO add properties to the builder and call build()
+  final PageStaking? instance = /* PageStaking(...) */ null;
+  // TODO add properties to the entity
 
   group(PageStaking, () {
     // int totalPages
@@ -37,7 +37,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<Staking> content
+    // List<Staking> content
     test('to test the property `content`', () async {
       // TODO
     });

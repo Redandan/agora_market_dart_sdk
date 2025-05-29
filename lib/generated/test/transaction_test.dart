@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for Transaction
 void main() {
-  final instance = TransactionBuilder();
-  // TODO add properties to the builder and call build()
+  final Transaction? instance = /* Transaction(...) */ null;
+  // TODO add properties to the entity
 
   group(Transaction, () {
     // 交易ID

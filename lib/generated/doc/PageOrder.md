@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **last** | **bool** |  | [optional] 
 **numberOfElements** | **int** |  | [optional] 
 **size** | **int** |  | [optional] 
-**content** | [**BuiltList&lt;Order&gt;**](Order.md) |  | [optional] 
+**content** | [**List&lt;Order&gt;**](Order.md) |  | [optional] 
 **number** | **int** |  | [optional] 
 **sort** | [**SortObject**](SortObject.md) |  | [optional] 
 **pageable** | [**PageableObject**](PageableObject.md) |  | [optional] 

@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for LoginParam
 void main() {
-  final instance = LoginParamBuilder();
-  // TODO add properties to the builder and call build()
+  final LoginParam? instance = /* LoginParam(...) */ null;
+  // TODO add properties to the entity
 
   group(LoginParam, () {
     // 用戶名

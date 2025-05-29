@@ -20,7 +20,7 @@ void main() {
     //
     // 獲取會員相關的統計數據
     //
-    //Future<BuiltMap<String, JsonObject>> getMemberStatistics({ DateTime startDate, DateTime endDate }) async
+    //Future<Map<String, Object>> getMemberStatistics({ DateTime startDate, DateTime endDate }) async
     test('test getMemberStatistics', () async {
       // TODO
     });

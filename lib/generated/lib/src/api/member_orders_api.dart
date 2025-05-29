@@ -4,11 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:agora_market_dart_sdk/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:agora_market_dart_sdk/src/api_util.dart';
 import 'package:agora_market_dart_sdk/src/model/order_cancel_param.dart';
 import 'package:agora_market_dart_sdk/src/model/order_confirm_param.dart';
 import 'package:agora_market_dart_sdk/src/model/order_query_result.dart';
@@ -21,9 +21,7 @@ class MemberOrdersApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const MemberOrdersApi(this._dio, this._serializers);
+  const MemberOrdersApi(this._dio);
 
   /// 取消訂單
   /// 取消訂單
@@ -65,9 +63,7 @@ class MemberOrdersApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(OrderCancelParam);
-      _bodyData = _serializers.serialize(orderCancelParam, specifiedType: _type);
-
+_bodyData=jsonEncode(orderCancelParam);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -132,9 +128,7 @@ class MemberOrdersApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(OrderConfirmParam);
-      _bodyData = _serializers.serialize(orderConfirmParam, specifiedType: _type);
-
+_bodyData=jsonEncode(orderConfirmParam);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -182,7 +176,7 @@ class MemberOrdersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/orders/{orderId}'.replaceAll('{' r'orderId' '}', encodeQueryParameter(_serializers, orderId, const FullType(String)).toString());
+    final _path = r'/orders/{orderId}'.replaceAll('{' r'orderId' '}', orderId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -206,12 +200,8 @@ class MemberOrdersApi {
     OrderQueryResult? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(OrderQueryResult),
-      ) as OrderQueryResult;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<OrderQueryResult, OrderQueryResult>(rawData, 'OrderQueryResult', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -271,7 +261,7 @@ class MemberOrdersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'searchParam': encodeQueryParameter(_serializers, searchParam, const FullType(OrderSearchParam)),
+      r'searchParam': searchParam,
     };
 
     final _response = await _dio.request<Object>(
@@ -286,12 +276,8 @@ class MemberOrdersApi {
     PageOrder? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PageOrder),
-      ) as PageOrder;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PageOrder, PageOrder>(rawData, 'PageOrder', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -351,7 +337,7 @@ class MemberOrdersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'searchParam': encodeQueryParameter(_serializers, searchParam, const FullType(OrderSearchParam)),
+      r'searchParam': searchParam,
     };
 
     final _response = await _dio.request<Object>(
@@ -366,12 +352,8 @@ class MemberOrdersApi {
     PageOrder? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PageOrder),
-      ) as PageOrder;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PageOrder, PageOrder>(rawData, 'PageOrder', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -434,9 +416,7 @@ class MemberOrdersApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(OrderShipParam);
-      _bodyData = _serializers.serialize(orderShipParam, specifiedType: _type);
-
+_bodyData=jsonEncode(orderShipParam);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -501,9 +481,7 @@ class MemberOrdersApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(OrderSumbitParam);
-      _bodyData = _serializers.serialize(orderSumbitParam, specifiedType: _type);
-
+_bodyData=jsonEncode(orderSumbitParam);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(

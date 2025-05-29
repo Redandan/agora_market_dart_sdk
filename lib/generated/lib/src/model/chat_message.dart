@@ -3,240 +3,174 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'chat_message.g.dart';
 
-/// 聊天消息
-///
-/// Properties:
-/// * [id] - 消息ID
-/// * [senderId] - 發送者ID
-/// * [receiverId] - 接收者ID
-/// * [content] - 消息內容
-/// * [read] - 是否已讀
-/// * [createdAt] - 創建時間
-/// * [updatedAt] - 更新時間
-/// * [deletedAt] - 刪除時間
-@BuiltValue()
-abstract class ChatMessage implements Built<ChatMessage, ChatMessageBuilder> {
-  /// 消息ID
-  @BuiltValueField(wireName: r'id')
-  int? get id;
 
-  /// 發送者ID
-  @BuiltValueField(wireName: r'senderId')
-  int? get senderId;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class ChatMessage {
+  /// Returns a new [ChatMessage] instance.
+  ChatMessage({
 
-  /// 接收者ID
-  @BuiltValueField(wireName: r'receiverId')
-  int? get receiverId;
+     this.id,
 
-  /// 消息內容
-  @BuiltValueField(wireName: r'content')
-  String? get content;
+     this.senderId,
 
-  /// 是否已讀
-  @BuiltValueField(wireName: r'read')
-  bool? get read;
+     this.receiverId,
 
-  /// 創建時間
-  @BuiltValueField(wireName: r'createdAt')
-  DateTime? get createdAt;
+     this.content,
 
-  /// 更新時間
-  @BuiltValueField(wireName: r'updatedAt')
-  DateTime? get updatedAt;
+     this.read,
 
-  /// 刪除時間
-  @BuiltValueField(wireName: r'deletedAt')
-  DateTime? get deletedAt;
+     this.createdAt,
 
-  ChatMessage._();
+     this.updatedAt,
 
-  factory ChatMessage([void updates(ChatMessageBuilder b)]) = _$ChatMessage;
+     this.deletedAt,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(ChatMessageBuilder b) => b;
+      /// 消息ID
+  @JsonKey(
+    
+    name: r'id',
+    required: false,
+    includeIfNull: false,
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<ChatMessage> get serializer => _$ChatMessageSerializer();
-}
 
-class _$ChatMessageSerializer implements PrimitiveSerializer<ChatMessage> {
-  @override
-  final Iterable<Type> types = const [ChatMessage, _$ChatMessage];
+  final int? id;
 
-  @override
-  final String wireName = r'ChatMessage';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    ChatMessage object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.senderId != null) {
-      yield r'senderId';
-      yield serializers.serialize(
-        object.senderId,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.receiverId != null) {
-      yield r'receiverId';
-      yield serializers.serialize(
-        object.receiverId,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.content != null) {
-      yield r'content';
-      yield serializers.serialize(
-        object.content,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.read != null) {
-      yield r'read';
-      yield serializers.serialize(
-        object.read,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.createdAt != null) {
-      yield r'createdAt';
-      yield serializers.serialize(
-        object.createdAt,
-        specifiedType: const FullType(DateTime),
-      );
-    }
-    if (object.updatedAt != null) {
-      yield r'updatedAt';
-      yield serializers.serialize(
-        object.updatedAt,
-        specifiedType: const FullType(DateTime),
-      );
-    }
-    if (object.deletedAt != null) {
-      yield r'deletedAt';
-      yield serializers.serialize(
-        object.deletedAt,
-        specifiedType: const FullType(DateTime),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    ChatMessage object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+      /// 發送者ID
+  @JsonKey(
+    
+    name: r'senderId',
+    required: false,
+    includeIfNull: false,
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required ChatMessageBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.id = valueDes;
-          break;
-        case r'senderId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.senderId = valueDes;
-          break;
-        case r'receiverId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.receiverId = valueDes;
-          break;
-        case r'content':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.content = valueDes;
-          break;
-        case r'read':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.read = valueDes;
-          break;
-        case r'createdAt':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.createdAt = valueDes;
-          break;
-        case r'updatedAt':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.updatedAt = valueDes;
-          break;
-        case r'deletedAt':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.deletedAt = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final int? senderId;
+
+
+
+      /// 接收者ID
+  @JsonKey(
+    
+    name: r'receiverId',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final int? receiverId;
+
+
+
+      /// 消息內容
+  @JsonKey(
+    
+    name: r'content',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? content;
+
+
+
+      /// 是否已讀
+  @JsonKey(
+    
+    name: r'read',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final bool? read;
+
+
+
+      /// 創建時間
+  @JsonKey(
+    
+    name: r'createdAt',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final DateTime? createdAt;
+
+
+
+      /// 更新時間
+  @JsonKey(
+    
+    name: r'updatedAt',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final DateTime? updatedAt;
+
+
+
+      /// 刪除時間
+  @JsonKey(
+    
+    name: r'deletedAt',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final DateTime? deletedAt;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is ChatMessage &&
+      other.id == id &&
+      other.senderId == senderId &&
+      other.receiverId == receiverId &&
+      other.content == content &&
+      other.read == read &&
+      other.createdAt == createdAt &&
+      other.updatedAt == updatedAt &&
+      other.deletedAt == deletedAt;
+
+    @override
+    int get hashCode =>
+        id.hashCode +
+        senderId.hashCode +
+        receiverId.hashCode +
+        content.hashCode +
+        read.hashCode +
+        createdAt.hashCode +
+        updatedAt.hashCode +
+        deletedAt.hashCode;
+
+  factory ChatMessage.fromJson(Map<String, dynamic> json) => _$ChatMessageFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ChatMessageToJson(this);
 
   @override
-  ChatMessage deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = ChatMessageBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

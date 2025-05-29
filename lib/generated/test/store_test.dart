@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for Store
 void main() {
-  final instance = StoreBuilder();
-  // TODO add properties to the builder and call build()
+  final Store? instance = /* Store(...) */ null;
+  // TODO add properties to the entity
 
   group(Store, () {
     // 商店擁有者ID

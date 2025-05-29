@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for ProductCreateParam
 void main() {
-  final instance = ProductCreateParamBuilder();
-  // TODO add properties to the builder and call build()
+  final ProductCreateParam? instance = /* ProductCreateParam(...) */ null;
+  // TODO add properties to the entity
 
   group(ProductCreateParam, () {
     // 商品名稱
@@ -38,7 +38,7 @@ void main() {
     });
 
     // 商品圖片URL集合
-    // BuiltSet<String> imageUrls
+    // Set<String> imageUrls
     test('to test the property `imageUrls`', () async {
       // TODO
     });

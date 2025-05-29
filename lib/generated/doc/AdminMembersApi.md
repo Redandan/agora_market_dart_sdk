@@ -60,7 +60,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getMemberStatistics**
-> BuiltMap<String, JsonObject> getMemberStatistics(startDate, endDate)
+> Map<String, Object> getMemberStatistics(startDate, endDate)
 
 會員統計報告
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltMap&lt;String, JsonObject&gt;**](JsonObject.md)
+**Map&lt;String, Object&gt;**
 
 ### Authorization
 

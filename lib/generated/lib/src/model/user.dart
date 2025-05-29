@@ -3,402 +3,322 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'user.g.dart';
 
-/// 用戶
-///
-/// Properties:
-/// * [id] - 用戶ID
-/// * [username] - 用戶名
-/// * [password] - 密碼
-/// * [role] - 角色
-/// * [status] - 用戶狀態
-/// * [enabled] - 是否啟用
-/// * [name] - 姓名
-/// * [phone] - 電話號碼
-/// * [email] - 電子郵件
-/// * [avatar] - 頭像
-/// * [remark] - 備註
-/// * [createdAt] - 創建時間
-/// * [updatedAt] - 最後更新時間
-/// * [seller] 
-/// * [admin] 
-@BuiltValue()
-abstract class User implements Built<User, UserBuilder> {
-  /// 用戶ID
-  @BuiltValueField(wireName: r'id')
-  int? get id;
 
-  /// 用戶名
-  @BuiltValueField(wireName: r'username')
-  String? get username;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class User {
+  /// Returns a new [User] instance.
+  User({
 
-  /// 密碼
-  @BuiltValueField(wireName: r'password')
-  String? get password;
+     this.id,
 
-  /// 角色
-  @BuiltValueField(wireName: r'role')
-  String? get role;
+     this.username,
 
-  /// 用戶狀態
-  @BuiltValueField(wireName: r'status')
-  UserStatusEnum? get status;
-  // enum statusEnum {  ACTIVE,  INACTIVE,  SUSPENDED,  BANNED,  DELETED,  };
+     this.password,
 
-  /// 是否啟用
-  @BuiltValueField(wireName: r'enabled')
-  bool? get enabled;
+     this.role,
 
-  /// 姓名
-  @BuiltValueField(wireName: r'name')
-  String? get name;
+     this.status,
 
-  /// 電話號碼
-  @BuiltValueField(wireName: r'phone')
-  String? get phone;
+     this.enabled,
 
-  /// 電子郵件
-  @BuiltValueField(wireName: r'email')
-  String? get email;
+     this.name,
 
-  /// 頭像
-  @BuiltValueField(wireName: r'avatar')
-  String? get avatar;
+     this.phone,
 
-  /// 備註
-  @BuiltValueField(wireName: r'remark')
-  String? get remark;
+     this.email,
 
-  /// 創建時間
-  @BuiltValueField(wireName: r'createdAt')
-  DateTime? get createdAt;
+     this.avatar,
 
-  /// 最後更新時間
-  @BuiltValueField(wireName: r'updatedAt')
-  DateTime? get updatedAt;
+     this.remark,
 
-  @BuiltValueField(wireName: r'seller')
-  bool? get seller;
+     this.createdAt,
 
-  @BuiltValueField(wireName: r'admin')
-  bool? get admin;
+     this.updatedAt,
 
-  User._();
+     this.seller,
 
-  factory User([void updates(UserBuilder b)]) = _$User;
+     this.admin,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(UserBuilder b) => b;
+      /// 用戶ID
+  @JsonKey(
+    
+    name: r'id',
+    required: false,
+    includeIfNull: false,
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<User> get serializer => _$UserSerializer();
+
+  final int? id;
+
+
+
+      /// 用戶名
+  @JsonKey(
+    
+    name: r'username',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? username;
+
+
+
+      /// 密碼
+  @JsonKey(
+    
+    name: r'password',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? password;
+
+
+
+      /// 角色
+  @JsonKey(
+    
+    name: r'role',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? role;
+
+
+
+      /// 用戶狀態
+  @JsonKey(
+    
+    name: r'status',
+    required: false,
+    includeIfNull: false,
+  unknownEnumValue: UserStatusEnum.unknownDefaultOpenApi,
+  )
+
+
+  final UserStatusEnum? status;
+
+
+
+      /// 是否啟用
+  @JsonKey(
+    
+    name: r'enabled',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final bool? enabled;
+
+
+
+      /// 姓名
+  @JsonKey(
+    
+    name: r'name',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? name;
+
+
+
+      /// 電話號碼
+  @JsonKey(
+    
+    name: r'phone',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? phone;
+
+
+
+      /// 電子郵件
+  @JsonKey(
+    
+    name: r'email',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? email;
+
+
+
+      /// 頭像
+  @JsonKey(
+    
+    name: r'avatar',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? avatar;
+
+
+
+      /// 備註
+  @JsonKey(
+    
+    name: r'remark',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? remark;
+
+
+
+      /// 創建時間
+  @JsonKey(
+    
+    name: r'createdAt',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final DateTime? createdAt;
+
+
+
+      /// 最後更新時間
+  @JsonKey(
+    
+    name: r'updatedAt',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final DateTime? updatedAt;
+
+
+
+  @JsonKey(
+    
+    name: r'seller',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final bool? seller;
+
+
+
+  @JsonKey(
+    
+    name: r'admin',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final bool? admin;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is User &&
+      other.id == id &&
+      other.username == username &&
+      other.password == password &&
+      other.role == role &&
+      other.status == status &&
+      other.enabled == enabled &&
+      other.name == name &&
+      other.phone == phone &&
+      other.email == email &&
+      other.avatar == avatar &&
+      other.remark == remark &&
+      other.createdAt == createdAt &&
+      other.updatedAt == updatedAt &&
+      other.seller == seller &&
+      other.admin == admin;
+
+    @override
+    int get hashCode =>
+        id.hashCode +
+        username.hashCode +
+        password.hashCode +
+        role.hashCode +
+        status.hashCode +
+        enabled.hashCode +
+        name.hashCode +
+        phone.hashCode +
+        email.hashCode +
+        avatar.hashCode +
+        remark.hashCode +
+        createdAt.hashCode +
+        updatedAt.hashCode +
+        seller.hashCode +
+        admin.hashCode;
+
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UserToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
+  }
+
 }
 
-class _$UserSerializer implements PrimitiveSerializer<User> {
-  @override
-  final Iterable<Type> types = const [User, _$User];
+/// 用戶狀態
+enum UserStatusEnum {
+    /// 用戶狀態
+@JsonValue(r'ACTIVE')
+ACTIVE(r'ACTIVE'),
+    /// 用戶狀態
+@JsonValue(r'INACTIVE')
+INACTIVE(r'INACTIVE'),
+    /// 用戶狀態
+@JsonValue(r'SUSPENDED')
+SUSPENDED(r'SUSPENDED'),
+    /// 用戶狀態
+@JsonValue(r'BANNED')
+BANNED(r'BANNED'),
+    /// 用戶狀態
+@JsonValue(r'DELETED')
+DELETED(r'DELETED'),
+    /// 用戶狀態
+@JsonValue(r'unknown_default_open_api')
+unknownDefaultOpenApi(r'unknown_default_open_api');
 
-  @override
-  final String wireName = r'User';
+const UserStatusEnum(this.value);
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    User object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.username != null) {
-      yield r'username';
-      yield serializers.serialize(
-        object.username,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.password != null) {
-      yield r'password';
-      yield serializers.serialize(
-        object.password,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.role != null) {
-      yield r'role';
-      yield serializers.serialize(
-        object.role,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.status != null) {
-      yield r'status';
-      yield serializers.serialize(
-        object.status,
-        specifiedType: const FullType(UserStatusEnum),
-      );
-    }
-    if (object.enabled != null) {
-      yield r'enabled';
-      yield serializers.serialize(
-        object.enabled,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.phone != null) {
-      yield r'phone';
-      yield serializers.serialize(
-        object.phone,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.email != null) {
-      yield r'email';
-      yield serializers.serialize(
-        object.email,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.avatar != null) {
-      yield r'avatar';
-      yield serializers.serialize(
-        object.avatar,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.remark != null) {
-      yield r'remark';
-      yield serializers.serialize(
-        object.remark,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.createdAt != null) {
-      yield r'createdAt';
-      yield serializers.serialize(
-        object.createdAt,
-        specifiedType: const FullType(DateTime),
-      );
-    }
-    if (object.updatedAt != null) {
-      yield r'updatedAt';
-      yield serializers.serialize(
-        object.updatedAt,
-        specifiedType: const FullType(DateTime),
-      );
-    }
-    if (object.seller != null) {
-      yield r'seller';
-      yield serializers.serialize(
-        object.seller,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.admin != null) {
-      yield r'admin';
-      yield serializers.serialize(
-        object.admin,
-        specifiedType: const FullType(bool),
-      );
-    }
-  }
+final String value;
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    User object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required UserBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.id = valueDes;
-          break;
-        case r'username':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.username = valueDes;
-          break;
-        case r'password':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.password = valueDes;
-          break;
-        case r'role':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.role = valueDes;
-          break;
-        case r'status':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(UserStatusEnum),
-          ) as UserStatusEnum;
-          result.status = valueDes;
-          break;
-        case r'enabled':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.enabled = valueDes;
-          break;
-        case r'name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.name = valueDes;
-          break;
-        case r'phone':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.phone = valueDes;
-          break;
-        case r'email':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.email = valueDes;
-          break;
-        case r'avatar':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.avatar = valueDes;
-          break;
-        case r'remark':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.remark = valueDes;
-          break;
-        case r'createdAt':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.createdAt = valueDes;
-          break;
-        case r'updatedAt':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.updatedAt = valueDes;
-          break;
-        case r'seller':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.seller = valueDes;
-          break;
-        case r'admin':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.admin = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
-
-  @override
-  User deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = UserBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
-  }
+@override
+String toString() => value;
 }
 
-class UserStatusEnum extends EnumClass {
-
-  /// 用戶狀態
-  @BuiltValueEnumConst(wireName: r'ACTIVE')
-  static const UserStatusEnum ACTIVE = _$userStatusEnum_ACTIVE;
-  /// 用戶狀態
-  @BuiltValueEnumConst(wireName: r'INACTIVE')
-  static const UserStatusEnum INACTIVE = _$userStatusEnum_INACTIVE;
-  /// 用戶狀態
-  @BuiltValueEnumConst(wireName: r'SUSPENDED')
-  static const UserStatusEnum SUSPENDED = _$userStatusEnum_SUSPENDED;
-  /// 用戶狀態
-  @BuiltValueEnumConst(wireName: r'BANNED')
-  static const UserStatusEnum BANNED = _$userStatusEnum_BANNED;
-  /// 用戶狀態
-  @BuiltValueEnumConst(wireName: r'DELETED')
-  static const UserStatusEnum DELETED = _$userStatusEnum_DELETED;
-  /// 用戶狀態
-  @BuiltValueEnumConst(wireName: r'unknown_default_open_api', fallback: true)
-  static const UserStatusEnum unknownDefaultOpenApi = _$userStatusEnum_unknownDefaultOpenApi;
-
-  static Serializer<UserStatusEnum> get serializer => _$userStatusEnumSerializer;
-
-  const UserStatusEnum._(String name): super(name);
-
-  static BuiltSet<UserStatusEnum> get values => _$userStatusEnumValues;
-  static UserStatusEnum valueOf(String name) => _$userStatusEnumValueOf(name);
-}
 

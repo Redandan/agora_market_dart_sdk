@@ -3,240 +3,174 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'user_info.g.dart';
 
-/// 用戶信息
-///
-/// Properties:
-/// * [id] - 用戶ID
-/// * [username] - 用戶名
-/// * [email] - 郵箱
-/// * [role] - 角色
-/// * [balance] - 餘額
-/// * [stackingBalance] - 質押餘額
-/// * [enabled] - 是否啟用
-/// * [queryTime] - 查詢時間
-@BuiltValue()
-abstract class UserInfo implements Built<UserInfo, UserInfoBuilder> {
-  /// 用戶ID
-  @BuiltValueField(wireName: r'id')
-  int? get id;
 
-  /// 用戶名
-  @BuiltValueField(wireName: r'username')
-  String? get username;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class UserInfo {
+  /// Returns a new [UserInfo] instance.
+  UserInfo({
 
-  /// 郵箱
-  @BuiltValueField(wireName: r'email')
-  String? get email;
+     this.id,
 
-  /// 角色
-  @BuiltValueField(wireName: r'role')
-  String? get role;
+     this.username,
 
-  /// 餘額
-  @BuiltValueField(wireName: r'balance')
-  num? get balance;
+     this.email,
 
-  /// 質押餘額
-  @BuiltValueField(wireName: r'stackingBalance')
-  num? get stackingBalance;
+     this.role,
 
-  /// 是否啟用
-  @BuiltValueField(wireName: r'enabled')
-  bool? get enabled;
+     this.balance,
 
-  /// 查詢時間
-  @BuiltValueField(wireName: r'queryTime')
-  DateTime? get queryTime;
+     this.stackingBalance,
 
-  UserInfo._();
+     this.enabled,
 
-  factory UserInfo([void updates(UserInfoBuilder b)]) = _$UserInfo;
+     this.queryTime,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(UserInfoBuilder b) => b;
+      /// 用戶ID
+  @JsonKey(
+    
+    name: r'id',
+    required: false,
+    includeIfNull: false,
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<UserInfo> get serializer => _$UserInfoSerializer();
-}
 
-class _$UserInfoSerializer implements PrimitiveSerializer<UserInfo> {
-  @override
-  final Iterable<Type> types = const [UserInfo, _$UserInfo];
+  final int? id;
 
-  @override
-  final String wireName = r'UserInfo';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    UserInfo object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.username != null) {
-      yield r'username';
-      yield serializers.serialize(
-        object.username,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.email != null) {
-      yield r'email';
-      yield serializers.serialize(
-        object.email,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.role != null) {
-      yield r'role';
-      yield serializers.serialize(
-        object.role,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.balance != null) {
-      yield r'balance';
-      yield serializers.serialize(
-        object.balance,
-        specifiedType: const FullType(num),
-      );
-    }
-    if (object.stackingBalance != null) {
-      yield r'stackingBalance';
-      yield serializers.serialize(
-        object.stackingBalance,
-        specifiedType: const FullType(num),
-      );
-    }
-    if (object.enabled != null) {
-      yield r'enabled';
-      yield serializers.serialize(
-        object.enabled,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.queryTime != null) {
-      yield r'queryTime';
-      yield serializers.serialize(
-        object.queryTime,
-        specifiedType: const FullType(DateTime),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    UserInfo object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+      /// 用戶名
+  @JsonKey(
+    
+    name: r'username',
+    required: false,
+    includeIfNull: false,
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required UserInfoBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.id = valueDes;
-          break;
-        case r'username':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.username = valueDes;
-          break;
-        case r'email':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.email = valueDes;
-          break;
-        case r'role':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.role = valueDes;
-          break;
-        case r'balance':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.balance = valueDes;
-          break;
-        case r'stackingBalance':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.stackingBalance = valueDes;
-          break;
-        case r'enabled':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.enabled = valueDes;
-          break;
-        case r'queryTime':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.queryTime = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final String? username;
+
+
+
+      /// 郵箱
+  @JsonKey(
+    
+    name: r'email',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? email;
+
+
+
+      /// 角色
+  @JsonKey(
+    
+    name: r'role',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? role;
+
+
+
+      /// 餘額
+  @JsonKey(
+    
+    name: r'balance',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final num? balance;
+
+
+
+      /// 質押餘額
+  @JsonKey(
+    
+    name: r'stackingBalance',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final num? stackingBalance;
+
+
+
+      /// 是否啟用
+  @JsonKey(
+    
+    name: r'enabled',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final bool? enabled;
+
+
+
+      /// 查詢時間
+  @JsonKey(
+    
+    name: r'queryTime',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final DateTime? queryTime;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is UserInfo &&
+      other.id == id &&
+      other.username == username &&
+      other.email == email &&
+      other.role == role &&
+      other.balance == balance &&
+      other.stackingBalance == stackingBalance &&
+      other.enabled == enabled &&
+      other.queryTime == queryTime;
+
+    @override
+    int get hashCode =>
+        id.hashCode +
+        username.hashCode +
+        email.hashCode +
+        role.hashCode +
+        balance.hashCode +
+        stackingBalance.hashCode +
+        enabled.hashCode +
+        queryTime.hashCode;
+
+  factory UserInfo.fromJson(Map<String, dynamic> json) => _$UserInfoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UserInfoToJson(this);
 
   @override
-  UserInfo deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = UserInfoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

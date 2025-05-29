@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for Withdraw
 void main() {
-  final instance = WithdrawBuilder();
-  // TODO add properties to the builder and call build()
+  final Withdraw? instance = /* Withdraw(...) */ null;
+  // TODO add properties to the entity
 
   group(Withdraw, () {
     // 提款ID

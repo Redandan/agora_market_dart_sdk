@@ -16,14 +16,14 @@ void main() {
 
     // 下載文件
     //
-    //Future<BuiltList<String>> downloadFile(String path) async
+    //Future<List<String>> downloadFile(String path) async
     test('test downloadFile', () async {
       // TODO
     });
 
     // 獲取目錄中的文件列表
     //
-    //Future<BuiltList<String>> getFileList(String path) async
+    //Future<List<String>> getFileList(String path) async
     test('test getFileList', () async {
       // TODO
     });

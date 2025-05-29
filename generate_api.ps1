@@ -59,38 +59,32 @@ Write-Host "Found swagger.yaml at $swaggerPath" -ForegroundColor Green
 
 # 清理舊的生成文件
 Write-Host "Cleaning old generated files..." -ForegroundColor Yellow
-try {
-    if (Test-Path "lib/generated") {
+if (Test-Path "lib/generated") {
+    try {
         Remove-Item -Path "lib/generated" -Recurse -Force
         Write-Host "Cleaned old generated files" -ForegroundColor Green
+    } catch {
+        Write-Host "Warning: Could not clean old generated files: $_" -ForegroundColor Yellow
     }
-} catch {
-    Write-Host "Warning: Could not clean old generated files: $_" -ForegroundColor Yellow
 }
 
 # 執行代碼生成
 Write-Host "Running code generation..." -ForegroundColor Yellow
 try {
-    # 使用 OpenAPI Generator 的 dart-dio 生成器
-    # 這個生成器會生成更好的 Dart 代碼，包括更好的 Enum 支持
-    java -jar openapi-generator-cli.jar generate `
+    $result = java -jar openapi-generator-cli.jar generate `
         -i lib/api/swagger.yaml `
         -g dart-dio `
         -o lib/generated `
-        --additional-properties=pubName=agora_market_dart_sdk,pubVersion=1.0.0,pubDescription="A Dart SDK for AgoraMarket API",useEnumExtension=true,enumUnknownDefaultCase=true,typeMappings=object=built_value/Built,array=built_collection/BuiltList,string=String,integer=int,number=num,boolean=bool,date=DateTime,date-time=DateTime,modelPropertyNaming=snake_case,serializationLibrary=built_value,dateLibrary=core,nullableFields=true,useBuiltValue=true,useOneOf=true,useAnyOf=true
+        --additional-properties=pubName=agora_market_dart_sdk,pubVersion=1.0.0,pubDescription="A Dart SDK for AgoraMarket API",useEnumExtension=true,enumUnknownDefaultCase=true,typeMappings=object=dynamic,array=List,string=String,integer=int,number=num,boolean=bool,date=DateTime,date-time=DateTime,modelPropertyNaming=snake_case,serializationLibrary=json_serializable,dateLibrary=core,nullableFields=true,useFreezed=true,useJsonSerializable=true,useOneOf=true,useAnyOf=true
 
     if ($LASTEXITCODE -eq 0) {
         Write-Host "Code generation completed successfully!" -ForegroundColor Green
-        
-        # 檢查生成的文件
         if (Test-Path "lib/generated") {
             $generatedFiles = Get-ChildItem -Path "lib/generated" -Recurse -File
             Write-Host "Generated files:" -ForegroundColor Green
             foreach ($file in $generatedFiles) {
                 Write-Host "  - $($file.FullName)" -ForegroundColor Cyan
             }
-
-            # 運行 build_runner
             Write-Host "`nRunning build_runner..." -ForegroundColor Yellow
             try {
                 Push-Location "lib/generated"

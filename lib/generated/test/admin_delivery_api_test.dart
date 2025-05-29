@@ -29,7 +29,7 @@ void main() {
     //
     // 獲取配送相關的統計數據
     //
-    //Future<BuiltMap<String, JsonObject>> getDeliveryStatistics({ DateTime startDate, DateTime endDate }) async
+    //Future<Map<String, Object>> getDeliveryStatistics({ DateTime startDate, DateTime endDate }) async
     test('test getDeliveryStatistics', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // 管理員可根據多個條件搜索配送訂單
     //
-    //Future<BuiltList<DeliveryDetail>> searchDeliveryOrders({ int deliveryerId, String status, DateTime startDate, DateTime endDate }) async
+    //Future<List<DeliveryDetail>> searchDeliveryOrders({ int deliveryerId, String status, DateTime startDate, DateTime endDate }) async
     test('test searchDeliveryOrders', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // 管理員可根據多個條件搜索配送員，包括位置、狀態等
     //
-    //Future<BuiltList<Deliveryer>> searchDeliveryers({ bool enabled, bool isDelivering, double longitude, double latitude, double radius, DateTime startDate, DateTime endDate }) async
+    //Future<List<Deliveryer>> searchDeliveryers({ bool enabled, bool isDelivering, double longitude, double latitude, double radius, DateTime startDate, DateTime endDate }) async
     test('test searchDeliveryers', () async {
       // TODO
     });

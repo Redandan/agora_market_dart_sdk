@@ -3,160 +3,102 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'local_time.g.dart';
 
-/// 取貨結束時間
-///
-/// Properties:
-/// * [hour] 
-/// * [minute] 
-/// * [second] 
-/// * [nano] 
-@BuiltValue()
-abstract class LocalTime implements Built<LocalTime, LocalTimeBuilder> {
-  @BuiltValueField(wireName: r'hour')
-  int? get hour;
 
-  @BuiltValueField(wireName: r'minute')
-  int? get minute;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class LocalTime {
+  /// Returns a new [LocalTime] instance.
+  LocalTime({
 
-  @BuiltValueField(wireName: r'second')
-  int? get second;
+     this.hour,
 
-  @BuiltValueField(wireName: r'nano')
-  int? get nano;
+     this.minute,
 
-  LocalTime._();
+     this.second,
 
-  factory LocalTime([void updates(LocalTimeBuilder b)]) = _$LocalTime;
+     this.nano,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(LocalTimeBuilder b) => b;
+  @JsonKey(
+    
+    name: r'hour',
+    required: false,
+    includeIfNull: false,
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<LocalTime> get serializer => _$LocalTimeSerializer();
-}
 
-class _$LocalTimeSerializer implements PrimitiveSerializer<LocalTime> {
-  @override
-  final Iterable<Type> types = const [LocalTime, _$LocalTime];
+  final int? hour;
 
-  @override
-  final String wireName = r'LocalTime';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    LocalTime object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.hour != null) {
-      yield r'hour';
-      yield serializers.serialize(
-        object.hour,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.minute != null) {
-      yield r'minute';
-      yield serializers.serialize(
-        object.minute,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.second != null) {
-      yield r'second';
-      yield serializers.serialize(
-        object.second,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.nano != null) {
-      yield r'nano';
-      yield serializers.serialize(
-        object.nano,
-        specifiedType: const FullType(int),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    LocalTime object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+  @JsonKey(
+    
+    name: r'minute',
+    required: false,
+    includeIfNull: false,
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required LocalTimeBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'hour':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.hour = valueDes;
-          break;
-        case r'minute':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.minute = valueDes;
-          break;
-        case r'second':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.second = valueDes;
-          break;
-        case r'nano':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.nano = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final int? minute;
+
+
+
+  @JsonKey(
+    
+    name: r'second',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final int? second;
+
+
+
+  @JsonKey(
+    
+    name: r'nano',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final int? nano;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is LocalTime &&
+      other.hour == hour &&
+      other.minute == minute &&
+      other.second == second &&
+      other.nano == nano;
+
+    @override
+    int get hashCode =>
+        hour.hashCode +
+        minute.hashCode +
+        second.hashCode +
+        nano.hashCode;
+
+  factory LocalTime.fromJson(Map<String, dynamic> json) => _$LocalTimeFromJson(json);
+
+  Map<String, dynamic> toJson() => _$LocalTimeToJson(this);
 
   @override
-  LocalTime deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = LocalTimeBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

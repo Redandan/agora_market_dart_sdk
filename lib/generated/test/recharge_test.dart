@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for Recharge
 void main() {
-  final instance = RechargeBuilder();
-  // TODO add properties to the builder and call build()
+  final Recharge? instance = /* Recharge(...) */ null;
+  // TODO add properties to the entity
 
   group(Recharge, () {
     // 充值ID

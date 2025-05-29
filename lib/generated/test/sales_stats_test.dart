@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for SalesStats
 void main() {
-  final instance = SalesStatsBuilder();
-  // TODO add properties to the builder and call build()
+  final SalesStats? instance = /* SalesStats(...) */ null;
+  // TODO add properties to the entity
 
   group(SalesStats, () {
     // 總銷售額

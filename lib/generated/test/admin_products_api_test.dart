@@ -20,7 +20,7 @@ void main() {
     //
     // 獲取商品相關的統計數據
     //
-    //Future<BuiltMap<String, JsonObject>> getProductStatistics({ DateTime startDate, DateTime endDate }) async
+    //Future<Map<String, Object>> getProductStatistics({ DateTime startDate, DateTime endDate }) async
     test('test getProductStatistics', () async {
       // TODO
     });

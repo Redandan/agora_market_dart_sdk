@@ -3,232 +3,58 @@
 part of 'page_product.dart';
 
 // **************************************************************************
-// BuiltValueGenerator
+// JsonSerializableGenerator
 // **************************************************************************
 
-class _$PageProduct extends PageProduct {
-  @override
-  final int? totalPages;
-  @override
-  final int? totalElements;
-  @override
-  final bool? first;
-  @override
-  final bool? last;
-  @override
-  final int? numberOfElements;
-  @override
-  final int? size;
-  @override
-  final BuiltList<Product>? content;
-  @override
-  final int? number;
-  @override
-  final SortObject? sort;
-  @override
-  final PageableObject? pageable;
-  @override
-  final bool? empty;
+PageProduct _$PageProductFromJson(Map<String, dynamic> json) => $checkedCreate(
+      'PageProduct',
+      json,
+      ($checkedConvert) {
+        final val = PageProduct(
+          totalPages:
+              $checkedConvert('totalPages', (v) => (v as num?)?.toInt()),
+          totalElements:
+              $checkedConvert('totalElements', (v) => (v as num?)?.toInt()),
+          first: $checkedConvert('first', (v) => v as bool?),
+          last: $checkedConvert('last', (v) => v as bool?),
+          numberOfElements:
+              $checkedConvert('numberOfElements', (v) => (v as num?)?.toInt()),
+          size: $checkedConvert('size', (v) => (v as num?)?.toInt()),
+          content: $checkedConvert(
+              'content',
+              (v) => (v as List<dynamic>?)
+                  ?.map((e) => Product.fromJson(e as Map<String, dynamic>))
+                  .toList()),
+          number: $checkedConvert('number', (v) => (v as num?)?.toInt()),
+          sort: $checkedConvert(
+              'sort',
+              (v) => v == null
+                  ? null
+                  : SortObject.fromJson(v as Map<String, dynamic>)),
+          pageable: $checkedConvert(
+              'pageable',
+              (v) => v == null
+                  ? null
+                  : PageableObject.fromJson(v as Map<String, dynamic>)),
+          empty: $checkedConvert('empty', (v) => v as bool?),
+        );
+        return val;
+      },
+    );
 
-  factory _$PageProduct([void Function(PageProductBuilder)? updates]) =>
-      (PageProductBuilder()..update(updates))._build();
-
-  _$PageProduct._(
-      {this.totalPages,
-      this.totalElements,
-      this.first,
-      this.last,
-      this.numberOfElements,
-      this.size,
-      this.content,
-      this.number,
-      this.sort,
-      this.pageable,
-      this.empty})
-      : super._();
-  @override
-  PageProduct rebuild(void Function(PageProductBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
-
-  @override
-  PageProductBuilder toBuilder() => PageProductBuilder()..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is PageProduct &&
-        totalPages == other.totalPages &&
-        totalElements == other.totalElements &&
-        first == other.first &&
-        last == other.last &&
-        numberOfElements == other.numberOfElements &&
-        size == other.size &&
-        content == other.content &&
-        number == other.number &&
-        sort == other.sort &&
-        pageable == other.pageable &&
-        empty == other.empty;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, totalPages.hashCode);
-    _$hash = $jc(_$hash, totalElements.hashCode);
-    _$hash = $jc(_$hash, first.hashCode);
-    _$hash = $jc(_$hash, last.hashCode);
-    _$hash = $jc(_$hash, numberOfElements.hashCode);
-    _$hash = $jc(_$hash, size.hashCode);
-    _$hash = $jc(_$hash, content.hashCode);
-    _$hash = $jc(_$hash, number.hashCode);
-    _$hash = $jc(_$hash, sort.hashCode);
-    _$hash = $jc(_$hash, pageable.hashCode);
-    _$hash = $jc(_$hash, empty.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(r'PageProduct')
-          ..add('totalPages', totalPages)
-          ..add('totalElements', totalElements)
-          ..add('first', first)
-          ..add('last', last)
-          ..add('numberOfElements', numberOfElements)
-          ..add('size', size)
-          ..add('content', content)
-          ..add('number', number)
-          ..add('sort', sort)
-          ..add('pageable', pageable)
-          ..add('empty', empty))
-        .toString();
-  }
-}
-
-class PageProductBuilder implements Builder<PageProduct, PageProductBuilder> {
-  _$PageProduct? _$v;
-
-  int? _totalPages;
-  int? get totalPages => _$this._totalPages;
-  set totalPages(int? totalPages) => _$this._totalPages = totalPages;
-
-  int? _totalElements;
-  int? get totalElements => _$this._totalElements;
-  set totalElements(int? totalElements) =>
-      _$this._totalElements = totalElements;
-
-  bool? _first;
-  bool? get first => _$this._first;
-  set first(bool? first) => _$this._first = first;
-
-  bool? _last;
-  bool? get last => _$this._last;
-  set last(bool? last) => _$this._last = last;
-
-  int? _numberOfElements;
-  int? get numberOfElements => _$this._numberOfElements;
-  set numberOfElements(int? numberOfElements) =>
-      _$this._numberOfElements = numberOfElements;
-
-  int? _size;
-  int? get size => _$this._size;
-  set size(int? size) => _$this._size = size;
-
-  ListBuilder<Product>? _content;
-  ListBuilder<Product> get content =>
-      _$this._content ??= ListBuilder<Product>();
-  set content(ListBuilder<Product>? content) => _$this._content = content;
-
-  int? _number;
-  int? get number => _$this._number;
-  set number(int? number) => _$this._number = number;
-
-  SortObjectBuilder? _sort;
-  SortObjectBuilder get sort => _$this._sort ??= SortObjectBuilder();
-  set sort(SortObjectBuilder? sort) => _$this._sort = sort;
-
-  PageableObjectBuilder? _pageable;
-  PageableObjectBuilder get pageable =>
-      _$this._pageable ??= PageableObjectBuilder();
-  set pageable(PageableObjectBuilder? pageable) => _$this._pageable = pageable;
-
-  bool? _empty;
-  bool? get empty => _$this._empty;
-  set empty(bool? empty) => _$this._empty = empty;
-
-  PageProductBuilder() {
-    PageProduct._defaults(this);
-  }
-
-  PageProductBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _totalPages = $v.totalPages;
-      _totalElements = $v.totalElements;
-      _first = $v.first;
-      _last = $v.last;
-      _numberOfElements = $v.numberOfElements;
-      _size = $v.size;
-      _content = $v.content?.toBuilder();
-      _number = $v.number;
-      _sort = $v.sort?.toBuilder();
-      _pageable = $v.pageable?.toBuilder();
-      _empty = $v.empty;
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(PageProduct other) {
-    _$v = other as _$PageProduct;
-  }
-
-  @override
-  void update(void Function(PageProductBuilder)? updates) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  PageProduct build() => _build();
-
-  _$PageProduct _build() {
-    _$PageProduct _$result;
-    try {
-      _$result = _$v ??
-          _$PageProduct._(
-            totalPages: totalPages,
-            totalElements: totalElements,
-            first: first,
-            last: last,
-            numberOfElements: numberOfElements,
-            size: size,
-            content: _content?.build(),
-            number: number,
-            sort: _sort?.build(),
-            pageable: _pageable?.build(),
-            empty: empty,
-          );
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'content';
-        _content?.build();
-
-        _$failedField = 'sort';
-        _sort?.build();
-        _$failedField = 'pageable';
-        _pageable?.build();
-      } catch (e) {
-        throw BuiltValueNestedFieldError(
-            r'PageProduct', _$failedField, e.toString());
-      }
-      rethrow;
-    }
-    replace(_$result);
-    return _$result;
-  }
-}
-
-// ignore_for_file: deprecated_member_use_from_same_package,type=lint
+Map<String, dynamic> _$PageProductToJson(PageProduct instance) =>
+    <String, dynamic>{
+      if (instance.totalPages case final value?) 'totalPages': value,
+      if (instance.totalElements case final value?) 'totalElements': value,
+      if (instance.first case final value?) 'first': value,
+      if (instance.last case final value?) 'last': value,
+      if (instance.numberOfElements case final value?)
+        'numberOfElements': value,
+      if (instance.size case final value?) 'size': value,
+      if (instance.content?.map((e) => e.toJson()).toList() case final value?)
+        'content': value,
+      if (instance.number case final value?) 'number': value,
+      if (instance.sort?.toJson() case final value?) 'sort': value,
+      if (instance.pageable?.toJson() case final value?) 'pageable': value,
+      if (instance.empty case final value?) 'empty': value,
+    };

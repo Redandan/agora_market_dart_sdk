@@ -3,159 +3,105 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'login_param.g.dart';
 
-/// 登入參數
-///
-/// Properties:
-/// * [username] - 用戶名
-/// * [password] - 密碼
-/// * [rememberMe] - 記住我
-/// * [code] 
-@BuiltValue()
-abstract class LoginParam implements Built<LoginParam, LoginParamBuilder> {
-  /// 用戶名
-  @BuiltValueField(wireName: r'username')
-  String get username;
 
-  /// 密碼
-  @BuiltValueField(wireName: r'password')
-  String get password;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class LoginParam {
+  /// Returns a new [LoginParam] instance.
+  LoginParam({
 
-  /// 記住我
-  @BuiltValueField(wireName: r'rememberMe')
-  bool? get rememberMe;
+    required  this.username,
 
-  @BuiltValueField(wireName: r'code')
-  String? get code;
+    required  this.password,
 
-  LoginParam._();
+     this.rememberMe,
 
-  factory LoginParam([void updates(LoginParamBuilder b)]) = _$LoginParam;
+     this.code,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(LoginParamBuilder b) => b;
+      /// 用戶名
+  @JsonKey(
+    
+    name: r'username',
+    required: true,
+    includeIfNull: false,
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<LoginParam> get serializer => _$LoginParamSerializer();
-}
 
-class _$LoginParamSerializer implements PrimitiveSerializer<LoginParam> {
-  @override
-  final Iterable<Type> types = const [LoginParam, _$LoginParam];
+  final String username;
 
-  @override
-  final String wireName = r'LoginParam';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    LoginParam object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'username';
-    yield serializers.serialize(
-      object.username,
-      specifiedType: const FullType(String),
-    );
-    yield r'password';
-    yield serializers.serialize(
-      object.password,
-      specifiedType: const FullType(String),
-    );
-    if (object.rememberMe != null) {
-      yield r'rememberMe';
-      yield serializers.serialize(
-        object.rememberMe,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.code != null) {
-      yield r'code';
-      yield serializers.serialize(
-        object.code,
-        specifiedType: const FullType(String),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    LoginParam object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+      /// 密碼
+  @JsonKey(
+    
+    name: r'password',
+    required: true,
+    includeIfNull: false,
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required LoginParamBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'username':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.username = valueDes;
-          break;
-        case r'password':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.password = valueDes;
-          break;
-        case r'rememberMe':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.rememberMe = valueDes;
-          break;
-        case r'code':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.code = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final String password;
+
+
+
+      /// 記住我
+  @JsonKey(
+    
+    name: r'rememberMe',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final bool? rememberMe;
+
+
+
+  @JsonKey(
+    
+    name: r'code',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? code;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is LoginParam &&
+      other.username == username &&
+      other.password == password &&
+      other.rememberMe == rememberMe &&
+      other.code == code;
+
+    @override
+    int get hashCode =>
+        username.hashCode +
+        password.hashCode +
+        rememberMe.hashCode +
+        code.hashCode;
+
+  factory LoginParam.fromJson(Map<String, dynamic> json) => _$LoginParamFromJson(json);
+
+  Map<String, dynamic> toJson() => _$LoginParamToJson(this);
 
   @override
-  LoginParam deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = LoginParamBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

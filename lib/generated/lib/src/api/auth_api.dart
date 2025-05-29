@@ -4,11 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:agora_market_dart_sdk/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:agora_market_dart_sdk/src/api_util.dart';
 import 'package:agora_market_dart_sdk/src/model/change_password_param.dart';
 import 'package:agora_market_dart_sdk/src/model/login_param.dart';
 import 'package:agora_market_dart_sdk/src/model/login_result.dart';
@@ -20,9 +20,7 @@ class AuthApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const AuthApi(this._dio, this._serializers);
+  const AuthApi(this._dio);
 
   /// 修改密碼
   /// 
@@ -64,9 +62,7 @@ class AuthApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(ChangePasswordParam);
-      _bodyData = _serializers.serialize(changePasswordParam, specifiedType: _type);
-
+_bodyData=jsonEncode(changePasswordParam);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -128,7 +124,7 @@ class AuthApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'email': encodeQueryParameter(_serializers, email, const FullType(String)),
+      r'email': email,
     };
 
     final _response = await _dio.request<Object>(
@@ -188,12 +184,8 @@ class AuthApi {
     UserInfo? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(UserInfo),
-      ) as UserInfo;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<UserInfo, UserInfo>(rawData, 'UserInfo', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -256,9 +248,7 @@ class AuthApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(LoginParam);
-      _bodyData = _serializers.serialize(loginParam, specifiedType: _type);
-
+_bodyData=jsonEncode(loginParam);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -283,12 +273,8 @@ class AuthApi {
     LoginResult? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(LoginResult),
-      ) as LoginResult;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<LoginResult, LoginResult>(rawData, 'LoginResult', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -404,12 +390,8 @@ class AuthApi {
     LoginResult? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(LoginResult),
-      ) as LoginResult;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<LoginResult, LoginResult>(rawData, 'LoginResult', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -472,9 +454,7 @@ class AuthApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(RegisterParam);
-      _bodyData = _serializers.serialize(registerParam, specifiedType: _type);
-
+_bodyData=jsonEncode(registerParam);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -499,12 +479,8 @@ class AuthApi {
     LoginResult? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(LoginResult),
-      ) as LoginResult;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<LoginResult, LoginResult>(rawData, 'LoginResult', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -567,9 +543,7 @@ class AuthApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(PasswordResetParam);
-      _bodyData = _serializers.serialize(passwordResetParam, specifiedType: _type);
-
+_bodyData=jsonEncode(passwordResetParam);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -631,7 +605,7 @@ class AuthApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'token': encodeQueryParameter(_serializers, token, const FullType(String)),
+      r'token': token,
     };
 
     final _response = await _dio.request<Object>(

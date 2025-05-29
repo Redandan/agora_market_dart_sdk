@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for DeliveryDetail
 void main() {
-  final instance = DeliveryDetailBuilder();
-  // TODO add properties to the builder and call build()
+  final DeliveryDetail? instance = /* DeliveryDetail(...) */ null;
+  // TODO add properties to the entity
 
   group(DeliveryDetail, () {
     // 訂單ID
@@ -122,7 +122,7 @@ void main() {
     });
 
     // 配送記錄
-    // BuiltList<String> deliveryLogs
+    // List<String> deliveryLogs
     test('to test the property `deliveryLogs`', () async {
       // TODO
     });

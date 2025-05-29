@@ -4,11 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:agora_market_dart_sdk/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:agora_market_dart_sdk/src/api_util.dart';
 import 'package:agora_market_dart_sdk/src/model/create_recharge_param.dart';
 import 'package:agora_market_dart_sdk/src/model/create_withdraw_param.dart';
 import 'package:agora_market_dart_sdk/src/model/page_recharge.dart';
@@ -18,15 +18,12 @@ import 'package:agora_market_dart_sdk/src/model/pageable.dart';
 import 'package:agora_market_dart_sdk/src/model/recharge.dart';
 import 'package:agora_market_dart_sdk/src/model/transaction.dart';
 import 'package:agora_market_dart_sdk/src/model/withdraw.dart';
-import 'package:built_value/json_object.dart';
 
 class DefaultApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const DefaultApi(this._dio, this._serializers);
+  const DefaultApi(this._dio);
 
   /// 取消充值
   /// 
@@ -53,7 +50,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/recharge/{rechargeId}/cancel'.replaceAll('{' r'rechargeId' '}', encodeQueryParameter(_serializers, rechargeId, const FullType(String)).toString());
+    final _path = r'/recharge/{rechargeId}/cancel'.replaceAll('{' r'rechargeId' '}', rechargeId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -67,7 +64,7 @@ class DefaultApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (remark != null) r'remark': encodeQueryParameter(_serializers, remark, const FullType(String)),
+      if (remark != null) r'remark': remark,
     };
 
     final _response = await _dio.request<Object>(
@@ -82,12 +79,8 @@ class DefaultApi {
     Recharge? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Recharge),
-      ) as Recharge;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Recharge, Recharge>(rawData, 'Recharge', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -135,7 +128,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/recharge/{rechargeId}/complete'.replaceAll('{' r'rechargeId' '}', encodeQueryParameter(_serializers, rechargeId, const FullType(String)).toString());
+    final _path = r'/recharge/{rechargeId}/complete'.replaceAll('{' r'rechargeId' '}', rechargeId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -149,7 +142,7 @@ class DefaultApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'txHash': encodeQueryParameter(_serializers, txHash, const FullType(String)),
+      r'txHash': txHash,
     };
 
     final _response = await _dio.request<Object>(
@@ -164,12 +157,8 @@ class DefaultApi {
     Recharge? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Recharge),
-      ) as Recharge;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Recharge, Recharge>(rawData, 'Recharge', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -217,7 +206,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/withdraws/{withdrawId}/complete'.replaceAll('{' r'withdrawId' '}', encodeQueryParameter(_serializers, withdrawId, const FullType(String)).toString());
+    final _path = r'/withdraws/{withdrawId}/complete'.replaceAll('{' r'withdrawId' '}', withdrawId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -231,7 +220,7 @@ class DefaultApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'txHash': encodeQueryParameter(_serializers, txHash, const FullType(String)),
+      r'txHash': txHash,
     };
 
     final _response = await _dio.request<Object>(
@@ -246,12 +235,8 @@ class DefaultApi {
     Withdraw? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Withdraw),
-      ) as Withdraw;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Withdraw, Withdraw>(rawData, 'Withdraw', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -314,9 +299,7 @@ class DefaultApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(CreateRechargeParam);
-      _bodyData = _serializers.serialize(createRechargeParam, specifiedType: _type);
-
+_bodyData=jsonEncode(createRechargeParam);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -341,12 +324,8 @@ class DefaultApi {
     Recharge? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Recharge),
-      ) as Recharge;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Recharge, Recharge>(rawData, 'Recharge', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -409,9 +388,7 @@ class DefaultApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(CreateWithdrawParam);
-      _bodyData = _serializers.serialize(createWithdrawParam, specifiedType: _type);
-
+_bodyData=jsonEncode(createWithdrawParam);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -436,12 +413,8 @@ class DefaultApi {
     Withdraw? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Withdraw),
-      ) as Withdraw;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Withdraw, Withdraw>(rawData, 'Withdraw', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -489,7 +462,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/withdraws/{withdrawId}/fail'.replaceAll('{' r'withdrawId' '}', encodeQueryParameter(_serializers, withdrawId, const FullType(String)).toString());
+    final _path = r'/withdraws/{withdrawId}/fail'.replaceAll('{' r'withdrawId' '}', withdrawId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -503,7 +476,7 @@ class DefaultApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'remark': encodeQueryParameter(_serializers, remark, const FullType(String)),
+      r'remark': remark,
     };
 
     final _response = await _dio.request<Object>(
@@ -518,12 +491,8 @@ class DefaultApi {
     Withdraw? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Withdraw),
-      ) as Withdraw;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Withdraw, Withdraw>(rawData, 'Withdraw', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -575,7 +544,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/transactions/admin/user/{userId}/list'.replaceAll('{' r'userId' '}', encodeQueryParameter(_serializers, userId, const FullType(int)).toString());
+    final _path = r'/transactions/admin/user/{userId}/list'.replaceAll('{' r'userId' '}', userId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -589,9 +558,9 @@ class DefaultApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'token': encodeQueryParameter(_serializers, token, const FullType(String)),
-      r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
-      r'size': encodeQueryParameter(_serializers, size, const FullType(int)),
+      r'token': token,
+      r'page': page,
+      r'size': size,
     };
 
     final _response = await _dio.request<Object>(
@@ -606,12 +575,8 @@ class DefaultApi {
     PageTransaction? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PageTransaction),
-      ) as PageTransaction;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PageTransaction, PageTransaction>(rawData, 'PageTransaction', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -645,9 +610,9 @@ class DefaultApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [Object] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> getDeliveryTypes({ 
+  Future<Response<Object>> getDeliveryTypes({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -676,15 +641,11 @@ class DefaultApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    Object? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Object, Object>(rawData, 'Object', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -695,7 +656,7 @@ class DefaultApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<Object>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -730,7 +691,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/recharge/{rechargeId}'.replaceAll('{' r'rechargeId' '}', encodeQueryParameter(_serializers, rechargeId, const FullType(String)).toString());
+    final _path = r'/recharge/{rechargeId}'.replaceAll('{' r'rechargeId' '}', rechargeId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -754,12 +715,8 @@ class DefaultApi {
     Recharge? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Recharge),
-      ) as Recharge;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Recharge, Recharge>(rawData, 'Recharge', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -805,7 +762,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/recharge/address/{receiveAddress}'.replaceAll('{' r'receiveAddress' '}', encodeQueryParameter(_serializers, receiveAddress, const FullType(String)).toString());
+    final _path = r'/recharge/address/{receiveAddress}'.replaceAll('{' r'receiveAddress' '}', receiveAddress.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -829,12 +786,8 @@ class DefaultApi {
     Recharge? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Recharge),
-      ) as Recharge;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Recharge, Recharge>(rawData, 'Recharge', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -880,7 +833,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/recharge/tx/{txHash}'.replaceAll('{' r'txHash' '}', encodeQueryParameter(_serializers, txHash, const FullType(String)).toString());
+    final _path = r'/recharge/tx/{txHash}'.replaceAll('{' r'txHash' '}', txHash.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -904,12 +857,8 @@ class DefaultApi {
     Recharge? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Recharge),
-      ) as Recharge;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Recharge, Recharge>(rawData, 'Recharge', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -971,8 +920,8 @@ class DefaultApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'userId': encodeQueryParameter(_serializers, userId, const FullType(int)),
-      r'pageable': encodeQueryParameter(_serializers, pageable, const FullType(Pageable)),
+      r'userId': userId,
+      r'pageable': pageable,
     };
 
     final _response = await _dio.request<Object>(
@@ -987,12 +936,8 @@ class DefaultApi {
     PageRecharge? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PageRecharge),
-      ) as PageRecharge;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PageRecharge, PageRecharge>(rawData, 'PageRecharge', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1038,7 +983,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/transactions/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(int)).toString());
+    final _path = r'/transactions/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -1062,12 +1007,8 @@ class DefaultApi {
     Transaction? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Transaction),
-      ) as Transaction;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Transaction, Transaction>(rawData, 'Transaction', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1117,7 +1058,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/transactions/{token}/list'.replaceAll('{' r'token' '}', encodeQueryParameter(_serializers, token, const FullType(String)).toString());
+    final _path = r'/transactions/{token}/list'.replaceAll('{' r'token' '}', token.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -1131,8 +1072,8 @@ class DefaultApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
-      r'size': encodeQueryParameter(_serializers, size, const FullType(int)),
+      r'page': page,
+      r'size': size,
     };
 
     final _response = await _dio.request<Object>(
@@ -1147,12 +1088,8 @@ class DefaultApi {
     PageTransaction? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PageTransaction),
-      ) as PageTransaction;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PageTransaction, PageTransaction>(rawData, 'PageTransaction', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1198,7 +1135,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/withdraws/{withdrawId}'.replaceAll('{' r'withdrawId' '}', encodeQueryParameter(_serializers, withdrawId, const FullType(String)).toString());
+    final _path = r'/withdraws/{withdrawId}'.replaceAll('{' r'withdrawId' '}', withdrawId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -1222,12 +1159,8 @@ class DefaultApi {
     Withdraw? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Withdraw),
-      ) as Withdraw;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Withdraw, Withdraw>(rawData, 'Withdraw', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1289,8 +1222,8 @@ class DefaultApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'userId': encodeQueryParameter(_serializers, userId, const FullType(int)),
-      r'pageable': encodeQueryParameter(_serializers, pageable, const FullType(Pageable)),
+      r'userId': userId,
+      r'pageable': pageable,
     };
 
     final _response = await _dio.request<Object>(
@@ -1305,12 +1238,8 @@ class DefaultApi {
     PageWithdraw? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PageWithdraw),
-      ) as PageWithdraw;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PageWithdraw, PageWithdraw>(rawData, 'PageWithdraw', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

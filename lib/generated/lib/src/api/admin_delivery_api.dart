@@ -4,23 +4,19 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:agora_market_dart_sdk/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:agora_market_dart_sdk/src/api_util.dart';
 import 'package:agora_market_dart_sdk/src/model/delivery_detail.dart';
 import 'package:agora_market_dart_sdk/src/model/deliveryer.dart';
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/json_object.dart';
 
 class AdminDeliveryApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const AdminDeliveryApi(this._dio, this._serializers);
+  const AdminDeliveryApi(this._dio);
 
   /// 手動分配配送員
   /// 管理員可以手動為訂單分配配送員
@@ -47,7 +43,7 @@ class AdminDeliveryApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/admin/delivery/orders/{orderId}/assign'.replaceAll('{' r'orderId' '}', encodeQueryParameter(_serializers, orderId, const FullType(String)).toString());
+    final _path = r'/admin/delivery/orders/{orderId}/assign'.replaceAll('{' r'orderId' '}', orderId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -61,7 +57,7 @@ class AdminDeliveryApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'deliveryerId': encodeQueryParameter(_serializers, deliveryerId, const FullType(int)),
+      r'deliveryerId': deliveryerId,
     };
 
     final _response = await _dio.request<Object>(
@@ -76,12 +72,8 @@ class AdminDeliveryApi {
     DeliveryDetail? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(DeliveryDetail),
-      ) as DeliveryDetail;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<DeliveryDetail, DeliveryDetail>(rawData, 'DeliveryDetail', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -127,7 +119,7 @@ class AdminDeliveryApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/admin/delivery/orders/{orderId}'.replaceAll('{' r'orderId' '}', encodeQueryParameter(_serializers, orderId, const FullType(String)).toString());
+    final _path = r'/admin/delivery/orders/{orderId}'.replaceAll('{' r'orderId' '}', orderId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -151,12 +143,8 @@ class AdminDeliveryApi {
     DeliveryDetail? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(DeliveryDetail),
-      ) as DeliveryDetail;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<DeliveryDetail, DeliveryDetail>(rawData, 'DeliveryDetail', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -192,9 +180,9 @@ class AdminDeliveryApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltMap<String, JsonObject>] as data
+  /// Returns a [Future] containing a [Response] with a [Map<String, Object>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltMap<String, JsonObject>>> getDeliveryStatistics({ 
+  Future<Response<Map<String, Object>>> getDeliveryStatistics({ 
     DateTime? startDate,
     DateTime? endDate,
     CancelToken? cancelToken,
@@ -218,8 +206,8 @@ class AdminDeliveryApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (startDate != null) r'startDate': encodeQueryParameter(_serializers, startDate, const FullType(DateTime)),
-      if (endDate != null) r'endDate': encodeQueryParameter(_serializers, endDate, const FullType(DateTime)),
+      if (startDate != null) r'startDate': startDate,
+      if (endDate != null) r'endDate': endDate,
     };
 
     final _response = await _dio.request<Object>(
@@ -231,15 +219,11 @@ class AdminDeliveryApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltMap<String, JsonObject>? _responseData;
+    Map<String, Object>? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(JsonObject)]),
-      ) as BuiltMap<String, JsonObject>;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Map<String, Object>, Object>(rawData, 'Map<String, Object>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -250,7 +234,7 @@ class AdminDeliveryApi {
       );
     }
 
-    return Response<BuiltMap<String, JsonObject>>(
+    return Response<Map<String, Object>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -285,7 +269,7 @@ class AdminDeliveryApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/admin/delivery/deliveryers/{deliveryerId}'.replaceAll('{' r'deliveryerId' '}', encodeQueryParameter(_serializers, deliveryerId, const FullType(int)).toString());
+    final _path = r'/admin/delivery/deliveryers/{deliveryerId}'.replaceAll('{' r'deliveryerId' '}', deliveryerId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -309,12 +293,8 @@ class AdminDeliveryApi {
     Deliveryer? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Deliveryer),
-      ) as Deliveryer;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Deliveryer, Deliveryer>(rawData, 'Deliveryer', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -352,9 +332,9 @@ class AdminDeliveryApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<DeliveryDetail>] as data
+  /// Returns a [Future] containing a [Response] with a [List<DeliveryDetail>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<DeliveryDetail>>> searchDeliveryOrders({ 
+  Future<Response<List<DeliveryDetail>>> searchDeliveryOrders({ 
     int? deliveryerId,
     String? status,
     DateTime? startDate,
@@ -380,10 +360,10 @@ class AdminDeliveryApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (deliveryerId != null) r'deliveryerId': encodeQueryParameter(_serializers, deliveryerId, const FullType(int)),
-      if (status != null) r'status': encodeQueryParameter(_serializers, status, const FullType(String)),
-      if (startDate != null) r'startDate': encodeQueryParameter(_serializers, startDate, const FullType(DateTime)),
-      if (endDate != null) r'endDate': encodeQueryParameter(_serializers, endDate, const FullType(DateTime)),
+      if (deliveryerId != null) r'deliveryerId': deliveryerId,
+      if (status != null) r'status': status,
+      if (startDate != null) r'startDate': startDate,
+      if (endDate != null) r'endDate': endDate,
     };
 
     final _response = await _dio.request<Object>(
@@ -395,15 +375,11 @@ class AdminDeliveryApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<DeliveryDetail>? _responseData;
+    List<DeliveryDetail>? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(DeliveryDetail)]),
-      ) as BuiltList<DeliveryDetail>;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<DeliveryDetail>, DeliveryDetail>(rawData, 'List<DeliveryDetail>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -414,7 +390,7 @@ class AdminDeliveryApi {
       );
     }
 
-    return Response<BuiltList<DeliveryDetail>>(
+    return Response<List<DeliveryDetail>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -444,9 +420,9 @@ class AdminDeliveryApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<Deliveryer>] as data
+  /// Returns a [Future] containing a [Response] with a [List<Deliveryer>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<Deliveryer>>> searchDeliveryers({ 
+  Future<Response<List<Deliveryer>>> searchDeliveryers({ 
     bool? enabled,
     bool? isDelivering,
     double? longitude,
@@ -475,13 +451,13 @@ class AdminDeliveryApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (enabled != null) r'enabled': encodeQueryParameter(_serializers, enabled, const FullType(bool)),
-      if (isDelivering != null) r'isDelivering': encodeQueryParameter(_serializers, isDelivering, const FullType(bool)),
-      if (longitude != null) r'longitude': encodeQueryParameter(_serializers, longitude, const FullType(double)),
-      if (latitude != null) r'latitude': encodeQueryParameter(_serializers, latitude, const FullType(double)),
-      if (radius != null) r'radius': encodeQueryParameter(_serializers, radius, const FullType(double)),
-      if (startDate != null) r'startDate': encodeQueryParameter(_serializers, startDate, const FullType(DateTime)),
-      if (endDate != null) r'endDate': encodeQueryParameter(_serializers, endDate, const FullType(DateTime)),
+      if (enabled != null) r'enabled': enabled,
+      if (isDelivering != null) r'isDelivering': isDelivering,
+      if (longitude != null) r'longitude': longitude,
+      if (latitude != null) r'latitude': latitude,
+      if (radius != null) r'radius': radius,
+      if (startDate != null) r'startDate': startDate,
+      if (endDate != null) r'endDate': endDate,
     };
 
     final _response = await _dio.request<Object>(
@@ -493,15 +469,11 @@ class AdminDeliveryApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<Deliveryer>? _responseData;
+    List<Deliveryer>? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(Deliveryer)]),
-      ) as BuiltList<Deliveryer>;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<Deliveryer>, Deliveryer>(rawData, 'List<Deliveryer>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -512,7 +484,7 @@ class AdminDeliveryApi {
       );
     }
 
-    return Response<BuiltList<Deliveryer>>(
+    return Response<List<Deliveryer>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -549,7 +521,7 @@ class AdminDeliveryApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/admin/delivery/deliveryers/{deliveryerId}/status'.replaceAll('{' r'deliveryerId' '}', encodeQueryParameter(_serializers, deliveryerId, const FullType(int)).toString());
+    final _path = r'/admin/delivery/deliveryers/{deliveryerId}/status'.replaceAll('{' r'deliveryerId' '}', deliveryerId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -563,7 +535,7 @@ class AdminDeliveryApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'enabled': encodeQueryParameter(_serializers, enabled, const FullType(bool)),
+      r'enabled': enabled,
     };
 
     final _response = await _dio.request<Object>(
@@ -578,12 +550,8 @@ class AdminDeliveryApi {
     Deliveryer? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Deliveryer),
-      ) as Deliveryer;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Deliveryer, Deliveryer>(rawData, 'Deliveryer', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

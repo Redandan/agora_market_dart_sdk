@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for PageColdWallet
 void main() {
-  final instance = PageColdWalletBuilder();
-  // TODO add properties to the builder and call build()
+  final PageColdWallet? instance = /* PageColdWallet(...) */ null;
+  // TODO add properties to the entity
 
   group(PageColdWallet, () {
     // int totalPages
@@ -37,7 +37,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<ColdWallet> content
+    // List<ColdWallet> content
     test('to test the property `content`', () async {
       // TODO
     });

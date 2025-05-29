@@ -329,7 +329,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getDeliveryTypes**
-> JsonObject getDeliveryTypes()
+> Object getDeliveryTypes()
 
 獲取系統配置
 
@@ -354,7 +354,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+**Object**
 
 ### Authorization
 

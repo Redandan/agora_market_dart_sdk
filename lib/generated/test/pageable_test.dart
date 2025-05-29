@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for Pageable
 void main() {
-  final instance = PageableBuilder();
-  // TODO add properties to the builder and call build()
+  final Pageable? instance = /* Pageable(...) */ null;
+  // TODO add properties to the entity
 
   group(Pageable, () {
     // int page
@@ -17,7 +17,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<String> sort
+    // List<String> sort
     test('to test the property `sort`', () async {
       // TODO
     });

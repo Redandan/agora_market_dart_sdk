@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for ChatMessageQueryParam
 void main() {
-  final instance = ChatMessageQueryParamBuilder();
-  // TODO add properties to the builder and call build()
+  final ChatMessageQueryParam? instance = /* ChatMessageQueryParam(...) */ null;
+  // TODO add properties to the entity
 
   group(ChatMessageQueryParam, () {
     // 用戶ID

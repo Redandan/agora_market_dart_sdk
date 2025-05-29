@@ -3,126 +3,72 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'order_cancel_param.g.dart';
 
-/// 取消參數
-///
-/// Properties:
-/// * [orderId] - 訂單ID
-/// * [reason] - 取消原因
-@BuiltValue()
-abstract class OrderCancelParam implements Built<OrderCancelParam, OrderCancelParamBuilder> {
-  /// 訂單ID
-  @BuiltValueField(wireName: r'orderId')
-  String? get orderId;
 
-  /// 取消原因
-  @BuiltValueField(wireName: r'reason')
-  String? get reason;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class OrderCancelParam {
+  /// Returns a new [OrderCancelParam] instance.
+  OrderCancelParam({
 
-  OrderCancelParam._();
+     this.orderId,
 
-  factory OrderCancelParam([void updates(OrderCancelParamBuilder b)]) = _$OrderCancelParam;
+     this.reason,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(OrderCancelParamBuilder b) => b;
+      /// 訂單ID
+  @JsonKey(
+    
+    name: r'orderId',
+    required: false,
+    includeIfNull: false,
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<OrderCancelParam> get serializer => _$OrderCancelParamSerializer();
-}
 
-class _$OrderCancelParamSerializer implements PrimitiveSerializer<OrderCancelParam> {
-  @override
-  final Iterable<Type> types = const [OrderCancelParam, _$OrderCancelParam];
+  final String? orderId;
 
-  @override
-  final String wireName = r'OrderCancelParam';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    OrderCancelParam object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.orderId != null) {
-      yield r'orderId';
-      yield serializers.serialize(
-        object.orderId,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.reason != null) {
-      yield r'reason';
-      yield serializers.serialize(
-        object.reason,
-        specifiedType: const FullType(String),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    OrderCancelParam object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+      /// 取消原因
+  @JsonKey(
+    
+    name: r'reason',
+    required: false,
+    includeIfNull: false,
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required OrderCancelParamBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'orderId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.orderId = valueDes;
-          break;
-        case r'reason':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.reason = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final String? reason;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is OrderCancelParam &&
+      other.orderId == orderId &&
+      other.reason == reason;
+
+    @override
+    int get hashCode =>
+        orderId.hashCode +
+        reason.hashCode;
+
+  factory OrderCancelParam.fromJson(Map<String, dynamic> json) => _$OrderCancelParamFromJson(json);
+
+  Map<String, dynamic> toJson() => _$OrderCancelParamToJson(this);
 
   @override
-  OrderCancelParam deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = OrderCancelParamBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

@@ -3,142 +3,86 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'sort_object.g.dart';
 
-/// SortObject
-///
-/// Properties:
-/// * [unsorted] 
-/// * [empty] 
-/// * [sorted] 
-@BuiltValue()
-abstract class SortObject implements Built<SortObject, SortObjectBuilder> {
-  @BuiltValueField(wireName: r'unsorted')
-  bool? get unsorted;
 
-  @BuiltValueField(wireName: r'empty')
-  bool? get empty;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class SortObject {
+  /// Returns a new [SortObject] instance.
+  SortObject({
 
-  @BuiltValueField(wireName: r'sorted')
-  bool? get sorted;
+     this.unsorted,
 
-  SortObject._();
+     this.empty,
 
-  factory SortObject([void updates(SortObjectBuilder b)]) = _$SortObject;
+     this.sorted,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(SortObjectBuilder b) => b;
+  @JsonKey(
+    
+    name: r'unsorted',
+    required: false,
+    includeIfNull: false,
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<SortObject> get serializer => _$SortObjectSerializer();
-}
 
-class _$SortObjectSerializer implements PrimitiveSerializer<SortObject> {
-  @override
-  final Iterable<Type> types = const [SortObject, _$SortObject];
+  final bool? unsorted;
 
-  @override
-  final String wireName = r'SortObject';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    SortObject object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.unsorted != null) {
-      yield r'unsorted';
-      yield serializers.serialize(
-        object.unsorted,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.empty != null) {
-      yield r'empty';
-      yield serializers.serialize(
-        object.empty,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.sorted != null) {
-      yield r'sorted';
-      yield serializers.serialize(
-        object.sorted,
-        specifiedType: const FullType(bool),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    SortObject object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+  @JsonKey(
+    
+    name: r'empty',
+    required: false,
+    includeIfNull: false,
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required SortObjectBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'unsorted':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.unsorted = valueDes;
-          break;
-        case r'empty':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.empty = valueDes;
-          break;
-        case r'sorted':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.sorted = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final bool? empty;
+
+
+
+  @JsonKey(
+    
+    name: r'sorted',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final bool? sorted;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is SortObject &&
+      other.unsorted == unsorted &&
+      other.empty == empty &&
+      other.sorted == sorted;
+
+    @override
+    int get hashCode =>
+        unsorted.hashCode +
+        empty.hashCode +
+        sorted.hashCode;
+
+  factory SortObject.fromJson(Map<String, dynamic> json) => _$SortObjectFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SortObjectToJson(this);
 
   @override
-  SortObject deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = SortObjectBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

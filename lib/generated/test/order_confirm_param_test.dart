@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for OrderConfirmParam
 void main() {
-  final instance = OrderConfirmParamBuilder();
-  // TODO add properties to the builder and call build()
+  final OrderConfirmParam? instance = /* OrderConfirmParam(...) */ null;
+  // TODO add properties to the entity
 
   group(OrderConfirmParam, () {
     // 訂單ID

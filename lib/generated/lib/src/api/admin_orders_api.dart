@@ -4,11 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:agora_market_dart_sdk/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:agora_market_dart_sdk/src/api_util.dart';
 import 'package:agora_market_dart_sdk/src/model/order_query_result.dart';
 import 'package:agora_market_dart_sdk/src/model/order_statistics_dto.dart';
 import 'package:agora_market_dart_sdk/src/model/page_order.dart';
@@ -17,9 +17,7 @@ class AdminOrdersApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const AdminOrdersApi(this._dio, this._serializers);
+  const AdminOrdersApi(this._dio);
 
   /// 取消訂單
   /// 管理員可以強制取消訂單，並提供取消原因
@@ -46,7 +44,7 @@ class AdminOrdersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/admin/orders/{orderId}/cancel'.replaceAll('{' r'orderId' '}', encodeQueryParameter(_serializers, orderId, const FullType(String)).toString());
+    final _path = r'/admin/orders/{orderId}/cancel'.replaceAll('{' r'orderId' '}', orderId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -60,7 +58,7 @@ class AdminOrdersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (reason != null) r'reason': encodeQueryParameter(_serializers, reason, const FullType(String)),
+      if (reason != null) r'reason': reason,
     };
 
     final _response = await _dio.request<Object>(
@@ -98,7 +96,7 @@ class AdminOrdersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/admin/orders/{orderId}'.replaceAll('{' r'orderId' '}', encodeQueryParameter(_serializers, orderId, const FullType(String)).toString());
+    final _path = r'/admin/orders/{orderId}'.replaceAll('{' r'orderId' '}', orderId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -122,12 +120,8 @@ class AdminOrdersApi {
     OrderQueryResult? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(OrderQueryResult),
-      ) as OrderQueryResult;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<OrderQueryResult, OrderQueryResult>(rawData, 'OrderQueryResult', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -189,8 +183,8 @@ class AdminOrdersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (startDate != null) r'startDate': encodeQueryParameter(_serializers, startDate, const FullType(DateTime)),
-      if (endDate != null) r'endDate': encodeQueryParameter(_serializers, endDate, const FullType(DateTime)),
+      if (startDate != null) r'startDate': startDate,
+      if (endDate != null) r'endDate': endDate,
     };
 
     final _response = await _dio.request<Object>(
@@ -205,12 +199,8 @@ class AdminOrdersApi {
     OrderStatisticsDTO? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(OrderStatisticsDTO),
-      ) as OrderStatisticsDTO;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<OrderStatisticsDTO, OrderStatisticsDTO>(rawData, 'OrderStatisticsDTO', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -282,13 +272,13 @@ class AdminOrdersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (buyerId != null) r'buyerId': encodeQueryParameter(_serializers, buyerId, const FullType(int)),
-      if (sellerId != null) r'sellerId': encodeQueryParameter(_serializers, sellerId, const FullType(int)),
-      if (status != null) r'status': encodeQueryParameter(_serializers, status, const FullType(String)),
-      if (startDate != null) r'startDate': encodeQueryParameter(_serializers, startDate, const FullType(DateTime)),
-      if (endDate != null) r'endDate': encodeQueryParameter(_serializers, endDate, const FullType(DateTime)),
-      if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
-      if (size != null) r'size': encodeQueryParameter(_serializers, size, const FullType(int)),
+      if (buyerId != null) r'buyerId': buyerId,
+      if (sellerId != null) r'sellerId': sellerId,
+      if (status != null) r'status': status,
+      if (startDate != null) r'startDate': startDate,
+      if (endDate != null) r'endDate': endDate,
+      if (page != null) r'page': page,
+      if (size != null) r'size': size,
     };
 
     final _response = await _dio.request<Object>(
@@ -303,12 +293,8 @@ class AdminOrdersApi {
     PageOrder? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PageOrder),
-      ) as PageOrder;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PageOrder, PageOrder>(rawData, 'PageOrder', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for DisputeCreateParam
 void main() {
-  final instance = DisputeCreateParamBuilder();
-  // TODO add properties to the builder and call build()
+  final DisputeCreateParam? instance = /* DisputeCreateParam(...) */ null;
+  // TODO add properties to the entity
 
   group(DisputeCreateParam, () {
     // 訂單ID

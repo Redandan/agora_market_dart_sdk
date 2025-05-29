@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for UserInfo
 void main() {
-  final instance = UserInfoBuilder();
-  // TODO add properties to the builder and call build()
+  final UserInfo? instance = /* UserInfo(...) */ null;
+  // TODO add properties to the entity
 
   group(UserInfo, () {
     // 用戶ID

@@ -4,11 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:agora_market_dart_sdk/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:agora_market_dart_sdk/src/api_util.dart';
 import 'package:agora_market_dart_sdk/src/model/page_product.dart';
 import 'package:agora_market_dart_sdk/src/model/store.dart';
 import 'package:agora_market_dart_sdk/src/model/store_analytics_dto.dart';
@@ -18,9 +18,7 @@ class StoresApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const StoresApi(this._dio, this._serializers);
+  const StoresApi(this._dio);
 
   /// 獲取當前用戶的商店
   /// 
@@ -67,12 +65,8 @@ class StoresApi {
     Store? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Store),
-      ) as Store;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Store, Store>(rawData, 'Store', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -140,12 +134,8 @@ class StoresApi {
     StoreAnalyticsDTO? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(StoreAnalyticsDTO),
-      ) as StoreAnalyticsDTO;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<StoreAnalyticsDTO, StoreAnalyticsDTO>(rawData, 'StoreAnalyticsDTO', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -191,7 +181,7 @@ class StoresApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/stores/{sellerId}'.replaceAll('{' r'sellerId' '}', encodeQueryParameter(_serializers, sellerId, const FullType(int)).toString());
+    final _path = r'/stores/{sellerId}'.replaceAll('{' r'sellerId' '}', sellerId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -215,12 +205,8 @@ class StoresApi {
     Store? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Store),
-      ) as Store;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Store, Store>(rawData, 'Store', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -288,11 +274,11 @@ class StoresApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (keyword != null) r'keyword': encodeQueryParameter(_serializers, keyword, const FullType(String)),
-      if (categoryId != null) r'categoryId': encodeQueryParameter(_serializers, categoryId, const FullType(int)),
-      if (status != null) r'status': encodeQueryParameter(_serializers, status, const FullType(String)),
-      if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
-      if (size != null) r'size': encodeQueryParameter(_serializers, size, const FullType(int)),
+      if (keyword != null) r'keyword': keyword,
+      if (categoryId != null) r'categoryId': categoryId,
+      if (status != null) r'status': status,
+      if (page != null) r'page': page,
+      if (size != null) r'size': size,
     };
 
     final _response = await _dio.request<Object>(
@@ -307,12 +293,8 @@ class StoresApi {
     PageProduct? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PageProduct),
-      ) as PageProduct;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PageProduct, PageProduct>(rawData, 'PageProduct', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -375,9 +357,7 @@ class StoresApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(StoreUpdateParam);
-      _bodyData = _serializers.serialize(storeUpdateParam, specifiedType: _type);
-
+_bodyData=jsonEncode(storeUpdateParam);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -402,12 +382,8 @@ class StoresApi {
     Store? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Store),
-      ) as Store;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Store, Store>(rawData, 'Store', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

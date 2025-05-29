@@ -3,164 +3,106 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'order_ship_param.g.dart';
 
-/// 發貨參數
-///
-/// Properties:
-/// * [orderId] - 訂單ID
-/// * [shippingCompany] - 物流公司
-/// * [trackingNumber] - 物流單號
-/// * [remark] - 發貨備註
-@BuiltValue()
-abstract class OrderShipParam implements Built<OrderShipParam, OrderShipParamBuilder> {
-  /// 訂單ID
-  @BuiltValueField(wireName: r'orderId')
-  String? get orderId;
 
-  /// 物流公司
-  @BuiltValueField(wireName: r'shippingCompany')
-  String? get shippingCompany;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class OrderShipParam {
+  /// Returns a new [OrderShipParam] instance.
+  OrderShipParam({
 
-  /// 物流單號
-  @BuiltValueField(wireName: r'trackingNumber')
-  String? get trackingNumber;
+     this.orderId,
 
-  /// 發貨備註
-  @BuiltValueField(wireName: r'remark')
-  String? get remark;
+     this.shippingCompany,
 
-  OrderShipParam._();
+     this.trackingNumber,
 
-  factory OrderShipParam([void updates(OrderShipParamBuilder b)]) = _$OrderShipParam;
+     this.remark,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(OrderShipParamBuilder b) => b;
+      /// 訂單ID
+  @JsonKey(
+    
+    name: r'orderId',
+    required: false,
+    includeIfNull: false,
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<OrderShipParam> get serializer => _$OrderShipParamSerializer();
-}
 
-class _$OrderShipParamSerializer implements PrimitiveSerializer<OrderShipParam> {
-  @override
-  final Iterable<Type> types = const [OrderShipParam, _$OrderShipParam];
+  final String? orderId;
 
-  @override
-  final String wireName = r'OrderShipParam';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    OrderShipParam object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.orderId != null) {
-      yield r'orderId';
-      yield serializers.serialize(
-        object.orderId,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.shippingCompany != null) {
-      yield r'shippingCompany';
-      yield serializers.serialize(
-        object.shippingCompany,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.trackingNumber != null) {
-      yield r'trackingNumber';
-      yield serializers.serialize(
-        object.trackingNumber,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.remark != null) {
-      yield r'remark';
-      yield serializers.serialize(
-        object.remark,
-        specifiedType: const FullType(String),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    OrderShipParam object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+      /// 物流公司
+  @JsonKey(
+    
+    name: r'shippingCompany',
+    required: false,
+    includeIfNull: false,
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required OrderShipParamBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'orderId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.orderId = valueDes;
-          break;
-        case r'shippingCompany':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.shippingCompany = valueDes;
-          break;
-        case r'trackingNumber':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.trackingNumber = valueDes;
-          break;
-        case r'remark':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.remark = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final String? shippingCompany;
+
+
+
+      /// 物流單號
+  @JsonKey(
+    
+    name: r'trackingNumber',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? trackingNumber;
+
+
+
+      /// 發貨備註
+  @JsonKey(
+    
+    name: r'remark',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final String? remark;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is OrderShipParam &&
+      other.orderId == orderId &&
+      other.shippingCompany == shippingCompany &&
+      other.trackingNumber == trackingNumber &&
+      other.remark == remark;
+
+    @override
+    int get hashCode =>
+        orderId.hashCode +
+        shippingCompany.hashCode +
+        trackingNumber.hashCode +
+        remark.hashCode;
+
+  factory OrderShipParam.fromJson(Map<String, dynamic> json) => _$OrderShipParamFromJson(json);
+
+  Map<String, dynamic> toJson() => _$OrderShipParamToJson(this);
 
   @override
-  OrderShipParam deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = OrderShipParamBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

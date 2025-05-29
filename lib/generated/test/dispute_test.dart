@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for Dispute
 void main() {
-  final instance = DisputeBuilder();
-  // TODO add properties to the builder and call build()
+  final Dispute? instance = /* Dispute(...) */ null;
+  // TODO add properties to the entity
 
   group(Dispute, () {
     // 糾紛ID

@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for Staking
 void main() {
-  final instance = StakingBuilder();
-  // TODO add properties to the builder and call build()
+  final Staking? instance = /* Staking(...) */ null;
+  // TODO add properties to the entity
 
   group(Staking, () {
     // 質押ID
@@ -74,7 +74,7 @@ void main() {
     });
 
     // 上次結算時間
-    // Date lastSettleDate
+    // DateTime lastSettleDate
     test('to test the property `lastSettleDate`', () async {
       // TODO
     });

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **last** | **bool** |  | [optional] 
 **numberOfElements** | **int** |  | [optional] 
 **size** | **int** |  | [optional] 
-**content** | [**BuiltList&lt;ChatMessage&gt;**](ChatMessage.md) |  | [optional] 
+**content** | [**List&lt;ChatMessage&gt;**](ChatMessage.md) |  | [optional] 
 **number** | **int** |  | [optional] 
 **sort** | [**SortObject**](SortObject.md) |  | [optional] 
 **pageable** | [**PageableObject**](PageableObject.md) |  | [optional] 

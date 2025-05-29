@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for PageRecharge
 void main() {
-  final instance = PageRechargeBuilder();
-  // TODO add properties to the builder and call build()
+  final PageRecharge? instance = /* PageRecharge(...) */ null;
+  // TODO add properties to the entity
 
   group(PageRecharge, () {
     // int totalPages
@@ -37,7 +37,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<Recharge> content
+    // List<Recharge> content
     test('to test the property `content`', () async {
       // TODO
     });

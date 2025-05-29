@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for PageWithdraw
 void main() {
-  final instance = PageWithdrawBuilder();
-  // TODO add properties to the builder and call build()
+  final PageWithdraw? instance = /* PageWithdraw(...) */ null;
+  // TODO add properties to the entity
 
   group(PageWithdraw, () {
     // int totalPages
@@ -37,7 +37,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<Withdraw> content
+    // List<Withdraw> content
     test('to test the property `content`', () async {
       // TODO
     });

@@ -4,24 +4,20 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:agora_market_dart_sdk/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:agora_market_dart_sdk/src/api_util.dart';
 import 'package:agora_market_dart_sdk/src/model/member_update_param.dart';
 import 'package:agora_market_dart_sdk/src/model/page_user.dart';
 import 'package:agora_market_dart_sdk/src/model/user.dart';
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/json_object.dart';
 
 class AdminMembersApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const AdminMembersApi(this._dio, this._serializers);
+  const AdminMembersApi(this._dio);
 
   /// 查看會員詳情
   /// 管理員可查看會員的詳細信息
@@ -46,7 +42,7 @@ class AdminMembersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/admin/members/{memberId}'.replaceAll('{' r'memberId' '}', encodeQueryParameter(_serializers, memberId, const FullType(int)).toString());
+    final _path = r'/admin/members/{memberId}'.replaceAll('{' r'memberId' '}', memberId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -70,12 +66,8 @@ class AdminMembersApi {
     User? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(User),
-      ) as User;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -111,9 +103,9 @@ class AdminMembersApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltMap<String, JsonObject>] as data
+  /// Returns a [Future] containing a [Response] with a [Map<String, Object>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltMap<String, JsonObject>>> getMemberStatistics({ 
+  Future<Response<Map<String, Object>>> getMemberStatistics({ 
     DateTime? startDate,
     DateTime? endDate,
     CancelToken? cancelToken,
@@ -137,8 +129,8 @@ class AdminMembersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (startDate != null) r'startDate': encodeQueryParameter(_serializers, startDate, const FullType(DateTime)),
-      if (endDate != null) r'endDate': encodeQueryParameter(_serializers, endDate, const FullType(DateTime)),
+      if (startDate != null) r'startDate': startDate,
+      if (endDate != null) r'endDate': endDate,
     };
 
     final _response = await _dio.request<Object>(
@@ -150,15 +142,11 @@ class AdminMembersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltMap<String, JsonObject>? _responseData;
+    Map<String, Object>? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(JsonObject)]),
-      ) as BuiltMap<String, JsonObject>;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Map<String, Object>, Object>(rawData, 'Map<String, Object>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -169,7 +157,7 @@ class AdminMembersApi {
       );
     }
 
-    return Response<BuiltMap<String, JsonObject>>(
+    return Response<Map<String, Object>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -226,11 +214,11 @@ class AdminMembersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (status != null) r'status': encodeQueryParameter(_serializers, status, const FullType(String)),
-      if (startDate != null) r'startDate': encodeQueryParameter(_serializers, startDate, const FullType(DateTime)),
-      if (endDate != null) r'endDate': encodeQueryParameter(_serializers, endDate, const FullType(DateTime)),
-      if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
-      if (size != null) r'size': encodeQueryParameter(_serializers, size, const FullType(int)),
+      if (status != null) r'status': status,
+      if (startDate != null) r'startDate': startDate,
+      if (endDate != null) r'endDate': endDate,
+      if (page != null) r'page': page,
+      if (size != null) r'size': size,
     };
 
     final _response = await _dio.request<Object>(
@@ -245,12 +233,8 @@ class AdminMembersApi {
     PageUser? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PageUser),
-      ) as PageUser;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PageUser, PageUser>(rawData, 'PageUser', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -298,7 +282,7 @@ class AdminMembersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/admin/members/{memberId}/update'.replaceAll('{' r'memberId' '}', encodeQueryParameter(_serializers, memberId, const FullType(int)).toString());
+    final _path = r'/admin/members/{memberId}/update'.replaceAll('{' r'memberId' '}', memberId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -315,9 +299,7 @@ class AdminMembersApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(MemberUpdateParam);
-      _bodyData = _serializers.serialize(memberUpdateParam, specifiedType: _type);
-
+_bodyData=jsonEncode(memberUpdateParam);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -342,12 +324,8 @@ class AdminMembersApi {
     User? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(User),
-      ) as User;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -395,7 +373,7 @@ class AdminMembersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/admin/members/{memberId}/status'.replaceAll('{' r'memberId' '}', encodeQueryParameter(_serializers, memberId, const FullType(int)).toString());
+    final _path = r'/admin/members/{memberId}/status'.replaceAll('{' r'memberId' '}', memberId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -409,7 +387,7 @@ class AdminMembersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'newStatus': encodeQueryParameter(_serializers, newStatus, const FullType(String)),
+      r'newStatus': newStatus,
     };
 
     final _response = await _dio.request<Object>(
@@ -424,12 +402,8 @@ class AdminMembersApi {
     User? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(User),
-      ) as User;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

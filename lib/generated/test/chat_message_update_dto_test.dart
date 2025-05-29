@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for ChatMessageUpdateDTO
 void main() {
-  final instance = ChatMessageUpdateDTOBuilder();
-  // TODO add properties to the builder and call build()
+  final ChatMessageUpdateDTO? instance = /* ChatMessageUpdateDTO(...) */ null;
+  // TODO add properties to the entity
 
   group(ChatMessageUpdateDTO, () {
     // 消息內容

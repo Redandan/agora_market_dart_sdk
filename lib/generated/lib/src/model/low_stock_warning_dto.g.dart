@@ -3,103 +3,25 @@
 part of 'low_stock_warning_dto.dart';
 
 // **************************************************************************
-// BuiltValueGenerator
+// JsonSerializableGenerator
 // **************************************************************************
 
-class _$LowStockWarningDTO extends LowStockWarningDTO {
-  @override
-  final int? productId;
-  @override
-  final int? currentStock;
-
-  factory _$LowStockWarningDTO(
-          [void Function(LowStockWarningDTOBuilder)? updates]) =>
-      (LowStockWarningDTOBuilder()..update(updates))._build();
-
-  _$LowStockWarningDTO._({this.productId, this.currentStock}) : super._();
-  @override
-  LowStockWarningDTO rebuild(
-          void Function(LowStockWarningDTOBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
-
-  @override
-  LowStockWarningDTOBuilder toBuilder() =>
-      LowStockWarningDTOBuilder()..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is LowStockWarningDTO &&
-        productId == other.productId &&
-        currentStock == other.currentStock;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, productId.hashCode);
-    _$hash = $jc(_$hash, currentStock.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(r'LowStockWarningDTO')
-          ..add('productId', productId)
-          ..add('currentStock', currentStock))
-        .toString();
-  }
-}
-
-class LowStockWarningDTOBuilder
-    implements Builder<LowStockWarningDTO, LowStockWarningDTOBuilder> {
-  _$LowStockWarningDTO? _$v;
-
-  int? _productId;
-  int? get productId => _$this._productId;
-  set productId(int? productId) => _$this._productId = productId;
-
-  int? _currentStock;
-  int? get currentStock => _$this._currentStock;
-  set currentStock(int? currentStock) => _$this._currentStock = currentStock;
-
-  LowStockWarningDTOBuilder() {
-    LowStockWarningDTO._defaults(this);
-  }
-
-  LowStockWarningDTOBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _productId = $v.productId;
-      _currentStock = $v.currentStock;
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(LowStockWarningDTO other) {
-    _$v = other as _$LowStockWarningDTO;
-  }
-
-  @override
-  void update(void Function(LowStockWarningDTOBuilder)? updates) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  LowStockWarningDTO build() => _build();
-
-  _$LowStockWarningDTO _build() {
-    final _$result = _$v ??
-        _$LowStockWarningDTO._(
-          productId: productId,
-          currentStock: currentStock,
+LowStockWarningDTO _$LowStockWarningDTOFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      'LowStockWarningDTO',
+      json,
+      ($checkedConvert) {
+        final val = LowStockWarningDTO(
+          productId: $checkedConvert('productId', (v) => (v as num?)?.toInt()),
+          currentStock:
+              $checkedConvert('currentStock', (v) => (v as num?)?.toInt()),
         );
-    replace(_$result);
-    return _$result;
-  }
-}
+        return val;
+      },
+    );
 
-// ignore_for_file: deprecated_member_use_from_same_package,type=lint
+Map<String, dynamic> _$LowStockWarningDTOToJson(LowStockWarningDTO instance) =>
+    <String, dynamic>{
+      if (instance.productId case final value?) 'productId': value,
+      if (instance.currentStock case final value?) 'currentStock': value,
+    };

@@ -3,122 +3,72 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'chat_message_dto.g.dart';
 
-/// 消息內容
-///
-/// Properties:
-/// * [receiverId] - 接收者ID
-/// * [content] - 消息內容
-@BuiltValue()
-abstract class ChatMessageDTO implements Built<ChatMessageDTO, ChatMessageDTOBuilder> {
-  /// 接收者ID
-  @BuiltValueField(wireName: r'receiverId')
-  int get receiverId;
 
-  /// 消息內容
-  @BuiltValueField(wireName: r'content')
-  String get content;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class ChatMessageDTO {
+  /// Returns a new [ChatMessageDTO] instance.
+  ChatMessageDTO({
 
-  ChatMessageDTO._();
+    required  this.receiverId,
 
-  factory ChatMessageDTO([void updates(ChatMessageDTOBuilder b)]) = _$ChatMessageDTO;
+    required  this.content,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(ChatMessageDTOBuilder b) => b;
+      /// 接收者ID
+  @JsonKey(
+    
+    name: r'receiverId',
+    required: true,
+    includeIfNull: false,
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<ChatMessageDTO> get serializer => _$ChatMessageDTOSerializer();
-}
 
-class _$ChatMessageDTOSerializer implements PrimitiveSerializer<ChatMessageDTO> {
-  @override
-  final Iterable<Type> types = const [ChatMessageDTO, _$ChatMessageDTO];
+  final int receiverId;
 
-  @override
-  final String wireName = r'ChatMessageDTO';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    ChatMessageDTO object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'receiverId';
-    yield serializers.serialize(
-      object.receiverId,
-      specifiedType: const FullType(int),
-    );
-    yield r'content';
-    yield serializers.serialize(
-      object.content,
-      specifiedType: const FullType(String),
-    );
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    ChatMessageDTO object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+      /// 消息內容
+  @JsonKey(
+    
+    name: r'content',
+    required: true,
+    includeIfNull: false,
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required ChatMessageDTOBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'receiverId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.receiverId = valueDes;
-          break;
-        case r'content':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.content = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final String content;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is ChatMessageDTO &&
+      other.receiverId == receiverId &&
+      other.content == content;
+
+    @override
+    int get hashCode =>
+        receiverId.hashCode +
+        content.hashCode;
+
+  factory ChatMessageDTO.fromJson(Map<String, dynamic> json) => _$ChatMessageDTOFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ChatMessageDTOToJson(this);
 
   @override
-  ChatMessageDTO deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = ChatMessageDTOBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

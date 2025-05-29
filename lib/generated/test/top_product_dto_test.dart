@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for TopProductDTO
 void main() {
-  final instance = TopProductDTOBuilder();
-  // TODO add properties to the builder and call build()
+  final TopProductDTO? instance = /* TopProductDTO(...) */ null;
+  // TODO add properties to the entity
 
   group(TopProductDTO, () {
     // 商品ID

@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for CreateWithdrawParam
 void main() {
-  final instance = CreateWithdrawParamBuilder();
-  // TODO add properties to the builder and call build()
+  final CreateWithdrawParam? instance = /* CreateWithdrawParam(...) */ null;
+  // TODO add properties to the entity
 
   group(CreateWithdrawParam, () {
     // int userId

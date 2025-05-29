@@ -4,24 +4,20 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:agora_market_dart_sdk/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:agora_market_dart_sdk/src/api_util.dart';
 import 'package:agora_market_dart_sdk/src/model/page_product.dart';
 import 'package:agora_market_dart_sdk/src/model/product.dart';
 import 'package:agora_market_dart_sdk/src/model/product_update_param.dart';
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/json_object.dart';
 
 class AdminProductsApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const AdminProductsApi(this._dio, this._serializers);
+  const AdminProductsApi(this._dio);
 
   /// 查看商品詳情
   /// 管理員可查看商品的詳細信息
@@ -46,7 +42,7 @@ class AdminProductsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/admin/products/{productId}'.replaceAll('{' r'productId' '}', encodeQueryParameter(_serializers, productId, const FullType(int)).toString());
+    final _path = r'/admin/products/{productId}'.replaceAll('{' r'productId' '}', productId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -70,12 +66,8 @@ class AdminProductsApi {
     Product? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Product),
-      ) as Product;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Product, Product>(rawData, 'Product', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -111,9 +103,9 @@ class AdminProductsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltMap<String, JsonObject>] as data
+  /// Returns a [Future] containing a [Response] with a [Map<String, Object>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltMap<String, JsonObject>>> getProductStatistics({ 
+  Future<Response<Map<String, Object>>> getProductStatistics({ 
     DateTime? startDate,
     DateTime? endDate,
     CancelToken? cancelToken,
@@ -137,8 +129,8 @@ class AdminProductsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (startDate != null) r'startDate': encodeQueryParameter(_serializers, startDate, const FullType(DateTime)),
-      if (endDate != null) r'endDate': encodeQueryParameter(_serializers, endDate, const FullType(DateTime)),
+      if (startDate != null) r'startDate': startDate,
+      if (endDate != null) r'endDate': endDate,
     };
 
     final _response = await _dio.request<Object>(
@@ -150,15 +142,11 @@ class AdminProductsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltMap<String, JsonObject>? _responseData;
+    Map<String, Object>? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(JsonObject)]),
-      ) as BuiltMap<String, JsonObject>;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Map<String, Object>, Object>(rawData, 'Map<String, Object>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -169,7 +157,7 @@ class AdminProductsApi {
       );
     }
 
-    return Response<BuiltMap<String, JsonObject>>(
+    return Response<Map<String, Object>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -230,13 +218,13 @@ class AdminProductsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (sellerId != null) r'sellerId': encodeQueryParameter(_serializers, sellerId, const FullType(int)),
-      if (status != null) r'status': encodeQueryParameter(_serializers, status, const FullType(String)),
-      if (category != null) r'category': encodeQueryParameter(_serializers, category, const FullType(String)),
-      if (startDate != null) r'startDate': encodeQueryParameter(_serializers, startDate, const FullType(DateTime)),
-      if (endDate != null) r'endDate': encodeQueryParameter(_serializers, endDate, const FullType(DateTime)),
-      if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
-      if (size != null) r'size': encodeQueryParameter(_serializers, size, const FullType(int)),
+      if (sellerId != null) r'sellerId': sellerId,
+      if (status != null) r'status': status,
+      if (category != null) r'category': category,
+      if (startDate != null) r'startDate': startDate,
+      if (endDate != null) r'endDate': endDate,
+      if (page != null) r'page': page,
+      if (size != null) r'size': size,
     };
 
     final _response = await _dio.request<Object>(
@@ -251,12 +239,8 @@ class AdminProductsApi {
     PageProduct? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PageProduct),
-      ) as PageProduct;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PageProduct, PageProduct>(rawData, 'PageProduct', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -304,7 +288,7 @@ class AdminProductsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/admin/products/{productId}/update'.replaceAll('{' r'productId' '}', encodeQueryParameter(_serializers, productId, const FullType(int)).toString());
+    final _path = r'/admin/products/{productId}/update'.replaceAll('{' r'productId' '}', productId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -321,9 +305,7 @@ class AdminProductsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(ProductUpdateParam);
-      _bodyData = _serializers.serialize(productUpdateParam, specifiedType: _type);
-
+_bodyData=jsonEncode(productUpdateParam);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -348,12 +330,8 @@ class AdminProductsApi {
     Product? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Product),
-      ) as Product;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Product, Product>(rawData, 'Product', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -401,7 +379,7 @@ class AdminProductsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/admin/products/{productId}/status'.replaceAll('{' r'productId' '}', encodeQueryParameter(_serializers, productId, const FullType(int)).toString());
+    final _path = r'/admin/products/{productId}/status'.replaceAll('{' r'productId' '}', productId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -415,7 +393,7 @@ class AdminProductsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'newStatus': encodeQueryParameter(_serializers, newStatus, const FullType(String)),
+      r'newStatus': newStatus,
     };
 
     final _response = await _dio.request<Object>(
@@ -430,12 +408,8 @@ class AdminProductsApi {
     Product? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Product),
-      ) as Product;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Product, Product>(rawData, 'Product', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

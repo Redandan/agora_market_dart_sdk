@@ -3,143 +3,88 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'pageable.g.dart';
 
-/// Pageable
-///
-/// Properties:
-/// * [page] 
-/// * [size] 
-/// * [sort] 
-@BuiltValue()
-abstract class Pageable implements Built<Pageable, PageableBuilder> {
-  @BuiltValueField(wireName: r'page')
-  int? get page;
 
-  @BuiltValueField(wireName: r'size')
-  int? get size;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class Pageable {
+  /// Returns a new [Pageable] instance.
+  Pageable({
 
-  @BuiltValueField(wireName: r'sort')
-  BuiltList<String>? get sort;
+     this.page,
 
-  Pageable._();
+     this.size,
 
-  factory Pageable([void updates(PageableBuilder b)]) = _$Pageable;
+     this.sort,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(PageableBuilder b) => b;
+          // minimum: 0
+  @JsonKey(
+    
+    name: r'page',
+    required: false,
+    includeIfNull: false,
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<Pageable> get serializer => _$PageableSerializer();
-}
 
-class _$PageableSerializer implements PrimitiveSerializer<Pageable> {
-  @override
-  final Iterable<Type> types = const [Pageable, _$Pageable];
+  final int? page;
 
-  @override
-  final String wireName = r'Pageable';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    Pageable object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.page != null) {
-      yield r'page';
-      yield serializers.serialize(
-        object.page,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.size != null) {
-      yield r'size';
-      yield serializers.serialize(
-        object.size,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.sort != null) {
-      yield r'sort';
-      yield serializers.serialize(
-        object.sort,
-        specifiedType: const FullType(BuiltList, [FullType(String)]),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    Pageable object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+          // minimum: 1
+  @JsonKey(
+    
+    name: r'size',
+    required: false,
+    includeIfNull: false,
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required PageableBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'page':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.page = valueDes;
-          break;
-        case r'size':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.size = valueDes;
-          break;
-        case r'sort':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
-          result.sort.replace(valueDes);
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final int? size;
+
+
+
+  @JsonKey(
+    
+    name: r'sort',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final List<String>? sort;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is Pageable &&
+      other.page == page &&
+      other.size == size &&
+      other.sort == sort;
+
+    @override
+    int get hashCode =>
+        page.hashCode +
+        size.hashCode +
+        sort.hashCode;
+
+  factory Pageable.fromJson(Map<String, dynamic> json) => _$PageableFromJson(json);
+
+  Map<String, dynamic> toJson() => _$PageableToJson(this);
 
   @override
-  Pageable deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = PageableBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

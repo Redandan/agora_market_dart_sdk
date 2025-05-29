@@ -4,185 +4,124 @@
 
 // ignore_for_file: unused_element
 import 'package:agora_market_dart_sdk/src/model/low_stock_warning_dto.dart';
-import 'package:built_collection/built_collection.dart';
 import 'package:agora_market_dart_sdk/src/model/top_product_dto.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'cart_summary_dto.g.dart';
 
-/// 購物車統計報告
-///
-/// Properties:
-/// * [totalItems] - 購物車商品總數
-/// * [totalValue] - 購物車商品總價值
-/// * [averageCartValue] - 平均每個商品的價值
-/// * [topProducts] - 熱門商品列表（前5名）
-/// * [lowStockWarnings] - 庫存警告列表（庫存小於10的商品）
-@BuiltValue()
-abstract class CartSummaryDTO implements Built<CartSummaryDTO, CartSummaryDTOBuilder> {
-  /// 購物車商品總數
-  @BuiltValueField(wireName: r'totalItems')
-  int? get totalItems;
 
-  /// 購物車商品總價值
-  @BuiltValueField(wireName: r'totalValue')
-  num? get totalValue;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class CartSummaryDTO {
+  /// Returns a new [CartSummaryDTO] instance.
+  CartSummaryDTO({
 
-  /// 平均每個商品的價值
-  @BuiltValueField(wireName: r'averageCartValue')
-  num? get averageCartValue;
+     this.totalItems,
 
-  /// 熱門商品列表（前5名）
-  @BuiltValueField(wireName: r'topProducts')
-  BuiltList<TopProductDTO>? get topProducts;
+     this.totalValue,
 
-  /// 庫存警告列表（庫存小於10的商品）
-  @BuiltValueField(wireName: r'lowStockWarnings')
-  BuiltList<LowStockWarningDTO>? get lowStockWarnings;
+     this.averageCartValue,
 
-  CartSummaryDTO._();
+     this.topProducts,
 
-  factory CartSummaryDTO([void updates(CartSummaryDTOBuilder b)]) = _$CartSummaryDTO;
+     this.lowStockWarnings,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CartSummaryDTOBuilder b) => b;
+      /// 購物車商品總數
+  @JsonKey(
+    
+    name: r'totalItems',
+    required: false,
+    includeIfNull: false,
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<CartSummaryDTO> get serializer => _$CartSummaryDTOSerializer();
-}
 
-class _$CartSummaryDTOSerializer implements PrimitiveSerializer<CartSummaryDTO> {
-  @override
-  final Iterable<Type> types = const [CartSummaryDTO, _$CartSummaryDTO];
+  final int? totalItems;
 
-  @override
-  final String wireName = r'CartSummaryDTO';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    CartSummaryDTO object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.totalItems != null) {
-      yield r'totalItems';
-      yield serializers.serialize(
-        object.totalItems,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.totalValue != null) {
-      yield r'totalValue';
-      yield serializers.serialize(
-        object.totalValue,
-        specifiedType: const FullType(num),
-      );
-    }
-    if (object.averageCartValue != null) {
-      yield r'averageCartValue';
-      yield serializers.serialize(
-        object.averageCartValue,
-        specifiedType: const FullType(num),
-      );
-    }
-    if (object.topProducts != null) {
-      yield r'topProducts';
-      yield serializers.serialize(
-        object.topProducts,
-        specifiedType: const FullType(BuiltList, [FullType(TopProductDTO)]),
-      );
-    }
-    if (object.lowStockWarnings != null) {
-      yield r'lowStockWarnings';
-      yield serializers.serialize(
-        object.lowStockWarnings,
-        specifiedType: const FullType(BuiltList, [FullType(LowStockWarningDTO)]),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    CartSummaryDTO object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+      /// 購物車商品總價值
+  @JsonKey(
+    
+    name: r'totalValue',
+    required: false,
+    includeIfNull: false,
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required CartSummaryDTOBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'totalItems':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.totalItems = valueDes;
-          break;
-        case r'totalValue':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.totalValue = valueDes;
-          break;
-        case r'averageCartValue':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.averageCartValue = valueDes;
-          break;
-        case r'topProducts':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(TopProductDTO)]),
-          ) as BuiltList<TopProductDTO>;
-          result.topProducts.replace(valueDes);
-          break;
-        case r'lowStockWarnings':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(LowStockWarningDTO)]),
-          ) as BuiltList<LowStockWarningDTO>;
-          result.lowStockWarnings.replace(valueDes);
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final num? totalValue;
+
+
+
+      /// 平均每個商品的價值
+  @JsonKey(
+    
+    name: r'averageCartValue',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final num? averageCartValue;
+
+
+
+      /// 熱門商品列表（前5名）
+  @JsonKey(
+    
+    name: r'topProducts',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final List<TopProductDTO>? topProducts;
+
+
+
+      /// 庫存警告列表（庫存小於10的商品）
+  @JsonKey(
+    
+    name: r'lowStockWarnings',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final List<LowStockWarningDTO>? lowStockWarnings;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is CartSummaryDTO &&
+      other.totalItems == totalItems &&
+      other.totalValue == totalValue &&
+      other.averageCartValue == averageCartValue &&
+      other.topProducts == topProducts &&
+      other.lowStockWarnings == lowStockWarnings;
+
+    @override
+    int get hashCode =>
+        totalItems.hashCode +
+        totalValue.hashCode +
+        averageCartValue.hashCode +
+        topProducts.hashCode +
+        lowStockWarnings.hashCode;
+
+  factory CartSummaryDTO.fromJson(Map<String, dynamic> json) => _$CartSummaryDTOFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CartSummaryDTOToJson(this);
 
   @override
-  CartSummaryDTO deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = CartSummaryDTOBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

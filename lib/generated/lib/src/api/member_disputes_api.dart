@@ -4,11 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:agora_market_dart_sdk/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:agora_market_dart_sdk/src/api_util.dart';
 import 'package:agora_market_dart_sdk/src/model/dispute.dart';
 import 'package:agora_market_dart_sdk/src/model/dispute_create_param.dart';
 import 'package:agora_market_dart_sdk/src/model/dispute_query_result.dart';
@@ -18,9 +18,7 @@ class MemberDisputesApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const MemberDisputesApi(this._dio, this._serializers);
+  const MemberDisputesApi(this._dio);
 
   /// 創建糾紛
   /// 買家可以對訂單創建糾紛
@@ -62,9 +60,7 @@ class MemberDisputesApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(DisputeCreateParam);
-      _bodyData = _serializers.serialize(disputeCreateParam, specifiedType: _type);
-
+_bodyData=jsonEncode(disputeCreateParam);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -89,12 +85,8 @@ class MemberDisputesApi {
     Dispute? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Dispute),
-      ) as Dispute;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Dispute, Dispute>(rawData, 'Dispute', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -140,7 +132,7 @@ class MemberDisputesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/disputes/{disputeId}'.replaceAll('{' r'disputeId' '}', encodeQueryParameter(_serializers, disputeId, const FullType(String)).toString());
+    final _path = r'/disputes/{disputeId}'.replaceAll('{' r'disputeId' '}', disputeId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -164,12 +156,8 @@ class MemberDisputesApi {
     DisputeQueryResult? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(DisputeQueryResult),
-      ) as DisputeQueryResult;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<DisputeQueryResult, DisputeQueryResult>(rawData, 'DisputeQueryResult', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -217,7 +205,7 @@ class MemberDisputesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/disputes/{disputeId}/reply'.replaceAll('{' r'disputeId' '}', encodeQueryParameter(_serializers, disputeId, const FullType(String)).toString());
+    final _path = r'/disputes/{disputeId}/reply'.replaceAll('{' r'disputeId' '}', disputeId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -231,7 +219,7 @@ class MemberDisputesApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'reply': encodeQueryParameter(_serializers, reply, const FullType(String)),
+      r'reply': reply,
     };
 
     final _response = await _dio.request<Object>(
@@ -293,12 +281,12 @@ class MemberDisputesApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (status != null) r'status': encodeQueryParameter(_serializers, status, const FullType(String)),
-      if (type != null) r'type': encodeQueryParameter(_serializers, type, const FullType(String)),
-      if (startDate != null) r'startDate': encodeQueryParameter(_serializers, startDate, const FullType(DateTime)),
-      if (endDate != null) r'endDate': encodeQueryParameter(_serializers, endDate, const FullType(DateTime)),
-      if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
-      if (size != null) r'size': encodeQueryParameter(_serializers, size, const FullType(int)),
+      if (status != null) r'status': status,
+      if (type != null) r'type': type,
+      if (startDate != null) r'startDate': startDate,
+      if (endDate != null) r'endDate': endDate,
+      if (page != null) r'page': page,
+      if (size != null) r'size': size,
     };
 
     final _response = await _dio.request<Object>(
@@ -313,12 +301,8 @@ class MemberDisputesApi {
     PageDispute? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PageDispute),
-      ) as PageDispute;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PageDispute, PageDispute>(rawData, 'PageDispute', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for PageTransaction
 void main() {
-  final instance = PageTransactionBuilder();
-  // TODO add properties to the builder and call build()
+  final PageTransaction? instance = /* PageTransaction(...) */ null;
+  // TODO add properties to the entity
 
   group(PageTransaction, () {
     // int totalPages
@@ -37,7 +37,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<Transaction> content
+    // List<Transaction> content
     test('to test the property `content`', () async {
       // TODO
     });

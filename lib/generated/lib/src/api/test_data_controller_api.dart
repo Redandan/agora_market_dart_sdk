@@ -4,8 +4,9 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:agora_market_dart_sdk/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
 
@@ -13,9 +14,7 @@ class TestDataControllerApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const TestDataControllerApi(this._dio, this._serializers);
+  const TestDataControllerApi(this._dio);
 
   /// generateLogisticsOrder
   /// 
@@ -62,9 +61,8 @@ class TestDataControllerApi {
     String? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : rawResponse as String;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<String, String>(rawData, 'String', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -132,9 +130,8 @@ class TestDataControllerApi {
     String? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : rawResponse as String;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<String, String>(rawData, 'String', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -202,9 +199,8 @@ class TestDataControllerApi {
     String? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : rawResponse as String;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<String, String>(rawData, 'String', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -272,9 +268,8 @@ class TestDataControllerApi {
     String? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : rawResponse as String;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<String, String>(rawData, 'String', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

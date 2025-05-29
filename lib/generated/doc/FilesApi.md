@@ -56,7 +56,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **downloadFile**
-> BuiltList<String> downloadFile(path)
+> List<String> downloadFile(path)
 
 下載文件
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**BuiltList&lt;String&gt;**
+**List&lt;String&gt;**
 
 ### Authorization
 
@@ -97,7 +97,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFileList**
-> BuiltList<String> getFileList(path)
+> List<String> getFileList(path)
 
 獲取目錄中的文件列表
 
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**BuiltList&lt;String&gt;**
+**List&lt;String&gt;**
 
 ### Authorization
 

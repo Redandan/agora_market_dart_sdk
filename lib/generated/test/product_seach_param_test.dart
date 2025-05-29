@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for ProductSeachParam
 void main() {
-  final instance = ProductSeachParamBuilder();
-  // TODO add properties to the builder and call build()
+  final ProductSeachParam? instance = /* ProductSeachParam(...) */ null;
+  // TODO add properties to the entity
 
   group(ProductSeachParam, () {
     // 商品ID

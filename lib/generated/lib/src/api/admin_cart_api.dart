@@ -4,11 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:agora_market_dart_sdk/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:agora_market_dart_sdk/src/api_util.dart';
 import 'package:agora_market_dart_sdk/src/model/cart_summary_dto.dart';
 import 'package:agora_market_dart_sdk/src/model/page_cart_item.dart';
 import 'package:agora_market_dart_sdk/src/model/pageable.dart';
@@ -17,9 +17,7 @@ class AdminCartApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const AdminCartApi(this._dio, this._serializers);
+  const AdminCartApi(this._dio);
 
   /// 清空指定用戶的購物車
   /// 僅管理員可訪問
@@ -44,7 +42,7 @@ class AdminCartApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/admin/cart/user/{userId}'.replaceAll('{' r'userId' '}', encodeQueryParameter(_serializers, userId, const FullType(int)).toString());
+    final _path = r'/admin/cart/user/{userId}'.replaceAll('{' r'userId' '}', userId.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -113,12 +111,8 @@ class AdminCartApi {
     CartSummaryDTO? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(CartSummaryDTO),
-      ) as CartSummaryDTO;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<CartSummaryDTO, CartSummaryDTO>(rawData, 'CartSummaryDTO', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -164,7 +158,7 @@ class AdminCartApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/admin/cart/item/{cartItemId}'.replaceAll('{' r'cartItemId' '}', encodeQueryParameter(_serializers, cartItemId, const FullType(int)).toString());
+    final _path = r'/admin/cart/item/{cartItemId}'.replaceAll('{' r'cartItemId' '}', cartItemId.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -227,8 +221,8 @@ class AdminCartApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (userId != null) r'userId': encodeQueryParameter(_serializers, userId, const FullType(int)),
-      r'pageable': encodeQueryParameter(_serializers, pageable, const FullType(Pageable)),
+      if (userId != null) r'userId': userId,
+      r'pageable': pageable,
     };
 
     final _response = await _dio.request<Object>(
@@ -243,12 +237,8 @@ class AdminCartApi {
     PageCartItem? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PageCartItem),
-      ) as PageCartItem;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PageCartItem, PageCartItem>(rawData, 'PageCartItem', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

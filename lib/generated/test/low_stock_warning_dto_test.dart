@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for LowStockWarningDTO
 void main() {
-  final instance = LowStockWarningDTOBuilder();
-  // TODO add properties to the builder and call build()
+  final LowStockWarningDTO? instance = /* LowStockWarningDTO(...) */ null;
+  // TODO add properties to the entity
 
   group(LowStockWarningDTO, () {
     // 商品ID

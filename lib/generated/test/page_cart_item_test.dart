@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for PageCartItem
 void main() {
-  final instance = PageCartItemBuilder();
-  // TODO add properties to the builder and call build()
+  final PageCartItem? instance = /* PageCartItem(...) */ null;
+  // TODO add properties to the entity
 
   group(PageCartItem, () {
     // int totalPages
@@ -37,7 +37,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<CartItem> content
+    // List<CartItem> content
     test('to test the property `content`', () async {
       // TODO
     });

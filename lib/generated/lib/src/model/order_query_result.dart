@@ -5,124 +5,70 @@
 // ignore_for_file: unused_element
 import 'package:agora_market_dart_sdk/src/model/delivery_detail.dart';
 import 'package:agora_market_dart_sdk/src/model/order.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'order_query_result.g.dart';
 
-/// OrderQueryResult
-///
-/// Properties:
-/// * [order] 
-/// * [deliveryDetail] 
-@BuiltValue()
-abstract class OrderQueryResult implements Built<OrderQueryResult, OrderQueryResultBuilder> {
-  @BuiltValueField(wireName: r'order')
-  Order? get order;
 
-  @BuiltValueField(wireName: r'deliveryDetail')
-  DeliveryDetail? get deliveryDetail;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class OrderQueryResult {
+  /// Returns a new [OrderQueryResult] instance.
+  OrderQueryResult({
 
-  OrderQueryResult._();
+     this.order,
 
-  factory OrderQueryResult([void updates(OrderQueryResultBuilder b)]) = _$OrderQueryResult;
+     this.deliveryDetail,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(OrderQueryResultBuilder b) => b;
+  @JsonKey(
+    
+    name: r'order',
+    required: false,
+    includeIfNull: false,
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<OrderQueryResult> get serializer => _$OrderQueryResultSerializer();
-}
 
-class _$OrderQueryResultSerializer implements PrimitiveSerializer<OrderQueryResult> {
-  @override
-  final Iterable<Type> types = const [OrderQueryResult, _$OrderQueryResult];
+  final Order? order;
 
-  @override
-  final String wireName = r'OrderQueryResult';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    OrderQueryResult object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.order != null) {
-      yield r'order';
-      yield serializers.serialize(
-        object.order,
-        specifiedType: const FullType(Order),
-      );
-    }
-    if (object.deliveryDetail != null) {
-      yield r'deliveryDetail';
-      yield serializers.serialize(
-        object.deliveryDetail,
-        specifiedType: const FullType(DeliveryDetail),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    OrderQueryResult object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+  @JsonKey(
+    
+    name: r'deliveryDetail',
+    required: false,
+    includeIfNull: false,
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required OrderQueryResultBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'order':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(Order),
-          ) as Order;
-          result.order.replace(valueDes);
-          break;
-        case r'deliveryDetail':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DeliveryDetail),
-          ) as DeliveryDetail;
-          result.deliveryDetail.replace(valueDes);
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final DeliveryDetail? deliveryDetail;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is OrderQueryResult &&
+      other.order == order &&
+      other.deliveryDetail == deliveryDetail;
+
+    @override
+    int get hashCode =>
+        order.hashCode +
+        deliveryDetail.hashCode;
+
+  factory OrderQueryResult.fromJson(Map<String, dynamic> json) => _$OrderQueryResultFromJson(json);
+
+  Map<String, dynamic> toJson() => _$OrderQueryResultToJson(this);
 
   @override
-  OrderQueryResult deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = OrderQueryResultBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

@@ -27,7 +27,7 @@ Method | HTTP request | Description
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api = AgoraMarketDartSdk().getSseApi();
-final JsonObject body = Object; // JsonObject | 
+final Object body = Object; // Object | 
 
 try {
     api.broadcastMessage(body);
@@ -40,7 +40,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **JsonObject**|  | 
+ **body** | **Object**|  | 
 
 ### Return type
 
@@ -154,7 +154,7 @@ import 'package:agora_market_dart_sdk/api.dart';
 
 final api = AgoraMarketDartSdk().getSseApi();
 final String userId = userId_example; // String | 目標用戶ID
-final JsonObject body = Object; // JsonObject | 
+final Object body = Object; // Object | 
 
 try {
     api.sendMessageToUser(userId, body);
@@ -168,7 +168,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String**| 目標用戶ID | 
- **body** | **JsonObject**|  | 
+ **body** | **Object**|  | 
 
 ### Return type
 

@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for OrderSumbitParam
 void main() {
-  final instance = OrderSumbitParamBuilder();
-  // TODO add properties to the builder and call build()
+  final OrderSumbitParam? instance = /* OrderSumbitParam(...) */ null;
+  // TODO add properties to the entity
 
   group(OrderSumbitParam, () {
     // 商品ID

@@ -3,139 +3,89 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'change_password_param.g.dart';
 
-/// 修改密碼參數
-///
-/// Properties:
-/// * [oldPassword] - 舊密碼
-/// * [newPassword] - 新密碼
-/// * [confirmNewPassword] - 確認新密碼
-@BuiltValue()
-abstract class ChangePasswordParam implements Built<ChangePasswordParam, ChangePasswordParamBuilder> {
-  /// 舊密碼
-  @BuiltValueField(wireName: r'oldPassword')
-  String get oldPassword;
 
-  /// 新密碼
-  @BuiltValueField(wireName: r'newPassword')
-  String get newPassword;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class ChangePasswordParam {
+  /// Returns a new [ChangePasswordParam] instance.
+  ChangePasswordParam({
 
-  /// 確認新密碼
-  @BuiltValueField(wireName: r'confirmNewPassword')
-  String get confirmNewPassword;
+    required  this.oldPassword,
 
-  ChangePasswordParam._();
+    required  this.newPassword,
 
-  factory ChangePasswordParam([void updates(ChangePasswordParamBuilder b)]) = _$ChangePasswordParam;
+    required  this.confirmNewPassword,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(ChangePasswordParamBuilder b) => b;
+      /// 舊密碼
+  @JsonKey(
+    
+    name: r'oldPassword',
+    required: true,
+    includeIfNull: false,
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<ChangePasswordParam> get serializer => _$ChangePasswordParamSerializer();
-}
 
-class _$ChangePasswordParamSerializer implements PrimitiveSerializer<ChangePasswordParam> {
-  @override
-  final Iterable<Type> types = const [ChangePasswordParam, _$ChangePasswordParam];
+  final String oldPassword;
 
-  @override
-  final String wireName = r'ChangePasswordParam';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    ChangePasswordParam object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'oldPassword';
-    yield serializers.serialize(
-      object.oldPassword,
-      specifiedType: const FullType(String),
-    );
-    yield r'newPassword';
-    yield serializers.serialize(
-      object.newPassword,
-      specifiedType: const FullType(String),
-    );
-    yield r'confirmNewPassword';
-    yield serializers.serialize(
-      object.confirmNewPassword,
-      specifiedType: const FullType(String),
-    );
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    ChangePasswordParam object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+      /// 新密碼
+  @JsonKey(
+    
+    name: r'newPassword',
+    required: true,
+    includeIfNull: false,
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required ChangePasswordParamBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'oldPassword':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.oldPassword = valueDes;
-          break;
-        case r'newPassword':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.newPassword = valueDes;
-          break;
-        case r'confirmNewPassword':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.confirmNewPassword = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final String newPassword;
+
+
+
+      /// 確認新密碼
+  @JsonKey(
+    
+    name: r'confirmNewPassword',
+    required: true,
+    includeIfNull: false,
+  )
+
+
+  final String confirmNewPassword;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is ChangePasswordParam &&
+      other.oldPassword == oldPassword &&
+      other.newPassword == newPassword &&
+      other.confirmNewPassword == confirmNewPassword;
+
+    @override
+    int get hashCode =>
+        oldPassword.hashCode +
+        newPassword.hashCode +
+        confirmNewPassword.hashCode;
+
+  factory ChangePasswordParam.fromJson(Map<String, dynamic> json) => _$ChangePasswordParamFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ChangePasswordParamToJson(this);
 
   @override
-  ChangePasswordParam deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = ChangePasswordParamBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

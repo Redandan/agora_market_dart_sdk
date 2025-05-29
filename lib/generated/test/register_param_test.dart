@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for RegisterParam
 void main() {
-  final instance = RegisterParamBuilder();
-  // TODO add properties to the builder and call build()
+  final RegisterParam? instance = /* RegisterParam(...) */ null;
+  // TODO add properties to the entity
 
   group(RegisterParam, () {
     // 用戶名

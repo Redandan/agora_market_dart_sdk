@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for StoreUpdateParam
 void main() {
-  final instance = StoreUpdateParamBuilder();
-  // TODO add properties to the builder and call build()
+  final StoreUpdateParam? instance = /* StoreUpdateParam(...) */ null;
+  // TODO add properties to the entity
 
   group(StoreUpdateParam, () {
     // 商店名稱

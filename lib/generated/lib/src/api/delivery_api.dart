@@ -4,23 +4,20 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:agora_market_dart_sdk/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:agora_market_dart_sdk/src/api_util.dart';
 import 'package:agora_market_dart_sdk/src/model/delivery_detail.dart';
 import 'package:agora_market_dart_sdk/src/model/deliveryer.dart';
 import 'package:agora_market_dart_sdk/src/model/update_delivery_order_param.dart';
-import 'package:built_collection/built_collection.dart';
 
 class DeliveryApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const DeliveryApi(this._dio, this._serializers);
+  const DeliveryApi(this._dio);
 
   /// 獲取當前配送狀態
   /// 獲取當前登入配送員的工作狀態
@@ -67,12 +64,8 @@ class DeliveryApi {
     Deliveryer? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Deliveryer),
-      ) as Deliveryer;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Deliveryer, Deliveryer>(rawData, 'Deliveryer', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -108,9 +101,9 @@ class DeliveryApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<DeliveryDetail>] as data
+  /// Returns a [Future] containing a [Response] with a [List<DeliveryDetail>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<DeliveryDetail>>> getDeliveryHistory({ 
+  Future<Response<List<DeliveryDetail>>> getDeliveryHistory({ 
     int? page = 0,
     int? size = 10,
     CancelToken? cancelToken,
@@ -134,8 +127,8 @@ class DeliveryApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
-      if (size != null) r'size': encodeQueryParameter(_serializers, size, const FullType(int)),
+      if (page != null) r'page': page,
+      if (size != null) r'size': size,
     };
 
     final _response = await _dio.request<Object>(
@@ -147,15 +140,11 @@ class DeliveryApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<DeliveryDetail>? _responseData;
+    List<DeliveryDetail>? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(DeliveryDetail)]),
-      ) as BuiltList<DeliveryDetail>;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<DeliveryDetail>, DeliveryDetail>(rawData, 'List<DeliveryDetail>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -166,7 +155,7 @@ class DeliveryApi {
       );
     }
 
-    return Response<BuiltList<DeliveryDetail>>(
+    return Response<List<DeliveryDetail>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -218,9 +207,7 @@ class DeliveryApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(UpdateDeliveryOrderParam);
-      _bodyData = updateDeliveryOrderParam == null ? null : _serializers.serialize(updateDeliveryOrderParam, specifiedType: _type);
-
+_bodyData=jsonEncode(updateDeliveryOrderParam);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -245,12 +232,8 @@ class DeliveryApi {
     Deliveryer? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Deliveryer),
-      ) as Deliveryer;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Deliveryer, Deliveryer>(rawData, 'Deliveryer', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -310,7 +293,7 @@ class DeliveryApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'enabled': encodeQueryParameter(_serializers, enabled, const FullType(bool)),
+      r'enabled': enabled,
     };
 
     final _response = await _dio.request<Object>(
@@ -325,12 +308,8 @@ class DeliveryApi {
     Deliveryer? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Deliveryer),
-      ) as Deliveryer;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Deliveryer, Deliveryer>(rawData, 'Deliveryer', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

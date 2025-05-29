@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **last** | **bool** |  | [optional] 
 **numberOfElements** | **int** |  | [optional] 
 **size** | **int** |  | [optional] 
-**content** | [**BuiltList&lt;CartItem&gt;**](CartItem.md) |  | [optional] 
+**content** | [**List&lt;CartItem&gt;**](CartItem.md) |  | [optional] 
 **number** | **int** |  | [optional] 
 **sort** | [**SortObject**](SortObject.md) |  | [optional] 
 **pageable** | [**PageableObject**](PageableObject.md) |  | [optional] 

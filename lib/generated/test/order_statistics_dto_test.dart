@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for OrderStatisticsDTO
 void main() {
-  final instance = OrderStatisticsDTOBuilder();
-  // TODO add properties to the builder and call build()
+  final OrderStatisticsDTO? instance = /* OrderStatisticsDTO(...) */ null;
+  // TODO add properties to the entity
 
   group(OrderStatisticsDTO, () {
     // 總訂單數
@@ -26,19 +26,19 @@ void main() {
     });
 
     // 各狀態訂單數量
-    // BuiltMap<String, int> ordersByStatus
+    // Map<String, int> ordersByStatus
     test('to test the property `ordersByStatus`', () async {
       // TODO
     });
 
     // 熱門商品統計（前5個）
-    // BuiltList<TopProductDTO> topProducts
+    // List<TopProductDTO> topProducts
     test('to test the property `topProducts`', () async {
       // TODO
     });
 
     // 熱門賣家統計（前5個）
-    // BuiltList<TopSellerDTO> topSellers
+    // List<TopSellerDTO> topSellers
     test('to test the property `topSellers`', () async {
       // TODO
     });

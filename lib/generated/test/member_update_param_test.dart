@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for MemberUpdateParam
 void main() {
-  final instance = MemberUpdateParamBuilder();
-  // TODO add properties to the builder and call build()
+  final MemberUpdateParam? instance = /* MemberUpdateParam(...) */ null;
+  // TODO add properties to the entity
 
   group(MemberUpdateParam, () {
     // String id

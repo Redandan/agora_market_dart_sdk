@@ -3,164 +3,106 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'top_disputed_product_dto.g.dart';
 
-/// 熱門糾紛商品統計
-///
-/// Properties:
-/// * [productId] - 商品ID
-/// * [productName] - 商品名稱
-/// * [disputeCount] - 糾紛數量
-/// * [refundAmount] - 退款金額
-@BuiltValue()
-abstract class TopDisputedProductDTO implements Built<TopDisputedProductDTO, TopDisputedProductDTOBuilder> {
-  /// 商品ID
-  @BuiltValueField(wireName: r'productId')
-  int? get productId;
 
-  /// 商品名稱
-  @BuiltValueField(wireName: r'productName')
-  String? get productName;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class TopDisputedProductDTO {
+  /// Returns a new [TopDisputedProductDTO] instance.
+  TopDisputedProductDTO({
 
-  /// 糾紛數量
-  @BuiltValueField(wireName: r'disputeCount')
-  int? get disputeCount;
+     this.productId,
 
-  /// 退款金額
-  @BuiltValueField(wireName: r'refundAmount')
-  num? get refundAmount;
+     this.productName,
 
-  TopDisputedProductDTO._();
+     this.disputeCount,
 
-  factory TopDisputedProductDTO([void updates(TopDisputedProductDTOBuilder b)]) = _$TopDisputedProductDTO;
+     this.refundAmount,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(TopDisputedProductDTOBuilder b) => b;
+      /// 商品ID
+  @JsonKey(
+    
+    name: r'productId',
+    required: false,
+    includeIfNull: false,
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<TopDisputedProductDTO> get serializer => _$TopDisputedProductDTOSerializer();
-}
 
-class _$TopDisputedProductDTOSerializer implements PrimitiveSerializer<TopDisputedProductDTO> {
-  @override
-  final Iterable<Type> types = const [TopDisputedProductDTO, _$TopDisputedProductDTO];
+  final int? productId;
 
-  @override
-  final String wireName = r'TopDisputedProductDTO';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    TopDisputedProductDTO object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.productId != null) {
-      yield r'productId';
-      yield serializers.serialize(
-        object.productId,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.productName != null) {
-      yield r'productName';
-      yield serializers.serialize(
-        object.productName,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.disputeCount != null) {
-      yield r'disputeCount';
-      yield serializers.serialize(
-        object.disputeCount,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.refundAmount != null) {
-      yield r'refundAmount';
-      yield serializers.serialize(
-        object.refundAmount,
-        specifiedType: const FullType(num),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    TopDisputedProductDTO object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+      /// 商品名稱
+  @JsonKey(
+    
+    name: r'productName',
+    required: false,
+    includeIfNull: false,
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required TopDisputedProductDTOBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'productId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.productId = valueDes;
-          break;
-        case r'productName':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.productName = valueDes;
-          break;
-        case r'disputeCount':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.disputeCount = valueDes;
-          break;
-        case r'refundAmount':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.refundAmount = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final String? productName;
+
+
+
+      /// 糾紛數量
+  @JsonKey(
+    
+    name: r'disputeCount',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final int? disputeCount;
+
+
+
+      /// 退款金額
+  @JsonKey(
+    
+    name: r'refundAmount',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final num? refundAmount;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is TopDisputedProductDTO &&
+      other.productId == productId &&
+      other.productName == productName &&
+      other.disputeCount == disputeCount &&
+      other.refundAmount == refundAmount;
+
+    @override
+    int get hashCode =>
+        productId.hashCode +
+        productName.hashCode +
+        disputeCount.hashCode +
+        refundAmount.hashCode;
+
+  factory TopDisputedProductDTO.fromJson(Map<String, dynamic> json) => _$TopDisputedProductDTOFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TopDisputedProductDTOToJson(this);
 
   @override
-  TopDisputedProductDTO deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = TopDisputedProductDTOBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for PasswordResetParam
 void main() {
-  final instance = PasswordResetParamBuilder();
-  // TODO add properties to the builder and call build()
+  final PasswordResetParam? instance = /* PasswordResetParam(...) */ null;
+  // TODO add properties to the entity
 
   group(PasswordResetParam, () {
     // 舊密碼

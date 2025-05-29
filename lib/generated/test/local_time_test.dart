@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for LocalTime
 void main() {
-  final instance = LocalTimeBuilder();
-  // TODO add properties to the builder and call build()
+  final LocalTime? instance = /* LocalTime(...) */ null;
+  // TODO add properties to the entity
 
   group(LocalTime, () {
     // int hour

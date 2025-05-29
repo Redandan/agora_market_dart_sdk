@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for ChatSessionQueryParam
 void main() {
-  final instance = ChatSessionQueryParamBuilder();
-  // TODO add properties to the builder and call build()
+  final ChatSessionQueryParam? instance = /* ChatSessionQueryParam(...) */ null;
+  // TODO add properties to the entity
 
   group(ChatSessionQueryParam, () {
     // 用戶ID

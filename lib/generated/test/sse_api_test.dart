@@ -11,7 +11,7 @@ void main() {
     //
     // 向所有連接的客戶端廣播一條消息（僅管理員可用）
     //
-    //Future broadcastMessage(JsonObject body) async
+    //Future broadcastMessage(Object body) async
     test('test broadcastMessage', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // 向指定的用戶發送一條消息
     //
-    //Future sendMessageToUser(String userId, JsonObject body) async
+    //Future sendMessageToUser(String userId, Object body) async
     test('test sendMessageToUser', () async {
       // TODO
     });

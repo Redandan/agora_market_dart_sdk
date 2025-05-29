@@ -3,11 +3,11 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for UploadFileRequest
 void main() {
-  final instance = UploadFileRequestBuilder();
-  // TODO add properties to the builder and call build()
+  final UploadFileRequest? instance = /* UploadFileRequest(...) */ null;
+  // TODO add properties to the entity
 
   group(UploadFileRequest, () {
-    // Uint8List file
+    // MultipartFile file
     test('to test the property `file`', () async {
       // TODO
     });

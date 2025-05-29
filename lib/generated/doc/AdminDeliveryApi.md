@@ -107,7 +107,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getDeliveryStatistics**
-> BuiltMap<String, JsonObject> getDeliveryStatistics(startDate, endDate)
+> Map<String, Object> getDeliveryStatistics(startDate, endDate)
 
 配送統計報告
 
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltMap&lt;String, JsonObject&gt;**](JsonObject.md)
+**Map&lt;String, Object&gt;**
 
 ### Authorization
 
@@ -195,7 +195,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchDeliveryOrders**
-> BuiltList<DeliveryDetail> searchDeliveryOrders(deliveryerId, status, startDate, endDate)
+> List<DeliveryDetail> searchDeliveryOrders(deliveryerId, status, startDate, endDate)
 
 搜索配送訂單
 
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltList&lt;DeliveryDetail&gt;**](DeliveryDetail.md)
+[**List&lt;DeliveryDetail&gt;**](DeliveryDetail.md)
 
 ### Authorization
 
@@ -244,7 +244,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchDeliveryers**
-> BuiltList<Deliveryer> searchDeliveryers(enabled, isDelivering, longitude, latitude, radius, startDate, endDate)
+> List<Deliveryer> searchDeliveryers(enabled, isDelivering, longitude, latitude, radius, startDate, endDate)
 
 搜索配送員
 
@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltList&lt;Deliveryer&gt;**](Deliveryer.md)
+[**List&lt;Deliveryer&gt;**](Deliveryer.md)
 
 ### Authorization
 

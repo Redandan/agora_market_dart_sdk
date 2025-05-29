@@ -3,145 +3,89 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'sales_stats.g.dart';
 
-/// 銷售統計
-///
-/// Properties:
-/// * [totalSales] - 總銷售額
-/// * [totalOrders] - 總訂單數
-/// * [averageOrderValue] - 平均訂單金額
-@BuiltValue()
-abstract class SalesStats implements Built<SalesStats, SalesStatsBuilder> {
-  /// 總銷售額
-  @BuiltValueField(wireName: r'totalSales')
-  double? get totalSales;
 
-  /// 總訂單數
-  @BuiltValueField(wireName: r'totalOrders')
-  int? get totalOrders;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class SalesStats {
+  /// Returns a new [SalesStats] instance.
+  SalesStats({
 
-  /// 平均訂單金額
-  @BuiltValueField(wireName: r'averageOrderValue')
-  double? get averageOrderValue;
+     this.totalSales,
 
-  SalesStats._();
+     this.totalOrders,
 
-  factory SalesStats([void updates(SalesStatsBuilder b)]) = _$SalesStats;
+     this.averageOrderValue,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(SalesStatsBuilder b) => b;
+      /// 總銷售額
+  @JsonKey(
+    
+    name: r'totalSales',
+    required: false,
+    includeIfNull: false,
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<SalesStats> get serializer => _$SalesStatsSerializer();
-}
 
-class _$SalesStatsSerializer implements PrimitiveSerializer<SalesStats> {
-  @override
-  final Iterable<Type> types = const [SalesStats, _$SalesStats];
+  final double? totalSales;
 
-  @override
-  final String wireName = r'SalesStats';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    SalesStats object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.totalSales != null) {
-      yield r'totalSales';
-      yield serializers.serialize(
-        object.totalSales,
-        specifiedType: const FullType(double),
-      );
-    }
-    if (object.totalOrders != null) {
-      yield r'totalOrders';
-      yield serializers.serialize(
-        object.totalOrders,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.averageOrderValue != null) {
-      yield r'averageOrderValue';
-      yield serializers.serialize(
-        object.averageOrderValue,
-        specifiedType: const FullType(double),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    SalesStats object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+      /// 總訂單數
+  @JsonKey(
+    
+    name: r'totalOrders',
+    required: false,
+    includeIfNull: false,
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required SalesStatsBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'totalSales':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(double),
-          ) as double;
-          result.totalSales = valueDes;
-          break;
-        case r'totalOrders':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.totalOrders = valueDes;
-          break;
-        case r'averageOrderValue':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(double),
-          ) as double;
-          result.averageOrderValue = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final int? totalOrders;
+
+
+
+      /// 平均訂單金額
+  @JsonKey(
+    
+    name: r'averageOrderValue',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final double? averageOrderValue;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is SalesStats &&
+      other.totalSales == totalSales &&
+      other.totalOrders == totalOrders &&
+      other.averageOrderValue == averageOrderValue;
+
+    @override
+    int get hashCode =>
+        totalSales.hashCode +
+        totalOrders.hashCode +
+        averageOrderValue.hashCode;
+
+  factory SalesStats.fromJson(Map<String, dynamic> json) => _$SalesStatsFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SalesStatsToJson(this);
 
   @override
-  SalesStats deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = SalesStatsBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for PageOrder
 void main() {
-  final instance = PageOrderBuilder();
-  // TODO add properties to the builder and call build()
+  final PageOrder? instance = /* PageOrder(...) */ null;
+  // TODO add properties to the entity
 
   group(PageOrder, () {
     // int totalPages
@@ -37,7 +37,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<Order> content
+    // List<Order> content
     test('to test the property `content`', () async {
       // TODO
     });

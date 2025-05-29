@@ -4,11 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:agora_market_dart_sdk/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:agora_market_dart_sdk/src/api_util.dart';
 import 'package:agora_market_dart_sdk/src/model/cart_item.dart';
 import 'package:agora_market_dart_sdk/src/model/page_cart_item.dart';
 import 'package:agora_market_dart_sdk/src/model/pageable.dart';
@@ -17,9 +17,7 @@ class MemberCartApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const MemberCartApi(this._dio, this._serializers);
+  const MemberCartApi(this._dio);
 
   /// 添加商品到購物車
   /// 
@@ -60,8 +58,8 @@ class MemberCartApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'productId': encodeQueryParameter(_serializers, productId, const FullType(int)),
-      r'quantity': encodeQueryParameter(_serializers, quantity, const FullType(int)),
+      r'productId': productId,
+      r'quantity': quantity,
     };
 
     final _response = await _dio.request<Object>(
@@ -76,12 +74,8 @@ class MemberCartApi {
     CartItem? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(CartItem),
-      ) as CartItem;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<CartItem, CartItem>(rawData, 'CartItem', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -141,7 +135,7 @@ class MemberCartApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'pageable': encodeQueryParameter(_serializers, pageable, const FullType(Pageable)),
+      r'pageable': pageable,
     };
 
     final _response = await _dio.request<Object>(
@@ -156,12 +150,8 @@ class MemberCartApi {
     PageCartItem? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PageCartItem),
-      ) as PageCartItem;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PageCartItem, PageCartItem>(rawData, 'PageCartItem', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -207,7 +197,7 @@ class MemberCartApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/cart/{cartItemId}'.replaceAll('{' r'cartItemId' '}', encodeQueryParameter(_serializers, cartItemId, const FullType(int)).toString());
+    final _path = r'/cart/{cartItemId}'.replaceAll('{' r'cartItemId' '}', cartItemId.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -256,7 +246,7 @@ class MemberCartApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/cart/{cartItemId}/quantity'.replaceAll('{' r'cartItemId' '}', encodeQueryParameter(_serializers, cartItemId, const FullType(int)).toString());
+    final _path = r'/cart/{cartItemId}/quantity'.replaceAll('{' r'cartItemId' '}', cartItemId.toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -270,7 +260,7 @@ class MemberCartApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'quantity': encodeQueryParameter(_serializers, quantity, const FullType(int)),
+      r'quantity': quantity,
     };
 
     final _response = await _dio.request<Object>(
@@ -285,12 +275,8 @@ class MemberCartApi {
     CartItem? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(CartItem),
-      ) as CartItem;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<CartItem, CartItem>(rawData, 'CartItem', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

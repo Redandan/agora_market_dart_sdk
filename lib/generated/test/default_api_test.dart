@@ -60,7 +60,7 @@ void main() {
     //
     // 獲取系統的公共配置信息，包括配送方式、商品分類和交易類型
     //
-    //Future<JsonObject> getDeliveryTypes() async
+    //Future<Object> getDeliveryTypes() async
     test('test getDeliveryTypes', () async {
       // TODO
     });

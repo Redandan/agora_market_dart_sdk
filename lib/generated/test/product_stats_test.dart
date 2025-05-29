@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for ProductStats
 void main() {
-  final instance = ProductStatsBuilder();
-  // TODO add properties to the builder and call build()
+  final ProductStats? instance = /* ProductStats(...) */ null;
+  // TODO add properties to the entity
 
   group(ProductStats, () {
     // 總商品數

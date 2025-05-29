@@ -3,164 +3,106 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'top_seller_dto.g.dart';
 
-/// 熱門賣家統計
-///
-/// Properties:
-/// * [sellerId] - 賣家ID
-/// * [sellerName] - 賣家名稱
-/// * [orderCount] - 訂單數量
-/// * [amount] - 銷售金額
-@BuiltValue()
-abstract class TopSellerDTO implements Built<TopSellerDTO, TopSellerDTOBuilder> {
-  /// 賣家ID
-  @BuiltValueField(wireName: r'sellerId')
-  int? get sellerId;
 
-  /// 賣家名稱
-  @BuiltValueField(wireName: r'sellerName')
-  String? get sellerName;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class TopSellerDTO {
+  /// Returns a new [TopSellerDTO] instance.
+  TopSellerDTO({
 
-  /// 訂單數量
-  @BuiltValueField(wireName: r'orderCount')
-  int? get orderCount;
+     this.sellerId,
 
-  /// 銷售金額
-  @BuiltValueField(wireName: r'amount')
-  num? get amount;
+     this.sellerName,
 
-  TopSellerDTO._();
+     this.orderCount,
 
-  factory TopSellerDTO([void updates(TopSellerDTOBuilder b)]) = _$TopSellerDTO;
+     this.amount,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(TopSellerDTOBuilder b) => b;
+      /// 賣家ID
+  @JsonKey(
+    
+    name: r'sellerId',
+    required: false,
+    includeIfNull: false,
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<TopSellerDTO> get serializer => _$TopSellerDTOSerializer();
-}
 
-class _$TopSellerDTOSerializer implements PrimitiveSerializer<TopSellerDTO> {
-  @override
-  final Iterable<Type> types = const [TopSellerDTO, _$TopSellerDTO];
+  final int? sellerId;
 
-  @override
-  final String wireName = r'TopSellerDTO';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    TopSellerDTO object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.sellerId != null) {
-      yield r'sellerId';
-      yield serializers.serialize(
-        object.sellerId,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.sellerName != null) {
-      yield r'sellerName';
-      yield serializers.serialize(
-        object.sellerName,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.orderCount != null) {
-      yield r'orderCount';
-      yield serializers.serialize(
-        object.orderCount,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.amount != null) {
-      yield r'amount';
-      yield serializers.serialize(
-        object.amount,
-        specifiedType: const FullType(num),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    TopSellerDTO object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+      /// 賣家名稱
+  @JsonKey(
+    
+    name: r'sellerName',
+    required: false,
+    includeIfNull: false,
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required TopSellerDTOBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'sellerId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.sellerId = valueDes;
-          break;
-        case r'sellerName':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.sellerName = valueDes;
-          break;
-        case r'orderCount':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.orderCount = valueDes;
-          break;
-        case r'amount':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.amount = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final String? sellerName;
+
+
+
+      /// 訂單數量
+  @JsonKey(
+    
+    name: r'orderCount',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final int? orderCount;
+
+
+
+      /// 銷售金額
+  @JsonKey(
+    
+    name: r'amount',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final num? amount;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is TopSellerDTO &&
+      other.sellerId == sellerId &&
+      other.sellerName == sellerName &&
+      other.orderCount == orderCount &&
+      other.amount == amount;
+
+    @override
+    int get hashCode =>
+        sellerId.hashCode +
+        sellerName.hashCode +
+        orderCount.hashCode +
+        amount.hashCode;
+
+  factory TopSellerDTO.fromJson(Map<String, dynamic> json) => _$TopSellerDTOFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TopSellerDTOToJson(this);
 
   @override
-  TopSellerDTO deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = TopSellerDTOBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for ColdWallet
 void main() {
-  final instance = ColdWalletBuilder();
-  // TODO add properties to the builder and call build()
+  final ColdWallet? instance = /* ColdWallet(...) */ null;
+  // TODO add properties to the entity
 
   group(ColdWallet, () {
     // 冷錢包ID

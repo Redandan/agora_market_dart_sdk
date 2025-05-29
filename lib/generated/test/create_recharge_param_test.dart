@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for CreateRechargeParam
 void main() {
-  final instance = CreateRechargeParamBuilder();
-  // TODO add properties to the builder and call build()
+  final CreateRechargeParam? instance = /* CreateRechargeParam(...) */ null;
+  // TODO add properties to the entity
 
   group(CreateRechargeParam, () {
     // 用戶ID

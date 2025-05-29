@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for LoginResult
 void main() {
-  final instance = LoginResultBuilder();
-  // TODO add properties to the builder and call build()
+  final LoginResult? instance = /* LoginResult(...) */ null;
+  // TODO add properties to the entity
 
   group(LoginResult, () {
     // 訪問令牌

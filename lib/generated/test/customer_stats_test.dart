@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for CustomerStats
 void main() {
-  final instance = CustomerStatsBuilder();
-  // TODO add properties to the builder and call build()
+  final CustomerStats? instance = /* CustomerStats(...) */ null;
+  // TODO add properties to the entity
 
   group(CustomerStats, () {
     // 新客戶數

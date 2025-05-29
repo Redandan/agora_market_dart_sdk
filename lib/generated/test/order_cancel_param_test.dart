@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for OrderCancelParam
 void main() {
-  final instance = OrderCancelParamBuilder();
-  // TODO add properties to the builder and call build()
+  final OrderCancelParam? instance = /* OrderCancelParam(...) */ null;
+  // TODO add properties to the entity
 
   group(OrderCancelParam, () {
     // 訂單ID

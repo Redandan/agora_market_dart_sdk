@@ -55,7 +55,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getDeliveryHistory**
-> BuiltList<DeliveryDetail> getDeliveryHistory(page, size)
+> List<DeliveryDetail> getDeliveryHistory(page, size)
 
 獲取歷史訂單
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltList&lt;DeliveryDetail&gt;**](DeliveryDetail.md)
+[**List&lt;DeliveryDetail&gt;**](DeliveryDetail.md)
 
 ### Authorization
 

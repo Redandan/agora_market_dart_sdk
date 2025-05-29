@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for CartItem
 void main() {
-  final instance = CartItemBuilder();
-  // TODO add properties to the builder and call build()
+  final CartItem? instance = /* CartItem(...) */ null;
+  // TODO add properties to the entity
 
   group(CartItem, () {
     // 購物車項目ID

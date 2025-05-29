@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for UpdateDeliveryOrderParam
 void main() {
-  final instance = UpdateDeliveryOrderParamBuilder();
-  // TODO add properties to the builder and call build()
+  final UpdateDeliveryOrderParam? instance = /* UpdateDeliveryOrderParam(...) */ null;
+  // TODO add properties to the entity
 
   group(UpdateDeliveryOrderParam, () {
     // 訂單ID

@@ -3,177 +3,125 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'create_recharge_param.g.dart';
 
-/// CreateRechargeParam
-///
-/// Properties:
-/// * [userId] - 用戶ID
-/// * [amount] - 金額
-/// * [currency] - 貨幣
-/// * [protocol] - 協議
-@BuiltValue()
-abstract class CreateRechargeParam implements Built<CreateRechargeParam, CreateRechargeParamBuilder> {
-  /// 用戶ID
-  @BuiltValueField(wireName: r'userId')
-  int? get userId;
 
-  /// 金額
-  @BuiltValueField(wireName: r'amount')
-  num get amount;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class CreateRechargeParam {
+  /// Returns a new [CreateRechargeParam] instance.
+  CreateRechargeParam({
 
-  /// 貨幣
-  @BuiltValueField(wireName: r'currency')
-  String get currency;
+     this.userId,
 
-  /// 協議
-  @BuiltValueField(wireName: r'protocol')
-  CreateRechargeParamProtocolEnum get protocol;
-  // enum protocolEnum {  TRON,  };
+    required  this.amount,
 
-  CreateRechargeParam._();
+    required  this.currency,
 
-  factory CreateRechargeParam([void updates(CreateRechargeParamBuilder b)]) = _$CreateRechargeParam;
+    required  this.protocol,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CreateRechargeParamBuilder b) => b;
+      /// 用戶ID
+  @JsonKey(
+    
+    name: r'userId',
+    required: false,
+    includeIfNull: false,
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<CreateRechargeParam> get serializer => _$CreateRechargeParamSerializer();
+
+  final int? userId;
+
+
+
+      /// 金額
+  @JsonKey(
+    
+    name: r'amount',
+    required: true,
+    includeIfNull: false,
+  )
+
+
+  final num amount;
+
+
+
+      /// 貨幣
+  @JsonKey(
+    
+    name: r'currency',
+    required: true,
+    includeIfNull: false,
+  )
+
+
+  final String currency;
+
+
+
+      /// 協議
+  @JsonKey(
+    
+    name: r'protocol',
+    required: true,
+    includeIfNull: false,
+  unknownEnumValue: CreateRechargeParamProtocolEnum.unknownDefaultOpenApi,
+  )
+
+
+  final CreateRechargeParamProtocolEnum protocol;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is CreateRechargeParam &&
+      other.userId == userId &&
+      other.amount == amount &&
+      other.currency == currency &&
+      other.protocol == protocol;
+
+    @override
+    int get hashCode =>
+        userId.hashCode +
+        amount.hashCode +
+        currency.hashCode +
+        protocol.hashCode;
+
+  factory CreateRechargeParam.fromJson(Map<String, dynamic> json) => _$CreateRechargeParamFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CreateRechargeParamToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
+  }
+
 }
 
-class _$CreateRechargeParamSerializer implements PrimitiveSerializer<CreateRechargeParam> {
-  @override
-  final Iterable<Type> types = const [CreateRechargeParam, _$CreateRechargeParam];
+/// 協議
+enum CreateRechargeParamProtocolEnum {
+    /// 協議
+@JsonValue(r'TRON')
+TRON(r'TRON'),
+    /// 協議
+@JsonValue(r'unknown_default_open_api')
+unknownDefaultOpenApi(r'unknown_default_open_api');
 
-  @override
-  final String wireName = r'CreateRechargeParam';
+const CreateRechargeParamProtocolEnum(this.value);
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    CreateRechargeParam object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.userId != null) {
-      yield r'userId';
-      yield serializers.serialize(
-        object.userId,
-        specifiedType: const FullType(int),
-      );
-    }
-    yield r'amount';
-    yield serializers.serialize(
-      object.amount,
-      specifiedType: const FullType(num),
-    );
-    yield r'currency';
-    yield serializers.serialize(
-      object.currency,
-      specifiedType: const FullType(String),
-    );
-    yield r'protocol';
-    yield serializers.serialize(
-      object.protocol,
-      specifiedType: const FullType(CreateRechargeParamProtocolEnum),
-    );
-  }
+final String value;
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    CreateRechargeParam object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required CreateRechargeParamBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'userId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.userId = valueDes;
-          break;
-        case r'amount':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.amount = valueDes;
-          break;
-        case r'currency':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.currency = valueDes;
-          break;
-        case r'protocol':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(CreateRechargeParamProtocolEnum),
-          ) as CreateRechargeParamProtocolEnum;
-          result.protocol = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
-
-  @override
-  CreateRechargeParam deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = CreateRechargeParamBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
-  }
+@override
+String toString() => value;
 }
 
-class CreateRechargeParamProtocolEnum extends EnumClass {
-
-  /// 協議
-  @BuiltValueEnumConst(wireName: r'TRON')
-  static const CreateRechargeParamProtocolEnum TRON = _$createRechargeParamProtocolEnum_TRON;
-  /// 協議
-  @BuiltValueEnumConst(wireName: r'unknown_default_open_api', fallback: true)
-  static const CreateRechargeParamProtocolEnum unknownDefaultOpenApi = _$createRechargeParamProtocolEnum_unknownDefaultOpenApi;
-
-  static Serializer<CreateRechargeParamProtocolEnum> get serializer => _$createRechargeParamProtocolEnumSerializer;
-
-  const CreateRechargeParamProtocolEnum._(String name): super(name);
-
-  static BuiltSet<CreateRechargeParamProtocolEnum> get values => _$createRechargeParamProtocolEnumValues;
-  static CreateRechargeParamProtocolEnum valueOf(String name) => _$createRechargeParamProtocolEnumValueOf(name);
-}
 

@@ -4,20 +4,17 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:agora_market_dart_sdk/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:agora_market_dart_sdk/src/api_util.dart';
-import 'package:built_value/json_object.dart';
 
 class SseApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const SseApi(this._dio, this._serializers);
+  const SseApi(this._dio);
 
   /// 廣播消息
   /// 向所有連接的客戶端廣播一條消息（僅管理員可用）
@@ -34,7 +31,7 @@ class SseApi {
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
   Future<Response<void>> broadcastMessage({ 
-    required JsonObject body,
+    required Object body,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -59,8 +56,7 @@ class SseApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = body;
-
+_bodyData=jsonEncode(body);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -108,7 +104,7 @@ class SseApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/sse/connect/{clientId}'.replaceAll('{' r'clientId' '}', encodeQueryParameter(_serializers, clientId, const FullType(String)).toString());
+    final _path = r'/sse/connect/{clientId}'.replaceAll('{' r'clientId' '}', clientId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -155,7 +151,7 @@ class SseApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/sse/disconnect/{clientId}'.replaceAll('{' r'clientId' '}', encodeQueryParameter(_serializers, clientId, const FullType(String)).toString());
+    final _path = r'/sse/disconnect/{clientId}'.replaceAll('{' r'clientId' '}', clientId.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -196,7 +192,7 @@ class SseApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<void>> sendMessageToUser({ 
     required String userId,
-    required JsonObject body,
+    required Object body,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -204,7 +200,7 @@ class SseApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/sse/send/user/{userId}'.replaceAll('{' r'userId' '}', encodeQueryParameter(_serializers, userId, const FullType(String)).toString());
+    final _path = r'/sse/send/user/{userId}'.replaceAll('{' r'userId' '}', userId.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -221,8 +217,7 @@ class SseApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = body;
-
+_bodyData=jsonEncode(body);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(

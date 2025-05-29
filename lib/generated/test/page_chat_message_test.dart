@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for PageChatMessage
 void main() {
-  final instance = PageChatMessageBuilder();
-  // TODO add properties to the builder and call build()
+  final PageChatMessage? instance = /* PageChatMessage(...) */ null;
+  // TODO add properties to the entity
 
   group(PageChatMessage, () {
     // int totalPages
@@ -37,7 +37,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<ChatMessage> content
+    // List<ChatMessage> content
     test('to test the property `content`', () async {
       // TODO
     });

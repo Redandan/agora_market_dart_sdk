@@ -4,11 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:agora_market_dart_sdk/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:agora_market_dart_sdk/src/api_util.dart';
 import 'package:agora_market_dart_sdk/src/model/chat_message.dart';
 import 'package:agora_market_dart_sdk/src/model/chat_message_dto.dart';
 import 'package:agora_market_dart_sdk/src/model/chat_message_query_param.dart';
@@ -22,9 +22,7 @@ class ChatApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const ChatApi(this._dio, this._serializers);
+  const ChatApi(this._dio);
 
   /// 清空會話
   /// 清空指定會話的所有消息
@@ -49,7 +47,7 @@ class ChatApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/chat/sessions/{sessionId}/messages'.replaceAll('{' r'sessionId' '}', encodeQueryParameter(_serializers, sessionId, const FullType(int)).toString());
+    final _path = r'/chat/sessions/{sessionId}/messages'.replaceAll('{' r'sessionId' '}', sessionId.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -96,7 +94,7 @@ class ChatApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/chat/messages/{messageId}'.replaceAll('{' r'messageId' '}', encodeQueryParameter(_serializers, messageId, const FullType(int)).toString());
+    final _path = r'/chat/messages/{messageId}'.replaceAll('{' r'messageId' '}', messageId.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -143,7 +141,7 @@ class ChatApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/chat/sessions/{sessionId}'.replaceAll('{' r'sessionId' '}', encodeQueryParameter(_serializers, sessionId, const FullType(int)).toString());
+    final _path = r'/chat/sessions/{sessionId}'.replaceAll('{' r'sessionId' '}', sessionId.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -192,7 +190,7 @@ class ChatApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/chat/sessions/{sessionId}/messages'.replaceAll('{' r'sessionId' '}', encodeQueryParameter(_serializers, sessionId, const FullType(int)).toString());
+    final _path = r'/chat/sessions/{sessionId}/messages'.replaceAll('{' r'sessionId' '}', sessionId.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -206,7 +204,7 @@ class ChatApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'queryParam': encodeQueryParameter(_serializers, queryParam, const FullType(ChatMessageQueryParam)),
+      r'queryParam': queryParam,
     };
 
     final _response = await _dio.request<Object>(
@@ -221,12 +219,8 @@ class ChatApi {
     PageChatMessage? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PageChatMessage),
-      ) as PageChatMessage;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PageChatMessage, PageChatMessage>(rawData, 'PageChatMessage', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -294,9 +288,8 @@ class ChatApi {
     int? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : rawResponse as int;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<int, int>(rawData, 'int', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -356,7 +349,7 @@ class ChatApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'queryParam': encodeQueryParameter(_serializers, queryParam, const FullType(ChatSessionQueryParam)),
+      r'queryParam': queryParam,
     };
 
     final _response = await _dio.request<Object>(
@@ -371,12 +364,8 @@ class ChatApi {
     PageChatSession? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PageChatSession),
-      ) as PageChatSession;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PageChatSession, PageChatSession>(rawData, 'PageChatSession', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -422,7 +411,7 @@ class ChatApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/chat/sessions/{sessionId}/read'.replaceAll('{' r'sessionId' '}', encodeQueryParameter(_serializers, sessionId, const FullType(int)).toString());
+    final _path = r'/chat/sessions/{sessionId}/read'.replaceAll('{' r'sessionId' '}', sessionId.toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -486,9 +475,7 @@ class ChatApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(ChatMessageDTO);
-      _bodyData = _serializers.serialize(chatMessageDTO, specifiedType: _type);
-
+_bodyData=jsonEncode(chatMessageDTO);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -536,7 +523,7 @@ class ChatApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/chat/sessions/{sessionId}/pin'.replaceAll('{' r'sessionId' '}', encodeQueryParameter(_serializers, sessionId, const FullType(int)).toString());
+    final _path = r'/chat/sessions/{sessionId}/pin'.replaceAll('{' r'sessionId' '}', sessionId.toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -560,12 +547,8 @@ class ChatApi {
     ChatSession? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ChatSession),
-      ) as ChatSession;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<ChatSession, ChatSession>(rawData, 'ChatSession', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -613,7 +596,7 @@ class ChatApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/chat/messages/{messageId}'.replaceAll('{' r'messageId' '}', encodeQueryParameter(_serializers, messageId, const FullType(int)).toString());
+    final _path = r'/chat/messages/{messageId}'.replaceAll('{' r'messageId' '}', messageId.toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -630,9 +613,7 @@ class ChatApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(ChatMessageUpdateDTO);
-      _bodyData = _serializers.serialize(chatMessageUpdateDTO, specifiedType: _type);
-
+_bodyData=jsonEncode(chatMessageUpdateDTO);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -657,12 +638,8 @@ class ChatApi {
     ChatMessage? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ChatMessage),
-      ) as ChatMessage;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<ChatMessage, ChatMessage>(rawData, 'ChatMessage', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

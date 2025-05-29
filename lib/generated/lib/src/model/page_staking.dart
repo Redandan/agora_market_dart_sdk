@@ -3,290 +3,217 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
 import 'package:agora_market_dart_sdk/src/model/sort_object.dart';
 import 'package:agora_market_dart_sdk/src/model/pageable_object.dart';
 import 'package:agora_market_dart_sdk/src/model/staking.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'page_staking.g.dart';
 
-/// PageStaking
-///
-/// Properties:
-/// * [totalPages] 
-/// * [totalElements] 
-/// * [first] 
-/// * [last] 
-/// * [numberOfElements] 
-/// * [size] 
-/// * [content] 
-/// * [number] 
-/// * [sort] 
-/// * [pageable] 
-/// * [empty] 
-@BuiltValue()
-abstract class PageStaking implements Built<PageStaking, PageStakingBuilder> {
-  @BuiltValueField(wireName: r'totalPages')
-  int? get totalPages;
 
-  @BuiltValueField(wireName: r'totalElements')
-  int? get totalElements;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class PageStaking {
+  /// Returns a new [PageStaking] instance.
+  PageStaking({
 
-  @BuiltValueField(wireName: r'first')
-  bool? get first;
+     this.totalPages,
 
-  @BuiltValueField(wireName: r'last')
-  bool? get last;
+     this.totalElements,
 
-  @BuiltValueField(wireName: r'numberOfElements')
-  int? get numberOfElements;
+     this.first,
 
-  @BuiltValueField(wireName: r'size')
-  int? get size;
+     this.last,
 
-  @BuiltValueField(wireName: r'content')
-  BuiltList<Staking>? get content;
+     this.numberOfElements,
 
-  @BuiltValueField(wireName: r'number')
-  int? get number;
+     this.size,
 
-  @BuiltValueField(wireName: r'sort')
-  SortObject? get sort;
+     this.content,
 
-  @BuiltValueField(wireName: r'pageable')
-  PageableObject? get pageable;
+     this.number,
 
-  @BuiltValueField(wireName: r'empty')
-  bool? get empty;
+     this.sort,
 
-  PageStaking._();
+     this.pageable,
 
-  factory PageStaking([void updates(PageStakingBuilder b)]) = _$PageStaking;
+     this.empty,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(PageStakingBuilder b) => b;
+  @JsonKey(
+    
+    name: r'totalPages',
+    required: false,
+    includeIfNull: false,
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<PageStaking> get serializer => _$PageStakingSerializer();
-}
 
-class _$PageStakingSerializer implements PrimitiveSerializer<PageStaking> {
-  @override
-  final Iterable<Type> types = const [PageStaking, _$PageStaking];
+  final int? totalPages;
 
-  @override
-  final String wireName = r'PageStaking';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    PageStaking object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.totalPages != null) {
-      yield r'totalPages';
-      yield serializers.serialize(
-        object.totalPages,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.totalElements != null) {
-      yield r'totalElements';
-      yield serializers.serialize(
-        object.totalElements,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.first != null) {
-      yield r'first';
-      yield serializers.serialize(
-        object.first,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.last != null) {
-      yield r'last';
-      yield serializers.serialize(
-        object.last,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.numberOfElements != null) {
-      yield r'numberOfElements';
-      yield serializers.serialize(
-        object.numberOfElements,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.size != null) {
-      yield r'size';
-      yield serializers.serialize(
-        object.size,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.content != null) {
-      yield r'content';
-      yield serializers.serialize(
-        object.content,
-        specifiedType: const FullType(BuiltList, [FullType(Staking)]),
-      );
-    }
-    if (object.number != null) {
-      yield r'number';
-      yield serializers.serialize(
-        object.number,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.sort != null) {
-      yield r'sort';
-      yield serializers.serialize(
-        object.sort,
-        specifiedType: const FullType(SortObject),
-      );
-    }
-    if (object.pageable != null) {
-      yield r'pageable';
-      yield serializers.serialize(
-        object.pageable,
-        specifiedType: const FullType(PageableObject),
-      );
-    }
-    if (object.empty != null) {
-      yield r'empty';
-      yield serializers.serialize(
-        object.empty,
-        specifiedType: const FullType(bool),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    PageStaking object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+  @JsonKey(
+    
+    name: r'totalElements',
+    required: false,
+    includeIfNull: false,
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required PageStakingBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'totalPages':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.totalPages = valueDes;
-          break;
-        case r'totalElements':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.totalElements = valueDes;
-          break;
-        case r'first':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.first = valueDes;
-          break;
-        case r'last':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.last = valueDes;
-          break;
-        case r'numberOfElements':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.numberOfElements = valueDes;
-          break;
-        case r'size':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.size = valueDes;
-          break;
-        case r'content':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(Staking)]),
-          ) as BuiltList<Staking>;
-          result.content.replace(valueDes);
-          break;
-        case r'number':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.number = valueDes;
-          break;
-        case r'sort':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(SortObject),
-          ) as SortObject;
-          result.sort.replace(valueDes);
-          break;
-        case r'pageable':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(PageableObject),
-          ) as PageableObject;
-          result.pageable.replace(valueDes);
-          break;
-        case r'empty':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.empty = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final int? totalElements;
+
+
+
+  @JsonKey(
+    
+    name: r'first',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final bool? first;
+
+
+
+  @JsonKey(
+    
+    name: r'last',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final bool? last;
+
+
+
+  @JsonKey(
+    
+    name: r'numberOfElements',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final int? numberOfElements;
+
+
+
+  @JsonKey(
+    
+    name: r'size',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final int? size;
+
+
+
+  @JsonKey(
+    
+    name: r'content',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final List<Staking>? content;
+
+
+
+  @JsonKey(
+    
+    name: r'number',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final int? number;
+
+
+
+  @JsonKey(
+    
+    name: r'sort',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final SortObject? sort;
+
+
+
+  @JsonKey(
+    
+    name: r'pageable',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final PageableObject? pageable;
+
+
+
+  @JsonKey(
+    
+    name: r'empty',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final bool? empty;
+
+
+
+
+
+    @override
+    bool operator ==(Object other) => identical(this, other) || other is PageStaking &&
+      other.totalPages == totalPages &&
+      other.totalElements == totalElements &&
+      other.first == first &&
+      other.last == last &&
+      other.numberOfElements == numberOfElements &&
+      other.size == size &&
+      other.content == content &&
+      other.number == number &&
+      other.sort == sort &&
+      other.pageable == pageable &&
+      other.empty == empty;
+
+    @override
+    int get hashCode =>
+        totalPages.hashCode +
+        totalElements.hashCode +
+        first.hashCode +
+        last.hashCode +
+        numberOfElements.hashCode +
+        size.hashCode +
+        content.hashCode +
+        number.hashCode +
+        sort.hashCode +
+        pageable.hashCode +
+        empty.hashCode;
+
+  factory PageStaking.fromJson(Map<String, dynamic> json) => _$PageStakingFromJson(json);
+
+  Map<String, dynamic> toJson() => _$PageStakingToJson(this);
 
   @override
-  PageStaking deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = PageStakingBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

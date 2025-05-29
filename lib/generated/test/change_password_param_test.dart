@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for ChangePasswordParam
 void main() {
-  final instance = ChangePasswordParamBuilder();
-  // TODO add properties to the builder and call build()
+  final ChangePasswordParam? instance = /* ChangePasswordParam(...) */ null;
+  // TODO add properties to the entity
 
   group(ChangePasswordParam, () {
     // 舊密碼

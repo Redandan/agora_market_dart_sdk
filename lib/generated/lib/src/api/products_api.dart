@@ -4,11 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:agora_market_dart_sdk/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:agora_market_dart_sdk/src/api_util.dart';
 import 'package:agora_market_dart_sdk/src/model/page_product.dart';
 import 'package:agora_market_dart_sdk/src/model/product.dart';
 import 'package:agora_market_dart_sdk/src/model/product_create_param.dart';
@@ -19,9 +19,7 @@ class ProductsApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const ProductsApi(this._dio, this._serializers);
+  const ProductsApi(this._dio);
 
   /// 創建商品
   /// 
@@ -63,9 +61,7 @@ class ProductsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(ProductCreateParam);
-      _bodyData = _serializers.serialize(productCreateParam, specifiedType: _type);
-
+_bodyData=jsonEncode(productCreateParam);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -90,12 +86,8 @@ class ProductsApi {
     Product? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Product),
-      ) as Product;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Product, Product>(rawData, 'Product', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -155,7 +147,7 @@ class ProductsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'searchParam': encodeQueryParameter(_serializers, searchParam, const FullType(ProductSeachParam)),
+      r'searchParam': searchParam,
     };
 
     final _response = await _dio.request<Object>(
@@ -170,12 +162,8 @@ class ProductsApi {
     PageProduct? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PageProduct),
-      ) as PageProduct;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PageProduct, PageProduct>(rawData, 'PageProduct', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -221,7 +209,7 @@ class ProductsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/products/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(int)).toString());
+    final _path = r'/products/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -245,12 +233,8 @@ class ProductsApi {
     Product? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Product),
-      ) as Product;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Product, Product>(rawData, 'Product', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -310,7 +294,7 @@ class ProductsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'productSeachParam': encodeQueryParameter(_serializers, productSeachParam, const FullType(ProductSeachParam)),
+      r'productSeachParam': productSeachParam,
     };
 
     final _response = await _dio.request<Object>(
@@ -325,12 +309,8 @@ class ProductsApi {
     PageProduct? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PageProduct),
-      ) as PageProduct;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PageProduct, PageProduct>(rawData, 'PageProduct', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -393,9 +373,7 @@ class ProductsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(ProductUpdateParam);
-      _bodyData = _serializers.serialize(productUpdateParam, specifiedType: _type);
-
+_bodyData=jsonEncode(productUpdateParam);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -420,12 +398,8 @@ class ProductsApi {
     Product? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Product),
-      ) as Product;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Product, Product>(rawData, 'Product', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

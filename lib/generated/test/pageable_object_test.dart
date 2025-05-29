@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for PageableObject
 void main() {
-  final instance = PageableObjectBuilder();
-  // TODO add properties to the builder and call build()
+  final PageableObject? instance = /* PageableObject(...) */ null;
+  // TODO add properties to the entity
 
   group(PageableObject, () {
     // bool unpaged

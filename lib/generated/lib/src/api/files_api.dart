@@ -4,21 +4,18 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:agora_market_dart_sdk/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:agora_market_dart_sdk/src/api_util.dart';
 import 'package:agora_market_dart_sdk/src/model/upload_file_request.dart';
-import 'package:built_collection/built_collection.dart';
 
 class FilesApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const FilesApi(this._dio, this._serializers);
+  const FilesApi(this._dio);
 
   /// 刪除文件
   /// 
@@ -57,7 +54,7 @@ class FilesApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'path': encodeQueryParameter(_serializers, path, const FullType(String)),
+      r'path': path,
     };
 
     final _response = await _dio.request<Object>(
@@ -84,9 +81,9 @@ class FilesApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<String>] as data
+  /// Returns a [Future] containing a [Response] with a [List<String>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<String>>> downloadFile({ 
+  Future<Response<List<String>>> downloadFile({ 
     required String path,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -109,7 +106,7 @@ class FilesApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'path': encodeQueryParameter(_serializers, path, const FullType(String)),
+      r'path': path,
     };
 
     final _response = await _dio.request<Object>(
@@ -121,15 +118,11 @@ class FilesApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<String>? _responseData;
+    List<String>? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(String)]),
-      ) as BuiltList<String>;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<String>, String>(rawData, 'List<String>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -140,7 +133,7 @@ class FilesApi {
       );
     }
 
-    return Response<BuiltList<String>>(
+    return Response<List<String>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -164,9 +157,9 @@ class FilesApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<String>] as data
+  /// Returns a [Future] containing a [Response] with a [List<String>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<String>>> getFileList({ 
+  Future<Response<List<String>>> getFileList({ 
     required String path,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -189,7 +182,7 @@ class FilesApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'path': encodeQueryParameter(_serializers, path, const FullType(String)),
+      r'path': path,
     };
 
     final _response = await _dio.request<Object>(
@@ -201,15 +194,11 @@ class FilesApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<String>? _responseData;
+    List<String>? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(String)]),
-      ) as BuiltList<String>;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<String>, String>(rawData, 'List<String>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -220,7 +209,7 @@ class FilesApi {
       );
     }
 
-    return Response<BuiltList<String>>(
+    return Response<List<String>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -272,9 +261,7 @@ class FilesApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(UploadFileRequest);
-      _bodyData = uploadFileRequest == null ? null : _serializers.serialize(uploadFileRequest, specifiedType: _type);
-
+_bodyData=jsonEncode(uploadFileRequest);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(

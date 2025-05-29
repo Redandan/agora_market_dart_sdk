@@ -3,8 +3,8 @@ import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for StoreAnalyticsDTO
 void main() {
-  final instance = StoreAnalyticsDTOBuilder();
-  // TODO add properties to the builder and call build()
+  final StoreAnalyticsDTO? instance = /* StoreAnalyticsDTO(...) */ null;
+  // TODO add properties to the entity
 
   group(StoreAnalyticsDTO, () {
     // SalesStats salesStats

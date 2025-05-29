@@ -3,138 +3,40 @@
 part of 'store_analytics_dto.dart';
 
 // **************************************************************************
-// BuiltValueGenerator
+// JsonSerializableGenerator
 // **************************************************************************
 
-class _$StoreAnalyticsDTO extends StoreAnalyticsDTO {
-  @override
-  final SalesStats? salesStats;
-  @override
-  final ProductStats? productStats;
-  @override
-  final CustomerStats? customerStats;
+StoreAnalyticsDTO _$StoreAnalyticsDTOFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      'StoreAnalyticsDTO',
+      json,
+      ($checkedConvert) {
+        final val = StoreAnalyticsDTO(
+          salesStats: $checkedConvert(
+              'salesStats',
+              (v) => v == null
+                  ? null
+                  : SalesStats.fromJson(v as Map<String, dynamic>)),
+          productStats: $checkedConvert(
+              'productStats',
+              (v) => v == null
+                  ? null
+                  : ProductStats.fromJson(v as Map<String, dynamic>)),
+          customerStats: $checkedConvert(
+              'customerStats',
+              (v) => v == null
+                  ? null
+                  : CustomerStats.fromJson(v as Map<String, dynamic>)),
+        );
+        return val;
+      },
+    );
 
-  factory _$StoreAnalyticsDTO(
-          [void Function(StoreAnalyticsDTOBuilder)? updates]) =>
-      (StoreAnalyticsDTOBuilder()..update(updates))._build();
-
-  _$StoreAnalyticsDTO._(
-      {this.salesStats, this.productStats, this.customerStats})
-      : super._();
-  @override
-  StoreAnalyticsDTO rebuild(void Function(StoreAnalyticsDTOBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
-
-  @override
-  StoreAnalyticsDTOBuilder toBuilder() =>
-      StoreAnalyticsDTOBuilder()..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is StoreAnalyticsDTO &&
-        salesStats == other.salesStats &&
-        productStats == other.productStats &&
-        customerStats == other.customerStats;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, salesStats.hashCode);
-    _$hash = $jc(_$hash, productStats.hashCode);
-    _$hash = $jc(_$hash, customerStats.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(r'StoreAnalyticsDTO')
-          ..add('salesStats', salesStats)
-          ..add('productStats', productStats)
-          ..add('customerStats', customerStats))
-        .toString();
-  }
-}
-
-class StoreAnalyticsDTOBuilder
-    implements Builder<StoreAnalyticsDTO, StoreAnalyticsDTOBuilder> {
-  _$StoreAnalyticsDTO? _$v;
-
-  SalesStatsBuilder? _salesStats;
-  SalesStatsBuilder get salesStats =>
-      _$this._salesStats ??= SalesStatsBuilder();
-  set salesStats(SalesStatsBuilder? salesStats) =>
-      _$this._salesStats = salesStats;
-
-  ProductStatsBuilder? _productStats;
-  ProductStatsBuilder get productStats =>
-      _$this._productStats ??= ProductStatsBuilder();
-  set productStats(ProductStatsBuilder? productStats) =>
-      _$this._productStats = productStats;
-
-  CustomerStatsBuilder? _customerStats;
-  CustomerStatsBuilder get customerStats =>
-      _$this._customerStats ??= CustomerStatsBuilder();
-  set customerStats(CustomerStatsBuilder? customerStats) =>
-      _$this._customerStats = customerStats;
-
-  StoreAnalyticsDTOBuilder() {
-    StoreAnalyticsDTO._defaults(this);
-  }
-
-  StoreAnalyticsDTOBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _salesStats = $v.salesStats?.toBuilder();
-      _productStats = $v.productStats?.toBuilder();
-      _customerStats = $v.customerStats?.toBuilder();
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(StoreAnalyticsDTO other) {
-    _$v = other as _$StoreAnalyticsDTO;
-  }
-
-  @override
-  void update(void Function(StoreAnalyticsDTOBuilder)? updates) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  StoreAnalyticsDTO build() => _build();
-
-  _$StoreAnalyticsDTO _build() {
-    _$StoreAnalyticsDTO _$result;
-    try {
-      _$result = _$v ??
-          _$StoreAnalyticsDTO._(
-            salesStats: _salesStats?.build(),
-            productStats: _productStats?.build(),
-            customerStats: _customerStats?.build(),
-          );
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'salesStats';
-        _salesStats?.build();
-        _$failedField = 'productStats';
-        _productStats?.build();
-        _$failedField = 'customerStats';
-        _customerStats?.build();
-      } catch (e) {
-        throw BuiltValueNestedFieldError(
-            r'StoreAnalyticsDTO', _$failedField, e.toString());
-      }
-      rethrow;
-    }
-    replace(_$result);
-    return _$result;
-  }
-}
-
-// ignore_for_file: deprecated_member_use_from_same_package,type=lint
+Map<String, dynamic> _$StoreAnalyticsDTOToJson(StoreAnalyticsDTO instance) =>
+    <String, dynamic>{
+      if (instance.salesStats?.toJson() case final value?) 'salesStats': value,
+      if (instance.productStats?.toJson() case final value?)
+        'productStats': value,
+      if (instance.customerStats?.toJson() case final value?)
+        'customerStats': value,
+    };

@@ -4,11 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:agora_market_dart_sdk/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:agora_market_dart_sdk/src/api_util.dart';
 import 'package:agora_market_dart_sdk/src/model/cold_wallet.dart';
 import 'package:agora_market_dart_sdk/src/model/page_cold_wallet.dart';
 import 'package:agora_market_dart_sdk/src/model/pageable.dart';
@@ -17,9 +17,7 @@ class ColdWalletApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const ColdWalletApi(this._dio, this._serializers);
+  const ColdWalletApi(this._dio);
 
   /// 新增冷錢包
   /// 創建新的冷錢包
@@ -61,9 +59,7 @@ class ColdWalletApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(ColdWallet);
-      _bodyData = _serializers.serialize(coldWallet, specifiedType: _type);
-
+_bodyData=jsonEncode(coldWallet);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -88,12 +84,8 @@ class ColdWalletApi {
     ColdWallet? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ColdWallet),
-      ) as ColdWallet;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<ColdWallet, ColdWallet>(rawData, 'ColdWallet', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -139,7 +131,7 @@ class ColdWalletApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/cold-wallet/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _path = r'/cold-wallet/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -200,7 +192,7 @@ class ColdWalletApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'pageable': encodeQueryParameter(_serializers, pageable, const FullType(Pageable)),
+      r'pageable': pageable,
     };
 
     final _response = await _dio.request<Object>(
@@ -215,12 +207,8 @@ class ColdWalletApi {
     PageColdWallet? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PageColdWallet),
-      ) as PageColdWallet;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PageColdWallet, PageColdWallet>(rawData, 'PageColdWallet', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -266,7 +254,7 @@ class ColdWalletApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/cold-wallet/{id}/release'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _path = r'/cold-wallet/{id}/release'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -290,12 +278,8 @@ class ColdWalletApi {
     ColdWallet? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ColdWallet),
-      ) as ColdWallet;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<ColdWallet, ColdWallet>(rawData, 'ColdWallet', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

@@ -4,11 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:agora_market_dart_sdk/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:agora_market_dart_sdk/src/api_util.dart';
 import 'package:agora_market_dart_sdk/src/model/page_staking.dart';
 import 'package:agora_market_dart_sdk/src/model/staking.dart';
 
@@ -16,9 +16,7 @@ class StakingApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const StakingApi(this._dio, this._serializers);
+  const StakingApi(this._dio);
 
   /// 申請質押
   /// 用戶申請質押指定金額的資產
@@ -60,8 +58,7 @@ class StakingApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = body;
-
+_bodyData=jsonEncode(body);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -86,12 +83,8 @@ class StakingApi {
     Staking? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Staking),
-      ) as Staking;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Staking, Staking>(rawData, 'Staking', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -153,8 +146,8 @@ class StakingApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
-      r'size': encodeQueryParameter(_serializers, size, const FullType(int)),
+      r'page': page,
+      r'size': size,
     };
 
     final _response = await _dio.request<Object>(
@@ -169,12 +162,8 @@ class StakingApi {
     PageStaking? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PageStaking),
-      ) as PageStaking;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<PageStaking, PageStaking>(rawData, 'PageStaking', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -234,7 +223,7 @@ class StakingApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'stakingId': encodeQueryParameter(_serializers, stakingId, const FullType(int)),
+      r'stakingId': stakingId,
     };
 
     final _response = await _dio.request<Object>(
@@ -249,12 +238,8 @@ class StakingApi {
     Staking? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Staking),
-      ) as Staking;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Staking, Staking>(rawData, 'Staking', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
