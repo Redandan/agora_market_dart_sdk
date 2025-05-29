@@ -26,7 +26,8 @@ dependencies:
 ## 使用方法
 
 ```dart
-import 'package:agora_market_dart_sdk/api.dart';
+// 導入主包
+import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // 創建 API 客戶端實例
 final apiClient = ApiClient(
