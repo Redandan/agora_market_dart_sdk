@@ -1,75 +1,65 @@
 # Agora Market Dart SDK
 
-Agora Market 平台的 Dart SDK，提供類型安全且易於使用的 API 接口。
+Agora Market 平台的 Dart SDK，提供类型安全且易于使用的 API 接口。
 
-## 功能特點
+## 功能特点
 
-- 完整的 Agora Market 平台 API 覆蓋
-- 使用 built_value 序列化的類型安全 API 調用
-- 全面的錯誤處理
-- 支持多種認證方式（Bearer、Basic、API Key）
-- 完整的文檔
-- 測試覆蓋
+- 完整的 Agora Market 平台 API 覆盖
+- 使用 chopper 与 swagger_dart_code_generator 自动生成类型安全的 API 调用代码
+- 全面的错误处理
+- 支持多种认证方式（Bearer、Basic、API Key）
+- 完整的文档
+- 测试覆盖
 
-## 安裝
+## 安装
 
-在你的項目的 `pubspec.yaml` 文件中添加以下依賴：
+在你的项目的 `pubspec.yaml` 文件中添加以下依赖：
 
 ```yaml
 dependencies:
   agora_market_dart_sdk:
     git:
       url: https://github.com/Redandan/agora_market_dart_sdk.git
-      ref: main  # 或者特定的分支/標籤/commit
+      ref: main  # 或者特定的分支/标签/commit
 ```
 
 ## 使用方法
 
 ```dart
-// 導入主包
+// 导入主包
 import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
-// 創建 API 客戶端實例
-final apiClient = ApiClient(
-  basePath: 'https://your-api-base-url.com',
+// 创建 API 客户端实例（使用 chopper 自动生成的客户端）
+final apiClient = Swagger.create(
+  dio: Dio(BaseOptions(baseUrl: 'https://your-api-base-url.com')),
 );
 
-// 使用特定的 API
-final authApi = AuthApi(apiClient);
-final productsApi = ProductsApi(apiClient);
-
-// 示例：登入
+// 使用特定的 API（例如，假设 swagger 生成后，API 接口位于 api 命名空间下）
+// 示例：调用登录接口
 try {
-  final loginResult = await authApi.login(
-    LoginParam(
-      username: 'user',
-      password: 'pass',
-    ),
+  final loginResult = await apiClient.api.login(
+    LoginParam(username: 'user', password: 'pass'),
   );
-  print('登入成功：${loginResult.token}');
+  print('登录成功：${loginResult.token}');
 } catch (e) {
-  print('登入失敗：$e');
+  print('登录失败：$e');
 }
 ```
 
-## API 文檔
+## API 文档
 
-詳細的 API 文檔請參考 [API 文檔](lib/generated/doc/)。
+详细的 API 文档请参考 [API 文档](lib/generated/doc/)。
 
-## 開發指南
+## 开发指南
 
-要生成 API 客戶端代碼：
+要生成 API 客户端代码，请运行以下命令：
 
-1. 運行代碼生成器：
 ```bash
 dart run build_runner build
 ```
 
-2. 運行測試（如果有）：
-```bash
-dart test
-```
+（本 SDK 使用 swagger_dart_code_generator 与 chopper 自动生成 API 客户端。）
 
-## 授權協議
+## 授权协议
 
-本項目使用 MIT 授權協議 - 詳見 [LICENSE](LICENSE) 文件。 
+本项目使用 MIT 授权协议 - 详见 [LICENSE](LICENSE) 文件。 

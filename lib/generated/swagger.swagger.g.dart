@@ -1,0 +1,1915 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'swagger.swagger.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+ChatSession _$ChatSessionFromJson(Map<String, dynamic> json) => ChatSession(
+      id: (json['id'] as num?)?.toInt(),
+      userId: (json['userId'] as num?)?.toInt(),
+      partnerId: (json['partnerId'] as num?)?.toInt(),
+      unreadCount: (json['unreadCount'] as num?)?.toInt(),
+      latestMessageId: (json['latestMessageId'] as num?)?.toInt(),
+      latestMessageTime: json['latestMessageTime'] == null
+          ? null
+          : DateTime.parse(json['latestMessageTime'] as String),
+      pinned: json['pinned'] as bool?,
+      partnerName: json['partnerName'] as String?,
+      partnerAvatar: json['partnerAvatar'] as String?,
+      latestMessageContent: json['latestMessageContent'] as String?,
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
+      updatedAt: json['updatedAt'] == null
+          ? null
+          : DateTime.parse(json['updatedAt'] as String),
+    );
+
+Map<String, dynamic> _$ChatSessionToJson(ChatSession instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'userId': instance.userId,
+      'partnerId': instance.partnerId,
+      'unreadCount': instance.unreadCount,
+      'latestMessageId': instance.latestMessageId,
+      'latestMessageTime': instance.latestMessageTime?.toIso8601String(),
+      'pinned': instance.pinned,
+      'partnerName': instance.partnerName,
+      'partnerAvatar': instance.partnerAvatar,
+      'latestMessageContent': instance.latestMessageContent,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
+    };
+
+ChatMessageUpdateDTO _$ChatMessageUpdateDTOFromJson(
+        Map<String, dynamic> json) =>
+    ChatMessageUpdateDTO(
+      content: json['content'] as String,
+    );
+
+Map<String, dynamic> _$ChatMessageUpdateDTOToJson(
+        ChatMessageUpdateDTO instance) =>
+    <String, dynamic>{
+      'content': instance.content,
+    };
+
+ChatMessage _$ChatMessageFromJson(Map<String, dynamic> json) => ChatMessage(
+      id: (json['id'] as num?)?.toInt(),
+      senderId: (json['senderId'] as num?)?.toInt(),
+      receiverId: (json['receiverId'] as num?)?.toInt(),
+      content: json['content'] as String?,
+      read: json['read'] as bool?,
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
+      updatedAt: json['updatedAt'] == null
+          ? null
+          : DateTime.parse(json['updatedAt'] as String),
+      deletedAt: json['deletedAt'] == null
+          ? null
+          : DateTime.parse(json['deletedAt'] as String),
+    );
+
+Map<String, dynamic> _$ChatMessageToJson(ChatMessage instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'senderId': instance.senderId,
+      'receiverId': instance.receiverId,
+      'content': instance.content,
+      'read': instance.read,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
+      'deletedAt': instance.deletedAt?.toIso8601String(),
+    };
+
+CartItem _$CartItemFromJson(Map<String, dynamic> json) => CartItem(
+      id: (json['id'] as num?)?.toInt(),
+      userId: (json['userId'] as num?)?.toInt(),
+      productId: (json['productId'] as num?)?.toInt(),
+      productName: json['productName'] as String?,
+      productImage: json['productImage'] as String?,
+      quantity: (json['quantity'] as num?)?.toInt(),
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
+      updatedAt: json['updatedAt'] == null
+          ? null
+          : DateTime.parse(json['updatedAt'] as String),
+    );
+
+Map<String, dynamic> _$CartItemToJson(CartItem instance) => <String, dynamic>{
+      'id': instance.id,
+      'userId': instance.userId,
+      'productId': instance.productId,
+      'productName': instance.productName,
+      'productImage': instance.productImage,
+      'quantity': instance.quantity,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
+    };
+
+CreateWithdrawParam _$CreateWithdrawParamFromJson(Map<String, dynamic> json) =>
+    CreateWithdrawParam(
+      userId: (json['userId'] as num?)?.toInt(),
+      amount: (json['amount'] as num?)?.toDouble(),
+      currency: json['currency'] as String?,
+      protocol: createWithdrawParamProtocolNullableFromJson(json['protocol']),
+      toAddress: json['toAddress'] as String?,
+    );
+
+Map<String, dynamic> _$CreateWithdrawParamToJson(
+        CreateWithdrawParam instance) =>
+    <String, dynamic>{
+      'userId': instance.userId,
+      'amount': instance.amount,
+      'currency': instance.currency,
+      'protocol': createWithdrawParamProtocolNullableToJson(instance.protocol),
+      'toAddress': instance.toAddress,
+    };
+
+Withdraw _$WithdrawFromJson(Map<String, dynamic> json) => Withdraw(
+      id: json['id'] as String?,
+      userId: (json['userId'] as num?)?.toInt(),
+      amount: (json['amount'] as num?)?.toDouble(),
+      fee: (json['fee'] as num?)?.toDouble(),
+      currency: json['currency'] as String?,
+      protocol: withdrawProtocolNullableFromJson(json['protocol']),
+      toAddress: json['toAddress'] as String?,
+      status: withdrawStatusNullableFromJson(json['status']),
+      txHash: json['txHash'] as String?,
+      remark: json['remark'] as String?,
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
+      updatedAt: json['updatedAt'] == null
+          ? null
+          : DateTime.parse(json['updatedAt'] as String),
+    );
+
+Map<String, dynamic> _$WithdrawToJson(Withdraw instance) => <String, dynamic>{
+      'id': instance.id,
+      'userId': instance.userId,
+      'amount': instance.amount,
+      'fee': instance.fee,
+      'currency': instance.currency,
+      'protocol': withdrawProtocolNullableToJson(instance.protocol),
+      'toAddress': instance.toAddress,
+      'status': withdrawStatusNullableToJson(instance.status),
+      'txHash': instance.txHash,
+      'remark': instance.remark,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
+    };
+
+StoreUpdateParam _$StoreUpdateParamFromJson(Map<String, dynamic> json) =>
+    StoreUpdateParam(
+      name: json['name'] as String?,
+      description: json['description'] as String?,
+      address: json['address'] as String?,
+      phone: json['phone'] as String?,
+      email: json['email'] as String?,
+      businessHours: json['businessHours'] as String?,
+      logoUrl: json['logoUrl'] as String?,
+      coverImageUrl: json['coverImageUrl'] as String?,
+      isActive: json['isActive'] as bool?,
+    );
+
+Map<String, dynamic> _$StoreUpdateParamToJson(StoreUpdateParam instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'description': instance.description,
+      'address': instance.address,
+      'phone': instance.phone,
+      'email': instance.email,
+      'businessHours': instance.businessHours,
+      'logoUrl': instance.logoUrl,
+      'coverImageUrl': instance.coverImageUrl,
+      'isActive': instance.isActive,
+    };
+
+Store _$StoreFromJson(Map<String, dynamic> json) => Store(
+      id: (json['id'] as num?)?.toInt(),
+      name: json['name'] as String?,
+      description: json['description'] as String?,
+      address: json['address'] as String?,
+      phone: json['phone'] as String?,
+      email: json['email'] as String?,
+      businessHours: json['businessHours'] as String?,
+      logoUrl: json['logoUrl'] as String?,
+      coverImageUrl: json['coverImageUrl'] as String?,
+      owner: json['owner'] == null
+          ? null
+          : User.fromJson(json['owner'] as Map<String, dynamic>),
+      isActive: json['isActive'] as bool?,
+      viewCount: (json['viewCount'] as num?)?.toInt(),
+      rating: (json['rating'] as num?)?.toDouble(),
+      ratingCount: (json['ratingCount'] as num?)?.toInt(),
+      creditLevel: (json['creditLevel'] as num?)?.toInt(),
+      productCount: (json['productCount'] as num?)?.toInt(),
+      orderCount: (json['orderCount'] as num?)?.toInt(),
+      totalSales: (json['totalSales'] as num?)?.toDouble(),
+      averageRating: (json['averageRating'] as num?)?.toDouble(),
+      responseRate: (json['responseRate'] as num?)?.toInt(),
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
+      updatedAt: json['updatedAt'] == null
+          ? null
+          : DateTime.parse(json['updatedAt'] as String),
+    );
+
+Map<String, dynamic> _$StoreToJson(Store instance) => <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'description': instance.description,
+      'address': instance.address,
+      'phone': instance.phone,
+      'email': instance.email,
+      'businessHours': instance.businessHours,
+      'logoUrl': instance.logoUrl,
+      'coverImageUrl': instance.coverImageUrl,
+      'owner': instance.owner?.toJson(),
+      'isActive': instance.isActive,
+      'viewCount': instance.viewCount,
+      'rating': instance.rating,
+      'ratingCount': instance.ratingCount,
+      'creditLevel': instance.creditLevel,
+      'productCount': instance.productCount,
+      'orderCount': instance.orderCount,
+      'totalSales': instance.totalSales,
+      'averageRating': instance.averageRating,
+      'responseRate': instance.responseRate,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
+    };
+
+User _$UserFromJson(Map<String, dynamic> json) => User(
+      id: (json['id'] as num?)?.toInt(),
+      username: json['username'] as String?,
+      password: json['password'] as String?,
+      role: json['role'] as String?,
+      status: userStatusNullableFromJson(json['status']),
+      enabled: json['enabled'] as bool?,
+      name: json['name'] as String?,
+      phone: json['phone'] as String?,
+      email: json['email'] as String?,
+      avatar: json['avatar'] as String?,
+      remark: json['remark'] as String?,
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
+      updatedAt: json['updatedAt'] == null
+          ? null
+          : DateTime.parse(json['updatedAt'] as String),
+      seller: json['seller'] as bool?,
+      admin: json['admin'] as bool?,
+    );
+
+Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
+      'id': instance.id,
+      'username': instance.username,
+      'password': instance.password,
+      'role': instance.role,
+      'status': userStatusNullableToJson(instance.status),
+      'enabled': instance.enabled,
+      'name': instance.name,
+      'phone': instance.phone,
+      'email': instance.email,
+      'avatar': instance.avatar,
+      'remark': instance.remark,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
+      'seller': instance.seller,
+      'admin': instance.admin,
+    };
+
+Staking _$StakingFromJson(Map<String, dynamic> json) => Staking(
+      id: (json['id'] as num?)?.toInt(),
+      userId: (json['userId'] as num?)?.toInt(),
+      amount: (json['amount'] as num?)?.toDouble(),
+      currency: json['currency'] as String?,
+      status: stakingStatusNullableFromJson(json['status']),
+      applyTime: json['applyTime'] == null
+          ? null
+          : DateTime.parse(json['applyTime'] as String),
+      startTime: json['startTime'] == null
+          ? null
+          : DateTime.parse(json['startTime'] as String),
+      endTime: json['endTime'] == null
+          ? null
+          : DateTime.parse(json['endTime'] as String),
+      earnedRewards: (json['earnedRewards'] as num?)?.toDouble(),
+      unfreezeRequestTime: json['unfreezeRequestTime'] == null
+          ? null
+          : DateTime.parse(json['unfreezeRequestTime'] as String),
+      unfreezeCompleteTime: json['unfreezeCompleteTime'] == null
+          ? null
+          : DateTime.parse(json['unfreezeCompleteTime'] as String),
+      lastSettleDate: json['lastSettleDate'] == null
+          ? null
+          : DateTime.parse(json['lastSettleDate'] as String),
+      lastSettleReward: (json['lastSettleReward'] as num?)?.toDouble(),
+      remark: json['remark'] as String?,
+    );
+
+Map<String, dynamic> _$StakingToJson(Staking instance) => <String, dynamic>{
+      'id': instance.id,
+      'userId': instance.userId,
+      'amount': instance.amount,
+      'currency': instance.currency,
+      'status': stakingStatusNullableToJson(instance.status),
+      'applyTime': instance.applyTime?.toIso8601String(),
+      'startTime': instance.startTime?.toIso8601String(),
+      'endTime': instance.endTime?.toIso8601String(),
+      'earnedRewards': instance.earnedRewards,
+      'unfreezeRequestTime': instance.unfreezeRequestTime?.toIso8601String(),
+      'unfreezeCompleteTime': instance.unfreezeCompleteTime?.toIso8601String(),
+      'lastSettleDate': _dateToJson(instance.lastSettleDate),
+      'lastSettleReward': instance.lastSettleReward,
+      'remark': instance.remark,
+    };
+
+CreateRechargeParam _$CreateRechargeParamFromJson(Map<String, dynamic> json) =>
+    CreateRechargeParam(
+      userId: (json['userId'] as num?)?.toInt(),
+      amount: (json['amount'] as num).toDouble(),
+      currency: json['currency'] as String,
+      protocol: createRechargeParamProtocolFromJson(json['protocol']),
+    );
+
+Map<String, dynamic> _$CreateRechargeParamToJson(
+        CreateRechargeParam instance) =>
+    <String, dynamic>{
+      'userId': instance.userId,
+      'amount': instance.amount,
+      'currency': instance.currency,
+      'protocol': createRechargeParamProtocolToJson(instance.protocol),
+    };
+
+Recharge _$RechargeFromJson(Map<String, dynamic> json) => Recharge(
+      id: json['id'] as String?,
+      userId: (json['userId'] as num?)?.toInt(),
+      amount: (json['amount'] as num?)?.toDouble(),
+      currency: json['currency'] as String?,
+      status: rechargeStatusNullableFromJson(json['status']),
+      protocol: rechargeProtocolNullableFromJson(json['protocol']),
+      txHash: json['txHash'] as String?,
+      receiveAddress: json['receiveAddress'] as String?,
+      coldWalletId: (json['coldWalletId'] as num?)?.toInt(),
+      remark: json['remark'] as String?,
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
+      expireTime: json['expireTime'] == null
+          ? null
+          : DateTime.parse(json['expireTime'] as String),
+      updatedAt: json['updatedAt'] == null
+          ? null
+          : DateTime.parse(json['updatedAt'] as String),
+      completedAt: json['completedAt'] == null
+          ? null
+          : DateTime.parse(json['completedAt'] as String),
+    );
+
+Map<String, dynamic> _$RechargeToJson(Recharge instance) => <String, dynamic>{
+      'id': instance.id,
+      'userId': instance.userId,
+      'amount': instance.amount,
+      'currency': instance.currency,
+      'status': rechargeStatusNullableToJson(instance.status),
+      'protocol': rechargeProtocolNullableToJson(instance.protocol),
+      'txHash': instance.txHash,
+      'receiveAddress': instance.receiveAddress,
+      'coldWalletId': instance.coldWalletId,
+      'remark': instance.remark,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'expireTime': instance.expireTime?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
+      'completedAt': instance.completedAt?.toIso8601String(),
+    };
+
+ProductUpdateParam _$ProductUpdateParamFromJson(Map<String, dynamic> json) =>
+    ProductUpdateParam(
+      id: json['id'] as String,
+      name: json['name'] as String?,
+      price: (json['price'] as num?)?.toDouble(),
+      stock: (json['stock'] as num?)?.toInt(),
+      description: json['description'] as String?,
+      category: json['category'] as String?,
+      imageUrls: (json['imageUrls'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+      longitude: (json['longitude'] as num).toDouble(),
+      latitude: (json['latitude'] as num).toDouble(),
+      status: productUpdateParamStatusNullableFromJson(json['status']),
+    );
+
+Map<String, dynamic> _$ProductUpdateParamToJson(ProductUpdateParam instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'price': instance.price,
+      'stock': instance.stock,
+      'description': instance.description,
+      'category': instance.category,
+      'imageUrls': instance.imageUrls,
+      'longitude': instance.longitude,
+      'latitude': instance.latitude,
+      'status': productUpdateParamStatusNullableToJson(instance.status),
+    };
+
+LocalTime _$LocalTimeFromJson(Map<String, dynamic> json) => LocalTime(
+      hour: (json['hour'] as num?)?.toInt(),
+      minute: (json['minute'] as num?)?.toInt(),
+      second: (json['second'] as num?)?.toInt(),
+      nano: (json['nano'] as num?)?.toInt(),
+    );
+
+Map<String, dynamic> _$LocalTimeToJson(LocalTime instance) => <String, dynamic>{
+      'hour': instance.hour,
+      'minute': instance.minute,
+      'second': instance.second,
+      'nano': instance.nano,
+    };
+
+Product _$ProductFromJson(Map<String, dynamic> json) => Product(
+      id: (json['id'] as num?)?.toInt(),
+      title: json['title'] as String?,
+      description: json['description'] as String?,
+      price: (json['price'] as num?)?.toDouble(),
+      stock: (json['stock'] as num?)?.toInt(),
+      category: productCategoryNullableFromJson(json['category']),
+      sellerId: (json['sellerId'] as num?)?.toInt(),
+      imageUrls: (json['imageUrls'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+      pickupAddress: json['pickupAddress'] as String?,
+      longitude: (json['longitude'] as num?)?.toDouble(),
+      latitude: (json['latitude'] as num?)?.toDouble(),
+      pickupTimeStartString: json['pickupTimeStartString'] == null
+          ? null
+          : LocalTime.fromJson(
+              json['pickupTimeStartString'] as Map<String, dynamic>),
+      pickupTimeEndString: json['pickupTimeEndString'] == null
+          ? null
+          : LocalTime.fromJson(
+              json['pickupTimeEndString'] as Map<String, dynamic>),
+      status: productStatusNullableFromJson(json['status']),
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
+      updatedAt: json['updatedAt'] == null
+          ? null
+          : DateTime.parse(json['updatedAt'] as String),
+      rating: (json['rating'] as num?)?.toDouble(),
+      viewCount: (json['viewCount'] as num?)?.toInt(),
+      salesCount: (json['salesCount'] as num?)?.toInt(),
+      tags: json['tags'] as String?,
+    );
+
+Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
+      'description': instance.description,
+      'price': instance.price,
+      'stock': instance.stock,
+      'category': productCategoryNullableToJson(instance.category),
+      'sellerId': instance.sellerId,
+      'imageUrls': instance.imageUrls,
+      'pickupAddress': instance.pickupAddress,
+      'longitude': instance.longitude,
+      'latitude': instance.latitude,
+      'pickupTimeStartString': instance.pickupTimeStartString?.toJson(),
+      'pickupTimeEndString': instance.pickupTimeEndString?.toJson(),
+      'status': productStatusNullableToJson(instance.status),
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
+      'rating': instance.rating,
+      'viewCount': instance.viewCount,
+      'salesCount': instance.salesCount,
+      'tags': instance.tags,
+    };
+
+ProductCreateParam _$ProductCreateParamFromJson(Map<String, dynamic> json) =>
+    ProductCreateParam(
+      title: json['title'] as String,
+      price: (json['price'] as num).toDouble(),
+      stock: (json['stock'] as num).toInt(),
+      description: json['description'] as String,
+      category: productCreateParamCategoryFromJson(json['category']),
+      imageUrls: (json['imageUrls'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+      longitude: (json['longitude'] as num).toDouble(),
+      latitude: (json['latitude'] as num).toDouble(),
+      pickupTimeStartString: json['pickupTimeStartString'] == null
+          ? null
+          : LocalTime.fromJson(
+              json['pickupTimeStartString'] as Map<String, dynamic>),
+      pickupTimeEndString: json['pickupTimeEndString'] == null
+          ? null
+          : LocalTime.fromJson(
+              json['pickupTimeEndString'] as Map<String, dynamic>),
+      pickupAddress: json['pickupAddress'] as String?,
+    );
+
+Map<String, dynamic> _$ProductCreateParamToJson(ProductCreateParam instance) =>
+    <String, dynamic>{
+      'title': instance.title,
+      'price': instance.price,
+      'stock': instance.stock,
+      'description': instance.description,
+      'category': productCreateParamCategoryToJson(instance.category),
+      'imageUrls': instance.imageUrls,
+      'longitude': instance.longitude,
+      'latitude': instance.latitude,
+      'pickupTimeStartString': instance.pickupTimeStartString?.toJson(),
+      'pickupTimeEndString': instance.pickupTimeEndString?.toJson(),
+      'pickupAddress': instance.pickupAddress,
+    };
+
+OrderSumbitParam _$OrderSumbitParamFromJson(Map<String, dynamic> json) =>
+    OrderSumbitParam(
+      productId: (json['productId'] as num).toInt(),
+      deliveryType: orderSumbitParamDeliveryTypeFromJson(json['deliveryType']),
+      shippingAddress: json['shippingAddress'] as String,
+      longitude: (json['longitude'] as num).toDouble(),
+      latitude: (json['latitude'] as num).toDouble(),
+      receiverName: json['receiverName'] as String,
+      receiverPhone: json['receiverPhone'] as String,
+      remark: json['remark'] as String?,
+      deliveryFee: (json['deliveryFee'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$OrderSumbitParamToJson(OrderSumbitParam instance) =>
+    <String, dynamic>{
+      'productId': instance.productId,
+      'deliveryType': orderSumbitParamDeliveryTypeToJson(instance.deliveryType),
+      'shippingAddress': instance.shippingAddress,
+      'longitude': instance.longitude,
+      'latitude': instance.latitude,
+      'receiverName': instance.receiverName,
+      'receiverPhone': instance.receiverPhone,
+      'remark': instance.remark,
+      'deliveryFee': instance.deliveryFee,
+    };
+
+OrderShipParam _$OrderShipParamFromJson(Map<String, dynamic> json) =>
+    OrderShipParam(
+      orderId: json['orderId'] as String?,
+      shippingCompany: json['shippingCompany'] as String?,
+      trackingNumber: json['trackingNumber'] as String?,
+      remark: json['remark'] as String?,
+    );
+
+Map<String, dynamic> _$OrderShipParamToJson(OrderShipParam instance) =>
+    <String, dynamic>{
+      'orderId': instance.orderId,
+      'shippingCompany': instance.shippingCompany,
+      'trackingNumber': instance.trackingNumber,
+      'remark': instance.remark,
+    };
+
+OrderConfirmParam _$OrderConfirmParamFromJson(Map<String, dynamic> json) =>
+    OrderConfirmParam(
+      orderId: json['orderId'] as String?,
+      remark: json['remark'] as String?,
+    );
+
+Map<String, dynamic> _$OrderConfirmParamToJson(OrderConfirmParam instance) =>
+    <String, dynamic>{
+      'orderId': instance.orderId,
+      'remark': instance.remark,
+    };
+
+OrderCancelParam _$OrderCancelParamFromJson(Map<String, dynamic> json) =>
+    OrderCancelParam(
+      orderId: json['orderId'] as String?,
+      reason: json['reason'] as String?,
+    );
+
+Map<String, dynamic> _$OrderCancelParamToJson(OrderCancelParam instance) =>
+    <String, dynamic>{
+      'orderId': instance.orderId,
+      'reason': instance.reason,
+    };
+
+DisputeCreateParam _$DisputeCreateParamFromJson(Map<String, dynamic> json) =>
+    DisputeCreateParam(
+      orderId: json['orderId'] as String?,
+      type: disputeCreateParamTypeNullableFromJson(json['type']),
+      description: json['description'] as String?,
+    );
+
+Map<String, dynamic> _$DisputeCreateParamToJson(DisputeCreateParam instance) =>
+    <String, dynamic>{
+      'orderId': instance.orderId,
+      'type': disputeCreateParamTypeNullableToJson(instance.type),
+      'description': instance.description,
+    };
+
+Dispute _$DisputeFromJson(Map<String, dynamic> json) => Dispute(
+      id: json['id'] as String?,
+      orderId: json['orderId'] as String?,
+      buyerId: (json['buyerId'] as num?)?.toInt(),
+      sellerId: (json['sellerId'] as num?)?.toInt(),
+      type: disputeTypeNullableFromJson(json['type']),
+      status: disputeStatusNullableFromJson(json['status']),
+      description: json['description'] as String?,
+      sellerReply: json['sellerReply'] as String?,
+      adminComment: json['adminComment'] as String?,
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
+      updatedAt: json['updatedAt'] == null
+          ? null
+          : DateTime.parse(json['updatedAt'] as String),
+      resolvedAt: json['resolvedAt'] == null
+          ? null
+          : DateTime.parse(json['resolvedAt'] as String),
+    );
+
+Map<String, dynamic> _$DisputeToJson(Dispute instance) => <String, dynamic>{
+      'id': instance.id,
+      'orderId': instance.orderId,
+      'buyerId': instance.buyerId,
+      'sellerId': instance.sellerId,
+      'type': disputeTypeNullableToJson(instance.type),
+      'status': disputeStatusNullableToJson(instance.status),
+      'description': instance.description,
+      'sellerReply': instance.sellerReply,
+      'adminComment': instance.adminComment,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
+      'resolvedAt': instance.resolvedAt?.toIso8601String(),
+    };
+
+Deliveryer _$DeliveryerFromJson(Map<String, dynamic> json) => Deliveryer(
+      id: (json['id'] as num?)?.toInt(),
+      userId: (json['userId'] as num?)?.toInt(),
+      enabled: json['enabled'] as bool?,
+      deliveryAreas: (json['deliveryAreas'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
+      updatedAt: json['updatedAt'] == null
+          ? null
+          : DateTime.parse(json['updatedAt'] as String),
+      deliveringOrderId: json['deliveringOrderId'] as String?,
+      latitude: (json['latitude'] as num?)?.toDouble(),
+      longitude: (json['longitude'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$DeliveryerToJson(Deliveryer instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'userId': instance.userId,
+      'enabled': instance.enabled,
+      'deliveryAreas': instance.deliveryAreas,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
+      'deliveringOrderId': instance.deliveringOrderId,
+      'latitude': instance.latitude,
+      'longitude': instance.longitude,
+    };
+
+UpdateDeliveryOrderParam _$UpdateDeliveryOrderParamFromJson(
+        Map<String, dynamic> json) =>
+    UpdateDeliveryOrderParam(
+      orderId: json['orderId'] as String?,
+      reportType: updateDeliveryOrderParamReportTypeNullableFromJson(
+          json['reportType']),
+      remark: json['remark'] as String?,
+      currentLocationLatitude:
+          (json['currentLocationLatitude'] as num?)?.toDouble(),
+      currentLocationLongitude:
+          (json['currentLocationLongitude'] as num?)?.toDouble(),
+      verifyCode: json['verifyCode'] as String?,
+    );
+
+Map<String, dynamic> _$UpdateDeliveryOrderParamToJson(
+        UpdateDeliveryOrderParam instance) =>
+    <String, dynamic>{
+      'orderId': instance.orderId,
+      'reportType':
+          updateDeliveryOrderParamReportTypeNullableToJson(instance.reportType),
+      'remark': instance.remark,
+      'currentLocationLatitude': instance.currentLocationLatitude,
+      'currentLocationLongitude': instance.currentLocationLongitude,
+      'verifyCode': instance.verifyCode,
+    };
+
+ColdWallet _$ColdWalletFromJson(Map<String, dynamic> json) => ColdWallet(
+      id: (json['id'] as num?)?.toInt(),
+      address: json['address'] as String?,
+      protocol: coldWalletProtocolNullableFromJson(json['protocol']),
+      trxBalance: (json['trxBalance'] as num?)?.toDouble(),
+      usdtBalance: (json['usdtBalance'] as num?)?.toDouble(),
+      status: coldWalletStatusNullableFromJson(json['status']),
+      currentOrderId: json['currentOrderId'] as String?,
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
+      updatedAt: json['updatedAt'] == null
+          ? null
+          : DateTime.parse(json['updatedAt'] as String),
+      $operator: json['operator'] as String?,
+    );
+
+Map<String, dynamic> _$ColdWalletToJson(ColdWallet instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'address': instance.address,
+      'protocol': coldWalletProtocolNullableToJson(instance.protocol),
+      'trxBalance': instance.trxBalance,
+      'usdtBalance': instance.usdtBalance,
+      'status': coldWalletStatusNullableToJson(instance.status),
+      'currentOrderId': instance.currentOrderId,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
+      'operator': instance.$operator,
+    };
+
+ChatMessageDTO _$ChatMessageDTOFromJson(Map<String, dynamic> json) =>
+    ChatMessageDTO(
+      receiverId: (json['receiverId'] as num).toInt(),
+      content: json['content'] as String,
+    );
+
+Map<String, dynamic> _$ChatMessageDTOToJson(ChatMessageDTO instance) =>
+    <String, dynamic>{
+      'receiverId': instance.receiverId,
+      'content': instance.content,
+    };
+
+PasswordResetParam _$PasswordResetParamFromJson(Map<String, dynamic> json) =>
+    PasswordResetParam(
+      oldPassword: json['oldPassword'] as String,
+      newPassword: json['newPassword'] as String,
+      confirmNewPassword: json['confirmNewPassword'] as String,
+    );
+
+Map<String, dynamic> _$PasswordResetParamToJson(PasswordResetParam instance) =>
+    <String, dynamic>{
+      'oldPassword': instance.oldPassword,
+      'newPassword': instance.newPassword,
+      'confirmNewPassword': instance.confirmNewPassword,
+    };
+
+RegisterParam _$RegisterParamFromJson(Map<String, dynamic> json) =>
+    RegisterParam(
+      username: json['username'] as String,
+      password: json['password'] as String,
+      confirmPassword: json['confirmPassword'] as String?,
+      email: json['email'] as String?,
+    );
+
+Map<String, dynamic> _$RegisterParamToJson(RegisterParam instance) =>
+    <String, dynamic>{
+      'username': instance.username,
+      'password': instance.password,
+      'confirmPassword': instance.confirmPassword,
+      'email': instance.email,
+    };
+
+LoginResult _$LoginResultFromJson(Map<String, dynamic> json) => LoginResult(
+      token: json['token'] as String?,
+      refreshToken: json['refreshToken'] as String?,
+      userId: (json['userId'] as num?)?.toInt(),
+      username: json['username'] as String?,
+    );
+
+Map<String, dynamic> _$LoginResultToJson(LoginResult instance) =>
+    <String, dynamic>{
+      'token': instance.token,
+      'refreshToken': instance.refreshToken,
+      'userId': instance.userId,
+      'username': instance.username,
+    };
+
+LoginParam _$LoginParamFromJson(Map<String, dynamic> json) => LoginParam(
+      username: json['username'] as String,
+      password: json['password'] as String,
+      rememberMe: json['rememberMe'] as bool?,
+      code: json['code'] as String?,
+    );
+
+Map<String, dynamic> _$LoginParamToJson(LoginParam instance) =>
+    <String, dynamic>{
+      'username': instance.username,
+      'password': instance.password,
+      'rememberMe': instance.rememberMe,
+      'code': instance.code,
+    };
+
+ChangePasswordParam _$ChangePasswordParamFromJson(Map<String, dynamic> json) =>
+    ChangePasswordParam(
+      oldPassword: json['oldPassword'] as String,
+      newPassword: json['newPassword'] as String,
+      confirmNewPassword: json['confirmNewPassword'] as String,
+    );
+
+Map<String, dynamic> _$ChangePasswordParamToJson(
+        ChangePasswordParam instance) =>
+    <String, dynamic>{
+      'oldPassword': instance.oldPassword,
+      'newPassword': instance.newPassword,
+      'confirmNewPassword': instance.confirmNewPassword,
+    };
+
+MemberUpdateParam _$MemberUpdateParamFromJson(Map<String, dynamic> json) =>
+    MemberUpdateParam(
+      id: json['id'] as String?,
+      username: json['username'] as String?,
+      email: json['email'] as String?,
+      phone: json['phone'] as String?,
+      status: memberUpdateParamStatusNullableFromJson(json['status']),
+      isSeller: json['isSeller'] as bool?,
+      remark: json['remark'] as String?,
+    );
+
+Map<String, dynamic> _$MemberUpdateParamToJson(MemberUpdateParam instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'username': instance.username,
+      'email': instance.email,
+      'phone': instance.phone,
+      'status': memberUpdateParamStatusNullableToJson(instance.status),
+      'isSeller': instance.isSeller,
+      'remark': instance.remark,
+    };
+
+DeliveryDetail _$DeliveryDetailFromJson(Map<String, dynamic> json) =>
+    DeliveryDetail(
+      orderId: json['orderId'] as String?,
+      deliveryId: (json['deliveryId'] as num?)?.toInt(),
+      deliveryType:
+          deliveryDetailDeliveryTypeNullableFromJson(json['deliveryType']),
+      verifyCode: json['verifyCode'] as String?,
+      pickupLongitude: (json['pickupLongitude'] as num?)?.toDouble(),
+      pickupLatitude: (json['pickupLatitude'] as num?)?.toDouble(),
+      pickupAddress: json['pickupAddress'] as String?,
+      pickupPostalCode: json['pickupPostalCode'] as String?,
+      shippingLongitude: (json['shippingLongitude'] as num?)?.toDouble(),
+      shippingLatitude: (json['shippingLatitude'] as num?)?.toDouble(),
+      shippingAddress: json['shippingAddress'] as String?,
+      shippingPostalCode: json['shippingPostalCode'] as String?,
+      receiverName: json['receiverName'] as String?,
+      receiverPhone: json['receiverPhone'] as String?,
+      trackingNumber: json['trackingNumber'] as String?,
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
+      updatedAt: json['updatedAt'] == null
+          ? null
+          : DateTime.parse(json['updatedAt'] as String),
+      deliveredAt: json['deliveredAt'] == null
+          ? null
+          : DateTime.parse(json['deliveredAt'] as String),
+      assignedAt: json['assignedAt'] == null
+          ? null
+          : DateTime.parse(json['assignedAt'] as String),
+      deliveryLogs: (json['deliveryLogs'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+      status: deliveryDetailStatusNullableFromJson(json['status']),
+      pickingUpTime: json['pickingUpTime'] == null
+          ? null
+          : DateTime.parse(json['pickingUpTime'] as String),
+      deliveringTime: json['deliveringTime'] == null
+          ? null
+          : DateTime.parse(json['deliveringTime'] as String),
+      deliveredTime: json['deliveredTime'] == null
+          ? null
+          : DateTime.parse(json['deliveredTime'] as String),
+      cancelledTime: json['cancelledTime'] == null
+          ? null
+          : DateTime.parse(json['cancelledTime'] as String),
+    );
+
+Map<String, dynamic> _$DeliveryDetailToJson(DeliveryDetail instance) =>
+    <String, dynamic>{
+      'orderId': instance.orderId,
+      'deliveryId': instance.deliveryId,
+      'deliveryType':
+          deliveryDetailDeliveryTypeNullableToJson(instance.deliveryType),
+      'verifyCode': instance.verifyCode,
+      'pickupLongitude': instance.pickupLongitude,
+      'pickupLatitude': instance.pickupLatitude,
+      'pickupAddress': instance.pickupAddress,
+      'pickupPostalCode': instance.pickupPostalCode,
+      'shippingLongitude': instance.shippingLongitude,
+      'shippingLatitude': instance.shippingLatitude,
+      'shippingAddress': instance.shippingAddress,
+      'shippingPostalCode': instance.shippingPostalCode,
+      'receiverName': instance.receiverName,
+      'receiverPhone': instance.receiverPhone,
+      'trackingNumber': instance.trackingNumber,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
+      'deliveredAt': instance.deliveredAt?.toIso8601String(),
+      'assignedAt': instance.assignedAt?.toIso8601String(),
+      'deliveryLogs': instance.deliveryLogs,
+      'status': deliveryDetailStatusNullableToJson(instance.status),
+      'pickingUpTime': instance.pickingUpTime?.toIso8601String(),
+      'deliveringTime': instance.deliveringTime?.toIso8601String(),
+      'deliveredTime': instance.deliveredTime?.toIso8601String(),
+      'cancelledTime': instance.cancelledTime?.toIso8601String(),
+    };
+
+Pageable _$PageableFromJson(Map<String, dynamic> json) => Pageable(
+      page: (json['page'] as num?)?.toInt(),
+      size: (json['size'] as num?)?.toInt(),
+      sort:
+          (json['sort'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+              [],
+    );
+
+Map<String, dynamic> _$PageableToJson(Pageable instance) => <String, dynamic>{
+      'page': instance.page,
+      'size': instance.size,
+      'sort': instance.sort,
+    };
+
+PageWithdraw _$PageWithdrawFromJson(Map<String, dynamic> json) => PageWithdraw(
+      totalPages: (json['totalPages'] as num?)?.toInt(),
+      totalElements: (json['totalElements'] as num?)?.toInt(),
+      first: json['first'] as bool?,
+      last: json['last'] as bool?,
+      numberOfElements: (json['numberOfElements'] as num?)?.toInt(),
+      pageable: json['pageable'] == null
+          ? null
+          : PageableObject.fromJson(json['pageable'] as Map<String, dynamic>),
+      size: (json['size'] as num?)?.toInt(),
+      content: (json['content'] as List<dynamic>?)
+              ?.map((e) => Withdraw.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      number: (json['number'] as num?)?.toInt(),
+      sort: json['sort'] == null
+          ? null
+          : SortObject.fromJson(json['sort'] as Map<String, dynamic>),
+      empty: json['empty'] as bool?,
+    );
+
+Map<String, dynamic> _$PageWithdrawToJson(PageWithdraw instance) =>
+    <String, dynamic>{
+      'totalPages': instance.totalPages,
+      'totalElements': instance.totalElements,
+      'first': instance.first,
+      'last': instance.last,
+      'numberOfElements': instance.numberOfElements,
+      'pageable': instance.pageable?.toJson(),
+      'size': instance.size,
+      'content': instance.content?.map((e) => e.toJson()).toList(),
+      'number': instance.number,
+      'sort': instance.sort?.toJson(),
+      'empty': instance.empty,
+    };
+
+PageableObject _$PageableObjectFromJson(Map<String, dynamic> json) =>
+    PageableObject(
+      pageNumber: (json['pageNumber'] as num?)?.toInt(),
+      pageSize: (json['pageSize'] as num?)?.toInt(),
+      paged: json['paged'] as bool?,
+      unpaged: json['unpaged'] as bool?,
+      offset: (json['offset'] as num?)?.toInt(),
+      sort: json['sort'] == null
+          ? null
+          : SortObject.fromJson(json['sort'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$PageableObjectToJson(PageableObject instance) =>
+    <String, dynamic>{
+      'pageNumber': instance.pageNumber,
+      'pageSize': instance.pageSize,
+      'paged': instance.paged,
+      'unpaged': instance.unpaged,
+      'offset': instance.offset,
+      'sort': instance.sort?.toJson(),
+    };
+
+SortObject _$SortObjectFromJson(Map<String, dynamic> json) => SortObject(
+      sorted: json['sorted'] as bool?,
+      unsorted: json['unsorted'] as bool?,
+      empty: json['empty'] as bool?,
+    );
+
+Map<String, dynamic> _$SortObjectToJson(SortObject instance) =>
+    <String, dynamic>{
+      'sorted': instance.sorted,
+      'unsorted': instance.unsorted,
+      'empty': instance.empty,
+    };
+
+PageTransaction _$PageTransactionFromJson(Map<String, dynamic> json) =>
+    PageTransaction(
+      totalPages: (json['totalPages'] as num?)?.toInt(),
+      totalElements: (json['totalElements'] as num?)?.toInt(),
+      first: json['first'] as bool?,
+      last: json['last'] as bool?,
+      numberOfElements: (json['numberOfElements'] as num?)?.toInt(),
+      pageable: json['pageable'] == null
+          ? null
+          : PageableObject.fromJson(json['pageable'] as Map<String, dynamic>),
+      size: (json['size'] as num?)?.toInt(),
+      content: (json['content'] as List<dynamic>?)
+              ?.map((e) => Transaction.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      number: (json['number'] as num?)?.toInt(),
+      sort: json['sort'] == null
+          ? null
+          : SortObject.fromJson(json['sort'] as Map<String, dynamic>),
+      empty: json['empty'] as bool?,
+    );
+
+Map<String, dynamic> _$PageTransactionToJson(PageTransaction instance) =>
+    <String, dynamic>{
+      'totalPages': instance.totalPages,
+      'totalElements': instance.totalElements,
+      'first': instance.first,
+      'last': instance.last,
+      'numberOfElements': instance.numberOfElements,
+      'pageable': instance.pageable?.toJson(),
+      'size': instance.size,
+      'content': instance.content?.map((e) => e.toJson()).toList(),
+      'number': instance.number,
+      'sort': instance.sort?.toJson(),
+      'empty': instance.empty,
+    };
+
+Transaction _$TransactionFromJson(Map<String, dynamic> json) => Transaction(
+      id: (json['id'] as num?)?.toInt(),
+      userId: (json['userId'] as num?)?.toInt(),
+      currency: json['currency'] as String?,
+      type: transactionTypeNullableFromJson(json['type']),
+      beforeAmount: (json['beforeAmount'] as num?)?.toDouble(),
+      afterAmount: (json['afterAmount'] as num?)?.toDouble(),
+      amount: (json['amount'] as num?)?.toDouble(),
+      remark: json['remark'] as String?,
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
+      updatedAt: json['updatedAt'] == null
+          ? null
+          : DateTime.parse(json['updatedAt'] as String),
+      description: json['description'] as String?,
+    );
+
+Map<String, dynamic> _$TransactionToJson(Transaction instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'userId': instance.userId,
+      'currency': instance.currency,
+      'type': transactionTypeNullableToJson(instance.type),
+      'beforeAmount': instance.beforeAmount,
+      'afterAmount': instance.afterAmount,
+      'amount': instance.amount,
+      'remark': instance.remark,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
+      'description': instance.description,
+    };
+
+PageProduct _$PageProductFromJson(Map<String, dynamic> json) => PageProduct(
+      totalPages: (json['totalPages'] as num?)?.toInt(),
+      totalElements: (json['totalElements'] as num?)?.toInt(),
+      first: json['first'] as bool?,
+      last: json['last'] as bool?,
+      numberOfElements: (json['numberOfElements'] as num?)?.toInt(),
+      pageable: json['pageable'] == null
+          ? null
+          : PageableObject.fromJson(json['pageable'] as Map<String, dynamic>),
+      size: (json['size'] as num?)?.toInt(),
+      content: (json['content'] as List<dynamic>?)
+              ?.map((e) => Product.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      number: (json['number'] as num?)?.toInt(),
+      sort: json['sort'] == null
+          ? null
+          : SortObject.fromJson(json['sort'] as Map<String, dynamic>),
+      empty: json['empty'] as bool?,
+    );
+
+Map<String, dynamic> _$PageProductToJson(PageProduct instance) =>
+    <String, dynamic>{
+      'totalPages': instance.totalPages,
+      'totalElements': instance.totalElements,
+      'first': instance.first,
+      'last': instance.last,
+      'numberOfElements': instance.numberOfElements,
+      'pageable': instance.pageable?.toJson(),
+      'size': instance.size,
+      'content': instance.content?.map((e) => e.toJson()).toList(),
+      'number': instance.number,
+      'sort': instance.sort?.toJson(),
+      'empty': instance.empty,
+    };
+
+CustomerStats _$CustomerStatsFromJson(Map<String, dynamic> json) =>
+    CustomerStats(
+      newCustomers: (json['newCustomers'] as num?)?.toInt(),
+      returningCustomers: (json['returningCustomers'] as num?)?.toInt(),
+      averageCustomerValue: (json['averageCustomerValue'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$CustomerStatsToJson(CustomerStats instance) =>
+    <String, dynamic>{
+      'newCustomers': instance.newCustomers,
+      'returningCustomers': instance.returningCustomers,
+      'averageCustomerValue': instance.averageCustomerValue,
+    };
+
+ProductStats _$ProductStatsFromJson(Map<String, dynamic> json) => ProductStats(
+      totalProducts: (json['totalProducts'] as num?)?.toInt(),
+      averageRating: (json['averageRating'] as num?)?.toDouble(),
+      activeProducts: (json['activeProducts'] as num?)?.toInt(),
+      inactiveProducts: (json['inactiveProducts'] as num?)?.toInt(),
+    );
+
+Map<String, dynamic> _$ProductStatsToJson(ProductStats instance) =>
+    <String, dynamic>{
+      'totalProducts': instance.totalProducts,
+      'averageRating': instance.averageRating,
+      'activeProducts': instance.activeProducts,
+      'inactiveProducts': instance.inactiveProducts,
+    };
+
+SalesStats _$SalesStatsFromJson(Map<String, dynamic> json) => SalesStats(
+      totalSales: (json['totalSales'] as num?)?.toDouble(),
+      totalOrders: (json['totalOrders'] as num?)?.toInt(),
+      averageOrderValue: (json['averageOrderValue'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$SalesStatsToJson(SalesStats instance) =>
+    <String, dynamic>{
+      'totalSales': instance.totalSales,
+      'totalOrders': instance.totalOrders,
+      'averageOrderValue': instance.averageOrderValue,
+    };
+
+StoreAnalyticsDTO _$StoreAnalyticsDTOFromJson(Map<String, dynamic> json) =>
+    StoreAnalyticsDTO(
+      salesStats: json['salesStats'] == null
+          ? null
+          : SalesStats.fromJson(json['salesStats'] as Map<String, dynamic>),
+      productStats: json['productStats'] == null
+          ? null
+          : ProductStats.fromJson(json['productStats'] as Map<String, dynamic>),
+      customerStats: json['customerStats'] == null
+          ? null
+          : CustomerStats.fromJson(
+              json['customerStats'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$StoreAnalyticsDTOToJson(StoreAnalyticsDTO instance) =>
+    <String, dynamic>{
+      'salesStats': instance.salesStats?.toJson(),
+      'productStats': instance.productStats?.toJson(),
+      'customerStats': instance.customerStats?.toJson(),
+    };
+
+PageStaking _$PageStakingFromJson(Map<String, dynamic> json) => PageStaking(
+      totalPages: (json['totalPages'] as num?)?.toInt(),
+      totalElements: (json['totalElements'] as num?)?.toInt(),
+      first: json['first'] as bool?,
+      last: json['last'] as bool?,
+      numberOfElements: (json['numberOfElements'] as num?)?.toInt(),
+      pageable: json['pageable'] == null
+          ? null
+          : PageableObject.fromJson(json['pageable'] as Map<String, dynamic>),
+      size: (json['size'] as num?)?.toInt(),
+      content: (json['content'] as List<dynamic>?)
+              ?.map((e) => Staking.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      number: (json['number'] as num?)?.toInt(),
+      sort: json['sort'] == null
+          ? null
+          : SortObject.fromJson(json['sort'] as Map<String, dynamic>),
+      empty: json['empty'] as bool?,
+    );
+
+Map<String, dynamic> _$PageStakingToJson(PageStaking instance) =>
+    <String, dynamic>{
+      'totalPages': instance.totalPages,
+      'totalElements': instance.totalElements,
+      'first': instance.first,
+      'last': instance.last,
+      'numberOfElements': instance.numberOfElements,
+      'pageable': instance.pageable?.toJson(),
+      'size': instance.size,
+      'content': instance.content?.map((e) => e.toJson()).toList(),
+      'number': instance.number,
+      'sort': instance.sort?.toJson(),
+      'empty': instance.empty,
+    };
+
+PageRecharge _$PageRechargeFromJson(Map<String, dynamic> json) => PageRecharge(
+      totalPages: (json['totalPages'] as num?)?.toInt(),
+      totalElements: (json['totalElements'] as num?)?.toInt(),
+      first: json['first'] as bool?,
+      last: json['last'] as bool?,
+      numberOfElements: (json['numberOfElements'] as num?)?.toInt(),
+      pageable: json['pageable'] == null
+          ? null
+          : PageableObject.fromJson(json['pageable'] as Map<String, dynamic>),
+      size: (json['size'] as num?)?.toInt(),
+      content: (json['content'] as List<dynamic>?)
+              ?.map((e) => Recharge.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      number: (json['number'] as num?)?.toInt(),
+      sort: json['sort'] == null
+          ? null
+          : SortObject.fromJson(json['sort'] as Map<String, dynamic>),
+      empty: json['empty'] as bool?,
+    );
+
+Map<String, dynamic> _$PageRechargeToJson(PageRecharge instance) =>
+    <String, dynamic>{
+      'totalPages': instance.totalPages,
+      'totalElements': instance.totalElements,
+      'first': instance.first,
+      'last': instance.last,
+      'numberOfElements': instance.numberOfElements,
+      'pageable': instance.pageable?.toJson(),
+      'size': instance.size,
+      'content': instance.content?.map((e) => e.toJson()).toList(),
+      'number': instance.number,
+      'sort': instance.sort?.toJson(),
+      'empty': instance.empty,
+    };
+
+ProductSeachParam _$ProductSeachParamFromJson(Map<String, dynamic> json) =>
+    ProductSeachParam(
+      id: json['id'] as String?,
+      sellerId: (json['sellerId'] as num?)?.toInt(),
+      status: productSeachParamStatusNullableFromJson(json['status']),
+      category: productSeachParamCategoryNullableFromJson(json['category']),
+      startDate: json['startDate'] == null
+          ? null
+          : DateTime.parse(json['startDate'] as String),
+      endDate: json['endDate'] == null
+          ? null
+          : DateTime.parse(json['endDate'] as String),
+      page: (json['page'] as num?)?.toInt(),
+      size: (json['size'] as num?)?.toInt(),
+      postalCode: json['postalCode'] as String?,
+      longitude: (json['longitude'] as num?)?.toDouble(),
+      latitude: (json['latitude'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$ProductSeachParamToJson(ProductSeachParam instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'sellerId': instance.sellerId,
+      'status': productSeachParamStatusNullableToJson(instance.status),
+      'category': productSeachParamCategoryNullableToJson(instance.category),
+      'startDate': instance.startDate?.toIso8601String(),
+      'endDate': instance.endDate?.toIso8601String(),
+      'page': instance.page,
+      'size': instance.size,
+      'postalCode': instance.postalCode,
+      'longitude': instance.longitude,
+      'latitude': instance.latitude,
+    };
+
+Order _$OrderFromJson(Map<String, dynamic> json) => Order(
+      id: json['id'] as String?,
+      productId: (json['productId'] as num?)?.toInt(),
+      buyerId: (json['buyerId'] as num?)?.toInt(),
+      sellerId: (json['sellerId'] as num?)?.toInt(),
+      shippingFee: (json['shippingFee'] as num?)?.toDouble(),
+      productPrice: (json['productPrice'] as num?)?.toDouble(),
+      orderAmount: (json['orderAmount'] as num?)?.toDouble(),
+      currency: json['currency'] as String?,
+      status: orderStatusNullableFromJson(json['status']),
+      remark: json['remark'] as String?,
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
+      updatedAt: json['updatedAt'] == null
+          ? null
+          : DateTime.parse(json['updatedAt'] as String),
+      cancelledAt: json['cancelledAt'] == null
+          ? null
+          : DateTime.parse(json['cancelledAt'] as String),
+      refundedAt: json['refundedAt'] == null
+          ? null
+          : DateTime.parse(json['refundedAt'] as String),
+      product: json['product'] == null
+          ? null
+          : Product.fromJson(json['product'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
+      'id': instance.id,
+      'productId': instance.productId,
+      'buyerId': instance.buyerId,
+      'sellerId': instance.sellerId,
+      'shippingFee': instance.shippingFee,
+      'productPrice': instance.productPrice,
+      'orderAmount': instance.orderAmount,
+      'currency': instance.currency,
+      'status': orderStatusNullableToJson(instance.status),
+      'remark': instance.remark,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
+      'cancelledAt': instance.cancelledAt?.toIso8601String(),
+      'refundedAt': instance.refundedAt?.toIso8601String(),
+      'product': instance.product?.toJson(),
+    };
+
+OrderQueryResult _$OrderQueryResultFromJson(Map<String, dynamic> json) =>
+    OrderQueryResult(
+      order: json['order'] == null
+          ? null
+          : Order.fromJson(json['order'] as Map<String, dynamic>),
+      deliveryDetail: json['deliveryDetail'] == null
+          ? null
+          : DeliveryDetail.fromJson(
+              json['deliveryDetail'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$OrderQueryResultToJson(OrderQueryResult instance) =>
+    <String, dynamic>{
+      'order': instance.order?.toJson(),
+      'deliveryDetail': instance.deliveryDetail?.toJson(),
+    };
+
+OrderSearchParam _$OrderSearchParamFromJson(Map<String, dynamic> json) =>
+    OrderSearchParam(
+      orderId: json['orderId'] as String?,
+      buyerId: (json['buyerId'] as num?)?.toInt(),
+      sellerId: (json['sellerId'] as num?)?.toInt(),
+      productId: (json['productId'] as num?)?.toInt(),
+      status: json['status'] as String?,
+      startTime: json['startTime'] as String?,
+      endTime: json['endTime'] as String?,
+      startDate: json['startDate'] == null
+          ? null
+          : DateTime.parse(json['startDate'] as String),
+      endDate: json['endDate'] == null
+          ? null
+          : DateTime.parse(json['endDate'] as String),
+      page: (json['page'] as num?)?.toInt(),
+      size: (json['size'] as num?)?.toInt(),
+    );
+
+Map<String, dynamic> _$OrderSearchParamToJson(OrderSearchParam instance) =>
+    <String, dynamic>{
+      'orderId': instance.orderId,
+      'buyerId': instance.buyerId,
+      'sellerId': instance.sellerId,
+      'productId': instance.productId,
+      'status': instance.status,
+      'startTime': instance.startTime,
+      'endTime': instance.endTime,
+      'startDate': instance.startDate?.toIso8601String(),
+      'endDate': instance.endDate?.toIso8601String(),
+      'page': instance.page,
+      'size': instance.size,
+    };
+
+PageOrder _$PageOrderFromJson(Map<String, dynamic> json) => PageOrder(
+      totalPages: (json['totalPages'] as num?)?.toInt(),
+      totalElements: (json['totalElements'] as num?)?.toInt(),
+      first: json['first'] as bool?,
+      last: json['last'] as bool?,
+      numberOfElements: (json['numberOfElements'] as num?)?.toInt(),
+      pageable: json['pageable'] == null
+          ? null
+          : PageableObject.fromJson(json['pageable'] as Map<String, dynamic>),
+      size: (json['size'] as num?)?.toInt(),
+      content: (json['content'] as List<dynamic>?)
+              ?.map((e) => Order.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      number: (json['number'] as num?)?.toInt(),
+      sort: json['sort'] == null
+          ? null
+          : SortObject.fromJson(json['sort'] as Map<String, dynamic>),
+      empty: json['empty'] as bool?,
+    );
+
+Map<String, dynamic> _$PageOrderToJson(PageOrder instance) => <String, dynamic>{
+      'totalPages': instance.totalPages,
+      'totalElements': instance.totalElements,
+      'first': instance.first,
+      'last': instance.last,
+      'numberOfElements': instance.numberOfElements,
+      'pageable': instance.pageable?.toJson(),
+      'size': instance.size,
+      'content': instance.content?.map((e) => e.toJson()).toList(),
+      'number': instance.number,
+      'sort': instance.sort?.toJson(),
+      'empty': instance.empty,
+    };
+
+DisputeQueryResult _$DisputeQueryResultFromJson(Map<String, dynamic> json) =>
+    DisputeQueryResult(
+      dispute: json['dispute'] == null
+          ? null
+          : Dispute.fromJson(json['dispute'] as Map<String, dynamic>),
+      order: json['order'] == null
+          ? null
+          : Order.fromJson(json['order'] as Map<String, dynamic>),
+      buyerId: (json['buyerId'] as num?)?.toInt(),
+      buyerName: json['buyerName'] as String?,
+      sellerId: (json['sellerId'] as num?)?.toInt(),
+      sellerName: json['sellerName'] as String?,
+      type: disputeQueryResultTypeNullableFromJson(json['type']),
+      status: disputeQueryResultStatusNullableFromJson(json['status']),
+      description: json['description'] as String?,
+      adminComment: json['adminComment'] as String?,
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
+      resolvedAt: json['resolvedAt'] == null
+          ? null
+          : DateTime.parse(json['resolvedAt'] as String),
+    );
+
+Map<String, dynamic> _$DisputeQueryResultToJson(DisputeQueryResult instance) =>
+    <String, dynamic>{
+      'dispute': instance.dispute?.toJson(),
+      'order': instance.order?.toJson(),
+      'buyerId': instance.buyerId,
+      'buyerName': instance.buyerName,
+      'sellerId': instance.sellerId,
+      'sellerName': instance.sellerName,
+      'type': disputeQueryResultTypeNullableToJson(instance.type),
+      'status': disputeQueryResultStatusNullableToJson(instance.status),
+      'description': instance.description,
+      'adminComment': instance.adminComment,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'resolvedAt': instance.resolvedAt?.toIso8601String(),
+    };
+
+PageDispute _$PageDisputeFromJson(Map<String, dynamic> json) => PageDispute(
+      totalPages: (json['totalPages'] as num?)?.toInt(),
+      totalElements: (json['totalElements'] as num?)?.toInt(),
+      first: json['first'] as bool?,
+      last: json['last'] as bool?,
+      numberOfElements: (json['numberOfElements'] as num?)?.toInt(),
+      pageable: json['pageable'] == null
+          ? null
+          : PageableObject.fromJson(json['pageable'] as Map<String, dynamic>),
+      size: (json['size'] as num?)?.toInt(),
+      content: (json['content'] as List<dynamic>?)
+              ?.map((e) => Dispute.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      number: (json['number'] as num?)?.toInt(),
+      sort: json['sort'] == null
+          ? null
+          : SortObject.fromJson(json['sort'] as Map<String, dynamic>),
+      empty: json['empty'] as bool?,
+    );
+
+Map<String, dynamic> _$PageDisputeToJson(PageDispute instance) =>
+    <String, dynamic>{
+      'totalPages': instance.totalPages,
+      'totalElements': instance.totalElements,
+      'first': instance.first,
+      'last': instance.last,
+      'numberOfElements': instance.numberOfElements,
+      'pageable': instance.pageable?.toJson(),
+      'size': instance.size,
+      'content': instance.content?.map((e) => e.toJson()).toList(),
+      'number': instance.number,
+      'sort': instance.sort?.toJson(),
+      'empty': instance.empty,
+    };
+
+PageColdWallet _$PageColdWalletFromJson(Map<String, dynamic> json) =>
+    PageColdWallet(
+      totalPages: (json['totalPages'] as num?)?.toInt(),
+      totalElements: (json['totalElements'] as num?)?.toInt(),
+      first: json['first'] as bool?,
+      last: json['last'] as bool?,
+      numberOfElements: (json['numberOfElements'] as num?)?.toInt(),
+      pageable: json['pageable'] == null
+          ? null
+          : PageableObject.fromJson(json['pageable'] as Map<String, dynamic>),
+      size: (json['size'] as num?)?.toInt(),
+      content: (json['content'] as List<dynamic>?)
+              ?.map((e) => ColdWallet.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      number: (json['number'] as num?)?.toInt(),
+      sort: json['sort'] == null
+          ? null
+          : SortObject.fromJson(json['sort'] as Map<String, dynamic>),
+      empty: json['empty'] as bool?,
+    );
+
+Map<String, dynamic> _$PageColdWalletToJson(PageColdWallet instance) =>
+    <String, dynamic>{
+      'totalPages': instance.totalPages,
+      'totalElements': instance.totalElements,
+      'first': instance.first,
+      'last': instance.last,
+      'numberOfElements': instance.numberOfElements,
+      'pageable': instance.pageable?.toJson(),
+      'size': instance.size,
+      'content': instance.content?.map((e) => e.toJson()).toList(),
+      'number': instance.number,
+      'sort': instance.sort?.toJson(),
+      'empty': instance.empty,
+    };
+
+ChatSessionQueryParam _$ChatSessionQueryParamFromJson(
+        Map<String, dynamic> json) =>
+    ChatSessionQueryParam(
+      userId: (json['userId'] as num?)?.toInt(),
+      unreadOnly: json['unreadOnly'] as bool?,
+      pinnedOnly: json['pinnedOnly'] as bool?,
+      page: (json['page'] as num?)?.toInt(),
+      size: (json['size'] as num?)?.toInt(),
+    );
+
+Map<String, dynamic> _$ChatSessionQueryParamToJson(
+        ChatSessionQueryParam instance) =>
+    <String, dynamic>{
+      'userId': instance.userId,
+      'unreadOnly': instance.unreadOnly,
+      'pinnedOnly': instance.pinnedOnly,
+      'page': instance.page,
+      'size': instance.size,
+    };
+
+PageChatSession _$PageChatSessionFromJson(Map<String, dynamic> json) =>
+    PageChatSession(
+      totalPages: (json['totalPages'] as num?)?.toInt(),
+      totalElements: (json['totalElements'] as num?)?.toInt(),
+      first: json['first'] as bool?,
+      last: json['last'] as bool?,
+      numberOfElements: (json['numberOfElements'] as num?)?.toInt(),
+      pageable: json['pageable'] == null
+          ? null
+          : PageableObject.fromJson(json['pageable'] as Map<String, dynamic>),
+      size: (json['size'] as num?)?.toInt(),
+      content: (json['content'] as List<dynamic>?)
+              ?.map((e) => ChatSession.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      number: (json['number'] as num?)?.toInt(),
+      sort: json['sort'] == null
+          ? null
+          : SortObject.fromJson(json['sort'] as Map<String, dynamic>),
+      empty: json['empty'] as bool?,
+    );
+
+Map<String, dynamic> _$PageChatSessionToJson(PageChatSession instance) =>
+    <String, dynamic>{
+      'totalPages': instance.totalPages,
+      'totalElements': instance.totalElements,
+      'first': instance.first,
+      'last': instance.last,
+      'numberOfElements': instance.numberOfElements,
+      'pageable': instance.pageable?.toJson(),
+      'size': instance.size,
+      'content': instance.content?.map((e) => e.toJson()).toList(),
+      'number': instance.number,
+      'sort': instance.sort?.toJson(),
+      'empty': instance.empty,
+    };
+
+ChatMessageQueryParam _$ChatMessageQueryParamFromJson(
+        Map<String, dynamic> json) =>
+    ChatMessageQueryParam(
+      userId: (json['userId'] as num?)?.toInt(),
+      chatWithUserId: (json['chatWithUserId'] as num?)?.toInt(),
+      startTime: json['startTime'] == null
+          ? null
+          : DateTime.parse(json['startTime'] as String),
+      endTime: json['endTime'] == null
+          ? null
+          : DateTime.parse(json['endTime'] as String),
+      unreadOnly: json['unreadOnly'] as bool?,
+      page: (json['page'] as num?)?.toInt(),
+      size: (json['size'] as num?)?.toInt(),
+    );
+
+Map<String, dynamic> _$ChatMessageQueryParamToJson(
+        ChatMessageQueryParam instance) =>
+    <String, dynamic>{
+      'userId': instance.userId,
+      'chatWithUserId': instance.chatWithUserId,
+      'startTime': instance.startTime?.toIso8601String(),
+      'endTime': instance.endTime?.toIso8601String(),
+      'unreadOnly': instance.unreadOnly,
+      'page': instance.page,
+      'size': instance.size,
+    };
+
+PageChatMessage _$PageChatMessageFromJson(Map<String, dynamic> json) =>
+    PageChatMessage(
+      totalPages: (json['totalPages'] as num?)?.toInt(),
+      totalElements: (json['totalElements'] as num?)?.toInt(),
+      first: json['first'] as bool?,
+      last: json['last'] as bool?,
+      numberOfElements: (json['numberOfElements'] as num?)?.toInt(),
+      pageable: json['pageable'] == null
+          ? null
+          : PageableObject.fromJson(json['pageable'] as Map<String, dynamic>),
+      size: (json['size'] as num?)?.toInt(),
+      content: (json['content'] as List<dynamic>?)
+              ?.map((e) => ChatMessage.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      number: (json['number'] as num?)?.toInt(),
+      sort: json['sort'] == null
+          ? null
+          : SortObject.fromJson(json['sort'] as Map<String, dynamic>),
+      empty: json['empty'] as bool?,
+    );
+
+Map<String, dynamic> _$PageChatMessageToJson(PageChatMessage instance) =>
+    <String, dynamic>{
+      'totalPages': instance.totalPages,
+      'totalElements': instance.totalElements,
+      'first': instance.first,
+      'last': instance.last,
+      'numberOfElements': instance.numberOfElements,
+      'pageable': instance.pageable?.toJson(),
+      'size': instance.size,
+      'content': instance.content?.map((e) => e.toJson()).toList(),
+      'number': instance.number,
+      'sort': instance.sort?.toJson(),
+      'empty': instance.empty,
+    };
+
+PageCartItem _$PageCartItemFromJson(Map<String, dynamic> json) => PageCartItem(
+      totalPages: (json['totalPages'] as num?)?.toInt(),
+      totalElements: (json['totalElements'] as num?)?.toInt(),
+      first: json['first'] as bool?,
+      last: json['last'] as bool?,
+      numberOfElements: (json['numberOfElements'] as num?)?.toInt(),
+      pageable: json['pageable'] == null
+          ? null
+          : PageableObject.fromJson(json['pageable'] as Map<String, dynamic>),
+      size: (json['size'] as num?)?.toInt(),
+      content: (json['content'] as List<dynamic>?)
+              ?.map((e) => CartItem.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      number: (json['number'] as num?)?.toInt(),
+      sort: json['sort'] == null
+          ? null
+          : SortObject.fromJson(json['sort'] as Map<String, dynamic>),
+      empty: json['empty'] as bool?,
+    );
+
+Map<String, dynamic> _$PageCartItemToJson(PageCartItem instance) =>
+    <String, dynamic>{
+      'totalPages': instance.totalPages,
+      'totalElements': instance.totalElements,
+      'first': instance.first,
+      'last': instance.last,
+      'numberOfElements': instance.numberOfElements,
+      'pageable': instance.pageable?.toJson(),
+      'size': instance.size,
+      'content': instance.content?.map((e) => e.toJson()).toList(),
+      'number': instance.number,
+      'sort': instance.sort?.toJson(),
+      'empty': instance.empty,
+    };
+
+UserInfo _$UserInfoFromJson(Map<String, dynamic> json) => UserInfo(
+      id: (json['id'] as num?)?.toInt(),
+      username: json['username'] as String?,
+      email: json['email'] as String?,
+      role: json['role'] as String?,
+      balance: (json['balance'] as num?)?.toDouble(),
+      stackingBalance: (json['stackingBalance'] as num?)?.toDouble(),
+      enabled: json['enabled'] as bool?,
+      queryTime: json['queryTime'] == null
+          ? null
+          : DateTime.parse(json['queryTime'] as String),
+    );
+
+Map<String, dynamic> _$UserInfoToJson(UserInfo instance) => <String, dynamic>{
+      'id': instance.id,
+      'username': instance.username,
+      'email': instance.email,
+      'role': instance.role,
+      'balance': instance.balance,
+      'stackingBalance': instance.stackingBalance,
+      'enabled': instance.enabled,
+      'queryTime': instance.queryTime?.toIso8601String(),
+    };
+
+OrderStatisticsDTO _$OrderStatisticsDTOFromJson(Map<String, dynamic> json) =>
+    OrderStatisticsDTO(
+      totalOrders: (json['totalOrders'] as num?)?.toInt(),
+      totalAmount: (json['totalAmount'] as num?)?.toDouble(),
+      averageOrderAmount: (json['averageOrderAmount'] as num?)?.toDouble(),
+      ordersByStatus: json['ordersByStatus'] as Map<String, dynamic>?,
+      topProducts: (json['topProducts'] as List<dynamic>?)
+              ?.map((e) => TopProductDTO.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      topSellers: (json['topSellers'] as List<dynamic>?)
+              ?.map((e) => TopSellerDTO.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$OrderStatisticsDTOToJson(OrderStatisticsDTO instance) =>
+    <String, dynamic>{
+      'totalOrders': instance.totalOrders,
+      'totalAmount': instance.totalAmount,
+      'averageOrderAmount': instance.averageOrderAmount,
+      'ordersByStatus': instance.ordersByStatus,
+      'topProducts': instance.topProducts?.map((e) => e.toJson()).toList(),
+      'topSellers': instance.topSellers?.map((e) => e.toJson()).toList(),
+    };
+
+TopProductDTO _$TopProductDTOFromJson(Map<String, dynamic> json) =>
+    TopProductDTO(
+      productId: (json['productId'] as num?)?.toInt(),
+      productName: json['productName'] as String?,
+      quantity: (json['quantity'] as num?)?.toInt(),
+      amount: (json['amount'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$TopProductDTOToJson(TopProductDTO instance) =>
+    <String, dynamic>{
+      'productId': instance.productId,
+      'productName': instance.productName,
+      'quantity': instance.quantity,
+      'amount': instance.amount,
+    };
+
+TopSellerDTO _$TopSellerDTOFromJson(Map<String, dynamic> json) => TopSellerDTO(
+      sellerId: (json['sellerId'] as num?)?.toInt(),
+      sellerName: json['sellerName'] as String?,
+      orderCount: (json['orderCount'] as num?)?.toInt(),
+      amount: (json['amount'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$TopSellerDTOToJson(TopSellerDTO instance) =>
+    <String, dynamic>{
+      'sellerId': instance.sellerId,
+      'sellerName': instance.sellerName,
+      'orderCount': instance.orderCount,
+      'amount': instance.amount,
+    };
+
+PageUser _$PageUserFromJson(Map<String, dynamic> json) => PageUser(
+      totalPages: (json['totalPages'] as num?)?.toInt(),
+      totalElements: (json['totalElements'] as num?)?.toInt(),
+      first: json['first'] as bool?,
+      last: json['last'] as bool?,
+      numberOfElements: (json['numberOfElements'] as num?)?.toInt(),
+      pageable: json['pageable'] == null
+          ? null
+          : PageableObject.fromJson(json['pageable'] as Map<String, dynamic>),
+      size: (json['size'] as num?)?.toInt(),
+      content: (json['content'] as List<dynamic>?)
+              ?.map((e) => User.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      number: (json['number'] as num?)?.toInt(),
+      sort: json['sort'] == null
+          ? null
+          : SortObject.fromJson(json['sort'] as Map<String, dynamic>),
+      empty: json['empty'] as bool?,
+    );
+
+Map<String, dynamic> _$PageUserToJson(PageUser instance) => <String, dynamic>{
+      'totalPages': instance.totalPages,
+      'totalElements': instance.totalElements,
+      'first': instance.first,
+      'last': instance.last,
+      'numberOfElements': instance.numberOfElements,
+      'pageable': instance.pageable?.toJson(),
+      'size': instance.size,
+      'content': instance.content?.map((e) => e.toJson()).toList(),
+      'number': instance.number,
+      'sort': instance.sort?.toJson(),
+      'empty': instance.empty,
+    };
+
+DisputeStatisticsDTO _$DisputeStatisticsDTOFromJson(
+        Map<String, dynamic> json) =>
+    DisputeStatisticsDTO(
+      totalDisputes: (json['totalDisputes'] as num?)?.toInt(),
+      disputesByStatus: json['disputesByStatus'] as Map<String, dynamic>?,
+      disputesByType: json['disputesByType'] as Map<String, dynamic>?,
+      averageResolutionTime:
+          (json['averageResolutionTime'] as num?)?.toDouble(),
+      totalRefundAmount: (json['totalRefundAmount'] as num?)?.toDouble(),
+      topDisputedProducts: (json['topDisputedProducts'] as List<dynamic>?)
+              ?.map((e) =>
+                  TopDisputedProductDTO.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      topDisputedSellers: (json['topDisputedSellers'] as List<dynamic>?)
+              ?.map((e) =>
+                  TopDisputedSellerDTO.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$DisputeStatisticsDTOToJson(
+        DisputeStatisticsDTO instance) =>
+    <String, dynamic>{
+      'totalDisputes': instance.totalDisputes,
+      'disputesByStatus': instance.disputesByStatus,
+      'disputesByType': instance.disputesByType,
+      'averageResolutionTime': instance.averageResolutionTime,
+      'totalRefundAmount': instance.totalRefundAmount,
+      'topDisputedProducts':
+          instance.topDisputedProducts?.map((e) => e.toJson()).toList(),
+      'topDisputedSellers':
+          instance.topDisputedSellers?.map((e) => e.toJson()).toList(),
+    };
+
+TopDisputedProductDTO _$TopDisputedProductDTOFromJson(
+        Map<String, dynamic> json) =>
+    TopDisputedProductDTO(
+      productId: (json['productId'] as num?)?.toInt(),
+      productName: json['productName'] as String?,
+      disputeCount: (json['disputeCount'] as num?)?.toInt(),
+      refundAmount: (json['refundAmount'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$TopDisputedProductDTOToJson(
+        TopDisputedProductDTO instance) =>
+    <String, dynamic>{
+      'productId': instance.productId,
+      'productName': instance.productName,
+      'disputeCount': instance.disputeCount,
+      'refundAmount': instance.refundAmount,
+    };
+
+TopDisputedSellerDTO _$TopDisputedSellerDTOFromJson(
+        Map<String, dynamic> json) =>
+    TopDisputedSellerDTO(
+      sellerId: (json['sellerId'] as num?)?.toInt(),
+      sellerName: json['sellerName'] as String?,
+      disputeCount: (json['disputeCount'] as num?)?.toInt(),
+      refundAmount: (json['refundAmount'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$TopDisputedSellerDTOToJson(
+        TopDisputedSellerDTO instance) =>
+    <String, dynamic>{
+      'sellerId': instance.sellerId,
+      'sellerName': instance.sellerName,
+      'disputeCount': instance.disputeCount,
+      'refundAmount': instance.refundAmount,
+    };
+
+CartSummaryDTO _$CartSummaryDTOFromJson(Map<String, dynamic> json) =>
+    CartSummaryDTO(
+      totalItems: (json['totalItems'] as num?)?.toInt(),
+      totalValue: (json['totalValue'] as num?)?.toDouble(),
+      averageCartValue: (json['averageCartValue'] as num?)?.toDouble(),
+      topProducts: (json['topProducts'] as List<dynamic>?)
+              ?.map((e) => TopProductDTO.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      lowStockWarnings: (json['lowStockWarnings'] as List<dynamic>?)
+              ?.map(
+                  (e) => LowStockWarningDTO.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$CartSummaryDTOToJson(CartSummaryDTO instance) =>
+    <String, dynamic>{
+      'totalItems': instance.totalItems,
+      'totalValue': instance.totalValue,
+      'averageCartValue': instance.averageCartValue,
+      'topProducts': instance.topProducts?.map((e) => e.toJson()).toList(),
+      'lowStockWarnings':
+          instance.lowStockWarnings?.map((e) => e.toJson()).toList(),
+    };
+
+LowStockWarningDTO _$LowStockWarningDTOFromJson(Map<String, dynamic> json) =>
+    LowStockWarningDTO(
+      productId: (json['productId'] as num?)?.toInt(),
+      currentStock: (json['currentStock'] as num?)?.toInt(),
+    );
+
+Map<String, dynamic> _$LowStockWarningDTOToJson(LowStockWarningDTO instance) =>
+    <String, dynamic>{
+      'productId': instance.productId,
+      'currentStock': instance.currentStock,
+    };

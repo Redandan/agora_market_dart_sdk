@@ -1,52 +1,6 @@
 $ErrorActionPreference = "Stop"
 
-Write-Host "Starting API code generation process..." -ForegroundColor Green
-
-# 檢查 Jabba 是否安裝
-Write-Host "Checking Jabba installation..." -ForegroundColor Yellow
-$jabbaPath = Get-Command jabba -ErrorAction SilentlyContinue
-if ($jabbaPath) {
-    Write-Host "Jabba is installed at: $($jabbaPath.Source)" -ForegroundColor Green
-} else {
-    Write-Host "Error: Jabba is not installed. Please install Jabba first." -ForegroundColor Red
-    Write-Host "You can install Jabba from: https://github.com/shyiko/jabba" -ForegroundColor Yellow
-    exit 1
-}
-
-# 切換到 Java 17
-Write-Host "Switching to Java 17..." -ForegroundColor Yellow
-try {
-    jabba use openjdk@1.17.0
-    if ($LASTEXITCODE -ne 0) {
-        Write-Host "Error switching to Java 17" -ForegroundColor Red
-        Write-Host "Trying to install Java 17..." -ForegroundColor Yellow
-        jabba install openjdk@1.17.0
-        jabba use openjdk@1.17.0
-        if ($LASTEXITCODE -ne 0) {
-            Write-Host "Failed to install and switch to Java 17" -ForegroundColor Red
-            exit 1
-        }
-    }
-    Write-Host "Successfully switched to Java 17" -ForegroundColor Green
-} catch {
-    Write-Host "Error during Java version switch: $_" -ForegroundColor Red
-    exit 1
-}
-
-# 檢查 openapi-generator-cli.jar 文件
-Write-Host "Checking openapi-generator-cli.jar..." -ForegroundColor Yellow
-$generatorPath = "openapi-generator-cli.jar"
-if (-not (Test-Path $generatorPath)) {
-    Write-Host "Downloading OpenAPI Generator CLI..." -ForegroundColor Yellow
-    try {
-        $url = "https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.13.0/openapi-generator-cli-7.13.0.jar"
-        Invoke-WebRequest -Uri $url -OutFile $generatorPath
-        Write-Host "Downloaded OpenAPI Generator CLI" -ForegroundColor Green
-    } catch {
-        Write-Host "Error downloading OpenAPI Generator CLI: $_" -ForegroundColor Red
-        exit 1
-    }
-}
+Write-Host "Starting modern Dart SDK code generation process..." -ForegroundColor Green
 
 # 檢查 swagger.yaml 文件
 Write-Host "Checking swagger.yaml file..." -ForegroundColor Yellow
@@ -56,6 +10,31 @@ if (-not (Test-Path $swaggerPath)) {
     exit 1
 }
 Write-Host "Found swagger.yaml at $swaggerPath" -ForegroundColor Green
+
+# 檢查 build.yaml 文件
+Write-Host "Checking build.yaml file..." -ForegroundColor Yellow
+$buildYamlPath = "build.yaml"
+if (-not (Test-Path $buildYamlPath)) {
+    Write-Host "Creating build.yaml..." -ForegroundColor Yellow
+    @"
+targets:
+  `$default:
+    builders:
+      swagger_dart_code_generator:
+        options:
+          input_folder: lib/api
+          output_folder: lib/generated
+          with_freezed: true
+          generate_extra_models: true
+          nullable_fields: true
+          with_enum_extensions: true
+          include_paths:
+            - swagger.yaml
+"@ | Set-Content $buildYamlPath -Encoding UTF8
+    Write-Host "Created build.yaml" -ForegroundColor Green
+} else {
+    Write-Host "Found build.yaml at $buildYamlPath" -ForegroundColor Green
+}
 
 # 清理舊的生成文件
 Write-Host "Cleaning old generated files..." -ForegroundColor Yellow
@@ -68,47 +47,25 @@ if (Test-Path "lib/generated") {
     }
 }
 
-# 執行代碼生成
-Write-Host "Running code generation..." -ForegroundColor Yellow
+# 執行 build_runner 生成代碼
+Write-Host "Running build_runner to generate Dart SDK..." -ForegroundColor Yellow
 try {
-    $result = java -jar openapi-generator-cli.jar generate `
-        -i lib/api/swagger.yaml `
-        -g dart-dio `
-        -o lib/generated `
-        --additional-properties=pubName=agora_market_dart_sdk,pubVersion=1.0.0,pubDescription="A Dart SDK for AgoraMarket API",useEnumExtension=true,enumUnknownDefaultCase=true,typeMappings=object=dynamic,array=List,string=String,integer=int,number=num,boolean=bool,date=DateTime,date-time=DateTime,modelPropertyNaming=snake_case,serializationLibrary=json_serializable,dateLibrary=core,nullableFields=true,useFreezed=true,useJsonSerializable=true,useOneOf=true,useAnyOf=true
+    dart pub get
+    dart run build_runner build --delete-conflicting-outputs
 
     if ($LASTEXITCODE -eq 0) {
         Write-Host "Code generation completed successfully!" -ForegroundColor Green
-        if (Test-Path "lib/generated") {
-            $generatedFiles = Get-ChildItem -Path "lib/generated" -Recurse -File
-            Write-Host "Generated files:" -ForegroundColor Green
-            foreach ($file in $generatedFiles) {
-                Write-Host "  - $($file.FullName)" -ForegroundColor Cyan
-            }
-            Write-Host "`nRunning build_runner..." -ForegroundColor Yellow
-            try {
-                Push-Location "lib/generated"
-                dart run build_runner build
-                if ($LASTEXITCODE -eq 0) {
-                    Write-Host "build_runner completed successfully!" -ForegroundColor Green
-                } else {
-                    Write-Host "build_runner completed with warnings or errors. Please check the output above." -ForegroundColor Yellow
-                }
-                Pop-Location
-            } catch {
-                Write-Host "Error during build_runner execution: $_" -ForegroundColor Red
-                Pop-Location
-                exit 1
-            }
-        } else {
-            Write-Host "Warning: No generated files found in lib/generated" -ForegroundColor Yellow
+        $generatedFiles = Get-ChildItem -Path "lib/generated" -Recurse -File
+        Write-Host "Generated files:" -ForegroundColor Green
+        foreach ($file in $generatedFiles) {
+            Write-Host "  - $($file.FullName)" -ForegroundColor Cyan
         }
     } else {
-        Write-Host "Code generation completed with warnings or errors. Please check the output above." -ForegroundColor Yellow
+        Write-Host "build_runner completed with warnings or errors. Please check the output above." -ForegroundColor Yellow
     }
 } catch {
-    Write-Host "Error during code generation: $_" -ForegroundColor Red
+    Write-Host "Error during build_runner execution: $_" -ForegroundColor Red
     exit 1
 }
 
-Write-Host "`nProcess completed!" -ForegroundColor Green 
+Write-Host "`nProcess completed!" -ForegroundColor Green

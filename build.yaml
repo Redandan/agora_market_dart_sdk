@@ -1,0 +1,13 @@
+﻿targets:
+  $default:
+    builders:
+      swagger_dart_code_generator:
+        options:
+          input_folder: lib/api
+          output_folder: lib/generated
+          with_freezed: true
+          generate_extra_models: true
+          nullable_fields: true
+          with_enum_extensions: true
+          include_paths:
+            - swagger.yaml
