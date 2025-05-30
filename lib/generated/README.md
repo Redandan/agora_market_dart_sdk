@@ -249,7 +249,6 @@ Class | Method | HTTP request | Description
  - [TopSellerDTO](doc/TopSellerDTO.md)
  - [Transaction](doc/Transaction.md)
  - [UpdateDeliveryOrderParam](doc/UpdateDeliveryOrderParam.md)
- - [UploadFileRequest](doc/UploadFileRequest.md)
  - [User](doc/User.md)
  - [UserInfo](doc/UserInfo.md)
  - [Withdraw](doc/Withdraw.md)

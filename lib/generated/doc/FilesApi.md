@@ -138,7 +138,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **uploadFile**
-> uploadFile(uploadFileRequest)
+> uploadFile(file)
 
 上傳文件
 
@@ -147,10 +147,10 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api = AgoraMarketDartSdk().getFilesApi();
-final UploadFileRequest uploadFileRequest = ; // UploadFileRequest | 
+final MultipartFile file = BINARY_DATA_HERE; // MultipartFile | 
 
 try {
-    api.uploadFile(uploadFileRequest);
+    api.uploadFile(file);
 } catch on DioException (e) {
     print('Exception when calling FilesApi->uploadFile: $e\n');
 }
@@ -160,7 +160,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **uploadFileRequest** | [**UploadFileRequest**](UploadFileRequest.md)|  | [optional] 
+ **file** | **MultipartFile**|  | 
 
 ### Return type
 
@@ -172,7 +172,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

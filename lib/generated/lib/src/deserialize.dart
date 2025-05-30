@@ -64,7 +64,6 @@ import 'package:agora_market_dart_sdk/src/model/top_product_dto.dart';
 import 'package:agora_market_dart_sdk/src/model/top_seller_dto.dart';
 import 'package:agora_market_dart_sdk/src/model/transaction.dart';
 import 'package:agora_market_dart_sdk/src/model/update_delivery_order_param.dart';
-import 'package:agora_market_dart_sdk/src/model/upload_file_request.dart';
 import 'package:agora_market_dart_sdk/src/model/user.dart';
 import 'package:agora_market_dart_sdk/src/model/user_info.dart';
 import 'package:agora_market_dart_sdk/src/model/withdraw.dart';
@@ -219,8 +218,6 @@ final _regMap = RegExp(r'^Map<String,(.*)>$');
           return Transaction.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'UpdateDeliveryOrderParam':
           return UpdateDeliveryOrderParam.fromJson(value as Map<String, dynamic>) as ReturnType;
-        case 'UploadFileRequest':
-          return UploadFileRequest.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'User':
           return User.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'UserInfo':

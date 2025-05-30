@@ -7,6 +7,11 @@ void main() {
   // TODO add properties to the entity
 
   group(SortObject, () {
+    // bool sorted
+    test('to test the property `sorted`', () async {
+      // TODO
+    });
+
     // bool unsorted
     test('to test the property `unsorted`', () async {
       // TODO
@@ -14,11 +19,6 @@ void main() {
 
     // bool empty
     test('to test the property `empty`', () async {
-      // TODO
-    });
-
-    // bool sorted
-    test('to test the property `sorted`', () async {
       // TODO
     });
 

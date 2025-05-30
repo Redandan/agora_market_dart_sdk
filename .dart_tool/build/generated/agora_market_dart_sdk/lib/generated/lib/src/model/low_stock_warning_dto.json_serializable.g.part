@@ -1,0 +1,23 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+LowStockWarningDTO _$LowStockWarningDTOFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      'LowStockWarningDTO',
+      json,
+      ($checkedConvert) {
+        final val = LowStockWarningDTO(
+          productId: $checkedConvert('productId', (v) => (v as num?)?.toInt()),
+          currentStock:
+              $checkedConvert('currentStock', (v) => (v as num?)?.toInt()),
+        );
+        return val;
+      },
+    );
+
+Map<String, dynamic> _$LowStockWarningDTOToJson(LowStockWarningDTO instance) =>
+    <String, dynamic>{
+      if (instance.productId case final value?) 'productId': value,
+      if (instance.currentStock case final value?) 'currentStock': value,
+    };

@@ -31,6 +31,8 @@ class PageWithdraw {
 
      this.numberOfElements,
 
+     this.pageable,
+
      this.size,
 
      this.content,
@@ -38,8 +40,6 @@ class PageWithdraw {
      this.number,
 
      this.sort,
-
-     this.pageable,
 
      this.empty,
   });
@@ -106,6 +106,18 @@ class PageWithdraw {
 
   @JsonKey(
     
+    name: r'pageable',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final PageableObject? pageable;
+
+
+
+  @JsonKey(
+    
     name: r'size',
     required: false,
     includeIfNull: false,
@@ -154,18 +166,6 @@ class PageWithdraw {
 
   @JsonKey(
     
-    name: r'pageable',
-    required: false,
-    includeIfNull: false,
-  )
-
-
-  final PageableObject? pageable;
-
-
-
-  @JsonKey(
-    
     name: r'empty',
     required: false,
     includeIfNull: false,
@@ -185,11 +185,11 @@ class PageWithdraw {
       other.first == first &&
       other.last == last &&
       other.numberOfElements == numberOfElements &&
+      other.pageable == pageable &&
       other.size == size &&
       other.content == content &&
       other.number == number &&
       other.sort == sort &&
-      other.pageable == pageable &&
       other.empty == empty;
 
     @override
@@ -199,11 +199,11 @@ class PageWithdraw {
         first.hashCode +
         last.hashCode +
         numberOfElements.hashCode +
+        pageable.hashCode +
         size.hashCode +
         content.hashCode +
         number.hashCode +
         sort.hashCode +
-        pageable.hashCode +
         empty.hashCode;
 
   factory PageWithdraw.fromJson(Map<String, dynamic> json) => _$PageWithdrawFromJson(json);

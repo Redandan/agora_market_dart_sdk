@@ -96,7 +96,6 @@ export 'package:agora_market_dart_sdk/src/model/top_product_dto.dart';
 export 'package:agora_market_dart_sdk/src/model/top_seller_dto.dart';
 export 'package:agora_market_dart_sdk/src/model/transaction.dart';
 export 'package:agora_market_dart_sdk/src/model/update_delivery_order_param.dart';
-export 'package:agora_market_dart_sdk/src/model/upload_file_request.dart';
 export 'package:agora_market_dart_sdk/src/model/user.dart';
 export 'package:agora_market_dart_sdk/src/model/user_info.dart';
 export 'package:agora_market_dart_sdk/src/model/withdraw.dart';

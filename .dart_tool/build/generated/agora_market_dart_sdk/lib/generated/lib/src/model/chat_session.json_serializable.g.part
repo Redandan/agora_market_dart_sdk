@@ -1,0 +1,51 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+ChatSession _$ChatSessionFromJson(Map<String, dynamic> json) => $checkedCreate(
+      'ChatSession',
+      json,
+      ($checkedConvert) {
+        final val = ChatSession(
+          id: $checkedConvert('id', (v) => (v as num?)?.toInt()),
+          userId: $checkedConvert('userId', (v) => (v as num?)?.toInt()),
+          partnerId: $checkedConvert('partnerId', (v) => (v as num?)?.toInt()),
+          unreadCount:
+              $checkedConvert('unreadCount', (v) => (v as num?)?.toInt()),
+          latestMessageId:
+              $checkedConvert('latestMessageId', (v) => (v as num?)?.toInt()),
+          latestMessageTime: $checkedConvert('latestMessageTime',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+          pinned: $checkedConvert('pinned', (v) => v as bool?),
+          partnerName: $checkedConvert('partnerName', (v) => v as String?),
+          partnerAvatar: $checkedConvert('partnerAvatar', (v) => v as String?),
+          latestMessageContent:
+              $checkedConvert('latestMessageContent', (v) => v as String?),
+          createdAt: $checkedConvert('createdAt',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+          updatedAt: $checkedConvert('updatedAt',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+        );
+        return val;
+      },
+    );
+
+Map<String, dynamic> _$ChatSessionToJson(ChatSession instance) =>
+    <String, dynamic>{
+      if (instance.id case final value?) 'id': value,
+      if (instance.userId case final value?) 'userId': value,
+      if (instance.partnerId case final value?) 'partnerId': value,
+      if (instance.unreadCount case final value?) 'unreadCount': value,
+      if (instance.latestMessageId case final value?) 'latestMessageId': value,
+      if (instance.latestMessageTime?.toIso8601String() case final value?)
+        'latestMessageTime': value,
+      if (instance.pinned case final value?) 'pinned': value,
+      if (instance.partnerName case final value?) 'partnerName': value,
+      if (instance.partnerAvatar case final value?) 'partnerAvatar': value,
+      if (instance.latestMessageContent case final value?)
+        'latestMessageContent': value,
+      if (instance.createdAt?.toIso8601String() case final value?)
+        'createdAt': value,
+      if (instance.updatedAt?.toIso8601String() case final value?)
+        'updatedAt': value,
+    };

@@ -20,6 +20,11 @@ PageRecharge _$PageRechargeFromJson(Map<String, dynamic> json) =>
           last: $checkedConvert('last', (v) => v as bool?),
           numberOfElements:
               $checkedConvert('numberOfElements', (v) => (v as num?)?.toInt()),
+          pageable: $checkedConvert(
+              'pageable',
+              (v) => v == null
+                  ? null
+                  : PageableObject.fromJson(v as Map<String, dynamic>)),
           size: $checkedConvert('size', (v) => (v as num?)?.toInt()),
           content: $checkedConvert(
               'content',
@@ -32,11 +37,6 @@ PageRecharge _$PageRechargeFromJson(Map<String, dynamic> json) =>
               (v) => v == null
                   ? null
                   : SortObject.fromJson(v as Map<String, dynamic>)),
-          pageable: $checkedConvert(
-              'pageable',
-              (v) => v == null
-                  ? null
-                  : PageableObject.fromJson(v as Map<String, dynamic>)),
           empty: $checkedConvert('empty', (v) => v as bool?),
         );
         return val;
@@ -51,11 +51,11 @@ Map<String, dynamic> _$PageRechargeToJson(PageRecharge instance) =>
       if (instance.last case final value?) 'last': value,
       if (instance.numberOfElements case final value?)
         'numberOfElements': value,
+      if (instance.pageable?.toJson() case final value?) 'pageable': value,
       if (instance.size case final value?) 'size': value,
       if (instance.content?.map((e) => e.toJson()).toList() case final value?)
         'content': value,
       if (instance.number case final value?) 'number': value,
       if (instance.sort?.toJson() case final value?) 'sort': value,
-      if (instance.pageable?.toJson() case final value?) 'pageable': value,
       if (instance.empty case final value?) 'empty': value,
     };

@@ -1,0 +1,27 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+TopSellerDTO _$TopSellerDTOFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      'TopSellerDTO',
+      json,
+      ($checkedConvert) {
+        final val = TopSellerDTO(
+          sellerId: $checkedConvert('sellerId', (v) => (v as num?)?.toInt()),
+          sellerName: $checkedConvert('sellerName', (v) => v as String?),
+          orderCount:
+              $checkedConvert('orderCount', (v) => (v as num?)?.toInt()),
+          amount: $checkedConvert('amount', (v) => v as num?),
+        );
+        return val;
+      },
+    );
+
+Map<String, dynamic> _$TopSellerDTOToJson(TopSellerDTO instance) =>
+    <String, dynamic>{
+      if (instance.sellerId case final value?) 'sellerId': value,
+      if (instance.sellerName case final value?) 'sellerName': value,
+      if (instance.orderCount case final value?) 'orderCount': value,
+      if (instance.amount case final value?) 'amount': value,
+    };

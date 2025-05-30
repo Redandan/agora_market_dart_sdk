@@ -9,7 +9,6 @@ import 'dart:convert';
 import 'package:agora_market_dart_sdk/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:agora_market_dart_sdk/src/model/upload_file_request.dart';
 
 class FilesApi {
 
@@ -225,7 +224,7 @@ _responseData = rawData == null ? null : deserialize<List<String>, String>(rawDa
   /// 
   ///
   /// Parameters:
-  /// * [uploadFileRequest] 
+  /// * [file] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -236,7 +235,7 @@ _responseData = rawData == null ? null : deserialize<List<String>, String>(rawDa
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
   Future<Response<void>> uploadFile({ 
-    UploadFileRequest? uploadFileRequest,
+    required MultipartFile file,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -254,30 +253,17 @@ _responseData = rawData == null ? null : deserialize<List<String>, String>(rawDa
         'secure': <Map<String, String>>[],
         ...?extra,
       },
-      contentType: 'application/json',
       validateStatus: validateStatus,
     );
 
-    dynamic _bodyData;
-
-    try {
-_bodyData=jsonEncode(uploadFileRequest);
-    } catch(error, stackTrace) {
-      throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
+    final _queryParameters = <String, dynamic>{
+      r'file': file,
+    };
 
     final _response = await _dio.request<Object>(
       _path,
-      data: _bodyData,
       options: _options,
+      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,

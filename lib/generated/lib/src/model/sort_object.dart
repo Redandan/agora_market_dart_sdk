@@ -18,12 +18,24 @@ class SortObject {
   /// Returns a new [SortObject] instance.
   SortObject({
 
+     this.sorted,
+
      this.unsorted,
 
      this.empty,
-
-     this.sorted,
   });
+
+  @JsonKey(
+    
+    name: r'sorted',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final bool? sorted;
+
+
 
   @JsonKey(
     
@@ -49,31 +61,19 @@ class SortObject {
 
 
 
-  @JsonKey(
-    
-    name: r'sorted',
-    required: false,
-    includeIfNull: false,
-  )
-
-
-  final bool? sorted;
-
-
-
 
 
     @override
     bool operator ==(Object other) => identical(this, other) || other is SortObject &&
+      other.sorted == sorted &&
       other.unsorted == unsorted &&
-      other.empty == empty &&
-      other.sorted == sorted;
+      other.empty == empty;
 
     @override
     int get hashCode =>
+        sorted.hashCode +
         unsorted.hashCode +
-        empty.hashCode +
-        sorted.hashCode;
+        empty.hashCode;
 
   factory SortObject.fromJson(Map<String, dynamic> json) => _$SortObjectFromJson(json);
 

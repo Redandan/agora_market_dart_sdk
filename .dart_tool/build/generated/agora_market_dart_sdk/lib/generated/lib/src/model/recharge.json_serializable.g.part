@@ -1,0 +1,75 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Recharge _$RechargeFromJson(Map<String, dynamic> json) => $checkedCreate(
+      'Recharge',
+      json,
+      ($checkedConvert) {
+        final val = Recharge(
+          id: $checkedConvert('id', (v) => v as String?),
+          userId: $checkedConvert('userId', (v) => (v as num?)?.toInt()),
+          amount: $checkedConvert('amount', (v) => v as num?),
+          currency: $checkedConvert('currency', (v) => v as String?),
+          status: $checkedConvert(
+              'status',
+              (v) => $enumDecodeNullable(_$RechargeStatusEnumEnumMap, v,
+                  unknownValue: RechargeStatusEnum.unknownDefaultOpenApi)),
+          protocol: $checkedConvert(
+              'protocol',
+              (v) => $enumDecodeNullable(_$RechargeProtocolEnumEnumMap, v,
+                  unknownValue: RechargeProtocolEnum.unknownDefaultOpenApi)),
+          txHash: $checkedConvert('txHash', (v) => v as String?),
+          receiveAddress:
+              $checkedConvert('receiveAddress', (v) => v as String?),
+          coldWalletId:
+              $checkedConvert('coldWalletId', (v) => (v as num?)?.toInt()),
+          remark: $checkedConvert('remark', (v) => v as String?),
+          createdAt: $checkedConvert('createdAt',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+          expireTime: $checkedConvert('expireTime',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+          updatedAt: $checkedConvert('updatedAt',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+          completedAt: $checkedConvert('completedAt',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+        );
+        return val;
+      },
+    );
+
+Map<String, dynamic> _$RechargeToJson(Recharge instance) => <String, dynamic>{
+      if (instance.id case final value?) 'id': value,
+      if (instance.userId case final value?) 'userId': value,
+      if (instance.amount case final value?) 'amount': value,
+      if (instance.currency case final value?) 'currency': value,
+      if (_$RechargeStatusEnumEnumMap[instance.status] case final value?)
+        'status': value,
+      if (_$RechargeProtocolEnumEnumMap[instance.protocol] case final value?)
+        'protocol': value,
+      if (instance.txHash case final value?) 'txHash': value,
+      if (instance.receiveAddress case final value?) 'receiveAddress': value,
+      if (instance.coldWalletId case final value?) 'coldWalletId': value,
+      if (instance.remark case final value?) 'remark': value,
+      if (instance.createdAt?.toIso8601String() case final value?)
+        'createdAt': value,
+      if (instance.expireTime?.toIso8601String() case final value?)
+        'expireTime': value,
+      if (instance.updatedAt?.toIso8601String() case final value?)
+        'updatedAt': value,
+      if (instance.completedAt?.toIso8601String() case final value?)
+        'completedAt': value,
+    };
+
+const _$RechargeStatusEnumEnumMap = {
+  RechargeStatusEnum.PENDING: 'PENDING',
+  RechargeStatusEnum.COMPLETED: 'COMPLETED',
+  RechargeStatusEnum.EXPIRED: 'EXPIRED',
+  RechargeStatusEnum.FAILED: 'FAILED',
+  RechargeStatusEnum.unknownDefaultOpenApi: 'unknown_default_open_api',
+};
+
+const _$RechargeProtocolEnumEnumMap = {
+  RechargeProtocolEnum.TRON: 'TRON',
+  RechargeProtocolEnum.unknownDefaultOpenApi: 'unknown_default_open_api',
+};

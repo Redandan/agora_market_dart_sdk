@@ -12,17 +12,17 @@ PageableObject _$PageableObjectFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = PageableObject(
-          unpaged: $checkedConvert('unpaged', (v) => v as bool?),
+          pageNumber:
+              $checkedConvert('pageNumber', (v) => (v as num?)?.toInt()),
+          pageSize: $checkedConvert('pageSize', (v) => (v as num?)?.toInt()),
           paged: $checkedConvert('paged', (v) => v as bool?),
+          unpaged: $checkedConvert('unpaged', (v) => v as bool?),
           offset: $checkedConvert('offset', (v) => (v as num?)?.toInt()),
           sort: $checkedConvert(
               'sort',
               (v) => v == null
                   ? null
                   : SortObject.fromJson(v as Map<String, dynamic>)),
-          pageNumber:
-              $checkedConvert('pageNumber', (v) => (v as num?)?.toInt()),
-          pageSize: $checkedConvert('pageSize', (v) => (v as num?)?.toInt()),
         );
         return val;
       },
@@ -30,10 +30,10 @@ PageableObject _$PageableObjectFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$PageableObjectToJson(PageableObject instance) =>
     <String, dynamic>{
-      if (instance.unpaged case final value?) 'unpaged': value,
-      if (instance.paged case final value?) 'paged': value,
-      if (instance.offset case final value?) 'offset': value,
-      if (instance.sort?.toJson() case final value?) 'sort': value,
       if (instance.pageNumber case final value?) 'pageNumber': value,
       if (instance.pageSize case final value?) 'pageSize': value,
+      if (instance.paged case final value?) 'paged': value,
+      if (instance.unpaged case final value?) 'unpaged': value,
+      if (instance.offset case final value?) 'offset': value,
+      if (instance.sort?.toJson() case final value?) 'sort': value,
     };

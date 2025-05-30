@@ -1,0 +1,76 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+ProductCreateParam _$ProductCreateParamFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      'ProductCreateParam',
+      json,
+      ($checkedConvert) {
+        $checkKeys(
+          json,
+          requiredKeys: const [
+            'title',
+            'price',
+            'stock',
+            'description',
+            'category',
+            'longitude',
+            'latitude'
+          ],
+        );
+        final val = ProductCreateParam(
+          title: $checkedConvert('title', (v) => v as String),
+          price: $checkedConvert('price', (v) => v as num),
+          stock: $checkedConvert('stock', (v) => (v as num).toInt()),
+          description: $checkedConvert('description', (v) => v as String),
+          category: $checkedConvert(
+              'category',
+              (v) => $enumDecode(_$ProductCreateParamCategoryEnumEnumMap, v,
+                  unknownValue:
+                      ProductCreateParamCategoryEnum.unknownDefaultOpenApi)),
+          imageUrls: $checkedConvert('imageUrls',
+              (v) => (v as List<dynamic>?)?.map((e) => e as String).toSet()),
+          longitude: $checkedConvert('longitude', (v) => (v as num).toDouble()),
+          latitude: $checkedConvert('latitude', (v) => (v as num).toDouble()),
+          pickupTimeStartString: $checkedConvert('pickupTimeStartString',
+              (v) => const LocalTimeConverter().fromJson(v as String?)),
+          pickupTimeEndString: $checkedConvert('pickupTimeEndString',
+              (v) => const LocalTimeConverter().fromJson(v as String?)),
+          pickupAddress: $checkedConvert('pickupAddress', (v) => v as String?),
+        );
+        return val;
+      },
+    );
+
+Map<String, dynamic> _$ProductCreateParamToJson(ProductCreateParam instance) =>
+    <String, dynamic>{
+      'title': instance.title,
+      'price': instance.price,
+      'stock': instance.stock,
+      'description': instance.description,
+      'category': _$ProductCreateParamCategoryEnumEnumMap[instance.category]!,
+      if (instance.imageUrls?.toList() case final value?) 'imageUrls': value,
+      'longitude': instance.longitude,
+      'latitude': instance.latitude,
+      if (const LocalTimeConverter().toJson(instance.pickupTimeStartString)
+          case final value?)
+        'pickupTimeStartString': value,
+      if (const LocalTimeConverter().toJson(instance.pickupTimeEndString)
+          case final value?)
+        'pickupTimeEndString': value,
+      if (instance.pickupAddress case final value?) 'pickupAddress': value,
+    };
+
+const _$ProductCreateParamCategoryEnumEnumMap = {
+  ProductCreateParamCategoryEnum.ELECTRONICS: 'ELECTRONICS',
+  ProductCreateParamCategoryEnum.FOOD: 'FOOD',
+  ProductCreateParamCategoryEnum.CLOTHING: 'CLOTHING',
+  ProductCreateParamCategoryEnum.HOME: 'HOME',
+  ProductCreateParamCategoryEnum.BEAUTY: 'BEAUTY',
+  ProductCreateParamCategoryEnum.BOOKS: 'BOOKS',
+  ProductCreateParamCategoryEnum.TOYS: 'TOYS',
+  ProductCreateParamCategoryEnum.OTHER: 'OTHER',
+  ProductCreateParamCategoryEnum.unknownDefaultOpenApi:
+      'unknown_default_open_api',
+};

@@ -1,0 +1,37 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+DisputeCreateParam _$DisputeCreateParamFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      'DisputeCreateParam',
+      json,
+      ($checkedConvert) {
+        final val = DisputeCreateParam(
+          orderId: $checkedConvert('orderId', (v) => v as String?),
+          type: $checkedConvert(
+              'type',
+              (v) => $enumDecodeNullable(_$DisputeCreateParamTypeEnumEnumMap, v,
+                  unknownValue:
+                      DisputeCreateParamTypeEnum.unknownDefaultOpenApi)),
+          description: $checkedConvert('description', (v) => v as String?),
+        );
+        return val;
+      },
+    );
+
+Map<String, dynamic> _$DisputeCreateParamToJson(DisputeCreateParam instance) =>
+    <String, dynamic>{
+      if (instance.orderId case final value?) 'orderId': value,
+      if (_$DisputeCreateParamTypeEnumEnumMap[instance.type] case final value?)
+        'type': value,
+      if (instance.description case final value?) 'description': value,
+    };
+
+const _$DisputeCreateParamTypeEnumEnumMap = {
+  DisputeCreateParamTypeEnum.PRODUCT_QUALITY: 'PRODUCT_QUALITY',
+  DisputeCreateParamTypeEnum.DELIVERY_ISSUE: 'DELIVERY_ISSUE',
+  DisputeCreateParamTypeEnum.REFUND_REQUEST: 'REFUND_REQUEST',
+  DisputeCreateParamTypeEnum.OTHER: 'OTHER',
+  DisputeCreateParamTypeEnum.unknownDefaultOpenApi: 'unknown_default_open_api',
+};

@@ -7,13 +7,23 @@ void main() {
   // TODO add properties to the entity
 
   group(PageableObject, () {
-    // bool unpaged
-    test('to test the property `unpaged`', () async {
+    // int pageNumber
+    test('to test the property `pageNumber`', () async {
+      // TODO
+    });
+
+    // int pageSize
+    test('to test the property `pageSize`', () async {
       // TODO
     });
 
     // bool paged
     test('to test the property `paged`', () async {
+      // TODO
+    });
+
+    // bool unpaged
+    test('to test the property `unpaged`', () async {
       // TODO
     });
 
@@ -24,16 +34,6 @@ void main() {
 
     // SortObject sort
     test('to test the property `sort`', () async {
-      // TODO
-    });
-
-    // int pageNumber
-    test('to test the property `pageNumber`', () async {
-      // TODO
-    });
-
-    // int pageSize
-    test('to test the property `pageSize`', () async {
       // TODO
     });
 

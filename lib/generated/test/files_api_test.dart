@@ -30,7 +30,7 @@ void main() {
 
     // 上傳文件
     //
-    //Future uploadFile({ UploadFileRequest uploadFileRequest }) async
+    //Future uploadFile(MultipartFile file) async
     test('test uploadFile', () async {
       // TODO
     });

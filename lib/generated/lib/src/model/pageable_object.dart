@@ -19,28 +19,40 @@ class PageableObject {
   /// Returns a new [PageableObject] instance.
   PageableObject({
 
-     this.unpaged,
+     this.pageNumber,
+
+     this.pageSize,
 
      this.paged,
+
+     this.unpaged,
 
      this.offset,
 
      this.sort,
-
-     this.pageNumber,
-
-     this.pageSize,
   });
 
   @JsonKey(
     
-    name: r'unpaged',
+    name: r'pageNumber',
     required: false,
     includeIfNull: false,
   )
 
 
-  final bool? unpaged;
+  final int? pageNumber;
+
+
+
+  @JsonKey(
+    
+    name: r'pageSize',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final int? pageSize;
 
 
 
@@ -53,6 +65,18 @@ class PageableObject {
 
 
   final bool? paged;
+
+
+
+  @JsonKey(
+    
+    name: r'unpaged',
+    required: false,
+    includeIfNull: false,
+  )
+
+
+  final bool? unpaged;
 
 
 
@@ -80,49 +104,25 @@ class PageableObject {
 
 
 
-  @JsonKey(
-    
-    name: r'pageNumber',
-    required: false,
-    includeIfNull: false,
-  )
-
-
-  final int? pageNumber;
-
-
-
-  @JsonKey(
-    
-    name: r'pageSize',
-    required: false,
-    includeIfNull: false,
-  )
-
-
-  final int? pageSize;
-
-
-
 
 
     @override
     bool operator ==(Object other) => identical(this, other) || other is PageableObject &&
-      other.unpaged == unpaged &&
-      other.paged == paged &&
-      other.offset == offset &&
-      other.sort == sort &&
       other.pageNumber == pageNumber &&
-      other.pageSize == pageSize;
+      other.pageSize == pageSize &&
+      other.paged == paged &&
+      other.unpaged == unpaged &&
+      other.offset == offset &&
+      other.sort == sort;
 
     @override
     int get hashCode =>
-        unpaged.hashCode +
-        paged.hashCode +
-        offset.hashCode +
-        sort.hashCode +
         pageNumber.hashCode +
-        pageSize.hashCode;
+        pageSize.hashCode +
+        paged.hashCode +
+        unpaged.hashCode +
+        offset.hashCode +
+        sort.hashCode;
 
   factory PageableObject.fromJson(Map<String, dynamic> json) => _$PageableObjectFromJson(json);
 

@@ -1,0 +1,30 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+OrderQueryResult _$OrderQueryResultFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      'OrderQueryResult',
+      json,
+      ($checkedConvert) {
+        final val = OrderQueryResult(
+          order: $checkedConvert(
+              'order',
+              (v) =>
+                  v == null ? null : Order.fromJson(v as Map<String, dynamic>)),
+          deliveryDetail: $checkedConvert(
+              'deliveryDetail',
+              (v) => v == null
+                  ? null
+                  : DeliveryDetail.fromJson(v as Map<String, dynamic>)),
+        );
+        return val;
+      },
+    );
+
+Map<String, dynamic> _$OrderQueryResultToJson(OrderQueryResult instance) =>
+    <String, dynamic>{
+      if (instance.order?.toJson() case final value?) 'order': value,
+      if (instance.deliveryDetail?.toJson() case final value?)
+        'deliveryDetail': value,
+    };

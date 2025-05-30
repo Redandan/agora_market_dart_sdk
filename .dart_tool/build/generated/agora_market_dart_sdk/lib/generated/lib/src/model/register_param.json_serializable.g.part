@@ -1,0 +1,31 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+RegisterParam _$RegisterParamFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      'RegisterParam',
+      json,
+      ($checkedConvert) {
+        $checkKeys(
+          json,
+          requiredKeys: const ['username', 'password'],
+        );
+        final val = RegisterParam(
+          username: $checkedConvert('username', (v) => v as String),
+          password: $checkedConvert('password', (v) => v as String),
+          confirmPassword:
+              $checkedConvert('confirmPassword', (v) => v as String?),
+          email: $checkedConvert('email', (v) => v as String?),
+        );
+        return val;
+      },
+    );
+
+Map<String, dynamic> _$RegisterParamToJson(RegisterParam instance) =>
+    <String, dynamic>{
+      'username': instance.username,
+      'password': instance.password,
+      if (instance.confirmPassword case final value?) 'confirmPassword': value,
+      if (instance.email case final value?) 'email': value,
+    };

@@ -89,7 +89,6 @@ doc/TopProductDTO.md
 doc/TopSellerDTO.md
 doc/Transaction.md
 doc/UpdateDeliveryOrderParam.md
-doc/UploadFileRequest.md
 doc/User.md
 doc/UserInfo.md
 doc/Withdraw.md
@@ -187,7 +186,6 @@ lib/src/model/top_product_dto.dart
 lib/src/model/top_seller_dto.dart
 lib/src/model/transaction.dart
 lib/src/model/update_delivery_order_param.dart
-lib/src/model/upload_file_request.dart
 lib/src/model/user.dart
 lib/src/model/user_info.dart
 lib/src/model/withdraw.dart
@@ -278,7 +276,6 @@ test/top_product_dto_test.dart
 test/top_seller_dto_test.dart
 test/transaction_test.dart
 test/update_delivery_order_param_test.dart
-test/upload_file_request_test.dart
 test/user_info_test.dart
 test/user_test.dart
 test/withdraw_test.dart
