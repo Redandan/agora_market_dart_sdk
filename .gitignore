@@ -33,16 +33,6 @@ ios/
 macos/
 linux/
 
-# Generated files
-lib/generated/
-*.g.dart
-*.freezed.dart
-*.mocks.dart
-*.gr.dart
-*.chopper.dart
-*.inject.summary
-*.inject.dart
-*.config.dart
 
 # OpenAPI Generator
 .openapi-generator/
