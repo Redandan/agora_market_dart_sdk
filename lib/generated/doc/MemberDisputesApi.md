@@ -26,13 +26,13 @@ Method | HTTP request | Description
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getMemberDisputesApi();
-final DisputeCreateParam disputeCreateParam = ; // DisputeCreateParam | 
+final api_instance = MemberDisputesApi();
+final disputeCreateParam = DisputeCreateParam(); // DisputeCreateParam | 
 
 try {
-    final response = api.createDispute(disputeCreateParam);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.createDispute(disputeCreateParam);
+    print(result);
+} catch (e) {
     print('Exception when calling MemberDisputesApi->createDispute: $e\n');
 }
 ```
@@ -69,13 +69,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getMemberDisputesApi();
-final String disputeId = disputeId_example; // String | 糾紛ID
+final api_instance = MemberDisputesApi();
+final disputeId = disputeId_example; // String | 糾紛ID
 
 try {
-    final response = api.getDisputeDetail(disputeId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getDisputeDetail(disputeId);
+    print(result);
+} catch (e) {
     print('Exception when calling MemberDisputesApi->getDisputeDetail: $e\n');
 }
 ```
@@ -112,13 +112,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getMemberDisputesApi();
-final String disputeId = disputeId_example; // String | 糾紛ID
-final String reply = reply_example; // String | 回覆內容
+final api_instance = MemberDisputesApi();
+final disputeId = disputeId_example; // String | 糾紛ID
+final reply = reply_example; // String | 回覆內容
 
 try {
-    api.replyDispute(disputeId, reply);
-} catch on DioException (e) {
+    api_instance.replyDispute(disputeId, reply);
+} catch (e) {
     print('Exception when calling MemberDisputesApi->replyDispute: $e\n');
 }
 ```
@@ -156,18 +156,18 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getMemberDisputesApi();
-final String status = status_example; // String | 糾紛狀態
-final String type = type_example; // String | 糾紛類型
-final DateTime startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
-final DateTime endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
-final int page = 56; // int | 分頁參數
-final int size = 56; // int | 每頁數量
+final api_instance = MemberDisputesApi();
+final status = status_example; // String | 糾紛狀態
+final type = type_example; // String | 糾紛類型
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final page = 56; // int | 分頁參數
+final size = 56; // int | 每頁數量
 
 try {
-    final response = api.searchDisputes(status, type, startDate, endDate, page, size);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.searchDisputes(status, type, startDate, endDate, page, size);
+    print(result);
+} catch (e) {
     print('Exception when calling MemberDisputesApi->searchDisputes: $e\n');
 }
 ```

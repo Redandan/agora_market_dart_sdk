@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **updatedAt** | [**DateTime**](DateTime.md) | 更新時間 | [optional] 
 **deliveredAt** | [**DateTime**](DateTime.md) | 配送時間 | [optional] 
 **assignedAt** | [**DateTime**](DateTime.md) | 分配時間 | [optional] 
-**deliveryLogs** | **BuiltList&lt;String&gt;** | 配送記錄 | [optional] 
+**deliveryLogs** | **List<String>** | 配送記錄 | [optional] [default to const []]
 **status** | **String** | 配送狀態 | [optional] 
 **pickingUpTime** | [**DateTime**](DateTime.md) | 取貨時間 | [optional] 
 **deliveringTime** | [**DateTime**](DateTime.md) | 運送時間 | [optional] 

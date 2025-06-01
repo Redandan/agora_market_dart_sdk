@@ -1,12 +1,21 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
-import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for LowStockWarningDTO
 void main() {
-  final instance = LowStockWarningDTOBuilder();
-  // TODO add properties to the builder and call build()
+  // final instance = LowStockWarningDTO();
 
-  group(LowStockWarningDTO, () {
+  group('test LowStockWarningDTO', () {
     // 商品ID
     // int productId
     test('to test the property `productId`', () async {
@@ -19,5 +28,7 @@ void main() {
       // TODO
     });
 
+
   });
+
 }

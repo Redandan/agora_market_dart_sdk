@@ -1,12 +1,21 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
-import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for Product
 void main() {
-  final instance = ProductBuilder();
-  // TODO add properties to the builder and call build()
+  // final instance = Product();
 
-  group(Product, () {
+  group('test Product', () {
     // 商品ID
     // int id
     test('to test the property `id`', () async {
@@ -50,7 +59,7 @@ void main() {
     });
 
     // 商品圖片URL列表
-    // BuiltSet<String> imageUrls
+    // Set<String> imageUrls (default value: const {})
     test('to test the property `imageUrls`', () async {
       // TODO
     });
@@ -125,5 +134,7 @@ void main() {
       // TODO
     });
 
+
   });
+
 }

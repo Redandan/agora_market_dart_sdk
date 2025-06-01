@@ -26,12 +26,12 @@ Method | HTTP request | Description
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminCartApi();
-final int userId = 789; // int | 
+final api_instance = AdminCartApi();
+final userId = 789; // int | 
 
 try {
-    api.clearUserCart(userId);
-} catch on DioException (e) {
+    api_instance.clearUserCart(userId);
+} catch (e) {
     print('Exception when calling AdminCartApi->clearUserCart: $e\n');
 }
 ```
@@ -68,12 +68,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminCartApi();
+final api_instance = AdminCartApi();
 
 try {
-    final response = api.getCartSummary();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getCartSummary();
+    print(result);
+} catch (e) {
     print('Exception when calling AdminCartApi->getCartSummary: $e\n');
 }
 ```
@@ -107,12 +107,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminCartApi();
-final int cartItemId = 789; // int | 
+final api_instance = AdminCartApi();
+final cartItemId = 789; // int | 
 
 try {
-    api.removeCartItem(cartItemId);
-} catch on DioException (e) {
+    api_instance.removeCartItem(cartItemId);
+} catch (e) {
     print('Exception when calling AdminCartApi->removeCartItem: $e\n');
 }
 ```
@@ -149,14 +149,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminCartApi();
-final Pageable pageable = ; // Pageable | 分頁參數
-final int userId = 789; // int | 用戶ID，不提供則搜索所有用戶
+final api_instance = AdminCartApi();
+final pageable = ; // Pageable | 分頁參數
+final userId = 789; // int | 用戶ID，不提供則搜索所有用戶
 
 try {
-    final response = api.searchCarts(pageable, userId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.searchCarts(pageable, userId);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminCartApi->searchCarts: $e\n');
 }
 ```

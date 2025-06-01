@@ -1,12 +1,22 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
-import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 
 /// tests for AdminMembersApi
 void main() {
-  final instance = AgoraMarketDartSdk().getAdminMembersApi();
+  // final instance = AdminMembersApi();
 
-  group(AdminMembersApi, () {
+  group('tests for AdminMembersApi', () {
     // 查看會員詳情
     //
     // 管理員可查看會員的詳細信息
@@ -20,7 +30,7 @@ void main() {
     //
     // 獲取會員相關的統計數據
     //
-    //Future<BuiltMap<String, JsonObject>> getMemberStatistics({ DateTime startDate, DateTime endDate }) async
+    //Future<Map<String, Object>> getMemberStatistics({ DateTime startDate, DateTime endDate }) async
     test('test getMemberStatistics', () async {
       // TODO
     });

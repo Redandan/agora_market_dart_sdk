@@ -25,13 +25,13 @@ Method | HTTP request | Description
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getProductsApi();
-final ProductCreateParam productCreateParam = ; // ProductCreateParam | 
+final api_instance = ProductsApi();
+final productCreateParam = ProductCreateParam(); // ProductCreateParam | 
 
 try {
-    final response = api.createProduct(productCreateParam);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.createProduct(productCreateParam);
+    print(result);
+} catch (e) {
     print('Exception when calling ProductsApi->createProduct: $e\n');
 }
 ```
@@ -66,13 +66,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getProductsApi();
-final ProductSeachParam searchParam = ; // ProductSeachParam | 
+final api_instance = ProductsApi();
+final searchParam = ; // ProductSeachParam | 
 
 try {
-    final response = api.getMyProducts(searchParam);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getMyProducts(searchParam);
+    print(result);
+} catch (e) {
     print('Exception when calling ProductsApi->getMyProducts: $e\n');
 }
 ```
@@ -107,13 +107,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getProductsApi();
-final int id = 789; // int | 
+final api_instance = ProductsApi();
+final id = 789; // int | 
 
 try {
-    final response = api.getProduct(id);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getProduct(id);
+    print(result);
+} catch (e) {
     print('Exception when calling ProductsApi->getProduct: $e\n');
 }
 ```
@@ -148,13 +148,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getProductsApi();
-final ProductSeachParam productSeachParam = ; // ProductSeachParam | 
+final api_instance = ProductsApi();
+final productSeachParam = ; // ProductSeachParam | 
 
 try {
-    final response = api.getProductsBySearch(productSeachParam);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getProductsBySearch(productSeachParam);
+    print(result);
+} catch (e) {
     print('Exception when calling ProductsApi->getProductsBySearch: $e\n');
 }
 ```
@@ -189,13 +189,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getProductsApi();
-final ProductUpdateParam productUpdateParam = ; // ProductUpdateParam | 
+final api_instance = ProductsApi();
+final productUpdateParam = ProductUpdateParam(); // ProductUpdateParam | 
 
 try {
-    final response = api.updateProduct(productUpdateParam);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.updateProduct(productUpdateParam);
+    print(result);
+} catch (e) {
     print('Exception when calling ProductsApi->updateProduct: $e\n');
 }
 ```

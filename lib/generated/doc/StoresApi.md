@@ -25,12 +25,12 @@ Method | HTTP request | Description
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getStoresApi();
+final api_instance = StoresApi();
 
 try {
-    final response = api.getMyStore();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getMyStore();
+    print(result);
+} catch (e) {
     print('Exception when calling StoresApi->getMyStore: $e\n');
 }
 ```
@@ -62,12 +62,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getStoresApi();
+final api_instance = StoresApi();
 
 try {
-    final response = api.getStoreAnalytics();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getStoreAnalytics();
+    print(result);
+} catch (e) {
     print('Exception when calling StoresApi->getStoreAnalytics: $e\n');
 }
 ```
@@ -99,13 +99,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getStoresApi();
-final int sellerId = 789; // int | 賣家ID
+final api_instance = StoresApi();
+final sellerId = 789; // int | 賣家ID
 
 try {
-    final response = api.getStoreBySellerId(sellerId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getStoreBySellerId(sellerId);
+    print(result);
+} catch (e) {
     print('Exception when calling StoresApi->getStoreBySellerId: $e\n');
 }
 ```
@@ -140,17 +140,17 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getStoresApi();
-final String keyword = keyword_example; // String | 
-final int categoryId = 789; // int | 
-final String status = status_example; // String | 
-final int page = 56; // int | 
-final int size = 56; // int | 
+final api_instance = StoresApi();
+final keyword = keyword_example; // String | 
+final categoryId = 789; // int | 
+final status = status_example; // String | 
+final page = 56; // int | 
+final size = 56; // int | 
 
 try {
-    final response = api.searchMyStoreProducts(keyword, categoryId, status, page, size);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.searchMyStoreProducts(keyword, categoryId, status, page, size);
+    print(result);
+} catch (e) {
     print('Exception when calling StoresApi->searchMyStoreProducts: $e\n');
 }
 ```
@@ -189,13 +189,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getStoresApi();
-final StoreUpdateParam storeUpdateParam = ; // StoreUpdateParam | 
+final api_instance = StoresApi();
+final storeUpdateParam = StoreUpdateParam(); // StoreUpdateParam | 
 
 try {
-    final response = api.updateStore(storeUpdateParam);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.updateStore(storeUpdateParam);
+    print(result);
+} catch (e) {
     print('Exception when calling StoresApi->updateStore: $e\n');
 }
 ```

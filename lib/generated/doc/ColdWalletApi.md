@@ -26,13 +26,13 @@ Method | HTTP request | Description
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getColdWalletApi();
-final ColdWallet coldWallet = ; // ColdWallet | 
+final api_instance = ColdWalletApi();
+final coldWallet = ColdWallet(); // ColdWallet | 
 
 try {
-    final response = api.createColdWallet(coldWallet);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.createColdWallet(coldWallet);
+    print(result);
+} catch (e) {
     print('Exception when calling ColdWalletApi->createColdWallet: $e\n');
 }
 ```
@@ -69,12 +69,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getColdWalletApi();
-final String id = id_example; // String | 
+final api_instance = ColdWalletApi();
+final id = id_example; // String | 
 
 try {
-    api.deleteColdWallet(id);
-} catch on DioException (e) {
+    api_instance.deleteColdWallet(id);
+} catch (e) {
     print('Exception when calling ColdWalletApi->deleteColdWallet: $e\n');
 }
 ```
@@ -111,13 +111,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getColdWalletApi();
-final Pageable pageable = ; // Pageable | 
+final api_instance = ColdWalletApi();
+final pageable = ; // Pageable | 
 
 try {
-    final response = api.getColdWallets(pageable);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getColdWallets(pageable);
+    print(result);
+} catch (e) {
     print('Exception when calling ColdWalletApi->getColdWallets: $e\n');
 }
 ```
@@ -154,13 +154,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getColdWalletApi();
-final String id = id_example; // String | 
+final api_instance = ColdWalletApi();
+final id = id_example; // String | 
 
 try {
-    final response = api.releaseColdWallet(id);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.releaseColdWallet(id);
+    print(result);
+} catch (e) {
     print('Exception when calling ColdWalletApi->releaseColdWallet: $e\n');
 }
 ```

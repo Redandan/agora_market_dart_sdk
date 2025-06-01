@@ -1,12 +1,22 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
-import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 
 /// tests for DeliveryApi
 void main() {
-  final instance = AgoraMarketDartSdk().getDeliveryApi();
+  // final instance = DeliveryApi();
 
-  group(DeliveryApi, () {
+  group('tests for DeliveryApi', () {
     // 獲取當前配送狀態
     //
     // 獲取當前登入配送員的工作狀態
@@ -20,7 +30,7 @@ void main() {
     //
     // 獲取當前配送員的歷史配送訂單
     //
-    //Future<BuiltList<DeliveryDetail>> getDeliveryHistory({ int page, int size }) async
+    //Future<List<DeliveryDetail>> getDeliveryHistory({ int page, int size }) async
     test('test getDeliveryHistory', () async {
       // TODO
     });

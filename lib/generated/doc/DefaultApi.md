@@ -36,14 +36,14 @@ Method | HTTP request | Description
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getDefaultApi();
-final String rechargeId = rechargeId_example; // String | 
-final String remark = remark_example; // String | 
+final api_instance = DefaultApi();
+final rechargeId = rechargeId_example; // String | 
+final remark = remark_example; // String | 
 
 try {
-    final response = api.cancelRecharge(rechargeId, remark);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.cancelRecharge(rechargeId, remark);
+    print(result);
+} catch (e) {
     print('Exception when calling DefaultApi->cancelRecharge: $e\n');
 }
 ```
@@ -79,14 +79,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getDefaultApi();
-final String rechargeId = rechargeId_example; // String | 
-final String txHash = txHash_example; // String | 
+final api_instance = DefaultApi();
+final rechargeId = rechargeId_example; // String | 
+final txHash = txHash_example; // String | 
 
 try {
-    final response = api.completeRecharge(rechargeId, txHash);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.completeRecharge(rechargeId, txHash);
+    print(result);
+} catch (e) {
     print('Exception when calling DefaultApi->completeRecharge: $e\n');
 }
 ```
@@ -122,14 +122,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getDefaultApi();
-final String withdrawId = withdrawId_example; // String | 
-final String txHash = txHash_example; // String | 
+final api_instance = DefaultApi();
+final withdrawId = withdrawId_example; // String | 
+final txHash = txHash_example; // String | 
 
 try {
-    final response = api.completeWithdraw(withdrawId, txHash);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.completeWithdraw(withdrawId, txHash);
+    print(result);
+} catch (e) {
     print('Exception when calling DefaultApi->completeWithdraw: $e\n');
 }
 ```
@@ -165,13 +165,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getDefaultApi();
-final CreateRechargeParam createRechargeParam = ; // CreateRechargeParam | 
+final api_instance = DefaultApi();
+final createRechargeParam = CreateRechargeParam(); // CreateRechargeParam | 
 
 try {
-    final response = api.createRecharge(createRechargeParam);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.createRecharge(createRechargeParam);
+    print(result);
+} catch (e) {
     print('Exception when calling DefaultApi->createRecharge: $e\n');
 }
 ```
@@ -206,13 +206,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getDefaultApi();
-final CreateWithdrawParam createWithdrawParam = ; // CreateWithdrawParam | 
+final api_instance = DefaultApi();
+final createWithdrawParam = CreateWithdrawParam(); // CreateWithdrawParam | 
 
 try {
-    final response = api.createWithdraw(createWithdrawParam);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.createWithdraw(createWithdrawParam);
+    print(result);
+} catch (e) {
     print('Exception when calling DefaultApi->createWithdraw: $e\n');
 }
 ```
@@ -247,14 +247,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getDefaultApi();
-final String withdrawId = withdrawId_example; // String | 
-final String remark = remark_example; // String | 
+final api_instance = DefaultApi();
+final withdrawId = withdrawId_example; // String | 
+final remark = remark_example; // String | 
 
 try {
-    final response = api.failWithdraw(withdrawId, remark);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.failWithdraw(withdrawId, remark);
+    print(result);
+} catch (e) {
     print('Exception when calling DefaultApi->failWithdraw: $e\n');
 }
 ```
@@ -290,16 +290,16 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getDefaultApi();
-final int userId = 789; // int | 會員ID
-final String token = token_example; // String | 幣種
-final int page = 56; // int | 頁碼
-final int size = 56; // int | 每頁數量
+final api_instance = DefaultApi();
+final userId = 789; // int | 會員ID
+final token = token_example; // String | 幣種
+final page = 56; // int | 頁碼
+final size = 56; // int | 每頁數量
 
 try {
-    final response = api.getAdminTransactionList(userId, token, page, size);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getAdminTransactionList(userId, token, page, size);
+    print(result);
+} catch (e) {
     print('Exception when calling DefaultApi->getAdminTransactionList: $e\n');
 }
 ```
@@ -329,7 +329,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getDeliveryTypes**
-> JsonObject getDeliveryTypes()
+> Object getDeliveryTypes()
 
 獲取系統配置
 
@@ -339,12 +339,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getDefaultApi();
+final api_instance = DefaultApi();
 
 try {
-    final response = api.getDeliveryTypes();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getDeliveryTypes();
+    print(result);
+} catch (e) {
     print('Exception when calling DefaultApi->getDeliveryTypes: $e\n');
 }
 ```
@@ -354,7 +354,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+[**Object**](Object.md)
 
 ### Authorization
 
@@ -376,13 +376,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getDefaultApi();
-final String rechargeId = rechargeId_example; // String | 
+final api_instance = DefaultApi();
+final rechargeId = rechargeId_example; // String | 
 
 try {
-    final response = api.getRecharge(rechargeId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getRecharge(rechargeId);
+    print(result);
+} catch (e) {
     print('Exception when calling DefaultApi->getRecharge: $e\n');
 }
 ```
@@ -417,13 +417,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getDefaultApi();
-final String receiveAddress = receiveAddress_example; // String | 
+final api_instance = DefaultApi();
+final receiveAddress = receiveAddress_example; // String | 
 
 try {
-    final response = api.getRechargeByReceiveAddress(receiveAddress);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getRechargeByReceiveAddress(receiveAddress);
+    print(result);
+} catch (e) {
     print('Exception when calling DefaultApi->getRechargeByReceiveAddress: $e\n');
 }
 ```
@@ -458,13 +458,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getDefaultApi();
-final String txHash = txHash_example; // String | 
+final api_instance = DefaultApi();
+final txHash = txHash_example; // String | 
 
 try {
-    final response = api.getRechargeByTxHash(txHash);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getRechargeByTxHash(txHash);
+    print(result);
+} catch (e) {
     print('Exception when calling DefaultApi->getRechargeByTxHash: $e\n');
 }
 ```
@@ -499,14 +499,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getDefaultApi();
-final int userId = 789; // int | 
-final Pageable pageable = ; // Pageable | 
+final api_instance = DefaultApi();
+final userId = 789; // int | 
+final pageable = ; // Pageable | 
 
 try {
-    final response = api.getRechargeHistory(userId, pageable);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getRechargeHistory(userId, pageable);
+    print(result);
+} catch (e) {
     print('Exception when calling DefaultApi->getRechargeHistory: $e\n');
 }
 ```
@@ -542,13 +542,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getDefaultApi();
-final int id = 789; // int | 交易ID
+final api_instance = DefaultApi();
+final id = 789; // int | 交易ID
 
 try {
-    final response = api.getTransactionById(id);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getTransactionById(id);
+    print(result);
+} catch (e) {
     print('Exception when calling DefaultApi->getTransactionById: $e\n');
 }
 ```
@@ -583,15 +583,15 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getDefaultApi();
-final String token = token_example; // String | 
-final int page = 56; // int | 頁碼
-final int size = 56; // int | 每頁數量
+final api_instance = DefaultApi();
+final token = token_example; // String | 
+final page = 56; // int | 頁碼
+final size = 56; // int | 每頁數量
 
 try {
-    final response = api.getTransactionList(token, page, size);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getTransactionList(token, page, size);
+    print(result);
+} catch (e) {
     print('Exception when calling DefaultApi->getTransactionList: $e\n');
 }
 ```
@@ -628,13 +628,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getDefaultApi();
-final String withdrawId = withdrawId_example; // String | 
+final api_instance = DefaultApi();
+final withdrawId = withdrawId_example; // String | 
 
 try {
-    final response = api.getWithdraw(withdrawId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getWithdraw(withdrawId);
+    print(result);
+} catch (e) {
     print('Exception when calling DefaultApi->getWithdraw: $e\n');
 }
 ```
@@ -669,14 +669,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getDefaultApi();
-final int userId = 789; // int | 
-final Pageable pageable = ; // Pageable | 
+final api_instance = DefaultApi();
+final userId = 789; // int | 
+final pageable = ; // Pageable | 
 
 try {
-    final response = api.getWithdrawHistory(userId, pageable);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getWithdrawHistory(userId, pageable);
+    print(result);
+} catch (e) {
     print('Exception when calling DefaultApi->getWithdrawHistory: $e\n');
 }
 ```

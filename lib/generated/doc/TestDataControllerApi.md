@@ -11,7 +11,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**generateLogisticsOrder**](TestDataControllerApi.md#generatelogisticsorder) | **POST** /test/logistics | 
 [**generatePlatformDeliveryOrder**](TestDataControllerApi.md#generateplatformdeliveryorder) | **POST** /test/platform | 
-[**generateRechargeAndWithdraw**](TestDataControllerApi.md#generaterechargeandwithdraw) | **POST** /test/recharge&amp;withdraw | 
+[**generateRechargeAndWithdraw**](TestDataControllerApi.md#generaterechargeandwithdraw) | **POST** /test/recharge&withdraw | 
 [**generateTestData**](TestDataControllerApi.md#generatetestdata) | **POST** /test/user | 
 
 
@@ -24,12 +24,12 @@ Method | HTTP request | Description
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getTestDataControllerApi();
+final api_instance = TestDataControllerApi();
 
 try {
-    final response = api.generateLogisticsOrder();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.generateLogisticsOrder();
+    print(result);
+} catch (e) {
     print('Exception when calling TestDataControllerApi->generateLogisticsOrder: $e\n');
 }
 ```
@@ -61,12 +61,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getTestDataControllerApi();
+final api_instance = TestDataControllerApi();
 
 try {
-    final response = api.generatePlatformDeliveryOrder();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.generatePlatformDeliveryOrder();
+    print(result);
+} catch (e) {
     print('Exception when calling TestDataControllerApi->generatePlatformDeliveryOrder: $e\n');
 }
 ```
@@ -98,12 +98,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getTestDataControllerApi();
+final api_instance = TestDataControllerApi();
 
 try {
-    final response = api.generateRechargeAndWithdraw();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.generateRechargeAndWithdraw();
+    print(result);
+} catch (e) {
     print('Exception when calling TestDataControllerApi->generateRechargeAndWithdraw: $e\n');
 }
 ```
@@ -135,12 +135,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getTestDataControllerApi();
+final api_instance = TestDataControllerApi();
 
 try {
-    final response = api.generateTestData();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.generateTestData();
+    print(result);
+} catch (e) {
     print('Exception when calling TestDataControllerApi->generateTestData: $e\n');
 }
 ```

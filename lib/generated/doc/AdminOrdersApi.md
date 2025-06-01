@@ -26,13 +26,13 @@ Method | HTTP request | Description
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminOrdersApi();
-final String orderId = orderId_example; // String | 訂單ID
-final String reason = reason_example; // String | 取消原因
+final api_instance = AdminOrdersApi();
+final orderId = orderId_example; // String | 訂單ID
+final reason = reason_example; // String | 取消原因
 
 try {
-    api.cancelOrderByAdmin(orderId, reason);
-} catch on DioException (e) {
+    api_instance.cancelOrderByAdmin(orderId, reason);
+} catch (e) {
     print('Exception when calling AdminOrdersApi->cancelOrderByAdmin: $e\n');
 }
 ```
@@ -70,13 +70,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminOrdersApi();
-final String orderId = orderId_example; // String | 訂單ID
+final api_instance = AdminOrdersApi();
+final orderId = orderId_example; // String | 訂單ID
 
 try {
-    final response = api.getOrderDetail(orderId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getOrderDetail(orderId);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminOrdersApi->getOrderDetail: $e\n');
 }
 ```
@@ -113,14 +113,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminOrdersApi();
-final DateTime startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
-final DateTime endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final api_instance = AdminOrdersApi();
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
 
 try {
-    final response = api.getOrderStatistics(startDate, endDate);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getOrderStatistics(startDate, endDate);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminOrdersApi->getOrderStatistics: $e\n');
 }
 ```
@@ -158,19 +158,19 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminOrdersApi();
-final int buyerId = 789; // int | 買家ID
-final int sellerId = 789; // int | 賣家ID
-final String status = status_example; // String | 訂單狀態
-final DateTime startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
-final DateTime endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
-final int page = 56; // int | 分頁參數
-final int size = 56; // int | 每頁數量
+final api_instance = AdminOrdersApi();
+final buyerId = 789; // int | 買家ID
+final sellerId = 789; // int | 賣家ID
+final status = status_example; // String | 訂單狀態
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final page = 56; // int | 分頁參數
+final size = 56; // int | 每頁數量
 
 try {
-    final response = api.searchOrders(buyerId, sellerId, status, startDate, endDate, page, size);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.searchOrders(buyerId, sellerId, status, startDate, endDate, page, size);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminOrdersApi->searchOrders: $e\n');
 }
 ```

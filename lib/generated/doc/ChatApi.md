@@ -32,12 +32,12 @@ Method | HTTP request | Description
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getChatApi();
-final int sessionId = 789; // int | 會話ID
+final api_instance = ChatApi();
+final sessionId = 789; // int | 會話ID
 
 try {
-    api.clearSession(sessionId);
-} catch on DioException (e) {
+    api_instance.clearSession(sessionId);
+} catch (e) {
     print('Exception when calling ChatApi->clearSession: $e\n');
 }
 ```
@@ -74,12 +74,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getChatApi();
-final int messageId = 789; // int | 消息ID
+final api_instance = ChatApi();
+final messageId = 789; // int | 消息ID
 
 try {
-    api.deleteMessage(messageId);
-} catch on DioException (e) {
+    api_instance.deleteMessage(messageId);
+} catch (e) {
     print('Exception when calling ChatApi->deleteMessage: $e\n');
 }
 ```
@@ -116,12 +116,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getChatApi();
-final int sessionId = 789; // int | 會話ID
+final api_instance = ChatApi();
+final sessionId = 789; // int | 會話ID
 
 try {
-    api.deleteSession(sessionId);
-} catch on DioException (e) {
+    api_instance.deleteSession(sessionId);
+} catch (e) {
     print('Exception when calling ChatApi->deleteSession: $e\n');
 }
 ```
@@ -158,14 +158,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getChatApi();
-final int sessionId = 789; // int | 會話ID
-final ChatMessageQueryParam queryParam = ; // ChatMessageQueryParam | 查詢參數
+final api_instance = ChatApi();
+final sessionId = 789; // int | 會話ID
+final queryParam = ; // ChatMessageQueryParam | 查詢參數
 
 try {
-    final response = api.getSessionMessages(sessionId, queryParam);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getSessionMessages(sessionId, queryParam);
+    print(result);
+} catch (e) {
     print('Exception when calling ChatApi->getSessionMessages: $e\n');
 }
 ```
@@ -203,12 +203,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getChatApi();
+final api_instance = ChatApi();
 
 try {
-    final response = api.getUnreadCount();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getUnreadCount();
+    print(result);
+} catch (e) {
     print('Exception when calling ChatApi->getUnreadCount: $e\n');
 }
 ```
@@ -242,13 +242,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getChatApi();
-final ChatSessionQueryParam queryParam = ; // ChatSessionQueryParam | 查詢參數
+final api_instance = ChatApi();
+final queryParam = ; // ChatSessionQueryParam | 查詢參數
 
 try {
-    final response = api.listSessions(queryParam);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.listSessions(queryParam);
+    print(result);
+} catch (e) {
     print('Exception when calling ChatApi->listSessions: $e\n');
 }
 ```
@@ -285,12 +285,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getChatApi();
-final int sessionId = 789; // int | 會話ID
+final api_instance = ChatApi();
+final sessionId = 789; // int | 會話ID
 
 try {
-    api.markSessionRead(sessionId);
-} catch on DioException (e) {
+    api_instance.markSessionRead(sessionId);
+} catch (e) {
     print('Exception when calling ChatApi->markSessionRead: $e\n');
 }
 ```
@@ -327,12 +327,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getChatApi();
-final ChatMessageDTO chatMessageDTO = ; // ChatMessageDTO | 
+final api_instance = ChatApi();
+final chatMessageDTO = ChatMessageDTO(); // ChatMessageDTO | 
 
 try {
-    api.sendMessage(chatMessageDTO);
-} catch on DioException (e) {
+    api_instance.sendMessage(chatMessageDTO);
+} catch (e) {
     print('Exception when calling ChatApi->sendMessage: $e\n');
 }
 ```
@@ -369,13 +369,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getChatApi();
-final int sessionId = 789; // int | 會話ID
+final api_instance = ChatApi();
+final sessionId = 789; // int | 會話ID
 
 try {
-    final response = api.toggleSessionPin(sessionId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.toggleSessionPin(sessionId);
+    print(result);
+} catch (e) {
     print('Exception when calling ChatApi->toggleSessionPin: $e\n');
 }
 ```
@@ -412,14 +412,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getChatApi();
-final int messageId = 789; // int | 消息ID
-final ChatMessageUpdateDTO chatMessageUpdateDTO = ; // ChatMessageUpdateDTO | 
+final api_instance = ChatApi();
+final messageId = 789; // int | 消息ID
+final chatMessageUpdateDTO = ChatMessageUpdateDTO(); // ChatMessageUpdateDTO | 
 
 try {
-    final response = api.updateMessage(messageId, chatMessageUpdateDTO);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.updateMessage(messageId, chatMessageUpdateDTO);
+    print(result);
+} catch (e) {
     print('Exception when calling ChatApi->updateMessage: $e\n');
 }
 ```

@@ -1,12 +1,22 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
-import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 
 /// tests for DefaultApi
 void main() {
-  final instance = AgoraMarketDartSdk().getDefaultApi();
+  // final instance = DefaultApi();
 
-  group(DefaultApi, () {
+  group('tests for DefaultApi', () {
     // 取消充值
     //
     //Future<Recharge> cancelRecharge(String rechargeId, { String remark }) async
@@ -60,7 +70,7 @@ void main() {
     //
     // 獲取系統的公共配置信息，包括配送方式、商品分類和交易類型
     //
-    //Future<JsonObject> getDeliveryTypes() async
+    //Future<Object> getDeliveryTypes() async
     test('test getDeliveryTypes', () async {
       // TODO
     });

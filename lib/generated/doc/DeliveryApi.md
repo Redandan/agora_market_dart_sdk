@@ -26,12 +26,12 @@ Method | HTTP request | Description
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getDeliveryApi();
+final api_instance = DeliveryApi();
 
 try {
-    final response = api.currentStatus();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.currentStatus();
+    print(result);
+} catch (e) {
     print('Exception when calling DeliveryApi->currentStatus: $e\n');
 }
 ```
@@ -55,7 +55,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getDeliveryHistory**
-> BuiltList<DeliveryDetail> getDeliveryHistory(page, size)
+> List<DeliveryDetail> getDeliveryHistory(page, size)
 
 獲取歷史訂單
 
@@ -65,14 +65,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getDeliveryApi();
-final int page = 56; // int | 頁碼
-final int size = 56; // int | 每頁數量
+final api_instance = DeliveryApi();
+final page = 56; // int | 頁碼
+final size = 56; // int | 每頁數量
 
 try {
-    final response = api.getDeliveryHistory(page, size);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getDeliveryHistory(page, size);
+    print(result);
+} catch (e) {
     print('Exception when calling DeliveryApi->getDeliveryHistory: $e\n');
 }
 ```
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltList&lt;DeliveryDetail&gt;**](DeliveryDetail.md)
+[**List<DeliveryDetail>**](DeliveryDetail.md)
 
 ### Authorization
 
@@ -110,13 +110,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getDeliveryApi();
-final UpdateDeliveryOrderParam updateDeliveryOrderParam = ; // UpdateDeliveryOrderParam | 
+final api_instance = DeliveryApi();
+final updateDeliveryOrderParam = UpdateDeliveryOrderParam(); // UpdateDeliveryOrderParam | 
 
 try {
-    final response = api.updateDeliveryOrder(updateDeliveryOrderParam);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.updateDeliveryOrder(updateDeliveryOrderParam);
+    print(result);
+} catch (e) {
     print('Exception when calling DeliveryApi->updateDeliveryOrder: $e\n');
 }
 ```
@@ -153,13 +153,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getDeliveryApi();
-final bool enabled = true; // bool | 是否啟用
+final api_instance = DeliveryApi();
+final enabled = true; // bool | 是否啟用
 
 try {
-    final response = api.updateWorkingStatus(enabled);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.updateWorkingStatus(enabled);
+    print(result);
+} catch (e) {
     print('Exception when calling DeliveryApi->updateWorkingStatus: $e\n');
 }
 ```

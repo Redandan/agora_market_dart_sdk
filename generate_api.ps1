@@ -71,13 +71,11 @@ try {
 # 執行代碼生成
 Write-Host "Running code generation..." -ForegroundColor Yellow
 try {
-    # 使用 OpenAPI Generator 的 dart-dio 生成器
-    # 這個生成器會生成更好的 Dart 代碼，包括更好的 Enum 支持
     java -jar openapi-generator-cli.jar generate `
         -i lib/api/swagger.yaml `
-        -g dart-dio `
+        -g dart `
         -o lib/generated `
-        --additional-properties=pubName=agora_market_dart_sdk,pubVersion=1.0.0,pubDescription="A Dart SDK for AgoraMarket API",useEnumExtension=true,enumUnknownDefaultCase=true,typeMappings=object=built_value/Built,array=built_collection/BuiltList,string=String,integer=int,number=num,boolean=bool,date=DateTime,date-time=DateTime,modelPropertyNaming=snake_case,serializationLibrary=built_value,dateLibrary=core,nullableFields=true,useBuiltValue=true,useOneOf=true,useAnyOf=true
+        --additional-properties=pubName=agora_market_dart_sdk,pubVersion=1.0.0,serializationLibrary=built_value,dateLibrary=core,nullableFields=true,useEnumExtension=true,enumUnknownDefaultCase=true,generateSourceCodeOnly=true,useBuiltValue=true,useEnumExtension=true,enumUnknownDefaultCase=true,useCollectionWrappers=true,useNullSafety=true
 
     if ($LASTEXITCODE -eq 0) {
         Write-Host "Code generation completed successfully!" -ForegroundColor Green
@@ -94,7 +92,8 @@ try {
             Write-Host "`nRunning build_runner..." -ForegroundColor Yellow
             try {
                 Push-Location "lib/generated"
-                dart run build_runner build
+                dart pub get
+                dart run build_runner build --delete-conflicting-outputs
                 if ($LASTEXITCODE -eq 0) {
                     Write-Host "build_runner completed successfully!" -ForegroundColor Green
                 } else {

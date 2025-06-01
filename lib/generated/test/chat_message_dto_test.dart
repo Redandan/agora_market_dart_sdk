@@ -1,12 +1,21 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
-import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for ChatMessageDTO
 void main() {
-  final instance = ChatMessageDTOBuilder();
-  // TODO add properties to the builder and call build()
+  // final instance = ChatMessageDTO();
 
-  group(ChatMessageDTO, () {
+  group('test ChatMessageDTO', () {
     // 接收者ID
     // int receiverId
     test('to test the property `receiverId`', () async {
@@ -19,5 +28,7 @@ void main() {
       // TODO
     });
 
+
   });
+
 }

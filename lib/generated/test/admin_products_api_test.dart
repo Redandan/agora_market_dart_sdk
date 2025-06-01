@@ -1,12 +1,22 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
-import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 
 /// tests for AdminProductsApi
 void main() {
-  final instance = AgoraMarketDartSdk().getAdminProductsApi();
+  // final instance = AdminProductsApi();
 
-  group(AdminProductsApi, () {
+  group('tests for AdminProductsApi', () {
     // 查看商品詳情
     //
     // 管理員可查看商品的詳細信息
@@ -20,7 +30,7 @@ void main() {
     //
     // 獲取商品相關的統計數據
     //
-    //Future<BuiltMap<String, JsonObject>> getProductStatistics({ DateTime startDate, DateTime endDate }) async
+    //Future<Map<String, Object>> getProductStatistics({ DateTime startDate, DateTime endDate }) async
     test('test getProductStatistics', () async {
       // TODO
     });

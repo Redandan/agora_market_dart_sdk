@@ -29,14 +29,14 @@ Method | HTTP request | Description
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminDeliveryApi();
-final String orderId = orderId_example; // String | 訂單ID
-final int deliveryerId = 789; // int | 配送員ID
+final api_instance = AdminDeliveryApi();
+final orderId = orderId_example; // String | 訂單ID
+final deliveryerId = 789; // int | 配送員ID
 
 try {
-    final response = api.assignDeliveryer(orderId, deliveryerId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.assignDeliveryer(orderId, deliveryerId);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminDeliveryApi->assignDeliveryer: $e\n');
 }
 ```
@@ -74,13 +74,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminDeliveryApi();
-final String orderId = orderId_example; // String | 訂單ID
+final api_instance = AdminDeliveryApi();
+final orderId = orderId_example; // String | 訂單ID
 
 try {
-    final response = api.getDeliveryOrderDetail(orderId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getDeliveryOrderDetail(orderId);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminDeliveryApi->getDeliveryOrderDetail: $e\n');
 }
 ```
@@ -107,7 +107,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getDeliveryStatistics**
-> BuiltMap<String, JsonObject> getDeliveryStatistics(startDate, endDate)
+> Map<String, Object> getDeliveryStatistics(startDate, endDate)
 
 配送統計報告
 
@@ -117,14 +117,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminDeliveryApi();
-final DateTime startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
-final DateTime endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final api_instance = AdminDeliveryApi();
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
 
 try {
-    final response = api.getDeliveryStatistics(startDate, endDate);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getDeliveryStatistics(startDate, endDate);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminDeliveryApi->getDeliveryStatistics: $e\n');
 }
 ```
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltMap&lt;String, JsonObject&gt;**](JsonObject.md)
+[**Map<String, Object>**](Object.md)
 
 ### Authorization
 
@@ -162,13 +162,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminDeliveryApi();
-final int deliveryerId = 789; // int | 配送員ID
+final api_instance = AdminDeliveryApi();
+final deliveryerId = 789; // int | 配送員ID
 
 try {
-    final response = api.getDeliveryerDetail(deliveryerId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getDeliveryerDetail(deliveryerId);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminDeliveryApi->getDeliveryerDetail: $e\n');
 }
 ```
@@ -195,7 +195,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchDeliveryOrders**
-> BuiltList<DeliveryDetail> searchDeliveryOrders(deliveryerId, status, startDate, endDate)
+> List<DeliveryDetail> searchDeliveryOrders(deliveryerId, status, startDate, endDate)
 
 搜索配送訂單
 
@@ -205,16 +205,16 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminDeliveryApi();
-final int deliveryerId = 789; // int | 配送員ID
-final String status = status_example; // String | 配送狀態
-final DateTime startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
-final DateTime endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final api_instance = AdminDeliveryApi();
+final deliveryerId = 789; // int | 配送員ID
+final status = status_example; // String | 配送狀態
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
 
 try {
-    final response = api.searchDeliveryOrders(deliveryerId, status, startDate, endDate);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.searchDeliveryOrders(deliveryerId, status, startDate, endDate);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminDeliveryApi->searchDeliveryOrders: $e\n');
 }
 ```
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltList&lt;DeliveryDetail&gt;**](DeliveryDetail.md)
+[**List<DeliveryDetail>**](DeliveryDetail.md)
 
 ### Authorization
 
@@ -244,7 +244,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchDeliveryers**
-> BuiltList<Deliveryer> searchDeliveryers(enabled, isDelivering, longitude, latitude, radius, startDate, endDate)
+> List<Deliveryer> searchDeliveryers(enabled, isDelivering, longitude, latitude, radius, startDate, endDate)
 
 搜索配送員
 
@@ -254,19 +254,19 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminDeliveryApi();
-final bool enabled = true; // bool | 是否啟用
-final bool isDelivering = true; // bool | 是否正在配送
-final double longitude = 1.2; // double | 經度
-final double latitude = 1.2; // double | 緯度
-final double radius = 1.2; // double | 搜索半徑(公里)
-final DateTime startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
-final DateTime endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final api_instance = AdminDeliveryApi();
+final enabled = true; // bool | 是否啟用
+final isDelivering = true; // bool | 是否正在配送
+final longitude = 1.2; // double | 經度
+final latitude = 1.2; // double | 緯度
+final radius = 1.2; // double | 搜索半徑(公里)
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
 
 try {
-    final response = api.searchDeliveryers(enabled, isDelivering, longitude, latitude, radius, startDate, endDate);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.searchDeliveryers(enabled, isDelivering, longitude, latitude, radius, startDate, endDate);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminDeliveryApi->searchDeliveryers: $e\n');
 }
 ```
@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltList&lt;Deliveryer&gt;**](Deliveryer.md)
+[**List<Deliveryer>**](Deliveryer.md)
 
 ### Authorization
 
@@ -309,14 +309,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminDeliveryApi();
-final int deliveryerId = 789; // int | 配送員ID
-final bool enabled = true; // bool | 是否啟用
+final api_instance = AdminDeliveryApi();
+final deliveryerId = 789; // int | 配送員ID
+final enabled = true; // bool | 是否啟用
 
 try {
-    final response = api.updateDeliveryerStatus(deliveryerId, enabled);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.updateDeliveryerStatus(deliveryerId, enabled);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminDeliveryApi->updateDeliveryerStatus: $e\n');
 }
 ```

@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **earnedRewards** | **num** | 已獲得收益 | [optional] 
 **unfreezeRequestTime** | [**DateTime**](DateTime.md) | 解除申請時間 | [optional] 
 **unfreezeCompleteTime** | [**DateTime**](DateTime.md) | 解除完成時間 | [optional] 
-**lastSettleDate** | [**Date**](Date.md) | 上次結算時間 | [optional] 
+**lastSettleDate** | [**DateTime**](DateTime.md) | 上次結算時間 | [optional] 
 **lastSettleReward** | **num** | 上次檢查收益 | [optional] 
 **remark** | **String** | 備註 | [optional] 
 

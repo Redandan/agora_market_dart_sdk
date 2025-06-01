@@ -1,12 +1,21 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
-import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for DisputeStatisticsDTO
 void main() {
-  final instance = DisputeStatisticsDTOBuilder();
-  // TODO add properties to the builder and call build()
+  // final instance = DisputeStatisticsDTO();
 
-  group(DisputeStatisticsDTO, () {
+  group('test DisputeStatisticsDTO', () {
     // 總糾紛數
     // int totalDisputes
     test('to test the property `totalDisputes`', () async {
@@ -14,13 +23,13 @@ void main() {
     });
 
     // 各狀態糾紛數量
-    // BuiltMap<String, int> disputesByStatus
+    // Map<String, int> disputesByStatus (default value: const {})
     test('to test the property `disputesByStatus`', () async {
       // TODO
     });
 
     // 各類型糾紛數量
-    // BuiltMap<String, int> disputesByType
+    // Map<String, int> disputesByType (default value: const {})
     test('to test the property `disputesByType`', () async {
       // TODO
     });
@@ -38,16 +47,18 @@ void main() {
     });
 
     // 熱門糾紛商品（前5個）
-    // BuiltList<TopDisputedProductDTO> topDisputedProducts
+    // List<TopDisputedProductDTO> topDisputedProducts (default value: const [])
     test('to test the property `topDisputedProducts`', () async {
       // TODO
     });
 
     // 熱門糾紛賣家（前5個）
-    // BuiltList<TopDisputedSellerDTO> topDisputedSellers
+    // List<TopDisputedSellerDTO> topDisputedSellers (default value: const [])
     test('to test the property `topDisputedSellers`', () async {
       // TODO
     });
 
+
   });
+
 }

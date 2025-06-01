@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **stock** | **int** | 商品庫存 | 
 **description** | **String** | 商品描述 | 
 **category** | **String** | 商品分類 | 
-**imageUrls** | **BuiltSet&lt;String&gt;** | 商品圖片URL集合 | [optional] 
+**imageUrls** | **Set<String>** | 商品圖片URL集合 | [optional] [default to const {}]
 **longitude** | **double** | 取件地址經度 | 
 **latitude** | **double** | 取件地址緯度 | 
 **pickupTimeStartString** | [**LocalTime**](LocalTime.md) |  | [optional] 

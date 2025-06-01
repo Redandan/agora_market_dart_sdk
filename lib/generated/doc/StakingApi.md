@@ -25,13 +25,13 @@ Method | HTTP request | Description
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getStakingApi();
-final num body = 8.14; // num | 
+final api_instance = StakingApi();
+final body = num(); // num | 
 
 try {
-    final response = api.applyStaking(body);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.applyStaking(body);
+    print(result);
+} catch (e) {
     print('Exception when calling StakingApi->applyStaking: $e\n');
 }
 ```
@@ -68,14 +68,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getStakingApi();
-final int page = 56; // int | 頁碼
-final int size = 56; // int | 每頁數量
+final api_instance = StakingApi();
+final page = 56; // int | 頁碼
+final size = 56; // int | 每頁數量
 
 try {
-    final response = api.getStakingList(page, size);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getStakingList(page, size);
+    print(result);
+} catch (e) {
     print('Exception when calling StakingApi->getStakingList: $e\n');
 }
 ```
@@ -113,13 +113,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getStakingApi();
-final int stakingId = 789; // int | 質押ID
+final api_instance = StakingApi();
+final stakingId = 789; // int | 質押ID
 
 try {
-    final response = api.unfreezeStaking(stakingId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.unfreezeStaking(stakingId);
+    print(result);
+} catch (e) {
     print('Exception when calling StakingApi->unfreezeStaking: $e\n');
 }
 ```

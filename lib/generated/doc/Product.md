@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **stock** | **int** | 商品庫存 | [optional] 
 **category** | **String** | 商品分類 | [optional] 
 **sellerId** | **int** | 賣家Id | [optional] 
-**imageUrls** | **BuiltSet&lt;String&gt;** | 商品圖片URL列表 | [optional] 
+**imageUrls** | **Set<String>** | 商品圖片URL列表 | [optional] [default to const {}]
 **pickupAddress** | **String** | 取貨地址 | [optional] 
 **longitude** | **double** | 取貨地址經度 | [optional] 
 **latitude** | **double** | 取貨地址緯度 | [optional] 

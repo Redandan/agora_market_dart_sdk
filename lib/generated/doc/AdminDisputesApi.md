@@ -26,13 +26,13 @@ Method | HTTP request | Description
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminDisputesApi();
-final String disputeId = disputeId_example; // String | 糾紛ID
+final api_instance = AdminDisputesApi();
+final disputeId = disputeId_example; // String | 糾紛ID
 
 try {
-    final response = api.getDisputeDetail1(disputeId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getDisputeDetail1(disputeId);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminDisputesApi->getDisputeDetail1: $e\n');
 }
 ```
@@ -69,14 +69,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminDisputesApi();
-final DateTime startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
-final DateTime endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final api_instance = AdminDisputesApi();
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
 
 try {
-    final response = api.getDisputeStatistics(startDate, endDate);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getDisputeStatistics(startDate, endDate);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminDisputesApi->getDisputeStatistics: $e\n');
 }
 ```
@@ -114,14 +114,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminDisputesApi();
-final String disputeId = disputeId_example; // String | 糾紛ID
-final String resolution = resolution_example; // String | 處理結果
-final String comment = comment_example; // String | 處理說明
+final api_instance = AdminDisputesApi();
+final disputeId = disputeId_example; // String | 糾紛ID
+final resolution = resolution_example; // String | 處理結果
+final comment = comment_example; // String | 處理說明
 
 try {
-    api.resolveDispute(disputeId, resolution, comment);
-} catch on DioException (e) {
+    api_instance.resolveDispute(disputeId, resolution, comment);
+} catch (e) {
     print('Exception when calling AdminDisputesApi->resolveDispute: $e\n');
 }
 ```
@@ -160,20 +160,20 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminDisputesApi();
-final int buyerId = 789; // int | 買家ID
-final int sellerId = 789; // int | 賣家ID
-final String status = status_example; // String | 糾紛狀態
-final String type = type_example; // String | 糾紛類型
-final DateTime startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
-final DateTime endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
-final int page = 56; // int | 分頁參數
-final int size = 56; // int | 每頁數量
+final api_instance = AdminDisputesApi();
+final buyerId = 789; // int | 買家ID
+final sellerId = 789; // int | 賣家ID
+final status = status_example; // String | 糾紛狀態
+final type = type_example; // String | 糾紛類型
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final page = 56; // int | 分頁參數
+final size = 56; // int | 每頁數量
 
 try {
-    final response = api.searchDisputes1(buyerId, sellerId, status, type, startDate, endDate, page, size);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.searchDisputes1(buyerId, sellerId, status, type, startDate, endDate, page, size);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminDisputesApi->searchDisputes1: $e\n');
 }
 ```

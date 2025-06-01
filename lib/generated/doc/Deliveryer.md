@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **id** | **int** | 配送員ID | [optional] 
 **userId** | **int** | 用戶ID | [optional] 
 **enabled** | **bool** | 是否啟用 | [optional] 
-**deliveryAreas** | **BuiltSet&lt;String&gt;** | 配送區域 | [optional] 
+**deliveryAreas** | **Set<String>** | 配送區域 | [optional] [default to const {}]
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | 更新時間 | [optional] 
 **deliveringOrderId** | **String** | 正在配送訂單ID | [optional] 

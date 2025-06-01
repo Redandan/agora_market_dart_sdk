@@ -24,14 +24,14 @@ Method | HTTP request | Description
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getMemberCartApi();
-final int productId = 789; // int | 
-final int quantity = 56; // int | 
+final api_instance = MemberCartApi();
+final productId = 789; // int | 
+final quantity = 56; // int | 
 
 try {
-    final response = api.addToCart(productId, quantity);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.addToCart(productId, quantity);
+    print(result);
+} catch (e) {
     print('Exception when calling MemberCartApi->addToCart: $e\n');
 }
 ```
@@ -67,13 +67,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getMemberCartApi();
-final Pageable pageable = ; // Pageable | 分頁參數
+final api_instance = MemberCartApi();
+final pageable = ; // Pageable | 分頁參數
 
 try {
-    final response = api.getUserCart(pageable);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getUserCart(pageable);
+    print(result);
+} catch (e) {
     print('Exception when calling MemberCartApi->getUserCart: $e\n');
 }
 ```
@@ -108,12 +108,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getMemberCartApi();
-final int cartItemId = 789; // int | 
+final api_instance = MemberCartApi();
+final cartItemId = 789; // int | 
 
 try {
-    api.removeFromCart(cartItemId);
-} catch on DioException (e) {
+    api_instance.removeFromCart(cartItemId);
+} catch (e) {
     print('Exception when calling MemberCartApi->removeFromCart: $e\n');
 }
 ```
@@ -148,14 +148,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getMemberCartApi();
-final int cartItemId = 789; // int | 
-final int quantity = 56; // int | 
+final api_instance = MemberCartApi();
+final cartItemId = 789; // int | 
+final quantity = 56; // int | 
 
 try {
-    final response = api.updateQuantity(cartItemId, quantity);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.updateQuantity(cartItemId, quantity);
+    print(result);
+} catch (e) {
     print('Exception when calling MemberCartApi->updateQuantity: $e\n');
 }
 ```

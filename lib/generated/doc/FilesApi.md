@@ -24,12 +24,12 @@ Method | HTTP request | Description
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getFilesApi();
-final String path = path_example; // String | 
+final api_instance = FilesApi();
+final path = path_example; // String | 
 
 try {
-    api.deleteFile(path);
-} catch on DioException (e) {
+    api_instance.deleteFile(path);
+} catch (e) {
     print('Exception when calling FilesApi->deleteFile: $e\n');
 }
 ```
@@ -56,7 +56,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **downloadFile**
-> BuiltList<String> downloadFile(path)
+> List<String> downloadFile(path)
 
 下載文件
 
@@ -64,13 +64,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getFilesApi();
-final String path = path_example; // String | 
+final api_instance = FilesApi();
+final path = path_example; // String | 
 
 try {
-    final response = api.downloadFile(path);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.downloadFile(path);
+    print(result);
+} catch (e) {
     print('Exception when calling FilesApi->downloadFile: $e\n');
 }
 ```
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**BuiltList&lt;String&gt;**
+**List<String>**
 
 ### Authorization
 
@@ -97,7 +97,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFileList**
-> BuiltList<String> getFileList(path)
+> List<String> getFileList(path)
 
 獲取目錄中的文件列表
 
@@ -105,13 +105,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getFilesApi();
-final String path = path_example; // String | 
+final api_instance = FilesApi();
+final path = path_example; // String | 
 
 try {
-    final response = api.getFileList(path);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getFileList(path);
+    print(result);
+} catch (e) {
     print('Exception when calling FilesApi->getFileList: $e\n');
 }
 ```
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**BuiltList&lt;String&gt;**
+**List<String>**
 
 ### Authorization
 
@@ -138,7 +138,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **uploadFile**
-> uploadFile(uploadFileRequest)
+> uploadFile(file)
 
 上傳文件
 
@@ -146,12 +146,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getFilesApi();
-final UploadFileRequest uploadFileRequest = ; // UploadFileRequest | 
+final api_instance = FilesApi();
+final file = BINARY_DATA_HERE; // MultipartFile | 
 
 try {
-    api.uploadFile(uploadFileRequest);
-} catch on DioException (e) {
+    api_instance.uploadFile(file);
+} catch (e) {
     print('Exception when calling FilesApi->uploadFile: $e\n');
 }
 ```
@@ -160,7 +160,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **uploadFileRequest** | [**UploadFileRequest**](UploadFileRequest.md)|  | [optional] 
+ **file** | **MultipartFile**|  | 
 
 ### Return type
 
@@ -172,7 +172,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

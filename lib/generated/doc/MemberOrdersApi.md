@@ -29,12 +29,12 @@ Method | HTTP request | Description
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getMemberOrdersApi();
-final OrderCancelParam orderCancelParam = ; // OrderCancelParam | 
+final api_instance = MemberOrdersApi();
+final orderCancelParam = OrderCancelParam(); // OrderCancelParam | 
 
 try {
-    api.cancelOrder(orderCancelParam);
-} catch on DioException (e) {
+    api_instance.cancelOrder(orderCancelParam);
+} catch (e) {
     print('Exception when calling MemberOrdersApi->cancelOrder: $e\n');
 }
 ```
@@ -71,12 +71,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getMemberOrdersApi();
-final OrderConfirmParam orderConfirmParam = ; // OrderConfirmParam | 
+final api_instance = MemberOrdersApi();
+final orderConfirmParam = OrderConfirmParam(); // OrderConfirmParam | 
 
 try {
-    api.confirmOrder(orderConfirmParam);
-} catch on DioException (e) {
+    api_instance.confirmOrder(orderConfirmParam);
+} catch (e) {
     print('Exception when calling MemberOrdersApi->confirmOrder: $e\n');
 }
 ```
@@ -113,13 +113,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getMemberOrdersApi();
-final String orderId = orderId_example; // String | 訂單ID
+final api_instance = MemberOrdersApi();
+final orderId = orderId_example; // String | 訂單ID
 
 try {
-    final response = api.getOrder(orderId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getOrder(orderId);
+    print(result);
+} catch (e) {
     print('Exception when calling MemberOrdersApi->getOrder: $e\n');
 }
 ```
@@ -156,13 +156,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getMemberOrdersApi();
-final OrderSearchParam searchParam = ; // OrderSearchParam | 查詢參數
+final api_instance = MemberOrdersApi();
+final searchParam = ; // OrderSearchParam | 查詢參數
 
 try {
-    final response = api.searchOrdersByBuyer(searchParam);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.searchOrdersByBuyer(searchParam);
+    print(result);
+} catch (e) {
     print('Exception when calling MemberOrdersApi->searchOrdersByBuyer: $e\n');
 }
 ```
@@ -199,13 +199,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getMemberOrdersApi();
-final OrderSearchParam searchParam = ; // OrderSearchParam | 查詢參數
+final api_instance = MemberOrdersApi();
+final searchParam = ; // OrderSearchParam | 查詢參數
 
 try {
-    final response = api.searchOrdersBySeller(searchParam);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.searchOrdersBySeller(searchParam);
+    print(result);
+} catch (e) {
     print('Exception when calling MemberOrdersApi->searchOrdersBySeller: $e\n');
 }
 ```
@@ -242,12 +242,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getMemberOrdersApi();
-final OrderShipParam orderShipParam = ; // OrderShipParam | 
+final api_instance = MemberOrdersApi();
+final orderShipParam = OrderShipParam(); // OrderShipParam | 
 
 try {
-    api.shipOrder(orderShipParam);
-} catch on DioException (e) {
+    api_instance.shipOrder(orderShipParam);
+} catch (e) {
     print('Exception when calling MemberOrdersApi->shipOrder: $e\n');
 }
 ```
@@ -284,12 +284,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getMemberOrdersApi();
-final OrderSumbitParam orderSumbitParam = ; // OrderSumbitParam | 
+final api_instance = MemberOrdersApi();
+final orderSumbitParam = OrderSumbitParam(); // OrderSumbitParam | 
 
 try {
-    api.submitOrder(orderSumbitParam);
-} catch on DioException (e) {
+    api_instance.submitOrder(orderSumbitParam);
+} catch (e) {
     print('Exception when calling MemberOrdersApi->submitOrder: $e\n');
 }
 ```

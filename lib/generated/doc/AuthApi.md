@@ -29,12 +29,12 @@ Method | HTTP request | Description
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAuthApi();
-final ChangePasswordParam changePasswordParam = ; // ChangePasswordParam | 
+final api_instance = AuthApi();
+final changePasswordParam = ChangePasswordParam(); // ChangePasswordParam | 
 
 try {
-    api.changePassword(changePasswordParam);
-} catch on DioException (e) {
+    api_instance.changePassword(changePasswordParam);
+} catch (e) {
     print('Exception when calling AuthApi->changePassword: $e\n');
 }
 ```
@@ -69,12 +69,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAuthApi();
-final String email = email_example; // String | 用戶郵箱
+final api_instance = AuthApi();
+final email = email_example; // String | 用戶郵箱
 
 try {
-    api.forgotPassword(email);
-} catch on DioException (e) {
+    api_instance.forgotPassword(email);
+} catch (e) {
     print('Exception when calling AuthApi->forgotPassword: $e\n');
 }
 ```
@@ -109,12 +109,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAuthApi();
+final api_instance = AuthApi();
 
 try {
-    final response = api.getCurrentUser();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getCurrentUser();
+    print(result);
+} catch (e) {
     print('Exception when calling AuthApi->getCurrentUser: $e\n');
 }
 ```
@@ -146,13 +146,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAuthApi();
-final LoginParam loginParam = ; // LoginParam | 
+final api_instance = AuthApi();
+final loginParam = LoginParam(); // LoginParam | 
 
 try {
-    final response = api.login(loginParam);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.login(loginParam);
+    print(result);
+} catch (e) {
     print('Exception when calling AuthApi->login: $e\n');
 }
 ```
@@ -187,11 +187,11 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAuthApi();
+final api_instance = AuthApi();
 
 try {
-    api.logout();
-} catch on DioException (e) {
+    api_instance.logout();
+} catch (e) {
     print('Exception when calling AuthApi->logout: $e\n');
 }
 ```
@@ -223,13 +223,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAuthApi();
-final String authorization = authorization_example; // String | 刷新令牌，需要包含 'Bearer ' 前綴
+final api_instance = AuthApi();
+final authorization = authorization_example; // String | 刷新令牌，需要包含 'Bearer ' 前綴
 
 try {
-    final response = api.refreshToken(authorization);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.refreshToken(authorization);
+    print(result);
+} catch (e) {
     print('Exception when calling AuthApi->refreshToken: $e\n');
 }
 ```
@@ -264,13 +264,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAuthApi();
-final RegisterParam registerParam = ; // RegisterParam | 
+final api_instance = AuthApi();
+final registerParam = RegisterParam(); // RegisterParam | 
 
 try {
-    final response = api.register(registerParam);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.register(registerParam);
+    print(result);
+} catch (e) {
     print('Exception when calling AuthApi->register: $e\n');
 }
 ```
@@ -305,12 +305,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAuthApi();
-final PasswordResetParam passwordResetParam = ; // PasswordResetParam | 
+final api_instance = AuthApi();
+final passwordResetParam = PasswordResetParam(); // PasswordResetParam | 
 
 try {
-    api.resetPassword(passwordResetParam);
-} catch on DioException (e) {
+    api_instance.resetPassword(passwordResetParam);
+} catch (e) {
     print('Exception when calling AuthApi->resetPassword: $e\n');
 }
 ```
@@ -345,12 +345,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAuthApi();
-final String token = token_example; // String | 密碼重置令牌
+final api_instance = AuthApi();
+final token = token_example; // String | 密碼重置令牌
 
 try {
-    api.verifyResetToken(token);
-} catch on DioException (e) {
+    api_instance.verifyResetToken(token);
+} catch (e) {
     print('Exception when calling AuthApi->verifyResetToken: $e\n');
 }
 ```

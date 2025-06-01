@@ -1,12 +1,22 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
-import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 
 /// tests for AdminDeliveryApi
 void main() {
-  final instance = AgoraMarketDartSdk().getAdminDeliveryApi();
+  // final instance = AdminDeliveryApi();
 
-  group(AdminDeliveryApi, () {
+  group('tests for AdminDeliveryApi', () {
     // 手動分配配送員
     //
     // 管理員可以手動為訂單分配配送員
@@ -29,7 +39,7 @@ void main() {
     //
     // 獲取配送相關的統計數據
     //
-    //Future<BuiltMap<String, JsonObject>> getDeliveryStatistics({ DateTime startDate, DateTime endDate }) async
+    //Future<Map<String, Object>> getDeliveryStatistics({ DateTime startDate, DateTime endDate }) async
     test('test getDeliveryStatistics', () async {
       // TODO
     });
@@ -47,7 +57,7 @@ void main() {
     //
     // 管理員可根據多個條件搜索配送訂單
     //
-    //Future<BuiltList<DeliveryDetail>> searchDeliveryOrders({ int deliveryerId, String status, DateTime startDate, DateTime endDate }) async
+    //Future<List<DeliveryDetail>> searchDeliveryOrders({ int deliveryerId, String status, DateTime startDate, DateTime endDate }) async
     test('test searchDeliveryOrders', () async {
       // TODO
     });
@@ -56,7 +66,7 @@ void main() {
     //
     // 管理員可根據多個條件搜索配送員，包括位置、狀態等
     //
-    //Future<BuiltList<Deliveryer>> searchDeliveryers({ bool enabled, bool isDelivering, double longitude, double latitude, double radius, DateTime startDate, DateTime endDate }) async
+    //Future<List<Deliveryer>> searchDeliveryers({ bool enabled, bool isDelivering, double longitude, double latitude, double radius, DateTime startDate, DateTime endDate }) async
     test('test searchDeliveryers', () async {
       // TODO
     });

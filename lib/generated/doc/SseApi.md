@@ -26,12 +26,12 @@ Method | HTTP request | Description
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getSseApi();
-final JsonObject body = Object; // JsonObject | 
+final api_instance = SseApi();
+final body = Object(); // Object | 
 
 try {
-    api.broadcastMessage(body);
-} catch on DioException (e) {
+    api_instance.broadcastMessage(body);
+} catch (e) {
     print('Exception when calling SseApi->broadcastMessage: $e\n');
 }
 ```
@@ -40,7 +40,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **JsonObject**|  | 
+ **body** | **Object**|  | 
 
 ### Return type
 
@@ -68,12 +68,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getSseApi();
-final String clientId = clientId_example; // String | 客戶端ID
+final api_instance = SseApi();
+final clientId = clientId_example; // String | 客戶端ID
 
 try {
-    api.connect(clientId);
-} catch on DioException (e) {
+    api_instance.connect(clientId);
+} catch (e) {
     print('Exception when calling SseApi->connect: $e\n');
 }
 ```
@@ -110,12 +110,12 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getSseApi();
-final String clientId = clientId_example; // String | 客戶端ID
+final api_instance = SseApi();
+final clientId = clientId_example; // String | 客戶端ID
 
 try {
-    api.disconnect(clientId);
-} catch on DioException (e) {
+    api_instance.disconnect(clientId);
+} catch (e) {
     print('Exception when calling SseApi->disconnect: $e\n');
 }
 ```
@@ -152,13 +152,13 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getSseApi();
-final String userId = userId_example; // String | 目標用戶ID
-final JsonObject body = Object; // JsonObject | 
+final api_instance = SseApi();
+final userId = userId_example; // String | 目標用戶ID
+final body = Object(); // Object | 
 
 try {
-    api.sendMessageToUser(userId, body);
-} catch on DioException (e) {
+    api_instance.sendMessageToUser(userId, body);
+} catch (e) {
     print('Exception when calling SseApi->sendMessageToUser: $e\n');
 }
 ```
@@ -168,7 +168,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String**| 目標用戶ID | 
- **body** | **JsonObject**|  | 
+ **body** | **Object**|  | 
 
 ### Return type
 

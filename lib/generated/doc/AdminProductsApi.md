@@ -27,13 +27,13 @@ Method | HTTP request | Description
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminProductsApi();
-final int productId = 789; // int | 商品ID
+final api_instance = AdminProductsApi();
+final productId = 789; // int | 商品ID
 
 try {
-    final response = api.getProductDetail(productId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getProductDetail(productId);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminProductsApi->getProductDetail: $e\n');
 }
 ```
@@ -60,7 +60,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getProductStatistics**
-> BuiltMap<String, JsonObject> getProductStatistics(startDate, endDate)
+> Map<String, Object> getProductStatistics(startDate, endDate)
 
 商品統計報告
 
@@ -70,14 +70,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminProductsApi();
-final DateTime startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
-final DateTime endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final api_instance = AdminProductsApi();
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
 
 try {
-    final response = api.getProductStatistics(startDate, endDate);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getProductStatistics(startDate, endDate);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminProductsApi->getProductStatistics: $e\n');
 }
 ```
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltMap&lt;String, JsonObject&gt;**](JsonObject.md)
+[**Map<String, Object>**](Object.md)
 
 ### Authorization
 
@@ -115,19 +115,19 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminProductsApi();
-final int sellerId = 789; // int | 賣家ID
-final String status = status_example; // String | 商品狀態
-final String category = category_example; // String | 商品分類
-final DateTime startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
-final DateTime endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
-final int page = 56; // int | 分頁參數
-final int size = 56; // int | 每頁數量
+final api_instance = AdminProductsApi();
+final sellerId = 789; // int | 賣家ID
+final status = status_example; // String | 商品狀態
+final category = category_example; // String | 商品分類
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final page = 56; // int | 分頁參數
+final size = 56; // int | 每頁數量
 
 try {
-    final response = api.searchProducts(sellerId, status, category, startDate, endDate, page, size);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.searchProducts(sellerId, status, category, startDate, endDate, page, size);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminProductsApi->searchProducts: $e\n');
 }
 ```
@@ -170,14 +170,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminProductsApi();
-final int productId = 789; // int | 商品ID
-final ProductUpdateParam productUpdateParam = ; // ProductUpdateParam | 
+final api_instance = AdminProductsApi();
+final productId = 789; // int | 商品ID
+final productUpdateParam = ProductUpdateParam(); // ProductUpdateParam | 
 
 try {
-    final response = api.updateProductByAdmin(productId, productUpdateParam);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.updateProductByAdmin(productId, productUpdateParam);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminProductsApi->updateProductByAdmin: $e\n');
 }
 ```
@@ -215,14 +215,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminProductsApi();
-final int productId = 789; // int | 商品ID
-final String newStatus = newStatus_example; // String | 新狀態
+final api_instance = AdminProductsApi();
+final productId = 789; // int | 商品ID
+final newStatus = newStatus_example; // String | 新狀態
 
 try {
-    final response = api.updateProductStatus(productId, newStatus);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.updateProductStatus(productId, newStatus);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminProductsApi->updateProductStatus: $e\n');
 }
 ```

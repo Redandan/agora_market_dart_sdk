@@ -1,19 +1,38 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
-import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 // tests for PageableObject
 void main() {
-  final instance = PageableObjectBuilder();
-  // TODO add properties to the builder and call build()
+  // final instance = PageableObject();
 
-  group(PageableObject, () {
-    // bool unpaged
-    test('to test the property `unpaged`', () async {
+  group('test PageableObject', () {
+    // int pageNumber
+    test('to test the property `pageNumber`', () async {
+      // TODO
+    });
+
+    // int pageSize
+    test('to test the property `pageSize`', () async {
       // TODO
     });
 
     // bool paged
     test('to test the property `paged`', () async {
+      // TODO
+    });
+
+    // bool unpaged
+    test('to test the property `unpaged`', () async {
       // TODO
     });
 
@@ -27,15 +46,7 @@ void main() {
       // TODO
     });
 
-    // int pageNumber
-    test('to test the property `pageNumber`', () async {
-      // TODO
-    });
-
-    // int pageSize
-    test('to test the property `pageSize`', () async {
-      // TODO
-    });
 
   });
+
 }

@@ -27,13 +27,13 @@ Method | HTTP request | Description
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminMembersApi();
-final int memberId = 789; // int | 會員ID
+final api_instance = AdminMembersApi();
+final memberId = 789; // int | 會員ID
 
 try {
-    final response = api.getMemberDetail(memberId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getMemberDetail(memberId);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminMembersApi->getMemberDetail: $e\n');
 }
 ```
@@ -60,7 +60,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getMemberStatistics**
-> BuiltMap<String, JsonObject> getMemberStatistics(startDate, endDate)
+> Map<String, Object> getMemberStatistics(startDate, endDate)
 
 會員統計報告
 
@@ -70,14 +70,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminMembersApi();
-final DateTime startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
-final DateTime endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final api_instance = AdminMembersApi();
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
 
 try {
-    final response = api.getMemberStatistics(startDate, endDate);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getMemberStatistics(startDate, endDate);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminMembersApi->getMemberStatistics: $e\n');
 }
 ```
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltMap&lt;String, JsonObject&gt;**](JsonObject.md)
+[**Map<String, Object>**](Object.md)
 
 ### Authorization
 
@@ -115,17 +115,17 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminMembersApi();
-final String status = status_example; // String | 會員狀態
-final DateTime startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
-final DateTime endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
-final int page = 56; // int | 分頁參數
-final int size = 56; // int | 每頁數量
+final api_instance = AdminMembersApi();
+final status = status_example; // String | 會員狀態
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final page = 56; // int | 分頁參數
+final size = 56; // int | 每頁數量
 
 try {
-    final response = api.searchMembers(status, startDate, endDate, page, size);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.searchMembers(status, startDate, endDate, page, size);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminMembersApi->searchMembers: $e\n');
 }
 ```
@@ -166,14 +166,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminMembersApi();
-final int memberId = 789; // int | 會員ID
-final MemberUpdateParam memberUpdateParam = ; // MemberUpdateParam | 
+final api_instance = AdminMembersApi();
+final memberId = 789; // int | 會員ID
+final memberUpdateParam = MemberUpdateParam(); // MemberUpdateParam | 
 
 try {
-    final response = api.updateMemberByAdmin(memberId, memberUpdateParam);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.updateMemberByAdmin(memberId, memberUpdateParam);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminMembersApi->updateMemberByAdmin: $e\n');
 }
 ```
@@ -211,14 +211,14 @@ No authorization required
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
-final api = AgoraMarketDartSdk().getAdminMembersApi();
-final int memberId = 789; // int | 會員ID
-final String newStatus = newStatus_example; // String | 新狀態
+final api_instance = AdminMembersApi();
+final memberId = 789; // int | 會員ID
+final newStatus = newStatus_example; // String | 新狀態
 
 try {
-    final response = api.updateMemberStatus(memberId, newStatus);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.updateMemberStatus(memberId, newStatus);
+    print(result);
+} catch (e) {
     print('Exception when calling AdminMembersApi->updateMemberStatus: $e\n');
 }
 ```
