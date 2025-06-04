@@ -63,6 +63,9 @@ if (-not (Test-Path $swaggerDir)) {
 Write-Host "Downloading latest API documentation..." -ForegroundColor Yellow
 try {
     $apiUrl = "https://agoramarketapi.onrender.com/api/v3/api-docs"
+    # 設置全局超時
+    [System.Net.ServicePointManager]::DefaultConnectionLimit = 1
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
     $webClient = New-Object System.Net.WebClient
     $webClient.Encoding = [System.Text.Encoding]::UTF8
     $jsonContent = $webClient.DownloadString($apiUrl)
@@ -71,18 +74,23 @@ try {
     Write-Host "Successfully downloaded and saved API documentation to $swaggerPath" -ForegroundColor Green
 } catch {
     Write-Host "Error downloading API documentation: $_" -ForegroundColor Red
-    if (Test-Path $swaggerPath) {
-        Write-Host "Using existing swagger.yaml file" -ForegroundColor Yellow
-    } else {
-        Write-Host "Error: No swagger.yaml file available" -ForegroundColor Red
-        exit 1
-    }
-}
-
-if (-not (Test-Path $swaggerPath)) {
-    Write-Host "Error: swagger.yaml not found at $swaggerPath" -ForegroundColor Red
+    Write-Host "Script execution stopped due to download failure." -ForegroundColor Red
     exit 1
 }
+
+# 檢查文件是否成功下載
+if (-not (Test-Path $swaggerPath)) {
+    Write-Host "Error: Failed to create swagger.yaml file" -ForegroundColor Red
+    exit 1
+}
+
+# 檢查文件內容是否為空
+$fileContent = Get-Content $swaggerPath -Raw
+if ([string]::IsNullOrWhiteSpace($fileContent)) {
+    Write-Host "Error: Downloaded swagger.yaml file is empty" -ForegroundColor Red
+    exit 1
+}
+
 Write-Host "Found swagger.yaml at $swaggerPath" -ForegroundColor Green
 
 # 清理舊的生成文件
