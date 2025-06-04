@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**refreshToken**](AuthApi.md#refreshtoken) | **POST** /auth/refresh-token | 刷新訪問令牌
 [**register**](AuthApi.md#register) | **POST** /auth/register | 註冊新用戶
 [**resetPassword**](AuthApi.md#resetpassword) | **POST** /auth/reset-password | 重設密碼
+[**updateProfile**](AuthApi.md#updateprofile) | **POST** /auth/update-profile | 更新用戶資料
 [**verifyResetToken**](AuthApi.md#verifyresettoken) | **POST** /auth/verify-reset-token | 驗證密碼重置令牌
 
 
@@ -333,6 +334,47 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateProfile**
+> UserInfo updateProfile(userProfileUpdateParam)
+
+更新用戶資料
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = AuthApi();
+final userProfileUpdateParam = UserProfileUpdateParam(); // UserProfileUpdateParam | 
+
+try {
+    final result = api_instance.updateProfile(userProfileUpdateParam);
+    print(result);
+} catch (e) {
+    print('Exception when calling AuthApi->updateProfile: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userProfileUpdateParam** | [**UserProfileUpdateParam**](UserProfileUpdateParam.md)|  | 
+
+### Return type
+
+[**UserInfo**](UserInfo.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

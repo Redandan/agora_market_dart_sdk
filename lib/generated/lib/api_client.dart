@@ -238,8 +238,6 @@ class ApiClient {
           return OrderConfirmParam.fromJson(value);
         case 'OrderQueryResult':
           return OrderQueryResult.fromJson(value);
-        case 'OrderSearchParam':
-          return OrderSearchParam.fromJson(value);
         case 'OrderShipParam':
           return OrderShipParam.fromJson(value);
         case 'OrderStatisticsDTO':
@@ -280,8 +278,6 @@ class ApiClient {
           return Product.fromJson(value);
         case 'ProductCreateParam':
           return ProductCreateParam.fromJson(value);
-        case 'ProductSeachParam':
-          return ProductSeachParam.fromJson(value);
         case 'ProductStats':
           return ProductStats.fromJson(value);
         case 'ProductUpdateParam':
@@ -318,6 +314,8 @@ class ApiClient {
           return User.fromJson(value);
         case 'UserInfo':
           return UserInfo.fromJson(value);
+        case 'UserProfileUpdateParam':
+          return UserProfileUpdateParam.fromJson(value);
         case 'Withdraw':
           return Withdraw.fromJson(value);
         default:

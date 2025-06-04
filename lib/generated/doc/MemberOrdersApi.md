@@ -146,7 +146,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchOrdersByBuyer**
-> PageOrder searchOrdersByBuyer(searchParam)
+> PageOrder searchOrdersByBuyer(orderId, productId, status, startDate, endDate, page, size)
 
 查詢訂單列表
 
@@ -157,10 +157,16 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = MemberOrdersApi();
-final searchParam = ; // OrderSearchParam | 查詢參數
+final orderId = orderId_example; // String | 訂單ID
+final productId = 789; // int | 商品ID
+final status = status_example; // String | 訂單狀態
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final page = 56; // int | 分頁參數
+final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.searchOrdersByBuyer(searchParam);
+    final result = api_instance.searchOrdersByBuyer(orderId, productId, status, startDate, endDate, page, size);
     print(result);
 } catch (e) {
     print('Exception when calling MemberOrdersApi->searchOrdersByBuyer: $e\n');
@@ -171,7 +177,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **searchParam** | [**OrderSearchParam**](.md)| 查詢參數 | 
+ **orderId** | **String**| 訂單ID | [optional] 
+ **productId** | **int**| 商品ID | [optional] 
+ **status** | **String**| 訂單狀態 | [optional] 
+ **startDate** | **DateTime**| 開始日期 (yyyy-MM-dd HH:mm:ss) | [optional] 
+ **endDate** | **DateTime**| 結束日期 (yyyy-MM-dd HH:mm:ss) | [optional] 
+ **page** | **int**| 分頁參數 | [optional] [default to 0]
+ **size** | **int**| 每頁數量 | [optional] [default to 20]
 
 ### Return type
 
@@ -189,7 +201,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchOrdersBySeller**
-> PageOrder searchOrdersBySeller(searchParam)
+> PageOrder searchOrdersBySeller(orderId, productId, status, startDate, endDate, page, size)
 
 查詢訂單列表
 
@@ -200,10 +212,16 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = MemberOrdersApi();
-final searchParam = ; // OrderSearchParam | 查詢參數
+final orderId = orderId_example; // String | 訂單ID
+final productId = 789; // int | 商品ID
+final status = status_example; // String | 訂單狀態
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final page = 56; // int | 分頁參數
+final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.searchOrdersBySeller(searchParam);
+    final result = api_instance.searchOrdersBySeller(orderId, productId, status, startDate, endDate, page, size);
     print(result);
 } catch (e) {
     print('Exception when calling MemberOrdersApi->searchOrdersBySeller: $e\n');
@@ -214,7 +232,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **searchParam** | [**OrderSearchParam**](.md)| 查詢參數 | 
+ **orderId** | **String**| 訂單ID | [optional] 
+ **productId** | **int**| 商品ID | [optional] 
+ **status** | **String**| 訂單狀態 | [optional] 
+ **startDate** | **DateTime**| 開始日期 (yyyy-MM-dd HH:mm:ss) | [optional] 
+ **endDate** | **DateTime**| 結束日期 (yyyy-MM-dd HH:mm:ss) | [optional] 
+ **page** | **int**| 分頁參數 | [optional] [default to 0]
+ **size** | **int**| 每頁數量 | [optional] [default to 20]
 
 ### Return type
 

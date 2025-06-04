@@ -48,7 +48,7 @@ void main() {
     //
     // 根據條件查詢訂單列表
     //
-    //Future<PageOrder> searchOrdersByBuyer(OrderSearchParam searchParam) async
+    //Future<PageOrder> searchOrdersByBuyer({ String orderId, int productId, String status, DateTime startDate, DateTime endDate, int page, int size }) async
     test('test searchOrdersByBuyer', () async {
       // TODO
     });
@@ -57,7 +57,7 @@ void main() {
     //
     // 根據條件查詢訂單列表
     //
-    //Future<PageOrder> searchOrdersBySeller(OrderSearchParam searchParam) async
+    //Future<PageOrder> searchOrdersBySeller({ String orderId, int productId, String status, DateTime startDate, DateTime endDate, int page, int size }) async
     test('test searchOrdersBySeller', () async {
       // TODO
     });

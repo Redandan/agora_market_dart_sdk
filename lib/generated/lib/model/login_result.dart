@@ -15,6 +15,9 @@ class LoginResult {
   LoginResult({
     this.token,
     this.refreshToken,
+    this.tokenIssuedAt,
+    this.tokenExpiration,
+    this.refreshTokenExpiration,
     this.userId,
     this.username,
   });
@@ -36,6 +39,33 @@ class LoginResult {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? refreshToken;
+
+  /// 訪問令牌簽發時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? tokenIssuedAt;
+
+  /// 訪問令牌過期時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? tokenExpiration;
+
+  /// 刷新令牌過期時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? refreshTokenExpiration;
 
   /// 用戶ID
   ///
@@ -59,6 +89,9 @@ class LoginResult {
   bool operator ==(Object other) => identical(this, other) || other is LoginResult &&
     other.token == token &&
     other.refreshToken == refreshToken &&
+    other.tokenIssuedAt == tokenIssuedAt &&
+    other.tokenExpiration == tokenExpiration &&
+    other.refreshTokenExpiration == refreshTokenExpiration &&
     other.userId == userId &&
     other.username == username;
 
@@ -67,11 +100,14 @@ class LoginResult {
     // ignore: unnecessary_parenthesis
     (token == null ? 0 : token!.hashCode) +
     (refreshToken == null ? 0 : refreshToken!.hashCode) +
+    (tokenIssuedAt == null ? 0 : tokenIssuedAt!.hashCode) +
+    (tokenExpiration == null ? 0 : tokenExpiration!.hashCode) +
+    (refreshTokenExpiration == null ? 0 : refreshTokenExpiration!.hashCode) +
     (userId == null ? 0 : userId!.hashCode) +
     (username == null ? 0 : username!.hashCode);
 
   @override
-  String toString() => 'LoginResult[token=$token, refreshToken=$refreshToken, userId=$userId, username=$username]';
+  String toString() => 'LoginResult[token=$token, refreshToken=$refreshToken, tokenIssuedAt=$tokenIssuedAt, tokenExpiration=$tokenExpiration, refreshTokenExpiration=$refreshTokenExpiration, userId=$userId, username=$username]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -84,6 +120,21 @@ class LoginResult {
       json[r'refreshToken'] = this.refreshToken;
     } else {
       json[r'refreshToken'] = null;
+    }
+    if (this.tokenIssuedAt != null) {
+      json[r'tokenIssuedAt'] = this.tokenIssuedAt;
+    } else {
+      json[r'tokenIssuedAt'] = null;
+    }
+    if (this.tokenExpiration != null) {
+      json[r'tokenExpiration'] = this.tokenExpiration;
+    } else {
+      json[r'tokenExpiration'] = null;
+    }
+    if (this.refreshTokenExpiration != null) {
+      json[r'refreshTokenExpiration'] = this.refreshTokenExpiration;
+    } else {
+      json[r'refreshTokenExpiration'] = null;
     }
     if (this.userId != null) {
       json[r'userId'] = this.userId;
@@ -119,6 +170,9 @@ class LoginResult {
       return LoginResult(
         token: mapValueOfType<String>(json, r'token'),
         refreshToken: mapValueOfType<String>(json, r'refreshToken'),
+        tokenIssuedAt: mapValueOfType<String>(json, r'tokenIssuedAt'),
+        tokenExpiration: mapValueOfType<String>(json, r'tokenExpiration'),
+        refreshTokenExpiration: mapValueOfType<String>(json, r'refreshTokenExpiration'),
         userId: mapValueOfType<int>(json, r'userId'),
         username: mapValueOfType<String>(json, r'username'),
       );

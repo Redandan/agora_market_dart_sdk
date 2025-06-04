@@ -77,7 +77,6 @@ part 'model/order.dart';
 part 'model/order_cancel_param.dart';
 part 'model/order_confirm_param.dart';
 part 'model/order_query_result.dart';
-part 'model/order_search_param.dart';
 part 'model/order_ship_param.dart';
 part 'model/order_statistics_dto.dart';
 part 'model/order_sumbit_param.dart';
@@ -98,7 +97,6 @@ part 'model/pageable_object.dart';
 part 'model/password_reset_param.dart';
 part 'model/product.dart';
 part 'model/product_create_param.dart';
-part 'model/product_seach_param.dart';
 part 'model/product_stats.dart';
 part 'model/product_update_param.dart';
 part 'model/recharge.dart';
@@ -117,6 +115,7 @@ part 'model/transaction.dart';
 part 'model/update_delivery_order_param.dart';
 part 'model/user.dart';
 part 'model/user_info.dart';
+part 'model/user_profile_update_param.dart';
 part 'model/withdraw.dart';
 
 

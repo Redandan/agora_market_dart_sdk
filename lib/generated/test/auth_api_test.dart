@@ -73,6 +73,13 @@ void main() {
       // TODO
     });
 
+    // 更新用戶資料
+    //
+    //Future<UserInfo> updateProfile(UserProfileUpdateParam userProfileUpdateParam) async
+    test('test updateProfile', () async {
+      // TODO
+    });
+
     // 驗證密碼重置令牌
     //
     //Future verifyResetToken(String token) async

@@ -74,8 +74,24 @@ class ProductsApi {
   ///
   /// Parameters:
   ///
-  /// * [ProductSeachParam] searchParam (required):
-  Future<Response> getMyProductsWithHttpInfo(ProductSeachParam searchParam,) async {
+  /// * [String] status:
+  ///   商品狀態
+  ///
+  /// * [String] category:
+  ///   商品分類
+  ///
+  /// * [DateTime] startDate:
+  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///
+  /// * [DateTime] endDate:
+  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///
+  /// * [int] page:
+  ///   分頁參數
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<Response> getMyProductsWithHttpInfo({ String? status, String? category, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/products/my-products';
 
@@ -86,7 +102,24 @@ class ProductsApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'searchParam', searchParam));
+    if (status != null) {
+      queryParams.addAll(_queryParams('', 'status', status));
+    }
+    if (category != null) {
+      queryParams.addAll(_queryParams('', 'category', category));
+    }
+    if (startDate != null) {
+      queryParams.addAll(_queryParams('', 'startDate', startDate));
+    }
+    if (endDate != null) {
+      queryParams.addAll(_queryParams('', 'endDate', endDate));
+    }
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
 
     const contentTypes = <String>[];
 
@@ -106,9 +139,25 @@ class ProductsApi {
   ///
   /// Parameters:
   ///
-  /// * [ProductSeachParam] searchParam (required):
-  Future<PageProduct?> getMyProducts(ProductSeachParam searchParam,) async {
-    final response = await getMyProductsWithHttpInfo(searchParam,);
+  /// * [String] status:
+  ///   商品狀態
+  ///
+  /// * [String] category:
+  ///   商品分類
+  ///
+  /// * [DateTime] startDate:
+  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///
+  /// * [DateTime] endDate:
+  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///
+  /// * [int] page:
+  ///   分頁參數
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<PageProduct?> getMyProducts({ String? status, String? category, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+    final response = await getMyProductsWithHttpInfo( status: status, category: category, startDate: startDate, endDate: endDate, page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -181,8 +230,39 @@ class ProductsApi {
   ///
   /// Parameters:
   ///
-  /// * [ProductSeachParam] productSeachParam (required):
-  Future<Response> getProductsBySearchWithHttpInfo(ProductSeachParam productSeachParam,) async {
+  /// * [String] id:
+  ///   商品ID
+  ///
+  /// * [int] sellerId:
+  ///   賣家ID
+  ///
+  /// * [String] status:
+  ///   商品狀態
+  ///
+  /// * [String] category:
+  ///   商品分類
+  ///
+  /// * [DateTime] startDate:
+  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///
+  /// * [DateTime] endDate:
+  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///
+  /// * [String] postalCode:
+  ///   郵遞區號
+  ///
+  /// * [double] longitude:
+  ///   經度
+  ///
+  /// * [double] latitude:
+  ///   緯度
+  ///
+  /// * [int] page:
+  ///   分頁參數
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<Response> getProductsBySearchWithHttpInfo({ String? id, int? sellerId, String? status, String? category, DateTime? startDate, DateTime? endDate, String? postalCode, double? longitude, double? latitude, int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/products/search';
 
@@ -193,7 +273,39 @@ class ProductsApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'productSeachParam', productSeachParam));
+    if (id != null) {
+      queryParams.addAll(_queryParams('', 'id', id));
+    }
+    if (sellerId != null) {
+      queryParams.addAll(_queryParams('', 'sellerId', sellerId));
+    }
+    if (status != null) {
+      queryParams.addAll(_queryParams('', 'status', status));
+    }
+    if (category != null) {
+      queryParams.addAll(_queryParams('', 'category', category));
+    }
+    if (startDate != null) {
+      queryParams.addAll(_queryParams('', 'startDate', startDate));
+    }
+    if (endDate != null) {
+      queryParams.addAll(_queryParams('', 'endDate', endDate));
+    }
+    if (postalCode != null) {
+      queryParams.addAll(_queryParams('', 'postalCode', postalCode));
+    }
+    if (longitude != null) {
+      queryParams.addAll(_queryParams('', 'longitude', longitude));
+    }
+    if (latitude != null) {
+      queryParams.addAll(_queryParams('', 'latitude', latitude));
+    }
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
 
     const contentTypes = <String>[];
 
@@ -213,9 +325,40 @@ class ProductsApi {
   ///
   /// Parameters:
   ///
-  /// * [ProductSeachParam] productSeachParam (required):
-  Future<PageProduct?> getProductsBySearch(ProductSeachParam productSeachParam,) async {
-    final response = await getProductsBySearchWithHttpInfo(productSeachParam,);
+  /// * [String] id:
+  ///   商品ID
+  ///
+  /// * [int] sellerId:
+  ///   賣家ID
+  ///
+  /// * [String] status:
+  ///   商品狀態
+  ///
+  /// * [String] category:
+  ///   商品分類
+  ///
+  /// * [DateTime] startDate:
+  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///
+  /// * [DateTime] endDate:
+  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///
+  /// * [String] postalCode:
+  ///   郵遞區號
+  ///
+  /// * [double] longitude:
+  ///   經度
+  ///
+  /// * [double] latitude:
+  ///   緯度
+  ///
+  /// * [int] page:
+  ///   分頁參數
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<PageProduct?> getProductsBySearch({ String? id, int? sellerId, String? status, String? category, DateTime? startDate, DateTime? endDate, String? postalCode, double? longitude, double? latitude, int? page, int? size, }) async {
+    final response = await getProductsBySearchWithHttpInfo( id: id, sellerId: sellerId, status: status, category: category, startDate: startDate, endDate: endDate, postalCode: postalCode, longitude: longitude, latitude: latitude, page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

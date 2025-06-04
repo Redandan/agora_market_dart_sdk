@@ -10,6 +10,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **token** | **String** | 訪問令牌 | [optional] 
 **refreshToken** | **String** | 刷新令牌 | [optional] 
+**tokenIssuedAt** | **String** | 訪問令牌簽發時間 | [optional] 
+**tokenExpiration** | **String** | 訪問令牌過期時間 | [optional] 
+**refreshTokenExpiration** | **String** | 刷新令牌過期時間 | [optional] 
 **userId** | **int** | 用戶ID | [optional] 
 **username** | **String** | 用戶名 | [optional] 
 

@@ -26,7 +26,7 @@ void main() {
 
     // 獲取賣家自己的商品列表
     //
-    //Future<PageProduct> getMyProducts(ProductSeachParam searchParam) async
+    //Future<PageProduct> getMyProducts({ String status, String category, DateTime startDate, DateTime endDate, int page, int size }) async
     test('test getMyProducts', () async {
       // TODO
     });
@@ -40,7 +40,7 @@ void main() {
 
     // 搜索商品
     //
-    //Future<PageProduct> getProductsBySearch(ProductSeachParam productSeachParam) async
+    //Future<PageProduct> getProductsBySearch({ String id, int sellerId, String status, String category, DateTime startDate, DateTime endDate, String postalCode, double longitude, double latitude, int page, int size }) async
     test('test getProductsBySearch', () async {
       // TODO
     });

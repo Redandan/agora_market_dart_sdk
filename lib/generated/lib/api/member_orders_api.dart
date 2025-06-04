@@ -179,9 +179,27 @@ class MemberOrdersApi {
   ///
   /// Parameters:
   ///
-  /// * [OrderSearchParam] searchParam (required):
-  ///   查詢參數
-  Future<Response> searchOrdersByBuyerWithHttpInfo(OrderSearchParam searchParam,) async {
+  /// * [String] orderId:
+  ///   訂單ID
+  ///
+  /// * [int] productId:
+  ///   商品ID
+  ///
+  /// * [String] status:
+  ///   訂單狀態
+  ///
+  /// * [DateTime] startDate:
+  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///
+  /// * [DateTime] endDate:
+  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///
+  /// * [int] page:
+  ///   分頁參數
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<Response> searchOrdersByBuyerWithHttpInfo({ String? orderId, int? productId, String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/orders/buyer';
 
@@ -192,7 +210,27 @@ class MemberOrdersApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'searchParam', searchParam));
+    if (orderId != null) {
+      queryParams.addAll(_queryParams('', 'orderId', orderId));
+    }
+    if (productId != null) {
+      queryParams.addAll(_queryParams('', 'productId', productId));
+    }
+    if (status != null) {
+      queryParams.addAll(_queryParams('', 'status', status));
+    }
+    if (startDate != null) {
+      queryParams.addAll(_queryParams('', 'startDate', startDate));
+    }
+    if (endDate != null) {
+      queryParams.addAll(_queryParams('', 'endDate', endDate));
+    }
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
 
     const contentTypes = <String>[];
 
@@ -214,10 +252,28 @@ class MemberOrdersApi {
   ///
   /// Parameters:
   ///
-  /// * [OrderSearchParam] searchParam (required):
-  ///   查詢參數
-  Future<PageOrder?> searchOrdersByBuyer(OrderSearchParam searchParam,) async {
-    final response = await searchOrdersByBuyerWithHttpInfo(searchParam,);
+  /// * [String] orderId:
+  ///   訂單ID
+  ///
+  /// * [int] productId:
+  ///   商品ID
+  ///
+  /// * [String] status:
+  ///   訂單狀態
+  ///
+  /// * [DateTime] startDate:
+  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///
+  /// * [DateTime] endDate:
+  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///
+  /// * [int] page:
+  ///   分頁參數
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<PageOrder?> searchOrdersByBuyer({ String? orderId, int? productId, String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+    final response = await searchOrdersByBuyerWithHttpInfo( orderId: orderId, productId: productId, status: status, startDate: startDate, endDate: endDate, page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -239,9 +295,27 @@ class MemberOrdersApi {
   ///
   /// Parameters:
   ///
-  /// * [OrderSearchParam] searchParam (required):
-  ///   查詢參數
-  Future<Response> searchOrdersBySellerWithHttpInfo(OrderSearchParam searchParam,) async {
+  /// * [String] orderId:
+  ///   訂單ID
+  ///
+  /// * [int] productId:
+  ///   商品ID
+  ///
+  /// * [String] status:
+  ///   訂單狀態
+  ///
+  /// * [DateTime] startDate:
+  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///
+  /// * [DateTime] endDate:
+  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///
+  /// * [int] page:
+  ///   分頁參數
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<Response> searchOrdersBySellerWithHttpInfo({ String? orderId, int? productId, String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/orders/seller';
 
@@ -252,7 +326,27 @@ class MemberOrdersApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'searchParam', searchParam));
+    if (orderId != null) {
+      queryParams.addAll(_queryParams('', 'orderId', orderId));
+    }
+    if (productId != null) {
+      queryParams.addAll(_queryParams('', 'productId', productId));
+    }
+    if (status != null) {
+      queryParams.addAll(_queryParams('', 'status', status));
+    }
+    if (startDate != null) {
+      queryParams.addAll(_queryParams('', 'startDate', startDate));
+    }
+    if (endDate != null) {
+      queryParams.addAll(_queryParams('', 'endDate', endDate));
+    }
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
 
     const contentTypes = <String>[];
 
@@ -274,10 +368,28 @@ class MemberOrdersApi {
   ///
   /// Parameters:
   ///
-  /// * [OrderSearchParam] searchParam (required):
-  ///   查詢參數
-  Future<PageOrder?> searchOrdersBySeller(OrderSearchParam searchParam,) async {
-    final response = await searchOrdersBySellerWithHttpInfo(searchParam,);
+  /// * [String] orderId:
+  ///   訂單ID
+  ///
+  /// * [int] productId:
+  ///   商品ID
+  ///
+  /// * [String] status:
+  ///   訂單狀態
+  ///
+  /// * [DateTime] startDate:
+  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///
+  /// * [DateTime] endDate:
+  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///
+  /// * [int] page:
+  ///   分頁參數
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<PageOrder?> searchOrdersBySeller({ String? orderId, int? productId, String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+    final response = await searchOrdersBySellerWithHttpInfo( orderId: orderId, productId: productId, status: status, startDate: startDate, endDate: endDate, page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

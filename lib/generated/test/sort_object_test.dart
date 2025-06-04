@@ -16,13 +16,13 @@ void main() {
   // final instance = SortObject();
 
   group('test SortObject', () {
-    // bool sorted
-    test('to test the property `sorted`', () async {
+    // bool unsorted
+    test('to test the property `unsorted`', () async {
       // TODO
     });
 
-    // bool unsorted
-    test('to test the property `unsorted`', () async {
+    // bool sorted
+    test('to test the property `sorted`', () async {
       // TODO
     });
 

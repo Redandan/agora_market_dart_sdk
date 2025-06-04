@@ -113,6 +113,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**refreshToken**](doc//AuthApi.md#refreshtoken) | **POST** /auth/refresh-token | 刷新訪問令牌
 *AuthApi* | [**register**](doc//AuthApi.md#register) | **POST** /auth/register | 註冊新用戶
 *AuthApi* | [**resetPassword**](doc//AuthApi.md#resetpassword) | **POST** /auth/reset-password | 重設密碼
+*AuthApi* | [**updateProfile**](doc//AuthApi.md#updateprofile) | **POST** /auth/update-profile | 更新用戶資料
 *AuthApi* | [**verifyResetToken**](doc//AuthApi.md#verifyresettoken) | **POST** /auth/verify-reset-token | 驗證密碼重置令牌
 *ChatApi* | [**clearSession**](doc//ChatApi.md#clearsession) | **DELETE** /chat/sessions/{sessionId}/messages | 清空會話
 *ChatApi* | [**deleteMessage**](doc//ChatApi.md#deletemessage) | **DELETE** /chat/messages/{messageId} | 刪除消息
@@ -204,7 +205,6 @@ Class | Method | HTTP request | Description
  - [OrderCancelParam](doc//OrderCancelParam.md)
  - [OrderConfirmParam](doc//OrderConfirmParam.md)
  - [OrderQueryResult](doc//OrderQueryResult.md)
- - [OrderSearchParam](doc//OrderSearchParam.md)
  - [OrderShipParam](doc//OrderShipParam.md)
  - [OrderStatisticsDTO](doc//OrderStatisticsDTO.md)
  - [OrderSumbitParam](doc//OrderSumbitParam.md)
@@ -225,7 +225,6 @@ Class | Method | HTTP request | Description
  - [PasswordResetParam](doc//PasswordResetParam.md)
  - [Product](doc//Product.md)
  - [ProductCreateParam](doc//ProductCreateParam.md)
- - [ProductSeachParam](doc//ProductSeachParam.md)
  - [ProductStats](doc//ProductStats.md)
  - [ProductUpdateParam](doc//ProductUpdateParam.md)
  - [Recharge](doc//Recharge.md)
@@ -244,6 +243,7 @@ Class | Method | HTTP request | Description
  - [UpdateDeliveryOrderParam](doc//UpdateDeliveryOrderParam.md)
  - [User](doc//User.md)
  - [UserInfo](doc//UserInfo.md)
+ - [UserProfileUpdateParam](doc//UserProfileUpdateParam.md)
  - [Withdraw](doc//Withdraw.md)
 
 

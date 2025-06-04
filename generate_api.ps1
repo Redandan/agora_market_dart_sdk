@@ -51,6 +51,34 @@ if (-not (Test-Path $generatorPath)) {
 # 檢查 swagger.yaml 文件
 Write-Host "Checking swagger.yaml file..." -ForegroundColor Yellow
 $swaggerPath = "lib/api/swagger.yaml"
+
+# 確保目錄存在
+$swaggerDir = Split-Path -Parent $swaggerPath
+if (-not (Test-Path $swaggerDir)) {
+    New-Item -ItemType Directory -Path $swaggerDir -Force | Out-Null
+    Write-Host "Created directory: $swaggerDir" -ForegroundColor Green
+}
+
+# 下載最新的 API 文檔
+Write-Host "Downloading latest API documentation..." -ForegroundColor Yellow
+try {
+    $apiUrl = "https://agoramarketapi.onrender.com/api/v3/api-docs"
+    $webClient = New-Object System.Net.WebClient
+    $webClient.Encoding = [System.Text.Encoding]::UTF8
+    $jsonContent = $webClient.DownloadString($apiUrl)
+    # 直接寫入文件，不進行任何轉換
+    [System.IO.File]::WriteAllText($swaggerPath, $jsonContent, [System.Text.Encoding]::UTF8)
+    Write-Host "Successfully downloaded and saved API documentation to $swaggerPath" -ForegroundColor Green
+} catch {
+    Write-Host "Error downloading API documentation: $_" -ForegroundColor Red
+    if (Test-Path $swaggerPath) {
+        Write-Host "Using existing swagger.yaml file" -ForegroundColor Yellow
+    } else {
+        Write-Host "Error: No swagger.yaml file available" -ForegroundColor Red
+        exit 1
+    }
+}
+
 if (-not (Test-Path $swaggerPath)) {
     Write-Host "Error: swagger.yaml not found at $swaggerPath" -ForegroundColor Red
     exit 1
