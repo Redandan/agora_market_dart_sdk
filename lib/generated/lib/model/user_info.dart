@@ -19,6 +19,7 @@ class UserInfo {
     this.role,
     this.balance,
     this.stackingBalance,
+    this.freezeBalance,
     this.enabled,
     this.queryTime,
   });
@@ -77,6 +78,15 @@ class UserInfo {
   ///
   num? stackingBalance;
 
+  /// 凍結餘額
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? freezeBalance;
+
   /// 是否啟用
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -103,6 +113,7 @@ class UserInfo {
     other.role == role &&
     other.balance == balance &&
     other.stackingBalance == stackingBalance &&
+    other.freezeBalance == freezeBalance &&
     other.enabled == enabled &&
     other.queryTime == queryTime;
 
@@ -115,11 +126,12 @@ class UserInfo {
     (role == null ? 0 : role!.hashCode) +
     (balance == null ? 0 : balance!.hashCode) +
     (stackingBalance == null ? 0 : stackingBalance!.hashCode) +
+    (freezeBalance == null ? 0 : freezeBalance!.hashCode) +
     (enabled == null ? 0 : enabled!.hashCode) +
     (queryTime == null ? 0 : queryTime!.hashCode);
 
   @override
-  String toString() => 'UserInfo[id=$id, username=$username, email=$email, role=$role, balance=$balance, stackingBalance=$stackingBalance, enabled=$enabled, queryTime=$queryTime]';
+  String toString() => 'UserInfo[id=$id, username=$username, email=$email, role=$role, balance=$balance, stackingBalance=$stackingBalance, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -152,6 +164,11 @@ class UserInfo {
       json[r'stackingBalance'] = this.stackingBalance;
     } else {
       json[r'stackingBalance'] = null;
+    }
+    if (this.freezeBalance != null) {
+      json[r'freezeBalance'] = this.freezeBalance;
+    } else {
+      json[r'freezeBalance'] = null;
     }
     if (this.enabled != null) {
       json[r'enabled'] = this.enabled;
@@ -191,6 +208,7 @@ class UserInfo {
         role: mapValueOfType<String>(json, r'role'),
         balance: num.parse('${json[r'balance']}'),
         stackingBalance: num.parse('${json[r'stackingBalance']}'),
+        freezeBalance: num.parse('${json[r'freezeBalance']}'),
         enabled: mapValueOfType<bool>(json, r'enabled'),
         queryTime: mapDateTime(json, r'queryTime', r''),
       );

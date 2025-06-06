@@ -52,6 +52,12 @@ void main() {
       // TODO
     });
 
+    // 凍結餘額
+    // num freezeBalance
+    test('to test the property `freezeBalance`', () async {
+      // TODO
+    });
+
     // 是否啟用
     // bool enabled
     test('to test the property `enabled`', () async {

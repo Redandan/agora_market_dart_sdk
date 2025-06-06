@@ -49,6 +49,7 @@ part 'api/staking_api.dart';
 part 'api/stores_api.dart';
 part 'api/test_data_controller_api.dart';
 
+part 'model/admin_create_user_param.dart';
 part 'model/cart_item.dart';
 part 'model/cart_summary_dto.dart';
 part 'model/change_password_param.dart';

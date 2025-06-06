@@ -182,6 +182,8 @@ class ApiClient {
           return valueString == 'true' || valueString == '1';
         case 'DateTime':
           return value is DateTime ? value : DateTime.tryParse(value);
+        case 'AdminCreateUserParam':
+          return AdminCreateUserParam.fromJson(value);
         case 'CartItem':
           return CartItem.fromJson(value);
         case 'CartSummaryDTO':

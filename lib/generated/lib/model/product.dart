@@ -17,6 +17,8 @@ class Product {
     this.title,
     this.description,
     this.price,
+    this.currency,
+    this.shippingFee,
     this.stock,
     this.category,
     this.sellerId,
@@ -70,6 +72,24 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? price;
+
+  /// 貨幣類型
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? currency;
+
+  /// 賣家出貨費用
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? shippingFee;
 
   /// 商品庫存
   ///
@@ -201,6 +221,8 @@ class Product {
     other.title == title &&
     other.description == description &&
     other.price == price &&
+    other.currency == currency &&
+    other.shippingFee == shippingFee &&
     other.stock == stock &&
     other.category == category &&
     other.sellerId == sellerId &&
@@ -225,6 +247,8 @@ class Product {
     (title == null ? 0 : title!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (price == null ? 0 : price!.hashCode) +
+    (currency == null ? 0 : currency!.hashCode) +
+    (shippingFee == null ? 0 : shippingFee!.hashCode) +
     (stock == null ? 0 : stock!.hashCode) +
     (category == null ? 0 : category!.hashCode) +
     (sellerId == null ? 0 : sellerId!.hashCode) +
@@ -243,7 +267,7 @@ class Product {
     (tags == null ? 0 : tags!.hashCode);
 
   @override
-  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, stock=$stock, category=$category, sellerId=$sellerId, imageUrls=$imageUrls, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStartString=$pickupTimeStartString, pickupTimeEndString=$pickupTimeEndString, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags]';
+  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrls=$imageUrls, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStartString=$pickupTimeStartString, pickupTimeEndString=$pickupTimeEndString, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -266,6 +290,16 @@ class Product {
       json[r'price'] = this.price;
     } else {
       json[r'price'] = null;
+    }
+    if (this.currency != null) {
+      json[r'currency'] = this.currency;
+    } else {
+      json[r'currency'] = null;
+    }
+    if (this.shippingFee != null) {
+      json[r'shippingFee'] = this.shippingFee;
+    } else {
+      json[r'shippingFee'] = null;
     }
     if (this.stock != null) {
       json[r'stock'] = this.stock;
@@ -369,6 +403,8 @@ class Product {
         title: mapValueOfType<String>(json, r'title'),
         description: mapValueOfType<String>(json, r'description'),
         price: num.parse('${json[r'price']}'),
+        currency: mapValueOfType<String>(json, r'currency'),
+        shippingFee: num.parse('${json[r'shippingFee']}'),
         stock: mapValueOfType<int>(json, r'stock'),
         category: ProductCategoryEnum.fromJson(json[r'category']),
         sellerId: mapValueOfType<int>(json, r'sellerId'),

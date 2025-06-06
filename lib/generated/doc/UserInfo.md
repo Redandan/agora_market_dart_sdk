@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **role** | **String** | 角色 | [optional] 
 **balance** | **num** | 餘額 | [optional] 
 **stackingBalance** | **num** | 質押餘額 | [optional] 
+**freezeBalance** | **num** | 凍結餘額 | [optional] 
 **enabled** | **bool** | 是否啟用 | [optional] 
 **queryTime** | [**DateTime**](DateTime.md) | 查詢時間 | [optional] 
 

@@ -106,6 +106,7 @@ Class | Method | HTTP request | Description
 *AdminProductsApi* | [**updateProductByAdmin**](doc//AdminProductsApi.md#updateproductbyadmin) | **POST** /admin/products/{productId}/update | 更新商品
 *AdminProductsApi* | [**updateProductStatus**](doc//AdminProductsApi.md#updateproductstatus) | **POST** /admin/products/{productId}/status | 更新商品狀態
 *AuthApi* | [**changePassword**](doc//AuthApi.md#changepassword) | **POST** /auth/change-password | 修改密碼
+*AuthApi* | [**createUserByAdmin**](doc//AuthApi.md#createuserbyadmin) | **POST** /auth/admin/create-user | 管理員創建用戶
 *AuthApi* | [**forgotPassword**](doc//AuthApi.md#forgotpassword) | **POST** /auth/forgot-password | 發送密碼重置郵件
 *AuthApi* | [**getCurrentUser**](doc//AuthApi.md#getcurrentuser) | **GET** /auth/me | 獲取當前用戶信息
 *AuthApi* | [**login**](doc//AuthApi.md#login) | **POST** /auth/login | 用戶登入
@@ -177,6 +178,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
  - [CartItem](doc//CartItem.md)
  - [CartSummaryDTO](doc//CartSummaryDTO.md)
  - [ChangePasswordParam](doc//ChangePasswordParam.md)

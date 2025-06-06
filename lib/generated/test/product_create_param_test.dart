@@ -28,6 +28,18 @@ void main() {
       // TODO
     });
 
+    // 賣家出貨費用
+    // num shippingFee
+    test('to test the property `shippingFee`', () async {
+      // TODO
+    });
+
+    // 貨幣類型
+    // String currency
+    test('to test the property `currency`', () async {
+      // TODO
+    });
+
     // 商品庫存
     // int stock
     test('to test the property `stock`', () async {

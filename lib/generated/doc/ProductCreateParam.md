@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **String** | 商品名稱 | 
 **price** | **num** | 商品價格 | 
+**shippingFee** | **num** | 賣家出貨費用 | [optional] 
+**currency** | **String** | 貨幣類型 | [optional] 
 **stock** | **int** | 商品庫存 | 
 **description** | **String** | 商品描述 | 
 **category** | **String** | 商品分類 | 

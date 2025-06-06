@@ -15,6 +15,8 @@ class ProductCreateParam {
   ProductCreateParam({
     required this.title,
     required this.price,
+    this.shippingFee,
+    this.currency,
     required this.stock,
     required this.description,
     required this.category,
@@ -31,6 +33,24 @@ class ProductCreateParam {
 
   /// 商品價格
   num price;
+
+  /// 賣家出貨費用
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? shippingFee;
+
+  /// 貨幣類型
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? currency;
 
   /// 商品庫存
   int stock;
@@ -79,6 +99,8 @@ class ProductCreateParam {
   bool operator ==(Object other) => identical(this, other) || other is ProductCreateParam &&
     other.title == title &&
     other.price == price &&
+    other.shippingFee == shippingFee &&
+    other.currency == currency &&
     other.stock == stock &&
     other.description == description &&
     other.category == category &&
@@ -94,6 +116,8 @@ class ProductCreateParam {
     // ignore: unnecessary_parenthesis
     (title.hashCode) +
     (price.hashCode) +
+    (shippingFee == null ? 0 : shippingFee!.hashCode) +
+    (currency == null ? 0 : currency!.hashCode) +
     (stock.hashCode) +
     (description.hashCode) +
     (category.hashCode) +
@@ -105,12 +129,22 @@ class ProductCreateParam {
     (pickupAddress == null ? 0 : pickupAddress!.hashCode);
 
   @override
-  String toString() => 'ProductCreateParam[title=$title, price=$price, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, pickupTimeStartString=$pickupTimeStartString, pickupTimeEndString=$pickupTimeEndString, pickupAddress=$pickupAddress]';
+  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, pickupTimeStartString=$pickupTimeStartString, pickupTimeEndString=$pickupTimeEndString, pickupAddress=$pickupAddress]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'title'] = this.title;
       json[r'price'] = this.price;
+    if (this.shippingFee != null) {
+      json[r'shippingFee'] = this.shippingFee;
+    } else {
+      json[r'shippingFee'] = null;
+    }
+    if (this.currency != null) {
+      json[r'currency'] = this.currency;
+    } else {
+      json[r'currency'] = null;
+    }
       json[r'stock'] = this.stock;
       json[r'description'] = this.description;
       json[r'category'] = this.category;
@@ -156,6 +190,8 @@ class ProductCreateParam {
       return ProductCreateParam(
         title: mapValueOfType<String>(json, r'title')!,
         price: num.parse('${json[r'price']}'),
+        shippingFee: num.parse('${json[r'shippingFee']}'),
+        currency: mapValueOfType<String>(json, r'currency'),
         stock: mapValueOfType<int>(json, r'stock')!,
         description: mapValueOfType<String>(json, r'description')!,
         category: ProductCreateParamCategoryEnum.fromJson(json[r'category'])!,

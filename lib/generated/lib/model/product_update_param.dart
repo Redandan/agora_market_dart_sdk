@@ -16,6 +16,7 @@ class ProductUpdateParam {
     required this.id,
     this.name,
     this.price,
+    this.currency,
     this.stock,
     this.description,
     this.category,
@@ -23,6 +24,7 @@ class ProductUpdateParam {
     required this.longitude,
     required this.latitude,
     this.status,
+    this.shippingFee,
   });
 
   /// 商品ID
@@ -45,6 +47,15 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? price;
+
+  /// 貨幣類型
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? currency;
 
   /// 商品庫存
   ///
@@ -85,18 +96,29 @@ class ProductUpdateParam {
   /// 商品狀態
   ProductUpdateParamStatusEnum? status;
 
+  /// 賣家出貨費用
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? shippingFee;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductUpdateParam &&
     other.id == id &&
     other.name == name &&
     other.price == price &&
+    other.currency == currency &&
     other.stock == stock &&
     other.description == description &&
     other.category == category &&
     _deepEquality.equals(other.imageUrls, imageUrls) &&
     other.longitude == longitude &&
     other.latitude == latitude &&
-    other.status == status;
+    other.status == status &&
+    other.shippingFee == shippingFee;
 
   @override
   int get hashCode =>
@@ -104,16 +126,18 @@ class ProductUpdateParam {
     (id.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (price == null ? 0 : price!.hashCode) +
+    (currency == null ? 0 : currency!.hashCode) +
     (stock == null ? 0 : stock!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (category == null ? 0 : category!.hashCode) +
     (imageUrls.hashCode) +
     (longitude.hashCode) +
     (latitude.hashCode) +
-    (status == null ? 0 : status!.hashCode);
+    (status == null ? 0 : status!.hashCode) +
+    (shippingFee == null ? 0 : shippingFee!.hashCode);
 
   @override
-  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, status=$status]';
+  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, status=$status, shippingFee=$shippingFee]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -127,6 +151,11 @@ class ProductUpdateParam {
       json[r'price'] = this.price;
     } else {
       json[r'price'] = null;
+    }
+    if (this.currency != null) {
+      json[r'currency'] = this.currency;
+    } else {
+      json[r'currency'] = null;
     }
     if (this.stock != null) {
       json[r'stock'] = this.stock;
@@ -150,6 +179,11 @@ class ProductUpdateParam {
       json[r'status'] = this.status;
     } else {
       json[r'status'] = null;
+    }
+    if (this.shippingFee != null) {
+      json[r'shippingFee'] = this.shippingFee;
+    } else {
+      json[r'shippingFee'] = null;
     }
     return json;
   }
@@ -176,6 +210,7 @@ class ProductUpdateParam {
         id: mapValueOfType<String>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name'),
         price: num.parse('${json[r'price']}'),
+        currency: mapValueOfType<String>(json, r'currency'),
         stock: mapValueOfType<int>(json, r'stock'),
         description: mapValueOfType<String>(json, r'description'),
         category: mapValueOfType<String>(json, r'category'),
@@ -185,6 +220,7 @@ class ProductUpdateParam {
         longitude: mapValueOfType<double>(json, r'longitude')!,
         latitude: mapValueOfType<double>(json, r'latitude')!,
         status: ProductUpdateParamStatusEnum.fromJson(json[r'status']),
+        shippingFee: num.parse('${json[r'shippingFee']}'),
       );
     }
     return null;
