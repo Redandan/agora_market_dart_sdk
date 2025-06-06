@@ -67,7 +67,12 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**createWithdraw**](doc//DefaultApi.md#createwithdraw) | **POST** /withdraws | 發起提款
 *DefaultApi* | [**failWithdraw**](doc//DefaultApi.md#failwithdraw) | **POST** /withdraws/{withdrawId}/fail | 提款失敗
 *DefaultApi* | [**getAdminTransactionList**](doc//DefaultApi.md#getadmintransactionlist) | **GET** /transactions/admin/user/{userId}/list | 管理員查看指定會員的交易記錄
-*DefaultApi* | [**getDeliveryTypes**](doc//DefaultApi.md#getdeliverytypes) | **GET** /public/config | 獲取系統配置
+*DefaultApi* | [**getAllActive**](doc//DefaultApi.md#getallactive) | **GET** /postal-areas | 獲取所有啟用的郵遞區號
+*DefaultApi* | [**getByCity**](doc//DefaultApi.md#getbycity) | **GET** /postal-areas/city/{city} | 根據城市查詢
+*DefaultApi* | [**getByCityAndDistrict**](doc//DefaultApi.md#getbycityanddistrict) | **GET** /postal-areas/city/{city}/district/{district} | 根據城市和行政區查詢
+*DefaultApi* | [**getByPostalCode**](doc//DefaultApi.md#getbypostalcode) | **GET** /postal-areas/code/{postalCode} | 根據郵遞區號查詢
+*DefaultApi* | [**getCities**](doc//DefaultApi.md#getcities) | **GET** /postal-areas/cities | 獲取城市列表
+*DefaultApi* | [**getDistrictsByCity**](doc//DefaultApi.md#getdistrictsbycity) | **GET** /postal-areas/cities/{city}/districts | 獲取城市行政區列表
 *DefaultApi* | [**getRecharge**](doc//DefaultApi.md#getrecharge) | **GET** /recharge/{rechargeId} | 獲取充值詳情
 *DefaultApi* | [**getRechargeByReceiveAddress**](doc//DefaultApi.md#getrechargebyreceiveaddress) | **GET** /recharge/address/{receiveAddress} | 通過接收地址查詢充值
 *DefaultApi* | [**getRechargeByTxHash**](doc//DefaultApi.md#getrechargebytxhash) | **GET** /recharge/tx/{txHash} | 通過交易哈希查詢充值
@@ -76,6 +81,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getTransactionList**](doc//DefaultApi.md#gettransactionlist) | **GET** /transactions/{token}/list | 查詢帳變歷史
 *DefaultApi* | [**getWithdraw**](doc//DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 *DefaultApi* | [**getWithdrawHistory**](doc//DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
+*DefaultApi* | [**search**](doc//DefaultApi.md#search) | **GET** /postal-areas/search | 搜索郵遞區號
 *AdminCartApi* | [**clearUserCart**](doc//AdminCartApi.md#clearusercart) | **DELETE** /admin/cart/user/{userId} | 清空指定用戶的購物車
 *AdminCartApi* | [**getCartSummary**](doc//AdminCartApi.md#getcartsummary) | **GET** /admin/cart/summary | 購物車統計報告
 *AdminCartApi* | [**removeCartItem**](doc//AdminCartApi.md#removecartitem) | **DELETE** /admin/cart/item/{cartItemId} | 刪除指定購物車項目
@@ -119,6 +125,7 @@ Class | Method | HTTP request | Description
 *ChatApi* | [**clearSession**](doc//ChatApi.md#clearsession) | **DELETE** /chat/sessions/{sessionId}/messages | 清空會話
 *ChatApi* | [**deleteMessage**](doc//ChatApi.md#deletemessage) | **DELETE** /chat/messages/{messageId} | 刪除消息
 *ChatApi* | [**deleteSession**](doc//ChatApi.md#deletesession) | **DELETE** /chat/sessions/{sessionId} | 刪除會話
+*ChatApi* | [**getOrCreateSession**](doc//ChatApi.md#getorcreatesession) | **GET** /chat/sessions/receiver/{receiverId} | 獲取或創建與指定用戶的會話
 *ChatApi* | [**getSessionMessages**](doc//ChatApi.md#getsessionmessages) | **GET** /chat/sessions/{sessionId}/messages | 獲取會話消息列表
 *ChatApi* | [**getUnreadCount**](doc//ChatApi.md#getunreadcount) | **GET** /chat/unread/count | 獲取未讀消息數
 *ChatApi* | [**listSessions**](doc//ChatApi.md#listsessions) | **GET** /chat/sessions | 獲取聊天會話列表
@@ -237,6 +244,7 @@ Class | Method | HTTP request | Description
  - [Store](doc//Store.md)
  - [StoreAnalyticsDTO](doc//StoreAnalyticsDTO.md)
  - [StoreUpdateParam](doc//StoreUpdateParam.md)
+ - [TaiwanPostalArea](doc//TaiwanPostalArea.md)
  - [TopDisputedProductDTO](doc//TopDisputedProductDTO.md)
  - [TopDisputedSellerDTO](doc//TopDisputedSellerDTO.md)
  - [TopProductDTO](doc//TopProductDTO.md)

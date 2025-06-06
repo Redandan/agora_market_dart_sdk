@@ -66,12 +66,57 @@ void main() {
       // TODO
     });
 
-    // 獲取系統配置
+    // 獲取所有啟用的郵遞區號
     //
-    // 獲取系統的公共配置信息，包括配送方式、商品分類和交易類型
+    // 返回所有啟用狀態的郵遞區號列表
     //
-    //Future<Object> getDeliveryTypes() async
-    test('test getDeliveryTypes', () async {
+    //Future<List<TaiwanPostalArea>> getAllActive() async
+    test('test getAllActive', () async {
+      // TODO
+    });
+
+    // 根據城市查詢
+    //
+    // 根據指定的城市名稱查詢相關的郵遞區號信息
+    //
+    //Future<List<TaiwanPostalArea>> getByCity(String city) async
+    test('test getByCity', () async {
+      // TODO
+    });
+
+    // 根據城市和行政區查詢
+    //
+    // 根據指定的城市和行政區名稱查詢相關的郵遞區號信息
+    //
+    //Future<List<TaiwanPostalArea>> getByCityAndDistrict(String city, String district) async
+    test('test getByCityAndDistrict', () async {
+      // TODO
+    });
+
+    // 根據郵遞區號查詢
+    //
+    // 根據指定的郵遞區號查詢相關的行政區信息
+    //
+    //Future<List<TaiwanPostalArea>> getByPostalCode(String postalCode) async
+    test('test getByPostalCode', () async {
+      // TODO
+    });
+
+    // 獲取城市列表
+    //
+    // 返回所有可用的城市名稱列表
+    //
+    //Future<List<String>> getCities() async
+    test('test getCities', () async {
+      // TODO
+    });
+
+    // 獲取城市行政區列表
+    //
+    // 返回指定城市的所有行政區名稱列表
+    //
+    //Future<List<String>> getDistrictsByCity(String city) async
+    test('test getDistrictsByCity', () async {
       // TODO
     });
 
@@ -128,6 +173,15 @@ void main() {
     //
     //Future<PageWithdraw> getWithdrawHistory(int userId, Pageable pageable) async
     test('test getWithdrawHistory', () async {
+      // TODO
+    });
+
+    // 搜索郵遞區號
+    //
+    // 根據關鍵字搜索郵遞區號、城市或行政區
+    //
+    //Future<List<TaiwanPostalArea>> search(String keyword) async
+    test('test search', () async {
       // TODO
     });
 

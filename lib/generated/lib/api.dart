@@ -108,6 +108,7 @@ part 'model/staking.dart';
 part 'model/store.dart';
 part 'model/store_analytics_dto.dart';
 part 'model/store_update_param.dart';
+part 'model/taiwan_postal_area.dart';
 part 'model/top_disputed_product_dto.dart';
 part 'model/top_disputed_seller_dto.dart';
 part 'model/top_product_dto.dart';

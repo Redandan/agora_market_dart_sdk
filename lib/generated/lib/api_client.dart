@@ -300,6 +300,8 @@ class ApiClient {
           return StoreAnalyticsDTO.fromJson(value);
         case 'StoreUpdateParam':
           return StoreUpdateParam.fromJson(value);
+        case 'TaiwanPostalArea':
+          return TaiwanPostalArea.fromJson(value);
         case 'TopDisputedProductDTO':
           return TopDisputedProductDTO.fromJson(value);
         case 'TopDisputedSellerDTO':

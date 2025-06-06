@@ -11,23 +11,28 @@
 import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
-// tests for SortObject
+// tests for TaiwanPostalArea
 void main() {
-  // final instance = SortObject();
+  // final instance = TaiwanPostalArea();
 
-  group('test SortObject', () {
-    // bool unsorted
-    test('to test the property `unsorted`', () async {
+  group('test TaiwanPostalArea', () {
+    // String postalCode
+    test('to test the property `postalCode`', () async {
       // TODO
     });
 
-    // bool sorted
-    test('to test the property `sorted`', () async {
+    // String city
+    test('to test the property `city`', () async {
       // TODO
     });
 
-    // bool empty
-    test('to test the property `empty`', () async {
+    // String district
+    test('to test the property `district`', () async {
+      // TODO
+    });
+
+    // bool active
+    test('to test the property `active`', () async {
       // TODO
     });
 

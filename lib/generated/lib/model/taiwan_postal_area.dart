@@ -10,12 +10,13 @@
 
 part of openapi.api;
 
-class SortObject {
-  /// Returns a new [SortObject] instance.
-  SortObject({
-    this.unsorted,
-    this.sorted,
-    this.empty,
+class TaiwanPostalArea {
+  /// Returns a new [TaiwanPostalArea] instance.
+  TaiwanPostalArea({
+    this.postalCode,
+    this.city,
+    this.district,
+    this.active,
   });
 
   ///
@@ -24,7 +25,7 @@ class SortObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unsorted;
+  String? postalCode;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -32,7 +33,7 @@ class SortObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? sorted;
+  String? city;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -40,48 +41,63 @@ class SortObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? empty;
+  String? district;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? active;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SortObject &&
-    other.unsorted == unsorted &&
-    other.sorted == sorted &&
-    other.empty == empty;
+  bool operator ==(Object other) => identical(this, other) || other is TaiwanPostalArea &&
+    other.postalCode == postalCode &&
+    other.city == city &&
+    other.district == district &&
+    other.active == active;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (unsorted == null ? 0 : unsorted!.hashCode) +
-    (sorted == null ? 0 : sorted!.hashCode) +
-    (empty == null ? 0 : empty!.hashCode);
+    (postalCode == null ? 0 : postalCode!.hashCode) +
+    (city == null ? 0 : city!.hashCode) +
+    (district == null ? 0 : district!.hashCode) +
+    (active == null ? 0 : active!.hashCode);
 
   @override
-  String toString() => 'SortObject[unsorted=$unsorted, sorted=$sorted, empty=$empty]';
+  String toString() => 'TaiwanPostalArea[postalCode=$postalCode, city=$city, district=$district, active=$active]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.unsorted != null) {
-      json[r'unsorted'] = this.unsorted;
+    if (this.postalCode != null) {
+      json[r'postalCode'] = this.postalCode;
     } else {
-      json[r'unsorted'] = null;
+      json[r'postalCode'] = null;
     }
-    if (this.sorted != null) {
-      json[r'sorted'] = this.sorted;
+    if (this.city != null) {
+      json[r'city'] = this.city;
     } else {
-      json[r'sorted'] = null;
+      json[r'city'] = null;
     }
-    if (this.empty != null) {
-      json[r'empty'] = this.empty;
+    if (this.district != null) {
+      json[r'district'] = this.district;
     } else {
-      json[r'empty'] = null;
+      json[r'district'] = null;
+    }
+    if (this.active != null) {
+      json[r'active'] = this.active;
+    } else {
+      json[r'active'] = null;
     }
     return json;
   }
 
-  /// Returns a new [SortObject] instance and imports its values from
+  /// Returns a new [TaiwanPostalArea] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static SortObject? fromJson(dynamic value) {
+  static TaiwanPostalArea? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -90,26 +106,27 @@ class SortObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "SortObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "SortObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "TaiwanPostalArea[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "TaiwanPostalArea[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return SortObject(
-        unsorted: mapValueOfType<bool>(json, r'unsorted'),
-        sorted: mapValueOfType<bool>(json, r'sorted'),
-        empty: mapValueOfType<bool>(json, r'empty'),
+      return TaiwanPostalArea(
+        postalCode: mapValueOfType<String>(json, r'postalCode'),
+        city: mapValueOfType<String>(json, r'city'),
+        district: mapValueOfType<String>(json, r'district'),
+        active: mapValueOfType<bool>(json, r'active'),
       );
     }
     return null;
   }
 
-  static List<SortObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <SortObject>[];
+  static List<TaiwanPostalArea> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <TaiwanPostalArea>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = SortObject.fromJson(row);
+        final value = TaiwanPostalArea.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -118,12 +135,12 @@ class SortObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, SortObject> mapFromJson(dynamic json) {
-    final map = <String, SortObject>{};
+  static Map<String, TaiwanPostalArea> mapFromJson(dynamic json) {
+    final map = <String, TaiwanPostalArea>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = SortObject.fromJson(entry.value);
+        final value = TaiwanPostalArea.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -132,14 +149,14 @@ class SortObject {
     return map;
   }
 
-  // maps a json object with a list of SortObject-objects as value to a dart map
-  static Map<String, List<SortObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<SortObject>>{};
+  // maps a json object with a list of TaiwanPostalArea-objects as value to a dart map
+  static Map<String, List<TaiwanPostalArea>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<TaiwanPostalArea>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SortObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = TaiwanPostalArea.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

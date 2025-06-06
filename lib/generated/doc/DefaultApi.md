@@ -16,7 +16,12 @@ Method | HTTP request | Description
 [**createWithdraw**](DefaultApi.md#createwithdraw) | **POST** /withdraws | 發起提款
 [**failWithdraw**](DefaultApi.md#failwithdraw) | **POST** /withdraws/{withdrawId}/fail | 提款失敗
 [**getAdminTransactionList**](DefaultApi.md#getadmintransactionlist) | **GET** /transactions/admin/user/{userId}/list | 管理員查看指定會員的交易記錄
-[**getDeliveryTypes**](DefaultApi.md#getdeliverytypes) | **GET** /public/config | 獲取系統配置
+[**getAllActive**](DefaultApi.md#getallactive) | **GET** /postal-areas | 獲取所有啟用的郵遞區號
+[**getByCity**](DefaultApi.md#getbycity) | **GET** /postal-areas/city/{city} | 根據城市查詢
+[**getByCityAndDistrict**](DefaultApi.md#getbycityanddistrict) | **GET** /postal-areas/city/{city}/district/{district} | 根據城市和行政區查詢
+[**getByPostalCode**](DefaultApi.md#getbypostalcode) | **GET** /postal-areas/code/{postalCode} | 根據郵遞區號查詢
+[**getCities**](DefaultApi.md#getcities) | **GET** /postal-areas/cities | 獲取城市列表
+[**getDistrictsByCity**](DefaultApi.md#getdistrictsbycity) | **GET** /postal-areas/cities/{city}/districts | 獲取城市行政區列表
 [**getRecharge**](DefaultApi.md#getrecharge) | **GET** /recharge/{rechargeId} | 獲取充值詳情
 [**getRechargeByReceiveAddress**](DefaultApi.md#getrechargebyreceiveaddress) | **GET** /recharge/address/{receiveAddress} | 通過接收地址查詢充值
 [**getRechargeByTxHash**](DefaultApi.md#getrechargebytxhash) | **GET** /recharge/tx/{txHash} | 通過交易哈希查詢充值
@@ -25,6 +30,7 @@ Method | HTTP request | Description
 [**getTransactionList**](DefaultApi.md#gettransactionlist) | **GET** /transactions/{token}/list | 查詢帳變歷史
 [**getWithdraw**](DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 [**getWithdrawHistory**](DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
+[**search**](DefaultApi.md#search) | **GET** /postal-areas/search | 搜索郵遞區號
 
 
 # **cancelRecharge**
@@ -328,12 +334,12 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getDeliveryTypes**
-> Object getDeliveryTypes()
+# **getAllActive**
+> List<TaiwanPostalArea> getAllActive()
 
-獲取系統配置
+獲取所有啟用的郵遞區號
 
-獲取系統的公共配置信息，包括配送方式、商品分類和交易類型
+返回所有啟用狀態的郵遞區號列表
 
 ### Example
 ```dart
@@ -342,10 +348,10 @@ import 'package:agora_market_dart_sdk/api.dart';
 final api_instance = DefaultApi();
 
 try {
-    final result = api_instance.getDeliveryTypes();
+    final result = api_instance.getAllActive();
     print(result);
 } catch (e) {
-    print('Exception when calling DefaultApi->getDeliveryTypes: $e\n');
+    print('Exception when calling DefaultApi->getAllActive: $e\n');
 }
 ```
 
@@ -354,7 +360,220 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**Object**](Object.md)
+[**List<TaiwanPostalArea>**](TaiwanPostalArea.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getByCity**
+> List<TaiwanPostalArea> getByCity(city)
+
+根據城市查詢
+
+根據指定的城市名稱查詢相關的郵遞區號信息
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final city = city_example; // String | 城市名稱
+
+try {
+    final result = api_instance.getByCity(city);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getByCity: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **city** | **String**| 城市名稱 | 
+
+### Return type
+
+[**List<TaiwanPostalArea>**](TaiwanPostalArea.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getByCityAndDistrict**
+> List<TaiwanPostalArea> getByCityAndDistrict(city, district)
+
+根據城市和行政區查詢
+
+根據指定的城市和行政區名稱查詢相關的郵遞區號信息
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final city = city_example; // String | 城市名稱
+final district = district_example; // String | 行政區名稱
+
+try {
+    final result = api_instance.getByCityAndDistrict(city, district);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getByCityAndDistrict: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **city** | **String**| 城市名稱 | 
+ **district** | **String**| 行政區名稱 | 
+
+### Return type
+
+[**List<TaiwanPostalArea>**](TaiwanPostalArea.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getByPostalCode**
+> List<TaiwanPostalArea> getByPostalCode(postalCode)
+
+根據郵遞區號查詢
+
+根據指定的郵遞區號查詢相關的行政區信息
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final postalCode = postalCode_example; // String | 郵遞區號
+
+try {
+    final result = api_instance.getByPostalCode(postalCode);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getByPostalCode: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **postalCode** | **String**| 郵遞區號 | 
+
+### Return type
+
+[**List<TaiwanPostalArea>**](TaiwanPostalArea.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getCities**
+> List<String> getCities()
+
+獲取城市列表
+
+返回所有可用的城市名稱列表
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+
+try {
+    final result = api_instance.getCities();
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getCities: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**List<String>**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getDistrictsByCity**
+> List<String> getDistrictsByCity(city)
+
+獲取城市行政區列表
+
+返回指定城市的所有行政區名稱列表
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final city = city_example; // String | 城市名稱
+
+try {
+    final result = api_instance.getDistrictsByCity(city);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getDistrictsByCity: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **city** | **String**| 城市名稱 | 
+
+### Return type
+
+**List<String>**
 
 ### Authorization
 
@@ -691,6 +910,49 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PageWithdraw**](PageWithdraw.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **search**
+> List<TaiwanPostalArea> search(keyword)
+
+搜索郵遞區號
+
+根據關鍵字搜索郵遞區號、城市或行政區
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final keyword = keyword_example; // String | 搜索關鍵字
+
+try {
+    final result = api_instance.search(keyword);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->search: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **keyword** | **String**| 搜索關鍵字 | 
+
+### Return type
+
+[**List<TaiwanPostalArea>**](TaiwanPostalArea.md)
 
 ### Authorization
 

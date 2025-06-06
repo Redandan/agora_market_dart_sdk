@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**clearSession**](ChatApi.md#clearsession) | **DELETE** /chat/sessions/{sessionId}/messages | 清空會話
 [**deleteMessage**](ChatApi.md#deletemessage) | **DELETE** /chat/messages/{messageId} | 刪除消息
 [**deleteSession**](ChatApi.md#deletesession) | **DELETE** /chat/sessions/{sessionId} | 刪除會話
+[**getOrCreateSession**](ChatApi.md#getorcreatesession) | **GET** /chat/sessions/receiver/{receiverId} | 獲取或創建與指定用戶的會話
 [**getSessionMessages**](ChatApi.md#getsessionmessages) | **GET** /chat/sessions/{sessionId}/messages | 獲取會話消息列表
 [**getUnreadCount**](ChatApi.md#getunreadcount) | **GET** /chat/unread/count | 獲取未讀消息數
 [**listSessions**](ChatApi.md#listsessions) | **GET** /chat/sessions | 獲取聊天會話列表
@@ -144,6 +145,49 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getOrCreateSession**
+> ChatSession getOrCreateSession(receiverId)
+
+獲取或創建與指定用戶的會話
+
+根據接收者ID獲取聊天會話，如果不存在則創建新會話
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = ChatApi();
+final receiverId = 789; // int | 接收者ID
+
+try {
+    final result = api_instance.getOrCreateSession(receiverId);
+    print(result);
+} catch (e) {
+    print('Exception when calling ChatApi->getOrCreateSession: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **receiverId** | **int**| 接收者ID | 
+
+### Return type
+
+[**ChatSession**](ChatSession.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -44,6 +44,15 @@ void main() {
       // TODO
     });
 
+    // 獲取或創建與指定用戶的會話
+    //
+    // 根據接收者ID獲取聊天會話，如果不存在則創建新會話
+    //
+    //Future<ChatSession> getOrCreateSession(int receiverId) async
+    test('test getOrCreateSession', () async {
+      // TODO
+    });
+
     // 獲取會話消息列表
     //
     // 獲取指定會話的消息列表

@@ -169,6 +169,65 @@ class ChatApi {
     }
   }
 
+  /// 獲取或創建與指定用戶的會話
+  ///
+  /// 根據接收者ID獲取聊天會話，如果不存在則創建新會話
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] receiverId (required):
+  ///   接收者ID
+  Future<Response> getOrCreateSessionWithHttpInfo(int receiverId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/chat/sessions/receiver/{receiverId}'
+      .replaceAll('{receiverId}', receiverId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 獲取或創建與指定用戶的會話
+  ///
+  /// 根據接收者ID獲取聊天會話，如果不存在則創建新會話
+  ///
+  /// Parameters:
+  ///
+  /// * [int] receiverId (required):
+  ///   接收者ID
+  Future<ChatSession?> getOrCreateSession(int receiverId,) async {
+    final response = await getOrCreateSessionWithHttpInfo(receiverId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ChatSession',) as ChatSession;
+    
+    }
+    return null;
+  }
+
   /// 獲取會話消息列表
   ///
   /// 獲取指定會話的消息列表
