@@ -84,10 +84,10 @@ class AdminProductsApi {
   /// Parameters:
   ///
   /// * [DateTime] startDate:
-  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
-  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///   結束日期 (ISO-8601 格式)
   Future<Response> getProductStatisticsWithHttpInfo({ DateTime? startDate, DateTime? endDate, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/products/statistics';
@@ -127,10 +127,10 @@ class AdminProductsApi {
   /// Parameters:
   ///
   /// * [DateTime] startDate:
-  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
-  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///   結束日期 (ISO-8601 格式)
   Future<Map<String, Object>?> getProductStatistics({ DateTime? startDate, DateTime? endDate, }) async {
     final response = await getProductStatisticsWithHttpInfo( startDate: startDate, endDate: endDate, );
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -164,10 +164,10 @@ class AdminProductsApi {
   ///   商品分類
   ///
   /// * [DateTime] startDate:
-  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
-  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///   結束日期 (ISO-8601 格式)
   ///
   /// * [int] page:
   ///   分頁參數
@@ -237,10 +237,10 @@ class AdminProductsApi {
   ///   商品分類
   ///
   /// * [DateTime] startDate:
-  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
-  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///   結束日期 (ISO-8601 格式)
   ///
   /// * [int] page:
   ///   分頁參數

@@ -11,27 +11,16 @@
 import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
-// tests for SortObject
+
+/// tests for PublicControllerApi
 void main() {
-  // final instance = SortObject();
+  // final instance = PublicControllerApi();
 
-  group('test SortObject', () {
-    // bool sorted
-    test('to test the property `sorted`', () async {
+  group('tests for PublicControllerApi', () {
+    //Future<DateTime> test({ DateTime startDate }) async
+    test('test test', () async {
       // TODO
     });
-
-    // bool unsorted
-    test('to test the property `unsorted`', () async {
-      // TODO
-    });
-
-    // bool empty
-    test('to test the property `empty`', () async {
-      // TODO
-    });
-
 
   });
-
 }

@@ -118,8 +118,8 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = AdminDeliveryApi();
-final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
-final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
 
 try {
     final result = api_instance.getDeliveryStatistics(startDate, endDate);
@@ -133,8 +133,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **startDate** | **DateTime**| 開始日期 (yyyy-MM-dd HH:mm:ss) | [optional] 
- **endDate** | **DateTime**| 結束日期 (yyyy-MM-dd HH:mm:ss) | [optional] 
+ **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
+ **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
 
 ### Return type
 
@@ -208,8 +208,8 @@ import 'package:agora_market_dart_sdk/api.dart';
 final api_instance = AdminDeliveryApi();
 final deliveryerId = 789; // int | 配送員ID
 final status = status_example; // String | 配送狀態
-final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
-final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
 
 try {
     final result = api_instance.searchDeliveryOrders(deliveryerId, status, startDate, endDate);
@@ -225,8 +225,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deliveryerId** | **int**| 配送員ID | [optional] 
  **status** | **String**| 配送狀態 | [optional] 
- **startDate** | **DateTime**| 開始日期 (yyyy-MM-dd HH:mm:ss) | [optional] 
- **endDate** | **DateTime**| 結束日期 (yyyy-MM-dd HH:mm:ss) | [optional] 
+ **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
+ **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
 
 ### Return type
 
@@ -260,8 +260,8 @@ final isDelivering = true; // bool | 是否正在配送
 final longitude = 1.2; // double | 經度
 final latitude = 1.2; // double | 緯度
 final radius = 1.2; // double | 搜索半徑(公里)
-final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
-final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
 
 try {
     final result = api_instance.searchDeliveryers(enabled, isDelivering, longitude, latitude, radius, startDate, endDate);
@@ -280,8 +280,8 @@ Name | Type | Description  | Notes
  **longitude** | **double**| 經度 | [optional] 
  **latitude** | **double**| 緯度 | [optional] 
  **radius** | **double**| 搜索半徑(公里) | [optional] [default to 5.0]
- **startDate** | **DateTime**| 開始日期 (yyyy-MM-dd HH:mm:ss) | [optional] 
- **endDate** | **DateTime**| 結束日期 (yyyy-MM-dd HH:mm:ss) | [optional] 
+ **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
+ **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
 
 ### Return type
 

@@ -71,8 +71,8 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = AdminMembersApi();
-final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
-final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
 
 try {
     final result = api_instance.getMemberStatistics(startDate, endDate);
@@ -86,8 +86,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **startDate** | **DateTime**| 開始日期 (yyyy-MM-dd HH:mm:ss) | [optional] 
- **endDate** | **DateTime**| 結束日期 (yyyy-MM-dd HH:mm:ss) | [optional] 
+ **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
+ **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
 
 ### Return type
 
@@ -117,8 +117,8 @@ import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = AdminMembersApi();
 final status = status_example; // String | 會員狀態
-final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
-final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
 final page = 56; // int | 分頁參數
 final size = 56; // int | 每頁數量
 
@@ -135,8 +135,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status** | **String**| 會員狀態 | [optional] 
- **startDate** | **DateTime**| 開始日期 (yyyy-MM-dd HH:mm:ss) | [optional] 
- **endDate** | **DateTime**| 結束日期 (yyyy-MM-dd HH:mm:ss) | [optional] 
+ **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
+ **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
  **page** | **int**| 分頁參數 | [optional] [default to 0]
  **size** | **int**| 每頁數量 | [optional] [default to 20]
 

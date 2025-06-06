@@ -205,10 +205,10 @@ class MemberDisputesApi {
   ///   糾紛類型
   ///
   /// * [DateTime] startDate:
-  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
-  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///   結束日期 (ISO-8601 格式)
   ///
   /// * [int] page:
   ///   分頁參數
@@ -272,10 +272,10 @@ class MemberDisputesApi {
   ///   糾紛類型
   ///
   /// * [DateTime] startDate:
-  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
-  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///   結束日期 (ISO-8601 格式)
   ///
   /// * [int] page:
   ///   分頁參數

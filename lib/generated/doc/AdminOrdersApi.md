@@ -114,8 +114,8 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = AdminOrdersApi();
-final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
-final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
 
 try {
     final result = api_instance.getOrderStatistics(startDate, endDate);
@@ -129,8 +129,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **startDate** | **DateTime**| 開始日期 (yyyy-MM-dd HH:mm:ss) | [optional] 
- **endDate** | **DateTime**| 結束日期 (yyyy-MM-dd HH:mm:ss) | [optional] 
+ **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
+ **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
 
 ### Return type
 
@@ -162,8 +162,8 @@ final api_instance = AdminOrdersApi();
 final buyerId = 789; // int | 買家ID
 final sellerId = 789; // int | 賣家ID
 final status = status_example; // String | 訂單狀態
-final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (yyyy-MM-dd HH:mm:ss)
-final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (yyyy-MM-dd HH:mm:ss)
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
 final page = 56; // int | 分頁參數
 final size = 56; // int | 每頁數量
 
@@ -182,8 +182,8 @@ Name | Type | Description  | Notes
  **buyerId** | **int**| 買家ID | [optional] 
  **sellerId** | **int**| 賣家ID | [optional] 
  **status** | **String**| 訂單狀態 | [optional] 
- **startDate** | **DateTime**| 開始日期 (yyyy-MM-dd HH:mm:ss) | [optional] 
- **endDate** | **DateTime**| 結束日期 (yyyy-MM-dd HH:mm:ss) | [optional] 
+ **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
+ **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
  **page** | **int**| 分頁參數 | [optional] [default to 0]
  **size** | **int**| 每頁數量 | [optional] [default to 20]
 

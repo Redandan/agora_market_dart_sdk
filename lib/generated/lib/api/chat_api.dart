@@ -280,7 +280,7 @@ class ChatApi {
   ///
   /// * [ChatMessageQueryParam] queryParam (required):
   ///   查詢參數
-  Future<PageChatMessage?> getSessionMessages(int sessionId, ChatMessageQueryParam queryParam,) async {
+  Future<ChatSession?> getSessionMessages(int sessionId, ChatMessageQueryParam queryParam,) async {
     final response = await getSessionMessagesWithHttpInfo(sessionId, queryParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -289,7 +289,7 @@ class ChatApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageChatMessage',) as PageChatMessage;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ChatSession',) as ChatSession;
     
     }
     return null;

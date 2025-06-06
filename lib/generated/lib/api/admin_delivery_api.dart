@@ -151,10 +151,10 @@ class AdminDeliveryApi {
   /// Parameters:
   ///
   /// * [DateTime] startDate:
-  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
-  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///   結束日期 (ISO-8601 格式)
   Future<Response> getDeliveryStatisticsWithHttpInfo({ DateTime? startDate, DateTime? endDate, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/delivery/statistics';
@@ -194,10 +194,10 @@ class AdminDeliveryApi {
   /// Parameters:
   ///
   /// * [DateTime] startDate:
-  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
-  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///   結束日期 (ISO-8601 格式)
   Future<Map<String, Object>?> getDeliveryStatistics({ DateTime? startDate, DateTime? endDate, }) async {
     final response = await getDeliveryStatisticsWithHttpInfo( startDate: startDate, endDate: endDate, );
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -287,10 +287,10 @@ class AdminDeliveryApi {
   ///   配送狀態
   ///
   /// * [DateTime] startDate:
-  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
-  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///   結束日期 (ISO-8601 格式)
   Future<Response> searchDeliveryOrdersWithHttpInfo({ int? deliveryerId, String? status, DateTime? startDate, DateTime? endDate, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/delivery/orders/search';
@@ -342,10 +342,10 @@ class AdminDeliveryApi {
   ///   配送狀態
   ///
   /// * [DateTime] startDate:
-  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
-  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///   結束日期 (ISO-8601 格式)
   Future<List<DeliveryDetail>?> searchDeliveryOrders({ int? deliveryerId, String? status, DateTime? startDate, DateTime? endDate, }) async {
     final response = await searchDeliveryOrdersWithHttpInfo( deliveryerId: deliveryerId, status: status, startDate: startDate, endDate: endDate, );
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -388,10 +388,10 @@ class AdminDeliveryApi {
   ///   搜索半徑(公里)
   ///
   /// * [DateTime] startDate:
-  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
-  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///   結束日期 (ISO-8601 格式)
   Future<Response> searchDeliveryersWithHttpInfo({ bool? enabled, bool? isDelivering, double? longitude, double? latitude, double? radius, DateTime? startDate, DateTime? endDate, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/delivery/deliveryers/search';
@@ -461,10 +461,10 @@ class AdminDeliveryApi {
   ///   搜索半徑(公里)
   ///
   /// * [DateTime] startDate:
-  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
-  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///   結束日期 (ISO-8601 格式)
   Future<List<Deliveryer>?> searchDeliveryers({ bool? enabled, bool? isDelivering, double? longitude, double? latitude, double? radius, DateTime? startDate, DateTime? endDate, }) async {
     final response = await searchDeliveryersWithHttpInfo( enabled: enabled, isDelivering: isDelivering, longitude: longitude, latitude: latitude, radius: radius, startDate: startDate, endDate: endDate, );
     if (response.statusCode >= HttpStatus.badRequest) {

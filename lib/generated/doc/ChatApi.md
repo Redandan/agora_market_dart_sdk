@@ -192,7 +192,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSessionMessages**
-> PageChatMessage getSessionMessages(sessionId, queryParam)
+> ChatSession getSessionMessages(sessionId, queryParam)
 
 獲取會話消息列表
 
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PageChatMessage**](PageChatMessage.md)
+[**ChatSession**](ChatSession.md)
 
 ### Authorization
 

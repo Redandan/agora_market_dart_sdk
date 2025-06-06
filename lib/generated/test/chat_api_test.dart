@@ -57,7 +57,7 @@ void main() {
     //
     // 獲取指定會話的消息列表
     //
-    //Future<PageChatMessage> getSessionMessages(int sessionId, ChatMessageQueryParam queryParam) async
+    //Future<ChatSession> getSessionMessages(int sessionId, ChatMessageQueryParam queryParam) async
     test('test getSessionMessages', () async {
       // TODO
     });

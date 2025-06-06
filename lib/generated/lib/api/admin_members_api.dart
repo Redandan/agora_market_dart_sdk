@@ -84,10 +84,10 @@ class AdminMembersApi {
   /// Parameters:
   ///
   /// * [DateTime] startDate:
-  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
-  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///   結束日期 (ISO-8601 格式)
   Future<Response> getMemberStatisticsWithHttpInfo({ DateTime? startDate, DateTime? endDate, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/members/statistics';
@@ -127,10 +127,10 @@ class AdminMembersApi {
   /// Parameters:
   ///
   /// * [DateTime] startDate:
-  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
-  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///   結束日期 (ISO-8601 格式)
   Future<Map<String, Object>?> getMemberStatistics({ DateTime? startDate, DateTime? endDate, }) async {
     final response = await getMemberStatisticsWithHttpInfo( startDate: startDate, endDate: endDate, );
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -158,10 +158,10 @@ class AdminMembersApi {
   ///   會員狀態
   ///
   /// * [DateTime] startDate:
-  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
-  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///   結束日期 (ISO-8601 格式)
   ///
   /// * [int] page:
   ///   分頁參數
@@ -219,10 +219,10 @@ class AdminMembersApi {
   ///   會員狀態
   ///
   /// * [DateTime] startDate:
-  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
-  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///   結束日期 (ISO-8601 格式)
   ///
   /// * [int] page:
   ///   分頁參數

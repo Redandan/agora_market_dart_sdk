@@ -84,10 +84,10 @@ class AdminDisputesApi {
   /// Parameters:
   ///
   /// * [DateTime] startDate:
-  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
-  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///   結束日期 (ISO-8601 格式)
   Future<Response> getDisputeStatisticsWithHttpInfo({ DateTime? startDate, DateTime? endDate, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/disputes/statistics';
@@ -127,10 +127,10 @@ class AdminDisputesApi {
   /// Parameters:
   ///
   /// * [DateTime] startDate:
-  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
-  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///   結束日期 (ISO-8601 格式)
   Future<DisputeStatisticsDTO?> getDisputeStatistics({ DateTime? startDate, DateTime? endDate, }) async {
     final response = await getDisputeStatisticsWithHttpInfo( startDate: startDate, endDate: endDate, );
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -233,10 +233,10 @@ class AdminDisputesApi {
   ///   糾紛類型
   ///
   /// * [DateTime] startDate:
-  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
-  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///   結束日期 (ISO-8601 格式)
   ///
   /// * [int] page:
   ///   分頁參數
@@ -312,10 +312,10 @@ class AdminDisputesApi {
   ///   糾紛類型
   ///
   /// * [DateTime] startDate:
-  ///   開始日期 (yyyy-MM-dd HH:mm:ss)
+  ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
-  ///   結束日期 (yyyy-MM-dd HH:mm:ss)
+  ///   結束日期 (ISO-8601 格式)
   ///
   /// * [int] page:
   ///   分頁參數

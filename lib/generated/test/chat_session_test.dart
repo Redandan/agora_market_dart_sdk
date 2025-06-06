@@ -88,6 +88,16 @@ void main() {
       // TODO
     });
 
+    // PageChatMessage messages
+    test('to test the property `messages`', () async {
+      // TODO
+    });
+
+    // User currentUser
+    test('to test the property `currentUser`', () async {
+      // TODO
+    });
+
 
   });
 

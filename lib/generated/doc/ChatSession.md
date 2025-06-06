@@ -20,6 +20,8 @@ Name | Type | Description | Notes
 **latestMessageContent** | **String** | 最新消息內容 | [optional] 
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | 更新時間 | [optional] 
+**messages** | [**PageChatMessage**](PageChatMessage.md) |  | [optional] 
+**currentUser** | [**User**](User.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

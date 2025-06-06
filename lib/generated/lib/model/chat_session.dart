@@ -25,6 +25,8 @@ class ChatSession {
     this.latestMessageContent,
     this.createdAt,
     this.updatedAt,
+    this.messages,
+    this.currentUser,
   });
 
   /// 會話ID
@@ -135,6 +137,22 @@ class ChatSession {
   ///
   DateTime? updatedAt;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  PageChatMessage? messages;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  User? currentUser;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ChatSession &&
     other.id == id &&
@@ -148,7 +166,9 @@ class ChatSession {
     other.partnerAvatar == partnerAvatar &&
     other.latestMessageContent == latestMessageContent &&
     other.createdAt == createdAt &&
-    other.updatedAt == updatedAt;
+    other.updatedAt == updatedAt &&
+    other.messages == messages &&
+    other.currentUser == currentUser;
 
   @override
   int get hashCode =>
@@ -164,10 +184,12 @@ class ChatSession {
     (partnerAvatar == null ? 0 : partnerAvatar!.hashCode) +
     (latestMessageContent == null ? 0 : latestMessageContent!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode);
+    (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (messages == null ? 0 : messages!.hashCode) +
+    (currentUser == null ? 0 : currentUser!.hashCode);
 
   @override
-  String toString() => 'ChatSession[id=$id, userId=$userId, partnerId=$partnerId, unreadCount=$unreadCount, latestMessageId=$latestMessageId, latestMessageTime=$latestMessageTime, pinned=$pinned, partnerName=$partnerName, partnerAvatar=$partnerAvatar, latestMessageContent=$latestMessageContent, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'ChatSession[id=$id, userId=$userId, partnerId=$partnerId, unreadCount=$unreadCount, latestMessageId=$latestMessageId, latestMessageTime=$latestMessageTime, pinned=$pinned, partnerName=$partnerName, partnerAvatar=$partnerAvatar, latestMessageContent=$latestMessageContent, createdAt=$createdAt, updatedAt=$updatedAt, messages=$messages, currentUser=$currentUser]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -231,6 +253,16 @@ class ChatSession {
     } else {
       json[r'updatedAt'] = null;
     }
+    if (this.messages != null) {
+      json[r'messages'] = this.messages;
+    } else {
+      json[r'messages'] = null;
+    }
+    if (this.currentUser != null) {
+      json[r'currentUser'] = this.currentUser;
+    } else {
+      json[r'currentUser'] = null;
+    }
     return json;
   }
 
@@ -265,6 +297,8 @@ class ChatSession {
         latestMessageContent: mapValueOfType<String>(json, r'latestMessageContent'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
+        messages: PageChatMessage.fromJson(json[r'messages']),
+        currentUser: User.fromJson(json[r'currentUser']),
       );
     }
     return null;

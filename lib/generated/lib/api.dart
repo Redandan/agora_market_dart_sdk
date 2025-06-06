@@ -44,6 +44,7 @@ part 'api/member_cart_api.dart';
 part 'api/member_disputes_api.dart';
 part 'api/member_orders_api.dart';
 part 'api/products_api.dart';
+part 'api/public_controller_api.dart';
 part 'api/sse_api.dart';
 part 'api/staking_api.dart';
 part 'api/stores_api.dart';

@@ -13,8 +13,8 @@ part of openapi.api;
 class PageProduct {
   /// Returns a new [PageProduct] instance.
   PageProduct({
-    this.totalPages,
     this.totalElements,
+    this.totalPages,
     this.first,
     this.last,
     this.numberOfElements,
@@ -32,7 +32,7 @@ class PageProduct {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalPages;
+  int? totalElements;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -40,7 +40,7 @@ class PageProduct {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalElements;
+  int? totalPages;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -110,8 +110,8 @@ class PageProduct {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PageProduct &&
-    other.totalPages == totalPages &&
     other.totalElements == totalElements &&
+    other.totalPages == totalPages &&
     other.first == first &&
     other.last == last &&
     other.numberOfElements == numberOfElements &&
@@ -125,8 +125,8 @@ class PageProduct {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalPages == null ? 0 : totalPages!.hashCode) +
     (totalElements == null ? 0 : totalElements!.hashCode) +
+    (totalPages == null ? 0 : totalPages!.hashCode) +
     (first == null ? 0 : first!.hashCode) +
     (last == null ? 0 : last!.hashCode) +
     (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
@@ -138,19 +138,19 @@ class PageProduct {
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageProduct[totalPages=$totalPages, totalElements=$totalElements, first=$first, last=$last, numberOfElements=$numberOfElements, pageable=$pageable, size=$size, content=$content, number=$number, sort=$sort, empty=$empty]';
+  String toString() => 'PageProduct[totalElements=$totalElements, totalPages=$totalPages, first=$first, last=$last, numberOfElements=$numberOfElements, pageable=$pageable, size=$size, content=$content, number=$number, sort=$sort, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.totalPages != null) {
-      json[r'totalPages'] = this.totalPages;
-    } else {
-      json[r'totalPages'] = null;
-    }
     if (this.totalElements != null) {
       json[r'totalElements'] = this.totalElements;
     } else {
       json[r'totalElements'] = null;
+    }
+    if (this.totalPages != null) {
+      json[r'totalPages'] = this.totalPages;
+    } else {
+      json[r'totalPages'] = null;
     }
     if (this.first != null) {
       json[r'first'] = this.first;
@@ -215,8 +215,8 @@ class PageProduct {
       }());
 
       return PageProduct(
-        totalPages: mapValueOfType<int>(json, r'totalPages'),
         totalElements: mapValueOfType<int>(json, r'totalElements'),
+        totalPages: mapValueOfType<int>(json, r'totalPages'),
         first: mapValueOfType<bool>(json, r'first'),
         last: mapValueOfType<bool>(json, r'last'),
         numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
