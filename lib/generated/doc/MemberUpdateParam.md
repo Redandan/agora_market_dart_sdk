@@ -8,13 +8,13 @@ import 'package:agora_market_dart_sdk/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | [optional] 
-**username** | **String** |  | [optional] 
-**email** | **String** |  | [optional] 
-**phone** | **String** |  | [optional] 
-**status** | **String** |  | [optional] 
-**isSeller** | **bool** |  | [optional] 
-**remark** | **String** |  | [optional] 
+**id** | **String** | 用戶ID | [optional] 
+**username** | **String** | 用戶名 | [optional] 
+**email** | **String** | 電子郵件 | [optional] 
+**phone** | **String** | 電話號碼 | [optional] 
+**status** | **String** | 用戶狀態 | [optional] 
+**isSeller** | **bool** | 是否為賣家 | [optional] 
+**remark** | **String** | 備註 | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

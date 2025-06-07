@@ -22,6 +22,7 @@ class MemberUpdateParam {
     this.remark,
   });
 
+  /// 用戶ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -30,6 +31,7 @@ class MemberUpdateParam {
   ///
   String? id;
 
+  /// 用戶名
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -38,6 +40,7 @@ class MemberUpdateParam {
   ///
   String? username;
 
+  /// 電子郵件
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -46,6 +49,7 @@ class MemberUpdateParam {
   ///
   String? email;
 
+  /// 電話號碼
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -54,8 +58,10 @@ class MemberUpdateParam {
   ///
   String? phone;
 
+  /// 用戶狀態
   MemberUpdateParamStatusEnum? status;
 
+  /// 是否為賣家
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -64,6 +70,7 @@ class MemberUpdateParam {
   ///
   bool? isSeller;
 
+  /// 備註
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -212,7 +219,7 @@ class MemberUpdateParam {
   };
 }
 
-
+/// 用戶狀態
 class MemberUpdateParamStatusEnum {
   /// Instantiate a new enum with the provided [value].
   const MemberUpdateParamStatusEnum._(this.value);

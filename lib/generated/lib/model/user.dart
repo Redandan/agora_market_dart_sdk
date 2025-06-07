@@ -17,7 +17,7 @@ class User {
     this.username,
     this.password,
     this.role,
-    this.status,
+    this.status = const UserStatusEnum._('ACTIVE'),
     this.enabled,
     this.name,
     this.phone,
@@ -26,8 +26,8 @@ class User {
     this.remark,
     this.createdAt,
     this.updatedAt,
-    this.admin,
     this.seller,
+    this.admin,
   });
 
   /// 用戶ID
@@ -67,7 +67,7 @@ class User {
   String? role;
 
   /// 用戶狀態
-  UserStatusEnum? status;
+  UserStatusEnum status;
 
   /// 是否啟用
   ///
@@ -147,7 +147,7 @@ class User {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? admin;
+  bool? seller;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -155,7 +155,7 @@ class User {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? seller;
+  bool? admin;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is User &&
@@ -172,8 +172,8 @@ class User {
     other.remark == remark &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.admin == admin &&
-    other.seller == seller;
+    other.seller == seller &&
+    other.admin == admin;
 
   @override
   int get hashCode =>
@@ -182,7 +182,7 @@ class User {
     (username == null ? 0 : username!.hashCode) +
     (password == null ? 0 : password!.hashCode) +
     (role == null ? 0 : role!.hashCode) +
-    (status == null ? 0 : status!.hashCode) +
+    (status.hashCode) +
     (enabled == null ? 0 : enabled!.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (phone == null ? 0 : phone!.hashCode) +
@@ -191,11 +191,11 @@ class User {
     (remark == null ? 0 : remark!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (admin == null ? 0 : admin!.hashCode) +
-    (seller == null ? 0 : seller!.hashCode);
+    (seller == null ? 0 : seller!.hashCode) +
+    (admin == null ? 0 : admin!.hashCode);
 
   @override
-  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, enabled=$enabled, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin, seller=$seller]';
+  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, enabled=$enabled, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, seller=$seller, admin=$admin]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -219,11 +219,7 @@ class User {
     } else {
       json[r'role'] = null;
     }
-    if (this.status != null) {
       json[r'status'] = this.status;
-    } else {
-      json[r'status'] = null;
-    }
     if (this.enabled != null) {
       json[r'enabled'] = this.enabled;
     } else {
@@ -264,15 +260,15 @@ class User {
     } else {
       json[r'updatedAt'] = null;
     }
-    if (this.admin != null) {
-      json[r'admin'] = this.admin;
-    } else {
-      json[r'admin'] = null;
-    }
     if (this.seller != null) {
       json[r'seller'] = this.seller;
     } else {
       json[r'seller'] = null;
+    }
+    if (this.admin != null) {
+      json[r'admin'] = this.admin;
+    } else {
+      json[r'admin'] = null;
     }
     return json;
   }
@@ -300,7 +296,7 @@ class User {
         username: mapValueOfType<String>(json, r'username'),
         password: mapValueOfType<String>(json, r'password'),
         role: mapValueOfType<String>(json, r'role'),
-        status: UserStatusEnum.fromJson(json[r'status']),
+        status: UserStatusEnum.fromJson(json[r'status'])!,
         enabled: mapValueOfType<bool>(json, r'enabled'),
         name: mapValueOfType<String>(json, r'name'),
         phone: mapValueOfType<String>(json, r'phone'),
@@ -309,8 +305,8 @@ class User {
         remark: mapValueOfType<String>(json, r'remark'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
-        admin: mapValueOfType<bool>(json, r'admin'),
         seller: mapValueOfType<bool>(json, r'seller'),
+        admin: mapValueOfType<bool>(json, r'admin'),
       );
     }
     return null;
@@ -358,6 +354,7 @@ class User {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'status',
   };
 }
 

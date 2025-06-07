@@ -41,7 +41,7 @@ void main() {
     });
 
     // 用戶狀態
-    // String status
+    // String status (default value: 'ACTIVE')
     test('to test the property `status`', () async {
       // TODO
     });
@@ -94,13 +94,13 @@ void main() {
       // TODO
     });
 
-    // bool admin
-    test('to test the property `admin`', () async {
+    // bool seller
+    test('to test the property `seller`', () async {
       // TODO
     });
 
-    // bool seller
-    test('to test the property `seller`', () async {
+    // bool admin
+    test('to test the property `admin`', () async {
       // TODO
     });
 
