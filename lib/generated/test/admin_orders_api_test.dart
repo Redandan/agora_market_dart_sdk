@@ -39,7 +39,7 @@ void main() {
     //
     // 獲取訂單相關的統計數據
     //
-    //Future<Map<String, Object>> getOrderStatistics({ DateTime startDate, DateTime endDate }) async
+    //Future<OrderStatisticsDTO> getOrderStatistics({ DateTime startDate, DateTime endDate }) async
     test('test getOrderStatistics', () async {
       // TODO
     });
@@ -48,8 +48,8 @@ void main() {
     //
     // 管理員可根據多個條件搜索訂單
     //
-    //Future<PageOrder> searchOrders(Pageable pageable, { String orderId, int buyerId, int sellerId, int productId, String status, DateTime startDate, DateTime endDate }) async
-    test('test searchOrders', () async {
+    //Future<PageOrder> searchOrders1(Pageable pageable, { int buyerId, int sellerId, String status, DateTime startDate, DateTime endDate }) async
+    test('test searchOrders1', () async {
       // TODO
     });
 

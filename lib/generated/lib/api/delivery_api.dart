@@ -73,7 +73,7 @@ class DeliveryApi {
   /// Parameters:
   ///
   /// * [Pageable] pageable (required):
-  ///   分頁參數 (從 1 開始)
+  ///   分頁參數
   Future<Response> getDeliveryHistoryWithHttpInfo(Pageable pageable,) async {
     // ignore: prefer_const_declarations
     final path = r'/delivery/history';
@@ -108,7 +108,7 @@ class DeliveryApi {
   /// Parameters:
   ///
   /// * [Pageable] pageable (required):
-  ///   分頁參數 (從 1 開始)
+  ///   分頁參數
   Future<PageDeliveryDetail?> getDeliveryHistory(Pageable pageable,) async {
     final response = await getDeliveryHistoryWithHttpInfo(pageable,);
     if (response.statusCode >= HttpStatus.badRequest) {

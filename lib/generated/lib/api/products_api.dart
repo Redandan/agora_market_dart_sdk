@@ -75,7 +75,7 @@ class ProductsApi {
   /// Parameters:
   ///
   /// * [Pageable] pageable (required):
-  ///   分頁參數 (從 1 開始)
+  ///   分頁參數
   ///
   /// * [String] status:
   ///   商品狀態
@@ -132,7 +132,7 @@ class ProductsApi {
   /// Parameters:
   ///
   /// * [Pageable] pageable (required):
-  ///   分頁參數 (從 1 開始)
+  ///   分頁參數
   ///
   /// * [String] status:
   ///   商品狀態
@@ -220,7 +220,7 @@ class ProductsApi {
   /// Parameters:
   ///
   /// * [Pageable] pageable (required):
-  ///   分頁參數 (從 1 開始)
+  ///   分頁參數
   ///
   /// * [String] id:
   ///   商品ID
@@ -307,7 +307,7 @@ class ProductsApi {
   /// Parameters:
   ///
   /// * [Pageable] pageable (required):
-  ///   分頁參數 (從 1 開始)
+  ///   分頁參數
   ///
   /// * [String] id:
   ///   商品ID

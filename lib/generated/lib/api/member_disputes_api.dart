@@ -190,29 +190,26 @@ class MemberDisputesApi {
     }
   }
 
-  /// 搜索糾紛
+  /// 查詢爭議列表
   ///
-  /// 會員可搜索與自己相關的糾紛
+  /// 根據條件查詢爭議列表
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [Pageable] pageable (required):
-  ///   分頁參數 (從 1 開始)
+  ///   分頁參數
   ///
   /// * [String] status:
-  ///   糾紛狀態
-  ///
-  /// * [String] type:
-  ///   糾紛類型
+  ///   爭議狀態
   ///
   /// * [DateTime] startDate:
   ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  Future<Response> searchDisputesWithHttpInfo(Pageable pageable, { String? status, String? type, DateTime? startDate, DateTime? endDate, }) async {
+  Future<Response> searchDisputesWithHttpInfo(Pageable pageable, { String? status, DateTime? startDate, DateTime? endDate, }) async {
     // ignore: prefer_const_declarations
     final path = r'/disputes/search';
 
@@ -225,9 +222,6 @@ class MemberDisputesApi {
 
     if (status != null) {
       queryParams.addAll(_queryParams('', 'status', status));
-    }
-    if (type != null) {
-      queryParams.addAll(_queryParams('', 'type', type));
     }
     if (startDate != null) {
       queryParams.addAll(_queryParams('', 'startDate', startDate));
@@ -251,28 +245,199 @@ class MemberDisputesApi {
     );
   }
 
-  /// 搜索糾紛
+  /// 查詢爭議列表
   ///
-  /// 會員可搜索與自己相關的糾紛
+  /// 根據條件查詢爭議列表
   ///
   /// Parameters:
   ///
   /// * [Pageable] pageable (required):
-  ///   分頁參數 (從 1 開始)
+  ///   分頁參數
   ///
   /// * [String] status:
-  ///   糾紛狀態
-  ///
-  /// * [String] type:
-  ///   糾紛類型
+  ///   爭議狀態
   ///
   /// * [DateTime] startDate:
   ///   開始日期 (ISO-8601 格式)
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  Future<PageDispute?> searchDisputes(Pageable pageable, { String? status, String? type, DateTime? startDate, DateTime? endDate, }) async {
-    final response = await searchDisputesWithHttpInfo(pageable,  status: status, type: type, startDate: startDate, endDate: endDate, );
+  Future<PageDispute?> searchDisputes(Pageable pageable, { String? status, DateTime? startDate, DateTime? endDate, }) async {
+    final response = await searchDisputesWithHttpInfo(pageable,  status: status, startDate: startDate, endDate: endDate, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDispute',) as PageDispute;
+    
+    }
+    return null;
+  }
+
+  /// 查詢買家爭議列表
+  ///
+  /// 根據條件查詢買家的爭議列表
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [Pageable] pageable (required):
+  ///   分頁參數
+  ///
+  /// * [String] status:
+  ///   爭議狀態
+  ///
+  /// * [DateTime] startDate:
+  ///   開始日期 (ISO-8601 格式)
+  ///
+  /// * [DateTime] endDate:
+  ///   結束日期 (ISO-8601 格式)
+  Future<Response> searchDisputesByBuyerWithHttpInfo(Pageable pageable, { String? status, DateTime? startDate, DateTime? endDate, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/disputes/buyer';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (status != null) {
+      queryParams.addAll(_queryParams('', 'status', status));
+    }
+    if (startDate != null) {
+      queryParams.addAll(_queryParams('', 'startDate', startDate));
+    }
+    if (endDate != null) {
+      queryParams.addAll(_queryParams('', 'endDate', endDate));
+    }
+      queryParams.addAll(_queryParams('', 'pageable', pageable));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查詢買家爭議列表
+  ///
+  /// 根據條件查詢買家的爭議列表
+  ///
+  /// Parameters:
+  ///
+  /// * [Pageable] pageable (required):
+  ///   分頁參數
+  ///
+  /// * [String] status:
+  ///   爭議狀態
+  ///
+  /// * [DateTime] startDate:
+  ///   開始日期 (ISO-8601 格式)
+  ///
+  /// * [DateTime] endDate:
+  ///   結束日期 (ISO-8601 格式)
+  Future<PageDispute?> searchDisputesByBuyer(Pageable pageable, { String? status, DateTime? startDate, DateTime? endDate, }) async {
+    final response = await searchDisputesByBuyerWithHttpInfo(pageable,  status: status, startDate: startDate, endDate: endDate, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDispute',) as PageDispute;
+    
+    }
+    return null;
+  }
+
+  /// 查詢賣家爭議列表
+  ///
+  /// 根據條件查詢賣家的爭議列表
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [Pageable] pageable (required):
+  ///   分頁參數
+  ///
+  /// * [String] status:
+  ///   爭議狀態
+  ///
+  /// * [DateTime] startDate:
+  ///   開始日期 (ISO-8601 格式)
+  ///
+  /// * [DateTime] endDate:
+  ///   結束日期 (ISO-8601 格式)
+  Future<Response> searchDisputesBySellerWithHttpInfo(Pageable pageable, { String? status, DateTime? startDate, DateTime? endDate, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/disputes/seller';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (status != null) {
+      queryParams.addAll(_queryParams('', 'status', status));
+    }
+    if (startDate != null) {
+      queryParams.addAll(_queryParams('', 'startDate', startDate));
+    }
+    if (endDate != null) {
+      queryParams.addAll(_queryParams('', 'endDate', endDate));
+    }
+      queryParams.addAll(_queryParams('', 'pageable', pageable));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查詢賣家爭議列表
+  ///
+  /// 根據條件查詢賣家的爭議列表
+  ///
+  /// Parameters:
+  ///
+  /// * [Pageable] pageable (required):
+  ///   分頁參數
+  ///
+  /// * [String] status:
+  ///   爭議狀態
+  ///
+  /// * [DateTime] startDate:
+  ///   開始日期 (ISO-8601 格式)
+  ///
+  /// * [DateTime] endDate:
+  ///   結束日期 (ISO-8601 格式)
+  Future<PageDispute?> searchDisputesBySeller(Pageable pageable, { String? status, DateTime? startDate, DateTime? endDate, }) async {
+    final response = await searchDisputesBySellerWithHttpInfo(pageable,  status: status, startDate: startDate, endDate: endDate, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

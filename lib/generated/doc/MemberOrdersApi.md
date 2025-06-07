@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**cancelOrder**](MemberOrdersApi.md#cancelorder) | **POST** /orders/cancel | 取消訂單
 [**confirmOrder**](MemberOrdersApi.md#confirmorder) | **POST** /orders/confirm | 確認收貨
 [**getOrder**](MemberOrdersApi.md#getorder) | **GET** /orders/{orderId} | 獲取訂單詳情
+[**searchOrders**](MemberOrdersApi.md#searchorders) | **GET** /orders/search | 查詢訂單列表
 [**searchOrdersByBuyer**](MemberOrdersApi.md#searchordersbybuyer) | **GET** /orders/buyer | 查詢訂單列表
 [**searchOrdersBySeller**](MemberOrdersApi.md#searchordersbyseller) | **GET** /orders/seller | 查詢訂單列表
 [**shipOrder**](MemberOrdersApi.md#shiporder) | **POST** /orders/ship | 發貨
@@ -145,6 +146,55 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **searchOrders**
+> PageOrder searchOrders(pageable, status, startDate, endDate)
+
+查詢訂單列表
+
+根據條件查詢訂單列表
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = MemberOrdersApi();
+final pageable = ; // Pageable | 分頁參數
+final status = status_example; // String | 訂單狀態
+final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
+final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
+
+try {
+    final result = api_instance.searchOrders(pageable, status, startDate, endDate);
+    print(result);
+} catch (e) {
+    print('Exception when calling MemberOrdersApi->searchOrders: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageable** | [**Pageable**](.md)| 分頁參數 | 
+ **status** | **String**| 訂單狀態 | [optional] 
+ **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
+ **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
+
+### Return type
+
+[**PageOrder**](PageOrder.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **searchOrdersByBuyer**
 > PageOrder searchOrdersByBuyer(pageable, orderId, productId, status, startDate, endDate)
 
@@ -157,7 +207,7 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = MemberOrdersApi();
-final pageable = ; // Pageable | 分頁參數 (從 1 開始)
+final pageable = ; // Pageable | 分頁參數
 final orderId = orderId_example; // String | 訂單ID
 final productId = 789; // int | 商品ID
 final status = status_example; // String | 訂單狀態
@@ -176,7 +226,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageable** | [**Pageable**](.md)| 分頁參數 (從 1 開始) | 
+ **pageable** | [**Pageable**](.md)| 分頁參數 | 
  **orderId** | **String**| 訂單ID | [optional] 
  **productId** | **int**| 商品ID | [optional] 
  **status** | **String**| 訂單狀態 | [optional] 
@@ -199,7 +249,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchOrdersBySeller**
-> PageOrder searchOrdersBySeller(pageable, orderId, productId, status, startDate, endDate)
+> PageOrder searchOrdersBySeller(pageable, status, startDate, endDate)
 
 查詢訂單列表
 
@@ -210,15 +260,13 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = MemberOrdersApi();
-final pageable = ; // Pageable | 分頁參數 (從 1 開始)
-final orderId = orderId_example; // String | 訂單ID
-final productId = 789; // int | 商品ID
+final pageable = ; // Pageable | 分頁參數
 final status = status_example; // String | 訂單狀態
 final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
 final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
 
 try {
-    final result = api_instance.searchOrdersBySeller(pageable, orderId, productId, status, startDate, endDate);
+    final result = api_instance.searchOrdersBySeller(pageable, status, startDate, endDate);
     print(result);
 } catch (e) {
     print('Exception when calling MemberOrdersApi->searchOrdersBySeller: $e\n');
@@ -229,9 +277,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageable** | [**Pageable**](.md)| 分頁參數 (從 1 開始) | 
- **orderId** | **String**| 訂單ID | [optional] 
- **productId** | **int**| 商品ID | [optional] 
+ **pageable** | [**Pageable**](.md)| 分頁參數 | 
  **status** | **String**| 訂單狀態 | [optional] 
  **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
  **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 

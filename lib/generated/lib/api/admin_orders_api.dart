@@ -192,7 +192,7 @@ class AdminOrdersApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  Future<Map<String, Object>?> getOrderStatistics({ DateTime? startDate, DateTime? endDate, }) async {
+  Future<OrderStatisticsDTO?> getOrderStatistics({ DateTime? startDate, DateTime? endDate, }) async {
     final response = await getOrderStatisticsWithHttpInfo( startDate: startDate, endDate: endDate, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -201,8 +201,8 @@ class AdminOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderStatisticsDTO',) as OrderStatisticsDTO;
+    
     }
     return null;
   }
@@ -216,19 +216,13 @@ class AdminOrdersApi {
   /// Parameters:
   ///
   /// * [Pageable] pageable (required):
-  ///   分頁參數 (從 1 開始)
-  ///
-  /// * [String] orderId:
-  ///   訂單ID
+  ///   分頁參數
   ///
   /// * [int] buyerId:
   ///   買家ID
   ///
   /// * [int] sellerId:
   ///   賣家ID
-  ///
-  /// * [int] productId:
-  ///   商品ID
   ///
   /// * [String] status:
   ///   訂單狀態
@@ -238,7 +232,7 @@ class AdminOrdersApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  Future<Response> searchOrdersWithHttpInfo(Pageable pageable, { String? orderId, int? buyerId, int? sellerId, int? productId, String? status, DateTime? startDate, DateTime? endDate, }) async {
+  Future<Response> searchOrders1WithHttpInfo(Pageable pageable, { int? buyerId, int? sellerId, String? status, DateTime? startDate, DateTime? endDate, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/orders/search';
 
@@ -249,17 +243,11 @@ class AdminOrdersApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (orderId != null) {
-      queryParams.addAll(_queryParams('', 'orderId', orderId));
-    }
     if (buyerId != null) {
       queryParams.addAll(_queryParams('', 'buyerId', buyerId));
     }
     if (sellerId != null) {
       queryParams.addAll(_queryParams('', 'sellerId', sellerId));
-    }
-    if (productId != null) {
-      queryParams.addAll(_queryParams('', 'productId', productId));
     }
     if (status != null) {
       queryParams.addAll(_queryParams('', 'status', status));
@@ -293,19 +281,13 @@ class AdminOrdersApi {
   /// Parameters:
   ///
   /// * [Pageable] pageable (required):
-  ///   分頁參數 (從 1 開始)
-  ///
-  /// * [String] orderId:
-  ///   訂單ID
+  ///   分頁參數
   ///
   /// * [int] buyerId:
   ///   買家ID
   ///
   /// * [int] sellerId:
   ///   賣家ID
-  ///
-  /// * [int] productId:
-  ///   商品ID
   ///
   /// * [String] status:
   ///   訂單狀態
@@ -315,8 +297,8 @@ class AdminOrdersApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  Future<PageOrder?> searchOrders(Pageable pageable, { String? orderId, int? buyerId, int? sellerId, int? productId, String? status, DateTime? startDate, DateTime? endDate, }) async {
-    final response = await searchOrdersWithHttpInfo(pageable,  orderId: orderId, buyerId: buyerId, sellerId: sellerId, productId: productId, status: status, startDate: startDate, endDate: endDate, );
+  Future<PageOrder?> searchOrders1(Pageable pageable, { int? buyerId, int? sellerId, String? status, DateTime? startDate, DateTime? endDate, }) async {
+    final response = await searchOrders1WithHttpInfo(pageable,  buyerId: buyerId, sellerId: sellerId, status: status, startDate: startDate, endDate: endDate, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

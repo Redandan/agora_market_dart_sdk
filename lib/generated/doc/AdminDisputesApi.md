@@ -161,7 +161,7 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = AdminDisputesApi();
-final pageable = ; // Pageable | 分頁參數 (從 1 開始)
+final pageable = ; // Pageable | 分頁參數
 final buyerId = 789; // int | 買家ID
 final sellerId = 789; // int | 賣家ID
 final status = status_example; // String | 糾紛狀態
@@ -181,7 +181,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageable** | [**Pageable**](.md)| 分頁參數 (從 1 開始) | 
+ **pageable** | [**Pageable**](.md)| 分頁參數 | 
  **buyerId** | **int**| 買家ID | [optional] 
  **sellerId** | **int**| 賣家ID | [optional] 
  **status** | **String**| 糾紛狀態 | [optional] 

@@ -10,41 +10,41 @@
 
 part of openapi.api;
 
-class TopProductDTO {
-  /// Returns a new [TopProductDTO] instance.
-  TopProductDTO({
-    this.productId,
-    this.productName,
-    this.quantity,
+class TopSellerDTO {
+  /// Returns a new [TopSellerDTO] instance.
+  TopSellerDTO({
+    this.sellerId,
+    this.sellerName,
+    this.orderCount,
     this.amount,
   });
 
-  /// 商品ID
+  /// 賣家ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? productId;
+  int? sellerId;
 
-  /// 商品名稱
+  /// 賣家名稱
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? productName;
+  String? sellerName;
 
-  /// 銷售數量
+  /// 訂單數量
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? quantity;
+  int? orderCount;
 
   /// 銷售金額
   ///
@@ -56,39 +56,39 @@ class TopProductDTO {
   num? amount;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is TopProductDTO &&
-    other.productId == productId &&
-    other.productName == productName &&
-    other.quantity == quantity &&
+  bool operator ==(Object other) => identical(this, other) || other is TopSellerDTO &&
+    other.sellerId == sellerId &&
+    other.sellerName == sellerName &&
+    other.orderCount == orderCount &&
     other.amount == amount;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (productId == null ? 0 : productId!.hashCode) +
-    (productName == null ? 0 : productName!.hashCode) +
-    (quantity == null ? 0 : quantity!.hashCode) +
+    (sellerId == null ? 0 : sellerId!.hashCode) +
+    (sellerName == null ? 0 : sellerName!.hashCode) +
+    (orderCount == null ? 0 : orderCount!.hashCode) +
     (amount == null ? 0 : amount!.hashCode);
 
   @override
-  String toString() => 'TopProductDTO[productId=$productId, productName=$productName, quantity=$quantity, amount=$amount]';
+  String toString() => 'TopSellerDTO[sellerId=$sellerId, sellerName=$sellerName, orderCount=$orderCount, amount=$amount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.productId != null) {
-      json[r'productId'] = this.productId;
+    if (this.sellerId != null) {
+      json[r'sellerId'] = this.sellerId;
     } else {
-      json[r'productId'] = null;
+      json[r'sellerId'] = null;
     }
-    if (this.productName != null) {
-      json[r'productName'] = this.productName;
+    if (this.sellerName != null) {
+      json[r'sellerName'] = this.sellerName;
     } else {
-      json[r'productName'] = null;
+      json[r'sellerName'] = null;
     }
-    if (this.quantity != null) {
-      json[r'quantity'] = this.quantity;
+    if (this.orderCount != null) {
+      json[r'orderCount'] = this.orderCount;
     } else {
-      json[r'quantity'] = null;
+      json[r'orderCount'] = null;
     }
     if (this.amount != null) {
       json[r'amount'] = this.amount;
@@ -98,10 +98,10 @@ class TopProductDTO {
     return json;
   }
 
-  /// Returns a new [TopProductDTO] instance and imports its values from
+  /// Returns a new [TopSellerDTO] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static TopProductDTO? fromJson(dynamic value) {
+  static TopSellerDTO? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -110,27 +110,27 @@ class TopProductDTO {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "TopProductDTO[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "TopProductDTO[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "TopSellerDTO[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "TopSellerDTO[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return TopProductDTO(
-        productId: mapValueOfType<int>(json, r'productId'),
-        productName: mapValueOfType<String>(json, r'productName'),
-        quantity: mapValueOfType<int>(json, r'quantity'),
+      return TopSellerDTO(
+        sellerId: mapValueOfType<int>(json, r'sellerId'),
+        sellerName: mapValueOfType<String>(json, r'sellerName'),
+        orderCount: mapValueOfType<int>(json, r'orderCount'),
         amount: num.parse('${json[r'amount']}'),
       );
     }
     return null;
   }
 
-  static List<TopProductDTO> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <TopProductDTO>[];
+  static List<TopSellerDTO> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <TopSellerDTO>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = TopProductDTO.fromJson(row);
+        final value = TopSellerDTO.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -139,12 +139,12 @@ class TopProductDTO {
     return result.toList(growable: growable);
   }
 
-  static Map<String, TopProductDTO> mapFromJson(dynamic json) {
-    final map = <String, TopProductDTO>{};
+  static Map<String, TopSellerDTO> mapFromJson(dynamic json) {
+    final map = <String, TopSellerDTO>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = TopProductDTO.fromJson(entry.value);
+        final value = TopSellerDTO.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -153,14 +153,14 @@ class TopProductDTO {
     return map;
   }
 
-  // maps a json object with a list of TopProductDTO-objects as value to a dart map
-  static Map<String, List<TopProductDTO>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<TopProductDTO>>{};
+  // maps a json object with a list of TopSellerDTO-objects as value to a dart map
+  static Map<String, List<TopSellerDTO>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<TopSellerDTO>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = TopProductDTO.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = TopSellerDTO.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

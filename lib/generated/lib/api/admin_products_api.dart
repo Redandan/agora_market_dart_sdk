@@ -155,7 +155,7 @@ class AdminProductsApi {
   /// Parameters:
   ///
   /// * [Pageable] pageable (required):
-  ///   分頁參數 (從 1 開始)
+  ///   分頁參數
   ///
   /// * [int] sellerId:
   ///   賣家ID
@@ -220,7 +220,7 @@ class AdminProductsApi {
   /// Parameters:
   ///
   /// * [Pageable] pageable (required):
-  ///   分頁參數 (從 1 開始)
+  ///   分頁參數
   ///
   /// * [int] sellerId:
   ///   賣家ID

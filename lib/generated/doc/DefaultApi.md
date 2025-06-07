@@ -288,7 +288,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAdminTransactionList**
-> PageTransaction getAdminTransactionList(userId, token, page, size)
+> PageTransaction getAdminTransactionList(userId, token, pageable)
 
 管理員查看指定會員的交易記錄
 
@@ -299,11 +299,10 @@ import 'package:agora_market_dart_sdk/api.dart';
 final api_instance = DefaultApi();
 final userId = 789; // int | 會員ID
 final token = token_example; // String | 幣種
-final page = 56; // int | 頁碼
-final size = 56; // int | 每頁數量
+final pageable = ; // Pageable | 
 
 try {
-    final result = api_instance.getAdminTransactionList(userId, token, page, size);
+    final result = api_instance.getAdminTransactionList(userId, token, pageable);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getAdminTransactionList: $e\n');
@@ -316,8 +315,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **int**| 會員ID | 
  **token** | **String**| 幣種 | 
- **page** | **int**| 頁碼 | 
- **size** | **int**| 每頁數量 | 
+ **pageable** | [**Pageable**](.md)|  | 
 
 ### Return type
 
@@ -794,7 +792,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTransactionList**
-> PageTransaction getTransactionList(token, page, size)
+> PageTransaction getTransactionList(token, pageable)
 
 查詢帳變歷史
 
@@ -804,11 +802,10 @@ import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
 final token = token_example; // String | 
-final page = 56; // int | 頁碼
-final size = 56; // int | 每頁數量
+final pageable = ; // Pageable | 
 
 try {
-    final result = api_instance.getTransactionList(token, page, size);
+    final result = api_instance.getTransactionList(token, pageable);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getTransactionList: $e\n');
@@ -820,8 +817,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **token** | **String**|  | 
- **page** | **int**| 頁碼 | 
- **size** | **int**| 每頁數量 | 
+ **pageable** | [**Pageable**](.md)|  | 
 
 ### Return type
 

@@ -80,12 +80,8 @@ class StakingApi {
   ///
   /// Parameters:
   ///
-  /// * [int] page (required):
-  ///   頁碼
-  ///
-  /// * [int] size (required):
-  ///   每頁數量
-  Future<Response> getStakingListWithHttpInfo(int page, int size,) async {
+  /// * [Pageable] pageable (required):
+  Future<Response> getStakingListWithHttpInfo(Pageable pageable,) async {
     // ignore: prefer_const_declarations
     final path = r'/staking/list';
 
@@ -96,8 +92,7 @@ class StakingApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'page', page));
-      queryParams.addAll(_queryParams('', 'size', size));
+      queryParams.addAll(_queryParams('', 'pageable', pageable));
 
     const contentTypes = <String>[];
 
@@ -119,13 +114,9 @@ class StakingApi {
   ///
   /// Parameters:
   ///
-  /// * [int] page (required):
-  ///   頁碼
-  ///
-  /// * [int] size (required):
-  ///   每頁數量
-  Future<PageStaking?> getStakingList(int page, int size,) async {
-    final response = await getStakingListWithHttpInfo(page, size,);
+  /// * [Pageable] pageable (required):
+  Future<PageStaking?> getStakingList(Pageable pageable,) async {
+    final response = await getStakingListWithHttpInfo(pageable,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

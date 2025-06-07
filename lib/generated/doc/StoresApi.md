@@ -141,10 +141,10 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = StoresApi();
-final pageable = ; // Pageable | 分頁參數 (從 1 開始)
-final keyword = keyword_example; // String | 關鍵字
-final categoryId = 789; // int | 分類ID
-final status = status_example; // String | 商品狀態
+final pageable = ; // Pageable | 分頁參數
+final keyword = keyword_example; // String | 
+final categoryId = 789; // int | 
+final status = status_example; // String | 
 
 try {
     final result = api_instance.searchMyStoreProducts(pageable, keyword, categoryId, status);
@@ -158,10 +158,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageable** | [**Pageable**](.md)| 分頁參數 (從 1 開始) | 
- **keyword** | **String**| 關鍵字 | [optional] 
- **categoryId** | **int**| 分類ID | [optional] 
- **status** | **String**| 商品狀態 | [optional] 
+ **pageable** | [**Pageable**](.md)| 分頁參數 | 
+ **keyword** | **String**|  | [optional] 
+ **categoryId** | **int**|  | [optional] 
+ **status** | **String**|  | [optional] 
 
 ### Return type
 

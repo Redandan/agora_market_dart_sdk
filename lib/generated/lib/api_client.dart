@@ -242,6 +242,8 @@ class ApiClient {
           return OrderQueryResult.fromJson(value);
         case 'OrderShipParam':
           return OrderShipParam.fromJson(value);
+        case 'OrderStatisticsDTO':
+          return OrderStatisticsDTO.fromJson(value);
         case 'OrderSumbitParam':
           return OrderSumbitParam.fromJson(value);
         case 'PageCartItem':
@@ -308,6 +310,8 @@ class ApiClient {
           return TopDisputedSellerDTO.fromJson(value);
         case 'TopProductDTO':
           return TopProductDTO.fromJson(value);
+        case 'TopSellerDTO':
+          return TopSellerDTO.fromJson(value);
         case 'Transaction':
           return Transaction.fromJson(value);
         case 'UpdateDeliveryOrderParam':

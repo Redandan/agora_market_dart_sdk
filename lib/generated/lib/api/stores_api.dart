@@ -166,16 +166,13 @@ class StoresApi {
   /// Parameters:
   ///
   /// * [Pageable] pageable (required):
-  ///   分頁參數 (從 1 開始)
+  ///   分頁參數
   ///
   /// * [String] keyword:
-  ///   關鍵字
   ///
   /// * [int] categoryId:
-  ///   分類ID
   ///
   /// * [String] status:
-  ///   商品狀態
   Future<Response> searchMyStoreProductsWithHttpInfo(Pageable pageable, { String? keyword, int? categoryId, String? status, }) async {
     // ignore: prefer_const_declarations
     final path = r'/stores/products/search';
@@ -217,16 +214,13 @@ class StoresApi {
   /// Parameters:
   ///
   /// * [Pageable] pageable (required):
-  ///   分頁參數 (從 1 開始)
+  ///   分頁參數
   ///
   /// * [String] keyword:
-  ///   關鍵字
   ///
   /// * [int] categoryId:
-  ///   分類ID
   ///
   /// * [String] status:
-  ///   商品狀態
   Future<PageProduct?> searchMyStoreProducts(Pageable pageable, { String? keyword, int? categoryId, String? status, }) async {
     final response = await searchMyStoreProductsWithHttpInfo(pageable,  keyword: keyword, categoryId: categoryId, status: status, );
     if (response.statusCode >= HttpStatus.badRequest) {

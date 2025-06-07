@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalPages** | **int** |  | [optional] 
 **totalElements** | **int** |  | [optional] 
-**first** | **bool** |  | [optional] 
 **last** | **bool** |  | [optional] 
+**first** | **bool** |  | [optional] 
 **pageable** | [**PageableObject**](PageableObject.md) |  | [optional] 
 **numberOfElements** | **int** |  | [optional] 
 **size** | **int** |  | [optional] 

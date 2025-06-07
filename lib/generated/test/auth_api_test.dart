@@ -24,6 +24,13 @@ void main() {
       // TODO
     });
 
+    // 管理員創建用戶
+    //
+    //Future<UserInfo> createUserByAdmin(AdminCreateUserParam adminCreateUserParam) async
+    test('test createUserByAdmin', () async {
+      // TODO
+    });
+
     // 發送密碼重置郵件
     //
     //Future forgotPassword(String email) async

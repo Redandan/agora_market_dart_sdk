@@ -221,7 +221,7 @@ class AdminDisputesApi {
   /// Parameters:
   ///
   /// * [Pageable] pageable (required):
-  ///   分頁參數 (從 1 開始)
+  ///   分頁參數
   ///
   /// * [int] buyerId:
   ///   買家ID
@@ -292,7 +292,7 @@ class AdminDisputesApi {
   /// Parameters:
   ///
   /// * [Pageable] pageable (required):
-  ///   分頁參數 (從 1 開始)
+  ///   分頁參數
   ///
   /// * [int] buyerId:
   ///   買家ID

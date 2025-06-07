@@ -67,7 +67,7 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = ProductsApi();
-final pageable = ; // Pageable | 分頁參數 (從 1 開始)
+final pageable = ; // Pageable | 分頁參數
 final status = status_example; // String | 商品狀態
 final category = category_example; // String | 商品分類
 final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
@@ -85,7 +85,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageable** | [**Pageable**](.md)| 分頁參數 (從 1 開始) | 
+ **pageable** | [**Pageable**](.md)| 分頁參數 | 
  **status** | **String**| 商品狀態 | [optional] 
  **category** | **String**| 商品分類 | [optional] 
  **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
@@ -157,7 +157,7 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = ProductsApi();
-final pageable = ; // Pageable | 分頁參數 (從 1 開始)
+final pageable = ; // Pageable | 分頁參數
 final id = id_example; // String | 商品ID
 final sellerId = 789; // int | 賣家ID
 final status = status_example; // String | 商品狀態
@@ -180,7 +180,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageable** | [**Pageable**](.md)| 分頁參數 (從 1 開始) | 
+ **pageable** | [**Pageable**](.md)| 分頁參數 | 
  **id** | **String**| 商品ID | [optional] 
  **sellerId** | **int**| 賣家ID | [optional] 
  **status** | **String**| 商品狀態 | [optional] 

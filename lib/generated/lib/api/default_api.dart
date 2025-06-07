@@ -370,12 +370,8 @@ class DefaultApi {
   /// * [String] token (required):
   ///   幣種
   ///
-  /// * [int] page (required):
-  ///   頁碼
-  ///
-  /// * [int] size (required):
-  ///   每頁數量
-  Future<Response> getAdminTransactionListWithHttpInfo(int userId, String token, int page, int size,) async {
+  /// * [Pageable] pageable (required):
+  Future<Response> getAdminTransactionListWithHttpInfo(int userId, String token, Pageable pageable,) async {
     // ignore: prefer_const_declarations
     final path = r'/transactions/admin/user/{userId}/list'
       .replaceAll('{userId}', userId.toString());
@@ -388,8 +384,7 @@ class DefaultApi {
     final formParams = <String, String>{};
 
       queryParams.addAll(_queryParams('', 'token', token));
-      queryParams.addAll(_queryParams('', 'page', page));
-      queryParams.addAll(_queryParams('', 'size', size));
+      queryParams.addAll(_queryParams('', 'pageable', pageable));
 
     const contentTypes = <String>[];
 
@@ -415,13 +410,9 @@ class DefaultApi {
   /// * [String] token (required):
   ///   幣種
   ///
-  /// * [int] page (required):
-  ///   頁碼
-  ///
-  /// * [int] size (required):
-  ///   每頁數量
-  Future<PageTransaction?> getAdminTransactionList(int userId, String token, int page, int size,) async {
-    final response = await getAdminTransactionListWithHttpInfo(userId, token, page, size,);
+  /// * [Pageable] pageable (required):
+  Future<PageTransaction?> getAdminTransactionList(int userId, String token, Pageable pageable,) async {
+    final response = await getAdminTransactionListWithHttpInfo(userId, token, pageable,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1077,12 +1068,8 @@ class DefaultApi {
   ///
   /// * [String] token (required):
   ///
-  /// * [int] page (required):
-  ///   頁碼
-  ///
-  /// * [int] size (required):
-  ///   每頁數量
-  Future<Response> getTransactionListWithHttpInfo(String token, int page, int size,) async {
+  /// * [Pageable] pageable (required):
+  Future<Response> getTransactionListWithHttpInfo(String token, Pageable pageable,) async {
     // ignore: prefer_const_declarations
     final path = r'/transactions/{token}/list'
       .replaceAll('{token}', token);
@@ -1094,8 +1081,7 @@ class DefaultApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'page', page));
-      queryParams.addAll(_queryParams('', 'size', size));
+      queryParams.addAll(_queryParams('', 'pageable', pageable));
 
     const contentTypes = <String>[];
 
@@ -1117,13 +1103,9 @@ class DefaultApi {
   ///
   /// * [String] token (required):
   ///
-  /// * [int] page (required):
-  ///   頁碼
-  ///
-  /// * [int] size (required):
-  ///   每頁數量
-  Future<PageTransaction?> getTransactionList(String token, int page, int size,) async {
-    final response = await getTransactionListWithHttpInfo(token, page, size,);
+  /// * [Pageable] pageable (required):
+  Future<PageTransaction?> getTransactionList(String token, Pageable pageable,) async {
+    final response = await getTransactionListWithHttpInfo(token, pageable,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

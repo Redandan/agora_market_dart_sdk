@@ -11,26 +11,26 @@
 import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
-// tests for TopProductDTO
+// tests for TopSellerDTO
 void main() {
-  // final instance = TopProductDTO();
+  // final instance = TopSellerDTO();
 
-  group('test TopProductDTO', () {
-    // 商品ID
-    // int productId
-    test('to test the property `productId`', () async {
+  group('test TopSellerDTO', () {
+    // 賣家ID
+    // int sellerId
+    test('to test the property `sellerId`', () async {
       // TODO
     });
 
-    // 商品名稱
-    // String productName
-    test('to test the property `productName`', () async {
+    // 賣家名稱
+    // String sellerName
+    test('to test the property `sellerName`', () async {
       // TODO
     });
 
-    // 銷售數量
-    // int quantity
-    test('to test the property `quantity`', () async {
+    // 訂單數量
+    // int orderCount
+    test('to test the property `orderCount`', () async {
       // TODO
     });
 

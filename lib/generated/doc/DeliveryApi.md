@@ -66,7 +66,7 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DeliveryApi();
-final pageable = ; // Pageable | 分頁參數 (從 1 開始)
+final pageable = ; // Pageable | 分頁參數
 
 try {
     final result = api_instance.getDeliveryHistory(pageable);
@@ -80,7 +80,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageable** | [**Pageable**](.md)| 分頁參數 (從 1 開始) | 
+ **pageable** | [**Pageable**](.md)| 分頁參數 | 
 
 ### Return type
 

@@ -116,7 +116,7 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = AdminProductsApi();
-final pageable = ; // Pageable | 分頁參數 (從 1 開始)
+final pageable = ; // Pageable | 分頁參數
 final sellerId = 789; // int | 賣家ID
 final status = status_example; // String | 商品狀態
 final category = category_example; // String | 商品分類
@@ -135,7 +135,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageable** | [**Pageable**](.md)| 分頁參數 (從 1 開始) | 
+ **pageable** | [**Pageable**](.md)| 分頁參數 | 
  **sellerId** | **int**| 賣家ID | [optional] 
  **status** | **String**| 商品狀態 | [optional] 
  **category** | **String**| 商品分類 | [optional] 
