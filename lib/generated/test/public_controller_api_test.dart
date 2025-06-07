@@ -17,11 +17,6 @@ void main() {
   // final instance = PublicControllerApi();
 
   group('tests for PublicControllerApi', () {
-    //Future<Pageable> page(Pageable pageable) async
-    test('test page', () async {
-      // TODO
-    });
-
     //Future<DateTime> test({ DateTime startDate }) async
     test('test test', () async {
       // TODO

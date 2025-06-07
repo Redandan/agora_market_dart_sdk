@@ -61,7 +61,7 @@ void main() {
 
     // 管理員查看指定會員的交易記錄
     //
-    //Future<PageTransaction> getAdminTransactionList(int userId, String token, Pageable pageable) async
+    //Future<PageTransaction> getAdminTransactionList(int userId, String token, int page, int size) async
     test('test getAdminTransactionList', () async {
       // TODO
     });
@@ -143,7 +143,7 @@ void main() {
 
     // 獲取充值記錄
     //
-    //Future<PageRecharge> getRechargeHistory(int userId, Pageable pageable) async
+    //Future<PageRecharge> getRechargeHistory(int userId, int page, int size) async
     test('test getRechargeHistory', () async {
       // TODO
     });
@@ -157,7 +157,7 @@ void main() {
 
     // 查詢帳變歷史
     //
-    //Future<PageTransaction> getTransactionList(String token, Pageable pageable) async
+    //Future<PageTransaction> getTransactionList(String token, int page, int size) async
     test('test getTransactionList', () async {
       // TODO
     });
@@ -171,7 +171,7 @@ void main() {
 
     // 查詢提款歷史
     //
-    //Future<PageWithdraw> getWithdrawHistory(int userId, Pageable pageable) async
+    //Future<PageWithdraw> getWithdrawHistory(int userId, int page, int size) async
     test('test getWithdrawHistory', () async {
       // TODO
     });

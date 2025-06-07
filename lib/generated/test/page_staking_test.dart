@@ -26,8 +26,8 @@ void main() {
       // TODO
     });
 
-    // bool last
-    test('to test the property `last`', () async {
+    // int numberOfElements
+    test('to test the property `numberOfElements`', () async {
       // TODO
     });
 
@@ -36,13 +36,13 @@ void main() {
       // TODO
     });
 
-    // PageableObject pageable
-    test('to test the property `pageable`', () async {
+    // bool last
+    test('to test the property `last`', () async {
       // TODO
     });
 
-    // int numberOfElements
-    test('to test the property `numberOfElements`', () async {
+    // PageableObject pageable
+    test('to test the property `pageable`', () async {
       // TODO
     });
 

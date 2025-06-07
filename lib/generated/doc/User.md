@@ -21,8 +21,8 @@ Name | Type | Description | Notes
 **remark** | **String** | 備註 | [optional] 
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | 最後更新時間 | [optional] 
-**seller** | **bool** |  | [optional] 
 **admin** | **bool** |  | [optional] 
+**seller** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

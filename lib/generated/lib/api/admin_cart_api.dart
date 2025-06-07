@@ -170,12 +170,15 @@ class AdminCartApi {
   ///
   /// Parameters:
   ///
-  /// * [Pageable] pageable (required):
-  ///   分頁參數
-  ///
   /// * [int] userId:
   ///   用戶ID，不提供則搜索所有用戶
-  Future<Response> searchCartsWithHttpInfo(Pageable pageable, { int? userId, }) async {
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁大小
+  Future<Response> searchCartsWithHttpInfo({ int? userId, int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/cart/search';
 
@@ -189,7 +192,12 @@ class AdminCartApi {
     if (userId != null) {
       queryParams.addAll(_queryParams('', 'userId', userId));
     }
-      queryParams.addAll(_queryParams('', 'pageable', pageable));
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
 
     const contentTypes = <String>[];
 
@@ -211,13 +219,16 @@ class AdminCartApi {
   ///
   /// Parameters:
   ///
-  /// * [Pageable] pageable (required):
-  ///   分頁參數
-  ///
   /// * [int] userId:
   ///   用戶ID，不提供則搜索所有用戶
-  Future<PageCartItem?> searchCarts(Pageable pageable, { int? userId, }) async {
-    final response = await searchCartsWithHttpInfo(pageable,  userId: userId, );
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁大小
+  Future<PageCartItem?> searchCarts({ int? userId, int? page, int? size, }) async {
+    final response = await searchCartsWithHttpInfo( userId: userId, page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

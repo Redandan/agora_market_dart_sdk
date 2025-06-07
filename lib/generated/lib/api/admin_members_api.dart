@@ -154,9 +154,6 @@ class AdminMembersApi {
   ///
   /// Parameters:
   ///
-  /// * [Pageable] pageable (required):
-  ///   分頁參數
-  ///
   /// * [String] status:
   ///   會員狀態
   ///
@@ -165,7 +162,13 @@ class AdminMembersApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  Future<Response> searchMembersWithHttpInfo(Pageable pageable, { String? status, DateTime? startDate, DateTime? endDate, }) async {
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<Response> searchMembersWithHttpInfo({ String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/members/search';
 
@@ -185,7 +188,12 @@ class AdminMembersApi {
     if (endDate != null) {
       queryParams.addAll(_queryParams('', 'endDate', endDate));
     }
-      queryParams.addAll(_queryParams('', 'pageable', pageable));
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
 
     const contentTypes = <String>[];
 
@@ -207,9 +215,6 @@ class AdminMembersApi {
   ///
   /// Parameters:
   ///
-  /// * [Pageable] pageable (required):
-  ///   分頁參數
-  ///
   /// * [String] status:
   ///   會員狀態
   ///
@@ -218,8 +223,14 @@ class AdminMembersApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  Future<PageUser?> searchMembers(Pageable pageable, { String? status, DateTime? startDate, DateTime? endDate, }) async {
-    final response = await searchMembersWithHttpInfo(pageable,  status: status, startDate: startDate, endDate: endDate, );
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<PageUser?> searchMembers({ String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+    final response = await searchMembersWithHttpInfo( status: status, startDate: startDate, endDate: endDate, page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -254,8 +254,6 @@ class ApiClient {
           return PageChatSession.fromJson(value);
         case 'PageColdWallet':
           return PageColdWallet.fromJson(value);
-        case 'PageDeliveryDetail':
-          return PageDeliveryDetail.fromJson(value);
         case 'PageDispute':
           return PageDispute.fromJson(value);
         case 'PageOrder':
@@ -272,8 +270,6 @@ class ApiClient {
           return PageUser.fromJson(value);
         case 'PageWithdraw':
           return PageWithdraw.fromJson(value);
-        case 'Pageable':
-          return Pageable.fromJson(value);
         case 'PageableObject':
           return PageableObject.fromJson(value);
         case 'PasswordResetParam':

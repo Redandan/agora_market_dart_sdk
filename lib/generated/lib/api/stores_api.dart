@@ -165,15 +165,16 @@ class StoresApi {
   ///
   /// Parameters:
   ///
-  /// * [Pageable] pageable (required):
-  ///   分頁參數
-  ///
   /// * [String] keyword:
   ///
   /// * [int] categoryId:
   ///
   /// * [String] status:
-  Future<Response> searchMyStoreProductsWithHttpInfo(Pageable pageable, { String? keyword, int? categoryId, String? status, }) async {
+  ///
+  /// * [int] page:
+  ///
+  /// * [int] size:
+  Future<Response> searchMyStoreProductsWithHttpInfo({ String? keyword, int? categoryId, String? status, int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/stores/products/search';
 
@@ -193,7 +194,12 @@ class StoresApi {
     if (status != null) {
       queryParams.addAll(_queryParams('', 'status', status));
     }
-      queryParams.addAll(_queryParams('', 'pageable', pageable));
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
 
     const contentTypes = <String>[];
 
@@ -213,16 +219,17 @@ class StoresApi {
   ///
   /// Parameters:
   ///
-  /// * [Pageable] pageable (required):
-  ///   分頁參數
-  ///
   /// * [String] keyword:
   ///
   /// * [int] categoryId:
   ///
   /// * [String] status:
-  Future<PageProduct?> searchMyStoreProducts(Pageable pageable, { String? keyword, int? categoryId, String? status, }) async {
-    final response = await searchMyStoreProductsWithHttpInfo(pageable,  keyword: keyword, categoryId: categoryId, status: status, );
+  ///
+  /// * [int] page:
+  ///
+  /// * [int] size:
+  Future<PageProduct?> searchMyStoreProducts({ String? keyword, int? categoryId, String? status, int? page, int? size, }) async {
+    final response = await searchMyStoreProductsWithHttpInfo( keyword: keyword, categoryId: categoryId, status: status, page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

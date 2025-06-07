@@ -59,7 +59,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getUserCart**
-> PageCartItem getUserCart(pageable)
+> PageCartItem getUserCart(page, size)
 
 獲取用戶購物車
 
@@ -68,10 +68,11 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = MemberCartApi();
-final pageable = ; // Pageable | 分頁參數
+final page = 56; // int | 頁碼，從1開始
+final size = 56; // int | 每頁大小
 
 try {
-    final result = api_instance.getUserCart(pageable);
+    final result = api_instance.getUserCart(page, size);
     print(result);
 } catch (e) {
     print('Exception when calling MemberCartApi->getUserCart: $e\n');
@@ -82,7 +83,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageable** | [**Pageable**](.md)| 分頁參數 | 
+ **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
+ **size** | **int**| 每頁大小 | [optional] [default to 20]
 
 ### Return type
 

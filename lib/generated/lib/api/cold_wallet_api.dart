@@ -129,8 +129,12 @@ class ColdWalletApi {
   ///
   /// Parameters:
   ///
-  /// * [Pageable] pageable (required):
-  Future<Response> getColdWalletsWithHttpInfo(Pageable pageable,) async {
+  /// * [int] page (required):
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size (required):
+  ///   每頁數量
+  Future<Response> getColdWalletsWithHttpInfo(int page, int size,) async {
     // ignore: prefer_const_declarations
     final path = r'/cold-wallet';
 
@@ -141,7 +145,8 @@ class ColdWalletApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'pageable', pageable));
+      queryParams.addAll(_queryParams('', 'page', page));
+      queryParams.addAll(_queryParams('', 'size', size));
 
     const contentTypes = <String>[];
 
@@ -163,9 +168,13 @@ class ColdWalletApi {
   ///
   /// Parameters:
   ///
-  /// * [Pageable] pageable (required):
-  Future<PageColdWallet?> getColdWallets(Pageable pageable,) async {
-    final response = await getColdWalletsWithHttpInfo(pageable,);
+  /// * [int] page (required):
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size (required):
+  ///   每頁數量
+  Future<PageColdWallet?> getColdWallets(int page, int size,) async {
+    final response = await getColdWalletsWithHttpInfo(page, size,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -139,7 +139,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchCarts**
-> PageCartItem searchCarts(pageable, userId)
+> PageCartItem searchCarts(userId, page, size)
 
 搜索購物車
 
@@ -150,11 +150,12 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = AdminCartApi();
-final pageable = ; // Pageable | 分頁參數
 final userId = 789; // int | 用戶ID，不提供則搜索所有用戶
+final page = 56; // int | 頁碼，從1開始
+final size = 56; // int | 每頁大小
 
 try {
-    final result = api_instance.searchCarts(pageable, userId);
+    final result = api_instance.searchCarts(userId, page, size);
     print(result);
 } catch (e) {
     print('Exception when calling AdminCartApi->searchCarts: $e\n');
@@ -165,8 +166,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageable** | [**Pageable**](.md)| 分頁參數 | 
  **userId** | **int**| 用戶ID，不提供則搜索所有用戶 | [optional] 
+ **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
+ **size** | **int**| 每頁大小 | [optional] [default to 20]
 
 ### Return type
 

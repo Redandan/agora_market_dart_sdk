@@ -16,6 +16,77 @@ class AdminDisputesApi {
 
   final ApiClient apiClient;
 
+  /// 獲取所有糾紛列表
+  ///
+  /// 僅管理員可訪問
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<Response> getAllDisputesWithHttpInfo({ int? page, int? size, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/disputes/disputes';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 獲取所有糾紛列表
+  ///
+  /// 僅管理員可訪問
+  ///
+  /// Parameters:
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<PageDispute?> getAllDisputes({ int? page, int? size, }) async {
+    final response = await getAllDisputesWithHttpInfo( page: page, size: size, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDispute',) as PageDispute;
+    
+    }
+    return null;
+  }
+
   /// 查看糾紛詳情
   ///
   /// 管理員可查看糾紛的詳細信息
@@ -220,9 +291,6 @@ class AdminDisputesApi {
   ///
   /// Parameters:
   ///
-  /// * [Pageable] pageable (required):
-  ///   分頁參數
-  ///
   /// * [int] buyerId:
   ///   買家ID
   ///
@@ -240,7 +308,13 @@ class AdminDisputesApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  Future<Response> searchDisputes1WithHttpInfo(Pageable pageable, { int? buyerId, int? sellerId, String? status, String? type, DateTime? startDate, DateTime? endDate, }) async {
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<Response> searchDisputes1WithHttpInfo({ int? buyerId, int? sellerId, String? status, String? type, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/disputes/search';
 
@@ -269,7 +343,12 @@ class AdminDisputesApi {
     if (endDate != null) {
       queryParams.addAll(_queryParams('', 'endDate', endDate));
     }
-      queryParams.addAll(_queryParams('', 'pageable', pageable));
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
 
     const contentTypes = <String>[];
 
@@ -291,9 +370,6 @@ class AdminDisputesApi {
   ///
   /// Parameters:
   ///
-  /// * [Pageable] pageable (required):
-  ///   分頁參數
-  ///
   /// * [int] buyerId:
   ///   買家ID
   ///
@@ -311,8 +387,14 @@ class AdminDisputesApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  Future<PageDispute?> searchDisputes1(Pageable pageable, { int? buyerId, int? sellerId, String? status, String? type, DateTime? startDate, DateTime? endDate, }) async {
-    final response = await searchDisputes1WithHttpInfo(pageable,  buyerId: buyerId, sellerId: sellerId, status: status, type: type, startDate: startDate, endDate: endDate, );
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<PageDispute?> searchDisputes1({ int? buyerId, int? sellerId, String? status, String? type, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+    final response = await searchDisputes1WithHttpInfo( buyerId: buyerId, sellerId: sellerId, status: status, type: type, startDate: startDate, endDate: endDate, page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

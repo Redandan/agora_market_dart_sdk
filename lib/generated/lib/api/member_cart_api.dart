@@ -81,9 +81,12 @@ class MemberCartApi {
   ///
   /// Parameters:
   ///
-  /// * [Pageable] pageable (required):
-  ///   分頁參數
-  Future<Response> getUserCartWithHttpInfo(Pageable pageable,) async {
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁大小
+  Future<Response> getUserCartWithHttpInfo({ int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/cart';
 
@@ -94,7 +97,12 @@ class MemberCartApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'pageable', pageable));
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
 
     const contentTypes = <String>[];
 
@@ -114,10 +122,13 @@ class MemberCartApi {
   ///
   /// Parameters:
   ///
-  /// * [Pageable] pageable (required):
-  ///   分頁參數
-  Future<PageCartItem?> getUserCart(Pageable pageable,) async {
-    final response = await getUserCartWithHttpInfo(pageable,);
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁大小
+  Future<PageCartItem?> getUserCart({ int? page, int? size, }) async {
+    final response = await getUserCartWithHttpInfo( page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

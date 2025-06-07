@@ -44,30 +44,12 @@ void main() {
       // TODO
     });
 
-    // 查詢爭議列表
+    // 搜索糾紛
     //
-    // 根據條件查詢爭議列表
+    // 會員可搜索與自己相關的糾紛
     //
-    //Future<PageDispute> searchDisputes(Pageable pageable, { String status, DateTime startDate, DateTime endDate }) async
+    //Future<PageDispute> searchDisputes({ String status, String type, DateTime startDate, DateTime endDate, int page, int size }) async
     test('test searchDisputes', () async {
-      // TODO
-    });
-
-    // 查詢買家爭議列表
-    //
-    // 根據條件查詢買家的爭議列表
-    //
-    //Future<PageDispute> searchDisputesByBuyer(Pageable pageable, { String status, DateTime startDate, DateTime endDate }) async
-    test('test searchDisputesByBuyer', () async {
-      // TODO
-    });
-
-    // 查詢賣家爭議列表
-    //
-    // 根據條件查詢賣家的爭議列表
-    //
-    //Future<PageDispute> searchDisputesBySeller(Pageable pageable, { String status, DateTime startDate, DateTime endDate }) async
-    test('test searchDisputesBySeller', () async {
       // TODO
     });
 

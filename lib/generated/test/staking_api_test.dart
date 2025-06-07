@@ -30,7 +30,7 @@ void main() {
     //
     // 獲取用戶的質押記錄列表，支持分頁查詢
     //
-    //Future<PageStaking> getStakingList(Pageable pageable) async
+    //Future<PageStaking> getStakingList(int page, int size) async
     test('test getStakingList', () async {
       // TODO
     });

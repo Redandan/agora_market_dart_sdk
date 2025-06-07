@@ -132,7 +132,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchMyStoreProducts**
-> PageProduct searchMyStoreProducts(pageable, keyword, categoryId, status)
+> PageProduct searchMyStoreProducts(keyword, categoryId, status, page, size)
 
 搜索我的商店商品
 
@@ -141,13 +141,14 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = StoresApi();
-final pageable = ; // Pageable | 分頁參數
 final keyword = keyword_example; // String | 
 final categoryId = 789; // int | 
 final status = status_example; // String | 
+final page = 56; // int | 
+final size = 56; // int | 
 
 try {
-    final result = api_instance.searchMyStoreProducts(pageable, keyword, categoryId, status);
+    final result = api_instance.searchMyStoreProducts(keyword, categoryId, status, page, size);
     print(result);
 } catch (e) {
     print('Exception when calling StoresApi->searchMyStoreProducts: $e\n');
@@ -158,10 +159,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageable** | [**Pageable**](.md)| 分頁參數 | 
  **keyword** | **String**|  | [optional] 
  **categoryId** | **int**|  | [optional] 
  **status** | **String**|  | [optional] 
+ **page** | **int**|  | [optional] [default to 1]
+ **size** | **int**|  | [optional] [default to 10]
 
 ### Return type
 

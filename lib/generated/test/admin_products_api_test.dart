@@ -39,7 +39,7 @@ void main() {
     //
     // 管理員可根據多個條件搜索商品
     //
-    //Future<PageProduct> searchProducts(Pageable pageable, { int sellerId, String status, String category, DateTime startDate, DateTime endDate }) async
+    //Future<PageProduct> searchProducts({ int sellerId, String status, String category, DateTime startDate, DateTime endDate, int page, int size }) async
     test('test searchProducts', () async {
       // TODO
     });

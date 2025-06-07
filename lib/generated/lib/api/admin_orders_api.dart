@@ -215,9 +215,6 @@ class AdminOrdersApi {
   ///
   /// Parameters:
   ///
-  /// * [Pageable] pageable (required):
-  ///   分頁參數
-  ///
   /// * [int] buyerId:
   ///   買家ID
   ///
@@ -232,7 +229,13 @@ class AdminOrdersApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  Future<Response> searchOrders1WithHttpInfo(Pageable pageable, { int? buyerId, int? sellerId, String? status, DateTime? startDate, DateTime? endDate, }) async {
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<Response> searchOrdersWithHttpInfo({ int? buyerId, int? sellerId, String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/orders/search';
 
@@ -258,7 +261,12 @@ class AdminOrdersApi {
     if (endDate != null) {
       queryParams.addAll(_queryParams('', 'endDate', endDate));
     }
-      queryParams.addAll(_queryParams('', 'pageable', pageable));
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
 
     const contentTypes = <String>[];
 
@@ -280,9 +288,6 @@ class AdminOrdersApi {
   ///
   /// Parameters:
   ///
-  /// * [Pageable] pageable (required):
-  ///   分頁參數
-  ///
   /// * [int] buyerId:
   ///   買家ID
   ///
@@ -297,8 +302,14 @@ class AdminOrdersApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  Future<PageOrder?> searchOrders1(Pageable pageable, { int? buyerId, int? sellerId, String? status, DateTime? startDate, DateTime? endDate, }) async {
-    final response = await searchOrders1WithHttpInfo(pageable,  buyerId: buyerId, sellerId: sellerId, status: status, startDate: startDate, endDate: endDate, );
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<PageOrder?> searchOrders({ int? buyerId, int? sellerId, String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+    final response = await searchOrdersWithHttpInfo( buyerId: buyerId, sellerId: sellerId, status: status, startDate: startDate, endDate: endDate, page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

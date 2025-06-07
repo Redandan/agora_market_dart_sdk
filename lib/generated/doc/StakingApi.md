@@ -58,7 +58,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getStakingList**
-> PageStaking getStakingList(pageable)
+> PageStaking getStakingList(page, size)
 
 獲取質押記錄列表
 
@@ -69,10 +69,11 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = StakingApi();
-final pageable = ; // Pageable | 
+final page = 56; // int | 頁碼，從1開始
+final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.getStakingList(pageable);
+    final result = api_instance.getStakingList(page, size);
     print(result);
 } catch (e) {
     print('Exception when calling StakingApi->getStakingList: $e\n');
@@ -83,7 +84,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageable** | [**Pageable**](.md)|  | 
+ **page** | **int**| 頁碼，從1開始 | 
+ **size** | **int**| 每頁數量 | 
 
 ### Return type
 

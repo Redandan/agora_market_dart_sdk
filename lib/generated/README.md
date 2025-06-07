@@ -93,6 +93,7 @@ Class | Method | HTTP request | Description
 *AdminDeliveryApi* | [**searchDeliveryOrders**](doc//AdminDeliveryApi.md#searchdeliveryorders) | **GET** /admin/delivery/orders/search | 搜索配送訂單
 *AdminDeliveryApi* | [**searchDeliveryers**](doc//AdminDeliveryApi.md#searchdeliveryers) | **GET** /admin/delivery/deliveryers/search | 搜索配送員
 *AdminDeliveryApi* | [**updateDeliveryerStatus**](doc//AdminDeliveryApi.md#updatedeliveryerstatus) | **POST** /admin/delivery/deliveryers/{deliveryerId}/status | 更新配送員狀態
+*AdminDisputesApi* | [**getAllDisputes**](doc//AdminDisputesApi.md#getalldisputes) | **GET** /admin/disputes/disputes | 獲取所有糾紛列表
 *AdminDisputesApi* | [**getDisputeDetail1**](doc//AdminDisputesApi.md#getdisputedetail1) | **GET** /admin/disputes/{disputeId} | 查看糾紛詳情
 *AdminDisputesApi* | [**getDisputeStatistics**](doc//AdminDisputesApi.md#getdisputestatistics) | **GET** /admin/disputes/statistics | 糾紛統計報告
 *AdminDisputesApi* | [**resolveDispute**](doc//AdminDisputesApi.md#resolvedispute) | **POST** /admin/disputes/{disputeId}/resolve | 處理糾紛
@@ -105,7 +106,7 @@ Class | Method | HTTP request | Description
 *AdminOrdersApi* | [**cancelOrderByAdmin**](doc//AdminOrdersApi.md#cancelorderbyadmin) | **POST** /admin/orders/{orderId}/cancel | 取消訂單
 *AdminOrdersApi* | [**getOrderDetail**](doc//AdminOrdersApi.md#getorderdetail) | **GET** /admin/orders/{orderId} | 查看訂單詳情
 *AdminOrdersApi* | [**getOrderStatistics**](doc//AdminOrdersApi.md#getorderstatistics) | **GET** /admin/orders/statistics | 訂單統計報告
-*AdminOrdersApi* | [**searchOrders1**](doc//AdminOrdersApi.md#searchorders1) | **GET** /admin/orders/search | 搜索訂單
+*AdminOrdersApi* | [**searchOrders**](doc//AdminOrdersApi.md#searchorders) | **GET** /admin/orders/search | 搜索訂單
 *AdminProductsApi* | [**getProductDetail**](doc//AdminProductsApi.md#getproductdetail) | **GET** /admin/products/{productId} | 查看商品詳情
 *AdminProductsApi* | [**getProductStatistics**](doc//AdminProductsApi.md#getproductstatistics) | **GET** /admin/products/statistics | 商品統計報告
 *AdminProductsApi* | [**searchProducts**](doc//AdminProductsApi.md#searchproducts) | **GET** /admin/products/search | 搜索商品
@@ -152,13 +153,10 @@ Class | Method | HTTP request | Description
 *MemberDisputesApi* | [**createDispute**](doc//MemberDisputesApi.md#createdispute) | **POST** /disputes | 創建糾紛
 *MemberDisputesApi* | [**getDisputeDetail**](doc//MemberDisputesApi.md#getdisputedetail) | **GET** /disputes/{disputeId} | 查看糾紛詳情
 *MemberDisputesApi* | [**replyDispute**](doc//MemberDisputesApi.md#replydispute) | **POST** /disputes/{disputeId}/reply | 回覆糾紛
-*MemberDisputesApi* | [**searchDisputes**](doc//MemberDisputesApi.md#searchdisputes) | **GET** /disputes/search | 查詢爭議列表
-*MemberDisputesApi* | [**searchDisputesByBuyer**](doc//MemberDisputesApi.md#searchdisputesbybuyer) | **GET** /disputes/buyer | 查詢買家爭議列表
-*MemberDisputesApi* | [**searchDisputesBySeller**](doc//MemberDisputesApi.md#searchdisputesbyseller) | **GET** /disputes/seller | 查詢賣家爭議列表
+*MemberDisputesApi* | [**searchDisputes**](doc//MemberDisputesApi.md#searchdisputes) | **GET** /disputes/search | 搜索糾紛
 *MemberOrdersApi* | [**cancelOrder**](doc//MemberOrdersApi.md#cancelorder) | **POST** /orders/cancel | 取消訂單
 *MemberOrdersApi* | [**confirmOrder**](doc//MemberOrdersApi.md#confirmorder) | **POST** /orders/confirm | 確認收貨
 *MemberOrdersApi* | [**getOrder**](doc//MemberOrdersApi.md#getorder) | **GET** /orders/{orderId} | 獲取訂單詳情
-*MemberOrdersApi* | [**searchOrders**](doc//MemberOrdersApi.md#searchorders) | **GET** /orders/search | 查詢訂單列表
 *MemberOrdersApi* | [**searchOrdersByBuyer**](doc//MemberOrdersApi.md#searchordersbybuyer) | **GET** /orders/buyer | 查詢訂單列表
 *MemberOrdersApi* | [**searchOrdersBySeller**](doc//MemberOrdersApi.md#searchordersbyseller) | **GET** /orders/seller | 查詢訂單列表
 *MemberOrdersApi* | [**shipOrder**](doc//MemberOrdersApi.md#shiporder) | **POST** /orders/ship | 發貨
@@ -168,7 +166,6 @@ Class | Method | HTTP request | Description
 *ProductsApi* | [**getProduct**](doc//ProductsApi.md#getproduct) | **GET** /products/{id} | 根據ID獲取商品
 *ProductsApi* | [**getProductsBySearch**](doc//ProductsApi.md#getproductsbysearch) | **GET** /products/search | 搜索商品
 *ProductsApi* | [**updateProduct**](doc//ProductsApi.md#updateproduct) | **POST** /products/update | 更新商品
-*PublicControllerApi* | [**page**](doc//PublicControllerApi.md#page) | **GET** /public/page | 
 *PublicControllerApi* | [**test**](doc//PublicControllerApi.md#test) | **GET** /public/ | 
 *SseApi* | [**broadcastMessage**](doc//SseApi.md#broadcastmessage) | **POST** /sse/broadcast | 廣播消息
 *SseApi* | [**connect**](doc//SseApi.md#connect) | **GET** /sse/connect/{clientId} | 建立 SSE 連接
@@ -226,7 +223,6 @@ Class | Method | HTTP request | Description
  - [PageChatMessage](doc//PageChatMessage.md)
  - [PageChatSession](doc//PageChatSession.md)
  - [PageColdWallet](doc//PageColdWallet.md)
- - [PageDeliveryDetail](doc//PageDeliveryDetail.md)
  - [PageDispute](doc//PageDispute.md)
  - [PageOrder](doc//PageOrder.md)
  - [PageProduct](doc//PageProduct.md)
@@ -235,7 +231,6 @@ Class | Method | HTTP request | Description
  - [PageTransaction](doc//PageTransaction.md)
  - [PageUser](doc//PageUser.md)
  - [PageWithdraw](doc//PageWithdraw.md)
- - [Pageable](doc//Pageable.md)
  - [PageableObject](doc//PageableObject.md)
  - [PasswordResetParam](doc//PasswordResetParam.md)
  - [Product](doc//Product.md)

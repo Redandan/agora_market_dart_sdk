@@ -74,9 +74,6 @@ class ProductsApi {
   ///
   /// Parameters:
   ///
-  /// * [Pageable] pageable (required):
-  ///   分頁參數
-  ///
   /// * [String] status:
   ///   商品狀態
   ///
@@ -88,7 +85,13 @@ class ProductsApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  Future<Response> getMyProductsWithHttpInfo(Pageable pageable, { String? status, String? category, DateTime? startDate, DateTime? endDate, }) async {
+  ///
+  /// * [int] page:
+  ///   分頁參數
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<Response> getMyProductsWithHttpInfo({ String? status, String? category, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/products/my-products';
 
@@ -111,7 +114,12 @@ class ProductsApi {
     if (endDate != null) {
       queryParams.addAll(_queryParams('', 'endDate', endDate));
     }
-      queryParams.addAll(_queryParams('', 'pageable', pageable));
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
 
     const contentTypes = <String>[];
 
@@ -131,9 +139,6 @@ class ProductsApi {
   ///
   /// Parameters:
   ///
-  /// * [Pageable] pageable (required):
-  ///   分頁參數
-  ///
   /// * [String] status:
   ///   商品狀態
   ///
@@ -145,8 +150,14 @@ class ProductsApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  Future<PageProduct?> getMyProducts(Pageable pageable, { String? status, String? category, DateTime? startDate, DateTime? endDate, }) async {
-    final response = await getMyProductsWithHttpInfo(pageable,  status: status, category: category, startDate: startDate, endDate: endDate, );
+  ///
+  /// * [int] page:
+  ///   分頁參數
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<PageProduct?> getMyProducts({ String? status, String? category, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+    final response = await getMyProductsWithHttpInfo( status: status, category: category, startDate: startDate, endDate: endDate, page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -219,9 +230,6 @@ class ProductsApi {
   ///
   /// Parameters:
   ///
-  /// * [Pageable] pageable (required):
-  ///   分頁參數
-  ///
   /// * [String] id:
   ///   商品ID
   ///
@@ -248,7 +256,13 @@ class ProductsApi {
   ///
   /// * [double] latitude:
   ///   緯度
-  Future<Response> getProductsBySearchWithHttpInfo(Pageable pageable, { String? id, int? sellerId, String? status, String? category, DateTime? startDate, DateTime? endDate, String? postalCode, double? longitude, double? latitude, }) async {
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<Response> getProductsBySearchWithHttpInfo({ String? id, int? sellerId, String? status, String? category, DateTime? startDate, DateTime? endDate, String? postalCode, double? longitude, double? latitude, int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/products/search';
 
@@ -286,7 +300,12 @@ class ProductsApi {
     if (latitude != null) {
       queryParams.addAll(_queryParams('', 'latitude', latitude));
     }
-      queryParams.addAll(_queryParams('', 'pageable', pageable));
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
 
     const contentTypes = <String>[];
 
@@ -305,9 +324,6 @@ class ProductsApi {
   /// 搜索商品
   ///
   /// Parameters:
-  ///
-  /// * [Pageable] pageable (required):
-  ///   分頁參數
   ///
   /// * [String] id:
   ///   商品ID
@@ -335,8 +351,14 @@ class ProductsApi {
   ///
   /// * [double] latitude:
   ///   緯度
-  Future<PageProduct?> getProductsBySearch(Pageable pageable, { String? id, int? sellerId, String? status, String? category, DateTime? startDate, DateTime? endDate, String? postalCode, double? longitude, double? latitude, }) async {
-    final response = await getProductsBySearchWithHttpInfo(pageable,  id: id, sellerId: sellerId, status: status, category: category, startDate: startDate, endDate: endDate, postalCode: postalCode, longitude: longitude, latitude: latitude, );
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<PageProduct?> getProductsBySearch({ String? id, int? sellerId, String? status, String? category, DateTime? startDate, DateTime? endDate, String? postalCode, double? longitude, double? latitude, int? page, int? size, }) async {
+    final response = await getProductsBySearchWithHttpInfo( id: id, sellerId: sellerId, status: status, category: category, startDate: startDate, endDate: endDate, postalCode: postalCode, longitude: longitude, latitude: latitude, page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

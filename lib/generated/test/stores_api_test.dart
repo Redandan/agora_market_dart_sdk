@@ -40,7 +40,7 @@ void main() {
 
     // 搜索我的商店商品
     //
-    //Future<PageProduct> searchMyStoreProducts(Pageable pageable, { String keyword, int categoryId, String status }) async
+    //Future<PageProduct> searchMyStoreProducts({ String keyword, int categoryId, String status, int page, int size }) async
     test('test searchMyStoreProducts', () async {
       // TODO
     });

@@ -39,7 +39,7 @@ void main() {
     //
     // 分頁獲取所有冷錢包
     //
-    //Future<PageColdWallet> getColdWallets(Pageable pageable) async
+    //Future<PageColdWallet> getColdWallets(int page, int size) async
     test('test getColdWallets', () async {
       // TODO
     });

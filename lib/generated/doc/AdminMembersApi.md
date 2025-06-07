@@ -105,7 +105,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchMembers**
-> PageUser searchMembers(pageable, status, startDate, endDate)
+> PageUser searchMembers(status, startDate, endDate, page, size)
 
 搜索會員
 
@@ -116,13 +116,14 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = AdminMembersApi();
-final pageable = ; // Pageable | 分頁參數
 final status = status_example; // String | 會員狀態
 final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
 final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
+final page = 56; // int | 頁碼，從1開始
+final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.searchMembers(pageable, status, startDate, endDate);
+    final result = api_instance.searchMembers(status, startDate, endDate, page, size);
     print(result);
 } catch (e) {
     print('Exception when calling AdminMembersApi->searchMembers: $e\n');
@@ -133,10 +134,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageable** | [**Pageable**](.md)| 分頁參數 | 
  **status** | **String**| 會員狀態 | [optional] 
  **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
  **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
+ **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
+ **size** | **int**| 每頁數量 | [optional] [default to 20]
 
 ### Return type
 

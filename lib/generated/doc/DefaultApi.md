@@ -288,7 +288,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAdminTransactionList**
-> PageTransaction getAdminTransactionList(userId, token, pageable)
+> PageTransaction getAdminTransactionList(userId, token, page, size)
 
 管理員查看指定會員的交易記錄
 
@@ -299,10 +299,11 @@ import 'package:agora_market_dart_sdk/api.dart';
 final api_instance = DefaultApi();
 final userId = 789; // int | 會員ID
 final token = token_example; // String | 幣種
-final pageable = ; // Pageable | 
+final page = 56; // int | 頁碼
+final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.getAdminTransactionList(userId, token, pageable);
+    final result = api_instance.getAdminTransactionList(userId, token, page, size);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getAdminTransactionList: $e\n');
@@ -315,7 +316,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **int**| 會員ID | 
  **token** | **String**| 幣種 | 
- **pageable** | [**Pageable**](.md)|  | 
+ **page** | **int**| 頁碼 | 
+ **size** | **int**| 每頁數量 | 
 
 ### Return type
 
@@ -708,7 +710,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getRechargeHistory**
-> PageRecharge getRechargeHistory(userId, pageable)
+> PageRecharge getRechargeHistory(userId, page, size)
 
 獲取充值記錄
 
@@ -717,11 +719,12 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
-final userId = 789; // int | 用戶ID
-final pageable = ; // Pageable | 分頁參數 (從 1 開始)
+final userId = 789; // int | 
+final page = 56; // int | 頁碼，從1開始
+final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.getRechargeHistory(userId, pageable);
+    final result = api_instance.getRechargeHistory(userId, page, size);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getRechargeHistory: $e\n');
@@ -732,8 +735,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **int**| 用戶ID | 
- **pageable** | [**Pageable**](.md)| 分頁參數 (從 1 開始) | 
+ **userId** | **int**|  | 
+ **page** | **int**| 頁碼，從1開始 | 
+ **size** | **int**| 每頁數量 | 
 
 ### Return type
 
@@ -792,7 +796,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTransactionList**
-> PageTransaction getTransactionList(token, pageable)
+> PageTransaction getTransactionList(token, page, size)
 
 查詢帳變歷史
 
@@ -802,10 +806,11 @@ import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
 final token = token_example; // String | 
-final pageable = ; // Pageable | 
+final page = 56; // int | 頁碼，從1開始
+final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.getTransactionList(token, pageable);
+    final result = api_instance.getTransactionList(token, page, size);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getTransactionList: $e\n');
@@ -817,7 +822,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **token** | **String**|  | 
- **pageable** | [**Pageable**](.md)|  | 
+ **page** | **int**| 頁碼，從1開始 | 
+ **size** | **int**| 每頁數量 | 
 
 ### Return type
 
@@ -876,7 +882,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWithdrawHistory**
-> PageWithdraw getWithdrawHistory(userId, pageable)
+> PageWithdraw getWithdrawHistory(userId, page, size)
 
 查詢提款歷史
 
@@ -886,10 +892,11 @@ import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
 final userId = 789; // int | 
-final pageable = ; // Pageable | 
+final page = 56; // int | 頁碼，從1開始
+final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.getWithdrawHistory(userId, pageable);
+    final result = api_instance.getWithdrawHistory(userId, page, size);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getWithdrawHistory: $e\n');
@@ -901,7 +908,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **int**|  | 
- **pageable** | [**Pageable**](.md)|  | 
+ **page** | **int**| 頁碼，從1開始 | 
+ **size** | **int**| 每頁數量 | 
 
 ### Return type
 

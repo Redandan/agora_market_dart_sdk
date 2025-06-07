@@ -15,10 +15,10 @@ class PageChatMessage {
   PageChatMessage({
     this.totalPages,
     this.totalElements,
-    this.last,
-    this.first,
-    this.pageable,
     this.numberOfElements,
+    this.first,
+    this.last,
+    this.pageable,
     this.size,
     this.content = const [],
     this.number,
@@ -48,7 +48,7 @@ class PageChatMessage {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? last;
+  int? numberOfElements;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -64,7 +64,7 @@ class PageChatMessage {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PageableObject? pageable;
+  bool? last;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -72,7 +72,7 @@ class PageChatMessage {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? numberOfElements;
+  PageableObject? pageable;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -112,10 +112,10 @@ class PageChatMessage {
   bool operator ==(Object other) => identical(this, other) || other is PageChatMessage &&
     other.totalPages == totalPages &&
     other.totalElements == totalElements &&
-    other.last == last &&
-    other.first == first &&
-    other.pageable == pageable &&
     other.numberOfElements == numberOfElements &&
+    other.first == first &&
+    other.last == last &&
+    other.pageable == pageable &&
     other.size == size &&
     _deepEquality.equals(other.content, content) &&
     other.number == number &&
@@ -127,10 +127,10 @@ class PageChatMessage {
     // ignore: unnecessary_parenthesis
     (totalPages == null ? 0 : totalPages!.hashCode) +
     (totalElements == null ? 0 : totalElements!.hashCode) +
-    (last == null ? 0 : last!.hashCode) +
-    (first == null ? 0 : first!.hashCode) +
-    (pageable == null ? 0 : pageable!.hashCode) +
     (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
+    (first == null ? 0 : first!.hashCode) +
+    (last == null ? 0 : last!.hashCode) +
+    (pageable == null ? 0 : pageable!.hashCode) +
     (size == null ? 0 : size!.hashCode) +
     (content.hashCode) +
     (number == null ? 0 : number!.hashCode) +
@@ -138,7 +138,7 @@ class PageChatMessage {
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageChatMessage[totalPages=$totalPages, totalElements=$totalElements, last=$last, first=$first, pageable=$pageable, numberOfElements=$numberOfElements, size=$size, content=$content, number=$number, sort=$sort, empty=$empty]';
+  String toString() => 'PageChatMessage[totalPages=$totalPages, totalElements=$totalElements, numberOfElements=$numberOfElements, first=$first, last=$last, pageable=$pageable, size=$size, content=$content, number=$number, sort=$sort, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -152,25 +152,25 @@ class PageChatMessage {
     } else {
       json[r'totalElements'] = null;
     }
-    if (this.last != null) {
-      json[r'last'] = this.last;
+    if (this.numberOfElements != null) {
+      json[r'numberOfElements'] = this.numberOfElements;
     } else {
-      json[r'last'] = null;
+      json[r'numberOfElements'] = null;
     }
     if (this.first != null) {
       json[r'first'] = this.first;
     } else {
       json[r'first'] = null;
     }
+    if (this.last != null) {
+      json[r'last'] = this.last;
+    } else {
+      json[r'last'] = null;
+    }
     if (this.pageable != null) {
       json[r'pageable'] = this.pageable;
     } else {
       json[r'pageable'] = null;
-    }
-    if (this.numberOfElements != null) {
-      json[r'numberOfElements'] = this.numberOfElements;
-    } else {
-      json[r'numberOfElements'] = null;
     }
     if (this.size != null) {
       json[r'size'] = this.size;
@@ -217,10 +217,10 @@ class PageChatMessage {
       return PageChatMessage(
         totalPages: mapValueOfType<int>(json, r'totalPages'),
         totalElements: mapValueOfType<int>(json, r'totalElements'),
-        last: mapValueOfType<bool>(json, r'last'),
-        first: mapValueOfType<bool>(json, r'first'),
-        pageable: PageableObject.fromJson(json[r'pageable']),
         numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
+        first: mapValueOfType<bool>(json, r'first'),
+        last: mapValueOfType<bool>(json, r'last'),
+        pageable: PageableObject.fromJson(json[r'pageable']),
         size: mapValueOfType<int>(json, r'size'),
         content: ChatMessage.listFromJson(json[r'content']),
         number: mapValueOfType<int>(json, r'number'),
