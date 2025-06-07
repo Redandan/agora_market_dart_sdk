@@ -55,7 +55,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getDeliveryHistory**
-> List<DeliveryDetail> getDeliveryHistory(page, size)
+> PageDeliveryDetail getDeliveryHistory(pageable)
 
 獲取歷史訂單
 
@@ -66,11 +66,10 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DeliveryApi();
-final page = 56; // int | 頁碼
-final size = 56; // int | 每頁數量
+final pageable = ; // Pageable | 分頁參數 (從 1 開始)
 
 try {
-    final result = api_instance.getDeliveryHistory(page, size);
+    final result = api_instance.getDeliveryHistory(pageable);
     print(result);
 } catch (e) {
     print('Exception when calling DeliveryApi->getDeliveryHistory: $e\n');
@@ -81,12 +80,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int**| 頁碼 | [optional] [default to 0]
- **size** | **int**| 每頁數量 | [optional] [default to 10]
+ **pageable** | [**Pageable**](.md)| 分頁參數 (從 1 開始) | 
 
 ### Return type
 
-[**List<DeliveryDetail>**](DeliveryDetail.md)
+[**PageDeliveryDetail**](PageDeliveryDetail.md)
 
 ### Authorization
 

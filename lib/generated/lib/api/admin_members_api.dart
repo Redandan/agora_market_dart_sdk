@@ -16,6 +16,58 @@ class AdminMembersApi {
 
   final ApiClient apiClient;
 
+  /// 管理員創建用戶
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [AdminCreateUserParam] adminCreateUserParam (required):
+  Future<Response> createUserByAdminWithHttpInfo(AdminCreateUserParam adminCreateUserParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/members/create-user';
+
+    // ignore: prefer_final_locals
+    Object? postBody = adminCreateUserParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 管理員創建用戶
+  ///
+  /// Parameters:
+  ///
+  /// * [AdminCreateUserParam] adminCreateUserParam (required):
+  Future<UserInfo?> createUserByAdmin(AdminCreateUserParam adminCreateUserParam,) async {
+    final response = await createUserByAdminWithHttpInfo(adminCreateUserParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UserInfo',) as UserInfo;
+    
+    }
+    return null;
+  }
+
   /// 查看會員詳情
   ///
   /// 管理員可查看會員的詳細信息
@@ -154,6 +206,9 @@ class AdminMembersApi {
   ///
   /// Parameters:
   ///
+  /// * [Pageable] pageable (required):
+  ///   分頁參數 (從 1 開始)
+  ///
   /// * [String] status:
   ///   會員狀態
   ///
@@ -162,13 +217,7 @@ class AdminMembersApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  ///
-  /// * [int] page:
-  ///   分頁參數
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<Response> searchMembersWithHttpInfo({ String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+  Future<Response> searchMembersWithHttpInfo(Pageable pageable, { String? status, DateTime? startDate, DateTime? endDate, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/members/search';
 
@@ -188,12 +237,7 @@ class AdminMembersApi {
     if (endDate != null) {
       queryParams.addAll(_queryParams('', 'endDate', endDate));
     }
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
+      queryParams.addAll(_queryParams('', 'pageable', pageable));
 
     const contentTypes = <String>[];
 
@@ -215,6 +259,9 @@ class AdminMembersApi {
   ///
   /// Parameters:
   ///
+  /// * [Pageable] pageable (required):
+  ///   分頁參數 (從 1 開始)
+  ///
   /// * [String] status:
   ///   會員狀態
   ///
@@ -223,14 +270,8 @@ class AdminMembersApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  ///
-  /// * [int] page:
-  ///   分頁參數
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<PageUser?> searchMembers({ String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
-    final response = await searchMembersWithHttpInfo( status: status, startDate: startDate, endDate: endDate, page: page, size: size, );
+  Future<PageUser?> searchMembers(Pageable pageable, { String? status, DateTime? startDate, DateTime? endDate, }) async {
+    final response = await searchMembersWithHttpInfo(pageable,  status: status, startDate: startDate, endDate: endDate, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

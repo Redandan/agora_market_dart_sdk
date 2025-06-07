@@ -14,9 +14,7 @@ class TopProductDTO {
   /// Returns a new [TopProductDTO] instance.
   TopProductDTO({
     this.productId,
-    this.productName,
     this.quantity,
-    this.amount,
   });
 
   /// 商品ID
@@ -28,16 +26,7 @@ class TopProductDTO {
   ///
   int? productId;
 
-  /// 商品名稱
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? productName;
-
-  /// 銷售數量
+  /// 購物車中的數量
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -46,32 +35,19 @@ class TopProductDTO {
   ///
   int? quantity;
 
-  /// 銷售金額
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? amount;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is TopProductDTO &&
     other.productId == productId &&
-    other.productName == productName &&
-    other.quantity == quantity &&
-    other.amount == amount;
+    other.quantity == quantity;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (productId == null ? 0 : productId!.hashCode) +
-    (productName == null ? 0 : productName!.hashCode) +
-    (quantity == null ? 0 : quantity!.hashCode) +
-    (amount == null ? 0 : amount!.hashCode);
+    (quantity == null ? 0 : quantity!.hashCode);
 
   @override
-  String toString() => 'TopProductDTO[productId=$productId, productName=$productName, quantity=$quantity, amount=$amount]';
+  String toString() => 'TopProductDTO[productId=$productId, quantity=$quantity]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -80,20 +56,10 @@ class TopProductDTO {
     } else {
       json[r'productId'] = null;
     }
-    if (this.productName != null) {
-      json[r'productName'] = this.productName;
-    } else {
-      json[r'productName'] = null;
-    }
     if (this.quantity != null) {
       json[r'quantity'] = this.quantity;
     } else {
       json[r'quantity'] = null;
-    }
-    if (this.amount != null) {
-      json[r'amount'] = this.amount;
-    } else {
-      json[r'amount'] = null;
     }
     return json;
   }
@@ -118,9 +84,7 @@ class TopProductDTO {
 
       return TopProductDTO(
         productId: mapValueOfType<int>(json, r'productId'),
-        productName: mapValueOfType<String>(json, r'productName'),
         quantity: mapValueOfType<int>(json, r'quantity'),
-        amount: num.parse('${json[r'amount']}'),
       );
     }
     return null;

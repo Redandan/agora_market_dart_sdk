@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class PageOrder {
-  /// Returns a new [PageOrder] instance.
-  PageOrder({
+class PageDeliveryDetail {
+  /// Returns a new [PageDeliveryDetail] instance.
+  PageDeliveryDetail({
     this.totalPages,
     this.totalElements,
     this.first,
@@ -82,7 +82,7 @@ class PageOrder {
   ///
   int? size;
 
-  List<Order> content;
+  List<DeliveryDetail> content;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -109,7 +109,7 @@ class PageOrder {
   bool? empty;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageOrder &&
+  bool operator ==(Object other) => identical(this, other) || other is PageDeliveryDetail &&
     other.totalPages == totalPages &&
     other.totalElements == totalElements &&
     other.first == first &&
@@ -138,7 +138,7 @@ class PageOrder {
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageOrder[totalPages=$totalPages, totalElements=$totalElements, first=$first, last=$last, pageable=$pageable, numberOfElements=$numberOfElements, size=$size, content=$content, number=$number, sort=$sort, empty=$empty]';
+  String toString() => 'PageDeliveryDetail[totalPages=$totalPages, totalElements=$totalElements, first=$first, last=$last, pageable=$pageable, numberOfElements=$numberOfElements, size=$size, content=$content, number=$number, sort=$sort, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -196,10 +196,10 @@ class PageOrder {
     return json;
   }
 
-  /// Returns a new [PageOrder] instance and imports its values from
+  /// Returns a new [PageDeliveryDetail] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageOrder? fromJson(dynamic value) {
+  static PageDeliveryDetail? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -208,13 +208,13 @@ class PageOrder {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageOrder[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageOrder[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PageDeliveryDetail[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PageDeliveryDetail[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageOrder(
+      return PageDeliveryDetail(
         totalPages: mapValueOfType<int>(json, r'totalPages'),
         totalElements: mapValueOfType<int>(json, r'totalElements'),
         first: mapValueOfType<bool>(json, r'first'),
@@ -222,7 +222,7 @@ class PageOrder {
         pageable: PageableObject.fromJson(json[r'pageable']),
         numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
         size: mapValueOfType<int>(json, r'size'),
-        content: Order.listFromJson(json[r'content']),
+        content: DeliveryDetail.listFromJson(json[r'content']),
         number: mapValueOfType<int>(json, r'number'),
         sort: SortObject.fromJson(json[r'sort']),
         empty: mapValueOfType<bool>(json, r'empty'),
@@ -231,11 +231,11 @@ class PageOrder {
     return null;
   }
 
-  static List<PageOrder> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageOrder>[];
+  static List<PageDeliveryDetail> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PageDeliveryDetail>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageOrder.fromJson(row);
+        final value = PageDeliveryDetail.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -244,12 +244,12 @@ class PageOrder {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageOrder> mapFromJson(dynamic json) {
-    final map = <String, PageOrder>{};
+  static Map<String, PageDeliveryDetail> mapFromJson(dynamic json) {
+    final map = <String, PageDeliveryDetail>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageOrder.fromJson(entry.value);
+        final value = PageDeliveryDetail.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -258,14 +258,14 @@ class PageOrder {
     return map;
   }
 
-  // maps a json object with a list of PageOrder-objects as value to a dart map
-  static Map<String, List<PageOrder>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageOrder>>{};
+  // maps a json object with a list of PageDeliveryDetail-objects as value to a dart map
+  static Map<String, List<PageDeliveryDetail>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<PageDeliveryDetail>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageOrder.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = PageDeliveryDetail.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

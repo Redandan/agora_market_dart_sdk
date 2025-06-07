@@ -165,16 +165,18 @@ class StoresApi {
   ///
   /// Parameters:
   ///
+  /// * [Pageable] pageable (required):
+  ///   分頁參數 (從 1 開始)
+  ///
   /// * [String] keyword:
+  ///   關鍵字
   ///
   /// * [int] categoryId:
+  ///   分類ID
   ///
   /// * [String] status:
-  ///
-  /// * [int] page:
-  ///
-  /// * [int] size:
-  Future<Response> searchMyStoreProductsWithHttpInfo({ String? keyword, int? categoryId, String? status, int? page, int? size, }) async {
+  ///   商品狀態
+  Future<Response> searchMyStoreProductsWithHttpInfo(Pageable pageable, { String? keyword, int? categoryId, String? status, }) async {
     // ignore: prefer_const_declarations
     final path = r'/stores/products/search';
 
@@ -194,12 +196,7 @@ class StoresApi {
     if (status != null) {
       queryParams.addAll(_queryParams('', 'status', status));
     }
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
+      queryParams.addAll(_queryParams('', 'pageable', pageable));
 
     const contentTypes = <String>[];
 
@@ -219,17 +216,19 @@ class StoresApi {
   ///
   /// Parameters:
   ///
+  /// * [Pageable] pageable (required):
+  ///   分頁參數 (從 1 開始)
+  ///
   /// * [String] keyword:
+  ///   關鍵字
   ///
   /// * [int] categoryId:
+  ///   分類ID
   ///
   /// * [String] status:
-  ///
-  /// * [int] page:
-  ///
-  /// * [int] size:
-  Future<PageProduct?> searchMyStoreProducts({ String? keyword, int? categoryId, String? status, int? page, int? size, }) async {
-    final response = await searchMyStoreProductsWithHttpInfo( keyword: keyword, categoryId: categoryId, status: status, page: page, size: size, );
+  ///   商品狀態
+  Future<PageProduct?> searchMyStoreProducts(Pageable pageable, { String? keyword, int? categoryId, String? status, }) async {
+    final response = await searchMyStoreProductsWithHttpInfo(pageable,  keyword: keyword, categoryId: categoryId, status: status, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -72,12 +72,9 @@ class DeliveryApi {
   ///
   /// Parameters:
   ///
-  /// * [int] page:
-  ///   頁碼
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<Response> getDeliveryHistoryWithHttpInfo({ int? page, int? size, }) async {
+  /// * [Pageable] pageable (required):
+  ///   分頁參數 (從 1 開始)
+  Future<Response> getDeliveryHistoryWithHttpInfo(Pageable pageable,) async {
     // ignore: prefer_const_declarations
     final path = r'/delivery/history';
 
@@ -88,12 +85,7 @@ class DeliveryApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
+      queryParams.addAll(_queryParams('', 'pageable', pageable));
 
     const contentTypes = <String>[];
 
@@ -115,13 +107,10 @@ class DeliveryApi {
   ///
   /// Parameters:
   ///
-  /// * [int] page:
-  ///   頁碼
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<List<DeliveryDetail>?> getDeliveryHistory({ int? page, int? size, }) async {
-    final response = await getDeliveryHistoryWithHttpInfo( page: page, size: size, );
+  /// * [Pageable] pageable (required):
+  ///   分頁參數 (從 1 開始)
+  Future<PageDeliveryDetail?> getDeliveryHistory(Pageable pageable,) async {
+    final response = await getDeliveryHistoryWithHttpInfo(pageable,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -129,11 +118,8 @@ class DeliveryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<DeliveryDetail>') as List)
-        .cast<DeliveryDetail>()
-        .toList(growable: false);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDeliveryDetail',) as PageDeliveryDetail;
+    
     }
     return null;
   }

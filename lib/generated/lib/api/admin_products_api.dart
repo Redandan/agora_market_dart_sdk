@@ -154,6 +154,9 @@ class AdminProductsApi {
   ///
   /// Parameters:
   ///
+  /// * [Pageable] pageable (required):
+  ///   分頁參數 (從 1 開始)
+  ///
   /// * [int] sellerId:
   ///   賣家ID
   ///
@@ -168,13 +171,7 @@ class AdminProductsApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  ///
-  /// * [int] page:
-  ///   分頁參數
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<Response> searchProductsWithHttpInfo({ int? sellerId, String? status, String? category, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+  Future<Response> searchProductsWithHttpInfo(Pageable pageable, { int? sellerId, String? status, String? category, DateTime? startDate, DateTime? endDate, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/products/search';
 
@@ -200,12 +197,7 @@ class AdminProductsApi {
     if (endDate != null) {
       queryParams.addAll(_queryParams('', 'endDate', endDate));
     }
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
+      queryParams.addAll(_queryParams('', 'pageable', pageable));
 
     const contentTypes = <String>[];
 
@@ -227,6 +219,9 @@ class AdminProductsApi {
   ///
   /// Parameters:
   ///
+  /// * [Pageable] pageable (required):
+  ///   分頁參數 (從 1 開始)
+  ///
   /// * [int] sellerId:
   ///   賣家ID
   ///
@@ -241,14 +236,8 @@ class AdminProductsApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  ///
-  /// * [int] page:
-  ///   分頁參數
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<PageProduct?> searchProducts({ int? sellerId, String? status, String? category, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
-    final response = await searchProductsWithHttpInfo( sellerId: sellerId, status: status, category: category, startDate: startDate, endDate: endDate, page: page, size: size, );
+  Future<PageProduct?> searchProducts(Pageable pageable, { int? sellerId, String? status, String? category, DateTime? startDate, DateTime? endDate, }) async {
+    final response = await searchProductsWithHttpInfo(pageable,  sellerId: sellerId, status: status, category: category, startDate: startDate, endDate: endDate, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -48,7 +48,7 @@ void main() {
     //
     // 管理員可根據多個條件搜索糾紛
     //
-    //Future<PageDispute> searchDisputes1({ int buyerId, int sellerId, String status, String type, DateTime startDate, DateTime endDate, int page, int size }) async
+    //Future<PageDispute> searchDisputes1(Pageable pageable, { int buyerId, int sellerId, String status, String type, DateTime startDate, DateTime endDate }) async
     test('test searchDisputes1', () async {
       // TODO
     });

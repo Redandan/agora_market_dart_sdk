@@ -103,7 +103,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getOrderStatistics**
-> OrderStatisticsDTO getOrderStatistics(startDate, endDate)
+> Map<String, Object> getOrderStatistics(startDate, endDate)
 
 訂單統計報告
 
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrderStatisticsDTO**](OrderStatisticsDTO.md)
+[**Map<String, Object>**](Object.md)
 
 ### Authorization
 
@@ -148,7 +148,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchOrders**
-> PageOrder searchOrders(buyerId, sellerId, status, startDate, endDate, page, size)
+> PageOrder searchOrders(pageable, orderId, buyerId, sellerId, productId, status, startDate, endDate)
 
 搜索訂單
 
@@ -159,16 +159,17 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = AdminOrdersApi();
+final pageable = ; // Pageable | 分頁參數 (從 1 開始)
+final orderId = orderId_example; // String | 訂單ID
 final buyerId = 789; // int | 買家ID
 final sellerId = 789; // int | 賣家ID
+final productId = 789; // int | 商品ID
 final status = status_example; // String | 訂單狀態
 final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
 final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
-final page = 56; // int | 分頁參數
-final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.searchOrders(buyerId, sellerId, status, startDate, endDate, page, size);
+    final result = api_instance.searchOrders(pageable, orderId, buyerId, sellerId, productId, status, startDate, endDate);
     print(result);
 } catch (e) {
     print('Exception when calling AdminOrdersApi->searchOrders: $e\n');
@@ -179,13 +180,14 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **pageable** | [**Pageable**](.md)| 分頁參數 (從 1 開始) | 
+ **orderId** | **String**| 訂單ID | [optional] 
  **buyerId** | **int**| 買家ID | [optional] 
  **sellerId** | **int**| 賣家ID | [optional] 
+ **productId** | **int**| 商品ID | [optional] 
  **status** | **String**| 訂單狀態 | [optional] 
  **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
  **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
- **page** | **int**| 分頁參數 | [optional] [default to 0]
- **size** | **int**| 每頁數量 | [optional] [default to 20]
 
 ### Return type
 

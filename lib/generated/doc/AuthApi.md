@@ -10,7 +10,6 @@ All URIs are relative to *https://agoramarketapi.onrender.com/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**changePassword**](AuthApi.md#changepassword) | **POST** /auth/change-password | 修改密碼
-[**createUserByAdmin**](AuthApi.md#createuserbyadmin) | **POST** /auth/admin/create-user | 管理員創建用戶
 [**forgotPassword**](AuthApi.md#forgotpassword) | **POST** /auth/forgot-password | 發送密碼重置郵件
 [**getCurrentUser**](AuthApi.md#getcurrentuser) | **GET** /auth/me | 獲取當前用戶信息
 [**login**](AuthApi.md#login) | **POST** /auth/login | 用戶登入
@@ -59,47 +58,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createUserByAdmin**
-> UserInfo createUserByAdmin(adminCreateUserParam)
-
-管理員創建用戶
-
-### Example
-```dart
-import 'package:agora_market_dart_sdk/api.dart';
-
-final api_instance = AuthApi();
-final adminCreateUserParam = AdminCreateUserParam(); // AdminCreateUserParam | 
-
-try {
-    final result = api_instance.createUserByAdmin(adminCreateUserParam);
-    print(result);
-} catch (e) {
-    print('Exception when calling AuthApi->createUserByAdmin: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **adminCreateUserParam** | [**AdminCreateUserParam**](AdminCreateUserParam.md)|  | 
-
-### Return type
-
-[**UserInfo**](UserInfo.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

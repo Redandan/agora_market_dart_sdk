@@ -220,6 +220,9 @@ class AdminDisputesApi {
   ///
   /// Parameters:
   ///
+  /// * [Pageable] pageable (required):
+  ///   分頁參數 (從 1 開始)
+  ///
   /// * [int] buyerId:
   ///   買家ID
   ///
@@ -237,13 +240,7 @@ class AdminDisputesApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  ///
-  /// * [int] page:
-  ///   分頁參數
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<Response> searchDisputes1WithHttpInfo({ int? buyerId, int? sellerId, String? status, String? type, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+  Future<Response> searchDisputes1WithHttpInfo(Pageable pageable, { int? buyerId, int? sellerId, String? status, String? type, DateTime? startDate, DateTime? endDate, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/disputes/search';
 
@@ -272,12 +269,7 @@ class AdminDisputesApi {
     if (endDate != null) {
       queryParams.addAll(_queryParams('', 'endDate', endDate));
     }
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
+      queryParams.addAll(_queryParams('', 'pageable', pageable));
 
     const contentTypes = <String>[];
 
@@ -299,6 +291,9 @@ class AdminDisputesApi {
   ///
   /// Parameters:
   ///
+  /// * [Pageable] pageable (required):
+  ///   分頁參數 (從 1 開始)
+  ///
   /// * [int] buyerId:
   ///   買家ID
   ///
@@ -316,14 +311,8 @@ class AdminDisputesApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  ///
-  /// * [int] page:
-  ///   分頁參數
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<PageDispute?> searchDisputes1({ int? buyerId, int? sellerId, String? status, String? type, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
-    final response = await searchDisputes1WithHttpInfo( buyerId: buyerId, sellerId: sellerId, status: status, type: type, startDate: startDate, endDate: endDate, page: page, size: size, );
+  Future<PageDispute?> searchDisputes1(Pageable pageable, { int? buyerId, int? sellerId, String? status, String? type, DateTime? startDate, DateTime? endDate, }) async {
+    final response = await searchDisputes1WithHttpInfo(pageable,  buyerId: buyerId, sellerId: sellerId, status: status, type: type, startDate: startDate, endDate: endDate, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

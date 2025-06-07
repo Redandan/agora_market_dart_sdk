@@ -198,6 +198,9 @@ class MemberDisputesApi {
   ///
   /// Parameters:
   ///
+  /// * [Pageable] pageable (required):
+  ///   分頁參數 (從 1 開始)
+  ///
   /// * [String] status:
   ///   糾紛狀態
   ///
@@ -209,13 +212,7 @@ class MemberDisputesApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  ///
-  /// * [int] page:
-  ///   分頁參數
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<Response> searchDisputesWithHttpInfo({ String? status, String? type, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+  Future<Response> searchDisputesWithHttpInfo(Pageable pageable, { String? status, String? type, DateTime? startDate, DateTime? endDate, }) async {
     // ignore: prefer_const_declarations
     final path = r'/disputes/search';
 
@@ -238,12 +235,7 @@ class MemberDisputesApi {
     if (endDate != null) {
       queryParams.addAll(_queryParams('', 'endDate', endDate));
     }
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
+      queryParams.addAll(_queryParams('', 'pageable', pageable));
 
     const contentTypes = <String>[];
 
@@ -265,6 +257,9 @@ class MemberDisputesApi {
   ///
   /// Parameters:
   ///
+  /// * [Pageable] pageable (required):
+  ///   分頁參數 (從 1 開始)
+  ///
   /// * [String] status:
   ///   糾紛狀態
   ///
@@ -276,14 +271,8 @@ class MemberDisputesApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  ///
-  /// * [int] page:
-  ///   分頁參數
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<PageDispute?> searchDisputes({ String? status, String? type, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
-    final response = await searchDisputesWithHttpInfo( status: status, type: type, startDate: startDate, endDate: endDate, page: page, size: size, );
+  Future<PageDispute?> searchDisputes(Pageable pageable, { String? status, String? type, DateTime? startDate, DateTime? endDate, }) async {
+    final response = await searchDisputesWithHttpInfo(pageable,  status: status, type: type, startDate: startDate, endDate: endDate, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

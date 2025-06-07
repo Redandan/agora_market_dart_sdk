@@ -179,6 +179,9 @@ class MemberOrdersApi {
   ///
   /// Parameters:
   ///
+  /// * [Pageable] pageable (required):
+  ///   分頁參數 (從 1 開始)
+  ///
   /// * [String] orderId:
   ///   訂單ID
   ///
@@ -193,13 +196,7 @@ class MemberOrdersApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  ///
-  /// * [int] page:
-  ///   分頁參數
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<Response> searchOrdersByBuyerWithHttpInfo({ String? orderId, int? productId, String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+  Future<Response> searchOrdersByBuyerWithHttpInfo(Pageable pageable, { String? orderId, int? productId, String? status, DateTime? startDate, DateTime? endDate, }) async {
     // ignore: prefer_const_declarations
     final path = r'/orders/buyer';
 
@@ -225,12 +222,7 @@ class MemberOrdersApi {
     if (endDate != null) {
       queryParams.addAll(_queryParams('', 'endDate', endDate));
     }
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
+      queryParams.addAll(_queryParams('', 'pageable', pageable));
 
     const contentTypes = <String>[];
 
@@ -252,6 +244,9 @@ class MemberOrdersApi {
   ///
   /// Parameters:
   ///
+  /// * [Pageable] pageable (required):
+  ///   分頁參數 (從 1 開始)
+  ///
   /// * [String] orderId:
   ///   訂單ID
   ///
@@ -266,14 +261,8 @@ class MemberOrdersApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  ///
-  /// * [int] page:
-  ///   分頁參數
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<PageOrder?> searchOrdersByBuyer({ String? orderId, int? productId, String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
-    final response = await searchOrdersByBuyerWithHttpInfo( orderId: orderId, productId: productId, status: status, startDate: startDate, endDate: endDate, page: page, size: size, );
+  Future<PageOrder?> searchOrdersByBuyer(Pageable pageable, { String? orderId, int? productId, String? status, DateTime? startDate, DateTime? endDate, }) async {
+    final response = await searchOrdersByBuyerWithHttpInfo(pageable,  orderId: orderId, productId: productId, status: status, startDate: startDate, endDate: endDate, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -295,6 +284,9 @@ class MemberOrdersApi {
   ///
   /// Parameters:
   ///
+  /// * [Pageable] pageable (required):
+  ///   分頁參數 (從 1 開始)
+  ///
   /// * [String] orderId:
   ///   訂單ID
   ///
@@ -309,13 +301,7 @@ class MemberOrdersApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  ///
-  /// * [int] page:
-  ///   分頁參數
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<Response> searchOrdersBySellerWithHttpInfo({ String? orderId, int? productId, String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+  Future<Response> searchOrdersBySellerWithHttpInfo(Pageable pageable, { String? orderId, int? productId, String? status, DateTime? startDate, DateTime? endDate, }) async {
     // ignore: prefer_const_declarations
     final path = r'/orders/seller';
 
@@ -341,12 +327,7 @@ class MemberOrdersApi {
     if (endDate != null) {
       queryParams.addAll(_queryParams('', 'endDate', endDate));
     }
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
+      queryParams.addAll(_queryParams('', 'pageable', pageable));
 
     const contentTypes = <String>[];
 
@@ -368,6 +349,9 @@ class MemberOrdersApi {
   ///
   /// Parameters:
   ///
+  /// * [Pageable] pageable (required):
+  ///   分頁參數 (從 1 開始)
+  ///
   /// * [String] orderId:
   ///   訂單ID
   ///
@@ -382,14 +366,8 @@ class MemberOrdersApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  ///
-  /// * [int] page:
-  ///   分頁參數
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<PageOrder?> searchOrdersBySeller({ String? orderId, int? productId, String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
-    final response = await searchOrdersBySellerWithHttpInfo( orderId: orderId, productId: productId, status: status, startDate: startDate, endDate: endDate, page: page, size: size, );
+  Future<PageOrder?> searchOrdersBySeller(Pageable pageable, { String? orderId, int? productId, String? status, DateTime? startDate, DateTime? endDate, }) async {
+    final response = await searchOrdersBySellerWithHttpInfo(pageable,  orderId: orderId, productId: productId, status: status, startDate: startDate, endDate: endDate, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

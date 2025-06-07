@@ -958,8 +958,10 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [int] userId (required):
+  ///   用戶ID
   ///
   /// * [Pageable] pageable (required):
+  ///   分頁參數 (從 1 開始)
   Future<Response> getRechargeHistoryWithHttpInfo(int userId, Pageable pageable,) async {
     // ignore: prefer_const_declarations
     final path = r'/recharge/history';
@@ -993,8 +995,10 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [int] userId (required):
+  ///   用戶ID
   ///
   /// * [Pageable] pageable (required):
+  ///   分頁參數 (從 1 開始)
   Future<PageRecharge?> getRechargeHistory(int userId, Pageable pageable,) async {
     final response = await getRechargeHistoryWithHttpInfo(userId, pageable,);
     if (response.statusCode >= HttpStatus.badRequest) {

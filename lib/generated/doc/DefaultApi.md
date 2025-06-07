@@ -719,8 +719,8 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
-final userId = 789; // int | 
-final pageable = ; // Pageable | 
+final userId = 789; // int | 用戶ID
+final pageable = ; // Pageable | 分頁參數 (從 1 開始)
 
 try {
     final result = api_instance.getRechargeHistory(userId, pageable);
@@ -734,8 +734,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **int**|  | 
- **pageable** | [**Pageable**](.md)|  | 
+ **userId** | **int**| 用戶ID | 
+ **pageable** | [**Pageable**](.md)| 分頁參數 (從 1 開始) | 
 
 ### Return type
 

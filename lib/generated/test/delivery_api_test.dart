@@ -30,7 +30,7 @@ void main() {
     //
     // 獲取當前配送員的歷史配送訂單
     //
-    //Future<List<DeliveryDetail>> getDeliveryHistory({ int page, int size }) async
+    //Future<PageDeliveryDetail> getDeliveryHistory(Pageable pageable) async
     test('test getDeliveryHistory', () async {
       // TODO
     });

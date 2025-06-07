@@ -9,12 +9,54 @@ All URIs are relative to *https://agoramarketapi.onrender.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createUserByAdmin**](AdminMembersApi.md#createuserbyadmin) | **POST** /admin/members/create-user | 管理員創建用戶
 [**getMemberDetail**](AdminMembersApi.md#getmemberdetail) | **GET** /admin/members/{memberId} | 查看會員詳情
 [**getMemberStatistics**](AdminMembersApi.md#getmemberstatistics) | **GET** /admin/members/statistics | 會員統計報告
 [**searchMembers**](AdminMembersApi.md#searchmembers) | **GET** /admin/members/search | 搜索會員
 [**updateMemberByAdmin**](AdminMembersApi.md#updatememberbyadmin) | **POST** /admin/members/{memberId}/update | 更新會員信息
 [**updateMemberStatus**](AdminMembersApi.md#updatememberstatus) | **POST** /admin/members/{memberId}/status | 更新會員狀態
 
+
+# **createUserByAdmin**
+> UserInfo createUserByAdmin(adminCreateUserParam)
+
+管理員創建用戶
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = AdminMembersApi();
+final adminCreateUserParam = AdminCreateUserParam(); // AdminCreateUserParam | 
+
+try {
+    final result = api_instance.createUserByAdmin(adminCreateUserParam);
+    print(result);
+} catch (e) {
+    print('Exception when calling AdminMembersApi->createUserByAdmin: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adminCreateUserParam** | [**AdminCreateUserParam**](AdminCreateUserParam.md)|  | 
+
+### Return type
+
+[**UserInfo**](UserInfo.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getMemberDetail**
 > User getMemberDetail(memberId)
@@ -105,7 +147,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchMembers**
-> PageUser searchMembers(status, startDate, endDate, page, size)
+> PageUser searchMembers(pageable, status, startDate, endDate)
 
 搜索會員
 
@@ -116,14 +158,13 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = AdminMembersApi();
+final pageable = ; // Pageable | 分頁參數 (從 1 開始)
 final status = status_example; // String | 會員狀態
 final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
 final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
-final page = 56; // int | 分頁參數
-final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.searchMembers(status, startDate, endDate, page, size);
+    final result = api_instance.searchMembers(pageable, status, startDate, endDate);
     print(result);
 } catch (e) {
     print('Exception when calling AdminMembersApi->searchMembers: $e\n');
@@ -134,11 +175,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **pageable** | [**Pageable**](.md)| 分頁參數 (從 1 開始) | 
  **status** | **String**| 會員狀態 | [optional] 
  **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
  **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
- **page** | **int**| 分頁參數 | [optional] [default to 0]
- **size** | **int**| 每頁數量 | [optional] [default to 20]
 
 ### Return type
 

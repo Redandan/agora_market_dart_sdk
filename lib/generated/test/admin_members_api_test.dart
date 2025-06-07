@@ -17,6 +17,13 @@ void main() {
   // final instance = AdminMembersApi();
 
   group('tests for AdminMembersApi', () {
+    // 管理員創建用戶
+    //
+    //Future<UserInfo> createUserByAdmin(AdminCreateUserParam adminCreateUserParam) async
+    test('test createUserByAdmin', () async {
+      // TODO
+    });
+
     // 查看會員詳情
     //
     // 管理員可查看會員的詳細信息
@@ -39,7 +46,7 @@ void main() {
     //
     // 管理員可根據多個條件搜索會員
     //
-    //Future<PageUser> searchMembers({ String status, DateTime startDate, DateTime endDate, int page, int size }) async
+    //Future<PageUser> searchMembers(Pageable pageable, { String status, DateTime startDate, DateTime endDate }) async
     test('test searchMembers', () async {
       // TODO
     });

@@ -1,4 +1,4 @@
-# agora_market_dart_sdk.model.PageCartItem
+# agora_market_dart_sdk.model.PageDeliveryDetail
 
 ## Load the model package
 ```dart
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **pageable** | [**PageableObject**](PageableObject.md) |  | [optional] 
 **numberOfElements** | **int** |  | [optional] 
 **size** | **int** |  | [optional] 
-**content** | [**List<CartItem>**](CartItem.md) |  | [optional] [default to const []]
+**content** | [**List<DeliveryDetail>**](DeliveryDetail.md) |  | [optional] [default to const []]
 **number** | **int** |  | [optional] 
 **sort** | [**SortObject**](SortObject.md) |  | [optional] 
 **empty** | **bool** |  | [optional] 
