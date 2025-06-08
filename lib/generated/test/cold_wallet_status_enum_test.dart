@@ -11,10 +11,10 @@
 import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
-// tests for UserStatus
+// tests for ColdWalletStatusEnum
 void main() {
 
-  group('test UserStatus', () {
+  group('test ColdWalletStatusEnum', () {
 
   });
 

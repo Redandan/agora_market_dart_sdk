@@ -16,18 +16,18 @@ void main() {
   // final instance = PageWithdraw();
 
   group('test PageWithdraw', () {
-    // int totalPages
-    test('to test the property `totalPages`', () async {
-      // TODO
-    });
-
     // int totalElements
     test('to test the property `totalElements`', () async {
       // TODO
     });
 
-    // int numberOfElements
-    test('to test the property `numberOfElements`', () async {
+    // int totalPages
+    test('to test the property `totalPages`', () async {
+      // TODO
+    });
+
+    // PageableObject pageable
+    test('to test the property `pageable`', () async {
       // TODO
     });
 
@@ -41,8 +41,8 @@ void main() {
       // TODO
     });
 
-    // PageableObject pageable
-    test('to test the property `pageable`', () async {
+    // int numberOfElements
+    test('to test the property `numberOfElements`', () async {
       // TODO
     });
 

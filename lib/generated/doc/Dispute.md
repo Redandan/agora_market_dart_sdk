@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **buyerId** | **int** | 買家ID | [optional] 
 **sellerId** | **int** | 賣家ID | [optional] 
 **type** | **String** | 糾紛類型 | [optional] 
-**status** | **String** | 糾紛狀態 | [optional] 
+**status** | [**DisputeStatusEnum**](DisputeStatusEnum.md) |  | [optional] 
 **description** | **String** | 糾紛描述 | [optional] 
 **sellerReply** | **String** | 賣家回覆 | [optional] 
 **adminComment** | **String** | 管理員處理說明 | [optional] 

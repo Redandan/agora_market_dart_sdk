@@ -18,13 +18,13 @@ class Withdraw {
     this.amount,
     this.fee,
     this.currency,
-    this.protocol,
     this.toAddress,
     this.status,
     this.txHash,
     this.remark,
     this.createdAt,
     this.updatedAt,
+    this.protocolEnum,
   });
 
   /// 提款ID
@@ -71,9 +71,6 @@ class Withdraw {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? currency;
-
-  /// 協議
-  WithdrawProtocolEnum? protocol;
 
   /// 提款地址
   ///
@@ -123,6 +120,9 @@ class Withdraw {
   ///
   DateTime? updatedAt;
 
+  /// 協議
+  WithdrawProtocolEnumEnum? protocolEnum;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Withdraw &&
     other.id == id &&
@@ -130,13 +130,13 @@ class Withdraw {
     other.amount == amount &&
     other.fee == fee &&
     other.currency == currency &&
-    other.protocol == protocol &&
     other.toAddress == toAddress &&
     other.status == status &&
     other.txHash == txHash &&
     other.remark == remark &&
     other.createdAt == createdAt &&
-    other.updatedAt == updatedAt;
+    other.updatedAt == updatedAt &&
+    other.protocolEnum == protocolEnum;
 
   @override
   int get hashCode =>
@@ -146,16 +146,16 @@ class Withdraw {
     (amount == null ? 0 : amount!.hashCode) +
     (fee == null ? 0 : fee!.hashCode) +
     (currency == null ? 0 : currency!.hashCode) +
-    (protocol == null ? 0 : protocol!.hashCode) +
     (toAddress == null ? 0 : toAddress!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
     (txHash == null ? 0 : txHash!.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode);
+    (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (protocolEnum == null ? 0 : protocolEnum!.hashCode);
 
   @override
-  String toString() => 'Withdraw[id=$id, userId=$userId, amount=$amount, fee=$fee, currency=$currency, protocol=$protocol, toAddress=$toAddress, status=$status, txHash=$txHash, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'Withdraw[id=$id, userId=$userId, amount=$amount, fee=$fee, currency=$currency, toAddress=$toAddress, status=$status, txHash=$txHash, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, protocolEnum=$protocolEnum]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -183,11 +183,6 @@ class Withdraw {
       json[r'currency'] = this.currency;
     } else {
       json[r'currency'] = null;
-    }
-    if (this.protocol != null) {
-      json[r'protocol'] = this.protocol;
-    } else {
-      json[r'protocol'] = null;
     }
     if (this.toAddress != null) {
       json[r'toAddress'] = this.toAddress;
@@ -219,6 +214,11 @@ class Withdraw {
     } else {
       json[r'updatedAt'] = null;
     }
+    if (this.protocolEnum != null) {
+      json[r'protocolEnum'] = this.protocolEnum;
+    } else {
+      json[r'protocolEnum'] = null;
+    }
     return json;
   }
 
@@ -246,13 +246,13 @@ class Withdraw {
         amount: num.parse('${json[r'amount']}'),
         fee: num.parse('${json[r'fee']}'),
         currency: mapValueOfType<String>(json, r'currency'),
-        protocol: WithdrawProtocolEnum.fromJson(json[r'protocol']),
         toAddress: mapValueOfType<String>(json, r'toAddress'),
         status: WithdrawStatusEnum.fromJson(json[r'status']),
         txHash: mapValueOfType<String>(json, r'txHash'),
         remark: mapValueOfType<String>(json, r'remark'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
+        protocolEnum: WithdrawProtocolEnumEnum.fromJson(json[r'protocolEnum']),
       );
     }
     return null;
@@ -302,80 +302,6 @@ class Withdraw {
   static const requiredKeys = <String>{
   };
 }
-
-/// 協議
-class WithdrawProtocolEnum {
-  /// Instantiate a new enum with the provided [value].
-  const WithdrawProtocolEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const TRON = WithdrawProtocolEnum._(r'TRON');
-  static const unknownDefaultOpenApi = WithdrawProtocolEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][WithdrawProtocolEnum].
-  static const values = <WithdrawProtocolEnum>[
-    TRON,
-    unknownDefaultOpenApi,
-  ];
-
-  static WithdrawProtocolEnum? fromJson(dynamic value) => WithdrawProtocolEnumTypeTransformer().decode(value);
-
-  static List<WithdrawProtocolEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <WithdrawProtocolEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = WithdrawProtocolEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [WithdrawProtocolEnum] to String,
-/// and [decode] dynamic data back to [WithdrawProtocolEnum].
-class WithdrawProtocolEnumTypeTransformer {
-  factory WithdrawProtocolEnumTypeTransformer() => _instance ??= const WithdrawProtocolEnumTypeTransformer._();
-
-  const WithdrawProtocolEnumTypeTransformer._();
-
-  String encode(WithdrawProtocolEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a WithdrawProtocolEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  WithdrawProtocolEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'TRON': return WithdrawProtocolEnum.TRON;
-        case r'unknown_default_open_api': return WithdrawProtocolEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [WithdrawProtocolEnumTypeTransformer] instance.
-  static WithdrawProtocolEnumTypeTransformer? _instance;
-}
-
 
 /// 提款狀態
 class WithdrawStatusEnum {
@@ -460,6 +386,80 @@ class WithdrawStatusEnumTypeTransformer {
 
   /// Singleton [WithdrawStatusEnumTypeTransformer] instance.
   static WithdrawStatusEnumTypeTransformer? _instance;
+}
+
+
+/// 協議
+class WithdrawProtocolEnumEnum {
+  /// Instantiate a new enum with the provided [value].
+  const WithdrawProtocolEnumEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const TRON = WithdrawProtocolEnumEnum._(r'TRON');
+  static const unknownDefaultOpenApi = WithdrawProtocolEnumEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][WithdrawProtocolEnumEnum].
+  static const values = <WithdrawProtocolEnumEnum>[
+    TRON,
+    unknownDefaultOpenApi,
+  ];
+
+  static WithdrawProtocolEnumEnum? fromJson(dynamic value) => WithdrawProtocolEnumEnumTypeTransformer().decode(value);
+
+  static List<WithdrawProtocolEnumEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <WithdrawProtocolEnumEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = WithdrawProtocolEnumEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [WithdrawProtocolEnumEnum] to String,
+/// and [decode] dynamic data back to [WithdrawProtocolEnumEnum].
+class WithdrawProtocolEnumEnumTypeTransformer {
+  factory WithdrawProtocolEnumEnumTypeTransformer() => _instance ??= const WithdrawProtocolEnumEnumTypeTransformer._();
+
+  const WithdrawProtocolEnumEnumTypeTransformer._();
+
+  String encode(WithdrawProtocolEnumEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a WithdrawProtocolEnumEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  WithdrawProtocolEnumEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'TRON': return WithdrawProtocolEnumEnum.TRON;
+        case r'unknown_default_open_api': return WithdrawProtocolEnumEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [WithdrawProtocolEnumEnumTypeTransformer] instance.
+  static WithdrawProtocolEnumEnumTypeTransformer? _instance;
 }
 
 

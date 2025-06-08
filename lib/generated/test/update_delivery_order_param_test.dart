@@ -22,8 +22,7 @@ void main() {
       // TODO
     });
 
-    // 報告類型
-    // String reportType
+    // DeliveryReportTypeEnum reportType
     test('to test the property `reportType`', () async {
       // TODO
     });

@@ -40,7 +40,7 @@ void main() {
       // TODO
     });
 
-    // UserStatus status
+    // UserStatusEnum status
     test('to test the property `status`', () async {
       // TODO
     });
@@ -93,13 +93,13 @@ void main() {
       // TODO
     });
 
-    // bool seller
-    test('to test the property `seller`', () async {
+    // bool admin
+    test('to test the property `admin`', () async {
       // TODO
     });
 
-    // bool admin
-    test('to test the property `admin`', () async {
+    // bool seller
+    test('to test the property `seller`', () async {
       // TODO
     });
 

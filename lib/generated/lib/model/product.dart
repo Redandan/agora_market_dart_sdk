@@ -100,7 +100,12 @@ class Product {
   ///
   int? stock;
 
-  /// 商品分類
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   ProductCategoryEnum? category;
 
   /// 賣家Id
@@ -158,7 +163,12 @@ class Product {
   ///
   LocalTime? pickupTimeEndString;
 
-  /// 商品狀態
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   ProductStatusEnum? status;
 
   /// 建立時間
@@ -472,182 +482,4 @@ class Product {
   static const requiredKeys = <String>{
   };
 }
-
-/// 商品分類
-class ProductCategoryEnum {
-  /// Instantiate a new enum with the provided [value].
-  const ProductCategoryEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const ELECTRONICS = ProductCategoryEnum._(r'ELECTRONICS');
-  static const FOOD = ProductCategoryEnum._(r'FOOD');
-  static const CLOTHING = ProductCategoryEnum._(r'CLOTHING');
-  static const HOME = ProductCategoryEnum._(r'HOME');
-  static const BEAUTY = ProductCategoryEnum._(r'BEAUTY');
-  static const BOOKS = ProductCategoryEnum._(r'BOOKS');
-  static const TOYS = ProductCategoryEnum._(r'TOYS');
-  static const OTHER = ProductCategoryEnum._(r'OTHER');
-  static const unknownDefaultOpenApi = ProductCategoryEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][ProductCategoryEnum].
-  static const values = <ProductCategoryEnum>[
-    ELECTRONICS,
-    FOOD,
-    CLOTHING,
-    HOME,
-    BEAUTY,
-    BOOKS,
-    TOYS,
-    OTHER,
-    unknownDefaultOpenApi,
-  ];
-
-  static ProductCategoryEnum? fromJson(dynamic value) => ProductCategoryEnumTypeTransformer().decode(value);
-
-  static List<ProductCategoryEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProductCategoryEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = ProductCategoryEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [ProductCategoryEnum] to String,
-/// and [decode] dynamic data back to [ProductCategoryEnum].
-class ProductCategoryEnumTypeTransformer {
-  factory ProductCategoryEnumTypeTransformer() => _instance ??= const ProductCategoryEnumTypeTransformer._();
-
-  const ProductCategoryEnumTypeTransformer._();
-
-  String encode(ProductCategoryEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a ProductCategoryEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  ProductCategoryEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'ELECTRONICS': return ProductCategoryEnum.ELECTRONICS;
-        case r'FOOD': return ProductCategoryEnum.FOOD;
-        case r'CLOTHING': return ProductCategoryEnum.CLOTHING;
-        case r'HOME': return ProductCategoryEnum.HOME;
-        case r'BEAUTY': return ProductCategoryEnum.BEAUTY;
-        case r'BOOKS': return ProductCategoryEnum.BOOKS;
-        case r'TOYS': return ProductCategoryEnum.TOYS;
-        case r'OTHER': return ProductCategoryEnum.OTHER;
-        case r'unknown_default_open_api': return ProductCategoryEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [ProductCategoryEnumTypeTransformer] instance.
-  static ProductCategoryEnumTypeTransformer? _instance;
-}
-
-
-/// 商品狀態
-class ProductStatusEnum {
-  /// Instantiate a new enum with the provided [value].
-  const ProductStatusEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const ON_SALE = ProductStatusEnum._(r'ON_SALE');
-  static const OFF_SALE = ProductStatusEnum._(r'OFF_SALE');
-  static const SOLD_OUT = ProductStatusEnum._(r'SOLD_OUT');
-  static const DELETED = ProductStatusEnum._(r'DELETED');
-  static const unknownDefaultOpenApi = ProductStatusEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][ProductStatusEnum].
-  static const values = <ProductStatusEnum>[
-    ON_SALE,
-    OFF_SALE,
-    SOLD_OUT,
-    DELETED,
-    unknownDefaultOpenApi,
-  ];
-
-  static ProductStatusEnum? fromJson(dynamic value) => ProductStatusEnumTypeTransformer().decode(value);
-
-  static List<ProductStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProductStatusEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = ProductStatusEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [ProductStatusEnum] to String,
-/// and [decode] dynamic data back to [ProductStatusEnum].
-class ProductStatusEnumTypeTransformer {
-  factory ProductStatusEnumTypeTransformer() => _instance ??= const ProductStatusEnumTypeTransformer._();
-
-  const ProductStatusEnumTypeTransformer._();
-
-  String encode(ProductStatusEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a ProductStatusEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  ProductStatusEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'ON_SALE': return ProductStatusEnum.ON_SALE;
-        case r'OFF_SALE': return ProductStatusEnum.OFF_SALE;
-        case r'SOLD_OUT': return ProductStatusEnum.SOLD_OUT;
-        case r'DELETED': return ProductStatusEnum.DELETED;
-        case r'unknown_default_open_api': return ProductStatusEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [ProductStatusEnumTypeTransformer] instance.
-  static ProductStatusEnumTypeTransformer? _instance;
-}
-
 

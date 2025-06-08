@@ -22,12 +22,6 @@ void main() {
       // TODO
     });
 
-    // 配送方式
-    // String deliveryType
-    test('to test the property `deliveryType`', () async {
-      // TODO
-    });
-
     // 收件地址
     // String shippingAddress
     test('to test the property `shippingAddress`', () async {
@@ -67,6 +61,12 @@ void main() {
     // 配送費用
     // num deliveryFee
     test('to test the property `deliveryFee`', () async {
+      // TODO
+    });
+
+    // 配送方式
+    // String deliveryTypeEnum
+    test('to test the property `deliveryTypeEnum`', () async {
       // TODO
     });
 

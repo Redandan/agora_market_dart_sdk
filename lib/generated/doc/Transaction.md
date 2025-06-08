@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **id** | **int** | 交易ID | [optional] 
 **userId** | **int** | 用戶ID | [optional] 
 **currency** | **String** | 貨幣 | [optional] 
-**type** | **String** | 交易類型 | [optional] 
+**type** | [**TransactionTypeEnum**](TransactionTypeEnum.md) |  | [optional] 
 **beforeAmount** | **num** | 交易前金額 | [optional] 
 **afterAmount** | **num** | 交易後金額 | [optional] 
 **amount** | **num** | 交易金額 | [optional] 

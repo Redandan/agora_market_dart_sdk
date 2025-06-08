@@ -10,14 +10,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | 冷錢包ID | [optional] 
 **address** | **String** | 錢包地址 | [optional] 
-**protocol** | **String** | 協議 | [optional] 
 **trxBalance** | **num** | TRX餘額 | [optional] 
 **usdtBalance** | **num** | USDT餘額 | [optional] 
-**status** | **String** | 冷錢包狀態 | [optional] 
+**status** | [**ColdWalletStatusEnum**](ColdWalletStatusEnum.md) |  | [optional] 
 **currentOrderId** | **String** | 當前訂單ID | [optional] 
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | 最後更新時間 | [optional] 
 **operator_** | **String** | 操作者 | [optional] 
+**protocolEnum** | **String** | 協議 | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

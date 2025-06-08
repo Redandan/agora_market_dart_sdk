@@ -40,15 +40,8 @@ void main() {
       // TODO
     });
 
-    // 充值狀態
-    // String status
+    // RechargeStatusEnum status
     test('to test the property `status`', () async {
-      // TODO
-    });
-
-    // 協議
-    // String protocol
-    test('to test the property `protocol`', () async {
       // TODO
     });
 
@@ -97,6 +90,12 @@ void main() {
     // 完成時間
     // DateTime completedAt
     test('to test the property `completedAt`', () async {
+      // TODO
+    });
+
+    // 協議
+    // String protocolEnum
+    test('to test the property `protocolEnum`', () async {
       // TODO
     });
 

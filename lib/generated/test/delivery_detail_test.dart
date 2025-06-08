@@ -28,12 +28,6 @@ void main() {
       // TODO
     });
 
-    // 配送方式
-    // String deliveryType
-    test('to test the property `deliveryType`', () async {
-      // TODO
-    });
-
     // 驗證碼
     // String verifyCode
     test('to test the property `verifyCode`', () async {
@@ -163,6 +157,12 @@ void main() {
     // 取消時間
     // DateTime cancelledTime
     test('to test the property `cancelledTime`', () async {
+      // TODO
+    });
+
+    // 配送方式
+    // String deliveryTypeEnum
+    test('to test the property `deliveryTypeEnum`', () async {
       // TODO
     });
 

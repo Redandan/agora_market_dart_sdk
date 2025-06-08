@@ -57,8 +57,8 @@ void main() {
     //
     // 管理員可以直接修改商品狀態（上架/下架/停售等）
     //
-    //Future<Product> updateProductStatus(int productId, String newStatus) async
-    test('test updateProductStatus', () async {
+    //Future<Product> updateProductStatusEnum(int productId, String newStatus) async
+    test('test updateProductStatusEnum', () async {
       // TODO
     });
 

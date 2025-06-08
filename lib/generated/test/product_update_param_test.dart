@@ -76,8 +76,7 @@ void main() {
       // TODO
     });
 
-    // 商品狀態
-    // String status
+    // ProductStatusEnum status
     test('to test the property `status`', () async {
       // TODO
     });

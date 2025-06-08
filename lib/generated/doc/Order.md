@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **productPrice** | **num** | 商品價格 | [optional] 
 **orderAmount** | **num** | 訂單金額 | [optional] 
 **currency** | **String** | 貨幣 | [optional] 
-**status** | **String** | 訂單狀態 | [optional] 
+**status** | [**OrderStatusEnum**](OrderStatusEnum.md) |  | [optional] 
 **remark** | **String** | 備註 | [optional] 
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | 更新時間 | [optional] 

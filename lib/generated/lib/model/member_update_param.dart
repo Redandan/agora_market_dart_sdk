@@ -64,7 +64,7 @@ class MemberUpdateParam {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  UserStatus? status;
+  UserStatusEnum? status;
 
   /// 是否為賣家
   ///
@@ -171,7 +171,7 @@ class MemberUpdateParam {
         username: mapValueOfType<String>(json, r'username'),
         email: mapValueOfType<String>(json, r'email'),
         phone: mapValueOfType<String>(json, r'phone'),
-        status: UserStatus.fromJson(json[r'status']),
+        status: UserStatusEnum.fromJson(json[r'status']),
         isSeller: mapValueOfType<bool>(json, r'isSeller'),
         remark: mapValueOfType<String>(json, r'remark'),
       );

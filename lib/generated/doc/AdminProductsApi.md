@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**getProductStatistics**](AdminProductsApi.md#getproductstatistics) | **GET** /admin/products/statistics | 商品統計報告
 [**searchProducts**](AdminProductsApi.md#searchproducts) | **GET** /admin/products/search | 搜索商品
 [**updateProductByAdmin**](AdminProductsApi.md#updateproductbyadmin) | **POST** /admin/products/{productId}/update | 更新商品
-[**updateProductStatus**](AdminProductsApi.md#updateproductstatus) | **POST** /admin/products/{productId}/status | 更新商品狀態
+[**updateProductStatusEnum**](AdminProductsApi.md#updateproductstatusenum) | **POST** /admin/products/{productId}/status | 更新商品狀態
 
 
 # **getProductDetail**
@@ -204,8 +204,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateProductStatus**
-> Product updateProductStatus(productId, newStatus)
+# **updateProductStatusEnum**
+> Product updateProductStatusEnum(productId, newStatus)
 
 更新商品狀態
 
@@ -220,10 +220,10 @@ final productId = 789; // int | 商品ID
 final newStatus = newStatus_example; // String | 新狀態
 
 try {
-    final result = api_instance.updateProductStatus(productId, newStatus);
+    final result = api_instance.updateProductStatusEnum(productId, newStatus);
     print(result);
 } catch (e) {
-    print('Exception when calling AdminProductsApi->updateProductStatus: $e\n');
+    print('Exception when calling AdminProductsApi->updateProductStatusEnum: $e\n');
 }
 ```
 

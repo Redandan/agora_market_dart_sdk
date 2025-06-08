@@ -18,7 +18,6 @@ class Recharge {
     this.amount,
     this.currency,
     this.status,
-    this.protocol,
     this.txHash,
     this.receiveAddress,
     this.coldWalletId,
@@ -27,6 +26,7 @@ class Recharge {
     this.expireTime,
     this.updatedAt,
     this.completedAt,
+    this.protocolEnum,
   });
 
   /// 充值ID
@@ -65,11 +65,13 @@ class Recharge {
   ///
   String? currency;
 
-  /// 充值狀態
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   RechargeStatusEnum? status;
-
-  /// 協議
-  RechargeProtocolEnum? protocol;
 
   /// 交易Hash
   ///
@@ -143,6 +145,9 @@ class Recharge {
   ///
   DateTime? completedAt;
 
+  /// 協議
+  RechargeProtocolEnumEnum? protocolEnum;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Recharge &&
     other.id == id &&
@@ -150,7 +155,6 @@ class Recharge {
     other.amount == amount &&
     other.currency == currency &&
     other.status == status &&
-    other.protocol == protocol &&
     other.txHash == txHash &&
     other.receiveAddress == receiveAddress &&
     other.coldWalletId == coldWalletId &&
@@ -158,7 +162,8 @@ class Recharge {
     other.createdAt == createdAt &&
     other.expireTime == expireTime &&
     other.updatedAt == updatedAt &&
-    other.completedAt == completedAt;
+    other.completedAt == completedAt &&
+    other.protocolEnum == protocolEnum;
 
   @override
   int get hashCode =>
@@ -168,7 +173,6 @@ class Recharge {
     (amount == null ? 0 : amount!.hashCode) +
     (currency == null ? 0 : currency!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
-    (protocol == null ? 0 : protocol!.hashCode) +
     (txHash == null ? 0 : txHash!.hashCode) +
     (receiveAddress == null ? 0 : receiveAddress!.hashCode) +
     (coldWalletId == null ? 0 : coldWalletId!.hashCode) +
@@ -176,10 +180,11 @@ class Recharge {
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (expireTime == null ? 0 : expireTime!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (completedAt == null ? 0 : completedAt!.hashCode);
+    (completedAt == null ? 0 : completedAt!.hashCode) +
+    (protocolEnum == null ? 0 : protocolEnum!.hashCode);
 
   @override
-  String toString() => 'Recharge[id=$id, userId=$userId, amount=$amount, currency=$currency, status=$status, protocol=$protocol, txHash=$txHash, receiveAddress=$receiveAddress, coldWalletId=$coldWalletId, remark=$remark, createdAt=$createdAt, expireTime=$expireTime, updatedAt=$updatedAt, completedAt=$completedAt]';
+  String toString() => 'Recharge[id=$id, userId=$userId, amount=$amount, currency=$currency, status=$status, txHash=$txHash, receiveAddress=$receiveAddress, coldWalletId=$coldWalletId, remark=$remark, createdAt=$createdAt, expireTime=$expireTime, updatedAt=$updatedAt, completedAt=$completedAt, protocolEnum=$protocolEnum]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -207,11 +212,6 @@ class Recharge {
       json[r'status'] = this.status;
     } else {
       json[r'status'] = null;
-    }
-    if (this.protocol != null) {
-      json[r'protocol'] = this.protocol;
-    } else {
-      json[r'protocol'] = null;
     }
     if (this.txHash != null) {
       json[r'txHash'] = this.txHash;
@@ -253,6 +253,11 @@ class Recharge {
     } else {
       json[r'completedAt'] = null;
     }
+    if (this.protocolEnum != null) {
+      json[r'protocolEnum'] = this.protocolEnum;
+    } else {
+      json[r'protocolEnum'] = null;
+    }
     return json;
   }
 
@@ -280,7 +285,6 @@ class Recharge {
         amount: num.parse('${json[r'amount']}'),
         currency: mapValueOfType<String>(json, r'currency'),
         status: RechargeStatusEnum.fromJson(json[r'status']),
-        protocol: RechargeProtocolEnum.fromJson(json[r'protocol']),
         txHash: mapValueOfType<String>(json, r'txHash'),
         receiveAddress: mapValueOfType<String>(json, r'receiveAddress'),
         coldWalletId: mapValueOfType<int>(json, r'coldWalletId'),
@@ -289,6 +293,7 @@ class Recharge {
         expireTime: mapDateTime(json, r'expireTime', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         completedAt: mapDateTime(json, r'completedAt', r''),
+        protocolEnum: RechargeProtocolEnumEnum.fromJson(json[r'protocolEnum']),
       );
     }
     return null;
@@ -339,93 +344,10 @@ class Recharge {
   };
 }
 
-/// 充值狀態
-class RechargeStatusEnum {
-  /// Instantiate a new enum with the provided [value].
-  const RechargeStatusEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const PENDING = RechargeStatusEnum._(r'PENDING');
-  static const COMPLETED = RechargeStatusEnum._(r'COMPLETED');
-  static const EXPIRED = RechargeStatusEnum._(r'EXPIRED');
-  static const FAILED = RechargeStatusEnum._(r'FAILED');
-  static const unknownDefaultOpenApi = RechargeStatusEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][RechargeStatusEnum].
-  static const values = <RechargeStatusEnum>[
-    PENDING,
-    COMPLETED,
-    EXPIRED,
-    FAILED,
-    unknownDefaultOpenApi,
-  ];
-
-  static RechargeStatusEnum? fromJson(dynamic value) => RechargeStatusEnumTypeTransformer().decode(value);
-
-  static List<RechargeStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <RechargeStatusEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = RechargeStatusEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [RechargeStatusEnum] to String,
-/// and [decode] dynamic data back to [RechargeStatusEnum].
-class RechargeStatusEnumTypeTransformer {
-  factory RechargeStatusEnumTypeTransformer() => _instance ??= const RechargeStatusEnumTypeTransformer._();
-
-  const RechargeStatusEnumTypeTransformer._();
-
-  String encode(RechargeStatusEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a RechargeStatusEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  RechargeStatusEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'PENDING': return RechargeStatusEnum.PENDING;
-        case r'COMPLETED': return RechargeStatusEnum.COMPLETED;
-        case r'EXPIRED': return RechargeStatusEnum.EXPIRED;
-        case r'FAILED': return RechargeStatusEnum.FAILED;
-        case r'unknown_default_open_api': return RechargeStatusEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [RechargeStatusEnumTypeTransformer] instance.
-  static RechargeStatusEnumTypeTransformer? _instance;
-}
-
-
 /// 協議
-class RechargeProtocolEnum {
+class RechargeProtocolEnumEnum {
   /// Instantiate a new enum with the provided [value].
-  const RechargeProtocolEnum._(this.value);
+  const RechargeProtocolEnumEnum._(this.value);
 
   /// The underlying value of this enum member.
   final String value;
@@ -435,22 +357,22 @@ class RechargeProtocolEnum {
 
   String toJson() => value;
 
-  static const TRON = RechargeProtocolEnum._(r'TRON');
-  static const unknownDefaultOpenApi = RechargeProtocolEnum._(r'unknown_default_open_api');
+  static const TRON = RechargeProtocolEnumEnum._(r'TRON');
+  static const unknownDefaultOpenApi = RechargeProtocolEnumEnum._(r'unknown_default_open_api');
 
-  /// List of all possible values in this [enum][RechargeProtocolEnum].
-  static const values = <RechargeProtocolEnum>[
+  /// List of all possible values in this [enum][RechargeProtocolEnumEnum].
+  static const values = <RechargeProtocolEnumEnum>[
     TRON,
     unknownDefaultOpenApi,
   ];
 
-  static RechargeProtocolEnum? fromJson(dynamic value) => RechargeProtocolEnumTypeTransformer().decode(value);
+  static RechargeProtocolEnumEnum? fromJson(dynamic value) => RechargeProtocolEnumEnumTypeTransformer().decode(value);
 
-  static List<RechargeProtocolEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <RechargeProtocolEnum>[];
+  static List<RechargeProtocolEnumEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <RechargeProtocolEnumEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = RechargeProtocolEnum.fromJson(row);
+        final value = RechargeProtocolEnumEnum.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -460,16 +382,16 @@ class RechargeProtocolEnum {
   }
 }
 
-/// Transformation class that can [encode] an instance of [RechargeProtocolEnum] to String,
-/// and [decode] dynamic data back to [RechargeProtocolEnum].
-class RechargeProtocolEnumTypeTransformer {
-  factory RechargeProtocolEnumTypeTransformer() => _instance ??= const RechargeProtocolEnumTypeTransformer._();
+/// Transformation class that can [encode] an instance of [RechargeProtocolEnumEnum] to String,
+/// and [decode] dynamic data back to [RechargeProtocolEnumEnum].
+class RechargeProtocolEnumEnumTypeTransformer {
+  factory RechargeProtocolEnumEnumTypeTransformer() => _instance ??= const RechargeProtocolEnumEnumTypeTransformer._();
 
-  const RechargeProtocolEnumTypeTransformer._();
+  const RechargeProtocolEnumEnumTypeTransformer._();
 
-  String encode(RechargeProtocolEnum data) => data.value;
+  String encode(RechargeProtocolEnumEnum data) => data.value;
 
-  /// Decodes a [dynamic value][data] to a RechargeProtocolEnum.
+  /// Decodes a [dynamic value][data] to a RechargeProtocolEnumEnum.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -477,11 +399,11 @@ class RechargeProtocolEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  RechargeProtocolEnum? decode(dynamic data, {bool allowNull = true}) {
+  RechargeProtocolEnumEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'TRON': return RechargeProtocolEnum.TRON;
-        case r'unknown_default_open_api': return RechargeProtocolEnum.unknownDefaultOpenApi;
+        case r'TRON': return RechargeProtocolEnumEnum.TRON;
+        case r'unknown_default_open_api': return RechargeProtocolEnumEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -491,8 +413,8 @@ class RechargeProtocolEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [RechargeProtocolEnumTypeTransformer] instance.
-  static RechargeProtocolEnumTypeTransformer? _instance;
+  /// Singleton [RechargeProtocolEnumEnumTypeTransformer] instance.
+  static RechargeProtocolEnumEnumTypeTransformer? _instance;
 }
 
 

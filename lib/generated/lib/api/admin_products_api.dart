@@ -338,7 +338,7 @@ class AdminProductsApi {
   ///
   /// * [String] newStatus (required):
   ///   新狀態
-  Future<Response> updateProductStatusWithHttpInfo(int productId, String newStatus,) async {
+  Future<Response> updateProductStatusEnumWithHttpInfo(int productId, String newStatus,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/products/{productId}/status'
       .replaceAll('{productId}', productId.toString());
@@ -377,8 +377,8 @@ class AdminProductsApi {
   ///
   /// * [String] newStatus (required):
   ///   新狀態
-  Future<Product?> updateProductStatus(int productId, String newStatus,) async {
-    final response = await updateProductStatusWithHttpInfo(productId, newStatus,);
+  Future<Product?> updateProductStatusEnum(int productId, String newStatus,) async {
+    final response = await updateProductStatusEnumWithHttpInfo(productId, newStatus,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

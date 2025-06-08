@@ -55,8 +55,32 @@ String parameterToString(dynamic value) {
   if (value is DateTime) {
     return value.toUtc().toIso8601String();
   }
-  if (value is UserStatus) {
-    return UserStatusTypeTransformer().encode(value).toString();
+  if (value is ColdWalletStatusEnum) {
+    return ColdWalletStatusEnumTypeTransformer().encode(value).toString();
+  }
+  if (value is DeliveryReportTypeEnum) {
+    return DeliveryReportTypeEnumTypeTransformer().encode(value).toString();
+  }
+  if (value is DisputeStatusEnum) {
+    return DisputeStatusEnumTypeTransformer().encode(value).toString();
+  }
+  if (value is OrderStatusEnum) {
+    return OrderStatusEnumTypeTransformer().encode(value).toString();
+  }
+  if (value is ProductCategoryEnum) {
+    return ProductCategoryEnumTypeTransformer().encode(value).toString();
+  }
+  if (value is ProductStatusEnum) {
+    return ProductStatusEnumTypeTransformer().encode(value).toString();
+  }
+  if (value is RechargeStatusEnum) {
+    return RechargeStatusEnumTypeTransformer().encode(value).toString();
+  }
+  if (value is TransactionTypeEnum) {
+    return TransactionTypeEnumTypeTransformer().encode(value).toString();
+  }
+  if (value is UserStatusEnum) {
+    return UserStatusEnumTypeTransformer().encode(value).toString();
   }
   return value.toString();
 }

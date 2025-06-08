@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **orderId** | **String** | 訂單ID | [optional] 
 **deliveryId** | **int** | 配送員ID | [optional] 
-**deliveryType** | **String** | 配送方式 | [optional] 
 **verifyCode** | **String** | 驗證碼 | [optional] 
 **pickupLongitude** | **double** | 取件經度 | [optional] 
 **pickupLatitude** | **double** | 取件緯度 | [optional] 
@@ -33,6 +32,7 @@ Name | Type | Description | Notes
 **deliveringTime** | [**DateTime**](DateTime.md) | 運送時間 | [optional] 
 **deliveredTime** | [**DateTime**](DateTime.md) | 送達時間 | [optional] 
 **cancelledTime** | [**DateTime**](DateTime.md) | 取消時間 | [optional] 
+**deliveryTypeEnum** | **String** | 配送方式 | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

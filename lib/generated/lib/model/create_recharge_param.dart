@@ -16,7 +16,7 @@ class CreateRechargeParam {
     this.userId,
     required this.amount,
     required this.currency,
-    required this.protocol,
+    this.protocolEnum,
   });
 
   /// 用戶ID
@@ -35,14 +35,14 @@ class CreateRechargeParam {
   String currency;
 
   /// 協議
-  CreateRechargeParamProtocolEnum protocol;
+  CreateRechargeParamProtocolEnumEnum? protocolEnum;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateRechargeParam &&
     other.userId == userId &&
     other.amount == amount &&
     other.currency == currency &&
-    other.protocol == protocol;
+    other.protocolEnum == protocolEnum;
 
   @override
   int get hashCode =>
@@ -50,10 +50,10 @@ class CreateRechargeParam {
     (userId == null ? 0 : userId!.hashCode) +
     (amount.hashCode) +
     (currency.hashCode) +
-    (protocol.hashCode);
+    (protocolEnum == null ? 0 : protocolEnum!.hashCode);
 
   @override
-  String toString() => 'CreateRechargeParam[userId=$userId, amount=$amount, currency=$currency, protocol=$protocol]';
+  String toString() => 'CreateRechargeParam[userId=$userId, amount=$amount, currency=$currency, protocolEnum=$protocolEnum]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -64,7 +64,11 @@ class CreateRechargeParam {
     }
       json[r'amount'] = this.amount;
       json[r'currency'] = this.currency;
-      json[r'protocol'] = this.protocol;
+    if (this.protocolEnum != null) {
+      json[r'protocolEnum'] = this.protocolEnum;
+    } else {
+      json[r'protocolEnum'] = null;
+    }
     return json;
   }
 
@@ -90,7 +94,7 @@ class CreateRechargeParam {
         userId: mapValueOfType<int>(json, r'userId'),
         amount: num.parse('${json[r'amount']}'),
         currency: mapValueOfType<String>(json, r'currency')!,
-        protocol: CreateRechargeParamProtocolEnum.fromJson(json[r'protocol'])!,
+        protocolEnum: CreateRechargeParamProtocolEnumEnum.fromJson(json[r'protocolEnum']),
       );
     }
     return null;
@@ -140,14 +144,13 @@ class CreateRechargeParam {
   static const requiredKeys = <String>{
     'amount',
     'currency',
-    'protocol',
   };
 }
 
 /// 協議
-class CreateRechargeParamProtocolEnum {
+class CreateRechargeParamProtocolEnumEnum {
   /// Instantiate a new enum with the provided [value].
-  const CreateRechargeParamProtocolEnum._(this.value);
+  const CreateRechargeParamProtocolEnumEnum._(this.value);
 
   /// The underlying value of this enum member.
   final String value;
@@ -157,22 +160,22 @@ class CreateRechargeParamProtocolEnum {
 
   String toJson() => value;
 
-  static const TRON = CreateRechargeParamProtocolEnum._(r'TRON');
-  static const unknownDefaultOpenApi = CreateRechargeParamProtocolEnum._(r'unknown_default_open_api');
+  static const TRON = CreateRechargeParamProtocolEnumEnum._(r'TRON');
+  static const unknownDefaultOpenApi = CreateRechargeParamProtocolEnumEnum._(r'unknown_default_open_api');
 
-  /// List of all possible values in this [enum][CreateRechargeParamProtocolEnum].
-  static const values = <CreateRechargeParamProtocolEnum>[
+  /// List of all possible values in this [enum][CreateRechargeParamProtocolEnumEnum].
+  static const values = <CreateRechargeParamProtocolEnumEnum>[
     TRON,
     unknownDefaultOpenApi,
   ];
 
-  static CreateRechargeParamProtocolEnum? fromJson(dynamic value) => CreateRechargeParamProtocolEnumTypeTransformer().decode(value);
+  static CreateRechargeParamProtocolEnumEnum? fromJson(dynamic value) => CreateRechargeParamProtocolEnumEnumTypeTransformer().decode(value);
 
-  static List<CreateRechargeParamProtocolEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CreateRechargeParamProtocolEnum>[];
+  static List<CreateRechargeParamProtocolEnumEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CreateRechargeParamProtocolEnumEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = CreateRechargeParamProtocolEnum.fromJson(row);
+        final value = CreateRechargeParamProtocolEnumEnum.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -182,16 +185,16 @@ class CreateRechargeParamProtocolEnum {
   }
 }
 
-/// Transformation class that can [encode] an instance of [CreateRechargeParamProtocolEnum] to String,
-/// and [decode] dynamic data back to [CreateRechargeParamProtocolEnum].
-class CreateRechargeParamProtocolEnumTypeTransformer {
-  factory CreateRechargeParamProtocolEnumTypeTransformer() => _instance ??= const CreateRechargeParamProtocolEnumTypeTransformer._();
+/// Transformation class that can [encode] an instance of [CreateRechargeParamProtocolEnumEnum] to String,
+/// and [decode] dynamic data back to [CreateRechargeParamProtocolEnumEnum].
+class CreateRechargeParamProtocolEnumEnumTypeTransformer {
+  factory CreateRechargeParamProtocolEnumEnumTypeTransformer() => _instance ??= const CreateRechargeParamProtocolEnumEnumTypeTransformer._();
 
-  const CreateRechargeParamProtocolEnumTypeTransformer._();
+  const CreateRechargeParamProtocolEnumEnumTypeTransformer._();
 
-  String encode(CreateRechargeParamProtocolEnum data) => data.value;
+  String encode(CreateRechargeParamProtocolEnumEnum data) => data.value;
 
-  /// Decodes a [dynamic value][data] to a CreateRechargeParamProtocolEnum.
+  /// Decodes a [dynamic value][data] to a CreateRechargeParamProtocolEnumEnum.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -199,11 +202,11 @@ class CreateRechargeParamProtocolEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  CreateRechargeParamProtocolEnum? decode(dynamic data, {bool allowNull = true}) {
+  CreateRechargeParamProtocolEnumEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'TRON': return CreateRechargeParamProtocolEnum.TRON;
-        case r'unknown_default_open_api': return CreateRechargeParamProtocolEnum.unknownDefaultOpenApi;
+        case r'TRON': return CreateRechargeParamProtocolEnumEnum.TRON;
+        case r'unknown_default_open_api': return CreateRechargeParamProtocolEnumEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -213,8 +216,8 @@ class CreateRechargeParamProtocolEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CreateRechargeParamProtocolEnumTypeTransformer] instance.
-  static CreateRechargeParamProtocolEnumTypeTransformer? _instance;
+  /// Singleton [CreateRechargeParamProtocolEnumEnumTypeTransformer] instance.
+  static CreateRechargeParamProtocolEnumEnumTypeTransformer? _instance;
 }
 
 

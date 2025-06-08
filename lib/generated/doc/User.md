@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **username** | **String** | 用戶名 | [optional] 
 **password** | **String** | 密碼 | [optional] 
 **role** | **String** | 角色 | [optional] 
-**status** | [**UserStatus**](UserStatus.md) |  | [optional] 
+**status** | [**UserStatusEnum**](UserStatusEnum.md) |  | [optional] 
 **enabled** | **bool** | 是否啟用 | [optional] 
 **name** | **String** | 姓名 | [optional] 
 **phone** | **String** | 電話號碼 | [optional] 
@@ -21,8 +21,8 @@ Name | Type | Description | Notes
 **remark** | **String** | 備註 | [optional] 
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | 最後更新時間 | [optional] 
-**seller** | **bool** |  | [optional] 
 **admin** | **bool** |  | [optional] 
+**seller** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

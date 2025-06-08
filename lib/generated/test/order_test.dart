@@ -64,8 +64,7 @@ void main() {
       // TODO
     });
 
-    // 訂單狀態
-    // String status
+    // OrderStatusEnum status
     test('to test the property `status`', () async {
       // TODO
     });

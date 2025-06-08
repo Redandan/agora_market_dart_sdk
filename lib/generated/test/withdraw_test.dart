@@ -46,12 +46,6 @@ void main() {
       // TODO
     });
 
-    // 協議
-    // String protocol
-    test('to test the property `protocol`', () async {
-      // TODO
-    });
-
     // 提款地址
     // String toAddress
     test('to test the property `toAddress`', () async {
@@ -85,6 +79,12 @@ void main() {
     // 最後更新時間
     // DateTime updatedAt
     test('to test the property `updatedAt`', () async {
+      // TODO
+    });
+
+    // 協議
+    // String protocolEnum
+    test('to test the property `protocolEnum`', () async {
       // TODO
     });
 

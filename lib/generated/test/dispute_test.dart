@@ -46,8 +46,7 @@ void main() {
       // TODO
     });
 
-    // 糾紛狀態
-    // String status
+    // DisputeStatusEnum status
     test('to test the property `status`', () async {
       // TODO
     });

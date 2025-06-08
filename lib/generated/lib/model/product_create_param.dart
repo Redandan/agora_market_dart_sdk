@@ -58,8 +58,7 @@ class ProductCreateParam {
   /// 商品描述
   String description;
 
-  /// 商品分類
-  ProductCreateParamCategoryEnum category;
+  ProductCategoryEnum category;
 
   /// 商品圖片URL集合
   Set<String> imageUrls;
@@ -194,7 +193,7 @@ class ProductCreateParam {
         currency: mapValueOfType<String>(json, r'currency'),
         stock: mapValueOfType<int>(json, r'stock')!,
         description: mapValueOfType<String>(json, r'description')!,
-        category: ProductCreateParamCategoryEnum.fromJson(json[r'category'])!,
+        category: ProductCategoryEnum.fromJson(json[r'category'])!,
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
             : const {},
@@ -259,99 +258,4 @@ class ProductCreateParam {
     'latitude',
   };
 }
-
-/// 商品分類
-class ProductCreateParamCategoryEnum {
-  /// Instantiate a new enum with the provided [value].
-  const ProductCreateParamCategoryEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const ELECTRONICS = ProductCreateParamCategoryEnum._(r'ELECTRONICS');
-  static const FOOD = ProductCreateParamCategoryEnum._(r'FOOD');
-  static const CLOTHING = ProductCreateParamCategoryEnum._(r'CLOTHING');
-  static const HOME = ProductCreateParamCategoryEnum._(r'HOME');
-  static const BEAUTY = ProductCreateParamCategoryEnum._(r'BEAUTY');
-  static const BOOKS = ProductCreateParamCategoryEnum._(r'BOOKS');
-  static const TOYS = ProductCreateParamCategoryEnum._(r'TOYS');
-  static const OTHER = ProductCreateParamCategoryEnum._(r'OTHER');
-  static const unknownDefaultOpenApi = ProductCreateParamCategoryEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][ProductCreateParamCategoryEnum].
-  static const values = <ProductCreateParamCategoryEnum>[
-    ELECTRONICS,
-    FOOD,
-    CLOTHING,
-    HOME,
-    BEAUTY,
-    BOOKS,
-    TOYS,
-    OTHER,
-    unknownDefaultOpenApi,
-  ];
-
-  static ProductCreateParamCategoryEnum? fromJson(dynamic value) => ProductCreateParamCategoryEnumTypeTransformer().decode(value);
-
-  static List<ProductCreateParamCategoryEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProductCreateParamCategoryEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = ProductCreateParamCategoryEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [ProductCreateParamCategoryEnum] to String,
-/// and [decode] dynamic data back to [ProductCreateParamCategoryEnum].
-class ProductCreateParamCategoryEnumTypeTransformer {
-  factory ProductCreateParamCategoryEnumTypeTransformer() => _instance ??= const ProductCreateParamCategoryEnumTypeTransformer._();
-
-  const ProductCreateParamCategoryEnumTypeTransformer._();
-
-  String encode(ProductCreateParamCategoryEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a ProductCreateParamCategoryEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  ProductCreateParamCategoryEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'ELECTRONICS': return ProductCreateParamCategoryEnum.ELECTRONICS;
-        case r'FOOD': return ProductCreateParamCategoryEnum.FOOD;
-        case r'CLOTHING': return ProductCreateParamCategoryEnum.CLOTHING;
-        case r'HOME': return ProductCreateParamCategoryEnum.HOME;
-        case r'BEAUTY': return ProductCreateParamCategoryEnum.BEAUTY;
-        case r'BOOKS': return ProductCreateParamCategoryEnum.BOOKS;
-        case r'TOYS': return ProductCreateParamCategoryEnum.TOYS;
-        case r'OTHER': return ProductCreateParamCategoryEnum.OTHER;
-        case r'unknown_default_open_api': return ProductCreateParamCategoryEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [ProductCreateParamCategoryEnumTypeTransformer] instance.
-  static ProductCreateParamCategoryEnumTypeTransformer? _instance;
-}
-
 

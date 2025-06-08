@@ -58,8 +58,7 @@ void main() {
       // TODO
     });
 
-    // 商品分類
-    // String category
+    // ProductCategoryEnum category
     test('to test the property `category`', () async {
       // TODO
     });
@@ -104,8 +103,7 @@ void main() {
       // TODO
     });
 
-    // 商品狀態
-    // String status
+    // ProductStatusEnum status
     test('to test the property `status`', () async {
       // TODO
     });

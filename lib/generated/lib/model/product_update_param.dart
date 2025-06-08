@@ -93,8 +93,13 @@ class ProductUpdateParam {
   /// 取件地址緯度
   double latitude;
 
-  /// 商品狀態
-  ProductUpdateParamStatusEnum? status;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  ProductStatusEnum? status;
 
   /// 賣家出貨費用
   ///
@@ -219,7 +224,7 @@ class ProductUpdateParam {
             : const {},
         longitude: mapValueOfType<double>(json, r'longitude')!,
         latitude: mapValueOfType<double>(json, r'latitude')!,
-        status: ProductUpdateParamStatusEnum.fromJson(json[r'status']),
+        status: ProductStatusEnum.fromJson(json[r'status']),
         shippingFee: num.parse('${json[r'shippingFee']}'),
       );
     }
@@ -273,87 +278,4 @@ class ProductUpdateParam {
     'latitude',
   };
 }
-
-/// 商品狀態
-class ProductUpdateParamStatusEnum {
-  /// Instantiate a new enum with the provided [value].
-  const ProductUpdateParamStatusEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const ON_SALE = ProductUpdateParamStatusEnum._(r'ON_SALE');
-  static const OFF_SALE = ProductUpdateParamStatusEnum._(r'OFF_SALE');
-  static const SOLD_OUT = ProductUpdateParamStatusEnum._(r'SOLD_OUT');
-  static const DELETED = ProductUpdateParamStatusEnum._(r'DELETED');
-  static const unknownDefaultOpenApi = ProductUpdateParamStatusEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][ProductUpdateParamStatusEnum].
-  static const values = <ProductUpdateParamStatusEnum>[
-    ON_SALE,
-    OFF_SALE,
-    SOLD_OUT,
-    DELETED,
-    unknownDefaultOpenApi,
-  ];
-
-  static ProductUpdateParamStatusEnum? fromJson(dynamic value) => ProductUpdateParamStatusEnumTypeTransformer().decode(value);
-
-  static List<ProductUpdateParamStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProductUpdateParamStatusEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = ProductUpdateParamStatusEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [ProductUpdateParamStatusEnum] to String,
-/// and [decode] dynamic data back to [ProductUpdateParamStatusEnum].
-class ProductUpdateParamStatusEnumTypeTransformer {
-  factory ProductUpdateParamStatusEnumTypeTransformer() => _instance ??= const ProductUpdateParamStatusEnumTypeTransformer._();
-
-  const ProductUpdateParamStatusEnumTypeTransformer._();
-
-  String encode(ProductUpdateParamStatusEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a ProductUpdateParamStatusEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  ProductUpdateParamStatusEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'ON_SALE': return ProductUpdateParamStatusEnum.ON_SALE;
-        case r'OFF_SALE': return ProductUpdateParamStatusEnum.OFF_SALE;
-        case r'SOLD_OUT': return ProductUpdateParamStatusEnum.SOLD_OUT;
-        case r'DELETED': return ProductUpdateParamStatusEnum.DELETED;
-        case r'unknown_default_open_api': return ProductUpdateParamStatusEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [ProductUpdateParamStatusEnumTypeTransformer] instance.
-  static ProductUpdateParamStatusEnumTypeTransformer? _instance;
-}
-
 

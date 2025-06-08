@@ -1,4 +1,4 @@
-# agora_market_dart_sdk.model.UserStatus
+# agora_market_dart_sdk.model.TransactionTypeEnum
 
 ## Load the model package
 ```dart

@@ -112,7 +112,7 @@ Class | Method | HTTP request | Description
 *AdminProductsApi* | [**getProductStatistics**](doc//AdminProductsApi.md#getproductstatistics) | **GET** /admin/products/statistics | 商品統計報告
 *AdminProductsApi* | [**searchProducts**](doc//AdminProductsApi.md#searchproducts) | **GET** /admin/products/search | 搜索商品
 *AdminProductsApi* | [**updateProductByAdmin**](doc//AdminProductsApi.md#updateproductbyadmin) | **POST** /admin/products/{productId}/update | 更新商品
-*AdminProductsApi* | [**updateProductStatus**](doc//AdminProductsApi.md#updateproductstatus) | **POST** /admin/products/{productId}/status | 更新商品狀態
+*AdminProductsApi* | [**updateProductStatusEnum**](doc//AdminProductsApi.md#updateproductstatusenum) | **POST** /admin/products/{productId}/status | 更新商品狀態
 *AuthApi* | [**changePassword**](doc//AuthApi.md#changepassword) | **POST** /auth/change-password | 修改密碼
 *AuthApi* | [**forgotPassword**](doc//AuthApi.md#forgotpassword) | **POST** /auth/forgot-password | 發送密碼重置郵件
 *AuthApi* | [**getCurrentUser**](doc//AuthApi.md#getcurrentuser) | **GET** /auth/me | 獲取當前用戶信息
@@ -198,15 +198,18 @@ Class | Method | HTTP request | Description
  - [ChatSession](doc//ChatSession.md)
  - [ChatSessionQueryParam](doc//ChatSessionQueryParam.md)
  - [ColdWallet](doc//ColdWallet.md)
+ - [ColdWalletStatusEnum](doc//ColdWalletStatusEnum.md)
  - [CreateRechargeParam](doc//CreateRechargeParam.md)
  - [CreateWithdrawParam](doc//CreateWithdrawParam.md)
  - [CustomerStats](doc//CustomerStats.md)
  - [DeliveryDetail](doc//DeliveryDetail.md)
+ - [DeliveryReportTypeEnum](doc//DeliveryReportTypeEnum.md)
  - [Deliveryer](doc//Deliveryer.md)
  - [Dispute](doc//Dispute.md)
  - [DisputeCreateParam](doc//DisputeCreateParam.md)
  - [DisputeQueryResult](doc//DisputeQueryResult.md)
  - [DisputeStatisticsDTO](doc//DisputeStatisticsDTO.md)
+ - [DisputeStatusEnum](doc//DisputeStatusEnum.md)
  - [LocalTime](doc//LocalTime.md)
  - [LoginParam](doc//LoginParam.md)
  - [LoginResult](doc//LoginResult.md)
@@ -218,6 +221,7 @@ Class | Method | HTTP request | Description
  - [OrderQueryResult](doc//OrderQueryResult.md)
  - [OrderShipParam](doc//OrderShipParam.md)
  - [OrderStatisticsDTO](doc//OrderStatisticsDTO.md)
+ - [OrderStatusEnum](doc//OrderStatusEnum.md)
  - [OrderSumbitParam](doc//OrderSumbitParam.md)
  - [PageCartItem](doc//PageCartItem.md)
  - [PageChatMessage](doc//PageChatMessage.md)
@@ -234,10 +238,13 @@ Class | Method | HTTP request | Description
  - [PageableObject](doc//PageableObject.md)
  - [PasswordResetParam](doc//PasswordResetParam.md)
  - [Product](doc//Product.md)
+ - [ProductCategoryEnum](doc//ProductCategoryEnum.md)
  - [ProductCreateParam](doc//ProductCreateParam.md)
  - [ProductStats](doc//ProductStats.md)
+ - [ProductStatusEnum](doc//ProductStatusEnum.md)
  - [ProductUpdateParam](doc//ProductUpdateParam.md)
  - [Recharge](doc//Recharge.md)
+ - [RechargeStatusEnum](doc//RechargeStatusEnum.md)
  - [RegisterParam](doc//RegisterParam.md)
  - [SalesStats](doc//SalesStats.md)
  - [SortObject](doc//SortObject.md)
@@ -251,11 +258,12 @@ Class | Method | HTTP request | Description
  - [TopProductDTO](doc//TopProductDTO.md)
  - [TopSellerDTO](doc//TopSellerDTO.md)
  - [Transaction](doc//Transaction.md)
+ - [TransactionTypeEnum](doc//TransactionTypeEnum.md)
  - [UpdateDeliveryOrderParam](doc//UpdateDeliveryOrderParam.md)
  - [User](doc//User.md)
  - [UserInfo](doc//UserInfo.md)
  - [UserProfileUpdateParam](doc//UserProfileUpdateParam.md)
- - [UserStatus](doc//UserStatus.md)
+ - [UserStatusEnum](doc//UserStatusEnum.md)
  - [Withdraw](doc//Withdraw.md)
 
 

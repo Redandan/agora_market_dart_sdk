@@ -9,7 +9,7 @@ import 'package:agora_market_dart_sdk/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **orderId** | **String** | 訂單ID | [optional] 
-**reportType** | **String** | 報告類型 | [optional] 
+**reportType** | [**DeliveryReportTypeEnum**](DeliveryReportTypeEnum.md) |  | [optional] 
 **remark** | **String** | 備註 | [optional] 
 **currentLocationLatitude** | **double** | 當前位置緯度 | [optional] 
 **currentLocationLongitude** | **double** | 當前位置經度 | [optional] 

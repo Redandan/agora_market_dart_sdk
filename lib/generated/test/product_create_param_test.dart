@@ -52,8 +52,7 @@ void main() {
       // TODO
     });
 
-    // 商品分類
-    // String category
+    // ProductCategoryEnum category
     test('to test the property `category`', () async {
       // TODO
     });

@@ -16,29 +16,33 @@ void main() {
   // final instance = CreateWithdrawParam();
 
   group('test CreateWithdrawParam', () {
+    // 用戶ID
     // int userId
     test('to test the property `userId`', () async {
       // TODO
     });
 
+    // 提現金額
     // num amount
     test('to test the property `amount`', () async {
       // TODO
     });
 
+    // 貨幣代碼
     // String currency
     test('to test the property `currency`', () async {
       // TODO
     });
 
-    // 協議
-    // String protocol
-    test('to test the property `protocol`', () async {
+    // 提現目標地址
+    // String toAddress
+    test('to test the property `toAddress`', () async {
       // TODO
     });
 
-    // String toAddress
-    test('to test the property `toAddress`', () async {
+    // 協議
+    // String protocolEnum
+    test('to test the property `protocolEnum`', () async {
       // TODO
     });
 

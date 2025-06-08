@@ -13,94 +13,58 @@ part of openapi.api;
 class CreateWithdrawParam {
   /// Returns a new [CreateWithdrawParam] instance.
   CreateWithdrawParam({
-    this.userId,
-    this.amount,
-    this.currency,
-    this.protocol,
-    this.toAddress,
+    required this.userId,
+    required this.amount,
+    required this.currency,
+    required this.toAddress,
+    this.protocolEnum,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? userId;
+  /// 用戶ID
+  int userId;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? amount;
+  /// 提現金額
+  num amount;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? currency;
+  /// 貨幣代碼
+  String currency;
+
+  /// 提現目標地址
+  String toAddress;
 
   /// 協議
-  CreateWithdrawParamProtocolEnum? protocol;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? toAddress;
+  CreateWithdrawParamProtocolEnumEnum? protocolEnum;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateWithdrawParam &&
     other.userId == userId &&
     other.amount == amount &&
     other.currency == currency &&
-    other.protocol == protocol &&
-    other.toAddress == toAddress;
+    other.toAddress == toAddress &&
+    other.protocolEnum == protocolEnum;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (userId == null ? 0 : userId!.hashCode) +
-    (amount == null ? 0 : amount!.hashCode) +
-    (currency == null ? 0 : currency!.hashCode) +
-    (protocol == null ? 0 : protocol!.hashCode) +
-    (toAddress == null ? 0 : toAddress!.hashCode);
+    (userId.hashCode) +
+    (amount.hashCode) +
+    (currency.hashCode) +
+    (toAddress.hashCode) +
+    (protocolEnum == null ? 0 : protocolEnum!.hashCode);
 
   @override
-  String toString() => 'CreateWithdrawParam[userId=$userId, amount=$amount, currency=$currency, protocol=$protocol, toAddress=$toAddress]';
+  String toString() => 'CreateWithdrawParam[userId=$userId, amount=$amount, currency=$currency, toAddress=$toAddress, protocolEnum=$protocolEnum]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.userId != null) {
       json[r'userId'] = this.userId;
-    } else {
-      json[r'userId'] = null;
-    }
-    if (this.amount != null) {
       json[r'amount'] = this.amount;
-    } else {
-      json[r'amount'] = null;
-    }
-    if (this.currency != null) {
       json[r'currency'] = this.currency;
-    } else {
-      json[r'currency'] = null;
-    }
-    if (this.protocol != null) {
-      json[r'protocol'] = this.protocol;
-    } else {
-      json[r'protocol'] = null;
-    }
-    if (this.toAddress != null) {
       json[r'toAddress'] = this.toAddress;
+    if (this.protocolEnum != null) {
+      json[r'protocolEnum'] = this.protocolEnum;
     } else {
-      json[r'toAddress'] = null;
+      json[r'protocolEnum'] = null;
     }
     return json;
   }
@@ -124,11 +88,11 @@ class CreateWithdrawParam {
       }());
 
       return CreateWithdrawParam(
-        userId: mapValueOfType<int>(json, r'userId'),
+        userId: mapValueOfType<int>(json, r'userId')!,
         amount: num.parse('${json[r'amount']}'),
-        currency: mapValueOfType<String>(json, r'currency'),
-        protocol: CreateWithdrawParamProtocolEnum.fromJson(json[r'protocol']),
-        toAddress: mapValueOfType<String>(json, r'toAddress'),
+        currency: mapValueOfType<String>(json, r'currency')!,
+        toAddress: mapValueOfType<String>(json, r'toAddress')!,
+        protocolEnum: CreateWithdrawParamProtocolEnumEnum.fromJson(json[r'protocolEnum']),
       );
     }
     return null;
@@ -176,13 +140,17 @@ class CreateWithdrawParam {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'userId',
+    'amount',
+    'currency',
+    'toAddress',
   };
 }
 
 /// 協議
-class CreateWithdrawParamProtocolEnum {
+class CreateWithdrawParamProtocolEnumEnum {
   /// Instantiate a new enum with the provided [value].
-  const CreateWithdrawParamProtocolEnum._(this.value);
+  const CreateWithdrawParamProtocolEnumEnum._(this.value);
 
   /// The underlying value of this enum member.
   final String value;
@@ -192,22 +160,22 @@ class CreateWithdrawParamProtocolEnum {
 
   String toJson() => value;
 
-  static const TRON = CreateWithdrawParamProtocolEnum._(r'TRON');
-  static const unknownDefaultOpenApi = CreateWithdrawParamProtocolEnum._(r'unknown_default_open_api');
+  static const TRON = CreateWithdrawParamProtocolEnumEnum._(r'TRON');
+  static const unknownDefaultOpenApi = CreateWithdrawParamProtocolEnumEnum._(r'unknown_default_open_api');
 
-  /// List of all possible values in this [enum][CreateWithdrawParamProtocolEnum].
-  static const values = <CreateWithdrawParamProtocolEnum>[
+  /// List of all possible values in this [enum][CreateWithdrawParamProtocolEnumEnum].
+  static const values = <CreateWithdrawParamProtocolEnumEnum>[
     TRON,
     unknownDefaultOpenApi,
   ];
 
-  static CreateWithdrawParamProtocolEnum? fromJson(dynamic value) => CreateWithdrawParamProtocolEnumTypeTransformer().decode(value);
+  static CreateWithdrawParamProtocolEnumEnum? fromJson(dynamic value) => CreateWithdrawParamProtocolEnumEnumTypeTransformer().decode(value);
 
-  static List<CreateWithdrawParamProtocolEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CreateWithdrawParamProtocolEnum>[];
+  static List<CreateWithdrawParamProtocolEnumEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CreateWithdrawParamProtocolEnumEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = CreateWithdrawParamProtocolEnum.fromJson(row);
+        final value = CreateWithdrawParamProtocolEnumEnum.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -217,16 +185,16 @@ class CreateWithdrawParamProtocolEnum {
   }
 }
 
-/// Transformation class that can [encode] an instance of [CreateWithdrawParamProtocolEnum] to String,
-/// and [decode] dynamic data back to [CreateWithdrawParamProtocolEnum].
-class CreateWithdrawParamProtocolEnumTypeTransformer {
-  factory CreateWithdrawParamProtocolEnumTypeTransformer() => _instance ??= const CreateWithdrawParamProtocolEnumTypeTransformer._();
+/// Transformation class that can [encode] an instance of [CreateWithdrawParamProtocolEnumEnum] to String,
+/// and [decode] dynamic data back to [CreateWithdrawParamProtocolEnumEnum].
+class CreateWithdrawParamProtocolEnumEnumTypeTransformer {
+  factory CreateWithdrawParamProtocolEnumEnumTypeTransformer() => _instance ??= const CreateWithdrawParamProtocolEnumEnumTypeTransformer._();
 
-  const CreateWithdrawParamProtocolEnumTypeTransformer._();
+  const CreateWithdrawParamProtocolEnumEnumTypeTransformer._();
 
-  String encode(CreateWithdrawParamProtocolEnum data) => data.value;
+  String encode(CreateWithdrawParamProtocolEnumEnum data) => data.value;
 
-  /// Decodes a [dynamic value][data] to a CreateWithdrawParamProtocolEnum.
+  /// Decodes a [dynamic value][data] to a CreateWithdrawParamProtocolEnumEnum.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -234,11 +202,11 @@ class CreateWithdrawParamProtocolEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  CreateWithdrawParamProtocolEnum? decode(dynamic data, {bool allowNull = true}) {
+  CreateWithdrawParamProtocolEnumEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'TRON': return CreateWithdrawParamProtocolEnum.TRON;
-        case r'unknown_default_open_api': return CreateWithdrawParamProtocolEnum.unknownDefaultOpenApi;
+        case r'TRON': return CreateWithdrawParamProtocolEnumEnum.TRON;
+        case r'unknown_default_open_api': return CreateWithdrawParamProtocolEnumEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -248,8 +216,8 @@ class CreateWithdrawParamProtocolEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CreateWithdrawParamProtocolEnumTypeTransformer] instance.
-  static CreateWithdrawParamProtocolEnumTypeTransformer? _instance;
+  /// Singleton [CreateWithdrawParamProtocolEnumEnumTypeTransformer] instance.
+  static CreateWithdrawParamProtocolEnumEnumTypeTransformer? _instance;
 }
 
 

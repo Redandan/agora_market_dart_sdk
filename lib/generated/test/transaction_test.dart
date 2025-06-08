@@ -34,8 +34,7 @@ void main() {
       // TODO
     });
 
-    // 交易類型
-    // String type
+    // TransactionTypeEnum type
     test('to test the property `type`', () async {
       // TODO
     });
