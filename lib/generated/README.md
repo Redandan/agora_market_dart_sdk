@@ -98,6 +98,7 @@ Class | Method | HTTP request | Description
 *AdminDisputesApi* | [**getDisputeStatistics**](doc//AdminDisputesApi.md#getdisputestatistics) | **GET** /admin/disputes/statistics | 糾紛統計報告
 *AdminDisputesApi* | [**resolveDispute**](doc//AdminDisputesApi.md#resolvedispute) | **POST** /admin/disputes/{disputeId}/resolve | 處理糾紛
 *AdminDisputesApi* | [**searchDisputes1**](doc//AdminDisputesApi.md#searchdisputes1) | **GET** /admin/disputes/search | 搜索糾紛
+*AdminMembersApi* | [**createUserByAdmin**](doc//AdminMembersApi.md#createuserbyadmin) | **POST** /admin/members/create-user | 管理員創建用戶
 *AdminMembersApi* | [**getMemberDetail**](doc//AdminMembersApi.md#getmemberdetail) | **GET** /admin/members/{memberId} | 查看會員詳情
 *AdminMembersApi* | [**getMemberStatistics**](doc//AdminMembersApi.md#getmemberstatistics) | **GET** /admin/members/statistics | 會員統計報告
 *AdminMembersApi* | [**searchMembers**](doc//AdminMembersApi.md#searchmembers) | **GET** /admin/members/search | 搜索會員
@@ -113,7 +114,6 @@ Class | Method | HTTP request | Description
 *AdminProductsApi* | [**updateProductByAdmin**](doc//AdminProductsApi.md#updateproductbyadmin) | **POST** /admin/products/{productId}/update | 更新商品
 *AdminProductsApi* | [**updateProductStatus**](doc//AdminProductsApi.md#updateproductstatus) | **POST** /admin/products/{productId}/status | 更新商品狀態
 *AuthApi* | [**changePassword**](doc//AuthApi.md#changepassword) | **POST** /auth/change-password | 修改密碼
-*AuthApi* | [**createUserByAdmin**](doc//AuthApi.md#createuserbyadmin) | **POST** /auth/admin/create-user | 管理員創建用戶
 *AuthApi* | [**forgotPassword**](doc//AuthApi.md#forgotpassword) | **POST** /auth/forgot-password | 發送密碼重置郵件
 *AuthApi* | [**getCurrentUser**](doc//AuthApi.md#getcurrentuser) | **GET** /auth/me | 獲取當前用戶信息
 *AuthApi* | [**login**](doc//AuthApi.md#login) | **POST** /auth/login | 用戶登入
@@ -255,6 +255,7 @@ Class | Method | HTTP request | Description
  - [User](doc//User.md)
  - [UserInfo](doc//UserInfo.md)
  - [UserProfileUpdateParam](doc//UserProfileUpdateParam.md)
+ - [UserStatus](doc//UserStatus.md)
  - [Withdraw](doc//Withdraw.md)
 
 

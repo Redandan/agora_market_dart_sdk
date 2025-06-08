@@ -118,6 +118,7 @@ part 'model/update_delivery_order_param.dart';
 part 'model/user.dart';
 part 'model/user_info.dart';
 part 'model/user_profile_update_param.dart';
+part 'model/user_status.dart';
 part 'model/withdraw.dart';
 
 

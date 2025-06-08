@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **username** | **String** | 用戶名 | [optional] 
 **password** | **String** | 密碼 | [optional] 
 **role** | **String** | 角色 | [optional] 
-**status** | **String** | 用戶狀態 | [default to 'ACTIVE']
+**status** | [**UserStatus**](UserStatus.md) |  | [optional] 
 **enabled** | **bool** | 是否啟用 | [optional] 
 **name** | **String** | 姓名 | [optional] 
 **phone** | **String** | 電話號碼 | [optional] 

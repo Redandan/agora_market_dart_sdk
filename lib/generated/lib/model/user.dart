@@ -17,7 +17,7 @@ class User {
     this.username,
     this.password,
     this.role,
-    this.status = const UserStatusEnum._('ACTIVE'),
+    this.status,
     this.enabled,
     this.name,
     this.phone,
@@ -66,8 +66,13 @@ class User {
   ///
   String? role;
 
-  /// 用戶狀態
-  UserStatusEnum status;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  UserStatus? status;
 
   /// 是否啟用
   ///
@@ -182,7 +187,7 @@ class User {
     (username == null ? 0 : username!.hashCode) +
     (password == null ? 0 : password!.hashCode) +
     (role == null ? 0 : role!.hashCode) +
-    (status.hashCode) +
+    (status == null ? 0 : status!.hashCode) +
     (enabled == null ? 0 : enabled!.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (phone == null ? 0 : phone!.hashCode) +
@@ -219,7 +224,11 @@ class User {
     } else {
       json[r'role'] = null;
     }
+    if (this.status != null) {
       json[r'status'] = this.status;
+    } else {
+      json[r'status'] = null;
+    }
     if (this.enabled != null) {
       json[r'enabled'] = this.enabled;
     } else {
@@ -296,7 +305,7 @@ class User {
         username: mapValueOfType<String>(json, r'username'),
         password: mapValueOfType<String>(json, r'password'),
         role: mapValueOfType<String>(json, r'role'),
-        status: UserStatusEnum.fromJson(json[r'status'])!,
+        status: UserStatus.fromJson(json[r'status']),
         enabled: mapValueOfType<bool>(json, r'enabled'),
         name: mapValueOfType<String>(json, r'name'),
         phone: mapValueOfType<String>(json, r'phone'),
@@ -354,93 +363,6 @@ class User {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'status',
   };
 }
-
-/// 用戶狀態
-class UserStatusEnum {
-  /// Instantiate a new enum with the provided [value].
-  const UserStatusEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const ACTIVE = UserStatusEnum._(r'ACTIVE');
-  static const INACTIVE = UserStatusEnum._(r'INACTIVE');
-  static const SUSPENDED = UserStatusEnum._(r'SUSPENDED');
-  static const BANNED = UserStatusEnum._(r'BANNED');
-  static const DELETED = UserStatusEnum._(r'DELETED');
-  static const unknownDefaultOpenApi = UserStatusEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][UserStatusEnum].
-  static const values = <UserStatusEnum>[
-    ACTIVE,
-    INACTIVE,
-    SUSPENDED,
-    BANNED,
-    DELETED,
-    unknownDefaultOpenApi,
-  ];
-
-  static UserStatusEnum? fromJson(dynamic value) => UserStatusEnumTypeTransformer().decode(value);
-
-  static List<UserStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <UserStatusEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = UserStatusEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [UserStatusEnum] to String,
-/// and [decode] dynamic data back to [UserStatusEnum].
-class UserStatusEnumTypeTransformer {
-  factory UserStatusEnumTypeTransformer() => _instance ??= const UserStatusEnumTypeTransformer._();
-
-  const UserStatusEnumTypeTransformer._();
-
-  String encode(UserStatusEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a UserStatusEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  UserStatusEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'ACTIVE': return UserStatusEnum.ACTIVE;
-        case r'INACTIVE': return UserStatusEnum.INACTIVE;
-        case r'SUSPENDED': return UserStatusEnum.SUSPENDED;
-        case r'BANNED': return UserStatusEnum.BANNED;
-        case r'DELETED': return UserStatusEnum.DELETED;
-        case r'unknown_default_open_api': return UserStatusEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [UserStatusEnumTypeTransformer] instance.
-  static UserStatusEnumTypeTransformer? _instance;
-}
-
 

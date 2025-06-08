@@ -9,12 +9,54 @@ All URIs are relative to *https://agoramarketapi.onrender.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createUserByAdmin**](AdminMembersApi.md#createuserbyadmin) | **POST** /admin/members/create-user | 管理員創建用戶
 [**getMemberDetail**](AdminMembersApi.md#getmemberdetail) | **GET** /admin/members/{memberId} | 查看會員詳情
 [**getMemberStatistics**](AdminMembersApi.md#getmemberstatistics) | **GET** /admin/members/statistics | 會員統計報告
 [**searchMembers**](AdminMembersApi.md#searchmembers) | **GET** /admin/members/search | 搜索會員
 [**updateMemberByAdmin**](AdminMembersApi.md#updatememberbyadmin) | **POST** /admin/members/{memberId}/update | 更新會員信息
 [**updateMemberStatus**](AdminMembersApi.md#updatememberstatus) | **POST** /admin/members/{memberId}/status | 更新會員狀態
 
+
+# **createUserByAdmin**
+> UserInfo createUserByAdmin(adminCreateUserParam)
+
+管理員創建用戶
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = AdminMembersApi();
+final adminCreateUserParam = AdminCreateUserParam(); // AdminCreateUserParam | 
+
+try {
+    final result = api_instance.createUserByAdmin(adminCreateUserParam);
+    print(result);
+} catch (e) {
+    print('Exception when calling AdminMembersApi->createUserByAdmin: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adminCreateUserParam** | [**AdminCreateUserParam**](AdminCreateUserParam.md)|  | 
+
+### Return type
+
+[**UserInfo**](UserInfo.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getMemberDetail**
 > User getMemberDetail(memberId)

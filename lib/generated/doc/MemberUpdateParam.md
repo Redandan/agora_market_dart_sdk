@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **username** | **String** | 用戶名 | [optional] 
 **email** | **String** | 電子郵件 | [optional] 
 **phone** | **String** | 電話號碼 | [optional] 
-**status** | **String** | 用戶狀態 | [optional] 
+**status** | [**UserStatus**](UserStatus.md) |  | [optional] 
 **isSeller** | **bool** | 是否為賣家 | [optional] 
 **remark** | **String** | 備註 | [optional] 
 

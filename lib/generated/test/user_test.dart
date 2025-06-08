@@ -40,8 +40,7 @@ void main() {
       // TODO
     });
 
-    // 用戶狀態
-    // String status (default value: 'ACTIVE')
+    // UserStatus status
     test('to test the property `status`', () async {
       // TODO
     });

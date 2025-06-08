@@ -318,6 +318,8 @@ class ApiClient {
           return UserInfo.fromJson(value);
         case 'UserProfileUpdateParam':
           return UserProfileUpdateParam.fromJson(value);
+        case 'UserStatus':
+          return UserStatusTypeTransformer().decode(value);
         case 'Withdraw':
           return Withdraw.fromJson(value);
         default:
