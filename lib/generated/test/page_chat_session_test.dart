@@ -16,23 +16,13 @@ void main() {
   // final instance = PageChatSession();
 
   group('test PageChatSession', () {
-    // int totalPages
-    test('to test the property `totalPages`', () async {
-      // TODO
-    });
-
     // int totalElements
     test('to test the property `totalElements`', () async {
       // TODO
     });
 
-    // bool first
-    test('to test the property `first`', () async {
-      // TODO
-    });
-
-    // bool last
-    test('to test the property `last`', () async {
+    // int totalPages
+    test('to test the property `totalPages`', () async {
       // TODO
     });
 
@@ -43,6 +33,16 @@ void main() {
 
     // int numberOfElements
     test('to test the property `numberOfElements`', () async {
+      // TODO
+    });
+
+    // bool first
+    test('to test the property `first`', () async {
+      // TODO
+    });
+
+    // bool last
+    test('to test the property `last`', () async {
       // TODO
     });
 

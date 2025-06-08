@@ -20,8 +20,6 @@ class AdminCreateUserParam {
     required this.role,
     this.name,
     this.remark,
-    this.enabled,
-    this.seller,
   });
 
   String username;
@@ -38,7 +36,8 @@ class AdminCreateUserParam {
   ///
   String? phone;
 
-  String role;
+  /// 用戶角色
+  AdminCreateUserParamRoleEnum role;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -56,22 +55,6 @@ class AdminCreateUserParam {
   ///
   String? remark;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? enabled;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? seller;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is AdminCreateUserParam &&
     other.username == username &&
@@ -80,9 +63,7 @@ class AdminCreateUserParam {
     other.phone == phone &&
     other.role == role &&
     other.name == name &&
-    other.remark == remark &&
-    other.enabled == enabled &&
-    other.seller == seller;
+    other.remark == remark;
 
   @override
   int get hashCode =>
@@ -93,12 +74,10 @@ class AdminCreateUserParam {
     (phone == null ? 0 : phone!.hashCode) +
     (role.hashCode) +
     (name == null ? 0 : name!.hashCode) +
-    (remark == null ? 0 : remark!.hashCode) +
-    (enabled == null ? 0 : enabled!.hashCode) +
-    (seller == null ? 0 : seller!.hashCode);
+    (remark == null ? 0 : remark!.hashCode);
 
   @override
-  String toString() => 'AdminCreateUserParam[username=$username, password=$password, email=$email, phone=$phone, role=$role, name=$name, remark=$remark, enabled=$enabled, seller=$seller]';
+  String toString() => 'AdminCreateUserParam[username=$username, password=$password, email=$email, phone=$phone, role=$role, name=$name, remark=$remark]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -120,16 +99,6 @@ class AdminCreateUserParam {
       json[r'remark'] = this.remark;
     } else {
       json[r'remark'] = null;
-    }
-    if (this.enabled != null) {
-      json[r'enabled'] = this.enabled;
-    } else {
-      json[r'enabled'] = null;
-    }
-    if (this.seller != null) {
-      json[r'seller'] = this.seller;
-    } else {
-      json[r'seller'] = null;
     }
     return json;
   }
@@ -157,11 +126,9 @@ class AdminCreateUserParam {
         password: mapValueOfType<String>(json, r'password')!,
         email: mapValueOfType<String>(json, r'email')!,
         phone: mapValueOfType<String>(json, r'phone'),
-        role: mapValueOfType<String>(json, r'role')!,
+        role: AdminCreateUserParamRoleEnum.fromJson(json[r'role'])!,
         name: mapValueOfType<String>(json, r'name'),
         remark: mapValueOfType<String>(json, r'remark'),
-        enabled: mapValueOfType<bool>(json, r'enabled'),
-        seller: mapValueOfType<bool>(json, r'seller'),
       );
     }
     return null;
@@ -215,4 +182,78 @@ class AdminCreateUserParam {
     'role',
   };
 }
+
+/// 用戶角色
+class AdminCreateUserParamRoleEnum {
+  /// Instantiate a new enum with the provided [value].
+  const AdminCreateUserParamRoleEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const aDMINCommaUSER = AdminCreateUserParamRoleEnum._(r'ADMIN, USER');
+  static const unknownDefaultOpenApi = AdminCreateUserParamRoleEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][AdminCreateUserParamRoleEnum].
+  static const values = <AdminCreateUserParamRoleEnum>[
+    aDMINCommaUSER,
+    unknownDefaultOpenApi,
+  ];
+
+  static AdminCreateUserParamRoleEnum? fromJson(dynamic value) => AdminCreateUserParamRoleEnumTypeTransformer().decode(value);
+
+  static List<AdminCreateUserParamRoleEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <AdminCreateUserParamRoleEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = AdminCreateUserParamRoleEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [AdminCreateUserParamRoleEnum] to String,
+/// and [decode] dynamic data back to [AdminCreateUserParamRoleEnum].
+class AdminCreateUserParamRoleEnumTypeTransformer {
+  factory AdminCreateUserParamRoleEnumTypeTransformer() => _instance ??= const AdminCreateUserParamRoleEnumTypeTransformer._();
+
+  const AdminCreateUserParamRoleEnumTypeTransformer._();
+
+  String encode(AdminCreateUserParamRoleEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a AdminCreateUserParamRoleEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  AdminCreateUserParamRoleEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'ADMIN, USER': return AdminCreateUserParamRoleEnum.aDMINCommaUSER;
+        case r'unknown_default_open_api': return AdminCreateUserParamRoleEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [AdminCreateUserParamRoleEnumTypeTransformer] instance.
+  static AdminCreateUserParamRoleEnumTypeTransformer? _instance;
+}
+
 

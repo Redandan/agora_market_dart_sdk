@@ -13,26 +13,18 @@ part of openapi.api;
 class PageStaking {
   /// Returns a new [PageStaking] instance.
   PageStaking({
-    this.totalPages,
     this.totalElements,
-    this.first,
-    this.last,
+    this.totalPages,
     this.pageable,
     this.numberOfElements,
+    this.first,
+    this.last,
     this.size,
     this.content = const [],
     this.number,
     this.sort,
     this.empty,
   });
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? totalPages;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -48,15 +40,7 @@ class PageStaking {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? first;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? last;
+  int? totalPages;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -73,6 +57,22 @@ class PageStaking {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? numberOfElements;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? first;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? last;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -110,12 +110,12 @@ class PageStaking {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PageStaking &&
-    other.totalPages == totalPages &&
     other.totalElements == totalElements &&
-    other.first == first &&
-    other.last == last &&
+    other.totalPages == totalPages &&
     other.pageable == pageable &&
     other.numberOfElements == numberOfElements &&
+    other.first == first &&
+    other.last == last &&
     other.size == size &&
     _deepEquality.equals(other.content, content) &&
     other.number == number &&
@@ -125,12 +125,12 @@ class PageStaking {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalPages == null ? 0 : totalPages!.hashCode) +
     (totalElements == null ? 0 : totalElements!.hashCode) +
-    (first == null ? 0 : first!.hashCode) +
-    (last == null ? 0 : last!.hashCode) +
+    (totalPages == null ? 0 : totalPages!.hashCode) +
     (pageable == null ? 0 : pageable!.hashCode) +
     (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
+    (first == null ? 0 : first!.hashCode) +
+    (last == null ? 0 : last!.hashCode) +
     (size == null ? 0 : size!.hashCode) +
     (content.hashCode) +
     (number == null ? 0 : number!.hashCode) +
@@ -138,29 +138,19 @@ class PageStaking {
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageStaking[totalPages=$totalPages, totalElements=$totalElements, first=$first, last=$last, pageable=$pageable, numberOfElements=$numberOfElements, size=$size, content=$content, number=$number, sort=$sort, empty=$empty]';
+  String toString() => 'PageStaking[totalElements=$totalElements, totalPages=$totalPages, pageable=$pageable, numberOfElements=$numberOfElements, first=$first, last=$last, size=$size, content=$content, number=$number, sort=$sort, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.totalPages != null) {
-      json[r'totalPages'] = this.totalPages;
-    } else {
-      json[r'totalPages'] = null;
-    }
     if (this.totalElements != null) {
       json[r'totalElements'] = this.totalElements;
     } else {
       json[r'totalElements'] = null;
     }
-    if (this.first != null) {
-      json[r'first'] = this.first;
+    if (this.totalPages != null) {
+      json[r'totalPages'] = this.totalPages;
     } else {
-      json[r'first'] = null;
-    }
-    if (this.last != null) {
-      json[r'last'] = this.last;
-    } else {
-      json[r'last'] = null;
+      json[r'totalPages'] = null;
     }
     if (this.pageable != null) {
       json[r'pageable'] = this.pageable;
@@ -171,6 +161,16 @@ class PageStaking {
       json[r'numberOfElements'] = this.numberOfElements;
     } else {
       json[r'numberOfElements'] = null;
+    }
+    if (this.first != null) {
+      json[r'first'] = this.first;
+    } else {
+      json[r'first'] = null;
+    }
+    if (this.last != null) {
+      json[r'last'] = this.last;
+    } else {
+      json[r'last'] = null;
     }
     if (this.size != null) {
       json[r'size'] = this.size;
@@ -215,12 +215,12 @@ class PageStaking {
       }());
 
       return PageStaking(
-        totalPages: mapValueOfType<int>(json, r'totalPages'),
         totalElements: mapValueOfType<int>(json, r'totalElements'),
-        first: mapValueOfType<bool>(json, r'first'),
-        last: mapValueOfType<bool>(json, r'last'),
+        totalPages: mapValueOfType<int>(json, r'totalPages'),
         pageable: PageableObject.fromJson(json[r'pageable']),
         numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
+        first: mapValueOfType<bool>(json, r'first'),
+        last: mapValueOfType<bool>(json, r'last'),
         size: mapValueOfType<int>(json, r'size'),
         content: Staking.listFromJson(json[r'content']),
         number: mapValueOfType<int>(json, r'number'),

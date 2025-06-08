@@ -36,6 +36,7 @@ void main() {
       // TODO
     });
 
+    // 用戶角色
     // String role
     test('to test the property `role`', () async {
       // TODO
@@ -48,16 +49,6 @@ void main() {
 
     // String remark
     test('to test the property `remark`', () async {
-      // TODO
-    });
-
-    // bool enabled
-    test('to test the property `enabled`', () async {
-      // TODO
-    });
-
-    // bool seller
-    test('to test the property `seller`', () async {
       // TODO
     });
 

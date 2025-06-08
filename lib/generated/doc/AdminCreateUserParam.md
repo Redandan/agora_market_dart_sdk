@@ -12,11 +12,9 @@ Name | Type | Description | Notes
 **password** | **String** |  | 
 **email** | **String** |  | 
 **phone** | **String** |  | [optional] 
-**role** | **String** |  | 
+**role** | **String** | 用戶角色 | 
 **name** | **String** |  | [optional] 
 **remark** | **String** |  | [optional] 
-**enabled** | **bool** |  | [optional] 
-**seller** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
