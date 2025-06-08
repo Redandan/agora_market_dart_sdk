@@ -18,7 +18,6 @@ class User {
     this.password,
     this.role,
     this.status,
-    this.enabled,
     this.name,
     this.phone,
     this.email,
@@ -26,7 +25,6 @@ class User {
     this.remark,
     this.createdAt,
     this.updatedAt,
-    this.seller,
     this.admin,
   });
 
@@ -73,15 +71,6 @@ class User {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   UserStatusEnum? status;
-
-  /// 是否啟用
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? enabled;
 
   /// 姓名
   ///
@@ -152,14 +141,6 @@ class User {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? seller;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? admin;
 
   @override
@@ -169,7 +150,6 @@ class User {
     other.password == password &&
     other.role == role &&
     other.status == status &&
-    other.enabled == enabled &&
     other.name == name &&
     other.phone == phone &&
     other.email == email &&
@@ -177,7 +157,6 @@ class User {
     other.remark == remark &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.seller == seller &&
     other.admin == admin;
 
   @override
@@ -188,7 +167,6 @@ class User {
     (password == null ? 0 : password!.hashCode) +
     (role == null ? 0 : role!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
-    (enabled == null ? 0 : enabled!.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (phone == null ? 0 : phone!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
@@ -196,11 +174,10 @@ class User {
     (remark == null ? 0 : remark!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (seller == null ? 0 : seller!.hashCode) +
     (admin == null ? 0 : admin!.hashCode);
 
   @override
-  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, enabled=$enabled, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, seller=$seller, admin=$admin]';
+  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -228,11 +205,6 @@ class User {
       json[r'status'] = this.status;
     } else {
       json[r'status'] = null;
-    }
-    if (this.enabled != null) {
-      json[r'enabled'] = this.enabled;
-    } else {
-      json[r'enabled'] = null;
     }
     if (this.name != null) {
       json[r'name'] = this.name;
@@ -269,11 +241,6 @@ class User {
     } else {
       json[r'updatedAt'] = null;
     }
-    if (this.seller != null) {
-      json[r'seller'] = this.seller;
-    } else {
-      json[r'seller'] = null;
-    }
     if (this.admin != null) {
       json[r'admin'] = this.admin;
     } else {
@@ -306,7 +273,6 @@ class User {
         password: mapValueOfType<String>(json, r'password'),
         role: mapValueOfType<String>(json, r'role'),
         status: UserStatusEnum.fromJson(json[r'status']),
-        enabled: mapValueOfType<bool>(json, r'enabled'),
         name: mapValueOfType<String>(json, r'name'),
         phone: mapValueOfType<String>(json, r'phone'),
         email: mapValueOfType<String>(json, r'email'),
@@ -314,7 +280,6 @@ class User {
         remark: mapValueOfType<String>(json, r'remark'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
-        seller: mapValueOfType<bool>(json, r'seller'),
         admin: mapValueOfType<bool>(json, r'admin'),
       );
     }

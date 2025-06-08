@@ -45,12 +45,6 @@ void main() {
       // TODO
     });
 
-    // 是否啟用
-    // bool enabled
-    test('to test the property `enabled`', () async {
-      // TODO
-    });
-
     // 姓名
     // String name
     test('to test the property `name`', () async {
@@ -90,11 +84,6 @@ void main() {
     // 最後更新時間
     // DateTime updatedAt
     test('to test the property `updatedAt`', () async {
-      // TODO
-    });
-
-    // bool seller
-    test('to test the property `seller`', () async {
       // TODO
     });
 
