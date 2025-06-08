@@ -37,7 +37,7 @@ class AdminCreateUserParam {
   String? phone;
 
   /// 用戶角色
-  AdminCreateUserParamRoleEnum role;
+  String role;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -126,7 +126,7 @@ class AdminCreateUserParam {
         password: mapValueOfType<String>(json, r'password')!,
         email: mapValueOfType<String>(json, r'email')!,
         phone: mapValueOfType<String>(json, r'phone'),
-        role: AdminCreateUserParamRoleEnum.fromJson(json[r'role'])!,
+        role: mapValueOfType<String>(json, r'role')!,
         name: mapValueOfType<String>(json, r'name'),
         remark: mapValueOfType<String>(json, r'remark'),
       );
@@ -182,78 +182,4 @@ class AdminCreateUserParam {
     'role',
   };
 }
-
-/// 用戶角色
-class AdminCreateUserParamRoleEnum {
-  /// Instantiate a new enum with the provided [value].
-  const AdminCreateUserParamRoleEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const aDMINCommaUSER = AdminCreateUserParamRoleEnum._(r'ADMIN, USER');
-  static const unknownDefaultOpenApi = AdminCreateUserParamRoleEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][AdminCreateUserParamRoleEnum].
-  static const values = <AdminCreateUserParamRoleEnum>[
-    aDMINCommaUSER,
-    unknownDefaultOpenApi,
-  ];
-
-  static AdminCreateUserParamRoleEnum? fromJson(dynamic value) => AdminCreateUserParamRoleEnumTypeTransformer().decode(value);
-
-  static List<AdminCreateUserParamRoleEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <AdminCreateUserParamRoleEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = AdminCreateUserParamRoleEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [AdminCreateUserParamRoleEnum] to String,
-/// and [decode] dynamic data back to [AdminCreateUserParamRoleEnum].
-class AdminCreateUserParamRoleEnumTypeTransformer {
-  factory AdminCreateUserParamRoleEnumTypeTransformer() => _instance ??= const AdminCreateUserParamRoleEnumTypeTransformer._();
-
-  const AdminCreateUserParamRoleEnumTypeTransformer._();
-
-  String encode(AdminCreateUserParamRoleEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a AdminCreateUserParamRoleEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  AdminCreateUserParamRoleEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'ADMIN, USER': return AdminCreateUserParamRoleEnum.aDMINCommaUSER;
-        case r'unknown_default_open_api': return AdminCreateUserParamRoleEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [AdminCreateUserParamRoleEnumTypeTransformer] instance.
-  static AdminCreateUserParamRoleEnumTypeTransformer? _instance;
-}
-
 

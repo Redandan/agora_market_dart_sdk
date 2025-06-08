@@ -16,23 +16,13 @@ void main() {
   // final instance = PageCartItem();
 
   group('test PageCartItem', () {
-    // int totalElements
-    test('to test the property `totalElements`', () async {
-      // TODO
-    });
-
     // int totalPages
     test('to test the property `totalPages`', () async {
       // TODO
     });
 
-    // PageableObject pageable
-    test('to test the property `pageable`', () async {
-      // TODO
-    });
-
-    // int numberOfElements
-    test('to test the property `numberOfElements`', () async {
+    // int totalElements
+    test('to test the property `totalElements`', () async {
       // TODO
     });
 
@@ -43,6 +33,16 @@ void main() {
 
     // bool last
     test('to test the property `last`', () async {
+      // TODO
+    });
+
+    // int numberOfElements
+    test('to test the property `numberOfElements`', () async {
+      // TODO
+    });
+
+    // PageableObject pageable
+    test('to test the property `pageable`', () async {
       // TODO
     });
 

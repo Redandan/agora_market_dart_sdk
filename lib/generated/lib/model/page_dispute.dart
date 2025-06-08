@@ -13,26 +13,18 @@ part of openapi.api;
 class PageDispute {
   /// Returns a new [PageDispute] instance.
   PageDispute({
-    this.totalElements,
     this.totalPages,
-    this.pageable,
-    this.numberOfElements,
+    this.totalElements,
     this.first,
     this.last,
+    this.numberOfElements,
+    this.pageable,
     this.size,
     this.content = const [],
     this.number,
     this.sort,
     this.empty,
   });
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? totalElements;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -48,15 +40,7 @@ class PageDispute {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PageableObject? pageable;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? numberOfElements;
+  int? totalElements;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -73,6 +57,22 @@ class PageDispute {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? last;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? numberOfElements;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  PageableObject? pageable;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -110,12 +110,12 @@ class PageDispute {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PageDispute &&
-    other.totalElements == totalElements &&
     other.totalPages == totalPages &&
-    other.pageable == pageable &&
-    other.numberOfElements == numberOfElements &&
+    other.totalElements == totalElements &&
     other.first == first &&
     other.last == last &&
+    other.numberOfElements == numberOfElements &&
+    other.pageable == pageable &&
     other.size == size &&
     _deepEquality.equals(other.content, content) &&
     other.number == number &&
@@ -125,12 +125,12 @@ class PageDispute {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalElements == null ? 0 : totalElements!.hashCode) +
     (totalPages == null ? 0 : totalPages!.hashCode) +
-    (pageable == null ? 0 : pageable!.hashCode) +
-    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
+    (totalElements == null ? 0 : totalElements!.hashCode) +
     (first == null ? 0 : first!.hashCode) +
     (last == null ? 0 : last!.hashCode) +
+    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
+    (pageable == null ? 0 : pageable!.hashCode) +
     (size == null ? 0 : size!.hashCode) +
     (content.hashCode) +
     (number == null ? 0 : number!.hashCode) +
@@ -138,29 +138,19 @@ class PageDispute {
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageDispute[totalElements=$totalElements, totalPages=$totalPages, pageable=$pageable, numberOfElements=$numberOfElements, first=$first, last=$last, size=$size, content=$content, number=$number, sort=$sort, empty=$empty]';
+  String toString() => 'PageDispute[totalPages=$totalPages, totalElements=$totalElements, first=$first, last=$last, numberOfElements=$numberOfElements, pageable=$pageable, size=$size, content=$content, number=$number, sort=$sort, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.totalElements != null) {
-      json[r'totalElements'] = this.totalElements;
-    } else {
-      json[r'totalElements'] = null;
-    }
     if (this.totalPages != null) {
       json[r'totalPages'] = this.totalPages;
     } else {
       json[r'totalPages'] = null;
     }
-    if (this.pageable != null) {
-      json[r'pageable'] = this.pageable;
+    if (this.totalElements != null) {
+      json[r'totalElements'] = this.totalElements;
     } else {
-      json[r'pageable'] = null;
-    }
-    if (this.numberOfElements != null) {
-      json[r'numberOfElements'] = this.numberOfElements;
-    } else {
-      json[r'numberOfElements'] = null;
+      json[r'totalElements'] = null;
     }
     if (this.first != null) {
       json[r'first'] = this.first;
@@ -171,6 +161,16 @@ class PageDispute {
       json[r'last'] = this.last;
     } else {
       json[r'last'] = null;
+    }
+    if (this.numberOfElements != null) {
+      json[r'numberOfElements'] = this.numberOfElements;
+    } else {
+      json[r'numberOfElements'] = null;
+    }
+    if (this.pageable != null) {
+      json[r'pageable'] = this.pageable;
+    } else {
+      json[r'pageable'] = null;
     }
     if (this.size != null) {
       json[r'size'] = this.size;
@@ -215,12 +215,12 @@ class PageDispute {
       }());
 
       return PageDispute(
-        totalElements: mapValueOfType<int>(json, r'totalElements'),
         totalPages: mapValueOfType<int>(json, r'totalPages'),
-        pageable: PageableObject.fromJson(json[r'pageable']),
-        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
+        totalElements: mapValueOfType<int>(json, r'totalElements'),
         first: mapValueOfType<bool>(json, r'first'),
         last: mapValueOfType<bool>(json, r'last'),
+        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
+        pageable: PageableObject.fromJson(json[r'pageable']),
         size: mapValueOfType<int>(json, r'size'),
         content: Dispute.listFromJson(json[r'content']),
         number: mapValueOfType<int>(json, r'number'),
