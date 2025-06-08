@@ -13,15 +13,11 @@ part of openapi.api;
 class CreateWithdrawParam {
   /// Returns a new [CreateWithdrawParam] instance.
   CreateWithdrawParam({
-    required this.userId,
     required this.amount,
     required this.currency,
     required this.toAddress,
     this.protocolEnum,
   });
-
-  /// 用戶ID
-  int userId;
 
   /// 提現金額
   num amount;
@@ -37,7 +33,6 @@ class CreateWithdrawParam {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateWithdrawParam &&
-    other.userId == userId &&
     other.amount == amount &&
     other.currency == currency &&
     other.toAddress == toAddress &&
@@ -46,18 +41,16 @@ class CreateWithdrawParam {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (userId.hashCode) +
     (amount.hashCode) +
     (currency.hashCode) +
     (toAddress.hashCode) +
     (protocolEnum == null ? 0 : protocolEnum!.hashCode);
 
   @override
-  String toString() => 'CreateWithdrawParam[userId=$userId, amount=$amount, currency=$currency, toAddress=$toAddress, protocolEnum=$protocolEnum]';
+  String toString() => 'CreateWithdrawParam[amount=$amount, currency=$currency, toAddress=$toAddress, protocolEnum=$protocolEnum]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'userId'] = this.userId;
       json[r'amount'] = this.amount;
       json[r'currency'] = this.currency;
       json[r'toAddress'] = this.toAddress;
@@ -88,7 +81,6 @@ class CreateWithdrawParam {
       }());
 
       return CreateWithdrawParam(
-        userId: mapValueOfType<int>(json, r'userId')!,
         amount: num.parse('${json[r'amount']}'),
         currency: mapValueOfType<String>(json, r'currency')!,
         toAddress: mapValueOfType<String>(json, r'toAddress')!,
@@ -140,7 +132,6 @@ class CreateWithdrawParam {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'userId',
     'amount',
     'currency',
     'toAddress',

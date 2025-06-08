@@ -360,7 +360,7 @@ class StakingStatusEnum {
 
   static const APPLYING = StakingStatusEnum._(r'APPLYING');
   static const STAKING = StakingStatusEnum._(r'STAKING');
-  static const UNSTAKING = StakingStatusEnum._(r'UNSTAKING');
+  static const UNSTAGING = StakingStatusEnum._(r'UNSTAGING');
   static const RETURNED = StakingStatusEnum._(r'RETURNED');
   static const unknownDefaultOpenApi = StakingStatusEnum._(r'unknown_default_open_api');
 
@@ -368,7 +368,7 @@ class StakingStatusEnum {
   static const values = <StakingStatusEnum>[
     APPLYING,
     STAKING,
-    UNSTAKING,
+    UNSTAGING,
     RETURNED,
     unknownDefaultOpenApi,
   ];
@@ -411,7 +411,7 @@ class StakingStatusEnumTypeTransformer {
       switch (data) {
         case r'APPLYING': return StakingStatusEnum.APPLYING;
         case r'STAKING': return StakingStatusEnum.STAKING;
-        case r'UNSTAKING': return StakingStatusEnum.UNSTAKING;
+        case r'UNSTAGING': return StakingStatusEnum.UNSTAGING;
         case r'RETURNED': return StakingStatusEnum.RETURNED;
         case r'unknown_default_open_api': return StakingStatusEnum.unknownDefaultOpenApi;
         default:

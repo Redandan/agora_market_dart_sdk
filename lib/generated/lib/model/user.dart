@@ -26,8 +26,8 @@ class User {
     this.remark,
     this.createdAt,
     this.updatedAt,
-    this.admin,
     this.seller,
+    this.admin,
   });
 
   /// 用戶ID
@@ -152,7 +152,7 @@ class User {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? admin;
+  bool? seller;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -160,7 +160,7 @@ class User {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? seller;
+  bool? admin;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is User &&
@@ -177,8 +177,8 @@ class User {
     other.remark == remark &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.admin == admin &&
-    other.seller == seller;
+    other.seller == seller &&
+    other.admin == admin;
 
   @override
   int get hashCode =>
@@ -196,11 +196,11 @@ class User {
     (remark == null ? 0 : remark!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (admin == null ? 0 : admin!.hashCode) +
-    (seller == null ? 0 : seller!.hashCode);
+    (seller == null ? 0 : seller!.hashCode) +
+    (admin == null ? 0 : admin!.hashCode);
 
   @override
-  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, enabled=$enabled, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin, seller=$seller]';
+  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, enabled=$enabled, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, seller=$seller, admin=$admin]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -269,15 +269,15 @@ class User {
     } else {
       json[r'updatedAt'] = null;
     }
-    if (this.admin != null) {
-      json[r'admin'] = this.admin;
-    } else {
-      json[r'admin'] = null;
-    }
     if (this.seller != null) {
       json[r'seller'] = this.seller;
     } else {
       json[r'seller'] = null;
+    }
+    if (this.admin != null) {
+      json[r'admin'] = this.admin;
+    } else {
+      json[r'admin'] = null;
     }
     return json;
   }
@@ -314,8 +314,8 @@ class User {
         remark: mapValueOfType<String>(json, r'remark'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
-        admin: mapValueOfType<bool>(json, r'admin'),
         seller: mapValueOfType<bool>(json, r'seller'),
+        admin: mapValueOfType<bool>(json, r'admin'),
       );
     }
     return null;

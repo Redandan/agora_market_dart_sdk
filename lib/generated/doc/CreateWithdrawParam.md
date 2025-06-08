@@ -8,7 +8,6 @@ import 'package:agora_market_dart_sdk/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**userId** | **int** | 用戶ID | 
 **amount** | **num** | 提現金額 | 
 **currency** | **String** | 貨幣代碼 | 
 **toAddress** | **String** | 提現目標地址 | 

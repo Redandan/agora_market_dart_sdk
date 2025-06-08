@@ -16,12 +16,6 @@ void main() {
   // final instance = CreateWithdrawParam();
 
   group('test CreateWithdrawParam', () {
-    // 用戶ID
-    // int userId
-    test('to test the property `userId`', () async {
-      // TODO
-    });
-
     // 提現金額
     // num amount
     test('to test the property `amount`', () async {

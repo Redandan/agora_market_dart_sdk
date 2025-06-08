@@ -243,6 +243,7 @@ Class | Method | HTTP request | Description
  - [ProductStats](doc//ProductStats.md)
  - [ProductStatusEnum](doc//ProductStatusEnum.md)
  - [ProductUpdateParam](doc//ProductUpdateParam.md)
+ - [ProtocolEnum](doc//ProtocolEnum.md)
  - [Recharge](doc//Recharge.md)
  - [RechargeStatusEnum](doc//RechargeStatusEnum.md)
  - [RegisterParam](doc//RegisterParam.md)

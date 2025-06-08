@@ -106,6 +106,7 @@ part 'model/product_create_param.dart';
 part 'model/product_stats.dart';
 part 'model/product_status_enum.dart';
 part 'model/product_update_param.dart';
+part 'model/protocol_enum.dart';
 part 'model/recharge.dart';
 part 'model/recharge_status_enum.dart';
 part 'model/register_param.dart';

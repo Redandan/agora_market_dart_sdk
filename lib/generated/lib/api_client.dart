@@ -294,6 +294,8 @@ class ApiClient {
           return ProductStatusEnumTypeTransformer().decode(value);
         case 'ProductUpdateParam':
           return ProductUpdateParam.fromJson(value);
+        case 'ProtocolEnum':
+          return ProtocolEnumTypeTransformer().decode(value);
         case 'Recharge':
           return Recharge.fromJson(value);
         case 'RechargeStatusEnum':

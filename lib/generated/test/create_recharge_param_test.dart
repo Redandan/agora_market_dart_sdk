@@ -34,8 +34,7 @@ void main() {
       // TODO
     });
 
-    // 協議
-    // String protocolEnum
+    // ProtocolEnum protocolEnum
     test('to test the property `protocolEnum`', () async {
       // TODO
     });
