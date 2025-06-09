@@ -9,6 +9,7 @@ import 'package:agora_market_dart_sdk/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **userId** | **int** | 用戶ID | [optional] 
+**sessionId** | **int** | 會話ID | [optional] 
 **chatWithUserId** | **int** | 聊天對象ID | [optional] 
 **startTime** | [**DateTime**](DateTime.md) | 開始時間 | [optional] 
 **endTime** | [**DateTime**](DateTime.md) | 結束時間 | [optional] 

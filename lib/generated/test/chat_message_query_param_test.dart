@@ -22,6 +22,12 @@ void main() {
       // TODO
     });
 
+    // 會話ID
+    // int sessionId
+    test('to test the property `sessionId`', () async {
+      // TODO
+    });
+
     // 聊天對象ID
     // int chatWithUserId
     test('to test the property `chatWithUserId`', () async {

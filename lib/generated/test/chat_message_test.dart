@@ -34,6 +34,12 @@ void main() {
       // TODO
     });
 
+    // 聊天會話ID
+    // int sessionId
+    test('to test the property `sessionId`', () async {
+      // TODO
+    });
+
     // 消息內容
     // String content
     test('to test the property `content`', () async {

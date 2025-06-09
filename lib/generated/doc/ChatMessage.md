@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **id** | **int** | 消息ID | [optional] 
 **senderId** | **int** | 發送者ID | [optional] 
 **receiverId** | **int** | 接收者ID | [optional] 
+**sessionId** | **int** | 聊天會話ID | [optional] 
 **content** | **String** | 消息內容 | [optional] 
 **read** | **bool** | 是否已讀 | [optional] 
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 

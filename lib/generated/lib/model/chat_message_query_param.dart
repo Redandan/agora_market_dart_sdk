@@ -14,6 +14,7 @@ class ChatMessageQueryParam {
   /// Returns a new [ChatMessageQueryParam] instance.
   ChatMessageQueryParam({
     this.userId,
+    this.sessionId,
     this.chatWithUserId,
     this.startTime,
     this.endTime,
@@ -30,6 +31,15 @@ class ChatMessageQueryParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? userId;
+
+  /// 會話ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? sessionId;
 
   /// 聊天對象ID
   ///
@@ -76,6 +86,7 @@ class ChatMessageQueryParam {
   @override
   bool operator ==(Object other) => identical(this, other) || other is ChatMessageQueryParam &&
     other.userId == userId &&
+    other.sessionId == sessionId &&
     other.chatWithUserId == chatWithUserId &&
     other.startTime == startTime &&
     other.endTime == endTime &&
@@ -87,6 +98,7 @@ class ChatMessageQueryParam {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (userId == null ? 0 : userId!.hashCode) +
+    (sessionId == null ? 0 : sessionId!.hashCode) +
     (chatWithUserId == null ? 0 : chatWithUserId!.hashCode) +
     (startTime == null ? 0 : startTime!.hashCode) +
     (endTime == null ? 0 : endTime!.hashCode) +
@@ -95,7 +107,7 @@ class ChatMessageQueryParam {
     (size.hashCode);
 
   @override
-  String toString() => 'ChatMessageQueryParam[userId=$userId, chatWithUserId=$chatWithUserId, startTime=$startTime, endTime=$endTime, unreadOnly=$unreadOnly, page=$page, size=$size]';
+  String toString() => 'ChatMessageQueryParam[userId=$userId, sessionId=$sessionId, chatWithUserId=$chatWithUserId, startTime=$startTime, endTime=$endTime, unreadOnly=$unreadOnly, page=$page, size=$size]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -103,6 +115,11 @@ class ChatMessageQueryParam {
       json[r'userId'] = this.userId;
     } else {
       json[r'userId'] = null;
+    }
+    if (this.sessionId != null) {
+      json[r'sessionId'] = this.sessionId;
+    } else {
+      json[r'sessionId'] = null;
     }
     if (this.chatWithUserId != null) {
       json[r'chatWithUserId'] = this.chatWithUserId;
@@ -149,6 +166,7 @@ class ChatMessageQueryParam {
 
       return ChatMessageQueryParam(
         userId: mapValueOfType<int>(json, r'userId'),
+        sessionId: mapValueOfType<int>(json, r'sessionId'),
         chatWithUserId: mapValueOfType<int>(json, r'chatWithUserId'),
         startTime: mapDateTime(json, r'startTime', r''),
         endTime: mapDateTime(json, r'endTime', r''),

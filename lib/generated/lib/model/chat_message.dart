@@ -16,6 +16,7 @@ class ChatMessage {
     this.id,
     this.senderId,
     this.receiverId,
+    this.sessionId,
     this.content,
     this.read,
     this.createdAt,
@@ -49,6 +50,15 @@ class ChatMessage {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? receiverId;
+
+  /// 聊天會話ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? sessionId;
 
   /// 消息內容
   ///
@@ -100,6 +110,7 @@ class ChatMessage {
     other.id == id &&
     other.senderId == senderId &&
     other.receiverId == receiverId &&
+    other.sessionId == sessionId &&
     other.content == content &&
     other.read == read &&
     other.createdAt == createdAt &&
@@ -112,6 +123,7 @@ class ChatMessage {
     (id == null ? 0 : id!.hashCode) +
     (senderId == null ? 0 : senderId!.hashCode) +
     (receiverId == null ? 0 : receiverId!.hashCode) +
+    (sessionId == null ? 0 : sessionId!.hashCode) +
     (content == null ? 0 : content!.hashCode) +
     (read == null ? 0 : read!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
@@ -119,7 +131,7 @@ class ChatMessage {
     (deletedAt == null ? 0 : deletedAt!.hashCode);
 
   @override
-  String toString() => 'ChatMessage[id=$id, senderId=$senderId, receiverId=$receiverId, content=$content, read=$read, createdAt=$createdAt, updatedAt=$updatedAt, deletedAt=$deletedAt]';
+  String toString() => 'ChatMessage[id=$id, senderId=$senderId, receiverId=$receiverId, sessionId=$sessionId, content=$content, read=$read, createdAt=$createdAt, updatedAt=$updatedAt, deletedAt=$deletedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -137,6 +149,11 @@ class ChatMessage {
       json[r'receiverId'] = this.receiverId;
     } else {
       json[r'receiverId'] = null;
+    }
+    if (this.sessionId != null) {
+      json[r'sessionId'] = this.sessionId;
+    } else {
+      json[r'sessionId'] = null;
     }
     if (this.content != null) {
       json[r'content'] = this.content;
@@ -188,6 +205,7 @@ class ChatMessage {
         id: mapValueOfType<int>(json, r'id'),
         senderId: mapValueOfType<int>(json, r'senderId'),
         receiverId: mapValueOfType<int>(json, r'receiverId'),
+        sessionId: mapValueOfType<int>(json, r'sessionId'),
         content: mapValueOfType<String>(json, r'content'),
         read: mapValueOfType<bool>(json, r'read'),
         createdAt: mapDateTime(json, r'createdAt', r''),
