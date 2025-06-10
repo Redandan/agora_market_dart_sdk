@@ -957,14 +957,12 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
-  /// * [int] userId (required):
-  ///
   /// * [int] page (required):
   ///   頁碼，從1開始
   ///
   /// * [int] size (required):
   ///   每頁數量
-  Future<Response> getRechargeHistoryWithHttpInfo(int userId, int page, int size,) async {
+  Future<Response> getRechargeHistoryWithHttpInfo(int page, int size,) async {
     // ignore: prefer_const_declarations
     final path = r'/recharge/history';
 
@@ -975,7 +973,6 @@ class DefaultApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'userId', userId));
       queryParams.addAll(_queryParams('', 'page', page));
       queryParams.addAll(_queryParams('', 'size', size));
 
@@ -997,15 +994,13 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
-  /// * [int] userId (required):
-  ///
   /// * [int] page (required):
   ///   頁碼，從1開始
   ///
   /// * [int] size (required):
   ///   每頁數量
-  Future<PageRecharge?> getRechargeHistory(int userId, int page, int size,) async {
-    final response = await getRechargeHistoryWithHttpInfo(userId, page, size,);
+  Future<PageRecharge?> getRechargeHistory(int page, int size,) async {
+    final response = await getRechargeHistoryWithHttpInfo(page, size,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1201,14 +1196,12 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
-  /// * [int] userId (required):
-  ///
   /// * [int] page (required):
   ///   頁碼，從1開始
   ///
   /// * [int] size (required):
   ///   每頁數量
-  Future<Response> getWithdrawHistoryWithHttpInfo(int userId, int page, int size,) async {
+  Future<Response> getWithdrawHistoryWithHttpInfo(int page, int size,) async {
     // ignore: prefer_const_declarations
     final path = r'/withdraws/history';
 
@@ -1219,7 +1212,6 @@ class DefaultApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'userId', userId));
       queryParams.addAll(_queryParams('', 'page', page));
       queryParams.addAll(_queryParams('', 'size', size));
 
@@ -1241,15 +1233,13 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
-  /// * [int] userId (required):
-  ///
   /// * [int] page (required):
   ///   頁碼，從1開始
   ///
   /// * [int] size (required):
   ///   每頁數量
-  Future<PageWithdraw?> getWithdrawHistory(int userId, int page, int size,) async {
-    final response = await getWithdrawHistoryWithHttpInfo(userId, page, size,);
+  Future<PageWithdraw?> getWithdrawHistory(int page, int size,) async {
+    final response = await getWithdrawHistoryWithHttpInfo(page, size,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

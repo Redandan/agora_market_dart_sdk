@@ -712,7 +712,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getRechargeHistory**
-> PageRecharge getRechargeHistory(userId, page, size)
+> PageRecharge getRechargeHistory(page, size)
 
 獲取充值記錄
 
@@ -721,12 +721,11 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
-final userId = 789; // int | 
 final page = 56; // int | 頁碼，從1開始
 final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.getRechargeHistory(userId, page, size);
+    final result = api_instance.getRechargeHistory(page, size);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getRechargeHistory: $e\n');
@@ -737,7 +736,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **int**|  | 
  **page** | **int**| 頁碼，從1開始 | 
  **size** | **int**| 每頁數量 | 
 
@@ -884,7 +882,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWithdrawHistory**
-> PageWithdraw getWithdrawHistory(userId, page, size)
+> PageWithdraw getWithdrawHistory(page, size)
 
 查詢提款歷史
 
@@ -893,12 +891,11 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
-final userId = 789; // int | 
 final page = 56; // int | 頁碼，從1開始
 final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.getWithdrawHistory(userId, page, size);
+    final result = api_instance.getWithdrawHistory(page, size);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getWithdrawHistory: $e\n');
@@ -909,7 +906,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **int**|  | 
  **page** | **int**| 頁碼，從1開始 | 
  **size** | **int**| 每頁數量 | 
 

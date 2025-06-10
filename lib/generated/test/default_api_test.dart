@@ -143,7 +143,7 @@ void main() {
 
     // 獲取充值記錄
     //
-    //Future<PageRecharge> getRechargeHistory(int userId, int page, int size) async
+    //Future<PageRecharge> getRechargeHistory(int page, int size) async
     test('test getRechargeHistory', () async {
       // TODO
     });
@@ -171,7 +171,7 @@ void main() {
 
     // 查詢提款歷史
     //
-    //Future<PageWithdraw> getWithdrawHistory(int userId, int page, int size) async
+    //Future<PageWithdraw> getWithdrawHistory(int page, int size) async
     test('test getWithdrawHistory', () async {
       // TODO
     });
