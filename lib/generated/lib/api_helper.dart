@@ -85,6 +85,9 @@ String parameterToString(dynamic value) {
   if (value is UserStatusEnum) {
     return UserStatusEnumTypeTransformer().encode(value).toString();
   }
+  if (value is WithdrawStatusEnum) {
+    return WithdrawStatusEnumTypeTransformer().encode(value).toString();
+  }
   return value.toString();
 }
 

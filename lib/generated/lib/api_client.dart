@@ -298,6 +298,8 @@ class ApiClient {
           return ProtocolEnumTypeTransformer().decode(value);
         case 'Recharge':
           return Recharge.fromJson(value);
+        case 'RechargeSearchParam':
+          return RechargeSearchParam.fromJson(value);
         case 'RechargeStatusEnum':
           return RechargeStatusEnumTypeTransformer().decode(value);
         case 'RegisterParam':
@@ -340,6 +342,10 @@ class ApiClient {
           return UserStatusEnumTypeTransformer().decode(value);
         case 'Withdraw':
           return Withdraw.fromJson(value);
+        case 'WithdrawSearchParam':
+          return WithdrawSearchParam.fromJson(value);
+        case 'WithdrawStatusEnum':
+          return WithdrawStatusEnumTypeTransformer().decode(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {

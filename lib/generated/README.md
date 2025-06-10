@@ -82,6 +82,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getWithdraw**](doc//DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 *DefaultApi* | [**getWithdrawHistory**](doc//DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
 *DefaultApi* | [**search**](doc//DefaultApi.md#search) | **GET** /postal-areas/search | 搜索郵遞區號
+*DefaultApi* | [**searchRecharges**](doc//DefaultApi.md#searchrecharges) | **POST** /recharge/search | 管理員搜尋充值記錄
+*DefaultApi* | [**searchWithdraws**](doc//DefaultApi.md#searchwithdraws) | **POST** /withdraws/search | 管理員搜尋提款記錄
 *AdminCartApi* | [**clearUserCart**](doc//AdminCartApi.md#clearusercart) | **DELETE** /admin/cart/user/{userId} | 清空指定用戶的購物車
 *AdminCartApi* | [**getCartSummary**](doc//AdminCartApi.md#getcartsummary) | **GET** /admin/cart/summary | 購物車統計報告
 *AdminCartApi* | [**removeCartItem**](doc//AdminCartApi.md#removecartitem) | **DELETE** /admin/cart/item/{cartItemId} | 刪除指定購物車項目
@@ -245,6 +247,7 @@ Class | Method | HTTP request | Description
  - [ProductUpdateParam](doc//ProductUpdateParam.md)
  - [ProtocolEnum](doc//ProtocolEnum.md)
  - [Recharge](doc//Recharge.md)
+ - [RechargeSearchParam](doc//RechargeSearchParam.md)
  - [RechargeStatusEnum](doc//RechargeStatusEnum.md)
  - [RegisterParam](doc//RegisterParam.md)
  - [SalesStats](doc//SalesStats.md)
@@ -266,6 +269,8 @@ Class | Method | HTTP request | Description
  - [UserProfileUpdateParam](doc//UserProfileUpdateParam.md)
  - [UserStatusEnum](doc//UserStatusEnum.md)
  - [Withdraw](doc//Withdraw.md)
+ - [WithdrawSearchParam](doc//WithdrawSearchParam.md)
+ - [WithdrawStatusEnum](doc//WithdrawStatusEnum.md)
 
 
 ## Documentation For Authorization

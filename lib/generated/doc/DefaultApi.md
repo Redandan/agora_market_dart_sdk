@@ -31,6 +31,8 @@ Method | HTTP request | Description
 [**getWithdraw**](DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 [**getWithdrawHistory**](DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
 [**search**](DefaultApi.md#search) | **GET** /postal-areas/search | 搜索郵遞區號
+[**searchRecharges**](DefaultApi.md#searchrecharges) | **POST** /recharge/search | 管理員搜尋充值記錄
+[**searchWithdraws**](DefaultApi.md#searchwithdraws) | **POST** /withdraws/search | 管理員搜尋提款記錄
 
 
 # **cancelRecharge**
@@ -965,6 +967,96 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **searchRecharges**
+> PageRecharge searchRecharges(rechargeSearchParam, page, size)
+
+管理員搜尋充值記錄
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final rechargeSearchParam = RechargeSearchParam(); // RechargeSearchParam | 
+final page = 56; // int | 頁碼，從1開始
+final size = 56; // int | 每頁數量
+
+try {
+    final result = api_instance.searchRecharges(rechargeSearchParam, page, size);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->searchRecharges: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rechargeSearchParam** | [**RechargeSearchParam**](RechargeSearchParam.md)|  | 
+ **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
+ **size** | **int**| 每頁數量 | [optional] [default to 20]
+
+### Return type
+
+[**PageRecharge**](PageRecharge.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **searchWithdraws**
+> PageWithdraw searchWithdraws(withdrawSearchParam, page, size)
+
+管理員搜尋提款記錄
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final withdrawSearchParam = WithdrawSearchParam(); // WithdrawSearchParam | 
+final page = 56; // int | 頁碼，從1開始
+final size = 56; // int | 每頁數量
+
+try {
+    final result = api_instance.searchWithdraws(withdrawSearchParam, page, size);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->searchWithdraws: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **withdrawSearchParam** | [**WithdrawSearchParam**](WithdrawSearchParam.md)|  | 
+ **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
+ **size** | **int**| 每頁數量 | [optional] [default to 20]
+
+### Return type
+
+[**PageWithdraw**](PageWithdraw.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

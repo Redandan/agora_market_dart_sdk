@@ -185,5 +185,19 @@ void main() {
       // TODO
     });
 
+    // 管理員搜尋充值記錄
+    //
+    //Future<PageRecharge> searchRecharges(RechargeSearchParam rechargeSearchParam, { int page, int size }) async
+    test('test searchRecharges', () async {
+      // TODO
+    });
+
+    // 管理員搜尋提款記錄
+    //
+    //Future<PageWithdraw> searchWithdraws(WithdrawSearchParam withdrawSearchParam, { int page, int size }) async
+    test('test searchWithdraws', () async {
+      // TODO
+    });
+
   });
 }

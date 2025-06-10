@@ -108,6 +108,7 @@ part 'model/product_status_enum.dart';
 part 'model/product_update_param.dart';
 part 'model/protocol_enum.dart';
 part 'model/recharge.dart';
+part 'model/recharge_search_param.dart';
 part 'model/recharge_status_enum.dart';
 part 'model/register_param.dart';
 part 'model/sales_stats.dart';
@@ -129,6 +130,8 @@ part 'model/user_info.dart';
 part 'model/user_profile_update_param.dart';
 part 'model/user_status_enum.dart';
 part 'model/withdraw.dart';
+part 'model/withdraw_search_param.dart';
+part 'model/withdraw_status_enum.dart';
 
 
 /// An [ApiClient] instance that uses the default values obtained from

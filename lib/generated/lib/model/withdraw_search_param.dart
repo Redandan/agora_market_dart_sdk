@@ -10,29 +10,37 @@
 
 part of openapi.api;
 
-class PageOrder {
-  /// Returns a new [PageOrder] instance.
-  PageOrder({
-    this.totalPages,
-    this.totalElements,
-    this.first,
-    this.last,
-    this.pageable,
-    this.numberOfElements,
-    this.size,
-    this.content = const [],
-    this.number,
-    this.sort,
-    this.empty,
+class WithdrawSearchParam {
+  /// Returns a new [WithdrawSearchParam] instance.
+  WithdrawSearchParam({
+    this.userId,
+    this.withdrawId,
+    this.status,
+    this.protocol,
+    this.currency,
+    this.toAddress,
+    this.txHash,
+    this.startTime,
+    this.endTime,
   });
 
+  /// 用戶ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalPages;
+  int? userId;
+
+  /// 提款ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? withdrawId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -40,7 +48,7 @@ class PageOrder {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalElements;
+  WithdrawStatusEnum? status;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -48,158 +56,135 @@ class PageOrder {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? first;
+  ProtocolEnum? protocol;
 
+  /// 貨幣
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? last;
+  String? currency;
 
+  /// 提款地址
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PageableObject? pageable;
+  String? toAddress;
 
+  /// 交易Hash
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? numberOfElements;
+  String? txHash;
 
+  /// 開始時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? size;
+  DateTime? startTime;
 
-  List<Order> content;
-
+  /// 結束時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? number;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  SortObject? sort;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? empty;
+  DateTime? endTime;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageOrder &&
-    other.totalPages == totalPages &&
-    other.totalElements == totalElements &&
-    other.first == first &&
-    other.last == last &&
-    other.pageable == pageable &&
-    other.numberOfElements == numberOfElements &&
-    other.size == size &&
-    _deepEquality.equals(other.content, content) &&
-    other.number == number &&
-    other.sort == sort &&
-    other.empty == empty;
+  bool operator ==(Object other) => identical(this, other) || other is WithdrawSearchParam &&
+    other.userId == userId &&
+    other.withdrawId == withdrawId &&
+    other.status == status &&
+    other.protocol == protocol &&
+    other.currency == currency &&
+    other.toAddress == toAddress &&
+    other.txHash == txHash &&
+    other.startTime == startTime &&
+    other.endTime == endTime;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalPages == null ? 0 : totalPages!.hashCode) +
-    (totalElements == null ? 0 : totalElements!.hashCode) +
-    (first == null ? 0 : first!.hashCode) +
-    (last == null ? 0 : last!.hashCode) +
-    (pageable == null ? 0 : pageable!.hashCode) +
-    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
-    (size == null ? 0 : size!.hashCode) +
-    (content.hashCode) +
-    (number == null ? 0 : number!.hashCode) +
-    (sort == null ? 0 : sort!.hashCode) +
-    (empty == null ? 0 : empty!.hashCode);
+    (userId == null ? 0 : userId!.hashCode) +
+    (withdrawId == null ? 0 : withdrawId!.hashCode) +
+    (status == null ? 0 : status!.hashCode) +
+    (protocol == null ? 0 : protocol!.hashCode) +
+    (currency == null ? 0 : currency!.hashCode) +
+    (toAddress == null ? 0 : toAddress!.hashCode) +
+    (txHash == null ? 0 : txHash!.hashCode) +
+    (startTime == null ? 0 : startTime!.hashCode) +
+    (endTime == null ? 0 : endTime!.hashCode);
 
   @override
-  String toString() => 'PageOrder[totalPages=$totalPages, totalElements=$totalElements, first=$first, last=$last, pageable=$pageable, numberOfElements=$numberOfElements, size=$size, content=$content, number=$number, sort=$sort, empty=$empty]';
+  String toString() => 'WithdrawSearchParam[userId=$userId, withdrawId=$withdrawId, status=$status, protocol=$protocol, currency=$currency, toAddress=$toAddress, txHash=$txHash, startTime=$startTime, endTime=$endTime]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.totalPages != null) {
-      json[r'totalPages'] = this.totalPages;
+    if (this.userId != null) {
+      json[r'userId'] = this.userId;
     } else {
-      json[r'totalPages'] = null;
+      json[r'userId'] = null;
     }
-    if (this.totalElements != null) {
-      json[r'totalElements'] = this.totalElements;
+    if (this.withdrawId != null) {
+      json[r'withdrawId'] = this.withdrawId;
     } else {
-      json[r'totalElements'] = null;
+      json[r'withdrawId'] = null;
     }
-    if (this.first != null) {
-      json[r'first'] = this.first;
+    if (this.status != null) {
+      json[r'status'] = this.status;
     } else {
-      json[r'first'] = null;
+      json[r'status'] = null;
     }
-    if (this.last != null) {
-      json[r'last'] = this.last;
+    if (this.protocol != null) {
+      json[r'protocol'] = this.protocol;
     } else {
-      json[r'last'] = null;
+      json[r'protocol'] = null;
     }
-    if (this.pageable != null) {
-      json[r'pageable'] = this.pageable;
+    if (this.currency != null) {
+      json[r'currency'] = this.currency;
     } else {
-      json[r'pageable'] = null;
+      json[r'currency'] = null;
     }
-    if (this.numberOfElements != null) {
-      json[r'numberOfElements'] = this.numberOfElements;
+    if (this.toAddress != null) {
+      json[r'toAddress'] = this.toAddress;
     } else {
-      json[r'numberOfElements'] = null;
+      json[r'toAddress'] = null;
     }
-    if (this.size != null) {
-      json[r'size'] = this.size;
+    if (this.txHash != null) {
+      json[r'txHash'] = this.txHash;
     } else {
-      json[r'size'] = null;
+      json[r'txHash'] = null;
     }
-      json[r'content'] = this.content;
-    if (this.number != null) {
-      json[r'number'] = this.number;
+    if (this.startTime != null) {
+      json[r'startTime'] = this.startTime!.toUtc().toIso8601String();
     } else {
-      json[r'number'] = null;
+      json[r'startTime'] = null;
     }
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.endTime != null) {
+      json[r'endTime'] = this.endTime!.toUtc().toIso8601String();
     } else {
-      json[r'sort'] = null;
-    }
-    if (this.empty != null) {
-      json[r'empty'] = this.empty;
-    } else {
-      json[r'empty'] = null;
+      json[r'endTime'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageOrder] instance and imports its values from
+  /// Returns a new [WithdrawSearchParam] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageOrder? fromJson(dynamic value) {
+  static WithdrawSearchParam? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -208,34 +193,32 @@ class PageOrder {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageOrder[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageOrder[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "WithdrawSearchParam[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "WithdrawSearchParam[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageOrder(
-        totalPages: mapValueOfType<int>(json, r'totalPages'),
-        totalElements: mapValueOfType<int>(json, r'totalElements'),
-        first: mapValueOfType<bool>(json, r'first'),
-        last: mapValueOfType<bool>(json, r'last'),
-        pageable: PageableObject.fromJson(json[r'pageable']),
-        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
-        size: mapValueOfType<int>(json, r'size'),
-        content: Order.listFromJson(json[r'content']),
-        number: mapValueOfType<int>(json, r'number'),
-        sort: SortObject.fromJson(json[r'sort']),
-        empty: mapValueOfType<bool>(json, r'empty'),
+      return WithdrawSearchParam(
+        userId: mapValueOfType<int>(json, r'userId'),
+        withdrawId: mapValueOfType<String>(json, r'withdrawId'),
+        status: WithdrawStatusEnum.fromJson(json[r'status']),
+        protocol: ProtocolEnum.fromJson(json[r'protocol']),
+        currency: mapValueOfType<String>(json, r'currency'),
+        toAddress: mapValueOfType<String>(json, r'toAddress'),
+        txHash: mapValueOfType<String>(json, r'txHash'),
+        startTime: mapDateTime(json, r'startTime', r''),
+        endTime: mapDateTime(json, r'endTime', r''),
       );
     }
     return null;
   }
 
-  static List<PageOrder> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageOrder>[];
+  static List<WithdrawSearchParam> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <WithdrawSearchParam>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageOrder.fromJson(row);
+        final value = WithdrawSearchParam.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -244,12 +227,12 @@ class PageOrder {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageOrder> mapFromJson(dynamic json) {
-    final map = <String, PageOrder>{};
+  static Map<String, WithdrawSearchParam> mapFromJson(dynamic json) {
+    final map = <String, WithdrawSearchParam>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageOrder.fromJson(entry.value);
+        final value = WithdrawSearchParam.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -258,14 +241,14 @@ class PageOrder {
     return map;
   }
 
-  // maps a json object with a list of PageOrder-objects as value to a dart map
-  static Map<String, List<PageOrder>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageOrder>>{};
+  // maps a json object with a list of WithdrawSearchParam-objects as value to a dart map
+  static Map<String, List<WithdrawSearchParam>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<WithdrawSearchParam>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageOrder.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = WithdrawSearchParam.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
