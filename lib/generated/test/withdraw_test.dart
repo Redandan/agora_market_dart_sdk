@@ -52,8 +52,7 @@ void main() {
       // TODO
     });
 
-    // 提款狀態
-    // String status
+    // WithdrawStatusEnum status
     test('to test the property `status`', () async {
       // TODO
     });

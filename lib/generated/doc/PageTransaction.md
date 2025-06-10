@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalPages** | **int** |  | [optional] 
 **totalElements** | **int** |  | [optional] 
+**numberOfElements** | **int** |  | [optional] 
 **first** | **bool** |  | [optional] 
 **last** | **bool** |  | [optional] 
 **pageable** | [**PageableObject**](PageableObject.md) |  | [optional] 
-**numberOfElements** | **int** |  | [optional] 
 **size** | **int** |  | [optional] 
 **content** | [**List<Transaction>**](Transaction.md) |  | [optional] [default to const []]
 **number** | **int** |  | [optional] 

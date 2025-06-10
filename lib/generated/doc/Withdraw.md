@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **fee** | **num** | 手續費 | [optional] 
 **currency** | **String** | 貨幣 | [optional] 
 **toAddress** | **String** | 提款地址 | [optional] 
-**status** | **String** | 提款狀態 | [optional] 
+**status** | [**WithdrawStatusEnum**](WithdrawStatusEnum.md) |  | [optional] 
 **txHash** | **String** | 交易Hash | [optional] 
 **remark** | **String** | 備註 | [optional] 
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 
