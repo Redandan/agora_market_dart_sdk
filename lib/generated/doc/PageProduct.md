@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalPages** | **int** |  | [optional] 
 **totalElements** | **int** |  | [optional] 
-**pageable** | [**PageableObject**](PageableObject.md) |  | [optional] 
 **first** | **bool** |  | [optional] 
 **last** | **bool** |  | [optional] 
+**pageable** | [**PageableObject**](PageableObject.md) |  | [optional] 
 **numberOfElements** | **int** |  | [optional] 
 **size** | **int** |  | [optional] 
 **content** | [**List<Product>**](Product.md) |  | [optional] [default to const []]

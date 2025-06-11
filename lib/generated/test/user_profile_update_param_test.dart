@@ -35,8 +35,14 @@ void main() {
     });
 
     // 收貨地址
-    // String deliveryAddress
-    test('to test the property `deliveryAddress`', () async {
+    // String recipientAddress
+    test('to test the property `recipientAddress`', () async {
+      // TODO
+    });
+
+    // 收件人姓名
+    // String recipientName
+    test('to test the property `recipientName`', () async {
       // TODO
     });
 

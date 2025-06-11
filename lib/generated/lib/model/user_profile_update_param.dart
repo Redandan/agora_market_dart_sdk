@@ -16,7 +16,8 @@ class UserProfileUpdateParam {
     this.name,
     this.phone,
     this.email,
-    this.deliveryAddress,
+    this.recipientAddress,
+    this.recipientName,
     this.avatar,
   });
 
@@ -54,7 +55,16 @@ class UserProfileUpdateParam {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? deliveryAddress;
+  String? recipientAddress;
+
+  /// 收件人姓名
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? recipientName;
 
   /// 頭像URL
   ///
@@ -70,7 +80,8 @@ class UserProfileUpdateParam {
     other.name == name &&
     other.phone == phone &&
     other.email == email &&
-    other.deliveryAddress == deliveryAddress &&
+    other.recipientAddress == recipientAddress &&
+    other.recipientName == recipientName &&
     other.avatar == avatar;
 
   @override
@@ -79,11 +90,12 @@ class UserProfileUpdateParam {
     (name == null ? 0 : name!.hashCode) +
     (phone == null ? 0 : phone!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
-    (deliveryAddress == null ? 0 : deliveryAddress!.hashCode) +
+    (recipientAddress == null ? 0 : recipientAddress!.hashCode) +
+    (recipientName == null ? 0 : recipientName!.hashCode) +
     (avatar == null ? 0 : avatar!.hashCode);
 
   @override
-  String toString() => 'UserProfileUpdateParam[name=$name, phone=$phone, email=$email, deliveryAddress=$deliveryAddress, avatar=$avatar]';
+  String toString() => 'UserProfileUpdateParam[name=$name, phone=$phone, email=$email, recipientAddress=$recipientAddress, recipientName=$recipientName, avatar=$avatar]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -102,10 +114,15 @@ class UserProfileUpdateParam {
     } else {
       json[r'email'] = null;
     }
-    if (this.deliveryAddress != null) {
-      json[r'deliveryAddress'] = this.deliveryAddress;
+    if (this.recipientAddress != null) {
+      json[r'recipientAddress'] = this.recipientAddress;
     } else {
-      json[r'deliveryAddress'] = null;
+      json[r'recipientAddress'] = null;
+    }
+    if (this.recipientName != null) {
+      json[r'recipientName'] = this.recipientName;
+    } else {
+      json[r'recipientName'] = null;
     }
     if (this.avatar != null) {
       json[r'avatar'] = this.avatar;
@@ -137,7 +154,8 @@ class UserProfileUpdateParam {
         name: mapValueOfType<String>(json, r'name'),
         phone: mapValueOfType<String>(json, r'phone'),
         email: mapValueOfType<String>(json, r'email'),
-        deliveryAddress: mapValueOfType<String>(json, r'deliveryAddress'),
+        recipientAddress: mapValueOfType<String>(json, r'recipientAddress'),
+        recipientName: mapValueOfType<String>(json, r'recipientName'),
         avatar: mapValueOfType<String>(json, r'avatar'),
       );
     }
