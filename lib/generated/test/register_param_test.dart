@@ -40,6 +40,12 @@ void main() {
       // TODO
     });
 
+    // 推廣碼
+    // String promoCode
+    test('to test the property `promoCode`', () async {
+      // TODO
+    });
+
 
   });
 

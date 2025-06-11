@@ -73,6 +73,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getByPostalCode**](doc//DefaultApi.md#getbypostalcode) | **GET** /postal-areas/code/{postalCode} | 根據郵遞區號查詢
 *DefaultApi* | [**getCities**](doc//DefaultApi.md#getcities) | **GET** /postal-areas/cities | 獲取城市列表
 *DefaultApi* | [**getDistrictsByCity**](doc//DefaultApi.md#getdistrictsbycity) | **GET** /postal-areas/cities/{city}/districts | 獲取城市行政區列表
+*DefaultApi* | [**getPendingRecharge**](doc//DefaultApi.md#getpendingrecharge) | **GET** /recharge/pending | 查詢當前用戶是否有進行中的充值
 *DefaultApi* | [**getRecharge**](doc//DefaultApi.md#getrecharge) | **GET** /recharge/{rechargeId} | 獲取充值詳情
 *DefaultApi* | [**getRechargeByReceiveAddress**](doc//DefaultApi.md#getrechargebyreceiveaddress) | **GET** /recharge/address/{receiveAddress} | 通過接收地址查詢充值
 *DefaultApi* | [**getRechargeByTxHash**](doc//DefaultApi.md#getrechargebytxhash) | **GET** /recharge/tx/{txHash} | 通過交易哈希查詢充值
@@ -242,7 +243,6 @@ Class | Method | HTTP request | Description
  - [OrderQueryResult](doc//OrderQueryResult.md)
  - [OrderShipParam](doc//OrderShipParam.md)
  - [OrderStatisticsDTO](doc//OrderStatisticsDTO.md)
- - [OrderStatusEnum](doc//OrderStatusEnum.md)
  - [OrderSumbitParam](doc//OrderSumbitParam.md)
  - [PageCartItem](doc//PageCartItem.md)
  - [PageChatMessage](doc//PageChatMessage.md)
@@ -276,6 +276,7 @@ Class | Method | HTTP request | Description
  - [ReviewFailure](doc//ReviewFailure.md)
  - [ReviewPromoCodeParam](doc//ReviewPromoCodeParam.md)
  - [SalesStats](doc//SalesStats.md)
+ - [ShippingTypeEnum](doc//ShippingTypeEnum.md)
  - [SortObject](doc//SortObject.md)
  - [Staking](doc//Staking.md)
  - [Store](doc//Store.md)

@@ -13,9 +13,13 @@ part of openapi.api;
 class DeliveryerRegistrationParam {
   /// Returns a new [DeliveryerRegistrationParam] instance.
   DeliveryerRegistrationParam({
+    required this.displayName,
     this.deliveryAreas = const {},
     this.enabled = true,
   });
+
+  /// 顯示名稱
+  String displayName;
 
   /// 配送區域列表
   Set<String> deliveryAreas;
@@ -25,20 +29,23 @@ class DeliveryerRegistrationParam {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is DeliveryerRegistrationParam &&
+    other.displayName == displayName &&
     _deepEquality.equals(other.deliveryAreas, deliveryAreas) &&
     other.enabled == enabled;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (displayName.hashCode) +
     (deliveryAreas.hashCode) +
     (enabled.hashCode);
 
   @override
-  String toString() => 'DeliveryerRegistrationParam[deliveryAreas=$deliveryAreas, enabled=$enabled]';
+  String toString() => 'DeliveryerRegistrationParam[displayName=$displayName, deliveryAreas=$deliveryAreas, enabled=$enabled]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+      json[r'displayName'] = this.displayName;
       json[r'deliveryAreas'] = this.deliveryAreas.toList(growable: false);
       json[r'enabled'] = this.enabled;
     return json;
@@ -63,6 +70,7 @@ class DeliveryerRegistrationParam {
       }());
 
       return DeliveryerRegistrationParam(
+        displayName: mapValueOfType<String>(json, r'displayName')!,
         deliveryAreas: json[r'deliveryAreas'] is Iterable
             ? (json[r'deliveryAreas'] as Iterable).cast<String>().toSet()
             : const {},
@@ -114,6 +122,7 @@ class DeliveryerRegistrationParam {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'displayName',
     'deliveryAreas',
   };
 }

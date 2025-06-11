@@ -8,8 +8,8 @@ import 'package:agora_market_dart_sdk/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** | 配送員ID | [optional] 
 **userId** | **int** | 用戶ID | [optional] 
+**displayName** | **String** | 顯示名稱 | [optional] 
 **enabled** | **bool** | 是否啟用 | [optional] 
 **deliveryAreas** | **Set<String>** | 配送區域 | [optional] [default to const {}]
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 

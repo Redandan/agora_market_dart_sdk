@@ -16,15 +16,15 @@ void main() {
   // final instance = Deliveryer();
 
   group('test Deliveryer', () {
-    // 配送員ID
-    // int id
-    test('to test the property `id`', () async {
-      // TODO
-    });
-
     // 用戶ID
     // int userId
     test('to test the property `userId`', () async {
+      // TODO
+    });
+
+    // 顯示名稱
+    // String displayName
+    test('to test the property `displayName`', () async {
       // TODO
     });
 

@@ -22,6 +22,9 @@ class UserInfo {
     this.freezeBalance,
     this.enabled,
     this.queryTime,
+    this.storeName,
+    this.ambassadorName,
+    this.displayDeliveryerName,
   });
 
   /// 用戶ID
@@ -105,6 +108,33 @@ class UserInfo {
   ///
   DateTime? queryTime;
 
+  /// 店鋪名稱
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? storeName;
+
+  /// 推廣大使名稱
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? ambassadorName;
+
+  /// 顯示配送員名稱
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? displayDeliveryerName;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserInfo &&
     other.id == id &&
@@ -115,7 +145,10 @@ class UserInfo {
     other.stackingBalance == stackingBalance &&
     other.freezeBalance == freezeBalance &&
     other.enabled == enabled &&
-    other.queryTime == queryTime;
+    other.queryTime == queryTime &&
+    other.storeName == storeName &&
+    other.ambassadorName == ambassadorName &&
+    other.displayDeliveryerName == displayDeliveryerName;
 
   @override
   int get hashCode =>
@@ -128,10 +161,13 @@ class UserInfo {
     (stackingBalance == null ? 0 : stackingBalance!.hashCode) +
     (freezeBalance == null ? 0 : freezeBalance!.hashCode) +
     (enabled == null ? 0 : enabled!.hashCode) +
-    (queryTime == null ? 0 : queryTime!.hashCode);
+    (queryTime == null ? 0 : queryTime!.hashCode) +
+    (storeName == null ? 0 : storeName!.hashCode) +
+    (ambassadorName == null ? 0 : ambassadorName!.hashCode) +
+    (displayDeliveryerName == null ? 0 : displayDeliveryerName!.hashCode);
 
   @override
-  String toString() => 'UserInfo[id=$id, username=$username, email=$email, role=$role, balance=$balance, stackingBalance=$stackingBalance, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime]';
+  String toString() => 'UserInfo[id=$id, username=$username, email=$email, role=$role, balance=$balance, stackingBalance=$stackingBalance, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -180,6 +216,21 @@ class UserInfo {
     } else {
       json[r'queryTime'] = null;
     }
+    if (this.storeName != null) {
+      json[r'storeName'] = this.storeName;
+    } else {
+      json[r'storeName'] = null;
+    }
+    if (this.ambassadorName != null) {
+      json[r'ambassadorName'] = this.ambassadorName;
+    } else {
+      json[r'ambassadorName'] = null;
+    }
+    if (this.displayDeliveryerName != null) {
+      json[r'displayDeliveryerName'] = this.displayDeliveryerName;
+    } else {
+      json[r'displayDeliveryerName'] = null;
+    }
     return json;
   }
 
@@ -211,6 +262,9 @@ class UserInfo {
         freezeBalance: num.parse('${json[r'freezeBalance']}'),
         enabled: mapValueOfType<bool>(json, r'enabled'),
         queryTime: mapDateTime(json, r'queryTime', r''),
+        storeName: mapValueOfType<String>(json, r'storeName'),
+        ambassadorName: mapValueOfType<String>(json, r'ambassadorName'),
+        displayDeliveryerName: mapValueOfType<String>(json, r'displayDeliveryerName'),
       );
     }
     return null;

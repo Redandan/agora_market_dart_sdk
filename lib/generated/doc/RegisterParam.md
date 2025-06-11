@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **password** | **String** | 密碼 | 
 **confirmPassword** | **String** | 確認密碼 | [optional] 
 **email** | **String** | 電子郵件 | [optional] 
+**promoCode** | **String** | 推廣碼 | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

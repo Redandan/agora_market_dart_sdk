@@ -13,8 +13,8 @@ part of openapi.api;
 class Deliveryer {
   /// Returns a new [Deliveryer] instance.
   Deliveryer({
-    this.id,
     this.userId,
+    this.displayName,
     this.enabled,
     this.deliveryAreas = const {},
     this.createdAt,
@@ -24,15 +24,6 @@ class Deliveryer {
     this.longitude,
   });
 
-  /// 配送員ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? id;
-
   /// 用戶ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -41,6 +32,15 @@ class Deliveryer {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? userId;
+
+  /// 顯示名稱
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? displayName;
 
   /// 是否啟用
   ///
@@ -99,8 +99,8 @@ class Deliveryer {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Deliveryer &&
-    other.id == id &&
     other.userId == userId &&
+    other.displayName == displayName &&
     other.enabled == enabled &&
     _deepEquality.equals(other.deliveryAreas, deliveryAreas) &&
     other.createdAt == createdAt &&
@@ -112,8 +112,8 @@ class Deliveryer {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
     (userId == null ? 0 : userId!.hashCode) +
+    (displayName == null ? 0 : displayName!.hashCode) +
     (enabled == null ? 0 : enabled!.hashCode) +
     (deliveryAreas.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
@@ -123,19 +123,19 @@ class Deliveryer {
     (longitude == null ? 0 : longitude!.hashCode);
 
   @override
-  String toString() => 'Deliveryer[id=$id, userId=$userId, enabled=$enabled, deliveryAreas=$deliveryAreas, createdAt=$createdAt, updatedAt=$updatedAt, deliveringOrderId=$deliveringOrderId, latitude=$latitude, longitude=$longitude]';
+  String toString() => 'Deliveryer[userId=$userId, displayName=$displayName, enabled=$enabled, deliveryAreas=$deliveryAreas, createdAt=$createdAt, updatedAt=$updatedAt, deliveringOrderId=$deliveringOrderId, latitude=$latitude, longitude=$longitude]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
-      json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
     if (this.userId != null) {
       json[r'userId'] = this.userId;
     } else {
       json[r'userId'] = null;
+    }
+    if (this.displayName != null) {
+      json[r'displayName'] = this.displayName;
+    } else {
+      json[r'displayName'] = null;
     }
     if (this.enabled != null) {
       json[r'enabled'] = this.enabled;
@@ -190,8 +190,8 @@ class Deliveryer {
       }());
 
       return Deliveryer(
-        id: mapValueOfType<int>(json, r'id'),
         userId: mapValueOfType<int>(json, r'userId'),
+        displayName: mapValueOfType<String>(json, r'displayName'),
         enabled: mapValueOfType<bool>(json, r'enabled'),
         deliveryAreas: json[r'deliveryAreas'] is Iterable
             ? (json[r'deliveryAreas'] as Iterable).cast<String>().toSet()

@@ -260,8 +260,6 @@ class ApiClient {
           return OrderShipParam.fromJson(value);
         case 'OrderStatisticsDTO':
           return OrderStatisticsDTO.fromJson(value);
-        case 'OrderStatusEnum':
-          return OrderStatusEnumTypeTransformer().decode(value);
         case 'OrderSumbitParam':
           return OrderSumbitParam.fromJson(value);
         case 'PageCartItem':
@@ -328,6 +326,8 @@ class ApiClient {
           return ReviewPromoCodeParam.fromJson(value);
         case 'SalesStats':
           return SalesStats.fromJson(value);
+        case 'ShippingTypeEnum':
+          return ShippingTypeEnumTypeTransformer().decode(value);
         case 'SortObject':
           return SortObject.fromJson(value);
         case 'Staking':

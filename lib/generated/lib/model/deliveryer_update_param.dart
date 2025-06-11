@@ -13,9 +13,19 @@ part of openapi.api;
 class DeliveryerUpdateParam {
   /// Returns a new [DeliveryerUpdateParam] instance.
   DeliveryerUpdateParam({
+    this.displayName,
     this.deliveryAreas = const {},
     this.enabled,
   });
+
+  /// 顯示名稱
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? displayName;
 
   /// 配送區域列表
   Set<String> deliveryAreas;
@@ -31,20 +41,27 @@ class DeliveryerUpdateParam {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is DeliveryerUpdateParam &&
+    other.displayName == displayName &&
     _deepEquality.equals(other.deliveryAreas, deliveryAreas) &&
     other.enabled == enabled;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (displayName == null ? 0 : displayName!.hashCode) +
     (deliveryAreas.hashCode) +
     (enabled == null ? 0 : enabled!.hashCode);
 
   @override
-  String toString() => 'DeliveryerUpdateParam[deliveryAreas=$deliveryAreas, enabled=$enabled]';
+  String toString() => 'DeliveryerUpdateParam[displayName=$displayName, deliveryAreas=$deliveryAreas, enabled=$enabled]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.displayName != null) {
+      json[r'displayName'] = this.displayName;
+    } else {
+      json[r'displayName'] = null;
+    }
       json[r'deliveryAreas'] = this.deliveryAreas.toList(growable: false);
     if (this.enabled != null) {
       json[r'enabled'] = this.enabled;
@@ -73,6 +90,7 @@ class DeliveryerUpdateParam {
       }());
 
       return DeliveryerUpdateParam(
+        displayName: mapValueOfType<String>(json, r'displayName'),
         deliveryAreas: json[r'deliveryAreas'] is Iterable
             ? (json[r'deliveryAreas'] as Iterable).cast<String>().toSet()
             : const {},

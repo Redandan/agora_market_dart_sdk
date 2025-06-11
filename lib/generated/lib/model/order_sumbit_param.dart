@@ -14,6 +14,7 @@ class OrderSumbitParam {
   /// Returns a new [OrderSumbitParam] instance.
   OrderSumbitParam({
     required this.productId,
+    required this.shippingType,
     required this.shippingAddress,
     required this.longitude,
     required this.latitude,
@@ -21,11 +22,12 @@ class OrderSumbitParam {
     required this.receiverPhone,
     this.remark,
     this.deliveryFee,
-    this.deliveryTypeEnum,
   });
 
   /// 商品ID
   int productId;
+
+  ShippingTypeEnum shippingType;
 
   /// 收件地址
   String shippingAddress;
@@ -60,40 +62,38 @@ class OrderSumbitParam {
   ///
   num? deliveryFee;
 
-  /// 配送方式
-  OrderSumbitParamDeliveryTypeEnumEnum? deliveryTypeEnum;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrderSumbitParam &&
     other.productId == productId &&
+    other.shippingType == shippingType &&
     other.shippingAddress == shippingAddress &&
     other.longitude == longitude &&
     other.latitude == latitude &&
     other.receiverName == receiverName &&
     other.receiverPhone == receiverPhone &&
     other.remark == remark &&
-    other.deliveryFee == deliveryFee &&
-    other.deliveryTypeEnum == deliveryTypeEnum;
+    other.deliveryFee == deliveryFee;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (productId.hashCode) +
+    (shippingType.hashCode) +
     (shippingAddress.hashCode) +
     (longitude.hashCode) +
     (latitude.hashCode) +
     (receiverName.hashCode) +
     (receiverPhone.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
-    (deliveryFee == null ? 0 : deliveryFee!.hashCode) +
-    (deliveryTypeEnum == null ? 0 : deliveryTypeEnum!.hashCode);
+    (deliveryFee == null ? 0 : deliveryFee!.hashCode);
 
   @override
-  String toString() => 'OrderSumbitParam[productId=$productId, shippingAddress=$shippingAddress, longitude=$longitude, latitude=$latitude, receiverName=$receiverName, receiverPhone=$receiverPhone, remark=$remark, deliveryFee=$deliveryFee, deliveryTypeEnum=$deliveryTypeEnum]';
+  String toString() => 'OrderSumbitParam[productId=$productId, shippingType=$shippingType, shippingAddress=$shippingAddress, longitude=$longitude, latitude=$latitude, receiverName=$receiverName, receiverPhone=$receiverPhone, remark=$remark, deliveryFee=$deliveryFee]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'productId'] = this.productId;
+      json[r'shippingType'] = this.shippingType;
       json[r'shippingAddress'] = this.shippingAddress;
       json[r'longitude'] = this.longitude;
       json[r'latitude'] = this.latitude;
@@ -108,11 +108,6 @@ class OrderSumbitParam {
       json[r'deliveryFee'] = this.deliveryFee;
     } else {
       json[r'deliveryFee'] = null;
-    }
-    if (this.deliveryTypeEnum != null) {
-      json[r'deliveryTypeEnum'] = this.deliveryTypeEnum;
-    } else {
-      json[r'deliveryTypeEnum'] = null;
     }
     return json;
   }
@@ -137,6 +132,7 @@ class OrderSumbitParam {
 
       return OrderSumbitParam(
         productId: mapValueOfType<int>(json, r'productId')!,
+        shippingType: ShippingTypeEnum.fromJson(json[r'shippingType'])!,
         shippingAddress: mapValueOfType<String>(json, r'shippingAddress')!,
         longitude: mapValueOfType<double>(json, r'longitude')!,
         latitude: mapValueOfType<double>(json, r'latitude')!,
@@ -144,7 +140,6 @@ class OrderSumbitParam {
         receiverPhone: mapValueOfType<String>(json, r'receiverPhone')!,
         remark: mapValueOfType<String>(json, r'remark'),
         deliveryFee: num.parse('${json[r'deliveryFee']}'),
-        deliveryTypeEnum: OrderSumbitParamDeliveryTypeEnumEnum.fromJson(json[r'deliveryTypeEnum']),
       );
     }
     return null;
@@ -193,6 +188,7 @@ class OrderSumbitParam {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'productId',
+    'shippingType',
     'shippingAddress',
     'longitude',
     'latitude',
@@ -200,84 +196,4 @@ class OrderSumbitParam {
     'receiverPhone',
   };
 }
-
-/// 配送方式
-class OrderSumbitParamDeliveryTypeEnumEnum {
-  /// Instantiate a new enum with the provided [value].
-  const OrderSumbitParamDeliveryTypeEnumEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const DELIVERY = OrderSumbitParamDeliveryTypeEnumEnum._(r'DELIVERY');
-  static const LOGISTICS = OrderSumbitParamDeliveryTypeEnumEnum._(r'LOGISTICS');
-  static const PICKUP = OrderSumbitParamDeliveryTypeEnumEnum._(r'PICKUP');
-  static const unknownDefaultOpenApi = OrderSumbitParamDeliveryTypeEnumEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][OrderSumbitParamDeliveryTypeEnumEnum].
-  static const values = <OrderSumbitParamDeliveryTypeEnumEnum>[
-    DELIVERY,
-    LOGISTICS,
-    PICKUP,
-    unknownDefaultOpenApi,
-  ];
-
-  static OrderSumbitParamDeliveryTypeEnumEnum? fromJson(dynamic value) => OrderSumbitParamDeliveryTypeEnumEnumTypeTransformer().decode(value);
-
-  static List<OrderSumbitParamDeliveryTypeEnumEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <OrderSumbitParamDeliveryTypeEnumEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = OrderSumbitParamDeliveryTypeEnumEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [OrderSumbitParamDeliveryTypeEnumEnum] to String,
-/// and [decode] dynamic data back to [OrderSumbitParamDeliveryTypeEnumEnum].
-class OrderSumbitParamDeliveryTypeEnumEnumTypeTransformer {
-  factory OrderSumbitParamDeliveryTypeEnumEnumTypeTransformer() => _instance ??= const OrderSumbitParamDeliveryTypeEnumEnumTypeTransformer._();
-
-  const OrderSumbitParamDeliveryTypeEnumEnumTypeTransformer._();
-
-  String encode(OrderSumbitParamDeliveryTypeEnumEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a OrderSumbitParamDeliveryTypeEnumEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  OrderSumbitParamDeliveryTypeEnumEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'DELIVERY': return OrderSumbitParamDeliveryTypeEnumEnum.DELIVERY;
-        case r'LOGISTICS': return OrderSumbitParamDeliveryTypeEnumEnum.LOGISTICS;
-        case r'PICKUP': return OrderSumbitParamDeliveryTypeEnumEnum.PICKUP;
-        case r'unknown_default_open_api': return OrderSumbitParamDeliveryTypeEnumEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [OrderSumbitParamDeliveryTypeEnumEnumTypeTransformer] instance.
-  static OrderSumbitParamDeliveryTypeEnumEnumTypeTransformer? _instance;
-}
-
 

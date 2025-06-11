@@ -75,6 +75,30 @@ void main() {
       // TODO
     });
 
+    // 收貨地址
+    // String deliveryAddress
+    test('to test the property `deliveryAddress`', () async {
+      // TODO
+    });
+
+    // 店鋪名稱
+    // String storeName
+    test('to test the property `storeName`', () async {
+      // TODO
+    });
+
+    // 推廣大使名稱
+    // String ambassadorName
+    test('to test the property `ambassadorName`', () async {
+      // TODO
+    });
+
+    // 顯示配送員名稱
+    // String displayDeliveryerName
+    test('to test the property `displayDeliveryerName`', () async {
+      // TODO
+    });
+
     // 註冊推廣碼
     // String promoCode
     test('to test the property `promoCode`', () async {

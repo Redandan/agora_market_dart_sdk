@@ -16,6 +16,12 @@ void main() {
   // final instance = DeliveryerUpdateParam();
 
   group('test DeliveryerUpdateParam', () {
+    // 顯示名稱
+    // String displayName
+    test('to test the property `displayName`', () async {
+      // TODO
+    });
+
     // 配送區域列表
     // Set<String> deliveryAreas (default value: const {})
     test('to test the property `deliveryAreas`', () async {

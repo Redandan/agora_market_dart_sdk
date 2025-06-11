@@ -17,6 +17,9 @@ Name | Type | Description | Notes
 **freezeBalance** | **num** | 凍結餘額 | [optional] 
 **enabled** | **bool** | 是否啟用 | [optional] 
 **queryTime** | [**DateTime**](DateTime.md) | 查詢時間 | [optional] 
+**storeName** | **String** | 店鋪名稱 | [optional] 
+**ambassadorName** | **String** | 推廣大使名稱 | [optional] 
+**displayDeliveryerName** | **String** | 顯示配送員名稱 | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

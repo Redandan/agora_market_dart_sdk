@@ -34,6 +34,12 @@ void main() {
       // TODO
     });
 
+    // 收貨地址
+    // String deliveryAddress
+    test('to test the property `deliveryAddress`', () async {
+      // TODO
+    });
+
     // 頭像URL
     // String avatar
     test('to test the property `avatar`', () async {

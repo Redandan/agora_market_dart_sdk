@@ -15,6 +15,7 @@ class DeliveryDetail {
   DeliveryDetail({
     this.orderId,
     this.deliveryId,
+    this.shippingType,
     this.verifyCode,
     this.pickupLongitude,
     this.pickupLatitude,
@@ -37,7 +38,6 @@ class DeliveryDetail {
     this.deliveringTime,
     this.deliveredTime,
     this.cancelledTime,
-    this.deliveryTypeEnum,
   });
 
   /// 訂單ID
@@ -57,6 +57,14 @@ class DeliveryDetail {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? deliveryId;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  ShippingTypeEnum? shippingType;
 
   /// 驗證碼
   ///
@@ -244,13 +252,11 @@ class DeliveryDetail {
   ///
   DateTime? cancelledTime;
 
-  /// 配送方式
-  DeliveryDetailDeliveryTypeEnumEnum? deliveryTypeEnum;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is DeliveryDetail &&
     other.orderId == orderId &&
     other.deliveryId == deliveryId &&
+    other.shippingType == shippingType &&
     other.verifyCode == verifyCode &&
     other.pickupLongitude == pickupLongitude &&
     other.pickupLatitude == pickupLatitude &&
@@ -272,14 +278,14 @@ class DeliveryDetail {
     other.pickingUpTime == pickingUpTime &&
     other.deliveringTime == deliveringTime &&
     other.deliveredTime == deliveredTime &&
-    other.cancelledTime == cancelledTime &&
-    other.deliveryTypeEnum == deliveryTypeEnum;
+    other.cancelledTime == cancelledTime;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (orderId == null ? 0 : orderId!.hashCode) +
     (deliveryId == null ? 0 : deliveryId!.hashCode) +
+    (shippingType == null ? 0 : shippingType!.hashCode) +
     (verifyCode == null ? 0 : verifyCode!.hashCode) +
     (pickupLongitude == null ? 0 : pickupLongitude!.hashCode) +
     (pickupLatitude == null ? 0 : pickupLatitude!.hashCode) +
@@ -301,11 +307,10 @@ class DeliveryDetail {
     (pickingUpTime == null ? 0 : pickingUpTime!.hashCode) +
     (deliveringTime == null ? 0 : deliveringTime!.hashCode) +
     (deliveredTime == null ? 0 : deliveredTime!.hashCode) +
-    (cancelledTime == null ? 0 : cancelledTime!.hashCode) +
-    (deliveryTypeEnum == null ? 0 : deliveryTypeEnum!.hashCode);
+    (cancelledTime == null ? 0 : cancelledTime!.hashCode);
 
   @override
-  String toString() => 'DeliveryDetail[orderId=$orderId, deliveryId=$deliveryId, verifyCode=$verifyCode, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupAddress=$pickupAddress, pickupPostalCode=$pickupPostalCode, shippingLongitude=$shippingLongitude, shippingLatitude=$shippingLatitude, shippingAddress=$shippingAddress, shippingPostalCode=$shippingPostalCode, receiverName=$receiverName, receiverPhone=$receiverPhone, trackingNumber=$trackingNumber, createdAt=$createdAt, updatedAt=$updatedAt, deliveredAt=$deliveredAt, assignedAt=$assignedAt, deliveryLogs=$deliveryLogs, status=$status, pickingUpTime=$pickingUpTime, deliveringTime=$deliveringTime, deliveredTime=$deliveredTime, cancelledTime=$cancelledTime, deliveryTypeEnum=$deliveryTypeEnum]';
+  String toString() => 'DeliveryDetail[orderId=$orderId, deliveryId=$deliveryId, shippingType=$shippingType, verifyCode=$verifyCode, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupAddress=$pickupAddress, pickupPostalCode=$pickupPostalCode, shippingLongitude=$shippingLongitude, shippingLatitude=$shippingLatitude, shippingAddress=$shippingAddress, shippingPostalCode=$shippingPostalCode, receiverName=$receiverName, receiverPhone=$receiverPhone, trackingNumber=$trackingNumber, createdAt=$createdAt, updatedAt=$updatedAt, deliveredAt=$deliveredAt, assignedAt=$assignedAt, deliveryLogs=$deliveryLogs, status=$status, pickingUpTime=$pickingUpTime, deliveringTime=$deliveringTime, deliveredTime=$deliveredTime, cancelledTime=$cancelledTime]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -318,6 +323,11 @@ class DeliveryDetail {
       json[r'deliveryId'] = this.deliveryId;
     } else {
       json[r'deliveryId'] = null;
+    }
+    if (this.shippingType != null) {
+      json[r'shippingType'] = this.shippingType;
+    } else {
+      json[r'shippingType'] = null;
     }
     if (this.verifyCode != null) {
       json[r'verifyCode'] = this.verifyCode;
@@ -425,11 +435,6 @@ class DeliveryDetail {
     } else {
       json[r'cancelledTime'] = null;
     }
-    if (this.deliveryTypeEnum != null) {
-      json[r'deliveryTypeEnum'] = this.deliveryTypeEnum;
-    } else {
-      json[r'deliveryTypeEnum'] = null;
-    }
     return json;
   }
 
@@ -454,6 +459,7 @@ class DeliveryDetail {
       return DeliveryDetail(
         orderId: mapValueOfType<String>(json, r'orderId'),
         deliveryId: mapValueOfType<int>(json, r'deliveryId'),
+        shippingType: ShippingTypeEnum.fromJson(json[r'shippingType']),
         verifyCode: mapValueOfType<String>(json, r'verifyCode'),
         pickupLongitude: mapValueOfType<double>(json, r'pickupLongitude'),
         pickupLatitude: mapValueOfType<double>(json, r'pickupLatitude'),
@@ -478,7 +484,6 @@ class DeliveryDetail {
         deliveringTime: mapDateTime(json, r'deliveringTime', r''),
         deliveredTime: mapDateTime(json, r'deliveredTime', r''),
         cancelledTime: mapDateTime(json, r'cancelledTime', r''),
-        deliveryTypeEnum: DeliveryDetailDeliveryTypeEnumEnum.fromJson(json[r'deliveryTypeEnum']),
       );
     }
     return null;
@@ -612,86 +617,6 @@ class DeliveryDetailStatusEnumTypeTransformer {
 
   /// Singleton [DeliveryDetailStatusEnumTypeTransformer] instance.
   static DeliveryDetailStatusEnumTypeTransformer? _instance;
-}
-
-
-/// 配送方式
-class DeliveryDetailDeliveryTypeEnumEnum {
-  /// Instantiate a new enum with the provided [value].
-  const DeliveryDetailDeliveryTypeEnumEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const DELIVERY = DeliveryDetailDeliveryTypeEnumEnum._(r'DELIVERY');
-  static const LOGISTICS = DeliveryDetailDeliveryTypeEnumEnum._(r'LOGISTICS');
-  static const PICKUP = DeliveryDetailDeliveryTypeEnumEnum._(r'PICKUP');
-  static const unknownDefaultOpenApi = DeliveryDetailDeliveryTypeEnumEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][DeliveryDetailDeliveryTypeEnumEnum].
-  static const values = <DeliveryDetailDeliveryTypeEnumEnum>[
-    DELIVERY,
-    LOGISTICS,
-    PICKUP,
-    unknownDefaultOpenApi,
-  ];
-
-  static DeliveryDetailDeliveryTypeEnumEnum? fromJson(dynamic value) => DeliveryDetailDeliveryTypeEnumEnumTypeTransformer().decode(value);
-
-  static List<DeliveryDetailDeliveryTypeEnumEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <DeliveryDetailDeliveryTypeEnumEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = DeliveryDetailDeliveryTypeEnumEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [DeliveryDetailDeliveryTypeEnumEnum] to String,
-/// and [decode] dynamic data back to [DeliveryDetailDeliveryTypeEnumEnum].
-class DeliveryDetailDeliveryTypeEnumEnumTypeTransformer {
-  factory DeliveryDetailDeliveryTypeEnumEnumTypeTransformer() => _instance ??= const DeliveryDetailDeliveryTypeEnumEnumTypeTransformer._();
-
-  const DeliveryDetailDeliveryTypeEnumEnumTypeTransformer._();
-
-  String encode(DeliveryDetailDeliveryTypeEnumEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a DeliveryDetailDeliveryTypeEnumEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  DeliveryDetailDeliveryTypeEnumEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'DELIVERY': return DeliveryDetailDeliveryTypeEnumEnum.DELIVERY;
-        case r'LOGISTICS': return DeliveryDetailDeliveryTypeEnumEnum.LOGISTICS;
-        case r'PICKUP': return DeliveryDetailDeliveryTypeEnumEnum.PICKUP;
-        case r'unknown_default_open_api': return DeliveryDetailDeliveryTypeEnumEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [DeliveryDetailDeliveryTypeEnumEnumTypeTransformer] instance.
-  static DeliveryDetailDeliveryTypeEnumEnumTypeTransformer? _instance;
 }
 
 

@@ -23,6 +23,10 @@ class User {
     this.email,
     this.avatar,
     this.remark,
+    this.deliveryAddress,
+    this.storeName,
+    this.ambassadorName,
+    this.displayDeliveryerName,
     this.promoCode,
     this.createdAt,
     this.updatedAt,
@@ -118,6 +122,42 @@ class User {
   ///
   String? remark;
 
+  /// 收貨地址
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? deliveryAddress;
+
+  /// 店鋪名稱
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? storeName;
+
+  /// 推廣大使名稱
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? ambassadorName;
+
+  /// 顯示配送員名稱
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? displayDeliveryerName;
+
   /// 註冊推廣碼
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -165,6 +205,10 @@ class User {
     other.email == email &&
     other.avatar == avatar &&
     other.remark == remark &&
+    other.deliveryAddress == deliveryAddress &&
+    other.storeName == storeName &&
+    other.ambassadorName == ambassadorName &&
+    other.displayDeliveryerName == displayDeliveryerName &&
     other.promoCode == promoCode &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
@@ -183,13 +227,17 @@ class User {
     (email == null ? 0 : email!.hashCode) +
     (avatar == null ? 0 : avatar!.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
+    (deliveryAddress == null ? 0 : deliveryAddress!.hashCode) +
+    (storeName == null ? 0 : storeName!.hashCode) +
+    (ambassadorName == null ? 0 : ambassadorName!.hashCode) +
+    (displayDeliveryerName == null ? 0 : displayDeliveryerName!.hashCode) +
     (promoCode == null ? 0 : promoCode!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (admin == null ? 0 : admin!.hashCode);
 
   @override
-  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, promoCode=$promoCode, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin]';
+  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, deliveryAddress=$deliveryAddress, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -243,6 +291,26 @@ class User {
     } else {
       json[r'remark'] = null;
     }
+    if (this.deliveryAddress != null) {
+      json[r'deliveryAddress'] = this.deliveryAddress;
+    } else {
+      json[r'deliveryAddress'] = null;
+    }
+    if (this.storeName != null) {
+      json[r'storeName'] = this.storeName;
+    } else {
+      json[r'storeName'] = null;
+    }
+    if (this.ambassadorName != null) {
+      json[r'ambassadorName'] = this.ambassadorName;
+    } else {
+      json[r'ambassadorName'] = null;
+    }
+    if (this.displayDeliveryerName != null) {
+      json[r'displayDeliveryerName'] = this.displayDeliveryerName;
+    } else {
+      json[r'displayDeliveryerName'] = null;
+    }
     if (this.promoCode != null) {
       json[r'promoCode'] = this.promoCode;
     } else {
@@ -295,6 +363,10 @@ class User {
         email: mapValueOfType<String>(json, r'email'),
         avatar: mapValueOfType<String>(json, r'avatar'),
         remark: mapValueOfType<String>(json, r'remark'),
+        deliveryAddress: mapValueOfType<String>(json, r'deliveryAddress'),
+        storeName: mapValueOfType<String>(json, r'storeName'),
+        ambassadorName: mapValueOfType<String>(json, r'ambassadorName'),
+        displayDeliveryerName: mapValueOfType<String>(json, r'displayDeliveryerName'),
         promoCode: mapValueOfType<String>(json, r'promoCode'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),

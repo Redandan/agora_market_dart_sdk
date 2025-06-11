@@ -18,6 +18,7 @@ class Order {
     this.buyerId,
     this.sellerId,
     this.shippingFee,
+    this.shippingType,
     this.productPrice,
     this.orderAmount,
     this.currency,
@@ -75,6 +76,14 @@ class Order {
   ///
   num? shippingFee;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  ShippingTypeEnum? shippingType;
+
   /// 商品價格
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -102,12 +111,7 @@ class Order {
   ///
   String? currency;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
+  /// 訂單狀態
   OrderStatusEnum? status;
 
   /// 備註
@@ -170,6 +174,7 @@ class Order {
     other.buyerId == buyerId &&
     other.sellerId == sellerId &&
     other.shippingFee == shippingFee &&
+    other.shippingType == shippingType &&
     other.productPrice == productPrice &&
     other.orderAmount == orderAmount &&
     other.currency == currency &&
@@ -189,6 +194,7 @@ class Order {
     (buyerId == null ? 0 : buyerId!.hashCode) +
     (sellerId == null ? 0 : sellerId!.hashCode) +
     (shippingFee == null ? 0 : shippingFee!.hashCode) +
+    (shippingType == null ? 0 : shippingType!.hashCode) +
     (productPrice == null ? 0 : productPrice!.hashCode) +
     (orderAmount == null ? 0 : orderAmount!.hashCode) +
     (currency == null ? 0 : currency!.hashCode) +
@@ -201,7 +207,7 @@ class Order {
     (product == null ? 0 : product!.hashCode);
 
   @override
-  String toString() => 'Order[id=$id, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, product=$product]';
+  String toString() => 'Order[id=$id, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, shippingFee=$shippingFee, shippingType=$shippingType, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, product=$product]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -229,6 +235,11 @@ class Order {
       json[r'shippingFee'] = this.shippingFee;
     } else {
       json[r'shippingFee'] = null;
+    }
+    if (this.shippingType != null) {
+      json[r'shippingType'] = this.shippingType;
+    } else {
+      json[r'shippingType'] = null;
     }
     if (this.productPrice != null) {
       json[r'productPrice'] = this.productPrice;
@@ -307,6 +318,7 @@ class Order {
         buyerId: mapValueOfType<int>(json, r'buyerId'),
         sellerId: mapValueOfType<int>(json, r'sellerId'),
         shippingFee: num.parse('${json[r'shippingFee']}'),
+        shippingType: ShippingTypeEnum.fromJson(json[r'shippingType']),
         productPrice: num.parse('${json[r'productPrice']}'),
         orderAmount: num.parse('${json[r'orderAmount']}'),
         currency: mapValueOfType<String>(json, r'currency'),
@@ -366,4 +378,105 @@ class Order {
   static const requiredKeys = <String>{
   };
 }
+
+/// 訂單狀態
+class OrderStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const OrderStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const PENDING_SHIPMENT = OrderStatusEnum._(r'PENDING_SHIPMENT');
+  static const SHIPPED = OrderStatusEnum._(r'SHIPPED');
+  static const DELIVERY_ASSIGNED = OrderStatusEnum._(r'DELIVERY_ASSIGNED');
+  static const PICKED_UP = OrderStatusEnum._(r'PICKED_UP');
+  static const DELIVERED = OrderStatusEnum._(r'DELIVERED');
+  static const COMPLETED = OrderStatusEnum._(r'COMPLETED');
+  static const DISPUTED = OrderStatusEnum._(r'DISPUTED');
+  static const CANCELLED = OrderStatusEnum._(r'CANCELLED');
+  static const REFUND_REQUESTED = OrderStatusEnum._(r'REFUND_REQUESTED');
+  static const REFUNDED = OrderStatusEnum._(r'REFUNDED');
+  static const unknownDefaultOpenApi = OrderStatusEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][OrderStatusEnum].
+  static const values = <OrderStatusEnum>[
+    PENDING_SHIPMENT,
+    SHIPPED,
+    DELIVERY_ASSIGNED,
+    PICKED_UP,
+    DELIVERED,
+    COMPLETED,
+    DISPUTED,
+    CANCELLED,
+    REFUND_REQUESTED,
+    REFUNDED,
+    unknownDefaultOpenApi,
+  ];
+
+  static OrderStatusEnum? fromJson(dynamic value) => OrderStatusEnumTypeTransformer().decode(value);
+
+  static List<OrderStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <OrderStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = OrderStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [OrderStatusEnum] to String,
+/// and [decode] dynamic data back to [OrderStatusEnum].
+class OrderStatusEnumTypeTransformer {
+  factory OrderStatusEnumTypeTransformer() => _instance ??= const OrderStatusEnumTypeTransformer._();
+
+  const OrderStatusEnumTypeTransformer._();
+
+  String encode(OrderStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a OrderStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  OrderStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'PENDING_SHIPMENT': return OrderStatusEnum.PENDING_SHIPMENT;
+        case r'SHIPPED': return OrderStatusEnum.SHIPPED;
+        case r'DELIVERY_ASSIGNED': return OrderStatusEnum.DELIVERY_ASSIGNED;
+        case r'PICKED_UP': return OrderStatusEnum.PICKED_UP;
+        case r'DELIVERED': return OrderStatusEnum.DELIVERED;
+        case r'COMPLETED': return OrderStatusEnum.COMPLETED;
+        case r'DISPUTED': return OrderStatusEnum.DISPUTED;
+        case r'CANCELLED': return OrderStatusEnum.CANCELLED;
+        case r'REFUND_REQUESTED': return OrderStatusEnum.REFUND_REQUESTED;
+        case r'REFUNDED': return OrderStatusEnum.REFUNDED;
+        case r'unknown_default_open_api': return OrderStatusEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [OrderStatusEnumTypeTransformer] instance.
+  static OrderStatusEnumTypeTransformer? _instance;
+}
+
 

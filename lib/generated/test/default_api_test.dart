@@ -120,6 +120,13 @@ void main() {
       // TODO
     });
 
+    // 查詢當前用戶是否有進行中的充值
+    //
+    //Future<Recharge> getPendingRecharge() async
+    test('test getPendingRecharge', () async {
+      // TODO
+    });
+
     // 獲取充值詳情
     //
     //Future<Recharge> getRecharge(String rechargeId) async

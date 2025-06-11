@@ -70,6 +70,24 @@ void main() {
       // TODO
     });
 
+    // 店鋪名稱
+    // String storeName
+    test('to test the property `storeName`', () async {
+      // TODO
+    });
+
+    // 推廣大使名稱
+    // String ambassadorName
+    test('to test the property `ambassadorName`', () async {
+      // TODO
+    });
+
+    // 顯示配送員名稱
+    // String displayDeliveryerName
+    test('to test the property `displayDeliveryerName`', () async {
+      // TODO
+    });
+
 
   });
 

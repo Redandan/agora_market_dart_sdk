@@ -1,4 +1,4 @@
-# agora_market_dart_sdk.model.OrderStatusEnum
+# agora_market_dart_sdk.model.ShippingTypeEnum
 
 ## Load the model package
 ```dart
