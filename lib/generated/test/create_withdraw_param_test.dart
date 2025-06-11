@@ -28,15 +28,14 @@ void main() {
       // TODO
     });
 
-    // 提現目標地址
-    // String toAddress
-    test('to test the property `toAddress`', () async {
+    // ProtocolEnum protocolEnum
+    test('to test the property `protocolEnum`', () async {
       // TODO
     });
 
-    // 協議
-    // String protocolEnum
-    test('to test the property `protocolEnum`', () async {
+    // 提現目標地址
+    // String toAddress
+    test('to test the property `toAddress`', () async {
       // TODO
     });
 

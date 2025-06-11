@@ -45,6 +45,11 @@ void main() {
       // TODO
     });
 
+    // ProtocolEnum protocolEnum
+    test('to test the property `protocolEnum`', () async {
+      // TODO
+    });
+
     // 交易Hash
     // String txHash
     test('to test the property `txHash`', () async {
@@ -90,12 +95,6 @@ void main() {
     // 完成時間
     // DateTime completedAt
     test('to test the property `completedAt`', () async {
-      // TODO
-    });
-
-    // 協議
-    // String protocolEnum
-    test('to test the property `protocolEnum`', () async {
       // TODO
     });
 

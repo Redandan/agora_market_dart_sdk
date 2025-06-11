@@ -35,12 +35,30 @@ void main() {
       // TODO
     });
 
+    // 註冊配送員
+    //
+    // 用戶註冊成為配送員
+    //
+    //Future<Deliveryer> registerDeliveryer(DeliveryerRegistrationParam deliveryerRegistrationParam) async
+    test('test registerDeliveryer', () async {
+      // TODO
+    });
+
     // 更新配送訂單狀態
     //
     // 更新當前配送訂單的狀態
     //
     //Future<Deliveryer> updateDeliveryOrder({ UpdateDeliveryOrderParam updateDeliveryOrderParam }) async
     test('test updateDeliveryOrder', () async {
+      // TODO
+    });
+
+    // 更新配送員資料
+    //
+    // 用戶更新自己的配送員資料
+    //
+    //Future<Deliveryer> updateDeliveryer(DeliveryerUpdateParam deliveryerUpdateParam) async
+    test('test updateDeliveryer', () async {
       // TODO
     });
 

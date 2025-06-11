@@ -75,6 +75,12 @@ void main() {
       // TODO
     });
 
+    // 註冊推廣碼
+    // String promoCode
+    test('to test the property `promoCode`', () async {
+      // TODO
+    });
+
     // 創建時間
     // DateTime createdAt
     test('to test the property `createdAt`', () async {

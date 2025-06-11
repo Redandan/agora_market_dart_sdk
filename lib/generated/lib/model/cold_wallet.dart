@@ -15,6 +15,7 @@ class ColdWallet {
   ColdWallet({
     this.id,
     this.address,
+    this.protocolEnum,
     this.trxBalance,
     this.usdtBalance,
     this.status,
@@ -22,7 +23,6 @@ class ColdWallet {
     this.createdAt,
     this.updatedAt,
     this.operator_,
-    this.protocolEnum,
   });
 
   /// 冷錢包ID
@@ -42,6 +42,14 @@ class ColdWallet {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? address;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  ProtocolEnum? protocolEnum;
 
   /// TRX餘額
   ///
@@ -105,38 +113,35 @@ class ColdWallet {
   ///
   String? operator_;
 
-  /// 協議
-  ColdWalletProtocolEnumEnum? protocolEnum;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is ColdWallet &&
     other.id == id &&
     other.address == address &&
+    other.protocolEnum == protocolEnum &&
     other.trxBalance == trxBalance &&
     other.usdtBalance == usdtBalance &&
     other.status == status &&
     other.currentOrderId == currentOrderId &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.operator_ == operator_ &&
-    other.protocolEnum == protocolEnum;
+    other.operator_ == operator_;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
     (address == null ? 0 : address!.hashCode) +
+    (protocolEnum == null ? 0 : protocolEnum!.hashCode) +
     (trxBalance == null ? 0 : trxBalance!.hashCode) +
     (usdtBalance == null ? 0 : usdtBalance!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
     (currentOrderId == null ? 0 : currentOrderId!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (operator_ == null ? 0 : operator_!.hashCode) +
-    (protocolEnum == null ? 0 : protocolEnum!.hashCode);
+    (operator_ == null ? 0 : operator_!.hashCode);
 
   @override
-  String toString() => 'ColdWallet[id=$id, address=$address, trxBalance=$trxBalance, usdtBalance=$usdtBalance, status=$status, currentOrderId=$currentOrderId, createdAt=$createdAt, updatedAt=$updatedAt, operator_=$operator_, protocolEnum=$protocolEnum]';
+  String toString() => 'ColdWallet[id=$id, address=$address, protocolEnum=$protocolEnum, trxBalance=$trxBalance, usdtBalance=$usdtBalance, status=$status, currentOrderId=$currentOrderId, createdAt=$createdAt, updatedAt=$updatedAt, operator_=$operator_]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -149,6 +154,11 @@ class ColdWallet {
       json[r'address'] = this.address;
     } else {
       json[r'address'] = null;
+    }
+    if (this.protocolEnum != null) {
+      json[r'protocolEnum'] = this.protocolEnum;
+    } else {
+      json[r'protocolEnum'] = null;
     }
     if (this.trxBalance != null) {
       json[r'trxBalance'] = this.trxBalance;
@@ -185,11 +195,6 @@ class ColdWallet {
     } else {
       json[r'operator'] = null;
     }
-    if (this.protocolEnum != null) {
-      json[r'protocolEnum'] = this.protocolEnum;
-    } else {
-      json[r'protocolEnum'] = null;
-    }
     return json;
   }
 
@@ -214,6 +219,7 @@ class ColdWallet {
       return ColdWallet(
         id: mapValueOfType<int>(json, r'id'),
         address: mapValueOfType<String>(json, r'address'),
+        protocolEnum: ProtocolEnum.fromJson(json[r'protocolEnum']),
         trxBalance: num.parse('${json[r'trxBalance']}'),
         usdtBalance: num.parse('${json[r'usdtBalance']}'),
         status: ColdWalletStatusEnum.fromJson(json[r'status']),
@@ -221,7 +227,6 @@ class ColdWallet {
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         operator_: mapValueOfType<String>(json, r'operator'),
-        protocolEnum: ColdWalletProtocolEnumEnum.fromJson(json[r'protocolEnum']),
       );
     }
     return null;
@@ -271,78 +276,4 @@ class ColdWallet {
   static const requiredKeys = <String>{
   };
 }
-
-/// 協議
-class ColdWalletProtocolEnumEnum {
-  /// Instantiate a new enum with the provided [value].
-  const ColdWalletProtocolEnumEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const TRON = ColdWalletProtocolEnumEnum._(r'TRON');
-  static const unknownDefaultOpenApi = ColdWalletProtocolEnumEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][ColdWalletProtocolEnumEnum].
-  static const values = <ColdWalletProtocolEnumEnum>[
-    TRON,
-    unknownDefaultOpenApi,
-  ];
-
-  static ColdWalletProtocolEnumEnum? fromJson(dynamic value) => ColdWalletProtocolEnumEnumTypeTransformer().decode(value);
-
-  static List<ColdWalletProtocolEnumEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ColdWalletProtocolEnumEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = ColdWalletProtocolEnumEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [ColdWalletProtocolEnumEnum] to String,
-/// and [decode] dynamic data back to [ColdWalletProtocolEnumEnum].
-class ColdWalletProtocolEnumEnumTypeTransformer {
-  factory ColdWalletProtocolEnumEnumTypeTransformer() => _instance ??= const ColdWalletProtocolEnumEnumTypeTransformer._();
-
-  const ColdWalletProtocolEnumEnumTypeTransformer._();
-
-  String encode(ColdWalletProtocolEnumEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a ColdWalletProtocolEnumEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  ColdWalletProtocolEnumEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'TRON': return ColdWalletProtocolEnumEnum.TRON;
-        case r'unknown_default_open_api': return ColdWalletProtocolEnumEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [ColdWalletProtocolEnumEnumTypeTransformer] instance.
-  static ColdWalletProtocolEnumEnumTypeTransformer? _instance;
-}
-
 

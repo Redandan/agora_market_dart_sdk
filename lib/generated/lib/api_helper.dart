@@ -73,6 +73,9 @@ String parameterToString(dynamic value) {
   if (value is ProductStatusEnum) {
     return ProductStatusEnumTypeTransformer().encode(value).toString();
   }
+  if (value is PromoCodeStatusEnum) {
+    return PromoCodeStatusEnumTypeTransformer().encode(value).toString();
+  }
   if (value is ProtocolEnum) {
     return ProtocolEnumTypeTransformer().encode(value).toString();
   }

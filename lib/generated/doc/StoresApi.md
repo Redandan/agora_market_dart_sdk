@@ -9,12 +9,54 @@ All URIs are relative to *https://agoramarketapi.onrender.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createStore**](StoresApi.md#createstore) | **POST** /stores/create | 創建商店
 [**getMyStore**](StoresApi.md#getmystore) | **GET** /stores/my-store | 獲取當前用戶的商店
 [**getStoreAnalytics**](StoresApi.md#getstoreanalytics) | **GET** /stores/analytics | 獲取商店分析數據
 [**getStoreBySellerId**](StoresApi.md#getstorebysellerid) | **GET** /stores/{sellerId} | 根據賣家ID獲取商店信息
 [**searchMyStoreProducts**](StoresApi.md#searchmystoreproducts) | **GET** /stores/products/search | 搜索我的商店商品
 [**updateStore**](StoresApi.md#updatestore) | **POST** /stores/update | 更新商店
 
+
+# **createStore**
+> Store createStore(storeCreateParam)
+
+創建商店
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = StoresApi();
+final storeCreateParam = StoreCreateParam(); // StoreCreateParam | 
+
+try {
+    final result = api_instance.createStore(storeCreateParam);
+    print(result);
+} catch (e) {
+    print('Exception when calling StoresApi->createStore: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storeCreateParam** | [**StoreCreateParam**](StoreCreateParam.md)|  | 
+
+### Return type
+
+[**Store**](Store.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getMyStore**
 > Store getMyStore()

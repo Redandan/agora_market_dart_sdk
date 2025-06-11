@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **email** | **String** | 電子郵件 | [optional] 
 **avatar** | **String** | 頭像 | [optional] 
 **remark** | **String** | 備註 | [optional] 
+**promoCode** | **String** | 註冊推廣碼 | [optional] 
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | 最後更新時間 | [optional] 
 **admin** | **bool** |  | [optional] 

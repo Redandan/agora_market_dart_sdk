@@ -28,6 +28,11 @@ void main() {
       // TODO
     });
 
+    // ProtocolEnum protocolEnum
+    test('to test the property `protocolEnum`', () async {
+      // TODO
+    });
+
     // TRX餘額
     // num trxBalance
     test('to test the property `trxBalance`', () async {
@@ -66,12 +71,6 @@ void main() {
     // 操作者
     // String operator_
     test('to test the property `operator_`', () async {
-      // TODO
-    });
-
-    // 協議
-    // String protocolEnum
-    test('to test the property `protocolEnum`', () async {
       // TODO
     });
 

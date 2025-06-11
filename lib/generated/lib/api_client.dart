@@ -184,6 +184,10 @@ class ApiClient {
           return value is DateTime ? value : DateTime.tryParse(value);
         case 'AdminCreateUserParam':
           return AdminCreateUserParam.fromJson(value);
+        case 'BatchReviewPromoCodeParam':
+          return BatchReviewPromoCodeParam.fromJson(value);
+        case 'BatchReviewResult':
+          return BatchReviewResult.fromJson(value);
         case 'CartItem':
           return CartItem.fromJson(value);
         case 'CartSummaryDTO':
@@ -206,6 +210,8 @@ class ApiClient {
           return ColdWallet.fromJson(value);
         case 'ColdWalletStatusEnum':
           return ColdWalletStatusEnumTypeTransformer().decode(value);
+        case 'CreatePromoCodeParam':
+          return CreatePromoCodeParam.fromJson(value);
         case 'CreateRechargeParam':
           return CreateRechargeParam.fromJson(value);
         case 'CreateWithdrawParam':
@@ -218,6 +224,10 @@ class ApiClient {
           return DeliveryReportTypeEnumTypeTransformer().decode(value);
         case 'Deliveryer':
           return Deliveryer.fromJson(value);
+        case 'DeliveryerRegistrationParam':
+          return DeliveryerRegistrationParam.fromJson(value);
+        case 'DeliveryerUpdateParam':
+          return DeliveryerUpdateParam.fromJson(value);
         case 'Dispute':
           return Dispute.fromJson(value);
         case 'DisputeCreateParam':
@@ -268,6 +278,8 @@ class ApiClient {
           return PageOrder.fromJson(value);
         case 'PageProduct':
           return PageProduct.fromJson(value);
+        case 'PagePromoCode':
+          return PagePromoCode.fromJson(value);
         case 'PageRecharge':
           return PageRecharge.fromJson(value);
         case 'PageStaking':
@@ -278,6 +290,8 @@ class ApiClient {
           return PageUser.fromJson(value);
         case 'PageWithdraw':
           return PageWithdraw.fromJson(value);
+        case 'Pageable':
+          return Pageable.fromJson(value);
         case 'PageableObject':
           return PageableObject.fromJson(value);
         case 'PasswordResetParam':
@@ -294,6 +308,10 @@ class ApiClient {
           return ProductStatusEnumTypeTransformer().decode(value);
         case 'ProductUpdateParam':
           return ProductUpdateParam.fromJson(value);
+        case 'PromoCode':
+          return PromoCode.fromJson(value);
+        case 'PromoCodeStatusEnum':
+          return PromoCodeStatusEnumTypeTransformer().decode(value);
         case 'ProtocolEnum':
           return ProtocolEnumTypeTransformer().decode(value);
         case 'Recharge':
@@ -304,6 +322,10 @@ class ApiClient {
           return RechargeStatusEnumTypeTransformer().decode(value);
         case 'RegisterParam':
           return RegisterParam.fromJson(value);
+        case 'ReviewFailure':
+          return ReviewFailure.fromJson(value);
+        case 'ReviewPromoCodeParam':
+          return ReviewPromoCodeParam.fromJson(value);
         case 'SalesStats':
           return SalesStats.fromJson(value);
         case 'SortObject':
@@ -314,6 +336,8 @@ class ApiClient {
           return Store.fromJson(value);
         case 'StoreAnalyticsDTO':
           return StoreAnalyticsDTO.fromJson(value);
+        case 'StoreCreateParam':
+          return StoreCreateParam.fromJson(value);
         case 'StoreUpdateParam':
           return StoreUpdateParam.fromJson(value);
         case 'TaiwanPostalArea':
@@ -332,6 +356,8 @@ class ApiClient {
           return TransactionTypeEnumTypeTransformer().decode(value);
         case 'UpdateDeliveryOrderParam':
           return UpdateDeliveryOrderParam.fromJson(value);
+        case 'UpdatePromoCodeParam':
+          return UpdatePromoCodeParam.fromJson(value);
         case 'User':
           return User.fromJson(value);
         case 'UserInfo':

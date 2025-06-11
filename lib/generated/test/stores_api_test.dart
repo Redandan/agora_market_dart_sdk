@@ -17,6 +17,13 @@ void main() {
   // final instance = StoresApi();
 
   group('tests for StoresApi', () {
+    // 創建商店
+    //
+    //Future<Store> createStore(StoreCreateParam storeCreateParam) async
+    test('test createStore', () async {
+      // TODO
+    });
+
     // 獲取當前用戶的商店
     //
     //Future<Store> getMyStore() async

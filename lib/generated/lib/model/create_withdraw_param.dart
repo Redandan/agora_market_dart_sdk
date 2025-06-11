@@ -15,8 +15,8 @@ class CreateWithdrawParam {
   CreateWithdrawParam({
     required this.amount,
     required this.currency,
+    required this.protocolEnum,
     required this.toAddress,
-    this.protocolEnum,
   });
 
   /// 提現金額
@@ -25,40 +25,35 @@ class CreateWithdrawParam {
   /// 貨幣代碼
   String currency;
 
+  ProtocolEnum protocolEnum;
+
   /// 提現目標地址
   String toAddress;
-
-  /// 協議
-  CreateWithdrawParamProtocolEnumEnum? protocolEnum;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateWithdrawParam &&
     other.amount == amount &&
     other.currency == currency &&
-    other.toAddress == toAddress &&
-    other.protocolEnum == protocolEnum;
+    other.protocolEnum == protocolEnum &&
+    other.toAddress == toAddress;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (amount.hashCode) +
     (currency.hashCode) +
-    (toAddress.hashCode) +
-    (protocolEnum == null ? 0 : protocolEnum!.hashCode);
+    (protocolEnum.hashCode) +
+    (toAddress.hashCode);
 
   @override
-  String toString() => 'CreateWithdrawParam[amount=$amount, currency=$currency, toAddress=$toAddress, protocolEnum=$protocolEnum]';
+  String toString() => 'CreateWithdrawParam[amount=$amount, currency=$currency, protocolEnum=$protocolEnum, toAddress=$toAddress]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'amount'] = this.amount;
       json[r'currency'] = this.currency;
-      json[r'toAddress'] = this.toAddress;
-    if (this.protocolEnum != null) {
       json[r'protocolEnum'] = this.protocolEnum;
-    } else {
-      json[r'protocolEnum'] = null;
-    }
+      json[r'toAddress'] = this.toAddress;
     return json;
   }
 
@@ -83,8 +78,8 @@ class CreateWithdrawParam {
       return CreateWithdrawParam(
         amount: num.parse('${json[r'amount']}'),
         currency: mapValueOfType<String>(json, r'currency')!,
+        protocolEnum: ProtocolEnum.fromJson(json[r'protocolEnum'])!,
         toAddress: mapValueOfType<String>(json, r'toAddress')!,
-        protocolEnum: CreateWithdrawParamProtocolEnumEnum.fromJson(json[r'protocolEnum']),
       );
     }
     return null;
@@ -134,81 +129,8 @@ class CreateWithdrawParam {
   static const requiredKeys = <String>{
     'amount',
     'currency',
+    'protocolEnum',
     'toAddress',
   };
 }
-
-/// 協議
-class CreateWithdrawParamProtocolEnumEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CreateWithdrawParamProtocolEnumEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const TRON = CreateWithdrawParamProtocolEnumEnum._(r'TRON');
-  static const unknownDefaultOpenApi = CreateWithdrawParamProtocolEnumEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][CreateWithdrawParamProtocolEnumEnum].
-  static const values = <CreateWithdrawParamProtocolEnumEnum>[
-    TRON,
-    unknownDefaultOpenApi,
-  ];
-
-  static CreateWithdrawParamProtocolEnumEnum? fromJson(dynamic value) => CreateWithdrawParamProtocolEnumEnumTypeTransformer().decode(value);
-
-  static List<CreateWithdrawParamProtocolEnumEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CreateWithdrawParamProtocolEnumEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = CreateWithdrawParamProtocolEnumEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [CreateWithdrawParamProtocolEnumEnum] to String,
-/// and [decode] dynamic data back to [CreateWithdrawParamProtocolEnumEnum].
-class CreateWithdrawParamProtocolEnumEnumTypeTransformer {
-  factory CreateWithdrawParamProtocolEnumEnumTypeTransformer() => _instance ??= const CreateWithdrawParamProtocolEnumEnumTypeTransformer._();
-
-  const CreateWithdrawParamProtocolEnumEnumTypeTransformer._();
-
-  String encode(CreateWithdrawParamProtocolEnumEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a CreateWithdrawParamProtocolEnumEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  CreateWithdrawParamProtocolEnumEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'TRON': return CreateWithdrawParamProtocolEnumEnum.TRON;
-        case r'unknown_default_open_api': return CreateWithdrawParamProtocolEnumEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [CreateWithdrawParamProtocolEnumEnumTypeTransformer] instance.
-  static CreateWithdrawParamProtocolEnumEnumTypeTransformer? _instance;
-}
-
 

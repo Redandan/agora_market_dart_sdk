@@ -35,6 +35,15 @@ void main() {
       // TODO
     });
 
+    // 凍結冷錢包
+    //
+    // 將冷錢包凍結，使其無法被使用
+    //
+    //Future<ColdWallet> freezeColdWallet(String id) async
+    test('test freezeColdWallet', () async {
+      // TODO
+    });
+
     // 獲取冷錢包列表
     //
     // 分頁獲取所有冷錢包

@@ -11,7 +11,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**currentStatus**](DeliveryApi.md#currentstatus) | **GET** /delivery/status | 獲取當前配送狀態
 [**getDeliveryHistory**](DeliveryApi.md#getdeliveryhistory) | **GET** /delivery/history | 獲取歷史訂單
+[**registerDeliveryer**](DeliveryApi.md#registerdeliveryer) | **POST** /delivery/register | 註冊配送員
 [**updateDeliveryOrder**](DeliveryApi.md#updatedeliveryorder) | **POST** /delivery/update/order | 更新配送訂單狀態
+[**updateDeliveryer**](DeliveryApi.md#updatedeliveryer) | **POST** /delivery/update | 更新配送員資料
 [**updateWorkingStatus**](DeliveryApi.md#updateworkingstatus) | **POST** /delivery/update/status | 更新工作狀態
 
 
@@ -99,6 +101,49 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **registerDeliveryer**
+> Deliveryer registerDeliveryer(deliveryerRegistrationParam)
+
+註冊配送員
+
+用戶註冊成為配送員
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DeliveryApi();
+final deliveryerRegistrationParam = DeliveryerRegistrationParam(); // DeliveryerRegistrationParam | 
+
+try {
+    final result = api_instance.registerDeliveryer(deliveryerRegistrationParam);
+    print(result);
+} catch (e) {
+    print('Exception when calling DeliveryApi->registerDeliveryer: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **deliveryerRegistrationParam** | [**DeliveryerRegistrationParam**](DeliveryerRegistrationParam.md)|  | 
+
+### Return type
+
+[**Deliveryer**](Deliveryer.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateDeliveryOrder**
 > Deliveryer updateDeliveryOrder(updateDeliveryOrderParam)
 
@@ -126,6 +171,49 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateDeliveryOrderParam** | [**UpdateDeliveryOrderParam**](UpdateDeliveryOrderParam.md)|  | [optional] 
+
+### Return type
+
+[**Deliveryer**](Deliveryer.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateDeliveryer**
+> Deliveryer updateDeliveryer(deliveryerUpdateParam)
+
+更新配送員資料
+
+用戶更新自己的配送員資料
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DeliveryApi();
+final deliveryerUpdateParam = DeliveryerUpdateParam(); // DeliveryerUpdateParam | 
+
+try {
+    final result = api_instance.updateDeliveryer(deliveryerUpdateParam);
+    print(result);
+} catch (e) {
+    print('Exception when calling DeliveryApi->updateDeliveryer: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **deliveryerUpdateParam** | [**DeliveryerUpdateParam**](DeliveryerUpdateParam.md)|  | 
 
 ### Return type
 

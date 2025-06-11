@@ -138,11 +138,14 @@ Class | Method | HTTP request | Description
 *ChatApi* | [**updateMessage**](doc//ChatApi.md#updatemessage) | **PUT** /chat/messages/{messageId} | 編輯消息
 *ColdWalletApi* | [**createColdWallet**](doc//ColdWalletApi.md#createcoldwallet) | **POST** /cold-wallet | 新增冷錢包
 *ColdWalletApi* | [**deleteColdWallet**](doc//ColdWalletApi.md#deletecoldwallet) | **DELETE** /cold-wallet/{id} | 刪除冷錢包
+*ColdWalletApi* | [**freezeColdWallet**](doc//ColdWalletApi.md#freezecoldwallet) | **POST** /cold-wallet/{id}/freeze | 凍結冷錢包
 *ColdWalletApi* | [**getColdWallets**](doc//ColdWalletApi.md#getcoldwallets) | **GET** /cold-wallet | 獲取冷錢包列表
 *ColdWalletApi* | [**releaseColdWallet**](doc//ColdWalletApi.md#releasecoldwallet) | **POST** /cold-wallet/{id}/release | 釋放冷錢包
 *DeliveryApi* | [**currentStatus**](doc//DeliveryApi.md#currentstatus) | **GET** /delivery/status | 獲取當前配送狀態
 *DeliveryApi* | [**getDeliveryHistory**](doc//DeliveryApi.md#getdeliveryhistory) | **GET** /delivery/history | 獲取歷史訂單
+*DeliveryApi* | [**registerDeliveryer**](doc//DeliveryApi.md#registerdeliveryer) | **POST** /delivery/register | 註冊配送員
 *DeliveryApi* | [**updateDeliveryOrder**](doc//DeliveryApi.md#updatedeliveryorder) | **POST** /delivery/update/order | 更新配送訂單狀態
+*DeliveryApi* | [**updateDeliveryer**](doc//DeliveryApi.md#updatedeliveryer) | **POST** /delivery/update | 更新配送員資料
 *DeliveryApi* | [**updateWorkingStatus**](doc//DeliveryApi.md#updateworkingstatus) | **POST** /delivery/update/status | 更新工作狀態
 *FilesApi* | [**deleteFile**](doc//FilesApi.md#deletefile) | **DELETE** /files/delete | 刪除文件
 *FilesApi* | [**downloadFile**](doc//FilesApi.md#downloadfile) | **GET** /files/download | 下載文件
@@ -168,6 +171,16 @@ Class | Method | HTTP request | Description
 *ProductsApi* | [**getProduct**](doc//ProductsApi.md#getproduct) | **GET** /products/{id} | 根據ID獲取商品
 *ProductsApi* | [**getProductsBySearch**](doc//ProductsApi.md#getproductsbysearch) | **GET** /products/search | 搜索商品
 *ProductsApi* | [**updateProduct**](doc//ProductsApi.md#updateproduct) | **POST** /products/update | 更新商品
+*PromoCodesApi* | [**applyPromoCode**](doc//PromoCodesApi.md#applypromocode) | **POST** /promo-codes/apply | 申請推廣碼
+*PromoCodesApi* | [**batchReviewPromoCodes**](doc//PromoCodesApi.md#batchreviewpromocodes) | **POST** /promo-codes/batch-review | 批量審核推廣碼
+*PromoCodesApi* | [**deletePromoCode**](doc//PromoCodesApi.md#deletepromocode) | **DELETE** /promo-codes/{code} | 刪除推廣碼
+*PromoCodesApi* | [**getMyPromoCode**](doc//PromoCodesApi.md#getmypromocode) | **GET** /promo-codes/my-promo-code | 獲取我的推廣碼
+*PromoCodesApi* | [**getPromoCode**](doc//PromoCodesApi.md#getpromocode) | **GET** /promo-codes/{code} | 查詢推廣碼詳情
+*PromoCodesApi* | [**getPromoCodeUsers**](doc//PromoCodesApi.md#getpromocodeusers) | **GET** /promo-codes/{code}/users | 獲取推廣碼註冊的用戶列表
+*PromoCodesApi* | [**registerWithPromoCode**](doc//PromoCodesApi.md#registerwithpromocode) | **POST** /promo-codes/register/{promoCode} | 使用推廣碼註冊
+*PromoCodesApi* | [**reviewPromoCode**](doc//PromoCodesApi.md#reviewpromocode) | **POST** /promo-codes/{code}/review | 審核推廣碼
+*PromoCodesApi* | [**searchPromoCodes**](doc//PromoCodesApi.md#searchpromocodes) | **GET** /promo-codes/search | 搜尋推廣碼
+*PromoCodesApi* | [**updateMyPromoCode**](doc//PromoCodesApi.md#updatemypromocode) | **PUT** /promo-codes/my-promo-code | 編輯我的推廣碼
 *PublicControllerApi* | [**test**](doc//PublicControllerApi.md#test) | **GET** /public/ | 
 *SseApi* | [**broadcastMessage**](doc//SseApi.md#broadcastmessage) | **POST** /sse/broadcast | 廣播消息
 *SseApi* | [**connect**](doc//SseApi.md#connect) | **GET** /sse/connect/{clientId} | 建立 SSE 連接
@@ -176,6 +189,7 @@ Class | Method | HTTP request | Description
 *StakingApi* | [**applyStaking**](doc//StakingApi.md#applystaking) | **POST** /staking/apply | 申請質押
 *StakingApi* | [**getStakingList**](doc//StakingApi.md#getstakinglist) | **GET** /staking/list | 獲取質押記錄列表
 *StakingApi* | [**unfreezeStaking**](doc//StakingApi.md#unfreezestaking) | **POST** /staking/unfreeze | 申請解除質押
+*StoresApi* | [**createStore**](doc//StoresApi.md#createstore) | **POST** /stores/create | 創建商店
 *StoresApi* | [**getMyStore**](doc//StoresApi.md#getmystore) | **GET** /stores/my-store | 獲取當前用戶的商店
 *StoresApi* | [**getStoreAnalytics**](doc//StoresApi.md#getstoreanalytics) | **GET** /stores/analytics | 獲取商店分析數據
 *StoresApi* | [**getStoreBySellerId**](doc//StoresApi.md#getstorebysellerid) | **GET** /stores/{sellerId} | 根據賣家ID獲取商店信息
@@ -190,6 +204,8 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
+ - [BatchReviewPromoCodeParam](doc//BatchReviewPromoCodeParam.md)
+ - [BatchReviewResult](doc//BatchReviewResult.md)
  - [CartItem](doc//CartItem.md)
  - [CartSummaryDTO](doc//CartSummaryDTO.md)
  - [ChangePasswordParam](doc//ChangePasswordParam.md)
@@ -201,12 +217,15 @@ Class | Method | HTTP request | Description
  - [ChatSessionQueryParam](doc//ChatSessionQueryParam.md)
  - [ColdWallet](doc//ColdWallet.md)
  - [ColdWalletStatusEnum](doc//ColdWalletStatusEnum.md)
+ - [CreatePromoCodeParam](doc//CreatePromoCodeParam.md)
  - [CreateRechargeParam](doc//CreateRechargeParam.md)
  - [CreateWithdrawParam](doc//CreateWithdrawParam.md)
  - [CustomerStats](doc//CustomerStats.md)
  - [DeliveryDetail](doc//DeliveryDetail.md)
  - [DeliveryReportTypeEnum](doc//DeliveryReportTypeEnum.md)
  - [Deliveryer](doc//Deliveryer.md)
+ - [DeliveryerRegistrationParam](doc//DeliveryerRegistrationParam.md)
+ - [DeliveryerUpdateParam](doc//DeliveryerUpdateParam.md)
  - [Dispute](doc//Dispute.md)
  - [DisputeCreateParam](doc//DisputeCreateParam.md)
  - [DisputeQueryResult](doc//DisputeQueryResult.md)
@@ -232,11 +251,13 @@ Class | Method | HTTP request | Description
  - [PageDispute](doc//PageDispute.md)
  - [PageOrder](doc//PageOrder.md)
  - [PageProduct](doc//PageProduct.md)
+ - [PagePromoCode](doc//PagePromoCode.md)
  - [PageRecharge](doc//PageRecharge.md)
  - [PageStaking](doc//PageStaking.md)
  - [PageTransaction](doc//PageTransaction.md)
  - [PageUser](doc//PageUser.md)
  - [PageWithdraw](doc//PageWithdraw.md)
+ - [Pageable](doc//Pageable.md)
  - [PageableObject](doc//PageableObject.md)
  - [PasswordResetParam](doc//PasswordResetParam.md)
  - [Product](doc//Product.md)
@@ -245,16 +266,21 @@ Class | Method | HTTP request | Description
  - [ProductStats](doc//ProductStats.md)
  - [ProductStatusEnum](doc//ProductStatusEnum.md)
  - [ProductUpdateParam](doc//ProductUpdateParam.md)
+ - [PromoCode](doc//PromoCode.md)
+ - [PromoCodeStatusEnum](doc//PromoCodeStatusEnum.md)
  - [ProtocolEnum](doc//ProtocolEnum.md)
  - [Recharge](doc//Recharge.md)
  - [RechargeSearchParam](doc//RechargeSearchParam.md)
  - [RechargeStatusEnum](doc//RechargeStatusEnum.md)
  - [RegisterParam](doc//RegisterParam.md)
+ - [ReviewFailure](doc//ReviewFailure.md)
+ - [ReviewPromoCodeParam](doc//ReviewPromoCodeParam.md)
  - [SalesStats](doc//SalesStats.md)
  - [SortObject](doc//SortObject.md)
  - [Staking](doc//Staking.md)
  - [Store](doc//Store.md)
  - [StoreAnalyticsDTO](doc//StoreAnalyticsDTO.md)
+ - [StoreCreateParam](doc//StoreCreateParam.md)
  - [StoreUpdateParam](doc//StoreUpdateParam.md)
  - [TaiwanPostalArea](doc//TaiwanPostalArea.md)
  - [TopDisputedProductDTO](doc//TopDisputedProductDTO.md)
@@ -264,6 +290,7 @@ Class | Method | HTTP request | Description
  - [Transaction](doc//Transaction.md)
  - [TransactionTypeEnum](doc//TransactionTypeEnum.md)
  - [UpdateDeliveryOrderParam](doc//UpdateDeliveryOrderParam.md)
+ - [UpdatePromoCodeParam](doc//UpdatePromoCodeParam.md)
  - [User](doc//User.md)
  - [UserInfo](doc//UserInfo.md)
  - [UserProfileUpdateParam](doc//UserProfileUpdateParam.md)

@@ -23,6 +23,7 @@ class User {
     this.email,
     this.avatar,
     this.remark,
+    this.promoCode,
     this.createdAt,
     this.updatedAt,
     this.admin,
@@ -117,6 +118,15 @@ class User {
   ///
   String? remark;
 
+  /// 註冊推廣碼
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? promoCode;
+
   /// 創建時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -155,6 +165,7 @@ class User {
     other.email == email &&
     other.avatar == avatar &&
     other.remark == remark &&
+    other.promoCode == promoCode &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
     other.admin == admin;
@@ -172,12 +183,13 @@ class User {
     (email == null ? 0 : email!.hashCode) +
     (avatar == null ? 0 : avatar!.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
+    (promoCode == null ? 0 : promoCode!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (admin == null ? 0 : admin!.hashCode);
 
   @override
-  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin]';
+  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, promoCode=$promoCode, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -231,6 +243,11 @@ class User {
     } else {
       json[r'remark'] = null;
     }
+    if (this.promoCode != null) {
+      json[r'promoCode'] = this.promoCode;
+    } else {
+      json[r'promoCode'] = null;
+    }
     if (this.createdAt != null) {
       json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
     } else {
@@ -278,6 +295,7 @@ class User {
         email: mapValueOfType<String>(json, r'email'),
         avatar: mapValueOfType<String>(json, r'avatar'),
         remark: mapValueOfType<String>(json, r'remark'),
+        promoCode: mapValueOfType<String>(json, r'promoCode'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         admin: mapValueOfType<bool>(json, r'admin'),

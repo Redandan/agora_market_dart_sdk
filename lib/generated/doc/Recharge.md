@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **amount** | **num** | 充值金額 | [optional] 
 **currency** | **String** | 貨幣 | [optional] 
 **status** | [**RechargeStatusEnum**](RechargeStatusEnum.md) |  | [optional] 
+**protocolEnum** | [**ProtocolEnum**](ProtocolEnum.md) |  | [optional] 
 **txHash** | **String** | 交易Hash | [optional] 
 **receiveAddress** | **String** | 接收地址 | [optional] 
 **coldWalletId** | **int** | 冷錢包ID | [optional] 
@@ -21,7 +22,6 @@ Name | Type | Description | Notes
 **expireTime** | [**DateTime**](DateTime.md) | 過期時間 | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | 最後更新時間 | [optional] 
 **completedAt** | [**DateTime**](DateTime.md) | 完成時間 | [optional] 
-**protocolEnum** | **String** | 協議 | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

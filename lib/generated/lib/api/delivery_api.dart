@@ -138,6 +138,62 @@ class DeliveryApi {
     return null;
   }
 
+  /// 註冊配送員
+  ///
+  /// 用戶註冊成為配送員
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [DeliveryerRegistrationParam] deliveryerRegistrationParam (required):
+  Future<Response> registerDeliveryerWithHttpInfo(DeliveryerRegistrationParam deliveryerRegistrationParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/delivery/register';
+
+    // ignore: prefer_final_locals
+    Object? postBody = deliveryerRegistrationParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 註冊配送員
+  ///
+  /// 用戶註冊成為配送員
+  ///
+  /// Parameters:
+  ///
+  /// * [DeliveryerRegistrationParam] deliveryerRegistrationParam (required):
+  Future<Deliveryer?> registerDeliveryer(DeliveryerRegistrationParam deliveryerRegistrationParam,) async {
+    final response = await registerDeliveryerWithHttpInfo(deliveryerRegistrationParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Deliveryer',) as Deliveryer;
+    
+    }
+    return null;
+  }
+
   /// 更新配送訂單狀態
   ///
   /// 更新當前配送訂單的狀態
@@ -181,6 +237,62 @@ class DeliveryApi {
   /// * [UpdateDeliveryOrderParam] updateDeliveryOrderParam:
   Future<Deliveryer?> updateDeliveryOrder({ UpdateDeliveryOrderParam? updateDeliveryOrderParam, }) async {
     final response = await updateDeliveryOrderWithHttpInfo( updateDeliveryOrderParam: updateDeliveryOrderParam, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Deliveryer',) as Deliveryer;
+    
+    }
+    return null;
+  }
+
+  /// 更新配送員資料
+  ///
+  /// 用戶更新自己的配送員資料
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [DeliveryerUpdateParam] deliveryerUpdateParam (required):
+  Future<Response> updateDeliveryerWithHttpInfo(DeliveryerUpdateParam deliveryerUpdateParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/delivery/update';
+
+    // ignore: prefer_final_locals
+    Object? postBody = deliveryerUpdateParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 更新配送員資料
+  ///
+  /// 用戶更新自己的配送員資料
+  ///
+  /// Parameters:
+  ///
+  /// * [DeliveryerUpdateParam] deliveryerUpdateParam (required):
+  Future<Deliveryer?> updateDeliveryer(DeliveryerUpdateParam deliveryerUpdateParam,) async {
+    final response = await updateDeliveryerWithHttpInfo(deliveryerUpdateParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
