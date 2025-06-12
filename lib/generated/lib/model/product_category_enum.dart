@@ -10,7 +10,7 @@
 
 part of openapi.api;
 
-/// 商品分類
+/// 商品分類枚舉
 class ProductCategoryEnum {
   /// Instantiate a new enum with the provided [value].
   const ProductCategoryEnum._(this.value);
@@ -24,24 +24,46 @@ class ProductCategoryEnum {
   String toJson() => value;
 
   static const ELECTRONICS = ProductCategoryEnum._(r'ELECTRONICS');
-  static const FOOD = ProductCategoryEnum._(r'FOOD');
+  static const MOBILE = ProductCategoryEnum._(r'MOBILE');
   static const CLOTHING = ProductCategoryEnum._(r'CLOTHING');
-  static const HOME = ProductCategoryEnum._(r'HOME');
+  static const SHOES = ProductCategoryEnum._(r'SHOES');
+  static const BAGS = ProductCategoryEnum._(r'BAGS');
   static const BEAUTY = ProductCategoryEnum._(r'BEAUTY');
-  static const BOOKS = ProductCategoryEnum._(r'BOOKS');
+  static const HEALTH = ProductCategoryEnum._(r'HEALTH');
+  static const FOOD = ProductCategoryEnum._(r'FOOD');
+  static const HOME = ProductCategoryEnum._(r'HOME');
+  static const FURNITURE = ProductCategoryEnum._(r'FURNITURE');
+  static const BABY = ProductCategoryEnum._(r'BABY');
   static const TOYS = ProductCategoryEnum._(r'TOYS');
+  static const PET_SUPPLIES = ProductCategoryEnum._(r'PET_SUPPLIES');
+  static const SPORTS = ProductCategoryEnum._(r'SPORTS');
+  static const OUTDOOR = ProductCategoryEnum._(r'OUTDOOR');
+  static const AUTOMOTIVE = ProductCategoryEnum._(r'AUTOMOTIVE');
+  static const BOOKS = ProductCategoryEnum._(r'BOOKS');
+  static const SECOND_HAND = ProductCategoryEnum._(r'SECOND_HAND');
   static const OTHER = ProductCategoryEnum._(r'OTHER');
   static const unknownDefaultOpenApi = ProductCategoryEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][ProductCategoryEnum].
   static const values = <ProductCategoryEnum>[
     ELECTRONICS,
-    FOOD,
+    MOBILE,
     CLOTHING,
-    HOME,
+    SHOES,
+    BAGS,
     BEAUTY,
-    BOOKS,
+    HEALTH,
+    FOOD,
+    HOME,
+    FURNITURE,
+    BABY,
     TOYS,
+    PET_SUPPLIES,
+    SPORTS,
+    OUTDOOR,
+    AUTOMOTIVE,
+    BOOKS,
+    SECOND_HAND,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -83,12 +105,23 @@ class ProductCategoryEnumTypeTransformer {
     if (data != null) {
       switch (data) {
         case r'ELECTRONICS': return ProductCategoryEnum.ELECTRONICS;
-        case r'FOOD': return ProductCategoryEnum.FOOD;
+        case r'MOBILE': return ProductCategoryEnum.MOBILE;
         case r'CLOTHING': return ProductCategoryEnum.CLOTHING;
-        case r'HOME': return ProductCategoryEnum.HOME;
+        case r'SHOES': return ProductCategoryEnum.SHOES;
+        case r'BAGS': return ProductCategoryEnum.BAGS;
         case r'BEAUTY': return ProductCategoryEnum.BEAUTY;
-        case r'BOOKS': return ProductCategoryEnum.BOOKS;
+        case r'HEALTH': return ProductCategoryEnum.HEALTH;
+        case r'FOOD': return ProductCategoryEnum.FOOD;
+        case r'HOME': return ProductCategoryEnum.HOME;
+        case r'FURNITURE': return ProductCategoryEnum.FURNITURE;
+        case r'BABY': return ProductCategoryEnum.BABY;
         case r'TOYS': return ProductCategoryEnum.TOYS;
+        case r'PET_SUPPLIES': return ProductCategoryEnum.PET_SUPPLIES;
+        case r'SPORTS': return ProductCategoryEnum.SPORTS;
+        case r'OUTDOOR': return ProductCategoryEnum.OUTDOOR;
+        case r'AUTOMOTIVE': return ProductCategoryEnum.AUTOMOTIVE;
+        case r'BOOKS': return ProductCategoryEnum.BOOKS;
+        case r'SECOND_HAND': return ProductCategoryEnum.SECOND_HAND;
         case r'OTHER': return ProductCategoryEnum.OTHER;
         case r'unknown_default_open_api': return ProductCategoryEnum.unknownDefaultOpenApi;
         default:

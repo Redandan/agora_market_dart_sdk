@@ -162,18 +162,6 @@ void main() {
       // TODO
     });
 
-    // 是否支持指定出貨日期
-    // bool supportsScheduledShipping
-    test('to test the property `supportsScheduledShipping`', () async {
-      // TODO
-    });
-
-    // 可選擇的出貨日期範圍（天數）
-    // int shippingDateRange
-    test('to test the property `shippingDateRange`', () async {
-      // TODO
-    });
-
 
   });
 

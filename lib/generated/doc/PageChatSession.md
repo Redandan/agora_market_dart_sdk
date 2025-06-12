@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalPages** | **int** |  | [optional] 
 **totalElements** | **int** |  | [optional] 
-**first** | **bool** |  | [optional] 
 **last** | **bool** |  | [optional] 
-**pageable** | [**PageableObject**](PageableObject.md) |  | [optional] 
 **numberOfElements** | **int** |  | [optional] 
+**first** | **bool** |  | [optional] 
+**pageable** | [**PageableObject**](PageableObject.md) |  | [optional] 
 **size** | **int** |  | [optional] 
 **content** | [**List<ChatSession>**](ChatSession.md) |  | [optional] [default to const []]
 **number** | **int** |  | [optional] 

@@ -33,8 +33,6 @@ Name | Type | Description | Notes
 **supportsImmediateShipping** | **bool** | 是否支持即時出貨 | [optional] 
 **shippingDescription** | **String** | 出貨說明 | [optional] 
 **estimatedDeliveryDays** | **int** | 預計送達時間（天數） | [optional] 
-**supportsScheduledShipping** | **bool** | 是否支持指定出貨日期 | [optional] 
-**shippingDateRange** | **int** | 可選擇的出貨日期範圍（天數） | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -38,8 +38,6 @@ class ProductCreateParam {
     this.supportsImmediateShipping,
     this.shippingDescription,
     this.estimatedDeliveryDays,
-    this.supportsScheduledShipping,
-    this.shippingDateRange,
   });
 
   /// 商品名稱
@@ -205,26 +203,6 @@ class ProductCreateParam {
   ///
   int? estimatedDeliveryDays;
 
-  /// 是否支持指定出貨日期
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? supportsScheduledShipping;
-
-  /// 可選擇的出貨日期範圍（天數）
-  ///
-  /// Minimum value: 1
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? shippingDateRange;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductCreateParam &&
     other.title == title &&
@@ -251,9 +229,7 @@ class ProductCreateParam {
     other.dailyShippingDeadline == dailyShippingDeadline &&
     other.supportsImmediateShipping == supportsImmediateShipping &&
     other.shippingDescription == shippingDescription &&
-    other.estimatedDeliveryDays == estimatedDeliveryDays &&
-    other.supportsScheduledShipping == supportsScheduledShipping &&
-    other.shippingDateRange == shippingDateRange;
+    other.estimatedDeliveryDays == estimatedDeliveryDays;
 
   @override
   int get hashCode =>
@@ -282,12 +258,10 @@ class ProductCreateParam {
     (dailyShippingDeadline == null ? 0 : dailyShippingDeadline!.hashCode) +
     (supportsImmediateShipping == null ? 0 : supportsImmediateShipping!.hashCode) +
     (shippingDescription == null ? 0 : shippingDescription!.hashCode) +
-    (estimatedDeliveryDays == null ? 0 : estimatedDeliveryDays!.hashCode) +
-    (supportsScheduledShipping == null ? 0 : supportsScheduledShipping!.hashCode) +
-    (shippingDateRange == null ? 0 : shippingDateRange!.hashCode);
+    (estimatedDeliveryDays == null ? 0 : estimatedDeliveryDays!.hashCode);
 
   @override
-  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, sku=$sku, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, supportsImmediateShipping=$supportsImmediateShipping, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange]';
+  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, sku=$sku, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, supportsImmediateShipping=$supportsImmediateShipping, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -364,16 +338,6 @@ class ProductCreateParam {
     } else {
       json[r'estimatedDeliveryDays'] = null;
     }
-    if (this.supportsScheduledShipping != null) {
-      json[r'supportsScheduledShipping'] = this.supportsScheduledShipping;
-    } else {
-      json[r'supportsScheduledShipping'] = null;
-    }
-    if (this.shippingDateRange != null) {
-      json[r'shippingDateRange'] = this.shippingDateRange;
-    } else {
-      json[r'shippingDateRange'] = null;
-    }
     return json;
   }
 
@@ -423,8 +387,6 @@ class ProductCreateParam {
         supportsImmediateShipping: mapValueOfType<bool>(json, r'supportsImmediateShipping'),
         shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),
         estimatedDeliveryDays: mapValueOfType<int>(json, r'estimatedDeliveryDays'),
-        supportsScheduledShipping: mapValueOfType<bool>(json, r'supportsScheduledShipping'),
-        shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
       );
     }
     return null;
