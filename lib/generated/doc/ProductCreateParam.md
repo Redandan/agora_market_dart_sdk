@@ -18,8 +18,8 @@ Name | Type | Description | Notes
 **imageUrls** | **Set<String>** | 商品圖片URL集合 | [optional] [default to const {}]
 **longitude** | **double** | 取件地址經度 | 
 **latitude** | **double** | 取件地址緯度 | 
-**pickupTimeStartString** | [**LocalTime**](LocalTime.md) |  | 
-**pickupTimeEndString** | [**LocalTime**](LocalTime.md) |  | 
+**pickupTimeStart** | [**LocalTime**](LocalTime.md) |  | 
+**pickupTimeEnd** | [**LocalTime**](LocalTime.md) |  | 
 **pickupAddress** | **String** | 取件地址 | 
 **sku** | **String** | 商品SKU或條碼 | [optional] 
 **brand** | **String** | 品牌名稱 | [optional] 

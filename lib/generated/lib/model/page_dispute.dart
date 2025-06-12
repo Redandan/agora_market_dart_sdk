@@ -17,12 +17,12 @@ class PageDispute {
     this.totalElements,
     this.first,
     this.last,
+    this.numberOfElements,
     this.pageable,
     this.size,
     this.content = const [],
     this.number,
     this.sort,
-    this.numberOfElements,
     this.empty,
   });
 
@@ -64,6 +64,14 @@ class PageDispute {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  int? numberOfElements;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   PageableObject? pageable;
 
   ///
@@ -98,14 +106,6 @@ class PageDispute {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? numberOfElements;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? empty;
 
   @override
@@ -114,12 +114,12 @@ class PageDispute {
     other.totalElements == totalElements &&
     other.first == first &&
     other.last == last &&
+    other.numberOfElements == numberOfElements &&
     other.pageable == pageable &&
     other.size == size &&
     _deepEquality.equals(other.content, content) &&
     other.number == number &&
     other.sort == sort &&
-    other.numberOfElements == numberOfElements &&
     other.empty == empty;
 
   @override
@@ -129,16 +129,16 @@ class PageDispute {
     (totalElements == null ? 0 : totalElements!.hashCode) +
     (first == null ? 0 : first!.hashCode) +
     (last == null ? 0 : last!.hashCode) +
+    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
     (pageable == null ? 0 : pageable!.hashCode) +
     (size == null ? 0 : size!.hashCode) +
     (content.hashCode) +
     (number == null ? 0 : number!.hashCode) +
     (sort == null ? 0 : sort!.hashCode) +
-    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageDispute[totalPages=$totalPages, totalElements=$totalElements, first=$first, last=$last, pageable=$pageable, size=$size, content=$content, number=$number, sort=$sort, numberOfElements=$numberOfElements, empty=$empty]';
+  String toString() => 'PageDispute[totalPages=$totalPages, totalElements=$totalElements, first=$first, last=$last, numberOfElements=$numberOfElements, pageable=$pageable, size=$size, content=$content, number=$number, sort=$sort, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -162,6 +162,11 @@ class PageDispute {
     } else {
       json[r'last'] = null;
     }
+    if (this.numberOfElements != null) {
+      json[r'numberOfElements'] = this.numberOfElements;
+    } else {
+      json[r'numberOfElements'] = null;
+    }
     if (this.pageable != null) {
       json[r'pageable'] = this.pageable;
     } else {
@@ -182,11 +187,6 @@ class PageDispute {
       json[r'sort'] = this.sort;
     } else {
       json[r'sort'] = null;
-    }
-    if (this.numberOfElements != null) {
-      json[r'numberOfElements'] = this.numberOfElements;
-    } else {
-      json[r'numberOfElements'] = null;
     }
     if (this.empty != null) {
       json[r'empty'] = this.empty;
@@ -219,12 +219,12 @@ class PageDispute {
         totalElements: mapValueOfType<int>(json, r'totalElements'),
         first: mapValueOfType<bool>(json, r'first'),
         last: mapValueOfType<bool>(json, r'last'),
+        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
         pageable: PageableObject.fromJson(json[r'pageable']),
         size: mapValueOfType<int>(json, r'size'),
         content: Dispute.listFromJson(json[r'content']),
         number: mapValueOfType<int>(json, r'number'),
         sort: SortObject.fromJson(json[r'sort']),
-        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
         empty: mapValueOfType<bool>(json, r'empty'),
       );
     }

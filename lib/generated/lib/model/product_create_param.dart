@@ -23,8 +23,8 @@ class ProductCreateParam {
     this.imageUrls = const {},
     required this.longitude,
     required this.latitude,
-    required this.pickupTimeStartString,
-    required this.pickupTimeEndString,
+    required this.pickupTimeStart,
+    required this.pickupTimeEnd,
     required this.pickupAddress,
     this.sku,
     this.brand,
@@ -89,9 +89,9 @@ class ProductCreateParam {
   /// Maximum value: 90.0
   double latitude;
 
-  LocalTime pickupTimeStartString;
+  LocalTime pickupTimeStart;
 
-  LocalTime pickupTimeEndString;
+  LocalTime pickupTimeEnd;
 
   /// 取件地址
   String pickupAddress;
@@ -237,8 +237,8 @@ class ProductCreateParam {
     _deepEquality.equals(other.imageUrls, imageUrls) &&
     other.longitude == longitude &&
     other.latitude == latitude &&
-    other.pickupTimeStartString == pickupTimeStartString &&
-    other.pickupTimeEndString == pickupTimeEndString &&
+    other.pickupTimeStart == pickupTimeStart &&
+    other.pickupTimeEnd == pickupTimeEnd &&
     other.pickupAddress == pickupAddress &&
     other.sku == sku &&
     other.brand == brand &&
@@ -268,8 +268,8 @@ class ProductCreateParam {
     (imageUrls.hashCode) +
     (longitude.hashCode) +
     (latitude.hashCode) +
-    (pickupTimeStartString.hashCode) +
-    (pickupTimeEndString.hashCode) +
+    (pickupTimeStart.hashCode) +
+    (pickupTimeEnd.hashCode) +
     (pickupAddress.hashCode) +
     (sku == null ? 0 : sku!.hashCode) +
     (brand == null ? 0 : brand!.hashCode) +
@@ -287,7 +287,7 @@ class ProductCreateParam {
     (shippingDateRange == null ? 0 : shippingDateRange!.hashCode);
 
   @override
-  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, pickupTimeStartString=$pickupTimeStartString, pickupTimeEndString=$pickupTimeEndString, pickupAddress=$pickupAddress, sku=$sku, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, supportsImmediateShipping=$supportsImmediateShipping, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange]';
+  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, sku=$sku, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, supportsImmediateShipping=$supportsImmediateShipping, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -305,8 +305,8 @@ class ProductCreateParam {
       json[r'imageUrls'] = this.imageUrls.toList(growable: false);
       json[r'longitude'] = this.longitude;
       json[r'latitude'] = this.latitude;
-      json[r'pickupTimeStartString'] = this.pickupTimeStartString;
-      json[r'pickupTimeEndString'] = this.pickupTimeEndString;
+      json[r'pickupTimeStart'] = this.pickupTimeStart;
+      json[r'pickupTimeEnd'] = this.pickupTimeEnd;
       json[r'pickupAddress'] = this.pickupAddress;
     if (this.sku != null) {
       json[r'sku'] = this.sku;
@@ -408,8 +408,8 @@ class ProductCreateParam {
             : const {},
         longitude: mapValueOfType<double>(json, r'longitude')!,
         latitude: mapValueOfType<double>(json, r'latitude')!,
-        pickupTimeStartString: LocalTime.fromJson(json[r'pickupTimeStartString'])!,
-        pickupTimeEndString: LocalTime.fromJson(json[r'pickupTimeEndString'])!,
+        pickupTimeStart: LocalTime.fromJson(json[r'pickupTimeStart'])!,
+        pickupTimeEnd: LocalTime.fromJson(json[r'pickupTimeEnd'])!,
         pickupAddress: mapValueOfType<String>(json, r'pickupAddress')!,
         sku: mapValueOfType<String>(json, r'sku'),
         brand: mapValueOfType<String>(json, r'brand'),
@@ -480,8 +480,8 @@ class ProductCreateParam {
     'category',
     'longitude',
     'latitude',
-    'pickupTimeStartString',
-    'pickupTimeEndString',
+    'pickupTimeStart',
+    'pickupTimeEnd',
     'pickupAddress',
   };
 }

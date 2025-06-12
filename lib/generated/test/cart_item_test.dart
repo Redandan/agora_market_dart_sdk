@@ -142,13 +142,13 @@ void main() {
       // TODO
     });
 
-    // String specificationDescription
-    test('to test the property `specificationDescription`', () async {
+    // String purchaseRestrictionReason
+    test('to test the property `purchaseRestrictionReason`', () async {
       // TODO
     });
 
-    // String purchaseRestrictionReason
-    test('to test the property `purchaseRestrictionReason`', () async {
+    // String specificationDescription
+    test('to test the property `specificationDescription`', () async {
       // TODO
     });
 

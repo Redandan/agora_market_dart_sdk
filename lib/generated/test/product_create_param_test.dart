@@ -75,13 +75,13 @@ void main() {
       // TODO
     });
 
-    // LocalTime pickupTimeStartString
-    test('to test the property `pickupTimeStartString`', () async {
+    // LocalTime pickupTimeStart
+    test('to test the property `pickupTimeStart`', () async {
       // TODO
     });
 
-    // LocalTime pickupTimeEndString
-    test('to test the property `pickupTimeEndString`', () async {
+    // LocalTime pickupTimeEnd
+    test('to test the property `pickupTimeEnd`', () async {
       // TODO
     });
 

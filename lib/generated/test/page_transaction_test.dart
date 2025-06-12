@@ -36,6 +36,11 @@ void main() {
       // TODO
     });
 
+    // int numberOfElements
+    test('to test the property `numberOfElements`', () async {
+      // TODO
+    });
+
     // PageableObject pageable
     test('to test the property `pageable`', () async {
       // TODO
@@ -58,11 +63,6 @@ void main() {
 
     // SortObject sort
     test('to test the property `sort`', () async {
-      // TODO
-    });
-
-    // int numberOfElements
-    test('to test the property `numberOfElements`', () async {
       // TODO
     });
 

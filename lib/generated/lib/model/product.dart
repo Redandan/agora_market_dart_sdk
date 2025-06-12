@@ -26,8 +26,8 @@ class Product {
     required this.pickupAddress,
     required this.longitude,
     required this.latitude,
-    required this.pickupTimeStartString,
-    required this.pickupTimeEndString,
+    required this.pickupTimeStart,
+    required this.pickupTimeEnd,
     this.shippingPreparationHours,
     this.dailyShippingDeadline,
     this.supportsImmediateShipping,
@@ -48,10 +48,10 @@ class Product {
     this.minStock,
     this.stockAlertThreshold,
     this.allowNegativeStock,
-    this.shippingTimeDescription,
     this.stockBelowMinimum,
     this.stockLow,
     this.inStock,
+    this.shippingTimeDescription,
   });
 
   /// 商品ID
@@ -110,9 +110,9 @@ class Product {
   /// Maximum value: 90.0
   double latitude;
 
-  LocalTime pickupTimeStartString;
+  LocalTime pickupTimeStart;
 
-  LocalTime pickupTimeEndString;
+  LocalTime pickupTimeEnd;
 
   /// 出貨準備時間（小時）
   ///
@@ -297,14 +297,6 @@ class Product {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? shippingTimeDescription;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? stockBelowMinimum;
 
   ///
@@ -323,6 +315,14 @@ class Product {
   ///
   bool? inStock;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? shippingTimeDescription;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Product &&
     other.id == id &&
@@ -338,8 +338,8 @@ class Product {
     other.pickupAddress == pickupAddress &&
     other.longitude == longitude &&
     other.latitude == latitude &&
-    other.pickupTimeStartString == pickupTimeStartString &&
-    other.pickupTimeEndString == pickupTimeEndString &&
+    other.pickupTimeStart == pickupTimeStart &&
+    other.pickupTimeEnd == pickupTimeEnd &&
     other.shippingPreparationHours == shippingPreparationHours &&
     other.dailyShippingDeadline == dailyShippingDeadline &&
     other.supportsImmediateShipping == supportsImmediateShipping &&
@@ -360,10 +360,10 @@ class Product {
     other.minStock == minStock &&
     other.stockAlertThreshold == stockAlertThreshold &&
     other.allowNegativeStock == allowNegativeStock &&
-    other.shippingTimeDescription == shippingTimeDescription &&
     other.stockBelowMinimum == stockBelowMinimum &&
     other.stockLow == stockLow &&
-    other.inStock == inStock;
+    other.inStock == inStock &&
+    other.shippingTimeDescription == shippingTimeDescription;
 
   @override
   int get hashCode =>
@@ -381,8 +381,8 @@ class Product {
     (pickupAddress.hashCode) +
     (longitude.hashCode) +
     (latitude.hashCode) +
-    (pickupTimeStartString.hashCode) +
-    (pickupTimeEndString.hashCode) +
+    (pickupTimeStart.hashCode) +
+    (pickupTimeEnd.hashCode) +
     (shippingPreparationHours == null ? 0 : shippingPreparationHours!.hashCode) +
     (dailyShippingDeadline == null ? 0 : dailyShippingDeadline!.hashCode) +
     (supportsImmediateShipping == null ? 0 : supportsImmediateShipping!.hashCode) +
@@ -403,13 +403,13 @@ class Product {
     (minStock == null ? 0 : minStock!.hashCode) +
     (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
     (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode) +
-    (shippingTimeDescription == null ? 0 : shippingTimeDescription!.hashCode) +
     (stockBelowMinimum == null ? 0 : stockBelowMinimum!.hashCode) +
     (stockLow == null ? 0 : stockLow!.hashCode) +
-    (inStock == null ? 0 : inStock!.hashCode);
+    (inStock == null ? 0 : inStock!.hashCode) +
+    (shippingTimeDescription == null ? 0 : shippingTimeDescription!.hashCode);
 
   @override
-  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrls=$imageUrls, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStartString=$pickupTimeStartString, pickupTimeEndString=$pickupTimeEndString, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, supportsImmediateShipping=$supportsImmediateShipping, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, sku=$sku, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, shippingTimeDescription=$shippingTimeDescription, stockBelowMinimum=$stockBelowMinimum, stockLow=$stockLow, inStock=$inStock]';
+  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrls=$imageUrls, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, supportsImmediateShipping=$supportsImmediateShipping, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, sku=$sku, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, stockBelowMinimum=$stockBelowMinimum, stockLow=$stockLow, inStock=$inStock, shippingTimeDescription=$shippingTimeDescription]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -430,8 +430,8 @@ class Product {
       json[r'pickupAddress'] = this.pickupAddress;
       json[r'longitude'] = this.longitude;
       json[r'latitude'] = this.latitude;
-      json[r'pickupTimeStartString'] = this.pickupTimeStartString;
-      json[r'pickupTimeEndString'] = this.pickupTimeEndString;
+      json[r'pickupTimeStart'] = this.pickupTimeStart;
+      json[r'pickupTimeEnd'] = this.pickupTimeEnd;
     if (this.shippingPreparationHours != null) {
       json[r'shippingPreparationHours'] = this.shippingPreparationHours;
     } else {
@@ -524,11 +524,6 @@ class Product {
     } else {
       json[r'allowNegativeStock'] = null;
     }
-    if (this.shippingTimeDescription != null) {
-      json[r'shippingTimeDescription'] = this.shippingTimeDescription;
-    } else {
-      json[r'shippingTimeDescription'] = null;
-    }
     if (this.stockBelowMinimum != null) {
       json[r'stockBelowMinimum'] = this.stockBelowMinimum;
     } else {
@@ -543,6 +538,11 @@ class Product {
       json[r'inStock'] = this.inStock;
     } else {
       json[r'inStock'] = null;
+    }
+    if (this.shippingTimeDescription != null) {
+      json[r'shippingTimeDescription'] = this.shippingTimeDescription;
+    } else {
+      json[r'shippingTimeDescription'] = null;
     }
     return json;
   }
@@ -581,8 +581,8 @@ class Product {
         pickupAddress: mapValueOfType<String>(json, r'pickupAddress')!,
         longitude: mapValueOfType<double>(json, r'longitude')!,
         latitude: mapValueOfType<double>(json, r'latitude')!,
-        pickupTimeStartString: LocalTime.fromJson(json[r'pickupTimeStartString'])!,
-        pickupTimeEndString: LocalTime.fromJson(json[r'pickupTimeEndString'])!,
+        pickupTimeStart: LocalTime.fromJson(json[r'pickupTimeStart'])!,
+        pickupTimeEnd: LocalTime.fromJson(json[r'pickupTimeEnd'])!,
         shippingPreparationHours: mapValueOfType<int>(json, r'shippingPreparationHours'),
         dailyShippingDeadline: LocalTime.fromJson(json[r'dailyShippingDeadline']),
         supportsImmediateShipping: mapValueOfType<bool>(json, r'supportsImmediateShipping'),
@@ -603,10 +603,10 @@ class Product {
         minStock: mapValueOfType<int>(json, r'minStock'),
         stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
         allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
-        shippingTimeDescription: mapValueOfType<String>(json, r'shippingTimeDescription'),
         stockBelowMinimum: mapValueOfType<bool>(json, r'stockBelowMinimum'),
         stockLow: mapValueOfType<bool>(json, r'stockLow'),
         inStock: mapValueOfType<bool>(json, r'inStock'),
+        shippingTimeDescription: mapValueOfType<String>(json, r'shippingTimeDescription'),
       );
     }
     return null;
@@ -665,8 +665,8 @@ class Product {
     'pickupAddress',
     'longitude',
     'latitude',
-    'pickupTimeStartString',
-    'pickupTimeEndString',
+    'pickupTimeStart',
+    'pickupTimeEnd',
     'status',
   };
 }

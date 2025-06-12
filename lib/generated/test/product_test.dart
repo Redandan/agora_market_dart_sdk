@@ -93,13 +93,13 @@ void main() {
       // TODO
     });
 
-    // LocalTime pickupTimeStartString
-    test('to test the property `pickupTimeStartString`', () async {
+    // LocalTime pickupTimeStart
+    test('to test the property `pickupTimeStart`', () async {
       // TODO
     });
 
-    // LocalTime pickupTimeEndString
-    test('to test the property `pickupTimeEndString`', () async {
+    // LocalTime pickupTimeEnd
+    test('to test the property `pickupTimeEnd`', () async {
       // TODO
     });
 
@@ -221,11 +221,6 @@ void main() {
       // TODO
     });
 
-    // String shippingTimeDescription
-    test('to test the property `shippingTimeDescription`', () async {
-      // TODO
-    });
-
     // bool stockBelowMinimum
     test('to test the property `stockBelowMinimum`', () async {
       // TODO
@@ -238,6 +233,11 @@ void main() {
 
     // bool inStock
     test('to test the property `inStock`', () async {
+      // TODO
+    });
+
+    // String shippingTimeDescription
+    test('to test the property `shippingTimeDescription`', () async {
       // TODO
     });
 
