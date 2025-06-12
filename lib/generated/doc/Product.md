@@ -23,8 +23,8 @@ Name | Type | Description | Notes
 **latitude** | **double** | 取貨地址緯度 | 
 **pickupTimeStart** | [**LocalTime**](LocalTime.md) |  | 
 **pickupTimeEnd** | [**LocalTime**](LocalTime.md) |  | 
-**shippingPreparationHours** | **int** | 出貨準備時間（小時） | [optional] 
 **dailyShippingDeadline** | [**LocalTime**](LocalTime.md) |  | [optional] 
+**shippingPreparationHours** | **int** | 出貨準備時間（小時） | [optional] 
 **supportsImmediateShipping** | **bool** | 是否支持即時出貨 | [optional] 
 **shippingDescription** | **String** | 出貨說明 | [optional] 
 **estimatedDeliveryDays** | **int** | 預計送達時間（天數） | [optional] 
@@ -43,10 +43,10 @@ Name | Type | Description | Notes
 **minStock** | **int** | 最低庫存警告 | [optional] 
 **stockAlertThreshold** | **int** | 庫存預警閾值 | [optional] 
 **allowNegativeStock** | **bool** | 是否允許負庫存 | [optional] 
+**shippingTimeDescription** | **String** |  | [optional] 
+**inStock** | **bool** |  | [optional] 
 **stockBelowMinimum** | **bool** |  | [optional] 
 **stockLow** | **bool** |  | [optional] 
-**inStock** | **bool** |  | [optional] 
-**shippingTimeDescription** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

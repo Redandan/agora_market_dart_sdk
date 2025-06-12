@@ -103,14 +103,14 @@ void main() {
       // TODO
     });
 
-    // 出貨準備時間（小時）
-    // int shippingPreparationHours
-    test('to test the property `shippingPreparationHours`', () async {
+    // LocalTime dailyShippingDeadline
+    test('to test the property `dailyShippingDeadline`', () async {
       // TODO
     });
 
-    // LocalTime dailyShippingDeadline
-    test('to test the property `dailyShippingDeadline`', () async {
+    // 出貨準備時間（小時）
+    // int shippingPreparationHours
+    test('to test the property `shippingPreparationHours`', () async {
       // TODO
     });
 
@@ -221,13 +221,8 @@ void main() {
       // TODO
     });
 
-    // bool stockBelowMinimum
-    test('to test the property `stockBelowMinimum`', () async {
-      // TODO
-    });
-
-    // bool stockLow
-    test('to test the property `stockLow`', () async {
+    // String shippingTimeDescription
+    test('to test the property `shippingTimeDescription`', () async {
       // TODO
     });
 
@@ -236,8 +231,13 @@ void main() {
       // TODO
     });
 
-    // String shippingTimeDescription
-    test('to test the property `shippingTimeDescription`', () async {
+    // bool stockBelowMinimum
+    test('to test the property `stockBelowMinimum`', () async {
+      // TODO
+    });
+
+    // bool stockLow
+    test('to test the property `stockLow`', () async {
       // TODO
     });
 

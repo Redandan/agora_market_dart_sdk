@@ -28,8 +28,8 @@ class Product {
     required this.latitude,
     required this.pickupTimeStart,
     required this.pickupTimeEnd,
-    this.shippingPreparationHours,
     this.dailyShippingDeadline,
+    this.shippingPreparationHours,
     this.supportsImmediateShipping,
     this.shippingDescription,
     this.estimatedDeliveryDays,
@@ -48,10 +48,10 @@ class Product {
     this.minStock,
     this.stockAlertThreshold,
     this.allowNegativeStock,
+    this.shippingTimeDescription,
+    this.inStock,
     this.stockBelowMinimum,
     this.stockLow,
-    this.inStock,
-    this.shippingTimeDescription,
   });
 
   /// 商品ID
@@ -114,6 +114,14 @@ class Product {
 
   LocalTime pickupTimeEnd;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  LocalTime? dailyShippingDeadline;
+
   /// 出貨準備時間（小時）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -122,14 +130,6 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? shippingPreparationHours;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  LocalTime? dailyShippingDeadline;
 
   /// 是否支持即時出貨
   ///
@@ -297,15 +297,7 @@ class Product {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? stockBelowMinimum;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? stockLow;
+  String? shippingTimeDescription;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -321,7 +313,15 @@ class Product {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? shippingTimeDescription;
+  bool? stockBelowMinimum;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? stockLow;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Product &&
@@ -340,8 +340,8 @@ class Product {
     other.latitude == latitude &&
     other.pickupTimeStart == pickupTimeStart &&
     other.pickupTimeEnd == pickupTimeEnd &&
-    other.shippingPreparationHours == shippingPreparationHours &&
     other.dailyShippingDeadline == dailyShippingDeadline &&
+    other.shippingPreparationHours == shippingPreparationHours &&
     other.supportsImmediateShipping == supportsImmediateShipping &&
     other.shippingDescription == shippingDescription &&
     other.estimatedDeliveryDays == estimatedDeliveryDays &&
@@ -360,10 +360,10 @@ class Product {
     other.minStock == minStock &&
     other.stockAlertThreshold == stockAlertThreshold &&
     other.allowNegativeStock == allowNegativeStock &&
-    other.stockBelowMinimum == stockBelowMinimum &&
-    other.stockLow == stockLow &&
+    other.shippingTimeDescription == shippingTimeDescription &&
     other.inStock == inStock &&
-    other.shippingTimeDescription == shippingTimeDescription;
+    other.stockBelowMinimum == stockBelowMinimum &&
+    other.stockLow == stockLow;
 
   @override
   int get hashCode =>
@@ -383,8 +383,8 @@ class Product {
     (latitude.hashCode) +
     (pickupTimeStart.hashCode) +
     (pickupTimeEnd.hashCode) +
-    (shippingPreparationHours == null ? 0 : shippingPreparationHours!.hashCode) +
     (dailyShippingDeadline == null ? 0 : dailyShippingDeadline!.hashCode) +
+    (shippingPreparationHours == null ? 0 : shippingPreparationHours!.hashCode) +
     (supportsImmediateShipping == null ? 0 : supportsImmediateShipping!.hashCode) +
     (shippingDescription == null ? 0 : shippingDescription!.hashCode) +
     (estimatedDeliveryDays == null ? 0 : estimatedDeliveryDays!.hashCode) +
@@ -403,13 +403,13 @@ class Product {
     (minStock == null ? 0 : minStock!.hashCode) +
     (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
     (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode) +
-    (stockBelowMinimum == null ? 0 : stockBelowMinimum!.hashCode) +
-    (stockLow == null ? 0 : stockLow!.hashCode) +
+    (shippingTimeDescription == null ? 0 : shippingTimeDescription!.hashCode) +
     (inStock == null ? 0 : inStock!.hashCode) +
-    (shippingTimeDescription == null ? 0 : shippingTimeDescription!.hashCode);
+    (stockBelowMinimum == null ? 0 : stockBelowMinimum!.hashCode) +
+    (stockLow == null ? 0 : stockLow!.hashCode);
 
   @override
-  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrls=$imageUrls, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, supportsImmediateShipping=$supportsImmediateShipping, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, sku=$sku, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, stockBelowMinimum=$stockBelowMinimum, stockLow=$stockLow, inStock=$inStock, shippingTimeDescription=$shippingTimeDescription]';
+  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrls=$imageUrls, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, supportsImmediateShipping=$supportsImmediateShipping, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, sku=$sku, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, shippingTimeDescription=$shippingTimeDescription, inStock=$inStock, stockBelowMinimum=$stockBelowMinimum, stockLow=$stockLow]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -432,15 +432,15 @@ class Product {
       json[r'latitude'] = this.latitude;
       json[r'pickupTimeStart'] = this.pickupTimeStart;
       json[r'pickupTimeEnd'] = this.pickupTimeEnd;
-    if (this.shippingPreparationHours != null) {
-      json[r'shippingPreparationHours'] = this.shippingPreparationHours;
-    } else {
-      json[r'shippingPreparationHours'] = null;
-    }
     if (this.dailyShippingDeadline != null) {
       json[r'dailyShippingDeadline'] = this.dailyShippingDeadline;
     } else {
       json[r'dailyShippingDeadline'] = null;
+    }
+    if (this.shippingPreparationHours != null) {
+      json[r'shippingPreparationHours'] = this.shippingPreparationHours;
+    } else {
+      json[r'shippingPreparationHours'] = null;
     }
     if (this.supportsImmediateShipping != null) {
       json[r'supportsImmediateShipping'] = this.supportsImmediateShipping;
@@ -524,6 +524,16 @@ class Product {
     } else {
       json[r'allowNegativeStock'] = null;
     }
+    if (this.shippingTimeDescription != null) {
+      json[r'shippingTimeDescription'] = this.shippingTimeDescription;
+    } else {
+      json[r'shippingTimeDescription'] = null;
+    }
+    if (this.inStock != null) {
+      json[r'inStock'] = this.inStock;
+    } else {
+      json[r'inStock'] = null;
+    }
     if (this.stockBelowMinimum != null) {
       json[r'stockBelowMinimum'] = this.stockBelowMinimum;
     } else {
@@ -533,16 +543,6 @@ class Product {
       json[r'stockLow'] = this.stockLow;
     } else {
       json[r'stockLow'] = null;
-    }
-    if (this.inStock != null) {
-      json[r'inStock'] = this.inStock;
-    } else {
-      json[r'inStock'] = null;
-    }
-    if (this.shippingTimeDescription != null) {
-      json[r'shippingTimeDescription'] = this.shippingTimeDescription;
-    } else {
-      json[r'shippingTimeDescription'] = null;
     }
     return json;
   }
@@ -583,8 +583,8 @@ class Product {
         latitude: mapValueOfType<double>(json, r'latitude')!,
         pickupTimeStart: LocalTime.fromJson(json[r'pickupTimeStart'])!,
         pickupTimeEnd: LocalTime.fromJson(json[r'pickupTimeEnd'])!,
-        shippingPreparationHours: mapValueOfType<int>(json, r'shippingPreparationHours'),
         dailyShippingDeadline: LocalTime.fromJson(json[r'dailyShippingDeadline']),
+        shippingPreparationHours: mapValueOfType<int>(json, r'shippingPreparationHours'),
         supportsImmediateShipping: mapValueOfType<bool>(json, r'supportsImmediateShipping'),
         shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),
         estimatedDeliveryDays: mapValueOfType<int>(json, r'estimatedDeliveryDays'),
@@ -603,10 +603,10 @@ class Product {
         minStock: mapValueOfType<int>(json, r'minStock'),
         stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
         allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
+        shippingTimeDescription: mapValueOfType<String>(json, r'shippingTimeDescription'),
+        inStock: mapValueOfType<bool>(json, r'inStock'),
         stockBelowMinimum: mapValueOfType<bool>(json, r'stockBelowMinimum'),
         stockLow: mapValueOfType<bool>(json, r'stockLow'),
-        inStock: mapValueOfType<bool>(json, r'inStock'),
-        shippingTimeDescription: mapValueOfType<String>(json, r'shippingTimeDescription'),
       );
     }
     return null;

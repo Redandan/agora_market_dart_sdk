@@ -34,8 +34,8 @@ class CartItem {
     this.stockWarning,
     this.createdAt,
     this.updatedAt,
-    this.purchaseRestrictionReason,
     this.specificationDescription,
+    this.purchaseRestrictionReason,
     this.subtotal,
     this.totalPrice,
     this.stockStatus,
@@ -189,7 +189,7 @@ class CartItem {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? purchaseRestrictionReason;
+  String? specificationDescription;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -197,7 +197,7 @@ class CartItem {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? specificationDescription;
+  String? purchaseRestrictionReason;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -254,8 +254,8 @@ class CartItem {
     other.stockWarning == stockWarning &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.purchaseRestrictionReason == purchaseRestrictionReason &&
     other.specificationDescription == specificationDescription &&
+    other.purchaseRestrictionReason == purchaseRestrictionReason &&
     other.subtotal == subtotal &&
     other.totalPrice == totalPrice &&
     other.stockStatus == stockStatus &&
@@ -285,15 +285,15 @@ class CartItem {
     (stockWarning == null ? 0 : stockWarning!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (purchaseRestrictionReason == null ? 0 : purchaseRestrictionReason!.hashCode) +
     (specificationDescription == null ? 0 : specificationDescription!.hashCode) +
+    (purchaseRestrictionReason == null ? 0 : purchaseRestrictionReason!.hashCode) +
     (subtotal == null ? 0 : subtotal!.hashCode) +
     (totalPrice == null ? 0 : totalPrice!.hashCode) +
     (stockStatus == null ? 0 : stockStatus!.hashCode) +
     (inStock == null ? 0 : inStock!.hashCode);
 
   @override
-  String toString() => 'CartItem[id=$id, userId=$userId, productId=$productId, quantity=$quantity, productTitle=$productTitle, productDescription=$productDescription, productImage=$productImage, unitPrice=$unitPrice, currency=$currency, shippingFee=$shippingFee, sellerId=$sellerId, sellerName=$sellerName, pickupAddress=$pickupAddress, selectedSpecifications=$selectedSpecifications, sku=$sku, brand=$brand, availableStock=$availableStock, isInStock=$isInStock, stockWarning=$stockWarning, createdAt=$createdAt, updatedAt=$updatedAt, purchaseRestrictionReason=$purchaseRestrictionReason, specificationDescription=$specificationDescription, subtotal=$subtotal, totalPrice=$totalPrice, stockStatus=$stockStatus, inStock=$inStock]';
+  String toString() => 'CartItem[id=$id, userId=$userId, productId=$productId, quantity=$quantity, productTitle=$productTitle, productDescription=$productDescription, productImage=$productImage, unitPrice=$unitPrice, currency=$currency, shippingFee=$shippingFee, sellerId=$sellerId, sellerName=$sellerName, pickupAddress=$pickupAddress, selectedSpecifications=$selectedSpecifications, sku=$sku, brand=$brand, availableStock=$availableStock, isInStock=$isInStock, stockWarning=$stockWarning, createdAt=$createdAt, updatedAt=$updatedAt, specificationDescription=$specificationDescription, purchaseRestrictionReason=$purchaseRestrictionReason, subtotal=$subtotal, totalPrice=$totalPrice, stockStatus=$stockStatus, inStock=$inStock]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -366,15 +366,15 @@ class CartItem {
     } else {
       json[r'updatedAt'] = null;
     }
-    if (this.purchaseRestrictionReason != null) {
-      json[r'purchaseRestrictionReason'] = this.purchaseRestrictionReason;
-    } else {
-      json[r'purchaseRestrictionReason'] = null;
-    }
     if (this.specificationDescription != null) {
       json[r'specificationDescription'] = this.specificationDescription;
     } else {
       json[r'specificationDescription'] = null;
+    }
+    if (this.purchaseRestrictionReason != null) {
+      json[r'purchaseRestrictionReason'] = this.purchaseRestrictionReason;
+    } else {
+      json[r'purchaseRestrictionReason'] = null;
     }
     if (this.subtotal != null) {
       json[r'subtotal'] = this.subtotal;
@@ -439,8 +439,8 @@ class CartItem {
         stockWarning: mapValueOfType<String>(json, r'stockWarning'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
-        purchaseRestrictionReason: mapValueOfType<String>(json, r'purchaseRestrictionReason'),
         specificationDescription: mapValueOfType<String>(json, r'specificationDescription'),
+        purchaseRestrictionReason: mapValueOfType<String>(json, r'purchaseRestrictionReason'),
         subtotal: num.parse('${json[r'subtotal']}'),
         totalPrice: num.parse('${json[r'totalPrice']}'),
         stockStatus: mapValueOfType<String>(json, r'stockStatus'),
