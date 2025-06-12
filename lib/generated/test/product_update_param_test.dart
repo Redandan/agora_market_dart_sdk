@@ -135,14 +135,9 @@ void main() {
       // TODO
     });
 
-    // LocalTime dailyShippingDeadline
+    // 出貨截止時間（每天幾點前下單當天出貨）
+    // String dailyShippingDeadline
     test('to test the property `dailyShippingDeadline`', () async {
-      // TODO
-    });
-
-    // 是否支持即時出貨
-    // bool supportsImmediateShipping
-    test('to test the property `supportsImmediateShipping`', () async {
       // TODO
     });
 

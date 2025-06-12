@@ -47,10 +47,10 @@ class Product {
     this.minStock,
     this.stockAlertThreshold,
     this.allowNegativeStock,
-    this.shippingTimeDescription,
-    this.stockBelowMinimum,
     this.stockLow,
     this.inStock,
+    this.stockBelowMinimum,
+    this.shippingTimeDescription,
   });
 
   /// 商品ID
@@ -109,17 +109,20 @@ class Product {
   /// Maximum value: 90.0
   double latitude;
 
-  LocalTime pickupTimeStart;
+  /// 取貨開始時間
+  String pickupTimeStart;
 
-  LocalTime pickupTimeEnd;
+  /// 取貨結束時間
+  String pickupTimeEnd;
 
+  /// 出貨截止時間（每天幾點前下單當天出貨）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  LocalTime? dailyShippingDeadline;
+  String? dailyShippingDeadline;
 
   /// 出貨準備時間（小時）
   ///
@@ -287,7 +290,15 @@ class Product {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? shippingTimeDescription;
+  bool? stockLow;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? inStock;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -303,15 +314,7 @@ class Product {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? stockLow;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? inStock;
+  String? shippingTimeDescription;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Product &&
@@ -349,10 +352,10 @@ class Product {
     other.minStock == minStock &&
     other.stockAlertThreshold == stockAlertThreshold &&
     other.allowNegativeStock == allowNegativeStock &&
-    other.shippingTimeDescription == shippingTimeDescription &&
-    other.stockBelowMinimum == stockBelowMinimum &&
     other.stockLow == stockLow &&
-    other.inStock == inStock;
+    other.inStock == inStock &&
+    other.stockBelowMinimum == stockBelowMinimum &&
+    other.shippingTimeDescription == shippingTimeDescription;
 
   @override
   int get hashCode =>
@@ -391,13 +394,13 @@ class Product {
     (minStock == null ? 0 : minStock!.hashCode) +
     (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
     (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode) +
-    (shippingTimeDescription == null ? 0 : shippingTimeDescription!.hashCode) +
-    (stockBelowMinimum == null ? 0 : stockBelowMinimum!.hashCode) +
     (stockLow == null ? 0 : stockLow!.hashCode) +
-    (inStock == null ? 0 : inStock!.hashCode);
+    (inStock == null ? 0 : inStock!.hashCode) +
+    (stockBelowMinimum == null ? 0 : stockBelowMinimum!.hashCode) +
+    (shippingTimeDescription == null ? 0 : shippingTimeDescription!.hashCode);
 
   @override
-  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrls=$imageUrls, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, sku=$sku, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, shippingTimeDescription=$shippingTimeDescription, stockBelowMinimum=$stockBelowMinimum, stockLow=$stockLow, inStock=$inStock]';
+  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrls=$imageUrls, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, sku=$sku, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, stockLow=$stockLow, inStock=$inStock, stockBelowMinimum=$stockBelowMinimum, shippingTimeDescription=$shippingTimeDescription]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -507,16 +510,6 @@ class Product {
     } else {
       json[r'allowNegativeStock'] = null;
     }
-    if (this.shippingTimeDescription != null) {
-      json[r'shippingTimeDescription'] = this.shippingTimeDescription;
-    } else {
-      json[r'shippingTimeDescription'] = null;
-    }
-    if (this.stockBelowMinimum != null) {
-      json[r'stockBelowMinimum'] = this.stockBelowMinimum;
-    } else {
-      json[r'stockBelowMinimum'] = null;
-    }
     if (this.stockLow != null) {
       json[r'stockLow'] = this.stockLow;
     } else {
@@ -526,6 +519,16 @@ class Product {
       json[r'inStock'] = this.inStock;
     } else {
       json[r'inStock'] = null;
+    }
+    if (this.stockBelowMinimum != null) {
+      json[r'stockBelowMinimum'] = this.stockBelowMinimum;
+    } else {
+      json[r'stockBelowMinimum'] = null;
+    }
+    if (this.shippingTimeDescription != null) {
+      json[r'shippingTimeDescription'] = this.shippingTimeDescription;
+    } else {
+      json[r'shippingTimeDescription'] = null;
     }
     return json;
   }
@@ -564,9 +567,9 @@ class Product {
         pickupAddress: mapValueOfType<String>(json, r'pickupAddress')!,
         longitude: mapValueOfType<double>(json, r'longitude')!,
         latitude: mapValueOfType<double>(json, r'latitude')!,
-        pickupTimeStart: LocalTime.fromJson(json[r'pickupTimeStart'])!,
-        pickupTimeEnd: LocalTime.fromJson(json[r'pickupTimeEnd'])!,
-        dailyShippingDeadline: LocalTime.fromJson(json[r'dailyShippingDeadline']),
+        pickupTimeStart: mapValueOfType<String>(json, r'pickupTimeStart')!,
+        pickupTimeEnd: mapValueOfType<String>(json, r'pickupTimeEnd')!,
+        dailyShippingDeadline: mapValueOfType<String>(json, r'dailyShippingDeadline'),
         shippingPreparationHours: mapValueOfType<int>(json, r'shippingPreparationHours'),
         shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),
         estimatedDeliveryDays: mapValueOfType<int>(json, r'estimatedDeliveryDays'),
@@ -585,10 +588,10 @@ class Product {
         minStock: mapValueOfType<int>(json, r'minStock'),
         stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
         allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
-        shippingTimeDescription: mapValueOfType<String>(json, r'shippingTimeDescription'),
-        stockBelowMinimum: mapValueOfType<bool>(json, r'stockBelowMinimum'),
         stockLow: mapValueOfType<bool>(json, r'stockLow'),
         inStock: mapValueOfType<bool>(json, r'inStock'),
+        stockBelowMinimum: mapValueOfType<bool>(json, r'stockBelowMinimum'),
+        shippingTimeDescription: mapValueOfType<String>(json, r'shippingTimeDescription'),
       );
     }
     return null;

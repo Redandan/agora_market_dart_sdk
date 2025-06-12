@@ -274,7 +274,6 @@ Class | Method | HTTP request | Description
  - [DisputeQueryResult](doc//DisputeQueryResult.md)
  - [DisputeStatisticsDTO](doc//DisputeStatisticsDTO.md)
  - [DisputeStatusEnum](doc//DisputeStatusEnum.md)
- - [LocalTime](doc//LocalTime.md)
  - [LoginParam](doc//LoginParam.md)
  - [LoginResult](doc//LoginResult.md)
  - [LowStockWarningDTO](doc//LowStockWarningDTO.md)

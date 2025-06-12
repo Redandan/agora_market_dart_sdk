@@ -34,7 +34,6 @@ class ProductUpdateParam {
     this.tags,
     this.shippingPreparationHours,
     this.dailyShippingDeadline,
-    this.supportsImmediateShipping,
     this.shippingDescription,
     this.estimatedDeliveryDays,
     this.supportsScheduledShipping,
@@ -220,22 +219,14 @@ class ProductUpdateParam {
   ///
   int? shippingPreparationHours;
 
+  /// 出貨截止時間（每天幾點前下單當天出貨）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  LocalTime? dailyShippingDeadline;
-
-  /// 是否支持即時出貨
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? supportsImmediateShipping;
+  String? dailyShippingDeadline;
 
   /// 出貨說明
   ///
@@ -300,7 +291,6 @@ class ProductUpdateParam {
     other.tags == tags &&
     other.shippingPreparationHours == shippingPreparationHours &&
     other.dailyShippingDeadline == dailyShippingDeadline &&
-    other.supportsImmediateShipping == supportsImmediateShipping &&
     other.shippingDescription == shippingDescription &&
     other.estimatedDeliveryDays == estimatedDeliveryDays &&
     other.supportsScheduledShipping == supportsScheduledShipping &&
@@ -330,14 +320,13 @@ class ProductUpdateParam {
     (tags == null ? 0 : tags!.hashCode) +
     (shippingPreparationHours == null ? 0 : shippingPreparationHours!.hashCode) +
     (dailyShippingDeadline == null ? 0 : dailyShippingDeadline!.hashCode) +
-    (supportsImmediateShipping == null ? 0 : supportsImmediateShipping!.hashCode) +
     (shippingDescription == null ? 0 : shippingDescription!.hashCode) +
     (estimatedDeliveryDays == null ? 0 : estimatedDeliveryDays!.hashCode) +
     (supportsScheduledShipping == null ? 0 : supportsScheduledShipping!.hashCode) +
     (shippingDateRange == null ? 0 : shippingDateRange!.hashCode);
 
   @override
-  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, status=$status, shippingFee=$shippingFee, sku=$sku, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, supportsImmediateShipping=$supportsImmediateShipping, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange]';
+  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, status=$status, shippingFee=$shippingFee, sku=$sku, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -434,11 +423,6 @@ class ProductUpdateParam {
     } else {
       json[r'dailyShippingDeadline'] = null;
     }
-    if (this.supportsImmediateShipping != null) {
-      json[r'supportsImmediateShipping'] = this.supportsImmediateShipping;
-    } else {
-      json[r'supportsImmediateShipping'] = null;
-    }
     if (this.shippingDescription != null) {
       json[r'shippingDescription'] = this.shippingDescription;
     } else {
@@ -503,8 +487,7 @@ class ProductUpdateParam {
         allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
         tags: mapValueOfType<String>(json, r'tags'),
         shippingPreparationHours: mapValueOfType<int>(json, r'shippingPreparationHours'),
-        dailyShippingDeadline: LocalTime.fromJson(json[r'dailyShippingDeadline']),
-        supportsImmediateShipping: mapValueOfType<bool>(json, r'supportsImmediateShipping'),
+        dailyShippingDeadline: mapValueOfType<String>(json, r'dailyShippingDeadline'),
         shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),
         estimatedDeliveryDays: mapValueOfType<int>(json, r'estimatedDeliveryDays'),
         supportsScheduledShipping: mapValueOfType<bool>(json, r'supportsScheduledShipping'),

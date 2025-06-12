@@ -85,7 +85,6 @@ part 'model/dispute_create_param.dart';
 part 'model/dispute_query_result.dart';
 part 'model/dispute_statistics_dto.dart';
 part 'model/dispute_status_enum.dart';
-part 'model/local_time.dart';
 part 'model/login_param.dart';
 part 'model/login_result.dart';
 part 'model/low_stock_warning_dto.dart';

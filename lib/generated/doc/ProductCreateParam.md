@@ -18,8 +18,8 @@ Name | Type | Description | Notes
 **imageUrls** | **Set<String>** | 商品圖片URL集合 | [optional] [default to const {}]
 **longitude** | **double** | 取件地址經度 | 
 **latitude** | **double** | 取件地址緯度 | 
-**pickupTimeStart** | [**LocalTime**](LocalTime.md) |  | 
-**pickupTimeEnd** | [**LocalTime**](LocalTime.md) |  | 
+**pickupTimeStart** | **String** | 取件開始時間 | 
+**pickupTimeEnd** | **String** | 取件結束時間 | 
 **pickupAddress** | **String** | 取件地址 | 
 **sku** | **String** | 商品SKU或條碼 | [optional] 
 **brand** | **String** | 品牌名稱 | [optional] 
@@ -29,8 +29,7 @@ Name | Type | Description | Notes
 **allowNegativeStock** | **bool** | 是否允許負庫存 | [optional] 
 **tags** | **String** | 商品標籤，以逗號分隔 | [optional] 
 **shippingPreparationHours** | **int** | 出貨準備時間（小時） | [optional] 
-**dailyShippingDeadline** | [**LocalTime**](LocalTime.md) |  | [optional] 
-**supportsImmediateShipping** | **bool** | 是否支持即時出貨 | [optional] 
+**dailyShippingDeadline** | **String** | 出貨截止時間（每天幾點前下單當天出貨） | [optional] 
 **shippingDescription** | **String** | 出貨說明 | [optional] 
 **estimatedDeliveryDays** | **int** | 預計送達時間（天數） | [optional] 
 

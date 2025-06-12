@@ -248,8 +248,6 @@ class ApiClient {
           return DisputeStatisticsDTO.fromJson(value);
         case 'DisputeStatusEnum':
           return DisputeStatusEnumTypeTransformer().decode(value);
-        case 'LocalTime':
-          return LocalTime.fromJson(value);
         case 'LoginParam':
           return LoginParam.fromJson(value);
         case 'LoginResult':

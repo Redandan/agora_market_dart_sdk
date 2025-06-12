@@ -93,17 +93,20 @@ void main() {
       // TODO
     });
 
-    // LocalTime pickupTimeStart
+    // 取貨開始時間
+    // String pickupTimeStart
     test('to test the property `pickupTimeStart`', () async {
       // TODO
     });
 
-    // LocalTime pickupTimeEnd
+    // 取貨結束時間
+    // String pickupTimeEnd
     test('to test the property `pickupTimeEnd`', () async {
       // TODO
     });
 
-    // LocalTime dailyShippingDeadline
+    // 出貨截止時間（每天幾點前下單當天出貨）
+    // String dailyShippingDeadline
     test('to test the property `dailyShippingDeadline`', () async {
       // TODO
     });
@@ -215,8 +218,13 @@ void main() {
       // TODO
     });
 
-    // String shippingTimeDescription
-    test('to test the property `shippingTimeDescription`', () async {
+    // bool stockLow
+    test('to test the property `stockLow`', () async {
+      // TODO
+    });
+
+    // bool inStock
+    test('to test the property `inStock`', () async {
       // TODO
     });
 
@@ -225,13 +233,8 @@ void main() {
       // TODO
     });
 
-    // bool stockLow
-    test('to test the property `stockLow`', () async {
-      // TODO
-    });
-
-    // bool inStock
-    test('to test the property `inStock`', () async {
+    // String shippingTimeDescription
+    test('to test the property `shippingTimeDescription`', () async {
       // TODO
     });
 
