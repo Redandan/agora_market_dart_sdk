@@ -17,10 +17,37 @@ void main() {
   // final instance = DefaultApi();
 
   group('tests for DefaultApi', () {
+    // 添加商品到購物車
+    //
+    // 將商品添加到用戶購物車
+    //
+    //Future<CartItemResponse> addToCart1(int userId, CartItemCreateParam cartItemCreateParam) async
+    test('test addToCart1', () async {
+      // TODO
+    });
+
     // 取消充值
     //
     //Future<Recharge> cancelRecharge(String rechargeId, { String remark }) async
     test('test cancelRecharge', () async {
+      // TODO
+    });
+
+    // 檢查庫存狀態
+    //
+    // 檢查購物車中所有商品的庫存狀態
+    //
+    //Future checkCartItemStockStatus(int userId) async
+    test('test checkCartItemStockStatus', () async {
+      // TODO
+    });
+
+    // 清空購物車
+    //
+    // 清空用戶的所有購物車項目
+    //
+    //Future clearCart(int userId) async
+    test('test clearCart', () async {
       // TODO
     });
 
@@ -102,6 +129,24 @@ void main() {
       // TODO
     });
 
+    // 按賣家分組
+    //
+    // 按賣家分組獲取購物車項目
+    //
+    //Future<List<CartGroupBySeller>> getCartGroupedBySeller(int userId) async
+    test('test getCartGroupedBySeller', () async {
+      // TODO
+    });
+
+    // 獲取購物車統計
+    //
+    // 獲取用戶購物車的統計信息
+    //
+    //Future<CartSummary> getCartSummary(int userId) async
+    test('test getCartSummary', () async {
+      // TODO
+    });
+
     // 獲取城市列表
     //
     // 返回所有可用的城市名稱列表
@@ -117,6 +162,24 @@ void main() {
     //
     //Future<List<String>> getDistrictsByCity(String city) async
     test('test getDistrictsByCity', () async {
+      // TODO
+    });
+
+    // 獲取庫存不足商品
+    //
+    // 獲取購物車中庫存不足的商品
+    //
+    //Future<List<CartItemResponse>> getLowStockItems(int userId) async
+    test('test getLowStockItems', () async {
+      // TODO
+    });
+
+    // 獲取缺貨商品
+    //
+    // 獲取購物車中缺貨的商品
+    //
+    //Future<List<CartItemResponse>> getOutOfStockItems(int userId) async
+    test('test getOutOfStockItems', () async {
       // TODO
     });
 
@@ -169,6 +232,15 @@ void main() {
       // TODO
     });
 
+    // 獲取購物車列表
+    //
+    // 獲取用戶的購物車項目列表
+    //
+    //Future<List<CartItemResponse>> getUserCart1(int userId) async
+    test('test getUserCart1', () async {
+      // TODO
+    });
+
     // 查詢提款記錄
     //
     //Future<Withdraw> getWithdraw(String withdrawId) async
@@ -180,6 +252,15 @@ void main() {
     //
     //Future<PageWithdraw> getWithdrawHistory(int page, int size) async
     test('test getWithdrawHistory', () async {
+      // TODO
+    });
+
+    // 從購物車移除商品
+    //
+    // 從購物車中移除指定商品
+    //
+    //Future removeFromCart1(int userId, int cartItemId) async
+    test('test removeFromCart1', () async {
       // TODO
     });
 
@@ -203,6 +284,15 @@ void main() {
     //
     //Future<PageWithdraw> searchWithdraws(WithdrawSearchParam withdrawSearchParam, { int page, int size }) async
     test('test searchWithdraws', () async {
+      // TODO
+    });
+
+    // 更新購物車項目
+    //
+    // 更新購物車中商品的數量
+    //
+    //Future<CartItemResponse> updateCartItem(int userId, int cartItemId, CartItemUpdateParam cartItemUpdateParam) async
+    test('test updateCartItem', () async {
       // TODO
     });
 

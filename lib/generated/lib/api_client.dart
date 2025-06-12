@@ -188,8 +188,18 @@ class ApiClient {
           return BatchReviewPromoCodeParam.fromJson(value);
         case 'BatchReviewResult':
           return BatchReviewResult.fromJson(value);
+        case 'CartGroupBySeller':
+          return CartGroupBySeller.fromJson(value);
         case 'CartItem':
           return CartItem.fromJson(value);
+        case 'CartItemCreateParam':
+          return CartItemCreateParam.fromJson(value);
+        case 'CartItemResponse':
+          return CartItemResponse.fromJson(value);
+        case 'CartItemUpdateParam':
+          return CartItemUpdateParam.fromJson(value);
+        case 'CartSummary':
+          return CartSummary.fromJson(value);
         case 'CartSummaryDTO':
           return CartSummaryDTO.fromJson(value);
         case 'ChangePasswordParam':
@@ -280,6 +290,8 @@ class ApiClient {
           return PagePromoCode.fromJson(value);
         case 'PageRecharge':
           return PageRecharge.fromJson(value);
+        case 'PageReview':
+          return PageReview.fromJson(value);
         case 'PageStaking':
           return PageStaking.fromJson(value);
         case 'PageTransaction':
@@ -300,6 +312,8 @@ class ApiClient {
           return ProductCategoryEnumTypeTransformer().decode(value);
         case 'ProductCreateParam':
           return ProductCreateParam.fromJson(value);
+        case 'ProductInventoryStats':
+          return ProductInventoryStats.fromJson(value);
         case 'ProductStats':
           return ProductStats.fromJson(value);
         case 'ProductStatusEnum':
@@ -320,10 +334,20 @@ class ApiClient {
           return RechargeStatusEnumTypeTransformer().decode(value);
         case 'RegisterParam':
           return RegisterParam.fromJson(value);
+        case 'Review':
+          return Review.fromJson(value);
+        case 'ReviewCreateParam':
+          return ReviewCreateParam.fromJson(value);
         case 'ReviewFailure':
           return ReviewFailure.fromJson(value);
         case 'ReviewPromoCodeParam':
           return ReviewPromoCodeParam.fromJson(value);
+        case 'ReviewReplyParam':
+          return ReviewReplyParam.fromJson(value);
+        case 'ReviewStatisticsDTO':
+          return ReviewStatisticsDTO.fromJson(value);
+        case 'ReviewUpdateParam':
+          return ReviewUpdateParam.fromJson(value);
         case 'SalesStats':
           return SalesStats.fromJson(value);
         case 'ShippingTypeEnum':

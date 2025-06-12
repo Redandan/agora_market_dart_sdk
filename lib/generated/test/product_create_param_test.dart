@@ -91,6 +91,89 @@ void main() {
       // TODO
     });
 
+    // 商品SKU或條碼
+    // String sku
+    test('to test the property `sku`', () async {
+      // TODO
+    });
+
+    // 品牌名稱
+    // String brand
+    test('to test the property `brand`', () async {
+      // TODO
+    });
+
+    // 商品規格屬性
+    // Map<String, String> specifications (default value: const {})
+    test('to test the property `specifications`', () async {
+      // TODO
+    });
+
+    // 最低庫存警告
+    // int minStock
+    test('to test the property `minStock`', () async {
+      // TODO
+    });
+
+    // 庫存預警閾值
+    // int stockAlertThreshold
+    test('to test the property `stockAlertThreshold`', () async {
+      // TODO
+    });
+
+    // 是否允許負庫存
+    // bool allowNegativeStock
+    test('to test the property `allowNegativeStock`', () async {
+      // TODO
+    });
+
+    // 商品標籤，以逗號分隔
+    // String tags
+    test('to test the property `tags`', () async {
+      // TODO
+    });
+
+    // 出貨準備時間（小時）
+    // int shippingPreparationHours
+    test('to test the property `shippingPreparationHours`', () async {
+      // TODO
+    });
+
+    // LocalTime dailyShippingDeadline
+    test('to test the property `dailyShippingDeadline`', () async {
+      // TODO
+    });
+
+    // 是否支持即時出貨
+    // bool supportsImmediateShipping
+    test('to test the property `supportsImmediateShipping`', () async {
+      // TODO
+    });
+
+    // 出貨說明
+    // String shippingDescription
+    test('to test the property `shippingDescription`', () async {
+      // TODO
+    });
+
+    // 預計送達時間（天數）
+    // int estimatedDeliveryDays
+    test('to test the property `estimatedDeliveryDays`', () async {
+      // TODO
+    });
+
+    // 是否支持指定出貨日期
+    // bool supportsScheduledShipping
+    test('to test the property `supportsScheduledShipping`', () async {
+      // TODO
+    });
+
+    // 可選擇的出貨日期範圍（天數）
+    // int shippingDateRange
+    test('to test the property `shippingDateRange`', () async {
+      // TODO
+    });
+
 
   });
 

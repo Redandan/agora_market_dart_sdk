@@ -34,21 +34,99 @@ void main() {
       // TODO
     });
 
-    // 商品名稱
-    // String productName
-    test('to test the property `productName`', () async {
+    // 商品數量
+    // int quantity
+    test('to test the property `quantity`', () async {
       // TODO
     });
 
-    // 商品圖片
+    // 商品標題快照
+    // String productTitle
+    test('to test the property `productTitle`', () async {
+      // TODO
+    });
+
+    // 商品描述快照
+    // String productDescription
+    test('to test the property `productDescription`', () async {
+      // TODO
+    });
+
+    // 商品主圖快照
     // String productImage
     test('to test the property `productImage`', () async {
       // TODO
     });
 
-    // 商品數量
-    // int quantity
-    test('to test the property `quantity`', () async {
+    // 商品單價快照
+    // num unitPrice
+    test('to test the property `unitPrice`', () async {
+      // TODO
+    });
+
+    // 貨幣類型
+    // String currency
+    test('to test the property `currency`', () async {
+      // TODO
+    });
+
+    // 運費快照
+    // num shippingFee
+    test('to test the property `shippingFee`', () async {
+      // TODO
+    });
+
+    // 賣家ID
+    // int sellerId
+    test('to test the property `sellerId`', () async {
+      // TODO
+    });
+
+    // 賣家名稱快照
+    // String sellerName
+    test('to test the property `sellerName`', () async {
+      // TODO
+    });
+
+    // 取貨地址快照
+    // String pickupAddress
+    test('to test the property `pickupAddress`', () async {
+      // TODO
+    });
+
+    // 選擇的商品規格
+    // Map<String, String> selectedSpecifications (default value: const {})
+    test('to test the property `selectedSpecifications`', () async {
+      // TODO
+    });
+
+    // 商品SKU快照
+    // String sku
+    test('to test the property `sku`', () async {
+      // TODO
+    });
+
+    // 品牌名稱快照
+    // String brand
+    test('to test the property `brand`', () async {
+      // TODO
+    });
+
+    // 加入購物車時的可用庫存
+    // int availableStock
+    test('to test the property `availableStock`', () async {
+      // TODO
+    });
+
+    // 是否還有庫存
+    // bool isInStock
+    test('to test the property `isInStock`', () async {
+      // TODO
+    });
+
+    // 庫存警告信息
+    // String stockWarning
+    test('to test the property `stockWarning`', () async {
       // TODO
     });
 
@@ -61,6 +139,36 @@ void main() {
     // 更新時間
     // DateTime updatedAt
     test('to test the property `updatedAt`', () async {
+      // TODO
+    });
+
+    // String specificationDescription
+    test('to test the property `specificationDescription`', () async {
+      // TODO
+    });
+
+    // String purchaseRestrictionReason
+    test('to test the property `purchaseRestrictionReason`', () async {
+      // TODO
+    });
+
+    // num subtotal
+    test('to test the property `subtotal`', () async {
+      // TODO
+    });
+
+    // num totalPrice
+    test('to test the property `totalPrice`', () async {
+      // TODO
+    });
+
+    // String stockStatus
+    test('to test the property `stockStatus`', () async {
+      // TODO
+    });
+
+    // bool inStock
+    test('to test the property `inStock`', () async {
       // TODO
     });
 

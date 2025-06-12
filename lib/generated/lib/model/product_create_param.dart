@@ -16,25 +16,43 @@ class ProductCreateParam {
     required this.title,
     required this.price,
     this.shippingFee,
-    this.currency,
+    required this.currency,
     required this.stock,
     required this.description,
     required this.category,
     this.imageUrls = const {},
     required this.longitude,
     required this.latitude,
-    this.pickupTimeStartString,
-    this.pickupTimeEndString,
-    this.pickupAddress,
+    required this.pickupTimeStartString,
+    required this.pickupTimeEndString,
+    required this.pickupAddress,
+    this.sku,
+    this.brand,
+    this.specifications = const {},
+    this.minStock,
+    this.stockAlertThreshold,
+    this.allowNegativeStock,
+    this.tags,
+    this.shippingPreparationHours,
+    this.dailyShippingDeadline,
+    this.supportsImmediateShipping,
+    this.shippingDescription,
+    this.estimatedDeliveryDays,
+    this.supportsScheduledShipping,
+    this.shippingDateRange,
   });
 
   /// 商品名稱
   String title;
 
   /// 商品價格
+  ///
+  /// Minimum value: 0.0
   num price;
 
   /// 賣家出貨費用
+  ///
+  /// Minimum value: 0.0
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -44,15 +62,11 @@ class ProductCreateParam {
   num? shippingFee;
 
   /// 貨幣類型
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? currency;
+  String currency;
 
   /// 商品庫存
+  ///
+  /// Minimum value: 0
   int stock;
 
   /// 商品描述
@@ -64,35 +78,152 @@ class ProductCreateParam {
   Set<String> imageUrls;
 
   /// 取件地址經度
+  ///
+  /// Minimum value: -180.0
+  /// Maximum value: 180.0
   double longitude;
 
   /// 取件地址緯度
+  ///
+  /// Minimum value: -90.0
+  /// Maximum value: 90.0
   double latitude;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  LocalTime? pickupTimeStartString;
+  LocalTime pickupTimeStartString;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  LocalTime? pickupTimeEndString;
+  LocalTime pickupTimeEndString;
 
   /// 取件地址
+  String pickupAddress;
+
+  /// 商品SKU或條碼
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? pickupAddress;
+  String? sku;
+
+  /// 品牌名稱
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? brand;
+
+  /// 商品規格屬性
+  Map<String, String> specifications;
+
+  /// 最低庫存警告
+  ///
+  /// Minimum value: 0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? minStock;
+
+  /// 庫存預警閾值
+  ///
+  /// Minimum value: 0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? stockAlertThreshold;
+
+  /// 是否允許負庫存
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? allowNegativeStock;
+
+  /// 商品標籤，以逗號分隔
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? tags;
+
+  /// 出貨準備時間（小時）
+  ///
+  /// Minimum value: 0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? shippingPreparationHours;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  LocalTime? dailyShippingDeadline;
+
+  /// 是否支持即時出貨
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? supportsImmediateShipping;
+
+  /// 出貨說明
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? shippingDescription;
+
+  /// 預計送達時間（天數）
+  ///
+  /// Minimum value: 1
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? estimatedDeliveryDays;
+
+  /// 是否支持指定出貨日期
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? supportsScheduledShipping;
+
+  /// 可選擇的出貨日期範圍（天數）
+  ///
+  /// Minimum value: 1
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? shippingDateRange;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductCreateParam &&
@@ -108,7 +239,21 @@ class ProductCreateParam {
     other.latitude == latitude &&
     other.pickupTimeStartString == pickupTimeStartString &&
     other.pickupTimeEndString == pickupTimeEndString &&
-    other.pickupAddress == pickupAddress;
+    other.pickupAddress == pickupAddress &&
+    other.sku == sku &&
+    other.brand == brand &&
+    _deepEquality.equals(other.specifications, specifications) &&
+    other.minStock == minStock &&
+    other.stockAlertThreshold == stockAlertThreshold &&
+    other.allowNegativeStock == allowNegativeStock &&
+    other.tags == tags &&
+    other.shippingPreparationHours == shippingPreparationHours &&
+    other.dailyShippingDeadline == dailyShippingDeadline &&
+    other.supportsImmediateShipping == supportsImmediateShipping &&
+    other.shippingDescription == shippingDescription &&
+    other.estimatedDeliveryDays == estimatedDeliveryDays &&
+    other.supportsScheduledShipping == supportsScheduledShipping &&
+    other.shippingDateRange == shippingDateRange;
 
   @override
   int get hashCode =>
@@ -116,19 +261,33 @@ class ProductCreateParam {
     (title.hashCode) +
     (price.hashCode) +
     (shippingFee == null ? 0 : shippingFee!.hashCode) +
-    (currency == null ? 0 : currency!.hashCode) +
+    (currency.hashCode) +
     (stock.hashCode) +
     (description.hashCode) +
     (category.hashCode) +
     (imageUrls.hashCode) +
     (longitude.hashCode) +
     (latitude.hashCode) +
-    (pickupTimeStartString == null ? 0 : pickupTimeStartString!.hashCode) +
-    (pickupTimeEndString == null ? 0 : pickupTimeEndString!.hashCode) +
-    (pickupAddress == null ? 0 : pickupAddress!.hashCode);
+    (pickupTimeStartString.hashCode) +
+    (pickupTimeEndString.hashCode) +
+    (pickupAddress.hashCode) +
+    (sku == null ? 0 : sku!.hashCode) +
+    (brand == null ? 0 : brand!.hashCode) +
+    (specifications.hashCode) +
+    (minStock == null ? 0 : minStock!.hashCode) +
+    (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
+    (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode) +
+    (tags == null ? 0 : tags!.hashCode) +
+    (shippingPreparationHours == null ? 0 : shippingPreparationHours!.hashCode) +
+    (dailyShippingDeadline == null ? 0 : dailyShippingDeadline!.hashCode) +
+    (supportsImmediateShipping == null ? 0 : supportsImmediateShipping!.hashCode) +
+    (shippingDescription == null ? 0 : shippingDescription!.hashCode) +
+    (estimatedDeliveryDays == null ? 0 : estimatedDeliveryDays!.hashCode) +
+    (supportsScheduledShipping == null ? 0 : supportsScheduledShipping!.hashCode) +
+    (shippingDateRange == null ? 0 : shippingDateRange!.hashCode);
 
   @override
-  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, pickupTimeStartString=$pickupTimeStartString, pickupTimeEndString=$pickupTimeEndString, pickupAddress=$pickupAddress]';
+  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, pickupTimeStartString=$pickupTimeStartString, pickupTimeEndString=$pickupTimeEndString, pickupAddress=$pickupAddress, sku=$sku, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, supportsImmediateShipping=$supportsImmediateShipping, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -139,31 +298,81 @@ class ProductCreateParam {
     } else {
       json[r'shippingFee'] = null;
     }
-    if (this.currency != null) {
       json[r'currency'] = this.currency;
-    } else {
-      json[r'currency'] = null;
-    }
       json[r'stock'] = this.stock;
       json[r'description'] = this.description;
       json[r'category'] = this.category;
       json[r'imageUrls'] = this.imageUrls.toList(growable: false);
       json[r'longitude'] = this.longitude;
       json[r'latitude'] = this.latitude;
-    if (this.pickupTimeStartString != null) {
       json[r'pickupTimeStartString'] = this.pickupTimeStartString;
-    } else {
-      json[r'pickupTimeStartString'] = null;
-    }
-    if (this.pickupTimeEndString != null) {
       json[r'pickupTimeEndString'] = this.pickupTimeEndString;
-    } else {
-      json[r'pickupTimeEndString'] = null;
-    }
-    if (this.pickupAddress != null) {
       json[r'pickupAddress'] = this.pickupAddress;
+    if (this.sku != null) {
+      json[r'sku'] = this.sku;
     } else {
-      json[r'pickupAddress'] = null;
+      json[r'sku'] = null;
+    }
+    if (this.brand != null) {
+      json[r'brand'] = this.brand;
+    } else {
+      json[r'brand'] = null;
+    }
+      json[r'specifications'] = this.specifications;
+    if (this.minStock != null) {
+      json[r'minStock'] = this.minStock;
+    } else {
+      json[r'minStock'] = null;
+    }
+    if (this.stockAlertThreshold != null) {
+      json[r'stockAlertThreshold'] = this.stockAlertThreshold;
+    } else {
+      json[r'stockAlertThreshold'] = null;
+    }
+    if (this.allowNegativeStock != null) {
+      json[r'allowNegativeStock'] = this.allowNegativeStock;
+    } else {
+      json[r'allowNegativeStock'] = null;
+    }
+    if (this.tags != null) {
+      json[r'tags'] = this.tags;
+    } else {
+      json[r'tags'] = null;
+    }
+    if (this.shippingPreparationHours != null) {
+      json[r'shippingPreparationHours'] = this.shippingPreparationHours;
+    } else {
+      json[r'shippingPreparationHours'] = null;
+    }
+    if (this.dailyShippingDeadline != null) {
+      json[r'dailyShippingDeadline'] = this.dailyShippingDeadline;
+    } else {
+      json[r'dailyShippingDeadline'] = null;
+    }
+    if (this.supportsImmediateShipping != null) {
+      json[r'supportsImmediateShipping'] = this.supportsImmediateShipping;
+    } else {
+      json[r'supportsImmediateShipping'] = null;
+    }
+    if (this.shippingDescription != null) {
+      json[r'shippingDescription'] = this.shippingDescription;
+    } else {
+      json[r'shippingDescription'] = null;
+    }
+    if (this.estimatedDeliveryDays != null) {
+      json[r'estimatedDeliveryDays'] = this.estimatedDeliveryDays;
+    } else {
+      json[r'estimatedDeliveryDays'] = null;
+    }
+    if (this.supportsScheduledShipping != null) {
+      json[r'supportsScheduledShipping'] = this.supportsScheduledShipping;
+    } else {
+      json[r'supportsScheduledShipping'] = null;
+    }
+    if (this.shippingDateRange != null) {
+      json[r'shippingDateRange'] = this.shippingDateRange;
+    } else {
+      json[r'shippingDateRange'] = null;
     }
     return json;
   }
@@ -190,7 +399,7 @@ class ProductCreateParam {
         title: mapValueOfType<String>(json, r'title')!,
         price: num.parse('${json[r'price']}'),
         shippingFee: num.parse('${json[r'shippingFee']}'),
-        currency: mapValueOfType<String>(json, r'currency'),
+        currency: mapValueOfType<String>(json, r'currency')!,
         stock: mapValueOfType<int>(json, r'stock')!,
         description: mapValueOfType<String>(json, r'description')!,
         category: ProductCategoryEnum.fromJson(json[r'category'])!,
@@ -199,9 +408,23 @@ class ProductCreateParam {
             : const {},
         longitude: mapValueOfType<double>(json, r'longitude')!,
         latitude: mapValueOfType<double>(json, r'latitude')!,
-        pickupTimeStartString: LocalTime.fromJson(json[r'pickupTimeStartString']),
-        pickupTimeEndString: LocalTime.fromJson(json[r'pickupTimeEndString']),
-        pickupAddress: mapValueOfType<String>(json, r'pickupAddress'),
+        pickupTimeStartString: LocalTime.fromJson(json[r'pickupTimeStartString'])!,
+        pickupTimeEndString: LocalTime.fromJson(json[r'pickupTimeEndString'])!,
+        pickupAddress: mapValueOfType<String>(json, r'pickupAddress')!,
+        sku: mapValueOfType<String>(json, r'sku'),
+        brand: mapValueOfType<String>(json, r'brand'),
+        specifications: mapCastOfType<String, String>(json, r'specifications') ?? const {},
+        minStock: mapValueOfType<int>(json, r'minStock'),
+        stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
+        allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
+        tags: mapValueOfType<String>(json, r'tags'),
+        shippingPreparationHours: mapValueOfType<int>(json, r'shippingPreparationHours'),
+        dailyShippingDeadline: LocalTime.fromJson(json[r'dailyShippingDeadline']),
+        supportsImmediateShipping: mapValueOfType<bool>(json, r'supportsImmediateShipping'),
+        shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),
+        estimatedDeliveryDays: mapValueOfType<int>(json, r'estimatedDeliveryDays'),
+        supportsScheduledShipping: mapValueOfType<bool>(json, r'supportsScheduledShipping'),
+        shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
       );
     }
     return null;
@@ -251,11 +474,15 @@ class ProductCreateParam {
   static const requiredKeys = <String>{
     'title',
     'price',
+    'currency',
     'stock',
     'description',
     'category',
     'longitude',
     'latitude',
+    'pickupTimeStartString',
+    'pickupTimeEndString',
+    'pickupAddress',
   };
 }
 

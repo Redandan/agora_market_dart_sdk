@@ -14,27 +14,44 @@ class Product {
   /// Returns a new [Product] instance.
   Product({
     this.id,
-    this.title,
-    this.description,
-    this.price,
-    this.currency,
-    this.shippingFee,
-    this.stock,
-    this.category,
-    this.sellerId,
+    required this.title,
+    required this.description,
+    required this.price,
+    required this.currency,
+    required this.shippingFee,
+    required this.stock,
+    required this.category,
+    required this.sellerId,
     this.imageUrls = const {},
-    this.pickupAddress,
-    this.longitude,
-    this.latitude,
-    this.pickupTimeStartString,
-    this.pickupTimeEndString,
-    this.status,
+    required this.pickupAddress,
+    required this.longitude,
+    required this.latitude,
+    required this.pickupTimeStartString,
+    required this.pickupTimeEndString,
+    this.shippingPreparationHours,
+    this.dailyShippingDeadline,
+    this.supportsImmediateShipping,
+    this.shippingDescription,
+    this.estimatedDeliveryDays,
+    this.supportsScheduledShipping,
+    this.shippingDateRange,
+    required this.status,
     this.createdAt,
     this.updatedAt,
     this.rating,
     this.viewCount,
     this.salesCount,
     this.tags,
+    this.sku,
+    this.brand,
+    this.specifications = const {},
+    this.minStock,
+    this.stockAlertThreshold,
+    this.allowNegativeStock,
+    this.shippingTimeDescription,
+    this.stockBelowMinimum,
+    this.stockLow,
+    this.inStock,
   });
 
   /// 商品ID
@@ -47,105 +64,64 @@ class Product {
   int? id;
 
   /// 商品標題
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? title;
+  String title;
 
   /// 商品描述
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? description;
+  String description;
 
   /// 商品價格
   ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? price;
+  /// Minimum value: 0.0
+  num price;
 
   /// 貨幣類型
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? currency;
+  String currency;
 
   /// 賣家出貨費用
   ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? shippingFee;
+  /// Minimum value: 0.0
+  num shippingFee;
 
   /// 商品庫存
   ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? stock;
+  /// Minimum value: 0
+  int stock;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  ProductCategoryEnum? category;
+  ProductCategoryEnum category;
 
   /// 賣家Id
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? sellerId;
+  int sellerId;
 
   /// 商品圖片URL列表
   Set<String> imageUrls;
 
   /// 取貨地址
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? pickupAddress;
+  String pickupAddress;
 
   /// 取貨地址經度
   ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  double? longitude;
+  /// Minimum value: -180.0
+  /// Maximum value: 180.0
+  double longitude;
 
   /// 取貨地址緯度
   ///
+  /// Minimum value: -90.0
+  /// Maximum value: 90.0
+  double latitude;
+
+  LocalTime pickupTimeStartString;
+
+  LocalTime pickupTimeEndString;
+
+  /// 出貨準備時間（小時）
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  double? latitude;
+  int? shippingPreparationHours;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -153,23 +129,54 @@ class Product {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  LocalTime? pickupTimeStartString;
+  LocalTime? dailyShippingDeadline;
 
+  /// 是否支持即時出貨
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  LocalTime? pickupTimeEndString;
+  bool? supportsImmediateShipping;
 
+  /// 出貨說明
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  ProductStatusEnum? status;
+  String? shippingDescription;
+
+  /// 預計送達時間（天數）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? estimatedDeliveryDays;
+
+  /// 是否支持指定出貨日期
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? supportsScheduledShipping;
+
+  /// 可選擇的出貨日期範圍（天數）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? shippingDateRange;
+
+  ProductStatusEnum status;
 
   /// 建立時間
   ///
@@ -191,6 +198,9 @@ class Product {
 
   /// 商品評分
   ///
+  /// Minimum value: 0.0
+  /// Maximum value: 5.0
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
@@ -200,6 +210,8 @@ class Product {
 
   /// 瀏覽次數
   ///
+  /// Minimum value: 0
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
@@ -208,6 +220,8 @@ class Product {
   int? viewCount;
 
   /// 銷售數量
+  ///
+  /// Minimum value: 0
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -224,6 +238,90 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? tags;
+
+  /// 商品SKU或條碼
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sku;
+
+  /// 品牌名稱
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? brand;
+
+  /// 商品規格屬性
+  Map<String, String> specifications;
+
+  /// 最低庫存警告
+  ///
+  /// Minimum value: 0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? minStock;
+
+  /// 庫存預警閾值
+  ///
+  /// Minimum value: 0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? stockAlertThreshold;
+
+  /// 是否允許負庫存
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? allowNegativeStock;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? shippingTimeDescription;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? stockBelowMinimum;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? stockLow;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? inStock;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Product &&
@@ -242,42 +340,76 @@ class Product {
     other.latitude == latitude &&
     other.pickupTimeStartString == pickupTimeStartString &&
     other.pickupTimeEndString == pickupTimeEndString &&
+    other.shippingPreparationHours == shippingPreparationHours &&
+    other.dailyShippingDeadline == dailyShippingDeadline &&
+    other.supportsImmediateShipping == supportsImmediateShipping &&
+    other.shippingDescription == shippingDescription &&
+    other.estimatedDeliveryDays == estimatedDeliveryDays &&
+    other.supportsScheduledShipping == supportsScheduledShipping &&
+    other.shippingDateRange == shippingDateRange &&
     other.status == status &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
     other.rating == rating &&
     other.viewCount == viewCount &&
     other.salesCount == salesCount &&
-    other.tags == tags;
+    other.tags == tags &&
+    other.sku == sku &&
+    other.brand == brand &&
+    _deepEquality.equals(other.specifications, specifications) &&
+    other.minStock == minStock &&
+    other.stockAlertThreshold == stockAlertThreshold &&
+    other.allowNegativeStock == allowNegativeStock &&
+    other.shippingTimeDescription == shippingTimeDescription &&
+    other.stockBelowMinimum == stockBelowMinimum &&
+    other.stockLow == stockLow &&
+    other.inStock == inStock;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
-    (title == null ? 0 : title!.hashCode) +
-    (description == null ? 0 : description!.hashCode) +
-    (price == null ? 0 : price!.hashCode) +
-    (currency == null ? 0 : currency!.hashCode) +
-    (shippingFee == null ? 0 : shippingFee!.hashCode) +
-    (stock == null ? 0 : stock!.hashCode) +
-    (category == null ? 0 : category!.hashCode) +
-    (sellerId == null ? 0 : sellerId!.hashCode) +
+    (title.hashCode) +
+    (description.hashCode) +
+    (price.hashCode) +
+    (currency.hashCode) +
+    (shippingFee.hashCode) +
+    (stock.hashCode) +
+    (category.hashCode) +
+    (sellerId.hashCode) +
     (imageUrls.hashCode) +
-    (pickupAddress == null ? 0 : pickupAddress!.hashCode) +
-    (longitude == null ? 0 : longitude!.hashCode) +
-    (latitude == null ? 0 : latitude!.hashCode) +
-    (pickupTimeStartString == null ? 0 : pickupTimeStartString!.hashCode) +
-    (pickupTimeEndString == null ? 0 : pickupTimeEndString!.hashCode) +
-    (status == null ? 0 : status!.hashCode) +
+    (pickupAddress.hashCode) +
+    (longitude.hashCode) +
+    (latitude.hashCode) +
+    (pickupTimeStartString.hashCode) +
+    (pickupTimeEndString.hashCode) +
+    (shippingPreparationHours == null ? 0 : shippingPreparationHours!.hashCode) +
+    (dailyShippingDeadline == null ? 0 : dailyShippingDeadline!.hashCode) +
+    (supportsImmediateShipping == null ? 0 : supportsImmediateShipping!.hashCode) +
+    (shippingDescription == null ? 0 : shippingDescription!.hashCode) +
+    (estimatedDeliveryDays == null ? 0 : estimatedDeliveryDays!.hashCode) +
+    (supportsScheduledShipping == null ? 0 : supportsScheduledShipping!.hashCode) +
+    (shippingDateRange == null ? 0 : shippingDateRange!.hashCode) +
+    (status.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (rating == null ? 0 : rating!.hashCode) +
     (viewCount == null ? 0 : viewCount!.hashCode) +
     (salesCount == null ? 0 : salesCount!.hashCode) +
-    (tags == null ? 0 : tags!.hashCode);
+    (tags == null ? 0 : tags!.hashCode) +
+    (sku == null ? 0 : sku!.hashCode) +
+    (brand == null ? 0 : brand!.hashCode) +
+    (specifications.hashCode) +
+    (minStock == null ? 0 : minStock!.hashCode) +
+    (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
+    (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode) +
+    (shippingTimeDescription == null ? 0 : shippingTimeDescription!.hashCode) +
+    (stockBelowMinimum == null ? 0 : stockBelowMinimum!.hashCode) +
+    (stockLow == null ? 0 : stockLow!.hashCode) +
+    (inStock == null ? 0 : inStock!.hashCode);
 
   @override
-  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrls=$imageUrls, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStartString=$pickupTimeStartString, pickupTimeEndString=$pickupTimeEndString, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags]';
+  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrls=$imageUrls, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStartString=$pickupTimeStartString, pickupTimeEndString=$pickupTimeEndString, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, supportsImmediateShipping=$supportsImmediateShipping, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, sku=$sku, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, shippingTimeDescription=$shippingTimeDescription, stockBelowMinimum=$stockBelowMinimum, stockLow=$stockLow, inStock=$inStock]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -286,77 +418,56 @@ class Product {
     } else {
       json[r'id'] = null;
     }
-    if (this.title != null) {
       json[r'title'] = this.title;
-    } else {
-      json[r'title'] = null;
-    }
-    if (this.description != null) {
       json[r'description'] = this.description;
-    } else {
-      json[r'description'] = null;
-    }
-    if (this.price != null) {
       json[r'price'] = this.price;
-    } else {
-      json[r'price'] = null;
-    }
-    if (this.currency != null) {
       json[r'currency'] = this.currency;
-    } else {
-      json[r'currency'] = null;
-    }
-    if (this.shippingFee != null) {
       json[r'shippingFee'] = this.shippingFee;
-    } else {
-      json[r'shippingFee'] = null;
-    }
-    if (this.stock != null) {
       json[r'stock'] = this.stock;
-    } else {
-      json[r'stock'] = null;
-    }
-    if (this.category != null) {
       json[r'category'] = this.category;
-    } else {
-      json[r'category'] = null;
-    }
-    if (this.sellerId != null) {
       json[r'sellerId'] = this.sellerId;
-    } else {
-      json[r'sellerId'] = null;
-    }
       json[r'imageUrls'] = this.imageUrls.toList(growable: false);
-    if (this.pickupAddress != null) {
       json[r'pickupAddress'] = this.pickupAddress;
-    } else {
-      json[r'pickupAddress'] = null;
-    }
-    if (this.longitude != null) {
       json[r'longitude'] = this.longitude;
-    } else {
-      json[r'longitude'] = null;
-    }
-    if (this.latitude != null) {
       json[r'latitude'] = this.latitude;
-    } else {
-      json[r'latitude'] = null;
-    }
-    if (this.pickupTimeStartString != null) {
       json[r'pickupTimeStartString'] = this.pickupTimeStartString;
-    } else {
-      json[r'pickupTimeStartString'] = null;
-    }
-    if (this.pickupTimeEndString != null) {
       json[r'pickupTimeEndString'] = this.pickupTimeEndString;
+    if (this.shippingPreparationHours != null) {
+      json[r'shippingPreparationHours'] = this.shippingPreparationHours;
     } else {
-      json[r'pickupTimeEndString'] = null;
+      json[r'shippingPreparationHours'] = null;
     }
-    if (this.status != null) {
+    if (this.dailyShippingDeadline != null) {
+      json[r'dailyShippingDeadline'] = this.dailyShippingDeadline;
+    } else {
+      json[r'dailyShippingDeadline'] = null;
+    }
+    if (this.supportsImmediateShipping != null) {
+      json[r'supportsImmediateShipping'] = this.supportsImmediateShipping;
+    } else {
+      json[r'supportsImmediateShipping'] = null;
+    }
+    if (this.shippingDescription != null) {
+      json[r'shippingDescription'] = this.shippingDescription;
+    } else {
+      json[r'shippingDescription'] = null;
+    }
+    if (this.estimatedDeliveryDays != null) {
+      json[r'estimatedDeliveryDays'] = this.estimatedDeliveryDays;
+    } else {
+      json[r'estimatedDeliveryDays'] = null;
+    }
+    if (this.supportsScheduledShipping != null) {
+      json[r'supportsScheduledShipping'] = this.supportsScheduledShipping;
+    } else {
+      json[r'supportsScheduledShipping'] = null;
+    }
+    if (this.shippingDateRange != null) {
+      json[r'shippingDateRange'] = this.shippingDateRange;
+    } else {
+      json[r'shippingDateRange'] = null;
+    }
       json[r'status'] = this.status;
-    } else {
-      json[r'status'] = null;
-    }
     if (this.createdAt != null) {
       json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
     } else {
@@ -387,6 +498,52 @@ class Product {
     } else {
       json[r'tags'] = null;
     }
+    if (this.sku != null) {
+      json[r'sku'] = this.sku;
+    } else {
+      json[r'sku'] = null;
+    }
+    if (this.brand != null) {
+      json[r'brand'] = this.brand;
+    } else {
+      json[r'brand'] = null;
+    }
+      json[r'specifications'] = this.specifications;
+    if (this.minStock != null) {
+      json[r'minStock'] = this.minStock;
+    } else {
+      json[r'minStock'] = null;
+    }
+    if (this.stockAlertThreshold != null) {
+      json[r'stockAlertThreshold'] = this.stockAlertThreshold;
+    } else {
+      json[r'stockAlertThreshold'] = null;
+    }
+    if (this.allowNegativeStock != null) {
+      json[r'allowNegativeStock'] = this.allowNegativeStock;
+    } else {
+      json[r'allowNegativeStock'] = null;
+    }
+    if (this.shippingTimeDescription != null) {
+      json[r'shippingTimeDescription'] = this.shippingTimeDescription;
+    } else {
+      json[r'shippingTimeDescription'] = null;
+    }
+    if (this.stockBelowMinimum != null) {
+      json[r'stockBelowMinimum'] = this.stockBelowMinimum;
+    } else {
+      json[r'stockBelowMinimum'] = null;
+    }
+    if (this.stockLow != null) {
+      json[r'stockLow'] = this.stockLow;
+    } else {
+      json[r'stockLow'] = null;
+    }
+    if (this.inStock != null) {
+      json[r'inStock'] = this.inStock;
+    } else {
+      json[r'inStock'] = null;
+    }
     return json;
   }
 
@@ -410,29 +567,46 @@ class Product {
 
       return Product(
         id: mapValueOfType<int>(json, r'id'),
-        title: mapValueOfType<String>(json, r'title'),
-        description: mapValueOfType<String>(json, r'description'),
+        title: mapValueOfType<String>(json, r'title')!,
+        description: mapValueOfType<String>(json, r'description')!,
         price: num.parse('${json[r'price']}'),
-        currency: mapValueOfType<String>(json, r'currency'),
+        currency: mapValueOfType<String>(json, r'currency')!,
         shippingFee: num.parse('${json[r'shippingFee']}'),
-        stock: mapValueOfType<int>(json, r'stock'),
-        category: ProductCategoryEnum.fromJson(json[r'category']),
-        sellerId: mapValueOfType<int>(json, r'sellerId'),
+        stock: mapValueOfType<int>(json, r'stock')!,
+        category: ProductCategoryEnum.fromJson(json[r'category'])!,
+        sellerId: mapValueOfType<int>(json, r'sellerId')!,
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
             : const {},
-        pickupAddress: mapValueOfType<String>(json, r'pickupAddress'),
-        longitude: mapValueOfType<double>(json, r'longitude'),
-        latitude: mapValueOfType<double>(json, r'latitude'),
-        pickupTimeStartString: LocalTime.fromJson(json[r'pickupTimeStartString']),
-        pickupTimeEndString: LocalTime.fromJson(json[r'pickupTimeEndString']),
-        status: ProductStatusEnum.fromJson(json[r'status']),
+        pickupAddress: mapValueOfType<String>(json, r'pickupAddress')!,
+        longitude: mapValueOfType<double>(json, r'longitude')!,
+        latitude: mapValueOfType<double>(json, r'latitude')!,
+        pickupTimeStartString: LocalTime.fromJson(json[r'pickupTimeStartString'])!,
+        pickupTimeEndString: LocalTime.fromJson(json[r'pickupTimeEndString'])!,
+        shippingPreparationHours: mapValueOfType<int>(json, r'shippingPreparationHours'),
+        dailyShippingDeadline: LocalTime.fromJson(json[r'dailyShippingDeadline']),
+        supportsImmediateShipping: mapValueOfType<bool>(json, r'supportsImmediateShipping'),
+        shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),
+        estimatedDeliveryDays: mapValueOfType<int>(json, r'estimatedDeliveryDays'),
+        supportsScheduledShipping: mapValueOfType<bool>(json, r'supportsScheduledShipping'),
+        shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
+        status: ProductStatusEnum.fromJson(json[r'status'])!,
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         rating: num.parse('${json[r'rating']}'),
         viewCount: mapValueOfType<int>(json, r'viewCount'),
         salesCount: mapValueOfType<int>(json, r'salesCount'),
         tags: mapValueOfType<String>(json, r'tags'),
+        sku: mapValueOfType<String>(json, r'sku'),
+        brand: mapValueOfType<String>(json, r'brand'),
+        specifications: mapCastOfType<String, String>(json, r'specifications') ?? const {},
+        minStock: mapValueOfType<int>(json, r'minStock'),
+        stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
+        allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
+        shippingTimeDescription: mapValueOfType<String>(json, r'shippingTimeDescription'),
+        stockBelowMinimum: mapValueOfType<bool>(json, r'stockBelowMinimum'),
+        stockLow: mapValueOfType<bool>(json, r'stockLow'),
+        inStock: mapValueOfType<bool>(json, r'inStock'),
       );
     }
     return null;
@@ -480,6 +654,20 @@ class Product {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'title',
+    'description',
+    'price',
+    'currency',
+    'shippingFee',
+    'stock',
+    'category',
+    'sellerId',
+    'pickupAddress',
+    'longitude',
+    'latitude',
+    'pickupTimeStartString',
+    'pickupTimeEndString',
+    'status',
   };
 }
 

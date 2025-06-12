@@ -70,7 +70,7 @@ class AdminCartApi {
   /// 獲取購物車相關的統計數據，僅管理員可訪問
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> getCartSummaryWithHttpInfo() async {
+  Future<Response> getCartSummary1WithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/admin/cart/summary';
 
@@ -98,8 +98,8 @@ class AdminCartApi {
   /// 購物車統計報告
   ///
   /// 獲取購物車相關的統計數據，僅管理員可訪問
-  Future<CartSummaryDTO?> getCartSummary() async {
-    final response = await getCartSummaryWithHttpInfo();
+  Future<CartSummaryDTO?> getCartSummary1() async {
+    final response = await getCartSummary1WithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

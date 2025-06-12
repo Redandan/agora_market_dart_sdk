@@ -41,11 +41,6 @@ void main() {
       // TODO
     });
 
-    // int numberOfElements
-    test('to test the property `numberOfElements`', () async {
-      // TODO
-    });
-
     // int size
     test('to test the property `size`', () async {
       // TODO
@@ -63,6 +58,11 @@ void main() {
 
     // SortObject sort
     test('to test the property `sort`', () async {
+      // TODO
+    });
+
+    // int numberOfElements
+    test('to test the property `numberOfElements`', () async {
       // TODO
     });
 

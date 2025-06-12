@@ -42,14 +42,14 @@ import 'package:agora_market_dart_sdk/api.dart';
 
 
 final api_instance = DefaultApi();
-final rechargeId = rechargeId_example; // String | 
-final remark = remark_example; // String | 
+final userId = 789; // int | 用戶ID
+final cartItemCreateParam = CartItemCreateParam(); // CartItemCreateParam | 
 
 try {
-    final result = api_instance.cancelRecharge(rechargeId, remark);
+    final result = api_instance.addToCart1(userId, cartItemCreateParam);
     print(result);
 } catch (e) {
-    print('Exception when calling DefaultApi->cancelRecharge: $e\n');
+    print('Exception when calling DefaultApi->addToCart1: $e\n');
 }
 
 ```
@@ -60,7 +60,10 @@ All URIs are relative to *https://agoramarketapi.onrender.com/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DefaultApi* | [**addToCart1**](doc//DefaultApi.md#addtocart1) | **POST** /api/cart/add | 添加商品到購物車
 *DefaultApi* | [**cancelRecharge**](doc//DefaultApi.md#cancelrecharge) | **POST** /recharge/{rechargeId}/cancel | 取消充值
+*DefaultApi* | [**checkCartItemStockStatus**](doc//DefaultApi.md#checkcartitemstockstatus) | **POST** /api/cart/check-stock | 檢查庫存狀態
+*DefaultApi* | [**clearCart**](doc//DefaultApi.md#clearcart) | **DELETE** /api/cart/clear | 清空購物車
 *DefaultApi* | [**completeRecharge**](doc//DefaultApi.md#completerecharge) | **POST** /recharge/{rechargeId}/complete | 完成充值
 *DefaultApi* | [**completeWithdraw**](doc//DefaultApi.md#completewithdraw) | **POST** /withdraws/{withdrawId}/complete | 完成提款
 *DefaultApi* | [**createRecharge**](doc//DefaultApi.md#createrecharge) | **POST** /recharge | 創建充值
@@ -71,8 +74,12 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getByCity**](doc//DefaultApi.md#getbycity) | **GET** /postal-areas/city/{city} | 根據城市查詢
 *DefaultApi* | [**getByCityAndDistrict**](doc//DefaultApi.md#getbycityanddistrict) | **GET** /postal-areas/city/{city}/district/{district} | 根據城市和行政區查詢
 *DefaultApi* | [**getByPostalCode**](doc//DefaultApi.md#getbypostalcode) | **GET** /postal-areas/code/{postalCode} | 根據郵遞區號查詢
+*DefaultApi* | [**getCartGroupedBySeller**](doc//DefaultApi.md#getcartgroupedbyseller) | **GET** /api/cart/grouped-by-seller | 按賣家分組
+*DefaultApi* | [**getCartSummary**](doc//DefaultApi.md#getcartsummary) | **GET** /api/cart/summary | 獲取購物車統計
 *DefaultApi* | [**getCities**](doc//DefaultApi.md#getcities) | **GET** /postal-areas/cities | 獲取城市列表
 *DefaultApi* | [**getDistrictsByCity**](doc//DefaultApi.md#getdistrictsbycity) | **GET** /postal-areas/cities/{city}/districts | 獲取城市行政區列表
+*DefaultApi* | [**getLowStockItems**](doc//DefaultApi.md#getlowstockitems) | **GET** /api/cart/low-stock | 獲取庫存不足商品
+*DefaultApi* | [**getOutOfStockItems**](doc//DefaultApi.md#getoutofstockitems) | **GET** /api/cart/out-of-stock | 獲取缺貨商品
 *DefaultApi* | [**getPendingRecharge**](doc//DefaultApi.md#getpendingrecharge) | **GET** /recharge/pending | 查詢當前用戶是否有進行中的充值
 *DefaultApi* | [**getRecharge**](doc//DefaultApi.md#getrecharge) | **GET** /recharge/{rechargeId} | 獲取充值詳情
 *DefaultApi* | [**getRechargeByReceiveAddress**](doc//DefaultApi.md#getrechargebyreceiveaddress) | **GET** /recharge/address/{receiveAddress} | 通過接收地址查詢充值
@@ -80,13 +87,16 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getRechargeHistory**](doc//DefaultApi.md#getrechargehistory) | **GET** /recharge/history | 獲取充值記錄
 *DefaultApi* | [**getTransactionById**](doc//DefaultApi.md#gettransactionbyid) | **GET** /transactions/{id} | 根據交易ID查詢交易記錄
 *DefaultApi* | [**getTransactionList**](doc//DefaultApi.md#gettransactionlist) | **GET** /transactions/{token}/list | 查詢帳變歷史
+*DefaultApi* | [**getUserCart1**](doc//DefaultApi.md#getusercart1) | **GET** /api/cart/list | 獲取購物車列表
 *DefaultApi* | [**getWithdraw**](doc//DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 *DefaultApi* | [**getWithdrawHistory**](doc//DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
+*DefaultApi* | [**removeFromCart1**](doc//DefaultApi.md#removefromcart1) | **DELETE** /api/cart/{cartItemId} | 從購物車移除商品
 *DefaultApi* | [**search**](doc//DefaultApi.md#search) | **GET** /postal-areas/search | 搜索郵遞區號
 *DefaultApi* | [**searchRecharges**](doc//DefaultApi.md#searchrecharges) | **POST** /recharge/search | 管理員搜尋充值記錄
 *DefaultApi* | [**searchWithdraws**](doc//DefaultApi.md#searchwithdraws) | **POST** /withdraws/search | 管理員搜尋提款記錄
+*DefaultApi* | [**updateCartItem**](doc//DefaultApi.md#updatecartitem) | **PUT** /api/cart/{cartItemId} | 更新購物車項目
 *AdminCartApi* | [**clearUserCart**](doc//AdminCartApi.md#clearusercart) | **DELETE** /admin/cart/user/{userId} | 清空指定用戶的購物車
-*AdminCartApi* | [**getCartSummary**](doc//AdminCartApi.md#getcartsummary) | **GET** /admin/cart/summary | 購物車統計報告
+*AdminCartApi* | [**getCartSummary1**](doc//AdminCartApi.md#getcartsummary1) | **GET** /admin/cart/summary | 購物車統計報告
 *AdminCartApi* | [**removeCartItem**](doc//AdminCartApi.md#removecartitem) | **DELETE** /admin/cart/item/{cartItemId} | 刪除指定購物車項目
 *AdminCartApi* | [**searchCarts**](doc//AdminCartApi.md#searchcarts) | **GET** /admin/cart/search | 搜索購物車
 *AdminDeliveryApi* | [**assignDeliveryer**](doc//AdminDeliveryApi.md#assigndeliveryer) | **POST** /admin/delivery/orders/{orderId}/assign | 手動分配配送員
@@ -167,10 +177,23 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**searchOrdersBySeller**](doc//MemberOrdersApi.md#searchordersbyseller) | **GET** /orders/seller | 查詢訂單列表
 *MemberOrdersApi* | [**shipOrder**](doc//MemberOrdersApi.md#shiporder) | **POST** /orders/ship | 發貨
 *MemberOrdersApi* | [**submitOrder**](doc//MemberOrdersApi.md#submitorder) | **POST** /orders | 提交訂單
+*ProductsApi* | [**calculateShippingTime**](doc//ProductsApi.md#calculateshippingtime) | **POST** /products/{productId}/calculate-shipping-time | 計算預計出貨時間
 *ProductsApi* | [**createProduct**](doc//ProductsApi.md#createproduct) | **POST** /products/create | 創建商品
+*ProductsApi* | [**decreaseStock**](doc//ProductsApi.md#decreasestock) | **POST** /products/{id}/stock/decrease | 減少商品庫存
+*ProductsApi* | [**getAvailableShippingDates**](doc//ProductsApi.md#getavailableshippingdates) | **GET** /products/{productId}/available-shipping-dates | 獲取可選擇的出貨日期
+*ProductsApi* | [**getInventoryStats**](doc//ProductsApi.md#getinventorystats) | **GET** /products/{id}/inventory-stats | 獲取商品庫存統計信息
+*ProductsApi* | [**getLowStockProducts**](doc//ProductsApi.md#getlowstockproducts) | **GET** /products/low-stock | 獲取低庫存商品列表
 *ProductsApi* | [**getMyProducts**](doc//ProductsApi.md#getmyproducts) | **GET** /products/my-products | 獲取賣家自己的商品列表
+*ProductsApi* | [**getOutOfStockProducts**](doc//ProductsApi.md#getoutofstockproducts) | **GET** /products/out-of-stock | 獲取缺貨商品列表
 *ProductsApi* | [**getProduct**](doc//ProductsApi.md#getproduct) | **GET** /products/{id} | 根據ID獲取商品
+*ProductsApi* | [**getProductBySku**](doc//ProductsApi.md#getproductbysku) | **GET** /products/sku/{sku} | 根據SKU查找商品
+*ProductsApi* | [**getProductShippingInfo**](doc//ProductsApi.md#getproductshippinginfo) | **GET** /products/{productId}/shipping-info | 獲取商品出貨信息
+*ProductsApi* | [**getProductsByBrand**](doc//ProductsApi.md#getproductsbybrand) | **GET** /products/brand/{brand} | 根據品牌查找商品
 *ProductsApi* | [**getProductsBySearch**](doc//ProductsApi.md#getproductsbysearch) | **GET** /products/search | 搜索商品
+*ProductsApi* | [**getProductsByShippingOptions**](doc//ProductsApi.md#getproductsbyshippingoptions) | **GET** /products/shipping-options | 獲取出貨選項商品
+*ProductsApi* | [**getProductsBySpecification**](doc//ProductsApi.md#getproductsbyspecification) | **GET** /products/specification | 根據商品規格查找商品
+*ProductsApi* | [**increaseStock**](doc//ProductsApi.md#increasestock) | **POST** /products/{id}/stock/increase | 增加商品庫存
+*ProductsApi* | [**setStock**](doc//ProductsApi.md#setstock) | **POST** /products/{id}/stock/set | 設置商品庫存
 *ProductsApi* | [**updateProduct**](doc//ProductsApi.md#updateproduct) | **POST** /products/update | 更新商品
 *PromoCodesApi* | [**applyPromoCode**](doc//PromoCodesApi.md#applypromocode) | **POST** /promo-codes/apply | 申請推廣碼
 *PromoCodesApi* | [**batchReviewPromoCodes**](doc//PromoCodesApi.md#batchreviewpromocodes) | **POST** /promo-codes/batch-review | 批量審核推廣碼
@@ -183,6 +206,20 @@ Class | Method | HTTP request | Description
 *PromoCodesApi* | [**searchPromoCodes**](doc//PromoCodesApi.md#searchpromocodes) | **GET** /promo-codes/search | 搜尋推廣碼
 *PromoCodesApi* | [**updateMyPromoCode**](doc//PromoCodesApi.md#updatemypromocode) | **PUT** /promo-codes/my-promo-code | 編輯我的推廣碼
 *PublicControllerApi* | [**test**](doc//PublicControllerApi.md#test) | **GET** /public/ | 
+*ReviewsApi* | [**batchDeleteReviews**](doc//ReviewsApi.md#batchdeletereviews) | **DELETE** /reviews/batch | 批量刪除評價（管理員功能）
+*ReviewsApi* | [**batchReplyReviews**](doc//ReviewsApi.md#batchreplyreviews) | **POST** /reviews/batch-reply | 批量回覆評價
+*ReviewsApi* | [**createReview**](doc//ReviewsApi.md#createreview) | **POST** /reviews/create | 創建評價
+*ReviewsApi* | [**deleteReview**](doc//ReviewsApi.md#deletereview) | **DELETE** /reviews/{id} | 刪除評價
+*ReviewsApi* | [**getProductAverageRating**](doc//ReviewsApi.md#getproductaveragerating) | **GET** /reviews/product/{productId}/average-rating | 獲取商品的平均評分
+*ReviewsApi* | [**getProductReviews**](doc//ReviewsApi.md#getproductreviews) | **GET** /reviews/product/{productId} | 獲取商品的評價
+*ReviewsApi* | [**getReceivedReviews**](doc//ReviewsApi.md#getreceivedreviews) | **GET** /reviews/received | 獲取用戶收到的評價
+*ReviewsApi* | [**getReview**](doc//ReviewsApi.md#getreview) | **GET** /reviews/{id} | 根據ID獲取評價
+*ReviewsApi* | [**getReviewStatistics**](doc//ReviewsApi.md#getreviewstatistics) | **GET** /reviews/statistics | 獲取評價統計數據
+*ReviewsApi* | [**getSentReviews**](doc//ReviewsApi.md#getsentreviews) | **GET** /reviews/sent | 獲取用戶發出的評價
+*ReviewsApi* | [**getUserAverageRating**](doc//ReviewsApi.md#getuseraveragerating) | **GET** /reviews/user/{userId}/average-rating | 獲取用戶的平均評分
+*ReviewsApi* | [**replyToReview**](doc//ReviewsApi.md#replytoreview) | **POST** /reviews/reply | 回覆評價
+*ReviewsApi* | [**searchReviews**](doc//ReviewsApi.md#searchreviews) | **GET** /reviews/search | 搜索評價
+*ReviewsApi* | [**updateReview**](doc//ReviewsApi.md#updatereview) | **POST** /reviews/update | 更新評價
 *SseApi* | [**broadcastMessage**](doc//SseApi.md#broadcastmessage) | **POST** /sse/broadcast | 廣播消息
 *SseApi* | [**connect**](doc//SseApi.md#connect) | **GET** /sse/connect/{clientId} | 建立 SSE 連接
 *SseApi* | [**disconnect**](doc//SseApi.md#disconnect) | **DELETE** /sse/disconnect/{clientId} | 斷開 SSE 連接
@@ -207,7 +244,12 @@ Class | Method | HTTP request | Description
  - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
  - [BatchReviewPromoCodeParam](doc//BatchReviewPromoCodeParam.md)
  - [BatchReviewResult](doc//BatchReviewResult.md)
+ - [CartGroupBySeller](doc//CartGroupBySeller.md)
  - [CartItem](doc//CartItem.md)
+ - [CartItemCreateParam](doc//CartItemCreateParam.md)
+ - [CartItemResponse](doc//CartItemResponse.md)
+ - [CartItemUpdateParam](doc//CartItemUpdateParam.md)
+ - [CartSummary](doc//CartSummary.md)
  - [CartSummaryDTO](doc//CartSummaryDTO.md)
  - [ChangePasswordParam](doc//ChangePasswordParam.md)
  - [ChatMessage](doc//ChatMessage.md)
@@ -253,6 +295,7 @@ Class | Method | HTTP request | Description
  - [PageProduct](doc//PageProduct.md)
  - [PagePromoCode](doc//PagePromoCode.md)
  - [PageRecharge](doc//PageRecharge.md)
+ - [PageReview](doc//PageReview.md)
  - [PageStaking](doc//PageStaking.md)
  - [PageTransaction](doc//PageTransaction.md)
  - [PageUser](doc//PageUser.md)
@@ -263,6 +306,7 @@ Class | Method | HTTP request | Description
  - [Product](doc//Product.md)
  - [ProductCategoryEnum](doc//ProductCategoryEnum.md)
  - [ProductCreateParam](doc//ProductCreateParam.md)
+ - [ProductInventoryStats](doc//ProductInventoryStats.md)
  - [ProductStats](doc//ProductStats.md)
  - [ProductStatusEnum](doc//ProductStatusEnum.md)
  - [ProductUpdateParam](doc//ProductUpdateParam.md)
@@ -273,8 +317,13 @@ Class | Method | HTTP request | Description
  - [RechargeSearchParam](doc//RechargeSearchParam.md)
  - [RechargeStatusEnum](doc//RechargeStatusEnum.md)
  - [RegisterParam](doc//RegisterParam.md)
+ - [Review](doc//Review.md)
+ - [ReviewCreateParam](doc//ReviewCreateParam.md)
  - [ReviewFailure](doc//ReviewFailure.md)
  - [ReviewPromoCodeParam](doc//ReviewPromoCodeParam.md)
+ - [ReviewReplyParam](doc//ReviewReplyParam.md)
+ - [ReviewStatisticsDTO](doc//ReviewStatisticsDTO.md)
+ - [ReviewUpdateParam](doc//ReviewUpdateParam.md)
  - [SalesStats](doc//SalesStats.md)
  - [ShippingTypeEnum](doc//ShippingTypeEnum.md)
  - [SortObject](doc//SortObject.md)

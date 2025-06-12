@@ -30,8 +30,8 @@ void main() {
     //
     // 獲取購物車相關的統計數據，僅管理員可訪問
     //
-    //Future<CartSummaryDTO> getCartSummary() async
-    test('test getCartSummary', () async {
+    //Future<CartSummaryDTO> getCartSummary1() async
+    test('test getCartSummary1', () async {
       // TODO
     });
 

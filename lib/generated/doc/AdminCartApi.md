@@ -10,7 +10,7 @@ All URIs are relative to *https://agoramarketapi.onrender.com/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**clearUserCart**](AdminCartApi.md#clearusercart) | **DELETE** /admin/cart/user/{userId} | 清空指定用戶的購物車
-[**getCartSummary**](AdminCartApi.md#getcartsummary) | **GET** /admin/cart/summary | 購物車統計報告
+[**getCartSummary1**](AdminCartApi.md#getcartsummary1) | **GET** /admin/cart/summary | 購物車統計報告
 [**removeCartItem**](AdminCartApi.md#removecartitem) | **DELETE** /admin/cart/item/{cartItemId} | 刪除指定購物車項目
 [**searchCarts**](AdminCartApi.md#searchcarts) | **GET** /admin/cart/search | 搜索購物車
 
@@ -57,8 +57,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getCartSummary**
-> CartSummaryDTO getCartSummary()
+# **getCartSummary1**
+> CartSummaryDTO getCartSummary1()
 
 購物車統計報告
 
@@ -71,10 +71,10 @@ import 'package:agora_market_dart_sdk/api.dart';
 final api_instance = AdminCartApi();
 
 try {
-    final result = api_instance.getCartSummary();
+    final result = api_instance.getCartSummary1();
     print(result);
 } catch (e) {
-    print('Exception when calling AdminCartApi->getCartSummary: $e\n');
+    print('Exception when calling AdminCartApi->getCartSummary1: $e\n');
 }
 ```
 
