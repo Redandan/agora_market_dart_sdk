@@ -26,6 +26,11 @@ void main() {
       // TODO
     });
 
+    // bool first
+    test('to test the property `first`', () async {
+      // TODO
+    });
+
     // bool last
     test('to test the property `last`', () async {
       // TODO
@@ -33,11 +38,6 @@ void main() {
 
     // int numberOfElements
     test('to test the property `numberOfElements`', () async {
-      // TODO
-    });
-
-    // bool first
-    test('to test the property `first`', () async {
       // TODO
     });
 

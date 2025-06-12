@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalPages** | **int** |  | [optional] 
 **totalElements** | **int** |  | [optional] 
+**first** | **bool** |  | [optional] 
 **last** | **bool** |  | [optional] 
 **numberOfElements** | **int** |  | [optional] 
-**first** | **bool** |  | [optional] 
 **pageable** | [**PageableObject**](PageableObject.md) |  | [optional] 
 **size** | **int** |  | [optional] 
 **content** | [**List<Recharge>**](Recharge.md) |  | [optional] [default to const []]
