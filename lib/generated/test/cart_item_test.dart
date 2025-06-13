@@ -142,11 +142,6 @@ void main() {
       // TODO
     });
 
-    // String stockStatus
-    test('to test the property `stockStatus`', () async {
-      // TODO
-    });
-
     // String specificationDescription
     test('to test the property `specificationDescription`', () async {
       // TODO
@@ -164,6 +159,11 @@ void main() {
 
     // num totalPrice
     test('to test the property `totalPrice`', () async {
+      // TODO
+    });
+
+    // String stockStatus
+    test('to test the property `stockStatus`', () async {
       // TODO
     });
 

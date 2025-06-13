@@ -42,10 +42,10 @@ Name | Type | Description | Notes
 **minStock** | **int** | 最低庫存警告 | [optional] 
 **stockAlertThreshold** | **int** | 庫存預警閾值 | [optional] 
 **allowNegativeStock** | **bool** | 是否允許負庫存 | [optional] 
-**stockBelowMinimum** | **bool** |  | [optional] 
 **shippingTimeDescription** | **String** |  | [optional] 
 **stockLow** | **bool** |  | [optional] 
 **inStock** | **bool** |  | [optional] 
+**stockBelowMinimum** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -16,13 +16,23 @@ void main() {
   // final instance = PageDispute();
 
   group('test PageDispute', () {
+    // int totalElements
+    test('to test the property `totalElements`', () async {
+      // TODO
+    });
+
     // int totalPages
     test('to test the property `totalPages`', () async {
       // TODO
     });
 
-    // int totalElements
-    test('to test the property `totalElements`', () async {
+    // int numberOfElements
+    test('to test the property `numberOfElements`', () async {
+      // TODO
+    });
+
+    // PageableObject pageable
+    test('to test the property `pageable`', () async {
       // TODO
     });
 
@@ -33,16 +43,6 @@ void main() {
 
     // bool last
     test('to test the property `last`', () async {
-      // TODO
-    });
-
-    // PageableObject pageable
-    test('to test the property `pageable`', () async {
-      // TODO
-    });
-
-    // int numberOfElements
-    test('to test the property `numberOfElements`', () async {
       // TODO
     });
 

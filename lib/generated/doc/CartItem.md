@@ -29,11 +29,11 @@ Name | Type | Description | Notes
 **stockWarning** | **String** | 庫存警告信息 | [optional] 
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | 更新時間 | [optional] 
-**stockStatus** | **String** |  | [optional] 
 **specificationDescription** | **String** |  | [optional] 
 **purchaseRestrictionReason** | **String** |  | [optional] 
 **subtotal** | **num** |  | [optional] 
 **totalPrice** | **num** |  | [optional] 
+**stockStatus** | **String** |  | [optional] 
 **inStock** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
