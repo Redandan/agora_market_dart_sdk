@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class Store {
-  /// Returns a new [Store] instance.
-  Store({
+class StoreResponseDTO {
+  /// Returns a new [StoreResponseDTO] instance.
+  StoreResponseDTO({
     this.id,
     this.name,
     this.description,
@@ -22,7 +22,6 @@ class Store {
     this.businessHours,
     this.logoUrl,
     this.coverImageUrl,
-    this.owner,
     this.isActive,
     this.viewCount,
     this.rating,
@@ -33,6 +32,15 @@ class Store {
     this.totalSales,
     this.averageRating,
     this.responseRate,
+    this.supportedShippingCompanies = const [],
+    this.supportedShippingTypes = const [],
+    this.defaultShippingFee,
+    this.freeShippingThreshold,
+    this.shippingDescription,
+    this.shippingPreparationHours,
+    this.estimatedDeliveryDays,
+    this.supportsScheduledShipping,
+    this.shippingDateRange,
     this.createdAt,
     this.updatedAt,
   });
@@ -117,14 +125,6 @@ class Store {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? coverImageUrl;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  User? owner;
 
   /// 是否啟用
   ///
@@ -216,6 +216,75 @@ class Store {
   ///
   int? responseRate;
 
+  /// 支援的物流公司
+  List<ShippingCompanyEnum> supportedShippingCompanies;
+
+  /// 支援的運送方式
+  List<ShippingTypeEnum> supportedShippingTypes;
+
+  /// 預設運費
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? defaultShippingFee;
+
+  /// 免運費門檻
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? freeShippingThreshold;
+
+  /// 運送說明
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? shippingDescription;
+
+  /// 出貨準備時間（小時）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? shippingPreparationHours;
+
+  /// 預計送達時間（天數）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? estimatedDeliveryDays;
+
+  /// 是否支援指定出貨日期
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? supportsScheduledShipping;
+
+  /// 可選擇的出貨日期範圍（天數）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? shippingDateRange;
+
   /// 創建時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -235,7 +304,7 @@ class Store {
   DateTime? updatedAt;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is Store &&
+  bool operator ==(Object other) => identical(this, other) || other is StoreResponseDTO &&
     other.id == id &&
     other.name == name &&
     other.description == description &&
@@ -245,7 +314,6 @@ class Store {
     other.businessHours == businessHours &&
     other.logoUrl == logoUrl &&
     other.coverImageUrl == coverImageUrl &&
-    other.owner == owner &&
     other.isActive == isActive &&
     other.viewCount == viewCount &&
     other.rating == rating &&
@@ -256,6 +324,15 @@ class Store {
     other.totalSales == totalSales &&
     other.averageRating == averageRating &&
     other.responseRate == responseRate &&
+    _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
+    _deepEquality.equals(other.supportedShippingTypes, supportedShippingTypes) &&
+    other.defaultShippingFee == defaultShippingFee &&
+    other.freeShippingThreshold == freeShippingThreshold &&
+    other.shippingDescription == shippingDescription &&
+    other.shippingPreparationHours == shippingPreparationHours &&
+    other.estimatedDeliveryDays == estimatedDeliveryDays &&
+    other.supportsScheduledShipping == supportsScheduledShipping &&
+    other.shippingDateRange == shippingDateRange &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt;
 
@@ -271,7 +348,6 @@ class Store {
     (businessHours == null ? 0 : businessHours!.hashCode) +
     (logoUrl == null ? 0 : logoUrl!.hashCode) +
     (coverImageUrl == null ? 0 : coverImageUrl!.hashCode) +
-    (owner == null ? 0 : owner!.hashCode) +
     (isActive == null ? 0 : isActive!.hashCode) +
     (viewCount == null ? 0 : viewCount!.hashCode) +
     (rating == null ? 0 : rating!.hashCode) +
@@ -282,11 +358,20 @@ class Store {
     (totalSales == null ? 0 : totalSales!.hashCode) +
     (averageRating == null ? 0 : averageRating!.hashCode) +
     (responseRate == null ? 0 : responseRate!.hashCode) +
+    (supportedShippingCompanies.hashCode) +
+    (supportedShippingTypes.hashCode) +
+    (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
+    (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode) +
+    (shippingDescription == null ? 0 : shippingDescription!.hashCode) +
+    (shippingPreparationHours == null ? 0 : shippingPreparationHours!.hashCode) +
+    (estimatedDeliveryDays == null ? 0 : estimatedDeliveryDays!.hashCode) +
+    (supportsScheduledShipping == null ? 0 : supportsScheduledShipping!.hashCode) +
+    (shippingDateRange == null ? 0 : shippingDateRange!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'Store[id=$id, name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, coverImageUrl=$coverImageUrl, owner=$owner, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, creditLevel=$creditLevel, productCount=$productCount, orderCount=$orderCount, totalSales=$totalSales, averageRating=$averageRating, responseRate=$responseRate, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'StoreResponseDTO[id=$id, name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, coverImageUrl=$coverImageUrl, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, creditLevel=$creditLevel, productCount=$productCount, orderCount=$orderCount, totalSales=$totalSales, averageRating=$averageRating, responseRate=$responseRate, supportedShippingCompanies=$supportedShippingCompanies, supportedShippingTypes=$supportedShippingTypes, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -334,11 +419,6 @@ class Store {
       json[r'coverImageUrl'] = this.coverImageUrl;
     } else {
       json[r'coverImageUrl'] = null;
-    }
-    if (this.owner != null) {
-      json[r'owner'] = this.owner;
-    } else {
-      json[r'owner'] = null;
     }
     if (this.isActive != null) {
       json[r'isActive'] = this.isActive;
@@ -390,6 +470,43 @@ class Store {
     } else {
       json[r'responseRate'] = null;
     }
+      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
+      json[r'supportedShippingTypes'] = this.supportedShippingTypes;
+    if (this.defaultShippingFee != null) {
+      json[r'defaultShippingFee'] = this.defaultShippingFee;
+    } else {
+      json[r'defaultShippingFee'] = null;
+    }
+    if (this.freeShippingThreshold != null) {
+      json[r'freeShippingThreshold'] = this.freeShippingThreshold;
+    } else {
+      json[r'freeShippingThreshold'] = null;
+    }
+    if (this.shippingDescription != null) {
+      json[r'shippingDescription'] = this.shippingDescription;
+    } else {
+      json[r'shippingDescription'] = null;
+    }
+    if (this.shippingPreparationHours != null) {
+      json[r'shippingPreparationHours'] = this.shippingPreparationHours;
+    } else {
+      json[r'shippingPreparationHours'] = null;
+    }
+    if (this.estimatedDeliveryDays != null) {
+      json[r'estimatedDeliveryDays'] = this.estimatedDeliveryDays;
+    } else {
+      json[r'estimatedDeliveryDays'] = null;
+    }
+    if (this.supportsScheduledShipping != null) {
+      json[r'supportsScheduledShipping'] = this.supportsScheduledShipping;
+    } else {
+      json[r'supportsScheduledShipping'] = null;
+    }
+    if (this.shippingDateRange != null) {
+      json[r'shippingDateRange'] = this.shippingDateRange;
+    } else {
+      json[r'shippingDateRange'] = null;
+    }
     if (this.createdAt != null) {
       json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
     } else {
@@ -403,10 +520,10 @@ class Store {
     return json;
   }
 
-  /// Returns a new [Store] instance and imports its values from
+  /// Returns a new [StoreResponseDTO] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static Store? fromJson(dynamic value) {
+  static StoreResponseDTO? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -415,13 +532,13 @@ class Store {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Store[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Store[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "StoreResponseDTO[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "StoreResponseDTO[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return Store(
+      return StoreResponseDTO(
         id: mapValueOfType<int>(json, r'id'),
         name: mapValueOfType<String>(json, r'name'),
         description: mapValueOfType<String>(json, r'description'),
@@ -431,7 +548,6 @@ class Store {
         businessHours: mapValueOfType<String>(json, r'businessHours'),
         logoUrl: mapValueOfType<String>(json, r'logoUrl'),
         coverImageUrl: mapValueOfType<String>(json, r'coverImageUrl'),
-        owner: User.fromJson(json[r'owner']),
         isActive: mapValueOfType<bool>(json, r'isActive'),
         viewCount: mapValueOfType<int>(json, r'viewCount'),
         rating: mapValueOfType<double>(json, r'rating'),
@@ -442,6 +558,15 @@ class Store {
         totalSales: mapValueOfType<double>(json, r'totalSales'),
         averageRating: mapValueOfType<double>(json, r'averageRating'),
         responseRate: mapValueOfType<int>(json, r'responseRate'),
+        supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']),
+        supportedShippingTypes: ShippingTypeEnum.listFromJson(json[r'supportedShippingTypes']),
+        defaultShippingFee: mapValueOfType<double>(json, r'defaultShippingFee'),
+        freeShippingThreshold: mapValueOfType<double>(json, r'freeShippingThreshold'),
+        shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),
+        shippingPreparationHours: mapValueOfType<int>(json, r'shippingPreparationHours'),
+        estimatedDeliveryDays: mapValueOfType<int>(json, r'estimatedDeliveryDays'),
+        supportsScheduledShipping: mapValueOfType<bool>(json, r'supportsScheduledShipping'),
+        shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
       );
@@ -449,11 +574,11 @@ class Store {
     return null;
   }
 
-  static List<Store> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <Store>[];
+  static List<StoreResponseDTO> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <StoreResponseDTO>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = Store.fromJson(row);
+        final value = StoreResponseDTO.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -462,12 +587,12 @@ class Store {
     return result.toList(growable: growable);
   }
 
-  static Map<String, Store> mapFromJson(dynamic json) {
-    final map = <String, Store>{};
+  static Map<String, StoreResponseDTO> mapFromJson(dynamic json) {
+    final map = <String, StoreResponseDTO>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = Store.fromJson(entry.value);
+        final value = StoreResponseDTO.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -476,14 +601,14 @@ class Store {
     return map;
   }
 
-  // maps a json object with a list of Store-objects as value to a dart map
-  static Map<String, List<Store>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<Store>>{};
+  // maps a json object with a list of StoreResponseDTO-objects as value to a dart map
+  static Map<String, List<StoreResponseDTO>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<StoreResponseDTO>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = Store.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = StoreResponseDTO.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

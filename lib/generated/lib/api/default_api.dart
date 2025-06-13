@@ -631,83 +631,6 @@ class DefaultApi {
     return null;
   }
 
-  /// 管理員查看指定會員的交易記錄
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] userId (required):
-  ///   會員ID
-  ///
-  /// * [String] token (required):
-  ///   幣種
-  ///
-  /// * [int] page (required):
-  ///   頁碼
-  ///
-  /// * [int] size (required):
-  ///   每頁數量
-  Future<Response> getAdminTransactionListWithHttpInfo(int userId, String token, int page, int size,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/transactions/admin/user/{userId}/list'
-      .replaceAll('{userId}', userId.toString());
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'token', token));
-      queryParams.addAll(_queryParams('', 'page', page));
-      queryParams.addAll(_queryParams('', 'size', size));
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 管理員查看指定會員的交易記錄
-  ///
-  /// Parameters:
-  ///
-  /// * [int] userId (required):
-  ///   會員ID
-  ///
-  /// * [String] token (required):
-  ///   幣種
-  ///
-  /// * [int] page (required):
-  ///   頁碼
-  ///
-  /// * [int] size (required):
-  ///   每頁數量
-  Future<PageTransaction?> getAdminTransactionList(int userId, String token, int page, int size,) async {
-    final response = await getAdminTransactionListWithHttpInfo(userId, token, page, size,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageTransaction',) as PageTransaction;
-    
-    }
-    return null;
-  }
-
   /// 獲取所有啟用的郵遞區號
   ///
   /// 返回所有啟用狀態的郵遞區號列表
@@ -1810,6 +1733,83 @@ class DefaultApi {
   ///   每頁數量
   Future<PageTransaction?> getTransactionList(String token, int page, int size,) async {
     final response = await getTransactionListWithHttpInfo(token, page, size,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageTransaction',) as PageTransaction;
+    
+    }
+    return null;
+  }
+
+  /// 管理員查看帳變記錄
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] userId (required):
+  ///   會員ID
+  ///
+  /// * [String] token (required):
+  ///   幣種
+  ///
+  /// * [int] page (required):
+  ///   頁碼
+  ///
+  /// * [int] size (required):
+  ///   每頁數量
+  Future<Response> getTransactionListByAdminWithHttpInfo(int userId, String token, int page, int size,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/transactions/admin/search';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'userId', userId));
+      queryParams.addAll(_queryParams('', 'token', token));
+      queryParams.addAll(_queryParams('', 'page', page));
+      queryParams.addAll(_queryParams('', 'size', size));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 管理員查看帳變記錄
+  ///
+  /// Parameters:
+  ///
+  /// * [int] userId (required):
+  ///   會員ID
+  ///
+  /// * [String] token (required):
+  ///   幣種
+  ///
+  /// * [int] page (required):
+  ///   頁碼
+  ///
+  /// * [int] size (required):
+  ///   每頁數量
+  Future<PageTransaction?> getTransactionListByAdmin(int userId, String token, int page, int size,) async {
+    final response = await getTransactionListByAdminWithHttpInfo(userId, token, page, size,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

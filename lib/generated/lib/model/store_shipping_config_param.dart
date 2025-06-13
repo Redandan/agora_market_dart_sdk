@@ -10,17 +10,9 @@
 
 part of openapi.api;
 
-class StoreCreateParam {
-  /// Returns a new [StoreCreateParam] instance.
-  StoreCreateParam({
-    required this.name,
-    this.description,
-    required this.address,
-    this.phone,
-    this.email,
-    this.businessHours,
-    this.logoUrl,
-    this.coverImageUrl,
+class StoreShippingConfigParam {
+  /// Returns a new [StoreShippingConfigParam] instance.
+  StoreShippingConfigParam({
     this.supportedShippingCompanies = const [],
     this.supportedShippingTypes = const [],
     this.defaultShippingFee,
@@ -32,66 +24,6 @@ class StoreCreateParam {
     this.shippingDateRange,
   });
 
-  /// 商店名稱
-  String name;
-
-  /// 商店描述
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? description;
-
-  /// 商店地址
-  String address;
-
-  /// 商店電話
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? phone;
-
-  /// 商店郵箱
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? email;
-
-  /// 營業時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? businessHours;
-
-  /// 商店Logo URL
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? logoUrl;
-
-  /// 商店封面圖片 URL
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? coverImageUrl;
-
   /// 支援的物流公司
   List<ShippingCompanyEnum> supportedShippingCompanies;
 
@@ -99,6 +31,8 @@ class StoreCreateParam {
   List<ShippingTypeEnum> supportedShippingTypes;
 
   /// 預設運費
+  ///
+  /// Minimum value: 0
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -108,6 +42,8 @@ class StoreCreateParam {
   double? defaultShippingFee;
 
   /// 免運費門檻
+  ///
+  /// Minimum value: 0
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -127,6 +63,8 @@ class StoreCreateParam {
 
   /// 出貨準備時間（小時）
   ///
+  /// Minimum value: 0
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
@@ -135,6 +73,8 @@ class StoreCreateParam {
   int? shippingPreparationHours;
 
   /// 預計送達時間（天數）
+  ///
+  /// Minimum value: 1
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -154,6 +94,8 @@ class StoreCreateParam {
 
   /// 可選擇的出貨日期範圍（天數）
   ///
+  /// Minimum value: 1
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
@@ -162,15 +104,7 @@ class StoreCreateParam {
   int? shippingDateRange;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is StoreCreateParam &&
-    other.name == name &&
-    other.description == description &&
-    other.address == address &&
-    other.phone == phone &&
-    other.email == email &&
-    other.businessHours == businessHours &&
-    other.logoUrl == logoUrl &&
-    other.coverImageUrl == coverImageUrl &&
+  bool operator ==(Object other) => identical(this, other) || other is StoreShippingConfigParam &&
     _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
     _deepEquality.equals(other.supportedShippingTypes, supportedShippingTypes) &&
     other.defaultShippingFee == defaultShippingFee &&
@@ -184,14 +118,6 @@ class StoreCreateParam {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (name.hashCode) +
-    (description == null ? 0 : description!.hashCode) +
-    (address.hashCode) +
-    (phone == null ? 0 : phone!.hashCode) +
-    (email == null ? 0 : email!.hashCode) +
-    (businessHours == null ? 0 : businessHours!.hashCode) +
-    (logoUrl == null ? 0 : logoUrl!.hashCode) +
-    (coverImageUrl == null ? 0 : coverImageUrl!.hashCode) +
     (supportedShippingCompanies.hashCode) +
     (supportedShippingTypes.hashCode) +
     (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
@@ -203,42 +129,10 @@ class StoreCreateParam {
     (shippingDateRange == null ? 0 : shippingDateRange!.hashCode);
 
   @override
-  String toString() => 'StoreCreateParam[name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, coverImageUrl=$coverImageUrl, supportedShippingCompanies=$supportedShippingCompanies, supportedShippingTypes=$supportedShippingTypes, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange]';
+  String toString() => 'StoreShippingConfigParam[supportedShippingCompanies=$supportedShippingCompanies, supportedShippingTypes=$supportedShippingTypes, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'name'] = this.name;
-    if (this.description != null) {
-      json[r'description'] = this.description;
-    } else {
-      json[r'description'] = null;
-    }
-      json[r'address'] = this.address;
-    if (this.phone != null) {
-      json[r'phone'] = this.phone;
-    } else {
-      json[r'phone'] = null;
-    }
-    if (this.email != null) {
-      json[r'email'] = this.email;
-    } else {
-      json[r'email'] = null;
-    }
-    if (this.businessHours != null) {
-      json[r'businessHours'] = this.businessHours;
-    } else {
-      json[r'businessHours'] = null;
-    }
-    if (this.logoUrl != null) {
-      json[r'logoUrl'] = this.logoUrl;
-    } else {
-      json[r'logoUrl'] = null;
-    }
-    if (this.coverImageUrl != null) {
-      json[r'coverImageUrl'] = this.coverImageUrl;
-    } else {
-      json[r'coverImageUrl'] = null;
-    }
       json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
       json[r'supportedShippingTypes'] = this.supportedShippingTypes;
     if (this.defaultShippingFee != null) {
@@ -279,10 +173,10 @@ class StoreCreateParam {
     return json;
   }
 
-  /// Returns a new [StoreCreateParam] instance and imports its values from
+  /// Returns a new [StoreShippingConfigParam] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static StoreCreateParam? fromJson(dynamic value) {
+  static StoreShippingConfigParam? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -291,21 +185,13 @@ class StoreCreateParam {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "StoreCreateParam[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "StoreCreateParam[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "StoreShippingConfigParam[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "StoreShippingConfigParam[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return StoreCreateParam(
-        name: mapValueOfType<String>(json, r'name')!,
-        description: mapValueOfType<String>(json, r'description'),
-        address: mapValueOfType<String>(json, r'address')!,
-        phone: mapValueOfType<String>(json, r'phone'),
-        email: mapValueOfType<String>(json, r'email'),
-        businessHours: mapValueOfType<String>(json, r'businessHours'),
-        logoUrl: mapValueOfType<String>(json, r'logoUrl'),
-        coverImageUrl: mapValueOfType<String>(json, r'coverImageUrl'),
+      return StoreShippingConfigParam(
         supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']),
         supportedShippingTypes: ShippingTypeEnum.listFromJson(json[r'supportedShippingTypes']),
         defaultShippingFee: mapValueOfType<double>(json, r'defaultShippingFee'),
@@ -320,11 +206,11 @@ class StoreCreateParam {
     return null;
   }
 
-  static List<StoreCreateParam> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <StoreCreateParam>[];
+  static List<StoreShippingConfigParam> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <StoreShippingConfigParam>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = StoreCreateParam.fromJson(row);
+        final value = StoreShippingConfigParam.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -333,12 +219,12 @@ class StoreCreateParam {
     return result.toList(growable: growable);
   }
 
-  static Map<String, StoreCreateParam> mapFromJson(dynamic json) {
-    final map = <String, StoreCreateParam>{};
+  static Map<String, StoreShippingConfigParam> mapFromJson(dynamic json) {
+    final map = <String, StoreShippingConfigParam>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = StoreCreateParam.fromJson(entry.value);
+        final value = StoreShippingConfigParam.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -347,14 +233,14 @@ class StoreCreateParam {
     return map;
   }
 
-  // maps a json object with a list of StoreCreateParam-objects as value to a dart map
-  static Map<String, List<StoreCreateParam>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<StoreCreateParam>>{};
+  // maps a json object with a list of StoreShippingConfigParam-objects as value to a dart map
+  static Map<String, List<StoreShippingConfigParam>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<StoreShippingConfigParam>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = StoreCreateParam.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = StoreShippingConfigParam.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -362,8 +248,6 @@ class StoreCreateParam {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'name',
-    'address',
   };
 }
 

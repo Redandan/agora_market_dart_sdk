@@ -22,8 +22,7 @@ void main() {
       // TODO
     });
 
-    // 物流公司
-    // String shippingCompany
+    // ShippingCompanyEnum shippingCompany
     test('to test the property `shippingCompany`', () async {
       // TODO
     });

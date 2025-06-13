@@ -364,18 +364,22 @@ class ApiClient {
           return ReviewUpdateParam.fromJson(value);
         case 'SalesStats':
           return SalesStats.fromJson(value);
+        case 'ShippingCompanyEnum':
+          return ShippingCompanyEnumTypeTransformer().decode(value);
         case 'ShippingTypeEnum':
           return ShippingTypeEnumTypeTransformer().decode(value);
         case 'SortObject':
           return SortObject.fromJson(value);
         case 'Staking':
           return Staking.fromJson(value);
-        case 'Store':
-          return Store.fromJson(value);
         case 'StoreAnalyticsDTO':
           return StoreAnalyticsDTO.fromJson(value);
         case 'StoreCreateParam':
           return StoreCreateParam.fromJson(value);
+        case 'StoreResponseDTO':
+          return StoreResponseDTO.fromJson(value);
+        case 'StoreShippingConfigParam':
+          return StoreShippingConfigParam.fromJson(value);
         case 'StoreUpdateParam':
           return StoreUpdateParam.fromJson(value);
         case 'TaiwanPostalArea':

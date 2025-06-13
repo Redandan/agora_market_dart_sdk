@@ -11,11 +11,11 @@
 import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
-// tests for Store
+// tests for StoreResponseDTO
 void main() {
-  // final instance = Store();
+  // final instance = StoreResponseDTO();
 
-  group('test Store', () {
+  group('test StoreResponseDTO', () {
     // 商店擁有者ID
     // int id
     test('to test the property `id`', () async {
@@ -67,11 +67,6 @@ void main() {
     // 商店封面圖片
     // String coverImageUrl
     test('to test the property `coverImageUrl`', () async {
-      // TODO
-    });
-
-    // User owner
-    test('to test the property `owner`', () async {
       // TODO
     });
 
@@ -132,6 +127,60 @@ void main() {
     // 回覆率
     // int responseRate
     test('to test the property `responseRate`', () async {
+      // TODO
+    });
+
+    // 支援的物流公司
+    // List<ShippingCompanyEnum> supportedShippingCompanies (default value: const [])
+    test('to test the property `supportedShippingCompanies`', () async {
+      // TODO
+    });
+
+    // 支援的運送方式
+    // List<ShippingTypeEnum> supportedShippingTypes (default value: const [])
+    test('to test the property `supportedShippingTypes`', () async {
+      // TODO
+    });
+
+    // 預設運費
+    // double defaultShippingFee
+    test('to test the property `defaultShippingFee`', () async {
+      // TODO
+    });
+
+    // 免運費門檻
+    // double freeShippingThreshold
+    test('to test the property `freeShippingThreshold`', () async {
+      // TODO
+    });
+
+    // 運送說明
+    // String shippingDescription
+    test('to test the property `shippingDescription`', () async {
+      // TODO
+    });
+
+    // 出貨準備時間（小時）
+    // int shippingPreparationHours
+    test('to test the property `shippingPreparationHours`', () async {
+      // TODO
+    });
+
+    // 預計送達時間（天數）
+    // int estimatedDeliveryDays
+    test('to test the property `estimatedDeliveryDays`', () async {
+      // TODO
+    });
+
+    // 是否支援指定出貨日期
+    // bool supportsScheduledShipping
+    test('to test the property `supportsScheduledShipping`', () async {
+      // TODO
+    });
+
+    // 可選擇的出貨日期範圍（天數）
+    // int shippingDateRange
+    test('to test the property `shippingDateRange`', () async {
       // TODO
     });
 

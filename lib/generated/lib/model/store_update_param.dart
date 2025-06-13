@@ -22,6 +22,15 @@ class StoreUpdateParam {
     this.logoUrl,
     this.coverImageUrl,
     this.isActive,
+    this.supportedShippingCompanies = const [],
+    this.supportedShippingTypes = const [],
+    this.defaultShippingFee,
+    this.freeShippingThreshold,
+    this.shippingDescription,
+    this.shippingPreparationHours,
+    this.estimatedDeliveryDays,
+    this.supportsScheduledShipping,
+    this.shippingDateRange,
   });
 
   /// 商店名稱
@@ -105,6 +114,75 @@ class StoreUpdateParam {
   ///
   bool? isActive;
 
+  /// 支援的物流公司
+  List<ShippingCompanyEnum> supportedShippingCompanies;
+
+  /// 支援的運送方式
+  List<ShippingTypeEnum> supportedShippingTypes;
+
+  /// 預設運費
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? defaultShippingFee;
+
+  /// 免運費門檻
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? freeShippingThreshold;
+
+  /// 運送說明
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? shippingDescription;
+
+  /// 出貨準備時間（小時）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? shippingPreparationHours;
+
+  /// 預計送達時間（天數）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? estimatedDeliveryDays;
+
+  /// 是否支援指定出貨日期
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? supportsScheduledShipping;
+
+  /// 可選擇的出貨日期範圍（天數）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? shippingDateRange;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is StoreUpdateParam &&
     other.name == name &&
@@ -115,7 +193,16 @@ class StoreUpdateParam {
     other.businessHours == businessHours &&
     other.logoUrl == logoUrl &&
     other.coverImageUrl == coverImageUrl &&
-    other.isActive == isActive;
+    other.isActive == isActive &&
+    _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
+    _deepEquality.equals(other.supportedShippingTypes, supportedShippingTypes) &&
+    other.defaultShippingFee == defaultShippingFee &&
+    other.freeShippingThreshold == freeShippingThreshold &&
+    other.shippingDescription == shippingDescription &&
+    other.shippingPreparationHours == shippingPreparationHours &&
+    other.estimatedDeliveryDays == estimatedDeliveryDays &&
+    other.supportsScheduledShipping == supportsScheduledShipping &&
+    other.shippingDateRange == shippingDateRange;
 
   @override
   int get hashCode =>
@@ -128,10 +215,19 @@ class StoreUpdateParam {
     (businessHours == null ? 0 : businessHours!.hashCode) +
     (logoUrl == null ? 0 : logoUrl!.hashCode) +
     (coverImageUrl == null ? 0 : coverImageUrl!.hashCode) +
-    (isActive == null ? 0 : isActive!.hashCode);
+    (isActive == null ? 0 : isActive!.hashCode) +
+    (supportedShippingCompanies.hashCode) +
+    (supportedShippingTypes.hashCode) +
+    (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
+    (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode) +
+    (shippingDescription == null ? 0 : shippingDescription!.hashCode) +
+    (shippingPreparationHours == null ? 0 : shippingPreparationHours!.hashCode) +
+    (estimatedDeliveryDays == null ? 0 : estimatedDeliveryDays!.hashCode) +
+    (supportsScheduledShipping == null ? 0 : supportsScheduledShipping!.hashCode) +
+    (shippingDateRange == null ? 0 : shippingDateRange!.hashCode);
 
   @override
-  String toString() => 'StoreUpdateParam[name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, coverImageUrl=$coverImageUrl, isActive=$isActive]';
+  String toString() => 'StoreUpdateParam[name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, coverImageUrl=$coverImageUrl, isActive=$isActive, supportedShippingCompanies=$supportedShippingCompanies, supportedShippingTypes=$supportedShippingTypes, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -180,6 +276,43 @@ class StoreUpdateParam {
     } else {
       json[r'isActive'] = null;
     }
+      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
+      json[r'supportedShippingTypes'] = this.supportedShippingTypes;
+    if (this.defaultShippingFee != null) {
+      json[r'defaultShippingFee'] = this.defaultShippingFee;
+    } else {
+      json[r'defaultShippingFee'] = null;
+    }
+    if (this.freeShippingThreshold != null) {
+      json[r'freeShippingThreshold'] = this.freeShippingThreshold;
+    } else {
+      json[r'freeShippingThreshold'] = null;
+    }
+    if (this.shippingDescription != null) {
+      json[r'shippingDescription'] = this.shippingDescription;
+    } else {
+      json[r'shippingDescription'] = null;
+    }
+    if (this.shippingPreparationHours != null) {
+      json[r'shippingPreparationHours'] = this.shippingPreparationHours;
+    } else {
+      json[r'shippingPreparationHours'] = null;
+    }
+    if (this.estimatedDeliveryDays != null) {
+      json[r'estimatedDeliveryDays'] = this.estimatedDeliveryDays;
+    } else {
+      json[r'estimatedDeliveryDays'] = null;
+    }
+    if (this.supportsScheduledShipping != null) {
+      json[r'supportsScheduledShipping'] = this.supportsScheduledShipping;
+    } else {
+      json[r'supportsScheduledShipping'] = null;
+    }
+    if (this.shippingDateRange != null) {
+      json[r'shippingDateRange'] = this.shippingDateRange;
+    } else {
+      json[r'shippingDateRange'] = null;
+    }
     return json;
   }
 
@@ -211,6 +344,15 @@ class StoreUpdateParam {
         logoUrl: mapValueOfType<String>(json, r'logoUrl'),
         coverImageUrl: mapValueOfType<String>(json, r'coverImageUrl'),
         isActive: mapValueOfType<bool>(json, r'isActive'),
+        supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']),
+        supportedShippingTypes: ShippingTypeEnum.listFromJson(json[r'supportedShippingTypes']),
+        defaultShippingFee: mapValueOfType<double>(json, r'defaultShippingFee'),
+        freeShippingThreshold: mapValueOfType<double>(json, r'freeShippingThreshold'),
+        shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),
+        shippingPreparationHours: mapValueOfType<int>(json, r'shippingPreparationHours'),
+        estimatedDeliveryDays: mapValueOfType<int>(json, r'estimatedDeliveryDays'),
+        supportsScheduledShipping: mapValueOfType<bool>(json, r'supportsScheduledShipping'),
+        shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
       );
     }
     return null;

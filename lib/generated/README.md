@@ -71,7 +71,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**createRecharge**](doc//DefaultApi.md#createrecharge) | **POST** /recharge | 創建充值
 *DefaultApi* | [**createWithdraw**](doc//DefaultApi.md#createwithdraw) | **POST** /withdraws | 發起提款
 *DefaultApi* | [**failWithdraw**](doc//DefaultApi.md#failwithdraw) | **POST** /withdraws/{withdrawId}/fail | 提款失敗
-*DefaultApi* | [**getAdminTransactionList**](doc//DefaultApi.md#getadmintransactionlist) | **GET** /transactions/admin/user/{userId}/list | 管理員查看指定會員的交易記錄
 *DefaultApi* | [**getAllActive**](doc//DefaultApi.md#getallactive) | **GET** /postal-areas | 獲取所有啟用的郵遞區號
 *DefaultApi* | [**getByCity**](doc//DefaultApi.md#getbycity) | **GET** /postal-areas/city/{city} | 根據城市查詢
 *DefaultApi* | [**getByCityAndDistrict**](doc//DefaultApi.md#getbycityanddistrict) | **GET** /postal-areas/city/{city}/district/{district} | 根據城市和行政區查詢
@@ -91,6 +90,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getRechargeHistory**](doc//DefaultApi.md#getrechargehistory) | **GET** /recharge/history | 獲取充值記錄
 *DefaultApi* | [**getTransactionById**](doc//DefaultApi.md#gettransactionbyid) | **GET** /transactions/{id} | 根據交易ID查詢交易記錄
 *DefaultApi* | [**getTransactionList**](doc//DefaultApi.md#gettransactionlist) | **GET** /transactions/{token}/list | 查詢帳變歷史
+*DefaultApi* | [**getTransactionListByAdmin**](doc//DefaultApi.md#gettransactionlistbyadmin) | **GET** /transactions/admin/search | 管理員查看帳變記錄
 *DefaultApi* | [**getUserCart1**](doc//DefaultApi.md#getusercart1) | **GET** /api/cart/list | 獲取購物車列表
 *DefaultApi* | [**getWithdraw**](doc//DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 *DefaultApi* | [**getWithdrawHistory**](doc//DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
@@ -235,9 +235,11 @@ Class | Method | HTTP request | Description
 *StakingApi* | [**unfreezeStaking**](doc//StakingApi.md#unfreezestaking) | **POST** /staking/unfreeze | 申請解除質押
 *StoresApi* | [**createStore**](doc//StoresApi.md#createstore) | **POST** /stores/create | 創建商店
 *StoresApi* | [**getMyStore**](doc//StoresApi.md#getmystore) | **GET** /stores/my-store | 獲取當前用戶的商店
+*StoresApi* | [**getShippingConfig**](doc//StoresApi.md#getshippingconfig) | **GET** /stores/shipping-config | 獲取商店物流設定
 *StoresApi* | [**getStoreAnalytics**](doc//StoresApi.md#getstoreanalytics) | **GET** /stores/analytics | 獲取商店分析數據
 *StoresApi* | [**getStoreBySellerId**](doc//StoresApi.md#getstorebysellerid) | **GET** /stores/{sellerId} | 根據賣家ID獲取商店信息
 *StoresApi* | [**searchMyStoreProducts**](doc//StoresApi.md#searchmystoreproducts) | **GET** /stores/products/search | 搜索我的商店商品
+*StoresApi* | [**updateShippingConfig**](doc//StoresApi.md#updateshippingconfig) | **POST** /stores/shipping-config | 更新商店物流設定
 *StoresApi* | [**updateStore**](doc//StoresApi.md#updatestore) | **POST** /stores/update | 更新商店
 *TestDataControllerApi* | [**generateLogisticsOrder**](doc//TestDataControllerApi.md#generatelogisticsorder) | **POST** /test/logistics | 
 *TestDataControllerApi* | [**generatePlatformDeliveryOrder**](doc//TestDataControllerApi.md#generateplatformdeliveryorder) | **POST** /test/platform | 
@@ -338,12 +340,14 @@ Class | Method | HTTP request | Description
  - [ReviewStatisticsDTO](doc//ReviewStatisticsDTO.md)
  - [ReviewUpdateParam](doc//ReviewUpdateParam.md)
  - [SalesStats](doc//SalesStats.md)
+ - [ShippingCompanyEnum](doc//ShippingCompanyEnum.md)
  - [ShippingTypeEnum](doc//ShippingTypeEnum.md)
  - [SortObject](doc//SortObject.md)
  - [Staking](doc//Staking.md)
- - [Store](doc//Store.md)
  - [StoreAnalyticsDTO](doc//StoreAnalyticsDTO.md)
  - [StoreCreateParam](doc//StoreCreateParam.md)
+ - [StoreResponseDTO](doc//StoreResponseDTO.md)
+ - [StoreShippingConfigParam](doc//StoreShippingConfigParam.md)
  - [StoreUpdateParam](doc//StoreUpdateParam.md)
  - [TaiwanPostalArea](doc//TaiwanPostalArea.md)
  - [TopDisputedProductDTO](doc//TopDisputedProductDTO.md)

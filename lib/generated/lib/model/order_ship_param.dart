@@ -28,14 +28,13 @@ class OrderShipParam {
   ///
   String? orderId;
 
-  /// 物流公司
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? shippingCompany;
+  ShippingCompanyEnum? shippingCompany;
 
   /// 物流單號
   ///
@@ -118,7 +117,7 @@ class OrderShipParam {
 
       return OrderShipParam(
         orderId: mapValueOfType<String>(json, r'orderId'),
-        shippingCompany: mapValueOfType<String>(json, r'shippingCompany'),
+        shippingCompany: ShippingCompanyEnum.fromJson(json[r'shippingCompany']),
         trackingNumber: mapValueOfType<String>(json, r'trackingNumber'),
         remark: mapValueOfType<String>(json, r'remark'),
       );

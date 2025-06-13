@@ -1,4 +1,4 @@
-# agora_market_dart_sdk.model.Store
+# agora_market_dart_sdk.model.StoreResponseDTO
 
 ## Load the model package
 ```dart
@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **businessHours** | **String** | 營業時間 | [optional] 
 **logoUrl** | **String** | 商店Logo | [optional] 
 **coverImageUrl** | **String** | 商店封面圖片 | [optional] 
-**owner** | [**User**](User.md) |  | [optional] 
 **isActive** | **bool** | 是否啟用 | [optional] 
 **viewCount** | **int** | 瀏覽次數 | [optional] 
 **rating** | **double** | 評分 | [optional] 
@@ -28,6 +27,15 @@ Name | Type | Description | Notes
 **totalSales** | **double** | 總銷售額 | [optional] 
 **averageRating** | **double** | 平均評分 | [optional] 
 **responseRate** | **int** | 回覆率 | [optional] 
+**supportedShippingCompanies** | [**List<ShippingCompanyEnum>**](ShippingCompanyEnum.md) | 支援的物流公司 | [optional] [default to const []]
+**supportedShippingTypes** | [**List<ShippingTypeEnum>**](ShippingTypeEnum.md) | 支援的運送方式 | [optional] [default to const []]
+**defaultShippingFee** | **double** | 預設運費 | [optional] 
+**freeShippingThreshold** | **double** | 免運費門檻 | [optional] 
+**shippingDescription** | **String** | 運送說明 | [optional] 
+**shippingPreparationHours** | **int** | 出貨準備時間（小時） | [optional] 
+**estimatedDeliveryDays** | **int** | 預計送達時間（天數） | [optional] 
+**supportsScheduledShipping** | **bool** | 是否支援指定出貨日期 | [optional] 
+**shippingDateRange** | **int** | 可選擇的出貨日期範圍（天數） | [optional] 
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | 更新時間 | [optional] 
 

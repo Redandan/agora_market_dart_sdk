@@ -218,13 +218,13 @@ void main() {
       // TODO
     });
 
-    // String shippingTimeDescription
-    test('to test the property `shippingTimeDescription`', () async {
+    // bool stockBelowMinimum
+    test('to test the property `stockBelowMinimum`', () async {
       // TODO
     });
 
-    // bool stockBelowMinimum
-    test('to test the property `stockBelowMinimum`', () async {
+    // String shippingTimeDescription
+    test('to test the property `shippingTimeDescription`', () async {
       // TODO
     });
 

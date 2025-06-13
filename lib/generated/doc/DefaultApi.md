@@ -20,7 +20,6 @@ Method | HTTP request | Description
 [**createRecharge**](DefaultApi.md#createrecharge) | **POST** /recharge | 創建充值
 [**createWithdraw**](DefaultApi.md#createwithdraw) | **POST** /withdraws | 發起提款
 [**failWithdraw**](DefaultApi.md#failwithdraw) | **POST** /withdraws/{withdrawId}/fail | 提款失敗
-[**getAdminTransactionList**](DefaultApi.md#getadmintransactionlist) | **GET** /transactions/admin/user/{userId}/list | 管理員查看指定會員的交易記錄
 [**getAllActive**](DefaultApi.md#getallactive) | **GET** /postal-areas | 獲取所有啟用的郵遞區號
 [**getByCity**](DefaultApi.md#getbycity) | **GET** /postal-areas/city/{city} | 根據城市查詢
 [**getByCityAndDistrict**](DefaultApi.md#getbycityanddistrict) | **GET** /postal-areas/city/{city}/district/{district} | 根據城市和行政區查詢
@@ -40,6 +39,7 @@ Method | HTTP request | Description
 [**getRechargeHistory**](DefaultApi.md#getrechargehistory) | **GET** /recharge/history | 獲取充值記錄
 [**getTransactionById**](DefaultApi.md#gettransactionbyid) | **GET** /transactions/{id} | 根據交易ID查詢交易記錄
 [**getTransactionList**](DefaultApi.md#gettransactionlist) | **GET** /transactions/{token}/list | 查詢帳變歷史
+[**getTransactionListByAdmin**](DefaultApi.md#gettransactionlistbyadmin) | **GET** /transactions/admin/search | 管理員查看帳變記錄
 [**getUserCart1**](DefaultApi.md#getusercart1) | **GET** /api/cart/list | 獲取購物車列表
 [**getWithdraw**](DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 [**getWithdrawHistory**](DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
@@ -505,53 +505,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Withdraw**](Withdraw.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getAdminTransactionList**
-> PageTransaction getAdminTransactionList(userId, token, page, size)
-
-管理員查看指定會員的交易記錄
-
-### Example
-```dart
-import 'package:agora_market_dart_sdk/api.dart';
-
-final api_instance = DefaultApi();
-final userId = 789; // int | 會員ID
-final token = token_example; // String | 幣種
-final page = 56; // int | 頁碼
-final size = 56; // int | 每頁數量
-
-try {
-    final result = api_instance.getAdminTransactionList(userId, token, page, size);
-    print(result);
-} catch (e) {
-    print('Exception when calling DefaultApi->getAdminTransactionList: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userId** | **int**| 會員ID | 
- **token** | **String**| 幣種 | 
- **page** | **int**| 頁碼 | 
- **size** | **int**| 每頁數量 | 
-
-### Return type
-
-[**PageTransaction**](PageTransaction.md)
 
 ### Authorization
 
@@ -1344,6 +1297,53 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **token** | **String**|  | 
  **page** | **int**| 頁碼，從1開始 | 
+ **size** | **int**| 每頁數量 | 
+
+### Return type
+
+[**PageTransaction**](PageTransaction.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getTransactionListByAdmin**
+> PageTransaction getTransactionListByAdmin(userId, token, page, size)
+
+管理員查看帳變記錄
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final userId = 789; // int | 會員ID
+final token = token_example; // String | 幣種
+final page = 56; // int | 頁碼
+final size = 56; // int | 每頁數量
+
+try {
+    final result = api_instance.getTransactionListByAdmin(userId, token, page, size);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getTransactionListByAdmin: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **int**| 會員ID | 
+ **token** | **String**| 幣種 | 
+ **page** | **int**| 頁碼 | 
  **size** | **int**| 每頁數量 | 
 
 ### Return type

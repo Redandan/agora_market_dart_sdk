@@ -11,14 +11,16 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createStore**](StoresApi.md#createstore) | **POST** /stores/create | 創建商店
 [**getMyStore**](StoresApi.md#getmystore) | **GET** /stores/my-store | 獲取當前用戶的商店
+[**getShippingConfig**](StoresApi.md#getshippingconfig) | **GET** /stores/shipping-config | 獲取商店物流設定
 [**getStoreAnalytics**](StoresApi.md#getstoreanalytics) | **GET** /stores/analytics | 獲取商店分析數據
 [**getStoreBySellerId**](StoresApi.md#getstorebysellerid) | **GET** /stores/{sellerId} | 根據賣家ID獲取商店信息
 [**searchMyStoreProducts**](StoresApi.md#searchmystoreproducts) | **GET** /stores/products/search | 搜索我的商店商品
+[**updateShippingConfig**](StoresApi.md#updateshippingconfig) | **POST** /stores/shipping-config | 更新商店物流設定
 [**updateStore**](StoresApi.md#updatestore) | **POST** /stores/update | 更新商店
 
 
 # **createStore**
-> Store createStore(storeCreateParam)
+> StoreResponseDTO createStore(storeCreateParam)
 
 創建商店
 
@@ -45,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Store**](Store.md)
+[**StoreResponseDTO**](StoreResponseDTO.md)
 
 ### Authorization
 
@@ -59,7 +61,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getMyStore**
-> Store getMyStore()
+> StoreResponseDTO getMyStore()
 
 獲取當前用戶的商店
 
@@ -82,7 +84,44 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**Store**](Store.md)
+[**StoreResponseDTO**](StoreResponseDTO.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getShippingConfig**
+> StoreShippingConfigParam getShippingConfig()
+
+獲取商店物流設定
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = StoresApi();
+
+try {
+    final result = api_instance.getShippingConfig();
+    print(result);
+} catch (e) {
+    print('Exception when calling StoresApi->getShippingConfig: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**StoreShippingConfigParam**](StoreShippingConfigParam.md)
 
 ### Authorization
 
@@ -133,7 +172,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getStoreBySellerId**
-> Store getStoreBySellerId(sellerId)
+> StoreResponseDTO getStoreBySellerId(sellerId)
 
 根據賣家ID獲取商店信息
 
@@ -160,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Store**](Store.md)
+[**StoreResponseDTO**](StoreResponseDTO.md)
 
 ### Authorization
 
@@ -222,8 +261,49 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **updateShippingConfig**
+> StoreResponseDTO updateShippingConfig(storeShippingConfigParam)
+
+更新商店物流設定
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = StoresApi();
+final storeShippingConfigParam = StoreShippingConfigParam(); // StoreShippingConfigParam | 
+
+try {
+    final result = api_instance.updateShippingConfig(storeShippingConfigParam);
+    print(result);
+} catch (e) {
+    print('Exception when calling StoresApi->updateShippingConfig: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storeShippingConfigParam** | [**StoreShippingConfigParam**](StoreShippingConfigParam.md)|  | 
+
+### Return type
+
+[**StoreResponseDTO**](StoreResponseDTO.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateStore**
-> Store updateStore(storeUpdateParam)
+> StoreResponseDTO updateStore(storeUpdateParam)
 
 更新商店
 
@@ -250,7 +330,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Store**](Store.md)
+[**StoreResponseDTO**](StoreResponseDTO.md)
 
 ### Authorization
 

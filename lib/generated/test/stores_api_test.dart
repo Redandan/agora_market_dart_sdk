@@ -19,15 +19,22 @@ void main() {
   group('tests for StoresApi', () {
     // 創建商店
     //
-    //Future<Store> createStore(StoreCreateParam storeCreateParam) async
+    //Future<StoreResponseDTO> createStore(StoreCreateParam storeCreateParam) async
     test('test createStore', () async {
       // TODO
     });
 
     // 獲取當前用戶的商店
     //
-    //Future<Store> getMyStore() async
+    //Future<StoreResponseDTO> getMyStore() async
     test('test getMyStore', () async {
+      // TODO
+    });
+
+    // 獲取商店物流設定
+    //
+    //Future<StoreShippingConfigParam> getShippingConfig() async
+    test('test getShippingConfig', () async {
       // TODO
     });
 
@@ -40,7 +47,7 @@ void main() {
 
     // 根據賣家ID獲取商店信息
     //
-    //Future<Store> getStoreBySellerId(int sellerId) async
+    //Future<StoreResponseDTO> getStoreBySellerId(int sellerId) async
     test('test getStoreBySellerId', () async {
       // TODO
     });
@@ -52,9 +59,16 @@ void main() {
       // TODO
     });
 
+    // 更新商店物流設定
+    //
+    //Future<StoreResponseDTO> updateShippingConfig(StoreShippingConfigParam storeShippingConfigParam) async
+    test('test updateShippingConfig', () async {
+      // TODO
+    });
+
     // 更新商店
     //
-    //Future<Store> updateStore(StoreUpdateParam storeUpdateParam) async
+    //Future<StoreResponseDTO> updateStore(StoreUpdateParam storeUpdateParam) async
     test('test updateStore', () async {
       // TODO
     });

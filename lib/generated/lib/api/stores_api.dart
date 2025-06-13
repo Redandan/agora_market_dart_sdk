@@ -53,7 +53,7 @@ class StoresApi {
   /// Parameters:
   ///
   /// * [StoreCreateParam] storeCreateParam (required):
-  Future<Store?> createStore(StoreCreateParam storeCreateParam,) async {
+  Future<StoreResponseDTO?> createStore(StoreCreateParam storeCreateParam,) async {
     final response = await createStoreWithHttpInfo(storeCreateParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -62,7 +62,7 @@ class StoresApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Store',) as Store;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StoreResponseDTO',) as StoreResponseDTO;
     
     }
     return null;
@@ -97,7 +97,7 @@ class StoresApi {
   }
 
   /// 獲取當前用戶的商店
-  Future<Store?> getMyStore() async {
+  Future<StoreResponseDTO?> getMyStore() async {
     final response = await getMyStoreWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -106,7 +106,51 @@ class StoresApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Store',) as Store;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StoreResponseDTO',) as StoreResponseDTO;
+    
+    }
+    return null;
+  }
+
+  /// 獲取商店物流設定
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getShippingConfigWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/stores/shipping-config';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 獲取商店物流設定
+  Future<StoreShippingConfigParam?> getShippingConfig() async {
+    final response = await getShippingConfigWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StoreShippingConfigParam',) as StoreShippingConfigParam;
     
     }
     return null;
@@ -196,7 +240,7 @@ class StoresApi {
   ///
   /// * [int] sellerId (required):
   ///   賣家ID
-  Future<Store?> getStoreBySellerId(int sellerId,) async {
+  Future<StoreResponseDTO?> getStoreBySellerId(int sellerId,) async {
     final response = await getStoreBySellerIdWithHttpInfo(sellerId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -205,7 +249,7 @@ class StoresApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Store',) as Store;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StoreResponseDTO',) as StoreResponseDTO;
     
     }
     return null;
@@ -295,6 +339,58 @@ class StoresApi {
     return null;
   }
 
+  /// 更新商店物流設定
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [StoreShippingConfigParam] storeShippingConfigParam (required):
+  Future<Response> updateShippingConfigWithHttpInfo(StoreShippingConfigParam storeShippingConfigParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/stores/shipping-config';
+
+    // ignore: prefer_final_locals
+    Object? postBody = storeShippingConfigParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 更新商店物流設定
+  ///
+  /// Parameters:
+  ///
+  /// * [StoreShippingConfigParam] storeShippingConfigParam (required):
+  Future<StoreResponseDTO?> updateShippingConfig(StoreShippingConfigParam storeShippingConfigParam,) async {
+    final response = await updateShippingConfigWithHttpInfo(storeShippingConfigParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StoreResponseDTO',) as StoreResponseDTO;
+    
+    }
+    return null;
+  }
+
   /// 更新商店
   ///
   /// Note: This method returns the HTTP [Response].
@@ -332,7 +428,7 @@ class StoresApi {
   /// Parameters:
   ///
   /// * [StoreUpdateParam] storeUpdateParam (required):
-  Future<Store?> updateStore(StoreUpdateParam storeUpdateParam,) async {
+  Future<StoreResponseDTO?> updateStore(StoreUpdateParam storeUpdateParam,) async {
     final response = await updateStoreWithHttpInfo(storeUpdateParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -341,7 +437,7 @@ class StoresApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Store',) as Store;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StoreResponseDTO',) as StoreResponseDTO;
     
     }
     return null;

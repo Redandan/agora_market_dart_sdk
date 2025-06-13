@@ -47,8 +47,8 @@ class Product {
     this.minStock,
     this.stockAlertThreshold,
     this.allowNegativeStock,
-    this.shippingTimeDescription,
     this.stockBelowMinimum,
+    this.shippingTimeDescription,
     this.stockLow,
     this.inStock,
   });
@@ -290,7 +290,7 @@ class Product {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? shippingTimeDescription;
+  bool? stockBelowMinimum;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -298,7 +298,7 @@ class Product {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? stockBelowMinimum;
+  String? shippingTimeDescription;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -352,8 +352,8 @@ class Product {
     other.minStock == minStock &&
     other.stockAlertThreshold == stockAlertThreshold &&
     other.allowNegativeStock == allowNegativeStock &&
-    other.shippingTimeDescription == shippingTimeDescription &&
     other.stockBelowMinimum == stockBelowMinimum &&
+    other.shippingTimeDescription == shippingTimeDescription &&
     other.stockLow == stockLow &&
     other.inStock == inStock;
 
@@ -394,13 +394,13 @@ class Product {
     (minStock == null ? 0 : minStock!.hashCode) +
     (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
     (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode) +
-    (shippingTimeDescription == null ? 0 : shippingTimeDescription!.hashCode) +
     (stockBelowMinimum == null ? 0 : stockBelowMinimum!.hashCode) +
+    (shippingTimeDescription == null ? 0 : shippingTimeDescription!.hashCode) +
     (stockLow == null ? 0 : stockLow!.hashCode) +
     (inStock == null ? 0 : inStock!.hashCode);
 
   @override
-  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrls=$imageUrls, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, sku=$sku, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, shippingTimeDescription=$shippingTimeDescription, stockBelowMinimum=$stockBelowMinimum, stockLow=$stockLow, inStock=$inStock]';
+  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrls=$imageUrls, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, sku=$sku, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, stockBelowMinimum=$stockBelowMinimum, shippingTimeDescription=$shippingTimeDescription, stockLow=$stockLow, inStock=$inStock]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -510,15 +510,15 @@ class Product {
     } else {
       json[r'allowNegativeStock'] = null;
     }
-    if (this.shippingTimeDescription != null) {
-      json[r'shippingTimeDescription'] = this.shippingTimeDescription;
-    } else {
-      json[r'shippingTimeDescription'] = null;
-    }
     if (this.stockBelowMinimum != null) {
       json[r'stockBelowMinimum'] = this.stockBelowMinimum;
     } else {
       json[r'stockBelowMinimum'] = null;
+    }
+    if (this.shippingTimeDescription != null) {
+      json[r'shippingTimeDescription'] = this.shippingTimeDescription;
+    } else {
+      json[r'shippingTimeDescription'] = null;
     }
     if (this.stockLow != null) {
       json[r'stockLow'] = this.stockLow;
@@ -588,8 +588,8 @@ class Product {
         minStock: mapValueOfType<int>(json, r'minStock'),
         stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
         allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
-        shippingTimeDescription: mapValueOfType<String>(json, r'shippingTimeDescription'),
         stockBelowMinimum: mapValueOfType<bool>(json, r'stockBelowMinimum'),
+        shippingTimeDescription: mapValueOfType<String>(json, r'shippingTimeDescription'),
         stockLow: mapValueOfType<bool>(json, r'stockLow'),
         inStock: mapValueOfType<bool>(json, r'inStock'),
       );

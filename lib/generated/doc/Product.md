@@ -42,8 +42,8 @@ Name | Type | Description | Notes
 **minStock** | **int** | 最低庫存警告 | [optional] 
 **stockAlertThreshold** | **int** | 庫存預警閾值 | [optional] 
 **allowNegativeStock** | **bool** | 是否允許負庫存 | [optional] 
-**shippingTimeDescription** | **String** |  | [optional] 
 **stockBelowMinimum** | **bool** |  | [optional] 
+**shippingTimeDescription** | **String** |  | [optional] 
 **stockLow** | **bool** |  | [optional] 
 **inStock** | **bool** |  | [optional] 
 

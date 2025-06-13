@@ -100,13 +100,6 @@ void main() {
       // TODO
     });
 
-    // 管理員查看指定會員的交易記錄
-    //
-    //Future<PageTransaction> getAdminTransactionList(int userId, String token, int page, int size) async
-    test('test getAdminTransactionList', () async {
-      // TODO
-    });
-
     // 獲取所有啟用的郵遞區號
     //
     // 返回所有啟用狀態的郵遞區號列表
@@ -257,6 +250,13 @@ void main() {
     //
     //Future<PageTransaction> getTransactionList(String token, int page, int size) async
     test('test getTransactionList', () async {
+      // TODO
+    });
+
+    // 管理員查看帳變記錄
+    //
+    //Future<PageTransaction> getTransactionListByAdmin(int userId, String token, int page, int size) async
+    test('test getTransactionListByAdmin', () async {
       // TODO
     });
 
