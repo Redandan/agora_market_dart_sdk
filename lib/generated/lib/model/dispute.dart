@@ -17,8 +17,8 @@ class Dispute {
     this.orderId,
     this.buyerId,
     this.sellerId,
-    this.type,
     this.status,
+    this.outcome,
     this.description,
     this.sellerReply,
     this.adminComment,
@@ -27,7 +27,7 @@ class Dispute {
     this.resolvedAt,
   });
 
-  /// 糾紛ID
+  /// 爭議ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -63,9 +63,6 @@ class Dispute {
   ///
   int? sellerId;
 
-  /// 糾紛類型
-  DisputeTypeEnum? type;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -74,7 +71,15 @@ class Dispute {
   ///
   DisputeStatusEnum? status;
 
-  /// 糾紛描述
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DisputeOutcome? outcome;
+
+  /// 爭議描述
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -134,8 +139,8 @@ class Dispute {
     other.orderId == orderId &&
     other.buyerId == buyerId &&
     other.sellerId == sellerId &&
-    other.type == type &&
     other.status == status &&
+    other.outcome == outcome &&
     other.description == description &&
     other.sellerReply == sellerReply &&
     other.adminComment == adminComment &&
@@ -150,8 +155,8 @@ class Dispute {
     (orderId == null ? 0 : orderId!.hashCode) +
     (buyerId == null ? 0 : buyerId!.hashCode) +
     (sellerId == null ? 0 : sellerId!.hashCode) +
-    (type == null ? 0 : type!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
+    (outcome == null ? 0 : outcome!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (sellerReply == null ? 0 : sellerReply!.hashCode) +
     (adminComment == null ? 0 : adminComment!.hashCode) +
@@ -160,7 +165,7 @@ class Dispute {
     (resolvedAt == null ? 0 : resolvedAt!.hashCode);
 
   @override
-  String toString() => 'Dispute[id=$id, orderId=$orderId, buyerId=$buyerId, sellerId=$sellerId, type=$type, status=$status, description=$description, sellerReply=$sellerReply, adminComment=$adminComment, createdAt=$createdAt, updatedAt=$updatedAt, resolvedAt=$resolvedAt]';
+  String toString() => 'Dispute[id=$id, orderId=$orderId, buyerId=$buyerId, sellerId=$sellerId, status=$status, outcome=$outcome, description=$description, sellerReply=$sellerReply, adminComment=$adminComment, createdAt=$createdAt, updatedAt=$updatedAt, resolvedAt=$resolvedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -184,15 +189,15 @@ class Dispute {
     } else {
       json[r'sellerId'] = null;
     }
-    if (this.type != null) {
-      json[r'type'] = this.type;
-    } else {
-      json[r'type'] = null;
-    }
     if (this.status != null) {
       json[r'status'] = this.status;
     } else {
       json[r'status'] = null;
+    }
+    if (this.outcome != null) {
+      json[r'outcome'] = this.outcome;
+    } else {
+      json[r'outcome'] = null;
     }
     if (this.description != null) {
       json[r'description'] = this.description;
@@ -250,8 +255,8 @@ class Dispute {
         orderId: mapValueOfType<String>(json, r'orderId'),
         buyerId: mapValueOfType<int>(json, r'buyerId'),
         sellerId: mapValueOfType<int>(json, r'sellerId'),
-        type: DisputeTypeEnum.fromJson(json[r'type']),
         status: DisputeStatusEnum.fromJson(json[r'status']),
+        outcome: DisputeOutcome.fromJson(json[r'outcome']),
         description: mapValueOfType<String>(json, r'description'),
         sellerReply: mapValueOfType<String>(json, r'sellerReply'),
         adminComment: mapValueOfType<String>(json, r'adminComment'),
@@ -307,87 +312,4 @@ class Dispute {
   static const requiredKeys = <String>{
   };
 }
-
-/// 糾紛類型
-class DisputeTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const DisputeTypeEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const PRODUCT_QUALITY = DisputeTypeEnum._(r'PRODUCT_QUALITY');
-  static const DELIVERY_ISSUE = DisputeTypeEnum._(r'DELIVERY_ISSUE');
-  static const REFUND_REQUEST = DisputeTypeEnum._(r'REFUND_REQUEST');
-  static const OTHER = DisputeTypeEnum._(r'OTHER');
-  static const unknownDefaultOpenApi = DisputeTypeEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][DisputeTypeEnum].
-  static const values = <DisputeTypeEnum>[
-    PRODUCT_QUALITY,
-    DELIVERY_ISSUE,
-    REFUND_REQUEST,
-    OTHER,
-    unknownDefaultOpenApi,
-  ];
-
-  static DisputeTypeEnum? fromJson(dynamic value) => DisputeTypeEnumTypeTransformer().decode(value);
-
-  static List<DisputeTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <DisputeTypeEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = DisputeTypeEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [DisputeTypeEnum] to String,
-/// and [decode] dynamic data back to [DisputeTypeEnum].
-class DisputeTypeEnumTypeTransformer {
-  factory DisputeTypeEnumTypeTransformer() => _instance ??= const DisputeTypeEnumTypeTransformer._();
-
-  const DisputeTypeEnumTypeTransformer._();
-
-  String encode(DisputeTypeEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a DisputeTypeEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  DisputeTypeEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'PRODUCT_QUALITY': return DisputeTypeEnum.PRODUCT_QUALITY;
-        case r'DELIVERY_ISSUE': return DisputeTypeEnum.DELIVERY_ISSUE;
-        case r'REFUND_REQUEST': return DisputeTypeEnum.REFUND_REQUEST;
-        case r'OTHER': return DisputeTypeEnum.OTHER;
-        case r'unknown_default_open_api': return DisputeTypeEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [DisputeTypeEnumTypeTransformer] instance.
-  static DisputeTypeEnumTypeTransformer? _instance;
-}
-
 

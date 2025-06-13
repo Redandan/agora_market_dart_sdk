@@ -15,7 +15,6 @@ class DisputeStatisticsDTO {
   DisputeStatisticsDTO({
     this.totalDisputes,
     this.disputesByStatus = const {},
-    this.disputesByType = const {},
     this.averageResolutionTime,
     this.totalRefundAmount,
     this.topDisputedProducts = const [],
@@ -33,9 +32,6 @@ class DisputeStatisticsDTO {
 
   /// 各狀態糾紛數量
   Map<String, int> disputesByStatus;
-
-  /// 各類型糾紛數量
-  Map<String, int> disputesByType;
 
   /// 平均處理時間（小時）
   ///
@@ -65,7 +61,6 @@ class DisputeStatisticsDTO {
   bool operator ==(Object other) => identical(this, other) || other is DisputeStatisticsDTO &&
     other.totalDisputes == totalDisputes &&
     _deepEquality.equals(other.disputesByStatus, disputesByStatus) &&
-    _deepEquality.equals(other.disputesByType, disputesByType) &&
     other.averageResolutionTime == averageResolutionTime &&
     other.totalRefundAmount == totalRefundAmount &&
     _deepEquality.equals(other.topDisputedProducts, topDisputedProducts) &&
@@ -76,14 +71,13 @@ class DisputeStatisticsDTO {
     // ignore: unnecessary_parenthesis
     (totalDisputes == null ? 0 : totalDisputes!.hashCode) +
     (disputesByStatus.hashCode) +
-    (disputesByType.hashCode) +
     (averageResolutionTime == null ? 0 : averageResolutionTime!.hashCode) +
     (totalRefundAmount == null ? 0 : totalRefundAmount!.hashCode) +
     (topDisputedProducts.hashCode) +
     (topDisputedSellers.hashCode);
 
   @override
-  String toString() => 'DisputeStatisticsDTO[totalDisputes=$totalDisputes, disputesByStatus=$disputesByStatus, disputesByType=$disputesByType, averageResolutionTime=$averageResolutionTime, totalRefundAmount=$totalRefundAmount, topDisputedProducts=$topDisputedProducts, topDisputedSellers=$topDisputedSellers]';
+  String toString() => 'DisputeStatisticsDTO[totalDisputes=$totalDisputes, disputesByStatus=$disputesByStatus, averageResolutionTime=$averageResolutionTime, totalRefundAmount=$totalRefundAmount, topDisputedProducts=$topDisputedProducts, topDisputedSellers=$topDisputedSellers]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -93,7 +87,6 @@ class DisputeStatisticsDTO {
       json[r'totalDisputes'] = null;
     }
       json[r'disputesByStatus'] = this.disputesByStatus;
-      json[r'disputesByType'] = this.disputesByType;
     if (this.averageResolutionTime != null) {
       json[r'averageResolutionTime'] = this.averageResolutionTime;
     } else {
@@ -130,7 +123,6 @@ class DisputeStatisticsDTO {
       return DisputeStatisticsDTO(
         totalDisputes: mapValueOfType<int>(json, r'totalDisputes'),
         disputesByStatus: mapCastOfType<String, int>(json, r'disputesByStatus') ?? const {},
-        disputesByType: mapCastOfType<String, int>(json, r'disputesByType') ?? const {},
         averageResolutionTime: mapValueOfType<double>(json, r'averageResolutionTime'),
         totalRefundAmount: num.parse('${json[r'totalRefundAmount']}'),
         topDisputedProducts: TopDisputedProductDTO.listFromJson(json[r'topDisputedProducts']),

@@ -61,8 +61,17 @@ String parameterToString(dynamic value) {
   if (value is DeliveryReportTypeEnum) {
     return DeliveryReportTypeEnumTypeTransformer().encode(value).toString();
   }
+  if (value is DisputeOutcome) {
+    return DisputeOutcomeTypeTransformer().encode(value).toString();
+  }
   if (value is DisputeStatusEnum) {
     return DisputeStatusEnumTypeTransformer().encode(value).toString();
+  }
+  if (value is IssueStatusEnum) {
+    return IssueStatusEnumTypeTransformer().encode(value).toString();
+  }
+  if (value is IssueTypeEnum) {
+    return IssueTypeEnumTypeTransformer().encode(value).toString();
   }
   if (value is ProductCategoryEnum) {
     return ProductCategoryEnumTypeTransformer().encode(value).toString();

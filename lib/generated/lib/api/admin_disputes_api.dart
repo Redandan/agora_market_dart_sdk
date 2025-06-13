@@ -300,9 +300,6 @@ class AdminDisputesApi {
   /// * [String] status:
   ///   糾紛狀態
   ///
-  /// * [String] type:
-  ///   糾紛類型
-  ///
   /// * [DateTime] startDate:
   ///   開始日期 (ISO-8601 格式)
   ///
@@ -314,7 +311,7 @@ class AdminDisputesApi {
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<Response> searchDisputes1WithHttpInfo({ int? buyerId, int? sellerId, String? status, String? type, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+  Future<Response> searchDisputes1WithHttpInfo({ int? buyerId, int? sellerId, String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/disputes/search';
 
@@ -333,9 +330,6 @@ class AdminDisputesApi {
     }
     if (status != null) {
       queryParams.addAll(_queryParams('', 'status', status));
-    }
-    if (type != null) {
-      queryParams.addAll(_queryParams('', 'type', type));
     }
     if (startDate != null) {
       queryParams.addAll(_queryParams('', 'startDate', startDate));
@@ -379,9 +373,6 @@ class AdminDisputesApi {
   /// * [String] status:
   ///   糾紛狀態
   ///
-  /// * [String] type:
-  ///   糾紛類型
-  ///
   /// * [DateTime] startDate:
   ///   開始日期 (ISO-8601 格式)
   ///
@@ -393,8 +384,8 @@ class AdminDisputesApi {
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<PageDispute?> searchDisputes1({ int? buyerId, int? sellerId, String? status, String? type, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
-    final response = await searchDisputes1WithHttpInfo( buyerId: buyerId, sellerId: sellerId, status: status, type: type, startDate: startDate, endDate: endDate, page: page, size: size, );
+  Future<PageDispute?> searchDisputes1({ int? buyerId, int? sellerId, String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+    final response = await searchDisputes1WithHttpInfo( buyerId: buyerId, sellerId: sellerId, status: status, startDate: startDate, endDate: endDate, page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

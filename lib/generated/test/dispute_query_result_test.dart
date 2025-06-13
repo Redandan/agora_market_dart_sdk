@@ -50,13 +50,7 @@ void main() {
       // TODO
     });
 
-    // 糾紛類型
-    // String type
-    test('to test the property `type`', () async {
-      // TODO
-    });
-
-    // 糾紛狀態
+    // 申訴狀態
     // String status
     test('to test the property `status`', () async {
       // TODO

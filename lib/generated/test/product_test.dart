@@ -218,13 +218,8 @@ void main() {
       // TODO
     });
 
-    // bool stockLow
-    test('to test the property `stockLow`', () async {
-      // TODO
-    });
-
-    // bool inStock
-    test('to test the property `inStock`', () async {
+    // String shippingTimeDescription
+    test('to test the property `shippingTimeDescription`', () async {
       // TODO
     });
 
@@ -233,8 +228,13 @@ void main() {
       // TODO
     });
 
-    // String shippingTimeDescription
-    test('to test the property `shippingTimeDescription`', () async {
+    // bool stockLow
+    test('to test the property `stockLow`', () async {
+      // TODO
+    });
+
+    // bool inStock
+    test('to test the property `inStock`', () async {
       // TODO
     });
 

@@ -51,6 +51,13 @@ void main() {
       // TODO
     });
 
+    // 關閉客戶問題
+    //
+    //Future<CustomerIssue> closeIssue(String issueId) async
+    test('test closeIssue', () async {
+      // TODO
+    });
+
     // 完成充值
     //
     //Future<Recharge> completeRecharge(String rechargeId, String txHash) async
@@ -62,6 +69,13 @@ void main() {
     //
     //Future<Withdraw> completeWithdraw(String withdrawId, String txHash) async
     test('test completeWithdraw', () async {
+      // TODO
+    });
+
+    // 創建客戶問題
+    //
+    //Future<CustomerIssue> createIssue(CreateIssueParam createIssueParam) async
+    test('test createIssue', () async {
       // TODO
     });
 
@@ -165,6 +179,20 @@ void main() {
       // TODO
     });
 
+    // 查詢客戶問題記錄
+    //
+    //Future<CustomerIssue> getIssue(String issueId) async
+    test('test getIssue', () async {
+      // TODO
+    });
+
+    // 查詢客戶問題歷史
+    //
+    //Future<PageCustomerIssue> getIssueHistory({ int page, int size }) async
+    test('test getIssueHistory', () async {
+      // TODO
+    });
+
     // 獲取庫存不足商品
     //
     // 獲取購物車中庫存不足的商品
@@ -264,12 +292,26 @@ void main() {
       // TODO
     });
 
+    // 回覆客戶問題
+    //
+    //Future<CustomerIssue> replyIssue(String issueId, ReplyIssueParam replyIssueParam) async
+    test('test replyIssue', () async {
+      // TODO
+    });
+
     // 搜索郵遞區號
     //
     // 根據關鍵字搜索郵遞區號、城市或行政區
     //
     //Future<List<TaiwanPostalArea>> search(String keyword) async
     test('test search', () async {
+      // TODO
+    });
+
+    // 管理員搜尋客戶問題記錄
+    //
+    //Future<PageCustomerIssue> searchIssues(IssueSearchParam issueSearchParam, { int page, int size }) async
+    test('test searchIssues', () async {
       // TODO
     });
 

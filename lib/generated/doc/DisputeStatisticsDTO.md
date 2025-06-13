@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalDisputes** | **int** | 總糾紛數 | [optional] 
 **disputesByStatus** | **Map<String, int>** | 各狀態糾紛數量 | [optional] [default to const {}]
-**disputesByType** | **Map<String, int>** | 各類型糾紛數量 | [optional] [default to const {}]
 **averageResolutionTime** | **double** | 平均處理時間（小時） | [optional] 
 **totalRefundAmount** | **num** | 退款總金額 | [optional] 
 **topDisputedProducts** | [**List<TopDisputedProductDTO>**](TopDisputedProductDTO.md) | 熱門糾紛商品（前5個） | [optional] [default to const []]

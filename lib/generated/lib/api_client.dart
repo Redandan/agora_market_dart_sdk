@@ -220,12 +220,16 @@ class ApiClient {
           return ColdWallet.fromJson(value);
         case 'ColdWalletStatusEnum':
           return ColdWalletStatusEnumTypeTransformer().decode(value);
+        case 'CreateIssueParam':
+          return CreateIssueParam.fromJson(value);
         case 'CreatePromoCodeParam':
           return CreatePromoCodeParam.fromJson(value);
         case 'CreateRechargeParam':
           return CreateRechargeParam.fromJson(value);
         case 'CreateWithdrawParam':
           return CreateWithdrawParam.fromJson(value);
+        case 'CustomerIssue':
+          return CustomerIssue.fromJson(value);
         case 'CustomerStats':
           return CustomerStats.fromJson(value);
         case 'DeliveryDetail':
@@ -242,12 +246,20 @@ class ApiClient {
           return Dispute.fromJson(value);
         case 'DisputeCreateParam':
           return DisputeCreateParam.fromJson(value);
+        case 'DisputeOutcome':
+          return DisputeOutcomeTypeTransformer().decode(value);
         case 'DisputeQueryResult':
           return DisputeQueryResult.fromJson(value);
         case 'DisputeStatisticsDTO':
           return DisputeStatisticsDTO.fromJson(value);
         case 'DisputeStatusEnum':
           return DisputeStatusEnumTypeTransformer().decode(value);
+        case 'IssueSearchParam':
+          return IssueSearchParam.fromJson(value);
+        case 'IssueStatusEnum':
+          return IssueStatusEnumTypeTransformer().decode(value);
+        case 'IssueTypeEnum':
+          return IssueTypeEnumTypeTransformer().decode(value);
         case 'LoginParam':
           return LoginParam.fromJson(value);
         case 'LoginResult':
@@ -278,6 +290,8 @@ class ApiClient {
           return PageChatSession.fromJson(value);
         case 'PageColdWallet':
           return PageColdWallet.fromJson(value);
+        case 'PageCustomerIssue':
+          return PageCustomerIssue.fromJson(value);
         case 'PageDispute':
           return PageDispute.fromJson(value);
         case 'PageOrder':
@@ -332,6 +346,8 @@ class ApiClient {
           return RechargeStatusEnumTypeTransformer().decode(value);
         case 'RegisterParam':
           return RegisterParam.fromJson(value);
+        case 'ReplyIssueParam':
+          return ReplyIssueParam.fromJson(value);
         case 'Review':
           return Review.fromJson(value);
         case 'ReviewCreateParam':

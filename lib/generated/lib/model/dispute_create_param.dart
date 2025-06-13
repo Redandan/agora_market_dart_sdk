@@ -14,7 +14,6 @@ class DisputeCreateParam {
   /// Returns a new [DisputeCreateParam] instance.
   DisputeCreateParam({
     this.orderId,
-    this.type,
     this.description,
   });
 
@@ -26,9 +25,6 @@ class DisputeCreateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? orderId;
-
-  /// 糾紛類型
-  DisputeCreateParamTypeEnum? type;
 
   /// 糾紛描述
   ///
@@ -42,18 +38,16 @@ class DisputeCreateParam {
   @override
   bool operator ==(Object other) => identical(this, other) || other is DisputeCreateParam &&
     other.orderId == orderId &&
-    other.type == type &&
     other.description == description;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (orderId == null ? 0 : orderId!.hashCode) +
-    (type == null ? 0 : type!.hashCode) +
     (description == null ? 0 : description!.hashCode);
 
   @override
-  String toString() => 'DisputeCreateParam[orderId=$orderId, type=$type, description=$description]';
+  String toString() => 'DisputeCreateParam[orderId=$orderId, description=$description]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -61,11 +55,6 @@ class DisputeCreateParam {
       json[r'orderId'] = this.orderId;
     } else {
       json[r'orderId'] = null;
-    }
-    if (this.type != null) {
-      json[r'type'] = this.type;
-    } else {
-      json[r'type'] = null;
     }
     if (this.description != null) {
       json[r'description'] = this.description;
@@ -95,7 +84,6 @@ class DisputeCreateParam {
 
       return DisputeCreateParam(
         orderId: mapValueOfType<String>(json, r'orderId'),
-        type: DisputeCreateParamTypeEnum.fromJson(json[r'type']),
         description: mapValueOfType<String>(json, r'description'),
       );
     }
@@ -146,87 +134,4 @@ class DisputeCreateParam {
   static const requiredKeys = <String>{
   };
 }
-
-/// 糾紛類型
-class DisputeCreateParamTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const DisputeCreateParamTypeEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const PRODUCT_QUALITY = DisputeCreateParamTypeEnum._(r'PRODUCT_QUALITY');
-  static const DELIVERY_ISSUE = DisputeCreateParamTypeEnum._(r'DELIVERY_ISSUE');
-  static const REFUND_REQUEST = DisputeCreateParamTypeEnum._(r'REFUND_REQUEST');
-  static const OTHER = DisputeCreateParamTypeEnum._(r'OTHER');
-  static const unknownDefaultOpenApi = DisputeCreateParamTypeEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][DisputeCreateParamTypeEnum].
-  static const values = <DisputeCreateParamTypeEnum>[
-    PRODUCT_QUALITY,
-    DELIVERY_ISSUE,
-    REFUND_REQUEST,
-    OTHER,
-    unknownDefaultOpenApi,
-  ];
-
-  static DisputeCreateParamTypeEnum? fromJson(dynamic value) => DisputeCreateParamTypeEnumTypeTransformer().decode(value);
-
-  static List<DisputeCreateParamTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <DisputeCreateParamTypeEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = DisputeCreateParamTypeEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [DisputeCreateParamTypeEnum] to String,
-/// and [decode] dynamic data back to [DisputeCreateParamTypeEnum].
-class DisputeCreateParamTypeEnumTypeTransformer {
-  factory DisputeCreateParamTypeEnumTypeTransformer() => _instance ??= const DisputeCreateParamTypeEnumTypeTransformer._();
-
-  const DisputeCreateParamTypeEnumTypeTransformer._();
-
-  String encode(DisputeCreateParamTypeEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a DisputeCreateParamTypeEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  DisputeCreateParamTypeEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'PRODUCT_QUALITY': return DisputeCreateParamTypeEnum.PRODUCT_QUALITY;
-        case r'DELIVERY_ISSUE': return DisputeCreateParamTypeEnum.DELIVERY_ISSUE;
-        case r'REFUND_REQUEST': return DisputeCreateParamTypeEnum.REFUND_REQUEST;
-        case r'OTHER': return DisputeCreateParamTypeEnum.OTHER;
-        case r'unknown_default_open_api': return DisputeCreateParamTypeEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [DisputeCreateParamTypeEnumTypeTransformer] instance.
-  static DisputeCreateParamTypeEnumTypeTransformer? _instance;
-}
-
 

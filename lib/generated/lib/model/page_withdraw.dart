@@ -17,8 +17,8 @@ class PageWithdraw {
     this.totalElements,
     this.first,
     this.last,
-    this.pageable,
     this.numberOfElements,
+    this.pageable,
     this.size,
     this.content = const [],
     this.number,
@@ -64,7 +64,7 @@ class PageWithdraw {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PageableObject? pageable;
+  int? numberOfElements;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -72,7 +72,7 @@ class PageWithdraw {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? numberOfElements;
+  PageableObject? pageable;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -114,8 +114,8 @@ class PageWithdraw {
     other.totalElements == totalElements &&
     other.first == first &&
     other.last == last &&
-    other.pageable == pageable &&
     other.numberOfElements == numberOfElements &&
+    other.pageable == pageable &&
     other.size == size &&
     _deepEquality.equals(other.content, content) &&
     other.number == number &&
@@ -129,8 +129,8 @@ class PageWithdraw {
     (totalElements == null ? 0 : totalElements!.hashCode) +
     (first == null ? 0 : first!.hashCode) +
     (last == null ? 0 : last!.hashCode) +
-    (pageable == null ? 0 : pageable!.hashCode) +
     (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
+    (pageable == null ? 0 : pageable!.hashCode) +
     (size == null ? 0 : size!.hashCode) +
     (content.hashCode) +
     (number == null ? 0 : number!.hashCode) +
@@ -138,7 +138,7 @@ class PageWithdraw {
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageWithdraw[totalPages=$totalPages, totalElements=$totalElements, first=$first, last=$last, pageable=$pageable, numberOfElements=$numberOfElements, size=$size, content=$content, number=$number, sort=$sort, empty=$empty]';
+  String toString() => 'PageWithdraw[totalPages=$totalPages, totalElements=$totalElements, first=$first, last=$last, numberOfElements=$numberOfElements, pageable=$pageable, size=$size, content=$content, number=$number, sort=$sort, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -162,15 +162,15 @@ class PageWithdraw {
     } else {
       json[r'last'] = null;
     }
-    if (this.pageable != null) {
-      json[r'pageable'] = this.pageable;
-    } else {
-      json[r'pageable'] = null;
-    }
     if (this.numberOfElements != null) {
       json[r'numberOfElements'] = this.numberOfElements;
     } else {
       json[r'numberOfElements'] = null;
+    }
+    if (this.pageable != null) {
+      json[r'pageable'] = this.pageable;
+    } else {
+      json[r'pageable'] = null;
     }
     if (this.size != null) {
       json[r'size'] = this.size;
@@ -219,8 +219,8 @@ class PageWithdraw {
         totalElements: mapValueOfType<int>(json, r'totalElements'),
         first: mapValueOfType<bool>(json, r'first'),
         last: mapValueOfType<bool>(json, r'last'),
-        pageable: PageableObject.fromJson(json[r'pageable']),
         numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
+        pageable: PageableObject.fromJson(json[r'pageable']),
         size: mapValueOfType<int>(json, r'size'),
         content: Withdraw.listFromJson(json[r'content']),
         number: mapValueOfType<int>(json, r'number'),

@@ -36,13 +36,13 @@ void main() {
       // TODO
     });
 
-    // PageableObject pageable
-    test('to test the property `pageable`', () async {
+    // int numberOfElements
+    test('to test the property `numberOfElements`', () async {
       // TODO
     });
 
-    // int numberOfElements
-    test('to test the property `numberOfElements`', () async {
+    // PageableObject pageable
+    test('to test the property `pageable`', () async {
       // TODO
     });
 

@@ -48,7 +48,7 @@ void main() {
     //
     // 會員可搜索與自己相關的糾紛
     //
-    //Future<PageDispute> searchDisputes({ String status, String type, DateTime startDate, DateTime endDate, int page, int size }) async
+    //Future<PageDispute> searchDisputes({ String status, DateTime startDate, DateTime endDate, int page, int size }) async
     test('test searchDisputes', () async {
       // TODO
     });

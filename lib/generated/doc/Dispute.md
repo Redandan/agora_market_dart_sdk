@@ -8,13 +8,13 @@ import 'package:agora_market_dart_sdk/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | 糾紛ID | [optional] 
+**id** | **String** | 爭議ID | [optional] 
 **orderId** | **String** | 訂單ID | [optional] 
 **buyerId** | **int** | 買家ID | [optional] 
 **sellerId** | **int** | 賣家ID | [optional] 
-**type** | **String** | 糾紛類型 | [optional] 
 **status** | [**DisputeStatusEnum**](DisputeStatusEnum.md) |  | [optional] 
-**description** | **String** | 糾紛描述 | [optional] 
+**outcome** | [**DisputeOutcome**](DisputeOutcome.md) |  | [optional] 
+**description** | **String** | 爭議描述 | [optional] 
 **sellerReply** | **String** | 賣家回覆 | [optional] 
 **adminComment** | **String** | 管理員處理說明 | [optional] 
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 

@@ -146,7 +146,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchDisputes**
-> PageDispute searchDisputes(status, type, startDate, endDate, page, size)
+> PageDispute searchDisputes(status, startDate, endDate, page, size)
 
 搜索糾紛
 
@@ -158,14 +158,13 @@ import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = MemberDisputesApi();
 final status = status_example; // String | 糾紛狀態
-final type = type_example; // String | 糾紛類型
 final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
 final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
 final page = 56; // int | 頁碼，從1開始
 final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.searchDisputes(status, type, startDate, endDate, page, size);
+    final result = api_instance.searchDisputes(status, startDate, endDate, page, size);
     print(result);
 } catch (e) {
     print('Exception when calling MemberDisputesApi->searchDisputes: $e\n');
@@ -177,7 +176,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status** | **String**| 糾紛狀態 | [optional] 
- **type** | **String**| 糾紛類型 | [optional] 
  **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
  **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
  **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]

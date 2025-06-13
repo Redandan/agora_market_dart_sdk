@@ -13,8 +13,10 @@ Method | HTTP request | Description
 [**cancelRecharge**](DefaultApi.md#cancelrecharge) | **POST** /recharge/{rechargeId}/cancel | 取消充值
 [**checkCartItemStockStatus**](DefaultApi.md#checkcartitemstockstatus) | **POST** /api/cart/check-stock | 檢查庫存狀態
 [**clearCart**](DefaultApi.md#clearcart) | **DELETE** /api/cart/clear | 清空購物車
+[**closeIssue**](DefaultApi.md#closeissue) | **POST** /customer-issues/{issueId}/close | 關閉客戶問題
 [**completeRecharge**](DefaultApi.md#completerecharge) | **POST** /recharge/{rechargeId}/complete | 完成充值
 [**completeWithdraw**](DefaultApi.md#completewithdraw) | **POST** /withdraws/{withdrawId}/complete | 完成提款
+[**createIssue**](DefaultApi.md#createissue) | **POST** /customer-issues | 創建客戶問題
 [**createRecharge**](DefaultApi.md#createrecharge) | **POST** /recharge | 創建充值
 [**createWithdraw**](DefaultApi.md#createwithdraw) | **POST** /withdraws | 發起提款
 [**failWithdraw**](DefaultApi.md#failwithdraw) | **POST** /withdraws/{withdrawId}/fail | 提款失敗
@@ -27,6 +29,8 @@ Method | HTTP request | Description
 [**getCartSummary**](DefaultApi.md#getcartsummary) | **GET** /api/cart/summary | 獲取購物車統計
 [**getCities**](DefaultApi.md#getcities) | **GET** /postal-areas/cities | 獲取城市列表
 [**getDistrictsByCity**](DefaultApi.md#getdistrictsbycity) | **GET** /postal-areas/cities/{city}/districts | 獲取城市行政區列表
+[**getIssue**](DefaultApi.md#getissue) | **GET** /customer-issues/{issueId} | 查詢客戶問題記錄
+[**getIssueHistory**](DefaultApi.md#getissuehistory) | **GET** /customer-issues/history | 查詢客戶問題歷史
 [**getLowStockItems**](DefaultApi.md#getlowstockitems) | **GET** /api/cart/low-stock | 獲取庫存不足商品
 [**getOutOfStockItems**](DefaultApi.md#getoutofstockitems) | **GET** /api/cart/out-of-stock | 獲取缺貨商品
 [**getPendingRecharge**](DefaultApi.md#getpendingrecharge) | **GET** /recharge/pending | 查詢當前用戶是否有進行中的充值
@@ -40,7 +44,9 @@ Method | HTTP request | Description
 [**getWithdraw**](DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 [**getWithdrawHistory**](DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
 [**removeFromCart1**](DefaultApi.md#removefromcart1) | **DELETE** /api/cart/{cartItemId} | 從購物車移除商品
+[**replyIssue**](DefaultApi.md#replyissue) | **POST** /customer-issues/{issueId}/reply | 回覆客戶問題
 [**search**](DefaultApi.md#search) | **GET** /postal-areas/search | 搜索郵遞區號
+[**searchIssues**](DefaultApi.md#searchissues) | **POST** /customer-issues/search | 管理員搜尋客戶問題記錄
 [**searchRecharges**](DefaultApi.md#searchrecharges) | **POST** /recharge/search | 管理員搜尋充值記錄
 [**searchWithdraws**](DefaultApi.md#searchwithdraws) | **POST** /withdraws/search | 管理員搜尋提款記錄
 [**updateCartItem**](DefaultApi.md#updatecartitem) | **PUT** /api/cart/{cartItemId} | 更新購物車項目
@@ -218,6 +224,47 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **closeIssue**
+> CustomerIssue closeIssue(issueId)
+
+關閉客戶問題
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final issueId = issueId_example; // String | 
+
+try {
+    final result = api_instance.closeIssue(issueId);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->closeIssue: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **issueId** | **String**|  | 
+
+### Return type
+
+[**CustomerIssue**](CustomerIssue.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **completeRecharge**
 > Recharge completeRecharge(rechargeId, txHash)
 
@@ -300,6 +347,47 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createIssue**
+> CustomerIssue createIssue(createIssueParam)
+
+創建客戶問題
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final createIssueParam = CreateIssueParam(); // CreateIssueParam | 
+
+try {
+    final result = api_instance.createIssue(createIssueParam);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->createIssue: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createIssueParam** | [**CreateIssueParam**](CreateIssueParam.md)|  | 
+
+### Return type
+
+[**CustomerIssue**](CustomerIssue.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -802,6 +890,90 @@ Name | Type | Description  | Notes
 ### Return type
 
 **List<String>**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getIssue**
+> CustomerIssue getIssue(issueId)
+
+查詢客戶問題記錄
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final issueId = issueId_example; // String | 
+
+try {
+    final result = api_instance.getIssue(issueId);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getIssue: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **issueId** | **String**|  | 
+
+### Return type
+
+[**CustomerIssue**](CustomerIssue.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getIssueHistory**
+> PageCustomerIssue getIssueHistory(page, size)
+
+查詢客戶問題歷史
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final page = 56; // int | 頁碼，從1開始
+final size = 56; // int | 每頁數量
+
+try {
+    final result = api_instance.getIssueHistory(page, size);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getIssueHistory: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
+ **size** | **int**| 每頁數量 | [optional] [default to 20]
+
+### Return type
+
+[**PageCustomerIssue**](PageCustomerIssue.md)
 
 ### Authorization
 
@@ -1360,6 +1532,49 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **replyIssue**
+> CustomerIssue replyIssue(issueId, replyIssueParam)
+
+回覆客戶問題
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final issueId = issueId_example; // String | 
+final replyIssueParam = ReplyIssueParam(); // ReplyIssueParam | 
+
+try {
+    final result = api_instance.replyIssue(issueId, replyIssueParam);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->replyIssue: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **issueId** | **String**|  | 
+ **replyIssueParam** | [**ReplyIssueParam**](ReplyIssueParam.md)|  | 
+
+### Return type
+
+[**CustomerIssue**](CustomerIssue.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **search**
 > List<TaiwanPostalArea> search(keyword)
 
@@ -1399,6 +1614,51 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **searchIssues**
+> PageCustomerIssue searchIssues(issueSearchParam, page, size)
+
+管理員搜尋客戶問題記錄
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final issueSearchParam = IssueSearchParam(); // IssueSearchParam | 
+final page = 56; // int | 頁碼，從1開始
+final size = 56; // int | 每頁數量
+
+try {
+    final result = api_instance.searchIssues(issueSearchParam, page, size);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->searchIssues: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **issueSearchParam** | [**IssueSearchParam**](IssueSearchParam.md)|  | 
+ **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
+ **size** | **int**| 每頁數量 | [optional] [default to 20]
+
+### Return type
+
+[**PageCustomerIssue**](PageCustomerIssue.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

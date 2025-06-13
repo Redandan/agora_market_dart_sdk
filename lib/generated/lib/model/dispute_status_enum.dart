@@ -10,7 +10,7 @@
 
 part of openapi.api;
 
-/// 糾紛狀態
+/// 申訴狀態
 class DisputeStatusEnum {
   /// Instantiate a new enum with the provided [value].
   const DisputeStatusEnum._(this.value);
@@ -24,16 +24,16 @@ class DisputeStatusEnum {
   String toJson() => value;
 
   static const PENDING = DisputeStatusEnum._(r'PENDING');
-  static const RESOLVED_REFUND = DisputeStatusEnum._(r'RESOLVED_REFUND');
-  static const RESOLVED_COMPLETED = DisputeStatusEnum._(r'RESOLVED_COMPLETED');
+  static const REVIEWING = DisputeStatusEnum._(r'REVIEWING');
+  static const COMPLETED = DisputeStatusEnum._(r'COMPLETED');
   static const REJECTED = DisputeStatusEnum._(r'REJECTED');
   static const unknownDefaultOpenApi = DisputeStatusEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][DisputeStatusEnum].
   static const values = <DisputeStatusEnum>[
     PENDING,
-    RESOLVED_REFUND,
-    RESOLVED_COMPLETED,
+    REVIEWING,
+    COMPLETED,
     REJECTED,
     unknownDefaultOpenApi,
   ];
@@ -75,8 +75,8 @@ class DisputeStatusEnumTypeTransformer {
     if (data != null) {
       switch (data) {
         case r'PENDING': return DisputeStatusEnum.PENDING;
-        case r'RESOLVED_REFUND': return DisputeStatusEnum.RESOLVED_REFUND;
-        case r'RESOLVED_COMPLETED': return DisputeStatusEnum.RESOLVED_COMPLETED;
+        case r'REVIEWING': return DisputeStatusEnum.REVIEWING;
+        case r'COMPLETED': return DisputeStatusEnum.COMPLETED;
         case r'REJECTED': return DisputeStatusEnum.REJECTED;
         case r'unknown_default_open_api': return DisputeStatusEnum.unknownDefaultOpenApi;
         default:

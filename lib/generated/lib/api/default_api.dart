@@ -245,6 +245,59 @@ class DefaultApi {
     }
   }
 
+  /// 關閉客戶問題
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] issueId (required):
+  Future<Response> closeIssueWithHttpInfo(String issueId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/customer-issues/{issueId}/close'
+      .replaceAll('{issueId}', issueId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 關閉客戶問題
+  ///
+  /// Parameters:
+  ///
+  /// * [String] issueId (required):
+  Future<CustomerIssue?> closeIssue(String issueId,) async {
+    final response = await closeIssueWithHttpInfo(issueId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CustomerIssue',) as CustomerIssue;
+    
+    }
+    return null;
+  }
+
   /// 完成充值
   ///
   /// Note: This method returns the HTTP [Response].
@@ -358,6 +411,58 @@ class DefaultApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Withdraw',) as Withdraw;
+    
+    }
+    return null;
+  }
+
+  /// 創建客戶問題
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [CreateIssueParam] createIssueParam (required):
+  Future<Response> createIssueWithHttpInfo(CreateIssueParam createIssueParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/customer-issues';
+
+    // ignore: prefer_final_locals
+    Object? postBody = createIssueParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 創建客戶問題
+  ///
+  /// Parameters:
+  ///
+  /// * [CreateIssueParam] createIssueParam (required):
+  Future<CustomerIssue?> createIssue(CreateIssueParam createIssueParam,) async {
+    final response = await createIssueWithHttpInfo(createIssueParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CustomerIssue',) as CustomerIssue;
     
     }
     return null;
@@ -1079,6 +1184,126 @@ class DefaultApi {
         .cast<String>()
         .toList(growable: false);
 
+    }
+    return null;
+  }
+
+  /// 查詢客戶問題記錄
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] issueId (required):
+  Future<Response> getIssueWithHttpInfo(String issueId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/customer-issues/{issueId}'
+      .replaceAll('{issueId}', issueId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查詢客戶問題記錄
+  ///
+  /// Parameters:
+  ///
+  /// * [String] issueId (required):
+  Future<CustomerIssue?> getIssue(String issueId,) async {
+    final response = await getIssueWithHttpInfo(issueId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CustomerIssue',) as CustomerIssue;
+    
+    }
+    return null;
+  }
+
+  /// 查詢客戶問題歷史
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<Response> getIssueHistoryWithHttpInfo({ int? page, int? size, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/customer-issues/history';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查詢客戶問題歷史
+  ///
+  /// Parameters:
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<PageCustomerIssue?> getIssueHistory({ int? page, int? size, }) async {
+    final response = await getIssueHistoryWithHttpInfo( page: page, size: size, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageCustomerIssue',) as PageCustomerIssue;
+    
     }
     return null;
   }
@@ -1836,6 +2061,63 @@ class DefaultApi {
     }
   }
 
+  /// 回覆客戶問題
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] issueId (required):
+  ///
+  /// * [ReplyIssueParam] replyIssueParam (required):
+  Future<Response> replyIssueWithHttpInfo(String issueId, ReplyIssueParam replyIssueParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/customer-issues/{issueId}/reply'
+      .replaceAll('{issueId}', issueId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = replyIssueParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 回覆客戶問題
+  ///
+  /// Parameters:
+  ///
+  /// * [String] issueId (required):
+  ///
+  /// * [ReplyIssueParam] replyIssueParam (required):
+  Future<CustomerIssue?> replyIssue(String issueId, ReplyIssueParam replyIssueParam,) async {
+    final response = await replyIssueWithHttpInfo(issueId, replyIssueParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CustomerIssue',) as CustomerIssue;
+    
+    }
+    return null;
+  }
+
   /// 搜索郵遞區號
   ///
   /// 根據關鍵字搜索郵遞區號、城市或行政區
@@ -1895,6 +2177,77 @@ class DefaultApi {
         .cast<TaiwanPostalArea>()
         .toList(growable: false);
 
+    }
+    return null;
+  }
+
+  /// 管理員搜尋客戶問題記錄
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [IssueSearchParam] issueSearchParam (required):
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<Response> searchIssuesWithHttpInfo(IssueSearchParam issueSearchParam, { int? page, int? size, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/customer-issues/search';
+
+    // ignore: prefer_final_locals
+    Object? postBody = issueSearchParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 管理員搜尋客戶問題記錄
+  ///
+  /// Parameters:
+  ///
+  /// * [IssueSearchParam] issueSearchParam (required):
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<PageCustomerIssue?> searchIssues(IssueSearchParam issueSearchParam, { int? page, int? size, }) async {
+    final response = await searchIssuesWithHttpInfo(issueSearchParam,  page: page, size: size, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageCustomerIssue',) as PageCustomerIssue;
+    
     }
     return null;
   }

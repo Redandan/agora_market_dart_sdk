@@ -22,12 +22,6 @@ void main() {
       // TODO
     });
 
-    // 糾紛類型
-    // String type
-    test('to test the property `type`', () async {
-      // TODO
-    });
-
     // 糾紛描述
     // String description
     test('to test the property `description`', () async {

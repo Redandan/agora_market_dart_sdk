@@ -28,12 +28,6 @@ void main() {
       // TODO
     });
 
-    // 各類型糾紛數量
-    // Map<String, int> disputesByType (default value: const {})
-    test('to test the property `disputesByType`', () async {
-      // TODO
-    });
-
     // 平均處理時間（小時）
     // double averageResolutionTime
     test('to test the property `averageResolutionTime`', () async {

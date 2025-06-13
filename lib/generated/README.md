@@ -64,8 +64,10 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**cancelRecharge**](doc//DefaultApi.md#cancelrecharge) | **POST** /recharge/{rechargeId}/cancel | 取消充值
 *DefaultApi* | [**checkCartItemStockStatus**](doc//DefaultApi.md#checkcartitemstockstatus) | **POST** /api/cart/check-stock | 檢查庫存狀態
 *DefaultApi* | [**clearCart**](doc//DefaultApi.md#clearcart) | **DELETE** /api/cart/clear | 清空購物車
+*DefaultApi* | [**closeIssue**](doc//DefaultApi.md#closeissue) | **POST** /customer-issues/{issueId}/close | 關閉客戶問題
 *DefaultApi* | [**completeRecharge**](doc//DefaultApi.md#completerecharge) | **POST** /recharge/{rechargeId}/complete | 完成充值
 *DefaultApi* | [**completeWithdraw**](doc//DefaultApi.md#completewithdraw) | **POST** /withdraws/{withdrawId}/complete | 完成提款
+*DefaultApi* | [**createIssue**](doc//DefaultApi.md#createissue) | **POST** /customer-issues | 創建客戶問題
 *DefaultApi* | [**createRecharge**](doc//DefaultApi.md#createrecharge) | **POST** /recharge | 創建充值
 *DefaultApi* | [**createWithdraw**](doc//DefaultApi.md#createwithdraw) | **POST** /withdraws | 發起提款
 *DefaultApi* | [**failWithdraw**](doc//DefaultApi.md#failwithdraw) | **POST** /withdraws/{withdrawId}/fail | 提款失敗
@@ -78,6 +80,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getCartSummary**](doc//DefaultApi.md#getcartsummary) | **GET** /api/cart/summary | 獲取購物車統計
 *DefaultApi* | [**getCities**](doc//DefaultApi.md#getcities) | **GET** /postal-areas/cities | 獲取城市列表
 *DefaultApi* | [**getDistrictsByCity**](doc//DefaultApi.md#getdistrictsbycity) | **GET** /postal-areas/cities/{city}/districts | 獲取城市行政區列表
+*DefaultApi* | [**getIssue**](doc//DefaultApi.md#getissue) | **GET** /customer-issues/{issueId} | 查詢客戶問題記錄
+*DefaultApi* | [**getIssueHistory**](doc//DefaultApi.md#getissuehistory) | **GET** /customer-issues/history | 查詢客戶問題歷史
 *DefaultApi* | [**getLowStockItems**](doc//DefaultApi.md#getlowstockitems) | **GET** /api/cart/low-stock | 獲取庫存不足商品
 *DefaultApi* | [**getOutOfStockItems**](doc//DefaultApi.md#getoutofstockitems) | **GET** /api/cart/out-of-stock | 獲取缺貨商品
 *DefaultApi* | [**getPendingRecharge**](doc//DefaultApi.md#getpendingrecharge) | **GET** /recharge/pending | 查詢當前用戶是否有進行中的充值
@@ -91,7 +95,9 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getWithdraw**](doc//DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 *DefaultApi* | [**getWithdrawHistory**](doc//DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
 *DefaultApi* | [**removeFromCart1**](doc//DefaultApi.md#removefromcart1) | **DELETE** /api/cart/{cartItemId} | 從購物車移除商品
+*DefaultApi* | [**replyIssue**](doc//DefaultApi.md#replyissue) | **POST** /customer-issues/{issueId}/reply | 回覆客戶問題
 *DefaultApi* | [**search**](doc//DefaultApi.md#search) | **GET** /postal-areas/search | 搜索郵遞區號
+*DefaultApi* | [**searchIssues**](doc//DefaultApi.md#searchissues) | **POST** /customer-issues/search | 管理員搜尋客戶問題記錄
 *DefaultApi* | [**searchRecharges**](doc//DefaultApi.md#searchrecharges) | **POST** /recharge/search | 管理員搜尋充值記錄
 *DefaultApi* | [**searchWithdraws**](doc//DefaultApi.md#searchwithdraws) | **POST** /withdraws/search | 管理員搜尋提款記錄
 *DefaultApi* | [**updateCartItem**](doc//DefaultApi.md#updatecartitem) | **PUT** /api/cart/{cartItemId} | 更新購物車項目
@@ -260,9 +266,11 @@ Class | Method | HTTP request | Description
  - [ChatSessionQueryParam](doc//ChatSessionQueryParam.md)
  - [ColdWallet](doc//ColdWallet.md)
  - [ColdWalletStatusEnum](doc//ColdWalletStatusEnum.md)
+ - [CreateIssueParam](doc//CreateIssueParam.md)
  - [CreatePromoCodeParam](doc//CreatePromoCodeParam.md)
  - [CreateRechargeParam](doc//CreateRechargeParam.md)
  - [CreateWithdrawParam](doc//CreateWithdrawParam.md)
+ - [CustomerIssue](doc//CustomerIssue.md)
  - [CustomerStats](doc//CustomerStats.md)
  - [DeliveryDetail](doc//DeliveryDetail.md)
  - [DeliveryReportTypeEnum](doc//DeliveryReportTypeEnum.md)
@@ -271,9 +279,13 @@ Class | Method | HTTP request | Description
  - [DeliveryerUpdateParam](doc//DeliveryerUpdateParam.md)
  - [Dispute](doc//Dispute.md)
  - [DisputeCreateParam](doc//DisputeCreateParam.md)
+ - [DisputeOutcome](doc//DisputeOutcome.md)
  - [DisputeQueryResult](doc//DisputeQueryResult.md)
  - [DisputeStatisticsDTO](doc//DisputeStatisticsDTO.md)
  - [DisputeStatusEnum](doc//DisputeStatusEnum.md)
+ - [IssueSearchParam](doc//IssueSearchParam.md)
+ - [IssueStatusEnum](doc//IssueStatusEnum.md)
+ - [IssueTypeEnum](doc//IssueTypeEnum.md)
  - [LoginParam](doc//LoginParam.md)
  - [LoginResult](doc//LoginResult.md)
  - [LowStockWarningDTO](doc//LowStockWarningDTO.md)
@@ -289,6 +301,7 @@ Class | Method | HTTP request | Description
  - [PageChatMessage](doc//PageChatMessage.md)
  - [PageChatSession](doc//PageChatSession.md)
  - [PageColdWallet](doc//PageColdWallet.md)
+ - [PageCustomerIssue](doc//PageCustomerIssue.md)
  - [PageDispute](doc//PageDispute.md)
  - [PageOrder](doc//PageOrder.md)
  - [PageProduct](doc//PageProduct.md)
@@ -316,6 +329,7 @@ Class | Method | HTTP request | Description
  - [RechargeSearchParam](doc//RechargeSearchParam.md)
  - [RechargeStatusEnum](doc//RechargeStatusEnum.md)
  - [RegisterParam](doc//RegisterParam.md)
+ - [ReplyIssueParam](doc//ReplyIssueParam.md)
  - [Review](doc//Review.md)
  - [ReviewCreateParam](doc//ReviewCreateParam.md)
  - [ReviewFailure](doc//ReviewFailure.md)

@@ -16,7 +16,7 @@ void main() {
   // final instance = Dispute();
 
   group('test Dispute', () {
-    // 糾紛ID
+    // 爭議ID
     // String id
     test('to test the property `id`', () async {
       // TODO
@@ -40,18 +40,17 @@ void main() {
       // TODO
     });
 
-    // 糾紛類型
-    // String type
-    test('to test the property `type`', () async {
-      // TODO
-    });
-
     // DisputeStatusEnum status
     test('to test the property `status`', () async {
       // TODO
     });
 
-    // 糾紛描述
+    // DisputeOutcome outcome
+    test('to test the property `outcome`', () async {
+      // TODO
+    });
+
+    // 爭議描述
     // String description
     test('to test the property `description`', () async {
       // TODO

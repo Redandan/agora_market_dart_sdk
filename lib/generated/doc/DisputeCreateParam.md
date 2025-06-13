@@ -9,7 +9,6 @@ import 'package:agora_market_dart_sdk/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **orderId** | **String** | 訂單ID | [optional] 
-**type** | **String** | 糾紛類型 | [optional] 
 **description** | **String** | 糾紛描述 | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
