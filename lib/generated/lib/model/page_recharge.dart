@@ -18,8 +18,8 @@ class PageRecharge {
     this.sort,
     this.pageable,
     this.numberOfElements,
-    this.last,
     this.first,
+    this.last,
     this.size,
     this.content = const [],
     this.number,
@@ -72,7 +72,7 @@ class PageRecharge {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? last;
+  bool? first;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -80,7 +80,7 @@ class PageRecharge {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? first;
+  bool? last;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -115,8 +115,8 @@ class PageRecharge {
     other.sort == sort &&
     other.pageable == pageable &&
     other.numberOfElements == numberOfElements &&
-    other.last == last &&
     other.first == first &&
+    other.last == last &&
     other.size == size &&
     _deepEquality.equals(other.content, content) &&
     other.number == number &&
@@ -130,15 +130,15 @@ class PageRecharge {
     (sort == null ? 0 : sort!.hashCode) +
     (pageable == null ? 0 : pageable!.hashCode) +
     (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
-    (last == null ? 0 : last!.hashCode) +
     (first == null ? 0 : first!.hashCode) +
+    (last == null ? 0 : last!.hashCode) +
     (size == null ? 0 : size!.hashCode) +
     (content.hashCode) +
     (number == null ? 0 : number!.hashCode) +
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageRecharge[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, pageable=$pageable, numberOfElements=$numberOfElements, last=$last, first=$first, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'PageRecharge[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, pageable=$pageable, numberOfElements=$numberOfElements, first=$first, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -167,15 +167,15 @@ class PageRecharge {
     } else {
       json[r'numberOfElements'] = null;
     }
-    if (this.last != null) {
-      json[r'last'] = this.last;
-    } else {
-      json[r'last'] = null;
-    }
     if (this.first != null) {
       json[r'first'] = this.first;
     } else {
       json[r'first'] = null;
+    }
+    if (this.last != null) {
+      json[r'last'] = this.last;
+    } else {
+      json[r'last'] = null;
     }
     if (this.size != null) {
       json[r'size'] = this.size;
@@ -220,8 +220,8 @@ class PageRecharge {
         sort: SortObject.fromJson(json[r'sort']),
         pageable: PageableObject.fromJson(json[r'pageable']),
         numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
-        last: mapValueOfType<bool>(json, r'last'),
         first: mapValueOfType<bool>(json, r'first'),
+        last: mapValueOfType<bool>(json, r'last'),
         size: mapValueOfType<int>(json, r'size'),
         content: Recharge.listFromJson(json[r'content']),
         number: mapValueOfType<int>(json, r'number'),

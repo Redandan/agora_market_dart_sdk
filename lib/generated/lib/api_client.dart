@@ -11,7 +11,7 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'http://agoramarketapi.purrtechllc.com/api', this.authentication,});
+  ApiClient({this.basePath = 'https://agoramarketapi.purrtechllc.com/api', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;

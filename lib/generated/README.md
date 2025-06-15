@@ -56,7 +56,7 @@ try {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://agoramarketapi.purrtechllc.com/api*
+All URIs are relative to *https://agoramarketapi.purrtechllc.com/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
