@@ -14,7 +14,6 @@ class OrderSumbitParam {
   /// Returns a new [OrderSumbitParam] instance.
   OrderSumbitParam({
     required this.productId,
-    required this.shippingType,
     required this.shippingAddress,
     required this.longitude,
     required this.latitude,
@@ -26,8 +25,6 @@ class OrderSumbitParam {
 
   /// 商品ID
   int productId;
-
-  ShippingTypeEnum shippingType;
 
   /// 收件地址
   String shippingAddress;
@@ -65,7 +62,6 @@ class OrderSumbitParam {
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrderSumbitParam &&
     other.productId == productId &&
-    other.shippingType == shippingType &&
     other.shippingAddress == shippingAddress &&
     other.longitude == longitude &&
     other.latitude == latitude &&
@@ -78,7 +74,6 @@ class OrderSumbitParam {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (productId.hashCode) +
-    (shippingType.hashCode) +
     (shippingAddress.hashCode) +
     (longitude.hashCode) +
     (latitude.hashCode) +
@@ -88,12 +83,11 @@ class OrderSumbitParam {
     (deliveryFee == null ? 0 : deliveryFee!.hashCode);
 
   @override
-  String toString() => 'OrderSumbitParam[productId=$productId, shippingType=$shippingType, shippingAddress=$shippingAddress, longitude=$longitude, latitude=$latitude, receiverName=$receiverName, receiverPhone=$receiverPhone, remark=$remark, deliveryFee=$deliveryFee]';
+  String toString() => 'OrderSumbitParam[productId=$productId, shippingAddress=$shippingAddress, longitude=$longitude, latitude=$latitude, receiverName=$receiverName, receiverPhone=$receiverPhone, remark=$remark, deliveryFee=$deliveryFee]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'productId'] = this.productId;
-      json[r'shippingType'] = this.shippingType;
       json[r'shippingAddress'] = this.shippingAddress;
       json[r'longitude'] = this.longitude;
       json[r'latitude'] = this.latitude;
@@ -132,7 +126,6 @@ class OrderSumbitParam {
 
       return OrderSumbitParam(
         productId: mapValueOfType<int>(json, r'productId')!,
-        shippingType: ShippingTypeEnum.fromJson(json[r'shippingType'])!,
         shippingAddress: mapValueOfType<String>(json, r'shippingAddress')!,
         longitude: mapValueOfType<double>(json, r'longitude')!,
         latitude: mapValueOfType<double>(json, r'latitude')!,
@@ -188,7 +181,6 @@ class OrderSumbitParam {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'productId',
-    'shippingType',
     'shippingAddress',
     'longitude',
     'latitude',

@@ -28,11 +28,6 @@ void main() {
       // TODO
     });
 
-    // ShippingTypeEnum shippingType
-    test('to test the property `shippingType`', () async {
-      // TODO
-    });
-
     // 驗證碼
     // String verifyCode
     test('to test the property `verifyCode`', () async {

@@ -35,6 +35,7 @@ class ShippingCompanyEnum {
   static const OK_MART = ShippingCompanyEnum._(r'OK_MART');
   static const T_CAT = ShippingCompanyEnum._(r'T_CAT');
   static const TAIWAN_DELIVERY = ShippingCompanyEnum._(r'TAIWAN_DELIVERY');
+  static const PLATFORM_DELIVERY = ShippingCompanyEnum._(r'PLATFORM_DELIVERY');
   static const OTHER = ShippingCompanyEnum._(r'OTHER');
   static const unknownDefaultOpenApi = ShippingCompanyEnum._(r'unknown_default_open_api');
 
@@ -52,6 +53,7 @@ class ShippingCompanyEnum {
     OK_MART,
     T_CAT,
     TAIWAN_DELIVERY,
+    PLATFORM_DELIVERY,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -104,6 +106,7 @@ class ShippingCompanyEnumTypeTransformer {
         case r'OK_MART': return ShippingCompanyEnum.OK_MART;
         case r'T_CAT': return ShippingCompanyEnum.T_CAT;
         case r'TAIWAN_DELIVERY': return ShippingCompanyEnum.TAIWAN_DELIVERY;
+        case r'PLATFORM_DELIVERY': return ShippingCompanyEnum.PLATFORM_DELIVERY;
         case r'OTHER': return ShippingCompanyEnum.OTHER;
         case r'unknown_default_open_api': return ShippingCompanyEnum.unknownDefaultOpenApi;
         default:

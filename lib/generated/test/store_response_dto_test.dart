@@ -112,12 +112,6 @@ void main() {
       // TODO
     });
 
-    // 支援的運送方式
-    // List<ShippingTypeEnum> supportedShippingTypes (default value: const [])
-    test('to test the property `supportedShippingTypes`', () async {
-      // TODO
-    });
-
     // 預設運費
     // double defaultShippingFee
     test('to test the property `defaultShippingFee`', () async {

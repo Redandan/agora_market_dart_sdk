@@ -16,18 +16,33 @@ void main() {
   // final instance = PagePromoCode();
 
   group('test PagePromoCode', () {
-    // int totalElements
-    test('to test the property `totalElements`', () async {
-      // TODO
-    });
-
     // int totalPages
     test('to test the property `totalPages`', () async {
       // TODO
     });
 
+    // int totalElements
+    test('to test the property `totalElements`', () async {
+      // TODO
+    });
+
     // SortObject sort
     test('to test the property `sort`', () async {
+      // TODO
+    });
+
+    // int size
+    test('to test the property `size`', () async {
+      // TODO
+    });
+
+    // List<PromoCode> content (default value: const [])
+    test('to test the property `content`', () async {
+      // TODO
+    });
+
+    // int number
+    test('to test the property `number`', () async {
       // TODO
     });
 
@@ -48,21 +63,6 @@ void main() {
 
     // bool last
     test('to test the property `last`', () async {
-      // TODO
-    });
-
-    // int size
-    test('to test the property `size`', () async {
-      // TODO
-    });
-
-    // List<PromoCode> content (default value: const [])
-    test('to test the property `content`', () async {
-      // TODO
-    });
-
-    // int number
-    test('to test the property `number`', () async {
       // TODO
     });
 

@@ -25,19 +25,18 @@ Name | Type | Description | Notes
 **brand** | **String** | 品牌名稱 | [optional] 
 **specifications** | **Map<String, String>** | 商品規格屬性 | [optional] [default to const {}]
 **minStock** | **int** | 最低庫存警告 | [optional] 
-**stockAlertThreshold** | **int** | 庫存預警閾值 | [optional] 
-**allowNegativeStock** | **bool** | 是否允許負庫存 | [optional] 
 **tags** | **String** | 商品標籤，以逗號分隔 | [optional] 
 **shippingPreparationHours** | **int** | 出貨準備時間（小時） | [optional] 
 **dailyShippingDeadline** | **String** | 出貨截止時間（每天幾點前下單當天出貨） | [optional] 
-**shippingDescription** | **String** | 出貨說明 | [optional] 
+**shippingDescription** | **String** | 出貨備註 | [optional] 
 **estimatedDeliveryDays** | **int** | 預計送達時間（天數） | [optional] 
 **supportsScheduledShipping** | **bool** | 是否支持指定出貨日期 | [optional] 
 **shippingDateRange** | **int** | 可選擇的出貨日期範圍（天數） | [optional] 
 **supportedShippingCompanies** | [**List<ShippingCompanyEnum>**](ShippingCompanyEnum.md) | 支援的物流公司 | [optional] [default to const []]
-**supportedShippingTypes** | [**List<ShippingTypeEnum>**](ShippingTypeEnum.md) | 支援的運送方式 | [optional] [default to const []]
 **defaultShippingFee** | **double** | 預設運費 | [optional] 
 **freeShippingThreshold** | **double** | 免運費門檻 | [optional] 
+**stockAlertThreshold** | **int** | 庫存警告閾值 | [optional] 
+**allowNegativeStock** | **bool** | 是否允許負庫存 | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

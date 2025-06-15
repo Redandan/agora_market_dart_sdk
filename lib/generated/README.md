@@ -61,6 +61,7 @@ All URIs are relative to *https://agoramarketapi.purrtechllc.com/api*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DefaultApi* | [**addToCart1**](doc//DefaultApi.md#addtocart1) | **POST** /api/cart/add | 添加商品到購物車
+*DefaultApi* | [**calculateLogistics**](doc//DefaultApi.md#calculatelogistics) | **POST** /api/logistics/calculate | 物流計算
 *DefaultApi* | [**cancelRecharge**](doc//DefaultApi.md#cancelrecharge) | **POST** /recharge/{rechargeId}/cancel | 取消充值
 *DefaultApi* | [**checkCartItemStockStatus**](doc//DefaultApi.md#checkcartitemstockstatus) | **POST** /api/cart/check-stock | 檢查庫存狀態
 *DefaultApi* | [**clearCart**](doc//DefaultApi.md#clearcart) | **DELETE** /api/cart/clear | 清空購物車
@@ -72,6 +73,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**createWithdraw**](doc//DefaultApi.md#createwithdraw) | **POST** /withdraws | 發起提款
 *DefaultApi* | [**failWithdraw**](doc//DefaultApi.md#failwithdraw) | **POST** /withdraws/{withdrawId}/fail | 提款失敗
 *DefaultApi* | [**getAllActive**](doc//DefaultApi.md#getallactive) | **GET** /postal-areas | 獲取所有啟用的郵遞區號
+*DefaultApi* | [**getAvailableCarriers**](doc//DefaultApi.md#getavailablecarriers) | **GET** /api/logistics/carriers | 取得可用物流公司
+*DefaultApi* | [**getAvailableCities**](doc//DefaultApi.md#getavailablecities) | **GET** /api/logistics/postal/cities | 取得所有城市列表
 *DefaultApi* | [**getByCity**](doc//DefaultApi.md#getbycity) | **GET** /postal-areas/city/{city} | 根據城市查詢
 *DefaultApi* | [**getByCityAndDistrict**](doc//DefaultApi.md#getbycityanddistrict) | **GET** /postal-areas/city/{city}/district/{district} | 根據城市和行政區查詢
 *DefaultApi* | [**getByPostalCode**](doc//DefaultApi.md#getbypostalcode) | **GET** /postal-areas/code/{postalCode} | 根據郵遞區號查詢
@@ -79,15 +82,19 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getCartSummary**](doc//DefaultApi.md#getcartsummary) | **GET** /api/cart/summary | 獲取購物車統計
 *DefaultApi* | [**getCities**](doc//DefaultApi.md#getcities) | **GET** /postal-areas/cities | 獲取城市列表
 *DefaultApi* | [**getDistrictsByCity**](doc//DefaultApi.md#getdistrictsbycity) | **GET** /postal-areas/cities/{city}/districts | 獲取城市行政區列表
+*DefaultApi* | [**getDistrictsByCity1**](doc//DefaultApi.md#getdistrictsbycity1) | **GET** /api/logistics/postal/city/{city}/districts | 查詢城市行政區
 *DefaultApi* | [**getIssue**](doc//DefaultApi.md#getissue) | **GET** /customer-issues/{issueId} | 查詢客戶問題記錄
 *DefaultApi* | [**getIssueHistory**](doc//DefaultApi.md#getissuehistory) | **GET** /customer-issues/history | 查詢客戶問題歷史
 *DefaultApi* | [**getLowStockItems**](doc//DefaultApi.md#getlowstockitems) | **GET** /api/cart/low-stock | 獲取庫存不足商品
 *DefaultApi* | [**getOutOfStockItems**](doc//DefaultApi.md#getoutofstockitems) | **GET** /api/cart/out-of-stock | 獲取缺貨商品
 *DefaultApi* | [**getPendingRecharge**](doc//DefaultApi.md#getpendingrecharge) | **GET** /recharge/pending | 查詢當前用戶是否有進行中的充值
+*DefaultApi* | [**getPostalAreaByCode**](doc//DefaultApi.md#getpostalareabycode) | **GET** /api/logistics/postal-codes/{postalCode} | 郵遞區號查詢
+*DefaultApi* | [**getPostalAreasByCity**](doc//DefaultApi.md#getpostalareasbycity) | **GET** /api/logistics/postal/city/{city} | 查詢城市所有行政區
 *DefaultApi* | [**getRecharge**](doc//DefaultApi.md#getrecharge) | **GET** /recharge/{rechargeId} | 獲取充值詳情
 *DefaultApi* | [**getRechargeByReceiveAddress**](doc//DefaultApi.md#getrechargebyreceiveaddress) | **GET** /recharge/address/{receiveAddress} | 通過接收地址查詢充值
 *DefaultApi* | [**getRechargeByTxHash**](doc//DefaultApi.md#getrechargebytxhash) | **GET** /recharge/tx/{txHash} | 通過交易哈希查詢充值
 *DefaultApi* | [**getRechargeHistory**](doc//DefaultApi.md#getrechargehistory) | **GET** /recharge/history | 獲取充值記錄
+*DefaultApi* | [**getServiceTypes**](doc//DefaultApi.md#getservicetypes) | **GET** /api/logistics/carriers/{carrier}/services | 取得物流公司服務類型
 *DefaultApi* | [**getTransactionById**](doc//DefaultApi.md#gettransactionbyid) | **GET** /transactions/{id} | 根據交易ID查詢交易記錄
 *DefaultApi* | [**getTransactionList**](doc//DefaultApi.md#gettransactionlist) | **GET** /transactions/{token}/list | 查詢帳變歷史
 *DefaultApi* | [**getTransactionListByAdmin**](doc//DefaultApi.md#gettransactionlistbyadmin) | **GET** /transactions/admin/search | 管理員查看帳變記錄
@@ -98,9 +105,11 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**replyIssue**](doc//DefaultApi.md#replyissue) | **POST** /customer-issues/{issueId}/reply | 回覆客戶問題
 *DefaultApi* | [**search**](doc//DefaultApi.md#search) | **GET** /postal-areas/search | 搜索郵遞區號
 *DefaultApi* | [**searchIssues**](doc//DefaultApi.md#searchissues) | **POST** /customer-issues/search | 管理員搜尋客戶問題記錄
+*DefaultApi* | [**searchPostalAreas**](doc//DefaultApi.md#searchpostalareas) | **GET** /api/logistics/postal/search | 郵遞區號模糊查詢
 *DefaultApi* | [**searchRecharges**](doc//DefaultApi.md#searchrecharges) | **POST** /recharge/search | 管理員搜尋充值記錄
 *DefaultApi* | [**searchWithdraws**](doc//DefaultApi.md#searchwithdraws) | **POST** /withdraws/search | 管理員搜尋提款記錄
 *DefaultApi* | [**updateCartItem**](doc//DefaultApi.md#updatecartitem) | **PUT** /api/cart/{cartItemId} | 更新購物車項目
+*DefaultApi* | [**validatePostalCode**](doc//DefaultApi.md#validatepostalcode) | **GET** /api/logistics/postal-codes/{postalCode}/validate | 郵遞區號驗證
 *AdminCartApi* | [**clearUserCart**](doc//AdminCartApi.md#clearusercart) | **DELETE** /admin/cart/user/{userId} | 清空指定用戶的購物車
 *AdminCartApi* | [**getCartSummary1**](doc//AdminCartApi.md#getcartsummary1) | **GET** /admin/cart/summary | 購物車統計報告
 *AdminCartApi* | [**removeCartItem**](doc//AdminCartApi.md#removecartitem) | **DELETE** /admin/cart/item/{cartItemId} | 刪除指定購物車項目
@@ -123,6 +132,14 @@ Class | Method | HTTP request | Description
 *AdminMembersApi* | [**searchMembers**](doc//AdminMembersApi.md#searchmembers) | **GET** /admin/members/search | 搜索會員
 *AdminMembersApi* | [**updateMemberByAdmin**](doc//AdminMembersApi.md#updatememberbyadmin) | **POST** /admin/members/{memberId}/update | 更新會員信息
 *AdminMembersApi* | [**updateMemberStatus**](doc//AdminMembersApi.md#updatememberstatus) | **POST** /admin/members/{memberId}/status | 更新會員狀態
+*AdminNotificationsApi* | [**cleanupExpiredNotifications1**](doc//AdminNotificationsApi.md#cleanupexpirednotifications1) | **POST** /admin/notifications/cleanup | 清理過期通知
+*AdminNotificationsApi* | [**createBatchNotifications1**](doc//AdminNotificationsApi.md#createbatchnotifications1) | **POST** /admin/notifications/batch | 批量創建通知
+*AdminNotificationsApi* | [**createNotification1**](doc//AdminNotificationsApi.md#createnotification1) | **POST** /admin/notifications | 創建通知
+*AdminNotificationsApi* | [**deleteNotification1**](doc//AdminNotificationsApi.md#deletenotification1) | **DELETE** /admin/notifications/{notificationId} | 刪除通知
+*AdminNotificationsApi* | [**getNotification1**](doc//AdminNotificationsApi.md#getnotification1) | **GET** /admin/notifications/{notificationId} | 獲取通知詳情
+*AdminNotificationsApi* | [**getSystemNotificationStats**](doc//AdminNotificationsApi.md#getsystemnotificationstats) | **GET** /admin/notifications/stats | 獲取通知統計
+*AdminNotificationsApi* | [**searchNotifications1**](doc//AdminNotificationsApi.md#searchnotifications1) | **GET** /admin/notifications/search | 搜索通知
+*AdminNotificationsApi* | [**updateNotification1**](doc//AdminNotificationsApi.md#updatenotification1) | **PUT** /admin/notifications/{notificationId} | 更新通知
 *AdminOrdersApi* | [**cancelOrderByAdmin**](doc//AdminOrdersApi.md#cancelorderbyadmin) | **POST** /admin/orders/{orderId}/cancel | 取消訂單
 *AdminOrdersApi* | [**getOrderDetail**](doc//AdminOrdersApi.md#getorderdetail) | **GET** /admin/orders/{orderId} | 查看訂單詳情
 *AdminOrdersApi* | [**getOrderStatistics**](doc//AdminOrdersApi.md#getorderstatistics) | **GET** /admin/orders/statistics | 訂單統計報告
@@ -176,6 +193,18 @@ Class | Method | HTTP request | Description
 *MemberDisputesApi* | [**getDisputeDetail**](doc//MemberDisputesApi.md#getdisputedetail) | **GET** /disputes/{disputeId} | 查看糾紛詳情
 *MemberDisputesApi* | [**replyDispute**](doc//MemberDisputesApi.md#replydispute) | **POST** /disputes/{disputeId}/reply | 回覆糾紛
 *MemberDisputesApi* | [**searchDisputes**](doc//MemberDisputesApi.md#searchdisputes) | **GET** /disputes/search | 搜索糾紛
+*MemberNotificationsApi* | [**cleanupExpiredNotifications**](doc//MemberNotificationsApi.md#cleanupexpirednotifications) | **POST** /notifications/cleanup | 清理過期通知
+*MemberNotificationsApi* | [**createBatchNotifications**](doc//MemberNotificationsApi.md#createbatchnotifications) | **POST** /notifications/batch | 批量創建通知
+*MemberNotificationsApi* | [**createNotification**](doc//MemberNotificationsApi.md#createnotification) | **POST** /notifications | 創建通知
+*MemberNotificationsApi* | [**deleteNotification**](doc//MemberNotificationsApi.md#deletenotification) | **DELETE** /notifications/{notificationId} | 刪除通知
+*MemberNotificationsApi* | [**getNotification**](doc//MemberNotificationsApi.md#getnotification) | **GET** /notifications/{notificationId} | 獲取通知詳情
+*MemberNotificationsApi* | [**getNotificationStats**](doc//MemberNotificationsApi.md#getnotificationstats) | **GET** /notifications/stats | 獲取通知統計
+*MemberNotificationsApi* | [**getNotifications**](doc//MemberNotificationsApi.md#getnotifications) | **GET** /notifications/list | 獲取通知列表
+*MemberNotificationsApi* | [**getUnreadNotifications**](doc//MemberNotificationsApi.md#getunreadnotifications) | **GET** /notifications/unread | 獲取未讀通知
+*MemberNotificationsApi* | [**markAllAsRead**](doc//MemberNotificationsApi.md#markallasread) | **POST** /notifications/read-all | 全部標記為已讀
+*MemberNotificationsApi* | [**markAsRead**](doc//MemberNotificationsApi.md#markasread) | **POST** /notifications/{notificationId}/read | 標記為已讀
+*MemberNotificationsApi* | [**searchNotifications**](doc//MemberNotificationsApi.md#searchnotifications) | **GET** /notifications/search | 搜索通知
+*MemberNotificationsApi* | [**updateNotification**](doc//MemberNotificationsApi.md#updatenotification) | **PUT** /notifications/{notificationId} | 更新通知
 *MemberOrdersApi* | [**cancelOrder**](doc//MemberOrdersApi.md#cancelorder) | **POST** /orders/cancel | 取消訂單
 *MemberOrdersApi* | [**confirmOrder**](doc//MemberOrdersApi.md#confirmorder) | **POST** /orders/confirm | 確認收貨
 *MemberOrdersApi* | [**getOrder**](doc//MemberOrdersApi.md#getorder) | **GET** /orders/{orderId} | 獲取訂單詳情
@@ -290,8 +319,14 @@ Class | Method | HTTP request | Description
  - [IssueTypeEnum](doc//IssueTypeEnum.md)
  - [LoginParam](doc//LoginParam.md)
  - [LoginResult](doc//LoginResult.md)
+ - [LogisticsServiceTypeEnum](doc//LogisticsServiceTypeEnum.md)
  - [LowStockWarningDTO](doc//LowStockWarningDTO.md)
  - [MemberUpdateParam](doc//MemberUpdateParam.md)
+ - [NotificationCreateParam](doc//NotificationCreateParam.md)
+ - [NotificationResponseDTO](doc//NotificationResponseDTO.md)
+ - [NotificationStatusEnum](doc//NotificationStatusEnum.md)
+ - [NotificationTypeEnum](doc//NotificationTypeEnum.md)
+ - [NotificationUpdateParam](doc//NotificationUpdateParam.md)
  - [Order](doc//Order.md)
  - [OrderCancelParam](doc//OrderCancelParam.md)
  - [OrderConfirmParam](doc//OrderConfirmParam.md)
@@ -305,6 +340,7 @@ Class | Method | HTTP request | Description
  - [PageColdWallet](doc//PageColdWallet.md)
  - [PageCustomerIssue](doc//PageCustomerIssue.md)
  - [PageDispute](doc//PageDispute.md)
+ - [PageNotificationResponseDTO](doc//PageNotificationResponseDTO.md)
  - [PageOrder](doc//PageOrder.md)
  - [PageProduct](doc//PageProduct.md)
  - [PagePromoCode](doc//PagePromoCode.md)
@@ -328,6 +364,8 @@ Class | Method | HTTP request | Description
  - [PromoCode](doc//PromoCode.md)
  - [PromoCodeStatusEnum](doc//PromoCodeStatusEnum.md)
  - [ProtocolEnum](doc//ProtocolEnum.md)
+ - [QuickLogisticsRequest](doc//QuickLogisticsRequest.md)
+ - [QuickLogisticsResult](doc//QuickLogisticsResult.md)
  - [Recharge](doc//Recharge.md)
  - [RechargeSearchParam](doc//RechargeSearchParam.md)
  - [RechargeStatusEnum](doc//RechargeStatusEnum.md)
@@ -342,9 +380,9 @@ Class | Method | HTTP request | Description
  - [ReviewUpdateParam](doc//ReviewUpdateParam.md)
  - [SalesStats](doc//SalesStats.md)
  - [ShippingCompanyEnum](doc//ShippingCompanyEnum.md)
- - [ShippingTypeEnum](doc//ShippingTypeEnum.md)
  - [SortObject](doc//SortObject.md)
  - [Staking](doc//Staking.md)
+ - [Store](doc//Store.md)
  - [StoreAnalyticsDTO](doc//StoreAnalyticsDTO.md)
  - [StoreCreateParam](doc//StoreCreateParam.md)
  - [StoreResponseDTO](doc//StoreResponseDTO.md)

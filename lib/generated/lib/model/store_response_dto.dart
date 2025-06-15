@@ -29,7 +29,6 @@ class StoreResponseDTO {
     this.productCount,
     this.responseRate,
     this.supportedShippingCompanies = const [],
-    this.supportedShippingTypes = const [],
     this.defaultShippingFee,
     this.freeShippingThreshold,
     this.shippingDescription,
@@ -179,9 +178,6 @@ class StoreResponseDTO {
   /// 支援的物流公司
   List<ShippingCompanyEnum> supportedShippingCompanies;
 
-  /// 支援的運送方式
-  List<ShippingTypeEnum> supportedShippingTypes;
-
   /// 預設運費
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -281,7 +277,6 @@ class StoreResponseDTO {
     other.productCount == productCount &&
     other.responseRate == responseRate &&
     _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
-    _deepEquality.equals(other.supportedShippingTypes, supportedShippingTypes) &&
     other.defaultShippingFee == defaultShippingFee &&
     other.freeShippingThreshold == freeShippingThreshold &&
     other.shippingDescription == shippingDescription &&
@@ -311,7 +306,6 @@ class StoreResponseDTO {
     (productCount == null ? 0 : productCount!.hashCode) +
     (responseRate == null ? 0 : responseRate!.hashCode) +
     (supportedShippingCompanies.hashCode) +
-    (supportedShippingTypes.hashCode) +
     (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
     (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode) +
     (shippingDescription == null ? 0 : shippingDescription!.hashCode) +
@@ -323,7 +317,7 @@ class StoreResponseDTO {
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'StoreResponseDTO[id=$id, name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, coverImageUrl=$coverImageUrl, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, productCount=$productCount, responseRate=$responseRate, supportedShippingCompanies=$supportedShippingCompanies, supportedShippingTypes=$supportedShippingTypes, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'StoreResponseDTO[id=$id, name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, coverImageUrl=$coverImageUrl, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, productCount=$productCount, responseRate=$responseRate, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -403,7 +397,6 @@ class StoreResponseDTO {
       json[r'responseRate'] = null;
     }
       json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
-      json[r'supportedShippingTypes'] = this.supportedShippingTypes;
     if (this.defaultShippingFee != null) {
       json[r'defaultShippingFee'] = this.defaultShippingFee;
     } else {
@@ -487,7 +480,6 @@ class StoreResponseDTO {
         productCount: mapValueOfType<int>(json, r'productCount'),
         responseRate: mapValueOfType<int>(json, r'responseRate'),
         supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']),
-        supportedShippingTypes: ShippingTypeEnum.listFromJson(json[r'supportedShippingTypes']),
         defaultShippingFee: mapValueOfType<double>(json, r'defaultShippingFee'),
         freeShippingThreshold: mapValueOfType<double>(json, r'freeShippingThreshold'),
         shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),

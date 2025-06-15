@@ -15,7 +15,6 @@ class DeliveryDetail {
   DeliveryDetail({
     this.orderId,
     this.deliveryId,
-    this.shippingType,
     this.verifyCode,
     this.pickupLongitude,
     this.pickupLatitude,
@@ -57,14 +56,6 @@ class DeliveryDetail {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? deliveryId;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  ShippingTypeEnum? shippingType;
 
   /// 驗證碼
   ///
@@ -256,7 +247,6 @@ class DeliveryDetail {
   bool operator ==(Object other) => identical(this, other) || other is DeliveryDetail &&
     other.orderId == orderId &&
     other.deliveryId == deliveryId &&
-    other.shippingType == shippingType &&
     other.verifyCode == verifyCode &&
     other.pickupLongitude == pickupLongitude &&
     other.pickupLatitude == pickupLatitude &&
@@ -285,7 +275,6 @@ class DeliveryDetail {
     // ignore: unnecessary_parenthesis
     (orderId == null ? 0 : orderId!.hashCode) +
     (deliveryId == null ? 0 : deliveryId!.hashCode) +
-    (shippingType == null ? 0 : shippingType!.hashCode) +
     (verifyCode == null ? 0 : verifyCode!.hashCode) +
     (pickupLongitude == null ? 0 : pickupLongitude!.hashCode) +
     (pickupLatitude == null ? 0 : pickupLatitude!.hashCode) +
@@ -310,7 +299,7 @@ class DeliveryDetail {
     (cancelledTime == null ? 0 : cancelledTime!.hashCode);
 
   @override
-  String toString() => 'DeliveryDetail[orderId=$orderId, deliveryId=$deliveryId, shippingType=$shippingType, verifyCode=$verifyCode, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupAddress=$pickupAddress, pickupPostalCode=$pickupPostalCode, shippingLongitude=$shippingLongitude, shippingLatitude=$shippingLatitude, shippingAddress=$shippingAddress, shippingPostalCode=$shippingPostalCode, receiverName=$receiverName, receiverPhone=$receiverPhone, trackingNumber=$trackingNumber, createdAt=$createdAt, updatedAt=$updatedAt, deliveredAt=$deliveredAt, assignedAt=$assignedAt, deliveryLogs=$deliveryLogs, status=$status, pickingUpTime=$pickingUpTime, deliveringTime=$deliveringTime, deliveredTime=$deliveredTime, cancelledTime=$cancelledTime]';
+  String toString() => 'DeliveryDetail[orderId=$orderId, deliveryId=$deliveryId, verifyCode=$verifyCode, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupAddress=$pickupAddress, pickupPostalCode=$pickupPostalCode, shippingLongitude=$shippingLongitude, shippingLatitude=$shippingLatitude, shippingAddress=$shippingAddress, shippingPostalCode=$shippingPostalCode, receiverName=$receiverName, receiverPhone=$receiverPhone, trackingNumber=$trackingNumber, createdAt=$createdAt, updatedAt=$updatedAt, deliveredAt=$deliveredAt, assignedAt=$assignedAt, deliveryLogs=$deliveryLogs, status=$status, pickingUpTime=$pickingUpTime, deliveringTime=$deliveringTime, deliveredTime=$deliveredTime, cancelledTime=$cancelledTime]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -323,11 +312,6 @@ class DeliveryDetail {
       json[r'deliveryId'] = this.deliveryId;
     } else {
       json[r'deliveryId'] = null;
-    }
-    if (this.shippingType != null) {
-      json[r'shippingType'] = this.shippingType;
-    } else {
-      json[r'shippingType'] = null;
     }
     if (this.verifyCode != null) {
       json[r'verifyCode'] = this.verifyCode;
@@ -459,7 +443,6 @@ class DeliveryDetail {
       return DeliveryDetail(
         orderId: mapValueOfType<String>(json, r'orderId'),
         deliveryId: mapValueOfType<int>(json, r'deliveryId'),
-        shippingType: ShippingTypeEnum.fromJson(json[r'shippingType']),
         verifyCode: mapValueOfType<String>(json, r'verifyCode'),
         pickupLongitude: mapValueOfType<double>(json, r'pickupLongitude'),
         pickupLatitude: mapValueOfType<double>(json, r'pickupLatitude'),

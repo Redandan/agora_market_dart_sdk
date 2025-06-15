@@ -116,12 +116,6 @@ void main() {
       // TODO
     });
 
-    // 庫存狀態：LOW_STOCK-低庫存, OUT_OF_STOCK-缺貨, NORMAL-正常
-    // String stockStatus
-    test('to test the property `stockStatus`', () async {
-      // TODO
-    });
-
     // 搜索關鍵字
     // String keyword
     test('to test the property `keyword`', () async {

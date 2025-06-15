@@ -25,7 +25,6 @@ Name | Type | Description | Notes
 **minPrice** | **num** | 最低價格 | [optional] 
 **maxPrice** | **num** | 最高價格 | [optional] 
 **inStock** | **bool** | 是否有庫存 | [optional] 
-**stockStatus** | **String** | 庫存狀態：LOW_STOCK-低庫存, OUT_OF_STOCK-缺貨, NORMAL-正常 | [optional] 
 **keyword** | **String** | 搜索關鍵字 | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

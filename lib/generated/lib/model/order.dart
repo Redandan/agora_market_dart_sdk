@@ -18,7 +18,6 @@ class Order {
     this.buyerId,
     this.sellerId,
     this.shippingFee,
-    this.shippingType,
     this.productPrice,
     this.orderAmount,
     this.currency,
@@ -75,14 +74,6 @@ class Order {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? shippingFee;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  ShippingTypeEnum? shippingType;
 
   /// 商品價格
   ///
@@ -174,7 +165,6 @@ class Order {
     other.buyerId == buyerId &&
     other.sellerId == sellerId &&
     other.shippingFee == shippingFee &&
-    other.shippingType == shippingType &&
     other.productPrice == productPrice &&
     other.orderAmount == orderAmount &&
     other.currency == currency &&
@@ -194,7 +184,6 @@ class Order {
     (buyerId == null ? 0 : buyerId!.hashCode) +
     (sellerId == null ? 0 : sellerId!.hashCode) +
     (shippingFee == null ? 0 : shippingFee!.hashCode) +
-    (shippingType == null ? 0 : shippingType!.hashCode) +
     (productPrice == null ? 0 : productPrice!.hashCode) +
     (orderAmount == null ? 0 : orderAmount!.hashCode) +
     (currency == null ? 0 : currency!.hashCode) +
@@ -207,7 +196,7 @@ class Order {
     (product == null ? 0 : product!.hashCode);
 
   @override
-  String toString() => 'Order[id=$id, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, shippingFee=$shippingFee, shippingType=$shippingType, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, product=$product]';
+  String toString() => 'Order[id=$id, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, product=$product]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -235,11 +224,6 @@ class Order {
       json[r'shippingFee'] = this.shippingFee;
     } else {
       json[r'shippingFee'] = null;
-    }
-    if (this.shippingType != null) {
-      json[r'shippingType'] = this.shippingType;
-    } else {
-      json[r'shippingType'] = null;
     }
     if (this.productPrice != null) {
       json[r'productPrice'] = this.productPrice;
@@ -318,7 +302,6 @@ class Order {
         buyerId: mapValueOfType<int>(json, r'buyerId'),
         sellerId: mapValueOfType<int>(json, r'sellerId'),
         shippingFee: num.parse('${json[r'shippingFee']}'),
-        shippingType: ShippingTypeEnum.fromJson(json[r'shippingType']),
         productPrice: num.parse('${json[r'productPrice']}'),
         orderAmount: num.parse('${json[r'orderAmount']}'),
         currency: mapValueOfType<String>(json, r'currency'),

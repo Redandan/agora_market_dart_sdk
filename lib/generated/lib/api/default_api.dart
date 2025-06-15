@@ -80,6 +80,62 @@ class DefaultApi {
     return null;
   }
 
+  /// 物流計算
+  ///
+  /// 根據郵遞區號計算運費和運送天數，其他參數可選
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [QuickLogisticsRequest] quickLogisticsRequest (required):
+  Future<Response> calculateLogisticsWithHttpInfo(QuickLogisticsRequest quickLogisticsRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/logistics/calculate';
+
+    // ignore: prefer_final_locals
+    Object? postBody = quickLogisticsRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 物流計算
+  ///
+  /// 根據郵遞區號計算運費和運送天數，其他參數可選
+  ///
+  /// Parameters:
+  ///
+  /// * [QuickLogisticsRequest] quickLogisticsRequest (required):
+  Future<QuickLogisticsResult?> calculateLogistics(QuickLogisticsRequest quickLogisticsRequest,) async {
+    final response = await calculateLogisticsWithHttpInfo(quickLogisticsRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'QuickLogisticsResult',) as QuickLogisticsResult;
+    
+    }
+    return null;
+  }
+
   /// 取消充值
   ///
   /// Note: This method returns the HTTP [Response].
@@ -682,6 +738,108 @@ class DefaultApi {
     return null;
   }
 
+  /// 取得可用物流公司
+  ///
+  /// 取得系統支援的物流公司列表
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getAvailableCarriersWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/logistics/carriers';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 取得可用物流公司
+  ///
+  /// 取得系統支援的物流公司列表
+  Future<List<String>?> getAvailableCarriers() async {
+    final response = await getAvailableCarriersWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<String>') as List)
+        .cast<String>()
+        .toList(growable: false);
+
+    }
+    return null;
+  }
+
+  /// 取得所有城市列表
+  ///
+  /// 取得所有可用的城市名稱列表
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getAvailableCitiesWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/logistics/postal/cities';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 取得所有城市列表
+  ///
+  /// 取得所有可用的城市名稱列表
+  Future<List<String>?> getAvailableCities() async {
+    final response = await getAvailableCitiesWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<String>') as List)
+        .cast<String>()
+        .toList(growable: false);
+
+    }
+    return null;
+  }
+
   /// 根據城市查詢
   ///
   /// 根據指定的城市名稱查詢相關的郵遞區號信息
@@ -1111,6 +1269,68 @@ class DefaultApi {
     return null;
   }
 
+  /// 查詢城市行政區
+  ///
+  /// 取得指定城市的所有行政區名稱
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] city (required):
+  ///   城市名稱
+  Future<Response> getDistrictsByCity1WithHttpInfo(String city,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/logistics/postal/city/{city}/districts'
+      .replaceAll('{city}', city);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查詢城市行政區
+  ///
+  /// 取得指定城市的所有行政區名稱
+  ///
+  /// Parameters:
+  ///
+  /// * [String] city (required):
+  ///   城市名稱
+  Future<List<String>?> getDistrictsByCity1(String city,) async {
+    final response = await getDistrictsByCity1WithHttpInfo(city,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<String>') as List)
+        .cast<String>()
+        .toList(growable: false);
+
+    }
+    return null;
+  }
+
   /// 查詢客戶問題記錄
   ///
   /// Note: This method returns the HTTP [Response].
@@ -1401,6 +1621,130 @@ class DefaultApi {
     return null;
   }
 
+  /// 郵遞區號查詢
+  ///
+  /// 根據郵遞區號查詢地區資訊
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] postalCode (required):
+  ///   郵遞區號
+  Future<Response> getPostalAreaByCodeWithHttpInfo(String postalCode,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/logistics/postal-codes/{postalCode}'
+      .replaceAll('{postalCode}', postalCode);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 郵遞區號查詢
+  ///
+  /// 根據郵遞區號查詢地區資訊
+  ///
+  /// Parameters:
+  ///
+  /// * [String] postalCode (required):
+  ///   郵遞區號
+  Future<List<TaiwanPostalArea>?> getPostalAreaByCode(String postalCode,) async {
+    final response = await getPostalAreaByCodeWithHttpInfo(postalCode,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<TaiwanPostalArea>') as List)
+        .cast<TaiwanPostalArea>()
+        .toList(growable: false);
+
+    }
+    return null;
+  }
+
+  /// 查詢城市所有行政區
+  ///
+  /// 根據城市名稱查詢所有行政區
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] city (required):
+  ///   城市名稱
+  Future<Response> getPostalAreasByCityWithHttpInfo(String city,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/logistics/postal/city/{city}'
+      .replaceAll('{city}', city);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查詢城市所有行政區
+  ///
+  /// 根據城市名稱查詢所有行政區
+  ///
+  /// Parameters:
+  ///
+  /// * [String] city (required):
+  ///   城市名稱
+  Future<List<TaiwanPostalArea>?> getPostalAreasByCity(String city,) async {
+    final response = await getPostalAreasByCityWithHttpInfo(city,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<TaiwanPostalArea>') as List)
+        .cast<TaiwanPostalArea>()
+        .toList(growable: false);
+
+    }
+    return null;
+  }
+
   /// 獲取充值詳情
   ///
   /// Note: This method returns the HTTP [Response].
@@ -1619,6 +1963,68 @@ class DefaultApi {
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageRecharge',) as PageRecharge;
     
+    }
+    return null;
+  }
+
+  /// 取得物流公司服務類型
+  ///
+  /// 取得指定物流公司提供的服務類型
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] carrier (required):
+  ///   物流公司
+  Future<Response> getServiceTypesWithHttpInfo(String carrier,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/logistics/carriers/{carrier}/services'
+      .replaceAll('{carrier}', carrier);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 取得物流公司服務類型
+  ///
+  /// 取得指定物流公司提供的服務類型
+  ///
+  /// Parameters:
+  ///
+  /// * [String] carrier (required):
+  ///   物流公司
+  Future<List<String>?> getServiceTypes(String carrier,) async {
+    final response = await getServiceTypesWithHttpInfo(carrier,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<String>') as List)
+        .cast<String>()
+        .toList(growable: false);
+
     }
     return null;
   }
@@ -2252,6 +2658,69 @@ class DefaultApi {
     return null;
   }
 
+  /// 郵遞區號模糊查詢
+  ///
+  /// 根據關鍵字查詢郵遞區號、城市、行政區
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] keyword (required):
+  ///   關鍵字
+  Future<Response> searchPostalAreasWithHttpInfo(String keyword,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/logistics/postal/search';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'keyword', keyword));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 郵遞區號模糊查詢
+  ///
+  /// 根據關鍵字查詢郵遞區號、城市、行政區
+  ///
+  /// Parameters:
+  ///
+  /// * [String] keyword (required):
+  ///   關鍵字
+  Future<List<TaiwanPostalArea>?> searchPostalAreas(String keyword,) async {
+    final response = await searchPostalAreasWithHttpInfo(keyword,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<TaiwanPostalArea>') as List)
+        .cast<TaiwanPostalArea>()
+        .toList(growable: false);
+
+    }
+    return null;
+  }
+
   /// 管理員搜尋充值記錄
   ///
   /// Note: This method returns the HTTP [Response].
@@ -2460,6 +2929,65 @@ class DefaultApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CartItemResponse',) as CartItemResponse;
+    
+    }
+    return null;
+  }
+
+  /// 郵遞區號驗證
+  ///
+  /// 驗證郵遞區號是否有效
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] postalCode (required):
+  ///   郵遞區號
+  Future<Response> validatePostalCodeWithHttpInfo(String postalCode,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/logistics/postal-codes/{postalCode}/validate'
+      .replaceAll('{postalCode}', postalCode);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 郵遞區號驗證
+  ///
+  /// 驗證郵遞區號是否有效
+  ///
+  /// Parameters:
+  ///
+  /// * [String] postalCode (required):
+  ///   郵遞區號
+  Future<bool?> validatePostalCode(String postalCode,) async {
+    final response = await validatePostalCodeWithHttpInfo(postalCode,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
     
     }
     return null;

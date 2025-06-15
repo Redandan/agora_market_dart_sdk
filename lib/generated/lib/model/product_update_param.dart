@@ -16,7 +16,6 @@ class ProductUpdateParam {
     required this.id,
     this.name,
     this.price,
-    this.currency,
     this.stock,
     this.description,
     this.category,
@@ -27,21 +26,13 @@ class ProductUpdateParam {
     this.shippingFee,
     this.skus = const {},
     this.brand,
-    this.specifications = const {},
-    this.minStock,
-    this.stockAlertThreshold,
-    this.allowNegativeStock,
-    this.tags,
     this.shippingPreparationHours,
     this.dailyShippingDeadline,
     this.shippingDescription,
-    this.estimatedDeliveryDays,
     this.supportsScheduledShipping,
     this.shippingDateRange,
     this.supportedShippingCompanies = const [],
-    this.supportedShippingTypes = const [],
     this.defaultShippingFee,
-    this.freeShippingThreshold,
   });
 
   /// 商品ID
@@ -66,15 +57,6 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? price;
-
-  /// 貨幣類型
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? currency;
 
   /// 商品庫存
   ///
@@ -163,49 +145,6 @@ class ProductUpdateParam {
   ///
   String? brand;
 
-  /// 商品規格屬性
-  Map<String, String> specifications;
-
-  /// 最低庫存警告
-  ///
-  /// Minimum value: 0
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? minStock;
-
-  /// 庫存預警閾值
-  ///
-  /// Minimum value: 0
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? stockAlertThreshold;
-
-  /// 是否允許負庫存
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? allowNegativeStock;
-
-  /// 商品標籤，以逗號分隔
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? tags;
-
   /// 出貨準備時間（小時）
   ///
   /// Minimum value: 0
@@ -226,7 +165,7 @@ class ProductUpdateParam {
   ///
   String? dailyShippingDeadline;
 
-  /// 出貨說明
+  /// 出貨備註
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -234,17 +173,6 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? shippingDescription;
-
-  /// 預計送達時間（天數）
-  ///
-  /// Minimum value: 1
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? estimatedDeliveryDays;
 
   /// 是否支持指定出貨日期
   ///
@@ -269,9 +197,6 @@ class ProductUpdateParam {
   /// 支援的物流公司
   List<ShippingCompanyEnum> supportedShippingCompanies;
 
-  /// 支援的運送方式
-  List<ShippingTypeEnum> supportedShippingTypes;
-
   /// 預設運費
   ///
   /// Minimum value: 0.0
@@ -283,23 +208,11 @@ class ProductUpdateParam {
   ///
   double? defaultShippingFee;
 
-  /// 免運費門檻
-  ///
-  /// Minimum value: 0.0
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  double? freeShippingThreshold;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductUpdateParam &&
     other.id == id &&
     other.name == name &&
     other.price == price &&
-    other.currency == currency &&
     other.stock == stock &&
     other.description == description &&
     other.category == category &&
@@ -310,21 +223,13 @@ class ProductUpdateParam {
     other.shippingFee == shippingFee &&
     _deepEquality.equals(other.skus, skus) &&
     other.brand == brand &&
-    _deepEquality.equals(other.specifications, specifications) &&
-    other.minStock == minStock &&
-    other.stockAlertThreshold == stockAlertThreshold &&
-    other.allowNegativeStock == allowNegativeStock &&
-    other.tags == tags &&
     other.shippingPreparationHours == shippingPreparationHours &&
     other.dailyShippingDeadline == dailyShippingDeadline &&
     other.shippingDescription == shippingDescription &&
-    other.estimatedDeliveryDays == estimatedDeliveryDays &&
     other.supportsScheduledShipping == supportsScheduledShipping &&
     other.shippingDateRange == shippingDateRange &&
     _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
-    _deepEquality.equals(other.supportedShippingTypes, supportedShippingTypes) &&
-    other.defaultShippingFee == defaultShippingFee &&
-    other.freeShippingThreshold == freeShippingThreshold;
+    other.defaultShippingFee == defaultShippingFee;
 
   @override
   int get hashCode =>
@@ -332,7 +237,6 @@ class ProductUpdateParam {
     (id.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (price == null ? 0 : price!.hashCode) +
-    (currency == null ? 0 : currency!.hashCode) +
     (stock == null ? 0 : stock!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (category == null ? 0 : category!.hashCode) +
@@ -343,24 +247,16 @@ class ProductUpdateParam {
     (shippingFee == null ? 0 : shippingFee!.hashCode) +
     (skus.hashCode) +
     (brand == null ? 0 : brand!.hashCode) +
-    (specifications.hashCode) +
-    (minStock == null ? 0 : minStock!.hashCode) +
-    (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
-    (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode) +
-    (tags == null ? 0 : tags!.hashCode) +
     (shippingPreparationHours == null ? 0 : shippingPreparationHours!.hashCode) +
     (dailyShippingDeadline == null ? 0 : dailyShippingDeadline!.hashCode) +
     (shippingDescription == null ? 0 : shippingDescription!.hashCode) +
-    (estimatedDeliveryDays == null ? 0 : estimatedDeliveryDays!.hashCode) +
     (supportsScheduledShipping == null ? 0 : supportsScheduledShipping!.hashCode) +
     (shippingDateRange == null ? 0 : shippingDateRange!.hashCode) +
     (supportedShippingCompanies.hashCode) +
-    (supportedShippingTypes.hashCode) +
-    (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
-    (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode);
+    (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode);
 
   @override
-  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, status=$status, shippingFee=$shippingFee, skus=$skus, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, supportedShippingTypes=$supportedShippingTypes, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold]';
+  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, status=$status, shippingFee=$shippingFee, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -374,11 +270,6 @@ class ProductUpdateParam {
       json[r'price'] = this.price;
     } else {
       json[r'price'] = null;
-    }
-    if (this.currency != null) {
-      json[r'currency'] = this.currency;
-    } else {
-      json[r'currency'] = null;
     }
     if (this.stock != null) {
       json[r'stock'] = this.stock;
@@ -422,27 +313,6 @@ class ProductUpdateParam {
     } else {
       json[r'brand'] = null;
     }
-      json[r'specifications'] = this.specifications;
-    if (this.minStock != null) {
-      json[r'minStock'] = this.minStock;
-    } else {
-      json[r'minStock'] = null;
-    }
-    if (this.stockAlertThreshold != null) {
-      json[r'stockAlertThreshold'] = this.stockAlertThreshold;
-    } else {
-      json[r'stockAlertThreshold'] = null;
-    }
-    if (this.allowNegativeStock != null) {
-      json[r'allowNegativeStock'] = this.allowNegativeStock;
-    } else {
-      json[r'allowNegativeStock'] = null;
-    }
-    if (this.tags != null) {
-      json[r'tags'] = this.tags;
-    } else {
-      json[r'tags'] = null;
-    }
     if (this.shippingPreparationHours != null) {
       json[r'shippingPreparationHours'] = this.shippingPreparationHours;
     } else {
@@ -458,11 +328,6 @@ class ProductUpdateParam {
     } else {
       json[r'shippingDescription'] = null;
     }
-    if (this.estimatedDeliveryDays != null) {
-      json[r'estimatedDeliveryDays'] = this.estimatedDeliveryDays;
-    } else {
-      json[r'estimatedDeliveryDays'] = null;
-    }
     if (this.supportsScheduledShipping != null) {
       json[r'supportsScheduledShipping'] = this.supportsScheduledShipping;
     } else {
@@ -474,16 +339,10 @@ class ProductUpdateParam {
       json[r'shippingDateRange'] = null;
     }
       json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
-      json[r'supportedShippingTypes'] = this.supportedShippingTypes;
     if (this.defaultShippingFee != null) {
       json[r'defaultShippingFee'] = this.defaultShippingFee;
     } else {
       json[r'defaultShippingFee'] = null;
-    }
-    if (this.freeShippingThreshold != null) {
-      json[r'freeShippingThreshold'] = this.freeShippingThreshold;
-    } else {
-      json[r'freeShippingThreshold'] = null;
     }
     return json;
   }
@@ -510,7 +369,6 @@ class ProductUpdateParam {
         id: mapValueOfType<String>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name'),
         price: num.parse('${json[r'price']}'),
-        currency: mapValueOfType<String>(json, r'currency'),
         stock: mapValueOfType<int>(json, r'stock'),
         description: mapValueOfType<String>(json, r'description'),
         category: mapValueOfType<String>(json, r'category'),
@@ -525,21 +383,13 @@ class ProductUpdateParam {
             ? (json[r'skus'] as Iterable).cast<String>().toSet()
             : const {},
         brand: mapValueOfType<String>(json, r'brand'),
-        specifications: mapCastOfType<String, String>(json, r'specifications') ?? const {},
-        minStock: mapValueOfType<int>(json, r'minStock'),
-        stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
-        allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
-        tags: mapValueOfType<String>(json, r'tags'),
         shippingPreparationHours: mapValueOfType<int>(json, r'shippingPreparationHours'),
         dailyShippingDeadline: mapValueOfType<String>(json, r'dailyShippingDeadline'),
         shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),
-        estimatedDeliveryDays: mapValueOfType<int>(json, r'estimatedDeliveryDays'),
         supportsScheduledShipping: mapValueOfType<bool>(json, r'supportsScheduledShipping'),
         shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
         supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']),
-        supportedShippingTypes: ShippingTypeEnum.listFromJson(json[r'supportedShippingTypes']),
         defaultShippingFee: mapValueOfType<double>(json, r'defaultShippingFee'),
-        freeShippingThreshold: mapValueOfType<double>(json, r'freeShippingThreshold'),
       );
     }
     return null;

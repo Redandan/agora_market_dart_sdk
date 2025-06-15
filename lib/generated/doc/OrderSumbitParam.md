@@ -9,7 +9,6 @@ import 'package:agora_market_dart_sdk/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **productId** | **int** | 商品ID | 
-**shippingType** | [**ShippingTypeEnum**](ShippingTypeEnum.md) |  | 
 **shippingAddress** | **String** | 收件地址 | 
 **longitude** | **double** | 收件地址經度 | 
 **latitude** | **double** | 收件地址緯度 | 

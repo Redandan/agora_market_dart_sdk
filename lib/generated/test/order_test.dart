@@ -46,11 +46,6 @@ void main() {
       // TODO
     });
 
-    // ShippingTypeEnum shippingType
-    test('to test the property `shippingType`', () async {
-      // TODO
-    });
-
     // 商品價格
     // num productPrice
     test('to test the property `productPrice`', () async {

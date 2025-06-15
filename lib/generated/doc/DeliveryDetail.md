@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **orderId** | **String** | 訂單ID | [optional] 
 **deliveryId** | **int** | 配送員ID | [optional] 
-**shippingType** | [**ShippingTypeEnum**](ShippingTypeEnum.md) |  | [optional] 
 **verifyCode** | **String** | 驗證碼 | [optional] 
 **pickupLongitude** | **double** | 取件經度 | [optional] 
 **pickupLatitude** | **double** | 取件緯度 | [optional] 

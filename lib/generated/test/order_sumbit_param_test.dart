@@ -22,11 +22,6 @@ void main() {
       // TODO
     });
 
-    // ShippingTypeEnum shippingType
-    test('to test the property `shippingType`', () async {
-      // TODO
-    });
-
     // 收件地址
     // String shippingAddress
     test('to test the property `shippingAddress`', () async {

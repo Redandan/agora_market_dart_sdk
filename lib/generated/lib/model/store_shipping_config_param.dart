@@ -14,7 +14,6 @@ class StoreShippingConfigParam {
   /// Returns a new [StoreShippingConfigParam] instance.
   StoreShippingConfigParam({
     this.supportedShippingCompanies = const [],
-    this.supportedShippingTypes = const [],
     this.defaultShippingFee,
     this.freeShippingThreshold,
     this.shippingDescription,
@@ -26,9 +25,6 @@ class StoreShippingConfigParam {
 
   /// 支援的物流公司
   List<ShippingCompanyEnum> supportedShippingCompanies;
-
-  /// 支援的運送方式
-  List<ShippingTypeEnum> supportedShippingTypes;
 
   /// 預設運費
   ///
@@ -106,7 +102,6 @@ class StoreShippingConfigParam {
   @override
   bool operator ==(Object other) => identical(this, other) || other is StoreShippingConfigParam &&
     _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
-    _deepEquality.equals(other.supportedShippingTypes, supportedShippingTypes) &&
     other.defaultShippingFee == defaultShippingFee &&
     other.freeShippingThreshold == freeShippingThreshold &&
     other.shippingDescription == shippingDescription &&
@@ -119,7 +114,6 @@ class StoreShippingConfigParam {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (supportedShippingCompanies.hashCode) +
-    (supportedShippingTypes.hashCode) +
     (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
     (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode) +
     (shippingDescription == null ? 0 : shippingDescription!.hashCode) +
@@ -129,12 +123,11 @@ class StoreShippingConfigParam {
     (shippingDateRange == null ? 0 : shippingDateRange!.hashCode);
 
   @override
-  String toString() => 'StoreShippingConfigParam[supportedShippingCompanies=$supportedShippingCompanies, supportedShippingTypes=$supportedShippingTypes, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange]';
+  String toString() => 'StoreShippingConfigParam[supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
-      json[r'supportedShippingTypes'] = this.supportedShippingTypes;
     if (this.defaultShippingFee != null) {
       json[r'defaultShippingFee'] = this.defaultShippingFee;
     } else {
@@ -193,7 +186,6 @@ class StoreShippingConfigParam {
 
       return StoreShippingConfigParam(
         supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']),
-        supportedShippingTypes: ShippingTypeEnum.listFromJson(json[r'supportedShippingTypes']),
         defaultShippingFee: mapValueOfType<double>(json, r'defaultShippingFee'),
         freeShippingThreshold: mapValueOfType<double>(json, r'freeShippingThreshold'),
         shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),

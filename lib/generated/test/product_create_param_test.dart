@@ -117,18 +117,6 @@ void main() {
       // TODO
     });
 
-    // 庫存預警閾值
-    // int stockAlertThreshold
-    test('to test the property `stockAlertThreshold`', () async {
-      // TODO
-    });
-
-    // 是否允許負庫存
-    // bool allowNegativeStock
-    test('to test the property `allowNegativeStock`', () async {
-      // TODO
-    });
-
     // 商品標籤，以逗號分隔
     // String tags
     test('to test the property `tags`', () async {
@@ -147,7 +135,7 @@ void main() {
       // TODO
     });
 
-    // 出貨說明
+    // 出貨備註
     // String shippingDescription
     test('to test the property `shippingDescription`', () async {
       // TODO
@@ -177,12 +165,6 @@ void main() {
       // TODO
     });
 
-    // 支援的運送方式
-    // List<ShippingTypeEnum> supportedShippingTypes (default value: const [])
-    test('to test the property `supportedShippingTypes`', () async {
-      // TODO
-    });
-
     // 預設運費
     // double defaultShippingFee
     test('to test the property `defaultShippingFee`', () async {
@@ -192,6 +174,18 @@ void main() {
     // 免運費門檻
     // double freeShippingThreshold
     test('to test the property `freeShippingThreshold`', () async {
+      // TODO
+    });
+
+    // 庫存警告閾值
+    // int stockAlertThreshold
+    test('to test the property `stockAlertThreshold`', () async {
+      // TODO
+    });
+
+    // 是否允許負庫存
+    // bool allowNegativeStock
+    test('to test the property `allowNegativeStock`', () async {
       // TODO
     });
 

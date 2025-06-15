@@ -22,7 +22,6 @@ class StoreCreateParam {
     this.logoUrl,
     this.coverImageUrl,
     this.supportedShippingCompanies = const [],
-    this.supportedShippingTypes = const [],
     this.defaultShippingFee,
     this.freeShippingThreshold,
     this.shippingDescription,
@@ -94,9 +93,6 @@ class StoreCreateParam {
 
   /// 支援的物流公司
   List<ShippingCompanyEnum> supportedShippingCompanies;
-
-  /// 支援的運送方式
-  List<ShippingTypeEnum> supportedShippingTypes;
 
   /// 預設運費
   ///
@@ -172,7 +168,6 @@ class StoreCreateParam {
     other.logoUrl == logoUrl &&
     other.coverImageUrl == coverImageUrl &&
     _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
-    _deepEquality.equals(other.supportedShippingTypes, supportedShippingTypes) &&
     other.defaultShippingFee == defaultShippingFee &&
     other.freeShippingThreshold == freeShippingThreshold &&
     other.shippingDescription == shippingDescription &&
@@ -193,7 +188,6 @@ class StoreCreateParam {
     (logoUrl == null ? 0 : logoUrl!.hashCode) +
     (coverImageUrl == null ? 0 : coverImageUrl!.hashCode) +
     (supportedShippingCompanies.hashCode) +
-    (supportedShippingTypes.hashCode) +
     (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
     (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode) +
     (shippingDescription == null ? 0 : shippingDescription!.hashCode) +
@@ -203,7 +197,7 @@ class StoreCreateParam {
     (shippingDateRange == null ? 0 : shippingDateRange!.hashCode);
 
   @override
-  String toString() => 'StoreCreateParam[name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, coverImageUrl=$coverImageUrl, supportedShippingCompanies=$supportedShippingCompanies, supportedShippingTypes=$supportedShippingTypes, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange]';
+  String toString() => 'StoreCreateParam[name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, coverImageUrl=$coverImageUrl, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -240,7 +234,6 @@ class StoreCreateParam {
       json[r'coverImageUrl'] = null;
     }
       json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
-      json[r'supportedShippingTypes'] = this.supportedShippingTypes;
     if (this.defaultShippingFee != null) {
       json[r'defaultShippingFee'] = this.defaultShippingFee;
     } else {
@@ -307,7 +300,6 @@ class StoreCreateParam {
         logoUrl: mapValueOfType<String>(json, r'logoUrl'),
         coverImageUrl: mapValueOfType<String>(json, r'coverImageUrl'),
         supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']),
-        supportedShippingTypes: ShippingTypeEnum.listFromJson(json[r'supportedShippingTypes']),
         defaultShippingFee: mapValueOfType<double>(json, r'defaultShippingFee'),
         freeShippingThreshold: mapValueOfType<double>(json, r'freeShippingThreshold'),
         shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),

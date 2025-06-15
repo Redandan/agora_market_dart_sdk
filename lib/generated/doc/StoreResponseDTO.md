@@ -24,7 +24,6 @@ Name | Type | Description | Notes
 **productCount** | **int** | 商品數量 | [optional] 
 **responseRate** | **int** | 回覆率 | [optional] 
 **supportedShippingCompanies** | [**List<ShippingCompanyEnum>**](ShippingCompanyEnum.md) | 支援的物流公司 | [optional] [default to const []]
-**supportedShippingTypes** | [**List<ShippingTypeEnum>**](ShippingTypeEnum.md) | 支援的運送方式 | [optional] [default to const []]
 **defaultShippingFee** | **double** | 預設運費 | [optional] 
 **freeShippingThreshold** | **double** | 免運費門檻 | [optional] 
 **shippingDescription** | **String** | 運送說明 | [optional] 

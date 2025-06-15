@@ -11,10 +11,10 @@
 import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
-// tests for ShippingTypeEnum
+// tests for NotificationTypeEnum
 void main() {
 
-  group('test ShippingTypeEnum', () {
+  group('test NotificationTypeEnum', () {
 
   });
 

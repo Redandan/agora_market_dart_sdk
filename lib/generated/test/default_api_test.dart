@@ -26,6 +26,15 @@ void main() {
       // TODO
     });
 
+    // 物流計算
+    //
+    // 根據郵遞區號計算運費和運送天數，其他參數可選
+    //
+    //Future<QuickLogisticsResult> calculateLogistics(QuickLogisticsRequest quickLogisticsRequest) async
+    test('test calculateLogistics', () async {
+      // TODO
+    });
+
     // 取消充值
     //
     //Future<Recharge> cancelRecharge(String rechargeId, { String remark }) async
@@ -109,6 +118,24 @@ void main() {
       // TODO
     });
 
+    // 取得可用物流公司
+    //
+    // 取得系統支援的物流公司列表
+    //
+    //Future<List<String>> getAvailableCarriers() async
+    test('test getAvailableCarriers', () async {
+      // TODO
+    });
+
+    // 取得所有城市列表
+    //
+    // 取得所有可用的城市名稱列表
+    //
+    //Future<List<String>> getAvailableCities() async
+    test('test getAvailableCities', () async {
+      // TODO
+    });
+
     // 根據城市查詢
     //
     // 根據指定的城市名稱查詢相關的郵遞區號信息
@@ -172,6 +199,15 @@ void main() {
       // TODO
     });
 
+    // 查詢城市行政區
+    //
+    // 取得指定城市的所有行政區名稱
+    //
+    //Future<List<String>> getDistrictsByCity1(String city) async
+    test('test getDistrictsByCity1', () async {
+      // TODO
+    });
+
     // 查詢客戶問題記錄
     //
     //Future<CustomerIssue> getIssue(String issueId) async
@@ -211,6 +247,24 @@ void main() {
       // TODO
     });
 
+    // 郵遞區號查詢
+    //
+    // 根據郵遞區號查詢地區資訊
+    //
+    //Future<List<TaiwanPostalArea>> getPostalAreaByCode(String postalCode) async
+    test('test getPostalAreaByCode', () async {
+      // TODO
+    });
+
+    // 查詢城市所有行政區
+    //
+    // 根據城市名稱查詢所有行政區
+    //
+    //Future<List<TaiwanPostalArea>> getPostalAreasByCity(String city) async
+    test('test getPostalAreasByCity', () async {
+      // TODO
+    });
+
     // 獲取充值詳情
     //
     //Future<Recharge> getRecharge(String rechargeId) async
@@ -236,6 +290,15 @@ void main() {
     //
     //Future<PageRecharge> getRechargeHistory(int page, int size) async
     test('test getRechargeHistory', () async {
+      // TODO
+    });
+
+    // 取得物流公司服務類型
+    //
+    // 取得指定物流公司提供的服務類型
+    //
+    //Future<List<String>> getServiceTypes(String carrier) async
+    test('test getServiceTypes', () async {
       // TODO
     });
 
@@ -315,6 +378,15 @@ void main() {
       // TODO
     });
 
+    // 郵遞區號模糊查詢
+    //
+    // 根據關鍵字查詢郵遞區號、城市、行政區
+    //
+    //Future<List<TaiwanPostalArea>> searchPostalAreas(String keyword) async
+    test('test searchPostalAreas', () async {
+      // TODO
+    });
+
     // 管理員搜尋充值記錄
     //
     //Future<PageRecharge> searchRecharges(RechargeSearchParam rechargeSearchParam, { int page, int size }) async
@@ -335,6 +407,15 @@ void main() {
     //
     //Future<CartItemResponse> updateCartItem(int userId, int cartItemId, CartItemUpdateParam cartItemUpdateParam) async
     test('test updateCartItem', () async {
+      // TODO
+    });
+
+    // 郵遞區號驗證
+    //
+    // 驗證郵遞區號是否有效
+    //
+    //Future<bool> validatePostalCode(String postalCode) async
+    test('test validatePostalCode', () async {
       // TODO
     });
 

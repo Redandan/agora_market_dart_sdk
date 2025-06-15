@@ -30,7 +30,6 @@ class ProductSeachParam {
     this.minPrice,
     this.maxPrice,
     this.inStock,
-    this.stockStatus,
     this.keyword,
   });
 
@@ -185,15 +184,6 @@ class ProductSeachParam {
   ///
   bool? inStock;
 
-  /// 庫存狀態：LOW_STOCK-低庫存, OUT_OF_STOCK-缺貨, NORMAL-正常
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? stockStatus;
-
   /// 搜索關鍵字
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -222,7 +212,6 @@ class ProductSeachParam {
     other.minPrice == minPrice &&
     other.maxPrice == maxPrice &&
     other.inStock == inStock &&
-    other.stockStatus == stockStatus &&
     other.keyword == keyword;
 
   @override
@@ -245,11 +234,10 @@ class ProductSeachParam {
     (minPrice == null ? 0 : minPrice!.hashCode) +
     (maxPrice == null ? 0 : maxPrice!.hashCode) +
     (inStock == null ? 0 : inStock!.hashCode) +
-    (stockStatus == null ? 0 : stockStatus!.hashCode) +
     (keyword == null ? 0 : keyword!.hashCode);
 
   @override
-  String toString() => 'ProductSeachParam[id=$id, sellerId=$sellerId, status=$status, category=$category, startDate=$startDate, endDate=$endDate, page=$page, size=$size, postalCode=$postalCode, longitude=$longitude, latitude=$latitude, sku=$sku, brand=$brand, tag=$tag, minPrice=$minPrice, maxPrice=$maxPrice, inStock=$inStock, stockStatus=$stockStatus, keyword=$keyword]';
+  String toString() => 'ProductSeachParam[id=$id, sellerId=$sellerId, status=$status, category=$category, startDate=$startDate, endDate=$endDate, page=$page, size=$size, postalCode=$postalCode, longitude=$longitude, latitude=$latitude, sku=$sku, brand=$brand, tag=$tag, minPrice=$minPrice, maxPrice=$maxPrice, inStock=$inStock, keyword=$keyword]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -338,11 +326,6 @@ class ProductSeachParam {
     } else {
       json[r'inStock'] = null;
     }
-    if (this.stockStatus != null) {
-      json[r'stockStatus'] = this.stockStatus;
-    } else {
-      json[r'stockStatus'] = null;
-    }
     if (this.keyword != null) {
       json[r'keyword'] = this.keyword;
     } else {
@@ -387,7 +370,6 @@ class ProductSeachParam {
         minPrice: num.parse('${json[r'minPrice']}'),
         maxPrice: num.parse('${json[r'maxPrice']}'),
         inStock: mapValueOfType<bool>(json, r'inStock'),
-        stockStatus: mapValueOfType<String>(json, r'stockStatus'),
         keyword: mapValueOfType<String>(json, r'keyword'),
       );
     }

@@ -1,4 +1,4 @@
-# agora_market_dart_sdk.model.ShippingTypeEnum
+# agora_market_dart_sdk.model.NotificationTypeEnum
 
 ## Load the model package
 ```dart

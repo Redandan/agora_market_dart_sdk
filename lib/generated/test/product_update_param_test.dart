@@ -34,12 +34,6 @@ void main() {
       // TODO
     });
 
-    // 貨幣類型
-    // String currency
-    test('to test the property `currency`', () async {
-      // TODO
-    });
-
     // 商品庫存
     // int stock
     test('to test the property `stock`', () async {
@@ -99,36 +93,6 @@ void main() {
       // TODO
     });
 
-    // 商品規格屬性
-    // Map<String, String> specifications (default value: const {})
-    test('to test the property `specifications`', () async {
-      // TODO
-    });
-
-    // 最低庫存警告
-    // int minStock
-    test('to test the property `minStock`', () async {
-      // TODO
-    });
-
-    // 庫存預警閾值
-    // int stockAlertThreshold
-    test('to test the property `stockAlertThreshold`', () async {
-      // TODO
-    });
-
-    // 是否允許負庫存
-    // bool allowNegativeStock
-    test('to test the property `allowNegativeStock`', () async {
-      // TODO
-    });
-
-    // 商品標籤，以逗號分隔
-    // String tags
-    test('to test the property `tags`', () async {
-      // TODO
-    });
-
     // 出貨準備時間（小時）
     // int shippingPreparationHours
     test('to test the property `shippingPreparationHours`', () async {
@@ -141,15 +105,9 @@ void main() {
       // TODO
     });
 
-    // 出貨說明
+    // 出貨備註
     // String shippingDescription
     test('to test the property `shippingDescription`', () async {
-      // TODO
-    });
-
-    // 預計送達時間（天數）
-    // int estimatedDeliveryDays
-    test('to test the property `estimatedDeliveryDays`', () async {
       // TODO
     });
 
@@ -171,21 +129,9 @@ void main() {
       // TODO
     });
 
-    // 支援的運送方式
-    // List<ShippingTypeEnum> supportedShippingTypes (default value: const [])
-    test('to test the property `supportedShippingTypes`', () async {
-      // TODO
-    });
-
     // 預設運費
     // double defaultShippingFee
     test('to test the property `defaultShippingFee`', () async {
-      // TODO
-    });
-
-    // 免運費門檻
-    // double freeShippingThreshold
-    test('to test the property `freeShippingThreshold`', () async {
       // TODO
     });
 

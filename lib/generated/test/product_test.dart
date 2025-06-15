@@ -117,7 +117,7 @@ void main() {
       // TODO
     });
 
-    // 出貨說明
+    // 出貨備註
     // String shippingDescription
     test('to test the property `shippingDescription`', () async {
       // TODO
@@ -206,27 +206,9 @@ void main() {
       // TODO
     });
 
-    // 庫存預警閾值
-    // int stockAlertThreshold
-    test('to test the property `stockAlertThreshold`', () async {
-      // TODO
-    });
-
-    // 是否允許負庫存
-    // bool allowNegativeStock
-    test('to test the property `allowNegativeStock`', () async {
-      // TODO
-    });
-
     // 支援的物流公司
     // Set<ShippingCompanyEnum> supportedShippingCompanies (default value: const {})
     test('to test the property `supportedShippingCompanies`', () async {
-      // TODO
-    });
-
-    // 支援的運送方式
-    // Set<ShippingTypeEnum> supportedShippingTypes (default value: const {})
-    test('to test the property `supportedShippingTypes`', () async {
       // TODO
     });
 
@@ -242,13 +224,30 @@ void main() {
       // TODO
     });
 
+    // 庫存警告閾值
+    // int stockAlertThreshold
+    test('to test the property `stockAlertThreshold`', () async {
+      // TODO
+    });
+
+    // 是否允許負庫存
+    // bool allowNegativeStock
+    test('to test the property `allowNegativeStock`', () async {
+      // TODO
+    });
+
+    // Store store
+    test('to test the property `store`', () async {
+      // TODO
+    });
+
     // String shippingTimeDescription
     test('to test the property `shippingTimeDescription`', () async {
       // TODO
     });
 
-    // bool inStock
-    test('to test the property `inStock`', () async {
+    // bool stockLow
+    test('to test the property `stockLow`', () async {
       // TODO
     });
 
@@ -257,8 +256,8 @@ void main() {
       // TODO
     });
 
-    // bool stockLow
-    test('to test the property `stockLow`', () async {
+    // bool inStock
+    test('to test the property `inStock`', () async {
       // TODO
     });
 

@@ -264,10 +264,22 @@ class ApiClient {
           return LoginParam.fromJson(value);
         case 'LoginResult':
           return LoginResult.fromJson(value);
+        case 'LogisticsServiceTypeEnum':
+          return LogisticsServiceTypeEnumTypeTransformer().decode(value);
         case 'LowStockWarningDTO':
           return LowStockWarningDTO.fromJson(value);
         case 'MemberUpdateParam':
           return MemberUpdateParam.fromJson(value);
+        case 'NotificationCreateParam':
+          return NotificationCreateParam.fromJson(value);
+        case 'NotificationResponseDTO':
+          return NotificationResponseDTO.fromJson(value);
+        case 'NotificationStatusEnum':
+          return NotificationStatusEnumTypeTransformer().decode(value);
+        case 'NotificationTypeEnum':
+          return NotificationTypeEnumTypeTransformer().decode(value);
+        case 'NotificationUpdateParam':
+          return NotificationUpdateParam.fromJson(value);
         case 'Order':
           return Order.fromJson(value);
         case 'OrderCancelParam':
@@ -294,6 +306,8 @@ class ApiClient {
           return PageCustomerIssue.fromJson(value);
         case 'PageDispute':
           return PageDispute.fromJson(value);
+        case 'PageNotificationResponseDTO':
+          return PageNotificationResponseDTO.fromJson(value);
         case 'PageOrder':
           return PageOrder.fromJson(value);
         case 'PageProduct':
@@ -340,6 +354,10 @@ class ApiClient {
           return PromoCodeStatusEnumTypeTransformer().decode(value);
         case 'ProtocolEnum':
           return ProtocolEnumTypeTransformer().decode(value);
+        case 'QuickLogisticsRequest':
+          return QuickLogisticsRequest.fromJson(value);
+        case 'QuickLogisticsResult':
+          return QuickLogisticsResult.fromJson(value);
         case 'Recharge':
           return Recharge.fromJson(value);
         case 'RechargeSearchParam':
@@ -368,12 +386,12 @@ class ApiClient {
           return SalesStats.fromJson(value);
         case 'ShippingCompanyEnum':
           return ShippingCompanyEnumTypeTransformer().decode(value);
-        case 'ShippingTypeEnum':
-          return ShippingTypeEnumTypeTransformer().decode(value);
         case 'SortObject':
           return SortObject.fromJson(value);
         case 'Staking':
           return Staking.fromJson(value);
+        case 'Store':
+          return Store.fromJson(value);
         case 'StoreAnalyticsDTO':
           return StoreAnalyticsDTO.fromJson(value);
         case 'StoreCreateParam':

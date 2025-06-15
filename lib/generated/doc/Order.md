@@ -13,7 +13,6 @@ Name | Type | Description | Notes
 **buyerId** | **int** | 買家ID | [optional] 
 **sellerId** | **int** | 賣家ID | [optional] 
 **shippingFee** | **num** | 運費 | [optional] 
-**shippingType** | [**ShippingTypeEnum**](ShippingTypeEnum.md) |  | [optional] 
 **productPrice** | **num** | 商品價格 | [optional] 
 **orderAmount** | **num** | 訂單金額 | [optional] 
 **currency** | **String** | 貨幣 | [optional] 

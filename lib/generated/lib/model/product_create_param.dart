@@ -30,8 +30,6 @@ class ProductCreateParam {
     this.brand,
     this.specifications = const {},
     this.minStock,
-    this.stockAlertThreshold,
-    this.allowNegativeStock,
     this.tags,
     this.shippingPreparationHours,
     this.dailyShippingDeadline,
@@ -40,9 +38,10 @@ class ProductCreateParam {
     this.supportsScheduledShipping,
     this.shippingDateRange,
     this.supportedShippingCompanies = const [],
-    this.supportedShippingTypes = const [],
     this.defaultShippingFee,
     this.freeShippingThreshold,
+    this.stockAlertThreshold,
+    this.allowNegativeStock,
   });
 
   /// 商品名稱
@@ -127,26 +126,6 @@ class ProductCreateParam {
   ///
   int? minStock;
 
-  /// 庫存預警閾值
-  ///
-  /// Minimum value: 0
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? stockAlertThreshold;
-
-  /// 是否允許負庫存
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? allowNegativeStock;
-
   /// 商品標籤，以逗號分隔
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -176,7 +155,7 @@ class ProductCreateParam {
   ///
   String? dailyShippingDeadline;
 
-  /// 出貨說明
+  /// 出貨備註
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -219,9 +198,6 @@ class ProductCreateParam {
   /// 支援的物流公司
   List<ShippingCompanyEnum> supportedShippingCompanies;
 
-  /// 支援的運送方式
-  List<ShippingTypeEnum> supportedShippingTypes;
-
   /// 預設運費
   ///
   /// Minimum value: 0.0
@@ -244,6 +220,26 @@ class ProductCreateParam {
   ///
   double? freeShippingThreshold;
 
+  /// 庫存警告閾值
+  ///
+  /// Minimum value: 0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? stockAlertThreshold;
+
+  /// 是否允許負庫存
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? allowNegativeStock;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductCreateParam &&
     other.title == title &&
@@ -263,8 +259,6 @@ class ProductCreateParam {
     other.brand == brand &&
     _deepEquality.equals(other.specifications, specifications) &&
     other.minStock == minStock &&
-    other.stockAlertThreshold == stockAlertThreshold &&
-    other.allowNegativeStock == allowNegativeStock &&
     other.tags == tags &&
     other.shippingPreparationHours == shippingPreparationHours &&
     other.dailyShippingDeadline == dailyShippingDeadline &&
@@ -273,9 +267,10 @@ class ProductCreateParam {
     other.supportsScheduledShipping == supportsScheduledShipping &&
     other.shippingDateRange == shippingDateRange &&
     _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
-    _deepEquality.equals(other.supportedShippingTypes, supportedShippingTypes) &&
     other.defaultShippingFee == defaultShippingFee &&
-    other.freeShippingThreshold == freeShippingThreshold;
+    other.freeShippingThreshold == freeShippingThreshold &&
+    other.stockAlertThreshold == stockAlertThreshold &&
+    other.allowNegativeStock == allowNegativeStock;
 
   @override
   int get hashCode =>
@@ -297,8 +292,6 @@ class ProductCreateParam {
     (brand == null ? 0 : brand!.hashCode) +
     (specifications.hashCode) +
     (minStock == null ? 0 : minStock!.hashCode) +
-    (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
-    (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode) +
     (tags == null ? 0 : tags!.hashCode) +
     (shippingPreparationHours == null ? 0 : shippingPreparationHours!.hashCode) +
     (dailyShippingDeadline == null ? 0 : dailyShippingDeadline!.hashCode) +
@@ -307,12 +300,13 @@ class ProductCreateParam {
     (supportsScheduledShipping == null ? 0 : supportsScheduledShipping!.hashCode) +
     (shippingDateRange == null ? 0 : shippingDateRange!.hashCode) +
     (supportedShippingCompanies.hashCode) +
-    (supportedShippingTypes.hashCode) +
     (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
-    (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode);
+    (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode) +
+    (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
+    (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode);
 
   @override
-  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, skus=$skus, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, supportedShippingTypes=$supportedShippingTypes, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold]';
+  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, skus=$skus, brand=$brand, specifications=$specifications, minStock=$minStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -344,16 +338,6 @@ class ProductCreateParam {
       json[r'minStock'] = this.minStock;
     } else {
       json[r'minStock'] = null;
-    }
-    if (this.stockAlertThreshold != null) {
-      json[r'stockAlertThreshold'] = this.stockAlertThreshold;
-    } else {
-      json[r'stockAlertThreshold'] = null;
-    }
-    if (this.allowNegativeStock != null) {
-      json[r'allowNegativeStock'] = this.allowNegativeStock;
-    } else {
-      json[r'allowNegativeStock'] = null;
     }
     if (this.tags != null) {
       json[r'tags'] = this.tags;
@@ -391,7 +375,6 @@ class ProductCreateParam {
       json[r'shippingDateRange'] = null;
     }
       json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
-      json[r'supportedShippingTypes'] = this.supportedShippingTypes;
     if (this.defaultShippingFee != null) {
       json[r'defaultShippingFee'] = this.defaultShippingFee;
     } else {
@@ -401,6 +384,16 @@ class ProductCreateParam {
       json[r'freeShippingThreshold'] = this.freeShippingThreshold;
     } else {
       json[r'freeShippingThreshold'] = null;
+    }
+    if (this.stockAlertThreshold != null) {
+      json[r'stockAlertThreshold'] = this.stockAlertThreshold;
+    } else {
+      json[r'stockAlertThreshold'] = null;
+    }
+    if (this.allowNegativeStock != null) {
+      json[r'allowNegativeStock'] = this.allowNegativeStock;
+    } else {
+      json[r'allowNegativeStock'] = null;
     }
     return json;
   }
@@ -445,8 +438,6 @@ class ProductCreateParam {
         brand: mapValueOfType<String>(json, r'brand'),
         specifications: mapCastOfType<String, String>(json, r'specifications') ?? const {},
         minStock: mapValueOfType<int>(json, r'minStock'),
-        stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
-        allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
         tags: mapValueOfType<String>(json, r'tags'),
         shippingPreparationHours: mapValueOfType<int>(json, r'shippingPreparationHours'),
         dailyShippingDeadline: mapValueOfType<String>(json, r'dailyShippingDeadline'),
@@ -455,9 +446,10 @@ class ProductCreateParam {
         supportsScheduledShipping: mapValueOfType<bool>(json, r'supportsScheduledShipping'),
         shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
         supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']),
-        supportedShippingTypes: ShippingTypeEnum.listFromJson(json[r'supportedShippingTypes']),
         defaultShippingFee: mapValueOfType<double>(json, r'defaultShippingFee'),
         freeShippingThreshold: mapValueOfType<double>(json, r'freeShippingThreshold'),
+        stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
+        allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
       );
     }
     return null;

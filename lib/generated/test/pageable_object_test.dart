@@ -21,8 +21,8 @@ void main() {
       // TODO
     });
 
-    // bool paged
-    test('to test the property `paged`', () async {
+    // int offset
+    test('to test the property `offset`', () async {
       // TODO
     });
 
@@ -36,13 +36,13 @@ void main() {
       // TODO
     });
 
-    // bool unpaged
-    test('to test the property `unpaged`', () async {
+    // bool paged
+    test('to test the property `paged`', () async {
       // TODO
     });
 
-    // int offset
-    test('to test the property `offset`', () async {
+    // bool unpaged
+    test('to test the property `unpaged`', () async {
       // TODO
     });
 

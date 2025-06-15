@@ -45,16 +45,16 @@ class Product {
     this.brand,
     this.specifications = const {},
     this.minStock,
-    this.stockAlertThreshold,
-    this.allowNegativeStock,
     this.supportedShippingCompanies = const {},
-    this.supportedShippingTypes = const {},
     this.defaultShippingFee,
     this.freeShippingThreshold,
+    this.stockAlertThreshold,
+    this.allowNegativeStock,
+    this.store,
     this.shippingTimeDescription,
-    this.inStock,
-    this.stockBelowMinimum,
     this.stockLow,
+    this.stockBelowMinimum,
+    this.inStock,
   });
 
   /// 商品ID
@@ -137,7 +137,7 @@ class Product {
   ///
   int? shippingPreparationHours;
 
-  /// 出貨說明
+  /// 出貨備註
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -262,31 +262,8 @@ class Product {
   ///
   int? minStock;
 
-  /// 庫存預警閾值
-  ///
-  /// Minimum value: 0
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? stockAlertThreshold;
-
-  /// 是否允許負庫存
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? allowNegativeStock;
-
   /// 支援的物流公司
   Set<ShippingCompanyEnum> supportedShippingCompanies;
-
-  /// 支援的運送方式
-  Set<ShippingTypeEnum> supportedShippingTypes;
 
   /// 預設運費
   ///
@@ -306,6 +283,32 @@ class Product {
   ///
   double? freeShippingThreshold;
 
+  /// 庫存警告閾值
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? stockAlertThreshold;
+
+  /// 是否允許負庫存
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? allowNegativeStock;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  Store? store;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -320,7 +323,7 @@ class Product {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? inStock;
+  bool? stockLow;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -336,7 +339,7 @@ class Product {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? stockLow;
+  bool? inStock;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Product &&
@@ -372,16 +375,16 @@ class Product {
     other.brand == brand &&
     _deepEquality.equals(other.specifications, specifications) &&
     other.minStock == minStock &&
-    other.stockAlertThreshold == stockAlertThreshold &&
-    other.allowNegativeStock == allowNegativeStock &&
     _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
-    _deepEquality.equals(other.supportedShippingTypes, supportedShippingTypes) &&
     other.defaultShippingFee == defaultShippingFee &&
     other.freeShippingThreshold == freeShippingThreshold &&
+    other.stockAlertThreshold == stockAlertThreshold &&
+    other.allowNegativeStock == allowNegativeStock &&
+    other.store == store &&
     other.shippingTimeDescription == shippingTimeDescription &&
-    other.inStock == inStock &&
+    other.stockLow == stockLow &&
     other.stockBelowMinimum == stockBelowMinimum &&
-    other.stockLow == stockLow;
+    other.inStock == inStock;
 
   @override
   int get hashCode =>
@@ -418,19 +421,19 @@ class Product {
     (brand == null ? 0 : brand!.hashCode) +
     (specifications.hashCode) +
     (minStock == null ? 0 : minStock!.hashCode) +
-    (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
-    (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode) +
     (supportedShippingCompanies.hashCode) +
-    (supportedShippingTypes.hashCode) +
     (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
     (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode) +
+    (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
+    (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode) +
+    (store == null ? 0 : store!.hashCode) +
     (shippingTimeDescription == null ? 0 : shippingTimeDescription!.hashCode) +
-    (inStock == null ? 0 : inStock!.hashCode) +
+    (stockLow == null ? 0 : stockLow!.hashCode) +
     (stockBelowMinimum == null ? 0 : stockBelowMinimum!.hashCode) +
-    (stockLow == null ? 0 : stockLow!.hashCode);
+    (inStock == null ? 0 : inStock!.hashCode);
 
   @override
-  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrls=$imageUrls, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skus=$skus, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, supportedShippingCompanies=$supportedShippingCompanies, supportedShippingTypes=$supportedShippingTypes, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingTimeDescription=$shippingTimeDescription, inStock=$inStock, stockBelowMinimum=$stockBelowMinimum, stockLow=$stockLow]';
+  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrls=$imageUrls, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skus=$skus, brand=$brand, specifications=$specifications, minStock=$minStock, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, store=$store, shippingTimeDescription=$shippingTimeDescription, stockLow=$stockLow, stockBelowMinimum=$stockBelowMinimum, inStock=$inStock]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -526,18 +529,7 @@ class Product {
     } else {
       json[r'minStock'] = null;
     }
-    if (this.stockAlertThreshold != null) {
-      json[r'stockAlertThreshold'] = this.stockAlertThreshold;
-    } else {
-      json[r'stockAlertThreshold'] = null;
-    }
-    if (this.allowNegativeStock != null) {
-      json[r'allowNegativeStock'] = this.allowNegativeStock;
-    } else {
-      json[r'allowNegativeStock'] = null;
-    }
       json[r'supportedShippingCompanies'] = this.supportedShippingCompanies.toList(growable: false);
-      json[r'supportedShippingTypes'] = this.supportedShippingTypes.toList(growable: false);
     if (this.defaultShippingFee != null) {
       json[r'defaultShippingFee'] = this.defaultShippingFee;
     } else {
@@ -548,25 +540,40 @@ class Product {
     } else {
       json[r'freeShippingThreshold'] = null;
     }
+    if (this.stockAlertThreshold != null) {
+      json[r'stockAlertThreshold'] = this.stockAlertThreshold;
+    } else {
+      json[r'stockAlertThreshold'] = null;
+    }
+    if (this.allowNegativeStock != null) {
+      json[r'allowNegativeStock'] = this.allowNegativeStock;
+    } else {
+      json[r'allowNegativeStock'] = null;
+    }
+    if (this.store != null) {
+      json[r'store'] = this.store;
+    } else {
+      json[r'store'] = null;
+    }
     if (this.shippingTimeDescription != null) {
       json[r'shippingTimeDescription'] = this.shippingTimeDescription;
     } else {
       json[r'shippingTimeDescription'] = null;
     }
-    if (this.inStock != null) {
-      json[r'inStock'] = this.inStock;
+    if (this.stockLow != null) {
+      json[r'stockLow'] = this.stockLow;
     } else {
-      json[r'inStock'] = null;
+      json[r'stockLow'] = null;
     }
     if (this.stockBelowMinimum != null) {
       json[r'stockBelowMinimum'] = this.stockBelowMinimum;
     } else {
       json[r'stockBelowMinimum'] = null;
     }
-    if (this.stockLow != null) {
-      json[r'stockLow'] = this.stockLow;
+    if (this.inStock != null) {
+      json[r'inStock'] = this.inStock;
     } else {
-      json[r'stockLow'] = null;
+      json[r'inStock'] = null;
     }
     return json;
   }
@@ -626,16 +633,16 @@ class Product {
         brand: mapValueOfType<String>(json, r'brand'),
         specifications: mapCastOfType<String, String>(json, r'specifications') ?? const {},
         minStock: mapValueOfType<int>(json, r'minStock'),
-        stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
-        allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
         supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']).toSet(),
-        supportedShippingTypes: ShippingTypeEnum.listFromJson(json[r'supportedShippingTypes']).toSet(),
         defaultShippingFee: mapValueOfType<double>(json, r'defaultShippingFee'),
         freeShippingThreshold: mapValueOfType<double>(json, r'freeShippingThreshold'),
+        stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
+        allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
+        store: Store.fromJson(json[r'store']),
         shippingTimeDescription: mapValueOfType<String>(json, r'shippingTimeDescription'),
-        inStock: mapValueOfType<bool>(json, r'inStock'),
-        stockBelowMinimum: mapValueOfType<bool>(json, r'stockBelowMinimum'),
         stockLow: mapValueOfType<bool>(json, r'stockLow'),
+        stockBelowMinimum: mapValueOfType<bool>(json, r'stockBelowMinimum'),
+        inStock: mapValueOfType<bool>(json, r'inStock'),
       );
     }
     return null;
