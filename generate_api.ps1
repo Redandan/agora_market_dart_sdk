@@ -62,7 +62,7 @@ if (-not (Test-Path $swaggerDir)) {
 # 下載最新的 API 文檔
 Write-Host "Downloading latest API documentation..." -ForegroundColor Yellow
 try {
-    $apiUrl = "https://agoramarketapi.onrender.com/api/v3/api-docs"
+    $apiUrl = "https://agoramarketapi.purrtechllc.com/api/v3/api-docs"
     # 設置全局超時
     [System.Net.ServicePointManager]::DefaultConnectionLimit = 1
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12

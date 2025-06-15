@@ -26,7 +26,7 @@ class ProductCreateParam {
     required this.pickupTimeStart,
     required this.pickupTimeEnd,
     required this.pickupAddress,
-    this.sku,
+    this.skus = const {},
     this.brand,
     this.specifications = const {},
     this.minStock,
@@ -37,6 +37,12 @@ class ProductCreateParam {
     this.dailyShippingDeadline,
     this.shippingDescription,
     this.estimatedDeliveryDays,
+    this.supportsScheduledShipping,
+    this.shippingDateRange,
+    this.supportedShippingCompanies = const [],
+    this.supportedShippingTypes = const [],
+    this.defaultShippingFee,
+    this.freeShippingThreshold,
   });
 
   /// 商品名稱
@@ -95,14 +101,8 @@ class ProductCreateParam {
   /// 取件地址
   String pickupAddress;
 
-  /// 商品SKU或條碼
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? sku;
+  /// 商品SKU或條碼集合
+  Set<String> skus;
 
   /// 品牌名稱
   ///
@@ -196,6 +196,54 @@ class ProductCreateParam {
   ///
   int? estimatedDeliveryDays;
 
+  /// 是否支持指定出貨日期
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? supportsScheduledShipping;
+
+  /// 可選擇的出貨日期範圍（天數）
+  ///
+  /// Minimum value: 1
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? shippingDateRange;
+
+  /// 支援的物流公司
+  List<ShippingCompanyEnum> supportedShippingCompanies;
+
+  /// 支援的運送方式
+  List<ShippingTypeEnum> supportedShippingTypes;
+
+  /// 預設運費
+  ///
+  /// Minimum value: 0.0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? defaultShippingFee;
+
+  /// 免運費門檻
+  ///
+  /// Minimum value: 0.0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? freeShippingThreshold;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductCreateParam &&
     other.title == title &&
@@ -211,7 +259,7 @@ class ProductCreateParam {
     other.pickupTimeStart == pickupTimeStart &&
     other.pickupTimeEnd == pickupTimeEnd &&
     other.pickupAddress == pickupAddress &&
-    other.sku == sku &&
+    _deepEquality.equals(other.skus, skus) &&
     other.brand == brand &&
     _deepEquality.equals(other.specifications, specifications) &&
     other.minStock == minStock &&
@@ -221,7 +269,13 @@ class ProductCreateParam {
     other.shippingPreparationHours == shippingPreparationHours &&
     other.dailyShippingDeadline == dailyShippingDeadline &&
     other.shippingDescription == shippingDescription &&
-    other.estimatedDeliveryDays == estimatedDeliveryDays;
+    other.estimatedDeliveryDays == estimatedDeliveryDays &&
+    other.supportsScheduledShipping == supportsScheduledShipping &&
+    other.shippingDateRange == shippingDateRange &&
+    _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
+    _deepEquality.equals(other.supportedShippingTypes, supportedShippingTypes) &&
+    other.defaultShippingFee == defaultShippingFee &&
+    other.freeShippingThreshold == freeShippingThreshold;
 
   @override
   int get hashCode =>
@@ -239,7 +293,7 @@ class ProductCreateParam {
     (pickupTimeStart.hashCode) +
     (pickupTimeEnd.hashCode) +
     (pickupAddress.hashCode) +
-    (sku == null ? 0 : sku!.hashCode) +
+    (skus.hashCode) +
     (brand == null ? 0 : brand!.hashCode) +
     (specifications.hashCode) +
     (minStock == null ? 0 : minStock!.hashCode) +
@@ -249,10 +303,16 @@ class ProductCreateParam {
     (shippingPreparationHours == null ? 0 : shippingPreparationHours!.hashCode) +
     (dailyShippingDeadline == null ? 0 : dailyShippingDeadline!.hashCode) +
     (shippingDescription == null ? 0 : shippingDescription!.hashCode) +
-    (estimatedDeliveryDays == null ? 0 : estimatedDeliveryDays!.hashCode);
+    (estimatedDeliveryDays == null ? 0 : estimatedDeliveryDays!.hashCode) +
+    (supportsScheduledShipping == null ? 0 : supportsScheduledShipping!.hashCode) +
+    (shippingDateRange == null ? 0 : shippingDateRange!.hashCode) +
+    (supportedShippingCompanies.hashCode) +
+    (supportedShippingTypes.hashCode) +
+    (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
+    (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode);
 
   @override
-  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, sku=$sku, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays]';
+  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, skus=$skus, brand=$brand, specifications=$specifications, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, supportedShippingTypes=$supportedShippingTypes, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -273,11 +333,7 @@ class ProductCreateParam {
       json[r'pickupTimeStart'] = this.pickupTimeStart;
       json[r'pickupTimeEnd'] = this.pickupTimeEnd;
       json[r'pickupAddress'] = this.pickupAddress;
-    if (this.sku != null) {
-      json[r'sku'] = this.sku;
-    } else {
-      json[r'sku'] = null;
-    }
+      json[r'skus'] = this.skus.toList(growable: false);
     if (this.brand != null) {
       json[r'brand'] = this.brand;
     } else {
@@ -324,6 +380,28 @@ class ProductCreateParam {
     } else {
       json[r'estimatedDeliveryDays'] = null;
     }
+    if (this.supportsScheduledShipping != null) {
+      json[r'supportsScheduledShipping'] = this.supportsScheduledShipping;
+    } else {
+      json[r'supportsScheduledShipping'] = null;
+    }
+    if (this.shippingDateRange != null) {
+      json[r'shippingDateRange'] = this.shippingDateRange;
+    } else {
+      json[r'shippingDateRange'] = null;
+    }
+      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
+      json[r'supportedShippingTypes'] = this.supportedShippingTypes;
+    if (this.defaultShippingFee != null) {
+      json[r'defaultShippingFee'] = this.defaultShippingFee;
+    } else {
+      json[r'defaultShippingFee'] = null;
+    }
+    if (this.freeShippingThreshold != null) {
+      json[r'freeShippingThreshold'] = this.freeShippingThreshold;
+    } else {
+      json[r'freeShippingThreshold'] = null;
+    }
     return json;
   }
 
@@ -361,7 +439,9 @@ class ProductCreateParam {
         pickupTimeStart: mapValueOfType<String>(json, r'pickupTimeStart')!,
         pickupTimeEnd: mapValueOfType<String>(json, r'pickupTimeEnd')!,
         pickupAddress: mapValueOfType<String>(json, r'pickupAddress')!,
-        sku: mapValueOfType<String>(json, r'sku'),
+        skus: json[r'skus'] is Iterable
+            ? (json[r'skus'] as Iterable).cast<String>().toSet()
+            : const {},
         brand: mapValueOfType<String>(json, r'brand'),
         specifications: mapCastOfType<String, String>(json, r'specifications') ?? const {},
         minStock: mapValueOfType<int>(json, r'minStock'),
@@ -372,6 +452,12 @@ class ProductCreateParam {
         dailyShippingDeadline: mapValueOfType<String>(json, r'dailyShippingDeadline'),
         shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),
         estimatedDeliveryDays: mapValueOfType<int>(json, r'estimatedDeliveryDays'),
+        supportsScheduledShipping: mapValueOfType<bool>(json, r'supportsScheduledShipping'),
+        shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
+        supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']),
+        supportedShippingTypes: ShippingTypeEnum.listFromJson(json[r'supportedShippingTypes']),
+        defaultShippingFee: mapValueOfType<double>(json, r'defaultShippingFee'),
+        freeShippingThreshold: mapValueOfType<double>(json, r'freeShippingThreshold'),
       );
     }
     return null;

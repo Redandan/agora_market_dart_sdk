@@ -26,8 +26,8 @@ void main() {
       // TODO
     });
 
-    // int numberOfElements
-    test('to test the property `numberOfElements`', () async {
+    // SortObject sort
+    test('to test the property `sort`', () async {
       // TODO
     });
 
@@ -36,13 +36,18 @@ void main() {
       // TODO
     });
 
-    // bool first
-    test('to test the property `first`', () async {
+    // int numberOfElements
+    test('to test the property `numberOfElements`', () async {
       // TODO
     });
 
     // bool last
     test('to test the property `last`', () async {
+      // TODO
+    });
+
+    // bool first
+    test('to test the property `first`', () async {
       // TODO
     });
 
@@ -58,11 +63,6 @@ void main() {
 
     // int number
     test('to test the property `number`', () async {
-      // TODO
-    });
-
-    // SortObject sort
-    test('to test the property `sort`', () async {
       // TODO
     });
 

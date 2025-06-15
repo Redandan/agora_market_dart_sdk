@@ -11,7 +11,7 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'https://agoramarketapi.onrender.com/api', this.authentication,});
+  ApiClient({this.basePath = 'http://agoramarketapi.purrtechllc.com/api', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;
@@ -326,6 +326,8 @@ class ApiClient {
           return ProductCreateParam.fromJson(value);
         case 'ProductInventoryStats':
           return ProductInventoryStats.fromJson(value);
+        case 'ProductSeachParam':
+          return ProductSeachParam.fromJson(value);
         case 'ProductStats':
           return ProductStats.fromJson(value);
         case 'ProductStatusEnum':

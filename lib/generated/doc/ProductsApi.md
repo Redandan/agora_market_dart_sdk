@@ -5,7 +5,7 @@
 import 'package:agora_market_dart_sdk/api.dart';
 ```
 
-All URIs are relative to *https://agoramarketapi.onrender.com/api*
+All URIs are relative to *http://agoramarketapi.purrtechllc.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,16 +15,16 @@ Method | HTTP request | Description
 [**getAvailableShippingDates**](ProductsApi.md#getavailableshippingdates) | **GET** /products/{productId}/available-shipping-dates | 獲取可選擇的出貨日期
 [**getInventoryStats**](ProductsApi.md#getinventorystats) | **GET** /products/{id}/inventory-stats | 獲取商品庫存統計信息
 [**getLowStockProducts**](ProductsApi.md#getlowstockproducts) | **GET** /products/low-stock | 獲取低庫存商品列表
-[**getMyProducts**](ProductsApi.md#getmyproducts) | **GET** /products/my-products | 獲取賣家自己的商品列表
+[**getMyProducts**](ProductsApi.md#getmyproducts) | **POST** /products/my-products | 獲取賣家自己的商品列表
 [**getOutOfStockProducts**](ProductsApi.md#getoutofstockproducts) | **GET** /products/out-of-stock | 獲取缺貨商品列表
 [**getProduct**](ProductsApi.md#getproduct) | **GET** /products/{id} | 根據ID獲取商品
 [**getProductBySku**](ProductsApi.md#getproductbysku) | **GET** /products/sku/{sku} | 根據SKU查找商品
 [**getProductShippingInfo**](ProductsApi.md#getproductshippinginfo) | **GET** /products/{productId}/shipping-info | 獲取商品出貨信息
 [**getProductsByBrand**](ProductsApi.md#getproductsbybrand) | **GET** /products/brand/{brand} | 根據品牌查找商品
-[**getProductsBySearch**](ProductsApi.md#getproductsbysearch) | **GET** /products/search | 搜索商品
 [**getProductsByShippingOptions**](ProductsApi.md#getproductsbyshippingoptions) | **GET** /products/shipping-options | 獲取出貨選項商品
 [**getProductsBySpecification**](ProductsApi.md#getproductsbyspecification) | **GET** /products/specification | 根據商品規格查找商品
 [**increaseStock**](ProductsApi.md#increasestock) | **POST** /products/{id}/stock/increase | 增加商品庫存
+[**searchProducts**](ProductsApi.md#searchproducts) | **POST** /products/search | 搜索商品
 [**setStock**](ProductsApi.md#setstock) | **POST** /products/{id}/stock/set | 設置商品庫存
 [**updateProduct**](ProductsApi.md#updateproduct) | **POST** /products/update | 更新商品
 
@@ -290,7 +290,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getMyProducts**
-> PageProduct getMyProducts(status, category, startDate, endDate, page, size, sku, brand, tag, minPrice, maxPrice, inStock, stockStatus, keyword)
+> PageProduct getMyProducts(productSeachParam, page, size)
 
 獲取賣家自己的商品列表
 
@@ -299,23 +299,12 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = ProductsApi();
-final status = status_example; // String | 商品狀態
-final category = category_example; // String | 商品分類
-final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
-final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
-final page = 56; // int | 分頁參數
+final productSeachParam = ProductSeachParam(); // ProductSeachParam | 
+final page = 56; // int | 頁碼，從1開始
 final size = 56; // int | 每頁數量
-final sku = sku_example; // String | 商品SKU
-final brand = brand_example; // String | 品牌名稱
-final tag = tag_example; // String | 商品標籤
-final minPrice = 8.14; // num | 最低價格
-final maxPrice = 8.14; // num | 最高價格
-final inStock = true; // bool | 是否有庫存
-final stockStatus = stockStatus_example; // String | 庫存狀態：LOW_STOCK-低庫存, OUT_OF_STOCK-缺貨, NORMAL-正常
-final keyword = keyword_example; // String | 搜索關鍵字（標題、描述、標籤）
 
 try {
-    final result = api_instance.getMyProducts(status, category, startDate, endDate, page, size, sku, brand, tag, minPrice, maxPrice, inStock, stockStatus, keyword);
+    final result = api_instance.getMyProducts(productSeachParam, page, size);
     print(result);
 } catch (e) {
     print('Exception when calling ProductsApi->getMyProducts: $e\n');
@@ -326,20 +315,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | **String**| 商品狀態 | [optional] 
- **category** | **String**| 商品分類 | [optional] 
- **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
- **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
- **page** | **int**| 分頁參數 | [optional] [default to 1]
+ **productSeachParam** | [**ProductSeachParam**](ProductSeachParam.md)|  | 
+ **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
  **size** | **int**| 每頁數量 | [optional] [default to 20]
- **sku** | **String**| 商品SKU | [optional] 
- **brand** | **String**| 品牌名稱 | [optional] 
- **tag** | **String**| 商品標籤 | [optional] 
- **minPrice** | **num**| 最低價格 | [optional] 
- **maxPrice** | **num**| 最高價格 | [optional] 
- **inStock** | **bool**| 是否有庫存 | [optional] 
- **stockStatus** | **String**| 庫存狀態：LOW_STOCK-低庫存, OUT_OF_STOCK-缺貨, NORMAL-正常 | [optional] 
- **keyword** | **String**| 搜索關鍵字（標題、描述、標籤） | [optional] 
 
 ### Return type
 
@@ -351,7 +329,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -563,83 +541,6 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getProductsBySearch**
-> PageProduct getProductsBySearch(id, sellerId, status, category, startDate, endDate, postalCode, longitude, latitude, page, size, sku, brand, tag, minPrice, maxPrice, inStock, stockStatus, keyword)
-
-搜索商品
-
-### Example
-```dart
-import 'package:agora_market_dart_sdk/api.dart';
-
-final api_instance = ProductsApi();
-final id = id_example; // String | 商品ID
-final sellerId = 789; // int | 賣家ID
-final status = status_example; // String | 商品狀態
-final category = category_example; // String | 商品分類
-final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
-final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
-final postalCode = postalCode_example; // String | 郵遞區號
-final longitude = 1.2; // double | 經度
-final latitude = 1.2; // double | 緯度
-final page = 56; // int | 頁碼，從1開始
-final size = 56; // int | 每頁數量
-final sku = sku_example; // String | 商品SKU
-final brand = brand_example; // String | 品牌名稱
-final tag = tag_example; // String | 商品標籤
-final minPrice = 8.14; // num | 最低價格
-final maxPrice = 8.14; // num | 最高價格
-final inStock = true; // bool | 是否有庫存
-final stockStatus = stockStatus_example; // String | 庫存狀態：LOW_STOCK-低庫存, OUT_OF_STOCK-缺貨, NORMAL-正常
-final keyword = keyword_example; // String | 搜索關鍵字（標題、描述、標籤）
-
-try {
-    final result = api_instance.getProductsBySearch(id, sellerId, status, category, startDate, endDate, postalCode, longitude, latitude, page, size, sku, brand, tag, minPrice, maxPrice, inStock, stockStatus, keyword);
-    print(result);
-} catch (e) {
-    print('Exception when calling ProductsApi->getProductsBySearch: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| 商品ID | [optional] 
- **sellerId** | **int**| 賣家ID | [optional] 
- **status** | **String**| 商品狀態 | [optional] 
- **category** | **String**| 商品分類 | [optional] 
- **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
- **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
- **postalCode** | **String**| 郵遞區號 | [optional] 
- **longitude** | **double**| 經度 | [optional] 
- **latitude** | **double**| 緯度 | [optional] 
- **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
- **size** | **int**| 每頁數量 | [optional] [default to 20]
- **sku** | **String**| 商品SKU | [optional] 
- **brand** | **String**| 品牌名稱 | [optional] 
- **tag** | **String**| 商品標籤 | [optional] 
- **minPrice** | **num**| 最低價格 | [optional] 
- **maxPrice** | **num**| 最高價格 | [optional] 
- **inStock** | **bool**| 是否有庫存 | [optional] 
- **stockStatus** | **String**| 庫存狀態：LOW_STOCK-低庫存, OUT_OF_STOCK-缺貨, NORMAL-正常 | [optional] 
- **keyword** | **String**| 搜索關鍵字（標題、描述、標籤） | [optional] 
-
-### Return type
-
-[**PageProduct**](PageProduct.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **getProductsByShippingOptions**
 > List<Product> getProductsByShippingOptions(supportsImmediateShipping, supportsScheduledShipping, maxDeliveryDays, page, size)
 
@@ -773,6 +674,51 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **searchProducts**
+> PageProduct searchProducts(productSeachParam, page, size)
+
+搜索商品
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = ProductsApi();
+final productSeachParam = ProductSeachParam(); // ProductSeachParam | 
+final page = 56; // int | 頁碼，從1開始
+final size = 56; // int | 每頁數量
+
+try {
+    final result = api_instance.searchProducts(productSeachParam, page, size);
+    print(result);
+} catch (e) {
+    print('Exception when calling ProductsApi->searchProducts: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **productSeachParam** | [**ProductSeachParam**](ProductSeachParam.md)|  | 
+ **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
+ **size** | **int**| 每頁數量 | [optional] [default to 20]
+
+### Return type
+
+[**PageProduct**](PageProduct.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

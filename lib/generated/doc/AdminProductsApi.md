@@ -5,13 +5,13 @@
 import 'package:agora_market_dart_sdk/api.dart';
 ```
 
-All URIs are relative to *https://agoramarketapi.onrender.com/api*
+All URIs are relative to *http://agoramarketapi.purrtechllc.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getProductDetail**](AdminProductsApi.md#getproductdetail) | **GET** /admin/products/{productId} | 查看商品詳情
 [**getProductStatistics**](AdminProductsApi.md#getproductstatistics) | **GET** /admin/products/statistics | 商品統計報告
-[**searchProducts**](AdminProductsApi.md#searchproducts) | **GET** /admin/products/search | 搜索商品
+[**searchProducts1**](AdminProductsApi.md#searchproducts1) | **GET** /admin/products/search | 搜索商品
 [**updateProductByAdmin**](AdminProductsApi.md#updateproductbyadmin) | **POST** /admin/products/{productId}/update | 更新商品
 [**updateProductStatusEnum**](AdminProductsApi.md#updateproductstatusenum) | **POST** /admin/products/{productId}/status | 更新商品狀態
 
@@ -104,8 +104,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **searchProducts**
-> PageProduct searchProducts(sellerId, status, category, startDate, endDate, page, size)
+# **searchProducts1**
+> PageProduct searchProducts1(sellerId, status, category, startDate, endDate, page, size)
 
 搜索商品
 
@@ -125,10 +125,10 @@ final page = 56; // int | 頁碼，從1開始
 final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.searchProducts(sellerId, status, category, startDate, endDate, page, size);
+    final result = api_instance.searchProducts1(sellerId, status, category, startDate, endDate, page, size);
     print(result);
 } catch (e) {
-    print('Exception when calling AdminProductsApi->searchProducts: $e\n');
+    print('Exception when calling AdminProductsApi->searchProducts1: $e\n');
 }
 ```
 

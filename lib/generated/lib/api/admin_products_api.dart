@@ -174,7 +174,7 @@ class AdminProductsApi {
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<Response> searchProductsWithHttpInfo({ int? sellerId, String? status, String? category, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+  Future<Response> searchProducts1WithHttpInfo({ int? sellerId, String? status, String? category, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/products/search';
 
@@ -247,8 +247,8 @@ class AdminProductsApi {
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<PageProduct?> searchProducts({ int? sellerId, String? status, String? category, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
-    final response = await searchProductsWithHttpInfo( sellerId: sellerId, status: status, category: category, startDate: startDate, endDate: endDate, page: page, size: size, );
+  Future<PageProduct?> searchProducts1({ int? sellerId, String? status, String? category, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+    final response = await searchProducts1WithHttpInfo( sellerId: sellerId, status: status, category: category, startDate: startDate, endDate: endDate, page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

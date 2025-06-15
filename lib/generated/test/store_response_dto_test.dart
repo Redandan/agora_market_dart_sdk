@@ -58,7 +58,7 @@ void main() {
       // TODO
     });
 
-    // 商店Logo
+    // 商店頭像
     // String logoUrl
     test('to test the property `logoUrl`', () async {
       // TODO
@@ -94,33 +94,9 @@ void main() {
       // TODO
     });
 
-    // 信用等級
-    // int creditLevel
-    test('to test the property `creditLevel`', () async {
-      // TODO
-    });
-
     // 商品數量
     // int productCount
     test('to test the property `productCount`', () async {
-      // TODO
-    });
-
-    // 訂單數量
-    // int orderCount
-    test('to test the property `orderCount`', () async {
-      // TODO
-    });
-
-    // 總銷售額
-    // double totalSales
-    test('to test the property `totalSales`', () async {
-      // TODO
-    });
-
-    // 平均評分
-    // double averageRating
-    test('to test the property `averageRating`', () async {
       // TODO
     });
 

@@ -87,9 +87,9 @@ void main() {
       // TODO
     });
 
-    // 商品SKU或條碼
-    // String sku
-    test('to test the property `sku`', () async {
+    // 商品SKU或條碼集合
+    // Set<String> skus (default value: const {})
+    test('to test the property `skus`', () async {
       // TODO
     });
 
@@ -162,6 +162,30 @@ void main() {
     // 可選擇的出貨日期範圍（天數）
     // int shippingDateRange
     test('to test the property `shippingDateRange`', () async {
+      // TODO
+    });
+
+    // 支援的物流公司
+    // List<ShippingCompanyEnum> supportedShippingCompanies (default value: const [])
+    test('to test the property `supportedShippingCompanies`', () async {
+      // TODO
+    });
+
+    // 支援的運送方式
+    // List<ShippingTypeEnum> supportedShippingTypes (default value: const [])
+    test('to test the property `supportedShippingTypes`', () async {
+      // TODO
+    });
+
+    // 預設運費
+    // double defaultShippingFee
+    test('to test the property `defaultShippingFee`', () async {
+      // TODO
+    });
+
+    // 免運費門檻
+    // double freeShippingThreshold
+    test('to test the property `freeShippingThreshold`', () async {
       // TODO
     });
 

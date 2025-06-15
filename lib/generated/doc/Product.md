@@ -36,16 +36,20 @@ Name | Type | Description | Notes
 **viewCount** | **int** | 瀏覽次數 | [optional] 
 **salesCount** | **int** | 銷售數量 | [optional] 
 **tags** | **String** | 商品標籤，以逗號分隔 | [optional] 
-**sku** | **String** | 商品SKU或條碼 | [optional] 
+**skus** | **Set<String>** | 商品SKU或條碼集合 | [optional] [default to const {}]
 **brand** | **String** | 品牌名稱 | [optional] 
 **specifications** | **Map<String, String>** | 商品規格屬性 | [optional] [default to const {}]
 **minStock** | **int** | 最低庫存警告 | [optional] 
 **stockAlertThreshold** | **int** | 庫存預警閾值 | [optional] 
 **allowNegativeStock** | **bool** | 是否允許負庫存 | [optional] 
+**supportedShippingCompanies** | [**Set<ShippingCompanyEnum>**](ShippingCompanyEnum.md) | 支援的物流公司 | [optional] [default to const {}]
+**supportedShippingTypes** | [**Set<ShippingTypeEnum>**](ShippingTypeEnum.md) | 支援的運送方式 | [optional] [default to const {}]
+**defaultShippingFee** | **double** | 預設運費 | [optional] 
+**freeShippingThreshold** | **double** | 免運費門檻 | [optional] 
 **shippingTimeDescription** | **String** |  | [optional] 
-**stockLow** | **bool** |  | [optional] 
 **inStock** | **bool** |  | [optional] 
 **stockBelowMinimum** | **bool** |  | [optional] 
+**stockLow** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

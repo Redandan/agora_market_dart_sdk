@@ -26,11 +26,7 @@ class StoreResponseDTO {
     this.viewCount,
     this.rating,
     this.ratingCount,
-    this.creditLevel,
     this.productCount,
-    this.orderCount,
-    this.totalSales,
-    this.averageRating,
     this.responseRate,
     this.supportedShippingCompanies = const [],
     this.supportedShippingTypes = const [],
@@ -108,7 +104,7 @@ class StoreResponseDTO {
   ///
   String? businessHours;
 
-  /// 商店Logo
+  /// 商店頭像
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -162,15 +158,6 @@ class StoreResponseDTO {
   ///
   int? ratingCount;
 
-  /// 信用等級
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? creditLevel;
-
   /// 商品數量
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -179,33 +166,6 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? productCount;
-
-  /// 訂單數量
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? orderCount;
-
-  /// 總銷售額
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  double? totalSales;
-
-  /// 平均評分
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  double? averageRating;
 
   /// 回覆率
   ///
@@ -318,11 +278,7 @@ class StoreResponseDTO {
     other.viewCount == viewCount &&
     other.rating == rating &&
     other.ratingCount == ratingCount &&
-    other.creditLevel == creditLevel &&
     other.productCount == productCount &&
-    other.orderCount == orderCount &&
-    other.totalSales == totalSales &&
-    other.averageRating == averageRating &&
     other.responseRate == responseRate &&
     _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
     _deepEquality.equals(other.supportedShippingTypes, supportedShippingTypes) &&
@@ -352,11 +308,7 @@ class StoreResponseDTO {
     (viewCount == null ? 0 : viewCount!.hashCode) +
     (rating == null ? 0 : rating!.hashCode) +
     (ratingCount == null ? 0 : ratingCount!.hashCode) +
-    (creditLevel == null ? 0 : creditLevel!.hashCode) +
     (productCount == null ? 0 : productCount!.hashCode) +
-    (orderCount == null ? 0 : orderCount!.hashCode) +
-    (totalSales == null ? 0 : totalSales!.hashCode) +
-    (averageRating == null ? 0 : averageRating!.hashCode) +
     (responseRate == null ? 0 : responseRate!.hashCode) +
     (supportedShippingCompanies.hashCode) +
     (supportedShippingTypes.hashCode) +
@@ -371,7 +323,7 @@ class StoreResponseDTO {
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'StoreResponseDTO[id=$id, name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, coverImageUrl=$coverImageUrl, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, creditLevel=$creditLevel, productCount=$productCount, orderCount=$orderCount, totalSales=$totalSales, averageRating=$averageRating, responseRate=$responseRate, supportedShippingCompanies=$supportedShippingCompanies, supportedShippingTypes=$supportedShippingTypes, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'StoreResponseDTO[id=$id, name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, coverImageUrl=$coverImageUrl, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, productCount=$productCount, responseRate=$responseRate, supportedShippingCompanies=$supportedShippingCompanies, supportedShippingTypes=$supportedShippingTypes, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -440,30 +392,10 @@ class StoreResponseDTO {
     } else {
       json[r'ratingCount'] = null;
     }
-    if (this.creditLevel != null) {
-      json[r'creditLevel'] = this.creditLevel;
-    } else {
-      json[r'creditLevel'] = null;
-    }
     if (this.productCount != null) {
       json[r'productCount'] = this.productCount;
     } else {
       json[r'productCount'] = null;
-    }
-    if (this.orderCount != null) {
-      json[r'orderCount'] = this.orderCount;
-    } else {
-      json[r'orderCount'] = null;
-    }
-    if (this.totalSales != null) {
-      json[r'totalSales'] = this.totalSales;
-    } else {
-      json[r'totalSales'] = null;
-    }
-    if (this.averageRating != null) {
-      json[r'averageRating'] = this.averageRating;
-    } else {
-      json[r'averageRating'] = null;
     }
     if (this.responseRate != null) {
       json[r'responseRate'] = this.responseRate;
@@ -552,11 +484,7 @@ class StoreResponseDTO {
         viewCount: mapValueOfType<int>(json, r'viewCount'),
         rating: mapValueOfType<double>(json, r'rating'),
         ratingCount: mapValueOfType<int>(json, r'ratingCount'),
-        creditLevel: mapValueOfType<int>(json, r'creditLevel'),
         productCount: mapValueOfType<int>(json, r'productCount'),
-        orderCount: mapValueOfType<int>(json, r'orderCount'),
-        totalSales: mapValueOfType<double>(json, r'totalSales'),
-        averageRating: mapValueOfType<double>(json, r'averageRating'),
         responseRate: mapValueOfType<int>(json, r'responseRate'),
         supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']),
         supportedShippingTypes: ShippingTypeEnum.listFromJson(json[r'supportedShippingTypes']),

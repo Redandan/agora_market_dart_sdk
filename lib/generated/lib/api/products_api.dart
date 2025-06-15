@@ -389,107 +389,37 @@ class ProductsApi {
   ///
   /// Parameters:
   ///
-  /// * [String] status:
-  ///   商品狀態
-  ///
-  /// * [String] category:
-  ///   商品分類
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
+  /// * [ProductSeachParam] productSeachParam (required):
   ///
   /// * [int] page:
-  ///   分頁參數
+  ///   頁碼，從1開始
   ///
   /// * [int] size:
   ///   每頁數量
-  ///
-  /// * [String] sku:
-  ///   商品SKU
-  ///
-  /// * [String] brand:
-  ///   品牌名稱
-  ///
-  /// * [String] tag:
-  ///   商品標籤
-  ///
-  /// * [num] minPrice:
-  ///   最低價格
-  ///
-  /// * [num] maxPrice:
-  ///   最高價格
-  ///
-  /// * [bool] inStock:
-  ///   是否有庫存
-  ///
-  /// * [String] stockStatus:
-  ///   庫存狀態：LOW_STOCK-低庫存, OUT_OF_STOCK-缺貨, NORMAL-正常
-  ///
-  /// * [String] keyword:
-  ///   搜索關鍵字（標題、描述、標籤）
-  Future<Response> getMyProductsWithHttpInfo({ String? status, String? category, DateTime? startDate, DateTime? endDate, int? page, int? size, String? sku, String? brand, String? tag, num? minPrice, num? maxPrice, bool? inStock, String? stockStatus, String? keyword, }) async {
+  Future<Response> getMyProductsWithHttpInfo(ProductSeachParam productSeachParam, { int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/products/my-products';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = productSeachParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (status != null) {
-      queryParams.addAll(_queryParams('', 'status', status));
-    }
-    if (category != null) {
-      queryParams.addAll(_queryParams('', 'category', category));
-    }
-    if (startDate != null) {
-      queryParams.addAll(_queryParams('', 'startDate', startDate));
-    }
-    if (endDate != null) {
-      queryParams.addAll(_queryParams('', 'endDate', endDate));
-    }
     if (page != null) {
       queryParams.addAll(_queryParams('', 'page', page));
     }
     if (size != null) {
       queryParams.addAll(_queryParams('', 'size', size));
     }
-    if (sku != null) {
-      queryParams.addAll(_queryParams('', 'sku', sku));
-    }
-    if (brand != null) {
-      queryParams.addAll(_queryParams('', 'brand', brand));
-    }
-    if (tag != null) {
-      queryParams.addAll(_queryParams('', 'tag', tag));
-    }
-    if (minPrice != null) {
-      queryParams.addAll(_queryParams('', 'minPrice', minPrice));
-    }
-    if (maxPrice != null) {
-      queryParams.addAll(_queryParams('', 'maxPrice', maxPrice));
-    }
-    if (inStock != null) {
-      queryParams.addAll(_queryParams('', 'inStock', inStock));
-    }
-    if (stockStatus != null) {
-      queryParams.addAll(_queryParams('', 'stockStatus', stockStatus));
-    }
-    if (keyword != null) {
-      queryParams.addAll(_queryParams('', 'keyword', keyword));
-    }
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -502,49 +432,15 @@ class ProductsApi {
   ///
   /// Parameters:
   ///
-  /// * [String] status:
-  ///   商品狀態
-  ///
-  /// * [String] category:
-  ///   商品分類
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
+  /// * [ProductSeachParam] productSeachParam (required):
   ///
   /// * [int] page:
-  ///   分頁參數
+  ///   頁碼，從1開始
   ///
   /// * [int] size:
   ///   每頁數量
-  ///
-  /// * [String] sku:
-  ///   商品SKU
-  ///
-  /// * [String] brand:
-  ///   品牌名稱
-  ///
-  /// * [String] tag:
-  ///   商品標籤
-  ///
-  /// * [num] minPrice:
-  ///   最低價格
-  ///
-  /// * [num] maxPrice:
-  ///   最高價格
-  ///
-  /// * [bool] inStock:
-  ///   是否有庫存
-  ///
-  /// * [String] stockStatus:
-  ///   庫存狀態：LOW_STOCK-低庫存, OUT_OF_STOCK-缺貨, NORMAL-正常
-  ///
-  /// * [String] keyword:
-  ///   搜索關鍵字（標題、描述、標籤）
-  Future<PageProduct?> getMyProducts({ String? status, String? category, DateTime? startDate, DateTime? endDate, int? page, int? size, String? sku, String? brand, String? tag, num? minPrice, num? maxPrice, bool? inStock, String? stockStatus, String? keyword, }) async {
-    final response = await getMyProductsWithHttpInfo( status: status, category: category, startDate: startDate, endDate: endDate, page: page, size: size, sku: sku, brand: brand, tag: tag, minPrice: minPrice, maxPrice: maxPrice, inStock: inStock, stockStatus: stockStatus, keyword: keyword, );
+  Future<PageProduct?> getMyProducts(ProductSeachParam productSeachParam, { int? page, int? size, }) async {
+    final response = await getMyProductsWithHttpInfo(productSeachParam,  page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -840,226 +736,6 @@ class ProductsApi {
     return null;
   }
 
-  /// 搜索商品
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] id:
-  ///   商品ID
-  ///
-  /// * [int] sellerId:
-  ///   賣家ID
-  ///
-  /// * [String] status:
-  ///   商品狀態
-  ///
-  /// * [String] category:
-  ///   商品分類
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
-  ///
-  /// * [String] postalCode:
-  ///   郵遞區號
-  ///
-  /// * [double] longitude:
-  ///   經度
-  ///
-  /// * [double] latitude:
-  ///   緯度
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  ///
-  /// * [String] sku:
-  ///   商品SKU
-  ///
-  /// * [String] brand:
-  ///   品牌名稱
-  ///
-  /// * [String] tag:
-  ///   商品標籤
-  ///
-  /// * [num] minPrice:
-  ///   最低價格
-  ///
-  /// * [num] maxPrice:
-  ///   最高價格
-  ///
-  /// * [bool] inStock:
-  ///   是否有庫存
-  ///
-  /// * [String] stockStatus:
-  ///   庫存狀態：LOW_STOCK-低庫存, OUT_OF_STOCK-缺貨, NORMAL-正常
-  ///
-  /// * [String] keyword:
-  ///   搜索關鍵字（標題、描述、標籤）
-  Future<Response> getProductsBySearchWithHttpInfo({ String? id, int? sellerId, String? status, String? category, DateTime? startDate, DateTime? endDate, String? postalCode, double? longitude, double? latitude, int? page, int? size, String? sku, String? brand, String? tag, num? minPrice, num? maxPrice, bool? inStock, String? stockStatus, String? keyword, }) async {
-    // ignore: prefer_const_declarations
-    final path = r'/products/search';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    if (id != null) {
-      queryParams.addAll(_queryParams('', 'id', id));
-    }
-    if (sellerId != null) {
-      queryParams.addAll(_queryParams('', 'sellerId', sellerId));
-    }
-    if (status != null) {
-      queryParams.addAll(_queryParams('', 'status', status));
-    }
-    if (category != null) {
-      queryParams.addAll(_queryParams('', 'category', category));
-    }
-    if (startDate != null) {
-      queryParams.addAll(_queryParams('', 'startDate', startDate));
-    }
-    if (endDate != null) {
-      queryParams.addAll(_queryParams('', 'endDate', endDate));
-    }
-    if (postalCode != null) {
-      queryParams.addAll(_queryParams('', 'postalCode', postalCode));
-    }
-    if (longitude != null) {
-      queryParams.addAll(_queryParams('', 'longitude', longitude));
-    }
-    if (latitude != null) {
-      queryParams.addAll(_queryParams('', 'latitude', latitude));
-    }
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
-    if (sku != null) {
-      queryParams.addAll(_queryParams('', 'sku', sku));
-    }
-    if (brand != null) {
-      queryParams.addAll(_queryParams('', 'brand', brand));
-    }
-    if (tag != null) {
-      queryParams.addAll(_queryParams('', 'tag', tag));
-    }
-    if (minPrice != null) {
-      queryParams.addAll(_queryParams('', 'minPrice', minPrice));
-    }
-    if (maxPrice != null) {
-      queryParams.addAll(_queryParams('', 'maxPrice', maxPrice));
-    }
-    if (inStock != null) {
-      queryParams.addAll(_queryParams('', 'inStock', inStock));
-    }
-    if (stockStatus != null) {
-      queryParams.addAll(_queryParams('', 'stockStatus', stockStatus));
-    }
-    if (keyword != null) {
-      queryParams.addAll(_queryParams('', 'keyword', keyword));
-    }
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 搜索商品
-  ///
-  /// Parameters:
-  ///
-  /// * [String] id:
-  ///   商品ID
-  ///
-  /// * [int] sellerId:
-  ///   賣家ID
-  ///
-  /// * [String] status:
-  ///   商品狀態
-  ///
-  /// * [String] category:
-  ///   商品分類
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
-  ///
-  /// * [String] postalCode:
-  ///   郵遞區號
-  ///
-  /// * [double] longitude:
-  ///   經度
-  ///
-  /// * [double] latitude:
-  ///   緯度
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  ///
-  /// * [String] sku:
-  ///   商品SKU
-  ///
-  /// * [String] brand:
-  ///   品牌名稱
-  ///
-  /// * [String] tag:
-  ///   商品標籤
-  ///
-  /// * [num] minPrice:
-  ///   最低價格
-  ///
-  /// * [num] maxPrice:
-  ///   最高價格
-  ///
-  /// * [bool] inStock:
-  ///   是否有庫存
-  ///
-  /// * [String] stockStatus:
-  ///   庫存狀態：LOW_STOCK-低庫存, OUT_OF_STOCK-缺貨, NORMAL-正常
-  ///
-  /// * [String] keyword:
-  ///   搜索關鍵字（標題、描述、標籤）
-  Future<PageProduct?> getProductsBySearch({ String? id, int? sellerId, String? status, String? category, DateTime? startDate, DateTime? endDate, String? postalCode, double? longitude, double? latitude, int? page, int? size, String? sku, String? brand, String? tag, num? minPrice, num? maxPrice, bool? inStock, String? stockStatus, String? keyword, }) async {
-    final response = await getProductsBySearchWithHttpInfo( id: id, sellerId: sellerId, status: status, category: category, startDate: startDate, endDate: endDate, postalCode: postalCode, longitude: longitude, latitude: latitude, page: page, size: size, sku: sku, brand: brand, tag: tag, minPrice: minPrice, maxPrice: maxPrice, inStock: inStock, stockStatus: stockStatus, keyword: keyword, );
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageProduct',) as PageProduct;
-    
-    }
-    return null;
-  }
-
   /// 獲取出貨選項商品
   ///
   /// 根據出貨選項篩選商品
@@ -1268,6 +944,77 @@ class ProductsApi {
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+  }
+
+  /// 搜索商品
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [ProductSeachParam] productSeachParam (required):
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<Response> searchProductsWithHttpInfo(ProductSeachParam productSeachParam, { int? page, int? size, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/products/search';
+
+    // ignore: prefer_final_locals
+    Object? postBody = productSeachParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 搜索商品
+  ///
+  /// Parameters:
+  ///
+  /// * [ProductSeachParam] productSeachParam (required):
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<PageProduct?> searchProducts(ProductSeachParam productSeachParam, { int? page, int? size, }) async {
+    final response = await searchProductsWithHttpInfo(productSeachParam,  page: page, size: size, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageProduct',) as PageProduct;
+    
+    }
+    return null;
   }
 
   /// 設置商品庫存

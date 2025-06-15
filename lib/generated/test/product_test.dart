@@ -182,9 +182,9 @@ void main() {
       // TODO
     });
 
-    // 商品SKU或條碼
-    // String sku
-    test('to test the property `sku`', () async {
+    // 商品SKU或條碼集合
+    // Set<String> skus (default value: const {})
+    test('to test the property `skus`', () async {
       // TODO
     });
 
@@ -218,13 +218,32 @@ void main() {
       // TODO
     });
 
-    // String shippingTimeDescription
-    test('to test the property `shippingTimeDescription`', () async {
+    // 支援的物流公司
+    // Set<ShippingCompanyEnum> supportedShippingCompanies (default value: const {})
+    test('to test the property `supportedShippingCompanies`', () async {
       // TODO
     });
 
-    // bool stockLow
-    test('to test the property `stockLow`', () async {
+    // 支援的運送方式
+    // Set<ShippingTypeEnum> supportedShippingTypes (default value: const {})
+    test('to test the property `supportedShippingTypes`', () async {
+      // TODO
+    });
+
+    // 預設運費
+    // double defaultShippingFee
+    test('to test the property `defaultShippingFee`', () async {
+      // TODO
+    });
+
+    // 免運費門檻
+    // double freeShippingThreshold
+    test('to test the property `freeShippingThreshold`', () async {
+      // TODO
+    });
+
+    // String shippingTimeDescription
+    test('to test the property `shippingTimeDescription`', () async {
       // TODO
     });
 
@@ -235,6 +254,11 @@ void main() {
 
     // bool stockBelowMinimum
     test('to test the property `stockBelowMinimum`', () async {
+      // TODO
+    });
+
+    // bool stockLow
+    test('to test the property `stockLow`', () async {
       // TODO
     });
 

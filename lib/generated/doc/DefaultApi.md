@@ -5,7 +5,7 @@
 import 'package:agora_market_dart_sdk/api.dart';
 ```
 
-All URIs are relative to *https://agoramarketapi.onrender.com/api*
+All URIs are relative to *http://agoramarketapi.purrtechllc.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -1324,8 +1324,8 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
-final userId = 789; // int | 會員ID
-final token = token_example; // String | 幣種
+final userId = 123; // int | 會員ID
+final token = USDT; // String | 幣種
 final page = 56; // int | 頁碼
 final size = 56; // int | 每頁數量
 

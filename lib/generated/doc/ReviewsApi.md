@@ -5,7 +5,7 @@
 import 'package:agora_market_dart_sdk/api.dart';
 ```
 
-All URIs are relative to *https://agoramarketapi.onrender.com/api*
+All URIs are relative to *http://agoramarketapi.purrtechllc.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

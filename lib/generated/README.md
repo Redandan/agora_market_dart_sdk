@@ -56,7 +56,7 @@ try {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://agoramarketapi.onrender.com/api*
+All URIs are relative to *http://agoramarketapi.purrtechllc.com/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -129,7 +129,7 @@ Class | Method | HTTP request | Description
 *AdminOrdersApi* | [**searchOrders**](doc//AdminOrdersApi.md#searchorders) | **GET** /admin/orders/search | 搜索訂單
 *AdminProductsApi* | [**getProductDetail**](doc//AdminProductsApi.md#getproductdetail) | **GET** /admin/products/{productId} | 查看商品詳情
 *AdminProductsApi* | [**getProductStatistics**](doc//AdminProductsApi.md#getproductstatistics) | **GET** /admin/products/statistics | 商品統計報告
-*AdminProductsApi* | [**searchProducts**](doc//AdminProductsApi.md#searchproducts) | **GET** /admin/products/search | 搜索商品
+*AdminProductsApi* | [**searchProducts1**](doc//AdminProductsApi.md#searchproducts1) | **GET** /admin/products/search | 搜索商品
 *AdminProductsApi* | [**updateProductByAdmin**](doc//AdminProductsApi.md#updateproductbyadmin) | **POST** /admin/products/{productId}/update | 更新商品
 *AdminProductsApi* | [**updateProductStatusEnum**](doc//AdminProductsApi.md#updateproductstatusenum) | **POST** /admin/products/{productId}/status | 更新商品狀態
 *AuthApi* | [**changePassword**](doc//AuthApi.md#changepassword) | **POST** /auth/change-password | 修改密碼
@@ -189,16 +189,16 @@ Class | Method | HTTP request | Description
 *ProductsApi* | [**getAvailableShippingDates**](doc//ProductsApi.md#getavailableshippingdates) | **GET** /products/{productId}/available-shipping-dates | 獲取可選擇的出貨日期
 *ProductsApi* | [**getInventoryStats**](doc//ProductsApi.md#getinventorystats) | **GET** /products/{id}/inventory-stats | 獲取商品庫存統計信息
 *ProductsApi* | [**getLowStockProducts**](doc//ProductsApi.md#getlowstockproducts) | **GET** /products/low-stock | 獲取低庫存商品列表
-*ProductsApi* | [**getMyProducts**](doc//ProductsApi.md#getmyproducts) | **GET** /products/my-products | 獲取賣家自己的商品列表
+*ProductsApi* | [**getMyProducts**](doc//ProductsApi.md#getmyproducts) | **POST** /products/my-products | 獲取賣家自己的商品列表
 *ProductsApi* | [**getOutOfStockProducts**](doc//ProductsApi.md#getoutofstockproducts) | **GET** /products/out-of-stock | 獲取缺貨商品列表
 *ProductsApi* | [**getProduct**](doc//ProductsApi.md#getproduct) | **GET** /products/{id} | 根據ID獲取商品
 *ProductsApi* | [**getProductBySku**](doc//ProductsApi.md#getproductbysku) | **GET** /products/sku/{sku} | 根據SKU查找商品
 *ProductsApi* | [**getProductShippingInfo**](doc//ProductsApi.md#getproductshippinginfo) | **GET** /products/{productId}/shipping-info | 獲取商品出貨信息
 *ProductsApi* | [**getProductsByBrand**](doc//ProductsApi.md#getproductsbybrand) | **GET** /products/brand/{brand} | 根據品牌查找商品
-*ProductsApi* | [**getProductsBySearch**](doc//ProductsApi.md#getproductsbysearch) | **GET** /products/search | 搜索商品
 *ProductsApi* | [**getProductsByShippingOptions**](doc//ProductsApi.md#getproductsbyshippingoptions) | **GET** /products/shipping-options | 獲取出貨選項商品
 *ProductsApi* | [**getProductsBySpecification**](doc//ProductsApi.md#getproductsbyspecification) | **GET** /products/specification | 根據商品規格查找商品
 *ProductsApi* | [**increaseStock**](doc//ProductsApi.md#increasestock) | **POST** /products/{id}/stock/increase | 增加商品庫存
+*ProductsApi* | [**searchProducts**](doc//ProductsApi.md#searchproducts) | **POST** /products/search | 搜索商品
 *ProductsApi* | [**setStock**](doc//ProductsApi.md#setstock) | **POST** /products/{id}/stock/set | 設置商品庫存
 *ProductsApi* | [**updateProduct**](doc//ProductsApi.md#updateproduct) | **POST** /products/update | 更新商品
 *PromoCodesApi* | [**applyPromoCode**](doc//PromoCodesApi.md#applypromocode) | **POST** /promo-codes/apply | 申請推廣碼
@@ -321,6 +321,7 @@ Class | Method | HTTP request | Description
  - [ProductCategoryEnum](doc//ProductCategoryEnum.md)
  - [ProductCreateParam](doc//ProductCreateParam.md)
  - [ProductInventoryStats](doc//ProductInventoryStats.md)
+ - [ProductSeachParam](doc//ProductSeachParam.md)
  - [ProductStats](doc//ProductStats.md)
  - [ProductStatusEnum](doc//ProductStatusEnum.md)
  - [ProductUpdateParam](doc//ProductUpdateParam.md)

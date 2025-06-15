@@ -67,7 +67,7 @@ void main() {
 
     // 獲取賣家自己的商品列表
     //
-    //Future<PageProduct> getMyProducts({ String status, String category, DateTime startDate, DateTime endDate, int page, int size, String sku, String brand, String tag, num minPrice, num maxPrice, bool inStock, String stockStatus, String keyword }) async
+    //Future<PageProduct> getMyProducts(ProductSeachParam productSeachParam, { int page, int size }) async
     test('test getMyProducts', () async {
       // TODO
     });
@@ -109,13 +109,6 @@ void main() {
       // TODO
     });
 
-    // 搜索商品
-    //
-    //Future<PageProduct> getProductsBySearch({ String id, int sellerId, String status, String category, DateTime startDate, DateTime endDate, String postalCode, double longitude, double latitude, int page, int size, String sku, String brand, String tag, num minPrice, num maxPrice, bool inStock, String stockStatus, String keyword }) async
-    test('test getProductsBySearch', () async {
-      // TODO
-    });
-
     // 獲取出貨選項商品
     //
     // 根據出貨選項篩選商品
@@ -136,6 +129,13 @@ void main() {
     //
     //Future increaseStock(int id, int quantity) async
     test('test increaseStock', () async {
+      // TODO
+    });
+
+    // 搜索商品
+    //
+    //Future<PageProduct> searchProducts(ProductSeachParam productSeachParam, { int page, int size }) async
+    test('test searchProducts', () async {
       // TODO
     });
 

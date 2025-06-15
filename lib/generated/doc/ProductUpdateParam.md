@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **latitude** | **double** | 取件地址緯度 | [optional] 
 **status** | [**ProductStatusEnum**](ProductStatusEnum.md) |  | [optional] 
 **shippingFee** | **num** | 賣家出貨費用 | [optional] 
-**sku** | **String** | 商品SKU或條碼 | [optional] 
+**skus** | **Set<String>** | 商品SKU或條碼集合 | [optional] [default to const {}]
 **brand** | **String** | 品牌名稱 | [optional] 
 **specifications** | **Map<String, String>** | 商品規格屬性 | [optional] [default to const {}]
 **minStock** | **int** | 最低庫存警告 | [optional] 
@@ -33,6 +33,10 @@ Name | Type | Description | Notes
 **estimatedDeliveryDays** | **int** | 預計送達時間（天數） | [optional] 
 **supportsScheduledShipping** | **bool** | 是否支持指定出貨日期 | [optional] 
 **shippingDateRange** | **int** | 可選擇的出貨日期範圍（天數） | [optional] 
+**supportedShippingCompanies** | [**List<ShippingCompanyEnum>**](ShippingCompanyEnum.md) | 支援的物流公司 | [optional] [default to const []]
+**supportedShippingTypes** | [**List<ShippingTypeEnum>**](ShippingTypeEnum.md) | 支援的運送方式 | [optional] [default to const []]
+**defaultShippingFee** | **double** | 預設運費 | [optional] 
+**freeShippingThreshold** | **double** | 免運費門檻 | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

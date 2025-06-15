@@ -124,6 +124,7 @@ part 'model/product.dart';
 part 'model/product_category_enum.dart';
 part 'model/product_create_param.dart';
 part 'model/product_inventory_stats.dart';
+part 'model/product_seach_param.dart';
 part 'model/product_stats.dart';
 part 'model/product_status_enum.dart';
 part 'model/product_update_param.dart';
