@@ -508,7 +508,7 @@ class ProductsApi {
   /// Parameters:
   ///
   /// * [int] id (required):
-  Future<Response> getProductWithHttpInfo(int id,) async {
+  Future<Response> getProductByIdWithHttpInfo(int id,) async {
     // ignore: prefer_const_declarations
     final path = r'/products/{id}'
       .replaceAll('{id}', id.toString());
@@ -539,8 +539,8 @@ class ProductsApi {
   /// Parameters:
   ///
   /// * [int] id (required):
-  Future<Product?> getProduct(int id,) async {
-    final response = await getProductWithHttpInfo(id,);
+  Future<Product?> getProductById(int id,) async {
+    final response = await getProductByIdWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -811,72 +811,6 @@ class ProductsApi {
   /// * [int] size:
   Future<List<Product>?> getProductsByShippingOptions({ bool? supportsImmediateShipping, bool? supportsScheduledShipping, int? maxDeliveryDays, int? page, int? size, }) async {
     final response = await getProductsByShippingOptionsWithHttpInfo( supportsImmediateShipping: supportsImmediateShipping, supportsScheduledShipping: supportsScheduledShipping, maxDeliveryDays: maxDeliveryDays, page: page, size: size, );
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<Product>') as List)
-        .cast<Product>()
-        .toList(growable: false);
-
-    }
-    return null;
-  }
-
-  /// 根據商品規格查找商品
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] specKey (required):
-  ///   規格鍵
-  ///
-  /// * [String] specValue (required):
-  ///   規格值
-  Future<Response> getProductsBySpecificationWithHttpInfo(String specKey, String specValue,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/products/specification';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'specKey', specKey));
-      queryParams.addAll(_queryParams('', 'specValue', specValue));
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 根據商品規格查找商品
-  ///
-  /// Parameters:
-  ///
-  /// * [String] specKey (required):
-  ///   規格鍵
-  ///
-  /// * [String] specValue (required):
-  ///   規格值
-  Future<List<Product>?> getProductsBySpecification(String specKey, String specValue,) async {
-    final response = await getProductsBySpecificationWithHttpInfo(specKey, specValue,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

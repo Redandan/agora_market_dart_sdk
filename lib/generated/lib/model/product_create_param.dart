@@ -28,7 +28,6 @@ class ProductCreateParam {
     required this.pickupAddress,
     this.skus = const {},
     this.brand,
-    this.specifications = const {},
     this.minStock,
     this.tags,
     this.shippingPreparationHours,
@@ -111,9 +110,6 @@ class ProductCreateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? brand;
-
-  /// 商品規格屬性
-  Map<String, String> specifications;
 
   /// 最低庫存警告
   ///
@@ -257,7 +253,6 @@ class ProductCreateParam {
     other.pickupAddress == pickupAddress &&
     _deepEquality.equals(other.skus, skus) &&
     other.brand == brand &&
-    _deepEquality.equals(other.specifications, specifications) &&
     other.minStock == minStock &&
     other.tags == tags &&
     other.shippingPreparationHours == shippingPreparationHours &&
@@ -290,7 +285,6 @@ class ProductCreateParam {
     (pickupAddress.hashCode) +
     (skus.hashCode) +
     (brand == null ? 0 : brand!.hashCode) +
-    (specifications.hashCode) +
     (minStock == null ? 0 : minStock!.hashCode) +
     (tags == null ? 0 : tags!.hashCode) +
     (shippingPreparationHours == null ? 0 : shippingPreparationHours!.hashCode) +
@@ -306,7 +300,7 @@ class ProductCreateParam {
     (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode);
 
   @override
-  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, skus=$skus, brand=$brand, specifications=$specifications, minStock=$minStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock]';
+  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, skus=$skus, brand=$brand, minStock=$minStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -333,7 +327,6 @@ class ProductCreateParam {
     } else {
       json[r'brand'] = null;
     }
-      json[r'specifications'] = this.specifications;
     if (this.minStock != null) {
       json[r'minStock'] = this.minStock;
     } else {
@@ -436,7 +429,6 @@ class ProductCreateParam {
             ? (json[r'skus'] as Iterable).cast<String>().toSet()
             : const {},
         brand: mapValueOfType<String>(json, r'brand'),
-        specifications: mapCastOfType<String, String>(json, r'specifications') ?? const {},
         minStock: mapValueOfType<int>(json, r'minStock'),
         tags: mapValueOfType<String>(json, r'tags'),
         shippingPreparationHours: mapValueOfType<int>(json, r'shippingPreparationHours'),

@@ -21,7 +21,6 @@ Name | Type | Description | Notes
 **sellerId** | **int** | 賣家ID | 
 **sellerName** | **String** | 賣家名稱快照 | [optional] 
 **pickupAddress** | **String** | 取貨地址快照 | [optional] 
-**selectedSpecifications** | **Map<String, String>** | 選擇的商品規格 | [optional] [default to const {}]
 **sku** | **String** | 商品SKU快照 | [optional] 
 **brand** | **String** | 品牌名稱快照 | [optional] 
 **availableStock** | **int** | 加入購物車時的可用庫存 | [optional] 
@@ -29,12 +28,12 @@ Name | Type | Description | Notes
 **stockWarning** | **String** | 庫存警告信息 | [optional] 
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | 更新時間 | [optional] 
+**inStock** | **bool** |  | [optional] 
 **subtotal** | **num** |  | [optional] 
 **totalPrice** | **num** |  | [optional] 
-**specificationDescription** | **String** |  | [optional] 
 **stockStatus** | **String** |  | [optional] 
+**specificationDescription** | **String** |  | [optional] 
 **purchaseRestrictionReason** | **String** |  | [optional] 
-**inStock** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

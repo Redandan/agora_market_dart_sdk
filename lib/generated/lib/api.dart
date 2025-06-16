@@ -177,6 +177,7 @@ part 'model/update_delivery_order_param.dart';
 part 'model/update_promo_code_param.dart';
 part 'model/user.dart';
 part 'model/user_info.dart';
+part 'model/user_order_search_param.dart';
 part 'model/user_profile_update_param.dart';
 part 'model/user_status_enum.dart';
 part 'model/withdraw.dart';

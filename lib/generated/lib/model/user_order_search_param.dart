@@ -10,29 +10,37 @@
 
 part of openapi.api;
 
-class PageRecharge {
-  /// Returns a new [PageRecharge] instance.
-  PageRecharge({
-    this.totalElements,
-    this.totalPages,
-    this.sort,
-    this.last,
-    this.numberOfElements,
-    this.pageable,
-    this.first,
+class UserOrderSearchParam {
+  /// Returns a new [UserOrderSearchParam] instance.
+  UserOrderSearchParam({
+    this.orderId,
+    this.productId,
+    this.status,
+    this.startTime,
+    this.endTime,
+    this.startDate,
+    this.endDate,
+    this.page,
     this.size,
-    this.content = const [],
-    this.number,
-    this.empty,
   });
 
+  /// 訂單ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalElements;
+  String? orderId;
+
+  /// 商品ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? productId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -40,48 +48,54 @@ class PageRecharge {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalPages;
+  OrderStatusEnum? status;
 
+  /// 開始時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SortObject? sort;
+  String? startTime;
 
+  /// 結束時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? last;
+  String? endTime;
 
+  /// 開始日期
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? numberOfElements;
+  DateTime? startDate;
 
+  /// 結束日期
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PageableObject? pageable;
+  DateTime? endDate;
 
+  /// 頁碼
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? first;
+  int? page;
 
+  /// 每頁大小
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -90,116 +104,88 @@ class PageRecharge {
   ///
   int? size;
 
-  List<Recharge> content;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? number;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? empty;
-
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageRecharge &&
-    other.totalElements == totalElements &&
-    other.totalPages == totalPages &&
-    other.sort == sort &&
-    other.last == last &&
-    other.numberOfElements == numberOfElements &&
-    other.pageable == pageable &&
-    other.first == first &&
-    other.size == size &&
-    _deepEquality.equals(other.content, content) &&
-    other.number == number &&
-    other.empty == empty;
+  bool operator ==(Object other) => identical(this, other) || other is UserOrderSearchParam &&
+    other.orderId == orderId &&
+    other.productId == productId &&
+    other.status == status &&
+    other.startTime == startTime &&
+    other.endTime == endTime &&
+    other.startDate == startDate &&
+    other.endDate == endDate &&
+    other.page == page &&
+    other.size == size;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalElements == null ? 0 : totalElements!.hashCode) +
-    (totalPages == null ? 0 : totalPages!.hashCode) +
-    (sort == null ? 0 : sort!.hashCode) +
-    (last == null ? 0 : last!.hashCode) +
-    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
-    (pageable == null ? 0 : pageable!.hashCode) +
-    (first == null ? 0 : first!.hashCode) +
-    (size == null ? 0 : size!.hashCode) +
-    (content.hashCode) +
-    (number == null ? 0 : number!.hashCode) +
-    (empty == null ? 0 : empty!.hashCode);
+    (orderId == null ? 0 : orderId!.hashCode) +
+    (productId == null ? 0 : productId!.hashCode) +
+    (status == null ? 0 : status!.hashCode) +
+    (startTime == null ? 0 : startTime!.hashCode) +
+    (endTime == null ? 0 : endTime!.hashCode) +
+    (startDate == null ? 0 : startDate!.hashCode) +
+    (endDate == null ? 0 : endDate!.hashCode) +
+    (page == null ? 0 : page!.hashCode) +
+    (size == null ? 0 : size!.hashCode);
 
   @override
-  String toString() => 'PageRecharge[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, last=$last, numberOfElements=$numberOfElements, pageable=$pageable, first=$first, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'UserOrderSearchParam[orderId=$orderId, productId=$productId, status=$status, startTime=$startTime, endTime=$endTime, startDate=$startDate, endDate=$endDate, page=$page, size=$size]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.totalElements != null) {
-      json[r'totalElements'] = this.totalElements;
+    if (this.orderId != null) {
+      json[r'orderId'] = this.orderId;
     } else {
-      json[r'totalElements'] = null;
+      json[r'orderId'] = null;
     }
-    if (this.totalPages != null) {
-      json[r'totalPages'] = this.totalPages;
+    if (this.productId != null) {
+      json[r'productId'] = this.productId;
     } else {
-      json[r'totalPages'] = null;
+      json[r'productId'] = null;
     }
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.status != null) {
+      json[r'status'] = this.status;
     } else {
-      json[r'sort'] = null;
+      json[r'status'] = null;
     }
-    if (this.last != null) {
-      json[r'last'] = this.last;
+    if (this.startTime != null) {
+      json[r'startTime'] = this.startTime;
     } else {
-      json[r'last'] = null;
+      json[r'startTime'] = null;
     }
-    if (this.numberOfElements != null) {
-      json[r'numberOfElements'] = this.numberOfElements;
+    if (this.endTime != null) {
+      json[r'endTime'] = this.endTime;
     } else {
-      json[r'numberOfElements'] = null;
+      json[r'endTime'] = null;
     }
-    if (this.pageable != null) {
-      json[r'pageable'] = this.pageable;
+    if (this.startDate != null) {
+      json[r'startDate'] = this.startDate!.toUtc().toIso8601String();
     } else {
-      json[r'pageable'] = null;
+      json[r'startDate'] = null;
     }
-    if (this.first != null) {
-      json[r'first'] = this.first;
+    if (this.endDate != null) {
+      json[r'endDate'] = this.endDate!.toUtc().toIso8601String();
     } else {
-      json[r'first'] = null;
+      json[r'endDate'] = null;
+    }
+    if (this.page != null) {
+      json[r'page'] = this.page;
+    } else {
+      json[r'page'] = null;
     }
     if (this.size != null) {
       json[r'size'] = this.size;
     } else {
       json[r'size'] = null;
     }
-      json[r'content'] = this.content;
-    if (this.number != null) {
-      json[r'number'] = this.number;
-    } else {
-      json[r'number'] = null;
-    }
-    if (this.empty != null) {
-      json[r'empty'] = this.empty;
-    } else {
-      json[r'empty'] = null;
-    }
     return json;
   }
 
-  /// Returns a new [PageRecharge] instance and imports its values from
+  /// Returns a new [UserOrderSearchParam] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageRecharge? fromJson(dynamic value) {
+  static UserOrderSearchParam? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -208,34 +194,32 @@ class PageRecharge {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageRecharge[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageRecharge[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "UserOrderSearchParam[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "UserOrderSearchParam[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageRecharge(
-        totalElements: mapValueOfType<int>(json, r'totalElements'),
-        totalPages: mapValueOfType<int>(json, r'totalPages'),
-        sort: SortObject.fromJson(json[r'sort']),
-        last: mapValueOfType<bool>(json, r'last'),
-        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
-        pageable: PageableObject.fromJson(json[r'pageable']),
-        first: mapValueOfType<bool>(json, r'first'),
+      return UserOrderSearchParam(
+        orderId: mapValueOfType<String>(json, r'orderId'),
+        productId: mapValueOfType<int>(json, r'productId'),
+        status: OrderStatusEnum.fromJson(json[r'status']),
+        startTime: mapValueOfType<String>(json, r'startTime'),
+        endTime: mapValueOfType<String>(json, r'endTime'),
+        startDate: mapDateTime(json, r'startDate', r''),
+        endDate: mapDateTime(json, r'endDate', r''),
+        page: mapValueOfType<int>(json, r'page'),
         size: mapValueOfType<int>(json, r'size'),
-        content: Recharge.listFromJson(json[r'content']),
-        number: mapValueOfType<int>(json, r'number'),
-        empty: mapValueOfType<bool>(json, r'empty'),
       );
     }
     return null;
   }
 
-  static List<PageRecharge> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageRecharge>[];
+  static List<UserOrderSearchParam> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <UserOrderSearchParam>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageRecharge.fromJson(row);
+        final value = UserOrderSearchParam.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -244,12 +228,12 @@ class PageRecharge {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageRecharge> mapFromJson(dynamic json) {
-    final map = <String, PageRecharge>{};
+  static Map<String, UserOrderSearchParam> mapFromJson(dynamic json) {
+    final map = <String, UserOrderSearchParam>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageRecharge.fromJson(entry.value);
+        final value = UserOrderSearchParam.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -258,14 +242,14 @@ class PageRecharge {
     return map;
   }
 
-  // maps a json object with a list of PageRecharge-objects as value to a dart map
-  static Map<String, List<PageRecharge>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageRecharge>>{};
+  // maps a json object with a list of UserOrderSearchParam-objects as value to a dart map
+  static Map<String, List<UserOrderSearchParam>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<UserOrderSearchParam>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageRecharge.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = UserOrderSearchParam.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

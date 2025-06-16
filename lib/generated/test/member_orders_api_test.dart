@@ -53,7 +53,7 @@ void main() {
 
     // 賣家查詢訂單列表
     //
-    //Future<PageOrder> searchOrdersBySeller(OrderSearchParam orderSearchParam, { int page, int size }) async
+    //Future<PageOrder> searchOrdersBySeller(UserOrderSearchParam userOrderSearchParam, { int page, int size }) async
     test('test searchOrdersBySeller', () async {
       // TODO
     });

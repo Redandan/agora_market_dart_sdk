@@ -81,8 +81,8 @@ void main() {
 
     // 根據ID獲取商品
     //
-    //Future<Product> getProduct(int id) async
-    test('test getProduct', () async {
+    //Future<Product> getProductById(int id) async
+    test('test getProductById', () async {
       // TODO
     });
 
@@ -115,13 +115,6 @@ void main() {
     //
     //Future<List<Product>> getProductsByShippingOptions({ bool supportsImmediateShipping, bool supportsScheduledShipping, int maxDeliveryDays, int page, int size }) async
     test('test getProductsByShippingOptions', () async {
-      // TODO
-    });
-
-    // 根據商品規格查找商品
-    //
-    //Future<List<Product>> getProductsBySpecification(String specKey, String specValue) async
-    test('test getProductsBySpecification', () async {
       // TODO
     });
 

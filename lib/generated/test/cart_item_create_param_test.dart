@@ -28,12 +28,6 @@ void main() {
       // TODO
     });
 
-    // 選擇的商品規格
-    // Map<String, String> selectedSpecifications (default value: const {})
-    test('to test the property `selectedSpecifications`', () async {
-      // TODO
-    });
-
     // 備註
     // String note
     test('to test the property `note`', () async {

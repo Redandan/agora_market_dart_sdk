@@ -220,12 +220,11 @@ Class | Method | HTTP request | Description
 *ProductsApi* | [**getLowStockProducts**](doc//ProductsApi.md#getlowstockproducts) | **GET** /products/low-stock | 獲取低庫存商品列表
 *ProductsApi* | [**getMyProducts**](doc//ProductsApi.md#getmyproducts) | **POST** /products/my-products | 獲取賣家自己的商品列表
 *ProductsApi* | [**getOutOfStockProducts**](doc//ProductsApi.md#getoutofstockproducts) | **GET** /products/out-of-stock | 獲取缺貨商品列表
-*ProductsApi* | [**getProduct**](doc//ProductsApi.md#getproduct) | **GET** /products/{id} | 根據ID獲取商品
+*ProductsApi* | [**getProductById**](doc//ProductsApi.md#getproductbyid) | **GET** /products/{id} | 根據ID獲取商品
 *ProductsApi* | [**getProductBySku**](doc//ProductsApi.md#getproductbysku) | **GET** /products/sku/{sku} | 根據SKU查找商品
 *ProductsApi* | [**getProductShippingInfo**](doc//ProductsApi.md#getproductshippinginfo) | **GET** /products/{productId}/shipping-info | 獲取商品出貨信息
 *ProductsApi* | [**getProductsByBrand**](doc//ProductsApi.md#getproductsbybrand) | **GET** /products/brand/{brand} | 根據品牌查找商品
 *ProductsApi* | [**getProductsByShippingOptions**](doc//ProductsApi.md#getproductsbyshippingoptions) | **GET** /products/shipping-options | 獲取出貨選項商品
-*ProductsApi* | [**getProductsBySpecification**](doc//ProductsApi.md#getproductsbyspecification) | **GET** /products/specification | 根據商品規格查找商品
 *ProductsApi* | [**increaseStock**](doc//ProductsApi.md#increasestock) | **POST** /products/{id}/stock/increase | 增加商品庫存
 *ProductsApi* | [**searchProducts**](doc//ProductsApi.md#searchproducts) | **POST** /products/search | 搜索商品
 *ProductsApi* | [**setStock**](doc//ProductsApi.md#setstock) | **POST** /products/{id}/stock/set | 設置商品庫存
@@ -401,6 +400,7 @@ Class | Method | HTTP request | Description
  - [UpdatePromoCodeParam](doc//UpdatePromoCodeParam.md)
  - [User](doc//User.md)
  - [UserInfo](doc//UserInfo.md)
+ - [UserOrderSearchParam](doc//UserOrderSearchParam.md)
  - [UserProfileUpdateParam](doc//UserProfileUpdateParam.md)
  - [UserStatusEnum](doc//UserStatusEnum.md)
  - [Withdraw](doc//Withdraw.md)

@@ -194,12 +194,6 @@ void main() {
       // TODO
     });
 
-    // 商品規格屬性
-    // Map<String, String> specifications (default value: const {})
-    test('to test the property `specifications`', () async {
-      // TODO
-    });
-
     // 最低庫存警告
     // int minStock
     test('to test the property `minStock`', () async {
@@ -241,23 +235,23 @@ void main() {
       // TODO
     });
 
-    // bool inStock
-    test('to test the property `inStock`', () async {
-      // TODO
-    });
-
     // String shippingTimeDescription
     test('to test the property `shippingTimeDescription`', () async {
       // TODO
     });
 
-    // bool stockLow
-    test('to test the property `stockLow`', () async {
+    // bool inStock
+    test('to test the property `inStock`', () async {
       // TODO
     });
 
     // bool stockBelowMinimum
     test('to test the property `stockBelowMinimum`', () async {
+      // TODO
+    });
+
+    // bool stockLow
+    test('to test the property `stockLow`', () async {
       // TODO
     });
 

@@ -38,7 +38,6 @@ Name | Type | Description | Notes
 **tags** | **String** | 商品標籤，以逗號分隔 | [optional] 
 **skus** | **Set<String>** | 商品SKU或條碼集合 | [optional] [default to const {}]
 **brand** | **String** | 品牌名稱 | [optional] 
-**specifications** | **Map<String, String>** | 商品規格屬性 | [optional] [default to const {}]
 **minStock** | **int** | 最低庫存警告 | [optional] 
 **supportedShippingCompanies** | [**Set<ShippingCompanyEnum>**](ShippingCompanyEnum.md) | 支援的物流公司 | [optional] [default to const {}]
 **defaultShippingFee** | **double** | 預設運費 | [optional] 
@@ -46,10 +45,10 @@ Name | Type | Description | Notes
 **stockAlertThreshold** | **int** | 庫存警告閾值 | [optional] 
 **allowNegativeStock** | **bool** | 是否允許負庫存 | [optional] 
 **store** | [**Store**](Store.md) |  | [optional] 
-**inStock** | **bool** |  | [optional] 
 **shippingTimeDescription** | **String** |  | [optional] 
-**stockLow** | **bool** |  | [optional] 
+**inStock** | **bool** |  | [optional] 
 **stockBelowMinimum** | **bool** |  | [optional] 
+**stockLow** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

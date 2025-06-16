@@ -94,12 +94,6 @@ void main() {
       // TODO
     });
 
-    // 選擇的商品規格
-    // Map<String, String> selectedSpecifications (default value: const {})
-    test('to test the property `selectedSpecifications`', () async {
-      // TODO
-    });
-
     // 商品SKU快照
     // String sku
     test('to test the property `sku`', () async {
@@ -142,6 +136,11 @@ void main() {
       // TODO
     });
 
+    // bool inStock
+    test('to test the property `inStock`', () async {
+      // TODO
+    });
+
     // num subtotal
     test('to test the property `subtotal`', () async {
       // TODO
@@ -152,23 +151,18 @@ void main() {
       // TODO
     });
 
-    // String specificationDescription
-    test('to test the property `specificationDescription`', () async {
-      // TODO
-    });
-
     // String stockStatus
     test('to test the property `stockStatus`', () async {
       // TODO
     });
 
-    // String purchaseRestrictionReason
-    test('to test the property `purchaseRestrictionReason`', () async {
+    // String specificationDescription
+    test('to test the property `specificationDescription`', () async {
       // TODO
     });
 
-    // bool inStock
-    test('to test the property `inStock`', () async {
+    // String purchaseRestrictionReason
+    test('to test the property `purchaseRestrictionReason`', () async {
       // TODO
     });
 

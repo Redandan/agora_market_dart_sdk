@@ -23,7 +23,6 @@ Name | Type | Description | Notes
 **pickupAddress** | **String** | 取件地址 | 
 **skus** | **Set<String>** | 商品SKU或條碼集合 | [optional] [default to const {}]
 **brand** | **String** | 品牌名稱 | [optional] 
-**specifications** | **Map<String, String>** | 商品規格屬性 | [optional] [default to const {}]
 **minStock** | **int** | 最低庫存警告 | [optional] 
 **tags** | **String** | 商品標籤，以逗號分隔 | [optional] 
 **shippingPreparationHours** | **int** | 出貨準備時間（小時） | [optional] 

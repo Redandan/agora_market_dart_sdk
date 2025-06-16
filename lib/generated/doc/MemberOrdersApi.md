@@ -191,7 +191,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchOrdersBySeller**
-> PageOrder searchOrdersBySeller(orderSearchParam, page, size)
+> PageOrder searchOrdersBySeller(userOrderSearchParam, page, size)
 
 賣家查詢訂單列表
 
@@ -200,12 +200,12 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = MemberOrdersApi();
-final orderSearchParam = OrderSearchParam(); // OrderSearchParam | 
+final userOrderSearchParam = UserOrderSearchParam(); // UserOrderSearchParam | 
 final page = 56; // int | 頁碼，從1開始
 final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.searchOrdersBySeller(orderSearchParam, page, size);
+    final result = api_instance.searchOrdersBySeller(userOrderSearchParam, page, size);
     print(result);
 } catch (e) {
     print('Exception when calling MemberOrdersApi->searchOrdersBySeller: $e\n');
@@ -216,7 +216,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderSearchParam** | [**OrderSearchParam**](OrderSearchParam.md)|  | 
+ **userOrderSearchParam** | [**UserOrderSearchParam**](UserOrderSearchParam.md)|  | 
  **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
  **size** | **int**| 每頁數量 | [optional] [default to 20]
 

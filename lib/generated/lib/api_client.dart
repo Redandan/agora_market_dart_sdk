@@ -428,6 +428,8 @@ class ApiClient {
           return User.fromJson(value);
         case 'UserInfo':
           return UserInfo.fromJson(value);
+        case 'UserOrderSearchParam':
+          return UserOrderSearchParam.fromJson(value);
         case 'UserProfileUpdateParam':
           return UserProfileUpdateParam.fromJson(value);
         case 'UserStatusEnum':

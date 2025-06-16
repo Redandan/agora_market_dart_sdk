@@ -248,19 +248,19 @@ class MemberOrdersApi {
   ///
   /// Parameters:
   ///
-  /// * [OrderSearchParam] orderSearchParam (required):
+  /// * [UserOrderSearchParam] userOrderSearchParam (required):
   ///
   /// * [int] page:
   ///   頁碼，從1開始
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<Response> searchOrdersBySellerWithHttpInfo(OrderSearchParam orderSearchParam, { int? page, int? size, }) async {
+  Future<Response> searchOrdersBySellerWithHttpInfo(UserOrderSearchParam userOrderSearchParam, { int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/orders/seller/search';
 
     // ignore: prefer_final_locals
-    Object? postBody = orderSearchParam;
+    Object? postBody = userOrderSearchParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -291,15 +291,15 @@ class MemberOrdersApi {
   ///
   /// Parameters:
   ///
-  /// * [OrderSearchParam] orderSearchParam (required):
+  /// * [UserOrderSearchParam] userOrderSearchParam (required):
   ///
   /// * [int] page:
   ///   頁碼，從1開始
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<PageOrder?> searchOrdersBySeller(OrderSearchParam orderSearchParam, { int? page, int? size, }) async {
-    final response = await searchOrdersBySellerWithHttpInfo(orderSearchParam,  page: page, size: size, );
+  Future<PageOrder?> searchOrdersBySeller(UserOrderSearchParam userOrderSearchParam, { int? page, int? size, }) async {
+    final response = await searchOrdersBySellerWithHttpInfo(userOrderSearchParam,  page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

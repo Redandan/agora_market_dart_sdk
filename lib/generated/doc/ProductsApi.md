@@ -17,12 +17,11 @@ Method | HTTP request | Description
 [**getLowStockProducts**](ProductsApi.md#getlowstockproducts) | **GET** /products/low-stock | 獲取低庫存商品列表
 [**getMyProducts**](ProductsApi.md#getmyproducts) | **POST** /products/my-products | 獲取賣家自己的商品列表
 [**getOutOfStockProducts**](ProductsApi.md#getoutofstockproducts) | **GET** /products/out-of-stock | 獲取缺貨商品列表
-[**getProduct**](ProductsApi.md#getproduct) | **GET** /products/{id} | 根據ID獲取商品
+[**getProductById**](ProductsApi.md#getproductbyid) | **GET** /products/{id} | 根據ID獲取商品
 [**getProductBySku**](ProductsApi.md#getproductbysku) | **GET** /products/sku/{sku} | 根據SKU查找商品
 [**getProductShippingInfo**](ProductsApi.md#getproductshippinginfo) | **GET** /products/{productId}/shipping-info | 獲取商品出貨信息
 [**getProductsByBrand**](ProductsApi.md#getproductsbybrand) | **GET** /products/brand/{brand} | 根據品牌查找商品
 [**getProductsByShippingOptions**](ProductsApi.md#getproductsbyshippingoptions) | **GET** /products/shipping-options | 獲取出貨選項商品
-[**getProductsBySpecification**](ProductsApi.md#getproductsbyspecification) | **GET** /products/specification | 根據商品規格查找商品
 [**increaseStock**](ProductsApi.md#increasestock) | **POST** /products/{id}/stock/increase | 增加商品庫存
 [**searchProducts**](ProductsApi.md#searchproducts) | **POST** /products/search | 搜索商品
 [**setStock**](ProductsApi.md#setstock) | **POST** /products/{id}/stock/set | 設置商品庫存
@@ -371,8 +370,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getProduct**
-> Product getProduct(id)
+# **getProductById**
+> Product getProductById(id)
 
 根據ID獲取商品
 
@@ -384,10 +383,10 @@ final api_instance = ProductsApi();
 final id = 789; // int | 
 
 try {
-    final result = api_instance.getProduct(id);
+    final result = api_instance.getProductById(id);
     print(result);
 } catch (e) {
-    print('Exception when calling ProductsApi->getProduct: $e\n');
+    print('Exception when calling ProductsApi->getProductById: $e\n');
 }
 ```
 
@@ -576,49 +575,6 @@ Name | Type | Description  | Notes
  **maxDeliveryDays** | **int**|  | [optional] 
  **page** | **int**|  | [optional] [default to 0]
  **size** | **int**|  | [optional] [default to 10]
-
-### Return type
-
-[**List<Product>**](Product.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getProductsBySpecification**
-> List<Product> getProductsBySpecification(specKey, specValue)
-
-根據商品規格查找商品
-
-### Example
-```dart
-import 'package:agora_market_dart_sdk/api.dart';
-
-final api_instance = ProductsApi();
-final specKey = specKey_example; // String | 規格鍵
-final specValue = specValue_example; // String | 規格值
-
-try {
-    final result = api_instance.getProductsBySpecification(specKey, specValue);
-    print(result);
-} catch (e) {
-    print('Exception when calling ProductsApi->getProductsBySpecification: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **specKey** | **String**| 規格鍵 | 
- **specValue** | **String**| 規格值 | 
 
 ### Return type
 

@@ -26,7 +26,6 @@ class CartItem {
     required this.sellerId,
     this.sellerName,
     this.pickupAddress,
-    this.selectedSpecifications = const {},
     this.sku,
     this.brand,
     this.availableStock,
@@ -34,12 +33,12 @@ class CartItem {
     this.stockWarning,
     this.createdAt,
     this.updatedAt,
+    this.inStock,
     this.subtotal,
     this.totalPrice,
-    this.specificationDescription,
     this.stockStatus,
+    this.specificationDescription,
     this.purchaseRestrictionReason,
-    this.inStock,
   });
 
   /// 購物車項目ID
@@ -117,9 +116,6 @@ class CartItem {
   ///
   String? pickupAddress;
 
-  /// 選擇的商品規格
-  Map<String, String> selectedSpecifications;
-
   /// 商品SKU快照
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -189,6 +185,14 @@ class CartItem {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  bool? inStock;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? subtotal;
 
   ///
@@ -205,14 +209,6 @@ class CartItem {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? specificationDescription;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? stockStatus;
 
   ///
@@ -221,7 +217,7 @@ class CartItem {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? purchaseRestrictionReason;
+  String? specificationDescription;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -229,7 +225,7 @@ class CartItem {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? inStock;
+  String? purchaseRestrictionReason;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CartItem &&
@@ -246,7 +242,6 @@ class CartItem {
     other.sellerId == sellerId &&
     other.sellerName == sellerName &&
     other.pickupAddress == pickupAddress &&
-    _deepEquality.equals(other.selectedSpecifications, selectedSpecifications) &&
     other.sku == sku &&
     other.brand == brand &&
     other.availableStock == availableStock &&
@@ -254,12 +249,12 @@ class CartItem {
     other.stockWarning == stockWarning &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
+    other.inStock == inStock &&
     other.subtotal == subtotal &&
     other.totalPrice == totalPrice &&
-    other.specificationDescription == specificationDescription &&
     other.stockStatus == stockStatus &&
-    other.purchaseRestrictionReason == purchaseRestrictionReason &&
-    other.inStock == inStock;
+    other.specificationDescription == specificationDescription &&
+    other.purchaseRestrictionReason == purchaseRestrictionReason;
 
   @override
   int get hashCode =>
@@ -277,7 +272,6 @@ class CartItem {
     (sellerId.hashCode) +
     (sellerName == null ? 0 : sellerName!.hashCode) +
     (pickupAddress == null ? 0 : pickupAddress!.hashCode) +
-    (selectedSpecifications.hashCode) +
     (sku == null ? 0 : sku!.hashCode) +
     (brand == null ? 0 : brand!.hashCode) +
     (availableStock == null ? 0 : availableStock!.hashCode) +
@@ -285,15 +279,15 @@ class CartItem {
     (stockWarning == null ? 0 : stockWarning!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (inStock == null ? 0 : inStock!.hashCode) +
     (subtotal == null ? 0 : subtotal!.hashCode) +
     (totalPrice == null ? 0 : totalPrice!.hashCode) +
-    (specificationDescription == null ? 0 : specificationDescription!.hashCode) +
     (stockStatus == null ? 0 : stockStatus!.hashCode) +
-    (purchaseRestrictionReason == null ? 0 : purchaseRestrictionReason!.hashCode) +
-    (inStock == null ? 0 : inStock!.hashCode);
+    (specificationDescription == null ? 0 : specificationDescription!.hashCode) +
+    (purchaseRestrictionReason == null ? 0 : purchaseRestrictionReason!.hashCode);
 
   @override
-  String toString() => 'CartItem[id=$id, userId=$userId, productId=$productId, quantity=$quantity, productTitle=$productTitle, productDescription=$productDescription, productImage=$productImage, unitPrice=$unitPrice, currency=$currency, shippingFee=$shippingFee, sellerId=$sellerId, sellerName=$sellerName, pickupAddress=$pickupAddress, selectedSpecifications=$selectedSpecifications, sku=$sku, brand=$brand, availableStock=$availableStock, isInStock=$isInStock, stockWarning=$stockWarning, createdAt=$createdAt, updatedAt=$updatedAt, subtotal=$subtotal, totalPrice=$totalPrice, specificationDescription=$specificationDescription, stockStatus=$stockStatus, purchaseRestrictionReason=$purchaseRestrictionReason, inStock=$inStock]';
+  String toString() => 'CartItem[id=$id, userId=$userId, productId=$productId, quantity=$quantity, productTitle=$productTitle, productDescription=$productDescription, productImage=$productImage, unitPrice=$unitPrice, currency=$currency, shippingFee=$shippingFee, sellerId=$sellerId, sellerName=$sellerName, pickupAddress=$pickupAddress, sku=$sku, brand=$brand, availableStock=$availableStock, isInStock=$isInStock, stockWarning=$stockWarning, createdAt=$createdAt, updatedAt=$updatedAt, inStock=$inStock, subtotal=$subtotal, totalPrice=$totalPrice, stockStatus=$stockStatus, specificationDescription=$specificationDescription, purchaseRestrictionReason=$purchaseRestrictionReason]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -330,7 +324,6 @@ class CartItem {
     } else {
       json[r'pickupAddress'] = null;
     }
-      json[r'selectedSpecifications'] = this.selectedSpecifications;
     if (this.sku != null) {
       json[r'sku'] = this.sku;
     } else {
@@ -366,6 +359,11 @@ class CartItem {
     } else {
       json[r'updatedAt'] = null;
     }
+    if (this.inStock != null) {
+      json[r'inStock'] = this.inStock;
+    } else {
+      json[r'inStock'] = null;
+    }
     if (this.subtotal != null) {
       json[r'subtotal'] = this.subtotal;
     } else {
@@ -376,25 +374,20 @@ class CartItem {
     } else {
       json[r'totalPrice'] = null;
     }
-    if (this.specificationDescription != null) {
-      json[r'specificationDescription'] = this.specificationDescription;
-    } else {
-      json[r'specificationDescription'] = null;
-    }
     if (this.stockStatus != null) {
       json[r'stockStatus'] = this.stockStatus;
     } else {
       json[r'stockStatus'] = null;
     }
+    if (this.specificationDescription != null) {
+      json[r'specificationDescription'] = this.specificationDescription;
+    } else {
+      json[r'specificationDescription'] = null;
+    }
     if (this.purchaseRestrictionReason != null) {
       json[r'purchaseRestrictionReason'] = this.purchaseRestrictionReason;
     } else {
       json[r'purchaseRestrictionReason'] = null;
-    }
-    if (this.inStock != null) {
-      json[r'inStock'] = this.inStock;
-    } else {
-      json[r'inStock'] = null;
     }
     return json;
   }
@@ -431,7 +424,6 @@ class CartItem {
         sellerId: mapValueOfType<int>(json, r'sellerId')!,
         sellerName: mapValueOfType<String>(json, r'sellerName'),
         pickupAddress: mapValueOfType<String>(json, r'pickupAddress'),
-        selectedSpecifications: mapCastOfType<String, String>(json, r'selectedSpecifications') ?? const {},
         sku: mapValueOfType<String>(json, r'sku'),
         brand: mapValueOfType<String>(json, r'brand'),
         availableStock: mapValueOfType<int>(json, r'availableStock'),
@@ -439,12 +431,12 @@ class CartItem {
         stockWarning: mapValueOfType<String>(json, r'stockWarning'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
+        inStock: mapValueOfType<bool>(json, r'inStock'),
         subtotal: num.parse('${json[r'subtotal']}'),
         totalPrice: num.parse('${json[r'totalPrice']}'),
-        specificationDescription: mapValueOfType<String>(json, r'specificationDescription'),
         stockStatus: mapValueOfType<String>(json, r'stockStatus'),
+        specificationDescription: mapValueOfType<String>(json, r'specificationDescription'),
         purchaseRestrictionReason: mapValueOfType<String>(json, r'purchaseRestrictionReason'),
-        inStock: mapValueOfType<bool>(json, r'inStock'),
       );
     }
     return null;
