@@ -14,6 +14,7 @@ class OrderConfirmParam {
   /// Returns a new [OrderConfirmParam] instance.
   OrderConfirmParam({
     this.orderId,
+    this.verifyCode,
     this.remark,
   });
 
@@ -25,6 +26,15 @@ class OrderConfirmParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? orderId;
+
+  /// 驗證碼
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? verifyCode;
 
   /// 確認備註
   ///
@@ -38,16 +48,18 @@ class OrderConfirmParam {
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrderConfirmParam &&
     other.orderId == orderId &&
+    other.verifyCode == verifyCode &&
     other.remark == remark;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (orderId == null ? 0 : orderId!.hashCode) +
+    (verifyCode == null ? 0 : verifyCode!.hashCode) +
     (remark == null ? 0 : remark!.hashCode);
 
   @override
-  String toString() => 'OrderConfirmParam[orderId=$orderId, remark=$remark]';
+  String toString() => 'OrderConfirmParam[orderId=$orderId, verifyCode=$verifyCode, remark=$remark]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -55,6 +67,11 @@ class OrderConfirmParam {
       json[r'orderId'] = this.orderId;
     } else {
       json[r'orderId'] = null;
+    }
+    if (this.verifyCode != null) {
+      json[r'verifyCode'] = this.verifyCode;
+    } else {
+      json[r'verifyCode'] = null;
     }
     if (this.remark != null) {
       json[r'remark'] = this.remark;
@@ -84,6 +101,7 @@ class OrderConfirmParam {
 
       return OrderConfirmParam(
         orderId: mapValueOfType<String>(json, r'orderId'),
+        verifyCode: mapValueOfType<String>(json, r'verifyCode'),
         remark: mapValueOfType<String>(json, r'remark'),
       );
     }

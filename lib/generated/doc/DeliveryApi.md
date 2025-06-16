@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**currentStatus**](DeliveryApi.md#currentstatus) | **GET** /delivery/status | 獲取當前配送狀態
 [**getDeliveryHistory**](DeliveryApi.md#getdeliveryhistory) | **GET** /delivery/history | 獲取歷史訂單
 [**registerDeliveryer**](DeliveryApi.md#registerdeliveryer) | **POST** /delivery/register | 註冊配送員
-[**updateDeliveryOrder**](DeliveryApi.md#updatedeliveryorder) | **POST** /delivery/update/order | 更新配送訂單狀態
+[**updateDeliveryOrder**](DeliveryApi.md#updatedeliveryorder) | **POST** /delivery/update/order | 更新配送進度
 [**updateDeliveryer**](DeliveryApi.md#updatedeliveryer) | **POST** /delivery/update | 更新配送員資料
 [**updateWorkingStatus**](DeliveryApi.md#updateworkingstatus) | **POST** /delivery/update/status | 更新工作狀態
 
@@ -147,9 +147,9 @@ No authorization required
 # **updateDeliveryOrder**
 > Deliveryer updateDeliveryOrder(updateDeliveryOrderParam)
 
-更新配送訂單狀態
+更新配送進度
 
-更新當前配送訂單的狀態
+配送員更新已接單的配送進度狀態（取貨中、運送中、已送達等）
 
 ### Example
 ```dart

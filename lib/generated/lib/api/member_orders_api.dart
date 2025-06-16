@@ -171,60 +171,30 @@ class MemberOrdersApi {
     return null;
   }
 
-  /// 查詢訂單列表
-  ///
-  /// 根據條件查詢訂單列表
+  /// 買家查詢訂單列表
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [String] orderId:
-  ///   訂單ID
-  ///
-  /// * [int] productId:
-  ///   商品ID
-  ///
-  /// * [String] status:
-  ///   訂單狀態
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
+  /// * [OrderSearchParam] orderSearchParam (required):
   ///
   /// * [int] page:
   ///   頁碼，從1開始
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<Response> searchOrdersByBuyerWithHttpInfo({ String? orderId, int? productId, String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+  Future<Response> searchOrdersByBuyerWithHttpInfo(OrderSearchParam orderSearchParam, { int? page, int? size, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/orders/buyer';
+    final path = r'/orders/buyer/search';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = orderSearchParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (orderId != null) {
-      queryParams.addAll(_queryParams('', 'orderId', orderId));
-    }
-    if (productId != null) {
-      queryParams.addAll(_queryParams('', 'productId', productId));
-    }
-    if (status != null) {
-      queryParams.addAll(_queryParams('', 'status', status));
-    }
-    if (startDate != null) {
-      queryParams.addAll(_queryParams('', 'startDate', startDate));
-    }
-    if (endDate != null) {
-      queryParams.addAll(_queryParams('', 'endDate', endDate));
-    }
     if (page != null) {
       queryParams.addAll(_queryParams('', 'page', page));
     }
@@ -232,12 +202,12 @@ class MemberOrdersApi {
       queryParams.addAll(_queryParams('', 'size', size));
     }
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -246,34 +216,19 @@ class MemberOrdersApi {
     );
   }
 
-  /// 查詢訂單列表
-  ///
-  /// 根據條件查詢訂單列表
+  /// 買家查詢訂單列表
   ///
   /// Parameters:
   ///
-  /// * [String] orderId:
-  ///   訂單ID
-  ///
-  /// * [int] productId:
-  ///   商品ID
-  ///
-  /// * [String] status:
-  ///   訂單狀態
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
+  /// * [OrderSearchParam] orderSearchParam (required):
   ///
   /// * [int] page:
   ///   頁碼，從1開始
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<PageOrder?> searchOrdersByBuyer({ String? orderId, int? productId, String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
-    final response = await searchOrdersByBuyerWithHttpInfo( orderId: orderId, productId: productId, status: status, startDate: startDate, endDate: endDate, page: page, size: size, );
+  Future<PageOrder?> searchOrdersByBuyer(OrderSearchParam orderSearchParam, { int? page, int? size, }) async {
+    final response = await searchOrdersByBuyerWithHttpInfo(orderSearchParam,  page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -287,60 +242,30 @@ class MemberOrdersApi {
     return null;
   }
 
-  /// 查詢訂單列表
-  ///
-  /// 根據條件查詢訂單列表
+  /// 賣家查詢訂單列表
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [String] orderId:
-  ///   訂單ID
-  ///
-  /// * [int] productId:
-  ///   商品ID
-  ///
-  /// * [String] status:
-  ///   訂單狀態
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
+  /// * [OrderSearchParam] orderSearchParam (required):
   ///
   /// * [int] page:
   ///   頁碼，從1開始
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<Response> searchOrdersBySellerWithHttpInfo({ String? orderId, int? productId, String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+  Future<Response> searchOrdersBySellerWithHttpInfo(OrderSearchParam orderSearchParam, { int? page, int? size, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/orders/seller';
+    final path = r'/orders/seller/search';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = orderSearchParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (orderId != null) {
-      queryParams.addAll(_queryParams('', 'orderId', orderId));
-    }
-    if (productId != null) {
-      queryParams.addAll(_queryParams('', 'productId', productId));
-    }
-    if (status != null) {
-      queryParams.addAll(_queryParams('', 'status', status));
-    }
-    if (startDate != null) {
-      queryParams.addAll(_queryParams('', 'startDate', startDate));
-    }
-    if (endDate != null) {
-      queryParams.addAll(_queryParams('', 'endDate', endDate));
-    }
     if (page != null) {
       queryParams.addAll(_queryParams('', 'page', page));
     }
@@ -348,12 +273,12 @@ class MemberOrdersApi {
       queryParams.addAll(_queryParams('', 'size', size));
     }
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -362,34 +287,19 @@ class MemberOrdersApi {
     );
   }
 
-  /// 查詢訂單列表
-  ///
-  /// 根據條件查詢訂單列表
+  /// 賣家查詢訂單列表
   ///
   /// Parameters:
   ///
-  /// * [String] orderId:
-  ///   訂單ID
-  ///
-  /// * [int] productId:
-  ///   商品ID
-  ///
-  /// * [String] status:
-  ///   訂單狀態
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
+  /// * [OrderSearchParam] orderSearchParam (required):
   ///
   /// * [int] page:
   ///   頁碼，從1開始
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<PageOrder?> searchOrdersBySeller({ String? orderId, int? productId, String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
-    final response = await searchOrdersBySellerWithHttpInfo( orderId: orderId, productId: productId, status: status, startDate: startDate, endDate: endDate, page: page, size: size, );
+  Future<PageOrder?> searchOrdersBySeller(OrderSearchParam orderSearchParam, { int? page, int? size, }) async {
+    final response = await searchOrdersBySellerWithHttpInfo(orderSearchParam,  page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -403,21 +313,21 @@ class MemberOrdersApi {
     return null;
   }
 
-  /// 發貨
+  /// 平台配送發貨
   ///
-  /// 賣家發貨
+  /// 賣家發貨，等待媒合配送員
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [OrderShipParam] orderShipParam (required):
-  Future<Response> shipOrderWithHttpInfo(OrderShipParam orderShipParam,) async {
+  /// * [OrderShipPlatformParam] orderShipPlatformParam (required):
+  Future<Response> shipOrderPlatformWithHttpInfo(OrderShipPlatformParam orderShipPlatformParam,) async {
     // ignore: prefer_const_declarations
-    final path = r'/orders/ship';
+    final path = r'/orders/ship/platform';
 
     // ignore: prefer_final_locals
-    Object? postBody = orderShipParam;
+    Object? postBody = orderShipPlatformParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -437,15 +347,15 @@ class MemberOrdersApi {
     );
   }
 
-  /// 發貨
+  /// 平台配送發貨
   ///
-  /// 賣家發貨
+  /// 賣家發貨，等待媒合配送員
   ///
   /// Parameters:
   ///
-  /// * [OrderShipParam] orderShipParam (required):
-  Future<void> shipOrder(OrderShipParam orderShipParam,) async {
-    final response = await shipOrderWithHttpInfo(orderShipParam,);
+  /// * [OrderShipPlatformParam] orderShipPlatformParam (required):
+  Future<void> shipOrderPlatform(OrderShipPlatformParam orderShipPlatformParam,) async {
+    final response = await shipOrderPlatformWithHttpInfo(orderShipPlatformParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

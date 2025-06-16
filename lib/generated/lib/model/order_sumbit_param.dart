@@ -14,17 +14,33 @@ class OrderSumbitParam {
   /// Returns a new [OrderSumbitParam] instance.
   OrderSumbitParam({
     required this.productId,
+    this.quantity,
+    required this.selectedSku,
     required this.shippingAddress,
     required this.longitude,
     required this.latitude,
     required this.receiverName,
     required this.receiverPhone,
+    this.shippingCompany,
     this.remark,
-    this.deliveryFee,
   });
 
   /// 商品ID
   int productId;
+
+  /// 商品數量
+  ///
+  /// Minimum value: 1
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? quantity;
+
+  /// 選擇的商品SKU
+  String selectedSku;
 
   /// 收件地址
   String shippingAddress;
@@ -41,6 +57,14 @@ class OrderSumbitParam {
   /// 收件人電話
   String receiverPhone;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  ShippingCompanyEnum? shippingCompany;
+
   /// 訂單備註
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -50,58 +74,59 @@ class OrderSumbitParam {
   ///
   String? remark;
 
-  /// 配送費用
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? deliveryFee;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrderSumbitParam &&
     other.productId == productId &&
+    other.quantity == quantity &&
+    other.selectedSku == selectedSku &&
     other.shippingAddress == shippingAddress &&
     other.longitude == longitude &&
     other.latitude == latitude &&
     other.receiverName == receiverName &&
     other.receiverPhone == receiverPhone &&
-    other.remark == remark &&
-    other.deliveryFee == deliveryFee;
+    other.shippingCompany == shippingCompany &&
+    other.remark == remark;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (productId.hashCode) +
+    (quantity == null ? 0 : quantity!.hashCode) +
+    (selectedSku.hashCode) +
     (shippingAddress.hashCode) +
     (longitude.hashCode) +
     (latitude.hashCode) +
     (receiverName.hashCode) +
     (receiverPhone.hashCode) +
-    (remark == null ? 0 : remark!.hashCode) +
-    (deliveryFee == null ? 0 : deliveryFee!.hashCode);
+    (shippingCompany == null ? 0 : shippingCompany!.hashCode) +
+    (remark == null ? 0 : remark!.hashCode);
 
   @override
-  String toString() => 'OrderSumbitParam[productId=$productId, shippingAddress=$shippingAddress, longitude=$longitude, latitude=$latitude, receiverName=$receiverName, receiverPhone=$receiverPhone, remark=$remark, deliveryFee=$deliveryFee]';
+  String toString() => 'OrderSumbitParam[productId=$productId, quantity=$quantity, selectedSku=$selectedSku, shippingAddress=$shippingAddress, longitude=$longitude, latitude=$latitude, receiverName=$receiverName, receiverPhone=$receiverPhone, shippingCompany=$shippingCompany, remark=$remark]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'productId'] = this.productId;
+    if (this.quantity != null) {
+      json[r'quantity'] = this.quantity;
+    } else {
+      json[r'quantity'] = null;
+    }
+      json[r'selectedSku'] = this.selectedSku;
       json[r'shippingAddress'] = this.shippingAddress;
       json[r'longitude'] = this.longitude;
       json[r'latitude'] = this.latitude;
       json[r'receiverName'] = this.receiverName;
       json[r'receiverPhone'] = this.receiverPhone;
+    if (this.shippingCompany != null) {
+      json[r'shippingCompany'] = this.shippingCompany;
+    } else {
+      json[r'shippingCompany'] = null;
+    }
     if (this.remark != null) {
       json[r'remark'] = this.remark;
     } else {
       json[r'remark'] = null;
-    }
-    if (this.deliveryFee != null) {
-      json[r'deliveryFee'] = this.deliveryFee;
-    } else {
-      json[r'deliveryFee'] = null;
     }
     return json;
   }
@@ -126,13 +151,15 @@ class OrderSumbitParam {
 
       return OrderSumbitParam(
         productId: mapValueOfType<int>(json, r'productId')!,
+        quantity: mapValueOfType<int>(json, r'quantity'),
+        selectedSku: mapValueOfType<String>(json, r'selectedSku')!,
         shippingAddress: mapValueOfType<String>(json, r'shippingAddress')!,
         longitude: mapValueOfType<double>(json, r'longitude')!,
         latitude: mapValueOfType<double>(json, r'latitude')!,
         receiverName: mapValueOfType<String>(json, r'receiverName')!,
         receiverPhone: mapValueOfType<String>(json, r'receiverPhone')!,
+        shippingCompany: ShippingCompanyEnum.fromJson(json[r'shippingCompany']),
         remark: mapValueOfType<String>(json, r'remark'),
-        deliveryFee: num.parse('${json[r'deliveryFee']}'),
       );
     }
     return null;
@@ -181,6 +208,7 @@ class OrderSumbitParam {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'productId',
+    'selectedSku',
     'shippingAddress',
     'longitude',
     'latitude',

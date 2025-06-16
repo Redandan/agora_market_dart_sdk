@@ -22,6 +22,12 @@ void main() {
       // TODO
     });
 
+    // 驗證碼
+    // String verifyCode
+    test('to test the property `verifyCode`', () async {
+      // TODO
+    });
+
     // 確認備註
     // String remark
     test('to test the property `remark`', () async {

@@ -44,30 +44,26 @@ void main() {
       // TODO
     });
 
-    // 查詢訂單列表
+    // 買家查詢訂單列表
     //
-    // 根據條件查詢訂單列表
-    //
-    //Future<PageOrder> searchOrdersByBuyer({ String orderId, int productId, String status, DateTime startDate, DateTime endDate, int page, int size }) async
+    //Future<PageOrder> searchOrdersByBuyer(OrderSearchParam orderSearchParam, { int page, int size }) async
     test('test searchOrdersByBuyer', () async {
       // TODO
     });
 
-    // 查詢訂單列表
+    // 賣家查詢訂單列表
     //
-    // 根據條件查詢訂單列表
-    //
-    //Future<PageOrder> searchOrdersBySeller({ String orderId, int productId, String status, DateTime startDate, DateTime endDate, int page, int size }) async
+    //Future<PageOrder> searchOrdersBySeller(OrderSearchParam orderSearchParam, { int page, int size }) async
     test('test searchOrdersBySeller', () async {
       // TODO
     });
 
-    // 發貨
+    // 平台配送發貨
     //
-    // 賣家發貨
+    // 賣家發貨，等待媒合配送員
     //
-    //Future shipOrder(OrderShipParam orderShipParam) async
-    test('test shipOrder', () async {
+    //Future shipOrderPlatform(OrderShipPlatformParam orderShipPlatformParam) async
+    test('test shipOrderPlatform', () async {
       // TODO
     });
 

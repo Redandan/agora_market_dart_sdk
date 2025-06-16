@@ -11,25 +11,14 @@
 import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
-// tests for OrderShipParam
+// tests for OrderShipPlatformParam
 void main() {
-  // final instance = OrderShipParam();
+  // final instance = OrderShipPlatformParam();
 
-  group('test OrderShipParam', () {
+  group('test OrderShipPlatformParam', () {
     // 訂單ID
     // String orderId
     test('to test the property `orderId`', () async {
-      // TODO
-    });
-
-    // ShippingCompanyEnum shippingCompany
-    test('to test the property `shippingCompany`', () async {
-      // TODO
-    });
-
-    // 物流單號
-    // String trackingNumber
-    test('to test the property `trackingNumber`', () async {
       // TODO
     });
 

@@ -46,10 +46,10 @@ Name | Type | Description | Notes
 **stockAlertThreshold** | **int** | 庫存警告閾值 | [optional] 
 **allowNegativeStock** | **bool** | 是否允許負庫存 | [optional] 
 **store** | [**Store**](Store.md) |  | [optional] 
+**inStock** | **bool** |  | [optional] 
 **shippingTimeDescription** | **String** |  | [optional] 
 **stockLow** | **bool** |  | [optional] 
 **stockBelowMinimum** | **bool** |  | [optional] 
-**inStock** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

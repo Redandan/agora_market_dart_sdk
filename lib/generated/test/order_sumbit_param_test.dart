@@ -22,6 +22,18 @@ void main() {
       // TODO
     });
 
+    // 商品數量
+    // int quantity
+    test('to test the property `quantity`', () async {
+      // TODO
+    });
+
+    // 選擇的商品SKU
+    // String selectedSku
+    test('to test the property `selectedSku`', () async {
+      // TODO
+    });
+
     // 收件地址
     // String shippingAddress
     test('to test the property `shippingAddress`', () async {
@@ -52,15 +64,14 @@ void main() {
       // TODO
     });
 
-    // 訂單備註
-    // String remark
-    test('to test the property `remark`', () async {
+    // ShippingCompanyEnum shippingCompany
+    test('to test the property `shippingCompany`', () async {
       // TODO
     });
 
-    // 配送費用
-    // num deliveryFee
-    test('to test the property `deliveryFee`', () async {
+    // 訂單備註
+    // String remark
+    test('to test the property `remark`', () async {
       // TODO
     });
 

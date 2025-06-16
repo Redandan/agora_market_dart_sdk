@@ -178,7 +178,7 @@ Class | Method | HTTP request | Description
 *DeliveryApi* | [**currentStatus**](doc//DeliveryApi.md#currentstatus) | **GET** /delivery/status | 獲取當前配送狀態
 *DeliveryApi* | [**getDeliveryHistory**](doc//DeliveryApi.md#getdeliveryhistory) | **GET** /delivery/history | 獲取歷史訂單
 *DeliveryApi* | [**registerDeliveryer**](doc//DeliveryApi.md#registerdeliveryer) | **POST** /delivery/register | 註冊配送員
-*DeliveryApi* | [**updateDeliveryOrder**](doc//DeliveryApi.md#updatedeliveryorder) | **POST** /delivery/update/order | 更新配送訂單狀態
+*DeliveryApi* | [**updateDeliveryOrder**](doc//DeliveryApi.md#updatedeliveryorder) | **POST** /delivery/update/order | 更新配送進度
 *DeliveryApi* | [**updateDeliveryer**](doc//DeliveryApi.md#updatedeliveryer) | **POST** /delivery/update | 更新配送員資料
 *DeliveryApi* | [**updateWorkingStatus**](doc//DeliveryApi.md#updateworkingstatus) | **POST** /delivery/update/status | 更新工作狀態
 *FilesApi* | [**deleteFile**](doc//FilesApi.md#deletefile) | **DELETE** /files/delete | 刪除文件
@@ -208,9 +208,9 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**cancelOrder**](doc//MemberOrdersApi.md#cancelorder) | **POST** /orders/cancel | 取消訂單
 *MemberOrdersApi* | [**confirmOrder**](doc//MemberOrdersApi.md#confirmorder) | **POST** /orders/confirm | 確認收貨
 *MemberOrdersApi* | [**getOrder**](doc//MemberOrdersApi.md#getorder) | **GET** /orders/{orderId} | 獲取訂單詳情
-*MemberOrdersApi* | [**searchOrdersByBuyer**](doc//MemberOrdersApi.md#searchordersbybuyer) | **GET** /orders/buyer | 查詢訂單列表
-*MemberOrdersApi* | [**searchOrdersBySeller**](doc//MemberOrdersApi.md#searchordersbyseller) | **GET** /orders/seller | 查詢訂單列表
-*MemberOrdersApi* | [**shipOrder**](doc//MemberOrdersApi.md#shiporder) | **POST** /orders/ship | 發貨
+*MemberOrdersApi* | [**searchOrdersByBuyer**](doc//MemberOrdersApi.md#searchordersbybuyer) | **POST** /orders/buyer/search | 買家查詢訂單列表
+*MemberOrdersApi* | [**searchOrdersBySeller**](doc//MemberOrdersApi.md#searchordersbyseller) | **POST** /orders/seller/search | 賣家查詢訂單列表
+*MemberOrdersApi* | [**shipOrderPlatform**](doc//MemberOrdersApi.md#shiporderplatform) | **POST** /orders/ship/platform | 平台配送發貨
 *MemberOrdersApi* | [**submitOrder**](doc//MemberOrdersApi.md#submitorder) | **POST** /orders | 提交訂單
 *ProductsApi* | [**calculateShippingTime**](doc//ProductsApi.md#calculateshippingtime) | **POST** /products/{productId}/calculate-shipping-time | 計算預計出貨時間
 *ProductsApi* | [**createProduct**](doc//ProductsApi.md#createproduct) | **POST** /products/create | 創建商品
@@ -331,8 +331,10 @@ Class | Method | HTTP request | Description
  - [OrderCancelParam](doc//OrderCancelParam.md)
  - [OrderConfirmParam](doc//OrderConfirmParam.md)
  - [OrderQueryResult](doc//OrderQueryResult.md)
- - [OrderShipParam](doc//OrderShipParam.md)
+ - [OrderSearchParam](doc//OrderSearchParam.md)
+ - [OrderShipPlatformParam](doc//OrderShipPlatformParam.md)
  - [OrderStatisticsDTO](doc//OrderStatisticsDTO.md)
+ - [OrderStatusEnum](doc//OrderStatusEnum.md)
  - [OrderSumbitParam](doc//OrderSumbitParam.md)
  - [PageCartItem](doc//PageCartItem.md)
  - [PageChatMessage](doc//PageChatMessage.md)

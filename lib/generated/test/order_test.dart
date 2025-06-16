@@ -40,6 +40,18 @@ void main() {
       // TODO
     });
 
+    // 商品數量
+    // int quantity
+    test('to test the property `quantity`', () async {
+      // TODO
+    });
+
+    // 選擇的商品SKU
+    // String selectedSku
+    test('to test the property `selectedSku`', () async {
+      // TODO
+    });
+
     // 運費
     // num shippingFee
     test('to test the property `shippingFee`', () async {
@@ -64,8 +76,12 @@ void main() {
       // TODO
     });
 
-    // 訂單狀態
-    // String status
+    // ShippingCompanyEnum shippingCompany
+    test('to test the property `shippingCompany`', () async {
+      // TODO
+    });
+
+    // OrderStatusEnum status
     test('to test the property `status`', () async {
       // TODO
     });

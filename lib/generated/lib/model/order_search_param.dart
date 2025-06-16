@@ -10,29 +10,57 @@
 
 part of openapi.api;
 
-class PageDispute {
-  /// Returns a new [PageDispute] instance.
-  PageDispute({
-    this.totalElements,
-    this.totalPages,
-    this.sort,
-    this.numberOfElements,
-    this.pageable,
-    this.last,
-    this.first,
+class OrderSearchParam {
+  /// Returns a new [OrderSearchParam] instance.
+  OrderSearchParam({
+    this.orderId,
+    this.buyerId,
+    this.sellerId,
+    this.productId,
+    this.status,
+    this.startTime,
+    this.endTime,
+    this.startDate,
+    this.endDate,
+    this.page,
     this.size,
-    this.content = const [],
-    this.number,
-    this.empty,
   });
 
+  /// 訂單ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalElements;
+  String? orderId;
+
+  /// 買家ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? buyerId;
+
+  /// 賣家ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? sellerId;
+
+  /// 商品ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? productId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -40,48 +68,54 @@ class PageDispute {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalPages;
+  OrderStatusEnum? status;
 
+  /// 開始時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SortObject? sort;
+  String? startTime;
 
+  /// 結束時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? numberOfElements;
+  String? endTime;
 
+  /// 開始日期
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PageableObject? pageable;
+  DateTime? startDate;
 
+  /// 結束日期
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? last;
+  DateTime? endDate;
 
+  /// 頁碼
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? first;
+  int? page;
 
+  /// 每頁大小
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -90,116 +124,102 @@ class PageDispute {
   ///
   int? size;
 
-  List<Dispute> content;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? number;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? empty;
-
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageDispute &&
-    other.totalElements == totalElements &&
-    other.totalPages == totalPages &&
-    other.sort == sort &&
-    other.numberOfElements == numberOfElements &&
-    other.pageable == pageable &&
-    other.last == last &&
-    other.first == first &&
-    other.size == size &&
-    _deepEquality.equals(other.content, content) &&
-    other.number == number &&
-    other.empty == empty;
+  bool operator ==(Object other) => identical(this, other) || other is OrderSearchParam &&
+    other.orderId == orderId &&
+    other.buyerId == buyerId &&
+    other.sellerId == sellerId &&
+    other.productId == productId &&
+    other.status == status &&
+    other.startTime == startTime &&
+    other.endTime == endTime &&
+    other.startDate == startDate &&
+    other.endDate == endDate &&
+    other.page == page &&
+    other.size == size;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalElements == null ? 0 : totalElements!.hashCode) +
-    (totalPages == null ? 0 : totalPages!.hashCode) +
-    (sort == null ? 0 : sort!.hashCode) +
-    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
-    (pageable == null ? 0 : pageable!.hashCode) +
-    (last == null ? 0 : last!.hashCode) +
-    (first == null ? 0 : first!.hashCode) +
-    (size == null ? 0 : size!.hashCode) +
-    (content.hashCode) +
-    (number == null ? 0 : number!.hashCode) +
-    (empty == null ? 0 : empty!.hashCode);
+    (orderId == null ? 0 : orderId!.hashCode) +
+    (buyerId == null ? 0 : buyerId!.hashCode) +
+    (sellerId == null ? 0 : sellerId!.hashCode) +
+    (productId == null ? 0 : productId!.hashCode) +
+    (status == null ? 0 : status!.hashCode) +
+    (startTime == null ? 0 : startTime!.hashCode) +
+    (endTime == null ? 0 : endTime!.hashCode) +
+    (startDate == null ? 0 : startDate!.hashCode) +
+    (endDate == null ? 0 : endDate!.hashCode) +
+    (page == null ? 0 : page!.hashCode) +
+    (size == null ? 0 : size!.hashCode);
 
   @override
-  String toString() => 'PageDispute[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, numberOfElements=$numberOfElements, pageable=$pageable, last=$last, first=$first, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'OrderSearchParam[orderId=$orderId, buyerId=$buyerId, sellerId=$sellerId, productId=$productId, status=$status, startTime=$startTime, endTime=$endTime, startDate=$startDate, endDate=$endDate, page=$page, size=$size]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.totalElements != null) {
-      json[r'totalElements'] = this.totalElements;
+    if (this.orderId != null) {
+      json[r'orderId'] = this.orderId;
     } else {
-      json[r'totalElements'] = null;
+      json[r'orderId'] = null;
     }
-    if (this.totalPages != null) {
-      json[r'totalPages'] = this.totalPages;
+    if (this.buyerId != null) {
+      json[r'buyerId'] = this.buyerId;
     } else {
-      json[r'totalPages'] = null;
+      json[r'buyerId'] = null;
     }
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.sellerId != null) {
+      json[r'sellerId'] = this.sellerId;
     } else {
-      json[r'sort'] = null;
+      json[r'sellerId'] = null;
     }
-    if (this.numberOfElements != null) {
-      json[r'numberOfElements'] = this.numberOfElements;
+    if (this.productId != null) {
+      json[r'productId'] = this.productId;
     } else {
-      json[r'numberOfElements'] = null;
+      json[r'productId'] = null;
     }
-    if (this.pageable != null) {
-      json[r'pageable'] = this.pageable;
+    if (this.status != null) {
+      json[r'status'] = this.status;
     } else {
-      json[r'pageable'] = null;
+      json[r'status'] = null;
     }
-    if (this.last != null) {
-      json[r'last'] = this.last;
+    if (this.startTime != null) {
+      json[r'startTime'] = this.startTime;
     } else {
-      json[r'last'] = null;
+      json[r'startTime'] = null;
     }
-    if (this.first != null) {
-      json[r'first'] = this.first;
+    if (this.endTime != null) {
+      json[r'endTime'] = this.endTime;
     } else {
-      json[r'first'] = null;
+      json[r'endTime'] = null;
+    }
+    if (this.startDate != null) {
+      json[r'startDate'] = this.startDate!.toUtc().toIso8601String();
+    } else {
+      json[r'startDate'] = null;
+    }
+    if (this.endDate != null) {
+      json[r'endDate'] = this.endDate!.toUtc().toIso8601String();
+    } else {
+      json[r'endDate'] = null;
+    }
+    if (this.page != null) {
+      json[r'page'] = this.page;
+    } else {
+      json[r'page'] = null;
     }
     if (this.size != null) {
       json[r'size'] = this.size;
     } else {
       json[r'size'] = null;
     }
-      json[r'content'] = this.content;
-    if (this.number != null) {
-      json[r'number'] = this.number;
-    } else {
-      json[r'number'] = null;
-    }
-    if (this.empty != null) {
-      json[r'empty'] = this.empty;
-    } else {
-      json[r'empty'] = null;
-    }
     return json;
   }
 
-  /// Returns a new [PageDispute] instance and imports its values from
+  /// Returns a new [OrderSearchParam] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageDispute? fromJson(dynamic value) {
+  static OrderSearchParam? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -208,34 +228,34 @@ class PageDispute {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageDispute[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageDispute[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "OrderSearchParam[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "OrderSearchParam[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageDispute(
-        totalElements: mapValueOfType<int>(json, r'totalElements'),
-        totalPages: mapValueOfType<int>(json, r'totalPages'),
-        sort: SortObject.fromJson(json[r'sort']),
-        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
-        pageable: PageableObject.fromJson(json[r'pageable']),
-        last: mapValueOfType<bool>(json, r'last'),
-        first: mapValueOfType<bool>(json, r'first'),
+      return OrderSearchParam(
+        orderId: mapValueOfType<String>(json, r'orderId'),
+        buyerId: mapValueOfType<int>(json, r'buyerId'),
+        sellerId: mapValueOfType<int>(json, r'sellerId'),
+        productId: mapValueOfType<int>(json, r'productId'),
+        status: OrderStatusEnum.fromJson(json[r'status']),
+        startTime: mapValueOfType<String>(json, r'startTime'),
+        endTime: mapValueOfType<String>(json, r'endTime'),
+        startDate: mapDateTime(json, r'startDate', r''),
+        endDate: mapDateTime(json, r'endDate', r''),
+        page: mapValueOfType<int>(json, r'page'),
         size: mapValueOfType<int>(json, r'size'),
-        content: Dispute.listFromJson(json[r'content']),
-        number: mapValueOfType<int>(json, r'number'),
-        empty: mapValueOfType<bool>(json, r'empty'),
       );
     }
     return null;
   }
 
-  static List<PageDispute> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageDispute>[];
+  static List<OrderSearchParam> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <OrderSearchParam>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageDispute.fromJson(row);
+        final value = OrderSearchParam.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -244,12 +264,12 @@ class PageDispute {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageDispute> mapFromJson(dynamic json) {
-    final map = <String, PageDispute>{};
+  static Map<String, OrderSearchParam> mapFromJson(dynamic json) {
+    final map = <String, OrderSearchParam>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageDispute.fromJson(entry.value);
+        final value = OrderSearchParam.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -258,14 +278,14 @@ class PageDispute {
     return map;
   }
 
-  // maps a json object with a list of PageDispute-objects as value to a dart map
-  static Map<String, List<PageDispute>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageDispute>>{};
+  // maps a json object with a list of OrderSearchParam-objects as value to a dart map
+  static Map<String, List<OrderSearchParam>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<OrderSearchParam>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageDispute.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = OrderSearchParam.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

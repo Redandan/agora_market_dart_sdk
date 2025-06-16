@@ -12,9 +12,9 @@ Method | HTTP request | Description
 [**cancelOrder**](MemberOrdersApi.md#cancelorder) | **POST** /orders/cancel | 取消訂單
 [**confirmOrder**](MemberOrdersApi.md#confirmorder) | **POST** /orders/confirm | 確認收貨
 [**getOrder**](MemberOrdersApi.md#getorder) | **GET** /orders/{orderId} | 獲取訂單詳情
-[**searchOrdersByBuyer**](MemberOrdersApi.md#searchordersbybuyer) | **GET** /orders/buyer | 查詢訂單列表
-[**searchOrdersBySeller**](MemberOrdersApi.md#searchordersbyseller) | **GET** /orders/seller | 查詢訂單列表
-[**shipOrder**](MemberOrdersApi.md#shiporder) | **POST** /orders/ship | 發貨
+[**searchOrdersByBuyer**](MemberOrdersApi.md#searchordersbybuyer) | **POST** /orders/buyer/search | 買家查詢訂單列表
+[**searchOrdersBySeller**](MemberOrdersApi.md#searchordersbyseller) | **POST** /orders/seller/search | 賣家查詢訂單列表
+[**shipOrderPlatform**](MemberOrdersApi.md#shiporderplatform) | **POST** /orders/ship/platform | 平台配送發貨
 [**submitOrder**](MemberOrdersApi.md#submitorder) | **POST** /orders | 提交訂單
 
 
@@ -146,27 +146,21 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchOrdersByBuyer**
-> PageOrder searchOrdersByBuyer(orderId, productId, status, startDate, endDate, page, size)
+> PageOrder searchOrdersByBuyer(orderSearchParam, page, size)
 
-查詢訂單列表
-
-根據條件查詢訂單列表
+買家查詢訂單列表
 
 ### Example
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = MemberOrdersApi();
-final orderId = orderId_example; // String | 訂單ID
-final productId = 789; // int | 商品ID
-final status = status_example; // String | 訂單狀態
-final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
-final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
+final orderSearchParam = OrderSearchParam(); // OrderSearchParam | 
 final page = 56; // int | 頁碼，從1開始
 final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.searchOrdersByBuyer(orderId, productId, status, startDate, endDate, page, size);
+    final result = api_instance.searchOrdersByBuyer(orderSearchParam, page, size);
     print(result);
 } catch (e) {
     print('Exception when calling MemberOrdersApi->searchOrdersByBuyer: $e\n');
@@ -177,11 +171,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **String**| 訂單ID | [optional] 
- **productId** | **int**| 商品ID | [optional] 
- **status** | **String**| 訂單狀態 | [optional] 
- **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
- **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
+ **orderSearchParam** | [**OrderSearchParam**](OrderSearchParam.md)|  | 
  **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
  **size** | **int**| 每頁數量 | [optional] [default to 20]
 
@@ -195,33 +185,27 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchOrdersBySeller**
-> PageOrder searchOrdersBySeller(orderId, productId, status, startDate, endDate, page, size)
+> PageOrder searchOrdersBySeller(orderSearchParam, page, size)
 
-查詢訂單列表
-
-根據條件查詢訂單列表
+賣家查詢訂單列表
 
 ### Example
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = MemberOrdersApi();
-final orderId = orderId_example; // String | 訂單ID
-final productId = 789; // int | 商品ID
-final status = status_example; // String | 訂單狀態
-final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
-final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
+final orderSearchParam = OrderSearchParam(); // OrderSearchParam | 
 final page = 56; // int | 頁碼，從1開始
 final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.searchOrdersBySeller(orderId, productId, status, startDate, endDate, page, size);
+    final result = api_instance.searchOrdersBySeller(orderSearchParam, page, size);
     print(result);
 } catch (e) {
     print('Exception when calling MemberOrdersApi->searchOrdersBySeller: $e\n');
@@ -232,11 +216,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **String**| 訂單ID | [optional] 
- **productId** | **int**| 商品ID | [optional] 
- **status** | **String**| 訂單狀態 | [optional] 
- **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
- **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
+ **orderSearchParam** | [**OrderSearchParam**](OrderSearchParam.md)|  | 
  **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
  **size** | **int**| 每頁數量 | [optional] [default to 20]
 
@@ -250,29 +230,29 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **shipOrder**
-> shipOrder(orderShipParam)
+# **shipOrderPlatform**
+> shipOrderPlatform(orderShipPlatformParam)
 
-發貨
+平台配送發貨
 
-賣家發貨
+賣家發貨，等待媒合配送員
 
 ### Example
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = MemberOrdersApi();
-final orderShipParam = OrderShipParam(); // OrderShipParam | 
+final orderShipPlatformParam = OrderShipPlatformParam(); // OrderShipPlatformParam | 
 
 try {
-    api_instance.shipOrder(orderShipParam);
+    api_instance.shipOrderPlatform(orderShipPlatformParam);
 } catch (e) {
-    print('Exception when calling MemberOrdersApi->shipOrder: $e\n');
+    print('Exception when calling MemberOrdersApi->shipOrderPlatform: $e\n');
 }
 ```
 
@@ -280,7 +260,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderShipParam** | [**OrderShipParam**](OrderShipParam.md)|  | 
+ **orderShipPlatformParam** | [**OrderShipPlatformParam**](OrderShipPlatformParam.md)|  | 
 
 ### Return type
 

@@ -44,9 +44,9 @@ void main() {
       // TODO
     });
 
-    // 更新配送訂單狀態
+    // 更新配送進度
     //
-    // 更新當前配送訂單的狀態
+    // 配送員更新已接單的配送進度狀態（取貨中、運送中、已送達等）
     //
     //Future<Deliveryer> updateDeliveryOrder({ UpdateDeliveryOrderParam updateDeliveryOrderParam }) async
     test('test updateDeliveryOrder', () async {

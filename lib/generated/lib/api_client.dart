@@ -288,10 +288,14 @@ class ApiClient {
           return OrderConfirmParam.fromJson(value);
         case 'OrderQueryResult':
           return OrderQueryResult.fromJson(value);
-        case 'OrderShipParam':
-          return OrderShipParam.fromJson(value);
+        case 'OrderSearchParam':
+          return OrderSearchParam.fromJson(value);
+        case 'OrderShipPlatformParam':
+          return OrderShipPlatformParam.fromJson(value);
         case 'OrderStatisticsDTO':
           return OrderStatisticsDTO.fromJson(value);
+        case 'OrderStatusEnum':
+          return OrderStatusEnumTypeTransformer().decode(value);
         case 'OrderSumbitParam':
           return OrderSumbitParam.fromJson(value);
         case 'PageCartItem':
