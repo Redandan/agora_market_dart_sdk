@@ -52,7 +52,7 @@ void main() {
       // TODO
     });
 
-    // 商店Logo URL
+    // 商店頭像 URL
     // String logoUrl
     test('to test the property `logoUrl`', () async {
       // TODO
@@ -64,7 +64,7 @@ void main() {
       // TODO
     });
 
-    // 是否啟用
+    // 商店開關
     // bool isActive
     test('to test the property `isActive`', () async {
       // TODO
@@ -73,18 +73,6 @@ void main() {
     // 支援的物流公司
     // List<ShippingCompanyEnum> supportedShippingCompanies (default value: const [])
     test('to test the property `supportedShippingCompanies`', () async {
-      // TODO
-    });
-
-    // 預設運費
-    // double defaultShippingFee
-    test('to test the property `defaultShippingFee`', () async {
-      // TODO
-    });
-
-    // 免運費門檻
-    // double freeShippingThreshold
-    test('to test the property `freeShippingThreshold`', () async {
       // TODO
     });
 
