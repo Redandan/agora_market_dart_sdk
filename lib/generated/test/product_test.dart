@@ -206,14 +206,19 @@ void main() {
       // TODO
     });
 
-    // 預設運費
-    // double defaultShippingFee
-    test('to test the property `defaultShippingFee`', () async {
+    // 各物流公司運費對應表
+    // Map<String, num> shippingFees (default value: const {})
+    test('to test the property `shippingFees`', () async {
+      // TODO
+    });
+
+    // ShippingCompanyEnum defaultShippingCompany
+    test('to test the property `defaultShippingCompany`', () async {
       // TODO
     });
 
     // 免運費門檻
-    // double freeShippingThreshold
+    // num freeShippingThreshold
     test('to test the property `freeShippingThreshold`', () async {
       // TODO
     });
@@ -252,6 +257,21 @@ void main() {
 
     // bool stockLow
     test('to test the property `stockLow`', () async {
+      // TODO
+    });
+
+    // num defaultShippingFee
+    test('to test the property `defaultShippingFee`', () async {
+      // TODO
+    });
+
+    // num minimumShippingFee
+    test('to test the property `minimumShippingFee`', () async {
+      // TODO
+    });
+
+    // List<String> supportedShippingCompaniesList (default value: const [])
+    test('to test the property `supportedShippingCompaniesList`', () async {
       // TODO
     });
 

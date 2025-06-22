@@ -26,8 +26,10 @@ Name | Type | Description | Notes
 **shippingDescription** | **String** | 出貨備註 | [optional] 
 **supportsScheduledShipping** | **bool** | 是否支持指定出貨日期 | [optional] 
 **shippingDateRange** | **int** | 可選擇的出貨日期範圍（天數） | [optional] 
-**supportedShippingCompanies** | [**List<ShippingCompanyEnum>**](ShippingCompanyEnum.md) | 支援的物流公司 | [optional] [default to const []]
-**defaultShippingFee** | **double** | 預設運費 | [optional] 
+**supportedShippingCompanies** | [**Set<ShippingCompanyEnum>**](ShippingCompanyEnum.md) | 支援的物流公司 | [optional] [default to const {}]
+**shippingFees** | **Map<String, num>** | 各物流公司運費對應表 | [optional] [default to const {}]
+**defaultShippingCompany** | [**ShippingCompanyEnum**](ShippingCompanyEnum.md) |  | [optional] 
+**freeShippingThreshold** | **num** | 免運費門檻 | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

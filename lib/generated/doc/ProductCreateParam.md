@@ -31,9 +31,10 @@ Name | Type | Description | Notes
 **estimatedDeliveryDays** | **int** | 預計送達時間（天數） | [optional] 
 **supportsScheduledShipping** | **bool** | 是否支持指定出貨日期 | [optional] 
 **shippingDateRange** | **int** | 可選擇的出貨日期範圍（天數） | [optional] 
-**supportedShippingCompanies** | [**List<ShippingCompanyEnum>**](ShippingCompanyEnum.md) | 支援的物流公司 | [optional] [default to const []]
-**defaultShippingFee** | **double** | 預設運費 | [optional] 
-**freeShippingThreshold** | **double** | 免運費門檻 | [optional] 
+**supportedShippingCompanies** | [**Set<ShippingCompanyEnum>**](ShippingCompanyEnum.md) | 支援的物流公司 | [optional] [default to const {}]
+**shippingFees** | **Map<String, num>** | 各物流公司運費對應表 | [optional] [default to const {}]
+**defaultShippingCompany** | [**ShippingCompanyEnum**](ShippingCompanyEnum.md) |  | [optional] 
+**freeShippingThreshold** | **num** | 免運費門檻 | [optional] 
 **stockAlertThreshold** | **int** | 庫存警告閾值 | [optional] 
 **allowNegativeStock** | **bool** | 是否允許負庫存 | [optional] 
 

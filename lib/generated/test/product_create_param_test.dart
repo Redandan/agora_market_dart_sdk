@@ -154,19 +154,24 @@ void main() {
     });
 
     // 支援的物流公司
-    // List<ShippingCompanyEnum> supportedShippingCompanies (default value: const [])
+    // Set<ShippingCompanyEnum> supportedShippingCompanies (default value: const {})
     test('to test the property `supportedShippingCompanies`', () async {
       // TODO
     });
 
-    // 預設運費
-    // double defaultShippingFee
-    test('to test the property `defaultShippingFee`', () async {
+    // 各物流公司運費對應表
+    // Map<String, num> shippingFees (default value: const {})
+    test('to test the property `shippingFees`', () async {
+      // TODO
+    });
+
+    // ShippingCompanyEnum defaultShippingCompany
+    test('to test the property `defaultShippingCompany`', () async {
       // TODO
     });
 
     // 免運費門檻
-    // double freeShippingThreshold
+    // num freeShippingThreshold
     test('to test the property `freeShippingThreshold`', () async {
       // TODO
     });

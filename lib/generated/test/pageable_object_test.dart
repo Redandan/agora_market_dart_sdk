@@ -26,6 +26,11 @@ void main() {
       // TODO
     });
 
+    // bool unpaged
+    test('to test the property `unpaged`', () async {
+      // TODO
+    });
+
     // int pageNumber
     test('to test the property `pageNumber`', () async {
       // TODO
@@ -33,11 +38,6 @@ void main() {
 
     // int pageSize
     test('to test the property `pageSize`', () async {
-      // TODO
-    });
-
-    // bool unpaged
-    test('to test the property `unpaged`', () async {
       // TODO
     });
 

@@ -31,8 +31,10 @@ class ProductUpdateParam {
     this.shippingDescription,
     this.supportsScheduledShipping,
     this.shippingDateRange,
-    this.supportedShippingCompanies = const [],
-    this.defaultShippingFee,
+    this.supportedShippingCompanies = const {},
+    this.shippingFees = const {},
+    this.defaultShippingCompany,
+    this.freeShippingThreshold,
   });
 
   /// 商品ID
@@ -195,9 +197,20 @@ class ProductUpdateParam {
   int? shippingDateRange;
 
   /// 支援的物流公司
-  List<ShippingCompanyEnum> supportedShippingCompanies;
+  Set<ShippingCompanyEnum> supportedShippingCompanies;
 
-  /// 預設運費
+  /// 各物流公司運費對應表
+  Map<String, num> shippingFees;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  ShippingCompanyEnum? defaultShippingCompany;
+
+  /// 免運費門檻
   ///
   /// Minimum value: 0.0
   ///
@@ -206,7 +219,7 @@ class ProductUpdateParam {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  double? defaultShippingFee;
+  num? freeShippingThreshold;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductUpdateParam &&
@@ -229,7 +242,9 @@ class ProductUpdateParam {
     other.supportsScheduledShipping == supportsScheduledShipping &&
     other.shippingDateRange == shippingDateRange &&
     _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
-    other.defaultShippingFee == defaultShippingFee;
+    _deepEquality.equals(other.shippingFees, shippingFees) &&
+    other.defaultShippingCompany == defaultShippingCompany &&
+    other.freeShippingThreshold == freeShippingThreshold;
 
   @override
   int get hashCode =>
@@ -253,10 +268,12 @@ class ProductUpdateParam {
     (supportsScheduledShipping == null ? 0 : supportsScheduledShipping!.hashCode) +
     (shippingDateRange == null ? 0 : shippingDateRange!.hashCode) +
     (supportedShippingCompanies.hashCode) +
-    (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode);
+    (shippingFees.hashCode) +
+    (defaultShippingCompany == null ? 0 : defaultShippingCompany!.hashCode) +
+    (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode);
 
   @override
-  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, status=$status, shippingFee=$shippingFee, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee]';
+  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, status=$status, shippingFee=$shippingFee, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, shippingFees=$shippingFees, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -338,11 +355,17 @@ class ProductUpdateParam {
     } else {
       json[r'shippingDateRange'] = null;
     }
-      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
-    if (this.defaultShippingFee != null) {
-      json[r'defaultShippingFee'] = this.defaultShippingFee;
+      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies.toList(growable: false);
+      json[r'shippingFees'] = this.shippingFees;
+    if (this.defaultShippingCompany != null) {
+      json[r'defaultShippingCompany'] = this.defaultShippingCompany;
     } else {
-      json[r'defaultShippingFee'] = null;
+      json[r'defaultShippingCompany'] = null;
+    }
+    if (this.freeShippingThreshold != null) {
+      json[r'freeShippingThreshold'] = this.freeShippingThreshold;
+    } else {
+      json[r'freeShippingThreshold'] = null;
     }
     return json;
   }
@@ -388,8 +411,10 @@ class ProductUpdateParam {
         shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),
         supportsScheduledShipping: mapValueOfType<bool>(json, r'supportsScheduledShipping'),
         shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
-        supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']),
-        defaultShippingFee: mapValueOfType<double>(json, r'defaultShippingFee'),
+        supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']).toSet(),
+        shippingFees: mapCastOfType<String, num>(json, r'shippingFees') ?? const {},
+        defaultShippingCompany: ShippingCompanyEnum.fromJson(json[r'defaultShippingCompany']),
+        freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
       );
     }
     return null;

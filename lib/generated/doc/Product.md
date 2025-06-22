@@ -40,8 +40,9 @@ Name | Type | Description | Notes
 **brand** | **String** | 品牌名稱 | [optional] 
 **minStock** | **int** | 最低庫存警告 | [optional] 
 **supportedShippingCompanies** | [**Set<ShippingCompanyEnum>**](ShippingCompanyEnum.md) | 支援的物流公司 | [optional] [default to const {}]
-**defaultShippingFee** | **double** | 預設運費 | [optional] 
-**freeShippingThreshold** | **double** | 免運費門檻 | [optional] 
+**shippingFees** | **Map<String, num>** | 各物流公司運費對應表 | [optional] [default to const {}]
+**defaultShippingCompany** | [**ShippingCompanyEnum**](ShippingCompanyEnum.md) |  | [optional] 
+**freeShippingThreshold** | **num** | 免運費門檻 | [optional] 
 **stockAlertThreshold** | **int** | 庫存警告閾值 | [optional] 
 **allowNegativeStock** | **bool** | 是否允許負庫存 | [optional] 
 **store** | [**Store**](Store.md) |  | [optional] 
@@ -49,6 +50,9 @@ Name | Type | Description | Notes
 **inStock** | **bool** |  | [optional] 
 **stockBelowMinimum** | **bool** |  | [optional] 
 **stockLow** | **bool** |  | [optional] 
+**defaultShippingFee** | **num** |  | [optional] 
+**minimumShippingFee** | **num** |  | [optional] 
+**supportedShippingCompaniesList** | **List<String>** |  | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

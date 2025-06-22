@@ -45,7 +45,8 @@ class Product {
     this.brand,
     this.minStock,
     this.supportedShippingCompanies = const {},
-    this.defaultShippingFee,
+    this.shippingFees = const {},
+    this.defaultShippingCompany,
     this.freeShippingThreshold,
     this.stockAlertThreshold,
     this.allowNegativeStock,
@@ -54,6 +55,9 @@ class Product {
     this.inStock,
     this.stockBelowMinimum,
     this.stockLow,
+    this.defaultShippingFee,
+    this.minimumShippingFee,
+    this.supportedShippingCompaniesList = const [],
   });
 
   /// 商品ID
@@ -261,14 +265,16 @@ class Product {
   /// 支援的物流公司
   Set<ShippingCompanyEnum> supportedShippingCompanies;
 
-  /// 預設運費
+  /// 各物流公司運費對應表
+  Map<String, num> shippingFees;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  double? defaultShippingFee;
+  ShippingCompanyEnum? defaultShippingCompany;
 
   /// 免運費門檻
   ///
@@ -277,7 +283,7 @@ class Product {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  double? freeShippingThreshold;
+  num? freeShippingThreshold;
 
   /// 庫存警告閾值
   ///
@@ -337,6 +343,24 @@ class Product {
   ///
   bool? stockLow;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? defaultShippingFee;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? minimumShippingFee;
+
+  List<ProductSupportedShippingCompaniesListEnum> supportedShippingCompaniesList;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Product &&
     other.id == id &&
@@ -371,7 +395,8 @@ class Product {
     other.brand == brand &&
     other.minStock == minStock &&
     _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
-    other.defaultShippingFee == defaultShippingFee &&
+    _deepEquality.equals(other.shippingFees, shippingFees) &&
+    other.defaultShippingCompany == defaultShippingCompany &&
     other.freeShippingThreshold == freeShippingThreshold &&
     other.stockAlertThreshold == stockAlertThreshold &&
     other.allowNegativeStock == allowNegativeStock &&
@@ -379,7 +404,10 @@ class Product {
     other.shippingTimeDescription == shippingTimeDescription &&
     other.inStock == inStock &&
     other.stockBelowMinimum == stockBelowMinimum &&
-    other.stockLow == stockLow;
+    other.stockLow == stockLow &&
+    other.defaultShippingFee == defaultShippingFee &&
+    other.minimumShippingFee == minimumShippingFee &&
+    _deepEquality.equals(other.supportedShippingCompaniesList, supportedShippingCompaniesList);
 
   @override
   int get hashCode =>
@@ -416,7 +444,8 @@ class Product {
     (brand == null ? 0 : brand!.hashCode) +
     (minStock == null ? 0 : minStock!.hashCode) +
     (supportedShippingCompanies.hashCode) +
-    (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
+    (shippingFees.hashCode) +
+    (defaultShippingCompany == null ? 0 : defaultShippingCompany!.hashCode) +
     (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode) +
     (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
     (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode) +
@@ -424,10 +453,13 @@ class Product {
     (shippingTimeDescription == null ? 0 : shippingTimeDescription!.hashCode) +
     (inStock == null ? 0 : inStock!.hashCode) +
     (stockBelowMinimum == null ? 0 : stockBelowMinimum!.hashCode) +
-    (stockLow == null ? 0 : stockLow!.hashCode);
+    (stockLow == null ? 0 : stockLow!.hashCode) +
+    (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
+    (minimumShippingFee == null ? 0 : minimumShippingFee!.hashCode) +
+    (supportedShippingCompaniesList.hashCode);
 
   @override
-  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrls=$imageUrls, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skus=$skus, brand=$brand, minStock=$minStock, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, store=$store, shippingTimeDescription=$shippingTimeDescription, inStock=$inStock, stockBelowMinimum=$stockBelowMinimum, stockLow=$stockLow]';
+  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrls=$imageUrls, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skus=$skus, brand=$brand, minStock=$minStock, supportedShippingCompanies=$supportedShippingCompanies, shippingFees=$shippingFees, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, store=$store, shippingTimeDescription=$shippingTimeDescription, inStock=$inStock, stockBelowMinimum=$stockBelowMinimum, stockLow=$stockLow, defaultShippingFee=$defaultShippingFee, minimumShippingFee=$minimumShippingFee, supportedShippingCompaniesList=$supportedShippingCompaniesList]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -523,10 +555,11 @@ class Product {
       json[r'minStock'] = null;
     }
       json[r'supportedShippingCompanies'] = this.supportedShippingCompanies.toList(growable: false);
-    if (this.defaultShippingFee != null) {
-      json[r'defaultShippingFee'] = this.defaultShippingFee;
+      json[r'shippingFees'] = this.shippingFees;
+    if (this.defaultShippingCompany != null) {
+      json[r'defaultShippingCompany'] = this.defaultShippingCompany;
     } else {
-      json[r'defaultShippingFee'] = null;
+      json[r'defaultShippingCompany'] = null;
     }
     if (this.freeShippingThreshold != null) {
       json[r'freeShippingThreshold'] = this.freeShippingThreshold;
@@ -568,6 +601,17 @@ class Product {
     } else {
       json[r'stockLow'] = null;
     }
+    if (this.defaultShippingFee != null) {
+      json[r'defaultShippingFee'] = this.defaultShippingFee;
+    } else {
+      json[r'defaultShippingFee'] = null;
+    }
+    if (this.minimumShippingFee != null) {
+      json[r'minimumShippingFee'] = this.minimumShippingFee;
+    } else {
+      json[r'minimumShippingFee'] = null;
+    }
+      json[r'supportedShippingCompaniesList'] = this.supportedShippingCompaniesList;
     return json;
   }
 
@@ -626,8 +670,9 @@ class Product {
         brand: mapValueOfType<String>(json, r'brand'),
         minStock: mapValueOfType<int>(json, r'minStock'),
         supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']).toSet(),
-        defaultShippingFee: mapValueOfType<double>(json, r'defaultShippingFee'),
-        freeShippingThreshold: mapValueOfType<double>(json, r'freeShippingThreshold'),
+        shippingFees: mapCastOfType<String, num>(json, r'shippingFees') ?? const {},
+        defaultShippingCompany: ShippingCompanyEnum.fromJson(json[r'defaultShippingCompany']),
+        freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
         stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
         allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
         store: Store.fromJson(json[r'store']),
@@ -635,6 +680,9 @@ class Product {
         inStock: mapValueOfType<bool>(json, r'inStock'),
         stockBelowMinimum: mapValueOfType<bool>(json, r'stockBelowMinimum'),
         stockLow: mapValueOfType<bool>(json, r'stockLow'),
+        defaultShippingFee: num.parse('${json[r'defaultShippingFee']}'),
+        minimumShippingFee: num.parse('${json[r'minimumShippingFee']}'),
+        supportedShippingCompaniesList: ProductSupportedShippingCompaniesListEnum.listFromJson(json[r'supportedShippingCompaniesList']),
       );
     }
     return null;
@@ -698,4 +746,117 @@ class Product {
     'status',
   };
 }
+
+/// 物流公司
+class ProductSupportedShippingCompaniesListEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ProductSupportedShippingCompaniesListEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const BLACK_CAT = ProductSupportedShippingCompaniesListEnum._(r'BLACK_CAT');
+  static const HCT = ProductSupportedShippingCompaniesListEnum._(r'HCT');
+  static const KERRY = ProductSupportedShippingCompaniesListEnum._(r'KERRY');
+  static const KERRY_TJ = ProductSupportedShippingCompaniesListEnum._(r'KERRY_TJ');
+  static const SF_EXPRESS = ProductSupportedShippingCompaniesListEnum._(r'SF_EXPRESS');
+  static const CHUNGHWA_POST = ProductSupportedShippingCompaniesListEnum._(r'CHUNGHWA_POST');
+  static const FAMILY_MART = ProductSupportedShippingCompaniesListEnum._(r'FAMILY_MART');
+  static const SEVEN_ELEVEN = ProductSupportedShippingCompaniesListEnum._(r'SEVEN_ELEVEN');
+  static const HILIFE = ProductSupportedShippingCompaniesListEnum._(r'HILIFE');
+  static const OK_MART = ProductSupportedShippingCompaniesListEnum._(r'OK_MART');
+  static const T_CAT = ProductSupportedShippingCompaniesListEnum._(r'T_CAT');
+  static const TAIWAN_DELIVERY = ProductSupportedShippingCompaniesListEnum._(r'TAIWAN_DELIVERY');
+  static const PLATFORM_DELIVERY = ProductSupportedShippingCompaniesListEnum._(r'PLATFORM_DELIVERY');
+  static const OTHER = ProductSupportedShippingCompaniesListEnum._(r'OTHER');
+  static const unknownDefaultOpenApi = ProductSupportedShippingCompaniesListEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ProductSupportedShippingCompaniesListEnum].
+  static const values = <ProductSupportedShippingCompaniesListEnum>[
+    BLACK_CAT,
+    HCT,
+    KERRY,
+    KERRY_TJ,
+    SF_EXPRESS,
+    CHUNGHWA_POST,
+    FAMILY_MART,
+    SEVEN_ELEVEN,
+    HILIFE,
+    OK_MART,
+    T_CAT,
+    TAIWAN_DELIVERY,
+    PLATFORM_DELIVERY,
+    OTHER,
+    unknownDefaultOpenApi,
+  ];
+
+  static ProductSupportedShippingCompaniesListEnum? fromJson(dynamic value) => ProductSupportedShippingCompaniesListEnumTypeTransformer().decode(value);
+
+  static List<ProductSupportedShippingCompaniesListEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProductSupportedShippingCompaniesListEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProductSupportedShippingCompaniesListEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ProductSupportedShippingCompaniesListEnum] to String,
+/// and [decode] dynamic data back to [ProductSupportedShippingCompaniesListEnum].
+class ProductSupportedShippingCompaniesListEnumTypeTransformer {
+  factory ProductSupportedShippingCompaniesListEnumTypeTransformer() => _instance ??= const ProductSupportedShippingCompaniesListEnumTypeTransformer._();
+
+  const ProductSupportedShippingCompaniesListEnumTypeTransformer._();
+
+  String encode(ProductSupportedShippingCompaniesListEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ProductSupportedShippingCompaniesListEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ProductSupportedShippingCompaniesListEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'BLACK_CAT': return ProductSupportedShippingCompaniesListEnum.BLACK_CAT;
+        case r'HCT': return ProductSupportedShippingCompaniesListEnum.HCT;
+        case r'KERRY': return ProductSupportedShippingCompaniesListEnum.KERRY;
+        case r'KERRY_TJ': return ProductSupportedShippingCompaniesListEnum.KERRY_TJ;
+        case r'SF_EXPRESS': return ProductSupportedShippingCompaniesListEnum.SF_EXPRESS;
+        case r'CHUNGHWA_POST': return ProductSupportedShippingCompaniesListEnum.CHUNGHWA_POST;
+        case r'FAMILY_MART': return ProductSupportedShippingCompaniesListEnum.FAMILY_MART;
+        case r'SEVEN_ELEVEN': return ProductSupportedShippingCompaniesListEnum.SEVEN_ELEVEN;
+        case r'HILIFE': return ProductSupportedShippingCompaniesListEnum.HILIFE;
+        case r'OK_MART': return ProductSupportedShippingCompaniesListEnum.OK_MART;
+        case r'T_CAT': return ProductSupportedShippingCompaniesListEnum.T_CAT;
+        case r'TAIWAN_DELIVERY': return ProductSupportedShippingCompaniesListEnum.TAIWAN_DELIVERY;
+        case r'PLATFORM_DELIVERY': return ProductSupportedShippingCompaniesListEnum.PLATFORM_DELIVERY;
+        case r'OTHER': return ProductSupportedShippingCompaniesListEnum.OTHER;
+        case r'unknown_default_open_api': return ProductSupportedShippingCompaniesListEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ProductSupportedShippingCompaniesListEnumTypeTransformer] instance.
+  static ProductSupportedShippingCompaniesListEnumTypeTransformer? _instance;
+}
+
 
