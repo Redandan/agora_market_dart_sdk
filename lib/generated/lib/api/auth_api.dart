@@ -60,6 +60,102 @@ class AuthApi {
     }
   }
 
+  /// 禁用雙因素認證
+  ///
+  /// 使用驗證碼禁用2FA
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [TwoFactorVerifyParam] twoFactorVerifyParam (required):
+  Future<Response> disableTwoFactorWithHttpInfo(TwoFactorVerifyParam twoFactorVerifyParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/2fa/disable';
+
+    // ignore: prefer_final_locals
+    Object? postBody = twoFactorVerifyParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 禁用雙因素認證
+  ///
+  /// 使用驗證碼禁用2FA
+  ///
+  /// Parameters:
+  ///
+  /// * [TwoFactorVerifyParam] twoFactorVerifyParam (required):
+  Future<void> disableTwoFactor(TwoFactorVerifyParam twoFactorVerifyParam,) async {
+    final response = await disableTwoFactorWithHttpInfo(twoFactorVerifyParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// 啟用雙因素認證
+  ///
+  /// 使用驗證碼啟用2FA
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [TwoFactorVerifyParam] twoFactorVerifyParam (required):
+  Future<Response> enableTwoFactorWithHttpInfo(TwoFactorVerifyParam twoFactorVerifyParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/2fa/enable';
+
+    // ignore: prefer_final_locals
+    Object? postBody = twoFactorVerifyParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 啟用雙因素認證
+  ///
+  /// 使用驗證碼啟用2FA
+  ///
+  /// Parameters:
+  ///
+  /// * [TwoFactorVerifyParam] twoFactorVerifyParam (required):
+  Future<void> enableTwoFactor(TwoFactorVerifyParam twoFactorVerifyParam,) async {
+    final response = await enableTwoFactorWithHttpInfo(twoFactorVerifyParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
   /// 發送密碼重置郵件
   ///
   /// Note: This method returns the HTTP [Response].
@@ -147,6 +243,54 @@ class AuthApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UserInfo',) as UserInfo;
+    
+    }
+    return null;
+  }
+
+  /// 獲取雙因素認證信息
+  ///
+  /// 如果未設置2FA，返回QR碼和密鑰；如果已設置，返回狀態信息
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getTwoFactorInfoWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/2fa';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 獲取雙因素認證信息
+  ///
+  /// 如果未設置2FA，返回QR碼和密鑰；如果已設置，返回狀態信息
+  Future<TwoFactorSetupResponse?> getTwoFactorInfo() async {
+    final response = await getTwoFactorInfoWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TwoFactorSetupResponse',) as TwoFactorSetupResponse;
     
     }
     return null;
@@ -490,5 +634,61 @@ class AuthApi {
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+  }
+
+  /// 驗證雙因素認證碼
+  ///
+  /// 驗證2FA代碼是否正確
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [TwoFactorVerifyParam] twoFactorVerifyParam (required):
+  Future<Response> verifyTwoFactorCodeWithHttpInfo(TwoFactorVerifyParam twoFactorVerifyParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/2fa/verify';
+
+    // ignore: prefer_final_locals
+    Object? postBody = twoFactorVerifyParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 驗證雙因素認證碼
+  ///
+  /// 驗證2FA代碼是否正確
+  ///
+  /// Parameters:
+  ///
+  /// * [TwoFactorVerifyParam] twoFactorVerifyParam (required):
+  Future<bool?> verifyTwoFactorCode(TwoFactorVerifyParam twoFactorVerifyParam,) async {
+    final response = await verifyTwoFactorCodeWithHttpInfo(twoFactorVerifyParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
+    
+    }
+    return null;
   }
 }

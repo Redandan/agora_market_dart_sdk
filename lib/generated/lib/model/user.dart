@@ -29,6 +29,8 @@ class User {
     this.ambassadorName,
     this.displayDeliveryerName,
     this.promoCode,
+    this.twoFactorEnabled,
+    this.twoFactorSecret,
     this.createdAt,
     this.updatedAt,
     this.admin,
@@ -177,6 +179,24 @@ class User {
   ///
   String? promoCode;
 
+  /// 是否啟用雙因素認證
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? twoFactorEnabled;
+
+  /// 雙因素認證密鑰
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? twoFactorSecret;
+
   /// 創建時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -221,6 +241,8 @@ class User {
     other.ambassadorName == ambassadorName &&
     other.displayDeliveryerName == displayDeliveryerName &&
     other.promoCode == promoCode &&
+    other.twoFactorEnabled == twoFactorEnabled &&
+    other.twoFactorSecret == twoFactorSecret &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
     other.admin == admin;
@@ -244,12 +266,14 @@ class User {
     (ambassadorName == null ? 0 : ambassadorName!.hashCode) +
     (displayDeliveryerName == null ? 0 : displayDeliveryerName!.hashCode) +
     (promoCode == null ? 0 : promoCode!.hashCode) +
+    (twoFactorEnabled == null ? 0 : twoFactorEnabled!.hashCode) +
+    (twoFactorSecret == null ? 0 : twoFactorSecret!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (admin == null ? 0 : admin!.hashCode);
 
   @override
-  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, recipientAddress=$recipientAddress, recipientName=$recipientName, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin]';
+  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, recipientAddress=$recipientAddress, recipientName=$recipientName, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -333,6 +357,16 @@ class User {
     } else {
       json[r'promoCode'] = null;
     }
+    if (this.twoFactorEnabled != null) {
+      json[r'twoFactorEnabled'] = this.twoFactorEnabled;
+    } else {
+      json[r'twoFactorEnabled'] = null;
+    }
+    if (this.twoFactorSecret != null) {
+      json[r'twoFactorSecret'] = this.twoFactorSecret;
+    } else {
+      json[r'twoFactorSecret'] = null;
+    }
     if (this.createdAt != null) {
       json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
     } else {
@@ -386,6 +420,8 @@ class User {
         ambassadorName: mapValueOfType<String>(json, r'ambassadorName'),
         displayDeliveryerName: mapValueOfType<String>(json, r'displayDeliveryerName'),
         promoCode: mapValueOfType<String>(json, r'promoCode'),
+        twoFactorEnabled: mapValueOfType<bool>(json, r'twoFactorEnabled'),
+        twoFactorSecret: mapValueOfType<String>(json, r'twoFactorSecret'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         admin: mapValueOfType<bool>(json, r'admin'),

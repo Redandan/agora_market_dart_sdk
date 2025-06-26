@@ -58,6 +58,15 @@ void main() {
       // TODO
     });
 
+    // 第三方物流發貨
+    //
+    // 賣家發貨，已完成物流寄件
+    //
+    //Future shipOrderLogistics(OrderShipLogisticsParam orderShipLogisticsParam) async
+    test('test shipOrderLogistics', () async {
+      // TODO
+    });
+
     // 平台配送發貨
     //
     // 賣家發貨，等待媒合配送員

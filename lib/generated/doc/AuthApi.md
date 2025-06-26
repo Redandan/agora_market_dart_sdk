@@ -10,8 +10,11 @@ All URIs are relative to *https://agoramarketapi.purrtechllc.com/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**changePassword**](AuthApi.md#changepassword) | **POST** /auth/change-password | 修改密碼
+[**disableTwoFactor**](AuthApi.md#disabletwofactor) | **POST** /auth/2fa/disable | 禁用雙因素認證
+[**enableTwoFactor**](AuthApi.md#enabletwofactor) | **POST** /auth/2fa/enable | 啟用雙因素認證
 [**forgotPassword**](AuthApi.md#forgotpassword) | **POST** /auth/forgot-password | 發送密碼重置郵件
 [**getCurrentUser**](AuthApi.md#getcurrentuser) | **GET** /auth/me | 獲取當前用戶信息
+[**getTwoFactorInfo**](AuthApi.md#gettwofactorinfo) | **GET** /auth/2fa | 獲取雙因素認證信息
 [**login**](AuthApi.md#login) | **POST** /auth/login | 用戶登入
 [**logout**](AuthApi.md#logout) | **POST** /auth/logout | 用戶登出
 [**refreshToken**](AuthApi.md#refreshtoken) | **POST** /auth/refresh-token | 刷新訪問令牌
@@ -19,6 +22,7 @@ Method | HTTP request | Description
 [**resetPassword**](AuthApi.md#resetpassword) | **POST** /auth/reset-password | 重設密碼
 [**updateProfile**](AuthApi.md#updateprofile) | **POST** /auth/update-profile | 更新用戶資料
 [**verifyResetToken**](AuthApi.md#verifyresettoken) | **POST** /auth/verify-reset-token | 驗證密碼重置令牌
+[**verifyTwoFactorCode**](AuthApi.md#verifytwofactorcode) | **POST** /auth/2fa/verify | 驗證雙因素認證碼
 
 
 # **changePassword**
@@ -45,6 +49,90 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **changePasswordParam** | [**ChangePasswordParam**](ChangePasswordParam.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **disableTwoFactor**
+> disableTwoFactor(twoFactorVerifyParam)
+
+禁用雙因素認證
+
+使用驗證碼禁用2FA
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = AuthApi();
+final twoFactorVerifyParam = TwoFactorVerifyParam(); // TwoFactorVerifyParam | 
+
+try {
+    api_instance.disableTwoFactor(twoFactorVerifyParam);
+} catch (e) {
+    print('Exception when calling AuthApi->disableTwoFactor: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **twoFactorVerifyParam** | [**TwoFactorVerifyParam**](TwoFactorVerifyParam.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **enableTwoFactor**
+> enableTwoFactor(twoFactorVerifyParam)
+
+啟用雙因素認證
+
+使用驗證碼啟用2FA
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = AuthApi();
+final twoFactorVerifyParam = TwoFactorVerifyParam(); // TwoFactorVerifyParam | 
+
+try {
+    api_instance.enableTwoFactor(twoFactorVerifyParam);
+} catch (e) {
+    print('Exception when calling AuthApi->enableTwoFactor: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **twoFactorVerifyParam** | [**TwoFactorVerifyParam**](TwoFactorVerifyParam.md)|  | 
 
 ### Return type
 
@@ -126,6 +214,45 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**UserInfo**](UserInfo.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getTwoFactorInfo**
+> TwoFactorSetupResponse getTwoFactorInfo()
+
+獲取雙因素認證信息
+
+如果未設置2FA，返回QR碼和密鑰；如果已設置，返回狀態信息
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = AuthApi();
+
+try {
+    final result = api_instance.getTwoFactorInfo();
+    print(result);
+} catch (e) {
+    print('Exception when calling AuthApi->getTwoFactorInfo: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**TwoFactorSetupResponse**](TwoFactorSetupResponse.md)
 
 ### Authorization
 
@@ -415,6 +542,49 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **verifyTwoFactorCode**
+> bool verifyTwoFactorCode(twoFactorVerifyParam)
+
+驗證雙因素認證碼
+
+驗證2FA代碼是否正確
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = AuthApi();
+final twoFactorVerifyParam = TwoFactorVerifyParam(); // TwoFactorVerifyParam | 
+
+try {
+    final result = api_instance.verifyTwoFactorCode(twoFactorVerifyParam);
+    print(result);
+} catch (e) {
+    print('Exception when calling AuthApi->verifyTwoFactorCode: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **twoFactorVerifyParam** | [**TwoFactorVerifyParam**](TwoFactorVerifyParam.md)|  | 
+
+### Return type
+
+**bool**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

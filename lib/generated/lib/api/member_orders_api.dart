@@ -313,6 +313,54 @@ class MemberOrdersApi {
     return null;
   }
 
+  /// 第三方物流發貨
+  ///
+  /// 賣家發貨，已完成物流寄件
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [OrderShipLogisticsParam] orderShipLogisticsParam (required):
+  Future<Response> shipOrderLogisticsWithHttpInfo(OrderShipLogisticsParam orderShipLogisticsParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/orders/ship/logistics';
+
+    // ignore: prefer_final_locals
+    Object? postBody = orderShipLogisticsParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 第三方物流發貨
+  ///
+  /// 賣家發貨，已完成物流寄件
+  ///
+  /// Parameters:
+  ///
+  /// * [OrderShipLogisticsParam] orderShipLogisticsParam (required):
+  Future<void> shipOrderLogistics(OrderShipLogisticsParam orderShipLogisticsParam,) async {
+    final response = await shipOrderLogisticsWithHttpInfo(orderShipLogisticsParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
   /// 平台配送發貨
   ///
   /// 賣家發貨，等待媒合配送員

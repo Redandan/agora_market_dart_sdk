@@ -184,6 +184,8 @@ class ApiClient {
           return value is DateTime ? value : DateTime.tryParse(value);
         case 'AdminCreateUserParam':
           return AdminCreateUserParam.fromJson(value);
+        case 'AutoReplyConfig':
+          return AutoReplyConfig.fromJson(value);
         case 'BatchReviewPromoCodeParam':
           return BatchReviewPromoCodeParam.fromJson(value);
         case 'BatchReviewResult':
@@ -254,12 +256,16 @@ class ApiClient {
           return DisputeStatisticsDTO.fromJson(value);
         case 'DisputeStatusEnum':
           return DisputeStatusEnumTypeTransformer().decode(value);
+        case 'HumanInterventionSettings':
+          return HumanInterventionSettings.fromJson(value);
         case 'IssueSearchParam':
           return IssueSearchParam.fromJson(value);
         case 'IssueStatusEnum':
           return IssueStatusEnumTypeTransformer().decode(value);
         case 'IssueTypeEnum':
           return IssueTypeEnumTypeTransformer().decode(value);
+        case 'KeywordRule':
+          return KeywordRule.fromJson(value);
         case 'LoginParam':
           return LoginParam.fromJson(value);
         case 'LoginResult':
@@ -290,6 +296,8 @@ class ApiClient {
           return OrderQueryResult.fromJson(value);
         case 'OrderSearchParam':
           return OrderSearchParam.fromJson(value);
+        case 'OrderShipLogisticsParam':
+          return OrderShipLogisticsParam.fromJson(value);
         case 'OrderShipPlatformParam':
           return OrderShipPlatformParam.fromJson(value);
         case 'OrderStatisticsDTO':
@@ -336,6 +344,8 @@ class ApiClient {
           return PageableObject.fromJson(value);
         case 'PasswordResetParam':
           return PasswordResetParam.fromJson(value);
+        case 'PersonalizationSettings':
+          return PersonalizationSettings.fromJson(value);
         case 'Product':
           return Product.fromJson(value);
         case 'ProductCategoryEnum':
@@ -390,6 +400,8 @@ class ApiClient {
           return SalesStats.fromJson(value);
         case 'ShippingCompanyEnum':
           return ShippingCompanyEnumTypeTransformer().decode(value);
+        case 'SmartReplySettings':
+          return SmartReplySettings.fromJson(value);
         case 'SortObject':
           return SortObject.fromJson(value);
         case 'Staking':
@@ -420,6 +432,10 @@ class ApiClient {
           return Transaction.fromJson(value);
         case 'TransactionTypeEnum':
           return TransactionTypeEnumTypeTransformer().decode(value);
+        case 'TwoFactorSetupResponse':
+          return TwoFactorSetupResponse.fromJson(value);
+        case 'TwoFactorVerifyParam':
+          return TwoFactorVerifyParam.fromJson(value);
         case 'UpdateDeliveryOrderParam':
           return UpdateDeliveryOrderParam.fromJson(value);
         case 'UpdatePromoCodeParam':

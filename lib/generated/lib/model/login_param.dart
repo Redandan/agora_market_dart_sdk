@@ -16,7 +16,7 @@ class LoginParam {
     required this.username,
     required this.password,
     this.rememberMe,
-    this.code,
+    this.twoFactorCode,
   });
 
   /// 用戶名
@@ -34,20 +34,21 @@ class LoginParam {
   ///
   bool? rememberMe;
 
+  /// 雙因素認證碼
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? code;
+  String? twoFactorCode;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is LoginParam &&
     other.username == username &&
     other.password == password &&
     other.rememberMe == rememberMe &&
-    other.code == code;
+    other.twoFactorCode == twoFactorCode;
 
   @override
   int get hashCode =>
@@ -55,10 +56,10 @@ class LoginParam {
     (username.hashCode) +
     (password.hashCode) +
     (rememberMe == null ? 0 : rememberMe!.hashCode) +
-    (code == null ? 0 : code!.hashCode);
+    (twoFactorCode == null ? 0 : twoFactorCode!.hashCode);
 
   @override
-  String toString() => 'LoginParam[username=$username, password=$password, rememberMe=$rememberMe, code=$code]';
+  String toString() => 'LoginParam[username=$username, password=$password, rememberMe=$rememberMe, twoFactorCode=$twoFactorCode]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -69,10 +70,10 @@ class LoginParam {
     } else {
       json[r'rememberMe'] = null;
     }
-    if (this.code != null) {
-      json[r'code'] = this.code;
+    if (this.twoFactorCode != null) {
+      json[r'twoFactorCode'] = this.twoFactorCode;
     } else {
-      json[r'code'] = null;
+      json[r'twoFactorCode'] = null;
     }
     return json;
   }
@@ -99,7 +100,7 @@ class LoginParam {
         username: mapValueOfType<String>(json, r'username')!,
         password: mapValueOfType<String>(json, r'password')!,
         rememberMe: mapValueOfType<bool>(json, r'rememberMe'),
-        code: mapValueOfType<String>(json, r'code'),
+        twoFactorCode: mapValueOfType<String>(json, r'twoFactorCode'),
       );
     }
     return null;

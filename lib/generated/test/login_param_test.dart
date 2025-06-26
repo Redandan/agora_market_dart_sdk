@@ -34,8 +34,9 @@ void main() {
       // TODO
     });
 
-    // String code
-    test('to test the property `code`', () async {
+    // 雙因素認證碼
+    // String twoFactorCode
+    test('to test the property `twoFactorCode`', () async {
       // TODO
     });
 

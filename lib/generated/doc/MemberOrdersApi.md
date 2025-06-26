@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**getOrder**](MemberOrdersApi.md#getorder) | **GET** /orders/{orderId} | 獲取訂單詳情
 [**searchOrdersByBuyer**](MemberOrdersApi.md#searchordersbybuyer) | **POST** /orders/buyer/search | 買家查詢訂單列表
 [**searchOrdersBySeller**](MemberOrdersApi.md#searchordersbyseller) | **POST** /orders/seller/search | 賣家查詢訂單列表
+[**shipOrderLogistics**](MemberOrdersApi.md#shiporderlogistics) | **POST** /orders/ship/logistics | 第三方物流發貨
 [**shipOrderPlatform**](MemberOrdersApi.md#shiporderplatform) | **POST** /orders/ship/platform | 平台配送發貨
 [**submitOrder**](MemberOrdersApi.md#submitorder) | **POST** /orders | 提交訂單
 
@@ -232,6 +233,48 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **shipOrderLogistics**
+> shipOrderLogistics(orderShipLogisticsParam)
+
+第三方物流發貨
+
+賣家發貨，已完成物流寄件
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = MemberOrdersApi();
+final orderShipLogisticsParam = OrderShipLogisticsParam(); // OrderShipLogisticsParam | 
+
+try {
+    api_instance.shipOrderLogistics(orderShipLogisticsParam);
+} catch (e) {
+    print('Exception when calling MemberOrdersApi->shipOrderLogistics: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderShipLogisticsParam** | [**OrderShipLogisticsParam**](OrderShipLogisticsParam.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

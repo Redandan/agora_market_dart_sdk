@@ -111,6 +111,18 @@ void main() {
       // TODO
     });
 
+    // 是否啟用雙因素認證
+    // bool twoFactorEnabled
+    test('to test the property `twoFactorEnabled`', () async {
+      // TODO
+    });
+
+    // 雙因素認證密鑰
+    // String twoFactorSecret
+    test('to test the property `twoFactorSecret`', () async {
+      // TODO
+    });
+
     // 創建時間
     // DateTime createdAt
     test('to test the property `createdAt`', () async {

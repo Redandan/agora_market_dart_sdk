@@ -24,6 +24,24 @@ void main() {
       // TODO
     });
 
+    // 禁用雙因素認證
+    //
+    // 使用驗證碼禁用2FA
+    //
+    //Future disableTwoFactor(TwoFactorVerifyParam twoFactorVerifyParam) async
+    test('test disableTwoFactor', () async {
+      // TODO
+    });
+
+    // 啟用雙因素認證
+    //
+    // 使用驗證碼啟用2FA
+    //
+    //Future enableTwoFactor(TwoFactorVerifyParam twoFactorVerifyParam) async
+    test('test enableTwoFactor', () async {
+      // TODO
+    });
+
     // 發送密碼重置郵件
     //
     //Future forgotPassword(String email) async
@@ -35,6 +53,15 @@ void main() {
     //
     //Future<UserInfo> getCurrentUser() async
     test('test getCurrentUser', () async {
+      // TODO
+    });
+
+    // 獲取雙因素認證信息
+    //
+    // 如果未設置2FA，返回QR碼和密鑰；如果已設置，返回狀態信息
+    //
+    //Future<TwoFactorSetupResponse> getTwoFactorInfo() async
+    test('test getTwoFactorInfo', () async {
       // TODO
     });
 
@@ -84,6 +111,15 @@ void main() {
     //
     //Future verifyResetToken(String token) async
     test('test verifyResetToken', () async {
+      // TODO
+    });
+
+    // 驗證雙因素認證碼
+    //
+    // 驗證2FA代碼是否正確
+    //
+    //Future<bool> verifyTwoFactorCode(TwoFactorVerifyParam twoFactorVerifyParam) async
+    test('test verifyTwoFactorCode', () async {
       // TODO
     });
 

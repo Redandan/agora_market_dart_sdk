@@ -150,8 +150,11 @@ Class | Method | HTTP request | Description
 *AdminProductsApi* | [**updateProductByAdmin**](doc//AdminProductsApi.md#updateproductbyadmin) | **POST** /admin/products/{productId}/update | 更新商品
 *AdminProductsApi* | [**updateProductStatusEnum**](doc//AdminProductsApi.md#updateproductstatusenum) | **POST** /admin/products/{productId}/status | 更新商品狀態
 *AuthApi* | [**changePassword**](doc//AuthApi.md#changepassword) | **POST** /auth/change-password | 修改密碼
+*AuthApi* | [**disableTwoFactor**](doc//AuthApi.md#disabletwofactor) | **POST** /auth/2fa/disable | 禁用雙因素認證
+*AuthApi* | [**enableTwoFactor**](doc//AuthApi.md#enabletwofactor) | **POST** /auth/2fa/enable | 啟用雙因素認證
 *AuthApi* | [**forgotPassword**](doc//AuthApi.md#forgotpassword) | **POST** /auth/forgot-password | 發送密碼重置郵件
 *AuthApi* | [**getCurrentUser**](doc//AuthApi.md#getcurrentuser) | **GET** /auth/me | 獲取當前用戶信息
+*AuthApi* | [**getTwoFactorInfo**](doc//AuthApi.md#gettwofactorinfo) | **GET** /auth/2fa | 獲取雙因素認證信息
 *AuthApi* | [**login**](doc//AuthApi.md#login) | **POST** /auth/login | 用戶登入
 *AuthApi* | [**logout**](doc//AuthApi.md#logout) | **POST** /auth/logout | 用戶登出
 *AuthApi* | [**refreshToken**](doc//AuthApi.md#refreshtoken) | **POST** /auth/refresh-token | 刷新訪問令牌
@@ -159,6 +162,11 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**resetPassword**](doc//AuthApi.md#resetpassword) | **POST** /auth/reset-password | 重設密碼
 *AuthApi* | [**updateProfile**](doc//AuthApi.md#updateprofile) | **POST** /auth/update-profile | 更新用戶資料
 *AuthApi* | [**verifyResetToken**](doc//AuthApi.md#verifyresettoken) | **POST** /auth/verify-reset-token | 驗證密碼重置令牌
+*AuthApi* | [**verifyTwoFactorCode**](doc//AuthApi.md#verifytwofactorcode) | **POST** /auth/2fa/verify | 驗證雙因素認證碼
+*AutoReplyApi* | [**getConfig**](doc//AutoReplyApi.md#getconfig) | **GET** /admin/auto-reply/config | 獲取自動回復配置
+*AutoReplyApi* | [**getStats**](doc//AutoReplyApi.md#getstats) | **GET** /admin/auto-reply/stats | 獲取自動回復統計
+*AutoReplyApi* | [**testAutoReply**](doc//AutoReplyApi.md#testautoreply) | **POST** /admin/auto-reply/test | 測試自動回復
+*AutoReplyApi* | [**updateConfig**](doc//AutoReplyApi.md#updateconfig) | **PUT** /admin/auto-reply/config | 更新自動回復配置
 *ChatApi* | [**clearSession**](doc//ChatApi.md#clearsession) | **DELETE** /chat/sessions/{sessionId}/messages | 清空會話
 *ChatApi* | [**deleteMessage**](doc//ChatApi.md#deletemessage) | **DELETE** /chat/messages/{messageId} | 刪除消息
 *ChatApi* | [**deleteSession**](doc//ChatApi.md#deletesession) | **DELETE** /chat/sessions/{sessionId} | 刪除會話
@@ -210,6 +218,7 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**getOrder**](doc//MemberOrdersApi.md#getorder) | **GET** /orders/{orderId} | 獲取訂單詳情
 *MemberOrdersApi* | [**searchOrdersByBuyer**](doc//MemberOrdersApi.md#searchordersbybuyer) | **POST** /orders/buyer/search | 買家查詢訂單列表
 *MemberOrdersApi* | [**searchOrdersBySeller**](doc//MemberOrdersApi.md#searchordersbyseller) | **POST** /orders/seller/search | 賣家查詢訂單列表
+*MemberOrdersApi* | [**shipOrderLogistics**](doc//MemberOrdersApi.md#shiporderlogistics) | **POST** /orders/ship/logistics | 第三方物流發貨
 *MemberOrdersApi* | [**shipOrderPlatform**](doc//MemberOrdersApi.md#shiporderplatform) | **POST** /orders/ship/platform | 平台配送發貨
 *MemberOrdersApi* | [**submitOrder**](doc//MemberOrdersApi.md#submitorder) | **POST** /orders | 提交訂單
 *ProductsApi* | [**calculateShippingTime**](doc//ProductsApi.md#calculateshippingtime) | **POST** /products/{productId}/calculate-shipping-time | 計算預計出貨時間
@@ -269,15 +278,18 @@ Class | Method | HTTP request | Description
 *StoresApi* | [**searchMyStoreProducts**](doc//StoresApi.md#searchmystoreproducts) | **GET** /stores/products/search | 搜索我的商店商品
 *StoresApi* | [**updateShippingConfig**](doc//StoresApi.md#updateshippingconfig) | **POST** /stores/shipping-config | 更新商店物流設定
 *StoresApi* | [**updateStore**](doc//StoresApi.md#updatestore) | **POST** /stores/update | 更新商店
-*TestDataControllerApi* | [**generateLogisticsOrder**](doc//TestDataControllerApi.md#generatelogisticsorder) | **POST** /test/logistics | 
-*TestDataControllerApi* | [**generatePlatformDeliveryOrder**](doc//TestDataControllerApi.md#generateplatformdeliveryorder) | **POST** /test/platform | 
-*TestDataControllerApi* | [**generateRechargeAndWithdraw**](doc//TestDataControllerApi.md#generaterechargeandwithdraw) | **POST** /test/recharge&withdraw | 
-*TestDataControllerApi* | [**generateTestData**](doc//TestDataControllerApi.md#generatetestdata) | **POST** /test/user | 
+*TestApi* | [**generateAutoReplyTestData**](doc//TestApi.md#generateautoreplytestdata) | **POST** /test/auto-reply | 生成自動回復測試數據
+*TestApi* | [**generateLogisticsOrder**](doc//TestApi.md#generatelogisticsorder) | **POST** /test/logistics | 
+*TestApi* | [**generatePlatformDeliveryOrder**](doc//TestApi.md#generateplatformdeliveryorder) | **POST** /test/platform | 
+*TestApi* | [**generateRechargeAndWithdraw**](doc//TestApi.md#generaterechargeandwithdraw) | **POST** /test/recharge&withdraw | 
+*TestApi* | [**generateReviewData**](doc//TestApi.md#generatereviewdata) | **POST** /test/review | 
+*TestApi* | [**generateTestData**](doc//TestApi.md#generatetestdata) | **POST** /test/generate-test-data | 生成測試數據
 
 
 ## Documentation For Models
 
  - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
+ - [AutoReplyConfig](doc//AutoReplyConfig.md)
  - [BatchReviewPromoCodeParam](doc//BatchReviewPromoCodeParam.md)
  - [BatchReviewResult](doc//BatchReviewResult.md)
  - [CartGroupBySeller](doc//CartGroupBySeller.md)
@@ -313,9 +325,11 @@ Class | Method | HTTP request | Description
  - [DisputeQueryResult](doc//DisputeQueryResult.md)
  - [DisputeStatisticsDTO](doc//DisputeStatisticsDTO.md)
  - [DisputeStatusEnum](doc//DisputeStatusEnum.md)
+ - [HumanInterventionSettings](doc//HumanInterventionSettings.md)
  - [IssueSearchParam](doc//IssueSearchParam.md)
  - [IssueStatusEnum](doc//IssueStatusEnum.md)
  - [IssueTypeEnum](doc//IssueTypeEnum.md)
+ - [KeywordRule](doc//KeywordRule.md)
  - [LoginParam](doc//LoginParam.md)
  - [LoginResult](doc//LoginResult.md)
  - [LogisticsServiceTypeEnum](doc//LogisticsServiceTypeEnum.md)
@@ -331,6 +345,7 @@ Class | Method | HTTP request | Description
  - [OrderConfirmParam](doc//OrderConfirmParam.md)
  - [OrderQueryResult](doc//OrderQueryResult.md)
  - [OrderSearchParam](doc//OrderSearchParam.md)
+ - [OrderShipLogisticsParam](doc//OrderShipLogisticsParam.md)
  - [OrderShipPlatformParam](doc//OrderShipPlatformParam.md)
  - [OrderStatisticsDTO](doc//OrderStatisticsDTO.md)
  - [OrderStatusEnum](doc//OrderStatusEnum.md)
@@ -354,6 +369,7 @@ Class | Method | HTTP request | Description
  - [Pageable](doc//Pageable.md)
  - [PageableObject](doc//PageableObject.md)
  - [PasswordResetParam](doc//PasswordResetParam.md)
+ - [PersonalizationSettings](doc//PersonalizationSettings.md)
  - [Product](doc//Product.md)
  - [ProductCategoryEnum](doc//ProductCategoryEnum.md)
  - [ProductCreateParam](doc//ProductCreateParam.md)
@@ -381,6 +397,7 @@ Class | Method | HTTP request | Description
  - [ReviewUpdateParam](doc//ReviewUpdateParam.md)
  - [SalesStats](doc//SalesStats.md)
  - [ShippingCompanyEnum](doc//ShippingCompanyEnum.md)
+ - [SmartReplySettings](doc//SmartReplySettings.md)
  - [SortObject](doc//SortObject.md)
  - [Staking](doc//Staking.md)
  - [Store](doc//Store.md)
@@ -396,6 +413,8 @@ Class | Method | HTTP request | Description
  - [TopSellerDTO](doc//TopSellerDTO.md)
  - [Transaction](doc//Transaction.md)
  - [TransactionTypeEnum](doc//TransactionTypeEnum.md)
+ - [TwoFactorSetupResponse](doc//TwoFactorSetupResponse.md)
+ - [TwoFactorVerifyParam](doc//TwoFactorVerifyParam.md)
  - [UpdateDeliveryOrderParam](doc//UpdateDeliveryOrderParam.md)
  - [UpdatePromoCodeParam](doc//UpdatePromoCodeParam.md)
  - [User](doc//User.md)

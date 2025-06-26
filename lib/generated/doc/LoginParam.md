@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **username** | **String** | 用戶名 | 
 **password** | **String** | 密碼 | 
 **rememberMe** | **bool** | 記住我 | [optional] 
-**code** | **String** |  | [optional] 
+**twoFactorCode** | **String** | 雙因素認證碼 | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

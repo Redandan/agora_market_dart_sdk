@@ -12,11 +12,20 @@ import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 
-/// tests for TestDataControllerApi
+/// tests for TestApi
 void main() {
-  // final instance = TestDataControllerApi();
+  // final instance = TestApi();
 
-  group('tests for TestDataControllerApi', () {
+  group('tests for TestApi', () {
+    // 生成自動回復測試數據
+    //
+    // 生成測試用戶與自動回復機器人的對話記錄和反饋數據
+    //
+    //Future<String> generateAutoReplyTestData() async
+    test('test generateAutoReplyTestData', () async {
+      // TODO
+    });
+
     //Future<String> generateLogisticsOrder() async
     test('test generateLogisticsOrder', () async {
       // TODO
@@ -32,6 +41,13 @@ void main() {
       // TODO
     });
 
+    //Future<String> generateReviewData() async
+    test('test generateReviewData', () async {
+      // TODO
+    });
+
+    // 生成測試數據
+    //
     //Future<String> generateTestData() async
     test('test generateTestData', () async {
       // TODO
