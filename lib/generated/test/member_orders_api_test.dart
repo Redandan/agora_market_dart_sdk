@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 
@@ -17,69 +17,66 @@ void main() {
   // final instance = MemberOrdersApi();
 
   group('tests for MemberOrdersApi', () {
-    // 取消訂單
+    // ?��?訂單
     //
-    // 取消訂單
+    // ?��?訂單
     //
     //Future cancelOrder(OrderCancelParam orderCancelParam) async
     test('test cancelOrder', () async {
       // TODO
     });
 
-    // 確認收貨
+    // 確�??�貨
     //
-    // 買家確認收貨
+    // 買家確�??�貨
     //
     //Future confirmOrder(OrderConfirmParam orderConfirmParam) async
     test('test confirmOrder', () async {
       // TODO
     });
 
-    // 獲取訂單詳情
+    // ?��?訂單詳�?
     //
-    // 根據訂單ID獲取訂單詳情
+    // ?��?訂單ID?��?訂單詳�?
     //
     //Future<OrderQueryResult> getOrder(String orderId) async
     test('test getOrder', () async {
       // TODO
     });
 
-    // 買家查詢訂單列表
+    // 買家?�詢訂單?�表
     //
     //Future<PageOrder> searchOrdersByBuyer(OrderSearchParam orderSearchParam, { int page, int size }) async
     test('test searchOrdersByBuyer', () async {
       // TODO
     });
 
-    // 賣家查詢訂單列表
+    // �?��?�詢訂單?�表
     //
     //Future<PageOrder> searchOrdersBySeller(UserOrderSearchParam userOrderSearchParam, { int page, int size }) async
     test('test searchOrdersBySeller', () async {
       // TODO
     });
 
-    // 第三方物流發貨
-    //
-    // 賣家發貨，已完成物流寄件
+    // 第�??�物流發�?    //
+    // �?��?�貨，已完�??��?寄件
     //
     //Future shipOrderLogistics(OrderShipLogisticsParam orderShipLogisticsParam) async
     test('test shipOrderLogistics', () async {
       // TODO
     });
 
-    // 平台配送發貨
-    //
-    // 賣家發貨，等待媒合配送員
+    // 平台?�送發�?    //
+    // �?��?�貨，�?待�??��??�員
     //
     //Future shipOrderPlatform(OrderShipPlatformParam orderShipPlatformParam) async
     test('test shipOrderPlatform', () async {
       // TODO
     });
 
-    // 提交訂單
+    // ?�交訂單
     //
-    // 創建新訂單
-    //
+    // ?�建?��???    //
     //Future submitOrder(OrderSumbitParam orderSumbitParam) async
     test('test submitOrder', () async {
       // TODO

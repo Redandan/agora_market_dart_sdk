@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for IssueSearchParam
@@ -16,20 +16,18 @@ void main() {
   // final instance = IssueSearchParam();
 
   group('test IssueSearchParam', () {
-    // 工單號
-    // String issueId
+    // 工單??    // String issueId
     test('to test the property `issueId`', () async {
       // TODO
     });
 
-    // 用戶ID
+    // ?�戶ID
     // int userId
     test('to test the property `userId`', () async {
       // TODO
     });
 
-    // 用戶名
-    // String username
+    // ?�戶??    // String username
     test('to test the property `username`', () async {
       // TODO
     });
@@ -44,25 +42,24 @@ void main() {
       // TODO
     });
 
-    // 操作人ID
+    // ?��?人ID
     // int operatorId
     test('to test the property `operatorId`', () async {
       // TODO
     });
 
-    // 操作人姓名
-    // String operatorName
+    // ?��?人�???    // String operatorName
     test('to test the property `operatorName`', () async {
       // TODO
     });
 
-    // 開始時間
+    // ?��??��?
     // DateTime startTime
     test('to test the property `startTime`', () async {
       // TODO
     });
 
-    // 結束時間
+    // 結�??��?
     // DateTime endTime
     test('to test the property `endTime`', () async {
       // TODO

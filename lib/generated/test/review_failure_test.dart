@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for ReviewFailure
@@ -16,13 +16,12 @@ void main() {
   // final instance = ReviewFailure();
 
   group('test ReviewFailure', () {
-    // æŽ¨å»£ç¢¼
-    // String code
+    // ?¨å»£ç¢?    // String code
     test('to test the property `code`', () async {
       // TODO
     });
 
-    // å¤±æ•—åŽŸå› 
+    // å¤±æ??Ÿå?
     // String reason
     test('to test the property `reason`', () async {
       // TODO

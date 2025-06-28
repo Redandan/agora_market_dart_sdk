@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 
@@ -17,37 +17,34 @@ void main() {
   // final instance = AutoReplyApi();
 
   group('tests for AutoReplyApi', () {
-    // 獲取自動回復配置
+    // ?��??��??�復?�置
     //
-    // 獲取當前的自動回復配置信息
-    //
+    // ?��??��??�自?��?復�?置信??    //
     //Future<AutoReplyConfig> getConfig() async
     test('test getConfig', () async {
       // TODO
     });
 
-    // 獲取自動回復統計
+    // ?��??��??�復統�?
     //
-    // 獲取自動回復的使用統計信息
-    //
+    // ?��??��??�復?�使?�統計信??    //
     //Future<Object> getStats() async
     test('test getStats', () async {
       // TODO
     });
 
-    // 測試自動回復
+    // 測試?��??�復
     //
-    // 測試自動回復功能
+    // 測試?��??�復?�能
     //
     //Future<String> testAutoReply(String message, int userId, int sessionId) async
     test('test testAutoReply', () async {
       // TODO
     });
 
-    // 更新自動回復配置
+    // ?�新?��??�復?�置
     //
-    // 更新自動回復的配置信息
-    //
+    // ?�新?��??�復?��?置信??    //
     //Future<AutoReplyConfig> updateConfig(AutoReplyConfig autoReplyConfig) async
     test('test updateConfig', () async {
       // TODO

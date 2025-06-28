@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for MemberUpdateParam
@@ -16,25 +16,24 @@ void main() {
   // final instance = MemberUpdateParam();
 
   group('test MemberUpdateParam', () {
-    // 用戶ID
+    // ?�戶ID
     // String id
     test('to test the property `id`', () async {
       // TODO
     });
 
-    // 用戶名
-    // String username
+    // ?�戶??    // String username
     test('to test the property `username`', () async {
       // TODO
     });
 
-    // 電子郵件
+    // ?��??�件
     // String email
     test('to test the property `email`', () async {
       // TODO
     });
 
-    // 電話號碼
+    // ?�話?�碼
     // String phone
     test('to test the property `phone`', () async {
       // TODO
@@ -45,13 +44,12 @@ void main() {
       // TODO
     });
 
-    // 是否為賣家
-    // bool isSeller
+    // ?�否?�賣�?    // bool isSeller
     test('to test the property `isSeller`', () async {
       // TODO
     });
 
-    // 備註
+    // ?�註
     // String remark
     test('to test the property `remark`', () async {
       // TODO

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 
@@ -17,129 +17,127 @@ void main() {
   // final instance = ProductsApi();
 
   group('tests for ProductsApi', () {
-    // è¨ˆç®—é è¨ˆå‡ºè²¨æ™‚é–“
+    // è¨ˆç??è??ºè²¨?‚é?
     //
-    // æ ¹æ“šä¸‹å–®æ™‚é–“è¨ˆç®—é è¨ˆå‡ºè²¨æ™‚é–“å’Œé€é”æ™‚é–“
+    // ?¹æ?ä¸‹å–®?‚é?è¨ˆç??è??ºè²¨?‚é??Œé€é??‚é?
     //
     //Future<Map<String, Object>> calculateShippingTime(int productId, DateTime orderTime) async
     test('test calculateShippingTime', () async {
       // TODO
     });
 
-    // å‰µå»ºå•†å“
+    // ?µå»º?†å?
     //
     //Future<Product> createProduct(ProductCreateParam productCreateParam) async
     test('test createProduct', () async {
       // TODO
     });
 
-    // æ¸›å°‘å•†å“åº«å­˜
+    // æ¸›å??†å?åº«å?
     //
     //Future<bool> decreaseStock(int id, int quantity) async
     test('test decreaseStock', () async {
       // TODO
     });
 
-    // ç²å–å¯é¸æ“‡çš„å‡ºè²¨æ—¥æœŸ
+    // ?²å??¯é¸?‡ç??ºè²¨?¥æ?
     //
-    // ç²å–æŒ‡å®šå•†å“å¯é¸æ“‡çš„å‡ºè²¨æ—¥æœŸç¯„åœ
+    // ?²å??‡å??†å??¯é¸?‡ç??ºè²¨?¥æ?ç¯„å?
     //
     //Future<List<DateTime>> getAvailableShippingDates(int productId, { DateTime fromDate }) async
     test('test getAvailableShippingDates', () async {
       // TODO
     });
 
-    // ç²å–å•†å“åº«å­˜çµ±è¨ˆä¿¡æ¯
+    // ?²å??†å?åº«å?çµ±è?ä¿¡æ¯
     //
     //Future<ProductInventoryStats> getInventoryStats(int id) async
     test('test getInventoryStats', () async {
       // TODO
     });
 
-    // ç²å–ä½åº«å­˜å•†å“åˆ—è¡¨
-    //
-    // ç²å–ç•¶å‰åº«å­˜ä½æ–¼é è­¦é–¾å€¼çš„å•†å“
+    // ?²å?ä½åº«å­˜å??å?è¡?    //
+    // ?²å??¶å?åº«å?ä½æ–¼?è­¦?¾å€¼ç??†å?
     //
     //Future<List<Product>> getLowStockProducts({ int page, int size }) async
     test('test getLowStockProducts', () async {
       // TODO
     });
 
-    // ç²å–è³£å®¶è‡ªå·±çš„å•†å“åˆ—è¡¨
-    //
+    // ?²å?è³?®¶?ªå·±?„å??å?è¡?    //
     //Future<PageProduct> getMyProducts(ProductSeachParam productSeachParam, { int page, int size }) async
     test('test getMyProducts', () async {
       // TODO
     });
 
-    // ç²å–ç¼ºè²¨å•†å“åˆ—è¡¨
+    // ?²å?ç¼ºè²¨?†å??—è¡¨
     //
     //Future<List<Product>> getOutOfStockProducts() async
     test('test getOutOfStockProducts', () async {
       // TODO
     });
 
-    // æ ¹æ“šIDç²å–å•†å“
+    // ?¹æ?ID?²å??†å?
     //
     //Future<Product> getProductById(int id) async
     test('test getProductById', () async {
       // TODO
     });
 
-    // æ ¹æ“šSKUæŸ¥æ‰¾å•†å“
+    // ?¹æ?SKU?¥æ‰¾?†å?
     //
     //Future<Product> getProductBySku(String sku) async
     test('test getProductBySku', () async {
       // TODO
     });
 
-    // ç²å–å•†å“å‡ºè²¨ä¿¡æ¯
+    // ?²å??†å??ºè²¨ä¿¡æ¯
     //
-    // ç²å–æŒ‡å®šå•†å“çš„å‡ºè²¨æ™‚é–“ã€é…é€ä¿¡æ¯ç­‰
+    // ?²å??‡å??†å??„å‡ºè²¨æ??“ã€é??ä¿¡?¯ç?
     //
     //Future<Map<String, Object>> getProductShippingInfo(int productId) async
     test('test getProductShippingInfo', () async {
       // TODO
     });
 
-    // æ ¹æ“šå“ç‰ŒæŸ¥æ‰¾å•†å“
+    // ?¹æ??ç??¥æ‰¾?†å?
     //
     //Future<PageProduct> getProductsByBrand(String brand, { int page, int size }) async
     test('test getProductsByBrand', () async {
       // TODO
     });
 
-    // ç²å–å‡ºè²¨é¸é …å•†å“
+    // ?²å??ºè²¨?¸é??†å?
     //
-    // æ ¹æ“šå‡ºè²¨é¸é …ç¯©é¸å•†å“
+    // ?¹æ??ºè²¨?¸é?ç¯©é¸?†å?
     //
     //Future<List<Product>> getProductsByShippingOptions({ bool supportsImmediateShipping, bool supportsScheduledShipping, int maxDeliveryDays, int page, int size }) async
     test('test getProductsByShippingOptions', () async {
       // TODO
     });
 
-    // å¢åŠ å•†å“åº«å­˜
+    // å¢å??†å?åº«å?
     //
     //Future increaseStock(int id, int quantity) async
     test('test increaseStock', () async {
       // TODO
     });
 
-    // æœç´¢å•†å“
+    // ?œç´¢?†å?
     //
     //Future<PageProduct> searchProducts(ProductSeachParam productSeachParam, { int page, int size }) async
     test('test searchProducts', () async {
       // TODO
     });
 
-    // è¨­ç½®å•†å“åº«å­˜
+    // è¨­ç½®?†å?åº«å?
     //
     //Future setStock(int id, int stock) async
     test('test setStock', () async {
       // TODO
     });
 
-    // æ›´æ–°å•†å“
+    // ?´æ–°?†å?
     //
     //Future<Product> updateProduct(ProductUpdateParam productUpdateParam) async
     test('test updateProduct', () async {

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for BatchReviewPromoCodeParam
@@ -16,19 +16,17 @@ void main() {
   // final instance = BatchReviewPromoCodeParam();
 
   group('test BatchReviewPromoCodeParam', () {
-    // 要審核的推廣碼列表
-    // List<String> codes (default value: const [])
+    // 要審?��??�廣碼�?�?    // List<String> codes (default value: const [])
     test('to test the property `codes`', () async {
       // TODO
     });
 
-    // 推廣碼申請狀態
-    // String status
+    // ?�廣碼申請�???    // String status
     test('to test the property `status`', () async {
       // TODO
     });
 
-    // 審核備註
+    // 審核?�註
     // String reviewRemark
     test('to test the property `reviewRemark`', () async {
       // TODO

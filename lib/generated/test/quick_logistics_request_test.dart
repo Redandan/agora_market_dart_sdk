@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for QuickLogisticsRequest
@@ -16,19 +16,17 @@ void main() {
   // final instance = QuickLogisticsRequest();
 
   group('test QuickLogisticsRequest', () {
-    // 寄件郵遞區號
-    // String fromPostalCode
+    // 寄件?��??�??    // String fromPostalCode
     test('to test the property `fromPostalCode`', () async {
       // TODO
     });
 
-    // 收件郵遞區號
-    // String toPostalCode
+    // ?�件?��??�??    // String toPostalCode
     test('to test the property `toPostalCode`', () async {
       // TODO
     });
 
-    // 重量(公斤)
+    // ?��?(?�斤)
     // num weight
     test('to test the property `weight`', () async {
       // TODO

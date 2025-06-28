@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 
@@ -17,29 +17,27 @@ void main() {
   // final instance = MemberCartApi();
 
   group('tests for MemberCartApi', () {
-    // 添加商品到購物車
+    // 添�??��??�購?��?
     //
     //Future<CartItem> addToCart(int productId, int quantity) async
     test('test addToCart', () async {
       // TODO
     });
 
-    // 獲取用戶購物車
-    //
+    // ?��??�戶購物�?    //
     //Future<PageCartItem> getUserCart({ int page, int size }) async
     test('test getUserCart', () async {
       // TODO
     });
 
-    // 從購物車移除商品
+    // 從購?��?移除?��?
     //
     //Future removeFromCart(int cartItemId) async
     test('test removeFromCart', () async {
       // TODO
     });
 
-    // 更新購物車商品數量
-    //
+    // ?�新購物車�??�數??    //
     //Future<CartItem> updateQuantity(int cartItemId, int quantity) async
     test('test updateQuantity', () async {
       // TODO

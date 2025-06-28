@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for CreateWithdrawParam
@@ -16,13 +16,13 @@ void main() {
   // final instance = CreateWithdrawParam();
 
   group('test CreateWithdrawParam', () {
-    // æç¾é‡‘é¡
+    // ?ç¾?‘é?
     // num amount
     test('to test the property `amount`', () async {
       // TODO
     });
 
-    // è²¨å¹£ä»£ç¢¼
+    // è²¨å¹£ä»?¢¼
     // String currency
     test('to test the property `currency`', () async {
       // TODO
@@ -33,7 +33,7 @@ void main() {
       // TODO
     });
 
-    // æç¾ç›®æ¨™åœ°å€
+    // ?ç¾?®æ??°å?
     // String toAddress
     test('to test the property `toAddress`', () async {
       // TODO

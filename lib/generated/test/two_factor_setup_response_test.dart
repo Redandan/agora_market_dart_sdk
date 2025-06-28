@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for TwoFactorSetupResponse
@@ -16,26 +16,23 @@ void main() {
   // final instance = TwoFactorSetupResponse();
 
   group('test TwoFactorSetupResponse', () {
-    // QR碼數據（僅在未啟用時返回）
-    // String qrCodeData
+    // QR碼數?��??�在?��??��?返�?�?    // String qrCodeData
     test('to test the property `qrCodeData`', () async {
       // TODO
     });
 
-    // 密鑰（僅在未啟用時返回）
+    // 密鑰（�??�未?�用?��??��?
     // String secret
     test('to test the property `secret`', () async {
       // TODO
     });
 
-    // 是否已啟用
-    // bool enabled
+    // ?�否已�???    // bool enabled
     test('to test the property `enabled`', () async {
       // TODO
     });
 
-    // 是否已配置
-    // bool configured
+    // ?�否已�?�?    // bool configured
     test('to test the property `configured`', () async {
       // TODO
     });

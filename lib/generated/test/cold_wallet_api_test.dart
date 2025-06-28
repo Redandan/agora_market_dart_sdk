@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 
@@ -17,46 +17,39 @@ void main() {
   // final instance = ColdWalletApi();
 
   group('tests for ColdWalletApi', () {
-    // 新增冷錢包
-    //
-    // 創建新的冷錢包
-    //
+    // ?��??�錢??    //
+    // ?�建?��??�錢??    //
     //Future<ColdWallet> createColdWallet(ColdWallet coldWallet) async
     test('test createColdWallet', () async {
       // TODO
     });
 
-    // 刪除冷錢包
-    //
-    // 刪除指定的冷錢包
+    // ?�除?�錢??    //
+    // ?�除?��??�冷?��?
     //
     //Future deleteColdWallet(String id) async
     test('test deleteColdWallet', () async {
       // TODO
     });
 
-    // 凍結冷錢包
-    //
-    // 將冷錢包凍結，使其無法被使用
+    // ?��??�錢??    //
+    // 將冷?��??��?，使?�無法被使用
     //
     //Future<ColdWallet> freezeColdWallet(String id) async
     test('test freezeColdWallet', () async {
       // TODO
     });
 
-    // 獲取冷錢包列表
-    //
-    // 分頁獲取所有冷錢包
+    // ?��??�錢?��?�?    //
+    // ?��??��??�?�冷?��?
     //
     //Future<PageColdWallet> getColdWallets(int page, int size) async
     test('test getColdWallets', () async {
       // TODO
     });
 
-    // 釋放冷錢包
-    //
-    // 將使用中的冷錢包釋放為可用狀態
-    //
+    // ?�放?�錢??    //
+    // 將使?�中?�冷?��??�放?�可?��???    //
     //Future<ColdWallet> releaseColdWallet(String id) async
     test('test releaseColdWallet', () async {
       // TODO

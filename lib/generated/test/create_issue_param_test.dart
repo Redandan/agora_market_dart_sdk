@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for CreateIssueParam
@@ -21,7 +21,7 @@ void main() {
       // TODO
     });
 
-    // å•é¡Œå…§å®¹
+    // ?é??§å®¹
     // String content
     test('to test the property `content`', () async {
       // TODO

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 
@@ -17,56 +17,55 @@ void main() {
   // final instance = StoresApi();
 
   group('tests for StoresApi', () {
-    // å‰µå»ºå•†åº—
+    // ?µå»º?†å?
     //
     //Future<StoreResponseDTO> createStore(StoreCreateParam storeCreateParam) async
     test('test createStore', () async {
       // TODO
     });
 
-    // ç²å–ç•¶å‰ç”¨æˆ¶çš„å•†åº—
-    //
+    // ?²å??¶å??¨æˆ¶?„å?åº?    //
     //Future<StoreResponseDTO> getMyStore() async
     test('test getMyStore', () async {
       // TODO
     });
 
-    // ç²å–å•†åº—ç‰©æµè¨­å®š
+    // ?²å??†å??©æ?è¨­å?
     //
     //Future<StoreShippingConfigParam> getShippingConfig() async
     test('test getShippingConfig', () async {
       // TODO
     });
 
-    // ç²å–å•†åº—åˆ†ææ•¸æ“š
+    // ?²å??†å??†æ??¸æ?
     //
     //Future<StoreAnalyticsDTO> getStoreAnalytics() async
     test('test getStoreAnalytics', () async {
       // TODO
     });
 
-    // æ ¹æ“šè³£å®¶IDç²å–å•†åº—ä¿¡æ¯
+    // ?¹æ?è³?®¶ID?²å??†å?ä¿¡æ¯
     //
     //Future<StoreResponseDTO> getStoreBySellerId(int sellerId) async
     test('test getStoreBySellerId', () async {
       // TODO
     });
 
-    // æœç´¢æˆ‘çš„å•†åº—å•†å“
+    // ?œç´¢?‘ç??†å??†å?
     //
     //Future<PageProduct> searchMyStoreProducts({ String keyword, int categoryId, String status, int page, int size }) async
     test('test searchMyStoreProducts', () async {
       // TODO
     });
 
-    // æ›´æ–°å•†åº—ç‰©æµè¨­å®š
+    // ?´æ–°?†å??©æ?è¨­å?
     //
     //Future<StoreResponseDTO> updateShippingConfig(StoreShippingConfigParam storeShippingConfigParam) async
     test('test updateShippingConfig', () async {
       // TODO
     });
 
-    // æ›´æ–°å•†åº—
+    // ?´æ–°?†å?
     //
     //Future<StoreResponseDTO> updateStore(StoreUpdateParam storeUpdateParam) async
     test('test updateStore', () async {

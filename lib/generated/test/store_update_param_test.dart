@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for StoreUpdateParam
@@ -16,91 +16,89 @@ void main() {
   // final instance = StoreUpdateParam();
 
   group('test StoreUpdateParam', () {
-    // å•†åº—åç¨±
+    // ?†å??ç¨±
     // String name
     test('to test the property `name`', () async {
       // TODO
     });
 
-    // å•†åº—æè¿°
+    // ?†å??è¿°
     // String description
     test('to test the property `description`', () async {
       // TODO
     });
 
-    // å•†åº—åœ°å€
+    // ?†å??°å?
     // String address
     test('to test the property `address`', () async {
       // TODO
     });
 
-    // å•†åº—é›»è©±
+    // ?†å??»è©±
     // String phone
     test('to test the property `phone`', () async {
       // TODO
     });
 
-    // å•†åº—éƒµç®±
+    // ?†å??µç®±
     // String email
     test('to test the property `email`', () async {
       // TODO
     });
 
-    // ç‡Ÿæ¥­æ™‚é–“
+    // ?Ÿæ¥­?‚é?
     // String businessHours
     test('to test the property `businessHours`', () async {
       // TODO
     });
 
-    // å•†åº—é ­åƒ URL
+    // ?†å??­å? URL
     // String logoUrl
     test('to test the property `logoUrl`', () async {
       // TODO
     });
 
-    // å•†åº—å°é¢åœ–ç‰‡ URL
+    // ?†å?å°é¢?–ç? URL
     // String coverImageUrl
     test('to test the property `coverImageUrl`', () async {
       // TODO
     });
 
-    // å•†åº—é–‹é—œ
+    // ?†å??‹é?
     // bool isActive
     test('to test the property `isActive`', () async {
       // TODO
     });
 
-    // æ”¯æ´çš„ç‰©æµå…¬å¸
-    // List<ShippingCompanyEnum> supportedShippingCompanies (default value: const [])
+    // ?¯æ´?„ç‰©æµå…¬??    // List<ShippingCompanyEnum> supportedShippingCompanies (default value: const [])
     test('to test the property `supportedShippingCompanies`', () async {
       // TODO
     });
 
-    // é‹é€èªªæ˜
-    // String shippingDescription
+    // ?‹é€èªª??    // String shippingDescription
     test('to test the property `shippingDescription`', () async {
       // TODO
     });
 
-    // å‡ºè²¨æº–å‚™æ™‚é–“ï¼ˆå°æ™‚ï¼‰
+    // ?ºè²¨æº–å??‚é?ï¼ˆå??‚ï?
     // int shippingPreparationHours
     test('to test the property `shippingPreparationHours`', () async {
       // TODO
     });
 
-    // é è¨ˆé€é”æ™‚é–“ï¼ˆå¤©æ•¸ï¼‰
+    // ?è??é??‚é?ï¼ˆå¤©?¸ï?
     // int estimatedDeliveryDays
     test('to test the property `estimatedDeliveryDays`', () async {
       // TODO
     });
 
-    // æ˜¯å¦æ”¯æ´æŒ‡å®šå‡ºè²¨æ—¥æœŸ
+    // ?¯å¦?¯æ´?‡å??ºè²¨?¥æ?
     // bool supportsScheduledShipping
     test('to test the property `supportsScheduledShipping`', () async {
       // TODO
     });
 
-    // å¯é¸æ“‡çš„å‡ºè²¨æ—¥æœŸç¯„åœï¼ˆå¤©æ•¸ï¼‰
+    // ?¯é¸?‡ç??ºè²¨?¥æ?ç¯„å?ï¼ˆå¤©?¸ï?
     // int shippingDateRange
     test('to test the property `shippingDateRange`', () async {
       // TODO

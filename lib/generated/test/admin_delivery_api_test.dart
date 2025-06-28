@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 
@@ -17,64 +17,57 @@ void main() {
   // final instance = AdminDeliveryApi();
 
   group('tests for AdminDeliveryApi', () {
-    // 手動分配配送員
+    // ?��??��??�送員
     //
-    // 管理員可以手動為訂單分配配送員
+    // 管�??�可以�??�為訂單?��??�送員
     //
     //Future<DeliveryDetail> assignDeliveryer(String orderId, int deliveryerId) async
     test('test assignDeliveryer', () async {
       // TODO
     });
 
-    // 查看配送訂單詳情
-    //
-    // 管理員可查看配送訂單的詳細信息
+    // ?��??�送�??�詳??    //
+    // 管�??�可?��??�送�??��?詳細信息
     //
     //Future<DeliveryDetail> getDeliveryOrderDetail(String orderId) async
     test('test getDeliveryOrderDetail', () async {
       // TODO
     });
 
-    // 配送統計報告
-    //
-    // 獲取配送相關的統計數據
+    // ?�送統計報??    //
+    // ?��??�送相?��?統�??��?
     //
     //Future<Map<String, Object>> getDeliveryStatistics({ DateTime startDate, DateTime endDate }) async
     test('test getDeliveryStatistics', () async {
       // TODO
     });
 
-    // 查看配送員詳情
+    // ?��??�送員詳�?
     //
-    // 管理員可查看配送員的詳細信息
-    //
+    // 管�??�可?��??�送員?�詳細信??    //
     //Future<Deliveryer> getDeliveryerDetail(int deliveryerId) async
     test('test getDeliveryerDetail', () async {
       // TODO
     });
 
-    // 搜索配送訂單
-    //
-    // 管理員可根據多個條件搜索配送訂單
-    //
+    // ?�索?�送�???    //
+    // 管�??�可?��?多個�?件�?索�??��???    //
     //Future<List<DeliveryDetail>> searchDeliveryOrders({ int deliveryerId, String status, DateTime startDate, DateTime endDate }) async
     test('test searchDeliveryOrders', () async {
       // TODO
     });
 
-    // 搜索配送員
+    // ?�索?�送員
     //
-    // 管理員可根據多個條件搜索配送員，包括位置、狀態等
+    // 管�??�可?��?多個�?件�?索�??�員，�??��?置、�??��?
     //
     //Future<List<Deliveryer>> searchDeliveryers({ bool enabled, bool isDelivering, double longitude, double latitude, double radius, DateTime startDate, DateTime endDate }) async
     test('test searchDeliveryers', () async {
       // TODO
     });
 
-    // 更新配送員狀態
-    //
-    // 管理員可以直接修改配送員的工作狀態（啟用/停用）
-    //
+    // ?�新?�送員?�??    //
+    // 管�??�可以直?�修?��??�員?�工作�??��??�用/?�用�?    //
     //Future<Deliveryer> updateDeliveryerStatus(int deliveryerId, bool enabled) async
     test('test updateDeliveryerStatus', () async {
       // TODO

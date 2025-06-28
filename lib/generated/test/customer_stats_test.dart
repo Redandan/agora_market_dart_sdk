@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for CustomerStats
@@ -16,20 +16,18 @@ void main() {
   // final instance = CustomerStats();
 
   group('test CustomerStats', () {
-    // 新客戶數
+    // ?�客?�數
     // int newCustomers
     test('to test the property `newCustomers`', () async {
       // TODO
     });
 
-    // 回購客戶數
-    // int returningCustomers
+    // ?�購客戶??    // int returningCustomers
     test('to test the property `returningCustomers`', () async {
       // TODO
     });
 
-    // 平均客戶價值
-    // double averageCustomerValue
+    // 平�?客戶?��?    // double averageCustomerValue
     test('to test the property `averageCustomerValue`', () async {
       // TODO
     });

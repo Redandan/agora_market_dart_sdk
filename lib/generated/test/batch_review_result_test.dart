@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for BatchReviewResult
@@ -16,26 +16,25 @@ void main() {
   // final instance = BatchReviewResult();
 
   group('test BatchReviewResult', () {
-    // æˆåŠŸå¯©æ ¸çš„æ¨å»£ç¢¼æ•¸é‡
+    // ?å?å¯©æ ¸?„æ¨å»?¢¼?¸é?
     // int successCount
     test('to test the property `successCount`', () async {
       // TODO
     });
 
-    // å¤±æ•—çš„æ¨å»£ç¢¼æ•¸é‡
+    // å¤±æ??„æ¨å»?¢¼?¸é?
     // int failureCount
     test('to test the property `failureCount`', () async {
       // TODO
     });
 
-    // æˆåŠŸå¯©æ ¸çš„æ¨å»£ç¢¼åˆ—è¡¨
+    // ?å?å¯©æ ¸?„æ¨å»?¢¼?—è¡¨
     // List<String> successCodes (default value: const [])
     test('to test the property `successCodes`', () async {
       // TODO
     });
 
-    // å¤±æ•—çš„æ¨å»£ç¢¼åŠåŸå› 
-    // List<ReviewFailure> failures (default value: const [])
+    // å¤±æ??„æ¨å»?¢¼?Šå???    // List<ReviewFailure> failures (default value: const [])
     test('to test the property `failures`', () async {
       // TODO
     });

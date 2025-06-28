@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for CartItem
@@ -16,133 +16,132 @@ void main() {
   // final instance = CartItem();
 
   group('test CartItem', () {
-    // 購物車項目ID
+    // 購物車�??�ID
     // int id
     test('to test the property `id`', () async {
       // TODO
     });
 
-    // 用戶ID
+    // ?�戶ID
     // int userId
     test('to test the property `userId`', () async {
       // TODO
     });
 
-    // 商品ID
+    // ?��?ID
     // int productId
     test('to test the property `productId`', () async {
       // TODO
     });
 
-    // 商品數量
+    // ?��??��?
     // int quantity
     test('to test the property `quantity`', () async {
       // TODO
     });
 
-    // 商品標題快照
+    // ?��?標�?快照
     // String productTitle
     test('to test the property `productTitle`', () async {
       // TODO
     });
 
-    // 商品描述快照
+    // ?��??�述快照
     // String productDescription
     test('to test the property `productDescription`', () async {
       // TODO
     });
 
-    // 商品主圖快照
+    // ?��?主�?快照
     // String productImage
     test('to test the property `productImage`', () async {
       // TODO
     });
 
-    // 商品單價快照
+    // ?��??�價快照
     // num unitPrice
     test('to test the property `unitPrice`', () async {
       // TODO
     });
 
-    // 貨幣類型
+    // 貨幣類�?
     // String currency
     test('to test the property `currency`', () async {
       // TODO
     });
 
-    // 運費快照
+    // ?�費快照
     // num shippingFee
     test('to test the property `shippingFee`', () async {
       // TODO
     });
 
-    // 賣家ID
+    // �?��ID
     // int sellerId
     test('to test the property `sellerId`', () async {
       // TODO
     });
 
-    // 賣家名稱快照
+    // �?��?�稱快照
     // String sellerName
     test('to test the property `sellerName`', () async {
       // TODO
     });
 
-    // 取貨地址快照
+    // ?�貨?��?快照
     // String pickupAddress
     test('to test the property `pickupAddress`', () async {
       // TODO
     });
 
-    // 商品SKU快照
+    // ?��?SKU快照
     // String sku
     test('to test the property `sku`', () async {
       // TODO
     });
 
-    // 品牌名稱快照
+    // ?��??�稱快照
     // String brand
     test('to test the property `brand`', () async {
       // TODO
     });
 
-    // 加入購物車時的可用庫存
-    // int availableStock
+    // ?�入購物車�??�可?�庫�?    // int availableStock
     test('to test the property `availableStock`', () async {
       // TODO
     });
 
-    // 是否還有庫存
+    // ?�否?��?庫�?
     // bool isInStock
     test('to test the property `isInStock`', () async {
       // TODO
     });
 
-    // 庫存警告信息
+    // 庫�?警�?信息
     // String stockWarning
     test('to test the property `stockWarning`', () async {
       // TODO
     });
 
-    // 創建時間
+    // ?�建?��?
     // DateTime createdAt
     test('to test the property `createdAt`', () async {
       // TODO
     });
 
-    // 更新時間
+    // ?�新?��?
     // DateTime updatedAt
     test('to test the property `updatedAt`', () async {
       // TODO
     });
 
-    // num subtotal
-    test('to test the property `subtotal`', () async {
+    // bool inStock
+    test('to test the property `inStock`', () async {
       // TODO
     });
 
-    // bool inStock
-    test('to test the property `inStock`', () async {
+    // num subtotal
+    test('to test the property `subtotal`', () async {
       // TODO
     });
 

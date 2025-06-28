@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for PageUser
@@ -41,13 +41,13 @@ void main() {
       // TODO
     });
 
-    // bool last
-    test('to test the property `last`', () async {
+    // bool first
+    test('to test the property `first`', () async {
       // TODO
     });
 
-    // bool first
-    test('to test the property `first`', () async {
+    // bool last
+    test('to test the property `last`', () async {
       // TODO
     });
 

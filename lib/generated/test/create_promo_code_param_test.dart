@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for CreatePromoCodeParam
@@ -16,20 +16,17 @@ void main() {
   // final instance = CreatePromoCodeParam();
 
   group('test CreatePromoCodeParam', () {
-    // 推廣碼（可選，留空則系統自動生成）
-    // String code
+    // ?�廣碼�??�選，�?空�?系統?��??��?�?    // String code
     test('to test the property `code`', () async {
       // TODO
     });
 
-    // 推廣碼名稱
-    // String name
+    // ?�廣碼�?�?    // String name
     test('to test the property `name`', () async {
       // TODO
     });
 
-    // 推廣碼描述
-    // String description
+    // ?�廣碼�?�?    // String description
     test('to test the property `description`', () async {
       // TODO
     });

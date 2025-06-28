@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for ReviewReplyParam
@@ -22,7 +22,7 @@ void main() {
       // TODO
     });
 
-    // å›žè¦†å…§å®¹
+    // ?žè??§å®¹
     // String replyContent
     test('to test the property `replyContent`', () async {
       // TODO

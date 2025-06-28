@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for Staking
@@ -22,79 +22,77 @@ void main() {
       // TODO
     });
 
-    // 用戶ID
+    // ?�戶ID
     // int userId
     test('to test the property `userId`', () async {
       // TODO
     });
 
-    // 質押金額
+    // 質押?��?
     // num amount
     test('to test the property `amount`', () async {
       // TODO
     });
 
-    // 質押幣種
+    // 質押�?��
     // String currency
     test('to test the property `currency`', () async {
       // TODO
     });
 
-    // 質押狀態
-    // String status
+    // 質押?�??    // String status
     test('to test the property `status`', () async {
       // TODO
     });
 
-    // 申請時間
+    // ?��??��?
     // DateTime applyTime
     test('to test the property `applyTime`', () async {
       // TODO
     });
 
-    // 質押開始時間
+    // 質押?��??��?
     // DateTime startTime
     test('to test the property `startTime`', () async {
       // TODO
     });
 
-    // 質押結束時間
+    // 質押結�??��?
     // DateTime endTime
     test('to test the property `endTime`', () async {
       // TODO
     });
 
-    // 已獲得收益
-    // num earnedRewards
+    // 已獲得收??    // num earnedRewards
     test('to test the property `earnedRewards`', () async {
       // TODO
     });
 
-    // 解除申請時間
+    // �?��?��??��?
     // DateTime unfreezeRequestTime
     test('to test the property `unfreezeRequestTime`', () async {
       // TODO
     });
 
-    // 解除完成時間
+    // �?��完�??��?
     // DateTime unfreezeCompleteTime
     test('to test the property `unfreezeCompleteTime`', () async {
       // TODO
     });
 
-    // 上次結算時間
+    // 上次結�??��?
     // DateTime lastSettleDate
     test('to test the property `lastSettleDate`', () async {
       // TODO
     });
 
-    // 上次檢查收益
+    // 上次檢查?��?
     // num lastSettleReward
     test('to test the property `lastSettleReward`', () async {
       // TODO
     });
 
-    // 備註
+    // ?�註
     // String remark
     test('to test the property `remark`', () async {
       // TODO

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for ChatMessage
@@ -22,49 +22,49 @@ void main() {
       // TODO
     });
 
-    // 發送者ID
+    // ?�送者ID
     // int senderId
     test('to test the property `senderId`', () async {
       // TODO
     });
 
-    // 接收者ID
+    // ?�收?�ID
     // int receiverId
     test('to test the property `receiverId`', () async {
       // TODO
     });
 
-    // 聊天會話ID
+    // ?�天?�話ID
     // int sessionId
     test('to test the property `sessionId`', () async {
       // TODO
     });
 
-    // 消息內容
+    // 消息?�容
     // String content
     test('to test the property `content`', () async {
       // TODO
     });
 
-    // 是否已讀
+    // ?�否已�?
     // bool read
     test('to test the property `read`', () async {
       // TODO
     });
 
-    // 創建時間
+    // ?�建?��?
     // DateTime createdAt
     test('to test the property `createdAt`', () async {
       // TODO
     });
 
-    // 更新時間
+    // ?�新?��?
     // DateTime updatedAt
     test('to test the property `updatedAt`', () async {
       // TODO
     });
 
-    // 刪除時間
+    // ?�除?��?
     // DateTime deletedAt
     test('to test the property `deletedAt`', () async {
       // TODO

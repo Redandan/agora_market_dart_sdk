@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for TwoFactorVerifyParam
@@ -16,8 +16,7 @@ void main() {
   // final instance = TwoFactorVerifyParam();
 
   group('test TwoFactorVerifyParam', () {
-    // 驗證碼
-    // String code
+    // 驗�?�?    // String code
     test('to test the property `code`', () async {
       // TODO
     });

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for UpdatePromoCodeParam
@@ -16,14 +16,12 @@ void main() {
   // final instance = UpdatePromoCodeParam();
 
   group('test UpdatePromoCodeParam', () {
-    // 推廣碼名稱
-    // String name
+    // ?�廣碼�?�?    // String name
     test('to test the property `name`', () async {
       // TODO
     });
 
-    // 推廣碼描述
-    // String description
+    // ?�廣碼�?�?    // String description
     test('to test the property `description`', () async {
       // TODO
     });

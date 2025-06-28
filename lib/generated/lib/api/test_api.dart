@@ -64,6 +64,54 @@ class TestApi {
     return null;
   }
 
+  /// 生成配送員接單測試數據
+  ///
+  /// 生成配送員接單相關的測試數據，包括待接單訂單、多個配送員等
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> generateDeliveryAcceptOrderTestDataWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/test/delivery-accept-order';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 生成配送員接單測試數據
+  ///
+  /// 生成配送員接單相關的測試數據，包括待接單訂單、多個配送員等
+  Future<String?> generateDeliveryAcceptOrderTestData() async {
+    final response = await generateDeliveryAcceptOrderTestDataWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'String',) as String;
+    
+    }
+    return null;
+  }
+
   /// Performs an HTTP 'POST /test/logistics' operation and returns the [Response].
   Future<Response> generateLogisticsOrderWithHttpInfo() async {
     // ignore: prefer_const_declarations
@@ -92,6 +140,54 @@ class TestApi {
 
   Future<String?> generateLogisticsOrder() async {
     final response = await generateLogisticsOrderWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'String',) as String;
+    
+    }
+    return null;
+  }
+
+  /// 生成通知測試數據
+  ///
+  /// 生成各種類型的通知測試數據，包括系統通知、訂單通知、配送通知等
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> generateNotificationTestDataWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/test/notification';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 生成通知測試數據
+  ///
+  /// 生成各種類型的通知測試數據，包括系統通知、訂單通知、配送通知等
+  Future<String?> generateNotificationTestData() async {
+    final response = await generateNotificationTestDataWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

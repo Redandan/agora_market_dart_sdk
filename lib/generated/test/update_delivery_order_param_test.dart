@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for UpdateDeliveryOrderParam
@@ -27,26 +27,25 @@ void main() {
       // TODO
     });
 
-    // 備註
+    // ?�註
     // String remark
     test('to test the property `remark`', () async {
       // TODO
     });
 
-    // 當前位置緯度
+    // ?��?位置緯度
     // double currentLocationLatitude
     test('to test the property `currentLocationLatitude`', () async {
       // TODO
     });
 
-    // 當前位置經度
+    // ?��?位置經度
     // double currentLocationLongitude
     test('to test the property `currentLocationLongitude`', () async {
       // TODO
     });
 
-    // 驗證碼
-    // String verifyCode
+    // 驗�?�?    // String verifyCode
     test('to test the property `verifyCode`', () async {
       // TODO
     });

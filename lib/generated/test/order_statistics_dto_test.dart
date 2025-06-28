@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for OrderStatisticsDTO
@@ -16,37 +16,35 @@ void main() {
   // final instance = OrderStatisticsDTO();
 
   group('test OrderStatisticsDTO', () {
-    // ç¸½è¨‚å–®æ•¸
+    // ç¸½è??®æ•¸
     // int totalOrders
     test('to test the property `totalOrders`', () async {
       // TODO
     });
 
-    // ç¸½äº¤æ˜“é‡‘é¡
-    // num totalAmount
+    // ç¸½äº¤?“é?é¡?    // num totalAmount
     test('to test the property `totalAmount`', () async {
       // TODO
     });
 
-    // å¹³å‡è¨‚å–®é‡‘é¡
+    // å¹³å?è¨‚å–®?‘é?
     // num averageOrderAmount
     test('to test the property `averageOrderAmount`', () async {
       // TODO
     });
 
-    // å„ç‹€æ…‹è¨‚å–®æ•¸é‡
-    // Map<String, int> ordersByStatus (default value: const {})
+    // ?„ç??‹è??®æ•¸??    // Map<String, int> ordersByStatus (default value: const {})
     test('to test the property `ordersByStatus`', () async {
       // TODO
     });
 
-    // ç†±é–€å•†å“çµ±è¨ˆï¼ˆå‰5å€‹ï¼‰
+    // ?±é??†å?çµ±è?ï¼ˆå?5?‹ï?
     // List<TopProductDTO> topProducts (default value: const [])
     test('to test the property `topProducts`', () async {
       // TODO
     });
 
-    // ç†±é–€è³£å®¶çµ±è¨ˆï¼ˆå‰5å€‹ï¼‰
+    // ?±é?è³?®¶çµ±è?ï¼ˆå?5?‹ï?
     // List<TopSellerDTO> topSellers (default value: const [])
     test('to test the property `topSellers`', () async {
       // TODO

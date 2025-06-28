@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 
@@ -17,37 +17,33 @@ void main() {
   // final instance = SseApi();
 
   group('tests for SseApi', () {
-    // å»£æ’­æ¶ˆæ¯
+    // å»?’­æ¶ˆæ¯
     //
-    // å‘æ‰€æœ‰é€£æ¥çš„å®¢æˆ¶ç«¯å»£æ’­ä¸€æ¢æ¶ˆæ¯ï¼ˆåƒ…ç®¡ç†å“¡å¯ç”¨ï¼‰
-    //
+    // ?‘æ??‰é€?¥?„å®¢?¶ç«¯å»?’­ä¸€æ¢æ??¯ï??…ç®¡?†å“¡?¯ç”¨ï¼?    //
     //Future broadcastMessage(Object body) async
     test('test broadcastMessage', () async {
       // TODO
     });
 
-    // å»ºç«‹ SSE é€£æ¥
+    // å»ºç? SSE ??¥
     //
-    // å»ºç«‹ä¸€å€‹æœå‹™å™¨ç™¼é€äº‹ä»¶(SSE)çš„é€£æ¥ï¼Œç”¨æ–¼æ¥æ”¶å¯¦æ™‚æ¶ˆæ¯
-    //
+    // å»ºç?ä¸€?‹æ??™å™¨?¼é€ä?ä»?SSE)?„é€?¥ï¼Œç”¨?¼æ¥?¶å¯¦?‚æ???    //
     //Future connect(String clientId) async
     test('test connect', () async {
       // TODO
     });
 
-    // æ–·é–‹ SSE é€£æ¥
+    // ?·é? SSE ??¥
     //
-    // æ–·é–‹æŒ‡å®šå®¢æˆ¶ç«¯çš„ SSE é€£æ¥
+    // ?·é??‡å?å®¢æˆ¶ç«¯ç? SSE ??¥
     //
     //Future disconnect(String clientId) async
     test('test disconnect', () async {
       // TODO
     });
 
-    // å‘ç‰¹å®šç”¨æˆ¶ç™¼é€æ¶ˆæ¯
-    //
-    // å‘æŒ‡å®šçš„ç”¨æˆ¶ç™¼é€ä¸€æ¢æ¶ˆæ¯
-    //
+    // ?‘ç‰¹å®šç”¨?¶ç™¼?æ???    //
+    // ?‘æ?å®šç??¨æˆ¶?¼é€ä?æ¢æ???    //
     //Future sendMessageToUser(String userId, Object body) async
     test('test sendMessageToUser', () async {
       // TODO

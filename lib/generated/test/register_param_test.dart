@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for RegisterParam
@@ -16,8 +16,7 @@ void main() {
   // final instance = RegisterParam();
 
   group('test RegisterParam', () {
-    // 用戶名
-    // String username
+    // ?�戶??    // String username
     test('to test the property `username`', () async {
       // TODO
     });
@@ -28,20 +27,19 @@ void main() {
       // TODO
     });
 
-    // 確認密碼
+    // 確�?密碼
     // String confirmPassword
     test('to test the property `confirmPassword`', () async {
       // TODO
     });
 
-    // 電子郵件
+    // ?��??�件
     // String email
     test('to test the property `email`', () async {
       // TODO
     });
 
-    // 推廣碼
-    // String promoCode
+    // ?�廣�?    // String promoCode
     test('to test the property `promoCode`', () async {
       // TODO
     });

@@ -11,24 +11,33 @@
 import '../lib/api.dart';
 import 'package:test/test.dart';
 
-// tests for OrderShipPlatformParam
+// tests for AcceptOrderParam
 void main() {
-  // final instance = OrderShipPlatformParam();
+  // final instance = AcceptOrderParam();
 
-  group('test OrderShipPlatformParam', () {
+  group('test AcceptOrderParam', () {
     // 訂單ID
     // String orderId
     test('to test the property `orderId`', () async {
       // TODO
     });
 
-    // ?�貨?�註
+    // 接單備註
     // String remark
     test('to test the property `remark`', () async {
       // TODO
     });
 
+    // 當前位置緯度
+    // double currentLocationLatitude
+    test('to test the property `currentLocationLatitude`', () async {
+      // TODO
+    });
 
+    // 當前位置經度
+    // double currentLocationLongitude
+    test('to test the property `currentLocationLongitude`', () async {
+      // TODO
+    });
   });
-
 }

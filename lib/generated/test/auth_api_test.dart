@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 
@@ -24,99 +24,93 @@ void main() {
       // TODO
     });
 
-    // 禁用雙因素認證
-    //
-    // 使用驗證碼禁用2FA
+    // 禁用?��?素�?�?    //
+    // 使用驗�?碼�???FA
     //
     //Future disableTwoFactor(TwoFactorVerifyParam twoFactorVerifyParam) async
     test('test disableTwoFactor', () async {
       // TODO
     });
 
-    // 啟用雙因素認證
-    //
-    // 使用驗證碼啟用2FA
+    // ?�用?��?素�?�?    //
+    // 使用驗�?碼�???FA
     //
     //Future enableTwoFactor(TwoFactorVerifyParam twoFactorVerifyParam) async
     test('test enableTwoFactor', () async {
       // TODO
     });
 
-    // 發送密碼重置郵件
-    //
+    // ?�送�?碼�?置郵�?    //
     //Future forgotPassword(String email) async
     test('test forgotPassword', () async {
       // TODO
     });
 
-    // 獲取當前用戶信息
+    // ?��??��??�戶信息
     //
     //Future<UserInfo> getCurrentUser() async
     test('test getCurrentUser', () async {
       // TODO
     });
 
-    // 獲取雙因素認證信息
-    //
-    // 如果未設置2FA，返回QR碼和密鑰；如果已設置，返回狀態信息
-    //
+    // ?��??��?素�?證信??    //
+    // 如�??�設�?FA，�??�QR碼�?密鑰；�??�已設置，�??��??�信??    //
     //Future<TwoFactorSetupResponse> getTwoFactorInfo() async
     test('test getTwoFactorInfo', () async {
       // TODO
     });
 
-    // 用戶登入
+    // ?�戶?�入
     //
     //Future<LoginResult> login(LoginParam loginParam) async
     test('test login', () async {
       // TODO
     });
 
-    // 用戶登出
+    // ?�戶?�出
     //
     //Future logout() async
     test('test logout', () async {
       // TODO
     });
 
-    // 刷新訪問令牌
+    // ?�新訪�?令�?
     //
     //Future<LoginResult> refreshToken(String authorization) async
     test('test refreshToken', () async {
       // TODO
     });
 
-    // 註冊新用戶
-    //
+    // 註�??�用??    //
     //Future<LoginResult> register(RegisterParam registerParam) async
     test('test register', () async {
       // TODO
     });
 
-    // 重設密碼
+    // ?�設密碼
     //
     //Future resetPassword(PasswordResetParam passwordResetParam) async
     test('test resetPassword', () async {
       // TODO
     });
 
-    // 更新用戶資料
+    // ?�新?�戶資�?
     //
     //Future<UserInfo> updateProfile(UserProfileUpdateParam userProfileUpdateParam) async
     test('test updateProfile', () async {
       // TODO
     });
 
-    // 驗證密碼重置令牌
+    // 驗�?密碼?�置令�?
     //
     //Future verifyResetToken(String token) async
     test('test verifyResetToken', () async {
       // TODO
     });
 
-    // 驗證雙因素認證碼
+    // 驗�??��?素�?證碼
     //
-    // 驗證2FA代碼是否正確
+    // 驗�?2FA�?��?�否�?��
     //
     //Future<bool> verifyTwoFactorCode(TwoFactorVerifyParam twoFactorVerifyParam) async
     test('test verifyTwoFactorCode', () async {

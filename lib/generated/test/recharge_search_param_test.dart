@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for RechargeSearchParam
@@ -16,13 +16,13 @@ void main() {
   // final instance = RechargeSearchParam();
 
   group('test RechargeSearchParam', () {
-    // ç”¨æˆ¶ID
+    // ?¨æˆ¶ID
     // int userId
     test('to test the property `userId`', () async {
       // TODO
     });
 
-    // å……å€¼ID
+    // ?…å€¼ID
     // String rechargeId
     test('to test the property `rechargeId`', () async {
       // TODO
@@ -44,31 +44,31 @@ void main() {
       // TODO
     });
 
-    // æ¥æ”¶åœ°å€
+    // ?¥æ”¶?°å?
     // String receiveAddress
     test('to test the property `receiveAddress`', () async {
       // TODO
     });
 
-    // äº¤æ˜“Hash
+    // äº¤æ?Hash
     // String txHash
     test('to test the property `txHash`', () async {
       // TODO
     });
 
-    // å†·éŒ¢åŒ…ID
+    // ?·éŒ¢?…ID
     // int coldWalletId
     test('to test the property `coldWalletId`', () async {
       // TODO
     });
 
-    // é–‹å§‹æ™‚é–“
+    // ?‹å??‚é?
     // DateTime startTime
     test('to test the property `startTime`', () async {
       // TODO
     });
 
-    // çµæŸæ™‚é–“
+    // çµæ??‚é?
     // DateTime endTime
     test('to test the property `endTime`', () async {
       // TODO

@@ -9,13 +9,58 @@ All URIs are relative to *https://agoramarketapi.purrtechllc.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**acceptOrder**](DeliveryApi.md#acceptorder) | **POST** /delivery/accept | 配送員接單
 [**currentStatus**](DeliveryApi.md#currentstatus) | **GET** /delivery/status | 獲取當前配送狀態
+[**getAvailableOrders**](DeliveryApi.md#getavailableorders) | **GET** /delivery/available-orders | 獲取可接訂單列表
 [**getDeliveryHistory**](DeliveryApi.md#getdeliveryhistory) | **GET** /delivery/history | 獲取歷史訂單
 [**registerDeliveryer**](DeliveryApi.md#registerdeliveryer) | **POST** /delivery/register | 註冊配送員
 [**updateDeliveryOrder**](DeliveryApi.md#updatedeliveryorder) | **POST** /delivery/update/order | 更新配送進度
 [**updateDeliveryer**](DeliveryApi.md#updatedeliveryer) | **POST** /delivery/update | 更新配送員資料
 [**updateWorkingStatus**](DeliveryApi.md#updateworkingstatus) | **POST** /delivery/update/status | 更新工作狀態
 
+
+# **acceptOrder**
+> Deliveryer acceptOrder(acceptOrderParam)
+
+配送員接單
+
+配送員接受配送任務
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DeliveryApi();
+final acceptOrderParam = AcceptOrderParam(); // AcceptOrderParam | 
+
+try {
+    final result = api_instance.acceptOrder(acceptOrderParam);
+    print(result);
+} catch (e) {
+    print('Exception when calling DeliveryApi->acceptOrder: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptOrderParam** | [**AcceptOrderParam**](AcceptOrderParam.md)|  | 
+
+### Return type
+
+[**Deliveryer**](Deliveryer.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **currentStatus**
 > Deliveryer currentStatus()
@@ -44,6 +89,51 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**Deliveryer**](Deliveryer.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getAvailableOrders**
+> List<DeliveryDetail> getAvailableOrders(page, size)
+
+獲取可接訂單列表
+
+獲取當前配送員可以接的訂單列表
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DeliveryApi();
+final page = 56; // int | 頁碼，從1開始
+final size = 56; // int | 每頁數量
+
+try {
+    final result = api_instance.getAvailableOrders(page, size);
+    print(result);
+} catch (e) {
+    print('Exception when calling DeliveryApi->getAvailableOrders: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
+ **size** | **int**| 每頁數量 | [optional] [default to 10]
+
+### Return type
+
+[**List<DeliveryDetail>**](DeliveryDetail.md)
 
 ### Authorization
 

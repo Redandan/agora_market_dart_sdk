@@ -183,7 +183,9 @@ Class | Method | HTTP request | Description
 *ColdWalletApi* | [**freezeColdWallet**](doc//ColdWalletApi.md#freezecoldwallet) | **POST** /cold-wallet/{id}/freeze | 凍結冷錢包
 *ColdWalletApi* | [**getColdWallets**](doc//ColdWalletApi.md#getcoldwallets) | **GET** /cold-wallet | 獲取冷錢包列表
 *ColdWalletApi* | [**releaseColdWallet**](doc//ColdWalletApi.md#releasecoldwallet) | **POST** /cold-wallet/{id}/release | 釋放冷錢包
+*DeliveryApi* | [**acceptOrder**](doc//DeliveryApi.md#acceptorder) | **POST** /delivery/accept | 配送員接單
 *DeliveryApi* | [**currentStatus**](doc//DeliveryApi.md#currentstatus) | **GET** /delivery/status | 獲取當前配送狀態
+*DeliveryApi* | [**getAvailableOrders**](doc//DeliveryApi.md#getavailableorders) | **GET** /delivery/available-orders | 獲取可接訂單列表
 *DeliveryApi* | [**getDeliveryHistory**](doc//DeliveryApi.md#getdeliveryhistory) | **GET** /delivery/history | 獲取歷史訂單
 *DeliveryApi* | [**registerDeliveryer**](doc//DeliveryApi.md#registerdeliveryer) | **POST** /delivery/register | 註冊配送員
 *DeliveryApi* | [**updateDeliveryOrder**](doc//DeliveryApi.md#updatedeliveryorder) | **POST** /delivery/update/order | 更新配送進度
@@ -279,7 +281,9 @@ Class | Method | HTTP request | Description
 *StoresApi* | [**updateShippingConfig**](doc//StoresApi.md#updateshippingconfig) | **POST** /stores/shipping-config | 更新商店物流設定
 *StoresApi* | [**updateStore**](doc//StoresApi.md#updatestore) | **POST** /stores/update | 更新商店
 *TestApi* | [**generateAutoReplyTestData**](doc//TestApi.md#generateautoreplytestdata) | **POST** /test/auto-reply | 生成自動回復測試數據
+*TestApi* | [**generateDeliveryAcceptOrderTestData**](doc//TestApi.md#generatedeliveryacceptordertestdata) | **POST** /test/delivery-accept-order | 生成配送員接單測試數據
 *TestApi* | [**generateLogisticsOrder**](doc//TestApi.md#generatelogisticsorder) | **POST** /test/logistics | 
+*TestApi* | [**generateNotificationTestData**](doc//TestApi.md#generatenotificationtestdata) | **POST** /test/notification | 生成通知測試數據
 *TestApi* | [**generatePlatformDeliveryOrder**](doc//TestApi.md#generateplatformdeliveryorder) | **POST** /test/platform | 
 *TestApi* | [**generateRechargeAndWithdraw**](doc//TestApi.md#generaterechargeandwithdraw) | **POST** /test/recharge&withdraw | 
 *TestApi* | [**generateReviewData**](doc//TestApi.md#generatereviewdata) | **POST** /test/review | 
@@ -288,6 +292,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AcceptOrderParam](doc//AcceptOrderParam.md)
  - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
  - [AutoReplyConfig](doc//AutoReplyConfig.md)
  - [BatchReviewPromoCodeParam](doc//BatchReviewPromoCodeParam.md)

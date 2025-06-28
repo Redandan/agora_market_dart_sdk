@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for LowStockWarningDTO
@@ -16,13 +16,13 @@ void main() {
   // final instance = LowStockWarningDTO();
 
   group('test LowStockWarningDTO', () {
-    // å•†å“ID
+    // ?†å?ID
     // int productId
     test('to test the property `productId`', () async {
       // TODO
     });
 
-    // ç•¶å‰åº«å­˜
+    // ?¶å?åº«å?
     // int currentStock
     test('to test the property `currentStock`', () async {
       // TODO

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for Review
@@ -22,20 +22,19 @@ void main() {
       // TODO
     });
 
-    // 評價者ID（買家）
+    // 評價?�ID（買家�?
     // int reviewerId
     test('to test the property `reviewerId`', () async {
       // TODO
     });
 
-    // 被評價者ID（賣家）
+    // 被�??�者ID（賣家�?
     // int reviewedUserId
     test('to test the property `reviewedUserId`', () async {
       // TODO
     });
 
-    // 商品ID（從訂單自動獲取）
-    // int productId
+    // ?��?ID（�?訂單?��??��?�?    // int productId
     test('to test the property `productId`', () async {
       // TODO
     });
@@ -46,55 +45,54 @@ void main() {
       // TODO
     });
 
-    // 評分（1-5分）
+    // 評�?�?-5?��?
     // int rating
     test('to test the property `rating`', () async {
       // TODO
     });
 
-    // 評價內容
+    // 評價?�容
     // String comment
     test('to test the property `comment`', () async {
       // TODO
     });
 
-    // 是否匿名評價
+    // ?�否?��?評價
     // bool isAnonymous
     test('to test the property `isAnonymous`', () async {
       // TODO
     });
 
-    // 是否已回覆
-    // bool isReplied
+    // ?�否已�?�?    // bool isReplied
     test('to test the property `isReplied`', () async {
       // TODO
     });
 
-    // 賣家回覆內容
+    // �?��?��??�容
     // String sellerReply
     test('to test the property `sellerReply`', () async {
       // TODO
     });
 
-    // 回覆時間
+    // ?��??��?
     // DateTime repliedAt
     test('to test the property `repliedAt`', () async {
       // TODO
     });
 
-    // 回覆者ID
+    // ?��??�ID
     // int repliedBy
     test('to test the property `repliedBy`', () async {
       // TODO
     });
 
-    // 創建時間
+    // ?�建?��?
     // DateTime createdAt
     test('to test the property `createdAt`', () async {
       // TODO
     });
 
-    // 更新時間
+    // ?�新?��?
     // DateTime updatedAt
     test('to test the property `updatedAt`', () async {
       // TODO

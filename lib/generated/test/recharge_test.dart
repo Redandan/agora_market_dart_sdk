@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_market_dart_sdk/api.dart';
+import '../lib/api.dart';
 import 'package:test/test.dart';
 
 // tests for Recharge
@@ -16,20 +16,19 @@ void main() {
   // final instance = Recharge();
 
   group('test Recharge', () {
-    // å……å€¼ID
+    // ?…å€¼ID
     // String id
     test('to test the property `id`', () async {
       // TODO
     });
 
-    // ç”¨æˆ¶ID
+    // ?¨æˆ¶ID
     // int userId
     test('to test the property `userId`', () async {
       // TODO
     });
 
-    // å……å€¼é‡‘é¡
-    // num amount
+    // ?…å€¼é?é¡?    // num amount
     test('to test the property `amount`', () async {
       // TODO
     });
@@ -50,49 +49,48 @@ void main() {
       // TODO
     });
 
-    // äº¤æ˜“Hash
+    // äº¤æ?Hash
     // String txHash
     test('to test the property `txHash`', () async {
       // TODO
     });
 
-    // æ¥æ”¶åœ°å€
+    // ?¥æ”¶?°å?
     // String receiveAddress
     test('to test the property `receiveAddress`', () async {
       // TODO
     });
 
-    // å†·éŒ¢åŒ…ID
+    // ?·éŒ¢?…ID
     // int coldWalletId
     test('to test the property `coldWalletId`', () async {
       // TODO
     });
 
-    // å‚™è¨»
+    // ?™è¨»
     // String remark
     test('to test the property `remark`', () async {
       // TODO
     });
 
-    // å‰µå»ºæ™‚é–“
+    // ?µå»º?‚é?
     // DateTime createdAt
     test('to test the property `createdAt`', () async {
       // TODO
     });
 
-    // éæœŸæ™‚é–“
+    // ?æ??‚é?
     // DateTime expireTime
     test('to test the property `expireTime`', () async {
       // TODO
     });
 
-    // æœ€å¾Œæ›´æ–°æ™‚é–“
-    // DateTime updatedAt
+    // ?€å¾Œæ›´?°æ???    // DateTime updatedAt
     test('to test the property `updatedAt`', () async {
       // TODO
     });
 
-    // å®Œæˆæ™‚é–“
+    // å®Œæ??‚é?
     // DateTime completedAt
     test('to test the property `completedAt`', () async {
       // TODO
