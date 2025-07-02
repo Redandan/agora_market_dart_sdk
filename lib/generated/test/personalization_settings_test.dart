@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for PersonalizationSettings
@@ -16,19 +16,19 @@ void main() {
   // final instance = PersonalizationSettings();
 
   group('test PersonalizationSettings', () {
-    // ?�否?�用?�性�?
+    // 是否啟用個性化
     // bool enabled
     test('to test the property `enabled`', () async {
       // TODO
     });
 
-    // ?�戶?�好學�?
+    // 用戶偏好學習
     // bool learnUserPreferences
     test('to test the property `learnUserPreferences`', () async {
       // TODO
     });
 
-    // ?�性�??�復模板
+    // 個性化回復模板
     // Map<String, String> personalizedTemplates (default value: const {})
     test('to test the property `personalizedTemplates`', () async {
       // TODO

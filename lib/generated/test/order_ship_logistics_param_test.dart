@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for OrderShipLogisticsParam
@@ -22,13 +22,13 @@ void main() {
       // TODO
     });
 
-    // ?©æ??®è?
+    // ç‰©æµå–®è™Ÿ
     // String trackingNumber
     test('to test the property `trackingNumber`', () async {
       // TODO
     });
 
-    // ?¼è²¨?™è¨»
+    // ç™¼è²¨å‚™è¨»
     // String remark
     test('to test the property `remark`', () async {
       // TODO

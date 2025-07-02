@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for SortObject
@@ -16,6 +16,11 @@ void main() {
   // final instance = SortObject();
 
   group('test SortObject', () {
+    // bool empty
+    test('to test the property `empty`', () async {
+      // TODO
+    });
+
     // bool sorted
     test('to test the property `sorted`', () async {
       // TODO
@@ -23,11 +28,6 @@ void main() {
 
     // bool unsorted
     test('to test the property `unsorted`', () async {
-      // TODO
-    });
-
-    // bool empty
-    test('to test the property `empty`', () async {
       // TODO
     });
 

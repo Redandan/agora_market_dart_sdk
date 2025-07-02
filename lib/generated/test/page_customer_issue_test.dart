@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for PageCustomerIssue
@@ -31,6 +31,21 @@ void main() {
       // TODO
     });
 
+    // int size
+    test('to test the property `size`', () async {
+      // TODO
+    });
+
+    // List<CustomerIssue> content (default value: const [])
+    test('to test the property `content`', () async {
+      // TODO
+    });
+
+    // int number
+    test('to test the property `number`', () async {
+      // TODO
+    });
+
     // int numberOfElements
     test('to test the property `numberOfElements`', () async {
       // TODO
@@ -48,21 +63,6 @@ void main() {
 
     // bool last
     test('to test the property `last`', () async {
-      // TODO
-    });
-
-    // int size
-    test('to test the property `size`', () async {
-      // TODO
-    });
-
-    // List<CustomerIssue> content (default value: const [])
-    test('to test the property `content`', () async {
-      // TODO
-    });
-
-    // int number
-    test('to test the property `number`', () async {
       // TODO
     });
 

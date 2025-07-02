@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for UserOrderSearchParam
@@ -22,7 +22,7 @@ void main() {
       // TODO
     });
 
-    // ?†å?ID
+    // å•†å“ID
     // int productId
     test('to test the property `productId`', () async {
       // TODO
@@ -33,37 +33,37 @@ void main() {
       // TODO
     });
 
-    // ?‹å??‚é?
+    // é–‹å§‹æ™‚é–“
     // String startTime
     test('to test the property `startTime`', () async {
       // TODO
     });
 
-    // çµæ??‚é?
+    // çµæŸæ™‚é–“
     // String endTime
     test('to test the property `endTime`', () async {
       // TODO
     });
 
-    // ?‹å??¥æ?
+    // é–‹å§‹æ—¥æœŸ
     // DateTime startDate
     test('to test the property `startDate`', () async {
       // TODO
     });
 
-    // çµæ??¥æ?
+    // çµæŸæ—¥æœŸ
     // DateTime endDate
     test('to test the property `endDate`', () async {
       // TODO
     });
 
-    // ?ç¢¼
+    // é ç¢¼
     // int page
     test('to test the property `page`', () async {
       // TODO
     });
 
-    // æ¯é?å¤§å?
+    // æ¯é å¤§å°
     // int size
     test('to test the property `size`', () async {
       // TODO

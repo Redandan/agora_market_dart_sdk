@@ -102,7 +102,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAvailableOrders**
-> List<DeliveryDetail> getAvailableOrders(page, size)
+> List<DeliveryDetail> getAvailableOrders()
 
 獲取可接訂單列表
 
@@ -113,11 +113,9 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DeliveryApi();
-final page = 56; // int | 頁碼，從1開始
-final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.getAvailableOrders(page, size);
+    final result = api_instance.getAvailableOrders();
     print(result);
 } catch (e) {
     print('Exception when calling DeliveryApi->getAvailableOrders: $e\n');
@@ -125,11 +123,7 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
- **size** | **int**| 每頁數量 | [optional] [default to 10]
+This endpoint does not need any parameter.
 
 ### Return type
 

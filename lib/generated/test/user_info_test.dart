@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for UserInfo
@@ -16,30 +16,32 @@ void main() {
   // final instance = UserInfo();
 
   group('test UserInfo', () {
-    // ?�戶ID
+    // 用戶ID
     // int id
     test('to test the property `id`', () async {
       // TODO
     });
 
-    // ?�戶??    // String username
+    // 用戶名
+    // String username
     test('to test the property `username`', () async {
       // TODO
     });
 
-    // ?�箱
+    // 郵箱
     // String email
     test('to test the property `email`', () async {
       // TODO
     });
 
-    // ?�貨?��?
+    // 收貨地址
     // String recipientAddress
     test('to test the property `recipientAddress`', () async {
       // TODO
     });
 
-    // ?�件人�???    // String recipientName
+    // 收件人姓名
+    // String recipientName
     test('to test the property `recipientName`', () async {
       // TODO
     });
@@ -50,49 +52,49 @@ void main() {
       // TODO
     });
 
-    // 餘�?
+    // 餘額
     // num balance
     test('to test the property `balance`', () async {
       // TODO
     });
 
-    // 質押餘�?
+    // 質押餘額
     // num stackingBalance
     test('to test the property `stackingBalance`', () async {
       // TODO
     });
 
-    // ?��?餘�?
+    // 凍結餘額
     // num freezeBalance
     test('to test the property `freezeBalance`', () async {
       // TODO
     });
 
-    // ?�否?�用
+    // 是否啟用
     // bool enabled
     test('to test the property `enabled`', () async {
       // TODO
     });
 
-    // ?�詢?��?
+    // 查詢時間
     // DateTime queryTime
     test('to test the property `queryTime`', () async {
       // TODO
     });
 
-    // 店鋪?�稱
+    // 店鋪名稱
     // String storeName
     test('to test the property `storeName`', () async {
       // TODO
     });
 
-    // ?�廣大使?�稱
+    // 推廣大使名稱
     // String ambassadorName
     test('to test the property `ambassadorName`', () async {
       // TODO
     });
 
-    // 顯示?�送員?�稱
+    // 顯示配送員名稱
     // String displayDeliveryerName
     test('to test the property `displayDeliveryerName`', () async {
       // TODO

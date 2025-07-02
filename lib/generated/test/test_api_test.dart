@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 
@@ -17,18 +17,19 @@ void main() {
   // final instance = TestApi();
 
   group('tests for TestApi', () {
-    // ?��??��??�復測試?��?
+    // 生成自動回復測試數據
     //
-    // ?��?測試?�戶?�自?��?復�??�人?��?話�??��??��??��?
+    // 生成測試用戶與自動回復機器人的對話記錄和反饋數據
     //
     //Future<String> generateAutoReplyTestData() async
     test('test generateAutoReplyTestData', () async {
       // TODO
     });
 
-    // ?��??�送員?�單測試?��?
+    // 生成配送員接單測試數據
     //
-    // ?��??�送員?�單?��??�測試數?��??�括待接?��??�、�??��??�員�?    //
+    // 生成配送員接單相關的測試數據，包括待接單訂單、多個配送員等
+    //
     //Future<String> generateDeliveryAcceptOrderTestData() async
     test('test generateDeliveryAcceptOrderTestData', () async {
       // TODO
@@ -39,9 +40,10 @@ void main() {
       // TODO
     });
 
-    // ?��??�知測試?��?
+    // 生成通知測試數據
     //
-    // ?��??�種類�??�通知測試?��?，�??�系統通知?��??�通知?��??�通知�?    //
+    // 生成各種類型的通知測試數據，包括系統通知、訂單通知、配送通知等
+    //
     //Future<String> generateNotificationTestData() async
     test('test generateNotificationTestData', () async {
       // TODO
@@ -62,7 +64,7 @@ void main() {
       // TODO
     });
 
-    // ?��?測試?��?
+    // 生成測試數據
     //
     //Future<String> generateTestData() async
     test('test generateTestData', () async {

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for User
@@ -16,13 +16,14 @@ void main() {
   // final instance = User();
 
   group('test User', () {
-    // ?�戶ID
+    // 用戶ID
     // int id
     test('to test the property `id`', () async {
       // TODO
     });
 
-    // ?�戶??    // String username
+    // 用戶名
+    // String username
     test('to test the property `username`', () async {
       // TODO
     });
@@ -44,87 +45,92 @@ void main() {
       // TODO
     });
 
-    // 姓�?
+    // 姓名
     // String name
     test('to test the property `name`', () async {
       // TODO
     });
 
-    // ?�話?�碼
+    // 電話號碼
     // String phone
     test('to test the property `phone`', () async {
       // TODO
     });
 
-    // ?��??�件
+    // 電子郵件
     // String email
     test('to test the property `email`', () async {
       // TODO
     });
 
-    // ?��?
+    // 頭像
     // String avatar
     test('to test the property `avatar`', () async {
       // TODO
     });
 
-    // ?�註
+    // 備註
     // String remark
     test('to test the property `remark`', () async {
       // TODO
     });
 
-    // ?�貨?��?
+    // 收貨地址
     // String recipientAddress
     test('to test the property `recipientAddress`', () async {
       // TODO
     });
 
-    // ?�件人�???    // String recipientName
+    // 收件人姓名
+    // String recipientName
     test('to test the property `recipientName`', () async {
       // TODO
     });
 
-    // 店鋪?�稱
+    // 店鋪名稱
     // String storeName
     test('to test the property `storeName`', () async {
       // TODO
     });
 
-    // ?�廣大使?�稱
+    // 推廣大使名稱
     // String ambassadorName
     test('to test the property `ambassadorName`', () async {
       // TODO
     });
 
-    // 顯示?�送員?�稱
+    // 顯示配送員名稱
     // String displayDeliveryerName
     test('to test the property `displayDeliveryerName`', () async {
       // TODO
     });
 
-    // 註�??�廣�?    // String promoCode
+    // 註冊推廣碼
+    // String promoCode
     test('to test the property `promoCode`', () async {
       // TODO
     });
 
-    // ?�否?�用?��?素�?�?    // bool twoFactorEnabled
+    // 是否啟用雙因素認證
+    // bool twoFactorEnabled
     test('to test the property `twoFactorEnabled`', () async {
       // TODO
     });
 
-    // ?��?素�?證�???    // String twoFactorSecret
+    // 雙因素認證密鑰
+    // String twoFactorSecret
     test('to test the property `twoFactorSecret`', () async {
       // TODO
     });
 
-    // ?�建?��?
+    // 創建時間
     // DateTime createdAt
     test('to test the property `createdAt`', () async {
       // TODO
     });
 
-    // ?�後更?��???    // DateTime updatedAt
+    // 最後更新時間
+    // DateTime updatedAt
     test('to test the property `updatedAt`', () async {
       // TODO
     });

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for QuickLogisticsResult
@@ -16,29 +16,31 @@ void main() {
   // final instance = QuickLogisticsResult();
 
   group('test QuickLogisticsResult', () {
-    // 寄件?��??�??    // String fromPostalCode
+    // 寄件郵遞區號
+    // String fromPostalCode
     test('to test the property `fromPostalCode`', () async {
       // TODO
     });
 
-    // ?�件?��??�??    // String toPostalCode
+    // 收件郵遞區號
+    // String toPostalCode
     test('to test the property `toPostalCode`', () async {
       // TODO
     });
 
-    // 寄件?��?
+    // 寄件城市
     // String fromCity
     test('to test the property `fromCity`', () async {
       // TODO
     });
 
-    // ?�件?��?
+    // 收件城市
     // String toCity
     test('to test the property `toCity`', () async {
       // TODO
     });
 
-    // ?��?(?�斤)
+    // 重量(公斤)
     // num weight
     test('to test the property `weight`', () async {
       // TODO
@@ -54,30 +56,31 @@ void main() {
       // TODO
     });
 
-    // ?�費(?�幣)
+    // 運費(台幣)
     // num shippingFee
     test('to test the property `shippingFee`', () async {
       // TODO
     });
 
-    // ?��??�送天??    // int estimatedDays
+    // 預計運送天數
+    // int estimatedDays
     test('to test the property `estimatedDays`', () async {
       // TODO
     });
 
-    // ?��??�述
+    // 服務描述
     // String description
     test('to test the property `description`', () async {
       // TODO
     });
 
-    // ?�詢?��?
+    // 查詢時間
     // DateTime queryTime
     test('to test the property `queryTime`', () async {
       // TODO
     });
 
-    // 距離等�?
+    // 距離等級
     // String distanceLevel
     test('to test the property `distanceLevel`', () async {
       // TODO

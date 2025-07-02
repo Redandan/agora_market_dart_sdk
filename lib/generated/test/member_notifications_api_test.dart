@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 
@@ -17,108 +17,108 @@ void main() {
   // final instance = MemberNotificationsApi();
 
   group('tests for MemberNotificationsApi', () {
-    // 清�??��??�知
+    // 清理過期通知
     //
-    // 清�??��??�知（�?管�??�可?��?
+    // 清理過期通知（僅管理員可用）
     //
     //Future<Map<String, Object>> cleanupExpiredNotifications({ int daysToKeep }) async
     test('test cleanupExpiredNotifications', () async {
       // TODO
     });
 
-    // ?��??�建?�知
+    // 批量創建通知
     //
-    // ?��??�建?�知（�?管�??�可?��?
+    // 批量創建通知（僅管理員可用）
     //
     //Future<List<NotificationResponseDTO>> createBatchNotifications(List<NotificationCreateParam> notificationCreateParam) async
     test('test createBatchNotifications', () async {
       // TODO
     });
 
-    // ?�建?�知
+    // 創建通知
     //
-    // ?�建?�通知（�?管�??�可?��?
+    // 創建新通知（僅管理員可用）
     //
     //Future<NotificationResponseDTO> createNotification(NotificationCreateParam notificationCreateParam) async
     test('test createNotification', () async {
       // TODO
     });
 
-    // ?�除?�知
+    // 刪除通知
     //
-    // ?�除?�知（�?管�??�可?��?
+    // 刪除通知（僅管理員可用）
     //
     //Future deleteNotification(int notificationId) async
     test('test deleteNotification', () async {
       // TODO
     });
 
-    // ?��??�知詳�?
+    // 獲取通知詳情
     //
-    // ?��??�知ID?��??�知詳�?
+    // 根據通知ID獲取通知詳情
     //
     //Future<NotificationResponseDTO> getNotification(int notificationId) async
     test('test getNotification', () async {
       // TODO
     });
 
-    // ?��??�知統�?
+    // 獲取通知統計
     //
-    // ?��??��??�戶?�通知統�?信息
+    // 獲取當前用戶的通知統計信息
     //
     //Future<Map<String, Object>> getNotificationStats() async
     test('test getNotificationStats', () async {
       // TODO
     });
 
-    // ?��??�知?�表
+    // 獲取通知列表
     //
-    // ?��??��??�戶?�通知?�表
+    // 獲取當前用戶的通知列表
     //
     //Future<PageNotificationResponseDTO> getNotifications({ int page, int size }) async
     test('test getNotifications', () async {
       // TODO
     });
 
-    // ?��??��??�知
+    // 獲取未讀通知
     //
-    // ?��??��??�戶?�未讀?�知
+    // 獲取當前用戶的未讀通知
     //
     //Future<List<NotificationResponseDTO>> getUnreadNotifications() async
     test('test getUnreadNotifications', () async {
       // TODO
     });
 
-    // ?�部標�??�已讀
+    // 全部標記為已讀
     //
-    // 將�??�未讀?�知標�??�已讀
+    // 將所有未讀通知標記為已讀
     //
     //Future markAllAsRead() async
     test('test markAllAsRead', () async {
       // TODO
     });
 
-    // 標�??�已讀
+    // 標記為已讀
     //
-    // 將通知標�??�已讀
+    // 將通知標記為已讀
     //
     //Future markAsRead(int notificationId) async
     test('test markAsRead', () async {
       // TODO
     });
 
-    // ?�索?�知
+    // 搜索通知
     //
-    // ?��?條件?�索?�知?�表
+    // 根據條件搜索通知列表
     //
     //Future<PageNotificationResponseDTO> searchNotifications({ int id, int senderId, String title, String type, String status, bool isPushed, String relatedObjectId, String relatedObjectType, DateTime startDate, DateTime endDate, int page, int size }) async
     test('test searchNotifications', () async {
       // TODO
     });
 
-    // ?�新?�知
+    // 更新通知
     //
-    // ?�新?�知信息（�?管�??�可?��?
+    // 更新通知信息（僅管理員可用）
     //
     //Future<NotificationResponseDTO> updateNotification(int notificationId, NotificationUpdateParam notificationUpdateParam) async
     test('test updateNotification', () async {

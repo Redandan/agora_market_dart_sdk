@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for KeywordRule
@@ -16,23 +16,25 @@ void main() {
   // final instance = KeywordRule();
 
   group('test KeywordRule', () {
-    // ?�鍵�?    // String keyword
+    // 關鍵詞
+    // String keyword
     test('to test the property `keyword`', () async {
       // TODO
     });
 
-    // ?�復?�容
+    // 回復內容
     // String reply
     test('to test the property `reply`', () async {
       // TODO
     });
 
-    // ?��?�?    // int priority
+    // 優先級
+    // int priority
     test('to test the property `priority`', () async {
       // TODO
     });
 
-    // ?�否?�用
+    // 是否啟用
     // bool enabled
     test('to test the property `enabled`', () async {
       // TODO

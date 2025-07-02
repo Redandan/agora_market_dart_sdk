@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for CreateRechargeParam
@@ -16,13 +16,13 @@ void main() {
   // final instance = CreateRechargeParam();
 
   group('test CreateRechargeParam', () {
-    // ?¨æˆ¶ID
+    // ç”¨æˆ¶ID
     // int userId
     test('to test the property `userId`', () async {
       // TODO
     });
 
-    // ?‘é?
+    // é‡‘é¡
     // num amount
     test('to test the property `amount`', () async {
       // TODO

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 
@@ -17,34 +17,37 @@ void main() {
   // final instance = MemberDisputesApi();
 
   group('tests for MemberDisputesApi', () {
-    // ?�建糾�?
+    // 創建糾紛
     //
-    // 買家?�以對�??�創建糾�?    //
+    // 買家可以對訂單創建糾紛
+    //
     //Future<Dispute> createDispute(DisputeCreateParam disputeCreateParam) async
     test('test createDispute', () async {
       // TODO
     });
 
-    // ?��?糾�?詳�?
+    // 查看糾紛詳情
     //
-    // ?�員?�查?�糾紛�?詳細信息
+    // 會員可查看糾紛的詳細信息
     //
     //Future<DisputeQueryResult> getDisputeDetail(String disputeId) async
     test('test getDisputeDetail', () async {
       // TODO
     });
 
-    // ?��?糾�?
+    // 回覆糾紛
     //
-    // �?��?�以?��?買家?�糾�?    //
+    // 賣家可以回覆買家的糾紛
+    //
     //Future replyDispute(String disputeId, String reply) async
     test('test replyDispute', () async {
       // TODO
     });
 
-    // ?�索糾�?
+    // 搜索糾紛
     //
-    // ?�員?��?索�??�己?��??�糾�?    //
+    // 會員可搜索與自己相關的糾紛
+    //
     //Future<PageDispute> searchDisputes({ String status, DateTime startDate, DateTime endDate, int page, int size }) async
     test('test searchDisputes', () async {
       // TODO

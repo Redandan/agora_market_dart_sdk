@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for AdminCreateUserParam
@@ -36,7 +36,7 @@ void main() {
       // TODO
     });
 
-    // ?�戶角色
+    // 用戶角色
     // String role
     test('to test the property `role`', () async {
       // TODO

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for ReviewUpdateParam
@@ -22,19 +22,19 @@ void main() {
       // TODO
     });
 
-    // 評�?�?-5?��?
+    // 評分（1-5分）
     // int rating
     test('to test the property `rating`', () async {
       // TODO
     });
 
-    // 評價?�容
+    // 評價內容
     // String comment
     test('to test the property `comment`', () async {
       // TODO
     });
 
-    // ?�否?��?評價
+    // 是否匿名評價
     // bool isAnonymous
     test('to test the property `isAnonymous`', () async {
       // TODO

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for ProductCreateParam
@@ -16,37 +16,37 @@ void main() {
   // final instance = ProductCreateParam();
 
   group('test ProductCreateParam', () {
-    // ?��??�稱
+    // 商品名稱
     // String title
     test('to test the property `title`', () async {
       // TODO
     });
 
-    // ?��??�格
+    // 商品價格
     // num price
     test('to test the property `price`', () async {
       // TODO
     });
 
-    // �?��?�貨費用
+    // 賣家出貨費用
     // num shippingFee
     test('to test the property `shippingFee`', () async {
       // TODO
     });
 
-    // 貨幣類�?
+    // 貨幣類型
     // String currency
     test('to test the property `currency`', () async {
       // TODO
     });
 
-    // ?��?庫�?
+    // 商品庫存
     // int stock
     test('to test the property `stock`', () async {
       // TODO
     });
 
-    // ?��??�述
+    // 商品描述
     // String description
     test('to test the property `description`', () async {
       // TODO
@@ -57,105 +57,109 @@ void main() {
       // TODO
     });
 
-    // ?��??��?URL?��?
+    // 商品圖片URL集合
     // Set<String> imageUrls (default value: const {})
     test('to test the property `imageUrls`', () async {
       // TODO
     });
 
-    // ?�件?��?經度
+    // 取件地址經度
     // double longitude
     test('to test the property `longitude`', () async {
       // TODO
     });
 
-    // ?�件?��?緯度
+    // 取件地址緯度
     // double latitude
     test('to test the property `latitude`', () async {
       // TODO
     });
 
-    // ?�件?��??��?
+    // 取件開始時間
     // String pickupTimeStart
     test('to test the property `pickupTimeStart`', () async {
       // TODO
     });
 
-    // ?�件結�??��?
+    // 取件結束時間
     // String pickupTimeEnd
     test('to test the property `pickupTimeEnd`', () async {
       // TODO
     });
 
-    // ?�件?��?
+    // 取件地址
     // String pickupAddress
     test('to test the property `pickupAddress`', () async {
       // TODO
     });
 
-    // ?��?SKU?��?碼�???    // Set<String> skus (default value: const {})
+    // 商品SKU或條碼集合
+    // Set<String> skus (default value: const {})
     test('to test the property `skus`', () async {
       // TODO
     });
 
-    // ?��??�稱
+    // 品牌名稱
     // String brand
     test('to test the property `brand`', () async {
       // TODO
     });
 
-    // ?�低庫存警??    // int minStock
+    // 最低庫存警告
+    // int minStock
     test('to test the property `minStock`', () async {
       // TODO
     });
 
-    // ?��?標籤，以?��??��?
+    // 商品標籤，以逗號分隔
     // String tags
     test('to test the property `tags`', () async {
       // TODO
     });
 
-    // ?�貨準�??��?（�??��?
+    // 出貨準備時間（小時）
     // int shippingPreparationHours
     test('to test the property `shippingPreparationHours`', () async {
       // TODO
     });
 
-    // ?�貨?�止?��?（�?天幾點�?下單?�天?�貨�?    // String dailyShippingDeadline
+    // 出貨截止時間（每天幾點前下單當天出貨）
+    // String dailyShippingDeadline
     test('to test the property `dailyShippingDeadline`', () async {
       // TODO
     });
 
-    // ?�貨?�註
+    // 出貨備註
     // String shippingDescription
     test('to test the property `shippingDescription`', () async {
       // TODO
     });
 
-    // ?��??��??��?（天?��?
+    // 預計送達時間（天數）
     // int estimatedDeliveryDays
     test('to test the property `estimatedDeliveryDays`', () async {
       // TODO
     });
 
-    // ?�否?��??��??�貨?��?
+    // 是否支持指定出貨日期
     // bool supportsScheduledShipping
     test('to test the property `supportsScheduledShipping`', () async {
       // TODO
     });
 
-    // ?�選?��??�貨?��?範�?（天?��?
+    // 可選擇的出貨日期範圍（天數）
     // int shippingDateRange
     test('to test the property `shippingDateRange`', () async {
       // TODO
     });
 
-    // ?�援?�物流公??    // Set<ShippingCompanyEnum> supportedShippingCompanies (default value: const {})
+    // 支援的物流公司
+    // Set<ShippingCompanyEnum> supportedShippingCompanies (default value: const {})
     test('to test the property `supportedShippingCompanies`', () async {
       // TODO
     });
 
-    // ?�物流公?��?費�??�表
+    // 各物流公司運費對應表
     // Map<String, num> shippingFees (default value: const {})
     test('to test the property `shippingFees`', () async {
       // TODO
@@ -166,17 +170,20 @@ void main() {
       // TODO
     });
 
-    // ?��?費�?�?    // num freeShippingThreshold
+    // 免運費門檻
+    // num freeShippingThreshold
     test('to test the property `freeShippingThreshold`', () async {
       // TODO
     });
 
-    // 庫�?警�??��?    // int stockAlertThreshold
+    // 庫存警告閾值
+    // int stockAlertThreshold
     test('to test the property `stockAlertThreshold`', () async {
       // TODO
     });
 
-    // ?�否?�許負庫�?    // bool allowNegativeStock
+    // 是否允許負庫存
+    // bool allowNegativeStock
     test('to test the property `allowNegativeStock`', () async {
       // TODO
     });

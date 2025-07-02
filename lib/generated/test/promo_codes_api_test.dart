@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 
@@ -17,62 +17,71 @@ void main() {
   // final instance = PromoCodesApi();
 
   group('tests for PromoCodesApi', () {
-    // ?��??�廣�?    //
+    // 申請推廣碼
+    //
     //Future<PromoCode> applyPromoCode(CreatePromoCodeParam createPromoCodeParam) async
     test('test applyPromoCode', () async {
       // TODO
     });
 
-    // ?��?審核?�廣�?    //
+    // 批量審核推廣碼
+    //
     //Future<BatchReviewResult> batchReviewPromoCodes(BatchReviewPromoCodeParam batchReviewPromoCodeParam) async
     test('test batchReviewPromoCodes', () async {
       // TODO
     });
 
-    // ?�除?�廣�?    //
+    // 刪除推廣碼
+    //
     //Future deletePromoCode(String code) async
     test('test deletePromoCode', () async {
       // TODO
     });
 
-    // ?��??��??�廣�?    //
+    // 獲取我的推廣碼
+    //
     //Future<PromoCode> getMyPromoCode() async
     test('test getMyPromoCode', () async {
       // TODO
     });
 
-    // ?�詢?�廣碼詳??    //
+    // 查詢推廣碼詳情
+    //
     //Future<PromoCode> getPromoCode(String code) async
     test('test getPromoCode', () async {
       // TODO
     });
 
-    // ?��??�廣碼註?��??�戶?�表
+    // 獲取推廣碼註冊的用戶列表
     //
     //Future<PageUser> getPromoCodeUsers(String code, Pageable pageable) async
     test('test getPromoCodeUsers', () async {
       // TODO
     });
 
-    // 使用?�廣碼註??    //
+    // 使用推廣碼註冊
+    //
     //Future<LoginResult> registerWithPromoCode(String promoCode, RegisterParam registerParam) async
     test('test registerWithPromoCode', () async {
       // TODO
     });
 
-    // 審核?�廣�?    //
+    // 審核推廣碼
+    //
     //Future<PromoCode> reviewPromoCode(String code, ReviewPromoCodeParam reviewPromoCodeParam) async
     test('test reviewPromoCode', () async {
       // TODO
     });
 
-    // ?��??�廣�?    //
+    // 搜尋推廣碼
+    //
     //Future<PagePromoCode> searchPromoCodes(Pageable pageable, { String code, String name, String status, int applicantId, int reviewerId }) async
     test('test searchPromoCodes', () async {
       // TODO
     });
 
-    // 編輯?��??�廣�?    //
+    // 編輯我的推廣碼
+    //
     //Future<PromoCode> updateMyPromoCode(UpdatePromoCodeParam updatePromoCodeParam) async
     test('test updateMyPromoCode', () async {
       // TODO

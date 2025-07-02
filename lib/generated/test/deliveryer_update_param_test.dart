@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for DeliveryerUpdateParam
@@ -16,18 +16,19 @@ void main() {
   // final instance = DeliveryerUpdateParam();
 
   group('test DeliveryerUpdateParam', () {
-    // 顯示?�稱
+    // 顯示名稱
     // String displayName
     test('to test the property `displayName`', () async {
       // TODO
     });
 
-    // ?�送�??��?�?    // Set<String> deliveryAreas (default value: const {})
+    // 配送區域列表
+    // Set<String> deliveryAreas (default value: const {})
     test('to test the property `deliveryAreas`', () async {
       // TODO
     });
 
-    // ?�否?�用
+    // 是否啟用
     // bool enabled
     test('to test the property `enabled`', () async {
       // TODO

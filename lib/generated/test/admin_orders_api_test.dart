@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 
@@ -17,33 +17,37 @@ void main() {
   // final instance = AdminOrdersApi();
 
   group('tests for AdminOrdersApi', () {
-    // ?��?訂單
+    // 取消訂單
     //
-    // 管�??�可以強?��?消�??��?並�?供�?消�???    //
+    // 管理員可以強制取消訂單，並提供取消原因
+    //
     //Future cancelOrderByAdmin(String orderId, { String reason }) async
     test('test cancelOrderByAdmin', () async {
       // TODO
     });
 
-    // ?��?訂單詳�?
+    // 查看訂單詳情
     //
-    // 管�??�可?��?訂單?�詳細信?��??�括?�送信??    //
+    // 管理員可查看訂單的詳細信息，包括配送信息
+    //
     //Future<OrderQueryResult> getOrderDetail(String orderId) async
     test('test getOrderDetail', () async {
       // TODO
     });
 
-    // 訂單統�??��?
+    // 訂單統計報告
     //
-    // ?��?訂單?��??�統計數??    //
+    // 獲取訂單相關的統計數據
+    //
     //Future<OrderStatisticsDTO> getOrderStatistics({ DateTime startDate, DateTime endDate }) async
     test('test getOrderStatistics', () async {
       // TODO
     });
 
-    // ?�索訂單
+    // 搜索訂單
     //
-    // 管�??�可?��?多個�?件�?索�???    //
+    // 管理員可根據多個條件搜索訂單
+    //
     //Future<PageOrder> searchOrders({ int buyerId, int sellerId, String status, DateTime startDate, DateTime endDate, int page, int size }) async
     test('test searchOrders', () async {
       // TODO

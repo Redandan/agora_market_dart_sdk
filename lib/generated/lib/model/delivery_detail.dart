@@ -31,12 +31,13 @@ class DeliveryDetail {
     this.updatedAt,
     this.deliveredAt,
     this.assignedAt,
-    this.deliveryLogs = const [],
     this.status,
     this.pickingUpTime,
     this.deliveringTime,
     this.deliveredTime,
     this.cancelledTime,
+    this.pickupDistance,
+    this.deliveryDistance,
   });
 
   /// 訂單ID
@@ -201,9 +202,6 @@ class DeliveryDetail {
   ///
   DateTime? assignedAt;
 
-  /// 配送記錄
-  List<String> deliveryLogs;
-
   /// 配送狀態
   DeliveryDetailStatusEnum? status;
 
@@ -243,6 +241,24 @@ class DeliveryDetail {
   ///
   DateTime? cancelledTime;
 
+  /// 取貨距離(公里)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? pickupDistance;
+
+  /// 送貨距離(公里)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? deliveryDistance;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is DeliveryDetail &&
     other.orderId == orderId &&
@@ -263,12 +279,13 @@ class DeliveryDetail {
     other.updatedAt == updatedAt &&
     other.deliveredAt == deliveredAt &&
     other.assignedAt == assignedAt &&
-    _deepEquality.equals(other.deliveryLogs, deliveryLogs) &&
     other.status == status &&
     other.pickingUpTime == pickingUpTime &&
     other.deliveringTime == deliveringTime &&
     other.deliveredTime == deliveredTime &&
-    other.cancelledTime == cancelledTime;
+    other.cancelledTime == cancelledTime &&
+    other.pickupDistance == pickupDistance &&
+    other.deliveryDistance == deliveryDistance;
 
   @override
   int get hashCode =>
@@ -291,15 +308,16 @@ class DeliveryDetail {
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (deliveredAt == null ? 0 : deliveredAt!.hashCode) +
     (assignedAt == null ? 0 : assignedAt!.hashCode) +
-    (deliveryLogs.hashCode) +
     (status == null ? 0 : status!.hashCode) +
     (pickingUpTime == null ? 0 : pickingUpTime!.hashCode) +
     (deliveringTime == null ? 0 : deliveringTime!.hashCode) +
     (deliveredTime == null ? 0 : deliveredTime!.hashCode) +
-    (cancelledTime == null ? 0 : cancelledTime!.hashCode);
+    (cancelledTime == null ? 0 : cancelledTime!.hashCode) +
+    (pickupDistance == null ? 0 : pickupDistance!.hashCode) +
+    (deliveryDistance == null ? 0 : deliveryDistance!.hashCode);
 
   @override
-  String toString() => 'DeliveryDetail[orderId=$orderId, deliveryId=$deliveryId, verifyCode=$verifyCode, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupAddress=$pickupAddress, pickupPostalCode=$pickupPostalCode, shippingLongitude=$shippingLongitude, shippingLatitude=$shippingLatitude, shippingAddress=$shippingAddress, shippingPostalCode=$shippingPostalCode, receiverName=$receiverName, receiverPhone=$receiverPhone, trackingNumber=$trackingNumber, createdAt=$createdAt, updatedAt=$updatedAt, deliveredAt=$deliveredAt, assignedAt=$assignedAt, deliveryLogs=$deliveryLogs, status=$status, pickingUpTime=$pickingUpTime, deliveringTime=$deliveringTime, deliveredTime=$deliveredTime, cancelledTime=$cancelledTime]';
+  String toString() => 'DeliveryDetail[orderId=$orderId, deliveryId=$deliveryId, verifyCode=$verifyCode, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupAddress=$pickupAddress, pickupPostalCode=$pickupPostalCode, shippingLongitude=$shippingLongitude, shippingLatitude=$shippingLatitude, shippingAddress=$shippingAddress, shippingPostalCode=$shippingPostalCode, receiverName=$receiverName, receiverPhone=$receiverPhone, trackingNumber=$trackingNumber, createdAt=$createdAt, updatedAt=$updatedAt, deliveredAt=$deliveredAt, assignedAt=$assignedAt, status=$status, pickingUpTime=$pickingUpTime, deliveringTime=$deliveringTime, deliveredTime=$deliveredTime, cancelledTime=$cancelledTime, pickupDistance=$pickupDistance, deliveryDistance=$deliveryDistance]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -393,7 +411,6 @@ class DeliveryDetail {
     } else {
       json[r'assignedAt'] = null;
     }
-      json[r'deliveryLogs'] = this.deliveryLogs;
     if (this.status != null) {
       json[r'status'] = this.status;
     } else {
@@ -418,6 +435,16 @@ class DeliveryDetail {
       json[r'cancelledTime'] = this.cancelledTime!.toUtc().toIso8601String();
     } else {
       json[r'cancelledTime'] = null;
+    }
+    if (this.pickupDistance != null) {
+      json[r'pickupDistance'] = this.pickupDistance;
+    } else {
+      json[r'pickupDistance'] = null;
+    }
+    if (this.deliveryDistance != null) {
+      json[r'deliveryDistance'] = this.deliveryDistance;
+    } else {
+      json[r'deliveryDistance'] = null;
     }
     return json;
   }
@@ -459,14 +486,13 @@ class DeliveryDetail {
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         deliveredAt: mapDateTime(json, r'deliveredAt', r''),
         assignedAt: mapDateTime(json, r'assignedAt', r''),
-        deliveryLogs: json[r'deliveryLogs'] is Iterable
-            ? (json[r'deliveryLogs'] as Iterable).cast<String>().toList(growable: false)
-            : const [],
         status: DeliveryDetailStatusEnum.fromJson(json[r'status']),
         pickingUpTime: mapDateTime(json, r'pickingUpTime', r''),
         deliveringTime: mapDateTime(json, r'deliveringTime', r''),
         deliveredTime: mapDateTime(json, r'deliveredTime', r''),
         cancelledTime: mapDateTime(json, r'cancelledTime', r''),
+        pickupDistance: mapValueOfType<double>(json, r'pickupDistance'),
+        deliveryDistance: mapValueOfType<double>(json, r'deliveryDistance'),
       );
     }
     return null;

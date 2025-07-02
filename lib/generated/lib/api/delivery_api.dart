@@ -125,15 +125,7 @@ class DeliveryApi {
   /// 獲取當前配送員可以接的訂單列表
   ///
   /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<Response> getAvailableOrdersWithHttpInfo({ int? page, int? size, }) async {
+  Future<Response> getAvailableOrdersWithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/delivery/available-orders';
 
@@ -143,13 +135,6 @@ class DeliveryApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
 
     const contentTypes = <String>[];
 
@@ -168,16 +153,8 @@ class DeliveryApi {
   /// 獲取可接訂單列表
   ///
   /// 獲取當前配送員可以接的訂單列表
-  ///
-  /// Parameters:
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<List<DeliveryDetail>?> getAvailableOrders({ int? page, int? size, }) async {
-    final response = await getAvailableOrdersWithHttpInfo( page: page, size: size, );
+  Future<List<DeliveryDetail>?> getAvailableOrders() async {
+    final response = await getAvailableOrdersWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

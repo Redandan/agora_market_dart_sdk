@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for Transaction
@@ -16,13 +16,13 @@ void main() {
   // final instance = Transaction();
 
   group('test Transaction', () {
-    // 交�?ID
+    // 交易ID
     // int id
     test('to test the property `id`', () async {
       // TODO
     });
 
-    // ?�戶ID
+    // 用戶ID
     // int userId
     test('to test the property `userId`', () async {
       // TODO
@@ -39,40 +39,43 @@ void main() {
       // TODO
     });
 
-    // 交�??��?�?    // num beforeAmount
+    // 交易前金額
+    // num beforeAmount
     test('to test the property `beforeAmount`', () async {
       // TODO
     });
 
-    // 交�?後�?�?    // num afterAmount
+    // 交易後金額
+    // num afterAmount
     test('to test the property `afterAmount`', () async {
       // TODO
     });
 
-    // 交�??��?
+    // 交易金額
     // num amount
     test('to test the property `amount`', () async {
       // TODO
     });
 
-    // ?�註
+    // 備註
     // String remark
     test('to test the property `remark`', () async {
       // TODO
     });
 
-    // ?�建?��?
+    // 創建時間
     // DateTime createdAt
     test('to test the property `createdAt`', () async {
       // TODO
     });
 
-    // ?�後更?��???    // DateTime updatedAt
+    // 最後更新時間
+    // DateTime updatedAt
     test('to test the property `updatedAt`', () async {
       // TODO
     });
 
-    // 交�??�述
+    // 交易描述
     // String description
     test('to test the property `description`', () async {
       // TODO

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 
@@ -17,41 +17,46 @@ void main() {
   // final instance = AdminDisputesApi();
 
   group('tests for AdminDisputesApi', () {
-    // ?��??�?�糾紛�?�?    //
-    // ?�管?�員?�訪??    //
+    // 獲取所有糾紛列表
+    //
+    // 僅管理員可訪問
+    //
     //Future<PageDispute> getAllDisputes({ int page, int size }) async
     test('test getAllDisputes', () async {
       // TODO
     });
 
-    // ?��?糾�?詳�?
+    // 查看糾紛詳情
     //
-    // 管�??�可?��?糾�??�詳細信??    //
+    // 管理員可查看糾紛的詳細信息
+    //
     //Future<DisputeQueryResult> getDisputeDetail1(String disputeId) async
     test('test getDisputeDetail1', () async {
       // TODO
     });
 
-    // 糾�?統�??��?
+    // 糾紛統計報告
     //
-    // ?��?糾�??��??�統計數??    //
+    // 獲取糾紛相關的統計數據
+    //
     //Future<DisputeStatisticsDTO> getDisputeStatistics({ DateTime startDate, DateTime endDate }) async
     test('test getDisputeStatistics', () async {
       // TODO
     });
 
-    // ?��?糾�?
+    // 處理糾紛
     //
-    // 管�??�可以�??�糾紛�??�括?�款、�?消�??��??��?
+    // 管理員可以處理糾紛，包括退款、取消訂單等操作
     //
     //Future resolveDispute(String disputeId, String resolution, String comment) async
     test('test resolveDispute', () async {
       // TODO
     });
 
-    // ?�索糾�?
+    // 搜索糾紛
     //
-    // 管�??�可?��?多個�?件�?索糾�?    //
+    // 管理員可根據多個條件搜索糾紛
+    //
     //Future<PageDispute> searchDisputes1({ int buyerId, int sellerId, String status, DateTime startDate, DateTime endDate, int page, int size }) async
     test('test searchDisputes1', () async {
       // TODO

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for DeliveryDetail
@@ -22,132 +22,147 @@ void main() {
       // TODO
     });
 
-    // ?�送員ID
+    // 配送員ID
     // int deliveryId
     test('to test the property `deliveryId`', () async {
       // TODO
     });
 
-    // 驗�?�?    // String verifyCode
+    // 驗證碼
+    // String verifyCode
     test('to test the property `verifyCode`', () async {
       // TODO
     });
 
-    // ?�件經度
+    // 取件經度
     // double pickupLongitude
     test('to test the property `pickupLongitude`', () async {
       // TODO
     });
 
-    // ?�件緯度
+    // 取件緯度
     // double pickupLatitude
     test('to test the property `pickupLatitude`', () async {
       // TODO
     });
 
-    // ?�件?��?
+    // 取件地址
     // String pickupAddress
     test('to test the property `pickupAddress`', () async {
       // TODO
     });
 
-    // ?�件?��??�??    // String pickupPostalCode
+    // 取件郵遞區號
+    // String pickupPostalCode
     test('to test the property `pickupPostalCode`', () async {
       // TODO
     });
 
-    // ?�件經度
+    // 收件經度
     // double shippingLongitude
     test('to test the property `shippingLongitude`', () async {
       // TODO
     });
 
-    // ?�件緯度
+    // 收件緯度
     // double shippingLatitude
     test('to test the property `shippingLatitude`', () async {
       // TODO
     });
 
-    // ?�件?��?
+    // 收件地址
     // String shippingAddress
     test('to test the property `shippingAddress`', () async {
       // TODO
     });
 
-    // ?�件?��??�??    // String shippingPostalCode
+    // 收件郵遞區號
+    // String shippingPostalCode
     test('to test the property `shippingPostalCode`', () async {
       // TODO
     });
 
-    // ?�件人�???    // String receiverName
+    // 收件人姓名
+    // String receiverName
     test('to test the property `receiverName`', () async {
       // TODO
     });
 
-    // ?�件人電�?    // String receiverPhone
+    // 收件人電話
+    // String receiverPhone
     test('to test the property `receiverPhone`', () async {
       // TODO
     });
 
-    // 追蹤?�碼,如�?使用三方?��?,?�填寫�??�物流�?追蹤?�碼
+    // 追蹤號碼,如果使用三方物流,則填寫三方物流的追蹤號碼
     // String trackingNumber
     test('to test the property `trackingNumber`', () async {
       // TODO
     });
 
-    // ?�建?��?
+    // 創建時間
     // DateTime createdAt
     test('to test the property `createdAt`', () async {
       // TODO
     });
 
-    // ?�新?��?
+    // 更新時間
     // DateTime updatedAt
     test('to test the property `updatedAt`', () async {
       // TODO
     });
 
-    // ?�送�???    // DateTime deliveredAt
+    // 配送時間
+    // DateTime deliveredAt
     test('to test the property `deliveredAt`', () async {
       // TODO
     });
 
-    // ?��??��?
+    // 分配時間
     // DateTime assignedAt
     test('to test the property `assignedAt`', () async {
       // TODO
     });
 
-    // ?�送�???    // List<String> deliveryLogs (default value: const [])
-    test('to test the property `deliveryLogs`', () async {
-      // TODO
-    });
-
-    // ?�送�???    // String status
+    // 配送狀態
+    // String status
     test('to test the property `status`', () async {
       // TODO
     });
 
-    // ?�貨?��?
+    // 取貨時間
     // DateTime pickingUpTime
     test('to test the property `pickingUpTime`', () async {
       // TODO
     });
 
-    // ?�送�???    // DateTime deliveringTime
+    // 運送時間
+    // DateTime deliveringTime
     test('to test the property `deliveringTime`', () async {
       // TODO
     });
 
-    // ?��??��?
+    // 送達時間
     // DateTime deliveredTime
     test('to test the property `deliveredTime`', () async {
       // TODO
     });
 
-    // ?��??��?
+    // 取消時間
     // DateTime cancelledTime
     test('to test the property `cancelledTime`', () async {
+      // TODO
+    });
+
+    // 取貨距離(公里)
+    // double pickupDistance
+    test('to test the property `pickupDistance`', () async {
+      // TODO
+    });
+
+    // 送貨距離(公里)
+    // double deliveryDistance
+    test('to test the property `deliveryDistance`', () async {
       // TODO
     });
 

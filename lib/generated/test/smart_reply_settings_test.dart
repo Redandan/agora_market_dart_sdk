@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for SmartReplySettings
@@ -16,23 +16,25 @@ void main() {
   // final instance = SmartReplySettings();
 
   group('test SmartReplySettings', () {
-    // ?�否?�用上�??��?�?    // bool contextAware
+    // 是否啟用上下文理解
+    // bool contextAware
     test('to test the property `contextAware`', () async {
       // TODO
     });
 
-    // ?�大�?下�?消息??    // int maxContextMessages
+    // 最大上下文消息數
+    // int maxContextMessages
     test('to test the property `maxContextMessages`', () async {
       // TODO
     });
 
-    // ?�否?�用?��??��?
+    // 是否啟用情感分析
     // bool emotionAnalysis
     test('to test the property `emotionAnalysis`', () async {
       // TODO
     });
 
-    // ?�否?�用?��?識別
+    // 是否啟用意圖識別
     // bool intentRecognition
     test('to test the property `intentRecognition`', () async {
       // TODO

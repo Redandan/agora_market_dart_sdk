@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for Deliveryer
@@ -16,42 +16,43 @@ void main() {
   // final instance = Deliveryer();
 
   group('test Deliveryer', () {
-    // ?�戶ID
+    // 用戶ID
     // int userId
     test('to test the property `userId`', () async {
       // TODO
     });
 
-    // 顯示?�稱
+    // 顯示名稱
     // String displayName
     test('to test the property `displayName`', () async {
       // TODO
     });
 
-    // ?�否?�用
+    // 是否啟用
     // bool enabled
     test('to test the property `enabled`', () async {
       // TODO
     });
 
-    // ?�送�???    // Set<String> deliveryAreas (default value: const {})
+    // 配送區域
+    // Set<String> deliveryAreas (default value: const {})
     test('to test the property `deliveryAreas`', () async {
       // TODO
     });
 
-    // ?�建?��?
+    // 創建時間
     // DateTime createdAt
     test('to test the property `createdAt`', () async {
       // TODO
     });
 
-    // ?�新?��?
+    // 更新時間
     // DateTime updatedAt
     test('to test the property `updatedAt`', () async {
       // TODO
     });
 
-    // �?��?�送�??�ID
+    // 正在配送訂單ID
     // String deliveringOrderId
     test('to test the property `deliveringOrderId`', () async {
       // TODO

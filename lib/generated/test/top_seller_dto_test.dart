@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for TopSellerDTO
@@ -16,25 +16,25 @@ void main() {
   // final instance = TopSellerDTO();
 
   group('test TopSellerDTO', () {
-    // è³?®¶ID
+    // è³£å®¶ID
     // int sellerId
     test('to test the property `sellerId`', () async {
       // TODO
     });
 
-    // è³?®¶?ç¨±
+    // è³£å®¶åç¨±
     // String sellerName
     test('to test the property `sellerName`', () async {
       // TODO
     });
 
-    // è¨‚å–®?¸é?
+    // è¨‚å–®æ•¸é‡
     // int orderCount
     test('to test the property `orderCount`', () async {
       // TODO
     });
 
-    // ?·å”®?‘é?
+    // éŠ·å”®é‡‘é¡
     // num amount
     test('to test the property `amount`', () async {
       // TODO

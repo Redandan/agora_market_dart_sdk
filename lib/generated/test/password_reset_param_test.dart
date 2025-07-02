@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for PasswordResetParam
@@ -16,17 +16,20 @@ void main() {
   // final instance = PasswordResetParam();
 
   group('test PasswordResetParam', () {
-    // ?Šå?ç¢?    // String oldPassword
+    // èˆŠå¯†ç¢¼
+    // String oldPassword
     test('to test the property `oldPassword`', () async {
       // TODO
     });
 
-    // ?°å?ç¢?    // String newPassword
+    // æ–°å¯†ç¢¼
+    // String newPassword
     test('to test the property `newPassword`', () async {
       // TODO
     });
 
-    // ç¢ºè??°å?ç¢?    // String confirmNewPassword
+    // ç¢ºèªæ–°å¯†ç¢¼
+    // String confirmNewPassword
     test('to test the property `confirmNewPassword`', () async {
       // TODO
     });

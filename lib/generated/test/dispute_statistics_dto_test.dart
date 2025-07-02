@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for DisputeStatisticsDTO
@@ -22,30 +22,31 @@ void main() {
       // TODO
     });
 
-    // ?„ç??‹ç³¾ç´›æ•¸??    // Map<String, int> disputesByStatus (default value: const {})
+    // å„ç‹€æ…‹ç³¾ç´›æ•¸é‡
+    // Map<String, int> disputesByStatus (default value: const {})
     test('to test the property `disputesByStatus`', () async {
       // TODO
     });
 
-    // å¹³å??•ç??‚é?ï¼ˆå??‚ï?
+    // å¹³å‡è™•ç†æ™‚é–“ï¼ˆå°æ™‚ï¼‰
     // double averageResolutionTime
     test('to test the property `averageResolutionTime`', () async {
       // TODO
     });
 
-    // ?€æ¬¾ç¸½?‘é?
+    // é€€æ¬¾ç¸½é‡‘é¡
     // num totalRefundAmount
     test('to test the property `totalRefundAmount`', () async {
       // TODO
     });
 
-    // ?±é?ç³¾ç??†å?ï¼ˆå?5?‹ï?
+    // ç†±é–€ç³¾ç´›å•†å“ï¼ˆå‰5å€‹ï¼‰
     // List<TopDisputedProductDTO> topDisputedProducts (default value: const [])
     test('to test the property `topDisputedProducts`', () async {
       // TODO
     });
 
-    // ?±é?ç³¾ç?è³?®¶ï¼ˆå?5?‹ï?
+    // ç†±é–€ç³¾ç´›è³£å®¶ï¼ˆå‰5å€‹ï¼‰
     // List<TopDisputedSellerDTO> topDisputedSellers (default value: const [])
     test('to test the property `topDisputedSellers`', () async {
       // TODO

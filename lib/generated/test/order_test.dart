@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for Order
@@ -22,7 +22,7 @@ void main() {
       // TODO
     });
 
-    // ?†å?ID
+    // å•†å“ID
     // int productId
     test('to test the property `productId`', () async {
       // TODO
@@ -34,37 +34,37 @@ void main() {
       // TODO
     });
 
-    // è³?®¶ID
+    // è³£å®¶ID
     // int sellerId
     test('to test the property `sellerId`', () async {
       // TODO
     });
 
-    // ?†å??¸é?
+    // å•†å“æ•¸é‡
     // int quantity
     test('to test the property `quantity`', () async {
       // TODO
     });
 
-    // ?¸æ??„å??SKU
+    // é¸æ“‡çš„å•†å“SKU
     // String selectedSku
     test('to test the property `selectedSku`', () async {
       // TODO
     });
 
-    // ?‹è²»
+    // é‹è²»
     // num shippingFee
     test('to test the property `shippingFee`', () async {
       // TODO
     });
 
-    // ?†å??¹æ ¼
+    // å•†å“åƒ¹æ ¼
     // num productPrice
     test('to test the property `productPrice`', () async {
       // TODO
     });
 
-    // è¨‚å–®?‘é?
+    // è¨‚å–®é‡‘é¡
     // num orderAmount
     test('to test the property `orderAmount`', () async {
       // TODO
@@ -86,31 +86,32 @@ void main() {
       // TODO
     });
 
-    // ?™è¨»
+    // å‚™è¨»
     // String remark
     test('to test the property `remark`', () async {
       // TODO
     });
 
-    // ?µå»º?‚é?
+    // å‰µå»ºæ™‚é–“
     // DateTime createdAt
     test('to test the property `createdAt`', () async {
       // TODO
     });
 
-    // ?´æ–°?‚é?
+    // æ›´æ–°æ™‚é–“
     // DateTime updatedAt
     test('to test the property `updatedAt`', () async {
       // TODO
     });
 
-    // ?–æ??‚é?
+    // å–æ¶ˆæ™‚é–“
     // DateTime cancelledAt
     test('to test the property `cancelledAt`', () async {
       // TODO
     });
 
-    // ?€æ¬¾æ???    // DateTime refundedAt
+    // é€€æ¬¾æ™‚é–“
+    // DateTime refundedAt
     test('to test the property `refundedAt`', () async {
       // TODO
     });

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for AutoReplyConfig
@@ -16,19 +16,20 @@ void main() {
   // final instance = AutoReplyConfig();
 
   group('test AutoReplyConfig', () {
-    // ?�否?�用?��??�復
+    // 是否啟用自動回復
     // bool enabled
     test('to test the property `enabled`', () async {
       // TODO
     });
 
-    // ?��??�復模�?
+    // 自動回復模式
     // String mode
     test('to test the property `mode`', () async {
       // TODO
     });
 
-    // ?�鍵詞�?復�???    // List<KeywordRule> keywordRules (default value: const [])
+    // 關鍵詞回復規則
+    // List<KeywordRule> keywordRules (default value: const [])
     test('to test the property `keywordRules`', () async {
       // TODO
     });

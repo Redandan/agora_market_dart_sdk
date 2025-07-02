@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for DisputeQueryResult
@@ -32,47 +32,49 @@ void main() {
       // TODO
     });
 
-    // è²·å®¶?ç¨±
+    // è²·å®¶åç¨±
     // String buyerName
     test('to test the property `buyerName`', () async {
       // TODO
     });
 
-    // è³?®¶ID
+    // è³£å®¶ID
     // int sellerId
     test('to test the property `sellerId`', () async {
       // TODO
     });
 
-    // è³?®¶?ç¨±
+    // è³£å®¶åç¨±
     // String sellerName
     test('to test the property `sellerName`', () async {
       // TODO
     });
 
-    // ?³è¨´?€??    // String status
+    // ç”³è¨´ç‹€æ…‹
+    // String status
     test('to test the property `status`', () async {
       // TODO
     });
 
-    // ç³¾ç??è¿°
+    // ç³¾ç´›æè¿°
     // String description
     test('to test the property `description`', () async {
       // TODO
     });
 
-    // ç®¡ç??¡è??†èªª??    // String adminComment
+    // ç®¡ç†å“¡è™•ç†èªªæ˜
+    // String adminComment
     test('to test the property `adminComment`', () async {
       // TODO
     });
 
-    // ?µå»º?‚é?
+    // å‰µå»ºæ™‚é–“
     // DateTime createdAt
     test('to test the property `createdAt`', () async {
       // TODO
     });
 
-    // ?•ç??‚é?
+    // è™•ç†æ™‚é–“
     // DateTime resolvedAt
     test('to test the property `resolvedAt`', () async {
       // TODO

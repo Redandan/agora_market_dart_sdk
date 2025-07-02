@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for Withdraw
@@ -16,25 +16,26 @@ void main() {
   // final instance = Withdraw();
 
   group('test Withdraw', () {
-    // ?�款ID
+    // 提款ID
     // String id
     test('to test the property `id`', () async {
       // TODO
     });
 
-    // ?�戶ID
+    // 用戶ID
     // int userId
     test('to test the property `userId`', () async {
       // TODO
     });
 
-    // ?�款?��?
+    // 提款金額
     // num amount
     test('to test the property `amount`', () async {
       // TODO
     });
 
-    // ?��?�?    // num fee
+    // 手續費
+    // num fee
     test('to test the property `fee`', () async {
       // TODO
     });
@@ -50,7 +51,7 @@ void main() {
       // TODO
     });
 
-    // ?�款?��?
+    // 提款地址
     // String toAddress
     test('to test the property `toAddress`', () async {
       // TODO
@@ -61,25 +62,26 @@ void main() {
       // TODO
     });
 
-    // 交�?Hash
+    // 交易Hash
     // String txHash
     test('to test the property `txHash`', () async {
       // TODO
     });
 
-    // ?�註
+    // 備註
     // String remark
     test('to test the property `remark`', () async {
       // TODO
     });
 
-    // ?�建?��?
+    // 創建時間
     // DateTime createdAt
     test('to test the property `createdAt`', () async {
       // TODO
     });
 
-    // ?�後更?��???    // DateTime updatedAt
+    // 最後更新時間
+    // DateTime updatedAt
     test('to test the property `updatedAt`', () async {
       // TODO
     });

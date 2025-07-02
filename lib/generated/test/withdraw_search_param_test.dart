@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for WithdrawSearchParam
@@ -16,13 +16,13 @@ void main() {
   // final instance = WithdrawSearchParam();
 
   group('test WithdrawSearchParam', () {
-    // ?¨æˆ¶ID
+    // ç”¨æˆ¶ID
     // int userId
     test('to test the property `userId`', () async {
       // TODO
     });
 
-    // ?æ¬¾ID
+    // ææ¬¾ID
     // String withdrawId
     test('to test the property `withdrawId`', () async {
       // TODO
@@ -44,25 +44,25 @@ void main() {
       // TODO
     });
 
-    // ?æ¬¾?°å?
+    // ææ¬¾åœ°å€
     // String toAddress
     test('to test the property `toAddress`', () async {
       // TODO
     });
 
-    // äº¤æ?Hash
+    // äº¤æ˜“Hash
     // String txHash
     test('to test the property `txHash`', () async {
       // TODO
     });
 
-    // ?‹å??‚é?
+    // é–‹å§‹æ™‚é–“
     // DateTime startTime
     test('to test the property `startTime`', () async {
       // TODO
     });
 
-    // çµæ??‚é?
+    // çµæŸæ™‚é–“
     // DateTime endTime
     test('to test the property `endTime`', () async {
       // TODO

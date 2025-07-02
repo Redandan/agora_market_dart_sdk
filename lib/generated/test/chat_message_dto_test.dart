@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for ChatMessageDTO
@@ -16,13 +16,13 @@ void main() {
   // final instance = ChatMessageDTO();
 
   group('test ChatMessageDTO', () {
-    // ?�收?�ID
+    // 接收者ID
     // int receiverId
     test('to test the property `receiverId`', () async {
       // TODO
     });
 
-    // 消息?�容
+    // 消息內容
     // String content
     test('to test the property `content`', () async {
       // TODO

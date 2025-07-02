@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for PageableObject
@@ -18,6 +18,11 @@ void main() {
   group('test PageableObject', () {
     // SortObject sort
     test('to test the property `sort`', () async {
+      // TODO
+    });
+
+    // int offset
+    test('to test the property `offset`', () async {
       // TODO
     });
 
@@ -38,11 +43,6 @@ void main() {
 
     // bool unpaged
     test('to test the property `unpaged`', () async {
-      // TODO
-    });
-
-    // int offset
-    test('to test the property `offset`', () async {
       // TODO
     });
 

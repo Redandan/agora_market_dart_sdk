@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for ProductSeachParam
@@ -16,13 +16,13 @@ void main() {
   // final instance = ProductSeachParam();
 
   group('test ProductSeachParam', () {
-    // ?†å?ID
+    // å•†å“ID
     // String id
     test('to test the property `id`', () async {
       // TODO
     });
 
-    // è³?®¶ID
+    // è³£å®¶ID
     // int sellerId
     test('to test the property `sellerId`', () async {
       // TODO
@@ -38,31 +38,32 @@ void main() {
       // TODO
     });
 
-    // ?‹å??¥æ?
+    // é–‹å§‹æ—¥æœŸ
     // DateTime startDate
     test('to test the property `startDate`', () async {
       // TODO
     });
 
-    // çµæ??¥æ?
+    // çµæŸæ—¥æœŸ
     // DateTime endDate
     test('to test the property `endDate`', () async {
       // TODO
     });
 
-    // ?ç¢¼
+    // é ç¢¼
     // int page
     test('to test the property `page`', () async {
       // TODO
     });
 
-    // æ¯é?å¤§å?
+    // æ¯é å¤§å°
     // int size
     test('to test the property `size`', () async {
       // TODO
     });
 
-    // ?µé??€??    // String postalCode
+    // éƒµéå€è™Ÿ
+    // String postalCode
     test('to test the property `postalCode`', () async {
       // TODO
     });
@@ -79,40 +80,44 @@ void main() {
       // TODO
     });
 
-    // ?†å?SKU
+    // å•†å“SKU
     // String sku
     test('to test the property `sku`', () async {
       // TODO
     });
 
-    // ?ç??ç¨±
+    // å“ç‰Œåç¨±
     // String brand
     test('to test the property `brand`', () async {
       // TODO
     });
 
-    // ?†å?æ¨™ç±¤
+    // å•†å“æ¨™ç±¤
     // String tag
     test('to test the property `tag`', () async {
       // TODO
     });
 
-    // ?€ä½åƒ¹??    // num minPrice
+    // æœ€ä½åƒ¹æ ¼
+    // num minPrice
     test('to test the property `minPrice`', () async {
       // TODO
     });
 
-    // ?€é«˜åƒ¹??    // num maxPrice
+    // æœ€é«˜åƒ¹æ ¼
+    // num maxPrice
     test('to test the property `maxPrice`', () async {
       // TODO
     });
 
-    // ?¯å¦?‰åº«å­?    // bool inStock
+    // æ˜¯å¦æœ‰åº«å­˜
+    // bool inStock
     test('to test the property `inStock`', () async {
       // TODO
     });
 
-    // ?œç´¢?œéµå­?    // String keyword
+    // æœç´¢é—œéµå­—
+    // String keyword
     test('to test the property `keyword`', () async {
       // TODO
     });

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for NotificationResponseDTO
@@ -16,36 +16,37 @@ void main() {
   // final instance = NotificationResponseDTO();
 
   group('test NotificationResponseDTO', () {
-    // ?�知ID
+    // 通知ID
     // int id
     test('to test the property `id`', () async {
       // TODO
     });
 
-    // ?�收?�ID
+    // 接收者ID
     // int userId
     test('to test the property `userId`', () async {
       // TODO
     });
 
-    // ?�送者ID
+    // 發送者ID
     // int senderId
     test('to test the property `senderId`', () async {
       // TODO
     });
 
-    // ?�送者�?�?    // String senderName
+    // 發送者名稱
+    // String senderName
     test('to test the property `senderName`', () async {
       // TODO
     });
 
-    // ?�知標�?
+    // 通知標題
     // String title
     test('to test the property `title`', () async {
       // TODO
     });
 
-    // ?�知?�容
+    // 通知內容
     // String content
     test('to test the property `content`', () async {
       // TODO
@@ -61,76 +62,80 @@ void main() {
       // TODO
     });
 
-    // ?��??�接
+    // 相關鏈接
     // String link
     test('to test the property `link`', () async {
       // TODO
     });
 
-    // ?��?對象ID
+    // 相關對象ID
     // String relatedObjectId
     test('to test the property `relatedObjectId`', () async {
       // TODO
     });
 
-    // ?��?對象類�?
+    // 相關對象類型
     // String relatedObjectType
     test('to test the property `relatedObjectType`', () async {
       // TODO
     });
 
-    // 額�??��?
+    // 額外數據
     // String extraData
     test('to test the property `extraData`', () async {
       // TODO
     });
 
-    // ?�否?��?    // bool isPushed
+    // 是否推送
+    // bool isPushed
     test('to test the property `isPushed`', () async {
       // TODO
     });
 
-    // ?�送�???    // DateTime pushedAt
+    // 推送時間
+    // DateTime pushedAt
     test('to test the property `pushedAt`', () async {
       // TODO
     });
 
-    // 讀?��???    // DateTime readAt
+    // 讀取時間
+    // DateTime readAt
     test('to test the property `readAt`', () async {
       // TODO
     });
 
-    // ?�建?��?
+    // 創建時間
     // DateTime createdAt
     test('to test the property `createdAt`', () async {
       // TODO
     });
 
-    // ?�新?��?
+    // 更新時間
     // DateTime updatedAt
     test('to test the property `updatedAt`', () async {
       // TODO
     });
 
-    // ?�否?�系統通知
+    // 是否為系統通知
     // bool isSystemNotification
     test('to test the property `isSystemNotification`', () async {
       // TODO
     });
 
-    // ?�否?��??�通知
+    // 是否為緊急通知
     // bool isUrgent
     test('to test the property `isUrgent`', () async {
       // TODO
     });
 
-    // ?�否已�?
+    // 是否已讀
     // bool isRead
     test('to test the property `isRead`', () async {
       // TODO
     });
 
-    // ?�否已推??    // bool hasBeenPushed
+    // 是否已推送
+    // bool hasBeenPushed
     test('to test the property `hasBeenPushed`', () async {
       // TODO
     });

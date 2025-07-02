@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for OrderSumbitParam
@@ -16,48 +16,50 @@ void main() {
   // final instance = OrderSumbitParam();
 
   group('test OrderSumbitParam', () {
-    // ?��?ID
+    // 商品ID
     // int productId
     test('to test the property `productId`', () async {
       // TODO
     });
 
-    // ?��??��?
+    // 商品數量
     // int quantity
     test('to test the property `quantity`', () async {
       // TODO
     });
 
-    // ?��??��??�SKU
+    // 選擇的商品SKU
     // String selectedSku
     test('to test the property `selectedSku`', () async {
       // TODO
     });
 
-    // ?�件?��?
+    // 收件地址
     // String shippingAddress
     test('to test the property `shippingAddress`', () async {
       // TODO
     });
 
-    // ?�件?��?經度
+    // 收件地址經度
     // double longitude
     test('to test the property `longitude`', () async {
       // TODO
     });
 
-    // ?�件?��?緯度
+    // 收件地址緯度
     // double latitude
     test('to test the property `latitude`', () async {
       // TODO
     });
 
-    // ?�件人�???    // String receiverName
+    // 收件人姓名
+    // String receiverName
     test('to test the property `receiverName`', () async {
       // TODO
     });
 
-    // ?�件人電�?    // String receiverPhone
+    // 收件人電話
+    // String receiverPhone
     test('to test the property `receiverPhone`', () async {
       // TODO
     });
@@ -67,7 +69,7 @@ void main() {
       // TODO
     });
 
-    // 訂單?�註
+    // 訂單備註
     // String remark
     test('to test the property `remark`', () async {
       // TODO

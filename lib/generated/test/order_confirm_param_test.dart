@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for OrderConfirmParam
@@ -22,12 +22,13 @@ void main() {
       // TODO
     });
 
-    // 驗�?�?    // String verifyCode
+    // 驗證碼
+    // String verifyCode
     test('to test the property `verifyCode`', () async {
       // TODO
     });
 
-    // 確�??�註
+    // 確認備註
     // String remark
     test('to test the property `remark`', () async {
       // TODO

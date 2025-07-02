@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import '../lib/api.dart';
+import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
 // tests for ChatMessageQueryParam
@@ -16,49 +16,49 @@ void main() {
   // final instance = ChatMessageQueryParam();
 
   group('test ChatMessageQueryParam', () {
-    // ?�戶ID
+    // 用戶ID
     // int userId
     test('to test the property `userId`', () async {
       // TODO
     });
 
-    // ?�話ID
+    // 會話ID
     // int sessionId
     test('to test the property `sessionId`', () async {
       // TODO
     });
 
-    // ?�天對象ID
+    // 聊天對象ID
     // int chatWithUserId
     test('to test the property `chatWithUserId`', () async {
       // TODO
     });
 
-    // ?��??��?
+    // 開始時間
     // DateTime startTime
     test('to test the property `startTime`', () async {
       // TODO
     });
 
-    // 結�??��?
+    // 結束時間
     // DateTime endTime
     test('to test the property `endTime`', () async {
       // TODO
     });
 
-    // ?�否?�查詢未讀消息
+    // 是否只查詢未讀消息
     // bool unreadOnly
     test('to test the property `unreadOnly`', () async {
       // TODO
     });
 
-    // ?�碼
+    // 頁碼
     // int page (default value: 0)
     test('to test the property `page`', () async {
       // TODO
     });
 
-    // 每�?大�?
+    // 每頁大小
     // int size (default value: 20)
     test('to test the property `size`', () async {
       // TODO
