@@ -254,7 +254,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateDeliveryOrderParam** | [**UpdateDeliveryOrderParam**](UpdateDeliveryOrderParam.md)|  | [optional] 
+ **updateDeliveryOrderParam** | [**UpdateDeliveryOrderParam**](UpdateDeliveryOrderParam.md)|  | 
 
 ### Return type
 

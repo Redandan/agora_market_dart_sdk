@@ -13,30 +13,18 @@ part of openapi.api;
 class UpdateDeliveryOrderParam {
   /// Returns a new [UpdateDeliveryOrderParam] instance.
   UpdateDeliveryOrderParam({
-    this.orderId,
-    this.reportType,
+    required this.orderId,
+    required this.reportType,
     this.remark,
-    this.currentLocationLatitude,
-    this.currentLocationLongitude,
+    required this.currentLocationLatitude,
+    required this.currentLocationLongitude,
     this.verifyCode,
   });
 
   /// 訂單ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? orderId;
+  String orderId;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DeliveryReportTypeEnum? reportType;
+  DeliveryReportTypeEnum reportType;
 
   /// 備註
   ///
@@ -48,22 +36,10 @@ class UpdateDeliveryOrderParam {
   String? remark;
 
   /// 當前位置緯度
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  double? currentLocationLatitude;
+  double currentLocationLatitude;
 
   /// 當前位置經度
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  double? currentLocationLongitude;
+  double currentLocationLongitude;
 
   /// 驗證碼
   ///
@@ -86,11 +62,11 @@ class UpdateDeliveryOrderParam {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (orderId == null ? 0 : orderId!.hashCode) +
-    (reportType == null ? 0 : reportType!.hashCode) +
+    (orderId.hashCode) +
+    (reportType.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
-    (currentLocationLatitude == null ? 0 : currentLocationLatitude!.hashCode) +
-    (currentLocationLongitude == null ? 0 : currentLocationLongitude!.hashCode) +
+    (currentLocationLatitude.hashCode) +
+    (currentLocationLongitude.hashCode) +
     (verifyCode == null ? 0 : verifyCode!.hashCode);
 
   @override
@@ -98,31 +74,15 @@ class UpdateDeliveryOrderParam {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.orderId != null) {
       json[r'orderId'] = this.orderId;
-    } else {
-      json[r'orderId'] = null;
-    }
-    if (this.reportType != null) {
       json[r'reportType'] = this.reportType;
-    } else {
-      json[r'reportType'] = null;
-    }
     if (this.remark != null) {
       json[r'remark'] = this.remark;
     } else {
       json[r'remark'] = null;
     }
-    if (this.currentLocationLatitude != null) {
       json[r'currentLocationLatitude'] = this.currentLocationLatitude;
-    } else {
-      json[r'currentLocationLatitude'] = null;
-    }
-    if (this.currentLocationLongitude != null) {
       json[r'currentLocationLongitude'] = this.currentLocationLongitude;
-    } else {
-      json[r'currentLocationLongitude'] = null;
-    }
     if (this.verifyCode != null) {
       json[r'verifyCode'] = this.verifyCode;
     } else {
@@ -150,11 +110,11 @@ class UpdateDeliveryOrderParam {
       }());
 
       return UpdateDeliveryOrderParam(
-        orderId: mapValueOfType<String>(json, r'orderId'),
-        reportType: DeliveryReportTypeEnum.fromJson(json[r'reportType']),
+        orderId: mapValueOfType<String>(json, r'orderId')!,
+        reportType: DeliveryReportTypeEnum.fromJson(json[r'reportType'])!,
         remark: mapValueOfType<String>(json, r'remark'),
-        currentLocationLatitude: mapValueOfType<double>(json, r'currentLocationLatitude'),
-        currentLocationLongitude: mapValueOfType<double>(json, r'currentLocationLongitude'),
+        currentLocationLatitude: mapValueOfType<double>(json, r'currentLocationLatitude')!,
+        currentLocationLongitude: mapValueOfType<double>(json, r'currentLocationLongitude')!,
         verifyCode: mapValueOfType<String>(json, r'verifyCode'),
       );
     }
@@ -203,6 +163,10 @@ class UpdateDeliveryOrderParam {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'orderId',
+    'reportType',
+    'currentLocationLatitude',
+    'currentLocationLongitude',
   };
 }
 

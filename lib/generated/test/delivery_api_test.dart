@@ -66,7 +66,7 @@ void main() {
     //
     // 配送員更新已接單的配送進度狀態（取貨中、運送中、已送達等）
     //
-    //Future<Deliveryer> updateDeliveryOrder({ UpdateDeliveryOrderParam updateDeliveryOrderParam }) async
+    //Future<Deliveryer> updateDeliveryOrder(UpdateDeliveryOrderParam updateDeliveryOrderParam) async
     test('test updateDeliveryOrder', () async {
       // TODO
     });
