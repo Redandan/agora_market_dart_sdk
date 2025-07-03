@@ -15,6 +15,7 @@ class CartItemCreateParam {
   CartItemCreateParam({
     required this.productId,
     required this.quantity,
+    required this.sku,
     this.note,
   });
 
@@ -26,6 +27,9 @@ class CartItemCreateParam {
   /// Minimum value: 1
   /// Maximum value: 999
   int quantity;
+
+  /// 商品SKU
+  String sku;
 
   /// 備註
   ///
@@ -40,6 +44,7 @@ class CartItemCreateParam {
   bool operator ==(Object other) => identical(this, other) || other is CartItemCreateParam &&
     other.productId == productId &&
     other.quantity == quantity &&
+    other.sku == sku &&
     other.note == note;
 
   @override
@@ -47,15 +52,17 @@ class CartItemCreateParam {
     // ignore: unnecessary_parenthesis
     (productId.hashCode) +
     (quantity.hashCode) +
+    (sku.hashCode) +
     (note == null ? 0 : note!.hashCode);
 
   @override
-  String toString() => 'CartItemCreateParam[productId=$productId, quantity=$quantity, note=$note]';
+  String toString() => 'CartItemCreateParam[productId=$productId, quantity=$quantity, sku=$sku, note=$note]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'productId'] = this.productId;
       json[r'quantity'] = this.quantity;
+      json[r'sku'] = this.sku;
     if (this.note != null) {
       json[r'note'] = this.note;
     } else {
@@ -85,6 +92,7 @@ class CartItemCreateParam {
       return CartItemCreateParam(
         productId: mapValueOfType<int>(json, r'productId')!,
         quantity: mapValueOfType<int>(json, r'quantity')!,
+        sku: mapValueOfType<String>(json, r'sku')!,
         note: mapValueOfType<String>(json, r'note'),
       );
     }
@@ -135,6 +143,7 @@ class CartItemCreateParam {
   static const requiredKeys = <String>{
     'productId',
     'quantity',
+    'sku',
   };
 }
 

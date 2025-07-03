@@ -18,28 +18,25 @@ class MemberCartApi {
 
   /// 添加商品到購物車
   ///
+  /// 將指定SKU的商品添加到購物車
+  ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [int] productId (required):
-  ///
-  /// * [int] quantity (required):
-  Future<Response> addToCartWithHttpInfo(int productId, int quantity,) async {
+  /// * [CartItemCreateParam] cartItemCreateParam (required):
+  Future<Response> addToCartWithHttpInfo(CartItemCreateParam cartItemCreateParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/cart';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = cartItemCreateParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'productId', productId));
-      queryParams.addAll(_queryParams('', 'quantity', quantity));
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -55,13 +52,13 @@ class MemberCartApi {
 
   /// 添加商品到購物車
   ///
+  /// 將指定SKU的商品添加到購物車
+  ///
   /// Parameters:
   ///
-  /// * [int] productId (required):
-  ///
-  /// * [int] quantity (required):
-  Future<CartItem?> addToCart(int productId, int quantity,) async {
-    final response = await addToCartWithHttpInfo(productId, quantity,);
+  /// * [CartItemCreateParam] cartItemCreateParam (required):
+  Future<CartItem?> addToCart(CartItemCreateParam cartItemCreateParam,) async {
+    final response = await addToCartWithHttpInfo(cartItemCreateParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

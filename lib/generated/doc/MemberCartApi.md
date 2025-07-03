@@ -16,20 +16,21 @@ Method | HTTP request | Description
 
 
 # **addToCart**
-> CartItem addToCart(productId, quantity)
+> CartItem addToCart(cartItemCreateParam)
 
 添加商品到購物車
+
+將指定SKU的商品添加到購物車
 
 ### Example
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = MemberCartApi();
-final productId = 789; // int | 
-final quantity = 56; // int | 
+final cartItemCreateParam = CartItemCreateParam(); // CartItemCreateParam | 
 
 try {
-    final result = api_instance.addToCart(productId, quantity);
+    final result = api_instance.addToCart(cartItemCreateParam);
     print(result);
 } catch (e) {
     print('Exception when calling MemberCartApi->addToCart: $e\n');
@@ -40,8 +41,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **productId** | **int**|  | 
- **quantity** | **int**|  | 
+ **cartItemCreateParam** | [**CartItemCreateParam**](CartItemCreateParam.md)|  | 
 
 ### Return type
 
@@ -53,7 +53,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

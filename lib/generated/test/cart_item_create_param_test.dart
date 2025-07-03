@@ -28,6 +28,12 @@ void main() {
       // TODO
     });
 
+    // 商品SKU
+    // String sku
+    test('to test the property `sku`', () async {
+      // TODO
+    });
+
     // 備註
     // String note
     test('to test the property `note`', () async {

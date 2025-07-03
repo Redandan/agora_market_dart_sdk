@@ -19,7 +19,9 @@ void main() {
   group('tests for MemberCartApi', () {
     // 添加商品到購物車
     //
-    //Future<CartItem> addToCart(int productId, int quantity) async
+    // 將指定SKU的商品添加到購物車
+    //
+    //Future<CartItem> addToCart(CartItemCreateParam cartItemCreateParam) async
     test('test addToCart', () async {
       // TODO
     });
