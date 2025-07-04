@@ -16,8 +16,6 @@ class UserInfo {
     this.id,
     this.username,
     this.email,
-    this.recipientAddress,
-    this.recipientName,
     this.role,
     this.balance,
     this.stackingBalance,
@@ -55,24 +53,6 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? email;
-
-  /// 收貨地址
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? recipientAddress;
-
-  /// 收件人姓名
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? recipientName;
 
   /// 角色
   ///
@@ -160,8 +140,6 @@ class UserInfo {
     other.id == id &&
     other.username == username &&
     other.email == email &&
-    other.recipientAddress == recipientAddress &&
-    other.recipientName == recipientName &&
     other.role == role &&
     other.balance == balance &&
     other.stackingBalance == stackingBalance &&
@@ -178,8 +156,6 @@ class UserInfo {
     (id == null ? 0 : id!.hashCode) +
     (username == null ? 0 : username!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
-    (recipientAddress == null ? 0 : recipientAddress!.hashCode) +
-    (recipientName == null ? 0 : recipientName!.hashCode) +
     (role == null ? 0 : role!.hashCode) +
     (balance == null ? 0 : balance!.hashCode) +
     (stackingBalance == null ? 0 : stackingBalance!.hashCode) +
@@ -191,7 +167,7 @@ class UserInfo {
     (displayDeliveryerName == null ? 0 : displayDeliveryerName!.hashCode);
 
   @override
-  String toString() => 'UserInfo[id=$id, username=$username, email=$email, recipientAddress=$recipientAddress, recipientName=$recipientName, role=$role, balance=$balance, stackingBalance=$stackingBalance, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName]';
+  String toString() => 'UserInfo[id=$id, username=$username, email=$email, role=$role, balance=$balance, stackingBalance=$stackingBalance, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -209,16 +185,6 @@ class UserInfo {
       json[r'email'] = this.email;
     } else {
       json[r'email'] = null;
-    }
-    if (this.recipientAddress != null) {
-      json[r'recipientAddress'] = this.recipientAddress;
-    } else {
-      json[r'recipientAddress'] = null;
-    }
-    if (this.recipientName != null) {
-      json[r'recipientName'] = this.recipientName;
-    } else {
-      json[r'recipientName'] = null;
     }
     if (this.role != null) {
       json[r'role'] = this.role;
@@ -290,8 +256,6 @@ class UserInfo {
         id: mapValueOfType<int>(json, r'id'),
         username: mapValueOfType<String>(json, r'username'),
         email: mapValueOfType<String>(json, r'email'),
-        recipientAddress: mapValueOfType<String>(json, r'recipientAddress'),
-        recipientName: mapValueOfType<String>(json, r'recipientName'),
         role: mapValueOfType<String>(json, r'role'),
         balance: num.parse('${json[r'balance']}'),
         stackingBalance: num.parse('${json[r'stackingBalance']}'),

@@ -11,8 +11,6 @@ Name | Type | Description | Notes
 **id** | **int** | 用戶ID | [optional] 
 **username** | **String** | 用戶名 | [optional] 
 **email** | **String** | 郵箱 | [optional] 
-**recipientAddress** | **String** | 收貨地址 | [optional] 
-**recipientName** | **String** | 收件人姓名 | [optional] 
 **role** | **String** | 角色 | [optional] 
 **balance** | **num** | 餘額 | [optional] 
 **stackingBalance** | **num** | 質押餘額 | [optional] 

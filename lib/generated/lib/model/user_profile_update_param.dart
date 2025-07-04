@@ -16,8 +16,6 @@ class UserProfileUpdateParam {
     this.name,
     this.phone,
     this.email,
-    this.recipientAddress,
-    this.recipientName,
     this.avatar,
   });
 
@@ -48,24 +46,6 @@ class UserProfileUpdateParam {
   ///
   String? email;
 
-  /// 收貨地址
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? recipientAddress;
-
-  /// 收件人姓名
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? recipientName;
-
   /// 頭像URL
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -80,8 +60,6 @@ class UserProfileUpdateParam {
     other.name == name &&
     other.phone == phone &&
     other.email == email &&
-    other.recipientAddress == recipientAddress &&
-    other.recipientName == recipientName &&
     other.avatar == avatar;
 
   @override
@@ -90,12 +68,10 @@ class UserProfileUpdateParam {
     (name == null ? 0 : name!.hashCode) +
     (phone == null ? 0 : phone!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
-    (recipientAddress == null ? 0 : recipientAddress!.hashCode) +
-    (recipientName == null ? 0 : recipientName!.hashCode) +
     (avatar == null ? 0 : avatar!.hashCode);
 
   @override
-  String toString() => 'UserProfileUpdateParam[name=$name, phone=$phone, email=$email, recipientAddress=$recipientAddress, recipientName=$recipientName, avatar=$avatar]';
+  String toString() => 'UserProfileUpdateParam[name=$name, phone=$phone, email=$email, avatar=$avatar]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -113,16 +89,6 @@ class UserProfileUpdateParam {
       json[r'email'] = this.email;
     } else {
       json[r'email'] = null;
-    }
-    if (this.recipientAddress != null) {
-      json[r'recipientAddress'] = this.recipientAddress;
-    } else {
-      json[r'recipientAddress'] = null;
-    }
-    if (this.recipientName != null) {
-      json[r'recipientName'] = this.recipientName;
-    } else {
-      json[r'recipientName'] = null;
     }
     if (this.avatar != null) {
       json[r'avatar'] = this.avatar;
@@ -154,8 +120,6 @@ class UserProfileUpdateParam {
         name: mapValueOfType<String>(json, r'name'),
         phone: mapValueOfType<String>(json, r'phone'),
         email: mapValueOfType<String>(json, r'email'),
-        recipientAddress: mapValueOfType<String>(json, r'recipientAddress'),
-        recipientName: mapValueOfType<String>(json, r'recipientName'),
         avatar: mapValueOfType<String>(json, r'avatar'),
       );
     }

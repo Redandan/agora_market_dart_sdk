@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class PageDispute {
-  /// Returns a new [PageDispute] instance.
-  PageDispute({
+class PageUserAddress {
+  /// Returns a new [PageUserAddress] instance.
+  PageUserAddress({
     this.totalElements,
     this.totalPages,
     this.sort,
@@ -90,7 +90,7 @@ class PageDispute {
   ///
   int? size;
 
-  List<Dispute> content;
+  List<UserAddress> content;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -109,7 +109,7 @@ class PageDispute {
   bool? empty;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageDispute &&
+  bool operator ==(Object other) => identical(this, other) || other is PageUserAddress &&
     other.totalElements == totalElements &&
     other.totalPages == totalPages &&
     other.sort == sort &&
@@ -138,7 +138,7 @@ class PageDispute {
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageDispute[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, numberOfElements=$numberOfElements, pageable=$pageable, last=$last, first=$first, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'PageUserAddress[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, numberOfElements=$numberOfElements, pageable=$pageable, last=$last, first=$first, size=$size, content=$content, number=$number, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -196,10 +196,10 @@ class PageDispute {
     return json;
   }
 
-  /// Returns a new [PageDispute] instance and imports its values from
+  /// Returns a new [PageUserAddress] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageDispute? fromJson(dynamic value) {
+  static PageUserAddress? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -208,13 +208,13 @@ class PageDispute {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageDispute[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageDispute[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PageUserAddress[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PageUserAddress[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageDispute(
+      return PageUserAddress(
         totalElements: mapValueOfType<int>(json, r'totalElements'),
         totalPages: mapValueOfType<int>(json, r'totalPages'),
         sort: SortObject.fromJson(json[r'sort']),
@@ -223,7 +223,7 @@ class PageDispute {
         last: mapValueOfType<bool>(json, r'last'),
         first: mapValueOfType<bool>(json, r'first'),
         size: mapValueOfType<int>(json, r'size'),
-        content: Dispute.listFromJson(json[r'content']),
+        content: UserAddress.listFromJson(json[r'content']),
         number: mapValueOfType<int>(json, r'number'),
         empty: mapValueOfType<bool>(json, r'empty'),
       );
@@ -231,11 +231,11 @@ class PageDispute {
     return null;
   }
 
-  static List<PageDispute> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageDispute>[];
+  static List<PageUserAddress> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PageUserAddress>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageDispute.fromJson(row);
+        final value = PageUserAddress.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -244,12 +244,12 @@ class PageDispute {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageDispute> mapFromJson(dynamic json) {
-    final map = <String, PageDispute>{};
+  static Map<String, PageUserAddress> mapFromJson(dynamic json) {
+    final map = <String, PageUserAddress>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageDispute.fromJson(entry.value);
+        final value = PageUserAddress.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -258,14 +258,14 @@ class PageDispute {
     return map;
   }
 
-  // maps a json object with a list of PageDispute-objects as value to a dart map
-  static Map<String, List<PageDispute>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageDispute>>{};
+  // maps a json object with a list of PageUserAddress-objects as value to a dart map
+  static Map<String, List<PageUserAddress>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<PageUserAddress>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageDispute.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = PageUserAddress.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

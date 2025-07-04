@@ -11,11 +11,11 @@
 import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
-// tests for PageUser
+// tests for PageUserAddress
 void main() {
-  // final instance = PageUser();
+  // final instance = PageUserAddress();
 
-  group('test PageUser', () {
+  group('test PageUserAddress', () {
     // int totalElements
     test('to test the property `totalElements`', () async {
       // TODO
@@ -56,7 +56,7 @@ void main() {
       // TODO
     });
 
-    // List<User> content (default value: const [])
+    // List<UserAddress> content (default value: const [])
     test('to test the property `content`', () async {
       // TODO
     });

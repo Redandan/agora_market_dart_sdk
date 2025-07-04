@@ -23,8 +23,6 @@ class User {
     this.email,
     this.avatar,
     this.remark,
-    this.recipientAddress,
-    this.recipientName,
     this.storeName,
     this.ambassadorName,
     this.displayDeliveryerName,
@@ -125,24 +123,6 @@ class User {
   ///
   String? remark;
 
-  /// 收貨地址
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? recipientAddress;
-
-  /// 收件人姓名
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? recipientName;
-
   /// 店鋪名稱
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -235,8 +215,6 @@ class User {
     other.email == email &&
     other.avatar == avatar &&
     other.remark == remark &&
-    other.recipientAddress == recipientAddress &&
-    other.recipientName == recipientName &&
     other.storeName == storeName &&
     other.ambassadorName == ambassadorName &&
     other.displayDeliveryerName == displayDeliveryerName &&
@@ -260,8 +238,6 @@ class User {
     (email == null ? 0 : email!.hashCode) +
     (avatar == null ? 0 : avatar!.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
-    (recipientAddress == null ? 0 : recipientAddress!.hashCode) +
-    (recipientName == null ? 0 : recipientName!.hashCode) +
     (storeName == null ? 0 : storeName!.hashCode) +
     (ambassadorName == null ? 0 : ambassadorName!.hashCode) +
     (displayDeliveryerName == null ? 0 : displayDeliveryerName!.hashCode) +
@@ -273,7 +249,7 @@ class User {
     (admin == null ? 0 : admin!.hashCode);
 
   @override
-  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, recipientAddress=$recipientAddress, recipientName=$recipientName, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin]';
+  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -326,16 +302,6 @@ class User {
       json[r'remark'] = this.remark;
     } else {
       json[r'remark'] = null;
-    }
-    if (this.recipientAddress != null) {
-      json[r'recipientAddress'] = this.recipientAddress;
-    } else {
-      json[r'recipientAddress'] = null;
-    }
-    if (this.recipientName != null) {
-      json[r'recipientName'] = this.recipientName;
-    } else {
-      json[r'recipientName'] = null;
     }
     if (this.storeName != null) {
       json[r'storeName'] = this.storeName;
@@ -414,8 +380,6 @@ class User {
         email: mapValueOfType<String>(json, r'email'),
         avatar: mapValueOfType<String>(json, r'avatar'),
         remark: mapValueOfType<String>(json, r'remark'),
-        recipientAddress: mapValueOfType<String>(json, r'recipientAddress'),
-        recipientName: mapValueOfType<String>(json, r'recipientName'),
         storeName: mapValueOfType<String>(json, r'storeName'),
         ambassadorName: mapValueOfType<String>(json, r'ambassadorName'),
         displayDeliveryerName: mapValueOfType<String>(json, r'displayDeliveryerName'),

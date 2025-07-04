@@ -288,6 +288,15 @@ Class | Method | HTTP request | Description
 *TestApi* | [**generateRechargeAndWithdraw**](doc//TestApi.md#generaterechargeandwithdraw) | **POST** /test/recharge&withdraw | 
 *TestApi* | [**generateReviewData**](doc//TestApi.md#generatereviewdata) | **POST** /test/review | 
 *TestApi* | [**generateTestData**](doc//TestApi.md#generatetestdata) | **POST** /test/generate-test-data | 生成測試數據
+*UserAddressesApi* | [**createAddress**](doc//UserAddressesApi.md#createaddress) | **POST** /user-addresses/create | 創建地址
+*UserAddressesApi* | [**deleteAddress**](doc//UserAddressesApi.md#deleteaddress) | **DELETE** /user-addresses/{addressId} | 刪除地址
+*UserAddressesApi* | [**getAddressById**](doc//UserAddressesApi.md#getaddressbyid) | **GET** /user-addresses/{addressId} | 根據ID獲取地址詳情
+*UserAddressesApi* | [**getAddressCount**](doc//UserAddressesApi.md#getaddresscount) | **GET** /user-addresses/count | 獲取用戶地址數量
+*UserAddressesApi* | [**getDefaultAddress**](doc//UserAddressesApi.md#getdefaultaddress) | **GET** /user-addresses/default | 獲取用戶預設地址
+*UserAddressesApi* | [**getUserAddresses**](doc//UserAddressesApi.md#getuseraddresses) | **GET** /user-addresses/list | 獲取用戶所有地址
+*UserAddressesApi* | [**getUserAddressesPage**](doc//UserAddressesApi.md#getuseraddressespage) | **GET** /user-addresses/page | 分頁獲取用戶地址
+*UserAddressesApi* | [**setDefaultAddress**](doc//UserAddressesApi.md#setdefaultaddress) | **POST** /user-addresses/{addressId}/set-default | 設置預設地址
+*UserAddressesApi* | [**updateAddress**](doc//UserAddressesApi.md#updateaddress) | **POST** /user-addresses/update | 更新地址
 
 
 ## Documentation For Models
@@ -370,6 +379,7 @@ Class | Method | HTTP request | Description
  - [PageStaking](doc//PageStaking.md)
  - [PageTransaction](doc//PageTransaction.md)
  - [PageUser](doc//PageUser.md)
+ - [PageUserAddress](doc//PageUserAddress.md)
  - [PageWithdraw](doc//PageWithdraw.md)
  - [Pageable](doc//Pageable.md)
  - [PageableObject](doc//PageableObject.md)
@@ -423,6 +433,7 @@ Class | Method | HTTP request | Description
  - [UpdateDeliveryOrderParam](doc//UpdateDeliveryOrderParam.md)
  - [UpdatePromoCodeParam](doc//UpdatePromoCodeParam.md)
  - [User](doc//User.md)
+ - [UserAddress](doc//UserAddress.md)
  - [UserInfo](doc//UserInfo.md)
  - [UserOrderSearchParam](doc//UserOrderSearchParam.md)
  - [UserProfileUpdateParam](doc//UserProfileUpdateParam.md)

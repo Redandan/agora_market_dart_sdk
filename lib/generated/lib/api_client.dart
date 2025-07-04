@@ -338,6 +338,8 @@ class ApiClient {
           return PageTransaction.fromJson(value);
         case 'PageUser':
           return PageUser.fromJson(value);
+        case 'PageUserAddress':
+          return PageUserAddress.fromJson(value);
         case 'PageWithdraw':
           return PageWithdraw.fromJson(value);
         case 'Pageable':
@@ -444,6 +446,8 @@ class ApiClient {
           return UpdatePromoCodeParam.fromJson(value);
         case 'User':
           return User.fromJson(value);
+        case 'UserAddress':
+          return UserAddress.fromJson(value);
         case 'UserInfo':
           return UserInfo.fromJson(value);
         case 'UserOrderSearchParam':

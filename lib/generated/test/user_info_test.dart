@@ -34,18 +34,6 @@ void main() {
       // TODO
     });
 
-    // 收貨地址
-    // String recipientAddress
-    test('to test the property `recipientAddress`', () async {
-      // TODO
-    });
-
-    // 收件人姓名
-    // String recipientName
-    test('to test the property `recipientName`', () async {
-      // TODO
-    });
-
     // 角色
     // String role
     test('to test the property `role`', () async {

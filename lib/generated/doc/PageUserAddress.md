@@ -1,4 +1,4 @@
-# agora_market_dart_sdk.model.PageColdWallet
+# agora_market_dart_sdk.model.PageUserAddress
 
 ## Load the model package
 ```dart
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **last** | **bool** |  | [optional] 
 **first** | **bool** |  | [optional] 
 **size** | **int** |  | [optional] 
-**content** | [**List<ColdWallet>**](ColdWallet.md) |  | [optional] [default to const []]
+**content** | [**List<UserAddress>**](UserAddress.md) |  | [optional] [default to const []]
 **number** | **int** |  | [optional] 
 **empty** | **bool** |  | [optional] 
 

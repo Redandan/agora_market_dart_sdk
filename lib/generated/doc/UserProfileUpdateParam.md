@@ -11,8 +11,6 @@ Name | Type | Description | Notes
 **name** | **String** | 姓名 | [optional] 
 **phone** | **String** | 電話號碼 | [optional] 
 **email** | **String** | 電子郵件 | [optional] 
-**recipientAddress** | **String** | 收貨地址 | [optional] 
-**recipientName** | **String** | 收件人姓名 | [optional] 
 **avatar** | **String** | 頭像URL | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
