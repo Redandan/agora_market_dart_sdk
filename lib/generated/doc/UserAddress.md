@@ -9,7 +9,7 @@ import 'package:agora_market_dart_sdk/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | 地址ID | [optional] 
-**user** | [**User**](User.md) |  | [optional] 
+**userId** | **int** | 用戶ID | [optional] 
 **recipientName** | **String** | 收件人姓名 | [optional] 
 **recipientPhone** | **String** | 收件人電話 | [optional] 
 **postalCode** | **String** | 郵遞區號 | [optional] 
@@ -27,8 +27,8 @@ Name | Type | Description | Notes
 **isActive** | **bool** | 是否啟用 | [optional] 
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | 最後更新時間 | [optional] 
-**fullAddress** | **String** |  | [optional] 
 **formattedAddress** | **String** |  | [optional] 
+**fullAddress** | **String** |  | [optional] 
 **convenienceStorePickup** | **bool** |  | [optional] 
 **homeDelivery** | **bool** |  | [optional] 
 **logisticsDescription** | **String** |  | [optional] 

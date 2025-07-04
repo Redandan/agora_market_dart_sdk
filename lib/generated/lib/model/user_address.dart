@@ -14,7 +14,7 @@ class UserAddress {
   /// Returns a new [UserAddress] instance.
   UserAddress({
     this.id,
-    this.user,
+    this.userId,
     this.recipientName,
     this.recipientPhone,
     this.postalCode,
@@ -32,8 +32,8 @@ class UserAddress {
     this.isActive,
     this.createdAt,
     this.updatedAt,
-    this.fullAddress,
     this.formattedAddress,
+    this.fullAddress,
     this.convenienceStorePickup,
     this.homeDelivery,
     this.logisticsDescription,
@@ -49,13 +49,14 @@ class UserAddress {
   ///
   int? id;
 
+  /// 用戶ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  User? user;
+  int? userId;
 
   /// 收件人姓名
   ///
@@ -214,7 +215,7 @@ class UserAddress {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? fullAddress;
+  String? formattedAddress;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -222,7 +223,7 @@ class UserAddress {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? formattedAddress;
+  String? fullAddress;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -259,7 +260,7 @@ class UserAddress {
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserAddress &&
     other.id == id &&
-    other.user == user &&
+    other.userId == userId &&
     other.recipientName == recipientName &&
     other.recipientPhone == recipientPhone &&
     other.postalCode == postalCode &&
@@ -277,8 +278,8 @@ class UserAddress {
     other.isActive == isActive &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.fullAddress == fullAddress &&
     other.formattedAddress == formattedAddress &&
+    other.fullAddress == fullAddress &&
     other.convenienceStorePickup == convenienceStorePickup &&
     other.homeDelivery == homeDelivery &&
     other.logisticsDescription == logisticsDescription &&
@@ -288,7 +289,7 @@ class UserAddress {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
-    (user == null ? 0 : user!.hashCode) +
+    (userId == null ? 0 : userId!.hashCode) +
     (recipientName == null ? 0 : recipientName!.hashCode) +
     (recipientPhone == null ? 0 : recipientPhone!.hashCode) +
     (postalCode == null ? 0 : postalCode!.hashCode) +
@@ -306,15 +307,15 @@ class UserAddress {
     (isActive == null ? 0 : isActive!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (fullAddress == null ? 0 : fullAddress!.hashCode) +
     (formattedAddress == null ? 0 : formattedAddress!.hashCode) +
+    (fullAddress == null ? 0 : fullAddress!.hashCode) +
     (convenienceStorePickup == null ? 0 : convenienceStorePickup!.hashCode) +
     (homeDelivery == null ? 0 : homeDelivery!.hashCode) +
     (logisticsDescription == null ? 0 : logisticsDescription!.hashCode) +
     (recipientInfo == null ? 0 : recipientInfo!.hashCode);
 
   @override
-  String toString() => 'UserAddress[id=$id, user=$user, recipientName=$recipientName, recipientPhone=$recipientPhone, postalCode=$postalCode, city=$city, district=$district, detailedAddress=$detailedAddress, remark=$remark, shippingCompany=$shippingCompany, serviceType=$serviceType, storeName=$storeName, storeCode=$storeCode, storeAddress=$storeAddress, storePhone=$storePhone, isDefault=$isDefault, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, fullAddress=$fullAddress, formattedAddress=$formattedAddress, convenienceStorePickup=$convenienceStorePickup, homeDelivery=$homeDelivery, logisticsDescription=$logisticsDescription, recipientInfo=$recipientInfo]';
+  String toString() => 'UserAddress[id=$id, userId=$userId, recipientName=$recipientName, recipientPhone=$recipientPhone, postalCode=$postalCode, city=$city, district=$district, detailedAddress=$detailedAddress, remark=$remark, shippingCompany=$shippingCompany, serviceType=$serviceType, storeName=$storeName, storeCode=$storeCode, storeAddress=$storeAddress, storePhone=$storePhone, isDefault=$isDefault, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, formattedAddress=$formattedAddress, fullAddress=$fullAddress, convenienceStorePickup=$convenienceStorePickup, homeDelivery=$homeDelivery, logisticsDescription=$logisticsDescription, recipientInfo=$recipientInfo]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -323,10 +324,10 @@ class UserAddress {
     } else {
       json[r'id'] = null;
     }
-    if (this.user != null) {
-      json[r'user'] = this.user;
+    if (this.userId != null) {
+      json[r'userId'] = this.userId;
     } else {
-      json[r'user'] = null;
+      json[r'userId'] = null;
     }
     if (this.recipientName != null) {
       json[r'recipientName'] = this.recipientName;
@@ -413,15 +414,15 @@ class UserAddress {
     } else {
       json[r'updatedAt'] = null;
     }
-    if (this.fullAddress != null) {
-      json[r'fullAddress'] = this.fullAddress;
-    } else {
-      json[r'fullAddress'] = null;
-    }
     if (this.formattedAddress != null) {
       json[r'formattedAddress'] = this.formattedAddress;
     } else {
       json[r'formattedAddress'] = null;
+    }
+    if (this.fullAddress != null) {
+      json[r'fullAddress'] = this.fullAddress;
+    } else {
+      json[r'fullAddress'] = null;
     }
     if (this.convenienceStorePickup != null) {
       json[r'convenienceStorePickup'] = this.convenienceStorePickup;
@@ -466,7 +467,7 @@ class UserAddress {
 
       return UserAddress(
         id: mapValueOfType<int>(json, r'id'),
-        user: User.fromJson(json[r'user']),
+        userId: mapValueOfType<int>(json, r'userId'),
         recipientName: mapValueOfType<String>(json, r'recipientName'),
         recipientPhone: mapValueOfType<String>(json, r'recipientPhone'),
         postalCode: mapValueOfType<String>(json, r'postalCode'),
@@ -484,8 +485,8 @@ class UserAddress {
         isActive: mapValueOfType<bool>(json, r'isActive'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
-        fullAddress: mapValueOfType<String>(json, r'fullAddress'),
         formattedAddress: mapValueOfType<String>(json, r'formattedAddress'),
+        fullAddress: mapValueOfType<String>(json, r'fullAddress'),
         convenienceStorePickup: mapValueOfType<bool>(json, r'convenienceStorePickup'),
         homeDelivery: mapValueOfType<bool>(json, r'homeDelivery'),
         logisticsDescription: mapValueOfType<String>(json, r'logisticsDescription'),

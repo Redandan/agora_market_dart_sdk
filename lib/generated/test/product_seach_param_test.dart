@@ -80,18 +80,6 @@ void main() {
       // TODO
     });
 
-    // 商品SKU
-    // String sku
-    test('to test the property `sku`', () async {
-      // TODO
-    });
-
-    // 品牌名稱
-    // String brand
-    test('to test the property `brand`', () async {
-      // TODO
-    });
-
     // 商品標籤
     // String tag
     test('to test the property `tag`', () async {

@@ -166,6 +166,7 @@ part 'model/review_reply_param.dart';
 part 'model/review_statistics_dto.dart';
 part 'model/review_update_param.dart';
 part 'model/sales_stats.dart';
+part 'model/shipping_address_option.dart';
 part 'model/shipping_company_enum.dart';
 part 'model/smart_reply_settings.dart';
 part 'model/sort_object.dart';

@@ -17,15 +17,6 @@ void main() {
   // final instance = ProductsApi();
 
   group('tests for ProductsApi', () {
-    // 計算預計出貨時間
-    //
-    // 根據下單時間計算預計出貨時間和送達時間
-    //
-    //Future<Map<String, Object>> calculateShippingTime(int productId, DateTime orderTime) async
-    test('test calculateShippingTime', () async {
-      // TODO
-    });
-
     // 創建商品
     //
     //Future<Product> createProduct(ProductCreateParam productCreateParam) async
@@ -37,15 +28,6 @@ void main() {
     //
     //Future<bool> decreaseStock(int id, int quantity) async
     test('test decreaseStock', () async {
-      // TODO
-    });
-
-    // 獲取可選擇的出貨日期
-    //
-    // 獲取指定商品可選擇的出貨日期範圍
-    //
-    //Future<List<DateTime>> getAvailableShippingDates(int productId, { DateTime fromDate }) async
-    test('test getAvailableShippingDates', () async {
       // TODO
     });
 
@@ -83,38 +65,6 @@ void main() {
     //
     //Future<Product> getProductById(int id) async
     test('test getProductById', () async {
-      // TODO
-    });
-
-    // 根據SKU查找商品
-    //
-    //Future<Product> getProductBySku(String sku) async
-    test('test getProductBySku', () async {
-      // TODO
-    });
-
-    // 獲取商品出貨信息
-    //
-    // 獲取指定商品的出貨時間、配送信息等
-    //
-    //Future<Map<String, Object>> getProductShippingInfo(int productId) async
-    test('test getProductShippingInfo', () async {
-      // TODO
-    });
-
-    // 根據品牌查找商品
-    //
-    //Future<PageProduct> getProductsByBrand(String brand, { int page, int size }) async
-    test('test getProductsByBrand', () async {
-      // TODO
-    });
-
-    // 獲取出貨選項商品
-    //
-    // 根據出貨選項篩選商品
-    //
-    //Future<List<Product>> getProductsByShippingOptions({ bool supportsImmediateShipping, bool supportsScheduledShipping, int maxDeliveryDays, int page, int size }) async
-    test('test getProductsByShippingOptions', () async {
       // TODO
     });
 

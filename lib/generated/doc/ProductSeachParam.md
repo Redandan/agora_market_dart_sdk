@@ -19,8 +19,6 @@ Name | Type | Description | Notes
 **postalCode** | **String** | 郵遞區號 | [optional] 
 **longitude** | **double** | 經度 | [optional] 
 **latitude** | **double** | 緯度 | [optional] 
-**sku** | **String** | 商品SKU | [optional] 
-**brand** | **String** | 品牌名稱 | [optional] 
 **tag** | **String** | 商品標籤 | [optional] 
 **minPrice** | **num** | 最低價格 | [optional] 
 **maxPrice** | **num** | 最高價格 | [optional] 

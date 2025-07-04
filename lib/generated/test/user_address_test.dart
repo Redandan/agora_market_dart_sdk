@@ -22,8 +22,9 @@ void main() {
       // TODO
     });
 
-    // User user
-    test('to test the property `user`', () async {
+    // 用戶ID
+    // int userId
+    test('to test the property `userId`', () async {
       // TODO
     });
 
@@ -127,13 +128,13 @@ void main() {
       // TODO
     });
 
-    // String fullAddress
-    test('to test the property `fullAddress`', () async {
+    // String formattedAddress
+    test('to test the property `formattedAddress`', () async {
       // TODO
     });
 
-    // String formattedAddress
-    test('to test the property `formattedAddress`', () async {
+    // String fullAddress
+    test('to test the property `fullAddress`', () async {
       // TODO
     });
 

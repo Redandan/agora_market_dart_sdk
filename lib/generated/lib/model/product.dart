@@ -51,13 +51,13 @@ class Product {
     this.stockAlertThreshold,
     this.allowNegativeStock,
     this.store,
+    this.userSupportedShippingAddresses = const [],
+    this.shippingAddressOptions = const [],
     this.inStock,
     this.stockBelowMinimum,
     this.stockLow,
     this.defaultShippingFee,
-    this.shippingTimeDescription,
     this.minimumShippingFee,
-    this.supportedShippingCompaniesList = const [],
   });
 
   /// 商品ID
@@ -311,6 +311,12 @@ class Product {
   ///
   Store? store;
 
+  /// 支援該商品運送的用戶地址列表
+  List<UserAddress> userSupportedShippingAddresses;
+
+  /// 運送地址選項列表
+  List<ShippingAddressOption> shippingAddressOptions;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -349,17 +355,7 @@ class Product {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? shippingTimeDescription;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? minimumShippingFee;
-
-  List<ProductSupportedShippingCompaniesListEnum> supportedShippingCompaniesList;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Product &&
@@ -401,13 +397,13 @@ class Product {
     other.stockAlertThreshold == stockAlertThreshold &&
     other.allowNegativeStock == allowNegativeStock &&
     other.store == store &&
+    _deepEquality.equals(other.userSupportedShippingAddresses, userSupportedShippingAddresses) &&
+    _deepEquality.equals(other.shippingAddressOptions, shippingAddressOptions) &&
     other.inStock == inStock &&
     other.stockBelowMinimum == stockBelowMinimum &&
     other.stockLow == stockLow &&
     other.defaultShippingFee == defaultShippingFee &&
-    other.shippingTimeDescription == shippingTimeDescription &&
-    other.minimumShippingFee == minimumShippingFee &&
-    _deepEquality.equals(other.supportedShippingCompaniesList, supportedShippingCompaniesList);
+    other.minimumShippingFee == minimumShippingFee;
 
   @override
   int get hashCode =>
@@ -450,16 +446,16 @@ class Product {
     (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
     (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode) +
     (store == null ? 0 : store!.hashCode) +
+    (userSupportedShippingAddresses.hashCode) +
+    (shippingAddressOptions.hashCode) +
     (inStock == null ? 0 : inStock!.hashCode) +
     (stockBelowMinimum == null ? 0 : stockBelowMinimum!.hashCode) +
     (stockLow == null ? 0 : stockLow!.hashCode) +
     (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
-    (shippingTimeDescription == null ? 0 : shippingTimeDescription!.hashCode) +
-    (minimumShippingFee == null ? 0 : minimumShippingFee!.hashCode) +
-    (supportedShippingCompaniesList.hashCode);
+    (minimumShippingFee == null ? 0 : minimumShippingFee!.hashCode);
 
   @override
-  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrls=$imageUrls, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skus=$skus, brand=$brand, minStock=$minStock, supportedShippingCompanies=$supportedShippingCompanies, shippingFees=$shippingFees, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, store=$store, inStock=$inStock, stockBelowMinimum=$stockBelowMinimum, stockLow=$stockLow, defaultShippingFee=$defaultShippingFee, shippingTimeDescription=$shippingTimeDescription, minimumShippingFee=$minimumShippingFee, supportedShippingCompaniesList=$supportedShippingCompaniesList]';
+  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrls=$imageUrls, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skus=$skus, brand=$brand, minStock=$minStock, supportedShippingCompanies=$supportedShippingCompanies, shippingFees=$shippingFees, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, inStock=$inStock, stockBelowMinimum=$stockBelowMinimum, stockLow=$stockLow, defaultShippingFee=$defaultShippingFee, minimumShippingFee=$minimumShippingFee]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -581,6 +577,8 @@ class Product {
     } else {
       json[r'store'] = null;
     }
+      json[r'userSupportedShippingAddresses'] = this.userSupportedShippingAddresses;
+      json[r'shippingAddressOptions'] = this.shippingAddressOptions;
     if (this.inStock != null) {
       json[r'inStock'] = this.inStock;
     } else {
@@ -601,17 +599,11 @@ class Product {
     } else {
       json[r'defaultShippingFee'] = null;
     }
-    if (this.shippingTimeDescription != null) {
-      json[r'shippingTimeDescription'] = this.shippingTimeDescription;
-    } else {
-      json[r'shippingTimeDescription'] = null;
-    }
     if (this.minimumShippingFee != null) {
       json[r'minimumShippingFee'] = this.minimumShippingFee;
     } else {
       json[r'minimumShippingFee'] = null;
     }
-      json[r'supportedShippingCompaniesList'] = this.supportedShippingCompaniesList;
     return json;
   }
 
@@ -676,13 +668,13 @@ class Product {
         stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
         allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
         store: Store.fromJson(json[r'store']),
+        userSupportedShippingAddresses: UserAddress.listFromJson(json[r'userSupportedShippingAddresses']),
+        shippingAddressOptions: ShippingAddressOption.listFromJson(json[r'shippingAddressOptions']),
         inStock: mapValueOfType<bool>(json, r'inStock'),
         stockBelowMinimum: mapValueOfType<bool>(json, r'stockBelowMinimum'),
         stockLow: mapValueOfType<bool>(json, r'stockLow'),
         defaultShippingFee: num.parse('${json[r'defaultShippingFee']}'),
-        shippingTimeDescription: mapValueOfType<String>(json, r'shippingTimeDescription'),
         minimumShippingFee: num.parse('${json[r'minimumShippingFee']}'),
-        supportedShippingCompaniesList: ProductSupportedShippingCompaniesListEnum.listFromJson(json[r'supportedShippingCompaniesList']),
       );
     }
     return null;
@@ -746,117 +738,4 @@ class Product {
     'status',
   };
 }
-
-/// 物流公司
-class ProductSupportedShippingCompaniesListEnum {
-  /// Instantiate a new enum with the provided [value].
-  const ProductSupportedShippingCompaniesListEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const BLACK_CAT = ProductSupportedShippingCompaniesListEnum._(r'BLACK_CAT');
-  static const HCT = ProductSupportedShippingCompaniesListEnum._(r'HCT');
-  static const KERRY = ProductSupportedShippingCompaniesListEnum._(r'KERRY');
-  static const KERRY_TJ = ProductSupportedShippingCompaniesListEnum._(r'KERRY_TJ');
-  static const SF_EXPRESS = ProductSupportedShippingCompaniesListEnum._(r'SF_EXPRESS');
-  static const CHUNGHWA_POST = ProductSupportedShippingCompaniesListEnum._(r'CHUNGHWA_POST');
-  static const FAMILY_MART = ProductSupportedShippingCompaniesListEnum._(r'FAMILY_MART');
-  static const SEVEN_ELEVEN = ProductSupportedShippingCompaniesListEnum._(r'SEVEN_ELEVEN');
-  static const HILIFE = ProductSupportedShippingCompaniesListEnum._(r'HILIFE');
-  static const OK_MART = ProductSupportedShippingCompaniesListEnum._(r'OK_MART');
-  static const T_CAT = ProductSupportedShippingCompaniesListEnum._(r'T_CAT');
-  static const TAIWAN_DELIVERY = ProductSupportedShippingCompaniesListEnum._(r'TAIWAN_DELIVERY');
-  static const PLATFORM_DELIVERY = ProductSupportedShippingCompaniesListEnum._(r'PLATFORM_DELIVERY');
-  static const OTHER = ProductSupportedShippingCompaniesListEnum._(r'OTHER');
-  static const unknownDefaultOpenApi = ProductSupportedShippingCompaniesListEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][ProductSupportedShippingCompaniesListEnum].
-  static const values = <ProductSupportedShippingCompaniesListEnum>[
-    BLACK_CAT,
-    HCT,
-    KERRY,
-    KERRY_TJ,
-    SF_EXPRESS,
-    CHUNGHWA_POST,
-    FAMILY_MART,
-    SEVEN_ELEVEN,
-    HILIFE,
-    OK_MART,
-    T_CAT,
-    TAIWAN_DELIVERY,
-    PLATFORM_DELIVERY,
-    OTHER,
-    unknownDefaultOpenApi,
-  ];
-
-  static ProductSupportedShippingCompaniesListEnum? fromJson(dynamic value) => ProductSupportedShippingCompaniesListEnumTypeTransformer().decode(value);
-
-  static List<ProductSupportedShippingCompaniesListEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProductSupportedShippingCompaniesListEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = ProductSupportedShippingCompaniesListEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [ProductSupportedShippingCompaniesListEnum] to String,
-/// and [decode] dynamic data back to [ProductSupportedShippingCompaniesListEnum].
-class ProductSupportedShippingCompaniesListEnumTypeTransformer {
-  factory ProductSupportedShippingCompaniesListEnumTypeTransformer() => _instance ??= const ProductSupportedShippingCompaniesListEnumTypeTransformer._();
-
-  const ProductSupportedShippingCompaniesListEnumTypeTransformer._();
-
-  String encode(ProductSupportedShippingCompaniesListEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a ProductSupportedShippingCompaniesListEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  ProductSupportedShippingCompaniesListEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'BLACK_CAT': return ProductSupportedShippingCompaniesListEnum.BLACK_CAT;
-        case r'HCT': return ProductSupportedShippingCompaniesListEnum.HCT;
-        case r'KERRY': return ProductSupportedShippingCompaniesListEnum.KERRY;
-        case r'KERRY_TJ': return ProductSupportedShippingCompaniesListEnum.KERRY_TJ;
-        case r'SF_EXPRESS': return ProductSupportedShippingCompaniesListEnum.SF_EXPRESS;
-        case r'CHUNGHWA_POST': return ProductSupportedShippingCompaniesListEnum.CHUNGHWA_POST;
-        case r'FAMILY_MART': return ProductSupportedShippingCompaniesListEnum.FAMILY_MART;
-        case r'SEVEN_ELEVEN': return ProductSupportedShippingCompaniesListEnum.SEVEN_ELEVEN;
-        case r'HILIFE': return ProductSupportedShippingCompaniesListEnum.HILIFE;
-        case r'OK_MART': return ProductSupportedShippingCompaniesListEnum.OK_MART;
-        case r'T_CAT': return ProductSupportedShippingCompaniesListEnum.T_CAT;
-        case r'TAIWAN_DELIVERY': return ProductSupportedShippingCompaniesListEnum.TAIWAN_DELIVERY;
-        case r'PLATFORM_DELIVERY': return ProductSupportedShippingCompaniesListEnum.PLATFORM_DELIVERY;
-        case r'OTHER': return ProductSupportedShippingCompaniesListEnum.OTHER;
-        case r'unknown_default_open_api': return ProductSupportedShippingCompaniesListEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [ProductSupportedShippingCompaniesListEnumTypeTransformer] instance.
-  static ProductSupportedShippingCompaniesListEnumTypeTransformer? _instance;
-}
-
 

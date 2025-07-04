@@ -402,6 +402,8 @@ class ApiClient {
           return ReviewUpdateParam.fromJson(value);
         case 'SalesStats':
           return SalesStats.fromJson(value);
+        case 'ShippingAddressOption':
+          return ShippingAddressOption.fromJson(value);
         case 'ShippingCompanyEnum':
           return ShippingCompanyEnumTypeTransformer().decode(value);
         case 'SmartReplySettings':

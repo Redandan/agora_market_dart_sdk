@@ -9,69 +9,18 @@ All URIs are relative to *https://agoramarketapi.purrtechllc.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**calculateShippingTime**](ProductsApi.md#calculateshippingtime) | **POST** /products/{productId}/calculate-shipping-time | 計算預計出貨時間
 [**createProduct**](ProductsApi.md#createproduct) | **POST** /products/create | 創建商品
 [**decreaseStock**](ProductsApi.md#decreasestock) | **POST** /products/{id}/stock/decrease | 減少商品庫存
-[**getAvailableShippingDates**](ProductsApi.md#getavailableshippingdates) | **GET** /products/{productId}/available-shipping-dates | 獲取可選擇的出貨日期
 [**getInventoryStats**](ProductsApi.md#getinventorystats) | **GET** /products/{id}/inventory-stats | 獲取商品庫存統計信息
 [**getLowStockProducts**](ProductsApi.md#getlowstockproducts) | **GET** /products/low-stock | 獲取低庫存商品列表
 [**getMyProducts**](ProductsApi.md#getmyproducts) | **POST** /products/my-products | 獲取賣家自己的商品列表
 [**getOutOfStockProducts**](ProductsApi.md#getoutofstockproducts) | **GET** /products/out-of-stock | 獲取缺貨商品列表
 [**getProductById**](ProductsApi.md#getproductbyid) | **GET** /products/{id} | 根據ID獲取商品
-[**getProductBySku**](ProductsApi.md#getproductbysku) | **GET** /products/sku/{sku} | 根據SKU查找商品
-[**getProductShippingInfo**](ProductsApi.md#getproductshippinginfo) | **GET** /products/{productId}/shipping-info | 獲取商品出貨信息
-[**getProductsByBrand**](ProductsApi.md#getproductsbybrand) | **GET** /products/brand/{brand} | 根據品牌查找商品
-[**getProductsByShippingOptions**](ProductsApi.md#getproductsbyshippingoptions) | **GET** /products/shipping-options | 獲取出貨選項商品
 [**increaseStock**](ProductsApi.md#increasestock) | **POST** /products/{id}/stock/increase | 增加商品庫存
 [**searchProducts**](ProductsApi.md#searchproducts) | **POST** /products/search | 搜索商品
 [**setStock**](ProductsApi.md#setstock) | **POST** /products/{id}/stock/set | 設置商品庫存
 [**updateProduct**](ProductsApi.md#updateproduct) | **POST** /products/update | 更新商品
 
-
-# **calculateShippingTime**
-> Map<String, Object> calculateShippingTime(productId, orderTime)
-
-計算預計出貨時間
-
-根據下單時間計算預計出貨時間和送達時間
-
-### Example
-```dart
-import 'package:agora_market_dart_sdk/api.dart';
-
-final api_instance = ProductsApi();
-final productId = 789; // int | 
-final orderTime = 2013-10-20T19:20:30+01:00; // DateTime | 
-
-try {
-    final result = api_instance.calculateShippingTime(productId, orderTime);
-    print(result);
-} catch (e) {
-    print('Exception when calling ProductsApi->calculateShippingTime: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **productId** | **int**|  | 
- **orderTime** | **DateTime**|  | 
-
-### Return type
-
-[**Map<String, Object>**](Object.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createProduct**
 > Product createProduct(productCreateParam)
@@ -145,51 +94,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **bool**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getAvailableShippingDates**
-> List<DateTime> getAvailableShippingDates(productId, fromDate)
-
-獲取可選擇的出貨日期
-
-獲取指定商品可選擇的出貨日期範圍
-
-### Example
-```dart
-import 'package:agora_market_dart_sdk/api.dart';
-
-final api_instance = ProductsApi();
-final productId = 789; // int | 
-final fromDate = 2013-10-20; // DateTime | 
-
-try {
-    final result = api_instance.getAvailableShippingDates(productId, fromDate);
-    print(result);
-} catch (e) {
-    print('Exception when calling ProductsApi->getAvailableShippingDates: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **productId** | **int**|  | 
- **fromDate** | **DateTime**|  | [optional] 
-
-### Return type
-
-[**List<DateTime>**](DateTime.md)
 
 ### Authorization
 
@@ -399,186 +303,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Product**](Product.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getProductBySku**
-> Product getProductBySku(sku)
-
-根據SKU查找商品
-
-### Example
-```dart
-import 'package:agora_market_dart_sdk/api.dart';
-
-final api_instance = ProductsApi();
-final sku = sku_example; // String | 
-
-try {
-    final result = api_instance.getProductBySku(sku);
-    print(result);
-} catch (e) {
-    print('Exception when calling ProductsApi->getProductBySku: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **sku** | **String**|  | 
-
-### Return type
-
-[**Product**](Product.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getProductShippingInfo**
-> Map<String, Object> getProductShippingInfo(productId)
-
-獲取商品出貨信息
-
-獲取指定商品的出貨時間、配送信息等
-
-### Example
-```dart
-import 'package:agora_market_dart_sdk/api.dart';
-
-final api_instance = ProductsApi();
-final productId = 789; // int | 
-
-try {
-    final result = api_instance.getProductShippingInfo(productId);
-    print(result);
-} catch (e) {
-    print('Exception when calling ProductsApi->getProductShippingInfo: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **productId** | **int**|  | 
-
-### Return type
-
-[**Map<String, Object>**](Object.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getProductsByBrand**
-> PageProduct getProductsByBrand(brand, page, size)
-
-根據品牌查找商品
-
-### Example
-```dart
-import 'package:agora_market_dart_sdk/api.dart';
-
-final api_instance = ProductsApi();
-final brand = brand_example; // String | 
-final page = 56; // int | 頁碼，從1開始
-final size = 56; // int | 每頁數量
-
-try {
-    final result = api_instance.getProductsByBrand(brand, page, size);
-    print(result);
-} catch (e) {
-    print('Exception when calling ProductsApi->getProductsByBrand: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **brand** | **String**|  | 
- **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
- **size** | **int**| 每頁數量 | [optional] [default to 20]
-
-### Return type
-
-[**PageProduct**](PageProduct.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getProductsByShippingOptions**
-> List<Product> getProductsByShippingOptions(supportsImmediateShipping, supportsScheduledShipping, maxDeliveryDays, page, size)
-
-獲取出貨選項商品
-
-根據出貨選項篩選商品
-
-### Example
-```dart
-import 'package:agora_market_dart_sdk/api.dart';
-
-final api_instance = ProductsApi();
-final supportsImmediateShipping = true; // bool | 
-final supportsScheduledShipping = true; // bool | 
-final maxDeliveryDays = 56; // int | 
-final page = 56; // int | 
-final size = 56; // int | 
-
-try {
-    final result = api_instance.getProductsByShippingOptions(supportsImmediateShipping, supportsScheduledShipping, maxDeliveryDays, page, size);
-    print(result);
-} catch (e) {
-    print('Exception when calling ProductsApi->getProductsByShippingOptions: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **supportsImmediateShipping** | **bool**|  | [optional] 
- **supportsScheduledShipping** | **bool**|  | [optional] 
- **maxDeliveryDays** | **int**|  | [optional] 
- **page** | **int**|  | [optional] [default to 0]
- **size** | **int**|  | [optional] [default to 10]
-
-### Return type
-
-[**List<Product>**](Product.md)
 
 ### Authorization
 

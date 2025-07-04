@@ -46,13 +46,13 @@ Name | Type | Description | Notes
 **stockAlertThreshold** | **int** | 庫存警告閾值 | [optional] 
 **allowNegativeStock** | **bool** | 是否允許負庫存 | [optional] 
 **store** | [**Store**](Store.md) |  | [optional] 
+**userSupportedShippingAddresses** | [**List<UserAddress>**](UserAddress.md) | 支援該商品運送的用戶地址列表 | [optional] [default to const []]
+**shippingAddressOptions** | [**List<ShippingAddressOption>**](ShippingAddressOption.md) | 運送地址選項列表 | [optional] [default to const []]
 **inStock** | **bool** |  | [optional] 
 **stockBelowMinimum** | **bool** |  | [optional] 
 **stockLow** | **bool** |  | [optional] 
 **defaultShippingFee** | **num** |  | [optional] 
-**shippingTimeDescription** | **String** |  | [optional] 
 **minimumShippingFee** | **num** |  | [optional] 
-**supportedShippingCompaniesList** | **List<String>** |  | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
