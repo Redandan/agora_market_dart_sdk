@@ -34,6 +34,7 @@ Name | Type | Description | Notes
 **purchaseRestrictionReason** | **String** | 購買限制原因 | [optional] 
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | 更新時間 | [optional] 
+**shippingAddressOptions** | [**List<ShippingAddressOption>**](ShippingAddressOption.md) | 運送地址選項列表 | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

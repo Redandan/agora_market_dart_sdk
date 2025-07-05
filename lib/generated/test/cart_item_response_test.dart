@@ -172,6 +172,12 @@ void main() {
       // TODO
     });
 
+    // 運送地址選項列表
+    // List<ShippingAddressOption> shippingAddressOptions (default value: const [])
+    test('to test the property `shippingAddressOptions`', () async {
+      // TODO
+    });
+
 
   });
 

@@ -39,6 +39,7 @@ class CartItemResponse {
     this.purchaseRestrictionReason,
     this.createdAt,
     this.updatedAt,
+    this.shippingAddressOptions = const [],
   });
 
   /// 購物車項目ID
@@ -269,6 +270,9 @@ class CartItemResponse {
   ///
   DateTime? updatedAt;
 
+  /// 運送地址選項列表
+  List<ShippingAddressOption> shippingAddressOptions;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CartItemResponse &&
     other.id == id &&
@@ -296,7 +300,8 @@ class CartItemResponse {
     other.canPurchase == canPurchase &&
     other.purchaseRestrictionReason == purchaseRestrictionReason &&
     other.createdAt == createdAt &&
-    other.updatedAt == updatedAt;
+    other.updatedAt == updatedAt &&
+    _deepEquality.equals(other.shippingAddressOptions, shippingAddressOptions);
 
   @override
   int get hashCode =>
@@ -326,10 +331,11 @@ class CartItemResponse {
     (canPurchase == null ? 0 : canPurchase!.hashCode) +
     (purchaseRestrictionReason == null ? 0 : purchaseRestrictionReason!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode);
+    (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (shippingAddressOptions.hashCode);
 
   @override
-  String toString() => 'CartItemResponse[id=$id, productId=$productId, productTitle=$productTitle, productDescription=$productDescription, productImage=$productImage, quantity=$quantity, unitPrice=$unitPrice, currency=$currency, shippingFee=$shippingFee, subtotal=$subtotal, totalPrice=$totalPrice, sellerId=$sellerId, sellerName=$sellerName, pickupAddress=$pickupAddress, selectedSpecifications=$selectedSpecifications, specificationDescription=$specificationDescription, sku=$sku, brand=$brand, availableStock=$availableStock, isInStock=$isInStock, stockStatus=$stockStatus, stockWarning=$stockWarning, canPurchase=$canPurchase, purchaseRestrictionReason=$purchaseRestrictionReason, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'CartItemResponse[id=$id, productId=$productId, productTitle=$productTitle, productDescription=$productDescription, productImage=$productImage, quantity=$quantity, unitPrice=$unitPrice, currency=$currency, shippingFee=$shippingFee, subtotal=$subtotal, totalPrice=$totalPrice, sellerId=$sellerId, sellerName=$sellerName, pickupAddress=$pickupAddress, selectedSpecifications=$selectedSpecifications, specificationDescription=$specificationDescription, sku=$sku, brand=$brand, availableStock=$availableStock, isInStock=$isInStock, stockStatus=$stockStatus, stockWarning=$stockWarning, canPurchase=$canPurchase, purchaseRestrictionReason=$purchaseRestrictionReason, createdAt=$createdAt, updatedAt=$updatedAt, shippingAddressOptions=$shippingAddressOptions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -459,6 +465,7 @@ class CartItemResponse {
     } else {
       json[r'updatedAt'] = null;
     }
+      json[r'shippingAddressOptions'] = this.shippingAddressOptions;
     return json;
   }
 
@@ -507,6 +514,7 @@ class CartItemResponse {
         purchaseRestrictionReason: mapValueOfType<String>(json, r'purchaseRestrictionReason'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
+        shippingAddressOptions: ShippingAddressOption.listFromJson(json[r'shippingAddressOptions']),
       );
     }
     return null;
