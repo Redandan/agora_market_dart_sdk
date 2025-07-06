@@ -16,6 +16,7 @@ class OrderSumbitParam {
     required this.productId,
     this.quantity,
     required this.selectedSku,
+    this.cartItemId,
     required this.shippingAddress,
     required this.longitude,
     required this.latitude,
@@ -41,6 +42,15 @@ class OrderSumbitParam {
 
   /// 選擇的商品SKU
   String selectedSku;
+
+  /// 購物車項目ID（可選，如果提供則會扣除對應購物車數量）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? cartItemId;
 
   /// 收件地址
   String shippingAddress;
@@ -79,6 +89,7 @@ class OrderSumbitParam {
     other.productId == productId &&
     other.quantity == quantity &&
     other.selectedSku == selectedSku &&
+    other.cartItemId == cartItemId &&
     other.shippingAddress == shippingAddress &&
     other.longitude == longitude &&
     other.latitude == latitude &&
@@ -93,6 +104,7 @@ class OrderSumbitParam {
     (productId.hashCode) +
     (quantity == null ? 0 : quantity!.hashCode) +
     (selectedSku.hashCode) +
+    (cartItemId == null ? 0 : cartItemId!.hashCode) +
     (shippingAddress.hashCode) +
     (longitude.hashCode) +
     (latitude.hashCode) +
@@ -102,7 +114,7 @@ class OrderSumbitParam {
     (remark == null ? 0 : remark!.hashCode);
 
   @override
-  String toString() => 'OrderSumbitParam[productId=$productId, quantity=$quantity, selectedSku=$selectedSku, shippingAddress=$shippingAddress, longitude=$longitude, latitude=$latitude, receiverName=$receiverName, receiverPhone=$receiverPhone, shippingCompany=$shippingCompany, remark=$remark]';
+  String toString() => 'OrderSumbitParam[productId=$productId, quantity=$quantity, selectedSku=$selectedSku, cartItemId=$cartItemId, shippingAddress=$shippingAddress, longitude=$longitude, latitude=$latitude, receiverName=$receiverName, receiverPhone=$receiverPhone, shippingCompany=$shippingCompany, remark=$remark]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -113,6 +125,11 @@ class OrderSumbitParam {
       json[r'quantity'] = null;
     }
       json[r'selectedSku'] = this.selectedSku;
+    if (this.cartItemId != null) {
+      json[r'cartItemId'] = this.cartItemId;
+    } else {
+      json[r'cartItemId'] = null;
+    }
       json[r'shippingAddress'] = this.shippingAddress;
       json[r'longitude'] = this.longitude;
       json[r'latitude'] = this.latitude;
@@ -153,6 +170,7 @@ class OrderSumbitParam {
         productId: mapValueOfType<int>(json, r'productId')!,
         quantity: mapValueOfType<int>(json, r'quantity'),
         selectedSku: mapValueOfType<String>(json, r'selectedSku')!,
+        cartItemId: mapValueOfType<int>(json, r'cartItemId'),
         shippingAddress: mapValueOfType<String>(json, r'shippingAddress')!,
         longitude: mapValueOfType<double>(json, r'longitude')!,
         latitude: mapValueOfType<double>(json, r'latitude')!,

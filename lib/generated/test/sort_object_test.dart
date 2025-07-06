@@ -16,8 +16,8 @@ void main() {
   // final instance = SortObject();
 
   group('test SortObject', () {
-    // bool empty
-    test('to test the property `empty`', () async {
+    // bool unsorted
+    test('to test the property `unsorted`', () async {
       // TODO
     });
 
@@ -26,8 +26,8 @@ void main() {
       // TODO
     });
 
-    // bool unsorted
-    test('to test the property `unsorted`', () async {
+    // bool empty
+    test('to test the property `empty`', () async {
       // TODO
     });
 

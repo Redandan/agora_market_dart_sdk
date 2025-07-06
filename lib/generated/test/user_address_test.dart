@@ -128,13 +128,13 @@ void main() {
       // TODO
     });
 
-    // String formattedAddress
-    test('to test the property `formattedAddress`', () async {
+    // String fullAddress
+    test('to test the property `fullAddress`', () async {
       // TODO
     });
 
-    // String fullAddress
-    test('to test the property `fullAddress`', () async {
+    // String formattedAddress
+    test('to test the property `formattedAddress`', () async {
       // TODO
     });
 

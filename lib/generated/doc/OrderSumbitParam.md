@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **productId** | **int** | 商品ID | 
 **quantity** | **int** | 商品數量 | [optional] 
 **selectedSku** | **String** | 選擇的商品SKU | 
+**cartItemId** | **int** | 購物車項目ID（可選，如果提供則會扣除對應購物車數量） | [optional] 
 **shippingAddress** | **String** | 收件地址 | 
 **longitude** | **double** | 收件地址經度 | 
 **latitude** | **double** | 收件地址緯度 | 

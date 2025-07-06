@@ -34,6 +34,12 @@ void main() {
       // TODO
     });
 
+    // 購物車項目ID（可選，如果提供則會扣除對應購物車數量）
+    // int cartItemId
+    test('to test the property `cartItemId`', () async {
+      // TODO
+    });
+
     // 收件地址
     // String shippingAddress
     test('to test the property `shippingAddress`', () async {
