@@ -70,6 +70,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**cancelRecharge**](doc//DefaultApi.md#cancelrecharge) | **POST** /recharge/{rechargeId}/cancel | 取消充值
 *DefaultApi* | [**checkCartItemStockStatus**](doc//DefaultApi.md#checkcartitemstockstatus) | **POST** /api/cart/check-stock | 檢查庫存狀態
 *DefaultApi* | [**clearCart**](doc//DefaultApi.md#clearcart) | **DELETE** /api/cart/clear | 清空購物車
+*DefaultApi* | [**clearUserCart**](doc//DefaultApi.md#clearusercart) | **DELETE** /api/cart/admin/user/{userId} | 清空指定用戶的購物車
 *DefaultApi* | [**closeIssue**](doc//DefaultApi.md#closeissue) | **POST** /customer-issues/{issueId}/close | 關閉客戶問題
 *DefaultApi* | [**completeRecharge**](doc//DefaultApi.md#completerecharge) | **POST** /recharge/{rechargeId}/complete | 完成充值
 *DefaultApi* | [**completeWithdraw**](doc//DefaultApi.md#completewithdraw) | **POST** /withdraws/{withdrawId}/complete | 完成提款
@@ -85,6 +86,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getByPostalCode**](doc//DefaultApi.md#getbypostalcode) | **GET** /postal-areas/code/{postalCode} | 根據郵遞區號查詢
 *DefaultApi* | [**getCartGroupedBySeller**](doc//DefaultApi.md#getcartgroupedbyseller) | **GET** /api/cart/grouped-by-seller | 按賣家分組
 *DefaultApi* | [**getCartSummary**](doc//DefaultApi.md#getcartsummary) | **GET** /api/cart/summary | 獲取購物車統計
+*DefaultApi* | [**getCartSummaryReport**](doc//DefaultApi.md#getcartsummaryreport) | **GET** /api/cart/admin/cart-summary | 購物車統計報告
 *DefaultApi* | [**getCities**](doc//DefaultApi.md#getcities) | **GET** /postal-areas/cities | 獲取城市列表
 *DefaultApi* | [**getDistrictsByCity**](doc//DefaultApi.md#getdistrictsbycity) | **GET** /postal-areas/cities/{city}/districts | 獲取城市行政區列表
 *DefaultApi* | [**getDistrictsByCity1**](doc//DefaultApi.md#getdistrictsbycity1) | **GET** /api/logistics/postal/city/{city}/districts | 查詢城市行政區
@@ -106,19 +108,17 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getUserCart**](doc//DefaultApi.md#getusercart) | **GET** /api/cart | 獲取用戶購物車
 *DefaultApi* | [**getWithdraw**](doc//DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 *DefaultApi* | [**getWithdrawHistory**](doc//DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
+*DefaultApi* | [**removeCartItem**](doc//DefaultApi.md#removecartitem) | **DELETE** /api/cart/admin/item/{cartItemId} | 刪除指定購物車項目
 *DefaultApi* | [**removeFromCart**](doc//DefaultApi.md#removefromcart) | **DELETE** /api/cart/{cartItemId} | 從購物車移除商品
 *DefaultApi* | [**replyIssue**](doc//DefaultApi.md#replyissue) | **POST** /customer-issues/{issueId}/reply | 回覆客戶問題
 *DefaultApi* | [**search**](doc//DefaultApi.md#search) | **GET** /postal-areas/search | 搜索郵遞區號
+*DefaultApi* | [**searchCarts**](doc//DefaultApi.md#searchcarts) | **GET** /api/cart/admin/search | 搜索購物車
 *DefaultApi* | [**searchIssues**](doc//DefaultApi.md#searchissues) | **POST** /customer-issues/search | 管理員搜尋客戶問題記錄
 *DefaultApi* | [**searchPostalAreas**](doc//DefaultApi.md#searchpostalareas) | **GET** /api/logistics/postal/search | 郵遞區號模糊查詢
 *DefaultApi* | [**searchRecharges**](doc//DefaultApi.md#searchrecharges) | **POST** /recharge/search | 管理員搜尋充值記錄
 *DefaultApi* | [**searchWithdraws**](doc//DefaultApi.md#searchwithdraws) | **POST** /withdraws/search | 管理員搜尋提款記錄
 *DefaultApi* | [**updateCartItem**](doc//DefaultApi.md#updatecartitem) | **PUT** /api/cart/{cartItemId} | 更新購物車項目
 *DefaultApi* | [**validatePostalCode**](doc//DefaultApi.md#validatepostalcode) | **GET** /api/logistics/postal-codes/{postalCode}/validate | 郵遞區號驗證
-*AdminCartApi* | [**clearUserCart**](doc//AdminCartApi.md#clearusercart) | **DELETE** /admin/cart/user/{userId} | 清空指定用戶的購物車
-*AdminCartApi* | [**getCartSummary1**](doc//AdminCartApi.md#getcartsummary1) | **GET** /admin/cart/summary | 購物車統計報告
-*AdminCartApi* | [**removeCartItem**](doc//AdminCartApi.md#removecartitem) | **DELETE** /admin/cart/item/{cartItemId} | 刪除指定購物車項目
-*AdminCartApi* | [**searchCarts**](doc//AdminCartApi.md#searchcarts) | **GET** /admin/cart/search | 搜索購物車
 *AdminDeliveryApi* | [**assignDeliveryer**](doc//AdminDeliveryApi.md#assigndeliveryer) | **POST** /admin/delivery/orders/{orderId}/assign | 手動分配配送員
 *AdminDeliveryApi* | [**getDeliveryOrderDetail**](doc//AdminDeliveryApi.md#getdeliveryorderdetail) | **GET** /admin/delivery/orders/{orderId} | 查看配送訂單詳情
 *AdminDeliveryApi* | [**getDeliveryStatistics**](doc//AdminDeliveryApi.md#getdeliverystatistics) | **GET** /admin/delivery/statistics | 配送統計報告

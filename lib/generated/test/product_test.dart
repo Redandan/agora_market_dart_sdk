@@ -257,13 +257,13 @@ void main() {
       // TODO
     });
 
-    // bool stockLow
-    test('to test the property `stockLow`', () async {
+    // bool stockBelowMinimum
+    test('to test the property `stockBelowMinimum`', () async {
       // TODO
     });
 
-    // bool stockBelowMinimum
-    test('to test the property `stockBelowMinimum`', () async {
+    // bool stockLow
+    test('to test the property `stockLow`', () async {
       // TODO
     });
 

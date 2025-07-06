@@ -29,7 +29,6 @@ part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
 part 'api/default_api.dart';
-part 'api/admin_cart_api.dart';
 part 'api/admin_delivery_api.dart';
 part 'api/admin_disputes_api.dart';
 part 'api/admin_members_api.dart';

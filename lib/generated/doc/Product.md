@@ -49,8 +49,8 @@ Name | Type | Description | Notes
 **userSupportedShippingAddresses** | [**List<UserAddress>**](UserAddress.md) | 支援該商品運送的用戶地址列表 | [optional] [default to const []]
 **shippingAddressOptions** | [**List<ShippingAddressOption>**](ShippingAddressOption.md) | 運送地址選項列表 | [optional] [default to const []]
 **inStock** | **bool** |  | [optional] 
-**stockLow** | **bool** |  | [optional] 
 **stockBelowMinimum** | **bool** |  | [optional] 
+**stockLow** | **bool** |  | [optional] 
 **defaultShippingFee** | **num** |  | [optional] 
 **minimumShippingFee** | **num** |  | [optional] 
 

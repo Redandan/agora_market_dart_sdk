@@ -114,6 +114,15 @@ void main() {
       // TODO
     });
 
+    // 清空指定用戶的購物車
+    //
+    // 僅管理員可訪問
+    //
+    //Future clearUserCart(int userId) async
+    test('test clearUserCart', () async {
+      // TODO
+    });
+
     // 關閉客戶問題
     //
     //Future<CustomerIssue> closeIssue(String issueId) async
@@ -232,6 +241,15 @@ void main() {
     //
     //Future<CartSummary> getCartSummary() async
     test('test getCartSummary', () async {
+      // TODO
+    });
+
+    // 購物車統計報告
+    //
+    // 獲取購物車相關的統計數據，僅管理員可訪問
+    //
+    //Future<CartSummaryDTO> getCartSummaryReport() async
+    test('test getCartSummaryReport', () async {
       // TODO
     });
 
@@ -400,6 +418,15 @@ void main() {
       // TODO
     });
 
+    // 刪除指定購物車項目
+    //
+    // 僅管理員可訪問
+    //
+    //Future removeCartItem(int cartItemId) async
+    test('test removeCartItem', () async {
+      // TODO
+    });
+
     // 從購物車移除商品
     //
     // 從購物車中移除指定商品
@@ -422,6 +449,15 @@ void main() {
     //
     //Future<List<TaiwanPostalArea>> search(String keyword) async
     test('test search', () async {
+      // TODO
+    });
+
+    // 搜索購物車
+    //
+    // 僅管理員可訪問，可選擇性按用戶ID篩選
+    //
+    //Future<PageCartItem> searchCarts({ int userId, int page, int size }) async
+    test('test searchCarts', () async {
       // TODO
     });
 
