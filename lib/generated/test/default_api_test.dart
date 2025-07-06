@@ -21,8 +21,62 @@ void main() {
     //
     // 將商品添加到用戶購物車
     //
-    //Future<CartItemResponse> addToCart1(int userId, CartItemCreateParam cartItemCreateParam) async
-    test('test addToCart1', () async {
+    //Future<CartItemResponse> addToCart(CartItemCreateParam cartItemCreateParam) async
+    test('test addToCart', () async {
+      // TODO
+    });
+
+    // 管理員添加商品到購物車
+    //
+    // 管理員將商品添加到指定用戶購物車
+    //
+    //Future<CartItemResponse> adminAddToCart(int userId, CartItemCreateParam cartItemCreateParam) async
+    test('test adminAddToCart', () async {
+      // TODO
+    });
+
+    // 管理員清空購物車
+    //
+    // 管理員清空指定用戶的所有購物車項目
+    //
+    //Future adminClearCart(int userId) async
+    test('test adminClearCart', () async {
+      // TODO
+    });
+
+    // 管理員獲取購物車統計
+    //
+    // 管理員獲取指定用戶購物車的統計信息
+    //
+    //Future<CartSummary> adminGetCartSummary(int userId) async
+    test('test adminGetCartSummary', () async {
+      // TODO
+    });
+
+    // 管理員獲取購物車列表
+    //
+    // 管理員獲取指定用戶的購物車項目列表
+    //
+    //Future<PageCartItemResponse> adminGetUserCart(int userId, { int page, int size }) async
+    test('test adminGetUserCart', () async {
+      // TODO
+    });
+
+    // 管理員從購物車移除商品
+    //
+    // 管理員從指定用戶購物車中移除商品
+    //
+    //Future adminRemoveFromCart(int userId, int cartItemId) async
+    test('test adminRemoveFromCart', () async {
+      // TODO
+    });
+
+    // 管理員更新購物車項目
+    //
+    // 管理員更新指定用戶購物車中商品的數量
+    //
+    //Future<CartItemResponse> adminUpdateCartItem(int userId, int cartItemId, CartItemUpdateParam cartItemUpdateParam) async
+    test('test adminUpdateCartItem', () async {
       // TODO
     });
 
@@ -46,7 +100,7 @@ void main() {
     //
     // 檢查購物車中所有商品的庫存狀態
     //
-    //Future checkCartItemStockStatus(int userId) async
+    //Future checkCartItemStockStatus() async
     test('test checkCartItemStockStatus', () async {
       // TODO
     });
@@ -55,7 +109,7 @@ void main() {
     //
     // 清空用戶的所有購物車項目
     //
-    //Future clearCart(int userId) async
+    //Future clearCart() async
     test('test clearCart', () async {
       // TODO
     });
@@ -167,7 +221,7 @@ void main() {
     //
     // 按賣家分組獲取購物車項目
     //
-    //Future<List<CartGroupBySeller>> getCartGroupedBySeller(int userId) async
+    //Future<List<CartGroupBySeller>> getCartGroupedBySeller() async
     test('test getCartGroupedBySeller', () async {
       // TODO
     });
@@ -176,7 +230,7 @@ void main() {
     //
     // 獲取用戶購物車的統計信息
     //
-    //Future<CartSummary> getCartSummary(int userId) async
+    //Future<CartSummary> getCartSummary() async
     test('test getCartSummary', () async {
       // TODO
     });
@@ -226,7 +280,7 @@ void main() {
     //
     // 獲取購物車中庫存不足的商品
     //
-    //Future<List<CartItemResponse>> getLowStockItems(int userId) async
+    //Future<List<CartItemResponse>> getLowStockItems() async
     test('test getLowStockItems', () async {
       // TODO
     });
@@ -235,7 +289,7 @@ void main() {
     //
     // 獲取購物車中缺貨的商品
     //
-    //Future<List<CartItemResponse>> getOutOfStockItems(int userId) async
+    //Future<List<CartItemResponse>> getOutOfStockItems() async
     test('test getOutOfStockItems', () async {
       // TODO
     });
@@ -323,12 +377,12 @@ void main() {
       // TODO
     });
 
-    // 獲取購物車列表
+    // 獲取用戶購物車
     //
-    // 獲取用戶的購物車項目列表
+    // 分頁獲取用戶的購物車項目列表
     //
-    //Future<List<CartItemResponse>> getUserCart1(int userId) async
-    test('test getUserCart1', () async {
+    //Future<PageCartItemResponse> getUserCart({ int page, int size }) async
+    test('test getUserCart', () async {
       // TODO
     });
 
@@ -350,8 +404,8 @@ void main() {
     //
     // 從購物車中移除指定商品
     //
-    //Future removeFromCart1(int userId, int cartItemId) async
-    test('test removeFromCart1', () async {
+    //Future removeFromCart(int cartItemId) async
+    test('test removeFromCart', () async {
       // TODO
     });
 
@@ -405,7 +459,7 @@ void main() {
     //
     // 更新購物車中商品的數量
     //
-    //Future<CartItemResponse> updateCartItem(int userId, int cartItemId, CartItemUpdateParam cartItemUpdateParam) async
+    //Future<CartItemResponse> updateCartItem(int cartItemId, CartItemUpdateParam cartItemUpdateParam) async
     test('test updateCartItem', () async {
       // TODO
     });

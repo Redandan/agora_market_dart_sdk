@@ -24,13 +24,69 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
+  /// * [CartItemCreateParam] cartItemCreateParam (required):
+  Future<Response> addToCartWithHttpInfo(CartItemCreateParam cartItemCreateParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/cart/add';
+
+    // ignore: prefer_final_locals
+    Object? postBody = cartItemCreateParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 添加商品到購物車
+  ///
+  /// 將商品添加到用戶購物車
+  ///
+  /// Parameters:
+  ///
+  /// * [CartItemCreateParam] cartItemCreateParam (required):
+  Future<CartItemResponse?> addToCart(CartItemCreateParam cartItemCreateParam,) async {
+    final response = await addToCartWithHttpInfo(cartItemCreateParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CartItemResponse',) as CartItemResponse;
+    
+    }
+    return null;
+  }
+
+  /// 管理員添加商品到購物車
+  ///
+  /// 管理員將商品添加到指定用戶購物車
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
   /// * [int] userId (required):
   ///   用戶ID
   ///
   /// * [CartItemCreateParam] cartItemCreateParam (required):
-  Future<Response> addToCart1WithHttpInfo(int userId, CartItemCreateParam cartItemCreateParam,) async {
+  Future<Response> adminAddToCartWithHttpInfo(int userId, CartItemCreateParam cartItemCreateParam,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/add';
+    final path = r'/api/cart/admin/add';
 
     // ignore: prefer_final_locals
     Object? postBody = cartItemCreateParam;
@@ -55,9 +111,9 @@ class DefaultApi {
     );
   }
 
-  /// 添加商品到購物車
+  /// 管理員添加商品到購物車
   ///
-  /// 將商品添加到用戶購物車
+  /// 管理員將商品添加到指定用戶購物車
   ///
   /// Parameters:
   ///
@@ -65,8 +121,328 @@ class DefaultApi {
   ///   用戶ID
   ///
   /// * [CartItemCreateParam] cartItemCreateParam (required):
-  Future<CartItemResponse?> addToCart1(int userId, CartItemCreateParam cartItemCreateParam,) async {
-    final response = await addToCart1WithHttpInfo(userId, cartItemCreateParam,);
+  Future<CartItemResponse?> adminAddToCart(int userId, CartItemCreateParam cartItemCreateParam,) async {
+    final response = await adminAddToCartWithHttpInfo(userId, cartItemCreateParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CartItemResponse',) as CartItemResponse;
+    
+    }
+    return null;
+  }
+
+  /// 管理員清空購物車
+  ///
+  /// 管理員清空指定用戶的所有購物車項目
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] userId (required):
+  ///   用戶ID
+  Future<Response> adminClearCartWithHttpInfo(int userId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/cart/admin/clear';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'userId', userId));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 管理員清空購物車
+  ///
+  /// 管理員清空指定用戶的所有購物車項目
+  ///
+  /// Parameters:
+  ///
+  /// * [int] userId (required):
+  ///   用戶ID
+  Future<void> adminClearCart(int userId,) async {
+    final response = await adminClearCartWithHttpInfo(userId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// 管理員獲取購物車統計
+  ///
+  /// 管理員獲取指定用戶購物車的統計信息
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] userId (required):
+  ///   用戶ID
+  Future<Response> adminGetCartSummaryWithHttpInfo(int userId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/cart/admin/summary';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'userId', userId));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 管理員獲取購物車統計
+  ///
+  /// 管理員獲取指定用戶購物車的統計信息
+  ///
+  /// Parameters:
+  ///
+  /// * [int] userId (required):
+  ///   用戶ID
+  Future<CartSummary?> adminGetCartSummary(int userId,) async {
+    final response = await adminGetCartSummaryWithHttpInfo(userId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CartSummary',) as CartSummary;
+    
+    }
+    return null;
+  }
+
+  /// 管理員獲取購物車列表
+  ///
+  /// 管理員獲取指定用戶的購物車項目列表
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] userId (required):
+  ///   用戶ID
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁大小
+  Future<Response> adminGetUserCartWithHttpInfo(int userId, { int? page, int? size, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/cart/admin/list';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'userId', userId));
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 管理員獲取購物車列表
+  ///
+  /// 管理員獲取指定用戶的購物車項目列表
+  ///
+  /// Parameters:
+  ///
+  /// * [int] userId (required):
+  ///   用戶ID
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁大小
+  Future<PageCartItemResponse?> adminGetUserCart(int userId, { int? page, int? size, }) async {
+    final response = await adminGetUserCartWithHttpInfo(userId,  page: page, size: size, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageCartItemResponse',) as PageCartItemResponse;
+    
+    }
+    return null;
+  }
+
+  /// 管理員從購物車移除商品
+  ///
+  /// 管理員從指定用戶購物車中移除商品
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] userId (required):
+  ///   用戶ID
+  ///
+  /// * [int] cartItemId (required):
+  ///   購物車項目ID
+  Future<Response> adminRemoveFromCartWithHttpInfo(int userId, int cartItemId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/cart/admin/{cartItemId}'
+      .replaceAll('{cartItemId}', cartItemId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'userId', userId));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 管理員從購物車移除商品
+  ///
+  /// 管理員從指定用戶購物車中移除商品
+  ///
+  /// Parameters:
+  ///
+  /// * [int] userId (required):
+  ///   用戶ID
+  ///
+  /// * [int] cartItemId (required):
+  ///   購物車項目ID
+  Future<void> adminRemoveFromCart(int userId, int cartItemId,) async {
+    final response = await adminRemoveFromCartWithHttpInfo(userId, cartItemId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// 管理員更新購物車項目
+  ///
+  /// 管理員更新指定用戶購物車中商品的數量
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] userId (required):
+  ///   用戶ID
+  ///
+  /// * [int] cartItemId (required):
+  ///   購物車項目ID
+  ///
+  /// * [CartItemUpdateParam] cartItemUpdateParam (required):
+  Future<Response> adminUpdateCartItemWithHttpInfo(int userId, int cartItemId, CartItemUpdateParam cartItemUpdateParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/cart/admin/{cartItemId}'
+      .replaceAll('{cartItemId}', cartItemId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody = cartItemUpdateParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'userId', userId));
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 管理員更新購物車項目
+  ///
+  /// 管理員更新指定用戶購物車中商品的數量
+  ///
+  /// Parameters:
+  ///
+  /// * [int] userId (required):
+  ///   用戶ID
+  ///
+  /// * [int] cartItemId (required):
+  ///   購物車項目ID
+  ///
+  /// * [CartItemUpdateParam] cartItemUpdateParam (required):
+  Future<CartItemResponse?> adminUpdateCartItem(int userId, int cartItemId, CartItemUpdateParam cartItemUpdateParam,) async {
+    final response = await adminUpdateCartItemWithHttpInfo(userId, cartItemId, cartItemUpdateParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -202,12 +578,7 @@ class DefaultApi {
   /// 檢查購物車中所有商品的庫存狀態
   ///
   /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] userId (required):
-  ///   用戶ID
-  Future<Response> checkCartItemStockStatusWithHttpInfo(int userId,) async {
+  Future<Response> checkCartItemStockStatusWithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/api/cart/check-stock';
 
@@ -217,8 +588,6 @@ class DefaultApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'userId', userId));
 
     const contentTypes = <String>[];
 
@@ -237,13 +606,8 @@ class DefaultApi {
   /// 檢查庫存狀態
   ///
   /// 檢查購物車中所有商品的庫存狀態
-  ///
-  /// Parameters:
-  ///
-  /// * [int] userId (required):
-  ///   用戶ID
-  Future<void> checkCartItemStockStatus(int userId,) async {
-    final response = await checkCartItemStockStatusWithHttpInfo(userId,);
+  Future<void> checkCartItemStockStatus() async {
+    final response = await checkCartItemStockStatusWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -254,12 +618,7 @@ class DefaultApi {
   /// 清空用戶的所有購物車項目
   ///
   /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] userId (required):
-  ///   用戶ID
-  Future<Response> clearCartWithHttpInfo(int userId,) async {
+  Future<Response> clearCartWithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/api/cart/clear';
 
@@ -269,8 +628,6 @@ class DefaultApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'userId', userId));
 
     const contentTypes = <String>[];
 
@@ -289,13 +646,8 @@ class DefaultApi {
   /// 清空購物車
   ///
   /// 清空用戶的所有購物車項目
-  ///
-  /// Parameters:
-  ///
-  /// * [int] userId (required):
-  ///   用戶ID
-  Future<void> clearCart(int userId,) async {
-    final response = await clearCartWithHttpInfo(userId,);
+  Future<void> clearCart() async {
+    final response = await clearCartWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1038,12 +1390,7 @@ class DefaultApi {
   /// 按賣家分組獲取購物車項目
   ///
   /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] userId (required):
-  ///   用戶ID
-  Future<Response> getCartGroupedBySellerWithHttpInfo(int userId,) async {
+  Future<Response> getCartGroupedBySellerWithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/api/cart/grouped-by-seller';
 
@@ -1053,8 +1400,6 @@ class DefaultApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'userId', userId));
 
     const contentTypes = <String>[];
 
@@ -1073,13 +1418,8 @@ class DefaultApi {
   /// 按賣家分組
   ///
   /// 按賣家分組獲取購物車項目
-  ///
-  /// Parameters:
-  ///
-  /// * [int] userId (required):
-  ///   用戶ID
-  Future<List<CartGroupBySeller>?> getCartGroupedBySeller(int userId,) async {
-    final response = await getCartGroupedBySellerWithHttpInfo(userId,);
+  Future<List<CartGroupBySeller>?> getCartGroupedBySeller() async {
+    final response = await getCartGroupedBySellerWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1101,12 +1441,7 @@ class DefaultApi {
   /// 獲取用戶購物車的統計信息
   ///
   /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] userId (required):
-  ///   用戶ID
-  Future<Response> getCartSummaryWithHttpInfo(int userId,) async {
+  Future<Response> getCartSummaryWithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/api/cart/summary';
 
@@ -1116,8 +1451,6 @@ class DefaultApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'userId', userId));
 
     const contentTypes = <String>[];
 
@@ -1136,13 +1469,8 @@ class DefaultApi {
   /// 獲取購物車統計
   ///
   /// 獲取用戶購物車的統計信息
-  ///
-  /// Parameters:
-  ///
-  /// * [int] userId (required):
-  ///   用戶ID
-  Future<CartSummary?> getCartSummary(int userId,) async {
-    final response = await getCartSummaryWithHttpInfo(userId,);
+  Future<CartSummary?> getCartSummary() async {
+    final response = await getCartSummaryWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1456,12 +1784,7 @@ class DefaultApi {
   /// 獲取購物車中庫存不足的商品
   ///
   /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] userId (required):
-  ///   用戶ID
-  Future<Response> getLowStockItemsWithHttpInfo(int userId,) async {
+  Future<Response> getLowStockItemsWithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/api/cart/low-stock';
 
@@ -1471,8 +1794,6 @@ class DefaultApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'userId', userId));
 
     const contentTypes = <String>[];
 
@@ -1491,13 +1812,8 @@ class DefaultApi {
   /// 獲取庫存不足商品
   ///
   /// 獲取購物車中庫存不足的商品
-  ///
-  /// Parameters:
-  ///
-  /// * [int] userId (required):
-  ///   用戶ID
-  Future<List<CartItemResponse>?> getLowStockItems(int userId,) async {
-    final response = await getLowStockItemsWithHttpInfo(userId,);
+  Future<List<CartItemResponse>?> getLowStockItems() async {
+    final response = await getLowStockItemsWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1519,12 +1835,7 @@ class DefaultApi {
   /// 獲取購物車中缺貨的商品
   ///
   /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] userId (required):
-  ///   用戶ID
-  Future<Response> getOutOfStockItemsWithHttpInfo(int userId,) async {
+  Future<Response> getOutOfStockItemsWithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/api/cart/out-of-stock';
 
@@ -1534,8 +1845,6 @@ class DefaultApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'userId', userId));
 
     const contentTypes = <String>[];
 
@@ -1554,13 +1863,8 @@ class DefaultApi {
   /// 獲取缺貨商品
   ///
   /// 獲取購物車中缺貨的商品
-  ///
-  /// Parameters:
-  ///
-  /// * [int] userId (required):
-  ///   用戶ID
-  Future<List<CartItemResponse>?> getOutOfStockItems(int userId,) async {
-    final response = await getOutOfStockItemsWithHttpInfo(userId,);
+  Future<List<CartItemResponse>?> getOutOfStockItems() async {
+    final response = await getOutOfStockItemsWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -2229,19 +2533,22 @@ class DefaultApi {
     return null;
   }
 
-  /// 獲取購物車列表
+  /// 獲取用戶購物車
   ///
-  /// 獲取用戶的購物車項目列表
+  /// 分頁獲取用戶的購物車項目列表
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [int] userId (required):
-  ///   用戶ID
-  Future<Response> getUserCart1WithHttpInfo(int userId,) async {
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁大小
+  Future<Response> getUserCartWithHttpInfo({ int? page, int? size, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/list';
+    final path = r'/api/cart';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -2250,7 +2557,12 @@ class DefaultApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'userId', userId));
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
 
     const contentTypes = <String>[];
 
@@ -2266,16 +2578,19 @@ class DefaultApi {
     );
   }
 
-  /// 獲取購物車列表
+  /// 獲取用戶購物車
   ///
-  /// 獲取用戶的購物車項目列表
+  /// 分頁獲取用戶的購物車項目列表
   ///
   /// Parameters:
   ///
-  /// * [int] userId (required):
-  ///   用戶ID
-  Future<List<CartItemResponse>?> getUserCart1(int userId,) async {
-    final response = await getUserCart1WithHttpInfo(userId,);
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁大小
+  Future<PageCartItemResponse?> getUserCart({ int? page, int? size, }) async {
+    final response = await getUserCartWithHttpInfo( page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -2283,11 +2598,8 @@ class DefaultApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<CartItemResponse>') as List)
-        .cast<CartItemResponse>()
-        .toList(growable: false);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageCartItemResponse',) as PageCartItemResponse;
+    
     }
     return null;
   }
@@ -2416,12 +2728,9 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
-  /// * [int] userId (required):
-  ///   用戶ID
-  ///
   /// * [int] cartItemId (required):
   ///   購物車項目ID
-  Future<Response> removeFromCart1WithHttpInfo(int userId, int cartItemId,) async {
+  Future<Response> removeFromCartWithHttpInfo(int cartItemId,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/cart/{cartItemId}'
       .replaceAll('{cartItemId}', cartItemId.toString());
@@ -2432,8 +2741,6 @@ class DefaultApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'userId', userId));
 
     const contentTypes = <String>[];
 
@@ -2455,13 +2762,10 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
-  /// * [int] userId (required):
-  ///   用戶ID
-  ///
   /// * [int] cartItemId (required):
   ///   購物車項目ID
-  Future<void> removeFromCart1(int userId, int cartItemId,) async {
-    final response = await removeFromCart1WithHttpInfo(userId, cartItemId,);
+  Future<void> removeFromCart(int cartItemId,) async {
+    final response = await removeFromCartWithHttpInfo(cartItemId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -2871,14 +3175,11 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
-  /// * [int] userId (required):
-  ///   用戶ID
-  ///
   /// * [int] cartItemId (required):
   ///   購物車項目ID
   ///
   /// * [CartItemUpdateParam] cartItemUpdateParam (required):
-  Future<Response> updateCartItemWithHttpInfo(int userId, int cartItemId, CartItemUpdateParam cartItemUpdateParam,) async {
+  Future<Response> updateCartItemWithHttpInfo(int cartItemId, CartItemUpdateParam cartItemUpdateParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/cart/{cartItemId}'
       .replaceAll('{cartItemId}', cartItemId.toString());
@@ -2889,8 +3190,6 @@ class DefaultApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'userId', userId));
 
     const contentTypes = <String>['application/json'];
 
@@ -2912,15 +3211,12 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
-  /// * [int] userId (required):
-  ///   用戶ID
-  ///
   /// * [int] cartItemId (required):
   ///   購物車項目ID
   ///
   /// * [CartItemUpdateParam] cartItemUpdateParam (required):
-  Future<CartItemResponse?> updateCartItem(int userId, int cartItemId, CartItemUpdateParam cartItemUpdateParam,) async {
-    final response = await updateCartItemWithHttpInfo(userId, cartItemId, cartItemUpdateParam,);
+  Future<CartItemResponse?> updateCartItem(int cartItemId, CartItemUpdateParam cartItemUpdateParam,) async {
+    final response = await updateCartItemWithHttpInfo(cartItemId, cartItemUpdateParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

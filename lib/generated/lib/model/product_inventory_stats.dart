@@ -19,8 +19,8 @@ class ProductInventoryStats {
     this.minStock,
     this.stockAlertThreshold,
     this.belowMinimum,
-    this.outOfStock,
     this.lowStock,
+    this.outOfStock,
   });
 
   ///
@@ -77,7 +77,7 @@ class ProductInventoryStats {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? outOfStock;
+  bool? lowStock;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -85,7 +85,7 @@ class ProductInventoryStats {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? lowStock;
+  bool? outOfStock;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductInventoryStats &&
@@ -95,8 +95,8 @@ class ProductInventoryStats {
     other.minStock == minStock &&
     other.stockAlertThreshold == stockAlertThreshold &&
     other.belowMinimum == belowMinimum &&
-    other.outOfStock == outOfStock &&
-    other.lowStock == lowStock;
+    other.lowStock == lowStock &&
+    other.outOfStock == outOfStock;
 
   @override
   int get hashCode =>
@@ -107,11 +107,11 @@ class ProductInventoryStats {
     (minStock == null ? 0 : minStock!.hashCode) +
     (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
     (belowMinimum == null ? 0 : belowMinimum!.hashCode) +
-    (outOfStock == null ? 0 : outOfStock!.hashCode) +
-    (lowStock == null ? 0 : lowStock!.hashCode);
+    (lowStock == null ? 0 : lowStock!.hashCode) +
+    (outOfStock == null ? 0 : outOfStock!.hashCode);
 
   @override
-  String toString() => 'ProductInventoryStats[productId=$productId, productName=$productName, currentStock=$currentStock, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, belowMinimum=$belowMinimum, outOfStock=$outOfStock, lowStock=$lowStock]';
+  String toString() => 'ProductInventoryStats[productId=$productId, productName=$productName, currentStock=$currentStock, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, belowMinimum=$belowMinimum, lowStock=$lowStock, outOfStock=$outOfStock]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -145,15 +145,15 @@ class ProductInventoryStats {
     } else {
       json[r'belowMinimum'] = null;
     }
-    if (this.outOfStock != null) {
-      json[r'outOfStock'] = this.outOfStock;
-    } else {
-      json[r'outOfStock'] = null;
-    }
     if (this.lowStock != null) {
       json[r'lowStock'] = this.lowStock;
     } else {
       json[r'lowStock'] = null;
+    }
+    if (this.outOfStock != null) {
+      json[r'outOfStock'] = this.outOfStock;
+    } else {
+      json[r'outOfStock'] = null;
     }
     return json;
   }
@@ -183,8 +183,8 @@ class ProductInventoryStats {
         minStock: mapValueOfType<int>(json, r'minStock'),
         stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
         belowMinimum: mapValueOfType<bool>(json, r'belowMinimum'),
-        outOfStock: mapValueOfType<bool>(json, r'outOfStock'),
         lowStock: mapValueOfType<bool>(json, r'lowStock'),
+        outOfStock: mapValueOfType<bool>(json, r'outOfStock'),
       );
     }
     return null;

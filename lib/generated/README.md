@@ -42,14 +42,13 @@ import 'package:agora_market_dart_sdk/api.dart';
 
 
 final api_instance = DefaultApi();
-final userId = 789; // int | 用戶ID
 final cartItemCreateParam = CartItemCreateParam(); // CartItemCreateParam | 
 
 try {
-    final result = api_instance.addToCart1(userId, cartItemCreateParam);
+    final result = api_instance.addToCart(cartItemCreateParam);
     print(result);
 } catch (e) {
-    print('Exception when calling DefaultApi->addToCart1: $e\n');
+    print('Exception when calling DefaultApi->addToCart: $e\n');
 }
 
 ```
@@ -60,7 +59,13 @@ All URIs are relative to *https://agoramarketapi.purrtechllc.com/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**addToCart1**](doc//DefaultApi.md#addtocart1) | **POST** /api/cart/add | 添加商品到購物車
+*DefaultApi* | [**addToCart**](doc//DefaultApi.md#addtocart) | **POST** /api/cart/add | 添加商品到購物車
+*DefaultApi* | [**adminAddToCart**](doc//DefaultApi.md#adminaddtocart) | **POST** /api/cart/admin/add | 管理員添加商品到購物車
+*DefaultApi* | [**adminClearCart**](doc//DefaultApi.md#adminclearcart) | **DELETE** /api/cart/admin/clear | 管理員清空購物車
+*DefaultApi* | [**adminGetCartSummary**](doc//DefaultApi.md#admingetcartsummary) | **GET** /api/cart/admin/summary | 管理員獲取購物車統計
+*DefaultApi* | [**adminGetUserCart**](doc//DefaultApi.md#admingetusercart) | **GET** /api/cart/admin/list | 管理員獲取購物車列表
+*DefaultApi* | [**adminRemoveFromCart**](doc//DefaultApi.md#adminremovefromcart) | **DELETE** /api/cart/admin/{cartItemId} | 管理員從購物車移除商品
+*DefaultApi* | [**adminUpdateCartItem**](doc//DefaultApi.md#adminupdatecartitem) | **PUT** /api/cart/admin/{cartItemId} | 管理員更新購物車項目
 *DefaultApi* | [**calculateLogistics**](doc//DefaultApi.md#calculatelogistics) | **POST** /api/logistics/calculate | 物流計算
 *DefaultApi* | [**cancelRecharge**](doc//DefaultApi.md#cancelrecharge) | **POST** /recharge/{rechargeId}/cancel | 取消充值
 *DefaultApi* | [**checkCartItemStockStatus**](doc//DefaultApi.md#checkcartitemstockstatus) | **POST** /api/cart/check-stock | 檢查庫存狀態
@@ -98,10 +103,10 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getTransactionById**](doc//DefaultApi.md#gettransactionbyid) | **GET** /transactions/{id} | 根據交易ID查詢交易記錄
 *DefaultApi* | [**getTransactionList**](doc//DefaultApi.md#gettransactionlist) | **GET** /transactions/{token}/list | 查詢帳變歷史
 *DefaultApi* | [**getTransactionListByAdmin**](doc//DefaultApi.md#gettransactionlistbyadmin) | **GET** /transactions/admin/search | 管理員查看帳變記錄
-*DefaultApi* | [**getUserCart1**](doc//DefaultApi.md#getusercart1) | **GET** /api/cart/list | 獲取購物車列表
+*DefaultApi* | [**getUserCart**](doc//DefaultApi.md#getusercart) | **GET** /api/cart | 獲取用戶購物車
 *DefaultApi* | [**getWithdraw**](doc//DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 *DefaultApi* | [**getWithdrawHistory**](doc//DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
-*DefaultApi* | [**removeFromCart1**](doc//DefaultApi.md#removefromcart1) | **DELETE** /api/cart/{cartItemId} | 從購物車移除商品
+*DefaultApi* | [**removeFromCart**](doc//DefaultApi.md#removefromcart) | **DELETE** /api/cart/{cartItemId} | 從購物車移除商品
 *DefaultApi* | [**replyIssue**](doc//DefaultApi.md#replyissue) | **POST** /customer-issues/{issueId}/reply | 回覆客戶問題
 *DefaultApi* | [**search**](doc//DefaultApi.md#search) | **GET** /postal-areas/search | 搜索郵遞區號
 *DefaultApi* | [**searchIssues**](doc//DefaultApi.md#searchissues) | **POST** /customer-issues/search | 管理員搜尋客戶問題記錄
@@ -195,10 +200,6 @@ Class | Method | HTTP request | Description
 *FilesApi* | [**downloadFile**](doc//FilesApi.md#downloadfile) | **GET** /files/download | 下載文件
 *FilesApi* | [**getFileList**](doc//FilesApi.md#getfilelist) | **GET** /files/list | 獲取目錄中的文件列表
 *FilesApi* | [**uploadFile**](doc//FilesApi.md#uploadfile) | **POST** /files/upload | 上傳文件
-*MemberCartApi* | [**addToCart**](doc//MemberCartApi.md#addtocart) | **POST** /cart | 添加商品到購物車
-*MemberCartApi* | [**getUserCart**](doc//MemberCartApi.md#getusercart) | **GET** /cart | 獲取用戶購物車
-*MemberCartApi* | [**removeFromCart**](doc//MemberCartApi.md#removefromcart) | **DELETE** /cart/{cartItemId} | 從購物車移除商品
-*MemberCartApi* | [**updateQuantity**](doc//MemberCartApi.md#updatequantity) | **PUT** /cart/{cartItemId}/quantity | 更新購物車商品數量
 *MemberDisputesApi* | [**createDispute**](doc//MemberDisputesApi.md#createdispute) | **POST** /disputes | 創建糾紛
 *MemberDisputesApi* | [**getDisputeDetail**](doc//MemberDisputesApi.md#getdisputedetail) | **GET** /disputes/{disputeId} | 查看糾紛詳情
 *MemberDisputesApi* | [**replyDispute**](doc//MemberDisputesApi.md#replydispute) | **POST** /disputes/{disputeId}/reply | 回覆糾紛
@@ -359,6 +360,7 @@ Class | Method | HTTP request | Description
  - [OrderStatusEnum](doc//OrderStatusEnum.md)
  - [OrderSumbitParam](doc//OrderSumbitParam.md)
  - [PageCartItem](doc//PageCartItem.md)
+ - [PageCartItemResponse](doc//PageCartItemResponse.md)
  - [PageChatMessage](doc//PageChatMessage.md)
  - [PageChatSession](doc//PageChatSession.md)
  - [PageColdWallet](doc//PageColdWallet.md)

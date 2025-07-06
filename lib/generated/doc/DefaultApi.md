@@ -9,7 +9,13 @@ All URIs are relative to *https://agoramarketapi.purrtechllc.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addToCart1**](DefaultApi.md#addtocart1) | **POST** /api/cart/add | 添加商品到購物車
+[**addToCart**](DefaultApi.md#addtocart) | **POST** /api/cart/add | 添加商品到購物車
+[**adminAddToCart**](DefaultApi.md#adminaddtocart) | **POST** /api/cart/admin/add | 管理員添加商品到購物車
+[**adminClearCart**](DefaultApi.md#adminclearcart) | **DELETE** /api/cart/admin/clear | 管理員清空購物車
+[**adminGetCartSummary**](DefaultApi.md#admingetcartsummary) | **GET** /api/cart/admin/summary | 管理員獲取購物車統計
+[**adminGetUserCart**](DefaultApi.md#admingetusercart) | **GET** /api/cart/admin/list | 管理員獲取購物車列表
+[**adminRemoveFromCart**](DefaultApi.md#adminremovefromcart) | **DELETE** /api/cart/admin/{cartItemId} | 管理員從購物車移除商品
+[**adminUpdateCartItem**](DefaultApi.md#adminupdatecartitem) | **PUT** /api/cart/admin/{cartItemId} | 管理員更新購物車項目
 [**calculateLogistics**](DefaultApi.md#calculatelogistics) | **POST** /api/logistics/calculate | 物流計算
 [**cancelRecharge**](DefaultApi.md#cancelrecharge) | **POST** /recharge/{rechargeId}/cancel | 取消充值
 [**checkCartItemStockStatus**](DefaultApi.md#checkcartitemstockstatus) | **POST** /api/cart/check-stock | 檢查庫存狀態
@@ -47,10 +53,10 @@ Method | HTTP request | Description
 [**getTransactionById**](DefaultApi.md#gettransactionbyid) | **GET** /transactions/{id} | 根據交易ID查詢交易記錄
 [**getTransactionList**](DefaultApi.md#gettransactionlist) | **GET** /transactions/{token}/list | 查詢帳變歷史
 [**getTransactionListByAdmin**](DefaultApi.md#gettransactionlistbyadmin) | **GET** /transactions/admin/search | 管理員查看帳變記錄
-[**getUserCart1**](DefaultApi.md#getusercart1) | **GET** /api/cart/list | 獲取購物車列表
+[**getUserCart**](DefaultApi.md#getusercart) | **GET** /api/cart | 獲取用戶購物車
 [**getWithdraw**](DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 [**getWithdrawHistory**](DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
-[**removeFromCart1**](DefaultApi.md#removefromcart1) | **DELETE** /api/cart/{cartItemId} | 從購物車移除商品
+[**removeFromCart**](DefaultApi.md#removefromcart) | **DELETE** /api/cart/{cartItemId} | 從購物車移除商品
 [**replyIssue**](DefaultApi.md#replyissue) | **POST** /customer-issues/{issueId}/reply | 回覆客戶問題
 [**search**](DefaultApi.md#search) | **GET** /postal-areas/search | 搜索郵遞區號
 [**searchIssues**](DefaultApi.md#searchissues) | **POST** /customer-issues/search | 管理員搜尋客戶問題記錄
@@ -61,8 +67,8 @@ Method | HTTP request | Description
 [**validatePostalCode**](DefaultApi.md#validatepostalcode) | **GET** /api/logistics/postal-codes/{postalCode}/validate | 郵遞區號驗證
 
 
-# **addToCart1**
-> CartItemResponse addToCart1(userId, cartItemCreateParam)
+# **addToCart**
+> CartItemResponse addToCart(cartItemCreateParam)
 
 添加商品到購物車
 
@@ -73,14 +79,57 @@ Method | HTTP request | Description
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
+final cartItemCreateParam = CartItemCreateParam(); // CartItemCreateParam | 
+
+try {
+    final result = api_instance.addToCart(cartItemCreateParam);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->addToCart: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cartItemCreateParam** | [**CartItemCreateParam**](CartItemCreateParam.md)|  | 
+
+### Return type
+
+[**CartItemResponse**](CartItemResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **adminAddToCart**
+> CartItemResponse adminAddToCart(userId, cartItemCreateParam)
+
+管理員添加商品到購物車
+
+管理員將商品添加到指定用戶購物車
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
 final userId = 789; // int | 用戶ID
 final cartItemCreateParam = CartItemCreateParam(); // CartItemCreateParam | 
 
 try {
-    final result = api_instance.addToCart1(userId, cartItemCreateParam);
+    final result = api_instance.adminAddToCart(userId, cartItemCreateParam);
     print(result);
 } catch (e) {
-    print('Exception when calling DefaultApi->addToCart1: $e\n');
+    print('Exception when calling DefaultApi->adminAddToCart: $e\n');
 }
 ```
 
@@ -90,6 +139,229 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **int**| 用戶ID | 
  **cartItemCreateParam** | [**CartItemCreateParam**](CartItemCreateParam.md)|  | 
+
+### Return type
+
+[**CartItemResponse**](CartItemResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **adminClearCart**
+> adminClearCart(userId)
+
+管理員清空購物車
+
+管理員清空指定用戶的所有購物車項目
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final userId = 789; // int | 用戶ID
+
+try {
+    api_instance.adminClearCart(userId);
+} catch (e) {
+    print('Exception when calling DefaultApi->adminClearCart: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **int**| 用戶ID | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **adminGetCartSummary**
+> CartSummary adminGetCartSummary(userId)
+
+管理員獲取購物車統計
+
+管理員獲取指定用戶購物車的統計信息
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final userId = 789; // int | 用戶ID
+
+try {
+    final result = api_instance.adminGetCartSummary(userId);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->adminGetCartSummary: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **int**| 用戶ID | 
+
+### Return type
+
+[**CartSummary**](CartSummary.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **adminGetUserCart**
+> PageCartItemResponse adminGetUserCart(userId, page, size)
+
+管理員獲取購物車列表
+
+管理員獲取指定用戶的購物車項目列表
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final userId = 789; // int | 用戶ID
+final page = 56; // int | 頁碼，從1開始
+final size = 56; // int | 每頁大小
+
+try {
+    final result = api_instance.adminGetUserCart(userId, page, size);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->adminGetUserCart: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **int**| 用戶ID | 
+ **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
+ **size** | **int**| 每頁大小 | [optional] [default to 20]
+
+### Return type
+
+[**PageCartItemResponse**](PageCartItemResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **adminRemoveFromCart**
+> adminRemoveFromCart(userId, cartItemId)
+
+管理員從購物車移除商品
+
+管理員從指定用戶購物車中移除商品
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final userId = 789; // int | 用戶ID
+final cartItemId = 789; // int | 購物車項目ID
+
+try {
+    api_instance.adminRemoveFromCart(userId, cartItemId);
+} catch (e) {
+    print('Exception when calling DefaultApi->adminRemoveFromCart: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **int**| 用戶ID | 
+ **cartItemId** | **int**| 購物車項目ID | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **adminUpdateCartItem**
+> CartItemResponse adminUpdateCartItem(userId, cartItemId, cartItemUpdateParam)
+
+管理員更新購物車項目
+
+管理員更新指定用戶購物車中商品的數量
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final userId = 789; // int | 用戶ID
+final cartItemId = 789; // int | 購物車項目ID
+final cartItemUpdateParam = CartItemUpdateParam(); // CartItemUpdateParam | 
+
+try {
+    final result = api_instance.adminUpdateCartItem(userId, cartItemId, cartItemUpdateParam);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->adminUpdateCartItem: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **int**| 用戶ID | 
+ **cartItemId** | **int**| 購物車項目ID | 
+ **cartItemUpdateParam** | [**CartItemUpdateParam**](CartItemUpdateParam.md)|  | 
 
 ### Return type
 
@@ -193,7 +465,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **checkCartItemStockStatus**
-> checkCartItemStockStatus(userId)
+> checkCartItemStockStatus()
 
 檢查庫存狀態
 
@@ -204,20 +476,16 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
-final userId = 789; // int | 用戶ID
 
 try {
-    api_instance.checkCartItemStockStatus(userId);
+    api_instance.checkCartItemStockStatus();
 } catch (e) {
     print('Exception when calling DefaultApi->checkCartItemStockStatus: $e\n');
 }
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userId** | **int**| 用戶ID | 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -235,7 +503,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **clearCart**
-> clearCart(userId)
+> clearCart()
 
 清空購物車
 
@@ -246,20 +514,16 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
-final userId = 789; // int | 用戶ID
 
 try {
-    api_instance.clearCart(userId);
+    api_instance.clearCart();
 } catch (e) {
     print('Exception when calling DefaultApi->clearCart: $e\n');
 }
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userId** | **int**| 用戶ID | 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -818,7 +1082,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCartGroupedBySeller**
-> List<CartGroupBySeller> getCartGroupedBySeller(userId)
+> List<CartGroupBySeller> getCartGroupedBySeller()
 
 按賣家分組
 
@@ -829,10 +1093,9 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
-final userId = 789; // int | 用戶ID
 
 try {
-    final result = api_instance.getCartGroupedBySeller(userId);
+    final result = api_instance.getCartGroupedBySeller();
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getCartGroupedBySeller: $e\n');
@@ -840,10 +1103,7 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userId** | **int**| 用戶ID | 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -861,7 +1121,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCartSummary**
-> CartSummary getCartSummary(userId)
+> CartSummary getCartSummary()
 
 獲取購物車統計
 
@@ -872,10 +1132,9 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
-final userId = 789; // int | 用戶ID
 
 try {
-    final result = api_instance.getCartSummary(userId);
+    final result = api_instance.getCartSummary();
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getCartSummary: $e\n');
@@ -883,10 +1142,7 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userId** | **int**| 用戶ID | 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -1113,7 +1369,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getLowStockItems**
-> List<CartItemResponse> getLowStockItems(userId)
+> List<CartItemResponse> getLowStockItems()
 
 獲取庫存不足商品
 
@@ -1124,10 +1380,9 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
-final userId = 789; // int | 用戶ID
 
 try {
-    final result = api_instance.getLowStockItems(userId);
+    final result = api_instance.getLowStockItems();
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getLowStockItems: $e\n');
@@ -1135,10 +1390,7 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userId** | **int**| 用戶ID | 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -1156,7 +1408,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getOutOfStockItems**
-> List<CartItemResponse> getOutOfStockItems(userId)
+> List<CartItemResponse> getOutOfStockItems()
 
 獲取缺貨商品
 
@@ -1167,10 +1419,9 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
-final userId = 789; // int | 用戶ID
 
 try {
-    final result = api_instance.getOutOfStockItems(userId);
+    final result = api_instance.getOutOfStockItems();
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getOutOfStockItems: $e\n');
@@ -1178,10 +1429,7 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userId** | **int**| 用戶ID | 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -1663,25 +1911,26 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getUserCart1**
-> List<CartItemResponse> getUserCart1(userId)
+# **getUserCart**
+> PageCartItemResponse getUserCart(page, size)
 
-獲取購物車列表
+獲取用戶購物車
 
-獲取用戶的購物車項目列表
+分頁獲取用戶的購物車項目列表
 
 ### Example
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
-final userId = 789; // int | 用戶ID
+final page = 56; // int | 頁碼，從1開始
+final size = 56; // int | 每頁大小
 
 try {
-    final result = api_instance.getUserCart1(userId);
+    final result = api_instance.getUserCart(page, size);
     print(result);
 } catch (e) {
-    print('Exception when calling DefaultApi->getUserCart1: $e\n');
+    print('Exception when calling DefaultApi->getUserCart: $e\n');
 }
 ```
 
@@ -1689,11 +1938,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **int**| 用戶ID | 
+ **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
+ **size** | **int**| 每頁大小 | [optional] [default to 20]
 
 ### Return type
 
-[**List<CartItemResponse>**](CartItemResponse.md)
+[**PageCartItemResponse**](PageCartItemResponse.md)
 
 ### Authorization
 
@@ -1790,8 +2040,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **removeFromCart1**
-> removeFromCart1(userId, cartItemId)
+# **removeFromCart**
+> removeFromCart(cartItemId)
 
 從購物車移除商品
 
@@ -1802,13 +2052,12 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
-final userId = 789; // int | 用戶ID
 final cartItemId = 789; // int | 購物車項目ID
 
 try {
-    api_instance.removeFromCart1(userId, cartItemId);
+    api_instance.removeFromCart(cartItemId);
 } catch (e) {
-    print('Exception when calling DefaultApi->removeFromCart1: $e\n');
+    print('Exception when calling DefaultApi->removeFromCart: $e\n');
 }
 ```
 
@@ -1816,7 +2065,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **int**| 用戶ID | 
  **cartItemId** | **int**| 購物車項目ID | 
 
 ### Return type
@@ -2099,7 +2347,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateCartItem**
-> CartItemResponse updateCartItem(userId, cartItemId, cartItemUpdateParam)
+> CartItemResponse updateCartItem(cartItemId, cartItemUpdateParam)
 
 更新購物車項目
 
@@ -2110,12 +2358,11 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
-final userId = 789; // int | 用戶ID
 final cartItemId = 789; // int | 購物車項目ID
 final cartItemUpdateParam = CartItemUpdateParam(); // CartItemUpdateParam | 
 
 try {
-    final result = api_instance.updateCartItem(userId, cartItemId, cartItemUpdateParam);
+    final result = api_instance.updateCartItem(cartItemId, cartItemUpdateParam);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->updateCartItem: $e\n');
@@ -2126,7 +2373,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **int**| 用戶ID | 
  **cartItemId** | **int**| 購物車項目ID | 
  **cartItemUpdateParam** | [**CartItemUpdateParam**](CartItemUpdateParam.md)|  | 
 

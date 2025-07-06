@@ -30,10 +30,10 @@ Name | Type | Description | Notes
 **updatedAt** | [**DateTime**](DateTime.md) | 更新時間 | [optional] 
 **inStock** | **bool** |  | [optional] 
 **subtotal** | **num** |  | [optional] 
-**totalPrice** | **num** |  | [optional] 
-**stockStatus** | **String** |  | [optional] 
 **specificationDescription** | **String** |  | [optional] 
 **purchaseRestrictionReason** | **String** |  | [optional] 
+**totalPrice** | **num** |  | [optional] 
+**stockStatus** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

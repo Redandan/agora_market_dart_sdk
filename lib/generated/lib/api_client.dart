@@ -310,6 +310,8 @@ class ApiClient {
           return OrderSumbitParam.fromJson(value);
         case 'PageCartItem':
           return PageCartItem.fromJson(value);
+        case 'PageCartItemResponse':
+          return PageCartItemResponse.fromJson(value);
         case 'PageChatMessage':
           return PageChatMessage.fromJson(value);
         case 'PageChatSession':
