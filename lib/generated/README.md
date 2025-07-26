@@ -245,7 +245,7 @@ Class | Method | HTTP request | Description
 *PromoCodesApi* | [**reviewPromoCode**](doc//PromoCodesApi.md#reviewpromocode) | **POST** /promo-codes/{code}/review | 審核推廣碼
 *PromoCodesApi* | [**searchPromoCodes**](doc//PromoCodesApi.md#searchpromocodes) | **GET** /promo-codes/search | 搜尋推廣碼
 *PromoCodesApi* | [**updateMyPromoCode**](doc//PromoCodesApi.md#updatemypromocode) | **PUT** /promo-codes/my-promo-code | 編輯我的推廣碼
-*PublicControllerApi* | [**test**](doc//PublicControllerApi.md#test) | **GET** /public/ | 
+*PublicControllerApi* | [**test**](doc//PublicControllerApi.md#test) | **GET** /public/test | 
 *ReviewsApi* | [**batchDeleteReviews**](doc//ReviewsApi.md#batchdeletereviews) | **DELETE** /reviews/batch | 批量刪除評價（管理員功能）
 *ReviewsApi* | [**batchReplyReviews**](doc//ReviewsApi.md#batchreplyreviews) | **POST** /reviews/batch-reply | 批量回覆評價
 *ReviewsApi* | [**createReview**](doc//ReviewsApi.md#createreview) | **POST** /reviews/create | 創建評價

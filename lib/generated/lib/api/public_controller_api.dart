@@ -16,13 +16,10 @@ class PublicControllerApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'GET /public/' operation and returns the [Response].
-  /// Parameters:
-  ///
-  /// * [DateTime] startDate:
-  Future<Response> testWithHttpInfo({ DateTime? startDate, }) async {
+  /// Performs an HTTP 'GET /public/test' operation and returns the [Response].
+  Future<Response> testWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/public/';
+    final path = r'/public/test';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -30,10 +27,6 @@ class PublicControllerApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    if (startDate != null) {
-      queryParams.addAll(_queryParams('', 'startDate', startDate));
-    }
 
     const contentTypes = <String>[];
 
@@ -49,11 +42,8 @@ class PublicControllerApi {
     );
   }
 
-  /// Parameters:
-  ///
-  /// * [DateTime] startDate:
-  Future<DateTime?> test({ DateTime? startDate, }) async {
-    final response = await testWithHttpInfo( startDate: startDate, );
+  Future<DateTime?> test() async {
+    final response = await testWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

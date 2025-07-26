@@ -17,7 +17,7 @@ void main() {
   // final instance = PublicControllerApi();
 
   group('tests for PublicControllerApi', () {
-    //Future<DateTime> test({ DateTime startDate }) async
+    //Future<DateTime> test() async
     test('test test', () async {
       // TODO
     });

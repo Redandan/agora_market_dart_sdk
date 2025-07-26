@@ -31,13 +31,13 @@ void main() {
       // TODO
     });
 
-    // bool unpaged
-    test('to test the property `unpaged`', () async {
+    // bool paged
+    test('to test the property `paged`', () async {
       // TODO
     });
 
-    // bool paged
-    test('to test the property `paged`', () async {
+    // bool unpaged
+    test('to test the property `unpaged`', () async {
       // TODO
     });
 

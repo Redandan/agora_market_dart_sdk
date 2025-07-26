@@ -9,11 +9,11 @@ All URIs are relative to *https://agoramarketapi.purrtechllc.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**test**](PublicControllerApi.md#test) | **GET** /public/ | 
+[**test**](PublicControllerApi.md#test) | **GET** /public/test | 
 
 
 # **test**
-> DateTime test(startDate)
+> DateTime test()
 
 
 
@@ -22,10 +22,9 @@ Method | HTTP request | Description
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = PublicControllerApi();
-final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 
 
 try {
-    final result = api_instance.test(startDate);
+    final result = api_instance.test();
     print(result);
 } catch (e) {
     print('Exception when calling PublicControllerApi->test: $e\n');
@@ -33,10 +32,7 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **startDate** | **DateTime**|  | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 
