@@ -25,7 +25,7 @@ class ProductStatusEnum {
 
   static const ON_SALE = ProductStatusEnum._(r'ON_SALE');
   static const OFF_SALE = ProductStatusEnum._(r'OFF_SALE');
-  static const SOLD_OUT = ProductStatusEnum._(r'SOLD_OUT');
+  static const PENDING_REVIEW = ProductStatusEnum._(r'PENDING_REVIEW');
   static const DELETED = ProductStatusEnum._(r'DELETED');
   static const unknownDefaultOpenApi = ProductStatusEnum._(r'unknown_default_open_api');
 
@@ -33,7 +33,7 @@ class ProductStatusEnum {
   static const values = <ProductStatusEnum>[
     ON_SALE,
     OFF_SALE,
-    SOLD_OUT,
+    PENDING_REVIEW,
     DELETED,
     unknownDefaultOpenApi,
   ];
@@ -76,7 +76,7 @@ class ProductStatusEnumTypeTransformer {
       switch (data) {
         case r'ON_SALE': return ProductStatusEnum.ON_SALE;
         case r'OFF_SALE': return ProductStatusEnum.OFF_SALE;
-        case r'SOLD_OUT': return ProductStatusEnum.SOLD_OUT;
+        case r'PENDING_REVIEW': return ProductStatusEnum.PENDING_REVIEW;
         case r'DELETED': return ProductStatusEnum.DELETED;
         case r'unknown_default_open_api': return ProductStatusEnum.unknownDefaultOpenApi;
         default:

@@ -53,9 +53,9 @@ class Product {
     this.store,
     this.userSupportedShippingAddresses = const [],
     this.shippingAddressOptions = const [],
-    this.inStock,
-    this.stockLow,
     this.stockBelowMinimum,
+    this.stockLow,
+    this.inStock,
     this.defaultShippingFee,
     this.minimumShippingFee,
   });
@@ -323,7 +323,7 @@ class Product {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? inStock;
+  bool? stockBelowMinimum;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -339,7 +339,7 @@ class Product {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? stockBelowMinimum;
+  bool? inStock;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -399,9 +399,9 @@ class Product {
     other.store == store &&
     _deepEquality.equals(other.userSupportedShippingAddresses, userSupportedShippingAddresses) &&
     _deepEquality.equals(other.shippingAddressOptions, shippingAddressOptions) &&
-    other.inStock == inStock &&
-    other.stockLow == stockLow &&
     other.stockBelowMinimum == stockBelowMinimum &&
+    other.stockLow == stockLow &&
+    other.inStock == inStock &&
     other.defaultShippingFee == defaultShippingFee &&
     other.minimumShippingFee == minimumShippingFee;
 
@@ -448,14 +448,14 @@ class Product {
     (store == null ? 0 : store!.hashCode) +
     (userSupportedShippingAddresses.hashCode) +
     (shippingAddressOptions.hashCode) +
-    (inStock == null ? 0 : inStock!.hashCode) +
-    (stockLow == null ? 0 : stockLow!.hashCode) +
     (stockBelowMinimum == null ? 0 : stockBelowMinimum!.hashCode) +
+    (stockLow == null ? 0 : stockLow!.hashCode) +
+    (inStock == null ? 0 : inStock!.hashCode) +
     (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
     (minimumShippingFee == null ? 0 : minimumShippingFee!.hashCode);
 
   @override
-  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrls=$imageUrls, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skus=$skus, brand=$brand, minStock=$minStock, supportedShippingCompanies=$supportedShippingCompanies, shippingFees=$shippingFees, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, inStock=$inStock, stockLow=$stockLow, stockBelowMinimum=$stockBelowMinimum, defaultShippingFee=$defaultShippingFee, minimumShippingFee=$minimumShippingFee]';
+  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrls=$imageUrls, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skus=$skus, brand=$brand, minStock=$minStock, supportedShippingCompanies=$supportedShippingCompanies, shippingFees=$shippingFees, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, stockBelowMinimum=$stockBelowMinimum, stockLow=$stockLow, inStock=$inStock, defaultShippingFee=$defaultShippingFee, minimumShippingFee=$minimumShippingFee]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -579,20 +579,20 @@ class Product {
     }
       json[r'userSupportedShippingAddresses'] = this.userSupportedShippingAddresses;
       json[r'shippingAddressOptions'] = this.shippingAddressOptions;
-    if (this.inStock != null) {
-      json[r'inStock'] = this.inStock;
+    if (this.stockBelowMinimum != null) {
+      json[r'stockBelowMinimum'] = this.stockBelowMinimum;
     } else {
-      json[r'inStock'] = null;
+      json[r'stockBelowMinimum'] = null;
     }
     if (this.stockLow != null) {
       json[r'stockLow'] = this.stockLow;
     } else {
       json[r'stockLow'] = null;
     }
-    if (this.stockBelowMinimum != null) {
-      json[r'stockBelowMinimum'] = this.stockBelowMinimum;
+    if (this.inStock != null) {
+      json[r'inStock'] = this.inStock;
     } else {
-      json[r'stockBelowMinimum'] = null;
+      json[r'inStock'] = null;
     }
     if (this.defaultShippingFee != null) {
       json[r'defaultShippingFee'] = this.defaultShippingFee;
@@ -670,9 +670,9 @@ class Product {
         store: Store.fromJson(json[r'store']),
         userSupportedShippingAddresses: UserAddress.listFromJson(json[r'userSupportedShippingAddresses']),
         shippingAddressOptions: ShippingAddressOption.listFromJson(json[r'shippingAddressOptions']),
-        inStock: mapValueOfType<bool>(json, r'inStock'),
-        stockLow: mapValueOfType<bool>(json, r'stockLow'),
         stockBelowMinimum: mapValueOfType<bool>(json, r'stockBelowMinimum'),
+        stockLow: mapValueOfType<bool>(json, r'stockLow'),
+        inStock: mapValueOfType<bool>(json, r'inStock'),
         defaultShippingFee: num.parse('${json[r'defaultShippingFee']}'),
         minimumShippingFee: num.parse('${json[r'minimumShippingFee']}'),
       );

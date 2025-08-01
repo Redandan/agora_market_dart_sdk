@@ -9,10 +9,10 @@ import 'package:agora_market_dart_sdk/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sort** | [**SortObject**](SortObject.md) |  | [optional] 
-**pageNumber** | **int** |  | [optional] 
-**pageSize** | **int** |  | [optional] 
 **paged** | **bool** |  | [optional] 
 **unpaged** | **bool** |  | [optional] 
+**pageNumber** | **int** |  | [optional] 
+**pageSize** | **int** |  | [optional] 
 **offset** | **int** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

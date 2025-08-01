@@ -19,7 +19,7 @@ void main() {
   group('tests for MemberOrdersApi', () {
     // 取消訂單
     //
-    // 取消訂單
+    // 買家或賣家取消訂單
     //
     //Future cancelOrder(OrderCancelParam orderCancelParam) async
     test('test cancelOrder', () async {

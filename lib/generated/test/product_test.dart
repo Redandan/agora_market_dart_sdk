@@ -252,8 +252,8 @@ void main() {
       // TODO
     });
 
-    // bool inStock
-    test('to test the property `inStock`', () async {
+    // bool stockBelowMinimum
+    test('to test the property `stockBelowMinimum`', () async {
       // TODO
     });
 
@@ -262,8 +262,8 @@ void main() {
       // TODO
     });
 
-    // bool stockBelowMinimum
-    test('to test the property `stockBelowMinimum`', () async {
+    // bool inStock
+    test('to test the property `inStock`', () async {
       // TODO
     });
 

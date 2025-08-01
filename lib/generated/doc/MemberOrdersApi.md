@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 取消訂單
 
-取消訂單
+買家或賣家取消訂單
 
 ### Example
 ```dart
