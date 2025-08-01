@@ -28,11 +28,11 @@ Name | Type | Description | Notes
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | 最後更新時間 | [optional] 
 **formattedAddress** | **String** |  | [optional] 
+**convenienceStorePickup** | **bool** |  | [optional] 
 **homeDelivery** | **bool** |  | [optional] 
 **logisticsDescription** | **String** |  | [optional] 
 **recipientInfo** | **String** |  | [optional] 
 **fullAddress** | **String** |  | [optional] 
-**convenienceStorePickup** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

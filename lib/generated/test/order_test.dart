@@ -116,6 +116,12 @@ void main() {
       // TODO
     });
 
+    // 評價時間
+    // DateTime reviewedAt
+    test('to test the property `reviewedAt`', () async {
+      // TODO
+    });
+
     // Product product
     test('to test the property `product`', () async {
       // TODO

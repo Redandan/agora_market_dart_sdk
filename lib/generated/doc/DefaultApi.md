@@ -42,6 +42,7 @@ Method | HTTP request | Description
 [**getDistrictsByCity1**](DefaultApi.md#getdistrictsbycity1) | **GET** /api/logistics/postal/city/{city}/districts | 查詢城市行政區
 [**getIssue**](DefaultApi.md#getissue) | **GET** /customer-issues/{issueId} | 查詢客戶問題記錄
 [**getIssueHistory**](DefaultApi.md#getissuehistory) | **GET** /customer-issues/history | 查詢客戶問題歷史
+[**getLatestOngoingWithdraw**](DefaultApi.md#getlatestongoingwithdraw) | **GET** /withdraws/ongoing | 查詢當前用戶最新一筆進行中的提現
 [**getLowStockItems**](DefaultApi.md#getlowstockitems) | **GET** /api/cart/low-stock | 獲取庫存不足商品
 [**getOutOfStockItems**](DefaultApi.md#getoutofstockitems) | **GET** /api/cart/out-of-stock | 獲取缺貨商品
 [**getPendingRecharge**](DefaultApi.md#getpendingrecharge) | **GET** /recharge/pending | 查詢當前用戶是否有進行中的充值
@@ -1441,6 +1442,43 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PageCustomerIssue**](PageCustomerIssue.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getLatestOngoingWithdraw**
+> Withdraw getLatestOngoingWithdraw()
+
+查詢當前用戶最新一筆進行中的提現
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+
+try {
+    final result = api_instance.getLatestOngoingWithdraw();
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getLatestOngoingWithdraw: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Withdraw**](Withdraw.md)
 
 ### Authorization
 

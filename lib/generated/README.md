@@ -92,6 +92,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getDistrictsByCity1**](doc//DefaultApi.md#getdistrictsbycity1) | **GET** /api/logistics/postal/city/{city}/districts | 查詢城市行政區
 *DefaultApi* | [**getIssue**](doc//DefaultApi.md#getissue) | **GET** /customer-issues/{issueId} | 查詢客戶問題記錄
 *DefaultApi* | [**getIssueHistory**](doc//DefaultApi.md#getissuehistory) | **GET** /customer-issues/history | 查詢客戶問題歷史
+*DefaultApi* | [**getLatestOngoingWithdraw**](doc//DefaultApi.md#getlatestongoingwithdraw) | **GET** /withdraws/ongoing | 查詢當前用戶最新一筆進行中的提現
 *DefaultApi* | [**getLowStockItems**](doc//DefaultApi.md#getlowstockitems) | **GET** /api/cart/low-stock | 獲取庫存不足商品
 *DefaultApi* | [**getOutOfStockItems**](doc//DefaultApi.md#getoutofstockitems) | **GET** /api/cart/out-of-stock | 獲取缺貨商品
 *DefaultApi* | [**getPendingRecharge**](doc//DefaultApi.md#getpendingrecharge) | **GET** /recharge/pending | 查詢當前用戶是否有進行中的充值

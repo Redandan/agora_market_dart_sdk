@@ -294,6 +294,13 @@ void main() {
       // TODO
     });
 
+    // 查詢當前用戶最新一筆進行中的提現
+    //
+    //Future<Withdraw> getLatestOngoingWithdraw() async
+    test('test getLatestOngoingWithdraw', () async {
+      // TODO
+    });
+
     // 獲取庫存不足商品
     //
     // 獲取購物車中庫存不足的商品

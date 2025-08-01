@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **updatedAt** | [**DateTime**](DateTime.md) | 更新時間 | [optional] 
 **cancelledAt** | [**DateTime**](DateTime.md) | 取消時間 | [optional] 
 **refundedAt** | [**DateTime**](DateTime.md) | 退款時間 | [optional] 
+**reviewedAt** | [**DateTime**](DateTime.md) | 評價時間 | [optional] 
 **product** | [**Product**](Product.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

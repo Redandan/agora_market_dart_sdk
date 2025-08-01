@@ -30,6 +30,7 @@ class Order {
     this.updatedAt,
     this.cancelledAt,
     this.refundedAt,
+    this.reviewedAt,
     this.product,
   });
 
@@ -184,6 +185,15 @@ class Order {
   ///
   DateTime? refundedAt;
 
+  /// 評價時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? reviewedAt;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -211,6 +221,7 @@ class Order {
     other.updatedAt == updatedAt &&
     other.cancelledAt == cancelledAt &&
     other.refundedAt == refundedAt &&
+    other.reviewedAt == reviewedAt &&
     other.product == product;
 
   @override
@@ -233,10 +244,11 @@ class Order {
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (cancelledAt == null ? 0 : cancelledAt!.hashCode) +
     (refundedAt == null ? 0 : refundedAt!.hashCode) +
+    (reviewedAt == null ? 0 : reviewedAt!.hashCode) +
     (product == null ? 0 : product!.hashCode);
 
   @override
-  String toString() => 'Order[id=$id, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, shippingCompany=$shippingCompany, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, product=$product]';
+  String toString() => 'Order[id=$id, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, shippingCompany=$shippingCompany, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, reviewedAt=$reviewedAt, product=$product]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -325,6 +337,11 @@ class Order {
     } else {
       json[r'refundedAt'] = null;
     }
+    if (this.reviewedAt != null) {
+      json[r'reviewedAt'] = this.reviewedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'reviewedAt'] = null;
+    }
     if (this.product != null) {
       json[r'product'] = this.product;
     } else {
@@ -369,6 +386,7 @@ class Order {
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         cancelledAt: mapDateTime(json, r'cancelledAt', r''),
         refundedAt: mapDateTime(json, r'refundedAt', r''),
+        reviewedAt: mapDateTime(json, r'reviewedAt', r''),
         product: Product.fromJson(json[r'product']),
       );
     }
