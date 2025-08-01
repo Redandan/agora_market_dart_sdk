@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 **number** | **int** |  | [optional] 
 **numberOfElements** | **int** |  | [optional] 
 **pageable** | [**PageableObject**](PageableObject.md) |  | [optional] 
-**last** | **bool** |  | [optional] 
 **first** | **bool** |  | [optional] 
+**last** | **bool** |  | [optional] 
 **empty** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

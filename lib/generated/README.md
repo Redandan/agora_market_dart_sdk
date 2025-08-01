@@ -300,6 +300,7 @@ Class | Method | HTTP request | Description
 
  - [AcceptOrderParam](doc//AcceptOrderParam.md)
  - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
+ - [ApplyStakingParam](doc//ApplyStakingParam.md)
  - [AutoReplyConfig](doc//AutoReplyConfig.md)
  - [BatchReviewPromoCodeParam](doc//BatchReviewPromoCodeParam.md)
  - [BatchReviewResult](doc//BatchReviewResult.md)

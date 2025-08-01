@@ -56,6 +56,7 @@ part 'api/user_addresses_api.dart';
 
 part 'model/accept_order_param.dart';
 part 'model/admin_create_user_param.dart';
+part 'model/apply_staking_param.dart';
 part 'model/auto_reply_config.dart';
 part 'model/batch_review_promo_code_param.dart';
 part 'model/batch_review_result.dart';

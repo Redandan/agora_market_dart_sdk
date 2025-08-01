@@ -28,9 +28,9 @@ Name | Type | Description | Notes
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | 最後更新時間 | [optional] 
 **formattedAddress** | **String** |  | [optional] 
-**fullAddress** | **String** |  | [optional] 
 **convenienceStorePickup** | **bool** |  | [optional] 
 **homeDelivery** | **bool** |  | [optional] 
+**fullAddress** | **String** |  | [optional] 
 **logisticsDescription** | **String** |  | [optional] 
 **recipientInfo** | **String** |  | [optional] 
 

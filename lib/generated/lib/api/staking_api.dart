@@ -24,22 +24,17 @@ class StakingApi {
   ///
   /// Parameters:
   ///
-  /// * [int] stakingDays (required):
-  ///   質押時間
-  ///
-  /// * [num] body:
-  Future<Response> applyStakingWithHttpInfo(int stakingDays, { num? body, }) async {
+  /// * [ApplyStakingParam] applyStakingParam:
+  Future<Response> applyStakingWithHttpInfo({ ApplyStakingParam? applyStakingParam, }) async {
     // ignore: prefer_const_declarations
     final path = r'/staking/apply';
 
     // ignore: prefer_final_locals
-    Object? postBody = body;
+    Object? postBody = applyStakingParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'stakingDays', stakingDays));
 
     const contentTypes = <String>['application/json'];
 
@@ -61,12 +56,9 @@ class StakingApi {
   ///
   /// Parameters:
   ///
-  /// * [int] stakingDays (required):
-  ///   質押時間
-  ///
-  /// * [num] body:
-  Future<Staking?> applyStaking(int stakingDays, { num? body, }) async {
-    final response = await applyStakingWithHttpInfo(stakingDays,  body: body, );
+  /// * [ApplyStakingParam] applyStakingParam:
+  Future<Staking?> applyStaking({ ApplyStakingParam? applyStakingParam, }) async {
+    final response = await applyStakingWithHttpInfo( applyStakingParam: applyStakingParam, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

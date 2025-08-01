@@ -33,9 +33,9 @@ class UserAddress {
     this.createdAt,
     this.updatedAt,
     this.formattedAddress,
-    this.fullAddress,
     this.convenienceStorePickup,
     this.homeDelivery,
+    this.fullAddress,
     this.logisticsDescription,
     this.recipientInfo,
   });
@@ -223,14 +223,6 @@ class UserAddress {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? fullAddress;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? convenienceStorePickup;
 
   ///
@@ -240,6 +232,14 @@ class UserAddress {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? homeDelivery;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? fullAddress;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -279,9 +279,9 @@ class UserAddress {
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
     other.formattedAddress == formattedAddress &&
-    other.fullAddress == fullAddress &&
     other.convenienceStorePickup == convenienceStorePickup &&
     other.homeDelivery == homeDelivery &&
+    other.fullAddress == fullAddress &&
     other.logisticsDescription == logisticsDescription &&
     other.recipientInfo == recipientInfo;
 
@@ -308,14 +308,14 @@ class UserAddress {
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (formattedAddress == null ? 0 : formattedAddress!.hashCode) +
-    (fullAddress == null ? 0 : fullAddress!.hashCode) +
     (convenienceStorePickup == null ? 0 : convenienceStorePickup!.hashCode) +
     (homeDelivery == null ? 0 : homeDelivery!.hashCode) +
+    (fullAddress == null ? 0 : fullAddress!.hashCode) +
     (logisticsDescription == null ? 0 : logisticsDescription!.hashCode) +
     (recipientInfo == null ? 0 : recipientInfo!.hashCode);
 
   @override
-  String toString() => 'UserAddress[id=$id, userId=$userId, recipientName=$recipientName, recipientPhone=$recipientPhone, postalCode=$postalCode, city=$city, district=$district, detailedAddress=$detailedAddress, remark=$remark, shippingCompany=$shippingCompany, serviceType=$serviceType, storeName=$storeName, storeCode=$storeCode, storeAddress=$storeAddress, storePhone=$storePhone, isDefault=$isDefault, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, formattedAddress=$formattedAddress, fullAddress=$fullAddress, convenienceStorePickup=$convenienceStorePickup, homeDelivery=$homeDelivery, logisticsDescription=$logisticsDescription, recipientInfo=$recipientInfo]';
+  String toString() => 'UserAddress[id=$id, userId=$userId, recipientName=$recipientName, recipientPhone=$recipientPhone, postalCode=$postalCode, city=$city, district=$district, detailedAddress=$detailedAddress, remark=$remark, shippingCompany=$shippingCompany, serviceType=$serviceType, storeName=$storeName, storeCode=$storeCode, storeAddress=$storeAddress, storePhone=$storePhone, isDefault=$isDefault, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, formattedAddress=$formattedAddress, convenienceStorePickup=$convenienceStorePickup, homeDelivery=$homeDelivery, fullAddress=$fullAddress, logisticsDescription=$logisticsDescription, recipientInfo=$recipientInfo]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -419,11 +419,6 @@ class UserAddress {
     } else {
       json[r'formattedAddress'] = null;
     }
-    if (this.fullAddress != null) {
-      json[r'fullAddress'] = this.fullAddress;
-    } else {
-      json[r'fullAddress'] = null;
-    }
     if (this.convenienceStorePickup != null) {
       json[r'convenienceStorePickup'] = this.convenienceStorePickup;
     } else {
@@ -433,6 +428,11 @@ class UserAddress {
       json[r'homeDelivery'] = this.homeDelivery;
     } else {
       json[r'homeDelivery'] = null;
+    }
+    if (this.fullAddress != null) {
+      json[r'fullAddress'] = this.fullAddress;
+    } else {
+      json[r'fullAddress'] = null;
     }
     if (this.logisticsDescription != null) {
       json[r'logisticsDescription'] = this.logisticsDescription;
@@ -486,9 +486,9 @@ class UserAddress {
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         formattedAddress: mapValueOfType<String>(json, r'formattedAddress'),
-        fullAddress: mapValueOfType<String>(json, r'fullAddress'),
         convenienceStorePickup: mapValueOfType<bool>(json, r'convenienceStorePickup'),
         homeDelivery: mapValueOfType<bool>(json, r'homeDelivery'),
+        fullAddress: mapValueOfType<String>(json, r'fullAddress'),
         logisticsDescription: mapValueOfType<String>(json, r'logisticsDescription'),
         recipientInfo: mapValueOfType<String>(json, r'recipientInfo'),
       );

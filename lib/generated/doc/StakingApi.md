@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **applyStaking**
-> Staking applyStaking(stakingDays, body)
+> Staking applyStaking(applyStakingParam)
 
 申請質押
 
@@ -27,11 +27,10 @@ Method | HTTP request | Description
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = StakingApi();
-final stakingDays = 56; // int | 質押時間
-final body = num(); // num | 
+final applyStakingParam = ApplyStakingParam(); // ApplyStakingParam | 
 
 try {
-    final result = api_instance.applyStaking(stakingDays, body);
+    final result = api_instance.applyStaking(applyStakingParam);
     print(result);
 } catch (e) {
     print('Exception when calling StakingApi->applyStaking: $e\n');
@@ -42,8 +41,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **stakingDays** | **int**| 質押時間 | 
- **body** | **num**|  | [optional] 
+ **applyStakingParam** | [**ApplyStakingParam**](ApplyStakingParam.md)|  | [optional] 
 
 ### Return type
 

@@ -56,13 +56,13 @@ void main() {
       // TODO
     });
 
-    // bool last
-    test('to test the property `last`', () async {
+    // bool first
+    test('to test the property `first`', () async {
       // TODO
     });
 
-    // bool first
-    test('to test the property `first`', () async {
+    // bool last
+    test('to test the property `last`', () async {
       // TODO
     });
 

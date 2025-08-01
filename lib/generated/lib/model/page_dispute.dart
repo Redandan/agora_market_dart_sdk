@@ -21,8 +21,8 @@ class PageDispute {
     this.number,
     this.numberOfElements,
     this.pageable,
-    this.last,
     this.first,
+    this.last,
     this.empty,
   });
 
@@ -90,7 +90,7 @@ class PageDispute {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? last;
+  bool? first;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -98,7 +98,7 @@ class PageDispute {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? first;
+  bool? last;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -118,8 +118,8 @@ class PageDispute {
     other.number == number &&
     other.numberOfElements == numberOfElements &&
     other.pageable == pageable &&
-    other.last == last &&
     other.first == first &&
+    other.last == last &&
     other.empty == empty;
 
   @override
@@ -133,12 +133,12 @@ class PageDispute {
     (number == null ? 0 : number!.hashCode) +
     (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
     (pageable == null ? 0 : pageable!.hashCode) +
-    (last == null ? 0 : last!.hashCode) +
     (first == null ? 0 : first!.hashCode) +
+    (last == null ? 0 : last!.hashCode) +
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageDispute[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, size=$size, content=$content, number=$number, numberOfElements=$numberOfElements, pageable=$pageable, last=$last, first=$first, empty=$empty]';
+  String toString() => 'PageDispute[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, size=$size, content=$content, number=$number, numberOfElements=$numberOfElements, pageable=$pageable, first=$first, last=$last, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -178,15 +178,15 @@ class PageDispute {
     } else {
       json[r'pageable'] = null;
     }
-    if (this.last != null) {
-      json[r'last'] = this.last;
-    } else {
-      json[r'last'] = null;
-    }
     if (this.first != null) {
       json[r'first'] = this.first;
     } else {
       json[r'first'] = null;
+    }
+    if (this.last != null) {
+      json[r'last'] = this.last;
+    } else {
+      json[r'last'] = null;
     }
     if (this.empty != null) {
       json[r'empty'] = this.empty;
@@ -223,8 +223,8 @@ class PageDispute {
         number: mapValueOfType<int>(json, r'number'),
         numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
         pageable: PageableObject.fromJson(json[r'pageable']),
-        last: mapValueOfType<bool>(json, r'last'),
         first: mapValueOfType<bool>(json, r'first'),
+        last: mapValueOfType<bool>(json, r'last'),
         empty: mapValueOfType<bool>(json, r'empty'),
       );
     }
