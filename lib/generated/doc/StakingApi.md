@@ -41,7 +41,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applyStakingParam** | [**ApplyStakingParam**](ApplyStakingParam.md)|  | [optional] 
+ **applyStakingParam** | [**ApplyStakingParam**](ApplyStakingParam.md)|  | 
 
 ### Return type
 

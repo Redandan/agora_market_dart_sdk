@@ -24,8 +24,8 @@ class StakingApi {
   ///
   /// Parameters:
   ///
-  /// * [ApplyStakingParam] applyStakingParam:
-  Future<Response> applyStakingWithHttpInfo({ ApplyStakingParam? applyStakingParam, }) async {
+  /// * [ApplyStakingParam] applyStakingParam (required):
+  Future<Response> applyStakingWithHttpInfo(ApplyStakingParam applyStakingParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/staking/apply';
 
@@ -56,9 +56,9 @@ class StakingApi {
   ///
   /// Parameters:
   ///
-  /// * [ApplyStakingParam] applyStakingParam:
-  Future<Staking?> applyStaking({ ApplyStakingParam? applyStakingParam, }) async {
-    final response = await applyStakingWithHttpInfo( applyStakingParam: applyStakingParam, );
+  /// * [ApplyStakingParam] applyStakingParam (required):
+  Future<Staking?> applyStaking(ApplyStakingParam applyStakingParam,) async {
+    final response = await applyStakingWithHttpInfo(applyStakingParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -21,7 +21,7 @@ void main() {
     //
     // 用戶申請質押指定金額的資產，一次只能發起一筆質押
     //
-    //Future<Staking> applyStaking({ ApplyStakingParam applyStakingParam }) async
+    //Future<Staking> applyStaking(ApplyStakingParam applyStakingParam) async
     test('test applyStaking', () async {
       // TODO
     });

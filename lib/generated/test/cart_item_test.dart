@@ -136,23 +136,13 @@ void main() {
       // TODO
     });
 
-    // bool inStock
-    test('to test the property `inStock`', () async {
-      // TODO
-    });
-
     // num subtotal
     test('to test the property `subtotal`', () async {
       // TODO
     });
 
-    // String specificationDescription
-    test('to test the property `specificationDescription`', () async {
-      // TODO
-    });
-
-    // String purchaseRestrictionReason
-    test('to test the property `purchaseRestrictionReason`', () async {
+    // bool inStock
+    test('to test the property `inStock`', () async {
       // TODO
     });
 
@@ -163,6 +153,16 @@ void main() {
 
     // String stockStatus
     test('to test the property `stockStatus`', () async {
+      // TODO
+    });
+
+    // String specificationDescription
+    test('to test the property `specificationDescription`', () async {
+      // TODO
+    });
+
+    // String purchaseRestrictionReason
+    test('to test the property `purchaseRestrictionReason`', () async {
       // TODO
     });
 
