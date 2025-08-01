@@ -31,26 +31,6 @@ void main() {
       // TODO
     });
 
-    // int numberOfElements
-    test('to test the property `numberOfElements`', () async {
-      // TODO
-    });
-
-    // PageableObject pageable
-    test('to test the property `pageable`', () async {
-      // TODO
-    });
-
-    // bool first
-    test('to test the property `first`', () async {
-      // TODO
-    });
-
-    // bool last
-    test('to test the property `last`', () async {
-      // TODO
-    });
-
     // int size
     test('to test the property `size`', () async {
       // TODO
@@ -63,6 +43,26 @@ void main() {
 
     // int number
     test('to test the property `number`', () async {
+      // TODO
+    });
+
+    // int numberOfElements
+    test('to test the property `numberOfElements`', () async {
+      // TODO
+    });
+
+    // PageableObject pageable
+    test('to test the property `pageable`', () async {
+      // TODO
+    });
+
+    // bool last
+    test('to test the property `last`', () async {
+      // TODO
+    });
+
+    // bool first
+    test('to test the property `first`', () async {
       // TODO
     });
 

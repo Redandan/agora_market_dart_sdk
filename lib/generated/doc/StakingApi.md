@@ -10,26 +10,28 @@ All URIs are relative to *https://agoramarketapi.purrtechllc.com/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**applyStaking**](StakingApi.md#applystaking) | **POST** /staking/apply | 申請質押
+[**getActiveStakings**](StakingApi.md#getactivestakings) | **GET** /staking/active | 查詢正在進行中的質押
 [**getStakingList**](StakingApi.md#getstakinglist) | **GET** /staking/list | 獲取質押記錄列表
 [**unfreezeStaking**](StakingApi.md#unfreezestaking) | **POST** /staking/unfreeze | 申請解除質押
 
 
 # **applyStaking**
-> Staking applyStaking(body)
+> Staking applyStaking(stakingDays, body)
 
 申請質押
 
-用戶申請質押指定金額的資產
+用戶申請質押指定金額的資產，一次只能發起一筆質押
 
 ### Example
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = StakingApi();
+final stakingDays = 56; // int | 質押時間
 final body = num(); // num | 
 
 try {
-    final result = api_instance.applyStaking(body);
+    final result = api_instance.applyStaking(stakingDays, body);
     print(result);
 } catch (e) {
     print('Exception when calling StakingApi->applyStaking: $e\n');
@@ -40,6 +42,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **stakingDays** | **int**| 質押時間 | 
  **body** | **num**|  | [optional] 
 
 ### Return type
@@ -53,6 +56,45 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getActiveStakings**
+> List<Staking> getActiveStakings()
+
+查詢正在進行中的質押
+
+獲取用戶當前正在進行中的質押記錄（申請中、質押中、解除中）
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = StakingApi();
+
+try {
+    final result = api_instance.getActiveStakings();
+    print(result);
+} catch (e) {
+    print('Exception when calling StakingApi->getActiveStakings: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List<Staking>**](Staking.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

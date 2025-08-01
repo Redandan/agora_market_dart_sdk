@@ -19,10 +19,19 @@ void main() {
   group('tests for StakingApi', () {
     // 申請質押
     //
-    // 用戶申請質押指定金額的資產
+    // 用戶申請質押指定金額的資產，一次只能發起一筆質押
     //
-    //Future<Staking> applyStaking({ num body }) async
+    //Future<Staking> applyStaking(int stakingDays, { num body }) async
     test('test applyStaking', () async {
+      // TODO
+    });
+
+    // 查詢正在進行中的質押
+    //
+    // 獲取用戶當前正在進行中的質押記錄（申請中、質押中、解除中）
+    //
+    //Future<List<Staking>> getActiveStakings() async
+    test('test getActiveStakings', () async {
       // TODO
     });
 

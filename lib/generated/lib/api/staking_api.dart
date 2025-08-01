@@ -18,14 +18,17 @@ class StakingApi {
 
   /// 申請質押
   ///
-  /// 用戶申請質押指定金額的資產
+  /// 用戶申請質押指定金額的資產，一次只能發起一筆質押
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
+  /// * [int] stakingDays (required):
+  ///   質押時間
+  ///
   /// * [num] body:
-  Future<Response> applyStakingWithHttpInfo({ num? body, }) async {
+  Future<Response> applyStakingWithHttpInfo(int stakingDays, { num? body, }) async {
     // ignore: prefer_const_declarations
     final path = r'/staking/apply';
 
@@ -35,6 +38,8 @@ class StakingApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'stakingDays', stakingDays));
 
     const contentTypes = <String>['application/json'];
 
@@ -52,13 +57,16 @@ class StakingApi {
 
   /// 申請質押
   ///
-  /// 用戶申請質押指定金額的資產
+  /// 用戶申請質押指定金額的資產，一次只能發起一筆質押
   ///
   /// Parameters:
   ///
+  /// * [int] stakingDays (required):
+  ///   質押時間
+  ///
   /// * [num] body:
-  Future<Staking?> applyStaking({ num? body, }) async {
-    final response = await applyStakingWithHttpInfo( body: body, );
+  Future<Staking?> applyStaking(int stakingDays, { num? body, }) async {
+    final response = await applyStakingWithHttpInfo(stakingDays,  body: body, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -68,6 +76,57 @@ class StakingApi {
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Staking',) as Staking;
     
+    }
+    return null;
+  }
+
+  /// 查詢正在進行中的質押
+  ///
+  /// 獲取用戶當前正在進行中的質押記錄（申請中、質押中、解除中）
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getActiveStakingsWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/staking/active';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查詢正在進行中的質押
+  ///
+  /// 獲取用戶當前正在進行中的質押記錄（申請中、質押中、解除中）
+  Future<List<Staking>?> getActiveStakings() async {
+    final response = await getActiveStakingsWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<Staking>') as List)
+        .cast<Staking>()
+        .toList(growable: false);
+
     }
     return null;
   }
