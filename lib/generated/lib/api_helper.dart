@@ -103,6 +103,9 @@ String parameterToString(dynamic value) {
   if (value is ShippingCompanyEnum) {
     return ShippingCompanyEnumTypeTransformer().encode(value).toString();
   }
+  if (value is StakingStatusEnum) {
+    return StakingStatusEnumTypeTransformer().encode(value).toString();
+  }
   if (value is TransactionTypeEnum) {
     return TransactionTypeEnumTypeTransformer().encode(value).toString();
   }

@@ -44,6 +44,13 @@ void main() {
       // TODO
     });
 
+    // 管理員搜尋質押記錄
+    //
+    //Future<PageStaking> searchStakings(StakingSearchParam stakingSearchParam, { int page, int size }) async
+    test('test searchStakings', () async {
+      // TODO
+    });
+
     // 申請解除質押
     //
     // 用戶申請解除指定質押記錄的質押

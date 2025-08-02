@@ -40,8 +40,7 @@ void main() {
       // TODO
     });
 
-    // 質押狀態
-    // String status
+    // StakingStatusEnum status
     test('to test the property `status`', () async {
       // TODO
     });

@@ -13,26 +13,18 @@ part of openapi.api;
 class PageWithdraw {
   /// Returns a new [PageWithdraw] instance.
   PageWithdraw({
-    this.totalElements,
     this.totalPages,
+    this.totalElements,
     this.sort,
-    this.pageable,
-    this.numberOfElements,
     this.first,
+    this.numberOfElements,
+    this.pageable,
     this.last,
     this.size,
     this.content = const [],
     this.number,
     this.empty,
   });
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? totalElements;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -48,6 +40,14 @@ class PageWithdraw {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  int? totalElements;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   SortObject? sort;
 
   ///
@@ -56,7 +56,7 @@ class PageWithdraw {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PageableObject? pageable;
+  bool? first;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -72,7 +72,7 @@ class PageWithdraw {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? first;
+  PageableObject? pageable;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -110,12 +110,12 @@ class PageWithdraw {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PageWithdraw &&
-    other.totalElements == totalElements &&
     other.totalPages == totalPages &&
+    other.totalElements == totalElements &&
     other.sort == sort &&
-    other.pageable == pageable &&
-    other.numberOfElements == numberOfElements &&
     other.first == first &&
+    other.numberOfElements == numberOfElements &&
+    other.pageable == pageable &&
     other.last == last &&
     other.size == size &&
     _deepEquality.equals(other.content, content) &&
@@ -125,12 +125,12 @@ class PageWithdraw {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalElements == null ? 0 : totalElements!.hashCode) +
     (totalPages == null ? 0 : totalPages!.hashCode) +
+    (totalElements == null ? 0 : totalElements!.hashCode) +
     (sort == null ? 0 : sort!.hashCode) +
-    (pageable == null ? 0 : pageable!.hashCode) +
-    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
     (first == null ? 0 : first!.hashCode) +
+    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
+    (pageable == null ? 0 : pageable!.hashCode) +
     (last == null ? 0 : last!.hashCode) +
     (size == null ? 0 : size!.hashCode) +
     (content.hashCode) +
@@ -138,39 +138,39 @@ class PageWithdraw {
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageWithdraw[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, pageable=$pageable, numberOfElements=$numberOfElements, first=$first, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'PageWithdraw[totalPages=$totalPages, totalElements=$totalElements, sort=$sort, first=$first, numberOfElements=$numberOfElements, pageable=$pageable, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.totalElements != null) {
-      json[r'totalElements'] = this.totalElements;
-    } else {
-      json[r'totalElements'] = null;
-    }
     if (this.totalPages != null) {
       json[r'totalPages'] = this.totalPages;
     } else {
       json[r'totalPages'] = null;
+    }
+    if (this.totalElements != null) {
+      json[r'totalElements'] = this.totalElements;
+    } else {
+      json[r'totalElements'] = null;
     }
     if (this.sort != null) {
       json[r'sort'] = this.sort;
     } else {
       json[r'sort'] = null;
     }
-    if (this.pageable != null) {
-      json[r'pageable'] = this.pageable;
+    if (this.first != null) {
+      json[r'first'] = this.first;
     } else {
-      json[r'pageable'] = null;
+      json[r'first'] = null;
     }
     if (this.numberOfElements != null) {
       json[r'numberOfElements'] = this.numberOfElements;
     } else {
       json[r'numberOfElements'] = null;
     }
-    if (this.first != null) {
-      json[r'first'] = this.first;
+    if (this.pageable != null) {
+      json[r'pageable'] = this.pageable;
     } else {
-      json[r'first'] = null;
+      json[r'pageable'] = null;
     }
     if (this.last != null) {
       json[r'last'] = this.last;
@@ -215,12 +215,12 @@ class PageWithdraw {
       }());
 
       return PageWithdraw(
-        totalElements: mapValueOfType<int>(json, r'totalElements'),
         totalPages: mapValueOfType<int>(json, r'totalPages'),
+        totalElements: mapValueOfType<int>(json, r'totalElements'),
         sort: SortObject.fromJson(json[r'sort']),
-        pageable: PageableObject.fromJson(json[r'pageable']),
-        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
         first: mapValueOfType<bool>(json, r'first'),
+        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
+        pageable: PageableObject.fromJson(json[r'pageable']),
         last: mapValueOfType<bool>(json, r'last'),
         size: mapValueOfType<int>(json, r'size'),
         content: Withdraw.listFromJson(json[r'content']),

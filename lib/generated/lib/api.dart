@@ -171,6 +171,8 @@ part 'model/shipping_company_enum.dart';
 part 'model/smart_reply_settings.dart';
 part 'model/sort_object.dart';
 part 'model/staking.dart';
+part 'model/staking_search_param.dart';
+part 'model/staking_status_enum.dart';
 part 'model/store.dart';
 part 'model/store_analytics_dto.dart';
 part 'model/store_create_param.dart';

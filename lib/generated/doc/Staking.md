@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **userId** | **int** | 用戶ID | [optional] 
 **amount** | **num** | 質押金額 | [optional] 
 **currency** | **String** | 質押幣種 | [optional] 
-**status** | **String** | 質押狀態 | [optional] 
+**status** | [**StakingStatusEnum**](StakingStatusEnum.md) |  | [optional] 
 **applyTime** | [**DateTime**](DateTime.md) | 申請時間 | [optional] 
 **startTime** | [**DateTime**](DateTime.md) | 質押開始時間 | [optional] 
 **endTime** | [**DateTime**](DateTime.md) | 質押結束時間 | [optional] 

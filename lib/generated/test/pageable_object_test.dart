@@ -21,13 +21,13 @@ void main() {
       // TODO
     });
 
-    // int pageSize
-    test('to test the property `pageSize`', () async {
+    // int pageNumber
+    test('to test the property `pageNumber`', () async {
       // TODO
     });
 
-    // int pageNumber
-    test('to test the property `pageNumber`', () async {
+    // int pageSize
+    test('to test the property `pageSize`', () async {
       // TODO
     });
 

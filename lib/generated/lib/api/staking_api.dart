@@ -190,6 +190,77 @@ class StakingApi {
     return null;
   }
 
+  /// 管理員搜尋質押記錄
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [StakingSearchParam] stakingSearchParam (required):
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<Response> searchStakingsWithHttpInfo(StakingSearchParam stakingSearchParam, { int? page, int? size, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/staking/search';
+
+    // ignore: prefer_final_locals
+    Object? postBody = stakingSearchParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 管理員搜尋質押記錄
+  ///
+  /// Parameters:
+  ///
+  /// * [StakingSearchParam] stakingSearchParam (required):
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<PageStaking?> searchStakings(StakingSearchParam stakingSearchParam, { int? page, int? size, }) async {
+    final response = await searchStakingsWithHttpInfo(stakingSearchParam,  page: page, size: size, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageStaking',) as PageStaking;
+    
+    }
+    return null;
+  }
+
   /// 申請解除質押
   ///
   /// 用戶申請解除指定質押記錄的質押

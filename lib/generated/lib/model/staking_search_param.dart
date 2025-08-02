@@ -10,24 +10,34 @@
 
 part of openapi.api;
 
-class PageableObject {
-  /// Returns a new [PageableObject] instance.
-  PageableObject({
-    this.sort,
-    this.pageNumber,
-    this.pageSize,
-    this.paged,
-    this.unpaged,
-    this.offset,
+class StakingSearchParam {
+  /// Returns a new [StakingSearchParam] instance.
+  StakingSearchParam({
+    this.userId,
+    this.stakingId,
+    this.status,
+    this.currency,
+    this.startTime,
+    this.endTime,
   });
 
+  /// 用戶ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SortObject? sort;
+  int? userId;
+
+  /// 質押ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? stakingId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -35,101 +45,96 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageNumber;
+  StakingStatusEnum? status;
 
+  /// 貨幣
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageSize;
+  String? currency;
 
+  /// 開始時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? paged;
+  DateTime? startTime;
 
+  /// 結束時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unpaged;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? offset;
+  DateTime? endTime;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageableObject &&
-    other.sort == sort &&
-    other.pageNumber == pageNumber &&
-    other.pageSize == pageSize &&
-    other.paged == paged &&
-    other.unpaged == unpaged &&
-    other.offset == offset;
+  bool operator ==(Object other) => identical(this, other) || other is StakingSearchParam &&
+    other.userId == userId &&
+    other.stakingId == stakingId &&
+    other.status == status &&
+    other.currency == currency &&
+    other.startTime == startTime &&
+    other.endTime == endTime;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (sort == null ? 0 : sort!.hashCode) +
-    (pageNumber == null ? 0 : pageNumber!.hashCode) +
-    (pageSize == null ? 0 : pageSize!.hashCode) +
-    (paged == null ? 0 : paged!.hashCode) +
-    (unpaged == null ? 0 : unpaged!.hashCode) +
-    (offset == null ? 0 : offset!.hashCode);
+    (userId == null ? 0 : userId!.hashCode) +
+    (stakingId == null ? 0 : stakingId!.hashCode) +
+    (status == null ? 0 : status!.hashCode) +
+    (currency == null ? 0 : currency!.hashCode) +
+    (startTime == null ? 0 : startTime!.hashCode) +
+    (endTime == null ? 0 : endTime!.hashCode);
 
   @override
-  String toString() => 'PageableObject[sort=$sort, pageNumber=$pageNumber, pageSize=$pageSize, paged=$paged, unpaged=$unpaged, offset=$offset]';
+  String toString() => 'StakingSearchParam[userId=$userId, stakingId=$stakingId, status=$status, currency=$currency, startTime=$startTime, endTime=$endTime]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.userId != null) {
+      json[r'userId'] = this.userId;
     } else {
-      json[r'sort'] = null;
+      json[r'userId'] = null;
     }
-    if (this.pageNumber != null) {
-      json[r'pageNumber'] = this.pageNumber;
+    if (this.stakingId != null) {
+      json[r'stakingId'] = this.stakingId;
     } else {
-      json[r'pageNumber'] = null;
+      json[r'stakingId'] = null;
     }
-    if (this.pageSize != null) {
-      json[r'pageSize'] = this.pageSize;
+    if (this.status != null) {
+      json[r'status'] = this.status;
     } else {
-      json[r'pageSize'] = null;
+      json[r'status'] = null;
     }
-    if (this.paged != null) {
-      json[r'paged'] = this.paged;
+    if (this.currency != null) {
+      json[r'currency'] = this.currency;
     } else {
-      json[r'paged'] = null;
+      json[r'currency'] = null;
     }
-    if (this.unpaged != null) {
-      json[r'unpaged'] = this.unpaged;
+    if (this.startTime != null) {
+      json[r'startTime'] = this.startTime!.toUtc().toIso8601String();
     } else {
-      json[r'unpaged'] = null;
+      json[r'startTime'] = null;
     }
-    if (this.offset != null) {
-      json[r'offset'] = this.offset;
+    if (this.endTime != null) {
+      json[r'endTime'] = this.endTime!.toUtc().toIso8601String();
     } else {
-      json[r'offset'] = null;
+      json[r'endTime'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageableObject] instance and imports its values from
+  /// Returns a new [StakingSearchParam] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageableObject? fromJson(dynamic value) {
+  static StakingSearchParam? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -138,29 +143,29 @@ class PageableObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageableObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageableObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "StakingSearchParam[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "StakingSearchParam[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageableObject(
-        sort: SortObject.fromJson(json[r'sort']),
-        pageNumber: mapValueOfType<int>(json, r'pageNumber'),
-        pageSize: mapValueOfType<int>(json, r'pageSize'),
-        paged: mapValueOfType<bool>(json, r'paged'),
-        unpaged: mapValueOfType<bool>(json, r'unpaged'),
-        offset: mapValueOfType<int>(json, r'offset'),
+      return StakingSearchParam(
+        userId: mapValueOfType<int>(json, r'userId'),
+        stakingId: mapValueOfType<int>(json, r'stakingId'),
+        status: StakingStatusEnum.fromJson(json[r'status']),
+        currency: mapValueOfType<String>(json, r'currency'),
+        startTime: mapDateTime(json, r'startTime', r''),
+        endTime: mapDateTime(json, r'endTime', r''),
       );
     }
     return null;
   }
 
-  static List<PageableObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageableObject>[];
+  static List<StakingSearchParam> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <StakingSearchParam>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageableObject.fromJson(row);
+        final value = StakingSearchParam.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -169,12 +174,12 @@ class PageableObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageableObject> mapFromJson(dynamic json) {
-    final map = <String, PageableObject>{};
+  static Map<String, StakingSearchParam> mapFromJson(dynamic json) {
+    final map = <String, StakingSearchParam>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageableObject.fromJson(entry.value);
+        final value = StakingSearchParam.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -183,14 +188,14 @@ class PageableObject {
     return map;
   }
 
-  // maps a json object with a list of PageableObject-objects as value to a dart map
-  static Map<String, List<PageableObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageableObject>>{};
+  // maps a json object with a list of StakingSearchParam-objects as value to a dart map
+  static Map<String, List<StakingSearchParam>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<StakingSearchParam>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageableObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = StakingSearchParam.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

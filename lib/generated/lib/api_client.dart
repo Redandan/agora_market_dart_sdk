@@ -416,6 +416,10 @@ class ApiClient {
           return SortObject.fromJson(value);
         case 'Staking':
           return Staking.fromJson(value);
+        case 'StakingSearchParam':
+          return StakingSearchParam.fromJson(value);
+        case 'StakingStatusEnum':
+          return StakingStatusEnumTypeTransformer().decode(value);
         case 'Store':
           return Store.fromJson(value);
         case 'StoreAnalyticsDTO':

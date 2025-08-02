@@ -268,6 +268,7 @@ Class | Method | HTTP request | Description
 *StakingApi* | [**applyStaking**](doc//StakingApi.md#applystaking) | **POST** /staking/apply | 申請質押
 *StakingApi* | [**getActiveStakings**](doc//StakingApi.md#getactivestakings) | **GET** /staking/active | 查詢正在進行中的質押
 *StakingApi* | [**getStakingList**](doc//StakingApi.md#getstakinglist) | **GET** /staking/list | 獲取質押記錄列表
+*StakingApi* | [**searchStakings**](doc//StakingApi.md#searchstakings) | **POST** /staking/search | 管理員搜尋質押記錄
 *StakingApi* | [**unfreezeStaking**](doc//StakingApi.md#unfreezestaking) | **POST** /staking/unfreeze | 申請解除質押
 *StoresApi* | [**createStore**](doc//StoresApi.md#createstore) | **POST** /stores/create | 創建商店
 *StoresApi* | [**getMyStore**](doc//StoresApi.md#getmystore) | **GET** /stores/my-store | 獲取當前用戶的商店
@@ -415,6 +416,8 @@ Class | Method | HTTP request | Description
  - [SmartReplySettings](doc//SmartReplySettings.md)
  - [SortObject](doc//SortObject.md)
  - [Staking](doc//Staking.md)
+ - [StakingSearchParam](doc//StakingSearchParam.md)
+ - [StakingStatusEnum](doc//StakingStatusEnum.md)
  - [Store](doc//Store.md)
  - [StoreAnalyticsDTO](doc//StoreAnalyticsDTO.md)
  - [StoreCreateParam](doc//StoreCreateParam.md)
