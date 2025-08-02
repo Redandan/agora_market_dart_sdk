@@ -128,18 +128,23 @@ void main() {
       // TODO
     });
 
+    // String formattedAddress
+    test('to test the property `formattedAddress`', () async {
+      // TODO
+    });
+
     // String fullAddress
     test('to test the property `fullAddress`', () async {
       // TODO
     });
 
-    // bool homeDelivery
-    test('to test the property `homeDelivery`', () async {
+    // bool convenienceStorePickup
+    test('to test the property `convenienceStorePickup`', () async {
       // TODO
     });
 
-    // bool convenienceStorePickup
-    test('to test the property `convenienceStorePickup`', () async {
+    // bool homeDelivery
+    test('to test the property `homeDelivery`', () async {
       // TODO
     });
 
@@ -150,11 +155,6 @@ void main() {
 
     // String recipientInfo
     test('to test the property `recipientInfo`', () async {
-      // TODO
-    });
-
-    // String formattedAddress
-    test('to test the property `formattedAddress`', () async {
       // TODO
     });
 

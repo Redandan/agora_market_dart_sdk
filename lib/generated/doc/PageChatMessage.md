@@ -8,12 +8,12 @@ import 'package:agora_market_dart_sdk/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalPages** | **int** |  | [optional] 
 **totalElements** | **int** |  | [optional] 
+**totalPages** | **int** |  | [optional] 
 **sort** | [**SortObject**](SortObject.md) |  | [optional] 
-**first** | **bool** |  | [optional] 
 **numberOfElements** | **int** |  | [optional] 
 **pageable** | [**PageableObject**](PageableObject.md) |  | [optional] 
+**first** | **bool** |  | [optional] 
 **last** | **bool** |  | [optional] 
 **size** | **int** |  | [optional] 
 **content** | [**List<ChatMessage>**](ChatMessage.md) |  | [optional] [default to const []]

@@ -16,23 +16,18 @@ void main() {
   // final instance = PageOrder();
 
   group('test PageOrder', () {
-    // int totalPages
-    test('to test the property `totalPages`', () async {
-      // TODO
-    });
-
     // int totalElements
     test('to test the property `totalElements`', () async {
       // TODO
     });
 
-    // SortObject sort
-    test('to test the property `sort`', () async {
+    // int totalPages
+    test('to test the property `totalPages`', () async {
       // TODO
     });
 
-    // bool first
-    test('to test the property `first`', () async {
+    // SortObject sort
+    test('to test the property `sort`', () async {
       // TODO
     });
 
@@ -43,6 +38,11 @@ void main() {
 
     // PageableObject pageable
     test('to test the property `pageable`', () async {
+      // TODO
+    });
+
+    // bool first
+    test('to test the property `first`', () async {
       // TODO
     });
 

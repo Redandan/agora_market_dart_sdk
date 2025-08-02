@@ -137,12 +137,6 @@ class Staking {
   DateTime? lastSettleDate;
 
   /// 上次檢查收益
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? lastSettleReward;
 
   /// 備註
@@ -298,7 +292,9 @@ class Staking {
         unfreezeRequestTime: mapDateTime(json, r'unfreezeRequestTime', r''),
         unfreezeCompleteTime: mapDateTime(json, r'unfreezeCompleteTime', r''),
         lastSettleDate: mapDateTime(json, r'lastSettleDate', r''),
-        lastSettleReward: num.parse('${json[r'lastSettleReward']}'),
+        lastSettleReward: json[r'lastSettleReward'] == null
+            ? null
+            : num.parse('${json[r'lastSettleReward']}'),
         remark: mapValueOfType<String>(json, r'remark'),
       );
     }
