@@ -361,7 +361,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **sendMessage**
-> sendMessage(chatMessageDTO)
+> MessageSendResponseDTO sendMessage(chatMessageDTO)
 
 發送消息
 
@@ -375,7 +375,8 @@ final api_instance = ChatApi();
 final chatMessageDTO = ChatMessageDTO(); // ChatMessageDTO | 
 
 try {
-    api_instance.sendMessage(chatMessageDTO);
+    final result = api_instance.sendMessage(chatMessageDTO);
+    print(result);
 } catch (e) {
     print('Exception when calling ChatApi->sendMessage: $e\n');
 }
@@ -389,7 +390,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**MessageSendResponseDTO**](MessageSendResponseDTO.md)
 
 ### Authorization
 
@@ -398,7 +399,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

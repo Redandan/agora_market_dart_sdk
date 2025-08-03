@@ -68,7 +68,9 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**adminUpdateCartItem**](doc//DefaultApi.md#adminupdatecartitem) | **PUT** /api/cart/admin/{cartItemId} | 管理員更新購物車項目
 *DefaultApi* | [**calculateLogistics**](doc//DefaultApi.md#calculatelogistics) | **POST** /api/logistics/calculate | 物流計算
 *DefaultApi* | [**cancelRecharge**](doc//DefaultApi.md#cancelrecharge) | **POST** /recharge/{rechargeId}/cancel | 取消充值
+*DefaultApi* | [**checkAvailability**](doc//DefaultApi.md#checkavailability) | **GET** /recharge/availability-check | 實時檢查充值可用性
 *DefaultApi* | [**checkCartItemStockStatus**](doc//DefaultApi.md#checkcartitemstockstatus) | **POST** /api/cart/check-stock | 檢查庫存狀態
+*DefaultApi* | [**checkRechargeAvailability**](doc//DefaultApi.md#checkrechargeavailability) | **POST** /recharge/check-availability | 檢查充值地址可用性
 *DefaultApi* | [**clearCart**](doc//DefaultApi.md#clearcart) | **DELETE** /api/cart/clear | 清空購物車
 *DefaultApi* | [**clearUserCart**](doc//DefaultApi.md#clearusercart) | **DELETE** /api/cart/admin/user/{userId} | 清空指定用戶的購物車
 *DefaultApi* | [**closeIssue**](doc//DefaultApi.md#closeissue) | **POST** /customer-issues/{issueId}/close | 關閉客戶問題
@@ -103,6 +105,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getRechargeByTxHash**](doc//DefaultApi.md#getrechargebytxhash) | **GET** /recharge/tx/{txHash} | 通過交易哈希查詢充值
 *DefaultApi* | [**getRechargeHistory**](doc//DefaultApi.md#getrechargehistory) | **GET** /recharge/history | 獲取充值記錄
 *DefaultApi* | [**getServiceTypes**](doc//DefaultApi.md#getservicetypes) | **GET** /api/logistics/carriers/{carrier}/services | 取得物流公司服務類型
+*DefaultApi* | [**getSuggestedAmounts**](doc//DefaultApi.md#getsuggestedamounts) | **GET** /recharge/suggested-amounts | 獲取建議的充值金額
 *DefaultApi* | [**getTransactionById**](doc//DefaultApi.md#gettransactionbyid) | **GET** /transactions/{id} | 根據交易ID查詢交易記錄
 *DefaultApi* | [**getTransactionList**](doc//DefaultApi.md#gettransactionlist) | **GET** /transactions/{token}/list | 查詢帳變歷史
 *DefaultApi* | [**getTransactionListByAdmin**](doc//DefaultApi.md#gettransactionlistbyadmin) | **GET** /transactions/admin/search | 管理員查看帳變記錄
@@ -188,7 +191,10 @@ Class | Method | HTTP request | Description
 *ColdWalletApi* | [**deleteColdWallet**](doc//ColdWalletApi.md#deletecoldwallet) | **DELETE** /cold-wallet/{id} | 刪除冷錢包
 *ColdWalletApi* | [**freezeColdWallet**](doc//ColdWalletApi.md#freezecoldwallet) | **POST** /cold-wallet/{id}/freeze | 凍結冷錢包
 *ColdWalletApi* | [**getColdWallets**](doc//ColdWalletApi.md#getcoldwallets) | **GET** /cold-wallet | 獲取冷錢包列表
+*ColdWalletApi* | [**releaseAllocatedAmount**](doc//ColdWalletApi.md#releaseallocatedamount) | **POST** /cold-wallet/{id}/release-amount | 釋放冷錢包分配的金額
 *ColdWalletApi* | [**releaseColdWallet**](doc//ColdWalletApi.md#releasecoldwallet) | **POST** /cold-wallet/{id}/release | 釋放冷錢包
+*ColdWalletApi* | [**testAddressAllocation1**](doc//ColdWalletApi.md#testaddressallocation1) | **POST** /cold-wallet/allocate-test | 測試地址分配策略
+*ColdWalletApi* | [**updateMaxRechargeAmount**](doc//ColdWalletApi.md#updatemaxrechargeamount) | **POST** /cold-wallet/{id}/max-amount | 設置冷錢包最大支持充值金額
 *DeliveryApi* | [**acceptOrder**](doc//DeliveryApi.md#acceptorder) | **POST** /delivery/accept | 配送員接單
 *DeliveryApi* | [**currentStatus**](doc//DeliveryApi.md#currentstatus) | **GET** /delivery/status | 獲取當前配送狀態
 *DeliveryApi* | [**getAvailableOrders**](doc//DeliveryApi.md#getavailableorders) | **GET** /delivery/available-orders | 獲取可接訂單列表
@@ -289,6 +295,8 @@ Class | Method | HTTP request | Description
 *TestApi* | [**generateRechargeAndWithdraw**](doc//TestApi.md#generaterechargeandwithdraw) | **POST** /test/recharge&withdraw | 
 *TestApi* | [**generateReviewData**](doc//TestApi.md#generatereviewdata) | **POST** /test/review | 
 *TestApi* | [**generateTestData**](doc//TestApi.md#generatetestdata) | **POST** /test/generate-test-data | 生成測試數據
+*TestApi* | [**testAddressAllocation**](doc//TestApi.md#testaddressallocation) | **POST** /test/test-address-allocation | 測試地址分配和金額建議功能
+*TestApi* | [**testSuggestedAmounts**](doc//TestApi.md#testsuggestedamounts) | **GET** /test/test-suggested-amounts | 測試金額建議功能
 *UserAddressesApi* | [**createAddress**](doc//UserAddressesApi.md#createaddress) | **POST** /user-addresses/create | 創建地址
 *UserAddressesApi* | [**deleteAddress**](doc//UserAddressesApi.md#deleteaddress) | **DELETE** /user-addresses/{addressId} | 刪除地址
 *UserAddressesApi* | [**getAddressById**](doc//UserAddressesApi.md#getaddressbyid) | **GET** /user-addresses/{addressId} | 根據ID獲取地址詳情
@@ -303,6 +311,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AcceptOrderParam](doc//AcceptOrderParam.md)
+ - [AddressAllocationResult](doc//AddressAllocationResult.md)
  - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
  - [ApplyStakingParam](doc//ApplyStakingParam.md)
  - [AutoReplyConfig](doc//AutoReplyConfig.md)
@@ -351,6 +360,7 @@ Class | Method | HTTP request | Description
  - [LogisticsServiceTypeEnum](doc//LogisticsServiceTypeEnum.md)
  - [LowStockWarningDTO](doc//LowStockWarningDTO.md)
  - [MemberUpdateParam](doc//MemberUpdateParam.md)
+ - [MessageSendResponseDTO](doc//MessageSendResponseDTO.md)
  - [NotificationCreateParam](doc//NotificationCreateParam.md)
  - [NotificationResponseDTO](doc//NotificationResponseDTO.md)
  - [NotificationStatusEnum](doc//NotificationStatusEnum.md)
@@ -402,6 +412,7 @@ Class | Method | HTTP request | Description
  - [QuickLogisticsRequest](doc//QuickLogisticsRequest.md)
  - [QuickLogisticsResult](doc//QuickLogisticsResult.md)
  - [Recharge](doc//Recharge.md)
+ - [RechargeErrorResponse](doc//RechargeErrorResponse.md)
  - [RechargeSearchParam](doc//RechargeSearchParam.md)
  - [RechargeStatusEnum](doc//RechargeStatusEnum.md)
  - [RegisterParam](doc//RegisterParam.md)

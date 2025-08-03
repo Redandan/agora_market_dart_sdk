@@ -41,13 +41,13 @@ void main() {
       // TODO
     });
 
-    // bool outOfStock
-    test('to test the property `outOfStock`', () async {
+    // bool lowStock
+    test('to test the property `lowStock`', () async {
       // TODO
     });
 
-    // bool lowStock
-    test('to test the property `lowStock`', () async {
+    // bool outOfStock
+    test('to test the property `outOfStock`', () async {
       // TODO
     });
 

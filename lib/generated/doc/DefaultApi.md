@@ -18,7 +18,9 @@ Method | HTTP request | Description
 [**adminUpdateCartItem**](DefaultApi.md#adminupdatecartitem) | **PUT** /api/cart/admin/{cartItemId} | 管理員更新購物車項目
 [**calculateLogistics**](DefaultApi.md#calculatelogistics) | **POST** /api/logistics/calculate | 物流計算
 [**cancelRecharge**](DefaultApi.md#cancelrecharge) | **POST** /recharge/{rechargeId}/cancel | 取消充值
+[**checkAvailability**](DefaultApi.md#checkavailability) | **GET** /recharge/availability-check | 實時檢查充值可用性
 [**checkCartItemStockStatus**](DefaultApi.md#checkcartitemstockstatus) | **POST** /api/cart/check-stock | 檢查庫存狀態
+[**checkRechargeAvailability**](DefaultApi.md#checkrechargeavailability) | **POST** /recharge/check-availability | 檢查充值地址可用性
 [**clearCart**](DefaultApi.md#clearcart) | **DELETE** /api/cart/clear | 清空購物車
 [**clearUserCart**](DefaultApi.md#clearusercart) | **DELETE** /api/cart/admin/user/{userId} | 清空指定用戶的購物車
 [**closeIssue**](DefaultApi.md#closeissue) | **POST** /customer-issues/{issueId}/close | 關閉客戶問題
@@ -53,6 +55,7 @@ Method | HTTP request | Description
 [**getRechargeByTxHash**](DefaultApi.md#getrechargebytxhash) | **GET** /recharge/tx/{txHash} | 通過交易哈希查詢充值
 [**getRechargeHistory**](DefaultApi.md#getrechargehistory) | **GET** /recharge/history | 獲取充值記錄
 [**getServiceTypes**](DefaultApi.md#getservicetypes) | **GET** /api/logistics/carriers/{carrier}/services | 取得物流公司服務類型
+[**getSuggestedAmounts**](DefaultApi.md#getsuggestedamounts) | **GET** /recharge/suggested-amounts | 獲取建議的充值金額
 [**getTransactionById**](DefaultApi.md#gettransactionbyid) | **GET** /transactions/{id} | 根據交易ID查詢交易記錄
 [**getTransactionList**](DefaultApi.md#gettransactionlist) | **GET** /transactions/{token}/list | 查詢帳變歷史
 [**getTransactionListByAdmin**](DefaultApi.md#gettransactionlistbyadmin) | **GET** /transactions/admin/search | 管理員查看帳變記錄
@@ -469,6 +472,51 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **checkAvailability**
+> Map<String, Object> checkAvailability(protocolEnum, amount, currency)
+
+實時檢查充值可用性
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final protocolEnum = protocolEnum_example; // String | 
+final amount = 8.14; // num | 
+final currency = currency_example; // String | 
+
+try {
+    final result = api_instance.checkAvailability(protocolEnum, amount, currency);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->checkAvailability: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **protocolEnum** | **String**|  | 
+ **amount** | **num**|  | 
+ **currency** | **String**|  | 
+
+### Return type
+
+[**Map<String, Object>**](Object.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **checkCartItemStockStatus**
 > checkCartItemStockStatus()
 
@@ -504,6 +552,51 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **checkRechargeAvailability**
+> RechargeErrorResponse checkRechargeAvailability(protocolEnum, amount, currency)
+
+檢查充值地址可用性
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final protocolEnum = protocolEnum_example; // String | 
+final amount = 8.14; // num | 
+final currency = currency_example; // String | 
+
+try {
+    final result = api_instance.checkRechargeAvailability(protocolEnum, amount, currency);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->checkRechargeAvailability: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **protocolEnum** | **String**|  | 
+ **amount** | **num**|  | 
+ **currency** | **String**|  | 
+
+### Return type
+
+[**RechargeErrorResponse**](RechargeErrorResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1889,6 +1982,51 @@ Name | Type | Description  | Notes
 ### Return type
 
 **List<String>**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getSuggestedAmounts**
+> List<num> getSuggestedAmounts(protocolEnum, currency, requestedAmount)
+
+獲取建議的充值金額
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final protocolEnum = protocolEnum_example; // String | 
+final currency = currency_example; // String | 
+final requestedAmount = 8.14; // num | 
+
+try {
+    final result = api_instance.getSuggestedAmounts(protocolEnum, currency, requestedAmount);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getSuggestedAmounts: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **protocolEnum** | **String**|  | 
+ **currency** | **String**|  | 
+ **requestedAmount** | **num**|  | [optional] 
+
+### Return type
+
+**List<num>**
 
 ### Authorization
 

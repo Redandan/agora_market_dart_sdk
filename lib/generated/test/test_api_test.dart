@@ -71,5 +71,19 @@ void main() {
       // TODO
     });
 
+    // 測試地址分配和金額建議功能
+    //
+    //Future<Map<String, Object>> testAddressAllocation(String protocolEnum, num amount, String currency) async
+    test('test testAddressAllocation', () async {
+      // TODO
+    });
+
+    // 測試金額建議功能
+    //
+    //Future<Map<String, Object>> testSuggestedAmounts(String protocolEnum, String currency, { num requestedAmount }) async
+    test('test testSuggestedAmounts', () async {
+      // TODO
+    });
+
   });
 }

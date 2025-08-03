@@ -45,6 +45,24 @@ void main() {
       // TODO
     });
 
+    // 最大支持充值金額
+    // num maxRechargeAmount
+    test('to test the property `maxRechargeAmount`', () async {
+      // TODO
+    });
+
+    // 當前已分配充值金額
+    // num allocatedAmount
+    test('to test the property `allocatedAmount`', () async {
+      // TODO
+    });
+
+    // 支持的貨幣類型，逗號分隔
+    // String supportedCurrencies
+    test('to test the property `supportedCurrencies`', () async {
+      // TODO
+    });
+
     // ColdWalletStatusEnum status
     test('to test the property `status`', () async {
       // TODO

@@ -93,7 +93,7 @@ void main() {
     //
     // 發送新的聊天消息
     //
-    //Future sendMessage(ChatMessageDTO chatMessageDTO) async
+    //Future<MessageSendResponseDTO> sendMessage(ChatMessageDTO chatMessageDTO) async
     test('test sendMessage', () async {
       // TODO
     });

@@ -53,12 +53,33 @@ void main() {
       // TODO
     });
 
+    // 釋放冷錢包分配的金額
+    //
+    //Future releaseAllocatedAmount(int id, num amount, String orderId, { String operator_ }) async
+    test('test releaseAllocatedAmount', () async {
+      // TODO
+    });
+
     // 釋放冷錢包
     //
     // 將使用中的冷錢包釋放為可用狀態
     //
     //Future<ColdWallet> releaseColdWallet(String id) async
     test('test releaseColdWallet', () async {
+      // TODO
+    });
+
+    // 測試地址分配策略
+    //
+    //Future<AddressAllocationResult> testAddressAllocation1(String protocolEnum, num amount, String currency, { String orderId }) async
+    test('test testAddressAllocation1', () async {
+      // TODO
+    });
+
+    // 設置冷錢包最大支持充值金額
+    //
+    //Future<ColdWallet> updateMaxRechargeAmount(int id, num maxAmount, { String operator_ }) async
+    test('test updateMaxRechargeAmount', () async {
       // TODO
     });
 

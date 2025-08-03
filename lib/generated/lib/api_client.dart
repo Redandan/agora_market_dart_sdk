@@ -184,6 +184,8 @@ class ApiClient {
           return value is DateTime ? value : DateTime.tryParse(value);
         case 'AcceptOrderParam':
           return AcceptOrderParam.fromJson(value);
+        case 'AddressAllocationResult':
+          return AddressAllocationResult.fromJson(value);
         case 'AdminCreateUserParam':
           return AdminCreateUserParam.fromJson(value);
         case 'ApplyStakingParam':
@@ -280,6 +282,8 @@ class ApiClient {
           return LowStockWarningDTO.fromJson(value);
         case 'MemberUpdateParam':
           return MemberUpdateParam.fromJson(value);
+        case 'MessageSendResponseDTO':
+          return MessageSendResponseDTO.fromJson(value);
         case 'NotificationCreateParam':
           return NotificationCreateParam.fromJson(value);
         case 'NotificationResponseDTO':
@@ -382,6 +386,8 @@ class ApiClient {
           return QuickLogisticsResult.fromJson(value);
         case 'Recharge':
           return Recharge.fromJson(value);
+        case 'RechargeErrorResponse':
+          return RechargeErrorResponse.fromJson(value);
         case 'RechargeSearchParam':
           return RechargeSearchParam.fromJson(value);
         case 'RechargeStatusEnum':
