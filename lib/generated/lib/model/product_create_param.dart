@@ -38,7 +38,7 @@ class ProductCreateParam {
     this.shippingDateRange,
     this.supportedShippingCompanies = const {},
     this.shippingFees = const {},
-    this.defaultShippingCompany,
+    required this.defaultShippingCompany,
     this.freeShippingThreshold,
     this.stockAlertThreshold,
     this.allowNegativeStock,
@@ -198,13 +198,7 @@ class ProductCreateParam {
   /// 各物流公司運費對應表
   Map<String, num> shippingFees;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  ShippingCompanyEnum? defaultShippingCompany;
+  ShippingCompanyEnum defaultShippingCompany;
 
   /// 免運費門檻
   ///
@@ -297,7 +291,7 @@ class ProductCreateParam {
     (shippingDateRange == null ? 0 : shippingDateRange!.hashCode) +
     (supportedShippingCompanies.hashCode) +
     (shippingFees.hashCode) +
-    (defaultShippingCompany == null ? 0 : defaultShippingCompany!.hashCode) +
+    (defaultShippingCompany.hashCode) +
     (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode) +
     (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
     (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode);
@@ -372,11 +366,7 @@ class ProductCreateParam {
     }
       json[r'supportedShippingCompanies'] = this.supportedShippingCompanies.toList(growable: false);
       json[r'shippingFees'] = this.shippingFees;
-    if (this.defaultShippingCompany != null) {
       json[r'defaultShippingCompany'] = this.defaultShippingCompany;
-    } else {
-      json[r'defaultShippingCompany'] = null;
-    }
     if (this.freeShippingThreshold != null) {
       json[r'freeShippingThreshold'] = this.freeShippingThreshold;
     } else {
@@ -442,8 +432,8 @@ class ProductCreateParam {
         supportsScheduledShipping: mapValueOfType<bool>(json, r'supportsScheduledShipping'),
         shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
         supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']).toSet(),
-        shippingFees: mapCastOfType<String, num>(json, r'shippingFees') ?? const {},
-        defaultShippingCompany: ShippingCompanyEnum.fromJson(json[r'defaultShippingCompany']),
+        shippingFees: mapCastOfType<String, num>(json, r'shippingFees')!,
+        defaultShippingCompany: ShippingCompanyEnum.fromJson(json[r'defaultShippingCompany'])!,
         freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
         stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
         allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
@@ -505,6 +495,10 @@ class ProductCreateParam {
     'pickupTimeStart',
     'pickupTimeEnd',
     'pickupAddress',
+    'skus',
+    'supportedShippingCompanies',
+    'shippingFees',
+    'defaultShippingCompany',
   };
 }
 

@@ -12,6 +12,9 @@ Method | HTTP request | Description
 [**broadcastMessage**](SseApi.md#broadcastmessage) | **POST** /sse/broadcast | 廣播消息
 [**connect**](SseApi.md#connect) | **GET** /sse/connect/{clientId} | 建立 SSE 連接
 [**disconnect**](SseApi.md#disconnect) | **DELETE** /sse/disconnect/{clientId} | 斷開 SSE 連接
+[**forceDisconnectAll**](SseApi.md#forcedisconnectall) | **POST** /sse/force-disconnect-all | 強制斷開所有連接
+[**getConnectionStatus**](SseApi.md#getconnectionstatus) | **GET** /sse/status | 獲取 SSE 連接狀態
+[**getUserConnectionStatus**](SseApi.md#getuserconnectionstatus) | **GET** /sse/status/user/{userId} | 檢查用戶連接狀態
 [**sendMessageToUser**](SseApi.md#sendmessagetouser) | **POST** /sse/send/user/{userId} | 向特定用戶發送消息
 
 
@@ -138,6 +141,127 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forceDisconnectAll**
+> Map<String, Object> forceDisconnectAll()
+
+強制斷開所有連接
+
+緊急情況下強制斷開所有 SSE 連接（僅管理員可用）
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = SseApi();
+
+try {
+    final result = api_instance.forceDisconnectAll();
+    print(result);
+} catch (e) {
+    print('Exception when calling SseApi->forceDisconnectAll: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Map<String, Object>**](Object.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getConnectionStatus**
+> Map<String, Object> getConnectionStatus()
+
+獲取 SSE 連接狀態
+
+獲取當前 SSE 連接的統計信息（僅管理員可用）
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = SseApi();
+
+try {
+    final result = api_instance.getConnectionStatus();
+    print(result);
+} catch (e) {
+    print('Exception when calling SseApi->getConnectionStatus: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Map<String, Object>**](Object.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getUserConnectionStatus**
+> Map<String, Object> getUserConnectionStatus(userId)
+
+檢查用戶連接狀態
+
+檢查指定用戶是否處於連接狀態
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = SseApi();
+final userId = userId_example; // String | 目標用戶ID
+
+try {
+    final result = api_instance.getUserConnectionStatus(userId);
+    print(result);
+} catch (e) {
+    print('Exception when calling SseApi->getUserConnectionStatus: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **String**| 目標用戶ID | 
+
+### Return type
+
+[**Map<String, Object>**](Object.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

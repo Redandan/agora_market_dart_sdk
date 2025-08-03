@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **minStock** | **int** |  | [optional] 
 **stockAlertThreshold** | **int** |  | [optional] 
 **outOfStock** | **bool** |  | [optional] 
-**belowMinimum** | **bool** |  | [optional] 
 **lowStock** | **bool** |  | [optional] 
+**belowMinimum** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -44,6 +44,33 @@ void main() {
       // TODO
     });
 
+    // 強制斷開所有連接
+    //
+    // 緊急情況下強制斷開所有 SSE 連接（僅管理員可用）
+    //
+    //Future<Map<String, Object>> forceDisconnectAll() async
+    test('test forceDisconnectAll', () async {
+      // TODO
+    });
+
+    // 獲取 SSE 連接狀態
+    //
+    // 獲取當前 SSE 連接的統計信息（僅管理員可用）
+    //
+    //Future<Map<String, Object>> getConnectionStatus() async
+    test('test getConnectionStatus', () async {
+      // TODO
+    });
+
+    // 檢查用戶連接狀態
+    //
+    // 檢查指定用戶是否處於連接狀態
+    //
+    //Future<Map<String, Object>> getUserConnectionStatus(String userId) async
+    test('test getUserConnectionStatus', () async {
+      // TODO
+    });
+
     // 向特定用戶發送消息
     //
     // 向指定的用戶發送一條消息

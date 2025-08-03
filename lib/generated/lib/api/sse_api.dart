@@ -166,6 +166,161 @@ class SseApi {
     }
   }
 
+  /// 強制斷開所有連接
+  ///
+  /// 緊急情況下強制斷開所有 SSE 連接（僅管理員可用）
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> forceDisconnectAllWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/sse/force-disconnect-all';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 強制斷開所有連接
+  ///
+  /// 緊急情況下強制斷開所有 SSE 連接（僅管理員可用）
+  Future<Map<String, Object>?> forceDisconnectAll() async {
+    final response = await forceDisconnectAllWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
+
+    }
+    return null;
+  }
+
+  /// 獲取 SSE 連接狀態
+  ///
+  /// 獲取當前 SSE 連接的統計信息（僅管理員可用）
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getConnectionStatusWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/sse/status';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 獲取 SSE 連接狀態
+  ///
+  /// 獲取當前 SSE 連接的統計信息（僅管理員可用）
+  Future<Map<String, Object>?> getConnectionStatus() async {
+    final response = await getConnectionStatusWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
+
+    }
+    return null;
+  }
+
+  /// 檢查用戶連接狀態
+  ///
+  /// 檢查指定用戶是否處於連接狀態
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] userId (required):
+  ///   目標用戶ID
+  Future<Response> getUserConnectionStatusWithHttpInfo(String userId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/sse/status/user/{userId}'
+      .replaceAll('{userId}', userId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 檢查用戶連接狀態
+  ///
+  /// 檢查指定用戶是否處於連接狀態
+  ///
+  /// Parameters:
+  ///
+  /// * [String] userId (required):
+  ///   目標用戶ID
+  Future<Map<String, Object>?> getUserConnectionStatus(String userId,) async {
+    final response = await getUserConnectionStatusWithHttpInfo(userId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
+
+    }
+    return null;
+  }
+
   /// 向特定用戶發送消息
   ///
   /// 向指定的用戶發送一條消息

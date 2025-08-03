@@ -264,6 +264,9 @@ Class | Method | HTTP request | Description
 *SseApi* | [**broadcastMessage**](doc//SseApi.md#broadcastmessage) | **POST** /sse/broadcast | 廣播消息
 *SseApi* | [**connect**](doc//SseApi.md#connect) | **GET** /sse/connect/{clientId} | 建立 SSE 連接
 *SseApi* | [**disconnect**](doc//SseApi.md#disconnect) | **DELETE** /sse/disconnect/{clientId} | 斷開 SSE 連接
+*SseApi* | [**forceDisconnectAll**](doc//SseApi.md#forcedisconnectall) | **POST** /sse/force-disconnect-all | 強制斷開所有連接
+*SseApi* | [**getConnectionStatus**](doc//SseApi.md#getconnectionstatus) | **GET** /sse/status | 獲取 SSE 連接狀態
+*SseApi* | [**getUserConnectionStatus**](doc//SseApi.md#getuserconnectionstatus) | **GET** /sse/status/user/{userId} | 檢查用戶連接狀態
 *SseApi* | [**sendMessageToUser**](doc//SseApi.md#sendmessagetouser) | **POST** /sse/send/user/{userId} | 向特定用戶發送消息
 *StakingApi* | [**applyStaking**](doc//StakingApi.md#applystaking) | **POST** /staking/apply | 申請質押
 *StakingApi* | [**getActiveStakings**](doc//StakingApi.md#getactivestakings) | **GET** /staking/active | 查詢正在進行中的質押

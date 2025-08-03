@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **pickupTimeStart** | **String** | 取件開始時間 | 
 **pickupTimeEnd** | **String** | 取件結束時間 | 
 **pickupAddress** | **String** | 取件地址 | 
-**skus** | **Set<String>** | 商品SKU或條碼集合 | [optional] [default to const {}]
+**skus** | **Set<String>** | 商品SKU或條碼集合 | [default to const {}]
 **brand** | **String** | 品牌名稱 | [optional] 
 **minStock** | **int** | 最低庫存警告 | [optional] 
 **tags** | **String** | 商品標籤，以逗號分隔 | [optional] 
@@ -31,9 +31,9 @@ Name | Type | Description | Notes
 **estimatedDeliveryDays** | **int** | 預計送達時間（天數） | [optional] 
 **supportsScheduledShipping** | **bool** | 是否支持指定出貨日期 | [optional] 
 **shippingDateRange** | **int** | 可選擇的出貨日期範圍（天數） | [optional] 
-**supportedShippingCompanies** | [**Set<ShippingCompanyEnum>**](ShippingCompanyEnum.md) | 支援的物流公司 | [optional] [default to const {}]
-**shippingFees** | **Map<String, num>** | 各物流公司運費對應表 | [optional] [default to const {}]
-**defaultShippingCompany** | [**ShippingCompanyEnum**](ShippingCompanyEnum.md) |  | [optional] 
+**supportedShippingCompanies** | [**Set<ShippingCompanyEnum>**](ShippingCompanyEnum.md) | 支援的物流公司 | [default to const {}]
+**shippingFees** | **Map<String, num>** | 各物流公司運費對應表 | [default to const {}]
+**defaultShippingCompany** | [**ShippingCompanyEnum**](ShippingCompanyEnum.md) |  | 
 **freeShippingThreshold** | **num** | 免運費門檻 | [optional] 
 **stockAlertThreshold** | **int** | 庫存警告閾值 | [optional] 
 **allowNegativeStock** | **bool** | 是否允許負庫存 | [optional] 
