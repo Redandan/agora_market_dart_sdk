@@ -156,7 +156,7 @@ part 'model/protocol_enum.dart';
 part 'model/quick_logistics_request.dart';
 part 'model/quick_logistics_result.dart';
 part 'model/recharge.dart';
-part 'model/recharge_error_response.dart';
+part 'model/recharge_response.dart';
 part 'model/recharge_search_param.dart';
 part 'model/recharge_status_enum.dart';
 part 'model/register_param.dart';

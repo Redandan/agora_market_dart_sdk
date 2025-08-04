@@ -96,26 +96,12 @@ void main() {
       // TODO
     });
 
-    // 實時檢查充值可用性
-    //
-    //Future<Map<String, Object>> checkAvailability(String protocolEnum, num amount, String currency) async
-    test('test checkAvailability', () async {
-      // TODO
-    });
-
     // 檢查庫存狀態
     //
     // 檢查購物車中所有商品的庫存狀態
     //
     //Future checkCartItemStockStatus() async
     test('test checkCartItemStockStatus', () async {
-      // TODO
-    });
-
-    // 檢查充值地址可用性
-    //
-    //Future<RechargeErrorResponse> checkRechargeAvailability(String protocolEnum, num amount, String currency) async
-    test('test checkRechargeAvailability', () async {
       // TODO
     });
 
@@ -167,7 +153,7 @@ void main() {
 
     // 創建充值
     //
-    //Future<Recharge> createRecharge(CreateRechargeParam createRechargeParam) async
+    //Future<RechargeResponse> createRecharge(CreateRechargeParam createRechargeParam) async
     test('test createRecharge', () async {
       // TODO
     });
@@ -392,13 +378,6 @@ void main() {
     //
     //Future<List<String>> getServiceTypes(String carrier) async
     test('test getServiceTypes', () async {
-      // TODO
-    });
-
-    // 獲取建議的充值金額
-    //
-    //Future<List<num>> getSuggestedAmounts(String protocolEnum, String currency, { num requestedAmount }) async
-    test('test getSuggestedAmounts', () async {
       // TODO
     });
 

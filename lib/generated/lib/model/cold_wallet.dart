@@ -18,11 +18,11 @@ class ColdWallet {
     this.protocolEnum,
     this.trxBalance,
     this.usdtBalance,
-    this.maxRechargeAmount,
-    this.allocatedAmount,
-    this.supportedCurrencies,
     this.status,
     this.currentOrderId,
+    this.currentAmount,
+    this.currentCurrency,
+    this.maxRechargeAmount,
     this.createdAt,
     this.updatedAt,
     this.operator_,
@@ -72,33 +72,6 @@ class ColdWallet {
   ///
   num? usdtBalance;
 
-  /// 最大支持充值金額
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? maxRechargeAmount;
-
-  /// 當前已分配充值金額
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? allocatedAmount;
-
-  /// 支持的貨幣類型，逗號分隔
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? supportedCurrencies;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -115,6 +88,33 @@ class ColdWallet {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? currentOrderId;
+
+  /// 當前金額
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? currentAmount;
+
+  /// 當前貨幣
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? currentCurrency;
+
+  /// 最大充值金額
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? maxRechargeAmount;
 
   /// 創建時間
   ///
@@ -150,11 +150,11 @@ class ColdWallet {
     other.protocolEnum == protocolEnum &&
     other.trxBalance == trxBalance &&
     other.usdtBalance == usdtBalance &&
-    other.maxRechargeAmount == maxRechargeAmount &&
-    other.allocatedAmount == allocatedAmount &&
-    other.supportedCurrencies == supportedCurrencies &&
     other.status == status &&
     other.currentOrderId == currentOrderId &&
+    other.currentAmount == currentAmount &&
+    other.currentCurrency == currentCurrency &&
+    other.maxRechargeAmount == maxRechargeAmount &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
     other.operator_ == operator_;
@@ -167,17 +167,17 @@ class ColdWallet {
     (protocolEnum == null ? 0 : protocolEnum!.hashCode) +
     (trxBalance == null ? 0 : trxBalance!.hashCode) +
     (usdtBalance == null ? 0 : usdtBalance!.hashCode) +
-    (maxRechargeAmount == null ? 0 : maxRechargeAmount!.hashCode) +
-    (allocatedAmount == null ? 0 : allocatedAmount!.hashCode) +
-    (supportedCurrencies == null ? 0 : supportedCurrencies!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
     (currentOrderId == null ? 0 : currentOrderId!.hashCode) +
+    (currentAmount == null ? 0 : currentAmount!.hashCode) +
+    (currentCurrency == null ? 0 : currentCurrency!.hashCode) +
+    (maxRechargeAmount == null ? 0 : maxRechargeAmount!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (operator_ == null ? 0 : operator_!.hashCode);
 
   @override
-  String toString() => 'ColdWallet[id=$id, address=$address, protocolEnum=$protocolEnum, trxBalance=$trxBalance, usdtBalance=$usdtBalance, maxRechargeAmount=$maxRechargeAmount, allocatedAmount=$allocatedAmount, supportedCurrencies=$supportedCurrencies, status=$status, currentOrderId=$currentOrderId, createdAt=$createdAt, updatedAt=$updatedAt, operator_=$operator_]';
+  String toString() => 'ColdWallet[id=$id, address=$address, protocolEnum=$protocolEnum, trxBalance=$trxBalance, usdtBalance=$usdtBalance, status=$status, currentOrderId=$currentOrderId, currentAmount=$currentAmount, currentCurrency=$currentCurrency, maxRechargeAmount=$maxRechargeAmount, createdAt=$createdAt, updatedAt=$updatedAt, operator_=$operator_]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -206,21 +206,6 @@ class ColdWallet {
     } else {
       json[r'usdtBalance'] = null;
     }
-    if (this.maxRechargeAmount != null) {
-      json[r'maxRechargeAmount'] = this.maxRechargeAmount;
-    } else {
-      json[r'maxRechargeAmount'] = null;
-    }
-    if (this.allocatedAmount != null) {
-      json[r'allocatedAmount'] = this.allocatedAmount;
-    } else {
-      json[r'allocatedAmount'] = null;
-    }
-    if (this.supportedCurrencies != null) {
-      json[r'supportedCurrencies'] = this.supportedCurrencies;
-    } else {
-      json[r'supportedCurrencies'] = null;
-    }
     if (this.status != null) {
       json[r'status'] = this.status;
     } else {
@@ -230,6 +215,21 @@ class ColdWallet {
       json[r'currentOrderId'] = this.currentOrderId;
     } else {
       json[r'currentOrderId'] = null;
+    }
+    if (this.currentAmount != null) {
+      json[r'currentAmount'] = this.currentAmount;
+    } else {
+      json[r'currentAmount'] = null;
+    }
+    if (this.currentCurrency != null) {
+      json[r'currentCurrency'] = this.currentCurrency;
+    } else {
+      json[r'currentCurrency'] = null;
+    }
+    if (this.maxRechargeAmount != null) {
+      json[r'maxRechargeAmount'] = this.maxRechargeAmount;
+    } else {
+      json[r'maxRechargeAmount'] = null;
     }
     if (this.createdAt != null) {
       json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
@@ -273,11 +273,11 @@ class ColdWallet {
         protocolEnum: ProtocolEnum.fromJson(json[r'protocolEnum']),
         trxBalance: num.parse('${json[r'trxBalance']}'),
         usdtBalance: num.parse('${json[r'usdtBalance']}'),
-        maxRechargeAmount: num.parse('${json[r'maxRechargeAmount']}'),
-        allocatedAmount: num.parse('${json[r'allocatedAmount']}'),
-        supportedCurrencies: mapValueOfType<String>(json, r'supportedCurrencies'),
         status: ColdWalletStatusEnum.fromJson(json[r'status']),
         currentOrderId: mapValueOfType<String>(json, r'currentOrderId'),
+        currentAmount: num.parse('${json[r'currentAmount']}'),
+        currentCurrency: mapValueOfType<String>(json, r'currentCurrency'),
+        maxRechargeAmount: num.parse('${json[r'maxRechargeAmount']}'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         operator_: mapValueOfType<String>(json, r'operator'),

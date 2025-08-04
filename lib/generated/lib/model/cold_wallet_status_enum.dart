@@ -23,7 +23,6 @@ class ColdWalletStatusEnum {
 
   String toJson() => value;
 
-  static const INACTIVE = ColdWalletStatusEnum._(r'INACTIVE');
   static const AVAILABLE = ColdWalletStatusEnum._(r'AVAILABLE');
   static const IN_USE = ColdWalletStatusEnum._(r'IN_USE');
   static const FROZEN = ColdWalletStatusEnum._(r'FROZEN');
@@ -31,7 +30,6 @@ class ColdWalletStatusEnum {
 
   /// List of all possible values in this [enum][ColdWalletStatusEnum].
   static const values = <ColdWalletStatusEnum>[
-    INACTIVE,
     AVAILABLE,
     IN_USE,
     FROZEN,
@@ -74,7 +72,6 @@ class ColdWalletStatusEnumTypeTransformer {
   ColdWalletStatusEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'INACTIVE': return ColdWalletStatusEnum.INACTIVE;
         case r'AVAILABLE': return ColdWalletStatusEnum.AVAILABLE;
         case r'IN_USE': return ColdWalletStatusEnum.IN_USE;
         case r'FROZEN': return ColdWalletStatusEnum.FROZEN;

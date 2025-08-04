@@ -45,24 +45,6 @@ void main() {
       // TODO
     });
 
-    // 最大支持充值金額
-    // num maxRechargeAmount
-    test('to test the property `maxRechargeAmount`', () async {
-      // TODO
-    });
-
-    // 當前已分配充值金額
-    // num allocatedAmount
-    test('to test the property `allocatedAmount`', () async {
-      // TODO
-    });
-
-    // 支持的貨幣類型，逗號分隔
-    // String supportedCurrencies
-    test('to test the property `supportedCurrencies`', () async {
-      // TODO
-    });
-
     // ColdWalletStatusEnum status
     test('to test the property `status`', () async {
       // TODO
@@ -71,6 +53,24 @@ void main() {
     // 當前訂單ID
     // String currentOrderId
     test('to test the property `currentOrderId`', () async {
+      // TODO
+    });
+
+    // 當前金額
+    // num currentAmount
+    test('to test the property `currentAmount`', () async {
+      // TODO
+    });
+
+    // 當前貨幣
+    // String currentCurrency
+    test('to test the property `currentCurrency`', () async {
+      // TODO
+    });
+
+    // 最大充值金額
+    // num maxRechargeAmount
+    test('to test the property `maxRechargeAmount`', () async {
       // TODO
     });
 

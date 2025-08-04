@@ -386,8 +386,8 @@ class ApiClient {
           return QuickLogisticsResult.fromJson(value);
         case 'Recharge':
           return Recharge.fromJson(value);
-        case 'RechargeErrorResponse':
-          return RechargeErrorResponse.fromJson(value);
+        case 'RechargeResponse':
+          return RechargeResponse.fromJson(value);
         case 'RechargeSearchParam':
           return RechargeSearchParam.fromJson(value);
         case 'RechargeStatusEnum':

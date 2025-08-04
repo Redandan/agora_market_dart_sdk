@@ -78,7 +78,7 @@ void main() {
 
     // 設置冷錢包最大支持充值金額
     //
-    //Future<ColdWallet> updateMaxRechargeAmount(int id, num maxAmount, { String operator_ }) async
+    //Future updateMaxRechargeAmount(int id, num maxAmount, { String operator_ }) async
     test('test updateMaxRechargeAmount', () async {
       // TODO
     });

@@ -573,70 +573,6 @@ class DefaultApi {
     return null;
   }
 
-  /// 實時檢查充值可用性
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] protocolEnum (required):
-  ///
-  /// * [num] amount (required):
-  ///
-  /// * [String] currency (required):
-  Future<Response> checkAvailabilityWithHttpInfo(String protocolEnum, num amount, String currency,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/recharge/availability-check';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'protocolEnum', protocolEnum));
-      queryParams.addAll(_queryParams('', 'amount', amount));
-      queryParams.addAll(_queryParams('', 'currency', currency));
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 實時檢查充值可用性
-  ///
-  /// Parameters:
-  ///
-  /// * [String] protocolEnum (required):
-  ///
-  /// * [num] amount (required):
-  ///
-  /// * [String] currency (required):
-  Future<Map<String, Object>?> checkAvailability(String protocolEnum, num amount, String currency,) async {
-    final response = await checkAvailabilityWithHttpInfo(protocolEnum, amount, currency,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
-
-    }
-    return null;
-  }
-
   /// 檢查庫存狀態
   ///
   /// 檢查購物車中所有商品的庫存狀態
@@ -675,70 +611,6 @@ class DefaultApi {
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
-  }
-
-  /// 檢查充值地址可用性
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] protocolEnum (required):
-  ///
-  /// * [num] amount (required):
-  ///
-  /// * [String] currency (required):
-  Future<Response> checkRechargeAvailabilityWithHttpInfo(String protocolEnum, num amount, String currency,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/recharge/check-availability';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'protocolEnum', protocolEnum));
-      queryParams.addAll(_queryParams('', 'amount', amount));
-      queryParams.addAll(_queryParams('', 'currency', currency));
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 檢查充值地址可用性
-  ///
-  /// Parameters:
-  ///
-  /// * [String] protocolEnum (required):
-  ///
-  /// * [num] amount (required):
-  ///
-  /// * [String] currency (required):
-  Future<RechargeErrorResponse?> checkRechargeAvailability(String protocolEnum, num amount, String currency,) async {
-    final response = await checkRechargeAvailabilityWithHttpInfo(protocolEnum, amount, currency,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'RechargeErrorResponse',) as RechargeErrorResponse;
-    
-    }
-    return null;
   }
 
   /// 清空購物車
@@ -1090,7 +962,7 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [CreateRechargeParam] createRechargeParam (required):
-  Future<Recharge?> createRecharge(CreateRechargeParam createRechargeParam,) async {
+  Future<RechargeResponse?> createRecharge(CreateRechargeParam createRechargeParam,) async {
     final response = await createRechargeWithHttpInfo(createRechargeParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1099,7 +971,7 @@ class DefaultApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Recharge',) as Recharge;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'RechargeResponse',) as RechargeResponse;
     
     }
     return null;
@@ -2596,75 +2468,6 @@ class DefaultApi {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<String>') as List)
         .cast<String>()
-        .toList(growable: false);
-
-    }
-    return null;
-  }
-
-  /// 獲取建議的充值金額
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] protocolEnum (required):
-  ///
-  /// * [String] currency (required):
-  ///
-  /// * [num] requestedAmount:
-  Future<Response> getSuggestedAmountsWithHttpInfo(String protocolEnum, String currency, { num? requestedAmount, }) async {
-    // ignore: prefer_const_declarations
-    final path = r'/recharge/suggested-amounts';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'protocolEnum', protocolEnum));
-      queryParams.addAll(_queryParams('', 'currency', currency));
-    if (requestedAmount != null) {
-      queryParams.addAll(_queryParams('', 'requestedAmount', requestedAmount));
-    }
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 獲取建議的充值金額
-  ///
-  /// Parameters:
-  ///
-  /// * [String] protocolEnum (required):
-  ///
-  /// * [String] currency (required):
-  ///
-  /// * [num] requestedAmount:
-  Future<List<num>?> getSuggestedAmounts(String protocolEnum, String currency, { num? requestedAmount, }) async {
-    final response = await getSuggestedAmountsWithHttpInfo(protocolEnum, currency,  requestedAmount: requestedAmount, );
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<num>') as List)
-        .cast<num>()
         .toList(growable: false);
 
     }

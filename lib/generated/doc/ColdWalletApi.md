@@ -329,7 +329,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateMaxRechargeAmount**
-> ColdWallet updateMaxRechargeAmount(id, maxAmount, operator_)
+> updateMaxRechargeAmount(id, maxAmount, operator_)
 
 設置冷錢包最大支持充值金額
 
@@ -343,8 +343,7 @@ final maxAmount = 8.14; // num |
 final operator_ = operator__example; // String | 
 
 try {
-    final result = api_instance.updateMaxRechargeAmount(id, maxAmount, operator_);
-    print(result);
+    api_instance.updateMaxRechargeAmount(id, maxAmount, operator_);
 } catch (e) {
     print('Exception when calling ColdWalletApi->updateMaxRechargeAmount: $e\n');
 }
@@ -360,7 +359,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ColdWallet**](ColdWallet.md)
+void (empty response body)
 
 ### Authorization
 
@@ -369,7 +368,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

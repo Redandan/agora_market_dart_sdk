@@ -23,12 +23,16 @@ class ProtocolEnum {
 
   String toJson() => value;
 
-  static const TRON = ProtocolEnum._(r'TRON');
+  static const tRC20 = ProtocolEnum._(r'TRC20');
+  static const eRC20 = ProtocolEnum._(r'ERC20');
+  static const bEP20 = ProtocolEnum._(r'BEP20');
   static const unknownDefaultOpenApi = ProtocolEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][ProtocolEnum].
   static const values = <ProtocolEnum>[
-    TRON,
+    tRC20,
+    eRC20,
+    bEP20,
     unknownDefaultOpenApi,
   ];
 
@@ -68,7 +72,9 @@ class ProtocolEnumTypeTransformer {
   ProtocolEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'TRON': return ProtocolEnum.TRON;
+        case r'TRC20': return ProtocolEnum.tRC20;
+        case r'ERC20': return ProtocolEnum.eRC20;
+        case r'BEP20': return ProtocolEnum.bEP20;
         case r'unknown_default_open_api': return ProtocolEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
