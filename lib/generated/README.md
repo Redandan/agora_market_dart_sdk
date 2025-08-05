@@ -188,10 +188,7 @@ Class | Method | HTTP request | Description
 *ColdWalletApi* | [**deleteColdWallet**](doc//ColdWalletApi.md#deletecoldwallet) | **DELETE** /cold-wallet/{id} | 刪除冷錢包
 *ColdWalletApi* | [**freezeColdWallet**](doc//ColdWalletApi.md#freezecoldwallet) | **POST** /cold-wallet/{id}/freeze | 凍結冷錢包
 *ColdWalletApi* | [**getColdWallets**](doc//ColdWalletApi.md#getcoldwallets) | **GET** /cold-wallet | 獲取冷錢包列表
-*ColdWalletApi* | [**releaseAllocatedAmount**](doc//ColdWalletApi.md#releaseallocatedamount) | **POST** /cold-wallet/{id}/release-amount | 釋放冷錢包分配的金額
 *ColdWalletApi* | [**releaseColdWallet**](doc//ColdWalletApi.md#releasecoldwallet) | **POST** /cold-wallet/{id}/release | 釋放冷錢包
-*ColdWalletApi* | [**testAddressAllocation1**](doc//ColdWalletApi.md#testaddressallocation1) | **POST** /cold-wallet/allocate-test | 測試地址分配策略
-*ColdWalletApi* | [**updateMaxRechargeAmount**](doc//ColdWalletApi.md#updatemaxrechargeamount) | **POST** /cold-wallet/{id}/max-amount | 設置冷錢包最大支持充值金額
 *DeliveryApi* | [**acceptOrder**](doc//DeliveryApi.md#acceptorder) | **POST** /delivery/accept | 配送員接單
 *DeliveryApi* | [**currentStatus**](doc//DeliveryApi.md#currentstatus) | **GET** /delivery/status | 獲取當前配送狀態
 *DeliveryApi* | [**getAvailableOrders**](doc//DeliveryApi.md#getavailableorders) | **GET** /delivery/available-orders | 獲取可接訂單列表
@@ -292,8 +289,6 @@ Class | Method | HTTP request | Description
 *TestApi* | [**generateRechargeAndWithdraw**](doc//TestApi.md#generaterechargeandwithdraw) | **POST** /test/recharge&withdraw | 
 *TestApi* | [**generateReviewData**](doc//TestApi.md#generatereviewdata) | **POST** /test/review | 
 *TestApi* | [**generateTestData**](doc//TestApi.md#generatetestdata) | **POST** /test/generate-test-data | 生成測試數據
-*TestApi* | [**testAddressAllocation**](doc//TestApi.md#testaddressallocation) | **POST** /test/test-address-allocation | 測試地址分配和金額建議功能
-*TestApi* | [**testSuggestedAmounts**](doc//TestApi.md#testsuggestedamounts) | **GET** /test/test-suggested-amounts | 測試金額建議功能
 *UserAddressesApi* | [**createAddress**](doc//UserAddressesApi.md#createaddress) | **POST** /user-addresses/create | 創建地址
 *UserAddressesApi* | [**deleteAddress**](doc//UserAddressesApi.md#deleteaddress) | **DELETE** /user-addresses/{addressId} | 刪除地址
 *UserAddressesApi* | [**getAddressById**](doc//UserAddressesApi.md#getaddressbyid) | **GET** /user-addresses/{addressId} | 根據ID獲取地址詳情
@@ -308,7 +303,6 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AcceptOrderParam](doc//AcceptOrderParam.md)
- - [AddressAllocationResult](doc//AddressAllocationResult.md)
  - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
  - [ApplyStakingParam](doc//ApplyStakingParam.md)
  - [AutoReplyConfig](doc//AutoReplyConfig.md)

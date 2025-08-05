@@ -17,8 +17,6 @@ Method | HTTP request | Description
 [**generateRechargeAndWithdraw**](TestApi.md#generaterechargeandwithdraw) | **POST** /test/recharge&withdraw | 
 [**generateReviewData**](TestApi.md#generatereviewdata) | **POST** /test/review | 
 [**generateTestData**](TestApi.md#generatetestdata) | **POST** /test/generate-test-data | 生成測試數據
-[**testAddressAllocation**](TestApi.md#testaddressallocation) | **POST** /test/test-address-allocation | 測試地址分配和金額建議功能
-[**testSuggestedAmounts**](TestApi.md#testsuggestedamounts) | **GET** /test/test-suggested-amounts | 測試金額建議功能
 
 
 # **generateAutoReplyTestData**
@@ -311,96 +309,6 @@ This endpoint does not need any parameter.
 ### Return type
 
 **String**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **testAddressAllocation**
-> Map<String, Object> testAddressAllocation(protocolEnum, amount, currency)
-
-測試地址分配和金額建議功能
-
-### Example
-```dart
-import 'package:agora_market_dart_sdk/api.dart';
-
-final api_instance = TestApi();
-final protocolEnum = protocolEnum_example; // String | 
-final amount = 8.14; // num | 
-final currency = currency_example; // String | 
-
-try {
-    final result = api_instance.testAddressAllocation(protocolEnum, amount, currency);
-    print(result);
-} catch (e) {
-    print('Exception when calling TestApi->testAddressAllocation: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **protocolEnum** | **String**|  | 
- **amount** | **num**|  | 
- **currency** | **String**|  | 
-
-### Return type
-
-[**Map<String, Object>**](Object.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **testSuggestedAmounts**
-> Map<String, Object> testSuggestedAmounts(protocolEnum, currency, requestedAmount)
-
-測試金額建議功能
-
-### Example
-```dart
-import 'package:agora_market_dart_sdk/api.dart';
-
-final api_instance = TestApi();
-final protocolEnum = protocolEnum_example; // String | 
-final currency = currency_example; // String | 
-final requestedAmount = 8.14; // num | 
-
-try {
-    final result = api_instance.testSuggestedAmounts(protocolEnum, currency, requestedAmount);
-    print(result);
-} catch (e) {
-    print('Exception when calling TestApi->testSuggestedAmounts: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **protocolEnum** | **String**|  | 
- **currency** | **String**|  | 
- **requestedAmount** | **num**|  | [optional] 
-
-### Return type
-
-[**Map<String, Object>**](Object.md)
 
 ### Authorization
 

@@ -13,10 +13,7 @@ Method | HTTP request | Description
 [**deleteColdWallet**](ColdWalletApi.md#deletecoldwallet) | **DELETE** /cold-wallet/{id} | 刪除冷錢包
 [**freezeColdWallet**](ColdWalletApi.md#freezecoldwallet) | **POST** /cold-wallet/{id}/freeze | 凍結冷錢包
 [**getColdWallets**](ColdWalletApi.md#getcoldwallets) | **GET** /cold-wallet | 獲取冷錢包列表
-[**releaseAllocatedAmount**](ColdWalletApi.md#releaseallocatedamount) | **POST** /cold-wallet/{id}/release-amount | 釋放冷錢包分配的金額
 [**releaseColdWallet**](ColdWalletApi.md#releasecoldwallet) | **POST** /cold-wallet/{id}/release | 釋放冷錢包
-[**testAddressAllocation1**](ColdWalletApi.md#testaddressallocation1) | **POST** /cold-wallet/allocate-test | 測試地址分配策略
-[**updateMaxRechargeAmount**](ColdWalletApi.md#updatemaxrechargeamount) | **POST** /cold-wallet/{id}/max-amount | 設置冷錢包最大支持充值金額
 
 
 # **createColdWallet**
@@ -192,52 +189,6 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **releaseAllocatedAmount**
-> releaseAllocatedAmount(id, amount, orderId, operator_)
-
-釋放冷錢包分配的金額
-
-### Example
-```dart
-import 'package:agora_market_dart_sdk/api.dart';
-
-final api_instance = ColdWalletApi();
-final id = 789; // int | 
-final amount = 8.14; // num | 
-final orderId = orderId_example; // String | 
-final operator_ = operator__example; // String | 
-
-try {
-    api_instance.releaseAllocatedAmount(id, amount, orderId, operator_);
-} catch (e) {
-    print('Exception when calling ColdWalletApi->releaseAllocatedAmount: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
- **amount** | **num**|  | 
- **orderId** | **String**|  | 
- **operator_** | **String**|  | [optional] [default to 'admin']
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **releaseColdWallet**
 > ColdWallet releaseColdWallet(id)
 
@@ -278,97 +229,6 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **testAddressAllocation1**
-> AddressAllocationResult testAddressAllocation1(protocolEnum, amount, currency, orderId)
-
-測試地址分配策略
-
-### Example
-```dart
-import 'package:agora_market_dart_sdk/api.dart';
-
-final api_instance = ColdWalletApi();
-final protocolEnum = protocolEnum_example; // String | 
-final amount = 8.14; // num | 
-final currency = currency_example; // String | 
-final orderId = orderId_example; // String | 
-
-try {
-    final result = api_instance.testAddressAllocation1(protocolEnum, amount, currency, orderId);
-    print(result);
-} catch (e) {
-    print('Exception when calling ColdWalletApi->testAddressAllocation1: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **protocolEnum** | **String**|  | 
- **amount** | **num**|  | 
- **currency** | **String**|  | 
- **orderId** | **String**|  | [optional] [default to 'test-order']
-
-### Return type
-
-[**AddressAllocationResult**](AddressAllocationResult.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updateMaxRechargeAmount**
-> updateMaxRechargeAmount(id, maxAmount, operator_)
-
-設置冷錢包最大支持充值金額
-
-### Example
-```dart
-import 'package:agora_market_dart_sdk/api.dart';
-
-final api_instance = ColdWalletApi();
-final id = 789; // int | 
-final maxAmount = 8.14; // num | 
-final operator_ = operator__example; // String | 
-
-try {
-    api_instance.updateMaxRechargeAmount(id, maxAmount, operator_);
-} catch (e) {
-    print('Exception when calling ColdWalletApi->updateMaxRechargeAmount: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
- **maxAmount** | **num**|  | 
- **operator_** | **String**|  | [optional] [default to 'admin']
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

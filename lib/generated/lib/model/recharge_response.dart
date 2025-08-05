@@ -43,65 +43,23 @@ class RechargeResponse {
   bool? success;
 
   /// 錯誤代碼（僅在失敗時提供）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? errorCode;
 
   /// 錯誤消息（僅在失敗時提供）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? errorMessage;
 
   /// 充值ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? rechargeId;
 
   /// 用戶ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? userId;
 
   /// 充值金額
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? amount;
 
   /// 貨幣
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? currency;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   RechargeStatusEnum? status;
 
   ///
@@ -113,61 +71,25 @@ class RechargeResponse {
   ProtocolEnum? protocol;
 
   /// 接收地址
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? receiveAddress;
 
   /// 冷錢包ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? coldWalletId;
 
   /// 創建時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? createdAt;
 
   /// 過期時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? expireTime;
 
   /// 支付鏈接
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? paymentUrl;
 
   /// 備註
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? remark;
 
   /// 建議的可用金額列表（當請求金額不可用時提供）
-  List<num> suggestedAmounts;
+  List<num>? suggestedAmounts;
 
   /// 請求的原始金額
   ///
@@ -179,12 +101,6 @@ class RechargeResponse {
   num? requestedAmount;
 
   /// 建議金額
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? suggestedAmount;
 
   @override
@@ -226,7 +142,7 @@ class RechargeResponse {
     (expireTime == null ? 0 : expireTime!.hashCode) +
     (paymentUrl == null ? 0 : paymentUrl!.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
-    (suggestedAmounts.hashCode) +
+    (suggestedAmounts == null ? 0 : suggestedAmounts!.hashCode) +
     (requestedAmount == null ? 0 : requestedAmount!.hashCode) +
     (suggestedAmount == null ? 0 : suggestedAmount!.hashCode);
 
@@ -310,7 +226,11 @@ class RechargeResponse {
     } else {
       json[r'remark'] = null;
     }
+    if (this.suggestedAmounts != null) {
       json[r'suggestedAmounts'] = this.suggestedAmounts;
+    } else {
+      json[r'suggestedAmounts'] = null;
+    }
     if (this.requestedAmount != null) {
       json[r'requestedAmount'] = this.requestedAmount;
     } else {
@@ -348,7 +268,9 @@ class RechargeResponse {
         errorMessage: mapValueOfType<String>(json, r'errorMessage'),
         rechargeId: mapValueOfType<String>(json, r'rechargeId'),
         userId: mapValueOfType<int>(json, r'userId'),
-        amount: num.parse('${json[r'amount']}'),
+        amount: json[r'amount'] == null
+            ? null
+            : num.parse('${json[r'amount']}'),
         currency: mapValueOfType<String>(json, r'currency'),
         status: RechargeStatusEnum.fromJson(json[r'status']),
         protocol: ProtocolEnum.fromJson(json[r'protocol']),
@@ -362,7 +284,9 @@ class RechargeResponse {
             ? (json[r'suggestedAmounts'] as Iterable).cast<num>().toList(growable: false)
             : const [],
         requestedAmount: num.parse('${json[r'requestedAmount']}'),
-        suggestedAmount: num.parse('${json[r'suggestedAmount']}'),
+        suggestedAmount: json[r'suggestedAmount'] == null
+            ? null
+            : num.parse('${json[r'suggestedAmount']}'),
       );
     }
     return null;

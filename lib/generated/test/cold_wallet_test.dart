@@ -56,24 +56,6 @@ void main() {
       // TODO
     });
 
-    // 當前金額
-    // num currentAmount
-    test('to test the property `currentAmount`', () async {
-      // TODO
-    });
-
-    // 當前貨幣
-    // String currentCurrency
-    test('to test the property `currentCurrency`', () async {
-      // TODO
-    });
-
-    // 最大充值金額
-    // num maxRechargeAmount
-    test('to test the property `maxRechargeAmount`', () async {
-      // TODO
-    });
-
     // 創建時間
     // DateTime createdAt
     test('to test the property `createdAt`', () async {
