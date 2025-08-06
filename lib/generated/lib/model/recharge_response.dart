@@ -92,12 +92,6 @@ class RechargeResponse {
   List<num>? suggestedAmounts;
 
   /// 請求的原始金額
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? requestedAmount;
 
   /// 建議金額
@@ -283,7 +277,9 @@ class RechargeResponse {
         suggestedAmounts: json[r'suggestedAmounts'] is Iterable
             ? (json[r'suggestedAmounts'] as Iterable).cast<num>().toList(growable: false)
             : const [],
-        requestedAmount: num.parse('${json[r'requestedAmount']}'),
+        requestedAmount: json[r'requestedAmount'] == null
+            ? null
+            : num.parse('${json[r'requestedAmount']}'),
         suggestedAmount: json[r'suggestedAmount'] == null
             ? null
             : num.parse('${json[r'suggestedAmount']}'),
