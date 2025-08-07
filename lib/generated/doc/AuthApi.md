@@ -12,16 +12,17 @@ Method | HTTP request | Description
 [**changePassword**](AuthApi.md#changepassword) | **POST** /auth/change-password | 修改密碼
 [**disableTwoFactor**](AuthApi.md#disabletwofactor) | **POST** /auth/2fa/disable | 禁用雙因素認證
 [**enableTwoFactor**](AuthApi.md#enabletwofactor) | **POST** /auth/2fa/enable | 啟用雙因素認證
-[**forgotPassword**](AuthApi.md#forgotpassword) | **POST** /auth/forgot-password | 發送密碼重置郵件
+[**forgotPassword**](AuthApi.md#forgotpassword) | **POST** /auth/forgot-password | 忘記密碼 - 發送驗證碼到郵箱
 [**getCurrentUser**](AuthApi.md#getcurrentuser) | **GET** /auth/me | 獲取當前用戶信息
+[**getRemainingWaitTime**](AuthApi.md#getremainingwaittime) | **GET** /auth/forgot-password/remaining-time | 查詢忘記密碼驗證碼的剩餘等待時間
 [**getTwoFactorInfo**](AuthApi.md#gettwofactorinfo) | **GET** /auth/2fa | 獲取雙因素認證信息
 [**login**](AuthApi.md#login) | **POST** /auth/login | 用戶登入
 [**logout**](AuthApi.md#logout) | **POST** /auth/logout | 用戶登出
 [**refreshToken**](AuthApi.md#refreshtoken) | **POST** /auth/refresh-token | 刷新訪問令牌
 [**register**](AuthApi.md#register) | **POST** /auth/register | 註冊新用戶
 [**resetPassword**](AuthApi.md#resetpassword) | **POST** /auth/reset-password | 重設密碼
+[**resetPasswordWithCode**](AuthApi.md#resetpasswordwithcode) | **POST** /auth/reset-password-with-code | 使用驗證碼重置密碼
 [**updateProfile**](AuthApi.md#updateprofile) | **POST** /auth/update-profile | 更新用戶資料
-[**verifyResetToken**](AuthApi.md#verifyresettoken) | **POST** /auth/verify-reset-token | 驗證密碼重置令牌
 [**verifyTwoFactorCode**](AuthApi.md#verifytwofactorcode) | **POST** /auth/2fa/verify | 驗證雙因素認證碼
 
 
@@ -152,7 +153,7 @@ No authorization required
 # **forgotPassword**
 > forgotPassword(email)
 
-發送密碼重置郵件
+忘記密碼 - 發送驗證碼到郵箱
 
 ### Example
 ```dart
@@ -214,6 +215,47 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**UserInfo**](UserInfo.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getRemainingWaitTime**
+> Map<String, Object> getRemainingWaitTime(email)
+
+查詢忘記密碼驗證碼的剩餘等待時間
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = AuthApi();
+final email = email_example; // String | 用戶郵箱
+
+try {
+    final result = api_instance.getRemainingWaitTime(email);
+    print(result);
+} catch (e) {
+    print('Exception when calling AuthApi->getRemainingWaitTime: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **email** | **String**| 用戶郵箱 | 
+
+### Return type
+
+[**Map<String, Object>**](Object.md)
 
 ### Authorization
 
@@ -464,6 +506,48 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **resetPasswordWithCode**
+> resetPasswordWithCode(email, code)
+
+使用驗證碼重置密碼
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = AuthApi();
+final email = email_example; // String | 用戶郵箱
+final code = code_example; // String | 驗證碼
+
+try {
+    api_instance.resetPasswordWithCode(email, code);
+} catch (e) {
+    print('Exception when calling AuthApi->resetPasswordWithCode: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **email** | **String**| 用戶郵箱 | 
+ **code** | **String**| 驗證碼 | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateProfile**
 > UserInfo updateProfile(userProfileUpdateParam)
 
@@ -502,46 +586,6 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **verifyResetToken**
-> verifyResetToken(token)
-
-驗證密碼重置令牌
-
-### Example
-```dart
-import 'package:agora_market_dart_sdk/api.dart';
-
-final api_instance = AuthApi();
-final token = token_example; // String | 密碼重置令牌
-
-try {
-    api_instance.verifyResetToken(token);
-} catch (e) {
-    print('Exception when calling AuthApi->verifyResetToken: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **token** | **String**| 密碼重置令牌 | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

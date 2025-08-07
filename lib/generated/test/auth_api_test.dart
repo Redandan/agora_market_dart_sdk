@@ -42,7 +42,7 @@ void main() {
       // TODO
     });
 
-    // 發送密碼重置郵件
+    // 忘記密碼 - 發送驗證碼到郵箱
     //
     //Future forgotPassword(String email) async
     test('test forgotPassword', () async {
@@ -53,6 +53,13 @@ void main() {
     //
     //Future<UserInfo> getCurrentUser() async
     test('test getCurrentUser', () async {
+      // TODO
+    });
+
+    // 查詢忘記密碼驗證碼的剩餘等待時間
+    //
+    //Future<Map<String, Object>> getRemainingWaitTime(String email) async
+    test('test getRemainingWaitTime', () async {
       // TODO
     });
 
@@ -100,17 +107,17 @@ void main() {
       // TODO
     });
 
+    // 使用驗證碼重置密碼
+    //
+    //Future resetPasswordWithCode(String email, String code) async
+    test('test resetPasswordWithCode', () async {
+      // TODO
+    });
+
     // 更新用戶資料
     //
     //Future<UserInfo> updateProfile(UserProfileUpdateParam userProfileUpdateParam) async
     test('test updateProfile', () async {
-      // TODO
-    });
-
-    // 驗證密碼重置令牌
-    //
-    //Future verifyResetToken(String token) async
-    test('test verifyResetToken', () async {
       // TODO
     });
 
