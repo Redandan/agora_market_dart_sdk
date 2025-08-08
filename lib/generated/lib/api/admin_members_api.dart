@@ -198,6 +198,61 @@ class AdminMembersApi {
     return null;
   }
 
+  /// 管理員重設會員密碼
+  ///
+  /// 管理員可以重設指定會員的密碼
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] memberId (required):
+  ///   會員ID
+  ///
+  /// * [AdminResetPasswordParam] adminResetPasswordParam (required):
+  Future<Response> resetMemberPasswordWithHttpInfo(int memberId, AdminResetPasswordParam adminResetPasswordParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/members/{memberId}/reset-password'
+      .replaceAll('{memberId}', memberId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody = adminResetPasswordParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 管理員重設會員密碼
+  ///
+  /// 管理員可以重設指定會員的密碼
+  ///
+  /// Parameters:
+  ///
+  /// * [int] memberId (required):
+  ///   會員ID
+  ///
+  /// * [AdminResetPasswordParam] adminResetPasswordParam (required):
+  Future<void> resetMemberPassword(int memberId, AdminResetPasswordParam adminResetPasswordParam,) async {
+    final response = await resetMemberPasswordWithHttpInfo(memberId, adminResetPasswordParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
   /// 搜索會員
   ///
   /// 管理員可根據多個條件搜索會員

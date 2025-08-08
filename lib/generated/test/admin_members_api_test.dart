@@ -42,6 +42,15 @@ void main() {
       // TODO
     });
 
+    // 管理員重設會員密碼
+    //
+    // 管理員可以重設指定會員的密碼
+    //
+    //Future resetMemberPassword(int memberId, AdminResetPasswordParam adminResetPasswordParam) async
+    test('test resetMemberPassword', () async {
+      // TODO
+    });
+
     // 搜索會員
     //
     // 管理員可根據多個條件搜索會員

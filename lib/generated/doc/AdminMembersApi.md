@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**createUserByAdmin**](AdminMembersApi.md#createuserbyadmin) | **POST** /admin/members/create-user | 管理員創建用戶
 [**getMemberDetail**](AdminMembersApi.md#getmemberdetail) | **GET** /admin/members/{memberId} | 查看會員詳情
 [**getMemberStatistics**](AdminMembersApi.md#getmemberstatistics) | **GET** /admin/members/statistics | 會員統計報告
+[**resetMemberPassword**](AdminMembersApi.md#resetmemberpassword) | **POST** /admin/members/{memberId}/reset-password | 管理員重設會員密碼
 [**searchMembers**](AdminMembersApi.md#searchmembers) | **GET** /admin/members/search | 搜索會員
 [**updateMemberByAdmin**](AdminMembersApi.md#updatememberbyadmin) | **POST** /admin/members/{memberId}/update | 更新會員信息
 [**updateMemberStatus**](AdminMembersApi.md#updatememberstatus) | **POST** /admin/members/{memberId}/status | 更新會員狀態
@@ -143,6 +144,50 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **resetMemberPassword**
+> resetMemberPassword(memberId, adminResetPasswordParam)
+
+管理員重設會員密碼
+
+管理員可以重設指定會員的密碼
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = AdminMembersApi();
+final memberId = 789; // int | 會員ID
+final adminResetPasswordParam = AdminResetPasswordParam(); // AdminResetPasswordParam | 
+
+try {
+    api_instance.resetMemberPassword(memberId, adminResetPasswordParam);
+} catch (e) {
+    print('Exception when calling AdminMembersApi->resetMemberPassword: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **memberId** | **int**| 會員ID | 
+ **adminResetPasswordParam** | [**AdminResetPasswordParam**](AdminResetPasswordParam.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

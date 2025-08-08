@@ -186,6 +186,8 @@ class ApiClient {
           return AcceptOrderParam.fromJson(value);
         case 'AdminCreateUserParam':
           return AdminCreateUserParam.fromJson(value);
+        case 'AdminResetPasswordParam':
+          return AdminResetPasswordParam.fromJson(value);
         case 'ApplyStakingParam':
           return ApplyStakingParam.fromJson(value);
         case 'AutoReplyConfig':

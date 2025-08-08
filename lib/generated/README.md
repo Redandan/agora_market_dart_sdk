@@ -135,6 +135,7 @@ Class | Method | HTTP request | Description
 *AdminMembersApi* | [**createUserByAdmin**](doc//AdminMembersApi.md#createuserbyadmin) | **POST** /admin/members/create-user | 管理員創建用戶
 *AdminMembersApi* | [**getMemberDetail**](doc//AdminMembersApi.md#getmemberdetail) | **GET** /admin/members/{memberId} | 查看會員詳情
 *AdminMembersApi* | [**getMemberStatistics**](doc//AdminMembersApi.md#getmemberstatistics) | **GET** /admin/members/statistics | 會員統計報告
+*AdminMembersApi* | [**resetMemberPassword**](doc//AdminMembersApi.md#resetmemberpassword) | **POST** /admin/members/{memberId}/reset-password | 管理員重設會員密碼
 *AdminMembersApi* | [**searchMembers**](doc//AdminMembersApi.md#searchmembers) | **GET** /admin/members/search | 搜索會員
 *AdminMembersApi* | [**updateMemberByAdmin**](doc//AdminMembersApi.md#updatememberbyadmin) | **POST** /admin/members/{memberId}/update | 更新會員信息
 *AdminMembersApi* | [**updateMemberStatus**](doc//AdminMembersApi.md#updatememberstatus) | **POST** /admin/members/{memberId}/status | 更新會員狀態
@@ -305,6 +306,7 @@ Class | Method | HTTP request | Description
 
  - [AcceptOrderParam](doc//AcceptOrderParam.md)
  - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
+ - [AdminResetPasswordParam](doc//AdminResetPasswordParam.md)
  - [ApplyStakingParam](doc//ApplyStakingParam.md)
  - [AutoReplyConfig](doc//AutoReplyConfig.md)
  - [BatchReviewPromoCodeParam](doc//BatchReviewPromoCodeParam.md)

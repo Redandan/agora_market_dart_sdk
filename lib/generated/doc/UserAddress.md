@@ -30,9 +30,9 @@ Name | Type | Description | Notes
 **formattedAddress** | **String** |  | [optional] 
 **fullAddress** | **String** |  | [optional] 
 **convenienceStorePickup** | **bool** |  | [optional] 
-**homeDelivery** | **bool** |  | [optional] 
 **logisticsDescription** | **String** |  | [optional] 
 **recipientInfo** | **String** |  | [optional] 
+**homeDelivery** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

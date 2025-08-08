@@ -1,4 +1,4 @@
-# agora_market_dart_sdk.model.PageableObject
+# agora_market_dart_sdk.model.AdminResetPasswordParam
 
 ## Load the model package
 ```dart
@@ -8,12 +8,8 @@ import 'package:agora_market_dart_sdk/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sort** | [**SortObject**](SortObject.md) |  | [optional] 
-**offset** | **int** |  | [optional] 
-**pageNumber** | **int** |  | [optional] 
-**pageSize** | **int** |  | [optional] 
-**paged** | **bool** |  | [optional] 
-**unpaged** | **bool** |  | [optional] 
+**memberId** | **String** | 會員ID | 
+**newPassword** | **String** | 新密碼 | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

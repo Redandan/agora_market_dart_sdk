@@ -257,13 +257,13 @@ void main() {
       // TODO
     });
 
-    // bool stockBelowMinimum
-    test('to test the property `stockBelowMinimum`', () async {
+    // num defaultShippingFee
+    test('to test the property `defaultShippingFee`', () async {
       // TODO
     });
 
-    // num defaultShippingFee
-    test('to test the property `defaultShippingFee`', () async {
+    // bool stockBelowMinimum
+    test('to test the property `stockBelowMinimum`', () async {
       // TODO
     });
 

@@ -30,8 +30,8 @@ Name | Type | Description | Notes
 **updatedAt** | [**DateTime**](DateTime.md) | 更新時間 | [optional] 
 **inStock** | **bool** |  | [optional] 
 **subtotal** | **num** |  | [optional] 
-**totalPrice** | **num** |  | [optional] 
 **stockStatus** | **String** |  | [optional] 
+**totalPrice** | **num** |  | [optional] 
 **specificationDescription** | **String** |  | [optional] 
 **purchaseRestrictionReason** | **String** |  | [optional] 
 

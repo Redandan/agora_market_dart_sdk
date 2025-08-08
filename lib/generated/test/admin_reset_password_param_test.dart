@@ -11,23 +11,20 @@
 import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
-// tests for SortObject
+// tests for AdminResetPasswordParam
 void main() {
-  // final instance = SortObject();
+  // final instance = AdminResetPasswordParam();
 
-  group('test SortObject', () {
-    // bool empty
-    test('to test the property `empty`', () async {
+  group('test AdminResetPasswordParam', () {
+    // 會員ID
+    // String memberId
+    test('to test the property `memberId`', () async {
       // TODO
     });
 
-    // bool sorted
-    test('to test the property `sorted`', () async {
-      // TODO
-    });
-
-    // bool unsorted
-    test('to test the property `unsorted`', () async {
+    // 新密碼
+    // String newPassword
+    test('to test the property `newPassword`', () async {
       // TODO
     });
 
