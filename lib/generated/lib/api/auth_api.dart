@@ -248,6 +248,62 @@ class AuthApi {
     return null;
   }
 
+  /// 查詢郵件驗證碼的剩餘等待時間
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] email (required):
+  ///   用戶郵箱
+  Future<Response> getEmailVerificationRemainingTimeWithHttpInfo(String email,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/email-verification/remaining-time';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'email', email));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查詢郵件驗證碼的剩餘等待時間
+  ///
+  /// Parameters:
+  ///
+  /// * [String] email (required):
+  ///   用戶郵箱
+  Future<Map<String, Object>?> getEmailVerificationRemainingTime(String email,) async {
+    final response = await getEmailVerificationRemainingTimeWithHttpInfo(email,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
+
+    }
+    return null;
+  }
+
   /// 查詢忘記密碼驗證碼的剩餘等待時間
   ///
   /// Note: This method returns the HTTP [Response].
@@ -548,6 +604,54 @@ class AuthApi {
     return null;
   }
 
+  /// 重發郵件驗證碼
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] email (required):
+  ///   用戶郵箱
+  Future<Response> resendVerificationEmailWithHttpInfo(String email,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/email-verification/resend';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'email', email));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 重發郵件驗證碼
+  ///
+  /// Parameters:
+  ///
+  /// * [String] email (required):
+  ///   用戶郵箱
+  Future<void> resendVerificationEmail(String email,) async {
+    final response = await resendVerificationEmailWithHttpInfo(email,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
   /// 重設密碼
   ///
   /// Note: This method returns the HTTP [Response].
@@ -647,6 +751,54 @@ class AuthApi {
     }
   }
 
+  /// 發送郵件驗證碼
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] email (required):
+  ///   用戶郵箱
+  Future<Response> sendEmailVerificationWithHttpInfo(String email,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/email-verification/send';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'email', email));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 發送郵件驗證碼
+  ///
+  /// Parameters:
+  ///
+  /// * [String] email (required):
+  ///   用戶郵箱
+  Future<void> sendEmailVerification(String email,) async {
+    final response = await sendEmailVerificationWithHttpInfo(email,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
   /// 更新用戶資料
   ///
   /// Note: This method returns the HTTP [Response].
@@ -697,6 +849,61 @@ class AuthApi {
     
     }
     return null;
+  }
+
+  /// 驗證郵件驗證碼
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] email (required):
+  ///   用戶郵箱
+  ///
+  /// * [String] code (required):
+  ///   驗證碼
+  Future<Response> verifyEmailWithHttpInfo(String email, String code,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/email-verification/verify';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'email', email));
+      queryParams.addAll(_queryParams('', 'code', code));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 驗證郵件驗證碼
+  ///
+  /// Parameters:
+  ///
+  /// * [String] email (required):
+  ///   用戶郵箱
+  ///
+  /// * [String] code (required):
+  ///   驗證碼
+  Future<void> verifyEmail(String email, String code,) async {
+    final response = await verifyEmailWithHttpInfo(email, code,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
   }
 
   /// 驗證雙因素認證碼

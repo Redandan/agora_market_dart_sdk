@@ -111,6 +111,12 @@ void main() {
       // TODO
     });
 
+    // 郵件是否已驗證
+    // bool emailVerified
+    test('to test the property `emailVerified`', () async {
+      // TODO
+    });
+
     // 創建時間
     // DateTime createdAt
     test('to test the property `createdAt`', () async {

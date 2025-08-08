@@ -14,15 +14,19 @@ Method | HTTP request | Description
 [**enableTwoFactor**](AuthApi.md#enabletwofactor) | **POST** /auth/2fa/enable | 啟用雙因素認證
 [**forgotPassword**](AuthApi.md#forgotpassword) | **POST** /auth/forgot-password | 忘記密碼 - 發送驗證碼到郵箱
 [**getCurrentUser**](AuthApi.md#getcurrentuser) | **GET** /auth/me | 獲取當前用戶信息
+[**getEmailVerificationRemainingTime**](AuthApi.md#getemailverificationremainingtime) | **GET** /auth/email-verification/remaining-time | 查詢郵件驗證碼的剩餘等待時間
 [**getRemainingWaitTime**](AuthApi.md#getremainingwaittime) | **GET** /auth/forgot-password/remaining-time | 查詢忘記密碼驗證碼的剩餘等待時間
 [**getTwoFactorInfo**](AuthApi.md#gettwofactorinfo) | **GET** /auth/2fa | 獲取雙因素認證信息
 [**login**](AuthApi.md#login) | **POST** /auth/login | 用戶登入
 [**logout**](AuthApi.md#logout) | **POST** /auth/logout | 用戶登出
 [**refreshToken**](AuthApi.md#refreshtoken) | **POST** /auth/refresh-token | 刷新訪問令牌
 [**register**](AuthApi.md#register) | **POST** /auth/register | 註冊新用戶
+[**resendVerificationEmail**](AuthApi.md#resendverificationemail) | **POST** /auth/email-verification/resend | 重發郵件驗證碼
 [**resetPassword**](AuthApi.md#resetpassword) | **POST** /auth/reset-password | 重設密碼
 [**resetPasswordWithCode**](AuthApi.md#resetpasswordwithcode) | **POST** /auth/reset-password-with-code | 使用驗證碼重置密碼
+[**sendEmailVerification**](AuthApi.md#sendemailverification) | **POST** /auth/email-verification/send | 發送郵件驗證碼
 [**updateProfile**](AuthApi.md#updateprofile) | **POST** /auth/update-profile | 更新用戶資料
+[**verifyEmail**](AuthApi.md#verifyemail) | **POST** /auth/email-verification/verify | 驗證郵件驗證碼
 [**verifyTwoFactorCode**](AuthApi.md#verifytwofactorcode) | **POST** /auth/2fa/verify | 驗證雙因素認證碼
 
 
@@ -215,6 +219,47 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**UserInfo**](UserInfo.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getEmailVerificationRemainingTime**
+> Map<String, Object> getEmailVerificationRemainingTime(email)
+
+查詢郵件驗證碼的剩餘等待時間
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = AuthApi();
+final email = email_example; // String | 用戶郵箱
+
+try {
+    final result = api_instance.getEmailVerificationRemainingTime(email);
+    print(result);
+} catch (e) {
+    print('Exception when calling AuthApi->getEmailVerificationRemainingTime: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **email** | **String**| 用戶郵箱 | 
+
+### Return type
+
+[**Map<String, Object>**](Object.md)
 
 ### Authorization
 
@@ -466,6 +511,46 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **resendVerificationEmail**
+> resendVerificationEmail(email)
+
+重發郵件驗證碼
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = AuthApi();
+final email = email_example; // String | 用戶郵箱
+
+try {
+    api_instance.resendVerificationEmail(email);
+} catch (e) {
+    print('Exception when calling AuthApi->resendVerificationEmail: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **email** | **String**| 用戶郵箱 | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **resetPassword**
 > resetPassword(passwordResetParam)
 
@@ -548,6 +633,46 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **sendEmailVerification**
+> sendEmailVerification(email)
+
+發送郵件驗證碼
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = AuthApi();
+final email = email_example; // String | 用戶郵箱
+
+try {
+    api_instance.sendEmailVerification(email);
+} catch (e) {
+    print('Exception when calling AuthApi->sendEmailVerification: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **email** | **String**| 用戶郵箱 | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateProfile**
 > UserInfo updateProfile(userProfileUpdateParam)
 
@@ -586,6 +711,48 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **verifyEmail**
+> verifyEmail(email, code)
+
+驗證郵件驗證碼
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = AuthApi();
+final email = email_example; // String | 用戶郵箱
+final code = code_example; // String | 驗證碼
+
+try {
+    api_instance.verifyEmail(email, code);
+} catch (e) {
+    print('Exception when calling AuthApi->verifyEmail: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **email** | **String**| 用戶郵箱 | 
+ **code** | **String**| 驗證碼 | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

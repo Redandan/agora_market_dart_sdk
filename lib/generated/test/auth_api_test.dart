@@ -56,6 +56,13 @@ void main() {
       // TODO
     });
 
+    // 查詢郵件驗證碼的剩餘等待時間
+    //
+    //Future<Map<String, Object>> getEmailVerificationRemainingTime(String email) async
+    test('test getEmailVerificationRemainingTime', () async {
+      // TODO
+    });
+
     // 查詢忘記密碼驗證碼的剩餘等待時間
     //
     //Future<Map<String, Object>> getRemainingWaitTime(String email) async
@@ -100,6 +107,13 @@ void main() {
       // TODO
     });
 
+    // 重發郵件驗證碼
+    //
+    //Future resendVerificationEmail(String email) async
+    test('test resendVerificationEmail', () async {
+      // TODO
+    });
+
     // 重設密碼
     //
     //Future resetPassword(PasswordResetParam passwordResetParam) async
@@ -114,10 +128,24 @@ void main() {
       // TODO
     });
 
+    // 發送郵件驗證碼
+    //
+    //Future sendEmailVerification(String email) async
+    test('test sendEmailVerification', () async {
+      // TODO
+    });
+
     // 更新用戶資料
     //
     //Future<UserInfo> updateProfile(UserProfileUpdateParam userProfileUpdateParam) async
     test('test updateProfile', () async {
+      // TODO
+    });
+
+    // 驗證郵件驗證碼
+    //
+    //Future verifyEmail(String email, String code) async
+    test('test verifyEmail', () async {
       // TODO
     });
 

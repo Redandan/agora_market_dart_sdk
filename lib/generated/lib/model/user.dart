@@ -29,6 +29,7 @@ class User {
     this.promoCode,
     this.twoFactorEnabled,
     this.twoFactorSecret,
+    this.emailVerified,
     this.createdAt,
     this.updatedAt,
     this.admin,
@@ -177,6 +178,15 @@ class User {
   ///
   String? twoFactorSecret;
 
+  /// 郵件是否已驗證
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? emailVerified;
+
   /// 創建時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -221,6 +231,7 @@ class User {
     other.promoCode == promoCode &&
     other.twoFactorEnabled == twoFactorEnabled &&
     other.twoFactorSecret == twoFactorSecret &&
+    other.emailVerified == emailVerified &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
     other.admin == admin;
@@ -244,12 +255,13 @@ class User {
     (promoCode == null ? 0 : promoCode!.hashCode) +
     (twoFactorEnabled == null ? 0 : twoFactorEnabled!.hashCode) +
     (twoFactorSecret == null ? 0 : twoFactorSecret!.hashCode) +
+    (emailVerified == null ? 0 : emailVerified!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (admin == null ? 0 : admin!.hashCode);
 
   @override
-  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin]';
+  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -333,6 +345,11 @@ class User {
     } else {
       json[r'twoFactorSecret'] = null;
     }
+    if (this.emailVerified != null) {
+      json[r'emailVerified'] = this.emailVerified;
+    } else {
+      json[r'emailVerified'] = null;
+    }
     if (this.createdAt != null) {
       json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
     } else {
@@ -386,6 +403,7 @@ class User {
         promoCode: mapValueOfType<String>(json, r'promoCode'),
         twoFactorEnabled: mapValueOfType<bool>(json, r'twoFactorEnabled'),
         twoFactorSecret: mapValueOfType<String>(json, r'twoFactorSecret'),
+        emailVerified: mapValueOfType<bool>(json, r'emailVerified'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         admin: mapValueOfType<bool>(json, r'admin'),

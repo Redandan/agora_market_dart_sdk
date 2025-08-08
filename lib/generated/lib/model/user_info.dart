@@ -16,6 +16,7 @@ class UserInfo {
     this.id,
     this.username,
     this.email,
+    this.emailVerified,
     this.role,
     this.balance,
     this.stackingBalance,
@@ -53,6 +54,15 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? email;
+
+  /// 郵箱是否已驗證
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? emailVerified;
 
   /// 角色
   ///
@@ -140,6 +150,7 @@ class UserInfo {
     other.id == id &&
     other.username == username &&
     other.email == email &&
+    other.emailVerified == emailVerified &&
     other.role == role &&
     other.balance == balance &&
     other.stackingBalance == stackingBalance &&
@@ -156,6 +167,7 @@ class UserInfo {
     (id == null ? 0 : id!.hashCode) +
     (username == null ? 0 : username!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
+    (emailVerified == null ? 0 : emailVerified!.hashCode) +
     (role == null ? 0 : role!.hashCode) +
     (balance == null ? 0 : balance!.hashCode) +
     (stackingBalance == null ? 0 : stackingBalance!.hashCode) +
@@ -167,7 +179,7 @@ class UserInfo {
     (displayDeliveryerName == null ? 0 : displayDeliveryerName!.hashCode);
 
   @override
-  String toString() => 'UserInfo[id=$id, username=$username, email=$email, role=$role, balance=$balance, stackingBalance=$stackingBalance, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName]';
+  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, stackingBalance=$stackingBalance, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -185,6 +197,11 @@ class UserInfo {
       json[r'email'] = this.email;
     } else {
       json[r'email'] = null;
+    }
+    if (this.emailVerified != null) {
+      json[r'emailVerified'] = this.emailVerified;
+    } else {
+      json[r'emailVerified'] = null;
     }
     if (this.role != null) {
       json[r'role'] = this.role;
@@ -256,6 +273,7 @@ class UserInfo {
         id: mapValueOfType<int>(json, r'id'),
         username: mapValueOfType<String>(json, r'username'),
         email: mapValueOfType<String>(json, r'email'),
+        emailVerified: mapValueOfType<bool>(json, r'emailVerified'),
         role: mapValueOfType<String>(json, r'role'),
         balance: num.parse('${json[r'balance']}'),
         stackingBalance: num.parse('${json[r'stackingBalance']}'),

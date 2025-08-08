@@ -257,8 +257,8 @@ void main() {
       // TODO
     });
 
-    // num defaultShippingFee
-    test('to test the property `defaultShippingFee`', () async {
+    // bool stockLow
+    test('to test the property `stockLow`', () async {
       // TODO
     });
 
@@ -267,8 +267,8 @@ void main() {
       // TODO
     });
 
-    // bool stockLow
-    test('to test the property `stockLow`', () async {
+    // num defaultShippingFee
+    test('to test the property `defaultShippingFee`', () async {
       // TODO
     });
 

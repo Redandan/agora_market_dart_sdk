@@ -34,6 +34,12 @@ void main() {
       // TODO
     });
 
+    // 郵箱是否已驗證
+    // bool emailVerified
+    test('to test the property `emailVerified`', () async {
+      // TODO
+    });
+
     // 角色
     // String role
     test('to test the property `role`', () async {

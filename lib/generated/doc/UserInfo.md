@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **id** | **int** | 用戶ID | [optional] 
 **username** | **String** | 用戶名 | [optional] 
 **email** | **String** | 郵箱 | [optional] 
+**emailVerified** | **bool** | 郵箱是否已驗證 | [optional] 
 **role** | **String** | 角色 | [optional] 
 **balance** | **num** | 餘額 | [optional] 
 **stackingBalance** | **num** | 質押餘額 | [optional] 

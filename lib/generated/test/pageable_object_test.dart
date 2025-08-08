@@ -21,11 +21,6 @@ void main() {
       // TODO
     });
 
-    // int offset
-    test('to test the property `offset`', () async {
-      // TODO
-    });
-
     // int pageNumber
     test('to test the property `pageNumber`', () async {
       // TODO
@@ -43,6 +38,11 @@ void main() {
 
     // bool unpaged
     test('to test the property `unpaged`', () async {
+      // TODO
+    });
+
+    // int offset
+    test('to test the property `offset`', () async {
       // TODO
     });
 

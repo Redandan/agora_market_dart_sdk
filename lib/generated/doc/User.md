@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **promoCode** | **String** | 註冊推廣碼 | [optional] 
 **twoFactorEnabled** | **bool** | 是否啟用雙因素認證 | [optional] 
 **twoFactorSecret** | **String** | 雙因素認證密鑰 | [optional] 
+**emailVerified** | **bool** | 郵件是否已驗證 | [optional] 
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | 最後更新時間 | [optional] 
 **admin** | **bool** |  | [optional] 
