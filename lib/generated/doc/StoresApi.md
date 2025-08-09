@@ -14,7 +14,7 @@ Method | HTTP request | Description
 [**getShippingConfig**](StoresApi.md#getshippingconfig) | **GET** /stores/shipping-config | 獲取商店物流設定
 [**getStoreAnalytics**](StoresApi.md#getstoreanalytics) | **GET** /stores/analytics | 獲取商店分析數據
 [**getStoreBySellerId**](StoresApi.md#getstorebysellerid) | **GET** /stores/{sellerId} | 根據賣家ID獲取商店信息
-[**searchMyStoreProducts**](StoresApi.md#searchmystoreproducts) | **GET** /stores/products/search | 搜索我的商店商品
+[**searchMyStoreProducts**](StoresApi.md#searchmystoreproducts) | **POST** /stores/products/search | 搜索我的商店商品
 [**updateShippingConfig**](StoresApi.md#updateshippingconfig) | **POST** /stores/shipping-config | 更新商店物流設定
 [**updateStore**](StoresApi.md#updatestore) | **POST** /stores/update | 更新商店
 
@@ -213,7 +213,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchMyStoreProducts**
-> PageProduct searchMyStoreProducts(keyword, categoryId, status, page, size)
+> PageProduct searchMyStoreProducts(storeProductSearchParam, page, size)
 
 搜索我的商店商品
 
@@ -222,14 +222,12 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = StoresApi();
-final keyword = keyword_example; // String | 
-final categoryId = 789; // int | 
-final status = status_example; // String | 
+final storeProductSearchParam = StoreProductSearchParam(); // StoreProductSearchParam | 
 final page = 56; // int | 
 final size = 56; // int | 
 
 try {
-    final result = api_instance.searchMyStoreProducts(keyword, categoryId, status, page, size);
+    final result = api_instance.searchMyStoreProducts(storeProductSearchParam, page, size);
     print(result);
 } catch (e) {
     print('Exception when calling StoresApi->searchMyStoreProducts: $e\n');
@@ -240,9 +238,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **keyword** | **String**|  | [optional] 
- **categoryId** | **int**|  | [optional] 
- **status** | **String**|  | [optional] 
+ **storeProductSearchParam** | [**StoreProductSearchParam**](StoreProductSearchParam.md)|  | 
  **page** | **int**|  | [optional] [default to 1]
  **size** | **int**|  | [optional] [default to 10]
 
@@ -256,7 +252,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

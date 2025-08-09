@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**getMemberDetail**](AdminMembersApi.md#getmemberdetail) | **GET** /admin/members/{memberId} | 查看會員詳情
 [**getMemberStatistics**](AdminMembersApi.md#getmemberstatistics) | **GET** /admin/members/statistics | 會員統計報告
 [**resetMemberPassword**](AdminMembersApi.md#resetmemberpassword) | **POST** /admin/members/{memberId}/reset-password | 管理員重設會員密碼
-[**searchMembers**](AdminMembersApi.md#searchmembers) | **GET** /admin/members/search | 搜索會員
+[**searchMembers**](AdminMembersApi.md#searchmembers) | **POST** /admin/members/search | 搜索會員
 [**updateMemberByAdmin**](AdminMembersApi.md#updatememberbyadmin) | **POST** /admin/members/{memberId}/update | 更新會員信息
 [**updateMemberStatus**](AdminMembersApi.md#updatememberstatus) | **POST** /admin/members/{memberId}/status | 更新會員狀態
 
@@ -192,7 +192,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchMembers**
-> PageUser searchMembers(status, startDate, endDate, page, size)
+> PageUser searchMembers(memberSearchParam, page, size)
 
 搜索會員
 
@@ -203,14 +203,12 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = AdminMembersApi();
-final status = status_example; // String | 會員狀態
-final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
-final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
+final memberSearchParam = MemberSearchParam(); // MemberSearchParam | 
 final page = 56; // int | 頁碼，從1開始
 final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.searchMembers(status, startDate, endDate, page, size);
+    final result = api_instance.searchMembers(memberSearchParam, page, size);
     print(result);
 } catch (e) {
     print('Exception when calling AdminMembersApi->searchMembers: $e\n');
@@ -221,9 +219,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | **String**| 會員狀態 | [optional] 
- **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
- **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
+ **memberSearchParam** | [**MemberSearchParam**](MemberSearchParam.md)|  | 
  **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
  **size** | **int**| 每頁數量 | [optional] [default to 20]
 
@@ -237,7 +233,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

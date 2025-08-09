@@ -55,7 +55,7 @@ void main() {
     //
     // 管理員可根據多個條件搜索會員
     //
-    //Future<PageUser> searchMembers({ String status, DateTime startDate, DateTime endDate, int page, int size }) async
+    //Future<PageUser> searchMembers(MemberSearchParam memberSearchParam, { int page, int size }) async
     test('test searchMembers', () async {
       // TODO
     });

@@ -261,35 +261,22 @@ class StoresApi {
   ///
   /// Parameters:
   ///
-  /// * [String] keyword:
-  ///
-  /// * [int] categoryId:
-  ///
-  /// * [String] status:
+  /// * [StoreProductSearchParam] storeProductSearchParam (required):
   ///
   /// * [int] page:
   ///
   /// * [int] size:
-  Future<Response> searchMyStoreProductsWithHttpInfo({ String? keyword, int? categoryId, String? status, int? page, int? size, }) async {
+  Future<Response> searchMyStoreProductsWithHttpInfo(StoreProductSearchParam storeProductSearchParam, { int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/stores/products/search';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = storeProductSearchParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (keyword != null) {
-      queryParams.addAll(_queryParams('', 'keyword', keyword));
-    }
-    if (categoryId != null) {
-      queryParams.addAll(_queryParams('', 'categoryId', categoryId));
-    }
-    if (status != null) {
-      queryParams.addAll(_queryParams('', 'status', status));
-    }
     if (page != null) {
       queryParams.addAll(_queryParams('', 'page', page));
     }
@@ -297,12 +284,12 @@ class StoresApi {
       queryParams.addAll(_queryParams('', 'size', size));
     }
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -315,17 +302,13 @@ class StoresApi {
   ///
   /// Parameters:
   ///
-  /// * [String] keyword:
-  ///
-  /// * [int] categoryId:
-  ///
-  /// * [String] status:
+  /// * [StoreProductSearchParam] storeProductSearchParam (required):
   ///
   /// * [int] page:
   ///
   /// * [int] size:
-  Future<PageProduct?> searchMyStoreProducts({ String? keyword, int? categoryId, String? status, int? page, int? size, }) async {
-    final response = await searchMyStoreProductsWithHttpInfo( keyword: keyword, categoryId: categoryId, status: status, page: page, size: size, );
+  Future<PageProduct?> searchMyStoreProducts(StoreProductSearchParam storeProductSearchParam, { int? page, int? size, }) async {
+    final response = await searchMyStoreProductsWithHttpInfo(storeProductSearchParam,  page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

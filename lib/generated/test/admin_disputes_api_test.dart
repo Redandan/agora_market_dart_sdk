@@ -57,7 +57,7 @@ void main() {
     //
     // 管理員可根據多個條件搜索糾紛
     //
-    //Future<PageDispute> searchDisputes1({ int buyerId, int sellerId, String status, DateTime startDate, DateTime endDate, int page, int size }) async
+    //Future<PageDispute> searchDisputes1(DisputeSearchParam disputeSearchParam, { int page, int size }) async
     test('test searchDisputes1', () async {
       // TODO
     });

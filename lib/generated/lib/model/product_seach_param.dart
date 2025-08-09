@@ -13,14 +13,17 @@ part of openapi.api;
 class ProductSeachParam {
   /// Returns a new [ProductSeachParam] instance.
   ProductSeachParam({
+    this.page,
+    this.size,
+    this.startDate,
+    this.endDate,
+    this.keyword,
+    this.sortBy,
+    this.sortDirection,
     this.id,
     this.sellerId,
     this.status,
     this.category,
-    this.startDate,
-    this.endDate,
-    this.page,
-    this.size,
     this.postalCode,
     this.longitude,
     this.latitude,
@@ -28,8 +31,70 @@ class ProductSeachParam {
     this.minPrice,
     this.maxPrice,
     this.inStock,
-    this.keyword,
   });
+
+  /// 頁碼，從1開始
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? page;
+
+  /// 每頁數量
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? size;
+
+  /// 開始日期 (ISO-8601 格式)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? startDate;
+
+  /// 結束日期 (ISO-8601 格式)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? endDate;
+
+  /// 搜索關鍵字
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? keyword;
+
+  /// 排序字段
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sortBy;
+
+  /// 排序方向 (ASC/DESC)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sortDirection;
 
   /// 商品ID
   ///
@@ -64,42 +129,6 @@ class ProductSeachParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   ProductCategoryEnum? category;
-
-  /// 開始日期
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? startDate;
-
-  /// 結束日期
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? endDate;
-
-  /// 頁碼
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? page;
-
-  /// 每頁大小
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? size;
 
   /// 郵遞區號
   ///
@@ -164,59 +193,89 @@ class ProductSeachParam {
   ///
   bool? inStock;
 
-  /// 搜索關鍵字
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? keyword;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductSeachParam &&
+    other.page == page &&
+    other.size == size &&
+    other.startDate == startDate &&
+    other.endDate == endDate &&
+    other.keyword == keyword &&
+    other.sortBy == sortBy &&
+    other.sortDirection == sortDirection &&
     other.id == id &&
     other.sellerId == sellerId &&
     other.status == status &&
     other.category == category &&
-    other.startDate == startDate &&
-    other.endDate == endDate &&
-    other.page == page &&
-    other.size == size &&
     other.postalCode == postalCode &&
     other.longitude == longitude &&
     other.latitude == latitude &&
     other.tag == tag &&
     other.minPrice == minPrice &&
     other.maxPrice == maxPrice &&
-    other.inStock == inStock &&
-    other.keyword == keyword;
+    other.inStock == inStock;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (page == null ? 0 : page!.hashCode) +
+    (size == null ? 0 : size!.hashCode) +
+    (startDate == null ? 0 : startDate!.hashCode) +
+    (endDate == null ? 0 : endDate!.hashCode) +
+    (keyword == null ? 0 : keyword!.hashCode) +
+    (sortBy == null ? 0 : sortBy!.hashCode) +
+    (sortDirection == null ? 0 : sortDirection!.hashCode) +
     (id == null ? 0 : id!.hashCode) +
     (sellerId == null ? 0 : sellerId!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
     (category == null ? 0 : category!.hashCode) +
-    (startDate == null ? 0 : startDate!.hashCode) +
-    (endDate == null ? 0 : endDate!.hashCode) +
-    (page == null ? 0 : page!.hashCode) +
-    (size == null ? 0 : size!.hashCode) +
     (postalCode == null ? 0 : postalCode!.hashCode) +
     (longitude == null ? 0 : longitude!.hashCode) +
     (latitude == null ? 0 : latitude!.hashCode) +
     (tag == null ? 0 : tag!.hashCode) +
     (minPrice == null ? 0 : minPrice!.hashCode) +
     (maxPrice == null ? 0 : maxPrice!.hashCode) +
-    (inStock == null ? 0 : inStock!.hashCode) +
-    (keyword == null ? 0 : keyword!.hashCode);
+    (inStock == null ? 0 : inStock!.hashCode);
 
   @override
-  String toString() => 'ProductSeachParam[id=$id, sellerId=$sellerId, status=$status, category=$category, startDate=$startDate, endDate=$endDate, page=$page, size=$size, postalCode=$postalCode, longitude=$longitude, latitude=$latitude, tag=$tag, minPrice=$minPrice, maxPrice=$maxPrice, inStock=$inStock, keyword=$keyword]';
+  String toString() => 'ProductSeachParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, id=$id, sellerId=$sellerId, status=$status, category=$category, postalCode=$postalCode, longitude=$longitude, latitude=$latitude, tag=$tag, minPrice=$minPrice, maxPrice=$maxPrice, inStock=$inStock]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.page != null) {
+      json[r'page'] = this.page;
+    } else {
+      json[r'page'] = null;
+    }
+    if (this.size != null) {
+      json[r'size'] = this.size;
+    } else {
+      json[r'size'] = null;
+    }
+    if (this.startDate != null) {
+      json[r'startDate'] = this.startDate!.toUtc().toIso8601String();
+    } else {
+      json[r'startDate'] = null;
+    }
+    if (this.endDate != null) {
+      json[r'endDate'] = this.endDate!.toUtc().toIso8601String();
+    } else {
+      json[r'endDate'] = null;
+    }
+    if (this.keyword != null) {
+      json[r'keyword'] = this.keyword;
+    } else {
+      json[r'keyword'] = null;
+    }
+    if (this.sortBy != null) {
+      json[r'sortBy'] = this.sortBy;
+    } else {
+      json[r'sortBy'] = null;
+    }
+    if (this.sortDirection != null) {
+      json[r'sortDirection'] = this.sortDirection;
+    } else {
+      json[r'sortDirection'] = null;
+    }
     if (this.id != null) {
       json[r'id'] = this.id;
     } else {
@@ -236,26 +295,6 @@ class ProductSeachParam {
       json[r'category'] = this.category;
     } else {
       json[r'category'] = null;
-    }
-    if (this.startDate != null) {
-      json[r'startDate'] = this.startDate!.toUtc().toIso8601String();
-    } else {
-      json[r'startDate'] = null;
-    }
-    if (this.endDate != null) {
-      json[r'endDate'] = this.endDate!.toUtc().toIso8601String();
-    } else {
-      json[r'endDate'] = null;
-    }
-    if (this.page != null) {
-      json[r'page'] = this.page;
-    } else {
-      json[r'page'] = null;
-    }
-    if (this.size != null) {
-      json[r'size'] = this.size;
-    } else {
-      json[r'size'] = null;
     }
     if (this.postalCode != null) {
       json[r'postalCode'] = this.postalCode;
@@ -292,11 +331,6 @@ class ProductSeachParam {
     } else {
       json[r'inStock'] = null;
     }
-    if (this.keyword != null) {
-      json[r'keyword'] = this.keyword;
-    } else {
-      json[r'keyword'] = null;
-    }
     return json;
   }
 
@@ -319,14 +353,17 @@ class ProductSeachParam {
       }());
 
       return ProductSeachParam(
+        page: mapValueOfType<int>(json, r'page'),
+        size: mapValueOfType<int>(json, r'size'),
+        startDate: mapDateTime(json, r'startDate', r''),
+        endDate: mapDateTime(json, r'endDate', r''),
+        keyword: mapValueOfType<String>(json, r'keyword'),
+        sortBy: mapValueOfType<String>(json, r'sortBy'),
+        sortDirection: mapValueOfType<String>(json, r'sortDirection'),
         id: mapValueOfType<String>(json, r'id'),
         sellerId: mapValueOfType<int>(json, r'sellerId'),
         status: ProductStatusEnum.fromJson(json[r'status']),
         category: ProductCategoryEnum.fromJson(json[r'category']),
-        startDate: mapDateTime(json, r'startDate', r''),
-        endDate: mapDateTime(json, r'endDate', r''),
-        page: mapValueOfType<int>(json, r'page'),
-        size: mapValueOfType<int>(json, r'size'),
         postalCode: mapValueOfType<String>(json, r'postalCode'),
         longitude: mapValueOfType<double>(json, r'longitude'),
         latitude: mapValueOfType<double>(json, r'latitude'),
@@ -334,7 +371,6 @@ class ProductSeachParam {
         minPrice: num.parse('${json[r'minPrice']}'),
         maxPrice: num.parse('${json[r'maxPrice']}'),
         inStock: mapValueOfType<bool>(json, r'inStock'),
-        keyword: mapValueOfType<String>(json, r'keyword'),
       );
     }
     return null;

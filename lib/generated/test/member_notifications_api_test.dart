@@ -111,7 +111,7 @@ void main() {
     //
     // 根據條件搜索通知列表
     //
-    //Future<PageNotificationResponseDTO> searchNotifications({ int id, int senderId, String title, String type, String status, bool isPushed, String relatedObjectId, String relatedObjectType, DateTime startDate, DateTime endDate, int page, int size }) async
+    //Future<PageNotificationResponseDTO> searchNotifications(NotificationSearchParam notificationSearchParam, { int page, int size }) async
     test('test searchNotifications', () async {
       // TODO
     });

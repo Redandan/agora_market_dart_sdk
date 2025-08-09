@@ -13,16 +13,81 @@ part of openapi.api;
 class UserOrderSearchParam {
   /// Returns a new [UserOrderSearchParam] instance.
   UserOrderSearchParam({
+    this.page,
+    this.size,
+    this.startDate,
+    this.endDate,
+    this.keyword,
+    this.sortBy,
+    this.sortDirection,
     this.orderId,
     this.productId,
     this.status,
     this.startTime,
-    this.endTime,
-    this.startDate,
-    this.endDate,
-    this.page,
-    this.size,
   });
+
+  /// 頁碼，從1開始
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? page;
+
+  /// 每頁數量
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? size;
+
+  /// 開始日期 (ISO-8601 格式)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? startDate;
+
+  /// 結束日期 (ISO-8601 格式)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? endDate;
+
+  /// 搜索關鍵字
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? keyword;
+
+  /// 排序字段
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sortBy;
+
+  /// 排序方向 (ASC/DESC)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sortDirection;
 
   /// 訂單ID
   ///
@@ -59,81 +124,75 @@ class UserOrderSearchParam {
   ///
   String? startTime;
 
-  /// 結束時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? endTime;
-
-  /// 開始日期
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? startDate;
-
-  /// 結束日期
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? endDate;
-
-  /// 頁碼
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? page;
-
-  /// 每頁大小
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? size;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserOrderSearchParam &&
+    other.page == page &&
+    other.size == size &&
+    other.startDate == startDate &&
+    other.endDate == endDate &&
+    other.keyword == keyword &&
+    other.sortBy == sortBy &&
+    other.sortDirection == sortDirection &&
     other.orderId == orderId &&
     other.productId == productId &&
     other.status == status &&
-    other.startTime == startTime &&
-    other.endTime == endTime &&
-    other.startDate == startDate &&
-    other.endDate == endDate &&
-    other.page == page &&
-    other.size == size;
+    other.startTime == startTime;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (page == null ? 0 : page!.hashCode) +
+    (size == null ? 0 : size!.hashCode) +
+    (startDate == null ? 0 : startDate!.hashCode) +
+    (endDate == null ? 0 : endDate!.hashCode) +
+    (keyword == null ? 0 : keyword!.hashCode) +
+    (sortBy == null ? 0 : sortBy!.hashCode) +
+    (sortDirection == null ? 0 : sortDirection!.hashCode) +
     (orderId == null ? 0 : orderId!.hashCode) +
     (productId == null ? 0 : productId!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
-    (startTime == null ? 0 : startTime!.hashCode) +
-    (endTime == null ? 0 : endTime!.hashCode) +
-    (startDate == null ? 0 : startDate!.hashCode) +
-    (endDate == null ? 0 : endDate!.hashCode) +
-    (page == null ? 0 : page!.hashCode) +
-    (size == null ? 0 : size!.hashCode);
+    (startTime == null ? 0 : startTime!.hashCode);
 
   @override
-  String toString() => 'UserOrderSearchParam[orderId=$orderId, productId=$productId, status=$status, startTime=$startTime, endTime=$endTime, startDate=$startDate, endDate=$endDate, page=$page, size=$size]';
+  String toString() => 'UserOrderSearchParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, orderId=$orderId, productId=$productId, status=$status, startTime=$startTime]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.page != null) {
+      json[r'page'] = this.page;
+    } else {
+      json[r'page'] = null;
+    }
+    if (this.size != null) {
+      json[r'size'] = this.size;
+    } else {
+      json[r'size'] = null;
+    }
+    if (this.startDate != null) {
+      json[r'startDate'] = this.startDate!.toUtc().toIso8601String();
+    } else {
+      json[r'startDate'] = null;
+    }
+    if (this.endDate != null) {
+      json[r'endDate'] = this.endDate!.toUtc().toIso8601String();
+    } else {
+      json[r'endDate'] = null;
+    }
+    if (this.keyword != null) {
+      json[r'keyword'] = this.keyword;
+    } else {
+      json[r'keyword'] = null;
+    }
+    if (this.sortBy != null) {
+      json[r'sortBy'] = this.sortBy;
+    } else {
+      json[r'sortBy'] = null;
+    }
+    if (this.sortDirection != null) {
+      json[r'sortDirection'] = this.sortDirection;
+    } else {
+      json[r'sortDirection'] = null;
+    }
     if (this.orderId != null) {
       json[r'orderId'] = this.orderId;
     } else {
@@ -153,31 +212,6 @@ class UserOrderSearchParam {
       json[r'startTime'] = this.startTime;
     } else {
       json[r'startTime'] = null;
-    }
-    if (this.endTime != null) {
-      json[r'endTime'] = this.endTime;
-    } else {
-      json[r'endTime'] = null;
-    }
-    if (this.startDate != null) {
-      json[r'startDate'] = this.startDate!.toUtc().toIso8601String();
-    } else {
-      json[r'startDate'] = null;
-    }
-    if (this.endDate != null) {
-      json[r'endDate'] = this.endDate!.toUtc().toIso8601String();
-    } else {
-      json[r'endDate'] = null;
-    }
-    if (this.page != null) {
-      json[r'page'] = this.page;
-    } else {
-      json[r'page'] = null;
-    }
-    if (this.size != null) {
-      json[r'size'] = this.size;
-    } else {
-      json[r'size'] = null;
     }
     return json;
   }
@@ -201,15 +235,17 @@ class UserOrderSearchParam {
       }());
 
       return UserOrderSearchParam(
+        page: mapValueOfType<int>(json, r'page'),
+        size: mapValueOfType<int>(json, r'size'),
+        startDate: mapDateTime(json, r'startDate', r''),
+        endDate: mapDateTime(json, r'endDate', r''),
+        keyword: mapValueOfType<String>(json, r'keyword'),
+        sortBy: mapValueOfType<String>(json, r'sortBy'),
+        sortDirection: mapValueOfType<String>(json, r'sortDirection'),
         orderId: mapValueOfType<String>(json, r'orderId'),
         productId: mapValueOfType<int>(json, r'productId'),
         status: OrderStatusEnum.fromJson(json[r'status']),
         startTime: mapValueOfType<String>(json, r'startTime'),
-        endTime: mapValueOfType<String>(json, r'endTime'),
-        startDate: mapDateTime(json, r'startDate', r''),
-        endDate: mapDateTime(json, r'endDate', r''),
-        page: mapValueOfType<int>(json, r'page'),
-        size: mapValueOfType<int>(json, r'size'),
       );
     }
     return null;

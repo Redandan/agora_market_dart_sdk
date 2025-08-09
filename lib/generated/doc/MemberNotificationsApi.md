@@ -19,7 +19,7 @@ Method | HTTP request | Description
 [**getUnreadNotifications**](MemberNotificationsApi.md#getunreadnotifications) | **GET** /notifications/unread | 獲取未讀通知
 [**markAllAsRead**](MemberNotificationsApi.md#markallasread) | **POST** /notifications/read-all | 全部標記為已讀
 [**markAsRead**](MemberNotificationsApi.md#markasread) | **POST** /notifications/{notificationId}/read | 標記為已讀
-[**searchNotifications**](MemberNotificationsApi.md#searchnotifications) | **GET** /notifications/search | 搜索通知
+[**searchNotifications**](MemberNotificationsApi.md#searchnotifications) | **POST** /notifications/search | 搜索通知
 [**updateNotification**](MemberNotificationsApi.md#updatenotification) | **PUT** /notifications/{notificationId} | 更新通知
 
 
@@ -441,7 +441,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchNotifications**
-> PageNotificationResponseDTO searchNotifications(id, senderId, title, type, status, isPushed, relatedObjectId, relatedObjectType, startDate, endDate, page, size)
+> PageNotificationResponseDTO searchNotifications(notificationSearchParam, page, size)
 
 搜索通知
 
@@ -452,21 +452,12 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = MemberNotificationsApi();
-final id = 789; // int | 通知ID
-final senderId = 789; // int | 發送者ID
-final title = title_example; // String | 通知標題
-final type = type_example; // String | 通知類型
-final status = status_example; // String | 通知狀態
-final isPushed = true; // bool | 是否推送
-final relatedObjectId = relatedObjectId_example; // String | 相關對象ID
-final relatedObjectType = relatedObjectType_example; // String | 相關對象類型
-final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
-final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
+final notificationSearchParam = NotificationSearchParam(); // NotificationSearchParam | 
 final page = 56; // int | 頁碼，從1開始
 final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.searchNotifications(id, senderId, title, type, status, isPushed, relatedObjectId, relatedObjectType, startDate, endDate, page, size);
+    final result = api_instance.searchNotifications(notificationSearchParam, page, size);
     print(result);
 } catch (e) {
     print('Exception when calling MemberNotificationsApi->searchNotifications: $e\n');
@@ -477,16 +468,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| 通知ID | [optional] 
- **senderId** | **int**| 發送者ID | [optional] 
- **title** | **String**| 通知標題 | [optional] 
- **type** | **String**| 通知類型 | [optional] 
- **status** | **String**| 通知狀態 | [optional] 
- **isPushed** | **bool**| 是否推送 | [optional] 
- **relatedObjectId** | **String**| 相關對象ID | [optional] 
- **relatedObjectType** | **String**| 相關對象類型 | [optional] 
- **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
- **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
+ **notificationSearchParam** | [**NotificationSearchParam**](NotificationSearchParam.md)|  | 
  **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
  **size** | **int**| 每頁數量 | [optional] [default to 20]
 
@@ -500,7 +482,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

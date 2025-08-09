@@ -8,14 +8,17 @@ import 'package:agora_market_dart_sdk/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**page** | **int** | 頁碼，從1開始 | [optional] 
+**size** | **int** | 每頁數量 | [optional] 
+**startDate** | [**DateTime**](DateTime.md) | 開始日期 (ISO-8601 格式) | [optional] 
+**endDate** | [**DateTime**](DateTime.md) | 結束日期 (ISO-8601 格式) | [optional] 
+**keyword** | **String** | 搜索關鍵字 | [optional] 
+**sortBy** | **String** | 排序字段 | [optional] 
+**sortDirection** | **String** | 排序方向 (ASC/DESC) | [optional] 
 **userId** | **int** | 用戶ID | [optional] 
 **sessionId** | **int** | 會話ID | [optional] 
 **chatWithUserId** | **int** | 聊天對象ID | [optional] 
-**startTime** | [**DateTime**](DateTime.md) | 開始時間 | [optional] 
-**endTime** | [**DateTime**](DateTime.md) | 結束時間 | [optional] 
 **unreadOnly** | **bool** | 是否只查詢未讀消息 | [optional] 
-**page** | **int** | 頁碼 | [optional] [default to 0]
-**size** | **int** | 每頁大小 | [optional] [default to 20]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

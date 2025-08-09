@@ -261,40 +261,24 @@ class AdminMembersApi {
   ///
   /// Parameters:
   ///
-  /// * [String] status:
-  ///   會員狀態
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
+  /// * [MemberSearchParam] memberSearchParam (required):
   ///
   /// * [int] page:
   ///   頁碼，從1開始
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<Response> searchMembersWithHttpInfo({ String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+  Future<Response> searchMembersWithHttpInfo(MemberSearchParam memberSearchParam, { int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/members/search';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = memberSearchParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (status != null) {
-      queryParams.addAll(_queryParams('', 'status', status));
-    }
-    if (startDate != null) {
-      queryParams.addAll(_queryParams('', 'startDate', startDate));
-    }
-    if (endDate != null) {
-      queryParams.addAll(_queryParams('', 'endDate', endDate));
-    }
     if (page != null) {
       queryParams.addAll(_queryParams('', 'page', page));
     }
@@ -302,12 +286,12 @@ class AdminMembersApi {
       queryParams.addAll(_queryParams('', 'size', size));
     }
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -322,22 +306,15 @@ class AdminMembersApi {
   ///
   /// Parameters:
   ///
-  /// * [String] status:
-  ///   會員狀態
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
+  /// * [MemberSearchParam] memberSearchParam (required):
   ///
   /// * [int] page:
   ///   頁碼，從1開始
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<PageUser?> searchMembers({ String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
-    final response = await searchMembersWithHttpInfo( status: status, startDate: startDate, endDate: endDate, page: page, size: size, );
+  Future<PageUser?> searchMembers(MemberSearchParam memberSearchParam, { int? page, int? size, }) async {
+    final response = await searchMembersWithHttpInfo(memberSearchParam,  page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

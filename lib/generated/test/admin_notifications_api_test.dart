@@ -75,7 +75,7 @@ void main() {
     //
     // 管理員可根據條件搜索所有通知
     //
-    //Future<PageNotificationResponseDTO> searchNotifications1({ int id, int userId, int senderId, String title, String type, String status, bool isPushed, String relatedObjectId, String relatedObjectType, DateTime startDate, DateTime endDate, int page, int size }) async
+    //Future<PageNotificationResponseDTO> searchNotifications1(NotificationSearchParam notificationSearchParam, { int page, int size }) async
     test('test searchNotifications1', () async {
       // TODO
     });

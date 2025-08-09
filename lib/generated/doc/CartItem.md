@@ -31,9 +31,9 @@ Name | Type | Description | Notes
 **inStock** | **bool** |  | [optional] 
 **subtotal** | **num** |  | [optional] 
 **totalPrice** | **num** |  | [optional] 
-**stockStatus** | **String** |  | [optional] 
 **specificationDescription** | **String** |  | [optional] 
 **purchaseRestrictionReason** | **String** |  | [optional] 
+**stockStatus** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

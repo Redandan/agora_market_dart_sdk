@@ -133,13 +133,8 @@ void main() {
       // TODO
     });
 
-    // bool convenienceStorePickup
-    test('to test the property `convenienceStorePickup`', () async {
-      // TODO
-    });
-
-    // bool homeDelivery
-    test('to test the property `homeDelivery`', () async {
+    // String fullAddress
+    test('to test the property `fullAddress`', () async {
       // TODO
     });
 
@@ -153,8 +148,13 @@ void main() {
       // TODO
     });
 
-    // String fullAddress
-    test('to test the property `fullAddress`', () async {
+    // bool convenienceStorePickup
+    test('to test the property `convenienceStorePickup`', () async {
+      // TODO
+    });
+
+    // bool homeDelivery
+    test('to test the property `homeDelivery`', () async {
       // TODO
     });
 

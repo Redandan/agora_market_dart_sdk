@@ -154,52 +154,24 @@ class AdminProductsApi {
   ///
   /// Parameters:
   ///
-  /// * [int] sellerId:
-  ///   賣家ID
-  ///
-  /// * [String] status:
-  ///   商品狀態
-  ///
-  /// * [String] category:
-  ///   商品分類
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
+  /// * [ProductSeachParam] productSeachParam (required):
   ///
   /// * [int] page:
   ///   頁碼，從1開始
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<Response> searchProducts1WithHttpInfo({ int? sellerId, String? status, String? category, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+  Future<Response> searchProducts1WithHttpInfo(ProductSeachParam productSeachParam, { int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/products/search';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = productSeachParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (sellerId != null) {
-      queryParams.addAll(_queryParams('', 'sellerId', sellerId));
-    }
-    if (status != null) {
-      queryParams.addAll(_queryParams('', 'status', status));
-    }
-    if (category != null) {
-      queryParams.addAll(_queryParams('', 'category', category));
-    }
-    if (startDate != null) {
-      queryParams.addAll(_queryParams('', 'startDate', startDate));
-    }
-    if (endDate != null) {
-      queryParams.addAll(_queryParams('', 'endDate', endDate));
-    }
     if (page != null) {
       queryParams.addAll(_queryParams('', 'page', page));
     }
@@ -207,12 +179,12 @@ class AdminProductsApi {
       queryParams.addAll(_queryParams('', 'size', size));
     }
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -227,28 +199,15 @@ class AdminProductsApi {
   ///
   /// Parameters:
   ///
-  /// * [int] sellerId:
-  ///   賣家ID
-  ///
-  /// * [String] status:
-  ///   商品狀態
-  ///
-  /// * [String] category:
-  ///   商品分類
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
+  /// * [ProductSeachParam] productSeachParam (required):
   ///
   /// * [int] page:
   ///   頁碼，從1開始
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<PageProduct?> searchProducts1({ int? sellerId, String? status, String? category, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
-    final response = await searchProducts1WithHttpInfo( sellerId: sellerId, status: status, category: category, startDate: startDate, endDate: endDate, page: page, size: size, );
+  Future<PageProduct?> searchProducts1(ProductSeachParam productSeachParam, { int? page, int? size, }) async {
+    final response = await searchProducts1WithHttpInfo(productSeachParam,  page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

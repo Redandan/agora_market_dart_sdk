@@ -103,7 +103,7 @@ void main() {
 
     // 搜索評價
     //
-    //Future<PageReview> searchReviews({ int reviewerId, int reviewedUserId, int productId, String orderId, int minRating, int maxRating, bool isAnonymous, bool isReplied, DateTime startDate, DateTime endDate, int page, int size }) async
+    //Future<PageReview> searchReviews(ReviewSearchParam reviewSearchParam, { int page, int size }) async
     test('test searchReviews', () async {
       // TODO
     });

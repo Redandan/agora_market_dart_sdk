@@ -11,7 +11,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getProductDetail**](AdminProductsApi.md#getproductdetail) | **GET** /admin/products/{productId} | 查看商品詳情
 [**getProductStatistics**](AdminProductsApi.md#getproductstatistics) | **GET** /admin/products/statistics | 商品統計報告
-[**searchProducts1**](AdminProductsApi.md#searchproducts1) | **GET** /admin/products/search | 搜索商品
+[**searchProducts1**](AdminProductsApi.md#searchproducts1) | **POST** /admin/products/search | 搜索商品
 [**updateProductByAdmin**](AdminProductsApi.md#updateproductbyadmin) | **POST** /admin/products/{productId}/update | 更新商品
 [**updateProductStatusEnum**](AdminProductsApi.md#updateproductstatusenum) | **POST** /admin/products/{productId}/status | 更新商品狀態
 
@@ -105,7 +105,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchProducts1**
-> PageProduct searchProducts1(sellerId, status, category, startDate, endDate, page, size)
+> PageProduct searchProducts1(productSeachParam, page, size)
 
 搜索商品
 
@@ -116,16 +116,12 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = AdminProductsApi();
-final sellerId = 789; // int | 賣家ID
-final status = status_example; // String | 商品狀態
-final category = category_example; // String | 商品分類
-final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
-final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
+final productSeachParam = ProductSeachParam(); // ProductSeachParam | 
 final page = 56; // int | 頁碼，從1開始
 final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.searchProducts1(sellerId, status, category, startDate, endDate, page, size);
+    final result = api_instance.searchProducts1(productSeachParam, page, size);
     print(result);
 } catch (e) {
     print('Exception when calling AdminProductsApi->searchProducts1: $e\n');
@@ -136,11 +132,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sellerId** | **int**| 賣家ID | [optional] 
- **status** | **String**| 商品狀態 | [optional] 
- **category** | **String**| 商品分類 | [optional] 
- **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
- **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
+ **productSeachParam** | [**ProductSeachParam**](ProductSeachParam.md)|  | 
  **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
  **size** | **int**| 每頁數量 | [optional] [default to 20]
 
@@ -154,7 +146,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

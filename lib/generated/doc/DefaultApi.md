@@ -63,9 +63,9 @@ Method | HTTP request | Description
 [**removeFromCart**](DefaultApi.md#removefromcart) | **DELETE** /api/cart/{cartItemId} | 從購物車移除商品
 [**replyIssue**](DefaultApi.md#replyissue) | **POST** /customer-issues/{issueId}/reply | 回覆客戶問題
 [**search**](DefaultApi.md#search) | **GET** /postal-areas/search | 搜索郵遞區號
-[**searchCarts**](DefaultApi.md#searchcarts) | **GET** /api/cart/admin/search | 搜索購物車
+[**searchCarts**](DefaultApi.md#searchcarts) | **POST** /api/cart/admin/search | 搜索購物車
 [**searchIssues**](DefaultApi.md#searchissues) | **POST** /customer-issues/search | 管理員搜尋客戶問題記錄
-[**searchPostalAreas**](DefaultApi.md#searchpostalareas) | **GET** /api/logistics/postal/search | 郵遞區號模糊查詢
+[**searchPostalAreas**](DefaultApi.md#searchpostalareas) | **POST** /api/logistics/postal/search | 郵遞區號模糊查詢
 [**searchRecharges**](DefaultApi.md#searchrecharges) | **POST** /recharge/search | 管理員搜尋充值記錄
 [**searchWithdraws**](DefaultApi.md#searchwithdraws) | **POST** /withdraws/search | 管理員搜尋提款記錄
 [**updateCartItem**](DefaultApi.md#updatecartitem) | **PUT** /api/cart/{cartItemId} | 更新購物車項目
@@ -2334,7 +2334,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchCarts**
-> PageCartItem searchCarts(userId, page, size)
+> PageCartItem searchCarts(cartSearchParam, page, size)
 
 搜索購物車
 
@@ -2345,12 +2345,12 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
-final userId = 789; // int | 用戶ID，不提供則搜索所有用戶
+final cartSearchParam = CartSearchParam(); // CartSearchParam | 
 final page = 56; // int | 頁碼，從1開始
 final size = 56; // int | 每頁大小
 
 try {
-    final result = api_instance.searchCarts(userId, page, size);
+    final result = api_instance.searchCarts(cartSearchParam, page, size);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->searchCarts: $e\n');
@@ -2361,7 +2361,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **int**| 用戶ID，不提供則搜索所有用戶 | [optional] 
+ **cartSearchParam** | [**CartSearchParam**](CartSearchParam.md)|  | 
  **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
  **size** | **int**| 每頁大小 | [optional] [default to 20]
 
@@ -2375,7 +2375,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2426,7 +2426,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchPostalAreas**
-> List<TaiwanPostalArea> searchPostalAreas(keyword)
+> List<TaiwanPostalArea> searchPostalAreas(postalSearchParam)
 
 郵遞區號模糊查詢
 
@@ -2437,10 +2437,10 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
-final keyword = 台北; // String | 關鍵字
+final postalSearchParam = PostalSearchParam(); // PostalSearchParam | 
 
 try {
-    final result = api_instance.searchPostalAreas(keyword);
+    final result = api_instance.searchPostalAreas(postalSearchParam);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->searchPostalAreas: $e\n');
@@ -2451,7 +2451,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **keyword** | **String**| 關鍵字 | 
+ **postalSearchParam** | [**PostalSearchParam**](PostalSearchParam.md)|  | 
 
 ### Return type
 
@@ -2463,7 +2463,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

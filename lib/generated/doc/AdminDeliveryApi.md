@@ -13,8 +13,8 @@ Method | HTTP request | Description
 [**getDeliveryOrderDetail**](AdminDeliveryApi.md#getdeliveryorderdetail) | **GET** /admin/delivery/orders/{orderId} | 查看配送訂單詳情
 [**getDeliveryStatistics**](AdminDeliveryApi.md#getdeliverystatistics) | **GET** /admin/delivery/statistics | 配送統計報告
 [**getDeliveryerDetail**](AdminDeliveryApi.md#getdeliveryerdetail) | **GET** /admin/delivery/deliveryers/{deliveryerId} | 查看配送員詳情
-[**searchDeliveryOrders**](AdminDeliveryApi.md#searchdeliveryorders) | **GET** /admin/delivery/orders/search | 搜索配送訂單
-[**searchDeliveryers**](AdminDeliveryApi.md#searchdeliveryers) | **GET** /admin/delivery/deliveryers/search | 搜索配送員
+[**searchDeliveryOrders**](AdminDeliveryApi.md#searchdeliveryorders) | **POST** /admin/delivery/orders/search | 搜索配送訂單
+[**searchDeliveryers**](AdminDeliveryApi.md#searchdeliveryers) | **POST** /admin/delivery/deliveryers/search | 搜索配送員
 [**updateDeliveryerStatus**](AdminDeliveryApi.md#updatedeliveryerstatus) | **POST** /admin/delivery/deliveryers/{deliveryerId}/status | 更新配送員狀態
 
 
@@ -195,7 +195,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchDeliveryOrders**
-> List<DeliveryDetail> searchDeliveryOrders(deliveryerId, status, startDate, endDate)
+> List<DeliveryDetail> searchDeliveryOrders(deliveryOrderSearchParam)
 
 搜索配送訂單
 
@@ -206,13 +206,10 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = AdminDeliveryApi();
-final deliveryerId = 789; // int | 配送員ID
-final status = status_example; // String | 配送狀態
-final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
-final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
+final deliveryOrderSearchParam = DeliveryOrderSearchParam(); // DeliveryOrderSearchParam | 
 
 try {
-    final result = api_instance.searchDeliveryOrders(deliveryerId, status, startDate, endDate);
+    final result = api_instance.searchDeliveryOrders(deliveryOrderSearchParam);
     print(result);
 } catch (e) {
     print('Exception when calling AdminDeliveryApi->searchDeliveryOrders: $e\n');
@@ -223,10 +220,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deliveryerId** | **int**| 配送員ID | [optional] 
- **status** | **String**| 配送狀態 | [optional] 
- **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
- **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
+ **deliveryOrderSearchParam** | [**DeliveryOrderSearchParam**](DeliveryOrderSearchParam.md)|  | 
 
 ### Return type
 
@@ -238,13 +232,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchDeliveryers**
-> List<Deliveryer> searchDeliveryers(enabled, isDelivering, longitude, latitude, radius, startDate, endDate)
+> List<Deliveryer> searchDeliveryers(deliveryerSearchParam)
 
 搜索配送員
 
@@ -255,16 +249,10 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = AdminDeliveryApi();
-final enabled = true; // bool | 是否啟用
-final isDelivering = true; // bool | 是否正在配送
-final longitude = 1.2; // double | 經度
-final latitude = 1.2; // double | 緯度
-final radius = 1.2; // double | 搜索半徑(公里)
-final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
-final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
+final deliveryerSearchParam = DeliveryerSearchParam(); // DeliveryerSearchParam | 
 
 try {
-    final result = api_instance.searchDeliveryers(enabled, isDelivering, longitude, latitude, radius, startDate, endDate);
+    final result = api_instance.searchDeliveryers(deliveryerSearchParam);
     print(result);
 } catch (e) {
     print('Exception when calling AdminDeliveryApi->searchDeliveryers: $e\n');
@@ -275,13 +263,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **enabled** | **bool**| 是否啟用 | [optional] 
- **isDelivering** | **bool**| 是否正在配送 | [optional] 
- **longitude** | **double**| 經度 | [optional] 
- **latitude** | **double**| 緯度 | [optional] 
- **radius** | **double**| 搜索半徑(公里) | [optional] [default to 5.0]
- **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
- **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
+ **deliveryerSearchParam** | [**DeliveryerSearchParam**](DeliveryerSearchParam.md)|  | 
 
 ### Return type
 
@@ -293,7 +275,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

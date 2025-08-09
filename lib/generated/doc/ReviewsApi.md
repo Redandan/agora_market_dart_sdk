@@ -21,7 +21,7 @@ Method | HTTP request | Description
 [**getSentReviews**](ReviewsApi.md#getsentreviews) | **GET** /reviews/sent | 獲取用戶發出的評價
 [**getUserAverageRating**](ReviewsApi.md#getuseraveragerating) | **GET** /reviews/user/{userId}/average-rating | 獲取用戶的平均評分
 [**replyToReview**](ReviewsApi.md#replytoreview) | **POST** /reviews/reply | 回覆評價
-[**searchReviews**](ReviewsApi.md#searchreviews) | **GET** /reviews/search | 搜索評價
+[**searchReviews**](ReviewsApi.md#searchreviews) | **POST** /reviews/search | 搜索評價
 [**updateReview**](ReviewsApi.md#updatereview) | **POST** /reviews/update | 更新評價
 
 
@@ -563,7 +563,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchReviews**
-> PageReview searchReviews(reviewerId, reviewedUserId, productId, orderId, minRating, maxRating, isAnonymous, isReplied, startDate, endDate, page, size)
+> PageReview searchReviews(reviewSearchParam, page, size)
 
 搜索評價
 
@@ -572,21 +572,12 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = ReviewsApi();
-final reviewerId = 789; // int | 評價者ID
-final reviewedUserId = 789; // int | 被評價者ID
-final productId = 789; // int | 商品ID
-final orderId = orderId_example; // String | 訂單ID
-final minRating = 56; // int | 評分範圍最小值
-final maxRating = 56; // int | 評分範圍最大值
-final isAnonymous = true; // bool | 是否匿名評價
-final isReplied = true; // bool | 是否已回覆
-final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
-final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
+final reviewSearchParam = ReviewSearchParam(); // ReviewSearchParam | 
 final page = 56; // int | 頁碼，從1開始
 final size = 56; // int | 每頁數量
 
 try {
-    final result = api_instance.searchReviews(reviewerId, reviewedUserId, productId, orderId, minRating, maxRating, isAnonymous, isReplied, startDate, endDate, page, size);
+    final result = api_instance.searchReviews(reviewSearchParam, page, size);
     print(result);
 } catch (e) {
     print('Exception when calling ReviewsApi->searchReviews: $e\n');
@@ -597,16 +588,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **reviewerId** | **int**| 評價者ID | [optional] 
- **reviewedUserId** | **int**| 被評價者ID | [optional] 
- **productId** | **int**| 商品ID | [optional] 
- **orderId** | **String**| 訂單ID | [optional] 
- **minRating** | **int**| 評分範圍最小值 | [optional] 
- **maxRating** | **int**| 評分範圍最大值 | [optional] 
- **isAnonymous** | **bool**| 是否匿名評價 | [optional] 
- **isReplied** | **bool**| 是否已回覆 | [optional] 
- **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
- **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
+ **reviewSearchParam** | [**ReviewSearchParam**](ReviewSearchParam.md)|  | 
  **page** | **int**| 頁碼，從1開始 | [optional] [default to 1]
  **size** | **int**| 每頁數量 | [optional] [default to 20]
 
@@ -620,7 +602,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -13,6 +13,13 @@ part of openapi.api;
 class IssueSearchParam {
   /// Returns a new [IssueSearchParam] instance.
   IssueSearchParam({
+    this.page,
+    this.size,
+    this.startDate,
+    this.endDate,
+    this.keyword,
+    this.sortBy,
+    this.sortDirection,
     this.issueId,
     this.userId,
     this.username,
@@ -20,9 +27,70 @@ class IssueSearchParam {
     this.status,
     this.operatorId,
     this.operatorName,
-    this.startTime,
-    this.endTime,
   });
+
+  /// 頁碼，從1開始
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? page;
+
+  /// 每頁數量
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? size;
+
+  /// 開始日期 (ISO-8601 格式)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? startDate;
+
+  /// 結束日期 (ISO-8601 格式)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? endDate;
+
+  /// 搜索關鍵字
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? keyword;
+
+  /// 排序字段
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sortBy;
+
+  /// 排序方向 (ASC/DESC)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sortDirection;
 
   /// 工單號
   ///
@@ -85,54 +153,81 @@ class IssueSearchParam {
   ///
   String? operatorName;
 
-  /// 開始時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? startTime;
-
-  /// 結束時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? endTime;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is IssueSearchParam &&
+    other.page == page &&
+    other.size == size &&
+    other.startDate == startDate &&
+    other.endDate == endDate &&
+    other.keyword == keyword &&
+    other.sortBy == sortBy &&
+    other.sortDirection == sortDirection &&
     other.issueId == issueId &&
     other.userId == userId &&
     other.username == username &&
     other.issueType == issueType &&
     other.status == status &&
     other.operatorId == operatorId &&
-    other.operatorName == operatorName &&
-    other.startTime == startTime &&
-    other.endTime == endTime;
+    other.operatorName == operatorName;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (page == null ? 0 : page!.hashCode) +
+    (size == null ? 0 : size!.hashCode) +
+    (startDate == null ? 0 : startDate!.hashCode) +
+    (endDate == null ? 0 : endDate!.hashCode) +
+    (keyword == null ? 0 : keyword!.hashCode) +
+    (sortBy == null ? 0 : sortBy!.hashCode) +
+    (sortDirection == null ? 0 : sortDirection!.hashCode) +
     (issueId == null ? 0 : issueId!.hashCode) +
     (userId == null ? 0 : userId!.hashCode) +
     (username == null ? 0 : username!.hashCode) +
     (issueType == null ? 0 : issueType!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
     (operatorId == null ? 0 : operatorId!.hashCode) +
-    (operatorName == null ? 0 : operatorName!.hashCode) +
-    (startTime == null ? 0 : startTime!.hashCode) +
-    (endTime == null ? 0 : endTime!.hashCode);
+    (operatorName == null ? 0 : operatorName!.hashCode);
 
   @override
-  String toString() => 'IssueSearchParam[issueId=$issueId, userId=$userId, username=$username, issueType=$issueType, status=$status, operatorId=$operatorId, operatorName=$operatorName, startTime=$startTime, endTime=$endTime]';
+  String toString() => 'IssueSearchParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, issueId=$issueId, userId=$userId, username=$username, issueType=$issueType, status=$status, operatorId=$operatorId, operatorName=$operatorName]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.page != null) {
+      json[r'page'] = this.page;
+    } else {
+      json[r'page'] = null;
+    }
+    if (this.size != null) {
+      json[r'size'] = this.size;
+    } else {
+      json[r'size'] = null;
+    }
+    if (this.startDate != null) {
+      json[r'startDate'] = this.startDate!.toUtc().toIso8601String();
+    } else {
+      json[r'startDate'] = null;
+    }
+    if (this.endDate != null) {
+      json[r'endDate'] = this.endDate!.toUtc().toIso8601String();
+    } else {
+      json[r'endDate'] = null;
+    }
+    if (this.keyword != null) {
+      json[r'keyword'] = this.keyword;
+    } else {
+      json[r'keyword'] = null;
+    }
+    if (this.sortBy != null) {
+      json[r'sortBy'] = this.sortBy;
+    } else {
+      json[r'sortBy'] = null;
+    }
+    if (this.sortDirection != null) {
+      json[r'sortDirection'] = this.sortDirection;
+    } else {
+      json[r'sortDirection'] = null;
+    }
     if (this.issueId != null) {
       json[r'issueId'] = this.issueId;
     } else {
@@ -168,16 +263,6 @@ class IssueSearchParam {
     } else {
       json[r'operatorName'] = null;
     }
-    if (this.startTime != null) {
-      json[r'startTime'] = this.startTime!.toUtc().toIso8601String();
-    } else {
-      json[r'startTime'] = null;
-    }
-    if (this.endTime != null) {
-      json[r'endTime'] = this.endTime!.toUtc().toIso8601String();
-    } else {
-      json[r'endTime'] = null;
-    }
     return json;
   }
 
@@ -200,6 +285,13 @@ class IssueSearchParam {
       }());
 
       return IssueSearchParam(
+        page: mapValueOfType<int>(json, r'page'),
+        size: mapValueOfType<int>(json, r'size'),
+        startDate: mapDateTime(json, r'startDate', r''),
+        endDate: mapDateTime(json, r'endDate', r''),
+        keyword: mapValueOfType<String>(json, r'keyword'),
+        sortBy: mapValueOfType<String>(json, r'sortBy'),
+        sortDirection: mapValueOfType<String>(json, r'sortDirection'),
         issueId: mapValueOfType<String>(json, r'issueId'),
         userId: mapValueOfType<int>(json, r'userId'),
         username: mapValueOfType<String>(json, r'username'),
@@ -207,8 +299,6 @@ class IssueSearchParam {
         status: IssueStatusEnum.fromJson(json[r'status']),
         operatorId: mapValueOfType<int>(json, r'operatorId'),
         operatorName: mapValueOfType<String>(json, r'operatorName'),
-        startTime: mapDateTime(json, r'startTime', r''),
-        endTime: mapDateTime(json, r'endTime', r''),
       );
     }
     return null;

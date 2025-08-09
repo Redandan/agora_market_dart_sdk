@@ -3089,28 +3089,24 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
-  /// * [int] userId:
-  ///   用戶ID，不提供則搜索所有用戶
+  /// * [CartSearchParam] cartSearchParam (required):
   ///
   /// * [int] page:
   ///   頁碼，從1開始
   ///
   /// * [int] size:
   ///   每頁大小
-  Future<Response> searchCartsWithHttpInfo({ int? userId, int? page, int? size, }) async {
+  Future<Response> searchCartsWithHttpInfo(CartSearchParam cartSearchParam, { int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/cart/admin/search';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = cartSearchParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (userId != null) {
-      queryParams.addAll(_queryParams('', 'userId', userId));
-    }
     if (page != null) {
       queryParams.addAll(_queryParams('', 'page', page));
     }
@@ -3118,12 +3114,12 @@ class DefaultApi {
       queryParams.addAll(_queryParams('', 'size', size));
     }
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -3138,16 +3134,15 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
-  /// * [int] userId:
-  ///   用戶ID，不提供則搜索所有用戶
+  /// * [CartSearchParam] cartSearchParam (required):
   ///
   /// * [int] page:
   ///   頁碼，從1開始
   ///
   /// * [int] size:
   ///   每頁大小
-  Future<PageCartItem?> searchCarts({ int? userId, int? page, int? size, }) async {
-    final response = await searchCartsWithHttpInfo( userId: userId, page: page, size: size, );
+  Future<PageCartItem?> searchCarts(CartSearchParam cartSearchParam, { int? page, int? size, }) async {
+    final response = await searchCartsWithHttpInfo(cartSearchParam,  page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -3240,27 +3235,24 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
-  /// * [String] keyword (required):
-  ///   關鍵字
-  Future<Response> searchPostalAreasWithHttpInfo(String keyword,) async {
+  /// * [PostalSearchParam] postalSearchParam (required):
+  Future<Response> searchPostalAreasWithHttpInfo(PostalSearchParam postalSearchParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/logistics/postal/search';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = postalSearchParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'keyword', keyword));
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -3275,10 +3267,9 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
-  /// * [String] keyword (required):
-  ///   關鍵字
-  Future<List<TaiwanPostalArea>?> searchPostalAreas(String keyword,) async {
-    final response = await searchPostalAreasWithHttpInfo(keyword,);
+  /// * [PostalSearchParam] postalSearchParam (required):
+  Future<List<TaiwanPostalArea>?> searchPostalAreas(PostalSearchParam postalSearchParam,) async {
+    final response = await searchPostalAreasWithHttpInfo(postalSearchParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -280,47 +280,24 @@ class AdminDeliveryApi {
   ///
   /// Parameters:
   ///
-  /// * [int] deliveryerId:
-  ///   配送員ID
-  ///
-  /// * [String] status:
-  ///   配送狀態
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
-  Future<Response> searchDeliveryOrdersWithHttpInfo({ int? deliveryerId, String? status, DateTime? startDate, DateTime? endDate, }) async {
+  /// * [DeliveryOrderSearchParam] deliveryOrderSearchParam (required):
+  Future<Response> searchDeliveryOrdersWithHttpInfo(DeliveryOrderSearchParam deliveryOrderSearchParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/delivery/orders/search';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = deliveryOrderSearchParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (deliveryerId != null) {
-      queryParams.addAll(_queryParams('', 'deliveryerId', deliveryerId));
-    }
-    if (status != null) {
-      queryParams.addAll(_queryParams('', 'status', status));
-    }
-    if (startDate != null) {
-      queryParams.addAll(_queryParams('', 'startDate', startDate));
-    }
-    if (endDate != null) {
-      queryParams.addAll(_queryParams('', 'endDate', endDate));
-    }
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -335,19 +312,9 @@ class AdminDeliveryApi {
   ///
   /// Parameters:
   ///
-  /// * [int] deliveryerId:
-  ///   配送員ID
-  ///
-  /// * [String] status:
-  ///   配送狀態
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
-  Future<List<DeliveryDetail>?> searchDeliveryOrders({ int? deliveryerId, String? status, DateTime? startDate, DateTime? endDate, }) async {
-    final response = await searchDeliveryOrdersWithHttpInfo( deliveryerId: deliveryerId, status: status, startDate: startDate, endDate: endDate, );
+  /// * [DeliveryOrderSearchParam] deliveryOrderSearchParam (required):
+  Future<List<DeliveryDetail>?> searchDeliveryOrders(DeliveryOrderSearchParam deliveryOrderSearchParam,) async {
+    final response = await searchDeliveryOrdersWithHttpInfo(deliveryOrderSearchParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -372,65 +339,24 @@ class AdminDeliveryApi {
   ///
   /// Parameters:
   ///
-  /// * [bool] enabled:
-  ///   是否啟用
-  ///
-  /// * [bool] isDelivering:
-  ///   是否正在配送
-  ///
-  /// * [double] longitude:
-  ///   經度
-  ///
-  /// * [double] latitude:
-  ///   緯度
-  ///
-  /// * [double] radius:
-  ///   搜索半徑(公里)
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
-  Future<Response> searchDeliveryersWithHttpInfo({ bool? enabled, bool? isDelivering, double? longitude, double? latitude, double? radius, DateTime? startDate, DateTime? endDate, }) async {
+  /// * [DeliveryerSearchParam] deliveryerSearchParam (required):
+  Future<Response> searchDeliveryersWithHttpInfo(DeliveryerSearchParam deliveryerSearchParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/delivery/deliveryers/search';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = deliveryerSearchParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (enabled != null) {
-      queryParams.addAll(_queryParams('', 'enabled', enabled));
-    }
-    if (isDelivering != null) {
-      queryParams.addAll(_queryParams('', 'isDelivering', isDelivering));
-    }
-    if (longitude != null) {
-      queryParams.addAll(_queryParams('', 'longitude', longitude));
-    }
-    if (latitude != null) {
-      queryParams.addAll(_queryParams('', 'latitude', latitude));
-    }
-    if (radius != null) {
-      queryParams.addAll(_queryParams('', 'radius', radius));
-    }
-    if (startDate != null) {
-      queryParams.addAll(_queryParams('', 'startDate', startDate));
-    }
-    if (endDate != null) {
-      queryParams.addAll(_queryParams('', 'endDate', endDate));
-    }
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -445,28 +371,9 @@ class AdminDeliveryApi {
   ///
   /// Parameters:
   ///
-  /// * [bool] enabled:
-  ///   是否啟用
-  ///
-  /// * [bool] isDelivering:
-  ///   是否正在配送
-  ///
-  /// * [double] longitude:
-  ///   經度
-  ///
-  /// * [double] latitude:
-  ///   緯度
-  ///
-  /// * [double] radius:
-  ///   搜索半徑(公里)
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
-  Future<List<Deliveryer>?> searchDeliveryers({ bool? enabled, bool? isDelivering, double? longitude, double? latitude, double? radius, DateTime? startDate, DateTime? endDate, }) async {
-    final response = await searchDeliveryersWithHttpInfo( enabled: enabled, isDelivering: isDelivering, longitude: longitude, latitude: latitude, radius: radius, startDate: startDate, endDate: endDate, );
+  /// * [DeliveryerSearchParam] deliveryerSearchParam (required):
+  Future<List<Deliveryer>?> searchDeliveryers(DeliveryerSearchParam deliveryerSearchParam,) async {
+    final response = await searchDeliveryersWithHttpInfo(deliveryerSearchParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

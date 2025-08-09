@@ -16,6 +16,48 @@ void main() {
   // final instance = ProductSeachParam();
 
   group('test ProductSeachParam', () {
+    // 頁碼，從1開始
+    // int page
+    test('to test the property `page`', () async {
+      // TODO
+    });
+
+    // 每頁數量
+    // int size
+    test('to test the property `size`', () async {
+      // TODO
+    });
+
+    // 開始日期 (ISO-8601 格式)
+    // DateTime startDate
+    test('to test the property `startDate`', () async {
+      // TODO
+    });
+
+    // 結束日期 (ISO-8601 格式)
+    // DateTime endDate
+    test('to test the property `endDate`', () async {
+      // TODO
+    });
+
+    // 搜索關鍵字
+    // String keyword
+    test('to test the property `keyword`', () async {
+      // TODO
+    });
+
+    // 排序字段
+    // String sortBy
+    test('to test the property `sortBy`', () async {
+      // TODO
+    });
+
+    // 排序方向 (ASC/DESC)
+    // String sortDirection
+    test('to test the property `sortDirection`', () async {
+      // TODO
+    });
+
     // 商品ID
     // String id
     test('to test the property `id`', () async {
@@ -35,30 +77,6 @@ void main() {
 
     // ProductCategoryEnum category
     test('to test the property `category`', () async {
-      // TODO
-    });
-
-    // 開始日期
-    // DateTime startDate
-    test('to test the property `startDate`', () async {
-      // TODO
-    });
-
-    // 結束日期
-    // DateTime endDate
-    test('to test the property `endDate`', () async {
-      // TODO
-    });
-
-    // 頁碼
-    // int page
-    test('to test the property `page`', () async {
-      // TODO
-    });
-
-    // 每頁大小
-    // int size
-    test('to test the property `size`', () async {
       // TODO
     });
 
@@ -101,12 +119,6 @@ void main() {
     // 是否有庫存
     // bool inStock
     test('to test the property `inStock`', () async {
-      // TODO
-    });
-
-    // 搜索關鍵字
-    // String keyword
-    test('to test the property `keyword`', () async {
       // TODO
     });
 

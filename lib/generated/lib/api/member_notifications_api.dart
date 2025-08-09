@@ -572,82 +572,24 @@ class MemberNotificationsApi {
   ///
   /// Parameters:
   ///
-  /// * [int] id:
-  ///   通知ID
-  ///
-  /// * [int] senderId:
-  ///   發送者ID
-  ///
-  /// * [String] title:
-  ///   通知標題
-  ///
-  /// * [String] type:
-  ///   通知類型
-  ///
-  /// * [String] status:
-  ///   通知狀態
-  ///
-  /// * [bool] isPushed:
-  ///   是否推送
-  ///
-  /// * [String] relatedObjectId:
-  ///   相關對象ID
-  ///
-  /// * [String] relatedObjectType:
-  ///   相關對象類型
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
+  /// * [NotificationSearchParam] notificationSearchParam (required):
   ///
   /// * [int] page:
   ///   頁碼，從1開始
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<Response> searchNotificationsWithHttpInfo({ int? id, int? senderId, String? title, String? type, String? status, bool? isPushed, String? relatedObjectId, String? relatedObjectType, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+  Future<Response> searchNotificationsWithHttpInfo(NotificationSearchParam notificationSearchParam, { int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/notifications/search';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = notificationSearchParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (id != null) {
-      queryParams.addAll(_queryParams('', 'id', id));
-    }
-    if (senderId != null) {
-      queryParams.addAll(_queryParams('', 'senderId', senderId));
-    }
-    if (title != null) {
-      queryParams.addAll(_queryParams('', 'title', title));
-    }
-    if (type != null) {
-      queryParams.addAll(_queryParams('', 'type', type));
-    }
-    if (status != null) {
-      queryParams.addAll(_queryParams('', 'status', status));
-    }
-    if (isPushed != null) {
-      queryParams.addAll(_queryParams('', 'isPushed', isPushed));
-    }
-    if (relatedObjectId != null) {
-      queryParams.addAll(_queryParams('', 'relatedObjectId', relatedObjectId));
-    }
-    if (relatedObjectType != null) {
-      queryParams.addAll(_queryParams('', 'relatedObjectType', relatedObjectType));
-    }
-    if (startDate != null) {
-      queryParams.addAll(_queryParams('', 'startDate', startDate));
-    }
-    if (endDate != null) {
-      queryParams.addAll(_queryParams('', 'endDate', endDate));
-    }
     if (page != null) {
       queryParams.addAll(_queryParams('', 'page', page));
     }
@@ -655,12 +597,12 @@ class MemberNotificationsApi {
       queryParams.addAll(_queryParams('', 'size', size));
     }
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -675,43 +617,15 @@ class MemberNotificationsApi {
   ///
   /// Parameters:
   ///
-  /// * [int] id:
-  ///   通知ID
-  ///
-  /// * [int] senderId:
-  ///   發送者ID
-  ///
-  /// * [String] title:
-  ///   通知標題
-  ///
-  /// * [String] type:
-  ///   通知類型
-  ///
-  /// * [String] status:
-  ///   通知狀態
-  ///
-  /// * [bool] isPushed:
-  ///   是否推送
-  ///
-  /// * [String] relatedObjectId:
-  ///   相關對象ID
-  ///
-  /// * [String] relatedObjectType:
-  ///   相關對象類型
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
+  /// * [NotificationSearchParam] notificationSearchParam (required):
   ///
   /// * [int] page:
   ///   頁碼，從1開始
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<PageNotificationResponseDTO?> searchNotifications({ int? id, int? senderId, String? title, String? type, String? status, bool? isPushed, String? relatedObjectId, String? relatedObjectType, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
-    final response = await searchNotificationsWithHttpInfo( id: id, senderId: senderId, title: title, type: type, status: status, isPushed: isPushed, relatedObjectId: relatedObjectId, relatedObjectType: relatedObjectType, startDate: startDate, endDate: endDate, page: page, size: size, );
+  Future<PageNotificationResponseDTO?> searchNotifications(NotificationSearchParam notificationSearchParam, { int? page, int? size, }) async {
+    final response = await searchNotificationsWithHttpInfo(notificationSearchParam,  page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

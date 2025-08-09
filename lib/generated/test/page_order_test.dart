@@ -31,6 +31,21 @@ void main() {
       // TODO
     });
 
+    // int size
+    test('to test the property `size`', () async {
+      // TODO
+    });
+
+    // List<Order> content (default value: const [])
+    test('to test the property `content`', () async {
+      // TODO
+    });
+
+    // int number
+    test('to test the property `number`', () async {
+      // TODO
+    });
+
     // int numberOfElements
     test('to test the property `numberOfElements`', () async {
       // TODO
@@ -48,21 +63,6 @@ void main() {
 
     // bool last
     test('to test the property `last`', () async {
-      // TODO
-    });
-
-    // int size
-    test('to test the property `size`', () async {
-      // TODO
-    });
-
-    // List<Order> content (default value: const [])
-    test('to test the property `content`', () async {
-      // TODO
-    });
-
-    // int number
-    test('to test the property `number`', () async {
       // TODO
     });
 

@@ -291,52 +291,24 @@ class AdminDisputesApi {
   ///
   /// Parameters:
   ///
-  /// * [int] buyerId:
-  ///   買家ID
-  ///
-  /// * [int] sellerId:
-  ///   賣家ID
-  ///
-  /// * [String] status:
-  ///   糾紛狀態
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
+  /// * [DisputeSearchParam] disputeSearchParam (required):
   ///
   /// * [int] page:
   ///   頁碼，從1開始
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<Response> searchDisputes1WithHttpInfo({ int? buyerId, int? sellerId, String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+  Future<Response> searchDisputes1WithHttpInfo(DisputeSearchParam disputeSearchParam, { int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/disputes/search';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = disputeSearchParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (buyerId != null) {
-      queryParams.addAll(_queryParams('', 'buyerId', buyerId));
-    }
-    if (sellerId != null) {
-      queryParams.addAll(_queryParams('', 'sellerId', sellerId));
-    }
-    if (status != null) {
-      queryParams.addAll(_queryParams('', 'status', status));
-    }
-    if (startDate != null) {
-      queryParams.addAll(_queryParams('', 'startDate', startDate));
-    }
-    if (endDate != null) {
-      queryParams.addAll(_queryParams('', 'endDate', endDate));
-    }
     if (page != null) {
       queryParams.addAll(_queryParams('', 'page', page));
     }
@@ -344,12 +316,12 @@ class AdminDisputesApi {
       queryParams.addAll(_queryParams('', 'size', size));
     }
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -364,28 +336,15 @@ class AdminDisputesApi {
   ///
   /// Parameters:
   ///
-  /// * [int] buyerId:
-  ///   買家ID
-  ///
-  /// * [int] sellerId:
-  ///   賣家ID
-  ///
-  /// * [String] status:
-  ///   糾紛狀態
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
+  /// * [DisputeSearchParam] disputeSearchParam (required):
   ///
   /// * [int] page:
   ///   頁碼，從1開始
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<PageDispute?> searchDisputes1({ int? buyerId, int? sellerId, String? status, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
-    final response = await searchDisputes1WithHttpInfo( buyerId: buyerId, sellerId: sellerId, status: status, startDate: startDate, endDate: endDate, page: page, size: size, );
+  Future<PageDispute?> searchDisputes1(DisputeSearchParam disputeSearchParam, { int? page, int? size, }) async {
+    final response = await searchDisputes1WithHttpInfo(disputeSearchParam,  page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

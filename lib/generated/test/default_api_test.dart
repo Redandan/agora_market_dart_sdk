@@ -463,7 +463,7 @@ void main() {
     //
     // 僅管理員可訪問，可選擇性按用戶ID篩選
     //
-    //Future<PageCartItem> searchCarts({ int userId, int page, int size }) async
+    //Future<PageCartItem> searchCarts(CartSearchParam cartSearchParam, { int page, int size }) async
     test('test searchCarts', () async {
       // TODO
     });
@@ -479,7 +479,7 @@ void main() {
     //
     // 根據關鍵字查詢郵遞區號、城市、行政區
     //
-    //Future<List<TaiwanPostalArea>> searchPostalAreas(String keyword) async
+    //Future<List<TaiwanPostalArea>> searchPostalAreas(PostalSearchParam postalSearchParam) async
     test('test searchPostalAreas', () async {
       // TODO
     });

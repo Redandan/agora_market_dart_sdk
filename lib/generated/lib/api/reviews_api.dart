@@ -860,82 +860,24 @@ class ReviewsApi {
   ///
   /// Parameters:
   ///
-  /// * [int] reviewerId:
-  ///   評價者ID
-  ///
-  /// * [int] reviewedUserId:
-  ///   被評價者ID
-  ///
-  /// * [int] productId:
-  ///   商品ID
-  ///
-  /// * [String] orderId:
-  ///   訂單ID
-  ///
-  /// * [int] minRating:
-  ///   評分範圍最小值
-  ///
-  /// * [int] maxRating:
-  ///   評分範圍最大值
-  ///
-  /// * [bool] isAnonymous:
-  ///   是否匿名評價
-  ///
-  /// * [bool] isReplied:
-  ///   是否已回覆
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
+  /// * [ReviewSearchParam] reviewSearchParam (required):
   ///
   /// * [int] page:
   ///   頁碼，從1開始
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<Response> searchReviewsWithHttpInfo({ int? reviewerId, int? reviewedUserId, int? productId, String? orderId, int? minRating, int? maxRating, bool? isAnonymous, bool? isReplied, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
+  Future<Response> searchReviewsWithHttpInfo(ReviewSearchParam reviewSearchParam, { int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/reviews/search';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = reviewSearchParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (reviewerId != null) {
-      queryParams.addAll(_queryParams('', 'reviewerId', reviewerId));
-    }
-    if (reviewedUserId != null) {
-      queryParams.addAll(_queryParams('', 'reviewedUserId', reviewedUserId));
-    }
-    if (productId != null) {
-      queryParams.addAll(_queryParams('', 'productId', productId));
-    }
-    if (orderId != null) {
-      queryParams.addAll(_queryParams('', 'orderId', orderId));
-    }
-    if (minRating != null) {
-      queryParams.addAll(_queryParams('', 'minRating', minRating));
-    }
-    if (maxRating != null) {
-      queryParams.addAll(_queryParams('', 'maxRating', maxRating));
-    }
-    if (isAnonymous != null) {
-      queryParams.addAll(_queryParams('', 'isAnonymous', isAnonymous));
-    }
-    if (isReplied != null) {
-      queryParams.addAll(_queryParams('', 'isReplied', isReplied));
-    }
-    if (startDate != null) {
-      queryParams.addAll(_queryParams('', 'startDate', startDate));
-    }
-    if (endDate != null) {
-      queryParams.addAll(_queryParams('', 'endDate', endDate));
-    }
     if (page != null) {
       queryParams.addAll(_queryParams('', 'page', page));
     }
@@ -943,12 +885,12 @@ class ReviewsApi {
       queryParams.addAll(_queryParams('', 'size', size));
     }
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -961,43 +903,15 @@ class ReviewsApi {
   ///
   /// Parameters:
   ///
-  /// * [int] reviewerId:
-  ///   評價者ID
-  ///
-  /// * [int] reviewedUserId:
-  ///   被評價者ID
-  ///
-  /// * [int] productId:
-  ///   商品ID
-  ///
-  /// * [String] orderId:
-  ///   訂單ID
-  ///
-  /// * [int] minRating:
-  ///   評分範圍最小值
-  ///
-  /// * [int] maxRating:
-  ///   評分範圍最大值
-  ///
-  /// * [bool] isAnonymous:
-  ///   是否匿名評價
-  ///
-  /// * [bool] isReplied:
-  ///   是否已回覆
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
+  /// * [ReviewSearchParam] reviewSearchParam (required):
   ///
   /// * [int] page:
   ///   頁碼，從1開始
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<PageReview?> searchReviews({ int? reviewerId, int? reviewedUserId, int? productId, String? orderId, int? minRating, int? maxRating, bool? isAnonymous, bool? isReplied, DateTime? startDate, DateTime? endDate, int? page, int? size, }) async {
-    final response = await searchReviewsWithHttpInfo( reviewerId: reviewerId, reviewedUserId: reviewedUserId, productId: productId, orderId: orderId, minRating: minRating, maxRating: maxRating, isAnonymous: isAnonymous, isReplied: isReplied, startDate: startDate, endDate: endDate, page: page, size: size, );
+  Future<PageReview?> searchReviews(ReviewSearchParam reviewSearchParam, { int? page, int? size, }) async {
+    final response = await searchReviewsWithHttpInfo(reviewSearchParam,  page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -113,9 +113,9 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**removeFromCart**](doc//DefaultApi.md#removefromcart) | **DELETE** /api/cart/{cartItemId} | 從購物車移除商品
 *DefaultApi* | [**replyIssue**](doc//DefaultApi.md#replyissue) | **POST** /customer-issues/{issueId}/reply | 回覆客戶問題
 *DefaultApi* | [**search**](doc//DefaultApi.md#search) | **GET** /postal-areas/search | 搜索郵遞區號
-*DefaultApi* | [**searchCarts**](doc//DefaultApi.md#searchcarts) | **GET** /api/cart/admin/search | 搜索購物車
+*DefaultApi* | [**searchCarts**](doc//DefaultApi.md#searchcarts) | **POST** /api/cart/admin/search | 搜索購物車
 *DefaultApi* | [**searchIssues**](doc//DefaultApi.md#searchissues) | **POST** /customer-issues/search | 管理員搜尋客戶問題記錄
-*DefaultApi* | [**searchPostalAreas**](doc//DefaultApi.md#searchpostalareas) | **GET** /api/logistics/postal/search | 郵遞區號模糊查詢
+*DefaultApi* | [**searchPostalAreas**](doc//DefaultApi.md#searchpostalareas) | **POST** /api/logistics/postal/search | 郵遞區號模糊查詢
 *DefaultApi* | [**searchRecharges**](doc//DefaultApi.md#searchrecharges) | **POST** /recharge/search | 管理員搜尋充值記錄
 *DefaultApi* | [**searchWithdraws**](doc//DefaultApi.md#searchwithdraws) | **POST** /withdraws/search | 管理員搜尋提款記錄
 *DefaultApi* | [**updateCartItem**](doc//DefaultApi.md#updatecartitem) | **PUT** /api/cart/{cartItemId} | 更新購物車項目
@@ -124,19 +124,19 @@ Class | Method | HTTP request | Description
 *AdminDeliveryApi* | [**getDeliveryOrderDetail**](doc//AdminDeliveryApi.md#getdeliveryorderdetail) | **GET** /admin/delivery/orders/{orderId} | 查看配送訂單詳情
 *AdminDeliveryApi* | [**getDeliveryStatistics**](doc//AdminDeliveryApi.md#getdeliverystatistics) | **GET** /admin/delivery/statistics | 配送統計報告
 *AdminDeliveryApi* | [**getDeliveryerDetail**](doc//AdminDeliveryApi.md#getdeliveryerdetail) | **GET** /admin/delivery/deliveryers/{deliveryerId} | 查看配送員詳情
-*AdminDeliveryApi* | [**searchDeliveryOrders**](doc//AdminDeliveryApi.md#searchdeliveryorders) | **GET** /admin/delivery/orders/search | 搜索配送訂單
-*AdminDeliveryApi* | [**searchDeliveryers**](doc//AdminDeliveryApi.md#searchdeliveryers) | **GET** /admin/delivery/deliveryers/search | 搜索配送員
+*AdminDeliveryApi* | [**searchDeliveryOrders**](doc//AdminDeliveryApi.md#searchdeliveryorders) | **POST** /admin/delivery/orders/search | 搜索配送訂單
+*AdminDeliveryApi* | [**searchDeliveryers**](doc//AdminDeliveryApi.md#searchdeliveryers) | **POST** /admin/delivery/deliveryers/search | 搜索配送員
 *AdminDeliveryApi* | [**updateDeliveryerStatus**](doc//AdminDeliveryApi.md#updatedeliveryerstatus) | **POST** /admin/delivery/deliveryers/{deliveryerId}/status | 更新配送員狀態
 *AdminDisputesApi* | [**getAllDisputes**](doc//AdminDisputesApi.md#getalldisputes) | **GET** /admin/disputes/disputes | 獲取所有糾紛列表
 *AdminDisputesApi* | [**getDisputeDetail1**](doc//AdminDisputesApi.md#getdisputedetail1) | **GET** /admin/disputes/{disputeId} | 查看糾紛詳情
 *AdminDisputesApi* | [**getDisputeStatistics**](doc//AdminDisputesApi.md#getdisputestatistics) | **GET** /admin/disputes/statistics | 糾紛統計報告
 *AdminDisputesApi* | [**resolveDispute**](doc//AdminDisputesApi.md#resolvedispute) | **POST** /admin/disputes/{disputeId}/resolve | 處理糾紛
-*AdminDisputesApi* | [**searchDisputes1**](doc//AdminDisputesApi.md#searchdisputes1) | **GET** /admin/disputes/search | 搜索糾紛
+*AdminDisputesApi* | [**searchDisputes1**](doc//AdminDisputesApi.md#searchdisputes1) | **POST** /admin/disputes/search | 搜索糾紛
 *AdminMembersApi* | [**createUserByAdmin**](doc//AdminMembersApi.md#createuserbyadmin) | **POST** /admin/members/create-user | 管理員創建用戶
 *AdminMembersApi* | [**getMemberDetail**](doc//AdminMembersApi.md#getmemberdetail) | **GET** /admin/members/{memberId} | 查看會員詳情
 *AdminMembersApi* | [**getMemberStatistics**](doc//AdminMembersApi.md#getmemberstatistics) | **GET** /admin/members/statistics | 會員統計報告
 *AdminMembersApi* | [**resetMemberPassword**](doc//AdminMembersApi.md#resetmemberpassword) | **POST** /admin/members/{memberId}/reset-password | 管理員重設會員密碼
-*AdminMembersApi* | [**searchMembers**](doc//AdminMembersApi.md#searchmembers) | **GET** /admin/members/search | 搜索會員
+*AdminMembersApi* | [**searchMembers**](doc//AdminMembersApi.md#searchmembers) | **POST** /admin/members/search | 搜索會員
 *AdminMembersApi* | [**updateMemberByAdmin**](doc//AdminMembersApi.md#updatememberbyadmin) | **POST** /admin/members/{memberId}/update | 更新會員信息
 *AdminMembersApi* | [**updateMemberStatus**](doc//AdminMembersApi.md#updatememberstatus) | **POST** /admin/members/{memberId}/status | 更新會員狀態
 *AdminNotificationsApi* | [**cleanupExpiredNotifications1**](doc//AdminNotificationsApi.md#cleanupexpirednotifications1) | **POST** /admin/notifications/cleanup | 清理過期通知
@@ -145,15 +145,15 @@ Class | Method | HTTP request | Description
 *AdminNotificationsApi* | [**deleteNotification1**](doc//AdminNotificationsApi.md#deletenotification1) | **DELETE** /admin/notifications/{notificationId} | 刪除通知
 *AdminNotificationsApi* | [**getNotification1**](doc//AdminNotificationsApi.md#getnotification1) | **GET** /admin/notifications/{notificationId} | 獲取通知詳情
 *AdminNotificationsApi* | [**getSystemNotificationStats**](doc//AdminNotificationsApi.md#getsystemnotificationstats) | **GET** /admin/notifications/stats | 獲取通知統計
-*AdminNotificationsApi* | [**searchNotifications1**](doc//AdminNotificationsApi.md#searchnotifications1) | **GET** /admin/notifications/search | 搜索通知
+*AdminNotificationsApi* | [**searchNotifications1**](doc//AdminNotificationsApi.md#searchnotifications1) | **POST** /admin/notifications/search | 搜索通知
 *AdminNotificationsApi* | [**updateNotification1**](doc//AdminNotificationsApi.md#updatenotification1) | **PUT** /admin/notifications/{notificationId} | 更新通知
 *AdminOrdersApi* | [**cancelOrderByAdmin**](doc//AdminOrdersApi.md#cancelorderbyadmin) | **POST** /admin/orders/{orderId}/cancel | 取消訂單
 *AdminOrdersApi* | [**getOrderDetail**](doc//AdminOrdersApi.md#getorderdetail) | **GET** /admin/orders/{orderId} | 查看訂單詳情
 *AdminOrdersApi* | [**getOrderStatistics**](doc//AdminOrdersApi.md#getorderstatistics) | **GET** /admin/orders/statistics | 訂單統計報告
-*AdminOrdersApi* | [**searchOrders**](doc//AdminOrdersApi.md#searchorders) | **GET** /admin/orders/search | 搜索訂單
+*AdminOrdersApi* | [**searchOrders**](doc//AdminOrdersApi.md#searchorders) | **POST** /admin/orders/search | 搜索訂單
 *AdminProductsApi* | [**getProductDetail**](doc//AdminProductsApi.md#getproductdetail) | **GET** /admin/products/{productId} | 查看商品詳情
 *AdminProductsApi* | [**getProductStatistics**](doc//AdminProductsApi.md#getproductstatistics) | **GET** /admin/products/statistics | 商品統計報告
-*AdminProductsApi* | [**searchProducts1**](doc//AdminProductsApi.md#searchproducts1) | **GET** /admin/products/search | 搜索商品
+*AdminProductsApi* | [**searchProducts1**](doc//AdminProductsApi.md#searchproducts1) | **POST** /admin/products/search | 搜索商品
 *AdminProductsApi* | [**updateProductByAdmin**](doc//AdminProductsApi.md#updateproductbyadmin) | **POST** /admin/products/{productId}/update | 更新商品
 *AdminProductsApi* | [**updateProductStatusEnum**](doc//AdminProductsApi.md#updateproductstatusenum) | **POST** /admin/products/{productId}/status | 更新商品狀態
 *AuthApi* | [**changePassword**](doc//AuthApi.md#changepassword) | **POST** /auth/change-password | 修改密碼
@@ -210,7 +210,7 @@ Class | Method | HTTP request | Description
 *MemberDisputesApi* | [**createDispute**](doc//MemberDisputesApi.md#createdispute) | **POST** /disputes | 創建糾紛
 *MemberDisputesApi* | [**getDisputeDetail**](doc//MemberDisputesApi.md#getdisputedetail) | **GET** /disputes/{disputeId} | 查看糾紛詳情
 *MemberDisputesApi* | [**replyDispute**](doc//MemberDisputesApi.md#replydispute) | **POST** /disputes/{disputeId}/reply | 回覆糾紛
-*MemberDisputesApi* | [**searchDisputes**](doc//MemberDisputesApi.md#searchdisputes) | **GET** /disputes/search | 搜索糾紛
+*MemberDisputesApi* | [**searchDisputes**](doc//MemberDisputesApi.md#searchdisputes) | **POST** /disputes/search | 搜索糾紛
 *MemberNotificationsApi* | [**cleanupExpiredNotifications**](doc//MemberNotificationsApi.md#cleanupexpirednotifications) | **POST** /notifications/cleanup | 清理過期通知
 *MemberNotificationsApi* | [**createBatchNotifications**](doc//MemberNotificationsApi.md#createbatchnotifications) | **POST** /notifications/batch | 批量創建通知
 *MemberNotificationsApi* | [**createNotification**](doc//MemberNotificationsApi.md#createnotification) | **POST** /notifications | 創建通知
@@ -221,7 +221,7 @@ Class | Method | HTTP request | Description
 *MemberNotificationsApi* | [**getUnreadNotifications**](doc//MemberNotificationsApi.md#getunreadnotifications) | **GET** /notifications/unread | 獲取未讀通知
 *MemberNotificationsApi* | [**markAllAsRead**](doc//MemberNotificationsApi.md#markallasread) | **POST** /notifications/read-all | 全部標記為已讀
 *MemberNotificationsApi* | [**markAsRead**](doc//MemberNotificationsApi.md#markasread) | **POST** /notifications/{notificationId}/read | 標記為已讀
-*MemberNotificationsApi* | [**searchNotifications**](doc//MemberNotificationsApi.md#searchnotifications) | **GET** /notifications/search | 搜索通知
+*MemberNotificationsApi* | [**searchNotifications**](doc//MemberNotificationsApi.md#searchnotifications) | **POST** /notifications/search | 搜索通知
 *MemberNotificationsApi* | [**updateNotification**](doc//MemberNotificationsApi.md#updatenotification) | **PUT** /notifications/{notificationId} | 更新通知
 *MemberOrdersApi* | [**cancelOrder**](doc//MemberOrdersApi.md#cancelorder) | **POST** /orders/cancel | 取消訂單
 *MemberOrdersApi* | [**confirmOrder**](doc//MemberOrdersApi.md#confirmorder) | **POST** /orders/confirm | 確認收貨
@@ -265,7 +265,7 @@ Class | Method | HTTP request | Description
 *ReviewsApi* | [**getSentReviews**](doc//ReviewsApi.md#getsentreviews) | **GET** /reviews/sent | 獲取用戶發出的評價
 *ReviewsApi* | [**getUserAverageRating**](doc//ReviewsApi.md#getuseraveragerating) | **GET** /reviews/user/{userId}/average-rating | 獲取用戶的平均評分
 *ReviewsApi* | [**replyToReview**](doc//ReviewsApi.md#replytoreview) | **POST** /reviews/reply | 回覆評價
-*ReviewsApi* | [**searchReviews**](doc//ReviewsApi.md#searchreviews) | **GET** /reviews/search | 搜索評價
+*ReviewsApi* | [**searchReviews**](doc//ReviewsApi.md#searchreviews) | **POST** /reviews/search | 搜索評價
 *ReviewsApi* | [**updateReview**](doc//ReviewsApi.md#updatereview) | **POST** /reviews/update | 更新評價
 *SseApi* | [**broadcastMessage**](doc//SseApi.md#broadcastmessage) | **POST** /sse/broadcast | 廣播消息
 *SseApi* | [**connect**](doc//SseApi.md#connect) | **GET** /sse/connect/{clientId} | 建立 SSE 連接
@@ -284,7 +284,7 @@ Class | Method | HTTP request | Description
 *StoresApi* | [**getShippingConfig**](doc//StoresApi.md#getshippingconfig) | **GET** /stores/shipping-config | 獲取商店物流設定
 *StoresApi* | [**getStoreAnalytics**](doc//StoresApi.md#getstoreanalytics) | **GET** /stores/analytics | 獲取商店分析數據
 *StoresApi* | [**getStoreBySellerId**](doc//StoresApi.md#getstorebysellerid) | **GET** /stores/{sellerId} | 根據賣家ID獲取商店信息
-*StoresApi* | [**searchMyStoreProducts**](doc//StoresApi.md#searchmystoreproducts) | **GET** /stores/products/search | 搜索我的商店商品
+*StoresApi* | [**searchMyStoreProducts**](doc//StoresApi.md#searchmystoreproducts) | **POST** /stores/products/search | 搜索我的商店商品
 *StoresApi* | [**updateShippingConfig**](doc//StoresApi.md#updateshippingconfig) | **POST** /stores/shipping-config | 更新商店物流設定
 *StoresApi* | [**updateStore**](doc//StoresApi.md#updatestore) | **POST** /stores/update | 更新商店
 *TestApi* | [**generateAutoReplyTestData**](doc//TestApi.md#generateautoreplytestdata) | **POST** /test/auto-reply | 生成自動回復測試數據
@@ -320,6 +320,7 @@ Class | Method | HTTP request | Description
  - [CartItemCreateParam](doc//CartItemCreateParam.md)
  - [CartItemResponse](doc//CartItemResponse.md)
  - [CartItemUpdateParam](doc//CartItemUpdateParam.md)
+ - [CartSearchParam](doc//CartSearchParam.md)
  - [CartSummary](doc//CartSummary.md)
  - [CartSummaryDTO](doc//CartSummaryDTO.md)
  - [ChangePasswordParam](doc//ChangePasswordParam.md)
@@ -338,14 +339,17 @@ Class | Method | HTTP request | Description
  - [CustomerIssue](doc//CustomerIssue.md)
  - [CustomerStats](doc//CustomerStats.md)
  - [DeliveryDetail](doc//DeliveryDetail.md)
+ - [DeliveryOrderSearchParam](doc//DeliveryOrderSearchParam.md)
  - [DeliveryReportTypeEnum](doc//DeliveryReportTypeEnum.md)
  - [Deliveryer](doc//Deliveryer.md)
  - [DeliveryerRegistrationParam](doc//DeliveryerRegistrationParam.md)
+ - [DeliveryerSearchParam](doc//DeliveryerSearchParam.md)
  - [DeliveryerUpdateParam](doc//DeliveryerUpdateParam.md)
  - [Dispute](doc//Dispute.md)
  - [DisputeCreateParam](doc//DisputeCreateParam.md)
  - [DisputeOutcome](doc//DisputeOutcome.md)
  - [DisputeQueryResult](doc//DisputeQueryResult.md)
+ - [DisputeSearchParam](doc//DisputeSearchParam.md)
  - [DisputeStatisticsDTO](doc//DisputeStatisticsDTO.md)
  - [DisputeStatusEnum](doc//DisputeStatusEnum.md)
  - [HumanInterventionSettings](doc//HumanInterventionSettings.md)
@@ -357,10 +361,12 @@ Class | Method | HTTP request | Description
  - [LoginResult](doc//LoginResult.md)
  - [LogisticsServiceTypeEnum](doc//LogisticsServiceTypeEnum.md)
  - [LowStockWarningDTO](doc//LowStockWarningDTO.md)
+ - [MemberSearchParam](doc//MemberSearchParam.md)
  - [MemberUpdateParam](doc//MemberUpdateParam.md)
  - [MessageSendResponseDTO](doc//MessageSendResponseDTO.md)
  - [NotificationCreateParam](doc//NotificationCreateParam.md)
  - [NotificationResponseDTO](doc//NotificationResponseDTO.md)
+ - [NotificationSearchParam](doc//NotificationSearchParam.md)
  - [NotificationStatusEnum](doc//NotificationStatusEnum.md)
  - [NotificationTypeEnum](doc//NotificationTypeEnum.md)
  - [NotificationUpdateParam](doc//NotificationUpdateParam.md)
@@ -396,6 +402,7 @@ Class | Method | HTTP request | Description
  - [PageableObject](doc//PageableObject.md)
  - [PasswordResetParam](doc//PasswordResetParam.md)
  - [PersonalizationSettings](doc//PersonalizationSettings.md)
+ - [PostalSearchParam](doc//PostalSearchParam.md)
  - [Product](doc//Product.md)
  - [ProductCategoryEnum](doc//ProductCategoryEnum.md)
  - [ProductCreateParam](doc//ProductCreateParam.md)
@@ -420,6 +427,7 @@ Class | Method | HTTP request | Description
  - [ReviewFailure](doc//ReviewFailure.md)
  - [ReviewPromoCodeParam](doc//ReviewPromoCodeParam.md)
  - [ReviewReplyParam](doc//ReviewReplyParam.md)
+ - [ReviewSearchParam](doc//ReviewSearchParam.md)
  - [ReviewStatisticsDTO](doc//ReviewStatisticsDTO.md)
  - [ReviewUpdateParam](doc//ReviewUpdateParam.md)
  - [SalesStats](doc//SalesStats.md)
@@ -433,6 +441,7 @@ Class | Method | HTTP request | Description
  - [Store](doc//Store.md)
  - [StoreAnalyticsDTO](doc//StoreAnalyticsDTO.md)
  - [StoreCreateParam](doc//StoreCreateParam.md)
+ - [StoreProductSearchParam](doc//StoreProductSearchParam.md)
  - [StoreResponseDTO](doc//StoreResponseDTO.md)
  - [StoreShippingConfigParam](doc//StoreShippingConfigParam.md)
  - [StoreUpdateParam](doc//StoreUpdateParam.md)

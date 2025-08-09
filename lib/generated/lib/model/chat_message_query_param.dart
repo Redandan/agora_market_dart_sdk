@@ -13,15 +13,81 @@ part of openapi.api;
 class ChatMessageQueryParam {
   /// Returns a new [ChatMessageQueryParam] instance.
   ChatMessageQueryParam({
+    this.page,
+    this.size,
+    this.startDate,
+    this.endDate,
+    this.keyword,
+    this.sortBy,
+    this.sortDirection,
     this.userId,
     this.sessionId,
     this.chatWithUserId,
-    this.startTime,
-    this.endTime,
     this.unreadOnly,
-    this.page = 0,
-    this.size = 20,
   });
+
+  /// 頁碼，從1開始
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? page;
+
+  /// 每頁數量
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? size;
+
+  /// 開始日期 (ISO-8601 格式)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? startDate;
+
+  /// 結束日期 (ISO-8601 格式)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? endDate;
+
+  /// 搜索關鍵字
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? keyword;
+
+  /// 排序字段
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sortBy;
+
+  /// 排序方向 (ASC/DESC)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sortDirection;
 
   /// 用戶ID
   ///
@@ -50,24 +116,6 @@ class ChatMessageQueryParam {
   ///
   int? chatWithUserId;
 
-  /// 開始時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? startTime;
-
-  /// 結束時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? endTime;
-
   /// 是否只查詢未讀消息
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -77,40 +125,75 @@ class ChatMessageQueryParam {
   ///
   bool? unreadOnly;
 
-  /// 頁碼
-  int page;
-
-  /// 每頁大小
-  int size;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is ChatMessageQueryParam &&
+    other.page == page &&
+    other.size == size &&
+    other.startDate == startDate &&
+    other.endDate == endDate &&
+    other.keyword == keyword &&
+    other.sortBy == sortBy &&
+    other.sortDirection == sortDirection &&
     other.userId == userId &&
     other.sessionId == sessionId &&
     other.chatWithUserId == chatWithUserId &&
-    other.startTime == startTime &&
-    other.endTime == endTime &&
-    other.unreadOnly == unreadOnly &&
-    other.page == page &&
-    other.size == size;
+    other.unreadOnly == unreadOnly;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (page == null ? 0 : page!.hashCode) +
+    (size == null ? 0 : size!.hashCode) +
+    (startDate == null ? 0 : startDate!.hashCode) +
+    (endDate == null ? 0 : endDate!.hashCode) +
+    (keyword == null ? 0 : keyword!.hashCode) +
+    (sortBy == null ? 0 : sortBy!.hashCode) +
+    (sortDirection == null ? 0 : sortDirection!.hashCode) +
     (userId == null ? 0 : userId!.hashCode) +
     (sessionId == null ? 0 : sessionId!.hashCode) +
     (chatWithUserId == null ? 0 : chatWithUserId!.hashCode) +
-    (startTime == null ? 0 : startTime!.hashCode) +
-    (endTime == null ? 0 : endTime!.hashCode) +
-    (unreadOnly == null ? 0 : unreadOnly!.hashCode) +
-    (page.hashCode) +
-    (size.hashCode);
+    (unreadOnly == null ? 0 : unreadOnly!.hashCode);
 
   @override
-  String toString() => 'ChatMessageQueryParam[userId=$userId, sessionId=$sessionId, chatWithUserId=$chatWithUserId, startTime=$startTime, endTime=$endTime, unreadOnly=$unreadOnly, page=$page, size=$size]';
+  String toString() => 'ChatMessageQueryParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, userId=$userId, sessionId=$sessionId, chatWithUserId=$chatWithUserId, unreadOnly=$unreadOnly]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.page != null) {
+      json[r'page'] = this.page;
+    } else {
+      json[r'page'] = null;
+    }
+    if (this.size != null) {
+      json[r'size'] = this.size;
+    } else {
+      json[r'size'] = null;
+    }
+    if (this.startDate != null) {
+      json[r'startDate'] = this.startDate!.toUtc().toIso8601String();
+    } else {
+      json[r'startDate'] = null;
+    }
+    if (this.endDate != null) {
+      json[r'endDate'] = this.endDate!.toUtc().toIso8601String();
+    } else {
+      json[r'endDate'] = null;
+    }
+    if (this.keyword != null) {
+      json[r'keyword'] = this.keyword;
+    } else {
+      json[r'keyword'] = null;
+    }
+    if (this.sortBy != null) {
+      json[r'sortBy'] = this.sortBy;
+    } else {
+      json[r'sortBy'] = null;
+    }
+    if (this.sortDirection != null) {
+      json[r'sortDirection'] = this.sortDirection;
+    } else {
+      json[r'sortDirection'] = null;
+    }
     if (this.userId != null) {
       json[r'userId'] = this.userId;
     } else {
@@ -126,23 +209,11 @@ class ChatMessageQueryParam {
     } else {
       json[r'chatWithUserId'] = null;
     }
-    if (this.startTime != null) {
-      json[r'startTime'] = this.startTime!.toUtc().toIso8601String();
-    } else {
-      json[r'startTime'] = null;
-    }
-    if (this.endTime != null) {
-      json[r'endTime'] = this.endTime!.toUtc().toIso8601String();
-    } else {
-      json[r'endTime'] = null;
-    }
     if (this.unreadOnly != null) {
       json[r'unreadOnly'] = this.unreadOnly;
     } else {
       json[r'unreadOnly'] = null;
     }
-      json[r'page'] = this.page;
-      json[r'size'] = this.size;
     return json;
   }
 
@@ -165,14 +236,17 @@ class ChatMessageQueryParam {
       }());
 
       return ChatMessageQueryParam(
+        page: mapValueOfType<int>(json, r'page'),
+        size: mapValueOfType<int>(json, r'size'),
+        startDate: mapDateTime(json, r'startDate', r''),
+        endDate: mapDateTime(json, r'endDate', r''),
+        keyword: mapValueOfType<String>(json, r'keyword'),
+        sortBy: mapValueOfType<String>(json, r'sortBy'),
+        sortDirection: mapValueOfType<String>(json, r'sortDirection'),
         userId: mapValueOfType<int>(json, r'userId'),
         sessionId: mapValueOfType<int>(json, r'sessionId'),
         chatWithUserId: mapValueOfType<int>(json, r'chatWithUserId'),
-        startTime: mapDateTime(json, r'startTime', r''),
-        endTime: mapDateTime(json, r'endTime', r''),
         unreadOnly: mapValueOfType<bool>(json, r'unreadOnly'),
-        page: mapValueOfType<int>(json, r'page') ?? 0,
-        size: mapValueOfType<int>(json, r'size') ?? 20,
       );
     }
     return null;

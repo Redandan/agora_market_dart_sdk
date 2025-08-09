@@ -57,7 +57,7 @@ void main() {
     //
     // 管理員可根據多個條件搜索配送訂單
     //
-    //Future<List<DeliveryDetail>> searchDeliveryOrders({ int deliveryerId, String status, DateTime startDate, DateTime endDate }) async
+    //Future<List<DeliveryDetail>> searchDeliveryOrders(DeliveryOrderSearchParam deliveryOrderSearchParam) async
     test('test searchDeliveryOrders', () async {
       // TODO
     });
@@ -66,7 +66,7 @@ void main() {
     //
     // 管理員可根據多個條件搜索配送員，包括位置、狀態等
     //
-    //Future<List<Deliveryer>> searchDeliveryers({ bool enabled, bool isDelivering, double longitude, double latitude, double radius, DateTime startDate, DateTime endDate }) async
+    //Future<List<Deliveryer>> searchDeliveryers(DeliveryerSearchParam deliveryerSearchParam) async
     test('test searchDeliveryers', () async {
       // TODO
     });
