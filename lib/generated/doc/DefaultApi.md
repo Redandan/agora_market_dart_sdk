@@ -55,7 +55,7 @@ Method | HTTP request | Description
 [**getServiceTypes**](DefaultApi.md#getservicetypes) | **GET** /api/logistics/carriers/{carrier}/services | 取得物流公司服務類型
 [**getTransactionById**](DefaultApi.md#gettransactionbyid) | **GET** /transactions/{id} | 根據交易ID查詢交易記錄
 [**getTransactionList**](DefaultApi.md#gettransactionlist) | **GET** /transactions/{token}/list | 查詢帳變歷史
-[**getTransactionListByAdmin**](DefaultApi.md#gettransactionlistbyadmin) | **GET** /transactions/admin/search | 管理員查看帳變記錄
+[**getTransactionListByAdmin**](DefaultApi.md#gettransactionlistbyadmin) | **POST** /transactions/admin/search | 管理員查看帳變記錄
 [**getUserCart**](DefaultApi.md#getusercart) | **GET** /api/cart | 獲取用戶購物車
 [**getWithdraw**](DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 [**getWithdrawHistory**](DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
@@ -1988,7 +1988,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTransactionListByAdmin**
-> PageTransaction getTransactionListByAdmin(userId, token, page, size)
+> PageTransaction getTransactionListByAdmin(transactionSearchParam)
 
 管理員查看帳變記錄
 
@@ -1997,13 +1997,10 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = DefaultApi();
-final userId = 123; // int | 會員ID
-final token = USDT; // String | 幣種
-final page = 56; // int | 頁碼
-final size = 56; // int | 每頁數量
+final transactionSearchParam = TransactionSearchParam(); // TransactionSearchParam | 
 
 try {
-    final result = api_instance.getTransactionListByAdmin(userId, token, page, size);
+    final result = api_instance.getTransactionListByAdmin(transactionSearchParam);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getTransactionListByAdmin: $e\n');
@@ -2014,10 +2011,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **int**| 會員ID | 
- **token** | **String**| 幣種 | 
- **page** | **int**| 頁碼 | 
- **size** | **int**| 每頁數量 | 
+ **transactionSearchParam** | [**TransactionSearchParam**](TransactionSearchParam.md)|  | 
 
 ### Return type
 
@@ -2029,7 +2023,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

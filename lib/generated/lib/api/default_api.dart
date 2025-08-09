@@ -2603,39 +2603,24 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
-  /// * [int] userId (required):
-  ///   會員ID
-  ///
-  /// * [String] token (required):
-  ///   幣種
-  ///
-  /// * [int] page (required):
-  ///   頁碼
-  ///
-  /// * [int] size (required):
-  ///   每頁數量
-  Future<Response> getTransactionListByAdminWithHttpInfo(int userId, String token, int page, int size,) async {
+  /// * [TransactionSearchParam] transactionSearchParam (required):
+  Future<Response> getTransactionListByAdminWithHttpInfo(TransactionSearchParam transactionSearchParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/transactions/admin/search';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = transactionSearchParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'userId', userId));
-      queryParams.addAll(_queryParams('', 'token', token));
-      queryParams.addAll(_queryParams('', 'page', page));
-      queryParams.addAll(_queryParams('', 'size', size));
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -2648,19 +2633,9 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
-  /// * [int] userId (required):
-  ///   會員ID
-  ///
-  /// * [String] token (required):
-  ///   幣種
-  ///
-  /// * [int] page (required):
-  ///   頁碼
-  ///
-  /// * [int] size (required):
-  ///   每頁數量
-  Future<PageTransaction?> getTransactionListByAdmin(int userId, String token, int page, int size,) async {
-    final response = await getTransactionListByAdminWithHttpInfo(userId, token, page, size,);
+  /// * [TransactionSearchParam] transactionSearchParam (required):
+  Future<PageTransaction?> getTransactionListByAdmin(TransactionSearchParam transactionSearchParam,) async {
+    final response = await getTransactionListByAdminWithHttpInfo(transactionSearchParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -468,6 +468,8 @@ class ApiClient {
           return TopSellerDTO.fromJson(value);
         case 'Transaction':
           return Transaction.fromJson(value);
+        case 'TransactionSearchParam':
+          return TransactionSearchParam.fromJson(value);
         case 'TransactionTypeEnum':
           return TransactionTypeEnumTypeTransformer().decode(value);
         case 'TwoFactorSetupResponse':

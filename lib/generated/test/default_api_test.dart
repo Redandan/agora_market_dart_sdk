@@ -397,7 +397,7 @@ void main() {
 
     // 管理員查看帳變記錄
     //
-    //Future<PageTransaction> getTransactionListByAdmin(int userId, String token, int page, int size) async
+    //Future<PageTransaction> getTransactionListByAdmin(TransactionSearchParam transactionSearchParam) async
     test('test getTransactionListByAdmin', () async {
       // TODO
     });
