@@ -295,6 +295,7 @@ Class | Method | HTTP request | Description
 *TestApi* | [**generateRechargeAndWithdraw**](doc//TestApi.md#generaterechargeandwithdraw) | **POST** /test/recharge&withdraw | 
 *TestApi* | [**generateReviewData**](doc//TestApi.md#generatereviewdata) | **POST** /test/review | 
 *TestApi* | [**generateTestData**](doc//TestApi.md#generatetestdata) | **POST** /test/generate-test-data | 生成測試數據
+*TestApi* | [**getJwtConfig**](doc//TestApi.md#getjwtconfig) | **GET** /test/jwt-config | 
 *UserAddressesApi* | [**createAddress**](doc//UserAddressesApi.md#createaddress) | **POST** /user-addresses/create | 創建地址
 *UserAddressesApi* | [**deleteAddress**](doc//UserAddressesApi.md#deleteaddress) | **DELETE** /user-addresses/{addressId} | 刪除地址
 *UserAddressesApi* | [**getAddressById**](doc//UserAddressesApi.md#getaddressbyid) | **GET** /user-addresses/{addressId} | 根據ID獲取地址詳情
@@ -330,8 +331,8 @@ Class | Method | HTTP request | Description
  - [ChatMessageUpdateDTO](doc//ChatMessageUpdateDTO.md)
  - [ChatSession](doc//ChatSession.md)
  - [ChatSessionQueryParam](doc//ChatSessionQueryParam.md)
- - [ColdWallet](doc//ColdWallet.md)
- - [ColdWalletStatusEnum](doc//ColdWalletStatusEnum.md)
+ - [ColdWalletResponseDTO](doc//ColdWalletResponseDTO.md)
+ - [CreateColdWalletParam](doc//CreateColdWalletParam.md)
  - [CreateIssueParam](doc//CreateIssueParam.md)
  - [CreatePromoCodeParam](doc//CreatePromoCodeParam.md)
  - [CreateRechargeParam](doc//CreateRechargeParam.md)
@@ -384,7 +385,7 @@ Class | Method | HTTP request | Description
  - [PageCartItemResponse](doc//PageCartItemResponse.md)
  - [PageChatMessage](doc//PageChatMessage.md)
  - [PageChatSession](doc//PageChatSession.md)
- - [PageColdWallet](doc//PageColdWallet.md)
+ - [PageColdWalletResponseDTO](doc//PageColdWalletResponseDTO.md)
  - [PageCustomerIssue](doc//PageCustomerIssue.md)
  - [PageDispute](doc//PageDispute.md)
  - [PageNotificationResponseDTO](doc//PageNotificationResponseDTO.md)

@@ -71,5 +71,10 @@ void main() {
       // TODO
     });
 
+    //Future<Map<String, Object>> getJwtConfig() async
+    test('test getJwtConfig', () async {
+      // TODO
+    });
+
   });
 }

@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**generateRechargeAndWithdraw**](TestApi.md#generaterechargeandwithdraw) | **POST** /test/recharge&withdraw | 
 [**generateReviewData**](TestApi.md#generatereviewdata) | **POST** /test/review | 
 [**generateTestData**](TestApi.md#generatetestdata) | **POST** /test/generate-test-data | 生成測試數據
+[**getJwtConfig**](TestApi.md#getjwtconfig) | **GET** /test/jwt-config | 
 
 
 # **generateAutoReplyTestData**
@@ -309,6 +310,43 @@ This endpoint does not need any parameter.
 ### Return type
 
 **String**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getJwtConfig**
+> Map<String, Object> getJwtConfig()
+
+
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = TestApi();
+
+try {
+    final result = api_instance.getJwtConfig();
+    print(result);
+} catch (e) {
+    print('Exception when calling TestApi->getJwtConfig: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Map<String, Object>**](Object.md)
 
 ### Authorization
 

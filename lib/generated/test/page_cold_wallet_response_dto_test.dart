@@ -11,11 +11,11 @@
 import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
-// tests for PageColdWallet
+// tests for PageColdWalletResponseDTO
 void main() {
-  // final instance = PageColdWallet();
+  // final instance = PageColdWalletResponseDTO();
 
-  group('test PageColdWallet', () {
+  group('test PageColdWalletResponseDTO', () {
     // int totalElements
     test('to test the property `totalElements`', () async {
       // TODO
@@ -56,7 +56,7 @@ void main() {
       // TODO
     });
 
-    // List<ColdWallet> content (default value: const [])
+    // List<ColdWalletResponseDTO> content (default value: const [])
     test('to test the property `content`', () async {
       // TODO
     });

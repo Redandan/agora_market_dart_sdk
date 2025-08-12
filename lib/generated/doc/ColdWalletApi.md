@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **createColdWallet**
-> ColdWallet createColdWallet(coldWallet)
+> ColdWalletResponseDTO createColdWallet(createColdWalletParam)
 
 新增冷錢包
 
@@ -28,10 +28,10 @@ Method | HTTP request | Description
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = ColdWalletApi();
-final coldWallet = ColdWallet(); // ColdWallet | 
+final createColdWalletParam = CreateColdWalletParam(); // CreateColdWalletParam | 
 
 try {
-    final result = api_instance.createColdWallet(coldWallet);
+    final result = api_instance.createColdWallet(createColdWalletParam);
     print(result);
 } catch (e) {
     print('Exception when calling ColdWalletApi->createColdWallet: $e\n');
@@ -42,11 +42,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **coldWallet** | [**ColdWallet**](ColdWallet.md)|  | 
+ **createColdWalletParam** | [**CreateColdWalletParam**](CreateColdWalletParam.md)|  | 
 
 ### Return type
 
-[**ColdWallet**](ColdWallet.md)
+[**ColdWalletResponseDTO**](ColdWalletResponseDTO.md)
 
 ### Authorization
 
@@ -102,7 +102,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **freezeColdWallet**
-> ColdWallet freezeColdWallet(id)
+> ColdWalletResponseDTO freezeColdWallet(id)
 
 凍結冷錢包
 
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ColdWallet**](ColdWallet.md)
+[**ColdWalletResponseDTO**](ColdWalletResponseDTO.md)
 
 ### Authorization
 
@@ -145,7 +145,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getColdWallets**
-> PageColdWallet getColdWallets(page, size)
+> PageColdWalletResponseDTO getColdWallets(page, size)
 
 獲取冷錢包列表
 
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PageColdWallet**](PageColdWallet.md)
+[**PageColdWalletResponseDTO**](PageColdWalletResponseDTO.md)
 
 ### Authorization
 
@@ -190,7 +190,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **releaseColdWallet**
-> ColdWallet releaseColdWallet(id)
+> ColdWalletResponseDTO releaseColdWallet(id)
 
 釋放冷錢包
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ColdWallet**](ColdWallet.md)
+[**ColdWalletResponseDTO**](ColdWalletResponseDTO.md)
 
 ### Authorization
 
