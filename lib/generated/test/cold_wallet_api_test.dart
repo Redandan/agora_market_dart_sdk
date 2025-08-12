@@ -21,7 +21,7 @@ void main() {
     //
     // 創建新的冷錢包
     //
-    //Future<ColdWalletResponseDTO> createColdWallet(CreateColdWalletParam createColdWalletParam) async
+    //Future<ColdWallet> createColdWallet(CreateColdWalletParam createColdWalletParam) async
     test('test createColdWallet', () async {
       // TODO
     });
@@ -39,7 +39,7 @@ void main() {
     //
     // 將冷錢包凍結，使其無法被使用
     //
-    //Future<ColdWalletResponseDTO> freezeColdWallet(String id) async
+    //Future<ColdWallet> freezeColdWallet(String id) async
     test('test freezeColdWallet', () async {
       // TODO
     });
@@ -48,7 +48,7 @@ void main() {
     //
     // 分頁獲取所有冷錢包
     //
-    //Future<PageColdWalletResponseDTO> getColdWallets(int page, int size) async
+    //Future<PageColdWallet> getColdWallets(int page, int size) async
     test('test getColdWallets', () async {
       // TODO
     });
@@ -57,7 +57,7 @@ void main() {
     //
     // 將使用中的冷錢包釋放為可用狀態
     //
-    //Future<ColdWalletResponseDTO> releaseColdWallet(String id) async
+    //Future<ColdWallet> releaseColdWallet(String id) async
     test('test releaseColdWallet', () async {
       // TODO
     });

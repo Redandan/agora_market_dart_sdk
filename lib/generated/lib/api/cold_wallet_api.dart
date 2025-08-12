@@ -57,7 +57,7 @@ class ColdWalletApi {
   /// Parameters:
   ///
   /// * [CreateColdWalletParam] createColdWalletParam (required):
-  Future<ColdWalletResponseDTO?> createColdWallet(CreateColdWalletParam createColdWalletParam,) async {
+  Future<ColdWallet?> createColdWallet(CreateColdWalletParam createColdWalletParam,) async {
     final response = await createColdWalletWithHttpInfo(createColdWalletParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -66,7 +66,7 @@ class ColdWalletApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ColdWalletResponseDTO',) as ColdWalletResponseDTO;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ColdWallet',) as ColdWallet;
     
     }
     return null;
@@ -163,7 +163,7 @@ class ColdWalletApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  Future<ColdWalletResponseDTO?> freezeColdWallet(String id,) async {
+  Future<ColdWallet?> freezeColdWallet(String id,) async {
     final response = await freezeColdWalletWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -172,7 +172,7 @@ class ColdWalletApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ColdWalletResponseDTO',) as ColdWalletResponseDTO;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ColdWallet',) as ColdWallet;
     
     }
     return null;
@@ -230,7 +230,7 @@ class ColdWalletApi {
   ///
   /// * [int] size (required):
   ///   每頁數量
-  Future<PageColdWalletResponseDTO?> getColdWallets(int page, int size,) async {
+  Future<PageColdWallet?> getColdWallets(int page, int size,) async {
     final response = await getColdWalletsWithHttpInfo(page, size,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -239,7 +239,7 @@ class ColdWalletApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageColdWalletResponseDTO',) as PageColdWalletResponseDTO;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageColdWallet',) as PageColdWallet;
     
     }
     return null;
@@ -287,7 +287,7 @@ class ColdWalletApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  Future<ColdWalletResponseDTO?> releaseColdWallet(String id,) async {
+  Future<ColdWallet?> releaseColdWallet(String id,) async {
     final response = await releaseColdWalletWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -296,7 +296,7 @@ class ColdWalletApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ColdWalletResponseDTO',) as ColdWalletResponseDTO;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ColdWallet',) as ColdWallet;
     
     }
     return null;

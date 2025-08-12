@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class PageColdWalletResponseDTO {
-  /// Returns a new [PageColdWalletResponseDTO] instance.
-  PageColdWalletResponseDTO({
+class PageColdWallet {
+  /// Returns a new [PageColdWallet] instance.
+  PageColdWallet({
     this.totalElements,
     this.totalPages,
     this.sort,
@@ -90,7 +90,7 @@ class PageColdWalletResponseDTO {
   ///
   int? size;
 
-  List<ColdWalletResponseDTO> content;
+  List<ColdWallet> content;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -109,7 +109,7 @@ class PageColdWalletResponseDTO {
   bool? empty;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageColdWalletResponseDTO &&
+  bool operator ==(Object other) => identical(this, other) || other is PageColdWallet &&
     other.totalElements == totalElements &&
     other.totalPages == totalPages &&
     other.sort == sort &&
@@ -138,7 +138,7 @@ class PageColdWalletResponseDTO {
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageColdWalletResponseDTO[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, numberOfElements=$numberOfElements, pageable=$pageable, first=$first, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'PageColdWallet[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, numberOfElements=$numberOfElements, pageable=$pageable, first=$first, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -196,10 +196,10 @@ class PageColdWalletResponseDTO {
     return json;
   }
 
-  /// Returns a new [PageColdWalletResponseDTO] instance and imports its values from
+  /// Returns a new [PageColdWallet] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageColdWalletResponseDTO? fromJson(dynamic value) {
+  static PageColdWallet? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -208,13 +208,13 @@ class PageColdWalletResponseDTO {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageColdWalletResponseDTO[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageColdWalletResponseDTO[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PageColdWallet[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PageColdWallet[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageColdWalletResponseDTO(
+      return PageColdWallet(
         totalElements: mapValueOfType<int>(json, r'totalElements'),
         totalPages: mapValueOfType<int>(json, r'totalPages'),
         sort: SortObject.fromJson(json[r'sort']),
@@ -223,7 +223,7 @@ class PageColdWalletResponseDTO {
         first: mapValueOfType<bool>(json, r'first'),
         last: mapValueOfType<bool>(json, r'last'),
         size: mapValueOfType<int>(json, r'size'),
-        content: ColdWalletResponseDTO.listFromJson(json[r'content']),
+        content: ColdWallet.listFromJson(json[r'content']),
         number: mapValueOfType<int>(json, r'number'),
         empty: mapValueOfType<bool>(json, r'empty'),
       );
@@ -231,11 +231,11 @@ class PageColdWalletResponseDTO {
     return null;
   }
 
-  static List<PageColdWalletResponseDTO> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageColdWalletResponseDTO>[];
+  static List<PageColdWallet> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PageColdWallet>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageColdWalletResponseDTO.fromJson(row);
+        final value = PageColdWallet.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -244,12 +244,12 @@ class PageColdWalletResponseDTO {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageColdWalletResponseDTO> mapFromJson(dynamic json) {
-    final map = <String, PageColdWalletResponseDTO>{};
+  static Map<String, PageColdWallet> mapFromJson(dynamic json) {
+    final map = <String, PageColdWallet>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageColdWalletResponseDTO.fromJson(entry.value);
+        final value = PageColdWallet.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -258,14 +258,14 @@ class PageColdWalletResponseDTO {
     return map;
   }
 
-  // maps a json object with a list of PageColdWalletResponseDTO-objects as value to a dart map
-  static Map<String, List<PageColdWalletResponseDTO>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageColdWalletResponseDTO>>{};
+  // maps a json object with a list of PageColdWallet-objects as value to a dart map
+  static Map<String, List<PageColdWallet>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<PageColdWallet>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageColdWalletResponseDTO.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = PageColdWallet.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

@@ -226,8 +226,10 @@ class ApiClient {
           return ChatSession.fromJson(value);
         case 'ChatSessionQueryParam':
           return ChatSessionQueryParam.fromJson(value);
-        case 'ColdWalletResponseDTO':
-          return ColdWalletResponseDTO.fromJson(value);
+        case 'ColdWallet':
+          return ColdWallet.fromJson(value);
+        case 'ColdWalletStatusEnum':
+          return ColdWalletStatusEnumTypeTransformer().decode(value);
         case 'CreateColdWalletParam':
           return CreateColdWalletParam.fromJson(value);
         case 'CreateIssueParam':
@@ -334,8 +336,8 @@ class ApiClient {
           return PageChatMessage.fromJson(value);
         case 'PageChatSession':
           return PageChatSession.fromJson(value);
-        case 'PageColdWalletResponseDTO':
-          return PageColdWalletResponseDTO.fromJson(value);
+        case 'PageColdWallet':
+          return PageColdWallet.fromJson(value);
         case 'PageCustomerIssue':
           return PageCustomerIssue.fromJson(value);
         case 'PageDispute':

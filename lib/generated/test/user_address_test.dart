@@ -133,13 +133,13 @@ void main() {
       // TODO
     });
 
-    // bool convenienceStorePickup
-    test('to test the property `convenienceStorePickup`', () async {
+    // bool homeDelivery
+    test('to test the property `homeDelivery`', () async {
       // TODO
     });
 
-    // bool homeDelivery
-    test('to test the property `homeDelivery`', () async {
+    // bool convenienceStorePickup
+    test('to test the property `convenienceStorePickup`', () async {
       // TODO
     });
 

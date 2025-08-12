@@ -1,4 +1,4 @@
-# agora_market_dart_sdk.model.PageColdWalletResponseDTO
+# agora_market_dart_sdk.model.PageColdWallet
 
 ## Load the model package
 ```dart
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **first** | **bool** |  | [optional] 
 **last** | **bool** |  | [optional] 
 **size** | **int** |  | [optional] 
-**content** | [**List<ColdWalletResponseDTO>**](ColdWalletResponseDTO.md) |  | [optional] [default to const []]
+**content** | [**List<ColdWallet>**](ColdWallet.md) |  | [optional] [default to const []]
 **number** | **int** |  | [optional] 
 **empty** | **bool** |  | [optional] 
 

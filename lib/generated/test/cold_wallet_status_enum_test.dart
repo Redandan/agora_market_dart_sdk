@@ -11,22 +11,10 @@
 import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
-// tests for CreateColdWalletParam
+// tests for ColdWalletStatusEnum
 void main() {
-  // final instance = CreateColdWalletParam();
 
-  group('test CreateColdWalletParam', () {
-    // 錢包地址
-    // String address
-    test('to test the property `address`', () async {
-      // TODO
-    });
-
-    // ProtocolEnum protocolEnum
-    test('to test the property `protocolEnum`', () async {
-      // TODO
-    });
-
+  group('test ColdWalletStatusEnum', () {
 
   });
 
