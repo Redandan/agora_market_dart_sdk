@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **createColdWallet**
-> Object createColdWallet(createColdWalletParam)
+> ApiResponseColdWallet createColdWallet(createColdWalletParam)
 
 新增冷錢包
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**ApiResponseColdWallet**](ApiResponseColdWallet.md)
 
 ### Authorization
 
@@ -60,7 +60,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteColdWallet**
-> Object deleteColdWallet(id)
+> ApiResponseString deleteColdWallet(id)
 
 刪除冷錢包
 
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**ApiResponseString**](ApiResponseString.md)
 
 ### Authorization
 
@@ -103,7 +103,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **freezeColdWallet**
-> Object freezeColdWallet(id)
+> ApiResponseColdWallet freezeColdWallet(id)
 
 凍結冷錢包
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**ApiResponseColdWallet**](ApiResponseColdWallet.md)
 
 ### Authorization
 
@@ -146,7 +146,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getColdWallets**
-> Object getColdWallets(page, size)
+> ApiResponsePageColdWallet getColdWallets(page, size)
 
 獲取冷錢包列表
 
@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**ApiResponsePageColdWallet**](ApiResponsePageColdWallet.md)
 
 ### Authorization
 
@@ -191,7 +191,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **releaseColdWallet**
-> Object releaseColdWallet(id)
+> ApiResponseColdWallet releaseColdWallet(id)
 
 釋放冷錢包
 
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**ApiResponseColdWallet**](ApiResponseColdWallet.md)
 
 ### Authorization
 

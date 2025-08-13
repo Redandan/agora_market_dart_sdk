@@ -57,7 +57,7 @@ class ColdWalletApi {
   /// Parameters:
   ///
   /// * [CreateColdWalletParam] createColdWalletParam (required):
-  Future<Object?> createColdWallet(CreateColdWalletParam createColdWalletParam,) async {
+  Future<ApiResponseColdWallet?> createColdWallet(CreateColdWalletParam createColdWalletParam,) async {
     final response = await createColdWalletWithHttpInfo(createColdWalletParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -66,7 +66,7 @@ class ColdWalletApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseColdWallet',) as ApiResponseColdWallet;
     
     }
     return null;
@@ -114,7 +114,7 @@ class ColdWalletApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  Future<Object?> deleteColdWallet(String id,) async {
+  Future<ApiResponseString?> deleteColdWallet(String id,) async {
     final response = await deleteColdWalletWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -123,7 +123,7 @@ class ColdWalletApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseString',) as ApiResponseString;
     
     }
     return null;
@@ -171,7 +171,7 @@ class ColdWalletApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  Future<Object?> freezeColdWallet(String id,) async {
+  Future<ApiResponseColdWallet?> freezeColdWallet(String id,) async {
     final response = await freezeColdWalletWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -180,7 +180,7 @@ class ColdWalletApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseColdWallet',) as ApiResponseColdWallet;
     
     }
     return null;
@@ -238,7 +238,7 @@ class ColdWalletApi {
   ///
   /// * [int] size (required):
   ///   每頁數量
-  Future<Object?> getColdWallets(int page, int size,) async {
+  Future<ApiResponsePageColdWallet?> getColdWallets(int page, int size,) async {
     final response = await getColdWalletsWithHttpInfo(page, size,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -247,7 +247,7 @@ class ColdWalletApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponsePageColdWallet',) as ApiResponsePageColdWallet;
     
     }
     return null;
@@ -295,7 +295,7 @@ class ColdWalletApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  Future<Object?> releaseColdWallet(String id,) async {
+  Future<ApiResponseColdWallet?> releaseColdWallet(String id,) async {
     final response = await releaseColdWalletWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -304,7 +304,7 @@ class ColdWalletApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseColdWallet',) as ApiResponseColdWallet;
     
     }
     return null;

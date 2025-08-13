@@ -21,7 +21,7 @@ void main() {
     //
     // 創建新的冷錢包
     //
-    //Future<Object> createColdWallet(CreateColdWalletParam createColdWalletParam) async
+    //Future<ApiResponseColdWallet> createColdWallet(CreateColdWalletParam createColdWalletParam) async
     test('test createColdWallet', () async {
       // TODO
     });
@@ -30,7 +30,7 @@ void main() {
     //
     // 刪除指定的冷錢包
     //
-    //Future<Object> deleteColdWallet(String id) async
+    //Future<ApiResponseString> deleteColdWallet(String id) async
     test('test deleteColdWallet', () async {
       // TODO
     });
@@ -39,7 +39,7 @@ void main() {
     //
     // 將冷錢包凍結，使其無法被使用
     //
-    //Future<Object> freezeColdWallet(String id) async
+    //Future<ApiResponseColdWallet> freezeColdWallet(String id) async
     test('test freezeColdWallet', () async {
       // TODO
     });
@@ -48,7 +48,7 @@ void main() {
     //
     // 分頁獲取所有冷錢包
     //
-    //Future<Object> getColdWallets(int page, int size) async
+    //Future<ApiResponsePageColdWallet> getColdWallets(int page, int size) async
     test('test getColdWallets', () async {
       // TODO
     });
@@ -57,7 +57,7 @@ void main() {
     //
     // 將使用中的冷錢包釋放為可用狀態
     //
-    //Future<Object> releaseColdWallet(String id) async
+    //Future<ApiResponseColdWallet> releaseColdWallet(String id) async
     test('test releaseColdWallet', () async {
       // TODO
     });
