@@ -16,6 +16,8 @@ Method | HTTP request | Description
 [**adminGetUserCart**](DefaultApi.md#admingetusercart) | **GET** /api/cart/admin/list | 管理員獲取購物車列表
 [**adminRemoveFromCart**](DefaultApi.md#adminremovefromcart) | **DELETE** /api/cart/admin/{cartItemId} | 管理員從購物車移除商品
 [**adminUpdateCartItem**](DefaultApi.md#adminupdatecartitem) | **PUT** /api/cart/admin/{cartItemId} | 管理員更新購物車項目
+[**approvePost**](DefaultApi.md#approvepost) | **POST** /api/admin/posts/{id}/approve | 審核通過貼文
+[**archivePost**](DefaultApi.md#archivepost) | **POST** /api/posts/{id}/archive | 下架貼文
 [**calculateLogistics**](DefaultApi.md#calculatelogistics) | **POST** /api/logistics/calculate | 物流計算
 [**cancelRecharge**](DefaultApi.md#cancelrecharge) | **POST** /recharge/{rechargeId}/cancel | 取消充值
 [**checkCartItemStockStatus**](DefaultApi.md#checkcartitemstockstatus) | **POST** /api/cart/check-stock | 檢查庫存狀態
@@ -25,10 +27,14 @@ Method | HTTP request | Description
 [**completeRecharge**](DefaultApi.md#completerecharge) | **POST** /recharge/{rechargeId}/complete | 完成充值
 [**completeWithdraw**](DefaultApi.md#completewithdraw) | **POST** /withdraws/{withdrawId}/complete | 完成提款
 [**createIssue**](DefaultApi.md#createissue) | **POST** /customer-issues | 創建客戶問題
+[**createPost**](DefaultApi.md#createpost) | **POST** /api/posts | 創建貼文
 [**createRecharge**](DefaultApi.md#createrecharge) | **POST** /recharge | 創建充值
 [**createWithdraw**](DefaultApi.md#createwithdraw) | **POST** /withdraws | 發起提款
+[**deletePost**](DefaultApi.md#deletepost) | **DELETE** /api/posts/{id} | 刪除貼文
+[**deletePost1**](DefaultApi.md#deletepost1) | **DELETE** /api/admin/posts/{id} | 管理員刪除貼文
 [**failWithdraw**](DefaultApi.md#failwithdraw) | **POST** /withdraws/{withdrawId}/fail | 提款失敗
 [**getAllActive**](DefaultApi.md#getallactive) | **GET** /postal-areas | 獲取所有啟用的郵遞區號
+[**getAuthorPosts**](DefaultApi.md#getauthorposts) | **GET** /api/posts/author/{authorId} | 獲取作者貼文
 [**getAvailableCarriers**](DefaultApi.md#getavailablecarriers) | **GET** /api/logistics/carriers | 取得可用物流公司
 [**getAvailableCities**](DefaultApi.md#getavailablecities) | **GET** /api/logistics/postal/cities | 取得所有城市列表
 [**getByCity**](DefaultApi.md#getbycity) | **GET** /postal-areas/city/{city} | 根據城市查詢
@@ -40,12 +46,17 @@ Method | HTTP request | Description
 [**getCities**](DefaultApi.md#getcities) | **GET** /postal-areas/cities | 獲取城市列表
 [**getDistrictsByCity**](DefaultApi.md#getdistrictsbycity) | **GET** /postal-areas/cities/{city}/districts | 獲取城市行政區列表
 [**getDistrictsByCity1**](DefaultApi.md#getdistrictsbycity1) | **GET** /api/logistics/postal/city/{city}/districts | 查詢城市行政區
+[**getFeaturedPosts**](DefaultApi.md#getfeaturedposts) | **GET** /api/posts/featured | 獲取精選貼文
 [**getIssue**](DefaultApi.md#getissue) | **GET** /customer-issues/{issueId} | 查詢客戶問題記錄
 [**getIssueHistory**](DefaultApi.md#getissuehistory) | **GET** /customer-issues/history | 查詢客戶問題歷史
 [**getLatestOngoingWithdraw**](DefaultApi.md#getlatestongoingwithdraw) | **GET** /withdraws/ongoing | 查詢當前用戶最新一筆進行中的提現
 [**getLowStockItems**](DefaultApi.md#getlowstockitems) | **GET** /api/cart/low-stock | 獲取庫存不足商品
 [**getOutOfStockItems**](DefaultApi.md#getoutofstockitems) | **GET** /api/cart/out-of-stock | 獲取缺貨商品
+[**getOverviewStatistics**](DefaultApi.md#getoverviewstatistics) | **GET** /api/admin/posts/statistics/overview | 獲取貼文總覽統計
 [**getPendingRecharge**](DefaultApi.md#getpendingrecharge) | **GET** /recharge/pending | 查詢當前用戶是否有進行中的充值
+[**getPost**](DefaultApi.md#getpost) | **GET** /api/posts/{id} | 獲取貼文詳情
+[**getPost1**](DefaultApi.md#getpost1) | **GET** /api/admin/posts/{id} | 管理員獲取貼文詳情
+[**getPostStatistics**](DefaultApi.md#getpoststatistics) | **GET** /api/posts/{id}/statistics | 獲取貼文統計
 [**getPostalAreaByCode**](DefaultApi.md#getpostalareabycode) | **GET** /api/logistics/postal-codes/{postalCode} | 郵遞區號查詢
 [**getPostalAreasByCity**](DefaultApi.md#getpostalareasbycity) | **GET** /api/logistics/postal/city/{city} | 查詢城市所有行政區
 [**getRecharge**](DefaultApi.md#getrecharge) | **GET** /recharge/{rechargeId} | 獲取充值詳情
@@ -53,12 +64,19 @@ Method | HTTP request | Description
 [**getRechargeByTxHash**](DefaultApi.md#getrechargebytxhash) | **GET** /recharge/tx/{txHash} | 通過交易哈希查詢充值
 [**getRechargeHistory**](DefaultApi.md#getrechargehistory) | **GET** /recharge/history | 獲取充值記錄
 [**getServiceTypes**](DefaultApi.md#getservicetypes) | **GET** /api/logistics/carriers/{carrier}/services | 取得物流公司服務類型
+[**getStorePostStatistics**](DefaultApi.md#getstorepoststatistics) | **GET** /api/posts/store/{storeId}/statistics | 獲取商店貼文統計
+[**getStorePosts**](DefaultApi.md#getstoreposts) | **GET** /api/posts/store/{storeId} | 獲取商店貼文
+[**getTopPosts**](DefaultApi.md#gettopposts) | **GET** /api/posts/top | 獲取置頂貼文
 [**getTransactionById**](DefaultApi.md#gettransactionbyid) | **GET** /transactions/{id} | 根據交易ID查詢交易記錄
 [**getTransactionList**](DefaultApi.md#gettransactionlist) | **GET** /transactions/{token}/list | 查詢帳變歷史
 [**getTransactionListByAdmin**](DefaultApi.md#gettransactionlistbyadmin) | **POST** /transactions/admin/search | 管理員查看帳變記錄
 [**getUserCart**](DefaultApi.md#getusercart) | **GET** /api/cart | 獲取用戶購物車
+[**getUserPostStatistics**](DefaultApi.md#getuserpoststatistics) | **GET** /api/posts/user/{userId}/statistics | 獲取用戶貼文統計
 [**getWithdraw**](DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 [**getWithdrawHistory**](DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
+[**likePost**](DefaultApi.md#likepost) | **POST** /api/posts/{id}/like | 點讚貼文
+[**publishPost**](DefaultApi.md#publishpost) | **POST** /api/posts/{id}/publish | 發布貼文
+[**rejectPost**](DefaultApi.md#rejectpost) | **POST** /api/admin/posts/{id}/reject | 拒絕貼文
 [**removeCartItem**](DefaultApi.md#removecartitem) | **DELETE** /api/cart/admin/item/{cartItemId} | 刪除指定購物車項目
 [**removeFromCart**](DefaultApi.md#removefromcart) | **DELETE** /api/cart/{cartItemId} | 從購物車移除商品
 [**replyIssue**](DefaultApi.md#replyissue) | **POST** /customer-issues/{issueId}/reply | 回覆客戶問題
@@ -66,9 +84,16 @@ Method | HTTP request | Description
 [**searchCarts**](DefaultApi.md#searchcarts) | **POST** /api/cart/admin/search | 搜索購物車
 [**searchIssues**](DefaultApi.md#searchissues) | **POST** /customer-issues/search | 管理員搜尋客戶問題記錄
 [**searchPostalAreas**](DefaultApi.md#searchpostalareas) | **POST** /api/logistics/postal/search | 郵遞區號模糊查詢
+[**searchPosts**](DefaultApi.md#searchposts) | **GET** /api/posts/search | 搜索貼文
+[**searchPosts1**](DefaultApi.md#searchposts1) | **GET** /api/admin/posts/search | 管理員搜索貼文
 [**searchRecharges**](DefaultApi.md#searchrecharges) | **POST** /recharge/search | 管理員搜尋充值記錄
 [**searchWithdraws**](DefaultApi.md#searchwithdraws) | **POST** /withdraws/search | 管理員搜尋提款記錄
+[**setFeatured**](DefaultApi.md#setfeatured) | **POST** /api/admin/posts/{id}/featured | 設置精選貼文
+[**setTop**](DefaultApi.md#settop) | **POST** /api/admin/posts/{id}/top | 設置置頂貼文
+[**sharePost**](DefaultApi.md#sharepost) | **POST** /api/posts/{id}/share | 分享貼文
+[**unlikePost**](DefaultApi.md#unlikepost) | **POST** /api/posts/{id}/unlike | 取消點讚
 [**updateCartItem**](DefaultApi.md#updatecartitem) | **PUT** /api/cart/{cartItemId} | 更新購物車項目
+[**updatePost**](DefaultApi.md#updatepost) | **PUT** /api/posts | 更新貼文
 [**validatePostalCode**](DefaultApi.md#validatepostalcode) | **GET** /api/logistics/postal-codes/{postalCode}/validate | 郵遞區號驗證
 
 
@@ -379,6 +404,92 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **approvePost**
+> ApiResponseVoid approvePost(id)
+
+審核通過貼文
+
+管理員審核通過待審核的貼文
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final id = 789; // int | 
+
+try {
+    final result = api_instance.approvePost(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->approvePost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**ApiResponseVoid**](ApiResponseVoid.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **archivePost**
+> ApiResponseVoid archivePost(id)
+
+下架貼文
+
+賣家下架已發布的貼文
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final id = 789; // int | 
+
+try {
+    final result = api_instance.archivePost(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->archivePost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**ApiResponseVoid**](ApiResponseVoid.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -755,6 +866,49 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **createPost**
+> ApiResponsePostResponse createPost(postCreateParam)
+
+創建貼文
+
+賣家創建新貼文
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final postCreateParam = PostCreateParam(); // PostCreateParam | 
+
+try {
+    final result = api_instance.createPost(postCreateParam);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->createPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **postCreateParam** | [**PostCreateParam**](PostCreateParam.md)|  | 
+
+### Return type
+
+[**ApiResponsePostResponse**](ApiResponsePostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **createRecharge**
 > RechargeResponse createRecharge(createRechargeParam)
 
@@ -837,6 +991,92 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **deletePost**
+> ApiResponseVoid deletePost(id)
+
+刪除貼文
+
+賣家刪除自己的貼文
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final id = 789; // int | 
+
+try {
+    final result = api_instance.deletePost(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->deletePost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**ApiResponseVoid**](ApiResponseVoid.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deletePost1**
+> ApiResponseVoid deletePost1(id)
+
+管理員刪除貼文
+
+管理員強制刪除貼文
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final id = 789; // int | 
+
+try {
+    final result = api_instance.deletePost1(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->deletePost1: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**ApiResponseVoid**](ApiResponseVoid.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **failWithdraw**
 > Withdraw failWithdraw(withdrawId, remark)
 
@@ -907,6 +1147,51 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**List<TaiwanPostalArea>**](TaiwanPostalArea.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getAuthorPosts**
+> ApiResponsePageResponsePostResponse getAuthorPosts(authorId, param)
+
+獲取作者貼文
+
+獲取指定作者的貼文列表
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final authorId = 789; // int | 
+final param = ; // PostSearchParam | 
+
+try {
+    final result = api_instance.getAuthorPosts(authorId, param);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getAuthorPosts: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorId** | **int**|  | 
+ **param** | [**PostSearchParam**](.md)|  | 
+
+### Return type
+
+[**ApiResponsePageResponsePostResponse**](ApiResponsePageResponsePostResponse.md)
 
 ### Authorization
 
@@ -1370,6 +1655,49 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getFeaturedPosts**
+> ApiResponsePageResponsePostResponse getFeaturedPosts(param)
+
+獲取精選貼文
+
+獲取精選貼文列表
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final param = ; // PostSearchParam | 
+
+try {
+    final result = api_instance.getFeaturedPosts(param);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getFeaturedPosts: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **param** | [**PostSearchParam**](.md)|  | 
+
+### Return type
+
+[**ApiResponsePageResponsePostResponse**](ApiResponsePageResponsePostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getIssue**
 > CustomerIssue getIssue(issueId)
 
@@ -1569,6 +1897,45 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getOverviewStatistics**
+> ApiResponseStorePostStatistics getOverviewStatistics()
+
+獲取貼文總覽統計
+
+管理員獲取貼文系統的總覽統計信息
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+
+try {
+    final result = api_instance.getOverviewStatistics();
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getOverviewStatistics: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ApiResponseStorePostStatistics**](ApiResponseStorePostStatistics.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getPendingRecharge**
 > Recharge getPendingRecharge()
 
@@ -1594,6 +1961,135 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**Recharge**](Recharge.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getPost**
+> ApiResponsePostResponse getPost(id)
+
+獲取貼文詳情
+
+根據ID獲取貼文詳情
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final id = 789; // int | 
+
+try {
+    final result = api_instance.getPost(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**ApiResponsePostResponse**](ApiResponsePostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getPost1**
+> ApiResponsePostResponse getPost1(id)
+
+管理員獲取貼文詳情
+
+管理員獲取貼文詳情，包括未發布的
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final id = 789; // int | 
+
+try {
+    final result = api_instance.getPost1(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getPost1: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**ApiResponsePostResponse**](ApiResponsePostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getPostStatistics**
+> ApiResponsePostStatistics getPostStatistics(id)
+
+獲取貼文統計
+
+獲取貼文的瀏覽、點讚、評論、分享統計
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final id = 789; // int | 
+
+try {
+    final result = api_instance.getPostStatistics(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getPostStatistics: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**ApiResponsePostStatistics**](ApiResponsePostStatistics.md)
 
 ### Authorization
 
@@ -1901,6 +2397,133 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getStorePostStatistics**
+> ApiResponseStorePostStatistics getStorePostStatistics(storeId)
+
+獲取商店貼文統計
+
+獲取商店的貼文統計信息
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final storeId = 789; // int | 
+
+try {
+    final result = api_instance.getStorePostStatistics(storeId);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getStorePostStatistics: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storeId** | **int**|  | 
+
+### Return type
+
+[**ApiResponseStorePostStatistics**](ApiResponseStorePostStatistics.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getStorePosts**
+> ApiResponsePageResponsePostResponse getStorePosts(storeId, param)
+
+獲取商店貼文
+
+獲取指定商店的貼文列表
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final storeId = 789; // int | 
+final param = ; // PostSearchParam | 
+
+try {
+    final result = api_instance.getStorePosts(storeId, param);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getStorePosts: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storeId** | **int**|  | 
+ **param** | [**PostSearchParam**](.md)|  | 
+
+### Return type
+
+[**ApiResponsePageResponsePostResponse**](ApiResponsePageResponsePostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getTopPosts**
+> ApiResponseListPostResponse getTopPosts()
+
+獲取置頂貼文
+
+獲取置頂貼文列表
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+
+try {
+    final result = api_instance.getTopPosts();
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getTopPosts: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ApiResponseListPostResponse**](ApiResponseListPostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getTransactionById**
 > Transaction getTransactionById(id)
 
@@ -2073,6 +2696,49 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getUserPostStatistics**
+> ApiResponseUserPostStatistics getUserPostStatistics(userId)
+
+獲取用戶貼文統計
+
+獲取用戶的貼文統計信息
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final userId = 789; // int | 
+
+try {
+    final result = api_instance.getUserPostStatistics(userId);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getUserPostStatistics: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **int**|  | 
+
+### Return type
+
+[**ApiResponseUserPostStatistics**](ApiResponseUserPostStatistics.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getWithdraw**
 > Withdraw getWithdraw(withdrawId)
 
@@ -2145,6 +2811,137 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PageWithdraw**](PageWithdraw.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **likePost**
+> ApiResponseVoid likePost(id)
+
+點讚貼文
+
+用戶點讚貼文
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final id = 789; // int | 
+
+try {
+    final result = api_instance.likePost(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->likePost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**ApiResponseVoid**](ApiResponseVoid.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **publishPost**
+> ApiResponseVoid publishPost(id)
+
+發布貼文
+
+賣家發布草稿貼文
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final id = 789; // int | 
+
+try {
+    final result = api_instance.publishPost(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->publishPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**ApiResponseVoid**](ApiResponseVoid.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **rejectPost**
+> ApiResponseVoid rejectPost(id, reason)
+
+拒絕貼文
+
+管理員拒絕貼文
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final id = 789; // int | 
+final reason = reason_example; // String | 
+
+try {
+    final result = api_instance.rejectPost(id, reason);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->rejectPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+ **reason** | **String**|  | [optional] 
+
+### Return type
+
+[**ApiResponseVoid**](ApiResponseVoid.md)
 
 ### Authorization
 
@@ -2462,6 +3259,92 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **searchPosts**
+> ApiResponsePageResponsePostResponse searchPosts(param)
+
+搜索貼文
+
+搜索貼文，支持關鍵字、分類、標籤等條件
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final param = ; // PostSearchParam | 
+
+try {
+    final result = api_instance.searchPosts(param);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->searchPosts: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **param** | [**PostSearchParam**](.md)|  | 
+
+### Return type
+
+[**ApiResponsePageResponsePostResponse**](ApiResponsePageResponsePostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **searchPosts1**
+> ApiResponsePageResponsePostResponse searchPosts1(param)
+
+管理員搜索貼文
+
+管理員搜索所有貼文，包括未發布的
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final param = ; // PostSearchParam | 
+
+try {
+    final result = api_instance.searchPosts1(param);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->searchPosts1: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **param** | [**PostSearchParam**](.md)|  | 
+
+### Return type
+
+[**ApiResponsePageResponsePostResponse**](ApiResponsePageResponsePostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **searchRecharges**
 > PageRecharge searchRecharges(rechargeSearchParam, page, size)
 
@@ -2552,6 +3435,182 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **setFeatured**
+> ApiResponseVoid setFeatured(id, isFeatured)
+
+設置精選貼文
+
+管理員設置或取消精選貼文
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final id = 789; // int | 
+final isFeatured = true; // bool | 
+
+try {
+    final result = api_instance.setFeatured(id, isFeatured);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->setFeatured: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+ **isFeatured** | **bool**|  | 
+
+### Return type
+
+[**ApiResponseVoid**](ApiResponseVoid.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **setTop**
+> ApiResponseVoid setTop(id, isTop)
+
+設置置頂貼文
+
+管理員設置或取消置頂貼文
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final id = 789; // int | 
+final isTop = true; // bool | 
+
+try {
+    final result = api_instance.setTop(id, isTop);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->setTop: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+ **isTop** | **bool**|  | 
+
+### Return type
+
+[**ApiResponseVoid**](ApiResponseVoid.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **sharePost**
+> ApiResponseVoid sharePost(id)
+
+分享貼文
+
+分享貼文（增加分享次數）
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final id = 789; // int | 
+
+try {
+    final result = api_instance.sharePost(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->sharePost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**ApiResponseVoid**](ApiResponseVoid.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **unlikePost**
+> ApiResponseVoid unlikePost(id)
+
+取消點讚
+
+用戶點讚貼文
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final id = 789; // int | 
+
+try {
+    final result = api_instance.unlikePost(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->unlikePost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**ApiResponseVoid**](ApiResponseVoid.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateCartItem**
 > CartItemResponse updateCartItem(cartItemId, cartItemUpdateParam)
 
@@ -2585,6 +3644,49 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CartItemResponse**](CartItemResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updatePost**
+> ApiResponsePostResponse updatePost(postUpdateParam)
+
+更新貼文
+
+賣家更新自己的貼文
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = DefaultApi();
+final postUpdateParam = PostUpdateParam(); // PostUpdateParam | 
+
+try {
+    final result = api_instance.updatePost(postUpdateParam);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->updatePost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **postUpdateParam** | [**PostUpdateParam**](PostUpdateParam.md)|  | 
+
+### Return type
+
+[**ApiResponsePostResponse**](ApiResponsePostResponse.md)
 
 ### Authorization
 

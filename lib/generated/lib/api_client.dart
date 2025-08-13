@@ -190,12 +190,26 @@ class ApiClient {
           return AdminResetPasswordParam.fromJson(value);
         case 'ApiResponseColdWallet':
           return ApiResponseColdWallet.fromJson(value);
+        case 'ApiResponseListPostResponse':
+          return ApiResponseListPostResponse.fromJson(value);
         case 'ApiResponseMapStringObject':
           return ApiResponseMapStringObject.fromJson(value);
         case 'ApiResponsePageColdWallet':
           return ApiResponsePageColdWallet.fromJson(value);
+        case 'ApiResponsePageResponsePostResponse':
+          return ApiResponsePageResponsePostResponse.fromJson(value);
+        case 'ApiResponsePostResponse':
+          return ApiResponsePostResponse.fromJson(value);
+        case 'ApiResponsePostStatistics':
+          return ApiResponsePostStatistics.fromJson(value);
+        case 'ApiResponseStorePostStatistics':
+          return ApiResponseStorePostStatistics.fromJson(value);
         case 'ApiResponseString':
           return ApiResponseString.fromJson(value);
+        case 'ApiResponseUserPostStatistics':
+          return ApiResponseUserPostStatistics.fromJson(value);
+        case 'ApiResponseVoid':
+          return ApiResponseVoid.fromJson(value);
         case 'ApplyStakingParam':
           return ApplyStakingParam.fromJson(value);
         case 'AutoReplyConfig':
@@ -360,6 +374,8 @@ class ApiClient {
           return PagePromoCode.fromJson(value);
         case 'PageRecharge':
           return PageRecharge.fromJson(value);
+        case 'PageResponsePostResponse':
+          return PageResponsePostResponse.fromJson(value);
         case 'PageReview':
           return PageReview.fromJson(value);
         case 'PageStaking':
@@ -380,6 +396,16 @@ class ApiClient {
           return PasswordResetParam.fromJson(value);
         case 'PersonalizationSettings':
           return PersonalizationSettings.fromJson(value);
+        case 'PostCreateParam':
+          return PostCreateParam.fromJson(value);
+        case 'PostResponse':
+          return PostResponse.fromJson(value);
+        case 'PostSearchParam':
+          return PostSearchParam.fromJson(value);
+        case 'PostStatistics':
+          return PostStatistics.fromJson(value);
+        case 'PostUpdateParam':
+          return PostUpdateParam.fromJson(value);
         case 'PostalSearchParam':
           return PostalSearchParam.fromJson(value);
         case 'Product':
@@ -458,6 +484,8 @@ class ApiClient {
           return StoreAnalyticsDTO.fromJson(value);
         case 'StoreCreateParam':
           return StoreCreateParam.fromJson(value);
+        case 'StorePostStatistics':
+          return StorePostStatistics.fromJson(value);
         case 'StoreProductSearchParam':
           return StoreProductSearchParam.fromJson(value);
         case 'StoreResponseDTO':
@@ -498,6 +526,8 @@ class ApiClient {
           return UserInfo.fromJson(value);
         case 'UserOrderSearchParam':
           return UserOrderSearchParam.fromJson(value);
+        case 'UserPostStatistics':
+          return UserPostStatistics.fromJson(value);
         case 'UserProfileUpdateParam':
           return UserProfileUpdateParam.fromJson(value);
         case 'UserStatusEnum':

@@ -80,6 +80,24 @@ void main() {
       // TODO
     });
 
+    // 審核通過貼文
+    //
+    // 管理員審核通過待審核的貼文
+    //
+    //Future<ApiResponseVoid> approvePost(int id) async
+    test('test approvePost', () async {
+      // TODO
+    });
+
+    // 下架貼文
+    //
+    // 賣家下架已發布的貼文
+    //
+    //Future<ApiResponseVoid> archivePost(int id) async
+    test('test archivePost', () async {
+      // TODO
+    });
+
     // 物流計算
     //
     // 根據郵遞區號計算運費和運送天數，其他參數可選
@@ -151,6 +169,15 @@ void main() {
       // TODO
     });
 
+    // 創建貼文
+    //
+    // 賣家創建新貼文
+    //
+    //Future<ApiResponsePostResponse> createPost(PostCreateParam postCreateParam) async
+    test('test createPost', () async {
+      // TODO
+    });
+
     // 創建充值
     //
     //Future<RechargeResponse> createRecharge(CreateRechargeParam createRechargeParam) async
@@ -162,6 +189,24 @@ void main() {
     //
     //Future<Withdraw> createWithdraw(CreateWithdrawParam createWithdrawParam) async
     test('test createWithdraw', () async {
+      // TODO
+    });
+
+    // 刪除貼文
+    //
+    // 賣家刪除自己的貼文
+    //
+    //Future<ApiResponseVoid> deletePost(int id) async
+    test('test deletePost', () async {
+      // TODO
+    });
+
+    // 管理員刪除貼文
+    //
+    // 管理員強制刪除貼文
+    //
+    //Future<ApiResponseVoid> deletePost1(int id) async
+    test('test deletePost1', () async {
       // TODO
     });
 
@@ -178,6 +223,15 @@ void main() {
     //
     //Future<List<TaiwanPostalArea>> getAllActive() async
     test('test getAllActive', () async {
+      // TODO
+    });
+
+    // 獲取作者貼文
+    //
+    // 獲取指定作者的貼文列表
+    //
+    //Future<ApiResponsePageResponsePostResponse> getAuthorPosts(int authorId, PostSearchParam param) async
+    test('test getAuthorPosts', () async {
       // TODO
     });
 
@@ -280,6 +334,15 @@ void main() {
       // TODO
     });
 
+    // 獲取精選貼文
+    //
+    // 獲取精選貼文列表
+    //
+    //Future<ApiResponsePageResponsePostResponse> getFeaturedPosts(PostSearchParam param) async
+    test('test getFeaturedPosts', () async {
+      // TODO
+    });
+
     // 查詢客戶問題記錄
     //
     //Future<CustomerIssue> getIssue(String issueId) async
@@ -319,10 +382,46 @@ void main() {
       // TODO
     });
 
+    // 獲取貼文總覽統計
+    //
+    // 管理員獲取貼文系統的總覽統計信息
+    //
+    //Future<ApiResponseStorePostStatistics> getOverviewStatistics() async
+    test('test getOverviewStatistics', () async {
+      // TODO
+    });
+
     // 查詢當前用戶是否有進行中的充值
     //
     //Future<Recharge> getPendingRecharge() async
     test('test getPendingRecharge', () async {
+      // TODO
+    });
+
+    // 獲取貼文詳情
+    //
+    // 根據ID獲取貼文詳情
+    //
+    //Future<ApiResponsePostResponse> getPost(int id) async
+    test('test getPost', () async {
+      // TODO
+    });
+
+    // 管理員獲取貼文詳情
+    //
+    // 管理員獲取貼文詳情，包括未發布的
+    //
+    //Future<ApiResponsePostResponse> getPost1(int id) async
+    test('test getPost1', () async {
+      // TODO
+    });
+
+    // 獲取貼文統計
+    //
+    // 獲取貼文的瀏覽、點讚、評論、分享統計
+    //
+    //Future<ApiResponsePostStatistics> getPostStatistics(int id) async
+    test('test getPostStatistics', () async {
       // TODO
     });
 
@@ -381,6 +480,33 @@ void main() {
       // TODO
     });
 
+    // 獲取商店貼文統計
+    //
+    // 獲取商店的貼文統計信息
+    //
+    //Future<ApiResponseStorePostStatistics> getStorePostStatistics(int storeId) async
+    test('test getStorePostStatistics', () async {
+      // TODO
+    });
+
+    // 獲取商店貼文
+    //
+    // 獲取指定商店的貼文列表
+    //
+    //Future<ApiResponsePageResponsePostResponse> getStorePosts(int storeId, PostSearchParam param) async
+    test('test getStorePosts', () async {
+      // TODO
+    });
+
+    // 獲取置頂貼文
+    //
+    // 獲取置頂貼文列表
+    //
+    //Future<ApiResponseListPostResponse> getTopPosts() async
+    test('test getTopPosts', () async {
+      // TODO
+    });
+
     // 根據交易ID查詢交易記錄
     //
     //Future<Transaction> getTransactionById(int id) async
@@ -411,6 +537,15 @@ void main() {
       // TODO
     });
 
+    // 獲取用戶貼文統計
+    //
+    // 獲取用戶的貼文統計信息
+    //
+    //Future<ApiResponseUserPostStatistics> getUserPostStatistics(int userId) async
+    test('test getUserPostStatistics', () async {
+      // TODO
+    });
+
     // 查詢提款記錄
     //
     //Future<Withdraw> getWithdraw(String withdrawId) async
@@ -422,6 +557,33 @@ void main() {
     //
     //Future<PageWithdraw> getWithdrawHistory(int page, int size) async
     test('test getWithdrawHistory', () async {
+      // TODO
+    });
+
+    // 點讚貼文
+    //
+    // 用戶點讚貼文
+    //
+    //Future<ApiResponseVoid> likePost(int id) async
+    test('test likePost', () async {
+      // TODO
+    });
+
+    // 發布貼文
+    //
+    // 賣家發布草稿貼文
+    //
+    //Future<ApiResponseVoid> publishPost(int id) async
+    test('test publishPost', () async {
+      // TODO
+    });
+
+    // 拒絕貼文
+    //
+    // 管理員拒絕貼文
+    //
+    //Future<ApiResponseVoid> rejectPost(int id, { String reason }) async
+    test('test rejectPost', () async {
       // TODO
     });
 
@@ -484,6 +646,24 @@ void main() {
       // TODO
     });
 
+    // 搜索貼文
+    //
+    // 搜索貼文，支持關鍵字、分類、標籤等條件
+    //
+    //Future<ApiResponsePageResponsePostResponse> searchPosts(PostSearchParam param) async
+    test('test searchPosts', () async {
+      // TODO
+    });
+
+    // 管理員搜索貼文
+    //
+    // 管理員搜索所有貼文，包括未發布的
+    //
+    //Future<ApiResponsePageResponsePostResponse> searchPosts1(PostSearchParam param) async
+    test('test searchPosts1', () async {
+      // TODO
+    });
+
     // 管理員搜尋充值記錄
     //
     //Future<PageRecharge> searchRecharges(RechargeSearchParam rechargeSearchParam, { int page, int size }) async
@@ -498,12 +678,57 @@ void main() {
       // TODO
     });
 
+    // 設置精選貼文
+    //
+    // 管理員設置或取消精選貼文
+    //
+    //Future<ApiResponseVoid> setFeatured(int id, bool isFeatured) async
+    test('test setFeatured', () async {
+      // TODO
+    });
+
+    // 設置置頂貼文
+    //
+    // 管理員設置或取消置頂貼文
+    //
+    //Future<ApiResponseVoid> setTop(int id, bool isTop) async
+    test('test setTop', () async {
+      // TODO
+    });
+
+    // 分享貼文
+    //
+    // 分享貼文（增加分享次數）
+    //
+    //Future<ApiResponseVoid> sharePost(int id) async
+    test('test sharePost', () async {
+      // TODO
+    });
+
+    // 取消點讚
+    //
+    // 用戶點讚貼文
+    //
+    //Future<ApiResponseVoid> unlikePost(int id) async
+    test('test unlikePost', () async {
+      // TODO
+    });
+
     // 更新購物車項目
     //
     // 更新購物車中商品的數量
     //
     //Future<CartItemResponse> updateCartItem(int cartItemId, CartItemUpdateParam cartItemUpdateParam) async
     test('test updateCartItem', () async {
+      // TODO
+    });
+
+    // 更新貼文
+    //
+    // 賣家更新自己的貼文
+    //
+    //Future<ApiResponsePostResponse> updatePost(PostUpdateParam postUpdateParam) async
+    test('test updatePost', () async {
       // TODO
     });
 

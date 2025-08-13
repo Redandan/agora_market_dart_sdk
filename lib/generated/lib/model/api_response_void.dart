@@ -10,12 +10,13 @@
 
 part of openapi.api;
 
-class SortObject {
-  /// Returns a new [SortObject] instance.
-  SortObject({
-    this.unsorted,
-    this.sorted,
-    this.empty,
+class ApiResponseVoid {
+  /// Returns a new [ApiResponseVoid] instance.
+  ApiResponseVoid({
+    this.success,
+    this.message,
+    this.code,
+    this.data,
   });
 
   ///
@@ -24,7 +25,7 @@ class SortObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unsorted;
+  bool? success;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -32,7 +33,7 @@ class SortObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? sorted;
+  String? message;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -40,48 +41,63 @@ class SortObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? empty;
+  String? code;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  Object? data;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SortObject &&
-    other.unsorted == unsorted &&
-    other.sorted == sorted &&
-    other.empty == empty;
+  bool operator ==(Object other) => identical(this, other) || other is ApiResponseVoid &&
+    other.success == success &&
+    other.message == message &&
+    other.code == code &&
+    other.data == data;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (unsorted == null ? 0 : unsorted!.hashCode) +
-    (sorted == null ? 0 : sorted!.hashCode) +
-    (empty == null ? 0 : empty!.hashCode);
+    (success == null ? 0 : success!.hashCode) +
+    (message == null ? 0 : message!.hashCode) +
+    (code == null ? 0 : code!.hashCode) +
+    (data == null ? 0 : data!.hashCode);
 
   @override
-  String toString() => 'SortObject[unsorted=$unsorted, sorted=$sorted, empty=$empty]';
+  String toString() => 'ApiResponseVoid[success=$success, message=$message, code=$code, data=$data]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.unsorted != null) {
-      json[r'unsorted'] = this.unsorted;
+    if (this.success != null) {
+      json[r'success'] = this.success;
     } else {
-      json[r'unsorted'] = null;
+      json[r'success'] = null;
     }
-    if (this.sorted != null) {
-      json[r'sorted'] = this.sorted;
+    if (this.message != null) {
+      json[r'message'] = this.message;
     } else {
-      json[r'sorted'] = null;
+      json[r'message'] = null;
     }
-    if (this.empty != null) {
-      json[r'empty'] = this.empty;
+    if (this.code != null) {
+      json[r'code'] = this.code;
     } else {
-      json[r'empty'] = null;
+      json[r'code'] = null;
+    }
+    if (this.data != null) {
+      json[r'data'] = this.data;
+    } else {
+      json[r'data'] = null;
     }
     return json;
   }
 
-  /// Returns a new [SortObject] instance and imports its values from
+  /// Returns a new [ApiResponseVoid] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static SortObject? fromJson(dynamic value) {
+  static ApiResponseVoid? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -90,26 +106,27 @@ class SortObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "SortObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "SortObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ApiResponseVoid[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ApiResponseVoid[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return SortObject(
-        unsorted: mapValueOfType<bool>(json, r'unsorted'),
-        sorted: mapValueOfType<bool>(json, r'sorted'),
-        empty: mapValueOfType<bool>(json, r'empty'),
+      return ApiResponseVoid(
+        success: mapValueOfType<bool>(json, r'success'),
+        message: mapValueOfType<String>(json, r'message'),
+        code: mapValueOfType<String>(json, r'code'),
+        data: mapValueOfType<Object>(json, r'data'),
       );
     }
     return null;
   }
 
-  static List<SortObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <SortObject>[];
+  static List<ApiResponseVoid> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ApiResponseVoid>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = SortObject.fromJson(row);
+        final value = ApiResponseVoid.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -118,12 +135,12 @@ class SortObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, SortObject> mapFromJson(dynamic json) {
-    final map = <String, SortObject>{};
+  static Map<String, ApiResponseVoid> mapFromJson(dynamic json) {
+    final map = <String, ApiResponseVoid>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = SortObject.fromJson(entry.value);
+        final value = ApiResponseVoid.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -132,14 +149,14 @@ class SortObject {
     return map;
   }
 
-  // maps a json object with a list of SortObject-objects as value to a dart map
-  static Map<String, List<SortObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<SortObject>>{};
+  // maps a json object with a list of ApiResponseVoid-objects as value to a dart map
+  static Map<String, List<ApiResponseVoid>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ApiResponseVoid>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SortObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ApiResponseVoid.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

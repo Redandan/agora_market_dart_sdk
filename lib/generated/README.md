@@ -66,6 +66,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**adminGetUserCart**](doc//DefaultApi.md#admingetusercart) | **GET** /api/cart/admin/list | 管理員獲取購物車列表
 *DefaultApi* | [**adminRemoveFromCart**](doc//DefaultApi.md#adminremovefromcart) | **DELETE** /api/cart/admin/{cartItemId} | 管理員從購物車移除商品
 *DefaultApi* | [**adminUpdateCartItem**](doc//DefaultApi.md#adminupdatecartitem) | **PUT** /api/cart/admin/{cartItemId} | 管理員更新購物車項目
+*DefaultApi* | [**approvePost**](doc//DefaultApi.md#approvepost) | **POST** /api/admin/posts/{id}/approve | 審核通過貼文
+*DefaultApi* | [**archivePost**](doc//DefaultApi.md#archivepost) | **POST** /api/posts/{id}/archive | 下架貼文
 *DefaultApi* | [**calculateLogistics**](doc//DefaultApi.md#calculatelogistics) | **POST** /api/logistics/calculate | 物流計算
 *DefaultApi* | [**cancelRecharge**](doc//DefaultApi.md#cancelrecharge) | **POST** /recharge/{rechargeId}/cancel | 取消充值
 *DefaultApi* | [**checkCartItemStockStatus**](doc//DefaultApi.md#checkcartitemstockstatus) | **POST** /api/cart/check-stock | 檢查庫存狀態
@@ -75,10 +77,14 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**completeRecharge**](doc//DefaultApi.md#completerecharge) | **POST** /recharge/{rechargeId}/complete | 完成充值
 *DefaultApi* | [**completeWithdraw**](doc//DefaultApi.md#completewithdraw) | **POST** /withdraws/{withdrawId}/complete | 完成提款
 *DefaultApi* | [**createIssue**](doc//DefaultApi.md#createissue) | **POST** /customer-issues | 創建客戶問題
+*DefaultApi* | [**createPost**](doc//DefaultApi.md#createpost) | **POST** /api/posts | 創建貼文
 *DefaultApi* | [**createRecharge**](doc//DefaultApi.md#createrecharge) | **POST** /recharge | 創建充值
 *DefaultApi* | [**createWithdraw**](doc//DefaultApi.md#createwithdraw) | **POST** /withdraws | 發起提款
+*DefaultApi* | [**deletePost**](doc//DefaultApi.md#deletepost) | **DELETE** /api/posts/{id} | 刪除貼文
+*DefaultApi* | [**deletePost1**](doc//DefaultApi.md#deletepost1) | **DELETE** /api/admin/posts/{id} | 管理員刪除貼文
 *DefaultApi* | [**failWithdraw**](doc//DefaultApi.md#failwithdraw) | **POST** /withdraws/{withdrawId}/fail | 提款失敗
 *DefaultApi* | [**getAllActive**](doc//DefaultApi.md#getallactive) | **GET** /postal-areas | 獲取所有啟用的郵遞區號
+*DefaultApi* | [**getAuthorPosts**](doc//DefaultApi.md#getauthorposts) | **GET** /api/posts/author/{authorId} | 獲取作者貼文
 *DefaultApi* | [**getAvailableCarriers**](doc//DefaultApi.md#getavailablecarriers) | **GET** /api/logistics/carriers | 取得可用物流公司
 *DefaultApi* | [**getAvailableCities**](doc//DefaultApi.md#getavailablecities) | **GET** /api/logistics/postal/cities | 取得所有城市列表
 *DefaultApi* | [**getByCity**](doc//DefaultApi.md#getbycity) | **GET** /postal-areas/city/{city} | 根據城市查詢
@@ -90,12 +96,17 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getCities**](doc//DefaultApi.md#getcities) | **GET** /postal-areas/cities | 獲取城市列表
 *DefaultApi* | [**getDistrictsByCity**](doc//DefaultApi.md#getdistrictsbycity) | **GET** /postal-areas/cities/{city}/districts | 獲取城市行政區列表
 *DefaultApi* | [**getDistrictsByCity1**](doc//DefaultApi.md#getdistrictsbycity1) | **GET** /api/logistics/postal/city/{city}/districts | 查詢城市行政區
+*DefaultApi* | [**getFeaturedPosts**](doc//DefaultApi.md#getfeaturedposts) | **GET** /api/posts/featured | 獲取精選貼文
 *DefaultApi* | [**getIssue**](doc//DefaultApi.md#getissue) | **GET** /customer-issues/{issueId} | 查詢客戶問題記錄
 *DefaultApi* | [**getIssueHistory**](doc//DefaultApi.md#getissuehistory) | **GET** /customer-issues/history | 查詢客戶問題歷史
 *DefaultApi* | [**getLatestOngoingWithdraw**](doc//DefaultApi.md#getlatestongoingwithdraw) | **GET** /withdraws/ongoing | 查詢當前用戶最新一筆進行中的提現
 *DefaultApi* | [**getLowStockItems**](doc//DefaultApi.md#getlowstockitems) | **GET** /api/cart/low-stock | 獲取庫存不足商品
 *DefaultApi* | [**getOutOfStockItems**](doc//DefaultApi.md#getoutofstockitems) | **GET** /api/cart/out-of-stock | 獲取缺貨商品
+*DefaultApi* | [**getOverviewStatistics**](doc//DefaultApi.md#getoverviewstatistics) | **GET** /api/admin/posts/statistics/overview | 獲取貼文總覽統計
 *DefaultApi* | [**getPendingRecharge**](doc//DefaultApi.md#getpendingrecharge) | **GET** /recharge/pending | 查詢當前用戶是否有進行中的充值
+*DefaultApi* | [**getPost**](doc//DefaultApi.md#getpost) | **GET** /api/posts/{id} | 獲取貼文詳情
+*DefaultApi* | [**getPost1**](doc//DefaultApi.md#getpost1) | **GET** /api/admin/posts/{id} | 管理員獲取貼文詳情
+*DefaultApi* | [**getPostStatistics**](doc//DefaultApi.md#getpoststatistics) | **GET** /api/posts/{id}/statistics | 獲取貼文統計
 *DefaultApi* | [**getPostalAreaByCode**](doc//DefaultApi.md#getpostalareabycode) | **GET** /api/logistics/postal-codes/{postalCode} | 郵遞區號查詢
 *DefaultApi* | [**getPostalAreasByCity**](doc//DefaultApi.md#getpostalareasbycity) | **GET** /api/logistics/postal/city/{city} | 查詢城市所有行政區
 *DefaultApi* | [**getRecharge**](doc//DefaultApi.md#getrecharge) | **GET** /recharge/{rechargeId} | 獲取充值詳情
@@ -103,12 +114,19 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getRechargeByTxHash**](doc//DefaultApi.md#getrechargebytxhash) | **GET** /recharge/tx/{txHash} | 通過交易哈希查詢充值
 *DefaultApi* | [**getRechargeHistory**](doc//DefaultApi.md#getrechargehistory) | **GET** /recharge/history | 獲取充值記錄
 *DefaultApi* | [**getServiceTypes**](doc//DefaultApi.md#getservicetypes) | **GET** /api/logistics/carriers/{carrier}/services | 取得物流公司服務類型
+*DefaultApi* | [**getStorePostStatistics**](doc//DefaultApi.md#getstorepoststatistics) | **GET** /api/posts/store/{storeId}/statistics | 獲取商店貼文統計
+*DefaultApi* | [**getStorePosts**](doc//DefaultApi.md#getstoreposts) | **GET** /api/posts/store/{storeId} | 獲取商店貼文
+*DefaultApi* | [**getTopPosts**](doc//DefaultApi.md#gettopposts) | **GET** /api/posts/top | 獲取置頂貼文
 *DefaultApi* | [**getTransactionById**](doc//DefaultApi.md#gettransactionbyid) | **GET** /transactions/{id} | 根據交易ID查詢交易記錄
 *DefaultApi* | [**getTransactionList**](doc//DefaultApi.md#gettransactionlist) | **GET** /transactions/{token}/list | 查詢帳變歷史
 *DefaultApi* | [**getTransactionListByAdmin**](doc//DefaultApi.md#gettransactionlistbyadmin) | **POST** /transactions/admin/search | 管理員查看帳變記錄
 *DefaultApi* | [**getUserCart**](doc//DefaultApi.md#getusercart) | **GET** /api/cart | 獲取用戶購物車
+*DefaultApi* | [**getUserPostStatistics**](doc//DefaultApi.md#getuserpoststatistics) | **GET** /api/posts/user/{userId}/statistics | 獲取用戶貼文統計
 *DefaultApi* | [**getWithdraw**](doc//DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 *DefaultApi* | [**getWithdrawHistory**](doc//DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
+*DefaultApi* | [**likePost**](doc//DefaultApi.md#likepost) | **POST** /api/posts/{id}/like | 點讚貼文
+*DefaultApi* | [**publishPost**](doc//DefaultApi.md#publishpost) | **POST** /api/posts/{id}/publish | 發布貼文
+*DefaultApi* | [**rejectPost**](doc//DefaultApi.md#rejectpost) | **POST** /api/admin/posts/{id}/reject | 拒絕貼文
 *DefaultApi* | [**removeCartItem**](doc//DefaultApi.md#removecartitem) | **DELETE** /api/cart/admin/item/{cartItemId} | 刪除指定購物車項目
 *DefaultApi* | [**removeFromCart**](doc//DefaultApi.md#removefromcart) | **DELETE** /api/cart/{cartItemId} | 從購物車移除商品
 *DefaultApi* | [**replyIssue**](doc//DefaultApi.md#replyissue) | **POST** /customer-issues/{issueId}/reply | 回覆客戶問題
@@ -116,9 +134,16 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**searchCarts**](doc//DefaultApi.md#searchcarts) | **POST** /api/cart/admin/search | 搜索購物車
 *DefaultApi* | [**searchIssues**](doc//DefaultApi.md#searchissues) | **POST** /customer-issues/search | 管理員搜尋客戶問題記錄
 *DefaultApi* | [**searchPostalAreas**](doc//DefaultApi.md#searchpostalareas) | **POST** /api/logistics/postal/search | 郵遞區號模糊查詢
+*DefaultApi* | [**searchPosts**](doc//DefaultApi.md#searchposts) | **GET** /api/posts/search | 搜索貼文
+*DefaultApi* | [**searchPosts1**](doc//DefaultApi.md#searchposts1) | **GET** /api/admin/posts/search | 管理員搜索貼文
 *DefaultApi* | [**searchRecharges**](doc//DefaultApi.md#searchrecharges) | **POST** /recharge/search | 管理員搜尋充值記錄
 *DefaultApi* | [**searchWithdraws**](doc//DefaultApi.md#searchwithdraws) | **POST** /withdraws/search | 管理員搜尋提款記錄
+*DefaultApi* | [**setFeatured**](doc//DefaultApi.md#setfeatured) | **POST** /api/admin/posts/{id}/featured | 設置精選貼文
+*DefaultApi* | [**setTop**](doc//DefaultApi.md#settop) | **POST** /api/admin/posts/{id}/top | 設置置頂貼文
+*DefaultApi* | [**sharePost**](doc//DefaultApi.md#sharepost) | **POST** /api/posts/{id}/share | 分享貼文
+*DefaultApi* | [**unlikePost**](doc//DefaultApi.md#unlikepost) | **POST** /api/posts/{id}/unlike | 取消點讚
 *DefaultApi* | [**updateCartItem**](doc//DefaultApi.md#updatecartitem) | **PUT** /api/cart/{cartItemId} | 更新購物車項目
+*DefaultApi* | [**updatePost**](doc//DefaultApi.md#updatepost) | **PUT** /api/posts | 更新貼文
 *DefaultApi* | [**validatePostalCode**](doc//DefaultApi.md#validatepostalcode) | **GET** /api/logistics/postal-codes/{postalCode}/validate | 郵遞區號驗證
 *AdminDeliveryApi* | [**assignDeliveryer**](doc//AdminDeliveryApi.md#assigndeliveryer) | **POST** /admin/delivery/orders/{orderId}/assign | 手動分配配送員
 *AdminDeliveryApi* | [**getDeliveryOrderDetail**](doc//AdminDeliveryApi.md#getdeliveryorderdetail) | **GET** /admin/delivery/orders/{orderId} | 查看配送訂單詳情
@@ -317,9 +342,16 @@ Class | Method | HTTP request | Description
  - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
  - [AdminResetPasswordParam](doc//AdminResetPasswordParam.md)
  - [ApiResponseColdWallet](doc//ApiResponseColdWallet.md)
+ - [ApiResponseListPostResponse](doc//ApiResponseListPostResponse.md)
  - [ApiResponseMapStringObject](doc//ApiResponseMapStringObject.md)
  - [ApiResponsePageColdWallet](doc//ApiResponsePageColdWallet.md)
+ - [ApiResponsePageResponsePostResponse](doc//ApiResponsePageResponsePostResponse.md)
+ - [ApiResponsePostResponse](doc//ApiResponsePostResponse.md)
+ - [ApiResponsePostStatistics](doc//ApiResponsePostStatistics.md)
+ - [ApiResponseStorePostStatistics](doc//ApiResponseStorePostStatistics.md)
  - [ApiResponseString](doc//ApiResponseString.md)
+ - [ApiResponseUserPostStatistics](doc//ApiResponseUserPostStatistics.md)
+ - [ApiResponseVoid](doc//ApiResponseVoid.md)
  - [ApplyStakingParam](doc//ApplyStakingParam.md)
  - [AutoReplyConfig](doc//AutoReplyConfig.md)
  - [BatchReviewPromoCodeParam](doc//BatchReviewPromoCodeParam.md)
@@ -402,6 +434,7 @@ Class | Method | HTTP request | Description
  - [PageProduct](doc//PageProduct.md)
  - [PagePromoCode](doc//PagePromoCode.md)
  - [PageRecharge](doc//PageRecharge.md)
+ - [PageResponsePostResponse](doc//PageResponsePostResponse.md)
  - [PageReview](doc//PageReview.md)
  - [PageStaking](doc//PageStaking.md)
  - [PageTransaction](doc//PageTransaction.md)
@@ -412,6 +445,11 @@ Class | Method | HTTP request | Description
  - [PageableObject](doc//PageableObject.md)
  - [PasswordResetParam](doc//PasswordResetParam.md)
  - [PersonalizationSettings](doc//PersonalizationSettings.md)
+ - [PostCreateParam](doc//PostCreateParam.md)
+ - [PostResponse](doc//PostResponse.md)
+ - [PostSearchParam](doc//PostSearchParam.md)
+ - [PostStatistics](doc//PostStatistics.md)
+ - [PostUpdateParam](doc//PostUpdateParam.md)
  - [PostalSearchParam](doc//PostalSearchParam.md)
  - [Product](doc//Product.md)
  - [ProductCategoryEnum](doc//ProductCategoryEnum.md)
@@ -451,6 +489,7 @@ Class | Method | HTTP request | Description
  - [Store](doc//Store.md)
  - [StoreAnalyticsDTO](doc//StoreAnalyticsDTO.md)
  - [StoreCreateParam](doc//StoreCreateParam.md)
+ - [StorePostStatistics](doc//StorePostStatistics.md)
  - [StoreProductSearchParam](doc//StoreProductSearchParam.md)
  - [StoreResponseDTO](doc//StoreResponseDTO.md)
  - [StoreShippingConfigParam](doc//StoreShippingConfigParam.md)
@@ -471,6 +510,7 @@ Class | Method | HTTP request | Description
  - [UserAddress](doc//UserAddress.md)
  - [UserInfo](doc//UserInfo.md)
  - [UserOrderSearchParam](doc//UserOrderSearchParam.md)
+ - [UserPostStatistics](doc//UserPostStatistics.md)
  - [UserProfileUpdateParam](doc//UserProfileUpdateParam.md)
  - [UserStatusEnum](doc//UserStatusEnum.md)
  - [Withdraw](doc//Withdraw.md)

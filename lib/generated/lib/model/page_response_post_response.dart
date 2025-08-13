@@ -10,158 +10,173 @@
 
 part of openapi.api;
 
-class ProductInventoryStats {
-  /// Returns a new [ProductInventoryStats] instance.
-  ProductInventoryStats({
-    this.productId,
-    this.productName,
-    this.currentStock,
-    this.minStock,
-    this.stockAlertThreshold,
-    this.lowStock,
-    this.outOfStock,
-    this.belowMinimum,
+class PageResponsePostResponse {
+  /// Returns a new [PageResponsePostResponse] instance.
+  PageResponsePostResponse({
+    this.content = const [],
+    this.page,
+    this.size,
+    this.totalElements,
+    this.totalPages,
+    this.first,
+    this.last,
+    this.hasNext,
+    this.hasPrevious,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? productId;
+  /// 數據列表
+  List<PostResponse> content;
 
+  /// 當前頁碼
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? productName;
+  int? page;
 
+  /// 每頁數量
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? currentStock;
+  int? size;
 
+  /// 總記錄數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? minStock;
+  int? totalElements;
 
+  /// 總頁數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? stockAlertThreshold;
+  int? totalPages;
 
+  /// 是否為第一頁
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? lowStock;
+  bool? first;
 
+  /// 是否為最後一頁
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? outOfStock;
+  bool? last;
 
+  /// 是否有下一頁
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? belowMinimum;
+  bool? hasNext;
+
+  /// 是否有上一頁
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? hasPrevious;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ProductInventoryStats &&
-    other.productId == productId &&
-    other.productName == productName &&
-    other.currentStock == currentStock &&
-    other.minStock == minStock &&
-    other.stockAlertThreshold == stockAlertThreshold &&
-    other.lowStock == lowStock &&
-    other.outOfStock == outOfStock &&
-    other.belowMinimum == belowMinimum;
+  bool operator ==(Object other) => identical(this, other) || other is PageResponsePostResponse &&
+    _deepEquality.equals(other.content, content) &&
+    other.page == page &&
+    other.size == size &&
+    other.totalElements == totalElements &&
+    other.totalPages == totalPages &&
+    other.first == first &&
+    other.last == last &&
+    other.hasNext == hasNext &&
+    other.hasPrevious == hasPrevious;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (productId == null ? 0 : productId!.hashCode) +
-    (productName == null ? 0 : productName!.hashCode) +
-    (currentStock == null ? 0 : currentStock!.hashCode) +
-    (minStock == null ? 0 : minStock!.hashCode) +
-    (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
-    (lowStock == null ? 0 : lowStock!.hashCode) +
-    (outOfStock == null ? 0 : outOfStock!.hashCode) +
-    (belowMinimum == null ? 0 : belowMinimum!.hashCode);
+    (content.hashCode) +
+    (page == null ? 0 : page!.hashCode) +
+    (size == null ? 0 : size!.hashCode) +
+    (totalElements == null ? 0 : totalElements!.hashCode) +
+    (totalPages == null ? 0 : totalPages!.hashCode) +
+    (first == null ? 0 : first!.hashCode) +
+    (last == null ? 0 : last!.hashCode) +
+    (hasNext == null ? 0 : hasNext!.hashCode) +
+    (hasPrevious == null ? 0 : hasPrevious!.hashCode);
 
   @override
-  String toString() => 'ProductInventoryStats[productId=$productId, productName=$productName, currentStock=$currentStock, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, lowStock=$lowStock, outOfStock=$outOfStock, belowMinimum=$belowMinimum]';
+  String toString() => 'PageResponsePostResponse[content=$content, page=$page, size=$size, totalElements=$totalElements, totalPages=$totalPages, first=$first, last=$last, hasNext=$hasNext, hasPrevious=$hasPrevious]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.productId != null) {
-      json[r'productId'] = this.productId;
+      json[r'content'] = this.content;
+    if (this.page != null) {
+      json[r'page'] = this.page;
     } else {
-      json[r'productId'] = null;
+      json[r'page'] = null;
     }
-    if (this.productName != null) {
-      json[r'productName'] = this.productName;
+    if (this.size != null) {
+      json[r'size'] = this.size;
     } else {
-      json[r'productName'] = null;
+      json[r'size'] = null;
     }
-    if (this.currentStock != null) {
-      json[r'currentStock'] = this.currentStock;
+    if (this.totalElements != null) {
+      json[r'totalElements'] = this.totalElements;
     } else {
-      json[r'currentStock'] = null;
+      json[r'totalElements'] = null;
     }
-    if (this.minStock != null) {
-      json[r'minStock'] = this.minStock;
+    if (this.totalPages != null) {
+      json[r'totalPages'] = this.totalPages;
     } else {
-      json[r'minStock'] = null;
+      json[r'totalPages'] = null;
     }
-    if (this.stockAlertThreshold != null) {
-      json[r'stockAlertThreshold'] = this.stockAlertThreshold;
+    if (this.first != null) {
+      json[r'first'] = this.first;
     } else {
-      json[r'stockAlertThreshold'] = null;
+      json[r'first'] = null;
     }
-    if (this.lowStock != null) {
-      json[r'lowStock'] = this.lowStock;
+    if (this.last != null) {
+      json[r'last'] = this.last;
     } else {
-      json[r'lowStock'] = null;
+      json[r'last'] = null;
     }
-    if (this.outOfStock != null) {
-      json[r'outOfStock'] = this.outOfStock;
+    if (this.hasNext != null) {
+      json[r'hasNext'] = this.hasNext;
     } else {
-      json[r'outOfStock'] = null;
+      json[r'hasNext'] = null;
     }
-    if (this.belowMinimum != null) {
-      json[r'belowMinimum'] = this.belowMinimum;
+    if (this.hasPrevious != null) {
+      json[r'hasPrevious'] = this.hasPrevious;
     } else {
-      json[r'belowMinimum'] = null;
+      json[r'hasPrevious'] = null;
     }
     return json;
   }
 
-  /// Returns a new [ProductInventoryStats] instance and imports its values from
+  /// Returns a new [PageResponsePostResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ProductInventoryStats? fromJson(dynamic value) {
+  static PageResponsePostResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -170,31 +185,32 @@ class ProductInventoryStats {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ProductInventoryStats[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ProductInventoryStats[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PageResponsePostResponse[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PageResponsePostResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ProductInventoryStats(
-        productId: mapValueOfType<int>(json, r'productId'),
-        productName: mapValueOfType<String>(json, r'productName'),
-        currentStock: mapValueOfType<int>(json, r'currentStock'),
-        minStock: mapValueOfType<int>(json, r'minStock'),
-        stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
-        lowStock: mapValueOfType<bool>(json, r'lowStock'),
-        outOfStock: mapValueOfType<bool>(json, r'outOfStock'),
-        belowMinimum: mapValueOfType<bool>(json, r'belowMinimum'),
+      return PageResponsePostResponse(
+        content: PostResponse.listFromJson(json[r'content']),
+        page: mapValueOfType<int>(json, r'page'),
+        size: mapValueOfType<int>(json, r'size'),
+        totalElements: mapValueOfType<int>(json, r'totalElements'),
+        totalPages: mapValueOfType<int>(json, r'totalPages'),
+        first: mapValueOfType<bool>(json, r'first'),
+        last: mapValueOfType<bool>(json, r'last'),
+        hasNext: mapValueOfType<bool>(json, r'hasNext'),
+        hasPrevious: mapValueOfType<bool>(json, r'hasPrevious'),
       );
     }
     return null;
   }
 
-  static List<ProductInventoryStats> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProductInventoryStats>[];
+  static List<PageResponsePostResponse> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PageResponsePostResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ProductInventoryStats.fromJson(row);
+        final value = PageResponsePostResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -203,12 +219,12 @@ class ProductInventoryStats {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ProductInventoryStats> mapFromJson(dynamic json) {
-    final map = <String, ProductInventoryStats>{};
+  static Map<String, PageResponsePostResponse> mapFromJson(dynamic json) {
+    final map = <String, PageResponsePostResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ProductInventoryStats.fromJson(entry.value);
+        final value = PageResponsePostResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -217,14 +233,14 @@ class ProductInventoryStats {
     return map;
   }
 
-  // maps a json object with a list of ProductInventoryStats-objects as value to a dart map
-  static Map<String, List<ProductInventoryStats>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ProductInventoryStats>>{};
+  // maps a json object with a list of PageResponsePostResponse-objects as value to a dart map
+  static Map<String, List<PageResponsePostResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<PageResponsePostResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ProductInventoryStats.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = PageResponsePostResponse.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

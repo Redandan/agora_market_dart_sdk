@@ -10,17 +10,17 @@
 
 part of openapi.api;
 
-class ProductInventoryStats {
-  /// Returns a new [ProductInventoryStats] instance.
-  ProductInventoryStats({
-    this.productId,
-    this.productName,
-    this.currentStock,
-    this.minStock,
-    this.stockAlertThreshold,
-    this.lowStock,
-    this.outOfStock,
-    this.belowMinimum,
+class StorePostStatistics {
+  /// Returns a new [StorePostStatistics] instance.
+  StorePostStatistics({
+    this.totalPosts,
+    this.publishedPosts,
+    this.draftPosts,
+    this.archivedPosts,
+    this.totalViews,
+    this.totalLikes,
+    this.totalComments,
+    this.totalShares,
   });
 
   ///
@@ -29,7 +29,7 @@ class ProductInventoryStats {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? productId;
+  int? totalPosts;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -37,7 +37,7 @@ class ProductInventoryStats {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? productName;
+  int? publishedPosts;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -45,7 +45,7 @@ class ProductInventoryStats {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? currentStock;
+  int? draftPosts;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -53,7 +53,7 @@ class ProductInventoryStats {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? minStock;
+  int? archivedPosts;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -61,7 +61,7 @@ class ProductInventoryStats {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? stockAlertThreshold;
+  int? totalViews;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -69,7 +69,7 @@ class ProductInventoryStats {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? lowStock;
+  int? totalLikes;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -77,7 +77,7 @@ class ProductInventoryStats {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? outOfStock;
+  int? totalComments;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -85,83 +85,83 @@ class ProductInventoryStats {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? belowMinimum;
+  int? totalShares;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ProductInventoryStats &&
-    other.productId == productId &&
-    other.productName == productName &&
-    other.currentStock == currentStock &&
-    other.minStock == minStock &&
-    other.stockAlertThreshold == stockAlertThreshold &&
-    other.lowStock == lowStock &&
-    other.outOfStock == outOfStock &&
-    other.belowMinimum == belowMinimum;
+  bool operator ==(Object other) => identical(this, other) || other is StorePostStatistics &&
+    other.totalPosts == totalPosts &&
+    other.publishedPosts == publishedPosts &&
+    other.draftPosts == draftPosts &&
+    other.archivedPosts == archivedPosts &&
+    other.totalViews == totalViews &&
+    other.totalLikes == totalLikes &&
+    other.totalComments == totalComments &&
+    other.totalShares == totalShares;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (productId == null ? 0 : productId!.hashCode) +
-    (productName == null ? 0 : productName!.hashCode) +
-    (currentStock == null ? 0 : currentStock!.hashCode) +
-    (minStock == null ? 0 : minStock!.hashCode) +
-    (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
-    (lowStock == null ? 0 : lowStock!.hashCode) +
-    (outOfStock == null ? 0 : outOfStock!.hashCode) +
-    (belowMinimum == null ? 0 : belowMinimum!.hashCode);
+    (totalPosts == null ? 0 : totalPosts!.hashCode) +
+    (publishedPosts == null ? 0 : publishedPosts!.hashCode) +
+    (draftPosts == null ? 0 : draftPosts!.hashCode) +
+    (archivedPosts == null ? 0 : archivedPosts!.hashCode) +
+    (totalViews == null ? 0 : totalViews!.hashCode) +
+    (totalLikes == null ? 0 : totalLikes!.hashCode) +
+    (totalComments == null ? 0 : totalComments!.hashCode) +
+    (totalShares == null ? 0 : totalShares!.hashCode);
 
   @override
-  String toString() => 'ProductInventoryStats[productId=$productId, productName=$productName, currentStock=$currentStock, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, lowStock=$lowStock, outOfStock=$outOfStock, belowMinimum=$belowMinimum]';
+  String toString() => 'StorePostStatistics[totalPosts=$totalPosts, publishedPosts=$publishedPosts, draftPosts=$draftPosts, archivedPosts=$archivedPosts, totalViews=$totalViews, totalLikes=$totalLikes, totalComments=$totalComments, totalShares=$totalShares]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.productId != null) {
-      json[r'productId'] = this.productId;
+    if (this.totalPosts != null) {
+      json[r'totalPosts'] = this.totalPosts;
     } else {
-      json[r'productId'] = null;
+      json[r'totalPosts'] = null;
     }
-    if (this.productName != null) {
-      json[r'productName'] = this.productName;
+    if (this.publishedPosts != null) {
+      json[r'publishedPosts'] = this.publishedPosts;
     } else {
-      json[r'productName'] = null;
+      json[r'publishedPosts'] = null;
     }
-    if (this.currentStock != null) {
-      json[r'currentStock'] = this.currentStock;
+    if (this.draftPosts != null) {
+      json[r'draftPosts'] = this.draftPosts;
     } else {
-      json[r'currentStock'] = null;
+      json[r'draftPosts'] = null;
     }
-    if (this.minStock != null) {
-      json[r'minStock'] = this.minStock;
+    if (this.archivedPosts != null) {
+      json[r'archivedPosts'] = this.archivedPosts;
     } else {
-      json[r'minStock'] = null;
+      json[r'archivedPosts'] = null;
     }
-    if (this.stockAlertThreshold != null) {
-      json[r'stockAlertThreshold'] = this.stockAlertThreshold;
+    if (this.totalViews != null) {
+      json[r'totalViews'] = this.totalViews;
     } else {
-      json[r'stockAlertThreshold'] = null;
+      json[r'totalViews'] = null;
     }
-    if (this.lowStock != null) {
-      json[r'lowStock'] = this.lowStock;
+    if (this.totalLikes != null) {
+      json[r'totalLikes'] = this.totalLikes;
     } else {
-      json[r'lowStock'] = null;
+      json[r'totalLikes'] = null;
     }
-    if (this.outOfStock != null) {
-      json[r'outOfStock'] = this.outOfStock;
+    if (this.totalComments != null) {
+      json[r'totalComments'] = this.totalComments;
     } else {
-      json[r'outOfStock'] = null;
+      json[r'totalComments'] = null;
     }
-    if (this.belowMinimum != null) {
-      json[r'belowMinimum'] = this.belowMinimum;
+    if (this.totalShares != null) {
+      json[r'totalShares'] = this.totalShares;
     } else {
-      json[r'belowMinimum'] = null;
+      json[r'totalShares'] = null;
     }
     return json;
   }
 
-  /// Returns a new [ProductInventoryStats] instance and imports its values from
+  /// Returns a new [StorePostStatistics] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ProductInventoryStats? fromJson(dynamic value) {
+  static StorePostStatistics? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -170,31 +170,31 @@ class ProductInventoryStats {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ProductInventoryStats[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ProductInventoryStats[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "StorePostStatistics[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "StorePostStatistics[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ProductInventoryStats(
-        productId: mapValueOfType<int>(json, r'productId'),
-        productName: mapValueOfType<String>(json, r'productName'),
-        currentStock: mapValueOfType<int>(json, r'currentStock'),
-        minStock: mapValueOfType<int>(json, r'minStock'),
-        stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
-        lowStock: mapValueOfType<bool>(json, r'lowStock'),
-        outOfStock: mapValueOfType<bool>(json, r'outOfStock'),
-        belowMinimum: mapValueOfType<bool>(json, r'belowMinimum'),
+      return StorePostStatistics(
+        totalPosts: mapValueOfType<int>(json, r'totalPosts'),
+        publishedPosts: mapValueOfType<int>(json, r'publishedPosts'),
+        draftPosts: mapValueOfType<int>(json, r'draftPosts'),
+        archivedPosts: mapValueOfType<int>(json, r'archivedPosts'),
+        totalViews: mapValueOfType<int>(json, r'totalViews'),
+        totalLikes: mapValueOfType<int>(json, r'totalLikes'),
+        totalComments: mapValueOfType<int>(json, r'totalComments'),
+        totalShares: mapValueOfType<int>(json, r'totalShares'),
       );
     }
     return null;
   }
 
-  static List<ProductInventoryStats> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProductInventoryStats>[];
+  static List<StorePostStatistics> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <StorePostStatistics>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ProductInventoryStats.fromJson(row);
+        final value = StorePostStatistics.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -203,12 +203,12 @@ class ProductInventoryStats {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ProductInventoryStats> mapFromJson(dynamic json) {
-    final map = <String, ProductInventoryStats>{};
+  static Map<String, StorePostStatistics> mapFromJson(dynamic json) {
+    final map = <String, StorePostStatistics>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ProductInventoryStats.fromJson(entry.value);
+        final value = StorePostStatistics.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -217,14 +217,14 @@ class ProductInventoryStats {
     return map;
   }
 
-  // maps a json object with a list of ProductInventoryStats-objects as value to a dart map
-  static Map<String, List<ProductInventoryStats>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ProductInventoryStats>>{};
+  // maps a json object with a list of StorePostStatistics-objects as value to a dart map
+  static Map<String, List<StorePostStatistics>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<StorePostStatistics>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ProductInventoryStats.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = StorePostStatistics.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

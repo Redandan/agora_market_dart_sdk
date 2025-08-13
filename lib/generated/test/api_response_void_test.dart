@@ -11,23 +11,28 @@
 import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
-// tests for SortObject
+// tests for ApiResponseVoid
 void main() {
-  // final instance = SortObject();
+  // final instance = ApiResponseVoid();
 
-  group('test SortObject', () {
-    // bool unsorted
-    test('to test the property `unsorted`', () async {
+  group('test ApiResponseVoid', () {
+    // bool success
+    test('to test the property `success`', () async {
       // TODO
     });
 
-    // bool sorted
-    test('to test the property `sorted`', () async {
+    // String message
+    test('to test the property `message`', () async {
       // TODO
     });
 
-    // bool empty
-    test('to test the property `empty`', () async {
+    // String code
+    test('to test the property `code`', () async {
+      // TODO
+    });
+
+    // Object data
+    test('to test the property `data`', () async {
       // TODO
     });
 
