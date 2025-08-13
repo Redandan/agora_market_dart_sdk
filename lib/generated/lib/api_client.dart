@@ -190,6 +190,8 @@ class ApiClient {
           return AdminResetPasswordParam.fromJson(value);
         case 'ApiResponseColdWallet':
           return ApiResponseColdWallet.fromJson(value);
+        case 'ApiResponseMapStringObject':
+          return ApiResponseMapStringObject.fromJson(value);
         case 'ApiResponsePageColdWallet':
           return ApiResponsePageColdWallet.fromJson(value);
         case 'ApiResponseString':

@@ -16,6 +16,121 @@ class AdminProductsApi {
 
   final ApiClient apiClient;
 
+  /// 管理員批量刪除商品
+  ///
+  /// 管理員可以批量強制刪除商品，此操作不可恢復
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [List<int>] requestBody (required):
+  Future<Response> batchDeleteProductsByAdminWithHttpInfo(List<int> requestBody,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/products/batch';
+
+    // ignore: prefer_final_locals
+    Object? postBody = requestBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 管理員批量刪除商品
+  ///
+  /// 管理員可以批量強制刪除商品，此操作不可恢復
+  ///
+  /// Parameters:
+  ///
+  /// * [List<int>] requestBody (required):
+  Future<ApiResponseMapStringObject?> batchDeleteProductsByAdmin(List<int> requestBody,) async {
+    final response = await batchDeleteProductsByAdminWithHttpInfo(requestBody,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseMapStringObject',) as ApiResponseMapStringObject;
+    
+    }
+    return null;
+  }
+
+  /// 管理員刪除商品
+  ///
+  /// 管理員可以強制刪除任何商品，此操作不可恢復
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] productId (required):
+  ///   商品ID
+  Future<Response> deleteProductByAdminWithHttpInfo(int productId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/products/{productId}'
+      .replaceAll('{productId}', productId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 管理員刪除商品
+  ///
+  /// 管理員可以強制刪除任何商品，此操作不可恢復
+  ///
+  /// Parameters:
+  ///
+  /// * [int] productId (required):
+  ///   商品ID
+  Future<ApiResponseString?> deleteProductByAdmin(int productId,) async {
+    final response = await deleteProductByAdminWithHttpInfo(productId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseString',) as ApiResponseString;
+    
+    }
+    return null;
+  }
+
   /// 查看商品詳情
   ///
   /// 管理員可查看商品的詳細信息
@@ -75,20 +190,12 @@ class AdminProductsApi {
     return null;
   }
 
-  /// 商品統計報告
+  /// 獲取商品統計數據
   ///
-  /// 獲取商品相關的統計數據
+  /// 管理員可查看商品的統計信息
   ///
   /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
-  Future<Response> getProductStatisticsWithHttpInfo({ DateTime? startDate, DateTime? endDate, }) async {
+  Future<Response> getProductStatisticsWithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/admin/products/statistics';
 
@@ -98,13 +205,6 @@ class AdminProductsApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    if (startDate != null) {
-      queryParams.addAll(_queryParams('', 'startDate', startDate));
-    }
-    if (endDate != null) {
-      queryParams.addAll(_queryParams('', 'endDate', endDate));
-    }
 
     const contentTypes = <String>[];
 
@@ -120,19 +220,11 @@ class AdminProductsApi {
     );
   }
 
-  /// 商品統計報告
+  /// 獲取商品統計數據
   ///
-  /// 獲取商品相關的統計數據
-  ///
-  /// Parameters:
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
-  Future<Map<String, Object>?> getProductStatistics({ DateTime? startDate, DateTime? endDate, }) async {
-    final response = await getProductStatisticsWithHttpInfo( startDate: startDate, endDate: endDate, );
+  /// 管理員可查看商品的統計信息
+  Future<Map<String, Object>?> getProductStatistics() async {
+    final response = await getProductStatisticsWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

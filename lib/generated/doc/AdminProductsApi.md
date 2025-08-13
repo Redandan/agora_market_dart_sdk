@@ -9,12 +9,100 @@ All URIs are relative to *https://agoramarketapi.purrtechllc.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**batchDeleteProductsByAdmin**](AdminProductsApi.md#batchdeleteproductsbyadmin) | **DELETE** /admin/products/batch | 管理員批量刪除商品
+[**deleteProductByAdmin**](AdminProductsApi.md#deleteproductbyadmin) | **DELETE** /admin/products/{productId} | 管理員刪除商品
 [**getProductDetail**](AdminProductsApi.md#getproductdetail) | **GET** /admin/products/{productId} | 查看商品詳情
-[**getProductStatistics**](AdminProductsApi.md#getproductstatistics) | **GET** /admin/products/statistics | 商品統計報告
+[**getProductStatistics**](AdminProductsApi.md#getproductstatistics) | **GET** /admin/products/statistics | 獲取商品統計數據
 [**searchProducts1**](AdminProductsApi.md#searchproducts1) | **POST** /admin/products/search | 搜索商品
 [**updateProductByAdmin**](AdminProductsApi.md#updateproductbyadmin) | **POST** /admin/products/{productId}/update | 更新商品
 [**updateProductStatusEnum**](AdminProductsApi.md#updateproductstatusenum) | **POST** /admin/products/{productId}/status | 更新商品狀態
 
+
+# **batchDeleteProductsByAdmin**
+> ApiResponseMapStringObject batchDeleteProductsByAdmin(requestBody)
+
+管理員批量刪除商品
+
+管理員可以批量強制刪除商品，此操作不可恢復
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = AdminProductsApi();
+final requestBody = [List<int>()]; // List<int> | 
+
+try {
+    final result = api_instance.batchDeleteProductsByAdmin(requestBody);
+    print(result);
+} catch (e) {
+    print('Exception when calling AdminProductsApi->batchDeleteProductsByAdmin: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requestBody** | [**List<int>**](int.md)|  | 
+
+### Return type
+
+[**ApiResponseMapStringObject**](ApiResponseMapStringObject.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteProductByAdmin**
+> ApiResponseString deleteProductByAdmin(productId)
+
+管理員刪除商品
+
+管理員可以強制刪除任何商品，此操作不可恢復
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = AdminProductsApi();
+final productId = 789; // int | 商品ID
+
+try {
+    final result = api_instance.deleteProductByAdmin(productId);
+    print(result);
+} catch (e) {
+    print('Exception when calling AdminProductsApi->deleteProductByAdmin: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **productId** | **int**| 商品ID | 
+
+### Return type
+
+[**ApiResponseString**](ApiResponseString.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getProductDetail**
 > Product getProductDetail(productId)
@@ -60,22 +148,20 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getProductStatistics**
-> Map<String, Object> getProductStatistics(startDate, endDate)
+> Map<String, Object> getProductStatistics()
 
-商品統計報告
+獲取商品統計數據
 
-獲取商品相關的統計數據
+管理員可查看商品的統計信息
 
 ### Example
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = AdminProductsApi();
-final startDate = 2013-10-20T19:20:30+01:00; // DateTime | 開始日期 (ISO-8601 格式)
-final endDate = 2013-10-20T19:20:30+01:00; // DateTime | 結束日期 (ISO-8601 格式)
 
 try {
-    final result = api_instance.getProductStatistics(startDate, endDate);
+    final result = api_instance.getProductStatistics();
     print(result);
 } catch (e) {
     print('Exception when calling AdminProductsApi->getProductStatistics: $e\n');
@@ -83,11 +169,7 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **startDate** | **DateTime**| 開始日期 (ISO-8601 格式) | [optional] 
- **endDate** | **DateTime**| 結束日期 (ISO-8601 格式) | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 

@@ -151,8 +151,10 @@ Class | Method | HTTP request | Description
 *AdminOrdersApi* | [**getOrderDetail**](doc//AdminOrdersApi.md#getorderdetail) | **GET** /admin/orders/{orderId} | 查看訂單詳情
 *AdminOrdersApi* | [**getOrderStatistics**](doc//AdminOrdersApi.md#getorderstatistics) | **GET** /admin/orders/statistics | 訂單統計報告
 *AdminOrdersApi* | [**searchOrders**](doc//AdminOrdersApi.md#searchorders) | **POST** /admin/orders/search | 搜索訂單
+*AdminProductsApi* | [**batchDeleteProductsByAdmin**](doc//AdminProductsApi.md#batchdeleteproductsbyadmin) | **DELETE** /admin/products/batch | 管理員批量刪除商品
+*AdminProductsApi* | [**deleteProductByAdmin**](doc//AdminProductsApi.md#deleteproductbyadmin) | **DELETE** /admin/products/{productId} | 管理員刪除商品
 *AdminProductsApi* | [**getProductDetail**](doc//AdminProductsApi.md#getproductdetail) | **GET** /admin/products/{productId} | 查看商品詳情
-*AdminProductsApi* | [**getProductStatistics**](doc//AdminProductsApi.md#getproductstatistics) | **GET** /admin/products/statistics | 商品統計報告
+*AdminProductsApi* | [**getProductStatistics**](doc//AdminProductsApi.md#getproductstatistics) | **GET** /admin/products/statistics | 獲取商品統計數據
 *AdminProductsApi* | [**searchProducts1**](doc//AdminProductsApi.md#searchproducts1) | **POST** /admin/products/search | 搜索商品
 *AdminProductsApi* | [**updateProductByAdmin**](doc//AdminProductsApi.md#updateproductbyadmin) | **POST** /admin/products/{productId}/update | 更新商品
 *AdminProductsApi* | [**updateProductStatusEnum**](doc//AdminProductsApi.md#updateproductstatusenum) | **POST** /admin/products/{productId}/status | 更新商品狀態
@@ -231,8 +233,10 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**shipOrderLogistics**](doc//MemberOrdersApi.md#shiporderlogistics) | **POST** /orders/ship/logistics | 第三方物流發貨
 *MemberOrdersApi* | [**shipOrderPlatform**](doc//MemberOrdersApi.md#shiporderplatform) | **POST** /orders/ship/platform | 平台配送發貨
 *MemberOrdersApi* | [**submitOrder**](doc//MemberOrdersApi.md#submitorder) | **POST** /orders | 提交訂單
+*ProductsApi* | [**batchDeleteProducts**](doc//ProductsApi.md#batchdeleteproducts) | **DELETE** /products/batch | 批量刪除商品
 *ProductsApi* | [**createProduct**](doc//ProductsApi.md#createproduct) | **POST** /products/create | 創建商品
 *ProductsApi* | [**decreaseStock**](doc//ProductsApi.md#decreasestock) | **POST** /products/{id}/stock/decrease | 減少商品庫存
+*ProductsApi* | [**deleteProduct**](doc//ProductsApi.md#deleteproduct) | **DELETE** /products/{id} | 刪除商品
 *ProductsApi* | [**getInventoryStats**](doc//ProductsApi.md#getinventorystats) | **GET** /products/{id}/inventory-stats | 獲取商品庫存統計信息
 *ProductsApi* | [**getLowStockProducts**](doc//ProductsApi.md#getlowstockproducts) | **GET** /products/low-stock | 獲取低庫存商品列表
 *ProductsApi* | [**getMyProducts**](doc//ProductsApi.md#getmyproducts) | **POST** /products/my-products | 獲取賣家自己的商品列表
@@ -313,6 +317,7 @@ Class | Method | HTTP request | Description
  - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
  - [AdminResetPasswordParam](doc//AdminResetPasswordParam.md)
  - [ApiResponseColdWallet](doc//ApiResponseColdWallet.md)
+ - [ApiResponseMapStringObject](doc//ApiResponseMapStringObject.md)
  - [ApiResponsePageColdWallet](doc//ApiResponsePageColdWallet.md)
  - [ApiResponseString](doc//ApiResponseString.md)
  - [ApplyStakingParam](doc//ApplyStakingParam.md)

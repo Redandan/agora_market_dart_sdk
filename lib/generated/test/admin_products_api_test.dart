@@ -17,6 +17,24 @@ void main() {
   // final instance = AdminProductsApi();
 
   group('tests for AdminProductsApi', () {
+    // 管理員批量刪除商品
+    //
+    // 管理員可以批量強制刪除商品，此操作不可恢復
+    //
+    //Future<ApiResponseMapStringObject> batchDeleteProductsByAdmin(List<int> requestBody) async
+    test('test batchDeleteProductsByAdmin', () async {
+      // TODO
+    });
+
+    // 管理員刪除商品
+    //
+    // 管理員可以強制刪除任何商品，此操作不可恢復
+    //
+    //Future<ApiResponseString> deleteProductByAdmin(int productId) async
+    test('test deleteProductByAdmin', () async {
+      // TODO
+    });
+
     // 查看商品詳情
     //
     // 管理員可查看商品的詳細信息
@@ -26,11 +44,11 @@ void main() {
       // TODO
     });
 
-    // 商品統計報告
+    // 獲取商品統計數據
     //
-    // 獲取商品相關的統計數據
+    // 管理員可查看商品的統計信息
     //
-    //Future<Map<String, Object>> getProductStatistics({ DateTime startDate, DateTime endDate }) async
+    //Future<Map<String, Object>> getProductStatistics() async
     test('test getProductStatistics', () async {
       // TODO
     });

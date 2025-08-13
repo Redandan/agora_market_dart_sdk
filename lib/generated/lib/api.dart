@@ -58,6 +58,7 @@ part 'model/accept_order_param.dart';
 part 'model/admin_create_user_param.dart';
 part 'model/admin_reset_password_param.dart';
 part 'model/api_response_cold_wallet.dart';
+part 'model/api_response_map_string_object.dart';
 part 'model/api_response_page_cold_wallet.dart';
 part 'model/api_response_string.dart';
 part 'model/apply_staking_param.dart';

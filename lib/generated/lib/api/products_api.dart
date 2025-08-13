@@ -16,6 +16,62 @@ class ProductsApi {
 
   final ApiClient apiClient;
 
+  /// 批量刪除商品
+  ///
+  /// 批量硬刪除多個商品，此操作不可恢復
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [List<int>] requestBody (required):
+  Future<Response> batchDeleteProductsWithHttpInfo(List<int> requestBody,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/products/batch';
+
+    // ignore: prefer_final_locals
+    Object? postBody = requestBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 批量刪除商品
+  ///
+  /// 批量硬刪除多個商品，此操作不可恢復
+  ///
+  /// Parameters:
+  ///
+  /// * [List<int>] requestBody (required):
+  Future<ApiResponseMapStringObject?> batchDeleteProducts(List<int> requestBody,) async {
+    final response = await batchDeleteProductsWithHttpInfo(requestBody,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseMapStringObject',) as ApiResponseMapStringObject;
+    
+    }
+    return null;
+  }
+
   /// 創建商品
   ///
   /// Note: This method returns the HTTP [Response].
@@ -124,6 +180,63 @@ class ProductsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
+    
+    }
+    return null;
+  }
+
+  /// 刪除商品
+  ///
+  /// 硬刪除商品，此操作不可恢復
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  Future<Response> deleteProductWithHttpInfo(int id,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/products/{id}'
+      .replaceAll('{id}', id.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 刪除商品
+  ///
+  /// 硬刪除商品，此操作不可恢復
+  ///
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  Future<ApiResponseString?> deleteProduct(int id,) async {
+    final response = await deleteProductWithHttpInfo(id,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseString',) as ApiResponseString;
     
     }
     return null;

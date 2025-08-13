@@ -9,8 +9,10 @@ All URIs are relative to *https://agoramarketapi.purrtechllc.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**batchDeleteProducts**](ProductsApi.md#batchdeleteproducts) | **DELETE** /products/batch | 批量刪除商品
 [**createProduct**](ProductsApi.md#createproduct) | **POST** /products/create | 創建商品
 [**decreaseStock**](ProductsApi.md#decreasestock) | **POST** /products/{id}/stock/decrease | 減少商品庫存
+[**deleteProduct**](ProductsApi.md#deleteproduct) | **DELETE** /products/{id} | 刪除商品
 [**getInventoryStats**](ProductsApi.md#getinventorystats) | **GET** /products/{id}/inventory-stats | 獲取商品庫存統計信息
 [**getLowStockProducts**](ProductsApi.md#getlowstockproducts) | **GET** /products/low-stock | 獲取低庫存商品列表
 [**getMyProducts**](ProductsApi.md#getmyproducts) | **POST** /products/my-products | 獲取賣家自己的商品列表
@@ -21,6 +23,49 @@ Method | HTTP request | Description
 [**setStock**](ProductsApi.md#setstock) | **POST** /products/{id}/stock/set | 設置商品庫存
 [**updateProduct**](ProductsApi.md#updateproduct) | **POST** /products/update | 更新商品
 
+
+# **batchDeleteProducts**
+> ApiResponseMapStringObject batchDeleteProducts(requestBody)
+
+批量刪除商品
+
+批量硬刪除多個商品，此操作不可恢復
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = ProductsApi();
+final requestBody = [List<int>()]; // List<int> | 
+
+try {
+    final result = api_instance.batchDeleteProducts(requestBody);
+    print(result);
+} catch (e) {
+    print('Exception when calling ProductsApi->batchDeleteProducts: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requestBody** | [**List<int>**](int.md)|  | 
+
+### Return type
+
+[**ApiResponseMapStringObject**](ApiResponseMapStringObject.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createProduct**
 > Product createProduct(productCreateParam)
@@ -94,6 +139,49 @@ Name | Type | Description  | Notes
 ### Return type
 
 **bool**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteProduct**
+> ApiResponseString deleteProduct(id)
+
+刪除商品
+
+硬刪除商品，此操作不可恢復
+
+### Example
+```dart
+import 'package:agora_market_dart_sdk/api.dart';
+
+final api_instance = ProductsApi();
+final id = 789; // int | 
+
+try {
+    final result = api_instance.deleteProduct(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling ProductsApi->deleteProduct: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**ApiResponseString**](ApiResponseString.md)
 
 ### Authorization
 

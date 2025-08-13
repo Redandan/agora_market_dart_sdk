@@ -17,6 +17,15 @@ void main() {
   // final instance = ProductsApi();
 
   group('tests for ProductsApi', () {
+    // 批量刪除商品
+    //
+    // 批量硬刪除多個商品，此操作不可恢復
+    //
+    //Future<ApiResponseMapStringObject> batchDeleteProducts(List<int> requestBody) async
+    test('test batchDeleteProducts', () async {
+      // TODO
+    });
+
     // 創建商品
     //
     //Future<Product> createProduct(ProductCreateParam productCreateParam) async
@@ -28,6 +37,15 @@ void main() {
     //
     //Future<bool> decreaseStock(int id, int quantity) async
     test('test decreaseStock', () async {
+      // TODO
+    });
+
+    // 刪除商品
+    //
+    // 硬刪除商品，此操作不可恢復
+    //
+    //Future<ApiResponseString> deleteProduct(int id) async
+    test('test deleteProduct', () async {
       // TODO
     });
 
