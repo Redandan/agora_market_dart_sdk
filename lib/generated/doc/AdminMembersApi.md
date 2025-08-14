@@ -196,7 +196,7 @@ No authorization required
 
 搜索會員
 
-管理員可根據多個條件搜索會員
+管理員可根據多個條件搜索會員，支持自定義排序
 
 ### Example
 ```dart

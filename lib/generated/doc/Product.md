@@ -49,10 +49,10 @@ Name | Type | Description | Notes
 **userSupportedShippingAddresses** | [**List<UserAddress>**](UserAddress.md) | 支援該商品運送的用戶地址列表 | [optional] [default to const []]
 **shippingAddressOptions** | [**List<ShippingAddressOption>**](ShippingAddressOption.md) | 運送地址選項列表 | [optional] [default to const []]
 **inStock** | **bool** |  | [optional] 
+**minimumShippingFee** | **num** |  | [optional] 
 **stockLow** | **bool** |  | [optional] 
 **stockBelowMinimum** | **bool** |  | [optional] 
 **defaultShippingFee** | **num** |  | [optional] 
-**minimumShippingFee** | **num** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

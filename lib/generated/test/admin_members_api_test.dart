@@ -53,7 +53,7 @@ void main() {
 
     // 搜索會員
     //
-    // 管理員可根據多個條件搜索會員
+    // 管理員可根據多個條件搜索會員，支持自定義排序
     //
     //Future<PageUser> searchMembers(MemberSearchParam memberSearchParam, { int page, int size }) async
     test('test searchMembers', () async {

@@ -255,7 +255,7 @@ class AdminMembersApi {
 
   /// 搜索會員
   ///
-  /// 管理員可根據多個條件搜索會員
+  /// 管理員可根據多個條件搜索會員，支持自定義排序
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -302,7 +302,7 @@ class AdminMembersApi {
 
   /// 搜索會員
   ///
-  /// 管理員可根據多個條件搜索會員
+  /// 管理員可根據多個條件搜索會員，支持自定義排序
   ///
   /// Parameters:
   ///
