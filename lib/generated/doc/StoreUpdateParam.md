@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **coverImageUrl** | **String** | 商店封面圖片 URL | [optional] 
 **isActive** | **bool** | 商店開關 | [optional] 
 **supportedShippingCompanies** | [**List<ShippingCompanyEnum>**](ShippingCompanyEnum.md) | 支援的物流公司 | [optional] [default to const []]
+**defaultShippingFee** | **double** | 預設運費 | [optional] 
+**freeShippingThreshold** | **double** | 免運費門檻 | [optional] 
 **shippingDescription** | **String** | 運送說明 | [optional] 
 **shippingPreparationHours** | **int** | 出貨準備時間（小時） | [optional] 
 **estimatedDeliveryDays** | **int** | 預計送達時間（天數） | [optional] 

@@ -76,6 +76,18 @@ void main() {
       // TODO
     });
 
+    // 預設運費
+    // double defaultShippingFee
+    test('to test the property `defaultShippingFee`', () async {
+      // TODO
+    });
+
+    // 免運費門檻
+    // double freeShippingThreshold
+    test('to test the property `freeShippingThreshold`', () async {
+      // TODO
+    });
+
     // 運送說明
     // String shippingDescription
     test('to test the property `shippingDescription`', () async {
