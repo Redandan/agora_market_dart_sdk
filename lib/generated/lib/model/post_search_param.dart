@@ -351,8 +351,6 @@ class PostSearchParamStatusEnum {
   static const DRAFT = PostSearchParamStatusEnum._(r'DRAFT');
   static const PUBLISHED = PostSearchParamStatusEnum._(r'PUBLISHED');
   static const ARCHIVED = PostSearchParamStatusEnum._(r'ARCHIVED');
-  static const PENDING_REVIEW = PostSearchParamStatusEnum._(r'PENDING_REVIEW');
-  static const REJECTED = PostSearchParamStatusEnum._(r'REJECTED');
   static const unknownDefaultOpenApi = PostSearchParamStatusEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][PostSearchParamStatusEnum].
@@ -360,8 +358,6 @@ class PostSearchParamStatusEnum {
     DRAFT,
     PUBLISHED,
     ARCHIVED,
-    PENDING_REVIEW,
-    REJECTED,
     unknownDefaultOpenApi,
   ];
 
@@ -404,8 +400,6 @@ class PostSearchParamStatusEnumTypeTransformer {
         case r'DRAFT': return PostSearchParamStatusEnum.DRAFT;
         case r'PUBLISHED': return PostSearchParamStatusEnum.PUBLISHED;
         case r'ARCHIVED': return PostSearchParamStatusEnum.ARCHIVED;
-        case r'PENDING_REVIEW': return PostSearchParamStatusEnum.PENDING_REVIEW;
-        case r'REJECTED': return PostSearchParamStatusEnum.REJECTED;
         case r'unknown_default_open_api': return PostSearchParamStatusEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

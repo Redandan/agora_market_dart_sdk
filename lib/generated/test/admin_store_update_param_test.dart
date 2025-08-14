@@ -11,17 +11,11 @@
 import 'package:agora_market_dart_sdk/api.dart';
 import 'package:test/test.dart';
 
-// tests for StoreResponseDTO
+// tests for AdminStoreUpdateParam
 void main() {
-  // final instance = StoreResponseDTO();
+  // final instance = AdminStoreUpdateParam();
 
-  group('test StoreResponseDTO', () {
-    // 商店擁有者ID
-    // int id
-    test('to test the property `id`', () async {
-      // TODO
-    });
-
+  group('test AdminStoreUpdateParam', () {
     // 商店名稱
     // String name
     test('to test the property `name`', () async {
@@ -58,13 +52,13 @@ void main() {
       // TODO
     });
 
-    // 商店頭像
+    // 商店Logo URL
     // String logoUrl
     test('to test the property `logoUrl`', () async {
       // TODO
     });
 
-    // 商店封面圖片
+    // 商店封面圖片 URL
     // String coverImageUrl
     test('to test the property `coverImageUrl`', () async {
       // TODO
@@ -73,24 +67,6 @@ void main() {
     // 是否啟用
     // bool isActive
     test('to test the property `isActive`', () async {
-      // TODO
-    });
-
-    // 瀏覽次數
-    // int viewCount
-    test('to test the property `viewCount`', () async {
-      // TODO
-    });
-
-    // 評分
-    // double rating
-    test('to test the property `rating`', () async {
-      // TODO
-    });
-
-    // 評分次數
-    // int ratingCount
-    test('to test the property `ratingCount`', () async {
       // TODO
     });
 
@@ -175,18 +151,6 @@ void main() {
     // 可選擇的出貨日期範圍（天數）
     // int shippingDateRange
     test('to test the property `shippingDateRange`', () async {
-      // TODO
-    });
-
-    // 創建時間
-    // DateTime createdAt
-    test('to test the property `createdAt`', () async {
-      // TODO
-    });
-
-    // 更新時間
-    // DateTime updatedAt
-    test('to test the property `updatedAt`', () async {
       // TODO
     });
 

@@ -42,6 +42,7 @@ class Store {
     this.shippingDateRange,
     this.createdAt,
     this.updatedAt,
+    this.adminRemark,
   });
 
   /// 商店擁有者ID
@@ -299,6 +300,15 @@ class Store {
   ///
   DateTime? updatedAt;
 
+  /// 管理員備註
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? adminRemark;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Store &&
     other.id == id &&
@@ -329,7 +339,8 @@ class Store {
     other.supportsScheduledShipping == supportsScheduledShipping &&
     other.shippingDateRange == shippingDateRange &&
     other.createdAt == createdAt &&
-    other.updatedAt == updatedAt;
+    other.updatedAt == updatedAt &&
+    other.adminRemark == adminRemark;
 
   @override
   int get hashCode =>
@@ -362,10 +373,11 @@ class Store {
     (supportsScheduledShipping == null ? 0 : supportsScheduledShipping!.hashCode) +
     (shippingDateRange == null ? 0 : shippingDateRange!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode);
+    (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (adminRemark == null ? 0 : adminRemark!.hashCode);
 
   @override
-  String toString() => 'Store[id=$id, name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, coverImageUrl=$coverImageUrl, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, creditLevel=$creditLevel, productCount=$productCount, orderCount=$orderCount, totalSales=$totalSales, averageRating=$averageRating, responseRate=$responseRate, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'Store[id=$id, name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, coverImageUrl=$coverImageUrl, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, creditLevel=$creditLevel, productCount=$productCount, orderCount=$orderCount, totalSales=$totalSales, averageRating=$averageRating, responseRate=$responseRate, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, createdAt=$createdAt, updatedAt=$updatedAt, adminRemark=$adminRemark]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -510,6 +522,11 @@ class Store {
     } else {
       json[r'updatedAt'] = null;
     }
+    if (this.adminRemark != null) {
+      json[r'adminRemark'] = this.adminRemark;
+    } else {
+      json[r'adminRemark'] = null;
+    }
     return json;
   }
 
@@ -561,6 +578,7 @@ class Store {
         shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
+        adminRemark: mapValueOfType<String>(json, r'adminRemark'),
       );
     }
     return null;

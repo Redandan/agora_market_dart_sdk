@@ -80,18 +80,9 @@ void main() {
       // TODO
     });
 
-    // 審核通過貼文
-    //
-    // 管理員審核通過待審核的貼文
-    //
-    //Future<ApiResponseVoid> approvePost(int id) async
-    test('test approvePost', () async {
-      // TODO
-    });
-
     // 下架貼文
     //
-    // 賣家下架已發布的貼文
+    // 用戶下架已發布的貼文
     //
     //Future<ApiResponseVoid> archivePost(int id) async
     test('test archivePost', () async {
@@ -171,7 +162,7 @@ void main() {
 
     // 創建貼文
     //
-    // 賣家創建新貼文
+    // 用戶創建新貼文
     //
     //Future<ApiResponsePostResponse> createPost(PostCreateParam postCreateParam) async
     test('test createPost', () async {
@@ -194,7 +185,7 @@ void main() {
 
     // 刪除貼文
     //
-    // 賣家刪除自己的貼文
+    // 用戶刪除自己的貼文
     //
     //Future<ApiResponseVoid> deletePost(int id) async
     test('test deletePost', () async {
@@ -571,19 +562,10 @@ void main() {
 
     // 發布貼文
     //
-    // 賣家發布草稿貼文
+    // 用戶發布草稿貼文
     //
     //Future<ApiResponseVoid> publishPost(int id) async
     test('test publishPost', () async {
-      // TODO
-    });
-
-    // 拒絕貼文
-    //
-    // 管理員拒絕貼文
-    //
-    //Future<ApiResponseVoid> rejectPost(int id, { String reason }) async
-    test('test rejectPost', () async {
       // TODO
     });
 
@@ -707,7 +689,7 @@ void main() {
 
     // 取消點讚
     //
-    // 用戶點讚貼文
+    // 用戶取消點讚貼文
     //
     //Future<ApiResponseVoid> unlikePost(int id) async
     test('test unlikePost', () async {
@@ -725,7 +707,7 @@ void main() {
 
     // 更新貼文
     //
-    // 賣家更新自己的貼文
+    // 用戶更新自己的貼文
     //
     //Future<ApiResponsePostResponse> updatePost(PostUpdateParam postUpdateParam) async
     test('test updatePost', () async {

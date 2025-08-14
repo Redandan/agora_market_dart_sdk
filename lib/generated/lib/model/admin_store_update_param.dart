@@ -10,10 +10,9 @@
 
 part of openapi.api;
 
-class StoreResponseDTO {
-  /// Returns a new [StoreResponseDTO] instance.
-  StoreResponseDTO({
-    this.id,
+class AdminStoreUpdateParam {
+  /// Returns a new [AdminStoreUpdateParam] instance.
+  AdminStoreUpdateParam({
     this.name,
     this.description,
     this.address,
@@ -23,9 +22,6 @@ class StoreResponseDTO {
     this.logoUrl,
     this.coverImageUrl,
     this.isActive,
-    this.viewCount,
-    this.rating,
-    this.ratingCount,
     this.creditLevel,
     this.productCount,
     this.orderCount,
@@ -40,19 +36,8 @@ class StoreResponseDTO {
     this.estimatedDeliveryDays,
     this.supportsScheduledShipping,
     this.shippingDateRange,
-    this.createdAt,
-    this.updatedAt,
     this.adminRemark,
   });
-
-  /// 商店擁有者ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? id;
 
   /// 商店名稱
   ///
@@ -108,7 +93,7 @@ class StoreResponseDTO {
   ///
   String? businessHours;
 
-  /// 商店頭像
+  /// 商店Logo URL
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -117,7 +102,7 @@ class StoreResponseDTO {
   ///
   String? logoUrl;
 
-  /// 商店封面圖片
+  /// 商店封面圖片 URL
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -134,33 +119,6 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? isActive;
-
-  /// 瀏覽次數
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? viewCount;
-
-  /// 評分
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  double? rating;
-
-  /// 評分次數
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? ratingCount;
 
   /// 信用等級
   ///
@@ -282,24 +240,6 @@ class StoreResponseDTO {
   ///
   int? shippingDateRange;
 
-  /// 創建時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? createdAt;
-
-  /// 更新時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? updatedAt;
-
   /// 管理員備註
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -310,8 +250,7 @@ class StoreResponseDTO {
   String? adminRemark;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is StoreResponseDTO &&
-    other.id == id &&
+  bool operator ==(Object other) => identical(this, other) || other is AdminStoreUpdateParam &&
     other.name == name &&
     other.description == description &&
     other.address == address &&
@@ -321,9 +260,6 @@ class StoreResponseDTO {
     other.logoUrl == logoUrl &&
     other.coverImageUrl == coverImageUrl &&
     other.isActive == isActive &&
-    other.viewCount == viewCount &&
-    other.rating == rating &&
-    other.ratingCount == ratingCount &&
     other.creditLevel == creditLevel &&
     other.productCount == productCount &&
     other.orderCount == orderCount &&
@@ -338,14 +274,11 @@ class StoreResponseDTO {
     other.estimatedDeliveryDays == estimatedDeliveryDays &&
     other.supportsScheduledShipping == supportsScheduledShipping &&
     other.shippingDateRange == shippingDateRange &&
-    other.createdAt == createdAt &&
-    other.updatedAt == updatedAt &&
     other.adminRemark == adminRemark;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (address == null ? 0 : address!.hashCode) +
@@ -355,9 +288,6 @@ class StoreResponseDTO {
     (logoUrl == null ? 0 : logoUrl!.hashCode) +
     (coverImageUrl == null ? 0 : coverImageUrl!.hashCode) +
     (isActive == null ? 0 : isActive!.hashCode) +
-    (viewCount == null ? 0 : viewCount!.hashCode) +
-    (rating == null ? 0 : rating!.hashCode) +
-    (ratingCount == null ? 0 : ratingCount!.hashCode) +
     (creditLevel == null ? 0 : creditLevel!.hashCode) +
     (productCount == null ? 0 : productCount!.hashCode) +
     (orderCount == null ? 0 : orderCount!.hashCode) +
@@ -372,20 +302,13 @@ class StoreResponseDTO {
     (estimatedDeliveryDays == null ? 0 : estimatedDeliveryDays!.hashCode) +
     (supportsScheduledShipping == null ? 0 : supportsScheduledShipping!.hashCode) +
     (shippingDateRange == null ? 0 : shippingDateRange!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (adminRemark == null ? 0 : adminRemark!.hashCode);
 
   @override
-  String toString() => 'StoreResponseDTO[id=$id, name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, coverImageUrl=$coverImageUrl, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, creditLevel=$creditLevel, productCount=$productCount, orderCount=$orderCount, totalSales=$totalSales, averageRating=$averageRating, responseRate=$responseRate, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, createdAt=$createdAt, updatedAt=$updatedAt, adminRemark=$adminRemark]';
+  String toString() => 'AdminStoreUpdateParam[name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, coverImageUrl=$coverImageUrl, isActive=$isActive, creditLevel=$creditLevel, productCount=$productCount, orderCount=$orderCount, totalSales=$totalSales, averageRating=$averageRating, responseRate=$responseRate, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, adminRemark=$adminRemark]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
-      json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
     if (this.name != null) {
       json[r'name'] = this.name;
     } else {
@@ -430,21 +353,6 @@ class StoreResponseDTO {
       json[r'isActive'] = this.isActive;
     } else {
       json[r'isActive'] = null;
-    }
-    if (this.viewCount != null) {
-      json[r'viewCount'] = this.viewCount;
-    } else {
-      json[r'viewCount'] = null;
-    }
-    if (this.rating != null) {
-      json[r'rating'] = this.rating;
-    } else {
-      json[r'rating'] = null;
-    }
-    if (this.ratingCount != null) {
-      json[r'ratingCount'] = this.ratingCount;
-    } else {
-      json[r'ratingCount'] = null;
     }
     if (this.creditLevel != null) {
       json[r'creditLevel'] = this.creditLevel;
@@ -512,16 +420,6 @@ class StoreResponseDTO {
     } else {
       json[r'shippingDateRange'] = null;
     }
-    if (this.createdAt != null) {
-      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
-    } else {
-      json[r'createdAt'] = null;
-    }
-    if (this.updatedAt != null) {
-      json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
-    } else {
-      json[r'updatedAt'] = null;
-    }
     if (this.adminRemark != null) {
       json[r'adminRemark'] = this.adminRemark;
     } else {
@@ -530,10 +428,10 @@ class StoreResponseDTO {
     return json;
   }
 
-  /// Returns a new [StoreResponseDTO] instance and imports its values from
+  /// Returns a new [AdminStoreUpdateParam] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static StoreResponseDTO? fromJson(dynamic value) {
+  static AdminStoreUpdateParam? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -542,14 +440,13 @@ class StoreResponseDTO {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "StoreResponseDTO[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "StoreResponseDTO[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "AdminStoreUpdateParam[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "AdminStoreUpdateParam[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return StoreResponseDTO(
-        id: mapValueOfType<int>(json, r'id'),
+      return AdminStoreUpdateParam(
         name: mapValueOfType<String>(json, r'name'),
         description: mapValueOfType<String>(json, r'description'),
         address: mapValueOfType<String>(json, r'address'),
@@ -559,9 +456,6 @@ class StoreResponseDTO {
         logoUrl: mapValueOfType<String>(json, r'logoUrl'),
         coverImageUrl: mapValueOfType<String>(json, r'coverImageUrl'),
         isActive: mapValueOfType<bool>(json, r'isActive'),
-        viewCount: mapValueOfType<int>(json, r'viewCount'),
-        rating: mapValueOfType<double>(json, r'rating'),
-        ratingCount: mapValueOfType<int>(json, r'ratingCount'),
         creditLevel: mapValueOfType<int>(json, r'creditLevel'),
         productCount: mapValueOfType<int>(json, r'productCount'),
         orderCount: mapValueOfType<int>(json, r'orderCount'),
@@ -576,19 +470,17 @@ class StoreResponseDTO {
         estimatedDeliveryDays: mapValueOfType<int>(json, r'estimatedDeliveryDays'),
         supportsScheduledShipping: mapValueOfType<bool>(json, r'supportsScheduledShipping'),
         shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
-        createdAt: mapDateTime(json, r'createdAt', r''),
-        updatedAt: mapDateTime(json, r'updatedAt', r''),
         adminRemark: mapValueOfType<String>(json, r'adminRemark'),
       );
     }
     return null;
   }
 
-  static List<StoreResponseDTO> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <StoreResponseDTO>[];
+  static List<AdminStoreUpdateParam> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <AdminStoreUpdateParam>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = StoreResponseDTO.fromJson(row);
+        final value = AdminStoreUpdateParam.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -597,12 +489,12 @@ class StoreResponseDTO {
     return result.toList(growable: growable);
   }
 
-  static Map<String, StoreResponseDTO> mapFromJson(dynamic json) {
-    final map = <String, StoreResponseDTO>{};
+  static Map<String, AdminStoreUpdateParam> mapFromJson(dynamic json) {
+    final map = <String, AdminStoreUpdateParam>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = StoreResponseDTO.fromJson(entry.value);
+        final value = AdminStoreUpdateParam.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -611,14 +503,14 @@ class StoreResponseDTO {
     return map;
   }
 
-  // maps a json object with a list of StoreResponseDTO-objects as value to a dart map
-  static Map<String, List<StoreResponseDTO>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<StoreResponseDTO>>{};
+  // maps a json object with a list of AdminStoreUpdateParam-objects as value to a dart map
+  static Map<String, List<AdminStoreUpdateParam>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<AdminStoreUpdateParam>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = StoreResponseDTO.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = AdminStoreUpdateParam.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

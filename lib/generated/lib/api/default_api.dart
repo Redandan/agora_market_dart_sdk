@@ -456,66 +456,9 @@ class DefaultApi {
     return null;
   }
 
-  /// 審核通過貼文
-  ///
-  /// 管理員審核通過待審核的貼文
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] id (required):
-  Future<Response> approvePostWithHttpInfo(int id,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/admin/posts/{id}/approve'
-      .replaceAll('{id}', id.toString());
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 審核通過貼文
-  ///
-  /// 管理員審核通過待審核的貼文
-  ///
-  /// Parameters:
-  ///
-  /// * [int] id (required):
-  Future<ApiResponseVoid?> approvePost(int id,) async {
-    final response = await approvePostWithHttpInfo(id,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseVoid',) as ApiResponseVoid;
-    
-    }
-    return null;
-  }
-
   /// 下架貼文
   ///
-  /// 賣家下架已發布的貼文
+  /// 用戶下架已發布的貼文
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -550,7 +493,7 @@ class DefaultApi {
 
   /// 下架貼文
   ///
-  /// 賣家下架已發布的貼文
+  /// 用戶下架已發布的貼文
   ///
   /// Parameters:
   ///
@@ -1041,7 +984,7 @@ class DefaultApi {
 
   /// 創建貼文
   ///
-  /// 賣家創建新貼文
+  /// 用戶創建新貼文
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1075,7 +1018,7 @@ class DefaultApi {
 
   /// 創建貼文
   ///
-  /// 賣家創建新貼文
+  /// 用戶創建新貼文
   ///
   /// Parameters:
   ///
@@ -1201,7 +1144,7 @@ class DefaultApi {
 
   /// 刪除貼文
   ///
-  /// 賣家刪除自己的貼文
+  /// 用戶刪除自己的貼文
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1236,7 +1179,7 @@ class DefaultApi {
 
   /// 刪除貼文
   ///
-  /// 賣家刪除自己的貼文
+  /// 用戶刪除自己的貼文
   ///
   /// Parameters:
   ///
@@ -3744,7 +3687,7 @@ class DefaultApi {
 
   /// 發布貼文
   ///
-  /// 賣家發布草稿貼文
+  /// 用戶發布草稿貼文
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -3779,78 +3722,13 @@ class DefaultApi {
 
   /// 發布貼文
   ///
-  /// 賣家發布草稿貼文
+  /// 用戶發布草稿貼文
   ///
   /// Parameters:
   ///
   /// * [int] id (required):
   Future<ApiResponseVoid?> publishPost(int id,) async {
     final response = await publishPostWithHttpInfo(id,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseVoid',) as ApiResponseVoid;
-    
-    }
-    return null;
-  }
-
-  /// 拒絕貼文
-  ///
-  /// 管理員拒絕貼文
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] id (required):
-  ///
-  /// * [String] reason:
-  Future<Response> rejectPostWithHttpInfo(int id, { String? reason, }) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/admin/posts/{id}/reject'
-      .replaceAll('{id}', id.toString());
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    if (reason != null) {
-      queryParams.addAll(_queryParams('', 'reason', reason));
-    }
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 拒絕貼文
-  ///
-  /// 管理員拒絕貼文
-  ///
-  /// Parameters:
-  ///
-  /// * [int] id (required):
-  ///
-  /// * [String] reason:
-  Future<ApiResponseVoid?> rejectPost(int id, { String? reason, }) async {
-    final response = await rejectPostWithHttpInfo(id,  reason: reason, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -4732,7 +4610,7 @@ class DefaultApi {
 
   /// 取消點讚
   ///
-  /// 用戶點讚貼文
+  /// 用戶取消點讚貼文
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -4767,7 +4645,7 @@ class DefaultApi {
 
   /// 取消點讚
   ///
-  /// 用戶點讚貼文
+  /// 用戶取消點讚貼文
   ///
   /// Parameters:
   ///
@@ -4852,7 +4730,7 @@ class DefaultApi {
 
   /// 更新貼文
   ///
-  /// 賣家更新自己的貼文
+  /// 用戶更新自己的貼文
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -4886,7 +4764,7 @@ class DefaultApi {
 
   /// 更新貼文
   ///
-  /// 賣家更新自己的貼文
+  /// 用戶更新自己的貼文
   ///
   /// Parameters:
   ///

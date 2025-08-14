@@ -190,6 +190,12 @@ void main() {
       // TODO
     });
 
+    // 管理員備註
+    // String adminRemark
+    test('to test the property `adminRemark`', () async {
+      // TODO
+    });
+
 
   });
 

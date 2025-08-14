@@ -37,6 +37,7 @@ Name | Type | Description | Notes
 **shippingDateRange** | **int** | 可選擇的出貨日期範圍（天數） | [optional] 
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | 更新時間 | [optional] 
+**adminRemark** | **String** | 管理員備註 | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

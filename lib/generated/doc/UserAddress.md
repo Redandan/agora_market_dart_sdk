@@ -27,12 +27,12 @@ Name | Type | Description | Notes
 **isActive** | **bool** | 是否啟用 | [optional] 
 **createdAt** | [**DateTime**](DateTime.md) | 創建時間 | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) | 最後更新時間 | [optional] 
+**formattedAddress** | **String** |  | [optional] 
+**fullAddress** | **String** |  | [optional] 
 **convenienceStorePickup** | **bool** |  | [optional] 
+**homeDelivery** | **bool** |  | [optional] 
 **logisticsDescription** | **String** |  | [optional] 
 **recipientInfo** | **String** |  | [optional] 
-**formattedAddress** | **String** |  | [optional] 
-**homeDelivery** | **bool** |  | [optional] 
-**fullAddress** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

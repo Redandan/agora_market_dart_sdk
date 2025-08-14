@@ -188,6 +188,10 @@ class ApiClient {
           return AdminCreateUserParam.fromJson(value);
         case 'AdminResetPasswordParam':
           return AdminResetPasswordParam.fromJson(value);
+        case 'AdminStoreSearchParam':
+          return AdminStoreSearchParam.fromJson(value);
+        case 'AdminStoreUpdateParam':
+          return AdminStoreUpdateParam.fromJson(value);
         case 'ApiResponseColdWallet':
           return ApiResponseColdWallet.fromJson(value);
         case 'ApiResponseListPostResponse':
@@ -380,6 +384,8 @@ class ApiClient {
           return PageReview.fromJson(value);
         case 'PageStaking':
           return PageStaking.fromJson(value);
+        case 'PageStoreResponseDTO':
+          return PageStoreResponseDTO.fromJson(value);
         case 'PageTransaction':
           return PageTransaction.fromJson(value);
         case 'PageUser':

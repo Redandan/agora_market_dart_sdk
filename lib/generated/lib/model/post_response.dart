@@ -551,8 +551,6 @@ class PostResponseStatusEnum {
   static const DRAFT = PostResponseStatusEnum._(r'DRAFT');
   static const PUBLISHED = PostResponseStatusEnum._(r'PUBLISHED');
   static const ARCHIVED = PostResponseStatusEnum._(r'ARCHIVED');
-  static const PENDING_REVIEW = PostResponseStatusEnum._(r'PENDING_REVIEW');
-  static const REJECTED = PostResponseStatusEnum._(r'REJECTED');
   static const unknownDefaultOpenApi = PostResponseStatusEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][PostResponseStatusEnum].
@@ -560,8 +558,6 @@ class PostResponseStatusEnum {
     DRAFT,
     PUBLISHED,
     ARCHIVED,
-    PENDING_REVIEW,
-    REJECTED,
     unknownDefaultOpenApi,
   ];
 
@@ -604,8 +600,6 @@ class PostResponseStatusEnumTypeTransformer {
         case r'DRAFT': return PostResponseStatusEnum.DRAFT;
         case r'PUBLISHED': return PostResponseStatusEnum.PUBLISHED;
         case r'ARCHIVED': return PostResponseStatusEnum.ARCHIVED;
-        case r'PENDING_REVIEW': return PostResponseStatusEnum.PENDING_REVIEW;
-        case r'REJECTED': return PostResponseStatusEnum.REJECTED;
         case r'unknown_default_open_api': return PostResponseStatusEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

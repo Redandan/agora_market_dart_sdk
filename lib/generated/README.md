@@ -66,7 +66,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**adminGetUserCart**](doc//DefaultApi.md#admingetusercart) | **GET** /api/cart/admin/list | 管理員獲取購物車列表
 *DefaultApi* | [**adminRemoveFromCart**](doc//DefaultApi.md#adminremovefromcart) | **DELETE** /api/cart/admin/{cartItemId} | 管理員從購物車移除商品
 *DefaultApi* | [**adminUpdateCartItem**](doc//DefaultApi.md#adminupdatecartitem) | **PUT** /api/cart/admin/{cartItemId} | 管理員更新購物車項目
-*DefaultApi* | [**approvePost**](doc//DefaultApi.md#approvepost) | **POST** /api/admin/posts/{id}/approve | 審核通過貼文
 *DefaultApi* | [**archivePost**](doc//DefaultApi.md#archivepost) | **POST** /api/posts/{id}/archive | 下架貼文
 *DefaultApi* | [**calculateLogistics**](doc//DefaultApi.md#calculatelogistics) | **POST** /api/logistics/calculate | 物流計算
 *DefaultApi* | [**cancelRecharge**](doc//DefaultApi.md#cancelrecharge) | **POST** /recharge/{rechargeId}/cancel | 取消充值
@@ -126,7 +125,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getWithdrawHistory**](doc//DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
 *DefaultApi* | [**likePost**](doc//DefaultApi.md#likepost) | **POST** /api/posts/{id}/like | 點讚貼文
 *DefaultApi* | [**publishPost**](doc//DefaultApi.md#publishpost) | **POST** /api/posts/{id}/publish | 發布貼文
-*DefaultApi* | [**rejectPost**](doc//DefaultApi.md#rejectpost) | **POST** /api/admin/posts/{id}/reject | 拒絕貼文
 *DefaultApi* | [**removeCartItem**](doc//DefaultApi.md#removecartitem) | **DELETE** /api/cart/admin/item/{cartItemId} | 刪除指定購物車項目
 *DefaultApi* | [**removeFromCart**](doc//DefaultApi.md#removefromcart) | **DELETE** /api/cart/{cartItemId} | 從購物車移除商品
 *DefaultApi* | [**replyIssue**](doc//DefaultApi.md#replyissue) | **POST** /customer-issues/{issueId}/reply | 回覆客戶問題
@@ -183,6 +181,15 @@ Class | Method | HTTP request | Description
 *AdminProductsApi* | [**searchProducts1**](doc//AdminProductsApi.md#searchproducts1) | **POST** /admin/products/search | 搜索商品
 *AdminProductsApi* | [**updateProductByAdmin**](doc//AdminProductsApi.md#updateproductbyadmin) | **POST** /admin/products/{productId}/update | 更新商品
 *AdminProductsApi* | [**updateProductStatusEnum**](doc//AdminProductsApi.md#updateproductstatusenum) | **POST** /admin/products/{productId}/status | 更新商品狀態
+*AdminStoresApi* | [**deleteStore**](doc//AdminStoresApi.md#deletestore) | **DELETE** /admin/stores/{storeId} | 刪除商店
+*AdminStoresApi* | [**disableStore**](doc//AdminStoresApi.md#disablestore) | **POST** /admin/stores/{storeId}/disable | 停用商店
+*AdminStoresApi* | [**enableStore**](doc//AdminStoresApi.md#enablestore) | **POST** /admin/stores/{storeId}/enable | 啟用商店
+*AdminStoresApi* | [**getAllStores**](doc//AdminStoresApi.md#getallstores) | **GET** /admin/stores/list | 查看所有商店列表
+*AdminStoresApi* | [**getStoreDetail**](doc//AdminStoresApi.md#getstoredetail) | **GET** /admin/stores/{storeId} | 查看商店詳情
+*AdminStoresApi* | [**getStoreStatistics**](doc//AdminStoresApi.md#getstorestatistics) | **GET** /admin/stores/statistics | 商店統計報告
+*AdminStoresApi* | [**searchStores**](doc//AdminStoresApi.md#searchstores) | **POST** /admin/stores/search | 搜索商店
+*AdminStoresApi* | [**updateStoreByAdmin**](doc//AdminStoresApi.md#updatestorebyadmin) | **POST** /admin/stores/{storeId}/update | 管理員更新商店信息
+*AdminStoresApi* | [**updateStoreStatus**](doc//AdminStoresApi.md#updatestorestatus) | **POST** /admin/stores/{storeId}/status | 更新商店狀態
 *AuthApi* | [**changePassword**](doc//AuthApi.md#changepassword) | **POST** /auth/change-password | 修改密碼
 *AuthApi* | [**disableTwoFactor**](doc//AuthApi.md#disabletwofactor) | **POST** /auth/2fa/disable | 禁用雙因素認證
 *AuthApi* | [**enableTwoFactor**](doc//AuthApi.md#enabletwofactor) | **POST** /auth/2fa/enable | 啟用雙因素認證
@@ -341,6 +348,8 @@ Class | Method | HTTP request | Description
  - [AcceptOrderParam](doc//AcceptOrderParam.md)
  - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
  - [AdminResetPasswordParam](doc//AdminResetPasswordParam.md)
+ - [AdminStoreSearchParam](doc//AdminStoreSearchParam.md)
+ - [AdminStoreUpdateParam](doc//AdminStoreUpdateParam.md)
  - [ApiResponseColdWallet](doc//ApiResponseColdWallet.md)
  - [ApiResponseListPostResponse](doc//ApiResponseListPostResponse.md)
  - [ApiResponseMapStringObject](doc//ApiResponseMapStringObject.md)
@@ -437,6 +446,7 @@ Class | Method | HTTP request | Description
  - [PageResponsePostResponse](doc//PageResponsePostResponse.md)
  - [PageReview](doc//PageReview.md)
  - [PageStaking](doc//PageStaking.md)
+ - [PageStoreResponseDTO](doc//PageStoreResponseDTO.md)
  - [PageTransaction](doc//PageTransaction.md)
  - [PageUser](doc//PageUser.md)
  - [PageUserAddress](doc//PageUserAddress.md)

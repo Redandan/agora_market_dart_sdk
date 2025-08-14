@@ -16,7 +16,6 @@ Method | HTTP request | Description
 [**adminGetUserCart**](DefaultApi.md#admingetusercart) | **GET** /api/cart/admin/list | 管理員獲取購物車列表
 [**adminRemoveFromCart**](DefaultApi.md#adminremovefromcart) | **DELETE** /api/cart/admin/{cartItemId} | 管理員從購物車移除商品
 [**adminUpdateCartItem**](DefaultApi.md#adminupdatecartitem) | **PUT** /api/cart/admin/{cartItemId} | 管理員更新購物車項目
-[**approvePost**](DefaultApi.md#approvepost) | **POST** /api/admin/posts/{id}/approve | 審核通過貼文
 [**archivePost**](DefaultApi.md#archivepost) | **POST** /api/posts/{id}/archive | 下架貼文
 [**calculateLogistics**](DefaultApi.md#calculatelogistics) | **POST** /api/logistics/calculate | 物流計算
 [**cancelRecharge**](DefaultApi.md#cancelrecharge) | **POST** /recharge/{rechargeId}/cancel | 取消充值
@@ -76,7 +75,6 @@ Method | HTTP request | Description
 [**getWithdrawHistory**](DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
 [**likePost**](DefaultApi.md#likepost) | **POST** /api/posts/{id}/like | 點讚貼文
 [**publishPost**](DefaultApi.md#publishpost) | **POST** /api/posts/{id}/publish | 發布貼文
-[**rejectPost**](DefaultApi.md#rejectpost) | **POST** /api/admin/posts/{id}/reject | 拒絕貼文
 [**removeCartItem**](DefaultApi.md#removecartitem) | **DELETE** /api/cart/admin/item/{cartItemId} | 刪除指定購物車項目
 [**removeFromCart**](DefaultApi.md#removefromcart) | **DELETE** /api/cart/{cartItemId} | 從購物車移除商品
 [**replyIssue**](DefaultApi.md#replyissue) | **POST** /customer-issues/{issueId}/reply | 回覆客戶問題
@@ -408,55 +406,12 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **approvePost**
-> ApiResponseVoid approvePost(id)
-
-審核通過貼文
-
-管理員審核通過待審核的貼文
-
-### Example
-```dart
-import 'package:agora_market_dart_sdk/api.dart';
-
-final api_instance = DefaultApi();
-final id = 789; // int | 
-
-try {
-    final result = api_instance.approvePost(id);
-    print(result);
-} catch (e) {
-    print('Exception when calling DefaultApi->approvePost: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
-
-### Return type
-
-[**ApiResponseVoid**](ApiResponseVoid.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **archivePost**
 > ApiResponseVoid archivePost(id)
 
 下架貼文
 
-賣家下架已發布的貼文
+用戶下架已發布的貼文
 
 ### Example
 ```dart
@@ -871,7 +826,7 @@ No authorization required
 
 創建貼文
 
-賣家創建新貼文
+用戶創建新貼文
 
 ### Example
 ```dart
@@ -996,7 +951,7 @@ No authorization required
 
 刪除貼文
 
-賣家刪除自己的貼文
+用戶刪除自己的貼文
 
 ### Example
 ```dart
@@ -2871,7 +2826,7 @@ No authorization required
 
 發布貼文
 
-賣家發布草稿貼文
+用戶發布草稿貼文
 
 ### Example
 ```dart
@@ -2893,51 +2848,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
-
-### Return type
-
-[**ApiResponseVoid**](ApiResponseVoid.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **rejectPost**
-> ApiResponseVoid rejectPost(id, reason)
-
-拒絕貼文
-
-管理員拒絕貼文
-
-### Example
-```dart
-import 'package:agora_market_dart_sdk/api.dart';
-
-final api_instance = DefaultApi();
-final id = 789; // int | 
-final reason = reason_example; // String | 
-
-try {
-    final result = api_instance.rejectPost(id, reason);
-    print(result);
-} catch (e) {
-    print('Exception when calling DefaultApi->rejectPost: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
- **reason** | **String**|  | [optional] 
 
 ### Return type
 
@@ -3573,7 +3483,7 @@ No authorization required
 
 取消點讚
 
-用戶點讚貼文
+用戶取消點讚貼文
 
 ### Example
 ```dart
@@ -3661,7 +3571,7 @@ No authorization required
 
 更新貼文
 
-賣家更新自己的貼文
+用戶更新自己的貼文
 
 ### Example
 ```dart
