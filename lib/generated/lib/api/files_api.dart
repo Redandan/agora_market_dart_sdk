@@ -178,13 +178,85 @@ class FilesApi {
     return null;
   }
 
-  /// 取得檔案資訊
+  /// 獲取文件下載連結
+  ///
+  /// 獲取文件的預簽名下載連結，客戶端可直接從 OCI 下載
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] path (required):
+  ///   文件路徑
+  ///
+  /// * [int] expirationSeconds:
+  ///   過期時間（秒）
+  Future<Response> getDownloadUrlWithHttpInfo(String path, { int? expirationSeconds, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/files/download-url';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'path', path));
+    if (expirationSeconds != null) {
+      queryParams.addAll(_queryParams('', 'expirationSeconds', expirationSeconds));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 獲取文件下載連結
+  ///
+  /// 獲取文件的預簽名下載連結，客戶端可直接從 OCI 下載
+  ///
+  /// Parameters:
+  ///
+  /// * [String] path (required):
+  ///   文件路徑
+  ///
+  /// * [int] expirationSeconds:
+  ///   過期時間（秒）
+  Future<ApiResponseMapStringObject?> getDownloadUrl(String path, { int? expirationSeconds, }) async {
+    final response = await getDownloadUrlWithHttpInfo(path,  expirationSeconds: expirationSeconds, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseMapStringObject',) as ApiResponseMapStringObject;
+    
+    }
+    return null;
+  }
+
+  /// 取得檔案資訊
+  ///
+  /// 獲取指定檔案的詳細資訊
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] path (required):
+  ///   文件路徑
   Future<Response> getFileInfoWithHttpInfo(String path,) async {
     // ignore: prefer_const_declarations
     final path = r'/files/info';
@@ -214,9 +286,12 @@ class FilesApi {
 
   /// 取得檔案資訊
   ///
+  /// 獲取指定檔案的詳細資訊
+  ///
   /// Parameters:
   ///
   /// * [String] path (required):
+  ///   文件路徑
   Future<ApiResponseFileDownloadResponse?> getFileInfo(String path,) async {
     final response = await getFileInfoWithHttpInfo(path,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -286,16 +361,73 @@ class FilesApi {
     return null;
   }
 
-  /// 上傳文件
+  /// 獲取文件大小
   ///
-  /// 上傳文件到 OCI 對象存儲服務
+  /// 獲取指定文件的大小信息
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] path (required):
+  ///   文件路徑
+  Future<Response> getFileSizeWithHttpInfo(String path,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/files/file-size';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'path', path));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 獲取文件大小
+  ///
+  /// 獲取指定文件的大小信息
+  ///
+  /// Parameters:
+  ///
+  /// * [String] path (required):
+  ///   文件路徑
+  Future<ApiResponseMapStringObject?> getFileSize(String path,) async {
+    final response = await getFileSizeWithHttpInfo(path,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseMapStringObject',) as ApiResponseMapStringObject;
+    
+    }
+    return null;
+  }
+
+  /// 上傳文件
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [MultipartFile] file (required):
-  ///   要上傳的文件
   Future<Response> uploadFileWithHttpInfo(MultipartFile file,) async {
     // ignore: prefer_const_declarations
     final path = r'/files/upload';
@@ -307,18 +439,10 @@ class FilesApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>['multipart/form-data'];
+      queryParams.addAll(_queryParams('', 'file', file));
 
-    bool hasFields = false;
-    final mp = MultipartRequest('POST', Uri.parse(path));
-    if (file != null) {
-      hasFields = true;
-      mp.fields[r'file'] = file.field;
-      mp.files.add(file);
-    }
-    if (hasFields) {
-      postBody = mp;
-    }
+    const contentTypes = <String>[];
+
 
     return apiClient.invokeAPI(
       path,
@@ -333,12 +457,9 @@ class FilesApi {
 
   /// 上傳文件
   ///
-  /// 上傳文件到 OCI 對象存儲服務
-  ///
   /// Parameters:
   ///
   /// * [MultipartFile] file (required):
-  ///   要上傳的文件
   Future<ApiResponseFileUploadResponse?> uploadFile(MultipartFile file,) async {
     final response = await uploadFileWithHttpInfo(file,);
     if (response.statusCode >= HttpStatus.badRequest) {

@@ -38,7 +38,18 @@ void main() {
       // TODO
     });
 
+    // 獲取文件下載連結
+    //
+    // 獲取文件的預簽名下載連結，客戶端可直接從 OCI 下載
+    //
+    //Future<ApiResponseMapStringObject> getDownloadUrl(String path, { int expirationSeconds }) async
+    test('test getDownloadUrl', () async {
+      // TODO
+    });
+
     // 取得檔案資訊
+    //
+    // 獲取指定檔案的詳細資訊
     //
     //Future<ApiResponseFileDownloadResponse> getFileInfo(String path) async
     test('test getFileInfo', () async {
@@ -52,9 +63,16 @@ void main() {
       // TODO
     });
 
-    // 上傳文件
+    // 獲取文件大小
     //
-    // 上傳文件到 OCI 對象存儲服務
+    // 獲取指定文件的大小信息
+    //
+    //Future<ApiResponseMapStringObject> getFileSize(String path) async
+    test('test getFileSize', () async {
+      // TODO
+    });
+
+    // 上傳文件
     //
     //Future<ApiResponseFileUploadResponse> uploadFile(MultipartFile file) async
     test('test uploadFile', () async {

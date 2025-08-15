@@ -240,8 +240,10 @@ Class | Method | HTTP request | Description
 *FilesApi* | [**deleteFile**](doc//FilesApi.md#deletefile) | **DELETE** /files/delete | 刪除文件
 *FilesApi* | [**downloadFile**](doc//FilesApi.md#downloadfile) | **GET** /files/download | 下載文件
 *FilesApi* | [**fileExists**](doc//FilesApi.md#fileexists) | **GET** /files/exists | 檢查檔案是否存在
+*FilesApi* | [**getDownloadUrl**](doc//FilesApi.md#getdownloadurl) | **GET** /files/download-url | 獲取文件下載連結
 *FilesApi* | [**getFileInfo**](doc//FilesApi.md#getfileinfo) | **GET** /files/info | 取得檔案資訊
 *FilesApi* | [**getFileList**](doc//FilesApi.md#getfilelist) | **GET** /files/list | 獲取目錄中的文件列表
+*FilesApi* | [**getFileSize**](doc//FilesApi.md#getfilesize) | **GET** /files/file-size | 獲取文件大小
 *FilesApi* | [**uploadFile**](doc//FilesApi.md#uploadfile) | **POST** /files/upload | 上傳文件
 *MemberDisputesApi* | [**createDispute**](doc//MemberDisputesApi.md#createdispute) | **POST** /disputes | 創建糾紛
 *MemberDisputesApi* | [**getDisputeDetail**](doc//MemberDisputesApi.md#getdisputedetail) | **GET** /disputes/{disputeId} | 查看糾紛詳情
