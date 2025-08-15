@@ -133,16 +133,6 @@ void main() {
       // TODO
     });
 
-    // String logisticsDescription
-    test('to test the property `logisticsDescription`', () async {
-      // TODO
-    });
-
-    // String recipientInfo
-    test('to test the property `recipientInfo`', () async {
-      // TODO
-    });
-
     // String fullAddress
     test('to test the property `fullAddress`', () async {
       // TODO
@@ -155,6 +145,16 @@ void main() {
 
     // bool homeDelivery
     test('to test the property `homeDelivery`', () async {
+      // TODO
+    });
+
+    // String logisticsDescription
+    test('to test the property `logisticsDescription`', () async {
+      // TODO
+    });
+
+    // String recipientInfo
+    test('to test the property `recipientInfo`', () async {
       // TODO
     });
 

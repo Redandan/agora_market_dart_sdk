@@ -240,7 +240,7 @@ Class | Method | HTTP request | Description
 *FilesApi* | [**deleteFile**](doc//FilesApi.md#deletefile) | **DELETE** /files/delete | 刪除文件
 *FilesApi* | [**downloadFile**](doc//FilesApi.md#downloadfile) | **GET** /files/download | 下載文件
 *FilesApi* | [**fileExists**](doc//FilesApi.md#fileexists) | **GET** /files/exists | 檢查檔案是否存在
-*FilesApi* | [**getDownloadUrl**](doc//FilesApi.md#getdownloadurl) | **GET** /files/download-url | 獲取文件下載連結
+*FilesApi* | [**getDownloadUrl**](doc//FilesApi.md#getdownloadurl) | **POST** /files/download-url | 獲取文件下載連結
 *FilesApi* | [**getFileInfo**](doc//FilesApi.md#getfileinfo) | **GET** /files/info | 取得檔案資訊
 *FilesApi* | [**getFileList**](doc//FilesApi.md#getfilelist) | **GET** /files/list | 獲取目錄中的文件列表
 *FilesApi* | [**getFileSize**](doc//FilesApi.md#getfilesize) | **GET** /files/file-size | 獲取文件大小
@@ -357,6 +357,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseBoolean](doc//ApiResponseBoolean.md)
  - [ApiResponseColdWallet](doc//ApiResponseColdWallet.md)
  - [ApiResponseFileDownloadResponse](doc//ApiResponseFileDownloadResponse.md)
+ - [ApiResponseFileDownloadUrlResponse](doc//ApiResponseFileDownloadUrlResponse.md)
  - [ApiResponseFileUploadResponse](doc//ApiResponseFileUploadResponse.md)
  - [ApiResponseListPostResponse](doc//ApiResponseListPostResponse.md)
  - [ApiResponseListString](doc//ApiResponseListString.md)
@@ -412,6 +413,7 @@ Class | Method | HTTP request | Description
  - [DisputeStatisticsDTO](doc//DisputeStatisticsDTO.md)
  - [DisputeStatusEnum](doc//DisputeStatusEnum.md)
  - [FileDownloadResponse](doc//FileDownloadResponse.md)
+ - [FileDownloadUrlResponse](doc//FileDownloadUrlResponse.md)
  - [FileUploadResponse](doc//FileUploadResponse.md)
  - [HumanInterventionSettings](doc//HumanInterventionSettings.md)
  - [IssueSearchParam](doc//IssueSearchParam.md)

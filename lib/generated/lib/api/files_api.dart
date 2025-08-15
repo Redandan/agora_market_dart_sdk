@@ -212,7 +212,7 @@ class FilesApi {
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -232,7 +232,7 @@ class FilesApi {
   ///
   /// * [int] expirationSeconds:
   ///   過期時間（秒）
-  Future<ApiResponseMapStringObject?> getDownloadUrl(String path, { int? expirationSeconds, }) async {
+  Future<ApiResponseFileDownloadUrlResponse?> getDownloadUrl(String path, { int? expirationSeconds, }) async {
     final response = await getDownloadUrlWithHttpInfo(path,  expirationSeconds: expirationSeconds, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -241,7 +241,7 @@ class FilesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseMapStringObject',) as ApiResponseMapStringObject;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseFileDownloadUrlResponse',) as ApiResponseFileDownloadUrlResponse;
     
     }
     return null;

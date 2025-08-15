@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**deleteFile**](FilesApi.md#deletefile) | **DELETE** /files/delete | 刪除文件
 [**downloadFile**](FilesApi.md#downloadfile) | **GET** /files/download | 下載文件
 [**fileExists**](FilesApi.md#fileexists) | **GET** /files/exists | 檢查檔案是否存在
-[**getDownloadUrl**](FilesApi.md#getdownloadurl) | **GET** /files/download-url | 獲取文件下載連結
+[**getDownloadUrl**](FilesApi.md#getdownloadurl) | **POST** /files/download-url | 獲取文件下載連結
 [**getFileInfo**](FilesApi.md#getfileinfo) | **GET** /files/info | 取得檔案資訊
 [**getFileList**](FilesApi.md#getfilelist) | **GET** /files/list | 獲取目錄中的文件列表
 [**getFileSize**](FilesApi.md#getfilesize) | **GET** /files/file-size | 獲取文件大小
@@ -143,7 +143,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getDownloadUrl**
-> ApiResponseMapStringObject getDownloadUrl(path, expirationSeconds)
+> ApiResponseFileDownloadUrlResponse getDownloadUrl(path, expirationSeconds)
 
 獲取文件下載連結
 
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiResponseMapStringObject**](ApiResponseMapStringObject.md)
+[**ApiResponseFileDownloadUrlResponse**](ApiResponseFileDownloadUrlResponse.md)
 
 ### Authorization
 

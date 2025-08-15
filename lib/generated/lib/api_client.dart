@@ -198,6 +198,8 @@ class ApiClient {
           return ApiResponseColdWallet.fromJson(value);
         case 'ApiResponseFileDownloadResponse':
           return ApiResponseFileDownloadResponse.fromJson(value);
+        case 'ApiResponseFileDownloadUrlResponse':
+          return ApiResponseFileDownloadUrlResponse.fromJson(value);
         case 'ApiResponseFileUploadResponse':
           return ApiResponseFileUploadResponse.fromJson(value);
         case 'ApiResponseListPostResponse':
@@ -308,6 +310,8 @@ class ApiClient {
           return DisputeStatusEnumTypeTransformer().decode(value);
         case 'FileDownloadResponse':
           return FileDownloadResponse.fromJson(value);
+        case 'FileDownloadUrlResponse':
+          return FileDownloadUrlResponse.fromJson(value);
         case 'FileUploadResponse':
           return FileUploadResponse.fromJson(value);
         case 'HumanInterventionSettings':

@@ -42,7 +42,7 @@ void main() {
     //
     // 獲取文件的預簽名下載連結，客戶端可直接從 OCI 下載
     //
-    //Future<ApiResponseMapStringObject> getDownloadUrl(String path, { int expirationSeconds }) async
+    //Future<ApiResponseFileDownloadUrlResponse> getDownloadUrl(String path, { int expirationSeconds }) async
     test('test getDownloadUrl', () async {
       // TODO
     });
