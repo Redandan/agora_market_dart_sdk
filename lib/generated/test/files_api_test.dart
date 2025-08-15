@@ -19,6 +19,8 @@ void main() {
   group('tests for FilesApi', () {
     // 刪除文件
     //
+    // 刪除指定的文件
+    //
     //Future<ApiResponseString> deleteFile(String filename) async
     test('test deleteFile', () async {
       // TODO
@@ -26,12 +28,16 @@ void main() {
 
     // 下載文件
     //
+    // 下載指定文件，返回文件內容
+    //
     //Future<MultipartFile> downloadFile(String filename) async
     test('test downloadFile', () async {
       // TODO
     });
 
     // 檢查檔案是否存在
+    //
+    // 檢查指定路徑的文件是否存在
     //
     //Future<ApiResponseBoolean> fileExists(String filename) async
     test('test fileExists', () async {
@@ -58,7 +64,9 @@ void main() {
 
     // 獲取目錄中的文件列表
     //
-    //Future<ApiResponseListString> getFileList(String filename) async
+    // 列出指定路徑下的所有文件
+    //
+    //Future<ApiResponseListString> getFileList({ String path }) async
     test('test getFileList', () async {
       // TODO
     });
@@ -69,13 +77,6 @@ void main() {
     //
     //Future<ApiResponseMapStringObject> getFileSize(String filename) async
     test('test getFileSize', () async {
-      // TODO
-    });
-
-    // 上傳文件
-    //
-    //Future<ApiResponseFileUploadResponse> uploadFile(MultipartFile file) async
-    test('test uploadFile', () async {
       // TODO
     });
 

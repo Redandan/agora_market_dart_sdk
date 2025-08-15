@@ -16,7 +16,6 @@ Method | HTTP request | Description
 [**getFileInfo**](FilesApi.md#getfileinfo) | **GET** /files/info | 取得檔案資訊
 [**getFileList**](FilesApi.md#getfilelist) | **GET** /files/list | 獲取目錄中的文件列表
 [**getFileSize**](FilesApi.md#getfilesize) | **GET** /files/file-size | 獲取文件大小
-[**uploadFile**](FilesApi.md#uploadfile) | **POST** /files/upload | 上傳文件
 
 
 # **deleteFile**
@@ -24,12 +23,14 @@ Method | HTTP request | Description
 
 刪除文件
 
+刪除指定的文件
+
 ### Example
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = FilesApi();
-final filename = filename_example; // String | 
+final filename = images/example.jpg; // String | 文件路徑/名稱
 
 try {
     final result = api_instance.deleteFile(filename);
@@ -43,7 +44,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filename** | **String**|  | 
+ **filename** | **String**| 文件路徑/名稱 | 
 
 ### Return type
 
@@ -65,12 +66,14 @@ No authorization required
 
 下載文件
 
+下載指定文件，返回文件內容
+
 ### Example
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = FilesApi();
-final filename = filename_example; // String | 
+final filename = images/example.jpg; // String | 文件路徑/名稱
 
 try {
     final result = api_instance.downloadFile(filename);
@@ -84,7 +87,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filename** | **String**|  | 
+ **filename** | **String**| 文件路徑/名稱 | 
 
 ### Return type
 
@@ -106,12 +109,14 @@ No authorization required
 
 檢查檔案是否存在
 
+檢查指定路徑的文件是否存在
+
 ### Example
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = FilesApi();
-final filename = filename_example; // String | 
+final filename = images/example.jpg; // String | 文件路徑/名稱
 
 try {
     final result = api_instance.fileExists(filename);
@@ -125,7 +130,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filename** | **String**|  | 
+ **filename** | **String**| 文件路徑/名稱 | 
 
 ### Return type
 
@@ -231,19 +236,21 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFileList**
-> ApiResponseListString getFileList(filename)
+> ApiResponseListString getFileList(path)
 
 獲取目錄中的文件列表
+
+列出指定路徑下的所有文件
 
 ### Example
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = FilesApi();
-final filename = filename_example; // String | 
+final path = /; // String | 目錄路徑
 
 try {
-    final result = api_instance.getFileList(filename);
+    final result = api_instance.getFileList(path);
     print(result);
 } catch (e) {
     print('Exception when calling FilesApi->getFileList: $e\n');
@@ -254,7 +261,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filename** | **String**|  | 
+ **path** | **String**| 目錄路徑 | [optional] [default to '/']
 
 ### Return type
 
@@ -302,47 +309,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseMapStringObject**](ApiResponseMapStringObject.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **uploadFile**
-> ApiResponseFileUploadResponse uploadFile(file)
-
-上傳文件
-
-### Example
-```dart
-import 'package:agora_market_dart_sdk/api.dart';
-
-final api_instance = FilesApi();
-final file = BINARY_DATA_HERE; // MultipartFile | 
-
-try {
-    final result = api_instance.uploadFile(file);
-    print(result);
-} catch (e) {
-    print('Exception when calling FilesApi->uploadFile: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **file** | **MultipartFile**|  | 
-
-### Return type
-
-[**ApiResponseFileUploadResponse**](ApiResponseFileUploadResponse.md)
 
 ### Authorization
 

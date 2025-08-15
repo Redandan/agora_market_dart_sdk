@@ -200,8 +200,6 @@ class ApiClient {
           return ApiResponseFileDownloadResponse.fromJson(value);
         case 'ApiResponseFileDownloadUrlResponse':
           return ApiResponseFileDownloadUrlResponse.fromJson(value);
-        case 'ApiResponseFileUploadResponse':
-          return ApiResponseFileUploadResponse.fromJson(value);
         case 'ApiResponseListPostResponse':
           return ApiResponseListPostResponse.fromJson(value);
         case 'ApiResponseListString':
@@ -312,8 +310,6 @@ class ApiClient {
           return FileDownloadResponse.fromJson(value);
         case 'FileDownloadUrlResponse':
           return FileDownloadUrlResponse.fromJson(value);
-        case 'FileUploadResponse':
-          return FileUploadResponse.fromJson(value);
         case 'HumanInterventionSettings':
           return HumanInterventionSettings.fromJson(value);
         case 'IssueSearchParam':

@@ -18,11 +18,14 @@ class FilesApi {
 
   /// 刪除文件
   ///
+  /// 刪除指定的文件
+  ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] filename (required):
+  ///   文件路徑/名稱
   Future<Response> deleteFileWithHttpInfo(String filename,) async {
     // ignore: prefer_const_declarations
     final path = r'/files/delete';
@@ -52,9 +55,12 @@ class FilesApi {
 
   /// 刪除文件
   ///
+  /// 刪除指定的文件
+  ///
   /// Parameters:
   ///
   /// * [String] filename (required):
+  ///   文件路徑/名稱
   Future<ApiResponseString?> deleteFile(String filename,) async {
     final response = await deleteFileWithHttpInfo(filename,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -72,11 +78,14 @@ class FilesApi {
 
   /// 下載文件
   ///
+  /// 下載指定文件，返回文件內容
+  ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] filename (required):
+  ///   文件路徑/名稱
   Future<Response> downloadFileWithHttpInfo(String filename,) async {
     // ignore: prefer_const_declarations
     final path = r'/files/download';
@@ -106,9 +115,12 @@ class FilesApi {
 
   /// 下載文件
   ///
+  /// 下載指定文件，返回文件內容
+  ///
   /// Parameters:
   ///
   /// * [String] filename (required):
+  ///   文件路徑/名稱
   Future<MultipartFile?> downloadFile(String filename,) async {
     final response = await downloadFileWithHttpInfo(filename,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -126,11 +138,14 @@ class FilesApi {
 
   /// 檢查檔案是否存在
   ///
+  /// 檢查指定路徑的文件是否存在
+  ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] filename (required):
+  ///   文件路徑/名稱
   Future<Response> fileExistsWithHttpInfo(String filename,) async {
     // ignore: prefer_const_declarations
     final path = r'/files/exists';
@@ -160,9 +175,12 @@ class FilesApi {
 
   /// 檢查檔案是否存在
   ///
+  /// 檢查指定路徑的文件是否存在
+  ///
   /// Parameters:
   ///
   /// * [String] filename (required):
+  ///   文件路徑/名稱
   Future<ApiResponseBoolean?> fileExists(String filename,) async {
     final response = await fileExistsWithHttpInfo(filename,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -309,12 +327,15 @@ class FilesApi {
 
   /// 獲取目錄中的文件列表
   ///
+  /// 列出指定路徑下的所有文件
+  ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [String] filename (required):
-  Future<Response> getFileListWithHttpInfo(String filename,) async {
+  /// * [String] path:
+  ///   目錄路徑
+  Future<Response> getFileListWithHttpInfo({ String? path, }) async {
     // ignore: prefer_const_declarations
     final path = r'/files/list';
 
@@ -325,7 +346,9 @@ class FilesApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'filename', filename));
+    if (path != null) {
+      queryParams.addAll(_queryParams('', 'path', path));
+    }
 
     const contentTypes = <String>[];
 
@@ -343,11 +366,14 @@ class FilesApi {
 
   /// 獲取目錄中的文件列表
   ///
+  /// 列出指定路徑下的所有文件
+  ///
   /// Parameters:
   ///
-  /// * [String] filename (required):
-  Future<ApiResponseListString?> getFileList(String filename,) async {
-    final response = await getFileListWithHttpInfo(filename,);
+  /// * [String] path:
+  ///   目錄路徑
+  Future<ApiResponseListString?> getFileList({ String? path, }) async {
+    final response = await getFileListWithHttpInfo( path: path, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -416,60 +442,6 @@ class FilesApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseMapStringObject',) as ApiResponseMapStringObject;
-    
-    }
-    return null;
-  }
-
-  /// 上傳文件
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [MultipartFile] file (required):
-  Future<Response> uploadFileWithHttpInfo(MultipartFile file,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/files/upload';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'file', file));
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 上傳文件
-  ///
-  /// Parameters:
-  ///
-  /// * [MultipartFile] file (required):
-  Future<ApiResponseFileUploadResponse?> uploadFile(MultipartFile file,) async {
-    final response = await uploadFileWithHttpInfo(file,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseFileUploadResponse',) as ApiResponseFileUploadResponse;
     
     }
     return null;

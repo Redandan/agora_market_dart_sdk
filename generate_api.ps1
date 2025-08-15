@@ -39,7 +39,7 @@ $generatorPath = "openapi-generator-cli.jar"
 if (-not (Test-Path $generatorPath)) {
     Write-Host "Downloading OpenAPI Generator CLI..." -ForegroundColor Yellow
     try {
-        $url = "https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.13.0/openapi-generator-cli-7.13.0.jar"
+        $url = "https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.14.0/openapi-generator-cli-7.14.0.jar"
         Invoke-WebRequest -Uri $url -OutFile $generatorPath
         Write-Host "Downloaded OpenAPI Generator CLI" -ForegroundColor Green
     } catch {
