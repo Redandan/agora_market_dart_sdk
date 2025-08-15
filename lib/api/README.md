@@ -2,7 +2,7 @@
 
 ## 概述
 
-`FileUploadApi` 是一个自定义的文件上传 API 类，支持 token 验证，不会被 OpenAPI Generator 覆盖。它提供了完整的文件上传功能，包括单个文件、字节数据和批量文件上传。
+`FileUploadApi` 是一个自定义的文件上传 API 类，支持 token 验证，不会被 OpenAPI Generator 覆盖。**重构后，它现在与其他 OpenAPI 生成的 API 保持完全一致的架构**，使用相同的认证机制和 API 客户端。
 
 ## 主要特性
 
@@ -12,23 +12,61 @@
 - ✅ **元数据支持** - 可以添加上传路径和自定义元数据
 - ✅ **错误处理** - 完善的错误处理和状态码检查
 - ✅ **认证控制** - 可以选择是否需要认证
+- ✅ **架构一致性** - 与其他 API 使用相同的 `ApiClient` 和认证机制
+
+## 架构一致性
+
+### 🔄 重构前后对比
+
+**重构前（自定义实现）**:
+```dart
+class FileUploadApi {
+  final String baseUrl;
+  final Map<String, String>? headers;
+  String? _accessToken;
+  
+  // 手动管理认证头
+  void _addAuthHeaders(http.MultipartRequest request) {
+    request.headers['Authorization'] = 'Bearer $_accessToken';
+  }
+}
+```
+
+**重构后（与 OpenAPI 一致）**:
+```dart
+class FileUploadApi {
+  final ApiClient apiClient;
+  final HttpBearerAuth _bearerAuth;
+  
+  // 使用标准的认证机制
+  await _bearerAuth.applyToParams([], request.headers);
+  request.headers.addAll(apiClient.defaultHeaderMap);
+}
+```
+
+### 🎯 与其他 API 的一致性
+
+1. **相同的认证机制**: 使用 `HttpBearerAuth` 类
+2. **相同的 API 客户端**: 使用 `ApiClient` 类
+3. **相同的默认头管理**: 通过 `apiClient.defaultHeaderMap`
+4. **相同的错误处理**: 遵循相同的错误码和消息格式
 
 ## 基本用法
 
 ### 1. 创建 API 实例
 
 ```dart
-// 创建时不传入 token（稍后设置）
-var api = FileUploadApi(
-  baseUrl: 'https://api.example.com',
-  headers: {'Content-Type': 'application/json'},
-);
+// 使用默认配置（推荐）
+var api = FileUploadApi();
 
-// 或者创建时直接传入 token
-var api = FileUploadApi(
-  baseUrl: 'https://api.example.com',
-  accessToken: 'your_jwt_token_here',
+// 或者传入自定义的 ApiClient
+var customApiClient = ApiClient(
+  basePath: 'https://custom-api.example.com/api',
 );
+var api = FileUploadApi(apiClient: customApiClient);
+
+// 创建时直接传入 token
+var api = FileUploadApi(accessToken: 'your_jwt_token_here');
 ```
 
 ### 2. 设置访问令牌
@@ -163,13 +201,11 @@ if (result.errorCode == -1) {
 ```dart
 import 'dart:io';
 import 'file_upload_api.dart';
+import 'package:agora_market_dart_sdk/generated/lib/api.dart';
 
 void main() async {
   // 创建 API 实例
-  var api = FileUploadApi(
-    baseUrl: 'https://api.example.com',
-    headers: {'Content-Type': 'application/json'},
-  );
+  var api = FileUploadApi();
 
   // 设置访问令牌
   api.setAccessToken('your_jwt_token_here');
@@ -198,6 +234,23 @@ void main() async {
 }
 ```
 
+## 架构优势
+
+### 🏗️ 重构后的好处
+
+1. **一致性**: 与其他 API 使用完全相同的架构模式
+2. **可维护性**: 遵循项目的统一标准，便于维护
+3. **可扩展性**: 可以轻松集成到现有的 API 管理系统中
+4. **标准化**: 使用标准的 OpenAPI 认证和客户端机制
+5. **兼容性**: 与现有的认证流程完全兼容
+
+### 🔧 技术实现
+
+- **ApiClient**: 使用统一的 HTTP 客户端和配置管理
+- **HttpBearerAuth**: 使用标准的 Bearer Token 认证
+- **默认头管理**: 自动应用项目的默认 HTTP 头
+- **错误处理**: 遵循项目的统一错误处理标准
+
 ## 注意事项
 
 1. **Token 管理**: 在生产环境中，应该妥善管理 token 的生命周期，包括刷新、过期处理等。
@@ -210,14 +263,14 @@ void main() async {
 
 5. **日志记录**: 在生产环境中，使用适当的日志框架替代 `print` 语句。
 
+6. **架构一致性**: 现在 `FileUploadApi` 完全遵循项目的架构标准，可以安全地集成到现有系统中。
+
 ## API 参考
 
 ### 构造函数参数
 
-- `baseUrl` (必需): API 基础 URL
-- `headers` (可选): 自定义 HTTP 头
+- `apiClient` (可选): 自定义的 ApiClient 实例，默认为 defaultApiClient
 - `accessToken` (可选): 初始访问令牌
-- `useBearerAuth` (可选): 是否使用 Bearer 认证，默认为 true
 
 ### 主要方法
 
@@ -232,3 +285,35 @@ void main() async {
 
 - `accessToken`: 获取当前访问令牌
 - `hasValidToken`: 检查是否有有效的访问令牌
+- `apiClient`: 获取当前使用的 ApiClient 实例
+
+## 迁移指南
+
+如果你之前使用的是旧版本的 `FileUploadApi`，以下是迁移步骤：
+
+### 从旧版本迁移
+
+**旧版本**:
+```dart
+var api = FileUploadApi(
+  baseUrl: 'https://api.example.com',
+  headers: {'Content-Type': 'application/json'},
+);
+```
+
+**新版本**:
+```dart
+var api = FileUploadApi();
+// 或者如果需要自定义 basePath
+var customApiClient = ApiClient(
+  basePath: 'https://api.example.com/api',
+);
+var api = FileUploadApi(apiClient: customApiClient);
+```
+
+### 主要变化
+
+1. **构造函数**: 不再需要 `baseUrl` 和 `headers` 参数
+2. **认证**: 自动使用项目的标准认证机制
+3. **配置**: 通过 `ApiClient` 统一管理配置
+4. **头管理**: 自动应用项目的默认头设置

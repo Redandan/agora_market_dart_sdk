@@ -1,16 +1,14 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'file_upload_api.dart';
+import 'package:agora_market_dart_sdk/generated/lib/api.dart';
 
 /// FileUploadApi 使用示例
-/// 展示如何使用 token 验证功能
+/// 展示如何使用重构后的 token 验证功能
 class FileUploadExample {
   static void main() async {
     // 创建 API 实例，不传入 token（稍后设置）
-    var api = FileUploadApi(
-      baseUrl: 'https://api.example.com',
-      headers: {'Content-Type': 'application/json'},
-    );
+    var api = FileUploadApi();
 
     // 设置访问令牌
     api.setAccessToken('your_jwt_token_here');
@@ -179,6 +177,26 @@ class FileUploadExample {
     api.clearAccessToken();
     print('Token cleared');
     print('Has valid token: ${api.hasValidToken}');
+  }
+
+  /// 使用自定义 ApiClient 的示例
+  static Future<void> _customApiClientExample() async {
+    // 创建自定义的 ApiClient
+    var customApiClient = ApiClient(
+      basePath: 'https://custom-api.example.com/api',
+    );
+
+    // 使用自定义 ApiClient 创建 FileUploadApi
+    var api = FileUploadApi(apiClient: customApiClient);
+
+    // 设置 token
+    api.setAccessToken('custom_token');
+
+    // 使用 API
+    var file = File('path/to/file.jpg');
+    var result = await api.uploadFile(file: file);
+
+    print('Custom API result: ${result.isSuccess}');
   }
 }
 

@@ -1,51 +1,42 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:http/http.dart' as http;
+import 'package:agora_market_dart_sdk/generated/lib/api.dart';
 
 /// 自定义文件上传API
 /// 这个文件不会被OpenAPI Generator覆盖，可以安全地添加自定义逻辑
+/// 重构为与其他API保持一致的架构
 class FileUploadApi {
-  final String baseUrl;
-  final Map<String, String>? headers;
-  String? _accessToken;
-  final bool _useBearerAuth;
+  final ApiClient apiClient;
+  final HttpBearerAuth _bearerAuth;
 
   FileUploadApi({
-    required this.baseUrl,
-    this.headers,
+    ApiClient? apiClient,
     String? accessToken,
-    bool useBearerAuth = true,
-  })  : _accessToken = accessToken,
-        _useBearerAuth = useBearerAuth;
+  })  : apiClient = apiClient ?? defaultApiClient,
+        _bearerAuth = HttpBearerAuth() {
+    if (accessToken != null) {
+      _bearerAuth.accessToken = accessToken;
+    }
+  }
 
   /// 设置访问令牌
   void setAccessToken(String token) {
-    _accessToken = token;
+    _bearerAuth.accessToken = token;
   }
 
   /// 清除访问令牌
   void clearAccessToken() {
-    _accessToken = null;
+    _bearerAuth.accessToken = '';
   }
 
   /// 获取当前访问令牌
-  String? get accessToken => _accessToken;
+  String? get accessToken => _bearerAuth.accessToken is String
+      ? _bearerAuth.accessToken as String
+      : null;
 
   /// 检查是否有有效的访问令牌
-  bool get hasValidToken => _accessToken != null && _accessToken!.isNotEmpty;
-
-  /// 添加认证头到请求中
-  void _addAuthHeaders(http.MultipartRequest request) {
-    // 添加自定义headers
-    if (headers != null) {
-      request.headers.addAll(headers!);
-    }
-
-    // 添加认证头
-    if (_useBearerAuth && hasValidToken) {
-      request.headers['Authorization'] = 'Bearer $_accessToken';
-    }
-  }
+  bool get hasValidToken => accessToken != null && accessToken!.isNotEmpty;
 
   /// 上传单个文件
   ///
@@ -74,7 +65,7 @@ class FileUploadApi {
       // 创建multipart request
       var request = http.MultipartRequest(
         'POST',
-        Uri.parse('$baseUrl/files/upload'),
+        Uri.parse('${apiClient.basePath}/files/upload'),
       );
 
       // 添加文件
@@ -100,8 +91,11 @@ class FileUploadApi {
         });
       }
 
-      // 添加认证头
-      _addAuthHeaders(request);
+      // 添加认证头 - 使用标准的认证机制
+      await _bearerAuth.applyToParams([], request.headers);
+
+      // 添加默认头
+      request.headers.addAll(apiClient.defaultHeaderMap);
 
       // 发送请求
       var response = await request.send();
@@ -159,7 +153,7 @@ class FileUploadApi {
 
       var request = http.MultipartRequest(
         'POST',
-        Uri.parse('$baseUrl/files/upload'),
+        Uri.parse('${apiClient.basePath}/files/upload'),
       );
 
       // 添加字节数据
@@ -182,8 +176,11 @@ class FileUploadApi {
         });
       }
 
-      // 添加认证头
-      _addAuthHeaders(request);
+      // 添加认证头 - 使用标准的认证机制
+      await _bearerAuth.applyToParams([], request.headers);
+
+      // 添加默认头
+      request.headers.addAll(apiClient.defaultHeaderMap);
 
       // 发送请求
       var response = await request.send();
@@ -250,17 +247,14 @@ class FileUploadApi {
     }
 
     try {
-      var request =
-          http.Request('HEAD', Uri.parse('$baseUrl/files/validate-token'));
+      var request = http.Request(
+          'HEAD', Uri.parse('${apiClient.basePath}/files/validate-token'));
 
-      // 添加认证头
-      if (_useBearerAuth) {
-        request.headers['Authorization'] = 'Bearer $_accessToken';
-      }
+      // 添加认证头 - 使用标准的认证机制
+      await _bearerAuth.applyToParams([], request.headers);
 
-      if (headers != null) {
-        request.headers.addAll(headers!);
-      }
+      // 添加默认头
+      request.headers.addAll(apiClient.defaultHeaderMap);
 
       var response = await request.send();
       return response.statusCode == 200;
