@@ -136,13 +136,13 @@ void main() {
       // TODO
     });
 
-    // bool inStock
-    test('to test the property `inStock`', () async {
+    // num subtotal
+    test('to test the property `subtotal`', () async {
       // TODO
     });
 
-    // num subtotal
-    test('to test the property `subtotal`', () async {
+    // bool inStock
+    test('to test the property `inStock`', () async {
       // TODO
     });
 
