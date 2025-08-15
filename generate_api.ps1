@@ -69,9 +69,48 @@ try {
     $webClient = New-Object System.Net.WebClient
     $webClient.Encoding = [System.Text.Encoding]::UTF8
     $jsonContent = $webClient.DownloadString($apiUrl)
-    # 直接寫入文件，不進行任何轉換
-    [System.IO.File]::WriteAllText($swaggerPath, $jsonContent, [System.Text.Encoding]::UTF8)
-    Write-Host "Successfully downloaded and saved API documentation to $swaggerPath" -ForegroundColor Green
+    
+    # 過濾掉 files/upload 端點
+    Write-Host "Filtering out files/upload endpoint..." -ForegroundColor Yellow
+    try {
+        $apiDoc = $jsonContent | ConvertFrom-Json
+        
+        # 檢查並移除 files/upload 端點
+        if ($apiDoc.paths.PSObject.Properties.Name -contains "/files/upload") {
+            Write-Host "Found /files/upload endpoint, removing it..." -ForegroundColor Yellow
+            $apiDoc.paths.PSObject.Properties.Remove("/files/upload")
+            Write-Host "Successfully removed /files/upload endpoint" -ForegroundColor Green
+        } else {
+            Write-Host "No /files/upload endpoint found in current API documentation" -ForegroundColor Green
+        }
+        
+        # 移除相關的文件上傳模型
+        Write-Host "Removing file upload related models..." -ForegroundColor Yellow
+        if ($apiDoc.components.schemas.PSObject.Properties.Name -contains "FileUploadResponse") {
+            $apiDoc.components.schemas.PSObject.Properties.Remove("FileUploadResponse")
+            Write-Host "Removed FileUploadResponse model" -ForegroundColor Green
+        }
+        if ($apiDoc.components.schemas.PSObject.Properties.Name -contains "ApiResponseFileUploadResponse") {
+            $apiDoc.components.schemas.PSObject.Properties.Remove("ApiResponseFileUploadResponse")
+            Write-Host "Removed ApiResponseFileUploadResponse model" -ForegroundColor Green
+        }
+        if ($apiDoc.components.schemas.PSObject.Properties.Name -contains "UploadFileRequest") {
+            $apiDoc.components.schemas.PSObject.Properties.Remove("UploadFileRequest")
+            Write-Host "Removed UploadFileRequest model" -ForegroundColor Green
+        }
+        
+        # 將過濾後的文檔轉換回JSON
+        $filteredJsonContent = $apiDoc | ConvertTo-Json -Depth 100 -Compress
+        
+        # 寫入過濾後的文件
+        [System.IO.File]::WriteAllText($swaggerPath, $filteredJsonContent, [System.Text.Encoding]::UTF8)
+        Write-Host "Successfully filtered and saved API documentation to $swaggerPath" -ForegroundColor Green
+    } catch {
+        Write-Host "Warning: Failed to filter API documentation, using original content: $_" -ForegroundColor Yellow
+        # 如果過濾失敗，使用原始內容
+        [System.IO.File]::WriteAllText($swaggerPath, $jsonContent, [System.Text.Encoding]::UTF8)
+        Write-Host "Saved original API documentation to $swaggerPath" -ForegroundColor Green
+    }
 } catch {
     Write-Host "Error downloading API documentation: $_" -ForegroundColor Red
     Write-Host "Script execution stopped due to download failure." -ForegroundColor Red
@@ -97,8 +136,30 @@ Write-Host "Found swagger.yaml at $swaggerPath" -ForegroundColor Green
 Write-Host "Cleaning old generated files..." -ForegroundColor Yellow
 try {
     if (Test-Path "lib/generated") {
+        # 保护自定义文件
+        Write-Host "Protecting custom API files..." -ForegroundColor Yellow
+        
+        # 备份自定义文件（如果存在）
+        $customApiDir = "lib/api"
+        if (Test-Path $customApiDir) {
+            $backupDir = "lib/api_backup"
+            if (Test-Path $backupDir) {
+                Remove-Item -Path $backupDir -Recurse -Force
+            }
+            Copy-Item -Path $customApiDir -Destination $backupDir -Recurse -Force
+            Write-Host "Backed up custom API files to $backupDir" -ForegroundColor Green
+        }
+        
+        # 删除生成的代码
         Remove-Item -Path "lib/generated" -Recurse -Force
         Write-Host "Cleaned old generated files" -ForegroundColor Green
+        
+        # 恢复自定义文件
+        if (Test-Path $backupDir) {
+            Copy-Item -Path "$backupDir/*" -Destination $customApiDir -Recurse -Force
+            Remove-Item -Path $backupDir -Recurse -Force
+            Write-Host "Restored custom API files" -ForegroundColor Green
+        }
     }
 } catch {
     Write-Host "Warning: Could not clean old generated files: $_" -ForegroundColor Yellow
@@ -111,6 +172,7 @@ try {
         -i lib/api/swagger.yaml `
         -g dart `
         -o lib/generated `
+        --global-property=apiDocs=false,modelDocs=false,apiTests=false,modelTests=false `
         --additional-properties=pubName=agora_market_dart_sdk,pubVersion=1.0.0,serializationLibrary=built_value,dateLibrary=core,nullableFields=true,useEnumExtension=true,enumUnknownDefaultCase=true,generateSourceCodeOnly=true,useBuiltValue=true,useEnumExtension=true,enumUnknownDefaultCase=true,useCollectionWrappers=true,useNullSafety=true
 
     if ($LASTEXITCODE -eq 0) {
