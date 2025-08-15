@@ -227,12 +227,14 @@ No authorization required
 
 上傳文件
 
+上傳文件到 OCI 對象存儲服務
+
 ### Example
 ```dart
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = FilesApi();
-final file = BINARY_DATA_HERE; // MultipartFile | 
+final file = BINARY_DATA_HERE; // MultipartFile | 要上傳的文件
 
 try {
     final result = api_instance.uploadFile(file);
@@ -246,7 +248,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **MultipartFile**|  | 
+ **file** | **MultipartFile**| 要上傳的文件 | 
 
 ### Return type
 
@@ -258,7 +260,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

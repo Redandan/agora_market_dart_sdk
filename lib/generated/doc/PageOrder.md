@@ -8,8 +8,8 @@ import 'package:agora_market_dart_sdk/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalPages** | **int** |  | [optional] 
 **totalElements** | **int** |  | [optional] 
+**totalPages** | **int** |  | [optional] 
 **sort** | [**SortObject**](SortObject.md) |  | [optional] 
 **numberOfElements** | **int** |  | [optional] 
 **pageable** | [**PageableObject**](PageableObject.md) |  | [optional] 

@@ -54,6 +54,8 @@ void main() {
 
     // 上傳文件
     //
+    // 上傳文件到 OCI 對象存儲服務
+    //
     //Future<ApiResponseFileUploadResponse> uploadFile(MultipartFile file) async
     test('test uploadFile', () async {
       // TODO

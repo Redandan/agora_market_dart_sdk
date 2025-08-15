@@ -16,13 +16,13 @@ void main() {
   // final instance = PageWithdraw();
 
   group('test PageWithdraw', () {
-    // int totalPages
-    test('to test the property `totalPages`', () async {
+    // int totalElements
+    test('to test the property `totalElements`', () async {
       // TODO
     });
 
-    // int totalElements
-    test('to test the property `totalElements`', () async {
+    // int totalPages
+    test('to test the property `totalPages`', () async {
       // TODO
     });
 

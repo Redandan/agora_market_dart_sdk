@@ -288,11 +288,14 @@ class FilesApi {
 
   /// 上傳文件
   ///
+  /// 上傳文件到 OCI 對象存儲服務
+  ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [MultipartFile] file (required):
+  ///   要上傳的文件
   Future<Response> uploadFileWithHttpInfo(MultipartFile file,) async {
     // ignore: prefer_const_declarations
     final path = r'/files/upload';
@@ -304,10 +307,18 @@ class FilesApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'file', file));
+    const contentTypes = <String>['multipart/form-data'];
 
-    const contentTypes = <String>[];
-
+    bool hasFields = false;
+    final mp = MultipartRequest('POST', Uri.parse(path));
+    if (file != null) {
+      hasFields = true;
+      mp.fields[r'file'] = file.field;
+      mp.files.add(file);
+    }
+    if (hasFields) {
+      postBody = mp;
+    }
 
     return apiClient.invokeAPI(
       path,
@@ -322,9 +333,12 @@ class FilesApi {
 
   /// 上傳文件
   ///
+  /// 上傳文件到 OCI 對象存儲服務
+  ///
   /// Parameters:
   ///
   /// * [MultipartFile] file (required):
+  ///   要上傳的文件
   Future<ApiResponseFileUploadResponse?> uploadFile(MultipartFile file,) async {
     final response = await uploadFileWithHttpInfo(file,);
     if (response.statusCode >= HttpStatus.badRequest) {
