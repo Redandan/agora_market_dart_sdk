@@ -19,28 +19,42 @@ void main() {
   group('tests for FilesApi', () {
     // 刪除文件
     //
-    //Future deleteFile(String path) async
+    //Future<ApiResponseString> deleteFile(String path) async
     test('test deleteFile', () async {
       // TODO
     });
 
     // 下載文件
     //
-    //Future<List<String>> downloadFile(String path) async
+    //Future<MultipartFile> downloadFile(String path) async
     test('test downloadFile', () async {
+      // TODO
+    });
+
+    // 檢查檔案是否存在
+    //
+    //Future<ApiResponseBoolean> fileExists(String path) async
+    test('test fileExists', () async {
+      // TODO
+    });
+
+    // 取得檔案資訊
+    //
+    //Future<ApiResponseFileDownloadResponse> getFileInfo(String path) async
+    test('test getFileInfo', () async {
       // TODO
     });
 
     // 獲取目錄中的文件列表
     //
-    //Future<List<String>> getFileList(String path) async
+    //Future<ApiResponseListString> getFileList(String path) async
     test('test getFileList', () async {
       // TODO
     });
 
     // 上傳文件
     //
-    //Future uploadFile(MultipartFile file) async
+    //Future<ApiResponseFileUploadResponse> uploadFile(MultipartFile file) async
     test('test uploadFile', () async {
       // TODO
     });

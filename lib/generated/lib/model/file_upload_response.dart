@@ -10,15 +10,14 @@
 
 part of openapi.api;
 
-class PageableObject {
-  /// Returns a new [PageableObject] instance.
-  PageableObject({
-    this.sort,
-    this.pageSize,
-    this.pageNumber,
-    this.paged,
-    this.unpaged,
-    this.offset,
+class FileUploadResponse {
+  /// Returns a new [FileUploadResponse] instance.
+  FileUploadResponse({
+    this.fileName,
+    this.fileUrl,
+    this.message,
+    this.success,
+    this.fileSize,
   });
 
   ///
@@ -27,7 +26,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SortObject? sort;
+  String? fileName;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -35,7 +34,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageSize;
+  String? fileUrl;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -43,7 +42,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageNumber;
+  String? message;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -51,7 +50,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? paged;
+  bool? success;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -59,77 +58,62 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unpaged;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? offset;
+  int? fileSize;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageableObject &&
-    other.sort == sort &&
-    other.pageSize == pageSize &&
-    other.pageNumber == pageNumber &&
-    other.paged == paged &&
-    other.unpaged == unpaged &&
-    other.offset == offset;
+  bool operator ==(Object other) => identical(this, other) || other is FileUploadResponse &&
+    other.fileName == fileName &&
+    other.fileUrl == fileUrl &&
+    other.message == message &&
+    other.success == success &&
+    other.fileSize == fileSize;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (sort == null ? 0 : sort!.hashCode) +
-    (pageSize == null ? 0 : pageSize!.hashCode) +
-    (pageNumber == null ? 0 : pageNumber!.hashCode) +
-    (paged == null ? 0 : paged!.hashCode) +
-    (unpaged == null ? 0 : unpaged!.hashCode) +
-    (offset == null ? 0 : offset!.hashCode);
+    (fileName == null ? 0 : fileName!.hashCode) +
+    (fileUrl == null ? 0 : fileUrl!.hashCode) +
+    (message == null ? 0 : message!.hashCode) +
+    (success == null ? 0 : success!.hashCode) +
+    (fileSize == null ? 0 : fileSize!.hashCode);
 
   @override
-  String toString() => 'PageableObject[sort=$sort, pageSize=$pageSize, pageNumber=$pageNumber, paged=$paged, unpaged=$unpaged, offset=$offset]';
+  String toString() => 'FileUploadResponse[fileName=$fileName, fileUrl=$fileUrl, message=$message, success=$success, fileSize=$fileSize]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.fileName != null) {
+      json[r'fileName'] = this.fileName;
     } else {
-      json[r'sort'] = null;
+      json[r'fileName'] = null;
     }
-    if (this.pageSize != null) {
-      json[r'pageSize'] = this.pageSize;
+    if (this.fileUrl != null) {
+      json[r'fileUrl'] = this.fileUrl;
     } else {
-      json[r'pageSize'] = null;
+      json[r'fileUrl'] = null;
     }
-    if (this.pageNumber != null) {
-      json[r'pageNumber'] = this.pageNumber;
+    if (this.message != null) {
+      json[r'message'] = this.message;
     } else {
-      json[r'pageNumber'] = null;
+      json[r'message'] = null;
     }
-    if (this.paged != null) {
-      json[r'paged'] = this.paged;
+    if (this.success != null) {
+      json[r'success'] = this.success;
     } else {
-      json[r'paged'] = null;
+      json[r'success'] = null;
     }
-    if (this.unpaged != null) {
-      json[r'unpaged'] = this.unpaged;
+    if (this.fileSize != null) {
+      json[r'fileSize'] = this.fileSize;
     } else {
-      json[r'unpaged'] = null;
-    }
-    if (this.offset != null) {
-      json[r'offset'] = this.offset;
-    } else {
-      json[r'offset'] = null;
+      json[r'fileSize'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageableObject] instance and imports its values from
+  /// Returns a new [FileUploadResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageableObject? fromJson(dynamic value) {
+  static FileUploadResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -138,29 +122,28 @@ class PageableObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageableObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageableObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "FileUploadResponse[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "FileUploadResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageableObject(
-        sort: SortObject.fromJson(json[r'sort']),
-        pageSize: mapValueOfType<int>(json, r'pageSize'),
-        pageNumber: mapValueOfType<int>(json, r'pageNumber'),
-        paged: mapValueOfType<bool>(json, r'paged'),
-        unpaged: mapValueOfType<bool>(json, r'unpaged'),
-        offset: mapValueOfType<int>(json, r'offset'),
+      return FileUploadResponse(
+        fileName: mapValueOfType<String>(json, r'fileName'),
+        fileUrl: mapValueOfType<String>(json, r'fileUrl'),
+        message: mapValueOfType<String>(json, r'message'),
+        success: mapValueOfType<bool>(json, r'success'),
+        fileSize: mapValueOfType<int>(json, r'fileSize'),
       );
     }
     return null;
   }
 
-  static List<PageableObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageableObject>[];
+  static List<FileUploadResponse> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <FileUploadResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageableObject.fromJson(row);
+        final value = FileUploadResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -169,12 +152,12 @@ class PageableObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageableObject> mapFromJson(dynamic json) {
-    final map = <String, PageableObject>{};
+  static Map<String, FileUploadResponse> mapFromJson(dynamic json) {
+    final map = <String, FileUploadResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageableObject.fromJson(entry.value);
+        final value = FileUploadResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -183,14 +166,14 @@ class PageableObject {
     return map;
   }
 
-  // maps a json object with a list of PageableObject-objects as value to a dart map
-  static Map<String, List<PageableObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageableObject>>{};
+  // maps a json object with a list of FileUploadResponse-objects as value to a dart map
+  static Map<String, List<FileUploadResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<FileUploadResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageableObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = FileUploadResponse.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

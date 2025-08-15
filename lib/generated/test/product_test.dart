@@ -252,8 +252,8 @@ void main() {
       // TODO
     });
 
-    // num minimumShippingFee
-    test('to test the property `minimumShippingFee`', () async {
+    // num defaultShippingFee
+    test('to test the property `defaultShippingFee`', () async {
       // TODO
     });
 
@@ -262,18 +262,18 @@ void main() {
       // TODO
     });
 
-    // bool stockLow
-    test('to test the property `stockLow`', () async {
-      // TODO
-    });
-
     // bool stockBelowMinimum
     test('to test the property `stockBelowMinimum`', () async {
       // TODO
     });
 
-    // num defaultShippingFee
-    test('to test the property `defaultShippingFee`', () async {
+    // bool stockLow
+    test('to test the property `stockLow`', () async {
+      // TODO
+    });
+
+    // num minimumShippingFee
+    test('to test the property `minimumShippingFee`', () async {
       // TODO
     });
 

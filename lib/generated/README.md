@@ -239,6 +239,8 @@ Class | Method | HTTP request | Description
 *DeliveryApi* | [**updateWorkingStatus**](doc//DeliveryApi.md#updateworkingstatus) | **POST** /delivery/update/status | 更新工作狀態
 *FilesApi* | [**deleteFile**](doc//FilesApi.md#deletefile) | **DELETE** /files/delete | 刪除文件
 *FilesApi* | [**downloadFile**](doc//FilesApi.md#downloadfile) | **GET** /files/download | 下載文件
+*FilesApi* | [**fileExists**](doc//FilesApi.md#fileexists) | **GET** /files/exists | 檢查檔案是否存在
+*FilesApi* | [**getFileInfo**](doc//FilesApi.md#getfileinfo) | **GET** /files/info | 取得檔案資訊
 *FilesApi* | [**getFileList**](doc//FilesApi.md#getfilelist) | **GET** /files/list | 獲取目錄中的文件列表
 *FilesApi* | [**uploadFile**](doc//FilesApi.md#uploadfile) | **POST** /files/upload | 上傳文件
 *MemberDisputesApi* | [**createDispute**](doc//MemberDisputesApi.md#createdispute) | **POST** /disputes | 創建糾紛
@@ -350,8 +352,12 @@ Class | Method | HTTP request | Description
  - [AdminResetPasswordParam](doc//AdminResetPasswordParam.md)
  - [AdminStoreSearchParam](doc//AdminStoreSearchParam.md)
  - [AdminStoreUpdateParam](doc//AdminStoreUpdateParam.md)
+ - [ApiResponseBoolean](doc//ApiResponseBoolean.md)
  - [ApiResponseColdWallet](doc//ApiResponseColdWallet.md)
+ - [ApiResponseFileDownloadResponse](doc//ApiResponseFileDownloadResponse.md)
+ - [ApiResponseFileUploadResponse](doc//ApiResponseFileUploadResponse.md)
  - [ApiResponseListPostResponse](doc//ApiResponseListPostResponse.md)
+ - [ApiResponseListString](doc//ApiResponseListString.md)
  - [ApiResponseMapStringObject](doc//ApiResponseMapStringObject.md)
  - [ApiResponsePageColdWallet](doc//ApiResponsePageColdWallet.md)
  - [ApiResponsePageResponsePostResponse](doc//ApiResponsePageResponsePostResponse.md)
@@ -403,6 +409,8 @@ Class | Method | HTTP request | Description
  - [DisputeSearchParam](doc//DisputeSearchParam.md)
  - [DisputeStatisticsDTO](doc//DisputeStatisticsDTO.md)
  - [DisputeStatusEnum](doc//DisputeStatusEnum.md)
+ - [FileDownloadResponse](doc//FileDownloadResponse.md)
+ - [FileUploadResponse](doc//FileUploadResponse.md)
  - [HumanInterventionSettings](doc//HumanInterventionSettings.md)
  - [IssueSearchParam](doc//IssueSearchParam.md)
  - [IssueStatusEnum](doc//IssueStatusEnum.md)

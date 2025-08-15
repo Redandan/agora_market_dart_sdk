@@ -21,8 +21,8 @@ void main() {
       // TODO
     });
 
-    // bool paged
-    test('to test the property `paged`', () async {
+    // int pageSize
+    test('to test the property `pageSize`', () async {
       // TODO
     });
 
@@ -31,8 +31,8 @@ void main() {
       // TODO
     });
 
-    // int pageSize
-    test('to test the property `pageSize`', () async {
+    // bool paged
+    test('to test the property `paged`', () async {
       // TODO
     });
 

@@ -192,10 +192,18 @@ class ApiClient {
           return AdminStoreSearchParam.fromJson(value);
         case 'AdminStoreUpdateParam':
           return AdminStoreUpdateParam.fromJson(value);
+        case 'ApiResponseBoolean':
+          return ApiResponseBoolean.fromJson(value);
         case 'ApiResponseColdWallet':
           return ApiResponseColdWallet.fromJson(value);
+        case 'ApiResponseFileDownloadResponse':
+          return ApiResponseFileDownloadResponse.fromJson(value);
+        case 'ApiResponseFileUploadResponse':
+          return ApiResponseFileUploadResponse.fromJson(value);
         case 'ApiResponseListPostResponse':
           return ApiResponseListPostResponse.fromJson(value);
+        case 'ApiResponseListString':
+          return ApiResponseListString.fromJson(value);
         case 'ApiResponseMapStringObject':
           return ApiResponseMapStringObject.fromJson(value);
         case 'ApiResponsePageColdWallet':
@@ -298,6 +306,10 @@ class ApiClient {
           return DisputeStatisticsDTO.fromJson(value);
         case 'DisputeStatusEnum':
           return DisputeStatusEnumTypeTransformer().decode(value);
+        case 'FileDownloadResponse':
+          return FileDownloadResponse.fromJson(value);
+        case 'FileUploadResponse':
+          return FileUploadResponse.fromJson(value);
         case 'HumanInterventionSettings':
           return HumanInterventionSettings.fromJson(value);
         case 'IssueSearchParam':
