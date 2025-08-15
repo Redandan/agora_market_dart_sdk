@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **deleteFile**
-> ApiResponseString deleteFile(path)
+> ApiResponseString deleteFile(filename)
 
 刪除文件
 
@@ -29,10 +29,10 @@ Method | HTTP request | Description
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = FilesApi();
-final path = path_example; // String | 
+final filename = filename_example; // String | 
 
 try {
-    final result = api_instance.deleteFile(path);
+    final result = api_instance.deleteFile(filename);
     print(result);
 } catch (e) {
     print('Exception when calling FilesApi->deleteFile: $e\n');
@@ -43,7 +43,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **String**|  | 
+ **filename** | **String**|  | 
 
 ### Return type
 
@@ -61,7 +61,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **downloadFile**
-> MultipartFile downloadFile(path)
+> MultipartFile downloadFile(filename)
 
 下載文件
 
@@ -70,10 +70,10 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = FilesApi();
-final path = path_example; // String | 
+final filename = filename_example; // String | 
 
 try {
-    final result = api_instance.downloadFile(path);
+    final result = api_instance.downloadFile(filename);
     print(result);
 } catch (e) {
     print('Exception when calling FilesApi->downloadFile: $e\n');
@@ -84,7 +84,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **String**|  | 
+ **filename** | **String**|  | 
 
 ### Return type
 
@@ -102,7 +102,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fileExists**
-> ApiResponseBoolean fileExists(path)
+> ApiResponseBoolean fileExists(filename)
 
 檢查檔案是否存在
 
@@ -111,10 +111,10 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = FilesApi();
-final path = path_example; // String | 
+final filename = filename_example; // String | 
 
 try {
-    final result = api_instance.fileExists(path);
+    final result = api_instance.fileExists(filename);
     print(result);
 } catch (e) {
     print('Exception when calling FilesApi->fileExists: $e\n');
@@ -125,7 +125,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **String**|  | 
+ **filename** | **String**|  | 
 
 ### Return type
 
@@ -143,7 +143,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getDownloadUrl**
-> ApiResponseFileDownloadUrlResponse getDownloadUrl(path, expirationSeconds)
+> ApiResponseFileDownloadUrlResponse getDownloadUrl(filename, expirationSeconds)
 
 獲取文件下載連結
 
@@ -154,11 +154,11 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = FilesApi();
-final path = images/example.jpg; // String | 文件路徑
+final filename = images/example.jpg; // String | 文件路徑
 final expirationSeconds = 3600; // int | 過期時間（秒）
 
 try {
-    final result = api_instance.getDownloadUrl(path, expirationSeconds);
+    final result = api_instance.getDownloadUrl(filename, expirationSeconds);
     print(result);
 } catch (e) {
     print('Exception when calling FilesApi->getDownloadUrl: $e\n');
@@ -169,7 +169,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **String**| 文件路徑 | 
+ **filename** | **String**| 文件路徑 | 
  **expirationSeconds** | **int**| 過期時間（秒） | [optional] [default to 3600]
 
 ### Return type
@@ -188,7 +188,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFileInfo**
-> ApiResponseFileDownloadResponse getFileInfo(path)
+> ApiResponseFileDownloadResponse getFileInfo(filename)
 
 取得檔案資訊
 
@@ -199,10 +199,10 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = FilesApi();
-final path = images/example.jpg; // String | 文件路徑
+final filename = images/example.jpg; // String | 文件路徑
 
 try {
-    final result = api_instance.getFileInfo(path);
+    final result = api_instance.getFileInfo(filename);
     print(result);
 } catch (e) {
     print('Exception when calling FilesApi->getFileInfo: $e\n');
@@ -213,7 +213,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **String**| 文件路徑 | 
+ **filename** | **String**| 文件路徑 | 
 
 ### Return type
 
@@ -231,7 +231,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFileList**
-> ApiResponseListString getFileList(path)
+> ApiResponseListString getFileList(filename)
 
 獲取目錄中的文件列表
 
@@ -240,10 +240,10 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = FilesApi();
-final path = path_example; // String | 
+final filename = filename_example; // String | 
 
 try {
-    final result = api_instance.getFileList(path);
+    final result = api_instance.getFileList(filename);
     print(result);
 } catch (e) {
     print('Exception when calling FilesApi->getFileList: $e\n');
@@ -254,7 +254,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **String**|  | 
+ **filename** | **String**|  | 
 
 ### Return type
 
@@ -272,7 +272,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFileSize**
-> ApiResponseMapStringObject getFileSize(path)
+> ApiResponseMapStringObject getFileSize(filename)
 
 獲取文件大小
 
@@ -283,10 +283,10 @@ No authorization required
 import 'package:agora_market_dart_sdk/api.dart';
 
 final api_instance = FilesApi();
-final path = images/example.jpg; // String | 文件路徑
+final filename = images/example.jpg; // String | 文件路徑
 
 try {
-    final result = api_instance.getFileSize(path);
+    final result = api_instance.getFileSize(filename);
     print(result);
 } catch (e) {
     print('Exception when calling FilesApi->getFileSize: $e\n');
@@ -297,7 +297,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **String**| 文件路徑 | 
+ **filename** | **String**| 文件路徑 | 
 
 ### Return type
 

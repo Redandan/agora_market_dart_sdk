@@ -19,21 +19,21 @@ void main() {
   group('tests for FilesApi', () {
     // 刪除文件
     //
-    //Future<ApiResponseString> deleteFile(String path) async
+    //Future<ApiResponseString> deleteFile(String filename) async
     test('test deleteFile', () async {
       // TODO
     });
 
     // 下載文件
     //
-    //Future<MultipartFile> downloadFile(String path) async
+    //Future<MultipartFile> downloadFile(String filename) async
     test('test downloadFile', () async {
       // TODO
     });
 
     // 檢查檔案是否存在
     //
-    //Future<ApiResponseBoolean> fileExists(String path) async
+    //Future<ApiResponseBoolean> fileExists(String filename) async
     test('test fileExists', () async {
       // TODO
     });
@@ -42,7 +42,7 @@ void main() {
     //
     // 獲取文件的預簽名下載連結，客戶端可直接從 OCI 下載
     //
-    //Future<ApiResponseFileDownloadUrlResponse> getDownloadUrl(String path, { int expirationSeconds }) async
+    //Future<ApiResponseFileDownloadUrlResponse> getDownloadUrl(String filename, { int expirationSeconds }) async
     test('test getDownloadUrl', () async {
       // TODO
     });
@@ -51,14 +51,14 @@ void main() {
     //
     // 獲取指定檔案的詳細資訊
     //
-    //Future<ApiResponseFileDownloadResponse> getFileInfo(String path) async
+    //Future<ApiResponseFileDownloadResponse> getFileInfo(String filename) async
     test('test getFileInfo', () async {
       // TODO
     });
 
     // 獲取目錄中的文件列表
     //
-    //Future<ApiResponseListString> getFileList(String path) async
+    //Future<ApiResponseListString> getFileList(String filename) async
     test('test getFileList', () async {
       // TODO
     });
@@ -67,7 +67,7 @@ void main() {
     //
     // 獲取指定文件的大小信息
     //
-    //Future<ApiResponseMapStringObject> getFileSize(String path) async
+    //Future<ApiResponseMapStringObject> getFileSize(String filename) async
     test('test getFileSize', () async {
       // TODO
     });

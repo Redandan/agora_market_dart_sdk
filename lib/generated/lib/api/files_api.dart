@@ -22,8 +22,8 @@ class FilesApi {
   ///
   /// Parameters:
   ///
-  /// * [String] path (required):
-  Future<Response> deleteFileWithHttpInfo(String path,) async {
+  /// * [String] filename (required):
+  Future<Response> deleteFileWithHttpInfo(String filename,) async {
     // ignore: prefer_const_declarations
     final path = r'/files/delete';
 
@@ -34,7 +34,7 @@ class FilesApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'path', path));
+      queryParams.addAll(_queryParams('', 'filename', filename));
 
     const contentTypes = <String>[];
 
@@ -54,9 +54,9 @@ class FilesApi {
   ///
   /// Parameters:
   ///
-  /// * [String] path (required):
-  Future<ApiResponseString?> deleteFile(String path,) async {
-    final response = await deleteFileWithHttpInfo(path,);
+  /// * [String] filename (required):
+  Future<ApiResponseString?> deleteFile(String filename,) async {
+    final response = await deleteFileWithHttpInfo(filename,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -76,8 +76,8 @@ class FilesApi {
   ///
   /// Parameters:
   ///
-  /// * [String] path (required):
-  Future<Response> downloadFileWithHttpInfo(String path,) async {
+  /// * [String] filename (required):
+  Future<Response> downloadFileWithHttpInfo(String filename,) async {
     // ignore: prefer_const_declarations
     final path = r'/files/download';
 
@@ -88,7 +88,7 @@ class FilesApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'path', path));
+      queryParams.addAll(_queryParams('', 'filename', filename));
 
     const contentTypes = <String>[];
 
@@ -108,9 +108,9 @@ class FilesApi {
   ///
   /// Parameters:
   ///
-  /// * [String] path (required):
-  Future<MultipartFile?> downloadFile(String path,) async {
-    final response = await downloadFileWithHttpInfo(path,);
+  /// * [String] filename (required):
+  Future<MultipartFile?> downloadFile(String filename,) async {
+    final response = await downloadFileWithHttpInfo(filename,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -130,8 +130,8 @@ class FilesApi {
   ///
   /// Parameters:
   ///
-  /// * [String] path (required):
-  Future<Response> fileExistsWithHttpInfo(String path,) async {
+  /// * [String] filename (required):
+  Future<Response> fileExistsWithHttpInfo(String filename,) async {
     // ignore: prefer_const_declarations
     final path = r'/files/exists';
 
@@ -142,7 +142,7 @@ class FilesApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'path', path));
+      queryParams.addAll(_queryParams('', 'filename', filename));
 
     const contentTypes = <String>[];
 
@@ -162,9 +162,9 @@ class FilesApi {
   ///
   /// Parameters:
   ///
-  /// * [String] path (required):
-  Future<ApiResponseBoolean?> fileExists(String path,) async {
-    final response = await fileExistsWithHttpInfo(path,);
+  /// * [String] filename (required):
+  Future<ApiResponseBoolean?> fileExists(String filename,) async {
+    final response = await fileExistsWithHttpInfo(filename,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -186,12 +186,12 @@ class FilesApi {
   ///
   /// Parameters:
   ///
-  /// * [String] path (required):
+  /// * [String] filename (required):
   ///   文件路徑
   ///
   /// * [int] expirationSeconds:
   ///   過期時間（秒）
-  Future<Response> getDownloadUrlWithHttpInfo(String path, { int? expirationSeconds, }) async {
+  Future<Response> getDownloadUrlWithHttpInfo(String filename, { int? expirationSeconds, }) async {
     // ignore: prefer_const_declarations
     final path = r'/files/download-url';
 
@@ -202,7 +202,7 @@ class FilesApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'path', path));
+      queryParams.addAll(_queryParams('', 'filename', filename));
     if (expirationSeconds != null) {
       queryParams.addAll(_queryParams('', 'expirationSeconds', expirationSeconds));
     }
@@ -227,13 +227,13 @@ class FilesApi {
   ///
   /// Parameters:
   ///
-  /// * [String] path (required):
+  /// * [String] filename (required):
   ///   文件路徑
   ///
   /// * [int] expirationSeconds:
   ///   過期時間（秒）
-  Future<ApiResponseFileDownloadUrlResponse?> getDownloadUrl(String path, { int? expirationSeconds, }) async {
-    final response = await getDownloadUrlWithHttpInfo(path,  expirationSeconds: expirationSeconds, );
+  Future<ApiResponseFileDownloadUrlResponse?> getDownloadUrl(String filename, { int? expirationSeconds, }) async {
+    final response = await getDownloadUrlWithHttpInfo(filename,  expirationSeconds: expirationSeconds, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -255,9 +255,9 @@ class FilesApi {
   ///
   /// Parameters:
   ///
-  /// * [String] path (required):
+  /// * [String] filename (required):
   ///   文件路徑
-  Future<Response> getFileInfoWithHttpInfo(String path,) async {
+  Future<Response> getFileInfoWithHttpInfo(String filename,) async {
     // ignore: prefer_const_declarations
     final path = r'/files/info';
 
@@ -268,7 +268,7 @@ class FilesApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'path', path));
+      queryParams.addAll(_queryParams('', 'filename', filename));
 
     const contentTypes = <String>[];
 
@@ -290,10 +290,10 @@ class FilesApi {
   ///
   /// Parameters:
   ///
-  /// * [String] path (required):
+  /// * [String] filename (required):
   ///   文件路徑
-  Future<ApiResponseFileDownloadResponse?> getFileInfo(String path,) async {
-    final response = await getFileInfoWithHttpInfo(path,);
+  Future<ApiResponseFileDownloadResponse?> getFileInfo(String filename,) async {
+    final response = await getFileInfoWithHttpInfo(filename,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -313,8 +313,8 @@ class FilesApi {
   ///
   /// Parameters:
   ///
-  /// * [String] path (required):
-  Future<Response> getFileListWithHttpInfo(String path,) async {
+  /// * [String] filename (required):
+  Future<Response> getFileListWithHttpInfo(String filename,) async {
     // ignore: prefer_const_declarations
     final path = r'/files/list';
 
@@ -325,7 +325,7 @@ class FilesApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'path', path));
+      queryParams.addAll(_queryParams('', 'filename', filename));
 
     const contentTypes = <String>[];
 
@@ -345,9 +345,9 @@ class FilesApi {
   ///
   /// Parameters:
   ///
-  /// * [String] path (required):
-  Future<ApiResponseListString?> getFileList(String path,) async {
-    final response = await getFileListWithHttpInfo(path,);
+  /// * [String] filename (required):
+  Future<ApiResponseListString?> getFileList(String filename,) async {
+    final response = await getFileListWithHttpInfo(filename,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -369,9 +369,9 @@ class FilesApi {
   ///
   /// Parameters:
   ///
-  /// * [String] path (required):
+  /// * [String] filename (required):
   ///   文件路徑
-  Future<Response> getFileSizeWithHttpInfo(String path,) async {
+  Future<Response> getFileSizeWithHttpInfo(String filename,) async {
     // ignore: prefer_const_declarations
     final path = r'/files/file-size';
 
@@ -382,7 +382,7 @@ class FilesApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'path', path));
+      queryParams.addAll(_queryParams('', 'filename', filename));
 
     const contentTypes = <String>[];
 
@@ -404,10 +404,10 @@ class FilesApi {
   ///
   /// Parameters:
   ///
-  /// * [String] path (required):
+  /// * [String] filename (required):
   ///   文件路徑
-  Future<ApiResponseMapStringObject?> getFileSize(String path,) async {
-    final response = await getFileSizeWithHttpInfo(path,);
+  Future<ApiResponseMapStringObject?> getFileSize(String filename,) async {
+    final response = await getFileSizeWithHttpInfo(filename,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

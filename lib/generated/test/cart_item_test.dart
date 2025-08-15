@@ -136,11 +136,6 @@ void main() {
       // TODO
     });
 
-    // num totalPrice
-    test('to test the property `totalPrice`', () async {
-      // TODO
-    });
-
     // bool inStock
     test('to test the property `inStock`', () async {
       // TODO
@@ -148,6 +143,11 @@ void main() {
 
     // num subtotal
     test('to test the property `subtotal`', () async {
+      // TODO
+    });
+
+    // num totalPrice
+    test('to test the property `totalPrice`', () async {
       // TODO
     });
 
