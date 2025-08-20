@@ -10,20 +10,20 @@
 
 part of openapi.api;
 
-class PageColdWallet {
-  /// Returns a new [PageColdWallet] instance.
-  PageColdWallet({
-    this.totalPages,
-    this.totalElements,
-    this.sort,
-    this.first,
-    this.last,
-    this.numberOfElements,
-    this.pageable,
-    this.size,
-    this.content = const [],
-    this.number,
-    this.empty,
+class FileInfoResponse {
+  /// Returns a new [FileInfoResponse] instance.
+  FileInfoResponse({
+    this.filename,
+    this.exists,
+    this.sizeInBytes,
+    this.sizeInKB,
+    this.sizeInMB,
+    this.contentType,
+    this.extension_,
+    this.path,
+    this.lastModified,
+    this.readable,
+    this.writable,
   });
 
   ///
@@ -32,7 +32,7 @@ class PageColdWallet {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalPages;
+  String? filename;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -40,7 +40,7 @@ class PageColdWallet {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalElements;
+  bool? exists;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -48,7 +48,7 @@ class PageColdWallet {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SortObject? sort;
+  int? sizeInBytes;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -56,7 +56,7 @@ class PageColdWallet {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? first;
+  double? sizeInKB;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -64,7 +64,7 @@ class PageColdWallet {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? last;
+  double? sizeInMB;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -72,7 +72,7 @@ class PageColdWallet {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? numberOfElements;
+  String? contentType;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -80,7 +80,7 @@ class PageColdWallet {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PageableObject? pageable;
+  String? extension_;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -88,9 +88,7 @@ class PageColdWallet {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? size;
-
-  List<ColdWallet> content;
+  String? path;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -98,7 +96,7 @@ class PageColdWallet {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? number;
+  String? lastModified;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -106,100 +104,112 @@ class PageColdWallet {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? empty;
+  bool? readable;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? writable;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageColdWallet &&
-    other.totalPages == totalPages &&
-    other.totalElements == totalElements &&
-    other.sort == sort &&
-    other.first == first &&
-    other.last == last &&
-    other.numberOfElements == numberOfElements &&
-    other.pageable == pageable &&
-    other.size == size &&
-    _deepEquality.equals(other.content, content) &&
-    other.number == number &&
-    other.empty == empty;
+  bool operator ==(Object other) => identical(this, other) || other is FileInfoResponse &&
+    other.filename == filename &&
+    other.exists == exists &&
+    other.sizeInBytes == sizeInBytes &&
+    other.sizeInKB == sizeInKB &&
+    other.sizeInMB == sizeInMB &&
+    other.contentType == contentType &&
+    other.extension_ == extension_ &&
+    other.path == path &&
+    other.lastModified == lastModified &&
+    other.readable == readable &&
+    other.writable == writable;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalPages == null ? 0 : totalPages!.hashCode) +
-    (totalElements == null ? 0 : totalElements!.hashCode) +
-    (sort == null ? 0 : sort!.hashCode) +
-    (first == null ? 0 : first!.hashCode) +
-    (last == null ? 0 : last!.hashCode) +
-    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
-    (pageable == null ? 0 : pageable!.hashCode) +
-    (size == null ? 0 : size!.hashCode) +
-    (content.hashCode) +
-    (number == null ? 0 : number!.hashCode) +
-    (empty == null ? 0 : empty!.hashCode);
+    (filename == null ? 0 : filename!.hashCode) +
+    (exists == null ? 0 : exists!.hashCode) +
+    (sizeInBytes == null ? 0 : sizeInBytes!.hashCode) +
+    (sizeInKB == null ? 0 : sizeInKB!.hashCode) +
+    (sizeInMB == null ? 0 : sizeInMB!.hashCode) +
+    (contentType == null ? 0 : contentType!.hashCode) +
+    (extension_ == null ? 0 : extension_!.hashCode) +
+    (path == null ? 0 : path!.hashCode) +
+    (lastModified == null ? 0 : lastModified!.hashCode) +
+    (readable == null ? 0 : readable!.hashCode) +
+    (writable == null ? 0 : writable!.hashCode);
 
   @override
-  String toString() => 'PageColdWallet[totalPages=$totalPages, totalElements=$totalElements, sort=$sort, first=$first, last=$last, numberOfElements=$numberOfElements, pageable=$pageable, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'FileInfoResponse[filename=$filename, exists=$exists, sizeInBytes=$sizeInBytes, sizeInKB=$sizeInKB, sizeInMB=$sizeInMB, contentType=$contentType, extension_=$extension_, path=$path, lastModified=$lastModified, readable=$readable, writable=$writable]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.totalPages != null) {
-      json[r'totalPages'] = this.totalPages;
+    if (this.filename != null) {
+      json[r'filename'] = this.filename;
     } else {
-      json[r'totalPages'] = null;
+      json[r'filename'] = null;
     }
-    if (this.totalElements != null) {
-      json[r'totalElements'] = this.totalElements;
+    if (this.exists != null) {
+      json[r'exists'] = this.exists;
     } else {
-      json[r'totalElements'] = null;
+      json[r'exists'] = null;
     }
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.sizeInBytes != null) {
+      json[r'sizeInBytes'] = this.sizeInBytes;
     } else {
-      json[r'sort'] = null;
+      json[r'sizeInBytes'] = null;
     }
-    if (this.first != null) {
-      json[r'first'] = this.first;
+    if (this.sizeInKB != null) {
+      json[r'sizeInKB'] = this.sizeInKB;
     } else {
-      json[r'first'] = null;
+      json[r'sizeInKB'] = null;
     }
-    if (this.last != null) {
-      json[r'last'] = this.last;
+    if (this.sizeInMB != null) {
+      json[r'sizeInMB'] = this.sizeInMB;
     } else {
-      json[r'last'] = null;
+      json[r'sizeInMB'] = null;
     }
-    if (this.numberOfElements != null) {
-      json[r'numberOfElements'] = this.numberOfElements;
+    if (this.contentType != null) {
+      json[r'contentType'] = this.contentType;
     } else {
-      json[r'numberOfElements'] = null;
+      json[r'contentType'] = null;
     }
-    if (this.pageable != null) {
-      json[r'pageable'] = this.pageable;
+    if (this.extension_ != null) {
+      json[r'extension'] = this.extension_;
     } else {
-      json[r'pageable'] = null;
+      json[r'extension'] = null;
     }
-    if (this.size != null) {
-      json[r'size'] = this.size;
+    if (this.path != null) {
+      json[r'path'] = this.path;
     } else {
-      json[r'size'] = null;
+      json[r'path'] = null;
     }
-      json[r'content'] = this.content;
-    if (this.number != null) {
-      json[r'number'] = this.number;
+    if (this.lastModified != null) {
+      json[r'lastModified'] = this.lastModified;
     } else {
-      json[r'number'] = null;
+      json[r'lastModified'] = null;
     }
-    if (this.empty != null) {
-      json[r'empty'] = this.empty;
+    if (this.readable != null) {
+      json[r'readable'] = this.readable;
     } else {
-      json[r'empty'] = null;
+      json[r'readable'] = null;
+    }
+    if (this.writable != null) {
+      json[r'writable'] = this.writable;
+    } else {
+      json[r'writable'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageColdWallet] instance and imports its values from
+  /// Returns a new [FileInfoResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageColdWallet? fromJson(dynamic value) {
+  static FileInfoResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -208,34 +218,34 @@ class PageColdWallet {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageColdWallet[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageColdWallet[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "FileInfoResponse[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "FileInfoResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageColdWallet(
-        totalPages: mapValueOfType<int>(json, r'totalPages'),
-        totalElements: mapValueOfType<int>(json, r'totalElements'),
-        sort: SortObject.fromJson(json[r'sort']),
-        first: mapValueOfType<bool>(json, r'first'),
-        last: mapValueOfType<bool>(json, r'last'),
-        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
-        pageable: PageableObject.fromJson(json[r'pageable']),
-        size: mapValueOfType<int>(json, r'size'),
-        content: ColdWallet.listFromJson(json[r'content']),
-        number: mapValueOfType<int>(json, r'number'),
-        empty: mapValueOfType<bool>(json, r'empty'),
+      return FileInfoResponse(
+        filename: mapValueOfType<String>(json, r'filename'),
+        exists: mapValueOfType<bool>(json, r'exists'),
+        sizeInBytes: mapValueOfType<int>(json, r'sizeInBytes'),
+        sizeInKB: mapValueOfType<double>(json, r'sizeInKB'),
+        sizeInMB: mapValueOfType<double>(json, r'sizeInMB'),
+        contentType: mapValueOfType<String>(json, r'contentType'),
+        extension_: mapValueOfType<String>(json, r'extension'),
+        path: mapValueOfType<String>(json, r'path'),
+        lastModified: mapValueOfType<String>(json, r'lastModified'),
+        readable: mapValueOfType<bool>(json, r'readable'),
+        writable: mapValueOfType<bool>(json, r'writable'),
       );
     }
     return null;
   }
 
-  static List<PageColdWallet> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageColdWallet>[];
+  static List<FileInfoResponse> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <FileInfoResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageColdWallet.fromJson(row);
+        final value = FileInfoResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -244,12 +254,12 @@ class PageColdWallet {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageColdWallet> mapFromJson(dynamic json) {
-    final map = <String, PageColdWallet>{};
+  static Map<String, FileInfoResponse> mapFromJson(dynamic json) {
+    final map = <String, FileInfoResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageColdWallet.fromJson(entry.value);
+        final value = FileInfoResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -258,14 +268,14 @@ class PageColdWallet {
     return map;
   }
 
-  // maps a json object with a list of PageColdWallet-objects as value to a dart map
-  static Map<String, List<PageColdWallet>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageColdWallet>>{};
+  // maps a json object with a list of FileInfoResponse-objects as value to a dart map
+  static Map<String, List<FileInfoResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<FileInfoResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageColdWallet.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = FileInfoResponse.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

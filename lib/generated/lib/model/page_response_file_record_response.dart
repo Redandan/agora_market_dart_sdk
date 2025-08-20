@@ -10,78 +10,33 @@
 
 part of openapi.api;
 
-class PageColdWallet {
-  /// Returns a new [PageColdWallet] instance.
-  PageColdWallet({
-    this.totalPages,
+class PageResponseFileRecordResponse {
+  /// Returns a new [PageResponseFileRecordResponse] instance.
+  PageResponseFileRecordResponse({
+    this.content = const [],
+    this.page,
+    this.size,
     this.totalElements,
-    this.sort,
+    this.totalPages,
     this.first,
     this.last,
-    this.numberOfElements,
-    this.pageable,
-    this.size,
-    this.content = const [],
-    this.number,
-    this.empty,
+    this.hasNext,
+    this.hasPrevious,
   });
 
+  /// 數據列表
+  List<FileRecordResponse> content;
+
+  /// 當前頁碼
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalPages;
+  int? page;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? totalElements;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  SortObject? sort;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? first;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? last;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? numberOfElements;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  PageableObject? pageable;
-
+  /// 每頁數量
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -90,72 +45,110 @@ class PageColdWallet {
   ///
   int? size;
 
-  List<ColdWallet> content;
-
+  /// 總記錄數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? number;
+  int? totalElements;
 
+  /// 總頁數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? empty;
+  int? totalPages;
+
+  /// 是否為第一頁
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? first;
+
+  /// 是否為最後一頁
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? last;
+
+  /// 是否有下一頁
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? hasNext;
+
+  /// 是否有上一頁
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? hasPrevious;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageColdWallet &&
-    other.totalPages == totalPages &&
+  bool operator ==(Object other) => identical(this, other) || other is PageResponseFileRecordResponse &&
+    _deepEquality.equals(other.content, content) &&
+    other.page == page &&
+    other.size == size &&
     other.totalElements == totalElements &&
-    other.sort == sort &&
+    other.totalPages == totalPages &&
     other.first == first &&
     other.last == last &&
-    other.numberOfElements == numberOfElements &&
-    other.pageable == pageable &&
-    other.size == size &&
-    _deepEquality.equals(other.content, content) &&
-    other.number == number &&
-    other.empty == empty;
+    other.hasNext == hasNext &&
+    other.hasPrevious == hasPrevious;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalPages == null ? 0 : totalPages!.hashCode) +
+    (content.hashCode) +
+    (page == null ? 0 : page!.hashCode) +
+    (size == null ? 0 : size!.hashCode) +
     (totalElements == null ? 0 : totalElements!.hashCode) +
-    (sort == null ? 0 : sort!.hashCode) +
+    (totalPages == null ? 0 : totalPages!.hashCode) +
     (first == null ? 0 : first!.hashCode) +
     (last == null ? 0 : last!.hashCode) +
-    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
-    (pageable == null ? 0 : pageable!.hashCode) +
-    (size == null ? 0 : size!.hashCode) +
-    (content.hashCode) +
-    (number == null ? 0 : number!.hashCode) +
-    (empty == null ? 0 : empty!.hashCode);
+    (hasNext == null ? 0 : hasNext!.hashCode) +
+    (hasPrevious == null ? 0 : hasPrevious!.hashCode);
 
   @override
-  String toString() => 'PageColdWallet[totalPages=$totalPages, totalElements=$totalElements, sort=$sort, first=$first, last=$last, numberOfElements=$numberOfElements, pageable=$pageable, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'PageResponseFileRecordResponse[content=$content, page=$page, size=$size, totalElements=$totalElements, totalPages=$totalPages, first=$first, last=$last, hasNext=$hasNext, hasPrevious=$hasPrevious]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.totalPages != null) {
-      json[r'totalPages'] = this.totalPages;
+      json[r'content'] = this.content;
+    if (this.page != null) {
+      json[r'page'] = this.page;
     } else {
-      json[r'totalPages'] = null;
+      json[r'page'] = null;
+    }
+    if (this.size != null) {
+      json[r'size'] = this.size;
+    } else {
+      json[r'size'] = null;
     }
     if (this.totalElements != null) {
       json[r'totalElements'] = this.totalElements;
     } else {
       json[r'totalElements'] = null;
     }
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.totalPages != null) {
+      json[r'totalPages'] = this.totalPages;
     } else {
-      json[r'sort'] = null;
+      json[r'totalPages'] = null;
     }
     if (this.first != null) {
       json[r'first'] = this.first;
@@ -167,39 +160,23 @@ class PageColdWallet {
     } else {
       json[r'last'] = null;
     }
-    if (this.numberOfElements != null) {
-      json[r'numberOfElements'] = this.numberOfElements;
+    if (this.hasNext != null) {
+      json[r'hasNext'] = this.hasNext;
     } else {
-      json[r'numberOfElements'] = null;
+      json[r'hasNext'] = null;
     }
-    if (this.pageable != null) {
-      json[r'pageable'] = this.pageable;
+    if (this.hasPrevious != null) {
+      json[r'hasPrevious'] = this.hasPrevious;
     } else {
-      json[r'pageable'] = null;
-    }
-    if (this.size != null) {
-      json[r'size'] = this.size;
-    } else {
-      json[r'size'] = null;
-    }
-      json[r'content'] = this.content;
-    if (this.number != null) {
-      json[r'number'] = this.number;
-    } else {
-      json[r'number'] = null;
-    }
-    if (this.empty != null) {
-      json[r'empty'] = this.empty;
-    } else {
-      json[r'empty'] = null;
+      json[r'hasPrevious'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageColdWallet] instance and imports its values from
+  /// Returns a new [PageResponseFileRecordResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageColdWallet? fromJson(dynamic value) {
+  static PageResponseFileRecordResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -208,34 +185,32 @@ class PageColdWallet {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageColdWallet[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageColdWallet[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PageResponseFileRecordResponse[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PageResponseFileRecordResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageColdWallet(
-        totalPages: mapValueOfType<int>(json, r'totalPages'),
+      return PageResponseFileRecordResponse(
+        content: FileRecordResponse.listFromJson(json[r'content']),
+        page: mapValueOfType<int>(json, r'page'),
+        size: mapValueOfType<int>(json, r'size'),
         totalElements: mapValueOfType<int>(json, r'totalElements'),
-        sort: SortObject.fromJson(json[r'sort']),
+        totalPages: mapValueOfType<int>(json, r'totalPages'),
         first: mapValueOfType<bool>(json, r'first'),
         last: mapValueOfType<bool>(json, r'last'),
-        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
-        pageable: PageableObject.fromJson(json[r'pageable']),
-        size: mapValueOfType<int>(json, r'size'),
-        content: ColdWallet.listFromJson(json[r'content']),
-        number: mapValueOfType<int>(json, r'number'),
-        empty: mapValueOfType<bool>(json, r'empty'),
+        hasNext: mapValueOfType<bool>(json, r'hasNext'),
+        hasPrevious: mapValueOfType<bool>(json, r'hasPrevious'),
       );
     }
     return null;
   }
 
-  static List<PageColdWallet> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageColdWallet>[];
+  static List<PageResponseFileRecordResponse> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PageResponseFileRecordResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageColdWallet.fromJson(row);
+        final value = PageResponseFileRecordResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -244,12 +219,12 @@ class PageColdWallet {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageColdWallet> mapFromJson(dynamic json) {
-    final map = <String, PageColdWallet>{};
+  static Map<String, PageResponseFileRecordResponse> mapFromJson(dynamic json) {
+    final map = <String, PageResponseFileRecordResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageColdWallet.fromJson(entry.value);
+        final value = PageResponseFileRecordResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -258,14 +233,14 @@ class PageColdWallet {
     return map;
   }
 
-  // maps a json object with a list of PageColdWallet-objects as value to a dart map
-  static Map<String, List<PageColdWallet>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageColdWallet>>{};
+  // maps a json object with a list of PageResponseFileRecordResponse-objects as value to a dart map
+  static Map<String, List<PageResponseFileRecordResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<PageResponseFileRecordResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageColdWallet.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = PageResponseFileRecordResponse.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

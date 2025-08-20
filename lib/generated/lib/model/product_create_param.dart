@@ -42,6 +42,7 @@ class ProductCreateParam {
     this.freeShippingThreshold,
     this.stockAlertThreshold,
     this.allowNegativeStock,
+    this.fileIds = const [],
   });
 
   /// 商品名稱
@@ -231,6 +232,9 @@ class ProductCreateParam {
   ///
   bool? allowNegativeStock;
 
+  /// 文件記錄ID列表（用於關聯已上傳的文件）
+  List<int> fileIds;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductCreateParam &&
     other.title == title &&
@@ -261,7 +265,8 @@ class ProductCreateParam {
     other.defaultShippingCompany == defaultShippingCompany &&
     other.freeShippingThreshold == freeShippingThreshold &&
     other.stockAlertThreshold == stockAlertThreshold &&
-    other.allowNegativeStock == allowNegativeStock;
+    other.allowNegativeStock == allowNegativeStock &&
+    _deepEquality.equals(other.fileIds, fileIds);
 
   @override
   int get hashCode =>
@@ -294,10 +299,11 @@ class ProductCreateParam {
     (defaultShippingCompany.hashCode) +
     (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode) +
     (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
-    (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode);
+    (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode) +
+    (fileIds.hashCode);
 
   @override
-  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, skus=$skus, brand=$brand, minStock=$minStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, shippingFees=$shippingFees, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock]';
+  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, skus=$skus, brand=$brand, minStock=$minStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, shippingFees=$shippingFees, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, fileIds=$fileIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -382,6 +388,7 @@ class ProductCreateParam {
     } else {
       json[r'allowNegativeStock'] = null;
     }
+      json[r'fileIds'] = this.fileIds;
     return json;
   }
 
@@ -437,6 +444,9 @@ class ProductCreateParam {
         freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
         stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
         allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
+        fileIds: json[r'fileIds'] is Iterable
+            ? (json[r'fileIds'] as Iterable).cast<int>().toList(growable: false)
+            : const [],
       );
     }
     return null;
