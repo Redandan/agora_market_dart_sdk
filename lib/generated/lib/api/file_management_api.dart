@@ -691,9 +691,9 @@ class FileManagementApi {
   ///
   /// Parameters:
   ///
-  /// * [String] path:
+  /// * [String] filePath:
   ///   目錄路徑
-  Future<Response> getFileListFromStorageWithHttpInfo({ String? path, }) async {
+  Future<Response> getFileListFromStorageWithHttpInfo({ String? filePath, }) async {
     // ignore: prefer_const_declarations
     final path = r'/files/storage/list';
 
@@ -704,8 +704,8 @@ class FileManagementApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (path != null) {
-      queryParams.addAll(_queryParams('', 'path', path));
+    if (filePath != null) {
+      queryParams.addAll(_queryParams('', 'filePath', filePath));
     }
 
     const contentTypes = <String>[];
@@ -728,10 +728,10 @@ class FileManagementApi {
   ///
   /// Parameters:
   ///
-  /// * [String] path:
+  /// * [String] filePath:
   ///   目錄路徑
-  Future<ApiResponseListString?> getFileListFromStorage({ String? path, }) async {
-    final response = await getFileListFromStorageWithHttpInfo( path: path, );
+  Future<ApiResponseListString?> getFileListFromStorage({ String? filePath, }) async {
+    final response = await getFileListFromStorageWithHttpInfo( filePath: filePath, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
