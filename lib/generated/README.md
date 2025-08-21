@@ -237,23 +237,12 @@ Class | Method | HTTP request | Description
 *DeliveryApi* | [**updateDeliveryOrder**](doc//DeliveryApi.md#updatedeliveryorder) | **POST** /delivery/update/order | 更新配送進度
 *DeliveryApi* | [**updateDeliveryer**](doc//DeliveryApi.md#updatedeliveryer) | **POST** /delivery/update | 更新配送員資料
 *DeliveryApi* | [**updateWorkingStatus**](doc//DeliveryApi.md#updateworkingstatus) | **POST** /delivery/update/status | 更新工作狀態
-*FileManagementApi* | [**deleteFileFromStorage**](doc//FileManagementApi.md#deletefilefromstorage) | **DELETE** /files/storage/delete | 刪除文件
-*FileManagementApi* | [**deleteFileRecord**](doc//FileManagementApi.md#deletefilerecord) | **DELETE** /files/records/{id} | 刪除文件記錄
+*FileManagementApi* | [**batchRefreshUrls**](doc//FileManagementApi.md#batchrefreshurls) | **POST** /files/records/batch/refresh | 批量刷新文件URL
+*FileManagementApi* | [**deleteFileRecord**](doc//FileManagementApi.md#deletefilerecord) | **DELETE** /files/records | 刪除文件記錄和存儲文件
 *FileManagementApi* | [**deleteFileRecordsByBusiness**](doc//FileManagementApi.md#deletefilerecordsbybusiness) | **DELETE** /files/records/business | 根據業務關聯刪除文件記錄
-*FileManagementApi* | [**downloadFileFromStorage**](doc//FileManagementApi.md#downloadfilefromstorage) | **GET** /files/storage/download | 下載文件
-*FileManagementApi* | [**fileExistsInStorage**](doc//FileManagementApi.md#fileexistsinstorage) | **GET** /files/storage/exists | 檢查檔案是否存在
-*FileManagementApi* | [**forceRefreshAllActiveUrls**](doc//FileManagementApi.md#forcerefreshallactiveurls) | **POST** /files/records/force-refresh/all | 手動強制刷新所有活躍文件URL
-*FileManagementApi* | [**forceRefreshSingleFileUrl**](doc//FileManagementApi.md#forcerefreshsinglefileurl) | **POST** /files/records/{id}/force-refresh-url | 手動強制刷新單個文件URL
-*FileManagementApi* | [**forceRefreshUrlsByBusiness**](doc//FileManagementApi.md#forcerefreshurlsbybusiness) | **POST** /files/records/force-refresh/business/{businessType}/{businessId} | 手動強制刷新特定業務實體的所有文件URL
-*FileManagementApi* | [**forceRefreshUrlsByBusinessType**](doc//FileManagementApi.md#forcerefreshurlsbybusinesstype) | **POST** /files/records/force-refresh/business-type/{businessType} | 手動強制刷新特定業務類型的所有文件URL
-*FileManagementApi* | [**getDownloadUrlFromStorage**](doc//FileManagementApi.md#getdownloadurlfromstorage) | **POST** /files/storage/download-url | 獲取文件下載連結
-*FileManagementApi* | [**getFileInfoFromStorage**](doc//FileManagementApi.md#getfileinfofromstorage) | **GET** /files/storage/info | 獲取文件信息
-*FileManagementApi* | [**getFileListFromStorage**](doc//FileManagementApi.md#getfilelistfromstorage) | **GET** /files/storage/list | 獲取目錄中的文件列表
 *FileManagementApi* | [**getFileRecordById**](doc//FileManagementApi.md#getfilerecordbyid) | **GET** /files/records/{id} | 根據ID獲取文件記錄
-*FileManagementApi* | [**getFileRecordsByBusiness**](doc//FileManagementApi.md#getfilerecordsbybusiness) | **GET** /files/records/business | 根據業務關聯獲取文件記錄
-*FileManagementApi* | [**getFileRecordsByUploader**](doc//FileManagementApi.md#getfilerecordsbyuploader) | **GET** /files/records/uploader/{uploaderId} | 根據上傳者獲取文件記錄
-*FileManagementApi* | [**refreshExpiredPresignedUrls**](doc//FileManagementApi.md#refreshexpiredpresignedurls) | **POST** /files/records/batch/refresh-expired | 批量刷新過期URL
 *FileManagementApi* | [**refreshPresignedUrl**](doc//FileManagementApi.md#refreshpresignedurl) | **POST** /files/records/{id}/refresh-url | 刷新預簽名URL
+*FileManagementApi* | [**searchFileRecords**](doc//FileManagementApi.md#searchfilerecords) | **POST** /files/search | 搜索文件記錄
 *FileManagementApi* | [**triggerScheduledTask**](doc//FileManagementApi.md#triggerscheduledtask) | **POST** /files/records/trigger-scheduled-task | 手動觸發定時任務
 *FileManagementApi* | [**updateFileRecord**](doc//FileManagementApi.md#updatefilerecord) | **PUT** /files/records/{id} | 更新文件記錄
 *MemberDisputesApi* | [**createDispute**](doc//MemberDisputesApi.md#createdispute) | **POST** /disputes | 創建糾紛
@@ -365,21 +354,12 @@ Class | Method | HTTP request | Description
  - [AdminResetPasswordParam](doc//AdminResetPasswordParam.md)
  - [AdminStoreSearchParam](doc//AdminStoreSearchParam.md)
  - [AdminStoreUpdateParam](doc//AdminStoreUpdateParam.md)
- - [ApiResponseBatchRefreshResponse](doc//ApiResponseBatchRefreshResponse.md)
- - [ApiResponseBoolean](doc//ApiResponseBoolean.md)
- - [ApiResponseBusinessRefreshResponse](doc//ApiResponseBusinessRefreshResponse.md)
- - [ApiResponseBusinessTypeRefreshResponse](doc//ApiResponseBusinessTypeRefreshResponse.md)
  - [ApiResponseColdWallet](doc//ApiResponseColdWallet.md)
- - [ApiResponseFileDownloadUrlResponse](doc//ApiResponseFileDownloadUrlResponse.md)
- - [ApiResponseFileInfoResponse](doc//ApiResponseFileInfoResponse.md)
+ - [ApiResponseFileOperationResponse](doc//ApiResponseFileOperationResponse.md)
  - [ApiResponseFileRecordResponse](doc//ApiResponseFileRecordResponse.md)
- - [ApiResponseListFileRecordResponse](doc//ApiResponseListFileRecordResponse.md)
  - [ApiResponseListPostResponse](doc//ApiResponseListPostResponse.md)
- - [ApiResponseListString](doc//ApiResponseListString.md)
  - [ApiResponseMapStringObject](doc//ApiResponseMapStringObject.md)
- - [ApiResponseObject](doc//ApiResponseObject.md)
  - [ApiResponsePageColdWallet](doc//ApiResponsePageColdWallet.md)
- - [ApiResponsePageResponseFileRecordResponse](doc//ApiResponsePageResponseFileRecordResponse.md)
  - [ApiResponsePageResponsePostResponse](doc//ApiResponsePageResponsePostResponse.md)
  - [ApiResponsePostResponse](doc//ApiResponsePostResponse.md)
  - [ApiResponsePostStatistics](doc//ApiResponsePostStatistics.md)
@@ -390,11 +370,8 @@ Class | Method | HTTP request | Description
  - [ApiResponseVoid](doc//ApiResponseVoid.md)
  - [ApplyStakingParam](doc//ApplyStakingParam.md)
  - [AutoReplyConfig](doc//AutoReplyConfig.md)
- - [BatchRefreshResponse](doc//BatchRefreshResponse.md)
  - [BatchReviewPromoCodeParam](doc//BatchReviewPromoCodeParam.md)
  - [BatchReviewResult](doc//BatchReviewResult.md)
- - [BusinessRefreshResponse](doc//BusinessRefreshResponse.md)
- - [BusinessTypeRefreshResponse](doc//BusinessTypeRefreshResponse.md)
  - [CartGroupBySeller](doc//CartGroupBySeller.md)
  - [CartItem](doc//CartItem.md)
  - [CartItemCreateParam](doc//CartItemCreateParam.md)
@@ -433,10 +410,10 @@ Class | Method | HTTP request | Description
  - [DisputeSearchParam](doc//DisputeSearchParam.md)
  - [DisputeStatisticsDTO](doc//DisputeStatisticsDTO.md)
  - [DisputeStatusEnum](doc//DisputeStatusEnum.md)
- - [FileDownloadUrlResponse](doc//FileDownloadUrlResponse.md)
- - [FileInfoResponse](doc//FileInfoResponse.md)
+ - [FileOperationResponse](doc//FileOperationResponse.md)
  - [FileRecord](doc//FileRecord.md)
  - [FileRecordResponse](doc//FileRecordResponse.md)
+ - [FileRecordSearchParam](doc//FileRecordSearchParam.md)
  - [HumanInterventionSettings](doc//HumanInterventionSettings.md)
  - [IssueSearchParam](doc//IssueSearchParam.md)
  - [IssueStatusEnum](doc//IssueStatusEnum.md)

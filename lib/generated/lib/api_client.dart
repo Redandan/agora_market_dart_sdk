@@ -192,36 +192,18 @@ class ApiClient {
           return AdminStoreSearchParam.fromJson(value);
         case 'AdminStoreUpdateParam':
           return AdminStoreUpdateParam.fromJson(value);
-        case 'ApiResponseBatchRefreshResponse':
-          return ApiResponseBatchRefreshResponse.fromJson(value);
-        case 'ApiResponseBoolean':
-          return ApiResponseBoolean.fromJson(value);
-        case 'ApiResponseBusinessRefreshResponse':
-          return ApiResponseBusinessRefreshResponse.fromJson(value);
-        case 'ApiResponseBusinessTypeRefreshResponse':
-          return ApiResponseBusinessTypeRefreshResponse.fromJson(value);
         case 'ApiResponseColdWallet':
           return ApiResponseColdWallet.fromJson(value);
-        case 'ApiResponseFileDownloadUrlResponse':
-          return ApiResponseFileDownloadUrlResponse.fromJson(value);
-        case 'ApiResponseFileInfoResponse':
-          return ApiResponseFileInfoResponse.fromJson(value);
+        case 'ApiResponseFileOperationResponse':
+          return ApiResponseFileOperationResponse.fromJson(value);
         case 'ApiResponseFileRecordResponse':
           return ApiResponseFileRecordResponse.fromJson(value);
-        case 'ApiResponseListFileRecordResponse':
-          return ApiResponseListFileRecordResponse.fromJson(value);
         case 'ApiResponseListPostResponse':
           return ApiResponseListPostResponse.fromJson(value);
-        case 'ApiResponseListString':
-          return ApiResponseListString.fromJson(value);
         case 'ApiResponseMapStringObject':
           return ApiResponseMapStringObject.fromJson(value);
-        case 'ApiResponseObject':
-          return ApiResponseObject.fromJson(value);
         case 'ApiResponsePageColdWallet':
           return ApiResponsePageColdWallet.fromJson(value);
-        case 'ApiResponsePageResponseFileRecordResponse':
-          return ApiResponsePageResponseFileRecordResponse.fromJson(value);
         case 'ApiResponsePageResponsePostResponse':
           return ApiResponsePageResponsePostResponse.fromJson(value);
         case 'ApiResponsePostResponse':
@@ -242,16 +224,10 @@ class ApiClient {
           return ApplyStakingParam.fromJson(value);
         case 'AutoReplyConfig':
           return AutoReplyConfig.fromJson(value);
-        case 'BatchRefreshResponse':
-          return BatchRefreshResponse.fromJson(value);
         case 'BatchReviewPromoCodeParam':
           return BatchReviewPromoCodeParam.fromJson(value);
         case 'BatchReviewResult':
           return BatchReviewResult.fromJson(value);
-        case 'BusinessRefreshResponse':
-          return BusinessRefreshResponse.fromJson(value);
-        case 'BusinessTypeRefreshResponse':
-          return BusinessTypeRefreshResponse.fromJson(value);
         case 'CartGroupBySeller':
           return CartGroupBySeller.fromJson(value);
         case 'CartItem':
@@ -328,14 +304,14 @@ class ApiClient {
           return DisputeStatisticsDTO.fromJson(value);
         case 'DisputeStatusEnum':
           return DisputeStatusEnumTypeTransformer().decode(value);
-        case 'FileDownloadUrlResponse':
-          return FileDownloadUrlResponse.fromJson(value);
-        case 'FileInfoResponse':
-          return FileInfoResponse.fromJson(value);
+        case 'FileOperationResponse':
+          return FileOperationResponse.fromJson(value);
         case 'FileRecord':
           return FileRecord.fromJson(value);
         case 'FileRecordResponse':
           return FileRecordResponse.fromJson(value);
+        case 'FileRecordSearchParam':
+          return FileRecordSearchParam.fromJson(value);
         case 'HumanInterventionSettings':
           return HumanInterventionSettings.fromJson(value);
         case 'IssueSearchParam':

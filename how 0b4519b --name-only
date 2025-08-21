@@ -1,0 +1,49 @@
+[33m0b4519b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Refactor API models and documentation: updated parameter names for clarity, adjusted property ordering in multiple models, and enhanced page response models to include totalElements and numberOfElements. Ensured consistency across various components and aligned with the latest API specifications.
+[33m94e4936[m Refactor API documentation and models: renamed FilesApi to FileManagementApi, updated related methods and response types for consistency. Enhanced various page response models to include totalElements and numberOfElements properties, and adjusted property ordering in multiple models. Removed deprecated file download response models and ensured alignment with the latest API specifications.
+[33m9a075e7[m Update API documentation and models: enhanced various API endpoints and models, including adjustments to response structures and property ordering. Updated tests for consistency and clarity across multiple components, ensuring alignment with the latest API specifications.
+[33m2c9b7e5[m Update API documentation and models: upgraded OpenAPI Generator CLI version from 7.13.0 to 7.14.0, removed deprecated file upload response models, and adjusted related API documentation and tests for consistency. Updated various page response models to include 'last' property in the correct order.
+[33m32879d5[m Update API documentation and models: modified FilesApi to change parameter name from 'path' to 'filename', updated CartItem and Product models to include totalPrice and minimumShippingFee properties, adjusted related tests for consistency, and ensured proper ordering of properties in various page response models.
+[33me64370f[m Update API documentation and models: modified FilesApi to change getDownloadUrl method from GET to POST, added new properties totalPrice to CartItem and minimumShippingFee to Product, adjusted related tests for consistency, and updated various page response models to include numberOfElements.
+[33mebf22e0[m Update API documentation and models: added new methods for file operations including getDownloadUrl and getFileSize in FilesApi, updated CartItem and UserAddress models to include new properties, and adjusted related tests for consistency and clarity.
+[33mae2bef9[m Update API documentation and models: added totalPages property to various page response models, adjusted the order of properties in CartItem and Product models, and updated related tests for consistency and clarity.
+[33m78f78f8[m Update API documentation and models: added new properties including totalElements to various page response models, inStock to CartItem and Product models, and fullAddress to UserAddress. Adjusted related tests for consistency and clarity.
+[33mf58e38e[m Update API documentation and models: added new response types for file operations including ApiResponseBoolean, ApiResponseFileDownloadResponse, and ApiResponseFileUploadResponse. Introduced new methods in FilesApi for file existence checks and file information retrieval. Adjusted related tests for consistency and updated existing models for clarity.
+[33m2b32ec3[m Update API documentation and models: added new properties including paged to PageableObject, inStock to Product, defaultShippingFee and freeShippingThreshold to StoreUpdateParam, and fullAddress to UserAddress. Adjusted related tests for consistency.
+[33m032e9bf[m Update API documentation and models: enhanced member search functionality to support custom sorting, added minimumShippingFee property to Product model, and restructured UserAddress model to include fullAddress. Adjusted related tests for consistency.
+[33m99731b3[m Update API documentation and models: removed deprecated post management endpoints, added new store management endpoints, updated related models and documentation, and adjusted tests for consistency.
+[33m9ab4565[m Update API documentation and models: added new endpoints for post management including approval, archiving, creation, deletion, and statistics retrieval, updated related models and documentation, and adjusted tests for consistency.
+[33maa759eb[m Enhance API documentation and models: added batch delete functionality for products in AdminProductsApi and ProductsApi, updated related methods and documentation, modified CartItem and ProductInventoryStats models for clarity, and adjusted tests for consistency.
+[33m3b967eb[m Refactor ColdWallet API and models: updated API methods to return specific response types (ApiResponseColdWallet, ApiResponsePageColdWallet, ApiResponseString), modified related documentation, and adjusted CartItem and PageableObject models for clarity and consistency.
+[33m4f03da4[m Refactor ColdWallet API and models: removed ColdWallet and ColdWalletStatusEnum, updated API methods to return Object instead, adjusted related documentation and tests for consistency, and modified CartItem model properties for clarity.
+[33m55777c6[m Refactor ColdWallet API and models: replaced ColdWalletResponseDTO and PageColdWalletResponseDTO with ColdWallet and PageColdWallet, updated related API endpoints and documentation, removed deprecated files, and adjusted tests for consistency.
+[33m16ef516[m Refactor ColdWallet API and models: replaced ColdWallet and ColdWalletStatusEnum with ColdWalletResponseDTO and CreateColdWalletParam, updated related API endpoints and documentation, and removed deprecated files. Added new getJwtConfig endpoint in TestApi and adjusted tests for consistency.
+[33m8ac9db5[m Update API documentation and models: modified transaction retrieval endpoint to use TransactionSearchParam, added new properties to various models including CartItem and PageableObject, and adjusted related tests for consistency.
+[33mbb99f76[m Update API documentation and models: added new properties to various models including StoreProductSearchParam and updated related API endpoints, ensuring consistency in documentation and tests.
+[33mff8be92[m Update API documentation and models: added new endpoint for checking email verification remaining time in AuthApi, updated related models and documentation, and adjusted tests for consistency.
+[33mbf2c8d7[m Update API documentation and models: added reset password endpoint for AdminMembersApi, updated related models and documentation, and adjusted tests for consistency.
+[33m64b7096[m Update API documentation and models: enhance AuthApi with new endpoints for password reset verification and remaining wait time, update CartItem and ProductInventoryStats models, and adjust related tests for consistency.
+[33m52cd1f7[m Update API documentation and models: added new properties to CartItem, Product, and UserAddress models, adjusted related tests, and ensured consistency in data types across the API specifications.
+[33mf46fb1f[m Remove deprecated AddressAllocationResult model and related API methods, update ColdWallet and CartItem models, and adjust documentation and tests accordingly.
+[33m61e9f93[m Refactor API documentation and models: removed deprecated endpoints, updated ColdWallet and CartItem models with new properties, and adjusted related tests. Updated API client to reflect changes in response types.
+[33m6bb10ef[m 新增多個API端點，包括檢查充值可用性、獲取建議充值金額、釋放冷錢包分配金額及設置冷錢包最大支持充值金額，並更新相關文檔和測試用例。
+[33m982103c[m 產品編輯API 更新
+[33m8cf1cbf[m temp
+[33m77198c0[m temp
+[33md36020a[m API fixed
+[33mb2c5e49[m stacking api fixed
+[33mb35cfc6[m 質押API FIXED
+[33m04dc5a2[m 提現訂單進行中API
+[33m7d30df1[m 產品狀態更新
+[33m922f4b3[m temp
+[33m0d361e7[m 購買連動購物車API
+[33mc57b926[m 購物車API 更新2
+[33mf84d40b[m 購物車API 更新2
+[33maa89e5e[m 購物車API 更新
+[33m8476558[m 展示地址選項整合
+[33ma87bfce[m 用户地址更新api
+[33m0515092[m 購物車增加SKU
+[33m071caaa[m 接單API 更新
+[33m285698c[m 外送API 更新
+[33m8c52727[m 外送员接单api
+[33mf3d45e2[m 物流API
+[33md49f717[m SDK

@@ -10,33 +10,64 @@
 
 part of openapi.api;
 
-class BusinessTypeRefreshResponse {
-  /// Returns a new [BusinessTypeRefreshResponse] instance.
-  BusinessTypeRefreshResponse({
-    this.businessType,
-    this.refreshedCount,
+class FileOperationResponse {
+  /// Returns a new [FileOperationResponse] instance.
+  FileOperationResponse({
+    this.operationType,
+    this.status,
+    this.processedCount,
+    this.successCount,
+    this.failedCount,
     this.message,
-    this.executionTime,
-    this.durationMs,
-    this.success,
+    this.timestamp,
   });
 
+  /// 操作類型
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? businessType;
+  String? operationType;
 
+  /// 操作狀態
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? refreshedCount;
+  String? status;
 
+  /// 處理的文件數量
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? processedCount;
+
+  /// 成功處理的文件數量
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? successCount;
+
+  /// 失敗的文件數量
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? failedCount;
+
+  /// 操作消息
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -45,91 +76,83 @@ class BusinessTypeRefreshResponse {
   ///
   String? message;
 
+  /// 操作時間戳
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  DateTime? executionTime;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? durationMs;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? success;
+  int? timestamp;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is BusinessTypeRefreshResponse &&
-    other.businessType == businessType &&
-    other.refreshedCount == refreshedCount &&
+  bool operator ==(Object other) => identical(this, other) || other is FileOperationResponse &&
+    other.operationType == operationType &&
+    other.status == status &&
+    other.processedCount == processedCount &&
+    other.successCount == successCount &&
+    other.failedCount == failedCount &&
     other.message == message &&
-    other.executionTime == executionTime &&
-    other.durationMs == durationMs &&
-    other.success == success;
+    other.timestamp == timestamp;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (businessType == null ? 0 : businessType!.hashCode) +
-    (refreshedCount == null ? 0 : refreshedCount!.hashCode) +
+    (operationType == null ? 0 : operationType!.hashCode) +
+    (status == null ? 0 : status!.hashCode) +
+    (processedCount == null ? 0 : processedCount!.hashCode) +
+    (successCount == null ? 0 : successCount!.hashCode) +
+    (failedCount == null ? 0 : failedCount!.hashCode) +
     (message == null ? 0 : message!.hashCode) +
-    (executionTime == null ? 0 : executionTime!.hashCode) +
-    (durationMs == null ? 0 : durationMs!.hashCode) +
-    (success == null ? 0 : success!.hashCode);
+    (timestamp == null ? 0 : timestamp!.hashCode);
 
   @override
-  String toString() => 'BusinessTypeRefreshResponse[businessType=$businessType, refreshedCount=$refreshedCount, message=$message, executionTime=$executionTime, durationMs=$durationMs, success=$success]';
+  String toString() => 'FileOperationResponse[operationType=$operationType, status=$status, processedCount=$processedCount, successCount=$successCount, failedCount=$failedCount, message=$message, timestamp=$timestamp]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.businessType != null) {
-      json[r'businessType'] = this.businessType;
+    if (this.operationType != null) {
+      json[r'operationType'] = this.operationType;
     } else {
-      json[r'businessType'] = null;
+      json[r'operationType'] = null;
     }
-    if (this.refreshedCount != null) {
-      json[r'refreshedCount'] = this.refreshedCount;
+    if (this.status != null) {
+      json[r'status'] = this.status;
     } else {
-      json[r'refreshedCount'] = null;
+      json[r'status'] = null;
+    }
+    if (this.processedCount != null) {
+      json[r'processedCount'] = this.processedCount;
+    } else {
+      json[r'processedCount'] = null;
+    }
+    if (this.successCount != null) {
+      json[r'successCount'] = this.successCount;
+    } else {
+      json[r'successCount'] = null;
+    }
+    if (this.failedCount != null) {
+      json[r'failedCount'] = this.failedCount;
+    } else {
+      json[r'failedCount'] = null;
     }
     if (this.message != null) {
       json[r'message'] = this.message;
     } else {
       json[r'message'] = null;
     }
-    if (this.executionTime != null) {
-      json[r'executionTime'] = this.executionTime!.toUtc().toIso8601String();
+    if (this.timestamp != null) {
+      json[r'timestamp'] = this.timestamp;
     } else {
-      json[r'executionTime'] = null;
-    }
-    if (this.durationMs != null) {
-      json[r'durationMs'] = this.durationMs;
-    } else {
-      json[r'durationMs'] = null;
-    }
-    if (this.success != null) {
-      json[r'success'] = this.success;
-    } else {
-      json[r'success'] = null;
+      json[r'timestamp'] = null;
     }
     return json;
   }
 
-  /// Returns a new [BusinessTypeRefreshResponse] instance and imports its values from
+  /// Returns a new [FileOperationResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static BusinessTypeRefreshResponse? fromJson(dynamic value) {
+  static FileOperationResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -138,29 +161,30 @@ class BusinessTypeRefreshResponse {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "BusinessTypeRefreshResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "BusinessTypeRefreshResponse[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "FileOperationResponse[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "FileOperationResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return BusinessTypeRefreshResponse(
-        businessType: mapValueOfType<String>(json, r'businessType'),
-        refreshedCount: mapValueOfType<int>(json, r'refreshedCount'),
+      return FileOperationResponse(
+        operationType: mapValueOfType<String>(json, r'operationType'),
+        status: mapValueOfType<String>(json, r'status'),
+        processedCount: mapValueOfType<int>(json, r'processedCount'),
+        successCount: mapValueOfType<int>(json, r'successCount'),
+        failedCount: mapValueOfType<int>(json, r'failedCount'),
         message: mapValueOfType<String>(json, r'message'),
-        executionTime: mapDateTime(json, r'executionTime', r''),
-        durationMs: mapValueOfType<int>(json, r'durationMs'),
-        success: mapValueOfType<bool>(json, r'success'),
+        timestamp: mapValueOfType<int>(json, r'timestamp'),
       );
     }
     return null;
   }
 
-  static List<BusinessTypeRefreshResponse> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <BusinessTypeRefreshResponse>[];
+  static List<FileOperationResponse> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <FileOperationResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = BusinessTypeRefreshResponse.fromJson(row);
+        final value = FileOperationResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -169,12 +193,12 @@ class BusinessTypeRefreshResponse {
     return result.toList(growable: growable);
   }
 
-  static Map<String, BusinessTypeRefreshResponse> mapFromJson(dynamic json) {
-    final map = <String, BusinessTypeRefreshResponse>{};
+  static Map<String, FileOperationResponse> mapFromJson(dynamic json) {
+    final map = <String, FileOperationResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = BusinessTypeRefreshResponse.fromJson(entry.value);
+        final value = FileOperationResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -183,14 +207,14 @@ class BusinessTypeRefreshResponse {
     return map;
   }
 
-  // maps a json object with a list of BusinessTypeRefreshResponse-objects as value to a dart map
-  static Map<String, List<BusinessTypeRefreshResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<BusinessTypeRefreshResponse>>{};
+  // maps a json object with a list of FileOperationResponse-objects as value to a dart map
+  static Map<String, List<FileOperationResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<FileOperationResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = BusinessTypeRefreshResponse.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = FileOperationResponse.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
