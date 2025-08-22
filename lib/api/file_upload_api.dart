@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:convert';
 import 'dart:typed_data';
 import 'package:http/http.dart' as http;
 import 'package:agora_market_dart_sdk/generated/lib/api.dart';
@@ -26,11 +27,20 @@ import 'package:agora_market_dart_sdk/generated/lib/api.dart';
 ///
 /// // 上传本地文件
 /// final file = File('path/to/image.jpg');
-/// final result = await fileUploadApi.uploadFile(file: file);
+/// final result = await fileUploadApi.uploadFile(
+///   file: file,
+///   description: '用户头像',
+///   tags: '["avatar", "profile"]',
+///   isPublic: true
+/// );
 ///
 /// // 上传字节数据
 /// final bytes = await http.readBytes(Uri.parse('https://example.com/image.jpg'));
-/// final result = await fileUploadApi.uploadBytes(bytes: bytes, fileName: 'image.jpg');
+/// final result = await fileUploadApi.uploadBytes(
+///   bytes: bytes,
+///   fileName: 'image.jpg',
+///   description: '下载的图片'
+/// );
 /// ```
 ///
 /// 注意：此API不支持图片转字符串（如Base64）上传，如需此功能请在上传前自行转换
@@ -132,13 +142,14 @@ class FileUploadApi {
 
   /// 上传单个文件
   ///
-  /// 支持上传本地文件到服务器，可以指定上传路径和元数据
+  /// 支持上传本地文件到服务器，可以指定描述、标签和公开状态
   /// 文件以二进制形式传输，不是字符串转换
   ///
   /// 参数说明：
   /// - [file] - 要上传的文件，必须是有效的 File 对象
-  /// - [uploadPath] - 可选的上传路径，用于组织文件结构
-  /// - [metadata] - 可选的元数据，用于存储文件的额外信息
+  /// - [description] - 可选的文件描述
+  /// - [tags] - 可选的标签，JSON字符串格式，如 '["avatar", "profile"]'
+  /// - [isPublic] - 是否公开，默认为 false
   /// - [requireAuth] - 是否需要认证，默认为 true
   ///
   /// 返回：
@@ -149,15 +160,14 @@ class FileUploadApi {
   /// final file = File('path/to/image.jpg');
   /// final result = await api.uploadFile(
   ///   file: file,
-  ///   uploadPath: 'images/profile',
-  ///   metadata: {
-  ///     'category': 'profile',
-  ///     'description': 'User profile picture'
-  ///   }
+  ///   description: '用户头像',
+  ///   tags: '["avatar", "profile"]',
+  ///   isPublic: true
   /// );
   ///
   /// if (result.isSuccess) {
   ///   print('Upload successful: ${result.fileId}');
+  ///   print('File URL: ${result.presignedUrl}');
   /// } else {
   ///   print('Upload failed: ${result.errorMessage}');
   /// }
@@ -165,13 +175,14 @@ class FileUploadApi {
   ///
   /// 注意事项：
   /// - 确保文件路径存在且可读
-  /// - 建议添加文件类型和大小验证
-  /// - 大文件建议使用分块上传
+  /// - 支持的文件类型：图片(JPEG, PNG, GIF, WebP)、文檔(PDF, Word, Excel, TXT)、壓縮包(ZIP, RAR, 7Z)
+  /// - 最大文件大小：100MB
   /// - 文件以二进制形式传输，支持所有文件类型
   Future<FileUploadResult> uploadFile({
     required File file,
-    String? uploadPath,
-    Map<String, String>? metadata,
+    String? description,
+    String? tags,
+    bool isPublic = false,
     bool requireAuth = true,
   }) async {
     try {
@@ -201,17 +212,14 @@ class FileUploadApi {
       );
       request.files.add(multipartFile);
 
-      // 添加上传路径
-      if (uploadPath != null) {
-        request.fields['uploadPath'] = uploadPath;
+      // 添加可选参数
+      if (description != null) {
+        request.fields['description'] = description;
       }
-
-      // 添加元数据
-      if (metadata != null) {
-        metadata.forEach((key, value) {
-          request.fields[key] = value;
-        });
+      if (tags != null) {
+        request.fields['tags'] = tags;
       }
+      request.fields['isPublic'] = isPublic.toString();
 
       // 添加认证头 - 使用标准的认证机制
       await _bearerAuth.applyToParams([], request.headers);
@@ -220,24 +228,60 @@ class FileUploadApi {
       request.headers.addAll(apiClient.defaultHeaderMap);
 
       // 发送请求
-      var response = await request.send();
-      var responseBody = await response.stream.bytesToString();
+      var streamedResponse = await request.send();
+      var responseBody = await streamedResponse.stream.bytesToString();
 
-      if (response.statusCode == 200) {
-        return FileUploadResult.success(
-          fileId: responseBody, // 假设返回的是文件ID
-          fileName: file.path.split('/').last,
-          fileSize: length,
-          uploadPath: uploadPath,
-        );
-      } else if (response.statusCode == 401) {
+      if (streamedResponse.statusCode == 200) {
+        try {
+          // 解析服务器返回的JSON响应
+          final jsonResponse = jsonDecode(responseBody);
+
+          // 使用标准的API响应模型
+          final apiResponse =
+              ApiResponseFileRecordResponse.fromJson(jsonResponse);
+
+          if (apiResponse != null &&
+              apiResponse.success == true &&
+              apiResponse.data != null) {
+            final fileRecord = apiResponse.data!;
+            return FileUploadResult.success(
+              fileId: fileRecord.id?.toString() ?? '',
+              fileName: fileRecord.originalName ?? file.path.split('/').last,
+              fileSize: fileRecord.fileSize ?? length,
+              // 添加更多文件信息
+              presignedUrl: fileRecord.presignedUrl,
+              businessType: fileRecord.businessType,
+              businessId: fileRecord.businessId,
+              contentType: fileRecord.contentType,
+              uploadTime: fileRecord.uploadTime,
+              description: fileRecord.description,
+              tags: fileRecord.tags,
+              isPublic: fileRecord.isPublic,
+              status: fileRecord.status,
+            );
+          } else {
+            return FileUploadResult.error(
+              errorCode: int.tryParse(apiResponse?.code ?? '500') ?? 500,
+              errorMessage: apiResponse?.message ??
+                  'Upload failed: Invalid response format',
+            );
+          }
+        } catch (parseError) {
+          // 如果JSON解析失败，尝试作为简单字符串处理（向后兼容）
+          return FileUploadResult.success(
+            fileId: responseBody,
+            fileName: file.path.split('/').last,
+            fileSize: length,
+          );
+        }
+      } else if (streamedResponse.statusCode == 401) {
         return FileUploadResult.error(
           errorCode: 401,
           errorMessage: 'Authentication failed: Invalid or expired token',
         );
       } else {
         return FileUploadResult.error(
-          errorCode: response.statusCode,
+          errorCode: streamedResponse.statusCode,
           errorMessage: responseBody,
         );
       }
@@ -257,8 +301,9 @@ class FileUploadApi {
   /// 参数说明：
   /// - [bytes] - 要上传的字节数据
   /// - [fileName] - 文件名，用于服务器端保存
-  /// - [uploadPath] - 可选的上传路径
-  /// - [metadata] - 可选的元数据
+  /// - [description] - 可选的文件描述
+  /// - [tags] - 可选的标签，JSON字符串格式
+  /// - [isPublic] - 是否公开，默认为 false
   /// - [requireAuth] - 是否需要认证，默认为 true
   ///
   /// 返回：
@@ -275,7 +320,8 @@ class FileUploadApi {
   /// final result = await api.uploadBytes(
   ///   bytes: bytes,
   ///   fileName: 'downloaded_image.jpg',
-  ///   uploadPath: 'images/downloaded'
+  ///   description: '从网络下载的图片',
+  ///   tags: '["downloaded", "image"]'
   /// );
   /// ```
   ///
@@ -287,8 +333,9 @@ class FileUploadApi {
   Future<FileUploadResult> uploadBytes({
     required Uint8List bytes,
     required String fileName,
-    String? uploadPath,
-    Map<String, String>? metadata,
+    String? description,
+    String? tags,
+    bool isPublic = false,
     bool requireAuth = true,
   }) async {
     try {
@@ -314,17 +361,14 @@ class FileUploadApi {
       );
       request.files.add(multipartFile);
 
-      // 添加上传路径
-      if (uploadPath != null) {
-        request.fields['uploadPath'] = uploadPath;
+      // 添加可选参数
+      if (description != null) {
+        request.fields['description'] = description;
       }
-
-      // 添加元数据
-      if (metadata != null) {
-        metadata.forEach((key, value) {
-          request.fields[key] = value;
-        });
+      if (tags != null) {
+        request.fields['tags'] = tags;
       }
+      request.fields['isPublic'] = isPublic.toString();
 
       // 添加认证头 - 使用标准的认证机制
       await _bearerAuth.applyToParams([], request.headers);
@@ -333,24 +377,60 @@ class FileUploadApi {
       request.headers.addAll(apiClient.defaultHeaderMap);
 
       // 发送请求
-      var response = await request.send();
-      var responseBody = await response.stream.bytesToString();
+      var streamedResponse = await request.send();
+      var responseBody = await streamedResponse.stream.bytesToString();
 
-      if (response.statusCode == 200) {
-        return FileUploadResult.success(
-          fileId: responseBody,
-          fileName: fileName,
-          fileSize: bytes.length,
-          uploadPath: uploadPath,
-        );
-      } else if (response.statusCode == 401) {
+      if (streamedResponse.statusCode == 200) {
+        try {
+          // 解析服务器返回的JSON响应
+          final jsonResponse = jsonDecode(responseBody);
+
+          // 使用标准的API响应模型
+          final apiResponse =
+              ApiResponseFileRecordResponse.fromJson(jsonResponse);
+
+          if (apiResponse != null &&
+              apiResponse.success == true &&
+              apiResponse.data != null) {
+            final fileRecord = apiResponse.data!;
+            return FileUploadResult.success(
+              fileId: fileRecord.id?.toString() ?? '',
+              fileName: fileRecord.originalName ?? fileName,
+              fileSize: fileRecord.fileSize ?? bytes.length,
+              // 添加更多文件信息
+              presignedUrl: fileRecord.presignedUrl,
+              businessType: fileRecord.businessType,
+              businessId: fileRecord.businessId,
+              contentType: fileRecord.contentType,
+              uploadTime: fileRecord.uploadTime,
+              description: fileRecord.description,
+              tags: fileRecord.tags,
+              isPublic: fileRecord.isPublic,
+              status: fileRecord.status,
+            );
+          } else {
+            return FileUploadResult.error(
+              errorCode: int.tryParse(apiResponse?.code ?? '500') ?? 500,
+              errorMessage: apiResponse?.message ??
+                  'Upload failed: Invalid response format',
+            );
+          }
+        } catch (parseError) {
+          // 如果JSON解析失败，尝试作为简单字符串处理（向后兼容）
+          return FileUploadResult.success(
+            fileId: responseBody,
+            fileName: fileName,
+            fileSize: bytes.length,
+          );
+        }
+      } else if (streamedResponse.statusCode == 401) {
         return FileUploadResult.error(
           errorCode: 401,
           errorMessage: 'Authentication failed: Invalid or expired token',
         );
       } else {
         return FileUploadResult.error(
-          errorCode: response.statusCode,
+          errorCode: streamedResponse.statusCode,
           errorMessage: responseBody,
         );
       }
@@ -369,8 +449,9 @@ class FileUploadApi {
   ///
   /// 参数说明：
   /// - [files] - 要上传的文件列表
-  /// - [uploadPath] - 可选的上传路径，适用于所有文件
-  /// - [metadata] - 可选的元数据，适用于所有文件
+  /// - [description] - 可选的文件描述，适用于所有文件
+  /// - [tags] - 可选的标签，适用于所有文件
+  /// - [isPublic] - 是否公开，默认为 false
   /// - [requireAuth] - 是否需要认证，默认为 true
   ///
   /// 返回：
@@ -391,8 +472,9 @@ class FileUploadApi {
   ///
   /// final results = await api.uploadMultipleFiles(
   ///   files: files,
-  ///   uploadPath: 'products/gallery',
-  ///   metadata: {'batch': 'product_123'}
+  ///   description: '商品图片',
+  ///   tags: '["product", "gallery"]',
+  ///   isPublic: true
   /// );
   ///
   /// // 统计结果
@@ -407,8 +489,9 @@ class FileUploadApi {
   /// - 所有文件都以二进制形式传输，保持原始数据完整性
   Future<List<FileUploadResult>> uploadMultipleFiles({
     required List<File> files,
-    String? uploadPath,
-    Map<String, String>? metadata,
+    String? description,
+    String? tags,
+    bool isPublic = false,
     bool requireAuth = true,
   }) async {
     var results = <FileUploadResult>[];
@@ -416,8 +499,9 @@ class FileUploadApi {
     for (var file in files) {
       var result = await uploadFile(
         file: file,
-        uploadPath: uploadPath,
-        metadata: metadata,
+        description: description,
+        tags: tags,
+        isPublic: isPublic,
         requireAuth: requireAuth,
       );
       results.add(result);
@@ -476,8 +560,8 @@ class FileUploadApi {
       // 添加默认头
       request.headers.addAll(apiClient.defaultHeaderMap);
 
-      var response = await request.send();
-      return response.statusCode == 200;
+      var streamedResponse = await request.send();
+      return streamedResponse.statusCode == 200;
     } catch (e) {
       return false;
     }
@@ -487,6 +571,7 @@ class FileUploadApi {
 /// 文件上传结果
 ///
 /// 封装文件上传的结果信息，包括成功和失败两种情况
+/// 基于服务器端的 FileRecordResponse 模型设计
 ///
 /// 使用示例：
 /// ```dart
@@ -496,6 +581,9 @@ class FileUploadApi {
 ///   print('File ID: ${result.fileId}');
 ///   print('File Name: ${result.fileName}');
 ///   print('File Size: ${result.fileSize} bytes');
+///   print('File URL: ${result.presignedUrl}');
+///   print('Description: ${result.description}');
+///   print('Tags: ${result.tags}');
 /// } else {
 ///   print('Error: ${result.errorMessage}');
 ///   print('Error Code: ${result.errorCode}');
@@ -509,6 +597,16 @@ class FileUploadResult {
   final String? uploadPath;
   final int? errorCode;
   final String? errorMessage;
+  // 新增字段，支持完整的文件信息
+  final String? presignedUrl;
+  final String? businessType;
+  final String? businessId;
+  final String? contentType;
+  final DateTime? uploadTime;
+  final String? description;
+  final String? tags;
+  final bool? isPublic;
+  final String? status;
 
   /// 私有构造函数，使用工厂方法创建实例
   FileUploadResult._({
@@ -519,6 +617,15 @@ class FileUploadResult {
     this.uploadPath,
     this.errorCode,
     this.errorMessage,
+    this.presignedUrl,
+    this.businessType,
+    this.businessId,
+    this.contentType,
+    this.uploadTime,
+    this.description,
+    this.tags,
+    this.isPublic,
+    this.status,
   });
 
   /// 创建成功结果
@@ -528,6 +635,15 @@ class FileUploadResult {
   /// - [fileName] - 文件名
   /// - [fileSize] - 文件大小（字节）
   /// - [uploadPath] - 上传路径
+  /// - [presignedUrl] - 预签名URL
+  /// - [businessType] - 业务类型
+  /// - [businessId] - 业务ID
+  /// - [contentType] - 内容类型
+  /// - [uploadTime] - 上传时间
+  /// - [description] - 文件描述
+  /// - [tags] - 文件标签
+  /// - [isPublic] - 是否公开
+  /// - [status] - 文件状态
   ///
   /// 使用示例：
   /// ```dart
@@ -535,7 +651,13 @@ class FileUploadResult {
   ///   fileId: 'file_123',
   ///   fileName: 'image.jpg',
   ///   fileSize: 1024,
-  ///   uploadPath: 'images/profile'
+  ///   uploadPath: 'images/profile',
+  ///   presignedUrl: 'https://example.com/file.jpg',
+  ///   businessType: 'product',
+  ///   businessId: 'prod_123',
+  ///   description: '商品图片',
+  ///   tags: '["product", "image"]',
+  ///   isPublic: true
   /// );
   /// ```
   factory FileUploadResult.success({
@@ -543,6 +665,15 @@ class FileUploadResult {
     required String fileName,
     required int fileSize,
     String? uploadPath,
+    String? presignedUrl,
+    String? businessType,
+    String? businessId,
+    String? contentType,
+    DateTime? uploadTime,
+    String? description,
+    String? tags,
+    bool? isPublic,
+    String? status,
   }) {
     return FileUploadResult._(
       isSuccess: true,
@@ -550,6 +681,15 @@ class FileUploadResult {
       fileName: fileName,
       fileSize: fileSize,
       uploadPath: uploadPath,
+      presignedUrl: presignedUrl,
+      businessType: businessType,
+      businessId: businessId,
+      contentType: contentType,
+      uploadTime: uploadTime,
+      description: description,
+      tags: tags,
+      isPublic: isPublic,
+      status: status,
     );
   }
 
@@ -583,7 +723,7 @@ class FileUploadResult {
   @override
   String toString() {
     if (isSuccess) {
-      return 'FileUploadResult.success(fileId: $fileId, fileName: $fileName, fileSize: $fileSize, uploadPath: $uploadPath)';
+      return 'FileUploadResult.success(fileId: $fileId, fileName: $fileName, fileSize: $fileSize, uploadPath: $uploadPath, presignedUrl: $presignedUrl, businessType: $businessType, businessId: $businessId, contentType: $contentType, uploadTime: $uploadTime, description: $description, tags: $tags, isPublic: $isPublic, status: $status)';
     } else {
       return 'FileUploadResult.error(errorCode: $errorCode, errorMessage: $errorMessage)';
     }

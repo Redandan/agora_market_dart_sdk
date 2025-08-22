@@ -47,11 +47,9 @@ class FileUploadExample {
 
       var result = await api.uploadFile(
         file: file,
-        uploadPath: 'images/profile',
-        metadata: {
-          'category': 'profile',
-          'description': 'User profile picture',
-        },
+        description: 'User profile picture',
+        tags: '["profile", "avatar"]',
+        isPublic: false,
         requireAuth: true, // 默认值，可以省略
       );
 
@@ -78,11 +76,9 @@ class FileUploadExample {
       var result = await api.uploadBytes(
         bytes: bytes,
         fileName: 'hello.txt',
-        uploadPath: 'documents',
-        metadata: {
-          'type': 'text',
-          'encoding': 'utf-8',
-        },
+        description: 'Hello text file',
+        tags: '["text", "hello"]',
+        isPublic: true,
       );
 
       if (result.isSuccess) {
@@ -109,11 +105,9 @@ class FileUploadExample {
 
       var results = await api.uploadMultipleFiles(
         files: files,
-        uploadPath: 'documents',
-        metadata: {
-          'batch': 'batch_001',
-          'timestamp': DateTime.now().toIso8601String(),
-        },
+        description: 'Batch upload - batch_001',
+        tags: '["batch", "documents"]',
+        isPublic: false,
       );
 
       print('Batch upload completed:');
@@ -145,7 +139,9 @@ class FileUploadExample {
 
       var result = await api.uploadFile(
         file: file,
-        uploadPath: 'public',
+        description: 'Public information file',
+        tags: '["public", "information"]',
+        isPublic: true,
         requireAuth: false, // 不需要认证
       );
 
