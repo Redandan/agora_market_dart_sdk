@@ -121,6 +121,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getTransactionListByAdmin**](doc//DefaultApi.md#gettransactionlistbyadmin) | **POST** /transactions/admin/search | 管理員查看帳變記錄
 *DefaultApi* | [**getUserCart**](doc//DefaultApi.md#getusercart) | **GET** /api/cart | 獲取用戶購物車
 *DefaultApi* | [**getUserPostStatistics**](doc//DefaultApi.md#getuserpoststatistics) | **GET** /api/posts/user/{userId}/statistics | 獲取用戶貼文統計
+*DefaultApi* | [**getValidationRules**](doc//DefaultApi.md#getvalidationrules) | **GET** /api/product-validation-example/rules | 获取验证规则
 *DefaultApi* | [**getWithdraw**](doc//DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 *DefaultApi* | [**getWithdrawHistory**](doc//DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
 *DefaultApi* | [**likePost**](doc//DefaultApi.md#likepost) | **POST** /api/posts/{id}/like | 點讚貼文
@@ -139,10 +140,13 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**setFeatured**](doc//DefaultApi.md#setfeatured) | **POST** /api/admin/posts/{id}/featured | 設置精選貼文
 *DefaultApi* | [**setTop**](doc//DefaultApi.md#settop) | **POST** /api/admin/posts/{id}/top | 設置置頂貼文
 *DefaultApi* | [**sharePost**](doc//DefaultApi.md#sharepost) | **POST** /api/posts/{id}/share | 分享貼文
+*DefaultApi* | [**testUrlValidation**](doc//DefaultApi.md#testurlvalidation) | **POST** /api/product-validation-example/test-url-validation | 测试URL验证
 *DefaultApi* | [**unlikePost**](doc//DefaultApi.md#unlikepost) | **POST** /api/posts/{id}/unlike | 取消點讚
 *DefaultApi* | [**updateCartItem**](doc//DefaultApi.md#updatecartitem) | **PUT** /api/cart/{cartItemId} | 更新購物車項目
 *DefaultApi* | [**updatePost**](doc//DefaultApi.md#updatepost) | **PUT** /api/posts | 更新貼文
+*DefaultApi* | [**validateImageUrls**](doc//DefaultApi.md#validateimageurls) | **POST** /api/product-validation-example/validate-urls | 验证图片URL格式
 *DefaultApi* | [**validatePostalCode**](doc//DefaultApi.md#validatepostalcode) | **GET** /api/logistics/postal-codes/{postalCode}/validate | 郵遞區號驗證
+*DefaultApi* | [**validateUpdateRequest**](doc//DefaultApi.md#validateupdaterequest) | **POST** /api/product-validation-example/validate-update-request | 验证商品更新请求
 *AdminDeliveryApi* | [**assignDeliveryer**](doc//AdminDeliveryApi.md#assigndeliveryer) | **POST** /admin/delivery/orders/{orderId}/assign | 手動分配配送員
 *AdminDeliveryApi* | [**getDeliveryOrderDetail**](doc//AdminDeliveryApi.md#getdeliveryorderdetail) | **GET** /admin/delivery/orders/{orderId} | 查看配送訂單詳情
 *AdminDeliveryApi* | [**getDeliveryStatistics**](doc//AdminDeliveryApi.md#getdeliverystatistics) | **GET** /admin/delivery/statistics | 配送統計報告

@@ -20,6 +20,7 @@ class ProductUpdateParam {
     this.description,
     this.category,
     this.imageUrls = const {},
+    this.fileIds = const [],
     this.longitude,
     this.latitude,
     this.status,
@@ -91,6 +92,9 @@ class ProductUpdateParam {
 
   /// 商品圖片URL集合
   Set<String> imageUrls;
+
+  /// 文件記錄ID列表（用於關聯已上傳的文件）
+  List<int> fileIds;
 
   /// 取件地址經度
   ///
@@ -224,6 +228,7 @@ class ProductUpdateParam {
     other.description == description &&
     other.category == category &&
     _deepEquality.equals(other.imageUrls, imageUrls) &&
+    _deepEquality.equals(other.fileIds, fileIds) &&
     other.longitude == longitude &&
     other.latitude == latitude &&
     other.status == status &&
@@ -250,6 +255,7 @@ class ProductUpdateParam {
     (description == null ? 0 : description!.hashCode) +
     (category == null ? 0 : category!.hashCode) +
     (imageUrls.hashCode) +
+    (fileIds.hashCode) +
     (longitude == null ? 0 : longitude!.hashCode) +
     (latitude == null ? 0 : latitude!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
@@ -267,7 +273,7 @@ class ProductUpdateParam {
     (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode);
 
   @override
-  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, status=$status, shippingFee=$shippingFee, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, shippingFees=$shippingFees, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold]';
+  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, fileIds=$fileIds, longitude=$longitude, latitude=$latitude, status=$status, shippingFee=$shippingFee, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, shippingFees=$shippingFees, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -298,6 +304,7 @@ class ProductUpdateParam {
       json[r'category'] = null;
     }
       json[r'imageUrls'] = this.imageUrls.toList(growable: false);
+      json[r'fileIds'] = this.fileIds;
     if (this.longitude != null) {
       json[r'longitude'] = this.longitude;
     } else {
@@ -388,6 +395,9 @@ class ProductUpdateParam {
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
             : const {},
+        fileIds: json[r'fileIds'] is Iterable
+            ? (json[r'fileIds'] as Iterable).cast<int>().toList(growable: false)
+            : const [],
         longitude: mapValueOfType<double>(json, r'longitude'),
         latitude: mapValueOfType<double>(json, r'latitude'),
         status: ProductStatusEnum.fromJson(json[r'status']),
