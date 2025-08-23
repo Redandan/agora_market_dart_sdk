@@ -17,6 +17,8 @@ class UserProfileUpdateParam {
     this.phone,
     this.email,
     this.avatar,
+    this.avatarFileId,
+    this.avatarUpdate,
   });
 
   /// 姓名
@@ -55,12 +57,31 @@ class UserProfileUpdateParam {
   ///
   String? avatar;
 
+  /// 頭像對應的文件記錄ID（用於驗證頭像URL的有效性）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? avatarFileId;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? avatarUpdate;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserProfileUpdateParam &&
     other.name == name &&
     other.phone == phone &&
     other.email == email &&
-    other.avatar == avatar;
+    other.avatar == avatar &&
+    other.avatarFileId == avatarFileId &&
+    other.avatarUpdate == avatarUpdate;
 
   @override
   int get hashCode =>
@@ -68,10 +89,12 @@ class UserProfileUpdateParam {
     (name == null ? 0 : name!.hashCode) +
     (phone == null ? 0 : phone!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
-    (avatar == null ? 0 : avatar!.hashCode);
+    (avatar == null ? 0 : avatar!.hashCode) +
+    (avatarFileId == null ? 0 : avatarFileId!.hashCode) +
+    (avatarUpdate == null ? 0 : avatarUpdate!.hashCode);
 
   @override
-  String toString() => 'UserProfileUpdateParam[name=$name, phone=$phone, email=$email, avatar=$avatar]';
+  String toString() => 'UserProfileUpdateParam[name=$name, phone=$phone, email=$email, avatar=$avatar, avatarFileId=$avatarFileId, avatarUpdate=$avatarUpdate]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -94,6 +117,16 @@ class UserProfileUpdateParam {
       json[r'avatar'] = this.avatar;
     } else {
       json[r'avatar'] = null;
+    }
+    if (this.avatarFileId != null) {
+      json[r'avatarFileId'] = this.avatarFileId;
+    } else {
+      json[r'avatarFileId'] = null;
+    }
+    if (this.avatarUpdate != null) {
+      json[r'avatarUpdate'] = this.avatarUpdate;
+    } else {
+      json[r'avatarUpdate'] = null;
     }
     return json;
   }
@@ -121,6 +154,8 @@ class UserProfileUpdateParam {
         phone: mapValueOfType<String>(json, r'phone'),
         email: mapValueOfType<String>(json, r'email'),
         avatar: mapValueOfType<String>(json, r'avatar'),
+        avatarFileId: mapValueOfType<int>(json, r'avatarFileId'),
+        avatarUpdate: mapValueOfType<bool>(json, r'avatarUpdate'),
       );
     }
     return null;

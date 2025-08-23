@@ -13,26 +13,18 @@ part of openapi.api;
 class PageCustomerIssue {
   /// Returns a new [PageCustomerIssue] instance.
   PageCustomerIssue({
-    this.totalPages,
     this.totalElements,
+    this.totalPages,
     this.sort,
-    this.numberOfElements,
-    this.first,
-    this.last,
     this.pageable,
+    this.numberOfElements,
+    this.last,
+    this.first,
     this.size,
     this.content = const [],
     this.number,
     this.empty,
   });
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? totalPages;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -48,7 +40,23 @@ class PageCustomerIssue {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  int? totalPages;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   SortObject? sort;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  PageableObject? pageable;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -64,14 +72,6 @@ class PageCustomerIssue {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? first;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? last;
 
   ///
@@ -80,7 +80,7 @@ class PageCustomerIssue {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PageableObject? pageable;
+  bool? first;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -110,13 +110,13 @@ class PageCustomerIssue {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PageCustomerIssue &&
-    other.totalPages == totalPages &&
     other.totalElements == totalElements &&
+    other.totalPages == totalPages &&
     other.sort == sort &&
-    other.numberOfElements == numberOfElements &&
-    other.first == first &&
-    other.last == last &&
     other.pageable == pageable &&
+    other.numberOfElements == numberOfElements &&
+    other.last == last &&
+    other.first == first &&
     other.size == size &&
     _deepEquality.equals(other.content, content) &&
     other.number == number &&
@@ -125,57 +125,57 @@ class PageCustomerIssue {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalPages == null ? 0 : totalPages!.hashCode) +
     (totalElements == null ? 0 : totalElements!.hashCode) +
+    (totalPages == null ? 0 : totalPages!.hashCode) +
     (sort == null ? 0 : sort!.hashCode) +
-    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
-    (first == null ? 0 : first!.hashCode) +
-    (last == null ? 0 : last!.hashCode) +
     (pageable == null ? 0 : pageable!.hashCode) +
+    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
+    (last == null ? 0 : last!.hashCode) +
+    (first == null ? 0 : first!.hashCode) +
     (size == null ? 0 : size!.hashCode) +
     (content.hashCode) +
     (number == null ? 0 : number!.hashCode) +
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageCustomerIssue[totalPages=$totalPages, totalElements=$totalElements, sort=$sort, numberOfElements=$numberOfElements, first=$first, last=$last, pageable=$pageable, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'PageCustomerIssue[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, pageable=$pageable, numberOfElements=$numberOfElements, last=$last, first=$first, size=$size, content=$content, number=$number, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.totalPages != null) {
-      json[r'totalPages'] = this.totalPages;
-    } else {
-      json[r'totalPages'] = null;
-    }
     if (this.totalElements != null) {
       json[r'totalElements'] = this.totalElements;
     } else {
       json[r'totalElements'] = null;
+    }
+    if (this.totalPages != null) {
+      json[r'totalPages'] = this.totalPages;
+    } else {
+      json[r'totalPages'] = null;
     }
     if (this.sort != null) {
       json[r'sort'] = this.sort;
     } else {
       json[r'sort'] = null;
     }
+    if (this.pageable != null) {
+      json[r'pageable'] = this.pageable;
+    } else {
+      json[r'pageable'] = null;
+    }
     if (this.numberOfElements != null) {
       json[r'numberOfElements'] = this.numberOfElements;
     } else {
       json[r'numberOfElements'] = null;
-    }
-    if (this.first != null) {
-      json[r'first'] = this.first;
-    } else {
-      json[r'first'] = null;
     }
     if (this.last != null) {
       json[r'last'] = this.last;
     } else {
       json[r'last'] = null;
     }
-    if (this.pageable != null) {
-      json[r'pageable'] = this.pageable;
+    if (this.first != null) {
+      json[r'first'] = this.first;
     } else {
-      json[r'pageable'] = null;
+      json[r'first'] = null;
     }
     if (this.size != null) {
       json[r'size'] = this.size;
@@ -215,13 +215,13 @@ class PageCustomerIssue {
       }());
 
       return PageCustomerIssue(
-        totalPages: mapValueOfType<int>(json, r'totalPages'),
         totalElements: mapValueOfType<int>(json, r'totalElements'),
+        totalPages: mapValueOfType<int>(json, r'totalPages'),
         sort: SortObject.fromJson(json[r'sort']),
-        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
-        first: mapValueOfType<bool>(json, r'first'),
-        last: mapValueOfType<bool>(json, r'last'),
         pageable: PageableObject.fromJson(json[r'pageable']),
+        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
+        last: mapValueOfType<bool>(json, r'last'),
+        first: mapValueOfType<bool>(json, r'first'),
         size: mapValueOfType<int>(json, r'size'),
         content: CustomerIssue.listFromJson(json[r'content']),
         number: mapValueOfType<int>(json, r'number'),
