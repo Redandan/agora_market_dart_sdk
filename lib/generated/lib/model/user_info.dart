@@ -26,6 +26,7 @@ class UserInfo {
     this.storeName,
     this.ambassadorName,
     this.displayDeliveryerName,
+    this.avatar,
   });
 
   /// 用戶ID
@@ -145,6 +146,15 @@ class UserInfo {
   ///
   String? displayDeliveryerName;
 
+  /// 頭像URL
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? avatar;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserInfo &&
     other.id == id &&
@@ -159,7 +169,8 @@ class UserInfo {
     other.queryTime == queryTime &&
     other.storeName == storeName &&
     other.ambassadorName == ambassadorName &&
-    other.displayDeliveryerName == displayDeliveryerName;
+    other.displayDeliveryerName == displayDeliveryerName &&
+    other.avatar == avatar;
 
   @override
   int get hashCode =>
@@ -176,10 +187,11 @@ class UserInfo {
     (queryTime == null ? 0 : queryTime!.hashCode) +
     (storeName == null ? 0 : storeName!.hashCode) +
     (ambassadorName == null ? 0 : ambassadorName!.hashCode) +
-    (displayDeliveryerName == null ? 0 : displayDeliveryerName!.hashCode);
+    (displayDeliveryerName == null ? 0 : displayDeliveryerName!.hashCode) +
+    (avatar == null ? 0 : avatar!.hashCode);
 
   @override
-  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, stackingBalance=$stackingBalance, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName]';
+  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, stackingBalance=$stackingBalance, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -248,6 +260,11 @@ class UserInfo {
     } else {
       json[r'displayDeliveryerName'] = null;
     }
+    if (this.avatar != null) {
+      json[r'avatar'] = this.avatar;
+    } else {
+      json[r'avatar'] = null;
+    }
     return json;
   }
 
@@ -283,6 +300,7 @@ class UserInfo {
         storeName: mapValueOfType<String>(json, r'storeName'),
         ambassadorName: mapValueOfType<String>(json, r'ambassadorName'),
         displayDeliveryerName: mapValueOfType<String>(json, r'displayDeliveryerName'),
+        avatar: mapValueOfType<String>(json, r'avatar'),
       );
     }
     return null;
