@@ -25,6 +25,7 @@ class FileRecordResponse {
     this.fileSizeFormatted,
     this.contentType,
     this.uploaderId,
+    this.uploaderName,
     this.uploadTime,
     this.lastUpdateTime,
     this.status,
@@ -143,6 +144,15 @@ class FileRecordResponse {
   ///
   String? uploaderId;
 
+  /// 上傳者用戶名
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? uploaderName;
+
   /// 上傳時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -229,6 +239,7 @@ class FileRecordResponse {
     other.fileSizeFormatted == fileSizeFormatted &&
     other.contentType == contentType &&
     other.uploaderId == uploaderId &&
+    other.uploaderName == uploaderName &&
     other.uploadTime == uploadTime &&
     other.lastUpdateTime == lastUpdateTime &&
     other.status == status &&
@@ -253,6 +264,7 @@ class FileRecordResponse {
     (fileSizeFormatted == null ? 0 : fileSizeFormatted!.hashCode) +
     (contentType == null ? 0 : contentType!.hashCode) +
     (uploaderId == null ? 0 : uploaderId!.hashCode) +
+    (uploaderName == null ? 0 : uploaderName!.hashCode) +
     (uploadTime == null ? 0 : uploadTime!.hashCode) +
     (lastUpdateTime == null ? 0 : lastUpdateTime!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
@@ -263,7 +275,7 @@ class FileRecordResponse {
     (needsUrlRefresh == null ? 0 : needsUrlRefresh!.hashCode);
 
   @override
-  String toString() => 'FileRecordResponse[id=$id, fileName=$fileName, originalName=$originalName, filePath=$filePath, presignedUrl=$presignedUrl, urlExpiryTime=$urlExpiryTime, businessType=$businessType, businessId=$businessId, fileSize=$fileSize, fileSizeFormatted=$fileSizeFormatted, contentType=$contentType, uploaderId=$uploaderId, uploadTime=$uploadTime, lastUpdateTime=$lastUpdateTime, status=$status, description=$description, tags=$tags, isPublic=$isPublic, isUrlExpired=$isUrlExpired, needsUrlRefresh=$needsUrlRefresh]';
+  String toString() => 'FileRecordResponse[id=$id, fileName=$fileName, originalName=$originalName, filePath=$filePath, presignedUrl=$presignedUrl, urlExpiryTime=$urlExpiryTime, businessType=$businessType, businessId=$businessId, fileSize=$fileSize, fileSizeFormatted=$fileSizeFormatted, contentType=$contentType, uploaderId=$uploaderId, uploaderName=$uploaderName, uploadTime=$uploadTime, lastUpdateTime=$lastUpdateTime, status=$status, description=$description, tags=$tags, isPublic=$isPublic, isUrlExpired=$isUrlExpired, needsUrlRefresh=$needsUrlRefresh]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -326,6 +338,11 @@ class FileRecordResponse {
       json[r'uploaderId'] = this.uploaderId;
     } else {
       json[r'uploaderId'] = null;
+    }
+    if (this.uploaderName != null) {
+      json[r'uploaderName'] = this.uploaderName;
+    } else {
+      json[r'uploaderName'] = null;
     }
     if (this.uploadTime != null) {
       json[r'uploadTime'] = this.uploadTime!.toUtc().toIso8601String();
@@ -401,6 +418,7 @@ class FileRecordResponse {
         fileSizeFormatted: mapValueOfType<String>(json, r'fileSizeFormatted'),
         contentType: mapValueOfType<String>(json, r'contentType'),
         uploaderId: mapValueOfType<String>(json, r'uploaderId'),
+        uploaderName: mapValueOfType<String>(json, r'uploaderName'),
         uploadTime: mapDateTime(json, r'uploadTime', r''),
         lastUpdateTime: mapDateTime(json, r'lastUpdateTime', r''),
         status: mapValueOfType<String>(json, r'status'),
