@@ -16,9 +16,9 @@ class PageRecharge {
     this.totalPages,
     this.totalElements,
     this.sort,
+    this.numberOfElements,
     this.first,
     this.last,
-    this.numberOfElements,
     this.pageable,
     this.size,
     this.content = const [],
@@ -56,6 +56,14 @@ class PageRecharge {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  int? numberOfElements;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? first;
 
   ///
@@ -65,14 +73,6 @@ class PageRecharge {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? last;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? numberOfElements;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -113,9 +113,9 @@ class PageRecharge {
     other.totalPages == totalPages &&
     other.totalElements == totalElements &&
     other.sort == sort &&
+    other.numberOfElements == numberOfElements &&
     other.first == first &&
     other.last == last &&
-    other.numberOfElements == numberOfElements &&
     other.pageable == pageable &&
     other.size == size &&
     _deepEquality.equals(other.content, content) &&
@@ -128,9 +128,9 @@ class PageRecharge {
     (totalPages == null ? 0 : totalPages!.hashCode) +
     (totalElements == null ? 0 : totalElements!.hashCode) +
     (sort == null ? 0 : sort!.hashCode) +
+    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
     (first == null ? 0 : first!.hashCode) +
     (last == null ? 0 : last!.hashCode) +
-    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
     (pageable == null ? 0 : pageable!.hashCode) +
     (size == null ? 0 : size!.hashCode) +
     (content.hashCode) +
@@ -138,7 +138,7 @@ class PageRecharge {
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageRecharge[totalPages=$totalPages, totalElements=$totalElements, sort=$sort, first=$first, last=$last, numberOfElements=$numberOfElements, pageable=$pageable, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'PageRecharge[totalPages=$totalPages, totalElements=$totalElements, sort=$sort, numberOfElements=$numberOfElements, first=$first, last=$last, pageable=$pageable, size=$size, content=$content, number=$number, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -157,6 +157,11 @@ class PageRecharge {
     } else {
       json[r'sort'] = null;
     }
+    if (this.numberOfElements != null) {
+      json[r'numberOfElements'] = this.numberOfElements;
+    } else {
+      json[r'numberOfElements'] = null;
+    }
     if (this.first != null) {
       json[r'first'] = this.first;
     } else {
@@ -166,11 +171,6 @@ class PageRecharge {
       json[r'last'] = this.last;
     } else {
       json[r'last'] = null;
-    }
-    if (this.numberOfElements != null) {
-      json[r'numberOfElements'] = this.numberOfElements;
-    } else {
-      json[r'numberOfElements'] = null;
     }
     if (this.pageable != null) {
       json[r'pageable'] = this.pageable;
@@ -218,9 +218,9 @@ class PageRecharge {
         totalPages: mapValueOfType<int>(json, r'totalPages'),
         totalElements: mapValueOfType<int>(json, r'totalElements'),
         sort: SortObject.fromJson(json[r'sort']),
+        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
         first: mapValueOfType<bool>(json, r'first'),
         last: mapValueOfType<bool>(json, r'last'),
-        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
         pageable: PageableObject.fromJson(json[r'pageable']),
         size: mapValueOfType<int>(json, r'size'),
         content: Recharge.listFromJson(json[r'content']),
