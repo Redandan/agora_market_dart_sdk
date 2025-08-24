@@ -508,6 +508,8 @@ class ApiClient {
           return StoreAnalyticsDTO.fromJson(value);
         case 'StoreCreateParam':
           return StoreCreateParam.fromJson(value);
+        case 'StoreImageUploadParam':
+          return StoreImageUploadParam.fromJson(value);
         case 'StorePostStatistics':
           return StorePostStatistics.fromJson(value);
         case 'StoreProductSearchParam':

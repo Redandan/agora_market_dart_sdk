@@ -218,6 +218,7 @@ part 'model/staking_status_enum.dart';
 part 'model/store.dart';
 part 'model/store_analytics_dto.dart';
 part 'model/store_create_param.dart';
+part 'model/store_image_upload_param.dart';
 part 'model/store_post_statistics.dart';
 part 'model/store_product_search_param.dart';
 part 'model/store_response_dto.dart';

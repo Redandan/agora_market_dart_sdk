@@ -20,7 +20,11 @@ class StoreUpdateParam {
     this.email,
     this.businessHours,
     this.logoUrl,
+    this.logoFileId,
+    this.logoDescription,
     this.coverImageUrl,
+    this.coverFileId,
+    this.coverDescription,
     this.isActive,
     this.supportedShippingCompanies = const [],
     this.defaultShippingFee,
@@ -95,6 +99,24 @@ class StoreUpdateParam {
   ///
   String? logoUrl;
 
+  /// Logo对应的文件记录ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? logoFileId;
+
+  /// Logo描述
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? logoDescription;
+
   /// 商店封面圖片 URL
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -103,6 +125,24 @@ class StoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? coverImageUrl;
+
+  /// 封面图片对应的文件记录ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? coverFileId;
+
+  /// 封面图片描述
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? coverDescription;
 
   /// 商店開關
   ///
@@ -188,7 +228,11 @@ class StoreUpdateParam {
     other.email == email &&
     other.businessHours == businessHours &&
     other.logoUrl == logoUrl &&
+    other.logoFileId == logoFileId &&
+    other.logoDescription == logoDescription &&
     other.coverImageUrl == coverImageUrl &&
+    other.coverFileId == coverFileId &&
+    other.coverDescription == coverDescription &&
     other.isActive == isActive &&
     _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
     other.defaultShippingFee == defaultShippingFee &&
@@ -209,7 +253,11 @@ class StoreUpdateParam {
     (email == null ? 0 : email!.hashCode) +
     (businessHours == null ? 0 : businessHours!.hashCode) +
     (logoUrl == null ? 0 : logoUrl!.hashCode) +
+    (logoFileId == null ? 0 : logoFileId!.hashCode) +
+    (logoDescription == null ? 0 : logoDescription!.hashCode) +
     (coverImageUrl == null ? 0 : coverImageUrl!.hashCode) +
+    (coverFileId == null ? 0 : coverFileId!.hashCode) +
+    (coverDescription == null ? 0 : coverDescription!.hashCode) +
     (isActive == null ? 0 : isActive!.hashCode) +
     (supportedShippingCompanies.hashCode) +
     (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
@@ -221,7 +269,7 @@ class StoreUpdateParam {
     (shippingDateRange == null ? 0 : shippingDateRange!.hashCode);
 
   @override
-  String toString() => 'StoreUpdateParam[name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, coverImageUrl=$coverImageUrl, isActive=$isActive, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange]';
+  String toString() => 'StoreUpdateParam[name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, logoFileId=$logoFileId, logoDescription=$logoDescription, coverImageUrl=$coverImageUrl, coverFileId=$coverFileId, coverDescription=$coverDescription, isActive=$isActive, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -260,10 +308,30 @@ class StoreUpdateParam {
     } else {
       json[r'logoUrl'] = null;
     }
+    if (this.logoFileId != null) {
+      json[r'logoFileId'] = this.logoFileId;
+    } else {
+      json[r'logoFileId'] = null;
+    }
+    if (this.logoDescription != null) {
+      json[r'logoDescription'] = this.logoDescription;
+    } else {
+      json[r'logoDescription'] = null;
+    }
     if (this.coverImageUrl != null) {
       json[r'coverImageUrl'] = this.coverImageUrl;
     } else {
       json[r'coverImageUrl'] = null;
+    }
+    if (this.coverFileId != null) {
+      json[r'coverFileId'] = this.coverFileId;
+    } else {
+      json[r'coverFileId'] = null;
+    }
+    if (this.coverDescription != null) {
+      json[r'coverDescription'] = this.coverDescription;
+    } else {
+      json[r'coverDescription'] = null;
     }
     if (this.isActive != null) {
       json[r'isActive'] = this.isActive;
@@ -335,7 +403,11 @@ class StoreUpdateParam {
         email: mapValueOfType<String>(json, r'email'),
         businessHours: mapValueOfType<String>(json, r'businessHours'),
         logoUrl: mapValueOfType<String>(json, r'logoUrl'),
+        logoFileId: mapValueOfType<int>(json, r'logoFileId'),
+        logoDescription: mapValueOfType<String>(json, r'logoDescription'),
         coverImageUrl: mapValueOfType<String>(json, r'coverImageUrl'),
+        coverFileId: mapValueOfType<int>(json, r'coverFileId'),
+        coverDescription: mapValueOfType<String>(json, r'coverDescription'),
         isActive: mapValueOfType<bool>(json, r'isActive'),
         supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']),
         defaultShippingFee: mapValueOfType<double>(json, r'defaultShippingFee'),

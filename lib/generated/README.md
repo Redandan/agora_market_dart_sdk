@@ -328,9 +328,13 @@ Class | Method | HTTP request | Description
 *StoresApi* | [**getShippingConfig**](doc//StoresApi.md#getshippingconfig) | **GET** /stores/shipping-config | 獲取商店物流設定
 *StoresApi* | [**getStoreAnalytics**](doc//StoresApi.md#getstoreanalytics) | **GET** /stores/analytics | 獲取商店分析數據
 *StoresApi* | [**getStoreBySellerId**](doc//StoresApi.md#getstorebysellerid) | **GET** /stores/{sellerId} | 根據賣家ID獲取商店信息
+*StoresApi* | [**removeStoreCover**](doc//StoresApi.md#removestorecover) | **DELETE** /stores/{storeId}/cover | 移除商店封面圖片
+*StoresApi* | [**removeStoreLogo**](doc//StoresApi.md#removestorelogo) | **DELETE** /stores/{storeId}/logo | 移除商店Logo
 *StoresApi* | [**searchMyStoreProducts**](doc//StoresApi.md#searchmystoreproducts) | **POST** /stores/products/search | 搜索我的商店商品
 *StoresApi* | [**updateShippingConfig**](doc//StoresApi.md#updateshippingconfig) | **POST** /stores/shipping-config | 更新商店物流設定
 *StoresApi* | [**updateStore**](doc//StoresApi.md#updatestore) | **POST** /stores/update | 更新商店
+*StoresApi* | [**uploadStoreCover**](doc//StoresApi.md#uploadstorecover) | **POST** /stores/{storeId}/cover/upload | 上傳商店封面圖片
+*StoresApi* | [**uploadStoreLogo**](doc//StoresApi.md#uploadstorelogo) | **POST** /stores/{storeId}/logo/upload | 上傳商店Logo
 *TestApi* | [**generateAutoReplyTestData**](doc//TestApi.md#generateautoreplytestdata) | **POST** /test/auto-reply | 生成自動回復測試數據
 *TestApi* | [**generateDeliveryAcceptOrderTestData**](doc//TestApi.md#generatedeliveryacceptordertestdata) | **POST** /test/delivery-accept-order | 生成配送員接單測試數據
 *TestApi* | [**generateLogisticsOrder**](doc//TestApi.md#generatelogisticsorder) | **POST** /test/logistics | 
@@ -516,6 +520,7 @@ Class | Method | HTTP request | Description
  - [Store](doc//Store.md)
  - [StoreAnalyticsDTO](doc//StoreAnalyticsDTO.md)
  - [StoreCreateParam](doc//StoreCreateParam.md)
+ - [StoreImageUploadParam](doc//StoreImageUploadParam.md)
  - [StorePostStatistics](doc//StorePostStatistics.md)
  - [StoreProductSearchParam](doc//StoreProductSearchParam.md)
  - [StoreResponseDTO](doc//StoreResponseDTO.md)
