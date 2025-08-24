@@ -488,10 +488,16 @@ class ApiClient {
           return SalesStats.fromJson(value);
         case 'ScheduledTaskResponse':
           return ScheduledTaskResponse.fromJson(value);
+        case 'ShippingAddress':
+          return ShippingAddress.fromJson(value);
         case 'ShippingAddressOption':
           return ShippingAddressOption.fromJson(value);
         case 'ShippingCompanyEnum':
           return ShippingCompanyEnumTypeTransformer().decode(value);
+        case 'ShippingOptions':
+          return ShippingOptions.fromJson(value);
+        case 'ShippingServiceGroup':
+          return ShippingServiceGroup.fromJson(value);
         case 'SmartReplySettings':
           return SmartReplySettings.fromJson(value);
         case 'SortObject':

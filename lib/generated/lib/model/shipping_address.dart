@@ -10,196 +10,183 @@
 
 part of openapi.api;
 
-class PageCustomerIssue {
-  /// Returns a new [PageCustomerIssue] instance.
-  PageCustomerIssue({
-    this.totalElements,
-    this.totalPages,
-    this.sort,
-    this.pageable,
-    this.numberOfElements,
-    this.first,
-    this.last,
-    this.size,
-    this.content = const [],
-    this.number,
-    this.empty,
+class ShippingAddress {
+  /// Returns a new [ShippingAddress] instance.
+  ShippingAddress({
+    this.addressId,
+    this.recipientName,
+    this.recipientPhone,
+    this.fullAddress,
+    this.storeName,
+    this.storeAddress,
+    this.isAvailable,
+    this.isDefault,
+    this.remark,
   });
 
+  /// 地址ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalElements;
+  int? addressId;
 
+  /// 收件人姓名
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalPages;
+  String? recipientName;
 
+  /// 收件人電話
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SortObject? sort;
+  String? recipientPhone;
 
+  /// 完整地址
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PageableObject? pageable;
+  String? fullAddress;
 
+  /// 門市名稱（便利商店取件用）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? numberOfElements;
+  String? storeName;
 
+  /// 門市地址（便利商店取件用）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? first;
+  String? storeAddress;
 
+  /// 是否可用
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? last;
+  bool? isAvailable;
 
+  /// 是否為預設地址
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? size;
+  bool? isDefault;
 
-  List<CustomerIssue> content;
-
+  /// 備註
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? number;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? empty;
+  String? remark;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageCustomerIssue &&
-    other.totalElements == totalElements &&
-    other.totalPages == totalPages &&
-    other.sort == sort &&
-    other.pageable == pageable &&
-    other.numberOfElements == numberOfElements &&
-    other.first == first &&
-    other.last == last &&
-    other.size == size &&
-    _deepEquality.equals(other.content, content) &&
-    other.number == number &&
-    other.empty == empty;
+  bool operator ==(Object other) => identical(this, other) || other is ShippingAddress &&
+    other.addressId == addressId &&
+    other.recipientName == recipientName &&
+    other.recipientPhone == recipientPhone &&
+    other.fullAddress == fullAddress &&
+    other.storeName == storeName &&
+    other.storeAddress == storeAddress &&
+    other.isAvailable == isAvailable &&
+    other.isDefault == isDefault &&
+    other.remark == remark;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalElements == null ? 0 : totalElements!.hashCode) +
-    (totalPages == null ? 0 : totalPages!.hashCode) +
-    (sort == null ? 0 : sort!.hashCode) +
-    (pageable == null ? 0 : pageable!.hashCode) +
-    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
-    (first == null ? 0 : first!.hashCode) +
-    (last == null ? 0 : last!.hashCode) +
-    (size == null ? 0 : size!.hashCode) +
-    (content.hashCode) +
-    (number == null ? 0 : number!.hashCode) +
-    (empty == null ? 0 : empty!.hashCode);
+    (addressId == null ? 0 : addressId!.hashCode) +
+    (recipientName == null ? 0 : recipientName!.hashCode) +
+    (recipientPhone == null ? 0 : recipientPhone!.hashCode) +
+    (fullAddress == null ? 0 : fullAddress!.hashCode) +
+    (storeName == null ? 0 : storeName!.hashCode) +
+    (storeAddress == null ? 0 : storeAddress!.hashCode) +
+    (isAvailable == null ? 0 : isAvailable!.hashCode) +
+    (isDefault == null ? 0 : isDefault!.hashCode) +
+    (remark == null ? 0 : remark!.hashCode);
 
   @override
-  String toString() => 'PageCustomerIssue[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, pageable=$pageable, numberOfElements=$numberOfElements, first=$first, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'ShippingAddress[addressId=$addressId, recipientName=$recipientName, recipientPhone=$recipientPhone, fullAddress=$fullAddress, storeName=$storeName, storeAddress=$storeAddress, isAvailable=$isAvailable, isDefault=$isDefault, remark=$remark]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.totalElements != null) {
-      json[r'totalElements'] = this.totalElements;
+    if (this.addressId != null) {
+      json[r'addressId'] = this.addressId;
     } else {
-      json[r'totalElements'] = null;
+      json[r'addressId'] = null;
     }
-    if (this.totalPages != null) {
-      json[r'totalPages'] = this.totalPages;
+    if (this.recipientName != null) {
+      json[r'recipientName'] = this.recipientName;
     } else {
-      json[r'totalPages'] = null;
+      json[r'recipientName'] = null;
     }
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.recipientPhone != null) {
+      json[r'recipientPhone'] = this.recipientPhone;
     } else {
-      json[r'sort'] = null;
+      json[r'recipientPhone'] = null;
     }
-    if (this.pageable != null) {
-      json[r'pageable'] = this.pageable;
+    if (this.fullAddress != null) {
+      json[r'fullAddress'] = this.fullAddress;
     } else {
-      json[r'pageable'] = null;
+      json[r'fullAddress'] = null;
     }
-    if (this.numberOfElements != null) {
-      json[r'numberOfElements'] = this.numberOfElements;
+    if (this.storeName != null) {
+      json[r'storeName'] = this.storeName;
     } else {
-      json[r'numberOfElements'] = null;
+      json[r'storeName'] = null;
     }
-    if (this.first != null) {
-      json[r'first'] = this.first;
+    if (this.storeAddress != null) {
+      json[r'storeAddress'] = this.storeAddress;
     } else {
-      json[r'first'] = null;
+      json[r'storeAddress'] = null;
     }
-    if (this.last != null) {
-      json[r'last'] = this.last;
+    if (this.isAvailable != null) {
+      json[r'isAvailable'] = this.isAvailable;
     } else {
-      json[r'last'] = null;
+      json[r'isAvailable'] = null;
     }
-    if (this.size != null) {
-      json[r'size'] = this.size;
+    if (this.isDefault != null) {
+      json[r'isDefault'] = this.isDefault;
     } else {
-      json[r'size'] = null;
+      json[r'isDefault'] = null;
     }
-      json[r'content'] = this.content;
-    if (this.number != null) {
-      json[r'number'] = this.number;
+    if (this.remark != null) {
+      json[r'remark'] = this.remark;
     } else {
-      json[r'number'] = null;
-    }
-    if (this.empty != null) {
-      json[r'empty'] = this.empty;
-    } else {
-      json[r'empty'] = null;
+      json[r'remark'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageCustomerIssue] instance and imports its values from
+  /// Returns a new [ShippingAddress] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageCustomerIssue? fromJson(dynamic value) {
+  static ShippingAddress? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -208,34 +195,32 @@ class PageCustomerIssue {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageCustomerIssue[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageCustomerIssue[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ShippingAddress[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ShippingAddress[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageCustomerIssue(
-        totalElements: mapValueOfType<int>(json, r'totalElements'),
-        totalPages: mapValueOfType<int>(json, r'totalPages'),
-        sort: SortObject.fromJson(json[r'sort']),
-        pageable: PageableObject.fromJson(json[r'pageable']),
-        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
-        first: mapValueOfType<bool>(json, r'first'),
-        last: mapValueOfType<bool>(json, r'last'),
-        size: mapValueOfType<int>(json, r'size'),
-        content: CustomerIssue.listFromJson(json[r'content']),
-        number: mapValueOfType<int>(json, r'number'),
-        empty: mapValueOfType<bool>(json, r'empty'),
+      return ShippingAddress(
+        addressId: mapValueOfType<int>(json, r'addressId'),
+        recipientName: mapValueOfType<String>(json, r'recipientName'),
+        recipientPhone: mapValueOfType<String>(json, r'recipientPhone'),
+        fullAddress: mapValueOfType<String>(json, r'fullAddress'),
+        storeName: mapValueOfType<String>(json, r'storeName'),
+        storeAddress: mapValueOfType<String>(json, r'storeAddress'),
+        isAvailable: mapValueOfType<bool>(json, r'isAvailable'),
+        isDefault: mapValueOfType<bool>(json, r'isDefault'),
+        remark: mapValueOfType<String>(json, r'remark'),
       );
     }
     return null;
   }
 
-  static List<PageCustomerIssue> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageCustomerIssue>[];
+  static List<ShippingAddress> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ShippingAddress>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageCustomerIssue.fromJson(row);
+        final value = ShippingAddress.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -244,12 +229,12 @@ class PageCustomerIssue {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageCustomerIssue> mapFromJson(dynamic json) {
-    final map = <String, PageCustomerIssue>{};
+  static Map<String, ShippingAddress> mapFromJson(dynamic json) {
+    final map = <String, ShippingAddress>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageCustomerIssue.fromJson(entry.value);
+        final value = ShippingAddress.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -258,14 +243,14 @@ class PageCustomerIssue {
     return map;
   }
 
-  // maps a json object with a list of PageCustomerIssue-objects as value to a dart map
-  static Map<String, List<PageCustomerIssue>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageCustomerIssue>>{};
+  // maps a json object with a list of ShippingAddress-objects as value to a dart map
+  static Map<String, List<ShippingAddress>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ShippingAddress>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageCustomerIssue.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ShippingAddress.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
