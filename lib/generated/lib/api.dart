@@ -41,6 +41,7 @@ part 'api/auto_reply_api.dart';
 part 'api/chat_api.dart';
 part 'api/cold_wallet_api.dart';
 part 'api/delivery_api.dart';
+part 'api/enum_translations_api.dart';
 part 'api/file_management_api.dart';
 part 'api/member_disputes_api.dart';
 part 'api/member_notifications_api.dart';

@@ -241,6 +241,11 @@ Class | Method | HTTP request | Description
 *DeliveryApi* | [**updateDeliveryOrder**](doc//DeliveryApi.md#updatedeliveryorder) | **POST** /delivery/update/order | 更新配送進度
 *DeliveryApi* | [**updateDeliveryer**](doc//DeliveryApi.md#updatedeliveryer) | **POST** /delivery/update | 更新配送員資料
 *DeliveryApi* | [**updateWorkingStatus**](doc//DeliveryApi.md#updateworkingstatus) | **POST** /delivery/update/status | 更新工作狀態
+*EnumTranslationsApi* | [**getAllEnumTranslations**](doc//EnumTranslationsApi.md#getallenumtranslations) | **GET** /api/enums/translations | 獲取所有枚舉翻譯
+*EnumTranslationsApi* | [**getLogisticsServiceTypeEnumToDescriptionMap**](doc//EnumTranslationsApi.md#getlogisticsservicetypeenumtodescriptionmap) | **GET** /api/enums/logistics-service-types/map | 獲取物流服務類型枚舉映射
+*EnumTranslationsApi* | [**getLogisticsServiceTypeTranslations**](doc//EnumTranslationsApi.md#getlogisticsservicetypetranslations) | **GET** /api/enums/logistics-service-types | 獲取物流服務類型枚舉翻譯
+*EnumTranslationsApi* | [**getShippingCompanyEnumToDescriptionMap**](doc//EnumTranslationsApi.md#getshippingcompanyenumtodescriptionmap) | **GET** /api/enums/shipping-companies/map | 獲取物流公司枚舉映射
+*EnumTranslationsApi* | [**getShippingCompanyTranslations**](doc//EnumTranslationsApi.md#getshippingcompanytranslations) | **GET** /api/enums/shipping-companies | 獲取物流公司枚舉翻譯
 *FileManagementApi* | [**batchRefreshUrls**](doc//FileManagementApi.md#batchrefreshurls) | **POST** /files/records/batch/refresh | 批量刷新文件URL
 *FileManagementApi* | [**deleteFileRecord**](doc//FileManagementApi.md#deletefilerecord) | **DELETE** /files/records | 刪除文件記錄和存儲文件
 *FileManagementApi* | [**deleteFileRecordsByBusiness**](doc//FileManagementApi.md#deletefilerecordsbybusiness) | **DELETE** /files/records/business | 根據業務關聯刪除文件記錄

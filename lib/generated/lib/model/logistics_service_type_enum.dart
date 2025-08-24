@@ -23,28 +23,16 @@ class LogisticsServiceTypeEnum {
 
   String toJson() => value;
 
-  static const REGULAR = LogisticsServiceTypeEnum._(r'REGULAR');
-  static const EXPRESS = LogisticsServiceTypeEnum._(r'EXPRESS');
-  static const PACKAGE = LogisticsServiceTypeEnum._(r'PACKAGE');
   static const HOME_DELIVERY = LogisticsServiceTypeEnum._(r'HOME_DELIVERY');
   static const STORE_PICKUP = LogisticsServiceTypeEnum._(r'STORE_PICKUP');
-  static const COLD_CHAIN = LogisticsServiceTypeEnum._(r'COLD_CHAIN');
-  static const STANDARD = LogisticsServiceTypeEnum._(r'STANDARD');
-  static const ECONOMY = LogisticsServiceTypeEnum._(r'ECONOMY');
-  static const URGENT = LogisticsServiceTypeEnum._(r'URGENT');
+  static const POSTAL = LogisticsServiceTypeEnum._(r'POSTAL');
   static const unknownDefaultOpenApi = LogisticsServiceTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][LogisticsServiceTypeEnum].
   static const values = <LogisticsServiceTypeEnum>[
-    REGULAR,
-    EXPRESS,
-    PACKAGE,
     HOME_DELIVERY,
     STORE_PICKUP,
-    COLD_CHAIN,
-    STANDARD,
-    ECONOMY,
-    URGENT,
+    POSTAL,
     unknownDefaultOpenApi,
   ];
 
@@ -84,15 +72,9 @@ class LogisticsServiceTypeEnumTypeTransformer {
   LogisticsServiceTypeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'REGULAR': return LogisticsServiceTypeEnum.REGULAR;
-        case r'EXPRESS': return LogisticsServiceTypeEnum.EXPRESS;
-        case r'PACKAGE': return LogisticsServiceTypeEnum.PACKAGE;
         case r'HOME_DELIVERY': return LogisticsServiceTypeEnum.HOME_DELIVERY;
         case r'STORE_PICKUP': return LogisticsServiceTypeEnum.STORE_PICKUP;
-        case r'COLD_CHAIN': return LogisticsServiceTypeEnum.COLD_CHAIN;
-        case r'STANDARD': return LogisticsServiceTypeEnum.STANDARD;
-        case r'ECONOMY': return LogisticsServiceTypeEnum.ECONOMY;
-        case r'URGENT': return LogisticsServiceTypeEnum.URGENT;
+        case r'POSTAL': return LogisticsServiceTypeEnum.POSTAL;
         case r'unknown_default_open_api': return LogisticsServiceTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

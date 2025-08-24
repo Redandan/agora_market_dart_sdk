@@ -32,12 +32,12 @@ class UserAddress {
     this.isActive,
     this.createdAt,
     this.updatedAt,
-    this.logisticsDescription,
-    this.recipientInfo,
     this.formattedAddress,
     this.fullAddress,
     this.convenienceStorePickup,
     this.homeDelivery,
+    this.logisticsDescription,
+    this.recipientInfo,
   });
 
   /// 地址ID
@@ -215,22 +215,6 @@ class UserAddress {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? logisticsDescription;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? recipientInfo;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? formattedAddress;
 
   ///
@@ -257,6 +241,22 @@ class UserAddress {
   ///
   bool? homeDelivery;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? logisticsDescription;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? recipientInfo;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserAddress &&
     other.id == id &&
@@ -278,12 +278,12 @@ class UserAddress {
     other.isActive == isActive &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.logisticsDescription == logisticsDescription &&
-    other.recipientInfo == recipientInfo &&
     other.formattedAddress == formattedAddress &&
     other.fullAddress == fullAddress &&
     other.convenienceStorePickup == convenienceStorePickup &&
-    other.homeDelivery == homeDelivery;
+    other.homeDelivery == homeDelivery &&
+    other.logisticsDescription == logisticsDescription &&
+    other.recipientInfo == recipientInfo;
 
   @override
   int get hashCode =>
@@ -307,15 +307,15 @@ class UserAddress {
     (isActive == null ? 0 : isActive!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (logisticsDescription == null ? 0 : logisticsDescription!.hashCode) +
-    (recipientInfo == null ? 0 : recipientInfo!.hashCode) +
     (formattedAddress == null ? 0 : formattedAddress!.hashCode) +
     (fullAddress == null ? 0 : fullAddress!.hashCode) +
     (convenienceStorePickup == null ? 0 : convenienceStorePickup!.hashCode) +
-    (homeDelivery == null ? 0 : homeDelivery!.hashCode);
+    (homeDelivery == null ? 0 : homeDelivery!.hashCode) +
+    (logisticsDescription == null ? 0 : logisticsDescription!.hashCode) +
+    (recipientInfo == null ? 0 : recipientInfo!.hashCode);
 
   @override
-  String toString() => 'UserAddress[id=$id, userId=$userId, recipientName=$recipientName, recipientPhone=$recipientPhone, postalCode=$postalCode, city=$city, district=$district, detailedAddress=$detailedAddress, remark=$remark, shippingCompany=$shippingCompany, serviceType=$serviceType, storeName=$storeName, storeCode=$storeCode, storeAddress=$storeAddress, storePhone=$storePhone, isDefault=$isDefault, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, logisticsDescription=$logisticsDescription, recipientInfo=$recipientInfo, formattedAddress=$formattedAddress, fullAddress=$fullAddress, convenienceStorePickup=$convenienceStorePickup, homeDelivery=$homeDelivery]';
+  String toString() => 'UserAddress[id=$id, userId=$userId, recipientName=$recipientName, recipientPhone=$recipientPhone, postalCode=$postalCode, city=$city, district=$district, detailedAddress=$detailedAddress, remark=$remark, shippingCompany=$shippingCompany, serviceType=$serviceType, storeName=$storeName, storeCode=$storeCode, storeAddress=$storeAddress, storePhone=$storePhone, isDefault=$isDefault, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, formattedAddress=$formattedAddress, fullAddress=$fullAddress, convenienceStorePickup=$convenienceStorePickup, homeDelivery=$homeDelivery, logisticsDescription=$logisticsDescription, recipientInfo=$recipientInfo]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -414,16 +414,6 @@ class UserAddress {
     } else {
       json[r'updatedAt'] = null;
     }
-    if (this.logisticsDescription != null) {
-      json[r'logisticsDescription'] = this.logisticsDescription;
-    } else {
-      json[r'logisticsDescription'] = null;
-    }
-    if (this.recipientInfo != null) {
-      json[r'recipientInfo'] = this.recipientInfo;
-    } else {
-      json[r'recipientInfo'] = null;
-    }
     if (this.formattedAddress != null) {
       json[r'formattedAddress'] = this.formattedAddress;
     } else {
@@ -443,6 +433,16 @@ class UserAddress {
       json[r'homeDelivery'] = this.homeDelivery;
     } else {
       json[r'homeDelivery'] = null;
+    }
+    if (this.logisticsDescription != null) {
+      json[r'logisticsDescription'] = this.logisticsDescription;
+    } else {
+      json[r'logisticsDescription'] = null;
+    }
+    if (this.recipientInfo != null) {
+      json[r'recipientInfo'] = this.recipientInfo;
+    } else {
+      json[r'recipientInfo'] = null;
     }
     return json;
   }
@@ -485,12 +485,12 @@ class UserAddress {
         isActive: mapValueOfType<bool>(json, r'isActive'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
-        logisticsDescription: mapValueOfType<String>(json, r'logisticsDescription'),
-        recipientInfo: mapValueOfType<String>(json, r'recipientInfo'),
         formattedAddress: mapValueOfType<String>(json, r'formattedAddress'),
         fullAddress: mapValueOfType<String>(json, r'fullAddress'),
         convenienceStorePickup: mapValueOfType<bool>(json, r'convenienceStorePickup'),
         homeDelivery: mapValueOfType<bool>(json, r'homeDelivery'),
+        logisticsDescription: mapValueOfType<String>(json, r'logisticsDescription'),
+        recipientInfo: mapValueOfType<String>(json, r'recipientInfo'),
       );
     }
     return null;
