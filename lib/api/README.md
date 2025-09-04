@@ -13,6 +13,34 @@
 - ✅ **错误处理** - 完善的错误处理和状态码检查
 - ✅ **认证控制** - 可以选择是否需要认证
 - ✅ **架构一致性** - 与其他 API 使用相同的 `ApiClient` 和认证机制
+- ✅ **业务关联** - 支持 businessType 和 businessId 参数，便于文件管理和分类
+
+## 更新内容 (v2.0)
+
+### 🆕 新增参数
+
+根据服务器端 API 更新，新增以下参数：
+
+- **businessType** - 业务类型，用于标识文件属于哪个业务模块
+- **businessId** - 业务ID，用于关联具体的业务实体
+
+### 📋 支持的业务类型
+
+- `PRODUCT` - 商品相关文件
+- `USER` - 用户相关文件  
+- `STORE` - 商店相关文件
+- `ORDER` - 订单相关文件
+- `REVIEW` - 评价相关文件
+- `DOCUMENT` - 文档相关文件
+- `SYSTEM` - 系统相关文件
+- `PUBLIC` - 公开文件
+
+### 🎯 使用场景
+
+- **商品图片上传**: `businessType='PRODUCT', businessId='商品ID'`
+- **用户头像上传**: `businessType='USER', businessId='用户ID'`
+- **订单附件上传**: `businessType='ORDER', businessId='订单ID'`
+- **商店Logo上传**: `businessType='STORE', businessId='商店ID'`
 
 ## 架构一致性
 
@@ -101,22 +129,24 @@ if (isValid) {
 ### 上传单个文件
 
 ```dart
-var file = File('path/to/your/file.jpg');
+var file = File('path/to/image.jpg');
 
 var result = await api.uploadFile(
   file: file,
-  uploadPath: 'images/profile',
-  metadata: {
-    'category': 'profile',
-    'description': 'User profile picture',
-  },
-  requireAuth: true, // 默认值，可以省略
+  businessType: 'PRODUCT',
+  businessId: '12345',
+  description: '商品主图 - 高质量展示图片',
+  tags: '["product", "main_image", "high_quality"]',
+  isPublic: true,
 );
 
 if (result.isSuccess) {
-  print('Upload successful: ${result.fileId}');
+  print('上传成功: ${result.fileId}');
+  print('业务类型: ${result.businessType}');
+  print('业务ID: ${result.businessId}');
+  print('预签名URL: ${result.presignedUrl}');
 } else {
-  print('Upload failed: ${result.errorMessage}');
+  print('上传失败: ${result.errorMessage}');
 }
 ```
 
@@ -128,11 +158,11 @@ var bytes = Uint8List.fromList([72, 101, 108, 108, 111]); // "Hello"
 var result = await api.uploadBytes(
   bytes: bytes,
   fileName: 'hello.txt',
-  uploadPath: 'documents',
-  metadata: {
-    'type': 'text',
-    'encoding': 'utf-8',
-  },
+  businessType: 'DOCUMENT',
+  businessId: 'doc_001',
+  description: 'Hello text file',
+  tags: '["text", "hello"]',
+  isPublic: true,
 );
 ```
 
@@ -140,21 +170,24 @@ var result = await api.uploadBytes(
 
 ```dart
 var files = [
-  File('path/to/file1.jpg'),
-  File('path/to/file2.png'),
-  File('path/to/file3.pdf'),
+  File('path/to/product_main.jpg'),
+  File('path/to/product_detail1.jpg'),
+  File('path/to/product_detail2.jpg'),
 ];
 
 var results = await api.uploadMultipleFiles(
   files: files,
-  uploadPath: 'documents',
-  metadata: {
-    'batch': 'batch_001',
-    'timestamp': DateTime.now().toIso8601String(),
-  },
+  businessType: 'PRODUCT',
+  businessId: 'product_22222',
+  description: '商品图片集 - 多角度展示',
+  tags: '["product", "gallery", "multiple"]',
+  isPublic: true,
 );
 
 // 处理结果
+var successCount = results.where((r) => r.isSuccess).length;
+print('成功上传: $successCount 个文件');
+
 for (var result in results) {
   if (result.isSuccess) {
     print('✓ ${result.fileName}: ${result.fileId}');
@@ -164,15 +197,38 @@ for (var result in results) {
 }
 ```
 
-### 公开文件上传（不需要认证）
+### 不同业务类型示例
 
 ```dart
-var result = await api.uploadFile(
-  file: file,
-  uploadPath: 'public',
-  requireAuth: false, // 不需要认证
+// 用户头像
+await api.uploadFile(
+  file: avatarFile,
+  businessType: 'USER',
+  businessId: 'user_67890',
+  description: '用户头像 - 个人资料图片',
+  tags: '["avatar", "profile", "user"]',
+  isPublic: false,
 );
-```
+
+// 订单附件
+await api.uploadFile(
+  file: invoiceFile,
+  businessType: 'ORDER',
+  businessId: 'order_55555',
+  description: '订单发票 - PDF格式',
+  tags: '["order", "invoice", "pdf"]',
+  isPublic: false,
+);
+
+// 商店Logo
+await api.uploadFile(
+  file: logoFile,
+  businessType: 'STORE',
+  businessId: 'store_44444',
+  description: '商店Logo - 品牌标识',
+  tags: '["store", "logo", "brand"]',
+  isPublic: true,
+);
 
 ## 错误处理
 
@@ -212,16 +268,22 @@ void main() async {
 
   // 验证 token
   if (await api.validateToken()) {
-    // 上传文件
-    var file = File('path/to/file.jpg');
+    // 上传商品图片
+    var file = File('path/to/product_image.jpg');
     var result = await api.uploadFile(
       file: file,
-      uploadPath: 'images',
-      metadata: {'category': 'image'},
+      businessType: 'PRODUCT',
+      businessId: '12345',
+      description: '商品主图 - 高质量展示图片',
+      tags: '["product", "main_image", "high_quality"]',
+      isPublic: true,
     );
 
     if (result.isSuccess) {
       print('上传成功: ${result.fileId}');
+      print('业务类型: ${result.businessType}');
+      print('业务ID: ${result.businessId}');
+      print('预签名URL: ${result.presignedUrl}');
     } else {
       print('上传失败: ${result.errorMessage}');
     }

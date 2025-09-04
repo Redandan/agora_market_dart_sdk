@@ -47,6 +47,8 @@ class FileUploadExample {
 
       var result = await api.uploadFile(
         file: file,
+        businessType: 'PRODUCT',
+        businessId: '123',
         description: 'User profile picture',
         tags: '["profile", "avatar"]',
         isPublic: false,
@@ -76,6 +78,8 @@ class FileUploadExample {
       var result = await api.uploadBytes(
         bytes: bytes,
         fileName: 'hello.txt',
+        businessType: 'DOCUMENT',
+        businessId: '456',
         description: 'Hello text file',
         tags: '["text", "hello"]',
         isPublic: true,
@@ -105,6 +109,8 @@ class FileUploadExample {
 
       var results = await api.uploadMultipleFiles(
         files: files,
+        businessType: 'PRODUCT',
+        businessId: '789',
         description: 'Batch upload - batch_001',
         tags: '["batch", "documents"]',
         isPublic: false,
@@ -139,6 +145,8 @@ class FileUploadExample {
 
       var result = await api.uploadFile(
         file: file,
+        businessType: 'PUBLIC',
+        businessId: '999',
         description: 'Public information file',
         tags: '["public", "information"]',
         isPublic: true,

@@ -147,6 +147,8 @@ class FileUploadApi {
   ///
   /// 参数说明：
   /// - [file] - 要上传的文件，必须是有效的 File 对象
+  /// - [businessType] - 可选的业务类型，如 "PRODUCT"
+  /// - [businessId] - 可选的业务ID，如 "123"
   /// - [description] - 可选的文件描述
   /// - [tags] - 可选的标签，JSON字符串格式，如 '["avatar", "profile"]'
   /// - [isPublic] - 是否公开，默认为 false
@@ -160,6 +162,8 @@ class FileUploadApi {
   /// final file = File('path/to/image.jpg');
   /// final result = await api.uploadFile(
   ///   file: file,
+  ///   businessType: 'PRODUCT',
+  ///   businessId: '123',
   ///   description: '用户头像',
   ///   tags: '["avatar", "profile"]',
   ///   isPublic: true
@@ -180,6 +184,8 @@ class FileUploadApi {
   /// - 文件以二进制形式传输，支持所有文件类型
   Future<FileUploadResult> uploadFile({
     required File file,
+    String? businessType,
+    String? businessId,
     String? description,
     String? tags,
     bool isPublic = false,
@@ -213,6 +219,12 @@ class FileUploadApi {
       request.files.add(multipartFile);
 
       // 添加可选参数
+      if (businessType != null) {
+        request.fields['businessType'] = businessType;
+      }
+      if (businessId != null) {
+        request.fields['businessId'] = businessId;
+      }
       if (description != null) {
         request.fields['description'] = description;
       }
@@ -301,6 +313,8 @@ class FileUploadApi {
   /// 参数说明：
   /// - [bytes] - 要上传的字节数据
   /// - [fileName] - 文件名，用于服务器端保存
+  /// - [businessType] - 可选的业务类型，如 "PRODUCT"
+  /// - [businessId] - 可选的业务ID，如 "123"
   /// - [description] - 可选的文件描述
   /// - [tags] - 可选的标签，JSON字符串格式
   /// - [isPublic] - 是否公开，默认为 false
@@ -320,6 +334,8 @@ class FileUploadApi {
   /// final result = await api.uploadBytes(
   ///   bytes: bytes,
   ///   fileName: 'downloaded_image.jpg',
+  ///   businessType: 'PRODUCT',
+  ///   businessId: '123',
   ///   description: '从网络下载的图片',
   ///   tags: '["downloaded", "image"]'
   /// );
@@ -333,6 +349,8 @@ class FileUploadApi {
   Future<FileUploadResult> uploadBytes({
     required Uint8List bytes,
     required String fileName,
+    String? businessType,
+    String? businessId,
     String? description,
     String? tags,
     bool isPublic = false,
@@ -362,6 +380,12 @@ class FileUploadApi {
       request.files.add(multipartFile);
 
       // 添加可选参数
+      if (businessType != null) {
+        request.fields['businessType'] = businessType;
+      }
+      if (businessId != null) {
+        request.fields['businessId'] = businessId;
+      }
       if (description != null) {
         request.fields['description'] = description;
       }
@@ -449,6 +473,8 @@ class FileUploadApi {
   ///
   /// 参数说明：
   /// - [files] - 要上传的文件列表
+  /// - [businessType] - 可选的业务类型，如 "PRODUCT"
+  /// - [businessId] - 可选的业务ID，如 "123"
   /// - [description] - 可选的文件描述，适用于所有文件
   /// - [tags] - 可选的标签，适用于所有文件
   /// - [isPublic] - 是否公开，默认为 false
@@ -472,6 +498,8 @@ class FileUploadApi {
   ///
   /// final results = await api.uploadMultipleFiles(
   ///   files: files,
+  ///   businessType: 'PRODUCT',
+  ///   businessId: '123',
   ///   description: '商品图片',
   ///   tags: '["product", "gallery"]',
   ///   isPublic: true
@@ -489,6 +517,8 @@ class FileUploadApi {
   /// - 所有文件都以二进制形式传输，保持原始数据完整性
   Future<List<FileUploadResult>> uploadMultipleFiles({
     required List<File> files,
+    String? businessType,
+    String? businessId,
     String? description,
     String? tags,
     bool isPublic = false,
@@ -499,6 +529,8 @@ class FileUploadApi {
     for (var file in files) {
       var result = await uploadFile(
         file: file,
+        businessType: businessType,
+        businessId: businessId,
         description: description,
         tags: tags,
         isPublic: isPublic,
