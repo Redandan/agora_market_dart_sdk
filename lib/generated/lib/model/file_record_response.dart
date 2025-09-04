@@ -91,7 +91,13 @@ class FileRecordResponse {
   DateTime? urlExpiryTime;
 
   /// 業務類型
-  FileRecordResponseBusinessTypeEnum? businessType;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? businessType;
 
   /// 業務ID
   ///
@@ -406,7 +412,7 @@ class FileRecordResponse {
         filePath: mapValueOfType<String>(json, r'filePath'),
         presignedUrl: mapValueOfType<String>(json, r'presignedUrl'),
         urlExpiryTime: mapDateTime(json, r'urlExpiryTime', r''),
-        businessType: FileRecordResponseBusinessTypeEnum.fromJson(json[r'businessType']),
+        businessType: mapValueOfType<String>(json, r'businessType'),
         businessId: mapValueOfType<String>(json, r'businessId'),
         fileSize: mapValueOfType<int>(json, r'fileSize'),
         fileSizeFormatted: mapValueOfType<String>(json, r'fileSizeFormatted'),
@@ -470,114 +476,4 @@ class FileRecordResponse {
   static const requiredKeys = <String>{
   };
 }
-
-/// 業務類型
-class FileRecordResponseBusinessTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const FileRecordResponseBusinessTypeEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const PRODUCT = FileRecordResponseBusinessTypeEnum._(r'PRODUCT');
-  static const USER = FileRecordResponseBusinessTypeEnum._(r'USER');
-  static const STORE = FileRecordResponseBusinessTypeEnum._(r'STORE');
-  static const TEMP = FileRecordResponseBusinessTypeEnum._(r'TEMP');
-  static const POST = FileRecordResponseBusinessTypeEnum._(r'POST');
-  static const ORDER = FileRecordResponseBusinessTypeEnum._(r'ORDER');
-  static const REVIEW = FileRecordResponseBusinessTypeEnum._(r'REVIEW');
-  static const NOTIFICATION = FileRecordResponseBusinessTypeEnum._(r'NOTIFICATION');
-  static const CHAT = FileRecordResponseBusinessTypeEnum._(r'CHAT');
-  static const ADDRESS = FileRecordResponseBusinessTypeEnum._(r'ADDRESS');
-  static const WITHDRAW = FileRecordResponseBusinessTypeEnum._(r'WITHDRAW');
-  static const RECHARGE = FileRecordResponseBusinessTypeEnum._(r'RECHARGE');
-  static const TRANSACTION = FileRecordResponseBusinessTypeEnum._(r'TRANSACTION');
-  static const unknownDefaultOpenApi = FileRecordResponseBusinessTypeEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][FileRecordResponseBusinessTypeEnum].
-  static const values = <FileRecordResponseBusinessTypeEnum>[
-    PRODUCT,
-    USER,
-    STORE,
-    TEMP,
-    POST,
-    ORDER,
-    REVIEW,
-    NOTIFICATION,
-    CHAT,
-    ADDRESS,
-    WITHDRAW,
-    RECHARGE,
-    TRANSACTION,
-    unknownDefaultOpenApi,
-  ];
-
-  static FileRecordResponseBusinessTypeEnum? fromJson(dynamic value) => FileRecordResponseBusinessTypeEnumTypeTransformer().decode(value);
-
-  static List<FileRecordResponseBusinessTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <FileRecordResponseBusinessTypeEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = FileRecordResponseBusinessTypeEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [FileRecordResponseBusinessTypeEnum] to String,
-/// and [decode] dynamic data back to [FileRecordResponseBusinessTypeEnum].
-class FileRecordResponseBusinessTypeEnumTypeTransformer {
-  factory FileRecordResponseBusinessTypeEnumTypeTransformer() => _instance ??= const FileRecordResponseBusinessTypeEnumTypeTransformer._();
-
-  const FileRecordResponseBusinessTypeEnumTypeTransformer._();
-
-  String encode(FileRecordResponseBusinessTypeEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a FileRecordResponseBusinessTypeEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  FileRecordResponseBusinessTypeEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'PRODUCT': return FileRecordResponseBusinessTypeEnum.PRODUCT;
-        case r'USER': return FileRecordResponseBusinessTypeEnum.USER;
-        case r'STORE': return FileRecordResponseBusinessTypeEnum.STORE;
-        case r'TEMP': return FileRecordResponseBusinessTypeEnum.TEMP;
-        case r'POST': return FileRecordResponseBusinessTypeEnum.POST;
-        case r'ORDER': return FileRecordResponseBusinessTypeEnum.ORDER;
-        case r'REVIEW': return FileRecordResponseBusinessTypeEnum.REVIEW;
-        case r'NOTIFICATION': return FileRecordResponseBusinessTypeEnum.NOTIFICATION;
-        case r'CHAT': return FileRecordResponseBusinessTypeEnum.CHAT;
-        case r'ADDRESS': return FileRecordResponseBusinessTypeEnum.ADDRESS;
-        case r'WITHDRAW': return FileRecordResponseBusinessTypeEnum.WITHDRAW;
-        case r'RECHARGE': return FileRecordResponseBusinessTypeEnum.RECHARGE;
-        case r'TRANSACTION': return FileRecordResponseBusinessTypeEnum.TRANSACTION;
-        case r'unknown_default_open_api': return FileRecordResponseBusinessTypeEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [FileRecordResponseBusinessTypeEnumTypeTransformer] instance.
-  static FileRecordResponseBusinessTypeEnumTypeTransformer? _instance;
-}
-
 
