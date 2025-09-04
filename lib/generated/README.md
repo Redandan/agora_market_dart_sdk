@@ -247,8 +247,11 @@ Class | Method | HTTP request | Description
 *EnumTranslationsApi* | [**getShippingCompanyEnumToDescriptionMap**](doc//EnumTranslationsApi.md#getshippingcompanyenumtodescriptionmap) | **GET** /api/enums/shipping-companies/map | 獲取物流公司枚舉映射
 *EnumTranslationsApi* | [**getShippingCompanyTranslations**](doc//EnumTranslationsApi.md#getshippingcompanytranslations) | **GET** /api/enums/shipping-companies | 獲取物流公司枚舉翻譯
 *FileManagementApi* | [**batchRefreshUrls**](doc//FileManagementApi.md#batchrefreshurls) | **POST** /files/records/batch/refresh | 批量刷新文件URL
+*FileManagementApi* | [**cleanupAllInvalidProductUrls**](doc//FileManagementApi.md#cleanupallinvalidproducturls) | **POST** /files/records/cleanup-all-invalid-product-urls | 批量清理所有商品失效URL
+*FileManagementApi* | [**cleanupInvalidProductUrls**](doc//FileManagementApi.md#cleanupinvalidproducturls) | **POST** /files/records/cleanup-invalid-product-urls | 清理商品失效URL
 *FileManagementApi* | [**deleteFileRecord**](doc//FileManagementApi.md#deletefilerecord) | **DELETE** /files/records | 刪除文件記錄和存儲文件
 *FileManagementApi* | [**deleteFileRecordsByBusiness**](doc//FileManagementApi.md#deletefilerecordsbybusiness) | **DELETE** /files/records/business | 根據業務關聯刪除文件記錄
+*FileManagementApi* | [**fixFileRecordAssociation**](doc//FileManagementApi.md#fixfilerecordassociation) | **POST** /files/records/fix-association | 修復文件記錄關聯
 *FileManagementApi* | [**getFileRecordById**](doc//FileManagementApi.md#getfilerecordbyid) | **GET** /files/records/{id} | 根據ID獲取文件記錄
 *FileManagementApi* | [**refreshPresignedUrl**](doc//FileManagementApi.md#refreshpresignedurl) | **POST** /files/records/{id}/refresh-url | 刷新預簽名URL
 *FileManagementApi* | [**searchFileRecords**](doc//FileManagementApi.md#searchfilerecords) | **POST** /files/search | 搜索文件記錄

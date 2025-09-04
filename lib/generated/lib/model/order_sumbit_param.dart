@@ -22,7 +22,7 @@ class OrderSumbitParam {
     required this.latitude,
     required this.receiverName,
     required this.receiverPhone,
-    this.shippingCompany,
+    required this.shippingCompany,
     this.remark,
   });
 
@@ -67,13 +67,7 @@ class OrderSumbitParam {
   /// 收件人電話
   String receiverPhone;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  ShippingCompanyEnum? shippingCompany;
+  ShippingCompanyEnum shippingCompany;
 
   /// 訂單備註
   ///
@@ -110,7 +104,7 @@ class OrderSumbitParam {
     (latitude.hashCode) +
     (receiverName.hashCode) +
     (receiverPhone.hashCode) +
-    (shippingCompany == null ? 0 : shippingCompany!.hashCode) +
+    (shippingCompany.hashCode) +
     (remark == null ? 0 : remark!.hashCode);
 
   @override
@@ -135,11 +129,7 @@ class OrderSumbitParam {
       json[r'latitude'] = this.latitude;
       json[r'receiverName'] = this.receiverName;
       json[r'receiverPhone'] = this.receiverPhone;
-    if (this.shippingCompany != null) {
       json[r'shippingCompany'] = this.shippingCompany;
-    } else {
-      json[r'shippingCompany'] = null;
-    }
     if (this.remark != null) {
       json[r'remark'] = this.remark;
     } else {
@@ -176,7 +166,7 @@ class OrderSumbitParam {
         latitude: mapValueOfType<double>(json, r'latitude')!,
         receiverName: mapValueOfType<String>(json, r'receiverName')!,
         receiverPhone: mapValueOfType<String>(json, r'receiverPhone')!,
-        shippingCompany: ShippingCompanyEnum.fromJson(json[r'shippingCompany']),
+        shippingCompany: ShippingCompanyEnum.fromJson(json[r'shippingCompany'])!,
         remark: mapValueOfType<String>(json, r'remark'),
       );
     }
@@ -232,6 +222,7 @@ class OrderSumbitParam {
     'latitude',
     'receiverName',
     'receiverPhone',
+    'shippingCompany',
   };
 }
 

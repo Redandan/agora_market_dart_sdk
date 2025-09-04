@@ -100,13 +100,7 @@ class FileRecordSearchParam {
   String? sortDirection;
 
   /// 業務類型
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? businessType;
+  FileRecordSearchParamBusinessTypeEnum? businessType;
 
   /// 業務ID
   ///
@@ -413,7 +407,7 @@ class FileRecordSearchParam {
         keyword: mapValueOfType<String>(json, r'keyword'),
         sortBy: mapValueOfType<String>(json, r'sortBy'),
         sortDirection: mapValueOfType<String>(json, r'sortDirection'),
-        businessType: mapValueOfType<String>(json, r'businessType'),
+        businessType: FileRecordSearchParamBusinessTypeEnum.fromJson(json[r'businessType']),
         businessId: mapValueOfType<String>(json, r'businessId'),
         uploaderId: mapValueOfType<String>(json, r'uploaderId'),
         contentType: mapValueOfType<String>(json, r'contentType'),
@@ -476,4 +470,114 @@ class FileRecordSearchParam {
   static const requiredKeys = <String>{
   };
 }
+
+/// 業務類型
+class FileRecordSearchParamBusinessTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const FileRecordSearchParamBusinessTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const PRODUCT = FileRecordSearchParamBusinessTypeEnum._(r'PRODUCT');
+  static const USER = FileRecordSearchParamBusinessTypeEnum._(r'USER');
+  static const STORE = FileRecordSearchParamBusinessTypeEnum._(r'STORE');
+  static const TEMP = FileRecordSearchParamBusinessTypeEnum._(r'TEMP');
+  static const POST = FileRecordSearchParamBusinessTypeEnum._(r'POST');
+  static const ORDER = FileRecordSearchParamBusinessTypeEnum._(r'ORDER');
+  static const REVIEW = FileRecordSearchParamBusinessTypeEnum._(r'REVIEW');
+  static const NOTIFICATION = FileRecordSearchParamBusinessTypeEnum._(r'NOTIFICATION');
+  static const CHAT = FileRecordSearchParamBusinessTypeEnum._(r'CHAT');
+  static const ADDRESS = FileRecordSearchParamBusinessTypeEnum._(r'ADDRESS');
+  static const WITHDRAW = FileRecordSearchParamBusinessTypeEnum._(r'WITHDRAW');
+  static const RECHARGE = FileRecordSearchParamBusinessTypeEnum._(r'RECHARGE');
+  static const TRANSACTION = FileRecordSearchParamBusinessTypeEnum._(r'TRANSACTION');
+  static const unknownDefaultOpenApi = FileRecordSearchParamBusinessTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][FileRecordSearchParamBusinessTypeEnum].
+  static const values = <FileRecordSearchParamBusinessTypeEnum>[
+    PRODUCT,
+    USER,
+    STORE,
+    TEMP,
+    POST,
+    ORDER,
+    REVIEW,
+    NOTIFICATION,
+    CHAT,
+    ADDRESS,
+    WITHDRAW,
+    RECHARGE,
+    TRANSACTION,
+    unknownDefaultOpenApi,
+  ];
+
+  static FileRecordSearchParamBusinessTypeEnum? fromJson(dynamic value) => FileRecordSearchParamBusinessTypeEnumTypeTransformer().decode(value);
+
+  static List<FileRecordSearchParamBusinessTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <FileRecordSearchParamBusinessTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = FileRecordSearchParamBusinessTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [FileRecordSearchParamBusinessTypeEnum] to String,
+/// and [decode] dynamic data back to [FileRecordSearchParamBusinessTypeEnum].
+class FileRecordSearchParamBusinessTypeEnumTypeTransformer {
+  factory FileRecordSearchParamBusinessTypeEnumTypeTransformer() => _instance ??= const FileRecordSearchParamBusinessTypeEnumTypeTransformer._();
+
+  const FileRecordSearchParamBusinessTypeEnumTypeTransformer._();
+
+  String encode(FileRecordSearchParamBusinessTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a FileRecordSearchParamBusinessTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  FileRecordSearchParamBusinessTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'PRODUCT': return FileRecordSearchParamBusinessTypeEnum.PRODUCT;
+        case r'USER': return FileRecordSearchParamBusinessTypeEnum.USER;
+        case r'STORE': return FileRecordSearchParamBusinessTypeEnum.STORE;
+        case r'TEMP': return FileRecordSearchParamBusinessTypeEnum.TEMP;
+        case r'POST': return FileRecordSearchParamBusinessTypeEnum.POST;
+        case r'ORDER': return FileRecordSearchParamBusinessTypeEnum.ORDER;
+        case r'REVIEW': return FileRecordSearchParamBusinessTypeEnum.REVIEW;
+        case r'NOTIFICATION': return FileRecordSearchParamBusinessTypeEnum.NOTIFICATION;
+        case r'CHAT': return FileRecordSearchParamBusinessTypeEnum.CHAT;
+        case r'ADDRESS': return FileRecordSearchParamBusinessTypeEnum.ADDRESS;
+        case r'WITHDRAW': return FileRecordSearchParamBusinessTypeEnum.WITHDRAW;
+        case r'RECHARGE': return FileRecordSearchParamBusinessTypeEnum.RECHARGE;
+        case r'TRANSACTION': return FileRecordSearchParamBusinessTypeEnum.TRANSACTION;
+        case r'unknown_default_open_api': return FileRecordSearchParamBusinessTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [FileRecordSearchParamBusinessTypeEnumTypeTransformer] instance.
+  static FileRecordSearchParamBusinessTypeEnumTypeTransformer? _instance;
+}
+
 

@@ -17,6 +17,8 @@ class ShippingServiceGroup {
     this.shippingFee,
     this.estimatedDays,
     this.addresses = const [],
+    this.needsAddress,
+    this.message,
   });
 
   ///
@@ -48,12 +50,32 @@ class ShippingServiceGroup {
   /// 可配送的地址列表
   List<ShippingAddress> addresses;
 
+  /// 是否需要添加地址
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? needsAddress;
+
+  /// 提示訊息
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? message;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ShippingServiceGroup &&
     other.shippingCompany == shippingCompany &&
     other.shippingFee == shippingFee &&
     other.estimatedDays == estimatedDays &&
-    _deepEquality.equals(other.addresses, addresses);
+    _deepEquality.equals(other.addresses, addresses) &&
+    other.needsAddress == needsAddress &&
+    other.message == message;
 
   @override
   int get hashCode =>
@@ -61,10 +83,12 @@ class ShippingServiceGroup {
     (shippingCompany == null ? 0 : shippingCompany!.hashCode) +
     (shippingFee == null ? 0 : shippingFee!.hashCode) +
     (estimatedDays == null ? 0 : estimatedDays!.hashCode) +
-    (addresses.hashCode);
+    (addresses.hashCode) +
+    (needsAddress == null ? 0 : needsAddress!.hashCode) +
+    (message == null ? 0 : message!.hashCode);
 
   @override
-  String toString() => 'ShippingServiceGroup[shippingCompany=$shippingCompany, shippingFee=$shippingFee, estimatedDays=$estimatedDays, addresses=$addresses]';
+  String toString() => 'ShippingServiceGroup[shippingCompany=$shippingCompany, shippingFee=$shippingFee, estimatedDays=$estimatedDays, addresses=$addresses, needsAddress=$needsAddress, message=$message]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -84,6 +108,16 @@ class ShippingServiceGroup {
       json[r'estimatedDays'] = null;
     }
       json[r'addresses'] = this.addresses;
+    if (this.needsAddress != null) {
+      json[r'needsAddress'] = this.needsAddress;
+    } else {
+      json[r'needsAddress'] = null;
+    }
+    if (this.message != null) {
+      json[r'message'] = this.message;
+    } else {
+      json[r'message'] = null;
+    }
     return json;
   }
 
@@ -110,6 +144,8 @@ class ShippingServiceGroup {
         shippingFee: num.parse('${json[r'shippingFee']}'),
         estimatedDays: mapValueOfType<int>(json, r'estimatedDays'),
         addresses: ShippingAddress.listFromJson(json[r'addresses']),
+        needsAddress: mapValueOfType<bool>(json, r'needsAddress'),
+        message: mapValueOfType<String>(json, r'message'),
       );
     }
     return null;

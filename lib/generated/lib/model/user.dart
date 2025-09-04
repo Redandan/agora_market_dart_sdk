@@ -22,6 +22,7 @@ class User {
     this.phone,
     this.email,
     this.avatar,
+    this.avatarFileId,
     this.remark,
     this.storeName,
     this.ambassadorName,
@@ -114,6 +115,15 @@ class User {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? avatar;
+
+  /// 頭像對應的文件記錄ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? avatarFileId;
 
   /// 備註
   ///
@@ -224,6 +234,7 @@ class User {
     other.phone == phone &&
     other.email == email &&
     other.avatar == avatar &&
+    other.avatarFileId == avatarFileId &&
     other.remark == remark &&
     other.storeName == storeName &&
     other.ambassadorName == ambassadorName &&
@@ -248,6 +259,7 @@ class User {
     (phone == null ? 0 : phone!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
     (avatar == null ? 0 : avatar!.hashCode) +
+    (avatarFileId == null ? 0 : avatarFileId!.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
     (storeName == null ? 0 : storeName!.hashCode) +
     (ambassadorName == null ? 0 : ambassadorName!.hashCode) +
@@ -261,7 +273,7 @@ class User {
     (admin == null ? 0 : admin!.hashCode);
 
   @override
-  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin]';
+  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, avatarFileId=$avatarFileId, remark=$remark, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -309,6 +321,11 @@ class User {
       json[r'avatar'] = this.avatar;
     } else {
       json[r'avatar'] = null;
+    }
+    if (this.avatarFileId != null) {
+      json[r'avatarFileId'] = this.avatarFileId;
+    } else {
+      json[r'avatarFileId'] = null;
     }
     if (this.remark != null) {
       json[r'remark'] = this.remark;
@@ -396,6 +413,7 @@ class User {
         phone: mapValueOfType<String>(json, r'phone'),
         email: mapValueOfType<String>(json, r'email'),
         avatar: mapValueOfType<String>(json, r'avatar'),
+        avatarFileId: mapValueOfType<int>(json, r'avatarFileId'),
         remark: mapValueOfType<String>(json, r'remark'),
         storeName: mapValueOfType<String>(json, r'storeName'),
         ambassadorName: mapValueOfType<String>(json, r'ambassadorName'),

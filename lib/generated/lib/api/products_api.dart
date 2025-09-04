@@ -750,7 +750,7 @@ class ProductsApi {
   /// Parameters:
   ///
   /// * [ProductUpdateParam] productUpdateParam (required):
-  Future<Product?> updateProduct(ProductUpdateParam productUpdateParam,) async {
+  Future<Object?> updateProduct(ProductUpdateParam productUpdateParam,) async {
     final response = await updateProductWithHttpInfo(productUpdateParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -759,7 +759,7 @@ class ProductsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Product',) as Product;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
     
     }
     return null;

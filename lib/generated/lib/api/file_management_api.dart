@@ -105,9 +105,115 @@ class FileManagementApi {
     return null;
   }
 
+  /// 批量清理所有商品失效URL
+  ///
+  /// 清理所有商品中的失效圖片URL，移除那些對應文件記錄不存在的URL
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> cleanupAllInvalidProductUrlsWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/files/records/cleanup-all-invalid-product-urls';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 批量清理所有商品失效URL
+  ///
+  /// 清理所有商品中的失效圖片URL，移除那些對應文件記錄不存在的URL
+  Future<ApiResponseMapStringObject?> cleanupAllInvalidProductUrls() async {
+    final response = await cleanupAllInvalidProductUrlsWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseMapStringObject',) as ApiResponseMapStringObject;
+    
+    }
+    return null;
+  }
+
+  /// 清理商品失效URL
+  ///
+  /// 清理指定商品中的失效圖片URL，移除那些對應文件記錄不存在的URL
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] productId (required):
+  Future<Response> cleanupInvalidProductUrlsWithHttpInfo(int productId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/files/records/cleanup-invalid-product-urls';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'productId', productId));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 清理商品失效URL
+  ///
+  /// 清理指定商品中的失效圖片URL，移除那些對應文件記錄不存在的URL
+  ///
+  /// Parameters:
+  ///
+  /// * [int] productId (required):
+  Future<ApiResponseString?> cleanupInvalidProductUrls(int productId,) async {
+    final response = await cleanupInvalidProductUrlsWithHttpInfo(productId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseString',) as ApiResponseString;
+    
+    }
+    return null;
+  }
+
   /// 刪除文件記錄和存儲文件
   ///
-  /// 支持根據文件記錄ID或文件名刪除文件記錄，同時從OCI刪除對應的文件。優先使用ID，如果ID為空則使用文件名。
+  /// 支持根據文件記錄ID或文件名刪除文件記錄，同時從OCI刪除對應的文件。優先使用ID，如果ID為空則使用文件名。如果設置cleanupTemporary=true，將同時清理超過指定小時數的臨時文件。
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -118,7 +224,13 @@ class FileManagementApi {
   ///
   /// * [String] filename:
   ///   文件路徑/名稱
-  Future<Response> deleteFileRecordWithHttpInfo({ int? id, String? filename, }) async {
+  ///
+  /// * [bool] cleanupTemporary:
+  ///   是否同時清理臨時文件
+  ///
+  /// * [int] tempFileHours:
+  ///   清理超過多少小時的臨時文件
+  Future<Response> deleteFileRecordWithHttpInfo({ int? id, String? filename, bool? cleanupTemporary, int? tempFileHours, }) async {
     // ignore: prefer_const_declarations
     final path = r'/files/records';
 
@@ -134,6 +246,12 @@ class FileManagementApi {
     }
     if (filename != null) {
       queryParams.addAll(_queryParams('', 'filename', filename));
+    }
+    if (cleanupTemporary != null) {
+      queryParams.addAll(_queryParams('', 'cleanupTemporary', cleanupTemporary));
+    }
+    if (tempFileHours != null) {
+      queryParams.addAll(_queryParams('', 'tempFileHours', tempFileHours));
     }
 
     const contentTypes = <String>[];
@@ -152,7 +270,7 @@ class FileManagementApi {
 
   /// 刪除文件記錄和存儲文件
   ///
-  /// 支持根據文件記錄ID或文件名刪除文件記錄，同時從OCI刪除對應的文件。優先使用ID，如果ID為空則使用文件名。
+  /// 支持根據文件記錄ID或文件名刪除文件記錄，同時從OCI刪除對應的文件。優先使用ID，如果ID為空則使用文件名。如果設置cleanupTemporary=true，將同時清理超過指定小時數的臨時文件。
   ///
   /// Parameters:
   ///
@@ -161,8 +279,14 @@ class FileManagementApi {
   ///
   /// * [String] filename:
   ///   文件路徑/名稱
-  Future<ApiResponseString?> deleteFileRecord({ int? id, String? filename, }) async {
-    final response = await deleteFileRecordWithHttpInfo( id: id, filename: filename, );
+  ///
+  /// * [bool] cleanupTemporary:
+  ///   是否同時清理臨時文件
+  ///
+  /// * [int] tempFileHours:
+  ///   清理超過多少小時的臨時文件
+  Future<ApiResponseString?> deleteFileRecord({ int? id, String? filename, bool? cleanupTemporary, int? tempFileHours, }) async {
+    final response = await deleteFileRecordWithHttpInfo( id: id, filename: filename, cleanupTemporary: cleanupTemporary, tempFileHours: tempFileHours, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -238,6 +362,80 @@ class FileManagementApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseString',) as ApiResponseString;
+    
+    }
+    return null;
+  }
+
+  /// 修復文件記錄關聯
+  ///
+  /// 修復文件記錄的業務關聯，用於解決文件所有權問題
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] fileId (required):
+  ///   文件記錄ID
+  ///
+  /// * [String] businessType (required):
+  ///   業務類型
+  ///
+  /// * [String] businessId (required):
+  ///   業務ID
+  Future<Response> fixFileRecordAssociationWithHttpInfo(int fileId, String businessType, String businessId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/files/records/fix-association';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'fileId', fileId));
+      queryParams.addAll(_queryParams('', 'businessType', businessType));
+      queryParams.addAll(_queryParams('', 'businessId', businessId));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 修復文件記錄關聯
+  ///
+  /// 修復文件記錄的業務關聯，用於解決文件所有權問題
+  ///
+  /// Parameters:
+  ///
+  /// * [int] fileId (required):
+  ///   文件記錄ID
+  ///
+  /// * [String] businessType (required):
+  ///   業務類型
+  ///
+  /// * [String] businessId (required):
+  ///   業務ID
+  Future<ApiResponseFileRecordResponse?> fixFileRecordAssociation(int fileId, String businessType, String businessId,) async {
+    final response = await fixFileRecordAssociationWithHttpInfo(fileId, businessType, businessId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseFileRecordResponse',) as ApiResponseFileRecordResponse;
     
     }
     return null;
