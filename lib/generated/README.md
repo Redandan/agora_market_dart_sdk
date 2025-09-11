@@ -221,7 +221,7 @@ Class | Method | HTTP request | Description
 *ChatApi* | [**deleteMessage**](doc//ChatApi.md#deletemessage) | **DELETE** /chat/messages/{messageId} | 刪除消息
 *ChatApi* | [**deleteSession**](doc//ChatApi.md#deletesession) | **DELETE** /chat/sessions/{sessionId} | 刪除會話
 *ChatApi* | [**getOrCreateSession**](doc//ChatApi.md#getorcreatesession) | **GET** /chat/sessions/receiver/{receiverId} | 獲取或創建與指定用戶的會話
-*ChatApi* | [**getSessionMessages**](doc//ChatApi.md#getsessionmessages) | **GET** /chat/sessions/{sessionId}/messages | 獲取會話消息列表
+*ChatApi* | [**getSessionMessages**](doc//ChatApi.md#getsessionmessages) | **POST** /chat/sessions/messages | 獲取會話消息列表
 *ChatApi* | [**getUnreadCount**](doc//ChatApi.md#getunreadcount) | **GET** /chat/unread/count | 獲取未讀消息數
 *ChatApi* | [**listSessions**](doc//ChatApi.md#listsessions) | **GET** /chat/sessions | 獲取聊天會話列表
 *ChatApi* | [**markSessionRead**](doc//ChatApi.md#marksessionread) | **PUT** /chat/sessions/{sessionId}/read | 標記會話為已讀

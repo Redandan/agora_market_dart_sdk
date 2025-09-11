@@ -230,37 +230,30 @@ class ChatApi {
 
   /// 獲取會話消息列表
   ///
-  /// 獲取指定會話的消息列表
+  /// 通過 POST JSON 方式獲取指定會話的消息列表
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [int] sessionId (required):
-  ///   會話ID
-  ///
-  /// * [ChatMessageQueryParam] queryParam (required):
-  ///   查詢參數
-  Future<Response> getSessionMessagesWithHttpInfo(int sessionId, ChatMessageQueryParam queryParam,) async {
+  /// * [ChatMessageQueryParam] chatMessageQueryParam (required):
+  Future<Response> getSessionMessagesWithHttpInfo(ChatMessageQueryParam chatMessageQueryParam,) async {
     // ignore: prefer_const_declarations
-    final path = r'/chat/sessions/{sessionId}/messages'
-      .replaceAll('{sessionId}', sessionId.toString());
+    final path = r'/chat/sessions/messages';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = chatMessageQueryParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'queryParam', queryParam));
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -271,17 +264,13 @@ class ChatApi {
 
   /// 獲取會話消息列表
   ///
-  /// 獲取指定會話的消息列表
+  /// 通過 POST JSON 方式獲取指定會話的消息列表
   ///
   /// Parameters:
   ///
-  /// * [int] sessionId (required):
-  ///   會話ID
-  ///
-  /// * [ChatMessageQueryParam] queryParam (required):
-  ///   查詢參數
-  Future<ChatSession?> getSessionMessages(int sessionId, ChatMessageQueryParam queryParam,) async {
-    final response = await getSessionMessagesWithHttpInfo(sessionId, queryParam,);
+  /// * [ChatMessageQueryParam] chatMessageQueryParam (required):
+  Future<ChatSession?> getSessionMessages(ChatMessageQueryParam chatMessageQueryParam,) async {
+    final response = await getSessionMessagesWithHttpInfo(chatMessageQueryParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
