@@ -61,7 +61,7 @@ class ChatMessage {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? sessionId;
+  String? sessionId;
 
   /// 消息內容
   ///
@@ -253,7 +253,7 @@ class ChatMessage {
         id: mapValueOfType<int>(json, r'id'),
         senderId: mapValueOfType<int>(json, r'senderId'),
         receiverId: mapValueOfType<int>(json, r'receiverId'),
-        sessionId: mapValueOfType<int>(json, r'sessionId'),
+        sessionId: mapValueOfType<String>(json, r'sessionId'),
         content: mapValueOfType<String>(json, r'content'),
         read: mapValueOfType<bool>(json, r'read'),
         createdAt: mapDateTime(json, r'createdAt', r''),

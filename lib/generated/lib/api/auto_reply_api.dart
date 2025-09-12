@@ -126,9 +126,9 @@ class AutoReplyApi {
   /// * [int] userId (required):
   ///   用戶ID
   ///
-  /// * [int] sessionId (required):
+  /// * [String] sessionId (required):
   ///   會話ID
-  Future<Response> testAutoReplyWithHttpInfo(String message, int userId, int sessionId,) async {
+  Future<Response> testAutoReplyWithHttpInfo(String message, int userId, String sessionId,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/auto-reply/test';
 
@@ -169,9 +169,9 @@ class AutoReplyApi {
   /// * [int] userId (required):
   ///   用戶ID
   ///
-  /// * [int] sessionId (required):
+  /// * [String] sessionId (required):
   ///   會話ID
-  Future<String?> testAutoReply(String message, int userId, int sessionId,) async {
+  Future<String?> testAutoReply(String message, int userId, String sessionId,) async {
     final response = await testAutoReplyWithHttpInfo(message, userId, sessionId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));

@@ -21,8 +21,7 @@ class ChatMessageQueryParam {
     this.sortBy,
     this.sortDirection,
     this.userId,
-    this.sessionId,
-    this.chatWithUserId,
+    required this.sessionId,
     this.unreadOnly,
   });
 
@@ -99,22 +98,7 @@ class ChatMessageQueryParam {
   int? userId;
 
   /// 會話ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? sessionId;
-
-  /// 聊天對象ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? chatWithUserId;
+  String sessionId;
 
   /// 是否只查詢未讀消息
   ///
@@ -136,7 +120,6 @@ class ChatMessageQueryParam {
     other.sortDirection == sortDirection &&
     other.userId == userId &&
     other.sessionId == sessionId &&
-    other.chatWithUserId == chatWithUserId &&
     other.unreadOnly == unreadOnly;
 
   @override
@@ -150,12 +133,11 @@ class ChatMessageQueryParam {
     (sortBy == null ? 0 : sortBy!.hashCode) +
     (sortDirection == null ? 0 : sortDirection!.hashCode) +
     (userId == null ? 0 : userId!.hashCode) +
-    (sessionId == null ? 0 : sessionId!.hashCode) +
-    (chatWithUserId == null ? 0 : chatWithUserId!.hashCode) +
+    (sessionId.hashCode) +
     (unreadOnly == null ? 0 : unreadOnly!.hashCode);
 
   @override
-  String toString() => 'ChatMessageQueryParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, userId=$userId, sessionId=$sessionId, chatWithUserId=$chatWithUserId, unreadOnly=$unreadOnly]';
+  String toString() => 'ChatMessageQueryParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, userId=$userId, sessionId=$sessionId, unreadOnly=$unreadOnly]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -199,16 +181,7 @@ class ChatMessageQueryParam {
     } else {
       json[r'userId'] = null;
     }
-    if (this.sessionId != null) {
       json[r'sessionId'] = this.sessionId;
-    } else {
-      json[r'sessionId'] = null;
-    }
-    if (this.chatWithUserId != null) {
-      json[r'chatWithUserId'] = this.chatWithUserId;
-    } else {
-      json[r'chatWithUserId'] = null;
-    }
     if (this.unreadOnly != null) {
       json[r'unreadOnly'] = this.unreadOnly;
     } else {
@@ -244,8 +217,7 @@ class ChatMessageQueryParam {
         sortBy: mapValueOfType<String>(json, r'sortBy'),
         sortDirection: mapValueOfType<String>(json, r'sortDirection'),
         userId: mapValueOfType<int>(json, r'userId'),
-        sessionId: mapValueOfType<int>(json, r'sessionId'),
-        chatWithUserId: mapValueOfType<int>(json, r'chatWithUserId'),
+        sessionId: mapValueOfType<String>(json, r'sessionId')!,
         unreadOnly: mapValueOfType<bool>(json, r'unreadOnly'),
       );
     }
@@ -294,6 +266,7 @@ class ChatMessageQueryParam {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'sessionId',
   };
 }
 

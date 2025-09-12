@@ -14,6 +14,7 @@ class MessageSendResponseDTO {
   /// Returns a new [MessageSendResponseDTO] instance.
   MessageSendResponseDTO({
     this.messageId,
+    this.sessionId,
     this.status,
     this.sseStatus,
     this.receiverOnline,
@@ -29,6 +30,15 @@ class MessageSendResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? messageId;
+
+  /// 會話唯一標識ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sessionId;
 
   /// 發送狀態
   ///
@@ -72,6 +82,7 @@ class MessageSendResponseDTO {
   @override
   bool operator ==(Object other) => identical(this, other) || other is MessageSendResponseDTO &&
     other.messageId == messageId &&
+    other.sessionId == sessionId &&
     other.status == status &&
     other.sseStatus == sseStatus &&
     other.receiverOnline == receiverOnline &&
@@ -82,6 +93,7 @@ class MessageSendResponseDTO {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (messageId == null ? 0 : messageId!.hashCode) +
+    (sessionId == null ? 0 : sessionId!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
     (sseStatus == null ? 0 : sseStatus!.hashCode) +
     (receiverOnline == null ? 0 : receiverOnline!.hashCode) +
@@ -89,7 +101,7 @@ class MessageSendResponseDTO {
     (errorMessage == null ? 0 : errorMessage!.hashCode);
 
   @override
-  String toString() => 'MessageSendResponseDTO[messageId=$messageId, status=$status, sseStatus=$sseStatus, receiverOnline=$receiverOnline, sentAt=$sentAt, errorMessage=$errorMessage]';
+  String toString() => 'MessageSendResponseDTO[messageId=$messageId, sessionId=$sessionId, status=$status, sseStatus=$sseStatus, receiverOnline=$receiverOnline, sentAt=$sentAt, errorMessage=$errorMessage]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -97,6 +109,11 @@ class MessageSendResponseDTO {
       json[r'messageId'] = this.messageId;
     } else {
       json[r'messageId'] = null;
+    }
+    if (this.sessionId != null) {
+      json[r'sessionId'] = this.sessionId;
+    } else {
+      json[r'sessionId'] = null;
     }
     if (this.status != null) {
       json[r'status'] = this.status;
@@ -146,6 +163,7 @@ class MessageSendResponseDTO {
 
       return MessageSendResponseDTO(
         messageId: mapValueOfType<int>(json, r'messageId'),
+        sessionId: mapValueOfType<String>(json, r'sessionId'),
         status: mapValueOfType<String>(json, r'status'),
         sseStatus: MessageSendResponseDTOSseStatusEnum.fromJson(json[r'sseStatus']),
         receiverOnline: mapValueOfType<bool>(json, r'receiverOnline'),
@@ -217,6 +235,7 @@ class MessageSendResponseDTOSseStatusEnum {
   static const SENT = MessageSendResponseDTOSseStatusEnum._(r'SENT');
   static const RECEIVER_OFFLINE = MessageSendResponseDTOSseStatusEnum._(r'RECEIVER_OFFLINE');
   static const SENDER_OFFLINE = MessageSendResponseDTOSseStatusEnum._(r'SENDER_OFFLINE');
+  static const BOTH_OFFLINE = MessageSendResponseDTOSseStatusEnum._(r'BOTH_OFFLINE');
   static const AUTO_REPLY_SENT = MessageSendResponseDTOSseStatusEnum._(r'AUTO_REPLY_SENT');
   static const AUTO_REPLY_OFFLINE = MessageSendResponseDTOSseStatusEnum._(r'AUTO_REPLY_OFFLINE');
   static const unknownDefaultOpenApi = MessageSendResponseDTOSseStatusEnum._(r'unknown_default_open_api');
@@ -226,6 +245,7 @@ class MessageSendResponseDTOSseStatusEnum {
     SENT,
     RECEIVER_OFFLINE,
     SENDER_OFFLINE,
+    BOTH_OFFLINE,
     AUTO_REPLY_SENT,
     AUTO_REPLY_OFFLINE,
     unknownDefaultOpenApi,
@@ -270,6 +290,7 @@ class MessageSendResponseDTOSseStatusEnumTypeTransformer {
         case r'SENT': return MessageSendResponseDTOSseStatusEnum.SENT;
         case r'RECEIVER_OFFLINE': return MessageSendResponseDTOSseStatusEnum.RECEIVER_OFFLINE;
         case r'SENDER_OFFLINE': return MessageSendResponseDTOSseStatusEnum.SENDER_OFFLINE;
+        case r'BOTH_OFFLINE': return MessageSendResponseDTOSseStatusEnum.BOTH_OFFLINE;
         case r'AUTO_REPLY_SENT': return MessageSendResponseDTOSseStatusEnum.AUTO_REPLY_SENT;
         case r'AUTO_REPLY_OFFLINE': return MessageSendResponseDTOSseStatusEnum.AUTO_REPLY_OFFLINE;
         case r'unknown_default_open_api': return MessageSendResponseDTOSseStatusEnum.unknownDefaultOpenApi;

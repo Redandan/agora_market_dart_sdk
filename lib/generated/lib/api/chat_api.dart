@@ -24,12 +24,12 @@ class ChatApi {
   ///
   /// Parameters:
   ///
-  /// * [int] sessionId (required):
+  /// * [String] sessionId (required):
   ///   會話ID
-  Future<Response> clearSessionWithHttpInfo(int sessionId,) async {
+  Future<Response> clearSessionWithHttpInfo(String sessionId,) async {
     // ignore: prefer_const_declarations
     final path = r'/chat/sessions/{sessionId}/messages'
-      .replaceAll('{sessionId}', sessionId.toString());
+      .replaceAll('{sessionId}', sessionId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -58,9 +58,9 @@ class ChatApi {
   ///
   /// Parameters:
   ///
-  /// * [int] sessionId (required):
+  /// * [String] sessionId (required):
   ///   會話ID
-  Future<void> clearSession(int sessionId,) async {
+  Future<void> clearSession(String sessionId,) async {
     final response = await clearSessionWithHttpInfo(sessionId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -126,12 +126,12 @@ class ChatApi {
   ///
   /// Parameters:
   ///
-  /// * [int] sessionId (required):
+  /// * [String] sessionId (required):
   ///   會話ID
-  Future<Response> deleteSessionWithHttpInfo(int sessionId,) async {
+  Future<Response> deleteSessionWithHttpInfo(String sessionId,) async {
     // ignore: prefer_const_declarations
     final path = r'/chat/sessions/{sessionId}'
-      .replaceAll('{sessionId}', sessionId.toString());
+      .replaceAll('{sessionId}', sessionId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -160,9 +160,9 @@ class ChatApi {
   ///
   /// Parameters:
   ///
-  /// * [int] sessionId (required):
+  /// * [String] sessionId (required):
   ///   會話ID
-  Future<void> deleteSession(int sessionId,) async {
+  Future<void> deleteSession(String sessionId,) async {
     final response = await deleteSessionWithHttpInfo(sessionId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -400,12 +400,12 @@ class ChatApi {
   ///
   /// Parameters:
   ///
-  /// * [int] sessionId (required):
+  /// * [String] sessionId (required):
   ///   會話ID
-  Future<Response> markSessionReadWithHttpInfo(int sessionId,) async {
+  Future<Response> markSessionReadWithHttpInfo(String sessionId,) async {
     // ignore: prefer_const_declarations
     final path = r'/chat/sessions/{sessionId}/read'
-      .replaceAll('{sessionId}', sessionId.toString());
+      .replaceAll('{sessionId}', sessionId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -434,9 +434,9 @@ class ChatApi {
   ///
   /// Parameters:
   ///
-  /// * [int] sessionId (required):
+  /// * [String] sessionId (required):
   ///   會話ID
-  Future<void> markSessionRead(int sessionId,) async {
+  Future<void> markSessionRead(String sessionId,) async {
     final response = await markSessionReadWithHttpInfo(sessionId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -507,12 +507,12 @@ class ChatApi {
   ///
   /// Parameters:
   ///
-  /// * [int] sessionId (required):
+  /// * [String] sessionId (required):
   ///   會話ID
-  Future<Response> toggleSessionPinWithHttpInfo(int sessionId,) async {
+  Future<Response> toggleSessionPinWithHttpInfo(String sessionId,) async {
     // ignore: prefer_const_declarations
     final path = r'/chat/sessions/{sessionId}/pin'
-      .replaceAll('{sessionId}', sessionId.toString());
+      .replaceAll('{sessionId}', sessionId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -541,9 +541,9 @@ class ChatApi {
   ///
   /// Parameters:
   ///
-  /// * [int] sessionId (required):
+  /// * [String] sessionId (required):
   ///   會話ID
-  Future<ChatSession?> toggleSessionPin(int sessionId,) async {
+  Future<ChatSession?> toggleSessionPin(String sessionId,) async {
     final response = await toggleSessionPinWithHttpInfo(sessionId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
