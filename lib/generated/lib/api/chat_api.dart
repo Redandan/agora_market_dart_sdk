@@ -392,6 +392,57 @@ class ChatApi {
     return null;
   }
 
+  /// 標記消息已讀
+  ///
+  /// 標記指定消息為已讀狀態
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] messageId (required):
+  ///   消息ID
+  Future<Response> markMessageReadWithHttpInfo(int messageId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/chat/messages/{messageId}/read'
+      .replaceAll('{messageId}', messageId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 標記消息已讀
+  ///
+  /// 標記指定消息為已讀狀態
+  ///
+  /// Parameters:
+  ///
+  /// * [int] messageId (required):
+  ///   消息ID
+  Future<void> markMessageRead(int messageId,) async {
+    final response = await markMessageReadWithHttpInfo(messageId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
   /// 標記會話為已讀
   ///
   /// 將指定會話的所有消息標記為已讀
@@ -497,6 +548,110 @@ class ChatApi {
     
     }
     return null;
+  }
+
+  /// 開始輸入
+  ///
+  /// 通知對方用戶開始輸入消息
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] receiverId (required):
+  ///   接收者ID
+  Future<Response> startTypingWithHttpInfo(int receiverId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/chat/typing/start';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'receiverId', receiverId));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 開始輸入
+  ///
+  /// 通知對方用戶開始輸入消息
+  ///
+  /// Parameters:
+  ///
+  /// * [int] receiverId (required):
+  ///   接收者ID
+  Future<void> startTyping(int receiverId,) async {
+    final response = await startTypingWithHttpInfo(receiverId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// 停止輸入
+  ///
+  /// 通知對方用戶停止輸入消息
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] receiverId (required):
+  ///   接收者ID
+  Future<Response> stopTypingWithHttpInfo(int receiverId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/chat/typing/stop';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'receiverId', receiverId));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 停止輸入
+  ///
+  /// 通知對方用戶停止輸入消息
+  ///
+  /// Parameters:
+  ///
+  /// * [int] receiverId (required):
+  ///   接收者ID
+  Future<void> stopTyping(int receiverId,) async {
+    final response = await stopTypingWithHttpInfo(receiverId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
   }
 
   /// 置頂/取消置頂會話

@@ -51,6 +51,7 @@ part 'api/promo_codes_api.dart';
 part 'api/public_controller_api.dart';
 part 'api/reviews_api.dart';
 part 'api/sse_api.dart';
+part 'api/sse_test_api.dart';
 part 'api/staking_api.dart';
 part 'api/stores_api.dart';
 part 'api/test_api.dart';

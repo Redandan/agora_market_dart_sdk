@@ -224,8 +224,11 @@ Class | Method | HTTP request | Description
 *ChatApi* | [**getSessionMessages**](doc//ChatApi.md#getsessionmessages) | **POST** /chat/sessions/messages | 獲取會話消息列表
 *ChatApi* | [**getUnreadCount**](doc//ChatApi.md#getunreadcount) | **GET** /chat/unread/count | 獲取未讀消息數
 *ChatApi* | [**listSessions**](doc//ChatApi.md#listsessions) | **GET** /chat/sessions | 獲取聊天會話列表
+*ChatApi* | [**markMessageRead**](doc//ChatApi.md#markmessageread) | **POST** /chat/messages/{messageId}/read | 標記消息已讀
 *ChatApi* | [**markSessionRead**](doc//ChatApi.md#marksessionread) | **PUT** /chat/sessions/{sessionId}/read | 標記會話為已讀
 *ChatApi* | [**sendMessage**](doc//ChatApi.md#sendmessage) | **POST** /chat/messages | 發送消息
+*ChatApi* | [**startTyping**](doc//ChatApi.md#starttyping) | **POST** /chat/typing/start | 開始輸入
+*ChatApi* | [**stopTyping**](doc//ChatApi.md#stoptyping) | **POST** /chat/typing/stop | 停止輸入
 *ChatApi* | [**toggleSessionPin**](doc//ChatApi.md#togglesessionpin) | **PUT** /chat/sessions/{sessionId}/pin | 置頂/取消置頂會話
 *ChatApi* | [**updateMessage**](doc//ChatApi.md#updatemessage) | **PUT** /chat/messages/{messageId} | 編輯消息
 *ColdWalletApi* | [**createColdWallet**](doc//ColdWalletApi.md#createcoldwallet) | **POST** /cold-wallet | 新增冷錢包
@@ -326,6 +329,11 @@ Class | Method | HTTP request | Description
 *SseApi* | [**getConnectionStatus**](doc//SseApi.md#getconnectionstatus) | **GET** /sse/status | 獲取 SSE 連接狀態
 *SseApi* | [**getUserConnectionStatus**](doc//SseApi.md#getuserconnectionstatus) | **GET** /sse/status/user/{userId} | 檢查用戶連接狀態
 *SseApi* | [**sendMessageToUser**](doc//SseApi.md#sendmessagetouser) | **POST** /sse/send/user/{userId} | 向特定用戶發送消息
+*SseTestApi* | [**testAuthEvent**](doc//SseTestApi.md#testauthevent) | **POST** /sse-test/auth-event | 測試認證事件
+*SseTestApi* | [**testBalanceChange**](doc//SseTestApi.md#testbalancechange) | **POST** /sse-test/balance-change | 測試餘額變動事件
+*SseTestApi* | [**testOrderEvent**](doc//SseTestApi.md#testorderevent) | **POST** /sse-test/order-event | 測試訂單事件
+*SseTestApi* | [**testSystemEvent**](doc//SseTestApi.md#testsystemevent) | **POST** /sse-test/system-event | 測試系統事件
+*SseTestApi* | [**testTypingEvent**](doc//SseTestApi.md#testtypingevent) | **POST** /sse-test/typing-event | 測試輸入事件
 *StakingApi* | [**applyStaking**](doc//StakingApi.md#applystaking) | **POST** /staking/apply | 申請質押
 *StakingApi* | [**getActiveStakings**](doc//StakingApi.md#getactivestakings) | **GET** /staking/active | 查詢正在進行中的質押
 *StakingApi* | [**getStakingList**](doc//StakingApi.md#getstakinglist) | **GET** /staking/list | 獲取質押記錄列表
