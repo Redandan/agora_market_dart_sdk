@@ -40,6 +40,7 @@ class CartItemResponse {
     this.createdAt,
     this.updatedAt,
     this.shippingAddressOptions = const [],
+    this.shippingOptions,
   });
 
   /// 購物車項目ID
@@ -273,6 +274,14 @@ class CartItemResponse {
   /// 運送地址選項列表
   List<ShippingAddressOption> shippingAddressOptions;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  ShippingOptions? shippingOptions;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CartItemResponse &&
     other.id == id &&
@@ -301,7 +310,8 @@ class CartItemResponse {
     other.purchaseRestrictionReason == purchaseRestrictionReason &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    _deepEquality.equals(other.shippingAddressOptions, shippingAddressOptions);
+    _deepEquality.equals(other.shippingAddressOptions, shippingAddressOptions) &&
+    other.shippingOptions == shippingOptions;
 
   @override
   int get hashCode =>
@@ -332,10 +342,11 @@ class CartItemResponse {
     (purchaseRestrictionReason == null ? 0 : purchaseRestrictionReason!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (shippingAddressOptions.hashCode);
+    (shippingAddressOptions.hashCode) +
+    (shippingOptions == null ? 0 : shippingOptions!.hashCode);
 
   @override
-  String toString() => 'CartItemResponse[id=$id, productId=$productId, productTitle=$productTitle, productDescription=$productDescription, productImage=$productImage, quantity=$quantity, unitPrice=$unitPrice, currency=$currency, shippingFee=$shippingFee, subtotal=$subtotal, totalPrice=$totalPrice, sellerId=$sellerId, sellerName=$sellerName, pickupAddress=$pickupAddress, selectedSpecifications=$selectedSpecifications, specificationDescription=$specificationDescription, sku=$sku, brand=$brand, availableStock=$availableStock, isInStock=$isInStock, stockStatus=$stockStatus, stockWarning=$stockWarning, canPurchase=$canPurchase, purchaseRestrictionReason=$purchaseRestrictionReason, createdAt=$createdAt, updatedAt=$updatedAt, shippingAddressOptions=$shippingAddressOptions]';
+  String toString() => 'CartItemResponse[id=$id, productId=$productId, productTitle=$productTitle, productDescription=$productDescription, productImage=$productImage, quantity=$quantity, unitPrice=$unitPrice, currency=$currency, shippingFee=$shippingFee, subtotal=$subtotal, totalPrice=$totalPrice, sellerId=$sellerId, sellerName=$sellerName, pickupAddress=$pickupAddress, selectedSpecifications=$selectedSpecifications, specificationDescription=$specificationDescription, sku=$sku, brand=$brand, availableStock=$availableStock, isInStock=$isInStock, stockStatus=$stockStatus, stockWarning=$stockWarning, canPurchase=$canPurchase, purchaseRestrictionReason=$purchaseRestrictionReason, createdAt=$createdAt, updatedAt=$updatedAt, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -466,6 +477,11 @@ class CartItemResponse {
       json[r'updatedAt'] = null;
     }
       json[r'shippingAddressOptions'] = this.shippingAddressOptions;
+    if (this.shippingOptions != null) {
+      json[r'shippingOptions'] = this.shippingOptions;
+    } else {
+      json[r'shippingOptions'] = null;
+    }
     return json;
   }
 
@@ -515,6 +531,7 @@ class CartItemResponse {
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         shippingAddressOptions: ShippingAddressOption.listFromJson(json[r'shippingAddressOptions']),
+        shippingOptions: ShippingOptions.fromJson(json[r'shippingOptions']),
       );
     }
     return null;

@@ -3397,7 +3397,10 @@ class DefaultApi {
   ///
   /// * [int] size:
   ///   每頁大小
-  Future<Response> getUserCartWithHttpInfo({ int? page, int? size, }) async {
+  ///
+  /// * [bool] includeShippingOptions:
+  ///   是否包含運送選項
+  Future<Response> getUserCartWithHttpInfo({ int? page, int? size, bool? includeShippingOptions, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/cart';
 
@@ -3413,6 +3416,9 @@ class DefaultApi {
     }
     if (size != null) {
       queryParams.addAll(_queryParams('', 'size', size));
+    }
+    if (includeShippingOptions != null) {
+      queryParams.addAll(_queryParams('', 'includeShippingOptions', includeShippingOptions));
     }
 
     const contentTypes = <String>[];
@@ -3440,8 +3446,11 @@ class DefaultApi {
   ///
   /// * [int] size:
   ///   每頁大小
-  Future<PageCartItemResponse?> getUserCart({ int? page, int? size, }) async {
-    final response = await getUserCartWithHttpInfo( page: page, size: size, );
+  ///
+  /// * [bool] includeShippingOptions:
+  ///   是否包含運送選項
+  Future<PageCartItemResponse?> getUserCart({ int? page, int? size, bool? includeShippingOptions, }) async {
+    final response = await getUserCartWithHttpInfo( page: page, size: size, includeShippingOptions: includeShippingOptions, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
