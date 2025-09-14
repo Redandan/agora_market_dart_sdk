@@ -13,8 +13,8 @@ part of openapi.api;
 class PageCartItemResponse {
   /// Returns a new [PageCartItemResponse] instance.
   PageCartItemResponse({
-    this.totalElements,
     this.totalPages,
+    this.totalElements,
     this.sort,
     this.pageable,
     this.numberOfElements,
@@ -32,7 +32,7 @@ class PageCartItemResponse {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalElements;
+  int? totalPages;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -40,7 +40,7 @@ class PageCartItemResponse {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalPages;
+  int? totalElements;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -110,8 +110,8 @@ class PageCartItemResponse {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PageCartItemResponse &&
-    other.totalElements == totalElements &&
     other.totalPages == totalPages &&
+    other.totalElements == totalElements &&
     other.sort == sort &&
     other.pageable == pageable &&
     other.numberOfElements == numberOfElements &&
@@ -125,8 +125,8 @@ class PageCartItemResponse {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalElements == null ? 0 : totalElements!.hashCode) +
     (totalPages == null ? 0 : totalPages!.hashCode) +
+    (totalElements == null ? 0 : totalElements!.hashCode) +
     (sort == null ? 0 : sort!.hashCode) +
     (pageable == null ? 0 : pageable!.hashCode) +
     (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
@@ -138,19 +138,19 @@ class PageCartItemResponse {
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageCartItemResponse[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, pageable=$pageable, numberOfElements=$numberOfElements, first=$first, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'PageCartItemResponse[totalPages=$totalPages, totalElements=$totalElements, sort=$sort, pageable=$pageable, numberOfElements=$numberOfElements, first=$first, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.totalElements != null) {
-      json[r'totalElements'] = this.totalElements;
-    } else {
-      json[r'totalElements'] = null;
-    }
     if (this.totalPages != null) {
       json[r'totalPages'] = this.totalPages;
     } else {
       json[r'totalPages'] = null;
+    }
+    if (this.totalElements != null) {
+      json[r'totalElements'] = this.totalElements;
+    } else {
+      json[r'totalElements'] = null;
     }
     if (this.sort != null) {
       json[r'sort'] = this.sort;
@@ -215,8 +215,8 @@ class PageCartItemResponse {
       }());
 
       return PageCartItemResponse(
-        totalElements: mapValueOfType<int>(json, r'totalElements'),
         totalPages: mapValueOfType<int>(json, r'totalPages'),
+        totalElements: mapValueOfType<int>(json, r'totalElements'),
         sort: SortObject.fromJson(json[r'sort']),
         pageable: PageableObject.fromJson(json[r'pageable']),
         numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
