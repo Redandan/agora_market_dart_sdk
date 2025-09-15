@@ -488,6 +488,8 @@ class ApiClient {
           return SalesStats.fromJson(value);
         case 'ScheduledTaskResponse':
           return ScheduledTaskResponse.fromJson(value);
+        case 'SellerOrderStatsDTO':
+          return SellerOrderStatsDTO.fromJson(value);
         case 'ShippingAddress':
           return ShippingAddress.fromJson(value);
         case 'ShippingAddressOption':

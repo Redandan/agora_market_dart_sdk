@@ -210,6 +210,7 @@ part 'model/review_statistics_dto.dart';
 part 'model/review_update_param.dart';
 part 'model/sales_stats.dart';
 part 'model/scheduled_task_response.dart';
+part 'model/seller_order_stats_dto.dart';
 part 'model/shipping_address.dart';
 part 'model/shipping_address_option.dart';
 part 'model/shipping_company_enum.dart';
