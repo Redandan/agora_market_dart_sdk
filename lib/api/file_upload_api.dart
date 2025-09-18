@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:http/http.dart' as http;
 import 'package:agora_market_dart_sdk/generated/lib/api.dart';
+import 'api_response_file_upload_response.dart';
 
 /// 自定义文件上传API
 /// 这个文件不会被OpenAPI Generator覆盖，可以安全地添加自定义逻辑

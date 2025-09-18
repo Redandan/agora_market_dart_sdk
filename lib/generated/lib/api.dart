@@ -122,7 +122,6 @@ part 'model/file_download_response.dart';
 part 'model/file_info_response.dart';
 part 'model/file_list_response.dart';
 part 'model/file_upload_response.dart';
-part 'model/api_response_file_upload_response.dart';
 part 'model/human_intervention_settings.dart';
 part 'model/issue_search_param.dart';
 part 'model/issue_status_enum.dart';
