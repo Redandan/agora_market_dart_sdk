@@ -249,17 +249,10 @@ Class | Method | HTTP request | Description
 *EnumTranslationsApi* | [**getLogisticsServiceTypeTranslations**](doc//EnumTranslationsApi.md#getlogisticsservicetypetranslations) | **GET** /api/enums/logistics-service-types | 獲取物流服務類型枚舉翻譯
 *EnumTranslationsApi* | [**getShippingCompanyEnumToDescriptionMap**](doc//EnumTranslationsApi.md#getshippingcompanyenumtodescriptionmap) | **GET** /api/enums/shipping-companies/map | 獲取物流公司枚舉映射
 *EnumTranslationsApi* | [**getShippingCompanyTranslations**](doc//EnumTranslationsApi.md#getshippingcompanytranslations) | **GET** /api/enums/shipping-companies | 獲取物流公司枚舉翻譯
-*FileManagementApi* | [**batchRefreshUrls**](doc//FileManagementApi.md#batchrefreshurls) | **POST** /files/records/batch/refresh | 批量刷新文件URL
-*FileManagementApi* | [**cleanupAllInvalidProductUrls**](doc//FileManagementApi.md#cleanupallinvalidproducturls) | **POST** /files/records/cleanup-all-invalid-product-urls | 批量清理所有商品失效URL
-*FileManagementApi* | [**cleanupInvalidProductUrls**](doc//FileManagementApi.md#cleanupinvalidproducturls) | **POST** /files/records/cleanup-invalid-product-urls | 清理商品失效URL
-*FileManagementApi* | [**deleteFileRecord**](doc//FileManagementApi.md#deletefilerecord) | **DELETE** /files/records | 刪除文件記錄和存儲文件
-*FileManagementApi* | [**deleteFileRecordsByBusiness**](doc//FileManagementApi.md#deletefilerecordsbybusiness) | **DELETE** /files/records/business | 根據業務關聯刪除文件記錄
-*FileManagementApi* | [**fixFileRecordAssociation**](doc//FileManagementApi.md#fixfilerecordassociation) | **POST** /files/records/fix-association | 修復文件記錄關聯
-*FileManagementApi* | [**getFileRecordById**](doc//FileManagementApi.md#getfilerecordbyid) | **GET** /files/records/{id} | 根據ID獲取文件記錄
-*FileManagementApi* | [**refreshPresignedUrl**](doc//FileManagementApi.md#refreshpresignedurl) | **POST** /files/records/{id}/refresh-url | 刷新預簽名URL
-*FileManagementApi* | [**searchFileRecords**](doc//FileManagementApi.md#searchfilerecords) | **POST** /files/search | 搜索文件記錄
-*FileManagementApi* | [**triggerScheduledTask**](doc//FileManagementApi.md#triggerscheduledtask) | **POST** /files/records/trigger-scheduled-task | 手動觸發定時任務
-*FileManagementApi* | [**updateFileRecord**](doc//FileManagementApi.md#updatefilerecord) | **PUT** /files/records/{id} | 更新文件記錄
+*FileManagementApi* | [**checkFileExists**](doc//FileManagementApi.md#checkfileexists) | **GET** /files/exists/{objectName} | 檢查文件是否存在
+*FileManagementApi* | [**deleteFile**](doc//FileManagementApi.md#deletefile) | **DELETE** /files/{objectName} | 刪除文件
+*FileManagementApi* | [**downloadFile**](doc//FileManagementApi.md#downloadfile) | **GET** /files/download/{objectName} | 下載文件
+*FileManagementApi* | [**listFiles**](doc//FileManagementApi.md#listfiles) | **GET** /files/list | 列出 OCI 桶中的文件
 *MemberDisputesApi* | [**createDispute**](doc//MemberDisputesApi.md#createdispute) | **POST** /disputes | 創建糾紛
 *MemberDisputesApi* | [**getDisputeDetail**](doc//MemberDisputesApi.md#getdisputedetail) | **GET** /disputes/{disputeId} | 查看糾紛詳情
 *MemberDisputesApi* | [**replyDispute**](doc//MemberDisputesApi.md#replydispute) | **POST** /disputes/{disputeId}/reply | 回覆糾紛
@@ -345,13 +338,9 @@ Class | Method | HTTP request | Description
 *StoresApi* | [**getShippingConfig**](doc//StoresApi.md#getshippingconfig) | **GET** /stores/shipping-config | 獲取商店物流設定
 *StoresApi* | [**getStoreAnalytics**](doc//StoresApi.md#getstoreanalytics) | **GET** /stores/analytics | 獲取商店分析數據
 *StoresApi* | [**getStoreBySellerId**](doc//StoresApi.md#getstorebysellerid) | **GET** /stores/{sellerId} | 根據賣家ID獲取商店信息
-*StoresApi* | [**removeStoreCover**](doc//StoresApi.md#removestorecover) | **DELETE** /stores/{storeId}/cover | 移除商店封面圖片
-*StoresApi* | [**removeStoreLogo**](doc//StoresApi.md#removestorelogo) | **DELETE** /stores/{storeId}/logo | 移除商店Logo
 *StoresApi* | [**searchMyStoreProducts**](doc//StoresApi.md#searchmystoreproducts) | **POST** /stores/products/search | 搜索我的商店商品
 *StoresApi* | [**updateShippingConfig**](doc//StoresApi.md#updateshippingconfig) | **POST** /stores/shipping-config | 更新商店物流設定
 *StoresApi* | [**updateStore**](doc//StoresApi.md#updatestore) | **POST** /stores/update | 更新商店
-*StoresApi* | [**uploadStoreCover**](doc//StoresApi.md#uploadstorecover) | **POST** /stores/{storeId}/cover/upload | 上傳商店封面圖片
-*StoresApi* | [**uploadStoreLogo**](doc//StoresApi.md#uploadstorelogo) | **POST** /stores/{storeId}/logo/upload | 上傳商店Logo
 *TestApi* | [**generateAutoReplyTestData**](doc//TestApi.md#generateautoreplytestdata) | **POST** /test/auto-reply | 生成自動回復測試數據
 *TestApi* | [**generateDeliveryAcceptOrderTestData**](doc//TestApi.md#generatedeliveryacceptordertestdata) | **POST** /test/delivery-accept-order | 生成配送員接單測試數據
 *TestApi* | [**generateLogisticsOrder**](doc//TestApi.md#generatelogisticsorder) | **POST** /test/logistics | 
@@ -380,15 +369,15 @@ Class | Method | HTTP request | Description
  - [AdminStoreSearchParam](doc//AdminStoreSearchParam.md)
  - [AdminStoreUpdateParam](doc//AdminStoreUpdateParam.md)
  - [ApiResponseColdWallet](doc//ApiResponseColdWallet.md)
- - [ApiResponseFileOperationResponse](doc//ApiResponseFileOperationResponse.md)
- - [ApiResponseFileRecordResponse](doc//ApiResponseFileRecordResponse.md)
+ - [ApiResponseFileDownloadResponse](doc//ApiResponseFileDownloadResponse.md)
+ - [ApiResponseFileInfoResponse](doc//ApiResponseFileInfoResponse.md)
+ - [ApiResponseFileListResponse](doc//ApiResponseFileListResponse.md)
  - [ApiResponseListPostResponse](doc//ApiResponseListPostResponse.md)
  - [ApiResponseMapStringObject](doc//ApiResponseMapStringObject.md)
  - [ApiResponsePageColdWallet](doc//ApiResponsePageColdWallet.md)
  - [ApiResponsePageResponsePostResponse](doc//ApiResponsePageResponsePostResponse.md)
  - [ApiResponsePostResponse](doc//ApiResponsePostResponse.md)
  - [ApiResponsePostStatistics](doc//ApiResponsePostStatistics.md)
- - [ApiResponseScheduledTaskResponse](doc//ApiResponseScheduledTaskResponse.md)
  - [ApiResponseStorePostStatistics](doc//ApiResponseStorePostStatistics.md)
  - [ApiResponseString](doc//ApiResponseString.md)
  - [ApiResponseUserPostStatistics](doc//ApiResponseUserPostStatistics.md)
@@ -435,10 +424,9 @@ Class | Method | HTTP request | Description
  - [DisputeSearchParam](doc//DisputeSearchParam.md)
  - [DisputeStatisticsDTO](doc//DisputeStatisticsDTO.md)
  - [DisputeStatusEnum](doc//DisputeStatusEnum.md)
- - [FileOperationResponse](doc//FileOperationResponse.md)
- - [FileRecord](doc//FileRecord.md)
- - [FileRecordResponse](doc//FileRecordResponse.md)
- - [FileRecordSearchParam](doc//FileRecordSearchParam.md)
+ - [FileDownloadResponse](doc//FileDownloadResponse.md)
+ - [FileInfoResponse](doc//FileInfoResponse.md)
+ - [FileListResponse](doc//FileListResponse.md)
  - [HumanInterventionSettings](doc//HumanInterventionSettings.md)
  - [IssueSearchParam](doc//IssueSearchParam.md)
  - [IssueStatusEnum](doc//IssueStatusEnum.md)
@@ -479,7 +467,6 @@ Class | Method | HTTP request | Description
  - [PageProduct](doc//PageProduct.md)
  - [PagePromoCode](doc//PagePromoCode.md)
  - [PageRecharge](doc//PageRecharge.md)
- - [PageResponseFileRecordResponse](doc//PageResponseFileRecordResponse.md)
  - [PageResponsePostResponse](doc//PageResponsePostResponse.md)
  - [PageReview](doc//PageReview.md)
  - [PageStaking](doc//PageStaking.md)
@@ -526,7 +513,6 @@ Class | Method | HTTP request | Description
  - [ReviewStatisticsDTO](doc//ReviewStatisticsDTO.md)
  - [ReviewUpdateParam](doc//ReviewUpdateParam.md)
  - [SalesStats](doc//SalesStats.md)
- - [ScheduledTaskResponse](doc//ScheduledTaskResponse.md)
  - [SellerOrderStatsDTO](doc//SellerOrderStatsDTO.md)
  - [ShippingAddress](doc//ShippingAddress.md)
  - [ShippingAddressOption](doc//ShippingAddressOption.md)
@@ -541,7 +527,6 @@ Class | Method | HTTP request | Description
  - [Store](doc//Store.md)
  - [StoreAnalyticsDTO](doc//StoreAnalyticsDTO.md)
  - [StoreCreateParam](doc//StoreCreateParam.md)
- - [StoreImageUploadParam](doc//StoreImageUploadParam.md)
  - [StorePostStatistics](doc//StorePostStatistics.md)
  - [StoreProductSearchParam](doc//StoreProductSearchParam.md)
  - [StoreResponseDTO](doc//StoreResponseDTO.md)

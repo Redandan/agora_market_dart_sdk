@@ -36,7 +36,7 @@ class ProductCreateParam {
     this.estimatedDeliveryDays,
     this.supportsScheduledShipping,
     this.shippingDateRange,
-    this.supportedShippingCompanies = const {},
+    this.supportedShippingCompanies = const [],
     this.shippingFees = const {},
     required this.defaultShippingCompany,
     this.freeShippingThreshold,
@@ -194,7 +194,7 @@ class ProductCreateParam {
   int? shippingDateRange;
 
   /// 支援的物流公司
-  Set<ShippingCompanyEnum> supportedShippingCompanies;
+  List<ShippingCompanyEnum> supportedShippingCompanies;
 
   /// 各物流公司運費對應表
   Map<String, num> shippingFees;
@@ -370,7 +370,7 @@ class ProductCreateParam {
     } else {
       json[r'shippingDateRange'] = null;
     }
-      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies.toList(growable: false);
+      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
       json[r'shippingFees'] = this.shippingFees;
       json[r'defaultShippingCompany'] = this.defaultShippingCompany;
     if (this.freeShippingThreshold != null) {
@@ -438,7 +438,7 @@ class ProductCreateParam {
         estimatedDeliveryDays: mapValueOfType<int>(json, r'estimatedDeliveryDays'),
         supportsScheduledShipping: mapValueOfType<bool>(json, r'supportsScheduledShipping'),
         shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
-        supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']).toSet(),
+        supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']),
         shippingFees: mapCastOfType<String, num>(json, r'shippingFees')!,
         defaultShippingCompany: ShippingCompanyEnum.fromJson(json[r'defaultShippingCompany'])!,
         freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),

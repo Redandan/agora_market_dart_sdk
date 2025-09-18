@@ -10,196 +10,183 @@
 
 part of openapi.api;
 
-class PageColdWallet {
-  /// Returns a new [PageColdWallet] instance.
-  PageColdWallet({
-    this.totalElements,
-    this.totalPages,
-    this.sort,
-    this.numberOfElements,
-    this.pageable,
-    this.first,
-    this.last,
-    this.size,
-    this.content = const [],
-    this.number,
-    this.empty,
+class FileDownloadResponse {
+  /// Returns a new [FileDownloadResponse] instance.
+  FileDownloadResponse({
+    this.objectName,
+    this.fileSize,
+    this.content,
+    this.contentType,
+    this.fileExtension,
+    this.downloadTime,
+    this.success,
+    this.errorMessage,
+    this.fileSizeFormatted,
   });
 
+  /// 文件名
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalElements;
+  String? objectName;
 
+  /// 文件大小（字节）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalPages;
+  int? fileSize;
 
+  /// 文件内容（Base64编码）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SortObject? sort;
+  String? content;
 
+  /// 文件类型
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? numberOfElements;
+  String? contentType;
 
+  /// 文件扩展名
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PageableObject? pageable;
+  String? fileExtension;
 
+  /// 下载时间
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? first;
+  DateTime? downloadTime;
 
+  /// 是否下载成功
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? last;
+  bool? success;
 
+  /// 错误信息（如果下载失败）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? size;
+  String? errorMessage;
 
-  List<ColdWallet> content;
-
+  /// 文件大小（人类可读格式）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? number;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? empty;
+  String? fileSizeFormatted;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageColdWallet &&
-    other.totalElements == totalElements &&
-    other.totalPages == totalPages &&
-    other.sort == sort &&
-    other.numberOfElements == numberOfElements &&
-    other.pageable == pageable &&
-    other.first == first &&
-    other.last == last &&
-    other.size == size &&
-    _deepEquality.equals(other.content, content) &&
-    other.number == number &&
-    other.empty == empty;
+  bool operator ==(Object other) => identical(this, other) || other is FileDownloadResponse &&
+    other.objectName == objectName &&
+    other.fileSize == fileSize &&
+    other.content == content &&
+    other.contentType == contentType &&
+    other.fileExtension == fileExtension &&
+    other.downloadTime == downloadTime &&
+    other.success == success &&
+    other.errorMessage == errorMessage &&
+    other.fileSizeFormatted == fileSizeFormatted;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalElements == null ? 0 : totalElements!.hashCode) +
-    (totalPages == null ? 0 : totalPages!.hashCode) +
-    (sort == null ? 0 : sort!.hashCode) +
-    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
-    (pageable == null ? 0 : pageable!.hashCode) +
-    (first == null ? 0 : first!.hashCode) +
-    (last == null ? 0 : last!.hashCode) +
-    (size == null ? 0 : size!.hashCode) +
-    (content.hashCode) +
-    (number == null ? 0 : number!.hashCode) +
-    (empty == null ? 0 : empty!.hashCode);
+    (objectName == null ? 0 : objectName!.hashCode) +
+    (fileSize == null ? 0 : fileSize!.hashCode) +
+    (content == null ? 0 : content!.hashCode) +
+    (contentType == null ? 0 : contentType!.hashCode) +
+    (fileExtension == null ? 0 : fileExtension!.hashCode) +
+    (downloadTime == null ? 0 : downloadTime!.hashCode) +
+    (success == null ? 0 : success!.hashCode) +
+    (errorMessage == null ? 0 : errorMessage!.hashCode) +
+    (fileSizeFormatted == null ? 0 : fileSizeFormatted!.hashCode);
 
   @override
-  String toString() => 'PageColdWallet[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, numberOfElements=$numberOfElements, pageable=$pageable, first=$first, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'FileDownloadResponse[objectName=$objectName, fileSize=$fileSize, content=$content, contentType=$contentType, fileExtension=$fileExtension, downloadTime=$downloadTime, success=$success, errorMessage=$errorMessage, fileSizeFormatted=$fileSizeFormatted]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.totalElements != null) {
-      json[r'totalElements'] = this.totalElements;
+    if (this.objectName != null) {
+      json[r'objectName'] = this.objectName;
     } else {
-      json[r'totalElements'] = null;
+      json[r'objectName'] = null;
     }
-    if (this.totalPages != null) {
-      json[r'totalPages'] = this.totalPages;
+    if (this.fileSize != null) {
+      json[r'fileSize'] = this.fileSize;
     } else {
-      json[r'totalPages'] = null;
+      json[r'fileSize'] = null;
     }
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
-    } else {
-      json[r'sort'] = null;
-    }
-    if (this.numberOfElements != null) {
-      json[r'numberOfElements'] = this.numberOfElements;
-    } else {
-      json[r'numberOfElements'] = null;
-    }
-    if (this.pageable != null) {
-      json[r'pageable'] = this.pageable;
-    } else {
-      json[r'pageable'] = null;
-    }
-    if (this.first != null) {
-      json[r'first'] = this.first;
-    } else {
-      json[r'first'] = null;
-    }
-    if (this.last != null) {
-      json[r'last'] = this.last;
-    } else {
-      json[r'last'] = null;
-    }
-    if (this.size != null) {
-      json[r'size'] = this.size;
-    } else {
-      json[r'size'] = null;
-    }
+    if (this.content != null) {
       json[r'content'] = this.content;
-    if (this.number != null) {
-      json[r'number'] = this.number;
     } else {
-      json[r'number'] = null;
+      json[r'content'] = null;
     }
-    if (this.empty != null) {
-      json[r'empty'] = this.empty;
+    if (this.contentType != null) {
+      json[r'contentType'] = this.contentType;
     } else {
-      json[r'empty'] = null;
+      json[r'contentType'] = null;
+    }
+    if (this.fileExtension != null) {
+      json[r'fileExtension'] = this.fileExtension;
+    } else {
+      json[r'fileExtension'] = null;
+    }
+    if (this.downloadTime != null) {
+      json[r'downloadTime'] = this.downloadTime!.toUtc().toIso8601String();
+    } else {
+      json[r'downloadTime'] = null;
+    }
+    if (this.success != null) {
+      json[r'success'] = this.success;
+    } else {
+      json[r'success'] = null;
+    }
+    if (this.errorMessage != null) {
+      json[r'errorMessage'] = this.errorMessage;
+    } else {
+      json[r'errorMessage'] = null;
+    }
+    if (this.fileSizeFormatted != null) {
+      json[r'fileSizeFormatted'] = this.fileSizeFormatted;
+    } else {
+      json[r'fileSizeFormatted'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageColdWallet] instance and imports its values from
+  /// Returns a new [FileDownloadResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageColdWallet? fromJson(dynamic value) {
+  static FileDownloadResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -208,34 +195,32 @@ class PageColdWallet {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageColdWallet[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageColdWallet[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "FileDownloadResponse[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "FileDownloadResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageColdWallet(
-        totalElements: mapValueOfType<int>(json, r'totalElements'),
-        totalPages: mapValueOfType<int>(json, r'totalPages'),
-        sort: SortObject.fromJson(json[r'sort']),
-        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
-        pageable: PageableObject.fromJson(json[r'pageable']),
-        first: mapValueOfType<bool>(json, r'first'),
-        last: mapValueOfType<bool>(json, r'last'),
-        size: mapValueOfType<int>(json, r'size'),
-        content: ColdWallet.listFromJson(json[r'content']),
-        number: mapValueOfType<int>(json, r'number'),
-        empty: mapValueOfType<bool>(json, r'empty'),
+      return FileDownloadResponse(
+        objectName: mapValueOfType<String>(json, r'objectName'),
+        fileSize: mapValueOfType<int>(json, r'fileSize'),
+        content: mapValueOfType<String>(json, r'content'),
+        contentType: mapValueOfType<String>(json, r'contentType'),
+        fileExtension: mapValueOfType<String>(json, r'fileExtension'),
+        downloadTime: mapDateTime(json, r'downloadTime', r''),
+        success: mapValueOfType<bool>(json, r'success'),
+        errorMessage: mapValueOfType<String>(json, r'errorMessage'),
+        fileSizeFormatted: mapValueOfType<String>(json, r'fileSizeFormatted'),
       );
     }
     return null;
   }
 
-  static List<PageColdWallet> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageColdWallet>[];
+  static List<FileDownloadResponse> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <FileDownloadResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageColdWallet.fromJson(row);
+        final value = FileDownloadResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -244,12 +229,12 @@ class PageColdWallet {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageColdWallet> mapFromJson(dynamic json) {
-    final map = <String, PageColdWallet>{};
+  static Map<String, FileDownloadResponse> mapFromJson(dynamic json) {
+    final map = <String, FileDownloadResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageColdWallet.fromJson(entry.value);
+        final value = FileDownloadResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -258,14 +243,14 @@ class PageColdWallet {
     return map;
   }
 
-  // maps a json object with a list of PageColdWallet-objects as value to a dart map
-  static Map<String, List<PageColdWallet>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageColdWallet>>{};
+  // maps a json object with a list of FileDownloadResponse-objects as value to a dart map
+  static Map<String, List<FileDownloadResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<FileDownloadResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageColdWallet.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = FileDownloadResponse.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

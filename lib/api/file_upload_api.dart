@@ -29,16 +29,31 @@ import 'package:agora_market_dart_sdk/generated/lib/api.dart';
 /// final file = File('path/to/image.jpg');
 /// final result = await fileUploadApi.uploadFile(
 ///   file: file,
+///   businessType: 'PRODUCT',
+///   businessId: '123',
 ///   description: '用户头像',
 ///   tags: '["avatar", "profile"]',
 ///   isPublic: true
 /// );
+///
+/// if (result.isSuccess) {
+///   print('Upload successful: ${result.fileId}');
+///   print('File URL: ${result.presignedUrl}');
+///   print('File Size: ${result.fileSize} bytes');
+///   print('Content Type: ${result.contentType}');
+///   print('Business Type: ${result.businessType}');
+///   print('Is Public: ${result.isPublic}');
+/// } else {
+///   print('Upload failed: ${result.errorMessage}');
+/// }
 ///
 /// // 上传字节数据
 /// final bytes = await http.readBytes(Uri.parse('https://example.com/image.jpg'));
 /// final result = await fileUploadApi.uploadBytes(
 ///   bytes: bytes,
 ///   fileName: 'image.jpg',
+///   businessType: 'PRODUCT',
+///   businessId: '123',
 ///   description: '下载的图片'
 /// );
 /// ```
@@ -250,26 +265,27 @@ class FileUploadApi {
 
           // 使用标准的API响应模型
           final apiResponse =
-              ApiResponseFileRecordResponse.fromJson(jsonResponse);
+              ApiResponseFileUploadResponse.fromJson(jsonResponse);
 
           if (apiResponse != null &&
               apiResponse.success == true &&
               apiResponse.data != null) {
-            final fileRecord = apiResponse.data!;
+            final fileUploadResponse = apiResponse.data!;
             return FileUploadResult.success(
-              fileId: fileRecord.id?.toString() ?? '',
-              fileName: fileRecord.originalName ?? file.path.split('/').last,
-              fileSize: fileRecord.fileSize ?? length,
+              fileId: fileUploadResponse.objectName ?? '',
+              fileName: fileUploadResponse.originalFileName ??
+                  file.path.split('/').last,
+              fileSize: fileUploadResponse.fileSize ?? length,
               // 添加更多文件信息
-              presignedUrl: fileRecord.presignedUrl,
-              businessType: fileRecord.businessType,
-              businessId: fileRecord.businessId,
-              contentType: fileRecord.contentType,
-              uploadTime: fileRecord.uploadTime,
-              description: fileRecord.description,
-              tags: fileRecord.tags,
-              isPublic: fileRecord.isPublic,
-              status: fileRecord.status,
+              presignedUrl: fileUploadResponse.fileUrl,
+              businessType: fileUploadResponse.businessType,
+              businessId: null, // Not available in FileUploadResponse
+              contentType: fileUploadResponse.contentType,
+              uploadTime: fileUploadResponse.uploadTime,
+              description: null, // Not available in FileUploadResponse
+              tags: null, // Not available in FileUploadResponse
+              isPublic: fileUploadResponse.isPublic,
+              status: null, // Not available in FileUploadResponse
             );
           } else {
             return FileUploadResult.error(
@@ -411,26 +427,26 @@ class FileUploadApi {
 
           // 使用标准的API响应模型
           final apiResponse =
-              ApiResponseFileRecordResponse.fromJson(jsonResponse);
+              ApiResponseFileUploadResponse.fromJson(jsonResponse);
 
           if (apiResponse != null &&
               apiResponse.success == true &&
               apiResponse.data != null) {
-            final fileRecord = apiResponse.data!;
+            final fileUploadResponse = apiResponse.data!;
             return FileUploadResult.success(
-              fileId: fileRecord.id?.toString() ?? '',
-              fileName: fileRecord.originalName ?? fileName,
-              fileSize: fileRecord.fileSize ?? bytes.length,
+              fileId: fileUploadResponse.objectName ?? '',
+              fileName: fileUploadResponse.originalFileName ?? fileName,
+              fileSize: fileUploadResponse.fileSize ?? bytes.length,
               // 添加更多文件信息
-              presignedUrl: fileRecord.presignedUrl,
-              businessType: fileRecord.businessType,
-              businessId: fileRecord.businessId,
-              contentType: fileRecord.contentType,
-              uploadTime: fileRecord.uploadTime,
-              description: fileRecord.description,
-              tags: fileRecord.tags,
-              isPublic: fileRecord.isPublic,
-              status: fileRecord.status,
+              presignedUrl: fileUploadResponse.fileUrl,
+              businessType: fileUploadResponse.businessType,
+              businessId: null, // Not available in FileUploadResponse
+              contentType: fileUploadResponse.contentType,
+              uploadTime: fileUploadResponse.uploadTime,
+              description: null, // Not available in FileUploadResponse
+              tags: null, // Not available in FileUploadResponse
+              isPublic: fileUploadResponse.isPublic,
+              status: null, // Not available in FileUploadResponse
             );
           } else {
             return FileUploadResult.error(

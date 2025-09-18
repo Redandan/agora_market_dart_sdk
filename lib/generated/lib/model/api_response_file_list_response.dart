@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class ApiResponseFileRecordResponse {
-  /// Returns a new [ApiResponseFileRecordResponse] instance.
-  ApiResponseFileRecordResponse({
+class ApiResponseFileListResponse {
+  /// Returns a new [ApiResponseFileListResponse] instance.
+  ApiResponseFileListResponse({
     this.success,
     this.message,
     this.code,
@@ -49,10 +49,10 @@ class ApiResponseFileRecordResponse {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  FileRecordResponse? data;
+  FileListResponse? data;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ApiResponseFileRecordResponse &&
+  bool operator ==(Object other) => identical(this, other) || other is ApiResponseFileListResponse &&
     other.success == success &&
     other.message == message &&
     other.code == code &&
@@ -67,7 +67,7 @@ class ApiResponseFileRecordResponse {
     (data == null ? 0 : data!.hashCode);
 
   @override
-  String toString() => 'ApiResponseFileRecordResponse[success=$success, message=$message, code=$code, data=$data]';
+  String toString() => 'ApiResponseFileListResponse[success=$success, message=$message, code=$code, data=$data]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -94,10 +94,10 @@ class ApiResponseFileRecordResponse {
     return json;
   }
 
-  /// Returns a new [ApiResponseFileRecordResponse] instance and imports its values from
+  /// Returns a new [ApiResponseFileListResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ApiResponseFileRecordResponse? fromJson(dynamic value) {
+  static ApiResponseFileListResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -106,27 +106,27 @@ class ApiResponseFileRecordResponse {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ApiResponseFileRecordResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ApiResponseFileRecordResponse[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ApiResponseFileListResponse[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ApiResponseFileListResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ApiResponseFileRecordResponse(
+      return ApiResponseFileListResponse(
         success: mapValueOfType<bool>(json, r'success'),
         message: mapValueOfType<String>(json, r'message'),
         code: mapValueOfType<String>(json, r'code'),
-        data: FileRecordResponse.fromJson(json[r'data']),
+        data: FileListResponse.fromJson(json[r'data']),
       );
     }
     return null;
   }
 
-  static List<ApiResponseFileRecordResponse> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ApiResponseFileRecordResponse>[];
+  static List<ApiResponseFileListResponse> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ApiResponseFileListResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ApiResponseFileRecordResponse.fromJson(row);
+        final value = ApiResponseFileListResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -135,12 +135,12 @@ class ApiResponseFileRecordResponse {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ApiResponseFileRecordResponse> mapFromJson(dynamic json) {
-    final map = <String, ApiResponseFileRecordResponse>{};
+  static Map<String, ApiResponseFileListResponse> mapFromJson(dynamic json) {
+    final map = <String, ApiResponseFileListResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ApiResponseFileRecordResponse.fromJson(entry.value);
+        final value = ApiResponseFileListResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -149,14 +149,14 @@ class ApiResponseFileRecordResponse {
     return map;
   }
 
-  // maps a json object with a list of ApiResponseFileRecordResponse-objects as value to a dart map
-  static Map<String, List<ApiResponseFileRecordResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ApiResponseFileRecordResponse>>{};
+  // maps a json object with a list of ApiResponseFileListResponse-objects as value to a dart map
+  static Map<String, List<ApiResponseFileListResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ApiResponseFileListResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ApiResponseFileRecordResponse.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ApiResponseFileListResponse.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

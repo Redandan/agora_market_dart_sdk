@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class ApiResponseScheduledTaskResponse {
-  /// Returns a new [ApiResponseScheduledTaskResponse] instance.
-  ApiResponseScheduledTaskResponse({
+class ApiResponseFileUploadResponse {
+  /// Returns a new [ApiResponseFileUploadResponse] instance.
+  ApiResponseFileUploadResponse({
     this.success,
     this.message,
     this.code,
@@ -49,25 +49,28 @@ class ApiResponseScheduledTaskResponse {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  ScheduledTaskResponse? data;
+  FileUploadResponse? data;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ApiResponseScheduledTaskResponse &&
-    other.success == success &&
-    other.message == message &&
-    other.code == code &&
-    other.data == data;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ApiResponseFileUploadResponse &&
+          other.success == success &&
+          other.message == message &&
+          other.code == code &&
+          other.data == data;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (success == null ? 0 : success!.hashCode) +
-    (message == null ? 0 : message!.hashCode) +
-    (code == null ? 0 : code!.hashCode) +
-    (data == null ? 0 : data!.hashCode);
+      // ignore: unnecessary_parenthesis
+      (success == null ? 0 : success!.hashCode) +
+      (message == null ? 0 : message!.hashCode) +
+      (code == null ? 0 : code!.hashCode) +
+      (data == null ? 0 : data!.hashCode);
 
   @override
-  String toString() => 'ApiResponseScheduledTaskResponse[success=$success, message=$message, code=$code, data=$data]';
+  String toString() =>
+      'ApiResponseFileUploadResponse[success=$success, message=$message, code=$code, data=$data]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -94,10 +97,10 @@ class ApiResponseScheduledTaskResponse {
     return json;
   }
 
-  /// Returns a new [ApiResponseScheduledTaskResponse] instance and imports its values from
+  /// Returns a new [ApiResponseFileUploadResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ApiResponseScheduledTaskResponse? fromJson(dynamic value) {
+  static ApiResponseFileUploadResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -106,27 +109,32 @@ class ApiResponseScheduledTaskResponse {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ApiResponseScheduledTaskResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ApiResponseScheduledTaskResponse[$key]" has a null value in JSON.');
+          assert(json.containsKey(key),
+              'Required key "ApiResponseFileUploadResponse[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "ApiResponseFileUploadResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ApiResponseScheduledTaskResponse(
+      return ApiResponseFileUploadResponse(
         success: mapValueOfType<bool>(json, r'success'),
         message: mapValueOfType<String>(json, r'message'),
         code: mapValueOfType<String>(json, r'code'),
-        data: ScheduledTaskResponse.fromJson(json[r'data']),
+        data: FileUploadResponse.fromJson(json[r'data']),
       );
     }
     return null;
   }
 
-  static List<ApiResponseScheduledTaskResponse> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ApiResponseScheduledTaskResponse>[];
+  static List<ApiResponseFileUploadResponse> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
+    final result = <ApiResponseFileUploadResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ApiResponseScheduledTaskResponse.fromJson(row);
+        final value = ApiResponseFileUploadResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -135,12 +143,12 @@ class ApiResponseScheduledTaskResponse {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ApiResponseScheduledTaskResponse> mapFromJson(dynamic json) {
-    final map = <String, ApiResponseScheduledTaskResponse>{};
+  static Map<String, ApiResponseFileUploadResponse> mapFromJson(dynamic json) {
+    final map = <String, ApiResponseFileUploadResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ApiResponseScheduledTaskResponse.fromJson(entry.value);
+        final value = ApiResponseFileUploadResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -149,21 +157,25 @@ class ApiResponseScheduledTaskResponse {
     return map;
   }
 
-  // maps a json object with a list of ApiResponseScheduledTaskResponse-objects as value to a dart map
-  static Map<String, List<ApiResponseScheduledTaskResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ApiResponseScheduledTaskResponse>>{};
+  // maps a json object with a list of ApiResponseFileUploadResponse-objects as value to a dart map
+  static Map<String, List<ApiResponseFileUploadResponse>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
+    final map = <String, List<ApiResponseFileUploadResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ApiResponseScheduledTaskResponse.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ApiResponseFileUploadResponse.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-  };
+  static const requiredKeys = <String>{};
 }
-

@@ -194,10 +194,12 @@ class ApiClient {
           return AdminStoreUpdateParam.fromJson(value);
         case 'ApiResponseColdWallet':
           return ApiResponseColdWallet.fromJson(value);
-        case 'ApiResponseFileOperationResponse':
-          return ApiResponseFileOperationResponse.fromJson(value);
-        case 'ApiResponseFileRecordResponse':
-          return ApiResponseFileRecordResponse.fromJson(value);
+        case 'ApiResponseFileDownloadResponse':
+          return ApiResponseFileDownloadResponse.fromJson(value);
+        case 'ApiResponseFileInfoResponse':
+          return ApiResponseFileInfoResponse.fromJson(value);
+        case 'ApiResponseFileListResponse':
+          return ApiResponseFileListResponse.fromJson(value);
         case 'ApiResponseListPostResponse':
           return ApiResponseListPostResponse.fromJson(value);
         case 'ApiResponseMapStringObject':
@@ -210,8 +212,6 @@ class ApiClient {
           return ApiResponsePostResponse.fromJson(value);
         case 'ApiResponsePostStatistics':
           return ApiResponsePostStatistics.fromJson(value);
-        case 'ApiResponseScheduledTaskResponse':
-          return ApiResponseScheduledTaskResponse.fromJson(value);
         case 'ApiResponseStorePostStatistics':
           return ApiResponseStorePostStatistics.fromJson(value);
         case 'ApiResponseString':
@@ -304,14 +304,12 @@ class ApiClient {
           return DisputeStatisticsDTO.fromJson(value);
         case 'DisputeStatusEnum':
           return DisputeStatusEnumTypeTransformer().decode(value);
-        case 'FileOperationResponse':
-          return FileOperationResponse.fromJson(value);
-        case 'FileRecord':
-          return FileRecord.fromJson(value);
-        case 'FileRecordResponse':
-          return FileRecordResponse.fromJson(value);
-        case 'FileRecordSearchParam':
-          return FileRecordSearchParam.fromJson(value);
+        case 'FileDownloadResponse':
+          return FileDownloadResponse.fromJson(value);
+        case 'FileInfoResponse':
+          return FileInfoResponse.fromJson(value);
+        case 'FileListResponse':
+          return FileListResponse.fromJson(value);
         case 'HumanInterventionSettings':
           return HumanInterventionSettings.fromJson(value);
         case 'IssueSearchParam':
@@ -392,8 +390,6 @@ class ApiClient {
           return PagePromoCode.fromJson(value);
         case 'PageRecharge':
           return PageRecharge.fromJson(value);
-        case 'PageResponseFileRecordResponse':
-          return PageResponseFileRecordResponse.fromJson(value);
         case 'PageResponsePostResponse':
           return PageResponsePostResponse.fromJson(value);
         case 'PageReview':
@@ -486,8 +482,6 @@ class ApiClient {
           return ReviewUpdateParam.fromJson(value);
         case 'SalesStats':
           return SalesStats.fromJson(value);
-        case 'ScheduledTaskResponse':
-          return ScheduledTaskResponse.fromJson(value);
         case 'SellerOrderStatsDTO':
           return SellerOrderStatsDTO.fromJson(value);
         case 'ShippingAddress':
@@ -516,8 +510,6 @@ class ApiClient {
           return StoreAnalyticsDTO.fromJson(value);
         case 'StoreCreateParam':
           return StoreCreateParam.fromJson(value);
-        case 'StoreImageUploadParam':
-          return StoreImageUploadParam.fromJson(value);
         case 'StorePostStatistics':
           return StorePostStatistics.fromJson(value);
         case 'StoreProductSearchParam':

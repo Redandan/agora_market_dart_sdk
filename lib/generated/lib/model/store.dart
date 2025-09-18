@@ -38,7 +38,7 @@ class Store {
     this.totalSales,
     this.averageRating,
     this.responseRate,
-    this.supportedShippingCompanies = const {},
+    this.supportedShippingCompaniesJson,
     this.defaultShippingFee,
     this.freeShippingThreshold,
     this.shippingDescription,
@@ -49,6 +49,7 @@ class Store {
     this.createdAt,
     this.updatedAt,
     this.adminRemark,
+    this.supportedShippingCompanies = const [],
   });
 
   /// 商店擁有者ID
@@ -276,8 +277,14 @@ class Store {
   ///
   int? responseRate;
 
-  /// 支援的物流公司
-  Set<ShippingCompanyEnum> supportedShippingCompanies;
+  /// 支援的物流公司列表，JSON格式
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? supportedShippingCompaniesJson;
 
   /// 預設運費
   ///
@@ -369,6 +376,9 @@ class Store {
   ///
   String? adminRemark;
 
+  /// 支援的物流公司列表
+  List<ShippingCompanyEnum> supportedShippingCompanies;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Store &&
     other.id == id &&
@@ -396,7 +406,7 @@ class Store {
     other.totalSales == totalSales &&
     other.averageRating == averageRating &&
     other.responseRate == responseRate &&
-    _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
+    other.supportedShippingCompaniesJson == supportedShippingCompaniesJson &&
     other.defaultShippingFee == defaultShippingFee &&
     other.freeShippingThreshold == freeShippingThreshold &&
     other.shippingDescription == shippingDescription &&
@@ -406,7 +416,8 @@ class Store {
     other.shippingDateRange == shippingDateRange &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.adminRemark == adminRemark;
+    other.adminRemark == adminRemark &&
+    _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies);
 
   @override
   int get hashCode =>
@@ -436,7 +447,7 @@ class Store {
     (totalSales == null ? 0 : totalSales!.hashCode) +
     (averageRating == null ? 0 : averageRating!.hashCode) +
     (responseRate == null ? 0 : responseRate!.hashCode) +
-    (supportedShippingCompanies.hashCode) +
+    (supportedShippingCompaniesJson == null ? 0 : supportedShippingCompaniesJson!.hashCode) +
     (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
     (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode) +
     (shippingDescription == null ? 0 : shippingDescription!.hashCode) +
@@ -446,10 +457,11 @@ class Store {
     (shippingDateRange == null ? 0 : shippingDateRange!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (adminRemark == null ? 0 : adminRemark!.hashCode);
+    (adminRemark == null ? 0 : adminRemark!.hashCode) +
+    (supportedShippingCompanies.hashCode);
 
   @override
-  String toString() => 'Store[id=$id, name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, logoFileId=$logoFileId, logoDescription=$logoDescription, logoUploadTime=$logoUploadTime, coverImageUrl=$coverImageUrl, coverFileId=$coverFileId, coverDescription=$coverDescription, coverUploadTime=$coverUploadTime, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, creditLevel=$creditLevel, productCount=$productCount, orderCount=$orderCount, totalSales=$totalSales, averageRating=$averageRating, responseRate=$responseRate, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, createdAt=$createdAt, updatedAt=$updatedAt, adminRemark=$adminRemark]';
+  String toString() => 'Store[id=$id, name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, logoFileId=$logoFileId, logoDescription=$logoDescription, logoUploadTime=$logoUploadTime, coverImageUrl=$coverImageUrl, coverFileId=$coverFileId, coverDescription=$coverDescription, coverUploadTime=$coverUploadTime, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, creditLevel=$creditLevel, productCount=$productCount, orderCount=$orderCount, totalSales=$totalSales, averageRating=$averageRating, responseRate=$responseRate, supportedShippingCompaniesJson=$supportedShippingCompaniesJson, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, createdAt=$createdAt, updatedAt=$updatedAt, adminRemark=$adminRemark, supportedShippingCompanies=$supportedShippingCompanies]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -578,7 +590,11 @@ class Store {
     } else {
       json[r'responseRate'] = null;
     }
-      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies.toList(growable: false);
+    if (this.supportedShippingCompaniesJson != null) {
+      json[r'supportedShippingCompaniesJson'] = this.supportedShippingCompaniesJson;
+    } else {
+      json[r'supportedShippingCompaniesJson'] = null;
+    }
     if (this.defaultShippingFee != null) {
       json[r'defaultShippingFee'] = this.defaultShippingFee;
     } else {
@@ -629,6 +645,7 @@ class Store {
     } else {
       json[r'adminRemark'] = null;
     }
+      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
     return json;
   }
 
@@ -676,7 +693,7 @@ class Store {
         totalSales: mapValueOfType<double>(json, r'totalSales'),
         averageRating: mapValueOfType<double>(json, r'averageRating'),
         responseRate: mapValueOfType<int>(json, r'responseRate'),
-        supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']).toSet(),
+        supportedShippingCompaniesJson: mapValueOfType<String>(json, r'supportedShippingCompaniesJson'),
         defaultShippingFee: mapValueOfType<double>(json, r'defaultShippingFee'),
         freeShippingThreshold: mapValueOfType<double>(json, r'freeShippingThreshold'),
         shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),
@@ -687,6 +704,7 @@ class Store {
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         adminRemark: mapValueOfType<String>(json, r'adminRemark'),
+        supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']),
       );
     }
     return null;

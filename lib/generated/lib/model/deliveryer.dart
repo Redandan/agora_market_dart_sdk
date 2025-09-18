@@ -16,12 +16,13 @@ class Deliveryer {
     this.userId,
     this.displayName,
     this.enabled,
-    this.deliveryAreas = const {},
+    this.deliveryAreasJson,
     this.createdAt,
     this.updatedAt,
     this.deliveringOrderId,
     this.latitude,
     this.longitude,
+    this.deliveryAreas = const {},
   });
 
   /// 用戶ID
@@ -51,8 +52,14 @@ class Deliveryer {
   ///
   bool? enabled;
 
-  /// 配送區域
-  Set<String> deliveryAreas;
+  /// 配送區域列表，JSON格式
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? deliveryAreasJson;
 
   /// 創建時間
   ///
@@ -97,17 +104,20 @@ class Deliveryer {
   ///
   double? longitude;
 
+  Set<String> deliveryAreas;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Deliveryer &&
     other.userId == userId &&
     other.displayName == displayName &&
     other.enabled == enabled &&
-    _deepEquality.equals(other.deliveryAreas, deliveryAreas) &&
+    other.deliveryAreasJson == deliveryAreasJson &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
     other.deliveringOrderId == deliveringOrderId &&
     other.latitude == latitude &&
-    other.longitude == longitude;
+    other.longitude == longitude &&
+    _deepEquality.equals(other.deliveryAreas, deliveryAreas);
 
   @override
   int get hashCode =>
@@ -115,15 +125,16 @@ class Deliveryer {
     (userId == null ? 0 : userId!.hashCode) +
     (displayName == null ? 0 : displayName!.hashCode) +
     (enabled == null ? 0 : enabled!.hashCode) +
-    (deliveryAreas.hashCode) +
+    (deliveryAreasJson == null ? 0 : deliveryAreasJson!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (deliveringOrderId == null ? 0 : deliveringOrderId!.hashCode) +
     (latitude == null ? 0 : latitude!.hashCode) +
-    (longitude == null ? 0 : longitude!.hashCode);
+    (longitude == null ? 0 : longitude!.hashCode) +
+    (deliveryAreas.hashCode);
 
   @override
-  String toString() => 'Deliveryer[userId=$userId, displayName=$displayName, enabled=$enabled, deliveryAreas=$deliveryAreas, createdAt=$createdAt, updatedAt=$updatedAt, deliveringOrderId=$deliveringOrderId, latitude=$latitude, longitude=$longitude]';
+  String toString() => 'Deliveryer[userId=$userId, displayName=$displayName, enabled=$enabled, deliveryAreasJson=$deliveryAreasJson, createdAt=$createdAt, updatedAt=$updatedAt, deliveringOrderId=$deliveringOrderId, latitude=$latitude, longitude=$longitude, deliveryAreas=$deliveryAreas]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -142,7 +153,11 @@ class Deliveryer {
     } else {
       json[r'enabled'] = null;
     }
-      json[r'deliveryAreas'] = this.deliveryAreas.toList(growable: false);
+    if (this.deliveryAreasJson != null) {
+      json[r'deliveryAreasJson'] = this.deliveryAreasJson;
+    } else {
+      json[r'deliveryAreasJson'] = null;
+    }
     if (this.createdAt != null) {
       json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
     } else {
@@ -168,6 +183,7 @@ class Deliveryer {
     } else {
       json[r'longitude'] = null;
     }
+      json[r'deliveryAreas'] = this.deliveryAreas.toList(growable: false);
     return json;
   }
 
@@ -193,14 +209,15 @@ class Deliveryer {
         userId: mapValueOfType<int>(json, r'userId'),
         displayName: mapValueOfType<String>(json, r'displayName'),
         enabled: mapValueOfType<bool>(json, r'enabled'),
-        deliveryAreas: json[r'deliveryAreas'] is Iterable
-            ? (json[r'deliveryAreas'] as Iterable).cast<String>().toSet()
-            : const {},
+        deliveryAreasJson: mapValueOfType<String>(json, r'deliveryAreasJson'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         deliveringOrderId: mapValueOfType<String>(json, r'deliveringOrderId'),
         latitude: mapValueOfType<double>(json, r'latitude'),
         longitude: mapValueOfType<double>(json, r'longitude'),
+        deliveryAreas: json[r'deliveryAreas'] is Iterable
+            ? (json[r'deliveryAreas'] as Iterable).cast<String>().toSet()
+            : const {},
       );
     }
     return null;
