@@ -21,11 +21,9 @@ class Store {
     this.email,
     this.businessHours,
     this.logoUrl,
-    this.logoFileId,
     this.logoDescription,
     this.logoUploadTime,
     this.coverImageUrl,
-    this.coverFileId,
     this.coverDescription,
     this.coverUploadTime,
     this.isActive,
@@ -124,15 +122,6 @@ class Store {
   ///
   String? logoUrl;
 
-  /// Logo对应的文件记录ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? logoFileId;
-
   /// Logo描述
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -159,15 +148,6 @@ class Store {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? coverImageUrl;
-
-  /// 封面图片对应的文件记录ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? coverFileId;
 
   /// 封面图片描述
   ///
@@ -389,11 +369,9 @@ class Store {
     other.email == email &&
     other.businessHours == businessHours &&
     other.logoUrl == logoUrl &&
-    other.logoFileId == logoFileId &&
     other.logoDescription == logoDescription &&
     other.logoUploadTime == logoUploadTime &&
     other.coverImageUrl == coverImageUrl &&
-    other.coverFileId == coverFileId &&
     other.coverDescription == coverDescription &&
     other.coverUploadTime == coverUploadTime &&
     other.isActive == isActive &&
@@ -430,11 +408,9 @@ class Store {
     (email == null ? 0 : email!.hashCode) +
     (businessHours == null ? 0 : businessHours!.hashCode) +
     (logoUrl == null ? 0 : logoUrl!.hashCode) +
-    (logoFileId == null ? 0 : logoFileId!.hashCode) +
     (logoDescription == null ? 0 : logoDescription!.hashCode) +
     (logoUploadTime == null ? 0 : logoUploadTime!.hashCode) +
     (coverImageUrl == null ? 0 : coverImageUrl!.hashCode) +
-    (coverFileId == null ? 0 : coverFileId!.hashCode) +
     (coverDescription == null ? 0 : coverDescription!.hashCode) +
     (coverUploadTime == null ? 0 : coverUploadTime!.hashCode) +
     (isActive == null ? 0 : isActive!.hashCode) +
@@ -461,7 +437,7 @@ class Store {
     (supportedShippingCompanies.hashCode);
 
   @override
-  String toString() => 'Store[id=$id, name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, logoFileId=$logoFileId, logoDescription=$logoDescription, logoUploadTime=$logoUploadTime, coverImageUrl=$coverImageUrl, coverFileId=$coverFileId, coverDescription=$coverDescription, coverUploadTime=$coverUploadTime, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, creditLevel=$creditLevel, productCount=$productCount, orderCount=$orderCount, totalSales=$totalSales, averageRating=$averageRating, responseRate=$responseRate, supportedShippingCompaniesJson=$supportedShippingCompaniesJson, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, createdAt=$createdAt, updatedAt=$updatedAt, adminRemark=$adminRemark, supportedShippingCompanies=$supportedShippingCompanies]';
+  String toString() => 'Store[id=$id, name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, logoDescription=$logoDescription, logoUploadTime=$logoUploadTime, coverImageUrl=$coverImageUrl, coverDescription=$coverDescription, coverUploadTime=$coverUploadTime, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, creditLevel=$creditLevel, productCount=$productCount, orderCount=$orderCount, totalSales=$totalSales, averageRating=$averageRating, responseRate=$responseRate, supportedShippingCompaniesJson=$supportedShippingCompaniesJson, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, createdAt=$createdAt, updatedAt=$updatedAt, adminRemark=$adminRemark, supportedShippingCompanies=$supportedShippingCompanies]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -505,11 +481,6 @@ class Store {
     } else {
       json[r'logoUrl'] = null;
     }
-    if (this.logoFileId != null) {
-      json[r'logoFileId'] = this.logoFileId;
-    } else {
-      json[r'logoFileId'] = null;
-    }
     if (this.logoDescription != null) {
       json[r'logoDescription'] = this.logoDescription;
     } else {
@@ -524,11 +495,6 @@ class Store {
       json[r'coverImageUrl'] = this.coverImageUrl;
     } else {
       json[r'coverImageUrl'] = null;
-    }
-    if (this.coverFileId != null) {
-      json[r'coverFileId'] = this.coverFileId;
-    } else {
-      json[r'coverFileId'] = null;
     }
     if (this.coverDescription != null) {
       json[r'coverDescription'] = this.coverDescription;
@@ -676,11 +642,9 @@ class Store {
         email: mapValueOfType<String>(json, r'email'),
         businessHours: mapValueOfType<String>(json, r'businessHours'),
         logoUrl: mapValueOfType<String>(json, r'logoUrl'),
-        logoFileId: mapValueOfType<int>(json, r'logoFileId'),
         logoDescription: mapValueOfType<String>(json, r'logoDescription'),
         logoUploadTime: mapDateTime(json, r'logoUploadTime', r''),
         coverImageUrl: mapValueOfType<String>(json, r'coverImageUrl'),
-        coverFileId: mapValueOfType<int>(json, r'coverFileId'),
         coverDescription: mapValueOfType<String>(json, r'coverDescription'),
         coverUploadTime: mapDateTime(json, r'coverUploadTime', r''),
         isActive: mapValueOfType<bool>(json, r'isActive'),

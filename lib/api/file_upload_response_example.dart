@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:agora_market_dart_sdk/api/file_upload_api.dart';
-import 'package:agora_market_dart_sdk/generated/lib/api.dart';
+import 'file_upload_response.dart';
 
 /// FileUploadResponse 使用示例
 ///

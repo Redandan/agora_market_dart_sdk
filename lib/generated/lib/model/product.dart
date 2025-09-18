@@ -23,7 +23,6 @@ class Product {
     required this.category,
     required this.sellerId,
     this.imageUrlsJson,
-    this.fileIdsJson,
     required this.pickupAddress,
     required this.longitude,
     required this.latitude,
@@ -57,14 +56,13 @@ class Product {
     this.shippingOptions,
     this.supportedShippingCompanies = const [],
     this.imageUrls = const {},
-    this.fileIds = const {},
     this.stockLow,
     this.inStock,
     this.stockBelowMinimum,
     this.skus = const {},
-    this.minimumShippingFee,
     this.shippingFees = const {},
     this.defaultShippingFee,
+    this.minimumShippingFee,
   });
 
   /// 商品ID
@@ -113,15 +111,6 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? imageUrlsJson;
-
-  /// 商品圖片對應的文件記錄ID列表，JSON格式
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? fileIdsJson;
 
   /// 取貨地址
   String pickupAddress;
@@ -370,8 +359,6 @@ class Product {
 
   Set<String> imageUrls;
 
-  Set<int> fileIds;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -398,14 +385,6 @@ class Product {
 
   Set<String> skus;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? minimumShippingFee;
-
   Map<String, num> shippingFees;
 
   ///
@@ -415,6 +394,14 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? defaultShippingFee;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? minimumShippingFee;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Product &&
@@ -428,7 +415,6 @@ class Product {
     other.category == category &&
     other.sellerId == sellerId &&
     other.imageUrlsJson == imageUrlsJson &&
-    other.fileIdsJson == fileIdsJson &&
     other.pickupAddress == pickupAddress &&
     other.longitude == longitude &&
     other.latitude == latitude &&
@@ -462,14 +448,13 @@ class Product {
     other.shippingOptions == shippingOptions &&
     _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
     _deepEquality.equals(other.imageUrls, imageUrls) &&
-    _deepEquality.equals(other.fileIds, fileIds) &&
     other.stockLow == stockLow &&
     other.inStock == inStock &&
     other.stockBelowMinimum == stockBelowMinimum &&
     _deepEquality.equals(other.skus, skus) &&
-    other.minimumShippingFee == minimumShippingFee &&
     _deepEquality.equals(other.shippingFees, shippingFees) &&
-    other.defaultShippingFee == defaultShippingFee;
+    other.defaultShippingFee == defaultShippingFee &&
+    other.minimumShippingFee == minimumShippingFee;
 
   @override
   int get hashCode =>
@@ -484,7 +469,6 @@ class Product {
     (category.hashCode) +
     (sellerId.hashCode) +
     (imageUrlsJson == null ? 0 : imageUrlsJson!.hashCode) +
-    (fileIdsJson == null ? 0 : fileIdsJson!.hashCode) +
     (pickupAddress.hashCode) +
     (longitude.hashCode) +
     (latitude.hashCode) +
@@ -518,17 +502,16 @@ class Product {
     (shippingOptions == null ? 0 : shippingOptions!.hashCode) +
     (supportedShippingCompanies.hashCode) +
     (imageUrls.hashCode) +
-    (fileIds.hashCode) +
     (stockLow == null ? 0 : stockLow!.hashCode) +
     (inStock == null ? 0 : inStock!.hashCode) +
     (stockBelowMinimum == null ? 0 : stockBelowMinimum!.hashCode) +
     (skus.hashCode) +
-    (minimumShippingFee == null ? 0 : minimumShippingFee!.hashCode) +
     (shippingFees.hashCode) +
-    (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode);
+    (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
+    (minimumShippingFee == null ? 0 : minimumShippingFee!.hashCode);
 
   @override
-  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrlsJson=$imageUrlsJson, fileIdsJson=$fileIdsJson, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skusJson=$skusJson, brand=$brand, minStock=$minStock, supportedShippingCompaniesJson=$supportedShippingCompaniesJson, shippingFeesJson=$shippingFeesJson, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions, supportedShippingCompanies=$supportedShippingCompanies, imageUrls=$imageUrls, fileIds=$fileIds, stockLow=$stockLow, inStock=$inStock, stockBelowMinimum=$stockBelowMinimum, skus=$skus, minimumShippingFee=$minimumShippingFee, shippingFees=$shippingFees, defaultShippingFee=$defaultShippingFee]';
+  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrlsJson=$imageUrlsJson, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skusJson=$skusJson, brand=$brand, minStock=$minStock, supportedShippingCompaniesJson=$supportedShippingCompaniesJson, shippingFeesJson=$shippingFeesJson, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions, supportedShippingCompanies=$supportedShippingCompanies, imageUrls=$imageUrls, stockLow=$stockLow, inStock=$inStock, stockBelowMinimum=$stockBelowMinimum, skus=$skus, shippingFees=$shippingFees, defaultShippingFee=$defaultShippingFee, minimumShippingFee=$minimumShippingFee]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -549,11 +532,6 @@ class Product {
       json[r'imageUrlsJson'] = this.imageUrlsJson;
     } else {
       json[r'imageUrlsJson'] = null;
-    }
-    if (this.fileIdsJson != null) {
-      json[r'fileIdsJson'] = this.fileIdsJson;
-    } else {
-      json[r'fileIdsJson'] = null;
     }
       json[r'pickupAddress'] = this.pickupAddress;
       json[r'longitude'] = this.longitude;
@@ -680,7 +658,6 @@ class Product {
     }
       json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
       json[r'imageUrls'] = this.imageUrls.toList(growable: false);
-      json[r'fileIds'] = this.fileIds.toList(growable: false);
     if (this.stockLow != null) {
       json[r'stockLow'] = this.stockLow;
     } else {
@@ -697,16 +674,16 @@ class Product {
       json[r'stockBelowMinimum'] = null;
     }
       json[r'skus'] = this.skus.toList(growable: false);
-    if (this.minimumShippingFee != null) {
-      json[r'minimumShippingFee'] = this.minimumShippingFee;
-    } else {
-      json[r'minimumShippingFee'] = null;
-    }
       json[r'shippingFees'] = this.shippingFees;
     if (this.defaultShippingFee != null) {
       json[r'defaultShippingFee'] = this.defaultShippingFee;
     } else {
       json[r'defaultShippingFee'] = null;
+    }
+    if (this.minimumShippingFee != null) {
+      json[r'minimumShippingFee'] = this.minimumShippingFee;
+    } else {
+      json[r'minimumShippingFee'] = null;
     }
     return json;
   }
@@ -740,7 +717,6 @@ class Product {
         category: ProductCategoryEnum.fromJson(json[r'category'])!,
         sellerId: mapValueOfType<int>(json, r'sellerId')!,
         imageUrlsJson: mapValueOfType<String>(json, r'imageUrlsJson'),
-        fileIdsJson: mapValueOfType<String>(json, r'fileIdsJson'),
         pickupAddress: mapValueOfType<String>(json, r'pickupAddress')!,
         longitude: mapValueOfType<double>(json, r'longitude')!,
         latitude: mapValueOfType<double>(json, r'latitude')!,
@@ -776,18 +752,15 @@ class Product {
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
             : const {},
-        fileIds: json[r'fileIds'] is Iterable
-            ? (json[r'fileIds'] as Iterable).cast<int>().toSet()
-            : const {},
         stockLow: mapValueOfType<bool>(json, r'stockLow'),
         inStock: mapValueOfType<bool>(json, r'inStock'),
         stockBelowMinimum: mapValueOfType<bool>(json, r'stockBelowMinimum'),
         skus: json[r'skus'] is Iterable
             ? (json[r'skus'] as Iterable).cast<String>().toSet()
             : const {},
-        minimumShippingFee: num.parse('${json[r'minimumShippingFee']}'),
         shippingFees: mapCastOfType<String, num>(json, r'shippingFees') ?? const {},
         defaultShippingFee: num.parse('${json[r'defaultShippingFee']}'),
+        minimumShippingFee: num.parse('${json[r'minimumShippingFee']}'),
       );
     }
     return null;

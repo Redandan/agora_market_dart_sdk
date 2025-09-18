@@ -121,8 +121,6 @@ part 'model/dispute_status_enum.dart';
 part 'model/file_download_response.dart';
 part 'model/file_info_response.dart';
 part 'model/file_list_response.dart';
-part 'model/file_upload_response.dart';
-part 'model/api_response_file_upload_response.dart';
 part 'model/human_intervention_settings.dart';
 part 'model/issue_search_param.dart';
 part 'model/issue_status_enum.dart';
@@ -251,6 +249,7 @@ part 'model/withdraw.dart';
 part 'model/withdraw_search_param.dart';
 part 'model/withdraw_status_enum.dart';
 
+
 /// An [ApiClient] instance that uses the default values obtained from
 /// the OpenAPI specification file.
 var defaultApiClient = ApiClient();
@@ -263,5 +262,4 @@ final _regList = RegExp(r'^List<(.*)>$');
 final _regSet = RegExp(r'^Set<(.*)>$');
 final _regMap = RegExp(r'^Map<String,(.*)>$');
 
-bool _isEpochMarker(String? pattern) =>
-    pattern == _dateEpochMarker || pattern == '/$_dateEpochMarker/';
+bool _isEpochMarker(String? pattern) => pattern == _dateEpochMarker || pattern == '/$_dateEpochMarker/';

@@ -1,4 +1,4 @@
-import 'package:agora_market_dart_sdk/generated/lib/api.dart';
+import 'file_upload_response.dart';
 
 /// API响应包装器 - 文件上传响应
 ///

@@ -1,18 +1,9 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.18
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-part of openapi.api;
-
 /// 文件上传响应 DTO
+///
+/// 这个类不会被 generate_api.ps1 脚本删除，因为它位于 lib/api 目录中
+/// 基于 Java FileUploadResponse DTO 创建
 class FileUploadResponse {
-  /// Returns a new [FileUploadResponse] instance.
+  /// 创建新的 [FileUploadResponse] 实例
   FileUploadResponse({
     this.originalFileName,
     this.objectName,
@@ -28,102 +19,36 @@ class FileUploadResponse {
   });
 
   /// 原始文件名
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? originalFileName;
 
   /// 存储的文件名（按规则生成）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? objectName;
 
   /// 文件大小（字节）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? fileSize;
 
   /// 文件访问URL
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? fileUrl;
 
   /// 文件类型
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? contentType;
 
   /// 业务类型
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? businessType;
 
   /// 上传者ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? uploaderId;
 
   /// 上传者名称
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? uploaderName;
 
   /// 上传时间
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? uploadTime;
 
   /// 文件扩展名
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? fileExtension;
 
   /// 文件是否公开
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? isPublic;
 
   /// 从上传结果创建响应对象
@@ -237,103 +162,92 @@ class FileUploadResponse {
   String toString() =>
       'FileUploadResponse[originalFileName=$originalFileName, objectName=$objectName, fileSize=$fileSize, fileUrl=$fileUrl, contentType=$contentType, businessType=$businessType, uploaderId=$uploaderId, uploaderName=$uploaderName, uploadTime=$uploadTime, fileExtension=$fileExtension, isPublic=$isPublic]';
 
+  /// 转换为JSON格式
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.originalFileName != null) {
-      json[r'originalFileName'] = this.originalFileName;
+    if (originalFileName != null) {
+      json[r'originalFileName'] = originalFileName;
     } else {
       json[r'originalFileName'] = null;
     }
-    if (this.objectName != null) {
-      json[r'objectName'] = this.objectName;
+    if (objectName != null) {
+      json[r'objectName'] = objectName;
     } else {
       json[r'objectName'] = null;
     }
-    if (this.fileSize != null) {
-      json[r'fileSize'] = this.fileSize;
+    if (fileSize != null) {
+      json[r'fileSize'] = fileSize;
     } else {
       json[r'fileSize'] = null;
     }
-    if (this.fileUrl != null) {
-      json[r'fileUrl'] = this.fileUrl;
+    if (fileUrl != null) {
+      json[r'fileUrl'] = fileUrl;
     } else {
       json[r'fileUrl'] = null;
     }
-    if (this.contentType != null) {
-      json[r'contentType'] = this.contentType;
+    if (contentType != null) {
+      json[r'contentType'] = contentType;
     } else {
       json[r'contentType'] = null;
     }
-    if (this.businessType != null) {
-      json[r'businessType'] = this.businessType;
+    if (businessType != null) {
+      json[r'businessType'] = businessType;
     } else {
       json[r'businessType'] = null;
     }
-    if (this.uploaderId != null) {
-      json[r'uploaderId'] = this.uploaderId;
+    if (uploaderId != null) {
+      json[r'uploaderId'] = uploaderId;
     } else {
       json[r'uploaderId'] = null;
     }
-    if (this.uploaderName != null) {
-      json[r'uploaderName'] = this.uploaderName;
+    if (uploaderName != null) {
+      json[r'uploaderName'] = uploaderName;
     } else {
       json[r'uploaderName'] = null;
     }
-    if (this.uploadTime != null) {
-      json[r'uploadTime'] = this.uploadTime!.toUtc().toIso8601String();
+    if (uploadTime != null) {
+      json[r'uploadTime'] = uploadTime!.toUtc().toIso8601String();
     } else {
       json[r'uploadTime'] = null;
     }
-    if (this.fileExtension != null) {
-      json[r'fileExtension'] = this.fileExtension;
+    if (fileExtension != null) {
+      json[r'fileExtension'] = fileExtension;
     } else {
       json[r'fileExtension'] = null;
     }
-    if (this.isPublic != null) {
-      json[r'isPublic'] = this.isPublic;
+    if (isPublic != null) {
+      json[r'isPublic'] = isPublic;
     } else {
       json[r'isPublic'] = null;
     }
     return json;
   }
 
-  /// Returns a new [FileUploadResponse] instance and imports its values from
-  /// [value] if it's a [Map], null otherwise.
-  // ignore: prefer_constructors_over_static_methods
+  /// 从JSON创建 [FileUploadResponse] 实例
   static FileUploadResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
-      // Ensure that the map contains the required keys.
-      // Note 1: the values aren't checked for validity beyond being non-null.
-      // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key),
-              'Required key "FileUploadResponse[$key]" is missing from JSON.');
-          assert(json[key] != null,
-              'Required key "FileUploadResponse[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
-
       return FileUploadResponse(
-        originalFileName: mapValueOfType<String>(json, r'originalFileName'),
-        objectName: mapValueOfType<String>(json, r'objectName'),
-        fileSize: mapValueOfType<int>(json, r'fileSize'),
-        fileUrl: mapValueOfType<String>(json, r'fileUrl'),
-        contentType: mapValueOfType<String>(json, r'contentType'),
-        businessType: mapValueOfType<String>(json, r'businessType'),
-        uploaderId: mapValueOfType<int>(json, r'uploaderId'),
-        uploaderName: mapValueOfType<String>(json, r'uploaderName'),
-        uploadTime: mapDateTime(json, r'uploadTime', r''),
-        fileExtension: mapValueOfType<String>(json, r'fileExtension'),
-        isPublic: mapValueOfType<bool>(json, r'isPublic'),
+        originalFileName: json[r'originalFileName'] as String?,
+        objectName: json[r'objectName'] as String?,
+        fileSize: json[r'fileSize'] as int?,
+        fileUrl: json[r'fileUrl'] as String?,
+        contentType: json[r'contentType'] as String?,
+        businessType: json[r'businessType'] as String?,
+        uploaderId: json[r'uploaderId'] as int?,
+        uploaderName: json[r'uploaderName'] as String?,
+        uploadTime: json[r'uploadTime'] != null
+            ? DateTime.tryParse(json[r'uploadTime'] as String)
+            : null,
+        fileExtension: json[r'fileExtension'] as String?,
+        isPublic: json[r'isPublic'] as bool?,
       );
     }
     return null;
   }
 
+  /// 从JSON列表创建 [FileUploadResponse] 列表
   static List<FileUploadResponse> listFromJson(
     dynamic json, {
     bool growable = false,
@@ -350,6 +264,7 @@ class FileUploadResponse {
     return result.toList(growable: growable);
   }
 
+  /// 从JSON创建 [FileUploadResponse] 映射
   static Map<String, FileUploadResponse> mapFromJson(dynamic json) {
     final map = <String, FileUploadResponse>{};
     if (json is Map && json.isNotEmpty) {
@@ -364,7 +279,7 @@ class FileUploadResponse {
     return map;
   }
 
-  // maps a json object with a list of FileUploadResponse-objects as value to a dart map
+  /// 从JSON创建嵌套的 [FileUploadResponse] 映射
   static Map<String, List<FileUploadResponse>> mapListFromJson(
     dynamic json, {
     bool growable = false,
@@ -382,7 +297,4 @@ class FileUploadResponse {
     }
     return map;
   }
-
-  /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{};
 }
