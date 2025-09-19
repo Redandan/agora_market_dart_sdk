@@ -10,126 +10,132 @@
 
 part of openapi.api;
 
-class PageableObject {
-  /// Returns a new [PageableObject] instance.
-  PageableObject({
-    this.sort,
-    this.pageNumber,
-    this.pageSize,
-    this.paged,
-    this.unpaged,
-    this.offset,
+class FileRecordInfo {
+  /// Returns a new [FileRecordInfo] instance.
+  FileRecordInfo({
+    this.id,
+    this.objectName,
+    this.originalFilename,
+    this.fileSize,
+    this.businessType,
+    this.uploaderId,
   });
 
+  /// 記錄ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SortObject? sort;
+  int? id;
 
+  /// 物件名稱
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageNumber;
+  String? objectName;
 
+  /// 原始檔案名
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageSize;
+  String? originalFilename;
 
+  /// 檔案大小
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? paged;
+  int? fileSize;
 
+  /// 業務類型
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unpaged;
+  String? businessType;
 
+  /// 上傳者ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? offset;
+  int? uploaderId;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageableObject &&
-    other.sort == sort &&
-    other.pageNumber == pageNumber &&
-    other.pageSize == pageSize &&
-    other.paged == paged &&
-    other.unpaged == unpaged &&
-    other.offset == offset;
+  bool operator ==(Object other) => identical(this, other) || other is FileRecordInfo &&
+    other.id == id &&
+    other.objectName == objectName &&
+    other.originalFilename == originalFilename &&
+    other.fileSize == fileSize &&
+    other.businessType == businessType &&
+    other.uploaderId == uploaderId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (sort == null ? 0 : sort!.hashCode) +
-    (pageNumber == null ? 0 : pageNumber!.hashCode) +
-    (pageSize == null ? 0 : pageSize!.hashCode) +
-    (paged == null ? 0 : paged!.hashCode) +
-    (unpaged == null ? 0 : unpaged!.hashCode) +
-    (offset == null ? 0 : offset!.hashCode);
+    (id == null ? 0 : id!.hashCode) +
+    (objectName == null ? 0 : objectName!.hashCode) +
+    (originalFilename == null ? 0 : originalFilename!.hashCode) +
+    (fileSize == null ? 0 : fileSize!.hashCode) +
+    (businessType == null ? 0 : businessType!.hashCode) +
+    (uploaderId == null ? 0 : uploaderId!.hashCode);
 
   @override
-  String toString() => 'PageableObject[sort=$sort, pageNumber=$pageNumber, pageSize=$pageSize, paged=$paged, unpaged=$unpaged, offset=$offset]';
+  String toString() => 'FileRecordInfo[id=$id, objectName=$objectName, originalFilename=$originalFilename, fileSize=$fileSize, businessType=$businessType, uploaderId=$uploaderId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.id != null) {
+      json[r'id'] = this.id;
     } else {
-      json[r'sort'] = null;
+      json[r'id'] = null;
     }
-    if (this.pageNumber != null) {
-      json[r'pageNumber'] = this.pageNumber;
+    if (this.objectName != null) {
+      json[r'objectName'] = this.objectName;
     } else {
-      json[r'pageNumber'] = null;
+      json[r'objectName'] = null;
     }
-    if (this.pageSize != null) {
-      json[r'pageSize'] = this.pageSize;
+    if (this.originalFilename != null) {
+      json[r'originalFilename'] = this.originalFilename;
     } else {
-      json[r'pageSize'] = null;
+      json[r'originalFilename'] = null;
     }
-    if (this.paged != null) {
-      json[r'paged'] = this.paged;
+    if (this.fileSize != null) {
+      json[r'fileSize'] = this.fileSize;
     } else {
-      json[r'paged'] = null;
+      json[r'fileSize'] = null;
     }
-    if (this.unpaged != null) {
-      json[r'unpaged'] = this.unpaged;
+    if (this.businessType != null) {
+      json[r'businessType'] = this.businessType;
     } else {
-      json[r'unpaged'] = null;
+      json[r'businessType'] = null;
     }
-    if (this.offset != null) {
-      json[r'offset'] = this.offset;
+    if (this.uploaderId != null) {
+      json[r'uploaderId'] = this.uploaderId;
     } else {
-      json[r'offset'] = null;
+      json[r'uploaderId'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageableObject] instance and imports its values from
+  /// Returns a new [FileRecordInfo] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageableObject? fromJson(dynamic value) {
+  static FileRecordInfo? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -138,29 +144,29 @@ class PageableObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageableObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageableObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "FileRecordInfo[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "FileRecordInfo[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageableObject(
-        sort: SortObject.fromJson(json[r'sort']),
-        pageNumber: mapValueOfType<int>(json, r'pageNumber'),
-        pageSize: mapValueOfType<int>(json, r'pageSize'),
-        paged: mapValueOfType<bool>(json, r'paged'),
-        unpaged: mapValueOfType<bool>(json, r'unpaged'),
-        offset: mapValueOfType<int>(json, r'offset'),
+      return FileRecordInfo(
+        id: mapValueOfType<int>(json, r'id'),
+        objectName: mapValueOfType<String>(json, r'objectName'),
+        originalFilename: mapValueOfType<String>(json, r'originalFilename'),
+        fileSize: mapValueOfType<int>(json, r'fileSize'),
+        businessType: mapValueOfType<String>(json, r'businessType'),
+        uploaderId: mapValueOfType<int>(json, r'uploaderId'),
       );
     }
     return null;
   }
 
-  static List<PageableObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageableObject>[];
+  static List<FileRecordInfo> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <FileRecordInfo>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageableObject.fromJson(row);
+        final value = FileRecordInfo.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -169,12 +175,12 @@ class PageableObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageableObject> mapFromJson(dynamic json) {
-    final map = <String, PageableObject>{};
+  static Map<String, FileRecordInfo> mapFromJson(dynamic json) {
+    final map = <String, FileRecordInfo>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageableObject.fromJson(entry.value);
+        final value = FileRecordInfo.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -183,14 +189,14 @@ class PageableObject {
     return map;
   }
 
-  // maps a json object with a list of PageableObject-objects as value to a dart map
-  static Map<String, List<PageableObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageableObject>>{};
+  // maps a json object with a list of FileRecordInfo-objects as value to a dart map
+  static Map<String, List<FileRecordInfo>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<FileRecordInfo>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageableObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = FileRecordInfo.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

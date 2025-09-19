@@ -39,7 +39,6 @@ class PostResponse {
     this.isLikedByCurrentUser,
     this.isBookmarkedByCurrentUser,
     this.imageUrls = const {},
-    this.fileIds = const {},
   });
 
   /// 貼文ID
@@ -258,9 +257,6 @@ class PostResponse {
   /// 貼文圖片URL列表
   Set<String> imageUrls;
 
-  /// 貼文圖片對應的文件記錄ID列表
-  Set<int> fileIds;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is PostResponse &&
     other.id == id &&
@@ -288,8 +284,7 @@ class PostResponse {
     other.updatedAt == updatedAt &&
     other.isLikedByCurrentUser == isLikedByCurrentUser &&
     other.isBookmarkedByCurrentUser == isBookmarkedByCurrentUser &&
-    _deepEquality.equals(other.imageUrls, imageUrls) &&
-    _deepEquality.equals(other.fileIds, fileIds);
+    _deepEquality.equals(other.imageUrls, imageUrls);
 
   @override
   int get hashCode =>
@@ -319,11 +314,10 @@ class PostResponse {
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (isLikedByCurrentUser == null ? 0 : isLikedByCurrentUser!.hashCode) +
     (isBookmarkedByCurrentUser == null ? 0 : isBookmarkedByCurrentUser!.hashCode) +
-    (imageUrls.hashCode) +
-    (fileIds.hashCode);
+    (imageUrls.hashCode);
 
   @override
-  String toString() => 'PostResponse[id=$id, title=$title, content=$content, storeId=$storeId, storeName=$storeName, storeLogo=$storeLogo, authorId=$authorId, authorName=$authorName, authorAvatar=$authorAvatar, status=$status, viewCount=$viewCount, likeCount=$likeCount, commentCount=$commentCount, shareCount=$shareCount, isFeatured=$isFeatured, isTop=$isTop, publishTime=$publishTime, featuredTime=$featuredTime, topTime=$topTime, tags=$tags, category=$category, createdAt=$createdAt, updatedAt=$updatedAt, isLikedByCurrentUser=$isLikedByCurrentUser, isBookmarkedByCurrentUser=$isBookmarkedByCurrentUser, imageUrls=$imageUrls, fileIds=$fileIds]';
+  String toString() => 'PostResponse[id=$id, title=$title, content=$content, storeId=$storeId, storeName=$storeName, storeLogo=$storeLogo, authorId=$authorId, authorName=$authorName, authorAvatar=$authorAvatar, status=$status, viewCount=$viewCount, likeCount=$likeCount, commentCount=$commentCount, shareCount=$shareCount, isFeatured=$isFeatured, isTop=$isTop, publishTime=$publishTime, featuredTime=$featuredTime, topTime=$topTime, tags=$tags, category=$category, createdAt=$createdAt, updatedAt=$updatedAt, isLikedByCurrentUser=$isLikedByCurrentUser, isBookmarkedByCurrentUser=$isBookmarkedByCurrentUser, imageUrls=$imageUrls]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -449,7 +443,6 @@ class PostResponse {
       json[r'isBookmarkedByCurrentUser'] = null;
     }
       json[r'imageUrls'] = this.imageUrls.toList(growable: false);
-      json[r'fileIds'] = this.fileIds.toList(growable: false);
     return json;
   }
 
@@ -501,9 +494,6 @@ class PostResponse {
         isBookmarkedByCurrentUser: mapValueOfType<bool>(json, r'isBookmarkedByCurrentUser'),
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
-            : const {},
-        fileIds: json[r'fileIds'] is Iterable
-            ? (json[r'fileIds'] as Iterable).cast<int>().toSet()
             : const {},
       );
     }

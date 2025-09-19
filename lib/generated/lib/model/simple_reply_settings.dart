@@ -10,70 +10,64 @@
 
 part of openapi.api;
 
-class AutoReplyConfig {
-  /// Returns a new [AutoReplyConfig] instance.
-  AutoReplyConfig({
-    this.enabled,
-    this.keywordRules = const [],
-    this.simpleReplySettings,
+class SimpleReplySettings {
+  /// Returns a new [SimpleReplySettings] instance.
+  SimpleReplySettings({
+    this.defaultReply,
+    this.contactInfo,
   });
 
-  /// 是否啟用自動回復
+  /// 默認回復內容
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? enabled;
+  String? defaultReply;
 
-  /// 關鍵詞回復規則
-  List<KeywordRule> keywordRules;
-
+  /// 聯繫信息
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SimpleReplySettings? simpleReplySettings;
+  String? contactInfo;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is AutoReplyConfig &&
-    other.enabled == enabled &&
-    _deepEquality.equals(other.keywordRules, keywordRules) &&
-    other.simpleReplySettings == simpleReplySettings;
+  bool operator ==(Object other) => identical(this, other) || other is SimpleReplySettings &&
+    other.defaultReply == defaultReply &&
+    other.contactInfo == contactInfo;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (enabled == null ? 0 : enabled!.hashCode) +
-    (keywordRules.hashCode) +
-    (simpleReplySettings == null ? 0 : simpleReplySettings!.hashCode);
+    (defaultReply == null ? 0 : defaultReply!.hashCode) +
+    (contactInfo == null ? 0 : contactInfo!.hashCode);
 
   @override
-  String toString() => 'AutoReplyConfig[enabled=$enabled, keywordRules=$keywordRules, simpleReplySettings=$simpleReplySettings]';
+  String toString() => 'SimpleReplySettings[defaultReply=$defaultReply, contactInfo=$contactInfo]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.enabled != null) {
-      json[r'enabled'] = this.enabled;
+    if (this.defaultReply != null) {
+      json[r'defaultReply'] = this.defaultReply;
     } else {
-      json[r'enabled'] = null;
+      json[r'defaultReply'] = null;
     }
-      json[r'keywordRules'] = this.keywordRules;
-    if (this.simpleReplySettings != null) {
-      json[r'simpleReplySettings'] = this.simpleReplySettings;
+    if (this.contactInfo != null) {
+      json[r'contactInfo'] = this.contactInfo;
     } else {
-      json[r'simpleReplySettings'] = null;
+      json[r'contactInfo'] = null;
     }
     return json;
   }
 
-  /// Returns a new [AutoReplyConfig] instance and imports its values from
+  /// Returns a new [SimpleReplySettings] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static AutoReplyConfig? fromJson(dynamic value) {
+  static SimpleReplySettings? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -82,26 +76,25 @@ class AutoReplyConfig {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AutoReplyConfig[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AutoReplyConfig[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "SimpleReplySettings[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "SimpleReplySettings[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return AutoReplyConfig(
-        enabled: mapValueOfType<bool>(json, r'enabled'),
-        keywordRules: KeywordRule.listFromJson(json[r'keywordRules']),
-        simpleReplySettings: SimpleReplySettings.fromJson(json[r'simpleReplySettings']),
+      return SimpleReplySettings(
+        defaultReply: mapValueOfType<String>(json, r'defaultReply'),
+        contactInfo: mapValueOfType<String>(json, r'contactInfo'),
       );
     }
     return null;
   }
 
-  static List<AutoReplyConfig> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <AutoReplyConfig>[];
+  static List<SimpleReplySettings> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <SimpleReplySettings>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = AutoReplyConfig.fromJson(row);
+        final value = SimpleReplySettings.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -110,12 +103,12 @@ class AutoReplyConfig {
     return result.toList(growable: growable);
   }
 
-  static Map<String, AutoReplyConfig> mapFromJson(dynamic json) {
-    final map = <String, AutoReplyConfig>{};
+  static Map<String, SimpleReplySettings> mapFromJson(dynamic json) {
+    final map = <String, SimpleReplySettings>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = AutoReplyConfig.fromJson(entry.value);
+        final value = SimpleReplySettings.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -124,14 +117,14 @@ class AutoReplyConfig {
     return map;
   }
 
-  // maps a json object with a list of AutoReplyConfig-objects as value to a dart map
-  static Map<String, List<AutoReplyConfig>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<AutoReplyConfig>>{};
+  // maps a json object with a list of SimpleReplySettings-objects as value to a dart map
+  static Map<String, List<SimpleReplySettings>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<SimpleReplySettings>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = AutoReplyConfig.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = SimpleReplySettings.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

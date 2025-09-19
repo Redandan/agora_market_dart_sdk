@@ -10,49 +10,39 @@
 
 part of openapi.api;
 
-class FileInfoResponse {
-  /// Returns a new [FileInfoResponse] instance.
-  FileInfoResponse({
-    this.objectName,
-    this.fileSize,
-    this.fileUrl,
+class FileRecordSearchRequest {
+  /// Returns a new [FileRecordSearchRequest] instance.
+  FileRecordSearchRequest({
+    this.uploaderId,
+    this.businessType,
     this.contentType,
-    this.exists,
-    this.lastModified,
-    this.fileExtension,
-    this.fileSizeFormatted,
-    this.isImage,
-    this.isDocument,
+    this.startTime,
+    this.endTime,
+    this.minSize,
+    this.maxSize,
+    this.page,
+    this.size,
   });
 
-  /// 文件名
+  /// 上傳者ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? objectName;
+  int? uploaderId;
 
-  /// 文件大小（字节）
+  /// 業務類型
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? fileSize;
+  String? businessType;
 
-  /// 文件访问URL
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? fileUrl;
-
-  /// 文件类型
+  /// 檔案類型
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -61,149 +51,142 @@ class FileInfoResponse {
   ///
   String? contentType;
 
-  /// 文件是否存在
+  /// 開始時間 (yyyy-MM-dd HH:mm:ss)
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? exists;
+  String? startTime;
 
-  /// 最后修改时间
+  /// 結束時間 (yyyy-MM-dd HH:mm:ss)
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  DateTime? lastModified;
+  String? endTime;
 
-  /// 文件扩展名
+  /// 最小檔案大小 (位元組)
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? fileExtension;
+  int? minSize;
 
-  /// 文件大小（人类可读格式）
+  /// 最大檔案大小 (位元組)
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? fileSizeFormatted;
+  int? maxSize;
 
-  /// 是否为图片文件
+  /// 頁碼 (從0開始)
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? isImage;
+  int? page;
 
-  /// 是否为文档文件
+  /// 每頁大小
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? isDocument;
+  int? size;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is FileInfoResponse &&
-    other.objectName == objectName &&
-    other.fileSize == fileSize &&
-    other.fileUrl == fileUrl &&
+  bool operator ==(Object other) => identical(this, other) || other is FileRecordSearchRequest &&
+    other.uploaderId == uploaderId &&
+    other.businessType == businessType &&
     other.contentType == contentType &&
-    other.exists == exists &&
-    other.lastModified == lastModified &&
-    other.fileExtension == fileExtension &&
-    other.fileSizeFormatted == fileSizeFormatted &&
-    other.isImage == isImage &&
-    other.isDocument == isDocument;
+    other.startTime == startTime &&
+    other.endTime == endTime &&
+    other.minSize == minSize &&
+    other.maxSize == maxSize &&
+    other.page == page &&
+    other.size == size;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (objectName == null ? 0 : objectName!.hashCode) +
-    (fileSize == null ? 0 : fileSize!.hashCode) +
-    (fileUrl == null ? 0 : fileUrl!.hashCode) +
+    (uploaderId == null ? 0 : uploaderId!.hashCode) +
+    (businessType == null ? 0 : businessType!.hashCode) +
     (contentType == null ? 0 : contentType!.hashCode) +
-    (exists == null ? 0 : exists!.hashCode) +
-    (lastModified == null ? 0 : lastModified!.hashCode) +
-    (fileExtension == null ? 0 : fileExtension!.hashCode) +
-    (fileSizeFormatted == null ? 0 : fileSizeFormatted!.hashCode) +
-    (isImage == null ? 0 : isImage!.hashCode) +
-    (isDocument == null ? 0 : isDocument!.hashCode);
+    (startTime == null ? 0 : startTime!.hashCode) +
+    (endTime == null ? 0 : endTime!.hashCode) +
+    (minSize == null ? 0 : minSize!.hashCode) +
+    (maxSize == null ? 0 : maxSize!.hashCode) +
+    (page == null ? 0 : page!.hashCode) +
+    (size == null ? 0 : size!.hashCode);
 
   @override
-  String toString() => 'FileInfoResponse[objectName=$objectName, fileSize=$fileSize, fileUrl=$fileUrl, contentType=$contentType, exists=$exists, lastModified=$lastModified, fileExtension=$fileExtension, fileSizeFormatted=$fileSizeFormatted, isImage=$isImage, isDocument=$isDocument]';
+  String toString() => 'FileRecordSearchRequest[uploaderId=$uploaderId, businessType=$businessType, contentType=$contentType, startTime=$startTime, endTime=$endTime, minSize=$minSize, maxSize=$maxSize, page=$page, size=$size]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.objectName != null) {
-      json[r'objectName'] = this.objectName;
+    if (this.uploaderId != null) {
+      json[r'uploaderId'] = this.uploaderId;
     } else {
-      json[r'objectName'] = null;
+      json[r'uploaderId'] = null;
     }
-    if (this.fileSize != null) {
-      json[r'fileSize'] = this.fileSize;
+    if (this.businessType != null) {
+      json[r'businessType'] = this.businessType;
     } else {
-      json[r'fileSize'] = null;
-    }
-    if (this.fileUrl != null) {
-      json[r'fileUrl'] = this.fileUrl;
-    } else {
-      json[r'fileUrl'] = null;
+      json[r'businessType'] = null;
     }
     if (this.contentType != null) {
       json[r'contentType'] = this.contentType;
     } else {
       json[r'contentType'] = null;
     }
-    if (this.exists != null) {
-      json[r'exists'] = this.exists;
+    if (this.startTime != null) {
+      json[r'startTime'] = this.startTime;
     } else {
-      json[r'exists'] = null;
+      json[r'startTime'] = null;
     }
-    if (this.lastModified != null) {
-      json[r'lastModified'] = this.lastModified!.toUtc().toIso8601String();
+    if (this.endTime != null) {
+      json[r'endTime'] = this.endTime;
     } else {
-      json[r'lastModified'] = null;
+      json[r'endTime'] = null;
     }
-    if (this.fileExtension != null) {
-      json[r'fileExtension'] = this.fileExtension;
+    if (this.minSize != null) {
+      json[r'minSize'] = this.minSize;
     } else {
-      json[r'fileExtension'] = null;
+      json[r'minSize'] = null;
     }
-    if (this.fileSizeFormatted != null) {
-      json[r'fileSizeFormatted'] = this.fileSizeFormatted;
+    if (this.maxSize != null) {
+      json[r'maxSize'] = this.maxSize;
     } else {
-      json[r'fileSizeFormatted'] = null;
+      json[r'maxSize'] = null;
     }
-    if (this.isImage != null) {
-      json[r'isImage'] = this.isImage;
+    if (this.page != null) {
+      json[r'page'] = this.page;
     } else {
-      json[r'isImage'] = null;
+      json[r'page'] = null;
     }
-    if (this.isDocument != null) {
-      json[r'isDocument'] = this.isDocument;
+    if (this.size != null) {
+      json[r'size'] = this.size;
     } else {
-      json[r'isDocument'] = null;
+      json[r'size'] = null;
     }
     return json;
   }
 
-  /// Returns a new [FileInfoResponse] instance and imports its values from
+  /// Returns a new [FileRecordSearchRequest] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static FileInfoResponse? fromJson(dynamic value) {
+  static FileRecordSearchRequest? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -212,33 +195,32 @@ class FileInfoResponse {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "FileInfoResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "FileInfoResponse[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "FileRecordSearchRequest[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "FileRecordSearchRequest[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return FileInfoResponse(
-        objectName: mapValueOfType<String>(json, r'objectName'),
-        fileSize: mapValueOfType<int>(json, r'fileSize'),
-        fileUrl: mapValueOfType<String>(json, r'fileUrl'),
+      return FileRecordSearchRequest(
+        uploaderId: mapValueOfType<int>(json, r'uploaderId'),
+        businessType: mapValueOfType<String>(json, r'businessType'),
         contentType: mapValueOfType<String>(json, r'contentType'),
-        exists: mapValueOfType<bool>(json, r'exists'),
-        lastModified: mapDateTime(json, r'lastModified', r''),
-        fileExtension: mapValueOfType<String>(json, r'fileExtension'),
-        fileSizeFormatted: mapValueOfType<String>(json, r'fileSizeFormatted'),
-        isImage: mapValueOfType<bool>(json, r'isImage'),
-        isDocument: mapValueOfType<bool>(json, r'isDocument'),
+        startTime: mapValueOfType<String>(json, r'startTime'),
+        endTime: mapValueOfType<String>(json, r'endTime'),
+        minSize: mapValueOfType<int>(json, r'minSize'),
+        maxSize: mapValueOfType<int>(json, r'maxSize'),
+        page: mapValueOfType<int>(json, r'page'),
+        size: mapValueOfType<int>(json, r'size'),
       );
     }
     return null;
   }
 
-  static List<FileInfoResponse> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <FileInfoResponse>[];
+  static List<FileRecordSearchRequest> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <FileRecordSearchRequest>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = FileInfoResponse.fromJson(row);
+        final value = FileRecordSearchRequest.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -247,12 +229,12 @@ class FileInfoResponse {
     return result.toList(growable: growable);
   }
 
-  static Map<String, FileInfoResponse> mapFromJson(dynamic json) {
-    final map = <String, FileInfoResponse>{};
+  static Map<String, FileRecordSearchRequest> mapFromJson(dynamic json) {
+    final map = <String, FileRecordSearchRequest>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = FileInfoResponse.fromJson(entry.value);
+        final value = FileRecordSearchRequest.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -261,14 +243,14 @@ class FileInfoResponse {
     return map;
   }
 
-  // maps a json object with a list of FileInfoResponse-objects as value to a dart map
-  static Map<String, List<FileInfoResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<FileInfoResponse>>{};
+  // maps a json object with a list of FileRecordSearchRequest-objects as value to a dart map
+  static Map<String, List<FileRecordSearchRequest>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<FileRecordSearchRequest>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = FileInfoResponse.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = FileRecordSearchRequest.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

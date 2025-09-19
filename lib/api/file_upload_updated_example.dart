@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'file_upload_api.dart';
-import 'package:agora_market_dart_sdk/generated/lib/api.dart';
 
 /// 更新后的文件上传API使用示例
 /// 展示如何使用新增的 businessType 和 businessId 参数

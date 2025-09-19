@@ -10,98 +10,94 @@
 
 part of openapi.api;
 
-class SmartReplySettings {
-  /// Returns a new [SmartReplySettings] instance.
-  SmartReplySettings({
-    this.contextAware,
-    this.maxContextMessages,
-    this.emotionAnalysis,
-    this.intentRecognition,
+class ApiResponsePageFileRecord {
+  /// Returns a new [ApiResponsePageFileRecord] instance.
+  ApiResponsePageFileRecord({
+    this.success,
+    this.message,
+    this.code,
+    this.data,
   });
 
-  /// 是否啟用上下文理解
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? contextAware;
+  bool? success;
 
-  /// 最大上下文消息數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? maxContextMessages;
+  String? message;
 
-  /// 是否啟用情感分析
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? emotionAnalysis;
+  String? code;
 
-  /// 是否啟用意圖識別
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? intentRecognition;
+  PageFileRecord? data;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SmartReplySettings &&
-    other.contextAware == contextAware &&
-    other.maxContextMessages == maxContextMessages &&
-    other.emotionAnalysis == emotionAnalysis &&
-    other.intentRecognition == intentRecognition;
+  bool operator ==(Object other) => identical(this, other) || other is ApiResponsePageFileRecord &&
+    other.success == success &&
+    other.message == message &&
+    other.code == code &&
+    other.data == data;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (contextAware == null ? 0 : contextAware!.hashCode) +
-    (maxContextMessages == null ? 0 : maxContextMessages!.hashCode) +
-    (emotionAnalysis == null ? 0 : emotionAnalysis!.hashCode) +
-    (intentRecognition == null ? 0 : intentRecognition!.hashCode);
+    (success == null ? 0 : success!.hashCode) +
+    (message == null ? 0 : message!.hashCode) +
+    (code == null ? 0 : code!.hashCode) +
+    (data == null ? 0 : data!.hashCode);
 
   @override
-  String toString() => 'SmartReplySettings[contextAware=$contextAware, maxContextMessages=$maxContextMessages, emotionAnalysis=$emotionAnalysis, intentRecognition=$intentRecognition]';
+  String toString() => 'ApiResponsePageFileRecord[success=$success, message=$message, code=$code, data=$data]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.contextAware != null) {
-      json[r'contextAware'] = this.contextAware;
+    if (this.success != null) {
+      json[r'success'] = this.success;
     } else {
-      json[r'contextAware'] = null;
+      json[r'success'] = null;
     }
-    if (this.maxContextMessages != null) {
-      json[r'maxContextMessages'] = this.maxContextMessages;
+    if (this.message != null) {
+      json[r'message'] = this.message;
     } else {
-      json[r'maxContextMessages'] = null;
+      json[r'message'] = null;
     }
-    if (this.emotionAnalysis != null) {
-      json[r'emotionAnalysis'] = this.emotionAnalysis;
+    if (this.code != null) {
+      json[r'code'] = this.code;
     } else {
-      json[r'emotionAnalysis'] = null;
+      json[r'code'] = null;
     }
-    if (this.intentRecognition != null) {
-      json[r'intentRecognition'] = this.intentRecognition;
+    if (this.data != null) {
+      json[r'data'] = this.data;
     } else {
-      json[r'intentRecognition'] = null;
+      json[r'data'] = null;
     }
     return json;
   }
 
-  /// Returns a new [SmartReplySettings] instance and imports its values from
+  /// Returns a new [ApiResponsePageFileRecord] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static SmartReplySettings? fromJson(dynamic value) {
+  static ApiResponsePageFileRecord? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -110,27 +106,27 @@ class SmartReplySettings {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "SmartReplySettings[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "SmartReplySettings[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ApiResponsePageFileRecord[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ApiResponsePageFileRecord[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return SmartReplySettings(
-        contextAware: mapValueOfType<bool>(json, r'contextAware'),
-        maxContextMessages: mapValueOfType<int>(json, r'maxContextMessages'),
-        emotionAnalysis: mapValueOfType<bool>(json, r'emotionAnalysis'),
-        intentRecognition: mapValueOfType<bool>(json, r'intentRecognition'),
+      return ApiResponsePageFileRecord(
+        success: mapValueOfType<bool>(json, r'success'),
+        message: mapValueOfType<String>(json, r'message'),
+        code: mapValueOfType<String>(json, r'code'),
+        data: PageFileRecord.fromJson(json[r'data']),
       );
     }
     return null;
   }
 
-  static List<SmartReplySettings> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <SmartReplySettings>[];
+  static List<ApiResponsePageFileRecord> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ApiResponsePageFileRecord>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = SmartReplySettings.fromJson(row);
+        final value = ApiResponsePageFileRecord.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -139,12 +135,12 @@ class SmartReplySettings {
     return result.toList(growable: growable);
   }
 
-  static Map<String, SmartReplySettings> mapFromJson(dynamic json) {
-    final map = <String, SmartReplySettings>{};
+  static Map<String, ApiResponsePageFileRecord> mapFromJson(dynamic json) {
+    final map = <String, ApiResponsePageFileRecord>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = SmartReplySettings.fromJson(entry.value);
+        final value = ApiResponsePageFileRecord.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -153,14 +149,14 @@ class SmartReplySettings {
     return map;
   }
 
-  // maps a json object with a list of SmartReplySettings-objects as value to a dart map
-  static Map<String, List<SmartReplySettings>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<SmartReplySettings>>{};
+  // maps a json object with a list of ApiResponsePageFileRecord-objects as value to a dart map
+  static Map<String, List<ApiResponsePageFileRecord>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ApiResponsePageFileRecord>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SmartReplySettings.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ApiResponsePageFileRecord.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

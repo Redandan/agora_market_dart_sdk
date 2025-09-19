@@ -16,68 +16,9 @@ class FileManagementApi {
 
   final ApiClient apiClient;
 
-  /// 檢查文件是否存在
-  ///
-  /// 檢查 OCI Object Storage 中是否存在指定文件
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] objectName (required):
-  ///   文件名
-  Future<Response> checkFileExistsWithHttpInfo(String objectName,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/files/exists/{objectName}'
-      .replaceAll('{objectName}', objectName);
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 檢查文件是否存在
-  ///
-  /// 檢查 OCI Object Storage 中是否存在指定文件
-  ///
-  /// Parameters:
-  ///
-  /// * [String] objectName (required):
-  ///   文件名
-  Future<ApiResponseFileInfoResponse?> checkFileExists(String objectName,) async {
-    final response = await checkFileExistsWithHttpInfo(objectName,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseFileInfoResponse',) as ApiResponseFileInfoResponse;
-    
-    }
-    return null;
-  }
-
   /// 刪除文件
   ///
-  /// 從 OCI Object Storage 刪除指定文件
+  /// 從 OCI Object Storage 刪除指定文件，同時軟刪除對應的檔案記錄
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -113,7 +54,7 @@ class FileManagementApi {
 
   /// 刪除文件
   ///
-  /// 從 OCI Object Storage 刪除指定文件
+  /// 從 OCI Object Storage 刪除指定文件，同時軟刪除對應的檔案記錄
   ///
   /// Parameters:
   ///
@@ -134,34 +75,32 @@ class FileManagementApi {
     return null;
   }
 
-  /// 下載文件
+  /// 查詢檔案記錄
   ///
-  /// 從 OCI Object Storage 下載指定文件
+  /// 根據條件查詢檔案上傳記錄，支援分頁和多條件篩選
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [String] objectName (required):
-  ///   文件名
-  Future<Response> downloadFileWithHttpInfo(String objectName,) async {
+  /// * [FileRecordSearchRequest] fileRecordSearchRequest (required):
+  Future<Response> searchFileRecordsWithHttpInfo(FileRecordSearchRequest fileRecordSearchRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/files/download/{objectName}'
-      .replaceAll('{objectName}', objectName);
+    final path = r'/files/records/search';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = fileRecordSearchRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -170,16 +109,15 @@ class FileManagementApi {
     );
   }
 
-  /// 下載文件
+  /// 查詢檔案記錄
   ///
-  /// 從 OCI Object Storage 下載指定文件
+  /// 根據條件查詢檔案上傳記錄，支援分頁和多條件篩選
   ///
   /// Parameters:
   ///
-  /// * [String] objectName (required):
-  ///   文件名
-  Future<ApiResponseFileDownloadResponse?> downloadFile(String objectName,) async {
-    final response = await downloadFileWithHttpInfo(objectName,);
+  /// * [FileRecordSearchRequest] fileRecordSearchRequest (required):
+  Future<ApiResponsePageFileRecord?> searchFileRecords(FileRecordSearchRequest fileRecordSearchRequest,) async {
+    final response = await searchFileRecordsWithHttpInfo(fileRecordSearchRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -187,20 +125,25 @@ class FileManagementApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseFileDownloadResponse',) as ApiResponseFileDownloadResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponsePageFileRecord',) as ApiResponsePageFileRecord;
     
     }
     return null;
   }
 
-  /// 列出 OCI 桶中的文件
+  /// 檔案同步
   ///
-  /// 列出 OCI Object Storage 桶中的所有文件
+  /// 同步檔案記錄與 OCI Object Storage，dryRun=true 時只檢查狀態不執行同步
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> listFilesWithHttpInfo() async {
+  ///
+  /// Parameters:
+  ///
+  /// * [bool] dryRun:
+  ///   是否為試運行模式（只檢查不執行）
+  Future<Response> syncFileRecordsWithHttpInfo({ bool? dryRun, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/files/list';
+    final path = r'/files/sync';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -209,12 +152,16 @@ class FileManagementApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+    if (dryRun != null) {
+      queryParams.addAll(_queryParams('', 'dryRun', dryRun));
+    }
+
     const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -223,11 +170,16 @@ class FileManagementApi {
     );
   }
 
-  /// 列出 OCI 桶中的文件
+  /// 檔案同步
   ///
-  /// 列出 OCI Object Storage 桶中的所有文件
-  Future<ApiResponseFileListResponse?> listFiles() async {
-    final response = await listFilesWithHttpInfo();
+  /// 同步檔案記錄與 OCI Object Storage，dryRun=true 時只檢查狀態不執行同步
+  ///
+  /// Parameters:
+  ///
+  /// * [bool] dryRun:
+  ///   是否為試運行模式（只檢查不執行）
+  Future<ApiResponseFileSyncResponse?> syncFileRecords({ bool? dryRun, }) async {
+    final response = await syncFileRecordsWithHttpInfo( dryRun: dryRun, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -235,7 +187,7 @@ class FileManagementApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseFileListResponse',) as ApiResponseFileListResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseFileSyncResponse',) as ApiResponseFileSyncResponse;
     
     }
     return null;

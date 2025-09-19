@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:agora_market_dart_sdk/agora_market_dart_sdk.dart';
 
 /// 全局错误处理器使用示例

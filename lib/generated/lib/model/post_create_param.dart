@@ -23,7 +23,6 @@ class PostCreateParam {
     this.metaKeywords,
     this.publishNow = false,
     this.imageUrls = const {},
-    this.fileIds = const [],
   });
 
   /// 貼文標題
@@ -80,9 +79,6 @@ class PostCreateParam {
   /// 貼文圖片URL集合
   Set<String> imageUrls;
 
-  /// 文件記錄ID列表（用於關聯已上傳的文件）
-  List<int> fileIds;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is PostCreateParam &&
     other.title == title &&
@@ -94,8 +90,7 @@ class PostCreateParam {
     other.metaDescription == metaDescription &&
     other.metaKeywords == metaKeywords &&
     other.publishNow == publishNow &&
-    _deepEquality.equals(other.imageUrls, imageUrls) &&
-    _deepEquality.equals(other.fileIds, fileIds);
+    _deepEquality.equals(other.imageUrls, imageUrls);
 
   @override
   int get hashCode =>
@@ -109,11 +104,10 @@ class PostCreateParam {
     (metaDescription == null ? 0 : metaDescription!.hashCode) +
     (metaKeywords == null ? 0 : metaKeywords!.hashCode) +
     (publishNow.hashCode) +
-    (imageUrls.hashCode) +
-    (fileIds.hashCode);
+    (imageUrls.hashCode);
 
   @override
-  String toString() => 'PostCreateParam[title=$title, content=$content, storeId=$storeId, tags=$tags, category=$category, metaTitle=$metaTitle, metaDescription=$metaDescription, metaKeywords=$metaKeywords, publishNow=$publishNow, imageUrls=$imageUrls, fileIds=$fileIds]';
+  String toString() => 'PostCreateParam[title=$title, content=$content, storeId=$storeId, tags=$tags, category=$category, metaTitle=$metaTitle, metaDescription=$metaDescription, metaKeywords=$metaKeywords, publishNow=$publishNow, imageUrls=$imageUrls]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -143,7 +137,6 @@ class PostCreateParam {
     }
       json[r'publishNow'] = this.publishNow;
       json[r'imageUrls'] = this.imageUrls.toList(growable: false);
-      json[r'fileIds'] = this.fileIds;
     return json;
   }
 
@@ -180,9 +173,6 @@ class PostCreateParam {
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
             : const {},
-        fileIds: json[r'fileIds'] is Iterable
-            ? (json[r'fileIds'] as Iterable).cast<int>().toList(growable: false)
-            : const [],
       );
     }
     return null;

@@ -16,7 +16,6 @@ class ChatMessageDTO {
     required this.receiverId,
     required this.content,
     this.imageUrls = const [],
-    this.fileIds = const [],
   });
 
   /// 接收者ID
@@ -28,33 +27,27 @@ class ChatMessageDTO {
   /// 消息圖片URL列表
   List<String> imageUrls;
 
-  /// 消息圖片對應的文件記錄ID列表
-  List<int> fileIds;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is ChatMessageDTO &&
     other.receiverId == receiverId &&
     other.content == content &&
-    _deepEquality.equals(other.imageUrls, imageUrls) &&
-    _deepEquality.equals(other.fileIds, fileIds);
+    _deepEquality.equals(other.imageUrls, imageUrls);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (receiverId.hashCode) +
     (content.hashCode) +
-    (imageUrls.hashCode) +
-    (fileIds.hashCode);
+    (imageUrls.hashCode);
 
   @override
-  String toString() => 'ChatMessageDTO[receiverId=$receiverId, content=$content, imageUrls=$imageUrls, fileIds=$fileIds]';
+  String toString() => 'ChatMessageDTO[receiverId=$receiverId, content=$content, imageUrls=$imageUrls]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'receiverId'] = this.receiverId;
       json[r'content'] = this.content;
       json[r'imageUrls'] = this.imageUrls;
-      json[r'fileIds'] = this.fileIds;
     return json;
   }
 
@@ -81,9 +74,6 @@ class ChatMessageDTO {
         content: mapValueOfType<String>(json, r'content')!,
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toList(growable: false)
-            : const [],
-        fileIds: json[r'fileIds'] is Iterable
-            ? (json[r'fileIds'] as Iterable).cast<int>().toList(growable: false)
             : const [],
       );
     }

@@ -112,25 +112,14 @@ class AutoReplyApi {
     return null;
   }
 
-  /// 測試自動回復
+  /// 重置今日命中次數
   ///
-  /// 測試自動回復功能
+  /// 手動重置今日的命中次數統計
   ///
   /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] message (required):
-  ///   測試消息
-  ///
-  /// * [int] userId (required):
-  ///   用戶ID
-  ///
-  /// * [String] sessionId (required):
-  ///   會話ID
-  Future<Response> testAutoReplyWithHttpInfo(String message, int userId, String sessionId,) async {
+  Future<Response> resetTodayHitCountWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/admin/auto-reply/test';
+    final path = r'/admin/auto-reply/stats/reset-today';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -138,10 +127,6 @@ class AutoReplyApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'message', message));
-      queryParams.addAll(_queryParams('', 'userId', userId));
-      queryParams.addAll(_queryParams('', 'sessionId', sessionId));
 
     const contentTypes = <String>[];
 
@@ -157,22 +142,11 @@ class AutoReplyApi {
     );
   }
 
-  /// 測試自動回復
+  /// 重置今日命中次數
   ///
-  /// 測試自動回復功能
-  ///
-  /// Parameters:
-  ///
-  /// * [String] message (required):
-  ///   測試消息
-  ///
-  /// * [int] userId (required):
-  ///   用戶ID
-  ///
-  /// * [String] sessionId (required):
-  ///   會話ID
-  Future<String?> testAutoReply(String message, int userId, String sessionId,) async {
-    final response = await testAutoReplyWithHttpInfo(message, userId, sessionId,);
+  /// 手動重置今日的命中次數統計
+  Future<Object?> resetTodayHitCount() async {
+    final response = await resetTodayHitCountWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -180,7 +154,7 @@ class AutoReplyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'String',) as String;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
     
     }
     return null;

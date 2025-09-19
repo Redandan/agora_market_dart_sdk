@@ -3512,54 +3512,6 @@ class DefaultApi {
     return null;
   }
 
-  /// 获取验证规则
-  ///
-  /// 获取商品图片验证的详细规则说明
-  ///
-  /// Note: This method returns the HTTP [Response].
-  Future<Response> getValidationRulesWithHttpInfo() async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/product-validation-example/rules';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 获取验证规则
-  ///
-  /// 获取商品图片验证的详细规则说明
-  Future<String?> getValidationRules() async {
-    final response = await getValidationRulesWithHttpInfo();
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'String',) as String;
-    
-    }
-    return null;
-  }
-
   /// 查詢提款記錄
   ///
   /// Note: This method returns the HTTP [Response].
@@ -4656,64 +4608,6 @@ class DefaultApi {
     return null;
   }
 
-  /// 测试URL验证
-  ///
-  /// 测试单个URL的验证功能
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] url (required):
-  Future<Response> testUrlValidationWithHttpInfo(String url,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/product-validation-example/test-url-validation';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'url', url));
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 测试URL验证
-  ///
-  /// 测试单个URL的验证功能
-  ///
-  /// Parameters:
-  ///
-  /// * [String] url (required):
-  Future<String?> testUrlValidation(String url,) async {
-    final response = await testUrlValidationWithHttpInfo(url,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'String',) as String;
-    
-    }
-    return null;
-  }
-
   /// 取消點讚
   ///
   /// 用戶取消點讚貼文
@@ -4890,62 +4784,6 @@ class DefaultApi {
     return null;
   }
 
-  /// 验证图片URL格式
-  ///
-  /// 演示如何验证图片URL的格式是否正确
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [Set<String>] requestBody (required):
-  Future<Response> validateImageUrlsWithHttpInfo(Set<String> requestBody,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/product-validation-example/validate-urls';
-
-    // ignore: prefer_final_locals
-    Object? postBody = requestBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 验证图片URL格式
-  ///
-  /// 演示如何验证图片URL的格式是否正确
-  ///
-  /// Parameters:
-  ///
-  /// * [Set<String>] requestBody (required):
-  Future<String?> validateImageUrls(Set<String> requestBody,) async {
-    final response = await validateImageUrlsWithHttpInfo(requestBody,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'String',) as String;
-    
-    }
-    return null;
-  }
-
   /// 郵遞區號驗證
   ///
   /// 驗證郵遞區號是否有效
@@ -5000,62 +4838,6 @@ class DefaultApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
-    
-    }
-    return null;
-  }
-
-  /// 验证商品更新请求
-  ///
-  /// 演示完整的图片URL和fileId验证逻辑
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [ProductUpdateParam] productUpdateParam (required):
-  Future<Response> validateUpdateRequestWithHttpInfo(ProductUpdateParam productUpdateParam,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/product-validation-example/validate-update-request';
-
-    // ignore: prefer_final_locals
-    Object? postBody = productUpdateParam;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 验证商品更新请求
-  ///
-  /// 演示完整的图片URL和fileId验证逻辑
-  ///
-  /// Parameters:
-  ///
-  /// * [ProductUpdateParam] productUpdateParam (required):
-  Future<String?> validateUpdateRequest(ProductUpdateParam productUpdateParam,) async {
-    final response = await validateUpdateRequestWithHttpInfo(productUpdateParam,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'String',) as String;
     
     }
     return null;

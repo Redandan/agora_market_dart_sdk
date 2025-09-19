@@ -121,7 +121,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getTransactionListByAdmin**](doc//DefaultApi.md#gettransactionlistbyadmin) | **POST** /transactions/admin/search | 管理員查看帳變記錄
 *DefaultApi* | [**getUserCart**](doc//DefaultApi.md#getusercart) | **GET** /api/cart | 獲取用戶購物車
 *DefaultApi* | [**getUserPostStatistics**](doc//DefaultApi.md#getuserpoststatistics) | **GET** /api/posts/user/{userId}/statistics | 獲取用戶貼文統計
-*DefaultApi* | [**getValidationRules**](doc//DefaultApi.md#getvalidationrules) | **GET** /api/product-validation-example/rules | 获取验证规则
 *DefaultApi* | [**getWithdraw**](doc//DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 *DefaultApi* | [**getWithdrawHistory**](doc//DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
 *DefaultApi* | [**likePost**](doc//DefaultApi.md#likepost) | **POST** /api/posts/{id}/like | 點讚貼文
@@ -140,13 +139,10 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**setFeatured**](doc//DefaultApi.md#setfeatured) | **POST** /api/admin/posts/{id}/featured | 設置精選貼文
 *DefaultApi* | [**setTop**](doc//DefaultApi.md#settop) | **POST** /api/admin/posts/{id}/top | 設置置頂貼文
 *DefaultApi* | [**sharePost**](doc//DefaultApi.md#sharepost) | **POST** /api/posts/{id}/share | 分享貼文
-*DefaultApi* | [**testUrlValidation**](doc//DefaultApi.md#testurlvalidation) | **POST** /api/product-validation-example/test-url-validation | 测试URL验证
 *DefaultApi* | [**unlikePost**](doc//DefaultApi.md#unlikepost) | **POST** /api/posts/{id}/unlike | 取消點讚
 *DefaultApi* | [**updateCartItem**](doc//DefaultApi.md#updatecartitem) | **PUT** /api/cart/{cartItemId} | 更新購物車項目
 *DefaultApi* | [**updatePost**](doc//DefaultApi.md#updatepost) | **PUT** /api/posts | 更新貼文
-*DefaultApi* | [**validateImageUrls**](doc//DefaultApi.md#validateimageurls) | **POST** /api/product-validation-example/validate-urls | 验证图片URL格式
 *DefaultApi* | [**validatePostalCode**](doc//DefaultApi.md#validatepostalcode) | **GET** /api/logistics/postal-codes/{postalCode}/validate | 郵遞區號驗證
-*DefaultApi* | [**validateUpdateRequest**](doc//DefaultApi.md#validateupdaterequest) | **POST** /api/product-validation-example/validate-update-request | 验证商品更新请求
 *AdminDeliveryApi* | [**assignDeliveryer**](doc//AdminDeliveryApi.md#assigndeliveryer) | **POST** /admin/delivery/orders/{orderId}/assign | 手動分配配送員
 *AdminDeliveryApi* | [**getDeliveryOrderDetail**](doc//AdminDeliveryApi.md#getdeliveryorderdetail) | **GET** /admin/delivery/orders/{orderId} | 查看配送訂單詳情
 *AdminDeliveryApi* | [**getDeliveryStatistics**](doc//AdminDeliveryApi.md#getdeliverystatistics) | **GET** /admin/delivery/statistics | 配送統計報告
@@ -215,7 +211,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**verifyTwoFactorCode**](doc//AuthApi.md#verifytwofactorcode) | **POST** /auth/2fa/verify | 驗證雙因素認證碼
 *AutoReplyApi* | [**getConfig**](doc//AutoReplyApi.md#getconfig) | **GET** /admin/auto-reply/config | 獲取自動回復配置
 *AutoReplyApi* | [**getStats**](doc//AutoReplyApi.md#getstats) | **GET** /admin/auto-reply/stats | 獲取自動回復統計
-*AutoReplyApi* | [**testAutoReply**](doc//AutoReplyApi.md#testautoreply) | **POST** /admin/auto-reply/test | 測試自動回復
+*AutoReplyApi* | [**resetTodayHitCount**](doc//AutoReplyApi.md#resettodayhitcount) | **POST** /admin/auto-reply/stats/reset-today | 重置今日命中次數
 *AutoReplyApi* | [**updateConfig**](doc//AutoReplyApi.md#updateconfig) | **PUT** /admin/auto-reply/config | 更新自動回復配置
 *ChatApi* | [**clearSession**](doc//ChatApi.md#clearsession) | **DELETE** /chat/sessions/{sessionId}/messages | 清空會話
 *ChatApi* | [**deleteMessage**](doc//ChatApi.md#deletemessage) | **DELETE** /chat/messages/{messageId} | 刪除消息
@@ -249,10 +245,9 @@ Class | Method | HTTP request | Description
 *EnumTranslationsApi* | [**getLogisticsServiceTypeTranslations**](doc//EnumTranslationsApi.md#getlogisticsservicetypetranslations) | **GET** /api/enums/logistics-service-types | 獲取物流服務類型枚舉翻譯
 *EnumTranslationsApi* | [**getShippingCompanyEnumToDescriptionMap**](doc//EnumTranslationsApi.md#getshippingcompanyenumtodescriptionmap) | **GET** /api/enums/shipping-companies/map | 獲取物流公司枚舉映射
 *EnumTranslationsApi* | [**getShippingCompanyTranslations**](doc//EnumTranslationsApi.md#getshippingcompanytranslations) | **GET** /api/enums/shipping-companies | 獲取物流公司枚舉翻譯
-*FileManagementApi* | [**checkFileExists**](doc//FileManagementApi.md#checkfileexists) | **GET** /files/exists/{objectName} | 檢查文件是否存在
 *FileManagementApi* | [**deleteFile**](doc//FileManagementApi.md#deletefile) | **DELETE** /files/{objectName} | 刪除文件
-*FileManagementApi* | [**downloadFile**](doc//FileManagementApi.md#downloadfile) | **GET** /files/download/{objectName} | 下載文件
-*FileManagementApi* | [**listFiles**](doc//FileManagementApi.md#listfiles) | **GET** /files/list | 列出 OCI 桶中的文件
+*FileManagementApi* | [**searchFileRecords**](doc//FileManagementApi.md#searchfilerecords) | **POST** /files/records/search | 查詢檔案記錄
+*FileManagementApi* | [**syncFileRecords**](doc//FileManagementApi.md#syncfilerecords) | **POST** /files/sync | 檔案同步
 *MemberDisputesApi* | [**createDispute**](doc//MemberDisputesApi.md#createdispute) | **POST** /disputes | 創建糾紛
 *MemberDisputesApi* | [**getDisputeDetail**](doc//MemberDisputesApi.md#getdisputedetail) | **GET** /disputes/{disputeId} | 查看糾紛詳情
 *MemberDisputesApi* | [**replyDispute**](doc//MemberDisputesApi.md#replydispute) | **POST** /disputes/{disputeId}/reply | 回覆糾紛
@@ -369,12 +364,11 @@ Class | Method | HTTP request | Description
  - [AdminStoreSearchParam](doc//AdminStoreSearchParam.md)
  - [AdminStoreUpdateParam](doc//AdminStoreUpdateParam.md)
  - [ApiResponseColdWallet](doc//ApiResponseColdWallet.md)
- - [ApiResponseFileDownloadResponse](doc//ApiResponseFileDownloadResponse.md)
- - [ApiResponseFileInfoResponse](doc//ApiResponseFileInfoResponse.md)
- - [ApiResponseFileListResponse](doc//ApiResponseFileListResponse.md)
+ - [ApiResponseFileSyncResponse](doc//ApiResponseFileSyncResponse.md)
  - [ApiResponseListPostResponse](doc//ApiResponseListPostResponse.md)
  - [ApiResponseMapStringObject](doc//ApiResponseMapStringObject.md)
  - [ApiResponsePageColdWallet](doc//ApiResponsePageColdWallet.md)
+ - [ApiResponsePageFileRecord](doc//ApiResponsePageFileRecord.md)
  - [ApiResponsePageResponsePostResponse](doc//ApiResponsePageResponsePostResponse.md)
  - [ApiResponsePostResponse](doc//ApiResponsePostResponse.md)
  - [ApiResponsePostStatistics](doc//ApiResponsePostStatistics.md)
@@ -424,10 +418,10 @@ Class | Method | HTTP request | Description
  - [DisputeSearchParam](doc//DisputeSearchParam.md)
  - [DisputeStatisticsDTO](doc//DisputeStatisticsDTO.md)
  - [DisputeStatusEnum](doc//DisputeStatusEnum.md)
- - [FileDownloadResponse](doc//FileDownloadResponse.md)
- - [FileInfoResponse](doc//FileInfoResponse.md)
- - [FileListResponse](doc//FileListResponse.md)
- - [HumanInterventionSettings](doc//HumanInterventionSettings.md)
+ - [FileRecord](doc//FileRecord.md)
+ - [FileRecordInfo](doc//FileRecordInfo.md)
+ - [FileRecordSearchRequest](doc//FileRecordSearchRequest.md)
+ - [FileSyncResponse](doc//FileSyncResponse.md)
  - [IssueSearchParam](doc//IssueSearchParam.md)
  - [IssueStatusEnum](doc//IssueStatusEnum.md)
  - [IssueTypeEnum](doc//IssueTypeEnum.md)
@@ -462,6 +456,7 @@ Class | Method | HTTP request | Description
  - [PageColdWallet](doc//PageColdWallet.md)
  - [PageCustomerIssue](doc//PageCustomerIssue.md)
  - [PageDispute](doc//PageDispute.md)
+ - [PageFileRecord](doc//PageFileRecord.md)
  - [PageNotificationResponseDTO](doc//PageNotificationResponseDTO.md)
  - [PageOrder](doc//PageOrder.md)
  - [PageProduct](doc//PageProduct.md)
@@ -478,7 +473,6 @@ Class | Method | HTTP request | Description
  - [Pageable](doc//Pageable.md)
  - [PageableObject](doc//PageableObject.md)
  - [PasswordResetParam](doc//PasswordResetParam.md)
- - [PersonalizationSettings](doc//PersonalizationSettings.md)
  - [PostCreateParam](doc//PostCreateParam.md)
  - [PostResponse](doc//PostResponse.md)
  - [PostSearchParam](doc//PostSearchParam.md)
@@ -519,7 +513,7 @@ Class | Method | HTTP request | Description
  - [ShippingCompanyEnum](doc//ShippingCompanyEnum.md)
  - [ShippingOptions](doc//ShippingOptions.md)
  - [ShippingServiceGroup](doc//ShippingServiceGroup.md)
- - [SmartReplySettings](doc//SmartReplySettings.md)
+ - [SimpleReplySettings](doc//SimpleReplySettings.md)
  - [SortObject](doc//SortObject.md)
  - [Staking](doc//Staking.md)
  - [StakingSearchParam](doc//StakingSearchParam.md)
