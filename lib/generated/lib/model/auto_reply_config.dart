@@ -14,17 +14,16 @@ class AutoReplyConfig {
   /// Returns a new [AutoReplyConfig] instance.
   AutoReplyConfig({
     this.id,
+    this.name,
+    this.description,
+    this.keyword,
+    this.replyContent,
+    this.priority,
     this.enabled,
-    this.defaultReply,
-    this.contactInfo,
-    this.keywordRules = const [],
-    this.totalHitCount,
-    this.todayHitCount,
-    this.lastResetDate,
+    this.hitCount,
+    this.lastHitTime,
     this.createdAt,
     this.updatedAt,
-    this.keywordRulesJson,
-    this.simpleReplySettings,
   });
 
   /// 配置ID
@@ -36,7 +35,52 @@ class AutoReplyConfig {
   ///
   int? id;
 
-  /// 是否啟用自動回復
+  /// 配置名稱
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? name;
+
+  /// 配置描述
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? description;
+
+  /// 關鍵詞
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? keyword;
+
+  /// 回復內容
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? replyContent;
+
+  /// 優先級
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? priority;
+
+  /// 是否啟用
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -45,53 +89,23 @@ class AutoReplyConfig {
   ///
   bool? enabled;
 
-  /// 默認回復內容
+  /// 命中次數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? defaultReply;
+  int? hitCount;
 
-  /// 聯繫信息
+  /// 最後命中時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? contactInfo;
-
-  /// 關鍵詞回復規則
-  List<KeywordRule> keywordRules;
-
-  /// 總命中次數
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? totalHitCount;
-
-  /// 今日命中次數
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? todayHitCount;
-
-  /// 最後重置日期
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? lastResetDate;
+  DateTime? lastHitTime;
 
   /// 創建時間
   ///
@@ -111,55 +125,37 @@ class AutoReplyConfig {
   ///
   DateTime? updatedAt;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? keywordRulesJson;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  SimpleReplySettings? simpleReplySettings;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is AutoReplyConfig &&
     other.id == id &&
+    other.name == name &&
+    other.description == description &&
+    other.keyword == keyword &&
+    other.replyContent == replyContent &&
+    other.priority == priority &&
     other.enabled == enabled &&
-    other.defaultReply == defaultReply &&
-    other.contactInfo == contactInfo &&
-    _deepEquality.equals(other.keywordRules, keywordRules) &&
-    other.totalHitCount == totalHitCount &&
-    other.todayHitCount == todayHitCount &&
-    other.lastResetDate == lastResetDate &&
+    other.hitCount == hitCount &&
+    other.lastHitTime == lastHitTime &&
     other.createdAt == createdAt &&
-    other.updatedAt == updatedAt &&
-    other.keywordRulesJson == keywordRulesJson &&
-    other.simpleReplySettings == simpleReplySettings;
+    other.updatedAt == updatedAt;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
+    (name == null ? 0 : name!.hashCode) +
+    (description == null ? 0 : description!.hashCode) +
+    (keyword == null ? 0 : keyword!.hashCode) +
+    (replyContent == null ? 0 : replyContent!.hashCode) +
+    (priority == null ? 0 : priority!.hashCode) +
     (enabled == null ? 0 : enabled!.hashCode) +
-    (defaultReply == null ? 0 : defaultReply!.hashCode) +
-    (contactInfo == null ? 0 : contactInfo!.hashCode) +
-    (keywordRules.hashCode) +
-    (totalHitCount == null ? 0 : totalHitCount!.hashCode) +
-    (todayHitCount == null ? 0 : todayHitCount!.hashCode) +
-    (lastResetDate == null ? 0 : lastResetDate!.hashCode) +
+    (hitCount == null ? 0 : hitCount!.hashCode) +
+    (lastHitTime == null ? 0 : lastHitTime!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (keywordRulesJson == null ? 0 : keywordRulesJson!.hashCode) +
-    (simpleReplySettings == null ? 0 : simpleReplySettings!.hashCode);
+    (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'AutoReplyConfig[id=$id, enabled=$enabled, defaultReply=$defaultReply, contactInfo=$contactInfo, keywordRules=$keywordRules, totalHitCount=$totalHitCount, todayHitCount=$todayHitCount, lastResetDate=$lastResetDate, createdAt=$createdAt, updatedAt=$updatedAt, keywordRulesJson=$keywordRulesJson, simpleReplySettings=$simpleReplySettings]';
+  String toString() => 'AutoReplyConfig[id=$id, name=$name, description=$description, keyword=$keyword, replyContent=$replyContent, priority=$priority, enabled=$enabled, hitCount=$hitCount, lastHitTime=$lastHitTime, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -168,36 +164,45 @@ class AutoReplyConfig {
     } else {
       json[r'id'] = null;
     }
+    if (this.name != null) {
+      json[r'name'] = this.name;
+    } else {
+      json[r'name'] = null;
+    }
+    if (this.description != null) {
+      json[r'description'] = this.description;
+    } else {
+      json[r'description'] = null;
+    }
+    if (this.keyword != null) {
+      json[r'keyword'] = this.keyword;
+    } else {
+      json[r'keyword'] = null;
+    }
+    if (this.replyContent != null) {
+      json[r'replyContent'] = this.replyContent;
+    } else {
+      json[r'replyContent'] = null;
+    }
+    if (this.priority != null) {
+      json[r'priority'] = this.priority;
+    } else {
+      json[r'priority'] = null;
+    }
     if (this.enabled != null) {
       json[r'enabled'] = this.enabled;
     } else {
       json[r'enabled'] = null;
     }
-    if (this.defaultReply != null) {
-      json[r'defaultReply'] = this.defaultReply;
+    if (this.hitCount != null) {
+      json[r'hitCount'] = this.hitCount;
     } else {
-      json[r'defaultReply'] = null;
+      json[r'hitCount'] = null;
     }
-    if (this.contactInfo != null) {
-      json[r'contactInfo'] = this.contactInfo;
+    if (this.lastHitTime != null) {
+      json[r'lastHitTime'] = this.lastHitTime!.toUtc().toIso8601String();
     } else {
-      json[r'contactInfo'] = null;
-    }
-      json[r'keywordRules'] = this.keywordRules;
-    if (this.totalHitCount != null) {
-      json[r'totalHitCount'] = this.totalHitCount;
-    } else {
-      json[r'totalHitCount'] = null;
-    }
-    if (this.todayHitCount != null) {
-      json[r'todayHitCount'] = this.todayHitCount;
-    } else {
-      json[r'todayHitCount'] = null;
-    }
-    if (this.lastResetDate != null) {
-      json[r'lastResetDate'] = this.lastResetDate!.toUtc().toIso8601String();
-    } else {
-      json[r'lastResetDate'] = null;
+      json[r'lastHitTime'] = null;
     }
     if (this.createdAt != null) {
       json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
@@ -208,16 +213,6 @@ class AutoReplyConfig {
       json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
     } else {
       json[r'updatedAt'] = null;
-    }
-    if (this.keywordRulesJson != null) {
-      json[r'keywordRulesJson'] = this.keywordRulesJson;
-    } else {
-      json[r'keywordRulesJson'] = null;
-    }
-    if (this.simpleReplySettings != null) {
-      json[r'simpleReplySettings'] = this.simpleReplySettings;
-    } else {
-      json[r'simpleReplySettings'] = null;
     }
     return json;
   }
@@ -242,17 +237,16 @@ class AutoReplyConfig {
 
       return AutoReplyConfig(
         id: mapValueOfType<int>(json, r'id'),
+        name: mapValueOfType<String>(json, r'name'),
+        description: mapValueOfType<String>(json, r'description'),
+        keyword: mapValueOfType<String>(json, r'keyword'),
+        replyContent: mapValueOfType<String>(json, r'replyContent'),
+        priority: mapValueOfType<int>(json, r'priority'),
         enabled: mapValueOfType<bool>(json, r'enabled'),
-        defaultReply: mapValueOfType<String>(json, r'defaultReply'),
-        contactInfo: mapValueOfType<String>(json, r'contactInfo'),
-        keywordRules: KeywordRule.listFromJson(json[r'keywordRules']),
-        totalHitCount: mapValueOfType<int>(json, r'totalHitCount'),
-        todayHitCount: mapValueOfType<int>(json, r'todayHitCount'),
-        lastResetDate: mapDateTime(json, r'lastResetDate', r''),
+        hitCount: mapValueOfType<int>(json, r'hitCount'),
+        lastHitTime: mapDateTime(json, r'lastHitTime', r''),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
-        keywordRulesJson: mapValueOfType<String>(json, r'keywordRulesJson'),
-        simpleReplySettings: SimpleReplySettings.fromJson(json[r'simpleReplySettings']),
       );
     }
     return null;

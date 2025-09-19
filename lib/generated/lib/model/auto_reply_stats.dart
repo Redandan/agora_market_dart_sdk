@@ -10,15 +10,14 @@
 
 part of openapi.api;
 
-class PageableObject {
-  /// Returns a new [PageableObject] instance.
-  PageableObject({
-    this.sort,
-    this.pageNumber,
-    this.pageSize,
-    this.paged,
-    this.unpaged,
-    this.offset,
+class AutoReplyStats {
+  /// Returns a new [AutoReplyStats] instance.
+  AutoReplyStats({
+    this.totalConfigs,
+    this.enabledConfigs,
+    this.disabledConfigs,
+    this.totalHitCount,
+    this.lastUpdated,
   });
 
   ///
@@ -27,7 +26,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SortObject? sort;
+  int? totalConfigs;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -35,7 +34,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageNumber;
+  int? enabledConfigs;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -43,7 +42,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageSize;
+  int? disabledConfigs;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -51,7 +50,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? paged;
+  int? totalHitCount;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -59,77 +58,62 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unpaged;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? offset;
+  DateTime? lastUpdated;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageableObject &&
-    other.sort == sort &&
-    other.pageNumber == pageNumber &&
-    other.pageSize == pageSize &&
-    other.paged == paged &&
-    other.unpaged == unpaged &&
-    other.offset == offset;
+  bool operator ==(Object other) => identical(this, other) || other is AutoReplyStats &&
+    other.totalConfigs == totalConfigs &&
+    other.enabledConfigs == enabledConfigs &&
+    other.disabledConfigs == disabledConfigs &&
+    other.totalHitCount == totalHitCount &&
+    other.lastUpdated == lastUpdated;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (sort == null ? 0 : sort!.hashCode) +
-    (pageNumber == null ? 0 : pageNumber!.hashCode) +
-    (pageSize == null ? 0 : pageSize!.hashCode) +
-    (paged == null ? 0 : paged!.hashCode) +
-    (unpaged == null ? 0 : unpaged!.hashCode) +
-    (offset == null ? 0 : offset!.hashCode);
+    (totalConfigs == null ? 0 : totalConfigs!.hashCode) +
+    (enabledConfigs == null ? 0 : enabledConfigs!.hashCode) +
+    (disabledConfigs == null ? 0 : disabledConfigs!.hashCode) +
+    (totalHitCount == null ? 0 : totalHitCount!.hashCode) +
+    (lastUpdated == null ? 0 : lastUpdated!.hashCode);
 
   @override
-  String toString() => 'PageableObject[sort=$sort, pageNumber=$pageNumber, pageSize=$pageSize, paged=$paged, unpaged=$unpaged, offset=$offset]';
+  String toString() => 'AutoReplyStats[totalConfigs=$totalConfigs, enabledConfigs=$enabledConfigs, disabledConfigs=$disabledConfigs, totalHitCount=$totalHitCount, lastUpdated=$lastUpdated]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.totalConfigs != null) {
+      json[r'totalConfigs'] = this.totalConfigs;
     } else {
-      json[r'sort'] = null;
+      json[r'totalConfigs'] = null;
     }
-    if (this.pageNumber != null) {
-      json[r'pageNumber'] = this.pageNumber;
+    if (this.enabledConfigs != null) {
+      json[r'enabledConfigs'] = this.enabledConfigs;
     } else {
-      json[r'pageNumber'] = null;
+      json[r'enabledConfigs'] = null;
     }
-    if (this.pageSize != null) {
-      json[r'pageSize'] = this.pageSize;
+    if (this.disabledConfigs != null) {
+      json[r'disabledConfigs'] = this.disabledConfigs;
     } else {
-      json[r'pageSize'] = null;
+      json[r'disabledConfigs'] = null;
     }
-    if (this.paged != null) {
-      json[r'paged'] = this.paged;
+    if (this.totalHitCount != null) {
+      json[r'totalHitCount'] = this.totalHitCount;
     } else {
-      json[r'paged'] = null;
+      json[r'totalHitCount'] = null;
     }
-    if (this.unpaged != null) {
-      json[r'unpaged'] = this.unpaged;
+    if (this.lastUpdated != null) {
+      json[r'lastUpdated'] = this.lastUpdated!.toUtc().toIso8601String();
     } else {
-      json[r'unpaged'] = null;
-    }
-    if (this.offset != null) {
-      json[r'offset'] = this.offset;
-    } else {
-      json[r'offset'] = null;
+      json[r'lastUpdated'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageableObject] instance and imports its values from
+  /// Returns a new [AutoReplyStats] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageableObject? fromJson(dynamic value) {
+  static AutoReplyStats? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -138,29 +122,28 @@ class PageableObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageableObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageableObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "AutoReplyStats[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "AutoReplyStats[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageableObject(
-        sort: SortObject.fromJson(json[r'sort']),
-        pageNumber: mapValueOfType<int>(json, r'pageNumber'),
-        pageSize: mapValueOfType<int>(json, r'pageSize'),
-        paged: mapValueOfType<bool>(json, r'paged'),
-        unpaged: mapValueOfType<bool>(json, r'unpaged'),
-        offset: mapValueOfType<int>(json, r'offset'),
+      return AutoReplyStats(
+        totalConfigs: mapValueOfType<int>(json, r'totalConfigs'),
+        enabledConfigs: mapValueOfType<int>(json, r'enabledConfigs'),
+        disabledConfigs: mapValueOfType<int>(json, r'disabledConfigs'),
+        totalHitCount: mapValueOfType<int>(json, r'totalHitCount'),
+        lastUpdated: mapDateTime(json, r'lastUpdated', r''),
       );
     }
     return null;
   }
 
-  static List<PageableObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageableObject>[];
+  static List<AutoReplyStats> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <AutoReplyStats>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageableObject.fromJson(row);
+        final value = AutoReplyStats.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -169,12 +152,12 @@ class PageableObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageableObject> mapFromJson(dynamic json) {
-    final map = <String, PageableObject>{};
+  static Map<String, AutoReplyStats> mapFromJson(dynamic json) {
+    final map = <String, AutoReplyStats>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageableObject.fromJson(entry.value);
+        final value = AutoReplyStats.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -183,14 +166,14 @@ class PageableObject {
     return map;
   }
 
-  // maps a json object with a list of PageableObject-objects as value to a dart map
-  static Map<String, List<PageableObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageableObject>>{};
+  // maps a json object with a list of AutoReplyStats-objects as value to a dart map
+  static Map<String, List<AutoReplyStats>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<AutoReplyStats>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageableObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = AutoReplyStats.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

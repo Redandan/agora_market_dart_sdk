@@ -222,6 +222,14 @@ class ApiClient {
           return ApplyStakingParam.fromJson(value);
         case 'AutoReplyConfig':
           return AutoReplyConfig.fromJson(value);
+        case 'AutoReplyConfigSearchRequest':
+          return AutoReplyConfigSearchRequest.fromJson(value);
+        case 'AutoReplyDeleteResponse':
+          return AutoReplyDeleteResponse.fromJson(value);
+        case 'AutoReplyResetStatsResponse':
+          return AutoReplyResetStatsResponse.fromJson(value);
+        case 'AutoReplyStats':
+          return AutoReplyStats.fromJson(value);
         case 'BatchReviewPromoCodeParam':
           return BatchReviewPromoCodeParam.fromJson(value);
         case 'BatchReviewResult':
@@ -316,8 +324,6 @@ class ApiClient {
           return IssueStatusEnumTypeTransformer().decode(value);
         case 'IssueTypeEnum':
           return IssueTypeEnumTypeTransformer().decode(value);
-        case 'KeywordRule':
-          return KeywordRule.fromJson(value);
         case 'LoginParam':
           return LoginParam.fromJson(value);
         case 'LoginResult':
@@ -364,6 +370,8 @@ class ApiClient {
           return OrderStatusEnumTypeTransformer().decode(value);
         case 'OrderSumbitParam':
           return OrderSumbitParam.fromJson(value);
+        case 'PageAutoReplyConfig':
+          return PageAutoReplyConfig.fromJson(value);
         case 'PageCartItem':
           return PageCartItem.fromJson(value);
         case 'PageCartItemResponse':
@@ -492,8 +500,6 @@ class ApiClient {
           return ShippingOptions.fromJson(value);
         case 'ShippingServiceGroup':
           return ShippingServiceGroup.fromJson(value);
-        case 'SimpleReplySettings':
-          return SimpleReplySettings.fromJson(value);
         case 'SortObject':
           return SortObject.fromJson(value);
         case 'Staking':

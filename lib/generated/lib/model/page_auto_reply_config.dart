@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class PageStaking {
-  /// Returns a new [PageStaking] instance.
-  PageStaking({
+class PageAutoReplyConfig {
+  /// Returns a new [PageAutoReplyConfig] instance.
+  PageAutoReplyConfig({
     this.totalElements,
     this.totalPages,
     this.sort,
@@ -90,7 +90,7 @@ class PageStaking {
   ///
   int? size;
 
-  List<Staking> content;
+  List<AutoReplyConfig> content;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -109,7 +109,7 @@ class PageStaking {
   bool? empty;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageStaking &&
+  bool operator ==(Object other) => identical(this, other) || other is PageAutoReplyConfig &&
     other.totalElements == totalElements &&
     other.totalPages == totalPages &&
     other.sort == sort &&
@@ -138,7 +138,7 @@ class PageStaking {
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageStaking[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, first=$first, last=$last, numberOfElements=$numberOfElements, pageable=$pageable, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'PageAutoReplyConfig[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, first=$first, last=$last, numberOfElements=$numberOfElements, pageable=$pageable, size=$size, content=$content, number=$number, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -196,10 +196,10 @@ class PageStaking {
     return json;
   }
 
-  /// Returns a new [PageStaking] instance and imports its values from
+  /// Returns a new [PageAutoReplyConfig] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageStaking? fromJson(dynamic value) {
+  static PageAutoReplyConfig? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -208,13 +208,13 @@ class PageStaking {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageStaking[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageStaking[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PageAutoReplyConfig[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PageAutoReplyConfig[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageStaking(
+      return PageAutoReplyConfig(
         totalElements: mapValueOfType<int>(json, r'totalElements'),
         totalPages: mapValueOfType<int>(json, r'totalPages'),
         sort: SortObject.fromJson(json[r'sort']),
@@ -223,7 +223,7 @@ class PageStaking {
         numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
         pageable: PageableObject.fromJson(json[r'pageable']),
         size: mapValueOfType<int>(json, r'size'),
-        content: Staking.listFromJson(json[r'content']),
+        content: AutoReplyConfig.listFromJson(json[r'content']),
         number: mapValueOfType<int>(json, r'number'),
         empty: mapValueOfType<bool>(json, r'empty'),
       );
@@ -231,11 +231,11 @@ class PageStaking {
     return null;
   }
 
-  static List<PageStaking> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageStaking>[];
+  static List<PageAutoReplyConfig> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PageAutoReplyConfig>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageStaking.fromJson(row);
+        final value = PageAutoReplyConfig.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -244,12 +244,12 @@ class PageStaking {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageStaking> mapFromJson(dynamic json) {
-    final map = <String, PageStaking>{};
+  static Map<String, PageAutoReplyConfig> mapFromJson(dynamic json) {
+    final map = <String, PageAutoReplyConfig>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageStaking.fromJson(entry.value);
+        final value = PageAutoReplyConfig.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -258,14 +258,14 @@ class PageStaking {
     return map;
   }
 
-  // maps a json object with a list of PageStaking-objects as value to a dart map
-  static Map<String, List<PageStaking>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageStaking>>{};
+  // maps a json object with a list of PageAutoReplyConfig-objects as value to a dart map
+  static Map<String, List<PageAutoReplyConfig>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<PageAutoReplyConfig>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageStaking.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = PageAutoReplyConfig.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

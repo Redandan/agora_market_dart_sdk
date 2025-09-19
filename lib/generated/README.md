@@ -209,10 +209,13 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**updateProfile**](doc//AuthApi.md#updateprofile) | **POST** /auth/update-profile | 更新用戶資料
 *AuthApi* | [**verifyEmail**](doc//AuthApi.md#verifyemail) | **POST** /auth/email-verification/verify | 驗證郵件驗證碼
 *AuthApi* | [**verifyTwoFactorCode**](doc//AuthApi.md#verifytwofactorcode) | **POST** /auth/2fa/verify | 驗證雙因素認證碼
-*AutoReplyApi* | [**getConfig**](doc//AutoReplyApi.md#getconfig) | **GET** /admin/auto-reply/config | 獲取自動回復配置
-*AutoReplyApi* | [**getStats**](doc//AutoReplyApi.md#getstats) | **GET** /admin/auto-reply/stats | 獲取自動回復統計
-*AutoReplyApi* | [**resetTodayHitCount**](doc//AutoReplyApi.md#resettodayhitcount) | **POST** /admin/auto-reply/stats/reset-today | 重置今日命中次數
-*AutoReplyApi* | [**updateConfig**](doc//AutoReplyApi.md#updateconfig) | **PUT** /admin/auto-reply/config | 更新自動回復配置
+*AutoReplyApi* | [**createConfig**](doc//AutoReplyApi.md#createconfig) | **POST** /admin/auto-reply/configs | 創建新配置
+*AutoReplyApi* | [**deleteConfig**](doc//AutoReplyApi.md#deleteconfig) | **DELETE** /admin/auto-reply/configs/{id} | 刪除配置
+*AutoReplyApi* | [**getStats**](doc//AutoReplyApi.md#getstats) | **GET** /admin/auto-reply/stats | 獲取統計信息
+*AutoReplyApi* | [**resetStats**](doc//AutoReplyApi.md#resetstats) | **POST** /admin/auto-reply/stats/reset | 重置統計
+*AutoReplyApi* | [**searchConfigs**](doc//AutoReplyApi.md#searchconfigs) | **POST** /admin/auto-reply/configs/search | 搜尋自動回復配置
+*AutoReplyApi* | [**toggleConfig**](doc//AutoReplyApi.md#toggleconfig) | **PUT** /admin/auto-reply/configs/{id}/toggle | 啟用/禁用配置
+*AutoReplyApi* | [**updateConfig**](doc//AutoReplyApi.md#updateconfig) | **PUT** /admin/auto-reply/configs/{id} | 更新配置
 *ChatApi* | [**clearSession**](doc//ChatApi.md#clearsession) | **DELETE** /chat/sessions/{sessionId}/messages | 清空會話
 *ChatApi* | [**deleteMessage**](doc//ChatApi.md#deletemessage) | **DELETE** /chat/messages/{messageId} | 刪除消息
 *ChatApi* | [**deleteSession**](doc//ChatApi.md#deletesession) | **DELETE** /chat/sessions/{sessionId} | 刪除會話
@@ -378,6 +381,10 @@ Class | Method | HTTP request | Description
  - [ApiResponseVoid](doc//ApiResponseVoid.md)
  - [ApplyStakingParam](doc//ApplyStakingParam.md)
  - [AutoReplyConfig](doc//AutoReplyConfig.md)
+ - [AutoReplyConfigSearchRequest](doc//AutoReplyConfigSearchRequest.md)
+ - [AutoReplyDeleteResponse](doc//AutoReplyDeleteResponse.md)
+ - [AutoReplyResetStatsResponse](doc//AutoReplyResetStatsResponse.md)
+ - [AutoReplyStats](doc//AutoReplyStats.md)
  - [BatchReviewPromoCodeParam](doc//BatchReviewPromoCodeParam.md)
  - [BatchReviewResult](doc//BatchReviewResult.md)
  - [CartGroupBySeller](doc//CartGroupBySeller.md)
@@ -425,7 +432,6 @@ Class | Method | HTTP request | Description
  - [IssueSearchParam](doc//IssueSearchParam.md)
  - [IssueStatusEnum](doc//IssueStatusEnum.md)
  - [IssueTypeEnum](doc//IssueTypeEnum.md)
- - [KeywordRule](doc//KeywordRule.md)
  - [LoginParam](doc//LoginParam.md)
  - [LoginResult](doc//LoginResult.md)
  - [LogisticsServiceTypeEnum](doc//LogisticsServiceTypeEnum.md)
@@ -449,6 +455,7 @@ Class | Method | HTTP request | Description
  - [OrderStatisticsDTO](doc//OrderStatisticsDTO.md)
  - [OrderStatusEnum](doc//OrderStatusEnum.md)
  - [OrderSumbitParam](doc//OrderSumbitParam.md)
+ - [PageAutoReplyConfig](doc//PageAutoReplyConfig.md)
  - [PageCartItem](doc//PageCartItem.md)
  - [PageCartItemResponse](doc//PageCartItemResponse.md)
  - [PageChatMessage](doc//PageChatMessage.md)
@@ -513,7 +520,6 @@ Class | Method | HTTP request | Description
  - [ShippingCompanyEnum](doc//ShippingCompanyEnum.md)
  - [ShippingOptions](doc//ShippingOptions.md)
  - [ShippingServiceGroup](doc//ShippingServiceGroup.md)
- - [SimpleReplySettings](doc//SimpleReplySettings.md)
  - [SortObject](doc//SortObject.md)
  - [Staking](doc//Staking.md)
  - [StakingSearchParam](doc//StakingSearchParam.md)

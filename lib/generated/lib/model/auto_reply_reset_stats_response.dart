@@ -10,98 +10,81 @@
 
 part of openapi.api;
 
-class KeywordRule {
-  /// Returns a new [KeywordRule] instance.
-  KeywordRule({
-    this.keyword,
-    this.reply,
-    this.priority,
-    this.enabled,
+class AutoReplyResetStatsResponse {
+  /// Returns a new [AutoReplyResetStatsResponse] instance.
+  AutoReplyResetStatsResponse({
+    this.message,
+    this.timestamp,
+    this.resetCount,
   });
 
-  /// 關鍵詞
+  /// 響應消息
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? keyword;
+  String? message;
 
-  /// 回復內容
+  /// 重置時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? reply;
+  DateTime? timestamp;
 
-  /// 優先級
+  /// 重置的配置數量
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? priority;
-
-  /// 是否啟用
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? enabled;
+  int? resetCount;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is KeywordRule &&
-    other.keyword == keyword &&
-    other.reply == reply &&
-    other.priority == priority &&
-    other.enabled == enabled;
+  bool operator ==(Object other) => identical(this, other) || other is AutoReplyResetStatsResponse &&
+    other.message == message &&
+    other.timestamp == timestamp &&
+    other.resetCount == resetCount;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (keyword == null ? 0 : keyword!.hashCode) +
-    (reply == null ? 0 : reply!.hashCode) +
-    (priority == null ? 0 : priority!.hashCode) +
-    (enabled == null ? 0 : enabled!.hashCode);
+    (message == null ? 0 : message!.hashCode) +
+    (timestamp == null ? 0 : timestamp!.hashCode) +
+    (resetCount == null ? 0 : resetCount!.hashCode);
 
   @override
-  String toString() => 'KeywordRule[keyword=$keyword, reply=$reply, priority=$priority, enabled=$enabled]';
+  String toString() => 'AutoReplyResetStatsResponse[message=$message, timestamp=$timestamp, resetCount=$resetCount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.keyword != null) {
-      json[r'keyword'] = this.keyword;
+    if (this.message != null) {
+      json[r'message'] = this.message;
     } else {
-      json[r'keyword'] = null;
+      json[r'message'] = null;
     }
-    if (this.reply != null) {
-      json[r'reply'] = this.reply;
+    if (this.timestamp != null) {
+      json[r'timestamp'] = this.timestamp!.toUtc().toIso8601String();
     } else {
-      json[r'reply'] = null;
+      json[r'timestamp'] = null;
     }
-    if (this.priority != null) {
-      json[r'priority'] = this.priority;
+    if (this.resetCount != null) {
+      json[r'resetCount'] = this.resetCount;
     } else {
-      json[r'priority'] = null;
-    }
-    if (this.enabled != null) {
-      json[r'enabled'] = this.enabled;
-    } else {
-      json[r'enabled'] = null;
+      json[r'resetCount'] = null;
     }
     return json;
   }
 
-  /// Returns a new [KeywordRule] instance and imports its values from
+  /// Returns a new [AutoReplyResetStatsResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static KeywordRule? fromJson(dynamic value) {
+  static AutoReplyResetStatsResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -110,27 +93,26 @@ class KeywordRule {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "KeywordRule[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "KeywordRule[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "AutoReplyResetStatsResponse[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "AutoReplyResetStatsResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return KeywordRule(
-        keyword: mapValueOfType<String>(json, r'keyword'),
-        reply: mapValueOfType<String>(json, r'reply'),
-        priority: mapValueOfType<int>(json, r'priority'),
-        enabled: mapValueOfType<bool>(json, r'enabled'),
+      return AutoReplyResetStatsResponse(
+        message: mapValueOfType<String>(json, r'message'),
+        timestamp: mapDateTime(json, r'timestamp', r''),
+        resetCount: mapValueOfType<int>(json, r'resetCount'),
       );
     }
     return null;
   }
 
-  static List<KeywordRule> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <KeywordRule>[];
+  static List<AutoReplyResetStatsResponse> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <AutoReplyResetStatsResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = KeywordRule.fromJson(row);
+        final value = AutoReplyResetStatsResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -139,12 +121,12 @@ class KeywordRule {
     return result.toList(growable: growable);
   }
 
-  static Map<String, KeywordRule> mapFromJson(dynamic json) {
-    final map = <String, KeywordRule>{};
+  static Map<String, AutoReplyResetStatsResponse> mapFromJson(dynamic json) {
+    final map = <String, AutoReplyResetStatsResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = KeywordRule.fromJson(entry.value);
+        final value = AutoReplyResetStatsResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -153,14 +135,14 @@ class KeywordRule {
     return map;
   }
 
-  // maps a json object with a list of KeywordRule-objects as value to a dart map
-  static Map<String, List<KeywordRule>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<KeywordRule>>{};
+  // maps a json object with a list of AutoReplyResetStatsResponse-objects as value to a dart map
+  static Map<String, List<AutoReplyResetStatsResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<AutoReplyResetStatsResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = KeywordRule.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = AutoReplyResetStatsResponse.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

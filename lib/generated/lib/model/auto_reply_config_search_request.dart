@@ -10,78 +10,95 @@
 
 part of openapi.api;
 
-class PageStaking {
-  /// Returns a new [PageStaking] instance.
-  PageStaking({
-    this.totalElements,
-    this.totalPages,
-    this.sort,
-    this.first,
-    this.last,
-    this.numberOfElements,
-    this.pageable,
+class AutoReplyConfigSearchRequest {
+  /// Returns a new [AutoReplyConfigSearchRequest] instance.
+  AutoReplyConfigSearchRequest({
+    this.name,
+    this.keyword,
+    this.enabled,
+    this.minPriority,
+    this.maxPriority,
+    this.minHitCount,
+    this.maxHitCount,
+    this.page,
     this.size,
-    this.content = const [],
-    this.number,
-    this.empty,
+    this.sortBy,
+    this.sortDirection,
   });
 
+  /// 配置名稱（模糊搜尋）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalElements;
+  String? name;
 
+  /// 關鍵詞（模糊搜尋）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalPages;
+  String? keyword;
 
+  /// 是否啟用
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SortObject? sort;
+  bool? enabled;
 
+  /// 最小優先級
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? first;
+  int? minPriority;
 
+  /// 最大優先級
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? last;
+  int? maxPriority;
 
+  /// 最小命中次數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? numberOfElements;
+  int? minHitCount;
 
+  /// 最大命中次數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PageableObject? pageable;
+  int? maxHitCount;
 
+  /// 頁碼 (從0開始)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? page;
+
+  /// 每頁大小
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -90,116 +107,120 @@ class PageStaking {
   ///
   int? size;
 
-  List<Staking> content;
-
+  /// 排序字段
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? number;
+  String? sortBy;
 
+  /// 排序方向
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? empty;
+  String? sortDirection;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageStaking &&
-    other.totalElements == totalElements &&
-    other.totalPages == totalPages &&
-    other.sort == sort &&
-    other.first == first &&
-    other.last == last &&
-    other.numberOfElements == numberOfElements &&
-    other.pageable == pageable &&
+  bool operator ==(Object other) => identical(this, other) || other is AutoReplyConfigSearchRequest &&
+    other.name == name &&
+    other.keyword == keyword &&
+    other.enabled == enabled &&
+    other.minPriority == minPriority &&
+    other.maxPriority == maxPriority &&
+    other.minHitCount == minHitCount &&
+    other.maxHitCount == maxHitCount &&
+    other.page == page &&
     other.size == size &&
-    _deepEquality.equals(other.content, content) &&
-    other.number == number &&
-    other.empty == empty;
+    other.sortBy == sortBy &&
+    other.sortDirection == sortDirection;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalElements == null ? 0 : totalElements!.hashCode) +
-    (totalPages == null ? 0 : totalPages!.hashCode) +
-    (sort == null ? 0 : sort!.hashCode) +
-    (first == null ? 0 : first!.hashCode) +
-    (last == null ? 0 : last!.hashCode) +
-    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
-    (pageable == null ? 0 : pageable!.hashCode) +
+    (name == null ? 0 : name!.hashCode) +
+    (keyword == null ? 0 : keyword!.hashCode) +
+    (enabled == null ? 0 : enabled!.hashCode) +
+    (minPriority == null ? 0 : minPriority!.hashCode) +
+    (maxPriority == null ? 0 : maxPriority!.hashCode) +
+    (minHitCount == null ? 0 : minHitCount!.hashCode) +
+    (maxHitCount == null ? 0 : maxHitCount!.hashCode) +
+    (page == null ? 0 : page!.hashCode) +
     (size == null ? 0 : size!.hashCode) +
-    (content.hashCode) +
-    (number == null ? 0 : number!.hashCode) +
-    (empty == null ? 0 : empty!.hashCode);
+    (sortBy == null ? 0 : sortBy!.hashCode) +
+    (sortDirection == null ? 0 : sortDirection!.hashCode);
 
   @override
-  String toString() => 'PageStaking[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, first=$first, last=$last, numberOfElements=$numberOfElements, pageable=$pageable, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'AutoReplyConfigSearchRequest[name=$name, keyword=$keyword, enabled=$enabled, minPriority=$minPriority, maxPriority=$maxPriority, minHitCount=$minHitCount, maxHitCount=$maxHitCount, page=$page, size=$size, sortBy=$sortBy, sortDirection=$sortDirection]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.totalElements != null) {
-      json[r'totalElements'] = this.totalElements;
+    if (this.name != null) {
+      json[r'name'] = this.name;
     } else {
-      json[r'totalElements'] = null;
+      json[r'name'] = null;
     }
-    if (this.totalPages != null) {
-      json[r'totalPages'] = this.totalPages;
+    if (this.keyword != null) {
+      json[r'keyword'] = this.keyword;
     } else {
-      json[r'totalPages'] = null;
+      json[r'keyword'] = null;
     }
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.enabled != null) {
+      json[r'enabled'] = this.enabled;
     } else {
-      json[r'sort'] = null;
+      json[r'enabled'] = null;
     }
-    if (this.first != null) {
-      json[r'first'] = this.first;
+    if (this.minPriority != null) {
+      json[r'minPriority'] = this.minPriority;
     } else {
-      json[r'first'] = null;
+      json[r'minPriority'] = null;
     }
-    if (this.last != null) {
-      json[r'last'] = this.last;
+    if (this.maxPriority != null) {
+      json[r'maxPriority'] = this.maxPriority;
     } else {
-      json[r'last'] = null;
+      json[r'maxPriority'] = null;
     }
-    if (this.numberOfElements != null) {
-      json[r'numberOfElements'] = this.numberOfElements;
+    if (this.minHitCount != null) {
+      json[r'minHitCount'] = this.minHitCount;
     } else {
-      json[r'numberOfElements'] = null;
+      json[r'minHitCount'] = null;
     }
-    if (this.pageable != null) {
-      json[r'pageable'] = this.pageable;
+    if (this.maxHitCount != null) {
+      json[r'maxHitCount'] = this.maxHitCount;
     } else {
-      json[r'pageable'] = null;
+      json[r'maxHitCount'] = null;
+    }
+    if (this.page != null) {
+      json[r'page'] = this.page;
+    } else {
+      json[r'page'] = null;
     }
     if (this.size != null) {
       json[r'size'] = this.size;
     } else {
       json[r'size'] = null;
     }
-      json[r'content'] = this.content;
-    if (this.number != null) {
-      json[r'number'] = this.number;
+    if (this.sortBy != null) {
+      json[r'sortBy'] = this.sortBy;
     } else {
-      json[r'number'] = null;
+      json[r'sortBy'] = null;
     }
-    if (this.empty != null) {
-      json[r'empty'] = this.empty;
+    if (this.sortDirection != null) {
+      json[r'sortDirection'] = this.sortDirection;
     } else {
-      json[r'empty'] = null;
+      json[r'sortDirection'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageStaking] instance and imports its values from
+  /// Returns a new [AutoReplyConfigSearchRequest] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageStaking? fromJson(dynamic value) {
+  static AutoReplyConfigSearchRequest? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -208,34 +229,34 @@ class PageStaking {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageStaking[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageStaking[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "AutoReplyConfigSearchRequest[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "AutoReplyConfigSearchRequest[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageStaking(
-        totalElements: mapValueOfType<int>(json, r'totalElements'),
-        totalPages: mapValueOfType<int>(json, r'totalPages'),
-        sort: SortObject.fromJson(json[r'sort']),
-        first: mapValueOfType<bool>(json, r'first'),
-        last: mapValueOfType<bool>(json, r'last'),
-        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
-        pageable: PageableObject.fromJson(json[r'pageable']),
+      return AutoReplyConfigSearchRequest(
+        name: mapValueOfType<String>(json, r'name'),
+        keyword: mapValueOfType<String>(json, r'keyword'),
+        enabled: mapValueOfType<bool>(json, r'enabled'),
+        minPriority: mapValueOfType<int>(json, r'minPriority'),
+        maxPriority: mapValueOfType<int>(json, r'maxPriority'),
+        minHitCount: mapValueOfType<int>(json, r'minHitCount'),
+        maxHitCount: mapValueOfType<int>(json, r'maxHitCount'),
+        page: mapValueOfType<int>(json, r'page'),
         size: mapValueOfType<int>(json, r'size'),
-        content: Staking.listFromJson(json[r'content']),
-        number: mapValueOfType<int>(json, r'number'),
-        empty: mapValueOfType<bool>(json, r'empty'),
+        sortBy: mapValueOfType<String>(json, r'sortBy'),
+        sortDirection: mapValueOfType<String>(json, r'sortDirection'),
       );
     }
     return null;
   }
 
-  static List<PageStaking> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageStaking>[];
+  static List<AutoReplyConfigSearchRequest> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <AutoReplyConfigSearchRequest>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageStaking.fromJson(row);
+        final value = AutoReplyConfigSearchRequest.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -244,12 +265,12 @@ class PageStaking {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageStaking> mapFromJson(dynamic json) {
-    final map = <String, PageStaking>{};
+  static Map<String, AutoReplyConfigSearchRequest> mapFromJson(dynamic json) {
+    final map = <String, AutoReplyConfigSearchRequest>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageStaking.fromJson(entry.value);
+        final value = AutoReplyConfigSearchRequest.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -258,14 +279,14 @@ class PageStaking {
     return map;
   }
 
-  // maps a json object with a list of PageStaking-objects as value to a dart map
-  static Map<String, List<PageStaking>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageStaking>>{};
+  // maps a json object with a list of AutoReplyConfigSearchRequest-objects as value to a dart map
+  static Map<String, List<AutoReplyConfigSearchRequest>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<AutoReplyConfigSearchRequest>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageStaking.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = AutoReplyConfigSearchRequest.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
