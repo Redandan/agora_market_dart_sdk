@@ -17,6 +17,8 @@ class StoreResponseDTO {
     this.name,
     this.description,
     this.address,
+    this.longitude,
+    this.latitude,
     this.phone,
     this.email,
     this.businessHours,
@@ -84,6 +86,24 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? address;
+
+  /// 商店經度
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? longitude;
+
+  /// 商店緯度
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? latitude;
 
   /// 商店電話
   ///
@@ -355,6 +375,8 @@ class StoreResponseDTO {
     other.name == name &&
     other.description == description &&
     other.address == address &&
+    other.longitude == longitude &&
+    other.latitude == latitude &&
     other.phone == phone &&
     other.email == email &&
     other.businessHours == businessHours &&
@@ -393,6 +415,8 @@ class StoreResponseDTO {
     (name == null ? 0 : name!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (address == null ? 0 : address!.hashCode) +
+    (longitude == null ? 0 : longitude!.hashCode) +
+    (latitude == null ? 0 : latitude!.hashCode) +
     (phone == null ? 0 : phone!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
     (businessHours == null ? 0 : businessHours!.hashCode) +
@@ -425,7 +449,7 @@ class StoreResponseDTO {
     (adminRemark == null ? 0 : adminRemark!.hashCode);
 
   @override
-  String toString() => 'StoreResponseDTO[id=$id, name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, logoDescription=$logoDescription, logoUploadTime=$logoUploadTime, coverImageUrl=$coverImageUrl, coverDescription=$coverDescription, coverUploadTime=$coverUploadTime, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, creditLevel=$creditLevel, productCount=$productCount, orderCount=$orderCount, totalSales=$totalSales, averageRating=$averageRating, responseRate=$responseRate, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, createdAt=$createdAt, updatedAt=$updatedAt, adminRemark=$adminRemark]';
+  String toString() => 'StoreResponseDTO[id=$id, name=$name, description=$description, address=$address, longitude=$longitude, latitude=$latitude, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, logoDescription=$logoDescription, logoUploadTime=$logoUploadTime, coverImageUrl=$coverImageUrl, coverDescription=$coverDescription, coverUploadTime=$coverUploadTime, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, creditLevel=$creditLevel, productCount=$productCount, orderCount=$orderCount, totalSales=$totalSales, averageRating=$averageRating, responseRate=$responseRate, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, createdAt=$createdAt, updatedAt=$updatedAt, adminRemark=$adminRemark]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -448,6 +472,16 @@ class StoreResponseDTO {
       json[r'address'] = this.address;
     } else {
       json[r'address'] = null;
+    }
+    if (this.longitude != null) {
+      json[r'longitude'] = this.longitude;
+    } else {
+      json[r'longitude'] = null;
+    }
+    if (this.latitude != null) {
+      json[r'latitude'] = this.latitude;
+    } else {
+      json[r'latitude'] = null;
     }
     if (this.phone != null) {
       json[r'phone'] = this.phone;
@@ -621,6 +655,8 @@ class StoreResponseDTO {
         name: mapValueOfType<String>(json, r'name'),
         description: mapValueOfType<String>(json, r'description'),
         address: mapValueOfType<String>(json, r'address'),
+        longitude: mapValueOfType<double>(json, r'longitude'),
+        latitude: mapValueOfType<double>(json, r'latitude'),
         phone: mapValueOfType<String>(json, r'phone'),
         email: mapValueOfType<String>(json, r'email'),
         businessHours: mapValueOfType<String>(json, r'businessHours'),
