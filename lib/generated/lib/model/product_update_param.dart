@@ -20,8 +20,11 @@ class ProductUpdateParam {
     this.description,
     this.category,
     this.imageUrls = const {},
-    this.longitude,
-    this.latitude,
+    this.pickupAddress,
+    this.pickupLongitude,
+    this.pickupLatitude,
+    this.pickupTimeStart,
+    this.pickupTimeEnd,
     this.status,
     this.shippingFee,
     this.skus = const {},
@@ -92,6 +95,15 @@ class ProductUpdateParam {
   /// 商品圖片URL集合
   Set<String> imageUrls;
 
+  /// 取貨地址
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? pickupAddress;
+
   /// 取件地址經度
   ///
   /// Minimum value: -180.0
@@ -102,7 +114,7 @@ class ProductUpdateParam {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  double? longitude;
+  double? pickupLongitude;
 
   /// 取件地址緯度
   ///
@@ -114,7 +126,25 @@ class ProductUpdateParam {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  double? latitude;
+  double? pickupLatitude;
+
+  /// 取貨開始時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? pickupTimeStart;
+
+  /// 取貨結束時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? pickupTimeEnd;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -224,8 +254,11 @@ class ProductUpdateParam {
     other.description == description &&
     other.category == category &&
     _deepEquality.equals(other.imageUrls, imageUrls) &&
-    other.longitude == longitude &&
-    other.latitude == latitude &&
+    other.pickupAddress == pickupAddress &&
+    other.pickupLongitude == pickupLongitude &&
+    other.pickupLatitude == pickupLatitude &&
+    other.pickupTimeStart == pickupTimeStart &&
+    other.pickupTimeEnd == pickupTimeEnd &&
     other.status == status &&
     other.shippingFee == shippingFee &&
     _deepEquality.equals(other.skus, skus) &&
@@ -250,8 +283,11 @@ class ProductUpdateParam {
     (description == null ? 0 : description!.hashCode) +
     (category == null ? 0 : category!.hashCode) +
     (imageUrls.hashCode) +
-    (longitude == null ? 0 : longitude!.hashCode) +
-    (latitude == null ? 0 : latitude!.hashCode) +
+    (pickupAddress == null ? 0 : pickupAddress!.hashCode) +
+    (pickupLongitude == null ? 0 : pickupLongitude!.hashCode) +
+    (pickupLatitude == null ? 0 : pickupLatitude!.hashCode) +
+    (pickupTimeStart == null ? 0 : pickupTimeStart!.hashCode) +
+    (pickupTimeEnd == null ? 0 : pickupTimeEnd!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
     (shippingFee == null ? 0 : shippingFee!.hashCode) +
     (skus.hashCode) +
@@ -267,7 +303,7 @@ class ProductUpdateParam {
     (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode);
 
   @override
-  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, status=$status, shippingFee=$shippingFee, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, shippingFees=$shippingFees, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold]';
+  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, status=$status, shippingFee=$shippingFee, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, shippingFees=$shippingFees, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -298,15 +334,30 @@ class ProductUpdateParam {
       json[r'category'] = null;
     }
       json[r'imageUrls'] = this.imageUrls.toList(growable: false);
-    if (this.longitude != null) {
-      json[r'longitude'] = this.longitude;
+    if (this.pickupAddress != null) {
+      json[r'pickupAddress'] = this.pickupAddress;
     } else {
-      json[r'longitude'] = null;
+      json[r'pickupAddress'] = null;
     }
-    if (this.latitude != null) {
-      json[r'latitude'] = this.latitude;
+    if (this.pickupLongitude != null) {
+      json[r'pickupLongitude'] = this.pickupLongitude;
     } else {
-      json[r'latitude'] = null;
+      json[r'pickupLongitude'] = null;
+    }
+    if (this.pickupLatitude != null) {
+      json[r'pickupLatitude'] = this.pickupLatitude;
+    } else {
+      json[r'pickupLatitude'] = null;
+    }
+    if (this.pickupTimeStart != null) {
+      json[r'pickupTimeStart'] = this.pickupTimeStart;
+    } else {
+      json[r'pickupTimeStart'] = null;
+    }
+    if (this.pickupTimeEnd != null) {
+      json[r'pickupTimeEnd'] = this.pickupTimeEnd;
+    } else {
+      json[r'pickupTimeEnd'] = null;
     }
     if (this.status != null) {
       json[r'status'] = this.status;
@@ -388,8 +439,11 @@ class ProductUpdateParam {
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
             : const {},
-        longitude: mapValueOfType<double>(json, r'longitude'),
-        latitude: mapValueOfType<double>(json, r'latitude'),
+        pickupAddress: mapValueOfType<String>(json, r'pickupAddress'),
+        pickupLongitude: mapValueOfType<double>(json, r'pickupLongitude'),
+        pickupLatitude: mapValueOfType<double>(json, r'pickupLatitude'),
+        pickupTimeStart: mapValueOfType<String>(json, r'pickupTimeStart'),
+        pickupTimeEnd: mapValueOfType<String>(json, r'pickupTimeEnd'),
         status: ProductStatusEnum.fromJson(json[r'status']),
         shippingFee: num.parse('${json[r'shippingFee']}'),
         skus: json[r'skus'] is Iterable

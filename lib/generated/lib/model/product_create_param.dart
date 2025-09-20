@@ -21,8 +21,8 @@ class ProductCreateParam {
     required this.description,
     required this.category,
     this.imageUrls = const {},
-    required this.longitude,
-    required this.latitude,
+    required this.pickupLongitude,
+    required this.pickupLatitude,
     required this.pickupTimeStart,
     required this.pickupTimeEnd,
     required this.pickupAddress,
@@ -83,13 +83,13 @@ class ProductCreateParam {
   ///
   /// Minimum value: -180.0
   /// Maximum value: 180.0
-  double longitude;
+  double pickupLongitude;
 
   /// 取件地址緯度
   ///
   /// Minimum value: -90.0
   /// Maximum value: 90.0
-  double latitude;
+  double pickupLatitude;
 
   /// 取件開始時間
   String pickupTimeStart;
@@ -241,8 +241,8 @@ class ProductCreateParam {
     other.description == description &&
     other.category == category &&
     _deepEquality.equals(other.imageUrls, imageUrls) &&
-    other.longitude == longitude &&
-    other.latitude == latitude &&
+    other.pickupLongitude == pickupLongitude &&
+    other.pickupLatitude == pickupLatitude &&
     other.pickupTimeStart == pickupTimeStart &&
     other.pickupTimeEnd == pickupTimeEnd &&
     other.pickupAddress == pickupAddress &&
@@ -274,8 +274,8 @@ class ProductCreateParam {
     (description.hashCode) +
     (category.hashCode) +
     (imageUrls.hashCode) +
-    (longitude.hashCode) +
-    (latitude.hashCode) +
+    (pickupLongitude.hashCode) +
+    (pickupLatitude.hashCode) +
     (pickupTimeStart.hashCode) +
     (pickupTimeEnd.hashCode) +
     (pickupAddress.hashCode) +
@@ -297,7 +297,7 @@ class ProductCreateParam {
     (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode);
 
   @override
-  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, skus=$skus, brand=$brand, minStock=$minStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, shippingFees=$shippingFees, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock]';
+  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, skus=$skus, brand=$brand, minStock=$minStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, shippingFees=$shippingFees, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -313,8 +313,8 @@ class ProductCreateParam {
       json[r'description'] = this.description;
       json[r'category'] = this.category;
       json[r'imageUrls'] = this.imageUrls.toList(growable: false);
-      json[r'longitude'] = this.longitude;
-      json[r'latitude'] = this.latitude;
+      json[r'pickupLongitude'] = this.pickupLongitude;
+      json[r'pickupLatitude'] = this.pickupLatitude;
       json[r'pickupTimeStart'] = this.pickupTimeStart;
       json[r'pickupTimeEnd'] = this.pickupTimeEnd;
       json[r'pickupAddress'] = this.pickupAddress;
@@ -414,8 +414,8 @@ class ProductCreateParam {
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
             : const {},
-        longitude: mapValueOfType<double>(json, r'longitude')!,
-        latitude: mapValueOfType<double>(json, r'latitude')!,
+        pickupLongitude: mapValueOfType<double>(json, r'pickupLongitude')!,
+        pickupLatitude: mapValueOfType<double>(json, r'pickupLatitude')!,
         pickupTimeStart: mapValueOfType<String>(json, r'pickupTimeStart')!,
         pickupTimeEnd: mapValueOfType<String>(json, r'pickupTimeEnd')!,
         pickupAddress: mapValueOfType<String>(json, r'pickupAddress')!,
@@ -490,8 +490,8 @@ class ProductCreateParam {
     'stock',
     'description',
     'category',
-    'longitude',
-    'latitude',
+    'pickupLongitude',
+    'pickupLatitude',
     'pickupTimeStart',
     'pickupTimeEnd',
     'pickupAddress',
