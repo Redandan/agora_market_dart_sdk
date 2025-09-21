@@ -221,7 +221,9 @@ Class | Method | HTTP request | Description
 *ChatApi* | [**deleteSession**](doc//ChatApi.md#deletesession) | **DELETE** /chat/sessions/{sessionId} | 刪除會話
 *ChatApi* | [**getOrCreateSession**](doc//ChatApi.md#getorcreatesession) | **GET** /chat/sessions/receiver/{receiverId} | 獲取或創建與指定用戶的會話
 *ChatApi* | [**getSessionMessages**](doc//ChatApi.md#getsessionmessages) | **POST** /chat/sessions/messages | 獲取會話消息列表
+*ChatApi* | [**getSessionUnreadCount**](doc//ChatApi.md#getsessionunreadcount) | **GET** /chat/sessions/{sessionId}/unread-count | 獲取會話未讀消息數
 *ChatApi* | [**getUnreadCount**](doc//ChatApi.md#getunreadcount) | **GET** /chat/unread/count | 獲取未讀消息數
+*ChatApi* | [**isMessageRead**](doc//ChatApi.md#ismessageread) | **GET** /chat/messages/{messageId}/read-status | 檢查消息已讀狀態
 *ChatApi* | [**listSessions**](doc//ChatApi.md#listsessions) | **GET** /chat/sessions | 獲取聊天會話列表
 *ChatApi* | [**markMessageRead**](doc//ChatApi.md#markmessageread) | **POST** /chat/messages/{messageId}/read | 標記消息已讀
 *ChatApi* | [**markSessionRead**](doc//ChatApi.md#marksessionread) | **PUT** /chat/sessions/{sessionId}/read | 標記會話為已讀

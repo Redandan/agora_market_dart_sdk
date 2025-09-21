@@ -284,6 +284,65 @@ class ChatApi {
     return null;
   }
 
+  /// 獲取會話未讀消息數
+  ///
+  /// 獲取指定會話的未讀消息數量
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] sessionId (required):
+  ///   會話ID
+  Future<Response> getSessionUnreadCountWithHttpInfo(String sessionId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/chat/sessions/{sessionId}/unread-count'
+      .replaceAll('{sessionId}', sessionId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 獲取會話未讀消息數
+  ///
+  /// 獲取指定會話的未讀消息數量
+  ///
+  /// Parameters:
+  ///
+  /// * [String] sessionId (required):
+  ///   會話ID
+  Future<int?> getSessionUnreadCount(String sessionId,) async {
+    final response = await getSessionUnreadCountWithHttpInfo(sessionId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'int',) as int;
+    
+    }
+    return null;
+  }
+
   /// 獲取未讀消息數
   ///
   /// 獲取當前用戶的所有未讀消息總數
@@ -327,6 +386,65 @@ class ChatApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'int',) as int;
+    
+    }
+    return null;
+  }
+
+  /// 檢查消息已讀狀態
+  ///
+  /// 檢查指定消息是否已被當前用戶已讀
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] messageId (required):
+  ///   消息ID
+  Future<Response> isMessageReadWithHttpInfo(int messageId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/chat/messages/{messageId}/read-status'
+      .replaceAll('{messageId}', messageId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 檢查消息已讀狀態
+  ///
+  /// 檢查指定消息是否已被當前用戶已讀
+  ///
+  /// Parameters:
+  ///
+  /// * [int] messageId (required):
+  ///   消息ID
+  Future<bool?> isMessageRead(int messageId,) async {
+    final response = await isMessageReadWithHttpInfo(messageId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
     
     }
     return null;

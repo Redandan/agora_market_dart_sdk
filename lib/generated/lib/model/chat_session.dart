@@ -23,6 +23,12 @@ class ChatSession {
     this.partnerName,
     this.partnerAvatar,
     this.latestMessageContent,
+    this.userReadMessageId,
+    this.partnerReadMessageId,
+    this.userReadAt,
+    this.partnerReadAt,
+    this.userReadMessageIds,
+    this.partnerReadMessageIds,
     this.createdAt,
     this.updatedAt,
     this.messages,
@@ -119,6 +125,60 @@ class ChatSession {
   ///
   String? latestMessageContent;
 
+  /// 用戶已讀消息ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? userReadMessageId;
+
+  /// 聊天對象已讀消息ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? partnerReadMessageId;
+
+  /// 用戶已讀時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? userReadAt;
+
+  /// 聊天對象已讀時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? partnerReadAt;
+
+  /// 用戶已讀消息ID列表（JSON格式）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? userReadMessageIds;
+
+  /// 聊天對象已讀消息ID列表（JSON格式）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? partnerReadMessageIds;
+
   /// 創建時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -165,6 +225,12 @@ class ChatSession {
     other.partnerName == partnerName &&
     other.partnerAvatar == partnerAvatar &&
     other.latestMessageContent == latestMessageContent &&
+    other.userReadMessageId == userReadMessageId &&
+    other.partnerReadMessageId == partnerReadMessageId &&
+    other.userReadAt == userReadAt &&
+    other.partnerReadAt == partnerReadAt &&
+    other.userReadMessageIds == userReadMessageIds &&
+    other.partnerReadMessageIds == partnerReadMessageIds &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
     other.messages == messages &&
@@ -183,13 +249,19 @@ class ChatSession {
     (partnerName == null ? 0 : partnerName!.hashCode) +
     (partnerAvatar == null ? 0 : partnerAvatar!.hashCode) +
     (latestMessageContent == null ? 0 : latestMessageContent!.hashCode) +
+    (userReadMessageId == null ? 0 : userReadMessageId!.hashCode) +
+    (partnerReadMessageId == null ? 0 : partnerReadMessageId!.hashCode) +
+    (userReadAt == null ? 0 : userReadAt!.hashCode) +
+    (partnerReadAt == null ? 0 : partnerReadAt!.hashCode) +
+    (userReadMessageIds == null ? 0 : userReadMessageIds!.hashCode) +
+    (partnerReadMessageIds == null ? 0 : partnerReadMessageIds!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (messages == null ? 0 : messages!.hashCode) +
     (currentUser == null ? 0 : currentUser!.hashCode);
 
   @override
-  String toString() => 'ChatSession[id=$id, userId=$userId, partnerId=$partnerId, unreadCount=$unreadCount, latestMessageId=$latestMessageId, latestMessageTime=$latestMessageTime, pinned=$pinned, partnerName=$partnerName, partnerAvatar=$partnerAvatar, latestMessageContent=$latestMessageContent, createdAt=$createdAt, updatedAt=$updatedAt, messages=$messages, currentUser=$currentUser]';
+  String toString() => 'ChatSession[id=$id, userId=$userId, partnerId=$partnerId, unreadCount=$unreadCount, latestMessageId=$latestMessageId, latestMessageTime=$latestMessageTime, pinned=$pinned, partnerName=$partnerName, partnerAvatar=$partnerAvatar, latestMessageContent=$latestMessageContent, userReadMessageId=$userReadMessageId, partnerReadMessageId=$partnerReadMessageId, userReadAt=$userReadAt, partnerReadAt=$partnerReadAt, userReadMessageIds=$userReadMessageIds, partnerReadMessageIds=$partnerReadMessageIds, createdAt=$createdAt, updatedAt=$updatedAt, messages=$messages, currentUser=$currentUser]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -243,6 +315,36 @@ class ChatSession {
     } else {
       json[r'latestMessageContent'] = null;
     }
+    if (this.userReadMessageId != null) {
+      json[r'userReadMessageId'] = this.userReadMessageId;
+    } else {
+      json[r'userReadMessageId'] = null;
+    }
+    if (this.partnerReadMessageId != null) {
+      json[r'partnerReadMessageId'] = this.partnerReadMessageId;
+    } else {
+      json[r'partnerReadMessageId'] = null;
+    }
+    if (this.userReadAt != null) {
+      json[r'userReadAt'] = this.userReadAt!.toUtc().toIso8601String();
+    } else {
+      json[r'userReadAt'] = null;
+    }
+    if (this.partnerReadAt != null) {
+      json[r'partnerReadAt'] = this.partnerReadAt!.toUtc().toIso8601String();
+    } else {
+      json[r'partnerReadAt'] = null;
+    }
+    if (this.userReadMessageIds != null) {
+      json[r'userReadMessageIds'] = this.userReadMessageIds;
+    } else {
+      json[r'userReadMessageIds'] = null;
+    }
+    if (this.partnerReadMessageIds != null) {
+      json[r'partnerReadMessageIds'] = this.partnerReadMessageIds;
+    } else {
+      json[r'partnerReadMessageIds'] = null;
+    }
     if (this.createdAt != null) {
       json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
     } else {
@@ -295,6 +397,12 @@ class ChatSession {
         partnerName: mapValueOfType<String>(json, r'partnerName'),
         partnerAvatar: mapValueOfType<String>(json, r'partnerAvatar'),
         latestMessageContent: mapValueOfType<String>(json, r'latestMessageContent'),
+        userReadMessageId: mapValueOfType<int>(json, r'userReadMessageId'),
+        partnerReadMessageId: mapValueOfType<int>(json, r'partnerReadMessageId'),
+        userReadAt: mapDateTime(json, r'userReadAt', r''),
+        partnerReadAt: mapDateTime(json, r'partnerReadAt', r''),
+        userReadMessageIds: mapValueOfType<String>(json, r'userReadMessageIds'),
+        partnerReadMessageIds: mapValueOfType<String>(json, r'partnerReadMessageIds'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         messages: PageChatMessage.fromJson(json[r'messages']),
