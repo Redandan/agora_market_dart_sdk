@@ -133,7 +133,7 @@ class FileManagementApi {
 
   /// 檔案同步
   ///
-  /// 同步檔案記錄與 OCI Object Storage，dryRun=true 時只檢查狀態不執行同步
+  /// 強制同步檔案記錄與 OCI Object Storage，會物理刪除 OCI 中不存在的孤立記錄，dryRun=true 時只檢查狀態不執行同步
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -172,7 +172,7 @@ class FileManagementApi {
 
   /// 檔案同步
   ///
-  /// 同步檔案記錄與 OCI Object Storage，dryRun=true 時只檢查狀態不執行同步
+  /// 強制同步檔案記錄與 OCI Object Storage，會物理刪除 OCI 中不存在的孤立記錄，dryRun=true 時只檢查狀態不執行同步
   ///
   /// Parameters:
   ///

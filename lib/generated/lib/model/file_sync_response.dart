@@ -16,6 +16,7 @@ class FileSyncResponse {
     this.totalChecked,
     this.newRecords,
     this.updatedRecords,
+    this.deletedRecords,
     this.errors,
     this.startTime,
     this.endTime,
@@ -23,6 +24,7 @@ class FileSyncResponse {
     this.errorDetails = const [],
     this.newFileRecords = const [],
     this.updatedFileRecords = const [],
+    this.deletedFileRecords = const [],
   });
 
   /// 檢查的檔案總數
@@ -51,6 +53,15 @@ class FileSyncResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? updatedRecords;
+
+  /// 刪除的記錄數
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? deletedRecords;
 
   /// 錯誤數量
   ///
@@ -97,18 +108,23 @@ class FileSyncResponse {
   /// 更新的檔案記錄
   List<FileRecordInfo> updatedFileRecords;
 
+  /// 刪除的檔案記錄
+  List<FileRecordInfo> deletedFileRecords;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is FileSyncResponse &&
     other.totalChecked == totalChecked &&
     other.newRecords == newRecords &&
     other.updatedRecords == updatedRecords &&
+    other.deletedRecords == deletedRecords &&
     other.errors == errors &&
     other.startTime == startTime &&
     other.endTime == endTime &&
     other.durationMs == durationMs &&
     _deepEquality.equals(other.errorDetails, errorDetails) &&
     _deepEquality.equals(other.newFileRecords, newFileRecords) &&
-    _deepEquality.equals(other.updatedFileRecords, updatedFileRecords);
+    _deepEquality.equals(other.updatedFileRecords, updatedFileRecords) &&
+    _deepEquality.equals(other.deletedFileRecords, deletedFileRecords);
 
   @override
   int get hashCode =>
@@ -116,16 +132,18 @@ class FileSyncResponse {
     (totalChecked == null ? 0 : totalChecked!.hashCode) +
     (newRecords == null ? 0 : newRecords!.hashCode) +
     (updatedRecords == null ? 0 : updatedRecords!.hashCode) +
+    (deletedRecords == null ? 0 : deletedRecords!.hashCode) +
     (errors == null ? 0 : errors!.hashCode) +
     (startTime == null ? 0 : startTime!.hashCode) +
     (endTime == null ? 0 : endTime!.hashCode) +
     (durationMs == null ? 0 : durationMs!.hashCode) +
     (errorDetails.hashCode) +
     (newFileRecords.hashCode) +
-    (updatedFileRecords.hashCode);
+    (updatedFileRecords.hashCode) +
+    (deletedFileRecords.hashCode);
 
   @override
-  String toString() => 'FileSyncResponse[totalChecked=$totalChecked, newRecords=$newRecords, updatedRecords=$updatedRecords, errors=$errors, startTime=$startTime, endTime=$endTime, durationMs=$durationMs, errorDetails=$errorDetails, newFileRecords=$newFileRecords, updatedFileRecords=$updatedFileRecords]';
+  String toString() => 'FileSyncResponse[totalChecked=$totalChecked, newRecords=$newRecords, updatedRecords=$updatedRecords, deletedRecords=$deletedRecords, errors=$errors, startTime=$startTime, endTime=$endTime, durationMs=$durationMs, errorDetails=$errorDetails, newFileRecords=$newFileRecords, updatedFileRecords=$updatedFileRecords, deletedFileRecords=$deletedFileRecords]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -143,6 +161,11 @@ class FileSyncResponse {
       json[r'updatedRecords'] = this.updatedRecords;
     } else {
       json[r'updatedRecords'] = null;
+    }
+    if (this.deletedRecords != null) {
+      json[r'deletedRecords'] = this.deletedRecords;
+    } else {
+      json[r'deletedRecords'] = null;
     }
     if (this.errors != null) {
       json[r'errors'] = this.errors;
@@ -167,6 +190,7 @@ class FileSyncResponse {
       json[r'errorDetails'] = this.errorDetails;
       json[r'newFileRecords'] = this.newFileRecords;
       json[r'updatedFileRecords'] = this.updatedFileRecords;
+      json[r'deletedFileRecords'] = this.deletedFileRecords;
     return json;
   }
 
@@ -192,6 +216,7 @@ class FileSyncResponse {
         totalChecked: mapValueOfType<int>(json, r'totalChecked'),
         newRecords: mapValueOfType<int>(json, r'newRecords'),
         updatedRecords: mapValueOfType<int>(json, r'updatedRecords'),
+        deletedRecords: mapValueOfType<int>(json, r'deletedRecords'),
         errors: mapValueOfType<int>(json, r'errors'),
         startTime: mapDateTime(json, r'startTime', r''),
         endTime: mapDateTime(json, r'endTime', r''),
@@ -201,6 +226,7 @@ class FileSyncResponse {
             : const [],
         newFileRecords: FileRecordInfo.listFromJson(json[r'newFileRecords']),
         updatedFileRecords: FileRecordInfo.listFromJson(json[r'updatedFileRecords']),
+        deletedFileRecords: FileRecordInfo.listFromJson(json[r'deletedFileRecords']),
       );
     }
     return null;
