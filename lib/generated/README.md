@@ -271,13 +271,17 @@ Class | Method | HTTP request | Description
 *MemberNotificationsApi* | [**updateNotification**](doc//MemberNotificationsApi.md#updatenotification) | **PUT** /notifications/{notificationId} | 更新通知
 *MemberOrdersApi* | [**cancelOrder**](doc//MemberOrdersApi.md#cancelorder) | **POST** /orders/cancel | 取消訂單
 *MemberOrdersApi* | [**confirmOrder**](doc//MemberOrdersApi.md#confirmorder) | **POST** /orders/confirm | 確認收貨
+*MemberOrdersApi* | [**confirmReturnReceived**](doc//MemberOrdersApi.md#confirmreturnreceived) | **POST** /orders/{orderId}/return/confirm-received | 確認收到退貨商品
 *MemberOrdersApi* | [**getOrder**](doc//MemberOrdersApi.md#getorder) | **GET** /orders/{orderId} | 獲取訂單詳情
 *MemberOrdersApi* | [**getSellerOrderStats**](doc//MemberOrdersApi.md#getsellerorderstats) | **GET** /orders/seller/stats | 賣家訂單統計
+*MemberOrdersApi* | [**processReturn**](doc//MemberOrdersApi.md#processreturn) | **POST** /orders/{orderId}/return/process | 賣家處理退貨申請
+*MemberOrdersApi* | [**requestReturn**](doc//MemberOrdersApi.md#requestreturn) | **POST** /orders/{orderId}/return | 申請退貨
 *MemberOrdersApi* | [**searchOrdersByBuyer**](doc//MemberOrdersApi.md#searchordersbybuyer) | **POST** /orders/buyer/search | 買家查詢訂單列表
 *MemberOrdersApi* | [**searchOrdersBySeller**](doc//MemberOrdersApi.md#searchordersbyseller) | **POST** /orders/seller/search | 賣家查詢訂單列表
 *MemberOrdersApi* | [**shipOrderLogistics**](doc//MemberOrdersApi.md#shiporderlogistics) | **POST** /orders/ship/logistics | 第三方物流發貨
 *MemberOrdersApi* | [**shipOrderPlatform**](doc//MemberOrdersApi.md#shiporderplatform) | **POST** /orders/ship/platform | 平台配送發貨
 *MemberOrdersApi* | [**submitOrder**](doc//MemberOrdersApi.md#submitorder) | **POST** /orders | 提交訂單
+*MemberOrdersApi* | [**updateReturnShipping**](doc//MemberOrdersApi.md#updatereturnshipping) | **POST** /orders/{orderId}/return/shipping | 更新退貨物流信息
 *ProductsApi* | [**batchDeleteProducts**](doc//ProductsApi.md#batchdeleteproducts) | **DELETE** /products/batch | 批量刪除商品
 *ProductsApi* | [**createProduct**](doc//ProductsApi.md#createproduct) | **POST** /products/create | 創建商品
 *ProductsApi* | [**decreaseStock**](doc//ProductsApi.md#decreasestock) | **POST** /products/{id}/stock/decrease | 減少商品庫存
@@ -347,6 +351,7 @@ Class | Method | HTTP request | Description
 *TestApi* | [**generateNotificationTestData**](doc//TestApi.md#generatenotificationtestdata) | **POST** /test/notification | 生成通知測試數據
 *TestApi* | [**generatePlatformDeliveryOrder**](doc//TestApi.md#generateplatformdeliveryorder) | **POST** /test/platform | 
 *TestApi* | [**generateRechargeAndWithdraw**](doc//TestApi.md#generaterechargeandwithdraw) | **POST** /test/recharge&withdraw | 
+*TestApi* | [**generateReturnProcessTestData**](doc//TestApi.md#generatereturnprocesstestdata) | **POST** /test/return-process | 生成退貨流程測試數據
 *TestApi* | [**generateReviewData**](doc//TestApi.md#generatereviewdata) | **POST** /test/review | 
 *TestApi* | [**generateTestData**](doc//TestApi.md#generatetestdata) | **POST** /test/generate-test-data | 生成測試數據
 *TestApi* | [**getJwtConfig**](doc//TestApi.md#getjwtconfig) | **GET** /test/jwt-config | 
@@ -507,6 +512,9 @@ Class | Method | HTTP request | Description
  - [RechargeStatusEnum](doc//RechargeStatusEnum.md)
  - [RegisterParam](doc//RegisterParam.md)
  - [ReplyIssueParam](doc//ReplyIssueParam.md)
+ - [ReturnProcessParam](doc//ReturnProcessParam.md)
+ - [ReturnRequestParam](doc//ReturnRequestParam.md)
+ - [ReturnShippingParam](doc//ReturnShippingParam.md)
  - [Review](doc//Review.md)
  - [ReviewCreateParam](doc//ReviewCreateParam.md)
  - [ReviewFailure](doc//ReviewFailure.md)

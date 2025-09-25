@@ -33,6 +33,10 @@ class OrderStatusEnum {
   static const CANCELLED = OrderStatusEnum._(r'CANCELLED');
   static const REFUND_REQUESTED = OrderStatusEnum._(r'REFUND_REQUESTED');
   static const REFUNDED = OrderStatusEnum._(r'REFUNDED');
+  static const RETURN_REQUESTED = OrderStatusEnum._(r'RETURN_REQUESTED');
+  static const RETURN_APPROVED = OrderStatusEnum._(r'RETURN_APPROVED');
+  static const RETURN_SHIPPED = OrderStatusEnum._(r'RETURN_SHIPPED');
+  static const RETURN_RECEIVED = OrderStatusEnum._(r'RETURN_RECEIVED');
   static const unknownDefaultOpenApi = OrderStatusEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][OrderStatusEnum].
@@ -47,6 +51,10 @@ class OrderStatusEnum {
     CANCELLED,
     REFUND_REQUESTED,
     REFUNDED,
+    RETURN_REQUESTED,
+    RETURN_APPROVED,
+    RETURN_SHIPPED,
+    RETURN_RECEIVED,
     unknownDefaultOpenApi,
   ];
 
@@ -96,6 +104,10 @@ class OrderStatusEnumTypeTransformer {
         case r'CANCELLED': return OrderStatusEnum.CANCELLED;
         case r'REFUND_REQUESTED': return OrderStatusEnum.REFUND_REQUESTED;
         case r'REFUNDED': return OrderStatusEnum.REFUNDED;
+        case r'RETURN_REQUESTED': return OrderStatusEnum.RETURN_REQUESTED;
+        case r'RETURN_APPROVED': return OrderStatusEnum.RETURN_APPROVED;
+        case r'RETURN_SHIPPED': return OrderStatusEnum.RETURN_SHIPPED;
+        case r'RETURN_RECEIVED': return OrderStatusEnum.RETURN_RECEIVED;
         case r'unknown_default_open_api': return OrderStatusEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

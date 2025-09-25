@@ -470,6 +470,12 @@ class ApiClient {
           return RegisterParam.fromJson(value);
         case 'ReplyIssueParam':
           return ReplyIssueParam.fromJson(value);
+        case 'ReturnProcessParam':
+          return ReturnProcessParam.fromJson(value);
+        case 'ReturnRequestParam':
+          return ReturnRequestParam.fromJson(value);
+        case 'ReturnShippingParam':
+          return ReturnShippingParam.fromJson(value);
         case 'Review':
           return Review.fromJson(value);
         case 'ReviewCreateParam':

@@ -69,7 +69,7 @@ class ChatApi {
 
   /// 刪除消息
   ///
-  /// 刪除指定的聊天消息
+  /// 物理刪除指定的聊天消息，雙方都可以互相刪除對方的消息
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -105,7 +105,7 @@ class ChatApi {
 
   /// 刪除消息
   ///
-  /// 刪除指定的聊天消息
+  /// 物理刪除指定的聊天消息，雙方都可以互相刪除對方的消息
   ///
   /// Parameters:
   ///
