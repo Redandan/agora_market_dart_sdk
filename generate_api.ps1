@@ -4,10 +4,15 @@ Write-Host "Starting API code generation process..." -ForegroundColor Green
 
 # 檢查 Jabba 是否安裝
 Write-Host "Checking Jabba installation..." -ForegroundColor Yellow
-$jabbaPath = Get-Command jabba -ErrorAction SilentlyContinue
-if ($jabbaPath) {
-    Write-Host "Jabba is installed at: $($jabbaPath.Source)" -ForegroundColor Green
-} else {
+try {
+    # 檢查 Jabba 可執行檔是否存在
+    $jabbaExePath = "$env:USERPROFILE\.jabba\bin\jabba.exe"
+    if (Test-Path $jabbaExePath) {
+        Write-Host "Jabba executable found at: $jabbaExePath" -ForegroundColor Green
+    } else {
+        throw "Jabba executable not found"
+    }
+} catch {
     Write-Host "Error: Jabba is not installed. Please install Jabba first." -ForegroundColor Red
     Write-Host "You can install Jabba from: https://github.com/shyiko/jabba" -ForegroundColor Yellow
     exit 1
@@ -16,18 +21,33 @@ if ($jabbaPath) {
 # 切換到 Java 17
 Write-Host "Switching to Java 17..." -ForegroundColor Yellow
 try {
-    jabba use openjdk@1.17.0
+    # 設置環境變數以啟用 shell 集成
+    $env:JABBA_SHELL_INTEGRATION = "ON"
+    
+    # 使用 Jabba 切換到 Java 17
+    $jabbaOutput = & $jabbaExePath use openjdk@1.17.0 --fd3 (New-TemporaryFile).FullName 2>&1
     if ($LASTEXITCODE -ne 0) {
         Write-Host "Error switching to Java 17" -ForegroundColor Red
         Write-Host "Trying to install Java 17..." -ForegroundColor Yellow
-        jabba install openjdk@1.17.0
-        jabba use openjdk@1.17.0
+        & $jabbaExePath install openjdk@1.17.0
+        $jabbaOutput = & $jabbaExePath use openjdk@1.17.0 --fd3 (New-TemporaryFile).FullName 2>&1
         if ($LASTEXITCODE -ne 0) {
             Write-Host "Failed to install and switch to Java 17" -ForegroundColor Red
             exit 1
         }
     }
-    Write-Host "Successfully switched to Java 17" -ForegroundColor Green
+    
+    # 手動設置 Java 環境變數
+    $javaHome = & $jabbaExePath which openjdk@1.17.0
+    if ($javaHome) {
+        $env:JAVA_HOME = $javaHome
+        $env:PATH = "$javaHome\bin;$env:PATH"
+        Write-Host "Successfully switched to Java 17" -ForegroundColor Green
+        Write-Host "Java Home: $env:JAVA_HOME" -ForegroundColor Cyan
+    } else {
+        Write-Host "Failed to get Java 17 path" -ForegroundColor Red
+        exit 1
+    }
 } catch {
     Write-Host "Error during Java version switch: $_" -ForegroundColor Red
     exit 1

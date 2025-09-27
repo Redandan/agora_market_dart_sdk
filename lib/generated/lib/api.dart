@@ -56,6 +56,7 @@ part 'api/staking_api.dart';
 part 'api/stores_api.dart';
 part 'api/test_api.dart';
 part 'api/user_addresses_api.dart';
+part 'api/webrtc_api.dart';
 
 part 'model/accept_order_param.dart';
 part 'model/admin_create_user_param.dart';
@@ -250,6 +251,10 @@ part 'model/user_order_search_param.dart';
 part 'model/user_post_statistics.dart';
 part 'model/user_profile_update_param.dart';
 part 'model/user_status_enum.dart';
+part 'model/web_rtc_answer_dto.dart';
+part 'model/web_rtc_call_status_dto.dart';
+part 'model/web_rtc_ice_candidate_dto.dart';
+part 'model/web_rtc_offer_dto.dart';
 part 'model/withdraw.dart';
 part 'model/withdraw_search_param.dart';
 part 'model/withdraw_status_enum.dart';

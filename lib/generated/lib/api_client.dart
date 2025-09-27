@@ -568,6 +568,14 @@ class ApiClient {
           return UserProfileUpdateParam.fromJson(value);
         case 'UserStatusEnum':
           return UserStatusEnumTypeTransformer().decode(value);
+        case 'WebRTCAnswerDto':
+          return WebRTCAnswerDto.fromJson(value);
+        case 'WebRTCCallStatusDto':
+          return WebRTCCallStatusDto.fromJson(value);
+        case 'WebRTCIceCandidateDto':
+          return WebRTCIceCandidateDto.fromJson(value);
+        case 'WebRTCOfferDto':
+          return WebRTCOfferDto.fromJson(value);
         case 'Withdraw':
           return Withdraw.fromJson(value);
         case 'WithdrawSearchParam':
