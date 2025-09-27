@@ -25,12 +25,12 @@ try {
     $env:JABBA_SHELL_INTEGRATION = "ON"
     
     # 使用 Jabba 切換到 Java 17
-    $jabbaOutput = & $jabbaExePath use openjdk@1.17.0 --fd3 (New-TemporaryFile).FullName 2>&1
+    & $jabbaExePath use openjdk@1.17.0
     if ($LASTEXITCODE -ne 0) {
         Write-Host "Error switching to Java 17" -ForegroundColor Red
         Write-Host "Trying to install Java 17..." -ForegroundColor Yellow
         & $jabbaExePath install openjdk@1.17.0
-        $jabbaOutput = & $jabbaExePath use openjdk@1.17.0 --fd3 (New-TemporaryFile).FullName 2>&1
+        & $jabbaExePath use openjdk@1.17.0
         if ($LASTEXITCODE -ne 0) {
             Write-Host "Failed to install and switch to Java 17" -ForegroundColor Red
             exit 1
