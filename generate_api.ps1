@@ -136,30 +136,9 @@ Write-Host "Found swagger.yaml at $swaggerPath" -ForegroundColor Green
 Write-Host "Cleaning old generated files..." -ForegroundColor Yellow
 try {
     if (Test-Path "lib/generated") {
-        # 保护自定义文件
-        Write-Host "Protecting custom API files..." -ForegroundColor Yellow
-        
-        # 备份自定义文件（如果存在）
-        $customApiDir = "lib/api"
-        if (Test-Path $customApiDir) {
-            $backupDir = "lib/api_backup"
-            if (Test-Path $backupDir) {
-                Remove-Item -Path $backupDir -Recurse -Force
-            }
-            Copy-Item -Path $customApiDir -Destination $backupDir -Recurse -Force
-            Write-Host "Backed up custom API files to $backupDir" -ForegroundColor Green
-        }
-        
         # 删除生成的代码
         Remove-Item -Path "lib/generated" -Recurse -Force
         Write-Host "Cleaned old generated files" -ForegroundColor Green
-        
-        # 恢复自定义文件
-        if (Test-Path $backupDir) {
-            Copy-Item -Path "$backupDir/*" -Destination $customApiDir -Recurse -Force
-            Remove-Item -Path $backupDir -Recurse -Force
-            Write-Host "Restored custom API files" -ForegroundColor Green
-        }
     }
 } catch {
     Write-Host "Warning: Could not clean old generated files: $_" -ForegroundColor Yellow
