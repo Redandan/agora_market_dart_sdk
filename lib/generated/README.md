@@ -364,11 +364,9 @@ Class | Method | HTTP request | Description
 *UserAddressesApi* | [**getUserAddressesPage**](doc//UserAddressesApi.md#getuseraddressespage) | **GET** /user-addresses/page | 分頁獲取用戶地址
 *UserAddressesApi* | [**setDefaultAddress**](doc//UserAddressesApi.md#setdefaultaddress) | **POST** /user-addresses/{addressId}/set-default | 設置預設地址
 *UserAddressesApi* | [**updateAddress**](doc//UserAddressesApi.md#updateaddress) | **POST** /user-addresses/update | 更新地址
-*WebrtcApi* | [**getWebRTCConfig**](doc//WebrtcApi.md#getwebrtcconfig) | **GET** /webrtc/config | 獲取 WebRTC 配置
 *WebrtcApi* | [**sendAnswer**](doc//WebrtcApi.md#sendanswer) | **POST** /webrtc/answer | 發送 WebRTC Answer
 *WebrtcApi* | [**sendIceCandidate**](doc//WebrtcApi.md#sendicecandidate) | **POST** /webrtc/ice-candidate | 發送 WebRTC ICE Candidate
 *WebrtcApi* | [**sendOffer**](doc//WebrtcApi.md#sendoffer) | **POST** /webrtc/offer | 發送 WebRTC Offer
-*WebrtcApi* | [**updateCallStatus**](doc//WebrtcApi.md#updatecallstatus) | **POST** /webrtc/call-status | 更新通話狀態
 
 
 ## Documentation For Models
@@ -567,9 +565,12 @@ Class | Method | HTTP request | Description
  - [UserProfileUpdateParam](doc//UserProfileUpdateParam.md)
  - [UserStatusEnum](doc//UserStatusEnum.md)
  - [WebRTCAnswerDto](doc//WebRTCAnswerDto.md)
- - [WebRTCCallStatusDto](doc//WebRTCCallStatusDto.md)
+ - [WebRTCAnswerResponseDto](doc//WebRTCAnswerResponseDto.md)
  - [WebRTCIceCandidateDto](doc//WebRTCIceCandidateDto.md)
+ - [WebRTCIceCandidateResponseDto](doc//WebRTCIceCandidateResponseDto.md)
  - [WebRTCOfferDto](doc//WebRTCOfferDto.md)
+ - [WebRTCOfferResponseDto](doc//WebRTCOfferResponseDto.md)
+ - [WebRTCResponseDto](doc//WebRTCResponseDto.md)
  - [Withdraw](doc//Withdraw.md)
  - [WithdrawSearchParam](doc//WithdrawSearchParam.md)
  - [WithdrawStatusEnum](doc//WithdrawStatusEnum.md)

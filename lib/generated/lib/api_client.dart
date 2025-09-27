@@ -570,12 +570,18 @@ class ApiClient {
           return UserStatusEnumTypeTransformer().decode(value);
         case 'WebRTCAnswerDto':
           return WebRTCAnswerDto.fromJson(value);
-        case 'WebRTCCallStatusDto':
-          return WebRTCCallStatusDto.fromJson(value);
+        case 'WebRTCAnswerResponseDto':
+          return WebRTCAnswerResponseDto.fromJson(value);
         case 'WebRTCIceCandidateDto':
           return WebRTCIceCandidateDto.fromJson(value);
+        case 'WebRTCIceCandidateResponseDto':
+          return WebRTCIceCandidateResponseDto.fromJson(value);
         case 'WebRTCOfferDto':
           return WebRTCOfferDto.fromJson(value);
+        case 'WebRTCOfferResponseDto':
+          return WebRTCOfferResponseDto.fromJson(value);
+        case 'WebRTCResponseDto':
+          return WebRTCResponseDto.fromJson(value);
         case 'Withdraw':
           return Withdraw.fromJson(value);
         case 'WithdrawSearchParam':
