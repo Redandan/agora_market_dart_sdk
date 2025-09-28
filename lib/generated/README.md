@@ -364,6 +364,7 @@ Class | Method | HTTP request | Description
 *UserAddressesApi* | [**getUserAddressesPage**](doc//UserAddressesApi.md#getuseraddressespage) | **GET** /user-addresses/page | 分頁獲取用戶地址
 *UserAddressesApi* | [**setDefaultAddress**](doc//UserAddressesApi.md#setdefaultaddress) | **POST** /user-addresses/{addressId}/set-default | 設置預設地址
 *UserAddressesApi* | [**updateAddress**](doc//UserAddressesApi.md#updateaddress) | **POST** /user-addresses/update | 更新地址
+*WebrtcApi* | [**hangupCall**](doc//WebrtcApi.md#hangupcall) | **POST** /webrtc/hangup | 掛斷 WebRTC 通話
 *WebrtcApi* | [**sendAnswer**](doc//WebrtcApi.md#sendanswer) | **POST** /webrtc/answer | 發送 WebRTC Answer
 *WebrtcApi* | [**sendIceCandidate**](doc//WebrtcApi.md#sendicecandidate) | **POST** /webrtc/ice-candidate | 發送 WebRTC ICE Candidate
 *WebrtcApi* | [**sendOffer**](doc//WebrtcApi.md#sendoffer) | **POST** /webrtc/offer | 發送 WebRTC Offer
@@ -566,6 +567,8 @@ Class | Method | HTTP request | Description
  - [UserStatusEnum](doc//UserStatusEnum.md)
  - [WebRTCAnswerDto](doc//WebRTCAnswerDto.md)
  - [WebRTCAnswerResponseDto](doc//WebRTCAnswerResponseDto.md)
+ - [WebRTCHangupDto](doc//WebRTCHangupDto.md)
+ - [WebRTCHangupResponseDto](doc//WebRTCHangupResponseDto.md)
  - [WebRTCIceCandidateDto](doc//WebRTCIceCandidateDto.md)
  - [WebRTCIceCandidateResponseDto](doc//WebRTCIceCandidateResponseDto.md)
  - [WebRTCOfferDto](doc//WebRTCOfferDto.md)

@@ -253,6 +253,8 @@ part 'model/user_profile_update_param.dart';
 part 'model/user_status_enum.dart';
 part 'model/web_rtc_answer_dto.dart';
 part 'model/web_rtc_answer_response_dto.dart';
+part 'model/web_rtc_hangup_dto.dart';
+part 'model/web_rtc_hangup_response_dto.dart';
 part 'model/web_rtc_ice_candidate_dto.dart';
 part 'model/web_rtc_ice_candidate_response_dto.dart';
 part 'model/web_rtc_offer_dto.dart';

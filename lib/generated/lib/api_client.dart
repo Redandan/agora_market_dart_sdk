@@ -572,6 +572,10 @@ class ApiClient {
           return WebRTCAnswerDto.fromJson(value);
         case 'WebRTCAnswerResponseDto':
           return WebRTCAnswerResponseDto.fromJson(value);
+        case 'WebRTCHangupDto':
+          return WebRTCHangupDto.fromJson(value);
+        case 'WebRTCHangupResponseDto':
+          return WebRTCHangupResponseDto.fromJson(value);
         case 'WebRTCIceCandidateDto':
           return WebRTCIceCandidateDto.fromJson(value);
         case 'WebRTCIceCandidateResponseDto':

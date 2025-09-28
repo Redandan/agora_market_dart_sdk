@@ -1,0 +1,227 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
+
+class WebRTCHangupResponseDto {
+  /// Returns a new [WebRTCHangupResponseDto] instance.
+  WebRTCHangupResponseDto({
+    this.success,
+    this.message,
+    this.errorCode,
+    this.timestamp,
+    this.callId,
+    this.reason,
+    this.duration,
+  });
+
+  /// 操作是否成功
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? success;
+
+  /// 響應訊息
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? message;
+
+  /// 錯誤代碼（失敗時）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? errorCode;
+
+  /// 時間戳
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? timestamp;
+
+  /// 通話唯一識別碼
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? callId;
+
+  /// 掛斷原因
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? reason;
+
+  /// 通話持續時間（毫秒）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? duration;
+
+  @override
+  bool operator ==(Object other) => identical(this, other) || other is WebRTCHangupResponseDto &&
+    other.success == success &&
+    other.message == message &&
+    other.errorCode == errorCode &&
+    other.timestamp == timestamp &&
+    other.callId == callId &&
+    other.reason == reason &&
+    other.duration == duration;
+
+  @override
+  int get hashCode =>
+    // ignore: unnecessary_parenthesis
+    (success == null ? 0 : success!.hashCode) +
+    (message == null ? 0 : message!.hashCode) +
+    (errorCode == null ? 0 : errorCode!.hashCode) +
+    (timestamp == null ? 0 : timestamp!.hashCode) +
+    (callId == null ? 0 : callId!.hashCode) +
+    (reason == null ? 0 : reason!.hashCode) +
+    (duration == null ? 0 : duration!.hashCode);
+
+  @override
+  String toString() => 'WebRTCHangupResponseDto[success=$success, message=$message, errorCode=$errorCode, timestamp=$timestamp, callId=$callId, reason=$reason, duration=$duration]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    if (this.success != null) {
+      json[r'success'] = this.success;
+    } else {
+      json[r'success'] = null;
+    }
+    if (this.message != null) {
+      json[r'message'] = this.message;
+    } else {
+      json[r'message'] = null;
+    }
+    if (this.errorCode != null) {
+      json[r'errorCode'] = this.errorCode;
+    } else {
+      json[r'errorCode'] = null;
+    }
+    if (this.timestamp != null) {
+      json[r'timestamp'] = this.timestamp;
+    } else {
+      json[r'timestamp'] = null;
+    }
+    if (this.callId != null) {
+      json[r'callId'] = this.callId;
+    } else {
+      json[r'callId'] = null;
+    }
+    if (this.reason != null) {
+      json[r'reason'] = this.reason;
+    } else {
+      json[r'reason'] = null;
+    }
+    if (this.duration != null) {
+      json[r'duration'] = this.duration;
+    } else {
+      json[r'duration'] = null;
+    }
+    return json;
+  }
+
+  /// Returns a new [WebRTCHangupResponseDto] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static WebRTCHangupResponseDto? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key), 'Required key "WebRTCHangupResponseDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "WebRTCHangupResponseDto[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return WebRTCHangupResponseDto(
+        success: mapValueOfType<bool>(json, r'success'),
+        message: mapValueOfType<String>(json, r'message'),
+        errorCode: mapValueOfType<String>(json, r'errorCode'),
+        timestamp: mapValueOfType<String>(json, r'timestamp'),
+        callId: mapValueOfType<String>(json, r'callId'),
+        reason: mapValueOfType<String>(json, r'reason'),
+        duration: mapValueOfType<int>(json, r'duration'),
+      );
+    }
+    return null;
+  }
+
+  static List<WebRTCHangupResponseDto> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <WebRTCHangupResponseDto>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = WebRTCHangupResponseDto.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+
+  static Map<String, WebRTCHangupResponseDto> mapFromJson(dynamic json) {
+    final map = <String, WebRTCHangupResponseDto>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = WebRTCHangupResponseDto.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
+  }
+
+  // maps a json object with a list of WebRTCHangupResponseDto-objects as value to a dart map
+  static Map<String, List<WebRTCHangupResponseDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<WebRTCHangupResponseDto>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = WebRTCHangupResponseDto.listFromJson(entry.value, growable: growable,);
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+  };
+}
+
