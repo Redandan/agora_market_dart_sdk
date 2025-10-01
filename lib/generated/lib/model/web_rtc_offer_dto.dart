@@ -13,7 +13,6 @@ part of openapi.api;
 class WebRTCOfferDto {
   /// Returns a new [WebRTCOfferDto] instance.
   WebRTCOfferDto({
-    required this.callId,
     required this.fromUserId,
     required this.toUserId,
     required this.sdp,
@@ -23,9 +22,6 @@ class WebRTCOfferDto {
     this.audioEnabled,
     this.videoEnabled,
   });
-
-  /// 通話唯一識別碼
-  String callId;
 
   /// 發起通話的用戶ID
   int fromUserId;
@@ -77,7 +73,6 @@ class WebRTCOfferDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is WebRTCOfferDto &&
-    other.callId == callId &&
     other.fromUserId == fromUserId &&
     other.toUserId == toUserId &&
     other.sdp == sdp &&
@@ -90,7 +85,6 @@ class WebRTCOfferDto {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (callId.hashCode) +
     (fromUserId.hashCode) +
     (toUserId.hashCode) +
     (sdp.hashCode) +
@@ -101,11 +95,10 @@ class WebRTCOfferDto {
     (videoEnabled == null ? 0 : videoEnabled!.hashCode);
 
   @override
-  String toString() => 'WebRTCOfferDto[callId=$callId, fromUserId=$fromUserId, toUserId=$toUserId, sdp=$sdp, type=$type, timestamp=$timestamp, callType=$callType, audioEnabled=$audioEnabled, videoEnabled=$videoEnabled]';
+  String toString() => 'WebRTCOfferDto[fromUserId=$fromUserId, toUserId=$toUserId, sdp=$sdp, type=$type, timestamp=$timestamp, callType=$callType, audioEnabled=$audioEnabled, videoEnabled=$videoEnabled]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'callId'] = this.callId;
       json[r'fromUserId'] = this.fromUserId;
       json[r'toUserId'] = this.toUserId;
       json[r'sdp'] = this.sdp;
@@ -156,7 +149,6 @@ class WebRTCOfferDto {
       }());
 
       return WebRTCOfferDto(
-        callId: mapValueOfType<String>(json, r'callId')!,
         fromUserId: mapValueOfType<int>(json, r'fromUserId')!,
         toUserId: mapValueOfType<int>(json, r'toUserId')!,
         sdp: mapValueOfType<String>(json, r'sdp')!,
@@ -212,7 +204,6 @@ class WebRTCOfferDto {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'callId',
     'fromUserId',
     'toUserId',
     'sdp',

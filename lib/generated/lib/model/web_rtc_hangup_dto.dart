@@ -13,15 +13,11 @@ part of openapi.api;
 class WebRTCHangupDto {
   /// Returns a new [WebRTCHangupDto] instance.
   WebRTCHangupDto({
-    required this.callId,
     required this.toUserId,
     this.reason,
     this.timestamp,
     this.duration,
   });
-
-  /// 通話唯一識別碼
-  String callId;
 
   /// 接收掛斷通知的用戶ID
   int toUserId;
@@ -49,7 +45,6 @@ class WebRTCHangupDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is WebRTCHangupDto &&
-    other.callId == callId &&
     other.toUserId == toUserId &&
     other.reason == reason &&
     other.timestamp == timestamp &&
@@ -58,18 +53,16 @@ class WebRTCHangupDto {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (callId.hashCode) +
     (toUserId.hashCode) +
     (reason == null ? 0 : reason!.hashCode) +
     (timestamp == null ? 0 : timestamp!.hashCode) +
     (duration == null ? 0 : duration!.hashCode);
 
   @override
-  String toString() => 'WebRTCHangupDto[callId=$callId, toUserId=$toUserId, reason=$reason, timestamp=$timestamp, duration=$duration]';
+  String toString() => 'WebRTCHangupDto[toUserId=$toUserId, reason=$reason, timestamp=$timestamp, duration=$duration]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'callId'] = this.callId;
       json[r'toUserId'] = this.toUserId;
     if (this.reason != null) {
       json[r'reason'] = this.reason;
@@ -108,7 +101,6 @@ class WebRTCHangupDto {
       }());
 
       return WebRTCHangupDto(
-        callId: mapValueOfType<String>(json, r'callId')!,
         toUserId: mapValueOfType<int>(json, r'toUserId')!,
         reason: WebRTCHangupDtoReasonEnum.fromJson(json[r'reason']),
         timestamp: mapValueOfType<int>(json, r'timestamp'),
@@ -160,7 +152,6 @@ class WebRTCHangupDto {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'callId',
     'toUserId',
   };
 }
