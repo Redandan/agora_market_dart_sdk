@@ -38,6 +38,7 @@ class ProductUpdateParam {
     this.shippingFees = const {},
     required this.defaultShippingCompany,
     this.freeShippingThreshold,
+    this.enablePlatformDelivery,
   });
 
   /// 商品ID
@@ -245,6 +246,15 @@ class ProductUpdateParam {
   ///
   num? freeShippingThreshold;
 
+  /// 啟用平台配送
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? enablePlatformDelivery;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductUpdateParam &&
     other.id == id &&
@@ -271,7 +281,8 @@ class ProductUpdateParam {
     _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
     _deepEquality.equals(other.shippingFees, shippingFees) &&
     other.defaultShippingCompany == defaultShippingCompany &&
-    other.freeShippingThreshold == freeShippingThreshold;
+    other.freeShippingThreshold == freeShippingThreshold &&
+    other.enablePlatformDelivery == enablePlatformDelivery;
 
   @override
   int get hashCode =>
@@ -300,10 +311,11 @@ class ProductUpdateParam {
     (supportedShippingCompanies.hashCode) +
     (shippingFees.hashCode) +
     (defaultShippingCompany.hashCode) +
-    (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode);
+    (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode) +
+    (enablePlatformDelivery == null ? 0 : enablePlatformDelivery!.hashCode);
 
   @override
-  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, status=$status, shippingFee=$shippingFee, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, shippingFees=$shippingFees, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold]';
+  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, status=$status, shippingFee=$shippingFee, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, shippingFees=$shippingFees, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold, enablePlatformDelivery=$enablePlatformDelivery]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -408,6 +420,11 @@ class ProductUpdateParam {
     } else {
       json[r'freeShippingThreshold'] = null;
     }
+    if (this.enablePlatformDelivery != null) {
+      json[r'enablePlatformDelivery'] = this.enablePlatformDelivery;
+    } else {
+      json[r'enablePlatformDelivery'] = null;
+    }
     return json;
   }
 
@@ -459,6 +476,7 @@ class ProductUpdateParam {
         shippingFees: mapCastOfType<String, num>(json, r'shippingFees')!,
         defaultShippingCompany: ShippingCompanyEnum.fromJson(json[r'defaultShippingCompany'])!,
         freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
+        enablePlatformDelivery: mapValueOfType<bool>(json, r'enablePlatformDelivery'),
       );
     }
     return null;

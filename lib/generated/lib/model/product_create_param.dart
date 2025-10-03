@@ -42,6 +42,7 @@ class ProductCreateParam {
     this.freeShippingThreshold,
     this.stockAlertThreshold,
     this.allowNegativeStock,
+    this.enablePlatformDelivery,
   });
 
   /// 商品名稱
@@ -231,6 +232,15 @@ class ProductCreateParam {
   ///
   bool? allowNegativeStock;
 
+  /// 啟用平台配送
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? enablePlatformDelivery;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductCreateParam &&
     other.title == title &&
@@ -261,7 +271,8 @@ class ProductCreateParam {
     other.defaultShippingCompany == defaultShippingCompany &&
     other.freeShippingThreshold == freeShippingThreshold &&
     other.stockAlertThreshold == stockAlertThreshold &&
-    other.allowNegativeStock == allowNegativeStock;
+    other.allowNegativeStock == allowNegativeStock &&
+    other.enablePlatformDelivery == enablePlatformDelivery;
 
   @override
   int get hashCode =>
@@ -294,10 +305,11 @@ class ProductCreateParam {
     (defaultShippingCompany.hashCode) +
     (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode) +
     (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
-    (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode);
+    (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode) +
+    (enablePlatformDelivery == null ? 0 : enablePlatformDelivery!.hashCode);
 
   @override
-  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, skus=$skus, brand=$brand, minStock=$minStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, shippingFees=$shippingFees, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock]';
+  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, skus=$skus, brand=$brand, minStock=$minStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, shippingFees=$shippingFees, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, enablePlatformDelivery=$enablePlatformDelivery]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -382,6 +394,11 @@ class ProductCreateParam {
     } else {
       json[r'allowNegativeStock'] = null;
     }
+    if (this.enablePlatformDelivery != null) {
+      json[r'enablePlatformDelivery'] = this.enablePlatformDelivery;
+    } else {
+      json[r'enablePlatformDelivery'] = null;
+    }
     return json;
   }
 
@@ -437,6 +454,7 @@ class ProductCreateParam {
         freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
         stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
         allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
+        enablePlatformDelivery: mapValueOfType<bool>(json, r'enablePlatformDelivery'),
       );
     }
     return null;
