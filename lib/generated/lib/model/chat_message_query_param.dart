@@ -22,7 +22,6 @@ class ChatMessageQueryParam {
     this.sortDirection,
     this.userId,
     required this.sessionId,
-    this.unreadOnly,
   });
 
   /// 頁碼，從1開始
@@ -100,15 +99,6 @@ class ChatMessageQueryParam {
   /// 會話ID
   String sessionId;
 
-  /// 是否只查詢未讀消息
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? unreadOnly;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is ChatMessageQueryParam &&
     other.page == page &&
@@ -119,8 +109,7 @@ class ChatMessageQueryParam {
     other.sortBy == sortBy &&
     other.sortDirection == sortDirection &&
     other.userId == userId &&
-    other.sessionId == sessionId &&
-    other.unreadOnly == unreadOnly;
+    other.sessionId == sessionId;
 
   @override
   int get hashCode =>
@@ -133,11 +122,10 @@ class ChatMessageQueryParam {
     (sortBy == null ? 0 : sortBy!.hashCode) +
     (sortDirection == null ? 0 : sortDirection!.hashCode) +
     (userId == null ? 0 : userId!.hashCode) +
-    (sessionId.hashCode) +
-    (unreadOnly == null ? 0 : unreadOnly!.hashCode);
+    (sessionId.hashCode);
 
   @override
-  String toString() => 'ChatMessageQueryParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, userId=$userId, sessionId=$sessionId, unreadOnly=$unreadOnly]';
+  String toString() => 'ChatMessageQueryParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, userId=$userId, sessionId=$sessionId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -182,11 +170,6 @@ class ChatMessageQueryParam {
       json[r'userId'] = null;
     }
       json[r'sessionId'] = this.sessionId;
-    if (this.unreadOnly != null) {
-      json[r'unreadOnly'] = this.unreadOnly;
-    } else {
-      json[r'unreadOnly'] = null;
-    }
     return json;
   }
 
@@ -218,7 +201,6 @@ class ChatMessageQueryParam {
         sortDirection: mapValueOfType<String>(json, r'sortDirection'),
         userId: mapValueOfType<int>(json, r'userId'),
         sessionId: mapValueOfType<String>(json, r'sessionId')!,
-        unreadOnly: mapValueOfType<bool>(json, r'unreadOnly'),
       );
     }
     return null;

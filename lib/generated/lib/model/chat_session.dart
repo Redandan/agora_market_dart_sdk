@@ -16,7 +16,8 @@ class ChatSession {
     this.id,
     this.userId,
     this.partnerId,
-    this.unreadCount,
+    this.userUnreadCount,
+    this.partnerUnreadCount,
     this.latestMessageId,
     this.latestMessageTime,
     this.pinned,
@@ -27,8 +28,6 @@ class ChatSession {
     this.partnerReadMessageId,
     this.userReadAt,
     this.partnerReadAt,
-    this.userReadMessageIds,
-    this.partnerReadMessageIds,
     this.createdAt,
     this.updatedAt,
     this.messages,
@@ -62,14 +61,23 @@ class ChatSession {
   ///
   int? partnerId;
 
-  /// 未讀消息數
+  /// 用戶未讀消息數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? unreadCount;
+  int? userUnreadCount;
+
+  /// 聊天對象未讀消息數
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? partnerUnreadCount;
 
   /// 最新消息ID
   ///
@@ -161,24 +169,6 @@ class ChatSession {
   ///
   DateTime? partnerReadAt;
 
-  /// 用戶已讀消息ID列表（JSON格式）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? userReadMessageIds;
-
-  /// 聊天對象已讀消息ID列表（JSON格式）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? partnerReadMessageIds;
-
   /// 創建時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -218,7 +208,8 @@ class ChatSession {
     other.id == id &&
     other.userId == userId &&
     other.partnerId == partnerId &&
-    other.unreadCount == unreadCount &&
+    other.userUnreadCount == userUnreadCount &&
+    other.partnerUnreadCount == partnerUnreadCount &&
     other.latestMessageId == latestMessageId &&
     other.latestMessageTime == latestMessageTime &&
     other.pinned == pinned &&
@@ -229,8 +220,6 @@ class ChatSession {
     other.partnerReadMessageId == partnerReadMessageId &&
     other.userReadAt == userReadAt &&
     other.partnerReadAt == partnerReadAt &&
-    other.userReadMessageIds == userReadMessageIds &&
-    other.partnerReadMessageIds == partnerReadMessageIds &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
     other.messages == messages &&
@@ -242,7 +231,8 @@ class ChatSession {
     (id == null ? 0 : id!.hashCode) +
     (userId == null ? 0 : userId!.hashCode) +
     (partnerId == null ? 0 : partnerId!.hashCode) +
-    (unreadCount == null ? 0 : unreadCount!.hashCode) +
+    (userUnreadCount == null ? 0 : userUnreadCount!.hashCode) +
+    (partnerUnreadCount == null ? 0 : partnerUnreadCount!.hashCode) +
     (latestMessageId == null ? 0 : latestMessageId!.hashCode) +
     (latestMessageTime == null ? 0 : latestMessageTime!.hashCode) +
     (pinned == null ? 0 : pinned!.hashCode) +
@@ -253,15 +243,13 @@ class ChatSession {
     (partnerReadMessageId == null ? 0 : partnerReadMessageId!.hashCode) +
     (userReadAt == null ? 0 : userReadAt!.hashCode) +
     (partnerReadAt == null ? 0 : partnerReadAt!.hashCode) +
-    (userReadMessageIds == null ? 0 : userReadMessageIds!.hashCode) +
-    (partnerReadMessageIds == null ? 0 : partnerReadMessageIds!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (messages == null ? 0 : messages!.hashCode) +
     (currentUser == null ? 0 : currentUser!.hashCode);
 
   @override
-  String toString() => 'ChatSession[id=$id, userId=$userId, partnerId=$partnerId, unreadCount=$unreadCount, latestMessageId=$latestMessageId, latestMessageTime=$latestMessageTime, pinned=$pinned, partnerName=$partnerName, partnerAvatar=$partnerAvatar, latestMessageContent=$latestMessageContent, userReadMessageId=$userReadMessageId, partnerReadMessageId=$partnerReadMessageId, userReadAt=$userReadAt, partnerReadAt=$partnerReadAt, userReadMessageIds=$userReadMessageIds, partnerReadMessageIds=$partnerReadMessageIds, createdAt=$createdAt, updatedAt=$updatedAt, messages=$messages, currentUser=$currentUser]';
+  String toString() => 'ChatSession[id=$id, userId=$userId, partnerId=$partnerId, userUnreadCount=$userUnreadCount, partnerUnreadCount=$partnerUnreadCount, latestMessageId=$latestMessageId, latestMessageTime=$latestMessageTime, pinned=$pinned, partnerName=$partnerName, partnerAvatar=$partnerAvatar, latestMessageContent=$latestMessageContent, userReadMessageId=$userReadMessageId, partnerReadMessageId=$partnerReadMessageId, userReadAt=$userReadAt, partnerReadAt=$partnerReadAt, createdAt=$createdAt, updatedAt=$updatedAt, messages=$messages, currentUser=$currentUser]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -280,10 +268,15 @@ class ChatSession {
     } else {
       json[r'partnerId'] = null;
     }
-    if (this.unreadCount != null) {
-      json[r'unreadCount'] = this.unreadCount;
+    if (this.userUnreadCount != null) {
+      json[r'userUnreadCount'] = this.userUnreadCount;
     } else {
-      json[r'unreadCount'] = null;
+      json[r'userUnreadCount'] = null;
+    }
+    if (this.partnerUnreadCount != null) {
+      json[r'partnerUnreadCount'] = this.partnerUnreadCount;
+    } else {
+      json[r'partnerUnreadCount'] = null;
     }
     if (this.latestMessageId != null) {
       json[r'latestMessageId'] = this.latestMessageId;
@@ -335,16 +328,6 @@ class ChatSession {
     } else {
       json[r'partnerReadAt'] = null;
     }
-    if (this.userReadMessageIds != null) {
-      json[r'userReadMessageIds'] = this.userReadMessageIds;
-    } else {
-      json[r'userReadMessageIds'] = null;
-    }
-    if (this.partnerReadMessageIds != null) {
-      json[r'partnerReadMessageIds'] = this.partnerReadMessageIds;
-    } else {
-      json[r'partnerReadMessageIds'] = null;
-    }
     if (this.createdAt != null) {
       json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
     } else {
@@ -390,7 +373,8 @@ class ChatSession {
         id: mapValueOfType<String>(json, r'id'),
         userId: mapValueOfType<int>(json, r'userId'),
         partnerId: mapValueOfType<int>(json, r'partnerId'),
-        unreadCount: mapValueOfType<int>(json, r'unreadCount'),
+        userUnreadCount: mapValueOfType<int>(json, r'userUnreadCount'),
+        partnerUnreadCount: mapValueOfType<int>(json, r'partnerUnreadCount'),
         latestMessageId: mapValueOfType<int>(json, r'latestMessageId'),
         latestMessageTime: mapDateTime(json, r'latestMessageTime', r''),
         pinned: mapValueOfType<bool>(json, r'pinned'),
@@ -401,8 +385,6 @@ class ChatSession {
         partnerReadMessageId: mapValueOfType<int>(json, r'partnerReadMessageId'),
         userReadAt: mapDateTime(json, r'userReadAt', r''),
         partnerReadAt: mapDateTime(json, r'partnerReadAt', r''),
-        userReadMessageIds: mapValueOfType<String>(json, r'userReadMessageIds'),
-        partnerReadMessageIds: mapValueOfType<String>(json, r'partnerReadMessageIds'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         messages: PageChatMessage.fromJson(json[r'messages']),
