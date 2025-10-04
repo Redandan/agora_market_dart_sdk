@@ -17,9 +17,9 @@ class PageReview {
     this.totalPages,
     this.sort,
     this.numberOfElements,
-    this.pageable,
-    this.last,
     this.first,
+    this.last,
+    this.pageable,
     this.size,
     this.content = const [],
     this.number,
@@ -64,7 +64,7 @@ class PageReview {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PageableObject? pageable;
+  bool? first;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -80,7 +80,7 @@ class PageReview {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? first;
+  PageableObject? pageable;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -114,9 +114,9 @@ class PageReview {
     other.totalPages == totalPages &&
     other.sort == sort &&
     other.numberOfElements == numberOfElements &&
-    other.pageable == pageable &&
-    other.last == last &&
     other.first == first &&
+    other.last == last &&
+    other.pageable == pageable &&
     other.size == size &&
     _deepEquality.equals(other.content, content) &&
     other.number == number &&
@@ -129,16 +129,16 @@ class PageReview {
     (totalPages == null ? 0 : totalPages!.hashCode) +
     (sort == null ? 0 : sort!.hashCode) +
     (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
-    (pageable == null ? 0 : pageable!.hashCode) +
-    (last == null ? 0 : last!.hashCode) +
     (first == null ? 0 : first!.hashCode) +
+    (last == null ? 0 : last!.hashCode) +
+    (pageable == null ? 0 : pageable!.hashCode) +
     (size == null ? 0 : size!.hashCode) +
     (content.hashCode) +
     (number == null ? 0 : number!.hashCode) +
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageReview[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, numberOfElements=$numberOfElements, pageable=$pageable, last=$last, first=$first, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'PageReview[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, numberOfElements=$numberOfElements, first=$first, last=$last, pageable=$pageable, size=$size, content=$content, number=$number, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -162,20 +162,20 @@ class PageReview {
     } else {
       json[r'numberOfElements'] = null;
     }
-    if (this.pageable != null) {
-      json[r'pageable'] = this.pageable;
+    if (this.first != null) {
+      json[r'first'] = this.first;
     } else {
-      json[r'pageable'] = null;
+      json[r'first'] = null;
     }
     if (this.last != null) {
       json[r'last'] = this.last;
     } else {
       json[r'last'] = null;
     }
-    if (this.first != null) {
-      json[r'first'] = this.first;
+    if (this.pageable != null) {
+      json[r'pageable'] = this.pageable;
     } else {
-      json[r'first'] = null;
+      json[r'pageable'] = null;
     }
     if (this.size != null) {
       json[r'size'] = this.size;
@@ -219,9 +219,9 @@ class PageReview {
         totalPages: mapValueOfType<int>(json, r'totalPages'),
         sort: SortObject.fromJson(json[r'sort']),
         numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
-        pageable: PageableObject.fromJson(json[r'pageable']),
-        last: mapValueOfType<bool>(json, r'last'),
         first: mapValueOfType<bool>(json, r'first'),
+        last: mapValueOfType<bool>(json, r'last'),
+        pageable: PageableObject.fromJson(json[r'pageable']),
         size: mapValueOfType<int>(json, r'size'),
         content: Review.listFromJson(json[r'content']),
         number: mapValueOfType<int>(json, r'number'),

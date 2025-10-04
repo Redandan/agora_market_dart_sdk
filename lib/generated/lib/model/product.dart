@@ -18,14 +18,14 @@ class Product {
     required this.description,
     required this.price,
     required this.currency,
-    required this.shippingFee,
+    this.shippingFee,
     required this.stock,
     required this.category,
     required this.sellerId,
     this.imageUrlsJson,
     required this.pickupAddress,
-    required this.longitude,
-    required this.latitude,
+    required this.pickupLongitude,
+    required this.pickupLatitude,
     required this.pickupTimeStart,
     required this.pickupTimeEnd,
     this.dailyShippingDeadline,
@@ -56,14 +56,14 @@ class Product {
     this.shippingAddressOptions = const [],
     this.shippingOptions,
     this.supportedShippingCompanies = const [],
-    this.minimumShippingFee,
-    this.imageUrls = const {},
-    this.skus = const {},
-    this.shippingFees = const {},
     this.stockLow,
     this.inStock,
     this.stockBelowMinimum,
+    this.imageUrls = const {},
+    this.skus = const {},
+    this.shippingFees = const {},
     this.defaultShippingFee,
+    this.minimumShippingFee,
   });
 
   /// 商品ID
@@ -92,7 +92,13 @@ class Product {
   /// 賣家出貨費用
   ///
   /// Minimum value: 0.0
-  num shippingFee;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? shippingFee;
 
   /// 商品庫存
   ///
@@ -120,13 +126,13 @@ class Product {
   ///
   /// Minimum value: -180.0
   /// Maximum value: 180.0
-  double longitude;
+  double pickupLongitude;
 
   /// 取貨地址緯度
   ///
   /// Minimum value: -90.0
   /// Maximum value: 90.0
-  double latitude;
+  double pickupLatitude;
 
   /// 取貨開始時間
   String pickupTimeStart;
@@ -373,20 +379,6 @@ class Product {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  num? minimumShippingFee;
-
-  Set<String> imageUrls;
-
-  Set<String> skus;
-
-  Map<String, num> shippingFees;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? stockLow;
 
   ///
@@ -405,6 +397,12 @@ class Product {
   ///
   bool? stockBelowMinimum;
 
+  Set<String> imageUrls;
+
+  Set<String> skus;
+
+  Map<String, num> shippingFees;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -412,6 +410,14 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? defaultShippingFee;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? minimumShippingFee;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Product &&
@@ -426,8 +432,8 @@ class Product {
     other.sellerId == sellerId &&
     other.imageUrlsJson == imageUrlsJson &&
     other.pickupAddress == pickupAddress &&
-    other.longitude == longitude &&
-    other.latitude == latitude &&
+    other.pickupLongitude == pickupLongitude &&
+    other.pickupLatitude == pickupLatitude &&
     other.pickupTimeStart == pickupTimeStart &&
     other.pickupTimeEnd == pickupTimeEnd &&
     other.dailyShippingDeadline == dailyShippingDeadline &&
@@ -458,14 +464,14 @@ class Product {
     _deepEquality.equals(other.shippingAddressOptions, shippingAddressOptions) &&
     other.shippingOptions == shippingOptions &&
     _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
-    other.minimumShippingFee == minimumShippingFee &&
-    _deepEquality.equals(other.imageUrls, imageUrls) &&
-    _deepEquality.equals(other.skus, skus) &&
-    _deepEquality.equals(other.shippingFees, shippingFees) &&
     other.stockLow == stockLow &&
     other.inStock == inStock &&
     other.stockBelowMinimum == stockBelowMinimum &&
-    other.defaultShippingFee == defaultShippingFee;
+    _deepEquality.equals(other.imageUrls, imageUrls) &&
+    _deepEquality.equals(other.skus, skus) &&
+    _deepEquality.equals(other.shippingFees, shippingFees) &&
+    other.defaultShippingFee == defaultShippingFee &&
+    other.minimumShippingFee == minimumShippingFee;
 
   @override
   int get hashCode =>
@@ -475,14 +481,14 @@ class Product {
     (description.hashCode) +
     (price.hashCode) +
     (currency.hashCode) +
-    (shippingFee.hashCode) +
+    (shippingFee == null ? 0 : shippingFee!.hashCode) +
     (stock.hashCode) +
     (category.hashCode) +
     (sellerId.hashCode) +
     (imageUrlsJson == null ? 0 : imageUrlsJson!.hashCode) +
     (pickupAddress.hashCode) +
-    (longitude.hashCode) +
-    (latitude.hashCode) +
+    (pickupLongitude.hashCode) +
+    (pickupLatitude.hashCode) +
     (pickupTimeStart.hashCode) +
     (pickupTimeEnd.hashCode) +
     (dailyShippingDeadline == null ? 0 : dailyShippingDeadline!.hashCode) +
@@ -513,17 +519,17 @@ class Product {
     (shippingAddressOptions.hashCode) +
     (shippingOptions == null ? 0 : shippingOptions!.hashCode) +
     (supportedShippingCompanies.hashCode) +
-    (minimumShippingFee == null ? 0 : minimumShippingFee!.hashCode) +
-    (imageUrls.hashCode) +
-    (skus.hashCode) +
-    (shippingFees.hashCode) +
     (stockLow == null ? 0 : stockLow!.hashCode) +
     (inStock == null ? 0 : inStock!.hashCode) +
     (stockBelowMinimum == null ? 0 : stockBelowMinimum!.hashCode) +
-    (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode);
+    (imageUrls.hashCode) +
+    (skus.hashCode) +
+    (shippingFees.hashCode) +
+    (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
+    (minimumShippingFee == null ? 0 : minimumShippingFee!.hashCode);
 
   @override
-  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrlsJson=$imageUrlsJson, pickupAddress=$pickupAddress, longitude=$longitude, latitude=$latitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skusJson=$skusJson, brand=$brand, minStock=$minStock, supportedShippingCompaniesJson=$supportedShippingCompaniesJson, shippingFeesJson=$shippingFeesJson, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, enablePlatformDelivery=$enablePlatformDelivery, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions, supportedShippingCompanies=$supportedShippingCompanies, minimumShippingFee=$minimumShippingFee, imageUrls=$imageUrls, skus=$skus, shippingFees=$shippingFees, stockLow=$stockLow, inStock=$inStock, stockBelowMinimum=$stockBelowMinimum, defaultShippingFee=$defaultShippingFee]';
+  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrlsJson=$imageUrlsJson, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skusJson=$skusJson, brand=$brand, minStock=$minStock, supportedShippingCompaniesJson=$supportedShippingCompaniesJson, shippingFeesJson=$shippingFeesJson, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, enablePlatformDelivery=$enablePlatformDelivery, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions, supportedShippingCompanies=$supportedShippingCompanies, stockLow=$stockLow, inStock=$inStock, stockBelowMinimum=$stockBelowMinimum, imageUrls=$imageUrls, skus=$skus, shippingFees=$shippingFees, defaultShippingFee=$defaultShippingFee, minimumShippingFee=$minimumShippingFee]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -536,7 +542,11 @@ class Product {
       json[r'description'] = this.description;
       json[r'price'] = this.price;
       json[r'currency'] = this.currency;
+    if (this.shippingFee != null) {
       json[r'shippingFee'] = this.shippingFee;
+    } else {
+      json[r'shippingFee'] = null;
+    }
       json[r'stock'] = this.stock;
       json[r'category'] = this.category;
       json[r'sellerId'] = this.sellerId;
@@ -546,8 +556,8 @@ class Product {
       json[r'imageUrlsJson'] = null;
     }
       json[r'pickupAddress'] = this.pickupAddress;
-      json[r'longitude'] = this.longitude;
-      json[r'latitude'] = this.latitude;
+      json[r'pickupLongitude'] = this.pickupLongitude;
+      json[r'pickupLatitude'] = this.pickupLatitude;
       json[r'pickupTimeStart'] = this.pickupTimeStart;
       json[r'pickupTimeEnd'] = this.pickupTimeEnd;
     if (this.dailyShippingDeadline != null) {
@@ -674,14 +684,6 @@ class Product {
       json[r'shippingOptions'] = null;
     }
       json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
-    if (this.minimumShippingFee != null) {
-      json[r'minimumShippingFee'] = this.minimumShippingFee;
-    } else {
-      json[r'minimumShippingFee'] = null;
-    }
-      json[r'imageUrls'] = this.imageUrls.toList(growable: false);
-      json[r'skus'] = this.skus.toList(growable: false);
-      json[r'shippingFees'] = this.shippingFees;
     if (this.stockLow != null) {
       json[r'stockLow'] = this.stockLow;
     } else {
@@ -697,10 +699,18 @@ class Product {
     } else {
       json[r'stockBelowMinimum'] = null;
     }
+      json[r'imageUrls'] = this.imageUrls.toList(growable: false);
+      json[r'skus'] = this.skus.toList(growable: false);
+      json[r'shippingFees'] = this.shippingFees;
     if (this.defaultShippingFee != null) {
       json[r'defaultShippingFee'] = this.defaultShippingFee;
     } else {
       json[r'defaultShippingFee'] = null;
+    }
+    if (this.minimumShippingFee != null) {
+      json[r'minimumShippingFee'] = this.minimumShippingFee;
+    } else {
+      json[r'minimumShippingFee'] = null;
     }
     return json;
   }
@@ -735,8 +745,8 @@ class Product {
         sellerId: mapValueOfType<int>(json, r'sellerId')!,
         imageUrlsJson: mapValueOfType<String>(json, r'imageUrlsJson'),
         pickupAddress: mapValueOfType<String>(json, r'pickupAddress')!,
-        longitude: mapValueOfType<double>(json, r'longitude')!,
-        latitude: mapValueOfType<double>(json, r'latitude')!,
+        pickupLongitude: mapValueOfType<double>(json, r'pickupLongitude')!,
+        pickupLatitude: mapValueOfType<double>(json, r'pickupLatitude')!,
         pickupTimeStart: mapValueOfType<String>(json, r'pickupTimeStart')!,
         pickupTimeEnd: mapValueOfType<String>(json, r'pickupTimeEnd')!,
         dailyShippingDeadline: mapValueOfType<String>(json, r'dailyShippingDeadline'),
@@ -767,7 +777,9 @@ class Product {
         shippingAddressOptions: ShippingAddressOption.listFromJson(json[r'shippingAddressOptions']),
         shippingOptions: ShippingOptions.fromJson(json[r'shippingOptions']),
         supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']),
-        minimumShippingFee: num.parse('${json[r'minimumShippingFee']}'),
+        stockLow: mapValueOfType<bool>(json, r'stockLow'),
+        inStock: mapValueOfType<bool>(json, r'inStock'),
+        stockBelowMinimum: mapValueOfType<bool>(json, r'stockBelowMinimum'),
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
             : const {},
@@ -775,10 +787,8 @@ class Product {
             ? (json[r'skus'] as Iterable).cast<String>().toSet()
             : const {},
         shippingFees: mapCastOfType<String, num>(json, r'shippingFees') ?? const {},
-        stockLow: mapValueOfType<bool>(json, r'stockLow'),
-        inStock: mapValueOfType<bool>(json, r'inStock'),
-        stockBelowMinimum: mapValueOfType<bool>(json, r'stockBelowMinimum'),
         defaultShippingFee: num.parse('${json[r'defaultShippingFee']}'),
+        minimumShippingFee: num.parse('${json[r'minimumShippingFee']}'),
       );
     }
     return null;
@@ -830,13 +840,12 @@ class Product {
     'description',
     'price',
     'currency',
-    'shippingFee',
     'stock',
     'category',
     'sellerId',
     'pickupAddress',
-    'longitude',
-    'latitude',
+    'pickupLongitude',
+    'pickupLatitude',
     'pickupTimeStart',
     'pickupTimeEnd',
     'status',
