@@ -563,7 +563,7 @@ class ChatApi {
 
   /// 標記會話為已讀
   ///
-  /// 將指定會話的所有消息標記為已讀
+  /// 基於會話ID和消息ID將會話標記為已讀
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -571,7 +571,10 @@ class ChatApi {
   ///
   /// * [String] sessionId (required):
   ///   會話ID
-  Future<Response> markSessionReadWithHttpInfo(String sessionId,) async {
+  ///
+  /// * [int] messageId (required):
+  ///   消息ID
+  Future<Response> markSessionReadWithHttpInfo(String sessionId, int messageId,) async {
     // ignore: prefer_const_declarations
     final path = r'/chat/sessions/{sessionId}/read'
       .replaceAll('{sessionId}', sessionId);
@@ -582,6 +585,8 @@ class ChatApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'messageId', messageId));
 
     const contentTypes = <String>[];
 
@@ -599,14 +604,17 @@ class ChatApi {
 
   /// 標記會話為已讀
   ///
-  /// 將指定會話的所有消息標記為已讀
+  /// 基於會話ID和消息ID將會話標記為已讀
   ///
   /// Parameters:
   ///
   /// * [String] sessionId (required):
   ///   會話ID
-  Future<void> markSessionRead(String sessionId,) async {
-    final response = await markSessionReadWithHttpInfo(sessionId,);
+  ///
+  /// * [int] messageId (required):
+  ///   消息ID
+  Future<void> markSessionRead(String sessionId, int messageId,) async {
+    final response = await markSessionReadWithHttpInfo(sessionId, messageId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

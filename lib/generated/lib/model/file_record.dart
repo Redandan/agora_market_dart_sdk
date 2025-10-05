@@ -32,10 +32,10 @@ class FileRecord {
     this.uploadTime,
     this.lastUpdated,
     this.deletedAt,
+    this.fileSizeFormatted,
     this.image,
     this.document,
     this.archive,
-    this.fileSizeFormatted,
     this.deleted,
   });
 
@@ -191,6 +191,14 @@ class FileRecord {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  String? fileSizeFormatted;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? image;
 
   ///
@@ -208,14 +216,6 @@ class FileRecord {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? archive;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? fileSizeFormatted;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -246,10 +246,10 @@ class FileRecord {
     other.uploadTime == uploadTime &&
     other.lastUpdated == lastUpdated &&
     other.deletedAt == deletedAt &&
+    other.fileSizeFormatted == fileSizeFormatted &&
     other.image == image &&
     other.document == document &&
     other.archive == archive &&
-    other.fileSizeFormatted == fileSizeFormatted &&
     other.deleted == deleted;
 
   @override
@@ -274,14 +274,14 @@ class FileRecord {
     (uploadTime == null ? 0 : uploadTime!.hashCode) +
     (lastUpdated == null ? 0 : lastUpdated!.hashCode) +
     (deletedAt == null ? 0 : deletedAt!.hashCode) +
+    (fileSizeFormatted == null ? 0 : fileSizeFormatted!.hashCode) +
     (image == null ? 0 : image!.hashCode) +
     (document == null ? 0 : document!.hashCode) +
     (archive == null ? 0 : archive!.hashCode) +
-    (fileSizeFormatted == null ? 0 : fileSizeFormatted!.hashCode) +
     (deleted == null ? 0 : deleted!.hashCode);
 
   @override
-  String toString() => 'FileRecord[id=$id, originalFilename=$originalFilename, objectName=$objectName, fileSize=$fileSize, contentType=$contentType, fileExtension=$fileExtension, fileUrl=$fileUrl, businessType=$businessType, businessId=$businessId, uploaderId=$uploaderId, uploaderName=$uploaderName, isPublic=$isPublic, status=$status, description=$description, tags=$tags, fileHash=$fileHash, uploadTime=$uploadTime, lastUpdated=$lastUpdated, deletedAt=$deletedAt, image=$image, document=$document, archive=$archive, fileSizeFormatted=$fileSizeFormatted, deleted=$deleted]';
+  String toString() => 'FileRecord[id=$id, originalFilename=$originalFilename, objectName=$objectName, fileSize=$fileSize, contentType=$contentType, fileExtension=$fileExtension, fileUrl=$fileUrl, businessType=$businessType, businessId=$businessId, uploaderId=$uploaderId, uploaderName=$uploaderName, isPublic=$isPublic, status=$status, description=$description, tags=$tags, fileHash=$fileHash, uploadTime=$uploadTime, lastUpdated=$lastUpdated, deletedAt=$deletedAt, fileSizeFormatted=$fileSizeFormatted, image=$image, document=$document, archive=$archive, deleted=$deleted]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -380,6 +380,11 @@ class FileRecord {
     } else {
       json[r'deletedAt'] = null;
     }
+    if (this.fileSizeFormatted != null) {
+      json[r'fileSizeFormatted'] = this.fileSizeFormatted;
+    } else {
+      json[r'fileSizeFormatted'] = null;
+    }
     if (this.image != null) {
       json[r'image'] = this.image;
     } else {
@@ -394,11 +399,6 @@ class FileRecord {
       json[r'archive'] = this.archive;
     } else {
       json[r'archive'] = null;
-    }
-    if (this.fileSizeFormatted != null) {
-      json[r'fileSizeFormatted'] = this.fileSizeFormatted;
-    } else {
-      json[r'fileSizeFormatted'] = null;
     }
     if (this.deleted != null) {
       json[r'deleted'] = this.deleted;
@@ -446,10 +446,10 @@ class FileRecord {
         uploadTime: mapDateTime(json, r'uploadTime', r''),
         lastUpdated: mapDateTime(json, r'lastUpdated', r''),
         deletedAt: mapDateTime(json, r'deletedAt', r''),
+        fileSizeFormatted: mapValueOfType<String>(json, r'fileSizeFormatted'),
         image: mapValueOfType<bool>(json, r'image'),
         document: mapValueOfType<bool>(json, r'document'),
         archive: mapValueOfType<bool>(json, r'archive'),
-        fileSizeFormatted: mapValueOfType<String>(json, r'fileSizeFormatted'),
         deleted: mapValueOfType<bool>(json, r'deleted'),
       );
     }
