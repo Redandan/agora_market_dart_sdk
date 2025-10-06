@@ -20,6 +20,7 @@ class LoginResult {
     this.refreshTokenExpiration,
     this.userId,
     this.username,
+    this.userInfo,
   });
 
   /// 訪問令牌
@@ -85,6 +86,14 @@ class LoginResult {
   ///
   String? username;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  UserInfo? userInfo;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is LoginResult &&
     other.token == token &&
@@ -93,7 +102,8 @@ class LoginResult {
     other.tokenExpiration == tokenExpiration &&
     other.refreshTokenExpiration == refreshTokenExpiration &&
     other.userId == userId &&
-    other.username == username;
+    other.username == username &&
+    other.userInfo == userInfo;
 
   @override
   int get hashCode =>
@@ -104,10 +114,11 @@ class LoginResult {
     (tokenExpiration == null ? 0 : tokenExpiration!.hashCode) +
     (refreshTokenExpiration == null ? 0 : refreshTokenExpiration!.hashCode) +
     (userId == null ? 0 : userId!.hashCode) +
-    (username == null ? 0 : username!.hashCode);
+    (username == null ? 0 : username!.hashCode) +
+    (userInfo == null ? 0 : userInfo!.hashCode);
 
   @override
-  String toString() => 'LoginResult[token=$token, refreshToken=$refreshToken, tokenIssuedAt=$tokenIssuedAt, tokenExpiration=$tokenExpiration, refreshTokenExpiration=$refreshTokenExpiration, userId=$userId, username=$username]';
+  String toString() => 'LoginResult[token=$token, refreshToken=$refreshToken, tokenIssuedAt=$tokenIssuedAt, tokenExpiration=$tokenExpiration, refreshTokenExpiration=$refreshTokenExpiration, userId=$userId, username=$username, userInfo=$userInfo]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -146,6 +157,11 @@ class LoginResult {
     } else {
       json[r'username'] = null;
     }
+    if (this.userInfo != null) {
+      json[r'userInfo'] = this.userInfo;
+    } else {
+      json[r'userInfo'] = null;
+    }
     return json;
   }
 
@@ -175,6 +191,7 @@ class LoginResult {
         refreshTokenExpiration: mapValueOfType<String>(json, r'refreshTokenExpiration'),
         userId: mapValueOfType<int>(json, r'userId'),
         username: mapValueOfType<String>(json, r'username'),
+        userInfo: UserInfo.fromJson(json[r'userInfo']),
       );
     }
     return null;
