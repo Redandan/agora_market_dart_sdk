@@ -576,6 +576,7 @@ Class | Method | HTTP request | Description
  - [UserPostStatistics](doc//UserPostStatistics.md)
  - [UserProfileUpdateParam](doc//UserProfileUpdateParam.md)
  - [UserStatusEnum](doc//UserStatusEnum.md)
+ - [WebPushDetails](doc//WebPushDetails.md)
  - [WebRTCAnswerDto](doc//WebRTCAnswerDto.md)
  - [WebRTCAnswerResponseDto](doc//WebRTCAnswerResponseDto.md)
  - [WebRTCHangupDto](doc//WebRTCHangupDto.md)

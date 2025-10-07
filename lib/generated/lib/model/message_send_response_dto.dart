@@ -20,6 +20,7 @@ class MessageSendResponseDTO {
     this.receiverOnline,
     this.sentAt,
     this.errorMessage,
+    this.webPushDetails,
   });
 
   /// 消息ID
@@ -79,6 +80,14 @@ class MessageSendResponseDTO {
   ///
   String? errorMessage;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  WebPushDetails? webPushDetails;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is MessageSendResponseDTO &&
     other.messageId == messageId &&
@@ -87,7 +96,8 @@ class MessageSendResponseDTO {
     other.sseStatus == sseStatus &&
     other.receiverOnline == receiverOnline &&
     other.sentAt == sentAt &&
-    other.errorMessage == errorMessage;
+    other.errorMessage == errorMessage &&
+    other.webPushDetails == webPushDetails;
 
   @override
   int get hashCode =>
@@ -98,10 +108,11 @@ class MessageSendResponseDTO {
     (sseStatus == null ? 0 : sseStatus!.hashCode) +
     (receiverOnline == null ? 0 : receiverOnline!.hashCode) +
     (sentAt == null ? 0 : sentAt!.hashCode) +
-    (errorMessage == null ? 0 : errorMessage!.hashCode);
+    (errorMessage == null ? 0 : errorMessage!.hashCode) +
+    (webPushDetails == null ? 0 : webPushDetails!.hashCode);
 
   @override
-  String toString() => 'MessageSendResponseDTO[messageId=$messageId, sessionId=$sessionId, status=$status, sseStatus=$sseStatus, receiverOnline=$receiverOnline, sentAt=$sentAt, errorMessage=$errorMessage]';
+  String toString() => 'MessageSendResponseDTO[messageId=$messageId, sessionId=$sessionId, status=$status, sseStatus=$sseStatus, receiverOnline=$receiverOnline, sentAt=$sentAt, errorMessage=$errorMessage, webPushDetails=$webPushDetails]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -140,6 +151,11 @@ class MessageSendResponseDTO {
     } else {
       json[r'errorMessage'] = null;
     }
+    if (this.webPushDetails != null) {
+      json[r'webPushDetails'] = this.webPushDetails;
+    } else {
+      json[r'webPushDetails'] = null;
+    }
     return json;
   }
 
@@ -169,6 +185,7 @@ class MessageSendResponseDTO {
         receiverOnline: mapValueOfType<bool>(json, r'receiverOnline'),
         sentAt: mapDateTime(json, r'sentAt', r''),
         errorMessage: mapValueOfType<String>(json, r'errorMessage'),
+        webPushDetails: WebPushDetails.fromJson(json[r'webPushDetails']),
       );
     }
     return null;

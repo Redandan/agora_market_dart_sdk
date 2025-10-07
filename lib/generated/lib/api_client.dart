@@ -574,6 +574,8 @@ class ApiClient {
           return UserProfileUpdateParam.fromJson(value);
         case 'UserStatusEnum':
           return UserStatusEnumTypeTransformer().decode(value);
+        case 'WebPushDetails':
+          return WebPushDetails.fromJson(value);
         case 'WebRTCAnswerDto':
           return WebRTCAnswerDto.fromJson(value);
         case 'WebRTCAnswerResponseDto':
