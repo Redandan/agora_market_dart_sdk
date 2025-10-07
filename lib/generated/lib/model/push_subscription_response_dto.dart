@@ -10,126 +10,115 @@
 
 part of openapi.api;
 
-class PageableObject {
-  /// Returns a new [PageableObject] instance.
-  PageableObject({
-    this.sort,
-    this.pageNumber,
-    this.pageSize,
-    this.paged,
-    this.unpaged,
-    this.offset,
+class PushSubscriptionResponseDTO {
+  /// Returns a new [PushSubscriptionResponseDTO] instance.
+  PushSubscriptionResponseDTO({
+    this.success,
+    this.subscriptionId,
+    this.message,
+    this.errorCode,
+    this.errorDetails,
   });
 
+  /// 是否成功
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SortObject? sort;
+  bool? success;
 
+  /// 訂閱ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageNumber;
+  int? subscriptionId;
 
+  /// 響應消息
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageSize;
+  String? message;
 
+  /// 錯誤代碼（如果失敗）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? paged;
+  String? errorCode;
 
+  /// 詳細錯誤信息（如果失敗）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unpaged;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? offset;
+  String? errorDetails;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageableObject &&
-    other.sort == sort &&
-    other.pageNumber == pageNumber &&
-    other.pageSize == pageSize &&
-    other.paged == paged &&
-    other.unpaged == unpaged &&
-    other.offset == offset;
+  bool operator ==(Object other) => identical(this, other) || other is PushSubscriptionResponseDTO &&
+    other.success == success &&
+    other.subscriptionId == subscriptionId &&
+    other.message == message &&
+    other.errorCode == errorCode &&
+    other.errorDetails == errorDetails;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (sort == null ? 0 : sort!.hashCode) +
-    (pageNumber == null ? 0 : pageNumber!.hashCode) +
-    (pageSize == null ? 0 : pageSize!.hashCode) +
-    (paged == null ? 0 : paged!.hashCode) +
-    (unpaged == null ? 0 : unpaged!.hashCode) +
-    (offset == null ? 0 : offset!.hashCode);
+    (success == null ? 0 : success!.hashCode) +
+    (subscriptionId == null ? 0 : subscriptionId!.hashCode) +
+    (message == null ? 0 : message!.hashCode) +
+    (errorCode == null ? 0 : errorCode!.hashCode) +
+    (errorDetails == null ? 0 : errorDetails!.hashCode);
 
   @override
-  String toString() => 'PageableObject[sort=$sort, pageNumber=$pageNumber, pageSize=$pageSize, paged=$paged, unpaged=$unpaged, offset=$offset]';
+  String toString() => 'PushSubscriptionResponseDTO[success=$success, subscriptionId=$subscriptionId, message=$message, errorCode=$errorCode, errorDetails=$errorDetails]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.success != null) {
+      json[r'success'] = this.success;
     } else {
-      json[r'sort'] = null;
+      json[r'success'] = null;
     }
-    if (this.pageNumber != null) {
-      json[r'pageNumber'] = this.pageNumber;
+    if (this.subscriptionId != null) {
+      json[r'subscriptionId'] = this.subscriptionId;
     } else {
-      json[r'pageNumber'] = null;
+      json[r'subscriptionId'] = null;
     }
-    if (this.pageSize != null) {
-      json[r'pageSize'] = this.pageSize;
+    if (this.message != null) {
+      json[r'message'] = this.message;
     } else {
-      json[r'pageSize'] = null;
+      json[r'message'] = null;
     }
-    if (this.paged != null) {
-      json[r'paged'] = this.paged;
+    if (this.errorCode != null) {
+      json[r'errorCode'] = this.errorCode;
     } else {
-      json[r'paged'] = null;
+      json[r'errorCode'] = null;
     }
-    if (this.unpaged != null) {
-      json[r'unpaged'] = this.unpaged;
+    if (this.errorDetails != null) {
+      json[r'errorDetails'] = this.errorDetails;
     } else {
-      json[r'unpaged'] = null;
-    }
-    if (this.offset != null) {
-      json[r'offset'] = this.offset;
-    } else {
-      json[r'offset'] = null;
+      json[r'errorDetails'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageableObject] instance and imports its values from
+  /// Returns a new [PushSubscriptionResponseDTO] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageableObject? fromJson(dynamic value) {
+  static PushSubscriptionResponseDTO? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -138,29 +127,28 @@ class PageableObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageableObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageableObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PushSubscriptionResponseDTO[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PushSubscriptionResponseDTO[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageableObject(
-        sort: SortObject.fromJson(json[r'sort']),
-        pageNumber: mapValueOfType<int>(json, r'pageNumber'),
-        pageSize: mapValueOfType<int>(json, r'pageSize'),
-        paged: mapValueOfType<bool>(json, r'paged'),
-        unpaged: mapValueOfType<bool>(json, r'unpaged'),
-        offset: mapValueOfType<int>(json, r'offset'),
+      return PushSubscriptionResponseDTO(
+        success: mapValueOfType<bool>(json, r'success'),
+        subscriptionId: mapValueOfType<int>(json, r'subscriptionId'),
+        message: mapValueOfType<String>(json, r'message'),
+        errorCode: mapValueOfType<String>(json, r'errorCode'),
+        errorDetails: mapValueOfType<String>(json, r'errorDetails'),
       );
     }
     return null;
   }
 
-  static List<PageableObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageableObject>[];
+  static List<PushSubscriptionResponseDTO> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PushSubscriptionResponseDTO>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageableObject.fromJson(row);
+        final value = PushSubscriptionResponseDTO.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -169,12 +157,12 @@ class PageableObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageableObject> mapFromJson(dynamic json) {
-    final map = <String, PageableObject>{};
+  static Map<String, PushSubscriptionResponseDTO> mapFromJson(dynamic json) {
+    final map = <String, PushSubscriptionResponseDTO>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageableObject.fromJson(entry.value);
+        final value = PushSubscriptionResponseDTO.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -183,14 +171,14 @@ class PageableObject {
     return map;
   }
 
-  // maps a json object with a list of PageableObject-objects as value to a dart map
-  static Map<String, List<PageableObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageableObject>>{};
+  // maps a json object with a list of PushSubscriptionResponseDTO-objects as value to a dart map
+  static Map<String, List<PushSubscriptionResponseDTO>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<PushSubscriptionResponseDTO>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageableObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = PushSubscriptionResponseDTO.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

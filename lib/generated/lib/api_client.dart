@@ -460,6 +460,12 @@ class ApiClient {
           return PushSubscription.fromJson(value);
         case 'PushSubscriptionDTO':
           return PushSubscriptionDTO.fromJson(value);
+        case 'PushSubscriptionResponseDTO':
+          return PushSubscriptionResponseDTO.fromJson(value);
+        case 'PushTestResponseDTO':
+          return PushTestResponseDTO.fromJson(value);
+        case 'PushUnsubscriptionResponseDTO':
+          return PushUnsubscriptionResponseDTO.fromJson(value);
         case 'QuickLogisticsRequest':
           return QuickLogisticsRequest.fromJson(value);
         case 'QuickLogisticsResult':

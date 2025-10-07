@@ -300,7 +300,7 @@ class WebpushApi {
   /// 發送測試通知
   ///
   /// 向當前用戶發送測試推送通知
-  Future<Map<String, Object>?> sendTestNotification() async {
+  Future<PushTestResponseDTO?> sendTestNotification() async {
     final response = await sendTestNotificationWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -309,8 +309,8 @@ class WebpushApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PushTestResponseDTO',) as PushTestResponseDTO;
+    
     }
     return null;
   }
@@ -356,7 +356,7 @@ class WebpushApi {
   /// Parameters:
   ///
   /// * [PushSubscriptionDTO] pushSubscriptionDTO (required):
-  Future<Map<String, Object>?> subscribe(PushSubscriptionDTO pushSubscriptionDTO,) async {
+  Future<PushSubscriptionResponseDTO?> subscribe(PushSubscriptionDTO pushSubscriptionDTO,) async {
     final response = await subscribeWithHttpInfo(pushSubscriptionDTO,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -365,8 +365,8 @@ class WebpushApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PushSubscriptionResponseDTO',) as PushSubscriptionResponseDTO;
+    
     }
     return null;
   }
@@ -416,7 +416,7 @@ class WebpushApi {
   ///
   /// * [String] endpoint (required):
   ///   推送端點URL
-  Future<Map<String, Object>?> unsubscribe(String endpoint,) async {
+  Future<PushUnsubscriptionResponseDTO?> unsubscribe(String endpoint,) async {
     final response = await unsubscribeWithHttpInfo(endpoint,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -425,8 +425,8 @@ class WebpushApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PushUnsubscriptionResponseDTO',) as PushUnsubscriptionResponseDTO;
+    
     }
     return null;
   }
