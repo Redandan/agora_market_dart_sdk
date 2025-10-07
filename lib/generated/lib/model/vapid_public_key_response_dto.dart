@@ -10,126 +10,132 @@
 
 part of openapi.api;
 
-class PageableObject {
-  /// Returns a new [PageableObject] instance.
-  PageableObject({
-    this.sort,
-    this.paged,
-    this.unpaged,
-    this.pageNumber,
-    this.pageSize,
-    this.offset,
+class VapidPublicKeyResponseDTO {
+  /// Returns a new [VapidPublicKeyResponseDTO] instance.
+  VapidPublicKeyResponseDTO({
+    this.publicKey,
+    this.subject,
+    this.success,
+    this.message,
+    this.errorCode,
+    this.errorDetails,
   });
 
+  /// VAPID 公鑰
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SortObject? sort;
+  String? publicKey;
 
+  /// VAPID 主題
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? paged;
+  String? subject;
 
+  /// 是否成功
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unpaged;
+  bool? success;
 
+  /// 響應消息
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageNumber;
+  String? message;
 
+  /// 錯誤代碼（如果失敗）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageSize;
+  String? errorCode;
 
+  /// 詳細錯誤信息（如果失敗）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? offset;
+  String? errorDetails;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageableObject &&
-    other.sort == sort &&
-    other.paged == paged &&
-    other.unpaged == unpaged &&
-    other.pageNumber == pageNumber &&
-    other.pageSize == pageSize &&
-    other.offset == offset;
+  bool operator ==(Object other) => identical(this, other) || other is VapidPublicKeyResponseDTO &&
+    other.publicKey == publicKey &&
+    other.subject == subject &&
+    other.success == success &&
+    other.message == message &&
+    other.errorCode == errorCode &&
+    other.errorDetails == errorDetails;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (sort == null ? 0 : sort!.hashCode) +
-    (paged == null ? 0 : paged!.hashCode) +
-    (unpaged == null ? 0 : unpaged!.hashCode) +
-    (pageNumber == null ? 0 : pageNumber!.hashCode) +
-    (pageSize == null ? 0 : pageSize!.hashCode) +
-    (offset == null ? 0 : offset!.hashCode);
+    (publicKey == null ? 0 : publicKey!.hashCode) +
+    (subject == null ? 0 : subject!.hashCode) +
+    (success == null ? 0 : success!.hashCode) +
+    (message == null ? 0 : message!.hashCode) +
+    (errorCode == null ? 0 : errorCode!.hashCode) +
+    (errorDetails == null ? 0 : errorDetails!.hashCode);
 
   @override
-  String toString() => 'PageableObject[sort=$sort, paged=$paged, unpaged=$unpaged, pageNumber=$pageNumber, pageSize=$pageSize, offset=$offset]';
+  String toString() => 'VapidPublicKeyResponseDTO[publicKey=$publicKey, subject=$subject, success=$success, message=$message, errorCode=$errorCode, errorDetails=$errorDetails]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.publicKey != null) {
+      json[r'publicKey'] = this.publicKey;
     } else {
-      json[r'sort'] = null;
+      json[r'publicKey'] = null;
     }
-    if (this.paged != null) {
-      json[r'paged'] = this.paged;
+    if (this.subject != null) {
+      json[r'subject'] = this.subject;
     } else {
-      json[r'paged'] = null;
+      json[r'subject'] = null;
     }
-    if (this.unpaged != null) {
-      json[r'unpaged'] = this.unpaged;
+    if (this.success != null) {
+      json[r'success'] = this.success;
     } else {
-      json[r'unpaged'] = null;
+      json[r'success'] = null;
     }
-    if (this.pageNumber != null) {
-      json[r'pageNumber'] = this.pageNumber;
+    if (this.message != null) {
+      json[r'message'] = this.message;
     } else {
-      json[r'pageNumber'] = null;
+      json[r'message'] = null;
     }
-    if (this.pageSize != null) {
-      json[r'pageSize'] = this.pageSize;
+    if (this.errorCode != null) {
+      json[r'errorCode'] = this.errorCode;
     } else {
-      json[r'pageSize'] = null;
+      json[r'errorCode'] = null;
     }
-    if (this.offset != null) {
-      json[r'offset'] = this.offset;
+    if (this.errorDetails != null) {
+      json[r'errorDetails'] = this.errorDetails;
     } else {
-      json[r'offset'] = null;
+      json[r'errorDetails'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageableObject] instance and imports its values from
+  /// Returns a new [VapidPublicKeyResponseDTO] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageableObject? fromJson(dynamic value) {
+  static VapidPublicKeyResponseDTO? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -138,29 +144,29 @@ class PageableObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageableObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageableObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "VapidPublicKeyResponseDTO[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "VapidPublicKeyResponseDTO[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageableObject(
-        sort: SortObject.fromJson(json[r'sort']),
-        paged: mapValueOfType<bool>(json, r'paged'),
-        unpaged: mapValueOfType<bool>(json, r'unpaged'),
-        pageNumber: mapValueOfType<int>(json, r'pageNumber'),
-        pageSize: mapValueOfType<int>(json, r'pageSize'),
-        offset: mapValueOfType<int>(json, r'offset'),
+      return VapidPublicKeyResponseDTO(
+        publicKey: mapValueOfType<String>(json, r'publicKey'),
+        subject: mapValueOfType<String>(json, r'subject'),
+        success: mapValueOfType<bool>(json, r'success'),
+        message: mapValueOfType<String>(json, r'message'),
+        errorCode: mapValueOfType<String>(json, r'errorCode'),
+        errorDetails: mapValueOfType<String>(json, r'errorDetails'),
       );
     }
     return null;
   }
 
-  static List<PageableObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageableObject>[];
+  static List<VapidPublicKeyResponseDTO> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <VapidPublicKeyResponseDTO>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageableObject.fromJson(row);
+        final value = VapidPublicKeyResponseDTO.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -169,12 +175,12 @@ class PageableObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageableObject> mapFromJson(dynamic json) {
-    final map = <String, PageableObject>{};
+  static Map<String, VapidPublicKeyResponseDTO> mapFromJson(dynamic json) {
+    final map = <String, VapidPublicKeyResponseDTO>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageableObject.fromJson(entry.value);
+        final value = VapidPublicKeyResponseDTO.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -183,14 +189,14 @@ class PageableObject {
     return map;
   }
 
-  // maps a json object with a list of PageableObject-objects as value to a dart map
-  static Map<String, List<PageableObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageableObject>>{};
+  // maps a json object with a list of VapidPublicKeyResponseDTO-objects as value to a dart map
+  static Map<String, List<VapidPublicKeyResponseDTO>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<VapidPublicKeyResponseDTO>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageableObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = VapidPublicKeyResponseDTO.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

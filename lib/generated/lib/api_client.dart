@@ -454,8 +454,14 @@ class ApiClient {
           return PromoCodeStatusEnumTypeTransformer().decode(value);
         case 'ProtocolEnum':
           return ProtocolEnumTypeTransformer().decode(value);
+        case 'PushHealthResponseDTO':
+          return PushHealthResponseDTO.fromJson(value);
         case 'PushNotificationDTO':
           return PushNotificationDTO.fromJson(value);
+        case 'PushNotificationResponseDTO':
+          return PushNotificationResponseDTO.fromJson(value);
+        case 'PushStatisticsResponseDTO':
+          return PushStatisticsResponseDTO.fromJson(value);
         case 'PushSubscription':
           return PushSubscription.fromJson(value);
         case 'PushSubscriptionDTO':
@@ -580,6 +586,8 @@ class ApiClient {
           return UserProfileUpdateParam.fromJson(value);
         case 'UserStatusEnum':
           return UserStatusEnumTypeTransformer().decode(value);
+        case 'VapidPublicKeyResponseDTO':
+          return VapidPublicKeyResponseDTO.fromJson(value);
         case 'WebPushDetails':
           return WebPushDetails.fromJson(value);
         case 'WebRTCAnswerDto':

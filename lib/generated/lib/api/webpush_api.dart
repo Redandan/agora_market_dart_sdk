@@ -49,7 +49,7 @@ class WebpushApi {
   /// 獲取服務健康狀態
   ///
   /// 獲取 Web Push 服務的健康狀態
-  Future<Map<String, Object>?> getHealthStatus() async {
+  Future<PushHealthResponseDTO?> getHealthStatus() async {
     final response = await getHealthStatusWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -58,8 +58,8 @@ class WebpushApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PushHealthResponseDTO',) as PushHealthResponseDTO;
+    
     }
     return null;
   }
@@ -97,7 +97,7 @@ class WebpushApi {
   /// 獲取推送統計信息
   ///
   /// 獲取推送服務的統計信息
-  Future<Map<String, Object>?> getStatistics() async {
+  Future<PushStatisticsResponseDTO?> getStatistics() async {
     final response = await getStatisticsWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -106,8 +106,8 @@ class WebpushApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PushStatisticsResponseDTO',) as PushStatisticsResponseDTO;
+    
     }
     return null;
   }
@@ -196,7 +196,7 @@ class WebpushApi {
   /// 獲取 VAPID 公鑰
   ///
   /// 獲取用於前端註冊推送訂閱的 VAPID 公鑰
-  Future<Map<String, String>?> getVapidPublicKey() async {
+  Future<VapidPublicKeyResponseDTO?> getVapidPublicKey() async {
     final response = await getVapidPublicKeyWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -205,8 +205,8 @@ class WebpushApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, String>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, String>'),);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'VapidPublicKeyResponseDTO',) as VapidPublicKeyResponseDTO;
+    
     }
     return null;
   }
@@ -252,7 +252,7 @@ class WebpushApi {
   /// Parameters:
   ///
   /// * [PushNotificationDTO] pushNotificationDTO (required):
-  Future<Map<String, Object>?> sendNotification(PushNotificationDTO pushNotificationDTO,) async {
+  Future<PushNotificationResponseDTO?> sendNotification(PushNotificationDTO pushNotificationDTO,) async {
     final response = await sendNotificationWithHttpInfo(pushNotificationDTO,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -261,8 +261,8 @@ class WebpushApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PushNotificationResponseDTO',) as PushNotificationResponseDTO;
+    
     }
     return null;
   }
