@@ -57,7 +57,6 @@ part 'api/stores_api.dart';
 part 'api/test_api.dart';
 part 'api/user_addresses_api.dart';
 part 'api/webpush_api.dart';
-part 'api/webpush_test_api.dart';
 part 'api/webrtc_api.dart';
 
 part 'model/accept_order_param.dart';

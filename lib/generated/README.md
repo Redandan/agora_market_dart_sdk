@@ -372,9 +372,6 @@ Class | Method | HTTP request | Description
 *WebpushApi* | [**sendTestNotification**](doc//WebpushApi.md#sendtestnotification) | **POST** /webpush/test | 發送測試通知
 *WebpushApi* | [**subscribe**](doc//WebpushApi.md#subscribe) | **POST** /webpush/subscribe | 註冊推送訂閱
 *WebpushApi* | [**unsubscribe**](doc//WebpushApi.md#unsubscribe) | **POST** /webpush/unsubscribe | 取消推送訂閱
-*WebpushTestApi* | [**getStatistics1**](doc//WebpushTestApi.md#getstatistics1) | **GET** /webpush-test/statistics | 獲取 Web Push 統計信息
-*WebpushTestApi* | [**testConfig**](doc//WebpushTestApi.md#testconfig) | **GET** /webpush-test/config | 測試 Web Push 配置
-*WebpushTestApi* | [**testHealth**](doc//WebpushTestApi.md#testhealth) | **GET** /webpush-test/health | 測試 Web Push 服務健康狀態
 *WebrtcApi* | [**hangupCall**](doc//WebrtcApi.md#hangupcall) | **POST** /webrtc/hangup | 掛斷 WebRTC 通話
 *WebrtcApi* | [**sendAnswer**](doc//WebrtcApi.md#sendanswer) | **POST** /webrtc/answer | 發送 WebRTC Answer
 *WebrtcApi* | [**sendIceCandidate**](doc//WebrtcApi.md#sendicecandidate) | **POST** /webrtc/ice-candidate | 發送 WebRTC ICE Candidate
