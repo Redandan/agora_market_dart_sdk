@@ -454,6 +454,12 @@ class ApiClient {
           return PromoCodeStatusEnumTypeTransformer().decode(value);
         case 'ProtocolEnum':
           return ProtocolEnumTypeTransformer().decode(value);
+        case 'PushNotificationDTO':
+          return PushNotificationDTO.fromJson(value);
+        case 'PushSubscription':
+          return PushSubscription.fromJson(value);
+        case 'PushSubscriptionDTO':
+          return PushSubscriptionDTO.fromJson(value);
         case 'QuickLogisticsRequest':
           return QuickLogisticsRequest.fromJson(value);
         case 'QuickLogisticsResult':

@@ -56,6 +56,8 @@ part 'api/staking_api.dart';
 part 'api/stores_api.dart';
 part 'api/test_api.dart';
 part 'api/user_addresses_api.dart';
+part 'api/webpush_api.dart';
+part 'api/webpush_test_api.dart';
 part 'api/webrtc_api.dart';
 
 part 'model/accept_order_param.dart';
@@ -194,6 +196,9 @@ part 'model/product_update_param.dart';
 part 'model/promo_code.dart';
 part 'model/promo_code_status_enum.dart';
 part 'model/protocol_enum.dart';
+part 'model/push_notification_dto.dart';
+part 'model/push_subscription.dart';
+part 'model/push_subscription_dto.dart';
 part 'model/quick_logistics_request.dart';
 part 'model/quick_logistics_result.dart';
 part 'model/recharge.dart';

@@ -364,6 +364,17 @@ Class | Method | HTTP request | Description
 *UserAddressesApi* | [**getUserAddressesPage**](doc//UserAddressesApi.md#getuseraddressespage) | **GET** /user-addresses/page | 分頁獲取用戶地址
 *UserAddressesApi* | [**setDefaultAddress**](doc//UserAddressesApi.md#setdefaultaddress) | **POST** /user-addresses/{addressId}/set-default | 設置預設地址
 *UserAddressesApi* | [**updateAddress**](doc//UserAddressesApi.md#updateaddress) | **POST** /user-addresses/update | 更新地址
+*WebpushApi* | [**getHealthStatus**](doc//WebpushApi.md#gethealthstatus) | **GET** /webpush/health | 獲取服務健康狀態
+*WebpushApi* | [**getStatistics**](doc//WebpushApi.md#getstatistics) | **GET** /webpush/statistics | 獲取推送統計信息
+*WebpushApi* | [**getUserSubscriptions**](doc//WebpushApi.md#getusersubscriptions) | **GET** /webpush/subscriptions | 獲取用戶推送訂閱列表
+*WebpushApi* | [**getVapidPublicKey**](doc//WebpushApi.md#getvapidpublickey) | **GET** /webpush/vapid-public-key | 獲取 VAPID 公鑰
+*WebpushApi* | [**sendNotification**](doc//WebpushApi.md#sendnotification) | **POST** /webpush/send | 發送自定義通知
+*WebpushApi* | [**sendTestNotification**](doc//WebpushApi.md#sendtestnotification) | **POST** /webpush/test | 發送測試通知
+*WebpushApi* | [**subscribe**](doc//WebpushApi.md#subscribe) | **POST** /webpush/subscribe | 註冊推送訂閱
+*WebpushApi* | [**unsubscribe**](doc//WebpushApi.md#unsubscribe) | **POST** /webpush/unsubscribe | 取消推送訂閱
+*WebpushTestApi* | [**getStatistics1**](doc//WebpushTestApi.md#getstatistics1) | **GET** /webpush-test/statistics | 獲取 Web Push 統計信息
+*WebpushTestApi* | [**testConfig**](doc//WebpushTestApi.md#testconfig) | **GET** /webpush-test/config | 測試 Web Push 配置
+*WebpushTestApi* | [**testHealth**](doc//WebpushTestApi.md#testhealth) | **GET** /webpush-test/health | 測試 Web Push 服務健康狀態
 *WebrtcApi* | [**hangupCall**](doc//WebrtcApi.md#hangupcall) | **POST** /webrtc/hangup | 掛斷 WebRTC 通話
 *WebrtcApi* | [**sendAnswer**](doc//WebrtcApi.md#sendanswer) | **POST** /webrtc/answer | 發送 WebRTC Answer
 *WebrtcApi* | [**sendIceCandidate**](doc//WebrtcApi.md#sendicecandidate) | **POST** /webrtc/ice-candidate | 發送 WebRTC ICE Candidate
@@ -508,6 +519,9 @@ Class | Method | HTTP request | Description
  - [PromoCode](doc//PromoCode.md)
  - [PromoCodeStatusEnum](doc//PromoCodeStatusEnum.md)
  - [ProtocolEnum](doc//ProtocolEnum.md)
+ - [PushNotificationDTO](doc//PushNotificationDTO.md)
+ - [PushSubscription](doc//PushSubscription.md)
+ - [PushSubscriptionDTO](doc//PushSubscriptionDTO.md)
  - [QuickLogisticsRequest](doc//QuickLogisticsRequest.md)
  - [QuickLogisticsResult](doc//QuickLogisticsResult.md)
  - [Recharge](doc//Recharge.md)
