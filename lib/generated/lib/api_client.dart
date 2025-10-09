@@ -512,6 +512,10 @@ class ApiClient {
           return ReviewUpdateParam.fromJson(value);
         case 'SalesStats':
           return SalesStats.fromJson(value);
+        case 'ScheduledPushResponseDTO':
+          return ScheduledPushResponseDTO.fromJson(value);
+        case 'SchedulerStatusResponseDTO':
+          return SchedulerStatusResponseDTO.fromJson(value);
         case 'SellerOrderStatsDTO':
           return SellerOrderStatsDTO.fromJson(value);
         case 'ShippingAddress':

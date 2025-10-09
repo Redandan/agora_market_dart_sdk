@@ -64,6 +64,54 @@ class WebpushApi {
     return null;
   }
 
+  /// 獲取定時推送狀態
+  ///
+  /// 獲取定時推送的配置和狀態信息
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getSchedulerStatusWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/webpush/scheduled/status';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 獲取定時推送狀態
+  ///
+  /// 獲取定時推送的配置和狀態信息
+  Future<SchedulerStatusResponseDTO?> getSchedulerStatus() async {
+    final response = await getSchedulerStatusWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SchedulerStatusResponseDTO',) as SchedulerStatusResponseDTO;
+    
+    }
+    return null;
+  }
+
   /// 獲取推送統計信息
   ///
   /// 獲取推送服務的統計信息
@@ -366,6 +414,54 @@ class WebpushApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PushSubscriptionResponseDTO',) as PushSubscriptionResponseDTO;
+    
+    }
+    return null;
+  }
+
+  /// 手動觸發定時推送
+  ///
+  /// 手動觸發一次定時推送通知
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> triggerScheduledPushWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/webpush/scheduled/trigger';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 手動觸發定時推送
+  ///
+  /// 手動觸發一次定時推送通知
+  Future<ScheduledPushResponseDTO?> triggerScheduledPush() async {
+    final response = await triggerScheduledPushWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ScheduledPushResponseDTO',) as ScheduledPushResponseDTO;
     
     }
     return null;

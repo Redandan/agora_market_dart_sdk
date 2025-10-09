@@ -10,126 +10,132 @@
 
 part of openapi.api;
 
-class PageableObject {
-  /// Returns a new [PageableObject] instance.
-  PageableObject({
-    this.sort,
-    this.pageNumber,
-    this.pageSize,
-    this.paged,
-    this.unpaged,
-    this.offset,
+class SchedulerStatusResponseDTO {
+  /// Returns a new [SchedulerStatusResponseDTO] instance.
+  SchedulerStatusResponseDTO({
+    this.intervalSeconds,
+    this.title,
+    this.body,
+    this.totalSubscriptions,
+    this.lastExecution,
+    this.message,
   });
 
+  /// 推送間隔（秒）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SortObject? sort;
+  int? intervalSeconds;
 
+  /// 推送標題
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageNumber;
+  String? title;
 
+  /// 推送內容
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageSize;
+  String? body;
 
+  /// 總訂閱數量
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? paged;
+  int? totalSubscriptions;
 
+  /// 最後執行時間戳
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unpaged;
+  int? lastExecution;
 
+  /// 響應消息
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? offset;
+  String? message;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageableObject &&
-    other.sort == sort &&
-    other.pageNumber == pageNumber &&
-    other.pageSize == pageSize &&
-    other.paged == paged &&
-    other.unpaged == unpaged &&
-    other.offset == offset;
+  bool operator ==(Object other) => identical(this, other) || other is SchedulerStatusResponseDTO &&
+    other.intervalSeconds == intervalSeconds &&
+    other.title == title &&
+    other.body == body &&
+    other.totalSubscriptions == totalSubscriptions &&
+    other.lastExecution == lastExecution &&
+    other.message == message;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (sort == null ? 0 : sort!.hashCode) +
-    (pageNumber == null ? 0 : pageNumber!.hashCode) +
-    (pageSize == null ? 0 : pageSize!.hashCode) +
-    (paged == null ? 0 : paged!.hashCode) +
-    (unpaged == null ? 0 : unpaged!.hashCode) +
-    (offset == null ? 0 : offset!.hashCode);
+    (intervalSeconds == null ? 0 : intervalSeconds!.hashCode) +
+    (title == null ? 0 : title!.hashCode) +
+    (body == null ? 0 : body!.hashCode) +
+    (totalSubscriptions == null ? 0 : totalSubscriptions!.hashCode) +
+    (lastExecution == null ? 0 : lastExecution!.hashCode) +
+    (message == null ? 0 : message!.hashCode);
 
   @override
-  String toString() => 'PageableObject[sort=$sort, pageNumber=$pageNumber, pageSize=$pageSize, paged=$paged, unpaged=$unpaged, offset=$offset]';
+  String toString() => 'SchedulerStatusResponseDTO[intervalSeconds=$intervalSeconds, title=$title, body=$body, totalSubscriptions=$totalSubscriptions, lastExecution=$lastExecution, message=$message]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.intervalSeconds != null) {
+      json[r'intervalSeconds'] = this.intervalSeconds;
     } else {
-      json[r'sort'] = null;
+      json[r'intervalSeconds'] = null;
     }
-    if (this.pageNumber != null) {
-      json[r'pageNumber'] = this.pageNumber;
+    if (this.title != null) {
+      json[r'title'] = this.title;
     } else {
-      json[r'pageNumber'] = null;
+      json[r'title'] = null;
     }
-    if (this.pageSize != null) {
-      json[r'pageSize'] = this.pageSize;
+    if (this.body != null) {
+      json[r'body'] = this.body;
     } else {
-      json[r'pageSize'] = null;
+      json[r'body'] = null;
     }
-    if (this.paged != null) {
-      json[r'paged'] = this.paged;
+    if (this.totalSubscriptions != null) {
+      json[r'totalSubscriptions'] = this.totalSubscriptions;
     } else {
-      json[r'paged'] = null;
+      json[r'totalSubscriptions'] = null;
     }
-    if (this.unpaged != null) {
-      json[r'unpaged'] = this.unpaged;
+    if (this.lastExecution != null) {
+      json[r'lastExecution'] = this.lastExecution;
     } else {
-      json[r'unpaged'] = null;
+      json[r'lastExecution'] = null;
     }
-    if (this.offset != null) {
-      json[r'offset'] = this.offset;
+    if (this.message != null) {
+      json[r'message'] = this.message;
     } else {
-      json[r'offset'] = null;
+      json[r'message'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageableObject] instance and imports its values from
+  /// Returns a new [SchedulerStatusResponseDTO] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageableObject? fromJson(dynamic value) {
+  static SchedulerStatusResponseDTO? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -138,29 +144,29 @@ class PageableObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageableObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageableObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "SchedulerStatusResponseDTO[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "SchedulerStatusResponseDTO[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageableObject(
-        sort: SortObject.fromJson(json[r'sort']),
-        pageNumber: mapValueOfType<int>(json, r'pageNumber'),
-        pageSize: mapValueOfType<int>(json, r'pageSize'),
-        paged: mapValueOfType<bool>(json, r'paged'),
-        unpaged: mapValueOfType<bool>(json, r'unpaged'),
-        offset: mapValueOfType<int>(json, r'offset'),
+      return SchedulerStatusResponseDTO(
+        intervalSeconds: mapValueOfType<int>(json, r'intervalSeconds'),
+        title: mapValueOfType<String>(json, r'title'),
+        body: mapValueOfType<String>(json, r'body'),
+        totalSubscriptions: mapValueOfType<int>(json, r'totalSubscriptions'),
+        lastExecution: mapValueOfType<int>(json, r'lastExecution'),
+        message: mapValueOfType<String>(json, r'message'),
       );
     }
     return null;
   }
 
-  static List<PageableObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageableObject>[];
+  static List<SchedulerStatusResponseDTO> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <SchedulerStatusResponseDTO>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageableObject.fromJson(row);
+        final value = SchedulerStatusResponseDTO.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -169,12 +175,12 @@ class PageableObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageableObject> mapFromJson(dynamic json) {
-    final map = <String, PageableObject>{};
+  static Map<String, SchedulerStatusResponseDTO> mapFromJson(dynamic json) {
+    final map = <String, SchedulerStatusResponseDTO>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageableObject.fromJson(entry.value);
+        final value = SchedulerStatusResponseDTO.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -183,14 +189,14 @@ class PageableObject {
     return map;
   }
 
-  // maps a json object with a list of PageableObject-objects as value to a dart map
-  static Map<String, List<PageableObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageableObject>>{};
+  // maps a json object with a list of SchedulerStatusResponseDTO-objects as value to a dart map
+  static Map<String, List<SchedulerStatusResponseDTO>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<SchedulerStatusResponseDTO>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageableObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = SchedulerStatusResponseDTO.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

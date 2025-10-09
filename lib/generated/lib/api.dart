@@ -224,6 +224,8 @@ part 'model/review_search_param.dart';
 part 'model/review_statistics_dto.dart';
 part 'model/review_update_param.dart';
 part 'model/sales_stats.dart';
+part 'model/scheduled_push_response_dto.dart';
+part 'model/scheduler_status_response_dto.dart';
 part 'model/seller_order_stats_dto.dart';
 part 'model/shipping_address.dart';
 part 'model/shipping_address_option.dart';
