@@ -250,7 +250,6 @@ Class | Method | HTTP request | Description
 *EnumTranslationsApi* | [**getLogisticsServiceTypeTranslations**](doc//EnumTranslationsApi.md#getlogisticsservicetypetranslations) | **GET** /api/enums/logistics-service-types | 獲取物流服務類型枚舉翻譯
 *EnumTranslationsApi* | [**getShippingCompanyEnumToDescriptionMap**](doc//EnumTranslationsApi.md#getshippingcompanyenumtodescriptionmap) | **GET** /api/enums/shipping-companies/map | 獲取物流公司枚舉映射
 *EnumTranslationsApi* | [**getShippingCompanyTranslations**](doc//EnumTranslationsApi.md#getshippingcompanytranslations) | **GET** /api/enums/shipping-companies | 獲取物流公司枚舉翻譯
-*ExchangeRatesApi* | [**getAllUsdtRates**](doc//ExchangeRatesApi.md#getallusdtrates) | **GET** /api/exchange-rates/usdt/all | 獲取所有USDT對法幣匯率
 *FileManagementApi* | [**deleteFile**](doc//FileManagementApi.md#deletefile) | **DELETE** /files/{objectName} | 刪除文件
 *FileManagementApi* | [**searchFileRecords**](doc//FileManagementApi.md#searchfilerecords) | **POST** /files/records/search | 查詢檔案記錄
 *FileManagementApi* | [**syncFileRecords**](doc//FileManagementApi.md#syncfilerecords) | **POST** /files/sync | 檔案同步
@@ -407,6 +406,7 @@ Class | Method | HTTP request | Description
  - [AutoReplyDeleteResponse](doc//AutoReplyDeleteResponse.md)
  - [AutoReplyResetStatsResponse](doc//AutoReplyResetStatsResponse.md)
  - [AutoReplyStats](doc//AutoReplyStats.md)
+ - [BalanceConversion](doc//BalanceConversion.md)
  - [BatchReviewPromoCodeParam](doc//BatchReviewPromoCodeParam.md)
  - [BatchReviewResult](doc//BatchReviewResult.md)
  - [CartGroupBySeller](doc//CartGroupBySeller.md)
@@ -447,7 +447,6 @@ Class | Method | HTTP request | Description
  - [DisputeSearchParam](doc//DisputeSearchParam.md)
  - [DisputeStatisticsDTO](doc//DisputeStatisticsDTO.md)
  - [DisputeStatusEnum](doc//DisputeStatusEnum.md)
- - [ExchangeRateInfo](doc//ExchangeRateInfo.md)
  - [FileRecord](doc//FileRecord.md)
  - [FileRecordInfo](doc//FileRecordInfo.md)
  - [FileRecordSearchRequest](doc//FileRecordSearchRequest.md)

@@ -10,25 +10,15 @@
 
 part of openapi.api;
 
-class ExchangeRateInfo {
-  /// Returns a new [ExchangeRateInfo] instance.
-  ExchangeRateInfo({
-    this.fromCurrency,
-    this.toCurrency,
-    this.rate,
+class BalanceConversion {
+  /// Returns a new [BalanceConversion] instance.
+  BalanceConversion({
+    this.currency,
     this.symbol,
     this.currencyName,
-    this.lastUpdated,
+    this.convertedAmount,
+    this.exchangeRate,
   });
-
-  /// 源貨幣
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? fromCurrency;
 
   /// 目標貨幣
   ///
@@ -37,16 +27,7 @@ class ExchangeRateInfo {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? toCurrency;
-
-  /// 匯率值
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? rate;
+  String? currency;
 
   /// 貨幣符號
   ///
@@ -66,53 +47,50 @@ class ExchangeRateInfo {
   ///
   String? currencyName;
 
-  /// 最後更新時間
+  /// 換算後金額
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  DateTime? lastUpdated;
+  num? convertedAmount;
+
+  /// 匯率
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? exchangeRate;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ExchangeRateInfo &&
-    other.fromCurrency == fromCurrency &&
-    other.toCurrency == toCurrency &&
-    other.rate == rate &&
+  bool operator ==(Object other) => identical(this, other) || other is BalanceConversion &&
+    other.currency == currency &&
     other.symbol == symbol &&
     other.currencyName == currencyName &&
-    other.lastUpdated == lastUpdated;
+    other.convertedAmount == convertedAmount &&
+    other.exchangeRate == exchangeRate;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (fromCurrency == null ? 0 : fromCurrency!.hashCode) +
-    (toCurrency == null ? 0 : toCurrency!.hashCode) +
-    (rate == null ? 0 : rate!.hashCode) +
+    (currency == null ? 0 : currency!.hashCode) +
     (symbol == null ? 0 : symbol!.hashCode) +
     (currencyName == null ? 0 : currencyName!.hashCode) +
-    (lastUpdated == null ? 0 : lastUpdated!.hashCode);
+    (convertedAmount == null ? 0 : convertedAmount!.hashCode) +
+    (exchangeRate == null ? 0 : exchangeRate!.hashCode);
 
   @override
-  String toString() => 'ExchangeRateInfo[fromCurrency=$fromCurrency, toCurrency=$toCurrency, rate=$rate, symbol=$symbol, currencyName=$currencyName, lastUpdated=$lastUpdated]';
+  String toString() => 'BalanceConversion[currency=$currency, symbol=$symbol, currencyName=$currencyName, convertedAmount=$convertedAmount, exchangeRate=$exchangeRate]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.fromCurrency != null) {
-      json[r'fromCurrency'] = this.fromCurrency;
+    if (this.currency != null) {
+      json[r'currency'] = this.currency;
     } else {
-      json[r'fromCurrency'] = null;
-    }
-    if (this.toCurrency != null) {
-      json[r'toCurrency'] = this.toCurrency;
-    } else {
-      json[r'toCurrency'] = null;
-    }
-    if (this.rate != null) {
-      json[r'rate'] = this.rate;
-    } else {
-      json[r'rate'] = null;
+      json[r'currency'] = null;
     }
     if (this.symbol != null) {
       json[r'symbol'] = this.symbol;
@@ -124,18 +102,23 @@ class ExchangeRateInfo {
     } else {
       json[r'currencyName'] = null;
     }
-    if (this.lastUpdated != null) {
-      json[r'lastUpdated'] = this.lastUpdated!.toUtc().toIso8601String();
+    if (this.convertedAmount != null) {
+      json[r'convertedAmount'] = this.convertedAmount;
     } else {
-      json[r'lastUpdated'] = null;
+      json[r'convertedAmount'] = null;
+    }
+    if (this.exchangeRate != null) {
+      json[r'exchangeRate'] = this.exchangeRate;
+    } else {
+      json[r'exchangeRate'] = null;
     }
     return json;
   }
 
-  /// Returns a new [ExchangeRateInfo] instance and imports its values from
+  /// Returns a new [BalanceConversion] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ExchangeRateInfo? fromJson(dynamic value) {
+  static BalanceConversion? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -144,29 +127,28 @@ class ExchangeRateInfo {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ExchangeRateInfo[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ExchangeRateInfo[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "BalanceConversion[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "BalanceConversion[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ExchangeRateInfo(
-        fromCurrency: mapValueOfType<String>(json, r'fromCurrency'),
-        toCurrency: mapValueOfType<String>(json, r'toCurrency'),
-        rate: num.parse('${json[r'rate']}'),
+      return BalanceConversion(
+        currency: mapValueOfType<String>(json, r'currency'),
         symbol: mapValueOfType<String>(json, r'symbol'),
         currencyName: mapValueOfType<String>(json, r'currencyName'),
-        lastUpdated: mapDateTime(json, r'lastUpdated', r''),
+        convertedAmount: num.parse('${json[r'convertedAmount']}'),
+        exchangeRate: num.parse('${json[r'exchangeRate']}'),
       );
     }
     return null;
   }
 
-  static List<ExchangeRateInfo> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ExchangeRateInfo>[];
+  static List<BalanceConversion> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <BalanceConversion>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ExchangeRateInfo.fromJson(row);
+        final value = BalanceConversion.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -175,12 +157,12 @@ class ExchangeRateInfo {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ExchangeRateInfo> mapFromJson(dynamic json) {
-    final map = <String, ExchangeRateInfo>{};
+  static Map<String, BalanceConversion> mapFromJson(dynamic json) {
+    final map = <String, BalanceConversion>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ExchangeRateInfo.fromJson(entry.value);
+        final value = BalanceConversion.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -189,14 +171,14 @@ class ExchangeRateInfo {
     return map;
   }
 
-  // maps a json object with a list of ExchangeRateInfo-objects as value to a dart map
-  static Map<String, List<ExchangeRateInfo>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ExchangeRateInfo>>{};
+  // maps a json object with a list of BalanceConversion-objects as value to a dart map
+  static Map<String, List<BalanceConversion>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<BalanceConversion>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ExchangeRateInfo.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = BalanceConversion.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

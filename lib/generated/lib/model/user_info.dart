@@ -27,6 +27,7 @@ class UserInfo {
     this.ambassadorName,
     this.displayDeliveryerName,
     this.avatar,
+    this.balanceConversions = const [],
   });
 
   /// 用戶ID
@@ -155,6 +156,9 @@ class UserInfo {
   ///
   String? avatar;
 
+  /// 餘額對其他法幣的換算
+  List<BalanceConversion> balanceConversions;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserInfo &&
     other.id == id &&
@@ -170,7 +174,8 @@ class UserInfo {
     other.storeName == storeName &&
     other.ambassadorName == ambassadorName &&
     other.displayDeliveryerName == displayDeliveryerName &&
-    other.avatar == avatar;
+    other.avatar == avatar &&
+    _deepEquality.equals(other.balanceConversions, balanceConversions);
 
   @override
   int get hashCode =>
@@ -188,10 +193,11 @@ class UserInfo {
     (storeName == null ? 0 : storeName!.hashCode) +
     (ambassadorName == null ? 0 : ambassadorName!.hashCode) +
     (displayDeliveryerName == null ? 0 : displayDeliveryerName!.hashCode) +
-    (avatar == null ? 0 : avatar!.hashCode);
+    (avatar == null ? 0 : avatar!.hashCode) +
+    (balanceConversions.hashCode);
 
   @override
-  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, stackingBalance=$stackingBalance, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar]';
+  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, stackingBalance=$stackingBalance, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar, balanceConversions=$balanceConversions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -265,6 +271,7 @@ class UserInfo {
     } else {
       json[r'avatar'] = null;
     }
+      json[r'balanceConversions'] = this.balanceConversions;
     return json;
   }
 
@@ -301,6 +308,7 @@ class UserInfo {
         ambassadorName: mapValueOfType<String>(json, r'ambassadorName'),
         displayDeliveryerName: mapValueOfType<String>(json, r'displayDeliveryerName'),
         avatar: mapValueOfType<String>(json, r'avatar'),
+        balanceConversions: BalanceConversion.listFromJson(json[r'balanceConversions']),
       );
     }
     return null;

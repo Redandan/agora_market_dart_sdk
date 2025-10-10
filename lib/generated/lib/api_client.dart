@@ -230,6 +230,8 @@ class ApiClient {
           return AutoReplyResetStatsResponse.fromJson(value);
         case 'AutoReplyStats':
           return AutoReplyStats.fromJson(value);
+        case 'BalanceConversion':
+          return BalanceConversion.fromJson(value);
         case 'BatchReviewPromoCodeParam':
           return BatchReviewPromoCodeParam.fromJson(value);
         case 'BatchReviewResult':
@@ -310,8 +312,6 @@ class ApiClient {
           return DisputeStatisticsDTO.fromJson(value);
         case 'DisputeStatusEnum':
           return DisputeStatusEnumTypeTransformer().decode(value);
-        case 'ExchangeRateInfo':
-          return ExchangeRateInfo.fromJson(value);
         case 'FileRecord':
           return FileRecord.fromJson(value);
         case 'FileRecordInfo':
