@@ -310,6 +310,8 @@ class ApiClient {
           return DisputeStatisticsDTO.fromJson(value);
         case 'DisputeStatusEnum':
           return DisputeStatusEnumTypeTransformer().decode(value);
+        case 'ExchangeRateInfo':
+          return ExchangeRateInfo.fromJson(value);
         case 'FileRecord':
           return FileRecord.fromJson(value);
         case 'FileRecordInfo':
