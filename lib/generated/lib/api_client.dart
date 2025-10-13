@@ -200,6 +200,8 @@ class ApiClient {
           return ApiResponseListPostResponse.fromJson(value);
         case 'ApiResponseMapStringObject':
           return ApiResponseMapStringObject.fromJson(value);
+        case 'ApiResponsePageClientLog':
+          return ApiResponsePageClientLog.fromJson(value);
         case 'ApiResponsePageColdWallet':
           return ApiResponsePageColdWallet.fromJson(value);
         case 'ApiResponsePageFileRecord':
@@ -266,6 +268,8 @@ class ApiClient {
           return ChatSession.fromJson(value);
         case 'ChatSessionQueryParam':
           return ChatSessionQueryParam.fromJson(value);
+        case 'ClientLog':
+          return ClientLog.fromJson(value);
         case 'ClientLogDto':
           return ClientLogDto.fromJson(value);
         case 'ColdWallet':
@@ -384,6 +388,8 @@ class ApiClient {
           return PageChatMessage.fromJson(value);
         case 'PageChatSession':
           return PageChatSession.fromJson(value);
+        case 'PageClientLog':
+          return PageClientLog.fromJson(value);
         case 'PageColdWallet':
           return PageColdWallet.fromJson(value);
         case 'PageCustomerIssue':

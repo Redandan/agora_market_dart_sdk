@@ -232,6 +232,7 @@ Class | Method | HTTP request | Description
 *ChatApi* | [**stopTyping**](doc//ChatApi.md#stoptyping) | **POST** /chat/typing/stop | 停止輸入
 *ChatApi* | [**toggleSessionPin**](doc//ChatApi.md#togglesessionpin) | **PUT** /chat/sessions/{sessionId}/pin | 置頂/取消置頂會話
 *ChatApi* | [**updateMessage**](doc//ChatApi.md#updatemessage) | **PUT** /chat/messages/{messageId} | 編輯消息
+*ClientLogsApi* | [**getUserLogs**](doc//ClientLogsApi.md#getuserlogs) | **GET** /client-logs | 查詢用戶日誌
 *ClientLogsApi* | [**receiveClientLogs**](doc//ClientLogsApi.md#receiveclientlogs) | **POST** /client-logs | 上傳客戶端日誌
 *ColdWalletApi* | [**createColdWallet**](doc//ColdWalletApi.md#createcoldwallet) | **POST** /cold-wallet | 新增冷錢包
 *ColdWalletApi* | [**deleteColdWallet**](doc//ColdWalletApi.md#deletecoldwallet) | **DELETE** /cold-wallet/{id} | 刪除冷錢包
@@ -394,6 +395,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseFileSyncResponse](doc//ApiResponseFileSyncResponse.md)
  - [ApiResponseListPostResponse](doc//ApiResponseListPostResponse.md)
  - [ApiResponseMapStringObject](doc//ApiResponseMapStringObject.md)
+ - [ApiResponsePageClientLog](doc//ApiResponsePageClientLog.md)
  - [ApiResponsePageColdWallet](doc//ApiResponsePageColdWallet.md)
  - [ApiResponsePageFileRecord](doc//ApiResponsePageFileRecord.md)
  - [ApiResponsePageResponsePostResponse](doc//ApiResponsePageResponsePostResponse.md)
@@ -427,6 +429,7 @@ Class | Method | HTTP request | Description
  - [ChatMessageUpdateDTO](doc//ChatMessageUpdateDTO.md)
  - [ChatSession](doc//ChatSession.md)
  - [ChatSessionQueryParam](doc//ChatSessionQueryParam.md)
+ - [ClientLog](doc//ClientLog.md)
  - [ClientLogDto](doc//ClientLogDto.md)
  - [ColdWallet](doc//ColdWallet.md)
  - [ColdWalletStatusEnum](doc//ColdWalletStatusEnum.md)
@@ -486,6 +489,7 @@ Class | Method | HTTP request | Description
  - [PageCartItemResponse](doc//PageCartItemResponse.md)
  - [PageChatMessage](doc//PageChatMessage.md)
  - [PageChatSession](doc//PageChatSession.md)
+ - [PageClientLog](doc//PageClientLog.md)
  - [PageColdWallet](doc//PageColdWallet.md)
  - [PageCustomerIssue](doc//PageCustomerIssue.md)
  - [PageDispute](doc//PageDispute.md)
