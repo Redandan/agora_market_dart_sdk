@@ -13,26 +13,18 @@ part of openapi.api;
 class PageStoreResponseDTO {
   /// Returns a new [PageStoreResponseDTO] instance.
   PageStoreResponseDTO({
-    this.totalPages,
     this.totalElements,
+    this.totalPages,
     this.sort,
-    this.last,
-    this.pageable,
     this.numberOfElements,
+    this.pageable,
     this.first,
+    this.last,
     this.size,
     this.content = const [],
     this.number,
     this.empty,
   });
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? totalPages;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -48,23 +40,15 @@ class PageStoreResponseDTO {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  int? totalPages;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   SortObject? sort;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? last;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  PageableObject? pageable;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -80,7 +64,23 @@ class PageStoreResponseDTO {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  PageableObject? pageable;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? first;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? last;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -110,13 +110,13 @@ class PageStoreResponseDTO {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PageStoreResponseDTO &&
-    other.totalPages == totalPages &&
     other.totalElements == totalElements &&
+    other.totalPages == totalPages &&
     other.sort == sort &&
-    other.last == last &&
-    other.pageable == pageable &&
     other.numberOfElements == numberOfElements &&
+    other.pageable == pageable &&
     other.first == first &&
+    other.last == last &&
     other.size == size &&
     _deepEquality.equals(other.content, content) &&
     other.number == number &&
@@ -125,57 +125,57 @@ class PageStoreResponseDTO {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalPages == null ? 0 : totalPages!.hashCode) +
     (totalElements == null ? 0 : totalElements!.hashCode) +
+    (totalPages == null ? 0 : totalPages!.hashCode) +
     (sort == null ? 0 : sort!.hashCode) +
-    (last == null ? 0 : last!.hashCode) +
-    (pageable == null ? 0 : pageable!.hashCode) +
     (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
+    (pageable == null ? 0 : pageable!.hashCode) +
     (first == null ? 0 : first!.hashCode) +
+    (last == null ? 0 : last!.hashCode) +
     (size == null ? 0 : size!.hashCode) +
     (content.hashCode) +
     (number == null ? 0 : number!.hashCode) +
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageStoreResponseDTO[totalPages=$totalPages, totalElements=$totalElements, sort=$sort, last=$last, pageable=$pageable, numberOfElements=$numberOfElements, first=$first, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'PageStoreResponseDTO[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, numberOfElements=$numberOfElements, pageable=$pageable, first=$first, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.totalPages != null) {
-      json[r'totalPages'] = this.totalPages;
-    } else {
-      json[r'totalPages'] = null;
-    }
     if (this.totalElements != null) {
       json[r'totalElements'] = this.totalElements;
     } else {
       json[r'totalElements'] = null;
+    }
+    if (this.totalPages != null) {
+      json[r'totalPages'] = this.totalPages;
+    } else {
+      json[r'totalPages'] = null;
     }
     if (this.sort != null) {
       json[r'sort'] = this.sort;
     } else {
       json[r'sort'] = null;
     }
-    if (this.last != null) {
-      json[r'last'] = this.last;
+    if (this.numberOfElements != null) {
+      json[r'numberOfElements'] = this.numberOfElements;
     } else {
-      json[r'last'] = null;
+      json[r'numberOfElements'] = null;
     }
     if (this.pageable != null) {
       json[r'pageable'] = this.pageable;
     } else {
       json[r'pageable'] = null;
     }
-    if (this.numberOfElements != null) {
-      json[r'numberOfElements'] = this.numberOfElements;
-    } else {
-      json[r'numberOfElements'] = null;
-    }
     if (this.first != null) {
       json[r'first'] = this.first;
     } else {
       json[r'first'] = null;
+    }
+    if (this.last != null) {
+      json[r'last'] = this.last;
+    } else {
+      json[r'last'] = null;
     }
     if (this.size != null) {
       json[r'size'] = this.size;
@@ -215,13 +215,13 @@ class PageStoreResponseDTO {
       }());
 
       return PageStoreResponseDTO(
-        totalPages: mapValueOfType<int>(json, r'totalPages'),
         totalElements: mapValueOfType<int>(json, r'totalElements'),
+        totalPages: mapValueOfType<int>(json, r'totalPages'),
         sort: SortObject.fromJson(json[r'sort']),
-        last: mapValueOfType<bool>(json, r'last'),
-        pageable: PageableObject.fromJson(json[r'pageable']),
         numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
+        pageable: PageableObject.fromJson(json[r'pageable']),
         first: mapValueOfType<bool>(json, r'first'),
+        last: mapValueOfType<bool>(json, r'last'),
         size: mapValueOfType<int>(json, r'size'),
         content: StoreResponseDTO.listFromJson(json[r'content']),
         number: mapValueOfType<int>(json, r'number'),

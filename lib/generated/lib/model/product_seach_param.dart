@@ -28,8 +28,6 @@ class ProductSeachParam {
     this.longitude,
     this.latitude,
     this.tag,
-    this.minPrice,
-    this.maxPrice,
     this.inStock,
   });
 
@@ -166,24 +164,6 @@ class ProductSeachParam {
   ///
   String? tag;
 
-  /// 最低價格
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? minPrice;
-
-  /// 最高價格
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? maxPrice;
-
   /// 是否有庫存
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -210,8 +190,6 @@ class ProductSeachParam {
     other.longitude == longitude &&
     other.latitude == latitude &&
     other.tag == tag &&
-    other.minPrice == minPrice &&
-    other.maxPrice == maxPrice &&
     other.inStock == inStock;
 
   @override
@@ -232,12 +210,10 @@ class ProductSeachParam {
     (longitude == null ? 0 : longitude!.hashCode) +
     (latitude == null ? 0 : latitude!.hashCode) +
     (tag == null ? 0 : tag!.hashCode) +
-    (minPrice == null ? 0 : minPrice!.hashCode) +
-    (maxPrice == null ? 0 : maxPrice!.hashCode) +
     (inStock == null ? 0 : inStock!.hashCode);
 
   @override
-  String toString() => 'ProductSeachParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, id=$id, sellerId=$sellerId, status=$status, category=$category, postalCode=$postalCode, longitude=$longitude, latitude=$latitude, tag=$tag, minPrice=$minPrice, maxPrice=$maxPrice, inStock=$inStock]';
+  String toString() => 'ProductSeachParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, id=$id, sellerId=$sellerId, status=$status, category=$category, postalCode=$postalCode, longitude=$longitude, latitude=$latitude, tag=$tag, inStock=$inStock]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -316,16 +292,6 @@ class ProductSeachParam {
     } else {
       json[r'tag'] = null;
     }
-    if (this.minPrice != null) {
-      json[r'minPrice'] = this.minPrice;
-    } else {
-      json[r'minPrice'] = null;
-    }
-    if (this.maxPrice != null) {
-      json[r'maxPrice'] = this.maxPrice;
-    } else {
-      json[r'maxPrice'] = null;
-    }
     if (this.inStock != null) {
       json[r'inStock'] = this.inStock;
     } else {
@@ -368,8 +334,6 @@ class ProductSeachParam {
         longitude: mapValueOfType<double>(json, r'longitude'),
         latitude: mapValueOfType<double>(json, r'latitude'),
         tag: mapValueOfType<String>(json, r'tag'),
-        minPrice: num.parse('${json[r'minPrice']}'),
-        maxPrice: num.parse('${json[r'maxPrice']}'),
         inStock: mapValueOfType<bool>(json, r'inStock'),
       );
     }

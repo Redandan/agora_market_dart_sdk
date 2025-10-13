@@ -232,6 +232,7 @@ Class | Method | HTTP request | Description
 *ChatApi* | [**stopTyping**](doc//ChatApi.md#stoptyping) | **POST** /chat/typing/stop | 停止輸入
 *ChatApi* | [**toggleSessionPin**](doc//ChatApi.md#togglesessionpin) | **PUT** /chat/sessions/{sessionId}/pin | 置頂/取消置頂會話
 *ChatApi* | [**updateMessage**](doc//ChatApi.md#updatemessage) | **PUT** /chat/messages/{messageId} | 編輯消息
+*ClientLogsApi* | [**receiveClientLogs**](doc//ClientLogsApi.md#receiveclientlogs) | **POST** /client-logs | 上傳客戶端日誌
 *ColdWalletApi* | [**createColdWallet**](doc//ColdWalletApi.md#createcoldwallet) | **POST** /cold-wallet | 新增冷錢包
 *ColdWalletApi* | [**deleteColdWallet**](doc//ColdWalletApi.md#deletecoldwallet) | **DELETE** /cold-wallet/{id} | 刪除冷錢包
 *ColdWalletApi* | [**freezeColdWallet**](doc//ColdWalletApi.md#freezecoldwallet) | **POST** /cold-wallet/{id}/freeze | 凍結冷錢包
@@ -282,6 +283,8 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**shipOrderPlatform**](doc//MemberOrdersApi.md#shiporderplatform) | **POST** /orders/ship/platform | 平台配送發貨
 *MemberOrdersApi* | [**submitOrder**](doc//MemberOrdersApi.md#submitorder) | **POST** /orders | 提交訂單
 *MemberOrdersApi* | [**updateReturnShipping**](doc//MemberOrdersApi.md#updatereturnshipping) | **POST** /orders/{orderId}/return/shipping | 更新退貨物流信息
+*OciNotificationControllerApi* | [**handleNotification**](doc//OciNotificationControllerApi.md#handlenotification) | **POST** /oci/notifications | 
+*OciNotificationControllerApi* | [**healthCheck**](doc//OciNotificationControllerApi.md#healthcheck) | **GET** /oci/notifications | 
 *ProductsApi* | [**batchDeleteProducts**](doc//ProductsApi.md#batchdeleteproducts) | **DELETE** /products/batch | 批量刪除商品
 *ProductsApi* | [**createProduct**](doc//ProductsApi.md#createproduct) | **POST** /products/create | 創建商品
 *ProductsApi* | [**decreaseStock**](doc//ProductsApi.md#decreasestock) | **POST** /products/{id}/stock/decrease | 減少商品庫存
@@ -424,6 +427,7 @@ Class | Method | HTTP request | Description
  - [ChatMessageUpdateDTO](doc//ChatMessageUpdateDTO.md)
  - [ChatSession](doc//ChatSession.md)
  - [ChatSessionQueryParam](doc//ChatSessionQueryParam.md)
+ - [ClientLogDto](doc//ClientLogDto.md)
  - [ColdWallet](doc//ColdWallet.md)
  - [ColdWalletStatusEnum](doc//ColdWalletStatusEnum.md)
  - [CreateColdWalletParam](doc//CreateColdWalletParam.md)

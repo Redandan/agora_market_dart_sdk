@@ -266,6 +266,8 @@ class ApiClient {
           return ChatSession.fromJson(value);
         case 'ChatSessionQueryParam':
           return ChatSessionQueryParam.fromJson(value);
+        case 'ClientLogDto':
+          return ClientLogDto.fromJson(value);
         case 'ColdWallet':
           return ColdWallet.fromJson(value);
         case 'ColdWalletStatusEnum':
