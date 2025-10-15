@@ -16,8 +16,9 @@ class RegisterParam {
     required this.username,
     required this.password,
     this.confirmPassword,
-    this.email,
+    required this.email,
     this.promoCode,
+    required this.turnstileToken,
   });
 
   /// 用戶名
@@ -36,13 +37,7 @@ class RegisterParam {
   String? confirmPassword;
 
   /// 電子郵件
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? email;
+  String email;
 
   /// 推廣碼
   ///
@@ -53,13 +48,17 @@ class RegisterParam {
   ///
   String? promoCode;
 
+  /// Cloudflare Turnstile 驗證 Token
+  String turnstileToken;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is RegisterParam &&
     other.username == username &&
     other.password == password &&
     other.confirmPassword == confirmPassword &&
     other.email == email &&
-    other.promoCode == promoCode;
+    other.promoCode == promoCode &&
+    other.turnstileToken == turnstileToken;
 
   @override
   int get hashCode =>
@@ -67,11 +66,12 @@ class RegisterParam {
     (username.hashCode) +
     (password.hashCode) +
     (confirmPassword == null ? 0 : confirmPassword!.hashCode) +
-    (email == null ? 0 : email!.hashCode) +
-    (promoCode == null ? 0 : promoCode!.hashCode);
+    (email.hashCode) +
+    (promoCode == null ? 0 : promoCode!.hashCode) +
+    (turnstileToken.hashCode);
 
   @override
-  String toString() => 'RegisterParam[username=$username, password=$password, confirmPassword=$confirmPassword, email=$email, promoCode=$promoCode]';
+  String toString() => 'RegisterParam[username=$username, password=$password, confirmPassword=$confirmPassword, email=$email, promoCode=$promoCode, turnstileToken=$turnstileToken]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -82,16 +82,13 @@ class RegisterParam {
     } else {
       json[r'confirmPassword'] = null;
     }
-    if (this.email != null) {
       json[r'email'] = this.email;
-    } else {
-      json[r'email'] = null;
-    }
     if (this.promoCode != null) {
       json[r'promoCode'] = this.promoCode;
     } else {
       json[r'promoCode'] = null;
     }
+      json[r'turnstileToken'] = this.turnstileToken;
     return json;
   }
 
@@ -117,8 +114,9 @@ class RegisterParam {
         username: mapValueOfType<String>(json, r'username')!,
         password: mapValueOfType<String>(json, r'password')!,
         confirmPassword: mapValueOfType<String>(json, r'confirmPassword'),
-        email: mapValueOfType<String>(json, r'email'),
+        email: mapValueOfType<String>(json, r'email')!,
         promoCode: mapValueOfType<String>(json, r'promoCode'),
+        turnstileToken: mapValueOfType<String>(json, r'turnstileToken')!,
       );
     }
     return null;
@@ -168,6 +166,8 @@ class RegisterParam {
   static const requiredKeys = <String>{
     'username',
     'password',
+    'email',
+    'turnstileToken',
   };
 }
 

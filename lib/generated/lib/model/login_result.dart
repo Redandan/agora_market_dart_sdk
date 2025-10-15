@@ -13,6 +13,8 @@ part of openapi.api;
 class LoginResult {
   /// Returns a new [LoginResult] instance.
   LoginResult({
+    this.success,
+    this.message,
     this.token,
     this.refreshToken,
     this.tokenIssuedAt,
@@ -22,6 +24,24 @@ class LoginResult {
     this.username,
     this.userInfo,
   });
+
+  /// 操作是否成功
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? success;
+
+  /// 操作結果消息
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? message;
 
   /// 訪問令牌
   ///
@@ -96,6 +116,8 @@ class LoginResult {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is LoginResult &&
+    other.success == success &&
+    other.message == message &&
     other.token == token &&
     other.refreshToken == refreshToken &&
     other.tokenIssuedAt == tokenIssuedAt &&
@@ -108,6 +130,8 @@ class LoginResult {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (success == null ? 0 : success!.hashCode) +
+    (message == null ? 0 : message!.hashCode) +
     (token == null ? 0 : token!.hashCode) +
     (refreshToken == null ? 0 : refreshToken!.hashCode) +
     (tokenIssuedAt == null ? 0 : tokenIssuedAt!.hashCode) +
@@ -118,10 +142,20 @@ class LoginResult {
     (userInfo == null ? 0 : userInfo!.hashCode);
 
   @override
-  String toString() => 'LoginResult[token=$token, refreshToken=$refreshToken, tokenIssuedAt=$tokenIssuedAt, tokenExpiration=$tokenExpiration, refreshTokenExpiration=$refreshTokenExpiration, userId=$userId, username=$username, userInfo=$userInfo]';
+  String toString() => 'LoginResult[success=$success, message=$message, token=$token, refreshToken=$refreshToken, tokenIssuedAt=$tokenIssuedAt, tokenExpiration=$tokenExpiration, refreshTokenExpiration=$refreshTokenExpiration, userId=$userId, username=$username, userInfo=$userInfo]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.success != null) {
+      json[r'success'] = this.success;
+    } else {
+      json[r'success'] = null;
+    }
+    if (this.message != null) {
+      json[r'message'] = this.message;
+    } else {
+      json[r'message'] = null;
+    }
     if (this.token != null) {
       json[r'token'] = this.token;
     } else {
@@ -184,6 +218,8 @@ class LoginResult {
       }());
 
       return LoginResult(
+        success: mapValueOfType<bool>(json, r'success'),
+        message: mapValueOfType<String>(json, r'message'),
         token: mapValueOfType<String>(json, r'token'),
         refreshToken: mapValueOfType<String>(json, r'refreshToken'),
         tokenIssuedAt: mapValueOfType<String>(json, r'tokenIssuedAt'),
