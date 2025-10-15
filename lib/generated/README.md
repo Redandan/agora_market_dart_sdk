@@ -206,6 +206,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**resetPassword**](doc//AuthApi.md#resetpassword) | **POST** /auth/reset-password | 重設密碼
 *AuthApi* | [**resetPasswordWithCode**](doc//AuthApi.md#resetpasswordwithcode) | **POST** /auth/reset-password-with-code | 使用驗證碼重置密碼
 *AuthApi* | [**sendEmailVerification**](doc//AuthApi.md#sendemailverification) | **POST** /auth/email-verification/send | 發送郵件驗證碼
+*AuthApi* | [**turnstilePage**](doc//AuthApi.md#turnstilepage) | **GET** /auth/turnstile | 獲取 Turnstile 驗證頁面
 *AuthApi* | [**updateProfile**](doc//AuthApi.md#updateprofile) | **POST** /auth/update-profile | 更新用戶資料
 *AuthApi* | [**verifyEmail**](doc//AuthApi.md#verifyemail) | **POST** /auth/email-verification/verify | 驗證郵件驗證碼
 *AuthApi* | [**verifyTwoFactorCode**](doc//AuthApi.md#verifytwofactorcode) | **POST** /auth/2fa/verify | 驗證雙因素認證碼
