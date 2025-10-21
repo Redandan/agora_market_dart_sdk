@@ -191,22 +191,21 @@ Class | Method | HTTP request | Description
 *AdminStoresApi* | [**updateStoreByAdmin**](doc//AdminStoresApi.md#updatestorebyadmin) | **POST** /admin/stores/{storeId}/update | 管理員更新商店信息
 *AdminStoresApi* | [**updateStoreStatus**](doc//AdminStoresApi.md#updatestorestatus) | **POST** /admin/stores/{storeId}/status | 更新商店狀態
 *AuthApi* | [**changePassword**](doc//AuthApi.md#changepassword) | **POST** /auth/change-password | 修改密碼
-*AuthApi* | [**disableTwoFactor**](doc//AuthApi.md#disabletwofactor) | **POST** /auth/2fa/disable | 禁用雙因素認證
-*AuthApi* | [**enableTwoFactor**](doc//AuthApi.md#enabletwofactor) | **POST** /auth/2fa/enable | 啟用雙因素認證
+*AuthApi* | [**exchangeAuthCode**](doc//AuthApi.md#exchangeauthcode) | **POST** /auth/exchange-auth-code | 使用授權碼自動登入
 *AuthApi* | [**forgotPassword**](doc//AuthApi.md#forgotpassword) | **POST** /auth/forgot-password | 忘記密碼 - 發送驗證碼到郵箱
 *AuthApi* | [**getCurrentUser**](doc//AuthApi.md#getcurrentuser) | **GET** /auth/me | 獲取當前用戶信息
 *AuthApi* | [**getEmailVerificationRemainingTime**](doc//AuthApi.md#getemailverificationremainingtime) | **GET** /auth/email-verification/remaining-time | 查詢郵件驗證碼的剩餘等待時間
-*AuthApi* | [**getRemainingWaitTime**](doc//AuthApi.md#getremainingwaittime) | **GET** /auth/forgot-password/remaining-time | 查詢忘記密碼驗證碼的剩餘等待時間
 *AuthApi* | [**getTwoFactorInfo**](doc//AuthApi.md#gettwofactorinfo) | **GET** /auth/2fa | 獲取雙因素認證信息
 *AuthApi* | [**login**](doc//AuthApi.md#login) | **POST** /auth/login | 用戶登入
 *AuthApi* | [**logout**](doc//AuthApi.md#logout) | **POST** /auth/logout | 用戶登出
+*AuthApi* | [**manageTwoFactor**](doc//AuthApi.md#managetwofactor) | **POST** /auth/2fa/manage | 管理雙因素認證
 *AuthApi* | [**refreshToken**](doc//AuthApi.md#refreshtoken) | **POST** /auth/refresh-token | 刷新訪問令牌
 *AuthApi* | [**register**](doc//AuthApi.md#register) | **POST** /auth/register | 註冊新用戶
+*AuthApi* | [**registerPage**](doc//AuthApi.md#registerpage) | **GET** /auth/register | 獲取註冊頁面
 *AuthApi* | [**resendVerificationEmail**](doc//AuthApi.md#resendverificationemail) | **POST** /auth/email-verification/resend | 重發郵件驗證碼
 *AuthApi* | [**resetPassword**](doc//AuthApi.md#resetpassword) | **POST** /auth/reset-password | 重設密碼
 *AuthApi* | [**resetPasswordWithCode**](doc//AuthApi.md#resetpasswordwithcode) | **POST** /auth/reset-password-with-code | 使用驗證碼重置密碼
 *AuthApi* | [**sendEmailVerification**](doc//AuthApi.md#sendemailverification) | **POST** /auth/email-verification/send | 發送郵件驗證碼
-*AuthApi* | [**turnstilePage**](doc//AuthApi.md#turnstilepage) | **GET** /auth/turnstile | 獲取 Turnstile 驗證頁面
 *AuthApi* | [**updateProfile**](doc//AuthApi.md#updateprofile) | **POST** /auth/update-profile | 更新用戶資料
 *AuthApi* | [**verifyEmail**](doc//AuthApi.md#verifyemail) | **POST** /auth/email-verification/verify | 驗證郵件驗證碼
 *AuthApi* | [**verifyTwoFactorCode**](doc//AuthApi.md#verifytwofactorcode) | **POST** /auth/2fa/verify | 驗證雙因素認證碼
@@ -407,6 +406,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseUserPostStatistics](doc//ApiResponseUserPostStatistics.md)
  - [ApiResponseVoid](doc//ApiResponseVoid.md)
  - [ApplyStakingParam](doc//ApplyStakingParam.md)
+ - [AuthCodeExchangeParam](doc//AuthCodeExchangeParam.md)
  - [AutoReplyConfig](doc//AutoReplyConfig.md)
  - [AutoReplyConfigSearchRequest](doc//AutoReplyConfigSearchRequest.md)
  - [AutoReplyDeleteResponse](doc//AutoReplyDeleteResponse.md)
@@ -585,6 +585,7 @@ Class | Method | HTTP request | Description
  - [Transaction](doc//Transaction.md)
  - [TransactionSearchParam](doc//TransactionSearchParam.md)
  - [TransactionTypeEnum](doc//TransactionTypeEnum.md)
+ - [TwoFactorManageParam](doc//TwoFactorManageParam.md)
  - [TwoFactorSetupResponse](doc//TwoFactorSetupResponse.md)
  - [TwoFactorVerifyParam](doc//TwoFactorVerifyParam.md)
  - [UpdateDeliveryOrderParam](doc//UpdateDeliveryOrderParam.md)

@@ -60,21 +60,19 @@ class AuthApi {
     }
   }
 
-  /// 禁用雙因素認證
-  ///
-  /// 使用驗證碼禁用2FA
+  /// 使用授權碼自動登入
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [TwoFactorVerifyParam] twoFactorVerifyParam (required):
-  Future<Response> disableTwoFactorWithHttpInfo(TwoFactorVerifyParam twoFactorVerifyParam,) async {
+  /// * [AuthCodeExchangeParam] authCodeExchangeParam (required):
+  Future<Response> exchangeAuthCodeWithHttpInfo(AuthCodeExchangeParam authCodeExchangeParam,) async {
     // ignore: prefer_const_declarations
-    final path = r'/auth/2fa/disable';
+    final path = r'/auth/exchange-auth-code';
 
     // ignore: prefer_final_locals
-    Object? postBody = twoFactorVerifyParam;
+    Object? postBody = authCodeExchangeParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -94,66 +92,24 @@ class AuthApi {
     );
   }
 
-  /// 禁用雙因素認證
-  ///
-  /// 使用驗證碼禁用2FA
+  /// 使用授權碼自動登入
   ///
   /// Parameters:
   ///
-  /// * [TwoFactorVerifyParam] twoFactorVerifyParam (required):
-  Future<void> disableTwoFactor(TwoFactorVerifyParam twoFactorVerifyParam,) async {
-    final response = await disableTwoFactorWithHttpInfo(twoFactorVerifyParam,);
+  /// * [AuthCodeExchangeParam] authCodeExchangeParam (required):
+  Future<LoginResult?> exchangeAuthCode(AuthCodeExchangeParam authCodeExchangeParam,) async {
+    final response = await exchangeAuthCodeWithHttpInfo(authCodeExchangeParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
-  }
-
-  /// 啟用雙因素認證
-  ///
-  /// 使用驗證碼啟用2FA
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [TwoFactorVerifyParam] twoFactorVerifyParam (required):
-  Future<Response> enableTwoFactorWithHttpInfo(TwoFactorVerifyParam twoFactorVerifyParam,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/auth/2fa/enable';
-
-    // ignore: prefer_final_locals
-    Object? postBody = twoFactorVerifyParam;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 啟用雙因素認證
-  ///
-  /// 使用驗證碼啟用2FA
-  ///
-  /// Parameters:
-  ///
-  /// * [TwoFactorVerifyParam] twoFactorVerifyParam (required):
-  Future<void> enableTwoFactor(TwoFactorVerifyParam twoFactorVerifyParam,) async {
-    final response = await enableTwoFactorWithHttpInfo(twoFactorVerifyParam,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LoginResult',) as LoginResult;
+    
     }
+    return null;
   }
 
   /// 忘記密碼 - 發送驗證碼到郵箱
@@ -304,62 +260,6 @@ class AuthApi {
     return null;
   }
 
-  /// 查詢忘記密碼驗證碼的剩餘等待時間
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] email (required):
-  ///   用戶郵箱
-  Future<Response> getRemainingWaitTimeWithHttpInfo(String email,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/auth/forgot-password/remaining-time';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'email', email));
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 查詢忘記密碼驗證碼的剩餘等待時間
-  ///
-  /// Parameters:
-  ///
-  /// * [String] email (required):
-  ///   用戶郵箱
-  Future<Map<String, Object>?> getRemainingWaitTime(String email,) async {
-    final response = await getRemainingWaitTimeWithHttpInfo(email,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
-
-    }
-    return null;
-  }
-
   /// 獲取雙因素認證信息
   ///
   /// 如果未設置2FA，返回QR碼和密鑰；如果已設置，返回狀態信息
@@ -410,6 +310,8 @@ class AuthApi {
 
   /// 用戶登入
   ///
+  /// 支持普通登入和2FA雙因素認證登入。如果用戶啟用了2FA，必須在twoFactorCode字段提供驗證碼
+  ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
@@ -441,6 +343,8 @@ class AuthApi {
   }
 
   /// 用戶登入
+  ///
+  /// 支持普通登入和2FA雙因素認證登入。如果用戶啟用了2FA，必須在twoFactorCode字段提供驗證碼
   ///
   /// Parameters:
   ///
@@ -491,6 +395,54 @@ class AuthApi {
   /// 用戶登出
   Future<void> logout() async {
     final response = await logoutWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// 管理雙因素認證
+  ///
+  /// 統一管理2FA的啟用和禁用。action參數：enable=啟用，disable=禁用
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [TwoFactorManageParam] twoFactorManageParam (required):
+  Future<Response> manageTwoFactorWithHttpInfo(TwoFactorManageParam twoFactorManageParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/2fa/manage';
+
+    // ignore: prefer_final_locals
+    Object? postBody = twoFactorManageParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 管理雙因素認證
+  ///
+  /// 統一管理2FA的啟用和禁用。action參數：enable=啟用，disable=禁用
+  ///
+  /// Parameters:
+  ///
+  /// * [TwoFactorManageParam] twoFactorManageParam (required):
+  Future<void> manageTwoFactor(TwoFactorManageParam twoFactorManageParam,) async {
+    final response = await manageTwoFactorWithHttpInfo(twoFactorManageParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -602,6 +554,46 @@ class AuthApi {
     
     }
     return null;
+  }
+
+  /// 獲取註冊頁面
+  ///
+  /// 返回用戶註冊頁面，包含 Turnstile 驗證
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> registerPageWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/register';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 獲取註冊頁面
+  ///
+  /// 返回用戶註冊頁面，包含 Turnstile 驗證
+  Future<void> registerPage() async {
+    final response = await registerPageWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
   }
 
   /// 重發郵件驗證碼
@@ -797,54 +789,6 @@ class AuthApi {
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
-  }
-
-  /// 獲取 Turnstile 驗證頁面
-  ///
-  /// 返回用於 Flutter 集成的 Turnstile 驗證頁面
-  ///
-  /// Note: This method returns the HTTP [Response].
-  Future<Response> turnstilePageWithHttpInfo() async {
-    // ignore: prefer_const_declarations
-    final path = r'/auth/turnstile';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 獲取 Turnstile 驗證頁面
-  ///
-  /// 返回用於 Flutter 集成的 Turnstile 驗證頁面
-  Future<String?> turnstilePage() async {
-    final response = await turnstilePageWithHttpInfo();
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'String',) as String;
-    
-    }
-    return null;
   }
 
   /// 更新用戶資料

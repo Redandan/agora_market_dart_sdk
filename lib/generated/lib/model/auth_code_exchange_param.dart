@@ -10,95 +10,81 @@
 
 part of openapi.api;
 
-class LoginParam {
-  /// Returns a new [LoginParam] instance.
-  LoginParam({
-    required this.username,
-    required this.password,
-    this.rememberMe,
-    this.twoFactorCode,
-    this.turnstileToken,
+class AuthCodeExchangeParam {
+  /// Returns a new [AuthCodeExchangeParam] instance.
+  AuthCodeExchangeParam({
+    this.code,
+    this.deviceId,
+    this.ipAddress,
   });
 
-  /// 用戶名
-  String username;
-
-  /// 密碼
-  String password;
-
-  /// 記住我
+  /// 授權碼
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? rememberMe;
+  String? code;
 
-  /// 雙因素認證碼
+  /// 設備ID（測試用）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? twoFactorCode;
+  String? deviceId;
 
-  /// Cloudflare Turnstile 驗證 Token（可選）
+  /// IP地址（測試用）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? turnstileToken;
+  String? ipAddress;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is LoginParam &&
-    other.username == username &&
-    other.password == password &&
-    other.rememberMe == rememberMe &&
-    other.twoFactorCode == twoFactorCode &&
-    other.turnstileToken == turnstileToken;
+  bool operator ==(Object other) => identical(this, other) || other is AuthCodeExchangeParam &&
+    other.code == code &&
+    other.deviceId == deviceId &&
+    other.ipAddress == ipAddress;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (username.hashCode) +
-    (password.hashCode) +
-    (rememberMe == null ? 0 : rememberMe!.hashCode) +
-    (twoFactorCode == null ? 0 : twoFactorCode!.hashCode) +
-    (turnstileToken == null ? 0 : turnstileToken!.hashCode);
+    (code == null ? 0 : code!.hashCode) +
+    (deviceId == null ? 0 : deviceId!.hashCode) +
+    (ipAddress == null ? 0 : ipAddress!.hashCode);
 
   @override
-  String toString() => 'LoginParam[username=$username, password=$password, rememberMe=$rememberMe, twoFactorCode=$twoFactorCode, turnstileToken=$turnstileToken]';
+  String toString() => 'AuthCodeExchangeParam[code=$code, deviceId=$deviceId, ipAddress=$ipAddress]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'username'] = this.username;
-      json[r'password'] = this.password;
-    if (this.rememberMe != null) {
-      json[r'rememberMe'] = this.rememberMe;
+    if (this.code != null) {
+      json[r'code'] = this.code;
     } else {
-      json[r'rememberMe'] = null;
+      json[r'code'] = null;
     }
-    if (this.twoFactorCode != null) {
-      json[r'twoFactorCode'] = this.twoFactorCode;
+    if (this.deviceId != null) {
+      json[r'deviceId'] = this.deviceId;
     } else {
-      json[r'twoFactorCode'] = null;
+      json[r'deviceId'] = null;
     }
-    if (this.turnstileToken != null) {
-      json[r'turnstileToken'] = this.turnstileToken;
+    if (this.ipAddress != null) {
+      json[r'ipAddress'] = this.ipAddress;
     } else {
-      json[r'turnstileToken'] = null;
+      json[r'ipAddress'] = null;
     }
     return json;
   }
 
-  /// Returns a new [LoginParam] instance and imports its values from
+  /// Returns a new [AuthCodeExchangeParam] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static LoginParam? fromJson(dynamic value) {
+  static AuthCodeExchangeParam? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -107,28 +93,26 @@ class LoginParam {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "LoginParam[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "LoginParam[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "AuthCodeExchangeParam[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "AuthCodeExchangeParam[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return LoginParam(
-        username: mapValueOfType<String>(json, r'username')!,
-        password: mapValueOfType<String>(json, r'password')!,
-        rememberMe: mapValueOfType<bool>(json, r'rememberMe'),
-        twoFactorCode: mapValueOfType<String>(json, r'twoFactorCode'),
-        turnstileToken: mapValueOfType<String>(json, r'turnstileToken'),
+      return AuthCodeExchangeParam(
+        code: mapValueOfType<String>(json, r'code'),
+        deviceId: mapValueOfType<String>(json, r'deviceId'),
+        ipAddress: mapValueOfType<String>(json, r'ipAddress'),
       );
     }
     return null;
   }
 
-  static List<LoginParam> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <LoginParam>[];
+  static List<AuthCodeExchangeParam> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <AuthCodeExchangeParam>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = LoginParam.fromJson(row);
+        final value = AuthCodeExchangeParam.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -137,12 +121,12 @@ class LoginParam {
     return result.toList(growable: growable);
   }
 
-  static Map<String, LoginParam> mapFromJson(dynamic json) {
-    final map = <String, LoginParam>{};
+  static Map<String, AuthCodeExchangeParam> mapFromJson(dynamic json) {
+    final map = <String, AuthCodeExchangeParam>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = LoginParam.fromJson(entry.value);
+        final value = AuthCodeExchangeParam.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -151,14 +135,14 @@ class LoginParam {
     return map;
   }
 
-  // maps a json object with a list of LoginParam-objects as value to a dart map
-  static Map<String, List<LoginParam>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<LoginParam>>{};
+  // maps a json object with a list of AuthCodeExchangeParam-objects as value to a dart map
+  static Map<String, List<AuthCodeExchangeParam>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<AuthCodeExchangeParam>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = LoginParam.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = AuthCodeExchangeParam.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -166,8 +150,6 @@ class LoginParam {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'username',
-    'password',
   };
 }
 

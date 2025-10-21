@@ -222,6 +222,8 @@ class ApiClient {
           return ApiResponseVoid.fromJson(value);
         case 'ApplyStakingParam':
           return ApplyStakingParam.fromJson(value);
+        case 'AuthCodeExchangeParam':
+          return AuthCodeExchangeParam.fromJson(value);
         case 'AutoReplyConfig':
           return AutoReplyConfig.fromJson(value);
         case 'AutoReplyConfigSearchRequest':
@@ -578,6 +580,8 @@ class ApiClient {
           return TransactionSearchParam.fromJson(value);
         case 'TransactionTypeEnum':
           return TransactionTypeEnumTypeTransformer().decode(value);
+        case 'TwoFactorManageParam':
+          return TwoFactorManageParam.fromJson(value);
         case 'TwoFactorSetupResponse':
           return TwoFactorSetupResponse.fromJson(value);
         case 'TwoFactorVerifyParam':
