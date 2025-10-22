@@ -191,7 +191,6 @@ Class | Method | HTTP request | Description
 *AdminStoresApi* | [**updateStoreByAdmin**](doc//AdminStoresApi.md#updatestorebyadmin) | **POST** /admin/stores/{storeId}/update | 管理員更新商店信息
 *AdminStoresApi* | [**updateStoreStatus**](doc//AdminStoresApi.md#updatestorestatus) | **POST** /admin/stores/{storeId}/status | 更新商店狀態
 *AuthApi* | [**changePassword**](doc//AuthApi.md#changepassword) | **POST** /auth/change-password | 修改密碼
-*AuthApi* | [**exchangeAuthCode**](doc//AuthApi.md#exchangeauthcode) | **POST** /auth/exchange-auth-code | 使用授權碼自動登入
 *AuthApi* | [**forgotPassword**](doc//AuthApi.md#forgotpassword) | **POST** /auth/forgot-password | 忘記密碼 - 發送驗證碼到郵箱
 *AuthApi* | [**getCurrentUser**](doc//AuthApi.md#getcurrentuser) | **GET** /auth/me | 獲取當前用戶信息
 *AuthApi* | [**getEmailVerificationRemainingTime**](doc//AuthApi.md#getemailverificationremainingtime) | **GET** /auth/email-verification/remaining-time | 查詢郵件驗證碼的剩餘等待時間
@@ -201,7 +200,6 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**manageTwoFactor**](doc//AuthApi.md#managetwofactor) | **POST** /auth/2fa/manage | 管理雙因素認證
 *AuthApi* | [**refreshToken**](doc//AuthApi.md#refreshtoken) | **POST** /auth/refresh-token | 刷新訪問令牌
 *AuthApi* | [**register**](doc//AuthApi.md#register) | **POST** /auth/register | 註冊新用戶
-*AuthApi* | [**registerPage**](doc//AuthApi.md#registerpage) | **GET** /auth/register | 獲取註冊頁面
 *AuthApi* | [**resendVerificationEmail**](doc//AuthApi.md#resendverificationemail) | **POST** /auth/email-verification/resend | 重發郵件驗證碼
 *AuthApi* | [**resetPassword**](doc//AuthApi.md#resetpassword) | **POST** /auth/reset-password | 重設密碼
 *AuthApi* | [**resetPasswordWithCode**](doc//AuthApi.md#resetpasswordwithcode) | **POST** /auth/reset-password-with-code | 使用驗證碼重置密碼
@@ -406,7 +404,6 @@ Class | Method | HTTP request | Description
  - [ApiResponseUserPostStatistics](doc//ApiResponseUserPostStatistics.md)
  - [ApiResponseVoid](doc//ApiResponseVoid.md)
  - [ApplyStakingParam](doc//ApplyStakingParam.md)
- - [AuthCodeExchangeParam](doc//AuthCodeExchangeParam.md)
  - [AutoReplyConfig](doc//AutoReplyConfig.md)
  - [AutoReplyConfigSearchRequest](doc//AutoReplyConfigSearchRequest.md)
  - [AutoReplyDeleteResponse](doc//AutoReplyDeleteResponse.md)
@@ -544,6 +541,7 @@ Class | Method | HTTP request | Description
  - [RechargeSearchParam](doc//RechargeSearchParam.md)
  - [RechargeStatusEnum](doc//RechargeStatusEnum.md)
  - [RegisterParam](doc//RegisterParam.md)
+ - [RegisterResult](doc//RegisterResult.md)
  - [ReplyIssueParam](doc//ReplyIssueParam.md)
  - [ReturnProcessParam](doc//ReturnProcessParam.md)
  - [ReturnRequestParam](doc//ReturnRequestParam.md)

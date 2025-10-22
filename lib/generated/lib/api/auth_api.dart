@@ -60,58 +60,6 @@ class AuthApi {
     }
   }
 
-  /// 使用授權碼自動登入
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [AuthCodeExchangeParam] authCodeExchangeParam (required):
-  Future<Response> exchangeAuthCodeWithHttpInfo(AuthCodeExchangeParam authCodeExchangeParam,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/auth/exchange-auth-code';
-
-    // ignore: prefer_final_locals
-    Object? postBody = authCodeExchangeParam;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 使用授權碼自動登入
-  ///
-  /// Parameters:
-  ///
-  /// * [AuthCodeExchangeParam] authCodeExchangeParam (required):
-  Future<LoginResult?> exchangeAuthCode(AuthCodeExchangeParam authCodeExchangeParam,) async {
-    final response = await exchangeAuthCodeWithHttpInfo(authCodeExchangeParam,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LoginResult',) as LoginResult;
-    
-    }
-    return null;
-  }
-
   /// 忘記密碼 - 發送驗證碼到郵箱
   ///
   /// Note: This method returns the HTTP [Response].
@@ -506,6 +454,8 @@ class AuthApi {
 
   /// 註冊新用戶
   ///
+  /// 註冊新用戶，成功後可能重定向到指定URL或返回登入結果
+  ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
@@ -538,10 +488,12 @@ class AuthApi {
 
   /// 註冊新用戶
   ///
+  /// 註冊新用戶，成功後可能重定向到指定URL或返回登入結果
+  ///
   /// Parameters:
   ///
   /// * [RegisterParam] registerParam (required):
-  Future<LoginResult?> register(RegisterParam registerParam,) async {
+  Future<RegisterResult?> register(RegisterParam registerParam,) async {
     final response = await registerWithHttpInfo(registerParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -550,50 +502,10 @@ class AuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LoginResult',) as LoginResult;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'RegisterResult',) as RegisterResult;
     
     }
     return null;
-  }
-
-  /// 獲取註冊頁面
-  ///
-  /// 返回用戶註冊頁面，包含 Turnstile 驗證
-  ///
-  /// Note: This method returns the HTTP [Response].
-  Future<Response> registerPageWithHttpInfo() async {
-    // ignore: prefer_const_declarations
-    final path = r'/auth/register';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 獲取註冊頁面
-  ///
-  /// 返回用戶註冊頁面，包含 Turnstile 驗證
-  Future<void> registerPage() async {
-    final response = await registerPageWithHttpInfo();
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
   }
 
   /// 重發郵件驗證碼

@@ -23,8 +23,6 @@ class LoginResult {
     this.userId,
     this.username,
     this.userInfo,
-    this.authCode,
-    this.authCodeExpiration,
   });
 
   /// 操作是否成功
@@ -116,24 +114,6 @@ class LoginResult {
   ///
   UserInfo? userInfo;
 
-  /// 臨時授權碼（用於註冊後自動登入）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? authCode;
-
-  /// 授權碼過期時間（秒）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? authCodeExpiration;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is LoginResult &&
     other.success == success &&
@@ -145,9 +125,7 @@ class LoginResult {
     other.refreshTokenExpiration == refreshTokenExpiration &&
     other.userId == userId &&
     other.username == username &&
-    other.userInfo == userInfo &&
-    other.authCode == authCode &&
-    other.authCodeExpiration == authCodeExpiration;
+    other.userInfo == userInfo;
 
   @override
   int get hashCode =>
@@ -161,12 +139,10 @@ class LoginResult {
     (refreshTokenExpiration == null ? 0 : refreshTokenExpiration!.hashCode) +
     (userId == null ? 0 : userId!.hashCode) +
     (username == null ? 0 : username!.hashCode) +
-    (userInfo == null ? 0 : userInfo!.hashCode) +
-    (authCode == null ? 0 : authCode!.hashCode) +
-    (authCodeExpiration == null ? 0 : authCodeExpiration!.hashCode);
+    (userInfo == null ? 0 : userInfo!.hashCode);
 
   @override
-  String toString() => 'LoginResult[success=$success, message=$message, token=$token, refreshToken=$refreshToken, tokenIssuedAt=$tokenIssuedAt, tokenExpiration=$tokenExpiration, refreshTokenExpiration=$refreshTokenExpiration, userId=$userId, username=$username, userInfo=$userInfo, authCode=$authCode, authCodeExpiration=$authCodeExpiration]';
+  String toString() => 'LoginResult[success=$success, message=$message, token=$token, refreshToken=$refreshToken, tokenIssuedAt=$tokenIssuedAt, tokenExpiration=$tokenExpiration, refreshTokenExpiration=$refreshTokenExpiration, userId=$userId, username=$username, userInfo=$userInfo]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -220,16 +196,6 @@ class LoginResult {
     } else {
       json[r'userInfo'] = null;
     }
-    if (this.authCode != null) {
-      json[r'authCode'] = this.authCode;
-    } else {
-      json[r'authCode'] = null;
-    }
-    if (this.authCodeExpiration != null) {
-      json[r'authCodeExpiration'] = this.authCodeExpiration;
-    } else {
-      json[r'authCodeExpiration'] = null;
-    }
     return json;
   }
 
@@ -262,8 +228,6 @@ class LoginResult {
         userId: mapValueOfType<int>(json, r'userId'),
         username: mapValueOfType<String>(json, r'username'),
         userInfo: UserInfo.fromJson(json[r'userInfo']),
-        authCode: mapValueOfType<String>(json, r'authCode'),
-        authCodeExpiration: mapValueOfType<int>(json, r'authCodeExpiration'),
       );
     }
     return null;

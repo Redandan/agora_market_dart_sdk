@@ -222,8 +222,6 @@ class ApiClient {
           return ApiResponseVoid.fromJson(value);
         case 'ApplyStakingParam':
           return ApplyStakingParam.fromJson(value);
-        case 'AuthCodeExchangeParam':
-          return AuthCodeExchangeParam.fromJson(value);
         case 'AutoReplyConfig':
           return AutoReplyConfig.fromJson(value);
         case 'AutoReplyConfigSearchRequest':
@@ -498,6 +496,8 @@ class ApiClient {
           return RechargeStatusEnumTypeTransformer().decode(value);
         case 'RegisterParam':
           return RegisterParam.fromJson(value);
+        case 'RegisterResult':
+          return RegisterResult.fromJson(value);
         case 'ReplyIssueParam':
           return ReplyIssueParam.fromJson(value);
         case 'ReturnProcessParam':
