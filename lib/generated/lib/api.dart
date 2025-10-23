@@ -258,6 +258,7 @@ part 'model/top_disputed_seller_dto.dart';
 part 'model/top_product_dto.dart';
 part 'model/top_seller_dto.dart';
 part 'model/transaction.dart';
+part 'model/transaction_list_param.dart';
 part 'model/transaction_search_param.dart';
 part 'model/transaction_type_enum.dart';
 part 'model/two_factor_manage_param.dart';

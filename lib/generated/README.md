@@ -117,7 +117,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getStorePosts**](doc//DefaultApi.md#getstoreposts) | **GET** /api/posts/store/{storeId} | 獲取商店貼文
 *DefaultApi* | [**getTopPosts**](doc//DefaultApi.md#gettopposts) | **GET** /api/posts/top | 獲取置頂貼文
 *DefaultApi* | [**getTransactionById**](doc//DefaultApi.md#gettransactionbyid) | **GET** /transactions/{id} | 根據交易ID查詢交易記錄
-*DefaultApi* | [**getTransactionList**](doc//DefaultApi.md#gettransactionlist) | **GET** /transactions/{token}/list | 查詢帳變歷史
+*DefaultApi* | [**getTransactionList**](doc//DefaultApi.md#gettransactionlist) | **POST** /transactions/list | 查詢帳變歷史
 *DefaultApi* | [**getTransactionListByAdmin**](doc//DefaultApi.md#gettransactionlistbyadmin) | **POST** /transactions/admin/search | 管理員查看帳變記錄
 *DefaultApi* | [**getUserCart**](doc//DefaultApi.md#getusercart) | **GET** /api/cart | 獲取用戶購物車
 *DefaultApi* | [**getUserPostStatistics**](doc//DefaultApi.md#getuserpoststatistics) | **GET** /api/posts/user/{userId}/statistics | 獲取用戶貼文統計
@@ -581,6 +581,7 @@ Class | Method | HTTP request | Description
  - [TopProductDTO](doc//TopProductDTO.md)
  - [TopSellerDTO](doc//TopSellerDTO.md)
  - [Transaction](doc//Transaction.md)
+ - [TransactionListParam](doc//TransactionListParam.md)
  - [TransactionSearchParam](doc//TransactionSearchParam.md)
  - [TransactionTypeEnum](doc//TransactionTypeEnum.md)
  - [TwoFactorManageParam](doc//TwoFactorManageParam.md)

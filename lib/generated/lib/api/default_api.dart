@@ -3270,34 +3270,24 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
-  /// * [String] token (required):
-  ///
-  /// * [int] page (required):
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size (required):
-  ///   每頁數量
-  Future<Response> getTransactionListWithHttpInfo(String token, int page, int size,) async {
+  /// * [TransactionListParam] transactionListParam (required):
+  Future<Response> getTransactionListWithHttpInfo(TransactionListParam transactionListParam,) async {
     // ignore: prefer_const_declarations
-    final path = r'/transactions/{token}/list'
-      .replaceAll('{token}', token);
+    final path = r'/transactions/list';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = transactionListParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'page', page));
-      queryParams.addAll(_queryParams('', 'size', size));
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -3310,15 +3300,9 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
-  /// * [String] token (required):
-  ///
-  /// * [int] page (required):
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size (required):
-  ///   每頁數量
-  Future<PageTransaction?> getTransactionList(String token, int page, int size,) async {
-    final response = await getTransactionListWithHttpInfo(token, page, size,);
+  /// * [TransactionListParam] transactionListParam (required):
+  Future<PageTransaction?> getTransactionList(TransactionListParam transactionListParam,) async {
+    final response = await getTransactionListWithHttpInfo(transactionListParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
