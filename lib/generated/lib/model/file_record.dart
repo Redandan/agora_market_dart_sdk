@@ -35,8 +35,8 @@ class FileRecord {
     this.image,
     this.document,
     this.archive,
-    this.deleted,
     this.fileSizeFormatted,
+    this.deleted,
   });
 
   ///
@@ -215,7 +215,7 @@ class FileRecord {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? deleted;
+  String? fileSizeFormatted;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -223,7 +223,7 @@ class FileRecord {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? fileSizeFormatted;
+  bool? deleted;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is FileRecord &&
@@ -249,8 +249,8 @@ class FileRecord {
     other.image == image &&
     other.document == document &&
     other.archive == archive &&
-    other.deleted == deleted &&
-    other.fileSizeFormatted == fileSizeFormatted;
+    other.fileSizeFormatted == fileSizeFormatted &&
+    other.deleted == deleted;
 
   @override
   int get hashCode =>
@@ -277,11 +277,11 @@ class FileRecord {
     (image == null ? 0 : image!.hashCode) +
     (document == null ? 0 : document!.hashCode) +
     (archive == null ? 0 : archive!.hashCode) +
-    (deleted == null ? 0 : deleted!.hashCode) +
-    (fileSizeFormatted == null ? 0 : fileSizeFormatted!.hashCode);
+    (fileSizeFormatted == null ? 0 : fileSizeFormatted!.hashCode) +
+    (deleted == null ? 0 : deleted!.hashCode);
 
   @override
-  String toString() => 'FileRecord[id=$id, originalFilename=$originalFilename, objectName=$objectName, fileSize=$fileSize, contentType=$contentType, fileExtension=$fileExtension, fileUrl=$fileUrl, businessType=$businessType, businessId=$businessId, uploaderId=$uploaderId, uploaderName=$uploaderName, isPublic=$isPublic, status=$status, description=$description, tags=$tags, fileHash=$fileHash, uploadTime=$uploadTime, lastUpdated=$lastUpdated, deletedAt=$deletedAt, image=$image, document=$document, archive=$archive, deleted=$deleted, fileSizeFormatted=$fileSizeFormatted]';
+  String toString() => 'FileRecord[id=$id, originalFilename=$originalFilename, objectName=$objectName, fileSize=$fileSize, contentType=$contentType, fileExtension=$fileExtension, fileUrl=$fileUrl, businessType=$businessType, businessId=$businessId, uploaderId=$uploaderId, uploaderName=$uploaderName, isPublic=$isPublic, status=$status, description=$description, tags=$tags, fileHash=$fileHash, uploadTime=$uploadTime, lastUpdated=$lastUpdated, deletedAt=$deletedAt, image=$image, document=$document, archive=$archive, fileSizeFormatted=$fileSizeFormatted, deleted=$deleted]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -395,15 +395,15 @@ class FileRecord {
     } else {
       json[r'archive'] = null;
     }
-    if (this.deleted != null) {
-      json[r'deleted'] = this.deleted;
-    } else {
-      json[r'deleted'] = null;
-    }
     if (this.fileSizeFormatted != null) {
       json[r'fileSizeFormatted'] = this.fileSizeFormatted;
     } else {
       json[r'fileSizeFormatted'] = null;
+    }
+    if (this.deleted != null) {
+      json[r'deleted'] = this.deleted;
+    } else {
+      json[r'deleted'] = null;
     }
     return json;
   }
@@ -449,8 +449,8 @@ class FileRecord {
         image: mapValueOfType<bool>(json, r'image'),
         document: mapValueOfType<bool>(json, r'document'),
         archive: mapValueOfType<bool>(json, r'archive'),
-        deleted: mapValueOfType<bool>(json, r'deleted'),
         fileSizeFormatted: mapValueOfType<String>(json, r'fileSizeFormatted'),
+        deleted: mapValueOfType<bool>(json, r'deleted'),
       );
     }
     return null;
