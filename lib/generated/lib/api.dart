@@ -62,6 +62,7 @@ part 'api/webpush_api.dart';
 part 'api/webrtc_api.dart';
 
 part 'model/accept_order_param.dart';
+part 'model/actual_shipping_company.dart';
 part 'model/admin_create_user_param.dart';
 part 'model/admin_reset_password_param.dart';
 part 'model/admin_store_search_param.dart';

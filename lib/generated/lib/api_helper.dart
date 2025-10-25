@@ -55,6 +55,9 @@ String parameterToString(dynamic value) {
   if (value is DateTime) {
     return value.toUtc().toIso8601String();
   }
+  if (value is ActualShippingCompany) {
+    return ActualShippingCompanyTypeTransformer().encode(value).toString();
+  }
   if (value is ColdWalletStatusEnum) {
     return ColdWalletStatusEnumTypeTransformer().encode(value).toString();
   }

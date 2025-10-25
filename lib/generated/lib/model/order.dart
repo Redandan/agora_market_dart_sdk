@@ -24,6 +24,7 @@ class Order {
     this.orderAmount,
     this.currency,
     this.shippingCompany,
+    this.trackingNumber,
     this.status,
     this.remark,
     this.createdAt,
@@ -130,7 +131,16 @@ class Order {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  ShippingCompanyEnum? shippingCompany;
+  ActualShippingCompany? shippingCompany;
+
+  /// 追蹤號碼（賣家出貨時輸入）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? trackingNumber;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -215,6 +225,7 @@ class Order {
     other.orderAmount == orderAmount &&
     other.currency == currency &&
     other.shippingCompany == shippingCompany &&
+    other.trackingNumber == trackingNumber &&
     other.status == status &&
     other.remark == remark &&
     other.createdAt == createdAt &&
@@ -238,6 +249,7 @@ class Order {
     (orderAmount == null ? 0 : orderAmount!.hashCode) +
     (currency == null ? 0 : currency!.hashCode) +
     (shippingCompany == null ? 0 : shippingCompany!.hashCode) +
+    (trackingNumber == null ? 0 : trackingNumber!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
@@ -248,7 +260,7 @@ class Order {
     (product == null ? 0 : product!.hashCode);
 
   @override
-  String toString() => 'Order[id=$id, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, shippingCompany=$shippingCompany, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, reviewedAt=$reviewedAt, product=$product]';
+  String toString() => 'Order[id=$id, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, reviewedAt=$reviewedAt, product=$product]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -306,6 +318,11 @@ class Order {
       json[r'shippingCompany'] = this.shippingCompany;
     } else {
       json[r'shippingCompany'] = null;
+    }
+    if (this.trackingNumber != null) {
+      json[r'trackingNumber'] = this.trackingNumber;
+    } else {
+      json[r'trackingNumber'] = null;
     }
     if (this.status != null) {
       json[r'status'] = this.status;
@@ -379,7 +396,8 @@ class Order {
         productPrice: num.parse('${json[r'productPrice']}'),
         orderAmount: num.parse('${json[r'orderAmount']}'),
         currency: mapValueOfType<String>(json, r'currency'),
-        shippingCompany: ShippingCompanyEnum.fromJson(json[r'shippingCompany']),
+        shippingCompany: ActualShippingCompany.fromJson(json[r'shippingCompany']),
+        trackingNumber: mapValueOfType<String>(json, r'trackingNumber'),
         status: OrderStatusEnum.fromJson(json[r'status']),
         remark: mapValueOfType<String>(json, r'remark'),
         createdAt: mapDateTime(json, r'createdAt', r''),

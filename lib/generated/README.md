@@ -385,6 +385,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AcceptOrderParam](doc//AcceptOrderParam.md)
+ - [ActualShippingCompany](doc//ActualShippingCompany.md)
  - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
  - [AdminResetPasswordParam](doc//AdminResetPasswordParam.md)
  - [AdminStoreSearchParam](doc//AdminStoreSearchParam.md)
