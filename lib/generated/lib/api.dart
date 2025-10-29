@@ -130,6 +130,7 @@ part 'model/dispute_query_result.dart';
 part 'model/dispute_search_param.dart';
 part 'model/dispute_statistics_dto.dart';
 part 'model/dispute_status_enum.dart';
+part 'model/error_response.dart';
 part 'model/file_record.dart';
 part 'model/file_record_info.dart';
 part 'model/file_record_search_request.dart';

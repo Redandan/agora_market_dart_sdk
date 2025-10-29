@@ -74,7 +74,7 @@ class MemberOrdersApi {
 
   /// 確認收貨
   ///
-  /// 買家確認收貨
+  /// 買家確認收貨，完成訂單。  **使用場景說明：**  1. **平台配送（PLATFORM_DELIVERY）**：    - 訂單狀態必須為 `DELIVERED`（已送達）    - 必須提供驗證碼（`verifyCode`），由配送員確認送達後系統發送給買家    - 驗證碼為6位數字    - 請求示例：`{\"orderId\": \"ORD001\", \"verifyCode\": \"123456\", \"remark\": \"已收到\"}`  2. **第三方物流（非平台配送）**：    - 訂單狀態可以是 `SHIPPED`（已發貨）或 `DELIVERED`（已送達）    - 不需要提供驗證碼（`verifyCode` 可為空或null）    - 特別適用於缺少物流單號（trackingNumber）的情況，買家可手動確認收貨    - 請求示例：`{\"orderId\": \"ORD002\", \"verifyCode\": null, \"remark\": \"已收到\"}`  **確認收貨後：** - 訂單狀態更新為 `COMPLETED`（已完成） - 款項自動轉入賣家帳戶 - 系統發送完成通知給買家和賣家 - 買家可以開始進行商品評價
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -108,7 +108,7 @@ class MemberOrdersApi {
 
   /// 確認收貨
   ///
-  /// 買家確認收貨
+  /// 買家確認收貨，完成訂單。  **使用場景說明：**  1. **平台配送（PLATFORM_DELIVERY）**：    - 訂單狀態必須為 `DELIVERED`（已送達）    - 必須提供驗證碼（`verifyCode`），由配送員確認送達後系統發送給買家    - 驗證碼為6位數字    - 請求示例：`{\"orderId\": \"ORD001\", \"verifyCode\": \"123456\", \"remark\": \"已收到\"}`  2. **第三方物流（非平台配送）**：    - 訂單狀態可以是 `SHIPPED`（已發貨）或 `DELIVERED`（已送達）    - 不需要提供驗證碼（`verifyCode` 可為空或null）    - 特別適用於缺少物流單號（trackingNumber）的情況，買家可手動確認收貨    - 請求示例：`{\"orderId\": \"ORD002\", \"verifyCode\": null, \"remark\": \"已收到\"}`  **確認收貨後：** - 訂單狀態更新為 `COMPLETED`（已完成） - 款項自動轉入賣家帳戶 - 系統發送完成通知給買家和賣家 - 買家可以開始進行商品評價
   ///
   /// Parameters:
   ///

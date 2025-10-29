@@ -13,21 +13,15 @@ part of openapi.api;
 class OrderConfirmParam {
   /// Returns a new [OrderConfirmParam] instance.
   OrderConfirmParam({
-    this.orderId,
+    required this.orderId,
     this.verifyCode,
     this.remark,
   });
 
-  /// 訂單ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? orderId;
+  /// 訂單ID，必填
+  String orderId;
 
-  /// 驗證碼
+  /// 驗證碼，6位數字。  **使用場景：** - **平台配送（PLATFORM_DELIVERY）**：必須提供，由配送員確認送達後系統發送的6位驗證碼 - **第三方物流（非平台配送）**：可選，不需要提供驗證碼  **獲取方式：** 平台配送時，系統會通過推送通知或消息發送驗證碼給買家
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -36,7 +30,7 @@ class OrderConfirmParam {
   ///
   String? verifyCode;
 
-  /// 確認備註
+  /// 確認收貨備註，選填。買家可以添加額外的確認信息或評價
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -54,7 +48,7 @@ class OrderConfirmParam {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (orderId == null ? 0 : orderId!.hashCode) +
+    (orderId.hashCode) +
     (verifyCode == null ? 0 : verifyCode!.hashCode) +
     (remark == null ? 0 : remark!.hashCode);
 
@@ -63,11 +57,7 @@ class OrderConfirmParam {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.orderId != null) {
       json[r'orderId'] = this.orderId;
-    } else {
-      json[r'orderId'] = null;
-    }
     if (this.verifyCode != null) {
       json[r'verifyCode'] = this.verifyCode;
     } else {
@@ -100,7 +90,7 @@ class OrderConfirmParam {
       }());
 
       return OrderConfirmParam(
-        orderId: mapValueOfType<String>(json, r'orderId'),
+        orderId: mapValueOfType<String>(json, r'orderId')!,
         verifyCode: mapValueOfType<String>(json, r'verifyCode'),
         remark: mapValueOfType<String>(json, r'remark'),
       );
@@ -150,6 +140,7 @@ class OrderConfirmParam {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'orderId',
   };
 }
 
