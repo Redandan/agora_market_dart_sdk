@@ -10,7 +10,7 @@
 
 part of openapi.api;
 
-/// 物流服務類型
+/// 取件類型
 class LogisticsServiceTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const LogisticsServiceTypeEnum._(this.value);
@@ -24,15 +24,19 @@ class LogisticsServiceTypeEnum {
   String toJson() => value;
 
   static const HOME_DELIVERY = LogisticsServiceTypeEnum._(r'HOME_DELIVERY');
-  static const STORE_PICKUP = LogisticsServiceTypeEnum._(r'STORE_PICKUP');
-  static const POSTAL = LogisticsServiceTypeEnum._(r'POSTAL');
+  static const SEVEN_ELEVEN = LogisticsServiceTypeEnum._(r'SEVEN_ELEVEN');
+  static const FAMILY_MART = LogisticsServiceTypeEnum._(r'FAMILY_MART');
+  static const HILIFE = LogisticsServiceTypeEnum._(r'HILIFE');
+  static const OK_MART = LogisticsServiceTypeEnum._(r'OK_MART');
   static const unknownDefaultOpenApi = LogisticsServiceTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][LogisticsServiceTypeEnum].
   static const values = <LogisticsServiceTypeEnum>[
     HOME_DELIVERY,
-    STORE_PICKUP,
-    POSTAL,
+    SEVEN_ELEVEN,
+    FAMILY_MART,
+    HILIFE,
+    OK_MART,
     unknownDefaultOpenApi,
   ];
 
@@ -73,8 +77,10 @@ class LogisticsServiceTypeEnumTypeTransformer {
     if (data != null) {
       switch (data) {
         case r'HOME_DELIVERY': return LogisticsServiceTypeEnum.HOME_DELIVERY;
-        case r'STORE_PICKUP': return LogisticsServiceTypeEnum.STORE_PICKUP;
-        case r'POSTAL': return LogisticsServiceTypeEnum.POSTAL;
+        case r'SEVEN_ELEVEN': return LogisticsServiceTypeEnum.SEVEN_ELEVEN;
+        case r'FAMILY_MART': return LogisticsServiceTypeEnum.FAMILY_MART;
+        case r'HILIFE': return LogisticsServiceTypeEnum.HILIFE;
+        case r'OK_MART': return LogisticsServiceTypeEnum.OK_MART;
         case r'unknown_default_open_api': return LogisticsServiceTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
