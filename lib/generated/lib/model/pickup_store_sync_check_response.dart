@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class ConvenienceStoreSyncCheckResponse {
-  /// Returns a new [ConvenienceStoreSyncCheckResponse] instance.
-  ConvenienceStoreSyncCheckResponse({
+class PickupStoreSyncCheckResponse {
+  /// Returns a new [PickupStoreSyncCheckResponse] instance.
+  PickupStoreSyncCheckResponse({
     this.needsSync,
     this.newStoresCount,
     this.updatedStoresCount,
@@ -96,7 +96,7 @@ class ConvenienceStoreSyncCheckResponse {
   String? recommendedAction;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ConvenienceStoreSyncCheckResponse &&
+  bool operator ==(Object other) => identical(this, other) || other is PickupStoreSyncCheckResponse &&
     other.needsSync == needsSync &&
     other.newStoresCount == newStoresCount &&
     other.updatedStoresCount == updatedStoresCount &&
@@ -119,7 +119,7 @@ class ConvenienceStoreSyncCheckResponse {
     (recommendedAction == null ? 0 : recommendedAction!.hashCode);
 
   @override
-  String toString() => 'ConvenienceStoreSyncCheckResponse[needsSync=$needsSync, newStoresCount=$newStoresCount, updatedStoresCount=$updatedStoresCount, closedStoresCount=$closedStoresCount, databaseTotalCount=$databaseTotalCount, sourceTotalCount=$sourceTotalCount, checkedCity=$checkedCity, recommendedAction=$recommendedAction]';
+  String toString() => 'PickupStoreSyncCheckResponse[needsSync=$needsSync, newStoresCount=$newStoresCount, updatedStoresCount=$updatedStoresCount, closedStoresCount=$closedStoresCount, databaseTotalCount=$databaseTotalCount, sourceTotalCount=$sourceTotalCount, checkedCity=$checkedCity, recommendedAction=$recommendedAction]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -166,10 +166,10 @@ class ConvenienceStoreSyncCheckResponse {
     return json;
   }
 
-  /// Returns a new [ConvenienceStoreSyncCheckResponse] instance and imports its values from
+  /// Returns a new [PickupStoreSyncCheckResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ConvenienceStoreSyncCheckResponse? fromJson(dynamic value) {
+  static PickupStoreSyncCheckResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -178,13 +178,13 @@ class ConvenienceStoreSyncCheckResponse {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ConvenienceStoreSyncCheckResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ConvenienceStoreSyncCheckResponse[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PickupStoreSyncCheckResponse[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PickupStoreSyncCheckResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ConvenienceStoreSyncCheckResponse(
+      return PickupStoreSyncCheckResponse(
         needsSync: mapValueOfType<bool>(json, r'needsSync'),
         newStoresCount: mapValueOfType<int>(json, r'newStoresCount'),
         updatedStoresCount: mapValueOfType<int>(json, r'updatedStoresCount'),
@@ -198,11 +198,11 @@ class ConvenienceStoreSyncCheckResponse {
     return null;
   }
 
-  static List<ConvenienceStoreSyncCheckResponse> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ConvenienceStoreSyncCheckResponse>[];
+  static List<PickupStoreSyncCheckResponse> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PickupStoreSyncCheckResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ConvenienceStoreSyncCheckResponse.fromJson(row);
+        final value = PickupStoreSyncCheckResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -211,12 +211,12 @@ class ConvenienceStoreSyncCheckResponse {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ConvenienceStoreSyncCheckResponse> mapFromJson(dynamic json) {
-    final map = <String, ConvenienceStoreSyncCheckResponse>{};
+  static Map<String, PickupStoreSyncCheckResponse> mapFromJson(dynamic json) {
+    final map = <String, PickupStoreSyncCheckResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ConvenienceStoreSyncCheckResponse.fromJson(entry.value);
+        final value = PickupStoreSyncCheckResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -225,14 +225,14 @@ class ConvenienceStoreSyncCheckResponse {
     return map;
   }
 
-  // maps a json object with a list of ConvenienceStoreSyncCheckResponse-objects as value to a dart map
-  static Map<String, List<ConvenienceStoreSyncCheckResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ConvenienceStoreSyncCheckResponse>>{};
+  // maps a json object with a list of PickupStoreSyncCheckResponse-objects as value to a dart map
+  static Map<String, List<PickupStoreSyncCheckResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<PickupStoreSyncCheckResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ConvenienceStoreSyncCheckResponse.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = PickupStoreSyncCheckResponse.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class ConvenienceStoreSearchParam {
-  /// Returns a new [ConvenienceStoreSearchParam] instance.
-  ConvenienceStoreSearchParam({
+class PickupStoreSearchParam {
+  /// Returns a new [PickupStoreSearchParam] instance.
+  PickupStoreSearchParam({
     this.storeType,
     this.storeCode,
     this.city,
@@ -75,7 +75,7 @@ class ConvenienceStoreSearchParam {
   bool? returnCountOnly;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ConvenienceStoreSearchParam &&
+  bool operator ==(Object other) => identical(this, other) || other is PickupStoreSearchParam &&
     other.storeType == storeType &&
     other.storeCode == storeCode &&
     other.city == city &&
@@ -94,7 +94,7 @@ class ConvenienceStoreSearchParam {
     (returnCountOnly == null ? 0 : returnCountOnly!.hashCode);
 
   @override
-  String toString() => 'ConvenienceStoreSearchParam[storeType=$storeType, storeCode=$storeCode, city=$city, district=$district, keyword=$keyword, returnCountOnly=$returnCountOnly]';
+  String toString() => 'PickupStoreSearchParam[storeType=$storeType, storeCode=$storeCode, city=$city, district=$district, keyword=$keyword, returnCountOnly=$returnCountOnly]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -131,10 +131,10 @@ class ConvenienceStoreSearchParam {
     return json;
   }
 
-  /// Returns a new [ConvenienceStoreSearchParam] instance and imports its values from
+  /// Returns a new [PickupStoreSearchParam] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ConvenienceStoreSearchParam? fromJson(dynamic value) {
+  static PickupStoreSearchParam? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -143,13 +143,13 @@ class ConvenienceStoreSearchParam {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ConvenienceStoreSearchParam[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ConvenienceStoreSearchParam[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PickupStoreSearchParam[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PickupStoreSearchParam[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ConvenienceStoreSearchParam(
+      return PickupStoreSearchParam(
         storeType: LogisticsServiceTypeEnum.fromJson(json[r'storeType']),
         storeCode: mapValueOfType<String>(json, r'storeCode'),
         city: mapValueOfType<String>(json, r'city'),
@@ -161,11 +161,11 @@ class ConvenienceStoreSearchParam {
     return null;
   }
 
-  static List<ConvenienceStoreSearchParam> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ConvenienceStoreSearchParam>[];
+  static List<PickupStoreSearchParam> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PickupStoreSearchParam>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ConvenienceStoreSearchParam.fromJson(row);
+        final value = PickupStoreSearchParam.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -174,12 +174,12 @@ class ConvenienceStoreSearchParam {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ConvenienceStoreSearchParam> mapFromJson(dynamic json) {
-    final map = <String, ConvenienceStoreSearchParam>{};
+  static Map<String, PickupStoreSearchParam> mapFromJson(dynamic json) {
+    final map = <String, PickupStoreSearchParam>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ConvenienceStoreSearchParam.fromJson(entry.value);
+        final value = PickupStoreSearchParam.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -188,14 +188,14 @@ class ConvenienceStoreSearchParam {
     return map;
   }
 
-  // maps a json object with a list of ConvenienceStoreSearchParam-objects as value to a dart map
-  static Map<String, List<ConvenienceStoreSearchParam>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ConvenienceStoreSearchParam>>{};
+  // maps a json object with a list of PickupStoreSearchParam-objects as value to a dart map
+  static Map<String, List<PickupStoreSearchParam>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<PickupStoreSearchParam>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ConvenienceStoreSearchParam.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = PickupStoreSearchParam.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class ConvenienceStore {
-  /// Returns a new [ConvenienceStore] instance.
-  ConvenienceStore({
+class PickupStore {
+  /// Returns a new [PickupStore] instance.
+  PickupStore({
     this.id,
     this.storeType,
     this.storeCode,
@@ -23,9 +23,9 @@ class ConvenienceStore {
     this.isActive,
     this.createdAt,
     this.updatedAt,
-    this.fullStoreInfo,
     this.sevenEleven,
     this.familyMart,
+    this.fullStoreInfo,
   });
 
   /// 門市ID
@@ -123,14 +123,6 @@ class ConvenienceStore {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? fullStoreInfo;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? sevenEleven;
 
   ///
@@ -141,8 +133,16 @@ class ConvenienceStore {
   ///
   bool? familyMart;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? fullStoreInfo;
+
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ConvenienceStore &&
+  bool operator ==(Object other) => identical(this, other) || other is PickupStore &&
     other.id == id &&
     other.storeType == storeType &&
     other.storeCode == storeCode &&
@@ -153,9 +153,9 @@ class ConvenienceStore {
     other.isActive == isActive &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.fullStoreInfo == fullStoreInfo &&
     other.sevenEleven == sevenEleven &&
-    other.familyMart == familyMart;
+    other.familyMart == familyMart &&
+    other.fullStoreInfo == fullStoreInfo;
 
   @override
   int get hashCode =>
@@ -170,12 +170,12 @@ class ConvenienceStore {
     (isActive == null ? 0 : isActive!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (fullStoreInfo == null ? 0 : fullStoreInfo!.hashCode) +
     (sevenEleven == null ? 0 : sevenEleven!.hashCode) +
-    (familyMart == null ? 0 : familyMart!.hashCode);
+    (familyMart == null ? 0 : familyMart!.hashCode) +
+    (fullStoreInfo == null ? 0 : fullStoreInfo!.hashCode);
 
   @override
-  String toString() => 'ConvenienceStore[id=$id, storeType=$storeType, storeCode=$storeCode, storeName=$storeName, storeAddress=$storeAddress, city=$city, district=$district, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, fullStoreInfo=$fullStoreInfo, sevenEleven=$sevenEleven, familyMart=$familyMart]';
+  String toString() => 'PickupStore[id=$id, storeType=$storeType, storeCode=$storeCode, storeName=$storeName, storeAddress=$storeAddress, city=$city, district=$district, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, sevenEleven=$sevenEleven, familyMart=$familyMart, fullStoreInfo=$fullStoreInfo]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -229,11 +229,6 @@ class ConvenienceStore {
     } else {
       json[r'updatedAt'] = null;
     }
-    if (this.fullStoreInfo != null) {
-      json[r'fullStoreInfo'] = this.fullStoreInfo;
-    } else {
-      json[r'fullStoreInfo'] = null;
-    }
     if (this.sevenEleven != null) {
       json[r'sevenEleven'] = this.sevenEleven;
     } else {
@@ -244,13 +239,18 @@ class ConvenienceStore {
     } else {
       json[r'familyMart'] = null;
     }
+    if (this.fullStoreInfo != null) {
+      json[r'fullStoreInfo'] = this.fullStoreInfo;
+    } else {
+      json[r'fullStoreInfo'] = null;
+    }
     return json;
   }
 
-  /// Returns a new [ConvenienceStore] instance and imports its values from
+  /// Returns a new [PickupStore] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ConvenienceStore? fromJson(dynamic value) {
+  static PickupStore? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -259,13 +259,13 @@ class ConvenienceStore {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ConvenienceStore[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ConvenienceStore[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PickupStore[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PickupStore[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ConvenienceStore(
+      return PickupStore(
         id: mapValueOfType<int>(json, r'id'),
         storeType: LogisticsServiceTypeEnum.fromJson(json[r'storeType']),
         storeCode: mapValueOfType<String>(json, r'storeCode'),
@@ -276,19 +276,19 @@ class ConvenienceStore {
         isActive: mapValueOfType<bool>(json, r'isActive'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
-        fullStoreInfo: mapValueOfType<String>(json, r'fullStoreInfo'),
         sevenEleven: mapValueOfType<bool>(json, r'sevenEleven'),
         familyMart: mapValueOfType<bool>(json, r'familyMart'),
+        fullStoreInfo: mapValueOfType<String>(json, r'fullStoreInfo'),
       );
     }
     return null;
   }
 
-  static List<ConvenienceStore> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ConvenienceStore>[];
+  static List<PickupStore> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PickupStore>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ConvenienceStore.fromJson(row);
+        final value = PickupStore.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -297,12 +297,12 @@ class ConvenienceStore {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ConvenienceStore> mapFromJson(dynamic json) {
-    final map = <String, ConvenienceStore>{};
+  static Map<String, PickupStore> mapFromJson(dynamic json) {
+    final map = <String, PickupStore>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ConvenienceStore.fromJson(entry.value);
+        final value = PickupStore.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -311,14 +311,14 @@ class ConvenienceStore {
     return map;
   }
 
-  // maps a json object with a list of ConvenienceStore-objects as value to a dart map
-  static Map<String, List<ConvenienceStore>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ConvenienceStore>>{};
+  // maps a json object with a list of PickupStore-objects as value to a dart map
+  static Map<String, List<PickupStore>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<PickupStore>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ConvenienceStore.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = PickupStore.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

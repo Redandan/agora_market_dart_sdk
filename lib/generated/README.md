@@ -237,10 +237,6 @@ Class | Method | HTTP request | Description
 *ColdWalletApi* | [**freezeColdWallet**](doc//ColdWalletApi.md#freezecoldwallet) | **POST** /cold-wallet/{id}/freeze | 凍結冷錢包
 *ColdWalletApi* | [**getColdWallets**](doc//ColdWalletApi.md#getcoldwallets) | **GET** /cold-wallet | 獲取冷錢包列表
 *ColdWalletApi* | [**releaseColdWallet**](doc//ColdWalletApi.md#releasecoldwallet) | **POST** /cold-wallet/{id}/release | 釋放冷錢包
-*ConvenienceStoresApi* | [**checkSyncStatus**](doc//ConvenienceStoresApi.md#checksyncstatus) | **POST** /convenience-stores/check-sync | 檢查門市資料是否需要更新
-*ConvenienceStoresApi* | [**searchStores**](doc//ConvenienceStoresApi.md#searchstores) | **POST** /convenience-stores/search | 查詢便利商店門市
-*ConvenienceStoresApi* | [**syncSevenElevenStores**](doc//ConvenienceStoresApi.md#syncsevenelevenstores) | **POST** /convenience-stores/sync/seven-eleven | 同步7-11門市資料
-*ConvenienceStoresApi* | [**syncSevenElevenStoresByCity**](doc//ConvenienceStoresApi.md#syncsevenelevenstoresbycity) | **POST** /convenience-stores/sync/seven-eleven/city | 同步指定縣市的7-11門市資料
 *DeliveryApi* | [**acceptOrder**](doc//DeliveryApi.md#acceptorder) | **POST** /delivery/accept | 配送員接單
 *DeliveryApi* | [**currentStatus**](doc//DeliveryApi.md#currentstatus) | **GET** /delivery/status | 獲取當前配送狀態
 *DeliveryApi* | [**getAvailableOrders**](doc//DeliveryApi.md#getavailableorders) | **GET** /delivery/available-orders | 獲取可接訂單列表
@@ -283,6 +279,10 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**updateReturnShipping**](doc//MemberOrdersApi.md#updatereturnshipping) | **POST** /orders/{orderId}/return/shipping | 更新退貨物流信息
 *OciNotificationControllerApi* | [**handleNotification**](doc//OciNotificationControllerApi.md#handlenotification) | **POST** /oci/notifications | 
 *OciNotificationControllerApi* | [**healthCheck**](doc//OciNotificationControllerApi.md#healthcheck) | **GET** /oci/notifications | 
+*PickupStoresApi* | [**checkSyncStatus**](doc//PickupStoresApi.md#checksyncstatus) | **POST** /pickup-stores/check-sync | 檢查取貨商店門市資料是否需要更新
+*PickupStoresApi* | [**searchStores**](doc//PickupStoresApi.md#searchstores) | **POST** /pickup-stores/search | 查詢取貨商店門市
+*PickupStoresApi* | [**syncSevenElevenStores**](doc//PickupStoresApi.md#syncsevenelevenstores) | **POST** /pickup-stores/sync/seven-eleven | 同步7-11取貨門市資料
+*PickupStoresApi* | [**syncSevenElevenStoresByCity**](doc//PickupStoresApi.md#syncsevenelevenstoresbycity) | **POST** /pickup-stores/sync/seven-eleven/city | 同步指定縣市的7-11取貨門市資料
 *ProductsApi* | [**batchDeleteProducts**](doc//ProductsApi.md#batchdeleteproducts) | **DELETE** /products/batch | 批量刪除商品
 *ProductsApi* | [**createProduct**](doc//ProductsApi.md#createproduct) | **POST** /products/create | 創建商品
 *ProductsApi* | [**decreaseStock**](doc//ProductsApi.md#decreasestock) | **POST** /products/{id}/stock/decrease | 減少商品庫存
@@ -433,10 +433,6 @@ Class | Method | HTTP request | Description
  - [ClientLogDto](doc//ClientLogDto.md)
  - [ColdWallet](doc//ColdWallet.md)
  - [ColdWalletStatusEnum](doc//ColdWalletStatusEnum.md)
- - [ConvenienceStore](doc//ConvenienceStore.md)
- - [ConvenienceStoreSearchParam](doc//ConvenienceStoreSearchParam.md)
- - [ConvenienceStoreSearchResponse](doc//ConvenienceStoreSearchResponse.md)
- - [ConvenienceStoreSyncCheckResponse](doc//ConvenienceStoreSyncCheckResponse.md)
  - [CreateColdWalletParam](doc//CreateColdWalletParam.md)
  - [CreateIssueParam](doc//CreateIssueParam.md)
  - [CreatePromoCodeParam](doc//CreatePromoCodeParam.md)
@@ -515,6 +511,10 @@ Class | Method | HTTP request | Description
  - [Pageable](doc//Pageable.md)
  - [PageableObject](doc//PageableObject.md)
  - [PasswordResetParam](doc//PasswordResetParam.md)
+ - [PickupStore](doc//PickupStore.md)
+ - [PickupStoreSearchParam](doc//PickupStoreSearchParam.md)
+ - [PickupStoreSearchResponse](doc//PickupStoreSearchResponse.md)
+ - [PickupStoreSyncCheckResponse](doc//PickupStoreSyncCheckResponse.md)
  - [PostCreateParam](doc//PostCreateParam.md)
  - [PostResponse](doc//PostResponse.md)
  - [PostSearchParam](doc//PostSearchParam.md)

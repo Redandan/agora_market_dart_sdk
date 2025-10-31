@@ -278,14 +278,6 @@ class ApiClient {
           return ColdWallet.fromJson(value);
         case 'ColdWalletStatusEnum':
           return ColdWalletStatusEnumTypeTransformer().decode(value);
-        case 'ConvenienceStore':
-          return ConvenienceStore.fromJson(value);
-        case 'ConvenienceStoreSearchParam':
-          return ConvenienceStoreSearchParam.fromJson(value);
-        case 'ConvenienceStoreSearchResponse':
-          return ConvenienceStoreSearchResponse.fromJson(value);
-        case 'ConvenienceStoreSyncCheckResponse':
-          return ConvenienceStoreSyncCheckResponse.fromJson(value);
         case 'CreateColdWalletParam':
           return CreateColdWalletParam.fromJson(value);
         case 'CreateIssueParam':
@@ -442,6 +434,14 @@ class ApiClient {
           return PageableObject.fromJson(value);
         case 'PasswordResetParam':
           return PasswordResetParam.fromJson(value);
+        case 'PickupStore':
+          return PickupStore.fromJson(value);
+        case 'PickupStoreSearchParam':
+          return PickupStoreSearchParam.fromJson(value);
+        case 'PickupStoreSearchResponse':
+          return PickupStoreSearchResponse.fromJson(value);
+        case 'PickupStoreSyncCheckResponse':
+          return PickupStoreSyncCheckResponse.fromJson(value);
         case 'PostCreateParam':
           return PostCreateParam.fromJson(value);
         case 'PostResponse':
