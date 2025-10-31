@@ -187,7 +187,7 @@ Class | Method | HTTP request | Description
 *AdminStoresApi* | [**getAllStores**](doc//AdminStoresApi.md#getallstores) | **GET** /admin/stores/list | 查看所有商店列表
 *AdminStoresApi* | [**getStoreDetail**](doc//AdminStoresApi.md#getstoredetail) | **GET** /admin/stores/{storeId} | 查看商店詳情
 *AdminStoresApi* | [**getStoreStatistics**](doc//AdminStoresApi.md#getstorestatistics) | **GET** /admin/stores/statistics | 商店統計報告
-*AdminStoresApi* | [**searchStores**](doc//AdminStoresApi.md#searchstores) | **POST** /admin/stores/search | 搜索商店
+*AdminStoresApi* | [**searchStores1**](doc//AdminStoresApi.md#searchstores1) | **POST** /admin/stores/search | 搜索商店
 *AdminStoresApi* | [**updateStoreByAdmin**](doc//AdminStoresApi.md#updatestorebyadmin) | **POST** /admin/stores/{storeId}/update | 管理員更新商店信息
 *AdminStoresApi* | [**updateStoreStatus**](doc//AdminStoresApi.md#updatestorestatus) | **POST** /admin/stores/{storeId}/status | 更新商店狀態
 *AuthApi* | [**changePassword**](doc//AuthApi.md#changepassword) | **POST** /auth/change-password | 修改密碼
@@ -237,6 +237,10 @@ Class | Method | HTTP request | Description
 *ColdWalletApi* | [**freezeColdWallet**](doc//ColdWalletApi.md#freezecoldwallet) | **POST** /cold-wallet/{id}/freeze | 凍結冷錢包
 *ColdWalletApi* | [**getColdWallets**](doc//ColdWalletApi.md#getcoldwallets) | **GET** /cold-wallet | 獲取冷錢包列表
 *ColdWalletApi* | [**releaseColdWallet**](doc//ColdWalletApi.md#releasecoldwallet) | **POST** /cold-wallet/{id}/release | 釋放冷錢包
+*ConvenienceStoresApi* | [**checkSyncStatus**](doc//ConvenienceStoresApi.md#checksyncstatus) | **POST** /convenience-stores/check-sync | 檢查門市資料是否需要更新
+*ConvenienceStoresApi* | [**searchStores**](doc//ConvenienceStoresApi.md#searchstores) | **POST** /convenience-stores/search | 查詢便利商店門市
+*ConvenienceStoresApi* | [**syncSevenElevenStores**](doc//ConvenienceStoresApi.md#syncsevenelevenstores) | **POST** /convenience-stores/sync/seven-eleven | 同步7-11門市資料
+*ConvenienceStoresApi* | [**syncSevenElevenStoresByCity**](doc//ConvenienceStoresApi.md#syncsevenelevenstoresbycity) | **POST** /convenience-stores/sync/seven-eleven/city | 同步指定縣市的7-11門市資料
 *DeliveryApi* | [**acceptOrder**](doc//DeliveryApi.md#acceptorder) | **POST** /delivery/accept | 配送員接單
 *DeliveryApi* | [**currentStatus**](doc//DeliveryApi.md#currentstatus) | **GET** /delivery/status | 獲取當前配送狀態
 *DeliveryApi* | [**getAvailableOrders**](doc//DeliveryApi.md#getavailableorders) | **GET** /delivery/available-orders | 獲取可接訂單列表
@@ -317,6 +321,8 @@ Class | Method | HTTP request | Description
 *ReviewsApi* | [**replyToReview**](doc//ReviewsApi.md#replytoreview) | **POST** /reviews/reply | 回覆評價
 *ReviewsApi* | [**searchReviews**](doc//ReviewsApi.md#searchreviews) | **POST** /reviews/search | 搜索評價
 *ReviewsApi* | [**updateReview**](doc//ReviewsApi.md#updatereview) | **POST** /reviews/update | 更新評價
+*SevenElevenStoresApi* | [**getAllCities**](doc//SevenElevenStoresApi.md#getallcities) | **GET** /api/stores/seven-eleven/cities | 取得所有縣市列表
+*SevenElevenStoresApi* | [**getStoresByCity**](doc//SevenElevenStoresApi.md#getstoresbycity) | **GET** /api/stores/seven-eleven/stores | 根據縣市取得7-11門市列表
 *SseApi* | [**broadcastMessage**](doc//SseApi.md#broadcastmessage) | **POST** /sse/broadcast | 廣播消息
 *SseApi* | [**connect**](doc//SseApi.md#connect) | **GET** /sse/connect/{clientId} | 建立 SSE 連接
 *SseApi* | [**disconnect**](doc//SseApi.md#disconnect) | **DELETE** /sse/disconnect/{clientId} | 斷開 SSE 連接
@@ -427,6 +433,10 @@ Class | Method | HTTP request | Description
  - [ClientLogDto](doc//ClientLogDto.md)
  - [ColdWallet](doc//ColdWallet.md)
  - [ColdWalletStatusEnum](doc//ColdWalletStatusEnum.md)
+ - [ConvenienceStore](doc//ConvenienceStore.md)
+ - [ConvenienceStoreSearchParam](doc//ConvenienceStoreSearchParam.md)
+ - [ConvenienceStoreSearchResponse](doc//ConvenienceStoreSearchResponse.md)
+ - [ConvenienceStoreSyncCheckResponse](doc//ConvenienceStoreSyncCheckResponse.md)
  - [CreateColdWalletParam](doc//CreateColdWalletParam.md)
  - [CreateIssueParam](doc//CreateIssueParam.md)
  - [CreatePromoCodeParam](doc//CreatePromoCodeParam.md)
@@ -555,6 +565,7 @@ Class | Method | HTTP request | Description
  - [ScheduledPushResponseDTO](doc//ScheduledPushResponseDTO.md)
  - [SchedulerStatusResponseDTO](doc//SchedulerStatusResponseDTO.md)
  - [SellerOrderStatsDTO](doc//SellerOrderStatsDTO.md)
+ - [SevenElevenStoreDTO](doc//SevenElevenStoreDTO.md)
  - [ShippingAddress](doc//ShippingAddress.md)
  - [ShippingAddressOption](doc//ShippingAddressOption.md)
  - [ShippingCompanyEnum](doc//ShippingCompanyEnum.md)

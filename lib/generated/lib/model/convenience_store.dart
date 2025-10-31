@@ -10,23 +10,25 @@
 
 part of openapi.api;
 
-class ChatMessage {
-  /// Returns a new [ChatMessage] instance.
-  ChatMessage({
+class ConvenienceStore {
+  /// Returns a new [ConvenienceStore] instance.
+  ConvenienceStore({
     this.id,
-    this.senderId,
-    this.receiverId,
-    this.sessionId,
-    this.content,
+    this.storeType,
+    this.storeCode,
+    this.storeName,
+    this.storeAddress,
+    this.city,
+    this.district,
+    this.isActive,
     this.createdAt,
     this.updatedAt,
-    this.deletedAt,
-    this.imageMessage,
-    this.textMessage,
-    this.mixedMessage,
+    this.fullStoreInfo,
+    this.sevenEleven,
+    this.familyMart,
   });
 
-  /// 消息ID
+  /// 門市ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -35,41 +37,67 @@ class ChatMessage {
   ///
   int? id;
 
-  /// 發送者ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? senderId;
+  LogisticsServiceTypeEnum? storeType;
 
-  /// 接收者ID
+  /// 門市代號（唯一）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? receiverId;
+  String? storeCode;
 
-  /// 聊天會話ID
+  /// 門市名稱
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? sessionId;
+  String? storeName;
 
-  /// 消息內容
+  /// 門市地址
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? content;
+  String? storeAddress;
+
+  /// 縣市（從地址中解析）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? city;
+
+  /// 鄉鎮市區（從地址中解析）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? district;
+
+  /// 是否啟用
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isActive;
 
   /// 創建時間
   ///
@@ -80,7 +108,7 @@ class ChatMessage {
   ///
   DateTime? createdAt;
 
-  /// 更新時間
+  /// 最後更新時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -89,14 +117,13 @@ class ChatMessage {
   ///
   DateTime? updatedAt;
 
-  /// 刪除時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  DateTime? deletedAt;
+  String? fullStoreInfo;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -104,7 +131,7 @@ class ChatMessage {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? imageMessage;
+  bool? sevenEleven;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -112,47 +139,43 @@ class ChatMessage {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? textMessage;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? mixedMessage;
+  bool? familyMart;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ChatMessage &&
+  bool operator ==(Object other) => identical(this, other) || other is ConvenienceStore &&
     other.id == id &&
-    other.senderId == senderId &&
-    other.receiverId == receiverId &&
-    other.sessionId == sessionId &&
-    other.content == content &&
+    other.storeType == storeType &&
+    other.storeCode == storeCode &&
+    other.storeName == storeName &&
+    other.storeAddress == storeAddress &&
+    other.city == city &&
+    other.district == district &&
+    other.isActive == isActive &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.deletedAt == deletedAt &&
-    other.imageMessage == imageMessage &&
-    other.textMessage == textMessage &&
-    other.mixedMessage == mixedMessage;
+    other.fullStoreInfo == fullStoreInfo &&
+    other.sevenEleven == sevenEleven &&
+    other.familyMart == familyMart;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
-    (senderId == null ? 0 : senderId!.hashCode) +
-    (receiverId == null ? 0 : receiverId!.hashCode) +
-    (sessionId == null ? 0 : sessionId!.hashCode) +
-    (content == null ? 0 : content!.hashCode) +
+    (storeType == null ? 0 : storeType!.hashCode) +
+    (storeCode == null ? 0 : storeCode!.hashCode) +
+    (storeName == null ? 0 : storeName!.hashCode) +
+    (storeAddress == null ? 0 : storeAddress!.hashCode) +
+    (city == null ? 0 : city!.hashCode) +
+    (district == null ? 0 : district!.hashCode) +
+    (isActive == null ? 0 : isActive!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (deletedAt == null ? 0 : deletedAt!.hashCode) +
-    (imageMessage == null ? 0 : imageMessage!.hashCode) +
-    (textMessage == null ? 0 : textMessage!.hashCode) +
-    (mixedMessage == null ? 0 : mixedMessage!.hashCode);
+    (fullStoreInfo == null ? 0 : fullStoreInfo!.hashCode) +
+    (sevenEleven == null ? 0 : sevenEleven!.hashCode) +
+    (familyMart == null ? 0 : familyMart!.hashCode);
 
   @override
-  String toString() => 'ChatMessage[id=$id, senderId=$senderId, receiverId=$receiverId, sessionId=$sessionId, content=$content, createdAt=$createdAt, updatedAt=$updatedAt, deletedAt=$deletedAt, imageMessage=$imageMessage, textMessage=$textMessage, mixedMessage=$mixedMessage]';
+  String toString() => 'ConvenienceStore[id=$id, storeType=$storeType, storeCode=$storeCode, storeName=$storeName, storeAddress=$storeAddress, city=$city, district=$district, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, fullStoreInfo=$fullStoreInfo, sevenEleven=$sevenEleven, familyMart=$familyMart]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -161,25 +184,40 @@ class ChatMessage {
     } else {
       json[r'id'] = null;
     }
-    if (this.senderId != null) {
-      json[r'senderId'] = this.senderId;
+    if (this.storeType != null) {
+      json[r'storeType'] = this.storeType;
     } else {
-      json[r'senderId'] = null;
+      json[r'storeType'] = null;
     }
-    if (this.receiverId != null) {
-      json[r'receiverId'] = this.receiverId;
+    if (this.storeCode != null) {
+      json[r'storeCode'] = this.storeCode;
     } else {
-      json[r'receiverId'] = null;
+      json[r'storeCode'] = null;
     }
-    if (this.sessionId != null) {
-      json[r'sessionId'] = this.sessionId;
+    if (this.storeName != null) {
+      json[r'storeName'] = this.storeName;
     } else {
-      json[r'sessionId'] = null;
+      json[r'storeName'] = null;
     }
-    if (this.content != null) {
-      json[r'content'] = this.content;
+    if (this.storeAddress != null) {
+      json[r'storeAddress'] = this.storeAddress;
     } else {
-      json[r'content'] = null;
+      json[r'storeAddress'] = null;
+    }
+    if (this.city != null) {
+      json[r'city'] = this.city;
+    } else {
+      json[r'city'] = null;
+    }
+    if (this.district != null) {
+      json[r'district'] = this.district;
+    } else {
+      json[r'district'] = null;
+    }
+    if (this.isActive != null) {
+      json[r'isActive'] = this.isActive;
+    } else {
+      json[r'isActive'] = null;
     }
     if (this.createdAt != null) {
       json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
@@ -191,33 +229,28 @@ class ChatMessage {
     } else {
       json[r'updatedAt'] = null;
     }
-    if (this.deletedAt != null) {
-      json[r'deletedAt'] = this.deletedAt!.toUtc().toIso8601String();
+    if (this.fullStoreInfo != null) {
+      json[r'fullStoreInfo'] = this.fullStoreInfo;
     } else {
-      json[r'deletedAt'] = null;
+      json[r'fullStoreInfo'] = null;
     }
-    if (this.imageMessage != null) {
-      json[r'imageMessage'] = this.imageMessage;
+    if (this.sevenEleven != null) {
+      json[r'sevenEleven'] = this.sevenEleven;
     } else {
-      json[r'imageMessage'] = null;
+      json[r'sevenEleven'] = null;
     }
-    if (this.textMessage != null) {
-      json[r'textMessage'] = this.textMessage;
+    if (this.familyMart != null) {
+      json[r'familyMart'] = this.familyMart;
     } else {
-      json[r'textMessage'] = null;
-    }
-    if (this.mixedMessage != null) {
-      json[r'mixedMessage'] = this.mixedMessage;
-    } else {
-      json[r'mixedMessage'] = null;
+      json[r'familyMart'] = null;
     }
     return json;
   }
 
-  /// Returns a new [ChatMessage] instance and imports its values from
+  /// Returns a new [ConvenienceStore] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ChatMessage? fromJson(dynamic value) {
+  static ConvenienceStore? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -226,34 +259,36 @@ class ChatMessage {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ChatMessage[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ChatMessage[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ConvenienceStore[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ConvenienceStore[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ChatMessage(
+      return ConvenienceStore(
         id: mapValueOfType<int>(json, r'id'),
-        senderId: mapValueOfType<int>(json, r'senderId'),
-        receiverId: mapValueOfType<int>(json, r'receiverId'),
-        sessionId: mapValueOfType<String>(json, r'sessionId'),
-        content: mapValueOfType<String>(json, r'content'),
+        storeType: LogisticsServiceTypeEnum.fromJson(json[r'storeType']),
+        storeCode: mapValueOfType<String>(json, r'storeCode'),
+        storeName: mapValueOfType<String>(json, r'storeName'),
+        storeAddress: mapValueOfType<String>(json, r'storeAddress'),
+        city: mapValueOfType<String>(json, r'city'),
+        district: mapValueOfType<String>(json, r'district'),
+        isActive: mapValueOfType<bool>(json, r'isActive'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
-        deletedAt: mapDateTime(json, r'deletedAt', r''),
-        imageMessage: mapValueOfType<bool>(json, r'imageMessage'),
-        textMessage: mapValueOfType<bool>(json, r'textMessage'),
-        mixedMessage: mapValueOfType<bool>(json, r'mixedMessage'),
+        fullStoreInfo: mapValueOfType<String>(json, r'fullStoreInfo'),
+        sevenEleven: mapValueOfType<bool>(json, r'sevenEleven'),
+        familyMart: mapValueOfType<bool>(json, r'familyMart'),
       );
     }
     return null;
   }
 
-  static List<ChatMessage> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ChatMessage>[];
+  static List<ConvenienceStore> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ConvenienceStore>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ChatMessage.fromJson(row);
+        final value = ConvenienceStore.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -262,12 +297,12 @@ class ChatMessage {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ChatMessage> mapFromJson(dynamic json) {
-    final map = <String, ChatMessage>{};
+  static Map<String, ConvenienceStore> mapFromJson(dynamic json) {
+    final map = <String, ConvenienceStore>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ChatMessage.fromJson(entry.value);
+        final value = ConvenienceStore.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -276,14 +311,14 @@ class ChatMessage {
     return map;
   }
 
-  // maps a json object with a list of ChatMessage-objects as value to a dart map
-  static Map<String, List<ChatMessage>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ChatMessage>>{};
+  // maps a json object with a list of ConvenienceStore-objects as value to a dart map
+  static Map<String, List<ConvenienceStore>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ConvenienceStore>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ChatMessage.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ConvenienceStore.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

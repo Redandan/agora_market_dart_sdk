@@ -411,7 +411,7 @@ class AdminStoresApi {
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<Response> searchStoresWithHttpInfo(AdminStoreSearchParam adminStoreSearchParam, { int? page, int? size, }) async {
+  Future<Response> searchStores1WithHttpInfo(AdminStoreSearchParam adminStoreSearchParam, { int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/stores/search';
 
@@ -456,8 +456,8 @@ class AdminStoresApi {
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<PageStoreResponseDTO?> searchStores(AdminStoreSearchParam adminStoreSearchParam, { int? page, int? size, }) async {
-    final response = await searchStoresWithHttpInfo(adminStoreSearchParam,  page: page, size: size, );
+  Future<PageStoreResponseDTO?> searchStores1(AdminStoreSearchParam adminStoreSearchParam, { int? page, int? size, }) async {
+    final response = await searchStores1WithHttpInfo(adminStoreSearchParam,  page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
