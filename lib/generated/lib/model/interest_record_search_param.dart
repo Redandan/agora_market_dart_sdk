@@ -10,78 +10,30 @@
 
 part of openapi.api;
 
-class PageColdWallet {
-  /// Returns a new [PageColdWallet] instance.
-  PageColdWallet({
-    this.totalElements,
-    this.totalPages,
-    this.sort,
-    this.numberOfElements,
-    this.pageable,
-    this.first,
-    this.last,
+class InterestRecordSearchParam {
+  /// Returns a new [InterestRecordSearchParam] instance.
+  InterestRecordSearchParam({
+    this.page,
     this.size,
-    this.content = const [],
-    this.number,
-    this.empty,
+    this.startDate,
+    this.endDate,
+    this.keyword,
+    this.sortBy,
+    this.sortDirection,
+    this.userId,
+    this.stakingId,
   });
 
+  /// 頁碼，從1開始
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalElements;
+  int? page;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? totalPages;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  SortObject? sort;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? numberOfElements;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  PageableObject? pageable;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? first;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? last;
-
+  /// 每頁數量
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -90,116 +42,151 @@ class PageColdWallet {
   ///
   int? size;
 
-  List<ColdWallet> content;
-
+  /// 開始日期 (ISO-8601 格式)
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? number;
+  DateTime? startDate;
 
+  /// 結束日期 (ISO-8601 格式)
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? empty;
+  DateTime? endDate;
+
+  /// 搜索關鍵字
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? keyword;
+
+  /// 排序字段
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sortBy;
+
+  /// 排序方向 (ASC/DESC)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sortDirection;
+
+  /// 用戶ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? userId;
+
+  /// 質押記錄ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? stakingId;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageColdWallet &&
-    other.totalElements == totalElements &&
-    other.totalPages == totalPages &&
-    other.sort == sort &&
-    other.numberOfElements == numberOfElements &&
-    other.pageable == pageable &&
-    other.first == first &&
-    other.last == last &&
+  bool operator ==(Object other) => identical(this, other) || other is InterestRecordSearchParam &&
+    other.page == page &&
     other.size == size &&
-    _deepEquality.equals(other.content, content) &&
-    other.number == number &&
-    other.empty == empty;
+    other.startDate == startDate &&
+    other.endDate == endDate &&
+    other.keyword == keyword &&
+    other.sortBy == sortBy &&
+    other.sortDirection == sortDirection &&
+    other.userId == userId &&
+    other.stakingId == stakingId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalElements == null ? 0 : totalElements!.hashCode) +
-    (totalPages == null ? 0 : totalPages!.hashCode) +
-    (sort == null ? 0 : sort!.hashCode) +
-    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
-    (pageable == null ? 0 : pageable!.hashCode) +
-    (first == null ? 0 : first!.hashCode) +
-    (last == null ? 0 : last!.hashCode) +
+    (page == null ? 0 : page!.hashCode) +
     (size == null ? 0 : size!.hashCode) +
-    (content.hashCode) +
-    (number == null ? 0 : number!.hashCode) +
-    (empty == null ? 0 : empty!.hashCode);
+    (startDate == null ? 0 : startDate!.hashCode) +
+    (endDate == null ? 0 : endDate!.hashCode) +
+    (keyword == null ? 0 : keyword!.hashCode) +
+    (sortBy == null ? 0 : sortBy!.hashCode) +
+    (sortDirection == null ? 0 : sortDirection!.hashCode) +
+    (userId == null ? 0 : userId!.hashCode) +
+    (stakingId == null ? 0 : stakingId!.hashCode);
 
   @override
-  String toString() => 'PageColdWallet[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, numberOfElements=$numberOfElements, pageable=$pageable, first=$first, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'InterestRecordSearchParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, userId=$userId, stakingId=$stakingId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.totalElements != null) {
-      json[r'totalElements'] = this.totalElements;
+    if (this.page != null) {
+      json[r'page'] = this.page;
     } else {
-      json[r'totalElements'] = null;
-    }
-    if (this.totalPages != null) {
-      json[r'totalPages'] = this.totalPages;
-    } else {
-      json[r'totalPages'] = null;
-    }
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
-    } else {
-      json[r'sort'] = null;
-    }
-    if (this.numberOfElements != null) {
-      json[r'numberOfElements'] = this.numberOfElements;
-    } else {
-      json[r'numberOfElements'] = null;
-    }
-    if (this.pageable != null) {
-      json[r'pageable'] = this.pageable;
-    } else {
-      json[r'pageable'] = null;
-    }
-    if (this.first != null) {
-      json[r'first'] = this.first;
-    } else {
-      json[r'first'] = null;
-    }
-    if (this.last != null) {
-      json[r'last'] = this.last;
-    } else {
-      json[r'last'] = null;
+      json[r'page'] = null;
     }
     if (this.size != null) {
       json[r'size'] = this.size;
     } else {
       json[r'size'] = null;
     }
-      json[r'content'] = this.content;
-    if (this.number != null) {
-      json[r'number'] = this.number;
+    if (this.startDate != null) {
+      json[r'startDate'] = this.startDate!.toUtc().toIso8601String();
     } else {
-      json[r'number'] = null;
+      json[r'startDate'] = null;
     }
-    if (this.empty != null) {
-      json[r'empty'] = this.empty;
+    if (this.endDate != null) {
+      json[r'endDate'] = this.endDate!.toUtc().toIso8601String();
     } else {
-      json[r'empty'] = null;
+      json[r'endDate'] = null;
+    }
+    if (this.keyword != null) {
+      json[r'keyword'] = this.keyword;
+    } else {
+      json[r'keyword'] = null;
+    }
+    if (this.sortBy != null) {
+      json[r'sortBy'] = this.sortBy;
+    } else {
+      json[r'sortBy'] = null;
+    }
+    if (this.sortDirection != null) {
+      json[r'sortDirection'] = this.sortDirection;
+    } else {
+      json[r'sortDirection'] = null;
+    }
+    if (this.userId != null) {
+      json[r'userId'] = this.userId;
+    } else {
+      json[r'userId'] = null;
+    }
+    if (this.stakingId != null) {
+      json[r'stakingId'] = this.stakingId;
+    } else {
+      json[r'stakingId'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageColdWallet] instance and imports its values from
+  /// Returns a new [InterestRecordSearchParam] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageColdWallet? fromJson(dynamic value) {
+  static InterestRecordSearchParam? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -208,34 +195,32 @@ class PageColdWallet {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageColdWallet[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageColdWallet[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "InterestRecordSearchParam[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "InterestRecordSearchParam[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageColdWallet(
-        totalElements: mapValueOfType<int>(json, r'totalElements'),
-        totalPages: mapValueOfType<int>(json, r'totalPages'),
-        sort: SortObject.fromJson(json[r'sort']),
-        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
-        pageable: PageableObject.fromJson(json[r'pageable']),
-        first: mapValueOfType<bool>(json, r'first'),
-        last: mapValueOfType<bool>(json, r'last'),
+      return InterestRecordSearchParam(
+        page: mapValueOfType<int>(json, r'page'),
         size: mapValueOfType<int>(json, r'size'),
-        content: ColdWallet.listFromJson(json[r'content']),
-        number: mapValueOfType<int>(json, r'number'),
-        empty: mapValueOfType<bool>(json, r'empty'),
+        startDate: mapDateTime(json, r'startDate', r''),
+        endDate: mapDateTime(json, r'endDate', r''),
+        keyword: mapValueOfType<String>(json, r'keyword'),
+        sortBy: mapValueOfType<String>(json, r'sortBy'),
+        sortDirection: mapValueOfType<String>(json, r'sortDirection'),
+        userId: mapValueOfType<int>(json, r'userId'),
+        stakingId: mapValueOfType<int>(json, r'stakingId'),
       );
     }
     return null;
   }
 
-  static List<PageColdWallet> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageColdWallet>[];
+  static List<InterestRecordSearchParam> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <InterestRecordSearchParam>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageColdWallet.fromJson(row);
+        final value = InterestRecordSearchParam.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -244,12 +229,12 @@ class PageColdWallet {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageColdWallet> mapFromJson(dynamic json) {
-    final map = <String, PageColdWallet>{};
+  static Map<String, InterestRecordSearchParam> mapFromJson(dynamic json) {
+    final map = <String, InterestRecordSearchParam>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageColdWallet.fromJson(entry.value);
+        final value = InterestRecordSearchParam.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -258,14 +243,14 @@ class PageColdWallet {
     return map;
   }
 
-  // maps a json object with a list of PageColdWallet-objects as value to a dart map
-  static Map<String, List<PageColdWallet>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageColdWallet>>{};
+  // maps a json object with a list of InterestRecordSearchParam-objects as value to a dart map
+  static Map<String, List<InterestRecordSearchParam>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<InterestRecordSearchParam>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageColdWallet.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = InterestRecordSearchParam.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

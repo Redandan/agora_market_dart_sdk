@@ -32,8 +32,8 @@ class UserAddress {
     this.isActive,
     this.createdAt,
     this.updatedAt,
-    this.homeDelivery,
     this.formattedAddress,
+    this.homeDelivery,
     this.fullAddress,
     this.convenienceStorePickup,
     this.logisticsDescription,
@@ -216,7 +216,7 @@ class UserAddress {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? homeDelivery;
+  String? formattedAddress;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -224,7 +224,7 @@ class UserAddress {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? formattedAddress;
+  bool? homeDelivery;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -279,8 +279,8 @@ class UserAddress {
     other.isActive == isActive &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.homeDelivery == homeDelivery &&
     other.formattedAddress == formattedAddress &&
+    other.homeDelivery == homeDelivery &&
     other.fullAddress == fullAddress &&
     other.convenienceStorePickup == convenienceStorePickup &&
     other.logisticsDescription == logisticsDescription &&
@@ -308,15 +308,15 @@ class UserAddress {
     (isActive == null ? 0 : isActive!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (homeDelivery == null ? 0 : homeDelivery!.hashCode) +
     (formattedAddress == null ? 0 : formattedAddress!.hashCode) +
+    (homeDelivery == null ? 0 : homeDelivery!.hashCode) +
     (fullAddress == null ? 0 : fullAddress!.hashCode) +
     (convenienceStorePickup == null ? 0 : convenienceStorePickup!.hashCode) +
     (logisticsDescription == null ? 0 : logisticsDescription!.hashCode) +
     (recipientInfo == null ? 0 : recipientInfo!.hashCode);
 
   @override
-  String toString() => 'UserAddress[id=$id, userId=$userId, recipientName=$recipientName, recipientPhone=$recipientPhone, postalCode=$postalCode, city=$city, district=$district, detailedAddress=$detailedAddress, remark=$remark, longitude=$longitude, latitude=$latitude, serviceType=$serviceType, storeName=$storeName, storeCode=$storeCode, storeAddress=$storeAddress, isDefault=$isDefault, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, homeDelivery=$homeDelivery, formattedAddress=$formattedAddress, fullAddress=$fullAddress, convenienceStorePickup=$convenienceStorePickup, logisticsDescription=$logisticsDescription, recipientInfo=$recipientInfo]';
+  String toString() => 'UserAddress[id=$id, userId=$userId, recipientName=$recipientName, recipientPhone=$recipientPhone, postalCode=$postalCode, city=$city, district=$district, detailedAddress=$detailedAddress, remark=$remark, longitude=$longitude, latitude=$latitude, serviceType=$serviceType, storeName=$storeName, storeCode=$storeCode, storeAddress=$storeAddress, isDefault=$isDefault, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, formattedAddress=$formattedAddress, homeDelivery=$homeDelivery, fullAddress=$fullAddress, convenienceStorePickup=$convenienceStorePickup, logisticsDescription=$logisticsDescription, recipientInfo=$recipientInfo]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -415,15 +415,15 @@ class UserAddress {
     } else {
       json[r'updatedAt'] = null;
     }
-    if (this.homeDelivery != null) {
-      json[r'homeDelivery'] = this.homeDelivery;
-    } else {
-      json[r'homeDelivery'] = null;
-    }
     if (this.formattedAddress != null) {
       json[r'formattedAddress'] = this.formattedAddress;
     } else {
       json[r'formattedAddress'] = null;
+    }
+    if (this.homeDelivery != null) {
+      json[r'homeDelivery'] = this.homeDelivery;
+    } else {
+      json[r'homeDelivery'] = null;
     }
     if (this.fullAddress != null) {
       json[r'fullAddress'] = this.fullAddress;
@@ -486,8 +486,8 @@ class UserAddress {
         isActive: mapValueOfType<bool>(json, r'isActive'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
-        homeDelivery: mapValueOfType<bool>(json, r'homeDelivery'),
         formattedAddress: mapValueOfType<String>(json, r'formattedAddress'),
+        homeDelivery: mapValueOfType<bool>(json, r'homeDelivery'),
         fullAddress: mapValueOfType<String>(json, r'fullAddress'),
         convenienceStorePickup: mapValueOfType<bool>(json, r'convenienceStorePickup'),
         logisticsDescription: mapValueOfType<String>(json, r'logisticsDescription'),

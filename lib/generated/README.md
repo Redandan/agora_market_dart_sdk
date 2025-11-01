@@ -181,6 +181,11 @@ Class | Method | HTTP request | Description
 *AdminProductsApi* | [**searchProducts1**](doc//AdminProductsApi.md#searchproducts1) | **POST** /admin/products/search | 搜索商品
 *AdminProductsApi* | [**updateProductByAdmin**](doc//AdminProductsApi.md#updateproductbyadmin) | **POST** /admin/products/{productId}/update | 更新商品
 *AdminProductsApi* | [**updateProductStatusEnum**](doc//AdminProductsApi.md#updateproductstatusenum) | **POST** /admin/products/{productId}/status | 更新商品狀態
+*AdminStakingApi* | [**getConfig**](doc//AdminStakingApi.md#getconfig) | **GET** /admin/staking/config | 獲取質押配置
+*AdminStakingApi* | [**getInterestRecords**](doc//AdminStakingApi.md#getinterestrecords) | **POST** /admin/staking/interest-records | 查詢收益發放記錄
+*AdminStakingApi* | [**getInterestStatistics**](doc//AdminStakingApi.md#getintereststatistics) | **GET** /admin/staking/interest-records/statistics | 收益發放統計
+*AdminStakingApi* | [**getStatistics1**](doc//AdminStakingApi.md#getstatistics1) | **GET** /admin/staking/statistics | 質押統計報告
+*AdminStakingApi* | [**updateConfig**](doc//AdminStakingApi.md#updateconfig) | **PUT** /admin/staking/config | 更新質押配置
 *AdminStoresApi* | [**deleteStore**](doc//AdminStoresApi.md#deletestore) | **DELETE** /admin/stores/{storeId} | 刪除商店
 *AdminStoresApi* | [**disableStore**](doc//AdminStoresApi.md#disablestore) | **POST** /admin/stores/{storeId}/disable | 停用商店
 *AdminStoresApi* | [**enableStore**](doc//AdminStoresApi.md#enablestore) | **POST** /admin/stores/{storeId}/enable | 啟用商店
@@ -213,7 +218,7 @@ Class | Method | HTTP request | Description
 *AutoReplyApi* | [**resetStats**](doc//AutoReplyApi.md#resetstats) | **POST** /admin/auto-reply/stats/reset | 重置統計
 *AutoReplyApi* | [**searchConfigs**](doc//AutoReplyApi.md#searchconfigs) | **POST** /admin/auto-reply/configs/search | 搜尋自動回復配置
 *AutoReplyApi* | [**toggleConfig**](doc//AutoReplyApi.md#toggleconfig) | **PUT** /admin/auto-reply/configs/{id}/toggle | 啟用/禁用配置
-*AutoReplyApi* | [**updateConfig**](doc//AutoReplyApi.md#updateconfig) | **PUT** /admin/auto-reply/configs/{id} | 更新配置
+*AutoReplyApi* | [**updateConfig1**](doc//AutoReplyApi.md#updateconfig1) | **PUT** /admin/auto-reply/configs/{id} | 更新配置
 *ChatApi* | [**clearSession**](doc//ChatApi.md#clearsession) | **DELETE** /chat/sessions/{sessionId}/messages | 清空會話
 *ChatApi* | [**deleteMessage**](doc//ChatApi.md#deletemessage) | **DELETE** /chat/messages/{messageId} | 刪除消息
 *ChatApi* | [**deleteSession**](doc//ChatApi.md#deletesession) | **DELETE** /chat/sessions/{sessionId} | 刪除會話
@@ -461,6 +466,8 @@ Class | Method | HTTP request | Description
  - [FileRecordInfo](doc//FileRecordInfo.md)
  - [FileRecordSearchRequest](doc//FileRecordSearchRequest.md)
  - [FileSyncResponse](doc//FileSyncResponse.md)
+ - [InterestRecordDTO](doc//InterestRecordDTO.md)
+ - [InterestRecordSearchParam](doc//InterestRecordSearchParam.md)
  - [IssueSearchParam](doc//IssueSearchParam.md)
  - [IssueStatusEnum](doc//IssueStatusEnum.md)
  - [IssueTypeEnum](doc//IssueTypeEnum.md)
@@ -497,6 +504,7 @@ Class | Method | HTTP request | Description
  - [PageCustomerIssue](doc//PageCustomerIssue.md)
  - [PageDispute](doc//PageDispute.md)
  - [PageFileRecord](doc//PageFileRecord.md)
+ - [PageInterestRecordDTO](doc//PageInterestRecordDTO.md)
  - [PageNotificationResponseDTO](doc//PageNotificationResponseDTO.md)
  - [PageOrder](doc//PageOrder.md)
  - [PageProduct](doc//PageProduct.md)
@@ -577,7 +585,10 @@ Class | Method | HTTP request | Description
  - [ShippingServiceGroup](doc//ShippingServiceGroup.md)
  - [SortObject](doc//SortObject.md)
  - [Staking](doc//Staking.md)
+ - [StakingConfigDTO](doc//StakingConfigDTO.md)
+ - [StakingConfigUpdateParam](doc//StakingConfigUpdateParam.md)
  - [StakingSearchParam](doc//StakingSearchParam.md)
+ - [StakingStatisticsDTO](doc//StakingStatisticsDTO.md)
  - [StakingStatusEnum](doc//StakingStatusEnum.md)
  - [Store](doc//Store.md)
  - [StoreAnalyticsDTO](doc//StoreAnalyticsDTO.md)

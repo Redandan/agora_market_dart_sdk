@@ -362,7 +362,7 @@ class AutoReplyApi {
   ///   配置ID
   ///
   /// * [AutoReplyConfig] autoReplyConfig (required):
-  Future<Response> updateConfigWithHttpInfo(int id, AutoReplyConfig autoReplyConfig,) async {
+  Future<Response> updateConfig1WithHttpInfo(int id, AutoReplyConfig autoReplyConfig,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/auto-reply/configs/{id}'
       .replaceAll('{id}', id.toString());
@@ -398,8 +398,8 @@ class AutoReplyApi {
   ///   配置ID
   ///
   /// * [AutoReplyConfig] autoReplyConfig (required):
-  Future<AutoReplyConfig?> updateConfig(int id, AutoReplyConfig autoReplyConfig,) async {
-    final response = await updateConfigWithHttpInfo(id, autoReplyConfig,);
+  Future<AutoReplyConfig?> updateConfig1(int id, AutoReplyConfig autoReplyConfig,) async {
+    final response = await updateConfig1WithHttpInfo(id, autoReplyConfig,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

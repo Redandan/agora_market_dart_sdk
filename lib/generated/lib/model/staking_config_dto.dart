@@ -10,126 +10,115 @@
 
 part of openapi.api;
 
-class PageableObject {
-  /// Returns a new [PageableObject] instance.
-  PageableObject({
-    this.sort,
-    this.pageSize,
-    this.pageNumber,
-    this.paged,
-    this.unpaged,
-    this.offset,
+class StakingConfigDTO {
+  /// Returns a new [StakingConfigDTO] instance.
+  StakingConfigDTO({
+    this.annualInterestRate,
+    this.minStakingAmount,
+    this.isActive,
+    this.effectiveFrom,
+    this.updatedAt,
   });
 
+  /// 年利率
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SortObject? sort;
+  num? annualInterestRate;
 
+  /// 最低質押金額
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageSize;
+  num? minStakingAmount;
 
+  /// 是否啟用
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageNumber;
+  bool? isActive;
 
+  /// 生效時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? paged;
+  DateTime? effectiveFrom;
 
+  /// 更新時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unpaged;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? offset;
+  DateTime? updatedAt;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageableObject &&
-    other.sort == sort &&
-    other.pageSize == pageSize &&
-    other.pageNumber == pageNumber &&
-    other.paged == paged &&
-    other.unpaged == unpaged &&
-    other.offset == offset;
+  bool operator ==(Object other) => identical(this, other) || other is StakingConfigDTO &&
+    other.annualInterestRate == annualInterestRate &&
+    other.minStakingAmount == minStakingAmount &&
+    other.isActive == isActive &&
+    other.effectiveFrom == effectiveFrom &&
+    other.updatedAt == updatedAt;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (sort == null ? 0 : sort!.hashCode) +
-    (pageSize == null ? 0 : pageSize!.hashCode) +
-    (pageNumber == null ? 0 : pageNumber!.hashCode) +
-    (paged == null ? 0 : paged!.hashCode) +
-    (unpaged == null ? 0 : unpaged!.hashCode) +
-    (offset == null ? 0 : offset!.hashCode);
+    (annualInterestRate == null ? 0 : annualInterestRate!.hashCode) +
+    (minStakingAmount == null ? 0 : minStakingAmount!.hashCode) +
+    (isActive == null ? 0 : isActive!.hashCode) +
+    (effectiveFrom == null ? 0 : effectiveFrom!.hashCode) +
+    (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'PageableObject[sort=$sort, pageSize=$pageSize, pageNumber=$pageNumber, paged=$paged, unpaged=$unpaged, offset=$offset]';
+  String toString() => 'StakingConfigDTO[annualInterestRate=$annualInterestRate, minStakingAmount=$minStakingAmount, isActive=$isActive, effectiveFrom=$effectiveFrom, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.annualInterestRate != null) {
+      json[r'annualInterestRate'] = this.annualInterestRate;
     } else {
-      json[r'sort'] = null;
+      json[r'annualInterestRate'] = null;
     }
-    if (this.pageSize != null) {
-      json[r'pageSize'] = this.pageSize;
+    if (this.minStakingAmount != null) {
+      json[r'minStakingAmount'] = this.minStakingAmount;
     } else {
-      json[r'pageSize'] = null;
+      json[r'minStakingAmount'] = null;
     }
-    if (this.pageNumber != null) {
-      json[r'pageNumber'] = this.pageNumber;
+    if (this.isActive != null) {
+      json[r'isActive'] = this.isActive;
     } else {
-      json[r'pageNumber'] = null;
+      json[r'isActive'] = null;
     }
-    if (this.paged != null) {
-      json[r'paged'] = this.paged;
+    if (this.effectiveFrom != null) {
+      json[r'effectiveFrom'] = this.effectiveFrom!.toUtc().toIso8601String();
     } else {
-      json[r'paged'] = null;
+      json[r'effectiveFrom'] = null;
     }
-    if (this.unpaged != null) {
-      json[r'unpaged'] = this.unpaged;
+    if (this.updatedAt != null) {
+      json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
     } else {
-      json[r'unpaged'] = null;
-    }
-    if (this.offset != null) {
-      json[r'offset'] = this.offset;
-    } else {
-      json[r'offset'] = null;
+      json[r'updatedAt'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageableObject] instance and imports its values from
+  /// Returns a new [StakingConfigDTO] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageableObject? fromJson(dynamic value) {
+  static StakingConfigDTO? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -138,29 +127,28 @@ class PageableObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageableObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageableObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "StakingConfigDTO[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "StakingConfigDTO[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageableObject(
-        sort: SortObject.fromJson(json[r'sort']),
-        pageSize: mapValueOfType<int>(json, r'pageSize'),
-        pageNumber: mapValueOfType<int>(json, r'pageNumber'),
-        paged: mapValueOfType<bool>(json, r'paged'),
-        unpaged: mapValueOfType<bool>(json, r'unpaged'),
-        offset: mapValueOfType<int>(json, r'offset'),
+      return StakingConfigDTO(
+        annualInterestRate: num.parse('${json[r'annualInterestRate']}'),
+        minStakingAmount: num.parse('${json[r'minStakingAmount']}'),
+        isActive: mapValueOfType<bool>(json, r'isActive'),
+        effectiveFrom: mapDateTime(json, r'effectiveFrom', r''),
+        updatedAt: mapDateTime(json, r'updatedAt', r''),
       );
     }
     return null;
   }
 
-  static List<PageableObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageableObject>[];
+  static List<StakingConfigDTO> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <StakingConfigDTO>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageableObject.fromJson(row);
+        final value = StakingConfigDTO.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -169,12 +157,12 @@ class PageableObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageableObject> mapFromJson(dynamic json) {
-    final map = <String, PageableObject>{};
+  static Map<String, StakingConfigDTO> mapFromJson(dynamic json) {
+    final map = <String, StakingConfigDTO>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageableObject.fromJson(entry.value);
+        final value = StakingConfigDTO.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -183,14 +171,14 @@ class PageableObject {
     return map;
   }
 
-  // maps a json object with a list of PageableObject-objects as value to a dart map
-  static Map<String, List<PageableObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageableObject>>{};
+  // maps a json object with a list of StakingConfigDTO-objects as value to a dart map
+  static Map<String, List<StakingConfigDTO>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<StakingConfigDTO>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageableObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = StakingConfigDTO.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

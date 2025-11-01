@@ -330,6 +330,10 @@ class ApiClient {
           return FileRecordSearchRequest.fromJson(value);
         case 'FileSyncResponse':
           return FileSyncResponse.fromJson(value);
+        case 'InterestRecordDTO':
+          return InterestRecordDTO.fromJson(value);
+        case 'InterestRecordSearchParam':
+          return InterestRecordSearchParam.fromJson(value);
         case 'IssueSearchParam':
           return IssueSearchParam.fromJson(value);
         case 'IssueStatusEnum':
@@ -402,6 +406,8 @@ class ApiClient {
           return PageDispute.fromJson(value);
         case 'PageFileRecord':
           return PageFileRecord.fromJson(value);
+        case 'PageInterestRecordDTO':
+          return PageInterestRecordDTO.fromJson(value);
         case 'PageNotificationResponseDTO':
           return PageNotificationResponseDTO.fromJson(value);
         case 'PageOrder':
@@ -562,8 +568,14 @@ class ApiClient {
           return SortObject.fromJson(value);
         case 'Staking':
           return Staking.fromJson(value);
+        case 'StakingConfigDTO':
+          return StakingConfigDTO.fromJson(value);
+        case 'StakingConfigUpdateParam':
+          return StakingConfigUpdateParam.fromJson(value);
         case 'StakingSearchParam':
           return StakingSearchParam.fromJson(value);
+        case 'StakingStatisticsDTO':
+          return StakingStatisticsDTO.fromJson(value);
         case 'StakingStatusEnum':
           return StakingStatusEnumTypeTransformer().decode(value);
         case 'Store':
