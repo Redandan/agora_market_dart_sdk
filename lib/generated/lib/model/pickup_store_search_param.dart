@@ -19,6 +19,8 @@ class PickupStoreSearchParam {
     this.district,
     this.keyword,
     this.returnCountOnly,
+    this.page,
+    this.size,
   });
 
   ///
@@ -74,6 +76,24 @@ class PickupStoreSearchParam {
   ///
   bool? returnCountOnly;
 
+  /// 分頁：頁碼（從1開始）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? page;
+
+  /// 分頁：每頁數量（最大1000）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? size;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is PickupStoreSearchParam &&
     other.storeType == storeType &&
@@ -81,7 +101,9 @@ class PickupStoreSearchParam {
     other.city == city &&
     other.district == district &&
     other.keyword == keyword &&
-    other.returnCountOnly == returnCountOnly;
+    other.returnCountOnly == returnCountOnly &&
+    other.page == page &&
+    other.size == size;
 
   @override
   int get hashCode =>
@@ -91,10 +113,12 @@ class PickupStoreSearchParam {
     (city == null ? 0 : city!.hashCode) +
     (district == null ? 0 : district!.hashCode) +
     (keyword == null ? 0 : keyword!.hashCode) +
-    (returnCountOnly == null ? 0 : returnCountOnly!.hashCode);
+    (returnCountOnly == null ? 0 : returnCountOnly!.hashCode) +
+    (page == null ? 0 : page!.hashCode) +
+    (size == null ? 0 : size!.hashCode);
 
   @override
-  String toString() => 'PickupStoreSearchParam[storeType=$storeType, storeCode=$storeCode, city=$city, district=$district, keyword=$keyword, returnCountOnly=$returnCountOnly]';
+  String toString() => 'PickupStoreSearchParam[storeType=$storeType, storeCode=$storeCode, city=$city, district=$district, keyword=$keyword, returnCountOnly=$returnCountOnly, page=$page, size=$size]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -128,6 +152,16 @@ class PickupStoreSearchParam {
     } else {
       json[r'returnCountOnly'] = null;
     }
+    if (this.page != null) {
+      json[r'page'] = this.page;
+    } else {
+      json[r'page'] = null;
+    }
+    if (this.size != null) {
+      json[r'size'] = this.size;
+    } else {
+      json[r'size'] = null;
+    }
     return json;
   }
 
@@ -156,6 +190,8 @@ class PickupStoreSearchParam {
         district: mapValueOfType<String>(json, r'district'),
         keyword: mapValueOfType<String>(json, r'keyword'),
         returnCountOnly: mapValueOfType<bool>(json, r'returnCountOnly'),
+        page: mapValueOfType<int>(json, r'page'),
+        size: mapValueOfType<int>(json, r'size'),
       );
     }
     return null;
