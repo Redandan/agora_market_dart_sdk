@@ -85,6 +85,54 @@ class PickupStoresApi {
     return null;
   }
 
+  /// 查詢7-11門市同步任務狀態
+  ///
+  /// 查詢當前7-11門市同步任務的執行狀態（需要管理員權限）
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getSyncStatusWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/pickup-stores/sync/seven-eleven/status';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查詢7-11門市同步任務狀態
+  ///
+  /// 查詢當前7-11門市同步任務的執行狀態（需要管理員權限）
+  Future<PickupStoreSyncStatusResponse?> getSyncStatus() async {
+    final response = await getSyncStatusWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PickupStoreSyncStatusResponse',) as PickupStoreSyncStatusResponse;
+    
+    }
+    return null;
+  }
+
   /// 查詢取貨商店門市
   ///
   /// 統一的取貨商店門市查詢接口，支持多種查詢條件：1. 根據門市代號精確查詢（storeCode）2. 根據商店類型查詢（storeType：SEVEN_ELEVEN、FAMILY_MART、HILIFE、OK_MART）3. 根據商店類型和縣市查詢（storeType + city）4. 根據商店類型、縣市和區域查詢（storeType + city + district）5. 關鍵字搜尋（storeType + keyword，搜尋門市名稱或地址）6. 僅統計數量（設置 returnCountOnly = true）
@@ -141,9 +189,9 @@ class PickupStoresApi {
     return null;
   }
 
-  /// 同步7-11取貨門市資料
+  /// 異步同步7-11取貨門市資料
   ///
-  /// 從 ibon.com.tw 爬取並同步所有7-11取貨門市資料到資料庫（需要管理員權限）
+  /// 從 ibon.com.tw 爬取並同步所有7-11取貨門市資料到資料庫（需要管理員權限）。此操作為異步執行，會立即返回，不會阻塞請求。使用 /sync/seven-eleven/status 查詢執行狀態。
   ///
   /// Note: This method returns the HTTP [Response].
   Future<Response> syncSevenElevenStoresWithHttpInfo() async {
@@ -171,10 +219,10 @@ class PickupStoresApi {
     );
   }
 
-  /// 同步7-11取貨門市資料
+  /// 異步同步7-11取貨門市資料
   ///
-  /// 從 ibon.com.tw 爬取並同步所有7-11取貨門市資料到資料庫（需要管理員權限）
-  Future<String?> syncSevenElevenStores() async {
+  /// 從 ibon.com.tw 爬取並同步所有7-11取貨門市資料到資料庫（需要管理員權限）。此操作為異步執行，會立即返回，不會阻塞請求。使用 /sync/seven-eleven/status 查詢執行狀態。
+  Future<PickupStoreSyncResponse?> syncSevenElevenStores() async {
     final response = await syncSevenElevenStoresWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -183,7 +231,7 @@ class PickupStoresApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'String',) as String;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PickupStoreSyncResponse',) as PickupStoreSyncResponse;
     
     }
     return null;

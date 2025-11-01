@@ -280,8 +280,9 @@ Class | Method | HTTP request | Description
 *OciNotificationControllerApi* | [**handleNotification**](doc//OciNotificationControllerApi.md#handlenotification) | **POST** /oci/notifications | 
 *OciNotificationControllerApi* | [**healthCheck**](doc//OciNotificationControllerApi.md#healthcheck) | **GET** /oci/notifications | 
 *PickupStoresApi* | [**checkSyncStatus**](doc//PickupStoresApi.md#checksyncstatus) | **POST** /pickup-stores/check-sync | 檢查取貨商店門市資料是否需要更新
+*PickupStoresApi* | [**getSyncStatus**](doc//PickupStoresApi.md#getsyncstatus) | **GET** /pickup-stores/sync/seven-eleven/status | 查詢7-11門市同步任務狀態
 *PickupStoresApi* | [**searchStores**](doc//PickupStoresApi.md#searchstores) | **POST** /pickup-stores/search | 查詢取貨商店門市
-*PickupStoresApi* | [**syncSevenElevenStores**](doc//PickupStoresApi.md#syncsevenelevenstores) | **POST** /pickup-stores/sync/seven-eleven | 同步7-11取貨門市資料
+*PickupStoresApi* | [**syncSevenElevenStores**](doc//PickupStoresApi.md#syncsevenelevenstores) | **POST** /pickup-stores/sync/seven-eleven | 異步同步7-11取貨門市資料
 *PickupStoresApi* | [**syncSevenElevenStoresByCity**](doc//PickupStoresApi.md#syncsevenelevenstoresbycity) | **POST** /pickup-stores/sync/seven-eleven/city | 同步指定縣市的7-11取貨門市資料
 *ProductsApi* | [**batchDeleteProducts**](doc//ProductsApi.md#batchdeleteproducts) | **DELETE** /products/batch | 批量刪除商品
 *ProductsApi* | [**createProduct**](doc//ProductsApi.md#createproduct) | **POST** /products/create | 創建商品
@@ -515,6 +516,8 @@ Class | Method | HTTP request | Description
  - [PickupStoreSearchParam](doc//PickupStoreSearchParam.md)
  - [PickupStoreSearchResponse](doc//PickupStoreSearchResponse.md)
  - [PickupStoreSyncCheckResponse](doc//PickupStoreSyncCheckResponse.md)
+ - [PickupStoreSyncResponse](doc//PickupStoreSyncResponse.md)
+ - [PickupStoreSyncStatusResponse](doc//PickupStoreSyncStatusResponse.md)
  - [PostCreateParam](doc//PostCreateParam.md)
  - [PostResponse](doc//PostResponse.md)
  - [PostSearchParam](doc//PostSearchParam.md)

@@ -192,6 +192,8 @@ part 'model/pickup_store.dart';
 part 'model/pickup_store_search_param.dart';
 part 'model/pickup_store_search_response.dart';
 part 'model/pickup_store_sync_check_response.dart';
+part 'model/pickup_store_sync_response.dart';
+part 'model/pickup_store_sync_status_response.dart';
 part 'model/post_create_param.dart';
 part 'model/post_response.dart';
 part 'model/post_search_param.dart';

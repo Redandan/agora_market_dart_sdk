@@ -442,6 +442,10 @@ class ApiClient {
           return PickupStoreSearchResponse.fromJson(value);
         case 'PickupStoreSyncCheckResponse':
           return PickupStoreSyncCheckResponse.fromJson(value);
+        case 'PickupStoreSyncResponse':
+          return PickupStoreSyncResponse.fromJson(value);
+        case 'PickupStoreSyncStatusResponse':
+          return PickupStoreSyncStatusResponse.fromJson(value);
         case 'PostCreateParam':
           return PostCreateParam.fromJson(value);
         case 'PostResponse':
