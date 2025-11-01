@@ -337,6 +337,7 @@ Class | Method | HTTP request | Description
 *SseTestApi* | [**testSystemEvent**](doc//SseTestApi.md#testsystemevent) | **POST** /sse-test/system-event | 測試系統事件
 *SseTestApi* | [**testTypingEvent**](doc//SseTestApi.md#testtypingevent) | **POST** /sse-test/typing-event | 測試輸入事件
 *StakingApi* | [**applyStaking**](doc//StakingApi.md#applystaking) | **POST** /staking/apply | 申請質押
+*StakingApi* | [**cancelStaking**](doc//StakingApi.md#cancelstaking) | **POST** /staking/cancel | 取消質押申請
 *StakingApi* | [**getActiveStakings**](doc//StakingApi.md#getactivestakings) | **GET** /staking/active | 查詢正在進行中的質押
 *StakingApi* | [**getStakingList**](doc//StakingApi.md#getstakinglist) | **GET** /staking/list | 獲取質押記錄列表
 *StakingApi* | [**searchStakings**](doc//StakingApi.md#searchstakings) | **POST** /staking/search | 管理員搜尋質押記錄

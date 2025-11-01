@@ -72,6 +72,66 @@ class StakingApi {
     return null;
   }
 
+  /// 取消質押申請
+  ///
+  /// 取消處於申請中（APPLYING）狀態的質押申請，將退回本金。僅在申請後23小時內可取消。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] stakingId (required):
+  ///   質押ID
+  Future<Response> cancelStakingWithHttpInfo(int stakingId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/staking/cancel';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'stakingId', stakingId));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 取消質押申請
+  ///
+  /// 取消處於申請中（APPLYING）狀態的質押申請，將退回本金。僅在申請後23小時內可取消。
+  ///
+  /// Parameters:
+  ///
+  /// * [int] stakingId (required):
+  ///   質押ID
+  Future<Staking?> cancelStaking(int stakingId,) async {
+    final response = await cancelStakingWithHttpInfo(stakingId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Staking',) as Staking;
+    
+    }
+    return null;
+  }
+
   /// 查詢正在進行中的質押
   ///
   /// 獲取用戶當前正在進行中的質押記錄（申請中、質押中、解除中）
