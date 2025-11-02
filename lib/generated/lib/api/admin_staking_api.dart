@@ -139,22 +139,14 @@ class AdminStakingApi {
     return null;
   }
 
-  /// 收益發放統計
+  /// 預估下次收益發放
   ///
-  /// 獲取收益發放的統計數據
+  /// 預估下次結算時將發放的收益金額統計
   ///
   /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
-  Future<Response> getInterestStatisticsWithHttpInfo({ DateTime? startDate, DateTime? endDate, }) async {
+  Future<Response> getNextInterestEstimateWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/admin/staking/interest-records/statistics';
+    final path = r'/admin/staking/next-interest-estimate';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -162,13 +154,6 @@ class AdminStakingApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    if (startDate != null) {
-      queryParams.addAll(_queryParams('', 'startDate', startDate));
-    }
-    if (endDate != null) {
-      queryParams.addAll(_queryParams('', 'endDate', endDate));
-    }
 
     const contentTypes = <String>[];
 
@@ -184,19 +169,11 @@ class AdminStakingApi {
     );
   }
 
-  /// 收益發放統計
+  /// 預估下次收益發放
   ///
-  /// 獲取收益發放的統計數據
-  ///
-  /// Parameters:
-  ///
-  /// * [DateTime] startDate:
-  ///   開始日期 (ISO-8601 格式)
-  ///
-  /// * [DateTime] endDate:
-  ///   結束日期 (ISO-8601 格式)
-  Future<Map<String, Object>?> getInterestStatistics({ DateTime? startDate, DateTime? endDate, }) async {
-    final response = await getInterestStatisticsWithHttpInfo( startDate: startDate, endDate: endDate, );
+  /// 預估下次結算時將發放的收益金額統計
+  Future<NextInterestEstimateDTO?> getNextInterestEstimate() async {
+    final response = await getNextInterestEstimateWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -204,8 +181,8 @@ class AdminStakingApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'NextInterestEstimateDTO',) as NextInterestEstimateDTO;
+    
     }
     return null;
   }
@@ -290,7 +267,7 @@ class AdminStakingApi {
   /// Parameters:
   ///
   /// * [StakingConfigUpdateParam] stakingConfigUpdateParam (required):
-  Future<Response> updateConfigWithHttpInfo(StakingConfigUpdateParam stakingConfigUpdateParam,) async {
+  Future<Response> updateStakingConfigWithHttpInfo(StakingConfigUpdateParam stakingConfigUpdateParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/staking/config';
 
@@ -322,8 +299,8 @@ class AdminStakingApi {
   /// Parameters:
   ///
   /// * [StakingConfigUpdateParam] stakingConfigUpdateParam (required):
-  Future<StakingConfigDTO?> updateConfig(StakingConfigUpdateParam stakingConfigUpdateParam,) async {
-    final response = await updateConfigWithHttpInfo(stakingConfigUpdateParam,);
+  Future<StakingConfigDTO?> updateStakingConfig(StakingConfigUpdateParam stakingConfigUpdateParam,) async {
+    final response = await updateStakingConfigWithHttpInfo(stakingConfigUpdateParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

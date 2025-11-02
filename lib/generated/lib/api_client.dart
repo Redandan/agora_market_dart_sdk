@@ -354,6 +354,8 @@ class ApiClient {
           return MemberUpdateParam.fromJson(value);
         case 'MessageSendResponseDTO':
           return MessageSendResponseDTO.fromJson(value);
+        case 'NextInterestEstimateDTO':
+          return NextInterestEstimateDTO.fromJson(value);
         case 'NotificationCreateParam':
           return NotificationCreateParam.fromJson(value);
         case 'NotificationResponseDTO':
@@ -572,6 +574,8 @@ class ApiClient {
           return StakingConfigDTO.fromJson(value);
         case 'StakingConfigUpdateParam':
           return StakingConfigUpdateParam.fromJson(value);
+        case 'StakingInterestDetail':
+          return StakingInterestDetail.fromJson(value);
         case 'StakingSearchParam':
           return StakingSearchParam.fromJson(value);
         case 'StakingStatisticsDTO':
