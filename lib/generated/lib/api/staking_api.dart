@@ -72,9 +72,9 @@ class StakingApi {
     return null;
   }
 
-  /// 取消質押申請
+  /// 到期領取收益
   ///
-  /// 取消處於申請中（APPLYING）狀態的質押申請，將退回本金。僅在申請後23小時內可取消。
+  /// 質押到期後，領取收益和本金。必須在到期後才能領取。
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -82,9 +82,9 @@ class StakingApi {
   ///
   /// * [int] stakingId (required):
   ///   質押ID
-  Future<Response> cancelStakingWithHttpInfo(int stakingId,) async {
+  Future<Response> claimStakingRewardsWithHttpInfo(int stakingId,) async {
     // ignore: prefer_const_declarations
-    final path = r'/staking/cancel';
+    final path = r'/staking/claim';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -109,16 +109,16 @@ class StakingApi {
     );
   }
 
-  /// 取消質押申請
+  /// 到期領取收益
   ///
-  /// 取消處於申請中（APPLYING）狀態的質押申請，將退回本金。僅在申請後23小時內可取消。
+  /// 質押到期後，領取收益和本金。必須在到期後才能領取。
   ///
   /// Parameters:
   ///
   /// * [int] stakingId (required):
   ///   質押ID
-  Future<Staking?> cancelStaking(int stakingId,) async {
-    final response = await cancelStakingWithHttpInfo(stakingId,);
+  Future<Staking?> claimStakingRewards(int stakingId,) async {
+    final response = await claimStakingRewardsWithHttpInfo(stakingId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -134,7 +134,7 @@ class StakingApi {
 
   /// 查詢正在進行中的質押
   ///
-  /// 獲取用戶當前正在進行中的質押記錄（申請中、質押中、解除中）
+  /// 獲取用戶當前正在進行中的質押記錄（質押中）
   ///
   /// Note: This method returns the HTTP [Response].
   Future<Response> getActiveStakingsWithHttpInfo() async {
@@ -164,7 +164,7 @@ class StakingApi {
 
   /// 查詢正在進行中的質押
   ///
-  /// 獲取用戶當前正在進行中的質押記錄（申請中、質押中、解除中）
+  /// 獲取用戶當前正在進行中的質押記錄（質押中）
   Future<List<Staking>?> getActiveStakings() async {
     final response = await getActiveStakingsWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -323,7 +323,7 @@ class StakingApi {
 
   /// 申請解除質押
   ///
-  /// 用戶申請解除指定質押記錄的質押
+  /// 用戶申請解除指定質押記錄。提前解除無收益，只退回本金；已到期則計算收益並退回本金。
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -360,7 +360,7 @@ class StakingApi {
 
   /// 申請解除質押
   ///
-  /// 用戶申請解除指定質押記錄的質押
+  /// 用戶申請解除指定質押記錄。提前解除無收益，只退回本金；已到期則計算收益並退回本金。
   ///
   /// Parameters:
   ///

@@ -23,18 +23,14 @@ class StakingStatusEnum {
 
   String toJson() => value;
 
-  static const APPLYING = StakingStatusEnum._(r'APPLYING');
   static const STAKING = StakingStatusEnum._(r'STAKING');
-  static const UNSTAGING = StakingStatusEnum._(r'UNSTAGING');
-  static const RETURNED = StakingStatusEnum._(r'RETURNED');
+  static const COMPLETED = StakingStatusEnum._(r'COMPLETED');
   static const unknownDefaultOpenApi = StakingStatusEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][StakingStatusEnum].
   static const values = <StakingStatusEnum>[
-    APPLYING,
     STAKING,
-    UNSTAGING,
-    RETURNED,
+    COMPLETED,
     unknownDefaultOpenApi,
   ];
 
@@ -74,10 +70,8 @@ class StakingStatusEnumTypeTransformer {
   StakingStatusEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'APPLYING': return StakingStatusEnum.APPLYING;
         case r'STAKING': return StakingStatusEnum.STAKING;
-        case r'UNSTAGING': return StakingStatusEnum.UNSTAGING;
-        case r'RETURNED': return StakingStatusEnum.RETURNED;
+        case r'COMPLETED': return StakingStatusEnum.COMPLETED;
         case r'unknown_default_open_api': return StakingStatusEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
