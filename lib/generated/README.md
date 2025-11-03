@@ -343,7 +343,6 @@ Class | Method | HTTP request | Description
 *SseTestApi* | [**testTypingEvent**](doc//SseTestApi.md#testtypingevent) | **POST** /sse-test/typing-event | 測試輸入事件
 *StakingApi* | [**applyStaking**](doc//StakingApi.md#applystaking) | **POST** /staking/apply | 申請質押
 *StakingApi* | [**getActiveStakings**](doc//StakingApi.md#getactivestakings) | **GET** /staking/active | 查詢正在進行中的質押
-*StakingApi* | [**getStakingList**](doc//StakingApi.md#getstakinglist) | **GET** /staking/list | 獲取質押記錄列表
 *StakingApi* | [**searchStakings**](doc//StakingApi.md#searchstakings) | **POST** /staking/search | 管理員搜尋質押記錄
 *StakingApi* | [**unfreezeStaking**](doc//StakingApi.md#unfreezestaking) | **POST** /staking/unfreeze | 申請解除質押
 *StoresApi* | [**createStore**](doc//StoresApi.md#createstore) | **POST** /stores/create | 創建商店
