@@ -72,66 +72,6 @@ class StakingApi {
     return null;
   }
 
-  /// 到期領取收益
-  ///
-  /// 質押到期後，領取收益和本金。必須在到期後才能領取。
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] stakingId (required):
-  ///   質押ID
-  Future<Response> claimStakingRewardsWithHttpInfo(int stakingId,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/staking/claim';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'stakingId', stakingId));
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 到期領取收益
-  ///
-  /// 質押到期後，領取收益和本金。必須在到期後才能領取。
-  ///
-  /// Parameters:
-  ///
-  /// * [int] stakingId (required):
-  ///   質押ID
-  Future<Staking?> claimStakingRewards(int stakingId,) async {
-    final response = await claimStakingRewardsWithHttpInfo(stakingId,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Staking',) as Staking;
-    
-    }
-    return null;
-  }
-
   /// 查詢正在進行中的質押
   ///
   /// 獲取用戶當前正在進行中的質押記錄（質押中）
@@ -329,9 +269,9 @@ class StakingApi {
   ///
   /// Parameters:
   ///
-  /// * [int] stakingId (required):
-  ///   質押ID
-  Future<Response> unfreezeStakingWithHttpInfo(int stakingId,) async {
+  /// * [String] stakingId (required):
+  ///   質押ID（業務ID）
+  Future<Response> unfreezeStakingWithHttpInfo(String stakingId,) async {
     // ignore: prefer_const_declarations
     final path = r'/staking/unfreeze';
 
@@ -364,9 +304,9 @@ class StakingApi {
   ///
   /// Parameters:
   ///
-  /// * [int] stakingId (required):
-  ///   質押ID
-  Future<Staking?> unfreezeStaking(int stakingId,) async {
+  /// * [String] stakingId (required):
+  ///   質押ID（業務ID）
+  Future<Staking?> unfreezeStaking(String stakingId,) async {
     final response = await unfreezeStakingWithHttpInfo(stakingId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));

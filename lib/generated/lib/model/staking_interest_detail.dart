@@ -26,7 +26,7 @@ class StakingInterestDetail {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? stakingId;
+  String? stakingId;
 
   /// 用戶ID
   ///
@@ -117,7 +117,7 @@ class StakingInterestDetail {
       }());
 
       return StakingInterestDetail(
-        stakingId: mapValueOfType<int>(json, r'stakingId'),
+        stakingId: mapValueOfType<String>(json, r'stakingId'),
         userId: mapValueOfType<int>(json, r'userId'),
         stakingAmount: num.parse('${json[r'stakingAmount']}'),
         estimatedInterest: num.parse('${json[r'estimatedInterest']}'),

@@ -103,7 +103,7 @@ class InterestRecordSearchParam {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? stakingId;
+  String? stakingId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is InterestRecordSearchParam &&
@@ -210,7 +210,7 @@ class InterestRecordSearchParam {
         sortBy: mapValueOfType<String>(json, r'sortBy'),
         sortDirection: mapValueOfType<String>(json, r'sortDirection'),
         userId: mapValueOfType<int>(json, r'userId'),
-        stakingId: mapValueOfType<int>(json, r'stakingId'),
+        stakingId: mapValueOfType<String>(json, r'stakingId'),
       );
     }
     return null;

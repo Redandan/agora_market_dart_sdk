@@ -105,7 +105,7 @@ class StakingSearchParam {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? stakingId;
+  String? stakingId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -243,7 +243,7 @@ class StakingSearchParam {
         sortBy: mapValueOfType<String>(json, r'sortBy'),
         sortDirection: mapValueOfType<String>(json, r'sortDirection'),
         userId: mapValueOfType<int>(json, r'userId'),
-        stakingId: mapValueOfType<int>(json, r'stakingId'),
+        stakingId: mapValueOfType<String>(json, r'stakingId'),
         status: StakingStatusEnum.fromJson(json[r'status']),
         currency: mapValueOfType<String>(json, r'currency'),
       );

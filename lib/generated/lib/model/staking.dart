@@ -29,14 +29,14 @@ class Staking {
     this.remark,
   });
 
-  /// 質押ID
+  /// 質押ID（業務ID）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? id;
+  String? id;
 
   /// 用戶ID
   ///
@@ -280,7 +280,7 @@ class Staking {
       }());
 
       return Staking(
-        id: mapValueOfType<int>(json, r'id'),
+        id: mapValueOfType<String>(json, r'id'),
         userId: mapValueOfType<int>(json, r'userId'),
         amount: num.parse('${json[r'amount']}'),
         currency: mapValueOfType<String>(json, r'currency'),

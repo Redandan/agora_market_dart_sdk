@@ -57,7 +57,7 @@ class InterestRecordDTO {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? stakingId;
+  String? stakingId;
 
   /// 質押金額
   ///
@@ -188,7 +188,7 @@ class InterestRecordDTO {
         transactionId: mapValueOfType<int>(json, r'transactionId'),
         userId: mapValueOfType<int>(json, r'userId'),
         username: mapValueOfType<String>(json, r'username'),
-        stakingId: mapValueOfType<int>(json, r'stakingId'),
+        stakingId: mapValueOfType<String>(json, r'stakingId'),
         stakingAmount: num.parse('${json[r'stakingAmount']}'),
         interestAmount: num.parse('${json[r'interestAmount']}'),
         settleDate: mapDateTime(json, r'settleDate', r''),
