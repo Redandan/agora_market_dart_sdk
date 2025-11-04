@@ -198,7 +198,7 @@ class AdminDeliveryApi {
   ///
   /// * [DateTime] endDate:
   ///   結束日期 (ISO-8601 格式)
-  Future<Map<String, Object>?> getDeliveryStatistics({ DateTime? startDate, DateTime? endDate, }) async {
+  Future<DeliveryStatisticsDTO?> getDeliveryStatistics({ DateTime? startDate, DateTime? endDate, }) async {
     final response = await getDeliveryStatisticsWithHttpInfo( startDate: startDate, endDate: endDate, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -207,8 +207,8 @@ class AdminDeliveryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeliveryStatisticsDTO',) as DeliveryStatisticsDTO;
+    
     }
     return null;
   }
@@ -340,7 +340,13 @@ class AdminDeliveryApi {
   /// Parameters:
   ///
   /// * [DeliveryerSearchParam] deliveryerSearchParam (required):
-  Future<Response> searchDeliveryersWithHttpInfo(DeliveryerSearchParam deliveryerSearchParam,) async {
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<Response> searchDeliveryersWithHttpInfo(DeliveryerSearchParam deliveryerSearchParam, { int? page, int? size, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/delivery/deliveryers/search';
 
@@ -350,6 +356,13 @@ class AdminDeliveryApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
 
     const contentTypes = <String>['application/json'];
 
@@ -372,8 +385,14 @@ class AdminDeliveryApi {
   /// Parameters:
   ///
   /// * [DeliveryerSearchParam] deliveryerSearchParam (required):
-  Future<List<Deliveryer>?> searchDeliveryers(DeliveryerSearchParam deliveryerSearchParam,) async {
-    final response = await searchDeliveryersWithHttpInfo(deliveryerSearchParam,);
+  ///
+  /// * [int] page:
+  ///   頁碼，從1開始
+  ///
+  /// * [int] size:
+  ///   每頁數量
+  Future<PageDeliveryer?> searchDeliveryers(DeliveryerSearchParam deliveryerSearchParam, { int? page, int? size, }) async {
+    final response = await searchDeliveryersWithHttpInfo(deliveryerSearchParam,  page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -381,11 +400,8 @@ class AdminDeliveryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<Deliveryer>') as List)
-        .cast<Deliveryer>()
-        .toList(growable: false);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDeliveryer',) as PageDeliveryer;
+    
     }
     return null;
   }

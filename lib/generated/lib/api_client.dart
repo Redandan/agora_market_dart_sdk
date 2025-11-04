@@ -298,8 +298,12 @@ class ApiClient {
           return DeliveryOrderSearchParam.fromJson(value);
         case 'DeliveryReportTypeEnum':
           return DeliveryReportTypeEnumTypeTransformer().decode(value);
+        case 'DeliveryStatisticsDTO':
+          return DeliveryStatisticsDTO.fromJson(value);
         case 'Deliveryer':
           return Deliveryer.fromJson(value);
+        case 'DeliveryerPerformanceDTO':
+          return DeliveryerPerformanceDTO.fromJson(value);
         case 'DeliveryerRegistrationParam':
           return DeliveryerRegistrationParam.fromJson(value);
         case 'DeliveryerSearchParam':
@@ -404,6 +408,8 @@ class ApiClient {
           return PageColdWallet.fromJson(value);
         case 'PageCustomerIssue':
           return PageCustomerIssue.fromJson(value);
+        case 'PageDeliveryer':
+          return PageDeliveryer.fromJson(value);
         case 'PageDispute':
           return PageDispute.fromJson(value);
         case 'PageFileRecord':
@@ -600,6 +606,8 @@ class ApiClient {
           return StoreUpdateParam.fromJson(value);
         case 'TaiwanPostalArea':
           return TaiwanPostalArea.fromJson(value);
+        case 'TopDeliveryAreaDTO':
+          return TopDeliveryAreaDTO.fromJson(value);
         case 'TopDisputedProductDTO':
           return TopDisputedProductDTO.fromJson(value);
         case 'TopDisputedSellerDTO':
