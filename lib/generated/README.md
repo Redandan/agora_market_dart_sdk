@@ -289,6 +289,7 @@ Class | Method | HTTP request | Description
 *PickupStoresApi* | [**searchStores**](doc//PickupStoresApi.md#searchstores) | **POST** /pickup-stores/search | 查詢取貨商店門市
 *PickupStoresApi* | [**syncSevenElevenStores**](doc//PickupStoresApi.md#syncsevenelevenstores) | **POST** /pickup-stores/sync/seven-eleven | 異步同步7-11取貨門市資料
 *PickupStoresApi* | [**syncSevenElevenStoresByCity**](doc//PickupStoresApi.md#syncsevenelevenstoresbycity) | **POST** /pickup-stores/sync/seven-eleven/city | 同步指定縣市的7-11取貨門市資料
+*ProductsApi* | [**batchCreateProducts**](doc//ProductsApi.md#batchcreateproducts) | **POST** /products/batch-create | 批量創建商品
 *ProductsApi* | [**batchDeleteProducts**](doc//ProductsApi.md#batchdeleteproducts) | **DELETE** /products/batch | 批量刪除商品
 *ProductsApi* | [**createProduct**](doc//ProductsApi.md#createproduct) | **POST** /products/create | 創建商品
 *ProductsApi* | [**decreaseStock**](doc//ProductsApi.md#decreasestock) | **POST** /products/{id}/stock/decrease | 減少商品庫存

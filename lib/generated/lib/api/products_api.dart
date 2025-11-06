@@ -16,6 +16,65 @@ class ProductsApi {
 
   final ApiClient apiClient;
 
+  /// 批量創建商品
+  ///
+  /// 賣家可以批量創建多個商品
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [List<ProductCreateParam>] productCreateParam (required):
+  Future<Response> batchCreateProductsWithHttpInfo(List<ProductCreateParam> productCreateParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/products/batch-create';
+
+    // ignore: prefer_final_locals
+    Object? postBody = productCreateParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 批量創建商品
+  ///
+  /// 賣家可以批量創建多個商品
+  ///
+  /// Parameters:
+  ///
+  /// * [List<ProductCreateParam>] productCreateParam (required):
+  Future<List<Product>?> batchCreateProducts(List<ProductCreateParam> productCreateParam,) async {
+    final response = await batchCreateProductsWithHttpInfo(productCreateParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<Product>') as List)
+        .cast<Product>()
+        .toList(growable: false);
+
+    }
+    return null;
+  }
+
   /// 批量刪除商品
   ///
   /// 批量硬刪除多個商品，此操作不可恢復
