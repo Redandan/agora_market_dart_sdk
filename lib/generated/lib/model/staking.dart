@@ -25,7 +25,9 @@ class Staking {
     this.unfreezeRequestTime,
     this.unfreezeCompleteTime,
     this.lastSettleDate,
+    this.lastSettleTime,
     this.lastSettleReward,
+    this.nextSettleTime,
     this.remark,
   });
 
@@ -136,8 +138,26 @@ class Staking {
   ///
   DateTime? lastSettleDate;
 
+  /// 上次結算的實際時間（精確到秒）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? lastSettleTime;
+
   /// 上次檢查收益
   num? lastSettleReward;
+
+  /// 下次結算時間（必須壓滿24小時且到結算時間才發放收益，對齊到固定時間點）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? nextSettleTime;
 
   /// 備註
   ///
@@ -162,7 +182,9 @@ class Staking {
     other.unfreezeRequestTime == unfreezeRequestTime &&
     other.unfreezeCompleteTime == unfreezeCompleteTime &&
     other.lastSettleDate == lastSettleDate &&
+    other.lastSettleTime == lastSettleTime &&
     other.lastSettleReward == lastSettleReward &&
+    other.nextSettleTime == nextSettleTime &&
     other.remark == remark;
 
   @override
@@ -180,11 +202,13 @@ class Staking {
     (unfreezeRequestTime == null ? 0 : unfreezeRequestTime!.hashCode) +
     (unfreezeCompleteTime == null ? 0 : unfreezeCompleteTime!.hashCode) +
     (lastSettleDate == null ? 0 : lastSettleDate!.hashCode) +
+    (lastSettleTime == null ? 0 : lastSettleTime!.hashCode) +
     (lastSettleReward == null ? 0 : lastSettleReward!.hashCode) +
+    (nextSettleTime == null ? 0 : nextSettleTime!.hashCode) +
     (remark == null ? 0 : remark!.hashCode);
 
   @override
-  String toString() => 'Staking[id=$id, userId=$userId, amount=$amount, currency=$currency, status=$status, applyTime=$applyTime, startTime=$startTime, endTime=$endTime, earnedRewards=$earnedRewards, unfreezeRequestTime=$unfreezeRequestTime, unfreezeCompleteTime=$unfreezeCompleteTime, lastSettleDate=$lastSettleDate, lastSettleReward=$lastSettleReward, remark=$remark]';
+  String toString() => 'Staking[id=$id, userId=$userId, amount=$amount, currency=$currency, status=$status, applyTime=$applyTime, startTime=$startTime, endTime=$endTime, earnedRewards=$earnedRewards, unfreezeRequestTime=$unfreezeRequestTime, unfreezeCompleteTime=$unfreezeCompleteTime, lastSettleDate=$lastSettleDate, lastSettleTime=$lastSettleTime, lastSettleReward=$lastSettleReward, nextSettleTime=$nextSettleTime, remark=$remark]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -248,10 +272,20 @@ class Staking {
     } else {
       json[r'lastSettleDate'] = null;
     }
+    if (this.lastSettleTime != null) {
+      json[r'lastSettleTime'] = this.lastSettleTime!.toUtc().toIso8601String();
+    } else {
+      json[r'lastSettleTime'] = null;
+    }
     if (this.lastSettleReward != null) {
       json[r'lastSettleReward'] = this.lastSettleReward;
     } else {
       json[r'lastSettleReward'] = null;
+    }
+    if (this.nextSettleTime != null) {
+      json[r'nextSettleTime'] = this.nextSettleTime!.toUtc().toIso8601String();
+    } else {
+      json[r'nextSettleTime'] = null;
     }
     if (this.remark != null) {
       json[r'remark'] = this.remark;
@@ -292,9 +326,11 @@ class Staking {
         unfreezeRequestTime: mapDateTime(json, r'unfreezeRequestTime', r''),
         unfreezeCompleteTime: mapDateTime(json, r'unfreezeCompleteTime', r''),
         lastSettleDate: mapDateTime(json, r'lastSettleDate', r''),
+        lastSettleTime: mapDateTime(json, r'lastSettleTime', r''),
         lastSettleReward: json[r'lastSettleReward'] == null
             ? null
             : num.parse('${json[r'lastSettleReward']}'),
+        nextSettleTime: mapDateTime(json, r'nextSettleTime', r''),
         remark: mapValueOfType<String>(json, r'remark'),
       );
     }

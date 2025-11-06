@@ -14,7 +14,6 @@ class ApplyStakingParam {
   /// Returns a new [ApplyStakingParam] instance.
   ApplyStakingParam({
     required this.amount,
-    required this.stakingDays,
   });
 
   /// 質押金額
@@ -22,29 +21,21 @@ class ApplyStakingParam {
   /// Minimum value: 1.0
   num amount;
 
-  /// 質押時間（天）
-  ///
-  /// Minimum value: 1
-  int stakingDays;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is ApplyStakingParam &&
-    other.amount == amount &&
-    other.stakingDays == stakingDays;
+    other.amount == amount;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (amount.hashCode) +
-    (stakingDays.hashCode);
+    (amount.hashCode);
 
   @override
-  String toString() => 'ApplyStakingParam[amount=$amount, stakingDays=$stakingDays]';
+  String toString() => 'ApplyStakingParam[amount=$amount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'amount'] = this.amount;
-      json[r'stakingDays'] = this.stakingDays;
     return json;
   }
 
@@ -68,7 +59,6 @@ class ApplyStakingParam {
 
       return ApplyStakingParam(
         amount: num.parse('${json[r'amount']}'),
-        stakingDays: mapValueOfType<int>(json, r'stakingDays')!,
       );
     }
     return null;
@@ -117,7 +107,6 @@ class ApplyStakingParam {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'amount',
-    'stakingDays',
   };
 }
 
