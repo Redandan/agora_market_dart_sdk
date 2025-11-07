@@ -135,7 +135,7 @@ class PickupStoresApi {
 
   /// 查詢取貨商店門市
   ///
-  /// 統一的取貨商店門市查詢接口，支持多種查詢條件和任意組合：1. 根據門市代號精確查詢（storeCode，與其他條件互斥）2. 根據商店類型查詢（storeType：SEVEN_ELEVEN、FAMILY_MART、HILIFE、OK_MART）3. 組合查詢支持（可任意組合以下條件）：   - 商店類型（storeType，建議必填）   - 縣市（city，可選）   - 區域（district，可選，需配合 city 使用）   - 關鍵字（keyword，可選，同時搜尋門市名稱或地址，支持地址模糊查詢）4. 組合查詢範例：   - storeType + city：查詢指定縣市的所有門市   - storeType + city + keyword：在指定縣市內搜尋包含關鍵字的門市   - storeType + city + district + keyword：在指定區域內搜尋包含關鍵字的門市5. 僅統計數量（設置 returnCountOnly = true）6. 分頁支援（設置 page 和 size，查詢結果超過1000筆時自動啟用分頁）
+  /// 統一的取貨商店門市查詢接口，支持多種查詢條件和任意組合：1. 根據門市代號精確查詢（storeCode，與其他條件互斥）2. 根據商店類型查詢（storeType：SEVEN_ELEVEN、FAMILY_MART、HILIFE、OK_MART）3. 組合查詢支持（可任意組合以下條件）：   - 商店類型（storeType，建議必填）   - 縣市（city，可選）   - 區域（district，可選，需配合 city 使用）   - 關鍵字（keyword，可選，同時搜尋門市名稱或地址，支持地址模糊查詢）4. 組合查詢範例：   - storeType + city：查詢指定縣市的所有門市   - storeType + city + keyword：在指定縣市內搜尋包含關鍵字的門市   - storeType + city + district + keyword：在指定區域內搜尋包含關鍵字的門市5. 分頁支援（設置 page 和 size，查詢結果超過1000筆時自動啟用分頁）
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -169,12 +169,12 @@ class PickupStoresApi {
 
   /// 查詢取貨商店門市
   ///
-  /// 統一的取貨商店門市查詢接口，支持多種查詢條件和任意組合：1. 根據門市代號精確查詢（storeCode，與其他條件互斥）2. 根據商店類型查詢（storeType：SEVEN_ELEVEN、FAMILY_MART、HILIFE、OK_MART）3. 組合查詢支持（可任意組合以下條件）：   - 商店類型（storeType，建議必填）   - 縣市（city，可選）   - 區域（district，可選，需配合 city 使用）   - 關鍵字（keyword，可選，同時搜尋門市名稱或地址，支持地址模糊查詢）4. 組合查詢範例：   - storeType + city：查詢指定縣市的所有門市   - storeType + city + keyword：在指定縣市內搜尋包含關鍵字的門市   - storeType + city + district + keyword：在指定區域內搜尋包含關鍵字的門市5. 僅統計數量（設置 returnCountOnly = true）6. 分頁支援（設置 page 和 size，查詢結果超過1000筆時自動啟用分頁）
+  /// 統一的取貨商店門市查詢接口，支持多種查詢條件和任意組合：1. 根據門市代號精確查詢（storeCode，與其他條件互斥）2. 根據商店類型查詢（storeType：SEVEN_ELEVEN、FAMILY_MART、HILIFE、OK_MART）3. 組合查詢支持（可任意組合以下條件）：   - 商店類型（storeType，建議必填）   - 縣市（city，可選）   - 區域（district，可選，需配合 city 使用）   - 關鍵字（keyword，可選，同時搜尋門市名稱或地址，支持地址模糊查詢）4. 組合查詢範例：   - storeType + city：查詢指定縣市的所有門市   - storeType + city + keyword：在指定縣市內搜尋包含關鍵字的門市   - storeType + city + district + keyword：在指定區域內搜尋包含關鍵字的門市5. 分頁支援（設置 page 和 size，查詢結果超過1000筆時自動啟用分頁）
   ///
   /// Parameters:
   ///
   /// * [PickupStoreSearchParam] pickupStoreSearchParam (required):
-  Future<PickupStoreSearchResponse?> searchStores(PickupStoreSearchParam pickupStoreSearchParam,) async {
+  Future<PagePickupStore?> searchStores(PickupStoreSearchParam pickupStoreSearchParam,) async {
     final response = await searchStoresWithHttpInfo(pickupStoreSearchParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -183,7 +183,7 @@ class PickupStoresApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PickupStoreSearchResponse',) as PickupStoreSearchResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PagePickupStore',) as PagePickupStore;
     
     }
     return null;

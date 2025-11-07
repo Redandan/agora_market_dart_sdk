@@ -10,93 +10,29 @@
 
 part of openapi.api;
 
-class ChatMessage {
-  /// Returns a new [ChatMessage] instance.
-  ChatMessage({
-    this.id,
-    this.senderId,
-    this.receiverId,
-    this.sessionId,
-    this.content,
-    this.createdAt,
-    this.updatedAt,
-    this.deletedAt,
-    this.imageMessage,
-    this.textMessage,
-    this.mixedMessage,
+class PagePickupStore {
+  /// Returns a new [PagePickupStore] instance.
+  PagePickupStore({
+    this.totalElements,
+    this.totalPages,
+    this.sort,
+    this.numberOfElements,
+    this.pageable,
+    this.first,
+    this.last,
+    this.size,
+    this.content = const [],
+    this.number,
+    this.empty,
   });
 
-  /// 消息ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? id;
-
-  /// 發送者ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? senderId;
-
-  /// 接收者ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? receiverId;
-
-  /// 聊天會話ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? sessionId;
-
-  /// 消息內容
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? content;
-
-  /// 創建時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? createdAt;
-
-  /// 更新時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? updatedAt;
-
-  /// 刪除時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? deletedAt;
+  int? totalElements;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -104,7 +40,7 @@ class ChatMessage {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? imageMessage;
+  int? totalPages;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -112,7 +48,7 @@ class ChatMessage {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? textMessage;
+  SortObject? sort;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -120,104 +56,150 @@ class ChatMessage {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? mixedMessage;
+  int? numberOfElements;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  PageableObject? pageable;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? first;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? last;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? size;
+
+  List<PickupStore> content;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? number;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? empty;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ChatMessage &&
-    other.id == id &&
-    other.senderId == senderId &&
-    other.receiverId == receiverId &&
-    other.sessionId == sessionId &&
-    other.content == content &&
-    other.createdAt == createdAt &&
-    other.updatedAt == updatedAt &&
-    other.deletedAt == deletedAt &&
-    other.imageMessage == imageMessage &&
-    other.textMessage == textMessage &&
-    other.mixedMessage == mixedMessage;
+  bool operator ==(Object other) => identical(this, other) || other is PagePickupStore &&
+    other.totalElements == totalElements &&
+    other.totalPages == totalPages &&
+    other.sort == sort &&
+    other.numberOfElements == numberOfElements &&
+    other.pageable == pageable &&
+    other.first == first &&
+    other.last == last &&
+    other.size == size &&
+    _deepEquality.equals(other.content, content) &&
+    other.number == number &&
+    other.empty == empty;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (senderId == null ? 0 : senderId!.hashCode) +
-    (receiverId == null ? 0 : receiverId!.hashCode) +
-    (sessionId == null ? 0 : sessionId!.hashCode) +
-    (content == null ? 0 : content!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (deletedAt == null ? 0 : deletedAt!.hashCode) +
-    (imageMessage == null ? 0 : imageMessage!.hashCode) +
-    (textMessage == null ? 0 : textMessage!.hashCode) +
-    (mixedMessage == null ? 0 : mixedMessage!.hashCode);
+    (totalElements == null ? 0 : totalElements!.hashCode) +
+    (totalPages == null ? 0 : totalPages!.hashCode) +
+    (sort == null ? 0 : sort!.hashCode) +
+    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
+    (pageable == null ? 0 : pageable!.hashCode) +
+    (first == null ? 0 : first!.hashCode) +
+    (last == null ? 0 : last!.hashCode) +
+    (size == null ? 0 : size!.hashCode) +
+    (content.hashCode) +
+    (number == null ? 0 : number!.hashCode) +
+    (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'ChatMessage[id=$id, senderId=$senderId, receiverId=$receiverId, sessionId=$sessionId, content=$content, createdAt=$createdAt, updatedAt=$updatedAt, deletedAt=$deletedAt, imageMessage=$imageMessage, textMessage=$textMessage, mixedMessage=$mixedMessage]';
+  String toString() => 'PagePickupStore[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, numberOfElements=$numberOfElements, pageable=$pageable, first=$first, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
-      json[r'id'] = this.id;
+    if (this.totalElements != null) {
+      json[r'totalElements'] = this.totalElements;
     } else {
-      json[r'id'] = null;
+      json[r'totalElements'] = null;
     }
-    if (this.senderId != null) {
-      json[r'senderId'] = this.senderId;
+    if (this.totalPages != null) {
+      json[r'totalPages'] = this.totalPages;
     } else {
-      json[r'senderId'] = null;
+      json[r'totalPages'] = null;
     }
-    if (this.receiverId != null) {
-      json[r'receiverId'] = this.receiverId;
+    if (this.sort != null) {
+      json[r'sort'] = this.sort;
     } else {
-      json[r'receiverId'] = null;
+      json[r'sort'] = null;
     }
-    if (this.sessionId != null) {
-      json[r'sessionId'] = this.sessionId;
+    if (this.numberOfElements != null) {
+      json[r'numberOfElements'] = this.numberOfElements;
     } else {
-      json[r'sessionId'] = null;
+      json[r'numberOfElements'] = null;
     }
-    if (this.content != null) {
+    if (this.pageable != null) {
+      json[r'pageable'] = this.pageable;
+    } else {
+      json[r'pageable'] = null;
+    }
+    if (this.first != null) {
+      json[r'first'] = this.first;
+    } else {
+      json[r'first'] = null;
+    }
+    if (this.last != null) {
+      json[r'last'] = this.last;
+    } else {
+      json[r'last'] = null;
+    }
+    if (this.size != null) {
+      json[r'size'] = this.size;
+    } else {
+      json[r'size'] = null;
+    }
       json[r'content'] = this.content;
+    if (this.number != null) {
+      json[r'number'] = this.number;
     } else {
-      json[r'content'] = null;
+      json[r'number'] = null;
     }
-    if (this.createdAt != null) {
-      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
+    if (this.empty != null) {
+      json[r'empty'] = this.empty;
     } else {
-      json[r'createdAt'] = null;
-    }
-    if (this.updatedAt != null) {
-      json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
-    } else {
-      json[r'updatedAt'] = null;
-    }
-    if (this.deletedAt != null) {
-      json[r'deletedAt'] = this.deletedAt!.toUtc().toIso8601String();
-    } else {
-      json[r'deletedAt'] = null;
-    }
-    if (this.imageMessage != null) {
-      json[r'imageMessage'] = this.imageMessage;
-    } else {
-      json[r'imageMessage'] = null;
-    }
-    if (this.textMessage != null) {
-      json[r'textMessage'] = this.textMessage;
-    } else {
-      json[r'textMessage'] = null;
-    }
-    if (this.mixedMessage != null) {
-      json[r'mixedMessage'] = this.mixedMessage;
-    } else {
-      json[r'mixedMessage'] = null;
+      json[r'empty'] = null;
     }
     return json;
   }
 
-  /// Returns a new [ChatMessage] instance and imports its values from
+  /// Returns a new [PagePickupStore] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ChatMessage? fromJson(dynamic value) {
+  static PagePickupStore? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -226,34 +208,34 @@ class ChatMessage {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ChatMessage[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ChatMessage[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PagePickupStore[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PagePickupStore[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ChatMessage(
-        id: mapValueOfType<int>(json, r'id'),
-        senderId: mapValueOfType<int>(json, r'senderId'),
-        receiverId: mapValueOfType<int>(json, r'receiverId'),
-        sessionId: mapValueOfType<String>(json, r'sessionId'),
-        content: mapValueOfType<String>(json, r'content'),
-        createdAt: mapDateTime(json, r'createdAt', r''),
-        updatedAt: mapDateTime(json, r'updatedAt', r''),
-        deletedAt: mapDateTime(json, r'deletedAt', r''),
-        imageMessage: mapValueOfType<bool>(json, r'imageMessage'),
-        textMessage: mapValueOfType<bool>(json, r'textMessage'),
-        mixedMessage: mapValueOfType<bool>(json, r'mixedMessage'),
+      return PagePickupStore(
+        totalElements: mapValueOfType<int>(json, r'totalElements'),
+        totalPages: mapValueOfType<int>(json, r'totalPages'),
+        sort: SortObject.fromJson(json[r'sort']),
+        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
+        pageable: PageableObject.fromJson(json[r'pageable']),
+        first: mapValueOfType<bool>(json, r'first'),
+        last: mapValueOfType<bool>(json, r'last'),
+        size: mapValueOfType<int>(json, r'size'),
+        content: PickupStore.listFromJson(json[r'content']),
+        number: mapValueOfType<int>(json, r'number'),
+        empty: mapValueOfType<bool>(json, r'empty'),
       );
     }
     return null;
   }
 
-  static List<ChatMessage> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ChatMessage>[];
+  static List<PagePickupStore> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PagePickupStore>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ChatMessage.fromJson(row);
+        final value = PagePickupStore.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -262,12 +244,12 @@ class ChatMessage {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ChatMessage> mapFromJson(dynamic json) {
-    final map = <String, ChatMessage>{};
+  static Map<String, PagePickupStore> mapFromJson(dynamic json) {
+    final map = <String, PagePickupStore>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ChatMessage.fromJson(entry.value);
+        final value = PagePickupStore.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -276,14 +258,14 @@ class ChatMessage {
     return map;
   }
 
-  // maps a json object with a list of ChatMessage-objects as value to a dart map
-  static Map<String, List<ChatMessage>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ChatMessage>>{};
+  // maps a json object with a list of PagePickupStore-objects as value to a dart map
+  static Map<String, List<PagePickupStore>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<PagePickupStore>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ChatMessage.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = PagePickupStore.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

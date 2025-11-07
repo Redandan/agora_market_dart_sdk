@@ -418,6 +418,8 @@ class ApiClient {
           return PageNotificationResponseDTO.fromJson(value);
         case 'PageOrder':
           return PageOrder.fromJson(value);
+        case 'PagePickupStore':
+          return PagePickupStore.fromJson(value);
         case 'PageProduct':
           return PageProduct.fromJson(value);
         case 'PagePromoCode':
@@ -452,8 +454,6 @@ class ApiClient {
           return PickupStore.fromJson(value);
         case 'PickupStoreSearchParam':
           return PickupStoreSearchParam.fromJson(value);
-        case 'PickupStoreSearchResponse':
-          return PickupStoreSearchResponse.fromJson(value);
         case 'PickupStoreSyncCheckResponse':
           return PickupStoreSyncCheckResponse.fromJson(value);
         case 'PickupStoreSyncResponse':
