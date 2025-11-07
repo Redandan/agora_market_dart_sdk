@@ -36,9 +36,8 @@ class ProductCreateParam {
     this.estimatedDeliveryDays,
     this.supportsScheduledShipping,
     this.shippingDateRange,
-    this.supportedShippingCompanies = const [],
-    this.shippingFees = const {},
-    required this.defaultShippingCompany,
+    this.supportedServiceTypes = const [],
+    this.serviceTypeFees = const {},
     this.freeShippingThreshold,
     this.stockAlertThreshold,
     this.allowNegativeStock,
@@ -193,13 +192,11 @@ class ProductCreateParam {
   ///
   int? shippingDateRange;
 
-  /// 支援的物流公司
-  List<ShippingCompanyEnum> supportedShippingCompanies;
+  /// 支援的取貨服務類型
+  List<PickupServiceTypeEnum> supportedServiceTypes;
 
-  /// 各物流公司運費對應表
-  Map<String, num> shippingFees;
-
-  ShippingCompanyEnum defaultShippingCompany;
+  /// 各取貨服務類型運費對應表
+  Map<String, num> serviceTypeFees;
 
   /// 免運費門檻
   ///
@@ -266,9 +263,8 @@ class ProductCreateParam {
     other.estimatedDeliveryDays == estimatedDeliveryDays &&
     other.supportsScheduledShipping == supportsScheduledShipping &&
     other.shippingDateRange == shippingDateRange &&
-    _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
-    _deepEquality.equals(other.shippingFees, shippingFees) &&
-    other.defaultShippingCompany == defaultShippingCompany &&
+    _deepEquality.equals(other.supportedServiceTypes, supportedServiceTypes) &&
+    _deepEquality.equals(other.serviceTypeFees, serviceTypeFees) &&
     other.freeShippingThreshold == freeShippingThreshold &&
     other.stockAlertThreshold == stockAlertThreshold &&
     other.allowNegativeStock == allowNegativeStock &&
@@ -300,16 +296,15 @@ class ProductCreateParam {
     (estimatedDeliveryDays == null ? 0 : estimatedDeliveryDays!.hashCode) +
     (supportsScheduledShipping == null ? 0 : supportsScheduledShipping!.hashCode) +
     (shippingDateRange == null ? 0 : shippingDateRange!.hashCode) +
-    (supportedShippingCompanies.hashCode) +
-    (shippingFees.hashCode) +
-    (defaultShippingCompany.hashCode) +
+    (supportedServiceTypes.hashCode) +
+    (serviceTypeFees.hashCode) +
     (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode) +
     (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
     (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode) +
     (enablePlatformDelivery == null ? 0 : enablePlatformDelivery!.hashCode);
 
   @override
-  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, skus=$skus, brand=$brand, minStock=$minStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedShippingCompanies=$supportedShippingCompanies, shippingFees=$shippingFees, defaultShippingCompany=$defaultShippingCompany, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, enablePlatformDelivery=$enablePlatformDelivery]';
+  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, skus=$skus, brand=$brand, minStock=$minStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedServiceTypes=$supportedServiceTypes, serviceTypeFees=$serviceTypeFees, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, enablePlatformDelivery=$enablePlatformDelivery]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -376,9 +371,8 @@ class ProductCreateParam {
     } else {
       json[r'shippingDateRange'] = null;
     }
-      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
-      json[r'shippingFees'] = this.shippingFees;
-      json[r'defaultShippingCompany'] = this.defaultShippingCompany;
+      json[r'supportedServiceTypes'] = this.supportedServiceTypes;
+      json[r'serviceTypeFees'] = this.serviceTypeFees;
     if (this.freeShippingThreshold != null) {
       json[r'freeShippingThreshold'] = this.freeShippingThreshold;
     } else {
@@ -448,9 +442,8 @@ class ProductCreateParam {
         estimatedDeliveryDays: mapValueOfType<int>(json, r'estimatedDeliveryDays'),
         supportsScheduledShipping: mapValueOfType<bool>(json, r'supportsScheduledShipping'),
         shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
-        supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']),
-        shippingFees: mapCastOfType<String, num>(json, r'shippingFees')!,
-        defaultShippingCompany: ShippingCompanyEnum.fromJson(json[r'defaultShippingCompany'])!,
+        supportedServiceTypes: PickupServiceTypeEnum.listFromJson(json[r'supportedServiceTypes']),
+        serviceTypeFees: mapCastOfType<String, num>(json, r'serviceTypeFees')!,
         freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
         stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
         allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
@@ -514,9 +507,8 @@ class ProductCreateParam {
     'pickupTimeEnd',
     'pickupAddress',
     'skus',
-    'supportedShippingCompanies',
-    'shippingFees',
-    'defaultShippingCompany',
+    'supportedServiceTypes',
+    'serviceTypeFees',
   };
 }
 

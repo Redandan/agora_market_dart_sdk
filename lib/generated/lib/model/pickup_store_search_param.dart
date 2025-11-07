@@ -29,7 +29,7 @@ class PickupStoreSearchParam {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  LogisticsServiceTypeEnum? storeType;
+  PickupServiceTypeEnum? storeType;
 
   /// 門市代號（精確查詢）
   ///
@@ -184,7 +184,7 @@ class PickupStoreSearchParam {
       }());
 
       return PickupStoreSearchParam(
-        storeType: LogisticsServiceTypeEnum.fromJson(json[r'storeType']),
+        storeType: PickupServiceTypeEnum.fromJson(json[r'storeType']),
         storeCode: mapValueOfType<String>(json, r'storeCode'),
         city: mapValueOfType<String>(json, r'city'),
         district: mapValueOfType<String>(json, r'district'),

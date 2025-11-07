@@ -348,8 +348,6 @@ class ApiClient {
           return LoginParam.fromJson(value);
         case 'LoginResult':
           return LoginResult.fromJson(value);
-        case 'LogisticsServiceTypeEnum':
-          return LogisticsServiceTypeEnumTypeTransformer().decode(value);
         case 'LowStockWarningDTO':
           return LowStockWarningDTO.fromJson(value);
         case 'MemberSearchParam':
@@ -448,6 +446,8 @@ class ApiClient {
           return PageableObject.fromJson(value);
         case 'PasswordResetParam':
           return PasswordResetParam.fromJson(value);
+        case 'PickupServiceTypeEnum':
+          return PickupServiceTypeEnumTypeTransformer().decode(value);
         case 'PickupStore':
           return PickupStore.fromJson(value);
         case 'PickupStoreSearchParam':

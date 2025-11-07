@@ -87,7 +87,7 @@ class QuickLogisticsResult {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  LogisticsServiceTypeEnum? serviceType;
+  PickupServiceTypeEnum? serviceType;
 
   /// 運費(台幣)
   ///
@@ -267,7 +267,7 @@ class QuickLogisticsResult {
         toCity: mapValueOfType<String>(json, r'toCity'),
         weight: num.parse('${json[r'weight']}'),
         carrier: ShippingCompanyEnum.fromJson(json[r'carrier']),
-        serviceType: LogisticsServiceTypeEnum.fromJson(json[r'serviceType']),
+        serviceType: PickupServiceTypeEnum.fromJson(json[r'serviceType']),
         shippingFee: num.parse('${json[r'shippingFee']}'),
         estimatedDays: mapValueOfType<int>(json, r'estimatedDays'),
         description: mapValueOfType<String>(json, r'description'),

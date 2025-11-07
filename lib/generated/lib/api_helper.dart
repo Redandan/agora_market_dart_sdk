@@ -76,9 +76,6 @@ String parameterToString(dynamic value) {
   if (value is IssueTypeEnum) {
     return IssueTypeEnumTypeTransformer().encode(value).toString();
   }
-  if (value is LogisticsServiceTypeEnum) {
-    return LogisticsServiceTypeEnumTypeTransformer().encode(value).toString();
-  }
   if (value is NotificationStatusEnum) {
     return NotificationStatusEnumTypeTransformer().encode(value).toString();
   }
@@ -87,6 +84,9 @@ String parameterToString(dynamic value) {
   }
   if (value is OrderStatusEnum) {
     return OrderStatusEnumTypeTransformer().encode(value).toString();
+  }
+  if (value is PickupServiceTypeEnum) {
+    return PickupServiceTypeEnumTypeTransformer().encode(value).toString();
   }
   if (value is ProductCategoryEnum) {
     return ProductCategoryEnumTypeTransformer().encode(value).toString();

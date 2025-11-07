@@ -78,7 +78,7 @@ class ShippingAddressOption {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  LogisticsServiceTypeEnum? serviceType;
+  PickupServiceTypeEnum? serviceType;
 
   /// 門市名稱（便利商店取件用）
   ///
@@ -273,7 +273,7 @@ class ShippingAddressOption {
         recipientPhone: mapValueOfType<String>(json, r'recipientPhone'),
         fullAddress: mapValueOfType<String>(json, r'fullAddress'),
         shippingCompany: ShippingCompanyEnum.fromJson(json[r'shippingCompany']),
-        serviceType: LogisticsServiceTypeEnum.fromJson(json[r'serviceType']),
+        serviceType: PickupServiceTypeEnum.fromJson(json[r'serviceType']),
         storeName: mapValueOfType<String>(json, r'storeName'),
         storeAddress: mapValueOfType<String>(json, r'storeAddress'),
         shippingFee: num.parse('${json[r'shippingFee']}'),

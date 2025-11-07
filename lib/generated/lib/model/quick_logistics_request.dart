@@ -49,7 +49,7 @@ class QuickLogisticsRequest {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  LogisticsServiceTypeEnum? serviceType;
+  PickupServiceTypeEnum? serviceType;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is QuickLogisticsRequest &&
@@ -116,7 +116,7 @@ class QuickLogisticsRequest {
         toPostalCode: mapValueOfType<String>(json, r'toPostalCode')!,
         weight: num.parse('${json[r'weight']}'),
         carrier: ShippingCompanyEnum.fromJson(json[r'carrier']),
-        serviceType: LogisticsServiceTypeEnum.fromJson(json[r'serviceType']),
+        serviceType: PickupServiceTypeEnum.fromJson(json[r'serviceType']),
       );
     }
     return null;
