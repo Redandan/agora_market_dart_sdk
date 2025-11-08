@@ -27,8 +27,9 @@ class Staking {
     this.lastSettleDate,
     this.lastSettleTime,
     this.lastSettleReward,
-    this.nextSettleTime,
     this.remark,
+    this.nextExpectedSettleTime,
+    this.expectedReward,
   });
 
   /// 質押ID（業務ID）
@@ -150,15 +151,6 @@ class Staking {
   /// 上次檢查收益
   num? lastSettleReward;
 
-  /// 下次結算時間（必須壓滿24小時且到結算時間才發放收益，對齊到固定時間點）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? nextSettleTime;
-
   /// 備註
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -167,6 +159,24 @@ class Staking {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? remark;
+
+  /// 下次預計發放時間（實時計算，不存數據庫）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? nextExpectedSettleTime;
+
+  /// 預計發放收益（實時計算，不存數據庫）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? expectedReward;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Staking &&
@@ -184,8 +194,9 @@ class Staking {
     other.lastSettleDate == lastSettleDate &&
     other.lastSettleTime == lastSettleTime &&
     other.lastSettleReward == lastSettleReward &&
-    other.nextSettleTime == nextSettleTime &&
-    other.remark == remark;
+    other.remark == remark &&
+    other.nextExpectedSettleTime == nextExpectedSettleTime &&
+    other.expectedReward == expectedReward;
 
   @override
   int get hashCode =>
@@ -204,11 +215,12 @@ class Staking {
     (lastSettleDate == null ? 0 : lastSettleDate!.hashCode) +
     (lastSettleTime == null ? 0 : lastSettleTime!.hashCode) +
     (lastSettleReward == null ? 0 : lastSettleReward!.hashCode) +
-    (nextSettleTime == null ? 0 : nextSettleTime!.hashCode) +
-    (remark == null ? 0 : remark!.hashCode);
+    (remark == null ? 0 : remark!.hashCode) +
+    (nextExpectedSettleTime == null ? 0 : nextExpectedSettleTime!.hashCode) +
+    (expectedReward == null ? 0 : expectedReward!.hashCode);
 
   @override
-  String toString() => 'Staking[id=$id, userId=$userId, amount=$amount, currency=$currency, status=$status, applyTime=$applyTime, startTime=$startTime, endTime=$endTime, earnedRewards=$earnedRewards, unfreezeRequestTime=$unfreezeRequestTime, unfreezeCompleteTime=$unfreezeCompleteTime, lastSettleDate=$lastSettleDate, lastSettleTime=$lastSettleTime, lastSettleReward=$lastSettleReward, nextSettleTime=$nextSettleTime, remark=$remark]';
+  String toString() => 'Staking[id=$id, userId=$userId, amount=$amount, currency=$currency, status=$status, applyTime=$applyTime, startTime=$startTime, endTime=$endTime, earnedRewards=$earnedRewards, unfreezeRequestTime=$unfreezeRequestTime, unfreezeCompleteTime=$unfreezeCompleteTime, lastSettleDate=$lastSettleDate, lastSettleTime=$lastSettleTime, lastSettleReward=$lastSettleReward, remark=$remark, nextExpectedSettleTime=$nextExpectedSettleTime, expectedReward=$expectedReward]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -282,15 +294,20 @@ class Staking {
     } else {
       json[r'lastSettleReward'] = null;
     }
-    if (this.nextSettleTime != null) {
-      json[r'nextSettleTime'] = this.nextSettleTime!.toUtc().toIso8601String();
-    } else {
-      json[r'nextSettleTime'] = null;
-    }
     if (this.remark != null) {
       json[r'remark'] = this.remark;
     } else {
       json[r'remark'] = null;
+    }
+    if (this.nextExpectedSettleTime != null) {
+      json[r'nextExpectedSettleTime'] = this.nextExpectedSettleTime!.toUtc().toIso8601String();
+    } else {
+      json[r'nextExpectedSettleTime'] = null;
+    }
+    if (this.expectedReward != null) {
+      json[r'expectedReward'] = this.expectedReward;
+    } else {
+      json[r'expectedReward'] = null;
     }
     return json;
   }
@@ -330,8 +347,9 @@ class Staking {
         lastSettleReward: json[r'lastSettleReward'] == null
             ? null
             : num.parse('${json[r'lastSettleReward']}'),
-        nextSettleTime: mapDateTime(json, r'nextSettleTime', r''),
         remark: mapValueOfType<String>(json, r'remark'),
+        nextExpectedSettleTime: mapDateTime(json, r'nextExpectedSettleTime', r''),
+        expectedReward: num.parse('${json[r'expectedReward']}'),
       );
     }
     return null;
