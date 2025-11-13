@@ -16,6 +16,65 @@ class FlutterDeploymentApi {
 
   final ApiClient apiClient;
 
+  /// 刪除 APP 版本
+  ///
+  /// 根據版本 ID 硬刪除指定的 APP 版本（物理刪除數據庫記錄和 OCI Object Storage 中的文件）。需要管理員權限。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] versionId (required):
+  ///   版本 ID
+  Future<Response> deleteVersionWithHttpInfo(int versionId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/flutter/deployment/versions/{versionId}'
+      .replaceAll('{versionId}', versionId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 刪除 APP 版本
+  ///
+  /// 根據版本 ID 硬刪除指定的 APP 版本（物理刪除數據庫記錄和 OCI Object Storage 中的文件）。需要管理員權限。
+  ///
+  /// Parameters:
+  ///
+  /// * [int] versionId (required):
+  ///   版本 ID
+  Future<ApiResponseString?> deleteVersion(int versionId,) async {
+    final response = await deleteVersionWithHttpInfo(versionId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseString',) as ApiResponseString;
+    
+    }
+    return null;
+  }
+
   /// 獲取可下載的 APP
   ///
   /// 獲取應用程式版本列表。可通過參數控制返回內容：1) 不提供參數：返回所有平台的版本列表；2) 提供 platform：返回指定平台的所有版本；3) 提供 platform 和 latest=true：返回指定平台的最新版本（單元素列表）。

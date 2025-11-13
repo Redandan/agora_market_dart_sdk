@@ -21,13 +21,9 @@ class AppVersion {
     this.downloadUrl,
     this.fileSize,
     this.contentType,
-    this.isActive,
     this.description,
     this.releaseTime,
-    this.downloadCount,
     this.createdAt,
-    this.updatedAt,
-    this.isDeleted,
   });
 
   /// 版本ID
@@ -102,15 +98,6 @@ class AppVersion {
   ///
   String? contentType;
 
-  /// 是否為當前活躍版本
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? isActive;
-
   /// 版本描述/更新日誌
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -129,15 +116,6 @@ class AppVersion {
   ///
   DateTime? releaseTime;
 
-  /// 下載次數
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? downloadCount;
-
   /// 創建時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -146,24 +124,6 @@ class AppVersion {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? createdAt;
-
-  /// 更新時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? updatedAt;
-
-  /// 是否已刪除
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? isDeleted;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is AppVersion &&
@@ -175,13 +135,9 @@ class AppVersion {
     other.downloadUrl == downloadUrl &&
     other.fileSize == fileSize &&
     other.contentType == contentType &&
-    other.isActive == isActive &&
     other.description == description &&
     other.releaseTime == releaseTime &&
-    other.downloadCount == downloadCount &&
-    other.createdAt == createdAt &&
-    other.updatedAt == updatedAt &&
-    other.isDeleted == isDeleted;
+    other.createdAt == createdAt;
 
   @override
   int get hashCode =>
@@ -194,16 +150,12 @@ class AppVersion {
     (downloadUrl == null ? 0 : downloadUrl!.hashCode) +
     (fileSize == null ? 0 : fileSize!.hashCode) +
     (contentType == null ? 0 : contentType!.hashCode) +
-    (isActive == null ? 0 : isActive!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (releaseTime == null ? 0 : releaseTime!.hashCode) +
-    (downloadCount == null ? 0 : downloadCount!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (isDeleted == null ? 0 : isDeleted!.hashCode);
+    (createdAt == null ? 0 : createdAt!.hashCode);
 
   @override
-  String toString() => 'AppVersion[id=$id, version=$version, platform=$platform, fileName=$fileName, objectName=$objectName, downloadUrl=$downloadUrl, fileSize=$fileSize, contentType=$contentType, isActive=$isActive, description=$description, releaseTime=$releaseTime, downloadCount=$downloadCount, createdAt=$createdAt, updatedAt=$updatedAt, isDeleted=$isDeleted]';
+  String toString() => 'AppVersion[id=$id, version=$version, platform=$platform, fileName=$fileName, objectName=$objectName, downloadUrl=$downloadUrl, fileSize=$fileSize, contentType=$contentType, description=$description, releaseTime=$releaseTime, createdAt=$createdAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -247,11 +199,6 @@ class AppVersion {
     } else {
       json[r'contentType'] = null;
     }
-    if (this.isActive != null) {
-      json[r'isActive'] = this.isActive;
-    } else {
-      json[r'isActive'] = null;
-    }
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
@@ -262,25 +209,10 @@ class AppVersion {
     } else {
       json[r'releaseTime'] = null;
     }
-    if (this.downloadCount != null) {
-      json[r'downloadCount'] = this.downloadCount;
-    } else {
-      json[r'downloadCount'] = null;
-    }
     if (this.createdAt != null) {
       json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
     } else {
       json[r'createdAt'] = null;
-    }
-    if (this.updatedAt != null) {
-      json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
-    } else {
-      json[r'updatedAt'] = null;
-    }
-    if (this.isDeleted != null) {
-      json[r'isDeleted'] = this.isDeleted;
-    } else {
-      json[r'isDeleted'] = null;
     }
     return json;
   }
@@ -312,13 +244,9 @@ class AppVersion {
         downloadUrl: mapValueOfType<String>(json, r'downloadUrl'),
         fileSize: mapValueOfType<int>(json, r'fileSize'),
         contentType: mapValueOfType<String>(json, r'contentType'),
-        isActive: mapValueOfType<bool>(json, r'isActive'),
         description: mapValueOfType<String>(json, r'description'),
         releaseTime: mapDateTime(json, r'releaseTime', r''),
-        downloadCount: mapValueOfType<int>(json, r'downloadCount'),
         createdAt: mapDateTime(json, r'createdAt', r''),
-        updatedAt: mapDateTime(json, r'updatedAt', r''),
-        isDeleted: mapValueOfType<bool>(json, r'isDeleted'),
       );
     }
     return null;
