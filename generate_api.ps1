@@ -104,6 +104,15 @@ try {
             Write-Host "No /files/upload endpoint found in current API documentation" -ForegroundColor Green
         }
         
+        # 檢查並移除 flutter/deployment/deploy 端點
+        if ($apiDoc.paths.PSObject.Properties.Name -contains "/flutter/deployment/deploy") {
+            Write-Host "Found /flutter/deployment/deploy endpoint, removing it..." -ForegroundColor Yellow
+            $apiDoc.paths.PSObject.Properties.Remove("/flutter/deployment/deploy")
+            Write-Host "Successfully removed /flutter/deployment/deploy endpoint" -ForegroundColor Green
+        } else {
+            Write-Host "No /flutter/deployment/deploy endpoint found in current API documentation" -ForegroundColor Green
+        }
+        
         # 移除相關的文件上傳模型
         Write-Host "Removing file upload related models..." -ForegroundColor Yellow
         if ($apiDoc.components.schemas.PSObject.Properties.Name -contains "FileUploadResponse") {

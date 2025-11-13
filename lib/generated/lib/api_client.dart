@@ -314,8 +314,6 @@ class ApiClient {
           return DeliveryerSearchParam.fromJson(value);
         case 'DeliveryerUpdateParam':
           return DeliveryerUpdateParam.fromJson(value);
-        case 'DeployAppRequest':
-          return DeployAppRequest.fromJson(value);
         case 'Dispute':
           return Dispute.fromJson(value);
         case 'DisputeCreateParam':
