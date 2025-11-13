@@ -23,14 +23,14 @@ class NextInterestEstimateDTO {
     this.details = const [],
   });
 
-  /// 下次發放時間
+  /// 下次發放時間（帶時區，ISO-8601格式）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? nextSettlementTime;
+  DateTime? nextSettlementTime;
 
   /// 預計發放的質押記錄數
   ///
@@ -118,7 +118,7 @@ class NextInterestEstimateDTO {
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     if (this.nextSettlementTime != null) {
-      json[r'nextSettlementTime'] = this.nextSettlementTime;
+      json[r'nextSettlementTime'] = this.nextSettlementTime!.toUtc().toIso8601String();
     } else {
       json[r'nextSettlementTime'] = null;
     }
@@ -175,7 +175,7 @@ class NextInterestEstimateDTO {
       }());
 
       return NextInterestEstimateDTO(
-        nextSettlementTime: mapValueOfType<String>(json, r'nextSettlementTime'),
+        nextSettlementTime: mapDateTime(json, r'nextSettlementTime', r''),
         estimatedStakingCount: mapValueOfType<int>(json, r'estimatedStakingCount'),
         totalEstimatedInterest: num.parse('${json[r'totalEstimatedInterest']}'),
         averageEstimatedInterest: num.parse('${json[r'averageEstimatedInterest']}'),

@@ -16,9 +16,9 @@ class PageOrder {
     this.totalElements,
     this.totalPages,
     this.sort,
+    this.first,
     this.numberOfElements,
     this.pageable,
-    this.first,
     this.last,
     this.size,
     this.content = const [],
@@ -56,6 +56,14 @@ class PageOrder {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  bool? first;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? numberOfElements;
 
   ///
@@ -65,14 +73,6 @@ class PageOrder {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   PageableObject? pageable;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? first;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -113,9 +113,9 @@ class PageOrder {
     other.totalElements == totalElements &&
     other.totalPages == totalPages &&
     other.sort == sort &&
+    other.first == first &&
     other.numberOfElements == numberOfElements &&
     other.pageable == pageable &&
-    other.first == first &&
     other.last == last &&
     other.size == size &&
     _deepEquality.equals(other.content, content) &&
@@ -128,9 +128,9 @@ class PageOrder {
     (totalElements == null ? 0 : totalElements!.hashCode) +
     (totalPages == null ? 0 : totalPages!.hashCode) +
     (sort == null ? 0 : sort!.hashCode) +
+    (first == null ? 0 : first!.hashCode) +
     (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
     (pageable == null ? 0 : pageable!.hashCode) +
-    (first == null ? 0 : first!.hashCode) +
     (last == null ? 0 : last!.hashCode) +
     (size == null ? 0 : size!.hashCode) +
     (content.hashCode) +
@@ -138,7 +138,7 @@ class PageOrder {
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageOrder[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, numberOfElements=$numberOfElements, pageable=$pageable, first=$first, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'PageOrder[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, first=$first, numberOfElements=$numberOfElements, pageable=$pageable, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -157,6 +157,11 @@ class PageOrder {
     } else {
       json[r'sort'] = null;
     }
+    if (this.first != null) {
+      json[r'first'] = this.first;
+    } else {
+      json[r'first'] = null;
+    }
     if (this.numberOfElements != null) {
       json[r'numberOfElements'] = this.numberOfElements;
     } else {
@@ -166,11 +171,6 @@ class PageOrder {
       json[r'pageable'] = this.pageable;
     } else {
       json[r'pageable'] = null;
-    }
-    if (this.first != null) {
-      json[r'first'] = this.first;
-    } else {
-      json[r'first'] = null;
     }
     if (this.last != null) {
       json[r'last'] = this.last;
@@ -218,9 +218,9 @@ class PageOrder {
         totalElements: mapValueOfType<int>(json, r'totalElements'),
         totalPages: mapValueOfType<int>(json, r'totalPages'),
         sort: SortObject.fromJson(json[r'sort']),
+        first: mapValueOfType<bool>(json, r'first'),
         numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
         pageable: PageableObject.fromJson(json[r'pageable']),
-        first: mapValueOfType<bool>(json, r'first'),
         last: mapValueOfType<bool>(json, r'last'),
         size: mapValueOfType<int>(json, r'size'),
         content: Order.listFromJson(json[r'content']),

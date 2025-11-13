@@ -10,25 +10,27 @@
 
 part of openapi.api;
 
-class PickupStore {
-  /// Returns a new [PickupStore] instance.
-  PickupStore({
+class AppVersion {
+  /// Returns a new [AppVersion] instance.
+  AppVersion({
     this.id,
-    this.storeType,
-    this.storeCode,
-    this.storeName,
-    this.storeAddress,
-    this.city,
-    this.district,
+    this.version,
+    this.platform,
+    this.fileName,
+    this.objectName,
+    this.downloadUrl,
+    this.fileSize,
+    this.contentType,
     this.isActive,
+    this.description,
+    this.releaseTime,
+    this.downloadCount,
     this.createdAt,
     this.updatedAt,
-    this.fullStoreInfo,
-    this.sevenEleven,
-    this.familyMart,
+    this.isDeleted,
   });
 
-  /// 門市ID
+  /// 版本ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -37,60 +39,70 @@ class PickupStore {
   ///
   int? id;
 
+  /// 版本號
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PickupServiceTypeEnum? storeType;
+  String? version;
 
-  /// 門市代號（唯一）
+  /// 平台
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? storeCode;
+  String? platform;
 
-  /// 門市名稱
+  /// 檔案名稱
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? storeName;
+  String? fileName;
 
-  /// 門市地址
+  /// OCI Object Storage 物件名稱
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? storeAddress;
+  String? objectName;
 
-  /// 縣市（從地址中解析）
+  /// 檔案下載 URL
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? city;
+  String? downloadUrl;
 
-  /// 鄉鎮市區（從地址中解析）
+  /// 檔案大小（位元組）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? district;
+  int? fileSize;
 
-  /// 是否啟用
+  /// 檔案類型
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? contentType;
+
+  /// 是否為當前活躍版本
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -98,6 +110,33 @@ class PickupStore {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? isActive;
+
+  /// 版本描述/更新日誌
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? description;
+
+  /// 發布時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? releaseTime;
+
+  /// 下載次數
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? downloadCount;
 
   /// 創建時間
   ///
@@ -108,7 +147,7 @@ class PickupStore {
   ///
   DateTime? createdAt;
 
-  /// 最後更新時間
+  /// 更新時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -117,65 +156,54 @@ class PickupStore {
   ///
   DateTime? updatedAt;
 
+  /// 是否已刪除
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? fullStoreInfo;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? sevenEleven;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? familyMart;
+  bool? isDeleted;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PickupStore &&
+  bool operator ==(Object other) => identical(this, other) || other is AppVersion &&
     other.id == id &&
-    other.storeType == storeType &&
-    other.storeCode == storeCode &&
-    other.storeName == storeName &&
-    other.storeAddress == storeAddress &&
-    other.city == city &&
-    other.district == district &&
+    other.version == version &&
+    other.platform == platform &&
+    other.fileName == fileName &&
+    other.objectName == objectName &&
+    other.downloadUrl == downloadUrl &&
+    other.fileSize == fileSize &&
+    other.contentType == contentType &&
     other.isActive == isActive &&
+    other.description == description &&
+    other.releaseTime == releaseTime &&
+    other.downloadCount == downloadCount &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.fullStoreInfo == fullStoreInfo &&
-    other.sevenEleven == sevenEleven &&
-    other.familyMart == familyMart;
+    other.isDeleted == isDeleted;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
-    (storeType == null ? 0 : storeType!.hashCode) +
-    (storeCode == null ? 0 : storeCode!.hashCode) +
-    (storeName == null ? 0 : storeName!.hashCode) +
-    (storeAddress == null ? 0 : storeAddress!.hashCode) +
-    (city == null ? 0 : city!.hashCode) +
-    (district == null ? 0 : district!.hashCode) +
+    (version == null ? 0 : version!.hashCode) +
+    (platform == null ? 0 : platform!.hashCode) +
+    (fileName == null ? 0 : fileName!.hashCode) +
+    (objectName == null ? 0 : objectName!.hashCode) +
+    (downloadUrl == null ? 0 : downloadUrl!.hashCode) +
+    (fileSize == null ? 0 : fileSize!.hashCode) +
+    (contentType == null ? 0 : contentType!.hashCode) +
     (isActive == null ? 0 : isActive!.hashCode) +
+    (description == null ? 0 : description!.hashCode) +
+    (releaseTime == null ? 0 : releaseTime!.hashCode) +
+    (downloadCount == null ? 0 : downloadCount!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (fullStoreInfo == null ? 0 : fullStoreInfo!.hashCode) +
-    (sevenEleven == null ? 0 : sevenEleven!.hashCode) +
-    (familyMart == null ? 0 : familyMart!.hashCode);
+    (isDeleted == null ? 0 : isDeleted!.hashCode);
 
   @override
-  String toString() => 'PickupStore[id=$id, storeType=$storeType, storeCode=$storeCode, storeName=$storeName, storeAddress=$storeAddress, city=$city, district=$district, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, fullStoreInfo=$fullStoreInfo, sevenEleven=$sevenEleven, familyMart=$familyMart]';
+  String toString() => 'AppVersion[id=$id, version=$version, platform=$platform, fileName=$fileName, objectName=$objectName, downloadUrl=$downloadUrl, fileSize=$fileSize, contentType=$contentType, isActive=$isActive, description=$description, releaseTime=$releaseTime, downloadCount=$downloadCount, createdAt=$createdAt, updatedAt=$updatedAt, isDeleted=$isDeleted]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -184,40 +212,60 @@ class PickupStore {
     } else {
       json[r'id'] = null;
     }
-    if (this.storeType != null) {
-      json[r'storeType'] = this.storeType;
+    if (this.version != null) {
+      json[r'version'] = this.version;
     } else {
-      json[r'storeType'] = null;
+      json[r'version'] = null;
     }
-    if (this.storeCode != null) {
-      json[r'storeCode'] = this.storeCode;
+    if (this.platform != null) {
+      json[r'platform'] = this.platform;
     } else {
-      json[r'storeCode'] = null;
+      json[r'platform'] = null;
     }
-    if (this.storeName != null) {
-      json[r'storeName'] = this.storeName;
+    if (this.fileName != null) {
+      json[r'fileName'] = this.fileName;
     } else {
-      json[r'storeName'] = null;
+      json[r'fileName'] = null;
     }
-    if (this.storeAddress != null) {
-      json[r'storeAddress'] = this.storeAddress;
+    if (this.objectName != null) {
+      json[r'objectName'] = this.objectName;
     } else {
-      json[r'storeAddress'] = null;
+      json[r'objectName'] = null;
     }
-    if (this.city != null) {
-      json[r'city'] = this.city;
+    if (this.downloadUrl != null) {
+      json[r'downloadUrl'] = this.downloadUrl;
     } else {
-      json[r'city'] = null;
+      json[r'downloadUrl'] = null;
     }
-    if (this.district != null) {
-      json[r'district'] = this.district;
+    if (this.fileSize != null) {
+      json[r'fileSize'] = this.fileSize;
     } else {
-      json[r'district'] = null;
+      json[r'fileSize'] = null;
+    }
+    if (this.contentType != null) {
+      json[r'contentType'] = this.contentType;
+    } else {
+      json[r'contentType'] = null;
     }
     if (this.isActive != null) {
       json[r'isActive'] = this.isActive;
     } else {
       json[r'isActive'] = null;
+    }
+    if (this.description != null) {
+      json[r'description'] = this.description;
+    } else {
+      json[r'description'] = null;
+    }
+    if (this.releaseTime != null) {
+      json[r'releaseTime'] = this.releaseTime!.toUtc().toIso8601String();
+    } else {
+      json[r'releaseTime'] = null;
+    }
+    if (this.downloadCount != null) {
+      json[r'downloadCount'] = this.downloadCount;
+    } else {
+      json[r'downloadCount'] = null;
     }
     if (this.createdAt != null) {
       json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
@@ -229,28 +277,18 @@ class PickupStore {
     } else {
       json[r'updatedAt'] = null;
     }
-    if (this.fullStoreInfo != null) {
-      json[r'fullStoreInfo'] = this.fullStoreInfo;
+    if (this.isDeleted != null) {
+      json[r'isDeleted'] = this.isDeleted;
     } else {
-      json[r'fullStoreInfo'] = null;
-    }
-    if (this.sevenEleven != null) {
-      json[r'sevenEleven'] = this.sevenEleven;
-    } else {
-      json[r'sevenEleven'] = null;
-    }
-    if (this.familyMart != null) {
-      json[r'familyMart'] = this.familyMart;
-    } else {
-      json[r'familyMart'] = null;
+      json[r'isDeleted'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PickupStore] instance and imports its values from
+  /// Returns a new [AppVersion] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PickupStore? fromJson(dynamic value) {
+  static AppVersion? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -259,36 +297,38 @@ class PickupStore {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PickupStore[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PickupStore[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "AppVersion[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "AppVersion[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PickupStore(
+      return AppVersion(
         id: mapValueOfType<int>(json, r'id'),
-        storeType: PickupServiceTypeEnum.fromJson(json[r'storeType']),
-        storeCode: mapValueOfType<String>(json, r'storeCode'),
-        storeName: mapValueOfType<String>(json, r'storeName'),
-        storeAddress: mapValueOfType<String>(json, r'storeAddress'),
-        city: mapValueOfType<String>(json, r'city'),
-        district: mapValueOfType<String>(json, r'district'),
+        version: mapValueOfType<String>(json, r'version'),
+        platform: mapValueOfType<String>(json, r'platform'),
+        fileName: mapValueOfType<String>(json, r'fileName'),
+        objectName: mapValueOfType<String>(json, r'objectName'),
+        downloadUrl: mapValueOfType<String>(json, r'downloadUrl'),
+        fileSize: mapValueOfType<int>(json, r'fileSize'),
+        contentType: mapValueOfType<String>(json, r'contentType'),
         isActive: mapValueOfType<bool>(json, r'isActive'),
+        description: mapValueOfType<String>(json, r'description'),
+        releaseTime: mapDateTime(json, r'releaseTime', r''),
+        downloadCount: mapValueOfType<int>(json, r'downloadCount'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
-        fullStoreInfo: mapValueOfType<String>(json, r'fullStoreInfo'),
-        sevenEleven: mapValueOfType<bool>(json, r'sevenEleven'),
-        familyMart: mapValueOfType<bool>(json, r'familyMart'),
+        isDeleted: mapValueOfType<bool>(json, r'isDeleted'),
       );
     }
     return null;
   }
 
-  static List<PickupStore> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PickupStore>[];
+  static List<AppVersion> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <AppVersion>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PickupStore.fromJson(row);
+        final value = AppVersion.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -297,12 +337,12 @@ class PickupStore {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PickupStore> mapFromJson(dynamic json) {
-    final map = <String, PickupStore>{};
+  static Map<String, AppVersion> mapFromJson(dynamic json) {
+    final map = <String, AppVersion>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PickupStore.fromJson(entry.value);
+        final value = AppVersion.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -311,14 +351,14 @@ class PickupStore {
     return map;
   }
 
-  // maps a json object with a list of PickupStore-objects as value to a dart map
-  static Map<String, List<PickupStore>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PickupStore>>{};
+  // maps a json object with a list of AppVersion-objects as value to a dart map
+  static Map<String, List<AppVersion>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<AppVersion>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PickupStore.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = AppVersion.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

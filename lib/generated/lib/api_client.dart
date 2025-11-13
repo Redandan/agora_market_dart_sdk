@@ -198,6 +198,8 @@ class ApiClient {
           return ApiResponseColdWallet.fromJson(value);
         case 'ApiResponseFileSyncResponse':
           return ApiResponseFileSyncResponse.fromJson(value);
+        case 'ApiResponseFlutterAppDeploymentResponse':
+          return ApiResponseFlutterAppDeploymentResponse.fromJson(value);
         case 'ApiResponseListPostResponse':
           return ApiResponseListPostResponse.fromJson(value);
         case 'ApiResponseMapStringObject':
@@ -222,6 +224,8 @@ class ApiClient {
           return ApiResponseUserPostStatistics.fromJson(value);
         case 'ApiResponseVoid':
           return ApiResponseVoid.fromJson(value);
+        case 'AppVersion':
+          return AppVersion.fromJson(value);
         case 'ApplyStakingParam':
           return ApplyStakingParam.fromJson(value);
         case 'AutoReplyConfig':
@@ -310,6 +314,8 @@ class ApiClient {
           return DeliveryerSearchParam.fromJson(value);
         case 'DeliveryerUpdateParam':
           return DeliveryerUpdateParam.fromJson(value);
+        case 'DeployAppRequest':
+          return DeployAppRequest.fromJson(value);
         case 'Dispute':
           return Dispute.fromJson(value);
         case 'DisputeCreateParam':
@@ -334,6 +340,8 @@ class ApiClient {
           return FileRecordSearchRequest.fromJson(value);
         case 'FileSyncResponse':
           return FileSyncResponse.fromJson(value);
+        case 'FlutterAppDeploymentResponse':
+          return FlutterAppDeploymentResponse.fromJson(value);
         case 'InterestRecordDTO':
           return InterestRecordDTO.fromJson(value);
         case 'InterestRecordSearchParam':

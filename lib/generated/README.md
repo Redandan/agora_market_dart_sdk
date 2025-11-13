@@ -253,6 +253,8 @@ Class | Method | HTTP request | Description
 *FileManagementApi* | [**deleteFile**](doc//FileManagementApi.md#deletefile) | **DELETE** /files/{objectName} | 刪除文件
 *FileManagementApi* | [**searchFileRecords**](doc//FileManagementApi.md#searchfilerecords) | **POST** /files/records/search | 查詢檔案記錄
 *FileManagementApi* | [**syncFileRecords**](doc//FileManagementApi.md#syncfilerecords) | **POST** /files/sync | 檔案同步
+*FlutterDeploymentApi* | [**deployApp**](doc//FlutterDeploymentApi.md#deployapp) | **POST** /flutter/deployment/deploy | 部署 Flutter App（文件上傳）
+*FlutterDeploymentApi* | [**getApps**](doc//FlutterDeploymentApi.md#getapps) | **POST** /flutter/deployment/apps | 獲取可下載的 APP
 *MemberDisputesApi* | [**createDispute**](doc//MemberDisputesApi.md#createdispute) | **POST** /disputes | 創建糾紛
 *MemberDisputesApi* | [**getDisputeDetail**](doc//MemberDisputesApi.md#getdisputedetail) | **GET** /disputes/{disputeId} | 查看糾紛詳情
 *MemberDisputesApi* | [**replyDispute**](doc//MemberDisputesApi.md#replydispute) | **POST** /disputes/{disputeId}/reply | 回覆糾紛
@@ -399,6 +401,7 @@ Class | Method | HTTP request | Description
  - [AdminStoreUpdateParam](doc//AdminStoreUpdateParam.md)
  - [ApiResponseColdWallet](doc//ApiResponseColdWallet.md)
  - [ApiResponseFileSyncResponse](doc//ApiResponseFileSyncResponse.md)
+ - [ApiResponseFlutterAppDeploymentResponse](doc//ApiResponseFlutterAppDeploymentResponse.md)
  - [ApiResponseListPostResponse](doc//ApiResponseListPostResponse.md)
  - [ApiResponseMapStringObject](doc//ApiResponseMapStringObject.md)
  - [ApiResponsePageClientLog](doc//ApiResponsePageClientLog.md)
@@ -411,6 +414,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseString](doc//ApiResponseString.md)
  - [ApiResponseUserPostStatistics](doc//ApiResponseUserPostStatistics.md)
  - [ApiResponseVoid](doc//ApiResponseVoid.md)
+ - [AppVersion](doc//AppVersion.md)
  - [ApplyStakingParam](doc//ApplyStakingParam.md)
  - [AutoReplyConfig](doc//AutoReplyConfig.md)
  - [AutoReplyConfigSearchRequest](doc//AutoReplyConfigSearchRequest.md)
@@ -455,6 +459,7 @@ Class | Method | HTTP request | Description
  - [DeliveryerRegistrationParam](doc//DeliveryerRegistrationParam.md)
  - [DeliveryerSearchParam](doc//DeliveryerSearchParam.md)
  - [DeliveryerUpdateParam](doc//DeliveryerUpdateParam.md)
+ - [DeployAppRequest](doc//DeployAppRequest.md)
  - [Dispute](doc//Dispute.md)
  - [DisputeCreateParam](doc//DisputeCreateParam.md)
  - [DisputeOutcome](doc//DisputeOutcome.md)
@@ -467,6 +472,7 @@ Class | Method | HTTP request | Description
  - [FileRecordInfo](doc//FileRecordInfo.md)
  - [FileRecordSearchRequest](doc//FileRecordSearchRequest.md)
  - [FileSyncResponse](doc//FileSyncResponse.md)
+ - [FlutterAppDeploymentResponse](doc//FlutterAppDeploymentResponse.md)
  - [InterestRecordDTO](doc//InterestRecordDTO.md)
  - [InterestRecordSearchParam](doc//InterestRecordSearchParam.md)
  - [IssueSearchParam](doc//IssueSearchParam.md)
