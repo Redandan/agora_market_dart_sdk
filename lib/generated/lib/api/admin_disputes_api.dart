@@ -292,13 +292,7 @@ class AdminDisputesApi {
   /// Parameters:
   ///
   /// * [DisputeSearchParam] disputeSearchParam (required):
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<Response> searchDisputes1WithHttpInfo(DisputeSearchParam disputeSearchParam, { int? page, int? size, }) async {
+  Future<Response> searchDisputes1WithHttpInfo(DisputeSearchParam disputeSearchParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/disputes/search';
 
@@ -308,13 +302,6 @@ class AdminDisputesApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
 
     const contentTypes = <String>['application/json'];
 
@@ -337,14 +324,8 @@ class AdminDisputesApi {
   /// Parameters:
   ///
   /// * [DisputeSearchParam] disputeSearchParam (required):
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<PageDispute?> searchDisputes1(DisputeSearchParam disputeSearchParam, { int? page, int? size, }) async {
-    final response = await searchDisputes1WithHttpInfo(disputeSearchParam,  page: page, size: size, );
+  Future<PageDispute?> searchDisputes1(DisputeSearchParam disputeSearchParam,) async {
+    final response = await searchDisputes1WithHttpInfo(disputeSearchParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -130,13 +130,7 @@ class StakingApi {
   /// Parameters:
   ///
   /// * [StakingSearchParam] stakingSearchParam (required):
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<Response> searchStakingsWithHttpInfo(StakingSearchParam stakingSearchParam, { int? page, int? size, }) async {
+  Future<Response> searchStakingsWithHttpInfo(StakingSearchParam stakingSearchParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/staking/search';
 
@@ -146,13 +140,6 @@ class StakingApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
 
     const contentTypes = <String>['application/json'];
 
@@ -173,14 +160,8 @@ class StakingApi {
   /// Parameters:
   ///
   /// * [StakingSearchParam] stakingSearchParam (required):
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<PageStaking?> searchStakings(StakingSearchParam stakingSearchParam, { int? page, int? size, }) async {
-    final response = await searchStakingsWithHttpInfo(stakingSearchParam,  page: page, size: size, );
+  Future<PageStaking?> searchStakings(StakingSearchParam stakingSearchParam,) async {
+    final response = await searchStakingsWithHttpInfo(stakingSearchParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

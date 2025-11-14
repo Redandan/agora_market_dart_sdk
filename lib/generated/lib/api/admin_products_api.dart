@@ -247,13 +247,7 @@ class AdminProductsApi {
   /// Parameters:
   ///
   /// * [ProductSeachParam] productSeachParam (required):
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<Response> searchProducts1WithHttpInfo(ProductSeachParam productSeachParam, { int? page, int? size, }) async {
+  Future<Response> searchProducts1WithHttpInfo(ProductSeachParam productSeachParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/products/search';
 
@@ -263,13 +257,6 @@ class AdminProductsApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
 
     const contentTypes = <String>['application/json'];
 
@@ -292,14 +279,8 @@ class AdminProductsApi {
   /// Parameters:
   ///
   /// * [ProductSeachParam] productSeachParam (required):
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<PageProduct?> searchProducts1(ProductSeachParam productSeachParam, { int? page, int? size, }) async {
-    final response = await searchProducts1WithHttpInfo(productSeachParam,  page: page, size: size, );
+  Future<PageProduct?> searchProducts1(ProductSeachParam productSeachParam,) async {
+    final response = await searchProducts1WithHttpInfo(productSeachParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

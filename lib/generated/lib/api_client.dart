@@ -210,8 +210,6 @@ class ApiClient {
           return ApiResponsePageColdWallet.fromJson(value);
         case 'ApiResponsePageFileRecord':
           return ApiResponsePageFileRecord.fromJson(value);
-        case 'ApiResponsePageResponsePostResponse':
-          return ApiResponsePageResponsePostResponse.fromJson(value);
         case 'ApiResponsePostResponse':
           return ApiResponsePostResponse.fromJson(value);
         case 'ApiResponsePostStatistics':
@@ -426,14 +424,14 @@ class ApiClient {
           return PageOrder.fromJson(value);
         case 'PagePickupStore':
           return PagePickupStore.fromJson(value);
+        case 'PagePostResponse':
+          return PagePostResponse.fromJson(value);
         case 'PageProduct':
           return PageProduct.fromJson(value);
         case 'PagePromoCode':
           return PagePromoCode.fromJson(value);
         case 'PageRecharge':
           return PageRecharge.fromJson(value);
-        case 'PageResponsePostResponse':
-          return PageResponsePostResponse.fromJson(value);
         case 'PageReview':
           return PageReview.fromJson(value);
         case 'PageStaking':

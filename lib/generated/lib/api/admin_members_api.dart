@@ -262,13 +262,7 @@ class AdminMembersApi {
   /// Parameters:
   ///
   /// * [MemberSearchParam] memberSearchParam (required):
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<Response> searchMembersWithHttpInfo(MemberSearchParam memberSearchParam, { int? page, int? size, }) async {
+  Future<Response> searchMembersWithHttpInfo(MemberSearchParam memberSearchParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/members/search';
 
@@ -278,13 +272,6 @@ class AdminMembersApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
 
     const contentTypes = <String>['application/json'];
 
@@ -307,14 +294,8 @@ class AdminMembersApi {
   /// Parameters:
   ///
   /// * [MemberSearchParam] memberSearchParam (required):
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<PageUser?> searchMembers(MemberSearchParam memberSearchParam, { int? page, int? size, }) async {
-    final response = await searchMembersWithHttpInfo(memberSearchParam,  page: page, size: size, );
+  Future<PageUser?> searchMembers(MemberSearchParam memberSearchParam,) async {
+    final response = await searchMembersWithHttpInfo(memberSearchParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

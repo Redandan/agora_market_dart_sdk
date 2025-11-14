@@ -360,13 +360,7 @@ class AdminNotificationsApi {
   /// Parameters:
   ///
   /// * [NotificationSearchParam] notificationSearchParam (required):
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<Response> searchNotifications1WithHttpInfo(NotificationSearchParam notificationSearchParam, { int? page, int? size, }) async {
+  Future<Response> searchNotifications1WithHttpInfo(NotificationSearchParam notificationSearchParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/notifications/search';
 
@@ -376,13 +370,6 @@ class AdminNotificationsApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
 
     const contentTypes = <String>['application/json'];
 
@@ -405,14 +392,8 @@ class AdminNotificationsApi {
   /// Parameters:
   ///
   /// * [NotificationSearchParam] notificationSearchParam (required):
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<PageNotificationResponseDTO?> searchNotifications1(NotificationSearchParam notificationSearchParam, { int? page, int? size, }) async {
-    final response = await searchNotifications1WithHttpInfo(notificationSearchParam,  page: page, size: size, );
+  Future<PageNotificationResponseDTO?> searchNotifications1(NotificationSearchParam notificationSearchParam,) async {
+    final response = await searchNotifications1WithHttpInfo(notificationSearchParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

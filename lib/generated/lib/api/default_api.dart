@@ -1414,7 +1414,7 @@ class DefaultApi {
   /// * [int] authorId (required):
   ///
   /// * [PostSearchParam] param (required):
-  Future<ApiResponsePageResponsePostResponse?> getAuthorPosts(int authorId, PostSearchParam param,) async {
+  Future<PagePostResponse?> getAuthorPosts(int authorId, PostSearchParam param,) async {
     final response = await getAuthorPostsWithHttpInfo(authorId, param,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1423,7 +1423,7 @@ class DefaultApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponsePageResponsePostResponse',) as ApiResponsePageResponsePostResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PagePostResponse',) as PagePostResponse;
     
     }
     return null;
@@ -2089,7 +2089,7 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [PostSearchParam] param (required):
-  Future<ApiResponsePageResponsePostResponse?> getFeaturedPosts(PostSearchParam param,) async {
+  Future<PagePostResponse?> getFeaturedPosts(PostSearchParam param,) async {
     final response = await getFeaturedPostsWithHttpInfo(param,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -2098,7 +2098,7 @@ class DefaultApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponsePageResponsePostResponse',) as ApiResponsePageResponsePostResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PagePostResponse',) as PagePostResponse;
     
     }
     return null;
@@ -3146,7 +3146,7 @@ class DefaultApi {
   /// * [int] storeId (required):
   ///
   /// * [PostSearchParam] param (required):
-  Future<ApiResponsePageResponsePostResponse?> getStorePosts(int storeId, PostSearchParam param,) async {
+  Future<PagePostResponse?> getStorePosts(int storeId, PostSearchParam param,) async {
     final response = await getStorePostsWithHttpInfo(storeId, param,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -3155,7 +3155,7 @@ class DefaultApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponsePageResponsePostResponse',) as ApiResponsePageResponsePostResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PagePostResponse',) as PagePostResponse;
     
     }
     return null;
@@ -4028,13 +4028,7 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [IssueSearchParam] issueSearchParam (required):
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<Response> searchIssuesWithHttpInfo(IssueSearchParam issueSearchParam, { int? page, int? size, }) async {
+  Future<Response> searchIssuesWithHttpInfo(IssueSearchParam issueSearchParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/customer-issues/search';
 
@@ -4044,13 +4038,6 @@ class DefaultApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
 
     const contentTypes = <String>['application/json'];
 
@@ -4071,14 +4058,8 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [IssueSearchParam] issueSearchParam (required):
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<PageCustomerIssue?> searchIssues(IssueSearchParam issueSearchParam, { int? page, int? size, }) async {
-    final response = await searchIssuesWithHttpInfo(issueSearchParam,  page: page, size: size, );
+  Future<PageCustomerIssue?> searchIssues(IssueSearchParam issueSearchParam,) async {
+    final response = await searchIssuesWithHttpInfo(issueSearchParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -4194,7 +4175,7 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [PostSearchParam] param (required):
-  Future<ApiResponsePageResponsePostResponse?> searchPosts(PostSearchParam param,) async {
+  Future<PagePostResponse?> searchPosts(PostSearchParam param,) async {
     final response = await searchPostsWithHttpInfo(param,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -4203,7 +4184,7 @@ class DefaultApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponsePageResponsePostResponse',) as ApiResponsePageResponsePostResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PagePostResponse',) as PagePostResponse;
     
     }
     return null;
@@ -4252,7 +4233,7 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [PostSearchParam] param (required):
-  Future<ApiResponsePageResponsePostResponse?> searchPosts1(PostSearchParam param,) async {
+  Future<PagePostResponse?> searchPosts1(PostSearchParam param,) async {
     final response = await searchPosts1WithHttpInfo(param,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -4261,7 +4242,7 @@ class DefaultApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponsePageResponsePostResponse',) as ApiResponsePageResponsePostResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PagePostResponse',) as PagePostResponse;
     
     }
     return null;
@@ -4274,13 +4255,7 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [RechargeSearchParam] rechargeSearchParam (required):
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<Response> searchRechargesWithHttpInfo(RechargeSearchParam rechargeSearchParam, { int? page, int? size, }) async {
+  Future<Response> searchRechargesWithHttpInfo(RechargeSearchParam rechargeSearchParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/recharge/search';
 
@@ -4290,13 +4265,6 @@ class DefaultApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
 
     const contentTypes = <String>['application/json'];
 
@@ -4317,14 +4285,8 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [RechargeSearchParam] rechargeSearchParam (required):
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<PageRecharge?> searchRecharges(RechargeSearchParam rechargeSearchParam, { int? page, int? size, }) async {
-    final response = await searchRechargesWithHttpInfo(rechargeSearchParam,  page: page, size: size, );
+  Future<PageRecharge?> searchRecharges(RechargeSearchParam rechargeSearchParam,) async {
+    final response = await searchRechargesWithHttpInfo(rechargeSearchParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -4345,13 +4307,7 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [WithdrawSearchParam] withdrawSearchParam (required):
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<Response> searchWithdrawsWithHttpInfo(WithdrawSearchParam withdrawSearchParam, { int? page, int? size, }) async {
+  Future<Response> searchWithdrawsWithHttpInfo(WithdrawSearchParam withdrawSearchParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/withdraws/search';
 
@@ -4361,13 +4317,6 @@ class DefaultApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
 
     const contentTypes = <String>['application/json'];
 
@@ -4388,14 +4337,8 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [WithdrawSearchParam] withdrawSearchParam (required):
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<PageWithdraw?> searchWithdraws(WithdrawSearchParam withdrawSearchParam, { int? page, int? size, }) async {
-    final response = await searchWithdrawsWithHttpInfo(withdrawSearchParam,  page: page, size: size, );
+  Future<PageWithdraw?> searchWithdraws(WithdrawSearchParam withdrawSearchParam,) async {
+    final response = await searchWithdrawsWithHttpInfo(withdrawSearchParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

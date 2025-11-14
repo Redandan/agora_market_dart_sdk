@@ -10,42 +10,22 @@
 
 part of openapi.api;
 
-class PageResponsePostResponse {
-  /// Returns a new [PageResponsePostResponse] instance.
-  PageResponsePostResponse({
-    this.content = const [],
-    this.page,
-    this.size,
+class PagePostResponse {
+  /// Returns a new [PagePostResponse] instance.
+  PagePostResponse({
     this.totalElements,
     this.totalPages,
+    this.sort,
+    this.numberOfElements,
+    this.pageable,
     this.first,
     this.last,
-    this.hasNext,
-    this.hasPrevious,
+    this.size,
+    this.content = const [],
+    this.number,
+    this.empty,
   });
 
-  /// 數據列表
-  List<PostResponse> content;
-
-  /// 當前頁碼
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? page;
-
-  /// 每頁數量
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? size;
-
-  /// 總記錄數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -54,7 +34,6 @@ class PageResponsePostResponse {
   ///
   int? totalElements;
 
-  /// 總頁數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -63,7 +42,30 @@ class PageResponsePostResponse {
   ///
   int? totalPages;
 
-  /// 是否為第一頁
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  SortObject? sort;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? numberOfElements;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  PageableObject? pageable;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -72,7 +74,6 @@ class PageResponsePostResponse {
   ///
   bool? first;
 
-  /// 是否為最後一頁
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -81,65 +82,66 @@ class PageResponsePostResponse {
   ///
   bool? last;
 
-  /// 是否有下一頁
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? hasNext;
+  int? size;
 
-  /// 是否有上一頁
+  List<PostResponse> content;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? hasPrevious;
+  int? number;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? empty;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageResponsePostResponse &&
-    _deepEquality.equals(other.content, content) &&
-    other.page == page &&
-    other.size == size &&
+  bool operator ==(Object other) => identical(this, other) || other is PagePostResponse &&
     other.totalElements == totalElements &&
     other.totalPages == totalPages &&
+    other.sort == sort &&
+    other.numberOfElements == numberOfElements &&
+    other.pageable == pageable &&
     other.first == first &&
     other.last == last &&
-    other.hasNext == hasNext &&
-    other.hasPrevious == hasPrevious;
+    other.size == size &&
+    _deepEquality.equals(other.content, content) &&
+    other.number == number &&
+    other.empty == empty;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (content.hashCode) +
-    (page == null ? 0 : page!.hashCode) +
-    (size == null ? 0 : size!.hashCode) +
     (totalElements == null ? 0 : totalElements!.hashCode) +
     (totalPages == null ? 0 : totalPages!.hashCode) +
+    (sort == null ? 0 : sort!.hashCode) +
+    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
+    (pageable == null ? 0 : pageable!.hashCode) +
     (first == null ? 0 : first!.hashCode) +
     (last == null ? 0 : last!.hashCode) +
-    (hasNext == null ? 0 : hasNext!.hashCode) +
-    (hasPrevious == null ? 0 : hasPrevious!.hashCode);
+    (size == null ? 0 : size!.hashCode) +
+    (content.hashCode) +
+    (number == null ? 0 : number!.hashCode) +
+    (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageResponsePostResponse[content=$content, page=$page, size=$size, totalElements=$totalElements, totalPages=$totalPages, first=$first, last=$last, hasNext=$hasNext, hasPrevious=$hasPrevious]';
+  String toString() => 'PagePostResponse[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, numberOfElements=$numberOfElements, pageable=$pageable, first=$first, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'content'] = this.content;
-    if (this.page != null) {
-      json[r'page'] = this.page;
-    } else {
-      json[r'page'] = null;
-    }
-    if (this.size != null) {
-      json[r'size'] = this.size;
-    } else {
-      json[r'size'] = null;
-    }
     if (this.totalElements != null) {
       json[r'totalElements'] = this.totalElements;
     } else {
@@ -149,6 +151,21 @@ class PageResponsePostResponse {
       json[r'totalPages'] = this.totalPages;
     } else {
       json[r'totalPages'] = null;
+    }
+    if (this.sort != null) {
+      json[r'sort'] = this.sort;
+    } else {
+      json[r'sort'] = null;
+    }
+    if (this.numberOfElements != null) {
+      json[r'numberOfElements'] = this.numberOfElements;
+    } else {
+      json[r'numberOfElements'] = null;
+    }
+    if (this.pageable != null) {
+      json[r'pageable'] = this.pageable;
+    } else {
+      json[r'pageable'] = null;
     }
     if (this.first != null) {
       json[r'first'] = this.first;
@@ -160,23 +177,29 @@ class PageResponsePostResponse {
     } else {
       json[r'last'] = null;
     }
-    if (this.hasNext != null) {
-      json[r'hasNext'] = this.hasNext;
+    if (this.size != null) {
+      json[r'size'] = this.size;
     } else {
-      json[r'hasNext'] = null;
+      json[r'size'] = null;
     }
-    if (this.hasPrevious != null) {
-      json[r'hasPrevious'] = this.hasPrevious;
+      json[r'content'] = this.content;
+    if (this.number != null) {
+      json[r'number'] = this.number;
     } else {
-      json[r'hasPrevious'] = null;
+      json[r'number'] = null;
+    }
+    if (this.empty != null) {
+      json[r'empty'] = this.empty;
+    } else {
+      json[r'empty'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageResponsePostResponse] instance and imports its values from
+  /// Returns a new [PagePostResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageResponsePostResponse? fromJson(dynamic value) {
+  static PagePostResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -185,32 +208,34 @@ class PageResponsePostResponse {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageResponsePostResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageResponsePostResponse[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PagePostResponse[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PagePostResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageResponsePostResponse(
-        content: PostResponse.listFromJson(json[r'content']),
-        page: mapValueOfType<int>(json, r'page'),
-        size: mapValueOfType<int>(json, r'size'),
+      return PagePostResponse(
         totalElements: mapValueOfType<int>(json, r'totalElements'),
         totalPages: mapValueOfType<int>(json, r'totalPages'),
+        sort: SortObject.fromJson(json[r'sort']),
+        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
+        pageable: PageableObject.fromJson(json[r'pageable']),
         first: mapValueOfType<bool>(json, r'first'),
         last: mapValueOfType<bool>(json, r'last'),
-        hasNext: mapValueOfType<bool>(json, r'hasNext'),
-        hasPrevious: mapValueOfType<bool>(json, r'hasPrevious'),
+        size: mapValueOfType<int>(json, r'size'),
+        content: PostResponse.listFromJson(json[r'content']),
+        number: mapValueOfType<int>(json, r'number'),
+        empty: mapValueOfType<bool>(json, r'empty'),
       );
     }
     return null;
   }
 
-  static List<PageResponsePostResponse> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageResponsePostResponse>[];
+  static List<PagePostResponse> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PagePostResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageResponsePostResponse.fromJson(row);
+        final value = PagePostResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -219,12 +244,12 @@ class PageResponsePostResponse {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageResponsePostResponse> mapFromJson(dynamic json) {
-    final map = <String, PageResponsePostResponse>{};
+  static Map<String, PagePostResponse> mapFromJson(dynamic json) {
+    final map = <String, PagePostResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageResponsePostResponse.fromJson(entry.value);
+        final value = PagePostResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -233,14 +258,14 @@ class PageResponsePostResponse {
     return map;
   }
 
-  // maps a json object with a list of PageResponsePostResponse-objects as value to a dart map
-  static Map<String, List<PageResponsePostResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageResponsePostResponse>>{};
+  // maps a json object with a list of PagePostResponse-objects as value to a dart map
+  static Map<String, List<PagePostResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<PagePostResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageResponsePostResponse.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = PagePostResponse.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

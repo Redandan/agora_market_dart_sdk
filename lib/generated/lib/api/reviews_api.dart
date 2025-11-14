@@ -861,13 +861,7 @@ class ReviewsApi {
   /// Parameters:
   ///
   /// * [ReviewSearchParam] reviewSearchParam (required):
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<Response> searchReviewsWithHttpInfo(ReviewSearchParam reviewSearchParam, { int? page, int? size, }) async {
+  Future<Response> searchReviewsWithHttpInfo(ReviewSearchParam reviewSearchParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/reviews/search';
 
@@ -877,13 +871,6 @@ class ReviewsApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
 
     const contentTypes = <String>['application/json'];
 
@@ -904,14 +891,8 @@ class ReviewsApi {
   /// Parameters:
   ///
   /// * [ReviewSearchParam] reviewSearchParam (required):
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<PageReview?> searchReviews(ReviewSearchParam reviewSearchParam, { int? page, int? size, }) async {
-    final response = await searchReviewsWithHttpInfo(reviewSearchParam,  page: page, size: size, );
+  Future<PageReview?> searchReviews(ReviewSearchParam reviewSearchParam,) async {
+    final response = await searchReviewsWithHttpInfo(reviewSearchParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
