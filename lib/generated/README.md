@@ -252,7 +252,7 @@ Class | Method | HTTP request | Description
 *DeliveryApi* | [**updateWorkingStatus**](doc//DeliveryApi.md#updateworkingstatus) | **POST** /delivery/update/status | 更新工作狀態
 *FileManagementApi* | [**deleteFile**](doc//FileManagementApi.md#deletefile) | **DELETE** /files/{objectName} | 刪除文件
 *FileManagementApi* | [**searchFileRecords**](doc//FileManagementApi.md#searchfilerecords) | **POST** /files/records/search | 查詢檔案記錄
-*FileManagementApi* | [**syncFileRecords**](doc//FileManagementApi.md#syncfilerecords) | **POST** /files/sync | 檔案同步
+*FileManagementApi* | [**syncFileRecords**](doc//FileManagementApi.md#syncfilerecords) | **POST** /files/auto-clean | 檔案清理
 *FlutterDeploymentApi* | [**deleteVersion**](doc//FlutterDeploymentApi.md#deleteversion) | **DELETE** /flutter/deployment/versions/{versionId} | 刪除 APP 版本
 *FlutterDeploymentApi* | [**getApps**](doc//FlutterDeploymentApi.md#getapps) | **POST** /flutter/deployment/apps | 獲取可下載的 APP
 *MemberDisputesApi* | [**createDispute**](doc//MemberDisputesApi.md#createdispute) | **POST** /disputes | 創建糾紛

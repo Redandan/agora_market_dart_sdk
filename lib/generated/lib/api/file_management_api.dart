@@ -18,7 +18,7 @@ class FileManagementApi {
 
   /// 刪除文件
   ///
-  /// 從 OCI Object Storage 刪除指定文件，同時軟刪除對應的檔案記錄
+  /// 從 OCI Object Storage 刪除指定文件，同時物理刪除對應的檔案記錄。只有文件的上傳者或管理員可以刪除文件。
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -54,7 +54,7 @@ class FileManagementApi {
 
   /// 刪除文件
   ///
-  /// 從 OCI Object Storage 刪除指定文件，同時軟刪除對應的檔案記錄
+  /// 從 OCI Object Storage 刪除指定文件，同時物理刪除對應的檔案記錄。只有文件的上傳者或管理員可以刪除文件。
   ///
   /// Parameters:
   ///
@@ -131,9 +131,9 @@ class FileManagementApi {
     return null;
   }
 
-  /// 檔案同步
+  /// 檔案清理
   ///
-  /// 強制同步檔案記錄與 OCI Object Storage，會物理刪除 OCI 中不存在的孤立記錄，dryRun=true 時只檢查狀態不執行同步
+  /// 清理 OCI Object Storage 中未被業務實體使用的文件。根據 objectName 格式（如 USER_2_xxx.png）檢查對應業務實體（用戶、產品、商店、貼文）是否仍在使用該文件，如果未使用則刪除。dryRun=true 時只檢查狀態不執行清理
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -143,7 +143,7 @@ class FileManagementApi {
   ///   是否為試運行模式（只檢查不執行）
   Future<Response> syncFileRecordsWithHttpInfo({ bool? dryRun, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/files/sync';
+    final path = r'/files/auto-clean';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -170,9 +170,9 @@ class FileManagementApi {
     );
   }
 
-  /// 檔案同步
+  /// 檔案清理
   ///
-  /// 強制同步檔案記錄與 OCI Object Storage，會物理刪除 OCI 中不存在的孤立記錄，dryRun=true 時只檢查狀態不執行同步
+  /// 清理 OCI Object Storage 中未被業務實體使用的文件。根據 objectName 格式（如 USER_2_xxx.png）檢查對應業務實體（用戶、產品、商店、貼文）是否仍在使用該文件，如果未使用則刪除。dryRun=true 時只檢查狀態不執行清理
   ///
   /// Parameters:
   ///

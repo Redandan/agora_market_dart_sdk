@@ -21,22 +21,18 @@ class FileRecord {
     this.fileExtension,
     this.fileUrl,
     this.businessType,
-    this.businessId,
     this.uploaderId,
     this.uploaderName,
     this.isPublic,
-    this.status,
     this.description,
     this.tags,
     this.fileHash,
     this.uploadTime,
     this.lastUpdated,
-    this.deletedAt,
     this.image,
     this.document,
     this.archive,
     this.fileSizeFormatted,
-    this.deleted,
   });
 
   ///
@@ -109,14 +105,6 @@ class FileRecord {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? businessId;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? uploaderId;
 
   ///
@@ -134,8 +122,6 @@ class FileRecord {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? isPublic;
-
-  FileRecordStatusEnum? status;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -183,14 +169,6 @@ class FileRecord {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  DateTime? deletedAt;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? image;
 
   ///
@@ -217,14 +195,6 @@ class FileRecord {
   ///
   String? fileSizeFormatted;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? deleted;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is FileRecord &&
     other.id == id &&
@@ -235,22 +205,18 @@ class FileRecord {
     other.fileExtension == fileExtension &&
     other.fileUrl == fileUrl &&
     other.businessType == businessType &&
-    other.businessId == businessId &&
     other.uploaderId == uploaderId &&
     other.uploaderName == uploaderName &&
     other.isPublic == isPublic &&
-    other.status == status &&
     other.description == description &&
     other.tags == tags &&
     other.fileHash == fileHash &&
     other.uploadTime == uploadTime &&
     other.lastUpdated == lastUpdated &&
-    other.deletedAt == deletedAt &&
     other.image == image &&
     other.document == document &&
     other.archive == archive &&
-    other.fileSizeFormatted == fileSizeFormatted &&
-    other.deleted == deleted;
+    other.fileSizeFormatted == fileSizeFormatted;
 
   @override
   int get hashCode =>
@@ -263,25 +229,21 @@ class FileRecord {
     (fileExtension == null ? 0 : fileExtension!.hashCode) +
     (fileUrl == null ? 0 : fileUrl!.hashCode) +
     (businessType == null ? 0 : businessType!.hashCode) +
-    (businessId == null ? 0 : businessId!.hashCode) +
     (uploaderId == null ? 0 : uploaderId!.hashCode) +
     (uploaderName == null ? 0 : uploaderName!.hashCode) +
     (isPublic == null ? 0 : isPublic!.hashCode) +
-    (status == null ? 0 : status!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (tags == null ? 0 : tags!.hashCode) +
     (fileHash == null ? 0 : fileHash!.hashCode) +
     (uploadTime == null ? 0 : uploadTime!.hashCode) +
     (lastUpdated == null ? 0 : lastUpdated!.hashCode) +
-    (deletedAt == null ? 0 : deletedAt!.hashCode) +
     (image == null ? 0 : image!.hashCode) +
     (document == null ? 0 : document!.hashCode) +
     (archive == null ? 0 : archive!.hashCode) +
-    (fileSizeFormatted == null ? 0 : fileSizeFormatted!.hashCode) +
-    (deleted == null ? 0 : deleted!.hashCode);
+    (fileSizeFormatted == null ? 0 : fileSizeFormatted!.hashCode);
 
   @override
-  String toString() => 'FileRecord[id=$id, originalFilename=$originalFilename, objectName=$objectName, fileSize=$fileSize, contentType=$contentType, fileExtension=$fileExtension, fileUrl=$fileUrl, businessType=$businessType, businessId=$businessId, uploaderId=$uploaderId, uploaderName=$uploaderName, isPublic=$isPublic, status=$status, description=$description, tags=$tags, fileHash=$fileHash, uploadTime=$uploadTime, lastUpdated=$lastUpdated, deletedAt=$deletedAt, image=$image, document=$document, archive=$archive, fileSizeFormatted=$fileSizeFormatted, deleted=$deleted]';
+  String toString() => 'FileRecord[id=$id, originalFilename=$originalFilename, objectName=$objectName, fileSize=$fileSize, contentType=$contentType, fileExtension=$fileExtension, fileUrl=$fileUrl, businessType=$businessType, uploaderId=$uploaderId, uploaderName=$uploaderName, isPublic=$isPublic, description=$description, tags=$tags, fileHash=$fileHash, uploadTime=$uploadTime, lastUpdated=$lastUpdated, image=$image, document=$document, archive=$archive, fileSizeFormatted=$fileSizeFormatted]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -325,11 +287,6 @@ class FileRecord {
     } else {
       json[r'businessType'] = null;
     }
-    if (this.businessId != null) {
-      json[r'businessId'] = this.businessId;
-    } else {
-      json[r'businessId'] = null;
-    }
     if (this.uploaderId != null) {
       json[r'uploaderId'] = this.uploaderId;
     } else {
@@ -344,11 +301,6 @@ class FileRecord {
       json[r'isPublic'] = this.isPublic;
     } else {
       json[r'isPublic'] = null;
-    }
-    if (this.status != null) {
-      json[r'status'] = this.status;
-    } else {
-      json[r'status'] = null;
     }
     if (this.description != null) {
       json[r'description'] = this.description;
@@ -375,11 +327,6 @@ class FileRecord {
     } else {
       json[r'lastUpdated'] = null;
     }
-    if (this.deletedAt != null) {
-      json[r'deletedAt'] = this.deletedAt!.toUtc().toIso8601String();
-    } else {
-      json[r'deletedAt'] = null;
-    }
     if (this.image != null) {
       json[r'image'] = this.image;
     } else {
@@ -399,11 +346,6 @@ class FileRecord {
       json[r'fileSizeFormatted'] = this.fileSizeFormatted;
     } else {
       json[r'fileSizeFormatted'] = null;
-    }
-    if (this.deleted != null) {
-      json[r'deleted'] = this.deleted;
-    } else {
-      json[r'deleted'] = null;
     }
     return json;
   }
@@ -435,22 +377,18 @@ class FileRecord {
         fileExtension: mapValueOfType<String>(json, r'fileExtension'),
         fileUrl: mapValueOfType<String>(json, r'fileUrl'),
         businessType: mapValueOfType<String>(json, r'businessType'),
-        businessId: mapValueOfType<String>(json, r'businessId'),
         uploaderId: mapValueOfType<int>(json, r'uploaderId'),
         uploaderName: mapValueOfType<String>(json, r'uploaderName'),
         isPublic: mapValueOfType<bool>(json, r'isPublic'),
-        status: FileRecordStatusEnum.fromJson(json[r'status']),
         description: mapValueOfType<String>(json, r'description'),
         tags: mapValueOfType<String>(json, r'tags'),
         fileHash: mapValueOfType<String>(json, r'fileHash'),
         uploadTime: mapDateTime(json, r'uploadTime', r''),
         lastUpdated: mapDateTime(json, r'lastUpdated', r''),
-        deletedAt: mapDateTime(json, r'deletedAt', r''),
         image: mapValueOfType<bool>(json, r'image'),
         document: mapValueOfType<bool>(json, r'document'),
         archive: mapValueOfType<bool>(json, r'archive'),
         fileSizeFormatted: mapValueOfType<String>(json, r'fileSizeFormatted'),
-        deleted: mapValueOfType<bool>(json, r'deleted'),
       );
     }
     return null;
@@ -500,87 +438,4 @@ class FileRecord {
   static const requiredKeys = <String>{
   };
 }
-
-
-class FileRecordStatusEnum {
-  /// Instantiate a new enum with the provided [value].
-  const FileRecordStatusEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const ACTIVE = FileRecordStatusEnum._(r'ACTIVE');
-  static const DELETED = FileRecordStatusEnum._(r'DELETED');
-  static const ARCHIVED = FileRecordStatusEnum._(r'ARCHIVED');
-  static const TEMPORARY = FileRecordStatusEnum._(r'TEMPORARY');
-  static const unknownDefaultOpenApi = FileRecordStatusEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][FileRecordStatusEnum].
-  static const values = <FileRecordStatusEnum>[
-    ACTIVE,
-    DELETED,
-    ARCHIVED,
-    TEMPORARY,
-    unknownDefaultOpenApi,
-  ];
-
-  static FileRecordStatusEnum? fromJson(dynamic value) => FileRecordStatusEnumTypeTransformer().decode(value);
-
-  static List<FileRecordStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <FileRecordStatusEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = FileRecordStatusEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [FileRecordStatusEnum] to String,
-/// and [decode] dynamic data back to [FileRecordStatusEnum].
-class FileRecordStatusEnumTypeTransformer {
-  factory FileRecordStatusEnumTypeTransformer() => _instance ??= const FileRecordStatusEnumTypeTransformer._();
-
-  const FileRecordStatusEnumTypeTransformer._();
-
-  String encode(FileRecordStatusEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a FileRecordStatusEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  FileRecordStatusEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'ACTIVE': return FileRecordStatusEnum.ACTIVE;
-        case r'DELETED': return FileRecordStatusEnum.DELETED;
-        case r'ARCHIVED': return FileRecordStatusEnum.ARCHIVED;
-        case r'TEMPORARY': return FileRecordStatusEnum.TEMPORARY;
-        case r'unknown_default_open_api': return FileRecordStatusEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [FileRecordStatusEnumTypeTransformer] instance.
-  static FileRecordStatusEnumTypeTransformer? _instance;
-}
-
 
