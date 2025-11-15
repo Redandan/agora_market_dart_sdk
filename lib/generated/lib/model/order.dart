@@ -33,6 +33,7 @@ class Order {
     this.refundedAt,
     this.reviewedAt,
     this.product,
+    this.deliveryDetail,
   });
 
   /// 訂單ID
@@ -212,6 +213,14 @@ class Order {
   ///
   Product? product;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DeliveryDetail? deliveryDetail;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Order &&
     other.id == id &&
@@ -233,7 +242,8 @@ class Order {
     other.cancelledAt == cancelledAt &&
     other.refundedAt == refundedAt &&
     other.reviewedAt == reviewedAt &&
-    other.product == product;
+    other.product == product &&
+    other.deliveryDetail == deliveryDetail;
 
   @override
   int get hashCode =>
@@ -257,10 +267,11 @@ class Order {
     (cancelledAt == null ? 0 : cancelledAt!.hashCode) +
     (refundedAt == null ? 0 : refundedAt!.hashCode) +
     (reviewedAt == null ? 0 : reviewedAt!.hashCode) +
-    (product == null ? 0 : product!.hashCode);
+    (product == null ? 0 : product!.hashCode) +
+    (deliveryDetail == null ? 0 : deliveryDetail!.hashCode);
 
   @override
-  String toString() => 'Order[id=$id, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, reviewedAt=$reviewedAt, product=$product]';
+  String toString() => 'Order[id=$id, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, reviewedAt=$reviewedAt, product=$product, deliveryDetail=$deliveryDetail]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -364,6 +375,11 @@ class Order {
     } else {
       json[r'product'] = null;
     }
+    if (this.deliveryDetail != null) {
+      json[r'deliveryDetail'] = this.deliveryDetail;
+    } else {
+      json[r'deliveryDetail'] = null;
+    }
     return json;
   }
 
@@ -406,6 +422,7 @@ class Order {
         refundedAt: mapDateTime(json, r'refundedAt', r''),
         reviewedAt: mapDateTime(json, r'reviewedAt', r''),
         product: Product.fromJson(json[r'product']),
+        deliveryDetail: DeliveryDetail.fromJson(json[r'deliveryDetail']),
       );
     }
     return null;

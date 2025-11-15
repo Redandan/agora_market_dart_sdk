@@ -171,9 +171,9 @@ class MemberOrdersApi {
     }
   }
 
-  /// 獲取訂單詳情
+  /// 獲取買家訂單詳情
   ///
-  /// 根據訂單ID獲取訂單詳情
+  /// 根據訂單ID獲取買家訂單詳情
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -181,9 +181,9 @@ class MemberOrdersApi {
   ///
   /// * [String] orderId (required):
   ///   訂單ID
-  Future<Response> getOrderWithHttpInfo(String orderId,) async {
+  Future<Response> getOrderByBuyerWithHttpInfo(String orderId,) async {
     // ignore: prefer_const_declarations
-    final path = r'/orders/{orderId}'
+    final path = r'/orders/buyer/{orderId}'
       .replaceAll('{orderId}', orderId);
 
     // ignore: prefer_final_locals
@@ -207,16 +207,16 @@ class MemberOrdersApi {
     );
   }
 
-  /// 獲取訂單詳情
+  /// 獲取買家訂單詳情
   ///
-  /// 根據訂單ID獲取訂單詳情
+  /// 根據訂單ID獲取買家訂單詳情
   ///
   /// Parameters:
   ///
   /// * [String] orderId (required):
   ///   訂單ID
-  Future<OrderQueryResult?> getOrder(String orderId,) async {
-    final response = await getOrderWithHttpInfo(orderId,);
+  Future<Order?> getOrderByBuyer(String orderId,) async {
+    final response = await getOrderByBuyerWithHttpInfo(orderId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -224,7 +224,125 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderQueryResult',) as OrderQueryResult;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Order',) as Order;
+    
+    }
+    return null;
+  }
+
+  /// 獲取配送員訂單詳情
+  ///
+  /// 根據訂單ID獲取配送員訂單詳情
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  ///   訂單ID
+  Future<Response> getOrderByDeliveryerWithHttpInfo(String orderId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/orders/deliveryer/{orderId}'
+      .replaceAll('{orderId}', orderId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 獲取配送員訂單詳情
+  ///
+  /// 根據訂單ID獲取配送員訂單詳情
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  ///   訂單ID
+  Future<Order?> getOrderByDeliveryer(String orderId,) async {
+    final response = await getOrderByDeliveryerWithHttpInfo(orderId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Order',) as Order;
+    
+    }
+    return null;
+  }
+
+  /// 獲取賣家訂單詳情
+  ///
+  /// 根據訂單ID獲取賣家訂單詳情
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  ///   訂單ID
+  Future<Response> getOrderBySellerWithHttpInfo(String orderId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/orders/seller/{orderId}'
+      .replaceAll('{orderId}', orderId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 獲取賣家訂單詳情
+  ///
+  /// 根據訂單ID獲取賣家訂單詳情
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  ///   訂單ID
+  Future<Order?> getOrderBySeller(String orderId,) async {
+    final response = await getOrderBySellerWithHttpInfo(orderId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Order',) as Order;
     
     }
     return null;

@@ -274,7 +274,9 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**cancelOrder**](doc//MemberOrdersApi.md#cancelorder) | **POST** /orders/cancel | 取消訂單
 *MemberOrdersApi* | [**confirmOrder**](doc//MemberOrdersApi.md#confirmorder) | **POST** /orders/confirm | 確認收貨
 *MemberOrdersApi* | [**confirmReturnReceived**](doc//MemberOrdersApi.md#confirmreturnreceived) | **POST** /orders/{orderId}/return/confirm-received | 確認收到退貨商品
-*MemberOrdersApi* | [**getOrder**](doc//MemberOrdersApi.md#getorder) | **GET** /orders/{orderId} | 獲取訂單詳情
+*MemberOrdersApi* | [**getOrderByBuyer**](doc//MemberOrdersApi.md#getorderbybuyer) | **GET** /orders/buyer/{orderId} | 獲取買家訂單詳情
+*MemberOrdersApi* | [**getOrderByDeliveryer**](doc//MemberOrdersApi.md#getorderbydeliveryer) | **POST** /orders/deliveryer/{orderId} | 獲取配送員訂單詳情
+*MemberOrdersApi* | [**getOrderBySeller**](doc//MemberOrdersApi.md#getorderbyseller) | **POST** /orders/seller/{orderId} | 獲取賣家訂單詳情
 *MemberOrdersApi* | [**getSellerOrderStats**](doc//MemberOrdersApi.md#getsellerorderstats) | **GET** /orders/seller/stats | 賣家訂單統計
 *MemberOrdersApi* | [**processReturn**](doc//MemberOrdersApi.md#processreturn) | **POST** /orders/{orderId}/return/process | 賣家處理退貨申請
 *MemberOrdersApi* | [**requestReturn**](doc//MemberOrdersApi.md#requestreturn) | **POST** /orders/{orderId}/return | 申請退貨

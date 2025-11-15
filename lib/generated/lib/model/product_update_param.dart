@@ -38,6 +38,7 @@ class ProductUpdateParam {
     this.serviceTypeFees = const {},
     this.freeShippingThreshold,
     this.enablePlatformDelivery,
+    this.purchaseUrl,
   });
 
   /// 商品ID
@@ -252,6 +253,15 @@ class ProductUpdateParam {
   ///
   bool? enablePlatformDelivery;
 
+  /// 代購下單URL(只對賣家展示)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? purchaseUrl;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductUpdateParam &&
     other.id == id &&
@@ -278,7 +288,8 @@ class ProductUpdateParam {
     _deepEquality.equals(other.supportedServiceTypes, supportedServiceTypes) &&
     _deepEquality.equals(other.serviceTypeFees, serviceTypeFees) &&
     other.freeShippingThreshold == freeShippingThreshold &&
-    other.enablePlatformDelivery == enablePlatformDelivery;
+    other.enablePlatformDelivery == enablePlatformDelivery &&
+    other.purchaseUrl == purchaseUrl;
 
   @override
   int get hashCode =>
@@ -307,10 +318,11 @@ class ProductUpdateParam {
     (supportedServiceTypes.hashCode) +
     (serviceTypeFees.hashCode) +
     (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode) +
-    (enablePlatformDelivery == null ? 0 : enablePlatformDelivery!.hashCode);
+    (enablePlatformDelivery == null ? 0 : enablePlatformDelivery!.hashCode) +
+    (purchaseUrl == null ? 0 : purchaseUrl!.hashCode);
 
   @override
-  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, status=$status, shippingFee=$shippingFee, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedServiceTypes=$supportedServiceTypes, serviceTypeFees=$serviceTypeFees, freeShippingThreshold=$freeShippingThreshold, enablePlatformDelivery=$enablePlatformDelivery]';
+  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, status=$status, shippingFee=$shippingFee, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedServiceTypes=$supportedServiceTypes, serviceTypeFees=$serviceTypeFees, freeShippingThreshold=$freeShippingThreshold, enablePlatformDelivery=$enablePlatformDelivery, purchaseUrl=$purchaseUrl]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -419,6 +431,11 @@ class ProductUpdateParam {
     } else {
       json[r'enablePlatformDelivery'] = null;
     }
+    if (this.purchaseUrl != null) {
+      json[r'purchaseUrl'] = this.purchaseUrl;
+    } else {
+      json[r'purchaseUrl'] = null;
+    }
     return json;
   }
 
@@ -470,6 +487,7 @@ class ProductUpdateParam {
         serviceTypeFees: mapCastOfType<String, num>(json, r'serviceTypeFees')!,
         freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
         enablePlatformDelivery: mapValueOfType<bool>(json, r'enablePlatformDelivery'),
+        purchaseUrl: mapValueOfType<String>(json, r'purchaseUrl'),
       );
     }
     return null;
