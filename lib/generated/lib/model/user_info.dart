@@ -20,6 +20,7 @@ class UserInfo {
     this.role,
     this.balance,
     this.stackingBalance,
+    this.totalAssets,
     this.freezeBalance,
     this.enabled,
     this.queryTime,
@@ -92,6 +93,15 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? stackingBalance;
+
+  /// 總資產（餘額 + 質押餘額）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? totalAssets;
 
   /// 凍結餘額
   ///
@@ -168,6 +178,7 @@ class UserInfo {
     other.role == role &&
     other.balance == balance &&
     other.stackingBalance == stackingBalance &&
+    other.totalAssets == totalAssets &&
     other.freezeBalance == freezeBalance &&
     other.enabled == enabled &&
     other.queryTime == queryTime &&
@@ -187,6 +198,7 @@ class UserInfo {
     (role == null ? 0 : role!.hashCode) +
     (balance == null ? 0 : balance!.hashCode) +
     (stackingBalance == null ? 0 : stackingBalance!.hashCode) +
+    (totalAssets == null ? 0 : totalAssets!.hashCode) +
     (freezeBalance == null ? 0 : freezeBalance!.hashCode) +
     (enabled == null ? 0 : enabled!.hashCode) +
     (queryTime == null ? 0 : queryTime!.hashCode) +
@@ -197,7 +209,7 @@ class UserInfo {
     (balanceConversions.hashCode);
 
   @override
-  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, stackingBalance=$stackingBalance, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar, balanceConversions=$balanceConversions]';
+  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, stackingBalance=$stackingBalance, totalAssets=$totalAssets, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar, balanceConversions=$balanceConversions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -235,6 +247,11 @@ class UserInfo {
       json[r'stackingBalance'] = this.stackingBalance;
     } else {
       json[r'stackingBalance'] = null;
+    }
+    if (this.totalAssets != null) {
+      json[r'totalAssets'] = this.totalAssets;
+    } else {
+      json[r'totalAssets'] = null;
     }
     if (this.freezeBalance != null) {
       json[r'freezeBalance'] = this.freezeBalance;
@@ -301,6 +318,7 @@ class UserInfo {
         role: mapValueOfType<String>(json, r'role'),
         balance: num.parse('${json[r'balance']}'),
         stackingBalance: num.parse('${json[r'stackingBalance']}'),
+        totalAssets: num.parse('${json[r'totalAssets']}'),
         freezeBalance: num.parse('${json[r'freezeBalance']}'),
         enabled: mapValueOfType<bool>(json, r'enabled'),
         queryTime: mapDateTime(json, r'queryTime', r''),
