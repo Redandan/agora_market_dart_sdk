@@ -286,6 +286,8 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**shipOrderPlatform**](doc//MemberOrdersApi.md#shiporderplatform) | **POST** /orders/ship/platform | 平台配送發貨
 *MemberOrdersApi* | [**submitOrder**](doc//MemberOrdersApi.md#submitorder) | **POST** /orders | 提交訂單
 *MemberOrdersApi* | [**updateReturnShipping**](doc//MemberOrdersApi.md#updatereturnshipping) | **POST** /orders/{orderId}/return/shipping | 更新退貨物流信息
+*Oauth2Api* | [**facebookLogin**](doc//Oauth2Api.md#facebooklogin) | **GET** /auth/oauth2/login/facebook | Facebook OAuth2 登录
+*Oauth2Api* | [**googleLogin**](doc//Oauth2Api.md#googlelogin) | **GET** /auth/oauth2/login/google | Google OAuth2 登录
 *OciNotificationControllerApi* | [**handleNotification**](doc//OciNotificationControllerApi.md#handlenotification) | **POST** /oci/notifications | 
 *OciNotificationControllerApi* | [**healthCheck**](doc//OciNotificationControllerApi.md#healthcheck) | **GET** /oci/notifications | 
 *PickupStoresApi* | [**checkSyncStatus**](doc//PickupStoresApi.md#checksyncstatus) | **POST** /pickup-stores/check-sync | 檢查取貨商店門市資料是否需要更新

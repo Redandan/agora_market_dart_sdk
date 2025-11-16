@@ -48,6 +48,7 @@ part 'api/flutter_deployment_api.dart';
 part 'api/member_disputes_api.dart';
 part 'api/member_notifications_api.dart';
 part 'api/member_orders_api.dart';
+part 'api/oauth2_api.dart';
 part 'api/oci_notification_controller_api.dart';
 part 'api/pickup_stores_api.dart';
 part 'api/products_api.dart';
