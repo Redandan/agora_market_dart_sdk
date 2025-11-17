@@ -204,6 +204,8 @@ class ApiClient {
           return ApiResponseListPostResponse.fromJson(value);
         case 'ApiResponseMapStringObject':
           return ApiResponseMapStringObject.fromJson(value);
+        case 'ApiResponseOAuth2TokenResponse':
+          return ApiResponseOAuth2TokenResponse.fromJson(value);
         case 'ApiResponsePageClientLog':
           return ApiResponsePageClientLog.fromJson(value);
         case 'ApiResponsePageColdWallet':
@@ -374,6 +376,12 @@ class ApiClient {
           return NotificationTypeEnumTypeTransformer().decode(value);
         case 'NotificationUpdateParam':
           return NotificationUpdateParam.fromJson(value);
+        case 'OAuth2AuthorizeRequest':
+          return OAuth2AuthorizeRequest.fromJson(value);
+        case 'OAuth2TokenRequest':
+          return OAuth2TokenRequest.fromJson(value);
+        case 'OAuth2TokenResponse':
+          return OAuth2TokenResponse.fromJson(value);
         case 'Order':
           return Order.fromJson(value);
         case 'OrderCancelParam':

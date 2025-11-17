@@ -286,8 +286,9 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**shipOrderPlatform**](doc//MemberOrdersApi.md#shiporderplatform) | **POST** /orders/ship/platform | 平台配送發貨
 *MemberOrdersApi* | [**submitOrder**](doc//MemberOrdersApi.md#submitorder) | **POST** /orders | 提交訂單
 *MemberOrdersApi* | [**updateReturnShipping**](doc//MemberOrdersApi.md#updatereturnshipping) | **POST** /orders/{orderId}/return/shipping | 更新退貨物流信息
-*Oauth2Api* | [**facebookLogin**](doc//Oauth2Api.md#facebooklogin) | **GET** /auth/oauth2/login/facebook | Facebook OAuth2 登录
-*Oauth2Api* | [**googleLogin**](doc//Oauth2Api.md#googlelogin) | **GET** /auth/oauth2/login/google | Google OAuth2 登录
+*Oauth2StandardApi* | [**authorizeGoogle**](doc//Oauth2StandardApi.md#authorizegoogle) | **POST** /auth/oauth2/authorize/google | Google OAuth2 授权
+*Oauth2StandardApi* | [**exchangeToken**](doc//Oauth2StandardApi.md#exchangetoken) | **POST** /auth/oauth2/token | OAuth2 Token 交换
+*Oauth2StandardApi* | [**googleCallback**](doc//Oauth2StandardApi.md#googlecallback) | **GET** /auth/oauth2/login/oauth2/code/google | Google OAuth2 回调
 *OciNotificationControllerApi* | [**handleNotification**](doc//OciNotificationControllerApi.md#handlenotification) | **POST** /oci/notifications | 
 *OciNotificationControllerApi* | [**healthCheck**](doc//OciNotificationControllerApi.md#healthcheck) | **GET** /oci/notifications | 
 *PickupStoresApi* | [**checkSyncStatus**](doc//PickupStoresApi.md#checksyncstatus) | **POST** /pickup-stores/check-sync | 檢查取貨商店門市資料是否需要更新
@@ -408,6 +409,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseFlutterAppDeploymentResponse](doc//ApiResponseFlutterAppDeploymentResponse.md)
  - [ApiResponseListPostResponse](doc//ApiResponseListPostResponse.md)
  - [ApiResponseMapStringObject](doc//ApiResponseMapStringObject.md)
+ - [ApiResponseOAuth2TokenResponse](doc//ApiResponseOAuth2TokenResponse.md)
  - [ApiResponsePageClientLog](doc//ApiResponsePageClientLog.md)
  - [ApiResponsePageColdWallet](doc//ApiResponsePageColdWallet.md)
  - [ApiResponsePageFileRecord](doc//ApiResponsePageFileRecord.md)
@@ -493,6 +495,9 @@ Class | Method | HTTP request | Description
  - [NotificationStatusEnum](doc//NotificationStatusEnum.md)
  - [NotificationTypeEnum](doc//NotificationTypeEnum.md)
  - [NotificationUpdateParam](doc//NotificationUpdateParam.md)
+ - [OAuth2AuthorizeRequest](doc//OAuth2AuthorizeRequest.md)
+ - [OAuth2TokenRequest](doc//OAuth2TokenRequest.md)
+ - [OAuth2TokenResponse](doc//OAuth2TokenResponse.md)
  - [Order](doc//Order.md)
  - [OrderCancelParam](doc//OrderCancelParam.md)
  - [OrderConfirmParam](doc//OrderConfirmParam.md)
