@@ -29,7 +29,7 @@ class OAuth2TokenRequest {
   /// 授权类型
   String grantType;
 
-  /// 回调地址（必须与授权请求中的一致）
+  /// 回调地址（必须与授权请求中的完全一致）
   String redirectUri;
 
   /// PKCE code verifier（如果使用 PKCE）

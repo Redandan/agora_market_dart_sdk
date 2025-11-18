@@ -15,6 +15,7 @@ class OAuth2AuthorizeRequest {
   OAuth2AuthorizeRequest({
     required this.clientId,
     required this.redirectUri,
+    required this.frontendRedirectUri,
     required this.responseType,
     required this.state,
     this.scope,
@@ -25,8 +26,11 @@ class OAuth2AuthorizeRequest {
   /// 客户端 ID
   String clientId;
 
-  /// 回调地址
+  /// 回调地址（必须是 HTTPS URL，且必须在 Google Console 中配置，传给 Google）
   String redirectUri;
+
+  /// 前端重定向地址（后端回调后重定向到前端的地址，支持自定义协议或 HTTP/HTTPS）
+  String frontendRedirectUri;
 
   /// 响应类型
   String responseType;
@@ -65,6 +69,7 @@ class OAuth2AuthorizeRequest {
   bool operator ==(Object other) => identical(this, other) || other is OAuth2AuthorizeRequest &&
     other.clientId == clientId &&
     other.redirectUri == redirectUri &&
+    other.frontendRedirectUri == frontendRedirectUri &&
     other.responseType == responseType &&
     other.state == state &&
     other.scope == scope &&
@@ -76,6 +81,7 @@ class OAuth2AuthorizeRequest {
     // ignore: unnecessary_parenthesis
     (clientId.hashCode) +
     (redirectUri.hashCode) +
+    (frontendRedirectUri.hashCode) +
     (responseType.hashCode) +
     (state.hashCode) +
     (scope == null ? 0 : scope!.hashCode) +
@@ -83,12 +89,13 @@ class OAuth2AuthorizeRequest {
     (codeChallengeMethod == null ? 0 : codeChallengeMethod!.hashCode);
 
   @override
-  String toString() => 'OAuth2AuthorizeRequest[clientId=$clientId, redirectUri=$redirectUri, responseType=$responseType, state=$state, scope=$scope, codeChallenge=$codeChallenge, codeChallengeMethod=$codeChallengeMethod]';
+  String toString() => 'OAuth2AuthorizeRequest[clientId=$clientId, redirectUri=$redirectUri, frontendRedirectUri=$frontendRedirectUri, responseType=$responseType, state=$state, scope=$scope, codeChallenge=$codeChallenge, codeChallengeMethod=$codeChallengeMethod]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'clientId'] = this.clientId;
       json[r'redirectUri'] = this.redirectUri;
+      json[r'frontendRedirectUri'] = this.frontendRedirectUri;
       json[r'responseType'] = this.responseType;
       json[r'state'] = this.state;
     if (this.scope != null) {
@@ -130,6 +137,7 @@ class OAuth2AuthorizeRequest {
       return OAuth2AuthorizeRequest(
         clientId: mapValueOfType<String>(json, r'clientId')!,
         redirectUri: mapValueOfType<String>(json, r'redirectUri')!,
+        frontendRedirectUri: mapValueOfType<String>(json, r'frontendRedirectUri')!,
         responseType: mapValueOfType<String>(json, r'responseType')!,
         state: mapValueOfType<String>(json, r'state')!,
         scope: mapValueOfType<String>(json, r'scope'),
@@ -184,6 +192,7 @@ class OAuth2AuthorizeRequest {
   static const requiredKeys = <String>{
     'clientId',
     'redirectUri',
+    'frontendRedirectUri',
     'responseType',
     'state',
   };
