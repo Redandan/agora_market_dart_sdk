@@ -24,12 +24,12 @@ class OAuth2TokenRequest {
   String code;
 
   /// 客户端 ID
-  String clientId;
+  OAuth2TokenRequestClientIdEnum clientId;
 
   /// 授权类型
   String grantType;
 
-  /// 回调地址（必须与授权请求中的完全一致）
+  /// 前端回调地址（必须与授权请求中的完全一致）
   String redirectUri;
 
   /// PKCE code verifier（如果使用 PKCE）
@@ -95,7 +95,7 @@ class OAuth2TokenRequest {
 
       return OAuth2TokenRequest(
         code: mapValueOfType<String>(json, r'code')!,
-        clientId: mapValueOfType<String>(json, r'clientId')!,
+        clientId: OAuth2TokenRequestClientIdEnum.fromJson(json[r'clientId'])!,
         grantType: mapValueOfType<String>(json, r'grantType')!,
         redirectUri: mapValueOfType<String>(json, r'redirectUri')!,
         codeVerifier: mapValueOfType<String>(json, r'codeVerifier'),
@@ -152,4 +152,81 @@ class OAuth2TokenRequest {
     'redirectUri',
   };
 }
+
+/// 客户端 ID
+class OAuth2TokenRequestClientIdEnum {
+  /// Instantiate a new enum with the provided [value].
+  const OAuth2TokenRequestClientIdEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const agoraMarketClientWeb = OAuth2TokenRequestClientIdEnum._(r'agora_market_client_web');
+  static const agoraMarketClientDesktop = OAuth2TokenRequestClientIdEnum._(r'agora_market_client_desktop');
+  static const unknownDefaultOpenApi = OAuth2TokenRequestClientIdEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][OAuth2TokenRequestClientIdEnum].
+  static const values = <OAuth2TokenRequestClientIdEnum>[
+    agoraMarketClientWeb,
+    agoraMarketClientDesktop,
+    unknownDefaultOpenApi,
+  ];
+
+  static OAuth2TokenRequestClientIdEnum? fromJson(dynamic value) => OAuth2TokenRequestClientIdEnumTypeTransformer().decode(value);
+
+  static List<OAuth2TokenRequestClientIdEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <OAuth2TokenRequestClientIdEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = OAuth2TokenRequestClientIdEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [OAuth2TokenRequestClientIdEnum] to String,
+/// and [decode] dynamic data back to [OAuth2TokenRequestClientIdEnum].
+class OAuth2TokenRequestClientIdEnumTypeTransformer {
+  factory OAuth2TokenRequestClientIdEnumTypeTransformer() => _instance ??= const OAuth2TokenRequestClientIdEnumTypeTransformer._();
+
+  const OAuth2TokenRequestClientIdEnumTypeTransformer._();
+
+  String encode(OAuth2TokenRequestClientIdEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a OAuth2TokenRequestClientIdEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  OAuth2TokenRequestClientIdEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'agora_market_client_web': return OAuth2TokenRequestClientIdEnum.agoraMarketClientWeb;
+        case r'agora_market_client_desktop': return OAuth2TokenRequestClientIdEnum.agoraMarketClientDesktop;
+        case r'unknown_default_open_api': return OAuth2TokenRequestClientIdEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [OAuth2TokenRequestClientIdEnumTypeTransformer] instance.
+  static OAuth2TokenRequestClientIdEnumTypeTransformer? _instance;
+}
+
 
