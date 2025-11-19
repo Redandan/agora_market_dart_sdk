@@ -21,9 +21,9 @@ class ChatMessage {
     this.createdAt,
     this.updatedAt,
     this.deletedAt,
-    this.textMessage,
-    this.imageMessage,
     this.mixedMessage,
+    this.imageMessage,
+    this.textMessage,
   });
 
   /// 消息ID
@@ -104,7 +104,7 @@ class ChatMessage {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? textMessage;
+  bool? mixedMessage;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -120,7 +120,7 @@ class ChatMessage {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? mixedMessage;
+  bool? textMessage;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ChatMessage &&
@@ -132,9 +132,9 @@ class ChatMessage {
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
     other.deletedAt == deletedAt &&
-    other.textMessage == textMessage &&
+    other.mixedMessage == mixedMessage &&
     other.imageMessage == imageMessage &&
-    other.mixedMessage == mixedMessage;
+    other.textMessage == textMessage;
 
   @override
   int get hashCode =>
@@ -147,12 +147,12 @@ class ChatMessage {
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (deletedAt == null ? 0 : deletedAt!.hashCode) +
-    (textMessage == null ? 0 : textMessage!.hashCode) +
+    (mixedMessage == null ? 0 : mixedMessage!.hashCode) +
     (imageMessage == null ? 0 : imageMessage!.hashCode) +
-    (mixedMessage == null ? 0 : mixedMessage!.hashCode);
+    (textMessage == null ? 0 : textMessage!.hashCode);
 
   @override
-  String toString() => 'ChatMessage[id=$id, senderId=$senderId, receiverId=$receiverId, sessionId=$sessionId, content=$content, createdAt=$createdAt, updatedAt=$updatedAt, deletedAt=$deletedAt, textMessage=$textMessage, imageMessage=$imageMessage, mixedMessage=$mixedMessage]';
+  String toString() => 'ChatMessage[id=$id, senderId=$senderId, receiverId=$receiverId, sessionId=$sessionId, content=$content, createdAt=$createdAt, updatedAt=$updatedAt, deletedAt=$deletedAt, mixedMessage=$mixedMessage, imageMessage=$imageMessage, textMessage=$textMessage]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -196,20 +196,20 @@ class ChatMessage {
     } else {
       json[r'deletedAt'] = null;
     }
-    if (this.textMessage != null) {
-      json[r'textMessage'] = this.textMessage;
+    if (this.mixedMessage != null) {
+      json[r'mixedMessage'] = this.mixedMessage;
     } else {
-      json[r'textMessage'] = null;
+      json[r'mixedMessage'] = null;
     }
     if (this.imageMessage != null) {
       json[r'imageMessage'] = this.imageMessage;
     } else {
       json[r'imageMessage'] = null;
     }
-    if (this.mixedMessage != null) {
-      json[r'mixedMessage'] = this.mixedMessage;
+    if (this.textMessage != null) {
+      json[r'textMessage'] = this.textMessage;
     } else {
-      json[r'mixedMessage'] = null;
+      json[r'textMessage'] = null;
     }
     return json;
   }
@@ -241,9 +241,9 @@ class ChatMessage {
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         deletedAt: mapDateTime(json, r'deletedAt', r''),
-        textMessage: mapValueOfType<bool>(json, r'textMessage'),
-        imageMessage: mapValueOfType<bool>(json, r'imageMessage'),
         mixedMessage: mapValueOfType<bool>(json, r'mixedMessage'),
+        imageMessage: mapValueOfType<bool>(json, r'imageMessage'),
+        textMessage: mapValueOfType<bool>(json, r'textMessage'),
       );
     }
     return null;

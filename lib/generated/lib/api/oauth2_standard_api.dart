@@ -18,7 +18,7 @@ class Oauth2StandardApi {
 
   /// Google OAuth2 授权
   ///
-  /// 接收授权请求，重定向到 Google 授权页面
+  /// 接收授权请求，返回 Google 授权 URL（JSON 格式）
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -52,16 +52,24 @@ class Oauth2StandardApi {
 
   /// Google OAuth2 授权
   ///
-  /// 接收授权请求，重定向到 Google 授权页面
+  /// 接收授权请求，返回 Google 授权 URL（JSON 格式）
   ///
   /// Parameters:
   ///
   /// * [OAuth2AuthorizeRequest] oAuth2AuthorizeRequest (required):
-  Future<void> authorizeGoogle(OAuth2AuthorizeRequest oAuth2AuthorizeRequest,) async {
+  Future<ApiResponseOAuth2AuthorizeResponse?> authorizeGoogle(OAuth2AuthorizeRequest oAuth2AuthorizeRequest,) async {
     final response = await authorizeGoogleWithHttpInfo(oAuth2AuthorizeRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseOAuth2AuthorizeResponse',) as ApiResponseOAuth2AuthorizeResponse;
+    
+    }
+    return null;
   }
 
   /// OAuth2 Token 交换
