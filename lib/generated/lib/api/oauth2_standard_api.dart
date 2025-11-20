@@ -72,21 +72,21 @@ class Oauth2StandardApi {
     return null;
   }
 
-  /// OAuth2 Token 交换
+  /// OAuth2 Token 获取（后端方案）
   ///
-  /// 使用授权码交换 Token
+  /// 通过临时token ID获取 Token
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [OAuth2TokenRequest] oAuth2TokenRequest (required):
-  Future<Response> exchangeTokenWithHttpInfo(OAuth2TokenRequest oAuth2TokenRequest,) async {
+  /// * [OAuth2TokenIdRequest] oAuth2TokenIdRequest (required):
+  Future<Response> getTokenByTokenIdWithHttpInfo(OAuth2TokenIdRequest oAuth2TokenIdRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/auth/oauth2/token';
+    final path = r'/auth/oauth2/token/by-token-id';
 
     // ignore: prefer_final_locals
-    Object? postBody = oAuth2TokenRequest;
+    Object? postBody = oAuth2TokenIdRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -106,15 +106,15 @@ class Oauth2StandardApi {
     );
   }
 
-  /// OAuth2 Token 交换
+  /// OAuth2 Token 获取（后端方案）
   ///
-  /// 使用授权码交换 Token
+  /// 通过临时token ID获取 Token
   ///
   /// Parameters:
   ///
-  /// * [OAuth2TokenRequest] oAuth2TokenRequest (required):
-  Future<ApiResponseOAuth2TokenResponse?> exchangeToken(OAuth2TokenRequest oAuth2TokenRequest,) async {
-    final response = await exchangeTokenWithHttpInfo(oAuth2TokenRequest,);
+  /// * [OAuth2TokenIdRequest] oAuth2TokenIdRequest (required):
+  Future<ApiResponseOAuth2TokenResponse?> getTokenByTokenId(OAuth2TokenIdRequest oAuth2TokenIdRequest,) async {
+    final response = await getTokenByTokenIdWithHttpInfo(oAuth2TokenIdRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -128,9 +128,9 @@ class Oauth2StandardApi {
     return null;
   }
 
-  /// Google OAuth2 回调
+  /// Google OAuth2 回调（后端方案）
   ///
-  /// 接收 Google 回调，重定向回前端应用
+  /// 接收 Google 回调，在后端完成token交换，重定向回前端应用
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -176,9 +176,9 @@ class Oauth2StandardApi {
     );
   }
 
-  /// Google OAuth2 回调
+  /// Google OAuth2 回调（后端方案）
   ///
-  /// 接收 Google 回调，重定向回前端应用
+  /// 接收 Google 回调，在后端完成token交换，重定向回前端应用
   ///
   /// Parameters:
   ///

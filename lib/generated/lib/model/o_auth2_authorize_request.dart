@@ -13,24 +13,14 @@ part of openapi.api;
 class OAuth2AuthorizeRequest {
   /// Returns a new [OAuth2AuthorizeRequest] instance.
   OAuth2AuthorizeRequest({
-    required this.clientId,
     required this.redirectUri,
-    required this.responseType,
     required this.state,
     this.scope,
-    this.codeChallenge,
-    this.codeChallengeMethod,
     required this.platform,
   });
 
-  /// 客户端 ID
-  OAuth2AuthorizeRequestClientIdEnum clientId;
-
   /// 前端回调地址（Web: https://redandan.github.io/oauth2-callback, Desktop: com.agoramarket.oauth://oauth2callback）
   String redirectUri;
-
-  /// 响应类型
-  String responseType;
 
   /// 状态参数（防 CSRF）
   String state;
@@ -44,73 +34,35 @@ class OAuth2AuthorizeRequest {
   ///
   String? scope;
 
-  /// PKCE code challenge
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? codeChallenge;
-
-  /// PKCE code challenge method
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? codeChallengeMethod;
-
   /// 平台类型
   OAuth2AuthorizeRequestPlatformEnum platform;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is OAuth2AuthorizeRequest &&
-    other.clientId == clientId &&
     other.redirectUri == redirectUri &&
-    other.responseType == responseType &&
     other.state == state &&
     other.scope == scope &&
-    other.codeChallenge == codeChallenge &&
-    other.codeChallengeMethod == codeChallengeMethod &&
     other.platform == platform;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (clientId.hashCode) +
     (redirectUri.hashCode) +
-    (responseType.hashCode) +
     (state.hashCode) +
     (scope == null ? 0 : scope!.hashCode) +
-    (codeChallenge == null ? 0 : codeChallenge!.hashCode) +
-    (codeChallengeMethod == null ? 0 : codeChallengeMethod!.hashCode) +
     (platform.hashCode);
 
   @override
-  String toString() => 'OAuth2AuthorizeRequest[clientId=$clientId, redirectUri=$redirectUri, responseType=$responseType, state=$state, scope=$scope, codeChallenge=$codeChallenge, codeChallengeMethod=$codeChallengeMethod, platform=$platform]';
+  String toString() => 'OAuth2AuthorizeRequest[redirectUri=$redirectUri, state=$state, scope=$scope, platform=$platform]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'clientId'] = this.clientId;
       json[r'redirectUri'] = this.redirectUri;
-      json[r'responseType'] = this.responseType;
       json[r'state'] = this.state;
     if (this.scope != null) {
       json[r'scope'] = this.scope;
     } else {
       json[r'scope'] = null;
-    }
-    if (this.codeChallenge != null) {
-      json[r'codeChallenge'] = this.codeChallenge;
-    } else {
-      json[r'codeChallenge'] = null;
-    }
-    if (this.codeChallengeMethod != null) {
-      json[r'codeChallengeMethod'] = this.codeChallengeMethod;
-    } else {
-      json[r'codeChallengeMethod'] = null;
     }
       json[r'platform'] = this.platform;
     return json;
@@ -135,13 +87,9 @@ class OAuth2AuthorizeRequest {
       }());
 
       return OAuth2AuthorizeRequest(
-        clientId: OAuth2AuthorizeRequestClientIdEnum.fromJson(json[r'clientId'])!,
         redirectUri: mapValueOfType<String>(json, r'redirectUri')!,
-        responseType: mapValueOfType<String>(json, r'responseType')!,
         state: mapValueOfType<String>(json, r'state')!,
         scope: mapValueOfType<String>(json, r'scope'),
-        codeChallenge: mapValueOfType<String>(json, r'codeChallenge'),
-        codeChallengeMethod: mapValueOfType<String>(json, r'codeChallengeMethod'),
         platform: OAuth2AuthorizeRequestPlatformEnum.fromJson(json[r'platform'])!,
       );
     }
@@ -190,90 +138,11 @@ class OAuth2AuthorizeRequest {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'clientId',
     'redirectUri',
-    'responseType',
     'state',
     'platform',
   };
 }
-
-/// 客户端 ID
-class OAuth2AuthorizeRequestClientIdEnum {
-  /// Instantiate a new enum with the provided [value].
-  const OAuth2AuthorizeRequestClientIdEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const agoraMarketClientWeb = OAuth2AuthorizeRequestClientIdEnum._(r'agora_market_client_web');
-  static const agoraMarketClientDesktop = OAuth2AuthorizeRequestClientIdEnum._(r'agora_market_client_desktop');
-  static const unknownDefaultOpenApi = OAuth2AuthorizeRequestClientIdEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][OAuth2AuthorizeRequestClientIdEnum].
-  static const values = <OAuth2AuthorizeRequestClientIdEnum>[
-    agoraMarketClientWeb,
-    agoraMarketClientDesktop,
-    unknownDefaultOpenApi,
-  ];
-
-  static OAuth2AuthorizeRequestClientIdEnum? fromJson(dynamic value) => OAuth2AuthorizeRequestClientIdEnumTypeTransformer().decode(value);
-
-  static List<OAuth2AuthorizeRequestClientIdEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <OAuth2AuthorizeRequestClientIdEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = OAuth2AuthorizeRequestClientIdEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [OAuth2AuthorizeRequestClientIdEnum] to String,
-/// and [decode] dynamic data back to [OAuth2AuthorizeRequestClientIdEnum].
-class OAuth2AuthorizeRequestClientIdEnumTypeTransformer {
-  factory OAuth2AuthorizeRequestClientIdEnumTypeTransformer() => _instance ??= const OAuth2AuthorizeRequestClientIdEnumTypeTransformer._();
-
-  const OAuth2AuthorizeRequestClientIdEnumTypeTransformer._();
-
-  String encode(OAuth2AuthorizeRequestClientIdEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a OAuth2AuthorizeRequestClientIdEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  OAuth2AuthorizeRequestClientIdEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'agora_market_client_web': return OAuth2AuthorizeRequestClientIdEnum.agoraMarketClientWeb;
-        case r'agora_market_client_desktop': return OAuth2AuthorizeRequestClientIdEnum.agoraMarketClientDesktop;
-        case r'unknown_default_open_api': return OAuth2AuthorizeRequestClientIdEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [OAuth2AuthorizeRequestClientIdEnumTypeTransformer] instance.
-  static OAuth2AuthorizeRequestClientIdEnumTypeTransformer? _instance;
-}
-
 
 /// 平台类型
 class OAuth2AuthorizeRequestPlatformEnum {

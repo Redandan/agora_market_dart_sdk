@@ -165,7 +165,7 @@ part 'model/notification_type_enum.dart';
 part 'model/notification_update_param.dart';
 part 'model/o_auth2_authorize_request.dart';
 part 'model/o_auth2_authorize_response.dart';
-part 'model/o_auth2_token_request.dart';
+part 'model/o_auth2_token_id_request.dart';
 part 'model/o_auth2_token_response.dart';
 part 'model/order.dart';
 part 'model/order_cancel_param.dart';

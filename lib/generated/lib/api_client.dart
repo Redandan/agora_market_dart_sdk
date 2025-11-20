@@ -382,8 +382,8 @@ class ApiClient {
           return OAuth2AuthorizeRequest.fromJson(value);
         case 'OAuth2AuthorizeResponse':
           return OAuth2AuthorizeResponse.fromJson(value);
-        case 'OAuth2TokenRequest':
-          return OAuth2TokenRequest.fromJson(value);
+        case 'OAuth2TokenIdRequest':
+          return OAuth2TokenIdRequest.fromJson(value);
         case 'OAuth2TokenResponse':
           return OAuth2TokenResponse.fromJson(value);
         case 'Order':
