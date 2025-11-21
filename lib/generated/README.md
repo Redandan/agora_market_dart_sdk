@@ -288,7 +288,7 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**updateReturnShipping**](doc//MemberOrdersApi.md#updatereturnshipping) | **POST** /orders/{orderId}/return/shipping | 更新退貨物流信息
 *Oauth2StandardApi* | [**authorizeGoogle**](doc//Oauth2StandardApi.md#authorizegoogle) | **POST** /auth/oauth2/authorize/google | Google OAuth2 授权
 *Oauth2StandardApi* | [**getTokenByTokenId**](doc//Oauth2StandardApi.md#gettokenbytokenid) | **POST** /auth/oauth2/token/by-token-id | OAuth2 Token 获取（后端方案）
-*Oauth2StandardApi* | [**googleCallback**](doc//Oauth2StandardApi.md#googlecallback) | **GET** /auth/oauth2/login/oauth2/code/google | Google OAuth2 回调（后端方案）
+*Oauth2StandardApi* | [**googleCallback**](doc//Oauth2StandardApi.md#googlecallback) | **GET** /auth/oauth2/code/google | Google OAuth2 回调（后端方案）
 *OciNotificationControllerApi* | [**handleNotification**](doc//OciNotificationControllerApi.md#handlenotification) | **POST** /oci/notifications | 
 *OciNotificationControllerApi* | [**healthCheck**](doc//OciNotificationControllerApi.md#healthcheck) | **GET** /oci/notifications | 
 *PickupStoresApi* | [**checkSyncStatus**](doc//PickupStoresApi.md#checksyncstatus) | **POST** /pickup-stores/check-sync | 檢查取貨商店門市資料是否需要更新

@@ -16,8 +16,8 @@ class PageNotificationResponseDTO {
     this.totalElements,
     this.totalPages,
     this.sort,
-    this.numberOfElements,
     this.pageable,
+    this.numberOfElements,
     this.first,
     this.last,
     this.size,
@@ -56,7 +56,7 @@ class PageNotificationResponseDTO {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? numberOfElements;
+  PageableObject? pageable;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -64,7 +64,7 @@ class PageNotificationResponseDTO {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PageableObject? pageable;
+  int? numberOfElements;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -113,8 +113,8 @@ class PageNotificationResponseDTO {
     other.totalElements == totalElements &&
     other.totalPages == totalPages &&
     other.sort == sort &&
-    other.numberOfElements == numberOfElements &&
     other.pageable == pageable &&
+    other.numberOfElements == numberOfElements &&
     other.first == first &&
     other.last == last &&
     other.size == size &&
@@ -128,8 +128,8 @@ class PageNotificationResponseDTO {
     (totalElements == null ? 0 : totalElements!.hashCode) +
     (totalPages == null ? 0 : totalPages!.hashCode) +
     (sort == null ? 0 : sort!.hashCode) +
-    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
     (pageable == null ? 0 : pageable!.hashCode) +
+    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
     (first == null ? 0 : first!.hashCode) +
     (last == null ? 0 : last!.hashCode) +
     (size == null ? 0 : size!.hashCode) +
@@ -138,7 +138,7 @@ class PageNotificationResponseDTO {
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageNotificationResponseDTO[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, numberOfElements=$numberOfElements, pageable=$pageable, first=$first, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'PageNotificationResponseDTO[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, pageable=$pageable, numberOfElements=$numberOfElements, first=$first, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -157,15 +157,15 @@ class PageNotificationResponseDTO {
     } else {
       json[r'sort'] = null;
     }
-    if (this.numberOfElements != null) {
-      json[r'numberOfElements'] = this.numberOfElements;
-    } else {
-      json[r'numberOfElements'] = null;
-    }
     if (this.pageable != null) {
       json[r'pageable'] = this.pageable;
     } else {
       json[r'pageable'] = null;
+    }
+    if (this.numberOfElements != null) {
+      json[r'numberOfElements'] = this.numberOfElements;
+    } else {
+      json[r'numberOfElements'] = null;
     }
     if (this.first != null) {
       json[r'first'] = this.first;
@@ -218,8 +218,8 @@ class PageNotificationResponseDTO {
         totalElements: mapValueOfType<int>(json, r'totalElements'),
         totalPages: mapValueOfType<int>(json, r'totalPages'),
         sort: SortObject.fromJson(json[r'sort']),
-        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
         pageable: PageableObject.fromJson(json[r'pageable']),
+        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
         first: mapValueOfType<bool>(json, r'first'),
         last: mapValueOfType<bool>(json, r'last'),
         size: mapValueOfType<int>(json, r'size'),

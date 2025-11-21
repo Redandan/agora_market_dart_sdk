@@ -143,7 +143,7 @@ class Oauth2StandardApi {
   /// * [String] error:
   Future<Response> googleCallbackWithHttpInfo({ String? code, String? state, String? error, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/auth/oauth2/login/oauth2/code/google';
+    final path = r'/auth/oauth2/code/google';
 
     // ignore: prefer_final_locals
     Object? postBody;

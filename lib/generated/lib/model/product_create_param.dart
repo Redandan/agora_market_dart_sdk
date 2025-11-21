@@ -65,7 +65,7 @@ class ProductCreateParam {
   num? shippingFee;
 
   /// 貨幣類型
-  String currency;
+  ProductCreateParamCurrencyEnum currency;
 
   /// 商品庫存
   ///
@@ -435,7 +435,7 @@ class ProductCreateParam {
         title: mapValueOfType<String>(json, r'title')!,
         price: num.parse('${json[r'price']}'),
         shippingFee: num.parse('${json[r'shippingFee']}'),
-        currency: mapValueOfType<String>(json, r'currency')!,
+        currency: ProductCreateParamCurrencyEnum.fromJson(json[r'currency'])!,
         stock: mapValueOfType<int>(json, r'stock')!,
         description: mapValueOfType<String>(json, r'description')!,
         category: ProductCategoryEnum.fromJson(json[r'category'])!,
@@ -529,4 +529,108 @@ class ProductCreateParam {
     'serviceTypeFees',
   };
 }
+
+/// 貨幣類型
+class ProductCreateParamCurrencyEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ProductCreateParamCurrencyEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const USDT = ProductCreateParamCurrencyEnum._(r'USDT');
+  static const USD = ProductCreateParamCurrencyEnum._(r'USD');
+  static const TWD = ProductCreateParamCurrencyEnum._(r'TWD');
+  static const CNY = ProductCreateParamCurrencyEnum._(r'CNY');
+  static const JPY = ProductCreateParamCurrencyEnum._(r'JPY');
+  static const EUR = ProductCreateParamCurrencyEnum._(r'EUR');
+  static const GBP = ProductCreateParamCurrencyEnum._(r'GBP');
+  static const KRW = ProductCreateParamCurrencyEnum._(r'KRW');
+  static const SGD = ProductCreateParamCurrencyEnum._(r'SGD');
+  static const HKD = ProductCreateParamCurrencyEnum._(r'HKD');
+  static const AUD = ProductCreateParamCurrencyEnum._(r'AUD');
+  static const unknownDefaultOpenApi = ProductCreateParamCurrencyEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ProductCreateParamCurrencyEnum].
+  static const values = <ProductCreateParamCurrencyEnum>[
+    USDT,
+    USD,
+    TWD,
+    CNY,
+    JPY,
+    EUR,
+    GBP,
+    KRW,
+    SGD,
+    HKD,
+    AUD,
+    unknownDefaultOpenApi,
+  ];
+
+  static ProductCreateParamCurrencyEnum? fromJson(dynamic value) => ProductCreateParamCurrencyEnumTypeTransformer().decode(value);
+
+  static List<ProductCreateParamCurrencyEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProductCreateParamCurrencyEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProductCreateParamCurrencyEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ProductCreateParamCurrencyEnum] to String,
+/// and [decode] dynamic data back to [ProductCreateParamCurrencyEnum].
+class ProductCreateParamCurrencyEnumTypeTransformer {
+  factory ProductCreateParamCurrencyEnumTypeTransformer() => _instance ??= const ProductCreateParamCurrencyEnumTypeTransformer._();
+
+  const ProductCreateParamCurrencyEnumTypeTransformer._();
+
+  String encode(ProductCreateParamCurrencyEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ProductCreateParamCurrencyEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ProductCreateParamCurrencyEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'USDT': return ProductCreateParamCurrencyEnum.USDT;
+        case r'USD': return ProductCreateParamCurrencyEnum.USD;
+        case r'TWD': return ProductCreateParamCurrencyEnum.TWD;
+        case r'CNY': return ProductCreateParamCurrencyEnum.CNY;
+        case r'JPY': return ProductCreateParamCurrencyEnum.JPY;
+        case r'EUR': return ProductCreateParamCurrencyEnum.EUR;
+        case r'GBP': return ProductCreateParamCurrencyEnum.GBP;
+        case r'KRW': return ProductCreateParamCurrencyEnum.KRW;
+        case r'SGD': return ProductCreateParamCurrencyEnum.SGD;
+        case r'HKD': return ProductCreateParamCurrencyEnum.HKD;
+        case r'AUD': return ProductCreateParamCurrencyEnum.AUD;
+        case r'unknown_default_open_api': return ProductCreateParamCurrencyEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ProductCreateParamCurrencyEnumTypeTransformer] instance.
+  static ProductCreateParamCurrencyEnumTypeTransformer? _instance;
+}
+
 

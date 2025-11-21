@@ -32,6 +32,12 @@ class Order {
     this.cancelledAt,
     this.refundedAt,
     this.reviewedAt,
+    this.originalPrice,
+    this.originalCurrency,
+    this.exchangeRate,
+    this.originalShippingFee,
+    this.exchangeRateTime,
+    this.usingDefaultRate,
     this.product,
     this.deliveryDetail,
   });
@@ -205,6 +211,60 @@ class Order {
   ///
   DateTime? reviewedAt;
 
+  /// 商品原始价格（原币种）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? originalPrice;
+
+  /// 商品原始货币
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? originalCurrency;
+
+  /// 购买时的汇率（USDT/原币种）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? exchangeRate;
+
+  /// 原始运费（原币种）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? originalShippingFee;
+
+  /// 汇率获取时间
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? exchangeRateTime;
+
+  /// 是否使用默认汇率
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? usingDefaultRate;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -242,6 +302,12 @@ class Order {
     other.cancelledAt == cancelledAt &&
     other.refundedAt == refundedAt &&
     other.reviewedAt == reviewedAt &&
+    other.originalPrice == originalPrice &&
+    other.originalCurrency == originalCurrency &&
+    other.exchangeRate == exchangeRate &&
+    other.originalShippingFee == originalShippingFee &&
+    other.exchangeRateTime == exchangeRateTime &&
+    other.usingDefaultRate == usingDefaultRate &&
     other.product == product &&
     other.deliveryDetail == deliveryDetail;
 
@@ -267,11 +333,17 @@ class Order {
     (cancelledAt == null ? 0 : cancelledAt!.hashCode) +
     (refundedAt == null ? 0 : refundedAt!.hashCode) +
     (reviewedAt == null ? 0 : reviewedAt!.hashCode) +
+    (originalPrice == null ? 0 : originalPrice!.hashCode) +
+    (originalCurrency == null ? 0 : originalCurrency!.hashCode) +
+    (exchangeRate == null ? 0 : exchangeRate!.hashCode) +
+    (originalShippingFee == null ? 0 : originalShippingFee!.hashCode) +
+    (exchangeRateTime == null ? 0 : exchangeRateTime!.hashCode) +
+    (usingDefaultRate == null ? 0 : usingDefaultRate!.hashCode) +
     (product == null ? 0 : product!.hashCode) +
     (deliveryDetail == null ? 0 : deliveryDetail!.hashCode);
 
   @override
-  String toString() => 'Order[id=$id, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, reviewedAt=$reviewedAt, product=$product, deliveryDetail=$deliveryDetail]';
+  String toString() => 'Order[id=$id, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, product=$product, deliveryDetail=$deliveryDetail]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -370,6 +442,36 @@ class Order {
     } else {
       json[r'reviewedAt'] = null;
     }
+    if (this.originalPrice != null) {
+      json[r'originalPrice'] = this.originalPrice;
+    } else {
+      json[r'originalPrice'] = null;
+    }
+    if (this.originalCurrency != null) {
+      json[r'originalCurrency'] = this.originalCurrency;
+    } else {
+      json[r'originalCurrency'] = null;
+    }
+    if (this.exchangeRate != null) {
+      json[r'exchangeRate'] = this.exchangeRate;
+    } else {
+      json[r'exchangeRate'] = null;
+    }
+    if (this.originalShippingFee != null) {
+      json[r'originalShippingFee'] = this.originalShippingFee;
+    } else {
+      json[r'originalShippingFee'] = null;
+    }
+    if (this.exchangeRateTime != null) {
+      json[r'exchangeRateTime'] = this.exchangeRateTime!.toUtc().toIso8601String();
+    } else {
+      json[r'exchangeRateTime'] = null;
+    }
+    if (this.usingDefaultRate != null) {
+      json[r'usingDefaultRate'] = this.usingDefaultRate;
+    } else {
+      json[r'usingDefaultRate'] = null;
+    }
     if (this.product != null) {
       json[r'product'] = this.product;
     } else {
@@ -421,6 +523,12 @@ class Order {
         cancelledAt: mapDateTime(json, r'cancelledAt', r''),
         refundedAt: mapDateTime(json, r'refundedAt', r''),
         reviewedAt: mapDateTime(json, r'reviewedAt', r''),
+        originalPrice: num.parse('${json[r'originalPrice']}'),
+        originalCurrency: mapValueOfType<String>(json, r'originalCurrency'),
+        exchangeRate: num.parse('${json[r'exchangeRate']}'),
+        originalShippingFee: num.parse('${json[r'originalShippingFee']}'),
+        exchangeRateTime: mapDateTime(json, r'exchangeRateTime', r''),
+        usingDefaultRate: mapValueOfType<bool>(json, r'usingDefaultRate'),
         product: Product.fromJson(json[r'product']),
         deliveryDetail: DeliveryDetail.fromJson(json[r'deliveryDetail']),
       );

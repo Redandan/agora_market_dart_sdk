@@ -14,11 +14,12 @@ class SalesStats {
   /// Returns a new [SalesStats] instance.
   SalesStats({
     this.totalSales,
+    this.totalSalesByCurrency = const {},
     this.totalOrders,
     this.averageOrderValue,
   });
 
-  /// 總銷售額
+  /// 總銷售額（USDT）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -26,6 +27,9 @@ class SalesStats {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? totalSales;
+
+  /// 總銷售額（按原幣種分組）
+  Map<String, num> totalSalesByCurrency;
 
   /// 總訂單數
   ///
@@ -36,7 +40,7 @@ class SalesStats {
   ///
   int? totalOrders;
 
-  /// 平均訂單金額
+  /// 平均訂單金額（USDT）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -48,6 +52,7 @@ class SalesStats {
   @override
   bool operator ==(Object other) => identical(this, other) || other is SalesStats &&
     other.totalSales == totalSales &&
+    _deepEquality.equals(other.totalSalesByCurrency, totalSalesByCurrency) &&
     other.totalOrders == totalOrders &&
     other.averageOrderValue == averageOrderValue;
 
@@ -55,11 +60,12 @@ class SalesStats {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (totalSales == null ? 0 : totalSales!.hashCode) +
+    (totalSalesByCurrency.hashCode) +
     (totalOrders == null ? 0 : totalOrders!.hashCode) +
     (averageOrderValue == null ? 0 : averageOrderValue!.hashCode);
 
   @override
-  String toString() => 'SalesStats[totalSales=$totalSales, totalOrders=$totalOrders, averageOrderValue=$averageOrderValue]';
+  String toString() => 'SalesStats[totalSales=$totalSales, totalSalesByCurrency=$totalSalesByCurrency, totalOrders=$totalOrders, averageOrderValue=$averageOrderValue]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -68,6 +74,7 @@ class SalesStats {
     } else {
       json[r'totalSales'] = null;
     }
+      json[r'totalSalesByCurrency'] = this.totalSalesByCurrency;
     if (this.totalOrders != null) {
       json[r'totalOrders'] = this.totalOrders;
     } else {
@@ -101,6 +108,7 @@ class SalesStats {
 
       return SalesStats(
         totalSales: mapValueOfType<double>(json, r'totalSales'),
+        totalSalesByCurrency: mapCastOfType<String, num>(json, r'totalSalesByCurrency') ?? const {},
         totalOrders: mapValueOfType<int>(json, r'totalOrders'),
         averageOrderValue: mapValueOfType<double>(json, r'averageOrderValue'),
       );

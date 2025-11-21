@@ -56,6 +56,11 @@ class Product {
     this.userSupportedShippingAddresses = const [],
     this.shippingAddressOptions = const [],
     this.shippingOptions,
+    this.priceUsdt,
+    this.exchangeRate,
+    this.usingDefaultRate,
+    this.freeShippingThresholdUsdt,
+    this.minimumShippingFee,
     this.supportedServiceTypes = const [],
     this.stockLow,
     this.inStock,
@@ -64,7 +69,6 @@ class Product {
     this.skus = const {},
     this.serviceTypeFees = const {},
     this.defaultShippingFee,
-    this.minimumShippingFee,
   });
 
   /// 商品ID
@@ -88,7 +92,7 @@ class Product {
   num price;
 
   /// 貨幣類型
-  String currency;
+  ProductCurrencyEnum currency;
 
   /// 賣家出貨費用
   ///
@@ -383,6 +387,50 @@ class Product {
   ///
   ShippingOptions? shippingOptions;
 
+  /// USDT价格（换算后）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? priceUsdt;
+
+  /// 汇率（USDT/原币种）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? exchangeRate;
+
+  /// 是否使用默认汇率
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? usingDefaultRate;
+
+  /// 免运费门槛USDT金额
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? freeShippingThresholdUsdt;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? minimumShippingFee;
+
   /// 支援的取貨服務類型列表
   List<PickupServiceTypeEnum> supportedServiceTypes;
 
@@ -423,14 +471,6 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? defaultShippingFee;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? minimumShippingFee;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Product &&
@@ -477,6 +517,11 @@ class Product {
     _deepEquality.equals(other.userSupportedShippingAddresses, userSupportedShippingAddresses) &&
     _deepEquality.equals(other.shippingAddressOptions, shippingAddressOptions) &&
     other.shippingOptions == shippingOptions &&
+    other.priceUsdt == priceUsdt &&
+    other.exchangeRate == exchangeRate &&
+    other.usingDefaultRate == usingDefaultRate &&
+    other.freeShippingThresholdUsdt == freeShippingThresholdUsdt &&
+    other.minimumShippingFee == minimumShippingFee &&
     _deepEquality.equals(other.supportedServiceTypes, supportedServiceTypes) &&
     other.stockLow == stockLow &&
     other.inStock == inStock &&
@@ -484,8 +529,7 @@ class Product {
     _deepEquality.equals(other.imageUrls, imageUrls) &&
     _deepEquality.equals(other.skus, skus) &&
     _deepEquality.equals(other.serviceTypeFees, serviceTypeFees) &&
-    other.defaultShippingFee == defaultShippingFee &&
-    other.minimumShippingFee == minimumShippingFee;
+    other.defaultShippingFee == defaultShippingFee;
 
   @override
   int get hashCode =>
@@ -533,6 +577,11 @@ class Product {
     (userSupportedShippingAddresses.hashCode) +
     (shippingAddressOptions.hashCode) +
     (shippingOptions == null ? 0 : shippingOptions!.hashCode) +
+    (priceUsdt == null ? 0 : priceUsdt!.hashCode) +
+    (exchangeRate == null ? 0 : exchangeRate!.hashCode) +
+    (usingDefaultRate == null ? 0 : usingDefaultRate!.hashCode) +
+    (freeShippingThresholdUsdt == null ? 0 : freeShippingThresholdUsdt!.hashCode) +
+    (minimumShippingFee == null ? 0 : minimumShippingFee!.hashCode) +
     (supportedServiceTypes.hashCode) +
     (stockLow == null ? 0 : stockLow!.hashCode) +
     (inStock == null ? 0 : inStock!.hashCode) +
@@ -540,11 +589,10 @@ class Product {
     (imageUrls.hashCode) +
     (skus.hashCode) +
     (serviceTypeFees.hashCode) +
-    (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
-    (minimumShippingFee == null ? 0 : minimumShippingFee!.hashCode);
+    (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode);
 
   @override
-  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrlsJson=$imageUrlsJson, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, reviewCount=$reviewCount, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skusJson=$skusJson, brand=$brand, minStock=$minStock, supportedServiceTypesJson=$supportedServiceTypesJson, serviceTypeFeesJson=$serviceTypeFeesJson, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, enablePlatformDelivery=$enablePlatformDelivery, purchaseUrl=$purchaseUrl, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions, supportedServiceTypes=$supportedServiceTypes, stockLow=$stockLow, inStock=$inStock, stockBelowMinimum=$stockBelowMinimum, imageUrls=$imageUrls, skus=$skus, serviceTypeFees=$serviceTypeFees, defaultShippingFee=$defaultShippingFee, minimumShippingFee=$minimumShippingFee]';
+  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, shippingFee=$shippingFee, stock=$stock, category=$category, sellerId=$sellerId, imageUrlsJson=$imageUrlsJson, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, reviewCount=$reviewCount, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skusJson=$skusJson, brand=$brand, minStock=$minStock, supportedServiceTypesJson=$supportedServiceTypesJson, serviceTypeFeesJson=$serviceTypeFeesJson, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, enablePlatformDelivery=$enablePlatformDelivery, purchaseUrl=$purchaseUrl, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions, priceUsdt=$priceUsdt, exchangeRate=$exchangeRate, usingDefaultRate=$usingDefaultRate, freeShippingThresholdUsdt=$freeShippingThresholdUsdt, minimumShippingFee=$minimumShippingFee, supportedServiceTypes=$supportedServiceTypes, stockLow=$stockLow, inStock=$inStock, stockBelowMinimum=$stockBelowMinimum, imageUrls=$imageUrls, skus=$skus, serviceTypeFees=$serviceTypeFees, defaultShippingFee=$defaultShippingFee]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -703,6 +751,31 @@ class Product {
     } else {
       json[r'shippingOptions'] = null;
     }
+    if (this.priceUsdt != null) {
+      json[r'priceUsdt'] = this.priceUsdt;
+    } else {
+      json[r'priceUsdt'] = null;
+    }
+    if (this.exchangeRate != null) {
+      json[r'exchangeRate'] = this.exchangeRate;
+    } else {
+      json[r'exchangeRate'] = null;
+    }
+    if (this.usingDefaultRate != null) {
+      json[r'usingDefaultRate'] = this.usingDefaultRate;
+    } else {
+      json[r'usingDefaultRate'] = null;
+    }
+    if (this.freeShippingThresholdUsdt != null) {
+      json[r'freeShippingThresholdUsdt'] = this.freeShippingThresholdUsdt;
+    } else {
+      json[r'freeShippingThresholdUsdt'] = null;
+    }
+    if (this.minimumShippingFee != null) {
+      json[r'minimumShippingFee'] = this.minimumShippingFee;
+    } else {
+      json[r'minimumShippingFee'] = null;
+    }
       json[r'supportedServiceTypes'] = this.supportedServiceTypes;
     if (this.stockLow != null) {
       json[r'stockLow'] = this.stockLow;
@@ -726,11 +799,6 @@ class Product {
       json[r'defaultShippingFee'] = this.defaultShippingFee;
     } else {
       json[r'defaultShippingFee'] = null;
-    }
-    if (this.minimumShippingFee != null) {
-      json[r'minimumShippingFee'] = this.minimumShippingFee;
-    } else {
-      json[r'minimumShippingFee'] = null;
     }
     return json;
   }
@@ -758,7 +826,7 @@ class Product {
         title: mapValueOfType<String>(json, r'title')!,
         description: mapValueOfType<String>(json, r'description')!,
         price: num.parse('${json[r'price']}'),
-        currency: mapValueOfType<String>(json, r'currency')!,
+        currency: ProductCurrencyEnum.fromJson(json[r'currency'])!,
         shippingFee: num.parse('${json[r'shippingFee']}'),
         stock: mapValueOfType<int>(json, r'stock')!,
         category: ProductCategoryEnum.fromJson(json[r'category'])!,
@@ -797,6 +865,11 @@ class Product {
         userSupportedShippingAddresses: UserAddress.listFromJson(json[r'userSupportedShippingAddresses']),
         shippingAddressOptions: ShippingAddressOption.listFromJson(json[r'shippingAddressOptions']),
         shippingOptions: ShippingOptions.fromJson(json[r'shippingOptions']),
+        priceUsdt: num.parse('${json[r'priceUsdt']}'),
+        exchangeRate: num.parse('${json[r'exchangeRate']}'),
+        usingDefaultRate: mapValueOfType<bool>(json, r'usingDefaultRate'),
+        freeShippingThresholdUsdt: num.parse('${json[r'freeShippingThresholdUsdt']}'),
+        minimumShippingFee: num.parse('${json[r'minimumShippingFee']}'),
         supportedServiceTypes: PickupServiceTypeEnum.listFromJson(json[r'supportedServiceTypes']),
         stockLow: mapValueOfType<bool>(json, r'stockLow'),
         inStock: mapValueOfType<bool>(json, r'inStock'),
@@ -809,7 +882,6 @@ class Product {
             : const {},
         serviceTypeFees: mapCastOfType<String, num>(json, r'serviceTypeFees') ?? const {},
         defaultShippingFee: num.parse('${json[r'defaultShippingFee']}'),
-        minimumShippingFee: num.parse('${json[r'minimumShippingFee']}'),
       );
     }
     return null;
@@ -872,4 +944,108 @@ class Product {
     'status',
   };
 }
+
+/// 貨幣類型
+class ProductCurrencyEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ProductCurrencyEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const USDT = ProductCurrencyEnum._(r'USDT');
+  static const USD = ProductCurrencyEnum._(r'USD');
+  static const TWD = ProductCurrencyEnum._(r'TWD');
+  static const CNY = ProductCurrencyEnum._(r'CNY');
+  static const JPY = ProductCurrencyEnum._(r'JPY');
+  static const EUR = ProductCurrencyEnum._(r'EUR');
+  static const GBP = ProductCurrencyEnum._(r'GBP');
+  static const KRW = ProductCurrencyEnum._(r'KRW');
+  static const SGD = ProductCurrencyEnum._(r'SGD');
+  static const HKD = ProductCurrencyEnum._(r'HKD');
+  static const AUD = ProductCurrencyEnum._(r'AUD');
+  static const unknownDefaultOpenApi = ProductCurrencyEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ProductCurrencyEnum].
+  static const values = <ProductCurrencyEnum>[
+    USDT,
+    USD,
+    TWD,
+    CNY,
+    JPY,
+    EUR,
+    GBP,
+    KRW,
+    SGD,
+    HKD,
+    AUD,
+    unknownDefaultOpenApi,
+  ];
+
+  static ProductCurrencyEnum? fromJson(dynamic value) => ProductCurrencyEnumTypeTransformer().decode(value);
+
+  static List<ProductCurrencyEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProductCurrencyEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProductCurrencyEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ProductCurrencyEnum] to String,
+/// and [decode] dynamic data back to [ProductCurrencyEnum].
+class ProductCurrencyEnumTypeTransformer {
+  factory ProductCurrencyEnumTypeTransformer() => _instance ??= const ProductCurrencyEnumTypeTransformer._();
+
+  const ProductCurrencyEnumTypeTransformer._();
+
+  String encode(ProductCurrencyEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ProductCurrencyEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ProductCurrencyEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'USDT': return ProductCurrencyEnum.USDT;
+        case r'USD': return ProductCurrencyEnum.USD;
+        case r'TWD': return ProductCurrencyEnum.TWD;
+        case r'CNY': return ProductCurrencyEnum.CNY;
+        case r'JPY': return ProductCurrencyEnum.JPY;
+        case r'EUR': return ProductCurrencyEnum.EUR;
+        case r'GBP': return ProductCurrencyEnum.GBP;
+        case r'KRW': return ProductCurrencyEnum.KRW;
+        case r'SGD': return ProductCurrencyEnum.SGD;
+        case r'HKD': return ProductCurrencyEnum.HKD;
+        case r'AUD': return ProductCurrencyEnum.AUD;
+        case r'unknown_default_open_api': return ProductCurrencyEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ProductCurrencyEnumTypeTransformer] instance.
+  static ProductCurrencyEnumTypeTransformer? _instance;
+}
+
 
