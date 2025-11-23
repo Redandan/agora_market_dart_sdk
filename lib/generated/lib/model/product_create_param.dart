@@ -26,6 +26,7 @@ class ProductCreateParam {
     required this.pickupTimeStart,
     required this.pickupTimeEnd,
     required this.pickupAddress,
+    this.enablePlatformDelivery,
     this.skus = const {},
     this.brand,
     this.minStock,
@@ -99,6 +100,15 @@ class ProductCreateParam {
 
   /// 取件地址
   String pickupAddress;
+
+  /// 啟用平台配送
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? enablePlatformDelivery;
 
   /// 商品SKU或條碼集合
   Set<String> skus;
@@ -253,6 +263,7 @@ class ProductCreateParam {
     other.pickupTimeStart == pickupTimeStart &&
     other.pickupTimeEnd == pickupTimeEnd &&
     other.pickupAddress == pickupAddress &&
+    other.enablePlatformDelivery == enablePlatformDelivery &&
     _deepEquality.equals(other.skus, skus) &&
     other.brand == brand &&
     other.minStock == minStock &&
@@ -286,6 +297,7 @@ class ProductCreateParam {
     (pickupTimeStart.hashCode) +
     (pickupTimeEnd.hashCode) +
     (pickupAddress.hashCode) +
+    (enablePlatformDelivery == null ? 0 : enablePlatformDelivery!.hashCode) +
     (skus.hashCode) +
     (brand == null ? 0 : brand!.hashCode) +
     (minStock == null ? 0 : minStock!.hashCode) +
@@ -304,7 +316,7 @@ class ProductCreateParam {
     (purchaseUrl == null ? 0 : purchaseUrl!.hashCode);
 
   @override
-  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, skus=$skus, brand=$brand, minStock=$minStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl]';
+  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, enablePlatformDelivery=$enablePlatformDelivery, skus=$skus, brand=$brand, minStock=$minStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -325,6 +337,11 @@ class ProductCreateParam {
       json[r'pickupTimeStart'] = this.pickupTimeStart;
       json[r'pickupTimeEnd'] = this.pickupTimeEnd;
       json[r'pickupAddress'] = this.pickupAddress;
+    if (this.enablePlatformDelivery != null) {
+      json[r'enablePlatformDelivery'] = this.enablePlatformDelivery;
+    } else {
+      json[r'enablePlatformDelivery'] = null;
+    }
       json[r'skus'] = this.skus.toList(growable: false);
     if (this.brand != null) {
       json[r'brand'] = this.brand;
@@ -430,6 +447,7 @@ class ProductCreateParam {
         pickupTimeStart: mapValueOfType<String>(json, r'pickupTimeStart')!,
         pickupTimeEnd: mapValueOfType<String>(json, r'pickupTimeEnd')!,
         pickupAddress: mapValueOfType<String>(json, r'pickupAddress')!,
+        enablePlatformDelivery: mapValueOfType<bool>(json, r'enablePlatformDelivery'),
         skus: json[r'skus'] is Iterable
             ? (json[r'skus'] as Iterable).cast<String>().toSet()
             : const {},

@@ -26,6 +26,7 @@ class ProductUpdateParam {
     this.pickupLatitude,
     this.pickupTimeStart,
     this.pickupTimeEnd,
+    this.enablePlatformDelivery,
     this.status,
     this.shippingFee,
     this.skus = const {},
@@ -150,6 +151,15 @@ class ProductUpdateParam {
   ///
   String? pickupTimeEnd;
 
+  /// 啟用平台配送
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? enablePlatformDelivery;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -271,6 +281,7 @@ class ProductUpdateParam {
     other.pickupLatitude == pickupLatitude &&
     other.pickupTimeStart == pickupTimeStart &&
     other.pickupTimeEnd == pickupTimeEnd &&
+    other.enablePlatformDelivery == enablePlatformDelivery &&
     other.status == status &&
     other.shippingFee == shippingFee &&
     _deepEquality.equals(other.skus, skus) &&
@@ -301,6 +312,7 @@ class ProductUpdateParam {
     (pickupLatitude == null ? 0 : pickupLatitude!.hashCode) +
     (pickupTimeStart == null ? 0 : pickupTimeStart!.hashCode) +
     (pickupTimeEnd == null ? 0 : pickupTimeEnd!.hashCode) +
+    (enablePlatformDelivery == null ? 0 : enablePlatformDelivery!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
     (shippingFee == null ? 0 : shippingFee!.hashCode) +
     (skus.hashCode) +
@@ -316,7 +328,7 @@ class ProductUpdateParam {
     (purchaseUrl == null ? 0 : purchaseUrl!.hashCode);
 
   @override
-  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, status=$status, shippingFee=$shippingFee, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, purchaseUrl=$purchaseUrl]';
+  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, status=$status, shippingFee=$shippingFee, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, purchaseUrl=$purchaseUrl]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -376,6 +388,11 @@ class ProductUpdateParam {
       json[r'pickupTimeEnd'] = this.pickupTimeEnd;
     } else {
       json[r'pickupTimeEnd'] = null;
+    }
+    if (this.enablePlatformDelivery != null) {
+      json[r'enablePlatformDelivery'] = this.enablePlatformDelivery;
+    } else {
+      json[r'enablePlatformDelivery'] = null;
     }
     if (this.status != null) {
       json[r'status'] = this.status;
@@ -467,6 +484,7 @@ class ProductUpdateParam {
         pickupLatitude: mapValueOfType<double>(json, r'pickupLatitude'),
         pickupTimeStart: mapValueOfType<String>(json, r'pickupTimeStart'),
         pickupTimeEnd: mapValueOfType<String>(json, r'pickupTimeEnd'),
+        enablePlatformDelivery: mapValueOfType<bool>(json, r'enablePlatformDelivery'),
         status: ProductStatusEnum.fromJson(json[r'status']),
         shippingFee: num.parse('${json[r'shippingFee']}'),
         skus: json[r'skus'] is Iterable
