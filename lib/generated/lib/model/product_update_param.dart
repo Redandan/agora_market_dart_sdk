@@ -35,8 +35,8 @@ class ProductUpdateParam {
     this.shippingDescription,
     this.supportsScheduledShipping,
     this.shippingDateRange,
-    this.supportedServiceTypes = const [],
-    this.serviceTypeFees = const {},
+    this.pickupServiceTypes = const [],
+    this.pickupServiceTypeFees = const {},
     this.freeShippingThreshold,
     this.enablePlatformDelivery,
     this.purchaseUrl,
@@ -232,10 +232,10 @@ class ProductUpdateParam {
   int? shippingDateRange;
 
   /// 支援的取貨服務類型
-  List<PickupServiceTypeEnum> supportedServiceTypes;
+  List<PickupServiceTypeEnum> pickupServiceTypes;
 
   /// 各取貨服務類型運費對應表
-  Map<String, num> serviceTypeFees;
+  Map<String, num> pickupServiceTypeFees;
 
   /// 免運費門檻
   ///
@@ -290,8 +290,8 @@ class ProductUpdateParam {
     other.shippingDescription == shippingDescription &&
     other.supportsScheduledShipping == supportsScheduledShipping &&
     other.shippingDateRange == shippingDateRange &&
-    _deepEquality.equals(other.supportedServiceTypes, supportedServiceTypes) &&
-    _deepEquality.equals(other.serviceTypeFees, serviceTypeFees) &&
+    _deepEquality.equals(other.pickupServiceTypes, pickupServiceTypes) &&
+    _deepEquality.equals(other.pickupServiceTypeFees, pickupServiceTypeFees) &&
     other.freeShippingThreshold == freeShippingThreshold &&
     other.enablePlatformDelivery == enablePlatformDelivery &&
     other.purchaseUrl == purchaseUrl;
@@ -321,14 +321,14 @@ class ProductUpdateParam {
     (shippingDescription == null ? 0 : shippingDescription!.hashCode) +
     (supportsScheduledShipping == null ? 0 : supportsScheduledShipping!.hashCode) +
     (shippingDateRange == null ? 0 : shippingDateRange!.hashCode) +
-    (supportedServiceTypes.hashCode) +
-    (serviceTypeFees.hashCode) +
+    (pickupServiceTypes.hashCode) +
+    (pickupServiceTypeFees.hashCode) +
     (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode) +
     (enablePlatformDelivery == null ? 0 : enablePlatformDelivery!.hashCode) +
     (purchaseUrl == null ? 0 : purchaseUrl!.hashCode);
 
   @override
-  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, status=$status, shippingFee=$shippingFee, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, supportedServiceTypes=$supportedServiceTypes, serviceTypeFees=$serviceTypeFees, freeShippingThreshold=$freeShippingThreshold, enablePlatformDelivery=$enablePlatformDelivery, purchaseUrl=$purchaseUrl]';
+  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, status=$status, shippingFee=$shippingFee, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, enablePlatformDelivery=$enablePlatformDelivery, purchaseUrl=$purchaseUrl]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -430,8 +430,8 @@ class ProductUpdateParam {
     } else {
       json[r'shippingDateRange'] = null;
     }
-      json[r'supportedServiceTypes'] = this.supportedServiceTypes;
-      json[r'serviceTypeFees'] = this.serviceTypeFees;
+      json[r'pickupServiceTypes'] = this.pickupServiceTypes;
+      json[r'pickupServiceTypeFees'] = this.pickupServiceTypeFees;
     if (this.freeShippingThreshold != null) {
       json[r'freeShippingThreshold'] = this.freeShippingThreshold;
     } else {
@@ -495,8 +495,8 @@ class ProductUpdateParam {
         shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),
         supportsScheduledShipping: mapValueOfType<bool>(json, r'supportsScheduledShipping'),
         shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
-        supportedServiceTypes: PickupServiceTypeEnum.listFromJson(json[r'supportedServiceTypes']),
-        serviceTypeFees: mapCastOfType<String, num>(json, r'serviceTypeFees')!,
+        pickupServiceTypes: PickupServiceTypeEnum.listFromJson(json[r'pickupServiceTypes']),
+        pickupServiceTypeFees: mapCastOfType<String, num>(json, r'pickupServiceTypeFees')!,
         freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
         enablePlatformDelivery: mapValueOfType<bool>(json, r'enablePlatformDelivery'),
         purchaseUrl: mapValueOfType<String>(json, r'purchaseUrl'),
@@ -549,8 +549,8 @@ class ProductUpdateParam {
   static const requiredKeys = <String>{
     'id',
     'skus',
-    'supportedServiceTypes',
-    'serviceTypeFees',
+    'pickupServiceTypes',
+    'pickupServiceTypeFees',
   };
 }
 
