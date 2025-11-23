@@ -38,7 +38,6 @@ class ProductUpdateParam {
     this.pickupServiceTypes = const [],
     this.pickupServiceTypeFees = const {},
     this.freeShippingThreshold,
-    this.enablePlatformDelivery,
     this.purchaseUrl,
   });
 
@@ -248,15 +247,6 @@ class ProductUpdateParam {
   ///
   num? freeShippingThreshold;
 
-  /// 啟用平台配送
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? enablePlatformDelivery;
-
   /// 代購下單URL(只對賣家展示)
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -293,7 +283,6 @@ class ProductUpdateParam {
     _deepEquality.equals(other.pickupServiceTypes, pickupServiceTypes) &&
     _deepEquality.equals(other.pickupServiceTypeFees, pickupServiceTypeFees) &&
     other.freeShippingThreshold == freeShippingThreshold &&
-    other.enablePlatformDelivery == enablePlatformDelivery &&
     other.purchaseUrl == purchaseUrl;
 
   @override
@@ -324,11 +313,10 @@ class ProductUpdateParam {
     (pickupServiceTypes.hashCode) +
     (pickupServiceTypeFees.hashCode) +
     (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode) +
-    (enablePlatformDelivery == null ? 0 : enablePlatformDelivery!.hashCode) +
     (purchaseUrl == null ? 0 : purchaseUrl!.hashCode);
 
   @override
-  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, status=$status, shippingFee=$shippingFee, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, enablePlatformDelivery=$enablePlatformDelivery, purchaseUrl=$purchaseUrl]';
+  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, status=$status, shippingFee=$shippingFee, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, purchaseUrl=$purchaseUrl]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -437,11 +425,6 @@ class ProductUpdateParam {
     } else {
       json[r'freeShippingThreshold'] = null;
     }
-    if (this.enablePlatformDelivery != null) {
-      json[r'enablePlatformDelivery'] = this.enablePlatformDelivery;
-    } else {
-      json[r'enablePlatformDelivery'] = null;
-    }
     if (this.purchaseUrl != null) {
       json[r'purchaseUrl'] = this.purchaseUrl;
     } else {
@@ -498,7 +481,6 @@ class ProductUpdateParam {
         pickupServiceTypes: PickupServiceTypeEnum.listFromJson(json[r'pickupServiceTypes']),
         pickupServiceTypeFees: mapCastOfType<String, num>(json, r'pickupServiceTypeFees')!,
         freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
-        enablePlatformDelivery: mapValueOfType<bool>(json, r'enablePlatformDelivery'),
         purchaseUrl: mapValueOfType<String>(json, r'purchaseUrl'),
       );
     }
