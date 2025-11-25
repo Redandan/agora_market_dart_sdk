@@ -40,6 +40,7 @@ class Order {
     this.usingDefaultRate,
     this.product,
     this.deliveryDetail,
+    this.store,
   });
 
   /// 訂單ID
@@ -281,6 +282,14 @@ class Order {
   ///
   DeliveryDetail? deliveryDetail;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  Store? store;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Order &&
     other.id == id &&
@@ -309,7 +318,8 @@ class Order {
     other.exchangeRateTime == exchangeRateTime &&
     other.usingDefaultRate == usingDefaultRate &&
     other.product == product &&
-    other.deliveryDetail == deliveryDetail;
+    other.deliveryDetail == deliveryDetail &&
+    other.store == store;
 
   @override
   int get hashCode =>
@@ -340,10 +350,11 @@ class Order {
     (exchangeRateTime == null ? 0 : exchangeRateTime!.hashCode) +
     (usingDefaultRate == null ? 0 : usingDefaultRate!.hashCode) +
     (product == null ? 0 : product!.hashCode) +
-    (deliveryDetail == null ? 0 : deliveryDetail!.hashCode);
+    (deliveryDetail == null ? 0 : deliveryDetail!.hashCode) +
+    (store == null ? 0 : store!.hashCode);
 
   @override
-  String toString() => 'Order[id=$id, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, product=$product, deliveryDetail=$deliveryDetail]';
+  String toString() => 'Order[id=$id, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, product=$product, deliveryDetail=$deliveryDetail, store=$store]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -482,6 +493,11 @@ class Order {
     } else {
       json[r'deliveryDetail'] = null;
     }
+    if (this.store != null) {
+      json[r'store'] = this.store;
+    } else {
+      json[r'store'] = null;
+    }
     return json;
   }
 
@@ -531,6 +547,7 @@ class Order {
         usingDefaultRate: mapValueOfType<bool>(json, r'usingDefaultRate'),
         product: Product.fromJson(json[r'product']),
         deliveryDetail: DeliveryDetail.fromJson(json[r'deliveryDetail']),
+        store: Store.fromJson(json[r'store']),
       );
     }
     return null;

@@ -30,9 +30,11 @@ class User {
     this.twoFactorEnabled,
     this.twoFactorSecret,
     this.emailVerified,
+    this.trustedDevicesJson,
     this.createdAt,
     this.updatedAt,
     this.admin,
+    this.trustedDevices = const [],
   });
 
   /// 用戶ID
@@ -187,6 +189,15 @@ class User {
   ///
   bool? emailVerified;
 
+  /// 受信任設備列表（JSON格式）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? trustedDevicesJson;
+
   /// 創建時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -213,6 +224,8 @@ class User {
   ///
   bool? admin;
 
+  List<DeviceInfo> trustedDevices;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is User &&
     other.id == id &&
@@ -232,9 +245,11 @@ class User {
     other.twoFactorEnabled == twoFactorEnabled &&
     other.twoFactorSecret == twoFactorSecret &&
     other.emailVerified == emailVerified &&
+    other.trustedDevicesJson == trustedDevicesJson &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.admin == admin;
+    other.admin == admin &&
+    _deepEquality.equals(other.trustedDevices, trustedDevices);
 
   @override
   int get hashCode =>
@@ -256,12 +271,14 @@ class User {
     (twoFactorEnabled == null ? 0 : twoFactorEnabled!.hashCode) +
     (twoFactorSecret == null ? 0 : twoFactorSecret!.hashCode) +
     (emailVerified == null ? 0 : emailVerified!.hashCode) +
+    (trustedDevicesJson == null ? 0 : trustedDevicesJson!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (admin == null ? 0 : admin!.hashCode);
+    (admin == null ? 0 : admin!.hashCode) +
+    (trustedDevices.hashCode);
 
   @override
-  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin]';
+  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, trustedDevicesJson=$trustedDevicesJson, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin, trustedDevices=$trustedDevices]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -350,6 +367,11 @@ class User {
     } else {
       json[r'emailVerified'] = null;
     }
+    if (this.trustedDevicesJson != null) {
+      json[r'trustedDevicesJson'] = this.trustedDevicesJson;
+    } else {
+      json[r'trustedDevicesJson'] = null;
+    }
     if (this.createdAt != null) {
       json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
     } else {
@@ -365,6 +387,7 @@ class User {
     } else {
       json[r'admin'] = null;
     }
+      json[r'trustedDevices'] = this.trustedDevices;
     return json;
   }
 
@@ -404,9 +427,11 @@ class User {
         twoFactorEnabled: mapValueOfType<bool>(json, r'twoFactorEnabled'),
         twoFactorSecret: mapValueOfType<String>(json, r'twoFactorSecret'),
         emailVerified: mapValueOfType<bool>(json, r'emailVerified'),
+        trustedDevicesJson: mapValueOfType<String>(json, r'trustedDevicesJson'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         admin: mapValueOfType<bool>(json, r'admin'),
+        trustedDevices: DeviceInfo.listFromJson(json[r'trustedDevices']),
       );
     }
     return null;

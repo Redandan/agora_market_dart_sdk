@@ -132,6 +132,7 @@ part 'model/deliveryer_performance_dto.dart';
 part 'model/deliveryer_registration_param.dart';
 part 'model/deliveryer_search_param.dart';
 part 'model/deliveryer_update_param.dart';
+part 'model/device_info.dart';
 part 'model/dispute.dart';
 part 'model/dispute_create_param.dart';
 part 'model/dispute_outcome.dart';

@@ -465,6 +465,7 @@ Class | Method | HTTP request | Description
  - [DeliveryerRegistrationParam](doc//DeliveryerRegistrationParam.md)
  - [DeliveryerSearchParam](doc//DeliveryerSearchParam.md)
  - [DeliveryerUpdateParam](doc//DeliveryerUpdateParam.md)
+ - [DeviceInfo](doc//DeviceInfo.md)
  - [Dispute](doc//Dispute.md)
  - [DisputeCreateParam](doc//DisputeCreateParam.md)
  - [DisputeOutcome](doc//DisputeOutcome.md)
