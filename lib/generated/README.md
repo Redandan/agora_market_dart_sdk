@@ -287,6 +287,7 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**submitOrder**](doc//MemberOrdersApi.md#submitorder) | **POST** /orders | 提交訂單
 *MemberOrdersApi* | [**updateReturnShipping**](doc//MemberOrdersApi.md#updatereturnshipping) | **POST** /orders/{orderId}/return/shipping | 更新退貨物流信息
 *Oauth2StandardApi* | [**authorizeGoogle**](doc//Oauth2StandardApi.md#authorizegoogle) | **POST** /auth/oauth2/authorize/google | Google OAuth2 授权
+*Oauth2StandardApi* | [**getAvailableProviders**](doc//Oauth2StandardApi.md#getavailableproviders) | **GET** /auth/oauth2/providers | 获取可用的 OAuth2 服务列表
 *Oauth2StandardApi* | [**getTokenByTokenId**](doc//Oauth2StandardApi.md#gettokenbytokenid) | **POST** /auth/oauth2/token/by-token-id | OAuth2 Token 获取（后端方案）
 *Oauth2StandardApi* | [**googleCallback**](doc//Oauth2StandardApi.md#googlecallback) | **GET** /auth/oauth2/code/google | Google OAuth2 回调（后端方案）
 *OciNotificationControllerApi* | [**handleNotification**](doc//OciNotificationControllerApi.md#handlenotification) | **POST** /oci/notifications | 
@@ -361,6 +362,7 @@ Class | Method | HTTP request | Description
 *StoresApi* | [**searchMyStoreProducts**](doc//StoresApi.md#searchmystoreproducts) | **POST** /stores/products/search | 搜索我的商店商品
 *StoresApi* | [**updateShippingConfig**](doc//StoresApi.md#updateshippingconfig) | **POST** /stores/shipping-config | 更新商店物流設定
 *StoresApi* | [**updateStore**](doc//StoresApi.md#updatestore) | **POST** /stores/update | 更新商店
+*TelegramLoginApi* | [**callback**](doc//TelegramLoginApi.md#callback) | **POST** /auth/telegram/callback | Telegram 登录回调
 *TestApi* | [**generateAutoReplyTestData**](doc//TestApi.md#generateautoreplytestdata) | **POST** /test/auto-reply | 生成自動回復測試數據
 *TestApi* | [**generateDeliveryAcceptOrderTestData**](doc//TestApi.md#generatedeliveryacceptordertestdata) | **POST** /test/delivery-accept-order | 生成配送員接單測試數據
 *TestApi* | [**generateLogisticsOrder**](doc//TestApi.md#generatelogisticsorder) | **POST** /test/logistics | 
@@ -407,6 +409,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseColdWallet](doc//ApiResponseColdWallet.md)
  - [ApiResponseFileSyncResponse](doc//ApiResponseFileSyncResponse.md)
  - [ApiResponseFlutterAppDeploymentResponse](doc//ApiResponseFlutterAppDeploymentResponse.md)
+ - [ApiResponseListOAuth2ProviderStatus](doc//ApiResponseListOAuth2ProviderStatus.md)
  - [ApiResponseListPostResponse](doc//ApiResponseListPostResponse.md)
  - [ApiResponseMapStringObject](doc//ApiResponseMapStringObject.md)
  - [ApiResponseOAuth2AuthorizeResponse](doc//ApiResponseOAuth2AuthorizeResponse.md)
@@ -499,6 +502,7 @@ Class | Method | HTTP request | Description
  - [NotificationUpdateParam](doc//NotificationUpdateParam.md)
  - [OAuth2AuthorizeRequest](doc//OAuth2AuthorizeRequest.md)
  - [OAuth2AuthorizeResponse](doc//OAuth2AuthorizeResponse.md)
+ - [OAuth2ProviderStatus](doc//OAuth2ProviderStatus.md)
  - [OAuth2TokenIdRequest](doc//OAuth2TokenIdRequest.md)
  - [OAuth2TokenResponse](doc//OAuth2TokenResponse.md)
  - [Order](doc//Order.md)

@@ -200,6 +200,8 @@ class ApiClient {
           return ApiResponseFileSyncResponse.fromJson(value);
         case 'ApiResponseFlutterAppDeploymentResponse':
           return ApiResponseFlutterAppDeploymentResponse.fromJson(value);
+        case 'ApiResponseListOAuth2ProviderStatus':
+          return ApiResponseListOAuth2ProviderStatus.fromJson(value);
         case 'ApiResponseListPostResponse':
           return ApiResponseListPostResponse.fromJson(value);
         case 'ApiResponseMapStringObject':
@@ -384,6 +386,8 @@ class ApiClient {
           return OAuth2AuthorizeRequest.fromJson(value);
         case 'OAuth2AuthorizeResponse':
           return OAuth2AuthorizeResponse.fromJson(value);
+        case 'OAuth2ProviderStatus':
+          return OAuth2ProviderStatus.fromJson(value);
         case 'OAuth2TokenIdRequest':
           return OAuth2TokenIdRequest.fromJson(value);
         case 'OAuth2TokenResponse':
