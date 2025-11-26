@@ -38,6 +38,8 @@ class Order {
     this.originalShippingFee,
     this.exchangeRateTime,
     this.usingDefaultRate,
+    this.buyerName,
+    this.buyerUsername,
     this.product,
     this.deliveryDetail,
     this.store,
@@ -266,6 +268,24 @@ class Order {
   ///
   bool? usingDefaultRate;
 
+  /// 買家姓名（下單時記錄）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? buyerName;
+
+  /// 買家用戶名（下單時記錄）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? buyerUsername;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -317,6 +337,8 @@ class Order {
     other.originalShippingFee == originalShippingFee &&
     other.exchangeRateTime == exchangeRateTime &&
     other.usingDefaultRate == usingDefaultRate &&
+    other.buyerName == buyerName &&
+    other.buyerUsername == buyerUsername &&
     other.product == product &&
     other.deliveryDetail == deliveryDetail &&
     other.store == store;
@@ -349,12 +371,14 @@ class Order {
     (originalShippingFee == null ? 0 : originalShippingFee!.hashCode) +
     (exchangeRateTime == null ? 0 : exchangeRateTime!.hashCode) +
     (usingDefaultRate == null ? 0 : usingDefaultRate!.hashCode) +
+    (buyerName == null ? 0 : buyerName!.hashCode) +
+    (buyerUsername == null ? 0 : buyerUsername!.hashCode) +
     (product == null ? 0 : product!.hashCode) +
     (deliveryDetail == null ? 0 : deliveryDetail!.hashCode) +
     (store == null ? 0 : store!.hashCode);
 
   @override
-  String toString() => 'Order[id=$id, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, product=$product, deliveryDetail=$deliveryDetail, store=$store]';
+  String toString() => 'Order[id=$id, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, buyerName=$buyerName, buyerUsername=$buyerUsername, product=$product, deliveryDetail=$deliveryDetail, store=$store]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -483,6 +507,16 @@ class Order {
     } else {
       json[r'usingDefaultRate'] = null;
     }
+    if (this.buyerName != null) {
+      json[r'buyerName'] = this.buyerName;
+    } else {
+      json[r'buyerName'] = null;
+    }
+    if (this.buyerUsername != null) {
+      json[r'buyerUsername'] = this.buyerUsername;
+    } else {
+      json[r'buyerUsername'] = null;
+    }
     if (this.product != null) {
       json[r'product'] = this.product;
     } else {
@@ -545,6 +579,8 @@ class Order {
         originalShippingFee: num.parse('${json[r'originalShippingFee']}'),
         exchangeRateTime: mapDateTime(json, r'exchangeRateTime', r''),
         usingDefaultRate: mapValueOfType<bool>(json, r'usingDefaultRate'),
+        buyerName: mapValueOfType<String>(json, r'buyerName'),
+        buyerUsername: mapValueOfType<String>(json, r'buyerUsername'),
         product: Product.fromJson(json[r'product']),
         deliveryDetail: DeliveryDetail.fromJson(json[r'deliveryDetail']),
         store: Store.fromJson(json[r'store']),
