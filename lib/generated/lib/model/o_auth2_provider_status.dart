@@ -16,6 +16,7 @@ class OAuth2ProviderStatus {
     this.provider,
     this.available,
     this.botUsername,
+    this.botId,
   });
 
   /// OAuth第三方登录提供商
@@ -39,21 +40,32 @@ class OAuth2ProviderStatus {
   ///
   String? botUsername;
 
+  /// Bot ID（仅 Telegram 返回）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? botId;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is OAuth2ProviderStatus &&
     other.provider == provider &&
     other.available == available &&
-    other.botUsername == botUsername;
+    other.botUsername == botUsername &&
+    other.botId == botId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (provider == null ? 0 : provider!.hashCode) +
     (available == null ? 0 : available!.hashCode) +
-    (botUsername == null ? 0 : botUsername!.hashCode);
+    (botUsername == null ? 0 : botUsername!.hashCode) +
+    (botId == null ? 0 : botId!.hashCode);
 
   @override
-  String toString() => 'OAuth2ProviderStatus[provider=$provider, available=$available, botUsername=$botUsername]';
+  String toString() => 'OAuth2ProviderStatus[provider=$provider, available=$available, botUsername=$botUsername, botId=$botId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -71,6 +83,11 @@ class OAuth2ProviderStatus {
       json[r'botUsername'] = this.botUsername;
     } else {
       json[r'botUsername'] = null;
+    }
+    if (this.botId != null) {
+      json[r'botId'] = this.botId;
+    } else {
+      json[r'botId'] = null;
     }
     return json;
   }
@@ -97,6 +114,7 @@ class OAuth2ProviderStatus {
         provider: OAuth2ProviderStatusProviderEnum.fromJson(json[r'provider']),
         available: mapValueOfType<bool>(json, r'available'),
         botUsername: mapValueOfType<String>(json, r'botUsername'),
+        botId: mapValueOfType<int>(json, r'botId'),
       );
     }
     return null;
