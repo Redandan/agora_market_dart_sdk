@@ -1,0 +1,126 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
+
+class GenerateLoginTokenRequest {
+  /// Returns a new [GenerateLoginTokenRequest] instance.
+  GenerateLoginTokenRequest({
+    required this.redirectUri,
+    this.botUsername,
+  });
+
+  String redirectUri;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? botUsername;
+
+  @override
+  bool operator ==(Object other) => identical(this, other) || other is GenerateLoginTokenRequest &&
+    other.redirectUri == redirectUri &&
+    other.botUsername == botUsername;
+
+  @override
+  int get hashCode =>
+    // ignore: unnecessary_parenthesis
+    (redirectUri.hashCode) +
+    (botUsername == null ? 0 : botUsername!.hashCode);
+
+  @override
+  String toString() => 'GenerateLoginTokenRequest[redirectUri=$redirectUri, botUsername=$botUsername]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+      json[r'redirectUri'] = this.redirectUri;
+    if (this.botUsername != null) {
+      json[r'botUsername'] = this.botUsername;
+    } else {
+      json[r'botUsername'] = null;
+    }
+    return json;
+  }
+
+  /// Returns a new [GenerateLoginTokenRequest] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static GenerateLoginTokenRequest? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key), 'Required key "GenerateLoginTokenRequest[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "GenerateLoginTokenRequest[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return GenerateLoginTokenRequest(
+        redirectUri: mapValueOfType<String>(json, r'redirectUri')!,
+        botUsername: mapValueOfType<String>(json, r'botUsername'),
+      );
+    }
+    return null;
+  }
+
+  static List<GenerateLoginTokenRequest> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <GenerateLoginTokenRequest>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = GenerateLoginTokenRequest.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+
+  static Map<String, GenerateLoginTokenRequest> mapFromJson(dynamic json) {
+    final map = <String, GenerateLoginTokenRequest>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = GenerateLoginTokenRequest.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
+  }
+
+  // maps a json object with a list of GenerateLoginTokenRequest-objects as value to a dart map
+  static Map<String, List<GenerateLoginTokenRequest>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<GenerateLoginTokenRequest>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = GenerateLoginTokenRequest.listFromJson(entry.value, growable: growable,);
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'redirectUri',
+  };
+}
+

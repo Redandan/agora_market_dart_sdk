@@ -15,8 +15,6 @@ class OAuth2ProviderStatus {
   OAuth2ProviderStatus({
     this.provider,
     this.available,
-    this.botUsername,
-    this.botId,
   });
 
   /// OAuth第三方登录提供商
@@ -31,41 +29,19 @@ class OAuth2ProviderStatus {
   ///
   bool? available;
 
-  /// Bot Username（仅 Telegram 返回）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? botUsername;
-
-  /// Bot ID（仅 Telegram 返回）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? botId;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is OAuth2ProviderStatus &&
     other.provider == provider &&
-    other.available == available &&
-    other.botUsername == botUsername &&
-    other.botId == botId;
+    other.available == available;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (provider == null ? 0 : provider!.hashCode) +
-    (available == null ? 0 : available!.hashCode) +
-    (botUsername == null ? 0 : botUsername!.hashCode) +
-    (botId == null ? 0 : botId!.hashCode);
+    (available == null ? 0 : available!.hashCode);
 
   @override
-  String toString() => 'OAuth2ProviderStatus[provider=$provider, available=$available, botUsername=$botUsername, botId=$botId]';
+  String toString() => 'OAuth2ProviderStatus[provider=$provider, available=$available]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -78,16 +54,6 @@ class OAuth2ProviderStatus {
       json[r'available'] = this.available;
     } else {
       json[r'available'] = null;
-    }
-    if (this.botUsername != null) {
-      json[r'botUsername'] = this.botUsername;
-    } else {
-      json[r'botUsername'] = null;
-    }
-    if (this.botId != null) {
-      json[r'botId'] = this.botId;
-    } else {
-      json[r'botId'] = null;
     }
     return json;
   }
@@ -113,8 +79,6 @@ class OAuth2ProviderStatus {
       return OAuth2ProviderStatus(
         provider: OAuth2ProviderStatusProviderEnum.fromJson(json[r'provider']),
         available: mapValueOfType<bool>(json, r'available'),
-        botUsername: mapValueOfType<String>(json, r'botUsername'),
-        botId: mapValueOfType<int>(json, r'botId'),
       );
     }
     return null;
@@ -180,14 +144,14 @@ class OAuth2ProviderStatusProviderEnum {
 
   static const GOOGLE = OAuth2ProviderStatusProviderEnum._(r'GOOGLE');
   static const FACEBOOK = OAuth2ProviderStatusProviderEnum._(r'FACEBOOK');
-  static const TELEGRAM = OAuth2ProviderStatusProviderEnum._(r'TELEGRAM');
+  static const TELEGRAM_BOT = OAuth2ProviderStatusProviderEnum._(r'TELEGRAM_BOT');
   static const unknownDefaultOpenApi = OAuth2ProviderStatusProviderEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][OAuth2ProviderStatusProviderEnum].
   static const values = <OAuth2ProviderStatusProviderEnum>[
     GOOGLE,
     FACEBOOK,
-    TELEGRAM,
+    TELEGRAM_BOT,
     unknownDefaultOpenApi,
   ];
 
@@ -229,7 +193,7 @@ class OAuth2ProviderStatusProviderEnumTypeTransformer {
       switch (data) {
         case r'GOOGLE': return OAuth2ProviderStatusProviderEnum.GOOGLE;
         case r'FACEBOOK': return OAuth2ProviderStatusProviderEnum.FACEBOOK;
-        case r'TELEGRAM': return OAuth2ProviderStatusProviderEnum.TELEGRAM;
+        case r'TELEGRAM_BOT': return OAuth2ProviderStatusProviderEnum.TELEGRAM_BOT;
         case r'unknown_default_open_api': return OAuth2ProviderStatusProviderEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

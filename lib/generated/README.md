@@ -362,7 +362,8 @@ Class | Method | HTTP request | Description
 *StoresApi* | [**searchMyStoreProducts**](doc//StoresApi.md#searchmystoreproducts) | **POST** /stores/products/search | 搜索我的商店商品
 *StoresApi* | [**updateShippingConfig**](doc//StoresApi.md#updateshippingconfig) | **POST** /stores/shipping-config | 更新商店物流設定
 *StoresApi* | [**updateStore**](doc//StoresApi.md#updatestore) | **POST** /stores/update | 更新商店
-*TelegramLoginApi* | [**callback**](doc//TelegramLoginApi.md#callback) | **POST** /auth/telegram/callback | Telegram 登录回调
+*TelegramBotLoginApi* | [**generateLoginToken**](doc//TelegramBotLoginApi.md#generatelogintoken) | **POST** /auth/telegram-bot/generate-login-token | 生成登录 loginToken
+*TelegramBotLoginApi* | [**verifyJwt**](doc//TelegramBotLoginApi.md#verifyjwt) | **POST** /auth/telegram-bot/verify-jwt | 验证 JWT Token
 *TestApi* | [**generateAutoReplyTestData**](doc//TestApi.md#generateautoreplytestdata) | **POST** /test/auto-reply | 生成自動回復測試數據
 *TestApi* | [**generateDeliveryAcceptOrderTestData**](doc//TestApi.md#generatedeliveryacceptordertestdata) | **POST** /test/delivery-accept-order | 生成配送員接單測試數據
 *TestApi* | [**generateLogisticsOrder**](doc//TestApi.md#generatelogisticsorder) | **POST** /test/logistics | 
@@ -411,6 +412,8 @@ Class | Method | HTTP request | Description
  - [ApiResponseFlutterAppDeploymentResponse](doc//ApiResponseFlutterAppDeploymentResponse.md)
  - [ApiResponseListOAuth2ProviderStatus](doc//ApiResponseListOAuth2ProviderStatus.md)
  - [ApiResponseListPostResponse](doc//ApiResponseListPostResponse.md)
+ - [ApiResponseLoginResult](doc//ApiResponseLoginResult.md)
+ - [ApiResponseLoginTokenResponse](doc//ApiResponseLoginTokenResponse.md)
  - [ApiResponseMapStringObject](doc//ApiResponseMapStringObject.md)
  - [ApiResponseOAuth2AuthorizeResponse](doc//ApiResponseOAuth2AuthorizeResponse.md)
  - [ApiResponseOAuth2TokenResponse](doc//ApiResponseOAuth2TokenResponse.md)
@@ -482,6 +485,7 @@ Class | Method | HTTP request | Description
  - [FileRecordSearchRequest](doc//FileRecordSearchRequest.md)
  - [FileSyncResponse](doc//FileSyncResponse.md)
  - [FlutterAppDeploymentResponse](doc//FlutterAppDeploymentResponse.md)
+ - [GenerateLoginTokenRequest](doc//GenerateLoginTokenRequest.md)
  - [InterestRecordDTO](doc//InterestRecordDTO.md)
  - [InterestRecordSearchParam](doc//InterestRecordSearchParam.md)
  - [IssueSearchParam](doc//IssueSearchParam.md)
@@ -489,6 +493,7 @@ Class | Method | HTTP request | Description
  - [IssueTypeEnum](doc//IssueTypeEnum.md)
  - [LoginParam](doc//LoginParam.md)
  - [LoginResult](doc//LoginResult.md)
+ - [LoginTokenResponse](doc//LoginTokenResponse.md)
  - [LowStockWarningDTO](doc//LowStockWarningDTO.md)
  - [MemberSearchParam](doc//MemberSearchParam.md)
  - [MemberUpdateParam](doc//MemberUpdateParam.md)
@@ -645,6 +650,7 @@ Class | Method | HTTP request | Description
  - [UserProfileUpdateParam](doc//UserProfileUpdateParam.md)
  - [UserStatusEnum](doc//UserStatusEnum.md)
  - [VapidPublicKeyResponseDTO](doc//VapidPublicKeyResponseDTO.md)
+ - [VerifyJwtRequest](doc//VerifyJwtRequest.md)
  - [WebPushDetails](doc//WebPushDetails.md)
  - [WebRTCAnswerDto](doc//WebRTCAnswerDto.md)
  - [WebRTCAnswerResponseDto](doc//WebRTCAnswerResponseDto.md)

@@ -204,6 +204,10 @@ class ApiClient {
           return ApiResponseListOAuth2ProviderStatus.fromJson(value);
         case 'ApiResponseListPostResponse':
           return ApiResponseListPostResponse.fromJson(value);
+        case 'ApiResponseLoginResult':
+          return ApiResponseLoginResult.fromJson(value);
+        case 'ApiResponseLoginTokenResponse':
+          return ApiResponseLoginTokenResponse.fromJson(value);
         case 'ApiResponseMapStringObject':
           return ApiResponseMapStringObject.fromJson(value);
         case 'ApiResponseOAuth2AuthorizeResponse':
@@ -346,6 +350,8 @@ class ApiClient {
           return FileSyncResponse.fromJson(value);
         case 'FlutterAppDeploymentResponse':
           return FlutterAppDeploymentResponse.fromJson(value);
+        case 'GenerateLoginTokenRequest':
+          return GenerateLoginTokenRequest.fromJson(value);
         case 'InterestRecordDTO':
           return InterestRecordDTO.fromJson(value);
         case 'InterestRecordSearchParam':
@@ -360,6 +366,8 @@ class ApiClient {
           return LoginParam.fromJson(value);
         case 'LoginResult':
           return LoginResult.fromJson(value);
+        case 'LoginTokenResponse':
+          return LoginTokenResponse.fromJson(value);
         case 'LowStockWarningDTO':
           return LowStockWarningDTO.fromJson(value);
         case 'MemberSearchParam':
@@ -672,6 +680,8 @@ class ApiClient {
           return UserStatusEnumTypeTransformer().decode(value);
         case 'VapidPublicKeyResponseDTO':
           return VapidPublicKeyResponseDTO.fromJson(value);
+        case 'VerifyJwtRequest':
+          return VerifyJwtRequest.fromJson(value);
         case 'WebPushDetails':
           return WebPushDetails.fromJson(value);
         case 'WebRTCAnswerDto':
