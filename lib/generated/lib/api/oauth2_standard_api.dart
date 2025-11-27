@@ -72,54 +72,6 @@ class Oauth2StandardApi {
     return null;
   }
 
-  /// 获取可用的 OAuth2 服务列表
-  ///
-  /// 返回已实现的 OAuth2 提供商状态信息（是否可用）
-  ///
-  /// Note: This method returns the HTTP [Response].
-  Future<Response> getAvailableProvidersWithHttpInfo() async {
-    // ignore: prefer_const_declarations
-    final path = r'/auth/oauth2/providers';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 获取可用的 OAuth2 服务列表
-  ///
-  /// 返回已实现的 OAuth2 提供商状态信息（是否可用）
-  Future<ApiResponseListOAuth2ProviderStatus?> getAvailableProviders() async {
-    final response = await getAvailableProvidersWithHttpInfo();
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseListOAuth2ProviderStatus',) as ApiResponseListOAuth2ProviderStatus;
-    
-    }
-    return null;
-  }
-
   /// OAuth2 Token 获取（后端方案）
   ///
   /// 通过临时token ID获取 Token

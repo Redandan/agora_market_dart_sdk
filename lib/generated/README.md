@@ -255,6 +255,7 @@ Class | Method | HTTP request | Description
 *FileManagementApi* | [**syncFileRecords**](doc//FileManagementApi.md#syncfilerecords) | **POST** /files/auto-clean | 檔案清理
 *FlutterDeploymentApi* | [**deleteVersion**](doc//FlutterDeploymentApi.md#deleteversion) | **DELETE** /flutter/deployment/versions/{versionId} | 刪除 APP 版本
 *FlutterDeploymentApi* | [**getApps**](doc//FlutterDeploymentApi.md#getapps) | **POST** /flutter/deployment/apps | 獲取可下載的 APP
+*LoginMethodsApi* | [**getLoginMethods**](doc//LoginMethodsApi.md#getloginmethods) | **GET** /auth/login-methods | 获取所有可用的登录方式
 *MemberDisputesApi* | [**createDispute**](doc//MemberDisputesApi.md#createdispute) | **POST** /disputes | 創建糾紛
 *MemberDisputesApi* | [**getDisputeDetail**](doc//MemberDisputesApi.md#getdisputedetail) | **GET** /disputes/{disputeId} | 查看糾紛詳情
 *MemberDisputesApi* | [**replyDispute**](doc//MemberDisputesApi.md#replydispute) | **POST** /disputes/{disputeId}/reply | 回覆糾紛
@@ -287,7 +288,6 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**submitOrder**](doc//MemberOrdersApi.md#submitorder) | **POST** /orders | 提交訂單
 *MemberOrdersApi* | [**updateReturnShipping**](doc//MemberOrdersApi.md#updatereturnshipping) | **POST** /orders/{orderId}/return/shipping | 更新退貨物流信息
 *Oauth2StandardApi* | [**authorizeGoogle**](doc//Oauth2StandardApi.md#authorizegoogle) | **POST** /auth/oauth2/authorize/google | Google OAuth2 授权
-*Oauth2StandardApi* | [**getAvailableProviders**](doc//Oauth2StandardApi.md#getavailableproviders) | **GET** /auth/oauth2/providers | 获取可用的 OAuth2 服务列表
 *Oauth2StandardApi* | [**getTokenByTokenId**](doc//Oauth2StandardApi.md#gettokenbytokenid) | **POST** /auth/oauth2/token/by-token-id | OAuth2 Token 获取（后端方案）
 *Oauth2StandardApi* | [**googleCallback**](doc//Oauth2StandardApi.md#googlecallback) | **GET** /auth/oauth2/code/google | Google OAuth2 回调（后端方案）
 *OciNotificationControllerApi* | [**handleNotification**](doc//OciNotificationControllerApi.md#handlenotification) | **POST** /oci/notifications | 
@@ -410,7 +410,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseColdWallet](doc//ApiResponseColdWallet.md)
  - [ApiResponseFileSyncResponse](doc//ApiResponseFileSyncResponse.md)
  - [ApiResponseFlutterAppDeploymentResponse](doc//ApiResponseFlutterAppDeploymentResponse.md)
- - [ApiResponseListOAuth2ProviderStatus](doc//ApiResponseListOAuth2ProviderStatus.md)
+ - [ApiResponseListLoginMethod](doc//ApiResponseListLoginMethod.md)
  - [ApiResponseListPostResponse](doc//ApiResponseListPostResponse.md)
  - [ApiResponseLoginResult](doc//ApiResponseLoginResult.md)
  - [ApiResponseLoginTokenResponse](doc//ApiResponseLoginTokenResponse.md)
@@ -491,6 +491,7 @@ Class | Method | HTTP request | Description
  - [IssueSearchParam](doc//IssueSearchParam.md)
  - [IssueStatusEnum](doc//IssueStatusEnum.md)
  - [IssueTypeEnum](doc//IssueTypeEnum.md)
+ - [LoginMethod](doc//LoginMethod.md)
  - [LoginParam](doc//LoginParam.md)
  - [LoginResult](doc//LoginResult.md)
  - [LoginTokenResponse](doc//LoginTokenResponse.md)
@@ -507,7 +508,6 @@ Class | Method | HTTP request | Description
  - [NotificationUpdateParam](doc//NotificationUpdateParam.md)
  - [OAuth2AuthorizeRequest](doc//OAuth2AuthorizeRequest.md)
  - [OAuth2AuthorizeResponse](doc//OAuth2AuthorizeResponse.md)
- - [OAuth2ProviderStatus](doc//OAuth2ProviderStatus.md)
  - [OAuth2TokenIdRequest](doc//OAuth2TokenIdRequest.md)
  - [OAuth2TokenResponse](doc//OAuth2TokenResponse.md)
  - [Order](doc//Order.md)
@@ -628,6 +628,7 @@ Class | Method | HTTP request | Description
  - [StoreShippingConfigParam](doc//StoreShippingConfigParam.md)
  - [StoreUpdateParam](doc//StoreUpdateParam.md)
  - [TaiwanPostalArea](doc//TaiwanPostalArea.md)
+ - [TelegramBotInfo](doc//TelegramBotInfo.md)
  - [TopDeliveryAreaDTO](doc//TopDeliveryAreaDTO.md)
  - [TopDisputedProductDTO](doc//TopDisputedProductDTO.md)
  - [TopDisputedSellerDTO](doc//TopDisputedSellerDTO.md)

@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class ApiResponseListOAuth2ProviderStatus {
-  /// Returns a new [ApiResponseListOAuth2ProviderStatus] instance.
-  ApiResponseListOAuth2ProviderStatus({
+class ApiResponseListLoginMethod {
+  /// Returns a new [ApiResponseListLoginMethod] instance.
+  ApiResponseListLoginMethod({
     this.success,
     this.message,
     this.code,
@@ -43,10 +43,10 @@ class ApiResponseListOAuth2ProviderStatus {
   ///
   String? code;
 
-  List<OAuth2ProviderStatus> data;
+  List<LoginMethod> data;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ApiResponseListOAuth2ProviderStatus &&
+  bool operator ==(Object other) => identical(this, other) || other is ApiResponseListLoginMethod &&
     other.success == success &&
     other.message == message &&
     other.code == code &&
@@ -61,7 +61,7 @@ class ApiResponseListOAuth2ProviderStatus {
     (data.hashCode);
 
   @override
-  String toString() => 'ApiResponseListOAuth2ProviderStatus[success=$success, message=$message, code=$code, data=$data]';
+  String toString() => 'ApiResponseListLoginMethod[success=$success, message=$message, code=$code, data=$data]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -84,10 +84,10 @@ class ApiResponseListOAuth2ProviderStatus {
     return json;
   }
 
-  /// Returns a new [ApiResponseListOAuth2ProviderStatus] instance and imports its values from
+  /// Returns a new [ApiResponseListLoginMethod] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ApiResponseListOAuth2ProviderStatus? fromJson(dynamic value) {
+  static ApiResponseListLoginMethod? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -96,27 +96,27 @@ class ApiResponseListOAuth2ProviderStatus {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ApiResponseListOAuth2ProviderStatus[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ApiResponseListOAuth2ProviderStatus[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ApiResponseListLoginMethod[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ApiResponseListLoginMethod[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ApiResponseListOAuth2ProviderStatus(
+      return ApiResponseListLoginMethod(
         success: mapValueOfType<bool>(json, r'success'),
         message: mapValueOfType<String>(json, r'message'),
         code: mapValueOfType<String>(json, r'code'),
-        data: OAuth2ProviderStatus.listFromJson(json[r'data']),
+        data: LoginMethod.listFromJson(json[r'data']),
       );
     }
     return null;
   }
 
-  static List<ApiResponseListOAuth2ProviderStatus> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ApiResponseListOAuth2ProviderStatus>[];
+  static List<ApiResponseListLoginMethod> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ApiResponseListLoginMethod>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ApiResponseListOAuth2ProviderStatus.fromJson(row);
+        final value = ApiResponseListLoginMethod.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -125,12 +125,12 @@ class ApiResponseListOAuth2ProviderStatus {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ApiResponseListOAuth2ProviderStatus> mapFromJson(dynamic json) {
-    final map = <String, ApiResponseListOAuth2ProviderStatus>{};
+  static Map<String, ApiResponseListLoginMethod> mapFromJson(dynamic json) {
+    final map = <String, ApiResponseListLoginMethod>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ApiResponseListOAuth2ProviderStatus.fromJson(entry.value);
+        final value = ApiResponseListLoginMethod.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -139,14 +139,14 @@ class ApiResponseListOAuth2ProviderStatus {
     return map;
   }
 
-  // maps a json object with a list of ApiResponseListOAuth2ProviderStatus-objects as value to a dart map
-  static Map<String, List<ApiResponseListOAuth2ProviderStatus>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ApiResponseListOAuth2ProviderStatus>>{};
+  // maps a json object with a list of ApiResponseListLoginMethod-objects as value to a dart map
+  static Map<String, List<ApiResponseListLoginMethod>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ApiResponseListLoginMethod>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ApiResponseListOAuth2ProviderStatus.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ApiResponseListLoginMethod.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

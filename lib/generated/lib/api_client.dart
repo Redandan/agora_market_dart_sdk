@@ -200,8 +200,8 @@ class ApiClient {
           return ApiResponseFileSyncResponse.fromJson(value);
         case 'ApiResponseFlutterAppDeploymentResponse':
           return ApiResponseFlutterAppDeploymentResponse.fromJson(value);
-        case 'ApiResponseListOAuth2ProviderStatus':
-          return ApiResponseListOAuth2ProviderStatus.fromJson(value);
+        case 'ApiResponseListLoginMethod':
+          return ApiResponseListLoginMethod.fromJson(value);
         case 'ApiResponseListPostResponse':
           return ApiResponseListPostResponse.fromJson(value);
         case 'ApiResponseLoginResult':
@@ -362,6 +362,8 @@ class ApiClient {
           return IssueStatusEnumTypeTransformer().decode(value);
         case 'IssueTypeEnum':
           return IssueTypeEnumTypeTransformer().decode(value);
+        case 'LoginMethod':
+          return LoginMethod.fromJson(value);
         case 'LoginParam':
           return LoginParam.fromJson(value);
         case 'LoginResult':
@@ -394,8 +396,6 @@ class ApiClient {
           return OAuth2AuthorizeRequest.fromJson(value);
         case 'OAuth2AuthorizeResponse':
           return OAuth2AuthorizeResponse.fromJson(value);
-        case 'OAuth2ProviderStatus':
-          return OAuth2ProviderStatus.fromJson(value);
         case 'OAuth2TokenIdRequest':
           return OAuth2TokenIdRequest.fromJson(value);
         case 'OAuth2TokenResponse':
@@ -636,6 +636,8 @@ class ApiClient {
           return StoreUpdateParam.fromJson(value);
         case 'TaiwanPostalArea':
           return TaiwanPostalArea.fromJson(value);
+        case 'TelegramBotInfo':
+          return TelegramBotInfo.fromJson(value);
         case 'TopDeliveryAreaDTO':
           return TopDeliveryAreaDTO.fromJson(value);
         case 'TopDisputedProductDTO':
