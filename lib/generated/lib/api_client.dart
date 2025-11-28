@@ -682,8 +682,8 @@ class ApiClient {
           return UserStatusEnumTypeTransformer().decode(value);
         case 'VapidPublicKeyResponseDTO':
           return VapidPublicKeyResponseDTO.fromJson(value);
-        case 'VerifyJwtRequest':
-          return VerifyJwtRequest.fromJson(value);
+        case 'VerifyCodeRequest':
+          return VerifyCodeRequest.fromJson(value);
         case 'WebPushDetails':
           return WebPushDetails.fromJson(value);
         case 'WebRTCAnswerDto':

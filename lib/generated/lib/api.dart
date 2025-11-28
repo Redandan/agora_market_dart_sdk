@@ -317,7 +317,7 @@ part 'model/user_post_statistics.dart';
 part 'model/user_profile_update_param.dart';
 part 'model/user_status_enum.dart';
 part 'model/vapid_public_key_response_dto.dart';
-part 'model/verify_jwt_request.dart';
+part 'model/verify_code_request.dart';
 part 'model/web_push_details.dart';
 part 'model/web_rtc_answer_dto.dart';
 part 'model/web_rtc_answer_response_dto.dart';

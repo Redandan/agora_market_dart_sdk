@@ -363,7 +363,7 @@ Class | Method | HTTP request | Description
 *StoresApi* | [**updateShippingConfig**](doc//StoresApi.md#updateshippingconfig) | **POST** /stores/shipping-config | 更新商店物流設定
 *StoresApi* | [**updateStore**](doc//StoresApi.md#updatestore) | **POST** /stores/update | 更新商店
 *TelegramBotLoginApi* | [**generateLoginToken**](doc//TelegramBotLoginApi.md#generatelogintoken) | **POST** /auth/telegram-bot/generate-login-token | 生成登录 loginToken
-*TelegramBotLoginApi* | [**verifyJwt**](doc//TelegramBotLoginApi.md#verifyjwt) | **POST** /auth/telegram-bot/verify-jwt | 验证 JWT Token
+*TelegramBotLoginApi* | [**verifyCode**](doc//TelegramBotLoginApi.md#verifycode) | **POST** /auth/telegram-bot/verify-code | 验证验证码
 *TestApi* | [**generateAutoReplyTestData**](doc//TestApi.md#generateautoreplytestdata) | **POST** /test/auto-reply | 生成自動回復測試數據
 *TestApi* | [**generateDeliveryAcceptOrderTestData**](doc//TestApi.md#generatedeliveryacceptordertestdata) | **POST** /test/delivery-accept-order | 生成配送員接單測試數據
 *TestApi* | [**generateLogisticsOrder**](doc//TestApi.md#generatelogisticsorder) | **POST** /test/logistics | 
@@ -651,7 +651,7 @@ Class | Method | HTTP request | Description
  - [UserProfileUpdateParam](doc//UserProfileUpdateParam.md)
  - [UserStatusEnum](doc//UserStatusEnum.md)
  - [VapidPublicKeyResponseDTO](doc//VapidPublicKeyResponseDTO.md)
- - [VerifyJwtRequest](doc//VerifyJwtRequest.md)
+ - [VerifyCodeRequest](doc//VerifyCodeRequest.md)
  - [WebPushDetails](doc//WebPushDetails.md)
  - [WebRTCAnswerDto](doc//WebRTCAnswerDto.md)
  - [WebRTCAnswerResponseDto](doc//WebRTCAnswerResponseDto.md)

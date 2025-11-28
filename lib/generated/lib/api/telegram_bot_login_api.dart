@@ -72,21 +72,21 @@ class TelegramBotLoginApi {
     return null;
   }
 
-  /// 验证 JWT Token
+  /// 验证验证码
   ///
-  /// 验证 Telegram Bot 返回的 JWT Token 并完成登录
+  /// 验证 Telegram Bot 返回的 4 位验证码并完成登录
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [VerifyJwtRequest] verifyJwtRequest (required):
-  Future<Response> verifyJwtWithHttpInfo(VerifyJwtRequest verifyJwtRequest,) async {
+  /// * [VerifyCodeRequest] verifyCodeRequest (required):
+  Future<Response> verifyCodeWithHttpInfo(VerifyCodeRequest verifyCodeRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/auth/telegram-bot/verify-jwt';
+    final path = r'/auth/telegram-bot/verify-code';
 
     // ignore: prefer_final_locals
-    Object? postBody = verifyJwtRequest;
+    Object? postBody = verifyCodeRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -106,15 +106,15 @@ class TelegramBotLoginApi {
     );
   }
 
-  /// 验证 JWT Token
+  /// 验证验证码
   ///
-  /// 验证 Telegram Bot 返回的 JWT Token 并完成登录
+  /// 验证 Telegram Bot 返回的 4 位验证码并完成登录
   ///
   /// Parameters:
   ///
-  /// * [VerifyJwtRequest] verifyJwtRequest (required):
-  Future<ApiResponseLoginResult?> verifyJwt(VerifyJwtRequest verifyJwtRequest,) async {
-    final response = await verifyJwtWithHttpInfo(verifyJwtRequest,);
+  /// * [VerifyCodeRequest] verifyCodeRequest (required):
+  Future<ApiResponseLoginResult?> verifyCode(VerifyCodeRequest verifyCodeRequest,) async {
+    final response = await verifyCodeWithHttpInfo(verifyCodeRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

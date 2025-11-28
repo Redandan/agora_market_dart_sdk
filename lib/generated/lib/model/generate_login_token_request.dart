@@ -14,41 +14,25 @@ class GenerateLoginTokenRequest {
   /// Returns a new [GenerateLoginTokenRequest] instance.
   GenerateLoginTokenRequest({
     required this.redirectUri,
-    this.botUsername,
   });
 
   String redirectUri;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? botUsername;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is GenerateLoginTokenRequest &&
-    other.redirectUri == redirectUri &&
-    other.botUsername == botUsername;
+    other.redirectUri == redirectUri;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (redirectUri.hashCode) +
-    (botUsername == null ? 0 : botUsername!.hashCode);
+    (redirectUri.hashCode);
 
   @override
-  String toString() => 'GenerateLoginTokenRequest[redirectUri=$redirectUri, botUsername=$botUsername]';
+  String toString() => 'GenerateLoginTokenRequest[redirectUri=$redirectUri]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'redirectUri'] = this.redirectUri;
-    if (this.botUsername != null) {
-      json[r'botUsername'] = this.botUsername;
-    } else {
-      json[r'botUsername'] = null;
-    }
     return json;
   }
 
@@ -72,7 +56,6 @@ class GenerateLoginTokenRequest {
 
       return GenerateLoginTokenRequest(
         redirectUri: mapValueOfType<String>(json, r'redirectUri')!,
-        botUsername: mapValueOfType<String>(json, r'botUsername'),
       );
     }
     return null;
