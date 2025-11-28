@@ -200,7 +200,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**getCurrentUser**](doc//AuthApi.md#getcurrentuser) | **GET** /auth/me | 獲取當前用戶信息
 *AuthApi* | [**getEmailVerificationRemainingTime**](doc//AuthApi.md#getemailverificationremainingtime) | **GET** /auth/email-verification/remaining-time | 查詢郵件驗證碼的剩餘等待時間
 *AuthApi* | [**getTwoFactorInfo**](doc//AuthApi.md#gettwofactorinfo) | **GET** /auth/2fa | 獲取雙因素認證信息
-*AuthApi* | [**login**](doc//AuthApi.md#login) | **POST** /auth/login | 用戶登入
+*AuthApi* | [**login1**](doc//AuthApi.md#login1) | **POST** /auth/login | 用戶登入
 *AuthApi* | [**logout**](doc//AuthApi.md#logout) | **POST** /auth/logout | 用戶登出
 *AuthApi* | [**manageTwoFactor**](doc//AuthApi.md#managetwofactor) | **POST** /auth/2fa/manage | 管理雙因素認證
 *AuthApi* | [**refreshToken**](doc//AuthApi.md#refreshtoken) | **POST** /auth/refresh-token | 刷新訪問令牌
@@ -364,6 +364,7 @@ Class | Method | HTTP request | Description
 *StoresApi* | [**updateStore**](doc//StoresApi.md#updatestore) | **POST** /stores/update | 更新商店
 *TelegramBotLoginApi* | [**generateLoginToken**](doc//TelegramBotLoginApi.md#generatelogintoken) | **POST** /auth/telegram-bot/generate-login-token | 生成登录 loginToken
 *TelegramBotLoginApi* | [**verifyCode**](doc//TelegramBotLoginApi.md#verifycode) | **POST** /auth/telegram-bot/verify-code | 验证验证码
+*TelegramMiniAppLoginApi* | [**login**](doc//TelegramMiniAppLoginApi.md#login) | **POST** /auth/telegram-mini-app/login | Telegram Mini App 登录
 *TestApi* | [**generateAutoReplyTestData**](doc//TestApi.md#generateautoreplytestdata) | **POST** /test/auto-reply | 生成自動回復測試數據
 *TestApi* | [**generateDeliveryAcceptOrderTestData**](doc//TestApi.md#generatedeliveryacceptordertestdata) | **POST** /test/delivery-accept-order | 生成配送員接單測試數據
 *TestApi* | [**generateLogisticsOrder**](doc//TestApi.md#generatelogisticsorder) | **POST** /test/logistics | 
@@ -499,6 +500,7 @@ Class | Method | HTTP request | Description
  - [MemberSearchParam](doc//MemberSearchParam.md)
  - [MemberUpdateParam](doc//MemberUpdateParam.md)
  - [MessageSendResponseDTO](doc//MessageSendResponseDTO.md)
+ - [MiniAppLoginRequest](doc//MiniAppLoginRequest.md)
  - [NextInterestEstimateDTO](doc//NextInterestEstimateDTO.md)
  - [NotificationCreateParam](doc//NotificationCreateParam.md)
  - [NotificationResponseDTO](doc//NotificationResponseDTO.md)

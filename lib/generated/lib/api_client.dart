@@ -378,6 +378,8 @@ class ApiClient {
           return MemberUpdateParam.fromJson(value);
         case 'MessageSendResponseDTO':
           return MessageSendResponseDTO.fromJson(value);
+        case 'MiniAppLoginRequest':
+          return MiniAppLoginRequest.fromJson(value);
         case 'NextInterestEstimateDTO':
           return NextInterestEstimateDTO.fromJson(value);
         case 'NotificationCreateParam':

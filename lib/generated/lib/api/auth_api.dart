@@ -265,7 +265,7 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [LoginParam] loginParam (required):
-  Future<Response> loginWithHttpInfo(LoginParam loginParam,) async {
+  Future<Response> login1WithHttpInfo(LoginParam loginParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/auth/login';
 
@@ -297,8 +297,8 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [LoginParam] loginParam (required):
-  Future<LoginResult?> login(LoginParam loginParam,) async {
-    final response = await loginWithHttpInfo(loginParam,);
+  Future<LoginResult?> login1(LoginParam loginParam,) async {
+    final response = await login1WithHttpInfo(loginParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
