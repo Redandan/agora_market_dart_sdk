@@ -686,6 +686,8 @@ class ApiClient {
           return VapidPublicKeyResponseDTO.fromJson(value);
         case 'VerifyCodeRequest':
           return VerifyCodeRequest.fromJson(value);
+        case 'WalletConnectInfo':
+          return WalletConnectInfo.fromJson(value);
         case 'WalletConnectLoginRequest':
           return WalletConnectLoginRequest.fromJson(value);
         case 'WalletConnectNonceRequest':

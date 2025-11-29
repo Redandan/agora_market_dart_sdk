@@ -321,6 +321,7 @@ part 'model/user_profile_update_param.dart';
 part 'model/user_status_enum.dart';
 part 'model/vapid_public_key_response_dto.dart';
 part 'model/verify_code_request.dart';
+part 'model/wallet_connect_info.dart';
 part 'model/wallet_connect_login_request.dart';
 part 'model/wallet_connect_nonce_request.dart';
 part 'model/wallet_connect_nonce_response.dart';

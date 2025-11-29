@@ -17,6 +17,7 @@ class LoginMethod {
     this.name,
     this.available,
     this.telegramBot,
+    this.walletConnect,
   });
 
   /// 登录方式类型
@@ -48,12 +49,21 @@ class LoginMethod {
   ///
   TelegramBotInfo? telegramBot;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  WalletConnectInfo? walletConnect;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is LoginMethod &&
     other.type == type &&
     other.name == name &&
     other.available == available &&
-    other.telegramBot == telegramBot;
+    other.telegramBot == telegramBot &&
+    other.walletConnect == walletConnect;
 
   @override
   int get hashCode =>
@@ -61,10 +71,11 @@ class LoginMethod {
     (type == null ? 0 : type!.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (available == null ? 0 : available!.hashCode) +
-    (telegramBot == null ? 0 : telegramBot!.hashCode);
+    (telegramBot == null ? 0 : telegramBot!.hashCode) +
+    (walletConnect == null ? 0 : walletConnect!.hashCode);
 
   @override
-  String toString() => 'LoginMethod[type=$type, name=$name, available=$available, telegramBot=$telegramBot]';
+  String toString() => 'LoginMethod[type=$type, name=$name, available=$available, telegramBot=$telegramBot, walletConnect=$walletConnect]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -87,6 +98,11 @@ class LoginMethod {
       json[r'telegramBot'] = this.telegramBot;
     } else {
       json[r'telegramBot'] = null;
+    }
+    if (this.walletConnect != null) {
+      json[r'walletConnect'] = this.walletConnect;
+    } else {
+      json[r'walletConnect'] = null;
     }
     return json;
   }
@@ -114,6 +130,7 @@ class LoginMethod {
         name: mapValueOfType<String>(json, r'name'),
         available: mapValueOfType<bool>(json, r'available'),
         telegramBot: TelegramBotInfo.fromJson(json[r'telegramBot']),
+        walletConnect: WalletConnectInfo.fromJson(json[r'walletConnect']),
       );
     }
     return null;
@@ -179,12 +196,14 @@ class LoginMethodTypeEnum {
 
   static const gOOGLEOAUTH2 = LoginMethodTypeEnum._(r'GOOGLE_OAUTH2');
   static const TELEGRAM_BOT = LoginMethodTypeEnum._(r'TELEGRAM_BOT');
+  static const WALLET_CONNECT = LoginMethodTypeEnum._(r'WALLET_CONNECT');
   static const unknownDefaultOpenApi = LoginMethodTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][LoginMethodTypeEnum].
   static const values = <LoginMethodTypeEnum>[
     gOOGLEOAUTH2,
     TELEGRAM_BOT,
+    WALLET_CONNECT,
     unknownDefaultOpenApi,
   ];
 
@@ -226,6 +245,7 @@ class LoginMethodTypeEnumTypeTransformer {
       switch (data) {
         case r'GOOGLE_OAUTH2': return LoginMethodTypeEnum.gOOGLEOAUTH2;
         case r'TELEGRAM_BOT': return LoginMethodTypeEnum.TELEGRAM_BOT;
+        case r'WALLET_CONNECT': return LoginMethodTypeEnum.WALLET_CONNECT;
         case r'unknown_default_open_api': return LoginMethodTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

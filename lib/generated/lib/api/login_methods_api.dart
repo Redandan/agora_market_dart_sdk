@@ -18,7 +18,7 @@ class LoginMethodsApi {
 
   /// 获取所有可用的登录方式
   ///
-  /// 返回所有登录方式的状态和前端所需信息，包括 Google OAuth2 和 Telegram Bot
+  /// 返回所有登录方式的状态和前端所需信息，包括 Google OAuth2、Telegram Bot 和 WalletConnect
   ///
   /// Note: This method returns the HTTP [Response].
   Future<Response> getLoginMethodsWithHttpInfo() async {
@@ -48,7 +48,7 @@ class LoginMethodsApi {
 
   /// 获取所有可用的登录方式
   ///
-  /// 返回所有登录方式的状态和前端所需信息，包括 Google OAuth2 和 Telegram Bot
+  /// 返回所有登录方式的状态和前端所需信息，包括 Google OAuth2、Telegram Bot 和 WalletConnect
   Future<ApiResponseListLoginMethod?> getLoginMethods() async {
     final response = await getLoginMethodsWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {

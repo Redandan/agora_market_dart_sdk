@@ -656,6 +656,7 @@ Class | Method | HTTP request | Description
  - [UserStatusEnum](doc//UserStatusEnum.md)
  - [VapidPublicKeyResponseDTO](doc//VapidPublicKeyResponseDTO.md)
  - [VerifyCodeRequest](doc//VerifyCodeRequest.md)
+ - [WalletConnectInfo](doc//WalletConnectInfo.md)
  - [WalletConnectLoginRequest](doc//WalletConnectLoginRequest.md)
  - [WalletConnectNonceRequest](doc//WalletConnectNonceRequest.md)
  - [WalletConnectNonceResponse](doc//WalletConnectNonceResponse.md)
