@@ -200,7 +200,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**getCurrentUser**](doc//AuthApi.md#getcurrentuser) | **GET** /auth/me | 獲取當前用戶信息
 *AuthApi* | [**getEmailVerificationRemainingTime**](doc//AuthApi.md#getemailverificationremainingtime) | **GET** /auth/email-verification/remaining-time | 查詢郵件驗證碼的剩餘等待時間
 *AuthApi* | [**getTwoFactorInfo**](doc//AuthApi.md#gettwofactorinfo) | **GET** /auth/2fa | 獲取雙因素認證信息
-*AuthApi* | [**login1**](doc//AuthApi.md#login1) | **POST** /auth/login | 用戶登入
+*AuthApi* | [**login2**](doc//AuthApi.md#login2) | **POST** /auth/login | 用戶登入
 *AuthApi* | [**logout**](doc//AuthApi.md#logout) | **POST** /auth/logout | 用戶登出
 *AuthApi* | [**manageTwoFactor**](doc//AuthApi.md#managetwofactor) | **POST** /auth/2fa/manage | 管理雙因素認證
 *AuthApi* | [**refreshToken**](doc//AuthApi.md#refreshtoken) | **POST** /auth/refresh-token | 刷新訪問令牌
@@ -364,7 +364,7 @@ Class | Method | HTTP request | Description
 *StoresApi* | [**updateStore**](doc//StoresApi.md#updatestore) | **POST** /stores/update | 更新商店
 *TelegramBotLoginApi* | [**generateLoginToken**](doc//TelegramBotLoginApi.md#generatelogintoken) | **POST** /auth/telegram-bot/generate-login-token | 生成登录 loginToken
 *TelegramBotLoginApi* | [**verifyCode**](doc//TelegramBotLoginApi.md#verifycode) | **POST** /auth/telegram-bot/verify-code | 验证验证码
-*TelegramMiniAppLoginApi* | [**login**](doc//TelegramMiniAppLoginApi.md#login) | **POST** /auth/telegram-mini-app/login | Telegram Mini App 登录
+*TelegramMiniAppLoginApi* | [**login1**](doc//TelegramMiniAppLoginApi.md#login1) | **POST** /auth/telegram-mini-app/login | Telegram Mini App 登录
 *TestApi* | [**generateAutoReplyTestData**](doc//TestApi.md#generateautoreplytestdata) | **POST** /test/auto-reply | 生成自動回復測試數據
 *TestApi* | [**generateDeliveryAcceptOrderTestData**](doc//TestApi.md#generatedeliveryacceptordertestdata) | **POST** /test/delivery-accept-order | 生成配送員接單測試數據
 *TestApi* | [**generateLogisticsOrder**](doc//TestApi.md#generatelogisticsorder) | **POST** /test/logistics | 
@@ -384,6 +384,8 @@ Class | Method | HTTP request | Description
 *UserAddressesApi* | [**getUserAddressesPage**](doc//UserAddressesApi.md#getuseraddressespage) | **GET** /user-addresses/page | 分頁獲取用戶地址
 *UserAddressesApi* | [**setDefaultAddress**](doc//UserAddressesApi.md#setdefaultaddress) | **POST** /user-addresses/{addressId}/set-default | 設置預設地址
 *UserAddressesApi* | [**updateAddress**](doc//UserAddressesApi.md#updateaddress) | **POST** /user-addresses/update | 更新地址
+*WalletConnectApi* | [**getNonce**](doc//WalletConnectApi.md#getnonce) | **POST** /auth/wallet-connect/nonce | 获取 Nonce
+*WalletConnectApi* | [**login**](doc//WalletConnectApi.md#login) | **POST** /auth/wallet-connect/login | WalletConnect 钱包登录
 *WebpushApi* | [**getHealthStatus**](doc//WebpushApi.md#gethealthstatus) | **GET** /webpush/health | 獲取服務健康狀態
 *WebpushApi* | [**getSchedulerStatus**](doc//WebpushApi.md#getschedulerstatus) | **GET** /webpush/scheduled/status | 獲取定時推送狀態
 *WebpushApi* | [**getStatistics**](doc//WebpushApi.md#getstatistics) | **GET** /webpush/statistics | 獲取推送統計信息
@@ -654,6 +656,9 @@ Class | Method | HTTP request | Description
  - [UserStatusEnum](doc//UserStatusEnum.md)
  - [VapidPublicKeyResponseDTO](doc//VapidPublicKeyResponseDTO.md)
  - [VerifyCodeRequest](doc//VerifyCodeRequest.md)
+ - [WalletConnectLoginRequest](doc//WalletConnectLoginRequest.md)
+ - [WalletConnectNonceRequest](doc//WalletConnectNonceRequest.md)
+ - [WalletConnectNonceResponse](doc//WalletConnectNonceResponse.md)
  - [WebPushDetails](doc//WebPushDetails.md)
  - [WebRTCAnswerDto](doc//WebRTCAnswerDto.md)
  - [WebRTCAnswerResponseDto](doc//WebRTCAnswerResponseDto.md)
