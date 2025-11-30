@@ -688,12 +688,6 @@ class ApiClient {
           return VerifyCodeRequest.fromJson(value);
         case 'WalletConnectInfo':
           return WalletConnectInfo.fromJson(value);
-        case 'WalletConnectLoginRequest':
-          return WalletConnectLoginRequest.fromJson(value);
-        case 'WalletConnectNonceRequest':
-          return WalletConnectNonceRequest.fromJson(value);
-        case 'WalletConnectNonceResponse':
-          return WalletConnectNonceResponse.fromJson(value);
         case 'WebPushDetails':
           return WebPushDetails.fromJson(value);
         case 'WebRTCAnswerDto':

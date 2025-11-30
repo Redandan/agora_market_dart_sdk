@@ -25,7 +25,7 @@ class TelegramMiniAppLoginApi {
   /// Parameters:
   ///
   /// * [MiniAppLoginRequest] miniAppLoginRequest (required):
-  Future<Response> login1WithHttpInfo(MiniAppLoginRequest miniAppLoginRequest,) async {
+  Future<Response> loginWithHttpInfo(MiniAppLoginRequest miniAppLoginRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/auth/telegram-mini-app/login';
 
@@ -57,8 +57,8 @@ class TelegramMiniAppLoginApi {
   /// Parameters:
   ///
   /// * [MiniAppLoginRequest] miniAppLoginRequest (required):
-  Future<ApiResponseLoginResult?> login1(MiniAppLoginRequest miniAppLoginRequest,) async {
-    final response = await login1WithHttpInfo(miniAppLoginRequest,);
+  Future<ApiResponseLoginResult?> login(MiniAppLoginRequest miniAppLoginRequest,) async {
+    final response = await loginWithHttpInfo(miniAppLoginRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

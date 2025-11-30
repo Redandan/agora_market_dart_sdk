@@ -19,7 +19,7 @@ class WalletConnectInfo {
     this.documentationUrl,
   });
 
-  /// 获取 nonce 的 API 端点
+  /// WebView 连接页面端点（用于 Flutter App）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -28,7 +28,7 @@ class WalletConnectInfo {
   ///
   String? nonceEndpoint;
 
-  /// 登录的 API 端点
+  /// 验证签名并登录的 API 端点
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated

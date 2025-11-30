@@ -65,7 +65,7 @@ part 'api/telegram_bot_login_api.dart';
 part 'api/telegram_mini_app_login_api.dart';
 part 'api/test_api.dart';
 part 'api/user_addresses_api.dart';
-part 'api/wallet_connect_api.dart';
+part 'api/wallet_connect_webview_api.dart';
 part 'api/webpush_api.dart';
 part 'api/webrtc_api.dart';
 
@@ -322,9 +322,6 @@ part 'model/user_status_enum.dart';
 part 'model/vapid_public_key_response_dto.dart';
 part 'model/verify_code_request.dart';
 part 'model/wallet_connect_info.dart';
-part 'model/wallet_connect_login_request.dart';
-part 'model/wallet_connect_nonce_request.dart';
-part 'model/wallet_connect_nonce_response.dart';
 part 'model/web_push_details.dart';
 part 'model/web_rtc_answer_dto.dart';
 part 'model/web_rtc_answer_response_dto.dart';
