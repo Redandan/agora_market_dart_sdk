@@ -310,7 +310,6 @@ part 'model/transaction.dart';
 part 'model/transaction_list_param.dart';
 part 'model/transaction_search_param.dart';
 part 'model/transaction_type_enum.dart';
-part 'model/tron_info.dart';
 part 'model/two_factor_manage_param.dart';
 part 'model/two_factor_setup_response.dart';
 part 'model/two_factor_verify_param.dart';

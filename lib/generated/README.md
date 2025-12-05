@@ -647,7 +647,6 @@ Class | Method | HTTP request | Description
  - [TransactionListParam](doc//TransactionListParam.md)
  - [TransactionSearchParam](doc//TransactionSearchParam.md)
  - [TransactionTypeEnum](doc//TransactionTypeEnum.md)
- - [TronInfo](doc//TronInfo.md)
  - [TwoFactorManageParam](doc//TwoFactorManageParam.md)
  - [TwoFactorSetupResponse](doc//TwoFactorSetupResponse.md)
  - [TwoFactorVerifyParam](doc//TwoFactorVerifyParam.md)

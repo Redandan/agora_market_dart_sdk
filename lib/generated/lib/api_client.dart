@@ -664,8 +664,6 @@ class ApiClient {
           return TransactionSearchParam.fromJson(value);
         case 'TransactionTypeEnum':
           return TransactionTypeEnumTypeTransformer().decode(value);
-        case 'TronInfo':
-          return TronInfo.fromJson(value);
         case 'TwoFactorManageParam':
           return TwoFactorManageParam.fromJson(value);
         case 'TwoFactorSetupResponse':

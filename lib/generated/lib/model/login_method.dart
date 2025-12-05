@@ -18,7 +18,6 @@ class LoginMethod {
     this.available,
     this.telegramBot,
     this.walletConnect,
-    this.tron,
   });
 
   /// 登录方式类型
@@ -58,22 +57,13 @@ class LoginMethod {
   ///
   WalletConnectInfo? walletConnect;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  TronInfo? tron;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is LoginMethod &&
     other.type == type &&
     other.name == name &&
     other.available == available &&
     other.telegramBot == telegramBot &&
-    other.walletConnect == walletConnect &&
-    other.tron == tron;
+    other.walletConnect == walletConnect;
 
   @override
   int get hashCode =>
@@ -82,11 +72,10 @@ class LoginMethod {
     (name == null ? 0 : name!.hashCode) +
     (available == null ? 0 : available!.hashCode) +
     (telegramBot == null ? 0 : telegramBot!.hashCode) +
-    (walletConnect == null ? 0 : walletConnect!.hashCode) +
-    (tron == null ? 0 : tron!.hashCode);
+    (walletConnect == null ? 0 : walletConnect!.hashCode);
 
   @override
-  String toString() => 'LoginMethod[type=$type, name=$name, available=$available, telegramBot=$telegramBot, walletConnect=$walletConnect, tron=$tron]';
+  String toString() => 'LoginMethod[type=$type, name=$name, available=$available, telegramBot=$telegramBot, walletConnect=$walletConnect]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -115,11 +104,6 @@ class LoginMethod {
     } else {
       json[r'walletConnect'] = null;
     }
-    if (this.tron != null) {
-      json[r'tron'] = this.tron;
-    } else {
-      json[r'tron'] = null;
-    }
     return json;
   }
 
@@ -147,7 +131,6 @@ class LoginMethod {
         available: mapValueOfType<bool>(json, r'available'),
         telegramBot: TelegramBotInfo.fromJson(json[r'telegramBot']),
         walletConnect: WalletConnectInfo.fromJson(json[r'walletConnect']),
-        tron: TronInfo.fromJson(json[r'tron']),
       );
     }
     return null;
@@ -214,7 +197,6 @@ class LoginMethodTypeEnum {
   static const gOOGLEOAUTH2 = LoginMethodTypeEnum._(r'GOOGLE_OAUTH2');
   static const TELEGRAM_BOT = LoginMethodTypeEnum._(r'TELEGRAM_BOT');
   static const WALLET_CONNECT = LoginMethodTypeEnum._(r'WALLET_CONNECT');
-  static const TRON = LoginMethodTypeEnum._(r'TRON');
   static const unknownDefaultOpenApi = LoginMethodTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][LoginMethodTypeEnum].
@@ -222,7 +204,6 @@ class LoginMethodTypeEnum {
     gOOGLEOAUTH2,
     TELEGRAM_BOT,
     WALLET_CONNECT,
-    TRON,
     unknownDefaultOpenApi,
   ];
 
@@ -265,7 +246,6 @@ class LoginMethodTypeEnumTypeTransformer {
         case r'GOOGLE_OAUTH2': return LoginMethodTypeEnum.gOOGLEOAUTH2;
         case r'TELEGRAM_BOT': return LoginMethodTypeEnum.TELEGRAM_BOT;
         case r'WALLET_CONNECT': return LoginMethodTypeEnum.WALLET_CONNECT;
-        case r'TRON': return LoginMethodTypeEnum.TRON;
         case r'unknown_default_open_api': return LoginMethodTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
