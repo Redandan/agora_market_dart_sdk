@@ -342,6 +342,8 @@ class ApiClient {
           return EmailLoginRequest.fromJson(value);
         case 'EmailLoginSendCodeRequest':
           return EmailLoginSendCodeRequest.fromJson(value);
+        case 'EmailLoginSendCodeResponse':
+          return EmailLoginSendCodeResponse.fromJson(value);
         case 'ErrorResponse':
           return ErrorResponse.fromJson(value);
         case 'FileRecord':

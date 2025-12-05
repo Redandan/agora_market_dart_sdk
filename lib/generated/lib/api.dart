@@ -149,6 +149,7 @@ part 'model/dispute_statistics_dto.dart';
 part 'model/dispute_status_enum.dart';
 part 'model/email_login_request.dart';
 part 'model/email_login_send_code_request.dart';
+part 'model/email_login_send_code_response.dart';
 part 'model/error_response.dart';
 part 'model/file_record.dart';
 part 'model/file_record_info.dart';

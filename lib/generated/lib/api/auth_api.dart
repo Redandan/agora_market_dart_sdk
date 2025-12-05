@@ -752,7 +752,7 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [EmailLoginSendCodeRequest] emailLoginSendCodeRequest (required):
-  Future<Map<String, Object>?> sendEmailLoginCode(EmailLoginSendCodeRequest emailLoginSendCodeRequest,) async {
+  Future<EmailLoginSendCodeResponse?> sendEmailLoginCode(EmailLoginSendCodeRequest emailLoginSendCodeRequest,) async {
     final response = await sendEmailLoginCodeWithHttpInfo(emailLoginSendCodeRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -761,8 +761,8 @@ class AuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'EmailLoginSendCodeResponse',) as EmailLoginSendCodeResponse;
+    
     }
     return null;
   }

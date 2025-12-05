@@ -486,6 +486,7 @@ Class | Method | HTTP request | Description
  - [DisputeStatusEnum](doc//DisputeStatusEnum.md)
  - [EmailLoginRequest](doc//EmailLoginRequest.md)
  - [EmailLoginSendCodeRequest](doc//EmailLoginSendCodeRequest.md)
+ - [EmailLoginSendCodeResponse](doc//EmailLoginSendCodeResponse.md)
  - [ErrorResponse](doc//ErrorResponse.md)
  - [FileRecord](doc//FileRecord.md)
  - [FileRecordInfo](doc//FileRecordInfo.md)
