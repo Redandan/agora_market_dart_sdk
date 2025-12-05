@@ -201,6 +201,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**getEmailVerificationRemainingTime**](doc//AuthApi.md#getemailverificationremainingtime) | **GET** /auth/email-verification/remaining-time | 查詢郵件驗證碼的剩餘等待時間
 *AuthApi* | [**getTwoFactorInfo**](doc//AuthApi.md#gettwofactorinfo) | **GET** /auth/2fa | 獲取雙因素認證信息
 *AuthApi* | [**login2**](doc//AuthApi.md#login2) | **POST** /auth/login | 用戶登入
+*AuthApi* | [**loginWithEmailCode**](doc//AuthApi.md#loginwithemailcode) | **POST** /auth/email-login/verify | 使用郵箱驗證碼登入
 *AuthApi* | [**logout**](doc//AuthApi.md#logout) | **POST** /auth/logout | 用戶登出
 *AuthApi* | [**manageTwoFactor**](doc//AuthApi.md#managetwofactor) | **POST** /auth/2fa/manage | 管理雙因素認證
 *AuthApi* | [**refreshToken**](doc//AuthApi.md#refreshtoken) | **POST** /auth/refresh-token | 刷新訪問令牌
@@ -208,6 +209,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**resendVerificationEmail**](doc//AuthApi.md#resendverificationemail) | **POST** /auth/email-verification/resend | 重發郵件驗證碼
 *AuthApi* | [**resetPassword**](doc//AuthApi.md#resetpassword) | **POST** /auth/reset-password | 重設密碼
 *AuthApi* | [**resetPasswordWithCode**](doc//AuthApi.md#resetpasswordwithcode) | **POST** /auth/reset-password-with-code | 使用驗證碼重置密碼
+*AuthApi* | [**sendEmailLoginCode**](doc//AuthApi.md#sendemaillogincode) | **POST** /auth/email-login/send-code | 發送郵箱登入驗證碼
 *AuthApi* | [**sendEmailVerification**](doc//AuthApi.md#sendemailverification) | **POST** /auth/email-verification/send | 發送郵件驗證碼
 *AuthApi* | [**updateProfile**](doc//AuthApi.md#updateprofile) | **POST** /auth/update-profile | 更新用戶資料
 *AuthApi* | [**verifyEmail**](doc//AuthApi.md#verifyemail) | **POST** /auth/email-verification/verify | 驗證郵件驗證碼
@@ -384,8 +386,8 @@ Class | Method | HTTP request | Description
 *UserAddressesApi* | [**getUserAddressesPage**](doc//UserAddressesApi.md#getuseraddressespage) | **GET** /user-addresses/page | 分頁獲取用戶地址
 *UserAddressesApi* | [**setDefaultAddress**](doc//UserAddressesApi.md#setdefaultaddress) | **POST** /user-addresses/{addressId}/set-default | 設置預設地址
 *UserAddressesApi* | [**updateAddress**](doc//UserAddressesApi.md#updateaddress) | **POST** /user-addresses/update | 更新地址
-*WalletConnectApi* | [**getNonce**](doc//WalletConnectApi.md#getnonce) | **POST** /auth/wallet-connect/nonce | 获取 Nonce
-*WalletConnectApi* | [**login**](doc//WalletConnectApi.md#login) | **POST** /auth/wallet-connect/login | WalletConnect 登录
+*WalletConnectApi* | [**getNonce**](doc//WalletConnectApi.md#getnonce) | **POST** /auth/wallet-connect/nonce | 获取 Nonce（通用）
+*WalletConnectApi* | [**login**](doc//WalletConnectApi.md#login) | **POST** /auth/wallet-connect/login | Web3 钱包登录（通用）
 *WebpushApi* | [**getHealthStatus**](doc//WebpushApi.md#gethealthstatus) | **GET** /webpush/health | 獲取服務健康狀態
 *WebpushApi* | [**getSchedulerStatus**](doc//WebpushApi.md#getschedulerstatus) | **GET** /webpush/scheduled/status | 獲取定時推送狀態
 *WebpushApi* | [**getStatistics**](doc//WebpushApi.md#getstatistics) | **GET** /webpush/statistics | 獲取推送統計信息
@@ -482,6 +484,8 @@ Class | Method | HTTP request | Description
  - [DisputeSearchParam](doc//DisputeSearchParam.md)
  - [DisputeStatisticsDTO](doc//DisputeStatisticsDTO.md)
  - [DisputeStatusEnum](doc//DisputeStatusEnum.md)
+ - [EmailLoginRequest](doc//EmailLoginRequest.md)
+ - [EmailLoginSendCodeRequest](doc//EmailLoginSendCodeRequest.md)
  - [ErrorResponse](doc//ErrorResponse.md)
  - [FileRecord](doc//FileRecord.md)
  - [FileRecordInfo](doc//FileRecordInfo.md)
@@ -642,6 +646,7 @@ Class | Method | HTTP request | Description
  - [TransactionListParam](doc//TransactionListParam.md)
  - [TransactionSearchParam](doc//TransactionSearchParam.md)
  - [TransactionTypeEnum](doc//TransactionTypeEnum.md)
+ - [TronInfo](doc//TronInfo.md)
  - [TwoFactorManageParam](doc//TwoFactorManageParam.md)
  - [TwoFactorSetupResponse](doc//TwoFactorSetupResponse.md)
  - [TwoFactorVerifyParam](doc//TwoFactorVerifyParam.md)
@@ -657,9 +662,9 @@ Class | Method | HTTP request | Description
  - [VapidPublicKeyResponseDTO](doc//VapidPublicKeyResponseDTO.md)
  - [VerifyCodeRequest](doc//VerifyCodeRequest.md)
  - [WalletConnectInfo](doc//WalletConnectInfo.md)
- - [WalletConnectLoginRequest](doc//WalletConnectLoginRequest.md)
- - [WalletConnectNonceRequest](doc//WalletConnectNonceRequest.md)
  - [WalletConnectNonceResponse](doc//WalletConnectNonceResponse.md)
+ - [Web3LoginRequest](doc//Web3LoginRequest.md)
+ - [Web3NonceRequest](doc//Web3NonceRequest.md)
  - [WebPushDetails](doc//WebPushDetails.md)
  - [WebRTCAnswerDto](doc//WebRTCAnswerDto.md)
  - [WebRTCAnswerResponseDto](doc//WebRTCAnswerResponseDto.md)

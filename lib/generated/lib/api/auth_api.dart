@@ -258,7 +258,7 @@ class AuthApi {
 
   /// 用戶登入
   ///
-  /// 支持普通登入和2FA雙因素認證登入。如果用戶啟用了2FA，必須在twoFactorCode字段提供驗證碼
+  /// 支持多種登入方式： 1. 傳統登入：提供 username 和 password 2. 郵箱驗證碼登入：提供 email 和 verificationCode（不需要 password） 3. 2FA雙因素認證：如果用戶啟用了2FA，必須在twoFactorCode字段提供驗證碼
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -292,13 +292,69 @@ class AuthApi {
 
   /// 用戶登入
   ///
-  /// 支持普通登入和2FA雙因素認證登入。如果用戶啟用了2FA，必須在twoFactorCode字段提供驗證碼
+  /// 支持多種登入方式： 1. 傳統登入：提供 username 和 password 2. 郵箱驗證碼登入：提供 email 和 verificationCode（不需要 password） 3. 2FA雙因素認證：如果用戶啟用了2FA，必須在twoFactorCode字段提供驗證碼
   ///
   /// Parameters:
   ///
   /// * [LoginParam] loginParam (required):
   Future<LoginResult?> login2(LoginParam loginParam,) async {
     final response = await login2WithHttpInfo(loginParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LoginResult',) as LoginResult;
+    
+    }
+    return null;
+  }
+
+  /// 使用郵箱驗證碼登入
+  ///
+  /// 驗證郵箱驗證碼並完成登入
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [EmailLoginRequest] emailLoginRequest (required):
+  Future<Response> loginWithEmailCodeWithHttpInfo(EmailLoginRequest emailLoginRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/email-login/verify';
+
+    // ignore: prefer_final_locals
+    Object? postBody = emailLoginRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 使用郵箱驗證碼登入
+  ///
+  /// 驗證郵箱驗證碼並完成登入
+  ///
+  /// Parameters:
+  ///
+  /// * [EmailLoginRequest] emailLoginRequest (required):
+  Future<LoginResult?> loginWithEmailCode(EmailLoginRequest emailLoginRequest,) async {
+    final response = await loginWithEmailCodeWithHttpInfo(emailLoginRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -653,6 +709,62 @@ class AuthApi {
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+  }
+
+  /// 發送郵箱登入驗證碼
+  ///
+  /// 向指定郵箱發送登入驗證碼
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [EmailLoginSendCodeRequest] emailLoginSendCodeRequest (required):
+  Future<Response> sendEmailLoginCodeWithHttpInfo(EmailLoginSendCodeRequest emailLoginSendCodeRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/email-login/send-code';
+
+    // ignore: prefer_final_locals
+    Object? postBody = emailLoginSendCodeRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 發送郵箱登入驗證碼
+  ///
+  /// 向指定郵箱發送登入驗證碼
+  ///
+  /// Parameters:
+  ///
+  /// * [EmailLoginSendCodeRequest] emailLoginSendCodeRequest (required):
+  Future<Map<String, Object>?> sendEmailLoginCode(EmailLoginSendCodeRequest emailLoginSendCodeRequest,) async {
+    final response = await sendEmailLoginCodeWithHttpInfo(emailLoginSendCodeRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
+
+    }
+    return null;
   }
 
   /// 發送郵件驗證碼

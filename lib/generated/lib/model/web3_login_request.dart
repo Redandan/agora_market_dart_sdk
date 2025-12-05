@@ -10,16 +10,16 @@
 
 part of openapi.api;
 
-class WalletConnectLoginRequest {
-  /// Returns a new [WalletConnectLoginRequest] instance.
-  WalletConnectLoginRequest({
+class Web3LoginRequest {
+  /// Returns a new [Web3LoginRequest] instance.
+  Web3LoginRequest({
     required this.walletAddress,
     required this.signature,
     required this.nonce,
     this.timestamp,
   });
 
-  /// 钱包地址（EIP-55格式）
+  /// 钱包地址（以太坊或 Tron）
   String walletAddress;
 
   /// 签名（hex格式，65字节）
@@ -38,7 +38,7 @@ class WalletConnectLoginRequest {
   int? timestamp;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is WalletConnectLoginRequest &&
+  bool operator ==(Object other) => identical(this, other) || other is Web3LoginRequest &&
     other.walletAddress == walletAddress &&
     other.signature == signature &&
     other.nonce == nonce &&
@@ -53,7 +53,7 @@ class WalletConnectLoginRequest {
     (timestamp == null ? 0 : timestamp!.hashCode);
 
   @override
-  String toString() => 'WalletConnectLoginRequest[walletAddress=$walletAddress, signature=$signature, nonce=$nonce, timestamp=$timestamp]';
+  String toString() => 'Web3LoginRequest[walletAddress=$walletAddress, signature=$signature, nonce=$nonce, timestamp=$timestamp]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -68,10 +68,10 @@ class WalletConnectLoginRequest {
     return json;
   }
 
-  /// Returns a new [WalletConnectLoginRequest] instance and imports its values from
+  /// Returns a new [Web3LoginRequest] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static WalletConnectLoginRequest? fromJson(dynamic value) {
+  static Web3LoginRequest? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -80,13 +80,13 @@ class WalletConnectLoginRequest {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "WalletConnectLoginRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "WalletConnectLoginRequest[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "Web3LoginRequest[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "Web3LoginRequest[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return WalletConnectLoginRequest(
+      return Web3LoginRequest(
         walletAddress: mapValueOfType<String>(json, r'walletAddress')!,
         signature: mapValueOfType<String>(json, r'signature')!,
         nonce: mapValueOfType<String>(json, r'nonce')!,
@@ -96,11 +96,11 @@ class WalletConnectLoginRequest {
     return null;
   }
 
-  static List<WalletConnectLoginRequest> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <WalletConnectLoginRequest>[];
+  static List<Web3LoginRequest> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <Web3LoginRequest>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = WalletConnectLoginRequest.fromJson(row);
+        final value = Web3LoginRequest.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -109,12 +109,12 @@ class WalletConnectLoginRequest {
     return result.toList(growable: growable);
   }
 
-  static Map<String, WalletConnectLoginRequest> mapFromJson(dynamic json) {
-    final map = <String, WalletConnectLoginRequest>{};
+  static Map<String, Web3LoginRequest> mapFromJson(dynamic json) {
+    final map = <String, Web3LoginRequest>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = WalletConnectLoginRequest.fromJson(entry.value);
+        final value = Web3LoginRequest.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -123,14 +123,14 @@ class WalletConnectLoginRequest {
     return map;
   }
 
-  // maps a json object with a list of WalletConnectLoginRequest-objects as value to a dart map
-  static Map<String, List<WalletConnectLoginRequest>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<WalletConnectLoginRequest>>{};
+  // maps a json object with a list of Web3LoginRequest-objects as value to a dart map
+  static Map<String, List<Web3LoginRequest>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<Web3LoginRequest>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = WalletConnectLoginRequest.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = Web3LoginRequest.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

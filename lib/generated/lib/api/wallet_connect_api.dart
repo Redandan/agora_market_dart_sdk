@@ -16,21 +16,21 @@ class WalletConnectApi {
 
   final ApiClient apiClient;
 
-  /// 获取 Nonce
+  /// 获取 Nonce（通用）
   ///
-  /// 根据钱包地址生成 nonce 和签名消息，用于前端签名
+  /// 根据钱包地址生成 nonce 和签名消息，用于前端签名。支持以太坊地址（0x开头）和 Tron 地址（T开头）
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [WalletConnectNonceRequest] walletConnectNonceRequest (required):
-  Future<Response> getNonceWithHttpInfo(WalletConnectNonceRequest walletConnectNonceRequest,) async {
+  /// * [Web3NonceRequest] web3NonceRequest (required):
+  Future<Response> getNonceWithHttpInfo(Web3NonceRequest web3NonceRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/auth/wallet-connect/nonce';
 
     // ignore: prefer_final_locals
-    Object? postBody = walletConnectNonceRequest;
+    Object? postBody = web3NonceRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -50,15 +50,15 @@ class WalletConnectApi {
     );
   }
 
-  /// 获取 Nonce
+  /// 获取 Nonce（通用）
   ///
-  /// 根据钱包地址生成 nonce 和签名消息，用于前端签名
+  /// 根据钱包地址生成 nonce 和签名消息，用于前端签名。支持以太坊地址（0x开头）和 Tron 地址（T开头）
   ///
   /// Parameters:
   ///
-  /// * [WalletConnectNonceRequest] walletConnectNonceRequest (required):
-  Future<WalletConnectNonceResponse?> getNonce(WalletConnectNonceRequest walletConnectNonceRequest,) async {
-    final response = await getNonceWithHttpInfo(walletConnectNonceRequest,);
+  /// * [Web3NonceRequest] web3NonceRequest (required):
+  Future<WalletConnectNonceResponse?> getNonce(Web3NonceRequest web3NonceRequest,) async {
+    final response = await getNonceWithHttpInfo(web3NonceRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -72,21 +72,21 @@ class WalletConnectApi {
     return null;
   }
 
-  /// WalletConnect 登录
+  /// Web3 钱包登录（通用）
   ///
-  /// 验证钱包签名，如果通过则返回 JWT Token
+  /// 验证钱包签名，如果通过则返回 JWT Token。支持以太坊地址（0x开头）和 Tron 地址（T开头）
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [WalletConnectLoginRequest] walletConnectLoginRequest (required):
-  Future<Response> loginWithHttpInfo(WalletConnectLoginRequest walletConnectLoginRequest,) async {
+  /// * [Web3LoginRequest] web3LoginRequest (required):
+  Future<Response> loginWithHttpInfo(Web3LoginRequest web3LoginRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/auth/wallet-connect/login';
 
     // ignore: prefer_final_locals
-    Object? postBody = walletConnectLoginRequest;
+    Object? postBody = web3LoginRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -106,15 +106,15 @@ class WalletConnectApi {
     );
   }
 
-  /// WalletConnect 登录
+  /// Web3 钱包登录（通用）
   ///
-  /// 验证钱包签名，如果通过则返回 JWT Token
+  /// 验证钱包签名，如果通过则返回 JWT Token。支持以太坊地址（0x开头）和 Tron 地址（T开头）
   ///
   /// Parameters:
   ///
-  /// * [WalletConnectLoginRequest] walletConnectLoginRequest (required):
-  Future<Map<String, Object>?> login(WalletConnectLoginRequest walletConnectLoginRequest,) async {
-    final response = await loginWithHttpInfo(walletConnectLoginRequest,);
+  /// * [Web3LoginRequest] web3LoginRequest (required):
+  Future<Map<String, Object>?> login(Web3LoginRequest web3LoginRequest,) async {
+    final response = await loginWithHttpInfo(web3LoginRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

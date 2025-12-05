@@ -13,18 +13,50 @@ part of openapi.api;
 class LoginParam {
   /// Returns a new [LoginParam] instance.
   LoginParam({
-    required this.username,
-    required this.password,
+    this.username,
+    this.password,
+    this.email,
+    this.verificationCode,
     this.rememberMe,
     this.twoFactorCode,
     this.turnstileToken,
   });
 
-  /// 用戶名
-  String username;
+  /// 用戶名（用於傳統登入）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? username;
 
-  /// 密碼
-  String password;
+  /// 密碼（用於傳統登入）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? password;
+
+  /// 郵箱（用於郵箱驗證碼登入）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? email;
+
+  /// 驗證碼（用於郵箱驗證碼登入）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? verificationCode;
 
   /// 記住我
   ///
@@ -57,6 +89,8 @@ class LoginParam {
   bool operator ==(Object other) => identical(this, other) || other is LoginParam &&
     other.username == username &&
     other.password == password &&
+    other.email == email &&
+    other.verificationCode == verificationCode &&
     other.rememberMe == rememberMe &&
     other.twoFactorCode == twoFactorCode &&
     other.turnstileToken == turnstileToken;
@@ -64,19 +98,39 @@ class LoginParam {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (username.hashCode) +
-    (password.hashCode) +
+    (username == null ? 0 : username!.hashCode) +
+    (password == null ? 0 : password!.hashCode) +
+    (email == null ? 0 : email!.hashCode) +
+    (verificationCode == null ? 0 : verificationCode!.hashCode) +
     (rememberMe == null ? 0 : rememberMe!.hashCode) +
     (twoFactorCode == null ? 0 : twoFactorCode!.hashCode) +
     (turnstileToken == null ? 0 : turnstileToken!.hashCode);
 
   @override
-  String toString() => 'LoginParam[username=$username, password=$password, rememberMe=$rememberMe, twoFactorCode=$twoFactorCode, turnstileToken=$turnstileToken]';
+  String toString() => 'LoginParam[username=$username, password=$password, email=$email, verificationCode=$verificationCode, rememberMe=$rememberMe, twoFactorCode=$twoFactorCode, turnstileToken=$turnstileToken]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.username != null) {
       json[r'username'] = this.username;
+    } else {
+      json[r'username'] = null;
+    }
+    if (this.password != null) {
       json[r'password'] = this.password;
+    } else {
+      json[r'password'] = null;
+    }
+    if (this.email != null) {
+      json[r'email'] = this.email;
+    } else {
+      json[r'email'] = null;
+    }
+    if (this.verificationCode != null) {
+      json[r'verificationCode'] = this.verificationCode;
+    } else {
+      json[r'verificationCode'] = null;
+    }
     if (this.rememberMe != null) {
       json[r'rememberMe'] = this.rememberMe;
     } else {
@@ -114,8 +168,10 @@ class LoginParam {
       }());
 
       return LoginParam(
-        username: mapValueOfType<String>(json, r'username')!,
-        password: mapValueOfType<String>(json, r'password')!,
+        username: mapValueOfType<String>(json, r'username'),
+        password: mapValueOfType<String>(json, r'password'),
+        email: mapValueOfType<String>(json, r'email'),
+        verificationCode: mapValueOfType<String>(json, r'verificationCode'),
         rememberMe: mapValueOfType<bool>(json, r'rememberMe'),
         twoFactorCode: mapValueOfType<String>(json, r'twoFactorCode'),
         turnstileToken: mapValueOfType<String>(json, r'turnstileToken'),
@@ -166,8 +222,6 @@ class LoginParam {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'username',
-    'password',
   };
 }
 

@@ -338,6 +338,10 @@ class ApiClient {
           return DisputeStatisticsDTO.fromJson(value);
         case 'DisputeStatusEnum':
           return DisputeStatusEnumTypeTransformer().decode(value);
+        case 'EmailLoginRequest':
+          return EmailLoginRequest.fromJson(value);
+        case 'EmailLoginSendCodeRequest':
+          return EmailLoginSendCodeRequest.fromJson(value);
         case 'ErrorResponse':
           return ErrorResponse.fromJson(value);
         case 'FileRecord':
@@ -658,6 +662,8 @@ class ApiClient {
           return TransactionSearchParam.fromJson(value);
         case 'TransactionTypeEnum':
           return TransactionTypeEnumTypeTransformer().decode(value);
+        case 'TronInfo':
+          return TronInfo.fromJson(value);
         case 'TwoFactorManageParam':
           return TwoFactorManageParam.fromJson(value);
         case 'TwoFactorSetupResponse':
@@ -688,12 +694,12 @@ class ApiClient {
           return VerifyCodeRequest.fromJson(value);
         case 'WalletConnectInfo':
           return WalletConnectInfo.fromJson(value);
-        case 'WalletConnectLoginRequest':
-          return WalletConnectLoginRequest.fromJson(value);
-        case 'WalletConnectNonceRequest':
-          return WalletConnectNonceRequest.fromJson(value);
         case 'WalletConnectNonceResponse':
           return WalletConnectNonceResponse.fromJson(value);
+        case 'Web3LoginRequest':
+          return Web3LoginRequest.fromJson(value);
+        case 'Web3NonceRequest':
+          return Web3NonceRequest.fromJson(value);
         case 'WebPushDetails':
           return WebPushDetails.fromJson(value);
         case 'WebRTCAnswerDto':
