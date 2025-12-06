@@ -16,10 +16,10 @@ class PageAutoReplyConfig {
     this.totalPages,
     this.totalElements,
     this.sort,
+    this.last,
     this.numberOfElements,
     this.pageable,
     this.first,
-    this.last,
     this.size,
     this.content = const [],
     this.number,
@@ -56,6 +56,14 @@ class PageAutoReplyConfig {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  bool? last;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? numberOfElements;
 
   ///
@@ -73,14 +81,6 @@ class PageAutoReplyConfig {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? first;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? last;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -113,10 +113,10 @@ class PageAutoReplyConfig {
     other.totalPages == totalPages &&
     other.totalElements == totalElements &&
     other.sort == sort &&
+    other.last == last &&
     other.numberOfElements == numberOfElements &&
     other.pageable == pageable &&
     other.first == first &&
-    other.last == last &&
     other.size == size &&
     _deepEquality.equals(other.content, content) &&
     other.number == number &&
@@ -128,17 +128,17 @@ class PageAutoReplyConfig {
     (totalPages == null ? 0 : totalPages!.hashCode) +
     (totalElements == null ? 0 : totalElements!.hashCode) +
     (sort == null ? 0 : sort!.hashCode) +
+    (last == null ? 0 : last!.hashCode) +
     (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
     (pageable == null ? 0 : pageable!.hashCode) +
     (first == null ? 0 : first!.hashCode) +
-    (last == null ? 0 : last!.hashCode) +
     (size == null ? 0 : size!.hashCode) +
     (content.hashCode) +
     (number == null ? 0 : number!.hashCode) +
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageAutoReplyConfig[totalPages=$totalPages, totalElements=$totalElements, sort=$sort, numberOfElements=$numberOfElements, pageable=$pageable, first=$first, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'PageAutoReplyConfig[totalPages=$totalPages, totalElements=$totalElements, sort=$sort, last=$last, numberOfElements=$numberOfElements, pageable=$pageable, first=$first, size=$size, content=$content, number=$number, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -157,6 +157,11 @@ class PageAutoReplyConfig {
     } else {
       json[r'sort'] = null;
     }
+    if (this.last != null) {
+      json[r'last'] = this.last;
+    } else {
+      json[r'last'] = null;
+    }
     if (this.numberOfElements != null) {
       json[r'numberOfElements'] = this.numberOfElements;
     } else {
@@ -171,11 +176,6 @@ class PageAutoReplyConfig {
       json[r'first'] = this.first;
     } else {
       json[r'first'] = null;
-    }
-    if (this.last != null) {
-      json[r'last'] = this.last;
-    } else {
-      json[r'last'] = null;
     }
     if (this.size != null) {
       json[r'size'] = this.size;
@@ -218,10 +218,10 @@ class PageAutoReplyConfig {
         totalPages: mapValueOfType<int>(json, r'totalPages'),
         totalElements: mapValueOfType<int>(json, r'totalElements'),
         sort: SortObject.fromJson(json[r'sort']),
+        last: mapValueOfType<bool>(json, r'last'),
         numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
         pageable: PageableObject.fromJson(json[r'pageable']),
         first: mapValueOfType<bool>(json, r'first'),
-        last: mapValueOfType<bool>(json, r'last'),
         size: mapValueOfType<int>(json, r'size'),
         content: AutoReplyConfig.listFromJson(json[r'content']),
         number: mapValueOfType<int>(json, r'number'),

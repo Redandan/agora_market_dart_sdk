@@ -14,10 +14,10 @@ class PageableObject {
   /// Returns a new [PageableObject] instance.
   PageableObject({
     this.sort,
-    this.pageNumber,
-    this.unpaged,
-    this.pageSize,
     this.paged,
+    this.pageNumber,
+    this.pageSize,
+    this.unpaged,
     this.offset,
   });
 
@@ -35,7 +35,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageNumber;
+  bool? paged;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -43,7 +43,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unpaged;
+  int? pageNumber;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -59,7 +59,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? paged;
+  bool? unpaged;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -72,24 +72,24 @@ class PageableObject {
   @override
   bool operator ==(Object other) => identical(this, other) || other is PageableObject &&
     other.sort == sort &&
-    other.pageNumber == pageNumber &&
-    other.unpaged == unpaged &&
-    other.pageSize == pageSize &&
     other.paged == paged &&
+    other.pageNumber == pageNumber &&
+    other.pageSize == pageSize &&
+    other.unpaged == unpaged &&
     other.offset == offset;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (sort == null ? 0 : sort!.hashCode) +
-    (pageNumber == null ? 0 : pageNumber!.hashCode) +
-    (unpaged == null ? 0 : unpaged!.hashCode) +
-    (pageSize == null ? 0 : pageSize!.hashCode) +
     (paged == null ? 0 : paged!.hashCode) +
+    (pageNumber == null ? 0 : pageNumber!.hashCode) +
+    (pageSize == null ? 0 : pageSize!.hashCode) +
+    (unpaged == null ? 0 : unpaged!.hashCode) +
     (offset == null ? 0 : offset!.hashCode);
 
   @override
-  String toString() => 'PageableObject[sort=$sort, pageNumber=$pageNumber, unpaged=$unpaged, pageSize=$pageSize, paged=$paged, offset=$offset]';
+  String toString() => 'PageableObject[sort=$sort, paged=$paged, pageNumber=$pageNumber, pageSize=$pageSize, unpaged=$unpaged, offset=$offset]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -98,25 +98,25 @@ class PageableObject {
     } else {
       json[r'sort'] = null;
     }
+    if (this.paged != null) {
+      json[r'paged'] = this.paged;
+    } else {
+      json[r'paged'] = null;
+    }
     if (this.pageNumber != null) {
       json[r'pageNumber'] = this.pageNumber;
     } else {
       json[r'pageNumber'] = null;
-    }
-    if (this.unpaged != null) {
-      json[r'unpaged'] = this.unpaged;
-    } else {
-      json[r'unpaged'] = null;
     }
     if (this.pageSize != null) {
       json[r'pageSize'] = this.pageSize;
     } else {
       json[r'pageSize'] = null;
     }
-    if (this.paged != null) {
-      json[r'paged'] = this.paged;
+    if (this.unpaged != null) {
+      json[r'unpaged'] = this.unpaged;
     } else {
-      json[r'paged'] = null;
+      json[r'unpaged'] = null;
     }
     if (this.offset != null) {
       json[r'offset'] = this.offset;
@@ -146,10 +146,10 @@ class PageableObject {
 
       return PageableObject(
         sort: SortObject.fromJson(json[r'sort']),
-        pageNumber: mapValueOfType<int>(json, r'pageNumber'),
-        unpaged: mapValueOfType<bool>(json, r'unpaged'),
-        pageSize: mapValueOfType<int>(json, r'pageSize'),
         paged: mapValueOfType<bool>(json, r'paged'),
+        pageNumber: mapValueOfType<int>(json, r'pageNumber'),
+        pageSize: mapValueOfType<int>(json, r'pageSize'),
+        unpaged: mapValueOfType<bool>(json, r'unpaged'),
         offset: mapValueOfType<int>(json, r'offset'),
       );
     }
