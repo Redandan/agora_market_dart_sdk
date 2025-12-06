@@ -252,6 +252,10 @@ class ApiClient {
           return BatchReviewPromoCodeParam.fromJson(value);
         case 'BatchReviewResult':
           return BatchReviewResult.fromJson(value);
+        case 'BindEmailParam':
+          return BindEmailParam.fromJson(value);
+        case 'BindOAuthParam':
+          return BindOAuthParam.fromJson(value);
         case 'CartGroupBySeller':
           return CartGroupBySeller.fromJson(value);
         case 'CartItem':
@@ -368,6 +372,8 @@ class ApiClient {
           return IssueStatusEnumTypeTransformer().decode(value);
         case 'IssueTypeEnum':
           return IssueTypeEnumTypeTransformer().decode(value);
+        case 'LoginBindingsResponse':
+          return LoginBindingsResponse.fromJson(value);
         case 'LoginMethod':
           return LoginMethod.fromJson(value);
         case 'LoginParam':
@@ -408,6 +414,8 @@ class ApiClient {
           return OAuth2TokenIdRequest.fromJson(value);
         case 'OAuth2TokenResponse':
           return OAuth2TokenResponse.fromJson(value);
+        case 'OAuthBindingInfo':
+          return OAuthBindingInfo.fromJson(value);
         case 'Order':
           return Order.fromJson(value);
         case 'OrderCancelParam':

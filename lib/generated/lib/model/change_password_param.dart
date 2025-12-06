@@ -13,13 +13,19 @@ part of openapi.api;
 class ChangePasswordParam {
   /// Returns a new [ChangePasswordParam] instance.
   ChangePasswordParam({
-    required this.oldPassword,
+    this.oldPassword,
     required this.newPassword,
     required this.confirmNewPassword,
   });
 
-  /// 舊密碼
-  String oldPassword;
+  /// 舊密碼（如果用戶已有密碼則必填，如果沒有密碼則可選）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? oldPassword;
 
   /// 新密碼
   String newPassword;
@@ -36,7 +42,7 @@ class ChangePasswordParam {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (oldPassword.hashCode) +
+    (oldPassword == null ? 0 : oldPassword!.hashCode) +
     (newPassword.hashCode) +
     (confirmNewPassword.hashCode);
 
@@ -45,7 +51,11 @@ class ChangePasswordParam {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.oldPassword != null) {
       json[r'oldPassword'] = this.oldPassword;
+    } else {
+      json[r'oldPassword'] = null;
+    }
       json[r'newPassword'] = this.newPassword;
       json[r'confirmNewPassword'] = this.confirmNewPassword;
     return json;
@@ -70,7 +80,7 @@ class ChangePasswordParam {
       }());
 
       return ChangePasswordParam(
-        oldPassword: mapValueOfType<String>(json, r'oldPassword')!,
+        oldPassword: mapValueOfType<String>(json, r'oldPassword'),
         newPassword: mapValueOfType<String>(json, r'newPassword')!,
         confirmNewPassword: mapValueOfType<String>(json, r'confirmNewPassword')!,
       );
@@ -120,7 +130,6 @@ class ChangePasswordParam {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'oldPassword',
     'newPassword',
     'confirmNewPassword',
   };

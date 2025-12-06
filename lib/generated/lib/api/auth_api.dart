@@ -16,7 +16,105 @@ class AuthApi {
 
   final ApiClient apiClient;
 
-  /// 修改密碼
+  /// 綁定郵箱
+  ///
+  /// 為無郵箱的賬戶（如錢包賬戶）綁定郵箱
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [BindEmailParam] bindEmailParam (required):
+  Future<Response> bindEmailWithHttpInfo(BindEmailParam bindEmailParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/bind-email';
+
+    // ignore: prefer_final_locals
+    Object? postBody = bindEmailParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 綁定郵箱
+  ///
+  /// 為無郵箱的賬戶（如錢包賬戶）綁定郵箱
+  ///
+  /// Parameters:
+  ///
+  /// * [BindEmailParam] bindEmailParam (required):
+  Future<void> bindEmail(BindEmailParam bindEmailParam,) async {
+    final response = await bindEmailWithHttpInfo(bindEmailParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// 綁定OAuth賬號
+  ///
+  /// 將OAuth賬號綁定到當前登錄的賬戶。支持以下登錄方式：  **1. Google OAuth2：** ✅ 已實現 - 推薦：使用tokenId（從 `/auth/oauth2/token/by-token-id` 獲取） - 或：使用code + state（需要state驗證）  **2. Telegram Mini App：** ✅ 已實現 - provider: TELEGRAM_BOT - 傳入initData（從Telegram Web App獲取）  **3. Telegram Bot：** ✅ 已實現 - provider: TELEGRAM_BOT - 傳入loginToken和verificationCode - 需要先在Telegram Bot中點擊登入連結獲取驗證碼  **4. WalletConnect/Tron：** ✅ 已實現 - provider: WALLET_CONNECT 或 TRON - 傳入walletAddress、signature和message - 需要先調用 `/auth/wallet-connect/nonce` 獲取nonce和簽名消息
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [BindOAuthParam] bindOAuthParam (required):
+  Future<Response> bindOAuthWithHttpInfo(BindOAuthParam bindOAuthParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/bind-oauth';
+
+    // ignore: prefer_final_locals
+    Object? postBody = bindOAuthParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 綁定OAuth賬號
+  ///
+  /// 將OAuth賬號綁定到當前登錄的賬戶。支持以下登錄方式：  **1. Google OAuth2：** ✅ 已實現 - 推薦：使用tokenId（從 `/auth/oauth2/token/by-token-id` 獲取） - 或：使用code + state（需要state驗證）  **2. Telegram Mini App：** ✅ 已實現 - provider: TELEGRAM_BOT - 傳入initData（從Telegram Web App獲取）  **3. Telegram Bot：** ✅ 已實現 - provider: TELEGRAM_BOT - 傳入loginToken和verificationCode - 需要先在Telegram Bot中點擊登入連結獲取驗證碼  **4. WalletConnect/Tron：** ✅ 已實現 - provider: WALLET_CONNECT 或 TRON - 傳入walletAddress、signature和message - 需要先調用 `/auth/wallet-connect/nonce` 獲取nonce和簽名消息
+  ///
+  /// Parameters:
+  ///
+  /// * [BindOAuthParam] bindOAuthParam (required):
+  Future<void> bindOAuth(BindOAuthParam bindOAuthParam,) async {
+    final response = await bindOAuthWithHttpInfo(bindOAuthParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// 修改/設置密碼
+  ///
+  /// 如果用戶已有密碼，則需要提供舊密碼進行修改；如果用戶沒有密碼，則可以直接設置新密碼（舊密碼可選）
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -48,7 +146,9 @@ class AuthApi {
     );
   }
 
-  /// 修改密碼
+  /// 修改/設置密碼
+  ///
+  /// 如果用戶已有密碼，則需要提供舊密碼進行修改；如果用戶沒有密碼，則可以直接設置新密碼（舊密碼可選）
   ///
   /// Parameters:
   ///
@@ -204,6 +304,54 @@ class AuthApi {
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
 
+    }
+    return null;
+  }
+
+  /// 查看登錄方式綁定列表
+  ///
+  /// 查看當前賬戶的所有登錄方式綁定狀態
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getLoginBindingsWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/bindings';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查看登錄方式綁定列表
+  ///
+  /// 查看當前賬戶的所有登錄方式綁定狀態
+  Future<LoginBindingsResponse?> getLoginBindings() async {
+    final response = await getLoginBindingsWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LoginBindingsResponse',) as LoginBindingsResponse;
+    
     }
     return null;
   }
@@ -810,6 +958,57 @@ class AuthApi {
   ///   用戶郵箱
   Future<void> sendEmailVerification(String email,) async {
     final response = await sendEmailVerificationWithHttpInfo(email,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// 解綁OAuth賬號
+  ///
+  /// 解綁指定的OAuth提供商，至少保留一種登錄方式
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] provider (required):
+  ///   OAuth提供商
+  Future<Response> unbindOAuthWithHttpInfo(String provider,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/unbind-oauth/{provider}'
+      .replaceAll('{provider}', provider);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 解綁OAuth賬號
+  ///
+  /// 解綁指定的OAuth提供商，至少保留一種登錄方式
+  ///
+  /// Parameters:
+  ///
+  /// * [String] provider (required):
+  ///   OAuth提供商
+  Future<void> unbindOAuth(String provider,) async {
+    final response = await unbindOAuthWithHttpInfo(provider,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

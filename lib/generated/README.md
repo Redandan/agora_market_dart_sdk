@@ -195,10 +195,13 @@ Class | Method | HTTP request | Description
 *AdminStoresApi* | [**searchStores1**](doc//AdminStoresApi.md#searchstores1) | **POST** /admin/stores/search | 搜索商店
 *AdminStoresApi* | [**updateStoreByAdmin**](doc//AdminStoresApi.md#updatestorebyadmin) | **POST** /admin/stores/{storeId}/update | 管理員更新商店信息
 *AdminStoresApi* | [**updateStoreStatus**](doc//AdminStoresApi.md#updatestorestatus) | **POST** /admin/stores/{storeId}/status | 更新商店狀態
-*AuthApi* | [**changePassword**](doc//AuthApi.md#changepassword) | **POST** /auth/change-password | 修改密碼
+*AuthApi* | [**bindEmail**](doc//AuthApi.md#bindemail) | **POST** /auth/bind-email | 綁定郵箱
+*AuthApi* | [**bindOAuth**](doc//AuthApi.md#bindoauth) | **POST** /auth/bind-oauth | 綁定OAuth賬號
+*AuthApi* | [**changePassword**](doc//AuthApi.md#changepassword) | **POST** /auth/change-password | 修改/設置密碼
 *AuthApi* | [**forgotPassword**](doc//AuthApi.md#forgotpassword) | **POST** /auth/forgot-password | 忘記密碼 - 發送驗證碼到郵箱
 *AuthApi* | [**getCurrentUser**](doc//AuthApi.md#getcurrentuser) | **GET** /auth/me | 獲取當前用戶信息
 *AuthApi* | [**getEmailVerificationRemainingTime**](doc//AuthApi.md#getemailverificationremainingtime) | **GET** /auth/email-verification/remaining-time | 查詢郵件驗證碼的剩餘等待時間
+*AuthApi* | [**getLoginBindings**](doc//AuthApi.md#getloginbindings) | **GET** /auth/bindings | 查看登錄方式綁定列表
 *AuthApi* | [**getTwoFactorInfo**](doc//AuthApi.md#gettwofactorinfo) | **GET** /auth/2fa | 獲取雙因素認證信息
 *AuthApi* | [**login2**](doc//AuthApi.md#login2) | **POST** /auth/login | 用戶登入
 *AuthApi* | [**loginWithEmailCode**](doc//AuthApi.md#loginwithemailcode) | **POST** /auth/email-login/verify | 使用郵箱驗證碼登入
@@ -211,6 +214,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**resetPasswordWithCode**](doc//AuthApi.md#resetpasswordwithcode) | **POST** /auth/reset-password-with-code | 使用驗證碼重置密碼
 *AuthApi* | [**sendEmailLoginCode**](doc//AuthApi.md#sendemaillogincode) | **POST** /auth/email-login/send-code | 發送郵箱登入驗證碼
 *AuthApi* | [**sendEmailVerification**](doc//AuthApi.md#sendemailverification) | **POST** /auth/email-verification/send | 發送郵件驗證碼
+*AuthApi* | [**unbindOAuth**](doc//AuthApi.md#unbindoauth) | **DELETE** /auth/unbind-oauth/{provider} | 解綁OAuth賬號
 *AuthApi* | [**updateProfile**](doc//AuthApi.md#updateprofile) | **POST** /auth/update-profile | 更新用戶資料
 *AuthApi* | [**verifyEmail**](doc//AuthApi.md#verifyemail) | **POST** /auth/email-verification/verify | 驗證郵件驗證碼
 *AuthApi* | [**verifyTwoFactorCode**](doc//AuthApi.md#verifytwofactorcode) | **POST** /auth/2fa/verify | 驗證雙因素認證碼
@@ -441,6 +445,8 @@ Class | Method | HTTP request | Description
  - [BalanceConversion](doc//BalanceConversion.md)
  - [BatchReviewPromoCodeParam](doc//BatchReviewPromoCodeParam.md)
  - [BatchReviewResult](doc//BatchReviewResult.md)
+ - [BindEmailParam](doc//BindEmailParam.md)
+ - [BindOAuthParam](doc//BindOAuthParam.md)
  - [CartGroupBySeller](doc//CartGroupBySeller.md)
  - [CartItem](doc//CartItem.md)
  - [CartItemCreateParam](doc//CartItemCreateParam.md)
@@ -499,6 +505,7 @@ Class | Method | HTTP request | Description
  - [IssueSearchParam](doc//IssueSearchParam.md)
  - [IssueStatusEnum](doc//IssueStatusEnum.md)
  - [IssueTypeEnum](doc//IssueTypeEnum.md)
+ - [LoginBindingsResponse](doc//LoginBindingsResponse.md)
  - [LoginMethod](doc//LoginMethod.md)
  - [LoginParam](doc//LoginParam.md)
  - [LoginResult](doc//LoginResult.md)
@@ -519,6 +526,7 @@ Class | Method | HTTP request | Description
  - [OAuth2AuthorizeResponse](doc//OAuth2AuthorizeResponse.md)
  - [OAuth2TokenIdRequest](doc//OAuth2TokenIdRequest.md)
  - [OAuth2TokenResponse](doc//OAuth2TokenResponse.md)
+ - [OAuthBindingInfo](doc//OAuthBindingInfo.md)
  - [Order](doc//Order.md)
  - [OrderCancelParam](doc//OrderCancelParam.md)
  - [OrderConfirmParam](doc//OrderConfirmParam.md)
