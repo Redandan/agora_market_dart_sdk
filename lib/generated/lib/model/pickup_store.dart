@@ -23,9 +23,9 @@ class PickupStore {
     this.isActive,
     this.createdAt,
     this.updatedAt,
-    this.fullStoreInfo,
     this.familyMart,
     this.sevenEleven,
+    this.fullStoreInfo,
   });
 
   /// 門市ID
@@ -123,14 +123,6 @@ class PickupStore {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? fullStoreInfo;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? familyMart;
 
   ///
@@ -140,6 +132,14 @@ class PickupStore {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? sevenEleven;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? fullStoreInfo;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PickupStore &&
@@ -153,9 +153,9 @@ class PickupStore {
     other.isActive == isActive &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.fullStoreInfo == fullStoreInfo &&
     other.familyMart == familyMart &&
-    other.sevenEleven == sevenEleven;
+    other.sevenEleven == sevenEleven &&
+    other.fullStoreInfo == fullStoreInfo;
 
   @override
   int get hashCode =>
@@ -170,12 +170,12 @@ class PickupStore {
     (isActive == null ? 0 : isActive!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (fullStoreInfo == null ? 0 : fullStoreInfo!.hashCode) +
     (familyMart == null ? 0 : familyMart!.hashCode) +
-    (sevenEleven == null ? 0 : sevenEleven!.hashCode);
+    (sevenEleven == null ? 0 : sevenEleven!.hashCode) +
+    (fullStoreInfo == null ? 0 : fullStoreInfo!.hashCode);
 
   @override
-  String toString() => 'PickupStore[id=$id, storeType=$storeType, storeCode=$storeCode, storeName=$storeName, storeAddress=$storeAddress, city=$city, district=$district, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, fullStoreInfo=$fullStoreInfo, familyMart=$familyMart, sevenEleven=$sevenEleven]';
+  String toString() => 'PickupStore[id=$id, storeType=$storeType, storeCode=$storeCode, storeName=$storeName, storeAddress=$storeAddress, city=$city, district=$district, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, familyMart=$familyMart, sevenEleven=$sevenEleven, fullStoreInfo=$fullStoreInfo]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -229,11 +229,6 @@ class PickupStore {
     } else {
       json[r'updatedAt'] = null;
     }
-    if (this.fullStoreInfo != null) {
-      json[r'fullStoreInfo'] = this.fullStoreInfo;
-    } else {
-      json[r'fullStoreInfo'] = null;
-    }
     if (this.familyMart != null) {
       json[r'familyMart'] = this.familyMart;
     } else {
@@ -243,6 +238,11 @@ class PickupStore {
       json[r'sevenEleven'] = this.sevenEleven;
     } else {
       json[r'sevenEleven'] = null;
+    }
+    if (this.fullStoreInfo != null) {
+      json[r'fullStoreInfo'] = this.fullStoreInfo;
+    } else {
+      json[r'fullStoreInfo'] = null;
     }
     return json;
   }
@@ -276,9 +276,9 @@ class PickupStore {
         isActive: mapValueOfType<bool>(json, r'isActive'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
-        fullStoreInfo: mapValueOfType<String>(json, r'fullStoreInfo'),
         familyMart: mapValueOfType<bool>(json, r'familyMart'),
         sevenEleven: mapValueOfType<bool>(json, r'sevenEleven'),
+        fullStoreInfo: mapValueOfType<String>(json, r'fullStoreInfo'),
       );
     }
     return null;
