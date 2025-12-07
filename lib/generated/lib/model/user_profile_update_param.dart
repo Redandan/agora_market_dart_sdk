@@ -15,7 +15,6 @@ class UserProfileUpdateParam {
   UserProfileUpdateParam({
     this.name,
     this.phone,
-    this.email,
     this.avatar,
     this.avatarUpdate,
   });
@@ -38,15 +37,6 @@ class UserProfileUpdateParam {
   ///
   String? phone;
 
-  /// 電子郵件
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? email;
-
   /// 頭像URL
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -68,7 +58,6 @@ class UserProfileUpdateParam {
   bool operator ==(Object other) => identical(this, other) || other is UserProfileUpdateParam &&
     other.name == name &&
     other.phone == phone &&
-    other.email == email &&
     other.avatar == avatar &&
     other.avatarUpdate == avatarUpdate;
 
@@ -77,12 +66,11 @@ class UserProfileUpdateParam {
     // ignore: unnecessary_parenthesis
     (name == null ? 0 : name!.hashCode) +
     (phone == null ? 0 : phone!.hashCode) +
-    (email == null ? 0 : email!.hashCode) +
     (avatar == null ? 0 : avatar!.hashCode) +
     (avatarUpdate == null ? 0 : avatarUpdate!.hashCode);
 
   @override
-  String toString() => 'UserProfileUpdateParam[name=$name, phone=$phone, email=$email, avatar=$avatar, avatarUpdate=$avatarUpdate]';
+  String toString() => 'UserProfileUpdateParam[name=$name, phone=$phone, avatar=$avatar, avatarUpdate=$avatarUpdate]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -95,11 +83,6 @@ class UserProfileUpdateParam {
       json[r'phone'] = this.phone;
     } else {
       json[r'phone'] = null;
-    }
-    if (this.email != null) {
-      json[r'email'] = this.email;
-    } else {
-      json[r'email'] = null;
     }
     if (this.avatar != null) {
       json[r'avatar'] = this.avatar;
@@ -135,7 +118,6 @@ class UserProfileUpdateParam {
       return UserProfileUpdateParam(
         name: mapValueOfType<String>(json, r'name'),
         phone: mapValueOfType<String>(json, r'phone'),
-        email: mapValueOfType<String>(json, r'email'),
         avatar: mapValueOfType<String>(json, r'avatar'),
         avatarUpdate: mapValueOfType<bool>(json, r'avatarUpdate'),
       );

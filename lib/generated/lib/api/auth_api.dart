@@ -16,9 +16,9 @@ class AuthApi {
 
   final ApiClient apiClient;
 
-  /// 綁定郵箱
+  /// 綁定或更新郵箱
   ///
-  /// 為無郵箱的賬戶（如錢包賬戶）綁定郵箱
+  /// 為無郵箱的賬戶綁定郵箱，或為已有郵箱的賬戶更新郵箱。需要先調用 /auth/email-verification/send 發送驗證碼到新郵箱，然後使用驗證碼綁定或更新郵箱
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -50,9 +50,9 @@ class AuthApi {
     );
   }
 
-  /// 綁定郵箱
+  /// 綁定或更新郵箱
   ///
-  /// 為無郵箱的賬戶（如錢包賬戶）綁定郵箱
+  /// 為無郵箱的賬戶綁定郵箱，或為已有郵箱的賬戶更新郵箱。需要先調用 /auth/email-verification/send 發送驗證碼到新郵箱，然後使用驗證碼綁定或更新郵箱
   ///
   /// Parameters:
   ///
@@ -1016,6 +1016,8 @@ class AuthApi {
 
   /// 更新用戶資料
   ///
+  /// 更新用戶的姓名、電話和頭像。注意：郵箱更新已移除，請使用 /auth/bind-email 綁定郵箱或 /auth/email-verification/verify 驗證郵箱
+  ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
@@ -1047,6 +1049,8 @@ class AuthApi {
   }
 
   /// 更新用戶資料
+  ///
+  /// 更新用戶的姓名、電話和頭像。注意：郵箱更新已移除，請使用 /auth/bind-email 綁定郵箱或 /auth/email-verification/verify 驗證郵箱
   ///
   /// Parameters:
   ///
