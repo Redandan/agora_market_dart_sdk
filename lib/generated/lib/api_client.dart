@@ -384,6 +384,10 @@ class ApiClient {
           return LoginTokenResponse.fromJson(value);
         case 'LowStockWarningDTO':
           return LowStockWarningDTO.fromJson(value);
+        case 'MaintenanceStatusResponse':
+          return MaintenanceStatusResponse.fromJson(value);
+        case 'MaintenanceToggleRequest':
+          return MaintenanceToggleRequest.fromJson(value);
         case 'MemberSearchParam':
           return MemberSearchParam.fromJson(value);
         case 'MemberUpdateParam':

@@ -29,6 +29,8 @@ class UserInfo {
     this.displayDeliveryerName,
     this.avatar,
     this.balanceConversions = const [],
+    this.sellerMaintenance,
+    this.deliveryMaintenance,
   });
 
   /// 用戶ID
@@ -169,6 +171,24 @@ class UserInfo {
   /// 餘額對其他法幣的換算
   List<BalanceConversion> balanceConversions;
 
+  /// 賣家入口是否維護中
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? sellerMaintenance;
+
+  /// 外送員入口是否維護中
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? deliveryMaintenance;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserInfo &&
     other.id == id &&
@@ -186,7 +206,9 @@ class UserInfo {
     other.ambassadorName == ambassadorName &&
     other.displayDeliveryerName == displayDeliveryerName &&
     other.avatar == avatar &&
-    _deepEquality.equals(other.balanceConversions, balanceConversions);
+    _deepEquality.equals(other.balanceConversions, balanceConversions) &&
+    other.sellerMaintenance == sellerMaintenance &&
+    other.deliveryMaintenance == deliveryMaintenance;
 
   @override
   int get hashCode =>
@@ -206,10 +228,12 @@ class UserInfo {
     (ambassadorName == null ? 0 : ambassadorName!.hashCode) +
     (displayDeliveryerName == null ? 0 : displayDeliveryerName!.hashCode) +
     (avatar == null ? 0 : avatar!.hashCode) +
-    (balanceConversions.hashCode);
+    (balanceConversions.hashCode) +
+    (sellerMaintenance == null ? 0 : sellerMaintenance!.hashCode) +
+    (deliveryMaintenance == null ? 0 : deliveryMaintenance!.hashCode);
 
   @override
-  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, stackingBalance=$stackingBalance, totalAssets=$totalAssets, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar, balanceConversions=$balanceConversions]';
+  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, stackingBalance=$stackingBalance, totalAssets=$totalAssets, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar, balanceConversions=$balanceConversions, sellerMaintenance=$sellerMaintenance, deliveryMaintenance=$deliveryMaintenance]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -289,6 +313,16 @@ class UserInfo {
       json[r'avatar'] = null;
     }
       json[r'balanceConversions'] = this.balanceConversions;
+    if (this.sellerMaintenance != null) {
+      json[r'sellerMaintenance'] = this.sellerMaintenance;
+    } else {
+      json[r'sellerMaintenance'] = null;
+    }
+    if (this.deliveryMaintenance != null) {
+      json[r'deliveryMaintenance'] = this.deliveryMaintenance;
+    } else {
+      json[r'deliveryMaintenance'] = null;
+    }
     return json;
   }
 
@@ -327,6 +361,8 @@ class UserInfo {
         displayDeliveryerName: mapValueOfType<String>(json, r'displayDeliveryerName'),
         avatar: mapValueOfType<String>(json, r'avatar'),
         balanceConversions: BalanceConversion.listFromJson(json[r'balanceConversions']),
+        sellerMaintenance: mapValueOfType<bool>(json, r'sellerMaintenance'),
+        deliveryMaintenance: mapValueOfType<bool>(json, r'deliveryMaintenance'),
       );
     }
     return null;

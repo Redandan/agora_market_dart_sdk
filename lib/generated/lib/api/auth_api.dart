@@ -18,7 +18,7 @@ class AuthApi {
 
   /// 綁定或更新郵箱
   ///
-  /// 為無郵箱的賬戶綁定郵箱，或為已有郵箱的賬戶更新郵箱。需要先調用 /auth/email-verification/send 發送驗證碼到新郵箱，然後使用驗證碼綁定或更新郵箱
+  /// 為無郵箱的賬戶綁定郵箱，或為已有郵箱的賬戶更新郵箱。需要先調用 /auth/email-verification/send 發送驗證碼到新郵箱，然後使用驗證碼綁定或更新郵箱。注意：驗證碼只能使用一次，使用後會自動清除。
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -52,7 +52,7 @@ class AuthApi {
 
   /// 綁定或更新郵箱
   ///
-  /// 為無郵箱的賬戶綁定郵箱，或為已有郵箱的賬戶更新郵箱。需要先調用 /auth/email-verification/send 發送驗證碼到新郵箱，然後使用驗證碼綁定或更新郵箱
+  /// 為無郵箱的賬戶綁定郵箱，或為已有郵箱的賬戶更新郵箱。需要先調用 /auth/email-verification/send 發送驗證碼到新郵箱，然後使用驗證碼綁定或更新郵箱。注意：驗證碼只能使用一次，使用後會自動清除。
   ///
   /// Parameters:
   ///
@@ -714,6 +714,8 @@ class AuthApi {
 
   /// 重發郵件驗證碼
   ///
+  /// 重新發送郵箱驗證碼
+  ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
@@ -748,6 +750,8 @@ class AuthApi {
   }
 
   /// 重發郵件驗證碼
+  ///
+  /// 重新發送郵箱驗證碼
   ///
   /// Parameters:
   ///
@@ -917,6 +921,8 @@ class AuthApi {
 
   /// 發送郵件驗證碼
   ///
+  /// 向指定郵箱發送驗證碼，用於驗證郵箱所有權
+  ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
@@ -951,6 +957,8 @@ class AuthApi {
   }
 
   /// 發送郵件驗證碼
+  ///
+  /// 向指定郵箱發送驗證碼，用於驗證郵箱所有權
   ///
   /// Parameters:
   ///
@@ -1072,6 +1080,8 @@ class AuthApi {
 
   /// 驗證郵件驗證碼
   ///
+  /// 驗證郵箱驗證碼，驗證成功後郵箱標記為已驗證。注意：驗證碼只能使用一次，驗證成功後會自動清除。
+  ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
@@ -1110,6 +1120,8 @@ class AuthApi {
   }
 
   /// 驗證郵件驗證碼
+  ///
+  /// 驗證郵箱驗證碼，驗證成功後郵箱標記為已驗證。注意：驗證碼只能使用一次，驗證成功後會自動清除。
   ///
   /// Parameters:
   ///

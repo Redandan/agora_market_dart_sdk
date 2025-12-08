@@ -195,6 +195,9 @@ Class | Method | HTTP request | Description
 *AdminStoresApi* | [**searchStores1**](doc//AdminStoresApi.md#searchstores1) | **POST** /admin/stores/search | 搜索商店
 *AdminStoresApi* | [**updateStoreByAdmin**](doc//AdminStoresApi.md#updatestorebyadmin) | **POST** /admin/stores/{storeId}/update | 管理員更新商店信息
 *AdminStoresApi* | [**updateStoreStatus**](doc//AdminStoresApi.md#updatestorestatus) | **POST** /admin/stores/{storeId}/status | 更新商店狀態
+*AdminSystemConfigApi* | [**getMaintenanceStatus**](doc//AdminSystemConfigApi.md#getmaintenancestatus) | **GET** /admin/system-config/maintenance | 獲取維護開關狀態
+*AdminSystemConfigApi* | [**setDeliveryMaintenance**](doc//AdminSystemConfigApi.md#setdeliverymaintenance) | **PUT** /admin/system-config/maintenance/delivery | 設置外送員入口維護開關
+*AdminSystemConfigApi* | [**setSellerMaintenance**](doc//AdminSystemConfigApi.md#setsellermaintenance) | **PUT** /admin/system-config/maintenance/seller | 設置賣家入口維護開關
 *AuthApi* | [**bindEmail**](doc//AuthApi.md#bindemail) | **POST** /auth/bind-email | 綁定或更新郵箱
 *AuthApi* | [**bindOAuth**](doc//AuthApi.md#bindoauth) | **POST** /auth/bind-oauth | 綁定OAuth賬號
 *AuthApi* | [**changePassword**](doc//AuthApi.md#changepassword) | **POST** /auth/change-password | 修改/設置密碼
@@ -511,6 +514,8 @@ Class | Method | HTTP request | Description
  - [LoginResult](doc//LoginResult.md)
  - [LoginTokenResponse](doc//LoginTokenResponse.md)
  - [LowStockWarningDTO](doc//LowStockWarningDTO.md)
+ - [MaintenanceStatusResponse](doc//MaintenanceStatusResponse.md)
+ - [MaintenanceToggleRequest](doc//MaintenanceToggleRequest.md)
  - [MemberSearchParam](doc//MemberSearchParam.md)
  - [MemberUpdateParam](doc//MemberUpdateParam.md)
  - [MessageSendResponseDTO](doc//MessageSendResponseDTO.md)
