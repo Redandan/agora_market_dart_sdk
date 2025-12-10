@@ -15,7 +15,6 @@ class ProductCreateParam {
   ProductCreateParam({
     required this.title,
     required this.price,
-    this.shippingFee,
     required this.currency,
     required this.stock,
     required this.description,
@@ -52,17 +51,6 @@ class ProductCreateParam {
   ///
   /// Minimum value: 0.0
   num price;
-
-  /// 賣家出貨費用
-  ///
-  /// Minimum value: 0.0
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? shippingFee;
 
   /// 貨幣類型
   ProductCreateParamCurrencyEnum currency;
@@ -252,7 +240,6 @@ class ProductCreateParam {
   bool operator ==(Object other) => identical(this, other) || other is ProductCreateParam &&
     other.title == title &&
     other.price == price &&
-    other.shippingFee == shippingFee &&
     other.currency == currency &&
     other.stock == stock &&
     other.description == description &&
@@ -286,7 +273,6 @@ class ProductCreateParam {
     // ignore: unnecessary_parenthesis
     (title.hashCode) +
     (price.hashCode) +
-    (shippingFee == null ? 0 : shippingFee!.hashCode) +
     (currency.hashCode) +
     (stock.hashCode) +
     (description.hashCode) +
@@ -316,17 +302,12 @@ class ProductCreateParam {
     (purchaseUrl == null ? 0 : purchaseUrl!.hashCode);
 
   @override
-  String toString() => 'ProductCreateParam[title=$title, price=$price, shippingFee=$shippingFee, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, enablePlatformDelivery=$enablePlatformDelivery, skus=$skus, brand=$brand, minStock=$minStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl]';
+  String toString() => 'ProductCreateParam[title=$title, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, enablePlatformDelivery=$enablePlatformDelivery, skus=$skus, brand=$brand, minStock=$minStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'title'] = this.title;
       json[r'price'] = this.price;
-    if (this.shippingFee != null) {
-      json[r'shippingFee'] = this.shippingFee;
-    } else {
-      json[r'shippingFee'] = null;
-    }
       json[r'currency'] = this.currency;
       json[r'stock'] = this.stock;
       json[r'description'] = this.description;
@@ -434,7 +415,6 @@ class ProductCreateParam {
       return ProductCreateParam(
         title: mapValueOfType<String>(json, r'title')!,
         price: num.parse('${json[r'price']}'),
-        shippingFee: num.parse('${json[r'shippingFee']}'),
         currency: ProductCreateParamCurrencyEnum.fromJson(json[r'currency'])!,
         stock: mapValueOfType<int>(json, r'stock')!,
         description: mapValueOfType<String>(json, r'description')!,

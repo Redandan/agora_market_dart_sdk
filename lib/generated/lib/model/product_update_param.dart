@@ -28,7 +28,6 @@ class ProductUpdateParam {
     this.pickupTimeEnd,
     this.enablePlatformDelivery,
     this.status,
-    this.shippingFee,
     this.skus = const {},
     this.brand,
     this.shippingPreparationHours,
@@ -168,17 +167,6 @@ class ProductUpdateParam {
   ///
   ProductStatusEnum? status;
 
-  /// 賣家出貨費用
-  ///
-  /// Minimum value: 0.0
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? shippingFee;
-
   /// 商品SKU或條碼集合
   Set<String> skus;
 
@@ -283,7 +271,6 @@ class ProductUpdateParam {
     other.pickupTimeEnd == pickupTimeEnd &&
     other.enablePlatformDelivery == enablePlatformDelivery &&
     other.status == status &&
-    other.shippingFee == shippingFee &&
     _deepEquality.equals(other.skus, skus) &&
     other.brand == brand &&
     other.shippingPreparationHours == shippingPreparationHours &&
@@ -314,7 +301,6 @@ class ProductUpdateParam {
     (pickupTimeEnd == null ? 0 : pickupTimeEnd!.hashCode) +
     (enablePlatformDelivery == null ? 0 : enablePlatformDelivery!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
-    (shippingFee == null ? 0 : shippingFee!.hashCode) +
     (skus.hashCode) +
     (brand == null ? 0 : brand!.hashCode) +
     (shippingPreparationHours == null ? 0 : shippingPreparationHours!.hashCode) +
@@ -328,7 +314,7 @@ class ProductUpdateParam {
     (purchaseUrl == null ? 0 : purchaseUrl!.hashCode);
 
   @override
-  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, status=$status, shippingFee=$shippingFee, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, purchaseUrl=$purchaseUrl]';
+  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, status=$status, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, purchaseUrl=$purchaseUrl]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -398,11 +384,6 @@ class ProductUpdateParam {
       json[r'status'] = this.status;
     } else {
       json[r'status'] = null;
-    }
-    if (this.shippingFee != null) {
-      json[r'shippingFee'] = this.shippingFee;
-    } else {
-      json[r'shippingFee'] = null;
     }
       json[r'skus'] = this.skus.toList(growable: false);
     if (this.brand != null) {
@@ -486,7 +467,6 @@ class ProductUpdateParam {
         pickupTimeEnd: mapValueOfType<String>(json, r'pickupTimeEnd'),
         enablePlatformDelivery: mapValueOfType<bool>(json, r'enablePlatformDelivery'),
         status: ProductStatusEnum.fromJson(json[r'status']),
-        shippingFee: num.parse('${json[r'shippingFee']}'),
         skus: json[r'skus'] is Iterable
             ? (json[r'skus'] as Iterable).cast<String>().toSet()
             : const {},

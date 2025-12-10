@@ -17,12 +17,7 @@ class OrderSumbitParam {
     this.quantity,
     required this.selectedSku,
     this.cartItemId,
-    required this.shippingAddress,
-    required this.longitude,
-    required this.latitude,
-    required this.receiverName,
-    required this.receiverPhone,
-    required this.shippingCompany,
+    required this.addressId,
     this.remark,
   });
 
@@ -52,22 +47,8 @@ class OrderSumbitParam {
   ///
   int? cartItemId;
 
-  /// 收件地址
-  String shippingAddress;
-
-  /// 收件地址經度
-  double longitude;
-
-  /// 收件地址緯度
-  double latitude;
-
-  /// 收件人姓名
-  String receiverName;
-
-  /// 收件人電話
-  String receiverPhone;
-
-  ShippingCompanyEnum shippingCompany;
+  /// 收貨地址ID
+  int addressId;
 
   /// 訂單備註
   ///
@@ -84,12 +65,7 @@ class OrderSumbitParam {
     other.quantity == quantity &&
     other.selectedSku == selectedSku &&
     other.cartItemId == cartItemId &&
-    other.shippingAddress == shippingAddress &&
-    other.longitude == longitude &&
-    other.latitude == latitude &&
-    other.receiverName == receiverName &&
-    other.receiverPhone == receiverPhone &&
-    other.shippingCompany == shippingCompany &&
+    other.addressId == addressId &&
     other.remark == remark;
 
   @override
@@ -99,16 +75,11 @@ class OrderSumbitParam {
     (quantity == null ? 0 : quantity!.hashCode) +
     (selectedSku.hashCode) +
     (cartItemId == null ? 0 : cartItemId!.hashCode) +
-    (shippingAddress.hashCode) +
-    (longitude.hashCode) +
-    (latitude.hashCode) +
-    (receiverName.hashCode) +
-    (receiverPhone.hashCode) +
-    (shippingCompany.hashCode) +
+    (addressId.hashCode) +
     (remark == null ? 0 : remark!.hashCode);
 
   @override
-  String toString() => 'OrderSumbitParam[productId=$productId, quantity=$quantity, selectedSku=$selectedSku, cartItemId=$cartItemId, shippingAddress=$shippingAddress, longitude=$longitude, latitude=$latitude, receiverName=$receiverName, receiverPhone=$receiverPhone, shippingCompany=$shippingCompany, remark=$remark]';
+  String toString() => 'OrderSumbitParam[productId=$productId, quantity=$quantity, selectedSku=$selectedSku, cartItemId=$cartItemId, addressId=$addressId, remark=$remark]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -124,12 +95,7 @@ class OrderSumbitParam {
     } else {
       json[r'cartItemId'] = null;
     }
-      json[r'shippingAddress'] = this.shippingAddress;
-      json[r'longitude'] = this.longitude;
-      json[r'latitude'] = this.latitude;
-      json[r'receiverName'] = this.receiverName;
-      json[r'receiverPhone'] = this.receiverPhone;
-      json[r'shippingCompany'] = this.shippingCompany;
+      json[r'addressId'] = this.addressId;
     if (this.remark != null) {
       json[r'remark'] = this.remark;
     } else {
@@ -161,12 +127,7 @@ class OrderSumbitParam {
         quantity: mapValueOfType<int>(json, r'quantity'),
         selectedSku: mapValueOfType<String>(json, r'selectedSku')!,
         cartItemId: mapValueOfType<int>(json, r'cartItemId'),
-        shippingAddress: mapValueOfType<String>(json, r'shippingAddress')!,
-        longitude: mapValueOfType<double>(json, r'longitude')!,
-        latitude: mapValueOfType<double>(json, r'latitude')!,
-        receiverName: mapValueOfType<String>(json, r'receiverName')!,
-        receiverPhone: mapValueOfType<String>(json, r'receiverPhone')!,
-        shippingCompany: ShippingCompanyEnum.fromJson(json[r'shippingCompany'])!,
+        addressId: mapValueOfType<int>(json, r'addressId')!,
         remark: mapValueOfType<String>(json, r'remark'),
       );
     }
@@ -217,12 +178,7 @@ class OrderSumbitParam {
   static const requiredKeys = <String>{
     'productId',
     'selectedSku',
-    'shippingAddress',
-    'longitude',
-    'latitude',
-    'receiverName',
-    'receiverPhone',
-    'shippingCompany',
+    'addressId',
   };
 }
 
