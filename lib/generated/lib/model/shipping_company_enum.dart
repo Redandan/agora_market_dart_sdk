@@ -23,7 +23,6 @@ class ShippingCompanyEnum {
 
   String toJson() => value;
 
-  static const HOME_DELIVERY = ShippingCompanyEnum._(r'HOME_DELIVERY');
   static const BLACK_CAT = ShippingCompanyEnum._(r'BLACK_CAT');
   static const HCT = ShippingCompanyEnum._(r'HCT');
   static const KERRY = ShippingCompanyEnum._(r'KERRY');
@@ -36,11 +35,11 @@ class ShippingCompanyEnum {
   static const HILIFE = ShippingCompanyEnum._(r'HILIFE');
   static const OK_MART = ShippingCompanyEnum._(r'OK_MART');
   static const CHUNGHWA_POST = ShippingCompanyEnum._(r'CHUNGHWA_POST');
+  static const OTHER = ShippingCompanyEnum._(r'OTHER');
   static const unknownDefaultOpenApi = ShippingCompanyEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][ShippingCompanyEnum].
   static const values = <ShippingCompanyEnum>[
-    HOME_DELIVERY,
     BLACK_CAT,
     HCT,
     KERRY,
@@ -53,6 +52,7 @@ class ShippingCompanyEnum {
     HILIFE,
     OK_MART,
     CHUNGHWA_POST,
+    OTHER,
     unknownDefaultOpenApi,
   ];
 
@@ -92,7 +92,6 @@ class ShippingCompanyEnumTypeTransformer {
   ShippingCompanyEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'HOME_DELIVERY': return ShippingCompanyEnum.HOME_DELIVERY;
         case r'BLACK_CAT': return ShippingCompanyEnum.BLACK_CAT;
         case r'HCT': return ShippingCompanyEnum.HCT;
         case r'KERRY': return ShippingCompanyEnum.KERRY;
@@ -105,6 +104,7 @@ class ShippingCompanyEnumTypeTransformer {
         case r'HILIFE': return ShippingCompanyEnum.HILIFE;
         case r'OK_MART': return ShippingCompanyEnum.OK_MART;
         case r'CHUNGHWA_POST': return ShippingCompanyEnum.CHUNGHWA_POST;
+        case r'OTHER': return ShippingCompanyEnum.OTHER;
         case r'unknown_default_open_api': return ShippingCompanyEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

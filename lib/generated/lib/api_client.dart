@@ -184,8 +184,6 @@ class ApiClient {
           return value is DateTime ? value : DateTime.tryParse(value);
         case 'AcceptOrderParam':
           return AcceptOrderParam.fromJson(value);
-        case 'ActualShippingCompany':
-          return ActualShippingCompanyTypeTransformer().decode(value);
         case 'AdminCreateUserParam':
           return AdminCreateUserParam.fromJson(value);
         case 'AdminResetPasswordParam':

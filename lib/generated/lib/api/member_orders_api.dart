@@ -171,6 +171,68 @@ class MemberOrdersApi {
     }
   }
 
+  /// 獲取訂單可用的物流公司列表
+  ///
+  /// 根據訂單的服務類型返回可選的物流公司列表，供賣家發貨時選擇
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  ///   訂單ID
+  Future<Response> getAvailableShippingCompaniesWithHttpInfo(String orderId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/orders/{orderId}/available-shipping-companies'
+      .replaceAll('{orderId}', orderId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 獲取訂單可用的物流公司列表
+  ///
+  /// 根據訂單的服務類型返回可選的物流公司列表，供賣家發貨時選擇
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  ///   訂單ID
+  Future<List<String>?> getAvailableShippingCompanies(String orderId,) async {
+    final response = await getAvailableShippingCompaniesWithHttpInfo(orderId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<String>') as List)
+        .cast<String>()
+        .toList(growable: false);
+
+    }
+    return null;
+  }
+
   /// 獲取買家訂單詳情
   ///
   /// 根據訂單ID獲取買家訂單詳情

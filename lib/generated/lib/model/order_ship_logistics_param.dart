@@ -14,12 +14,15 @@ class OrderShipLogisticsParam {
   /// Returns a new [OrderShipLogisticsParam] instance.
   OrderShipLogisticsParam({
     required this.orderId,
+    required this.shippingCompany,
     required this.trackingNumber,
     this.remark,
   });
 
   /// 訂單ID
   String orderId;
+
+  ShippingCompanyEnum shippingCompany;
 
   /// 物流單號
   String trackingNumber;
@@ -36,6 +39,7 @@ class OrderShipLogisticsParam {
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrderShipLogisticsParam &&
     other.orderId == orderId &&
+    other.shippingCompany == shippingCompany &&
     other.trackingNumber == trackingNumber &&
     other.remark == remark;
 
@@ -43,15 +47,17 @@ class OrderShipLogisticsParam {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (orderId.hashCode) +
+    (shippingCompany.hashCode) +
     (trackingNumber.hashCode) +
     (remark == null ? 0 : remark!.hashCode);
 
   @override
-  String toString() => 'OrderShipLogisticsParam[orderId=$orderId, trackingNumber=$trackingNumber, remark=$remark]';
+  String toString() => 'OrderShipLogisticsParam[orderId=$orderId, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, remark=$remark]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'orderId'] = this.orderId;
+      json[r'shippingCompany'] = this.shippingCompany;
       json[r'trackingNumber'] = this.trackingNumber;
     if (this.remark != null) {
       json[r'remark'] = this.remark;
@@ -81,6 +87,7 @@ class OrderShipLogisticsParam {
 
       return OrderShipLogisticsParam(
         orderId: mapValueOfType<String>(json, r'orderId')!,
+        shippingCompany: ShippingCompanyEnum.fromJson(json[r'shippingCompany'])!,
         trackingNumber: mapValueOfType<String>(json, r'trackingNumber')!,
         remark: mapValueOfType<String>(json, r'remark'),
       );
@@ -131,6 +138,7 @@ class OrderShipLogisticsParam {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'orderId',
+    'shippingCompany',
     'trackingNumber',
   };
 }
