@@ -33,12 +33,12 @@ class CartItem {
     this.stockWarning,
     this.createdAt,
     this.updatedAt,
-    this.inStock,
     this.subtotal,
+    this.inStock,
+    this.totalPrice,
     this.stockStatus,
     this.specificationDescription,
     this.purchaseRestrictionReason,
-    this.totalPrice,
   });
 
   /// 購物車項目ID
@@ -185,6 +185,14 @@ class CartItem {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  num? subtotal;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? inStock;
 
   ///
@@ -193,7 +201,7 @@ class CartItem {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  num? subtotal;
+  num? totalPrice;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -219,14 +227,6 @@ class CartItem {
   ///
   String? purchaseRestrictionReason;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? totalPrice;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is CartItem &&
     other.id == id &&
@@ -249,12 +249,12 @@ class CartItem {
     other.stockWarning == stockWarning &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.inStock == inStock &&
     other.subtotal == subtotal &&
+    other.inStock == inStock &&
+    other.totalPrice == totalPrice &&
     other.stockStatus == stockStatus &&
     other.specificationDescription == specificationDescription &&
-    other.purchaseRestrictionReason == purchaseRestrictionReason &&
-    other.totalPrice == totalPrice;
+    other.purchaseRestrictionReason == purchaseRestrictionReason;
 
   @override
   int get hashCode =>
@@ -279,15 +279,15 @@ class CartItem {
     (stockWarning == null ? 0 : stockWarning!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (inStock == null ? 0 : inStock!.hashCode) +
     (subtotal == null ? 0 : subtotal!.hashCode) +
+    (inStock == null ? 0 : inStock!.hashCode) +
+    (totalPrice == null ? 0 : totalPrice!.hashCode) +
     (stockStatus == null ? 0 : stockStatus!.hashCode) +
     (specificationDescription == null ? 0 : specificationDescription!.hashCode) +
-    (purchaseRestrictionReason == null ? 0 : purchaseRestrictionReason!.hashCode) +
-    (totalPrice == null ? 0 : totalPrice!.hashCode);
+    (purchaseRestrictionReason == null ? 0 : purchaseRestrictionReason!.hashCode);
 
   @override
-  String toString() => 'CartItem[id=$id, userId=$userId, productId=$productId, quantity=$quantity, productTitle=$productTitle, productDescription=$productDescription, productImage=$productImage, unitPrice=$unitPrice, currency=$currency, shippingFee=$shippingFee, sellerId=$sellerId, sellerName=$sellerName, pickupAddress=$pickupAddress, sku=$sku, brand=$brand, availableStock=$availableStock, isInStock=$isInStock, stockWarning=$stockWarning, createdAt=$createdAt, updatedAt=$updatedAt, inStock=$inStock, subtotal=$subtotal, stockStatus=$stockStatus, specificationDescription=$specificationDescription, purchaseRestrictionReason=$purchaseRestrictionReason, totalPrice=$totalPrice]';
+  String toString() => 'CartItem[id=$id, userId=$userId, productId=$productId, quantity=$quantity, productTitle=$productTitle, productDescription=$productDescription, productImage=$productImage, unitPrice=$unitPrice, currency=$currency, shippingFee=$shippingFee, sellerId=$sellerId, sellerName=$sellerName, pickupAddress=$pickupAddress, sku=$sku, brand=$brand, availableStock=$availableStock, isInStock=$isInStock, stockWarning=$stockWarning, createdAt=$createdAt, updatedAt=$updatedAt, subtotal=$subtotal, inStock=$inStock, totalPrice=$totalPrice, stockStatus=$stockStatus, specificationDescription=$specificationDescription, purchaseRestrictionReason=$purchaseRestrictionReason]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -359,15 +359,20 @@ class CartItem {
     } else {
       json[r'updatedAt'] = null;
     }
+    if (this.subtotal != null) {
+      json[r'subtotal'] = this.subtotal;
+    } else {
+      json[r'subtotal'] = null;
+    }
     if (this.inStock != null) {
       json[r'inStock'] = this.inStock;
     } else {
       json[r'inStock'] = null;
     }
-    if (this.subtotal != null) {
-      json[r'subtotal'] = this.subtotal;
+    if (this.totalPrice != null) {
+      json[r'totalPrice'] = this.totalPrice;
     } else {
-      json[r'subtotal'] = null;
+      json[r'totalPrice'] = null;
     }
     if (this.stockStatus != null) {
       json[r'stockStatus'] = this.stockStatus;
@@ -383,11 +388,6 @@ class CartItem {
       json[r'purchaseRestrictionReason'] = this.purchaseRestrictionReason;
     } else {
       json[r'purchaseRestrictionReason'] = null;
-    }
-    if (this.totalPrice != null) {
-      json[r'totalPrice'] = this.totalPrice;
-    } else {
-      json[r'totalPrice'] = null;
     }
     return json;
   }
@@ -431,12 +431,12 @@ class CartItem {
         stockWarning: mapValueOfType<String>(json, r'stockWarning'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
-        inStock: mapValueOfType<bool>(json, r'inStock'),
         subtotal: num.parse('${json[r'subtotal']}'),
+        inStock: mapValueOfType<bool>(json, r'inStock'),
+        totalPrice: num.parse('${json[r'totalPrice']}'),
         stockStatus: mapValueOfType<String>(json, r'stockStatus'),
         specificationDescription: mapValueOfType<String>(json, r'specificationDescription'),
         purchaseRestrictionReason: mapValueOfType<String>(json, r'purchaseRestrictionReason'),
-        totalPrice: num.parse('${json[r'totalPrice']}'),
       );
     }
     return null;
