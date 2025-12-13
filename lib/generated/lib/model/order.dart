@@ -23,7 +23,7 @@ class Order {
     this.productPrice,
     this.orderAmount,
     this.currency,
-    this.serviceType,
+    this.pickupServiceType,
     this.shippingCompany,
     this.trackingNumber,
     this.status,
@@ -142,7 +142,7 @@ class Order {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PickupServiceTypeEnum? serviceType;
+  PickupServiceTypeEnum? pickupServiceType;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -331,7 +331,7 @@ class Order {
     other.productPrice == productPrice &&
     other.orderAmount == orderAmount &&
     other.currency == currency &&
-    other.serviceType == serviceType &&
+    other.pickupServiceType == pickupServiceType &&
     other.shippingCompany == shippingCompany &&
     other.trackingNumber == trackingNumber &&
     other.status == status &&
@@ -366,7 +366,7 @@ class Order {
     (productPrice == null ? 0 : productPrice!.hashCode) +
     (orderAmount == null ? 0 : orderAmount!.hashCode) +
     (currency == null ? 0 : currency!.hashCode) +
-    (serviceType == null ? 0 : serviceType!.hashCode) +
+    (pickupServiceType == null ? 0 : pickupServiceType!.hashCode) +
     (shippingCompany == null ? 0 : shippingCompany!.hashCode) +
     (trackingNumber == null ? 0 : trackingNumber!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
@@ -389,7 +389,7 @@ class Order {
     (store == null ? 0 : store!.hashCode);
 
   @override
-  String toString() => 'Order[id=$id, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, serviceType=$serviceType, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, buyerName=$buyerName, buyerUsername=$buyerUsername, product=$product, deliveryDetail=$deliveryDetail, store=$store]';
+  String toString() => 'Order[id=$id, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, pickupServiceType=$pickupServiceType, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, buyerName=$buyerName, buyerUsername=$buyerUsername, product=$product, deliveryDetail=$deliveryDetail, store=$store]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -443,10 +443,10 @@ class Order {
     } else {
       json[r'currency'] = null;
     }
-    if (this.serviceType != null) {
-      json[r'serviceType'] = this.serviceType;
+    if (this.pickupServiceType != null) {
+      json[r'pickupServiceType'] = this.pickupServiceType;
     } else {
-      json[r'serviceType'] = null;
+      json[r'pickupServiceType'] = null;
     }
     if (this.shippingCompany != null) {
       json[r'shippingCompany'] = this.shippingCompany;
@@ -580,7 +580,7 @@ class Order {
         productPrice: num.parse('${json[r'productPrice']}'),
         orderAmount: num.parse('${json[r'orderAmount']}'),
         currency: mapValueOfType<String>(json, r'currency'),
-        serviceType: PickupServiceTypeEnum.fromJson(json[r'serviceType']),
+        pickupServiceType: PickupServiceTypeEnum.fromJson(json[r'pickupServiceType']),
         shippingCompany: ShippingCompanyEnum.fromJson(json[r'shippingCompany']),
         trackingNumber: mapValueOfType<String>(json, r'trackingNumber'),
         status: OrderStatusEnum.fromJson(json[r'status']),

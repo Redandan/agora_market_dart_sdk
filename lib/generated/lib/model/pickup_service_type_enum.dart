@@ -28,6 +28,7 @@ class PickupServiceTypeEnum {
   static const FAMILY_MART = PickupServiceTypeEnum._(r'FAMILY_MART');
   static const HILIFE = PickupServiceTypeEnum._(r'HILIFE');
   static const OK_MART = PickupServiceTypeEnum._(r'OK_MART');
+  static const PLATFORM_DELIVERY = PickupServiceTypeEnum._(r'PLATFORM_DELIVERY');
   static const unknownDefaultOpenApi = PickupServiceTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][PickupServiceTypeEnum].
@@ -37,6 +38,7 @@ class PickupServiceTypeEnum {
     FAMILY_MART,
     HILIFE,
     OK_MART,
+    PLATFORM_DELIVERY,
     unknownDefaultOpenApi,
   ];
 
@@ -81,6 +83,7 @@ class PickupServiceTypeEnumTypeTransformer {
         case r'FAMILY_MART': return PickupServiceTypeEnum.FAMILY_MART;
         case r'HILIFE': return PickupServiceTypeEnum.HILIFE;
         case r'OK_MART': return PickupServiceTypeEnum.OK_MART;
+        case r'PLATFORM_DELIVERY': return PickupServiceTypeEnum.PLATFORM_DELIVERY;
         case r'unknown_default_open_api': return PickupServiceTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

@@ -284,7 +284,6 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**cancelOrder**](doc//MemberOrdersApi.md#cancelorder) | **POST** /orders/cancel | 取消訂單
 *MemberOrdersApi* | [**confirmOrder**](doc//MemberOrdersApi.md#confirmorder) | **POST** /orders/confirm | 確認收貨
 *MemberOrdersApi* | [**confirmReturnReceived**](doc//MemberOrdersApi.md#confirmreturnreceived) | **POST** /orders/{orderId}/return/confirm-received | 確認收到退貨商品
-*MemberOrdersApi* | [**getAvailableShippingCompanies**](doc//MemberOrdersApi.md#getavailableshippingcompanies) | **GET** /orders/{orderId}/available-shipping-companies | 獲取訂單可用的物流公司列表
 *MemberOrdersApi* | [**getOrderByBuyer**](doc//MemberOrdersApi.md#getorderbybuyer) | **GET** /orders/buyer/{orderId} | 獲取買家訂單詳情
 *MemberOrdersApi* | [**getOrderByDeliveryer**](doc//MemberOrdersApi.md#getorderbydeliveryer) | **POST** /orders/deliveryer/{orderId} | 獲取配送員訂單詳情
 *MemberOrdersApi* | [**getOrderBySeller**](doc//MemberOrdersApi.md#getorderbyseller) | **POST** /orders/seller/{orderId} | 獲取賣家訂單詳情
