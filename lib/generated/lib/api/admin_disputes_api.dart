@@ -217,7 +217,123 @@ class AdminDisputesApi {
     return null;
   }
 
-  /// 處理糾紛
+  /// 判定爭議責任
+  ///
+  /// 管理員判定爭議責任方，包括賣家責任、買家責任、雙方部分責任
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] disputeId (required):
+  ///   爭議ID
+  ///
+  /// * [DisputeJudgmentParam] disputeJudgmentParam (required):
+  Future<Response> judgeDisputeWithHttpInfo(String disputeId, DisputeJudgmentParam disputeJudgmentParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/disputes/{disputeId}/judge'
+      .replaceAll('{disputeId}', disputeId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = disputeJudgmentParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 判定爭議責任
+  ///
+  /// 管理員判定爭議責任方，包括賣家責任、買家責任、雙方部分責任
+  ///
+  /// Parameters:
+  ///
+  /// * [String] disputeId (required):
+  ///   爭議ID
+  ///
+  /// * [DisputeJudgmentParam] disputeJudgmentParam (required):
+  Future<void> judgeDispute(String disputeId, DisputeJudgmentParam disputeJudgmentParam,) async {
+    final response = await judgeDisputeWithHttpInfo(disputeId, disputeJudgmentParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// 結案爭議
+  ///
+  /// 管理員結案爭議，將狀態轉為已結案
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] disputeId (required):
+  ///   糾紛ID
+  ///
+  /// * [String] comment:
+  ///   處理說明
+  Future<Response> resolveDisputeWithHttpInfo(String disputeId, { String? comment, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/disputes/{disputeId}/resolve'
+      .replaceAll('{disputeId}', disputeId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (comment != null) {
+      queryParams.addAll(_queryParams('', 'comment', comment));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 結案爭議
+  ///
+  /// 管理員結案爭議，將狀態轉為已結案
+  ///
+  /// Parameters:
+  ///
+  /// * [String] disputeId (required):
+  ///   糾紛ID
+  ///
+  /// * [String] comment:
+  ///   處理說明
+  Future<void> resolveDispute(String disputeId, { String? comment, }) async {
+    final response = await resolveDisputeWithHttpInfo(disputeId,  comment: comment, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// 處理糾紛（舊版，保留向後兼容）
   ///
   /// 管理員可以處理糾紛，包括退款、取消訂單等操作
   ///
@@ -233,9 +349,9 @@ class AdminDisputesApi {
   ///
   /// * [String] comment (required):
   ///   處理說明
-  Future<Response> resolveDisputeWithHttpInfo(String disputeId, String resolution, String comment,) async {
+  Future<Response> resolveDisputeOldWithHttpInfo(String disputeId, String resolution, String comment,) async {
     // ignore: prefer_const_declarations
-    final path = r'/admin/disputes/{disputeId}/resolve'
+    final path = r'/admin/disputes/{disputeId}/resolve-old'
       .replaceAll('{disputeId}', disputeId);
 
     // ignore: prefer_final_locals
@@ -262,7 +378,7 @@ class AdminDisputesApi {
     );
   }
 
-  /// 處理糾紛
+  /// 處理糾紛（舊版，保留向後兼容）
   ///
   /// 管理員可以處理糾紛，包括退款、取消訂單等操作
   ///
@@ -276,8 +392,8 @@ class AdminDisputesApi {
   ///
   /// * [String] comment (required):
   ///   處理說明
-  Future<void> resolveDispute(String disputeId, String resolution, String comment,) async {
-    final response = await resolveDisputeWithHttpInfo(disputeId, resolution, comment,);
+  Future<void> resolveDisputeOld(String disputeId, String resolution, String comment,) async {
+    final response = await resolveDisputeOldWithHttpInfo(disputeId, resolution, comment,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

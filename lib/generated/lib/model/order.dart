@@ -14,6 +14,7 @@ class Order {
   /// Returns a new [Order] instance.
   Order({
     this.id,
+    this.version,
     this.productId,
     this.buyerId,
     this.sellerId,
@@ -32,6 +33,8 @@ class Order {
     this.updatedAt,
     this.cancelledAt,
     this.refundedAt,
+    this.refundAmount,
+    this.refundOfferExpiresAt,
     this.reviewedAt,
     this.originalPrice,
     this.originalCurrency,
@@ -54,6 +57,15 @@ class Order {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? id;
+
+  /// 版本號（樂觀鎖）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? version;
 
   /// 商品ID
   ///
@@ -214,6 +226,24 @@ class Order {
   ///
   DateTime? refundedAt;
 
+  /// 退款金額（部分退款時使用）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? refundAmount;
+
+  /// 退款方案過期時間（部分退款方案時使用）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? refundOfferExpiresAt;
+
   /// 評價時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -322,6 +352,7 @@ class Order {
   @override
   bool operator ==(Object other) => identical(this, other) || other is Order &&
     other.id == id &&
+    other.version == version &&
     other.productId == productId &&
     other.buyerId == buyerId &&
     other.sellerId == sellerId &&
@@ -340,6 +371,8 @@ class Order {
     other.updatedAt == updatedAt &&
     other.cancelledAt == cancelledAt &&
     other.refundedAt == refundedAt &&
+    other.refundAmount == refundAmount &&
+    other.refundOfferExpiresAt == refundOfferExpiresAt &&
     other.reviewedAt == reviewedAt &&
     other.originalPrice == originalPrice &&
     other.originalCurrency == originalCurrency &&
@@ -357,6 +390,7 @@ class Order {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
+    (version == null ? 0 : version!.hashCode) +
     (productId == null ? 0 : productId!.hashCode) +
     (buyerId == null ? 0 : buyerId!.hashCode) +
     (sellerId == null ? 0 : sellerId!.hashCode) +
@@ -375,6 +409,8 @@ class Order {
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (cancelledAt == null ? 0 : cancelledAt!.hashCode) +
     (refundedAt == null ? 0 : refundedAt!.hashCode) +
+    (refundAmount == null ? 0 : refundAmount!.hashCode) +
+    (refundOfferExpiresAt == null ? 0 : refundOfferExpiresAt!.hashCode) +
     (reviewedAt == null ? 0 : reviewedAt!.hashCode) +
     (originalPrice == null ? 0 : originalPrice!.hashCode) +
     (originalCurrency == null ? 0 : originalCurrency!.hashCode) +
@@ -389,7 +425,7 @@ class Order {
     (store == null ? 0 : store!.hashCode);
 
   @override
-  String toString() => 'Order[id=$id, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, pickupServiceType=$pickupServiceType, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, buyerName=$buyerName, buyerUsername=$buyerUsername, product=$product, deliveryDetail=$deliveryDetail, store=$store]';
+  String toString() => 'Order[id=$id, version=$version, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, pickupServiceType=$pickupServiceType, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, refundAmount=$refundAmount, refundOfferExpiresAt=$refundOfferExpiresAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, buyerName=$buyerName, buyerUsername=$buyerUsername, product=$product, deliveryDetail=$deliveryDetail, store=$store]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -397,6 +433,11 @@ class Order {
       json[r'id'] = this.id;
     } else {
       json[r'id'] = null;
+    }
+    if (this.version != null) {
+      json[r'version'] = this.version;
+    } else {
+      json[r'version'] = null;
     }
     if (this.productId != null) {
       json[r'productId'] = this.productId;
@@ -488,6 +529,16 @@ class Order {
     } else {
       json[r'refundedAt'] = null;
     }
+    if (this.refundAmount != null) {
+      json[r'refundAmount'] = this.refundAmount;
+    } else {
+      json[r'refundAmount'] = null;
+    }
+    if (this.refundOfferExpiresAt != null) {
+      json[r'refundOfferExpiresAt'] = this.refundOfferExpiresAt!.toUtc().toIso8601String();
+    } else {
+      json[r'refundOfferExpiresAt'] = null;
+    }
     if (this.reviewedAt != null) {
       json[r'reviewedAt'] = this.reviewedAt!.toUtc().toIso8601String();
     } else {
@@ -571,6 +622,7 @@ class Order {
 
       return Order(
         id: mapValueOfType<String>(json, r'id'),
+        version: mapValueOfType<int>(json, r'version'),
         productId: mapValueOfType<int>(json, r'productId'),
         buyerId: mapValueOfType<int>(json, r'buyerId'),
         sellerId: mapValueOfType<int>(json, r'sellerId'),
@@ -589,6 +641,8 @@ class Order {
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         cancelledAt: mapDateTime(json, r'cancelledAt', r''),
         refundedAt: mapDateTime(json, r'refundedAt', r''),
+        refundAmount: num.parse('${json[r'refundAmount']}'),
+        refundOfferExpiresAt: mapDateTime(json, r'refundOfferExpiresAt', r''),
         reviewedAt: mapDateTime(json, r'reviewedAt', r''),
         originalPrice: num.parse('${json[r'originalPrice']}'),
         originalCurrency: mapValueOfType<String>(json, r'originalCurrency'),

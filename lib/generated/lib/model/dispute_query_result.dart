@@ -24,6 +24,9 @@ class DisputeQueryResult {
     this.adminComment,
     this.createdAt,
     this.resolvedAt,
+    this.attachments = const [],
+    this.returnRecord,
+    this.returnAttachments = const [],
   });
 
   ///
@@ -117,6 +120,20 @@ class DisputeQueryResult {
   ///
   DateTime? resolvedAt;
 
+  /// 爭議附件列表（圖片證據）
+  List<FileRecord> attachments;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  OrderReturnRecord? returnRecord;
+
+  /// 退貨申請時的附件列表（圖片證據）
+  List<FileRecord> returnAttachments;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is DisputeQueryResult &&
     other.dispute == dispute &&
@@ -129,7 +146,10 @@ class DisputeQueryResult {
     other.description == description &&
     other.adminComment == adminComment &&
     other.createdAt == createdAt &&
-    other.resolvedAt == resolvedAt;
+    other.resolvedAt == resolvedAt &&
+    _deepEquality.equals(other.attachments, attachments) &&
+    other.returnRecord == returnRecord &&
+    _deepEquality.equals(other.returnAttachments, returnAttachments);
 
   @override
   int get hashCode =>
@@ -144,10 +164,13 @@ class DisputeQueryResult {
     (description == null ? 0 : description!.hashCode) +
     (adminComment == null ? 0 : adminComment!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
-    (resolvedAt == null ? 0 : resolvedAt!.hashCode);
+    (resolvedAt == null ? 0 : resolvedAt!.hashCode) +
+    (attachments.hashCode) +
+    (returnRecord == null ? 0 : returnRecord!.hashCode) +
+    (returnAttachments.hashCode);
 
   @override
-  String toString() => 'DisputeQueryResult[dispute=$dispute, order=$order, buyerId=$buyerId, buyerName=$buyerName, sellerId=$sellerId, sellerName=$sellerName, status=$status, description=$description, adminComment=$adminComment, createdAt=$createdAt, resolvedAt=$resolvedAt]';
+  String toString() => 'DisputeQueryResult[dispute=$dispute, order=$order, buyerId=$buyerId, buyerName=$buyerName, sellerId=$sellerId, sellerName=$sellerName, status=$status, description=$description, adminComment=$adminComment, createdAt=$createdAt, resolvedAt=$resolvedAt, attachments=$attachments, returnRecord=$returnRecord, returnAttachments=$returnAttachments]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -206,6 +229,13 @@ class DisputeQueryResult {
     } else {
       json[r'resolvedAt'] = null;
     }
+      json[r'attachments'] = this.attachments;
+    if (this.returnRecord != null) {
+      json[r'returnRecord'] = this.returnRecord;
+    } else {
+      json[r'returnRecord'] = null;
+    }
+      json[r'returnAttachments'] = this.returnAttachments;
     return json;
   }
 
@@ -239,6 +269,9 @@ class DisputeQueryResult {
         adminComment: mapValueOfType<String>(json, r'adminComment'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         resolvedAt: mapDateTime(json, r'resolvedAt', r''),
+        attachments: FileRecord.listFromJson(json[r'attachments']),
+        returnRecord: OrderReturnRecord.fromJson(json[r'returnRecord']),
+        returnAttachments: FileRecord.listFromJson(json[r'returnAttachments']),
       );
     }
     return null;

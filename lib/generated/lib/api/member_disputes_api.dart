@@ -18,25 +18,38 @@ class MemberDisputesApi {
 
   /// 創建糾紛
   ///
-  /// 買家可以對訂單創建糾紛
+  /// 買家可以對訂單創建糾紛，支持上傳圖片作為證據（最多5張，每張不超過10MB）
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [DisputeCreateParam] disputeCreateParam (required):
-  Future<Response> createDisputeWithHttpInfo(DisputeCreateParam disputeCreateParam,) async {
+  /// * [String] orderId (required):
+  ///   訂單ID
+  ///
+  /// * [String] description (required):
+  ///   糾紛描述
+  ///
+  /// * [List<MultipartFile>] images:
+  ///   證據圖片（可選，最多5張）
+  Future<Response> createDisputeWithHttpInfo(String orderId, String description, { List<MultipartFile>? images, }) async {
     // ignore: prefer_const_declarations
     final path = r'/disputes';
 
     // ignore: prefer_final_locals
-    Object? postBody = disputeCreateParam;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>['application/json'];
+      queryParams.addAll(_queryParams('', 'orderId', orderId));
+      queryParams.addAll(_queryParams('', 'description', description));
+    if (images != null) {
+      queryParams.addAll(_queryParams('multi', 'images', images));
+    }
+
+    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -52,13 +65,20 @@ class MemberDisputesApi {
 
   /// 創建糾紛
   ///
-  /// 買家可以對訂單創建糾紛
+  /// 買家可以對訂單創建糾紛，支持上傳圖片作為證據（最多5張，每張不超過10MB）
   ///
   /// Parameters:
   ///
-  /// * [DisputeCreateParam] disputeCreateParam (required):
-  Future<Dispute?> createDispute(DisputeCreateParam disputeCreateParam,) async {
-    final response = await createDisputeWithHttpInfo(disputeCreateParam,);
+  /// * [String] orderId (required):
+  ///   訂單ID
+  ///
+  /// * [String] description (required):
+  ///   糾紛描述
+  ///
+  /// * [List<MultipartFile>] images:
+  ///   證據圖片（可選，最多5張）
+  Future<Dispute?> createDispute(String orderId, String description, { List<MultipartFile>? images, }) async {
+    final response = await createDisputeWithHttpInfo(orderId, description,  images: images, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

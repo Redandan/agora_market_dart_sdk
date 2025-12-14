@@ -100,6 +100,9 @@ String parameterToString(dynamic value) {
   if (value is RechargeStatusEnum) {
     return RechargeStatusEnumTypeTransformer().encode(value).toString();
   }
+  if (value is ReturnReasonEnum) {
+    return ReturnReasonEnumTypeTransformer().encode(value).toString();
+  }
   if (value is ShippingCompanyEnum) {
     return ShippingCompanyEnumTypeTransformer().encode(value).toString();
   }

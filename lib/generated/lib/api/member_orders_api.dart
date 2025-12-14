@@ -453,7 +453,7 @@ class MemberOrdersApi {
 
   /// 申請退貨
   ///
-  /// 買家可以為已完成的訂單申請退貨
+  /// 買家可以為已完成的訂單申請退貨，支持上傳圖片作為證據（最多5張，每張不超過10MB）
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -462,14 +462,89 @@ class MemberOrdersApi {
   /// * [String] orderId (required):
   ///   訂單ID
   ///
-  /// * [ReturnRequestParam] returnRequestParam (required):
-  Future<Response> requestReturnWithHttpInfo(String orderId, ReturnRequestParam returnRequestParam,) async {
+  /// * [String] reason (required):
+  ///   退貨原因
+  ///
+  /// * [String] description (required):
+  ///   退貨說明
+  ///
+  /// * [List<MultipartFile>] images:
+  ///   證據圖片（可選，最多5張）
+  Future<Response> requestReturnWithHttpInfo(String orderId, String reason, String description, { List<MultipartFile>? images, }) async {
     // ignore: prefer_const_declarations
     final path = r'/orders/{orderId}/return'
       .replaceAll('{orderId}', orderId);
 
     // ignore: prefer_final_locals
-    Object? postBody = returnRequestParam;
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'reason', reason));
+      queryParams.addAll(_queryParams('', 'description', description));
+    if (images != null) {
+      queryParams.addAll(_queryParams('multi', 'images', images));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 申請退貨
+  ///
+  /// 買家可以為已完成的訂單申請退貨，支持上傳圖片作為證據（最多5張，每張不超過10MB）
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  ///   訂單ID
+  ///
+  /// * [String] reason (required):
+  ///   退貨原因
+  ///
+  /// * [String] description (required):
+  ///   退貨說明
+  ///
+  /// * [List<MultipartFile>] images:
+  ///   證據圖片（可選，最多5張）
+  Future<void> requestReturn(String orderId, String reason, String description, { List<MultipartFile>? images, }) async {
+    final response = await requestReturnWithHttpInfo(orderId, reason, description,  images: images, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// 買家回應退款方案
+  ///
+  /// 買家可以接受或拒絕賣家提供的退款不退貨方案
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  ///   訂單ID
+  ///
+  /// * [RefundOfferResponseParam] refundOfferResponseParam (required):
+  Future<Response> respondToRefundOfferWithHttpInfo(String orderId, RefundOfferResponseParam refundOfferResponseParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/orders/{orderId}/refund-offer/respond'
+      .replaceAll('{orderId}', orderId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = refundOfferResponseParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -489,18 +564,18 @@ class MemberOrdersApi {
     );
   }
 
-  /// 申請退貨
+  /// 買家回應退款方案
   ///
-  /// 買家可以為已完成的訂單申請退貨
+  /// 買家可以接受或拒絕賣家提供的退款不退貨方案
   ///
   /// Parameters:
   ///
   /// * [String] orderId (required):
   ///   訂單ID
   ///
-  /// * [ReturnRequestParam] returnRequestParam (required):
-  Future<void> requestReturn(String orderId, ReturnRequestParam returnRequestParam,) async {
-    final response = await requestReturnWithHttpInfo(orderId, returnRequestParam,);
+  /// * [RefundOfferResponseParam] refundOfferResponseParam (required):
+  Future<void> respondToRefundOffer(String orderId, RefundOfferResponseParam refundOfferResponseParam,) async {
+    final response = await respondToRefundOfferWithHttpInfo(orderId, refundOfferResponseParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

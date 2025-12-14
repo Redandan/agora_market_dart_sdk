@@ -153,7 +153,9 @@ Class | Method | HTTP request | Description
 *AdminDisputesApi* | [**getAllDisputes**](doc//AdminDisputesApi.md#getalldisputes) | **GET** /admin/disputes/disputes | 獲取所有糾紛列表
 *AdminDisputesApi* | [**getDisputeDetail1**](doc//AdminDisputesApi.md#getdisputedetail1) | **GET** /admin/disputes/{disputeId} | 查看糾紛詳情
 *AdminDisputesApi* | [**getDisputeStatistics**](doc//AdminDisputesApi.md#getdisputestatistics) | **GET** /admin/disputes/statistics | 糾紛統計報告
-*AdminDisputesApi* | [**resolveDispute**](doc//AdminDisputesApi.md#resolvedispute) | **POST** /admin/disputes/{disputeId}/resolve | 處理糾紛
+*AdminDisputesApi* | [**judgeDispute**](doc//AdminDisputesApi.md#judgedispute) | **POST** /admin/disputes/{disputeId}/judge | 判定爭議責任
+*AdminDisputesApi* | [**resolveDispute**](doc//AdminDisputesApi.md#resolvedispute) | **POST** /admin/disputes/{disputeId}/resolve | 結案爭議
+*AdminDisputesApi* | [**resolveDisputeOld**](doc//AdminDisputesApi.md#resolvedisputeold) | **POST** /admin/disputes/{disputeId}/resolve-old | 處理糾紛（舊版，保留向後兼容）
 *AdminDisputesApi* | [**searchDisputes1**](doc//AdminDisputesApi.md#searchdisputes1) | **POST** /admin/disputes/search | 搜索糾紛
 *AdminMembersApi* | [**createUserByAdmin**](doc//AdminMembersApi.md#createuserbyadmin) | **POST** /admin/members/create-user | 管理員創建用戶
 *AdminMembersApi* | [**getMemberDetail**](doc//AdminMembersApi.md#getmemberdetail) | **GET** /admin/members/{memberId} | 查看會員詳情
@@ -290,6 +292,7 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**getSellerOrderStats**](doc//MemberOrdersApi.md#getsellerorderstats) | **GET** /orders/seller/stats | 賣家訂單統計
 *MemberOrdersApi* | [**processReturn**](doc//MemberOrdersApi.md#processreturn) | **POST** /orders/{orderId}/return/process | 賣家處理退貨申請
 *MemberOrdersApi* | [**requestReturn**](doc//MemberOrdersApi.md#requestreturn) | **POST** /orders/{orderId}/return | 申請退貨
+*MemberOrdersApi* | [**respondToRefundOffer**](doc//MemberOrdersApi.md#respondtorefundoffer) | **POST** /orders/{orderId}/refund-offer/respond | 買家回應退款方案
 *MemberOrdersApi* | [**searchOrdersByBuyer**](doc//MemberOrdersApi.md#searchordersbybuyer) | **POST** /orders/buyer/search | 買家查詢訂單列表
 *MemberOrdersApi* | [**searchOrdersBySeller**](doc//MemberOrdersApi.md#searchordersbyseller) | **POST** /orders/seller/search | 賣家查詢訂單列表
 *MemberOrdersApi* | [**shipOrderLogistics**](doc//MemberOrdersApi.md#shiporderlogistics) | **POST** /orders/ship/logistics | 第三方物流發貨
@@ -486,7 +489,7 @@ Class | Method | HTTP request | Description
  - [DeliveryerUpdateParam](doc//DeliveryerUpdateParam.md)
  - [DeviceInfo](doc//DeviceInfo.md)
  - [Dispute](doc//Dispute.md)
- - [DisputeCreateParam](doc//DisputeCreateParam.md)
+ - [DisputeJudgmentParam](doc//DisputeJudgmentParam.md)
  - [DisputeOutcome](doc//DisputeOutcome.md)
  - [DisputeQueryResult](doc//DisputeQueryResult.md)
  - [DisputeSearchParam](doc//DisputeSearchParam.md)
@@ -535,6 +538,7 @@ Class | Method | HTTP request | Description
  - [OrderCancelParam](doc//OrderCancelParam.md)
  - [OrderConfirmParam](doc//OrderConfirmParam.md)
  - [OrderQueryResult](doc//OrderQueryResult.md)
+ - [OrderReturnRecord](doc//OrderReturnRecord.md)
  - [OrderSearchParam](doc//OrderSearchParam.md)
  - [OrderShipLogisticsParam](doc//OrderShipLogisticsParam.md)
  - [OrderShipPlatformParam](doc//OrderShipPlatformParam.md)
@@ -608,11 +612,12 @@ Class | Method | HTTP request | Description
  - [RechargeResponse](doc//RechargeResponse.md)
  - [RechargeSearchParam](doc//RechargeSearchParam.md)
  - [RechargeStatusEnum](doc//RechargeStatusEnum.md)
+ - [RefundOfferResponseParam](doc//RefundOfferResponseParam.md)
  - [RegisterParam](doc//RegisterParam.md)
  - [RegisterResult](doc//RegisterResult.md)
  - [ReplyIssueParam](doc//ReplyIssueParam.md)
  - [ReturnProcessParam](doc//ReturnProcessParam.md)
- - [ReturnRequestParam](doc//ReturnRequestParam.md)
+ - [ReturnReasonEnum](doc//ReturnReasonEnum.md)
  - [ReturnShippingParam](doc//ReturnShippingParam.md)
  - [Review](doc//Review.md)
  - [ReviewCreateParam](doc//ReviewCreateParam.md)

@@ -10,25 +10,28 @@
 
 part of openapi.api;
 
-class Dispute {
-  /// Returns a new [Dispute] instance.
-  Dispute({
+class OrderReturnRecord {
+  /// Returns a new [OrderReturnRecord] instance.
+  OrderReturnRecord({
     this.id,
-    this.version,
-    this.orderId,
     this.buyerId,
     this.sellerId,
-    this.status,
-    this.outcome,
+    this.reason,
     this.description,
     this.sellerReply,
-    this.adminComment,
-    this.createdAt,
+    this.trackingNumber,
+    this.shippingCompany,
+    this.requestedAt,
+    this.processedAt,
+    this.shippedAt,
+    this.receivedAt,
     this.updatedAt,
-    this.resolvedAt,
+    this.order,
+    this.buyer,
+    this.seller,
   });
 
-  /// 爭議ID
+  /// 退貨記錄ID（與訂單ID一致）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -36,24 +39,6 @@ class Dispute {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? id;
-
-  /// 版本號（樂觀鎖）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? version;
-
-  /// 訂單ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? orderId;
 
   /// 買家ID
   ///
@@ -79,17 +64,9 @@ class Dispute {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  DisputeStatusEnum? status;
+  ReturnReasonEnum? reason;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DisputeOutcome? outcome;
-
-  /// 爭議描述
+  /// 退貨說明
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -107,23 +84,59 @@ class Dispute {
   ///
   String? sellerReply;
 
-  /// 管理員處理說明
+  /// 退貨物流單號
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? adminComment;
+  String? trackingNumber;
 
-  /// 創建時間
+  /// 退貨物流公司
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  DateTime? createdAt;
+  String? shippingCompany;
+
+  /// 申請時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? requestedAt;
+
+  /// 處理時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? processedAt;
+
+  /// 寄出時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? shippedAt;
+
+  /// 收到時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? receivedAt;
 
   /// 更新時間
   ///
@@ -134,50 +147,71 @@ class Dispute {
   ///
   DateTime? updatedAt;
 
-  /// 處理時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  DateTime? resolvedAt;
+  Order? order;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  User? buyer;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  User? seller;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is Dispute &&
+  bool operator ==(Object other) => identical(this, other) || other is OrderReturnRecord &&
     other.id == id &&
-    other.version == version &&
-    other.orderId == orderId &&
     other.buyerId == buyerId &&
     other.sellerId == sellerId &&
-    other.status == status &&
-    other.outcome == outcome &&
+    other.reason == reason &&
     other.description == description &&
     other.sellerReply == sellerReply &&
-    other.adminComment == adminComment &&
-    other.createdAt == createdAt &&
+    other.trackingNumber == trackingNumber &&
+    other.shippingCompany == shippingCompany &&
+    other.requestedAt == requestedAt &&
+    other.processedAt == processedAt &&
+    other.shippedAt == shippedAt &&
+    other.receivedAt == receivedAt &&
     other.updatedAt == updatedAt &&
-    other.resolvedAt == resolvedAt;
+    other.order == order &&
+    other.buyer == buyer &&
+    other.seller == seller;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
-    (version == null ? 0 : version!.hashCode) +
-    (orderId == null ? 0 : orderId!.hashCode) +
     (buyerId == null ? 0 : buyerId!.hashCode) +
     (sellerId == null ? 0 : sellerId!.hashCode) +
-    (status == null ? 0 : status!.hashCode) +
-    (outcome == null ? 0 : outcome!.hashCode) +
+    (reason == null ? 0 : reason!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (sellerReply == null ? 0 : sellerReply!.hashCode) +
-    (adminComment == null ? 0 : adminComment!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
+    (trackingNumber == null ? 0 : trackingNumber!.hashCode) +
+    (shippingCompany == null ? 0 : shippingCompany!.hashCode) +
+    (requestedAt == null ? 0 : requestedAt!.hashCode) +
+    (processedAt == null ? 0 : processedAt!.hashCode) +
+    (shippedAt == null ? 0 : shippedAt!.hashCode) +
+    (receivedAt == null ? 0 : receivedAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (resolvedAt == null ? 0 : resolvedAt!.hashCode);
+    (order == null ? 0 : order!.hashCode) +
+    (buyer == null ? 0 : buyer!.hashCode) +
+    (seller == null ? 0 : seller!.hashCode);
 
   @override
-  String toString() => 'Dispute[id=$id, version=$version, orderId=$orderId, buyerId=$buyerId, sellerId=$sellerId, status=$status, outcome=$outcome, description=$description, sellerReply=$sellerReply, adminComment=$adminComment, createdAt=$createdAt, updatedAt=$updatedAt, resolvedAt=$resolvedAt]';
+  String toString() => 'OrderReturnRecord[id=$id, buyerId=$buyerId, sellerId=$sellerId, reason=$reason, description=$description, sellerReply=$sellerReply, trackingNumber=$trackingNumber, shippingCompany=$shippingCompany, requestedAt=$requestedAt, processedAt=$processedAt, shippedAt=$shippedAt, receivedAt=$receivedAt, updatedAt=$updatedAt, order=$order, buyer=$buyer, seller=$seller]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -185,16 +219,6 @@ class Dispute {
       json[r'id'] = this.id;
     } else {
       json[r'id'] = null;
-    }
-    if (this.version != null) {
-      json[r'version'] = this.version;
-    } else {
-      json[r'version'] = null;
-    }
-    if (this.orderId != null) {
-      json[r'orderId'] = this.orderId;
-    } else {
-      json[r'orderId'] = null;
     }
     if (this.buyerId != null) {
       json[r'buyerId'] = this.buyerId;
@@ -206,15 +230,10 @@ class Dispute {
     } else {
       json[r'sellerId'] = null;
     }
-    if (this.status != null) {
-      json[r'status'] = this.status;
+    if (this.reason != null) {
+      json[r'reason'] = this.reason;
     } else {
-      json[r'status'] = null;
-    }
-    if (this.outcome != null) {
-      json[r'outcome'] = this.outcome;
-    } else {
-      json[r'outcome'] = null;
+      json[r'reason'] = null;
     }
     if (this.description != null) {
       json[r'description'] = this.description;
@@ -226,33 +245,63 @@ class Dispute {
     } else {
       json[r'sellerReply'] = null;
     }
-    if (this.adminComment != null) {
-      json[r'adminComment'] = this.adminComment;
+    if (this.trackingNumber != null) {
+      json[r'trackingNumber'] = this.trackingNumber;
     } else {
-      json[r'adminComment'] = null;
+      json[r'trackingNumber'] = null;
     }
-    if (this.createdAt != null) {
-      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
+    if (this.shippingCompany != null) {
+      json[r'shippingCompany'] = this.shippingCompany;
     } else {
-      json[r'createdAt'] = null;
+      json[r'shippingCompany'] = null;
+    }
+    if (this.requestedAt != null) {
+      json[r'requestedAt'] = this.requestedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'requestedAt'] = null;
+    }
+    if (this.processedAt != null) {
+      json[r'processedAt'] = this.processedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'processedAt'] = null;
+    }
+    if (this.shippedAt != null) {
+      json[r'shippedAt'] = this.shippedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'shippedAt'] = null;
+    }
+    if (this.receivedAt != null) {
+      json[r'receivedAt'] = this.receivedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'receivedAt'] = null;
     }
     if (this.updatedAt != null) {
       json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
     } else {
       json[r'updatedAt'] = null;
     }
-    if (this.resolvedAt != null) {
-      json[r'resolvedAt'] = this.resolvedAt!.toUtc().toIso8601String();
+    if (this.order != null) {
+      json[r'order'] = this.order;
     } else {
-      json[r'resolvedAt'] = null;
+      json[r'order'] = null;
+    }
+    if (this.buyer != null) {
+      json[r'buyer'] = this.buyer;
+    } else {
+      json[r'buyer'] = null;
+    }
+    if (this.seller != null) {
+      json[r'seller'] = this.seller;
+    } else {
+      json[r'seller'] = null;
     }
     return json;
   }
 
-  /// Returns a new [Dispute] instance and imports its values from
+  /// Returns a new [OrderReturnRecord] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static Dispute? fromJson(dynamic value) {
+  static OrderReturnRecord? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -261,36 +310,39 @@ class Dispute {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Dispute[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Dispute[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "OrderReturnRecord[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "OrderReturnRecord[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return Dispute(
+      return OrderReturnRecord(
         id: mapValueOfType<String>(json, r'id'),
-        version: mapValueOfType<int>(json, r'version'),
-        orderId: mapValueOfType<String>(json, r'orderId'),
         buyerId: mapValueOfType<int>(json, r'buyerId'),
         sellerId: mapValueOfType<int>(json, r'sellerId'),
-        status: DisputeStatusEnum.fromJson(json[r'status']),
-        outcome: DisputeOutcome.fromJson(json[r'outcome']),
+        reason: ReturnReasonEnum.fromJson(json[r'reason']),
         description: mapValueOfType<String>(json, r'description'),
         sellerReply: mapValueOfType<String>(json, r'sellerReply'),
-        adminComment: mapValueOfType<String>(json, r'adminComment'),
-        createdAt: mapDateTime(json, r'createdAt', r''),
+        trackingNumber: mapValueOfType<String>(json, r'trackingNumber'),
+        shippingCompany: mapValueOfType<String>(json, r'shippingCompany'),
+        requestedAt: mapDateTime(json, r'requestedAt', r''),
+        processedAt: mapDateTime(json, r'processedAt', r''),
+        shippedAt: mapDateTime(json, r'shippedAt', r''),
+        receivedAt: mapDateTime(json, r'receivedAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
-        resolvedAt: mapDateTime(json, r'resolvedAt', r''),
+        order: Order.fromJson(json[r'order']),
+        buyer: User.fromJson(json[r'buyer']),
+        seller: User.fromJson(json[r'seller']),
       );
     }
     return null;
   }
 
-  static List<Dispute> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <Dispute>[];
+  static List<OrderReturnRecord> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <OrderReturnRecord>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = Dispute.fromJson(row);
+        final value = OrderReturnRecord.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -299,12 +351,12 @@ class Dispute {
     return result.toList(growable: growable);
   }
 
-  static Map<String, Dispute> mapFromJson(dynamic json) {
-    final map = <String, Dispute>{};
+  static Map<String, OrderReturnRecord> mapFromJson(dynamic json) {
+    final map = <String, OrderReturnRecord>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = Dispute.fromJson(entry.value);
+        final value = OrderReturnRecord.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -313,14 +365,14 @@ class Dispute {
     return map;
   }
 
-  // maps a json object with a list of Dispute-objects as value to a dart map
-  static Map<String, List<Dispute>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<Dispute>>{};
+  // maps a json object with a list of OrderReturnRecord-objects as value to a dart map
+  static Map<String, List<OrderReturnRecord>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<OrderReturnRecord>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = Dispute.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = OrderReturnRecord.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

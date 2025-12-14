@@ -16,6 +16,8 @@ class ReturnProcessParam {
     required this.approved,
     this.sellerReply,
     this.rejectionReason,
+    this.refundOption,
+    this.refundAmount,
   });
 
   /// 是否同意退貨
@@ -39,21 +41,37 @@ class ReturnProcessParam {
   ///
   String? rejectionReason;
 
+  /// 退款選項：FULL_REFUND_NO_RETURN(全額退款不退貨), PARTIAL_REFUND_NO_RETURN(部分退款不退貨), RETURN_REQUIRED(需要退貨)
+  ReturnProcessParamRefundOptionEnum? refundOption;
+
+  /// 部分退款金額（當 refundOption 為 PARTIAL_REFUND_NO_RETURN 時必填）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? refundAmount;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ReturnProcessParam &&
     other.approved == approved &&
     other.sellerReply == sellerReply &&
-    other.rejectionReason == rejectionReason;
+    other.rejectionReason == rejectionReason &&
+    other.refundOption == refundOption &&
+    other.refundAmount == refundAmount;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (approved.hashCode) +
     (sellerReply == null ? 0 : sellerReply!.hashCode) +
-    (rejectionReason == null ? 0 : rejectionReason!.hashCode);
+    (rejectionReason == null ? 0 : rejectionReason!.hashCode) +
+    (refundOption == null ? 0 : refundOption!.hashCode) +
+    (refundAmount == null ? 0 : refundAmount!.hashCode);
 
   @override
-  String toString() => 'ReturnProcessParam[approved=$approved, sellerReply=$sellerReply, rejectionReason=$rejectionReason]';
+  String toString() => 'ReturnProcessParam[approved=$approved, sellerReply=$sellerReply, rejectionReason=$rejectionReason, refundOption=$refundOption, refundAmount=$refundAmount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -67,6 +85,16 @@ class ReturnProcessParam {
       json[r'rejectionReason'] = this.rejectionReason;
     } else {
       json[r'rejectionReason'] = null;
+    }
+    if (this.refundOption != null) {
+      json[r'refundOption'] = this.refundOption;
+    } else {
+      json[r'refundOption'] = null;
+    }
+    if (this.refundAmount != null) {
+      json[r'refundAmount'] = this.refundAmount;
+    } else {
+      json[r'refundAmount'] = null;
     }
     return json;
   }
@@ -93,6 +121,8 @@ class ReturnProcessParam {
         approved: mapValueOfType<bool>(json, r'approved')!,
         sellerReply: mapValueOfType<String>(json, r'sellerReply'),
         rejectionReason: mapValueOfType<String>(json, r'rejectionReason'),
+        refundOption: ReturnProcessParamRefundOptionEnum.fromJson(json[r'refundOption']),
+        refundAmount: num.parse('${json[r'refundAmount']}'),
       );
     }
     return null;
@@ -143,4 +173,84 @@ class ReturnProcessParam {
     'approved',
   };
 }
+
+/// 退款選項：FULL_REFUND_NO_RETURN(全額退款不退貨), PARTIAL_REFUND_NO_RETURN(部分退款不退貨), RETURN_REQUIRED(需要退貨)
+class ReturnProcessParamRefundOptionEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ReturnProcessParamRefundOptionEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const FULL_REFUND_NO_RETURN = ReturnProcessParamRefundOptionEnum._(r'FULL_REFUND_NO_RETURN');
+  static const PARTIAL_REFUND_NO_RETURN = ReturnProcessParamRefundOptionEnum._(r'PARTIAL_REFUND_NO_RETURN');
+  static const RETURN_REQUIRED = ReturnProcessParamRefundOptionEnum._(r'RETURN_REQUIRED');
+  static const unknownDefaultOpenApi = ReturnProcessParamRefundOptionEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ReturnProcessParamRefundOptionEnum].
+  static const values = <ReturnProcessParamRefundOptionEnum>[
+    FULL_REFUND_NO_RETURN,
+    PARTIAL_REFUND_NO_RETURN,
+    RETURN_REQUIRED,
+    unknownDefaultOpenApi,
+  ];
+
+  static ReturnProcessParamRefundOptionEnum? fromJson(dynamic value) => ReturnProcessParamRefundOptionEnumTypeTransformer().decode(value);
+
+  static List<ReturnProcessParamRefundOptionEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ReturnProcessParamRefundOptionEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ReturnProcessParamRefundOptionEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ReturnProcessParamRefundOptionEnum] to String,
+/// and [decode] dynamic data back to [ReturnProcessParamRefundOptionEnum].
+class ReturnProcessParamRefundOptionEnumTypeTransformer {
+  factory ReturnProcessParamRefundOptionEnumTypeTransformer() => _instance ??= const ReturnProcessParamRefundOptionEnumTypeTransformer._();
+
+  const ReturnProcessParamRefundOptionEnumTypeTransformer._();
+
+  String encode(ReturnProcessParamRefundOptionEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ReturnProcessParamRefundOptionEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ReturnProcessParamRefundOptionEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'FULL_REFUND_NO_RETURN': return ReturnProcessParamRefundOptionEnum.FULL_REFUND_NO_RETURN;
+        case r'PARTIAL_REFUND_NO_RETURN': return ReturnProcessParamRefundOptionEnum.PARTIAL_REFUND_NO_RETURN;
+        case r'RETURN_REQUIRED': return ReturnProcessParamRefundOptionEnum.RETURN_REQUIRED;
+        case r'unknown_default_open_api': return ReturnProcessParamRefundOptionEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ReturnProcessParamRefundOptionEnumTypeTransformer] instance.
+  static ReturnProcessParamRefundOptionEnumTypeTransformer? _instance;
+}
+
 
