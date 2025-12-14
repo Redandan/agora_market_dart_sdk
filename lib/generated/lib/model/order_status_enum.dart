@@ -24,8 +24,7 @@ class OrderStatusEnum {
   String toJson() => value;
 
   static const PENDING_SHIPMENT = OrderStatusEnum._(r'PENDING_SHIPMENT');
-  static const CANCELLED_BY_BUYER_REQUESTED = OrderStatusEnum._(r'CANCELLED_BY_BUYER_REQUESTED');
-  static const CANCELLED_BY_BUYER_APPROVED = OrderStatusEnum._(r'CANCELLED_BY_BUYER_APPROVED');
+  static const CANCELLED_BY_BUYER = OrderStatusEnum._(r'CANCELLED_BY_BUYER');
   static const CANCELLED_BY_SELLER = OrderStatusEnum._(r'CANCELLED_BY_SELLER');
   static const CANCELLED_BY_PLATFORM = OrderStatusEnum._(r'CANCELLED_BY_PLATFORM');
   static const SHIPPED = OrderStatusEnum._(r'SHIPPED');
@@ -62,8 +61,7 @@ class OrderStatusEnum {
   /// List of all possible values in this [enum][OrderStatusEnum].
   static const values = <OrderStatusEnum>[
     PENDING_SHIPMENT,
-    CANCELLED_BY_BUYER_REQUESTED,
-    CANCELLED_BY_BUYER_APPROVED,
+    CANCELLED_BY_BUYER,
     CANCELLED_BY_SELLER,
     CANCELLED_BY_PLATFORM,
     SHIPPED,
@@ -135,8 +133,7 @@ class OrderStatusEnumTypeTransformer {
     if (data != null) {
       switch (data) {
         case r'PENDING_SHIPMENT': return OrderStatusEnum.PENDING_SHIPMENT;
-        case r'CANCELLED_BY_BUYER_REQUESTED': return OrderStatusEnum.CANCELLED_BY_BUYER_REQUESTED;
-        case r'CANCELLED_BY_BUYER_APPROVED': return OrderStatusEnum.CANCELLED_BY_BUYER_APPROVED;
+        case r'CANCELLED_BY_BUYER': return OrderStatusEnum.CANCELLED_BY_BUYER;
         case r'CANCELLED_BY_SELLER': return OrderStatusEnum.CANCELLED_BY_SELLER;
         case r'CANCELLED_BY_PLATFORM': return OrderStatusEnum.CANCELLED_BY_PLATFORM;
         case r'SHIPPED': return OrderStatusEnum.SHIPPED;
