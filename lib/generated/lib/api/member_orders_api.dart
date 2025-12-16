@@ -173,7 +173,7 @@ class MemberOrdersApi {
 
   /// 獲取買家訂單詳情
   ///
-  /// 根據訂單ID獲取買家訂單詳情
+  /// 根據訂單ID獲取買家訂單詳情（包含商品信息、配送詳情、退貨記錄）
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -209,13 +209,13 @@ class MemberOrdersApi {
 
   /// 獲取買家訂單詳情
   ///
-  /// 根據訂單ID獲取買家訂單詳情
+  /// 根據訂單ID獲取買家訂單詳情（包含商品信息、配送詳情、退貨記錄）
   ///
   /// Parameters:
   ///
   /// * [String] orderId (required):
   ///   訂單ID
-  Future<Order?> getOrderByBuyer(String orderId,) async {
+  Future<OrderQueryResult?> getOrderByBuyer(String orderId,) async {
     final response = await getOrderByBuyerWithHttpInfo(orderId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -224,7 +224,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Order',) as Order;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderQueryResult',) as OrderQueryResult;
     
     }
     return null;
@@ -232,7 +232,7 @@ class MemberOrdersApi {
 
   /// 獲取配送員訂單詳情
   ///
-  /// 根據訂單ID獲取配送員訂單詳情
+  /// 根據訂單ID獲取配送員訂單詳情（包含商品信息、配送詳情、退貨記錄）
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -268,13 +268,13 @@ class MemberOrdersApi {
 
   /// 獲取配送員訂單詳情
   ///
-  /// 根據訂單ID獲取配送員訂單詳情
+  /// 根據訂單ID獲取配送員訂單詳情（包含商品信息、配送詳情、退貨記錄）
   ///
   /// Parameters:
   ///
   /// * [String] orderId (required):
   ///   訂單ID
-  Future<Order?> getOrderByDeliveryer(String orderId,) async {
+  Future<OrderQueryResult?> getOrderByDeliveryer(String orderId,) async {
     final response = await getOrderByDeliveryerWithHttpInfo(orderId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -283,7 +283,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Order',) as Order;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderQueryResult',) as OrderQueryResult;
     
     }
     return null;
@@ -291,7 +291,7 @@ class MemberOrdersApi {
 
   /// 獲取賣家訂單詳情
   ///
-  /// 根據訂單ID獲取賣家訂單詳情
+  /// 根據訂單ID獲取賣家訂單詳情（包含商品信息、配送詳情、退貨記錄）
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -327,13 +327,13 @@ class MemberOrdersApi {
 
   /// 獲取賣家訂單詳情
   ///
-  /// 根據訂單ID獲取賣家訂單詳情
+  /// 根據訂單ID獲取賣家訂單詳情（包含商品信息、配送詳情、退貨記錄）
   ///
   /// Parameters:
   ///
   /// * [String] orderId (required):
   ///   訂單ID
-  Future<Order?> getOrderBySeller(String orderId,) async {
+  Future<OrderQueryResult?> getOrderBySeller(String orderId,) async {
     final response = await getOrderBySellerWithHttpInfo(orderId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -342,7 +342,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Order',) as Order;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderQueryResult',) as OrderQueryResult;
     
     }
     return null;
