@@ -328,6 +328,8 @@ class ApiClient {
           return DeviceInfo.fromJson(value);
         case 'Dispute':
           return Dispute.fromJson(value);
+        case 'DisputeCreateParam':
+          return DisputeCreateParam.fromJson(value);
         case 'DisputeJudgmentParam':
           return DisputeJudgmentParam.fromJson(value);
         case 'DisputeOutcome':
@@ -586,6 +588,8 @@ class ApiClient {
           return ReturnProcessParam.fromJson(value);
         case 'ReturnReasonEnum':
           return ReturnReasonEnumTypeTransformer().decode(value);
+        case 'ReturnRequestParam':
+          return ReturnRequestParam.fromJson(value);
         case 'ReturnShippingParam':
           return ReturnShippingParam.fromJson(value);
         case 'Review':

@@ -453,7 +453,7 @@ class MemberOrdersApi {
 
   /// 申請退貨
   ///
-  /// 買家可以為已完成的訂單申請退貨，支持上傳圖片作為證據（最多5張，每張不超過10MB）
+  /// 買家可以為已完成的訂單申請退貨，支持上傳圖片作為證據（最多5張）
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -462,33 +462,20 @@ class MemberOrdersApi {
   /// * [String] orderId (required):
   ///   訂單ID
   ///
-  /// * [String] reason (required):
-  ///   退貨原因
-  ///
-  /// * [String] description (required):
-  ///   退貨說明
-  ///
-  /// * [List<MultipartFile>] images:
-  ///   證據圖片（可選，最多5張）
-  Future<Response> requestReturnWithHttpInfo(String orderId, String reason, String description, { List<MultipartFile>? images, }) async {
+  /// * [ReturnRequestParam] returnRequestParam (required):
+  Future<Response> requestReturnWithHttpInfo(String orderId, ReturnRequestParam returnRequestParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/orders/{orderId}/return'
       .replaceAll('{orderId}', orderId);
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = returnRequestParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'reason', reason));
-      queryParams.addAll(_queryParams('', 'description', description));
-    if (images != null) {
-      queryParams.addAll(_queryParams('multi', 'images', images));
-    }
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -504,23 +491,16 @@ class MemberOrdersApi {
 
   /// 申請退貨
   ///
-  /// 買家可以為已完成的訂單申請退貨，支持上傳圖片作為證據（最多5張，每張不超過10MB）
+  /// 買家可以為已完成的訂單申請退貨，支持上傳圖片作為證據（最多5張）
   ///
   /// Parameters:
   ///
   /// * [String] orderId (required):
   ///   訂單ID
   ///
-  /// * [String] reason (required):
-  ///   退貨原因
-  ///
-  /// * [String] description (required):
-  ///   退貨說明
-  ///
-  /// * [List<MultipartFile>] images:
-  ///   證據圖片（可選，最多5張）
-  Future<void> requestReturn(String orderId, String reason, String description, { List<MultipartFile>? images, }) async {
-    final response = await requestReturnWithHttpInfo(orderId, reason, description,  images: images, );
+  /// * [ReturnRequestParam] returnRequestParam (required):
+  Future<void> requestReturn(String orderId, ReturnRequestParam returnRequestParam,) async {
+    final response = await requestReturnWithHttpInfo(orderId, returnRequestParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
