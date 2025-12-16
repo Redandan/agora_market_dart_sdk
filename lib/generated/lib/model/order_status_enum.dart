@@ -24,9 +24,6 @@ class OrderStatusEnum {
   String toJson() => value;
 
   static const PENDING_SHIPMENT = OrderStatusEnum._(r'PENDING_SHIPMENT');
-  static const CANCELLED_BY_BUYER = OrderStatusEnum._(r'CANCELLED_BY_BUYER');
-  static const CANCELLED_BY_SELLER = OrderStatusEnum._(r'CANCELLED_BY_SELLER');
-  static const CANCELLED_BY_PLATFORM = OrderStatusEnum._(r'CANCELLED_BY_PLATFORM');
   static const SHIPPED = OrderStatusEnum._(r'SHIPPED');
   static const DELIVERY_ASSIGNING = OrderStatusEnum._(r'DELIVERY_ASSIGNING');
   static const DELIVERY_ASSIGNED = OrderStatusEnum._(r'DELIVERY_ASSIGNED');
@@ -55,15 +52,15 @@ class OrderStatusEnum {
   static const DISPUTE_BUYER_FAULT = OrderStatusEnum._(r'DISPUTE_BUYER_FAULT');
   static const DISPUTE_PARTIAL_FAULT = OrderStatusEnum._(r'DISPUTE_PARTIAL_FAULT');
   static const DISPUTE_RESOLVED = OrderStatusEnum._(r'DISPUTE_RESOLVED');
+  static const CANCELLED_BY_BUYER = OrderStatusEnum._(r'CANCELLED_BY_BUYER');
+  static const CANCELLED_BY_SELLER = OrderStatusEnum._(r'CANCELLED_BY_SELLER');
+  static const CANCELLED_BY_PLATFORM = OrderStatusEnum._(r'CANCELLED_BY_PLATFORM');
   static const COMPLETED_FINAL = OrderStatusEnum._(r'COMPLETED_FINAL');
   static const unknownDefaultOpenApi = OrderStatusEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][OrderStatusEnum].
   static const values = <OrderStatusEnum>[
     PENDING_SHIPMENT,
-    CANCELLED_BY_BUYER,
-    CANCELLED_BY_SELLER,
-    CANCELLED_BY_PLATFORM,
     SHIPPED,
     DELIVERY_ASSIGNING,
     DELIVERY_ASSIGNED,
@@ -92,6 +89,9 @@ class OrderStatusEnum {
     DISPUTE_BUYER_FAULT,
     DISPUTE_PARTIAL_FAULT,
     DISPUTE_RESOLVED,
+    CANCELLED_BY_BUYER,
+    CANCELLED_BY_SELLER,
+    CANCELLED_BY_PLATFORM,
     COMPLETED_FINAL,
     unknownDefaultOpenApi,
   ];
@@ -133,9 +133,6 @@ class OrderStatusEnumTypeTransformer {
     if (data != null) {
       switch (data) {
         case r'PENDING_SHIPMENT': return OrderStatusEnum.PENDING_SHIPMENT;
-        case r'CANCELLED_BY_BUYER': return OrderStatusEnum.CANCELLED_BY_BUYER;
-        case r'CANCELLED_BY_SELLER': return OrderStatusEnum.CANCELLED_BY_SELLER;
-        case r'CANCELLED_BY_PLATFORM': return OrderStatusEnum.CANCELLED_BY_PLATFORM;
         case r'SHIPPED': return OrderStatusEnum.SHIPPED;
         case r'DELIVERY_ASSIGNING': return OrderStatusEnum.DELIVERY_ASSIGNING;
         case r'DELIVERY_ASSIGNED': return OrderStatusEnum.DELIVERY_ASSIGNED;
@@ -164,6 +161,9 @@ class OrderStatusEnumTypeTransformer {
         case r'DISPUTE_BUYER_FAULT': return OrderStatusEnum.DISPUTE_BUYER_FAULT;
         case r'DISPUTE_PARTIAL_FAULT': return OrderStatusEnum.DISPUTE_PARTIAL_FAULT;
         case r'DISPUTE_RESOLVED': return OrderStatusEnum.DISPUTE_RESOLVED;
+        case r'CANCELLED_BY_BUYER': return OrderStatusEnum.CANCELLED_BY_BUYER;
+        case r'CANCELLED_BY_SELLER': return OrderStatusEnum.CANCELLED_BY_SELLER;
+        case r'CANCELLED_BY_PLATFORM': return OrderStatusEnum.CANCELLED_BY_PLATFORM;
         case r'COMPLETED_FINAL': return OrderStatusEnum.COMPLETED_FINAL;
         case r'unknown_default_open_api': return OrderStatusEnum.unknownDefaultOpenApi;
         default:
