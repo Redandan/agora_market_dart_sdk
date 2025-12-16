@@ -227,12 +227,6 @@ class Order {
   DateTime? refundedAt;
 
   /// 退款金額（部分退款時使用）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? refundAmount;
 
   /// 退款方案過期時間（部分退款方案時使用）
@@ -641,7 +635,9 @@ class Order {
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         cancelledAt: mapDateTime(json, r'cancelledAt', r''),
         refundedAt: mapDateTime(json, r'refundedAt', r''),
-        refundAmount: num.parse('${json[r'refundAmount']}'),
+        refundAmount: json[r'refundAmount'] == null
+            ? null
+            : num.parse('${json[r'refundAmount']}'),
         refundOfferExpiresAt: mapDateTime(json, r'refundOfferExpiresAt', r''),
         reviewedAt: mapDateTime(json, r'reviewedAt', r''),
         originalPrice: num.parse('${json[r'originalPrice']}'),
