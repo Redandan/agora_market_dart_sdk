@@ -15,6 +15,7 @@ class OrderQueryResult {
   OrderQueryResult({
     this.order,
     this.deliveryDetail,
+    this.returnRecord,
   });
 
   ///
@@ -33,19 +34,29 @@ class OrderQueryResult {
   ///
   DeliveryDetail? deliveryDetail;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  OrderReturnRecord? returnRecord;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrderQueryResult &&
     other.order == order &&
-    other.deliveryDetail == deliveryDetail;
+    other.deliveryDetail == deliveryDetail &&
+    other.returnRecord == returnRecord;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (order == null ? 0 : order!.hashCode) +
-    (deliveryDetail == null ? 0 : deliveryDetail!.hashCode);
+    (deliveryDetail == null ? 0 : deliveryDetail!.hashCode) +
+    (returnRecord == null ? 0 : returnRecord!.hashCode);
 
   @override
-  String toString() => 'OrderQueryResult[order=$order, deliveryDetail=$deliveryDetail]';
+  String toString() => 'OrderQueryResult[order=$order, deliveryDetail=$deliveryDetail, returnRecord=$returnRecord]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -58,6 +69,11 @@ class OrderQueryResult {
       json[r'deliveryDetail'] = this.deliveryDetail;
     } else {
       json[r'deliveryDetail'] = null;
+    }
+    if (this.returnRecord != null) {
+      json[r'returnRecord'] = this.returnRecord;
+    } else {
+      json[r'returnRecord'] = null;
     }
     return json;
   }
@@ -83,6 +99,7 @@ class OrderQueryResult {
       return OrderQueryResult(
         order: Order.fromJson(json[r'order']),
         deliveryDetail: DeliveryDetail.fromJson(json[r'deliveryDetail']),
+        returnRecord: OrderReturnRecord.fromJson(json[r'returnRecord']),
       );
     }
     return null;

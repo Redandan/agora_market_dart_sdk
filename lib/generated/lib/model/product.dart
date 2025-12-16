@@ -66,8 +66,8 @@ class Product {
     this.stockBelowMinimum,
     this.minimumShippingFee,
     this.defaultShippingFee,
-    this.pickupServiceTypes = const [],
     this.pickupServiceTypeFees = const {},
+    this.pickupServiceTypes = const [],
     this.shippingFee,
   });
 
@@ -456,10 +456,10 @@ class Product {
   ///
   num? defaultShippingFee;
 
+  Map<String, num> pickupServiceTypeFees;
+
   /// 支援的取貨服務類型列表
   List<PickupServiceTypeEnum> pickupServiceTypes;
-
-  Map<String, num> pickupServiceTypeFees;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -524,8 +524,8 @@ class Product {
     other.stockBelowMinimum == stockBelowMinimum &&
     other.minimumShippingFee == minimumShippingFee &&
     other.defaultShippingFee == defaultShippingFee &&
-    _deepEquality.equals(other.pickupServiceTypes, pickupServiceTypes) &&
     _deepEquality.equals(other.pickupServiceTypeFees, pickupServiceTypeFees) &&
+    _deepEquality.equals(other.pickupServiceTypes, pickupServiceTypes) &&
     other.shippingFee == shippingFee;
 
   @override
@@ -584,12 +584,12 @@ class Product {
     (stockBelowMinimum == null ? 0 : stockBelowMinimum!.hashCode) +
     (minimumShippingFee == null ? 0 : minimumShippingFee!.hashCode) +
     (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
-    (pickupServiceTypes.hashCode) +
     (pickupServiceTypeFees.hashCode) +
+    (pickupServiceTypes.hashCode) +
     (shippingFee == null ? 0 : shippingFee!.hashCode);
 
   @override
-  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, stock=$stock, category=$category, sellerId=$sellerId, imageUrlsJson=$imageUrlsJson, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, reviewCount=$reviewCount, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skusJson=$skusJson, brand=$brand, minStock=$minStock, pickupServiceTypesJson=$pickupServiceTypesJson, pickupServiceTypeFeesJson=$pickupServiceTypeFeesJson, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions, priceUsdt=$priceUsdt, exchangeRate=$exchangeRate, usingDefaultRate=$usingDefaultRate, freeShippingThresholdUsdt=$freeShippingThresholdUsdt, imageUrls=$imageUrls, skus=$skus, stockLow=$stockLow, inStock=$inStock, stockBelowMinimum=$stockBelowMinimum, minimumShippingFee=$minimumShippingFee, defaultShippingFee=$defaultShippingFee, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, shippingFee=$shippingFee]';
+  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, stock=$stock, category=$category, sellerId=$sellerId, imageUrlsJson=$imageUrlsJson, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, reviewCount=$reviewCount, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skusJson=$skusJson, brand=$brand, minStock=$minStock, pickupServiceTypesJson=$pickupServiceTypesJson, pickupServiceTypeFeesJson=$pickupServiceTypeFeesJson, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions, priceUsdt=$priceUsdt, exchangeRate=$exchangeRate, usingDefaultRate=$usingDefaultRate, freeShippingThresholdUsdt=$freeShippingThresholdUsdt, imageUrls=$imageUrls, skus=$skus, stockLow=$stockLow, inStock=$inStock, stockBelowMinimum=$stockBelowMinimum, minimumShippingFee=$minimumShippingFee, defaultShippingFee=$defaultShippingFee, pickupServiceTypeFees=$pickupServiceTypeFees, pickupServiceTypes=$pickupServiceTypes, shippingFee=$shippingFee]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -790,8 +790,8 @@ class Product {
     } else {
       json[r'defaultShippingFee'] = null;
     }
-      json[r'pickupServiceTypes'] = this.pickupServiceTypes;
       json[r'pickupServiceTypeFees'] = this.pickupServiceTypeFees;
+      json[r'pickupServiceTypes'] = this.pickupServiceTypes;
     if (this.shippingFee != null) {
       json[r'shippingFee'] = this.shippingFee;
     } else {
@@ -876,8 +876,8 @@ class Product {
         stockBelowMinimum: mapValueOfType<bool>(json, r'stockBelowMinimum'),
         minimumShippingFee: num.parse('${json[r'minimumShippingFee']}'),
         defaultShippingFee: num.parse('${json[r'defaultShippingFee']}'),
-        pickupServiceTypes: PickupServiceTypeEnum.listFromJson(json[r'pickupServiceTypes']),
         pickupServiceTypeFees: mapCastOfType<String, num>(json, r'pickupServiceTypeFees') ?? const {},
+        pickupServiceTypes: PickupServiceTypeEnum.listFromJson(json[r'pickupServiceTypes']),
         shippingFee: num.parse('${json[r'shippingFee']}'),
       );
     }
