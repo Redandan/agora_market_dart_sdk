@@ -26,6 +26,8 @@ class OrderSearchParam {
     this.productId,
     this.status,
     this.startTime,
+    this.updatedStartTime,
+    this.updatedEndTime,
   });
 
   /// 頁碼，從1開始
@@ -144,6 +146,24 @@ class OrderSearchParam {
   ///
   String? startTime;
 
+  /// 更新開始時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? updatedStartTime;
+
+  /// 更新結束時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? updatedEndTime;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrderSearchParam &&
     other.page == page &&
@@ -158,7 +178,9 @@ class OrderSearchParam {
     other.sellerId == sellerId &&
     other.productId == productId &&
     other.status == status &&
-    other.startTime == startTime;
+    other.startTime == startTime &&
+    other.updatedStartTime == updatedStartTime &&
+    other.updatedEndTime == updatedEndTime;
 
   @override
   int get hashCode =>
@@ -175,10 +197,12 @@ class OrderSearchParam {
     (sellerId == null ? 0 : sellerId!.hashCode) +
     (productId == null ? 0 : productId!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
-    (startTime == null ? 0 : startTime!.hashCode);
+    (startTime == null ? 0 : startTime!.hashCode) +
+    (updatedStartTime == null ? 0 : updatedStartTime!.hashCode) +
+    (updatedEndTime == null ? 0 : updatedEndTime!.hashCode);
 
   @override
-  String toString() => 'OrderSearchParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, orderId=$orderId, buyerId=$buyerId, sellerId=$sellerId, productId=$productId, status=$status, startTime=$startTime]';
+  String toString() => 'OrderSearchParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, orderId=$orderId, buyerId=$buyerId, sellerId=$sellerId, productId=$productId, status=$status, startTime=$startTime, updatedStartTime=$updatedStartTime, updatedEndTime=$updatedEndTime]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -247,6 +271,16 @@ class OrderSearchParam {
     } else {
       json[r'startTime'] = null;
     }
+    if (this.updatedStartTime != null) {
+      json[r'updatedStartTime'] = this.updatedStartTime;
+    } else {
+      json[r'updatedStartTime'] = null;
+    }
+    if (this.updatedEndTime != null) {
+      json[r'updatedEndTime'] = this.updatedEndTime;
+    } else {
+      json[r'updatedEndTime'] = null;
+    }
     return json;
   }
 
@@ -282,6 +316,8 @@ class OrderSearchParam {
         productId: mapValueOfType<int>(json, r'productId'),
         status: OrderStatusEnum.fromJson(json[r'status']),
         startTime: mapValueOfType<String>(json, r'startTime'),
+        updatedStartTime: mapValueOfType<String>(json, r'updatedStartTime'),
+        updatedEndTime: mapValueOfType<String>(json, r'updatedEndTime'),
       );
     }
     return null;
