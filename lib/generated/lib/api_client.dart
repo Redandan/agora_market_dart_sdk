@@ -350,6 +350,12 @@ class ApiClient {
           return EmailLoginSendCodeResponse.fromJson(value);
         case 'ErrorResponse':
           return ErrorResponse.fromJson(value);
+        case 'ExchangeRateRangeDTO':
+          return ExchangeRateRangeDTO.fromJson(value);
+        case 'ExchangeRateRangeSuggestionDTO':
+          return ExchangeRateRangeSuggestionDTO.fromJson(value);
+        case 'ExchangeRateRangeUpdateParam':
+          return ExchangeRateRangeUpdateParam.fromJson(value);
         case 'FileRecord':
           return FileRecord.fromJson(value);
         case 'FileRecordInfo':
@@ -662,6 +668,8 @@ class ApiClient {
           return StoreShippingConfigParam.fromJson(value);
         case 'StoreUpdateParam':
           return StoreUpdateParam.fromJson(value);
+        case 'SuggestionActionParam':
+          return SuggestionActionParam.fromJson(value);
         case 'TaiwanPostalArea':
           return TaiwanPostalArea.fromJson(value);
         case 'TelegramBotInfo':

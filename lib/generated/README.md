@@ -157,6 +157,15 @@ Class | Method | HTTP request | Description
 *AdminDisputesApi* | [**resolveDispute**](doc//AdminDisputesApi.md#resolvedispute) | **POST** /admin/disputes/{disputeId}/resolve | 結案爭議
 *AdminDisputesApi* | [**resolveDisputeOld**](doc//AdminDisputesApi.md#resolvedisputeold) | **POST** /admin/disputes/{disputeId}/resolve-old | 處理糾紛（舊版，保留向後兼容）
 *AdminDisputesApi* | [**searchDisputes1**](doc//AdminDisputesApi.md#searchdisputes1) | **POST** /admin/disputes/search | 搜索糾紛
+*AdminExchangeRateRangeApi* | [**approveSuggestion**](doc//AdminExchangeRateRangeApi.md#approvesuggestion) | **POST** /admin/exchange-rate-range/suggestions/{id}/approve | 同意建議
+*AdminExchangeRateRangeApi* | [**createOrUpdateRange**](doc//AdminExchangeRateRangeApi.md#createorupdaterange) | **POST** /admin/exchange-rate-range | 創建或更新匯率範圍
+*AdminExchangeRateRangeApi* | [**disableRange**](doc//AdminExchangeRateRangeApi.md#disablerange) | **PUT** /admin/exchange-rate-range/{currency}/disable | 停用匯率範圍
+*AdminExchangeRateRangeApi* | [**enableRange**](doc//AdminExchangeRateRangeApi.md#enablerange) | **PUT** /admin/exchange-rate-range/{currency}/enable | 啟用匯率範圍
+*AdminExchangeRateRangeApi* | [**getAllRanges**](doc//AdminExchangeRateRangeApi.md#getallranges) | **GET** /admin/exchange-rate-range | 獲取所有匯率範圍
+*AdminExchangeRateRangeApi* | [**getRangeByCurrency**](doc//AdminExchangeRateRangeApi.md#getrangebycurrency) | **GET** /admin/exchange-rate-range/{currency} | 獲取指定貨幣的匯率範圍
+*AdminExchangeRateRangeApi* | [**getSuggestions**](doc//AdminExchangeRateRangeApi.md#getsuggestions) | **GET** /admin/exchange-rate-range/suggestions | 獲取建議
+*AdminExchangeRateRangeApi* | [**rejectSuggestion**](doc//AdminExchangeRateRangeApi.md#rejectsuggestion) | **POST** /admin/exchange-rate-range/suggestions/{id}/reject | 拒絕建議
+*AdminExchangeRateRangeApi* | [**updateRange**](doc//AdminExchangeRateRangeApi.md#updaterange) | **PUT** /admin/exchange-rate-range/{currency} | 更新匯率範圍
 *AdminMembersApi* | [**createUserByAdmin**](doc//AdminMembersApi.md#createuserbyadmin) | **POST** /admin/members/create-user | 管理員創建用戶
 *AdminMembersApi* | [**getMemberDetail**](doc//AdminMembersApi.md#getmemberdetail) | **GET** /admin/members/{memberId} | 查看會員詳情
 *AdminMembersApi* | [**getMemberStatistics**](doc//AdminMembersApi.md#getmemberstatistics) | **GET** /admin/members/statistics | 會員統計報告
@@ -500,6 +509,9 @@ Class | Method | HTTP request | Description
  - [EmailLoginSendCodeRequest](doc//EmailLoginSendCodeRequest.md)
  - [EmailLoginSendCodeResponse](doc//EmailLoginSendCodeResponse.md)
  - [ErrorResponse](doc//ErrorResponse.md)
+ - [ExchangeRateRangeDTO](doc//ExchangeRateRangeDTO.md)
+ - [ExchangeRateRangeSuggestionDTO](doc//ExchangeRateRangeSuggestionDTO.md)
+ - [ExchangeRateRangeUpdateParam](doc//ExchangeRateRangeUpdateParam.md)
  - [FileRecord](doc//FileRecord.md)
  - [FileRecordInfo](doc//FileRecordInfo.md)
  - [FileRecordSearchRequest](doc//FileRecordSearchRequest.md)
@@ -656,6 +668,7 @@ Class | Method | HTTP request | Description
  - [StoreResponseDTO](doc//StoreResponseDTO.md)
  - [StoreShippingConfigParam](doc//StoreShippingConfigParam.md)
  - [StoreUpdateParam](doc//StoreUpdateParam.md)
+ - [SuggestionActionParam](doc//SuggestionActionParam.md)
  - [TaiwanPostalArea](doc//TaiwanPostalArea.md)
  - [TelegramBotInfo](doc//TelegramBotInfo.md)
  - [TopDeliveryAreaDTO](doc//TopDeliveryAreaDTO.md)

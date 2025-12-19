@@ -10,23 +10,20 @@
 
 part of openapi.api;
 
-class ChatMessage {
-  /// Returns a new [ChatMessage] instance.
-  ChatMessage({
+class ExchangeRateRangeDTO {
+  /// Returns a new [ExchangeRateRangeDTO] instance.
+  ExchangeRateRangeDTO({
     this.id,
-    this.senderId,
-    this.receiverId,
-    this.sessionId,
-    this.content,
+    this.currency,
+    this.minRate,
+    this.maxRate,
+    this.remark,
+    this.isActive,
     this.createdAt,
     this.updatedAt,
-    this.deletedAt,
-    this.imageMessage,
-    this.textMessage,
-    this.mixedMessage,
   });
 
-  /// 消息ID
+  /// 範圍ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -35,41 +32,50 @@ class ChatMessage {
   ///
   int? id;
 
-  /// 發送者ID
+  /// 貨幣代碼
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? senderId;
+  String? currency;
 
-  /// 接收者ID
+  /// 最小匯率（下限）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? receiverId;
+  num? minRate;
 
-  /// 聊天會話ID
+  /// 最大匯率（上限）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? sessionId;
+  num? maxRate;
 
-  /// 消息內容
+  /// 備註說明
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? content;
+  String? remark;
+
+  /// 是否啟用
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isActive;
 
   /// 創建時間
   ///
@@ -89,70 +95,31 @@ class ChatMessage {
   ///
   DateTime? updatedAt;
 
-  /// 刪除時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? deletedAt;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? imageMessage;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? textMessage;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? mixedMessage;
-
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ChatMessage &&
+  bool operator ==(Object other) => identical(this, other) || other is ExchangeRateRangeDTO &&
     other.id == id &&
-    other.senderId == senderId &&
-    other.receiverId == receiverId &&
-    other.sessionId == sessionId &&
-    other.content == content &&
+    other.currency == currency &&
+    other.minRate == minRate &&
+    other.maxRate == maxRate &&
+    other.remark == remark &&
+    other.isActive == isActive &&
     other.createdAt == createdAt &&
-    other.updatedAt == updatedAt &&
-    other.deletedAt == deletedAt &&
-    other.imageMessage == imageMessage &&
-    other.textMessage == textMessage &&
-    other.mixedMessage == mixedMessage;
+    other.updatedAt == updatedAt;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
-    (senderId == null ? 0 : senderId!.hashCode) +
-    (receiverId == null ? 0 : receiverId!.hashCode) +
-    (sessionId == null ? 0 : sessionId!.hashCode) +
-    (content == null ? 0 : content!.hashCode) +
+    (currency == null ? 0 : currency!.hashCode) +
+    (minRate == null ? 0 : minRate!.hashCode) +
+    (maxRate == null ? 0 : maxRate!.hashCode) +
+    (remark == null ? 0 : remark!.hashCode) +
+    (isActive == null ? 0 : isActive!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (deletedAt == null ? 0 : deletedAt!.hashCode) +
-    (imageMessage == null ? 0 : imageMessage!.hashCode) +
-    (textMessage == null ? 0 : textMessage!.hashCode) +
-    (mixedMessage == null ? 0 : mixedMessage!.hashCode);
+    (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'ChatMessage[id=$id, senderId=$senderId, receiverId=$receiverId, sessionId=$sessionId, content=$content, createdAt=$createdAt, updatedAt=$updatedAt, deletedAt=$deletedAt, imageMessage=$imageMessage, textMessage=$textMessage, mixedMessage=$mixedMessage]';
+  String toString() => 'ExchangeRateRangeDTO[id=$id, currency=$currency, minRate=$minRate, maxRate=$maxRate, remark=$remark, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -161,25 +128,30 @@ class ChatMessage {
     } else {
       json[r'id'] = null;
     }
-    if (this.senderId != null) {
-      json[r'senderId'] = this.senderId;
+    if (this.currency != null) {
+      json[r'currency'] = this.currency;
     } else {
-      json[r'senderId'] = null;
+      json[r'currency'] = null;
     }
-    if (this.receiverId != null) {
-      json[r'receiverId'] = this.receiverId;
+    if (this.minRate != null) {
+      json[r'minRate'] = this.minRate;
     } else {
-      json[r'receiverId'] = null;
+      json[r'minRate'] = null;
     }
-    if (this.sessionId != null) {
-      json[r'sessionId'] = this.sessionId;
+    if (this.maxRate != null) {
+      json[r'maxRate'] = this.maxRate;
     } else {
-      json[r'sessionId'] = null;
+      json[r'maxRate'] = null;
     }
-    if (this.content != null) {
-      json[r'content'] = this.content;
+    if (this.remark != null) {
+      json[r'remark'] = this.remark;
     } else {
-      json[r'content'] = null;
+      json[r'remark'] = null;
+    }
+    if (this.isActive != null) {
+      json[r'isActive'] = this.isActive;
+    } else {
+      json[r'isActive'] = null;
     }
     if (this.createdAt != null) {
       json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
@@ -191,33 +163,13 @@ class ChatMessage {
     } else {
       json[r'updatedAt'] = null;
     }
-    if (this.deletedAt != null) {
-      json[r'deletedAt'] = this.deletedAt!.toUtc().toIso8601String();
-    } else {
-      json[r'deletedAt'] = null;
-    }
-    if (this.imageMessage != null) {
-      json[r'imageMessage'] = this.imageMessage;
-    } else {
-      json[r'imageMessage'] = null;
-    }
-    if (this.textMessage != null) {
-      json[r'textMessage'] = this.textMessage;
-    } else {
-      json[r'textMessage'] = null;
-    }
-    if (this.mixedMessage != null) {
-      json[r'mixedMessage'] = this.mixedMessage;
-    } else {
-      json[r'mixedMessage'] = null;
-    }
     return json;
   }
 
-  /// Returns a new [ChatMessage] instance and imports its values from
+  /// Returns a new [ExchangeRateRangeDTO] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ChatMessage? fromJson(dynamic value) {
+  static ExchangeRateRangeDTO? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -226,34 +178,31 @@ class ChatMessage {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ChatMessage[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ChatMessage[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ExchangeRateRangeDTO[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ExchangeRateRangeDTO[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ChatMessage(
+      return ExchangeRateRangeDTO(
         id: mapValueOfType<int>(json, r'id'),
-        senderId: mapValueOfType<int>(json, r'senderId'),
-        receiverId: mapValueOfType<int>(json, r'receiverId'),
-        sessionId: mapValueOfType<String>(json, r'sessionId'),
-        content: mapValueOfType<String>(json, r'content'),
+        currency: mapValueOfType<String>(json, r'currency'),
+        minRate: num.parse('${json[r'minRate']}'),
+        maxRate: num.parse('${json[r'maxRate']}'),
+        remark: mapValueOfType<String>(json, r'remark'),
+        isActive: mapValueOfType<bool>(json, r'isActive'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
-        deletedAt: mapDateTime(json, r'deletedAt', r''),
-        imageMessage: mapValueOfType<bool>(json, r'imageMessage'),
-        textMessage: mapValueOfType<bool>(json, r'textMessage'),
-        mixedMessage: mapValueOfType<bool>(json, r'mixedMessage'),
       );
     }
     return null;
   }
 
-  static List<ChatMessage> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ChatMessage>[];
+  static List<ExchangeRateRangeDTO> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ExchangeRateRangeDTO>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ChatMessage.fromJson(row);
+        final value = ExchangeRateRangeDTO.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -262,12 +211,12 @@ class ChatMessage {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ChatMessage> mapFromJson(dynamic json) {
-    final map = <String, ChatMessage>{};
+  static Map<String, ExchangeRateRangeDTO> mapFromJson(dynamic json) {
+    final map = <String, ExchangeRateRangeDTO>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ChatMessage.fromJson(entry.value);
+        final value = ExchangeRateRangeDTO.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -276,14 +225,14 @@ class ChatMessage {
     return map;
   }
 
-  // maps a json object with a list of ChatMessage-objects as value to a dart map
-  static Map<String, List<ChatMessage>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ChatMessage>>{};
+  // maps a json object with a list of ExchangeRateRangeDTO-objects as value to a dart map
+  static Map<String, List<ExchangeRateRangeDTO>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ExchangeRateRangeDTO>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ChatMessage.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ExchangeRateRangeDTO.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
