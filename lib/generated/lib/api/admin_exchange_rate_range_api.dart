@@ -75,18 +75,18 @@ class AdminExchangeRateRangeApi {
     return null;
   }
 
-  /// 創建或更新匯率範圍
+  /// 更新匯率範圍
   ///
-  /// 創建新的匯率範圍，如果已存在則更新
+  /// 更新指定貨幣的匯率範圍（僅允許更新），請直接傳入 ExchangeRateRangeUpdateParam
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [ExchangeRateRangeUpdateParam] exchangeRateRangeUpdateParam (required):
-  Future<Response> createOrUpdateRangeWithHttpInfo(ExchangeRateRangeUpdateParam exchangeRateRangeUpdateParam,) async {
+  Future<Response> editRangeWithHttpInfo(ExchangeRateRangeUpdateParam exchangeRateRangeUpdateParam,) async {
     // ignore: prefer_const_declarations
-    final path = r'/admin/exchange-rate-range';
+    final path = r'/admin/exchange-rate-range/edit';
 
     // ignore: prefer_final_locals
     Object? postBody = exchangeRateRangeUpdateParam;
@@ -109,15 +109,15 @@ class AdminExchangeRateRangeApi {
     );
   }
 
-  /// 創建或更新匯率範圍
+  /// 更新匯率範圍
   ///
-  /// 創建新的匯率範圍，如果已存在則更新
+  /// 更新指定貨幣的匯率範圍（僅允許更新），請直接傳入 ExchangeRateRangeUpdateParam
   ///
   /// Parameters:
   ///
   /// * [ExchangeRateRangeUpdateParam] exchangeRateRangeUpdateParam (required):
-  Future<ExchangeRateRangeDTO?> createOrUpdateRange(ExchangeRateRangeUpdateParam exchangeRateRangeUpdateParam,) async {
-    final response = await createOrUpdateRangeWithHttpInfo(exchangeRateRangeUpdateParam,);
+  Future<ExchangeRateRangeDTO?> editRange(ExchangeRateRangeUpdateParam exchangeRateRangeUpdateParam,) async {
+    final response = await editRangeWithHttpInfo(exchangeRateRangeUpdateParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -131,116 +131,14 @@ class AdminExchangeRateRangeApi {
     return null;
   }
 
-  /// 停用匯率範圍
+  /// 搜尋匯率範圍
   ///
-  /// 停用指定貨幣的匯率範圍（軟刪除）
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] currency (required):
-  ///   貨幣代碼
-  Future<Response> disableRangeWithHttpInfo(String currency,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/admin/exchange-rate-range/{currency}/disable'
-      .replaceAll('{currency}', currency);
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'PUT',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 停用匯率範圍
-  ///
-  /// 停用指定貨幣的匯率範圍（軟刪除）
-  ///
-  /// Parameters:
-  ///
-  /// * [String] currency (required):
-  ///   貨幣代碼
-  Future<void> disableRange(String currency,) async {
-    final response = await disableRangeWithHttpInfo(currency,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-  }
-
-  /// 啟用匯率範圍
-  ///
-  /// 啟用指定貨幣的匯率範圍
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] currency (required):
-  ///   貨幣代碼
-  Future<Response> enableRangeWithHttpInfo(String currency,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/admin/exchange-rate-range/{currency}/enable'
-      .replaceAll('{currency}', currency);
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'PUT',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 啟用匯率範圍
-  ///
-  /// 啟用指定貨幣的匯率範圍
-  ///
-  /// Parameters:
-  ///
-  /// * [String] currency (required):
-  ///   貨幣代碼
-  Future<void> enableRange(String currency,) async {
-    final response = await enableRangeWithHttpInfo(currency,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-  }
-
-  /// 獲取所有匯率範圍
-  ///
-  /// 獲取系統中所有貨幣的匯率合理範圍
+  /// 返回系統中所有貨幣的匯率合理範圍（不支援帶參數的過濾）
   ///
   /// Note: This method returns the HTTP [Response].
   Future<Response> getAllRangesWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/admin/exchange-rate-range';
+    final path = r'/admin/exchange-rate-range/all';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -254,7 +152,7 @@ class AdminExchangeRateRangeApi {
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -263,9 +161,9 @@ class AdminExchangeRateRangeApi {
     );
   }
 
-  /// 獲取所有匯率範圍
+  /// 搜尋匯率範圍
   ///
-  /// 獲取系統中所有貨幣的匯率合理範圍
+  /// 返回系統中所有貨幣的匯率合理範圍（不支援帶參數的過濾）
   Future<List<ExchangeRateRangeDTO>?> getAllRanges() async {
     final response = await getAllRangesWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -280,136 +178,6 @@ class AdminExchangeRateRangeApi {
         .cast<ExchangeRateRangeDTO>()
         .toList(growable: false);
 
-    }
-    return null;
-  }
-
-  /// 獲取指定貨幣的匯率範圍
-  ///
-  /// 根據貨幣代碼獲取匯率合理範圍
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] currency (required):
-  ///   貨幣代碼
-  Future<Response> getRangeByCurrencyWithHttpInfo(String currency,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/admin/exchange-rate-range/{currency}'
-      .replaceAll('{currency}', currency);
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 獲取指定貨幣的匯率範圍
-  ///
-  /// 根據貨幣代碼獲取匯率合理範圍
-  ///
-  /// Parameters:
-  ///
-  /// * [String] currency (required):
-  ///   貨幣代碼
-  Future<ExchangeRateRangeDTO?> getRangeByCurrency(String currency,) async {
-    final response = await getRangeByCurrencyWithHttpInfo(currency,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ExchangeRateRangeDTO',) as ExchangeRateRangeDTO;
-    
-    }
-    return null;
-  }
-
-  /// 獲取建議
-  ///
-  /// 獲取匯率範圍調整建議。如果提供id參數則返回指定建議詳情，如果提供currency參數則返回該貨幣的待處理建議，否則返回所有待處理的建議
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] id:
-  ///   建議ID（可選）
-  ///
-  /// * [String] currency:
-  ///   貨幣代碼（可選）
-  Future<Response> getSuggestionsWithHttpInfo({ int? id, String? currency, }) async {
-    // ignore: prefer_const_declarations
-    final path = r'/admin/exchange-rate-range/suggestions';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    if (id != null) {
-      queryParams.addAll(_queryParams('', 'id', id));
-    }
-    if (currency != null) {
-      queryParams.addAll(_queryParams('', 'currency', currency));
-    }
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 獲取建議
-  ///
-  /// 獲取匯率範圍調整建議。如果提供id參數則返回指定建議詳情，如果提供currency參數則返回該貨幣的待處理建議，否則返回所有待處理的建議
-  ///
-  /// Parameters:
-  ///
-  /// * [int] id:
-  ///   建議ID（可選）
-  ///
-  /// * [String] currency:
-  ///   貨幣代碼（可選）
-  Future<Object?> getSuggestions({ int? id, String? currency, }) async {
-    final response = await getSuggestionsWithHttpInfo( id: id, currency: currency, );
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
-    
     }
     return null;
   }
@@ -472,69 +240,6 @@ class AdminExchangeRateRangeApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ExchangeRateRangeSuggestionDTO',) as ExchangeRateRangeSuggestionDTO;
-    
-    }
-    return null;
-  }
-
-  /// 更新匯率範圍
-  ///
-  /// 更新指定貨幣的匯率合理範圍
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] currency (required):
-  ///   貨幣代碼
-  ///
-  /// * [ExchangeRateRangeUpdateParam] exchangeRateRangeUpdateParam (required):
-  Future<Response> updateRangeWithHttpInfo(String currency, ExchangeRateRangeUpdateParam exchangeRateRangeUpdateParam,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/admin/exchange-rate-range/{currency}'
-      .replaceAll('{currency}', currency);
-
-    // ignore: prefer_final_locals
-    Object? postBody = exchangeRateRangeUpdateParam;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'PUT',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 更新匯率範圍
-  ///
-  /// 更新指定貨幣的匯率合理範圍
-  ///
-  /// Parameters:
-  ///
-  /// * [String] currency (required):
-  ///   貨幣代碼
-  ///
-  /// * [ExchangeRateRangeUpdateParam] exchangeRateRangeUpdateParam (required):
-  Future<ExchangeRateRangeDTO?> updateRange(String currency, ExchangeRateRangeUpdateParam exchangeRateRangeUpdateParam,) async {
-    final response = await updateRangeWithHttpInfo(currency, exchangeRateRangeUpdateParam,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ExchangeRateRangeDTO',) as ExchangeRateRangeDTO;
     
     }
     return null;
