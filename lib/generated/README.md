@@ -540,6 +540,7 @@ Class | Method | HTTP request | Description
  - [OrderConfirmParam](doc//OrderConfirmParam.md)
  - [OrderQueryResult](doc//OrderQueryResult.md)
  - [OrderReturnRecord](doc//OrderReturnRecord.md)
+ - [OrderSearchDateTypeEnum](doc//OrderSearchDateTypeEnum.md)
  - [OrderSearchParam](doc//OrderSearchParam.md)
  - [OrderShipLogisticsParam](doc//OrderShipLogisticsParam.md)
  - [OrderShipPlatformParam](doc//OrderShipPlatformParam.md)

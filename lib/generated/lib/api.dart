@@ -194,6 +194,7 @@ part 'model/order_cancel_param.dart';
 part 'model/order_confirm_param.dart';
 part 'model/order_query_result.dart';
 part 'model/order_return_record.dart';
+part 'model/order_search_date_type_enum.dart';
 part 'model/order_search_param.dart';
 part 'model/order_ship_logistics_param.dart';
 part 'model/order_ship_platform_param.dart';

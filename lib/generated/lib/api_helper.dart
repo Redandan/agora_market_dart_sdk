@@ -79,6 +79,9 @@ String parameterToString(dynamic value) {
   if (value is NotificationTypeEnum) {
     return NotificationTypeEnumTypeTransformer().encode(value).toString();
   }
+  if (value is OrderSearchDateTypeEnum) {
+    return OrderSearchDateTypeEnumTypeTransformer().encode(value).toString();
+  }
   if (value is OrderStatusEnum) {
     return OrderStatusEnumTypeTransformer().encode(value).toString();
   }

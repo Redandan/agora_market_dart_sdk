@@ -430,6 +430,8 @@ class ApiClient {
           return OrderQueryResult.fromJson(value);
         case 'OrderReturnRecord':
           return OrderReturnRecord.fromJson(value);
+        case 'OrderSearchDateTypeEnum':
+          return OrderSearchDateTypeEnumTypeTransformer().decode(value);
         case 'OrderSearchParam':
           return OrderSearchParam.fromJson(value);
         case 'OrderShipLogisticsParam':

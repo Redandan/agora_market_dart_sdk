@@ -25,9 +25,9 @@ class OrderSearchParam {
     this.sellerId,
     this.productId,
     this.status,
+    this.searchDateType,
     this.startTime,
-    this.updatedStartTime,
-    this.updatedEndTime,
+    this.endTime,
   });
 
   /// 頁碼，從1開始
@@ -137,7 +137,15 @@ class OrderSearchParam {
   ///
   OrderStatusEnum? status;
 
-  /// 開始時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  OrderSearchDateTypeEnum? searchDateType;
+
+  /// 開始時間（根據 searchDateType 決定是創建時間還是更新時間）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -146,23 +154,14 @@ class OrderSearchParam {
   ///
   String? startTime;
 
-  /// 更新開始時間
+  /// 結束時間（根據 searchDateType 決定是創建時間還是更新時間）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? updatedStartTime;
-
-  /// 更新結束時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? updatedEndTime;
+  String? endTime;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrderSearchParam &&
@@ -178,9 +177,9 @@ class OrderSearchParam {
     other.sellerId == sellerId &&
     other.productId == productId &&
     other.status == status &&
+    other.searchDateType == searchDateType &&
     other.startTime == startTime &&
-    other.updatedStartTime == updatedStartTime &&
-    other.updatedEndTime == updatedEndTime;
+    other.endTime == endTime;
 
   @override
   int get hashCode =>
@@ -197,12 +196,12 @@ class OrderSearchParam {
     (sellerId == null ? 0 : sellerId!.hashCode) +
     (productId == null ? 0 : productId!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
+    (searchDateType == null ? 0 : searchDateType!.hashCode) +
     (startTime == null ? 0 : startTime!.hashCode) +
-    (updatedStartTime == null ? 0 : updatedStartTime!.hashCode) +
-    (updatedEndTime == null ? 0 : updatedEndTime!.hashCode);
+    (endTime == null ? 0 : endTime!.hashCode);
 
   @override
-  String toString() => 'OrderSearchParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, orderId=$orderId, buyerId=$buyerId, sellerId=$sellerId, productId=$productId, status=$status, startTime=$startTime, updatedStartTime=$updatedStartTime, updatedEndTime=$updatedEndTime]';
+  String toString() => 'OrderSearchParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, orderId=$orderId, buyerId=$buyerId, sellerId=$sellerId, productId=$productId, status=$status, searchDateType=$searchDateType, startTime=$startTime, endTime=$endTime]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -266,20 +265,20 @@ class OrderSearchParam {
     } else {
       json[r'status'] = null;
     }
+    if (this.searchDateType != null) {
+      json[r'searchDateType'] = this.searchDateType;
+    } else {
+      json[r'searchDateType'] = null;
+    }
     if (this.startTime != null) {
       json[r'startTime'] = this.startTime;
     } else {
       json[r'startTime'] = null;
     }
-    if (this.updatedStartTime != null) {
-      json[r'updatedStartTime'] = this.updatedStartTime;
+    if (this.endTime != null) {
+      json[r'endTime'] = this.endTime;
     } else {
-      json[r'updatedStartTime'] = null;
-    }
-    if (this.updatedEndTime != null) {
-      json[r'updatedEndTime'] = this.updatedEndTime;
-    } else {
-      json[r'updatedEndTime'] = null;
+      json[r'endTime'] = null;
     }
     return json;
   }
@@ -315,9 +314,9 @@ class OrderSearchParam {
         sellerId: mapValueOfType<int>(json, r'sellerId'),
         productId: mapValueOfType<int>(json, r'productId'),
         status: OrderStatusEnum.fromJson(json[r'status']),
+        searchDateType: OrderSearchDateTypeEnum.fromJson(json[r'searchDateType']),
         startTime: mapValueOfType<String>(json, r'startTime'),
-        updatedStartTime: mapValueOfType<String>(json, r'updatedStartTime'),
-        updatedEndTime: mapValueOfType<String>(json, r'updatedEndTime'),
+        endTime: mapValueOfType<String>(json, r'endTime'),
       );
     }
     return null;
