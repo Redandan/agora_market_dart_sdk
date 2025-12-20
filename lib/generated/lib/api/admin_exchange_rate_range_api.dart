@@ -116,7 +116,7 @@ class AdminExchangeRateRangeApi {
   /// Parameters:
   ///
   /// * [ExchangeRateRangeUpdateParam] exchangeRateRangeUpdateParam (required):
-  Future<ExchangeRateRangeDTO?> editRange(ExchangeRateRangeUpdateParam exchangeRateRangeUpdateParam,) async {
+  Future<ExchangeRateRange?> editRange(ExchangeRateRangeUpdateParam exchangeRateRangeUpdateParam,) async {
     final response = await editRangeWithHttpInfo(exchangeRateRangeUpdateParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -125,7 +125,7 @@ class AdminExchangeRateRangeApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ExchangeRateRangeDTO',) as ExchangeRateRangeDTO;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ExchangeRateRange',) as ExchangeRateRange;
     
     }
     return null;
@@ -164,7 +164,7 @@ class AdminExchangeRateRangeApi {
   /// 搜尋匯率範圍
   ///
   /// 返回系統中所有貨幣的匯率合理範圍（不支援帶參數的過濾）
-  Future<List<ExchangeRateRangeDTO>?> getAllRanges() async {
+  Future<List<ExchangeRateRange>?> getAllRanges() async {
     final response = await getAllRangesWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -174,8 +174,8 @@ class AdminExchangeRateRangeApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<ExchangeRateRangeDTO>') as List)
-        .cast<ExchangeRateRangeDTO>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<ExchangeRateRange>') as List)
+        .cast<ExchangeRateRange>()
         .toList(growable: false);
 
     }

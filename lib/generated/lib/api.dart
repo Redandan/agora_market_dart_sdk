@@ -155,7 +155,7 @@ part 'model/email_login_request.dart';
 part 'model/email_login_send_code_request.dart';
 part 'model/email_login_send_code_response.dart';
 part 'model/error_response.dart';
-part 'model/exchange_rate_range_dto.dart';
+part 'model/exchange_rate_range.dart';
 part 'model/exchange_rate_range_suggestion_dto.dart';
 part 'model/exchange_rate_range_update_param.dart';
 part 'model/file_record.dart';

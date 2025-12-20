@@ -350,8 +350,8 @@ class ApiClient {
           return EmailLoginSendCodeResponse.fromJson(value);
         case 'ErrorResponse':
           return ErrorResponse.fromJson(value);
-        case 'ExchangeRateRangeDTO':
-          return ExchangeRateRangeDTO.fromJson(value);
+        case 'ExchangeRateRange':
+          return ExchangeRateRange.fromJson(value);
         case 'ExchangeRateRangeSuggestionDTO':
           return ExchangeRateRangeSuggestionDTO.fromJson(value);
         case 'ExchangeRateRangeUpdateParam':

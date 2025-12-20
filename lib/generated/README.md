@@ -504,7 +504,7 @@ Class | Method | HTTP request | Description
  - [EmailLoginSendCodeRequest](doc//EmailLoginSendCodeRequest.md)
  - [EmailLoginSendCodeResponse](doc//EmailLoginSendCodeResponse.md)
  - [ErrorResponse](doc//ErrorResponse.md)
- - [ExchangeRateRangeDTO](doc//ExchangeRateRangeDTO.md)
+ - [ExchangeRateRange](doc//ExchangeRateRange.md)
  - [ExchangeRateRangeSuggestionDTO](doc//ExchangeRateRangeSuggestionDTO.md)
  - [ExchangeRateRangeUpdateParam](doc//ExchangeRateRangeUpdateParam.md)
  - [FileRecord](doc//FileRecord.md)

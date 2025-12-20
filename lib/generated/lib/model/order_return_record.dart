@@ -25,10 +25,12 @@ class OrderReturnRecord {
     this.processedAt,
     this.shippedAt,
     this.receivedAt,
+    this.imageUrlsJson,
     this.updatedAt,
     this.order,
     this.buyer,
     this.seller,
+    this.imageUrls = const {},
   });
 
   /// 退貨記錄ID（與訂單ID一致）
@@ -138,6 +140,15 @@ class OrderReturnRecord {
   ///
   DateTime? receivedAt;
 
+  /// 證據圖片URL列表，JSON格式
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? imageUrlsJson;
+
   /// 更新時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -171,6 +182,8 @@ class OrderReturnRecord {
   ///
   User? seller;
 
+  Set<String> imageUrls;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrderReturnRecord &&
     other.id == id &&
@@ -185,10 +198,12 @@ class OrderReturnRecord {
     other.processedAt == processedAt &&
     other.shippedAt == shippedAt &&
     other.receivedAt == receivedAt &&
+    other.imageUrlsJson == imageUrlsJson &&
     other.updatedAt == updatedAt &&
     other.order == order &&
     other.buyer == buyer &&
-    other.seller == seller;
+    other.seller == seller &&
+    _deepEquality.equals(other.imageUrls, imageUrls);
 
   @override
   int get hashCode =>
@@ -205,13 +220,15 @@ class OrderReturnRecord {
     (processedAt == null ? 0 : processedAt!.hashCode) +
     (shippedAt == null ? 0 : shippedAt!.hashCode) +
     (receivedAt == null ? 0 : receivedAt!.hashCode) +
+    (imageUrlsJson == null ? 0 : imageUrlsJson!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (order == null ? 0 : order!.hashCode) +
     (buyer == null ? 0 : buyer!.hashCode) +
-    (seller == null ? 0 : seller!.hashCode);
+    (seller == null ? 0 : seller!.hashCode) +
+    (imageUrls.hashCode);
 
   @override
-  String toString() => 'OrderReturnRecord[id=$id, buyerId=$buyerId, sellerId=$sellerId, reason=$reason, description=$description, sellerReply=$sellerReply, trackingNumber=$trackingNumber, shippingCompany=$shippingCompany, requestedAt=$requestedAt, processedAt=$processedAt, shippedAt=$shippedAt, receivedAt=$receivedAt, updatedAt=$updatedAt, order=$order, buyer=$buyer, seller=$seller]';
+  String toString() => 'OrderReturnRecord[id=$id, buyerId=$buyerId, sellerId=$sellerId, reason=$reason, description=$description, sellerReply=$sellerReply, trackingNumber=$trackingNumber, shippingCompany=$shippingCompany, requestedAt=$requestedAt, processedAt=$processedAt, shippedAt=$shippedAt, receivedAt=$receivedAt, imageUrlsJson=$imageUrlsJson, updatedAt=$updatedAt, order=$order, buyer=$buyer, seller=$seller, imageUrls=$imageUrls]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -275,6 +292,11 @@ class OrderReturnRecord {
     } else {
       json[r'receivedAt'] = null;
     }
+    if (this.imageUrlsJson != null) {
+      json[r'imageUrlsJson'] = this.imageUrlsJson;
+    } else {
+      json[r'imageUrlsJson'] = null;
+    }
     if (this.updatedAt != null) {
       json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
     } else {
@@ -295,6 +317,7 @@ class OrderReturnRecord {
     } else {
       json[r'seller'] = null;
     }
+      json[r'imageUrls'] = this.imageUrls.toList(growable: false);
     return json;
   }
 
@@ -329,10 +352,14 @@ class OrderReturnRecord {
         processedAt: mapDateTime(json, r'processedAt', r''),
         shippedAt: mapDateTime(json, r'shippedAt', r''),
         receivedAt: mapDateTime(json, r'receivedAt', r''),
+        imageUrlsJson: mapValueOfType<String>(json, r'imageUrlsJson'),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         order: Order.fromJson(json[r'order']),
         buyer: User.fromJson(json[r'buyer']),
         seller: User.fromJson(json[r'seller']),
+        imageUrls: json[r'imageUrls'] is Iterable
+            ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
+            : const {},
       );
     }
     return null;
