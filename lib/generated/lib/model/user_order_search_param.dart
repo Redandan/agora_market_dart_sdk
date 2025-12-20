@@ -22,7 +22,7 @@ class UserOrderSearchParam {
     this.sortDirection,
     this.orderId,
     this.productId,
-    this.status,
+    this.status = const [],
     this.startTime,
   });
 
@@ -107,13 +107,8 @@ class UserOrderSearchParam {
   ///
   int? productId;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  OrderStatusEnum? status;
+  /// 訂單狀態（可多選）
+  List<OrderStatusEnum> status;
 
   /// 開始時間
   ///
@@ -135,7 +130,7 @@ class UserOrderSearchParam {
     other.sortDirection == sortDirection &&
     other.orderId == orderId &&
     other.productId == productId &&
-    other.status == status &&
+    _deepEquality.equals(other.status, status) &&
     other.startTime == startTime;
 
   @override
@@ -150,7 +145,7 @@ class UserOrderSearchParam {
     (sortDirection == null ? 0 : sortDirection!.hashCode) +
     (orderId == null ? 0 : orderId!.hashCode) +
     (productId == null ? 0 : productId!.hashCode) +
-    (status == null ? 0 : status!.hashCode) +
+    (status.hashCode) +
     (startTime == null ? 0 : startTime!.hashCode);
 
   @override
@@ -203,11 +198,7 @@ class UserOrderSearchParam {
     } else {
       json[r'productId'] = null;
     }
-    if (this.status != null) {
       json[r'status'] = this.status;
-    } else {
-      json[r'status'] = null;
-    }
     if (this.startTime != null) {
       json[r'startTime'] = this.startTime;
     } else {
@@ -244,7 +235,7 @@ class UserOrderSearchParam {
         sortDirection: mapValueOfType<String>(json, r'sortDirection'),
         orderId: mapValueOfType<String>(json, r'orderId'),
         productId: mapValueOfType<int>(json, r'productId'),
-        status: OrderStatusEnum.fromJson(json[r'status']),
+        status: OrderStatusEnum.listFromJson(json[r'status']),
         startTime: mapValueOfType<String>(json, r'startTime'),
       );
     }
