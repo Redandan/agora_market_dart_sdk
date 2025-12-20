@@ -80,21 +80,9 @@ class ExchangeRateRange {
   ExchangeRateRangeStatusEnum? status;
 
   /// 原最小匯率（用於建議，記錄變更前的值）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? previousMinRate;
 
   /// 原最大匯率（用於建議，記錄變更前的值）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? previousMaxRate;
 
   /// 超出範圍的次數（用於建議）
@@ -116,30 +104,12 @@ class ExchangeRateRange {
   bool? isBelowMin;
 
   /// 處理人ID（管理員，用於建議）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? processedBy;
 
   /// 處理時間（用於建議）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? processedAt;
 
   /// 拒絕原因（用於建議）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? rejectReason;
 
   /// 分析說明（用於建議）
@@ -321,8 +291,12 @@ class ExchangeRateRange {
         maxRate: num.parse('${json[r'maxRate']}'),
         remark: mapValueOfType<String>(json, r'remark'),
         status: ExchangeRateRangeStatusEnum.fromJson(json[r'status']),
-        previousMinRate: num.parse('${json[r'previousMinRate']}'),
-        previousMaxRate: num.parse('${json[r'previousMaxRate']}'),
+        previousMinRate: json[r'previousMinRate'] == null
+            ? null
+            : num.parse('${json[r'previousMinRate']}'),
+        previousMaxRate: json[r'previousMaxRate'] == null
+            ? null
+            : num.parse('${json[r'previousMaxRate']}'),
         outOfRangeCount: mapValueOfType<int>(json, r'outOfRangeCount'),
         isBelowMin: mapValueOfType<bool>(json, r'isBelowMin'),
         processedBy: mapValueOfType<int>(json, r'processedBy'),
