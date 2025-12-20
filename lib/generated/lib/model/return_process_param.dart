@@ -18,6 +18,9 @@ class ReturnProcessParam {
     this.rejectionReason,
     this.refundOption,
     this.refundAmount,
+    this.returnRecipientName,
+    this.returnRecipientPhone,
+    this.returnAddress,
   });
 
   /// 是否同意退貨
@@ -53,13 +56,43 @@ class ReturnProcessParam {
   ///
   num? refundAmount;
 
+  /// 收貨人姓名（當 refundOption 為 RETURN_REQUIRED 時必填）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? returnRecipientName;
+
+  /// 收貨人電話（當 refundOption 為 RETURN_REQUIRED 時必填）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? returnRecipientPhone;
+
+  /// 收貨完整地址（當 refundOption 為 RETURN_REQUIRED 時必填）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? returnAddress;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ReturnProcessParam &&
     other.approved == approved &&
     other.sellerReply == sellerReply &&
     other.rejectionReason == rejectionReason &&
     other.refundOption == refundOption &&
-    other.refundAmount == refundAmount;
+    other.refundAmount == refundAmount &&
+    other.returnRecipientName == returnRecipientName &&
+    other.returnRecipientPhone == returnRecipientPhone &&
+    other.returnAddress == returnAddress;
 
   @override
   int get hashCode =>
@@ -68,10 +101,13 @@ class ReturnProcessParam {
     (sellerReply == null ? 0 : sellerReply!.hashCode) +
     (rejectionReason == null ? 0 : rejectionReason!.hashCode) +
     (refundOption == null ? 0 : refundOption!.hashCode) +
-    (refundAmount == null ? 0 : refundAmount!.hashCode);
+    (refundAmount == null ? 0 : refundAmount!.hashCode) +
+    (returnRecipientName == null ? 0 : returnRecipientName!.hashCode) +
+    (returnRecipientPhone == null ? 0 : returnRecipientPhone!.hashCode) +
+    (returnAddress == null ? 0 : returnAddress!.hashCode);
 
   @override
-  String toString() => 'ReturnProcessParam[approved=$approved, sellerReply=$sellerReply, rejectionReason=$rejectionReason, refundOption=$refundOption, refundAmount=$refundAmount]';
+  String toString() => 'ReturnProcessParam[approved=$approved, sellerReply=$sellerReply, rejectionReason=$rejectionReason, refundOption=$refundOption, refundAmount=$refundAmount, returnRecipientName=$returnRecipientName, returnRecipientPhone=$returnRecipientPhone, returnAddress=$returnAddress]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -95,6 +131,21 @@ class ReturnProcessParam {
       json[r'refundAmount'] = this.refundAmount;
     } else {
       json[r'refundAmount'] = null;
+    }
+    if (this.returnRecipientName != null) {
+      json[r'returnRecipientName'] = this.returnRecipientName;
+    } else {
+      json[r'returnRecipientName'] = null;
+    }
+    if (this.returnRecipientPhone != null) {
+      json[r'returnRecipientPhone'] = this.returnRecipientPhone;
+    } else {
+      json[r'returnRecipientPhone'] = null;
+    }
+    if (this.returnAddress != null) {
+      json[r'returnAddress'] = this.returnAddress;
+    } else {
+      json[r'returnAddress'] = null;
     }
     return json;
   }
@@ -123,6 +174,9 @@ class ReturnProcessParam {
         rejectionReason: mapValueOfType<String>(json, r'rejectionReason'),
         refundOption: ReturnProcessParamRefundOptionEnum.fromJson(json[r'refundOption']),
         refundAmount: num.parse('${json[r'refundAmount']}'),
+        returnRecipientName: mapValueOfType<String>(json, r'returnRecipientName'),
+        returnRecipientPhone: mapValueOfType<String>(json, r'returnRecipientPhone'),
+        returnAddress: mapValueOfType<String>(json, r'returnAddress'),
       );
     }
     return null;

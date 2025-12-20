@@ -27,6 +27,10 @@ class OrderReturnRecord {
     this.receivedAt,
     this.imageUrlsJson,
     this.updatedAt,
+    this.remark,
+    this.returnRecipientName,
+    this.returnRecipientPhone,
+    this.returnAddress,
     this.order,
     this.buyer,
     this.seller,
@@ -158,6 +162,42 @@ class OrderReturnRecord {
   ///
   DateTime? updatedAt;
 
+  /// 備註
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? remark;
+
+  /// 收貨人姓名
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? returnRecipientName;
+
+  /// 收貨人電話
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? returnRecipientPhone;
+
+  /// 收貨完整地址
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? returnAddress;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -200,6 +240,10 @@ class OrderReturnRecord {
     other.receivedAt == receivedAt &&
     other.imageUrlsJson == imageUrlsJson &&
     other.updatedAt == updatedAt &&
+    other.remark == remark &&
+    other.returnRecipientName == returnRecipientName &&
+    other.returnRecipientPhone == returnRecipientPhone &&
+    other.returnAddress == returnAddress &&
     other.order == order &&
     other.buyer == buyer &&
     other.seller == seller &&
@@ -222,13 +266,17 @@ class OrderReturnRecord {
     (receivedAt == null ? 0 : receivedAt!.hashCode) +
     (imageUrlsJson == null ? 0 : imageUrlsJson!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (remark == null ? 0 : remark!.hashCode) +
+    (returnRecipientName == null ? 0 : returnRecipientName!.hashCode) +
+    (returnRecipientPhone == null ? 0 : returnRecipientPhone!.hashCode) +
+    (returnAddress == null ? 0 : returnAddress!.hashCode) +
     (order == null ? 0 : order!.hashCode) +
     (buyer == null ? 0 : buyer!.hashCode) +
     (seller == null ? 0 : seller!.hashCode) +
     (imageUrls.hashCode);
 
   @override
-  String toString() => 'OrderReturnRecord[id=$id, buyerId=$buyerId, sellerId=$sellerId, reason=$reason, description=$description, sellerReply=$sellerReply, trackingNumber=$trackingNumber, shippingCompany=$shippingCompany, requestedAt=$requestedAt, processedAt=$processedAt, shippedAt=$shippedAt, receivedAt=$receivedAt, imageUrlsJson=$imageUrlsJson, updatedAt=$updatedAt, order=$order, buyer=$buyer, seller=$seller, imageUrls=$imageUrls]';
+  String toString() => 'OrderReturnRecord[id=$id, buyerId=$buyerId, sellerId=$sellerId, reason=$reason, description=$description, sellerReply=$sellerReply, trackingNumber=$trackingNumber, shippingCompany=$shippingCompany, requestedAt=$requestedAt, processedAt=$processedAt, shippedAt=$shippedAt, receivedAt=$receivedAt, imageUrlsJson=$imageUrlsJson, updatedAt=$updatedAt, remark=$remark, returnRecipientName=$returnRecipientName, returnRecipientPhone=$returnRecipientPhone, returnAddress=$returnAddress, order=$order, buyer=$buyer, seller=$seller, imageUrls=$imageUrls]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -302,6 +350,26 @@ class OrderReturnRecord {
     } else {
       json[r'updatedAt'] = null;
     }
+    if (this.remark != null) {
+      json[r'remark'] = this.remark;
+    } else {
+      json[r'remark'] = null;
+    }
+    if (this.returnRecipientName != null) {
+      json[r'returnRecipientName'] = this.returnRecipientName;
+    } else {
+      json[r'returnRecipientName'] = null;
+    }
+    if (this.returnRecipientPhone != null) {
+      json[r'returnRecipientPhone'] = this.returnRecipientPhone;
+    } else {
+      json[r'returnRecipientPhone'] = null;
+    }
+    if (this.returnAddress != null) {
+      json[r'returnAddress'] = this.returnAddress;
+    } else {
+      json[r'returnAddress'] = null;
+    }
     if (this.order != null) {
       json[r'order'] = this.order;
     } else {
@@ -354,6 +422,10 @@ class OrderReturnRecord {
         receivedAt: mapDateTime(json, r'receivedAt', r''),
         imageUrlsJson: mapValueOfType<String>(json, r'imageUrlsJson'),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
+        remark: mapValueOfType<String>(json, r'remark'),
+        returnRecipientName: mapValueOfType<String>(json, r'returnRecipientName'),
+        returnRecipientPhone: mapValueOfType<String>(json, r'returnRecipientPhone'),
+        returnAddress: mapValueOfType<String>(json, r'returnAddress'),
         order: Order.fromJson(json[r'order']),
         buyer: User.fromJson(json[r'buyer']),
         seller: User.fromJson(json[r'seller']),

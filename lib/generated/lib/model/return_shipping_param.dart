@@ -14,42 +14,49 @@ class ReturnShippingParam {
   /// Returns a new [ReturnShippingParam] instance.
   ReturnShippingParam({
     required this.trackingNumber,
-    this.shippingCompany,
+    required this.shippingCompany,
+    this.remark,
   });
 
   /// 物流單號
   String trackingNumber;
 
   /// 物流公司
+  String shippingCompany;
+
+  /// 備註
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? shippingCompany;
+  String? remark;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ReturnShippingParam &&
     other.trackingNumber == trackingNumber &&
-    other.shippingCompany == shippingCompany;
+    other.shippingCompany == shippingCompany &&
+    other.remark == remark;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (trackingNumber.hashCode) +
-    (shippingCompany == null ? 0 : shippingCompany!.hashCode);
+    (shippingCompany.hashCode) +
+    (remark == null ? 0 : remark!.hashCode);
 
   @override
-  String toString() => 'ReturnShippingParam[trackingNumber=$trackingNumber, shippingCompany=$shippingCompany]';
+  String toString() => 'ReturnShippingParam[trackingNumber=$trackingNumber, shippingCompany=$shippingCompany, remark=$remark]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'trackingNumber'] = this.trackingNumber;
-    if (this.shippingCompany != null) {
       json[r'shippingCompany'] = this.shippingCompany;
+    if (this.remark != null) {
+      json[r'remark'] = this.remark;
     } else {
-      json[r'shippingCompany'] = null;
+      json[r'remark'] = null;
     }
     return json;
   }
@@ -74,7 +81,8 @@ class ReturnShippingParam {
 
       return ReturnShippingParam(
         trackingNumber: mapValueOfType<String>(json, r'trackingNumber')!,
-        shippingCompany: mapValueOfType<String>(json, r'shippingCompany'),
+        shippingCompany: mapValueOfType<String>(json, r'shippingCompany')!,
+        remark: mapValueOfType<String>(json, r'remark'),
       );
     }
     return null;
@@ -123,6 +131,7 @@ class ReturnShippingParam {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'trackingNumber',
+    'shippingCompany',
   };
 }
 

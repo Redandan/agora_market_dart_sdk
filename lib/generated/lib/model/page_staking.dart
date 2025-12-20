@@ -13,13 +13,13 @@ part of openapi.api;
 class PageStaking {
   /// Returns a new [PageStaking] instance.
   PageStaking({
-    this.totalPages,
     this.totalElements,
+    this.totalPages,
     this.sort,
     this.numberOfElements,
     this.pageable,
-    this.last,
     this.first,
+    this.last,
     this.size,
     this.content = const [],
     this.number,
@@ -32,7 +32,7 @@ class PageStaking {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalPages;
+  int? totalElements;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -40,7 +40,7 @@ class PageStaking {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalElements;
+  int? totalPages;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -72,7 +72,7 @@ class PageStaking {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? last;
+  bool? first;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -80,7 +80,7 @@ class PageStaking {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? first;
+  bool? last;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -110,13 +110,13 @@ class PageStaking {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PageStaking &&
-    other.totalPages == totalPages &&
     other.totalElements == totalElements &&
+    other.totalPages == totalPages &&
     other.sort == sort &&
     other.numberOfElements == numberOfElements &&
     other.pageable == pageable &&
-    other.last == last &&
     other.first == first &&
+    other.last == last &&
     other.size == size &&
     _deepEquality.equals(other.content, content) &&
     other.number == number &&
@@ -125,32 +125,32 @@ class PageStaking {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalPages == null ? 0 : totalPages!.hashCode) +
     (totalElements == null ? 0 : totalElements!.hashCode) +
+    (totalPages == null ? 0 : totalPages!.hashCode) +
     (sort == null ? 0 : sort!.hashCode) +
     (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
     (pageable == null ? 0 : pageable!.hashCode) +
-    (last == null ? 0 : last!.hashCode) +
     (first == null ? 0 : first!.hashCode) +
+    (last == null ? 0 : last!.hashCode) +
     (size == null ? 0 : size!.hashCode) +
     (content.hashCode) +
     (number == null ? 0 : number!.hashCode) +
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageStaking[totalPages=$totalPages, totalElements=$totalElements, sort=$sort, numberOfElements=$numberOfElements, pageable=$pageable, last=$last, first=$first, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'PageStaking[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, numberOfElements=$numberOfElements, pageable=$pageable, first=$first, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.totalPages != null) {
-      json[r'totalPages'] = this.totalPages;
-    } else {
-      json[r'totalPages'] = null;
-    }
     if (this.totalElements != null) {
       json[r'totalElements'] = this.totalElements;
     } else {
       json[r'totalElements'] = null;
+    }
+    if (this.totalPages != null) {
+      json[r'totalPages'] = this.totalPages;
+    } else {
+      json[r'totalPages'] = null;
     }
     if (this.sort != null) {
       json[r'sort'] = this.sort;
@@ -167,15 +167,15 @@ class PageStaking {
     } else {
       json[r'pageable'] = null;
     }
-    if (this.last != null) {
-      json[r'last'] = this.last;
-    } else {
-      json[r'last'] = null;
-    }
     if (this.first != null) {
       json[r'first'] = this.first;
     } else {
       json[r'first'] = null;
+    }
+    if (this.last != null) {
+      json[r'last'] = this.last;
+    } else {
+      json[r'last'] = null;
     }
     if (this.size != null) {
       json[r'size'] = this.size;
@@ -215,13 +215,13 @@ class PageStaking {
       }());
 
       return PageStaking(
-        totalPages: mapValueOfType<int>(json, r'totalPages'),
         totalElements: mapValueOfType<int>(json, r'totalElements'),
+        totalPages: mapValueOfType<int>(json, r'totalPages'),
         sort: SortObject.fromJson(json[r'sort']),
         numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
         pageable: PageableObject.fromJson(json[r'pageable']),
-        last: mapValueOfType<bool>(json, r'last'),
         first: mapValueOfType<bool>(json, r'first'),
+        last: mapValueOfType<bool>(json, r'last'),
         size: mapValueOfType<int>(json, r'size'),
         content: Staking.listFromJson(json[r'content']),
         number: mapValueOfType<int>(json, r'number'),
