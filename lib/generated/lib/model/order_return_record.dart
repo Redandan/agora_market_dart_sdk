@@ -25,7 +25,6 @@ class OrderReturnRecord {
     this.processedAt,
     this.shippedAt,
     this.receivedAt,
-    this.imageUrlsJson,
     this.updatedAt,
     this.remark,
     this.returnRecipientName,
@@ -144,15 +143,6 @@ class OrderReturnRecord {
   ///
   DateTime? receivedAt;
 
-  /// 證據圖片URL列表，JSON格式
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? imageUrlsJson;
-
   /// 更新時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -238,7 +228,6 @@ class OrderReturnRecord {
     other.processedAt == processedAt &&
     other.shippedAt == shippedAt &&
     other.receivedAt == receivedAt &&
-    other.imageUrlsJson == imageUrlsJson &&
     other.updatedAt == updatedAt &&
     other.remark == remark &&
     other.returnRecipientName == returnRecipientName &&
@@ -264,7 +253,6 @@ class OrderReturnRecord {
     (processedAt == null ? 0 : processedAt!.hashCode) +
     (shippedAt == null ? 0 : shippedAt!.hashCode) +
     (receivedAt == null ? 0 : receivedAt!.hashCode) +
-    (imageUrlsJson == null ? 0 : imageUrlsJson!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
     (returnRecipientName == null ? 0 : returnRecipientName!.hashCode) +
@@ -276,7 +264,7 @@ class OrderReturnRecord {
     (imageUrls.hashCode);
 
   @override
-  String toString() => 'OrderReturnRecord[id=$id, buyerId=$buyerId, sellerId=$sellerId, reason=$reason, description=$description, sellerReply=$sellerReply, trackingNumber=$trackingNumber, shippingCompany=$shippingCompany, requestedAt=$requestedAt, processedAt=$processedAt, shippedAt=$shippedAt, receivedAt=$receivedAt, imageUrlsJson=$imageUrlsJson, updatedAt=$updatedAt, remark=$remark, returnRecipientName=$returnRecipientName, returnRecipientPhone=$returnRecipientPhone, returnAddress=$returnAddress, order=$order, buyer=$buyer, seller=$seller, imageUrls=$imageUrls]';
+  String toString() => 'OrderReturnRecord[id=$id, buyerId=$buyerId, sellerId=$sellerId, reason=$reason, description=$description, sellerReply=$sellerReply, trackingNumber=$trackingNumber, shippingCompany=$shippingCompany, requestedAt=$requestedAt, processedAt=$processedAt, shippedAt=$shippedAt, receivedAt=$receivedAt, updatedAt=$updatedAt, remark=$remark, returnRecipientName=$returnRecipientName, returnRecipientPhone=$returnRecipientPhone, returnAddress=$returnAddress, order=$order, buyer=$buyer, seller=$seller, imageUrls=$imageUrls]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -339,11 +327,6 @@ class OrderReturnRecord {
       json[r'receivedAt'] = this.receivedAt!.toUtc().toIso8601String();
     } else {
       json[r'receivedAt'] = null;
-    }
-    if (this.imageUrlsJson != null) {
-      json[r'imageUrlsJson'] = this.imageUrlsJson;
-    } else {
-      json[r'imageUrlsJson'] = null;
     }
     if (this.updatedAt != null) {
       json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
@@ -420,7 +403,6 @@ class OrderReturnRecord {
         processedAt: mapDateTime(json, r'processedAt', r''),
         shippedAt: mapDateTime(json, r'shippedAt', r''),
         receivedAt: mapDateTime(json, r'receivedAt', r''),
-        imageUrlsJson: mapValueOfType<String>(json, r'imageUrlsJson'),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         remark: mapValueOfType<String>(json, r'remark'),
         returnRecipientName: mapValueOfType<String>(json, r'returnRecipientName'),

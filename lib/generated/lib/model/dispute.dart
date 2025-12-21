@@ -26,7 +26,6 @@ class Dispute {
     this.createdAt,
     this.updatedAt,
     this.resolvedAt,
-    this.imageUrlsJson,
     this.imageUrls = const {},
   });
 
@@ -145,15 +144,6 @@ class Dispute {
   ///
   DateTime? resolvedAt;
 
-  /// 證據圖片URL列表，JSON格式
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? imageUrlsJson;
-
   Set<String> imageUrls;
 
   @override
@@ -171,7 +161,6 @@ class Dispute {
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
     other.resolvedAt == resolvedAt &&
-    other.imageUrlsJson == imageUrlsJson &&
     _deepEquality.equals(other.imageUrls, imageUrls);
 
   @override
@@ -190,11 +179,10 @@ class Dispute {
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (resolvedAt == null ? 0 : resolvedAt!.hashCode) +
-    (imageUrlsJson == null ? 0 : imageUrlsJson!.hashCode) +
     (imageUrls.hashCode);
 
   @override
-  String toString() => 'Dispute[id=$id, version=$version, orderId=$orderId, buyerId=$buyerId, sellerId=$sellerId, status=$status, outcome=$outcome, description=$description, sellerReply=$sellerReply, adminComment=$adminComment, createdAt=$createdAt, updatedAt=$updatedAt, resolvedAt=$resolvedAt, imageUrlsJson=$imageUrlsJson, imageUrls=$imageUrls]';
+  String toString() => 'Dispute[id=$id, version=$version, orderId=$orderId, buyerId=$buyerId, sellerId=$sellerId, status=$status, outcome=$outcome, description=$description, sellerReply=$sellerReply, adminComment=$adminComment, createdAt=$createdAt, updatedAt=$updatedAt, resolvedAt=$resolvedAt, imageUrls=$imageUrls]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -263,11 +251,6 @@ class Dispute {
     } else {
       json[r'resolvedAt'] = null;
     }
-    if (this.imageUrlsJson != null) {
-      json[r'imageUrlsJson'] = this.imageUrlsJson;
-    } else {
-      json[r'imageUrlsJson'] = null;
-    }
       json[r'imageUrls'] = this.imageUrls.toList(growable: false);
     return json;
   }
@@ -304,7 +287,6 @@ class Dispute {
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         resolvedAt: mapDateTime(json, r'resolvedAt', r''),
-        imageUrlsJson: mapValueOfType<String>(json, r'imageUrlsJson'),
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
             : const {},

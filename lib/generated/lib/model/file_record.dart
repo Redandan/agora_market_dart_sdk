@@ -21,7 +21,6 @@ class FileRecord {
     this.fileExtension,
     this.fileUrl,
     this.businessType,
-    this.businessId,
     this.uploaderId,
     this.uploaderName,
     this.isPublic,
@@ -99,14 +98,6 @@ class FileRecord {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? businessType;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? businessId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -214,7 +205,6 @@ class FileRecord {
     other.fileExtension == fileExtension &&
     other.fileUrl == fileUrl &&
     other.businessType == businessType &&
-    other.businessId == businessId &&
     other.uploaderId == uploaderId &&
     other.uploaderName == uploaderName &&
     other.isPublic == isPublic &&
@@ -239,7 +229,6 @@ class FileRecord {
     (fileExtension == null ? 0 : fileExtension!.hashCode) +
     (fileUrl == null ? 0 : fileUrl!.hashCode) +
     (businessType == null ? 0 : businessType!.hashCode) +
-    (businessId == null ? 0 : businessId!.hashCode) +
     (uploaderId == null ? 0 : uploaderId!.hashCode) +
     (uploaderName == null ? 0 : uploaderName!.hashCode) +
     (isPublic == null ? 0 : isPublic!.hashCode) +
@@ -254,7 +243,7 @@ class FileRecord {
     (fileSizeFormatted == null ? 0 : fileSizeFormatted!.hashCode);
 
   @override
-  String toString() => 'FileRecord[id=$id, originalFilename=$originalFilename, objectName=$objectName, fileSize=$fileSize, contentType=$contentType, fileExtension=$fileExtension, fileUrl=$fileUrl, businessType=$businessType, businessId=$businessId, uploaderId=$uploaderId, uploaderName=$uploaderName, isPublic=$isPublic, description=$description, tags=$tags, fileHash=$fileHash, uploadTime=$uploadTime, lastUpdated=$lastUpdated, image=$image, document=$document, archive=$archive, fileSizeFormatted=$fileSizeFormatted]';
+  String toString() => 'FileRecord[id=$id, originalFilename=$originalFilename, objectName=$objectName, fileSize=$fileSize, contentType=$contentType, fileExtension=$fileExtension, fileUrl=$fileUrl, businessType=$businessType, uploaderId=$uploaderId, uploaderName=$uploaderName, isPublic=$isPublic, description=$description, tags=$tags, fileHash=$fileHash, uploadTime=$uploadTime, lastUpdated=$lastUpdated, image=$image, document=$document, archive=$archive, fileSizeFormatted=$fileSizeFormatted]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -297,11 +286,6 @@ class FileRecord {
       json[r'businessType'] = this.businessType;
     } else {
       json[r'businessType'] = null;
-    }
-    if (this.businessId != null) {
-      json[r'businessId'] = this.businessId;
-    } else {
-      json[r'businessId'] = null;
     }
     if (this.uploaderId != null) {
       json[r'uploaderId'] = this.uploaderId;
@@ -393,7 +377,6 @@ class FileRecord {
         fileExtension: mapValueOfType<String>(json, r'fileExtension'),
         fileUrl: mapValueOfType<String>(json, r'fileUrl'),
         businessType: mapValueOfType<String>(json, r'businessType'),
-        businessId: mapValueOfType<String>(json, r'businessId'),
         uploaderId: mapValueOfType<int>(json, r'uploaderId'),
         uploaderName: mapValueOfType<String>(json, r'uploaderName'),
         isPublic: mapValueOfType<bool>(json, r'isPublic'),

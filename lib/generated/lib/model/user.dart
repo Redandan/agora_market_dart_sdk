@@ -33,8 +33,8 @@ class User {
     this.trustedDevicesJson,
     this.createdAt,
     this.updatedAt,
-    this.admin,
     this.trustedDevices = const [],
+    this.admin,
   });
 
   /// 用戶ID
@@ -216,6 +216,8 @@ class User {
   ///
   DateTime? updatedAt;
 
+  List<DeviceInfo> trustedDevices;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -223,8 +225,6 @@ class User {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? admin;
-
-  List<DeviceInfo> trustedDevices;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is User &&
@@ -248,8 +248,8 @@ class User {
     other.trustedDevicesJson == trustedDevicesJson &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.admin == admin &&
-    _deepEquality.equals(other.trustedDevices, trustedDevices);
+    _deepEquality.equals(other.trustedDevices, trustedDevices) &&
+    other.admin == admin;
 
   @override
   int get hashCode =>
@@ -274,11 +274,11 @@ class User {
     (trustedDevicesJson == null ? 0 : trustedDevicesJson!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (admin == null ? 0 : admin!.hashCode) +
-    (trustedDevices.hashCode);
+    (trustedDevices.hashCode) +
+    (admin == null ? 0 : admin!.hashCode);
 
   @override
-  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, trustedDevicesJson=$trustedDevicesJson, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin, trustedDevices=$trustedDevices]';
+  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, trustedDevicesJson=$trustedDevicesJson, createdAt=$createdAt, updatedAt=$updatedAt, trustedDevices=$trustedDevices, admin=$admin]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -382,12 +382,12 @@ class User {
     } else {
       json[r'updatedAt'] = null;
     }
+      json[r'trustedDevices'] = this.trustedDevices;
     if (this.admin != null) {
       json[r'admin'] = this.admin;
     } else {
       json[r'admin'] = null;
     }
-      json[r'trustedDevices'] = this.trustedDevices;
     return json;
   }
 
@@ -430,8 +430,8 @@ class User {
         trustedDevicesJson: mapValueOfType<String>(json, r'trustedDevicesJson'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
-        admin: mapValueOfType<bool>(json, r'admin'),
         trustedDevices: DeviceInfo.listFromJson(json[r'trustedDevices']),
+        admin: mapValueOfType<bool>(json, r'admin'),
       );
     }
     return null;

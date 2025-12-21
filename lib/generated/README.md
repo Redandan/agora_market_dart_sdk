@@ -156,7 +156,7 @@ Class | Method | HTTP request | Description
 *AdminDisputesApi* | [**judgeDispute**](doc//AdminDisputesApi.md#judgedispute) | **POST** /admin/disputes/{disputeId}/judge | 判定爭議責任
 *AdminDisputesApi* | [**resolveDispute**](doc//AdminDisputesApi.md#resolvedispute) | **POST** /admin/disputes/{disputeId}/resolve | 結案爭議
 *AdminDisputesApi* | [**resolveDisputeOld**](doc//AdminDisputesApi.md#resolvedisputeold) | **POST** /admin/disputes/{disputeId}/resolve-old | 處理糾紛（舊版，保留向後兼容）
-*AdminDisputesApi* | [**searchDisputes1**](doc//AdminDisputesApi.md#searchdisputes1) | **POST** /admin/disputes/search | 搜索糾紛
+*AdminDisputesApi* | [**searchDisputes**](doc//AdminDisputesApi.md#searchdisputes) | **POST** /admin/disputes/search | 搜索糾紛
 *AdminExchangeRateRangeApi* | [**approveSuggestion**](doc//AdminExchangeRateRangeApi.md#approvesuggestion) | **POST** /admin/exchange-rate-range/suggestions/{id}/approve | 同意建議
 *AdminExchangeRateRangeApi* | [**editRange**](doc//AdminExchangeRateRangeApi.md#editrange) | **POST** /admin/exchange-rate-range/edit | 更新匯率範圍
 *AdminExchangeRateRangeApi* | [**getAllRanges**](doc//AdminExchangeRateRangeApi.md#getallranges) | **POST** /admin/exchange-rate-range/all | 搜尋匯率範圍
@@ -274,7 +274,8 @@ Class | Method | HTTP request | Description
 *MemberDisputesApi* | [**createDispute**](doc//MemberDisputesApi.md#createdispute) | **POST** /disputes | 創建糾紛
 *MemberDisputesApi* | [**getDisputeDetail**](doc//MemberDisputesApi.md#getdisputedetail) | **GET** /disputes/{disputeId} | 查看糾紛詳情
 *MemberDisputesApi* | [**replyDispute**](doc//MemberDisputesApi.md#replydispute) | **POST** /disputes/{disputeId}/reply | 回覆糾紛
-*MemberDisputesApi* | [**searchDisputes**](doc//MemberDisputesApi.md#searchdisputes) | **POST** /disputes/search | 搜索糾紛
+*MemberDisputesApi* | [**searchBuyerDisputes**](doc//MemberDisputesApi.md#searchbuyerdisputes) | **POST** /disputes/buyer/search | 買家搜索糾紛
+*MemberDisputesApi* | [**searchSellerDisputes**](doc//MemberDisputesApi.md#searchsellerdisputes) | **POST** /disputes/seller/search | 賣家搜索糾紛
 *MemberNotificationsApi* | [**cleanupExpiredNotifications**](doc//MemberNotificationsApi.md#cleanupexpirednotifications) | **POST** /notifications/cleanup | 清理過期通知
 *MemberNotificationsApi* | [**createBatchNotifications**](doc//MemberNotificationsApi.md#createbatchnotifications) | **POST** /notifications/batch | 批量創建通知
 *MemberNotificationsApi* | [**createNotification**](doc//MemberNotificationsApi.md#createnotification) | **POST** /notifications | 創建通知

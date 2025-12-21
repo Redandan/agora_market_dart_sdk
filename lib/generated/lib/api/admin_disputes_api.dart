@@ -408,7 +408,7 @@ class AdminDisputesApi {
   /// Parameters:
   ///
   /// * [DisputeSearchParam] disputeSearchParam (required):
-  Future<Response> searchDisputes1WithHttpInfo(DisputeSearchParam disputeSearchParam,) async {
+  Future<Response> searchDisputesWithHttpInfo(DisputeSearchParam disputeSearchParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/disputes/search';
 
@@ -440,8 +440,8 @@ class AdminDisputesApi {
   /// Parameters:
   ///
   /// * [DisputeSearchParam] disputeSearchParam (required):
-  Future<PageDispute?> searchDisputes1(DisputeSearchParam disputeSearchParam,) async {
-    final response = await searchDisputes1WithHttpInfo(disputeSearchParam,);
+  Future<PageDispute?> searchDisputes(DisputeSearchParam disputeSearchParam,) async {
+    final response = await searchDisputesWithHttpInfo(disputeSearchParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

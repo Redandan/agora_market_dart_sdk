@@ -190,18 +190,18 @@ class MemberDisputesApi {
     }
   }
 
-  /// 搜索糾紛
+  /// 買家搜索糾紛
   ///
-  /// 會員可搜索與自己相關的糾紛
+  /// 買家可搜索與自己相關的糾紛
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [DisputeSearchParam] disputeSearchParam (required):
-  Future<Response> searchDisputesWithHttpInfo(DisputeSearchParam disputeSearchParam,) async {
+  Future<Response> searchBuyerDisputesWithHttpInfo(DisputeSearchParam disputeSearchParam,) async {
     // ignore: prefer_const_declarations
-    final path = r'/disputes/search';
+    final path = r'/disputes/buyer/search';
 
     // ignore: prefer_final_locals
     Object? postBody = disputeSearchParam;
@@ -224,15 +224,71 @@ class MemberDisputesApi {
     );
   }
 
-  /// 搜索糾紛
+  /// 買家搜索糾紛
   ///
-  /// 會員可搜索與自己相關的糾紛
+  /// 買家可搜索與自己相關的糾紛
   ///
   /// Parameters:
   ///
   /// * [DisputeSearchParam] disputeSearchParam (required):
-  Future<PageDispute?> searchDisputes(DisputeSearchParam disputeSearchParam,) async {
-    final response = await searchDisputesWithHttpInfo(disputeSearchParam,);
+  Future<PageDispute?> searchBuyerDisputes(DisputeSearchParam disputeSearchParam,) async {
+    final response = await searchBuyerDisputesWithHttpInfo(disputeSearchParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDispute',) as PageDispute;
+    
+    }
+    return null;
+  }
+
+  /// 賣家搜索糾紛
+  ///
+  /// 賣家可搜索與自己相關的糾紛
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [DisputeSearchParam] disputeSearchParam (required):
+  Future<Response> searchSellerDisputesWithHttpInfo(DisputeSearchParam disputeSearchParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/disputes/seller/search';
+
+    // ignore: prefer_final_locals
+    Object? postBody = disputeSearchParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 賣家搜索糾紛
+  ///
+  /// 賣家可搜索與自己相關的糾紛
+  ///
+  /// Parameters:
+  ///
+  /// * [DisputeSearchParam] disputeSearchParam (required):
+  Future<PageDispute?> searchSellerDisputes(DisputeSearchParam disputeSearchParam,) async {
+    final response = await searchSellerDisputesWithHttpInfo(disputeSearchParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
