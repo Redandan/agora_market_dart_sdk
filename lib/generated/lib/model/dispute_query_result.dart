@@ -15,6 +15,7 @@ class DisputeQueryResult {
   DisputeQueryResult({
     this.dispute,
     this.order,
+    this.orderReturnRecord,
   });
 
   ///
@@ -33,19 +34,29 @@ class DisputeQueryResult {
   ///
   Order? order;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  OrderReturnRecord? orderReturnRecord;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is DisputeQueryResult &&
     other.dispute == dispute &&
-    other.order == order;
+    other.order == order &&
+    other.orderReturnRecord == orderReturnRecord;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (dispute == null ? 0 : dispute!.hashCode) +
-    (order == null ? 0 : order!.hashCode);
+    (order == null ? 0 : order!.hashCode) +
+    (orderReturnRecord == null ? 0 : orderReturnRecord!.hashCode);
 
   @override
-  String toString() => 'DisputeQueryResult[dispute=$dispute, order=$order]';
+  String toString() => 'DisputeQueryResult[dispute=$dispute, order=$order, orderReturnRecord=$orderReturnRecord]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -58,6 +69,11 @@ class DisputeQueryResult {
       json[r'order'] = this.order;
     } else {
       json[r'order'] = null;
+    }
+    if (this.orderReturnRecord != null) {
+      json[r'orderReturnRecord'] = this.orderReturnRecord;
+    } else {
+      json[r'orderReturnRecord'] = null;
     }
     return json;
   }
@@ -83,6 +99,7 @@ class DisputeQueryResult {
       return DisputeQueryResult(
         dispute: Dispute.fromJson(json[r'dispute']),
         order: Order.fromJson(json[r'order']),
+        orderReturnRecord: OrderReturnRecord.fromJson(json[r'orderReturnRecord']),
       );
     }
     return null;
