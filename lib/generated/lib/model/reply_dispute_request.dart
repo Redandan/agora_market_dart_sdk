@@ -10,11 +10,11 @@
 
 part of openapi.api;
 
-class DisputeQueryResult {
-  /// Returns a new [DisputeQueryResult] instance.
-  DisputeQueryResult({
-    this.dispute,
-    this.order,
+class ReplyDisputeRequest {
+  /// Returns a new [ReplyDisputeRequest] instance.
+  ReplyDisputeRequest({
+    this.user,
+    this.param,
   });
 
   ///
@@ -23,7 +23,7 @@ class DisputeQueryResult {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  Dispute? dispute;
+  User? user;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -31,41 +31,41 @@ class DisputeQueryResult {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  Order? order;
+  DisputeReplyParam? param;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is DisputeQueryResult &&
-    other.dispute == dispute &&
-    other.order == order;
+  bool operator ==(Object other) => identical(this, other) || other is ReplyDisputeRequest &&
+    other.user == user &&
+    other.param == param;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (dispute == null ? 0 : dispute!.hashCode) +
-    (order == null ? 0 : order!.hashCode);
+    (user == null ? 0 : user!.hashCode) +
+    (param == null ? 0 : param!.hashCode);
 
   @override
-  String toString() => 'DisputeQueryResult[dispute=$dispute, order=$order]';
+  String toString() => 'ReplyDisputeRequest[user=$user, param=$param]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.dispute != null) {
-      json[r'dispute'] = this.dispute;
+    if (this.user != null) {
+      json[r'user'] = this.user;
     } else {
-      json[r'dispute'] = null;
+      json[r'user'] = null;
     }
-    if (this.order != null) {
-      json[r'order'] = this.order;
+    if (this.param != null) {
+      json[r'param'] = this.param;
     } else {
-      json[r'order'] = null;
+      json[r'param'] = null;
     }
     return json;
   }
 
-  /// Returns a new [DisputeQueryResult] instance and imports its values from
+  /// Returns a new [ReplyDisputeRequest] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static DisputeQueryResult? fromJson(dynamic value) {
+  static ReplyDisputeRequest? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -74,25 +74,25 @@ class DisputeQueryResult {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "DisputeQueryResult[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "DisputeQueryResult[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ReplyDisputeRequest[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ReplyDisputeRequest[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return DisputeQueryResult(
-        dispute: Dispute.fromJson(json[r'dispute']),
-        order: Order.fromJson(json[r'order']),
+      return ReplyDisputeRequest(
+        user: User.fromJson(json[r'user']),
+        param: DisputeReplyParam.fromJson(json[r'param']),
       );
     }
     return null;
   }
 
-  static List<DisputeQueryResult> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <DisputeQueryResult>[];
+  static List<ReplyDisputeRequest> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ReplyDisputeRequest>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = DisputeQueryResult.fromJson(row);
+        final value = ReplyDisputeRequest.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -101,12 +101,12 @@ class DisputeQueryResult {
     return result.toList(growable: growable);
   }
 
-  static Map<String, DisputeQueryResult> mapFromJson(dynamic json) {
-    final map = <String, DisputeQueryResult>{};
+  static Map<String, ReplyDisputeRequest> mapFromJson(dynamic json) {
+    final map = <String, ReplyDisputeRequest>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = DisputeQueryResult.fromJson(entry.value);
+        final value = ReplyDisputeRequest.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -115,14 +115,14 @@ class DisputeQueryResult {
     return map;
   }
 
-  // maps a json object with a list of DisputeQueryResult-objects as value to a dart map
-  static Map<String, List<DisputeQueryResult>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<DisputeQueryResult>>{};
+  // maps a json object with a list of ReplyDisputeRequest-objects as value to a dart map
+  static Map<String, List<ReplyDisputeRequest>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ReplyDisputeRequest>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = DisputeQueryResult.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ReplyDisputeRequest.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

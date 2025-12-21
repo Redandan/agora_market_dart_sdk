@@ -272,7 +272,7 @@ Class | Method | HTTP request | Description
 *FlutterDeploymentApi* | [**getApps**](doc//FlutterDeploymentApi.md#getapps) | **POST** /flutter/deployment/apps | 獲取可下載的 APP
 *LoginMethodsApi* | [**getLoginMethods**](doc//LoginMethodsApi.md#getloginmethods) | **GET** /auth/login-methods | 获取所有可用的登录方式
 *MemberDisputesApi* | [**createDispute**](doc//MemberDisputesApi.md#createdispute) | **POST** /disputes | 創建糾紛
-*MemberDisputesApi* | [**getDisputeDetail**](doc//MemberDisputesApi.md#getdisputedetail) | **GET** /disputes/{disputeId} | 查看糾紛詳情
+*MemberDisputesApi* | [**getDisputeDetail**](doc//MemberDisputesApi.md#getdisputedetail) | **POST** /disputes/detail | 查看糾紛詳情
 *MemberDisputesApi* | [**replyDispute**](doc//MemberDisputesApi.md#replydispute) | **POST** /disputes/{disputeId}/reply | 回覆糾紛
 *MemberDisputesApi* | [**searchBuyerDisputes**](doc//MemberDisputesApi.md#searchbuyerdisputes) | **POST** /disputes/buyer/search | 買家搜索糾紛
 *MemberDisputesApi* | [**searchSellerDisputes**](doc//MemberDisputesApi.md#searchsellerdisputes) | **POST** /disputes/seller/search | 賣家搜索糾紛
@@ -495,9 +495,11 @@ Class | Method | HTTP request | Description
  - [DeviceInfo](doc//DeviceInfo.md)
  - [Dispute](doc//Dispute.md)
  - [DisputeCreateParam](doc//DisputeCreateParam.md)
+ - [DisputeDetailParam](doc//DisputeDetailParam.md)
  - [DisputeJudgmentParam](doc//DisputeJudgmentParam.md)
  - [DisputeOutcome](doc//DisputeOutcome.md)
  - [DisputeQueryResult](doc//DisputeQueryResult.md)
+ - [DisputeReplyParam](doc//DisputeReplyParam.md)
  - [DisputeSearchParam](doc//DisputeSearchParam.md)
  - [DisputeStatisticsDTO](doc//DisputeStatisticsDTO.md)
  - [DisputeStatusEnum](doc//DisputeStatusEnum.md)
@@ -625,6 +627,7 @@ Class | Method | HTTP request | Description
  - [RefundOfferResponseParam](doc//RefundOfferResponseParam.md)
  - [RegisterParam](doc//RegisterParam.md)
  - [RegisterResult](doc//RegisterResult.md)
+ - [ReplyDisputeRequest](doc//ReplyDisputeRequest.md)
  - [ReplyIssueParam](doc//ReplyIssueParam.md)
  - [ReturnProcessParam](doc//ReturnProcessParam.md)
  - [ReturnReasonEnum](doc//ReturnReasonEnum.md)

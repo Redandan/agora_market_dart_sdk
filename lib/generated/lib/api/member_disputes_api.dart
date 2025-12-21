@@ -74,32 +74,30 @@ class MemberDisputesApi {
 
   /// 查看糾紛詳情
   ///
-  /// 會員可查看糾紛的詳細信息
+  /// 會員可查看糾紛的詳細信息，返回所有相關信息包括糾紛、訂單、買賣雙方信息、退貨記錄等
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [String] disputeId (required):
-  ///   糾紛ID
-  Future<Response> getDisputeDetailWithHttpInfo(String disputeId,) async {
+  /// * [DisputeDetailParam] disputeDetailParam (required):
+  Future<Response> getDisputeDetailWithHttpInfo(DisputeDetailParam disputeDetailParam,) async {
     // ignore: prefer_const_declarations
-    final path = r'/disputes/{disputeId}'
-      .replaceAll('{disputeId}', disputeId);
+    final path = r'/disputes/detail';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = disputeDetailParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -110,14 +108,13 @@ class MemberDisputesApi {
 
   /// 查看糾紛詳情
   ///
-  /// 會員可查看糾紛的詳細信息
+  /// 會員可查看糾紛的詳細信息，返回所有相關信息包括糾紛、訂單、買賣雙方信息、退貨記錄等
   ///
   /// Parameters:
   ///
-  /// * [String] disputeId (required):
-  ///   糾紛ID
-  Future<DisputeQueryResult?> getDisputeDetail(String disputeId,) async {
-    final response = await getDisputeDetailWithHttpInfo(disputeId,);
+  /// * [DisputeDetailParam] disputeDetailParam (required):
+  Future<DisputeQueryResult?> getDisputeDetail(DisputeDetailParam disputeDetailParam,) async {
+    final response = await getDisputeDetailWithHttpInfo(disputeDetailParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -142,23 +139,20 @@ class MemberDisputesApi {
   /// * [String] disputeId (required):
   ///   糾紛ID
   ///
-  /// * [String] reply (required):
-  ///   回覆內容
-  Future<Response> replyDisputeWithHttpInfo(String disputeId, String reply,) async {
+  /// * [ReplyDisputeRequest] replyDisputeRequest (required):
+  Future<Response> replyDisputeWithHttpInfo(String disputeId, ReplyDisputeRequest replyDisputeRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/disputes/{disputeId}/reply'
       .replaceAll('{disputeId}', disputeId);
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = replyDisputeRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'reply', reply));
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -181,10 +175,9 @@ class MemberDisputesApi {
   /// * [String] disputeId (required):
   ///   糾紛ID
   ///
-  /// * [String] reply (required):
-  ///   回覆內容
-  Future<void> replyDispute(String disputeId, String reply,) async {
-    final response = await replyDisputeWithHttpInfo(disputeId, reply,);
+  /// * [ReplyDisputeRequest] replyDisputeRequest (required):
+  Future<void> replyDispute(String disputeId, ReplyDisputeRequest replyDisputeRequest,) async {
+    final response = await replyDisputeWithHttpInfo(disputeId, replyDisputeRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
