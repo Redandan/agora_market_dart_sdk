@@ -18,10 +18,10 @@ class DisputeJudgmentParam {
     this.comment,
   });
 
-  /// 責任類型：SELLER_FAULT(賣家責任), BUYER_FAULT(買家責任), PARTIAL_FAULT(雙方部分責任)
+  /// 爭議責任類型
   DisputeJudgmentParamFaultTypeEnum faultType;
 
-  /// 部分退款金額（當 faultType 為 PARTIAL_FAULT 時必填）
+  /// 部分退款金額（當 faultType 為 PARTIAL_FAULT 時必填）。金額必須大於0且小於訂單總金額
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -30,7 +30,7 @@ class DisputeJudgmentParam {
   ///
   num? partialRefundAmount;
 
-  /// 判定說明
+  /// 判定說明。管理員對此次爭議判定的詳細說明
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -144,7 +144,7 @@ class DisputeJudgmentParam {
   };
 }
 
-/// 責任類型：SELLER_FAULT(賣家責任), BUYER_FAULT(買家責任), PARTIAL_FAULT(雙方部分責任)
+/// 爭議責任類型
 class DisputeJudgmentParamFaultTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const DisputeJudgmentParamFaultTypeEnum._(this.value);
