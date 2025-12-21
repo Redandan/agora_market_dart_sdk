@@ -627,7 +627,6 @@ Class | Method | HTTP request | Description
  - [RefundOfferResponseParam](doc//RefundOfferResponseParam.md)
  - [RegisterParam](doc//RegisterParam.md)
  - [RegisterResult](doc//RegisterResult.md)
- - [ReplyDisputeRequest](doc//ReplyDisputeRequest.md)
  - [ReplyIssueParam](doc//ReplyIssueParam.md)
  - [ReturnProcessParam](doc//ReturnProcessParam.md)
  - [ReturnReasonEnum](doc//ReturnReasonEnum.md)

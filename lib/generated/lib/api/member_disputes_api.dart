@@ -139,14 +139,14 @@ class MemberDisputesApi {
   /// * [String] disputeId (required):
   ///   糾紛ID
   ///
-  /// * [ReplyDisputeRequest] replyDisputeRequest (required):
-  Future<Response> replyDisputeWithHttpInfo(String disputeId, ReplyDisputeRequest replyDisputeRequest,) async {
+  /// * [DisputeReplyParam] disputeReplyParam (required):
+  Future<Response> replyDisputeWithHttpInfo(String disputeId, DisputeReplyParam disputeReplyParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/disputes/{disputeId}/reply'
       .replaceAll('{disputeId}', disputeId);
 
     // ignore: prefer_final_locals
-    Object? postBody = replyDisputeRequest;
+    Object? postBody = disputeReplyParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -175,12 +175,20 @@ class MemberDisputesApi {
   /// * [String] disputeId (required):
   ///   糾紛ID
   ///
-  /// * [ReplyDisputeRequest] replyDisputeRequest (required):
-  Future<void> replyDispute(String disputeId, ReplyDisputeRequest replyDisputeRequest,) async {
-    final response = await replyDisputeWithHttpInfo(disputeId, replyDisputeRequest,);
+  /// * [DisputeReplyParam] disputeReplyParam (required):
+  Future<Dispute?> replyDispute(String disputeId, DisputeReplyParam disputeReplyParam,) async {
+    final response = await replyDisputeWithHttpInfo(disputeId, disputeReplyParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Dispute',) as Dispute;
+    
+    }
+    return null;
   }
 
   /// 買家搜索糾紛

@@ -277,7 +277,6 @@ part 'model/recharge_status_enum.dart';
 part 'model/refund_offer_response_param.dart';
 part 'model/register_param.dart';
 part 'model/register_result.dart';
-part 'model/reply_dispute_request.dart';
 part 'model/reply_issue_param.dart';
 part 'model/return_process_param.dart';
 part 'model/return_reason_enum.dart';
