@@ -24,7 +24,6 @@ class DisputeStatusEnum {
   String toJson() => value;
 
   static const PENDING = DisputeStatusEnum._(r'PENDING');
-  static const REVIEWING = DisputeStatusEnum._(r'REVIEWING');
   static const COMPLETED = DisputeStatusEnum._(r'COMPLETED');
   static const REJECTED = DisputeStatusEnum._(r'REJECTED');
   static const unknownDefaultOpenApi = DisputeStatusEnum._(r'unknown_default_open_api');
@@ -32,7 +31,6 @@ class DisputeStatusEnum {
   /// List of all possible values in this [enum][DisputeStatusEnum].
   static const values = <DisputeStatusEnum>[
     PENDING,
-    REVIEWING,
     COMPLETED,
     REJECTED,
     unknownDefaultOpenApi,
@@ -75,7 +73,6 @@ class DisputeStatusEnumTypeTransformer {
     if (data != null) {
       switch (data) {
         case r'PENDING': return DisputeStatusEnum.PENDING;
-        case r'REVIEWING': return DisputeStatusEnum.REVIEWING;
         case r'COMPLETED': return DisputeStatusEnum.COMPLETED;
         case r'REJECTED': return DisputeStatusEnum.REJECTED;
         case r'unknown_default_open_api': return DisputeStatusEnum.unknownDefaultOpenApi;
