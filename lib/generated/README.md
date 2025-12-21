@@ -150,12 +150,9 @@ Class | Method | HTTP request | Description
 *AdminDeliveryApi* | [**searchDeliveryOrders**](doc//AdminDeliveryApi.md#searchdeliveryorders) | **POST** /admin/delivery/orders/search | 搜索配送訂單
 *AdminDeliveryApi* | [**searchDeliveryers**](doc//AdminDeliveryApi.md#searchdeliveryers) | **POST** /admin/delivery/deliveryers/search | 搜索配送員
 *AdminDeliveryApi* | [**updateDeliveryerStatus**](doc//AdminDeliveryApi.md#updatedeliveryerstatus) | **POST** /admin/delivery/deliveryers/{deliveryerId}/status | 更新配送員狀態
-*AdminDisputesApi* | [**getAllDisputes**](doc//AdminDisputesApi.md#getalldisputes) | **GET** /admin/disputes/disputes | 獲取所有糾紛列表
 *AdminDisputesApi* | [**getDisputeDetail1**](doc//AdminDisputesApi.md#getdisputedetail1) | **GET** /admin/disputes/{disputeId} | 查看糾紛詳情
 *AdminDisputesApi* | [**getDisputeStatistics**](doc//AdminDisputesApi.md#getdisputestatistics) | **GET** /admin/disputes/statistics | 糾紛統計報告
 *AdminDisputesApi* | [**judgeDispute**](doc//AdminDisputesApi.md#judgedispute) | **POST** /admin/disputes/{disputeId}/judge | 判定爭議責任
-*AdminDisputesApi* | [**resolveDispute**](doc//AdminDisputesApi.md#resolvedispute) | **POST** /admin/disputes/{disputeId}/resolve | 結案爭議
-*AdminDisputesApi* | [**resolveDisputeOld**](doc//AdminDisputesApi.md#resolvedisputeold) | **POST** /admin/disputes/{disputeId}/resolve-old | 處理糾紛（舊版，保留向後兼容）
 *AdminDisputesApi* | [**searchDisputes**](doc//AdminDisputesApi.md#searchdisputes) | **POST** /admin/disputes/search | 搜索糾紛
 *AdminExchangeRateRangeApi* | [**approveSuggestion**](doc//AdminExchangeRateRangeApi.md#approvesuggestion) | **POST** /admin/exchange-rate-range/suggestions/{id}/approve | 同意建議
 *AdminExchangeRateRangeApi* | [**editRange**](doc//AdminExchangeRateRangeApi.md#editrange) | **POST** /admin/exchange-rate-range/edit | 更新匯率範圍
