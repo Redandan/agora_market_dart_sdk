@@ -18,9 +18,9 @@ class ReturnProcessParam {
     this.rejectionReason,
     this.refundOption,
     this.refundAmount,
-    this.returnRecipientName,
-    this.returnRecipientPhone,
-    this.returnAddress,
+    required this.returnRecipientName,
+    required this.returnRecipientPhone,
+    required this.returnAddress,
   });
 
   /// 是否同意退貨
@@ -56,32 +56,14 @@ class ReturnProcessParam {
   ///
   num? refundAmount;
 
-  /// 收貨人姓名（當 refundOption 為 RETURN_REQUIRED 時必填）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? returnRecipientName;
+  /// 收貨人姓名（當 refundOption 為 RETURN_REQUIRED 時必填，不可為空）
+  String returnRecipientName;
 
-  /// 收貨人電話（當 refundOption 為 RETURN_REQUIRED 時必填）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? returnRecipientPhone;
+  /// 收貨人電話（當 refundOption 為 RETURN_REQUIRED 時必填，不可為空）
+  String returnRecipientPhone;
 
-  /// 收貨完整地址（當 refundOption 為 RETURN_REQUIRED 時必填）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? returnAddress;
+  /// 收貨完整地址（當 refundOption 為 RETURN_REQUIRED 時必填，不可為空）
+  String returnAddress;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ReturnProcessParam &&
@@ -102,9 +84,9 @@ class ReturnProcessParam {
     (rejectionReason == null ? 0 : rejectionReason!.hashCode) +
     (refundOption == null ? 0 : refundOption!.hashCode) +
     (refundAmount == null ? 0 : refundAmount!.hashCode) +
-    (returnRecipientName == null ? 0 : returnRecipientName!.hashCode) +
-    (returnRecipientPhone == null ? 0 : returnRecipientPhone!.hashCode) +
-    (returnAddress == null ? 0 : returnAddress!.hashCode);
+    (returnRecipientName.hashCode) +
+    (returnRecipientPhone.hashCode) +
+    (returnAddress.hashCode);
 
   @override
   String toString() => 'ReturnProcessParam[approved=$approved, sellerReply=$sellerReply, rejectionReason=$rejectionReason, refundOption=$refundOption, refundAmount=$refundAmount, returnRecipientName=$returnRecipientName, returnRecipientPhone=$returnRecipientPhone, returnAddress=$returnAddress]';
@@ -132,21 +114,9 @@ class ReturnProcessParam {
     } else {
       json[r'refundAmount'] = null;
     }
-    if (this.returnRecipientName != null) {
       json[r'returnRecipientName'] = this.returnRecipientName;
-    } else {
-      json[r'returnRecipientName'] = null;
-    }
-    if (this.returnRecipientPhone != null) {
       json[r'returnRecipientPhone'] = this.returnRecipientPhone;
-    } else {
-      json[r'returnRecipientPhone'] = null;
-    }
-    if (this.returnAddress != null) {
       json[r'returnAddress'] = this.returnAddress;
-    } else {
-      json[r'returnAddress'] = null;
-    }
     return json;
   }
 
@@ -174,9 +144,9 @@ class ReturnProcessParam {
         rejectionReason: mapValueOfType<String>(json, r'rejectionReason'),
         refundOption: ReturnProcessParamRefundOptionEnum.fromJson(json[r'refundOption']),
         refundAmount: num.parse('${json[r'refundAmount']}'),
-        returnRecipientName: mapValueOfType<String>(json, r'returnRecipientName'),
-        returnRecipientPhone: mapValueOfType<String>(json, r'returnRecipientPhone'),
-        returnAddress: mapValueOfType<String>(json, r'returnAddress'),
+        returnRecipientName: mapValueOfType<String>(json, r'returnRecipientName')!,
+        returnRecipientPhone: mapValueOfType<String>(json, r'returnRecipientPhone')!,
+        returnAddress: mapValueOfType<String>(json, r'returnAddress')!,
       );
     }
     return null;
@@ -225,6 +195,9 @@ class ReturnProcessParam {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'approved',
+    'returnRecipientName',
+    'returnRecipientPhone',
+    'returnAddress',
   };
 }
 
