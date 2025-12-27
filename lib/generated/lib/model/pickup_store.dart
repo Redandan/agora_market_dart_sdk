@@ -24,8 +24,8 @@ class PickupStore {
     required this.createdAt,
     required this.updatedAt,
     this.familyMart,
-    this.fullStoreInfo,
     this.sevenEleven,
+    this.fullStoreInfo,
   });
 
   /// 門市ID
@@ -71,7 +71,7 @@ class PickupStore {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? fullStoreInfo;
+  bool? sevenEleven;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -79,7 +79,7 @@ class PickupStore {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? sevenEleven;
+  String? fullStoreInfo;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PickupStore &&
@@ -94,8 +94,8 @@ class PickupStore {
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
     other.familyMart == familyMart &&
-    other.fullStoreInfo == fullStoreInfo &&
-    other.sevenEleven == sevenEleven;
+    other.sevenEleven == sevenEleven &&
+    other.fullStoreInfo == fullStoreInfo;
 
   @override
   int get hashCode =>
@@ -111,11 +111,11 @@ class PickupStore {
     (createdAt.hashCode) +
     (updatedAt.hashCode) +
     (familyMart == null ? 0 : familyMart!.hashCode) +
-    (fullStoreInfo == null ? 0 : fullStoreInfo!.hashCode) +
-    (sevenEleven == null ? 0 : sevenEleven!.hashCode);
+    (sevenEleven == null ? 0 : sevenEleven!.hashCode) +
+    (fullStoreInfo == null ? 0 : fullStoreInfo!.hashCode);
 
   @override
-  String toString() => 'PickupStore[id=$id, storeType=$storeType, storeCode=$storeCode, storeName=$storeName, storeAddress=$storeAddress, city=$city, district=$district, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, familyMart=$familyMart, fullStoreInfo=$fullStoreInfo, sevenEleven=$sevenEleven]';
+  String toString() => 'PickupStore[id=$id, storeType=$storeType, storeCode=$storeCode, storeName=$storeName, storeAddress=$storeAddress, city=$city, district=$district, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, familyMart=$familyMart, sevenEleven=$sevenEleven, fullStoreInfo=$fullStoreInfo]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -142,15 +142,15 @@ class PickupStore {
     } else {
       json[r'familyMart'] = null;
     }
-    if (this.fullStoreInfo != null) {
-      json[r'fullStoreInfo'] = this.fullStoreInfo;
-    } else {
-      json[r'fullStoreInfo'] = null;
-    }
     if (this.sevenEleven != null) {
       json[r'sevenEleven'] = this.sevenEleven;
     } else {
       json[r'sevenEleven'] = null;
+    }
+    if (this.fullStoreInfo != null) {
+      json[r'fullStoreInfo'] = this.fullStoreInfo;
+    } else {
+      json[r'fullStoreInfo'] = null;
     }
     return json;
   }
@@ -185,8 +185,8 @@ class PickupStore {
         createdAt: mapDateTime(json, r'createdAt', r'')!,
         updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         familyMart: mapValueOfType<bool>(json, r'familyMart'),
-        fullStoreInfo: mapValueOfType<String>(json, r'fullStoreInfo'),
         sevenEleven: mapValueOfType<bool>(json, r'sevenEleven'),
+        fullStoreInfo: mapValueOfType<String>(json, r'fullStoreInfo'),
       );
     }
     return null;

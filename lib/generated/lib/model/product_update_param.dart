@@ -16,7 +16,7 @@ class ProductUpdateParam {
     required this.id,
     this.name,
     this.price,
-    this.currency,
+    required this.currency,
     this.stock,
     this.description,
     this.category,
@@ -64,8 +64,7 @@ class ProductUpdateParam {
   ///
   num? price;
 
-  /// 貨幣類型
-  ProductUpdateParamCurrencyEnum? currency;
+  SupportedCurrencyEnum? currency;
 
   /// 商品庫存
   ///
@@ -453,7 +452,7 @@ class ProductUpdateParam {
         id: mapValueOfType<String>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name'),
         price: num.parse('${json[r'price']}'),
-        currency: ProductUpdateParamCurrencyEnum.fromJson(json[r'currency']),
+        currency: SupportedCurrencyEnum.fromJson(json[r'currency']),
         stock: mapValueOfType<int>(json, r'stock'),
         description: mapValueOfType<String>(json, r'description'),
         category: mapValueOfType<String>(json, r'category'),
@@ -528,113 +527,10 @@ class ProductUpdateParam {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'id',
+    'currency',
     'skus',
     'pickupServiceTypes',
     'pickupServiceTypeFees',
   };
 }
-
-/// 貨幣類型
-class ProductUpdateParamCurrencyEnum {
-  /// Instantiate a new enum with the provided [value].
-  const ProductUpdateParamCurrencyEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const USDT = ProductUpdateParamCurrencyEnum._(r'USDT');
-  static const USD = ProductUpdateParamCurrencyEnum._(r'USD');
-  static const TWD = ProductUpdateParamCurrencyEnum._(r'TWD');
-  static const CNY = ProductUpdateParamCurrencyEnum._(r'CNY');
-  static const JPY = ProductUpdateParamCurrencyEnum._(r'JPY');
-  static const EUR = ProductUpdateParamCurrencyEnum._(r'EUR');
-  static const GBP = ProductUpdateParamCurrencyEnum._(r'GBP');
-  static const KRW = ProductUpdateParamCurrencyEnum._(r'KRW');
-  static const SGD = ProductUpdateParamCurrencyEnum._(r'SGD');
-  static const HKD = ProductUpdateParamCurrencyEnum._(r'HKD');
-  static const AUD = ProductUpdateParamCurrencyEnum._(r'AUD');
-  static const unknownDefaultOpenApi = ProductUpdateParamCurrencyEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][ProductUpdateParamCurrencyEnum].
-  static const values = <ProductUpdateParamCurrencyEnum>[
-    USDT,
-    USD,
-    TWD,
-    CNY,
-    JPY,
-    EUR,
-    GBP,
-    KRW,
-    SGD,
-    HKD,
-    AUD,
-    unknownDefaultOpenApi,
-  ];
-
-  static ProductUpdateParamCurrencyEnum? fromJson(dynamic value) => ProductUpdateParamCurrencyEnumTypeTransformer().decode(value);
-
-  static List<ProductUpdateParamCurrencyEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProductUpdateParamCurrencyEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = ProductUpdateParamCurrencyEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [ProductUpdateParamCurrencyEnum] to String,
-/// and [decode] dynamic data back to [ProductUpdateParamCurrencyEnum].
-class ProductUpdateParamCurrencyEnumTypeTransformer {
-  factory ProductUpdateParamCurrencyEnumTypeTransformer() => _instance ??= const ProductUpdateParamCurrencyEnumTypeTransformer._();
-
-  const ProductUpdateParamCurrencyEnumTypeTransformer._();
-
-  String encode(ProductUpdateParamCurrencyEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a ProductUpdateParamCurrencyEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  ProductUpdateParamCurrencyEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'USDT': return ProductUpdateParamCurrencyEnum.USDT;
-        case r'USD': return ProductUpdateParamCurrencyEnum.USD;
-        case r'TWD': return ProductUpdateParamCurrencyEnum.TWD;
-        case r'CNY': return ProductUpdateParamCurrencyEnum.CNY;
-        case r'JPY': return ProductUpdateParamCurrencyEnum.JPY;
-        case r'EUR': return ProductUpdateParamCurrencyEnum.EUR;
-        case r'GBP': return ProductUpdateParamCurrencyEnum.GBP;
-        case r'KRW': return ProductUpdateParamCurrencyEnum.KRW;
-        case r'SGD': return ProductUpdateParamCurrencyEnum.SGD;
-        case r'HKD': return ProductUpdateParamCurrencyEnum.HKD;
-        case r'AUD': return ProductUpdateParamCurrencyEnum.AUD;
-        case r'unknown_default_open_api': return ProductUpdateParamCurrencyEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [ProductUpdateParamCurrencyEnumTypeTransformer] instance.
-  static ProductUpdateParamCurrencyEnumTypeTransformer? _instance;
-}
-
 
