@@ -562,6 +562,7 @@ Class | Method | HTTP request | Description
  - [PageClientLog](doc//PageClientLog.md)
  - [PageColdWallet](doc//PageColdWallet.md)
  - [PageCustomerIssue](doc//PageCustomerIssue.md)
+ - [PageDeliveryDetail](doc//PageDeliveryDetail.md)
  - [PageDeliveryer](doc//PageDeliveryer.md)
  - [PageDispute](doc//PageDispute.md)
  - [PageFileRecord](doc//PageFileRecord.md)

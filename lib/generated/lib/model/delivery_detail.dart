@@ -13,25 +13,25 @@ part of openapi.api;
 class DeliveryDetail {
   /// Returns a new [DeliveryDetail] instance.
   DeliveryDetail({
-    this.orderId,
+    required this.orderId,
     this.deliveryId,
-    this.verifyCode,
+    required this.verifyCode,
     this.pickupLongitude,
     this.pickupLatitude,
     this.pickupAddress,
     this.pickupPostalCode,
     this.shippingLongitude,
-    this.shippingLatitude,
-    this.shippingAddress,
+    required this.shippingLatitude,
+    required this.shippingAddress,
     this.shippingPostalCode,
     this.receiverName,
     this.receiverPhone,
     this.trackingNumber,
-    this.createdAt,
-    this.updatedAt,
+    required this.createdAt,
+    required this.updatedAt,
     this.deliveredAt,
     this.assignedAt,
-    this.status,
+    required this.status,
     this.pickingUpTime,
     this.deliveringTime,
     this.deliveredTime,
@@ -41,13 +41,7 @@ class DeliveryDetail {
   });
 
   /// 訂單ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? orderId;
+  String orderId;
 
   /// 配送員ID
   ///
@@ -59,13 +53,7 @@ class DeliveryDetail {
   int? deliveryId;
 
   /// 驗證碼
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? verifyCode;
+  String verifyCode;
 
   /// 取件經度
   ///
@@ -113,22 +101,10 @@ class DeliveryDetail {
   double? shippingLongitude;
 
   /// 收件緯度
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  double? shippingLatitude;
+  double shippingLatitude;
 
   /// 收件地址
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? shippingAddress;
+  String shippingAddress;
 
   /// 收件郵遞區號
   ///
@@ -167,22 +143,10 @@ class DeliveryDetail {
   String? trackingNumber;
 
   /// 創建時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? createdAt;
+  DateTime createdAt;
 
   /// 更新時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? updatedAt;
+  DateTime updatedAt;
 
   /// 配送時間
   ///
@@ -203,7 +167,7 @@ class DeliveryDetail {
   DateTime? assignedAt;
 
   /// 配送狀態
-  DeliveryDetailStatusEnum? status;
+  DeliveryDetailStatusEnum status;
 
   /// 取貨時間
   ///
@@ -290,25 +254,25 @@ class DeliveryDetail {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (orderId == null ? 0 : orderId!.hashCode) +
+    (orderId.hashCode) +
     (deliveryId == null ? 0 : deliveryId!.hashCode) +
-    (verifyCode == null ? 0 : verifyCode!.hashCode) +
+    (verifyCode.hashCode) +
     (pickupLongitude == null ? 0 : pickupLongitude!.hashCode) +
     (pickupLatitude == null ? 0 : pickupLatitude!.hashCode) +
     (pickupAddress == null ? 0 : pickupAddress!.hashCode) +
     (pickupPostalCode == null ? 0 : pickupPostalCode!.hashCode) +
     (shippingLongitude == null ? 0 : shippingLongitude!.hashCode) +
-    (shippingLatitude == null ? 0 : shippingLatitude!.hashCode) +
-    (shippingAddress == null ? 0 : shippingAddress!.hashCode) +
+    (shippingLatitude.hashCode) +
+    (shippingAddress.hashCode) +
     (shippingPostalCode == null ? 0 : shippingPostalCode!.hashCode) +
     (receiverName == null ? 0 : receiverName!.hashCode) +
     (receiverPhone == null ? 0 : receiverPhone!.hashCode) +
     (trackingNumber == null ? 0 : trackingNumber!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (createdAt.hashCode) +
+    (updatedAt.hashCode) +
     (deliveredAt == null ? 0 : deliveredAt!.hashCode) +
     (assignedAt == null ? 0 : assignedAt!.hashCode) +
-    (status == null ? 0 : status!.hashCode) +
+    (status.hashCode) +
     (pickingUpTime == null ? 0 : pickingUpTime!.hashCode) +
     (deliveringTime == null ? 0 : deliveringTime!.hashCode) +
     (deliveredTime == null ? 0 : deliveredTime!.hashCode) +
@@ -321,21 +285,13 @@ class DeliveryDetail {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.orderId != null) {
       json[r'orderId'] = this.orderId;
-    } else {
-      json[r'orderId'] = null;
-    }
     if (this.deliveryId != null) {
       json[r'deliveryId'] = this.deliveryId;
     } else {
       json[r'deliveryId'] = null;
     }
-    if (this.verifyCode != null) {
       json[r'verifyCode'] = this.verifyCode;
-    } else {
-      json[r'verifyCode'] = null;
-    }
     if (this.pickupLongitude != null) {
       json[r'pickupLongitude'] = this.pickupLongitude;
     } else {
@@ -361,16 +317,8 @@ class DeliveryDetail {
     } else {
       json[r'shippingLongitude'] = null;
     }
-    if (this.shippingLatitude != null) {
       json[r'shippingLatitude'] = this.shippingLatitude;
-    } else {
-      json[r'shippingLatitude'] = null;
-    }
-    if (this.shippingAddress != null) {
       json[r'shippingAddress'] = this.shippingAddress;
-    } else {
-      json[r'shippingAddress'] = null;
-    }
     if (this.shippingPostalCode != null) {
       json[r'shippingPostalCode'] = this.shippingPostalCode;
     } else {
@@ -391,16 +339,8 @@ class DeliveryDetail {
     } else {
       json[r'trackingNumber'] = null;
     }
-    if (this.createdAt != null) {
-      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
-    } else {
-      json[r'createdAt'] = null;
-    }
-    if (this.updatedAt != null) {
-      json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
-    } else {
-      json[r'updatedAt'] = null;
-    }
+      json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
+      json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
     if (this.deliveredAt != null) {
       json[r'deliveredAt'] = this.deliveredAt!.toUtc().toIso8601String();
     } else {
@@ -411,11 +351,7 @@ class DeliveryDetail {
     } else {
       json[r'assignedAt'] = null;
     }
-    if (this.status != null) {
       json[r'status'] = this.status;
-    } else {
-      json[r'status'] = null;
-    }
     if (this.pickingUpTime != null) {
       json[r'pickingUpTime'] = this.pickingUpTime!.toUtc().toIso8601String();
     } else {
@@ -468,25 +404,25 @@ class DeliveryDetail {
       }());
 
       return DeliveryDetail(
-        orderId: mapValueOfType<String>(json, r'orderId'),
+        orderId: mapValueOfType<String>(json, r'orderId')!,
         deliveryId: mapValueOfType<int>(json, r'deliveryId'),
-        verifyCode: mapValueOfType<String>(json, r'verifyCode'),
+        verifyCode: mapValueOfType<String>(json, r'verifyCode')!,
         pickupLongitude: mapValueOfType<double>(json, r'pickupLongitude'),
         pickupLatitude: mapValueOfType<double>(json, r'pickupLatitude'),
         pickupAddress: mapValueOfType<String>(json, r'pickupAddress'),
         pickupPostalCode: mapValueOfType<String>(json, r'pickupPostalCode'),
         shippingLongitude: mapValueOfType<double>(json, r'shippingLongitude'),
-        shippingLatitude: mapValueOfType<double>(json, r'shippingLatitude'),
-        shippingAddress: mapValueOfType<String>(json, r'shippingAddress'),
+        shippingLatitude: mapValueOfType<double>(json, r'shippingLatitude')!,
+        shippingAddress: mapValueOfType<String>(json, r'shippingAddress')!,
         shippingPostalCode: mapValueOfType<String>(json, r'shippingPostalCode'),
         receiverName: mapValueOfType<String>(json, r'receiverName'),
         receiverPhone: mapValueOfType<String>(json, r'receiverPhone'),
         trackingNumber: mapValueOfType<String>(json, r'trackingNumber'),
-        createdAt: mapDateTime(json, r'createdAt', r''),
-        updatedAt: mapDateTime(json, r'updatedAt', r''),
+        createdAt: mapDateTime(json, r'createdAt', r'')!,
+        updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         deliveredAt: mapDateTime(json, r'deliveredAt', r''),
         assignedAt: mapDateTime(json, r'assignedAt', r''),
-        status: DeliveryDetailStatusEnum.fromJson(json[r'status']),
+        status: DeliveryDetailStatusEnum.fromJson(json[r'status'])!,
         pickingUpTime: mapDateTime(json, r'pickingUpTime', r''),
         deliveringTime: mapDateTime(json, r'deliveringTime', r''),
         deliveredTime: mapDateTime(json, r'deliveredTime', r''),
@@ -540,6 +476,13 @@ class DeliveryDetail {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'orderId',
+    'verifyCode',
+    'shippingLatitude',
+    'shippingAddress',
+    'createdAt',
+    'updatedAt',
+    'status',
   };
 }
 

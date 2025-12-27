@@ -227,7 +227,7 @@ class DeliveryApi {
   ///
   /// * [int] size:
   ///   每頁數量
-  Future<List<DeliveryDetail>?> getDeliveryHistory({ int? page, int? size, }) async {
+  Future<PageDeliveryDetail?> getDeliveryHistory({ int? page, int? size, }) async {
     final response = await getDeliveryHistoryWithHttpInfo( page: page, size: size, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -236,11 +236,8 @@ class DeliveryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<DeliveryDetail>') as List)
-        .cast<DeliveryDetail>()
-        .toList(growable: false);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDeliveryDetail',) as PageDeliveryDetail;
+    
     }
     return null;
   }

@@ -215,6 +215,7 @@ part 'model/page_chat_session.dart';
 part 'model/page_client_log.dart';
 part 'model/page_cold_wallet.dart';
 part 'model/page_customer_issue.dart';
+part 'model/page_delivery_detail.dart';
 part 'model/page_deliveryer.dart';
 part 'model/page_dispute.dart';
 part 'model/page_file_record.dart';

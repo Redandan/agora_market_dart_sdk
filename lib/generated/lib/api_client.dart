@@ -470,6 +470,8 @@ class ApiClient {
           return PageColdWallet.fromJson(value);
         case 'PageCustomerIssue':
           return PageCustomerIssue.fromJson(value);
+        case 'PageDeliveryDetail':
+          return PageDeliveryDetail.fromJson(value);
         case 'PageDeliveryer':
           return PageDeliveryer.fromJson(value);
         case 'PageDispute':
