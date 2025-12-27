@@ -179,14 +179,62 @@ class DeliveryApi {
   ///
   /// Parameters:
   ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<Response> getDeliveryHistoryWithHttpInfo({ int? page, int? size, }) async {
+  /// * [DeliveryHistoryParam] deliveryHistoryParam (required):
+  Future<Response> getDeliveryHistoryWithHttpInfo(DeliveryHistoryParam deliveryHistoryParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/delivery/history';
+
+    // ignore: prefer_final_locals
+    Object? postBody = deliveryHistoryParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 獲取歷史訂單
+  ///
+  /// 獲取當前配送員的歷史配送訂單
+  ///
+  /// Parameters:
+  ///
+  /// * [DeliveryHistoryParam] deliveryHistoryParam (required):
+  Future<PageDeliveryDetail?> getDeliveryHistory(DeliveryHistoryParam deliveryHistoryParam,) async {
+    final response = await getDeliveryHistoryWithHttpInfo(deliveryHistoryParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDeliveryDetail',) as PageDeliveryDetail;
+    
+    }
+    return null;
+  }
+
+  /// 獲取配送員統計數據
+  ///
+  /// 獲取當前配送員的統計數據，包括今日收益、已完成訂單數、待處理訂單數、配送中訂單數
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getDeliveryerStatsWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/delivery/stats';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -194,13 +242,6 @@ class DeliveryApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
 
     const contentTypes = <String>[];
 
@@ -216,19 +257,11 @@ class DeliveryApi {
     );
   }
 
-  /// 獲取歷史訂單
+  /// 獲取配送員統計數據
   ///
-  /// 獲取當前配送員的歷史配送訂單
-  ///
-  /// Parameters:
-  ///
-  /// * [int] page:
-  ///   頁碼，從1開始
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<PageDeliveryDetail?> getDeliveryHistory({ int? page, int? size, }) async {
-    final response = await getDeliveryHistoryWithHttpInfo( page: page, size: size, );
+  /// 獲取當前配送員的統計數據，包括今日收益、已完成訂單數、待處理訂單數、配送中訂單數
+  Future<DeliveryerStatsDTO?> getDeliveryerStats() async {
+    final response = await getDeliveryerStatsWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -236,7 +269,7 @@ class DeliveryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDeliveryDetail',) as PageDeliveryDetail;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeliveryerStatsDTO',) as DeliveryerStatsDTO;
     
     }
     return null;

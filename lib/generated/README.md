@@ -257,7 +257,8 @@ Class | Method | HTTP request | Description
 *DeliveryApi* | [**acceptOrder**](doc//DeliveryApi.md#acceptorder) | **POST** /delivery/accept | 配送員接單
 *DeliveryApi* | [**currentStatus**](doc//DeliveryApi.md#currentstatus) | **GET** /delivery/status | 獲取當前配送狀態
 *DeliveryApi* | [**getAvailableOrders**](doc//DeliveryApi.md#getavailableorders) | **GET** /delivery/available-orders | 獲取可接訂單列表
-*DeliveryApi* | [**getDeliveryHistory**](doc//DeliveryApi.md#getdeliveryhistory) | **GET** /delivery/history | 獲取歷史訂單
+*DeliveryApi* | [**getDeliveryHistory**](doc//DeliveryApi.md#getdeliveryhistory) | **POST** /delivery/history | 獲取歷史訂單
+*DeliveryApi* | [**getDeliveryerStats**](doc//DeliveryApi.md#getdeliveryerstats) | **GET** /delivery/stats | 獲取配送員統計數據
 *DeliveryApi* | [**registerDeliveryer**](doc//DeliveryApi.md#registerdeliveryer) | **POST** /delivery/register | 註冊配送員
 *DeliveryApi* | [**updateDeliveryOrder**](doc//DeliveryApi.md#updatedeliveryorder) | **POST** /delivery/update/order | 更新配送進度
 *DeliveryApi* | [**updateDeliveryer**](doc//DeliveryApi.md#updatedeliveryer) | **POST** /delivery/update | 更新配送員資料
@@ -481,6 +482,7 @@ Class | Method | HTTP request | Description
  - [CustomerIssue](doc//CustomerIssue.md)
  - [CustomerStats](doc//CustomerStats.md)
  - [DeliveryDetail](doc//DeliveryDetail.md)
+ - [DeliveryHistoryParam](doc//DeliveryHistoryParam.md)
  - [DeliveryOrderSearchParam](doc//DeliveryOrderSearchParam.md)
  - [DeliveryReportTypeEnum](doc//DeliveryReportTypeEnum.md)
  - [DeliveryStatisticsDTO](doc//DeliveryStatisticsDTO.md)
@@ -488,6 +490,7 @@ Class | Method | HTTP request | Description
  - [DeliveryerPerformanceDTO](doc//DeliveryerPerformanceDTO.md)
  - [DeliveryerRegistrationParam](doc//DeliveryerRegistrationParam.md)
  - [DeliveryerSearchParam](doc//DeliveryerSearchParam.md)
+ - [DeliveryerStatsDTO](doc//DeliveryerStatsDTO.md)
  - [DeliveryerUpdateParam](doc//DeliveryerUpdateParam.md)
  - [DeviceInfo](doc//DeviceInfo.md)
  - [Dispute](doc//Dispute.md)

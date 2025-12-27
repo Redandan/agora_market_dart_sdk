@@ -308,6 +308,8 @@ class ApiClient {
           return CustomerStats.fromJson(value);
         case 'DeliveryDetail':
           return DeliveryDetail.fromJson(value);
+        case 'DeliveryHistoryParam':
+          return DeliveryHistoryParam.fromJson(value);
         case 'DeliveryOrderSearchParam':
           return DeliveryOrderSearchParam.fromJson(value);
         case 'DeliveryReportTypeEnum':
@@ -322,6 +324,8 @@ class ApiClient {
           return DeliveryerRegistrationParam.fromJson(value);
         case 'DeliveryerSearchParam':
           return DeliveryerSearchParam.fromJson(value);
+        case 'DeliveryerStatsDTO':
+          return DeliveryerStatsDTO.fromJson(value);
         case 'DeliveryerUpdateParam':
           return DeliveryerUpdateParam.fromJson(value);
         case 'DeviceInfo':
