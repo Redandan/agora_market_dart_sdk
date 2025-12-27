@@ -13,20 +13,14 @@ part of openapi.api;
 class OrderCancelParam {
   /// Returns a new [OrderCancelParam] instance.
   OrderCancelParam({
-    this.orderId,
+    required this.orderId,
     this.reason,
   });
 
   /// 訂單ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? orderId;
+  String orderId;
 
-  /// 取消原因
+  /// 取消原因（可選）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -43,7 +37,7 @@ class OrderCancelParam {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (orderId == null ? 0 : orderId!.hashCode) +
+    (orderId.hashCode) +
     (reason == null ? 0 : reason!.hashCode);
 
   @override
@@ -51,11 +45,7 @@ class OrderCancelParam {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.orderId != null) {
       json[r'orderId'] = this.orderId;
-    } else {
-      json[r'orderId'] = null;
-    }
     if (this.reason != null) {
       json[r'reason'] = this.reason;
     } else {
@@ -83,7 +73,7 @@ class OrderCancelParam {
       }());
 
       return OrderCancelParam(
-        orderId: mapValueOfType<String>(json, r'orderId'),
+        orderId: mapValueOfType<String>(json, r'orderId')!,
         reason: mapValueOfType<String>(json, r'reason'),
       );
     }
@@ -132,6 +122,7 @@ class OrderCancelParam {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'orderId',
   };
 }
 

@@ -13,24 +13,24 @@ part of openapi.api;
 class Order {
   /// Returns a new [Order] instance.
   Order({
-    this.id,
-    this.version,
-    this.productId,
-    this.buyerId,
-    this.sellerId,
-    this.quantity,
-    this.selectedSku,
-    this.shippingFee,
-    this.productPrice,
-    this.orderAmount,
-    this.currency,
+    required this.id,
+    required this.version,
+    required this.productId,
+    required this.buyerId,
+    required this.sellerId,
+    required this.quantity,
+    required this.selectedSku,
+    required this.shippingFee,
+    required this.productPrice,
+    required this.orderAmount,
+    required this.currency,
     this.pickupServiceType,
     this.shippingCompany,
     this.trackingNumber,
-    this.status,
+    required this.status,
     this.remark,
-    this.createdAt,
-    this.updatedAt,
+    required this.createdAt,
+    required this.updatedAt,
     this.cancelledAt,
     this.refundedAt,
     this.refundAmount,
@@ -50,103 +50,37 @@ class Order {
   });
 
   /// 訂單ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? id;
+  String id;
 
   /// 版本號（樂觀鎖）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? version;
+  int version;
 
   /// 商品ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? productId;
+  int productId;
 
   /// 買家ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? buyerId;
+  int buyerId;
 
   /// 賣家ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? sellerId;
+  int sellerId;
 
   /// 商品數量
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? quantity;
+  int quantity;
 
   /// 選擇的商品SKU
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? selectedSku;
+  String selectedSku;
 
   /// 運費
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? shippingFee;
+  num shippingFee;
 
   /// 商品價格
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? productPrice;
+  num productPrice;
 
   /// 訂單金額
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? orderAmount;
+  num orderAmount;
 
   /// 貨幣
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? currency;
+  String currency;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -173,13 +107,7 @@ class Order {
   ///
   String? trackingNumber;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  OrderStatusEnum? status;
+  OrderStatusEnum status;
 
   /// 備註
   ///
@@ -191,22 +119,10 @@ class Order {
   String? remark;
 
   /// 創建時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? createdAt;
+  DateTime createdAt;
 
   /// 更新時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? updatedAt;
+  DateTime updatedAt;
 
   /// 取消時間
   ///
@@ -227,6 +143,12 @@ class Order {
   DateTime? refundedAt;
 
   /// 退款金額（部分退款時使用）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? refundAmount;
 
   /// 退款方案過期時間（部分退款方案時使用）
@@ -383,24 +305,24 @@ class Order {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (version == null ? 0 : version!.hashCode) +
-    (productId == null ? 0 : productId!.hashCode) +
-    (buyerId == null ? 0 : buyerId!.hashCode) +
-    (sellerId == null ? 0 : sellerId!.hashCode) +
-    (quantity == null ? 0 : quantity!.hashCode) +
-    (selectedSku == null ? 0 : selectedSku!.hashCode) +
-    (shippingFee == null ? 0 : shippingFee!.hashCode) +
-    (productPrice == null ? 0 : productPrice!.hashCode) +
-    (orderAmount == null ? 0 : orderAmount!.hashCode) +
-    (currency == null ? 0 : currency!.hashCode) +
+    (id.hashCode) +
+    (version.hashCode) +
+    (productId.hashCode) +
+    (buyerId.hashCode) +
+    (sellerId.hashCode) +
+    (quantity.hashCode) +
+    (selectedSku.hashCode) +
+    (shippingFee.hashCode) +
+    (productPrice.hashCode) +
+    (orderAmount.hashCode) +
+    (currency.hashCode) +
     (pickupServiceType == null ? 0 : pickupServiceType!.hashCode) +
     (shippingCompany == null ? 0 : shippingCompany!.hashCode) +
     (trackingNumber == null ? 0 : trackingNumber!.hashCode) +
-    (status == null ? 0 : status!.hashCode) +
+    (status.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (createdAt.hashCode) +
+    (updatedAt.hashCode) +
     (cancelledAt == null ? 0 : cancelledAt!.hashCode) +
     (refundedAt == null ? 0 : refundedAt!.hashCode) +
     (refundAmount == null ? 0 : refundAmount!.hashCode) +
@@ -423,61 +345,17 @@ class Order {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
       json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
-    if (this.version != null) {
       json[r'version'] = this.version;
-    } else {
-      json[r'version'] = null;
-    }
-    if (this.productId != null) {
       json[r'productId'] = this.productId;
-    } else {
-      json[r'productId'] = null;
-    }
-    if (this.buyerId != null) {
       json[r'buyerId'] = this.buyerId;
-    } else {
-      json[r'buyerId'] = null;
-    }
-    if (this.sellerId != null) {
       json[r'sellerId'] = this.sellerId;
-    } else {
-      json[r'sellerId'] = null;
-    }
-    if (this.quantity != null) {
       json[r'quantity'] = this.quantity;
-    } else {
-      json[r'quantity'] = null;
-    }
-    if (this.selectedSku != null) {
       json[r'selectedSku'] = this.selectedSku;
-    } else {
-      json[r'selectedSku'] = null;
-    }
-    if (this.shippingFee != null) {
       json[r'shippingFee'] = this.shippingFee;
-    } else {
-      json[r'shippingFee'] = null;
-    }
-    if (this.productPrice != null) {
       json[r'productPrice'] = this.productPrice;
-    } else {
-      json[r'productPrice'] = null;
-    }
-    if (this.orderAmount != null) {
       json[r'orderAmount'] = this.orderAmount;
-    } else {
-      json[r'orderAmount'] = null;
-    }
-    if (this.currency != null) {
       json[r'currency'] = this.currency;
-    } else {
-      json[r'currency'] = null;
-    }
     if (this.pickupServiceType != null) {
       json[r'pickupServiceType'] = this.pickupServiceType;
     } else {
@@ -493,26 +371,14 @@ class Order {
     } else {
       json[r'trackingNumber'] = null;
     }
-    if (this.status != null) {
       json[r'status'] = this.status;
-    } else {
-      json[r'status'] = null;
-    }
     if (this.remark != null) {
       json[r'remark'] = this.remark;
     } else {
       json[r'remark'] = null;
     }
-    if (this.createdAt != null) {
-      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
-    } else {
-      json[r'createdAt'] = null;
-    }
-    if (this.updatedAt != null) {
-      json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
-    } else {
-      json[r'updatedAt'] = null;
-    }
+      json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
+      json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
     if (this.cancelledAt != null) {
       json[r'cancelledAt'] = this.cancelledAt!.toUtc().toIso8601String();
     } else {
@@ -615,29 +481,27 @@ class Order {
       }());
 
       return Order(
-        id: mapValueOfType<String>(json, r'id'),
-        version: mapValueOfType<int>(json, r'version'),
-        productId: mapValueOfType<int>(json, r'productId'),
-        buyerId: mapValueOfType<int>(json, r'buyerId'),
-        sellerId: mapValueOfType<int>(json, r'sellerId'),
-        quantity: mapValueOfType<int>(json, r'quantity'),
-        selectedSku: mapValueOfType<String>(json, r'selectedSku'),
+        id: mapValueOfType<String>(json, r'id')!,
+        version: mapValueOfType<int>(json, r'version')!,
+        productId: mapValueOfType<int>(json, r'productId')!,
+        buyerId: mapValueOfType<int>(json, r'buyerId')!,
+        sellerId: mapValueOfType<int>(json, r'sellerId')!,
+        quantity: mapValueOfType<int>(json, r'quantity')!,
+        selectedSku: mapValueOfType<String>(json, r'selectedSku')!,
         shippingFee: num.parse('${json[r'shippingFee']}'),
         productPrice: num.parse('${json[r'productPrice']}'),
         orderAmount: num.parse('${json[r'orderAmount']}'),
-        currency: mapValueOfType<String>(json, r'currency'),
+        currency: mapValueOfType<String>(json, r'currency')!,
         pickupServiceType: PickupServiceTypeEnum.fromJson(json[r'pickupServiceType']),
         shippingCompany: ShippingCompanyEnum.fromJson(json[r'shippingCompany']),
         trackingNumber: mapValueOfType<String>(json, r'trackingNumber'),
-        status: OrderStatusEnum.fromJson(json[r'status']),
+        status: OrderStatusEnum.fromJson(json[r'status'])!,
         remark: mapValueOfType<String>(json, r'remark'),
-        createdAt: mapDateTime(json, r'createdAt', r''),
-        updatedAt: mapDateTime(json, r'updatedAt', r''),
+        createdAt: mapDateTime(json, r'createdAt', r'')!,
+        updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         cancelledAt: mapDateTime(json, r'cancelledAt', r''),
         refundedAt: mapDateTime(json, r'refundedAt', r''),
-        refundAmount: json[r'refundAmount'] == null
-            ? null
-            : num.parse('${json[r'refundAmount']}'),
+        refundAmount: num.parse('${json[r'refundAmount']}'),
         refundOfferExpiresAt: mapDateTime(json, r'refundOfferExpiresAt', r''),
         reviewedAt: mapDateTime(json, r'reviewedAt', r''),
         originalPrice: num.parse('${json[r'originalPrice']}'),
@@ -698,6 +562,20 @@ class Order {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
+    'version',
+    'productId',
+    'buyerId',
+    'sellerId',
+    'quantity',
+    'selectedSku',
+    'shippingFee',
+    'productPrice',
+    'orderAmount',
+    'currency',
+    'status',
+    'createdAt',
+    'updatedAt',
   };
 }
 
