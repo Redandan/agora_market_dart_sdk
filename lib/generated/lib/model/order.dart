@@ -99,23 +99,11 @@ class Order {
   ShippingCompanyEnum? shippingCompany;
 
   /// 追蹤號碼（賣家出貨時輸入）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? trackingNumber;
 
   OrderStatusEnum status;
 
   /// 備註
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? remark;
 
   /// 創建時間
@@ -125,120 +113,42 @@ class Order {
   DateTime updatedAt;
 
   /// 取消時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? cancelledAt;
 
   /// 退款時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? refundedAt;
 
   /// 退款金額（部分退款時使用）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? refundAmount;
 
   /// 退款方案過期時間（部分退款方案時使用）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? refundOfferExpiresAt;
 
   /// 評價時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? reviewedAt;
 
   /// 商品原始价格（原币种）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? originalPrice;
 
   /// 商品原始货币
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? originalCurrency;
 
   /// 购买时的汇率（USDT/原币种）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? exchangeRate;
 
   /// 原始运费（原币种）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? originalShippingFee;
 
   /// 汇率获取时间
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? exchangeRateTime;
 
   /// 是否使用默认汇率
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? usingDefaultRate;
 
   /// 買家姓名（下單時記錄）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? buyerName;
 
   /// 買家用戶名（下單時記錄）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? buyerUsername;
 
   ///
@@ -249,12 +159,6 @@ class Order {
   ///
   Product? product;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DeliveryDetail? deliveryDetail;
 
   ///
@@ -501,13 +405,21 @@ class Order {
         updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         cancelledAt: mapDateTime(json, r'cancelledAt', r''),
         refundedAt: mapDateTime(json, r'refundedAt', r''),
-        refundAmount: num.parse('${json[r'refundAmount']}'),
+        refundAmount: json[r'refundAmount'] == null
+            ? null
+            : num.parse('${json[r'refundAmount']}'),
         refundOfferExpiresAt: mapDateTime(json, r'refundOfferExpiresAt', r''),
         reviewedAt: mapDateTime(json, r'reviewedAt', r''),
-        originalPrice: num.parse('${json[r'originalPrice']}'),
+        originalPrice: json[r'originalPrice'] == null
+            ? null
+            : num.parse('${json[r'originalPrice']}'),
         originalCurrency: mapValueOfType<String>(json, r'originalCurrency'),
-        exchangeRate: num.parse('${json[r'exchangeRate']}'),
-        originalShippingFee: num.parse('${json[r'originalShippingFee']}'),
+        exchangeRate: json[r'exchangeRate'] == null
+            ? null
+            : num.parse('${json[r'exchangeRate']}'),
+        originalShippingFee: json[r'originalShippingFee'] == null
+            ? null
+            : num.parse('${json[r'originalShippingFee']}'),
         exchangeRateTime: mapDateTime(json, r'exchangeRateTime', r''),
         usingDefaultRate: mapValueOfType<bool>(json, r'usingDefaultRate'),
         buyerName: mapValueOfType<String>(json, r'buyerName'),
