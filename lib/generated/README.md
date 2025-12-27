@@ -668,6 +668,7 @@ Class | Method | HTTP request | Description
  - [StoreShippingConfigParam](doc//StoreShippingConfigParam.md)
  - [StoreUpdateParam](doc//StoreUpdateParam.md)
  - [SuggestionActionParam](doc//SuggestionActionParam.md)
+ - [SupportedCurrencyEnum](doc//SupportedCurrencyEnum.md)
  - [TaiwanPostalArea](doc//TaiwanPostalArea.md)
  - [TelegramBotInfo](doc//TelegramBotInfo.md)
  - [TopDeliveryAreaDTO](doc//TopDeliveryAreaDTO.md)

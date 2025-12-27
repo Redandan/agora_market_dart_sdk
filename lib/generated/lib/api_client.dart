@@ -680,6 +680,8 @@ class ApiClient {
           return StoreUpdateParam.fromJson(value);
         case 'SuggestionActionParam':
           return SuggestionActionParam.fromJson(value);
+        case 'SupportedCurrencyEnum':
+          return SupportedCurrencyEnumTypeTransformer().decode(value);
         case 'TaiwanPostalArea':
           return TaiwanPostalArea.fromJson(value);
         case 'TelegramBotInfo':

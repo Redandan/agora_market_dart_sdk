@@ -13,155 +13,75 @@ part of openapi.api;
 class FileRecord {
   /// Returns a new [FileRecord] instance.
   FileRecord({
-    this.id,
-    this.originalFilename,
-    this.objectName,
-    this.fileSize,
+    required this.id,
+    required this.originalFilename,
+    required this.objectName,
+    required this.fileSize,
     this.contentType,
     this.fileExtension,
-    this.fileUrl,
-    this.businessType,
-    this.uploaderId,
+    required this.fileUrl,
+    required this.businessType,
+    required this.uploaderId,
     this.uploaderName,
-    this.isPublic,
+    required this.isPublic,
     this.description,
     this.tags,
     this.fileHash,
-    this.uploadTime,
-    this.lastUpdated,
+    required this.uploadTime,
+    required this.lastUpdated,
     this.image,
     this.document,
     this.archive,
     this.fileSizeFormatted,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? id;
+  /// 檔案記錄ID
+  int id;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? originalFilename;
+  /// 原始檔案名
+  String originalFilename;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? objectName;
+  /// 儲存的檔案名（在 OCI Object Storage 中的名稱）
+  String objectName;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? fileSize;
+  /// 檔案大小（位元組）
+  int fileSize;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
+  /// 檔案類型（MIME type）
   String? contentType;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
+  /// 檔案副檔名
   String? fileExtension;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? fileUrl;
+  /// 檔案訪問 URL
+  String fileUrl;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? businessType;
+  /// 業務類型
+  String businessType;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? uploaderId;
+  /// 上傳者 ID
+  int uploaderId;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
+  /// 上傳者名稱
   String? uploaderName;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? isPublic;
+  /// 檔案是否公開
+  bool isPublic;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
+  /// 檔案描述（可選）
   String? description;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
+  /// 標籤（用於分類，可選）
   String? tags;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
+  /// 檔案雜湊值（SHA-256）
   String? fileHash;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? uploadTime;
+  /// 上傳時間
+  DateTime uploadTime;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? lastUpdated;
+  /// 最後更新時間
+  DateTime lastUpdated;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -221,22 +141,22 @@ class FileRecord {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (originalFilename == null ? 0 : originalFilename!.hashCode) +
-    (objectName == null ? 0 : objectName!.hashCode) +
-    (fileSize == null ? 0 : fileSize!.hashCode) +
+    (id.hashCode) +
+    (originalFilename.hashCode) +
+    (objectName.hashCode) +
+    (fileSize.hashCode) +
     (contentType == null ? 0 : contentType!.hashCode) +
     (fileExtension == null ? 0 : fileExtension!.hashCode) +
-    (fileUrl == null ? 0 : fileUrl!.hashCode) +
-    (businessType == null ? 0 : businessType!.hashCode) +
-    (uploaderId == null ? 0 : uploaderId!.hashCode) +
+    (fileUrl.hashCode) +
+    (businessType.hashCode) +
+    (uploaderId.hashCode) +
     (uploaderName == null ? 0 : uploaderName!.hashCode) +
-    (isPublic == null ? 0 : isPublic!.hashCode) +
+    (isPublic.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (tags == null ? 0 : tags!.hashCode) +
     (fileHash == null ? 0 : fileHash!.hashCode) +
-    (uploadTime == null ? 0 : uploadTime!.hashCode) +
-    (lastUpdated == null ? 0 : lastUpdated!.hashCode) +
+    (uploadTime.hashCode) +
+    (lastUpdated.hashCode) +
     (image == null ? 0 : image!.hashCode) +
     (document == null ? 0 : document!.hashCode) +
     (archive == null ? 0 : archive!.hashCode) +
@@ -247,26 +167,10 @@ class FileRecord {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
       json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
-    if (this.originalFilename != null) {
       json[r'originalFilename'] = this.originalFilename;
-    } else {
-      json[r'originalFilename'] = null;
-    }
-    if (this.objectName != null) {
       json[r'objectName'] = this.objectName;
-    } else {
-      json[r'objectName'] = null;
-    }
-    if (this.fileSize != null) {
       json[r'fileSize'] = this.fileSize;
-    } else {
-      json[r'fileSize'] = null;
-    }
     if (this.contentType != null) {
       json[r'contentType'] = this.contentType;
     } else {
@@ -277,31 +181,15 @@ class FileRecord {
     } else {
       json[r'fileExtension'] = null;
     }
-    if (this.fileUrl != null) {
       json[r'fileUrl'] = this.fileUrl;
-    } else {
-      json[r'fileUrl'] = null;
-    }
-    if (this.businessType != null) {
       json[r'businessType'] = this.businessType;
-    } else {
-      json[r'businessType'] = null;
-    }
-    if (this.uploaderId != null) {
       json[r'uploaderId'] = this.uploaderId;
-    } else {
-      json[r'uploaderId'] = null;
-    }
     if (this.uploaderName != null) {
       json[r'uploaderName'] = this.uploaderName;
     } else {
       json[r'uploaderName'] = null;
     }
-    if (this.isPublic != null) {
       json[r'isPublic'] = this.isPublic;
-    } else {
-      json[r'isPublic'] = null;
-    }
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
@@ -317,16 +205,8 @@ class FileRecord {
     } else {
       json[r'fileHash'] = null;
     }
-    if (this.uploadTime != null) {
-      json[r'uploadTime'] = this.uploadTime!.toUtc().toIso8601String();
-    } else {
-      json[r'uploadTime'] = null;
-    }
-    if (this.lastUpdated != null) {
-      json[r'lastUpdated'] = this.lastUpdated!.toUtc().toIso8601String();
-    } else {
-      json[r'lastUpdated'] = null;
-    }
+      json[r'uploadTime'] = this.uploadTime.toUtc().toIso8601String();
+      json[r'lastUpdated'] = this.lastUpdated.toUtc().toIso8601String();
     if (this.image != null) {
       json[r'image'] = this.image;
     } else {
@@ -369,22 +249,22 @@ class FileRecord {
       }());
 
       return FileRecord(
-        id: mapValueOfType<int>(json, r'id'),
-        originalFilename: mapValueOfType<String>(json, r'originalFilename'),
-        objectName: mapValueOfType<String>(json, r'objectName'),
-        fileSize: mapValueOfType<int>(json, r'fileSize'),
+        id: mapValueOfType<int>(json, r'id')!,
+        originalFilename: mapValueOfType<String>(json, r'originalFilename')!,
+        objectName: mapValueOfType<String>(json, r'objectName')!,
+        fileSize: mapValueOfType<int>(json, r'fileSize')!,
         contentType: mapValueOfType<String>(json, r'contentType'),
         fileExtension: mapValueOfType<String>(json, r'fileExtension'),
-        fileUrl: mapValueOfType<String>(json, r'fileUrl'),
-        businessType: mapValueOfType<String>(json, r'businessType'),
-        uploaderId: mapValueOfType<int>(json, r'uploaderId'),
+        fileUrl: mapValueOfType<String>(json, r'fileUrl')!,
+        businessType: mapValueOfType<String>(json, r'businessType')!,
+        uploaderId: mapValueOfType<int>(json, r'uploaderId')!,
         uploaderName: mapValueOfType<String>(json, r'uploaderName'),
-        isPublic: mapValueOfType<bool>(json, r'isPublic'),
+        isPublic: mapValueOfType<bool>(json, r'isPublic')!,
         description: mapValueOfType<String>(json, r'description'),
         tags: mapValueOfType<String>(json, r'tags'),
         fileHash: mapValueOfType<String>(json, r'fileHash'),
-        uploadTime: mapDateTime(json, r'uploadTime', r''),
-        lastUpdated: mapDateTime(json, r'lastUpdated', r''),
+        uploadTime: mapDateTime(json, r'uploadTime', r'')!,
+        lastUpdated: mapDateTime(json, r'lastUpdated', r'')!,
         image: mapValueOfType<bool>(json, r'image'),
         document: mapValueOfType<bool>(json, r'document'),
         archive: mapValueOfType<bool>(json, r'archive'),
@@ -436,6 +316,16 @@ class FileRecord {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
+    'originalFilename',
+    'objectName',
+    'fileSize',
+    'fileUrl',
+    'businessType',
+    'uploaderId',
+    'isPublic',
+    'uploadTime',
+    'lastUpdated',
   };
 }
 

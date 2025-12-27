@@ -13,117 +13,49 @@ part of openapi.api;
 class PickupStore {
   /// Returns a new [PickupStore] instance.
   PickupStore({
-    this.id,
-    this.storeType,
-    this.storeCode,
-    this.storeName,
-    this.storeAddress,
+    required this.id,
+    required this.storeType,
+    required this.storeCode,
+    required this.storeName,
+    required this.storeAddress,
     this.city,
     this.district,
-    this.isActive,
-    this.createdAt,
-    this.updatedAt,
-    this.fullStoreInfo,
+    required this.isActive,
+    required this.createdAt,
+    required this.updatedAt,
     this.familyMart,
+    this.fullStoreInfo,
     this.sevenEleven,
   });
 
   /// 門市ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? id;
+  int id;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  PickupServiceTypeEnum? storeType;
+  PickupServiceTypeEnum storeType;
 
   /// 門市代號（唯一）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? storeCode;
+  String storeCode;
 
   /// 門市名稱
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? storeName;
+  String storeName;
 
   /// 門市地址
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? storeAddress;
+  String storeAddress;
 
   /// 縣市（從地址中解析）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? city;
 
   /// 鄉鎮市區（從地址中解析）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? district;
 
   /// 是否啟用
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? isActive;
+  bool isActive;
 
   /// 創建時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? createdAt;
+  DateTime createdAt;
 
   /// 最後更新時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? updatedAt;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? fullStoreInfo;
+  DateTime updatedAt;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -132,6 +64,14 @@ class PickupStore {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? familyMart;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? fullStoreInfo;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -153,57 +93,37 @@ class PickupStore {
     other.isActive == isActive &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.fullStoreInfo == fullStoreInfo &&
     other.familyMart == familyMart &&
+    other.fullStoreInfo == fullStoreInfo &&
     other.sevenEleven == sevenEleven;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (storeType == null ? 0 : storeType!.hashCode) +
-    (storeCode == null ? 0 : storeCode!.hashCode) +
-    (storeName == null ? 0 : storeName!.hashCode) +
-    (storeAddress == null ? 0 : storeAddress!.hashCode) +
+    (id.hashCode) +
+    (storeType.hashCode) +
+    (storeCode.hashCode) +
+    (storeName.hashCode) +
+    (storeAddress.hashCode) +
     (city == null ? 0 : city!.hashCode) +
     (district == null ? 0 : district!.hashCode) +
-    (isActive == null ? 0 : isActive!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (fullStoreInfo == null ? 0 : fullStoreInfo!.hashCode) +
+    (isActive.hashCode) +
+    (createdAt.hashCode) +
+    (updatedAt.hashCode) +
     (familyMart == null ? 0 : familyMart!.hashCode) +
+    (fullStoreInfo == null ? 0 : fullStoreInfo!.hashCode) +
     (sevenEleven == null ? 0 : sevenEleven!.hashCode);
 
   @override
-  String toString() => 'PickupStore[id=$id, storeType=$storeType, storeCode=$storeCode, storeName=$storeName, storeAddress=$storeAddress, city=$city, district=$district, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, fullStoreInfo=$fullStoreInfo, familyMart=$familyMart, sevenEleven=$sevenEleven]';
+  String toString() => 'PickupStore[id=$id, storeType=$storeType, storeCode=$storeCode, storeName=$storeName, storeAddress=$storeAddress, city=$city, district=$district, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, familyMart=$familyMart, fullStoreInfo=$fullStoreInfo, sevenEleven=$sevenEleven]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
       json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
-    if (this.storeType != null) {
       json[r'storeType'] = this.storeType;
-    } else {
-      json[r'storeType'] = null;
-    }
-    if (this.storeCode != null) {
       json[r'storeCode'] = this.storeCode;
-    } else {
-      json[r'storeCode'] = null;
-    }
-    if (this.storeName != null) {
       json[r'storeName'] = this.storeName;
-    } else {
-      json[r'storeName'] = null;
-    }
-    if (this.storeAddress != null) {
       json[r'storeAddress'] = this.storeAddress;
-    } else {
-      json[r'storeAddress'] = null;
-    }
     if (this.city != null) {
       json[r'city'] = this.city;
     } else {
@@ -214,30 +134,18 @@ class PickupStore {
     } else {
       json[r'district'] = null;
     }
-    if (this.isActive != null) {
       json[r'isActive'] = this.isActive;
+      json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
+      json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
+    if (this.familyMart != null) {
+      json[r'familyMart'] = this.familyMart;
     } else {
-      json[r'isActive'] = null;
-    }
-    if (this.createdAt != null) {
-      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
-    } else {
-      json[r'createdAt'] = null;
-    }
-    if (this.updatedAt != null) {
-      json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
-    } else {
-      json[r'updatedAt'] = null;
+      json[r'familyMart'] = null;
     }
     if (this.fullStoreInfo != null) {
       json[r'fullStoreInfo'] = this.fullStoreInfo;
     } else {
       json[r'fullStoreInfo'] = null;
-    }
-    if (this.familyMart != null) {
-      json[r'familyMart'] = this.familyMart;
-    } else {
-      json[r'familyMart'] = null;
     }
     if (this.sevenEleven != null) {
       json[r'sevenEleven'] = this.sevenEleven;
@@ -266,18 +174,18 @@ class PickupStore {
       }());
 
       return PickupStore(
-        id: mapValueOfType<int>(json, r'id'),
-        storeType: PickupServiceTypeEnum.fromJson(json[r'storeType']),
-        storeCode: mapValueOfType<String>(json, r'storeCode'),
-        storeName: mapValueOfType<String>(json, r'storeName'),
-        storeAddress: mapValueOfType<String>(json, r'storeAddress'),
+        id: mapValueOfType<int>(json, r'id')!,
+        storeType: PickupServiceTypeEnum.fromJson(json[r'storeType'])!,
+        storeCode: mapValueOfType<String>(json, r'storeCode')!,
+        storeName: mapValueOfType<String>(json, r'storeName')!,
+        storeAddress: mapValueOfType<String>(json, r'storeAddress')!,
         city: mapValueOfType<String>(json, r'city'),
         district: mapValueOfType<String>(json, r'district'),
-        isActive: mapValueOfType<bool>(json, r'isActive'),
-        createdAt: mapDateTime(json, r'createdAt', r''),
-        updatedAt: mapDateTime(json, r'updatedAt', r''),
-        fullStoreInfo: mapValueOfType<String>(json, r'fullStoreInfo'),
+        isActive: mapValueOfType<bool>(json, r'isActive')!,
+        createdAt: mapDateTime(json, r'createdAt', r'')!,
+        updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         familyMart: mapValueOfType<bool>(json, r'familyMart'),
+        fullStoreInfo: mapValueOfType<String>(json, r'fullStoreInfo'),
         sevenEleven: mapValueOfType<bool>(json, r'sevenEleven'),
       );
     }
@@ -326,6 +234,14 @@ class PickupStore {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
+    'storeType',
+    'storeCode',
+    'storeName',
+    'storeAddress',
+    'isActive',
+    'createdAt',
+    'updatedAt',
   };
 }
 

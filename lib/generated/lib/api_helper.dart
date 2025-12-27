@@ -112,6 +112,9 @@ String parameterToString(dynamic value) {
   if (value is StakingStatusEnum) {
     return StakingStatusEnumTypeTransformer().encode(value).toString();
   }
+  if (value is SupportedCurrencyEnum) {
+    return SupportedCurrencyEnumTypeTransformer().encode(value).toString();
+  }
   if (value is TransactionTypeEnum) {
     return TransactionTypeEnumTypeTransformer().encode(value).toString();
   }

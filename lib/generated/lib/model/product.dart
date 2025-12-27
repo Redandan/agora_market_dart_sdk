@@ -13,11 +13,11 @@ part of openapi.api;
 class Product {
   /// Returns a new [Product] instance.
   Product({
-    this.id,
+    required this.id,
     required this.title,
     required this.description,
     required this.price,
-    required this.currency,
+    this.currency,
     required this.stock,
     required this.category,
     required this.sellerId,
@@ -27,7 +27,7 @@ class Product {
     required this.pickupLatitude,
     required this.pickupTimeStart,
     required this.pickupTimeEnd,
-    this.enablePlatformDelivery,
+    required this.enablePlatformDelivery,
     this.dailyShippingDeadline,
     this.shippingPreparationHours,
     this.shippingDescription,
@@ -38,13 +38,13 @@ class Product {
     this.createdAt,
     this.updatedAt,
     this.rating,
-    this.reviewCount,
-    this.viewCount,
-    this.salesCount,
+    required this.reviewCount,
+    required this.viewCount,
+    required this.salesCount,
     this.tags,
     this.skusJson,
     this.brand,
-    this.minStock,
+    required this.minStock,
     this.pickupServiceTypesJson,
     this.pickupServiceTypeFeesJson,
     this.freeShippingThreshold,
@@ -72,13 +72,7 @@ class Product {
   });
 
   /// 商品ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? id;
+  int id;
 
   /// 商品標題
   String title;
@@ -91,8 +85,7 @@ class Product {
   /// Minimum value: 0.0
   num price;
 
-  /// 貨幣類型
-  ProductCurrencyEnum currency;
+  SupportedCurrencyEnum? currency;
 
   /// 商品庫存
   ///
@@ -101,16 +94,10 @@ class Product {
 
   ProductCategoryEnum category;
 
-  /// 賣家Id
+  /// 賣家ID
   int sellerId;
 
   /// 商品圖片URL列表，JSON格式
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? imageUrlsJson;
 
   /// 取貨地址
@@ -135,223 +122,85 @@ class Product {
   String pickupTimeEnd;
 
   /// 啟用平台配送
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? enablePlatformDelivery;
+  bool enablePlatformDelivery;
 
   /// 出貨截止時間（每天幾點前下單當天出貨）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? dailyShippingDeadline;
 
   /// 出貨準備時間（小時）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? shippingPreparationHours;
 
   /// 出貨備註
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? shippingDescription;
 
   /// 預計送達時間（天數）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? estimatedDeliveryDays;
 
   /// 是否支持指定出貨日期
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? supportsScheduledShipping;
 
   /// 可選擇的出貨日期範圍（天數）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? shippingDateRange;
 
   ProductStatusEnum status;
 
   /// 建立時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? createdAt;
 
   /// 最後更新時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? updatedAt;
 
   /// 商品評分
   ///
   /// Minimum value: 0.0
   /// Maximum value: 5.0
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? rating;
 
-  /// 評價次數
+  /// 商品評價次數
   ///
   /// Minimum value: 0
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? reviewCount;
+  int reviewCount;
 
   /// 瀏覽次數
   ///
   /// Minimum value: 0
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? viewCount;
+  int viewCount;
 
   /// 銷售數量
   ///
   /// Minimum value: 0
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? salesCount;
+  int salesCount;
 
-  /// 商品標籤，以逗號分隔
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
+  /// 標籤，逗號分隔
   String? tags;
 
   /// 商品SKU或條碼集合，JSON格式
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? skusJson;
 
   /// 品牌名稱
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? brand;
 
-  /// 最低庫存警告
+  /// 最低庫存
   ///
   /// Minimum value: 0
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? minStock;
+  int minStock;
 
-  /// 支援的取貨服務類型列表，JSON格式
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
+  /// 支援的取貨服務類型列表，JSON格式。取值：HOME_DELIVERY（宅配服務）、SEVEN_ELEVEN（7-11）、FAMILY_MART（全家）、HILIFE（萊爾富）、OK_MART（OK超商）
   String? pickupServiceTypesJson;
 
-  /// 各取貨服務類型運費對應表，JSON格式
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
+  /// 各取貨服務類型運費對應表，JSON格式。鍵為 PickupServiceTypeEnum，值為運費（BigDecimal）
   String? pickupServiceTypeFeesJson;
 
   /// 免運費門檻
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? freeShippingThreshold;
 
   /// 庫存警告閾值
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? stockAlertThreshold;
 
   /// 是否允許負庫存
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? allowNegativeStock;
 
   /// 代購下單URL(只對賣家展示)
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? purchaseUrl;
 
   ///
@@ -531,11 +380,11 @@ class Product {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
+    (id.hashCode) +
     (title.hashCode) +
     (description.hashCode) +
     (price.hashCode) +
-    (currency.hashCode) +
+    (currency == null ? 0 : currency!.hashCode) +
     (stock.hashCode) +
     (category.hashCode) +
     (sellerId.hashCode) +
@@ -545,7 +394,7 @@ class Product {
     (pickupLatitude.hashCode) +
     (pickupTimeStart.hashCode) +
     (pickupTimeEnd.hashCode) +
-    (enablePlatformDelivery == null ? 0 : enablePlatformDelivery!.hashCode) +
+    (enablePlatformDelivery.hashCode) +
     (dailyShippingDeadline == null ? 0 : dailyShippingDeadline!.hashCode) +
     (shippingPreparationHours == null ? 0 : shippingPreparationHours!.hashCode) +
     (shippingDescription == null ? 0 : shippingDescription!.hashCode) +
@@ -556,13 +405,13 @@ class Product {
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (rating == null ? 0 : rating!.hashCode) +
-    (reviewCount == null ? 0 : reviewCount!.hashCode) +
-    (viewCount == null ? 0 : viewCount!.hashCode) +
-    (salesCount == null ? 0 : salesCount!.hashCode) +
+    (reviewCount.hashCode) +
+    (viewCount.hashCode) +
+    (salesCount.hashCode) +
     (tags == null ? 0 : tags!.hashCode) +
     (skusJson == null ? 0 : skusJson!.hashCode) +
     (brand == null ? 0 : brand!.hashCode) +
-    (minStock == null ? 0 : minStock!.hashCode) +
+    (minStock.hashCode) +
     (pickupServiceTypesJson == null ? 0 : pickupServiceTypesJson!.hashCode) +
     (pickupServiceTypeFeesJson == null ? 0 : pickupServiceTypeFeesJson!.hashCode) +
     (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode) +
@@ -593,15 +442,15 @@ class Product {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
       json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
       json[r'title'] = this.title;
       json[r'description'] = this.description;
       json[r'price'] = this.price;
+    if (this.currency != null) {
       json[r'currency'] = this.currency;
+    } else {
+      json[r'currency'] = null;
+    }
       json[r'stock'] = this.stock;
       json[r'category'] = this.category;
       json[r'sellerId'] = this.sellerId;
@@ -615,11 +464,7 @@ class Product {
       json[r'pickupLatitude'] = this.pickupLatitude;
       json[r'pickupTimeStart'] = this.pickupTimeStart;
       json[r'pickupTimeEnd'] = this.pickupTimeEnd;
-    if (this.enablePlatformDelivery != null) {
       json[r'enablePlatformDelivery'] = this.enablePlatformDelivery;
-    } else {
-      json[r'enablePlatformDelivery'] = null;
-    }
     if (this.dailyShippingDeadline != null) {
       json[r'dailyShippingDeadline'] = this.dailyShippingDeadline;
     } else {
@@ -666,21 +511,9 @@ class Product {
     } else {
       json[r'rating'] = null;
     }
-    if (this.reviewCount != null) {
       json[r'reviewCount'] = this.reviewCount;
-    } else {
-      json[r'reviewCount'] = null;
-    }
-    if (this.viewCount != null) {
       json[r'viewCount'] = this.viewCount;
-    } else {
-      json[r'viewCount'] = null;
-    }
-    if (this.salesCount != null) {
       json[r'salesCount'] = this.salesCount;
-    } else {
-      json[r'salesCount'] = null;
-    }
     if (this.tags != null) {
       json[r'tags'] = this.tags;
     } else {
@@ -696,11 +529,7 @@ class Product {
     } else {
       json[r'brand'] = null;
     }
-    if (this.minStock != null) {
       json[r'minStock'] = this.minStock;
-    } else {
-      json[r'minStock'] = null;
-    }
     if (this.pickupServiceTypesJson != null) {
       json[r'pickupServiceTypesJson'] = this.pickupServiceTypesJson;
     } else {
@@ -819,11 +648,11 @@ class Product {
       }());
 
       return Product(
-        id: mapValueOfType<int>(json, r'id'),
+        id: mapValueOfType<int>(json, r'id')!,
         title: mapValueOfType<String>(json, r'title')!,
         description: mapValueOfType<String>(json, r'description')!,
         price: num.parse('${json[r'price']}'),
-        currency: ProductCurrencyEnum.fromJson(json[r'currency'])!,
+        currency: SupportedCurrencyEnum.fromJson(json[r'currency']),
         stock: mapValueOfType<int>(json, r'stock')!,
         category: ProductCategoryEnum.fromJson(json[r'category'])!,
         sellerId: mapValueOfType<int>(json, r'sellerId')!,
@@ -833,7 +662,7 @@ class Product {
         pickupLatitude: mapValueOfType<double>(json, r'pickupLatitude')!,
         pickupTimeStart: mapValueOfType<String>(json, r'pickupTimeStart')!,
         pickupTimeEnd: mapValueOfType<String>(json, r'pickupTimeEnd')!,
-        enablePlatformDelivery: mapValueOfType<bool>(json, r'enablePlatformDelivery'),
+        enablePlatformDelivery: mapValueOfType<bool>(json, r'enablePlatformDelivery')!,
         dailyShippingDeadline: mapValueOfType<String>(json, r'dailyShippingDeadline'),
         shippingPreparationHours: mapValueOfType<int>(json, r'shippingPreparationHours'),
         shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),
@@ -843,17 +672,21 @@ class Product {
         status: ProductStatusEnum.fromJson(json[r'status'])!,
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
-        rating: num.parse('${json[r'rating']}'),
-        reviewCount: mapValueOfType<int>(json, r'reviewCount'),
-        viewCount: mapValueOfType<int>(json, r'viewCount'),
-        salesCount: mapValueOfType<int>(json, r'salesCount'),
+        rating: json[r'rating'] == null
+            ? null
+            : num.parse('${json[r'rating']}'),
+        reviewCount: mapValueOfType<int>(json, r'reviewCount')!,
+        viewCount: mapValueOfType<int>(json, r'viewCount')!,
+        salesCount: mapValueOfType<int>(json, r'salesCount')!,
         tags: mapValueOfType<String>(json, r'tags'),
         skusJson: mapValueOfType<String>(json, r'skusJson'),
         brand: mapValueOfType<String>(json, r'brand'),
-        minStock: mapValueOfType<int>(json, r'minStock'),
+        minStock: mapValueOfType<int>(json, r'minStock')!,
         pickupServiceTypesJson: mapValueOfType<String>(json, r'pickupServiceTypesJson'),
         pickupServiceTypeFeesJson: mapValueOfType<String>(json, r'pickupServiceTypeFeesJson'),
-        freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
+        freeShippingThreshold: json[r'freeShippingThreshold'] == null
+            ? null
+            : num.parse('${json[r'freeShippingThreshold']}'),
         stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
         allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
         purchaseUrl: mapValueOfType<String>(json, r'purchaseUrl'),
@@ -926,10 +759,10 @@ class Product {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
     'title',
     'description',
     'price',
-    'currency',
     'stock',
     'category',
     'sellerId',
@@ -938,111 +771,12 @@ class Product {
     'pickupLatitude',
     'pickupTimeStart',
     'pickupTimeEnd',
+    'enablePlatformDelivery',
     'status',
+    'reviewCount',
+    'viewCount',
+    'salesCount',
+    'minStock',
   };
 }
-
-/// 貨幣類型
-class ProductCurrencyEnum {
-  /// Instantiate a new enum with the provided [value].
-  const ProductCurrencyEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const USDT = ProductCurrencyEnum._(r'USDT');
-  static const USD = ProductCurrencyEnum._(r'USD');
-  static const TWD = ProductCurrencyEnum._(r'TWD');
-  static const CNY = ProductCurrencyEnum._(r'CNY');
-  static const JPY = ProductCurrencyEnum._(r'JPY');
-  static const EUR = ProductCurrencyEnum._(r'EUR');
-  static const GBP = ProductCurrencyEnum._(r'GBP');
-  static const KRW = ProductCurrencyEnum._(r'KRW');
-  static const SGD = ProductCurrencyEnum._(r'SGD');
-  static const HKD = ProductCurrencyEnum._(r'HKD');
-  static const AUD = ProductCurrencyEnum._(r'AUD');
-  static const unknownDefaultOpenApi = ProductCurrencyEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][ProductCurrencyEnum].
-  static const values = <ProductCurrencyEnum>[
-    USDT,
-    USD,
-    TWD,
-    CNY,
-    JPY,
-    EUR,
-    GBP,
-    KRW,
-    SGD,
-    HKD,
-    AUD,
-    unknownDefaultOpenApi,
-  ];
-
-  static ProductCurrencyEnum? fromJson(dynamic value) => ProductCurrencyEnumTypeTransformer().decode(value);
-
-  static List<ProductCurrencyEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProductCurrencyEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = ProductCurrencyEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [ProductCurrencyEnum] to String,
-/// and [decode] dynamic data back to [ProductCurrencyEnum].
-class ProductCurrencyEnumTypeTransformer {
-  factory ProductCurrencyEnumTypeTransformer() => _instance ??= const ProductCurrencyEnumTypeTransformer._();
-
-  const ProductCurrencyEnumTypeTransformer._();
-
-  String encode(ProductCurrencyEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a ProductCurrencyEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  ProductCurrencyEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'USDT': return ProductCurrencyEnum.USDT;
-        case r'USD': return ProductCurrencyEnum.USD;
-        case r'TWD': return ProductCurrencyEnum.TWD;
-        case r'CNY': return ProductCurrencyEnum.CNY;
-        case r'JPY': return ProductCurrencyEnum.JPY;
-        case r'EUR': return ProductCurrencyEnum.EUR;
-        case r'GBP': return ProductCurrencyEnum.GBP;
-        case r'KRW': return ProductCurrencyEnum.KRW;
-        case r'SGD': return ProductCurrencyEnum.SGD;
-        case r'HKD': return ProductCurrencyEnum.HKD;
-        case r'AUD': return ProductCurrencyEnum.AUD;
-        case r'unknown_default_open_api': return ProductCurrencyEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [ProductCurrencyEnumTypeTransformer] instance.
-  static ProductCurrencyEnumTypeTransformer? _instance;
-}
-
 

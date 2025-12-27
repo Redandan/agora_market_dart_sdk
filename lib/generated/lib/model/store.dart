@@ -13,10 +13,10 @@ part of openapi.api;
 class Store {
   /// Returns a new [Store] instance.
   Store({
-    this.id,
-    this.name,
+    required this.id,
+    required this.name,
     this.description,
-    this.address,
+    required this.address,
     this.longitude,
     this.latitude,
     this.phone,
@@ -28,16 +28,16 @@ class Store {
     this.coverImageUrl,
     this.coverDescription,
     this.coverUploadTime,
-    this.isActive,
+    required this.isActive,
     this.viewCount,
     this.rating,
     this.ratingCount,
-    this.creditLevel,
-    this.productCount,
-    this.orderCount,
-    this.totalSales,
-    this.averageRating,
-    this.responseRate,
+    required this.creditLevel,
+    required this.productCount,
+    required this.orderCount,
+    required this.totalSales,
+    required this.averageRating,
+    required this.responseRate,
     this.defaultShippingFee,
     this.freeShippingThreshold,
     this.shippingDescription,
@@ -45,324 +45,114 @@ class Store {
     this.estimatedDeliveryDays,
     this.supportsScheduledShipping,
     this.shippingDateRange,
-    this.createdAt,
-    this.updatedAt,
+    required this.createdAt,
+    required this.updatedAt,
     this.adminRemark,
   });
 
   /// 商店擁有者ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? id;
+  int id;
 
   /// 商店名稱
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? name;
+  String name;
 
   /// 商店描述
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? description;
 
   /// 商店地址
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? address;
+  String address;
 
   /// 商店經度
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   double? longitude;
 
   /// 商店緯度
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   double? latitude;
 
   /// 商店電話
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? phone;
 
   /// 商店郵箱
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? email;
 
   /// 營業時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? businessHours;
 
   /// 商店Logo
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? logoUrl;
 
   /// Logo描述
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? logoDescription;
 
   /// Logo上传时间
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? logoUploadTime;
 
   /// 商店封面圖片
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? coverImageUrl;
 
   /// 封面图片描述
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? coverDescription;
 
   /// 封面图片上传时间
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? coverUploadTime;
 
   /// 是否啟用
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? isActive;
+  bool isActive;
 
   /// 瀏覽次數
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? viewCount;
 
   /// 評分
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   double? rating;
 
   /// 評分次數
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? ratingCount;
 
   /// 信用等級
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? creditLevel;
+  int creditLevel;
 
   /// 商品數量
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? productCount;
+  int productCount;
 
   /// 訂單數量
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? orderCount;
+  int orderCount;
 
   /// 總銷售額
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  double? totalSales;
+  double totalSales;
 
   /// 平均評分
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  double? averageRating;
+  double averageRating;
 
   /// 回覆率
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? responseRate;
+  int responseRate;
 
   /// 預設運費
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   double? defaultShippingFee;
 
   /// 免運費門檻
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   double? freeShippingThreshold;
 
   /// 運送說明
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? shippingDescription;
 
   /// 出貨準備時間（小時）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? shippingPreparationHours;
 
   /// 預計送達時間（天數）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? estimatedDeliveryDays;
 
   /// 是否支援指定出貨日期
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? supportsScheduledShipping;
 
   /// 可選擇的出貨日期範圍（天數）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? shippingDateRange;
 
   /// 創建時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? createdAt;
+  DateTime createdAt;
 
   /// 更新時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? updatedAt;
+  DateTime updatedAt;
 
   /// 管理員備註
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? adminRemark;
 
   @override
@@ -406,10 +196,10 @@ class Store {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (name == null ? 0 : name!.hashCode) +
+    (id.hashCode) +
+    (name.hashCode) +
     (description == null ? 0 : description!.hashCode) +
-    (address == null ? 0 : address!.hashCode) +
+    (address.hashCode) +
     (longitude == null ? 0 : longitude!.hashCode) +
     (latitude == null ? 0 : latitude!.hashCode) +
     (phone == null ? 0 : phone!.hashCode) +
@@ -421,16 +211,16 @@ class Store {
     (coverImageUrl == null ? 0 : coverImageUrl!.hashCode) +
     (coverDescription == null ? 0 : coverDescription!.hashCode) +
     (coverUploadTime == null ? 0 : coverUploadTime!.hashCode) +
-    (isActive == null ? 0 : isActive!.hashCode) +
+    (isActive.hashCode) +
     (viewCount == null ? 0 : viewCount!.hashCode) +
     (rating == null ? 0 : rating!.hashCode) +
     (ratingCount == null ? 0 : ratingCount!.hashCode) +
-    (creditLevel == null ? 0 : creditLevel!.hashCode) +
-    (productCount == null ? 0 : productCount!.hashCode) +
-    (orderCount == null ? 0 : orderCount!.hashCode) +
-    (totalSales == null ? 0 : totalSales!.hashCode) +
-    (averageRating == null ? 0 : averageRating!.hashCode) +
-    (responseRate == null ? 0 : responseRate!.hashCode) +
+    (creditLevel.hashCode) +
+    (productCount.hashCode) +
+    (orderCount.hashCode) +
+    (totalSales.hashCode) +
+    (averageRating.hashCode) +
+    (responseRate.hashCode) +
     (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
     (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode) +
     (shippingDescription == null ? 0 : shippingDescription!.hashCode) +
@@ -438,8 +228,8 @@ class Store {
     (estimatedDeliveryDays == null ? 0 : estimatedDeliveryDays!.hashCode) +
     (supportsScheduledShipping == null ? 0 : supportsScheduledShipping!.hashCode) +
     (shippingDateRange == null ? 0 : shippingDateRange!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (createdAt.hashCode) +
+    (updatedAt.hashCode) +
     (adminRemark == null ? 0 : adminRemark!.hashCode);
 
   @override
@@ -447,26 +237,14 @@ class Store {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
       json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
-    if (this.name != null) {
       json[r'name'] = this.name;
-    } else {
-      json[r'name'] = null;
-    }
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
       json[r'description'] = null;
     }
-    if (this.address != null) {
       json[r'address'] = this.address;
-    } else {
-      json[r'address'] = null;
-    }
     if (this.longitude != null) {
       json[r'longitude'] = this.longitude;
     } else {
@@ -522,11 +300,7 @@ class Store {
     } else {
       json[r'coverUploadTime'] = null;
     }
-    if (this.isActive != null) {
       json[r'isActive'] = this.isActive;
-    } else {
-      json[r'isActive'] = null;
-    }
     if (this.viewCount != null) {
       json[r'viewCount'] = this.viewCount;
     } else {
@@ -542,36 +316,12 @@ class Store {
     } else {
       json[r'ratingCount'] = null;
     }
-    if (this.creditLevel != null) {
       json[r'creditLevel'] = this.creditLevel;
-    } else {
-      json[r'creditLevel'] = null;
-    }
-    if (this.productCount != null) {
       json[r'productCount'] = this.productCount;
-    } else {
-      json[r'productCount'] = null;
-    }
-    if (this.orderCount != null) {
       json[r'orderCount'] = this.orderCount;
-    } else {
-      json[r'orderCount'] = null;
-    }
-    if (this.totalSales != null) {
       json[r'totalSales'] = this.totalSales;
-    } else {
-      json[r'totalSales'] = null;
-    }
-    if (this.averageRating != null) {
       json[r'averageRating'] = this.averageRating;
-    } else {
-      json[r'averageRating'] = null;
-    }
-    if (this.responseRate != null) {
       json[r'responseRate'] = this.responseRate;
-    } else {
-      json[r'responseRate'] = null;
-    }
     if (this.defaultShippingFee != null) {
       json[r'defaultShippingFee'] = this.defaultShippingFee;
     } else {
@@ -607,16 +357,8 @@ class Store {
     } else {
       json[r'shippingDateRange'] = null;
     }
-    if (this.createdAt != null) {
-      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
-    } else {
-      json[r'createdAt'] = null;
-    }
-    if (this.updatedAt != null) {
-      json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
-    } else {
-      json[r'updatedAt'] = null;
-    }
+      json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
+      json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
     if (this.adminRemark != null) {
       json[r'adminRemark'] = this.adminRemark;
     } else {
@@ -644,10 +386,10 @@ class Store {
       }());
 
       return Store(
-        id: mapValueOfType<int>(json, r'id'),
-        name: mapValueOfType<String>(json, r'name'),
+        id: mapValueOfType<int>(json, r'id')!,
+        name: mapValueOfType<String>(json, r'name')!,
         description: mapValueOfType<String>(json, r'description'),
-        address: mapValueOfType<String>(json, r'address'),
+        address: mapValueOfType<String>(json, r'address')!,
         longitude: mapValueOfType<double>(json, r'longitude'),
         latitude: mapValueOfType<double>(json, r'latitude'),
         phone: mapValueOfType<String>(json, r'phone'),
@@ -659,16 +401,16 @@ class Store {
         coverImageUrl: mapValueOfType<String>(json, r'coverImageUrl'),
         coverDescription: mapValueOfType<String>(json, r'coverDescription'),
         coverUploadTime: mapDateTime(json, r'coverUploadTime', r''),
-        isActive: mapValueOfType<bool>(json, r'isActive'),
+        isActive: mapValueOfType<bool>(json, r'isActive')!,
         viewCount: mapValueOfType<int>(json, r'viewCount'),
         rating: mapValueOfType<double>(json, r'rating'),
         ratingCount: mapValueOfType<int>(json, r'ratingCount'),
-        creditLevel: mapValueOfType<int>(json, r'creditLevel'),
-        productCount: mapValueOfType<int>(json, r'productCount'),
-        orderCount: mapValueOfType<int>(json, r'orderCount'),
-        totalSales: mapValueOfType<double>(json, r'totalSales'),
-        averageRating: mapValueOfType<double>(json, r'averageRating'),
-        responseRate: mapValueOfType<int>(json, r'responseRate'),
+        creditLevel: mapValueOfType<int>(json, r'creditLevel')!,
+        productCount: mapValueOfType<int>(json, r'productCount')!,
+        orderCount: mapValueOfType<int>(json, r'orderCount')!,
+        totalSales: mapValueOfType<double>(json, r'totalSales')!,
+        averageRating: mapValueOfType<double>(json, r'averageRating')!,
+        responseRate: mapValueOfType<int>(json, r'responseRate')!,
         defaultShippingFee: mapValueOfType<double>(json, r'defaultShippingFee'),
         freeShippingThreshold: mapValueOfType<double>(json, r'freeShippingThreshold'),
         shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),
@@ -676,8 +418,8 @@ class Store {
         estimatedDeliveryDays: mapValueOfType<int>(json, r'estimatedDeliveryDays'),
         supportsScheduledShipping: mapValueOfType<bool>(json, r'supportsScheduledShipping'),
         shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
-        createdAt: mapDateTime(json, r'createdAt', r''),
-        updatedAt: mapDateTime(json, r'updatedAt', r''),
+        createdAt: mapDateTime(json, r'createdAt', r'')!,
+        updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         adminRemark: mapValueOfType<String>(json, r'adminRemark'),
       );
     }
@@ -726,6 +468,18 @@ class Store {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
+    'name',
+    'address',
+    'isActive',
+    'creditLevel',
+    'productCount',
+    'orderCount',
+    'totalSales',
+    'averageRating',
+    'responseRate',
+    'createdAt',
+    'updatedAt',
   };
 }
 

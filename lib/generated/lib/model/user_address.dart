@@ -13,14 +13,14 @@ part of openapi.api;
 class UserAddress {
   /// Returns a new [UserAddress] instance.
   UserAddress({
-    this.id,
-    this.userId,
-    this.recipientName,
-    this.recipientPhone,
-    this.postalCode,
-    this.city,
-    this.district,
-    this.detailedAddress,
+    required this.id,
+    required this.userId,
+    required this.recipientName,
+    required this.recipientPhone,
+    required this.postalCode,
+    required this.city,
+    required this.district,
+    required this.detailedAddress,
     this.remark,
     this.longitude,
     this.latitude,
@@ -28,115 +28,49 @@ class UserAddress {
     this.storeName,
     this.storeCode,
     this.storeAddress,
-    this.isDefault,
-    this.isActive,
-    this.createdAt,
-    this.updatedAt,
-    this.convenienceStorePickup,
-    this.logisticsDescription,
-    this.recipientInfo,
+    required this.isDefault,
+    required this.isActive,
+    required this.createdAt,
+    required this.updatedAt,
     this.homeDelivery,
     this.fullAddress,
     this.formattedAddress,
+    this.convenienceStorePickup,
+    this.logisticsDescription,
+    this.recipientInfo,
   });
 
   /// 地址ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? id;
+  int id;
 
   /// 用戶ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? userId;
+  int userId;
 
   /// 收件人姓名
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? recipientName;
+  String recipientName;
 
   /// 收件人電話
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? recipientPhone;
+  String recipientPhone;
 
   /// 郵遞區號
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? postalCode;
+  String postalCode;
 
   /// 縣市
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? city;
+  String city;
 
   /// 鄉鎮市區
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? district;
+  String district;
 
   /// 詳細地址
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? detailedAddress;
+  String detailedAddress;
 
   /// 備註
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? remark;
 
   /// 經度
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   double? longitude;
 
   /// 緯度
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   double? latitude;
 
   ///
@@ -148,91 +82,25 @@ class UserAddress {
   PickupServiceTypeEnum? serviceType;
 
   /// 門市名稱（便利商店取件用）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? storeName;
 
   /// 門市代號（便利商店取件用）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? storeCode;
 
   /// 門市地址（便利商店取件用）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? storeAddress;
 
   /// 是否為預設地址
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? isDefault;
+  bool isDefault;
 
   /// 是否啟用
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? isActive;
+  bool isActive;
 
   /// 創建時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? createdAt;
+  DateTime createdAt;
 
   /// 最後更新時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? updatedAt;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? convenienceStorePickup;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? logisticsDescription;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? recipientInfo;
+  DateTime updatedAt;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -258,6 +126,30 @@ class UserAddress {
   ///
   String? formattedAddress;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? convenienceStorePickup;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? logisticsDescription;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? recipientInfo;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserAddress &&
     other.id == id &&
@@ -279,24 +171,24 @@ class UserAddress {
     other.isActive == isActive &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.convenienceStorePickup == convenienceStorePickup &&
-    other.logisticsDescription == logisticsDescription &&
-    other.recipientInfo == recipientInfo &&
     other.homeDelivery == homeDelivery &&
     other.fullAddress == fullAddress &&
-    other.formattedAddress == formattedAddress;
+    other.formattedAddress == formattedAddress &&
+    other.convenienceStorePickup == convenienceStorePickup &&
+    other.logisticsDescription == logisticsDescription &&
+    other.recipientInfo == recipientInfo;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (userId == null ? 0 : userId!.hashCode) +
-    (recipientName == null ? 0 : recipientName!.hashCode) +
-    (recipientPhone == null ? 0 : recipientPhone!.hashCode) +
-    (postalCode == null ? 0 : postalCode!.hashCode) +
-    (city == null ? 0 : city!.hashCode) +
-    (district == null ? 0 : district!.hashCode) +
-    (detailedAddress == null ? 0 : detailedAddress!.hashCode) +
+    (id.hashCode) +
+    (userId.hashCode) +
+    (recipientName.hashCode) +
+    (recipientPhone.hashCode) +
+    (postalCode.hashCode) +
+    (city.hashCode) +
+    (district.hashCode) +
+    (detailedAddress.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
     (longitude == null ? 0 : longitude!.hashCode) +
     (latitude == null ? 0 : latitude!.hashCode) +
@@ -304,62 +196,30 @@ class UserAddress {
     (storeName == null ? 0 : storeName!.hashCode) +
     (storeCode == null ? 0 : storeCode!.hashCode) +
     (storeAddress == null ? 0 : storeAddress!.hashCode) +
-    (isDefault == null ? 0 : isDefault!.hashCode) +
-    (isActive == null ? 0 : isActive!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (convenienceStorePickup == null ? 0 : convenienceStorePickup!.hashCode) +
-    (logisticsDescription == null ? 0 : logisticsDescription!.hashCode) +
-    (recipientInfo == null ? 0 : recipientInfo!.hashCode) +
+    (isDefault.hashCode) +
+    (isActive.hashCode) +
+    (createdAt.hashCode) +
+    (updatedAt.hashCode) +
     (homeDelivery == null ? 0 : homeDelivery!.hashCode) +
     (fullAddress == null ? 0 : fullAddress!.hashCode) +
-    (formattedAddress == null ? 0 : formattedAddress!.hashCode);
+    (formattedAddress == null ? 0 : formattedAddress!.hashCode) +
+    (convenienceStorePickup == null ? 0 : convenienceStorePickup!.hashCode) +
+    (logisticsDescription == null ? 0 : logisticsDescription!.hashCode) +
+    (recipientInfo == null ? 0 : recipientInfo!.hashCode);
 
   @override
-  String toString() => 'UserAddress[id=$id, userId=$userId, recipientName=$recipientName, recipientPhone=$recipientPhone, postalCode=$postalCode, city=$city, district=$district, detailedAddress=$detailedAddress, remark=$remark, longitude=$longitude, latitude=$latitude, serviceType=$serviceType, storeName=$storeName, storeCode=$storeCode, storeAddress=$storeAddress, isDefault=$isDefault, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, convenienceStorePickup=$convenienceStorePickup, logisticsDescription=$logisticsDescription, recipientInfo=$recipientInfo, homeDelivery=$homeDelivery, fullAddress=$fullAddress, formattedAddress=$formattedAddress]';
+  String toString() => 'UserAddress[id=$id, userId=$userId, recipientName=$recipientName, recipientPhone=$recipientPhone, postalCode=$postalCode, city=$city, district=$district, detailedAddress=$detailedAddress, remark=$remark, longitude=$longitude, latitude=$latitude, serviceType=$serviceType, storeName=$storeName, storeCode=$storeCode, storeAddress=$storeAddress, isDefault=$isDefault, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, homeDelivery=$homeDelivery, fullAddress=$fullAddress, formattedAddress=$formattedAddress, convenienceStorePickup=$convenienceStorePickup, logisticsDescription=$logisticsDescription, recipientInfo=$recipientInfo]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
       json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
-    if (this.userId != null) {
       json[r'userId'] = this.userId;
-    } else {
-      json[r'userId'] = null;
-    }
-    if (this.recipientName != null) {
       json[r'recipientName'] = this.recipientName;
-    } else {
-      json[r'recipientName'] = null;
-    }
-    if (this.recipientPhone != null) {
       json[r'recipientPhone'] = this.recipientPhone;
-    } else {
-      json[r'recipientPhone'] = null;
-    }
-    if (this.postalCode != null) {
       json[r'postalCode'] = this.postalCode;
-    } else {
-      json[r'postalCode'] = null;
-    }
-    if (this.city != null) {
       json[r'city'] = this.city;
-    } else {
-      json[r'city'] = null;
-    }
-    if (this.district != null) {
       json[r'district'] = this.district;
-    } else {
-      json[r'district'] = null;
-    }
-    if (this.detailedAddress != null) {
       json[r'detailedAddress'] = this.detailedAddress;
-    } else {
-      json[r'detailedAddress'] = null;
-    }
     if (this.remark != null) {
       json[r'remark'] = this.remark;
     } else {
@@ -395,25 +255,24 @@ class UserAddress {
     } else {
       json[r'storeAddress'] = null;
     }
-    if (this.isDefault != null) {
       json[r'isDefault'] = this.isDefault;
-    } else {
-      json[r'isDefault'] = null;
-    }
-    if (this.isActive != null) {
       json[r'isActive'] = this.isActive;
+      json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
+      json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
+    if (this.homeDelivery != null) {
+      json[r'homeDelivery'] = this.homeDelivery;
     } else {
-      json[r'isActive'] = null;
+      json[r'homeDelivery'] = null;
     }
-    if (this.createdAt != null) {
-      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
+    if (this.fullAddress != null) {
+      json[r'fullAddress'] = this.fullAddress;
     } else {
-      json[r'createdAt'] = null;
+      json[r'fullAddress'] = null;
     }
-    if (this.updatedAt != null) {
-      json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
+    if (this.formattedAddress != null) {
+      json[r'formattedAddress'] = this.formattedAddress;
     } else {
-      json[r'updatedAt'] = null;
+      json[r'formattedAddress'] = null;
     }
     if (this.convenienceStorePickup != null) {
       json[r'convenienceStorePickup'] = this.convenienceStorePickup;
@@ -429,21 +288,6 @@ class UserAddress {
       json[r'recipientInfo'] = this.recipientInfo;
     } else {
       json[r'recipientInfo'] = null;
-    }
-    if (this.homeDelivery != null) {
-      json[r'homeDelivery'] = this.homeDelivery;
-    } else {
-      json[r'homeDelivery'] = null;
-    }
-    if (this.fullAddress != null) {
-      json[r'fullAddress'] = this.fullAddress;
-    } else {
-      json[r'fullAddress'] = null;
-    }
-    if (this.formattedAddress != null) {
-      json[r'formattedAddress'] = this.formattedAddress;
-    } else {
-      json[r'formattedAddress'] = null;
     }
     return json;
   }
@@ -467,14 +311,14 @@ class UserAddress {
       }());
 
       return UserAddress(
-        id: mapValueOfType<int>(json, r'id'),
-        userId: mapValueOfType<int>(json, r'userId'),
-        recipientName: mapValueOfType<String>(json, r'recipientName'),
-        recipientPhone: mapValueOfType<String>(json, r'recipientPhone'),
-        postalCode: mapValueOfType<String>(json, r'postalCode'),
-        city: mapValueOfType<String>(json, r'city'),
-        district: mapValueOfType<String>(json, r'district'),
-        detailedAddress: mapValueOfType<String>(json, r'detailedAddress'),
+        id: mapValueOfType<int>(json, r'id')!,
+        userId: mapValueOfType<int>(json, r'userId')!,
+        recipientName: mapValueOfType<String>(json, r'recipientName')!,
+        recipientPhone: mapValueOfType<String>(json, r'recipientPhone')!,
+        postalCode: mapValueOfType<String>(json, r'postalCode')!,
+        city: mapValueOfType<String>(json, r'city')!,
+        district: mapValueOfType<String>(json, r'district')!,
+        detailedAddress: mapValueOfType<String>(json, r'detailedAddress')!,
         remark: mapValueOfType<String>(json, r'remark'),
         longitude: mapValueOfType<double>(json, r'longitude'),
         latitude: mapValueOfType<double>(json, r'latitude'),
@@ -482,16 +326,16 @@ class UserAddress {
         storeName: mapValueOfType<String>(json, r'storeName'),
         storeCode: mapValueOfType<String>(json, r'storeCode'),
         storeAddress: mapValueOfType<String>(json, r'storeAddress'),
-        isDefault: mapValueOfType<bool>(json, r'isDefault'),
-        isActive: mapValueOfType<bool>(json, r'isActive'),
-        createdAt: mapDateTime(json, r'createdAt', r''),
-        updatedAt: mapDateTime(json, r'updatedAt', r''),
-        convenienceStorePickup: mapValueOfType<bool>(json, r'convenienceStorePickup'),
-        logisticsDescription: mapValueOfType<String>(json, r'logisticsDescription'),
-        recipientInfo: mapValueOfType<String>(json, r'recipientInfo'),
+        isDefault: mapValueOfType<bool>(json, r'isDefault')!,
+        isActive: mapValueOfType<bool>(json, r'isActive')!,
+        createdAt: mapDateTime(json, r'createdAt', r'')!,
+        updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         homeDelivery: mapValueOfType<bool>(json, r'homeDelivery'),
         fullAddress: mapValueOfType<String>(json, r'fullAddress'),
         formattedAddress: mapValueOfType<String>(json, r'formattedAddress'),
+        convenienceStorePickup: mapValueOfType<bool>(json, r'convenienceStorePickup'),
+        logisticsDescription: mapValueOfType<String>(json, r'logisticsDescription'),
+        recipientInfo: mapValueOfType<String>(json, r'recipientInfo'),
       );
     }
     return null;
@@ -539,6 +383,18 @@ class UserAddress {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
+    'userId',
+    'recipientName',
+    'recipientPhone',
+    'postalCode',
+    'city',
+    'district',
+    'detailedAddress',
+    'isDefault',
+    'isActive',
+    'createdAt',
+    'updatedAt',
   };
 }
 

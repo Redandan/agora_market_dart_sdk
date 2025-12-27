@@ -320,6 +320,7 @@ part 'model/store_response_dto.dart';
 part 'model/store_shipping_config_param.dart';
 part 'model/store_update_param.dart';
 part 'model/suggestion_action_param.dart';
+part 'model/supported_currency_enum.dart';
 part 'model/taiwan_postal_area.dart';
 part 'model/telegram_bot_info.dart';
 part 'model/top_delivery_area_dto.dart';

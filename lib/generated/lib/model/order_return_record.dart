@@ -13,19 +13,19 @@ part of openapi.api;
 class OrderReturnRecord {
   /// Returns a new [OrderReturnRecord] instance.
   OrderReturnRecord({
-    this.id,
-    this.buyerId,
-    this.sellerId,
-    this.reason,
+    required this.id,
+    required this.buyerId,
+    required this.sellerId,
+    required this.reason,
     this.description,
     this.sellerReply,
     this.trackingNumber,
     this.shippingCompany,
-    this.requestedAt,
+    required this.requestedAt,
     this.processedAt,
     this.shippedAt,
     this.receivedAt,
-    this.updatedAt,
+    required this.updatedAt,
     this.remark,
     this.returnRecipientName,
     this.returnRecipientPhone,
@@ -37,163 +37,55 @@ class OrderReturnRecord {
   });
 
   /// 退貨記錄ID（與訂單ID一致）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? id;
+  String id;
 
   /// 買家ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? buyerId;
+  int buyerId;
 
   /// 賣家ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? sellerId;
+  int sellerId;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  ReturnReasonEnum? reason;
+  ReturnReasonEnum reason;
 
   /// 退貨說明
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? description;
 
   /// 賣家回覆
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? sellerReply;
 
   /// 退貨物流單號
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? trackingNumber;
 
   /// 退貨物流公司
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? shippingCompany;
 
   /// 申請時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? requestedAt;
+  DateTime requestedAt;
 
   /// 處理時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? processedAt;
 
   /// 寄出時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? shippedAt;
 
   /// 收到時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? receivedAt;
 
   /// 更新時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? updatedAt;
+  DateTime updatedAt;
 
   /// 備註
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? remark;
 
   /// 收貨人姓名
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? returnRecipientName;
 
   /// 收貨人電話
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? returnRecipientPhone;
 
   /// 收貨完整地址
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? returnAddress;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   Order? order;
 
   User? buyer;
@@ -229,19 +121,19 @@ class OrderReturnRecord {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (buyerId == null ? 0 : buyerId!.hashCode) +
-    (sellerId == null ? 0 : sellerId!.hashCode) +
-    (reason == null ? 0 : reason!.hashCode) +
+    (id.hashCode) +
+    (buyerId.hashCode) +
+    (sellerId.hashCode) +
+    (reason.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (sellerReply == null ? 0 : sellerReply!.hashCode) +
     (trackingNumber == null ? 0 : trackingNumber!.hashCode) +
     (shippingCompany == null ? 0 : shippingCompany!.hashCode) +
-    (requestedAt == null ? 0 : requestedAt!.hashCode) +
+    (requestedAt.hashCode) +
     (processedAt == null ? 0 : processedAt!.hashCode) +
     (shippedAt == null ? 0 : shippedAt!.hashCode) +
     (receivedAt == null ? 0 : receivedAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (updatedAt.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
     (returnRecipientName == null ? 0 : returnRecipientName!.hashCode) +
     (returnRecipientPhone == null ? 0 : returnRecipientPhone!.hashCode) +
@@ -256,26 +148,10 @@ class OrderReturnRecord {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
       json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
-    if (this.buyerId != null) {
       json[r'buyerId'] = this.buyerId;
-    } else {
-      json[r'buyerId'] = null;
-    }
-    if (this.sellerId != null) {
       json[r'sellerId'] = this.sellerId;
-    } else {
-      json[r'sellerId'] = null;
-    }
-    if (this.reason != null) {
       json[r'reason'] = this.reason;
-    } else {
-      json[r'reason'] = null;
-    }
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
@@ -296,11 +172,7 @@ class OrderReturnRecord {
     } else {
       json[r'shippingCompany'] = null;
     }
-    if (this.requestedAt != null) {
-      json[r'requestedAt'] = this.requestedAt!.toUtc().toIso8601String();
-    } else {
-      json[r'requestedAt'] = null;
-    }
+      json[r'requestedAt'] = this.requestedAt.toUtc().toIso8601String();
     if (this.processedAt != null) {
       json[r'processedAt'] = this.processedAt!.toUtc().toIso8601String();
     } else {
@@ -316,11 +188,7 @@ class OrderReturnRecord {
     } else {
       json[r'receivedAt'] = null;
     }
-    if (this.updatedAt != null) {
-      json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
-    } else {
-      json[r'updatedAt'] = null;
-    }
+      json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
     if (this.remark != null) {
       json[r'remark'] = this.remark;
     } else {
@@ -379,19 +247,19 @@ class OrderReturnRecord {
       }());
 
       return OrderReturnRecord(
-        id: mapValueOfType<String>(json, r'id'),
-        buyerId: mapValueOfType<int>(json, r'buyerId'),
-        sellerId: mapValueOfType<int>(json, r'sellerId'),
-        reason: ReturnReasonEnum.fromJson(json[r'reason']),
+        id: mapValueOfType<String>(json, r'id')!,
+        buyerId: mapValueOfType<int>(json, r'buyerId')!,
+        sellerId: mapValueOfType<int>(json, r'sellerId')!,
+        reason: ReturnReasonEnum.fromJson(json[r'reason'])!,
         description: mapValueOfType<String>(json, r'description'),
         sellerReply: mapValueOfType<String>(json, r'sellerReply'),
         trackingNumber: mapValueOfType<String>(json, r'trackingNumber'),
         shippingCompany: mapValueOfType<String>(json, r'shippingCompany'),
-        requestedAt: mapDateTime(json, r'requestedAt', r''),
+        requestedAt: mapDateTime(json, r'requestedAt', r'')!,
         processedAt: mapDateTime(json, r'processedAt', r''),
         shippedAt: mapDateTime(json, r'shippedAt', r''),
         receivedAt: mapDateTime(json, r'receivedAt', r''),
-        updatedAt: mapDateTime(json, r'updatedAt', r''),
+        updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         remark: mapValueOfType<String>(json, r'remark'),
         returnRecipientName: mapValueOfType<String>(json, r'returnRecipientName'),
         returnRecipientPhone: mapValueOfType<String>(json, r'returnRecipientPhone'),
@@ -449,6 +317,12 @@ class OrderReturnRecord {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
+    'buyerId',
+    'sellerId',
+    'reason',
+    'requestedAt',
+    'updatedAt',
   };
 }
 

@@ -13,177 +13,75 @@ part of openapi.api;
 class PushSubscription {
   /// Returns a new [PushSubscription] instance.
   PushSubscription({
-    this.id,
-    this.userId,
-    this.endpoint,
-    this.p256dh,
-    this.auth,
+    required this.id,
+    required this.userId,
+    required this.endpoint,
+    required this.p256dh,
+    required this.auth,
     this.userAgent,
     this.deviceType,
     this.deviceName,
-    this.enabled,
-    this.valid,
+    required this.enabled,
+    required this.valid,
     this.lastPushAt,
     this.lastErrorAt,
     this.lastErrorMessage,
     this.errorCount,
-    this.createdAt,
-    this.updatedAt,
+    required this.createdAt,
+    required this.updatedAt,
     this.deletedAt,
     this.validSubscription,
   });
 
   /// 訂閱ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? id;
+  int id;
 
   /// 用戶ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? userId;
+  int userId;
 
   /// 推送端點URL
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? endpoint;
+  String endpoint;
 
   /// P256DH公鑰
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? p256dh;
+  String p256dh;
 
   /// 認證密鑰
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? auth;
+  String auth;
 
   /// 用戶代理字符串
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? userAgent;
 
   /// 設備類型
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? deviceType;
 
   /// 設備名稱
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? deviceName;
 
   /// 是否啟用
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? enabled;
+  bool enabled;
 
   /// 是否有效
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? valid;
+  bool valid;
 
   /// 最後推送時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? lastPushAt;
 
   /// 最後錯誤時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? lastErrorAt;
 
   /// 最後錯誤信息
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? lastErrorMessage;
 
   /// 錯誤計數
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? errorCount;
 
   /// 創建時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? createdAt;
+  DateTime createdAt;
 
   /// 更新時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? updatedAt;
+  DateTime updatedAt;
 
   /// 刪除時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? deletedAt;
 
   ///
@@ -218,22 +116,22 @@ class PushSubscription {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (userId == null ? 0 : userId!.hashCode) +
-    (endpoint == null ? 0 : endpoint!.hashCode) +
-    (p256dh == null ? 0 : p256dh!.hashCode) +
-    (auth == null ? 0 : auth!.hashCode) +
+    (id.hashCode) +
+    (userId.hashCode) +
+    (endpoint.hashCode) +
+    (p256dh.hashCode) +
+    (auth.hashCode) +
     (userAgent == null ? 0 : userAgent!.hashCode) +
     (deviceType == null ? 0 : deviceType!.hashCode) +
     (deviceName == null ? 0 : deviceName!.hashCode) +
-    (enabled == null ? 0 : enabled!.hashCode) +
-    (valid == null ? 0 : valid!.hashCode) +
+    (enabled.hashCode) +
+    (valid.hashCode) +
     (lastPushAt == null ? 0 : lastPushAt!.hashCode) +
     (lastErrorAt == null ? 0 : lastErrorAt!.hashCode) +
     (lastErrorMessage == null ? 0 : lastErrorMessage!.hashCode) +
     (errorCount == null ? 0 : errorCount!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (createdAt.hashCode) +
+    (updatedAt.hashCode) +
     (deletedAt == null ? 0 : deletedAt!.hashCode) +
     (validSubscription == null ? 0 : validSubscription!.hashCode);
 
@@ -242,31 +140,11 @@ class PushSubscription {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
       json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
-    if (this.userId != null) {
       json[r'userId'] = this.userId;
-    } else {
-      json[r'userId'] = null;
-    }
-    if (this.endpoint != null) {
       json[r'endpoint'] = this.endpoint;
-    } else {
-      json[r'endpoint'] = null;
-    }
-    if (this.p256dh != null) {
       json[r'p256dh'] = this.p256dh;
-    } else {
-      json[r'p256dh'] = null;
-    }
-    if (this.auth != null) {
       json[r'auth'] = this.auth;
-    } else {
-      json[r'auth'] = null;
-    }
     if (this.userAgent != null) {
       json[r'userAgent'] = this.userAgent;
     } else {
@@ -282,16 +160,8 @@ class PushSubscription {
     } else {
       json[r'deviceName'] = null;
     }
-    if (this.enabled != null) {
       json[r'enabled'] = this.enabled;
-    } else {
-      json[r'enabled'] = null;
-    }
-    if (this.valid != null) {
       json[r'valid'] = this.valid;
-    } else {
-      json[r'valid'] = null;
-    }
     if (this.lastPushAt != null) {
       json[r'lastPushAt'] = this.lastPushAt!.toUtc().toIso8601String();
     } else {
@@ -312,16 +182,8 @@ class PushSubscription {
     } else {
       json[r'errorCount'] = null;
     }
-    if (this.createdAt != null) {
-      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
-    } else {
-      json[r'createdAt'] = null;
-    }
-    if (this.updatedAt != null) {
-      json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
-    } else {
-      json[r'updatedAt'] = null;
-    }
+      json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
+      json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
     if (this.deletedAt != null) {
       json[r'deletedAt'] = this.deletedAt!.toUtc().toIso8601String();
     } else {
@@ -354,22 +216,22 @@ class PushSubscription {
       }());
 
       return PushSubscription(
-        id: mapValueOfType<int>(json, r'id'),
-        userId: mapValueOfType<int>(json, r'userId'),
-        endpoint: mapValueOfType<String>(json, r'endpoint'),
-        p256dh: mapValueOfType<String>(json, r'p256dh'),
-        auth: mapValueOfType<String>(json, r'auth'),
+        id: mapValueOfType<int>(json, r'id')!,
+        userId: mapValueOfType<int>(json, r'userId')!,
+        endpoint: mapValueOfType<String>(json, r'endpoint')!,
+        p256dh: mapValueOfType<String>(json, r'p256dh')!,
+        auth: mapValueOfType<String>(json, r'auth')!,
         userAgent: mapValueOfType<String>(json, r'userAgent'),
         deviceType: mapValueOfType<String>(json, r'deviceType'),
         deviceName: mapValueOfType<String>(json, r'deviceName'),
-        enabled: mapValueOfType<bool>(json, r'enabled'),
-        valid: mapValueOfType<bool>(json, r'valid'),
+        enabled: mapValueOfType<bool>(json, r'enabled')!,
+        valid: mapValueOfType<bool>(json, r'valid')!,
         lastPushAt: mapDateTime(json, r'lastPushAt', r''),
         lastErrorAt: mapDateTime(json, r'lastErrorAt', r''),
         lastErrorMessage: mapValueOfType<String>(json, r'lastErrorMessage'),
         errorCount: mapValueOfType<int>(json, r'errorCount'),
-        createdAt: mapDateTime(json, r'createdAt', r''),
-        updatedAt: mapDateTime(json, r'updatedAt', r''),
+        createdAt: mapDateTime(json, r'createdAt', r'')!,
+        updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         deletedAt: mapDateTime(json, r'deletedAt', r''),
         validSubscription: mapValueOfType<bool>(json, r'validSubscription'),
       );
@@ -419,6 +281,15 @@ class PushSubscription {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
+    'userId',
+    'endpoint',
+    'p256dh',
+    'auth',
+    'enabled',
+    'valid',
+    'createdAt',
+    'updatedAt',
   };
 }
 

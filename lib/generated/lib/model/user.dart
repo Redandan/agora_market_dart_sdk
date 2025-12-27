@@ -13,11 +13,11 @@ part of openapi.api;
 class User {
   /// Returns a new [User] instance.
   User({
-    this.id,
-    this.username,
-    this.password,
-    this.role,
-    this.status,
+    required this.id,
+    required this.username,
+    required this.password,
+    required this.role,
+    required this.status,
     this.name,
     this.phone,
     this.email,
@@ -31,190 +31,70 @@ class User {
     this.twoFactorSecret,
     this.emailVerified,
     this.trustedDevicesJson,
-    this.createdAt,
-    this.updatedAt,
+    required this.createdAt,
+    required this.updatedAt,
     this.admin,
     this.trustedDevices = const [],
   });
 
   /// 用戶ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? id;
+  int id;
 
   /// 用戶名
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? username;
+  String username;
 
   /// 密碼
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? password;
+  String password;
 
   /// 角色
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? role;
+  String role;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  UserStatusEnum? status;
+  UserStatusEnum status;
 
   /// 姓名
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? name;
 
   /// 電話號碼
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? phone;
 
   /// 電子郵件
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? email;
 
   /// 頭像
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? avatar;
 
   /// 備註
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? remark;
 
   /// 店鋪名稱
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? storeName;
 
   /// 推廣大使名稱
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? ambassadorName;
 
   /// 顯示配送員名稱
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? displayDeliveryerName;
 
   /// 註冊推廣碼
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? promoCode;
 
   /// 是否啟用雙因素認證
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? twoFactorEnabled;
 
   /// 雙因素認證密鑰
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? twoFactorSecret;
 
   /// 郵件是否已驗證
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? emailVerified;
 
-  /// 受信任設備列表（JSON格式）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
+  /// 受信任設備列表（JSON格式），最多保存10組設備
   String? trustedDevicesJson;
 
   /// 創建時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? createdAt;
+  DateTime createdAt;
 
   /// 最後更新時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? updatedAt;
+  DateTime updatedAt;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -254,11 +134,11 @@ class User {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (username == null ? 0 : username!.hashCode) +
-    (password == null ? 0 : password!.hashCode) +
-    (role == null ? 0 : role!.hashCode) +
-    (status == null ? 0 : status!.hashCode) +
+    (id.hashCode) +
+    (username.hashCode) +
+    (password.hashCode) +
+    (role.hashCode) +
+    (status.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (phone == null ? 0 : phone!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
@@ -272,8 +152,8 @@ class User {
     (twoFactorSecret == null ? 0 : twoFactorSecret!.hashCode) +
     (emailVerified == null ? 0 : emailVerified!.hashCode) +
     (trustedDevicesJson == null ? 0 : trustedDevicesJson!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (createdAt.hashCode) +
+    (updatedAt.hashCode) +
     (admin == null ? 0 : admin!.hashCode) +
     (trustedDevices.hashCode);
 
@@ -282,31 +162,11 @@ class User {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
       json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
-    if (this.username != null) {
       json[r'username'] = this.username;
-    } else {
-      json[r'username'] = null;
-    }
-    if (this.password != null) {
       json[r'password'] = this.password;
-    } else {
-      json[r'password'] = null;
-    }
-    if (this.role != null) {
       json[r'role'] = this.role;
-    } else {
-      json[r'role'] = null;
-    }
-    if (this.status != null) {
       json[r'status'] = this.status;
-    } else {
-      json[r'status'] = null;
-    }
     if (this.name != null) {
       json[r'name'] = this.name;
     } else {
@@ -372,16 +232,8 @@ class User {
     } else {
       json[r'trustedDevicesJson'] = null;
     }
-    if (this.createdAt != null) {
-      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
-    } else {
-      json[r'createdAt'] = null;
-    }
-    if (this.updatedAt != null) {
-      json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
-    } else {
-      json[r'updatedAt'] = null;
-    }
+      json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
+      json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
     if (this.admin != null) {
       json[r'admin'] = this.admin;
     } else {
@@ -410,11 +262,11 @@ class User {
       }());
 
       return User(
-        id: mapValueOfType<int>(json, r'id'),
-        username: mapValueOfType<String>(json, r'username'),
-        password: mapValueOfType<String>(json, r'password'),
-        role: mapValueOfType<String>(json, r'role'),
-        status: UserStatusEnum.fromJson(json[r'status']),
+        id: mapValueOfType<int>(json, r'id')!,
+        username: mapValueOfType<String>(json, r'username')!,
+        password: mapValueOfType<String>(json, r'password')!,
+        role: mapValueOfType<String>(json, r'role')!,
+        status: UserStatusEnum.fromJson(json[r'status'])!,
         name: mapValueOfType<String>(json, r'name'),
         phone: mapValueOfType<String>(json, r'phone'),
         email: mapValueOfType<String>(json, r'email'),
@@ -428,8 +280,8 @@ class User {
         twoFactorSecret: mapValueOfType<String>(json, r'twoFactorSecret'),
         emailVerified: mapValueOfType<bool>(json, r'emailVerified'),
         trustedDevicesJson: mapValueOfType<String>(json, r'trustedDevicesJson'),
-        createdAt: mapDateTime(json, r'createdAt', r''),
-        updatedAt: mapDateTime(json, r'updatedAt', r''),
+        createdAt: mapDateTime(json, r'createdAt', r'')!,
+        updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         admin: mapValueOfType<bool>(json, r'admin'),
         trustedDevices: DeviceInfo.listFromJson(json[r'trustedDevices']),
       );
@@ -479,6 +331,13 @@ class User {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
+    'username',
+    'password',
+    'role',
+    'status',
+    'createdAt',
+    'updatedAt',
   };
 }
 
