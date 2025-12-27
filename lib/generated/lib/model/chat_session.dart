@@ -13,14 +13,14 @@ part of openapi.api;
 class ChatSession {
   /// Returns a new [ChatSession] instance.
   ChatSession({
-    this.id,
-    this.userId,
-    this.partnerId,
-    this.userUnreadCount,
-    this.partnerUnreadCount,
+    required this.id,
+    required this.userId,
+    required this.partnerId,
+    required this.userUnreadCount,
+    required this.partnerUnreadCount,
     this.latestMessageId,
     this.latestMessageTime,
-    this.pinned,
+    required this.pinned,
     this.partnerName,
     this.partnerAvatar,
     this.latestMessageContent,
@@ -28,179 +28,65 @@ class ChatSession {
     this.partnerReadMessageId,
     this.userReadAt,
     this.partnerReadAt,
-    this.createdAt,
-    this.updatedAt,
+    required this.createdAt,
+    required this.updatedAt,
     this.messages,
     this.currentUser,
   });
 
   /// 會話唯一標識ID（主鍵）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? id;
+  String id;
 
   /// 用戶ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? userId;
+  int userId;
 
   /// 聊天對象ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? partnerId;
+  int partnerId;
 
   /// 用戶未讀消息數
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? userUnreadCount;
+  int userUnreadCount;
 
   /// 聊天對象未讀消息數
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? partnerUnreadCount;
+  int partnerUnreadCount;
 
   /// 最新消息ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? latestMessageId;
 
   /// 最新消息時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? latestMessageTime;
 
   /// 是否置頂
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? pinned;
+  bool pinned;
 
   /// 聊天對象名稱
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? partnerName;
 
   /// 聊天對象頭像
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? partnerAvatar;
 
   /// 最新消息內容
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? latestMessageContent;
 
   /// 用戶已讀消息ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? userReadMessageId;
 
   /// 聊天對象已讀消息ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? partnerReadMessageId;
 
   /// 用戶已讀時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? userReadAt;
 
   /// 聊天對象已讀時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? partnerReadAt;
 
   /// 創建時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? createdAt;
+  DateTime createdAt;
 
   /// 更新時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? updatedAt;
+  DateTime updatedAt;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   PageChatMessage? messages;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   User? currentUser;
 
   @override
@@ -228,14 +114,14 @@ class ChatSession {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (userId == null ? 0 : userId!.hashCode) +
-    (partnerId == null ? 0 : partnerId!.hashCode) +
-    (userUnreadCount == null ? 0 : userUnreadCount!.hashCode) +
-    (partnerUnreadCount == null ? 0 : partnerUnreadCount!.hashCode) +
+    (id.hashCode) +
+    (userId.hashCode) +
+    (partnerId.hashCode) +
+    (userUnreadCount.hashCode) +
+    (partnerUnreadCount.hashCode) +
     (latestMessageId == null ? 0 : latestMessageId!.hashCode) +
     (latestMessageTime == null ? 0 : latestMessageTime!.hashCode) +
-    (pinned == null ? 0 : pinned!.hashCode) +
+    (pinned.hashCode) +
     (partnerName == null ? 0 : partnerName!.hashCode) +
     (partnerAvatar == null ? 0 : partnerAvatar!.hashCode) +
     (latestMessageContent == null ? 0 : latestMessageContent!.hashCode) +
@@ -243,8 +129,8 @@ class ChatSession {
     (partnerReadMessageId == null ? 0 : partnerReadMessageId!.hashCode) +
     (userReadAt == null ? 0 : userReadAt!.hashCode) +
     (partnerReadAt == null ? 0 : partnerReadAt!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (createdAt.hashCode) +
+    (updatedAt.hashCode) +
     (messages == null ? 0 : messages!.hashCode) +
     (currentUser == null ? 0 : currentUser!.hashCode);
 
@@ -253,31 +139,11 @@ class ChatSession {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
       json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
-    if (this.userId != null) {
       json[r'userId'] = this.userId;
-    } else {
-      json[r'userId'] = null;
-    }
-    if (this.partnerId != null) {
       json[r'partnerId'] = this.partnerId;
-    } else {
-      json[r'partnerId'] = null;
-    }
-    if (this.userUnreadCount != null) {
       json[r'userUnreadCount'] = this.userUnreadCount;
-    } else {
-      json[r'userUnreadCount'] = null;
-    }
-    if (this.partnerUnreadCount != null) {
       json[r'partnerUnreadCount'] = this.partnerUnreadCount;
-    } else {
-      json[r'partnerUnreadCount'] = null;
-    }
     if (this.latestMessageId != null) {
       json[r'latestMessageId'] = this.latestMessageId;
     } else {
@@ -288,11 +154,7 @@ class ChatSession {
     } else {
       json[r'latestMessageTime'] = null;
     }
-    if (this.pinned != null) {
       json[r'pinned'] = this.pinned;
-    } else {
-      json[r'pinned'] = null;
-    }
     if (this.partnerName != null) {
       json[r'partnerName'] = this.partnerName;
     } else {
@@ -328,16 +190,8 @@ class ChatSession {
     } else {
       json[r'partnerReadAt'] = null;
     }
-    if (this.createdAt != null) {
-      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
-    } else {
-      json[r'createdAt'] = null;
-    }
-    if (this.updatedAt != null) {
-      json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
-    } else {
-      json[r'updatedAt'] = null;
-    }
+      json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
+      json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
     if (this.messages != null) {
       json[r'messages'] = this.messages;
     } else {
@@ -370,14 +224,14 @@ class ChatSession {
       }());
 
       return ChatSession(
-        id: mapValueOfType<String>(json, r'id'),
-        userId: mapValueOfType<int>(json, r'userId'),
-        partnerId: mapValueOfType<int>(json, r'partnerId'),
-        userUnreadCount: mapValueOfType<int>(json, r'userUnreadCount'),
-        partnerUnreadCount: mapValueOfType<int>(json, r'partnerUnreadCount'),
+        id: mapValueOfType<String>(json, r'id')!,
+        userId: mapValueOfType<int>(json, r'userId')!,
+        partnerId: mapValueOfType<int>(json, r'partnerId')!,
+        userUnreadCount: mapValueOfType<int>(json, r'userUnreadCount')!,
+        partnerUnreadCount: mapValueOfType<int>(json, r'partnerUnreadCount')!,
         latestMessageId: mapValueOfType<int>(json, r'latestMessageId'),
         latestMessageTime: mapDateTime(json, r'latestMessageTime', r''),
-        pinned: mapValueOfType<bool>(json, r'pinned'),
+        pinned: mapValueOfType<bool>(json, r'pinned')!,
         partnerName: mapValueOfType<String>(json, r'partnerName'),
         partnerAvatar: mapValueOfType<String>(json, r'partnerAvatar'),
         latestMessageContent: mapValueOfType<String>(json, r'latestMessageContent'),
@@ -385,8 +239,8 @@ class ChatSession {
         partnerReadMessageId: mapValueOfType<int>(json, r'partnerReadMessageId'),
         userReadAt: mapDateTime(json, r'userReadAt', r''),
         partnerReadAt: mapDateTime(json, r'partnerReadAt', r''),
-        createdAt: mapDateTime(json, r'createdAt', r''),
-        updatedAt: mapDateTime(json, r'updatedAt', r''),
+        createdAt: mapDateTime(json, r'createdAt', r'')!,
+        updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         messages: PageChatMessage.fromJson(json[r'messages']),
         currentUser: User.fromJson(json[r'currentUser']),
       );
@@ -436,6 +290,14 @@ class ChatSession {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
+    'userId',
+    'partnerId',
+    'userUnreadCount',
+    'partnerUnreadCount',
+    'pinned',
+    'createdAt',
+    'updatedAt',
   };
 }
 

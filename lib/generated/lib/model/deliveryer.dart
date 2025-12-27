@@ -13,12 +13,12 @@ part of openapi.api;
 class Deliveryer {
   /// Returns a new [Deliveryer] instance.
   Deliveryer({
-    this.userId,
-    this.displayName,
-    this.enabled,
+    required this.userId,
+    required this.displayName,
+    required this.enabled,
     this.deliveryAreasJson,
-    this.createdAt,
-    this.updatedAt,
+    required this.createdAt,
+    required this.updatedAt,
     this.deliveringOrderId,
     this.latitude,
     this.longitude,
@@ -26,82 +26,30 @@ class Deliveryer {
   });
 
   /// 用戶ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? userId;
+  int userId;
 
   /// 顯示名稱
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? displayName;
+  String displayName;
 
   /// 是否啟用
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? enabled;
+  bool enabled;
 
   /// 配送區域列表，JSON格式
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? deliveryAreasJson;
 
   /// 創建時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? createdAt;
+  DateTime createdAt;
 
   /// 更新時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? updatedAt;
+  DateTime updatedAt;
 
   /// 正在配送訂單ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? deliveringOrderId;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
+  /// 緯度
   double? latitude;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
+  /// 經度
   double? longitude;
 
   Set<String> deliveryAreas;
@@ -122,12 +70,12 @@ class Deliveryer {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (userId == null ? 0 : userId!.hashCode) +
-    (displayName == null ? 0 : displayName!.hashCode) +
-    (enabled == null ? 0 : enabled!.hashCode) +
+    (userId.hashCode) +
+    (displayName.hashCode) +
+    (enabled.hashCode) +
     (deliveryAreasJson == null ? 0 : deliveryAreasJson!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (createdAt.hashCode) +
+    (updatedAt.hashCode) +
     (deliveringOrderId == null ? 0 : deliveringOrderId!.hashCode) +
     (latitude == null ? 0 : latitude!.hashCode) +
     (longitude == null ? 0 : longitude!.hashCode) +
@@ -138,36 +86,16 @@ class Deliveryer {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.userId != null) {
       json[r'userId'] = this.userId;
-    } else {
-      json[r'userId'] = null;
-    }
-    if (this.displayName != null) {
       json[r'displayName'] = this.displayName;
-    } else {
-      json[r'displayName'] = null;
-    }
-    if (this.enabled != null) {
       json[r'enabled'] = this.enabled;
-    } else {
-      json[r'enabled'] = null;
-    }
     if (this.deliveryAreasJson != null) {
       json[r'deliveryAreasJson'] = this.deliveryAreasJson;
     } else {
       json[r'deliveryAreasJson'] = null;
     }
-    if (this.createdAt != null) {
-      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
-    } else {
-      json[r'createdAt'] = null;
-    }
-    if (this.updatedAt != null) {
-      json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
-    } else {
-      json[r'updatedAt'] = null;
-    }
+      json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
+      json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
     if (this.deliveringOrderId != null) {
       json[r'deliveringOrderId'] = this.deliveringOrderId;
     } else {
@@ -206,12 +134,12 @@ class Deliveryer {
       }());
 
       return Deliveryer(
-        userId: mapValueOfType<int>(json, r'userId'),
-        displayName: mapValueOfType<String>(json, r'displayName'),
-        enabled: mapValueOfType<bool>(json, r'enabled'),
+        userId: mapValueOfType<int>(json, r'userId')!,
+        displayName: mapValueOfType<String>(json, r'displayName')!,
+        enabled: mapValueOfType<bool>(json, r'enabled')!,
         deliveryAreasJson: mapValueOfType<String>(json, r'deliveryAreasJson'),
-        createdAt: mapDateTime(json, r'createdAt', r''),
-        updatedAt: mapDateTime(json, r'updatedAt', r''),
+        createdAt: mapDateTime(json, r'createdAt', r'')!,
+        updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         deliveringOrderId: mapValueOfType<String>(json, r'deliveringOrderId'),
         latitude: mapValueOfType<double>(json, r'latitude'),
         longitude: mapValueOfType<double>(json, r'longitude'),
@@ -265,6 +193,11 @@ class Deliveryer {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'userId',
+    'displayName',
+    'enabled',
+    'createdAt',
+    'updatedAt',
   };
 }
 

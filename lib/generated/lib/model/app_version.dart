@@ -13,117 +13,51 @@ part of openapi.api;
 class AppVersion {
   /// Returns a new [AppVersion] instance.
   AppVersion({
-    this.id,
-    this.version,
-    this.platform,
-    this.fileName,
-    this.objectName,
-    this.downloadUrl,
-    this.fileSize,
+    required this.id,
+    required this.version,
+    required this.platform,
+    required this.fileName,
+    required this.objectName,
+    required this.downloadUrl,
+    required this.fileSize,
     this.contentType,
     this.description,
     this.releaseTime,
-    this.createdAt,
+    required this.createdAt,
   });
 
   /// 版本ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? id;
+  int id;
 
-  /// 版本號
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? version;
+  /// 版本號（例如：1.0.0, 1.2.3）
+  String version;
 
-  /// 平台
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? platform;
+  /// 平台（例如：windows, android, ios, macos, linux）
+  String platform;
 
   /// 檔案名稱
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? fileName;
+  String fileName;
 
-  /// OCI Object Storage 物件名稱
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? objectName;
+  /// OCI Object Storage 中的物件名稱
+  String objectName;
 
   /// 檔案下載 URL
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? downloadUrl;
+  String downloadUrl;
 
   /// 檔案大小（位元組）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? fileSize;
+  int fileSize;
 
-  /// 檔案類型
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
+  /// 檔案類型（MIME type）
   String? contentType;
 
   /// 版本描述/更新日誌
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? description;
 
   /// 發布時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? releaseTime;
 
   /// 創建時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? createdAt;
+  DateTime createdAt;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is AppVersion &&
@@ -142,58 +76,30 @@ class AppVersion {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (version == null ? 0 : version!.hashCode) +
-    (platform == null ? 0 : platform!.hashCode) +
-    (fileName == null ? 0 : fileName!.hashCode) +
-    (objectName == null ? 0 : objectName!.hashCode) +
-    (downloadUrl == null ? 0 : downloadUrl!.hashCode) +
-    (fileSize == null ? 0 : fileSize!.hashCode) +
+    (id.hashCode) +
+    (version.hashCode) +
+    (platform.hashCode) +
+    (fileName.hashCode) +
+    (objectName.hashCode) +
+    (downloadUrl.hashCode) +
+    (fileSize.hashCode) +
     (contentType == null ? 0 : contentType!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (releaseTime == null ? 0 : releaseTime!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode);
+    (createdAt.hashCode);
 
   @override
   String toString() => 'AppVersion[id=$id, version=$version, platform=$platform, fileName=$fileName, objectName=$objectName, downloadUrl=$downloadUrl, fileSize=$fileSize, contentType=$contentType, description=$description, releaseTime=$releaseTime, createdAt=$createdAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
       json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
-    if (this.version != null) {
       json[r'version'] = this.version;
-    } else {
-      json[r'version'] = null;
-    }
-    if (this.platform != null) {
       json[r'platform'] = this.platform;
-    } else {
-      json[r'platform'] = null;
-    }
-    if (this.fileName != null) {
       json[r'fileName'] = this.fileName;
-    } else {
-      json[r'fileName'] = null;
-    }
-    if (this.objectName != null) {
       json[r'objectName'] = this.objectName;
-    } else {
-      json[r'objectName'] = null;
-    }
-    if (this.downloadUrl != null) {
       json[r'downloadUrl'] = this.downloadUrl;
-    } else {
-      json[r'downloadUrl'] = null;
-    }
-    if (this.fileSize != null) {
       json[r'fileSize'] = this.fileSize;
-    } else {
-      json[r'fileSize'] = null;
-    }
     if (this.contentType != null) {
       json[r'contentType'] = this.contentType;
     } else {
@@ -209,11 +115,7 @@ class AppVersion {
     } else {
       json[r'releaseTime'] = null;
     }
-    if (this.createdAt != null) {
-      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
-    } else {
-      json[r'createdAt'] = null;
-    }
+      json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
     return json;
   }
 
@@ -236,17 +138,17 @@ class AppVersion {
       }());
 
       return AppVersion(
-        id: mapValueOfType<int>(json, r'id'),
-        version: mapValueOfType<String>(json, r'version'),
-        platform: mapValueOfType<String>(json, r'platform'),
-        fileName: mapValueOfType<String>(json, r'fileName'),
-        objectName: mapValueOfType<String>(json, r'objectName'),
-        downloadUrl: mapValueOfType<String>(json, r'downloadUrl'),
-        fileSize: mapValueOfType<int>(json, r'fileSize'),
+        id: mapValueOfType<int>(json, r'id')!,
+        version: mapValueOfType<String>(json, r'version')!,
+        platform: mapValueOfType<String>(json, r'platform')!,
+        fileName: mapValueOfType<String>(json, r'fileName')!,
+        objectName: mapValueOfType<String>(json, r'objectName')!,
+        downloadUrl: mapValueOfType<String>(json, r'downloadUrl')!,
+        fileSize: mapValueOfType<int>(json, r'fileSize')!,
         contentType: mapValueOfType<String>(json, r'contentType'),
         description: mapValueOfType<String>(json, r'description'),
         releaseTime: mapDateTime(json, r'releaseTime', r''),
-        createdAt: mapDateTime(json, r'createdAt', r''),
+        createdAt: mapDateTime(json, r'createdAt', r'')!,
       );
     }
     return null;
@@ -294,6 +196,14 @@ class AppVersion {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
+    'version',
+    'platform',
+    'fileName',
+    'objectName',
+    'downloadUrl',
+    'fileSize',
+    'createdAt',
   };
 }
 

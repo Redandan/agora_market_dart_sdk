@@ -13,117 +13,51 @@ part of openapi.api;
 class AutoReplyConfig {
   /// Returns a new [AutoReplyConfig] instance.
   AutoReplyConfig({
-    this.id,
-    this.name,
+    required this.id,
+    required this.name,
     this.description,
-    this.keyword,
-    this.replyContent,
-    this.priority,
-    this.enabled,
-    this.hitCount,
+    required this.keyword,
+    required this.replyContent,
+    required this.priority,
+    required this.enabled,
+    required this.hitCount,
     this.lastHitTime,
-    this.createdAt,
-    this.updatedAt,
+    required this.createdAt,
+    required this.updatedAt,
   });
 
   /// 配置ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? id;
+  int id;
 
   /// 配置名稱
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? name;
+  String name;
 
   /// 配置描述
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? description;
 
-  /// 關鍵詞
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? keyword;
+  /// 關鍵詞（唯一）
+  String keyword;
 
   /// 回復內容
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? replyContent;
+  String replyContent;
 
   /// 優先級
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? priority;
+  int priority;
 
   /// 是否啟用
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? enabled;
+  bool enabled;
 
   /// 命中次數
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? hitCount;
+  int hitCount;
 
   /// 最後命中時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? lastHitTime;
 
   /// 創建時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? createdAt;
+  DateTime createdAt;
 
   /// 更新時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? updatedAt;
+  DateTime updatedAt;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is AutoReplyConfig &&
@@ -142,78 +76,42 @@ class AutoReplyConfig {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (name == null ? 0 : name!.hashCode) +
+    (id.hashCode) +
+    (name.hashCode) +
     (description == null ? 0 : description!.hashCode) +
-    (keyword == null ? 0 : keyword!.hashCode) +
-    (replyContent == null ? 0 : replyContent!.hashCode) +
-    (priority == null ? 0 : priority!.hashCode) +
-    (enabled == null ? 0 : enabled!.hashCode) +
-    (hitCount == null ? 0 : hitCount!.hashCode) +
+    (keyword.hashCode) +
+    (replyContent.hashCode) +
+    (priority.hashCode) +
+    (enabled.hashCode) +
+    (hitCount.hashCode) +
     (lastHitTime == null ? 0 : lastHitTime!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode);
+    (createdAt.hashCode) +
+    (updatedAt.hashCode);
 
   @override
   String toString() => 'AutoReplyConfig[id=$id, name=$name, description=$description, keyword=$keyword, replyContent=$replyContent, priority=$priority, enabled=$enabled, hitCount=$hitCount, lastHitTime=$lastHitTime, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
       json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
-    if (this.name != null) {
       json[r'name'] = this.name;
-    } else {
-      json[r'name'] = null;
-    }
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
       json[r'description'] = null;
     }
-    if (this.keyword != null) {
       json[r'keyword'] = this.keyword;
-    } else {
-      json[r'keyword'] = null;
-    }
-    if (this.replyContent != null) {
       json[r'replyContent'] = this.replyContent;
-    } else {
-      json[r'replyContent'] = null;
-    }
-    if (this.priority != null) {
       json[r'priority'] = this.priority;
-    } else {
-      json[r'priority'] = null;
-    }
-    if (this.enabled != null) {
       json[r'enabled'] = this.enabled;
-    } else {
-      json[r'enabled'] = null;
-    }
-    if (this.hitCount != null) {
       json[r'hitCount'] = this.hitCount;
-    } else {
-      json[r'hitCount'] = null;
-    }
     if (this.lastHitTime != null) {
       json[r'lastHitTime'] = this.lastHitTime!.toUtc().toIso8601String();
     } else {
       json[r'lastHitTime'] = null;
     }
-    if (this.createdAt != null) {
-      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
-    } else {
-      json[r'createdAt'] = null;
-    }
-    if (this.updatedAt != null) {
-      json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
-    } else {
-      json[r'updatedAt'] = null;
-    }
+      json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
+      json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
     return json;
   }
 
@@ -236,17 +134,17 @@ class AutoReplyConfig {
       }());
 
       return AutoReplyConfig(
-        id: mapValueOfType<int>(json, r'id'),
-        name: mapValueOfType<String>(json, r'name'),
+        id: mapValueOfType<int>(json, r'id')!,
+        name: mapValueOfType<String>(json, r'name')!,
         description: mapValueOfType<String>(json, r'description'),
-        keyword: mapValueOfType<String>(json, r'keyword'),
-        replyContent: mapValueOfType<String>(json, r'replyContent'),
-        priority: mapValueOfType<int>(json, r'priority'),
-        enabled: mapValueOfType<bool>(json, r'enabled'),
-        hitCount: mapValueOfType<int>(json, r'hitCount'),
+        keyword: mapValueOfType<String>(json, r'keyword')!,
+        replyContent: mapValueOfType<String>(json, r'replyContent')!,
+        priority: mapValueOfType<int>(json, r'priority')!,
+        enabled: mapValueOfType<bool>(json, r'enabled')!,
+        hitCount: mapValueOfType<int>(json, r'hitCount')!,
         lastHitTime: mapDateTime(json, r'lastHitTime', r''),
-        createdAt: mapDateTime(json, r'createdAt', r''),
-        updatedAt: mapDateTime(json, r'updatedAt', r''),
+        createdAt: mapDateTime(json, r'createdAt', r'')!,
+        updatedAt: mapDateTime(json, r'updatedAt', r'')!,
       );
     }
     return null;
@@ -294,6 +192,15 @@ class AutoReplyConfig {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
+    'name',
+    'keyword',
+    'replyContent',
+    'priority',
+    'enabled',
+    'hitCount',
+    'createdAt',
+    'updatedAt',
   };
 }
 

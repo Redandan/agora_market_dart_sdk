@@ -13,13 +13,13 @@ part of openapi.api;
 class ChatMessage {
   /// Returns a new [ChatMessage] instance.
   ChatMessage({
-    this.id,
-    this.senderId,
-    this.receiverId,
-    this.sessionId,
-    this.content,
-    this.createdAt,
-    this.updatedAt,
+    required this.id,
+    required this.senderId,
+    required this.receiverId,
+    required this.sessionId,
+    required this.content,
+    required this.createdAt,
+    required this.updatedAt,
     this.deletedAt,
     this.imageMessage,
     this.textMessage,
@@ -27,75 +27,27 @@ class ChatMessage {
   });
 
   /// 消息ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? id;
+  int id;
 
   /// 發送者ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? senderId;
+  int senderId;
 
   /// 接收者ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? receiverId;
+  int receiverId;
 
   /// 聊天會話ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? sessionId;
+  String sessionId;
 
   /// 消息內容
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? content;
+  String content;
 
   /// 創建時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? createdAt;
+  DateTime createdAt;
 
   /// 更新時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? updatedAt;
+  DateTime updatedAt;
 
   /// 刪除時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? deletedAt;
 
   ///
@@ -139,13 +91,13 @@ class ChatMessage {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (senderId == null ? 0 : senderId!.hashCode) +
-    (receiverId == null ? 0 : receiverId!.hashCode) +
-    (sessionId == null ? 0 : sessionId!.hashCode) +
-    (content == null ? 0 : content!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (id.hashCode) +
+    (senderId.hashCode) +
+    (receiverId.hashCode) +
+    (sessionId.hashCode) +
+    (content.hashCode) +
+    (createdAt.hashCode) +
+    (updatedAt.hashCode) +
     (deletedAt == null ? 0 : deletedAt!.hashCode) +
     (imageMessage == null ? 0 : imageMessage!.hashCode) +
     (textMessage == null ? 0 : textMessage!.hashCode) +
@@ -156,41 +108,13 @@ class ChatMessage {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
       json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
-    if (this.senderId != null) {
       json[r'senderId'] = this.senderId;
-    } else {
-      json[r'senderId'] = null;
-    }
-    if (this.receiverId != null) {
       json[r'receiverId'] = this.receiverId;
-    } else {
-      json[r'receiverId'] = null;
-    }
-    if (this.sessionId != null) {
       json[r'sessionId'] = this.sessionId;
-    } else {
-      json[r'sessionId'] = null;
-    }
-    if (this.content != null) {
       json[r'content'] = this.content;
-    } else {
-      json[r'content'] = null;
-    }
-    if (this.createdAt != null) {
-      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
-    } else {
-      json[r'createdAt'] = null;
-    }
-    if (this.updatedAt != null) {
-      json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
-    } else {
-      json[r'updatedAt'] = null;
-    }
+      json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
+      json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
     if (this.deletedAt != null) {
       json[r'deletedAt'] = this.deletedAt!.toUtc().toIso8601String();
     } else {
@@ -233,13 +157,13 @@ class ChatMessage {
       }());
 
       return ChatMessage(
-        id: mapValueOfType<int>(json, r'id'),
-        senderId: mapValueOfType<int>(json, r'senderId'),
-        receiverId: mapValueOfType<int>(json, r'receiverId'),
-        sessionId: mapValueOfType<String>(json, r'sessionId'),
-        content: mapValueOfType<String>(json, r'content'),
-        createdAt: mapDateTime(json, r'createdAt', r''),
-        updatedAt: mapDateTime(json, r'updatedAt', r''),
+        id: mapValueOfType<int>(json, r'id')!,
+        senderId: mapValueOfType<int>(json, r'senderId')!,
+        receiverId: mapValueOfType<int>(json, r'receiverId')!,
+        sessionId: mapValueOfType<String>(json, r'sessionId')!,
+        content: mapValueOfType<String>(json, r'content')!,
+        createdAt: mapDateTime(json, r'createdAt', r'')!,
+        updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         deletedAt: mapDateTime(json, r'deletedAt', r''),
         imageMessage: mapValueOfType<bool>(json, r'imageMessage'),
         textMessage: mapValueOfType<bool>(json, r'textMessage'),
@@ -291,6 +215,13 @@ class ChatMessage {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
+    'senderId',
+    'receiverId',
+    'sessionId',
+    'content',
+    'createdAt',
+    'updatedAt',
   };
 }
 

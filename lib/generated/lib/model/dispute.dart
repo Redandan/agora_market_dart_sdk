@@ -13,135 +13,57 @@ part of openapi.api;
 class Dispute {
   /// Returns a new [Dispute] instance.
   Dispute({
-    this.id,
-    this.version,
-    this.orderId,
-    this.buyerId,
-    this.sellerId,
-    this.status,
+    required this.id,
+    required this.version,
+    required this.orderId,
+    required this.buyerId,
+    required this.sellerId,
+    required this.status,
     this.outcome,
-    this.description,
+    required this.description,
     this.sellerReply,
     this.adminComment,
-    this.createdAt,
-    this.updatedAt,
+    required this.createdAt,
+    required this.updatedAt,
     this.resolvedAt,
     this.imageUrls = const {},
   });
 
   /// 爭議ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? id;
+  String id;
 
   /// 版本號（樂觀鎖）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? version;
+  int version;
 
   /// 訂單ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? orderId;
+  String orderId;
 
   /// 買家ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? buyerId;
+  int buyerId;
 
   /// 賣家ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? sellerId;
+  int sellerId;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DisputeStatusEnum? status;
+  DisputeStatusEnum status;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DisputeOutcome? outcome;
 
   /// 爭議描述
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? description;
+  String description;
 
   /// 賣家回覆
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? sellerReply;
 
   /// 管理員處理說明
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? adminComment;
 
   /// 創建時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? createdAt;
+  DateTime createdAt;
 
   /// 更新時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? updatedAt;
+  DateTime updatedAt;
 
   /// 處理時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? resolvedAt;
 
   Set<String> imageUrls;
@@ -166,18 +88,18 @@ class Dispute {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (version == null ? 0 : version!.hashCode) +
-    (orderId == null ? 0 : orderId!.hashCode) +
-    (buyerId == null ? 0 : buyerId!.hashCode) +
-    (sellerId == null ? 0 : sellerId!.hashCode) +
-    (status == null ? 0 : status!.hashCode) +
+    (id.hashCode) +
+    (version.hashCode) +
+    (orderId.hashCode) +
+    (buyerId.hashCode) +
+    (sellerId.hashCode) +
+    (status.hashCode) +
     (outcome == null ? 0 : outcome!.hashCode) +
-    (description == null ? 0 : description!.hashCode) +
+    (description.hashCode) +
     (sellerReply == null ? 0 : sellerReply!.hashCode) +
     (adminComment == null ? 0 : adminComment!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (createdAt.hashCode) +
+    (updatedAt.hashCode) +
     (resolvedAt == null ? 0 : resolvedAt!.hashCode) +
     (imageUrls.hashCode);
 
@@ -186,46 +108,18 @@ class Dispute {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
       json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
-    if (this.version != null) {
       json[r'version'] = this.version;
-    } else {
-      json[r'version'] = null;
-    }
-    if (this.orderId != null) {
       json[r'orderId'] = this.orderId;
-    } else {
-      json[r'orderId'] = null;
-    }
-    if (this.buyerId != null) {
       json[r'buyerId'] = this.buyerId;
-    } else {
-      json[r'buyerId'] = null;
-    }
-    if (this.sellerId != null) {
       json[r'sellerId'] = this.sellerId;
-    } else {
-      json[r'sellerId'] = null;
-    }
-    if (this.status != null) {
       json[r'status'] = this.status;
-    } else {
-      json[r'status'] = null;
-    }
     if (this.outcome != null) {
       json[r'outcome'] = this.outcome;
     } else {
       json[r'outcome'] = null;
     }
-    if (this.description != null) {
       json[r'description'] = this.description;
-    } else {
-      json[r'description'] = null;
-    }
     if (this.sellerReply != null) {
       json[r'sellerReply'] = this.sellerReply;
     } else {
@@ -236,16 +130,8 @@ class Dispute {
     } else {
       json[r'adminComment'] = null;
     }
-    if (this.createdAt != null) {
-      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
-    } else {
-      json[r'createdAt'] = null;
-    }
-    if (this.updatedAt != null) {
-      json[r'updatedAt'] = this.updatedAt!.toUtc().toIso8601String();
-    } else {
-      json[r'updatedAt'] = null;
-    }
+      json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
+      json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
     if (this.resolvedAt != null) {
       json[r'resolvedAt'] = this.resolvedAt!.toUtc().toIso8601String();
     } else {
@@ -274,18 +160,18 @@ class Dispute {
       }());
 
       return Dispute(
-        id: mapValueOfType<String>(json, r'id'),
-        version: mapValueOfType<int>(json, r'version'),
-        orderId: mapValueOfType<String>(json, r'orderId'),
-        buyerId: mapValueOfType<int>(json, r'buyerId'),
-        sellerId: mapValueOfType<int>(json, r'sellerId'),
-        status: DisputeStatusEnum.fromJson(json[r'status']),
+        id: mapValueOfType<String>(json, r'id')!,
+        version: mapValueOfType<int>(json, r'version')!,
+        orderId: mapValueOfType<String>(json, r'orderId')!,
+        buyerId: mapValueOfType<int>(json, r'buyerId')!,
+        sellerId: mapValueOfType<int>(json, r'sellerId')!,
+        status: DisputeStatusEnum.fromJson(json[r'status'])!,
         outcome: DisputeOutcome.fromJson(json[r'outcome']),
-        description: mapValueOfType<String>(json, r'description'),
+        description: mapValueOfType<String>(json, r'description')!,
         sellerReply: mapValueOfType<String>(json, r'sellerReply'),
         adminComment: mapValueOfType<String>(json, r'adminComment'),
-        createdAt: mapDateTime(json, r'createdAt', r''),
-        updatedAt: mapDateTime(json, r'updatedAt', r''),
+        createdAt: mapDateTime(json, r'createdAt', r'')!,
+        updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         resolvedAt: mapDateTime(json, r'resolvedAt', r''),
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
@@ -337,6 +223,15 @@ class Dispute {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
+    'version',
+    'orderId',
+    'buyerId',
+    'sellerId',
+    'status',
+    'description',
+    'createdAt',
+    'updatedAt',
   };
 }
 

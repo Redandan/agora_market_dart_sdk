@@ -13,7 +13,7 @@ part of openapi.api;
 class CartItem {
   /// Returns a new [CartItem] instance.
   CartItem({
-    this.id,
+    required this.id,
     required this.userId,
     required this.productId,
     required this.quantity,
@@ -26,7 +26,7 @@ class CartItem {
     required this.sellerId,
     this.sellerName,
     this.pickupAddress,
-    this.sku,
+    required this.sku,
     this.brand,
     this.availableStock,
     this.isInStock,
@@ -42,13 +42,7 @@ class CartItem {
   });
 
   /// 購物車項目ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? id;
+  int id;
 
   /// 用戶ID
   int userId;
@@ -65,21 +59,9 @@ class CartItem {
   String productTitle;
 
   /// 商品描述快照
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? productDescription;
 
   /// 商品主圖快照
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? productImage;
 
   /// 商品單價快照
@@ -99,84 +81,30 @@ class CartItem {
   int sellerId;
 
   /// 賣家名稱快照
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? sellerName;
 
   /// 取貨地址快照
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? pickupAddress;
 
   /// 商品SKU快照
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? sku;
+  String sku;
 
   /// 品牌名稱快照
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? brand;
 
   /// 加入購物車時的可用庫存
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? availableStock;
 
   /// 是否還有庫存
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? isInStock;
 
   /// 庫存警告信息
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? stockWarning;
 
   /// 創建時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? createdAt;
 
   /// 更新時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? updatedAt;
 
   ///
@@ -259,7 +187,7 @@ class CartItem {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
+    (id.hashCode) +
     (userId.hashCode) +
     (productId.hashCode) +
     (quantity.hashCode) +
@@ -272,7 +200,7 @@ class CartItem {
     (sellerId.hashCode) +
     (sellerName == null ? 0 : sellerName!.hashCode) +
     (pickupAddress == null ? 0 : pickupAddress!.hashCode) +
-    (sku == null ? 0 : sku!.hashCode) +
+    (sku.hashCode) +
     (brand == null ? 0 : brand!.hashCode) +
     (availableStock == null ? 0 : availableStock!.hashCode) +
     (isInStock == null ? 0 : isInStock!.hashCode) +
@@ -291,11 +219,7 @@ class CartItem {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
       json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
       json[r'userId'] = this.userId;
       json[r'productId'] = this.productId;
       json[r'quantity'] = this.quantity;
@@ -324,11 +248,7 @@ class CartItem {
     } else {
       json[r'pickupAddress'] = null;
     }
-    if (this.sku != null) {
       json[r'sku'] = this.sku;
-    } else {
-      json[r'sku'] = null;
-    }
     if (this.brand != null) {
       json[r'brand'] = this.brand;
     } else {
@@ -411,7 +331,7 @@ class CartItem {
       }());
 
       return CartItem(
-        id: mapValueOfType<int>(json, r'id'),
+        id: mapValueOfType<int>(json, r'id')!,
         userId: mapValueOfType<int>(json, r'userId')!,
         productId: mapValueOfType<int>(json, r'productId')!,
         quantity: mapValueOfType<int>(json, r'quantity')!,
@@ -424,7 +344,7 @@ class CartItem {
         sellerId: mapValueOfType<int>(json, r'sellerId')!,
         sellerName: mapValueOfType<String>(json, r'sellerName'),
         pickupAddress: mapValueOfType<String>(json, r'pickupAddress'),
-        sku: mapValueOfType<String>(json, r'sku'),
+        sku: mapValueOfType<String>(json, r'sku')!,
         brand: mapValueOfType<String>(json, r'brand'),
         availableStock: mapValueOfType<int>(json, r'availableStock'),
         isInStock: mapValueOfType<bool>(json, r'isInStock'),
@@ -484,6 +404,7 @@ class CartItem {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
     'userId',
     'productId',
     'quantity',
@@ -492,6 +413,7 @@ class CartItem {
     'currency',
     'shippingFee',
     'sellerId',
+    'sku',
   };
 }
 
