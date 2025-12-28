@@ -19,6 +19,7 @@ class UserInfo {
     this.emailVerified,
     this.role,
     this.balance,
+    this.cartItemCount,
     this.stackingBalance,
     this.totalAssets,
     this.freezeBalance,
@@ -86,6 +87,15 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? balance;
+
+  /// 購物車商品數量
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? cartItemCount;
 
   /// 質押餘額
   ///
@@ -197,6 +207,7 @@ class UserInfo {
     other.emailVerified == emailVerified &&
     other.role == role &&
     other.balance == balance &&
+    other.cartItemCount == cartItemCount &&
     other.stackingBalance == stackingBalance &&
     other.totalAssets == totalAssets &&
     other.freezeBalance == freezeBalance &&
@@ -219,6 +230,7 @@ class UserInfo {
     (emailVerified == null ? 0 : emailVerified!.hashCode) +
     (role == null ? 0 : role!.hashCode) +
     (balance == null ? 0 : balance!.hashCode) +
+    (cartItemCount == null ? 0 : cartItemCount!.hashCode) +
     (stackingBalance == null ? 0 : stackingBalance!.hashCode) +
     (totalAssets == null ? 0 : totalAssets!.hashCode) +
     (freezeBalance == null ? 0 : freezeBalance!.hashCode) +
@@ -233,7 +245,7 @@ class UserInfo {
     (deliveryMaintenance == null ? 0 : deliveryMaintenance!.hashCode);
 
   @override
-  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, stackingBalance=$stackingBalance, totalAssets=$totalAssets, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar, balanceConversions=$balanceConversions, sellerMaintenance=$sellerMaintenance, deliveryMaintenance=$deliveryMaintenance]';
+  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, cartItemCount=$cartItemCount, stackingBalance=$stackingBalance, totalAssets=$totalAssets, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar, balanceConversions=$balanceConversions, sellerMaintenance=$sellerMaintenance, deliveryMaintenance=$deliveryMaintenance]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -266,6 +278,11 @@ class UserInfo {
       json[r'balance'] = this.balance;
     } else {
       json[r'balance'] = null;
+    }
+    if (this.cartItemCount != null) {
+      json[r'cartItemCount'] = this.cartItemCount;
+    } else {
+      json[r'cartItemCount'] = null;
     }
     if (this.stackingBalance != null) {
       json[r'stackingBalance'] = this.stackingBalance;
@@ -351,6 +368,7 @@ class UserInfo {
         emailVerified: mapValueOfType<bool>(json, r'emailVerified'),
         role: mapValueOfType<String>(json, r'role'),
         balance: num.parse('${json[r'balance']}'),
+        cartItemCount: mapValueOfType<int>(json, r'cartItemCount'),
         stackingBalance: num.parse('${json[r'stackingBalance']}'),
         totalAssets: num.parse('${json[r'totalAssets']}'),
         freezeBalance: num.parse('${json[r'freezeBalance']}'),
