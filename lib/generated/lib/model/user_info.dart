@@ -32,6 +32,7 @@ class UserInfo {
     this.balanceConversions = const [],
     this.sellerMaintenance,
     this.deliveryMaintenance,
+    this.unreadMessageCount,
   });
 
   /// 用戶ID
@@ -199,6 +200,15 @@ class UserInfo {
   ///
   bool? deliveryMaintenance;
 
+  /// 未讀訊息數量
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? unreadMessageCount;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserInfo &&
     other.id == id &&
@@ -219,7 +229,8 @@ class UserInfo {
     other.avatar == avatar &&
     _deepEquality.equals(other.balanceConversions, balanceConversions) &&
     other.sellerMaintenance == sellerMaintenance &&
-    other.deliveryMaintenance == deliveryMaintenance;
+    other.deliveryMaintenance == deliveryMaintenance &&
+    other.unreadMessageCount == unreadMessageCount;
 
   @override
   int get hashCode =>
@@ -242,10 +253,11 @@ class UserInfo {
     (avatar == null ? 0 : avatar!.hashCode) +
     (balanceConversions.hashCode) +
     (sellerMaintenance == null ? 0 : sellerMaintenance!.hashCode) +
-    (deliveryMaintenance == null ? 0 : deliveryMaintenance!.hashCode);
+    (deliveryMaintenance == null ? 0 : deliveryMaintenance!.hashCode) +
+    (unreadMessageCount == null ? 0 : unreadMessageCount!.hashCode);
 
   @override
-  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, cartItemCount=$cartItemCount, stackingBalance=$stackingBalance, totalAssets=$totalAssets, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar, balanceConversions=$balanceConversions, sellerMaintenance=$sellerMaintenance, deliveryMaintenance=$deliveryMaintenance]';
+  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, cartItemCount=$cartItemCount, stackingBalance=$stackingBalance, totalAssets=$totalAssets, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar, balanceConversions=$balanceConversions, sellerMaintenance=$sellerMaintenance, deliveryMaintenance=$deliveryMaintenance, unreadMessageCount=$unreadMessageCount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -340,6 +352,11 @@ class UserInfo {
     } else {
       json[r'deliveryMaintenance'] = null;
     }
+    if (this.unreadMessageCount != null) {
+      json[r'unreadMessageCount'] = this.unreadMessageCount;
+    } else {
+      json[r'unreadMessageCount'] = null;
+    }
     return json;
   }
 
@@ -381,6 +398,7 @@ class UserInfo {
         balanceConversions: BalanceConversion.listFromJson(json[r'balanceConversions']),
         sellerMaintenance: mapValueOfType<bool>(json, r'sellerMaintenance'),
         deliveryMaintenance: mapValueOfType<bool>(json, r'deliveryMaintenance'),
+        unreadMessageCount: mapValueOfType<int>(json, r'unreadMessageCount'),
       );
     }
     return null;
