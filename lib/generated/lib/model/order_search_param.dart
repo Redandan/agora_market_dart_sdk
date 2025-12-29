@@ -24,7 +24,7 @@ class OrderSearchParam {
     this.buyerId,
     this.sellerId,
     this.productId,
-    this.status,
+    this.status = const [],
     this.searchDateType,
     this.startTime,
     this.endTime,
@@ -129,13 +129,8 @@ class OrderSearchParam {
   ///
   int? productId;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  OrderStatusEnum? status;
+  /// 訂單狀態（可多選）
+  List<OrderStatusEnum> status;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -176,7 +171,7 @@ class OrderSearchParam {
     other.buyerId == buyerId &&
     other.sellerId == sellerId &&
     other.productId == productId &&
-    other.status == status &&
+    _deepEquality.equals(other.status, status) &&
     other.searchDateType == searchDateType &&
     other.startTime == startTime &&
     other.endTime == endTime;
@@ -195,7 +190,7 @@ class OrderSearchParam {
     (buyerId == null ? 0 : buyerId!.hashCode) +
     (sellerId == null ? 0 : sellerId!.hashCode) +
     (productId == null ? 0 : productId!.hashCode) +
-    (status == null ? 0 : status!.hashCode) +
+    (status.hashCode) +
     (searchDateType == null ? 0 : searchDateType!.hashCode) +
     (startTime == null ? 0 : startTime!.hashCode) +
     (endTime == null ? 0 : endTime!.hashCode);
@@ -260,11 +255,7 @@ class OrderSearchParam {
     } else {
       json[r'productId'] = null;
     }
-    if (this.status != null) {
       json[r'status'] = this.status;
-    } else {
-      json[r'status'] = null;
-    }
     if (this.searchDateType != null) {
       json[r'searchDateType'] = this.searchDateType;
     } else {
@@ -313,7 +304,7 @@ class OrderSearchParam {
         buyerId: mapValueOfType<int>(json, r'buyerId'),
         sellerId: mapValueOfType<int>(json, r'sellerId'),
         productId: mapValueOfType<int>(json, r'productId'),
-        status: OrderStatusEnum.fromJson(json[r'status']),
+        status: OrderStatusEnum.listFromJson(json[r'status']),
         searchDateType: OrderSearchDateTypeEnum.fromJson(json[r'searchDateType']),
         startTime: mapValueOfType<String>(json, r'startTime'),
         endTime: mapValueOfType<String>(json, r'endTime'),
