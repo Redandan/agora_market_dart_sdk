@@ -23,8 +23,8 @@ class PickupStore {
     required this.isActive,
     required this.createdAt,
     required this.updatedAt,
-    this.fullStoreInfo,
     this.familyMart,
+    this.fullStoreInfo,
     this.sevenEleven,
   });
 
@@ -63,7 +63,7 @@ class PickupStore {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? fullStoreInfo;
+  bool? familyMart;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -71,7 +71,7 @@ class PickupStore {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? familyMart;
+  String? fullStoreInfo;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -93,8 +93,8 @@ class PickupStore {
     other.isActive == isActive &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.fullStoreInfo == fullStoreInfo &&
     other.familyMart == familyMart &&
+    other.fullStoreInfo == fullStoreInfo &&
     other.sevenEleven == sevenEleven;
 
   @override
@@ -110,12 +110,12 @@ class PickupStore {
     (isActive.hashCode) +
     (createdAt.hashCode) +
     (updatedAt.hashCode) +
-    (fullStoreInfo == null ? 0 : fullStoreInfo!.hashCode) +
     (familyMart == null ? 0 : familyMart!.hashCode) +
+    (fullStoreInfo == null ? 0 : fullStoreInfo!.hashCode) +
     (sevenEleven == null ? 0 : sevenEleven!.hashCode);
 
   @override
-  String toString() => 'PickupStore[id=$id, storeType=$storeType, storeCode=$storeCode, storeName=$storeName, storeAddress=$storeAddress, city=$city, district=$district, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, fullStoreInfo=$fullStoreInfo, familyMart=$familyMart, sevenEleven=$sevenEleven]';
+  String toString() => 'PickupStore[id=$id, storeType=$storeType, storeCode=$storeCode, storeName=$storeName, storeAddress=$storeAddress, city=$city, district=$district, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, familyMart=$familyMart, fullStoreInfo=$fullStoreInfo, sevenEleven=$sevenEleven]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -137,15 +137,15 @@ class PickupStore {
       json[r'isActive'] = this.isActive;
       json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
       json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
-    if (this.fullStoreInfo != null) {
-      json[r'fullStoreInfo'] = this.fullStoreInfo;
-    } else {
-      json[r'fullStoreInfo'] = null;
-    }
     if (this.familyMart != null) {
       json[r'familyMart'] = this.familyMart;
     } else {
       json[r'familyMart'] = null;
+    }
+    if (this.fullStoreInfo != null) {
+      json[r'fullStoreInfo'] = this.fullStoreInfo;
+    } else {
+      json[r'fullStoreInfo'] = null;
     }
     if (this.sevenEleven != null) {
       json[r'sevenEleven'] = this.sevenEleven;
@@ -184,8 +184,8 @@ class PickupStore {
         isActive: mapValueOfType<bool>(json, r'isActive')!,
         createdAt: mapDateTime(json, r'createdAt', r'')!,
         updatedAt: mapDateTime(json, r'updatedAt', r'')!,
-        fullStoreInfo: mapValueOfType<String>(json, r'fullStoreInfo'),
         familyMart: mapValueOfType<bool>(json, r'familyMart'),
+        fullStoreInfo: mapValueOfType<String>(json, r'fullStoreInfo'),
         sevenEleven: mapValueOfType<bool>(json, r'sevenEleven'),
       );
     }
