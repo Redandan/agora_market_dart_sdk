@@ -58,6 +58,9 @@ String parameterToString(dynamic value) {
   if (value is ColdWalletStatusEnum) {
     return ColdWalletStatusEnumTypeTransformer().encode(value).toString();
   }
+  if (value is DefaultHomePageEnum) {
+    return DefaultHomePageEnumTypeTransformer().encode(value).toString();
+  }
   if (value is DeliveryReportTypeEnum) {
     return DeliveryReportTypeEnumTypeTransformer().encode(value).toString();
   }

@@ -133,6 +133,7 @@ part 'model/create_recharge_param.dart';
 part 'model/create_withdraw_param.dart';
 part 'model/customer_issue.dart';
 part 'model/customer_stats.dart';
+part 'model/default_home_page_enum.dart';
 part 'model/delivery_detail.dart';
 part 'model/delivery_history_param.dart';
 part 'model/delivery_order_search_param.dart';

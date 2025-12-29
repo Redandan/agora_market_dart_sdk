@@ -33,6 +33,7 @@ class UserInfo {
     this.sellerMaintenance,
     this.deliveryMaintenance,
     this.unreadMessageCount,
+    this.defaultHomePage,
   });
 
   /// 用戶ID
@@ -209,6 +210,14 @@ class UserInfo {
   ///
   int? unreadMessageCount;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DefaultHomePageEnum? defaultHomePage;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserInfo &&
     other.id == id &&
@@ -230,7 +239,8 @@ class UserInfo {
     _deepEquality.equals(other.balanceConversions, balanceConversions) &&
     other.sellerMaintenance == sellerMaintenance &&
     other.deliveryMaintenance == deliveryMaintenance &&
-    other.unreadMessageCount == unreadMessageCount;
+    other.unreadMessageCount == unreadMessageCount &&
+    other.defaultHomePage == defaultHomePage;
 
   @override
   int get hashCode =>
@@ -254,10 +264,11 @@ class UserInfo {
     (balanceConversions.hashCode) +
     (sellerMaintenance == null ? 0 : sellerMaintenance!.hashCode) +
     (deliveryMaintenance == null ? 0 : deliveryMaintenance!.hashCode) +
-    (unreadMessageCount == null ? 0 : unreadMessageCount!.hashCode);
+    (unreadMessageCount == null ? 0 : unreadMessageCount!.hashCode) +
+    (defaultHomePage == null ? 0 : defaultHomePage!.hashCode);
 
   @override
-  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, cartItemCount=$cartItemCount, stackingBalance=$stackingBalance, totalAssets=$totalAssets, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar, balanceConversions=$balanceConversions, sellerMaintenance=$sellerMaintenance, deliveryMaintenance=$deliveryMaintenance, unreadMessageCount=$unreadMessageCount]';
+  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, cartItemCount=$cartItemCount, stackingBalance=$stackingBalance, totalAssets=$totalAssets, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar, balanceConversions=$balanceConversions, sellerMaintenance=$sellerMaintenance, deliveryMaintenance=$deliveryMaintenance, unreadMessageCount=$unreadMessageCount, defaultHomePage=$defaultHomePage]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -357,6 +368,11 @@ class UserInfo {
     } else {
       json[r'unreadMessageCount'] = null;
     }
+    if (this.defaultHomePage != null) {
+      json[r'defaultHomePage'] = this.defaultHomePage;
+    } else {
+      json[r'defaultHomePage'] = null;
+    }
     return json;
   }
 
@@ -399,6 +415,7 @@ class UserInfo {
         sellerMaintenance: mapValueOfType<bool>(json, r'sellerMaintenance'),
         deliveryMaintenance: mapValueOfType<bool>(json, r'deliveryMaintenance'),
         unreadMessageCount: mapValueOfType<int>(json, r'unreadMessageCount'),
+        defaultHomePage: DefaultHomePageEnum.fromJson(json[r'defaultHomePage']),
       );
     }
     return null;

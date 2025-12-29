@@ -1024,7 +1024,7 @@ class AuthApi {
 
   /// 更新用戶資料
   ///
-  /// 更新用戶的姓名、電話和頭像。注意：郵箱更新已移除，請使用 /auth/bind-email 綁定郵箱或 /auth/email-verification/verify 驗證郵箱
+  /// 更新用戶的姓名、電話、頭像和默認首頁設置。注意：郵箱更新已移除，請使用 /auth/bind-email 綁定郵箱或 /auth/email-verification/verify 驗證郵箱。管理員只能設置為管理員首頁，設置為賣家首頁需要有店鋪名稱。
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1058,7 +1058,7 @@ class AuthApi {
 
   /// 更新用戶資料
   ///
-  /// 更新用戶的姓名、電話和頭像。注意：郵箱更新已移除，請使用 /auth/bind-email 綁定郵箱或 /auth/email-verification/verify 驗證郵箱
+  /// 更新用戶的姓名、電話、頭像和默認首頁設置。注意：郵箱更新已移除，請使用 /auth/bind-email 綁定郵箱或 /auth/email-verification/verify 驗證郵箱。管理員只能設置為管理員首頁，設置為賣家首頁需要有店鋪名稱。
   ///
   /// Parameters:
   ///

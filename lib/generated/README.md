@@ -481,6 +481,7 @@ Class | Method | HTTP request | Description
  - [CreateWithdrawParam](doc//CreateWithdrawParam.md)
  - [CustomerIssue](doc//CustomerIssue.md)
  - [CustomerStats](doc//CustomerStats.md)
+ - [DefaultHomePageEnum](doc//DefaultHomePageEnum.md)
  - [DeliveryDetail](doc//DeliveryDetail.md)
  - [DeliveryHistoryParam](doc//DeliveryHistoryParam.md)
  - [DeliveryOrderSearchParam](doc//DeliveryOrderSearchParam.md)

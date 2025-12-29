@@ -306,6 +306,8 @@ class ApiClient {
           return CustomerIssue.fromJson(value);
         case 'CustomerStats':
           return CustomerStats.fromJson(value);
+        case 'DefaultHomePageEnum':
+          return DefaultHomePageEnumTypeTransformer().decode(value);
         case 'DeliveryDetail':
           return DeliveryDetail.fromJson(value);
         case 'DeliveryHistoryParam':

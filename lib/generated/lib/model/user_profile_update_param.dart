@@ -16,6 +16,7 @@ class UserProfileUpdateParam {
     this.name,
     this.phone,
     this.avatar,
+    this.defaultHomePage,
     this.avatarUpdate,
   });
 
@@ -52,6 +53,14 @@ class UserProfileUpdateParam {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  DefaultHomePageEnum? defaultHomePage;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? avatarUpdate;
 
   @override
@@ -59,6 +68,7 @@ class UserProfileUpdateParam {
     other.name == name &&
     other.phone == phone &&
     other.avatar == avatar &&
+    other.defaultHomePage == defaultHomePage &&
     other.avatarUpdate == avatarUpdate;
 
   @override
@@ -67,10 +77,11 @@ class UserProfileUpdateParam {
     (name == null ? 0 : name!.hashCode) +
     (phone == null ? 0 : phone!.hashCode) +
     (avatar == null ? 0 : avatar!.hashCode) +
+    (defaultHomePage == null ? 0 : defaultHomePage!.hashCode) +
     (avatarUpdate == null ? 0 : avatarUpdate!.hashCode);
 
   @override
-  String toString() => 'UserProfileUpdateParam[name=$name, phone=$phone, avatar=$avatar, avatarUpdate=$avatarUpdate]';
+  String toString() => 'UserProfileUpdateParam[name=$name, phone=$phone, avatar=$avatar, defaultHomePage=$defaultHomePage, avatarUpdate=$avatarUpdate]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -88,6 +99,11 @@ class UserProfileUpdateParam {
       json[r'avatar'] = this.avatar;
     } else {
       json[r'avatar'] = null;
+    }
+    if (this.defaultHomePage != null) {
+      json[r'defaultHomePage'] = this.defaultHomePage;
+    } else {
+      json[r'defaultHomePage'] = null;
     }
     if (this.avatarUpdate != null) {
       json[r'avatarUpdate'] = this.avatarUpdate;
@@ -119,6 +135,7 @@ class UserProfileUpdateParam {
         name: mapValueOfType<String>(json, r'name'),
         phone: mapValueOfType<String>(json, r'phone'),
         avatar: mapValueOfType<String>(json, r'avatar'),
+        defaultHomePage: DefaultHomePageEnum.fromJson(json[r'defaultHomePage']),
         avatarUpdate: mapValueOfType<bool>(json, r'avatarUpdate'),
       );
     }

@@ -24,6 +24,7 @@ class User {
     this.avatar,
     this.remark,
     this.storeName,
+    this.defaultHomePage,
     this.ambassadorName,
     this.displayDeliveryerName,
     this.promoCode,
@@ -68,6 +69,14 @@ class User {
 
   /// 店鋪名稱
   String? storeName;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DefaultHomePageEnum? defaultHomePage;
 
   /// 推廣大使名稱
   String? ambassadorName;
@@ -119,6 +128,7 @@ class User {
     other.avatar == avatar &&
     other.remark == remark &&
     other.storeName == storeName &&
+    other.defaultHomePage == defaultHomePage &&
     other.ambassadorName == ambassadorName &&
     other.displayDeliveryerName == displayDeliveryerName &&
     other.promoCode == promoCode &&
@@ -145,6 +155,7 @@ class User {
     (avatar == null ? 0 : avatar!.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
     (storeName == null ? 0 : storeName!.hashCode) +
+    (defaultHomePage == null ? 0 : defaultHomePage!.hashCode) +
     (ambassadorName == null ? 0 : ambassadorName!.hashCode) +
     (displayDeliveryerName == null ? 0 : displayDeliveryerName!.hashCode) +
     (promoCode == null ? 0 : promoCode!.hashCode) +
@@ -158,7 +169,7 @@ class User {
     (trustedDevices.hashCode);
 
   @override
-  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, trustedDevicesJson=$trustedDevicesJson, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin, trustedDevices=$trustedDevices]';
+  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, defaultHomePage=$defaultHomePage, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, trustedDevicesJson=$trustedDevicesJson, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin, trustedDevices=$trustedDevices]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -196,6 +207,11 @@ class User {
       json[r'storeName'] = this.storeName;
     } else {
       json[r'storeName'] = null;
+    }
+    if (this.defaultHomePage != null) {
+      json[r'defaultHomePage'] = this.defaultHomePage;
+    } else {
+      json[r'defaultHomePage'] = null;
     }
     if (this.ambassadorName != null) {
       json[r'ambassadorName'] = this.ambassadorName;
@@ -273,6 +289,7 @@ class User {
         avatar: mapValueOfType<String>(json, r'avatar'),
         remark: mapValueOfType<String>(json, r'remark'),
         storeName: mapValueOfType<String>(json, r'storeName'),
+        defaultHomePage: DefaultHomePageEnum.fromJson(json[r'defaultHomePage']),
         ambassadorName: mapValueOfType<String>(json, r'ambassadorName'),
         displayDeliveryerName: mapValueOfType<String>(json, r'displayDeliveryerName'),
         promoCode: mapValueOfType<String>(json, r'promoCode'),
