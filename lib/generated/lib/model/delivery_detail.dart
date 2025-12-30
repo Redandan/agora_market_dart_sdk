@@ -15,7 +15,7 @@ class DeliveryDetail {
   DeliveryDetail({
     required this.orderId,
     this.deliveryId,
-    required this.verifyCode,
+    this.verifyCode,
     this.pickupLongitude,
     this.pickupLatitude,
     this.pickupAddress,
@@ -47,7 +47,7 @@ class DeliveryDetail {
   int? deliveryId;
 
   /// 驗證碼
-  String verifyCode;
+  String? verifyCode;
 
   /// 取件經度
   double? pickupLongitude;
@@ -148,7 +148,7 @@ class DeliveryDetail {
     // ignore: unnecessary_parenthesis
     (orderId.hashCode) +
     (deliveryId == null ? 0 : deliveryId!.hashCode) +
-    (verifyCode.hashCode) +
+    (verifyCode == null ? 0 : verifyCode!.hashCode) +
     (pickupLongitude == null ? 0 : pickupLongitude!.hashCode) +
     (pickupLatitude == null ? 0 : pickupLatitude!.hashCode) +
     (pickupAddress == null ? 0 : pickupAddress!.hashCode) +
@@ -183,7 +183,11 @@ class DeliveryDetail {
     } else {
       json[r'deliveryId'] = null;
     }
+    if (this.verifyCode != null) {
       json[r'verifyCode'] = this.verifyCode;
+    } else {
+      json[r'verifyCode'] = null;
+    }
     if (this.pickupLongitude != null) {
       json[r'pickupLongitude'] = this.pickupLongitude;
     } else {
@@ -302,7 +306,7 @@ class DeliveryDetail {
       return DeliveryDetail(
         orderId: mapValueOfType<String>(json, r'orderId')!,
         deliveryId: mapValueOfType<int>(json, r'deliveryId'),
-        verifyCode: mapValueOfType<String>(json, r'verifyCode')!,
+        verifyCode: mapValueOfType<String>(json, r'verifyCode'),
         pickupLongitude: mapValueOfType<double>(json, r'pickupLongitude'),
         pickupLatitude: mapValueOfType<double>(json, r'pickupLatitude'),
         pickupAddress: mapValueOfType<String>(json, r'pickupAddress'),
@@ -373,7 +377,6 @@ class DeliveryDetail {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'orderId',
-    'verifyCode',
     'shippingAddress',
     'createdAt',
     'updatedAt',
