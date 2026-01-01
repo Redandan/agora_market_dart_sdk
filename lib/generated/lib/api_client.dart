@@ -388,6 +388,8 @@ class ApiClient {
           return IssueStatusEnumTypeTransformer().decode(value);
         case 'IssueTypeEnum':
           return IssueTypeEnumTypeTransformer().decode(value);
+        case 'JobTypeInfo':
+          return JobTypeInfo.fromJson(value);
         case 'LoginBindingsResponse':
           return LoginBindingsResponse.fromJson(value);
         case 'LoginMethod':
@@ -632,6 +634,10 @@ class ApiClient {
           return SalesStats.fromJson(value);
         case 'ScheduledPushResponseDTO':
           return ScheduledPushResponseDTO.fromJson(value);
+        case 'SchedulerJobRequest':
+          return SchedulerJobRequest.fromJson(value);
+        case 'SchedulerJobResponse':
+          return SchedulerJobResponse.fromJson(value);
         case 'SchedulerStatusResponseDTO':
           return SchedulerStatusResponseDTO.fromJson(value);
         case 'SellerOrderStatsDTO':

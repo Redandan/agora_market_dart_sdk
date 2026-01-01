@@ -10,78 +10,81 @@
 
 part of openapi.api;
 
-class SortObject {
-  /// Returns a new [SortObject] instance.
-  SortObject({
-    this.unsorted,
-    this.sorted,
-    this.empty,
+class JobTypeInfo {
+  /// Returns a new [JobTypeInfo] instance.
+  JobTypeInfo({
+    this.code,
+    this.name,
+    this.description,
   });
 
+  /// 任務代碼
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unsorted;
+  String? code;
 
+  /// 任務名稱
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? sorted;
+  String? name;
 
+  /// 任務描述
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? empty;
+  String? description;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SortObject &&
-    other.unsorted == unsorted &&
-    other.sorted == sorted &&
-    other.empty == empty;
+  bool operator ==(Object other) => identical(this, other) || other is JobTypeInfo &&
+    other.code == code &&
+    other.name == name &&
+    other.description == description;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (unsorted == null ? 0 : unsorted!.hashCode) +
-    (sorted == null ? 0 : sorted!.hashCode) +
-    (empty == null ? 0 : empty!.hashCode);
+    (code == null ? 0 : code!.hashCode) +
+    (name == null ? 0 : name!.hashCode) +
+    (description == null ? 0 : description!.hashCode);
 
   @override
-  String toString() => 'SortObject[unsorted=$unsorted, sorted=$sorted, empty=$empty]';
+  String toString() => 'JobTypeInfo[code=$code, name=$name, description=$description]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.unsorted != null) {
-      json[r'unsorted'] = this.unsorted;
+    if (this.code != null) {
+      json[r'code'] = this.code;
     } else {
-      json[r'unsorted'] = null;
+      json[r'code'] = null;
     }
-    if (this.sorted != null) {
-      json[r'sorted'] = this.sorted;
+    if (this.name != null) {
+      json[r'name'] = this.name;
     } else {
-      json[r'sorted'] = null;
+      json[r'name'] = null;
     }
-    if (this.empty != null) {
-      json[r'empty'] = this.empty;
+    if (this.description != null) {
+      json[r'description'] = this.description;
     } else {
-      json[r'empty'] = null;
+      json[r'description'] = null;
     }
     return json;
   }
 
-  /// Returns a new [SortObject] instance and imports its values from
+  /// Returns a new [JobTypeInfo] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static SortObject? fromJson(dynamic value) {
+  static JobTypeInfo? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -90,26 +93,26 @@ class SortObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "SortObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "SortObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "JobTypeInfo[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "JobTypeInfo[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return SortObject(
-        unsorted: mapValueOfType<bool>(json, r'unsorted'),
-        sorted: mapValueOfType<bool>(json, r'sorted'),
-        empty: mapValueOfType<bool>(json, r'empty'),
+      return JobTypeInfo(
+        code: mapValueOfType<String>(json, r'code'),
+        name: mapValueOfType<String>(json, r'name'),
+        description: mapValueOfType<String>(json, r'description'),
       );
     }
     return null;
   }
 
-  static List<SortObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <SortObject>[];
+  static List<JobTypeInfo> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <JobTypeInfo>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = SortObject.fromJson(row);
+        final value = JobTypeInfo.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -118,12 +121,12 @@ class SortObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, SortObject> mapFromJson(dynamic json) {
-    final map = <String, SortObject>{};
+  static Map<String, JobTypeInfo> mapFromJson(dynamic json) {
+    final map = <String, JobTypeInfo>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = SortObject.fromJson(entry.value);
+        final value = JobTypeInfo.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -132,14 +135,14 @@ class SortObject {
     return map;
   }
 
-  // maps a json object with a list of SortObject-objects as value to a dart map
-  static Map<String, List<SortObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<SortObject>>{};
+  // maps a json object with a list of JobTypeInfo-objects as value to a dart map
+  static Map<String, List<JobTypeInfo>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<JobTypeInfo>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SortObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = JobTypeInfo.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

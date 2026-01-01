@@ -23,6 +23,7 @@ class LoginResult {
     this.userId,
     this.username,
     this.defaultHomePage,
+    this.homePageInMaintenance,
     this.userInfo,
   });
 
@@ -115,6 +116,15 @@ class LoginResult {
   ///
   DefaultHomePageEnum? defaultHomePage;
 
+  /// 默認首頁是否在維護中
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? homePageInMaintenance;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -135,6 +145,7 @@ class LoginResult {
     other.userId == userId &&
     other.username == username &&
     other.defaultHomePage == defaultHomePage &&
+    other.homePageInMaintenance == homePageInMaintenance &&
     other.userInfo == userInfo;
 
   @override
@@ -150,10 +161,11 @@ class LoginResult {
     (userId == null ? 0 : userId!.hashCode) +
     (username == null ? 0 : username!.hashCode) +
     (defaultHomePage == null ? 0 : defaultHomePage!.hashCode) +
+    (homePageInMaintenance == null ? 0 : homePageInMaintenance!.hashCode) +
     (userInfo == null ? 0 : userInfo!.hashCode);
 
   @override
-  String toString() => 'LoginResult[success=$success, message=$message, token=$token, refreshToken=$refreshToken, tokenIssuedAt=$tokenIssuedAt, tokenExpiration=$tokenExpiration, refreshTokenExpiration=$refreshTokenExpiration, userId=$userId, username=$username, defaultHomePage=$defaultHomePage, userInfo=$userInfo]';
+  String toString() => 'LoginResult[success=$success, message=$message, token=$token, refreshToken=$refreshToken, tokenIssuedAt=$tokenIssuedAt, tokenExpiration=$tokenExpiration, refreshTokenExpiration=$refreshTokenExpiration, userId=$userId, username=$username, defaultHomePage=$defaultHomePage, homePageInMaintenance=$homePageInMaintenance, userInfo=$userInfo]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -207,6 +219,11 @@ class LoginResult {
     } else {
       json[r'defaultHomePage'] = null;
     }
+    if (this.homePageInMaintenance != null) {
+      json[r'homePageInMaintenance'] = this.homePageInMaintenance;
+    } else {
+      json[r'homePageInMaintenance'] = null;
+    }
     if (this.userInfo != null) {
       json[r'userInfo'] = this.userInfo;
     } else {
@@ -244,6 +261,7 @@ class LoginResult {
         userId: mapValueOfType<int>(json, r'userId'),
         username: mapValueOfType<String>(json, r'username'),
         defaultHomePage: DefaultHomePageEnum.fromJson(json[r'defaultHomePage']),
+        homePageInMaintenance: mapValueOfType<bool>(json, r'homePageInMaintenance'),
         userInfo: UserInfo.fromJson(json[r'userInfo']),
       );
     }

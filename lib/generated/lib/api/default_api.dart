@@ -1256,6 +1256,62 @@ class DefaultApi {
     return null;
   }
 
+  /// 執行定時任務
+  ///
+  /// 根據任務類型執行指定的定時任務
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [SchedulerJobRequest] schedulerJobRequest (required):
+  Future<Response> executeJobWithHttpInfo(SchedulerJobRequest schedulerJobRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/admin/scheduler/execute';
+
+    // ignore: prefer_final_locals
+    Object? postBody = schedulerJobRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 執行定時任務
+  ///
+  /// 根據任務類型執行指定的定時任務
+  ///
+  /// Parameters:
+  ///
+  /// * [SchedulerJobRequest] schedulerJobRequest (required):
+  Future<SchedulerJobResponse?> executeJob(SchedulerJobRequest schedulerJobRequest,) async {
+    final response = await executeJobWithHttpInfo(schedulerJobRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SchedulerJobResponse',) as SchedulerJobResponse;
+    
+    }
+    return null;
+  }
+
   /// 提款失敗
   ///
   /// Note: This method returns the HTTP [Response].
@@ -2220,6 +2276,57 @@ class DefaultApi {
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageCustomerIssue',) as PageCustomerIssue;
     
+    }
+    return null;
+  }
+
+  /// 獲取任務列表
+  ///
+  /// 獲取所有可執行的定時任務類型
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getJobTypesWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/admin/scheduler/job-types';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 獲取任務列表
+  ///
+  /// 獲取所有可執行的定時任務類型
+  Future<List<JobTypeInfo>?> getJobTypes() async {
+    final response = await getJobTypesWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<JobTypeInfo>') as List)
+        .cast<JobTypeInfo>()
+        .toList(growable: false);
+
     }
     return null;
   }

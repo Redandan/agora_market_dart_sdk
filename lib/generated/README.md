@@ -81,6 +81,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**createWithdraw**](doc//DefaultApi.md#createwithdraw) | **POST** /withdraws | 發起提款
 *DefaultApi* | [**deletePost**](doc//DefaultApi.md#deletepost) | **DELETE** /api/posts/{id} | 刪除貼文
 *DefaultApi* | [**deletePost1**](doc//DefaultApi.md#deletepost1) | **DELETE** /api/admin/posts/{id} | 管理員刪除貼文
+*DefaultApi* | [**executeJob**](doc//DefaultApi.md#executejob) | **POST** /api/admin/scheduler/execute | 執行定時任務
 *DefaultApi* | [**failWithdraw**](doc//DefaultApi.md#failwithdraw) | **POST** /withdraws/{withdrawId}/fail | 提款失敗
 *DefaultApi* | [**getAllActive**](doc//DefaultApi.md#getallactive) | **GET** /postal-areas | 獲取所有啟用的郵遞區號
 *DefaultApi* | [**getAuthorPosts**](doc//DefaultApi.md#getauthorposts) | **GET** /api/posts/author/{authorId} | 獲取作者貼文
@@ -98,6 +99,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getFeaturedPosts**](doc//DefaultApi.md#getfeaturedposts) | **GET** /api/posts/featured | 獲取精選貼文
 *DefaultApi* | [**getIssue**](doc//DefaultApi.md#getissue) | **GET** /customer-issues/{issueId} | 查詢客戶問題記錄
 *DefaultApi* | [**getIssueHistory**](doc//DefaultApi.md#getissuehistory) | **GET** /customer-issues/history | 查詢客戶問題歷史
+*DefaultApi* | [**getJobTypes**](doc//DefaultApi.md#getjobtypes) | **GET** /api/admin/scheduler/job-types | 獲取任務列表
 *DefaultApi* | [**getLatestOngoingWithdraw**](doc//DefaultApi.md#getlatestongoingwithdraw) | **GET** /withdraws/ongoing | 查詢當前用戶最新一筆進行中的提現
 *DefaultApi* | [**getLowStockItems**](doc//DefaultApi.md#getlowstockitems) | **GET** /api/cart/low-stock | 獲取庫存不足商品
 *DefaultApi* | [**getOutOfStockItems**](doc//DefaultApi.md#getoutofstockitems) | **GET** /api/cart/out-of-stock | 獲取缺貨商品
@@ -522,6 +524,7 @@ Class | Method | HTTP request | Description
  - [IssueSearchParam](doc//IssueSearchParam.md)
  - [IssueStatusEnum](doc//IssueStatusEnum.md)
  - [IssueTypeEnum](doc//IssueTypeEnum.md)
+ - [JobTypeInfo](doc//JobTypeInfo.md)
  - [LoginBindingsResponse](doc//LoginBindingsResponse.md)
  - [LoginMethod](doc//LoginMethod.md)
  - [LoginParam](doc//LoginParam.md)
@@ -644,6 +647,8 @@ Class | Method | HTTP request | Description
  - [ReviewUpdateParam](doc//ReviewUpdateParam.md)
  - [SalesStats](doc//SalesStats.md)
  - [ScheduledPushResponseDTO](doc//ScheduledPushResponseDTO.md)
+ - [SchedulerJobRequest](doc//SchedulerJobRequest.md)
+ - [SchedulerJobResponse](doc//SchedulerJobResponse.md)
  - [SchedulerStatusResponseDTO](doc//SchedulerStatusResponseDTO.md)
  - [SellerOrderStatsDTO](doc//SellerOrderStatsDTO.md)
  - [SevenElevenStoreDTO](doc//SevenElevenStoreDTO.md)
