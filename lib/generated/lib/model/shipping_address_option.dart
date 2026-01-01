@@ -17,7 +17,6 @@ class ShippingAddressOption {
     this.recipientName,
     this.recipientPhone,
     this.fullAddress,
-    this.shippingCompany,
     this.serviceType,
     this.storeName,
     this.storeAddress,
@@ -47,30 +46,10 @@ class ShippingAddressOption {
   String? recipientName;
 
   /// 收件人電話
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? recipientPhone;
 
   /// 完整地址
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? fullAddress;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  ShippingCompanyEnum? shippingCompany;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -81,66 +60,24 @@ class ShippingAddressOption {
   PickupServiceTypeEnum? serviceType;
 
   /// 門市名稱（便利商店取件用）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? storeName;
 
   /// 門市地址（便利商店取件用）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? storeAddress;
 
   /// 運費
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? shippingFee;
 
   /// 預計送達時間（天數）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? estimatedDays;
 
   /// 是否可用
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? isAvailable;
 
   /// 是否為預設地址
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? isDefault;
 
   /// 備註
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? remark;
 
   @override
@@ -149,7 +86,6 @@ class ShippingAddressOption {
     other.recipientName == recipientName &&
     other.recipientPhone == recipientPhone &&
     other.fullAddress == fullAddress &&
-    other.shippingCompany == shippingCompany &&
     other.serviceType == serviceType &&
     other.storeName == storeName &&
     other.storeAddress == storeAddress &&
@@ -166,7 +102,6 @@ class ShippingAddressOption {
     (recipientName == null ? 0 : recipientName!.hashCode) +
     (recipientPhone == null ? 0 : recipientPhone!.hashCode) +
     (fullAddress == null ? 0 : fullAddress!.hashCode) +
-    (shippingCompany == null ? 0 : shippingCompany!.hashCode) +
     (serviceType == null ? 0 : serviceType!.hashCode) +
     (storeName == null ? 0 : storeName!.hashCode) +
     (storeAddress == null ? 0 : storeAddress!.hashCode) +
@@ -177,7 +112,7 @@ class ShippingAddressOption {
     (remark == null ? 0 : remark!.hashCode);
 
   @override
-  String toString() => 'ShippingAddressOption[addressId=$addressId, recipientName=$recipientName, recipientPhone=$recipientPhone, fullAddress=$fullAddress, shippingCompany=$shippingCompany, serviceType=$serviceType, storeName=$storeName, storeAddress=$storeAddress, shippingFee=$shippingFee, estimatedDays=$estimatedDays, isAvailable=$isAvailable, isDefault=$isDefault, remark=$remark]';
+  String toString() => 'ShippingAddressOption[addressId=$addressId, recipientName=$recipientName, recipientPhone=$recipientPhone, fullAddress=$fullAddress, serviceType=$serviceType, storeName=$storeName, storeAddress=$storeAddress, shippingFee=$shippingFee, estimatedDays=$estimatedDays, isAvailable=$isAvailable, isDefault=$isDefault, remark=$remark]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -200,11 +135,6 @@ class ShippingAddressOption {
       json[r'fullAddress'] = this.fullAddress;
     } else {
       json[r'fullAddress'] = null;
-    }
-    if (this.shippingCompany != null) {
-      json[r'shippingCompany'] = this.shippingCompany;
-    } else {
-      json[r'shippingCompany'] = null;
     }
     if (this.serviceType != null) {
       json[r'serviceType'] = this.serviceType;
@@ -272,11 +202,12 @@ class ShippingAddressOption {
         recipientName: mapValueOfType<String>(json, r'recipientName'),
         recipientPhone: mapValueOfType<String>(json, r'recipientPhone'),
         fullAddress: mapValueOfType<String>(json, r'fullAddress'),
-        shippingCompany: ShippingCompanyEnum.fromJson(json[r'shippingCompany']),
         serviceType: PickupServiceTypeEnum.fromJson(json[r'serviceType']),
         storeName: mapValueOfType<String>(json, r'storeName'),
         storeAddress: mapValueOfType<String>(json, r'storeAddress'),
-        shippingFee: num.parse('${json[r'shippingFee']}'),
+        shippingFee: json[r'shippingFee'] == null
+            ? null
+            : num.parse('${json[r'shippingFee']}'),
         estimatedDays: mapValueOfType<int>(json, r'estimatedDays'),
         isAvailable: mapValueOfType<bool>(json, r'isAvailable'),
         isDefault: mapValueOfType<bool>(json, r'isDefault'),
