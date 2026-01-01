@@ -18,9 +18,7 @@ class ReturnProcessParam {
     this.rejectionReason,
     this.refundOption,
     this.refundAmount,
-    required this.returnRecipientName,
-    required this.returnRecipientPhone,
-    required this.returnAddress,
+    required this.addressId,
   });
 
   /// 是否同意退貨
@@ -56,14 +54,8 @@ class ReturnProcessParam {
   ///
   num? refundAmount;
 
-  /// 收貨人姓名（當 refundOption 為 RETURN_REQUIRED 時必填，不可為空）
-  String returnRecipientName;
-
-  /// 收貨人電話（當 refundOption 為 RETURN_REQUIRED 時必填，不可為空）
-  String returnRecipientPhone;
-
-  /// 收貨完整地址（當 refundOption 為 RETURN_REQUIRED 時必填，不可為空）
-  String returnAddress;
+  /// 賣家收貨地址ID（當 refundOption 為 RETURN_REQUIRED 時必填，從賣家地址列表中選擇）
+  int addressId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ReturnProcessParam &&
@@ -72,9 +64,7 @@ class ReturnProcessParam {
     other.rejectionReason == rejectionReason &&
     other.refundOption == refundOption &&
     other.refundAmount == refundAmount &&
-    other.returnRecipientName == returnRecipientName &&
-    other.returnRecipientPhone == returnRecipientPhone &&
-    other.returnAddress == returnAddress;
+    other.addressId == addressId;
 
   @override
   int get hashCode =>
@@ -84,12 +74,10 @@ class ReturnProcessParam {
     (rejectionReason == null ? 0 : rejectionReason!.hashCode) +
     (refundOption == null ? 0 : refundOption!.hashCode) +
     (refundAmount == null ? 0 : refundAmount!.hashCode) +
-    (returnRecipientName.hashCode) +
-    (returnRecipientPhone.hashCode) +
-    (returnAddress.hashCode);
+    (addressId.hashCode);
 
   @override
-  String toString() => 'ReturnProcessParam[approved=$approved, sellerReply=$sellerReply, rejectionReason=$rejectionReason, refundOption=$refundOption, refundAmount=$refundAmount, returnRecipientName=$returnRecipientName, returnRecipientPhone=$returnRecipientPhone, returnAddress=$returnAddress]';
+  String toString() => 'ReturnProcessParam[approved=$approved, sellerReply=$sellerReply, rejectionReason=$rejectionReason, refundOption=$refundOption, refundAmount=$refundAmount, addressId=$addressId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -114,9 +102,7 @@ class ReturnProcessParam {
     } else {
       json[r'refundAmount'] = null;
     }
-      json[r'returnRecipientName'] = this.returnRecipientName;
-      json[r'returnRecipientPhone'] = this.returnRecipientPhone;
-      json[r'returnAddress'] = this.returnAddress;
+      json[r'addressId'] = this.addressId;
     return json;
   }
 
@@ -144,9 +130,7 @@ class ReturnProcessParam {
         rejectionReason: mapValueOfType<String>(json, r'rejectionReason'),
         refundOption: ReturnProcessParamRefundOptionEnum.fromJson(json[r'refundOption']),
         refundAmount: num.parse('${json[r'refundAmount']}'),
-        returnRecipientName: mapValueOfType<String>(json, r'returnRecipientName')!,
-        returnRecipientPhone: mapValueOfType<String>(json, r'returnRecipientPhone')!,
-        returnAddress: mapValueOfType<String>(json, r'returnAddress')!,
+        addressId: mapValueOfType<int>(json, r'addressId')!,
       );
     }
     return null;
@@ -195,9 +179,7 @@ class ReturnProcessParam {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'approved',
-    'returnRecipientName',
-    'returnRecipientPhone',
-    'returnAddress',
+    'addressId',
   };
 }
 
