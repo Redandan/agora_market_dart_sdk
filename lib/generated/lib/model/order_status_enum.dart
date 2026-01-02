@@ -44,6 +44,7 @@ class OrderStatusEnum {
   static const REFUND_NO_RETURN_OFFERED = OrderStatusEnum._(r'REFUND_NO_RETURN_OFFERED');
   static const REFUND_NO_RETURN_PARTIAL_OFFERED = OrderStatusEnum._(r'REFUND_NO_RETURN_PARTIAL_OFFERED');
   static const DISPUTE_OPENED = OrderStatusEnum._(r'DISPUTE_OPENED');
+  static const DISPUTE_RESPONDED = OrderStatusEnum._(r'DISPUTE_RESPONDED');
   static const CANCELLED_BY_BUYER = OrderStatusEnum._(r'CANCELLED_BY_BUYER');
   static const CANCELLED_BY_SELLER = OrderStatusEnum._(r'CANCELLED_BY_SELLER');
   static const CANCELLED_BY_PLATFORM = OrderStatusEnum._(r'CANCELLED_BY_PLATFORM');
@@ -75,6 +76,7 @@ class OrderStatusEnum {
     REFUND_NO_RETURN_OFFERED,
     REFUND_NO_RETURN_PARTIAL_OFFERED,
     DISPUTE_OPENED,
+    DISPUTE_RESPONDED,
     CANCELLED_BY_BUYER,
     CANCELLED_BY_SELLER,
     CANCELLED_BY_PLATFORM,
@@ -141,6 +143,7 @@ class OrderStatusEnumTypeTransformer {
         case r'REFUND_NO_RETURN_OFFERED': return OrderStatusEnum.REFUND_NO_RETURN_OFFERED;
         case r'REFUND_NO_RETURN_PARTIAL_OFFERED': return OrderStatusEnum.REFUND_NO_RETURN_PARTIAL_OFFERED;
         case r'DISPUTE_OPENED': return OrderStatusEnum.DISPUTE_OPENED;
+        case r'DISPUTE_RESPONDED': return OrderStatusEnum.DISPUTE_RESPONDED;
         case r'CANCELLED_BY_BUYER': return OrderStatusEnum.CANCELLED_BY_BUYER;
         case r'CANCELLED_BY_SELLER': return OrderStatusEnum.CANCELLED_BY_SELLER;
         case r'CANCELLED_BY_PLATFORM': return OrderStatusEnum.CANCELLED_BY_PLATFORM;
