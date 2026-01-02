@@ -15,7 +15,6 @@ class Dispute {
   Dispute({
     required this.id,
     required this.version,
-    required this.orderId,
     required this.buyerId,
     required this.sellerId,
     required this.status,
@@ -34,9 +33,6 @@ class Dispute {
 
   /// 版本號（樂觀鎖）
   int version;
-
-  /// 訂單ID
-  String orderId;
 
   /// 買家ID
   int buyerId;
@@ -72,7 +68,6 @@ class Dispute {
   bool operator ==(Object other) => identical(this, other) || other is Dispute &&
     other.id == id &&
     other.version == version &&
-    other.orderId == orderId &&
     other.buyerId == buyerId &&
     other.sellerId == sellerId &&
     other.status == status &&
@@ -90,7 +85,6 @@ class Dispute {
     // ignore: unnecessary_parenthesis
     (id.hashCode) +
     (version.hashCode) +
-    (orderId.hashCode) +
     (buyerId.hashCode) +
     (sellerId.hashCode) +
     (status.hashCode) +
@@ -104,13 +98,12 @@ class Dispute {
     (imageUrls.hashCode);
 
   @override
-  String toString() => 'Dispute[id=$id, version=$version, orderId=$orderId, buyerId=$buyerId, sellerId=$sellerId, status=$status, outcome=$outcome, description=$description, sellerReply=$sellerReply, adminComment=$adminComment, createdAt=$createdAt, updatedAt=$updatedAt, resolvedAt=$resolvedAt, imageUrls=$imageUrls]';
+  String toString() => 'Dispute[id=$id, version=$version, buyerId=$buyerId, sellerId=$sellerId, status=$status, outcome=$outcome, description=$description, sellerReply=$sellerReply, adminComment=$adminComment, createdAt=$createdAt, updatedAt=$updatedAt, resolvedAt=$resolvedAt, imageUrls=$imageUrls]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
       json[r'version'] = this.version;
-      json[r'orderId'] = this.orderId;
       json[r'buyerId'] = this.buyerId;
       json[r'sellerId'] = this.sellerId;
       json[r'status'] = this.status;
@@ -162,7 +155,6 @@ class Dispute {
       return Dispute(
         id: mapValueOfType<String>(json, r'id')!,
         version: mapValueOfType<int>(json, r'version')!,
-        orderId: mapValueOfType<String>(json, r'orderId')!,
         buyerId: mapValueOfType<int>(json, r'buyerId')!,
         sellerId: mapValueOfType<int>(json, r'sellerId')!,
         status: DisputeStatusEnum.fromJson(json[r'status'])!,
@@ -225,7 +217,6 @@ class Dispute {
   static const requiredKeys = <String>{
     'id',
     'version',
-    'orderId',
     'buyerId',
     'sellerId',
     'status',

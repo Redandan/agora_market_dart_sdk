@@ -16,6 +16,7 @@ class OrderQueryResult {
     this.order,
     this.deliveryDetail,
     this.returnRecord,
+    this.dispute,
   });
 
   Order? order;
@@ -30,21 +31,31 @@ class OrderQueryResult {
   ///
   OrderReturnRecord? returnRecord;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  Dispute? dispute;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrderQueryResult &&
     other.order == order &&
     other.deliveryDetail == deliveryDetail &&
-    other.returnRecord == returnRecord;
+    other.returnRecord == returnRecord &&
+    other.dispute == dispute;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (order == null ? 0 : order!.hashCode) +
     (deliveryDetail == null ? 0 : deliveryDetail!.hashCode) +
-    (returnRecord == null ? 0 : returnRecord!.hashCode);
+    (returnRecord == null ? 0 : returnRecord!.hashCode) +
+    (dispute == null ? 0 : dispute!.hashCode);
 
   @override
-  String toString() => 'OrderQueryResult[order=$order, deliveryDetail=$deliveryDetail, returnRecord=$returnRecord]';
+  String toString() => 'OrderQueryResult[order=$order, deliveryDetail=$deliveryDetail, returnRecord=$returnRecord, dispute=$dispute]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -62,6 +73,11 @@ class OrderQueryResult {
       json[r'returnRecord'] = this.returnRecord;
     } else {
       json[r'returnRecord'] = null;
+    }
+    if (this.dispute != null) {
+      json[r'dispute'] = this.dispute;
+    } else {
+      json[r'dispute'] = null;
     }
     return json;
   }
@@ -88,6 +104,7 @@ class OrderQueryResult {
         order: Order.fromJson(json[r'order']),
         deliveryDetail: DeliveryDetail.fromJson(json[r'deliveryDetail']),
         returnRecord: OrderReturnRecord.fromJson(json[r'returnRecord']),
+        dispute: Dispute.fromJson(json[r'dispute']),
       );
     }
     return null;
