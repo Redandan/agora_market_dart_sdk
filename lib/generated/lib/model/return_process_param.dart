@@ -16,6 +16,7 @@ class ReturnProcessParam {
     required this.approved,
     this.sellerReply,
     this.rejectionReason,
+    this.sellerImageUrls = const {},
     this.refundOption,
     this.refundAmount,
     required this.addressId,
@@ -25,43 +26,29 @@ class ReturnProcessParam {
   bool approved;
 
   /// 賣家回覆
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? sellerReply;
 
   /// 拒絕原因
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? rejectionReason;
+
+  /// 賣家上傳圖片URL列表（回覆或檢驗證據）
+  Set<String>? sellerImageUrls;
 
   /// 退款選項：FULL_REFUND_NO_RETURN(全額退款不退貨), PARTIAL_REFUND_NO_RETURN(部分退款不退貨), RETURN_REQUIRED(需要退貨)
   ReturnProcessParamRefundOptionEnum? refundOption;
 
   /// 部分退款金額（當 refundOption 為 PARTIAL_REFUND_NO_RETURN 時必填）
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? refundAmount;
 
   /// 賣家收貨地址ID（當 refundOption 為 RETURN_REQUIRED 時必填，從賣家地址列表中選擇）
-  int addressId;
+  int? addressId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ReturnProcessParam &&
     other.approved == approved &&
     other.sellerReply == sellerReply &&
     other.rejectionReason == rejectionReason &&
+    _deepEquality.equals(other.sellerImageUrls, sellerImageUrls) &&
     other.refundOption == refundOption &&
     other.refundAmount == refundAmount &&
     other.addressId == addressId;
@@ -72,12 +59,13 @@ class ReturnProcessParam {
     (approved.hashCode) +
     (sellerReply == null ? 0 : sellerReply!.hashCode) +
     (rejectionReason == null ? 0 : rejectionReason!.hashCode) +
+    (sellerImageUrls == null ? 0 : sellerImageUrls!.hashCode) +
     (refundOption == null ? 0 : refundOption!.hashCode) +
     (refundAmount == null ? 0 : refundAmount!.hashCode) +
-    (addressId.hashCode);
+    (addressId == null ? 0 : addressId!.hashCode);
 
   @override
-  String toString() => 'ReturnProcessParam[approved=$approved, sellerReply=$sellerReply, rejectionReason=$rejectionReason, refundOption=$refundOption, refundAmount=$refundAmount, addressId=$addressId]';
+  String toString() => 'ReturnProcessParam[approved=$approved, sellerReply=$sellerReply, rejectionReason=$rejectionReason, sellerImageUrls=$sellerImageUrls, refundOption=$refundOption, refundAmount=$refundAmount, addressId=$addressId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -92,6 +80,11 @@ class ReturnProcessParam {
     } else {
       json[r'rejectionReason'] = null;
     }
+    if (this.sellerImageUrls != null) {
+      json[r'sellerImageUrls'] = this.sellerImageUrls!.toList(growable: false);
+    } else {
+      json[r'sellerImageUrls'] = null;
+    }
     if (this.refundOption != null) {
       json[r'refundOption'] = this.refundOption;
     } else {
@@ -102,7 +95,11 @@ class ReturnProcessParam {
     } else {
       json[r'refundAmount'] = null;
     }
+    if (this.addressId != null) {
       json[r'addressId'] = this.addressId;
+    } else {
+      json[r'addressId'] = null;
+    }
     return json;
   }
 
@@ -128,9 +125,14 @@ class ReturnProcessParam {
         approved: mapValueOfType<bool>(json, r'approved')!,
         sellerReply: mapValueOfType<String>(json, r'sellerReply'),
         rejectionReason: mapValueOfType<String>(json, r'rejectionReason'),
+        sellerImageUrls: json[r'sellerImageUrls'] is Iterable
+            ? (json[r'sellerImageUrls'] as Iterable).cast<String>().toSet()
+            : const {},
         refundOption: ReturnProcessParamRefundOptionEnum.fromJson(json[r'refundOption']),
-        refundAmount: num.parse('${json[r'refundAmount']}'),
-        addressId: mapValueOfType<int>(json, r'addressId')!,
+        refundAmount: json[r'refundAmount'] == null
+            ? null
+            : num.parse('${json[r'refundAmount']}'),
+        addressId: mapValueOfType<int>(json, r'addressId'),
       );
     }
     return null;
