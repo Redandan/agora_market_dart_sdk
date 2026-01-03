@@ -157,34 +157,20 @@ class SseTestApi {
   ///
   /// Parameters:
   ///
-  /// * [String] eventType (required):
-  ///   事件類型
-  ///
-  /// * [int] targetUserId:
-  ///   目標用戶ID，不填則預設當前用戶
-  ///
-  /// * [String] message:
-  ///   自定義消息
-  Future<Response> testCustomEventWithHttpInfo(String eventType, { int? targetUserId, String? message, }) async {
+  /// * [CustomEventRequest] customEventRequest (required):
+  ///   自定義事件請求
+  Future<Response> testCustomEventWithHttpInfo(CustomEventRequest customEventRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/sse-test/custom-event';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = customEventRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (targetUserId != null) {
-      queryParams.addAll(_queryParams('', 'targetUserId', targetUserId));
-    }
-      queryParams.addAll(_queryParams('', 'eventType', eventType));
-    if (message != null) {
-      queryParams.addAll(_queryParams('', 'message', message));
-    }
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -204,16 +190,10 @@ class SseTestApi {
   ///
   /// Parameters:
   ///
-  /// * [String] eventType (required):
-  ///   事件類型
-  ///
-  /// * [int] targetUserId:
-  ///   目標用戶ID，不填則預設當前用戶
-  ///
-  /// * [String] message:
-  ///   自定義消息
-  Future<Map<String, Object>?> testCustomEvent(String eventType, { int? targetUserId, String? message, }) async {
-    final response = await testCustomEventWithHttpInfo(eventType,  targetUserId: targetUserId, message: message, );
+  /// * [CustomEventRequest] customEventRequest (required):
+  ///   自定義事件請求
+  Future<Map<String, Object>?> testCustomEvent(CustomEventRequest customEventRequest,) async {
+    final response = await testCustomEventWithHttpInfo(customEventRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

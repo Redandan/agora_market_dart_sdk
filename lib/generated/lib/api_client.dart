@@ -302,6 +302,8 @@ class ApiClient {
           return CreateRechargeParam.fromJson(value);
         case 'CreateWithdrawParam':
           return CreateWithdrawParam.fromJson(value);
+        case 'CustomEventRequest':
+          return CustomEventRequest.fromJson(value);
         case 'CustomerIssue':
           return CustomerIssue.fromJson(value);
         case 'CustomerStats':
@@ -428,6 +430,8 @@ class ApiClient {
           return NotificationTypeEnumTypeTransformer().decode(value);
         case 'NotificationUpdateParam':
           return NotificationUpdateParam.fromJson(value);
+        case 'NotifyEventTypeEnum':
+          return NotifyEventTypeEnumTypeTransformer().decode(value);
         case 'OAuth2AuthorizeRequest':
           return OAuth2AuthorizeRequest.fromJson(value);
         case 'OAuth2AuthorizeResponse':
