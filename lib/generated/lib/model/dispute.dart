@@ -26,6 +26,7 @@ class Dispute {
     required this.updatedAt,
     this.resolvedAt,
     this.imageUrls = const {},
+    this.sellerReplyImageUrls = const {},
   });
 
   /// 爭議ID
@@ -64,6 +65,8 @@ class Dispute {
 
   Set<String> imageUrls;
 
+  Set<String> sellerReplyImageUrls;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Dispute &&
     other.id == id &&
@@ -78,7 +81,8 @@ class Dispute {
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
     other.resolvedAt == resolvedAt &&
-    _deepEquality.equals(other.imageUrls, imageUrls);
+    _deepEquality.equals(other.imageUrls, imageUrls) &&
+    _deepEquality.equals(other.sellerReplyImageUrls, sellerReplyImageUrls);
 
   @override
   int get hashCode =>
@@ -95,10 +99,11 @@ class Dispute {
     (createdAt.hashCode) +
     (updatedAt.hashCode) +
     (resolvedAt == null ? 0 : resolvedAt!.hashCode) +
-    (imageUrls.hashCode);
+    (imageUrls.hashCode) +
+    (sellerReplyImageUrls.hashCode);
 
   @override
-  String toString() => 'Dispute[id=$id, version=$version, buyerId=$buyerId, sellerId=$sellerId, status=$status, outcome=$outcome, description=$description, sellerReply=$sellerReply, adminComment=$adminComment, createdAt=$createdAt, updatedAt=$updatedAt, resolvedAt=$resolvedAt, imageUrls=$imageUrls]';
+  String toString() => 'Dispute[id=$id, version=$version, buyerId=$buyerId, sellerId=$sellerId, status=$status, outcome=$outcome, description=$description, sellerReply=$sellerReply, adminComment=$adminComment, createdAt=$createdAt, updatedAt=$updatedAt, resolvedAt=$resolvedAt, imageUrls=$imageUrls, sellerReplyImageUrls=$sellerReplyImageUrls]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -131,6 +136,7 @@ class Dispute {
       json[r'resolvedAt'] = null;
     }
       json[r'imageUrls'] = this.imageUrls.toList(growable: false);
+      json[r'sellerReplyImageUrls'] = this.sellerReplyImageUrls.toList(growable: false);
     return json;
   }
 
@@ -167,6 +173,9 @@ class Dispute {
         resolvedAt: mapDateTime(json, r'resolvedAt', r''),
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
+            : const {},
+        sellerReplyImageUrls: json[r'sellerReplyImageUrls'] is Iterable
+            ? (json[r'sellerReplyImageUrls'] as Iterable).cast<String>().toSet()
             : const {},
       );
     }

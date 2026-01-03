@@ -16,7 +16,6 @@ class ReturnProcessParam {
     required this.approved,
     this.sellerReply,
     this.rejectionReason,
-    this.sellerImageUrls = const {},
     this.refundOption,
     this.refundAmount,
     required this.addressId,
@@ -30,9 +29,6 @@ class ReturnProcessParam {
 
   /// 拒絕原因
   String? rejectionReason;
-
-  /// 賣家上傳圖片URL列表（回覆或檢驗證據）
-  Set<String>? sellerImageUrls;
 
   /// 退款選項：FULL_REFUND_NO_RETURN(全額退款不退貨), PARTIAL_REFUND_NO_RETURN(部分退款不退貨), RETURN_REQUIRED(需要退貨)
   ReturnProcessParamRefundOptionEnum? refundOption;
@@ -48,7 +44,6 @@ class ReturnProcessParam {
     other.approved == approved &&
     other.sellerReply == sellerReply &&
     other.rejectionReason == rejectionReason &&
-    _deepEquality.equals(other.sellerImageUrls, sellerImageUrls) &&
     other.refundOption == refundOption &&
     other.refundAmount == refundAmount &&
     other.addressId == addressId;
@@ -59,13 +54,12 @@ class ReturnProcessParam {
     (approved.hashCode) +
     (sellerReply == null ? 0 : sellerReply!.hashCode) +
     (rejectionReason == null ? 0 : rejectionReason!.hashCode) +
-    (sellerImageUrls == null ? 0 : sellerImageUrls!.hashCode) +
     (refundOption == null ? 0 : refundOption!.hashCode) +
     (refundAmount == null ? 0 : refundAmount!.hashCode) +
     (addressId == null ? 0 : addressId!.hashCode);
 
   @override
-  String toString() => 'ReturnProcessParam[approved=$approved, sellerReply=$sellerReply, rejectionReason=$rejectionReason, sellerImageUrls=$sellerImageUrls, refundOption=$refundOption, refundAmount=$refundAmount, addressId=$addressId]';
+  String toString() => 'ReturnProcessParam[approved=$approved, sellerReply=$sellerReply, rejectionReason=$rejectionReason, refundOption=$refundOption, refundAmount=$refundAmount, addressId=$addressId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -79,11 +73,6 @@ class ReturnProcessParam {
       json[r'rejectionReason'] = this.rejectionReason;
     } else {
       json[r'rejectionReason'] = null;
-    }
-    if (this.sellerImageUrls != null) {
-      json[r'sellerImageUrls'] = this.sellerImageUrls!.toList(growable: false);
-    } else {
-      json[r'sellerImageUrls'] = null;
     }
     if (this.refundOption != null) {
       json[r'refundOption'] = this.refundOption;
@@ -125,9 +114,6 @@ class ReturnProcessParam {
         approved: mapValueOfType<bool>(json, r'approved')!,
         sellerReply: mapValueOfType<String>(json, r'sellerReply'),
         rejectionReason: mapValueOfType<String>(json, r'rejectionReason'),
-        sellerImageUrls: json[r'sellerImageUrls'] is Iterable
-            ? (json[r'sellerImageUrls'] as Iterable).cast<String>().toSet()
-            : const {},
         refundOption: ReturnProcessParamRefundOptionEnum.fromJson(json[r'refundOption']),
         refundAmount: json[r'refundAmount'] == null
             ? null

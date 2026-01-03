@@ -14,26 +14,37 @@ class DisputeReplyParam {
   /// Returns a new [DisputeReplyParam] instance.
   DisputeReplyParam({
     required this.reply,
+    this.sellerImageUrls = const {},
   });
 
   /// 回覆內容
   String reply;
 
+  /// 賣家回覆時的圖片URL列表（證據或說明）
+  Set<String>? sellerImageUrls;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is DisputeReplyParam &&
-    other.reply == reply;
+    other.reply == reply &&
+    _deepEquality.equals(other.sellerImageUrls, sellerImageUrls);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (reply.hashCode);
+    (reply.hashCode) +
+    (sellerImageUrls == null ? 0 : sellerImageUrls!.hashCode);
 
   @override
-  String toString() => 'DisputeReplyParam[reply=$reply]';
+  String toString() => 'DisputeReplyParam[reply=$reply, sellerImageUrls=$sellerImageUrls]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'reply'] = this.reply;
+    if (this.sellerImageUrls != null) {
+      json[r'sellerImageUrls'] = this.sellerImageUrls!.toList(growable: false);
+    } else {
+      json[r'sellerImageUrls'] = null;
+    }
     return json;
   }
 
@@ -57,6 +68,9 @@ class DisputeReplyParam {
 
       return DisputeReplyParam(
         reply: mapValueOfType<String>(json, r'reply')!,
+        sellerImageUrls: json[r'sellerImageUrls'] is Iterable
+            ? (json[r'sellerImageUrls'] as Iterable).cast<String>().toSet()
+            : const {},
       );
     }
     return null;
