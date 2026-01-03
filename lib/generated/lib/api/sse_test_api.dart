@@ -149,6 +149,84 @@ class SseTestApi {
     return null;
   }
 
+  /// 測試自定義事件
+  ///
+  /// 發送任意 NotifyEventTypeEnum 事件
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] eventType (required):
+  ///   事件類型
+  ///
+  /// * [int] targetUserId:
+  ///   目標用戶ID，不填則預設當前用戶
+  ///
+  /// * [String] message:
+  ///   自定義消息
+  Future<Response> testCustomEventWithHttpInfo(String eventType, { int? targetUserId, String? message, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/sse-test/custom-event';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (targetUserId != null) {
+      queryParams.addAll(_queryParams('', 'targetUserId', targetUserId));
+    }
+      queryParams.addAll(_queryParams('', 'eventType', eventType));
+    if (message != null) {
+      queryParams.addAll(_queryParams('', 'message', message));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 測試自定義事件
+  ///
+  /// 發送任意 NotifyEventTypeEnum 事件
+  ///
+  /// Parameters:
+  ///
+  /// * [String] eventType (required):
+  ///   事件類型
+  ///
+  /// * [int] targetUserId:
+  ///   目標用戶ID，不填則預設當前用戶
+  ///
+  /// * [String] message:
+  ///   自定義消息
+  Future<Map<String, Object>?> testCustomEvent(String eventType, { int? targetUserId, String? message, }) async {
+    final response = await testCustomEventWithHttpInfo(eventType,  targetUserId: targetUserId, message: message, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
+
+    }
+    return null;
+  }
+
   /// 測試訂單事件
   ///
   /// 發送測試的訂單事件

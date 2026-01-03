@@ -364,6 +364,7 @@ Class | Method | HTTP request | Description
 *SseApi* | [**sendMessageToUser**](doc//SseApi.md#sendmessagetouser) | **POST** /sse/send/user/{userId} | 向特定用戶發送消息
 *SseTestApi* | [**testAuthEvent**](doc//SseTestApi.md#testauthevent) | **POST** /sse-test/auth-event | 測試認證事件
 *SseTestApi* | [**testBalanceChange**](doc//SseTestApi.md#testbalancechange) | **POST** /sse-test/balance-change | 測試餘額變動事件
+*SseTestApi* | [**testCustomEvent**](doc//SseTestApi.md#testcustomevent) | **POST** /sse-test/custom-event | 測試自定義事件
 *SseTestApi* | [**testOrderEvent**](doc//SseTestApi.md#testorderevent) | **POST** /sse-test/order-event | 測試訂單事件
 *SseTestApi* | [**testSystemEvent**](doc//SseTestApi.md#testsystemevent) | **POST** /sse-test/system-event | 測試系統事件
 *SseTestApi* | [**testTypingEvent**](doc//SseTestApi.md#testtypingevent) | **POST** /sse-test/typing-event | 測試輸入事件
