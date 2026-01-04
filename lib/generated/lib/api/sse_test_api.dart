@@ -24,24 +24,20 @@ class SseTestApi {
   ///
   /// Parameters:
   ///
-  /// * [String] eventType:
-  ///   事件類型
-  Future<Response> testAuthEventWithHttpInfo({ String? eventType, }) async {
+  /// * [SSEEventRequest] sSEEventRequest (required):
+  ///   SSE事件請求
+  Future<Response> testAuthEventWithHttpInfo(SSEEventRequest sSEEventRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/sse-test/auth-event';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = sSEEventRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (eventType != null) {
-      queryParams.addAll(_queryParams('', 'eventType', eventType));
-    }
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -61,10 +57,10 @@ class SseTestApi {
   ///
   /// Parameters:
   ///
-  /// * [String] eventType:
-  ///   事件類型
-  Future<Map<String, Object>?> testAuthEvent({ String? eventType, }) async {
-    final response = await testAuthEventWithHttpInfo( eventType: eventType, );
+  /// * [SSEEventRequest] sSEEventRequest (required):
+  ///   SSE事件請求
+  Future<SSEEventResponse?> testAuthEvent(SSEEventRequest sSEEventRequest,) async {
+    final response = await testAuthEventWithHttpInfo(sSEEventRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -72,8 +68,8 @@ class SseTestApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SSEEventResponse',) as SSEEventResponse;
+    
     }
     return null;
   }
@@ -86,30 +82,20 @@ class SseTestApi {
   ///
   /// Parameters:
   ///
-  /// * [String] amount:
-  ///   變動金額
-  ///
-  /// * [String] currency:
-  ///   貨幣
-  Future<Response> testBalanceChangeWithHttpInfo({ String? amount, String? currency, }) async {
+  /// * [SSEEventRequest] sSEEventRequest (required):
+  ///   SSE事件請求
+  Future<Response> testBalanceChangeWithHttpInfo(SSEEventRequest sSEEventRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/sse-test/balance-change';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = sSEEventRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (amount != null) {
-      queryParams.addAll(_queryParams('', 'amount', amount));
-    }
-    if (currency != null) {
-      queryParams.addAll(_queryParams('', 'currency', currency));
-    }
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -129,13 +115,10 @@ class SseTestApi {
   ///
   /// Parameters:
   ///
-  /// * [String] amount:
-  ///   變動金額
-  ///
-  /// * [String] currency:
-  ///   貨幣
-  Future<Map<String, Object>?> testBalanceChange({ String? amount, String? currency, }) async {
-    final response = await testBalanceChangeWithHttpInfo( amount: amount, currency: currency, );
+  /// * [SSEEventRequest] sSEEventRequest (required):
+  ///   SSE事件請求
+  Future<SSEEventResponse?> testBalanceChange(SSEEventRequest sSEEventRequest,) async {
+    final response = await testBalanceChangeWithHttpInfo(sSEEventRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -143,8 +126,8 @@ class SseTestApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SSEEventResponse',) as SSEEventResponse;
+    
     }
     return null;
   }
@@ -157,14 +140,14 @@ class SseTestApi {
   ///
   /// Parameters:
   ///
-  /// * [CustomEventRequest] customEventRequest (required):
-  ///   自定義事件請求
-  Future<Response> testCustomEventWithHttpInfo(CustomEventRequest customEventRequest,) async {
+  /// * [SSEEventRequest] sSEEventRequest (required):
+  ///   SSE事件請求
+  Future<Response> testCustomEventWithHttpInfo(SSEEventRequest sSEEventRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/sse-test/custom-event';
 
     // ignore: prefer_final_locals
-    Object? postBody = customEventRequest;
+    Object? postBody = sSEEventRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -190,10 +173,10 @@ class SseTestApi {
   ///
   /// Parameters:
   ///
-  /// * [CustomEventRequest] customEventRequest (required):
-  ///   自定義事件請求
-  Future<Map<String, Object>?> testCustomEvent(CustomEventRequest customEventRequest,) async {
-    final response = await testCustomEventWithHttpInfo(customEventRequest,);
+  /// * [SSEEventRequest] sSEEventRequest (required):
+  ///   SSE事件請求
+  Future<SSEEventResponse?> testCustomEvent(SSEEventRequest sSEEventRequest,) async {
+    final response = await testCustomEventWithHttpInfo(sSEEventRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -201,8 +184,8 @@ class SseTestApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SSEEventResponse',) as SSEEventResponse;
+    
     }
     return null;
   }
@@ -215,24 +198,20 @@ class SseTestApi {
   ///
   /// Parameters:
   ///
-  /// * [String] eventType:
-  ///   事件類型
-  Future<Response> testOrderEventWithHttpInfo({ String? eventType, }) async {
+  /// * [SSEEventRequest] sSEEventRequest (required):
+  ///   SSE事件請求
+  Future<Response> testOrderEventWithHttpInfo(SSEEventRequest sSEEventRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/sse-test/order-event';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = sSEEventRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (eventType != null) {
-      queryParams.addAll(_queryParams('', 'eventType', eventType));
-    }
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -252,10 +231,10 @@ class SseTestApi {
   ///
   /// Parameters:
   ///
-  /// * [String] eventType:
-  ///   事件類型
-  Future<Map<String, Object>?> testOrderEvent({ String? eventType, }) async {
-    final response = await testOrderEventWithHttpInfo( eventType: eventType, );
+  /// * [SSEEventRequest] sSEEventRequest (required):
+  ///   SSE事件請求
+  Future<SSEEventResponse?> testOrderEvent(SSEEventRequest sSEEventRequest,) async {
+    final response = await testOrderEventWithHttpInfo(sSEEventRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -263,8 +242,8 @@ class SseTestApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SSEEventResponse',) as SSEEventResponse;
+    
     }
     return null;
   }
@@ -277,30 +256,20 @@ class SseTestApi {
   ///
   /// Parameters:
   ///
-  /// * [String] eventType:
-  ///   事件類型
-  ///
-  /// * [String] message:
-  ///   消息內容
-  Future<Response> testSystemEventWithHttpInfo({ String? eventType, String? message, }) async {
+  /// * [SSEEventRequest] sSEEventRequest (required):
+  ///   SSE事件請求
+  Future<Response> testSystemEventWithHttpInfo(SSEEventRequest sSEEventRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/sse-test/system-event';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = sSEEventRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (eventType != null) {
-      queryParams.addAll(_queryParams('', 'eventType', eventType));
-    }
-    if (message != null) {
-      queryParams.addAll(_queryParams('', 'message', message));
-    }
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -320,13 +289,10 @@ class SseTestApi {
   ///
   /// Parameters:
   ///
-  /// * [String] eventType:
-  ///   事件類型
-  ///
-  /// * [String] message:
-  ///   消息內容
-  Future<Map<String, Object>?> testSystemEvent({ String? eventType, String? message, }) async {
-    final response = await testSystemEventWithHttpInfo( eventType: eventType, message: message, );
+  /// * [SSEEventRequest] sSEEventRequest (required):
+  ///   SSE事件請求
+  Future<SSEEventResponse?> testSystemEvent(SSEEventRequest sSEEventRequest,) async {
+    final response = await testSystemEventWithHttpInfo(sSEEventRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -334,8 +300,8 @@ class SseTestApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SSEEventResponse',) as SSEEventResponse;
+    
     }
     return null;
   }
@@ -348,28 +314,20 @@ class SseTestApi {
   ///
   /// Parameters:
   ///
-  /// * [int] receiverId (required):
-  ///   接收者ID
-  ///
-  /// * [String] eventType:
-  ///   事件類型
-  Future<Response> testTypingEventWithHttpInfo(int receiverId, { String? eventType, }) async {
+  /// * [SSEEventRequest] sSEEventRequest (required):
+  ///   SSE事件請求
+  Future<Response> testTypingEventWithHttpInfo(SSEEventRequest sSEEventRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/sse-test/typing-event';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = sSEEventRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'receiverId', receiverId));
-    if (eventType != null) {
-      queryParams.addAll(_queryParams('', 'eventType', eventType));
-    }
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -389,13 +347,10 @@ class SseTestApi {
   ///
   /// Parameters:
   ///
-  /// * [int] receiverId (required):
-  ///   接收者ID
-  ///
-  /// * [String] eventType:
-  ///   事件類型
-  Future<Map<String, Object>?> testTypingEvent(int receiverId, { String? eventType, }) async {
-    final response = await testTypingEventWithHttpInfo(receiverId,  eventType: eventType, );
+  /// * [SSEEventRequest] sSEEventRequest (required):
+  ///   SSE事件請求
+  Future<SSEEventResponse?> testTypingEvent(SSEEventRequest sSEEventRequest,) async {
+    final response = await testTypingEventWithHttpInfo(sSEEventRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -403,8 +358,8 @@ class SseTestApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SSEEventResponse',) as SSEEventResponse;
+    
     }
     return null;
   }

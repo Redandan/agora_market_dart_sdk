@@ -10,126 +10,121 @@
 
 part of openapi.api;
 
-class PageableObject {
-  /// Returns a new [PageableObject] instance.
-  PageableObject({
-    this.sort,
-    this.pageNumber,
-    this.pageSize,
-    this.unpaged,
-    this.paged,
-    this.offset,
+class SSEEventRequest {
+  /// Returns a new [SSEEventRequest] instance.
+  SSEEventRequest({
+    required this.eventType,
+    this.amount,
+    this.currency,
+    this.receiverId,
+    this.targetUserId,
+    this.message,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  SortObject? sort;
+  NotifyEventTypeEnum eventType;
 
+  /// 變動金額（用於balance-change）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageNumber;
+  String? amount;
 
+  /// 貨幣（用於balance-change）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageSize;
+  String? currency;
 
+  /// 接收者ID（用於typing-event、custom-event）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unpaged;
+  int? receiverId;
 
+  /// 目標用戶ID（用於custom-event，不填則預設當前用戶）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? paged;
+  int? targetUserId;
 
+  /// 消息內容（用於system-event、custom-event）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? offset;
+  String? message;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageableObject &&
-    other.sort == sort &&
-    other.pageNumber == pageNumber &&
-    other.pageSize == pageSize &&
-    other.unpaged == unpaged &&
-    other.paged == paged &&
-    other.offset == offset;
+  bool operator ==(Object other) => identical(this, other) || other is SSEEventRequest &&
+    other.eventType == eventType &&
+    other.amount == amount &&
+    other.currency == currency &&
+    other.receiverId == receiverId &&
+    other.targetUserId == targetUserId &&
+    other.message == message;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (sort == null ? 0 : sort!.hashCode) +
-    (pageNumber == null ? 0 : pageNumber!.hashCode) +
-    (pageSize == null ? 0 : pageSize!.hashCode) +
-    (unpaged == null ? 0 : unpaged!.hashCode) +
-    (paged == null ? 0 : paged!.hashCode) +
-    (offset == null ? 0 : offset!.hashCode);
+    (eventType.hashCode) +
+    (amount == null ? 0 : amount!.hashCode) +
+    (currency == null ? 0 : currency!.hashCode) +
+    (receiverId == null ? 0 : receiverId!.hashCode) +
+    (targetUserId == null ? 0 : targetUserId!.hashCode) +
+    (message == null ? 0 : message!.hashCode);
 
   @override
-  String toString() => 'PageableObject[sort=$sort, pageNumber=$pageNumber, pageSize=$pageSize, unpaged=$unpaged, paged=$paged, offset=$offset]';
+  String toString() => 'SSEEventRequest[eventType=$eventType, amount=$amount, currency=$currency, receiverId=$receiverId, targetUserId=$targetUserId, message=$message]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+      json[r'eventType'] = this.eventType;
+    if (this.amount != null) {
+      json[r'amount'] = this.amount;
     } else {
-      json[r'sort'] = null;
+      json[r'amount'] = null;
     }
-    if (this.pageNumber != null) {
-      json[r'pageNumber'] = this.pageNumber;
+    if (this.currency != null) {
+      json[r'currency'] = this.currency;
     } else {
-      json[r'pageNumber'] = null;
+      json[r'currency'] = null;
     }
-    if (this.pageSize != null) {
-      json[r'pageSize'] = this.pageSize;
+    if (this.receiverId != null) {
+      json[r'receiverId'] = this.receiverId;
     } else {
-      json[r'pageSize'] = null;
+      json[r'receiverId'] = null;
     }
-    if (this.unpaged != null) {
-      json[r'unpaged'] = this.unpaged;
+    if (this.targetUserId != null) {
+      json[r'targetUserId'] = this.targetUserId;
     } else {
-      json[r'unpaged'] = null;
+      json[r'targetUserId'] = null;
     }
-    if (this.paged != null) {
-      json[r'paged'] = this.paged;
+    if (this.message != null) {
+      json[r'message'] = this.message;
     } else {
-      json[r'paged'] = null;
-    }
-    if (this.offset != null) {
-      json[r'offset'] = this.offset;
-    } else {
-      json[r'offset'] = null;
+      json[r'message'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageableObject] instance and imports its values from
+  /// Returns a new [SSEEventRequest] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageableObject? fromJson(dynamic value) {
+  static SSEEventRequest? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -138,29 +133,29 @@ class PageableObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageableObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageableObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "SSEEventRequest[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "SSEEventRequest[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageableObject(
-        sort: SortObject.fromJson(json[r'sort']),
-        pageNumber: mapValueOfType<int>(json, r'pageNumber'),
-        pageSize: mapValueOfType<int>(json, r'pageSize'),
-        unpaged: mapValueOfType<bool>(json, r'unpaged'),
-        paged: mapValueOfType<bool>(json, r'paged'),
-        offset: mapValueOfType<int>(json, r'offset'),
+      return SSEEventRequest(
+        eventType: NotifyEventTypeEnum.fromJson(json[r'eventType'])!,
+        amount: mapValueOfType<String>(json, r'amount'),
+        currency: mapValueOfType<String>(json, r'currency'),
+        receiverId: mapValueOfType<int>(json, r'receiverId'),
+        targetUserId: mapValueOfType<int>(json, r'targetUserId'),
+        message: mapValueOfType<String>(json, r'message'),
       );
     }
     return null;
   }
 
-  static List<PageableObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageableObject>[];
+  static List<SSEEventRequest> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <SSEEventRequest>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageableObject.fromJson(row);
+        final value = SSEEventRequest.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -169,12 +164,12 @@ class PageableObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageableObject> mapFromJson(dynamic json) {
-    final map = <String, PageableObject>{};
+  static Map<String, SSEEventRequest> mapFromJson(dynamic json) {
+    final map = <String, SSEEventRequest>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageableObject.fromJson(entry.value);
+        final value = SSEEventRequest.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -183,14 +178,14 @@ class PageableObject {
     return map;
   }
 
-  // maps a json object with a list of PageableObject-objects as value to a dart map
-  static Map<String, List<PageableObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageableObject>>{};
+  // maps a json object with a list of SSEEventRequest-objects as value to a dart map
+  static Map<String, List<SSEEventRequest>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<SSEEventRequest>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageableObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = SSEEventRequest.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -198,6 +193,7 @@ class PageableObject {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'eventType',
   };
 }
 

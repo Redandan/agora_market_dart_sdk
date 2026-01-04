@@ -302,8 +302,6 @@ class ApiClient {
           return CreateRechargeParam.fromJson(value);
         case 'CreateWithdrawParam':
           return CreateWithdrawParam.fromJson(value);
-        case 'CustomEventRequest':
-          return CustomEventRequest.fromJson(value);
         case 'CustomerIssue':
           return CustomerIssue.fromJson(value);
         case 'CustomerStats':
@@ -634,6 +632,10 @@ class ApiClient {
           return ReviewStatisticsDTO.fromJson(value);
         case 'ReviewUpdateParam':
           return ReviewUpdateParam.fromJson(value);
+        case 'SSEEventRequest':
+          return SSEEventRequest.fromJson(value);
+        case 'SSEEventResponse':
+          return SSEEventResponse.fromJson(value);
         case 'SalesStats':
           return SalesStats.fromJson(value);
         case 'ScheduledPushResponseDTO':
