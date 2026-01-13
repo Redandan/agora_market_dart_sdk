@@ -339,6 +339,8 @@ Class | Method | HTTP request | Description
 *PromoCodesApi* | [**searchPromoCodes**](doc//PromoCodesApi.md#searchpromocodes) | **GET** /promo-codes/search | 搜尋推廣碼
 *PromoCodesApi* | [**updateMyPromoCode**](doc//PromoCodesApi.md#updatemypromocode) | **PUT** /promo-codes/my-promo-code | 編輯我的推廣碼
 *PublicControllerApi* | [**test**](doc//PublicControllerApi.md#test) | **GET** /public/test | 
+*PwaLogsApi* | [**getLogs**](doc//PwaLogsApi.md#getlogs) | **GET** /pwa-logs | 獲取當前所有日誌
+*PwaLogsApi* | [**receivePwaLogs**](doc//PwaLogsApi.md#receivepwalogs) | **POST** /pwa-logs | 上傳 PWA 日誌
 *ReviewsApi* | [**batchDeleteReviews**](doc//ReviewsApi.md#batchdeletereviews) | **DELETE** /reviews/batch | 批量刪除評價（管理員功能）
 *ReviewsApi* | [**batchReplyReviews**](doc//ReviewsApi.md#batchreplyreviews) | **POST** /reviews/batch-reply | 批量回覆評價
 *ReviewsApi* | [**createReview**](doc//ReviewsApi.md#createreview) | **POST** /reviews/create | 創建評價
@@ -625,6 +627,7 @@ Class | Method | HTTP request | Description
  - [PushSubscriptionResponseDTO](doc//PushSubscriptionResponseDTO.md)
  - [PushTestResponseDTO](doc//PushTestResponseDTO.md)
  - [PushUnsubscriptionResponseDTO](doc//PushUnsubscriptionResponseDTO.md)
+ - [PwaLogEntry](doc//PwaLogEntry.md)
  - [QuickLogisticsRequest](doc//QuickLogisticsRequest.md)
  - [QuickLogisticsResult](doc//QuickLogisticsResult.md)
  - [Recharge](doc//Recharge.md)

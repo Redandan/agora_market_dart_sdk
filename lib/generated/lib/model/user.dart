@@ -32,6 +32,8 @@ class User {
     this.twoFactorSecret,
     this.emailVerified,
     this.trustedDevicesJson,
+    this.currentDeviceFingerprint,
+    this.currentIpAddress,
     required this.createdAt,
     required this.updatedAt,
     this.admin,
@@ -99,6 +101,12 @@ class User {
   /// 受信任設備列表（JSON格式），最多保存10組設備
   String? trustedDevicesJson;
 
+  /// 當前請求的設備指紋
+  String? currentDeviceFingerprint;
+
+  /// 當前請求的IP地址
+  String? currentIpAddress;
+
   /// 創建時間
   DateTime createdAt;
 
@@ -136,6 +144,8 @@ class User {
     other.twoFactorSecret == twoFactorSecret &&
     other.emailVerified == emailVerified &&
     other.trustedDevicesJson == trustedDevicesJson &&
+    other.currentDeviceFingerprint == currentDeviceFingerprint &&
+    other.currentIpAddress == currentIpAddress &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
     other.admin == admin &&
@@ -163,13 +173,15 @@ class User {
     (twoFactorSecret == null ? 0 : twoFactorSecret!.hashCode) +
     (emailVerified == null ? 0 : emailVerified!.hashCode) +
     (trustedDevicesJson == null ? 0 : trustedDevicesJson!.hashCode) +
+    (currentDeviceFingerprint == null ? 0 : currentDeviceFingerprint!.hashCode) +
+    (currentIpAddress == null ? 0 : currentIpAddress!.hashCode) +
     (createdAt.hashCode) +
     (updatedAt.hashCode) +
     (admin == null ? 0 : admin!.hashCode) +
     (trustedDevices.hashCode);
 
   @override
-  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, defaultHomePage=$defaultHomePage, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, trustedDevicesJson=$trustedDevicesJson, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin, trustedDevices=$trustedDevices]';
+  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, defaultHomePage=$defaultHomePage, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, trustedDevicesJson=$trustedDevicesJson, currentDeviceFingerprint=$currentDeviceFingerprint, currentIpAddress=$currentIpAddress, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin, trustedDevices=$trustedDevices]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -248,6 +260,16 @@ class User {
     } else {
       json[r'trustedDevicesJson'] = null;
     }
+    if (this.currentDeviceFingerprint != null) {
+      json[r'currentDeviceFingerprint'] = this.currentDeviceFingerprint;
+    } else {
+      json[r'currentDeviceFingerprint'] = null;
+    }
+    if (this.currentIpAddress != null) {
+      json[r'currentIpAddress'] = this.currentIpAddress;
+    } else {
+      json[r'currentIpAddress'] = null;
+    }
       json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
       json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
     if (this.admin != null) {
@@ -297,6 +319,8 @@ class User {
         twoFactorSecret: mapValueOfType<String>(json, r'twoFactorSecret'),
         emailVerified: mapValueOfType<bool>(json, r'emailVerified'),
         trustedDevicesJson: mapValueOfType<String>(json, r'trustedDevicesJson'),
+        currentDeviceFingerprint: mapValueOfType<String>(json, r'currentDeviceFingerprint'),
+        currentIpAddress: mapValueOfType<String>(json, r'currentIpAddress'),
         createdAt: mapDateTime(json, r'createdAt', r'')!,
         updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         admin: mapValueOfType<bool>(json, r'admin'),

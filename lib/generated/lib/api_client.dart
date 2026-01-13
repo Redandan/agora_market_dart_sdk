@@ -588,6 +588,8 @@ class ApiClient {
           return PushTestResponseDTO.fromJson(value);
         case 'PushUnsubscriptionResponseDTO':
           return PushUnsubscriptionResponseDTO.fromJson(value);
+        case 'PwaLogEntry':
+          return PwaLogEntry.fromJson(value);
         case 'QuickLogisticsRequest':
           return QuickLogisticsRequest.fromJson(value);
         case 'QuickLogisticsResult':
