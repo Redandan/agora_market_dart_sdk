@@ -233,6 +233,17 @@ Class | Method | HTTP request | Description
 *AutoReplyApi* | [**searchConfigs**](doc//AutoReplyApi.md#searchconfigs) | **POST** /admin/auto-reply/configs/search | 搜尋自動回復配置
 *AutoReplyApi* | [**toggleConfig**](doc//AutoReplyApi.md#toggleconfig) | **PUT** /admin/auto-reply/configs/{id}/toggle | 啟用/禁用配置
 *AutoReplyApi* | [**updateReplyConfig**](doc//AutoReplyApi.md#updatereplyconfig) | **PUT** /admin/auto-reply/configs/{id} | 更新配置
+*BettingApi* | [**getMarketBets**](doc//BettingApi.md#getmarketbets) | **GET** /api/bets/market/{marketId} | 市場投注記錄
+*BettingApi* | [**getMyBets**](doc//BettingApi.md#getmybets) | **GET** /api/bets/my | 我的投注記錄
+*BettingApi* | [**placeBet**](doc//BettingApi.md#placebet) | **POST** /api/bets | 下注
+*BettingMarketsApi* | [**cancelMarket**](doc//BettingMarketsApi.md#cancelmarket) | **POST** /api/markets/{id}/cancel | 取消市場
+*BettingMarketsApi* | [**closeMarket**](doc//BettingMarketsApi.md#closemarket) | **PUT** /api/markets/{id}/close | 關閉市場
+*BettingMarketsApi* | [**createMarket**](doc//BettingMarketsApi.md#createmarket) | **POST** /api/markets | 創建市場
+*BettingMarketsApi* | [**getActiveMarkets**](doc//BettingMarketsApi.md#getactivemarkets) | **GET** /api/markets/active | 查詢活躍市場
+*BettingMarketsApi* | [**getMarket**](doc//BettingMarketsApi.md#getmarket) | **GET** /api/markets/{id} | 獲取市場詳情
+*BettingMarketsApi* | [**getMarkets**](doc//BettingMarketsApi.md#getmarkets) | **GET** /api/markets | 查詢市場列表
+*BettingMarketsApi* | [**resolveMarket**](doc//BettingMarketsApi.md#resolvemarket) | **POST** /api/markets/{id}/resolve | 結算市場
+*BettingMarketsApi* | [**searchMarkets**](doc//BettingMarketsApi.md#searchmarkets) | **GET** /api/markets/search | 搜索市場
 *ChatApi* | [**clearSession**](doc//ChatApi.md#clearsession) | **DELETE** /chat/sessions/{sessionId}/messages | 清空會話
 *ChatApi* | [**deleteMessage**](doc//ChatApi.md#deletemessage) | **DELETE** /chat/messages/{messageId} | 刪除消息
 *ChatApi* | [**deleteSession**](doc//ChatApi.md#deletesession) | **DELETE** /chat/sessions/{sessionId} | 刪除會話
@@ -339,7 +350,7 @@ Class | Method | HTTP request | Description
 *PromoCodesApi* | [**searchPromoCodes**](doc//PromoCodesApi.md#searchpromocodes) | **GET** /promo-codes/search | 搜尋推廣碼
 *PromoCodesApi* | [**updateMyPromoCode**](doc//PromoCodesApi.md#updatemypromocode) | **PUT** /promo-codes/my-promo-code | 編輯我的推廣碼
 *PublicControllerApi* | [**test**](doc//PublicControllerApi.md#test) | **GET** /public/test | 
-*PwaLogsApi* | [**getLogs**](doc//PwaLogsApi.md#getlogs) | **GET** /pwa-logs | 獲取當前所有日誌
+*PwaLogsApi* | [**getLogs**](doc//PwaLogsApi.md#getlogs) | **GET** /pwa-logs | 下載當前所有日誌
 *PwaLogsApi* | [**receivePwaLogs**](doc//PwaLogsApi.md#receivepwalogs) | **POST** /pwa-logs | 上傳 PWA 日誌
 *ReviewsApi* | [**batchDeleteReviews**](doc//ReviewsApi.md#batchdeletereviews) | **DELETE** /reviews/batch | 批量刪除評價（管理員功能）
 *ReviewsApi* | [**batchReplyReviews**](doc//ReviewsApi.md#batchreplyreviews) | **POST** /reviews/batch-reply | 批量回覆評價
@@ -382,6 +393,11 @@ Class | Method | HTTP request | Description
 *StoresApi* | [**searchMyStoreProducts**](doc//StoresApi.md#searchmystoreproducts) | **POST** /stores/products/search | 搜索我的商店商品
 *StoresApi* | [**updateShippingConfig**](doc//StoresApi.md#updateshippingconfig) | **POST** /stores/shipping-config | 更新商店物流設定
 *StoresApi* | [**updateStore**](doc//StoresApi.md#updatestore) | **POST** /stores/update | 更新商店
+*TGApi* | [**batchUpdatePaytable**](doc//TGApi.md#batchupdatepaytable) | **PUT** /tg-game/paytable/batch | 批次更新賠付規則
+*TGApi* | [**getActivityStatistics**](doc//TGApi.md#getactivitystatistics) | **GET** /tg-game/activity/{id}/stat | 查詢活動統計
+*TGApi* | [**getCurrentActivity**](doc//TGApi.md#getcurrentactivity) | **GET** /tg-game/activity/current | 查詢當前活動
+*TGApi* | [**getPaytableByGameAndHandicap**](doc//TGApi.md#getpaytablebygameandhandicap) | **GET** /tg-game/paytable | 查詢賠付規則及 RTP
+*TGApi* | [**getPlayerRounds**](doc//TGApi.md#getplayerrounds) | **GET** /tg-game/rounds | 查詢玩家流水
 *TelegramBotLoginApi* | [**generateLoginToken**](doc//TelegramBotLoginApi.md#generatelogintoken) | **POST** /auth/telegram-bot/generate-login-token | 生成登录 loginToken
 *TelegramBotLoginApi* | [**verifyCode**](doc//TelegramBotLoginApi.md#verifycode) | **POST** /auth/telegram-bot/verify-code | 验证验证码
 *TelegramMiniAppLoginApi* | [**login1**](doc//TelegramMiniAppLoginApi.md#login1) | **POST** /auth/telegram-mini-app/login | Telegram Mini App 登录
@@ -425,6 +441,8 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AcceptOrderParam](doc//AcceptOrderParam.md)
+ - [ActivityDTO](doc//ActivityDTO.md)
+ - [ActivityStatDTO](doc//ActivityStatDTO.md)
  - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
  - [AdminResetPasswordParam](doc//AdminResetPasswordParam.md)
  - [AdminStoreSearchParam](doc//AdminStoreSearchParam.md)
@@ -458,6 +476,8 @@ Class | Method | HTTP request | Description
  - [BalanceConversion](doc//BalanceConversion.md)
  - [BatchReviewPromoCodeParam](doc//BatchReviewPromoCodeParam.md)
  - [BatchReviewResult](doc//BatchReviewResult.md)
+ - [BatchUpdatePaytableRequest](doc//BatchUpdatePaytableRequest.md)
+ - [BetResponse](doc//BetResponse.md)
  - [BindEmailParam](doc//BindEmailParam.md)
  - [BindOAuthParam](doc//BindOAuthParam.md)
  - [CartGroupBySeller](doc//CartGroupBySeller.md)
@@ -481,6 +501,7 @@ Class | Method | HTTP request | Description
  - [ColdWalletStatusEnum](doc//ColdWalletStatusEnum.md)
  - [CreateColdWalletParam](doc//CreateColdWalletParam.md)
  - [CreateIssueParam](doc//CreateIssueParam.md)
+ - [CreateMarketRequest](doc//CreateMarketRequest.md)
  - [CreatePromoCodeParam](doc//CreatePromoCodeParam.md)
  - [CreateRechargeParam](doc//CreateRechargeParam.md)
  - [CreateWithdrawParam](doc//CreateWithdrawParam.md)
@@ -521,6 +542,7 @@ Class | Method | HTTP request | Description
  - [FileRecordSearchRequest](doc//FileRecordSearchRequest.md)
  - [FileSyncResponse](doc//FileSyncResponse.md)
  - [FlutterAppDeploymentResponse](doc//FlutterAppDeploymentResponse.md)
+ - [GameRoundDTO](doc//GameRoundDTO.md)
  - [GenerateLoginTokenRequest](doc//GenerateLoginTokenRequest.md)
  - [InterestRecordDTO](doc//InterestRecordDTO.md)
  - [InterestRecordSearchParam](doc//InterestRecordSearchParam.md)
@@ -536,6 +558,9 @@ Class | Method | HTTP request | Description
  - [LowStockWarningDTO](doc//LowStockWarningDTO.md)
  - [MaintenanceStatusResponse](doc//MaintenanceStatusResponse.md)
  - [MaintenanceToggleRequest](doc//MaintenanceToggleRequest.md)
+ - [MarketOptionRequest](doc//MarketOptionRequest.md)
+ - [MarketOptionResponse](doc//MarketOptionResponse.md)
+ - [MarketResponse](doc//MarketResponse.md)
  - [MemberSearchParam](doc//MemberSearchParam.md)
  - [MemberUpdateParam](doc//MemberUpdateParam.md)
  - [MessageSendResponseDTO](doc//MessageSendResponseDTO.md)
@@ -566,6 +591,7 @@ Class | Method | HTTP request | Description
  - [OrderStatusEnum](doc//OrderStatusEnum.md)
  - [OrderSumbitParam](doc//OrderSumbitParam.md)
  - [PageAutoReplyConfig](doc//PageAutoReplyConfig.md)
+ - [PageBetResponse](doc//PageBetResponse.md)
  - [PageCartItem](doc//PageCartItem.md)
  - [PageCartItemResponse](doc//PageCartItemResponse.md)
  - [PageChatMessage](doc//PageChatMessage.md)
@@ -577,7 +603,9 @@ Class | Method | HTTP request | Description
  - [PageDeliveryer](doc//PageDeliveryer.md)
  - [PageDispute](doc//PageDispute.md)
  - [PageFileRecord](doc//PageFileRecord.md)
+ - [PageGameRoundDTO](doc//PageGameRoundDTO.md)
  - [PageInterestRecordDTO](doc//PageInterestRecordDTO.md)
+ - [PageMarketResponse](doc//PageMarketResponse.md)
  - [PageNotificationResponseDTO](doc//PageNotificationResponseDTO.md)
  - [PageOrder](doc//PageOrder.md)
  - [PagePickupStore](doc//PagePickupStore.md)
@@ -595,12 +623,16 @@ Class | Method | HTTP request | Description
  - [Pageable](doc//Pageable.md)
  - [PageableObject](doc//PageableObject.md)
  - [PasswordResetParam](doc//PasswordResetParam.md)
+ - [PaytableDTO](doc//PaytableDTO.md)
+ - [PaytableEntryRequest](doc//PaytableEntryRequest.md)
+ - [PaytableWithRtpDTO](doc//PaytableWithRtpDTO.md)
  - [PickupServiceTypeEnum](doc//PickupServiceTypeEnum.md)
  - [PickupStore](doc//PickupStore.md)
  - [PickupStoreSearchParam](doc//PickupStoreSearchParam.md)
  - [PickupStoreSyncCheckResponse](doc//PickupStoreSyncCheckResponse.md)
  - [PickupStoreSyncResponse](doc//PickupStoreSyncResponse.md)
  - [PickupStoreSyncStatusResponse](doc//PickupStoreSyncStatusResponse.md)
+ - [PlaceBetRequest](doc//PlaceBetRequest.md)
  - [PostCreateParam](doc//PostCreateParam.md)
  - [PostResponse](doc//PostResponse.md)
  - [PostSearchParam](doc//PostSearchParam.md)
@@ -638,6 +670,7 @@ Class | Method | HTTP request | Description
  - [RegisterParam](doc//RegisterParam.md)
  - [RegisterResult](doc//RegisterResult.md)
  - [ReplyIssueParam](doc//ReplyIssueParam.md)
+ - [ResolveMarketRequest](doc//ResolveMarketRequest.md)
  - [ReturnProcessParam](doc//ReturnProcessParam.md)
  - [ReturnReasonEnum](doc//ReturnReasonEnum.md)
  - [ReturnRequestParam](doc//ReturnRequestParam.md)

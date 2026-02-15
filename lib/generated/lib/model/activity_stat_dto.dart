@@ -10,12 +10,13 @@
 
 part of openapi.api;
 
-class SortObject {
-  /// Returns a new [SortObject] instance.
-  SortObject({
-    this.sorted,
-    this.unsorted,
-    this.empty,
+class ActivityStatDTO {
+  /// Returns a new [ActivityStatDTO] instance.
+  ActivityStatDTO({
+    this.totalBet,
+    this.totalWin,
+    this.profit,
+    this.totalPlayers,
   });
 
   ///
@@ -24,7 +25,7 @@ class SortObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? sorted;
+  num? totalBet;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -32,7 +33,7 @@ class SortObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unsorted;
+  num? totalWin;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -40,48 +41,63 @@ class SortObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? empty;
+  num? profit;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? totalPlayers;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SortObject &&
-    other.sorted == sorted &&
-    other.unsorted == unsorted &&
-    other.empty == empty;
+  bool operator ==(Object other) => identical(this, other) || other is ActivityStatDTO &&
+    other.totalBet == totalBet &&
+    other.totalWin == totalWin &&
+    other.profit == profit &&
+    other.totalPlayers == totalPlayers;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (sorted == null ? 0 : sorted!.hashCode) +
-    (unsorted == null ? 0 : unsorted!.hashCode) +
-    (empty == null ? 0 : empty!.hashCode);
+    (totalBet == null ? 0 : totalBet!.hashCode) +
+    (totalWin == null ? 0 : totalWin!.hashCode) +
+    (profit == null ? 0 : profit!.hashCode) +
+    (totalPlayers == null ? 0 : totalPlayers!.hashCode);
 
   @override
-  String toString() => 'SortObject[sorted=$sorted, unsorted=$unsorted, empty=$empty]';
+  String toString() => 'ActivityStatDTO[totalBet=$totalBet, totalWin=$totalWin, profit=$profit, totalPlayers=$totalPlayers]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.sorted != null) {
-      json[r'sorted'] = this.sorted;
+    if (this.totalBet != null) {
+      json[r'totalBet'] = this.totalBet;
     } else {
-      json[r'sorted'] = null;
+      json[r'totalBet'] = null;
     }
-    if (this.unsorted != null) {
-      json[r'unsorted'] = this.unsorted;
+    if (this.totalWin != null) {
+      json[r'totalWin'] = this.totalWin;
     } else {
-      json[r'unsorted'] = null;
+      json[r'totalWin'] = null;
     }
-    if (this.empty != null) {
-      json[r'empty'] = this.empty;
+    if (this.profit != null) {
+      json[r'profit'] = this.profit;
     } else {
-      json[r'empty'] = null;
+      json[r'profit'] = null;
+    }
+    if (this.totalPlayers != null) {
+      json[r'totalPlayers'] = this.totalPlayers;
+    } else {
+      json[r'totalPlayers'] = null;
     }
     return json;
   }
 
-  /// Returns a new [SortObject] instance and imports its values from
+  /// Returns a new [ActivityStatDTO] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static SortObject? fromJson(dynamic value) {
+  static ActivityStatDTO? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -90,26 +106,27 @@ class SortObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "SortObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "SortObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ActivityStatDTO[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ActivityStatDTO[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return SortObject(
-        sorted: mapValueOfType<bool>(json, r'sorted'),
-        unsorted: mapValueOfType<bool>(json, r'unsorted'),
-        empty: mapValueOfType<bool>(json, r'empty'),
+      return ActivityStatDTO(
+        totalBet: num.parse('${json[r'totalBet']}'),
+        totalWin: num.parse('${json[r'totalWin']}'),
+        profit: num.parse('${json[r'profit']}'),
+        totalPlayers: mapValueOfType<int>(json, r'totalPlayers'),
       );
     }
     return null;
   }
 
-  static List<SortObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <SortObject>[];
+  static List<ActivityStatDTO> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ActivityStatDTO>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = SortObject.fromJson(row);
+        final value = ActivityStatDTO.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -118,12 +135,12 @@ class SortObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, SortObject> mapFromJson(dynamic json) {
-    final map = <String, SortObject>{};
+  static Map<String, ActivityStatDTO> mapFromJson(dynamic json) {
+    final map = <String, ActivityStatDTO>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = SortObject.fromJson(entry.value);
+        final value = ActivityStatDTO.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -132,14 +149,14 @@ class SortObject {
     return map;
   }
 
-  // maps a json object with a list of SortObject-objects as value to a dart map
-  static Map<String, List<SortObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<SortObject>>{};
+  // maps a json object with a list of ActivityStatDTO-objects as value to a dart map
+  static Map<String, List<ActivityStatDTO>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ActivityStatDTO>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SortObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ActivityStatDTO.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

@@ -14,47 +14,25 @@ class PwaLogEntry {
   /// Returns a new [PwaLogEntry] instance.
   PwaLogEntry({
     required this.log,
-    required this.timestamp,
-    this.timestampAsLocalDateTime,
   });
 
   String log;
 
-  int timestamp;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? timestampAsLocalDateTime;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is PwaLogEntry &&
-    other.log == log &&
-    other.timestamp == timestamp &&
-    other.timestampAsLocalDateTime == timestampAsLocalDateTime;
+    other.log == log;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (log.hashCode) +
-    (timestamp.hashCode) +
-    (timestampAsLocalDateTime == null ? 0 : timestampAsLocalDateTime!.hashCode);
+    (log.hashCode);
 
   @override
-  String toString() => 'PwaLogEntry[log=$log, timestamp=$timestamp, timestampAsLocalDateTime=$timestampAsLocalDateTime]';
+  String toString() => 'PwaLogEntry[log=$log]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'log'] = this.log;
-      json[r'timestamp'] = this.timestamp;
-    if (this.timestampAsLocalDateTime != null) {
-      json[r'timestampAsLocalDateTime'] = this.timestampAsLocalDateTime!.toUtc().toIso8601String();
-    } else {
-      json[r'timestampAsLocalDateTime'] = null;
-    }
     return json;
   }
 
@@ -78,8 +56,6 @@ class PwaLogEntry {
 
       return PwaLogEntry(
         log: mapValueOfType<String>(json, r'log')!,
-        timestamp: mapValueOfType<int>(json, r'timestamp')!,
-        timestampAsLocalDateTime: mapDateTime(json, r'timestampAsLocalDateTime', r''),
       );
     }
     return null;
@@ -128,7 +104,6 @@ class PwaLogEntry {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'log',
-    'timestamp',
   };
 }
 

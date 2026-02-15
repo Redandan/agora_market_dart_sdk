@@ -10,15 +10,15 @@
 
 part of openapi.api;
 
-class PageableObject {
-  /// Returns a new [PageableObject] instance.
-  PageableObject({
-    this.sort,
-    this.paged,
-    this.unpaged,
-    this.pageNumber,
-    this.pageSize,
-    this.offset,
+class ActivityDTO {
+  /// Returns a new [ActivityDTO] instance.
+  ActivityDTO({
+    this.id,
+    this.name,
+    this.betAmount,
+    this.startTime,
+    this.endTime,
+    this.status,
   });
 
   ///
@@ -27,7 +27,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SortObject? sort;
+  int? id;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -35,7 +35,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? paged;
+  String? name;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -43,7 +43,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unpaged;
+  num? betAmount;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -51,7 +51,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageNumber;
+  DateTime? startTime;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -59,7 +59,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageSize;
+  DateTime? endTime;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -67,69 +67,69 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? offset;
+  String? status;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageableObject &&
-    other.sort == sort &&
-    other.paged == paged &&
-    other.unpaged == unpaged &&
-    other.pageNumber == pageNumber &&
-    other.pageSize == pageSize &&
-    other.offset == offset;
+  bool operator ==(Object other) => identical(this, other) || other is ActivityDTO &&
+    other.id == id &&
+    other.name == name &&
+    other.betAmount == betAmount &&
+    other.startTime == startTime &&
+    other.endTime == endTime &&
+    other.status == status;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (sort == null ? 0 : sort!.hashCode) +
-    (paged == null ? 0 : paged!.hashCode) +
-    (unpaged == null ? 0 : unpaged!.hashCode) +
-    (pageNumber == null ? 0 : pageNumber!.hashCode) +
-    (pageSize == null ? 0 : pageSize!.hashCode) +
-    (offset == null ? 0 : offset!.hashCode);
+    (id == null ? 0 : id!.hashCode) +
+    (name == null ? 0 : name!.hashCode) +
+    (betAmount == null ? 0 : betAmount!.hashCode) +
+    (startTime == null ? 0 : startTime!.hashCode) +
+    (endTime == null ? 0 : endTime!.hashCode) +
+    (status == null ? 0 : status!.hashCode);
 
   @override
-  String toString() => 'PageableObject[sort=$sort, paged=$paged, unpaged=$unpaged, pageNumber=$pageNumber, pageSize=$pageSize, offset=$offset]';
+  String toString() => 'ActivityDTO[id=$id, name=$name, betAmount=$betAmount, startTime=$startTime, endTime=$endTime, status=$status]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.id != null) {
+      json[r'id'] = this.id;
     } else {
-      json[r'sort'] = null;
+      json[r'id'] = null;
     }
-    if (this.paged != null) {
-      json[r'paged'] = this.paged;
+    if (this.name != null) {
+      json[r'name'] = this.name;
     } else {
-      json[r'paged'] = null;
+      json[r'name'] = null;
     }
-    if (this.unpaged != null) {
-      json[r'unpaged'] = this.unpaged;
+    if (this.betAmount != null) {
+      json[r'betAmount'] = this.betAmount;
     } else {
-      json[r'unpaged'] = null;
+      json[r'betAmount'] = null;
     }
-    if (this.pageNumber != null) {
-      json[r'pageNumber'] = this.pageNumber;
+    if (this.startTime != null) {
+      json[r'startTime'] = this.startTime!.toUtc().toIso8601String();
     } else {
-      json[r'pageNumber'] = null;
+      json[r'startTime'] = null;
     }
-    if (this.pageSize != null) {
-      json[r'pageSize'] = this.pageSize;
+    if (this.endTime != null) {
+      json[r'endTime'] = this.endTime!.toUtc().toIso8601String();
     } else {
-      json[r'pageSize'] = null;
+      json[r'endTime'] = null;
     }
-    if (this.offset != null) {
-      json[r'offset'] = this.offset;
+    if (this.status != null) {
+      json[r'status'] = this.status;
     } else {
-      json[r'offset'] = null;
+      json[r'status'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageableObject] instance and imports its values from
+  /// Returns a new [ActivityDTO] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageableObject? fromJson(dynamic value) {
+  static ActivityDTO? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -138,29 +138,29 @@ class PageableObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageableObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageableObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ActivityDTO[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ActivityDTO[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageableObject(
-        sort: SortObject.fromJson(json[r'sort']),
-        paged: mapValueOfType<bool>(json, r'paged'),
-        unpaged: mapValueOfType<bool>(json, r'unpaged'),
-        pageNumber: mapValueOfType<int>(json, r'pageNumber'),
-        pageSize: mapValueOfType<int>(json, r'pageSize'),
-        offset: mapValueOfType<int>(json, r'offset'),
+      return ActivityDTO(
+        id: mapValueOfType<int>(json, r'id'),
+        name: mapValueOfType<String>(json, r'name'),
+        betAmount: num.parse('${json[r'betAmount']}'),
+        startTime: mapDateTime(json, r'startTime', r''),
+        endTime: mapDateTime(json, r'endTime', r''),
+        status: mapValueOfType<String>(json, r'status'),
       );
     }
     return null;
   }
 
-  static List<PageableObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageableObject>[];
+  static List<ActivityDTO> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ActivityDTO>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageableObject.fromJson(row);
+        final value = ActivityDTO.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -169,12 +169,12 @@ class PageableObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageableObject> mapFromJson(dynamic json) {
-    final map = <String, PageableObject>{};
+  static Map<String, ActivityDTO> mapFromJson(dynamic json) {
+    final map = <String, ActivityDTO>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageableObject.fromJson(entry.value);
+        final value = ActivityDTO.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -183,14 +183,14 @@ class PageableObject {
     return map;
   }
 
-  // maps a json object with a list of PageableObject-objects as value to a dart map
-  static Map<String, List<PageableObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageableObject>>{};
+  // maps a json object with a list of ActivityDTO-objects as value to a dart map
+  static Map<String, List<ActivityDTO>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ActivityDTO>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageableObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ActivityDTO.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

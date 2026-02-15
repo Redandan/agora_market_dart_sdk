@@ -16,9 +16,9 @@ class PwaLogsApi {
 
   final ApiClient apiClient;
 
-  /// 獲取當前所有日誌
+  /// 下載當前所有日誌
   ///
-  /// 獲取當前所有日誌（用於 Terminal 查看）
+  /// 下載當前所有日誌文件，按添加順序從舊到新，無需認證
   ///
   /// Note: This method returns the HTTP [Response].
   Future<Response> getLogsWithHttpInfo() async {
@@ -46,10 +46,10 @@ class PwaLogsApi {
     );
   }
 
-  /// 獲取當前所有日誌
+  /// 下載當前所有日誌
   ///
-  /// 獲取當前所有日誌（用於 Terminal 查看）
-  Future<List<PwaLogEntry>?> getLogs() async {
+  /// 下載當前所有日誌文件，按添加順序從舊到新，無需認證
+  Future<MultipartFile?> getLogs() async {
     final response = await getLogsWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -58,11 +58,8 @@ class PwaLogsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<PwaLogEntry>') as List)
-        .cast<PwaLogEntry>()
-        .toList(growable: false);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MultipartFile',) as MultipartFile;
+    
     }
     return null;
   }

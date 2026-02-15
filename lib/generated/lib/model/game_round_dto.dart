@@ -10,15 +10,15 @@
 
 part of openapi.api;
 
-class PageableObject {
-  /// Returns a new [PageableObject] instance.
-  PageableObject({
-    this.sort,
-    this.paged,
-    this.unpaged,
-    this.pageNumber,
-    this.pageSize,
-    this.offset,
+class GameRoundDTO {
+  /// Returns a new [GameRoundDTO] instance.
+  GameRoundDTO({
+    this.id,
+    this.diceValue,
+    this.betAmount,
+    this.winAmount,
+    this.status,
+    this.createdAt,
   });
 
   ///
@@ -27,7 +27,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SortObject? sort;
+  int? id;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -35,7 +35,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? paged;
+  int? diceValue;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -43,7 +43,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unpaged;
+  num? betAmount;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -51,7 +51,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageNumber;
+  num? winAmount;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -59,7 +59,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageSize;
+  String? status;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -67,69 +67,69 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? offset;
+  DateTime? createdAt;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageableObject &&
-    other.sort == sort &&
-    other.paged == paged &&
-    other.unpaged == unpaged &&
-    other.pageNumber == pageNumber &&
-    other.pageSize == pageSize &&
-    other.offset == offset;
+  bool operator ==(Object other) => identical(this, other) || other is GameRoundDTO &&
+    other.id == id &&
+    other.diceValue == diceValue &&
+    other.betAmount == betAmount &&
+    other.winAmount == winAmount &&
+    other.status == status &&
+    other.createdAt == createdAt;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (sort == null ? 0 : sort!.hashCode) +
-    (paged == null ? 0 : paged!.hashCode) +
-    (unpaged == null ? 0 : unpaged!.hashCode) +
-    (pageNumber == null ? 0 : pageNumber!.hashCode) +
-    (pageSize == null ? 0 : pageSize!.hashCode) +
-    (offset == null ? 0 : offset!.hashCode);
+    (id == null ? 0 : id!.hashCode) +
+    (diceValue == null ? 0 : diceValue!.hashCode) +
+    (betAmount == null ? 0 : betAmount!.hashCode) +
+    (winAmount == null ? 0 : winAmount!.hashCode) +
+    (status == null ? 0 : status!.hashCode) +
+    (createdAt == null ? 0 : createdAt!.hashCode);
 
   @override
-  String toString() => 'PageableObject[sort=$sort, paged=$paged, unpaged=$unpaged, pageNumber=$pageNumber, pageSize=$pageSize, offset=$offset]';
+  String toString() => 'GameRoundDTO[id=$id, diceValue=$diceValue, betAmount=$betAmount, winAmount=$winAmount, status=$status, createdAt=$createdAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.id != null) {
+      json[r'id'] = this.id;
     } else {
-      json[r'sort'] = null;
+      json[r'id'] = null;
     }
-    if (this.paged != null) {
-      json[r'paged'] = this.paged;
+    if (this.diceValue != null) {
+      json[r'diceValue'] = this.diceValue;
     } else {
-      json[r'paged'] = null;
+      json[r'diceValue'] = null;
     }
-    if (this.unpaged != null) {
-      json[r'unpaged'] = this.unpaged;
+    if (this.betAmount != null) {
+      json[r'betAmount'] = this.betAmount;
     } else {
-      json[r'unpaged'] = null;
+      json[r'betAmount'] = null;
     }
-    if (this.pageNumber != null) {
-      json[r'pageNumber'] = this.pageNumber;
+    if (this.winAmount != null) {
+      json[r'winAmount'] = this.winAmount;
     } else {
-      json[r'pageNumber'] = null;
+      json[r'winAmount'] = null;
     }
-    if (this.pageSize != null) {
-      json[r'pageSize'] = this.pageSize;
+    if (this.status != null) {
+      json[r'status'] = this.status;
     } else {
-      json[r'pageSize'] = null;
+      json[r'status'] = null;
     }
-    if (this.offset != null) {
-      json[r'offset'] = this.offset;
+    if (this.createdAt != null) {
+      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
     } else {
-      json[r'offset'] = null;
+      json[r'createdAt'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageableObject] instance and imports its values from
+  /// Returns a new [GameRoundDTO] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageableObject? fromJson(dynamic value) {
+  static GameRoundDTO? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -138,29 +138,29 @@ class PageableObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageableObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageableObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "GameRoundDTO[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "GameRoundDTO[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageableObject(
-        sort: SortObject.fromJson(json[r'sort']),
-        paged: mapValueOfType<bool>(json, r'paged'),
-        unpaged: mapValueOfType<bool>(json, r'unpaged'),
-        pageNumber: mapValueOfType<int>(json, r'pageNumber'),
-        pageSize: mapValueOfType<int>(json, r'pageSize'),
-        offset: mapValueOfType<int>(json, r'offset'),
+      return GameRoundDTO(
+        id: mapValueOfType<int>(json, r'id'),
+        diceValue: mapValueOfType<int>(json, r'diceValue'),
+        betAmount: num.parse('${json[r'betAmount']}'),
+        winAmount: num.parse('${json[r'winAmount']}'),
+        status: mapValueOfType<String>(json, r'status'),
+        createdAt: mapDateTime(json, r'createdAt', r''),
       );
     }
     return null;
   }
 
-  static List<PageableObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageableObject>[];
+  static List<GameRoundDTO> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <GameRoundDTO>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageableObject.fromJson(row);
+        final value = GameRoundDTO.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -169,12 +169,12 @@ class PageableObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageableObject> mapFromJson(dynamic json) {
-    final map = <String, PageableObject>{};
+  static Map<String, GameRoundDTO> mapFromJson(dynamic json) {
+    final map = <String, GameRoundDTO>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageableObject.fromJson(entry.value);
+        final value = GameRoundDTO.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -183,14 +183,14 @@ class PageableObject {
     return map;
   }
 
-  // maps a json object with a list of PageableObject-objects as value to a dart map
-  static Map<String, List<PageableObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageableObject>>{};
+  // maps a json object with a list of GameRoundDTO-objects as value to a dart map
+  static Map<String, List<GameRoundDTO>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<GameRoundDTO>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageableObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = GameRoundDTO.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

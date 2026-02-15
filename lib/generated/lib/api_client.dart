@@ -184,6 +184,10 @@ class ApiClient {
           return value is DateTime ? value : DateTime.tryParse(value);
         case 'AcceptOrderParam':
           return AcceptOrderParam.fromJson(value);
+        case 'ActivityDTO':
+          return ActivityDTO.fromJson(value);
+        case 'ActivityStatDTO':
+          return ActivityStatDTO.fromJson(value);
         case 'AdminCreateUserParam':
           return AdminCreateUserParam.fromJson(value);
         case 'AdminResetPasswordParam':
@@ -250,6 +254,10 @@ class ApiClient {
           return BatchReviewPromoCodeParam.fromJson(value);
         case 'BatchReviewResult':
           return BatchReviewResult.fromJson(value);
+        case 'BatchUpdatePaytableRequest':
+          return BatchUpdatePaytableRequest.fromJson(value);
+        case 'BetResponse':
+          return BetResponse.fromJson(value);
         case 'BindEmailParam':
           return BindEmailParam.fromJson(value);
         case 'BindOAuthParam':
@@ -296,6 +304,8 @@ class ApiClient {
           return CreateColdWalletParam.fromJson(value);
         case 'CreateIssueParam':
           return CreateIssueParam.fromJson(value);
+        case 'CreateMarketRequest':
+          return CreateMarketRequest.fromJson(value);
         case 'CreatePromoCodeParam':
           return CreatePromoCodeParam.fromJson(value);
         case 'CreateRechargeParam':
@@ -376,6 +386,8 @@ class ApiClient {
           return FileSyncResponse.fromJson(value);
         case 'FlutterAppDeploymentResponse':
           return FlutterAppDeploymentResponse.fromJson(value);
+        case 'GameRoundDTO':
+          return GameRoundDTO.fromJson(value);
         case 'GenerateLoginTokenRequest':
           return GenerateLoginTokenRequest.fromJson(value);
         case 'InterestRecordDTO':
@@ -406,6 +418,12 @@ class ApiClient {
           return MaintenanceStatusResponse.fromJson(value);
         case 'MaintenanceToggleRequest':
           return MaintenanceToggleRequest.fromJson(value);
+        case 'MarketOptionRequest':
+          return MarketOptionRequest.fromJson(value);
+        case 'MarketOptionResponse':
+          return MarketOptionResponse.fromJson(value);
+        case 'MarketResponse':
+          return MarketResponse.fromJson(value);
         case 'MemberSearchParam':
           return MemberSearchParam.fromJson(value);
         case 'MemberUpdateParam':
@@ -466,6 +484,8 @@ class ApiClient {
           return OrderSumbitParam.fromJson(value);
         case 'PageAutoReplyConfig':
           return PageAutoReplyConfig.fromJson(value);
+        case 'PageBetResponse':
+          return PageBetResponse.fromJson(value);
         case 'PageCartItem':
           return PageCartItem.fromJson(value);
         case 'PageCartItemResponse':
@@ -488,8 +508,12 @@ class ApiClient {
           return PageDispute.fromJson(value);
         case 'PageFileRecord':
           return PageFileRecord.fromJson(value);
+        case 'PageGameRoundDTO':
+          return PageGameRoundDTO.fromJson(value);
         case 'PageInterestRecordDTO':
           return PageInterestRecordDTO.fromJson(value);
+        case 'PageMarketResponse':
+          return PageMarketResponse.fromJson(value);
         case 'PageNotificationResponseDTO':
           return PageNotificationResponseDTO.fromJson(value);
         case 'PageOrder':
@@ -524,6 +548,12 @@ class ApiClient {
           return PageableObject.fromJson(value);
         case 'PasswordResetParam':
           return PasswordResetParam.fromJson(value);
+        case 'PaytableDTO':
+          return PaytableDTO.fromJson(value);
+        case 'PaytableEntryRequest':
+          return PaytableEntryRequest.fromJson(value);
+        case 'PaytableWithRtpDTO':
+          return PaytableWithRtpDTO.fromJson(value);
         case 'PickupServiceTypeEnum':
           return PickupServiceTypeEnumTypeTransformer().decode(value);
         case 'PickupStore':
@@ -536,6 +566,8 @@ class ApiClient {
           return PickupStoreSyncResponse.fromJson(value);
         case 'PickupStoreSyncStatusResponse':
           return PickupStoreSyncStatusResponse.fromJson(value);
+        case 'PlaceBetRequest':
+          return PlaceBetRequest.fromJson(value);
         case 'PostCreateParam':
           return PostCreateParam.fromJson(value);
         case 'PostResponse':
@@ -610,6 +642,8 @@ class ApiClient {
           return RegisterResult.fromJson(value);
         case 'ReplyIssueParam':
           return ReplyIssueParam.fromJson(value);
+        case 'ResolveMarketRequest':
+          return ResolveMarketRequest.fromJson(value);
         case 'ReturnProcessParam':
           return ReturnProcessParam.fromJson(value);
         case 'ReturnReasonEnum':

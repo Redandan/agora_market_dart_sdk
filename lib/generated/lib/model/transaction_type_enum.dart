@@ -31,6 +31,10 @@ class TransactionTypeEnum {
   static const STAKING = TransactionTypeEnum._(r'STAKING');
   static const UNSTAKING = TransactionTypeEnum._(r'UNSTAKING');
   static const INTEREST = TransactionTypeEnum._(r'INTEREST');
+  static const MARKET_CREATION = TransactionTypeEnum._(r'MARKET_CREATION');
+  static const BET = TransactionTypeEnum._(r'BET');
+  static const BET_WIN = TransactionTypeEnum._(r'BET_WIN');
+  static const BET_REFUND = TransactionTypeEnum._(r'BET_REFUND');
   static const unknownDefaultOpenApi = TransactionTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][TransactionTypeEnum].
@@ -43,6 +47,10 @@ class TransactionTypeEnum {
     STAKING,
     UNSTAKING,
     INTEREST,
+    MARKET_CREATION,
+    BET,
+    BET_WIN,
+    BET_REFUND,
     unknownDefaultOpenApi,
   ];
 
@@ -90,6 +98,10 @@ class TransactionTypeEnumTypeTransformer {
         case r'STAKING': return TransactionTypeEnum.STAKING;
         case r'UNSTAKING': return TransactionTypeEnum.UNSTAKING;
         case r'INTEREST': return TransactionTypeEnum.INTEREST;
+        case r'MARKET_CREATION': return TransactionTypeEnum.MARKET_CREATION;
+        case r'BET': return TransactionTypeEnum.BET;
+        case r'BET_WIN': return TransactionTypeEnum.BET_WIN;
+        case r'BET_REFUND': return TransactionTypeEnum.BET_REFUND;
         case r'unknown_default_open_api': return TransactionTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
