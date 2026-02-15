@@ -300,6 +300,8 @@ class ApiClient {
           return ColdWallet.fromJson(value);
         case 'ColdWalletStatusEnum':
           return ColdWalletStatusEnumTypeTransformer().decode(value);
+        case 'CreateActivityRequest':
+          return CreateActivityRequest.fromJson(value);
         case 'CreateColdWalletParam':
           return CreateColdWalletParam.fromJson(value);
         case 'CreateIssueParam':
@@ -760,6 +762,8 @@ class ApiClient {
           return TwoFactorSetupResponse.fromJson(value);
         case 'TwoFactorVerifyParam':
           return TwoFactorVerifyParam.fromJson(value);
+        case 'UpdateActivityRequest':
+          return UpdateActivityRequest.fromJson(value);
         case 'UpdateDeliveryOrderParam':
           return UpdateDeliveryOrderParam.fromJson(value);
         case 'UpdatePromoCodeParam':

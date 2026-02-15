@@ -15,6 +15,7 @@ class ActivityDTO {
   ActivityDTO({
     this.id,
     this.name,
+    this.groupId,
     this.betAmount,
     this.startTime,
     this.endTime,
@@ -36,6 +37,14 @@ class ActivityDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? name;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? groupId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -73,6 +82,7 @@ class ActivityDTO {
   bool operator ==(Object other) => identical(this, other) || other is ActivityDTO &&
     other.id == id &&
     other.name == name &&
+    other.groupId == groupId &&
     other.betAmount == betAmount &&
     other.startTime == startTime &&
     other.endTime == endTime &&
@@ -83,13 +93,14 @@ class ActivityDTO {
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
     (name == null ? 0 : name!.hashCode) +
+    (groupId == null ? 0 : groupId!.hashCode) +
     (betAmount == null ? 0 : betAmount!.hashCode) +
     (startTime == null ? 0 : startTime!.hashCode) +
     (endTime == null ? 0 : endTime!.hashCode) +
     (status == null ? 0 : status!.hashCode);
 
   @override
-  String toString() => 'ActivityDTO[id=$id, name=$name, betAmount=$betAmount, startTime=$startTime, endTime=$endTime, status=$status]';
+  String toString() => 'ActivityDTO[id=$id, name=$name, groupId=$groupId, betAmount=$betAmount, startTime=$startTime, endTime=$endTime, status=$status]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -102,6 +113,11 @@ class ActivityDTO {
       json[r'name'] = this.name;
     } else {
       json[r'name'] = null;
+    }
+    if (this.groupId != null) {
+      json[r'groupId'] = this.groupId;
+    } else {
+      json[r'groupId'] = null;
     }
     if (this.betAmount != null) {
       json[r'betAmount'] = this.betAmount;
@@ -147,6 +163,7 @@ class ActivityDTO {
       return ActivityDTO(
         id: mapValueOfType<int>(json, r'id'),
         name: mapValueOfType<String>(json, r'name'),
+        groupId: mapValueOfType<int>(json, r'groupId'),
         betAmount: num.parse('${json[r'betAmount']}'),
         startTime: mapDateTime(json, r'startTime', r''),
         endTime: mapDateTime(json, r'endTime', r''),

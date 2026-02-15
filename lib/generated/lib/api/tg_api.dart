@@ -72,6 +72,121 @@ class TGApi {
     return null;
   }
 
+  /// 建立活動
+  ///
+  /// 建立拉霸活動，groupId 可選，不傳則不限制群組
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [CreateActivityRequest] createActivityRequest (required):
+  Future<Response> createActivityWithHttpInfo(CreateActivityRequest createActivityRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/tg-game/activity';
+
+    // ignore: prefer_final_locals
+    Object? postBody = createActivityRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 建立活動
+  ///
+  /// 建立拉霸活動，groupId 可選，不傳則不限制群組
+  ///
+  /// Parameters:
+  ///
+  /// * [CreateActivityRequest] createActivityRequest (required):
+  Future<ActivityDTO?> createActivity(CreateActivityRequest createActivityRequest,) async {
+    final response = await createActivityWithHttpInfo(createActivityRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ActivityDTO',) as ActivityDTO;
+    
+    }
+    return null;
+  }
+
+  /// 結束活動
+  ///
+  /// 將活動狀態設為 FINISHED
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   活動 ID
+  Future<Response> finishActivityWithHttpInfo(int id,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/tg-game/activity/{id}/finish'
+      .replaceAll('{id}', id.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'PATCH',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 結束活動
+  ///
+  /// 將活動狀態設為 FINISHED
+  ///
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   活動 ID
+  Future<ActivityDTO?> finishActivity(int id,) async {
+    final response = await finishActivityWithHttpInfo(id,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ActivityDTO',) as ActivityDTO;
+    
+    }
+    return null;
+  }
+
   /// 查詢活動統計
   ///
   /// 查詢活動的統計數據（總投注、總獎金、利潤、玩家數）
@@ -139,9 +254,9 @@ class TGApi {
   ///
   /// Parameters:
   ///
-  /// * [int] groupId (required):
-  ///   Telegram 群組 ID
-  Future<Response> getCurrentActivityWithHttpInfo(int groupId,) async {
+  /// * [int] groupId:
+  ///   Telegram 群組 ID（可選，不傳則查詢不限制群組的活動）
+  Future<Response> getCurrentActivityWithHttpInfo({ int? groupId, }) async {
     // ignore: prefer_const_declarations
     final path = r'/tg-game/activity/current';
 
@@ -152,7 +267,9 @@ class TGApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+    if (groupId != null) {
       queryParams.addAll(_queryParams('', 'groupId', groupId));
+    }
 
     const contentTypes = <String>[];
 
@@ -174,10 +291,10 @@ class TGApi {
   ///
   /// Parameters:
   ///
-  /// * [int] groupId (required):
-  ///   Telegram 群組 ID
-  Future<ActivityDTO?> getCurrentActivity(int groupId,) async {
-    final response = await getCurrentActivityWithHttpInfo(groupId,);
+  /// * [int] groupId:
+  ///   Telegram 群組 ID（可選，不傳則查詢不限制群組的活動）
+  Future<ActivityDTO?> getCurrentActivity({ int? groupId, }) async {
+    final response = await getCurrentActivityWithHttpInfo( groupId: groupId, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -331,6 +448,69 @@ class TGApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageGameRoundDTO',) as PageGameRoundDTO;
+    
+    }
+    return null;
+  }
+
+  /// 更新活動
+  ///
+  /// 更新拉霸活動設定（只更新有傳入的欄位）
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   活動 ID
+  ///
+  /// * [UpdateActivityRequest] updateActivityRequest (required):
+  Future<Response> updateActivityWithHttpInfo(int id, UpdateActivityRequest updateActivityRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/tg-game/activity/{id}'
+      .replaceAll('{id}', id.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody = updateActivityRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 更新活動
+  ///
+  /// 更新拉霸活動設定（只更新有傳入的欄位）
+  ///
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   活動 ID
+  ///
+  /// * [UpdateActivityRequest] updateActivityRequest (required):
+  Future<ActivityDTO?> updateActivity(int id, UpdateActivityRequest updateActivityRequest,) async {
+    final response = await updateActivityWithHttpInfo(id, updateActivityRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ActivityDTO',) as ActivityDTO;
     
     }
     return null;

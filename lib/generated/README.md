@@ -394,10 +394,13 @@ Class | Method | HTTP request | Description
 *StoresApi* | [**updateShippingConfig**](doc//StoresApi.md#updateshippingconfig) | **POST** /stores/shipping-config | 更新商店物流設定
 *StoresApi* | [**updateStore**](doc//StoresApi.md#updatestore) | **POST** /stores/update | 更新商店
 *TGApi* | [**batchUpdatePaytable**](doc//TGApi.md#batchupdatepaytable) | **PUT** /tg-game/paytable/batch | 批次更新賠付規則
+*TGApi* | [**createActivity**](doc//TGApi.md#createactivity) | **POST** /tg-game/activity | 建立活動
+*TGApi* | [**finishActivity**](doc//TGApi.md#finishactivity) | **PATCH** /tg-game/activity/{id}/finish | 結束活動
 *TGApi* | [**getActivityStatistics**](doc//TGApi.md#getactivitystatistics) | **GET** /tg-game/activity/{id}/stat | 查詢活動統計
 *TGApi* | [**getCurrentActivity**](doc//TGApi.md#getcurrentactivity) | **GET** /tg-game/activity/current | 查詢當前活動
 *TGApi* | [**getPaytableByGameAndHandicap**](doc//TGApi.md#getpaytablebygameandhandicap) | **GET** /tg-game/paytable | 查詢賠付規則及 RTP
 *TGApi* | [**getPlayerRounds**](doc//TGApi.md#getplayerrounds) | **GET** /tg-game/rounds | 查詢玩家流水
+*TGApi* | [**updateActivity**](doc//TGApi.md#updateactivity) | **PUT** /tg-game/activity/{id} | 更新活動
 *TelegramBotLoginApi* | [**generateLoginToken**](doc//TelegramBotLoginApi.md#generatelogintoken) | **POST** /auth/telegram-bot/generate-login-token | 生成登录 loginToken
 *TelegramBotLoginApi* | [**verifyCode**](doc//TelegramBotLoginApi.md#verifycode) | **POST** /auth/telegram-bot/verify-code | 验证验证码
 *TelegramMiniAppLoginApi* | [**login1**](doc//TelegramMiniAppLoginApi.md#login1) | **POST** /auth/telegram-mini-app/login | Telegram Mini App 登录
@@ -499,6 +502,7 @@ Class | Method | HTTP request | Description
  - [ClientLogDto](doc//ClientLogDto.md)
  - [ColdWallet](doc//ColdWallet.md)
  - [ColdWalletStatusEnum](doc//ColdWalletStatusEnum.md)
+ - [CreateActivityRequest](doc//CreateActivityRequest.md)
  - [CreateColdWalletParam](doc//CreateColdWalletParam.md)
  - [CreateIssueParam](doc//CreateIssueParam.md)
  - [CreateMarketRequest](doc//CreateMarketRequest.md)
@@ -729,6 +733,7 @@ Class | Method | HTTP request | Description
  - [TwoFactorManageParam](doc//TwoFactorManageParam.md)
  - [TwoFactorSetupResponse](doc//TwoFactorSetupResponse.md)
  - [TwoFactorVerifyParam](doc//TwoFactorVerifyParam.md)
+ - [UpdateActivityRequest](doc//UpdateActivityRequest.md)
  - [UpdateDeliveryOrderParam](doc//UpdateDeliveryOrderParam.md)
  - [UpdatePromoCodeParam](doc//UpdatePromoCodeParam.md)
  - [User](doc//User.md)
