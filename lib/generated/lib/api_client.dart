@@ -186,6 +186,8 @@ class ApiClient {
           return AcceptOrderParam.fromJson(value);
         case 'ActivityDTO':
           return ActivityDTO.fromJson(value);
+        case 'ActivitySearchParam':
+          return ActivitySearchParam.fromJson(value);
         case 'ActivityStatDTO':
           return ActivityStatDTO.fromJson(value);
         case 'AdminCreateUserParam':
@@ -484,6 +486,8 @@ class ApiClient {
           return OrderStatusEnumTypeTransformer().decode(value);
         case 'OrderSumbitParam':
           return OrderSumbitParam.fromJson(value);
+        case 'PageActivityDTO':
+          return PageActivityDTO.fromJson(value);
         case 'PageAutoReplyConfig':
           return PageAutoReplyConfig.fromJson(value);
         case 'PageBetResponse':

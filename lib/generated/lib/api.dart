@@ -77,6 +77,7 @@ part 'api/webrtc_api.dart';
 
 part 'model/accept_order_param.dart';
 part 'model/activity_dto.dart';
+part 'model/activity_search_param.dart';
 part 'model/activity_stat_dto.dart';
 part 'model/admin_create_user_param.dart';
 part 'model/admin_reset_password_param.dart';
@@ -226,6 +227,7 @@ part 'model/order_ship_platform_param.dart';
 part 'model/order_statistics_dto.dart';
 part 'model/order_status_enum.dart';
 part 'model/order_sumbit_param.dart';
+part 'model/page_activity_dto.dart';
 part 'model/page_auto_reply_config.dart';
 part 'model/page_bet_response.dart';
 part 'model/page_cart_item.dart';

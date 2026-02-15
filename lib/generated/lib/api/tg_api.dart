@@ -246,68 +246,6 @@ class TGApi {
     return null;
   }
 
-  /// 查詢當前活動
-  ///
-  /// 查詢指定群組當前進行中的活動
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] groupId:
-  ///   Telegram 群組 ID（可選，不傳則查詢不限制群組的活動）
-  Future<Response> getCurrentActivityWithHttpInfo({ int? groupId, }) async {
-    // ignore: prefer_const_declarations
-    final path = r'/tg-game/activity/current';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    if (groupId != null) {
-      queryParams.addAll(_queryParams('', 'groupId', groupId));
-    }
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 查詢當前活動
-  ///
-  /// 查詢指定群組當前進行中的活動
-  ///
-  /// Parameters:
-  ///
-  /// * [int] groupId:
-  ///   Telegram 群組 ID（可選，不傳則查詢不限制群組的活動）
-  Future<ActivityDTO?> getCurrentActivity({ int? groupId, }) async {
-    final response = await getCurrentActivityWithHttpInfo( groupId: groupId, );
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ActivityDTO',) as ActivityDTO;
-    
-    }
-    return null;
-  }
-
   /// 查詢賠付規則及 RTP
   ///
   /// 查詢特定遊戲和盤口的賠付規則及 RTP
@@ -448,6 +386,62 @@ class TGApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageGameRoundDTO',) as PageGameRoundDTO;
+    
+    }
+    return null;
+  }
+
+  /// 查詢活動
+  ///
+  /// 多條件查詢活動，支援分頁
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [ActivitySearchParam] activitySearchParam (required):
+  Future<Response> searchActivitiesWithHttpInfo(ActivitySearchParam activitySearchParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/tg-game/activity/search';
+
+    // ignore: prefer_final_locals
+    Object? postBody = activitySearchParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查詢活動
+  ///
+  /// 多條件查詢活動，支援分頁
+  ///
+  /// Parameters:
+  ///
+  /// * [ActivitySearchParam] activitySearchParam (required):
+  Future<PageActivityDTO?> searchActivities(ActivitySearchParam activitySearchParam,) async {
+    final response = await searchActivitiesWithHttpInfo(activitySearchParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageActivityDTO',) as PageActivityDTO;
     
     }
     return null;

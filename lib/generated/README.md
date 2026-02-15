@@ -397,9 +397,9 @@ Class | Method | HTTP request | Description
 *TGApi* | [**createActivity**](doc//TGApi.md#createactivity) | **POST** /tg-game/activity | 建立活動
 *TGApi* | [**finishActivity**](doc//TGApi.md#finishactivity) | **PATCH** /tg-game/activity/{id}/finish | 結束活動
 *TGApi* | [**getActivityStatistics**](doc//TGApi.md#getactivitystatistics) | **GET** /tg-game/activity/{id}/stat | 查詢活動統計
-*TGApi* | [**getCurrentActivity**](doc//TGApi.md#getcurrentactivity) | **GET** /tg-game/activity/current | 查詢當前活動
 *TGApi* | [**getPaytableByGameAndHandicap**](doc//TGApi.md#getpaytablebygameandhandicap) | **GET** /tg-game/paytable | 查詢賠付規則及 RTP
 *TGApi* | [**getPlayerRounds**](doc//TGApi.md#getplayerrounds) | **GET** /tg-game/rounds | 查詢玩家流水
+*TGApi* | [**searchActivities**](doc//TGApi.md#searchactivities) | **POST** /tg-game/activity/search | 查詢活動
 *TGApi* | [**updateActivity**](doc//TGApi.md#updateactivity) | **PUT** /tg-game/activity/{id} | 更新活動
 *TelegramBotLoginApi* | [**generateLoginToken**](doc//TelegramBotLoginApi.md#generatelogintoken) | **POST** /auth/telegram-bot/generate-login-token | 生成登录 loginToken
 *TelegramBotLoginApi* | [**verifyCode**](doc//TelegramBotLoginApi.md#verifycode) | **POST** /auth/telegram-bot/verify-code | 验证验证码
@@ -445,6 +445,7 @@ Class | Method | HTTP request | Description
 
  - [AcceptOrderParam](doc//AcceptOrderParam.md)
  - [ActivityDTO](doc//ActivityDTO.md)
+ - [ActivitySearchParam](doc//ActivitySearchParam.md)
  - [ActivityStatDTO](doc//ActivityStatDTO.md)
  - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
  - [AdminResetPasswordParam](doc//AdminResetPasswordParam.md)
@@ -594,6 +595,7 @@ Class | Method | HTTP request | Description
  - [OrderStatisticsDTO](doc//OrderStatisticsDTO.md)
  - [OrderStatusEnum](doc//OrderStatusEnum.md)
  - [OrderSumbitParam](doc//OrderSumbitParam.md)
+ - [PageActivityDTO](doc//PageActivityDTO.md)
  - [PageAutoReplyConfig](doc//PageAutoReplyConfig.md)
  - [PageBetResponse](doc//PageBetResponse.md)
  - [PageCartItem](doc//PageCartItem.md)
