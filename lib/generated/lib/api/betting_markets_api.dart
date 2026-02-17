@@ -30,7 +30,7 @@ class BettingMarketsApi {
   ///   取消原因
   Future<Response> cancelMarketWithHttpInfo(int id, String reason,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/markets/{id}/cancel'
+    final path = r'/markets/{id}/cancel'
       .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
@@ -84,7 +84,7 @@ class BettingMarketsApi {
   /// * [int] id (required):
   Future<Response> closeMarketWithHttpInfo(int id,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/markets/{id}/close'
+    final path = r'/markets/{id}/close'
       .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
@@ -133,7 +133,7 @@ class BettingMarketsApi {
   /// * [CreateMarketRequest] createMarketRequest (required):
   Future<Response> createMarketWithHttpInfo(CreateMarketRequest createMarketRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/markets';
+    final path = r'/markets';
 
     // ignore: prefer_final_locals
     Object? postBody = createMarketRequest;
@@ -193,7 +193,7 @@ class BettingMarketsApi {
   ///   每頁數量
   Future<Response> getActiveMarketsWithHttpInfo({ int? page, int? size, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/markets/active';
+    final path = r'/markets/active';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -260,7 +260,7 @@ class BettingMarketsApi {
   /// * [int] id (required):
   Future<Response> getMarketWithHttpInfo(int id,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/markets/{id}'
+    final path = r'/markets/{id}'
       .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
@@ -306,122 +306,6 @@ class BettingMarketsApi {
     return null;
   }
 
-  /// 查詢市場列表
-  ///
-  /// 根據條件查詢市場列表
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] status:
-  ///   市場狀態
-  ///
-  /// * [String] category:
-  ///   市場分類
-  ///
-  /// * [bool] featured:
-  ///   是否只顯示精選
-  ///
-  /// * [int] page:
-  ///   頁碼（從0開始）
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  ///
-  /// * [String] sortBy:
-  ///   排序字段
-  ///
-  /// * [String] direction:
-  ///   排序方向
-  Future<Response> getMarketsWithHttpInfo({ String? status, String? category, bool? featured, int? page, int? size, String? sortBy, String? direction, }) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/markets';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    if (status != null) {
-      queryParams.addAll(_queryParams('', 'status', status));
-    }
-    if (category != null) {
-      queryParams.addAll(_queryParams('', 'category', category));
-    }
-    if (featured != null) {
-      queryParams.addAll(_queryParams('', 'featured', featured));
-    }
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
-    if (sortBy != null) {
-      queryParams.addAll(_queryParams('', 'sortBy', sortBy));
-    }
-    if (direction != null) {
-      queryParams.addAll(_queryParams('', 'direction', direction));
-    }
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 查詢市場列表
-  ///
-  /// 根據條件查詢市場列表
-  ///
-  /// Parameters:
-  ///
-  /// * [String] status:
-  ///   市場狀態
-  ///
-  /// * [String] category:
-  ///   市場分類
-  ///
-  /// * [bool] featured:
-  ///   是否只顯示精選
-  ///
-  /// * [int] page:
-  ///   頁碼（從0開始）
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  ///
-  /// * [String] sortBy:
-  ///   排序字段
-  ///
-  /// * [String] direction:
-  ///   排序方向
-  Future<PageMarketResponse?> getMarkets({ String? status, String? category, bool? featured, int? page, int? size, String? sortBy, String? direction, }) async {
-    final response = await getMarketsWithHttpInfo( status: status, category: category, featured: featured, page: page, size: size, sortBy: sortBy, direction: direction, );
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageMarketResponse',) as PageMarketResponse;
-    
-    }
-    return null;
-  }
-
   /// 結算市場
   ///
   /// 結算市場並分配獎金（僅解決者或管理員）
@@ -435,7 +319,7 @@ class BettingMarketsApi {
   /// * [ResolveMarketRequest] resolveMarketRequest (required):
   Future<Response> resolveMarketWithHttpInfo(int id, ResolveMarketRequest resolveMarketRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/markets/{id}/resolve'
+    final path = r'/markets/{id}/resolve'
       .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
@@ -477,45 +361,30 @@ class BettingMarketsApi {
 
   /// 搜索市場
   ///
-  /// 根據關鍵字搜索市場
+  /// 根據條件搜索市場
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [String] keyword (required):
-  ///   搜索關鍵字
-  ///
-  /// * [int] page:
-  ///   頁碼（從0開始）
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<Response> searchMarketsWithHttpInfo(String keyword, { int? page, int? size, }) async {
+  /// * [MarketSearchRequest] marketSearchRequest (required):
+  Future<Response> searchMarketsWithHttpInfo(MarketSearchRequest marketSearchRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/markets/search';
+    final path = r'/markets/search';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = marketSearchRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'keyword', keyword));
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
-    }
-    if (size != null) {
-      queryParams.addAll(_queryParams('', 'size', size));
-    }
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -526,20 +395,13 @@ class BettingMarketsApi {
 
   /// 搜索市場
   ///
-  /// 根據關鍵字搜索市場
+  /// 根據條件搜索市場
   ///
   /// Parameters:
   ///
-  /// * [String] keyword (required):
-  ///   搜索關鍵字
-  ///
-  /// * [int] page:
-  ///   頁碼（從0開始）
-  ///
-  /// * [int] size:
-  ///   每頁數量
-  Future<PageMarketResponse?> searchMarkets(String keyword, { int? page, int? size, }) async {
-    final response = await searchMarketsWithHttpInfo(keyword,  page: page, size: size, );
+  /// * [MarketSearchRequest] marketSearchRequest (required):
+  Future<PageMarketResponse?> searchMarkets(MarketSearchRequest marketSearchRequest,) async {
+    final response = await searchMarketsWithHttpInfo(marketSearchRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -76,6 +76,9 @@ String parameterToString(dynamic value) {
   if (value is IssueTypeEnum) {
     return IssueTypeEnumTypeTransformer().encode(value).toString();
   }
+  if (value is MarketStatusEnum) {
+    return MarketStatusEnumTypeTransformer().encode(value).toString();
+  }
   if (value is NotificationStatusEnum) {
     return NotificationStatusEnumTypeTransformer().encode(value).toString();
   }

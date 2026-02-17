@@ -13,150 +13,66 @@ part of openapi.api;
 class BetResponse {
   /// Returns a new [BetResponse] instance.
   BetResponse({
-    this.id,
-    this.userId,
+    required this.id,
+    required this.userId,
     this.username,
-    this.marketId,
+    required this.marketId,
     this.marketTitle,
-    this.optionId,
+    required this.optionId,
     this.optionDescription,
-    this.betAmount,
+    required this.betAmount,
     this.oddsAtBet,
     this.potentialPayout,
     this.actualPayout,
-    this.status,
+    required this.status,
     this.settledAt,
-    this.createdAt,
+    required this.createdAt,
     this.actualReturnRate,
   });
 
   /// 投注ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? id;
+  int id;
 
   /// 用戶ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? userId;
+  int userId;
 
   /// 用戶名
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? username;
 
   /// 市場ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? marketId;
+  int marketId;
 
   /// 市場標題
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? marketTitle;
 
   /// 選項ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? optionId;
+  int optionId;
 
   /// 選項描述
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? optionDescription;
 
   /// 投注金額
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? betAmount;
+  num betAmount;
 
   /// 下注時的賠率
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? oddsAtBet;
 
   /// 潛在收益
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? potentialPayout;
 
   /// 實際收益
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? actualPayout;
 
   /// 投注狀態
-  BetResponseStatusEnum? status;
+  BetResponseStatusEnum status;
 
   /// 結算時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? settledAt;
 
   /// 下注時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? createdAt;
+  DateTime createdAt;
 
   /// 實際收益率
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? actualReturnRate;
 
   @override
@@ -180,20 +96,20 @@ class BetResponse {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (userId == null ? 0 : userId!.hashCode) +
+    (id.hashCode) +
+    (userId.hashCode) +
     (username == null ? 0 : username!.hashCode) +
-    (marketId == null ? 0 : marketId!.hashCode) +
+    (marketId.hashCode) +
     (marketTitle == null ? 0 : marketTitle!.hashCode) +
-    (optionId == null ? 0 : optionId!.hashCode) +
+    (optionId.hashCode) +
     (optionDescription == null ? 0 : optionDescription!.hashCode) +
-    (betAmount == null ? 0 : betAmount!.hashCode) +
+    (betAmount.hashCode) +
     (oddsAtBet == null ? 0 : oddsAtBet!.hashCode) +
     (potentialPayout == null ? 0 : potentialPayout!.hashCode) +
     (actualPayout == null ? 0 : actualPayout!.hashCode) +
-    (status == null ? 0 : status!.hashCode) +
+    (status.hashCode) +
     (settledAt == null ? 0 : settledAt!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
+    (createdAt.hashCode) +
     (actualReturnRate == null ? 0 : actualReturnRate!.hashCode);
 
   @override
@@ -201,46 +117,26 @@ class BetResponse {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
       json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
-    if (this.userId != null) {
       json[r'userId'] = this.userId;
-    } else {
-      json[r'userId'] = null;
-    }
     if (this.username != null) {
       json[r'username'] = this.username;
     } else {
       json[r'username'] = null;
     }
-    if (this.marketId != null) {
       json[r'marketId'] = this.marketId;
-    } else {
-      json[r'marketId'] = null;
-    }
     if (this.marketTitle != null) {
       json[r'marketTitle'] = this.marketTitle;
     } else {
       json[r'marketTitle'] = null;
     }
-    if (this.optionId != null) {
       json[r'optionId'] = this.optionId;
-    } else {
-      json[r'optionId'] = null;
-    }
     if (this.optionDescription != null) {
       json[r'optionDescription'] = this.optionDescription;
     } else {
       json[r'optionDescription'] = null;
     }
-    if (this.betAmount != null) {
       json[r'betAmount'] = this.betAmount;
-    } else {
-      json[r'betAmount'] = null;
-    }
     if (this.oddsAtBet != null) {
       json[r'oddsAtBet'] = this.oddsAtBet;
     } else {
@@ -256,21 +152,13 @@ class BetResponse {
     } else {
       json[r'actualPayout'] = null;
     }
-    if (this.status != null) {
       json[r'status'] = this.status;
-    } else {
-      json[r'status'] = null;
-    }
     if (this.settledAt != null) {
       json[r'settledAt'] = this.settledAt!.toUtc().toIso8601String();
     } else {
       json[r'settledAt'] = null;
     }
-    if (this.createdAt != null) {
-      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
-    } else {
-      json[r'createdAt'] = null;
-    }
+      json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
     if (this.actualReturnRate != null) {
       json[r'actualReturnRate'] = this.actualReturnRate;
     } else {
@@ -298,21 +186,29 @@ class BetResponse {
       }());
 
       return BetResponse(
-        id: mapValueOfType<int>(json, r'id'),
-        userId: mapValueOfType<int>(json, r'userId'),
+        id: mapValueOfType<int>(json, r'id')!,
+        userId: mapValueOfType<int>(json, r'userId')!,
         username: mapValueOfType<String>(json, r'username'),
-        marketId: mapValueOfType<int>(json, r'marketId'),
+        marketId: mapValueOfType<int>(json, r'marketId')!,
         marketTitle: mapValueOfType<String>(json, r'marketTitle'),
-        optionId: mapValueOfType<int>(json, r'optionId'),
+        optionId: mapValueOfType<int>(json, r'optionId')!,
         optionDescription: mapValueOfType<String>(json, r'optionDescription'),
         betAmount: num.parse('${json[r'betAmount']}'),
-        oddsAtBet: num.parse('${json[r'oddsAtBet']}'),
-        potentialPayout: num.parse('${json[r'potentialPayout']}'),
-        actualPayout: num.parse('${json[r'actualPayout']}'),
-        status: BetResponseStatusEnum.fromJson(json[r'status']),
+        oddsAtBet: json[r'oddsAtBet'] == null
+            ? null
+            : num.parse('${json[r'oddsAtBet']}'),
+        potentialPayout: json[r'potentialPayout'] == null
+            ? null
+            : num.parse('${json[r'potentialPayout']}'),
+        actualPayout: json[r'actualPayout'] == null
+            ? null
+            : num.parse('${json[r'actualPayout']}'),
+        status: BetResponseStatusEnum.fromJson(json[r'status'])!,
         settledAt: mapDateTime(json, r'settledAt', r''),
-        createdAt: mapDateTime(json, r'createdAt', r''),
-        actualReturnRate: num.parse('${json[r'actualReturnRate']}'),
+        createdAt: mapDateTime(json, r'createdAt', r'')!,
+        actualReturnRate: json[r'actualReturnRate'] == null
+            ? null
+            : num.parse('${json[r'actualReturnRate']}'),
       );
     }
     return null;
@@ -360,6 +256,13 @@ class BetResponse {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
+    'userId',
+    'marketId',
+    'optionId',
+    'betAmount',
+    'status',
+    'createdAt',
   };
 }
 

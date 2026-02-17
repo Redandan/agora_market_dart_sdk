@@ -31,12 +31,6 @@ class CreateMarketRequest {
   String title;
 
   /// 市場描述
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? description;
 
   /// 市場類型
@@ -56,42 +50,18 @@ class CreateMarketRequest {
   /// 最大投注金額
   ///
   /// Minimum value: 1.0
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? maxBetAmount;
 
   /// 平台手續費百分比（0-10）
   ///
   /// Minimum value: 0.0
   /// Maximum value: 10.0
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? feePercentage;
 
   /// 市場圖片URL
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? imageUrl;
 
   /// 市場分類
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? category;
 
   /// 初始流動性（做莊資金）
@@ -199,8 +169,12 @@ class CreateMarketRequest {
         startTime: mapDateTime(json, r'startTime', r'')!,
         endTime: mapDateTime(json, r'endTime', r'')!,
         minBetAmount: num.parse('${json[r'minBetAmount']}'),
-        maxBetAmount: num.parse('${json[r'maxBetAmount']}'),
-        feePercentage: num.parse('${json[r'feePercentage']}'),
+        maxBetAmount: json[r'maxBetAmount'] == null
+            ? null
+            : num.parse('${json[r'maxBetAmount']}'),
+        feePercentage: json[r'feePercentage'] == null
+            ? null
+            : num.parse('${json[r'feePercentage']}'),
         imageUrl: mapValueOfType<String>(json, r'imageUrl'),
         category: mapValueOfType<String>(json, r'category'),
         initialLiquidity: num.parse('${json[r'initialLiquidity']}'),

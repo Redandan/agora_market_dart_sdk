@@ -428,6 +428,10 @@ class ApiClient {
           return MarketOptionResponse.fromJson(value);
         case 'MarketResponse':
           return MarketResponse.fromJson(value);
+        case 'MarketSearchRequest':
+          return MarketSearchRequest.fromJson(value);
+        case 'MarketStatusEnum':
+          return MarketStatusEnumTypeTransformer().decode(value);
         case 'MemberSearchParam':
           return MemberSearchParam.fromJson(value);
         case 'MemberUpdateParam':

@@ -33,66 +33,24 @@ class MarketOptionResponse {
   int? id;
 
   /// 選項描述
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? description;
 
   /// 顯示順序
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? displayOrder;
 
   /// 該選項的總投注金額
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? totalBets;
 
   /// 該選項的參與人數
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? totalParticipants;
 
   /// 當前賠率
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? currentOdds;
 
   /// 賠率百分比
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? oddsPercentage;
 
   /// 是否為獲勝選項
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? isWinningOption;
 
   @override
@@ -188,10 +146,16 @@ class MarketOptionResponse {
         id: mapValueOfType<int>(json, r'id'),
         description: mapValueOfType<String>(json, r'description'),
         displayOrder: mapValueOfType<int>(json, r'displayOrder'),
-        totalBets: num.parse('${json[r'totalBets']}'),
+        totalBets: json[r'totalBets'] == null
+            ? null
+            : num.parse('${json[r'totalBets']}'),
         totalParticipants: mapValueOfType<int>(json, r'totalParticipants'),
-        currentOdds: num.parse('${json[r'currentOdds']}'),
-        oddsPercentage: num.parse('${json[r'oddsPercentage']}'),
+        currentOdds: json[r'currentOdds'] == null
+            ? null
+            : num.parse('${json[r'currentOdds']}'),
+        oddsPercentage: json[r'oddsPercentage'] == null
+            ? null
+            : num.parse('${json[r'oddsPercentage']}'),
         isWinningOption: mapValueOfType<bool>(json, r'isWinningOption'),
       );
     }

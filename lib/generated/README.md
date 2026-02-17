@@ -236,14 +236,13 @@ Class | Method | HTTP request | Description
 *BettingApi* | [**getMarketBets**](doc//BettingApi.md#getmarketbets) | **GET** /api/bets/market/{marketId} | 市場投注記錄
 *BettingApi* | [**getMyBets**](doc//BettingApi.md#getmybets) | **GET** /api/bets/my | 我的投注記錄
 *BettingApi* | [**placeBet**](doc//BettingApi.md#placebet) | **POST** /api/bets | 下注
-*BettingMarketsApi* | [**cancelMarket**](doc//BettingMarketsApi.md#cancelmarket) | **POST** /api/markets/{id}/cancel | 取消市場
-*BettingMarketsApi* | [**closeMarket**](doc//BettingMarketsApi.md#closemarket) | **PUT** /api/markets/{id}/close | 關閉市場
-*BettingMarketsApi* | [**createMarket**](doc//BettingMarketsApi.md#createmarket) | **POST** /api/markets | 創建市場
-*BettingMarketsApi* | [**getActiveMarkets**](doc//BettingMarketsApi.md#getactivemarkets) | **GET** /api/markets/active | 查詢活躍市場
-*BettingMarketsApi* | [**getMarket**](doc//BettingMarketsApi.md#getmarket) | **GET** /api/markets/{id} | 獲取市場詳情
-*BettingMarketsApi* | [**getMarkets**](doc//BettingMarketsApi.md#getmarkets) | **GET** /api/markets | 查詢市場列表
-*BettingMarketsApi* | [**resolveMarket**](doc//BettingMarketsApi.md#resolvemarket) | **POST** /api/markets/{id}/resolve | 結算市場
-*BettingMarketsApi* | [**searchMarkets**](doc//BettingMarketsApi.md#searchmarkets) | **GET** /api/markets/search | 搜索市場
+*BettingMarketsApi* | [**cancelMarket**](doc//BettingMarketsApi.md#cancelmarket) | **POST** /markets/{id}/cancel | 取消市場
+*BettingMarketsApi* | [**closeMarket**](doc//BettingMarketsApi.md#closemarket) | **PUT** /markets/{id}/close | 關閉市場
+*BettingMarketsApi* | [**createMarket**](doc//BettingMarketsApi.md#createmarket) | **POST** /markets | 創建市場
+*BettingMarketsApi* | [**getActiveMarkets**](doc//BettingMarketsApi.md#getactivemarkets) | **GET** /markets/active | 查詢活躍市場
+*BettingMarketsApi* | [**getMarket**](doc//BettingMarketsApi.md#getmarket) | **GET** /markets/{id} | 獲取市場詳情
+*BettingMarketsApi* | [**resolveMarket**](doc//BettingMarketsApi.md#resolvemarket) | **POST** /markets/{id}/resolve | 結算市場
+*BettingMarketsApi* | [**searchMarkets**](doc//BettingMarketsApi.md#searchmarkets) | **POST** /markets/search | 搜索市場
 *ChatApi* | [**clearSession**](doc//ChatApi.md#clearsession) | **DELETE** /chat/sessions/{sessionId}/messages | 清空會話
 *ChatApi* | [**deleteMessage**](doc//ChatApi.md#deletemessage) | **DELETE** /chat/messages/{messageId} | 刪除消息
 *ChatApi* | [**deleteSession**](doc//ChatApi.md#deletesession) | **DELETE** /chat/sessions/{sessionId} | 刪除會話
@@ -566,6 +565,8 @@ Class | Method | HTTP request | Description
  - [MarketOptionRequest](doc//MarketOptionRequest.md)
  - [MarketOptionResponse](doc//MarketOptionResponse.md)
  - [MarketResponse](doc//MarketResponse.md)
+ - [MarketSearchRequest](doc//MarketSearchRequest.md)
+ - [MarketStatusEnum](doc//MarketStatusEnum.md)
  - [MemberSearchParam](doc//MemberSearchParam.md)
  - [MemberUpdateParam](doc//MemberUpdateParam.md)
  - [MessageSendResponseDTO](doc//MessageSendResponseDTO.md)

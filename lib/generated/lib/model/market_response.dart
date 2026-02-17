@@ -13,12 +13,12 @@ part of openapi.api;
 class MarketResponse {
   /// Returns a new [MarketResponse] instance.
   MarketResponse({
-    this.id,
-    this.title,
+    required this.id,
+    required this.title,
     this.description,
-    this.type,
-    this.status,
-    this.creatorId,
+    required this.type,
+    required this.status,
+    required this.creatorId,
     this.creatorUsername,
     this.totalPool,
     this.minBetAmount,
@@ -38,184 +38,70 @@ class MarketResponse {
   });
 
   /// 市場ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? id;
+  int id;
 
   /// 市場標題
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? title;
+  String title;
 
   /// 市場描述
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? description;
 
   /// 市場類型
-  MarketResponseTypeEnum? type;
+  MarketResponseTypeEnum type;
 
   /// 市場狀態
-  MarketResponseStatusEnum? status;
+  MarketResponseStatusEnum status;
 
   /// 創建者ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? creatorId;
+  int creatorId;
 
   /// 創建者用戶名
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? creatorUsername;
 
   /// 總獎池金額
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? totalPool;
 
   /// 最小投注金額
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? minBetAmount;
 
   /// 最大投注金額
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? maxBetAmount;
 
   /// 平台手續費百分比
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? feePercentage;
 
   /// 開始時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? startTime;
 
   /// 結束時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? endTime;
 
   /// 結算時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? resolutionTime;
 
   /// 結算依據/證明
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? resolutionSource;
 
   /// 市場圖片URL
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? imageUrl;
 
   /// 市場分類
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? category;
 
   /// 是否為精選市場
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? isFeatured;
 
   /// 總參與人數
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? totalParticipants;
 
   /// 創建時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? createdAt;
 
   /// 更新時間
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   DateTime? updatedAt;
 
   /// 市場選項列表
-  List<MarketOptionResponse> options;
+  List<MarketOptionResponse>? options;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is MarketResponse &&
@@ -245,12 +131,12 @@ class MarketResponse {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (title == null ? 0 : title!.hashCode) +
+    (id.hashCode) +
+    (title.hashCode) +
     (description == null ? 0 : description!.hashCode) +
-    (type == null ? 0 : type!.hashCode) +
-    (status == null ? 0 : status!.hashCode) +
-    (creatorId == null ? 0 : creatorId!.hashCode) +
+    (type.hashCode) +
+    (status.hashCode) +
+    (creatorId.hashCode) +
     (creatorUsername == null ? 0 : creatorUsername!.hashCode) +
     (totalPool == null ? 0 : totalPool!.hashCode) +
     (minBetAmount == null ? 0 : minBetAmount!.hashCode) +
@@ -266,43 +152,23 @@ class MarketResponse {
     (totalParticipants == null ? 0 : totalParticipants!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (options.hashCode);
+    (options == null ? 0 : options!.hashCode);
 
   @override
   String toString() => 'MarketResponse[id=$id, title=$title, description=$description, type=$type, status=$status, creatorId=$creatorId, creatorUsername=$creatorUsername, totalPool=$totalPool, minBetAmount=$minBetAmount, maxBetAmount=$maxBetAmount, feePercentage=$feePercentage, startTime=$startTime, endTime=$endTime, resolutionTime=$resolutionTime, resolutionSource=$resolutionSource, imageUrl=$imageUrl, category=$category, isFeatured=$isFeatured, totalParticipants=$totalParticipants, createdAt=$createdAt, updatedAt=$updatedAt, options=$options]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
       json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
-    if (this.title != null) {
       json[r'title'] = this.title;
-    } else {
-      json[r'title'] = null;
-    }
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
       json[r'description'] = null;
     }
-    if (this.type != null) {
       json[r'type'] = this.type;
-    } else {
-      json[r'type'] = null;
-    }
-    if (this.status != null) {
       json[r'status'] = this.status;
-    } else {
-      json[r'status'] = null;
-    }
-    if (this.creatorId != null) {
       json[r'creatorId'] = this.creatorId;
-    } else {
-      json[r'creatorId'] = null;
-    }
     if (this.creatorUsername != null) {
       json[r'creatorUsername'] = this.creatorUsername;
     } else {
@@ -378,7 +244,11 @@ class MarketResponse {
     } else {
       json[r'updatedAt'] = null;
     }
+    if (this.options != null) {
       json[r'options'] = this.options;
+    } else {
+      json[r'options'] = null;
+    }
     return json;
   }
 
@@ -401,17 +271,25 @@ class MarketResponse {
       }());
 
       return MarketResponse(
-        id: mapValueOfType<int>(json, r'id'),
-        title: mapValueOfType<String>(json, r'title'),
+        id: mapValueOfType<int>(json, r'id')!,
+        title: mapValueOfType<String>(json, r'title')!,
         description: mapValueOfType<String>(json, r'description'),
-        type: MarketResponseTypeEnum.fromJson(json[r'type']),
-        status: MarketResponseStatusEnum.fromJson(json[r'status']),
-        creatorId: mapValueOfType<int>(json, r'creatorId'),
+        type: MarketResponseTypeEnum.fromJson(json[r'type'])!,
+        status: MarketResponseStatusEnum.fromJson(json[r'status'])!,
+        creatorId: mapValueOfType<int>(json, r'creatorId')!,
         creatorUsername: mapValueOfType<String>(json, r'creatorUsername'),
-        totalPool: num.parse('${json[r'totalPool']}'),
-        minBetAmount: num.parse('${json[r'minBetAmount']}'),
-        maxBetAmount: num.parse('${json[r'maxBetAmount']}'),
-        feePercentage: num.parse('${json[r'feePercentage']}'),
+        totalPool: json[r'totalPool'] == null
+            ? null
+            : num.parse('${json[r'totalPool']}'),
+        minBetAmount: json[r'minBetAmount'] == null
+            ? null
+            : num.parse('${json[r'minBetAmount']}'),
+        maxBetAmount: json[r'maxBetAmount'] == null
+            ? null
+            : num.parse('${json[r'maxBetAmount']}'),
+        feePercentage: json[r'feePercentage'] == null
+            ? null
+            : num.parse('${json[r'feePercentage']}'),
         startTime: mapDateTime(json, r'startTime', r''),
         endTime: mapDateTime(json, r'endTime', r''),
         resolutionTime: mapDateTime(json, r'resolutionTime', r''),
@@ -470,6 +348,11 @@ class MarketResponse {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
+    'title',
+    'type',
+    'status',
+    'creatorId',
   };
 }
 

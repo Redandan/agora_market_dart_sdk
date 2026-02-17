@@ -198,6 +198,8 @@ part 'model/maintenance_toggle_request.dart';
 part 'model/market_option_request.dart';
 part 'model/market_option_response.dart';
 part 'model/market_response.dart';
+part 'model/market_search_request.dart';
+part 'model/market_status_enum.dart';
 part 'model/member_search_param.dart';
 part 'model/member_update_param.dart';
 part 'model/message_send_response_dto.dart';
