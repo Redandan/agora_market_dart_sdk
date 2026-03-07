@@ -10,16 +10,16 @@
 
 part of openapi.api;
 
-class MiniAppLoginRequest {
-  /// Returns a new [MiniAppLoginRequest] instance.
-  MiniAppLoginRequest({
+class TelegramWebAppAuthRequest {
+  /// Returns a new [TelegramWebAppAuthRequest] instance.
+  TelegramWebAppAuthRequest({
     required this.initData,
   });
 
   String initData;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is MiniAppLoginRequest &&
+  bool operator ==(Object other) => identical(this, other) || other is TelegramWebAppAuthRequest &&
     other.initData == initData;
 
   @override
@@ -28,7 +28,7 @@ class MiniAppLoginRequest {
     (initData.hashCode);
 
   @override
-  String toString() => 'MiniAppLoginRequest[initData=$initData]';
+  String toString() => 'TelegramWebAppAuthRequest[initData=$initData]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -36,10 +36,10 @@ class MiniAppLoginRequest {
     return json;
   }
 
-  /// Returns a new [MiniAppLoginRequest] instance and imports its values from
+  /// Returns a new [TelegramWebAppAuthRequest] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static MiniAppLoginRequest? fromJson(dynamic value) {
+  static TelegramWebAppAuthRequest? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -48,24 +48,24 @@ class MiniAppLoginRequest {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "MiniAppLoginRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "MiniAppLoginRequest[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "TelegramWebAppAuthRequest[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "TelegramWebAppAuthRequest[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return MiniAppLoginRequest(
+      return TelegramWebAppAuthRequest(
         initData: mapValueOfType<String>(json, r'initData')!,
       );
     }
     return null;
   }
 
-  static List<MiniAppLoginRequest> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <MiniAppLoginRequest>[];
+  static List<TelegramWebAppAuthRequest> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <TelegramWebAppAuthRequest>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = MiniAppLoginRequest.fromJson(row);
+        final value = TelegramWebAppAuthRequest.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -74,12 +74,12 @@ class MiniAppLoginRequest {
     return result.toList(growable: growable);
   }
 
-  static Map<String, MiniAppLoginRequest> mapFromJson(dynamic json) {
-    final map = <String, MiniAppLoginRequest>{};
+  static Map<String, TelegramWebAppAuthRequest> mapFromJson(dynamic json) {
+    final map = <String, TelegramWebAppAuthRequest>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = MiniAppLoginRequest.fromJson(entry.value);
+        final value = TelegramWebAppAuthRequest.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -88,14 +88,14 @@ class MiniAppLoginRequest {
     return map;
   }
 
-  // maps a json object with a list of MiniAppLoginRequest-objects as value to a dart map
-  static Map<String, List<MiniAppLoginRequest>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<MiniAppLoginRequest>>{};
+  // maps a json object with a list of TelegramWebAppAuthRequest-objects as value to a dart map
+  static Map<String, List<TelegramWebAppAuthRequest>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<TelegramWebAppAuthRequest>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = MiniAppLoginRequest.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = TelegramWebAppAuthRequest.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

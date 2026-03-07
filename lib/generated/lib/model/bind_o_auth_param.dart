@@ -83,7 +83,7 @@ class BindOAuthParam {
   ///
   String? verificationCode;
 
-  /// 初始化數據（用於Telegram Mini App，包含簽名驗證）
+  /// 初始化數據（用於Telegram WebApp，包含簽名驗證）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated

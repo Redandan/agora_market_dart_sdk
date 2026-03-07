@@ -11,26 +11,26 @@
 part of openapi.api;
 
 
-class TelegramMiniAppLoginApi {
-  TelegramMiniAppLoginApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+class TelegramWebappAuthApi {
+  TelegramWebappAuthApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
-  /// Telegram Mini App 登录
+  /// Telegram WebApp 交換 JWT
   ///
-  /// 使用 Telegram Web App 的 initData 完成 0 步骤无感登录
+  /// TG WebApp 直連後端：提交 initData，完成驗簽並返回 JWT。
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [MiniAppLoginRequest] miniAppLoginRequest (required):
-  Future<Response> login1WithHttpInfo(MiniAppLoginRequest miniAppLoginRequest,) async {
+  /// * [TelegramWebAppAuthRequest] telegramWebAppAuthRequest (required):
+  Future<Response> exchangeJwtWithHttpInfo(TelegramWebAppAuthRequest telegramWebAppAuthRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/auth/telegram-mini-app/login';
+    final path = r'/auth/telegram-webapp/exchange-jwt';
 
     // ignore: prefer_final_locals
-    Object? postBody = miniAppLoginRequest;
+    Object? postBody = telegramWebAppAuthRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -50,15 +50,15 @@ class TelegramMiniAppLoginApi {
     );
   }
 
-  /// Telegram Mini App 登录
+  /// Telegram WebApp 交換 JWT
   ///
-  /// 使用 Telegram Web App 的 initData 完成 0 步骤无感登录
+  /// TG WebApp 直連後端：提交 initData，完成驗簽並返回 JWT。
   ///
   /// Parameters:
   ///
-  /// * [MiniAppLoginRequest] miniAppLoginRequest (required):
-  Future<ApiResponseLoginResult?> login1(MiniAppLoginRequest miniAppLoginRequest,) async {
-    final response = await login1WithHttpInfo(miniAppLoginRequest,);
+  /// * [TelegramWebAppAuthRequest] telegramWebAppAuthRequest (required):
+  Future<LoginResult?> exchangeJwt(TelegramWebAppAuthRequest telegramWebAppAuthRequest,) async {
+    final response = await exchangeJwtWithHttpInfo(telegramWebAppAuthRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -66,7 +66,7 @@ class TelegramMiniAppLoginApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseLoginResult',) as ApiResponseLoginResult;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LoginResult',) as LoginResult;
     
     }
     return null;

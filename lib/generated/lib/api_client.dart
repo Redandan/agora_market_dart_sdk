@@ -438,8 +438,6 @@ class ApiClient {
           return MemberUpdateParam.fromJson(value);
         case 'MessageSendResponseDTO':
           return MessageSendResponseDTO.fromJson(value);
-        case 'MiniAppLoginRequest':
-          return MiniAppLoginRequest.fromJson(value);
         case 'NextInterestEstimateDTO':
           return NextInterestEstimateDTO.fromJson(value);
         case 'NotificationCreateParam':
@@ -746,6 +744,8 @@ class ApiClient {
           return TaiwanPostalArea.fromJson(value);
         case 'TelegramBotInfo':
           return TelegramBotInfo.fromJson(value);
+        case 'TelegramWebAppAuthRequest':
+          return TelegramWebAppAuthRequest.fromJson(value);
         case 'TopDeliveryAreaDTO':
           return TopDeliveryAreaDTO.fromJson(value);
         case 'TopDisputedProductDTO':

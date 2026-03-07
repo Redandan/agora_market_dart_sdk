@@ -66,7 +66,7 @@ class AuthApi {
 
   /// 綁定OAuth賬號
   ///
-  /// 將OAuth賬號綁定到當前登錄的賬戶。支持以下登錄方式：  **1. Google OAuth2：** ✅ 已實現 - 推薦：使用tokenId（從 `/auth/oauth2/token/by-token-id` 獲取） - 或：使用code + state（需要state驗證）  **2. Telegram Mini App：** ✅ 已實現 - provider: TELEGRAM_BOT - 傳入initData（從Telegram Web App獲取）  **3. Telegram Bot：** ✅ 已實現 - provider: TELEGRAM_BOT - 傳入loginToken和verificationCode - 需要先在Telegram Bot中點擊登入連結獲取驗證碼  **4. WalletConnect/Tron：** ✅ 已實現 - provider: WALLET_CONNECT 或 TRON - 傳入walletAddress、signature和message - 需要先調用 `/auth/wallet-connect/nonce` 獲取nonce和簽名消息
+  /// 將OAuth賬號綁定到當前登錄的賬戶。支持以下登錄方式：  **1. Google OAuth2：** ✅ 已實現 - 推薦：使用tokenId（從 `/auth/oauth2/token/by-token-id` 獲取） - 或：使用code + state（需要state驗證）  **2. Telegram WebApp：** ✅ 已實現 - provider: TELEGRAM_BOT - 傳入initData（從Telegram Web App獲取）  **3. Telegram Bot：** ✅ 已實現 - provider: TELEGRAM_BOT - 傳入loginToken和verificationCode - 需要先在Telegram Bot中點擊登入連結獲取驗證碼  **4. WalletConnect/Tron：** ✅ 已實現 - provider: WALLET_CONNECT 或 TRON - 傳入walletAddress、signature和message - 需要先調用 `/auth/wallet-connect/nonce` 獲取nonce和簽名消息
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -100,7 +100,7 @@ class AuthApi {
 
   /// 綁定OAuth賬號
   ///
-  /// 將OAuth賬號綁定到當前登錄的賬戶。支持以下登錄方式：  **1. Google OAuth2：** ✅ 已實現 - 推薦：使用tokenId（從 `/auth/oauth2/token/by-token-id` 獲取） - 或：使用code + state（需要state驗證）  **2. Telegram Mini App：** ✅ 已實現 - provider: TELEGRAM_BOT - 傳入initData（從Telegram Web App獲取）  **3. Telegram Bot：** ✅ 已實現 - provider: TELEGRAM_BOT - 傳入loginToken和verificationCode - 需要先在Telegram Bot中點擊登入連結獲取驗證碼  **4. WalletConnect/Tron：** ✅ 已實現 - provider: WALLET_CONNECT 或 TRON - 傳入walletAddress、signature和message - 需要先調用 `/auth/wallet-connect/nonce` 獲取nonce和簽名消息
+  /// 將OAuth賬號綁定到當前登錄的賬戶。支持以下登錄方式：  **1. Google OAuth2：** ✅ 已實現 - 推薦：使用tokenId（從 `/auth/oauth2/token/by-token-id` 獲取） - 或：使用code + state（需要state驗證）  **2. Telegram WebApp：** ✅ 已實現 - provider: TELEGRAM_BOT - 傳入initData（從Telegram Web App獲取）  **3. Telegram Bot：** ✅ 已實現 - provider: TELEGRAM_BOT - 傳入loginToken和verificationCode - 需要先在Telegram Bot中點擊登入連結獲取驗證碼  **4. WalletConnect/Tron：** ✅ 已實現 - provider: WALLET_CONNECT 或 TRON - 傳入walletAddress、signature和message - 需要先調用 `/auth/wallet-connect/nonce` 獲取nonce和簽名消息
   ///
   /// Parameters:
   ///
@@ -413,7 +413,7 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [LoginParam] loginParam (required):
-  Future<Response> login2WithHttpInfo(LoginParam loginParam,) async {
+  Future<Response> login1WithHttpInfo(LoginParam loginParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/auth/login';
 
@@ -445,8 +445,8 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [LoginParam] loginParam (required):
-  Future<LoginResult?> login2(LoginParam loginParam,) async {
-    final response = await login2WithHttpInfo(loginParam,);
+  Future<LoginResult?> login1(LoginParam loginParam,) async {
+    final response = await login1WithHttpInfo(loginParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

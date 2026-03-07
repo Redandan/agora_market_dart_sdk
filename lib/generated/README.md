@@ -145,6 +145,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**updateCartItem**](doc//DefaultApi.md#updatecartitem) | **PUT** /api/cart/{cartItemId} | 更新購物車項目
 *DefaultApi* | [**updatePost**](doc//DefaultApi.md#updatepost) | **PUT** /api/posts | 更新貼文
 *DefaultApi* | [**validatePostalCode**](doc//DefaultApi.md#validatepostalcode) | **GET** /api/logistics/postal-codes/{postalCode}/validate | 郵遞區號驗證
+*AdminBotControllerApi* | [**refreshBotCommands**](doc//AdminBotControllerApi.md#refreshbotcommands) | **POST** /api/admin/bot/refresh-commands | 
 *AdminDeliveryApi* | [**assignDeliveryer**](doc//AdminDeliveryApi.md#assigndeliveryer) | **POST** /admin/delivery/orders/{orderId}/assign | 手動分配配送員
 *AdminDeliveryApi* | [**getDeliveryOrderDetail**](doc//AdminDeliveryApi.md#getdeliveryorderdetail) | **GET** /admin/delivery/orders/{orderId} | 查看配送訂單詳情
 *AdminDeliveryApi* | [**getDeliveryStatistics**](doc//AdminDeliveryApi.md#getdeliverystatistics) | **GET** /admin/delivery/statistics | 配送統計報告
@@ -211,7 +212,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**getEmailVerificationRemainingTime**](doc//AuthApi.md#getemailverificationremainingtime) | **GET** /auth/email-verification/remaining-time | 查詢郵件驗證碼的剩餘等待時間
 *AuthApi* | [**getLoginBindings**](doc//AuthApi.md#getloginbindings) | **GET** /auth/bindings | 查看登錄方式綁定列表
 *AuthApi* | [**getTwoFactorInfo**](doc//AuthApi.md#gettwofactorinfo) | **GET** /auth/2fa | 獲取雙因素認證信息
-*AuthApi* | [**login2**](doc//AuthApi.md#login2) | **POST** /auth/login | 用戶登入
+*AuthApi* | [**login1**](doc//AuthApi.md#login1) | **POST** /auth/login | 用戶登入
 *AuthApi* | [**loginWithEmailCode**](doc//AuthApi.md#loginwithemailcode) | **POST** /auth/email-login/verify | 使用郵箱驗證碼登入
 *AuthApi* | [**logout**](doc//AuthApi.md#logout) | **POST** /auth/logout | 用戶登出
 *AuthApi* | [**manageTwoFactor**](doc//AuthApi.md#managetwofactor) | **POST** /auth/2fa/manage | 管理雙因素認證
@@ -402,7 +403,7 @@ Class | Method | HTTP request | Description
 *TGApi* | [**updateActivity**](doc//TGApi.md#updateactivity) | **PUT** /tg-game/activity/{id} | 更新活動
 *TelegramBotLoginApi* | [**generateLoginToken**](doc//TelegramBotLoginApi.md#generatelogintoken) | **POST** /auth/telegram-bot/generate-login-token | 生成登录 loginToken
 *TelegramBotLoginApi* | [**verifyCode**](doc//TelegramBotLoginApi.md#verifycode) | **POST** /auth/telegram-bot/verify-code | 验证验证码
-*TelegramMiniAppLoginApi* | [**login1**](doc//TelegramMiniAppLoginApi.md#login1) | **POST** /auth/telegram-mini-app/login | Telegram Mini App 登录
+*TelegramWebappAuthApi* | [**exchangeJwt**](doc//TelegramWebappAuthApi.md#exchangejwt) | **POST** /auth/telegram-webapp/exchange-jwt | Telegram WebApp 交換 JWT
 *TestApi* | [**generateAutoReplyTestData**](doc//TestApi.md#generateautoreplytestdata) | **POST** /test/auto-reply | 生成自動回復測試數據
 *TestApi* | [**generateDeliveryAcceptOrderTestData**](doc//TestApi.md#generatedeliveryacceptordertestdata) | **POST** /test/delivery-accept-order | 生成配送員接單測試數據
 *TestApi* | [**generateLogisticsOrder**](doc//TestApi.md#generatelogisticsorder) | **POST** /test/logistics | 
@@ -570,7 +571,6 @@ Class | Method | HTTP request | Description
  - [MemberSearchParam](doc//MemberSearchParam.md)
  - [MemberUpdateParam](doc//MemberUpdateParam.md)
  - [MessageSendResponseDTO](doc//MessageSendResponseDTO.md)
- - [MiniAppLoginRequest](doc//MiniAppLoginRequest.md)
  - [NextInterestEstimateDTO](doc//NextInterestEstimateDTO.md)
  - [NotificationCreateParam](doc//NotificationCreateParam.md)
  - [NotificationResponseDTO](doc//NotificationResponseDTO.md)
@@ -724,6 +724,7 @@ Class | Method | HTTP request | Description
  - [SupportedCurrencyEnum](doc//SupportedCurrencyEnum.md)
  - [TaiwanPostalArea](doc//TaiwanPostalArea.md)
  - [TelegramBotInfo](doc//TelegramBotInfo.md)
+ - [TelegramWebAppAuthRequest](doc//TelegramWebAppAuthRequest.md)
  - [TopDeliveryAreaDTO](doc//TopDeliveryAreaDTO.md)
  - [TopDisputedProductDTO](doc//TopDisputedProductDTO.md)
  - [TopDisputedSellerDTO](doc//TopDisputedSellerDTO.md)
