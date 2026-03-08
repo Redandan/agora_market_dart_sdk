@@ -676,6 +676,8 @@ class ApiClient {
           return ReviewStatisticsDTO.fromJson(value);
         case 'ReviewUpdateParam':
           return ReviewUpdateParam.fromJson(value);
+        case 'RtpEntry':
+          return RtpEntry.fromJson(value);
         case 'SSEEventRequest':
           return SSEEventRequest.fromJson(value);
         case 'SSEEventResponse':
@@ -704,6 +706,14 @@ class ApiClient {
           return ShippingOptions.fromJson(value);
         case 'ShippingServiceGroup':
           return ShippingServiceGroup.fromJson(value);
+        case 'SlotRtpResponse':
+          return SlotRtpResponse.fromJson(value);
+        case 'SlotSpinRequest':
+          return SlotSpinRequest.fromJson(value);
+        case 'SlotSpinResponse':
+          return SlotSpinResponse.fromJson(value);
+        case 'SlotSymbolInfo':
+          return SlotSymbolInfo.fromJson(value);
         case 'SortObject':
           return SortObject.fromJson(value);
         case 'Staking':

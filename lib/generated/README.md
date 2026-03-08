@@ -368,6 +368,9 @@ Class | Method | HTTP request | Description
 *ReviewsApi* | [**updateReview**](doc//ReviewsApi.md#updatereview) | **POST** /reviews/update | 更新評價
 *SevenElevenStoresApi* | [**getAllCities**](doc//SevenElevenStoresApi.md#getallcities) | **GET** /api/stores/seven-eleven/cities | 取得所有縣市列表
 *SevenElevenStoresApi* | [**getStoresByCity**](doc//SevenElevenStoresApi.md#getstoresbycity) | **GET** /api/stores/seven-eleven/stores | 根據縣市取得7-11門市列表
+*SlotApi* | [**getRtpTable**](doc//SlotApi.md#getrtptable) | **GET** /slot/rtp | 取得理論 RTP 設定表
+*SlotApi* | [**getSymbols**](doc//SlotApi.md#getsymbols) | **GET** /slot/symbols | 取得 Symbol 目錄
+*SlotApi* | [**spin**](doc//SlotApi.md#spin) | **POST** /slot/spin | Spin（支援試玩模式）
 *SseApi* | [**broadcastMessage**](doc//SseApi.md#broadcastmessage) | **POST** /sse/broadcast | 廣播消息
 *SseApi* | [**connect**](doc//SseApi.md#connect) | **GET** /sse/connect/{clientId} | 建立 SSE 連接
 *SseApi* | [**disconnect**](doc//SseApi.md#disconnect) | **DELETE** /sse/disconnect/{clientId} | 斷開 SSE 連接
@@ -690,6 +693,7 @@ Class | Method | HTTP request | Description
  - [ReviewSearchParam](doc//ReviewSearchParam.md)
  - [ReviewStatisticsDTO](doc//ReviewStatisticsDTO.md)
  - [ReviewUpdateParam](doc//ReviewUpdateParam.md)
+ - [RtpEntry](doc//RtpEntry.md)
  - [SSEEventRequest](doc//SSEEventRequest.md)
  - [SSEEventResponse](doc//SSEEventResponse.md)
  - [SalesStats](doc//SalesStats.md)
@@ -704,6 +708,10 @@ Class | Method | HTTP request | Description
  - [ShippingCompanyEnum](doc//ShippingCompanyEnum.md)
  - [ShippingOptions](doc//ShippingOptions.md)
  - [ShippingServiceGroup](doc//ShippingServiceGroup.md)
+ - [SlotRtpResponse](doc//SlotRtpResponse.md)
+ - [SlotSpinRequest](doc//SlotSpinRequest.md)
+ - [SlotSpinResponse](doc//SlotSpinResponse.md)
+ - [SlotSymbolInfo](doc//SlotSymbolInfo.md)
  - [SortObject](doc//SortObject.md)
  - [Staking](doc//Staking.md)
  - [StakingConfigDTO](doc//StakingConfigDTO.md)

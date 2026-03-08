@@ -10,126 +10,122 @@
 
 part of openapi.api;
 
-class PageableObject {
-  /// Returns a new [PageableObject] instance.
-  PageableObject({
-    this.sort,
-    this.pageNumber,
-    this.pageSize,
-    this.unpaged,
-    this.paged,
-    this.offset,
+class SlotRtpResponse {
+  /// Returns a new [SlotRtpResponse] instance.
+  SlotRtpResponse({
+    this.totalCombinations,
+    this.totalRtp,
+    this.totalRtpPct,
+    this.houseEdge,
+    this.houseEdgePct,
+    this.entries = const [],
   });
 
+  /// 三個 Reel 的總組合數（32³）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SortObject? sort;
+  int? totalCombinations;
 
+  /// 理論 RTP（Return to Player），例如 0.95370000 = ~95.37%
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageNumber;
+  num? totalRtp;
 
+  /// 理論 RTP 百分比字串，例如 \"95.37%\"
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageSize;
+  String? totalRtpPct;
 
+  /// 莊家優勢（1 - RTP）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unpaged;
+  num? houseEdge;
 
+  /// 莊家優勢百分比字串，例如 \"4.63%\"
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? paged;
+  String? houseEdgePct;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? offset;
+  /// 各中獎組合詳情，依 RTP 貢獻由高到低排列
+  List<RtpEntry> entries;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageableObject &&
-    other.sort == sort &&
-    other.pageNumber == pageNumber &&
-    other.pageSize == pageSize &&
-    other.unpaged == unpaged &&
-    other.paged == paged &&
-    other.offset == offset;
+  bool operator ==(Object other) => identical(this, other) || other is SlotRtpResponse &&
+    other.totalCombinations == totalCombinations &&
+    other.totalRtp == totalRtp &&
+    other.totalRtpPct == totalRtpPct &&
+    other.houseEdge == houseEdge &&
+    other.houseEdgePct == houseEdgePct &&
+    _deepEquality.equals(other.entries, entries);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (sort == null ? 0 : sort!.hashCode) +
-    (pageNumber == null ? 0 : pageNumber!.hashCode) +
-    (pageSize == null ? 0 : pageSize!.hashCode) +
-    (unpaged == null ? 0 : unpaged!.hashCode) +
-    (paged == null ? 0 : paged!.hashCode) +
-    (offset == null ? 0 : offset!.hashCode);
+    (totalCombinations == null ? 0 : totalCombinations!.hashCode) +
+    (totalRtp == null ? 0 : totalRtp!.hashCode) +
+    (totalRtpPct == null ? 0 : totalRtpPct!.hashCode) +
+    (houseEdge == null ? 0 : houseEdge!.hashCode) +
+    (houseEdgePct == null ? 0 : houseEdgePct!.hashCode) +
+    (entries.hashCode);
 
   @override
-  String toString() => 'PageableObject[sort=$sort, pageNumber=$pageNumber, pageSize=$pageSize, unpaged=$unpaged, paged=$paged, offset=$offset]';
+  String toString() => 'SlotRtpResponse[totalCombinations=$totalCombinations, totalRtp=$totalRtp, totalRtpPct=$totalRtpPct, houseEdge=$houseEdge, houseEdgePct=$houseEdgePct, entries=$entries]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.totalCombinations != null) {
+      json[r'totalCombinations'] = this.totalCombinations;
     } else {
-      json[r'sort'] = null;
+      json[r'totalCombinations'] = null;
     }
-    if (this.pageNumber != null) {
-      json[r'pageNumber'] = this.pageNumber;
+    if (this.totalRtp != null) {
+      json[r'totalRtp'] = this.totalRtp;
     } else {
-      json[r'pageNumber'] = null;
+      json[r'totalRtp'] = null;
     }
-    if (this.pageSize != null) {
-      json[r'pageSize'] = this.pageSize;
+    if (this.totalRtpPct != null) {
+      json[r'totalRtpPct'] = this.totalRtpPct;
     } else {
-      json[r'pageSize'] = null;
+      json[r'totalRtpPct'] = null;
     }
-    if (this.unpaged != null) {
-      json[r'unpaged'] = this.unpaged;
+    if (this.houseEdge != null) {
+      json[r'houseEdge'] = this.houseEdge;
     } else {
-      json[r'unpaged'] = null;
+      json[r'houseEdge'] = null;
     }
-    if (this.paged != null) {
-      json[r'paged'] = this.paged;
+    if (this.houseEdgePct != null) {
+      json[r'houseEdgePct'] = this.houseEdgePct;
     } else {
-      json[r'paged'] = null;
+      json[r'houseEdgePct'] = null;
     }
-    if (this.offset != null) {
-      json[r'offset'] = this.offset;
-    } else {
-      json[r'offset'] = null;
-    }
+      json[r'entries'] = this.entries;
     return json;
   }
 
-  /// Returns a new [PageableObject] instance and imports its values from
+  /// Returns a new [SlotRtpResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageableObject? fromJson(dynamic value) {
+  static SlotRtpResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -138,29 +134,29 @@ class PageableObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageableObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageableObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "SlotRtpResponse[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "SlotRtpResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageableObject(
-        sort: SortObject.fromJson(json[r'sort']),
-        pageNumber: mapValueOfType<int>(json, r'pageNumber'),
-        pageSize: mapValueOfType<int>(json, r'pageSize'),
-        unpaged: mapValueOfType<bool>(json, r'unpaged'),
-        paged: mapValueOfType<bool>(json, r'paged'),
-        offset: mapValueOfType<int>(json, r'offset'),
+      return SlotRtpResponse(
+        totalCombinations: mapValueOfType<int>(json, r'totalCombinations'),
+        totalRtp: num.parse('${json[r'totalRtp']}'),
+        totalRtpPct: mapValueOfType<String>(json, r'totalRtpPct'),
+        houseEdge: num.parse('${json[r'houseEdge']}'),
+        houseEdgePct: mapValueOfType<String>(json, r'houseEdgePct'),
+        entries: RtpEntry.listFromJson(json[r'entries']),
       );
     }
     return null;
   }
 
-  static List<PageableObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageableObject>[];
+  static List<SlotRtpResponse> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <SlotRtpResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageableObject.fromJson(row);
+        final value = SlotRtpResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -169,12 +165,12 @@ class PageableObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageableObject> mapFromJson(dynamic json) {
-    final map = <String, PageableObject>{};
+  static Map<String, SlotRtpResponse> mapFromJson(dynamic json) {
+    final map = <String, SlotRtpResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageableObject.fromJson(entry.value);
+        final value = SlotRtpResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -183,14 +179,14 @@ class PageableObject {
     return map;
   }
 
-  // maps a json object with a list of PageableObject-objects as value to a dart map
-  static Map<String, List<PageableObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageableObject>>{};
+  // maps a json object with a list of SlotRtpResponse-objects as value to a dart map
+  static Map<String, List<SlotRtpResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<SlotRtpResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageableObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = SlotRtpResponse.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
