@@ -16,6 +16,7 @@ class SlotSpinResponse {
     this.roundId,
     this.reels = const [],
     this.symbols = const [],
+    this.symbolIds = const [],
     this.symbolDisplays = const [],
     this.multiplier,
     this.winAmount,
@@ -38,6 +39,9 @@ class SlotSpinResponse {
 
   /// 三個 Reel 顯示的 Symbol 名稱
   List<String> symbols;
+
+  /// 三個 Reel 對應的 Symbol ID
+  List<int> symbolIds;
 
   /// 三個 Reel 的 Symbol Emoji 顯示（供前端備註用途）
   List<String> symbolDisplays;
@@ -92,6 +96,7 @@ class SlotSpinResponse {
     other.roundId == roundId &&
     _deepEquality.equals(other.reels, reels) &&
     _deepEquality.equals(other.symbols, symbols) &&
+    _deepEquality.equals(other.symbolIds, symbolIds) &&
     _deepEquality.equals(other.symbolDisplays, symbolDisplays) &&
     other.multiplier == multiplier &&
     other.winAmount == winAmount &&
@@ -105,6 +110,7 @@ class SlotSpinResponse {
     (roundId == null ? 0 : roundId!.hashCode) +
     (reels.hashCode) +
     (symbols.hashCode) +
+    (symbolIds.hashCode) +
     (symbolDisplays.hashCode) +
     (multiplier == null ? 0 : multiplier!.hashCode) +
     (winAmount == null ? 0 : winAmount!.hashCode) +
@@ -113,7 +119,7 @@ class SlotSpinResponse {
     (serverSeedHash == null ? 0 : serverSeedHash!.hashCode);
 
   @override
-  String toString() => 'SlotSpinResponse[roundId=$roundId, reels=$reels, symbols=$symbols, symbolDisplays=$symbolDisplays, multiplier=$multiplier, winAmount=$winAmount, balance=$balance, nonce=$nonce, serverSeedHash=$serverSeedHash]';
+  String toString() => 'SlotSpinResponse[roundId=$roundId, reels=$reels, symbols=$symbols, symbolIds=$symbolIds, symbolDisplays=$symbolDisplays, multiplier=$multiplier, winAmount=$winAmount, balance=$balance, nonce=$nonce, serverSeedHash=$serverSeedHash]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -124,6 +130,7 @@ class SlotSpinResponse {
     }
       json[r'reels'] = this.reels;
       json[r'symbols'] = this.symbols;
+      json[r'symbolIds'] = this.symbolIds;
       json[r'symbolDisplays'] = this.symbolDisplays;
     if (this.multiplier != null) {
       json[r'multiplier'] = this.multiplier;
@@ -178,6 +185,9 @@ class SlotSpinResponse {
             : const [],
         symbols: json[r'symbols'] is Iterable
             ? (json[r'symbols'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
+        symbolIds: json[r'symbolIds'] is Iterable
+            ? (json[r'symbolIds'] as Iterable).cast<int>().toList(growable: false)
             : const [],
         symbolDisplays: json[r'symbolDisplays'] is Iterable
             ? (json[r'symbolDisplays'] as Iterable).cast<String>().toList(growable: false)

@@ -18,7 +18,7 @@ class SlotApi {
 
   /// 取得理論 RTP 設定表
   ///
-  /// 返回 Moon Dance Slot 所有中獎組合的理論機率與 RTP 貢獻明細。資料依據 Reel Strip 配置（32³ = 32768 種組合）與 Paytable 靜態計算，無需 JWT。
+  /// 返回中獎組合機率與 RTP 貢獻明細
   ///
   /// Note: This method returns the HTTP [Response].
   Future<Response> getRtpTableWithHttpInfo() async {
@@ -48,7 +48,7 @@ class SlotApi {
 
   /// 取得理論 RTP 設定表
   ///
-  /// 返回 Moon Dance Slot 所有中獎組合的理論機率與 RTP 貢獻明細。資料依據 Reel Strip 配置（32³ = 32768 種組合）與 Paytable 靜態計算，無需 JWT。
+  /// 返回中獎組合機率與 RTP 貢獻明細
   Future<SlotRtpResponse?> getRtpTable() async {
     final response = await getRtpTableWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -66,7 +66,7 @@ class SlotApi {
 
   /// 取得 Symbol 目錄
   ///
-  /// 返回所有 9 個 Symbol 的資訊，包含 Emoji 顯示與中文名稱備註。無需 JWT。
+  /// 返回所有 Symbol 的顯示資訊
   ///
   /// Note: This method returns the HTTP [Response].
   Future<Response> getSymbolsWithHttpInfo() async {
@@ -96,7 +96,7 @@ class SlotApi {
 
   /// 取得 Symbol 目錄
   ///
-  /// 返回所有 9 個 Symbol 的資訊，包含 Emoji 顯示與中文名稱備註。無需 JWT。
+  /// 返回所有 Symbol 的顯示資訊
   Future<List<SlotSymbolInfo>?> getSymbols() async {
     final response = await getSymbolsWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -115,9 +115,9 @@ class SlotApi {
     return null;
   }
 
-  /// Spin（支援試玩模式）
+  /// Spin
   ///
-  /// 執行一次 Moon Dance Slot Spin。需要 JWT 認證。傳入 mode=DEMO 可啟用試玩模式：RNG 計算與真實模式相同，但不扣款、不儲存回合記錄，回傳結果中 roundId 與 balance 為 null。
+  /// 執行一次 Slot Spin，支援 REAL 與 DEMO 模式
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -149,9 +149,9 @@ class SlotApi {
     );
   }
 
-  /// Spin（支援試玩模式）
+  /// Spin
   ///
-  /// 執行一次 Moon Dance Slot Spin。需要 JWT 認證。傳入 mode=DEMO 可啟用試玩模式：RNG 計算與真實模式相同，但不扣款、不儲存回合記錄，回傳結果中 roundId 與 balance 為 null。
+  /// 執行一次 Slot Spin，支援 REAL 與 DEMO 模式
   ///
   /// Parameters:
   ///
