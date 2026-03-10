@@ -13,10 +13,20 @@ part of openapi.api;
 class SlotMemberOddsEntry {
   /// Returns a new [SlotMemberOddsEntry] instance.
   SlotMemberOddsEntry({
+    this.symbolId,
     this.combo,
     this.multiplier,
     this.probability,
   });
+
+  /// 主要 Symbol ID（對應 SlotSymbol.id）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? symbolId;
 
   /// 組合描述
   ///
@@ -47,6 +57,7 @@ class SlotMemberOddsEntry {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is SlotMemberOddsEntry &&
+    other.symbolId == symbolId &&
     other.combo == combo &&
     other.multiplier == multiplier &&
     other.probability == probability;
@@ -54,15 +65,21 @@ class SlotMemberOddsEntry {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (symbolId == null ? 0 : symbolId!.hashCode) +
     (combo == null ? 0 : combo!.hashCode) +
     (multiplier == null ? 0 : multiplier!.hashCode) +
     (probability == null ? 0 : probability!.hashCode);
 
   @override
-  String toString() => 'SlotMemberOddsEntry[combo=$combo, multiplier=$multiplier, probability=$probability]';
+  String toString() => 'SlotMemberOddsEntry[symbolId=$symbolId, combo=$combo, multiplier=$multiplier, probability=$probability]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.symbolId != null) {
+      json[r'symbolId'] = this.symbolId;
+    } else {
+      json[r'symbolId'] = null;
+    }
     if (this.combo != null) {
       json[r'combo'] = this.combo;
     } else {
@@ -100,6 +117,7 @@ class SlotMemberOddsEntry {
       }());
 
       return SlotMemberOddsEntry(
+        symbolId: mapValueOfType<int>(json, r'symbolId'),
         combo: mapValueOfType<String>(json, r'combo'),
         multiplier: mapValueOfType<int>(json, r'multiplier'),
         probability: num.parse('${json[r'probability']}'),
