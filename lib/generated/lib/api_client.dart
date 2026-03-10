@@ -706,6 +706,10 @@ class ApiClient {
           return ShippingOptions.fromJson(value);
         case 'ShippingServiceGroup':
           return ShippingServiceGroup.fromJson(value);
+        case 'SlotMemberOddsEntry':
+          return SlotMemberOddsEntry.fromJson(value);
+        case 'SlotMemberOddsResponse':
+          return SlotMemberOddsResponse.fromJson(value);
         case 'SlotRtpResponse':
           return SlotRtpResponse.fromJson(value);
         case 'SlotSpinRequest':

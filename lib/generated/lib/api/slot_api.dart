@@ -16,12 +16,12 @@ class SlotApi {
 
   final ApiClient apiClient;
 
-  /// 取得理論 RTP 設定表
+  /// 取得會員賠率展示資料
   ///
-  /// 返回中獎組合機率與 RTP 貢獻明細
+  /// 返回會員前台可展示的賠率資訊
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> getRtpTableWithHttpInfo() async {
+  Future<Response> getMemberOddsTableWithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/slot/rtp';
 
@@ -46,11 +46,11 @@ class SlotApi {
     );
   }
 
-  /// 取得理論 RTP 設定表
+  /// 取得會員賠率展示資料
   ///
-  /// 返回中獎組合機率與 RTP 貢獻明細
-  Future<SlotRtpResponse?> getRtpTable() async {
-    final response = await getRtpTableWithHttpInfo();
+  /// 返回會員前台可展示的賠率資訊
+  Future<SlotMemberOddsResponse?> getMemberOddsTable() async {
+    final response = await getMemberOddsTableWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -58,7 +58,7 @@ class SlotApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SlotRtpResponse',) as SlotRtpResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SlotMemberOddsResponse',) as SlotMemberOddsResponse;
     
     }
     return null;

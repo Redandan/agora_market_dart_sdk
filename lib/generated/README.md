@@ -187,6 +187,7 @@ Class | Method | HTTP request | Description
 *AdminProductsApi* | [**searchProducts1**](doc//AdminProductsApi.md#searchproducts1) | **POST** /admin/products/search | 搜索商品
 *AdminProductsApi* | [**updateProductByAdmin**](doc//AdminProductsApi.md#updateproductbyadmin) | **POST** /admin/products/{productId}/update | 更新商品
 *AdminProductsApi* | [**updateProductStatusEnum**](doc//AdminProductsApi.md#updateproductstatusenum) | **POST** /admin/products/{productId}/status | 更新商品狀態
+*AdminSlotApi* | [**getAdminRtpTable**](doc//AdminSlotApi.md#getadminrtptable) | **GET** /admin/slot/rtp | 取得管理員 RTP 設定表
 *AdminStakingApi* | [**getConfig**](doc//AdminStakingApi.md#getconfig) | **GET** /admin/staking/config | 獲取質押配置
 *AdminStakingApi* | [**getInterestRecords**](doc//AdminStakingApi.md#getinterestrecords) | **POST** /admin/staking/interest-records | 查詢收益發放記錄
 *AdminStakingApi* | [**getNextInterestEstimate**](doc//AdminStakingApi.md#getnextinterestestimate) | **GET** /admin/staking/next-interest-estimate | 預估下次收益發放
@@ -368,7 +369,7 @@ Class | Method | HTTP request | Description
 *ReviewsApi* | [**updateReview**](doc//ReviewsApi.md#updatereview) | **POST** /reviews/update | 更新評價
 *SevenElevenStoresApi* | [**getAllCities**](doc//SevenElevenStoresApi.md#getallcities) | **GET** /api/stores/seven-eleven/cities | 取得所有縣市列表
 *SevenElevenStoresApi* | [**getStoresByCity**](doc//SevenElevenStoresApi.md#getstoresbycity) | **GET** /api/stores/seven-eleven/stores | 根據縣市取得7-11門市列表
-*SlotApi* | [**getRtpTable**](doc//SlotApi.md#getrtptable) | **GET** /slot/rtp | 取得理論 RTP 設定表
+*SlotApi* | [**getMemberOddsTable**](doc//SlotApi.md#getmemberoddstable) | **GET** /slot/rtp | 取得會員賠率展示資料
 *SlotApi* | [**getSymbols**](doc//SlotApi.md#getsymbols) | **GET** /slot/symbols | 取得 Symbol 目錄
 *SlotApi* | [**spin**](doc//SlotApi.md#spin) | **POST** /slot/spin | Spin
 *SseApi* | [**broadcastMessage**](doc//SseApi.md#broadcastmessage) | **POST** /sse/broadcast | 廣播消息
@@ -708,6 +709,8 @@ Class | Method | HTTP request | Description
  - [ShippingCompanyEnum](doc//ShippingCompanyEnum.md)
  - [ShippingOptions](doc//ShippingOptions.md)
  - [ShippingServiceGroup](doc//ShippingServiceGroup.md)
+ - [SlotMemberOddsEntry](doc//SlotMemberOddsEntry.md)
+ - [SlotMemberOddsResponse](doc//SlotMemberOddsResponse.md)
  - [SlotRtpResponse](doc//SlotRtpResponse.md)
  - [SlotSpinRequest](doc//SlotSpinRequest.md)
  - [SlotSpinResponse](doc//SlotSpinResponse.md)
