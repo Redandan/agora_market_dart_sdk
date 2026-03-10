@@ -126,6 +126,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getWithdraw**](doc//DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 *DefaultApi* | [**getWithdrawHistory**](doc//DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
 *DefaultApi* | [**likePost**](doc//DefaultApi.md#likepost) | **POST** /api/posts/{id}/like | 點讚貼文
+*DefaultApi* | [**manualAdjustByAdmin**](doc//DefaultApi.md#manualadjustbyadmin) | **POST** /transactions/admin/manual-adjust | 管理員手動調帳
 *DefaultApi* | [**publishPost**](doc//DefaultApi.md#publishpost) | **POST** /api/posts/{id}/publish | 發布貼文
 *DefaultApi* | [**removeCartItem**](doc//DefaultApi.md#removecartitem) | **DELETE** /api/cart/admin/item/{cartItemId} | 刪除指定購物車項目
 *DefaultApi* | [**removeFromCart**](doc//DefaultApi.md#removefromcart) | **DELETE** /api/cart/{cartItemId} | 從購物車移除商品
@@ -567,6 +568,7 @@ Class | Method | HTTP request | Description
  - [LowStockWarningDTO](doc//LowStockWarningDTO.md)
  - [MaintenanceStatusResponse](doc//MaintenanceStatusResponse.md)
  - [MaintenanceToggleRequest](doc//MaintenanceToggleRequest.md)
+ - [ManualAdjustBalanceParam](doc//ManualAdjustBalanceParam.md)
  - [MarketOptionRequest](doc//MarketOptionRequest.md)
  - [MarketOptionResponse](doc//MarketOptionResponse.md)
  - [MarketResponse](doc//MarketResponse.md)

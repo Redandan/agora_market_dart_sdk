@@ -422,6 +422,8 @@ class ApiClient {
           return MaintenanceStatusResponse.fromJson(value);
         case 'MaintenanceToggleRequest':
           return MaintenanceToggleRequest.fromJson(value);
+        case 'ManualAdjustBalanceParam':
+          return ManualAdjustBalanceParam.fromJson(value);
         case 'MarketOptionRequest':
           return MarketOptionRequest.fromJson(value);
         case 'MarketOptionResponse':

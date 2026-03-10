@@ -198,6 +198,7 @@ part 'model/login_token_response.dart';
 part 'model/low_stock_warning_dto.dart';
 part 'model/maintenance_status_response.dart';
 part 'model/maintenance_toggle_request.dart';
+part 'model/manual_adjust_balance_param.dart';
 part 'model/market_option_request.dart';
 part 'model/market_option_response.dart';
 part 'model/market_response.dart';
