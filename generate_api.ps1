@@ -161,6 +161,97 @@ if ([string]::IsNullOrWhiteSpace($fileContent)) {
 
 Write-Host "Found swagger.yaml at $swaggerPath" -ForegroundColor Green
 
+function ConvertTo-SnakeCase {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$InputText
+    )
+
+    $withUnderscore = [System.Text.RegularExpressions.Regex]::Replace(
+        $InputText,
+        '([a-z0-9])([A-Z])',
+        '$1_$2'
+    )
+
+    return $withUnderscore.ToLowerInvariant()
+}
+
+function Repair-GeneratedModelListSerialization {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$ModelDirectory
+    )
+
+    if (-not (Test-Path $ModelDirectory)) {
+        Write-Host "Model directory not found, skipping serialization repair: $ModelDirectory" -ForegroundColor Yellow
+        return
+    }
+
+    $patchedFiles = 0
+    $patchedLines = 0
+    $modelFiles = Get-ChildItem -Path $ModelDirectory -File -Filter "*.dart"
+
+    foreach ($modelFile in $modelFiles) {
+        $content = Get-Content -Path $modelFile.FullName -Raw
+        if (-not $content.Contains("Map<String, dynamic> toJson()")) {
+            continue
+        }
+
+        $listPropertyMatches = [System.Text.RegularExpressions.Regex]::Matches(
+            $content,
+            '(?m)^\s*List<([A-Za-z_][A-Za-z0-9_]*)>\s+([A-Za-z_][A-Za-z0-9_]*);\s*$'
+        )
+
+        if ($listPropertyMatches.Count -eq 0) {
+            continue
+        }
+
+        $updatedContent = $content
+        $fileChanged = $false
+
+        foreach ($match in $listPropertyMatches) {
+            $itemType = $match.Groups[1].Value
+            $propertyName = $match.Groups[2].Value
+
+            $relatedModelFileName = "$(ConvertTo-SnakeCase -InputText $itemType).dart"
+            $relatedModelPath = Join-Path $ModelDirectory $relatedModelFileName
+
+            # Only patch list entries whose item type is another generated model file.
+            if (-not (Test-Path $relatedModelPath)) {
+                continue
+            }
+
+            $escapedPropertyName = [System.Text.RegularExpressions.Regex]::Escape($propertyName)
+            $assignmentPattern = "(?m)^(\\s*)json\\[r'$escapedPropertyName'\\]\\s*=\\s*this\\.$escapedPropertyName;\\s*$"
+            $replacement = "`$1json[r'$propertyName'] = this.$propertyName.map((e) => e.toJson()).toList();"
+
+            $newContent = [System.Text.RegularExpressions.Regex]::Replace(
+                $updatedContent,
+                $assignmentPattern,
+                $replacement
+            )
+
+            if ($newContent -ne $updatedContent) {
+                $updatedContent = $newContent
+                $fileChanged = $true
+                $patchedLines++
+            }
+        }
+
+        if ($fileChanged) {
+            Set-Content -Path $modelFile.FullName -Value $updatedContent -Encoding UTF8
+            $patchedFiles++
+            Write-Host "Patched list serialization in: $($modelFile.FullName)" -ForegroundColor Cyan
+        }
+    }
+
+    if ($patchedLines -gt 0) {
+        Write-Host "Applied list serialization repair: $patchedLines line(s) in $patchedFiles file(s)." -ForegroundColor Green
+    } else {
+        Write-Host "No list serialization repairs were needed." -ForegroundColor Green
+    }
+}
+
 # 清理舊的生成文件
 Write-Host "Cleaning old generated files..." -ForegroundColor Yellow
 try {
@@ -192,6 +283,14 @@ try {
             Write-Host "Generated files:" -ForegroundColor Green
             foreach ($file in $generatedFiles) {
                 Write-Host "  - $($file.FullName)" -ForegroundColor Cyan
+            }
+
+            Write-Host "`nRepairing known list serialization issues in generated models..." -ForegroundColor Yellow
+            try {
+                Repair-GeneratedModelListSerialization -ModelDirectory "lib/generated/lib/model"
+            } catch {
+                Write-Host "Error while repairing generated model serialization: $_" -ForegroundColor Red
+                exit 1
             }
 
             # 運行 build_runner
