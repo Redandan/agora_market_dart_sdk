@@ -1,4 +1,4 @@
-//
+﻿//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -36,7 +36,7 @@ class UserInfo {
     this.defaultHomePage,
   });
 
-  /// 用戶ID
+  /// ?冽ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -44,17 +44,14 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? id;
-
-  /// 用戶名
-  ///
+  /// ?冽??  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? username;
-
-  /// 郵箱
+  /// ?萇拳
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -62,17 +59,14 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? email;
-
-  /// 郵箱是否已驗證
-  ///
+  /// ?萇拳?臬撌脤?霅?  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? emailVerified;
-
-  /// 角色
+  /// 閫
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -80,8 +74,7 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? role;
-
-  /// 餘額
+  /// 擗?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -89,17 +82,14 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? balance;
-
-  /// 購物車商品數量
-  ///
+  /// 鞈潛頠????  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? cartItemCount;
-
-  /// 質押餘額
+  /// 鞈芣擗?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -107,17 +97,14 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? stackingBalance;
-
-  /// 總資產（餘額 + 質押餘額）
-  ///
+  /// 蝮質??ｇ?擗? + 鞈芣擗?嚗?  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? totalAssets;
-
-  /// 凍結餘額
+  /// ??擗?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -125,8 +112,7 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? freezeBalance;
-
-  /// 是否啟用
+  /// ?臬?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -134,8 +120,7 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? enabled;
-
-  /// 查詢時間
+  /// ?亥岷??
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -143,8 +128,7 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? queryTime;
-
-  /// 店鋪名稱
+  /// 摨?迂
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -152,8 +136,7 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? storeName;
-
-  /// 推廣大使名稱
+  /// ?典誨憭找蝙?迂
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -161,8 +144,7 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? ambassadorName;
-
-  /// 顯示配送員名稱
+  /// 憿舐內??迂
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -170,8 +152,7 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? displayDeliveryerName;
-
-  /// 頭像URL
+  /// ?剖?URL
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -179,29 +160,24 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? avatar;
+  /// 擗?撠隞?撟????
 
-  /// 餘額對其他法幣的換算
   List<BalanceConversion> balanceConversions;
-
-  /// 賣家入口是否維護中
-  ///
+  /// 鞈?振?亙?臬蝬剛風銝?  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? sellerMaintenance;
-
-  /// 外送員入口是否維護中
-  ///
+  /// 憭?亙?臬蝬剛風銝?  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? deliveryMaintenance;
-
-  /// 未讀訊息數量
+  /// ?芾?閮?賊?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -209,7 +185,6 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? unreadMessageCount;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -217,7 +192,6 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DefaultHomePageEnum? defaultHomePage;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserInfo &&
     other.id == id &&
@@ -352,7 +326,7 @@ class UserInfo {
     } else {
       json[r'avatar'] = null;
     }
-      json[r'balanceConversions'] = this.balanceConversions;
+      json[r'balanceConversions'] = this.balanceConversions.map((e) => e.toJson()).toList();
     if (this.sellerMaintenance != null) {
       json[r'sellerMaintenance'] = this.sellerMaintenance;
     } else {
@@ -465,4 +439,5 @@ class UserInfo {
   static const requiredKeys = <String>{
   };
 }
+
 

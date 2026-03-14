@@ -1,4 +1,4 @@
-//
+﻿//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -27,52 +27,44 @@ class CreateMarketRequest {
     this.options = const [],
   });
 
-  /// 市場標題
+  /// 撣璅?
+
   String title;
+  /// 撣?膩
 
-  /// 市場描述
   String? description;
+  /// 撣憿?
 
-  /// 市場類型
   CreateMarketRequestTypeEnum type;
+  /// ????
 
-  /// 開始時間
   DateTime startTime;
+  /// 蝯???
 
-  /// 結束時間
   DateTime endTime;
-
-  /// 最小投注金額
-  ///
+  /// ?撠?瘜券?憿?  ///
   /// Minimum value: 1.0
   num minBetAmount;
-
-  /// 最大投注金額
-  ///
+  /// ?憭扳?瘜券?憿?  ///
   /// Minimum value: 1.0
   num? maxBetAmount;
-
-  /// 平台手續費百分比（0-10）
-  ///
+  /// 撟喳??鞎餌??嚗?-10嚗?  ///
   /// Minimum value: 0.0
   /// Maximum value: 10.0
   num? feePercentage;
+  /// 撣??URL
 
-  /// 市場圖片URL
   String? imageUrl;
+  /// 撣??
 
-  /// 市場分類
   String? category;
-
-  /// 初始流動性（做莊資金）
-  ///
+  /// ??瘚??改???鞈?嚗?  ///
   /// Minimum value: 50.0
   /// Maximum value: 1000000.0
   num initialLiquidity;
+  /// 撣?賊??”
 
-  /// 市場選項列表
   List<MarketOptionRequest> options;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateMarketRequest &&
     other.title == title &&
@@ -140,7 +132,7 @@ class CreateMarketRequest {
       json[r'category'] = null;
     }
       json[r'initialLiquidity'] = this.initialLiquidity;
-      json[r'options'] = this.options;
+      json[r'options'] = this.options.map((e) => e.toJson()).toList();
     return json;
   }
 
@@ -236,14 +228,14 @@ class CreateMarketRequest {
   };
 }
 
-/// 市場類型
+/// 撣憿?
 class CreateMarketRequestTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const CreateMarketRequestTypeEnum._(this.value);
 
   /// The underlying value of this enum member.
-  final String value;
 
+  final String value;
   @override
   String toString() => value;
 
@@ -309,7 +301,9 @@ class CreateMarketRequestTypeEnumTypeTransformer {
   }
 
   /// Singleton [CreateMarketRequestTypeEnumTypeTransformer] instance.
+
   static CreateMarketRequestTypeEnumTypeTransformer? _instance;
 }
+
 
 

@@ -1,4 +1,4 @@
-//
+﻿//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -41,10 +41,10 @@ class ProductUpdateParam {
     this.purchaseUrl,
   });
 
-  /// 商品ID
-  String id;
+  /// ??ID
 
-  /// 商品名稱
+  String id;
+  /// ???迂
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -52,8 +52,7 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? name;
-
-  /// 商品價格
+  /// ???寞
   ///
   /// Minimum value: 0.0
   ///
@@ -63,10 +62,9 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? price;
-
   SupportedCurrencyEnum? currency;
 
-  /// 商品庫存
+  /// ??摨怠?
   ///
   /// Minimum value: 0
   ///
@@ -76,8 +74,7 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? stock;
-
-  /// 商品描述
+  /// ???膩
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -85,8 +82,7 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? description;
-
-  /// 商品分類
+  /// ????
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -94,11 +90,10 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? category;
+  /// ????URL??
 
-  /// 商品圖片URL集合
   Set<String> imageUrls;
-
-  /// 取貨地址
+  /// ?疏?啣?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -106,8 +101,7 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? pickupAddress;
-
-  /// 取件地址經度
+  /// ?辣?啣?蝬漲
   ///
   /// Minimum value: -180.0
   /// Maximum value: 180.0
@@ -118,8 +112,7 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? pickupLongitude;
-
-  /// 取件地址緯度
+  /// ?辣?啣?蝺臬漲
   ///
   /// Minimum value: -90.0
   /// Maximum value: 90.0
@@ -130,8 +123,7 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? pickupLatitude;
-
-  /// 取貨開始時間
+  /// ?疏????
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -139,8 +131,7 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? pickupTimeStart;
-
-  /// 取貨結束時間
+  /// ?疏蝯???
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -148,16 +139,13 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? pickupTimeEnd;
-
-  /// 啟用平台配送
-  ///
+  /// ?撟喳??  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? enablePlatformDelivery;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -165,11 +153,10 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   ProductStatusEnum? status;
+  /// ??SKU??蝣潮???
 
-  /// 商品SKU或條碼集合
   Set<String> skus;
-
-  /// 品牌名稱
+  /// ???迂
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -177,8 +164,7 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? brand;
-
-  /// 出貨準備時間（小時）
+  /// ?箄疏皞???嚗???
   ///
   /// Minimum value: 0
   ///
@@ -188,17 +174,14 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? shippingPreparationHours;
-
-  /// 出貨截止時間（每天幾點前下單當天出貨）
-  ///
+  /// ?箄疏?芣迫??嚗?憭拙嗾暺?銝?嗅予?箄疏嚗?  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? dailyShippingDeadline;
-
-  /// 出貨備註
+  /// ?箄疏?酉
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -206,8 +189,7 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? shippingDescription;
-
-  /// 是否支持指定出貨日期
+  /// ?臬?舀????箄疏?交?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -215,8 +197,7 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? supportsScheduledShipping;
-
-  /// 可選擇的出貨日期範圍（天數）
+  /// ?舫???箄疏?交?蝭?嚗予?賂?
   ///
   /// Minimum value: 1
   ///
@@ -226,15 +207,13 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? shippingDateRange;
+  /// ?舀??鞎冽?????
 
-  /// 支援的取貨服務類型
   List<PickupServiceTypeEnum> pickupServiceTypes;
+  /// ??鞎冽?????鞎餃??”
 
-  /// 各取貨服務類型運費對應表
   Map<String, num> pickupServiceTypeFees;
-
-  /// 免運費門檻
-  ///
+  /// ??鞎駁?瑼?  ///
   /// Minimum value: 0.0
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -243,8 +222,7 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? freeShippingThreshold;
-
-  /// 代購下單URL(只對賣家展示)
+  /// 隞?頃銝URL(?芸?鞈?振撅內)
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -252,7 +230,6 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? purchaseUrl;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductUpdateParam &&
     other.id == id &&
@@ -415,7 +392,7 @@ class ProductUpdateParam {
     } else {
       json[r'shippingDateRange'] = null;
     }
-      json[r'pickupServiceTypes'] = this.pickupServiceTypes;
+      json[r'pickupServiceTypes'] = this.pickupServiceTypes.map((e) => e.toJson()).toList();
       json[r'pickupServiceTypeFees'] = this.pickupServiceTypeFees;
     if (this.freeShippingThreshold != null) {
       json[r'freeShippingThreshold'] = this.freeShippingThreshold;
@@ -533,4 +510,5 @@ class ProductUpdateParam {
     'pickupServiceTypeFees',
   };
 }
+
 

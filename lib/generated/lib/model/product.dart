@@ -1,4 +1,4 @@
-//
+﻿//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -71,138 +71,128 @@ class Product {
     this.shippingFee,
   });
 
-  /// 商品ID
+  /// ??ID
+
   int id;
+  /// ??璅?
 
-  /// 商品標題
   String title;
+  /// ???膩
 
-  /// 商品描述
   String description;
-
-  /// 商品價格
+  /// ???寞
   ///
   /// Minimum value: 0.0
   num price;
-
   SupportedCurrencyEnum? currency;
 
-  /// 商品庫存
+  /// ??摨怠?
   ///
   /// Minimum value: 0
   int stock;
-
   ProductCategoryEnum category;
 
-  /// 賣家ID
+  /// 鞈?振ID
+
   int sellerId;
+  /// ????URL?”嚗SON?澆?
 
-  /// 商品圖片URL列表，JSON格式
   String? imageUrlsJson;
+  /// ?疏?啣?
 
-  /// 取貨地址
   String pickupAddress;
-
-  /// 取貨地址經度
+  /// ?疏?啣?蝬漲
   ///
   /// Minimum value: -180.0
   /// Maximum value: 180.0
   double pickupLongitude;
-
-  /// 取貨地址緯度
+  /// ?疏?啣?蝺臬漲
   ///
   /// Minimum value: -90.0
   /// Maximum value: 90.0
   double pickupLatitude;
+  /// ?疏????
 
-  /// 取貨開始時間
   String pickupTimeStart;
+  /// ?疏蝯???
 
-  /// 取貨結束時間
   String pickupTimeEnd;
+  /// ?撟喳??
 
-  /// 啟用平台配送
   bool enablePlatformDelivery;
+  /// ?箄疏?芣迫??嚗?憭拙嗾暺?銝?嗅予?箄疏嚗?
 
-  /// 出貨截止時間（每天幾點前下單當天出貨）
   String? dailyShippingDeadline;
+  /// ?箄疏皞???嚗???
 
-  /// 出貨準備時間（小時）
   int? shippingPreparationHours;
+  /// ?箄疏?酉
 
-  /// 出貨備註
   String? shippingDescription;
+  /// ??????嚗予?賂?
 
-  /// 預計送達時間（天數）
   int? estimatedDeliveryDays;
+  /// ?臬?舀????箄疏?交?
 
-  /// 是否支持指定出貨日期
   bool? supportsScheduledShipping;
+  /// ?舫???箄疏?交?蝭?嚗予?賂?
 
-  /// 可選擇的出貨日期範圍（天數）
   int? shippingDateRange;
-
   ProductStatusEnum status;
 
-  /// 建立時間
+  /// 撱箇???
+
   DateTime? createdAt;
+  /// ?敺?唳???
 
-  /// 最後更新時間
   DateTime? updatedAt;
-
-  /// 商品評分
+  /// ??閰?
   ///
   /// Minimum value: 0.0
   /// Maximum value: 5.0
   num? rating;
-
-  /// 商品評價次數
+  /// ??閰甈⊥
   ///
   /// Minimum value: 0
   int reviewCount;
-
-  /// 瀏覽次數
+  /// ?汗甈⊥
   ///
   /// Minimum value: 0
   int viewCount;
-
-  /// 銷售數量
+  /// ?瑕?賊?
   ///
   /// Minimum value: 0
   int salesCount;
+  /// 璅惜嚗???
 
-  /// 標籤，逗號分隔
   String? tags;
+  /// ??SKU??蝣潮???JSON?澆?
 
-  /// 商品SKU或條碼集合，JSON格式
   String? skusJson;
+  /// ???迂
 
-  /// 品牌名稱
   String? brand;
-
-  /// 最低庫存
-  ///
+  /// ?雿澈摮?  ///
   /// Minimum value: 0
   int minStock;
+  /// ?舀??鞎冽?????銵剁?JSON?澆????潘?HOME_DELIVERY嚗??????EVEN_ELEVEN嚗?-11嚗AMILY_MART嚗摰塚??ILIFE嚗??曉?嚗K_MART嚗K頞?嚗?
 
-  /// 支援的取貨服務類型列表，JSON格式。取值：HOME_DELIVERY（宅配服務）、SEVEN_ELEVEN（7-11）、FAMILY_MART（全家）、HILIFE（萊爾富）、OK_MART（OK超商）
   String? pickupServiceTypesJson;
+  /// ??鞎冽?????鞎餃??”嚗SON?澆????PickupServiceTypeEnum嚗潛?祥嚗igDecimal嚗?
 
-  /// 各取貨服務類型運費對應表，JSON格式。鍵為 PickupServiceTypeEnum，值為運費（BigDecimal）
   String? pickupServiceTypeFeesJson;
+  /// ??鞎駁?瑼?
 
-  /// 免運費門檻
   num? freeShippingThreshold;
+  /// 摨怠?霅血??曉?
 
-  /// 庫存警告閾值
   int? stockAlertThreshold;
+  /// ?臬?迂鞎澈摮?
 
-  /// 是否允許負庫存
   bool? allowNegativeStock;
+  /// 隞?頃銝URL(?芸?鞈?振撅內)
 
-  /// 代購下單URL(只對賣家展示)
   String? purchaseUrl;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -210,13 +200,12 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   Store? store;
+  /// ?舀閰脣??????冽?啣??”
 
-  /// 支援該商品運送的用戶地址列表
   List<UserAddress> userSupportedShippingAddresses;
+  /// ???賊??”
 
-  /// 運送地址選項列表
   List<ShippingAddressOption> shippingAddressOptions;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -224,17 +213,14 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   ShippingOptions? shippingOptions;
-
-  /// USDT价格（换算后）
-  ///
+  /// USDT隞瑟嚗蝞?嚗?  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? priceUsdt;
-
-  /// 汇率（USDT/原币种）
+  /// 瘙?嚗SDT/??蝘?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -242,8 +228,7 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? exchangeRate;
-
-  /// 是否使用默认汇率
+  /// ?臬雿輻暺恕瘙?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -251,8 +236,7 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? usingDefaultRate;
-
-  /// 免运费门槛USDT金额
+  /// ??韐寥瑽SDT??
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -260,7 +244,6 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? freeShippingThresholdUsdt;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -268,7 +251,6 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? stockLow;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -276,7 +258,6 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? inStock;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -284,7 +265,6 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? stockBelowMinimum;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -292,7 +272,6 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? minimumShippingFee;
-
   Set<String> skus;
 
   Set<String> imageUrls;
@@ -304,10 +283,9 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? defaultShippingFee;
+  /// ?舀??鞎冽?????銵?
 
-  /// 支援的取貨服務類型列表
   List<PickupServiceTypeEnum> pickupServiceTypes;
-
   Map<String, num> pickupServiceTypeFees;
 
   ///
@@ -317,7 +295,6 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? shippingFee;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is Product &&
     other.id == id &&
@@ -565,8 +542,8 @@ class Product {
     } else {
       json[r'store'] = null;
     }
-      json[r'userSupportedShippingAddresses'] = this.userSupportedShippingAddresses;
-      json[r'shippingAddressOptions'] = this.shippingAddressOptions;
+      json[r'userSupportedShippingAddresses'] = this.userSupportedShippingAddresses.map((e) => e.toJson()).toList();
+      json[r'shippingAddressOptions'] = this.shippingAddressOptions.map((e) => e.toJson()).toList();
     if (this.shippingOptions != null) {
       json[r'shippingOptions'] = this.shippingOptions;
     } else {
@@ -619,7 +596,7 @@ class Product {
     } else {
       json[r'defaultShippingFee'] = null;
     }
-      json[r'pickupServiceTypes'] = this.pickupServiceTypes;
+      json[r'pickupServiceTypes'] = this.pickupServiceTypes.map((e) => e.toJson()).toList();
       json[r'pickupServiceTypeFees'] = this.pickupServiceTypeFees;
     if (this.shippingFee != null) {
       json[r'shippingFee'] = this.shippingFee;
@@ -779,4 +756,5 @@ class Product {
     'minStock',
   };
 }
+
 

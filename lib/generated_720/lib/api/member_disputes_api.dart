@@ -1,0 +1,305 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
+
+
+class MemberDisputesApi {
+  MemberDisputesApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+
+  final ApiClient apiClient;
+
+  /// 創建糾紛
+  ///
+  /// 買家可以對訂單創建糾紛，支持上傳圖片作為證據（最多5張）
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [DisputeCreateParam] disputeCreateParam (required):
+  Future<Response> createDisputeWithHttpInfo(DisputeCreateParam disputeCreateParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/disputes';
+
+    // ignore: prefer_final_locals
+    Object? postBody = disputeCreateParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 創建糾紛
+  ///
+  /// 買家可以對訂單創建糾紛，支持上傳圖片作為證據（最多5張）
+  ///
+  /// Parameters:
+  ///
+  /// * [DisputeCreateParam] disputeCreateParam (required):
+  Future<Dispute?> createDispute(DisputeCreateParam disputeCreateParam,) async {
+    final response = await createDisputeWithHttpInfo(disputeCreateParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Dispute',) as Dispute;
+    
+    }
+    return null;
+  }
+
+  /// 查看糾紛詳情
+  ///
+  /// 會員可查看糾紛的詳細信息，返回所有相關信息包括糾紛、訂單、買賣雙方信息、退貨記錄等
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [DisputeDetailParam] disputeDetailParam (required):
+  Future<Response> getDisputeDetailWithHttpInfo(DisputeDetailParam disputeDetailParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/disputes/detail';
+
+    // ignore: prefer_final_locals
+    Object? postBody = disputeDetailParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查看糾紛詳情
+  ///
+  /// 會員可查看糾紛的詳細信息，返回所有相關信息包括糾紛、訂單、買賣雙方信息、退貨記錄等
+  ///
+  /// Parameters:
+  ///
+  /// * [DisputeDetailParam] disputeDetailParam (required):
+  Future<DisputeQueryResult?> getDisputeDetail(DisputeDetailParam disputeDetailParam,) async {
+    final response = await getDisputeDetailWithHttpInfo(disputeDetailParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DisputeQueryResult',) as DisputeQueryResult;
+    
+    }
+    return null;
+  }
+
+  /// 回覆糾紛
+  ///
+  /// 賣家可以回覆買家的糾紛
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] disputeId (required):
+  ///   糾紛ID
+  ///
+  /// * [DisputeReplyParam] disputeReplyParam (required):
+  Future<Response> replyDisputeWithHttpInfo(String disputeId, DisputeReplyParam disputeReplyParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/disputes/{disputeId}/reply'
+      .replaceAll('{disputeId}', disputeId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = disputeReplyParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 回覆糾紛
+  ///
+  /// 賣家可以回覆買家的糾紛
+  ///
+  /// Parameters:
+  ///
+  /// * [String] disputeId (required):
+  ///   糾紛ID
+  ///
+  /// * [DisputeReplyParam] disputeReplyParam (required):
+  Future<Dispute?> replyDispute(String disputeId, DisputeReplyParam disputeReplyParam,) async {
+    final response = await replyDisputeWithHttpInfo(disputeId, disputeReplyParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Dispute',) as Dispute;
+    
+    }
+    return null;
+  }
+
+  /// 買家搜索糾紛
+  ///
+  /// 買家可搜索與自己相關的糾紛
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [DisputeSearchParam] disputeSearchParam (required):
+  Future<Response> searchBuyerDisputesWithHttpInfo(DisputeSearchParam disputeSearchParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/disputes/buyer/search';
+
+    // ignore: prefer_final_locals
+    Object? postBody = disputeSearchParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 買家搜索糾紛
+  ///
+  /// 買家可搜索與自己相關的糾紛
+  ///
+  /// Parameters:
+  ///
+  /// * [DisputeSearchParam] disputeSearchParam (required):
+  Future<PageDispute?> searchBuyerDisputes(DisputeSearchParam disputeSearchParam,) async {
+    final response = await searchBuyerDisputesWithHttpInfo(disputeSearchParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDispute',) as PageDispute;
+    
+    }
+    return null;
+  }
+
+  /// 賣家搜索糾紛
+  ///
+  /// 賣家可搜索與自己相關的糾紛
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [DisputeSearchParam] disputeSearchParam (required):
+  Future<Response> searchSellerDisputesWithHttpInfo(DisputeSearchParam disputeSearchParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/disputes/seller/search';
+
+    // ignore: prefer_final_locals
+    Object? postBody = disputeSearchParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 賣家搜索糾紛
+  ///
+  /// 賣家可搜索與自己相關的糾紛
+  ///
+  /// Parameters:
+  ///
+  /// * [DisputeSearchParam] disputeSearchParam (required):
+  Future<PageDispute?> searchSellerDisputes(DisputeSearchParam disputeSearchParam,) async {
+    final response = await searchSellerDisputesWithHttpInfo(disputeSearchParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDispute',) as PageDispute;
+    
+    }
+    return null;
+  }
+}

@@ -1,4 +1,4 @@
-//
+﻿//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -23,10 +23,10 @@ class StoreShippingConfigParam {
     this.shippingDateRange,
   });
 
-  /// 支援的物流公司
-  List<ShippingCompanyEnum> supportedShippingCompanies;
+  /// ?舀?瘚??
 
-  /// 預設運費
+  List<ShippingCompanyEnum> supportedShippingCompanies;
+  /// ?身?祥
   ///
   /// Minimum value: 0
   ///
@@ -36,9 +36,7 @@ class StoreShippingConfigParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? defaultShippingFee;
-
-  /// 免運費門檻
-  ///
+  /// ??鞎駁?瑼?  ///
   /// Minimum value: 0
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -47,17 +45,14 @@ class StoreShippingConfigParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? freeShippingThreshold;
-
-  /// 運送說明
-  ///
+  /// ?牧??  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? shippingDescription;
-
-  /// 出貨準備時間（小時）
+  /// ?箄疏皞???嚗???
   ///
   /// Minimum value: 0
   ///
@@ -67,8 +62,7 @@ class StoreShippingConfigParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? shippingPreparationHours;
-
-  /// 預計送達時間（天數）
+  /// ??????嚗予?賂?
   ///
   /// Minimum value: 1
   ///
@@ -78,8 +72,7 @@ class StoreShippingConfigParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? estimatedDeliveryDays;
-
-  /// 是否支援指定出貨日期
+  /// ?臬?舀???箄疏?交?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -87,8 +80,7 @@ class StoreShippingConfigParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? supportsScheduledShipping;
-
-  /// 可選擇的出貨日期範圍（天數）
+  /// ?舫???箄疏?交?蝭?嚗予?賂?
   ///
   /// Minimum value: 1
   ///
@@ -98,7 +90,6 @@ class StoreShippingConfigParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? shippingDateRange;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is StoreShippingConfigParam &&
     _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
@@ -127,7 +118,7 @@ class StoreShippingConfigParam {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
+      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies.map((e) => e.toJson()).toList();
     if (this.defaultShippingFee != null) {
       json[r'defaultShippingFee'] = this.defaultShippingFee;
     } else {
@@ -242,4 +233,5 @@ class StoreShippingConfigParam {
   static const requiredKeys = <String>{
   };
 }
+
 

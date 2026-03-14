@@ -1,4 +1,4 @@
-//
+﻿//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -27,16 +27,14 @@ class FileSyncResponse {
     this.deletedFileRecords = const [],
   });
 
-  /// 檢查的檔案總數
-  ///
+  /// 瑼Ｘ??獢蜇??  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? totalChecked;
-
-  /// 新增的記錄數
+  /// ?啣????
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -44,8 +42,7 @@ class FileSyncResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? newRecords;
-
-  /// 更新的記錄數
+  /// ?湔???
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -53,8 +50,7 @@ class FileSyncResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? updatedRecords;
-
-  /// 刪除的記錄數
+  /// ?芷???
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -62,8 +58,7 @@ class FileSyncResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? deletedRecords;
-
-  /// 錯誤數量
+  /// ?航炊?賊?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -71,8 +66,7 @@ class FileSyncResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? errors;
-
-  /// 同步開始時間
+  /// ?郊????
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -80,8 +74,7 @@ class FileSyncResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? startTime;
-
-  /// 同步結束時間
+  /// ?郊蝯???
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -89,8 +82,7 @@ class FileSyncResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? endTime;
-
-  /// 同步耗時（毫秒）
+  /// ?郊??嚗神蝘?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -98,19 +90,18 @@ class FileSyncResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? durationMs;
+  /// ?航炊閰單?
 
-  /// 錯誤詳情
   List<String> errorDetails;
+  /// ?啣???獢???
 
-  /// 新增的檔案記錄
   List<FileRecordInfo> newFileRecords;
+  /// ?湔??獢???
 
-  /// 更新的檔案記錄
   List<FileRecordInfo> updatedFileRecords;
+  /// ?芷??獢???
 
-  /// 刪除的檔案記錄
   List<FileRecordInfo> deletedFileRecords;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is FileSyncResponse &&
     other.totalChecked == totalChecked &&
@@ -188,9 +179,9 @@ class FileSyncResponse {
       json[r'durationMs'] = null;
     }
       json[r'errorDetails'] = this.errorDetails;
-      json[r'newFileRecords'] = this.newFileRecords;
-      json[r'updatedFileRecords'] = this.updatedFileRecords;
-      json[r'deletedFileRecords'] = this.deletedFileRecords;
+      json[r'newFileRecords'] = this.newFileRecords.map((e) => e.toJson()).toList();
+      json[r'updatedFileRecords'] = this.updatedFileRecords.map((e) => e.toJson()).toList();
+      json[r'deletedFileRecords'] = this.deletedFileRecords.map((e) => e.toJson()).toList();
     return json;
   }
 
@@ -276,4 +267,5 @@ class FileSyncResponse {
   static const requiredKeys = <String>{
   };
 }
+
 

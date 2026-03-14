@@ -1,4 +1,4 @@
-//
+﻿//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -21,16 +21,14 @@ class SlotRtpResponse {
     this.entries = const [],
   });
 
-  /// 三個 Reel 的總組合數（32³）
-  ///
+  /// 銝?Reel ?蜇蝯??賂?32糧嚗?  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? totalCombinations;
-
-  /// 理論 RTP（Return to Player），例如 0.95370000 = ~95.37%
+  /// ?? RTP嚗eturn to Player嚗?靘? 0.95370000 = ~95.37%
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -38,8 +36,7 @@ class SlotRtpResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? totalRtp;
-
-  /// 理論 RTP 百分比字串，例如 \"95.37%\"
+  /// ?? RTP ?曉?瘥?銝莎?靘? \"95.37%\"
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -47,17 +44,14 @@ class SlotRtpResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? totalRtpPct;
-
-  /// 莊家優勢（1 - RTP）
-  ///
+  /// ?振?芸嚗? - RTP嚗?  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? houseEdge;
-
-  /// 莊家優勢百分比字串，例如 \"4.63%\"
+  /// ?振?芸?曉?瘥?銝莎?靘? \"4.63%\"
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -65,10 +59,9 @@ class SlotRtpResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? houseEdgePct;
+  /// ?葉???底??靘?RTP 鞎Ｙ?梢??唬???
 
-  /// 各中獎組合詳情，依 RTP 貢獻由高到低排列
   List<RtpEntry> entries;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is SlotRtpResponse &&
     other.totalCombinations == totalCombinations &&
@@ -118,7 +111,7 @@ class SlotRtpResponse {
     } else {
       json[r'houseEdgePct'] = null;
     }
-      json[r'entries'] = this.entries;
+      json[r'entries'] = this.entries.map((e) => e.toJson()).toList();
     return json;
   }
 
@@ -196,4 +189,5 @@ class SlotRtpResponse {
   static const requiredKeys = <String>{
   };
 }
+
 

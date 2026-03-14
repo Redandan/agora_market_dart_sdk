@@ -1,4 +1,4 @@
-//
+﻿//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -21,7 +21,7 @@ class OrderStatisticsDTO {
     this.topSellers = const [],
   });
 
-  /// 總訂單數
+  /// 蝮質??格
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -29,17 +29,14 @@ class OrderStatisticsDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? totalOrders;
-
-  /// 總交易金額
-  ///
+  /// 蝮賭漱??憿?  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? totalAmount;
-
-  /// 平均訂單金額
+  /// 撟喳?閮??
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -47,16 +44,15 @@ class OrderStatisticsDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? averageOrderAmount;
+  /// ?????格??
 
-  /// 各狀態訂單數量
   Map<String, int> ordersByStatus;
+  /// ?梢???蝯梯?嚗?5??
 
-  /// 熱門商品統計（前5個）
   List<TopProductDTO> topProducts;
+  /// ?梢?鞈?振蝯梯?嚗?5??
 
-  /// 熱門賣家統計（前5個）
   List<TopSellerDTO> topSellers;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrderStatisticsDTO &&
     other.totalOrders == totalOrders &&
@@ -97,8 +93,8 @@ class OrderStatisticsDTO {
       json[r'averageOrderAmount'] = null;
     }
       json[r'ordersByStatus'] = this.ordersByStatus;
-      json[r'topProducts'] = this.topProducts;
-      json[r'topSellers'] = this.topSellers;
+      json[r'topProducts'] = this.topProducts.map((e) => e.toJson()).toList();
+      json[r'topSellers'] = this.topSellers.map((e) => e.toJson()).toList();
     return json;
   }
 
@@ -176,4 +172,5 @@ class OrderStatisticsDTO {
   static const requiredKeys = <String>{
   };
 }
+
 

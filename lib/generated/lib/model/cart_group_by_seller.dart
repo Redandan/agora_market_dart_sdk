@@ -1,4 +1,4 @@
-//
+﻿//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -28,7 +28,6 @@ class CartGroupBySeller {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? sellerId;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -36,7 +35,6 @@ class CartGroupBySeller {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? sellerName;
-
   List<CartItemResponse> items;
 
   ///
@@ -46,7 +44,6 @@ class CartGroupBySeller {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? sellerSubtotal;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -54,7 +51,6 @@ class CartGroupBySeller {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? sellerShippingFee;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -62,7 +58,6 @@ class CartGroupBySeller {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? sellerTotal;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is CartGroupBySeller &&
     other.sellerId == sellerId &&
@@ -97,7 +92,7 @@ class CartGroupBySeller {
     } else {
       json[r'sellerName'] = null;
     }
-      json[r'items'] = this.items;
+      json[r'items'] = this.items.map((e) => e.toJson()).toList();
     if (this.sellerSubtotal != null) {
       json[r'sellerSubtotal'] = this.sellerSubtotal;
     } else {
@@ -190,4 +185,5 @@ class CartGroupBySeller {
   static const requiredKeys = <String>{
   };
 }
+
 

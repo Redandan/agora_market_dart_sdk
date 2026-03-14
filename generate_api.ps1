@@ -54,12 +54,13 @@ try {
 }
 
 # 檢查 openapi-generator-cli.jar 文件
-Write-Host "Checking openapi-generator-cli.jar..." -ForegroundColor Yellow
-$generatorPath = "openapi-generator-cli.jar"
+$openApiGeneratorVersion = "7.20.0"
+Write-Host "Checking OpenAPI Generator CLI $openApiGeneratorVersion..." -ForegroundColor Yellow
+$generatorPath = "openapi-generator-cli-$openApiGeneratorVersion.jar"
 if (-not (Test-Path $generatorPath)) {
     Write-Host "Downloading OpenAPI Generator CLI..." -ForegroundColor Yellow
     try {
-        $url = "https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.14.0/openapi-generator-cli-7.14.0.jar"
+        $url = "https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/$openApiGeneratorVersion/openapi-generator-cli-$openApiGeneratorVersion.jar"
         Invoke-WebRequest -Uri $url -OutFile $generatorPath
         Write-Host "Downloaded OpenAPI Generator CLI" -ForegroundColor Green
     } catch {
@@ -197,6 +198,14 @@ function Repair-GeneratedModelListSerialization {
             continue
         }
 
+        # Some generated files have malformed comment lines where a field declaration
+        # is accidentally appended to the same line. Split them back into two lines.
+        $content = [System.Text.RegularExpressions.Regex]::Replace(
+            $content,
+            '(?m)^(\s*)///([^\r\n]*?)\s{2,}([A-Za-z_][A-Za-z0-9_<>, ?]*?)\s+([A-Za-z_][A-Za-z0-9_]*);\s*$',
+            "`$1///`$2`r`n`$1`$3 `$4;"
+        )
+
         $listPropertyMatches = [System.Text.RegularExpressions.Regex]::Matches(
             $content,
             '(?m)^\s*List<([A-Za-z_][A-Za-z0-9_]*)>\s+([A-Za-z_][A-Za-z0-9_]*);\s*$'
@@ -222,7 +231,7 @@ function Repair-GeneratedModelListSerialization {
             }
 
             $escapedPropertyName = [System.Text.RegularExpressions.Regex]::Escape($propertyName)
-            $assignmentPattern = "(?m)^(\\s*)json\\[r'$escapedPropertyName'\\]\\s*=\\s*this\\.$escapedPropertyName;\\s*$"
+            $assignmentPattern = "(?m)^(\s*)json\[r'$escapedPropertyName'\]\s*=\s*this\.$escapedPropertyName;\s*$"
             $replacement = "`$1json[r'$propertyName'] = this.$propertyName.map((e) => e.toJson()).toList();"
 
             $newContent = [System.Text.RegularExpressions.Regex]::Replace(
@@ -267,7 +276,7 @@ try {
 # 執行代碼生成
 Write-Host "Running code generation..." -ForegroundColor Yellow
 try {
-    java -jar openapi-generator-cli.jar generate `
+    java -jar $generatorPath generate `
         -i lib/api/swagger.yaml `
         -g dart `
         -o lib/generated `

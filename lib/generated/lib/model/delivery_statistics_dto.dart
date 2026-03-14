@@ -1,4 +1,4 @@
-//
+﻿//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -21,7 +21,7 @@ class DeliveryStatisticsDTO {
     this.topDeliveryAreas = const [],
   });
 
-  /// 總配送員數量
+  /// 蝮賡???賊?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -29,8 +29,7 @@ class DeliveryStatisticsDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? totalDeliveryers;
-
-  /// 活躍配送員數量
+  /// 瘣餉???賊?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -38,25 +37,22 @@ class DeliveryStatisticsDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? activeDeliveryers;
+  /// ?????格??
 
-  /// 各狀態訂單數量
   Map<String, int> ordersByStatus;
+  /// ?蝮暹?蝯梯?
 
-  /// 配送員績效統計
   List<DeliveryerPerformanceDTO> deliveryerPerformance;
-
-  /// 平均配送時間（分鐘）
-  ///
+  /// 撟喳???????嚗?  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? averageDeliveryTime;
+  /// ?梢???????0??
 
-  /// 熱門配送區域（前10個）
   List<TopDeliveryAreaDTO> topDeliveryAreas;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is DeliveryStatisticsDTO &&
     other.totalDeliveryers == totalDeliveryers &&
@@ -92,13 +88,13 @@ class DeliveryStatisticsDTO {
       json[r'activeDeliveryers'] = null;
     }
       json[r'ordersByStatus'] = this.ordersByStatus;
-      json[r'deliveryerPerformance'] = this.deliveryerPerformance;
+      json[r'deliveryerPerformance'] = this.deliveryerPerformance.map((e) => e.toJson()).toList();
     if (this.averageDeliveryTime != null) {
       json[r'averageDeliveryTime'] = this.averageDeliveryTime;
     } else {
       json[r'averageDeliveryTime'] = null;
     }
-      json[r'topDeliveryAreas'] = this.topDeliveryAreas;
+      json[r'topDeliveryAreas'] = this.topDeliveryAreas.map((e) => e.toJson()).toList();
     return json;
   }
 
@@ -176,4 +172,5 @@ class DeliveryStatisticsDTO {
   static const requiredKeys = <String>{
   };
 }
+
 

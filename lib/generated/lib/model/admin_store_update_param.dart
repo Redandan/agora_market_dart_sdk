@@ -1,4 +1,4 @@
-//
+﻿//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -39,7 +39,7 @@ class AdminStoreUpdateParam {
     this.adminRemark,
   });
 
-  /// 商店名稱
+  /// ???迂
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -47,8 +47,7 @@ class AdminStoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? name;
-
-  /// 商店描述
+  /// ???膩
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -56,8 +55,7 @@ class AdminStoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? description;
-
-  /// 商店地址
+  /// ???啣?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -65,8 +63,7 @@ class AdminStoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? address;
-
-  /// 商店電話
+  /// ???餉店
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -74,8 +71,7 @@ class AdminStoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? phone;
-
-  /// 商店郵箱
+  /// ???萇拳
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -83,8 +79,7 @@ class AdminStoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? email;
-
-  /// 營業時間
+  /// ?平??
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -92,8 +87,7 @@ class AdminStoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? businessHours;
-
-  /// 商店Logo URL
+  /// ??Logo URL
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -101,8 +95,7 @@ class AdminStoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? logoUrl;
-
-  /// 商店封面圖片 URL
+  /// ??撠?? URL
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -110,8 +103,7 @@ class AdminStoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? coverImageUrl;
-
-  /// 是否啟用
+  /// ?臬?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -119,8 +111,7 @@ class AdminStoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? isActive;
-
-  /// 信用等級
+  /// 靽∠蝑?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -128,8 +119,7 @@ class AdminStoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? creditLevel;
-
-  /// 商品數量
+  /// ???賊?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -137,8 +127,7 @@ class AdminStoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? productCount;
-
-  /// 訂單數量
+  /// 閮?賊?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -146,8 +135,7 @@ class AdminStoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? orderCount;
-
-  /// 總銷售額
+  /// 蝮賡?桅?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -155,8 +143,7 @@ class AdminStoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? totalSales;
-
-  /// 平均評分
+  /// 撟喳?閰?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -164,20 +151,17 @@ class AdminStoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? averageRating;
-
-  /// 回覆率
-  ///
+  /// ????  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? responseRate;
+  /// ?舀?瘚??
 
-  /// 支援的物流公司
   List<ShippingCompanyEnum> supportedShippingCompanies;
-
-  /// 預設運費
+  /// ?身?祥
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -185,26 +169,21 @@ class AdminStoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? defaultShippingFee;
-
-  /// 免運費門檻
-  ///
+  /// ??鞎駁?瑼?  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? freeShippingThreshold;
-
-  /// 運送說明
-  ///
+  /// ?牧??  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? shippingDescription;
-
-  /// 出貨準備時間（小時）
+  /// ?箄疏皞???嚗???
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -212,8 +191,7 @@ class AdminStoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? shippingPreparationHours;
-
-  /// 預計送達時間（天數）
+  /// ??????嚗予?賂?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -221,8 +199,7 @@ class AdminStoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? estimatedDeliveryDays;
-
-  /// 是否支援指定出貨日期
+  /// ?臬?舀???箄疏?交?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -230,8 +207,7 @@ class AdminStoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? supportsScheduledShipping;
-
-  /// 可選擇的出貨日期範圍（天數）
+  /// ?舫???箄疏?交?蝭?嚗予?賂?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -239,16 +215,13 @@ class AdminStoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? shippingDateRange;
-
-  /// 管理員備註
-  ///
+  /// 蝞∠??∪?閮?  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? adminRemark;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is AdminStoreUpdateParam &&
     other.name == name &&
@@ -384,7 +357,7 @@ class AdminStoreUpdateParam {
     } else {
       json[r'responseRate'] = null;
     }
-      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
+      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies.map((e) => e.toJson()).toList();
     if (this.defaultShippingFee != null) {
       json[r'defaultShippingFee'] = this.defaultShippingFee;
     } else {
@@ -520,4 +493,5 @@ class AdminStoreUpdateParam {
   static const requiredKeys = <String>{
   };
 }
+
 

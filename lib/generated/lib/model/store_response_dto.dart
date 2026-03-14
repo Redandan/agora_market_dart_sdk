@@ -1,4 +1,4 @@
-//
+﻿//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -51,7 +51,7 @@ class StoreResponseDTO {
     this.adminRemark,
   });
 
-  /// 商店擁有者ID
+  /// ?????D
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -59,8 +59,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? id;
-
-  /// 商店名稱
+  /// ???迂
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -68,8 +67,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? name;
-
-  /// 商店描述
+  /// ???膩
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -77,8 +75,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? description;
-
-  /// 商店地址
+  /// ???啣?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -86,8 +83,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? address;
-
-  /// 商店經度
+  /// ??蝬漲
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -95,8 +91,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? longitude;
-
-  /// 商店緯度
+  /// ??蝺臬漲
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -104,8 +99,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? latitude;
-
-  /// 商店電話
+  /// ???餉店
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -113,8 +107,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? phone;
-
-  /// 商店郵箱
+  /// ???萇拳
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -122,8 +115,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? email;
-
-  /// 營業時間
+  /// ?平??
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -131,8 +123,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? businessHours;
-
-  /// 商店頭像
+  /// ???剖?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -140,8 +131,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? logoUrl;
-
-  /// Logo描述
+  /// Logo?膩
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -149,8 +139,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? logoDescription;
-
-  /// Logo上传时间
+  /// Logo銝??園
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -158,8 +147,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? logoUploadTime;
-
-  /// 商店封面圖片
+  /// ??撠??
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -167,8 +155,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? coverImageUrl;
-
-  /// 封面图片描述
+  /// 撠?曄??膩
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -176,8 +163,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? coverDescription;
-
-  /// 封面图片上传时间
+  /// 撠?曄?銝??園
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -185,8 +171,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? coverUploadTime;
-
-  /// 是否啟用
+  /// ?臬?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -194,8 +179,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? isActive;
-
-  /// 瀏覽次數
+  /// ?汗甈⊥
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -203,8 +187,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? viewCount;
-
-  /// 評分
+  /// 閰?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -212,8 +195,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? rating;
-
-  /// 評分次數
+  /// 閰?甈⊥
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -221,8 +203,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? ratingCount;
-
-  /// 信用等級
+  /// 靽∠蝑?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -230,8 +211,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? creditLevel;
-
-  /// 商品數量
+  /// ???賊?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -239,8 +219,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? productCount;
-
-  /// 訂單數量
+  /// 閮?賊?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -248,8 +227,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? orderCount;
-
-  /// 總銷售額
+  /// 蝮賡?桅?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -257,8 +235,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? totalSales;
-
-  /// 平均評分
+  /// 撟喳?閰?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -266,20 +243,17 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? averageRating;
-
-  /// 回覆率
-  ///
+  /// ????  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? responseRate;
+  /// ?舀?瘚??
 
-  /// 支援的物流公司
   List<ShippingCompanyEnum> supportedShippingCompanies;
-
-  /// 預設運費
+  /// ?身?祥
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -287,26 +261,21 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? defaultShippingFee;
-
-  /// 免運費門檻
-  ///
+  /// ??鞎駁?瑼?  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? freeShippingThreshold;
-
-  /// 運送說明
-  ///
+  /// ?牧??  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? shippingDescription;
-
-  /// 出貨準備時間（小時）
+  /// ?箄疏皞???嚗???
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -314,8 +283,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? shippingPreparationHours;
-
-  /// 預計送達時間（天數）
+  /// ??????嚗予?賂?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -323,8 +291,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? estimatedDeliveryDays;
-
-  /// 是否支援指定出貨日期
+  /// ?臬?舀???箄疏?交?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -332,8 +299,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? supportsScheduledShipping;
-
-  /// 可選擇的出貨日期範圍（天數）
+  /// ?舫???箄疏?交?蝭?嚗予?賂?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -341,8 +307,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? shippingDateRange;
-
-  /// 創建時間
+  /// ?萄遣??
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -350,8 +315,7 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? createdAt;
-
-  /// 更新時間
+  /// ?湔??
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -359,16 +323,13 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? updatedAt;
-
-  /// 管理員備註
-  ///
+  /// 蝞∠??∪?閮?  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? adminRemark;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is StoreResponseDTO &&
     other.id == id &&
@@ -578,7 +539,7 @@ class StoreResponseDTO {
     } else {
       json[r'responseRate'] = null;
     }
-      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
+      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies.map((e) => e.toJson()).toList();
     if (this.defaultShippingFee != null) {
       json[r'defaultShippingFee'] = this.defaultShippingFee;
     } else {
@@ -736,4 +697,5 @@ class StoreResponseDTO {
   static const requiredKeys = <String>{
   };
 }
+
 

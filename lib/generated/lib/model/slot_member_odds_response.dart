@@ -1,4 +1,4 @@
-//
+﻿//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -18,16 +18,14 @@ class SlotMemberOddsResponse {
     this.entries = const [],
   });
 
-  /// 三個 Reel 的總組合數（32³）
-  ///
+  /// 銝?Reel ?蜇蝯??賂?32糧嚗?  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? totalCombinations;
-
-  /// 理論 RTP 百分比字串，例如 \"95.37%\"
+  /// ?? RTP ?曉?瘥?銝莎?靘? \"95.37%\"
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -35,10 +33,9 @@ class SlotMemberOddsResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? totalRtpPct;
+  /// ??臬?蝷箇?鞈?鞈?
 
-  /// 會員可展示的賠率資料
   List<SlotMemberOddsEntry> entries;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is SlotMemberOddsResponse &&
     other.totalCombinations == totalCombinations &&
@@ -67,7 +64,7 @@ class SlotMemberOddsResponse {
     } else {
       json[r'totalRtpPct'] = null;
     }
-      json[r'entries'] = this.entries;
+      json[r'entries'] = this.entries.map((e) => e.toJson()).toList();
     return json;
   }
 
@@ -142,4 +139,5 @@ class SlotMemberOddsResponse {
   static const requiredKeys = <String>{
   };
 }
+
 

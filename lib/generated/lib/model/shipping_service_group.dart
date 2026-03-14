@@ -1,4 +1,4 @@
-//
+﻿//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -28,8 +28,7 @@ class ShippingServiceGroup {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   ShippingCompanyEnum? shippingCompany;
-
-  /// 運費
+  /// ?祥
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -37,8 +36,7 @@ class ShippingServiceGroup {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? shippingFee;
-
-  /// 預計送達時間（天數）
+  /// ??????嚗予?賂?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -46,11 +44,10 @@ class ShippingServiceGroup {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? estimatedDays;
+  /// ?舫????啣??”
 
-  /// 可配送的地址列表
   List<ShippingAddress> addresses;
-
-  /// 是否需要添加地址
+  /// ?臬?閬溶??
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -58,8 +55,7 @@ class ShippingServiceGroup {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? needsAddress;
-
-  /// 提示訊息
+  /// ?內閮
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -67,7 +63,6 @@ class ShippingServiceGroup {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? message;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is ShippingServiceGroup &&
     other.shippingCompany == shippingCompany &&
@@ -107,7 +102,7 @@ class ShippingServiceGroup {
     } else {
       json[r'estimatedDays'] = null;
     }
-      json[r'addresses'] = this.addresses;
+      json[r'addresses'] = this.addresses.map((e) => e.toJson()).toList();
     if (this.needsAddress != null) {
       json[r'needsAddress'] = this.needsAddress;
     } else {
@@ -195,4 +190,5 @@ class ShippingServiceGroup {
   static const requiredKeys = <String>{
   };
 }
+
 

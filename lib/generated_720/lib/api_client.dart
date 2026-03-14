@@ -1,0 +1,918 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
+
+class ApiClient {
+  ApiClient({this.basePath = 'https://agoramarketapi.purrtechllc.com/api', this.authentication,});
+
+  final String basePath;
+  final Authentication? authentication;
+
+  var _client = Client();
+  final _defaultHeaderMap = <String, String>{};
+
+  /// Returns the current HTTP [Client] instance to use in this class.
+  ///
+  /// The return value is guaranteed to never be null.
+  Client get client => _client;
+
+  /// Requests to use a new HTTP [Client] in this class.
+  set client(Client newClient) {
+    _client = newClient;
+  }
+
+  Map<String, String> get defaultHeaderMap => _defaultHeaderMap;
+
+  void addDefaultHeader(String key, String value) {
+     _defaultHeaderMap[key] = value;
+  }
+
+  // We don't use a Map<String, String> for queryParams.
+  // If collectionFormat is 'multi', a key might appear multiple times.
+  Future<Response> invokeAPI(
+    String path,
+    String method,
+    List<QueryParam> queryParams,
+    Object? body,
+    Map<String, String> headerParams,
+    Map<String, String> formParams,
+    String? contentType,
+  ) async {
+    await authentication?.applyToParams(queryParams, headerParams);
+
+    headerParams.addAll(_defaultHeaderMap);
+    if (contentType != null) {
+      headerParams['Content-Type'] = contentType;
+    }
+
+    final urlEncodedQueryParams = queryParams.map((param) => '$param');
+    final queryString = urlEncodedQueryParams.isNotEmpty ? '?${urlEncodedQueryParams.join('&')}' : '';
+    final uri = Uri.parse('$basePath$path$queryString');
+
+    try {
+      // Special case for uploading a single file which isn't a 'multipart/form-data'.
+      if (
+        body is MultipartFile && (contentType == null ||
+        !contentType.toLowerCase().startsWith('multipart/form-data'))
+      ) {
+        final request = StreamedRequest(method, uri);
+        request.headers.addAll(headerParams);
+        request.contentLength = body.length;
+        body.finalize().listen(
+          request.sink.add,
+          onDone: request.sink.close,
+          // ignore: avoid_types_on_closure_parameters
+          onError: (Object error, StackTrace trace) => request.sink.close(),
+          cancelOnError: true,
+        );
+        final response = await _client.send(request);
+        return Response.fromStream(response);
+      }
+
+      if (body is MultipartRequest) {
+        final request = MultipartRequest(method, uri);
+        request.fields.addAll(body.fields);
+        request.files.addAll(body.files);
+        request.headers.addAll(body.headers);
+        request.headers.addAll(headerParams);
+        final response = await _client.send(request);
+        return Response.fromStream(response);
+      }
+
+      final msgBody = contentType == 'application/x-www-form-urlencoded'
+        ? formParams
+        : await serializeAsync(body);
+      final nullableHeaderParams = headerParams.isEmpty ? null : headerParams;
+
+      switch(method) {
+        case 'POST': return await _client.post(uri, headers: nullableHeaderParams, body: msgBody,);
+        case 'PUT': return await _client.put(uri, headers: nullableHeaderParams, body: msgBody,);
+        case 'DELETE': return await _client.delete(uri, headers: nullableHeaderParams, body: msgBody,);
+        case 'PATCH': return await _client.patch(uri, headers: nullableHeaderParams, body: msgBody,);
+        case 'HEAD': return await _client.head(uri, headers: nullableHeaderParams,);
+        case 'GET': return await _client.get(uri, headers: nullableHeaderParams,);
+      }
+    } on SocketException catch (error, trace) {
+      throw ApiException.withInner(
+        HttpStatus.badRequest,
+        'Socket operation failed: $method $path',
+        error,
+        trace,
+      );
+    } on TlsException catch (error, trace) {
+      throw ApiException.withInner(
+        HttpStatus.badRequest,
+        'TLS/SSL communication failed: $method $path',
+        error,
+        trace,
+      );
+    } on IOException catch (error, trace) {
+      throw ApiException.withInner(
+        HttpStatus.badRequest,
+        'I/O operation failed: $method $path',
+        error,
+        trace,
+      );
+    } on ClientException catch (error, trace) {
+      throw ApiException.withInner(
+        HttpStatus.badRequest,
+        'HTTP connection failed: $method $path',
+        error,
+        trace,
+      );
+    } on Exception catch (error, trace) {
+      throw ApiException.withInner(
+        HttpStatus.badRequest,
+        'Exception occurred: $method $path',
+        error,
+        trace,
+      );
+    }
+
+    throw ApiException(
+      HttpStatus.badRequest,
+      'Invalid HTTP operation: $method $path',
+    );
+  }
+
+  Future<dynamic> deserializeAsync(String value, String targetType, {bool growable = false,}) async =>
+    // ignore: deprecated_member_use_from_same_package
+    deserialize(value, targetType, growable: growable);
+
+  @Deprecated('Scheduled for removal in OpenAPI Generator 6.x. Use deserializeAsync() instead.')
+  dynamic deserialize(String value, String targetType, {bool growable = false,}) {
+    // Remove all spaces. Necessary for regular expressions as well.
+    targetType = targetType.replaceAll(' ', ''); // ignore: parameter_assignments
+
+    // If the expected target type is String, nothing to do...
+    return targetType == 'String'
+      ? value
+      : fromJson(json.decode(value), targetType, growable: growable);
+  }
+
+  // ignore: deprecated_member_use_from_same_package
+  Future<String> serializeAsync(Object? value) async => serialize(value);
+
+  @Deprecated('Scheduled for removal in OpenAPI Generator 6.x. Use serializeAsync() instead.')
+  String serialize(Object? value) => value == null ? '' : json.encode(value);
+
+  /// Returns a native instance of an OpenAPI class matching the [specified type][targetType].
+  static dynamic fromJson(dynamic value, String targetType, {bool growable = false,}) {
+    try {
+      switch (targetType) {
+        case 'String':
+          return value is String ? value : value.toString();
+        case 'int':
+          return value is int ? value : int.parse('$value');
+        case 'double':
+          return value is double ? value : double.parse('$value');
+        case 'bool':
+          if (value is bool) {
+            return value;
+          }
+          final valueString = '$value'.toLowerCase();
+          return valueString == 'true' || valueString == '1';
+        case 'DateTime':
+          return value is DateTime ? value : DateTime.tryParse(value);
+        case 'AcceptOrderParam':
+          return AcceptOrderParam.fromJson(value);
+        case 'ActivityDTO':
+          return ActivityDTO.fromJson(value);
+        case 'ActivitySearchParam':
+          return ActivitySearchParam.fromJson(value);
+        case 'ActivityStatDTO':
+          return ActivityStatDTO.fromJson(value);
+        case 'AdminCreateUserParam':
+          return AdminCreateUserParam.fromJson(value);
+        case 'AdminResetPasswordParam':
+          return AdminResetPasswordParam.fromJson(value);
+        case 'AdminStoreSearchParam':
+          return AdminStoreSearchParam.fromJson(value);
+        case 'AdminStoreUpdateParam':
+          return AdminStoreUpdateParam.fromJson(value);
+        case 'ApiResponseColdWallet':
+          return ApiResponseColdWallet.fromJson(value);
+        case 'ApiResponseFileSyncResponse':
+          return ApiResponseFileSyncResponse.fromJson(value);
+        case 'ApiResponseFlutterAppDeploymentResponse':
+          return ApiResponseFlutterAppDeploymentResponse.fromJson(value);
+        case 'ApiResponseListLoginMethod':
+          return ApiResponseListLoginMethod.fromJson(value);
+        case 'ApiResponseListPostResponse':
+          return ApiResponseListPostResponse.fromJson(value);
+        case 'ApiResponseLoginResult':
+          return ApiResponseLoginResult.fromJson(value);
+        case 'ApiResponseLoginTokenResponse':
+          return ApiResponseLoginTokenResponse.fromJson(value);
+        case 'ApiResponseMapStringObject':
+          return ApiResponseMapStringObject.fromJson(value);
+        case 'ApiResponseOAuth2AuthorizeResponse':
+          return ApiResponseOAuth2AuthorizeResponse.fromJson(value);
+        case 'ApiResponseOAuth2TokenResponse':
+          return ApiResponseOAuth2TokenResponse.fromJson(value);
+        case 'ApiResponsePageClientLog':
+          return ApiResponsePageClientLog.fromJson(value);
+        case 'ApiResponsePageColdWallet':
+          return ApiResponsePageColdWallet.fromJson(value);
+        case 'ApiResponsePageFileRecord':
+          return ApiResponsePageFileRecord.fromJson(value);
+        case 'ApiResponsePostResponse':
+          return ApiResponsePostResponse.fromJson(value);
+        case 'ApiResponsePostStatistics':
+          return ApiResponsePostStatistics.fromJson(value);
+        case 'ApiResponseStorePostStatistics':
+          return ApiResponseStorePostStatistics.fromJson(value);
+        case 'ApiResponseString':
+          return ApiResponseString.fromJson(value);
+        case 'ApiResponseUserPostStatistics':
+          return ApiResponseUserPostStatistics.fromJson(value);
+        case 'ApiResponseVoid':
+          return ApiResponseVoid.fromJson(value);
+        case 'AppVersion':
+          return AppVersion.fromJson(value);
+        case 'ApplyStakingParam':
+          return ApplyStakingParam.fromJson(value);
+        case 'AutoReplyConfig':
+          return AutoReplyConfig.fromJson(value);
+        case 'AutoReplyConfigSearchRequest':
+          return AutoReplyConfigSearchRequest.fromJson(value);
+        case 'AutoReplyDeleteResponse':
+          return AutoReplyDeleteResponse.fromJson(value);
+        case 'AutoReplyResetStatsResponse':
+          return AutoReplyResetStatsResponse.fromJson(value);
+        case 'AutoReplyStats':
+          return AutoReplyStats.fromJson(value);
+        case 'BalanceConversion':
+          return BalanceConversion.fromJson(value);
+        case 'BatchReviewPromoCodeParam':
+          return BatchReviewPromoCodeParam.fromJson(value);
+        case 'BatchReviewResult':
+          return BatchReviewResult.fromJson(value);
+        case 'BatchUpdatePaytableRequest':
+          return BatchUpdatePaytableRequest.fromJson(value);
+        case 'BetResponse':
+          return BetResponse.fromJson(value);
+        case 'BindEmailParam':
+          return BindEmailParam.fromJson(value);
+        case 'BindOAuthParam':
+          return BindOAuthParam.fromJson(value);
+        case 'CartGroupBySeller':
+          return CartGroupBySeller.fromJson(value);
+        case 'CartItem':
+          return CartItem.fromJson(value);
+        case 'CartItemCreateParam':
+          return CartItemCreateParam.fromJson(value);
+        case 'CartItemResponse':
+          return CartItemResponse.fromJson(value);
+        case 'CartItemUpdateParam':
+          return CartItemUpdateParam.fromJson(value);
+        case 'CartSearchParam':
+          return CartSearchParam.fromJson(value);
+        case 'CartSummary':
+          return CartSummary.fromJson(value);
+        case 'CartSummaryDTO':
+          return CartSummaryDTO.fromJson(value);
+        case 'ChangePasswordParam':
+          return ChangePasswordParam.fromJson(value);
+        case 'ChatMessage':
+          return ChatMessage.fromJson(value);
+        case 'ChatMessageDTO':
+          return ChatMessageDTO.fromJson(value);
+        case 'ChatMessageQueryParam':
+          return ChatMessageQueryParam.fromJson(value);
+        case 'ChatMessageUpdateDTO':
+          return ChatMessageUpdateDTO.fromJson(value);
+        case 'ChatSession':
+          return ChatSession.fromJson(value);
+        case 'ChatSessionQueryParam':
+          return ChatSessionQueryParam.fromJson(value);
+        case 'ClientLog':
+          return ClientLog.fromJson(value);
+        case 'ClientLogDto':
+          return ClientLogDto.fromJson(value);
+        case 'ColdWallet':
+          return ColdWallet.fromJson(value);
+        case 'ColdWalletStatusEnum':
+          return ColdWalletStatusEnumTypeTransformer().decode(value);
+        case 'CreateActivityRequest':
+          return CreateActivityRequest.fromJson(value);
+        case 'CreateColdWalletParam':
+          return CreateColdWalletParam.fromJson(value);
+        case 'CreateIssueParam':
+          return CreateIssueParam.fromJson(value);
+        case 'CreateMarketRequest':
+          return CreateMarketRequest.fromJson(value);
+        case 'CreatePromoCodeParam':
+          return CreatePromoCodeParam.fromJson(value);
+        case 'CreateRechargeParam':
+          return CreateRechargeParam.fromJson(value);
+        case 'CreateWithdrawParam':
+          return CreateWithdrawParam.fromJson(value);
+        case 'CustomerIssue':
+          return CustomerIssue.fromJson(value);
+        case 'CustomerStats':
+          return CustomerStats.fromJson(value);
+        case 'DefaultHomePageEnum':
+          return DefaultHomePageEnumTypeTransformer().decode(value);
+        case 'DeliveryDetail':
+          return DeliveryDetail.fromJson(value);
+        case 'DeliveryHistoryParam':
+          return DeliveryHistoryParam.fromJson(value);
+        case 'DeliveryOrderSearchParam':
+          return DeliveryOrderSearchParam.fromJson(value);
+        case 'DeliveryReportTypeEnum':
+          return DeliveryReportTypeEnumTypeTransformer().decode(value);
+        case 'DeliveryStatisticsDTO':
+          return DeliveryStatisticsDTO.fromJson(value);
+        case 'Deliveryer':
+          return Deliveryer.fromJson(value);
+        case 'DeliveryerPerformanceDTO':
+          return DeliveryerPerformanceDTO.fromJson(value);
+        case 'DeliveryerRegistrationParam':
+          return DeliveryerRegistrationParam.fromJson(value);
+        case 'DeliveryerSearchParam':
+          return DeliveryerSearchParam.fromJson(value);
+        case 'DeliveryerStatsDTO':
+          return DeliveryerStatsDTO.fromJson(value);
+        case 'DeliveryerUpdateParam':
+          return DeliveryerUpdateParam.fromJson(value);
+        case 'DeviceInfo':
+          return DeviceInfo.fromJson(value);
+        case 'Dispute':
+          return Dispute.fromJson(value);
+        case 'DisputeCreateParam':
+          return DisputeCreateParam.fromJson(value);
+        case 'DisputeDetailParam':
+          return DisputeDetailParam.fromJson(value);
+        case 'DisputeJudgmentParam':
+          return DisputeJudgmentParam.fromJson(value);
+        case 'DisputeOutcome':
+          return DisputeOutcomeTypeTransformer().decode(value);
+        case 'DisputeQueryResult':
+          return DisputeQueryResult.fromJson(value);
+        case 'DisputeReplyParam':
+          return DisputeReplyParam.fromJson(value);
+        case 'DisputeSearchParam':
+          return DisputeSearchParam.fromJson(value);
+        case 'DisputeStatisticsDTO':
+          return DisputeStatisticsDTO.fromJson(value);
+        case 'DisputeStatusEnum':
+          return DisputeStatusEnumTypeTransformer().decode(value);
+        case 'EmailLoginRequest':
+          return EmailLoginRequest.fromJson(value);
+        case 'EmailLoginSendCodeRequest':
+          return EmailLoginSendCodeRequest.fromJson(value);
+        case 'EmailLoginSendCodeResponse':
+          return EmailLoginSendCodeResponse.fromJson(value);
+        case 'ErrorResponse':
+          return ErrorResponse.fromJson(value);
+        case 'ExchangeRateRange':
+          return ExchangeRateRange.fromJson(value);
+        case 'ExchangeRateRangeSuggestionDTO':
+          return ExchangeRateRangeSuggestionDTO.fromJson(value);
+        case 'ExchangeRateRangeUpdateParam':
+          return ExchangeRateRangeUpdateParam.fromJson(value);
+        case 'FileRecord':
+          return FileRecord.fromJson(value);
+        case 'FileRecordInfo':
+          return FileRecordInfo.fromJson(value);
+        case 'FileRecordSearchRequest':
+          return FileRecordSearchRequest.fromJson(value);
+        case 'FileSyncResponse':
+          return FileSyncResponse.fromJson(value);
+        case 'FlutterAppDeploymentResponse':
+          return FlutterAppDeploymentResponse.fromJson(value);
+        case 'GameRoundDTO':
+          return GameRoundDTO.fromJson(value);
+        case 'GenerateLoginTokenRequest':
+          return GenerateLoginTokenRequest.fromJson(value);
+        case 'InterestRecordDTO':
+          return InterestRecordDTO.fromJson(value);
+        case 'InterestRecordSearchParam':
+          return InterestRecordSearchParam.fromJson(value);
+        case 'IssueSearchParam':
+          return IssueSearchParam.fromJson(value);
+        case 'IssueStatusEnum':
+          return IssueStatusEnumTypeTransformer().decode(value);
+        case 'IssueTypeEnum':
+          return IssueTypeEnumTypeTransformer().decode(value);
+        case 'JobTypeInfo':
+          return JobTypeInfo.fromJson(value);
+        case 'LoginBindingsResponse':
+          return LoginBindingsResponse.fromJson(value);
+        case 'LoginMethod':
+          return LoginMethod.fromJson(value);
+        case 'LoginParam':
+          return LoginParam.fromJson(value);
+        case 'LoginResult':
+          return LoginResult.fromJson(value);
+        case 'LoginTokenResponse':
+          return LoginTokenResponse.fromJson(value);
+        case 'LowStockWarningDTO':
+          return LowStockWarningDTO.fromJson(value);
+        case 'MaintenanceStatusResponse':
+          return MaintenanceStatusResponse.fromJson(value);
+        case 'MaintenanceToggleRequest':
+          return MaintenanceToggleRequest.fromJson(value);
+        case 'ManualAdjustBalanceParam':
+          return ManualAdjustBalanceParam.fromJson(value);
+        case 'MarketOptionRequest':
+          return MarketOptionRequest.fromJson(value);
+        case 'MarketOptionResponse':
+          return MarketOptionResponse.fromJson(value);
+        case 'MarketResponse':
+          return MarketResponse.fromJson(value);
+        case 'MarketSearchRequest':
+          return MarketSearchRequest.fromJson(value);
+        case 'MarketStatusEnum':
+          return MarketStatusEnumTypeTransformer().decode(value);
+        case 'MemberSearchParam':
+          return MemberSearchParam.fromJson(value);
+        case 'MemberUpdateParam':
+          return MemberUpdateParam.fromJson(value);
+        case 'MessageSendResponseDTO':
+          return MessageSendResponseDTO.fromJson(value);
+        case 'NextInterestEstimateDTO':
+          return NextInterestEstimateDTO.fromJson(value);
+        case 'NotificationCreateParam':
+          return NotificationCreateParam.fromJson(value);
+        case 'NotificationResponseDTO':
+          return NotificationResponseDTO.fromJson(value);
+        case 'NotificationSearchParam':
+          return NotificationSearchParam.fromJson(value);
+        case 'NotificationStatusEnum':
+          return NotificationStatusEnumTypeTransformer().decode(value);
+        case 'NotificationTypeEnum':
+          return NotificationTypeEnumTypeTransformer().decode(value);
+        case 'NotificationUpdateParam':
+          return NotificationUpdateParam.fromJson(value);
+        case 'NotifyEventTypeEnum':
+          return NotifyEventTypeEnumTypeTransformer().decode(value);
+        case 'OAuth2AuthorizeRequest':
+          return OAuth2AuthorizeRequest.fromJson(value);
+        case 'OAuth2AuthorizeResponse':
+          return OAuth2AuthorizeResponse.fromJson(value);
+        case 'OAuth2TokenIdRequest':
+          return OAuth2TokenIdRequest.fromJson(value);
+        case 'OAuth2TokenResponse':
+          return OAuth2TokenResponse.fromJson(value);
+        case 'OAuthBindingInfo':
+          return OAuthBindingInfo.fromJson(value);
+        case 'Order':
+          return Order.fromJson(value);
+        case 'OrderCancelParam':
+          return OrderCancelParam.fromJson(value);
+        case 'OrderConfirmParam':
+          return OrderConfirmParam.fromJson(value);
+        case 'OrderQueryResult':
+          return OrderQueryResult.fromJson(value);
+        case 'OrderReturnRecord':
+          return OrderReturnRecord.fromJson(value);
+        case 'OrderSearchDateTypeEnum':
+          return OrderSearchDateTypeEnumTypeTransformer().decode(value);
+        case 'OrderSearchParam':
+          return OrderSearchParam.fromJson(value);
+        case 'OrderShipLogisticsParam':
+          return OrderShipLogisticsParam.fromJson(value);
+        case 'OrderShipPlatformParam':
+          return OrderShipPlatformParam.fromJson(value);
+        case 'OrderStatisticsDTO':
+          return OrderStatisticsDTO.fromJson(value);
+        case 'OrderStatusEnum':
+          return OrderStatusEnumTypeTransformer().decode(value);
+        case 'OrderSumbitParam':
+          return OrderSumbitParam.fromJson(value);
+        case 'PageActivityDTO':
+          return PageActivityDTO.fromJson(value);
+        case 'PageAutoReplyConfig':
+          return PageAutoReplyConfig.fromJson(value);
+        case 'PageBetResponse':
+          return PageBetResponse.fromJson(value);
+        case 'PageCartItem':
+          return PageCartItem.fromJson(value);
+        case 'PageCartItemResponse':
+          return PageCartItemResponse.fromJson(value);
+        case 'PageChatMessage':
+          return PageChatMessage.fromJson(value);
+        case 'PageChatSession':
+          return PageChatSession.fromJson(value);
+        case 'PageClientLog':
+          return PageClientLog.fromJson(value);
+        case 'PageColdWallet':
+          return PageColdWallet.fromJson(value);
+        case 'PageCustomerIssue':
+          return PageCustomerIssue.fromJson(value);
+        case 'PageDeliveryDetail':
+          return PageDeliveryDetail.fromJson(value);
+        case 'PageDeliveryer':
+          return PageDeliveryer.fromJson(value);
+        case 'PageDispute':
+          return PageDispute.fromJson(value);
+        case 'PageFileRecord':
+          return PageFileRecord.fromJson(value);
+        case 'PageGameRoundDTO':
+          return PageGameRoundDTO.fromJson(value);
+        case 'PageInterestRecordDTO':
+          return PageInterestRecordDTO.fromJson(value);
+        case 'PageMarketResponse':
+          return PageMarketResponse.fromJson(value);
+        case 'PageNotificationResponseDTO':
+          return PageNotificationResponseDTO.fromJson(value);
+        case 'PageOrder':
+          return PageOrder.fromJson(value);
+        case 'PagePickupStore':
+          return PagePickupStore.fromJson(value);
+        case 'PagePostResponse':
+          return PagePostResponse.fromJson(value);
+        case 'PageProduct':
+          return PageProduct.fromJson(value);
+        case 'PagePromoCode':
+          return PagePromoCode.fromJson(value);
+        case 'PageRecharge':
+          return PageRecharge.fromJson(value);
+        case 'PageReview':
+          return PageReview.fromJson(value);
+        case 'PageStaking':
+          return PageStaking.fromJson(value);
+        case 'PageStoreResponseDTO':
+          return PageStoreResponseDTO.fromJson(value);
+        case 'PageTransaction':
+          return PageTransaction.fromJson(value);
+        case 'PageUser':
+          return PageUser.fromJson(value);
+        case 'PageUserAddress':
+          return PageUserAddress.fromJson(value);
+        case 'PageWithdraw':
+          return PageWithdraw.fromJson(value);
+        case 'Pageable':
+          return Pageable.fromJson(value);
+        case 'PageableObject':
+          return PageableObject.fromJson(value);
+        case 'PasswordResetParam':
+          return PasswordResetParam.fromJson(value);
+        case 'PaytableDTO':
+          return PaytableDTO.fromJson(value);
+        case 'PaytableEntryRequest':
+          return PaytableEntryRequest.fromJson(value);
+        case 'PaytableWithRtpDTO':
+          return PaytableWithRtpDTO.fromJson(value);
+        case 'PickupServiceTypeEnum':
+          return PickupServiceTypeEnumTypeTransformer().decode(value);
+        case 'PickupStore':
+          return PickupStore.fromJson(value);
+        case 'PickupStoreSearchParam':
+          return PickupStoreSearchParam.fromJson(value);
+        case 'PickupStoreSyncCheckResponse':
+          return PickupStoreSyncCheckResponse.fromJson(value);
+        case 'PickupStoreSyncResponse':
+          return PickupStoreSyncResponse.fromJson(value);
+        case 'PickupStoreSyncStatusResponse':
+          return PickupStoreSyncStatusResponse.fromJson(value);
+        case 'PlaceBetRequest':
+          return PlaceBetRequest.fromJson(value);
+        case 'PostCreateParam':
+          return PostCreateParam.fromJson(value);
+        case 'PostResponse':
+          return PostResponse.fromJson(value);
+        case 'PostSearchParam':
+          return PostSearchParam.fromJson(value);
+        case 'PostStatistics':
+          return PostStatistics.fromJson(value);
+        case 'PostUpdateParam':
+          return PostUpdateParam.fromJson(value);
+        case 'PostalSearchParam':
+          return PostalSearchParam.fromJson(value);
+        case 'Product':
+          return Product.fromJson(value);
+        case 'ProductCategoryEnum':
+          return ProductCategoryEnumTypeTransformer().decode(value);
+        case 'ProductCreateParam':
+          return ProductCreateParam.fromJson(value);
+        case 'ProductInventoryStats':
+          return ProductInventoryStats.fromJson(value);
+        case 'ProductSeachParam':
+          return ProductSeachParam.fromJson(value);
+        case 'ProductStats':
+          return ProductStats.fromJson(value);
+        case 'ProductStatusEnum':
+          return ProductStatusEnumTypeTransformer().decode(value);
+        case 'ProductUpdateParam':
+          return ProductUpdateParam.fromJson(value);
+        case 'PromoCode':
+          return PromoCode.fromJson(value);
+        case 'PromoCodeStatusEnum':
+          return PromoCodeStatusEnumTypeTransformer().decode(value);
+        case 'ProtocolEnum':
+          return ProtocolEnumTypeTransformer().decode(value);
+        case 'PushHealthResponseDTO':
+          return PushHealthResponseDTO.fromJson(value);
+        case 'PushNotificationDTO':
+          return PushNotificationDTO.fromJson(value);
+        case 'PushNotificationResponseDTO':
+          return PushNotificationResponseDTO.fromJson(value);
+        case 'PushStatisticsResponseDTO':
+          return PushStatisticsResponseDTO.fromJson(value);
+        case 'PushSubscription':
+          return PushSubscription.fromJson(value);
+        case 'PushSubscriptionDTO':
+          return PushSubscriptionDTO.fromJson(value);
+        case 'PushSubscriptionResponseDTO':
+          return PushSubscriptionResponseDTO.fromJson(value);
+        case 'PushTestResponseDTO':
+          return PushTestResponseDTO.fromJson(value);
+        case 'PushUnsubscriptionResponseDTO':
+          return PushUnsubscriptionResponseDTO.fromJson(value);
+        case 'PwaLogEntry':
+          return PwaLogEntry.fromJson(value);
+        case 'QuickLogisticsRequest':
+          return QuickLogisticsRequest.fromJson(value);
+        case 'QuickLogisticsResult':
+          return QuickLogisticsResult.fromJson(value);
+        case 'Recharge':
+          return Recharge.fromJson(value);
+        case 'RechargeResponse':
+          return RechargeResponse.fromJson(value);
+        case 'RechargeSearchParam':
+          return RechargeSearchParam.fromJson(value);
+        case 'RechargeStatusEnum':
+          return RechargeStatusEnumTypeTransformer().decode(value);
+        case 'RefundOfferResponseParam':
+          return RefundOfferResponseParam.fromJson(value);
+        case 'RegisterParam':
+          return RegisterParam.fromJson(value);
+        case 'RegisterResult':
+          return RegisterResult.fromJson(value);
+        case 'ReplyIssueParam':
+          return ReplyIssueParam.fromJson(value);
+        case 'ResolveMarketRequest':
+          return ResolveMarketRequest.fromJson(value);
+        case 'ReturnProcessParam':
+          return ReturnProcessParam.fromJson(value);
+        case 'ReturnReasonEnum':
+          return ReturnReasonEnumTypeTransformer().decode(value);
+        case 'ReturnRequestParam':
+          return ReturnRequestParam.fromJson(value);
+        case 'ReturnShippingParam':
+          return ReturnShippingParam.fromJson(value);
+        case 'Review':
+          return Review.fromJson(value);
+        case 'ReviewCreateParam':
+          return ReviewCreateParam.fromJson(value);
+        case 'ReviewFailure':
+          return ReviewFailure.fromJson(value);
+        case 'ReviewPromoCodeParam':
+          return ReviewPromoCodeParam.fromJson(value);
+        case 'ReviewReplyParam':
+          return ReviewReplyParam.fromJson(value);
+        case 'ReviewSearchParam':
+          return ReviewSearchParam.fromJson(value);
+        case 'ReviewStatisticsDTO':
+          return ReviewStatisticsDTO.fromJson(value);
+        case 'ReviewUpdateParam':
+          return ReviewUpdateParam.fromJson(value);
+        case 'RtpEntry':
+          return RtpEntry.fromJson(value);
+        case 'SSEEventRequest':
+          return SSEEventRequest.fromJson(value);
+        case 'SSEEventResponse':
+          return SSEEventResponse.fromJson(value);
+        case 'SalesStats':
+          return SalesStats.fromJson(value);
+        case 'ScheduledPushResponseDTO':
+          return ScheduledPushResponseDTO.fromJson(value);
+        case 'SchedulerJobRequest':
+          return SchedulerJobRequest.fromJson(value);
+        case 'SchedulerJobResponse':
+          return SchedulerJobResponse.fromJson(value);
+        case 'SchedulerStatusResponseDTO':
+          return SchedulerStatusResponseDTO.fromJson(value);
+        case 'SellerOrderStatsDTO':
+          return SellerOrderStatsDTO.fromJson(value);
+        case 'SevenElevenStoreDTO':
+          return SevenElevenStoreDTO.fromJson(value);
+        case 'ShippingAddress':
+          return ShippingAddress.fromJson(value);
+        case 'ShippingAddressOption':
+          return ShippingAddressOption.fromJson(value);
+        case 'ShippingCompanyEnum':
+          return ShippingCompanyEnumTypeTransformer().decode(value);
+        case 'ShippingOptions':
+          return ShippingOptions.fromJson(value);
+        case 'ShippingServiceGroup':
+          return ShippingServiceGroup.fromJson(value);
+        case 'SlotMemberOddsEntry':
+          return SlotMemberOddsEntry.fromJson(value);
+        case 'SlotMemberOddsResponse':
+          return SlotMemberOddsResponse.fromJson(value);
+        case 'SlotRtpResponse':
+          return SlotRtpResponse.fromJson(value);
+        case 'SlotSpinRequest':
+          return SlotSpinRequest.fromJson(value);
+        case 'SlotSpinResponse':
+          return SlotSpinResponse.fromJson(value);
+        case 'SlotSymbolInfo':
+          return SlotSymbolInfo.fromJson(value);
+        case 'SortObject':
+          return SortObject.fromJson(value);
+        case 'Staking':
+          return Staking.fromJson(value);
+        case 'StakingConfigDTO':
+          return StakingConfigDTO.fromJson(value);
+        case 'StakingConfigUpdateParam':
+          return StakingConfigUpdateParam.fromJson(value);
+        case 'StakingInterestDetail':
+          return StakingInterestDetail.fromJson(value);
+        case 'StakingSearchParam':
+          return StakingSearchParam.fromJson(value);
+        case 'StakingStatisticsDTO':
+          return StakingStatisticsDTO.fromJson(value);
+        case 'StakingStatusEnum':
+          return StakingStatusEnumTypeTransformer().decode(value);
+        case 'Store':
+          return Store.fromJson(value);
+        case 'StoreAnalyticsDTO':
+          return StoreAnalyticsDTO.fromJson(value);
+        case 'StoreCreateParam':
+          return StoreCreateParam.fromJson(value);
+        case 'StorePostStatistics':
+          return StorePostStatistics.fromJson(value);
+        case 'StoreProductSearchParam':
+          return StoreProductSearchParam.fromJson(value);
+        case 'StoreResponseDTO':
+          return StoreResponseDTO.fromJson(value);
+        case 'StoreShippingConfigParam':
+          return StoreShippingConfigParam.fromJson(value);
+        case 'StoreUpdateParam':
+          return StoreUpdateParam.fromJson(value);
+        case 'SuggestionActionParam':
+          return SuggestionActionParam.fromJson(value);
+        case 'SupportedCurrencyEnum':
+          return SupportedCurrencyEnumTypeTransformer().decode(value);
+        case 'TaiwanPostalArea':
+          return TaiwanPostalArea.fromJson(value);
+        case 'TelegramBotInfo':
+          return TelegramBotInfo.fromJson(value);
+        case 'TelegramWebAppAuthRequest':
+          return TelegramWebAppAuthRequest.fromJson(value);
+        case 'TopDeliveryAreaDTO':
+          return TopDeliveryAreaDTO.fromJson(value);
+        case 'TopDisputedProductDTO':
+          return TopDisputedProductDTO.fromJson(value);
+        case 'TopDisputedSellerDTO':
+          return TopDisputedSellerDTO.fromJson(value);
+        case 'TopProductDTO':
+          return TopProductDTO.fromJson(value);
+        case 'TopSellerDTO':
+          return TopSellerDTO.fromJson(value);
+        case 'Transaction':
+          return Transaction.fromJson(value);
+        case 'TransactionListParam':
+          return TransactionListParam.fromJson(value);
+        case 'TransactionSearchParam':
+          return TransactionSearchParam.fromJson(value);
+        case 'TransactionTypeEnum':
+          return TransactionTypeEnumTypeTransformer().decode(value);
+        case 'TwoFactorManageParam':
+          return TwoFactorManageParam.fromJson(value);
+        case 'TwoFactorSetupResponse':
+          return TwoFactorSetupResponse.fromJson(value);
+        case 'TwoFactorVerifyParam':
+          return TwoFactorVerifyParam.fromJson(value);
+        case 'UpdateActivityRequest':
+          return UpdateActivityRequest.fromJson(value);
+        case 'UpdateDeliveryOrderParam':
+          return UpdateDeliveryOrderParam.fromJson(value);
+        case 'UpdatePromoCodeParam':
+          return UpdatePromoCodeParam.fromJson(value);
+        case 'User':
+          return User.fromJson(value);
+        case 'UserAddress':
+          return UserAddress.fromJson(value);
+        case 'UserInfo':
+          return UserInfo.fromJson(value);
+        case 'UserOrderSearchParam':
+          return UserOrderSearchParam.fromJson(value);
+        case 'UserPostStatistics':
+          return UserPostStatistics.fromJson(value);
+        case 'UserProfileUpdateParam':
+          return UserProfileUpdateParam.fromJson(value);
+        case 'UserStatusEnum':
+          return UserStatusEnumTypeTransformer().decode(value);
+        case 'VapidPublicKeyResponseDTO':
+          return VapidPublicKeyResponseDTO.fromJson(value);
+        case 'VerifyCodeRequest':
+          return VerifyCodeRequest.fromJson(value);
+        case 'WalletConnectInfo':
+          return WalletConnectInfo.fromJson(value);
+        case 'WalletConnectNonceResponse':
+          return WalletConnectNonceResponse.fromJson(value);
+        case 'Web3LoginRequest':
+          return Web3LoginRequest.fromJson(value);
+        case 'Web3NonceRequest':
+          return Web3NonceRequest.fromJson(value);
+        case 'WebPushDetails':
+          return WebPushDetails.fromJson(value);
+        case 'WebRTCAnswerDto':
+          return WebRTCAnswerDto.fromJson(value);
+        case 'WebRTCAnswerResponseDto':
+          return WebRTCAnswerResponseDto.fromJson(value);
+        case 'WebRTCHangupDto':
+          return WebRTCHangupDto.fromJson(value);
+        case 'WebRTCHangupResponseDto':
+          return WebRTCHangupResponseDto.fromJson(value);
+        case 'WebRTCIceCandidateDto':
+          return WebRTCIceCandidateDto.fromJson(value);
+        case 'WebRTCIceCandidateResponseDto':
+          return WebRTCIceCandidateResponseDto.fromJson(value);
+        case 'WebRTCOfferDto':
+          return WebRTCOfferDto.fromJson(value);
+        case 'WebRTCOfferResponseDto':
+          return WebRTCOfferResponseDto.fromJson(value);
+        case 'WebRTCResponseDto':
+          return WebRTCResponseDto.fromJson(value);
+        case 'Withdraw':
+          return Withdraw.fromJson(value);
+        case 'WithdrawSearchParam':
+          return WithdrawSearchParam.fromJson(value);
+        case 'WithdrawStatusEnum':
+          return WithdrawStatusEnumTypeTransformer().decode(value);
+        default:
+          dynamic match;
+          if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {
+            return value
+              .map<dynamic>((dynamic v) => fromJson(v, match, growable: growable,))
+              .toList(growable: growable);
+          }
+          if (value is Set && (match = _regSet.firstMatch(targetType)?.group(1)) != null) {
+            return value
+              .map<dynamic>((dynamic v) => fromJson(v, match, growable: growable,))
+              .toSet();
+          }
+          if (value is Map && (match = _regMap.firstMatch(targetType)?.group(1)) != null) {
+            return Map<String, dynamic>.fromIterables(
+              value.keys.cast<String>(),
+              value.values.map<dynamic>((dynamic v) => fromJson(v, match, growable: growable,)),
+            );
+          }
+      }
+    } on Exception catch (error, trace) {
+      throw ApiException.withInner(HttpStatus.internalServerError, 'Exception during deserialization.', error, trace,);
+    }
+    throw ApiException(HttpStatus.internalServerError, 'Could not find a suitable class for deserialization',);
+  }
+}
+
+/// Primarily intended for use in an isolate.
+class DeserializationMessage {
+  const DeserializationMessage({
+    required this.json,
+    required this.targetType,
+    this.growable = false,
+  });
+
+  /// The JSON value to deserialize.
+  final String json;
+
+  /// Target type to deserialize to.
+  final String targetType;
+
+  /// Whether to make deserialized lists or maps growable.
+  final bool growable;
+}
+
+/// Primarily intended for use in an isolate.
+Future<dynamic> decodeAsync(DeserializationMessage message) async {
+  // Remove all spaces. Necessary for regular expressions as well.
+  final targetType = message.targetType.replaceAll(' ', '');
+
+  // If the expected target type is String, nothing to do...
+  return targetType == 'String'
+    ? message.json
+    : json.decode(message.json);
+}
+
+/// Primarily intended for use in an isolate.
+Future<dynamic> deserializeAsync(DeserializationMessage message) async {
+  // Remove all spaces. Necessary for regular expressions as well.
+  final targetType = message.targetType.replaceAll(' ', '');
+
+  // If the expected target type is String, nothing to do...
+  return targetType == 'String'
+    ? message.json
+    : ApiClient.fromJson(
+        json.decode(message.json),
+        targetType,
+        growable: message.growable,
+      );
+}
+
+/// Primarily intended for use in an isolate.
+Future<String> serializeAsync(Object? value) async => value == null ? '' : json.encode(value);

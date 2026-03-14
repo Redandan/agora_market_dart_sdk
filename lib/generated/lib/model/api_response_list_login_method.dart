@@ -1,4 +1,4 @@
-//
+﻿//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -26,7 +26,6 @@ class ApiResponseListLoginMethod {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? success;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -34,7 +33,6 @@ class ApiResponseListLoginMethod {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? message;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -42,7 +40,6 @@ class ApiResponseListLoginMethod {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? code;
-
   List<LoginMethod> data;
 
   @override
@@ -80,7 +77,7 @@ class ApiResponseListLoginMethod {
     } else {
       json[r'code'] = null;
     }
-      json[r'data'] = this.data;
+      json[r'data'] = this.data.map((e) => e.toJson()).toList();
     return json;
   }
 
@@ -156,4 +153,5 @@ class ApiResponseListLoginMethod {
   static const requiredKeys = <String>{
   };
 }
+
 

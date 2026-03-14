@@ -1,4 +1,4 @@
-//
+﻿//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -30,7 +30,7 @@ class OrderSearchParam {
     this.endTime,
   });
 
-  /// 頁碼，從1開始
+  /// ?Ⅳ嚗?1??
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -38,8 +38,7 @@ class OrderSearchParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? page;
-
-  /// 每頁數量
+  /// 瘥??賊?
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -47,8 +46,7 @@ class OrderSearchParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? size;
-
-  /// 開始日期 (ISO-8601 格式)
+  /// ???交? (ISO-8601 ?澆?)
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -56,8 +54,7 @@ class OrderSearchParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? startDate;
-
-  /// 結束日期 (ISO-8601 格式)
+  /// 蝯??交? (ISO-8601 ?澆?)
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -65,17 +62,14 @@ class OrderSearchParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? endDate;
-
-  /// 搜索關鍵字
-  ///
+  /// ?揣?摮?  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? keyword;
-
-  /// 排序字段
+  /// ??摮挾
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -83,8 +77,7 @@ class OrderSearchParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? sortBy;
-
-  /// 排序方向 (ASC/DESC)
+  /// ???孵? (ASC/DESC)
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -92,8 +85,7 @@ class OrderSearchParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? sortDirection;
-
-  /// 訂單ID
+  /// 閮ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -101,8 +93,7 @@ class OrderSearchParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? orderId;
-
-  /// 買家ID
+  /// 鞎瑕振ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -110,8 +101,7 @@ class OrderSearchParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? buyerId;
-
-  /// 賣家ID
+  /// 鞈?振ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -119,8 +109,7 @@ class OrderSearchParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? sellerId;
-
-  /// 商品ID
+  /// ??ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -128,10 +117,9 @@ class OrderSearchParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? productId;
+  /// 閮????臬??賂?
 
-  /// 訂單狀態（可多選）
   List<OrderStatusEnum> status;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -139,8 +127,7 @@ class OrderSearchParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   OrderSearchDateTypeEnum? searchDateType;
-
-  /// 開始時間（根據 searchDateType 決定是創建時間還是更新時間）
+  /// ????嚗??searchDateType 瘙箏??臬撱箸????舀?唳???
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -148,8 +135,7 @@ class OrderSearchParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? startTime;
-
-  /// 結束時間（根據 searchDateType 決定是創建時間還是更新時間）
+  /// 蝯???嚗??searchDateType 瘙箏??臬撱箸????舀?唳???
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -157,7 +143,6 @@ class OrderSearchParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? endTime;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrderSearchParam &&
     other.page == page &&
@@ -255,7 +240,7 @@ class OrderSearchParam {
     } else {
       json[r'productId'] = null;
     }
-      json[r'status'] = this.status;
+      json[r'status'] = this.status.map((e) => e.toJson()).toList();
     if (this.searchDateType != null) {
       json[r'searchDateType'] = this.searchDateType;
     } else {
@@ -357,4 +342,5 @@ class OrderSearchParam {
   static const requiredKeys = <String>{
   };
 }
+
 

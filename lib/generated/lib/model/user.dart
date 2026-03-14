@@ -1,4 +1,4 @@
-//
+﻿//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -40,38 +40,38 @@ class User {
     this.admin,
   });
 
-  /// 用戶ID
+  /// ?冽ID
+
   int id;
+  /// ?冽??
 
-  /// 用戶名
   String username;
+  /// 撖Ⅳ
 
-  /// 密碼
   String password;
+  /// 閫
 
-  /// 角色
   String role;
-
   UserStatusEnum status;
 
-  /// 姓名
+  /// 憪?
+
   String? name;
+  /// ?餉店?Ⅳ
 
-  /// 電話號碼
   String? phone;
+  /// ?餃??萎辣
 
-  /// 電子郵件
   String? email;
+  /// ?剖?
 
-  /// 頭像
   String? avatar;
+  /// ?酉
 
-  /// 備註
   String? remark;
+  /// 摨?迂
 
-  /// 店鋪名稱
   String? storeName;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -79,40 +79,39 @@ class User {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DefaultHomePageEnum? defaultHomePage;
+  /// ?典誨憭找蝙?迂
 
-  /// 推廣大使名稱
   String? ambassadorName;
+  /// 憿舐內??迂
 
-  /// 顯示配送員名稱
   String? displayDeliveryerName;
+  /// 閮餃??典誨蝣?
 
-  /// 註冊推廣碼
   String? promoCode;
+  /// ?臬???蝝?霅?
 
-  /// 是否啟用雙因素認證
   bool? twoFactorEnabled;
+  /// ??蝝?霅???
 
-  /// 雙因素認證密鑰
   String? twoFactorSecret;
+  /// ?萎辣?臬撌脤?霅?
 
-  /// 郵件是否已驗證
   bool? emailVerified;
+  /// ?縑隞餉身??銵剁?JSON?澆?嚗??憭?摮?0蝯身??
 
-  /// 受信任設備列表（JSON格式），最多保存10組設備
   String? trustedDevicesJson;
+  /// ?嗅?隢??身??蝝?
 
-  /// 當前請求的設備指紋
   String? currentDeviceFingerprint;
+  /// ?嗅?隢??P?啣?
 
-  /// 當前請求的IP地址
   String? currentIpAddress;
+  /// ?萄遣??
 
-  /// 創建時間
   DateTime createdAt;
+  /// ?敺?唳???
 
-  /// 最後更新時間
   DateTime updatedAt;
-
   List<DeviceInfo> trustedDevices;
 
   ///
@@ -122,7 +121,6 @@ class User {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? admin;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is User &&
     other.id == id &&
@@ -272,7 +270,7 @@ class User {
     }
       json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
       json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
-      json[r'trustedDevices'] = this.trustedDevices;
+      json[r'trustedDevices'] = this.trustedDevices.map((e) => e.toJson()).toList();
     if (this.admin != null) {
       json[r'admin'] = this.admin;
     } else {
@@ -381,4 +379,5 @@ class User {
     'updatedAt',
   };
 }
+
 

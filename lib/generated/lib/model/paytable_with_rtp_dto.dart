@@ -1,4 +1,4 @@
-//
+﻿//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -33,7 +33,6 @@ class PaytableWithRtpDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? totalRtp;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -41,7 +40,6 @@ class PaytableWithRtpDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? expectedProfit;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is PaytableWithRtpDTO &&
     other.gameType == gameType &&
@@ -74,7 +72,7 @@ class PaytableWithRtpDTO {
     } else {
       json[r'handicapType'] = null;
     }
-      json[r'paytables'] = this.paytables;
+      json[r'paytables'] = this.paytables.map((e) => e.toJson()).toList();
     if (this.totalRtp != null) {
       json[r'totalRtp'] = this.totalRtp;
     } else {
@@ -168,8 +166,8 @@ class PaytableWithRtpDTOGameTypeEnum {
   const PaytableWithRtpDTOGameTypeEnum._(this.value);
 
   /// The underlying value of this enum member.
-  final String value;
 
+  final String value;
   @override
   String toString() => value;
 
@@ -247,6 +245,7 @@ class PaytableWithRtpDTOGameTypeEnumTypeTransformer {
   }
 
   /// Singleton [PaytableWithRtpDTOGameTypeEnumTypeTransformer] instance.
+
   static PaytableWithRtpDTOGameTypeEnumTypeTransformer? _instance;
 }
 
@@ -257,8 +256,8 @@ class PaytableWithRtpDTOHandicapTypeEnum {
   const PaytableWithRtpDTOHandicapTypeEnum._(this.value);
 
   /// The underlying value of this enum member.
-  final String value;
 
+  final String value;
   @override
   String toString() => value;
 
@@ -330,7 +329,9 @@ class PaytableWithRtpDTOHandicapTypeEnumTypeTransformer {
   }
 
   /// Singleton [PaytableWithRtpDTOHandicapTypeEnumTypeTransformer] instance.
+
   static PaytableWithRtpDTOHandicapTypeEnumTypeTransformer? _instance;
 }
+
 
 

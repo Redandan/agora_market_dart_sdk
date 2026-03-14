@@ -1,4 +1,4 @@
-//
+﻿//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -33,7 +33,6 @@ class PageChatSession {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? totalElements;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -41,7 +40,6 @@ class PageChatSession {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? totalPages;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -49,7 +47,6 @@ class PageChatSession {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   SortObject? sort;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -57,7 +54,6 @@ class PageChatSession {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   PageableObject? pageable;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -65,7 +61,6 @@ class PageChatSession {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? numberOfElements;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -73,7 +68,6 @@ class PageChatSession {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? first;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -81,7 +75,6 @@ class PageChatSession {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? last;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -89,7 +82,6 @@ class PageChatSession {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? size;
-
   List<ChatSession> content;
 
   ///
@@ -99,7 +91,6 @@ class PageChatSession {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? number;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -107,7 +98,6 @@ class PageChatSession {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? empty;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is PageChatSession &&
     other.totalElements == totalElements &&
@@ -182,7 +172,7 @@ class PageChatSession {
     } else {
       json[r'size'] = null;
     }
-      json[r'content'] = this.content;
+      json[r'content'] = this.content.map((e) => e.toJson()).toList();
     if (this.number != null) {
       json[r'number'] = this.number;
     } else {
@@ -275,4 +265,5 @@ class PageChatSession {
   static const requiredKeys = <String>{
   };
 }
+
 
