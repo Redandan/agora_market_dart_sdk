@@ -214,6 +214,85 @@ class SlotApi {
     return null;
   }
 
+  /// Slot 收益統計（按賠率版本）
+  ///
+  /// 按賠率版本分組，每版附帶理論 RTP 與實際 RTP 供比對（需 ROLE_ADMIN）
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [DateTime] startTime (required):
+  ///   區間起始，ISO 格式
+  ///
+  /// * [DateTime] endTime (required):
+  ///   區間結束，ISO 格式
+  ///
+  /// * [String] gameId:
+  ///   遊戲 ID（不填則查全部遊戲）
+  Future<Response> getRevenueByVersionWithHttpInfo(DateTime startTime, DateTime endTime, { String? gameId, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/slot/revenue/by-version';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (gameId != null) {
+      queryParams.addAll(_queryParams('', 'gameId', gameId));
+    }
+      queryParams.addAll(_queryParams('', 'startTime', startTime));
+      queryParams.addAll(_queryParams('', 'endTime', endTime));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Slot 收益統計（按賠率版本）
+  ///
+  /// 按賠率版本分組，每版附帶理論 RTP 與實際 RTP 供比對（需 ROLE_ADMIN）
+  ///
+  /// Parameters:
+  ///
+  /// * [DateTime] startTime (required):
+  ///   區間起始，ISO 格式
+  ///
+  /// * [DateTime] endTime (required):
+  ///   區間結束，ISO 格式
+  ///
+  /// * [String] gameId:
+  ///   遊戲 ID（不填則查全部遊戲）
+  Future<List<SlotRevenueResponse>?> getRevenueByVersion(DateTime startTime, DateTime endTime, { String? gameId, }) async {
+    final response = await getRevenueByVersionWithHttpInfo(startTime, endTime,  gameId: gameId, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<SlotRevenueResponse>') as List)
+        .cast<SlotRevenueResponse>()
+        .toList(growable: false);
+
+    }
+    return null;
+  }
+
   /// 取得 Symbol 目錄
   ///
   /// 返回所有 Symbol 的顯示資訊

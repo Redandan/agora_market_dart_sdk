@@ -16,6 +16,8 @@ class SlotRevenueResponse {
     this.gameId,
     this.startTime,
     this.endTime,
+    this.paytableVersion,
+    this.theoreticalRtpPct,
     this.totalRounds,
     this.winRounds,
     this.winRatePct,
@@ -48,6 +50,22 @@ class SlotRevenueResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? endTime;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? paytableVersion;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? theoreticalRtpPct;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -110,6 +128,8 @@ class SlotRevenueResponse {
     other.gameId == gameId &&
     other.startTime == startTime &&
     other.endTime == endTime &&
+    other.paytableVersion == paytableVersion &&
+    other.theoreticalRtpPct == theoreticalRtpPct &&
     other.totalRounds == totalRounds &&
     other.winRounds == winRounds &&
     other.winRatePct == winRatePct &&
@@ -124,6 +144,8 @@ class SlotRevenueResponse {
     (gameId == null ? 0 : gameId!.hashCode) +
     (startTime == null ? 0 : startTime!.hashCode) +
     (endTime == null ? 0 : endTime!.hashCode) +
+    (paytableVersion == null ? 0 : paytableVersion!.hashCode) +
+    (theoreticalRtpPct == null ? 0 : theoreticalRtpPct!.hashCode) +
     (totalRounds == null ? 0 : totalRounds!.hashCode) +
     (winRounds == null ? 0 : winRounds!.hashCode) +
     (winRatePct == null ? 0 : winRatePct!.hashCode) +
@@ -133,7 +155,7 @@ class SlotRevenueResponse {
     (actualRtpPct == null ? 0 : actualRtpPct!.hashCode);
 
   @override
-  String toString() => 'SlotRevenueResponse[gameId=$gameId, startTime=$startTime, endTime=$endTime, totalRounds=$totalRounds, winRounds=$winRounds, winRatePct=$winRatePct, totalBet=$totalBet, totalPayout=$totalPayout, grossRevenue=$grossRevenue, actualRtpPct=$actualRtpPct]';
+  String toString() => 'SlotRevenueResponse[gameId=$gameId, startTime=$startTime, endTime=$endTime, paytableVersion=$paytableVersion, theoreticalRtpPct=$theoreticalRtpPct, totalRounds=$totalRounds, winRounds=$winRounds, winRatePct=$winRatePct, totalBet=$totalBet, totalPayout=$totalPayout, grossRevenue=$grossRevenue, actualRtpPct=$actualRtpPct]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -151,6 +173,16 @@ class SlotRevenueResponse {
       json[r'endTime'] = this.endTime!.toUtc().toIso8601String();
     } else {
       json[r'endTime'] = null;
+    }
+    if (this.paytableVersion != null) {
+      json[r'paytableVersion'] = this.paytableVersion;
+    } else {
+      json[r'paytableVersion'] = null;
+    }
+    if (this.theoreticalRtpPct != null) {
+      json[r'theoreticalRtpPct'] = this.theoreticalRtpPct;
+    } else {
+      json[r'theoreticalRtpPct'] = null;
     }
     if (this.totalRounds != null) {
       json[r'totalRounds'] = this.totalRounds;
@@ -212,6 +244,8 @@ class SlotRevenueResponse {
         gameId: mapValueOfType<String>(json, r'gameId'),
         startTime: mapDateTime(json, r'startTime', r''),
         endTime: mapDateTime(json, r'endTime', r''),
+        paytableVersion: mapValueOfType<int>(json, r'paytableVersion'),
+        theoreticalRtpPct: num.parse('${json[r'theoreticalRtpPct']}'),
         totalRounds: mapValueOfType<int>(json, r'totalRounds'),
         winRounds: mapValueOfType<int>(json, r'winRounds'),
         winRatePct: num.parse('${json[r'winRatePct']}'),

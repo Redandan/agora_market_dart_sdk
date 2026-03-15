@@ -373,6 +373,7 @@ Class | Method | HTTP request | Description
 *SlotApi* | [**getMemberOddsTable**](doc//SlotApi.md#getmemberoddstable) | **GET** /slot/rtp | 取得會員賠率展示資料
 *SlotApi* | [**getPaytable**](doc//SlotApi.md#getpaytable) | **GET** /slot/paytable/{gameId} | 查詢 Slot 賠率
 *SlotApi* | [**getRevenue**](doc//SlotApi.md#getrevenue) | **GET** /slot/revenue | Slot 收益統計
+*SlotApi* | [**getRevenueByVersion**](doc//SlotApi.md#getrevenuebyversion) | **GET** /slot/revenue/by-version | Slot 收益統計（按賠率版本）
 *SlotApi* | [**getSymbols**](doc//SlotApi.md#getsymbols) | **GET** /slot/symbols | 取得 Symbol 目錄
 *SlotApi* | [**savePaytable**](doc//SlotApi.md#savepaytable) | **POST** /slot/paytable/{gameId} | 設定 Slot 賠率
 *SlotApi* | [**spin**](doc//SlotApi.md#spin) | **POST** /slot/spin | Spin

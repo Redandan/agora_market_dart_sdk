@@ -35,9 +35,9 @@ class OrderReturnRecord {
     this.buyer,
     this.seller,
     this.returnShippingOptions = const [],
+    this.returnOverdue,
     this.imageUrls = const {},
     this.returnDeadlineFromApproval,
-    this.returnOverdue,
   });
 
   /// 退貨記錄ID（與訂單ID一致）
@@ -102,6 +102,14 @@ class OrderReturnRecord {
   /// 賣家可退貨的地址列表（供買家寄回商品時選擇）
   List<ShippingAddressOption>? returnShippingOptions;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? returnOverdue;
+
   Set<String> imageUrls;
 
   ///
@@ -111,14 +119,6 @@ class OrderReturnRecord {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? returnDeadlineFromApproval;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? returnOverdue;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrderReturnRecord &&
@@ -144,9 +144,9 @@ class OrderReturnRecord {
     other.buyer == buyer &&
     other.seller == seller &&
     _deepEquality.equals(other.returnShippingOptions, returnShippingOptions) &&
+    other.returnOverdue == returnOverdue &&
     _deepEquality.equals(other.imageUrls, imageUrls) &&
-    other.returnDeadlineFromApproval == returnDeadlineFromApproval &&
-    other.returnOverdue == returnOverdue;
+    other.returnDeadlineFromApproval == returnDeadlineFromApproval;
 
   @override
   int get hashCode =>
@@ -173,12 +173,12 @@ class OrderReturnRecord {
     (buyer == null ? 0 : buyer!.hashCode) +
     (seller == null ? 0 : seller!.hashCode) +
     (returnShippingOptions == null ? 0 : returnShippingOptions!.hashCode) +
+    (returnOverdue == null ? 0 : returnOverdue!.hashCode) +
     (imageUrls.hashCode) +
-    (returnDeadlineFromApproval == null ? 0 : returnDeadlineFromApproval!.hashCode) +
-    (returnOverdue == null ? 0 : returnOverdue!.hashCode);
+    (returnDeadlineFromApproval == null ? 0 : returnDeadlineFromApproval!.hashCode);
 
   @override
-  String toString() => 'OrderReturnRecord[id=$id, buyerId=$buyerId, sellerId=$sellerId, reason=$reason, description=$description, sellerReply=$sellerReply, trackingNumber=$trackingNumber, shippingCompany=$shippingCompany, requestedAt=$requestedAt, processedAt=$processedAt, shippedAt=$shippedAt, receivedAt=$receivedAt, returnDeadline=$returnDeadline, updatedAt=$updatedAt, remark=$remark, returnRecipientName=$returnRecipientName, returnRecipientPhone=$returnRecipientPhone, returnAddress=$returnAddress, order=$order, buyer=$buyer, seller=$seller, returnShippingOptions=$returnShippingOptions, imageUrls=$imageUrls, returnDeadlineFromApproval=$returnDeadlineFromApproval, returnOverdue=$returnOverdue]';
+  String toString() => 'OrderReturnRecord[id=$id, buyerId=$buyerId, sellerId=$sellerId, reason=$reason, description=$description, sellerReply=$sellerReply, trackingNumber=$trackingNumber, shippingCompany=$shippingCompany, requestedAt=$requestedAt, processedAt=$processedAt, shippedAt=$shippedAt, receivedAt=$receivedAt, returnDeadline=$returnDeadline, updatedAt=$updatedAt, remark=$remark, returnRecipientName=$returnRecipientName, returnRecipientPhone=$returnRecipientPhone, returnAddress=$returnAddress, order=$order, buyer=$buyer, seller=$seller, returnShippingOptions=$returnShippingOptions, returnOverdue=$returnOverdue, imageUrls=$imageUrls, returnDeadlineFromApproval=$returnDeadlineFromApproval]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -268,16 +268,16 @@ class OrderReturnRecord {
     } else {
       json[r'returnShippingOptions'] = null;
     }
+    if (this.returnOverdue != null) {
+      json[r'returnOverdue'] = this.returnOverdue;
+    } else {
+      json[r'returnOverdue'] = null;
+    }
       json[r'imageUrls'] = this.imageUrls.toList(growable: false);
     if (this.returnDeadlineFromApproval != null) {
       json[r'returnDeadlineFromApproval'] = this.returnDeadlineFromApproval!.toUtc().toIso8601String();
     } else {
       json[r'returnDeadlineFromApproval'] = null;
-    }
-    if (this.returnOverdue != null) {
-      json[r'returnOverdue'] = this.returnOverdue;
-    } else {
-      json[r'returnOverdue'] = null;
     }
     return json;
   }
@@ -323,11 +323,11 @@ class OrderReturnRecord {
         buyer: User.fromJson(json[r'buyer']),
         seller: User.fromJson(json[r'seller']),
         returnShippingOptions: ShippingAddressOption.listFromJson(json[r'returnShippingOptions']),
+        returnOverdue: mapValueOfType<bool>(json, r'returnOverdue'),
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
             : const {},
         returnDeadlineFromApproval: mapDateTime(json, r'returnDeadlineFromApproval', r''),
-        returnOverdue: mapValueOfType<bool>(json, r'returnOverdue'),
       );
     }
     return null;
