@@ -371,7 +371,10 @@ Class | Method | HTTP request | Description
 *SevenElevenStoresApi* | [**getAllCities**](doc//SevenElevenStoresApi.md#getallcities) | **GET** /api/stores/seven-eleven/cities | 取得所有縣市列表
 *SevenElevenStoresApi* | [**getStoresByCity**](doc//SevenElevenStoresApi.md#getstoresbycity) | **GET** /api/stores/seven-eleven/stores | 根據縣市取得7-11門市列表
 *SlotApi* | [**getMemberOddsTable**](doc//SlotApi.md#getmemberoddstable) | **GET** /slot/rtp | 取得會員賠率展示資料
+*SlotApi* | [**getPaytable**](doc//SlotApi.md#getpaytable) | **GET** /slot/paytable/{gameId} | 查詢 Slot 賠率
+*SlotApi* | [**getRevenue**](doc//SlotApi.md#getrevenue) | **GET** /slot/revenue | Slot 收益統計
 *SlotApi* | [**getSymbols**](doc//SlotApi.md#getsymbols) | **GET** /slot/symbols | 取得 Symbol 目錄
+*SlotApi* | [**savePaytable**](doc//SlotApi.md#savepaytable) | **POST** /slot/paytable/{gameId} | 設定 Slot 賠率
 *SlotApi* | [**spin**](doc//SlotApi.md#spin) | **POST** /slot/spin | Spin
 *SseApi* | [**broadcastMessage**](doc//SseApi.md#broadcastmessage) | **POST** /sse/broadcast | 廣播消息
 *SseApi* | [**connect**](doc//SseApi.md#connect) | **GET** /sse/connect/{clientId} | 建立 SSE 連接
@@ -713,6 +716,9 @@ Class | Method | HTTP request | Description
  - [ShippingServiceGroup](doc//ShippingServiceGroup.md)
  - [SlotMemberOddsEntry](doc//SlotMemberOddsEntry.md)
  - [SlotMemberOddsResponse](doc//SlotMemberOddsResponse.md)
+ - [SlotPaytableConfigRequest](doc//SlotPaytableConfigRequest.md)
+ - [SlotPaytableConfigResponse](doc//SlotPaytableConfigResponse.md)
+ - [SlotRevenueResponse](doc//SlotRevenueResponse.md)
  - [SlotRtpResponse](doc//SlotRtpResponse.md)
  - [SlotSpinRequest](doc//SlotSpinRequest.md)
  - [SlotSpinResponse](doc//SlotSpinResponse.md)

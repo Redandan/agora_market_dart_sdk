@@ -712,6 +712,12 @@ class ApiClient {
           return SlotMemberOddsEntry.fromJson(value);
         case 'SlotMemberOddsResponse':
           return SlotMemberOddsResponse.fromJson(value);
+        case 'SlotPaytableConfigRequest':
+          return SlotPaytableConfigRequest.fromJson(value);
+        case 'SlotPaytableConfigResponse':
+          return SlotPaytableConfigResponse.fromJson(value);
+        case 'SlotRevenueResponse':
+          return SlotRevenueResponse.fromJson(value);
         case 'SlotRtpResponse':
           return SlotRtpResponse.fromJson(value);
         case 'SlotSpinRequest':

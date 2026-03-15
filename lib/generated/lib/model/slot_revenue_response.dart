@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -10,20 +10,19 @@
 
 part of openapi.api;
 
-class PageGameRoundDTO {
-  /// Returns a new [PageGameRoundDTO] instance.
-  PageGameRoundDTO({
-    this.totalElements,
-    this.totalPages,
-    this.sort,
-    this.numberOfElements,
-    this.pageable,
-    this.first,
-    this.last,
-    this.size,
-    this.content = const [],
-    this.number,
-    this.empty,
+class SlotRevenueResponse {
+  /// Returns a new [SlotRevenueResponse] instance.
+  SlotRevenueResponse({
+    this.gameId,
+    this.startTime,
+    this.endTime,
+    this.totalRounds,
+    this.winRounds,
+    this.winRatePct,
+    this.totalBet,
+    this.totalPayout,
+    this.grossRevenue,
+    this.actualRtpPct,
   });
 
   ///
@@ -32,57 +31,7 @@ class PageGameRoundDTO {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalElements;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? totalPages;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  SortObject? sort;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? numberOfElements;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  PageableObject? pageable;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? first;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? last;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? size;
-  List<GameRoundDTO> content;
+  String? gameId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -90,106 +39,161 @@ class PageGameRoundDTO {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? number;
+  DateTime? startTime;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? empty;
+  DateTime? endTime;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? totalRounds;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? winRounds;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? winRatePct;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? totalBet;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? totalPayout;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? grossRevenue;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? actualRtpPct;
+
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageGameRoundDTO &&
-    other.totalElements == totalElements &&
-    other.totalPages == totalPages &&
-    other.sort == sort &&
-    other.numberOfElements == numberOfElements &&
-    other.pageable == pageable &&
-    other.first == first &&
-    other.last == last &&
-    other.size == size &&
-    _deepEquality.equals(other.content, content) &&
-    other.number == number &&
-    other.empty == empty;
+  bool operator ==(Object other) => identical(this, other) || other is SlotRevenueResponse &&
+    other.gameId == gameId &&
+    other.startTime == startTime &&
+    other.endTime == endTime &&
+    other.totalRounds == totalRounds &&
+    other.winRounds == winRounds &&
+    other.winRatePct == winRatePct &&
+    other.totalBet == totalBet &&
+    other.totalPayout == totalPayout &&
+    other.grossRevenue == grossRevenue &&
+    other.actualRtpPct == actualRtpPct;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalElements == null ? 0 : totalElements!.hashCode) +
-    (totalPages == null ? 0 : totalPages!.hashCode) +
-    (sort == null ? 0 : sort!.hashCode) +
-    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
-    (pageable == null ? 0 : pageable!.hashCode) +
-    (first == null ? 0 : first!.hashCode) +
-    (last == null ? 0 : last!.hashCode) +
-    (size == null ? 0 : size!.hashCode) +
-    (content.hashCode) +
-    (number == null ? 0 : number!.hashCode) +
-    (empty == null ? 0 : empty!.hashCode);
+    (gameId == null ? 0 : gameId!.hashCode) +
+    (startTime == null ? 0 : startTime!.hashCode) +
+    (endTime == null ? 0 : endTime!.hashCode) +
+    (totalRounds == null ? 0 : totalRounds!.hashCode) +
+    (winRounds == null ? 0 : winRounds!.hashCode) +
+    (winRatePct == null ? 0 : winRatePct!.hashCode) +
+    (totalBet == null ? 0 : totalBet!.hashCode) +
+    (totalPayout == null ? 0 : totalPayout!.hashCode) +
+    (grossRevenue == null ? 0 : grossRevenue!.hashCode) +
+    (actualRtpPct == null ? 0 : actualRtpPct!.hashCode);
 
   @override
-  String toString() => 'PageGameRoundDTO[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, numberOfElements=$numberOfElements, pageable=$pageable, first=$first, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'SlotRevenueResponse[gameId=$gameId, startTime=$startTime, endTime=$endTime, totalRounds=$totalRounds, winRounds=$winRounds, winRatePct=$winRatePct, totalBet=$totalBet, totalPayout=$totalPayout, grossRevenue=$grossRevenue, actualRtpPct=$actualRtpPct]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.totalElements != null) {
-      json[r'totalElements'] = this.totalElements;
+    if (this.gameId != null) {
+      json[r'gameId'] = this.gameId;
     } else {
-      json[r'totalElements'] = null;
+      json[r'gameId'] = null;
     }
-    if (this.totalPages != null) {
-      json[r'totalPages'] = this.totalPages;
+    if (this.startTime != null) {
+      json[r'startTime'] = this.startTime!.toUtc().toIso8601String();
     } else {
-      json[r'totalPages'] = null;
+      json[r'startTime'] = null;
     }
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.endTime != null) {
+      json[r'endTime'] = this.endTime!.toUtc().toIso8601String();
     } else {
-      json[r'sort'] = null;
+      json[r'endTime'] = null;
     }
-    if (this.numberOfElements != null) {
-      json[r'numberOfElements'] = this.numberOfElements;
+    if (this.totalRounds != null) {
+      json[r'totalRounds'] = this.totalRounds;
     } else {
-      json[r'numberOfElements'] = null;
+      json[r'totalRounds'] = null;
     }
-    if (this.pageable != null) {
-      json[r'pageable'] = this.pageable;
+    if (this.winRounds != null) {
+      json[r'winRounds'] = this.winRounds;
     } else {
-      json[r'pageable'] = null;
+      json[r'winRounds'] = null;
     }
-    if (this.first != null) {
-      json[r'first'] = this.first;
+    if (this.winRatePct != null) {
+      json[r'winRatePct'] = this.winRatePct;
     } else {
-      json[r'first'] = null;
+      json[r'winRatePct'] = null;
     }
-    if (this.last != null) {
-      json[r'last'] = this.last;
+    if (this.totalBet != null) {
+      json[r'totalBet'] = this.totalBet;
     } else {
-      json[r'last'] = null;
+      json[r'totalBet'] = null;
     }
-    if (this.size != null) {
-      json[r'size'] = this.size;
+    if (this.totalPayout != null) {
+      json[r'totalPayout'] = this.totalPayout;
     } else {
-      json[r'size'] = null;
+      json[r'totalPayout'] = null;
     }
-      json[r'content'] = this.content.map((e) => e.toJson()).toList();
-    if (this.number != null) {
-      json[r'number'] = this.number;
+    if (this.grossRevenue != null) {
+      json[r'grossRevenue'] = this.grossRevenue;
     } else {
-      json[r'number'] = null;
+      json[r'grossRevenue'] = null;
     }
-    if (this.empty != null) {
-      json[r'empty'] = this.empty;
+    if (this.actualRtpPct != null) {
+      json[r'actualRtpPct'] = this.actualRtpPct;
     } else {
-      json[r'empty'] = null;
+      json[r'actualRtpPct'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageGameRoundDTO] instance and imports its values from
+  /// Returns a new [SlotRevenueResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageGameRoundDTO? fromJson(dynamic value) {
+  static SlotRevenueResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -198,34 +202,33 @@ class PageGameRoundDTO {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageGameRoundDTO[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageGameRoundDTO[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "SlotRevenueResponse[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "SlotRevenueResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageGameRoundDTO(
-        totalElements: mapValueOfType<int>(json, r'totalElements'),
-        totalPages: mapValueOfType<int>(json, r'totalPages'),
-        sort: SortObject.fromJson(json[r'sort']),
-        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
-        pageable: PageableObject.fromJson(json[r'pageable']),
-        first: mapValueOfType<bool>(json, r'first'),
-        last: mapValueOfType<bool>(json, r'last'),
-        size: mapValueOfType<int>(json, r'size'),
-        content: GameRoundDTO.listFromJson(json[r'content']),
-        number: mapValueOfType<int>(json, r'number'),
-        empty: mapValueOfType<bool>(json, r'empty'),
+      return SlotRevenueResponse(
+        gameId: mapValueOfType<String>(json, r'gameId'),
+        startTime: mapDateTime(json, r'startTime', r''),
+        endTime: mapDateTime(json, r'endTime', r''),
+        totalRounds: mapValueOfType<int>(json, r'totalRounds'),
+        winRounds: mapValueOfType<int>(json, r'winRounds'),
+        winRatePct: num.parse('${json[r'winRatePct']}'),
+        totalBet: num.parse('${json[r'totalBet']}'),
+        totalPayout: num.parse('${json[r'totalPayout']}'),
+        grossRevenue: num.parse('${json[r'grossRevenue']}'),
+        actualRtpPct: num.parse('${json[r'actualRtpPct']}'),
       );
     }
     return null;
   }
 
-  static List<PageGameRoundDTO> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageGameRoundDTO>[];
+  static List<SlotRevenueResponse> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <SlotRevenueResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageGameRoundDTO.fromJson(row);
+        final value = SlotRevenueResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -234,12 +237,12 @@ class PageGameRoundDTO {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageGameRoundDTO> mapFromJson(dynamic json) {
-    final map = <String, PageGameRoundDTO>{};
+  static Map<String, SlotRevenueResponse> mapFromJson(dynamic json) {
+    final map = <String, SlotRevenueResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageGameRoundDTO.fromJson(entry.value);
+        final value = SlotRevenueResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -248,14 +251,14 @@ class PageGameRoundDTO {
     return map;
   }
 
-  // maps a json object with a list of PageGameRoundDTO-objects as value to a dart map
-  static Map<String, List<PageGameRoundDTO>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageGameRoundDTO>>{};
+  // maps a json object with a list of SlotRevenueResponse-objects as value to a dart map
+  static Map<String, List<SlotRevenueResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<SlotRevenueResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageGameRoundDTO.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = SlotRevenueResponse.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -265,5 +268,4 @@ class PageGameRoundDTO {
   static const requiredKeys = <String>{
   };
 }
-
 
