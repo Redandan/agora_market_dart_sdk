@@ -13,115 +13,55 @@ part of openapi.api;
 class SlotRevenueResponse {
   /// Returns a new [SlotRevenueResponse] instance.
   SlotRevenueResponse({
-    this.gameId,
-    this.startTime,
-    this.endTime,
+    required this.gameId,
+    required this.startTime,
+    required this.endTime,
     this.paytableVersion,
     this.theoreticalRtpPct,
-    this.totalRounds,
-    this.winRounds,
-    this.winRatePct,
-    this.totalBet,
-    this.totalPayout,
-    this.grossRevenue,
-    this.actualRtpPct,
+    required this.totalRounds,
+    required this.winRounds,
+    required this.winRatePct,
+    required this.totalBet,
+    required this.totalPayout,
+    required this.grossRevenue,
+    required this.actualRtpPct,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? gameId;
+  /// 遊戲 ID
+  String gameId;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? startTime;
+  /// 查詢區間起始
+  DateTime startTime;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? endTime;
+  /// 查詢區間結束
+  DateTime endTime;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
+  /// 賠率版本號（對應 slot_paytable_configs.version），僅 /revenue/by-version 有值
   int? paytableVersion;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
+  /// 此版本設定的理論 RTP（%），僅 /revenue/by-version 有值
   num? theoreticalRtpPct;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? totalRounds;
+  /// 總局數
+  int totalRounds;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? winRounds;
+  /// 中獎局數（multiplier > 0）
+  int winRounds;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? winRatePct;
+  /// 中獎率（%）
+  num winRatePct;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? totalBet;
+  /// 總下注額
+  num totalBet;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? totalPayout;
+  /// 總派彩
+  num totalPayout;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? grossRevenue;
+  /// 平台毛利 = 總下注 - 總派彩
+  num grossRevenue;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? actualRtpPct;
+  /// 實際 RTP（%）
+  num actualRtpPct;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is SlotRevenueResponse &&
@@ -141,39 +81,27 @@ class SlotRevenueResponse {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (gameId == null ? 0 : gameId!.hashCode) +
-    (startTime == null ? 0 : startTime!.hashCode) +
-    (endTime == null ? 0 : endTime!.hashCode) +
+    (gameId.hashCode) +
+    (startTime.hashCode) +
+    (endTime.hashCode) +
     (paytableVersion == null ? 0 : paytableVersion!.hashCode) +
     (theoreticalRtpPct == null ? 0 : theoreticalRtpPct!.hashCode) +
-    (totalRounds == null ? 0 : totalRounds!.hashCode) +
-    (winRounds == null ? 0 : winRounds!.hashCode) +
-    (winRatePct == null ? 0 : winRatePct!.hashCode) +
-    (totalBet == null ? 0 : totalBet!.hashCode) +
-    (totalPayout == null ? 0 : totalPayout!.hashCode) +
-    (grossRevenue == null ? 0 : grossRevenue!.hashCode) +
-    (actualRtpPct == null ? 0 : actualRtpPct!.hashCode);
+    (totalRounds.hashCode) +
+    (winRounds.hashCode) +
+    (winRatePct.hashCode) +
+    (totalBet.hashCode) +
+    (totalPayout.hashCode) +
+    (grossRevenue.hashCode) +
+    (actualRtpPct.hashCode);
 
   @override
   String toString() => 'SlotRevenueResponse[gameId=$gameId, startTime=$startTime, endTime=$endTime, paytableVersion=$paytableVersion, theoreticalRtpPct=$theoreticalRtpPct, totalRounds=$totalRounds, winRounds=$winRounds, winRatePct=$winRatePct, totalBet=$totalBet, totalPayout=$totalPayout, grossRevenue=$grossRevenue, actualRtpPct=$actualRtpPct]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.gameId != null) {
       json[r'gameId'] = this.gameId;
-    } else {
-      json[r'gameId'] = null;
-    }
-    if (this.startTime != null) {
-      json[r'startTime'] = this.startTime!.toUtc().toIso8601String();
-    } else {
-      json[r'startTime'] = null;
-    }
-    if (this.endTime != null) {
-      json[r'endTime'] = this.endTime!.toUtc().toIso8601String();
-    } else {
-      json[r'endTime'] = null;
-    }
+      json[r'startTime'] = this.startTime.toUtc().toIso8601String();
+      json[r'endTime'] = this.endTime.toUtc().toIso8601String();
     if (this.paytableVersion != null) {
       json[r'paytableVersion'] = this.paytableVersion;
     } else {
@@ -184,41 +112,13 @@ class SlotRevenueResponse {
     } else {
       json[r'theoreticalRtpPct'] = null;
     }
-    if (this.totalRounds != null) {
       json[r'totalRounds'] = this.totalRounds;
-    } else {
-      json[r'totalRounds'] = null;
-    }
-    if (this.winRounds != null) {
       json[r'winRounds'] = this.winRounds;
-    } else {
-      json[r'winRounds'] = null;
-    }
-    if (this.winRatePct != null) {
       json[r'winRatePct'] = this.winRatePct;
-    } else {
-      json[r'winRatePct'] = null;
-    }
-    if (this.totalBet != null) {
       json[r'totalBet'] = this.totalBet;
-    } else {
-      json[r'totalBet'] = null;
-    }
-    if (this.totalPayout != null) {
       json[r'totalPayout'] = this.totalPayout;
-    } else {
-      json[r'totalPayout'] = null;
-    }
-    if (this.grossRevenue != null) {
       json[r'grossRevenue'] = this.grossRevenue;
-    } else {
-      json[r'grossRevenue'] = null;
-    }
-    if (this.actualRtpPct != null) {
       json[r'actualRtpPct'] = this.actualRtpPct;
-    } else {
-      json[r'actualRtpPct'] = null;
-    }
     return json;
   }
 
@@ -241,13 +141,15 @@ class SlotRevenueResponse {
       }());
 
       return SlotRevenueResponse(
-        gameId: mapValueOfType<String>(json, r'gameId'),
-        startTime: mapDateTime(json, r'startTime', r''),
-        endTime: mapDateTime(json, r'endTime', r''),
+        gameId: mapValueOfType<String>(json, r'gameId')!,
+        startTime: mapDateTime(json, r'startTime', r'')!,
+        endTime: mapDateTime(json, r'endTime', r'')!,
         paytableVersion: mapValueOfType<int>(json, r'paytableVersion'),
-        theoreticalRtpPct: num.parse('${json[r'theoreticalRtpPct']}'),
-        totalRounds: mapValueOfType<int>(json, r'totalRounds'),
-        winRounds: mapValueOfType<int>(json, r'winRounds'),
+        theoreticalRtpPct: json[r'theoreticalRtpPct'] == null
+            ? null
+            : num.parse('${json[r'theoreticalRtpPct']}'),
+        totalRounds: mapValueOfType<int>(json, r'totalRounds')!,
+        winRounds: mapValueOfType<int>(json, r'winRounds')!,
         winRatePct: num.parse('${json[r'winRatePct']}'),
         totalBet: num.parse('${json[r'totalBet']}'),
         totalPayout: num.parse('${json[r'totalPayout']}'),
@@ -300,6 +202,16 @@ class SlotRevenueResponse {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'gameId',
+    'startTime',
+    'endTime',
+    'totalRounds',
+    'winRounds',
+    'winRatePct',
+    'totalBet',
+    'totalPayout',
+    'grossRevenue',
+    'actualRtpPct',
   };
 }
 

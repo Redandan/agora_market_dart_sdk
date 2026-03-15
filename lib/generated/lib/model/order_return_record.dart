@@ -35,8 +35,8 @@ class OrderReturnRecord {
     this.buyer,
     this.seller,
     this.returnShippingOptions = const [],
-    this.returnOverdue,
     this.imageUrls = const {},
+    this.returnOverdue,
     this.returnDeadlineFromApproval,
   });
 
@@ -102,6 +102,8 @@ class OrderReturnRecord {
   /// 賣家可退貨的地址列表（供買家寄回商品時選擇）
   List<ShippingAddressOption>? returnShippingOptions;
 
+  Set<String> imageUrls;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -109,8 +111,6 @@ class OrderReturnRecord {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? returnOverdue;
-
-  Set<String> imageUrls;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -144,8 +144,8 @@ class OrderReturnRecord {
     other.buyer == buyer &&
     other.seller == seller &&
     _deepEquality.equals(other.returnShippingOptions, returnShippingOptions) &&
-    other.returnOverdue == returnOverdue &&
     _deepEquality.equals(other.imageUrls, imageUrls) &&
+    other.returnOverdue == returnOverdue &&
     other.returnDeadlineFromApproval == returnDeadlineFromApproval;
 
   @override
@@ -173,12 +173,12 @@ class OrderReturnRecord {
     (buyer == null ? 0 : buyer!.hashCode) +
     (seller == null ? 0 : seller!.hashCode) +
     (returnShippingOptions == null ? 0 : returnShippingOptions!.hashCode) +
-    (returnOverdue == null ? 0 : returnOverdue!.hashCode) +
     (imageUrls.hashCode) +
+    (returnOverdue == null ? 0 : returnOverdue!.hashCode) +
     (returnDeadlineFromApproval == null ? 0 : returnDeadlineFromApproval!.hashCode);
 
   @override
-  String toString() => 'OrderReturnRecord[id=$id, buyerId=$buyerId, sellerId=$sellerId, reason=$reason, description=$description, sellerReply=$sellerReply, trackingNumber=$trackingNumber, shippingCompany=$shippingCompany, requestedAt=$requestedAt, processedAt=$processedAt, shippedAt=$shippedAt, receivedAt=$receivedAt, returnDeadline=$returnDeadline, updatedAt=$updatedAt, remark=$remark, returnRecipientName=$returnRecipientName, returnRecipientPhone=$returnRecipientPhone, returnAddress=$returnAddress, order=$order, buyer=$buyer, seller=$seller, returnShippingOptions=$returnShippingOptions, returnOverdue=$returnOverdue, imageUrls=$imageUrls, returnDeadlineFromApproval=$returnDeadlineFromApproval]';
+  String toString() => 'OrderReturnRecord[id=$id, buyerId=$buyerId, sellerId=$sellerId, reason=$reason, description=$description, sellerReply=$sellerReply, trackingNumber=$trackingNumber, shippingCompany=$shippingCompany, requestedAt=$requestedAt, processedAt=$processedAt, shippedAt=$shippedAt, receivedAt=$receivedAt, returnDeadline=$returnDeadline, updatedAt=$updatedAt, remark=$remark, returnRecipientName=$returnRecipientName, returnRecipientPhone=$returnRecipientPhone, returnAddress=$returnAddress, order=$order, buyer=$buyer, seller=$seller, returnShippingOptions=$returnShippingOptions, imageUrls=$imageUrls, returnOverdue=$returnOverdue, returnDeadlineFromApproval=$returnDeadlineFromApproval]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -268,12 +268,12 @@ class OrderReturnRecord {
     } else {
       json[r'returnShippingOptions'] = null;
     }
+      json[r'imageUrls'] = this.imageUrls.toList(growable: false);
     if (this.returnOverdue != null) {
       json[r'returnOverdue'] = this.returnOverdue;
     } else {
       json[r'returnOverdue'] = null;
     }
-      json[r'imageUrls'] = this.imageUrls.toList(growable: false);
     if (this.returnDeadlineFromApproval != null) {
       json[r'returnDeadlineFromApproval'] = this.returnDeadlineFromApproval!.toUtc().toIso8601String();
     } else {
@@ -323,10 +323,10 @@ class OrderReturnRecord {
         buyer: User.fromJson(json[r'buyer']),
         seller: User.fromJson(json[r'seller']),
         returnShippingOptions: ShippingAddressOption.listFromJson(json[r'returnShippingOptions']),
-        returnOverdue: mapValueOfType<bool>(json, r'returnOverdue'),
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
             : const {},
+        returnOverdue: mapValueOfType<bool>(json, r'returnOverdue'),
         returnDeadlineFromApproval: mapDateTime(json, r'returnDeadlineFromApproval', r''),
       );
     }
