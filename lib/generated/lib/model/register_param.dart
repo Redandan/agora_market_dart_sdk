@@ -19,6 +19,7 @@ class RegisterParam {
     this.email,
     this.promoCode,
     this.turnstileToken,
+    this.referrer,
   });
 
   /// 用戶名
@@ -63,6 +64,9 @@ class RegisterParam {
   ///
   String? turnstileToken;
 
+  /// 來源頁面 URL（可選，由前端傳入 document.referrer），用於流量分析
+  String? referrer;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is RegisterParam &&
     other.username == username &&
@@ -70,7 +74,8 @@ class RegisterParam {
     other.confirmPassword == confirmPassword &&
     other.email == email &&
     other.promoCode == promoCode &&
-    other.turnstileToken == turnstileToken;
+    other.turnstileToken == turnstileToken &&
+    other.referrer == referrer;
 
   @override
   int get hashCode =>
@@ -80,10 +85,11 @@ class RegisterParam {
     (confirmPassword == null ? 0 : confirmPassword!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
     (promoCode == null ? 0 : promoCode!.hashCode) +
-    (turnstileToken == null ? 0 : turnstileToken!.hashCode);
+    (turnstileToken == null ? 0 : turnstileToken!.hashCode) +
+    (referrer == null ? 0 : referrer!.hashCode);
 
   @override
-  String toString() => 'RegisterParam[username=$username, password=$password, confirmPassword=$confirmPassword, email=$email, promoCode=$promoCode, turnstileToken=$turnstileToken]';
+  String toString() => 'RegisterParam[username=$username, password=$password, confirmPassword=$confirmPassword, email=$email, promoCode=$promoCode, turnstileToken=$turnstileToken, referrer=$referrer]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -108,6 +114,11 @@ class RegisterParam {
       json[r'turnstileToken'] = this.turnstileToken;
     } else {
       json[r'turnstileToken'] = null;
+    }
+    if (this.referrer != null) {
+      json[r'referrer'] = this.referrer;
+    } else {
+      json[r'referrer'] = null;
     }
     return json;
   }
@@ -137,6 +148,7 @@ class RegisterParam {
         email: mapValueOfType<String>(json, r'email'),
         promoCode: mapValueOfType<String>(json, r'promoCode'),
         turnstileToken: mapValueOfType<String>(json, r'turnstileToken'),
+        referrer: mapValueOfType<String>(json, r'referrer'),
       );
     }
     return null;

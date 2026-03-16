@@ -206,6 +206,10 @@ Class | Method | HTTP request | Description
 *AdminSystemConfigApi* | [**getMaintenanceStatus**](doc//AdminSystemConfigApi.md#getmaintenancestatus) | **GET** /admin/system-config/maintenance | 獲取維護開關狀態
 *AdminSystemConfigApi* | [**setDeliveryMaintenance**](doc//AdminSystemConfigApi.md#setdeliverymaintenance) | **PUT** /admin/system-config/maintenance/delivery | 設置外送員入口維護開關
 *AdminSystemConfigApi* | [**setSellerMaintenance**](doc//AdminSystemConfigApi.md#setsellermaintenance) | **PUT** /admin/system-config/maintenance/seller | 設置賣家入口維護開關
+*AdminTrafficApi* | [**getRegistrationOverview**](doc//AdminTrafficApi.md#getregistrationoverview) | **GET** /admin/traffic/registrations/overview | 獲取註冊流量概覽
+*AdminTrafficApi* | [**getSlotOverview**](doc//AdminTrafficApi.md#getslotoverview) | **GET** /admin/traffic/slot/overview | Slot 遊戲流量概覽
+*AdminTrafficApi* | [**getSlotToday**](doc//AdminTrafficApi.md#getslottoday) | **GET** /admin/traffic/slot/today | 今日 Slot 小時分佈
+*AdminTrafficApi* | [**getTodayRegistrations**](doc//AdminTrafficApi.md#gettodayregistrations) | **GET** /admin/traffic/registrations/today | 今日註冊小時分佈
 *AuthApi* | [**bindEmail**](doc//AuthApi.md#bindemail) | **POST** /auth/bind-email | 綁定或更新郵箱
 *AuthApi* | [**bindOAuth**](doc//AuthApi.md#bindoauth) | **POST** /auth/bind-oauth | 綁定OAuth賬號
 *AuthApi* | [**changePassword**](doc//AuthApi.md#changepassword) | **POST** /auth/change-password | 修改/設置密碼
@@ -502,6 +506,7 @@ Class | Method | HTTP request | Description
  - [CartSummary](doc//CartSummary.md)
  - [CartSummaryDTO](doc//CartSummaryDTO.md)
  - [ChangePasswordParam](doc//ChangePasswordParam.md)
+ - [ChannelStatDto](doc//ChannelStatDto.md)
  - [ChatMessage](doc//ChatMessage.md)
  - [ChatMessageDTO](doc//ChatMessageDTO.md)
  - [ChatMessageQueryParam](doc//ChatMessageQueryParam.md)
@@ -521,6 +526,7 @@ Class | Method | HTTP request | Description
  - [CreateWithdrawParam](doc//CreateWithdrawParam.md)
  - [CustomerIssue](doc//CustomerIssue.md)
  - [CustomerStats](doc//CustomerStats.md)
+ - [DailyStatDto](doc//DailyStatDto.md)
  - [DefaultHomePageEnum](doc//DefaultHomePageEnum.md)
  - [DeliveryDetail](doc//DeliveryDetail.md)
  - [DeliveryHistoryParam](doc//DeliveryHistoryParam.md)
@@ -558,6 +564,7 @@ Class | Method | HTTP request | Description
  - [FlutterAppDeploymentResponse](doc//FlutterAppDeploymentResponse.md)
  - [GameRoundDTO](doc//GameRoundDTO.md)
  - [GenerateLoginTokenRequest](doc//GenerateLoginTokenRequest.md)
+ - [HourlyStatDto](doc//HourlyStatDto.md)
  - [InterestRecordDTO](doc//InterestRecordDTO.md)
  - [InterestRecordSearchParam](doc//InterestRecordSearchParam.md)
  - [IssueSearchParam](doc//IssueSearchParam.md)
@@ -665,6 +672,7 @@ Class | Method | HTTP request | Description
  - [ProductStatusEnum](doc//ProductStatusEnum.md)
  - [ProductUpdateParam](doc//ProductUpdateParam.md)
  - [PromoCode](doc//PromoCode.md)
+ - [PromoCodeStatDto](doc//PromoCodeStatDto.md)
  - [PromoCodeStatusEnum](doc//PromoCodeStatusEnum.md)
  - [ProtocolEnum](doc//ProtocolEnum.md)
  - [PushHealthResponseDTO](doc//PushHealthResponseDTO.md)
@@ -686,6 +694,8 @@ Class | Method | HTTP request | Description
  - [RefundOfferResponseParam](doc//RefundOfferResponseParam.md)
  - [RegisterParam](doc//RegisterParam.md)
  - [RegisterResult](doc//RegisterResult.md)
+ - [RegistrationMethodEnum](doc//RegistrationMethodEnum.md)
+ - [RegistrationOverviewResponse](doc//RegistrationOverviewResponse.md)
  - [ReplyIssueParam](doc//ReplyIssueParam.md)
  - [ResolveMarketRequest](doc//ResolveMarketRequest.md)
  - [ReturnProcessParam](doc//ReturnProcessParam.md)
@@ -715,8 +725,11 @@ Class | Method | HTTP request | Description
  - [ShippingCompanyEnum](doc//ShippingCompanyEnum.md)
  - [ShippingOptions](doc//ShippingOptions.md)
  - [ShippingServiceGroup](doc//ShippingServiceGroup.md)
+ - [SlotDailyStatDto](doc//SlotDailyStatDto.md)
+ - [SlotHourlyStatDto](doc//SlotHourlyStatDto.md)
  - [SlotMemberOddsEntry](doc//SlotMemberOddsEntry.md)
  - [SlotMemberOddsResponse](doc//SlotMemberOddsResponse.md)
+ - [SlotOverviewResponse](doc//SlotOverviewResponse.md)
  - [SlotPaytableConfigRequest](doc//SlotPaytableConfigRequest.md)
  - [SlotPaytableConfigResponse](doc//SlotPaytableConfigResponse.md)
  - [SlotRevenueResponse](doc//SlotRevenueResponse.md)

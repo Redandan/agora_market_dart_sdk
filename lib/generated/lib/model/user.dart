@@ -28,6 +28,9 @@ class User {
     this.ambassadorName,
     this.displayDeliveryerName,
     this.promoCode,
+    this.registrationMethod,
+    this.registrationIp,
+    this.registrationUa,
     this.twoFactorEnabled,
     this.twoFactorSecret,
     this.emailVerified,
@@ -88,6 +91,14 @@ class User {
   /// 閮餃??典誨蝣?
 
   String? promoCode;
+  RegistrationMethodEnum? registrationMethod;
+
+  /// 閮餃??? IP ?啣?
+
+  String? registrationIp;
+  /// 閮餃??? User-Agent
+
+  String? registrationUa;
   /// ?臬???蝝?霅?
 
   bool? twoFactorEnabled;
@@ -138,6 +149,9 @@ class User {
     other.ambassadorName == ambassadorName &&
     other.displayDeliveryerName == displayDeliveryerName &&
     other.promoCode == promoCode &&
+    other.registrationMethod == registrationMethod &&
+    other.registrationIp == registrationIp &&
+    other.registrationUa == registrationUa &&
     other.twoFactorEnabled == twoFactorEnabled &&
     other.twoFactorSecret == twoFactorSecret &&
     other.emailVerified == emailVerified &&
@@ -167,6 +181,9 @@ class User {
     (ambassadorName == null ? 0 : ambassadorName!.hashCode) +
     (displayDeliveryerName == null ? 0 : displayDeliveryerName!.hashCode) +
     (promoCode == null ? 0 : promoCode!.hashCode) +
+    (registrationMethod == null ? 0 : registrationMethod!.hashCode) +
+    (registrationIp == null ? 0 : registrationIp!.hashCode) +
+    (registrationUa == null ? 0 : registrationUa!.hashCode) +
     (twoFactorEnabled == null ? 0 : twoFactorEnabled!.hashCode) +
     (twoFactorSecret == null ? 0 : twoFactorSecret!.hashCode) +
     (emailVerified == null ? 0 : emailVerified!.hashCode) +
@@ -179,7 +196,7 @@ class User {
     (trustedDevices.hashCode);
 
   @override
-  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, defaultHomePage=$defaultHomePage, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, trustedDevicesJson=$trustedDevicesJson, currentDeviceFingerprint=$currentDeviceFingerprint, currentIpAddress=$currentIpAddress, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin, trustedDevices=$trustedDevices]';
+  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, defaultHomePage=$defaultHomePage, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, registrationMethod=$registrationMethod, registrationIp=$registrationIp, registrationUa=$registrationUa, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, trustedDevicesJson=$trustedDevicesJson, currentDeviceFingerprint=$currentDeviceFingerprint, currentIpAddress=$currentIpAddress, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin, trustedDevices=$trustedDevices]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -237,6 +254,21 @@ class User {
       json[r'promoCode'] = this.promoCode;
     } else {
       json[r'promoCode'] = null;
+    }
+    if (this.registrationMethod != null) {
+      json[r'registrationMethod'] = this.registrationMethod;
+    } else {
+      json[r'registrationMethod'] = null;
+    }
+    if (this.registrationIp != null) {
+      json[r'registrationIp'] = this.registrationIp;
+    } else {
+      json[r'registrationIp'] = null;
+    }
+    if (this.registrationUa != null) {
+      json[r'registrationUa'] = this.registrationUa;
+    } else {
+      json[r'registrationUa'] = null;
     }
     if (this.twoFactorEnabled != null) {
       json[r'twoFactorEnabled'] = this.twoFactorEnabled;
@@ -313,6 +345,9 @@ class User {
         ambassadorName: mapValueOfType<String>(json, r'ambassadorName'),
         displayDeliveryerName: mapValueOfType<String>(json, r'displayDeliveryerName'),
         promoCode: mapValueOfType<String>(json, r'promoCode'),
+        registrationMethod: RegistrationMethodEnum.fromJson(json[r'registrationMethod']),
+        registrationIp: mapValueOfType<String>(json, r'registrationIp'),
+        registrationUa: mapValueOfType<String>(json, r'registrationUa'),
         twoFactorEnabled: mapValueOfType<bool>(json, r'twoFactorEnabled'),
         twoFactorSecret: mapValueOfType<String>(json, r'twoFactorSecret'),
         emailVerified: mapValueOfType<bool>(json, r'emailVerified'),

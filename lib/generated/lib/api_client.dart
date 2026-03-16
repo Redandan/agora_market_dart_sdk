@@ -282,6 +282,8 @@ class ApiClient {
           return CartSummaryDTO.fromJson(value);
         case 'ChangePasswordParam':
           return ChangePasswordParam.fromJson(value);
+        case 'ChannelStatDto':
+          return ChannelStatDto.fromJson(value);
         case 'ChatMessage':
           return ChatMessage.fromJson(value);
         case 'ChatMessageDTO':
@@ -320,6 +322,8 @@ class ApiClient {
           return CustomerIssue.fromJson(value);
         case 'CustomerStats':
           return CustomerStats.fromJson(value);
+        case 'DailyStatDto':
+          return DailyStatDto.fromJson(value);
         case 'DefaultHomePageEnum':
           return DefaultHomePageEnumTypeTransformer().decode(value);
         case 'DeliveryDetail':
@@ -394,6 +398,8 @@ class ApiClient {
           return GameRoundDTO.fromJson(value);
         case 'GenerateLoginTokenRequest':
           return GenerateLoginTokenRequest.fromJson(value);
+        case 'HourlyStatDto':
+          return HourlyStatDto.fromJson(value);
         case 'InterestRecordDTO':
           return InterestRecordDTO.fromJson(value);
         case 'InterestRecordSearchParam':
@@ -608,6 +614,8 @@ class ApiClient {
           return ProductUpdateParam.fromJson(value);
         case 'PromoCode':
           return PromoCode.fromJson(value);
+        case 'PromoCodeStatDto':
+          return PromoCodeStatDto.fromJson(value);
         case 'PromoCodeStatusEnum':
           return PromoCodeStatusEnumTypeTransformer().decode(value);
         case 'ProtocolEnum':
@@ -650,6 +658,10 @@ class ApiClient {
           return RegisterParam.fromJson(value);
         case 'RegisterResult':
           return RegisterResult.fromJson(value);
+        case 'RegistrationMethodEnum':
+          return RegistrationMethodEnumTypeTransformer().decode(value);
+        case 'RegistrationOverviewResponse':
+          return RegistrationOverviewResponse.fromJson(value);
         case 'ReplyIssueParam':
           return ReplyIssueParam.fromJson(value);
         case 'ResolveMarketRequest':
@@ -708,10 +720,16 @@ class ApiClient {
           return ShippingOptions.fromJson(value);
         case 'ShippingServiceGroup':
           return ShippingServiceGroup.fromJson(value);
+        case 'SlotDailyStatDto':
+          return SlotDailyStatDto.fromJson(value);
+        case 'SlotHourlyStatDto':
+          return SlotHourlyStatDto.fromJson(value);
         case 'SlotMemberOddsEntry':
           return SlotMemberOddsEntry.fromJson(value);
         case 'SlotMemberOddsResponse':
           return SlotMemberOddsResponse.fromJson(value);
+        case 'SlotOverviewResponse':
+          return SlotOverviewResponse.fromJson(value);
         case 'SlotPaytableConfigRequest':
           return SlotPaytableConfigRequest.fromJson(value);
         case 'SlotPaytableConfigResponse':

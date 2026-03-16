@@ -10,126 +10,115 @@
 
 part of openapi.api;
 
-class PageableObject {
-  /// Returns a new [PageableObject] instance.
-  PageableObject({
-    this.sort,
-    this.pageNumber,
-    this.pageSize,
-    this.unpaged,
-    this.paged,
-    this.offset,
+class SlotDailyStatDto {
+  /// Returns a new [SlotDailyStatDto] instance.
+  SlotDailyStatDto({
+    this.date,
+    this.rounds,
+    this.players,
+    this.totalBet,
+    this.grossRevenue,
   });
 
+  /// 日期，格式 yyyy-MM-dd
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SortObject? sort;
+  String? date;
 
+  /// 當日局數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageNumber;
+  int? rounds;
 
+  /// 當日活躍玩家
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageSize;
+  int? players;
 
+  /// 當日總下注
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unpaged;
+  num? totalBet;
 
+  /// 當日毛利（下注 - 派彩）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? paged;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? offset;
+  num? grossRevenue;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageableObject &&
-    other.sort == sort &&
-    other.pageNumber == pageNumber &&
-    other.pageSize == pageSize &&
-    other.unpaged == unpaged &&
-    other.paged == paged &&
-    other.offset == offset;
+  bool operator ==(Object other) => identical(this, other) || other is SlotDailyStatDto &&
+    other.date == date &&
+    other.rounds == rounds &&
+    other.players == players &&
+    other.totalBet == totalBet &&
+    other.grossRevenue == grossRevenue;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (sort == null ? 0 : sort!.hashCode) +
-    (pageNumber == null ? 0 : pageNumber!.hashCode) +
-    (pageSize == null ? 0 : pageSize!.hashCode) +
-    (unpaged == null ? 0 : unpaged!.hashCode) +
-    (paged == null ? 0 : paged!.hashCode) +
-    (offset == null ? 0 : offset!.hashCode);
+    (date == null ? 0 : date!.hashCode) +
+    (rounds == null ? 0 : rounds!.hashCode) +
+    (players == null ? 0 : players!.hashCode) +
+    (totalBet == null ? 0 : totalBet!.hashCode) +
+    (grossRevenue == null ? 0 : grossRevenue!.hashCode);
 
   @override
-  String toString() => 'PageableObject[sort=$sort, pageNumber=$pageNumber, pageSize=$pageSize, unpaged=$unpaged, paged=$paged, offset=$offset]';
+  String toString() => 'SlotDailyStatDto[date=$date, rounds=$rounds, players=$players, totalBet=$totalBet, grossRevenue=$grossRevenue]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.date != null) {
+      json[r'date'] = this.date;
     } else {
-      json[r'sort'] = null;
+      json[r'date'] = null;
     }
-    if (this.pageNumber != null) {
-      json[r'pageNumber'] = this.pageNumber;
+    if (this.rounds != null) {
+      json[r'rounds'] = this.rounds;
     } else {
-      json[r'pageNumber'] = null;
+      json[r'rounds'] = null;
     }
-    if (this.pageSize != null) {
-      json[r'pageSize'] = this.pageSize;
+    if (this.players != null) {
+      json[r'players'] = this.players;
     } else {
-      json[r'pageSize'] = null;
+      json[r'players'] = null;
     }
-    if (this.unpaged != null) {
-      json[r'unpaged'] = this.unpaged;
+    if (this.totalBet != null) {
+      json[r'totalBet'] = this.totalBet;
     } else {
-      json[r'unpaged'] = null;
+      json[r'totalBet'] = null;
     }
-    if (this.paged != null) {
-      json[r'paged'] = this.paged;
+    if (this.grossRevenue != null) {
+      json[r'grossRevenue'] = this.grossRevenue;
     } else {
-      json[r'paged'] = null;
-    }
-    if (this.offset != null) {
-      json[r'offset'] = this.offset;
-    } else {
-      json[r'offset'] = null;
+      json[r'grossRevenue'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageableObject] instance and imports its values from
+  /// Returns a new [SlotDailyStatDto] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageableObject? fromJson(dynamic value) {
+  static SlotDailyStatDto? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -138,29 +127,28 @@ class PageableObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageableObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageableObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "SlotDailyStatDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "SlotDailyStatDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageableObject(
-        sort: SortObject.fromJson(json[r'sort']),
-        pageNumber: mapValueOfType<int>(json, r'pageNumber'),
-        pageSize: mapValueOfType<int>(json, r'pageSize'),
-        unpaged: mapValueOfType<bool>(json, r'unpaged'),
-        paged: mapValueOfType<bool>(json, r'paged'),
-        offset: mapValueOfType<int>(json, r'offset'),
+      return SlotDailyStatDto(
+        date: mapValueOfType<String>(json, r'date'),
+        rounds: mapValueOfType<int>(json, r'rounds'),
+        players: mapValueOfType<int>(json, r'players'),
+        totalBet: num.parse('${json[r'totalBet']}'),
+        grossRevenue: num.parse('${json[r'grossRevenue']}'),
       );
     }
     return null;
   }
 
-  static List<PageableObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageableObject>[];
+  static List<SlotDailyStatDto> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <SlotDailyStatDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageableObject.fromJson(row);
+        final value = SlotDailyStatDto.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -169,12 +157,12 @@ class PageableObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageableObject> mapFromJson(dynamic json) {
-    final map = <String, PageableObject>{};
+  static Map<String, SlotDailyStatDto> mapFromJson(dynamic json) {
+    final map = <String, SlotDailyStatDto>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageableObject.fromJson(entry.value);
+        final value = SlotDailyStatDto.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -183,14 +171,14 @@ class PageableObject {
     return map;
   }
 
-  // maps a json object with a list of PageableObject-objects as value to a dart map
-  static Map<String, List<PageableObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageableObject>>{};
+  // maps a json object with a list of SlotDailyStatDto-objects as value to a dart map
+  static Map<String, List<SlotDailyStatDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<SlotDailyStatDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageableObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = SlotDailyStatDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
