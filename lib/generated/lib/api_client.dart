@@ -398,6 +398,12 @@ class ApiClient {
           return GameRoundDTO.fromJson(value);
         case 'GenerateLoginTokenRequest':
           return GenerateLoginTokenRequest.fromJson(value);
+        case 'GroupActiveUserDTO':
+          return GroupActiveUserDTO.fromJson(value);
+        case 'GroupActivityStatsDTO':
+          return GroupActivityStatsDTO.fromJson(value);
+        case 'GroupMessageDTO':
+          return GroupMessageDTO.fromJson(value);
         case 'HourlyStatDto':
           return HourlyStatDto.fromJson(value);
         case 'InterestRecordDTO':
@@ -446,6 +452,8 @@ class ApiClient {
           return MemberUpdateParam.fromJson(value);
         case 'MessageSendResponseDTO':
           return MessageSendResponseDTO.fromJson(value);
+        case 'MonitoredGroupDTO':
+          return MonitoredGroupDTO.fromJson(value);
         case 'NextInterestEstimateDTO':
           return NextInterestEstimateDTO.fromJson(value);
         case 'NotificationCreateParam':

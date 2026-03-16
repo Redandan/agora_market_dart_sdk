@@ -414,6 +414,10 @@ Class | Method | HTTP request | Description
 *TGApi* | [**getPlayerRounds**](doc//TGApi.md#getplayerrounds) | **GET** /tg-game/rounds | 查詢玩家流水
 *TGApi* | [**searchActivities**](doc//TGApi.md#searchactivities) | **POST** /tg-game/activity/search | 查詢活動
 *TGApi* | [**updateActivity**](doc//TGApi.md#updateactivity) | **PUT** /tg-game/activity/{id} | 更新活動
+*TelegramApi* | [**getGroupActiveUsers**](doc//TelegramApi.md#getgroupactiveusers) | **GET** /api/admin/telegram-monitor/groups/{groupId}/active-users | 獲取群組活躍用戶統計
+*TelegramApi* | [**getGroupActivity**](doc//TelegramApi.md#getgroupactivity) | **GET** /api/admin/telegram-monitor/groups/{groupId}/activity | 獲取群組活躍度統計
+*TelegramApi* | [**getGroups**](doc//TelegramApi.md#getgroups) | **GET** /api/admin/telegram-monitor/groups | 獲取已監聽群組列表
+*TelegramApi* | [**getRecentMessages**](doc//TelegramApi.md#getrecentmessages) | **GET** /api/admin/telegram-monitor/groups/{groupId}/messages | 獲取群組最近消息緩衝
 *TelegramBotLoginApi* | [**generateLoginToken**](doc//TelegramBotLoginApi.md#generatelogintoken) | **POST** /auth/telegram-bot/generate-login-token | 生成登录 loginToken
 *TelegramBotLoginApi* | [**verifyCode**](doc//TelegramBotLoginApi.md#verifycode) | **POST** /auth/telegram-bot/verify-code | 验证验证码
 *TelegramWebappAuthApi* | [**exchangeJwt**](doc//TelegramWebappAuthApi.md#exchangejwt) | **POST** /auth/telegram-webapp/exchange-jwt | Telegram WebApp 交換 JWT
@@ -564,6 +568,9 @@ Class | Method | HTTP request | Description
  - [FlutterAppDeploymentResponse](doc//FlutterAppDeploymentResponse.md)
  - [GameRoundDTO](doc//GameRoundDTO.md)
  - [GenerateLoginTokenRequest](doc//GenerateLoginTokenRequest.md)
+ - [GroupActiveUserDTO](doc//GroupActiveUserDTO.md)
+ - [GroupActivityStatsDTO](doc//GroupActivityStatsDTO.md)
+ - [GroupMessageDTO](doc//GroupMessageDTO.md)
  - [HourlyStatDto](doc//HourlyStatDto.md)
  - [InterestRecordDTO](doc//InterestRecordDTO.md)
  - [InterestRecordSearchParam](doc//InterestRecordSearchParam.md)
@@ -588,6 +595,7 @@ Class | Method | HTTP request | Description
  - [MemberSearchParam](doc//MemberSearchParam.md)
  - [MemberUpdateParam](doc//MemberUpdateParam.md)
  - [MessageSendResponseDTO](doc//MessageSendResponseDTO.md)
+ - [MonitoredGroupDTO](doc//MonitoredGroupDTO.md)
  - [NextInterestEstimateDTO](doc//NextInterestEstimateDTO.md)
  - [NotificationCreateParam](doc//NotificationCreateParam.md)
  - [NotificationResponseDTO](doc//NotificationResponseDTO.md)
