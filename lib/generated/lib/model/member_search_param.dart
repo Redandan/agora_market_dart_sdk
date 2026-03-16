@@ -20,6 +20,9 @@ class MemberSearchParam {
     this.keyword,
     this.sortBy,
     this.sortDirection,
+    this.userId,
+    this.username,
+    this.email,
     this.status,
   });
 
@@ -86,6 +89,33 @@ class MemberSearchParam {
   ///
   String? sortDirection;
 
+  /// 用戶ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? userId;
+
+  /// 用戶名
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? username;
+
+  /// 電子郵件
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? email;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -103,6 +133,9 @@ class MemberSearchParam {
     other.keyword == keyword &&
     other.sortBy == sortBy &&
     other.sortDirection == sortDirection &&
+    other.userId == userId &&
+    other.username == username &&
+    other.email == email &&
     other.status == status;
 
   @override
@@ -115,10 +148,13 @@ class MemberSearchParam {
     (keyword == null ? 0 : keyword!.hashCode) +
     (sortBy == null ? 0 : sortBy!.hashCode) +
     (sortDirection == null ? 0 : sortDirection!.hashCode) +
+    (userId == null ? 0 : userId!.hashCode) +
+    (username == null ? 0 : username!.hashCode) +
+    (email == null ? 0 : email!.hashCode) +
     (status == null ? 0 : status!.hashCode);
 
   @override
-  String toString() => 'MemberSearchParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, status=$status]';
+  String toString() => 'MemberSearchParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, userId=$userId, username=$username, email=$email, status=$status]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -157,6 +193,21 @@ class MemberSearchParam {
     } else {
       json[r'sortDirection'] = null;
     }
+    if (this.userId != null) {
+      json[r'userId'] = this.userId;
+    } else {
+      json[r'userId'] = null;
+    }
+    if (this.username != null) {
+      json[r'username'] = this.username;
+    } else {
+      json[r'username'] = null;
+    }
+    if (this.email != null) {
+      json[r'email'] = this.email;
+    } else {
+      json[r'email'] = null;
+    }
     if (this.status != null) {
       json[r'status'] = this.status;
     } else {
@@ -191,6 +242,9 @@ class MemberSearchParam {
         keyword: mapValueOfType<String>(json, r'keyword'),
         sortBy: mapValueOfType<String>(json, r'sortBy'),
         sortDirection: mapValueOfType<String>(json, r'sortDirection'),
+        userId: mapValueOfType<int>(json, r'userId'),
+        username: mapValueOfType<String>(json, r'username'),
+        email: mapValueOfType<String>(json, r'email'),
         status: UserStatusEnum.fromJson(json[r'status']),
       );
     }
