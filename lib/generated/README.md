@@ -418,6 +418,10 @@ Class | Method | HTTP request | Description
 *TelegramApi* | [**getGroupActivity**](doc//TelegramApi.md#getgroupactivity) | **GET** /api/admin/telegram-monitor/groups/{groupId}/activity | 獲取群組活躍度統計
 *TelegramApi* | [**getGroups**](doc//TelegramApi.md#getgroups) | **GET** /api/admin/telegram-monitor/groups | 獲取已監聽群組列表
 *TelegramApi* | [**getRecentMessages**](doc//TelegramApi.md#getrecentmessages) | **GET** /api/admin/telegram-monitor/groups/{groupId}/messages | 獲取群組最近消息緩衝
+*TelegramApi* | [**previewGroupPrompt**](doc//TelegramApi.md#previewgroupprompt) | **GET** /api/admin/telegram-monitor/groups/{groupId}/ai-prompt-preview | 預覽當前群組訊息轉為 AI Prompt 的結果
+*TelegramApi* | [**simulateGroupMessage**](doc//TelegramApi.md#simulategroupmessage) | **POST** /api/admin/telegram-monitor/groups/{groupId}/ai-simulate | 模擬 AI 生成群組消息（不實際發送到 Telegram）
+*TelegramApi* | [**updateGroupAiEnabled**](doc//TelegramApi.md#updategroupaienabled) | **PUT** /api/admin/telegram-monitor/groups/{groupId}/ai-enabled | 設定群組 AI 聊天是否啟用
+*TelegramApi* | [**updateGroupPromptConfig**](doc//TelegramApi.md#updategrouppromptconfig) | **PUT** /api/admin/telegram-monitor/groups/{groupId}/ai-prompt-config | 設定群組手動 Prompt（可覆蓋預設 system prompt）
 *TelegramBotLoginApi* | [**generateLoginToken**](doc//TelegramBotLoginApi.md#generatelogintoken) | **POST** /auth/telegram-bot/generate-login-token | 生成登录 loginToken
 *TelegramBotLoginApi* | [**verifyCode**](doc//TelegramBotLoginApi.md#verifycode) | **POST** /auth/telegram-bot/verify-code | 验证验证码
 *TelegramWebappAuthApi* | [**exchangeJwt**](doc//TelegramWebappAuthApi.md#exchangejwt) | **POST** /auth/telegram-webapp/exchange-jwt | Telegram WebApp 交換 JWT
@@ -570,6 +574,10 @@ Class | Method | HTTP request | Description
  - [GenerateLoginTokenRequest](doc//GenerateLoginTokenRequest.md)
  - [GroupActiveUserDTO](doc//GroupActiveUserDTO.md)
  - [GroupActivityStatsDTO](doc//GroupActivityStatsDTO.md)
+ - [GroupAiPromptConfigRequest](doc//GroupAiPromptConfigRequest.md)
+ - [GroupAiPromptPreviewDTO](doc//GroupAiPromptPreviewDTO.md)
+ - [GroupAiSimulationRequest](doc//GroupAiSimulationRequest.md)
+ - [GroupAiSimulationResponseDTO](doc//GroupAiSimulationResponseDTO.md)
  - [GroupMessageDTO](doc//GroupMessageDTO.md)
  - [HourlyStatDto](doc//HourlyStatDto.md)
  - [InterestRecordDTO](doc//InterestRecordDTO.md)

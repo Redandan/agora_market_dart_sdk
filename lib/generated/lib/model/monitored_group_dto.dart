@@ -18,6 +18,9 @@ class MonitoredGroupDTO {
     required this.groupType,
     required this.firstSeenAt,
     this.lastMessageAt,
+    required this.aiChatEnabled,
+    required this.aiManualPromptEnabled,
+    this.aiManualPromptText,
     required this.bufferedMessageCount,
   });
 
@@ -36,6 +39,15 @@ class MonitoredGroupDTO {
   /// 最近消息時間
   DateTime? lastMessageAt;
 
+  /// 是否啟用群組 AI 聊天
+  bool aiChatEnabled;
+
+  /// 是否啟用手動 Prompt
+  bool aiManualPromptEnabled;
+
+  /// 手動 Prompt 內容
+  String? aiManualPromptText;
+
   /// 當前緩衝消息數
   int bufferedMessageCount;
 
@@ -46,6 +58,9 @@ class MonitoredGroupDTO {
     other.groupType == groupType &&
     other.firstSeenAt == firstSeenAt &&
     other.lastMessageAt == lastMessageAt &&
+    other.aiChatEnabled == aiChatEnabled &&
+    other.aiManualPromptEnabled == aiManualPromptEnabled &&
+    other.aiManualPromptText == aiManualPromptText &&
     other.bufferedMessageCount == bufferedMessageCount;
 
   @override
@@ -56,10 +71,13 @@ class MonitoredGroupDTO {
     (groupType.hashCode) +
     (firstSeenAt.hashCode) +
     (lastMessageAt == null ? 0 : lastMessageAt!.hashCode) +
+    (aiChatEnabled.hashCode) +
+    (aiManualPromptEnabled.hashCode) +
+    (aiManualPromptText == null ? 0 : aiManualPromptText!.hashCode) +
     (bufferedMessageCount.hashCode);
 
   @override
-  String toString() => 'MonitoredGroupDTO[groupId=$groupId, groupName=$groupName, groupType=$groupType, firstSeenAt=$firstSeenAt, lastMessageAt=$lastMessageAt, bufferedMessageCount=$bufferedMessageCount]';
+  String toString() => 'MonitoredGroupDTO[groupId=$groupId, groupName=$groupName, groupType=$groupType, firstSeenAt=$firstSeenAt, lastMessageAt=$lastMessageAt, aiChatEnabled=$aiChatEnabled, aiManualPromptEnabled=$aiManualPromptEnabled, aiManualPromptText=$aiManualPromptText, bufferedMessageCount=$bufferedMessageCount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -75,6 +93,13 @@ class MonitoredGroupDTO {
       json[r'lastMessageAt'] = this.lastMessageAt!.toUtc().toIso8601String();
     } else {
       json[r'lastMessageAt'] = null;
+    }
+      json[r'aiChatEnabled'] = this.aiChatEnabled;
+      json[r'aiManualPromptEnabled'] = this.aiManualPromptEnabled;
+    if (this.aiManualPromptText != null) {
+      json[r'aiManualPromptText'] = this.aiManualPromptText;
+    } else {
+      json[r'aiManualPromptText'] = null;
     }
       json[r'bufferedMessageCount'] = this.bufferedMessageCount;
     return json;
@@ -104,6 +129,9 @@ class MonitoredGroupDTO {
         groupType: mapValueOfType<String>(json, r'groupType')!,
         firstSeenAt: mapDateTime(json, r'firstSeenAt', r'')!,
         lastMessageAt: mapDateTime(json, r'lastMessageAt', r''),
+        aiChatEnabled: mapValueOfType<bool>(json, r'aiChatEnabled')!,
+        aiManualPromptEnabled: mapValueOfType<bool>(json, r'aiManualPromptEnabled')!,
+        aiManualPromptText: mapValueOfType<String>(json, r'aiManualPromptText'),
         bufferedMessageCount: mapValueOfType<int>(json, r'bufferedMessageCount')!,
       );
     }
@@ -155,6 +183,8 @@ class MonitoredGroupDTO {
     'groupId',
     'groupType',
     'firstSeenAt',
+    'aiChatEnabled',
+    'aiManualPromptEnabled',
     'bufferedMessageCount',
   };
 }
