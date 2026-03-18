@@ -250,6 +250,10 @@ class ApiClient {
           return AutoReplyResetStatsResponse.fromJson(value);
         case 'AutoReplyStats':
           return AutoReplyStats.fromJson(value);
+        case 'BacktestResultResponse':
+          return BacktestResultResponse.fromJson(value);
+        case 'BacktestRunRequest':
+          return BacktestRunRequest.fromJson(value);
         case 'BalanceConversion':
           return BalanceConversion.fromJson(value);
         case 'BatchReviewPromoCodeParam':
@@ -316,6 +320,8 @@ class ApiClient {
           return CreatePromoCodeParam.fromJson(value);
         case 'CreateRechargeParam':
           return CreateRechargeParam.fromJson(value);
+        case 'CreateStrategyRequest':
+          return CreateStrategyRequest.fromJson(value);
         case 'CreateWithdrawParam':
           return CreateWithdrawParam.fromJson(value);
         case 'CustomerIssue':
@@ -426,6 +432,14 @@ class ApiClient {
           return IssueTypeEnumTypeTransformer().decode(value);
         case 'JobTypeInfo':
           return JobTypeInfo.fromJson(value);
+        case 'KlineImportRequest':
+          return KlineImportRequest.fromJson(value);
+        case 'KlineImportResponse':
+          return KlineImportResponse.fromJson(value);
+        case 'KlineSubscribeRequest':
+          return KlineSubscribeRequest.fromJson(value);
+        case 'KlineSubscriptionInfo':
+          return KlineSubscriptionInfo.fromJson(value);
         case 'LoginBindingsResponse':
           return LoginBindingsResponse.fromJson(value);
         case 'LoginMethod':
@@ -792,6 +806,8 @@ class ApiClient {
           return StoreShippingConfigParam.fromJson(value);
         case 'StoreUpdateParam':
           return StoreUpdateParam.fromJson(value);
+        case 'StrategyResponse':
+          return StrategyResponse.fromJson(value);
         case 'SuggestionActionParam':
           return SuggestionActionParam.fromJson(value);
         case 'SupportedCurrencyEnum':
@@ -812,6 +828,8 @@ class ApiClient {
           return TopProductDTO.fromJson(value);
         case 'TopSellerDTO':
           return TopSellerDTO.fromJson(value);
+        case 'TradeRecordDto':
+          return TradeRecordDto.fromJson(value);
         case 'Transaction':
           return Transaction.fromJson(value);
         case 'TransactionListParam':

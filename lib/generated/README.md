@@ -240,6 +240,10 @@ Class | Method | HTTP request | Description
 *AutoReplyApi* | [**searchConfigs**](doc//AutoReplyApi.md#searchconfigs) | **POST** /admin/auto-reply/configs/search | 搜尋自動回復配置
 *AutoReplyApi* | [**toggleConfig**](doc//AutoReplyApi.md#toggleconfig) | **PUT** /admin/auto-reply/configs/{id}/toggle | 啟用/禁用配置
 *AutoReplyApi* | [**updateReplyConfig**](doc//AutoReplyApi.md#updatereplyconfig) | **PUT** /admin/auto-reply/configs/{id} | 更新配置
+*BacktestApi* | [**createStrategy**](doc//BacktestApi.md#createstrategy) | **POST** /backtest/strategy | 建立策略
+*BacktestApi* | [**getLatestByStrategy**](doc//BacktestApi.md#getlatestbystrategy) | **GET** /backtest/result | 查詢策略最新回測結果
+*BacktestApi* | [**getResult**](doc//BacktestApi.md#getresult) | **GET** /backtest/result/{id} | 查詢回測結果
+*BacktestApi* | [**runBacktest**](doc//BacktestApi.md#runbacktest) | **POST** /backtest/run | 執行回測
 *BettingApi* | [**getMarketBets**](doc//BettingApi.md#getmarketbets) | **GET** /api/bets/market/{marketId} | 市場投注記錄
 *BettingApi* | [**getMyBets**](doc//BettingApi.md#getmybets) | **GET** /api/bets/my | 我的投注記錄
 *BettingApi* | [**placeBet**](doc//BettingApi.md#placebet) | **POST** /api/bets | 下注
@@ -288,6 +292,10 @@ Class | Method | HTTP request | Description
 *FlutterDeploymentApi* | [**deleteVersion**](doc//FlutterDeploymentApi.md#deleteversion) | **DELETE** /flutter/deployment/versions/{versionId} | 刪除 APP 版本
 *FlutterDeploymentApi* | [**getApps**](doc//FlutterDeploymentApi.md#getapps) | **POST** /flutter/deployment/apps | 獲取可下載的 APP
 *LoginMethodsApi* | [**getLoginMethods**](doc//LoginMethodsApi.md#getloginmethods) | **GET** /auth/login-methods | 获取所有可用的登录方式
+*MarketDataAdminApi* | [**importHistorical**](doc//MarketDataAdminApi.md#importhistorical) | **POST** /admin/market/import | 批次拉取 Binance 歷史 K 線
+*MarketDataAdminApi* | [**listSubscriptions**](doc//MarketDataAdminApi.md#listsubscriptions) | **GET** /admin/market/subscriptions | 查詢所有 WS 訂閱狀態
+*MarketDataAdminApi* | [**subscribe1**](doc//MarketDataAdminApi.md#subscribe1) | **POST** /admin/market/subscribe | 開始 WS 即時訂閱
+*MarketDataAdminApi* | [**unsubscribe1**](doc//MarketDataAdminApi.md#unsubscribe1) | **DELETE** /admin/market/subscribe | 停止 WS 訂閱
 *MemberDisputesApi* | [**createDispute**](doc//MemberDisputesApi.md#createdispute) | **POST** /disputes | 創建糾紛
 *MemberDisputesApi* | [**getDisputeDetail**](doc//MemberDisputesApi.md#getdisputedetail) | **POST** /disputes/detail | 查看糾紛詳情
 *MemberDisputesApi* | [**replyDispute**](doc//MemberDisputesApi.md#replydispute) | **POST** /disputes/{disputeId}/reply | 回覆糾紛
@@ -498,6 +506,8 @@ Class | Method | HTTP request | Description
  - [AutoReplyDeleteResponse](doc//AutoReplyDeleteResponse.md)
  - [AutoReplyResetStatsResponse](doc//AutoReplyResetStatsResponse.md)
  - [AutoReplyStats](doc//AutoReplyStats.md)
+ - [BacktestResultResponse](doc//BacktestResultResponse.md)
+ - [BacktestRunRequest](doc//BacktestRunRequest.md)
  - [BalanceConversion](doc//BalanceConversion.md)
  - [BatchReviewPromoCodeParam](doc//BatchReviewPromoCodeParam.md)
  - [BatchReviewResult](doc//BatchReviewResult.md)
@@ -531,6 +541,7 @@ Class | Method | HTTP request | Description
  - [CreateMarketRequest](doc//CreateMarketRequest.md)
  - [CreatePromoCodeParam](doc//CreatePromoCodeParam.md)
  - [CreateRechargeParam](doc//CreateRechargeParam.md)
+ - [CreateStrategyRequest](doc//CreateStrategyRequest.md)
  - [CreateWithdrawParam](doc//CreateWithdrawParam.md)
  - [CustomerIssue](doc//CustomerIssue.md)
  - [CustomerStats](doc//CustomerStats.md)
@@ -586,6 +597,10 @@ Class | Method | HTTP request | Description
  - [IssueStatusEnum](doc//IssueStatusEnum.md)
  - [IssueTypeEnum](doc//IssueTypeEnum.md)
  - [JobTypeInfo](doc//JobTypeInfo.md)
+ - [KlineImportRequest](doc//KlineImportRequest.md)
+ - [KlineImportResponse](doc//KlineImportResponse.md)
+ - [KlineSubscribeRequest](doc//KlineSubscribeRequest.md)
+ - [KlineSubscriptionInfo](doc//KlineSubscriptionInfo.md)
  - [LoginBindingsResponse](doc//LoginBindingsResponse.md)
  - [LoginMethod](doc//LoginMethod.md)
  - [LoginParam](doc//LoginParam.md)
@@ -769,6 +784,7 @@ Class | Method | HTTP request | Description
  - [StoreResponseDTO](doc//StoreResponseDTO.md)
  - [StoreShippingConfigParam](doc//StoreShippingConfigParam.md)
  - [StoreUpdateParam](doc//StoreUpdateParam.md)
+ - [StrategyResponse](doc//StrategyResponse.md)
  - [SuggestionActionParam](doc//SuggestionActionParam.md)
  - [SupportedCurrencyEnum](doc//SupportedCurrencyEnum.md)
  - [TaiwanPostalArea](doc//TaiwanPostalArea.md)
@@ -779,6 +795,7 @@ Class | Method | HTTP request | Description
  - [TopDisputedSellerDTO](doc//TopDisputedSellerDTO.md)
  - [TopProductDTO](doc//TopProductDTO.md)
  - [TopSellerDTO](doc//TopSellerDTO.md)
+ - [TradeRecordDto](doc//TradeRecordDto.md)
  - [Transaction](doc//Transaction.md)
  - [TransactionListParam](doc//TransactionListParam.md)
  - [TransactionSearchParam](doc//TransactionSearchParam.md)
