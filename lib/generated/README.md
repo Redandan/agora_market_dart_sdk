@@ -292,6 +292,10 @@ Class | Method | HTTP request | Description
 *FlutterDeploymentApi* | [**deleteVersion**](doc//FlutterDeploymentApi.md#deleteversion) | **DELETE** /flutter/deployment/versions/{versionId} | 刪除 APP 版本
 *FlutterDeploymentApi* | [**getApps**](doc//FlutterDeploymentApi.md#getapps) | **POST** /flutter/deployment/apps | 獲取可下載的 APP
 *LoginMethodsApi* | [**getLoginMethods**](doc//LoginMethodsApi.md#getloginmethods) | **GET** /auth/login-methods | 获取所有可用的登录方式
+*MarketChartApi* | [**getIntervals**](doc//MarketChartApi.md#getintervals) | **GET** /market/intervals | 查詢某交易對可用週期清單
+*MarketChartApi* | [**getKlines**](doc//MarketChartApi.md#getklines) | **GET** /market/klines | 查詢 K 線圖表資料
+*MarketChartApi* | [**getSymbols1**](doc//MarketChartApi.md#getsymbols1) | **GET** /market/symbols | 查詢可用交易對清單
+*MarketChartApi* | [**getTicker**](doc//MarketChartApi.md#getticker) | **GET** /market/ticker | 查詢最新 K 線（即時價格快照）
 *MarketDataAdminApi* | [**importHistorical**](doc//MarketDataAdminApi.md#importhistorical) | **POST** /admin/market/import | 批次拉取 Binance 歷史 K 線
 *MarketDataAdminApi* | [**listSubscriptions**](doc//MarketDataAdminApi.md#listsubscriptions) | **GET** /admin/market/subscriptions | 查詢所有 WS 訂閱狀態
 *MarketDataAdminApi* | [**subscribe1**](doc//MarketDataAdminApi.md#subscribe1) | **POST** /admin/market/subscribe | 開始 WS 即時訂閱
@@ -597,6 +601,7 @@ Class | Method | HTTP request | Description
  - [IssueStatusEnum](doc//IssueStatusEnum.md)
  - [IssueTypeEnum](doc//IssueTypeEnum.md)
  - [JobTypeInfo](doc//JobTypeInfo.md)
+ - [KlineBarDTO](doc//KlineBarDTO.md)
  - [KlineImportRequest](doc//KlineImportRequest.md)
  - [KlineImportResponse](doc//KlineImportResponse.md)
  - [KlineSubscribeRequest](doc//KlineSubscribeRequest.md)

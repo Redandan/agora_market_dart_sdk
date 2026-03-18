@@ -432,6 +432,8 @@ class ApiClient {
           return IssueTypeEnumTypeTransformer().decode(value);
         case 'JobTypeInfo':
           return JobTypeInfo.fromJson(value);
+        case 'KlineBarDTO':
+          return KlineBarDTO.fromJson(value);
         case 'KlineImportRequest':
           return KlineImportRequest.fromJson(value);
         case 'KlineImportResponse':
