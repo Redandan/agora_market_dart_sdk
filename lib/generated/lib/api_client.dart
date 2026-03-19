@@ -356,6 +356,8 @@ class ApiClient {
           return DeliveryerUpdateParam.fromJson(value);
         case 'DeviceInfo':
           return DeviceInfo.fromJson(value);
+        case 'DiagnosticLogDto':
+          return DiagnosticLogDto.fromJson(value);
         case 'Dispute':
           return Dispute.fromJson(value);
         case 'DisputeCreateParam':

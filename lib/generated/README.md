@@ -565,6 +565,7 @@ Class | Method | HTTP request | Description
  - [DeliveryerStatsDTO](doc//DeliveryerStatsDTO.md)
  - [DeliveryerUpdateParam](doc//DeliveryerUpdateParam.md)
  - [DeviceInfo](doc//DeviceInfo.md)
+ - [DiagnosticLogDto](doc//DiagnosticLogDto.md)
  - [Dispute](doc//Dispute.md)
  - [DisputeCreateParam](doc//DisputeCreateParam.md)
  - [DisputeDetailParam](doc//DisputeDetailParam.md)

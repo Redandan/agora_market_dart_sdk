@@ -170,6 +170,7 @@ part 'model/deliveryer_search_param.dart';
 part 'model/deliveryer_stats_dto.dart';
 part 'model/deliveryer_update_param.dart';
 part 'model/device_info.dart';
+part 'model/diagnostic_log_dto.dart';
 part 'model/dispute.dart';
 part 'model/dispute_create_param.dart';
 part 'model/dispute_detail_param.dart';

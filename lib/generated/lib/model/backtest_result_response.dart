@@ -30,6 +30,7 @@ class BacktestResultResponse {
     this.createdAt,
     this.configSnapshotJson,
     this.trades = const [],
+    this.diagnosticLogs = const [],
   });
 
   /// 回測結果 ID
@@ -173,6 +174,9 @@ class BacktestResultResponse {
   /// 交易明細
   List<TradeRecordDto>? trades;
 
+  /// 未觸發交易時的診斷日誌（結構化）
+  List<DiagnosticLogDto>? diagnosticLogs;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is BacktestResultResponse &&
     other.id == id &&
@@ -191,7 +195,8 @@ class BacktestResultResponse {
     other.feeRate == feeRate &&
     other.createdAt == createdAt &&
     other.configSnapshotJson == configSnapshotJson &&
-    _deepEquality.equals(other.trades, trades);
+    _deepEquality.equals(other.trades, trades) &&
+    _deepEquality.equals(other.diagnosticLogs, diagnosticLogs);
 
   @override
   int get hashCode =>
@@ -212,10 +217,11 @@ class BacktestResultResponse {
     (feeRate == null ? 0 : feeRate!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (configSnapshotJson == null ? 0 : configSnapshotJson!.hashCode) +
-    (trades == null ? 0 : trades!.hashCode);
+    (trades == null ? 0 : trades!.hashCode) +
+    (diagnosticLogs == null ? 0 : diagnosticLogs!.hashCode);
 
   @override
-  String toString() => 'BacktestResultResponse[id=$id, strategyId=$strategyId, strategyName=$strategyName, symbol=$symbol, intervalCode=$intervalCode, startTime=$startTime, endTime=$endTime, initialCapital=$initialCapital, finalCapital=$finalCapital, totalReturn=$totalReturn, maxDrawdown=$maxDrawdown, winRate=$winRate, tradeCount=$tradeCount, feeRate=$feeRate, createdAt=$createdAt, configSnapshotJson=$configSnapshotJson, trades=$trades]';
+  String toString() => 'BacktestResultResponse[id=$id, strategyId=$strategyId, strategyName=$strategyName, symbol=$symbol, intervalCode=$intervalCode, startTime=$startTime, endTime=$endTime, initialCapital=$initialCapital, finalCapital=$finalCapital, totalReturn=$totalReturn, maxDrawdown=$maxDrawdown, winRate=$winRate, tradeCount=$tradeCount, feeRate=$feeRate, createdAt=$createdAt, configSnapshotJson=$configSnapshotJson, trades=$trades, diagnosticLogs=$diagnosticLogs]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -304,6 +310,11 @@ class BacktestResultResponse {
     } else {
       json[r'trades'] = null;
     }
+    if (this.diagnosticLogs != null) {
+      json[r'diagnosticLogs'] = this.diagnosticLogs;
+    } else {
+      json[r'diagnosticLogs'] = null;
+    }
     return json;
   }
 
@@ -343,6 +354,7 @@ class BacktestResultResponse {
         createdAt: mapDateTime(json, r'createdAt', r''),
         configSnapshotJson: mapValueOfType<String>(json, r'configSnapshotJson'),
         trades: TradeRecordDto.listFromJson(json[r'trades']),
+        diagnosticLogs: DiagnosticLogDto.listFromJson(json[r'diagnosticLogs']),
       );
     }
     return null;

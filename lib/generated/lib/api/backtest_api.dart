@@ -226,6 +226,8 @@ class BacktestApi {
 
   /// 執行回測
   ///
+  /// 當本次回測沒有觸發任何交易時，response.diagnosticLogs 會回傳結構化診斷資訊。
+  ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
@@ -257,6 +259,8 @@ class BacktestApi {
   }
 
   /// 執行回測
+  ///
+  /// 當本次回測沒有觸發任何交易時，response.diagnosticLogs 會回傳結構化診斷資訊。
   ///
   /// Parameters:
   ///
