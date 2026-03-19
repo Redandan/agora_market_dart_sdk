@@ -25,7 +25,7 @@ class BacktestApi {
   /// * [CreateStrategyRequest] createStrategyRequest (required):
   Future<Response> createStrategyWithHttpInfo(CreateStrategyRequest createStrategyRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/backtest/strategy';
+    final path = r'/backtests/strategies';
 
     // ignore: prefer_final_locals
     Object? postBody = createStrategyRequest;
@@ -68,32 +68,30 @@ class BacktestApi {
     return null;
   }
 
-  /// 查詢策略最新回測結果
+  /// 多條件查詢策略
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [int] strategyId (required):
-  Future<Response> getLatestByStrategyWithHttpInfo(int strategyId,) async {
+  /// * [StrategyQueryRequest] strategyQueryRequest:
+  Future<Response> queryStrategiesWithHttpInfo({ StrategyQueryRequest? strategyQueryRequest, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/backtest/result';
+    final path = r'/backtests/strategies/query';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = strategyQueryRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'strategyId', strategyId));
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -102,13 +100,13 @@ class BacktestApi {
     );
   }
 
-  /// 查詢策略最新回測結果
+  /// 多條件查詢策略
   ///
   /// Parameters:
   ///
-  /// * [int] strategyId (required):
-  Future<BacktestResultResponse?> getLatestByStrategy(int strategyId,) async {
-    final response = await getLatestByStrategyWithHttpInfo(strategyId,);
+  /// * [StrategyQueryRequest] strategyQueryRequest:
+  Future<List<StrategyResponse>?> queryStrategies({ StrategyQueryRequest? strategyQueryRequest, }) async {
+    final response = await queryStrategiesWithHttpInfo( strategyQueryRequest: strategyQueryRequest, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -116,37 +114,41 @@ class BacktestApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BacktestResultResponse',) as BacktestResultResponse;
-    
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<StrategyResponse>') as List)
+        .cast<StrategyResponse>()
+        .toList(growable: false);
+
     }
     return null;
   }
 
-  /// 查詢回測結果
+  /// 查詢策略詳情（含回測結果）
+  ///
+  /// 優先順序：1) 指定 resultId 時僅回傳該筆；2) 未指定 resultId 且 latest=true（預設）時回傳最新一筆；3) latest=false 時回傳多筆，並可用 limit 限制筆數。
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [int] id (required):
-  Future<Response> getResultWithHttpInfo(int id,) async {
+  /// * [StrategyBacktestDetailQueryRequest] strategyBacktestDetailQueryRequest (required):
+  Future<Response> queryStrategyBacktestDetailWithHttpInfo(StrategyBacktestDetailQueryRequest strategyBacktestDetailQueryRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/backtest/result/{id}'
-      .replaceAll('{id}', id.toString());
+    final path = r'/backtests/strategies/results/query';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = strategyBacktestDetailQueryRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -155,13 +157,15 @@ class BacktestApi {
     );
   }
 
-  /// 查詢回測結果
+  /// 查詢策略詳情（含回測結果）
+  ///
+  /// 優先順序：1) 指定 resultId 時僅回傳該筆；2) 未指定 resultId 且 latest=true（預設）時回傳最新一筆；3) latest=false 時回傳多筆，並可用 limit 限制筆數。
   ///
   /// Parameters:
   ///
-  /// * [int] id (required):
-  Future<BacktestResultResponse?> getResult(int id,) async {
-    final response = await getResultWithHttpInfo(id,);
+  /// * [StrategyBacktestDetailQueryRequest] strategyBacktestDetailQueryRequest (required):
+  Future<StrategyBacktestDetailResponse?> queryStrategyBacktestDetail(StrategyBacktestDetailQueryRequest strategyBacktestDetailQueryRequest,) async {
+    final response = await queryStrategyBacktestDetailWithHttpInfo(strategyBacktestDetailQueryRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -169,7 +173,7 @@ class BacktestApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BacktestResultResponse',) as BacktestResultResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StrategyBacktestDetailResponse',) as StrategyBacktestDetailResponse;
     
     }
     return null;
@@ -184,7 +188,7 @@ class BacktestApi {
   /// * [BacktestRunRequest] backtestRunRequest (required):
   Future<Response> runBacktestWithHttpInfo(BacktestRunRequest backtestRunRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/backtest/run';
+    final path = r'/backtests/results';
 
     // ignore: prefer_final_locals
     Object? postBody = backtestRunRequest;

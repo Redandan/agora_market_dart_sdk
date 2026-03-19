@@ -240,10 +240,10 @@ Class | Method | HTTP request | Description
 *AutoReplyApi* | [**searchConfigs**](doc//AutoReplyApi.md#searchconfigs) | **POST** /admin/auto-reply/configs/search | 搜尋自動回復配置
 *AutoReplyApi* | [**toggleConfig**](doc//AutoReplyApi.md#toggleconfig) | **PUT** /admin/auto-reply/configs/{id}/toggle | 啟用/禁用配置
 *AutoReplyApi* | [**updateReplyConfig**](doc//AutoReplyApi.md#updatereplyconfig) | **PUT** /admin/auto-reply/configs/{id} | 更新配置
-*BacktestApi* | [**createStrategy**](doc//BacktestApi.md#createstrategy) | **POST** /backtest/strategy | 建立策略
-*BacktestApi* | [**getLatestByStrategy**](doc//BacktestApi.md#getlatestbystrategy) | **GET** /backtest/result | 查詢策略最新回測結果
-*BacktestApi* | [**getResult**](doc//BacktestApi.md#getresult) | **GET** /backtest/result/{id} | 查詢回測結果
-*BacktestApi* | [**runBacktest**](doc//BacktestApi.md#runbacktest) | **POST** /backtest/run | 執行回測
+*BacktestApi* | [**createStrategy**](doc//BacktestApi.md#createstrategy) | **POST** /backtests/strategies | 建立策略
+*BacktestApi* | [**queryStrategies**](doc//BacktestApi.md#querystrategies) | **POST** /backtests/strategies/query | 多條件查詢策略
+*BacktestApi* | [**queryStrategyBacktestDetail**](doc//BacktestApi.md#querystrategybacktestdetail) | **POST** /backtests/strategies/results/query | 查詢策略詳情（含回測結果）
+*BacktestApi* | [**runBacktest**](doc//BacktestApi.md#runbacktest) | **POST** /backtests/results | 執行回測
 *BettingApi* | [**getMarketBets**](doc//BettingApi.md#getmarketbets) | **GET** /api/bets/market/{marketId} | 市場投注記錄
 *BettingApi* | [**getMyBets**](doc//BettingApi.md#getmybets) | **GET** /api/bets/my | 我的投注記錄
 *BettingApi* | [**placeBet**](doc//BettingApi.md#placebet) | **POST** /api/bets | 下注
@@ -789,6 +789,9 @@ Class | Method | HTTP request | Description
  - [StoreResponseDTO](doc//StoreResponseDTO.md)
  - [StoreShippingConfigParam](doc//StoreShippingConfigParam.md)
  - [StoreUpdateParam](doc//StoreUpdateParam.md)
+ - [StrategyBacktestDetailQueryRequest](doc//StrategyBacktestDetailQueryRequest.md)
+ - [StrategyBacktestDetailResponse](doc//StrategyBacktestDetailResponse.md)
+ - [StrategyQueryRequest](doc//StrategyQueryRequest.md)
  - [StrategyResponse](doc//StrategyResponse.md)
  - [SuggestionActionParam](doc//SuggestionActionParam.md)
  - [SupportedCurrencyEnum](doc//SupportedCurrencyEnum.md)

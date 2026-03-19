@@ -808,6 +808,12 @@ class ApiClient {
           return StoreShippingConfigParam.fromJson(value);
         case 'StoreUpdateParam':
           return StoreUpdateParam.fromJson(value);
+        case 'StrategyBacktestDetailQueryRequest':
+          return StrategyBacktestDetailQueryRequest.fromJson(value);
+        case 'StrategyBacktestDetailResponse':
+          return StrategyBacktestDetailResponse.fromJson(value);
+        case 'StrategyQueryRequest':
+          return StrategyQueryRequest.fromJson(value);
         case 'StrategyResponse':
           return StrategyResponse.fromJson(value);
         case 'SuggestionActionParam':
