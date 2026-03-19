@@ -858,6 +858,8 @@ class ApiClient {
           return UpdateDeliveryOrderParam.fromJson(value);
         case 'UpdatePromoCodeParam':
           return UpdatePromoCodeParam.fromJson(value);
+        case 'UpdateStrategyRequest':
+          return UpdateStrategyRequest.fromJson(value);
         case 'User':
           return User.fromJson(value);
         case 'UserAddress':

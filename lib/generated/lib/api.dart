@@ -421,6 +421,7 @@ part 'model/two_factor_verify_param.dart';
 part 'model/update_activity_request.dart';
 part 'model/update_delivery_order_param.dart';
 part 'model/update_promo_code_param.dart';
+part 'model/update_strategy_request.dart';
 part 'model/user.dart';
 part 'model/user_address.dart';
 part 'model/user_info.dart';

@@ -68,6 +68,51 @@ class BacktestApi {
     return null;
   }
 
+  /// 刪除策略
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] strategyId (required):
+  Future<Response> deleteStrategyWithHttpInfo(int strategyId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/backtests/strategies/{strategyId}'
+      .replaceAll('{strategyId}', strategyId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 刪除策略
+  ///
+  /// Parameters:
+  ///
+  /// * [int] strategyId (required):
+  Future<void> deleteStrategy(int strategyId,) async {
+    final response = await deleteStrategyWithHttpInfo(strategyId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
   /// 多條件查詢策略
   ///
   /// Note: This method returns the HTTP [Response].
@@ -226,6 +271,63 @@ class BacktestApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BacktestResultResponse',) as BacktestResultResponse;
+    
+    }
+    return null;
+  }
+
+  /// 編輯策略
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] strategyId (required):
+  ///
+  /// * [UpdateStrategyRequest] updateStrategyRequest (required):
+  Future<Response> updateStrategyWithHttpInfo(int strategyId, UpdateStrategyRequest updateStrategyRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/backtests/strategies/{strategyId}'
+      .replaceAll('{strategyId}', strategyId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody = updateStrategyRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 編輯策略
+  ///
+  /// Parameters:
+  ///
+  /// * [int] strategyId (required):
+  ///
+  /// * [UpdateStrategyRequest] updateStrategyRequest (required):
+  Future<StrategyResponse?> updateStrategy(int strategyId, UpdateStrategyRequest updateStrategyRequest,) async {
+    final response = await updateStrategyWithHttpInfo(strategyId, updateStrategyRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StrategyResponse',) as StrategyResponse;
     
     }
     return null;
