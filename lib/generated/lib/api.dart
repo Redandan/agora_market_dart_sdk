@@ -381,6 +381,7 @@ part 'model/slot_rtp_response.dart';
 part 'model/slot_spin_request.dart';
 part 'model/slot_spin_response.dart';
 part 'model/slot_symbol_info.dart';
+part 'model/sop_mtf_adx_config.dart';
 part 'model/sort_object.dart';
 part 'model/staking.dart';
 part 'model/staking_config_dto.dart';

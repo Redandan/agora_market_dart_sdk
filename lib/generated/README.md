@@ -776,6 +776,7 @@ Class | Method | HTTP request | Description
  - [SlotSpinRequest](doc//SlotSpinRequest.md)
  - [SlotSpinResponse](doc//SlotSpinResponse.md)
  - [SlotSymbolInfo](doc//SlotSymbolInfo.md)
+ - [SopMtfAdxConfig](doc//SopMtfAdxConfig.md)
  - [SortObject](doc//SortObject.md)
  - [Staking](doc//Staking.md)
  - [StakingConfigDTO](doc//StakingConfigDTO.md)

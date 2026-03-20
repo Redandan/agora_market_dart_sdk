@@ -15,7 +15,7 @@ class CreateStrategyRequest {
   CreateStrategyRequest({
     required this.name,
     required this.strategyType,
-    this.config = const {},
+    required this.config,
   });
 
   /// 策略名稱
@@ -24,14 +24,13 @@ class CreateStrategyRequest {
   /// 策略類型
   String strategyType;
 
-  /// 策略參數配置（JSON 物件）
-  Map<String, Object> config;
+  SopMtfAdxConfig config;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateStrategyRequest &&
     other.name == name &&
     other.strategyType == strategyType &&
-    _deepEquality.equals(other.config, config);
+    other.config == config;
 
   @override
   int get hashCode =>
@@ -72,7 +71,7 @@ class CreateStrategyRequest {
       return CreateStrategyRequest(
         name: mapValueOfType<String>(json, r'name')!,
         strategyType: mapValueOfType<String>(json, r'strategyType')!,
-        config: mapCastOfType<String, Object>(json, r'config')!,
+        config: SopMtfAdxConfig.fromJson(json[r'config'])!,
       );
     }
     return null;

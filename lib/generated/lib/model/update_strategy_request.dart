@@ -16,7 +16,7 @@ class UpdateStrategyRequest {
     required this.name,
     required this.strategyType,
     required this.enabled,
-    this.config = const {},
+    required this.config,
   });
 
   /// 策略名稱
@@ -28,15 +28,14 @@ class UpdateStrategyRequest {
   /// 是否啟用
   bool enabled;
 
-  /// 策略參數配置（JSON 物件）
-  Map<String, Object> config;
+  SopMtfAdxConfig config;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdateStrategyRequest &&
     other.name == name &&
     other.strategyType == strategyType &&
     other.enabled == enabled &&
-    _deepEquality.equals(other.config, config);
+    other.config == config;
 
   @override
   int get hashCode =>
@@ -80,7 +79,7 @@ class UpdateStrategyRequest {
         name: mapValueOfType<String>(json, r'name')!,
         strategyType: mapValueOfType<String>(json, r'strategyType')!,
         enabled: mapValueOfType<bool>(json, r'enabled')!,
-        config: mapCastOfType<String, Object>(json, r'config')!,
+        config: SopMtfAdxConfig.fromJson(json[r'config'])!,
       );
     }
     return null;

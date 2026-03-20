@@ -778,6 +778,8 @@ class ApiClient {
           return SlotSpinResponse.fromJson(value);
         case 'SlotSymbolInfo':
           return SlotSymbolInfo.fromJson(value);
+        case 'SopMtfAdxConfig':
+          return SopMtfAdxConfig.fromJson(value);
         case 'SortObject':
           return SortObject.fromJson(value);
         case 'Staking':
