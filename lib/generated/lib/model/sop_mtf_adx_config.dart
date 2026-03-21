@@ -22,6 +22,10 @@ class SopMtfAdxConfig {
     this.maxHoldingHours,
     this.moveSlToBreakeven,
     this.rsiPullbackThreshold,
+    this.rsiReboundConfirm,
+    this.requireCandleBreak,
+    this.minRsiDelta,
+    this.reboundLookbackBars,
     this.minRR,
     this.keyLevelLookbackBars,
     this.dailyMaPeriod,
@@ -43,10 +47,10 @@ class SopMtfAdxConfig {
   ///
   bool? enableMtf;
 
-  /// 1H 打分訊號最低門檻（5 項中至少需達到幾項）
+  /// 1H 打分訊號最低門檻（A/C/D/E 共 4 項中至少需達到幾項；Signal B 已升級為必要前提條件）
   ///
   /// Minimum value: 1
-  /// Maximum value: 5
+  /// Maximum value: 4
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -122,7 +126,7 @@ class SopMtfAdxConfig {
   ///
   bool? moveSlToBreakeven;
 
-  /// RSI 回調門檻，低於此值視為回調訊號成立
+  /// RSI 回調門檻，低於此值進入 PULLBACK 狀態
   ///
   /// Minimum value: 0.0
   /// Maximum value: 100.0
@@ -133,6 +137,49 @@ class SopMtfAdxConfig {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? rsiPullbackThreshold;
+
+  /// RSI Rebound 確認門檻，RSI 由 pullback 回升超過此值才視為 REBOUND_READY 成立
+  ///
+  /// Minimum value: 0.0
+  /// Maximum value: 100.0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? rsiReboundConfirm;
+
+  /// 是否要求價格突破前一根 K 線高點才允許進場（ENTRY_TRIGGER 動能確認）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? requireCandleBreak;
+
+  /// RSI Rebound 最小上升幅度，防止 V 型假反彈（rsiNow - rsiPrev >= minRsiDelta）
+  ///
+  /// Minimum value: 0.0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? minRsiDelta;
+
+  /// Pullback→Rebound 狀態機的最大回溯 K 線數，超過此範圍找不到序列則不進場
+  ///
+  /// Minimum value: 1
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? reboundLookbackBars;
 
   /// 最小風險報酬比（reward / risk）
   ///
@@ -227,6 +274,10 @@ class SopMtfAdxConfig {
     other.maxHoldingHours == maxHoldingHours &&
     other.moveSlToBreakeven == moveSlToBreakeven &&
     other.rsiPullbackThreshold == rsiPullbackThreshold &&
+    other.rsiReboundConfirm == rsiReboundConfirm &&
+    other.requireCandleBreak == requireCandleBreak &&
+    other.minRsiDelta == minRsiDelta &&
+    other.reboundLookbackBars == reboundLookbackBars &&
     other.minRR == minRR &&
     other.keyLevelLookbackBars == keyLevelLookbackBars &&
     other.dailyMaPeriod == dailyMaPeriod &&
@@ -250,6 +301,10 @@ class SopMtfAdxConfig {
     (maxHoldingHours == null ? 0 : maxHoldingHours!.hashCode) +
     (moveSlToBreakeven == null ? 0 : moveSlToBreakeven!.hashCode) +
     (rsiPullbackThreshold == null ? 0 : rsiPullbackThreshold!.hashCode) +
+    (rsiReboundConfirm == null ? 0 : rsiReboundConfirm!.hashCode) +
+    (requireCandleBreak == null ? 0 : requireCandleBreak!.hashCode) +
+    (minRsiDelta == null ? 0 : minRsiDelta!.hashCode) +
+    (reboundLookbackBars == null ? 0 : reboundLookbackBars!.hashCode) +
     (minRR == null ? 0 : minRR!.hashCode) +
     (keyLevelLookbackBars == null ? 0 : keyLevelLookbackBars!.hashCode) +
     (dailyMaPeriod == null ? 0 : dailyMaPeriod!.hashCode) +
@@ -262,7 +317,7 @@ class SopMtfAdxConfig {
     (diagnostics == null ? 0 : diagnostics!.hashCode);
 
   @override
-  String toString() => 'SopMtfAdxConfig[enableMtf=$enableMtf, minSignals=$minSignals, adxEntryThreshold=$adxEntryThreshold, maxDistanceFromEma=$maxDistanceFromEma, fixedStopLossPct=$fixedStopLossPct, fixedTakeProfitPct=$fixedTakeProfitPct, maxHoldingHours=$maxHoldingHours, moveSlToBreakeven=$moveSlToBreakeven, rsiPullbackThreshold=$rsiPullbackThreshold, minRR=$minRR, keyLevelLookbackBars=$keyLevelLookbackBars, dailyMaPeriod=$dailyMaPeriod, rsiSellThreshold=$rsiSellThreshold, allowShort=$allowShort, dailyBorrowingRate=$dailyBorrowingRate, atrTrailingStopEnabled=$atrTrailingStopEnabled, atrPeriod=$atrPeriod, atrMultiplier=$atrMultiplier, diagnostics=$diagnostics]';
+  String toString() => 'SopMtfAdxConfig[enableMtf=$enableMtf, minSignals=$minSignals, adxEntryThreshold=$adxEntryThreshold, maxDistanceFromEma=$maxDistanceFromEma, fixedStopLossPct=$fixedStopLossPct, fixedTakeProfitPct=$fixedTakeProfitPct, maxHoldingHours=$maxHoldingHours, moveSlToBreakeven=$moveSlToBreakeven, rsiPullbackThreshold=$rsiPullbackThreshold, rsiReboundConfirm=$rsiReboundConfirm, requireCandleBreak=$requireCandleBreak, minRsiDelta=$minRsiDelta, reboundLookbackBars=$reboundLookbackBars, minRR=$minRR, keyLevelLookbackBars=$keyLevelLookbackBars, dailyMaPeriod=$dailyMaPeriod, rsiSellThreshold=$rsiSellThreshold, allowShort=$allowShort, dailyBorrowingRate=$dailyBorrowingRate, atrTrailingStopEnabled=$atrTrailingStopEnabled, atrPeriod=$atrPeriod, atrMultiplier=$atrMultiplier, diagnostics=$diagnostics]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -310,6 +365,26 @@ class SopMtfAdxConfig {
       json[r'rsiPullbackThreshold'] = this.rsiPullbackThreshold;
     } else {
       json[r'rsiPullbackThreshold'] = null;
+    }
+    if (this.rsiReboundConfirm != null) {
+      json[r'rsiReboundConfirm'] = this.rsiReboundConfirm;
+    } else {
+      json[r'rsiReboundConfirm'] = null;
+    }
+    if (this.requireCandleBreak != null) {
+      json[r'requireCandleBreak'] = this.requireCandleBreak;
+    } else {
+      json[r'requireCandleBreak'] = null;
+    }
+    if (this.minRsiDelta != null) {
+      json[r'minRsiDelta'] = this.minRsiDelta;
+    } else {
+      json[r'minRsiDelta'] = null;
+    }
+    if (this.reboundLookbackBars != null) {
+      json[r'reboundLookbackBars'] = this.reboundLookbackBars;
+    } else {
+      json[r'reboundLookbackBars'] = null;
     }
     if (this.minRR != null) {
       json[r'minRR'] = this.minRR;
@@ -392,6 +467,10 @@ class SopMtfAdxConfig {
         maxHoldingHours: mapValueOfType<int>(json, r'maxHoldingHours'),
         moveSlToBreakeven: mapValueOfType<bool>(json, r'moveSlToBreakeven'),
         rsiPullbackThreshold: mapValueOfType<double>(json, r'rsiPullbackThreshold'),
+        rsiReboundConfirm: mapValueOfType<double>(json, r'rsiReboundConfirm'),
+        requireCandleBreak: mapValueOfType<bool>(json, r'requireCandleBreak'),
+        minRsiDelta: mapValueOfType<double>(json, r'minRsiDelta'),
+        reboundLookbackBars: mapValueOfType<int>(json, r'reboundLookbackBars'),
         minRR: mapValueOfType<double>(json, r'minRR'),
         keyLevelLookbackBars: mapValueOfType<int>(json, r'keyLevelLookbackBars'),
         dailyMaPeriod: mapValueOfType<int>(json, r'dailyMaPeriod'),
