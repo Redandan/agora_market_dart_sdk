@@ -20,6 +20,9 @@ class AiStrategyDiscoveryResponse {
     this.endTime,
     this.candidates = const [],
     this.bestStrategy,
+    this.totalCandidates,
+    this.validCount,
+    this.failedCount,
   });
 
   /// ?祆活?Ｗ??寞活 ID
@@ -66,6 +69,28 @@ class AiStrategyDiscoveryResponse {
   List<CandidateResult> candidates;
   CandidateResult? bestStrategy;
 
+  /// 撖阡??瑁??蝮賣
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? totalCandidates;
+  /// 閰? > 0 ?????  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? validCount;
+  /// 撱箇???皜砍仃?????  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? failedCount;
   @override
   bool operator ==(Object other) => identical(this, other) || other is AiStrategyDiscoveryResponse &&
     other.discoveryBatch == discoveryBatch &&
@@ -74,7 +99,10 @@ class AiStrategyDiscoveryResponse {
     other.startTime == startTime &&
     other.endTime == endTime &&
     _deepEquality.equals(other.candidates, candidates) &&
-    other.bestStrategy == bestStrategy;
+    other.bestStrategy == bestStrategy &&
+    other.totalCandidates == totalCandidates &&
+    other.validCount == validCount &&
+    other.failedCount == failedCount;
 
   @override
   int get hashCode =>
@@ -85,10 +113,13 @@ class AiStrategyDiscoveryResponse {
     (startTime == null ? 0 : startTime!.hashCode) +
     (endTime == null ? 0 : endTime!.hashCode) +
     (candidates.hashCode) +
-    (bestStrategy == null ? 0 : bestStrategy!.hashCode);
+    (bestStrategy == null ? 0 : bestStrategy!.hashCode) +
+    (totalCandidates == null ? 0 : totalCandidates!.hashCode) +
+    (validCount == null ? 0 : validCount!.hashCode) +
+    (failedCount == null ? 0 : failedCount!.hashCode);
 
   @override
-  String toString() => 'AiStrategyDiscoveryResponse[discoveryBatch=$discoveryBatch, symbol=$symbol, intervalCode=$intervalCode, startTime=$startTime, endTime=$endTime, candidates=$candidates, bestStrategy=$bestStrategy]';
+  String toString() => 'AiStrategyDiscoveryResponse[discoveryBatch=$discoveryBatch, symbol=$symbol, intervalCode=$intervalCode, startTime=$startTime, endTime=$endTime, candidates=$candidates, bestStrategy=$bestStrategy, totalCandidates=$totalCandidates, validCount=$validCount, failedCount=$failedCount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -123,6 +154,21 @@ class AiStrategyDiscoveryResponse {
     } else {
       json[r'bestStrategy'] = null;
     }
+    if (this.totalCandidates != null) {
+      json[r'totalCandidates'] = this.totalCandidates;
+    } else {
+      json[r'totalCandidates'] = null;
+    }
+    if (this.validCount != null) {
+      json[r'validCount'] = this.validCount;
+    } else {
+      json[r'validCount'] = null;
+    }
+    if (this.failedCount != null) {
+      json[r'failedCount'] = this.failedCount;
+    } else {
+      json[r'failedCount'] = null;
+    }
     return json;
   }
 
@@ -152,6 +198,9 @@ class AiStrategyDiscoveryResponse {
         endTime: mapDateTime(json, r'endTime', r''),
         candidates: CandidateResult.listFromJson(json[r'candidates']),
         bestStrategy: CandidateResult.fromJson(json[r'bestStrategy']),
+        totalCandidates: mapValueOfType<int>(json, r'totalCandidates'),
+        validCount: mapValueOfType<int>(json, r'validCount'),
+        failedCount: mapValueOfType<int>(json, r'failedCount'),
       );
     }
     return null;

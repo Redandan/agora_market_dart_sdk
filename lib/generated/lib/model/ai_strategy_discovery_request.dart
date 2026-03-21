@@ -19,6 +19,8 @@ class AiStrategyDiscoveryRequest {
     required this.endTime,
     required this.initialCapital,
     this.candidateCount,
+    this.feeRate,
+    this.minTradeCount,
   });
 
   /// 交易對
@@ -38,10 +40,10 @@ class AiStrategyDiscoveryRequest {
   /// Minimum value: 0.00010
   num initialCapital;
 
-  /// AI 生成的候選策略數量（1 ~ 5）
+  /// AI 生成的候選策略數量（1 ~ 10）
   ///
   /// Minimum value: 1
-  /// Maximum value: 5
+  /// Maximum value: 10
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -50,6 +52,29 @@ class AiStrategyDiscoveryRequest {
   ///
   int? candidateCount;
 
+  /// 回測手續費率
+  ///
+  /// Minimum value: 0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? feeRate;
+
+  /// 評分有效交易次數下限（低於此值 score=0）
+  ///
+  /// Minimum value: 1
+  /// Maximum value: 50
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? minTradeCount;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is AiStrategyDiscoveryRequest &&
     other.symbol == symbol &&
@@ -57,7 +82,9 @@ class AiStrategyDiscoveryRequest {
     other.startTime == startTime &&
     other.endTime == endTime &&
     other.initialCapital == initialCapital &&
-    other.candidateCount == candidateCount;
+    other.candidateCount == candidateCount &&
+    other.feeRate == feeRate &&
+    other.minTradeCount == minTradeCount;
 
   @override
   int get hashCode =>
@@ -67,10 +94,12 @@ class AiStrategyDiscoveryRequest {
     (startTime.hashCode) +
     (endTime.hashCode) +
     (initialCapital.hashCode) +
-    (candidateCount == null ? 0 : candidateCount!.hashCode);
+    (candidateCount == null ? 0 : candidateCount!.hashCode) +
+    (feeRate == null ? 0 : feeRate!.hashCode) +
+    (minTradeCount == null ? 0 : minTradeCount!.hashCode);
 
   @override
-  String toString() => 'AiStrategyDiscoveryRequest[symbol=$symbol, intervalCode=$intervalCode, startTime=$startTime, endTime=$endTime, initialCapital=$initialCapital, candidateCount=$candidateCount]';
+  String toString() => 'AiStrategyDiscoveryRequest[symbol=$symbol, intervalCode=$intervalCode, startTime=$startTime, endTime=$endTime, initialCapital=$initialCapital, candidateCount=$candidateCount, feeRate=$feeRate, minTradeCount=$minTradeCount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -83,6 +112,16 @@ class AiStrategyDiscoveryRequest {
       json[r'candidateCount'] = this.candidateCount;
     } else {
       json[r'candidateCount'] = null;
+    }
+    if (this.feeRate != null) {
+      json[r'feeRate'] = this.feeRate;
+    } else {
+      json[r'feeRate'] = null;
+    }
+    if (this.minTradeCount != null) {
+      json[r'minTradeCount'] = this.minTradeCount;
+    } else {
+      json[r'minTradeCount'] = null;
     }
     return json;
   }
@@ -112,6 +151,8 @@ class AiStrategyDiscoveryRequest {
         endTime: mapDateTime(json, r'endTime', r'')!,
         initialCapital: num.parse('${json[r'initialCapital']}'),
         candidateCount: mapValueOfType<int>(json, r'candidateCount'),
+        feeRate: num.parse('${json[r'feeRate']}'),
+        minTradeCount: mapValueOfType<int>(json, r'minTradeCount'),
       );
     }
     return null;

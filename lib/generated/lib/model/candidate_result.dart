@@ -23,6 +23,7 @@ class CandidateResult {
     this.score,
     this.config,
     this.aiRationale,
+    this.errorMessage,
   });
 
   /// 策略 ID（DB 中已儲存）
@@ -97,6 +98,9 @@ class CandidateResult {
   /// AI 建議說明
   String? aiRationale;
 
+  /// 失敗原因（成功時為 null）
+  String? errorMessage;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CandidateResult &&
     other.strategyId == strategyId &&
@@ -108,7 +112,8 @@ class CandidateResult {
     other.tradeCount == tradeCount &&
     other.score == score &&
     other.config == config &&
-    other.aiRationale == aiRationale;
+    other.aiRationale == aiRationale &&
+    other.errorMessage == errorMessage;
 
   @override
   int get hashCode =>
@@ -122,10 +127,11 @@ class CandidateResult {
     (tradeCount == null ? 0 : tradeCount!.hashCode) +
     (score == null ? 0 : score!.hashCode) +
     (config == null ? 0 : config!.hashCode) +
-    (aiRationale == null ? 0 : aiRationale!.hashCode);
+    (aiRationale == null ? 0 : aiRationale!.hashCode) +
+    (errorMessage == null ? 0 : errorMessage!.hashCode);
 
   @override
-  String toString() => 'CandidateResult[strategyId=$strategyId, strategyName=$strategyName, totalReturn=$totalReturn, maxDrawdown=$maxDrawdown, winRate=$winRate, sharpeRatio=$sharpeRatio, tradeCount=$tradeCount, score=$score, config=$config, aiRationale=$aiRationale]';
+  String toString() => 'CandidateResult[strategyId=$strategyId, strategyName=$strategyName, totalReturn=$totalReturn, maxDrawdown=$maxDrawdown, winRate=$winRate, sharpeRatio=$sharpeRatio, tradeCount=$tradeCount, score=$score, config=$config, aiRationale=$aiRationale, errorMessage=$errorMessage]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -179,6 +185,11 @@ class CandidateResult {
     } else {
       json[r'aiRationale'] = null;
     }
+    if (this.errorMessage != null) {
+      json[r'errorMessage'] = this.errorMessage;
+    } else {
+      json[r'errorMessage'] = null;
+    }
     return json;
   }
 
@@ -213,6 +224,7 @@ class CandidateResult {
         score: mapValueOfType<double>(json, r'score'),
         config: mapValueOfType<Object>(json, r'config'),
         aiRationale: mapValueOfType<String>(json, r'aiRationale'),
+        errorMessage: mapValueOfType<String>(json, r'errorMessage'),
       );
     }
     return null;
