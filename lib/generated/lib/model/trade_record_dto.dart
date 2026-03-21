@@ -22,6 +22,8 @@ class TradeRecordDto {
     this.netPnl,
     this.returnPct,
     this.exitReason,
+    this.side,
+    this.borrowingCost,
   });
 
   /// 進場時間（ISO-8601）
@@ -99,6 +101,12 @@ class TradeRecordDto {
   /// 出場原因
   String? exitReason;
 
+  /// 交易方向
+  TradeRecordDtoSideEnum? side;
+
+  /// 借貨利息（僅做空時有值，幣安小時計息模型）
+  num? borrowingCost;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is TradeRecordDto &&
     other.entryTime == entryTime &&
@@ -109,7 +117,9 @@ class TradeRecordDto {
     other.grossPnl == grossPnl &&
     other.netPnl == netPnl &&
     other.returnPct == returnPct &&
-    other.exitReason == exitReason;
+    other.exitReason == exitReason &&
+    other.side == side &&
+    other.borrowingCost == borrowingCost;
 
   @override
   int get hashCode =>
@@ -122,10 +132,12 @@ class TradeRecordDto {
     (grossPnl == null ? 0 : grossPnl!.hashCode) +
     (netPnl == null ? 0 : netPnl!.hashCode) +
     (returnPct == null ? 0 : returnPct!.hashCode) +
-    (exitReason == null ? 0 : exitReason!.hashCode);
+    (exitReason == null ? 0 : exitReason!.hashCode) +
+    (side == null ? 0 : side!.hashCode) +
+    (borrowingCost == null ? 0 : borrowingCost!.hashCode);
 
   @override
-  String toString() => 'TradeRecordDto[entryTime=$entryTime, exitTime=$exitTime, entryPrice=$entryPrice, exitPrice=$exitPrice, quantity=$quantity, grossPnl=$grossPnl, netPnl=$netPnl, returnPct=$returnPct, exitReason=$exitReason]';
+  String toString() => 'TradeRecordDto[entryTime=$entryTime, exitTime=$exitTime, entryPrice=$entryPrice, exitPrice=$exitPrice, quantity=$quantity, grossPnl=$grossPnl, netPnl=$netPnl, returnPct=$returnPct, exitReason=$exitReason, side=$side, borrowingCost=$borrowingCost]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -174,6 +186,16 @@ class TradeRecordDto {
     } else {
       json[r'exitReason'] = null;
     }
+    if (this.side != null) {
+      json[r'side'] = this.side;
+    } else {
+      json[r'side'] = null;
+    }
+    if (this.borrowingCost != null) {
+      json[r'borrowingCost'] = this.borrowingCost;
+    } else {
+      json[r'borrowingCost'] = null;
+    }
     return json;
   }
 
@@ -205,6 +227,10 @@ class TradeRecordDto {
         netPnl: num.parse('${json[r'netPnl']}'),
         returnPct: num.parse('${json[r'returnPct']}'),
         exitReason: mapValueOfType<String>(json, r'exitReason'),
+        side: TradeRecordDtoSideEnum.fromJson(json[r'side']),
+        borrowingCost: json[r'borrowingCost'] == null
+            ? null
+            : num.parse('${json[r'borrowingCost']}'),
       );
     }
     return null;
@@ -254,4 +280,81 @@ class TradeRecordDto {
   static const requiredKeys = <String>{
   };
 }
+
+/// 交易方向
+class TradeRecordDtoSideEnum {
+  /// Instantiate a new enum with the provided [value].
+  const TradeRecordDtoSideEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const LONG = TradeRecordDtoSideEnum._(r'LONG');
+  static const SHORT = TradeRecordDtoSideEnum._(r'SHORT');
+  static const unknownDefaultOpenApi = TradeRecordDtoSideEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][TradeRecordDtoSideEnum].
+  static const values = <TradeRecordDtoSideEnum>[
+    LONG,
+    SHORT,
+    unknownDefaultOpenApi,
+  ];
+
+  static TradeRecordDtoSideEnum? fromJson(dynamic value) => TradeRecordDtoSideEnumTypeTransformer().decode(value);
+
+  static List<TradeRecordDtoSideEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <TradeRecordDtoSideEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = TradeRecordDtoSideEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [TradeRecordDtoSideEnum] to String,
+/// and [decode] dynamic data back to [TradeRecordDtoSideEnum].
+class TradeRecordDtoSideEnumTypeTransformer {
+  factory TradeRecordDtoSideEnumTypeTransformer() => _instance ??= const TradeRecordDtoSideEnumTypeTransformer._();
+
+  const TradeRecordDtoSideEnumTypeTransformer._();
+
+  String encode(TradeRecordDtoSideEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a TradeRecordDtoSideEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  TradeRecordDtoSideEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'LONG': return TradeRecordDtoSideEnum.LONG;
+        case r'SHORT': return TradeRecordDtoSideEnum.SHORT;
+        case r'unknown_default_open_api': return TradeRecordDtoSideEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [TradeRecordDtoSideEnumTypeTransformer] instance.
+  static TradeRecordDtoSideEnumTypeTransformer? _instance;
+}
+
 

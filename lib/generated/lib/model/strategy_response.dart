@@ -17,7 +17,9 @@ class StrategyResponse {
     this.name,
     this.strategyType,
     this.enabled,
-    this.config = const {},
+    this.aiGenerated,
+    this.discoveryBatch,
+    this.config,
     this.createdAt,
     this.updatedAt,
   });
@@ -58,8 +60,25 @@ class StrategyResponse {
   ///
   bool? enabled;
 
-  /// 策略參數配置（JSON 物件）
-  Map<String, Object>? config;
+  /// 是否為 AI 自動探勘生成的策略
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? aiGenerated;
+
+  /// AI 探勘批次 ID，僅 AI 探勘策略才有值
+  String? discoveryBatch;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  SopMtfAdxConfig? config;
 
   /// 建立時間（ISO-8601）
   DateTime? createdAt;
@@ -73,7 +92,9 @@ class StrategyResponse {
     other.name == name &&
     other.strategyType == strategyType &&
     other.enabled == enabled &&
-    _deepEquality.equals(other.config, config) &&
+    other.aiGenerated == aiGenerated &&
+    other.discoveryBatch == discoveryBatch &&
+    other.config == config &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt;
 
@@ -84,12 +105,14 @@ class StrategyResponse {
     (name == null ? 0 : name!.hashCode) +
     (strategyType == null ? 0 : strategyType!.hashCode) +
     (enabled == null ? 0 : enabled!.hashCode) +
+    (aiGenerated == null ? 0 : aiGenerated!.hashCode) +
+    (discoveryBatch == null ? 0 : discoveryBatch!.hashCode) +
     (config == null ? 0 : config!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'StrategyResponse[id=$id, name=$name, strategyType=$strategyType, enabled=$enabled, config=$config, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'StrategyResponse[id=$id, name=$name, strategyType=$strategyType, enabled=$enabled, aiGenerated=$aiGenerated, discoveryBatch=$discoveryBatch, config=$config, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -112,6 +135,16 @@ class StrategyResponse {
       json[r'enabled'] = this.enabled;
     } else {
       json[r'enabled'] = null;
+    }
+    if (this.aiGenerated != null) {
+      json[r'aiGenerated'] = this.aiGenerated;
+    } else {
+      json[r'aiGenerated'] = null;
+    }
+    if (this.discoveryBatch != null) {
+      json[r'discoveryBatch'] = this.discoveryBatch;
+    } else {
+      json[r'discoveryBatch'] = null;
     }
     if (this.config != null) {
       json[r'config'] = this.config;
@@ -154,7 +187,9 @@ class StrategyResponse {
         name: mapValueOfType<String>(json, r'name'),
         strategyType: mapValueOfType<String>(json, r'strategyType'),
         enabled: mapValueOfType<bool>(json, r'enabled'),
-        config: mapCastOfType<String, Object>(json, r'config') ?? const {},
+        aiGenerated: mapValueOfType<bool>(json, r'aiGenerated'),
+        discoveryBatch: mapValueOfType<String>(json, r'discoveryBatch'),
+        config: SopMtfAdxConfig.fromJson(json[r'config']),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
       );

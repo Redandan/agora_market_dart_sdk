@@ -280,6 +280,62 @@ class BacktestApi {
     return null;
   }
 
+  /// AI 策略自動探勘
+  ///
+  /// 呼叫 Groq AI 生成多組 SOP_MTF_ADX 候選策略配置，對每組執行回測並依評分排序，回傳最佳策略。若 Groq API key 未設定，則使用內建預設候選配置。所有生成策略皆以 aiGenerated=true 儲存在資料庫，可透過查詢策略 API 過濾。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [AiStrategyDiscoveryRequest] aiStrategyDiscoveryRequest (required):
+  Future<Response> triggerAiDiscoveryWithHttpInfo(AiStrategyDiscoveryRequest aiStrategyDiscoveryRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/backtests/ai-discovery';
+
+    // ignore: prefer_final_locals
+    Object? postBody = aiStrategyDiscoveryRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// AI 策略自動探勘
+  ///
+  /// 呼叫 Groq AI 生成多組 SOP_MTF_ADX 候選策略配置，對每組執行回測並依評分排序，回傳最佳策略。若 Groq API key 未設定，則使用內建預設候選配置。所有生成策略皆以 aiGenerated=true 儲存在資料庫，可透過查詢策略 API 過濾。
+  ///
+  /// Parameters:
+  ///
+  /// * [AiStrategyDiscoveryRequest] aiStrategyDiscoveryRequest (required):
+  Future<AiStrategyDiscoveryResponse?> triggerAiDiscovery(AiStrategyDiscoveryRequest aiStrategyDiscoveryRequest,) async {
+    final response = await triggerAiDiscoveryWithHttpInfo(aiStrategyDiscoveryRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AiStrategyDiscoveryResponse',) as AiStrategyDiscoveryResponse;
+    
+    }
+    return null;
+  }
+
   /// 編輯策略
   ///
   /// Note: This method returns the HTTP [Response].

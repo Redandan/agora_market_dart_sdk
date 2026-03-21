@@ -25,6 +25,12 @@ class SopMtfAdxConfig {
     this.minRR,
     this.keyLevelLookbackBars,
     this.dailyMaPeriod,
+    this.rsiSellThreshold,
+    this.allowShort,
+    this.dailyBorrowingRate,
+    this.atrTrailingStopEnabled,
+    this.atrPeriod,
+    this.atrMultiplier,
     this.diagnostics = const {},
   });
 
@@ -161,8 +167,54 @@ class SopMtfAdxConfig {
   ///
   int? dailyMaPeriod;
 
-  /// 診斷碼開關設定（false 表示停用該診斷碼，預設全部啟用）
-  Map<String, bool> diagnostics;
+  /// RSI 做空門檻，高於此值視為空頭回調訊號成立
+  ///
+  /// Minimum value: 0.0
+  /// Maximum value: 100.0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? rsiSellThreshold;
+
+  /// 是否允許做空（借貨高賣低買還）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? allowShort;
+
+  /// 借貨日利率（參考幣安方式，每小時扣 dailyBorrowingRate÷24，最少計 1 小時，僅 allowShort=true 時有效）
+  ///
+  /// Minimum value: 0.0
+  /// Maximum value: 1.0
+  double? dailyBorrowingRate;
+
+  /// 是否啟用 ATR 追蹤止損（替代固定止損追隨價格移動）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? atrTrailingStopEnabled;
+
+  /// ATR 追蹤止損的 ATR 週期，僅 atrTrailingStopEnabled=true 時有效
+  ///
+  /// Minimum value: 1
+  int? atrPeriod;
+
+  /// ATR 追蹤止損的 ATR 倍數，僅 atrTrailingStopEnabled=true 時有效
+  ///
+  /// Minimum value: 0
+  double? atrMultiplier;
+
+  /// 診斷碼開關設定（false 表示停用該診斷碼，預設全部啟用，null 表示全部啟用）
+  Map<String, bool>? diagnostics;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is SopMtfAdxConfig &&
@@ -178,6 +230,12 @@ class SopMtfAdxConfig {
     other.minRR == minRR &&
     other.keyLevelLookbackBars == keyLevelLookbackBars &&
     other.dailyMaPeriod == dailyMaPeriod &&
+    other.rsiSellThreshold == rsiSellThreshold &&
+    other.allowShort == allowShort &&
+    other.dailyBorrowingRate == dailyBorrowingRate &&
+    other.atrTrailingStopEnabled == atrTrailingStopEnabled &&
+    other.atrPeriod == atrPeriod &&
+    other.atrMultiplier == atrMultiplier &&
     _deepEquality.equals(other.diagnostics, diagnostics);
 
   @override
@@ -195,10 +253,16 @@ class SopMtfAdxConfig {
     (minRR == null ? 0 : minRR!.hashCode) +
     (keyLevelLookbackBars == null ? 0 : keyLevelLookbackBars!.hashCode) +
     (dailyMaPeriod == null ? 0 : dailyMaPeriod!.hashCode) +
-    (diagnostics.hashCode);
+    (rsiSellThreshold == null ? 0 : rsiSellThreshold!.hashCode) +
+    (allowShort == null ? 0 : allowShort!.hashCode) +
+    (dailyBorrowingRate == null ? 0 : dailyBorrowingRate!.hashCode) +
+    (atrTrailingStopEnabled == null ? 0 : atrTrailingStopEnabled!.hashCode) +
+    (atrPeriod == null ? 0 : atrPeriod!.hashCode) +
+    (atrMultiplier == null ? 0 : atrMultiplier!.hashCode) +
+    (diagnostics == null ? 0 : diagnostics!.hashCode);
 
   @override
-  String toString() => 'SopMtfAdxConfig[enableMtf=$enableMtf, minSignals=$minSignals, adxEntryThreshold=$adxEntryThreshold, maxDistanceFromEma=$maxDistanceFromEma, fixedStopLossPct=$fixedStopLossPct, fixedTakeProfitPct=$fixedTakeProfitPct, maxHoldingHours=$maxHoldingHours, moveSlToBreakeven=$moveSlToBreakeven, rsiPullbackThreshold=$rsiPullbackThreshold, minRR=$minRR, keyLevelLookbackBars=$keyLevelLookbackBars, dailyMaPeriod=$dailyMaPeriod, diagnostics=$diagnostics]';
+  String toString() => 'SopMtfAdxConfig[enableMtf=$enableMtf, minSignals=$minSignals, adxEntryThreshold=$adxEntryThreshold, maxDistanceFromEma=$maxDistanceFromEma, fixedStopLossPct=$fixedStopLossPct, fixedTakeProfitPct=$fixedTakeProfitPct, maxHoldingHours=$maxHoldingHours, moveSlToBreakeven=$moveSlToBreakeven, rsiPullbackThreshold=$rsiPullbackThreshold, minRR=$minRR, keyLevelLookbackBars=$keyLevelLookbackBars, dailyMaPeriod=$dailyMaPeriod, rsiSellThreshold=$rsiSellThreshold, allowShort=$allowShort, dailyBorrowingRate=$dailyBorrowingRate, atrTrailingStopEnabled=$atrTrailingStopEnabled, atrPeriod=$atrPeriod, atrMultiplier=$atrMultiplier, diagnostics=$diagnostics]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -262,7 +326,41 @@ class SopMtfAdxConfig {
     } else {
       json[r'dailyMaPeriod'] = null;
     }
+    if (this.rsiSellThreshold != null) {
+      json[r'rsiSellThreshold'] = this.rsiSellThreshold;
+    } else {
+      json[r'rsiSellThreshold'] = null;
+    }
+    if (this.allowShort != null) {
+      json[r'allowShort'] = this.allowShort;
+    } else {
+      json[r'allowShort'] = null;
+    }
+    if (this.dailyBorrowingRate != null) {
+      json[r'dailyBorrowingRate'] = this.dailyBorrowingRate;
+    } else {
+      json[r'dailyBorrowingRate'] = null;
+    }
+    if (this.atrTrailingStopEnabled != null) {
+      json[r'atrTrailingStopEnabled'] = this.atrTrailingStopEnabled;
+    } else {
+      json[r'atrTrailingStopEnabled'] = null;
+    }
+    if (this.atrPeriod != null) {
+      json[r'atrPeriod'] = this.atrPeriod;
+    } else {
+      json[r'atrPeriod'] = null;
+    }
+    if (this.atrMultiplier != null) {
+      json[r'atrMultiplier'] = this.atrMultiplier;
+    } else {
+      json[r'atrMultiplier'] = null;
+    }
+    if (this.diagnostics != null) {
       json[r'diagnostics'] = this.diagnostics;
+    } else {
+      json[r'diagnostics'] = null;
+    }
     return json;
   }
 
@@ -297,6 +395,12 @@ class SopMtfAdxConfig {
         minRR: mapValueOfType<double>(json, r'minRR'),
         keyLevelLookbackBars: mapValueOfType<int>(json, r'keyLevelLookbackBars'),
         dailyMaPeriod: mapValueOfType<int>(json, r'dailyMaPeriod'),
+        rsiSellThreshold: mapValueOfType<double>(json, r'rsiSellThreshold'),
+        allowShort: mapValueOfType<bool>(json, r'allowShort'),
+        dailyBorrowingRate: mapValueOfType<double>(json, r'dailyBorrowingRate'),
+        atrTrailingStopEnabled: mapValueOfType<bool>(json, r'atrTrailingStopEnabled'),
+        atrPeriod: mapValueOfType<int>(json, r'atrPeriod'),
+        atrMultiplier: mapValueOfType<double>(json, r'atrMultiplier'),
         diagnostics: mapCastOfType<String, bool>(json, r'diagnostics') ?? const {},
       );
     }

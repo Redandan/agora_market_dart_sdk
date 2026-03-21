@@ -198,6 +198,10 @@ class ApiClient {
           return AdminStoreSearchParam.fromJson(value);
         case 'AdminStoreUpdateParam':
           return AdminStoreUpdateParam.fromJson(value);
+        case 'AiStrategyDiscoveryRequest':
+          return AiStrategyDiscoveryRequest.fromJson(value);
+        case 'AiStrategyDiscoveryResponse':
+          return AiStrategyDiscoveryResponse.fromJson(value);
         case 'ApiResponseColdWallet':
           return ApiResponseColdWallet.fromJson(value);
         case 'ApiResponseFileSyncResponse':
@@ -268,6 +272,8 @@ class ApiClient {
           return BindEmailParam.fromJson(value);
         case 'BindOAuthParam':
           return BindOAuthParam.fromJson(value);
+        case 'CandidateResult':
+          return CandidateResult.fromJson(value);
         case 'CartGroupBySeller':
           return CartGroupBySeller.fromJson(value);
         case 'CartItem':

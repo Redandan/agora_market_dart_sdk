@@ -25,10 +25,15 @@ class BacktestResultResponse {
     this.totalReturn,
     this.maxDrawdown,
     this.winRate,
+    this.sharpeRatio,
     this.tradeCount,
     this.feeRate,
     this.createdAt,
     this.configSnapshotJson,
+    this.longTradeCount,
+    this.shortTradeCount,
+    this.longWinRate,
+    this.shortWinRate,
     this.trades = const [],
     this.diagnosticLogs = const [],
   });
@@ -141,6 +146,9 @@ class BacktestResultResponse {
   ///
   num? winRate;
 
+  /// 簡化夏普比率（mean(returnPct) / sampleStdDev(returnPct)）
+  num? sharpeRatio;
+
   /// 交易筆數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -171,6 +179,18 @@ class BacktestResultResponse {
   /// 策略參數快照 JSON
   String? configSnapshotJson;
 
+  /// 多頭交易筆數
+  int? longTradeCount;
+
+  /// 空頭交易筆數
+  int? shortTradeCount;
+
+  /// 多頭勝率
+  num? longWinRate;
+
+  /// 空頭勝率
+  num? shortWinRate;
+
   /// 交易明細
   List<TradeRecordDto>? trades;
 
@@ -191,10 +211,15 @@ class BacktestResultResponse {
     other.totalReturn == totalReturn &&
     other.maxDrawdown == maxDrawdown &&
     other.winRate == winRate &&
+    other.sharpeRatio == sharpeRatio &&
     other.tradeCount == tradeCount &&
     other.feeRate == feeRate &&
     other.createdAt == createdAt &&
     other.configSnapshotJson == configSnapshotJson &&
+    other.longTradeCount == longTradeCount &&
+    other.shortTradeCount == shortTradeCount &&
+    other.longWinRate == longWinRate &&
+    other.shortWinRate == shortWinRate &&
     _deepEquality.equals(other.trades, trades) &&
     _deepEquality.equals(other.diagnosticLogs, diagnosticLogs);
 
@@ -213,15 +238,20 @@ class BacktestResultResponse {
     (totalReturn == null ? 0 : totalReturn!.hashCode) +
     (maxDrawdown == null ? 0 : maxDrawdown!.hashCode) +
     (winRate == null ? 0 : winRate!.hashCode) +
+    (sharpeRatio == null ? 0 : sharpeRatio!.hashCode) +
     (tradeCount == null ? 0 : tradeCount!.hashCode) +
     (feeRate == null ? 0 : feeRate!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (configSnapshotJson == null ? 0 : configSnapshotJson!.hashCode) +
+    (longTradeCount == null ? 0 : longTradeCount!.hashCode) +
+    (shortTradeCount == null ? 0 : shortTradeCount!.hashCode) +
+    (longWinRate == null ? 0 : longWinRate!.hashCode) +
+    (shortWinRate == null ? 0 : shortWinRate!.hashCode) +
     (trades == null ? 0 : trades!.hashCode) +
     (diagnosticLogs == null ? 0 : diagnosticLogs!.hashCode);
 
   @override
-  String toString() => 'BacktestResultResponse[id=$id, strategyId=$strategyId, strategyName=$strategyName, symbol=$symbol, intervalCode=$intervalCode, startTime=$startTime, endTime=$endTime, initialCapital=$initialCapital, finalCapital=$finalCapital, totalReturn=$totalReturn, maxDrawdown=$maxDrawdown, winRate=$winRate, tradeCount=$tradeCount, feeRate=$feeRate, createdAt=$createdAt, configSnapshotJson=$configSnapshotJson, trades=$trades, diagnosticLogs=$diagnosticLogs]';
+  String toString() => 'BacktestResultResponse[id=$id, strategyId=$strategyId, strategyName=$strategyName, symbol=$symbol, intervalCode=$intervalCode, startTime=$startTime, endTime=$endTime, initialCapital=$initialCapital, finalCapital=$finalCapital, totalReturn=$totalReturn, maxDrawdown=$maxDrawdown, winRate=$winRate, sharpeRatio=$sharpeRatio, tradeCount=$tradeCount, feeRate=$feeRate, createdAt=$createdAt, configSnapshotJson=$configSnapshotJson, longTradeCount=$longTradeCount, shortTradeCount=$shortTradeCount, longWinRate=$longWinRate, shortWinRate=$shortWinRate, trades=$trades, diagnosticLogs=$diagnosticLogs]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -285,6 +315,11 @@ class BacktestResultResponse {
     } else {
       json[r'winRate'] = null;
     }
+    if (this.sharpeRatio != null) {
+      json[r'sharpeRatio'] = this.sharpeRatio;
+    } else {
+      json[r'sharpeRatio'] = null;
+    }
     if (this.tradeCount != null) {
       json[r'tradeCount'] = this.tradeCount;
     } else {
@@ -304,6 +339,26 @@ class BacktestResultResponse {
       json[r'configSnapshotJson'] = this.configSnapshotJson;
     } else {
       json[r'configSnapshotJson'] = null;
+    }
+    if (this.longTradeCount != null) {
+      json[r'longTradeCount'] = this.longTradeCount;
+    } else {
+      json[r'longTradeCount'] = null;
+    }
+    if (this.shortTradeCount != null) {
+      json[r'shortTradeCount'] = this.shortTradeCount;
+    } else {
+      json[r'shortTradeCount'] = null;
+    }
+    if (this.longWinRate != null) {
+      json[r'longWinRate'] = this.longWinRate;
+    } else {
+      json[r'longWinRate'] = null;
+    }
+    if (this.shortWinRate != null) {
+      json[r'shortWinRate'] = this.shortWinRate;
+    } else {
+      json[r'shortWinRate'] = null;
     }
     if (this.trades != null) {
       json[r'trades'] = this.trades;
@@ -349,10 +404,21 @@ class BacktestResultResponse {
         totalReturn: num.parse('${json[r'totalReturn']}'),
         maxDrawdown: num.parse('${json[r'maxDrawdown']}'),
         winRate: num.parse('${json[r'winRate']}'),
+        sharpeRatio: json[r'sharpeRatio'] == null
+            ? null
+            : num.parse('${json[r'sharpeRatio']}'),
         tradeCount: mapValueOfType<int>(json, r'tradeCount'),
         feeRate: num.parse('${json[r'feeRate']}'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         configSnapshotJson: mapValueOfType<String>(json, r'configSnapshotJson'),
+        longTradeCount: mapValueOfType<int>(json, r'longTradeCount'),
+        shortTradeCount: mapValueOfType<int>(json, r'shortTradeCount'),
+        longWinRate: json[r'longWinRate'] == null
+            ? null
+            : num.parse('${json[r'longWinRate']}'),
+        shortWinRate: json[r'shortWinRate'] == null
+            ? null
+            : num.parse('${json[r'shortWinRate']}'),
         trades: TradeRecordDto.listFromJson(json[r'trades']),
         diagnosticLogs: DiagnosticLogDto.listFromJson(json[r'diagnosticLogs']),
       );

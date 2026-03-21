@@ -245,6 +245,7 @@ Class | Method | HTTP request | Description
 *BacktestApi* | [**queryStrategies**](doc//BacktestApi.md#querystrategies) | **POST** /backtests/strategies/query | 多條件查詢策略
 *BacktestApi* | [**queryStrategyBacktestDetail**](doc//BacktestApi.md#querystrategybacktestdetail) | **POST** /backtests/strategies/results/query | 查詢策略詳情（含回測結果）
 *BacktestApi* | [**runBacktest**](doc//BacktestApi.md#runbacktest) | **POST** /backtests/results | 執行回測
+*BacktestApi* | [**triggerAiDiscovery**](doc//BacktestApi.md#triggeraidiscovery) | **POST** /backtests/ai-discovery | AI 策略自動探勘
 *BacktestApi* | [**updateStrategy**](doc//BacktestApi.md#updatestrategy) | **PUT** /backtests/strategies/{strategyId} | 編輯策略
 *BettingApi* | [**getMarketBets**](doc//BettingApi.md#getmarketbets) | **GET** /api/bets/market/{marketId} | 市場投注記錄
 *BettingApi* | [**getMyBets**](doc//BettingApi.md#getmybets) | **GET** /api/bets/my | 我的投注記錄
@@ -486,6 +487,8 @@ Class | Method | HTTP request | Description
  - [AdminResetPasswordParam](doc//AdminResetPasswordParam.md)
  - [AdminStoreSearchParam](doc//AdminStoreSearchParam.md)
  - [AdminStoreUpdateParam](doc//AdminStoreUpdateParam.md)
+ - [AiStrategyDiscoveryRequest](doc//AiStrategyDiscoveryRequest.md)
+ - [AiStrategyDiscoveryResponse](doc//AiStrategyDiscoveryResponse.md)
  - [ApiResponseColdWallet](doc//ApiResponseColdWallet.md)
  - [ApiResponseFileSyncResponse](doc//ApiResponseFileSyncResponse.md)
  - [ApiResponseFlutterAppDeploymentResponse](doc//ApiResponseFlutterAppDeploymentResponse.md)
@@ -521,6 +524,7 @@ Class | Method | HTTP request | Description
  - [BetResponse](doc//BetResponse.md)
  - [BindEmailParam](doc//BindEmailParam.md)
  - [BindOAuthParam](doc//BindOAuthParam.md)
+ - [CandidateResult](doc//CandidateResult.md)
  - [CartGroupBySeller](doc//CartGroupBySeller.md)
  - [CartItem](doc//CartItem.md)
  - [CartItemCreateParam](doc//CartItemCreateParam.md)
