@@ -34,6 +34,14 @@ class BacktestResultResponse {
     this.shortTradeCount,
     this.longWinRate,
     this.shortWinRate,
+    this.marketOpenPrice,
+    this.marketClosePrice,
+    this.marketHighPrice,
+    this.marketLowPrice,
+    this.marketVolatilityPct,
+    this.marketPriceChangePct,
+    this.marketTrend,
+    this.benchmarkReturn,
     this.trades = const [],
     this.diagnosticLogs = const [],
   });
@@ -191,6 +199,30 @@ class BacktestResultResponse {
   /// 空頭勝率
   num? shortWinRate;
 
+  /// 行情開盤價（回測期首根 K）
+  num? marketOpenPrice;
+
+  /// 行情收盤價（回測期末根 K）
+  num? marketClosePrice;
+
+  /// 行情最高價（回測期間）
+  num? marketHighPrice;
+
+  /// 行情最低價（回測期間）
+  num? marketLowPrice;
+
+  /// 行情波動幅度 % = (high - low) / low
+  num? marketVolatilityPct;
+
+  /// 行情漲跌幅 % = (close - open) / open
+  num? marketPriceChangePct;
+
+  /// 行情走勢分類
+  BacktestResultResponseMarketTrendEnum? marketTrend;
+
+  /// 買持報酬率（Buy & Hold），與 totalReturn 對比使用
+  num? benchmarkReturn;
+
   /// 交易明細
   List<TradeRecordDto>? trades;
 
@@ -220,6 +252,14 @@ class BacktestResultResponse {
     other.shortTradeCount == shortTradeCount &&
     other.longWinRate == longWinRate &&
     other.shortWinRate == shortWinRate &&
+    other.marketOpenPrice == marketOpenPrice &&
+    other.marketClosePrice == marketClosePrice &&
+    other.marketHighPrice == marketHighPrice &&
+    other.marketLowPrice == marketLowPrice &&
+    other.marketVolatilityPct == marketVolatilityPct &&
+    other.marketPriceChangePct == marketPriceChangePct &&
+    other.marketTrend == marketTrend &&
+    other.benchmarkReturn == benchmarkReturn &&
     _deepEquality.equals(other.trades, trades) &&
     _deepEquality.equals(other.diagnosticLogs, diagnosticLogs);
 
@@ -247,11 +287,19 @@ class BacktestResultResponse {
     (shortTradeCount == null ? 0 : shortTradeCount!.hashCode) +
     (longWinRate == null ? 0 : longWinRate!.hashCode) +
     (shortWinRate == null ? 0 : shortWinRate!.hashCode) +
+    (marketOpenPrice == null ? 0 : marketOpenPrice!.hashCode) +
+    (marketClosePrice == null ? 0 : marketClosePrice!.hashCode) +
+    (marketHighPrice == null ? 0 : marketHighPrice!.hashCode) +
+    (marketLowPrice == null ? 0 : marketLowPrice!.hashCode) +
+    (marketVolatilityPct == null ? 0 : marketVolatilityPct!.hashCode) +
+    (marketPriceChangePct == null ? 0 : marketPriceChangePct!.hashCode) +
+    (marketTrend == null ? 0 : marketTrend!.hashCode) +
+    (benchmarkReturn == null ? 0 : benchmarkReturn!.hashCode) +
     (trades == null ? 0 : trades!.hashCode) +
     (diagnosticLogs == null ? 0 : diagnosticLogs!.hashCode);
 
   @override
-  String toString() => 'BacktestResultResponse[id=$id, strategyId=$strategyId, strategyName=$strategyName, symbol=$symbol, intervalCode=$intervalCode, startTime=$startTime, endTime=$endTime, initialCapital=$initialCapital, finalCapital=$finalCapital, totalReturn=$totalReturn, maxDrawdown=$maxDrawdown, winRate=$winRate, sharpeRatio=$sharpeRatio, tradeCount=$tradeCount, feeRate=$feeRate, createdAt=$createdAt, configSnapshotJson=$configSnapshotJson, longTradeCount=$longTradeCount, shortTradeCount=$shortTradeCount, longWinRate=$longWinRate, shortWinRate=$shortWinRate, trades=$trades, diagnosticLogs=$diagnosticLogs]';
+  String toString() => 'BacktestResultResponse[id=$id, strategyId=$strategyId, strategyName=$strategyName, symbol=$symbol, intervalCode=$intervalCode, startTime=$startTime, endTime=$endTime, initialCapital=$initialCapital, finalCapital=$finalCapital, totalReturn=$totalReturn, maxDrawdown=$maxDrawdown, winRate=$winRate, sharpeRatio=$sharpeRatio, tradeCount=$tradeCount, feeRate=$feeRate, createdAt=$createdAt, configSnapshotJson=$configSnapshotJson, longTradeCount=$longTradeCount, shortTradeCount=$shortTradeCount, longWinRate=$longWinRate, shortWinRate=$shortWinRate, marketOpenPrice=$marketOpenPrice, marketClosePrice=$marketClosePrice, marketHighPrice=$marketHighPrice, marketLowPrice=$marketLowPrice, marketVolatilityPct=$marketVolatilityPct, marketPriceChangePct=$marketPriceChangePct, marketTrend=$marketTrend, benchmarkReturn=$benchmarkReturn, trades=$trades, diagnosticLogs=$diagnosticLogs]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -360,6 +408,46 @@ class BacktestResultResponse {
     } else {
       json[r'shortWinRate'] = null;
     }
+    if (this.marketOpenPrice != null) {
+      json[r'marketOpenPrice'] = this.marketOpenPrice;
+    } else {
+      json[r'marketOpenPrice'] = null;
+    }
+    if (this.marketClosePrice != null) {
+      json[r'marketClosePrice'] = this.marketClosePrice;
+    } else {
+      json[r'marketClosePrice'] = null;
+    }
+    if (this.marketHighPrice != null) {
+      json[r'marketHighPrice'] = this.marketHighPrice;
+    } else {
+      json[r'marketHighPrice'] = null;
+    }
+    if (this.marketLowPrice != null) {
+      json[r'marketLowPrice'] = this.marketLowPrice;
+    } else {
+      json[r'marketLowPrice'] = null;
+    }
+    if (this.marketVolatilityPct != null) {
+      json[r'marketVolatilityPct'] = this.marketVolatilityPct;
+    } else {
+      json[r'marketVolatilityPct'] = null;
+    }
+    if (this.marketPriceChangePct != null) {
+      json[r'marketPriceChangePct'] = this.marketPriceChangePct;
+    } else {
+      json[r'marketPriceChangePct'] = null;
+    }
+    if (this.marketTrend != null) {
+      json[r'marketTrend'] = this.marketTrend;
+    } else {
+      json[r'marketTrend'] = null;
+    }
+    if (this.benchmarkReturn != null) {
+      json[r'benchmarkReturn'] = this.benchmarkReturn;
+    } else {
+      json[r'benchmarkReturn'] = null;
+    }
     if (this.trades != null) {
       json[r'trades'] = this.trades;
     } else {
@@ -419,6 +507,28 @@ class BacktestResultResponse {
         shortWinRate: json[r'shortWinRate'] == null
             ? null
             : num.parse('${json[r'shortWinRate']}'),
+        marketOpenPrice: json[r'marketOpenPrice'] == null
+            ? null
+            : num.parse('${json[r'marketOpenPrice']}'),
+        marketClosePrice: json[r'marketClosePrice'] == null
+            ? null
+            : num.parse('${json[r'marketClosePrice']}'),
+        marketHighPrice: json[r'marketHighPrice'] == null
+            ? null
+            : num.parse('${json[r'marketHighPrice']}'),
+        marketLowPrice: json[r'marketLowPrice'] == null
+            ? null
+            : num.parse('${json[r'marketLowPrice']}'),
+        marketVolatilityPct: json[r'marketVolatilityPct'] == null
+            ? null
+            : num.parse('${json[r'marketVolatilityPct']}'),
+        marketPriceChangePct: json[r'marketPriceChangePct'] == null
+            ? null
+            : num.parse('${json[r'marketPriceChangePct']}'),
+        marketTrend: BacktestResultResponseMarketTrendEnum.fromJson(json[r'marketTrend']),
+        benchmarkReturn: json[r'benchmarkReturn'] == null
+            ? null
+            : num.parse('${json[r'benchmarkReturn']}'),
         trades: TradeRecordDto.listFromJson(json[r'trades']),
         diagnosticLogs: DiagnosticLogDto.listFromJson(json[r'diagnosticLogs']),
       );
@@ -470,4 +580,84 @@ class BacktestResultResponse {
   static const requiredKeys = <String>{
   };
 }
+
+/// 行情走勢分類
+class BacktestResultResponseMarketTrendEnum {
+  /// Instantiate a new enum with the provided [value].
+  const BacktestResultResponseMarketTrendEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const BULLISH = BacktestResultResponseMarketTrendEnum._(r'BULLISH');
+  static const BEARISH = BacktestResultResponseMarketTrendEnum._(r'BEARISH');
+  static const SIDEWAYS = BacktestResultResponseMarketTrendEnum._(r'SIDEWAYS');
+  static const unknownDefaultOpenApi = BacktestResultResponseMarketTrendEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][BacktestResultResponseMarketTrendEnum].
+  static const values = <BacktestResultResponseMarketTrendEnum>[
+    BULLISH,
+    BEARISH,
+    SIDEWAYS,
+    unknownDefaultOpenApi,
+  ];
+
+  static BacktestResultResponseMarketTrendEnum? fromJson(dynamic value) => BacktestResultResponseMarketTrendEnumTypeTransformer().decode(value);
+
+  static List<BacktestResultResponseMarketTrendEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <BacktestResultResponseMarketTrendEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = BacktestResultResponseMarketTrendEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [BacktestResultResponseMarketTrendEnum] to String,
+/// and [decode] dynamic data back to [BacktestResultResponseMarketTrendEnum].
+class BacktestResultResponseMarketTrendEnumTypeTransformer {
+  factory BacktestResultResponseMarketTrendEnumTypeTransformer() => _instance ??= const BacktestResultResponseMarketTrendEnumTypeTransformer._();
+
+  const BacktestResultResponseMarketTrendEnumTypeTransformer._();
+
+  String encode(BacktestResultResponseMarketTrendEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a BacktestResultResponseMarketTrendEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  BacktestResultResponseMarketTrendEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'BULLISH': return BacktestResultResponseMarketTrendEnum.BULLISH;
+        case r'BEARISH': return BacktestResultResponseMarketTrendEnum.BEARISH;
+        case r'SIDEWAYS': return BacktestResultResponseMarketTrendEnum.SIDEWAYS;
+        case r'unknown_default_open_api': return BacktestResultResponseMarketTrendEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [BacktestResultResponseMarketTrendEnumTypeTransformer] instance.
+  static BacktestResultResponseMarketTrendEnumTypeTransformer? _instance;
+}
+
 
