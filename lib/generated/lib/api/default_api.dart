@@ -16,6 +16,62 @@ class DefaultApi {
 
   final ApiClient apiClient;
 
+  /// 新增知識文件
+  ///
+  /// 新增單筆知識文件至 AI 知識庫
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [KnowledgeEntry] knowledgeEntry (required):
+  Future<Response> addKnowledgeWithHttpInfo(KnowledgeEntry knowledgeEntry,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/admin/knowledge';
+
+    // ignore: prefer_final_locals
+    Object? postBody = knowledgeEntry;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 新增知識文件
+  ///
+  /// 新增單筆知識文件至 AI 知識庫
+  ///
+  /// Parameters:
+  ///
+  /// * [KnowledgeEntry] knowledgeEntry (required):
+  Future<ApiResponseString?> addKnowledge(KnowledgeEntry knowledgeEntry,) async {
+    final response = await addKnowledgeWithHttpInfo(knowledgeEntry,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseString',) as ApiResponseString;
+    
+    }
+    return null;
+  }
+
   /// 添加商品到購物車
   ///
   /// 將商品添加到用戶購物車
@@ -930,6 +986,50 @@ class DefaultApi {
     return null;
   }
 
+  /// 查詢知識庫文件數量
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> countWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/admin/knowledge/count';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查詢知識庫文件數量
+  Future<ApiResponseLong?> count() async {
+    final response = await countWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseLong',) as ApiResponseLong;
+    
+    }
+    return null;
+  }
+
   /// 創建客戶問題
   ///
   /// Note: This method returns the HTTP [Response].
@@ -1137,6 +1237,63 @@ class DefaultApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Withdraw',) as Withdraw;
+    
+    }
+    return null;
+  }
+
+  /// 刪除知識文件
+  ///
+  /// 依 ID 刪除單筆知識文件
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  Future<Response> deleteWithHttpInfo(String id,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/admin/knowledge/{id}'
+      .replaceAll('{id}', id);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 刪除知識文件
+  ///
+  /// 依 ID 刪除單筆知識文件
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  Future<ApiResponseVoid?> delete(String id,) async {
+    final response = await deleteWithHttpInfo(id,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseVoid',) as ApiResponseVoid;
     
     }
     return null;
@@ -1714,6 +1871,59 @@ class DefaultApi {
         .cast<TaiwanPostalArea>()
         .toList(growable: false);
 
+    }
+    return null;
+  }
+
+  /// 查詢單筆知識文件
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  Future<Response> getByIdWithHttpInfo(String id,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/admin/knowledge/{id}'
+      .replaceAll('{id}', id);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查詢單筆知識文件
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  Future<ApiResponseKnowledgeResponse?> getById(String id,) async {
+    final response = await getByIdWithHttpInfo(id,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseKnowledgeResponse',) as ApiResponseKnowledgeResponse;
+    
     }
     return null;
   }
@@ -3719,6 +3929,119 @@ class DefaultApi {
     return null;
   }
 
+  /// 忽略待確認問題
+  ///
+  /// 標記為不需要回答
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  Future<Response> ignoreWithHttpInfo(int id,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/admin/knowledge/pending/{id}/ignore'
+      .replaceAll('{id}', id.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 忽略待確認問題
+  ///
+  /// 標記為不需要回答
+  ///
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  Future<ApiResponseVoid?> ignore(int id,) async {
+    final response = await ignoreWithHttpInfo(id,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseVoid',) as ApiResponseVoid;
+    
+    }
+    return null;
+  }
+
+  /// 批量匯入知識文件
+  ///
+  /// 一次匯入多筆知識文件
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [List<KnowledgeEntry>] knowledgeEntry (required):
+  Future<Response> importBatchWithHttpInfo(List<KnowledgeEntry> knowledgeEntry,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/admin/knowledge/batch';
+
+    // ignore: prefer_final_locals
+    Object? postBody = knowledgeEntry;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 批量匯入知識文件
+  ///
+  /// 一次匯入多筆知識文件
+  ///
+  /// Parameters:
+  ///
+  /// * [List<KnowledgeEntry>] knowledgeEntry (required):
+  Future<ApiResponseImportResult?> importBatch(List<KnowledgeEntry> knowledgeEntry,) async {
+    final response = await importBatchWithHttpInfo(knowledgeEntry,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseImportResult',) as ApiResponseImportResult;
+    
+    }
+    return null;
+  }
+
   /// 點讚貼文
   ///
   /// 用戶點讚貼文
@@ -3776,6 +4099,110 @@ class DefaultApi {
     return null;
   }
 
+  /// 列出所有知識文件
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> listWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/admin/knowledge';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 列出所有知識文件
+  Future<ApiResponseListKnowledgeResponse?> list() async {
+    final response = await listWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseListKnowledgeResponse',) as ApiResponseListKnowledgeResponse;
+    
+    }
+    return null;
+  }
+
+  /// 列出待確認問題
+  ///
+  /// status 可為 PENDING / RESOLVED / IGNORED，不傳則列出全部
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] status:
+  Future<Response> listPendingWithHttpInfo({ String? status, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/admin/knowledge/pending';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (status != null) {
+      queryParams.addAll(_queryParams('', 'status', status));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 列出待確認問題
+  ///
+  /// status 可為 PENDING / RESOLVED / IGNORED，不傳則列出全部
+  ///
+  /// Parameters:
+  ///
+  /// * [String] status:
+  Future<ApiResponseListPendingQuestionResponse?> listPending({ String? status, }) async {
+    final response = await listPendingWithHttpInfo( status: status, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseListPendingQuestionResponse',) as ApiResponseListPendingQuestionResponse;
+    
+    }
+    return null;
+  }
+
   /// 管理員手動調帳
   ///
   /// Note: This method returns the HTTP [Response].
@@ -3823,6 +4250,50 @@ class DefaultApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Transaction',) as Transaction;
+    
+    }
+    return null;
+  }
+
+  /// 查詢未處理問題數量
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> pendingCountWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/admin/knowledge/pending/count';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查詢未處理問題數量
+  Future<ApiResponseLong?> pendingCount() async {
+    final response = await pendingCountWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseLong',) as ApiResponseLong;
     
     }
     return null;
@@ -4042,6 +4513,67 @@ class DefaultApi {
     return null;
   }
 
+  /// 解答待確認問題
+  ///
+  /// 填寫回答，addToKnowledge=true 可同時加入知識庫
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///
+  /// * [ResolveRequest] resolveRequest (required):
+  Future<Response> resolveWithHttpInfo(int id, ResolveRequest resolveRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/admin/knowledge/pending/{id}/resolve'
+      .replaceAll('{id}', id.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody = resolveRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 解答待確認問題
+  ///
+  /// 填寫回答，addToKnowledge=true 可同時加入知識庫
+  ///
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///
+  /// * [ResolveRequest] resolveRequest (required):
+  Future<ApiResponsePendingQuestionResponse?> resolve(int id, ResolveRequest resolveRequest,) async {
+    final response = await resolveWithHttpInfo(id, resolveRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponsePendingQuestionResponse',) as ApiResponsePendingQuestionResponse;
+    
+    }
+    return null;
+  }
+
   /// 搜索郵遞區號
   ///
   /// 根據關鍵字搜索郵遞區號、城市或行政區
@@ -4101,6 +4633,71 @@ class DefaultApi {
         .cast<TaiwanPostalArea>()
         .toList(growable: false);
 
+    }
+    return null;
+  }
+
+  /// 語意搜尋測試
+  ///
+  /// 測試知識庫查詢效果，q=查詢詞，n=回傳筆數
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] q (required):
+  ///
+  /// * [int] n:
+  Future<Response> search1WithHttpInfo(String q, { int? n, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/admin/knowledge/search';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'q', q));
+    if (n != null) {
+      queryParams.addAll(_queryParams('', 'n', n));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 語意搜尋測試
+  ///
+  /// 測試知識庫查詢效果，q=查詢詞，n=回傳筆數
+  ///
+  /// Parameters:
+  ///
+  /// * [String] q (required):
+  ///
+  /// * [int] n:
+  Future<ApiResponseListKnowledgeResponse?> search1(String q, { int? n, }) async {
+    final response = await search1WithHttpInfo(q,  n: n, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseListKnowledgeResponse',) as ApiResponseListKnowledgeResponse;
+    
     }
     return null;
   }

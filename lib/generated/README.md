@@ -42,13 +42,13 @@ import 'package:agora_market_dart_sdk/api.dart';
 
 
 final api_instance = DefaultApi();
-final cartItemCreateParam = CartItemCreateParam(); // CartItemCreateParam | 
+final knowledgeEntry = KnowledgeEntry(); // KnowledgeEntry | 
 
 try {
-    final result = api_instance.addToCart(cartItemCreateParam);
+    final result = api_instance.addKnowledge(knowledgeEntry);
     print(result);
 } catch (e) {
-    print('Exception when calling DefaultApi->addToCart: $e\n');
+    print('Exception when calling DefaultApi->addKnowledge: $e\n');
 }
 
 ```
@@ -59,6 +59,7 @@ All URIs are relative to *https://agoramarketapi.purrtechllc.com/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DefaultApi* | [**addKnowledge**](doc//DefaultApi.md#addknowledge) | **POST** /api/admin/knowledge | 新增知識文件
 *DefaultApi* | [**addToCart**](doc//DefaultApi.md#addtocart) | **POST** /api/cart/add | 添加商品到購物車
 *DefaultApi* | [**adminAddToCart**](doc//DefaultApi.md#adminaddtocart) | **POST** /api/cart/admin/add | 管理員添加商品到購物車
 *DefaultApi* | [**adminClearCart**](doc//DefaultApi.md#adminclearcart) | **DELETE** /api/cart/admin/clear | 管理員清空購物車
@@ -75,10 +76,12 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**closeIssue**](doc//DefaultApi.md#closeissue) | **POST** /customer-issues/{issueId}/close | 關閉客戶問題
 *DefaultApi* | [**completeRecharge**](doc//DefaultApi.md#completerecharge) | **POST** /recharge/{rechargeId}/complete | 完成充值
 *DefaultApi* | [**completeWithdraw**](doc//DefaultApi.md#completewithdraw) | **POST** /withdraws/{withdrawId}/complete | 完成提款
+*DefaultApi* | [**count**](doc//DefaultApi.md#count) | **GET** /api/admin/knowledge/count | 查詢知識庫文件數量
 *DefaultApi* | [**createIssue**](doc//DefaultApi.md#createissue) | **POST** /customer-issues | 創建客戶問題
 *DefaultApi* | [**createPost**](doc//DefaultApi.md#createpost) | **POST** /api/posts | 創建貼文
 *DefaultApi* | [**createRecharge**](doc//DefaultApi.md#createrecharge) | **POST** /recharge | 創建充值
 *DefaultApi* | [**createWithdraw**](doc//DefaultApi.md#createwithdraw) | **POST** /withdraws | 發起提款
+*DefaultApi* | [**delete**](doc//DefaultApi.md#delete) | **DELETE** /api/admin/knowledge/{id} | 刪除知識文件
 *DefaultApi* | [**deletePost**](doc//DefaultApi.md#deletepost) | **DELETE** /api/posts/{id} | 刪除貼文
 *DefaultApi* | [**deletePost1**](doc//DefaultApi.md#deletepost1) | **DELETE** /api/admin/posts/{id} | 管理員刪除貼文
 *DefaultApi* | [**executeJob**](doc//DefaultApi.md#executejob) | **POST** /api/admin/scheduler/execute | 執行定時任務
@@ -89,6 +92,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getAvailableCities**](doc//DefaultApi.md#getavailablecities) | **GET** /api/logistics/postal/cities | 取得所有城市列表
 *DefaultApi* | [**getByCity**](doc//DefaultApi.md#getbycity) | **GET** /postal-areas/city/{city} | 根據城市查詢
 *DefaultApi* | [**getByCityAndDistrict**](doc//DefaultApi.md#getbycityanddistrict) | **GET** /postal-areas/city/{city}/district/{district} | 根據城市和行政區查詢
+*DefaultApi* | [**getById**](doc//DefaultApi.md#getbyid) | **GET** /api/admin/knowledge/{id} | 查詢單筆知識文件
 *DefaultApi* | [**getByPostalCode**](doc//DefaultApi.md#getbypostalcode) | **GET** /postal-areas/code/{postalCode} | 根據郵遞區號查詢
 *DefaultApi* | [**getCartGroupedBySeller**](doc//DefaultApi.md#getcartgroupedbyseller) | **GET** /api/cart/grouped-by-seller | 按賣家分組
 *DefaultApi* | [**getCartSummary**](doc//DefaultApi.md#getcartsummary) | **GET** /api/cart/summary | 獲取購物車統計
@@ -125,13 +129,20 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getUserPostStatistics**](doc//DefaultApi.md#getuserpoststatistics) | **GET** /api/posts/user/{userId}/statistics | 獲取用戶貼文統計
 *DefaultApi* | [**getWithdraw**](doc//DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 *DefaultApi* | [**getWithdrawHistory**](doc//DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
+*DefaultApi* | [**ignore**](doc//DefaultApi.md#ignore) | **POST** /api/admin/knowledge/pending/{id}/ignore | 忽略待確認問題
+*DefaultApi* | [**importBatch**](doc//DefaultApi.md#importbatch) | **POST** /api/admin/knowledge/batch | 批量匯入知識文件
 *DefaultApi* | [**likePost**](doc//DefaultApi.md#likepost) | **POST** /api/posts/{id}/like | 點讚貼文
+*DefaultApi* | [**list**](doc//DefaultApi.md#list) | **GET** /api/admin/knowledge | 列出所有知識文件
+*DefaultApi* | [**listPending**](doc//DefaultApi.md#listpending) | **GET** /api/admin/knowledge/pending | 列出待確認問題
 *DefaultApi* | [**manualAdjustByAdmin**](doc//DefaultApi.md#manualadjustbyadmin) | **POST** /transactions/admin/manual-adjust | 管理員手動調帳
+*DefaultApi* | [**pendingCount**](doc//DefaultApi.md#pendingcount) | **GET** /api/admin/knowledge/pending/count | 查詢未處理問題數量
 *DefaultApi* | [**publishPost**](doc//DefaultApi.md#publishpost) | **POST** /api/posts/{id}/publish | 發布貼文
 *DefaultApi* | [**removeCartItem**](doc//DefaultApi.md#removecartitem) | **DELETE** /api/cart/admin/item/{cartItemId} | 刪除指定購物車項目
 *DefaultApi* | [**removeFromCart**](doc//DefaultApi.md#removefromcart) | **DELETE** /api/cart/{cartItemId} | 從購物車移除商品
 *DefaultApi* | [**replyIssue**](doc//DefaultApi.md#replyissue) | **POST** /customer-issues/{issueId}/reply | 回覆客戶問題
+*DefaultApi* | [**resolve**](doc//DefaultApi.md#resolve) | **POST** /api/admin/knowledge/pending/{id}/resolve | 解答待確認問題
 *DefaultApi* | [**search**](doc//DefaultApi.md#search) | **GET** /postal-areas/search | 搜索郵遞區號
+*DefaultApi* | [**search1**](doc//DefaultApi.md#search1) | **GET** /api/admin/knowledge/search | 語意搜尋測試
 *DefaultApi* | [**searchCarts**](doc//DefaultApi.md#searchcarts) | **POST** /api/cart/admin/search | 搜索購物車
 *DefaultApi* | [**searchIssues**](doc//DefaultApi.md#searchissues) | **POST** /customer-issues/search | 管理員搜尋客戶問題記錄
 *DefaultApi* | [**searchPostalAreas**](doc//DefaultApi.md#searchpostalareas) | **POST** /api/logistics/postal/search | 郵遞區號模糊查詢
@@ -492,16 +503,22 @@ Class | Method | HTTP request | Description
  - [ApiResponseColdWallet](doc//ApiResponseColdWallet.md)
  - [ApiResponseFileSyncResponse](doc//ApiResponseFileSyncResponse.md)
  - [ApiResponseFlutterAppDeploymentResponse](doc//ApiResponseFlutterAppDeploymentResponse.md)
+ - [ApiResponseImportResult](doc//ApiResponseImportResult.md)
+ - [ApiResponseKnowledgeResponse](doc//ApiResponseKnowledgeResponse.md)
+ - [ApiResponseListKnowledgeResponse](doc//ApiResponseListKnowledgeResponse.md)
  - [ApiResponseListLoginMethod](doc//ApiResponseListLoginMethod.md)
+ - [ApiResponseListPendingQuestionResponse](doc//ApiResponseListPendingQuestionResponse.md)
  - [ApiResponseListPostResponse](doc//ApiResponseListPostResponse.md)
  - [ApiResponseLoginResult](doc//ApiResponseLoginResult.md)
  - [ApiResponseLoginTokenResponse](doc//ApiResponseLoginTokenResponse.md)
+ - [ApiResponseLong](doc//ApiResponseLong.md)
  - [ApiResponseMapStringObject](doc//ApiResponseMapStringObject.md)
  - [ApiResponseOAuth2AuthorizeResponse](doc//ApiResponseOAuth2AuthorizeResponse.md)
  - [ApiResponseOAuth2TokenResponse](doc//ApiResponseOAuth2TokenResponse.md)
  - [ApiResponsePageClientLog](doc//ApiResponsePageClientLog.md)
  - [ApiResponsePageColdWallet](doc//ApiResponsePageColdWallet.md)
  - [ApiResponsePageFileRecord](doc//ApiResponsePageFileRecord.md)
+ - [ApiResponsePendingQuestionResponse](doc//ApiResponsePendingQuestionResponse.md)
  - [ApiResponsePostResponse](doc//ApiResponsePostResponse.md)
  - [ApiResponsePostStatistics](doc//ApiResponsePostStatistics.md)
  - [ApiResponseStorePostStatistics](doc//ApiResponseStorePostStatistics.md)
@@ -602,6 +619,7 @@ Class | Method | HTTP request | Description
  - [GroupAiSimulationResponseDTO](doc//GroupAiSimulationResponseDTO.md)
  - [GroupMessageDTO](doc//GroupMessageDTO.md)
  - [HourlyStatDto](doc//HourlyStatDto.md)
+ - [ImportResult](doc//ImportResult.md)
  - [InterestRecordDTO](doc//InterestRecordDTO.md)
  - [InterestRecordSearchParam](doc//InterestRecordSearchParam.md)
  - [IssueSearchParam](doc//IssueSearchParam.md)
@@ -613,6 +631,8 @@ Class | Method | HTTP request | Description
  - [KlineImportResponse](doc//KlineImportResponse.md)
  - [KlineSubscribeRequest](doc//KlineSubscribeRequest.md)
  - [KlineSubscriptionInfo](doc//KlineSubscriptionInfo.md)
+ - [KnowledgeEntry](doc//KnowledgeEntry.md)
+ - [KnowledgeResponse](doc//KnowledgeResponse.md)
  - [LoginBindingsResponse](doc//LoginBindingsResponse.md)
  - [LoginMethod](doc//LoginMethod.md)
  - [LoginParam](doc//LoginParam.md)
@@ -693,6 +713,7 @@ Class | Method | HTTP request | Description
  - [PaytableDTO](doc//PaytableDTO.md)
  - [PaytableEntryRequest](doc//PaytableEntryRequest.md)
  - [PaytableWithRtpDTO](doc//PaytableWithRtpDTO.md)
+ - [PendingQuestionResponse](doc//PendingQuestionResponse.md)
  - [PickupServiceTypeEnum](doc//PickupServiceTypeEnum.md)
  - [PickupStore](doc//PickupStore.md)
  - [PickupStoreSearchParam](doc//PickupStoreSearchParam.md)
@@ -741,6 +762,7 @@ Class | Method | HTTP request | Description
  - [RegistrationOverviewResponse](doc//RegistrationOverviewResponse.md)
  - [ReplyIssueParam](doc//ReplyIssueParam.md)
  - [ResolveMarketRequest](doc//ResolveMarketRequest.md)
+ - [ResolveRequest](doc//ResolveRequest.md)
  - [ReturnProcessParam](doc//ReturnProcessParam.md)
  - [ReturnReasonEnum](doc//ReturnReasonEnum.md)
  - [ReturnRequestParam](doc//ReturnRequestParam.md)

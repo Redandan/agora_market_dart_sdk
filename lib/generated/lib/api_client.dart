@@ -208,14 +208,24 @@ class ApiClient {
           return ApiResponseFileSyncResponse.fromJson(value);
         case 'ApiResponseFlutterAppDeploymentResponse':
           return ApiResponseFlutterAppDeploymentResponse.fromJson(value);
+        case 'ApiResponseImportResult':
+          return ApiResponseImportResult.fromJson(value);
+        case 'ApiResponseKnowledgeResponse':
+          return ApiResponseKnowledgeResponse.fromJson(value);
+        case 'ApiResponseListKnowledgeResponse':
+          return ApiResponseListKnowledgeResponse.fromJson(value);
         case 'ApiResponseListLoginMethod':
           return ApiResponseListLoginMethod.fromJson(value);
+        case 'ApiResponseListPendingQuestionResponse':
+          return ApiResponseListPendingQuestionResponse.fromJson(value);
         case 'ApiResponseListPostResponse':
           return ApiResponseListPostResponse.fromJson(value);
         case 'ApiResponseLoginResult':
           return ApiResponseLoginResult.fromJson(value);
         case 'ApiResponseLoginTokenResponse':
           return ApiResponseLoginTokenResponse.fromJson(value);
+        case 'ApiResponseLong':
+          return ApiResponseLong.fromJson(value);
         case 'ApiResponseMapStringObject':
           return ApiResponseMapStringObject.fromJson(value);
         case 'ApiResponseOAuth2AuthorizeResponse':
@@ -228,6 +238,8 @@ class ApiClient {
           return ApiResponsePageColdWallet.fromJson(value);
         case 'ApiResponsePageFileRecord':
           return ApiResponsePageFileRecord.fromJson(value);
+        case 'ApiResponsePendingQuestionResponse':
+          return ApiResponsePendingQuestionResponse.fromJson(value);
         case 'ApiResponsePostResponse':
           return ApiResponsePostResponse.fromJson(value);
         case 'ApiResponsePostStatistics':
@@ -428,6 +440,8 @@ class ApiClient {
           return GroupMessageDTO.fromJson(value);
         case 'HourlyStatDto':
           return HourlyStatDto.fromJson(value);
+        case 'ImportResult':
+          return ImportResult.fromJson(value);
         case 'InterestRecordDTO':
           return InterestRecordDTO.fromJson(value);
         case 'InterestRecordSearchParam':
@@ -450,6 +464,10 @@ class ApiClient {
           return KlineSubscribeRequest.fromJson(value);
         case 'KlineSubscriptionInfo':
           return KlineSubscriptionInfo.fromJson(value);
+        case 'KnowledgeEntry':
+          return KnowledgeEntry.fromJson(value);
+        case 'KnowledgeResponse':
+          return KnowledgeResponse.fromJson(value);
         case 'LoginBindingsResponse':
           return LoginBindingsResponse.fromJson(value);
         case 'LoginMethod':
@@ -610,6 +628,8 @@ class ApiClient {
           return PaytableEntryRequest.fromJson(value);
         case 'PaytableWithRtpDTO':
           return PaytableWithRtpDTO.fromJson(value);
+        case 'PendingQuestionResponse':
+          return PendingQuestionResponse.fromJson(value);
         case 'PickupServiceTypeEnum':
           return PickupServiceTypeEnumTypeTransformer().decode(value);
         case 'PickupStore':
@@ -706,6 +726,8 @@ class ApiClient {
           return ReplyIssueParam.fromJson(value);
         case 'ResolveMarketRequest':
           return ResolveMarketRequest.fromJson(value);
+        case 'ResolveRequest':
+          return ResolveRequest.fromJson(value);
         case 'ReturnProcessParam':
           return ReturnProcessParam.fromJson(value);
         case 'ReturnReasonEnum':

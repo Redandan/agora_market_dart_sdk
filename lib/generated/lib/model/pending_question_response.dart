@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -10,20 +10,18 @@
 
 part of openapi.api;
 
-class PageGameRoundDTO {
-  /// Returns a new [PageGameRoundDTO] instance.
-  PageGameRoundDTO({
-    this.totalElements,
-    this.totalPages,
-    this.sort,
-    this.numberOfElements,
-    this.pageable,
-    this.first,
-    this.last,
-    this.size,
-    this.content = const [],
-    this.number,
-    this.empty,
+class PendingQuestionResponse {
+  /// Returns a new [PendingQuestionResponse] instance.
+  PendingQuestionResponse({
+    this.id,
+    this.question,
+    this.groupId,
+    this.askedBy,
+    this.status,
+    this.adminAnswer,
+    this.knowledgeId,
+    this.resolvedAt,
+    this.createdAt,
   });
 
   ///
@@ -32,57 +30,7 @@ class PageGameRoundDTO {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalElements;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? totalPages;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  SortObject? sort;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? numberOfElements;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  PageableObject? pageable;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? first;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? last;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? size;
-  List<GameRoundDTO> content;
+  int? id;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -90,106 +38,146 @@ class PageGameRoundDTO {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? number;
+  String? question;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? empty;
+  int? groupId;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? askedBy;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? status;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? adminAnswer;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? knowledgeId;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? resolvedAt;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? createdAt;
+
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageGameRoundDTO &&
-    other.totalElements == totalElements &&
-    other.totalPages == totalPages &&
-    other.sort == sort &&
-    other.numberOfElements == numberOfElements &&
-    other.pageable == pageable &&
-    other.first == first &&
-    other.last == last &&
-    other.size == size &&
-    _deepEquality.equals(other.content, content) &&
-    other.number == number &&
-    other.empty == empty;
+  bool operator ==(Object other) => identical(this, other) || other is PendingQuestionResponse &&
+    other.id == id &&
+    other.question == question &&
+    other.groupId == groupId &&
+    other.askedBy == askedBy &&
+    other.status == status &&
+    other.adminAnswer == adminAnswer &&
+    other.knowledgeId == knowledgeId &&
+    other.resolvedAt == resolvedAt &&
+    other.createdAt == createdAt;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalElements == null ? 0 : totalElements!.hashCode) +
-    (totalPages == null ? 0 : totalPages!.hashCode) +
-    (sort == null ? 0 : sort!.hashCode) +
-    (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
-    (pageable == null ? 0 : pageable!.hashCode) +
-    (first == null ? 0 : first!.hashCode) +
-    (last == null ? 0 : last!.hashCode) +
-    (size == null ? 0 : size!.hashCode) +
-    (content.hashCode) +
-    (number == null ? 0 : number!.hashCode) +
-    (empty == null ? 0 : empty!.hashCode);
+    (id == null ? 0 : id!.hashCode) +
+    (question == null ? 0 : question!.hashCode) +
+    (groupId == null ? 0 : groupId!.hashCode) +
+    (askedBy == null ? 0 : askedBy!.hashCode) +
+    (status == null ? 0 : status!.hashCode) +
+    (adminAnswer == null ? 0 : adminAnswer!.hashCode) +
+    (knowledgeId == null ? 0 : knowledgeId!.hashCode) +
+    (resolvedAt == null ? 0 : resolvedAt!.hashCode) +
+    (createdAt == null ? 0 : createdAt!.hashCode);
 
   @override
-  String toString() => 'PageGameRoundDTO[totalElements=$totalElements, totalPages=$totalPages, sort=$sort, numberOfElements=$numberOfElements, pageable=$pageable, first=$first, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'PendingQuestionResponse[id=$id, question=$question, groupId=$groupId, askedBy=$askedBy, status=$status, adminAnswer=$adminAnswer, knowledgeId=$knowledgeId, resolvedAt=$resolvedAt, createdAt=$createdAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.totalElements != null) {
-      json[r'totalElements'] = this.totalElements;
+    if (this.id != null) {
+      json[r'id'] = this.id;
     } else {
-      json[r'totalElements'] = null;
+      json[r'id'] = null;
     }
-    if (this.totalPages != null) {
-      json[r'totalPages'] = this.totalPages;
+    if (this.question != null) {
+      json[r'question'] = this.question;
     } else {
-      json[r'totalPages'] = null;
+      json[r'question'] = null;
     }
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.groupId != null) {
+      json[r'groupId'] = this.groupId;
     } else {
-      json[r'sort'] = null;
+      json[r'groupId'] = null;
     }
-    if (this.numberOfElements != null) {
-      json[r'numberOfElements'] = this.numberOfElements;
+    if (this.askedBy != null) {
+      json[r'askedBy'] = this.askedBy;
     } else {
-      json[r'numberOfElements'] = null;
+      json[r'askedBy'] = null;
     }
-    if (this.pageable != null) {
-      json[r'pageable'] = this.pageable;
+    if (this.status != null) {
+      json[r'status'] = this.status;
     } else {
-      json[r'pageable'] = null;
+      json[r'status'] = null;
     }
-    if (this.first != null) {
-      json[r'first'] = this.first;
+    if (this.adminAnswer != null) {
+      json[r'adminAnswer'] = this.adminAnswer;
     } else {
-      json[r'first'] = null;
+      json[r'adminAnswer'] = null;
     }
-    if (this.last != null) {
-      json[r'last'] = this.last;
+    if (this.knowledgeId != null) {
+      json[r'knowledgeId'] = this.knowledgeId;
     } else {
-      json[r'last'] = null;
+      json[r'knowledgeId'] = null;
     }
-    if (this.size != null) {
-      json[r'size'] = this.size;
+    if (this.resolvedAt != null) {
+      json[r'resolvedAt'] = this.resolvedAt!.toUtc().toIso8601String();
     } else {
-      json[r'size'] = null;
+      json[r'resolvedAt'] = null;
     }
-      json[r'content'] = this.content.map((e) => e.toJson()).toList();
-    if (this.number != null) {
-      json[r'number'] = this.number;
+    if (this.createdAt != null) {
+      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
     } else {
-      json[r'number'] = null;
-    }
-    if (this.empty != null) {
-      json[r'empty'] = this.empty;
-    } else {
-      json[r'empty'] = null;
+      json[r'createdAt'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageGameRoundDTO] instance and imports its values from
+  /// Returns a new [PendingQuestionResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageGameRoundDTO? fromJson(dynamic value) {
+  static PendingQuestionResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -198,34 +186,32 @@ class PageGameRoundDTO {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageGameRoundDTO[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageGameRoundDTO[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PendingQuestionResponse[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PendingQuestionResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageGameRoundDTO(
-        totalElements: mapValueOfType<int>(json, r'totalElements'),
-        totalPages: mapValueOfType<int>(json, r'totalPages'),
-        sort: SortObject.fromJson(json[r'sort']),
-        numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
-        pageable: PageableObject.fromJson(json[r'pageable']),
-        first: mapValueOfType<bool>(json, r'first'),
-        last: mapValueOfType<bool>(json, r'last'),
-        size: mapValueOfType<int>(json, r'size'),
-        content: GameRoundDTO.listFromJson(json[r'content']),
-        number: mapValueOfType<int>(json, r'number'),
-        empty: mapValueOfType<bool>(json, r'empty'),
+      return PendingQuestionResponse(
+        id: mapValueOfType<int>(json, r'id'),
+        question: mapValueOfType<String>(json, r'question'),
+        groupId: mapValueOfType<int>(json, r'groupId'),
+        askedBy: mapValueOfType<String>(json, r'askedBy'),
+        status: mapValueOfType<String>(json, r'status'),
+        adminAnswer: mapValueOfType<String>(json, r'adminAnswer'),
+        knowledgeId: mapValueOfType<String>(json, r'knowledgeId'),
+        resolvedAt: mapDateTime(json, r'resolvedAt', r''),
+        createdAt: mapDateTime(json, r'createdAt', r''),
       );
     }
     return null;
   }
 
-  static List<PageGameRoundDTO> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageGameRoundDTO>[];
+  static List<PendingQuestionResponse> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PendingQuestionResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageGameRoundDTO.fromJson(row);
+        final value = PendingQuestionResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -234,12 +220,12 @@ class PageGameRoundDTO {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageGameRoundDTO> mapFromJson(dynamic json) {
-    final map = <String, PageGameRoundDTO>{};
+  static Map<String, PendingQuestionResponse> mapFromJson(dynamic json) {
+    final map = <String, PendingQuestionResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageGameRoundDTO.fromJson(entry.value);
+        final value = PendingQuestionResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -248,14 +234,14 @@ class PageGameRoundDTO {
     return map;
   }
 
-  // maps a json object with a list of PageGameRoundDTO-objects as value to a dart map
-  static Map<String, List<PageGameRoundDTO>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageGameRoundDTO>>{};
+  // maps a json object with a list of PendingQuestionResponse-objects as value to a dart map
+  static Map<String, List<PendingQuestionResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<PendingQuestionResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageGameRoundDTO.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = PendingQuestionResponse.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -265,5 +251,4 @@ class PageGameRoundDTO {
   static const requiredKeys = <String>{
   };
 }
-
 
