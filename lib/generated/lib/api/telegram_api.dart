@@ -16,7 +16,7 @@ class TelegramApi {
 
   final ApiClient apiClient;
 
-  /// 獲取群組活躍用戶統計
+  /// 統一更新群組設定（aiChatEnabled / replyMode / messageCountThreshold / minIntervalMinutes / personality / customPrompt）
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -25,30 +25,25 @@ class TelegramApi {
   /// * [int] groupId (required):
   ///   Telegram 群組 ID
   ///
-  /// * [int] limit:
-  ///   返回筆數上限
-  Future<Response> getGroupActiveUsersWithHttpInfo(int groupId, { int? limit, }) async {
+  /// * [GroupEditRequest] groupEditRequest (required):
+  Future<Response> editGroupWithHttpInfo(int groupId, GroupEditRequest groupEditRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/telegram-monitor/groups/{groupId}/active-users'
+    final path = r'/api/admin/telegram-monitor/groups/{groupId}/edit'
       .replaceAll('{groupId}', groupId.toString());
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = groupEditRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (limit != null) {
-      queryParams.addAll(_queryParams('', 'limit', limit));
-    }
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -57,17 +52,16 @@ class TelegramApi {
     );
   }
 
-  /// 獲取群組活躍用戶統計
+  /// 統一更新群組設定（aiChatEnabled / replyMode / messageCountThreshold / minIntervalMinutes / personality / customPrompt）
   ///
   /// Parameters:
   ///
   /// * [int] groupId (required):
   ///   Telegram 群組 ID
   ///
-  /// * [int] limit:
-  ///   返回筆數上限
-  Future<List<GroupActiveUserDTO>?> getGroupActiveUsers(int groupId, { int? limit, }) async {
-    final response = await getGroupActiveUsersWithHttpInfo(groupId,  limit: limit, );
+  /// * [GroupEditRequest] groupEditRequest (required):
+  Future<MonitoredGroupDTO?> editGroup(int groupId, GroupEditRequest groupEditRequest,) async {
+    final response = await editGroupWithHttpInfo(groupId, groupEditRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -75,16 +69,13 @@ class TelegramApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<GroupActiveUserDTO>') as List)
-        .cast<GroupActiveUserDTO>()
-        .toList(growable: false);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MonitoredGroupDTO',) as MonitoredGroupDTO;
+    
     }
     return null;
   }
 
-  /// 獲取群組活躍度統計
+  /// 獲取群組詳細資訊（活躍度統計 + 活躍用戶 + 最近消息）
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -92,9 +83,15 @@ class TelegramApi {
   ///
   /// * [int] groupId (required):
   ///   Telegram 群組 ID
-  Future<Response> getGroupActivityWithHttpInfo(int groupId,) async {
+  ///
+  /// * [int] userLimit:
+  ///   活躍用戶返回筆數上限
+  ///
+  /// * [int] messageLimit:
+  ///   最近消息返回筆數上限
+  Future<Response> getGroupDetailWithHttpInfo(int groupId, { int? userLimit, int? messageLimit, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/telegram-monitor/groups/{groupId}/activity'
+    final path = r'/api/admin/telegram-monitor/groups/{groupId}/detail'
       .replaceAll('{groupId}', groupId.toString());
 
     // ignore: prefer_final_locals
@@ -103,6 +100,13 @@ class TelegramApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+    if (userLimit != null) {
+      queryParams.addAll(_queryParams('', 'userLimit', userLimit));
+    }
+    if (messageLimit != null) {
+      queryParams.addAll(_queryParams('', 'messageLimit', messageLimit));
+    }
 
     const contentTypes = <String>[];
 
@@ -118,14 +122,20 @@ class TelegramApi {
     );
   }
 
-  /// 獲取群組活躍度統計
+  /// 獲取群組詳細資訊（活躍度統計 + 活躍用戶 + 最近消息）
   ///
   /// Parameters:
   ///
   /// * [int] groupId (required):
   ///   Telegram 群組 ID
-  Future<GroupActivityStatsDTO?> getGroupActivity(int groupId,) async {
-    final response = await getGroupActivityWithHttpInfo(groupId,);
+  ///
+  /// * [int] userLimit:
+  ///   活躍用戶返回筆數上限
+  ///
+  /// * [int] messageLimit:
+  ///   最近消息返回筆數上限
+  Future<GroupDetailDTO?> getGroupDetail(int groupId, { int? userLimit, int? messageLimit, }) async {
+    final response = await getGroupDetailWithHttpInfo(groupId,  userLimit: userLimit, messageLimit: messageLimit, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -133,7 +143,7 @@ class TelegramApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GroupActivityStatsDTO',) as GroupActivityStatsDTO;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GroupDetailDTO',) as GroupDetailDTO;
     
     }
     return null;
@@ -186,149 +196,7 @@ class TelegramApi {
     return null;
   }
 
-  /// 獲取群組最近消息緩衝
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] groupId (required):
-  ///   Telegram 群組 ID
-  ///
-  /// * [int] limit:
-  ///   返回筆數上限（最大 300）
-  Future<Response> getRecentMessagesWithHttpInfo(int groupId, { int? limit, }) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/admin/telegram-monitor/groups/{groupId}/messages'
-      .replaceAll('{groupId}', groupId.toString());
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    if (limit != null) {
-      queryParams.addAll(_queryParams('', 'limit', limit));
-    }
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 獲取群組最近消息緩衝
-  ///
-  /// Parameters:
-  ///
-  /// * [int] groupId (required):
-  ///   Telegram 群組 ID
-  ///
-  /// * [int] limit:
-  ///   返回筆數上限（最大 300）
-  Future<List<GroupMessageDTO>?> getRecentMessages(int groupId, { int? limit, }) async {
-    final response = await getRecentMessagesWithHttpInfo(groupId,  limit: limit, );
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<GroupMessageDTO>') as List)
-        .cast<GroupMessageDTO>()
-        .toList(growable: false);
-
-    }
-    return null;
-  }
-
-  /// 預覽當前群組訊息轉為 AI Prompt 的結果
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] groupId (required):
-  ///   Telegram 群組 ID
-  ///
-  /// * [int] limit:
-  ///   擷取上下文訊息數量
-  ///
-  /// * [String] triggerText:
-  ///   手動指定觸發訊息（可選）
-  Future<Response> previewGroupPromptWithHttpInfo(int groupId, { int? limit, String? triggerText, }) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/admin/telegram-monitor/groups/{groupId}/ai-prompt-preview'
-      .replaceAll('{groupId}', groupId.toString());
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    if (limit != null) {
-      queryParams.addAll(_queryParams('', 'limit', limit));
-    }
-    if (triggerText != null) {
-      queryParams.addAll(_queryParams('', 'triggerText', triggerText));
-    }
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 預覽當前群組訊息轉為 AI Prompt 的結果
-  ///
-  /// Parameters:
-  ///
-  /// * [int] groupId (required):
-  ///   Telegram 群組 ID
-  ///
-  /// * [int] limit:
-  ///   擷取上下文訊息數量
-  ///
-  /// * [String] triggerText:
-  ///   手動指定觸發訊息（可選）
-  Future<GroupAiPromptPreviewDTO?> previewGroupPrompt(int groupId, { int? limit, String? triggerText, }) async {
-    final response = await previewGroupPromptWithHttpInfo(groupId,  limit: limit, triggerText: triggerText, );
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GroupAiPromptPreviewDTO',) as GroupAiPromptPreviewDTO;
-    
-    }
-    return null;
-  }
-
-  /// 模擬 AI 生成群組消息（不實際發送到 Telegram）
+  /// 模擬 AI 生成群組消息（previewOnly=true 時只預覽 prompt，不呼叫 AI）
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -364,7 +232,7 @@ class TelegramApi {
     );
   }
 
-  /// 模擬 AI 生成群組消息（不實際發送到 Telegram）
+  /// 模擬 AI 生成群組消息（previewOnly=true 時只預覽 prompt，不呼叫 AI）
   ///
   /// Parameters:
   ///
@@ -382,128 +250,6 @@ class TelegramApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GroupAiSimulationResponseDTO',) as GroupAiSimulationResponseDTO;
-    
-    }
-    return null;
-  }
-
-  /// 設定群組 AI 聊天是否啟用
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] groupId (required):
-  ///   Telegram 群組 ID
-  ///
-  /// * [bool] enabled (required):
-  ///   是否啟用群組 AI 聊天
-  Future<Response> updateGroupAiEnabledWithHttpInfo(int groupId, bool enabled,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/admin/telegram-monitor/groups/{groupId}/ai-enabled'
-      .replaceAll('{groupId}', groupId.toString());
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'enabled', enabled));
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'PUT',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 設定群組 AI 聊天是否啟用
-  ///
-  /// Parameters:
-  ///
-  /// * [int] groupId (required):
-  ///   Telegram 群組 ID
-  ///
-  /// * [bool] enabled (required):
-  ///   是否啟用群組 AI 聊天
-  Future<MonitoredGroupDTO?> updateGroupAiEnabled(int groupId, bool enabled,) async {
-    final response = await updateGroupAiEnabledWithHttpInfo(groupId, enabled,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MonitoredGroupDTO',) as MonitoredGroupDTO;
-    
-    }
-    return null;
-  }
-
-  /// 設定群組手動 Prompt（可覆蓋預設 system prompt）
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] groupId (required):
-  ///   Telegram 群組 ID
-  ///
-  /// * [GroupAiPromptConfigRequest] groupAiPromptConfigRequest (required):
-  Future<Response> updateGroupPromptConfigWithHttpInfo(int groupId, GroupAiPromptConfigRequest groupAiPromptConfigRequest,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/admin/telegram-monitor/groups/{groupId}/ai-prompt-config'
-      .replaceAll('{groupId}', groupId.toString());
-
-    // ignore: prefer_final_locals
-    Object? postBody = groupAiPromptConfigRequest;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'PUT',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 設定群組手動 Prompt（可覆蓋預設 system prompt）
-  ///
-  /// Parameters:
-  ///
-  /// * [int] groupId (required):
-  ///   Telegram 群組 ID
-  ///
-  /// * [GroupAiPromptConfigRequest] groupAiPromptConfigRequest (required):
-  Future<MonitoredGroupDTO?> updateGroupPromptConfig(int groupId, GroupAiPromptConfigRequest groupAiPromptConfigRequest,) async {
-    final response = await updateGroupPromptConfigWithHttpInfo(groupId, groupAiPromptConfigRequest,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MonitoredGroupDTO',) as MonitoredGroupDTO;
     
     }
     return null;

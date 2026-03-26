@@ -15,6 +15,7 @@ class GroupAiSimulationRequest {
   GroupAiSimulationRequest({
     this.triggerText,
     this.contextLimit,
+    this.previewOnly,
   });
 
   /// 觸發訊息
@@ -23,19 +24,24 @@ class GroupAiSimulationRequest {
   /// 上下文訊息數量（最大 5）
   int? contextLimit;
 
+  /// 僅預覽 prompt，不呼叫 AI 生成（預設 false）
+  bool? previewOnly;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is GroupAiSimulationRequest &&
     other.triggerText == triggerText &&
-    other.contextLimit == contextLimit;
+    other.contextLimit == contextLimit &&
+    other.previewOnly == previewOnly;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (triggerText == null ? 0 : triggerText!.hashCode) +
-    (contextLimit == null ? 0 : contextLimit!.hashCode);
+    (contextLimit == null ? 0 : contextLimit!.hashCode) +
+    (previewOnly == null ? 0 : previewOnly!.hashCode);
 
   @override
-  String toString() => 'GroupAiSimulationRequest[triggerText=$triggerText, contextLimit=$contextLimit]';
+  String toString() => 'GroupAiSimulationRequest[triggerText=$triggerText, contextLimit=$contextLimit, previewOnly=$previewOnly]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -48,6 +54,11 @@ class GroupAiSimulationRequest {
       json[r'contextLimit'] = this.contextLimit;
     } else {
       json[r'contextLimit'] = null;
+    }
+    if (this.previewOnly != null) {
+      json[r'previewOnly'] = this.previewOnly;
+    } else {
+      json[r'previewOnly'] = null;
     }
     return json;
   }
@@ -73,6 +84,7 @@ class GroupAiSimulationRequest {
       return GroupAiSimulationRequest(
         triggerText: mapValueOfType<String>(json, r'triggerText'),
         contextLimit: mapValueOfType<int>(json, r'contextLimit'),
+        previewOnly: mapValueOfType<bool>(json, r'previewOnly'),
       );
     }
     return null;

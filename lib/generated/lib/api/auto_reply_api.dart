@@ -136,7 +136,7 @@ class AutoReplyApi {
   /// 獲取自動回復系統的統計信息
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> getStatsWithHttpInfo() async {
+  Future<Response> getStats1WithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/admin/auto-reply/stats';
 
@@ -164,8 +164,8 @@ class AutoReplyApi {
   /// 獲取統計信息
   ///
   /// 獲取自動回復系統的統計信息
-  Future<AutoReplyStats?> getStats() async {
-    final response = await getStatsWithHttpInfo();
+  Future<AutoReplyStats?> getStats1() async {
+    final response = await getStats1WithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

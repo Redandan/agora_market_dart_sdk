@@ -22,6 +22,10 @@ class MonitoredGroupDTO {
     required this.aiManualPromptEnabled,
     this.aiManualPromptText,
     required this.bufferedMessageCount,
+    this.replyMode,
+    this.messageCountThreshold,
+    this.minIntervalMinutes,
+    this.personality,
   });
 
   /// Telegram 群組 ID
@@ -51,6 +55,30 @@ class MonitoredGroupDTO {
   /// 當前緩衝消息數
   int bufferedMessageCount;
 
+  /// 回覆模式
+  MonitoredGroupDTOReplyModeEnum? replyMode;
+
+  /// ACTIVE 模式：累積幾條訊息後現身
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? messageCountThreshold;
+
+  /// ACTIVE 模式：兩次回覆最短間隔（分鐘）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? minIntervalMinutes;
+
+  /// AI 個性
+  MonitoredGroupDTOPersonalityEnum? personality;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is MonitoredGroupDTO &&
     other.groupId == groupId &&
@@ -61,7 +89,11 @@ class MonitoredGroupDTO {
     other.aiChatEnabled == aiChatEnabled &&
     other.aiManualPromptEnabled == aiManualPromptEnabled &&
     other.aiManualPromptText == aiManualPromptText &&
-    other.bufferedMessageCount == bufferedMessageCount;
+    other.bufferedMessageCount == bufferedMessageCount &&
+    other.replyMode == replyMode &&
+    other.messageCountThreshold == messageCountThreshold &&
+    other.minIntervalMinutes == minIntervalMinutes &&
+    other.personality == personality;
 
   @override
   int get hashCode =>
@@ -74,10 +106,14 @@ class MonitoredGroupDTO {
     (aiChatEnabled.hashCode) +
     (aiManualPromptEnabled.hashCode) +
     (aiManualPromptText == null ? 0 : aiManualPromptText!.hashCode) +
-    (bufferedMessageCount.hashCode);
+    (bufferedMessageCount.hashCode) +
+    (replyMode == null ? 0 : replyMode!.hashCode) +
+    (messageCountThreshold == null ? 0 : messageCountThreshold!.hashCode) +
+    (minIntervalMinutes == null ? 0 : minIntervalMinutes!.hashCode) +
+    (personality == null ? 0 : personality!.hashCode);
 
   @override
-  String toString() => 'MonitoredGroupDTO[groupId=$groupId, groupName=$groupName, groupType=$groupType, firstSeenAt=$firstSeenAt, lastMessageAt=$lastMessageAt, aiChatEnabled=$aiChatEnabled, aiManualPromptEnabled=$aiManualPromptEnabled, aiManualPromptText=$aiManualPromptText, bufferedMessageCount=$bufferedMessageCount]';
+  String toString() => 'MonitoredGroupDTO[groupId=$groupId, groupName=$groupName, groupType=$groupType, firstSeenAt=$firstSeenAt, lastMessageAt=$lastMessageAt, aiChatEnabled=$aiChatEnabled, aiManualPromptEnabled=$aiManualPromptEnabled, aiManualPromptText=$aiManualPromptText, bufferedMessageCount=$bufferedMessageCount, replyMode=$replyMode, messageCountThreshold=$messageCountThreshold, minIntervalMinutes=$minIntervalMinutes, personality=$personality]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -102,6 +138,26 @@ class MonitoredGroupDTO {
       json[r'aiManualPromptText'] = null;
     }
       json[r'bufferedMessageCount'] = this.bufferedMessageCount;
+    if (this.replyMode != null) {
+      json[r'replyMode'] = this.replyMode;
+    } else {
+      json[r'replyMode'] = null;
+    }
+    if (this.messageCountThreshold != null) {
+      json[r'messageCountThreshold'] = this.messageCountThreshold;
+    } else {
+      json[r'messageCountThreshold'] = null;
+    }
+    if (this.minIntervalMinutes != null) {
+      json[r'minIntervalMinutes'] = this.minIntervalMinutes;
+    } else {
+      json[r'minIntervalMinutes'] = null;
+    }
+    if (this.personality != null) {
+      json[r'personality'] = this.personality;
+    } else {
+      json[r'personality'] = null;
+    }
     return json;
   }
 
@@ -133,6 +189,10 @@ class MonitoredGroupDTO {
         aiManualPromptEnabled: mapValueOfType<bool>(json, r'aiManualPromptEnabled')!,
         aiManualPromptText: mapValueOfType<String>(json, r'aiManualPromptText'),
         bufferedMessageCount: mapValueOfType<int>(json, r'bufferedMessageCount')!,
+        replyMode: MonitoredGroupDTOReplyModeEnum.fromJson(json[r'replyMode']),
+        messageCountThreshold: mapValueOfType<int>(json, r'messageCountThreshold'),
+        minIntervalMinutes: mapValueOfType<int>(json, r'minIntervalMinutes'),
+        personality: MonitoredGroupDTOPersonalityEnum.fromJson(json[r'personality']),
       );
     }
     return null;
@@ -188,4 +248,167 @@ class MonitoredGroupDTO {
     'bufferedMessageCount',
   };
 }
+
+/// 回覆模式
+class MonitoredGroupDTOReplyModeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const MonitoredGroupDTOReplyModeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const ACTIVE = MonitoredGroupDTOReplyModeEnum._(r'ACTIVE');
+  static const PASSIVE = MonitoredGroupDTOReplyModeEnum._(r'PASSIVE');
+  static const DISABLED = MonitoredGroupDTOReplyModeEnum._(r'DISABLED');
+  static const unknownDefaultOpenApi = MonitoredGroupDTOReplyModeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][MonitoredGroupDTOReplyModeEnum].
+  static const values = <MonitoredGroupDTOReplyModeEnum>[
+    ACTIVE,
+    PASSIVE,
+    DISABLED,
+    unknownDefaultOpenApi,
+  ];
+
+  static MonitoredGroupDTOReplyModeEnum? fromJson(dynamic value) => MonitoredGroupDTOReplyModeEnumTypeTransformer().decode(value);
+
+  static List<MonitoredGroupDTOReplyModeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <MonitoredGroupDTOReplyModeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = MonitoredGroupDTOReplyModeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [MonitoredGroupDTOReplyModeEnum] to String,
+/// and [decode] dynamic data back to [MonitoredGroupDTOReplyModeEnum].
+class MonitoredGroupDTOReplyModeEnumTypeTransformer {
+  factory MonitoredGroupDTOReplyModeEnumTypeTransformer() => _instance ??= const MonitoredGroupDTOReplyModeEnumTypeTransformer._();
+
+  const MonitoredGroupDTOReplyModeEnumTypeTransformer._();
+
+  String encode(MonitoredGroupDTOReplyModeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a MonitoredGroupDTOReplyModeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  MonitoredGroupDTOReplyModeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'ACTIVE': return MonitoredGroupDTOReplyModeEnum.ACTIVE;
+        case r'PASSIVE': return MonitoredGroupDTOReplyModeEnum.PASSIVE;
+        case r'DISABLED': return MonitoredGroupDTOReplyModeEnum.DISABLED;
+        case r'unknown_default_open_api': return MonitoredGroupDTOReplyModeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [MonitoredGroupDTOReplyModeEnumTypeTransformer] instance.
+  static MonitoredGroupDTOReplyModeEnumTypeTransformer? _instance;
+}
+
+
+/// AI 個性
+class MonitoredGroupDTOPersonalityEnum {
+  /// Instantiate a new enum with the provided [value].
+  const MonitoredGroupDTOPersonalityEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const FRIENDLY = MonitoredGroupDTOPersonalityEnum._(r'FRIENDLY');
+  static const PROFESSIONAL = MonitoredGroupDTOPersonalityEnum._(r'PROFESSIONAL');
+  static const HUMOROUS = MonitoredGroupDTOPersonalityEnum._(r'HUMOROUS');
+  static const CUSTOM = MonitoredGroupDTOPersonalityEnum._(r'CUSTOM');
+  static const unknownDefaultOpenApi = MonitoredGroupDTOPersonalityEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][MonitoredGroupDTOPersonalityEnum].
+  static const values = <MonitoredGroupDTOPersonalityEnum>[
+    FRIENDLY,
+    PROFESSIONAL,
+    HUMOROUS,
+    CUSTOM,
+    unknownDefaultOpenApi,
+  ];
+
+  static MonitoredGroupDTOPersonalityEnum? fromJson(dynamic value) => MonitoredGroupDTOPersonalityEnumTypeTransformer().decode(value);
+
+  static List<MonitoredGroupDTOPersonalityEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <MonitoredGroupDTOPersonalityEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = MonitoredGroupDTOPersonalityEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [MonitoredGroupDTOPersonalityEnum] to String,
+/// and [decode] dynamic data back to [MonitoredGroupDTOPersonalityEnum].
+class MonitoredGroupDTOPersonalityEnumTypeTransformer {
+  factory MonitoredGroupDTOPersonalityEnumTypeTransformer() => _instance ??= const MonitoredGroupDTOPersonalityEnumTypeTransformer._();
+
+  const MonitoredGroupDTOPersonalityEnumTypeTransformer._();
+
+  String encode(MonitoredGroupDTOPersonalityEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a MonitoredGroupDTOPersonalityEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  MonitoredGroupDTOPersonalityEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'FRIENDLY': return MonitoredGroupDTOPersonalityEnum.FRIENDLY;
+        case r'PROFESSIONAL': return MonitoredGroupDTOPersonalityEnum.PROFESSIONAL;
+        case r'HUMOROUS': return MonitoredGroupDTOPersonalityEnum.HUMOROUS;
+        case r'CUSTOM': return MonitoredGroupDTOPersonalityEnum.CUSTOM;
+        case r'unknown_default_open_api': return MonitoredGroupDTOPersonalityEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [MonitoredGroupDTOPersonalityEnumTypeTransformer] instance.
+  static MonitoredGroupDTOPersonalityEnumTypeTransformer? _instance;
+}
+
 

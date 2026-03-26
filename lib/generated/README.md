@@ -157,6 +157,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**updateCartItem**](doc//DefaultApi.md#updatecartitem) | **PUT** /api/cart/{cartItemId} | 更新購物車項目
 *DefaultApi* | [**updatePost**](doc//DefaultApi.md#updatepost) | **PUT** /api/posts | 更新貼文
 *DefaultApi* | [**validatePostalCode**](doc//DefaultApi.md#validatepostalcode) | **GET** /api/logistics/postal-codes/{postalCode}/validate | 郵遞區號驗證
+*AdminAiControllerApi* | [**getStats**](doc//AdminAiControllerApi.md#getstats) | **GET** /api/admin/ai/stats | 
 *AdminBotControllerApi* | [**refreshBotCommands**](doc//AdminBotControllerApi.md#refreshbotcommands) | **POST** /api/admin/bot/refresh-commands | 
 *AdminDeliveryApi* | [**assignDeliveryer**](doc//AdminDeliveryApi.md#assigndeliveryer) | **POST** /admin/delivery/orders/{orderId}/assign | 手動分配配送員
 *AdminDeliveryApi* | [**getDeliveryOrderDetail**](doc//AdminDeliveryApi.md#getdeliveryorderdetail) | **GET** /admin/delivery/orders/{orderId} | 查看配送訂單詳情
@@ -246,7 +247,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**verifyTwoFactorCode**](doc//AuthApi.md#verifytwofactorcode) | **POST** /auth/2fa/verify | 驗證雙因素認證碼
 *AutoReplyApi* | [**createConfig**](doc//AutoReplyApi.md#createconfig) | **POST** /admin/auto-reply/configs | 創建新配置
 *AutoReplyApi* | [**deleteConfig**](doc//AutoReplyApi.md#deleteconfig) | **DELETE** /admin/auto-reply/configs/{id} | 刪除配置
-*AutoReplyApi* | [**getStats**](doc//AutoReplyApi.md#getstats) | **GET** /admin/auto-reply/stats | 獲取統計信息
+*AutoReplyApi* | [**getStats1**](doc//AutoReplyApi.md#getstats1) | **GET** /admin/auto-reply/stats | 獲取統計信息
 *AutoReplyApi* | [**resetStats**](doc//AutoReplyApi.md#resetstats) | **POST** /admin/auto-reply/stats/reset | 重置統計
 *AutoReplyApi* | [**searchConfigs**](doc//AutoReplyApi.md#searchconfigs) | **POST** /admin/auto-reply/configs/search | 搜尋自動回復配置
 *AutoReplyApi* | [**toggleConfig**](doc//AutoReplyApi.md#toggleconfig) | **PUT** /admin/auto-reply/configs/{id}/toggle | 啟用/禁用配置
@@ -440,14 +441,10 @@ Class | Method | HTTP request | Description
 *TGApi* | [**getPlayerRounds**](doc//TGApi.md#getplayerrounds) | **GET** /tg-game/rounds | 查詢玩家流水
 *TGApi* | [**searchActivities**](doc//TGApi.md#searchactivities) | **POST** /tg-game/activity/search | 查詢活動
 *TGApi* | [**updateActivity**](doc//TGApi.md#updateactivity) | **PUT** /tg-game/activity/{id} | 更新活動
-*TelegramApi* | [**getGroupActiveUsers**](doc//TelegramApi.md#getgroupactiveusers) | **GET** /api/admin/telegram-monitor/groups/{groupId}/active-users | 獲取群組活躍用戶統計
-*TelegramApi* | [**getGroupActivity**](doc//TelegramApi.md#getgroupactivity) | **GET** /api/admin/telegram-monitor/groups/{groupId}/activity | 獲取群組活躍度統計
+*TelegramApi* | [**editGroup**](doc//TelegramApi.md#editgroup) | **POST** /api/admin/telegram-monitor/groups/{groupId}/edit | 統一更新群組設定（aiChatEnabled / replyMode / messageCountThreshold / minIntervalMinutes / personality / customPrompt）
+*TelegramApi* | [**getGroupDetail**](doc//TelegramApi.md#getgroupdetail) | **GET** /api/admin/telegram-monitor/groups/{groupId}/detail | 獲取群組詳細資訊（活躍度統計 + 活躍用戶 + 最近消息）
 *TelegramApi* | [**getGroups**](doc//TelegramApi.md#getgroups) | **GET** /api/admin/telegram-monitor/groups | 獲取已監聽群組列表
-*TelegramApi* | [**getRecentMessages**](doc//TelegramApi.md#getrecentmessages) | **GET** /api/admin/telegram-monitor/groups/{groupId}/messages | 獲取群組最近消息緩衝
-*TelegramApi* | [**previewGroupPrompt**](doc//TelegramApi.md#previewgroupprompt) | **GET** /api/admin/telegram-monitor/groups/{groupId}/ai-prompt-preview | 預覽當前群組訊息轉為 AI Prompt 的結果
-*TelegramApi* | [**simulateGroupMessage**](doc//TelegramApi.md#simulategroupmessage) | **POST** /api/admin/telegram-monitor/groups/{groupId}/ai-simulate | 模擬 AI 生成群組消息（不實際發送到 Telegram）
-*TelegramApi* | [**updateGroupAiEnabled**](doc//TelegramApi.md#updategroupaienabled) | **PUT** /api/admin/telegram-monitor/groups/{groupId}/ai-enabled | 設定群組 AI 聊天是否啟用
-*TelegramApi* | [**updateGroupPromptConfig**](doc//TelegramApi.md#updategrouppromptconfig) | **PUT** /api/admin/telegram-monitor/groups/{groupId}/ai-prompt-config | 設定群組手動 Prompt（可覆蓋預設 system prompt）
+*TelegramApi* | [**simulateGroupMessage**](doc//TelegramApi.md#simulategroupmessage) | **POST** /api/admin/telegram-monitor/groups/{groupId}/ai-simulate | 模擬 AI 生成群組消息（previewOnly=true 時只預覽 prompt，不呼叫 AI）
 *TelegramBotLoginApi* | [**generateLoginToken**](doc//TelegramBotLoginApi.md#generatelogintoken) | **POST** /auth/telegram-bot/generate-login-token | 生成登录 loginToken
 *TelegramBotLoginApi* | [**verifyCode**](doc//TelegramBotLoginApi.md#verifycode) | **POST** /auth/telegram-bot/verify-code | 验证验证码
 *TelegramWebappAuthApi* | [**exchangeJwt**](doc//TelegramWebappAuthApi.md#exchangejwt) | **POST** /auth/telegram-webapp/exchange-jwt | Telegram WebApp 交換 JWT
@@ -611,12 +608,14 @@ Class | Method | HTTP request | Description
  - [FlutterAppDeploymentResponse](doc//FlutterAppDeploymentResponse.md)
  - [GameRoundDTO](doc//GameRoundDTO.md)
  - [GenerateLoginTokenRequest](doc//GenerateLoginTokenRequest.md)
+ - [GroqUsageStatsDTO](doc//GroqUsageStatsDTO.md)
  - [GroupActiveUserDTO](doc//GroupActiveUserDTO.md)
  - [GroupActivityStatsDTO](doc//GroupActivityStatsDTO.md)
- - [GroupAiPromptConfigRequest](doc//GroupAiPromptConfigRequest.md)
  - [GroupAiPromptPreviewDTO](doc//GroupAiPromptPreviewDTO.md)
  - [GroupAiSimulationRequest](doc//GroupAiSimulationRequest.md)
  - [GroupAiSimulationResponseDTO](doc//GroupAiSimulationResponseDTO.md)
+ - [GroupDetailDTO](doc//GroupDetailDTO.md)
+ - [GroupEditRequest](doc//GroupEditRequest.md)
  - [GroupMessageDTO](doc//GroupMessageDTO.md)
  - [HourlyStatDto](doc//HourlyStatDto.md)
  - [ImportResult](doc//ImportResult.md)

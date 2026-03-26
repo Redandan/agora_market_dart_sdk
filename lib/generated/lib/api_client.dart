@@ -424,18 +424,22 @@ class ApiClient {
           return GameRoundDTO.fromJson(value);
         case 'GenerateLoginTokenRequest':
           return GenerateLoginTokenRequest.fromJson(value);
+        case 'GroqUsageStatsDTO':
+          return GroqUsageStatsDTO.fromJson(value);
         case 'GroupActiveUserDTO':
           return GroupActiveUserDTO.fromJson(value);
         case 'GroupActivityStatsDTO':
           return GroupActivityStatsDTO.fromJson(value);
-        case 'GroupAiPromptConfigRequest':
-          return GroupAiPromptConfigRequest.fromJson(value);
         case 'GroupAiPromptPreviewDTO':
           return GroupAiPromptPreviewDTO.fromJson(value);
         case 'GroupAiSimulationRequest':
           return GroupAiSimulationRequest.fromJson(value);
         case 'GroupAiSimulationResponseDTO':
           return GroupAiSimulationResponseDTO.fromJson(value);
+        case 'GroupDetailDTO':
+          return GroupDetailDTO.fromJson(value);
+        case 'GroupEditRequest':
+          return GroupEditRequest.fromJson(value);
         case 'GroupMessageDTO':
           return GroupMessageDTO.fromJson(value);
         case 'HourlyStatDto':
