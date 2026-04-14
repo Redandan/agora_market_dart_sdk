@@ -56,10 +56,15 @@ java -jar "$GENERATOR_JAR" generate \
 echo "==> Repairing list serialization"
 bash ci/repair_models.sh "$GENERATED_DIR/lib/model"
 
-echo "==> Running build_runner inside $GENERATED_DIR"
+echo "==> Running dart pub get + build_runner inside $GENERATED_DIR"
 pushd "$GENERATED_DIR" > /dev/null
 dart pub get
-dart run build_runner build --delete-conflicting-outputs
+# build_runner is optional — skip if the generated pubspec doesn't declare it
+if grep -q '^\s*build_runner:' pubspec.yaml; then
+    dart run build_runner build --delete-conflicting-outputs
+else
+    echo "build_runner not in pubspec — skipping (no .g.dart generation needed)"
+fi
 popd > /dev/null
 
 echo "==> Done"
