@@ -44,6 +44,12 @@ class MarketResponse {
   String title;
 
   /// 市場描述
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? description;
 
   /// 市場類型
@@ -56,52 +62,142 @@ class MarketResponse {
   int creatorId;
 
   /// 創建者用戶名
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? creatorUsername;
 
   /// 總獎池金額
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? totalPool;
 
   /// 最小投注金額
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? minBetAmount;
 
   /// 最大投注金額
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? maxBetAmount;
 
   /// 平台手續費百分比
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? feePercentage;
 
   /// 開始時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? startTime;
 
   /// 結束時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? endTime;
 
   /// 結算時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? resolutionTime;
 
   /// 結算依據/證明
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? resolutionSource;
 
   /// 市場圖片URL
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? imageUrl;
 
   /// 市場分類
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? category;
 
   /// 是否為精選市場
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? isFeatured;
 
   /// 總參與人數
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? totalParticipants;
 
   /// 創建時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? createdAt;
 
   /// 更新時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? updatedAt;
 
   /// 市場選項列表
-  List<MarketOptionResponse>? options;
+  List<MarketOptionResponse> options;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is MarketResponse &&
@@ -152,7 +248,7 @@ class MarketResponse {
     (totalParticipants == null ? 0 : totalParticipants!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (options == null ? 0 : options!.hashCode);
+    (options.hashCode);
 
   @override
   String toString() => 'MarketResponse[id=$id, title=$title, description=$description, type=$type, status=$status, creatorId=$creatorId, creatorUsername=$creatorUsername, totalPool=$totalPool, minBetAmount=$minBetAmount, maxBetAmount=$maxBetAmount, feePercentage=$feePercentage, startTime=$startTime, endTime=$endTime, resolutionTime=$resolutionTime, resolutionSource=$resolutionSource, imageUrl=$imageUrl, category=$category, isFeatured=$isFeatured, totalParticipants=$totalParticipants, createdAt=$createdAt, updatedAt=$updatedAt, options=$options]';
@@ -244,11 +340,7 @@ class MarketResponse {
     } else {
       json[r'updatedAt'] = null;
     }
-    if (this.options != null) {
-      json[r'options'] = this.options;
-    } else {
-      json[r'options'] = null;
-    }
+      json[r'options'] = this.options.map((e) => e.toJson()).toList();
     return json;
   }
 
@@ -278,18 +370,10 @@ class MarketResponse {
         status: MarketResponseStatusEnum.fromJson(json[r'status'])!,
         creatorId: mapValueOfType<int>(json, r'creatorId')!,
         creatorUsername: mapValueOfType<String>(json, r'creatorUsername'),
-        totalPool: json[r'totalPool'] == null
-            ? null
-            : num.parse('${json[r'totalPool']}'),
-        minBetAmount: json[r'minBetAmount'] == null
-            ? null
-            : num.parse('${json[r'minBetAmount']}'),
-        maxBetAmount: json[r'maxBetAmount'] == null
-            ? null
-            : num.parse('${json[r'maxBetAmount']}'),
-        feePercentage: json[r'feePercentage'] == null
-            ? null
-            : num.parse('${json[r'feePercentage']}'),
+        totalPool: num.parse('${json[r'totalPool']}'),
+        minBetAmount: num.parse('${json[r'minBetAmount']}'),
+        maxBetAmount: num.parse('${json[r'maxBetAmount']}'),
+        feePercentage: num.parse('${json[r'feePercentage']}'),
         startTime: mapDateTime(json, r'startTime', r''),
         endTime: mapDateTime(json, r'endTime', r''),
         resolutionTime: mapDateTime(json, r'resolutionTime', r''),

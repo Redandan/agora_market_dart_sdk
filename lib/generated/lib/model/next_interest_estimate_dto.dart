@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -23,14 +23,16 @@ class NextInterestEstimateDTO {
     this.details = const [],
   });
 
-  /// 銝活?潭??嚗葆??嚗SO-8601?澆?嚗?  ///
+  /// 下次發放時間（帶時區，ISO-8601格式）
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? nextSettlementTime;
-  /// ???潭?釭?潸??
+
+  /// 預計發放的質押記錄數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -38,7 +40,8 @@ class NextInterestEstimateDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? estimatedStakingCount;
-  /// ???潭?蜇?嗥???
+
+  /// 預計發放的總收益金額
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -46,14 +49,17 @@ class NextInterestEstimateDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? totalEstimatedInterest;
-  /// 撟喳?瘥?鞈芣??閮??  ///
+
+  /// 平均每筆質押的預計收益
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? averageEstimatedInterest;
-  /// ?????蜇鞈芣??
+
+  /// 預計參與的總質押金額
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -61,23 +67,28 @@ class NextInterestEstimateDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? totalStakedAmount;
-  /// ?嗅?撟游??  ///
+
+  /// 當前年利率
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? annualInterestRate;
-  /// ?嗅??亙??  ///
+
+  /// 當前日利率
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? dailyInterestRate;
-  /// ?釭?潸???閰喟敦?摯?”
 
+  /// 按質押記錄的詳細預估列表
   List<StakingInterestDetail> details;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is NextInterestEstimateDTO &&
     other.nextSettlementTime == nextSettlementTime &&
@@ -221,5 +232,4 @@ class NextInterestEstimateDTO {
   static const requiredKeys = <String>{
   };
 }
-
 

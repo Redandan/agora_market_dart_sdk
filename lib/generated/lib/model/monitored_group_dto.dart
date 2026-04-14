@@ -32,6 +32,12 @@ class MonitoredGroupDTO {
   int groupId;
 
   /// 群組名稱
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? groupName;
 
   /// 群組類型
@@ -41,6 +47,12 @@ class MonitoredGroupDTO {
   DateTime firstSeenAt;
 
   /// 最近消息時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? lastMessageAt;
 
   /// 是否啟用群組 AI 聊天
@@ -50,6 +62,12 @@ class MonitoredGroupDTO {
   bool aiManualPromptEnabled;
 
   /// 手動 Prompt 內容
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? aiManualPromptText;
 
   /// 當前緩衝消息數

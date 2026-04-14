@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -18,14 +18,15 @@ class GroupDetailDTO {
     this.messages = const [],
   });
 
+  /// 活躍度統計
   GroupActivityStatsDTO activity;
 
-  /// 瘣餉??冽?”
-
+  /// 活躍用戶列表
   List<GroupActiveUserDTO> activeUsers;
-  /// ?餈??臬?銵?
 
+  /// 最近消息列表
   List<GroupMessageDTO> messages;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is GroupDetailDTO &&
     other.activity == activity &&
@@ -124,5 +125,4 @@ class GroupDetailDTO {
     'messages',
   };
 }
-
 

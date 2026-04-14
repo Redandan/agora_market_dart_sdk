@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -36,7 +36,7 @@ class UserInfo {
     this.defaultHomePage,
   });
 
-  /// ?冽ID
+  /// 用戶ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -44,14 +44,17 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? id;
-  /// ?冽??  ///
+
+  /// 用戶名
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? username;
-  /// ?萇拳
+
+  /// 郵箱
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -59,14 +62,17 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? email;
-  /// ?萇拳?臬撌脤?霅?  ///
+
+  /// 郵箱是否已驗證
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? emailVerified;
-  /// 閫
+
+  /// 角色
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -74,7 +80,8 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? role;
-  /// 擗?
+
+  /// 餘額
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -82,14 +89,17 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? balance;
-  /// 鞈潛頠????  ///
+
+  /// 購物車商品數量
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? cartItemCount;
-  /// 鞈芣擗?
+
+  /// 質押餘額
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -97,14 +107,17 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? stackingBalance;
-  /// 蝮質??ｇ?擗? + 鞈芣擗?嚗?  ///
+
+  /// 總資產（餘額 + 質押餘額）
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? totalAssets;
-  /// ??擗?
+
+  /// 凍結餘額
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -112,7 +125,8 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? freezeBalance;
-  /// ?臬?
+
+  /// 是否啟用
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -120,7 +134,8 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? enabled;
-  /// ?亥岷??
+
+  /// 查詢時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -128,7 +143,8 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? queryTime;
-  /// 摨?迂
+
+  /// 店鋪名稱
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -136,7 +152,8 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? storeName;
-  /// ?典誨憭找蝙?迂
+
+  /// 推廣大使名稱
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -144,7 +161,8 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? ambassadorName;
-  /// 憿舐內??迂
+
+  /// 顯示配送員名稱
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -152,7 +170,8 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? displayDeliveryerName;
-  /// ?剖?URL
+
+  /// 頭像URL
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -160,24 +179,29 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? avatar;
-  /// 擗?撠隞?撟????
 
+  /// 餘額對其他法幣的換算
   List<BalanceConversion> balanceConversions;
-  /// 鞈?振?亙?臬蝬剛風銝?  ///
+
+  /// 賣家入口是否維護中
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? sellerMaintenance;
-  /// 憭?亙?臬蝬剛風銝?  ///
+
+  /// 外送員入口是否維護中
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? deliveryMaintenance;
-  /// ?芾?閮?賊?
+
+  /// 未讀訊息數量
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -185,13 +209,10 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? unreadMessageCount;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DefaultHomePageEnum? defaultHomePage;
+
+  /// 默認首頁設置
+  UserInfoDefaultHomePageEnum? defaultHomePage;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserInfo &&
     other.id == id &&
@@ -389,7 +410,7 @@ class UserInfo {
         sellerMaintenance: mapValueOfType<bool>(json, r'sellerMaintenance'),
         deliveryMaintenance: mapValueOfType<bool>(json, r'deliveryMaintenance'),
         unreadMessageCount: mapValueOfType<int>(json, r'unreadMessageCount'),
-        defaultHomePage: DefaultHomePageEnum.fromJson(json[r'defaultHomePage']),
+        defaultHomePage: UserInfoDefaultHomePageEnum.fromJson(json[r'defaultHomePage']),
       );
     }
     return null;
@@ -438,6 +459,88 @@ class UserInfo {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
   };
+}
+
+/// 默認首頁設置
+class UserInfoDefaultHomePageEnum {
+  /// Instantiate a new enum with the provided [value].
+  const UserInfoDefaultHomePageEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const BUYER = UserInfoDefaultHomePageEnum._(r'BUYER');
+  static const SELLER = UserInfoDefaultHomePageEnum._(r'SELLER');
+  static const DELIVERYER = UserInfoDefaultHomePageEnum._(r'DELIVERYER');
+  static const ADMIN = UserInfoDefaultHomePageEnum._(r'ADMIN');
+  static const unknownDefaultOpenApi = UserInfoDefaultHomePageEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][UserInfoDefaultHomePageEnum].
+  static const values = <UserInfoDefaultHomePageEnum>[
+    BUYER,
+    SELLER,
+    DELIVERYER,
+    ADMIN,
+    unknownDefaultOpenApi,
+  ];
+
+  static UserInfoDefaultHomePageEnum? fromJson(dynamic value) => UserInfoDefaultHomePageEnumTypeTransformer().decode(value);
+
+  static List<UserInfoDefaultHomePageEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <UserInfoDefaultHomePageEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = UserInfoDefaultHomePageEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [UserInfoDefaultHomePageEnum] to String,
+/// and [decode] dynamic data back to [UserInfoDefaultHomePageEnum].
+class UserInfoDefaultHomePageEnumTypeTransformer {
+  factory UserInfoDefaultHomePageEnumTypeTransformer() => _instance ??= const UserInfoDefaultHomePageEnumTypeTransformer._();
+
+  const UserInfoDefaultHomePageEnumTypeTransformer._();
+
+  String encode(UserInfoDefaultHomePageEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a UserInfoDefaultHomePageEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  UserInfoDefaultHomePageEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'BUYER': return UserInfoDefaultHomePageEnum.BUYER;
+        case r'SELLER': return UserInfoDefaultHomePageEnum.SELLER;
+        case r'DELIVERYER': return UserInfoDefaultHomePageEnum.DELIVERYER;
+        case r'ADMIN': return UserInfoDefaultHomePageEnum.ADMIN;
+        case r'unknown_default_open_api': return UserInfoDefaultHomePageEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [UserInfoDefaultHomePageEnumTypeTransformer] instance.
+  static UserInfoDefaultHomePageEnumTypeTransformer? _instance;
 }
 
 

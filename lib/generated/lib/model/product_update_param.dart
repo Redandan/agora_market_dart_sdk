@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -41,10 +41,10 @@ class ProductUpdateParam {
     this.purchaseUrl,
   });
 
-  /// ??ID
-
+  /// 商品ID
   String id;
-  /// ???迂
+
+  /// 商品名稱
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -52,7 +52,8 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? name;
-  /// ???寞
+
+  /// 商品價格
   ///
   /// Minimum value: 0.0
   ///
@@ -62,9 +63,11 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? price;
-  SupportedCurrencyEnum? currency;
 
-  /// ??摨怠?
+  /// 貨幣類型
+  ProductUpdateParamCurrencyEnum currency;
+
+  /// 商品庫存
   ///
   /// Minimum value: 0
   ///
@@ -74,7 +77,8 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? stock;
-  /// ???膩
+
+  /// 商品描述
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -82,7 +86,8 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? description;
-  /// ????
+
+  /// 商品分類
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -90,10 +95,11 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? category;
-  /// ????URL??
 
+  /// 商品圖片URL集合
   Set<String> imageUrls;
-  /// ?疏?啣?
+
+  /// 取貨地址
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -101,7 +107,8 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? pickupAddress;
-  /// ?辣?啣?蝬漲
+
+  /// 取件地址經度
   ///
   /// Minimum value: -180.0
   /// Maximum value: 180.0
@@ -112,7 +119,8 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? pickupLongitude;
-  /// ?辣?啣?蝺臬漲
+
+  /// 取件地址緯度
   ///
   /// Minimum value: -90.0
   /// Maximum value: 90.0
@@ -123,7 +131,8 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? pickupLatitude;
-  /// ?疏????
+
+  /// 取貨開始時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -131,7 +140,8 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? pickupTimeStart;
-  /// ?疏蝯???
+
+  /// 取貨結束時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -139,24 +149,23 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? pickupTimeEnd;
-  /// ?撟喳??  ///
+
+  /// 啟用平台配送
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? enablePlatformDelivery;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  ProductStatusEnum? status;
-  /// ??SKU??蝣潮???
 
+  /// 商品狀態
+  ProductUpdateParamStatusEnum? status;
+
+  /// 商品SKU或條碼集合
   Set<String> skus;
-  /// ???迂
+
+  /// 品牌名稱
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -164,7 +173,8 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? brand;
-  /// ?箄疏皞???嚗???
+
+  /// 出貨準備時間（小時）
   ///
   /// Minimum value: 0
   ///
@@ -174,14 +184,17 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? shippingPreparationHours;
-  /// ?箄疏?芣迫??嚗?憭拙嗾暺?銝?嗅予?箄疏嚗?  ///
+
+  /// 出貨截止時間（每天幾點前下單當天出貨）
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? dailyShippingDeadline;
-  /// ?箄疏?酉
+
+  /// 出貨備註
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -189,7 +202,8 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? shippingDescription;
-  /// ?臬?舀????箄疏?交?
+
+  /// 是否支持指定出貨日期
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -197,7 +211,8 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? supportsScheduledShipping;
-  /// ?舫???箄疏?交?蝭?嚗予?賂?
+
+  /// 可選擇的出貨日期範圍（天數）
   ///
   /// Minimum value: 1
   ///
@@ -207,13 +222,15 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? shippingDateRange;
-  /// ?舀??鞎冽?????
 
-  List<PickupServiceTypeEnum> pickupServiceTypes;
-  /// ??鞎冽?????鞎餃??”
+  /// 支援的取貨服務類型
+  List<ProductUpdateParamPickupServiceTypesEnum> pickupServiceTypes;
 
+  /// 各取貨服務類型運費對應表
   Map<String, num> pickupServiceTypeFees;
-  /// ??鞎駁?瑼?  ///
+
+  /// 免運費門檻
+  ///
   /// Minimum value: 0.0
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -222,7 +239,8 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? freeShippingThreshold;
-  /// 隞?頃銝URL(?芸?鞈?振撅內)
+
+  /// 代購下單URL(只對賣家展示)
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -230,6 +248,7 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? purchaseUrl;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductUpdateParam &&
     other.id == id &&
@@ -265,7 +284,7 @@ class ProductUpdateParam {
     (id.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (price == null ? 0 : price!.hashCode) +
-    (currency == null ? 0 : currency!.hashCode) +
+    (currency.hashCode) +
     (stock == null ? 0 : stock!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (category == null ? 0 : category!.hashCode) +
@@ -305,11 +324,7 @@ class ProductUpdateParam {
     } else {
       json[r'price'] = null;
     }
-    if (this.currency != null) {
       json[r'currency'] = this.currency;
-    } else {
-      json[r'currency'] = null;
-    }
     if (this.stock != null) {
       json[r'stock'] = this.stock;
     } else {
@@ -392,7 +407,7 @@ class ProductUpdateParam {
     } else {
       json[r'shippingDateRange'] = null;
     }
-      json[r'pickupServiceTypes'] = this.pickupServiceTypes.map((e) => e.toJson()).toList();
+      json[r'pickupServiceTypes'] = this.pickupServiceTypes;
       json[r'pickupServiceTypeFees'] = this.pickupServiceTypeFees;
     if (this.freeShippingThreshold != null) {
       json[r'freeShippingThreshold'] = this.freeShippingThreshold;
@@ -429,7 +444,7 @@ class ProductUpdateParam {
         id: mapValueOfType<String>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name'),
         price: num.parse('${json[r'price']}'),
-        currency: SupportedCurrencyEnum.fromJson(json[r'currency']),
+        currency: ProductUpdateParamCurrencyEnum.fromJson(json[r'currency'])!,
         stock: mapValueOfType<int>(json, r'stock'),
         description: mapValueOfType<String>(json, r'description'),
         category: mapValueOfType<String>(json, r'category'),
@@ -442,7 +457,7 @@ class ProductUpdateParam {
         pickupTimeStart: mapValueOfType<String>(json, r'pickupTimeStart'),
         pickupTimeEnd: mapValueOfType<String>(json, r'pickupTimeEnd'),
         enablePlatformDelivery: mapValueOfType<bool>(json, r'enablePlatformDelivery'),
-        status: ProductStatusEnum.fromJson(json[r'status']),
+        status: ProductUpdateParamStatusEnum.fromJson(json[r'status']),
         skus: json[r'skus'] is Iterable
             ? (json[r'skus'] as Iterable).cast<String>().toSet()
             : const {},
@@ -452,7 +467,7 @@ class ProductUpdateParam {
         shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),
         supportsScheduledShipping: mapValueOfType<bool>(json, r'supportsScheduledShipping'),
         shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
-        pickupServiceTypes: PickupServiceTypeEnum.listFromJson(json[r'pickupServiceTypes']),
+        pickupServiceTypes: ProductUpdateParamPickupServiceTypesEnum.listFromJson(json[r'pickupServiceTypes']),
         pickupServiceTypeFees: mapCastOfType<String, num>(json, r'pickupServiceTypeFees')!,
         freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
         purchaseUrl: mapValueOfType<String>(json, r'purchaseUrl'),
@@ -509,6 +524,281 @@ class ProductUpdateParam {
     'pickupServiceTypes',
     'pickupServiceTypeFees',
   };
+}
+
+/// 貨幣類型
+class ProductUpdateParamCurrencyEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ProductUpdateParamCurrencyEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const USDT = ProductUpdateParamCurrencyEnum._(r'USDT');
+  static const USD = ProductUpdateParamCurrencyEnum._(r'USD');
+  static const TWD = ProductUpdateParamCurrencyEnum._(r'TWD');
+  static const CNY = ProductUpdateParamCurrencyEnum._(r'CNY');
+  static const JPY = ProductUpdateParamCurrencyEnum._(r'JPY');
+  static const EUR = ProductUpdateParamCurrencyEnum._(r'EUR');
+  static const GBP = ProductUpdateParamCurrencyEnum._(r'GBP');
+  static const KRW = ProductUpdateParamCurrencyEnum._(r'KRW');
+  static const SGD = ProductUpdateParamCurrencyEnum._(r'SGD');
+  static const HKD = ProductUpdateParamCurrencyEnum._(r'HKD');
+  static const AUD = ProductUpdateParamCurrencyEnum._(r'AUD');
+  static const unknownDefaultOpenApi = ProductUpdateParamCurrencyEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ProductUpdateParamCurrencyEnum].
+  static const values = <ProductUpdateParamCurrencyEnum>[
+    USDT,
+    USD,
+    TWD,
+    CNY,
+    JPY,
+    EUR,
+    GBP,
+    KRW,
+    SGD,
+    HKD,
+    AUD,
+    unknownDefaultOpenApi,
+  ];
+
+  static ProductUpdateParamCurrencyEnum? fromJson(dynamic value) => ProductUpdateParamCurrencyEnumTypeTransformer().decode(value);
+
+  static List<ProductUpdateParamCurrencyEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProductUpdateParamCurrencyEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProductUpdateParamCurrencyEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ProductUpdateParamCurrencyEnum] to String,
+/// and [decode] dynamic data back to [ProductUpdateParamCurrencyEnum].
+class ProductUpdateParamCurrencyEnumTypeTransformer {
+  factory ProductUpdateParamCurrencyEnumTypeTransformer() => _instance ??= const ProductUpdateParamCurrencyEnumTypeTransformer._();
+
+  const ProductUpdateParamCurrencyEnumTypeTransformer._();
+
+  String encode(ProductUpdateParamCurrencyEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ProductUpdateParamCurrencyEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ProductUpdateParamCurrencyEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'USDT': return ProductUpdateParamCurrencyEnum.USDT;
+        case r'USD': return ProductUpdateParamCurrencyEnum.USD;
+        case r'TWD': return ProductUpdateParamCurrencyEnum.TWD;
+        case r'CNY': return ProductUpdateParamCurrencyEnum.CNY;
+        case r'JPY': return ProductUpdateParamCurrencyEnum.JPY;
+        case r'EUR': return ProductUpdateParamCurrencyEnum.EUR;
+        case r'GBP': return ProductUpdateParamCurrencyEnum.GBP;
+        case r'KRW': return ProductUpdateParamCurrencyEnum.KRW;
+        case r'SGD': return ProductUpdateParamCurrencyEnum.SGD;
+        case r'HKD': return ProductUpdateParamCurrencyEnum.HKD;
+        case r'AUD': return ProductUpdateParamCurrencyEnum.AUD;
+        case r'unknown_default_open_api': return ProductUpdateParamCurrencyEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ProductUpdateParamCurrencyEnumTypeTransformer] instance.
+  static ProductUpdateParamCurrencyEnumTypeTransformer? _instance;
+}
+
+
+/// 商品狀態
+class ProductUpdateParamStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ProductUpdateParamStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const ON_SALE = ProductUpdateParamStatusEnum._(r'ON_SALE');
+  static const OFF_SALE = ProductUpdateParamStatusEnum._(r'OFF_SALE');
+  static const PENDING_REVIEW = ProductUpdateParamStatusEnum._(r'PENDING_REVIEW');
+  static const DELETED = ProductUpdateParamStatusEnum._(r'DELETED');
+  static const unknownDefaultOpenApi = ProductUpdateParamStatusEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ProductUpdateParamStatusEnum].
+  static const values = <ProductUpdateParamStatusEnum>[
+    ON_SALE,
+    OFF_SALE,
+    PENDING_REVIEW,
+    DELETED,
+    unknownDefaultOpenApi,
+  ];
+
+  static ProductUpdateParamStatusEnum? fromJson(dynamic value) => ProductUpdateParamStatusEnumTypeTransformer().decode(value);
+
+  static List<ProductUpdateParamStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProductUpdateParamStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProductUpdateParamStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ProductUpdateParamStatusEnum] to String,
+/// and [decode] dynamic data back to [ProductUpdateParamStatusEnum].
+class ProductUpdateParamStatusEnumTypeTransformer {
+  factory ProductUpdateParamStatusEnumTypeTransformer() => _instance ??= const ProductUpdateParamStatusEnumTypeTransformer._();
+
+  const ProductUpdateParamStatusEnumTypeTransformer._();
+
+  String encode(ProductUpdateParamStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ProductUpdateParamStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ProductUpdateParamStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'ON_SALE': return ProductUpdateParamStatusEnum.ON_SALE;
+        case r'OFF_SALE': return ProductUpdateParamStatusEnum.OFF_SALE;
+        case r'PENDING_REVIEW': return ProductUpdateParamStatusEnum.PENDING_REVIEW;
+        case r'DELETED': return ProductUpdateParamStatusEnum.DELETED;
+        case r'unknown_default_open_api': return ProductUpdateParamStatusEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ProductUpdateParamStatusEnumTypeTransformer] instance.
+  static ProductUpdateParamStatusEnumTypeTransformer? _instance;
+}
+
+
+/// 取貨服務類型
+class ProductUpdateParamPickupServiceTypesEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ProductUpdateParamPickupServiceTypesEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const HOME_DELIVERY = ProductUpdateParamPickupServiceTypesEnum._(r'HOME_DELIVERY');
+  static const SEVEN_ELEVEN = ProductUpdateParamPickupServiceTypesEnum._(r'SEVEN_ELEVEN');
+  static const FAMILY_MART = ProductUpdateParamPickupServiceTypesEnum._(r'FAMILY_MART');
+  static const HILIFE = ProductUpdateParamPickupServiceTypesEnum._(r'HILIFE');
+  static const OK_MART = ProductUpdateParamPickupServiceTypesEnum._(r'OK_MART');
+  static const PLATFORM_DELIVERY = ProductUpdateParamPickupServiceTypesEnum._(r'PLATFORM_DELIVERY');
+  static const unknownDefaultOpenApi = ProductUpdateParamPickupServiceTypesEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ProductUpdateParamPickupServiceTypesEnum].
+  static const values = <ProductUpdateParamPickupServiceTypesEnum>[
+    HOME_DELIVERY,
+    SEVEN_ELEVEN,
+    FAMILY_MART,
+    HILIFE,
+    OK_MART,
+    PLATFORM_DELIVERY,
+    unknownDefaultOpenApi,
+  ];
+
+  static ProductUpdateParamPickupServiceTypesEnum? fromJson(dynamic value) => ProductUpdateParamPickupServiceTypesEnumTypeTransformer().decode(value);
+
+  static List<ProductUpdateParamPickupServiceTypesEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProductUpdateParamPickupServiceTypesEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProductUpdateParamPickupServiceTypesEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ProductUpdateParamPickupServiceTypesEnum] to String,
+/// and [decode] dynamic data back to [ProductUpdateParamPickupServiceTypesEnum].
+class ProductUpdateParamPickupServiceTypesEnumTypeTransformer {
+  factory ProductUpdateParamPickupServiceTypesEnumTypeTransformer() => _instance ??= const ProductUpdateParamPickupServiceTypesEnumTypeTransformer._();
+
+  const ProductUpdateParamPickupServiceTypesEnumTypeTransformer._();
+
+  String encode(ProductUpdateParamPickupServiceTypesEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ProductUpdateParamPickupServiceTypesEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ProductUpdateParamPickupServiceTypesEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'HOME_DELIVERY': return ProductUpdateParamPickupServiceTypesEnum.HOME_DELIVERY;
+        case r'SEVEN_ELEVEN': return ProductUpdateParamPickupServiceTypesEnum.SEVEN_ELEVEN;
+        case r'FAMILY_MART': return ProductUpdateParamPickupServiceTypesEnum.FAMILY_MART;
+        case r'HILIFE': return ProductUpdateParamPickupServiceTypesEnum.HILIFE;
+        case r'OK_MART': return ProductUpdateParamPickupServiceTypesEnum.OK_MART;
+        case r'PLATFORM_DELIVERY': return ProductUpdateParamPickupServiceTypesEnum.PLATFORM_DELIVERY;
+        case r'unknown_default_open_api': return ProductUpdateParamPickupServiceTypesEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ProductUpdateParamPickupServiceTypesEnumTypeTransformer] instance.
+  static ProductUpdateParamPickupServiceTypesEnumTypeTransformer? _instance;
 }
 
 

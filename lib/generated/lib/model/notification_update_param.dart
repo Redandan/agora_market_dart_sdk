@@ -39,13 +39,8 @@ class NotificationUpdateParam {
   ///
   String? content;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  NotificationStatusEnum? status;
+  /// 通知狀態
+  NotificationUpdateParamStatusEnum? status;
 
   /// 相關鏈接
   ///
@@ -152,7 +147,7 @@ class NotificationUpdateParam {
       return NotificationUpdateParam(
         title: mapValueOfType<String>(json, r'title'),
         content: mapValueOfType<String>(json, r'content'),
-        status: NotificationStatusEnum.fromJson(json[r'status']),
+        status: NotificationUpdateParamStatusEnum.fromJson(json[r'status']),
         link: mapValueOfType<String>(json, r'link'),
         extraData: mapValueOfType<String>(json, r'extraData'),
         isPushed: mapValueOfType<bool>(json, r'isPushed'),
@@ -205,4 +200,84 @@ class NotificationUpdateParam {
   static const requiredKeys = <String>{
   };
 }
+
+/// 通知狀態
+class NotificationUpdateParamStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const NotificationUpdateParamStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const UNREAD = NotificationUpdateParamStatusEnum._(r'UNREAD');
+  static const READ = NotificationUpdateParamStatusEnum._(r'READ');
+  static const DELETED = NotificationUpdateParamStatusEnum._(r'DELETED');
+  static const unknownDefaultOpenApi = NotificationUpdateParamStatusEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][NotificationUpdateParamStatusEnum].
+  static const values = <NotificationUpdateParamStatusEnum>[
+    UNREAD,
+    READ,
+    DELETED,
+    unknownDefaultOpenApi,
+  ];
+
+  static NotificationUpdateParamStatusEnum? fromJson(dynamic value) => NotificationUpdateParamStatusEnumTypeTransformer().decode(value);
+
+  static List<NotificationUpdateParamStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <NotificationUpdateParamStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = NotificationUpdateParamStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [NotificationUpdateParamStatusEnum] to String,
+/// and [decode] dynamic data back to [NotificationUpdateParamStatusEnum].
+class NotificationUpdateParamStatusEnumTypeTransformer {
+  factory NotificationUpdateParamStatusEnumTypeTransformer() => _instance ??= const NotificationUpdateParamStatusEnumTypeTransformer._();
+
+  const NotificationUpdateParamStatusEnumTypeTransformer._();
+
+  String encode(NotificationUpdateParamStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a NotificationUpdateParamStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  NotificationUpdateParamStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'UNREAD': return NotificationUpdateParamStatusEnum.UNREAD;
+        case r'READ': return NotificationUpdateParamStatusEnum.READ;
+        case r'DELETED': return NotificationUpdateParamStatusEnum.DELETED;
+        case r'unknown_default_open_api': return NotificationUpdateParamStatusEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [NotificationUpdateParamStatusEnumTypeTransformer] instance.
+  static NotificationUpdateParamStatusEnumTypeTransformer? _instance;
+}
+
 

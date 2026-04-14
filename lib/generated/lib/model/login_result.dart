@@ -108,13 +108,8 @@ class LoginResult {
   ///
   String? username;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DefaultHomePageEnum? defaultHomePage;
+  /// 默認首頁設置
+  LoginResultDefaultHomePageEnum? defaultHomePage;
 
   /// 默認首頁是否在維護中
   ///
@@ -125,6 +120,7 @@ class LoginResult {
   ///
   bool? homePageInMaintenance;
 
+  /// 用戶詳細信息
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -260,7 +256,7 @@ class LoginResult {
         refreshTokenExpiration: mapValueOfType<String>(json, r'refreshTokenExpiration'),
         userId: mapValueOfType<int>(json, r'userId'),
         username: mapValueOfType<String>(json, r'username'),
-        defaultHomePage: DefaultHomePageEnum.fromJson(json[r'defaultHomePage']),
+        defaultHomePage: LoginResultDefaultHomePageEnum.fromJson(json[r'defaultHomePage']),
         homePageInMaintenance: mapValueOfType<bool>(json, r'homePageInMaintenance'),
         userInfo: UserInfo.fromJson(json[r'userInfo']),
       );
@@ -312,4 +308,87 @@ class LoginResult {
   static const requiredKeys = <String>{
   };
 }
+
+/// 默認首頁設置
+class LoginResultDefaultHomePageEnum {
+  /// Instantiate a new enum with the provided [value].
+  const LoginResultDefaultHomePageEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const BUYER = LoginResultDefaultHomePageEnum._(r'BUYER');
+  static const SELLER = LoginResultDefaultHomePageEnum._(r'SELLER');
+  static const DELIVERYER = LoginResultDefaultHomePageEnum._(r'DELIVERYER');
+  static const ADMIN = LoginResultDefaultHomePageEnum._(r'ADMIN');
+  static const unknownDefaultOpenApi = LoginResultDefaultHomePageEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][LoginResultDefaultHomePageEnum].
+  static const values = <LoginResultDefaultHomePageEnum>[
+    BUYER,
+    SELLER,
+    DELIVERYER,
+    ADMIN,
+    unknownDefaultOpenApi,
+  ];
+
+  static LoginResultDefaultHomePageEnum? fromJson(dynamic value) => LoginResultDefaultHomePageEnumTypeTransformer().decode(value);
+
+  static List<LoginResultDefaultHomePageEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <LoginResultDefaultHomePageEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = LoginResultDefaultHomePageEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [LoginResultDefaultHomePageEnum] to String,
+/// and [decode] dynamic data back to [LoginResultDefaultHomePageEnum].
+class LoginResultDefaultHomePageEnumTypeTransformer {
+  factory LoginResultDefaultHomePageEnumTypeTransformer() => _instance ??= const LoginResultDefaultHomePageEnumTypeTransformer._();
+
+  const LoginResultDefaultHomePageEnumTypeTransformer._();
+
+  String encode(LoginResultDefaultHomePageEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a LoginResultDefaultHomePageEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  LoginResultDefaultHomePageEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'BUYER': return LoginResultDefaultHomePageEnum.BUYER;
+        case r'SELLER': return LoginResultDefaultHomePageEnum.SELLER;
+        case r'DELIVERYER': return LoginResultDefaultHomePageEnum.DELIVERYER;
+        case r'ADMIN': return LoginResultDefaultHomePageEnum.ADMIN;
+        case r'unknown_default_open_api': return LoginResultDefaultHomePageEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [LoginResultDefaultHomePageEnumTypeTransformer] instance.
+  static LoginResultDefaultHomePageEnumTypeTransformer? _instance;
+}
+
 

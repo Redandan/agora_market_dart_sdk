@@ -26,7 +26,7 @@ class BindOAuthParam {
     this.message,
   });
 
-  /// OAuth第三方登录提供商
+  /// OAuth提供商
   BindOAuthParamProviderEnum provider;
 
   /// 臨時Token ID（推薦，用於Google OAuth2，從 /auth/oauth2/token/by-token-id 獲取）
@@ -288,7 +288,7 @@ class BindOAuthParam {
   };
 }
 
-/// OAuth第三方登录提供商
+/// OAuth提供商
 class BindOAuthParamProviderEnum {
   /// Instantiate a new enum with the provided [value].
   const BindOAuthParamProviderEnum._(this.value);

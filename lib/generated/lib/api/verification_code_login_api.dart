@@ -11,14 +11,14 @@
 part of openapi.api;
 
 
-class TelegramBotLoginApi {
-  TelegramBotLoginApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+class VerificationCodeLoginApi {
+  VerificationCodeLoginApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
-  /// 生成登录 loginToken
+  /// 生成驗證碼登入 Token
   ///
-  /// 生成唯一且有時效性的 loginToken，用于构建 Telegram Bot deep link
+  /// 生成唯一且有時效性的 loginToken，用於構建驗證碼登入的 deep link
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -50,9 +50,9 @@ class TelegramBotLoginApi {
     );
   }
 
-  /// 生成登录 loginToken
+  /// 生成驗證碼登入 Token
   ///
-  /// 生成唯一且有時效性的 loginToken，用于构建 Telegram Bot deep link
+  /// 生成唯一且有時效性的 loginToken，用於構建驗證碼登入的 deep link
   ///
   /// Parameters:
   ///
@@ -72,9 +72,9 @@ class TelegramBotLoginApi {
     return null;
   }
 
-  /// 验证验证码
+  /// 驗證碼登入
   ///
-  /// 验证 Telegram Bot 返回的 4 位验证码并完成登录
+  /// 驗證 Bot 傳送的 4 位驗證碼並完成登入
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -106,9 +106,9 @@ class TelegramBotLoginApi {
     );
   }
 
-  /// 验证验证码
+  /// 驗證碼登入
   ///
-  /// 验证 Telegram Bot 返回的 4 位验证码并完成登录
+  /// 驗證 Bot 傳送的 4 位驗證碼並完成登入
   ///
   /// Parameters:
   ///

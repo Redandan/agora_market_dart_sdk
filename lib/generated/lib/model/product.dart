@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -60,139 +60,267 @@ class Product {
     this.usingDefaultRate,
     this.freeShippingThresholdUsdt,
     this.imageUrls = const {},
-    this.stockLow,
-    this.inStock,
-    this.stockBelowMinimum,
     this.skus = const {},
     this.minimumShippingFee,
+    this.inStock,
+    this.stockLow,
+    this.stockBelowMinimum,
     this.defaultShippingFee,
     this.pickupServiceTypes = const [],
     this.pickupServiceTypeFees = const {},
     this.shippingFee,
   });
 
-  /// ??ID
-
+  /// 商品ID
   int id;
-  /// ??璅?
 
+  /// 商品標題
   String title;
-  /// ???膩
 
+  /// 商品描述
   String description;
-  /// ???寞
+
+  /// 商品價格
   ///
   /// Minimum value: 0.0
   num price;
-  SupportedCurrencyEnum? currency;
 
-  /// ??摨怠?
+  /// 貨幣類型
+  ProductCurrencyEnum? currency;
+
+  /// 商品庫存
   ///
   /// Minimum value: 0
   int stock;
+
+  /// 商品分類
   ProductCategoryEnum category;
 
-  /// 鞈?振ID
-
+  /// 賣家ID
   int sellerId;
-  /// ????URL?”嚗SON?澆?
 
+  /// 商品圖片URL列表，JSON格式
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? imageUrlsJson;
-  /// ?疏?啣?
 
+  /// 取貨地址
   String pickupAddress;
-  /// ?疏?啣?蝬漲
+
+  /// 取貨地址經度
   ///
   /// Minimum value: -180.0
   /// Maximum value: 180.0
   double pickupLongitude;
-  /// ?疏?啣?蝺臬漲
+
+  /// 取貨地址緯度
   ///
   /// Minimum value: -90.0
   /// Maximum value: 90.0
   double pickupLatitude;
-  /// ?疏????
 
+  /// 取貨開始時間
   String pickupTimeStart;
-  /// ?疏蝯???
 
+  /// 取貨結束時間
   String pickupTimeEnd;
-  /// ?撟喳??
 
+  /// 啟用平台配送
   bool enablePlatformDelivery;
-  /// ?箄疏?芣迫??嚗?憭拙嗾暺?銝?嗅予?箄疏嚗?
 
+  /// 出貨截止時間（每天幾點前下單當天出貨）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? dailyShippingDeadline;
-  /// ?箄疏皞???嚗???
 
+  /// 出貨準備時間（小時）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? shippingPreparationHours;
-  /// ?箄疏?酉
 
+  /// 出貨備註
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? shippingDescription;
-  /// ??????嚗予?賂?
 
+  /// 預計送達時間（天數）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? estimatedDeliveryDays;
-  /// ?臬?舀????箄疏?交?
 
+  /// 是否支持指定出貨日期
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? supportsScheduledShipping;
-  /// ?舫???箄疏?交?蝭?嚗予?賂?
 
+  /// 可選擇的出貨日期範圍（天數）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? shippingDateRange;
+
+  /// 商品狀態
   ProductStatusEnum status;
 
-  /// 撱箇???
-
+  /// 建立時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? createdAt;
-  /// ?敺?唳???
 
+  /// 最後更新時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? updatedAt;
-  /// ??閰?
+
+  /// 商品評分
   ///
   /// Minimum value: 0.0
   /// Maximum value: 5.0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? rating;
-  /// ??閰甈⊥
+
+  /// 商品評價次數
   ///
   /// Minimum value: 0
   int reviewCount;
-  /// ?汗甈⊥
+
+  /// 瀏覽次數
   ///
   /// Minimum value: 0
   int viewCount;
-  /// ?瑕?賊?
+
+  /// 銷售數量
   ///
   /// Minimum value: 0
   int salesCount;
-  /// 璅惜嚗???
 
+  /// 標籤，逗號分隔
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? tags;
-  /// ??SKU??蝣潮???JSON?澆?
 
+  /// 商品SKU或條碼集合，JSON格式
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? skusJson;
-  /// ???迂
 
+  /// 品牌名稱
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? brand;
-  /// ?雿澈摮?  ///
+
+  /// 最低庫存
+  ///
   /// Minimum value: 0
   int minStock;
-  /// ?舀??鞎冽?????銵剁?JSON?澆????潘?HOME_DELIVERY嚗??????EVEN_ELEVEN嚗?-11嚗AMILY_MART嚗摰塚??ILIFE嚗??曉?嚗K_MART嚗K頞?嚗?
 
+  /// 支援的取貨服務類型列表，JSON格式。取值：HOME_DELIVERY（宅配服務）、SEVEN_ELEVEN（7-11）、FAMILY_MART（全家）、HILIFE（萊爾富）、OK_MART（OK超商）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? pickupServiceTypesJson;
-  /// ??鞎冽?????鞎餃??”嚗SON?澆????PickupServiceTypeEnum嚗潛?祥嚗igDecimal嚗?
 
+  /// 各取貨服務類型運費對應表，JSON格式。鍵為 PickupServiceTypeEnum，值為運費（BigDecimal）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? pickupServiceTypeFeesJson;
-  /// ??鞎駁?瑼?
 
+  /// 免運費門檻
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? freeShippingThreshold;
-  /// 摨怠?霅血??曉?
 
+  /// 庫存警告閾值
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? stockAlertThreshold;
-  /// ?臬?迂鞎澈摮?
 
+  /// 是否允許負庫存
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? allowNegativeStock;
-  /// 隞?頃銝URL(?芸?鞈?振撅內)
 
+  /// 代購下單URL(只對賣家展示)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? purchaseUrl;
+
+  /// 賣場資訊
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -200,12 +328,14 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   Store? store;
-  /// ?舀閰脣??????冽?啣??”
 
+  /// 支援該商品運送的用戶地址列表
   List<UserAddress> userSupportedShippingAddresses;
-  /// ???賊??”
 
+  /// 運送地址選項列表
   List<ShippingAddressOption> shippingAddressOptions;
+
+  /// 運送選項
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -213,14 +343,17 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   ShippingOptions? shippingOptions;
-  /// USDT隞瑟嚗蝞?嚗?  ///
+
+  /// USDT价格（换算后）
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? priceUsdt;
-  /// 瘙?嚗SDT/??蝘?
+
+  /// 汇率（USDT/原币种）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -228,7 +361,8 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? exchangeRate;
-  /// ?臬雿輻暺恕瘙?
+
+  /// 是否使用默认汇率
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -236,7 +370,8 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? usingDefaultRate;
-  /// ??韐寥瑽SDT??
+
+  /// 免运费门槛USDT金额
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -244,29 +379,9 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? freeShippingThresholdUsdt;
+
   Set<String> imageUrls;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? stockLow;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? inStock;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? stockBelowMinimum;
   Set<String> skus;
 
   ///
@@ -276,6 +391,31 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? minimumShippingFee;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? inStock;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? stockLow;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? stockBelowMinimum;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -283,9 +423,10 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? defaultShippingFee;
-  /// ?舀??鞎冽?????銵?
 
-  List<PickupServiceTypeEnum> pickupServiceTypes;
+  /// 支援的取貨服務類型列表
+  List<ProductPickupServiceTypesEnum> pickupServiceTypes;
+
   Map<String, num> pickupServiceTypeFees;
 
   ///
@@ -295,6 +436,7 @@ class Product {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? shippingFee;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Product &&
     other.id == id &&
@@ -344,11 +486,11 @@ class Product {
     other.usingDefaultRate == usingDefaultRate &&
     other.freeShippingThresholdUsdt == freeShippingThresholdUsdt &&
     _deepEquality.equals(other.imageUrls, imageUrls) &&
-    other.stockLow == stockLow &&
-    other.inStock == inStock &&
-    other.stockBelowMinimum == stockBelowMinimum &&
     _deepEquality.equals(other.skus, skus) &&
     other.minimumShippingFee == minimumShippingFee &&
+    other.inStock == inStock &&
+    other.stockLow == stockLow &&
+    other.stockBelowMinimum == stockBelowMinimum &&
     other.defaultShippingFee == defaultShippingFee &&
     _deepEquality.equals(other.pickupServiceTypes, pickupServiceTypes) &&
     _deepEquality.equals(other.pickupServiceTypeFees, pickupServiceTypeFees) &&
@@ -404,18 +546,18 @@ class Product {
     (usingDefaultRate == null ? 0 : usingDefaultRate!.hashCode) +
     (freeShippingThresholdUsdt == null ? 0 : freeShippingThresholdUsdt!.hashCode) +
     (imageUrls.hashCode) +
-    (stockLow == null ? 0 : stockLow!.hashCode) +
-    (inStock == null ? 0 : inStock!.hashCode) +
-    (stockBelowMinimum == null ? 0 : stockBelowMinimum!.hashCode) +
     (skus.hashCode) +
     (minimumShippingFee == null ? 0 : minimumShippingFee!.hashCode) +
+    (inStock == null ? 0 : inStock!.hashCode) +
+    (stockLow == null ? 0 : stockLow!.hashCode) +
+    (stockBelowMinimum == null ? 0 : stockBelowMinimum!.hashCode) +
     (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
     (pickupServiceTypes.hashCode) +
     (pickupServiceTypeFees.hashCode) +
     (shippingFee == null ? 0 : shippingFee!.hashCode);
 
   @override
-  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, stock=$stock, category=$category, sellerId=$sellerId, imageUrlsJson=$imageUrlsJson, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, reviewCount=$reviewCount, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skusJson=$skusJson, brand=$brand, minStock=$minStock, pickupServiceTypesJson=$pickupServiceTypesJson, pickupServiceTypeFeesJson=$pickupServiceTypeFeesJson, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions, priceUsdt=$priceUsdt, exchangeRate=$exchangeRate, usingDefaultRate=$usingDefaultRate, freeShippingThresholdUsdt=$freeShippingThresholdUsdt, imageUrls=$imageUrls, stockLow=$stockLow, inStock=$inStock, stockBelowMinimum=$stockBelowMinimum, skus=$skus, minimumShippingFee=$minimumShippingFee, defaultShippingFee=$defaultShippingFee, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, shippingFee=$shippingFee]';
+  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, stock=$stock, category=$category, sellerId=$sellerId, imageUrlsJson=$imageUrlsJson, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, reviewCount=$reviewCount, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skusJson=$skusJson, brand=$brand, minStock=$minStock, pickupServiceTypesJson=$pickupServiceTypesJson, pickupServiceTypeFeesJson=$pickupServiceTypeFeesJson, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions, priceUsdt=$priceUsdt, exchangeRate=$exchangeRate, usingDefaultRate=$usingDefaultRate, freeShippingThresholdUsdt=$freeShippingThresholdUsdt, imageUrls=$imageUrls, skus=$skus, minimumShippingFee=$minimumShippingFee, inStock=$inStock, stockLow=$stockLow, stockBelowMinimum=$stockBelowMinimum, defaultShippingFee=$defaultShippingFee, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, shippingFee=$shippingFee]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -570,33 +712,33 @@ class Product {
       json[r'freeShippingThresholdUsdt'] = null;
     }
       json[r'imageUrls'] = this.imageUrls.toList(growable: false);
-    if (this.stockLow != null) {
-      json[r'stockLow'] = this.stockLow;
-    } else {
-      json[r'stockLow'] = null;
-    }
-    if (this.inStock != null) {
-      json[r'inStock'] = this.inStock;
-    } else {
-      json[r'inStock'] = null;
-    }
-    if (this.stockBelowMinimum != null) {
-      json[r'stockBelowMinimum'] = this.stockBelowMinimum;
-    } else {
-      json[r'stockBelowMinimum'] = null;
-    }
       json[r'skus'] = this.skus.toList(growable: false);
     if (this.minimumShippingFee != null) {
       json[r'minimumShippingFee'] = this.minimumShippingFee;
     } else {
       json[r'minimumShippingFee'] = null;
     }
+    if (this.inStock != null) {
+      json[r'inStock'] = this.inStock;
+    } else {
+      json[r'inStock'] = null;
+    }
+    if (this.stockLow != null) {
+      json[r'stockLow'] = this.stockLow;
+    } else {
+      json[r'stockLow'] = null;
+    }
+    if (this.stockBelowMinimum != null) {
+      json[r'stockBelowMinimum'] = this.stockBelowMinimum;
+    } else {
+      json[r'stockBelowMinimum'] = null;
+    }
     if (this.defaultShippingFee != null) {
       json[r'defaultShippingFee'] = this.defaultShippingFee;
     } else {
       json[r'defaultShippingFee'] = null;
     }
-      json[r'pickupServiceTypes'] = this.pickupServiceTypes.map((e) => e.toJson()).toList();
+      json[r'pickupServiceTypes'] = this.pickupServiceTypes;
       json[r'pickupServiceTypeFees'] = this.pickupServiceTypeFees;
     if (this.shippingFee != null) {
       json[r'shippingFee'] = this.shippingFee;
@@ -629,7 +771,7 @@ class Product {
         title: mapValueOfType<String>(json, r'title')!,
         description: mapValueOfType<String>(json, r'description')!,
         price: num.parse('${json[r'price']}'),
-        currency: SupportedCurrencyEnum.fromJson(json[r'currency']),
+        currency: ProductCurrencyEnum.fromJson(json[r'currency']),
         stock: mapValueOfType<int>(json, r'stock')!,
         category: ProductCategoryEnum.fromJson(json[r'category'])!,
         sellerId: mapValueOfType<int>(json, r'sellerId')!,
@@ -649,9 +791,7 @@ class Product {
         status: ProductStatusEnum.fromJson(json[r'status'])!,
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
-        rating: json[r'rating'] == null
-            ? null
-            : num.parse('${json[r'rating']}'),
+        rating: num.parse('${json[r'rating']}'),
         reviewCount: mapValueOfType<int>(json, r'reviewCount')!,
         viewCount: mapValueOfType<int>(json, r'viewCount')!,
         salesCount: mapValueOfType<int>(json, r'salesCount')!,
@@ -661,9 +801,7 @@ class Product {
         minStock: mapValueOfType<int>(json, r'minStock')!,
         pickupServiceTypesJson: mapValueOfType<String>(json, r'pickupServiceTypesJson'),
         pickupServiceTypeFeesJson: mapValueOfType<String>(json, r'pickupServiceTypeFeesJson'),
-        freeShippingThreshold: json[r'freeShippingThreshold'] == null
-            ? null
-            : num.parse('${json[r'freeShippingThreshold']}'),
+        freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
         stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
         allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
         purchaseUrl: mapValueOfType<String>(json, r'purchaseUrl'),
@@ -678,15 +816,15 @@ class Product {
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
             : const {},
-        stockLow: mapValueOfType<bool>(json, r'stockLow'),
-        inStock: mapValueOfType<bool>(json, r'inStock'),
-        stockBelowMinimum: mapValueOfType<bool>(json, r'stockBelowMinimum'),
         skus: json[r'skus'] is Iterable
             ? (json[r'skus'] as Iterable).cast<String>().toSet()
             : const {},
         minimumShippingFee: num.parse('${json[r'minimumShippingFee']}'),
+        inStock: mapValueOfType<bool>(json, r'inStock'),
+        stockLow: mapValueOfType<bool>(json, r'stockLow'),
+        stockBelowMinimum: mapValueOfType<bool>(json, r'stockBelowMinimum'),
         defaultShippingFee: num.parse('${json[r'defaultShippingFee']}'),
-        pickupServiceTypes: PickupServiceTypeEnum.listFromJson(json[r'pickupServiceTypes']),
+        pickupServiceTypes: ProductPickupServiceTypesEnum.listFromJson(json[r'pickupServiceTypes']),
         pickupServiceTypeFees: mapCastOfType<String, num>(json, r'pickupServiceTypeFees') ?? const {},
         shippingFee: num.parse('${json[r'shippingFee']}'),
       );
@@ -755,6 +893,409 @@ class Product {
     'salesCount',
     'minStock',
   };
+}
+
+/// 貨幣類型
+class ProductCurrencyEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ProductCurrencyEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const USDT = ProductCurrencyEnum._(r'USDT');
+  static const USD = ProductCurrencyEnum._(r'USD');
+  static const TWD = ProductCurrencyEnum._(r'TWD');
+  static const CNY = ProductCurrencyEnum._(r'CNY');
+  static const JPY = ProductCurrencyEnum._(r'JPY');
+  static const EUR = ProductCurrencyEnum._(r'EUR');
+  static const GBP = ProductCurrencyEnum._(r'GBP');
+  static const KRW = ProductCurrencyEnum._(r'KRW');
+  static const SGD = ProductCurrencyEnum._(r'SGD');
+  static const HKD = ProductCurrencyEnum._(r'HKD');
+  static const AUD = ProductCurrencyEnum._(r'AUD');
+  static const unknownDefaultOpenApi = ProductCurrencyEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ProductCurrencyEnum].
+  static const values = <ProductCurrencyEnum>[
+    USDT,
+    USD,
+    TWD,
+    CNY,
+    JPY,
+    EUR,
+    GBP,
+    KRW,
+    SGD,
+    HKD,
+    AUD,
+    unknownDefaultOpenApi,
+  ];
+
+  static ProductCurrencyEnum? fromJson(dynamic value) => ProductCurrencyEnumTypeTransformer().decode(value);
+
+  static List<ProductCurrencyEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProductCurrencyEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProductCurrencyEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ProductCurrencyEnum] to String,
+/// and [decode] dynamic data back to [ProductCurrencyEnum].
+class ProductCurrencyEnumTypeTransformer {
+  factory ProductCurrencyEnumTypeTransformer() => _instance ??= const ProductCurrencyEnumTypeTransformer._();
+
+  const ProductCurrencyEnumTypeTransformer._();
+
+  String encode(ProductCurrencyEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ProductCurrencyEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ProductCurrencyEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'USDT': return ProductCurrencyEnum.USDT;
+        case r'USD': return ProductCurrencyEnum.USD;
+        case r'TWD': return ProductCurrencyEnum.TWD;
+        case r'CNY': return ProductCurrencyEnum.CNY;
+        case r'JPY': return ProductCurrencyEnum.JPY;
+        case r'EUR': return ProductCurrencyEnum.EUR;
+        case r'GBP': return ProductCurrencyEnum.GBP;
+        case r'KRW': return ProductCurrencyEnum.KRW;
+        case r'SGD': return ProductCurrencyEnum.SGD;
+        case r'HKD': return ProductCurrencyEnum.HKD;
+        case r'AUD': return ProductCurrencyEnum.AUD;
+        case r'unknown_default_open_api': return ProductCurrencyEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ProductCurrencyEnumTypeTransformer] instance.
+  static ProductCurrencyEnumTypeTransformer? _instance;
+}
+
+
+/// 商品分類
+class ProductCategoryEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ProductCategoryEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const ELECTRONICS = ProductCategoryEnum._(r'ELECTRONICS');
+  static const MOBILE = ProductCategoryEnum._(r'MOBILE');
+  static const CLOTHING = ProductCategoryEnum._(r'CLOTHING');
+  static const SHOES = ProductCategoryEnum._(r'SHOES');
+  static const BAGS = ProductCategoryEnum._(r'BAGS');
+  static const BEAUTY = ProductCategoryEnum._(r'BEAUTY');
+  static const HEALTH = ProductCategoryEnum._(r'HEALTH');
+  static const FOOD = ProductCategoryEnum._(r'FOOD');
+  static const HOME = ProductCategoryEnum._(r'HOME');
+  static const FURNITURE = ProductCategoryEnum._(r'FURNITURE');
+  static const BABY = ProductCategoryEnum._(r'BABY');
+  static const TOYS = ProductCategoryEnum._(r'TOYS');
+  static const PET_SUPPLIES = ProductCategoryEnum._(r'PET_SUPPLIES');
+  static const SPORTS = ProductCategoryEnum._(r'SPORTS');
+  static const OUTDOOR = ProductCategoryEnum._(r'OUTDOOR');
+  static const AUTOMOTIVE = ProductCategoryEnum._(r'AUTOMOTIVE');
+  static const BOOKS = ProductCategoryEnum._(r'BOOKS');
+  static const SECOND_HAND = ProductCategoryEnum._(r'SECOND_HAND');
+  static const OTHER = ProductCategoryEnum._(r'OTHER');
+  static const unknownDefaultOpenApi = ProductCategoryEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ProductCategoryEnum].
+  static const values = <ProductCategoryEnum>[
+    ELECTRONICS,
+    MOBILE,
+    CLOTHING,
+    SHOES,
+    BAGS,
+    BEAUTY,
+    HEALTH,
+    FOOD,
+    HOME,
+    FURNITURE,
+    BABY,
+    TOYS,
+    PET_SUPPLIES,
+    SPORTS,
+    OUTDOOR,
+    AUTOMOTIVE,
+    BOOKS,
+    SECOND_HAND,
+    OTHER,
+    unknownDefaultOpenApi,
+  ];
+
+  static ProductCategoryEnum? fromJson(dynamic value) => ProductCategoryEnumTypeTransformer().decode(value);
+
+  static List<ProductCategoryEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProductCategoryEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProductCategoryEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ProductCategoryEnum] to String,
+/// and [decode] dynamic data back to [ProductCategoryEnum].
+class ProductCategoryEnumTypeTransformer {
+  factory ProductCategoryEnumTypeTransformer() => _instance ??= const ProductCategoryEnumTypeTransformer._();
+
+  const ProductCategoryEnumTypeTransformer._();
+
+  String encode(ProductCategoryEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ProductCategoryEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ProductCategoryEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'ELECTRONICS': return ProductCategoryEnum.ELECTRONICS;
+        case r'MOBILE': return ProductCategoryEnum.MOBILE;
+        case r'CLOTHING': return ProductCategoryEnum.CLOTHING;
+        case r'SHOES': return ProductCategoryEnum.SHOES;
+        case r'BAGS': return ProductCategoryEnum.BAGS;
+        case r'BEAUTY': return ProductCategoryEnum.BEAUTY;
+        case r'HEALTH': return ProductCategoryEnum.HEALTH;
+        case r'FOOD': return ProductCategoryEnum.FOOD;
+        case r'HOME': return ProductCategoryEnum.HOME;
+        case r'FURNITURE': return ProductCategoryEnum.FURNITURE;
+        case r'BABY': return ProductCategoryEnum.BABY;
+        case r'TOYS': return ProductCategoryEnum.TOYS;
+        case r'PET_SUPPLIES': return ProductCategoryEnum.PET_SUPPLIES;
+        case r'SPORTS': return ProductCategoryEnum.SPORTS;
+        case r'OUTDOOR': return ProductCategoryEnum.OUTDOOR;
+        case r'AUTOMOTIVE': return ProductCategoryEnum.AUTOMOTIVE;
+        case r'BOOKS': return ProductCategoryEnum.BOOKS;
+        case r'SECOND_HAND': return ProductCategoryEnum.SECOND_HAND;
+        case r'OTHER': return ProductCategoryEnum.OTHER;
+        case r'unknown_default_open_api': return ProductCategoryEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ProductCategoryEnumTypeTransformer] instance.
+  static ProductCategoryEnumTypeTransformer? _instance;
+}
+
+
+/// 商品狀態
+class ProductStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ProductStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const ON_SALE = ProductStatusEnum._(r'ON_SALE');
+  static const OFF_SALE = ProductStatusEnum._(r'OFF_SALE');
+  static const PENDING_REVIEW = ProductStatusEnum._(r'PENDING_REVIEW');
+  static const DELETED = ProductStatusEnum._(r'DELETED');
+  static const unknownDefaultOpenApi = ProductStatusEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ProductStatusEnum].
+  static const values = <ProductStatusEnum>[
+    ON_SALE,
+    OFF_SALE,
+    PENDING_REVIEW,
+    DELETED,
+    unknownDefaultOpenApi,
+  ];
+
+  static ProductStatusEnum? fromJson(dynamic value) => ProductStatusEnumTypeTransformer().decode(value);
+
+  static List<ProductStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProductStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProductStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ProductStatusEnum] to String,
+/// and [decode] dynamic data back to [ProductStatusEnum].
+class ProductStatusEnumTypeTransformer {
+  factory ProductStatusEnumTypeTransformer() => _instance ??= const ProductStatusEnumTypeTransformer._();
+
+  const ProductStatusEnumTypeTransformer._();
+
+  String encode(ProductStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ProductStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ProductStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'ON_SALE': return ProductStatusEnum.ON_SALE;
+        case r'OFF_SALE': return ProductStatusEnum.OFF_SALE;
+        case r'PENDING_REVIEW': return ProductStatusEnum.PENDING_REVIEW;
+        case r'DELETED': return ProductStatusEnum.DELETED;
+        case r'unknown_default_open_api': return ProductStatusEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ProductStatusEnumTypeTransformer] instance.
+  static ProductStatusEnumTypeTransformer? _instance;
+}
+
+
+/// 取貨服務類型
+class ProductPickupServiceTypesEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ProductPickupServiceTypesEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const HOME_DELIVERY = ProductPickupServiceTypesEnum._(r'HOME_DELIVERY');
+  static const SEVEN_ELEVEN = ProductPickupServiceTypesEnum._(r'SEVEN_ELEVEN');
+  static const FAMILY_MART = ProductPickupServiceTypesEnum._(r'FAMILY_MART');
+  static const HILIFE = ProductPickupServiceTypesEnum._(r'HILIFE');
+  static const OK_MART = ProductPickupServiceTypesEnum._(r'OK_MART');
+  static const PLATFORM_DELIVERY = ProductPickupServiceTypesEnum._(r'PLATFORM_DELIVERY');
+  static const unknownDefaultOpenApi = ProductPickupServiceTypesEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ProductPickupServiceTypesEnum].
+  static const values = <ProductPickupServiceTypesEnum>[
+    HOME_DELIVERY,
+    SEVEN_ELEVEN,
+    FAMILY_MART,
+    HILIFE,
+    OK_MART,
+    PLATFORM_DELIVERY,
+    unknownDefaultOpenApi,
+  ];
+
+  static ProductPickupServiceTypesEnum? fromJson(dynamic value) => ProductPickupServiceTypesEnumTypeTransformer().decode(value);
+
+  static List<ProductPickupServiceTypesEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProductPickupServiceTypesEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProductPickupServiceTypesEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ProductPickupServiceTypesEnum] to String,
+/// and [decode] dynamic data back to [ProductPickupServiceTypesEnum].
+class ProductPickupServiceTypesEnumTypeTransformer {
+  factory ProductPickupServiceTypesEnumTypeTransformer() => _instance ??= const ProductPickupServiceTypesEnumTypeTransformer._();
+
+  const ProductPickupServiceTypesEnumTypeTransformer._();
+
+  String encode(ProductPickupServiceTypesEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ProductPickupServiceTypesEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ProductPickupServiceTypesEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'HOME_DELIVERY': return ProductPickupServiceTypesEnum.HOME_DELIVERY;
+        case r'SEVEN_ELEVEN': return ProductPickupServiceTypesEnum.SEVEN_ELEVEN;
+        case r'FAMILY_MART': return ProductPickupServiceTypesEnum.FAMILY_MART;
+        case r'HILIFE': return ProductPickupServiceTypesEnum.HILIFE;
+        case r'OK_MART': return ProductPickupServiceTypesEnum.OK_MART;
+        case r'PLATFORM_DELIVERY': return ProductPickupServiceTypesEnum.PLATFORM_DELIVERY;
+        case r'unknown_default_open_api': return ProductPickupServiceTypesEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ProductPickupServiceTypesEnumTypeTransformer] instance.
+  static ProductPickupServiceTypesEnumTypeTransformer? _instance;
 }
 
 

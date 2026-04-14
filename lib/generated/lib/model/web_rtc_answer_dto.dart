@@ -13,17 +13,23 @@ part of openapi.api;
 class WebRTCAnswerDto {
   /// Returns a new [WebRTCAnswerDto] instance.
   WebRTCAnswerDto({
-    required this.callId,
+    this.callId,
     required this.fromUserId,
     required this.toUserId,
-    required this.sdp,
+    this.sdp,
     this.type,
     this.timestamp,
     this.accepted,
   });
 
   /// 通話唯一識別碼
-  String callId;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? callId;
 
   /// 發起通話的用戶ID
   int fromUserId;
@@ -32,7 +38,13 @@ class WebRTCAnswerDto {
   int toUserId;
 
   /// WebRTC SDP Answer 內容
-  String sdp;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sdp;
 
   /// 信令類型
   ///
@@ -74,10 +86,10 @@ class WebRTCAnswerDto {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (callId.hashCode) +
+    (callId == null ? 0 : callId!.hashCode) +
     (fromUserId.hashCode) +
     (toUserId.hashCode) +
-    (sdp.hashCode) +
+    (sdp == null ? 0 : sdp!.hashCode) +
     (type == null ? 0 : type!.hashCode) +
     (timestamp == null ? 0 : timestamp!.hashCode) +
     (accepted == null ? 0 : accepted!.hashCode);
@@ -87,10 +99,18 @@ class WebRTCAnswerDto {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.callId != null) {
       json[r'callId'] = this.callId;
+    } else {
+      json[r'callId'] = null;
+    }
       json[r'fromUserId'] = this.fromUserId;
       json[r'toUserId'] = this.toUserId;
+    if (this.sdp != null) {
       json[r'sdp'] = this.sdp;
+    } else {
+      json[r'sdp'] = null;
+    }
     if (this.type != null) {
       json[r'type'] = this.type;
     } else {
@@ -128,10 +148,10 @@ class WebRTCAnswerDto {
       }());
 
       return WebRTCAnswerDto(
-        callId: mapValueOfType<String>(json, r'callId')!,
+        callId: mapValueOfType<String>(json, r'callId'),
         fromUserId: mapValueOfType<int>(json, r'fromUserId')!,
         toUserId: mapValueOfType<int>(json, r'toUserId')!,
-        sdp: mapValueOfType<String>(json, r'sdp')!,
+        sdp: mapValueOfType<String>(json, r'sdp'),
         type: mapValueOfType<String>(json, r'type'),
         timestamp: mapDateTime(json, r'timestamp', r''),
         accepted: mapValueOfType<bool>(json, r'accepted'),
@@ -182,10 +202,8 @@ class WebRTCAnswerDto {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'callId',
     'fromUserId',
     'toUserId',
-    'sdp',
   };
 }
 

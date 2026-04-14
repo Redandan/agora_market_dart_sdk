@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -27,14 +27,16 @@ class FileSyncResponse {
     this.deletedFileRecords = const [],
   });
 
-  /// 瑼Ｘ??獢蜇??  ///
+  /// 檢查的檔案總數
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? totalChecked;
-  /// ?啣????
+
+  /// 新增的記錄數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -42,7 +44,8 @@ class FileSyncResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? newRecords;
-  /// ?湔???
+
+  /// 更新的記錄數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -50,7 +53,8 @@ class FileSyncResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? updatedRecords;
-  /// ?芷???
+
+  /// 刪除的記錄數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -58,7 +62,8 @@ class FileSyncResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? deletedRecords;
-  /// ?航炊?賊?
+
+  /// 錯誤數量
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -66,7 +71,8 @@ class FileSyncResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? errors;
-  /// ?郊????
+
+  /// 同步開始時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -74,7 +80,8 @@ class FileSyncResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? startTime;
-  /// ?郊蝯???
+
+  /// 同步結束時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -82,7 +89,8 @@ class FileSyncResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? endTime;
-  /// ?郊??嚗神蝘?
+
+  /// 同步耗時（毫秒）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -90,18 +98,19 @@ class FileSyncResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? durationMs;
-  /// ?航炊閰單?
 
+  /// 錯誤詳情
   List<String> errorDetails;
-  /// ?啣???獢???
 
+  /// 新增的檔案記錄
   List<FileRecordInfo> newFileRecords;
-  /// ?湔??獢???
 
+  /// 更新的檔案記錄
   List<FileRecordInfo> updatedFileRecords;
-  /// ?芷??獢???
 
+  /// 刪除的檔案記錄
   List<FileRecordInfo> deletedFileRecords;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is FileSyncResponse &&
     other.totalChecked == totalChecked &&
@@ -267,5 +276,4 @@ class FileSyncResponse {
   static const requiredKeys = <String>{
   };
 }
-
 

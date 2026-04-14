@@ -21,9 +21,16 @@ class GroupAiSimulationResponseDTO {
   /// Telegram 群組 ID
   int groupId;
 
+  /// 實際送往 AI 的 prompt 預覽
   GroupAiPromptPreviewDTO promptPreview;
 
   /// AI 生成結果（一句消息）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? generatedMessage;
 
   @override

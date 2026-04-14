@@ -16,6 +16,7 @@ class UpdateStrategyRequest {
     required this.name,
     required this.strategyType,
     required this.enabled,
+    required this.symbols,
     required this.config,
   });
 
@@ -28,6 +29,10 @@ class UpdateStrategyRequest {
   /// 是否啟用
   bool enabled;
 
+  /// 監控交易對，逗號分隔（必填）
+  String symbols;
+
+  /// 策略參數配置
   SopMtfAdxConfig config;
 
   @override
@@ -35,6 +40,7 @@ class UpdateStrategyRequest {
     other.name == name &&
     other.strategyType == strategyType &&
     other.enabled == enabled &&
+    other.symbols == symbols &&
     other.config == config;
 
   @override
@@ -43,16 +49,18 @@ class UpdateStrategyRequest {
     (name.hashCode) +
     (strategyType.hashCode) +
     (enabled.hashCode) +
+    (symbols.hashCode) +
     (config.hashCode);
 
   @override
-  String toString() => 'UpdateStrategyRequest[name=$name, strategyType=$strategyType, enabled=$enabled, config=$config]';
+  String toString() => 'UpdateStrategyRequest[name=$name, strategyType=$strategyType, enabled=$enabled, symbols=$symbols, config=$config]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'name'] = this.name;
       json[r'strategyType'] = this.strategyType;
       json[r'enabled'] = this.enabled;
+      json[r'symbols'] = this.symbols;
       json[r'config'] = this.config;
     return json;
   }
@@ -79,6 +87,7 @@ class UpdateStrategyRequest {
         name: mapValueOfType<String>(json, r'name')!,
         strategyType: mapValueOfType<String>(json, r'strategyType')!,
         enabled: mapValueOfType<bool>(json, r'enabled')!,
+        symbols: mapValueOfType<String>(json, r'symbols')!,
         config: SopMtfAdxConfig.fromJson(json[r'config'])!,
       );
     }
@@ -130,6 +139,7 @@ class UpdateStrategyRequest {
     'name',
     'strategyType',
     'enabled',
+    'symbols',
     'config',
   };
 }

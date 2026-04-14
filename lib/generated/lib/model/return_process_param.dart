@@ -25,19 +25,37 @@ class ReturnProcessParam {
   bool approved;
 
   /// 賣家回覆
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? sellerReply;
 
   /// 拒絕原因
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? rejectionReason;
 
   /// 退款選項：FULL_REFUND_NO_RETURN(全額退款不退貨), PARTIAL_REFUND_NO_RETURN(部分退款不退貨), RETURN_REQUIRED(需要退貨)
   ReturnProcessParamRefundOptionEnum? refundOption;
 
   /// 部分退款金額（當 refundOption 為 PARTIAL_REFUND_NO_RETURN 時必填）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? refundAmount;
 
   /// 賣家收貨地址ID（當 refundOption 為 RETURN_REQUIRED 時必填，從賣家地址列表中選擇）
-  int? addressId;
+  int addressId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ReturnProcessParam &&
@@ -56,7 +74,7 @@ class ReturnProcessParam {
     (rejectionReason == null ? 0 : rejectionReason!.hashCode) +
     (refundOption == null ? 0 : refundOption!.hashCode) +
     (refundAmount == null ? 0 : refundAmount!.hashCode) +
-    (addressId == null ? 0 : addressId!.hashCode);
+    (addressId.hashCode);
 
   @override
   String toString() => 'ReturnProcessParam[approved=$approved, sellerReply=$sellerReply, rejectionReason=$rejectionReason, refundOption=$refundOption, refundAmount=$refundAmount, addressId=$addressId]';
@@ -84,11 +102,7 @@ class ReturnProcessParam {
     } else {
       json[r'refundAmount'] = null;
     }
-    if (this.addressId != null) {
       json[r'addressId'] = this.addressId;
-    } else {
-      json[r'addressId'] = null;
-    }
     return json;
   }
 
@@ -115,10 +129,8 @@ class ReturnProcessParam {
         sellerReply: mapValueOfType<String>(json, r'sellerReply'),
         rejectionReason: mapValueOfType<String>(json, r'rejectionReason'),
         refundOption: ReturnProcessParamRefundOptionEnum.fromJson(json[r'refundOption']),
-        refundAmount: json[r'refundAmount'] == null
-            ? null
-            : num.parse('${json[r'refundAmount']}'),
-        addressId: mapValueOfType<int>(json, r'addressId'),
+        refundAmount: num.parse('${json[r'refundAmount']}'),
+        addressId: mapValueOfType<int>(json, r'addressId')!,
       );
     }
     return null;

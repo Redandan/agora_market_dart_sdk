@@ -47,13 +47,8 @@ class UserProfileUpdateParam {
   ///
   String? avatar;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DefaultHomePageEnum? defaultHomePage;
+  /// 默認首頁設置
+  UserProfileUpdateParamDefaultHomePageEnum? defaultHomePage;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -135,7 +130,7 @@ class UserProfileUpdateParam {
         name: mapValueOfType<String>(json, r'name'),
         phone: mapValueOfType<String>(json, r'phone'),
         avatar: mapValueOfType<String>(json, r'avatar'),
-        defaultHomePage: DefaultHomePageEnum.fromJson(json[r'defaultHomePage']),
+        defaultHomePage: UserProfileUpdateParamDefaultHomePageEnum.fromJson(json[r'defaultHomePage']),
         avatarUpdate: mapValueOfType<bool>(json, r'avatarUpdate'),
       );
     }
@@ -186,4 +181,87 @@ class UserProfileUpdateParam {
   static const requiredKeys = <String>{
   };
 }
+
+/// 默認首頁設置
+class UserProfileUpdateParamDefaultHomePageEnum {
+  /// Instantiate a new enum with the provided [value].
+  const UserProfileUpdateParamDefaultHomePageEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const BUYER = UserProfileUpdateParamDefaultHomePageEnum._(r'BUYER');
+  static const SELLER = UserProfileUpdateParamDefaultHomePageEnum._(r'SELLER');
+  static const DELIVERYER = UserProfileUpdateParamDefaultHomePageEnum._(r'DELIVERYER');
+  static const ADMIN = UserProfileUpdateParamDefaultHomePageEnum._(r'ADMIN');
+  static const unknownDefaultOpenApi = UserProfileUpdateParamDefaultHomePageEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][UserProfileUpdateParamDefaultHomePageEnum].
+  static const values = <UserProfileUpdateParamDefaultHomePageEnum>[
+    BUYER,
+    SELLER,
+    DELIVERYER,
+    ADMIN,
+    unknownDefaultOpenApi,
+  ];
+
+  static UserProfileUpdateParamDefaultHomePageEnum? fromJson(dynamic value) => UserProfileUpdateParamDefaultHomePageEnumTypeTransformer().decode(value);
+
+  static List<UserProfileUpdateParamDefaultHomePageEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <UserProfileUpdateParamDefaultHomePageEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = UserProfileUpdateParamDefaultHomePageEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [UserProfileUpdateParamDefaultHomePageEnum] to String,
+/// and [decode] dynamic data back to [UserProfileUpdateParamDefaultHomePageEnum].
+class UserProfileUpdateParamDefaultHomePageEnumTypeTransformer {
+  factory UserProfileUpdateParamDefaultHomePageEnumTypeTransformer() => _instance ??= const UserProfileUpdateParamDefaultHomePageEnumTypeTransformer._();
+
+  const UserProfileUpdateParamDefaultHomePageEnumTypeTransformer._();
+
+  String encode(UserProfileUpdateParamDefaultHomePageEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a UserProfileUpdateParamDefaultHomePageEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  UserProfileUpdateParamDefaultHomePageEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'BUYER': return UserProfileUpdateParamDefaultHomePageEnum.BUYER;
+        case r'SELLER': return UserProfileUpdateParamDefaultHomePageEnum.SELLER;
+        case r'DELIVERYER': return UserProfileUpdateParamDefaultHomePageEnum.DELIVERYER;
+        case r'ADMIN': return UserProfileUpdateParamDefaultHomePageEnum.ADMIN;
+        case r'unknown_default_open_api': return UserProfileUpdateParamDefaultHomePageEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [UserProfileUpdateParamDefaultHomePageEnumTypeTransformer] instance.
+  static UserProfileUpdateParamDefaultHomePageEnumTypeTransformer? _instance;
+}
+
 

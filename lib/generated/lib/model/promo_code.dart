@@ -38,38 +38,93 @@ class PromoCode {
   String name;
 
   /// 推廣碼描述
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? description;
 
+  /// 申請狀態
   PromoCodeStatusEnum status;
 
   /// 申請者ID
   int applicantId;
 
   /// 審核者ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? reviewerId;
 
   /// 審核備註
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? reviewRemark;
 
   /// 審核時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? reviewedAt;
 
   /// 最後註冊用戶ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? lastRegisteredUserId;
 
   /// 最後註冊時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? lastRegisteredAt;
 
   /// 累計註冊用戶數
   int totalRegisteredUsers;
 
   /// 最大使用次數限制（null表示無限制）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? maxUsageLimit;
 
   /// 有效期開始時間（null表示無限制）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? validFrom;
 
   /// 有效期結束時間（null表示無限制）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? validTo;
 
   /// 申請時間
@@ -268,4 +323,87 @@ class PromoCode {
     'updatedAt',
   };
 }
+
+/// 申請狀態
+class PromoCodeStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const PromoCodeStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const PENDING = PromoCodeStatusEnum._(r'PENDING');
+  static const APPROVED = PromoCodeStatusEnum._(r'APPROVED');
+  static const REJECTED = PromoCodeStatusEnum._(r'REJECTED');
+  static const DISABLED = PromoCodeStatusEnum._(r'DISABLED');
+  static const unknownDefaultOpenApi = PromoCodeStatusEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][PromoCodeStatusEnum].
+  static const values = <PromoCodeStatusEnum>[
+    PENDING,
+    APPROVED,
+    REJECTED,
+    DISABLED,
+    unknownDefaultOpenApi,
+  ];
+
+  static PromoCodeStatusEnum? fromJson(dynamic value) => PromoCodeStatusEnumTypeTransformer().decode(value);
+
+  static List<PromoCodeStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PromoCodeStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = PromoCodeStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [PromoCodeStatusEnum] to String,
+/// and [decode] dynamic data back to [PromoCodeStatusEnum].
+class PromoCodeStatusEnumTypeTransformer {
+  factory PromoCodeStatusEnumTypeTransformer() => _instance ??= const PromoCodeStatusEnumTypeTransformer._();
+
+  const PromoCodeStatusEnumTypeTransformer._();
+
+  String encode(PromoCodeStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a PromoCodeStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  PromoCodeStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'PENDING': return PromoCodeStatusEnum.PENDING;
+        case r'APPROVED': return PromoCodeStatusEnum.APPROVED;
+        case r'REJECTED': return PromoCodeStatusEnum.REJECTED;
+        case r'DISABLED': return PromoCodeStatusEnum.DISABLED;
+        case r'unknown_default_open_api': return PromoCodeStatusEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [PromoCodeStatusEnumTypeTransformer] instance.
+  static PromoCodeStatusEnumTypeTransformer? _instance;
+}
+
 

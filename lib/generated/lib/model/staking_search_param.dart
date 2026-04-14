@@ -107,13 +107,8 @@ class StakingSearchParam {
   ///
   String? stakingId;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  StakingStatusEnum? status;
+  /// 質押狀態
+  StakingSearchParamStatusEnum? status;
 
   /// 貨幣
   ///
@@ -244,7 +239,7 @@ class StakingSearchParam {
         sortDirection: mapValueOfType<String>(json, r'sortDirection'),
         userId: mapValueOfType<int>(json, r'userId'),
         stakingId: mapValueOfType<String>(json, r'stakingId'),
-        status: StakingStatusEnum.fromJson(json[r'status']),
+        status: StakingSearchParamStatusEnum.fromJson(json[r'status']),
         currency: mapValueOfType<String>(json, r'currency'),
       );
     }
@@ -295,4 +290,81 @@ class StakingSearchParam {
   static const requiredKeys = <String>{
   };
 }
+
+/// 質押狀態
+class StakingSearchParamStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const StakingSearchParamStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const STAKING = StakingSearchParamStatusEnum._(r'STAKING');
+  static const COMPLETED = StakingSearchParamStatusEnum._(r'COMPLETED');
+  static const unknownDefaultOpenApi = StakingSearchParamStatusEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][StakingSearchParamStatusEnum].
+  static const values = <StakingSearchParamStatusEnum>[
+    STAKING,
+    COMPLETED,
+    unknownDefaultOpenApi,
+  ];
+
+  static StakingSearchParamStatusEnum? fromJson(dynamic value) => StakingSearchParamStatusEnumTypeTransformer().decode(value);
+
+  static List<StakingSearchParamStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <StakingSearchParamStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = StakingSearchParamStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [StakingSearchParamStatusEnum] to String,
+/// and [decode] dynamic data back to [StakingSearchParamStatusEnum].
+class StakingSearchParamStatusEnumTypeTransformer {
+  factory StakingSearchParamStatusEnumTypeTransformer() => _instance ??= const StakingSearchParamStatusEnumTypeTransformer._();
+
+  const StakingSearchParamStatusEnumTypeTransformer._();
+
+  String encode(StakingSearchParamStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a StakingSearchParamStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  StakingSearchParamStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'STAKING': return StakingSearchParamStatusEnum.STAKING;
+        case r'COMPLETED': return StakingSearchParamStatusEnum.COMPLETED;
+        case r'unknown_default_open_api': return StakingSearchParamStatusEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [StakingSearchParamStatusEnumTypeTransformer] instance.
+  static StakingSearchParamStatusEnumTypeTransformer? _instance;
+}
+
 

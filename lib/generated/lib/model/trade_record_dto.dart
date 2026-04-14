@@ -99,12 +99,24 @@ class TradeRecordDto {
   num? returnPct;
 
   /// 出場原因
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? exitReason;
 
   /// 交易方向
   TradeRecordDtoSideEnum? side;
 
   /// 借貨利息（僅做空時有值，幣安小時計息模型）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? borrowingCost;
 
   @override
@@ -228,9 +240,7 @@ class TradeRecordDto {
         returnPct: num.parse('${json[r'returnPct']}'),
         exitReason: mapValueOfType<String>(json, r'exitReason'),
         side: TradeRecordDtoSideEnum.fromJson(json[r'side']),
-        borrowingCost: json[r'borrowingCost'] == null
-            ? null
-            : num.parse('${json[r'borrowingCost']}'),
+        borrowingCost: num.parse('${json[r'borrowingCost']}'),
       );
     }
     return null;

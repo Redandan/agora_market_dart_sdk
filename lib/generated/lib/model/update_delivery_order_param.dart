@@ -24,7 +24,8 @@ class UpdateDeliveryOrderParam {
   /// 訂單ID
   String orderId;
 
-  DeliveryReportTypeEnum reportType;
+  /// 報告類型
+  UpdateDeliveryOrderParamReportTypeEnum reportType;
 
   /// 備註
   ///
@@ -111,7 +112,7 @@ class UpdateDeliveryOrderParam {
 
       return UpdateDeliveryOrderParam(
         orderId: mapValueOfType<String>(json, r'orderId')!,
-        reportType: DeliveryReportTypeEnum.fromJson(json[r'reportType'])!,
+        reportType: UpdateDeliveryOrderParamReportTypeEnum.fromJson(json[r'reportType'])!,
         remark: mapValueOfType<String>(json, r'remark'),
         currentLocationLatitude: mapValueOfType<double>(json, r'currentLocationLatitude')!,
         currentLocationLongitude: mapValueOfType<double>(json, r'currentLocationLongitude')!,
@@ -169,4 +170,87 @@ class UpdateDeliveryOrderParam {
     'currentLocationLongitude',
   };
 }
+
+/// 報告類型
+class UpdateDeliveryOrderParamReportTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const UpdateDeliveryOrderParamReportTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const PICKING_UP = UpdateDeliveryOrderParamReportTypeEnum._(r'PICKING_UP');
+  static const DELIVERING = UpdateDeliveryOrderParamReportTypeEnum._(r'DELIVERING');
+  static const DELIVERED = UpdateDeliveryOrderParamReportTypeEnum._(r'DELIVERED');
+  static const CANCELLED = UpdateDeliveryOrderParamReportTypeEnum._(r'CANCELLED');
+  static const unknownDefaultOpenApi = UpdateDeliveryOrderParamReportTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][UpdateDeliveryOrderParamReportTypeEnum].
+  static const values = <UpdateDeliveryOrderParamReportTypeEnum>[
+    PICKING_UP,
+    DELIVERING,
+    DELIVERED,
+    CANCELLED,
+    unknownDefaultOpenApi,
+  ];
+
+  static UpdateDeliveryOrderParamReportTypeEnum? fromJson(dynamic value) => UpdateDeliveryOrderParamReportTypeEnumTypeTransformer().decode(value);
+
+  static List<UpdateDeliveryOrderParamReportTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <UpdateDeliveryOrderParamReportTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = UpdateDeliveryOrderParamReportTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [UpdateDeliveryOrderParamReportTypeEnum] to String,
+/// and [decode] dynamic data back to [UpdateDeliveryOrderParamReportTypeEnum].
+class UpdateDeliveryOrderParamReportTypeEnumTypeTransformer {
+  factory UpdateDeliveryOrderParamReportTypeEnumTypeTransformer() => _instance ??= const UpdateDeliveryOrderParamReportTypeEnumTypeTransformer._();
+
+  const UpdateDeliveryOrderParamReportTypeEnumTypeTransformer._();
+
+  String encode(UpdateDeliveryOrderParamReportTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a UpdateDeliveryOrderParamReportTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  UpdateDeliveryOrderParamReportTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'PICKING_UP': return UpdateDeliveryOrderParamReportTypeEnum.PICKING_UP;
+        case r'DELIVERING': return UpdateDeliveryOrderParamReportTypeEnum.DELIVERING;
+        case r'DELIVERED': return UpdateDeliveryOrderParamReportTypeEnum.DELIVERED;
+        case r'CANCELLED': return UpdateDeliveryOrderParamReportTypeEnum.CANCELLED;
+        case r'unknown_default_open_api': return UpdateDeliveryOrderParamReportTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [UpdateDeliveryOrderParamReportTypeEnumTypeTransformer] instance.
+  static UpdateDeliveryOrderParamReportTypeEnumTypeTransformer? _instance;
+}
+
 

@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -19,7 +19,7 @@ class BatchReviewResult {
     this.failures = const [],
   });
 
-  /// ??撖拇?撱?Ⅳ?賊?
+  /// 成功審核的推廣碼數量
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -27,7 +27,8 @@ class BatchReviewResult {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? successCount;
-  /// 憭望??撱?Ⅳ?賊?
+
+  /// 失敗的推廣碼數量
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -35,12 +36,13 @@ class BatchReviewResult {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? failureCount;
-  /// ??撖拇?撱?Ⅳ?”
 
+  /// 成功審核的推廣碼列表
   List<String> successCodes;
-  /// 憭望??撱?Ⅳ????
 
+  /// 失敗的推廣碼及原因
   List<ReviewFailure> failures;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is BatchReviewResult &&
     other.successCount == successCount &&
@@ -150,5 +152,4 @@ class BatchReviewResult {
   static const requiredKeys = <String>{
   };
 }
-
 

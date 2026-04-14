@@ -32,12 +32,12 @@ class UserAddress {
     required this.isActive,
     required this.createdAt,
     required this.updatedAt,
-    this.homeDelivery,
     this.fullAddress,
+    this.homeDelivery,
     this.formattedAddress,
-    this.convenienceStorePickup,
     this.logisticsDescription,
     this.recipientInfo,
+    this.convenienceStorePickup,
   });
 
   /// 地址ID
@@ -65,29 +65,60 @@ class UserAddress {
   String detailedAddress;
 
   /// 備註
-  String? remark;
-
-  /// 經度
-  double? longitude;
-
-  /// 緯度
-  double? latitude;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PickupServiceTypeEnum? serviceType;
+  String? remark;
+
+  /// 經度
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? longitude;
+
+  /// 緯度
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? latitude;
+
+  /// 取件類型
+  UserAddressServiceTypeEnum? serviceType;
 
   /// 門市名稱（便利商店取件用）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? storeName;
 
   /// 門市代號（便利商店取件用）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? storeCode;
 
   /// 門市地址（便利商店取件用）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? storeAddress;
 
   /// 是否為預設地址
@@ -108,14 +139,6 @@ class UserAddress {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? homeDelivery;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? fullAddress;
 
   ///
@@ -124,7 +147,7 @@ class UserAddress {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? formattedAddress;
+  bool? homeDelivery;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -132,7 +155,7 @@ class UserAddress {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? convenienceStorePickup;
+  String? formattedAddress;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -149,6 +172,14 @@ class UserAddress {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? recipientInfo;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? convenienceStorePickup;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserAddress &&
@@ -171,12 +202,12 @@ class UserAddress {
     other.isActive == isActive &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.homeDelivery == homeDelivery &&
     other.fullAddress == fullAddress &&
+    other.homeDelivery == homeDelivery &&
     other.formattedAddress == formattedAddress &&
-    other.convenienceStorePickup == convenienceStorePickup &&
     other.logisticsDescription == logisticsDescription &&
-    other.recipientInfo == recipientInfo;
+    other.recipientInfo == recipientInfo &&
+    other.convenienceStorePickup == convenienceStorePickup;
 
   @override
   int get hashCode =>
@@ -200,15 +231,15 @@ class UserAddress {
     (isActive.hashCode) +
     (createdAt.hashCode) +
     (updatedAt.hashCode) +
-    (homeDelivery == null ? 0 : homeDelivery!.hashCode) +
     (fullAddress == null ? 0 : fullAddress!.hashCode) +
+    (homeDelivery == null ? 0 : homeDelivery!.hashCode) +
     (formattedAddress == null ? 0 : formattedAddress!.hashCode) +
-    (convenienceStorePickup == null ? 0 : convenienceStorePickup!.hashCode) +
     (logisticsDescription == null ? 0 : logisticsDescription!.hashCode) +
-    (recipientInfo == null ? 0 : recipientInfo!.hashCode);
+    (recipientInfo == null ? 0 : recipientInfo!.hashCode) +
+    (convenienceStorePickup == null ? 0 : convenienceStorePickup!.hashCode);
 
   @override
-  String toString() => 'UserAddress[id=$id, userId=$userId, recipientName=$recipientName, recipientPhone=$recipientPhone, postalCode=$postalCode, city=$city, district=$district, detailedAddress=$detailedAddress, remark=$remark, longitude=$longitude, latitude=$latitude, serviceType=$serviceType, storeName=$storeName, storeCode=$storeCode, storeAddress=$storeAddress, isDefault=$isDefault, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, homeDelivery=$homeDelivery, fullAddress=$fullAddress, formattedAddress=$formattedAddress, convenienceStorePickup=$convenienceStorePickup, logisticsDescription=$logisticsDescription, recipientInfo=$recipientInfo]';
+  String toString() => 'UserAddress[id=$id, userId=$userId, recipientName=$recipientName, recipientPhone=$recipientPhone, postalCode=$postalCode, city=$city, district=$district, detailedAddress=$detailedAddress, remark=$remark, longitude=$longitude, latitude=$latitude, serviceType=$serviceType, storeName=$storeName, storeCode=$storeCode, storeAddress=$storeAddress, isDefault=$isDefault, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, fullAddress=$fullAddress, homeDelivery=$homeDelivery, formattedAddress=$formattedAddress, logisticsDescription=$logisticsDescription, recipientInfo=$recipientInfo, convenienceStorePickup=$convenienceStorePickup]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -259,25 +290,20 @@ class UserAddress {
       json[r'isActive'] = this.isActive;
       json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
       json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
-    if (this.homeDelivery != null) {
-      json[r'homeDelivery'] = this.homeDelivery;
-    } else {
-      json[r'homeDelivery'] = null;
-    }
     if (this.fullAddress != null) {
       json[r'fullAddress'] = this.fullAddress;
     } else {
       json[r'fullAddress'] = null;
     }
+    if (this.homeDelivery != null) {
+      json[r'homeDelivery'] = this.homeDelivery;
+    } else {
+      json[r'homeDelivery'] = null;
+    }
     if (this.formattedAddress != null) {
       json[r'formattedAddress'] = this.formattedAddress;
     } else {
       json[r'formattedAddress'] = null;
-    }
-    if (this.convenienceStorePickup != null) {
-      json[r'convenienceStorePickup'] = this.convenienceStorePickup;
-    } else {
-      json[r'convenienceStorePickup'] = null;
     }
     if (this.logisticsDescription != null) {
       json[r'logisticsDescription'] = this.logisticsDescription;
@@ -288,6 +314,11 @@ class UserAddress {
       json[r'recipientInfo'] = this.recipientInfo;
     } else {
       json[r'recipientInfo'] = null;
+    }
+    if (this.convenienceStorePickup != null) {
+      json[r'convenienceStorePickup'] = this.convenienceStorePickup;
+    } else {
+      json[r'convenienceStorePickup'] = null;
     }
     return json;
   }
@@ -322,7 +353,7 @@ class UserAddress {
         remark: mapValueOfType<String>(json, r'remark'),
         longitude: mapValueOfType<double>(json, r'longitude'),
         latitude: mapValueOfType<double>(json, r'latitude'),
-        serviceType: PickupServiceTypeEnum.fromJson(json[r'serviceType']),
+        serviceType: UserAddressServiceTypeEnum.fromJson(json[r'serviceType']),
         storeName: mapValueOfType<String>(json, r'storeName'),
         storeCode: mapValueOfType<String>(json, r'storeCode'),
         storeAddress: mapValueOfType<String>(json, r'storeAddress'),
@@ -330,12 +361,12 @@ class UserAddress {
         isActive: mapValueOfType<bool>(json, r'isActive')!,
         createdAt: mapDateTime(json, r'createdAt', r'')!,
         updatedAt: mapDateTime(json, r'updatedAt', r'')!,
-        homeDelivery: mapValueOfType<bool>(json, r'homeDelivery'),
         fullAddress: mapValueOfType<String>(json, r'fullAddress'),
+        homeDelivery: mapValueOfType<bool>(json, r'homeDelivery'),
         formattedAddress: mapValueOfType<String>(json, r'formattedAddress'),
-        convenienceStorePickup: mapValueOfType<bool>(json, r'convenienceStorePickup'),
         logisticsDescription: mapValueOfType<String>(json, r'logisticsDescription'),
         recipientInfo: mapValueOfType<String>(json, r'recipientInfo'),
+        convenienceStorePickup: mapValueOfType<bool>(json, r'convenienceStorePickup'),
       );
     }
     return null;
@@ -397,4 +428,93 @@ class UserAddress {
     'updatedAt',
   };
 }
+
+/// 取件類型
+class UserAddressServiceTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const UserAddressServiceTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const HOME_DELIVERY = UserAddressServiceTypeEnum._(r'HOME_DELIVERY');
+  static const SEVEN_ELEVEN = UserAddressServiceTypeEnum._(r'SEVEN_ELEVEN');
+  static const FAMILY_MART = UserAddressServiceTypeEnum._(r'FAMILY_MART');
+  static const HILIFE = UserAddressServiceTypeEnum._(r'HILIFE');
+  static const OK_MART = UserAddressServiceTypeEnum._(r'OK_MART');
+  static const PLATFORM_DELIVERY = UserAddressServiceTypeEnum._(r'PLATFORM_DELIVERY');
+  static const unknownDefaultOpenApi = UserAddressServiceTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][UserAddressServiceTypeEnum].
+  static const values = <UserAddressServiceTypeEnum>[
+    HOME_DELIVERY,
+    SEVEN_ELEVEN,
+    FAMILY_MART,
+    HILIFE,
+    OK_MART,
+    PLATFORM_DELIVERY,
+    unknownDefaultOpenApi,
+  ];
+
+  static UserAddressServiceTypeEnum? fromJson(dynamic value) => UserAddressServiceTypeEnumTypeTransformer().decode(value);
+
+  static List<UserAddressServiceTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <UserAddressServiceTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = UserAddressServiceTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [UserAddressServiceTypeEnum] to String,
+/// and [decode] dynamic data back to [UserAddressServiceTypeEnum].
+class UserAddressServiceTypeEnumTypeTransformer {
+  factory UserAddressServiceTypeEnumTypeTransformer() => _instance ??= const UserAddressServiceTypeEnumTypeTransformer._();
+
+  const UserAddressServiceTypeEnumTypeTransformer._();
+
+  String encode(UserAddressServiceTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a UserAddressServiceTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  UserAddressServiceTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'HOME_DELIVERY': return UserAddressServiceTypeEnum.HOME_DELIVERY;
+        case r'SEVEN_ELEVEN': return UserAddressServiceTypeEnum.SEVEN_ELEVEN;
+        case r'FAMILY_MART': return UserAddressServiceTypeEnum.FAMILY_MART;
+        case r'HILIFE': return UserAddressServiceTypeEnum.HILIFE;
+        case r'OK_MART': return UserAddressServiceTypeEnum.OK_MART;
+        case r'PLATFORM_DELIVERY': return UserAddressServiceTypeEnum.PLATFORM_DELIVERY;
+        case r'unknown_default_open_api': return UserAddressServiceTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [UserAddressServiceTypeEnumTypeTransformer] instance.
+  static UserAddressServiceTypeEnumTypeTransformer? _instance;
+}
+
 

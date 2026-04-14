@@ -37,9 +37,21 @@ class SlotRevenueResponse {
   DateTime endTime;
 
   /// 賠率版本號（對應 slot_paytable_configs.version），僅 /revenue/by-version 有值
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? paytableVersion;
 
   /// 此版本設定的理論 RTP（%），僅 /revenue/by-version 有值
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? theoreticalRtpPct;
 
   /// 總局數
@@ -145,9 +157,7 @@ class SlotRevenueResponse {
         startTime: mapDateTime(json, r'startTime', r'')!,
         endTime: mapDateTime(json, r'endTime', r'')!,
         paytableVersion: mapValueOfType<int>(json, r'paytableVersion'),
-        theoreticalRtpPct: json[r'theoreticalRtpPct'] == null
-            ? null
-            : num.parse('${json[r'theoreticalRtpPct']}'),
+        theoreticalRtpPct: num.parse('${json[r'theoreticalRtpPct']}'),
         totalRounds: mapValueOfType<int>(json, r'totalRounds')!,
         winRounds: mapValueOfType<int>(json, r'winRounds')!,
         winRatePct: num.parse('${json[r'winRatePct']}'),

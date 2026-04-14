@@ -13,15 +13,21 @@ part of openapi.api;
 class TwoFactorManageParam {
   /// Returns a new [TwoFactorManageParam] instance.
   TwoFactorManageParam({
-    required this.code,
-    required this.action,
+    this.code,
+    this.action,
   });
 
   /// 驗證碼
-  String code;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? code;
 
   /// 操作類型
-  TwoFactorManageParamActionEnum action;
+  TwoFactorManageParamActionEnum? action;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TwoFactorManageParam &&
@@ -31,16 +37,24 @@ class TwoFactorManageParam {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (code.hashCode) +
-    (action.hashCode);
+    (code == null ? 0 : code!.hashCode) +
+    (action == null ? 0 : action!.hashCode);
 
   @override
   String toString() => 'TwoFactorManageParam[code=$code, action=$action]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.code != null) {
       json[r'code'] = this.code;
+    } else {
+      json[r'code'] = null;
+    }
+    if (this.action != null) {
       json[r'action'] = this.action;
+    } else {
+      json[r'action'] = null;
+    }
     return json;
   }
 
@@ -63,8 +77,8 @@ class TwoFactorManageParam {
       }());
 
       return TwoFactorManageParam(
-        code: mapValueOfType<String>(json, r'code')!,
-        action: TwoFactorManageParamActionEnum.fromJson(json[r'action'])!,
+        code: mapValueOfType<String>(json, r'code'),
+        action: TwoFactorManageParamActionEnum.fromJson(json[r'action']),
       );
     }
     return null;
@@ -112,8 +126,6 @@ class TwoFactorManageParam {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'code',
-    'action',
   };
 }
 

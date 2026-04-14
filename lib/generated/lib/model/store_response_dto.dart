@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -51,7 +51,7 @@ class StoreResponseDTO {
     this.adminRemark,
   });
 
-  /// ?????D
+  /// 商店擁有者ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -59,7 +59,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? id;
-  /// ???迂
+
+  /// 商店名稱
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -67,7 +68,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? name;
-  /// ???膩
+
+  /// 商店描述
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -75,7 +77,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? description;
-  /// ???啣?
+
+  /// 商店地址
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -83,7 +86,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? address;
-  /// ??蝬漲
+
+  /// 商店經度
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -91,7 +95,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? longitude;
-  /// ??蝺臬漲
+
+  /// 商店緯度
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -99,7 +104,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? latitude;
-  /// ???餉店
+
+  /// 商店電話
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -107,7 +113,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? phone;
-  /// ???萇拳
+
+  /// 商店郵箱
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -115,7 +122,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? email;
-  /// ?平??
+
+  /// 營業時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -123,7 +131,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? businessHours;
-  /// ???剖?
+
+  /// 商店頭像
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -131,7 +140,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? logoUrl;
-  /// Logo?膩
+
+  /// Logo描述
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -139,7 +149,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? logoDescription;
-  /// Logo銝??園
+
+  /// Logo上传时间
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -147,7 +158,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? logoUploadTime;
-  /// ??撠??
+
+  /// 商店封面圖片
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -155,7 +167,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? coverImageUrl;
-  /// 撠?曄??膩
+
+  /// 封面图片描述
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -163,7 +176,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? coverDescription;
-  /// 撠?曄?銝??園
+
+  /// 封面图片上传时间
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -171,7 +185,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? coverUploadTime;
-  /// ?臬?
+
+  /// 是否啟用
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -179,7 +194,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? isActive;
-  /// ?汗甈⊥
+
+  /// 瀏覽次數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -187,7 +203,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? viewCount;
-  /// 閰?
+
+  /// 評分
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -195,7 +212,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? rating;
-  /// 閰?甈⊥
+
+  /// 評分次數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -203,7 +221,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? ratingCount;
-  /// 靽∠蝑?
+
+  /// 信用等級
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -211,7 +230,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? creditLevel;
-  /// ???賊?
+
+  /// 商品數量
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -219,7 +239,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? productCount;
-  /// 閮?賊?
+
+  /// 訂單數量
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -227,7 +248,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? orderCount;
-  /// 蝮賡?桅?
+
+  /// 總銷售額
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -235,7 +257,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? totalSales;
-  /// 撟喳?閰?
+
+  /// 平均評分
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -243,17 +266,20 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? averageRating;
-  /// ????  ///
+
+  /// 回覆率
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? responseRate;
-  /// ?舀?瘚??
 
-  List<ShippingCompanyEnum> supportedShippingCompanies;
-  /// ?身?祥
+  /// 支援的物流公司
+  List<StoreResponseDTOSupportedShippingCompaniesEnum> supportedShippingCompanies;
+
+  /// 預設運費
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -261,21 +287,26 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? defaultShippingFee;
-  /// ??鞎駁?瑼?  ///
+
+  /// 免運費門檻
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? freeShippingThreshold;
-  /// ?牧??  ///
+
+  /// 運送說明
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? shippingDescription;
-  /// ?箄疏皞???嚗???
+
+  /// 出貨準備時間（小時）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -283,7 +314,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? shippingPreparationHours;
-  /// ??????嚗予?賂?
+
+  /// 預計送達時間（天數）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -291,7 +323,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? estimatedDeliveryDays;
-  /// ?臬?舀???箄疏?交?
+
+  /// 是否支援指定出貨日期
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -299,7 +332,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? supportsScheduledShipping;
-  /// ?舫???箄疏?交?蝭?嚗予?賂?
+
+  /// 可選擇的出貨日期範圍（天數）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -307,7 +341,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? shippingDateRange;
-  /// ?萄遣??
+
+  /// 創建時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -315,7 +350,8 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? createdAt;
-  /// ?湔??
+
+  /// 更新時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -323,13 +359,16 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? updatedAt;
-  /// 蝞∠??∪?閮?  ///
+
+  /// 管理員備註
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? adminRemark;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is StoreResponseDTO &&
     other.id == id &&
@@ -539,7 +578,7 @@ class StoreResponseDTO {
     } else {
       json[r'responseRate'] = null;
     }
-      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies.map((e) => e.toJson()).toList();
+      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
     if (this.defaultShippingFee != null) {
       json[r'defaultShippingFee'] = this.defaultShippingFee;
     } else {
@@ -637,7 +676,7 @@ class StoreResponseDTO {
         totalSales: mapValueOfType<double>(json, r'totalSales'),
         averageRating: mapValueOfType<double>(json, r'averageRating'),
         responseRate: mapValueOfType<int>(json, r'responseRate'),
-        supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']),
+        supportedShippingCompanies: StoreResponseDTOSupportedShippingCompaniesEnum.listFromJson(json[r'supportedShippingCompanies']),
         defaultShippingFee: mapValueOfType<double>(json, r'defaultShippingFee'),
         freeShippingThreshold: mapValueOfType<double>(json, r'freeShippingThreshold'),
         shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),
@@ -696,6 +735,115 @@ class StoreResponseDTO {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
   };
+}
+
+/// 物流公司
+class StoreResponseDTOSupportedShippingCompaniesEnum {
+  /// Instantiate a new enum with the provided [value].
+  const StoreResponseDTOSupportedShippingCompaniesEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const BLACK_CAT = StoreResponseDTOSupportedShippingCompaniesEnum._(r'BLACK_CAT');
+  static const HCT = StoreResponseDTOSupportedShippingCompaniesEnum._(r'HCT');
+  static const KERRY = StoreResponseDTOSupportedShippingCompaniesEnum._(r'KERRY');
+  static const SF_EXPRESS = StoreResponseDTOSupportedShippingCompaniesEnum._(r'SF_EXPRESS');
+  static const HOME_DELIVERY_EXPRESS = StoreResponseDTOSupportedShippingCompaniesEnum._(r'HOME_DELIVERY_EXPRESS');
+  static const TAIWAN_HOME_DELIVERY = StoreResponseDTOSupportedShippingCompaniesEnum._(r'TAIWAN_HOME_DELIVERY');
+  static const PLATFORM_DELIVERY = StoreResponseDTOSupportedShippingCompaniesEnum._(r'PLATFORM_DELIVERY');
+  static const SEVEN_ELEVEN = StoreResponseDTOSupportedShippingCompaniesEnum._(r'SEVEN_ELEVEN');
+  static const FAMILY_MART = StoreResponseDTOSupportedShippingCompaniesEnum._(r'FAMILY_MART');
+  static const HILIFE = StoreResponseDTOSupportedShippingCompaniesEnum._(r'HILIFE');
+  static const OK_MART = StoreResponseDTOSupportedShippingCompaniesEnum._(r'OK_MART');
+  static const CHUNGHWA_POST = StoreResponseDTOSupportedShippingCompaniesEnum._(r'CHUNGHWA_POST');
+  static const OTHER = StoreResponseDTOSupportedShippingCompaniesEnum._(r'OTHER');
+  static const unknownDefaultOpenApi = StoreResponseDTOSupportedShippingCompaniesEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][StoreResponseDTOSupportedShippingCompaniesEnum].
+  static const values = <StoreResponseDTOSupportedShippingCompaniesEnum>[
+    BLACK_CAT,
+    HCT,
+    KERRY,
+    SF_EXPRESS,
+    HOME_DELIVERY_EXPRESS,
+    TAIWAN_HOME_DELIVERY,
+    PLATFORM_DELIVERY,
+    SEVEN_ELEVEN,
+    FAMILY_MART,
+    HILIFE,
+    OK_MART,
+    CHUNGHWA_POST,
+    OTHER,
+    unknownDefaultOpenApi,
+  ];
+
+  static StoreResponseDTOSupportedShippingCompaniesEnum? fromJson(dynamic value) => StoreResponseDTOSupportedShippingCompaniesEnumTypeTransformer().decode(value);
+
+  static List<StoreResponseDTOSupportedShippingCompaniesEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <StoreResponseDTOSupportedShippingCompaniesEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = StoreResponseDTOSupportedShippingCompaniesEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [StoreResponseDTOSupportedShippingCompaniesEnum] to String,
+/// and [decode] dynamic data back to [StoreResponseDTOSupportedShippingCompaniesEnum].
+class StoreResponseDTOSupportedShippingCompaniesEnumTypeTransformer {
+  factory StoreResponseDTOSupportedShippingCompaniesEnumTypeTransformer() => _instance ??= const StoreResponseDTOSupportedShippingCompaniesEnumTypeTransformer._();
+
+  const StoreResponseDTOSupportedShippingCompaniesEnumTypeTransformer._();
+
+  String encode(StoreResponseDTOSupportedShippingCompaniesEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a StoreResponseDTOSupportedShippingCompaniesEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  StoreResponseDTOSupportedShippingCompaniesEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'BLACK_CAT': return StoreResponseDTOSupportedShippingCompaniesEnum.BLACK_CAT;
+        case r'HCT': return StoreResponseDTOSupportedShippingCompaniesEnum.HCT;
+        case r'KERRY': return StoreResponseDTOSupportedShippingCompaniesEnum.KERRY;
+        case r'SF_EXPRESS': return StoreResponseDTOSupportedShippingCompaniesEnum.SF_EXPRESS;
+        case r'HOME_DELIVERY_EXPRESS': return StoreResponseDTOSupportedShippingCompaniesEnum.HOME_DELIVERY_EXPRESS;
+        case r'TAIWAN_HOME_DELIVERY': return StoreResponseDTOSupportedShippingCompaniesEnum.TAIWAN_HOME_DELIVERY;
+        case r'PLATFORM_DELIVERY': return StoreResponseDTOSupportedShippingCompaniesEnum.PLATFORM_DELIVERY;
+        case r'SEVEN_ELEVEN': return StoreResponseDTOSupportedShippingCompaniesEnum.SEVEN_ELEVEN;
+        case r'FAMILY_MART': return StoreResponseDTOSupportedShippingCompaniesEnum.FAMILY_MART;
+        case r'HILIFE': return StoreResponseDTOSupportedShippingCompaniesEnum.HILIFE;
+        case r'OK_MART': return StoreResponseDTOSupportedShippingCompaniesEnum.OK_MART;
+        case r'CHUNGHWA_POST': return StoreResponseDTOSupportedShippingCompaniesEnum.CHUNGHWA_POST;
+        case r'OTHER': return StoreResponseDTOSupportedShippingCompaniesEnum.OTHER;
+        case r'unknown_default_open_api': return StoreResponseDTOSupportedShippingCompaniesEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [StoreResponseDTOSupportedShippingCompaniesEnumTypeTransformer] instance.
+  static StoreResponseDTOSupportedShippingCompaniesEnumTypeTransformer? _instance;
 }
 
 

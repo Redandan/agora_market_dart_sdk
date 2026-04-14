@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -34,7 +34,7 @@ class StoreUpdateParam {
     this.shippingDateRange,
   });
 
-  /// ???迂
+  /// 商店名稱
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -42,7 +42,8 @@ class StoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? name;
-  /// ???膩
+
+  /// 商店描述
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -50,7 +51,8 @@ class StoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? description;
-  /// ???啣?
+
+  /// 商店地址
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -58,7 +60,8 @@ class StoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? address;
-  /// ???餉店
+
+  /// 商店電話
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -66,7 +69,8 @@ class StoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? phone;
-  /// ???萇拳
+
+  /// 商店郵箱
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -74,7 +78,8 @@ class StoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? email;
-  /// ?平??
+
+  /// 營業時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -82,7 +87,8 @@ class StoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? businessHours;
-  /// ???剖? URL
+
+  /// 商店頭像 URL
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -90,7 +96,8 @@ class StoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? logoUrl;
-  /// Logo?膩
+
+  /// Logo描述
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -98,7 +105,8 @@ class StoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? logoDescription;
-  /// ??撠?? URL
+
+  /// 商店封面圖片 URL
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -106,7 +114,8 @@ class StoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? coverImageUrl;
-  /// 撠?曄??膩
+
+  /// 封面图片描述
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -114,7 +123,8 @@ class StoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? coverDescription;
-  /// ????
+
+  /// 商店開關
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -122,10 +132,11 @@ class StoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? isActive;
-  /// ?舀?瘚??
 
-  List<ShippingCompanyEnum> supportedShippingCompanies;
-  /// ?身?祥
+  /// 支援的物流公司
+  List<StoreUpdateParamSupportedShippingCompaniesEnum> supportedShippingCompanies;
+
+  /// 預設運費
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -133,21 +144,26 @@ class StoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? defaultShippingFee;
-  /// ??鞎駁?瑼?  ///
+
+  /// 免運費門檻
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? freeShippingThreshold;
-  /// ?牧??  ///
+
+  /// 運送說明
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? shippingDescription;
-  /// ?箄疏皞???嚗???
+
+  /// 出貨準備時間（小時）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -155,7 +171,8 @@ class StoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? shippingPreparationHours;
-  /// ??????嚗予?賂?
+
+  /// 預計送達時間（天數）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -163,7 +180,8 @@ class StoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? estimatedDeliveryDays;
-  /// ?臬?舀???箄疏?交?
+
+  /// 是否支援指定出貨日期
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -171,7 +189,8 @@ class StoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? supportsScheduledShipping;
-  /// ?舫???箄疏?交?蝭?嚗予?賂?
+
+  /// 可選擇的出貨日期範圍（天數）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -179,6 +198,7 @@ class StoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? shippingDateRange;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is StoreUpdateParam &&
     other.name == name &&
@@ -284,7 +304,7 @@ class StoreUpdateParam {
     } else {
       json[r'isActive'] = null;
     }
-      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies.map((e) => e.toJson()).toList();
+      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
     if (this.defaultShippingFee != null) {
       json[r'defaultShippingFee'] = this.defaultShippingFee;
     } else {
@@ -353,7 +373,7 @@ class StoreUpdateParam {
         coverImageUrl: mapValueOfType<String>(json, r'coverImageUrl'),
         coverDescription: mapValueOfType<String>(json, r'coverDescription'),
         isActive: mapValueOfType<bool>(json, r'isActive'),
-        supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']),
+        supportedShippingCompanies: StoreUpdateParamSupportedShippingCompaniesEnum.listFromJson(json[r'supportedShippingCompanies']),
         defaultShippingFee: mapValueOfType<double>(json, r'defaultShippingFee'),
         freeShippingThreshold: mapValueOfType<double>(json, r'freeShippingThreshold'),
         shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),
@@ -409,6 +429,115 @@ class StoreUpdateParam {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
   };
+}
+
+/// 物流公司
+class StoreUpdateParamSupportedShippingCompaniesEnum {
+  /// Instantiate a new enum with the provided [value].
+  const StoreUpdateParamSupportedShippingCompaniesEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const BLACK_CAT = StoreUpdateParamSupportedShippingCompaniesEnum._(r'BLACK_CAT');
+  static const HCT = StoreUpdateParamSupportedShippingCompaniesEnum._(r'HCT');
+  static const KERRY = StoreUpdateParamSupportedShippingCompaniesEnum._(r'KERRY');
+  static const SF_EXPRESS = StoreUpdateParamSupportedShippingCompaniesEnum._(r'SF_EXPRESS');
+  static const HOME_DELIVERY_EXPRESS = StoreUpdateParamSupportedShippingCompaniesEnum._(r'HOME_DELIVERY_EXPRESS');
+  static const TAIWAN_HOME_DELIVERY = StoreUpdateParamSupportedShippingCompaniesEnum._(r'TAIWAN_HOME_DELIVERY');
+  static const PLATFORM_DELIVERY = StoreUpdateParamSupportedShippingCompaniesEnum._(r'PLATFORM_DELIVERY');
+  static const SEVEN_ELEVEN = StoreUpdateParamSupportedShippingCompaniesEnum._(r'SEVEN_ELEVEN');
+  static const FAMILY_MART = StoreUpdateParamSupportedShippingCompaniesEnum._(r'FAMILY_MART');
+  static const HILIFE = StoreUpdateParamSupportedShippingCompaniesEnum._(r'HILIFE');
+  static const OK_MART = StoreUpdateParamSupportedShippingCompaniesEnum._(r'OK_MART');
+  static const CHUNGHWA_POST = StoreUpdateParamSupportedShippingCompaniesEnum._(r'CHUNGHWA_POST');
+  static const OTHER = StoreUpdateParamSupportedShippingCompaniesEnum._(r'OTHER');
+  static const unknownDefaultOpenApi = StoreUpdateParamSupportedShippingCompaniesEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][StoreUpdateParamSupportedShippingCompaniesEnum].
+  static const values = <StoreUpdateParamSupportedShippingCompaniesEnum>[
+    BLACK_CAT,
+    HCT,
+    KERRY,
+    SF_EXPRESS,
+    HOME_DELIVERY_EXPRESS,
+    TAIWAN_HOME_DELIVERY,
+    PLATFORM_DELIVERY,
+    SEVEN_ELEVEN,
+    FAMILY_MART,
+    HILIFE,
+    OK_MART,
+    CHUNGHWA_POST,
+    OTHER,
+    unknownDefaultOpenApi,
+  ];
+
+  static StoreUpdateParamSupportedShippingCompaniesEnum? fromJson(dynamic value) => StoreUpdateParamSupportedShippingCompaniesEnumTypeTransformer().decode(value);
+
+  static List<StoreUpdateParamSupportedShippingCompaniesEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <StoreUpdateParamSupportedShippingCompaniesEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = StoreUpdateParamSupportedShippingCompaniesEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [StoreUpdateParamSupportedShippingCompaniesEnum] to String,
+/// and [decode] dynamic data back to [StoreUpdateParamSupportedShippingCompaniesEnum].
+class StoreUpdateParamSupportedShippingCompaniesEnumTypeTransformer {
+  factory StoreUpdateParamSupportedShippingCompaniesEnumTypeTransformer() => _instance ??= const StoreUpdateParamSupportedShippingCompaniesEnumTypeTransformer._();
+
+  const StoreUpdateParamSupportedShippingCompaniesEnumTypeTransformer._();
+
+  String encode(StoreUpdateParamSupportedShippingCompaniesEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a StoreUpdateParamSupportedShippingCompaniesEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  StoreUpdateParamSupportedShippingCompaniesEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'BLACK_CAT': return StoreUpdateParamSupportedShippingCompaniesEnum.BLACK_CAT;
+        case r'HCT': return StoreUpdateParamSupportedShippingCompaniesEnum.HCT;
+        case r'KERRY': return StoreUpdateParamSupportedShippingCompaniesEnum.KERRY;
+        case r'SF_EXPRESS': return StoreUpdateParamSupportedShippingCompaniesEnum.SF_EXPRESS;
+        case r'HOME_DELIVERY_EXPRESS': return StoreUpdateParamSupportedShippingCompaniesEnum.HOME_DELIVERY_EXPRESS;
+        case r'TAIWAN_HOME_DELIVERY': return StoreUpdateParamSupportedShippingCompaniesEnum.TAIWAN_HOME_DELIVERY;
+        case r'PLATFORM_DELIVERY': return StoreUpdateParamSupportedShippingCompaniesEnum.PLATFORM_DELIVERY;
+        case r'SEVEN_ELEVEN': return StoreUpdateParamSupportedShippingCompaniesEnum.SEVEN_ELEVEN;
+        case r'FAMILY_MART': return StoreUpdateParamSupportedShippingCompaniesEnum.FAMILY_MART;
+        case r'HILIFE': return StoreUpdateParamSupportedShippingCompaniesEnum.HILIFE;
+        case r'OK_MART': return StoreUpdateParamSupportedShippingCompaniesEnum.OK_MART;
+        case r'CHUNGHWA_POST': return StoreUpdateParamSupportedShippingCompaniesEnum.CHUNGHWA_POST;
+        case r'OTHER': return StoreUpdateParamSupportedShippingCompaniesEnum.OTHER;
+        case r'unknown_default_open_api': return StoreUpdateParamSupportedShippingCompaniesEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [StoreUpdateParamSupportedShippingCompaniesEnumTypeTransformer] instance.
+  static StoreUpdateParamSupportedShippingCompaniesEnumTypeTransformer? _instance;
 }
 
 

@@ -29,9 +29,9 @@ class FileRecord {
     this.fileHash,
     required this.uploadTime,
     required this.lastUpdated,
+    this.archive,
     this.image,
     this.document,
-    this.archive,
     this.fileSizeFormatted,
   });
 
@@ -48,9 +48,21 @@ class FileRecord {
   int fileSize;
 
   /// 檔案類型（MIME type）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? contentType;
 
   /// 檔案副檔名
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? fileExtension;
 
   /// 檔案訪問 URL
@@ -63,18 +75,42 @@ class FileRecord {
   int uploaderId;
 
   /// 上傳者名稱
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? uploaderName;
 
   /// 檔案是否公開
   bool isPublic;
 
   /// 檔案描述（可選）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? description;
 
   /// 標籤（用於分類，可選）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? tags;
 
   /// 檔案雜湊值（SHA-256）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? fileHash;
 
   /// 上傳時間
@@ -82,6 +118,14 @@ class FileRecord {
 
   /// 最後更新時間
   DateTime lastUpdated;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? archive;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -98,14 +142,6 @@ class FileRecord {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? document;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? archive;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -133,9 +169,9 @@ class FileRecord {
     other.fileHash == fileHash &&
     other.uploadTime == uploadTime &&
     other.lastUpdated == lastUpdated &&
+    other.archive == archive &&
     other.image == image &&
     other.document == document &&
-    other.archive == archive &&
     other.fileSizeFormatted == fileSizeFormatted;
 
   @override
@@ -157,13 +193,13 @@ class FileRecord {
     (fileHash == null ? 0 : fileHash!.hashCode) +
     (uploadTime.hashCode) +
     (lastUpdated.hashCode) +
+    (archive == null ? 0 : archive!.hashCode) +
     (image == null ? 0 : image!.hashCode) +
     (document == null ? 0 : document!.hashCode) +
-    (archive == null ? 0 : archive!.hashCode) +
     (fileSizeFormatted == null ? 0 : fileSizeFormatted!.hashCode);
 
   @override
-  String toString() => 'FileRecord[id=$id, originalFilename=$originalFilename, objectName=$objectName, fileSize=$fileSize, contentType=$contentType, fileExtension=$fileExtension, fileUrl=$fileUrl, businessType=$businessType, uploaderId=$uploaderId, uploaderName=$uploaderName, isPublic=$isPublic, description=$description, tags=$tags, fileHash=$fileHash, uploadTime=$uploadTime, lastUpdated=$lastUpdated, image=$image, document=$document, archive=$archive, fileSizeFormatted=$fileSizeFormatted]';
+  String toString() => 'FileRecord[id=$id, originalFilename=$originalFilename, objectName=$objectName, fileSize=$fileSize, contentType=$contentType, fileExtension=$fileExtension, fileUrl=$fileUrl, businessType=$businessType, uploaderId=$uploaderId, uploaderName=$uploaderName, isPublic=$isPublic, description=$description, tags=$tags, fileHash=$fileHash, uploadTime=$uploadTime, lastUpdated=$lastUpdated, archive=$archive, image=$image, document=$document, fileSizeFormatted=$fileSizeFormatted]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -207,6 +243,11 @@ class FileRecord {
     }
       json[r'uploadTime'] = this.uploadTime.toUtc().toIso8601String();
       json[r'lastUpdated'] = this.lastUpdated.toUtc().toIso8601String();
+    if (this.archive != null) {
+      json[r'archive'] = this.archive;
+    } else {
+      json[r'archive'] = null;
+    }
     if (this.image != null) {
       json[r'image'] = this.image;
     } else {
@@ -216,11 +257,6 @@ class FileRecord {
       json[r'document'] = this.document;
     } else {
       json[r'document'] = null;
-    }
-    if (this.archive != null) {
-      json[r'archive'] = this.archive;
-    } else {
-      json[r'archive'] = null;
     }
     if (this.fileSizeFormatted != null) {
       json[r'fileSizeFormatted'] = this.fileSizeFormatted;
@@ -265,9 +301,9 @@ class FileRecord {
         fileHash: mapValueOfType<String>(json, r'fileHash'),
         uploadTime: mapDateTime(json, r'uploadTime', r'')!,
         lastUpdated: mapDateTime(json, r'lastUpdated', r'')!,
+        archive: mapValueOfType<bool>(json, r'archive'),
         image: mapValueOfType<bool>(json, r'image'),
         document: mapValueOfType<bool>(json, r'document'),
-        archive: mapValueOfType<bool>(json, r'archive'),
         fileSizeFormatted: mapValueOfType<String>(json, r'fileSizeFormatted'),
       );
     }

@@ -13,10 +13,16 @@ part of openapi.api;
 class PwaLogEntry {
   /// Returns a new [PwaLogEntry] instance.
   PwaLogEntry({
-    required this.log,
+    this.log,
   });
 
-  String log;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? log;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PwaLogEntry &&
@@ -25,14 +31,18 @@ class PwaLogEntry {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (log.hashCode);
+    (log == null ? 0 : log!.hashCode);
 
   @override
   String toString() => 'PwaLogEntry[log=$log]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.log != null) {
       json[r'log'] = this.log;
+    } else {
+      json[r'log'] = null;
+    }
     return json;
   }
 
@@ -55,7 +65,7 @@ class PwaLogEntry {
       }());
 
       return PwaLogEntry(
-        log: mapValueOfType<String>(json, r'log')!,
+        log: mapValueOfType<String>(json, r'log'),
       );
     }
     return null;
@@ -103,7 +113,6 @@ class PwaLogEntry {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'log',
   };
 }
 

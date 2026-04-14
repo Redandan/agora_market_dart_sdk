@@ -106,7 +106,7 @@ class DisputeSearchParam {
   ///
   int? sellerId;
 
-  /// 申訴狀態
+  /// 糾紛狀態
   DisputeSearchParamStatusEnum? status;
 
   @override
@@ -273,7 +273,7 @@ class DisputeSearchParam {
   };
 }
 
-/// 申訴狀態
+/// 糾紛狀態
 class DisputeSearchParamStatusEnum {
   /// Instantiate a new enum with the provided [value].
   const DisputeSearchParamStatusEnum._(this.value);

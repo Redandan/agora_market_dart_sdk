@@ -38,6 +38,12 @@ class GroupAiPromptPreviewDTO {
   List<String> contextMessages;
 
   /// 觸發訊息
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? triggerMessage;
 
   /// 最終送出的 user prompt（由最近對話 + 目標組成）

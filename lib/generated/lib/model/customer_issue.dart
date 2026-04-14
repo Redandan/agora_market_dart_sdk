@@ -54,13 +54,8 @@ class CustomerIssue {
   ///
   String? username;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  IssueTypeEnum? issueType;
+  /// 問題類型
+  CustomerIssueIssueTypeEnum? issueType;
 
   /// 問題內容
   ///
@@ -71,13 +66,8 @@ class CustomerIssue {
   ///
   String? content;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  IssueStatusEnum? status;
+  /// 問題狀態
+  CustomerIssueStatusEnum? status;
 
   /// 回覆內容
   ///
@@ -254,9 +244,9 @@ class CustomerIssue {
         id: mapValueOfType<String>(json, r'id'),
         userId: mapValueOfType<int>(json, r'userId'),
         username: mapValueOfType<String>(json, r'username'),
-        issueType: IssueTypeEnum.fromJson(json[r'issueType']),
+        issueType: CustomerIssueIssueTypeEnum.fromJson(json[r'issueType']),
         content: mapValueOfType<String>(json, r'content'),
-        status: IssueStatusEnum.fromJson(json[r'status']),
+        status: CustomerIssueStatusEnum.fromJson(json[r'status']),
         reply: mapValueOfType<String>(json, r'reply'),
         processedAt: mapDateTime(json, r'processedAt', r''),
         operatorId: mapValueOfType<int>(json, r'operatorId'),
@@ -312,4 +302,164 @@ class CustomerIssue {
   static const requiredKeys = <String>{
   };
 }
+
+/// 問題類型
+class CustomerIssueIssueTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const CustomerIssueIssueTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const RECHARGE_NOT_RECEIVED = CustomerIssueIssueTypeEnum._(r'RECHARGE_NOT_RECEIVED');
+  static const WITHDRAW_NOT_RECEIVED = CustomerIssueIssueTypeEnum._(r'WITHDRAW_NOT_RECEIVED');
+  static const OTHER = CustomerIssueIssueTypeEnum._(r'OTHER');
+  static const unknownDefaultOpenApi = CustomerIssueIssueTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][CustomerIssueIssueTypeEnum].
+  static const values = <CustomerIssueIssueTypeEnum>[
+    RECHARGE_NOT_RECEIVED,
+    WITHDRAW_NOT_RECEIVED,
+    OTHER,
+    unknownDefaultOpenApi,
+  ];
+
+  static CustomerIssueIssueTypeEnum? fromJson(dynamic value) => CustomerIssueIssueTypeEnumTypeTransformer().decode(value);
+
+  static List<CustomerIssueIssueTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CustomerIssueIssueTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CustomerIssueIssueTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CustomerIssueIssueTypeEnum] to String,
+/// and [decode] dynamic data back to [CustomerIssueIssueTypeEnum].
+class CustomerIssueIssueTypeEnumTypeTransformer {
+  factory CustomerIssueIssueTypeEnumTypeTransformer() => _instance ??= const CustomerIssueIssueTypeEnumTypeTransformer._();
+
+  const CustomerIssueIssueTypeEnumTypeTransformer._();
+
+  String encode(CustomerIssueIssueTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a CustomerIssueIssueTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CustomerIssueIssueTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'RECHARGE_NOT_RECEIVED': return CustomerIssueIssueTypeEnum.RECHARGE_NOT_RECEIVED;
+        case r'WITHDRAW_NOT_RECEIVED': return CustomerIssueIssueTypeEnum.WITHDRAW_NOT_RECEIVED;
+        case r'OTHER': return CustomerIssueIssueTypeEnum.OTHER;
+        case r'unknown_default_open_api': return CustomerIssueIssueTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [CustomerIssueIssueTypeEnumTypeTransformer] instance.
+  static CustomerIssueIssueTypeEnumTypeTransformer? _instance;
+}
+
+
+/// 問題狀態
+class CustomerIssueStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const CustomerIssueStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const PENDING = CustomerIssueStatusEnum._(r'PENDING');
+  static const REPLIED = CustomerIssueStatusEnum._(r'REPLIED');
+  static const CLOSED = CustomerIssueStatusEnum._(r'CLOSED');
+  static const unknownDefaultOpenApi = CustomerIssueStatusEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][CustomerIssueStatusEnum].
+  static const values = <CustomerIssueStatusEnum>[
+    PENDING,
+    REPLIED,
+    CLOSED,
+    unknownDefaultOpenApi,
+  ];
+
+  static CustomerIssueStatusEnum? fromJson(dynamic value) => CustomerIssueStatusEnumTypeTransformer().decode(value);
+
+  static List<CustomerIssueStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CustomerIssueStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CustomerIssueStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CustomerIssueStatusEnum] to String,
+/// and [decode] dynamic data back to [CustomerIssueStatusEnum].
+class CustomerIssueStatusEnumTypeTransformer {
+  factory CustomerIssueStatusEnumTypeTransformer() => _instance ??= const CustomerIssueStatusEnumTypeTransformer._();
+
+  const CustomerIssueStatusEnumTypeTransformer._();
+
+  String encode(CustomerIssueStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a CustomerIssueStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CustomerIssueStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'PENDING': return CustomerIssueStatusEnum.PENDING;
+        case r'REPLIED': return CustomerIssueStatusEnum.REPLIED;
+        case r'CLOSED': return CustomerIssueStatusEnum.CLOSED;
+        case r'unknown_default_open_api': return CustomerIssueStatusEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [CustomerIssueStatusEnumTypeTransformer] instance.
+  static CustomerIssueStatusEnumTypeTransformer? _instance;
+}
+
 

@@ -22,21 +22,45 @@ class GroupEditRequest {
   });
 
   /// 是否啟用群組 AI 聊天
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? aiChatEnabled;
 
   /// 回覆模式
   GroupEditRequestReplyModeEnum? replyMode;
 
   /// ACTIVE 模式：累積幾條訊息後現身
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? messageCountThreshold;
 
   /// ACTIVE 模式：兩次回覆最短間隔（分鐘）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? minIntervalMinutes;
 
   /// AI 個性
   GroupEditRequestPersonalityEnum? personality;
 
   /// CUSTOM 個性時使用的自訂 system prompt
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? customPrompt;
 
   @override
@@ -187,9 +211,6 @@ class GroupEditRequestReplyModeEnum {
   static const ACTIVE = GroupEditRequestReplyModeEnum._(r'ACTIVE');
   static const PASSIVE = GroupEditRequestReplyModeEnum._(r'PASSIVE');
   static const DISABLED = GroupEditRequestReplyModeEnum._(r'DISABLED');
-  static const ACTIVE2 = GroupEditRequestReplyModeEnum._(r'ACTIVE');
-  static const PASSIVE2 = GroupEditRequestReplyModeEnum._(r'PASSIVE');
-  static const DISABLED2 = GroupEditRequestReplyModeEnum._(r'DISABLED');
   static const unknownDefaultOpenApi = GroupEditRequestReplyModeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][GroupEditRequestReplyModeEnum].
@@ -197,9 +218,6 @@ class GroupEditRequestReplyModeEnum {
     ACTIVE,
     PASSIVE,
     DISABLED,
-    ACTIVE2,
-    PASSIVE2,
-    DISABLED2,
     unknownDefaultOpenApi,
   ];
 
@@ -242,9 +260,6 @@ class GroupEditRequestReplyModeEnumTypeTransformer {
         case r'ACTIVE': return GroupEditRequestReplyModeEnum.ACTIVE;
         case r'PASSIVE': return GroupEditRequestReplyModeEnum.PASSIVE;
         case r'DISABLED': return GroupEditRequestReplyModeEnum.DISABLED;
-        case r'ACTIVE': return GroupEditRequestReplyModeEnum.ACTIVE2;
-        case r'PASSIVE': return GroupEditRequestReplyModeEnum.PASSIVE2;
-        case r'DISABLED': return GroupEditRequestReplyModeEnum.DISABLED2;
         case r'unknown_default_open_api': return GroupEditRequestReplyModeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
@@ -277,10 +292,6 @@ class GroupEditRequestPersonalityEnum {
   static const PROFESSIONAL = GroupEditRequestPersonalityEnum._(r'PROFESSIONAL');
   static const HUMOROUS = GroupEditRequestPersonalityEnum._(r'HUMOROUS');
   static const CUSTOM = GroupEditRequestPersonalityEnum._(r'CUSTOM');
-  static const FRIENDLY2 = GroupEditRequestPersonalityEnum._(r'FRIENDLY');
-  static const PROFESSIONAL2 = GroupEditRequestPersonalityEnum._(r'PROFESSIONAL');
-  static const HUMOROUS2 = GroupEditRequestPersonalityEnum._(r'HUMOROUS');
-  static const CUSTOM2 = GroupEditRequestPersonalityEnum._(r'CUSTOM');
   static const unknownDefaultOpenApi = GroupEditRequestPersonalityEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][GroupEditRequestPersonalityEnum].
@@ -289,10 +300,6 @@ class GroupEditRequestPersonalityEnum {
     PROFESSIONAL,
     HUMOROUS,
     CUSTOM,
-    FRIENDLY2,
-    PROFESSIONAL2,
-    HUMOROUS2,
-    CUSTOM2,
     unknownDefaultOpenApi,
   ];
 
@@ -336,10 +343,6 @@ class GroupEditRequestPersonalityEnumTypeTransformer {
         case r'PROFESSIONAL': return GroupEditRequestPersonalityEnum.PROFESSIONAL;
         case r'HUMOROUS': return GroupEditRequestPersonalityEnum.HUMOROUS;
         case r'CUSTOM': return GroupEditRequestPersonalityEnum.CUSTOM;
-        case r'FRIENDLY': return GroupEditRequestPersonalityEnum.FRIENDLY2;
-        case r'PROFESSIONAL': return GroupEditRequestPersonalityEnum.PROFESSIONAL2;
-        case r'HUMOROUS': return GroupEditRequestPersonalityEnum.HUMOROUS2;
-        case r'CUSTOM': return GroupEditRequestPersonalityEnum.CUSTOM2;
         case r'unknown_default_open_api': return GroupEditRequestPersonalityEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

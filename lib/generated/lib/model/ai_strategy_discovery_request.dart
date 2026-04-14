@@ -13,21 +13,34 @@ part of openapi.api;
 class AiStrategyDiscoveryRequest {
   /// Returns a new [AiStrategyDiscoveryRequest] instance.
   AiStrategyDiscoveryRequest({
-    required this.symbol,
-    required this.intervalCode,
+    this.symbol,
+    this.intervalCode,
     required this.startTime,
     required this.endTime,
     required this.initialCapital,
     this.candidateCount,
     this.feeRate,
     this.minTradeCount,
+    this.source_,
   });
 
   /// 交易對
-  String symbol;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? symbol;
 
   /// 回測 K 線週期
-  String intervalCode;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? intervalCode;
 
   /// 回測開始時間（ISO-8601）
   DateTime startTime;
@@ -75,6 +88,15 @@ class AiStrategyDiscoveryRequest {
   ///
   int? minTradeCount;
 
+  /// K 線資料源（binance / okx）；null 時走 BacktestService 預設 binance
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? source_;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is AiStrategyDiscoveryRequest &&
     other.symbol == symbol &&
@@ -84,27 +106,37 @@ class AiStrategyDiscoveryRequest {
     other.initialCapital == initialCapital &&
     other.candidateCount == candidateCount &&
     other.feeRate == feeRate &&
-    other.minTradeCount == minTradeCount;
+    other.minTradeCount == minTradeCount &&
+    other.source_ == source_;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (symbol.hashCode) +
-    (intervalCode.hashCode) +
+    (symbol == null ? 0 : symbol!.hashCode) +
+    (intervalCode == null ? 0 : intervalCode!.hashCode) +
     (startTime.hashCode) +
     (endTime.hashCode) +
     (initialCapital.hashCode) +
     (candidateCount == null ? 0 : candidateCount!.hashCode) +
     (feeRate == null ? 0 : feeRate!.hashCode) +
-    (minTradeCount == null ? 0 : minTradeCount!.hashCode);
+    (minTradeCount == null ? 0 : minTradeCount!.hashCode) +
+    (source_ == null ? 0 : source_!.hashCode);
 
   @override
-  String toString() => 'AiStrategyDiscoveryRequest[symbol=$symbol, intervalCode=$intervalCode, startTime=$startTime, endTime=$endTime, initialCapital=$initialCapital, candidateCount=$candidateCount, feeRate=$feeRate, minTradeCount=$minTradeCount]';
+  String toString() => 'AiStrategyDiscoveryRequest[symbol=$symbol, intervalCode=$intervalCode, startTime=$startTime, endTime=$endTime, initialCapital=$initialCapital, candidateCount=$candidateCount, feeRate=$feeRate, minTradeCount=$minTradeCount, source_=$source_]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.symbol != null) {
       json[r'symbol'] = this.symbol;
+    } else {
+      json[r'symbol'] = null;
+    }
+    if (this.intervalCode != null) {
       json[r'intervalCode'] = this.intervalCode;
+    } else {
+      json[r'intervalCode'] = null;
+    }
       json[r'startTime'] = this.startTime.toUtc().toIso8601String();
       json[r'endTime'] = this.endTime.toUtc().toIso8601String();
       json[r'initialCapital'] = this.initialCapital;
@@ -122,6 +154,11 @@ class AiStrategyDiscoveryRequest {
       json[r'minTradeCount'] = this.minTradeCount;
     } else {
       json[r'minTradeCount'] = null;
+    }
+    if (this.source_ != null) {
+      json[r'source'] = this.source_;
+    } else {
+      json[r'source'] = null;
     }
     return json;
   }
@@ -145,14 +182,15 @@ class AiStrategyDiscoveryRequest {
       }());
 
       return AiStrategyDiscoveryRequest(
-        symbol: mapValueOfType<String>(json, r'symbol')!,
-        intervalCode: mapValueOfType<String>(json, r'intervalCode')!,
+        symbol: mapValueOfType<String>(json, r'symbol'),
+        intervalCode: mapValueOfType<String>(json, r'intervalCode'),
         startTime: mapDateTime(json, r'startTime', r'')!,
         endTime: mapDateTime(json, r'endTime', r'')!,
         initialCapital: num.parse('${json[r'initialCapital']}'),
         candidateCount: mapValueOfType<int>(json, r'candidateCount'),
         feeRate: num.parse('${json[r'feeRate']}'),
         minTradeCount: mapValueOfType<int>(json, r'minTradeCount'),
+        source_: mapValueOfType<String>(json, r'source'),
       );
     }
     return null;
@@ -200,8 +238,6 @@ class AiStrategyDiscoveryRequest {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'symbol',
-    'intervalCode',
     'startTime',
     'endTime',
     'initialCapital',

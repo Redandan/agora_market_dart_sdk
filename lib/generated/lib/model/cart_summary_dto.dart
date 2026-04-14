@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -20,33 +20,39 @@ class CartSummaryDTO {
     this.lowStockWarnings = const [],
   });
 
-  /// 鞈潛頠??蜇??  ///
+  /// 購物車商品總數
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? totalItems;
-  /// 鞈潛頠??蜇?孵?  ///
+
+  /// 購物車商品總價值
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? totalValue;
-  /// 撟喳?瘥????孵?  ///
+
+  /// 平均每個商品的價值
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? averageCartValue;
-  /// ?梢????”嚗?5??
 
+  /// 熱門商品列表（前5名）
   List<TopProductDTO> topProducts;
-  /// 摨怠?霅血??”嚗澈摮???0????
 
+  /// 庫存警告列表（庫存小於10的商品）
   List<LowStockWarningDTO> lowStockWarnings;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CartSummaryDTO &&
     other.totalItems == totalItems &&
@@ -162,5 +168,4 @@ class CartSummaryDTO {
   static const requiredKeys = <String>{
   };
 }
-
 

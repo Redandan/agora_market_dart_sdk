@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -21,7 +21,7 @@ class OrderStatisticsDTO {
     this.topSellers = const [],
   });
 
-  /// 蝮質??格
+  /// 總訂單數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -29,14 +29,17 @@ class OrderStatisticsDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? totalOrders;
-  /// 蝮賭漱??憿?  ///
+
+  /// 總交易金額
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? totalAmount;
-  /// 撟喳?閮??
+
+  /// 平均訂單金額
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -44,15 +47,16 @@ class OrderStatisticsDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? averageOrderAmount;
-  /// ?????格??
 
+  /// 各狀態訂單數量
   Map<String, int> ordersByStatus;
-  /// ?梢???蝯梯?嚗?5??
 
+  /// 熱門商品統計（前5個）
   List<TopProductDTO> topProducts;
-  /// ?梢?鞈?振蝯梯?嚗?5??
 
+  /// 熱門賣家統計（前5個）
   List<TopSellerDTO> topSellers;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrderStatisticsDTO &&
     other.totalOrders == totalOrders &&
@@ -172,5 +176,4 @@ class OrderStatisticsDTO {
   static const requiredKeys = <String>{
   };
 }
-
 

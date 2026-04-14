@@ -13,16 +13,29 @@ part of openapi.api;
 class KlineImportRequest {
   /// Returns a new [KlineImportRequest] instance.
   KlineImportRequest({
-    required this.symbol,
-    required this.intervalCode,
+    this.symbol,
+    this.intervalCode,
     this.marketType,
+    this.source_,
     required this.startTime,
     required this.endTime,
   });
 
-  String symbol;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? symbol;
 
-  String intervalCode;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? intervalCode;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -31,6 +44,14 @@ class KlineImportRequest {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? marketType;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? source_;
 
   DateTime startTime;
 
@@ -41,29 +62,44 @@ class KlineImportRequest {
     other.symbol == symbol &&
     other.intervalCode == intervalCode &&
     other.marketType == marketType &&
+    other.source_ == source_ &&
     other.startTime == startTime &&
     other.endTime == endTime;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (symbol.hashCode) +
-    (intervalCode.hashCode) +
+    (symbol == null ? 0 : symbol!.hashCode) +
+    (intervalCode == null ? 0 : intervalCode!.hashCode) +
     (marketType == null ? 0 : marketType!.hashCode) +
+    (source_ == null ? 0 : source_!.hashCode) +
     (startTime.hashCode) +
     (endTime.hashCode);
 
   @override
-  String toString() => 'KlineImportRequest[symbol=$symbol, intervalCode=$intervalCode, marketType=$marketType, startTime=$startTime, endTime=$endTime]';
+  String toString() => 'KlineImportRequest[symbol=$symbol, intervalCode=$intervalCode, marketType=$marketType, source_=$source_, startTime=$startTime, endTime=$endTime]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.symbol != null) {
       json[r'symbol'] = this.symbol;
+    } else {
+      json[r'symbol'] = null;
+    }
+    if (this.intervalCode != null) {
       json[r'intervalCode'] = this.intervalCode;
+    } else {
+      json[r'intervalCode'] = null;
+    }
     if (this.marketType != null) {
       json[r'marketType'] = this.marketType;
     } else {
       json[r'marketType'] = null;
+    }
+    if (this.source_ != null) {
+      json[r'source'] = this.source_;
+    } else {
+      json[r'source'] = null;
     }
       json[r'startTime'] = this.startTime.toUtc().toIso8601String();
       json[r'endTime'] = this.endTime.toUtc().toIso8601String();
@@ -89,9 +125,10 @@ class KlineImportRequest {
       }());
 
       return KlineImportRequest(
-        symbol: mapValueOfType<String>(json, r'symbol')!,
-        intervalCode: mapValueOfType<String>(json, r'intervalCode')!,
+        symbol: mapValueOfType<String>(json, r'symbol'),
+        intervalCode: mapValueOfType<String>(json, r'intervalCode'),
         marketType: mapValueOfType<String>(json, r'marketType'),
+        source_: mapValueOfType<String>(json, r'source'),
         startTime: mapDateTime(json, r'startTime', r'')!,
         endTime: mapDateTime(json, r'endTime', r'')!,
       );
@@ -141,8 +178,6 @@ class KlineImportRequest {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'symbol',
-    'intervalCode',
     'startTime',
     'endTime',
   };

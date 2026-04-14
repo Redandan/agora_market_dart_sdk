@@ -23,6 +23,12 @@ class StrategyBacktestDetailQueryRequest {
   int strategyId;
 
   /// 指定回測結果 ID（優先級最高，指定後僅回傳該筆）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? resultId;
 
   /// 是否只查最新回測結果（預設 true；當 resultId 有值時此參數會被忽略）
@@ -37,6 +43,12 @@ class StrategyBacktestDetailQueryRequest {
   /// 回傳筆數上限（僅 latest=false 且未指定 resultId 時生效）
   ///
   /// Minimum value: 1
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? limit;
 
   @override

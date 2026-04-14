@@ -82,28 +82,31 @@ class Order {
   /// 貨幣
   String currency;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  PickupServiceTypeEnum? pickupServiceType;
+  /// 取貨服務類型（訂單創建時確定，基於買家選擇的地址）
+  OrderPickupServiceTypeEnum? pickupServiceType;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  ShippingCompanyEnum? shippingCompany;
+  /// 物流公司（賣家發貨時選擇）
+  OrderShippingCompanyEnum? shippingCompany;
 
   /// 追蹤號碼（賣家出貨時輸入）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? trackingNumber;
 
+  /// 訂單狀態
   OrderStatusEnum status;
 
   /// 備註
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? remark;
 
   /// 創建時間
@@ -113,44 +116,123 @@ class Order {
   DateTime updatedAt;
 
   /// 取消時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? cancelledAt;
 
   /// 退款時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? refundedAt;
 
   /// 退款金額（部分退款時使用）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? refundAmount;
 
   /// 退款方案過期時間（部分退款方案時使用）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? refundOfferExpiresAt;
 
   /// 評價時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? reviewedAt;
 
   /// 商品原始价格（原币种）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? originalPrice;
 
   /// 商品原始货币
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? originalCurrency;
 
   /// 购买时的汇率（USDT/原币种）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? exchangeRate;
 
   /// 原始运费（原币种）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? originalShippingFee;
 
   /// 汇率获取时间
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? exchangeRateTime;
 
   /// 是否使用默认汇率
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? usingDefaultRate;
 
   /// 買家姓名（下單時記錄）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? buyerName;
 
   /// 買家用戶名（下單時記錄）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? buyerUsername;
 
+  /// 商品
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -159,8 +241,16 @@ class Order {
   ///
   Product? product;
 
+  /// 配送詳情
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DeliveryDetail? deliveryDetail;
 
+  /// 賣家商店
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -396,8 +486,8 @@ class Order {
         productPrice: num.parse('${json[r'productPrice']}'),
         orderAmount: num.parse('${json[r'orderAmount']}'),
         currency: mapValueOfType<String>(json, r'currency')!,
-        pickupServiceType: PickupServiceTypeEnum.fromJson(json[r'pickupServiceType']),
-        shippingCompany: ShippingCompanyEnum.fromJson(json[r'shippingCompany']),
+        pickupServiceType: OrderPickupServiceTypeEnum.fromJson(json[r'pickupServiceType']),
+        shippingCompany: OrderShippingCompanyEnum.fromJson(json[r'shippingCompany']),
         trackingNumber: mapValueOfType<String>(json, r'trackingNumber'),
         status: OrderStatusEnum.fromJson(json[r'status'])!,
         remark: mapValueOfType<String>(json, r'remark'),
@@ -405,21 +495,13 @@ class Order {
         updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         cancelledAt: mapDateTime(json, r'cancelledAt', r''),
         refundedAt: mapDateTime(json, r'refundedAt', r''),
-        refundAmount: json[r'refundAmount'] == null
-            ? null
-            : num.parse('${json[r'refundAmount']}'),
+        refundAmount: num.parse('${json[r'refundAmount']}'),
         refundOfferExpiresAt: mapDateTime(json, r'refundOfferExpiresAt', r''),
         reviewedAt: mapDateTime(json, r'reviewedAt', r''),
-        originalPrice: json[r'originalPrice'] == null
-            ? null
-            : num.parse('${json[r'originalPrice']}'),
+        originalPrice: num.parse('${json[r'originalPrice']}'),
         originalCurrency: mapValueOfType<String>(json, r'originalCurrency'),
-        exchangeRate: json[r'exchangeRate'] == null
-            ? null
-            : num.parse('${json[r'exchangeRate']}'),
-        originalShippingFee: json[r'originalShippingFee'] == null
-            ? null
-            : num.parse('${json[r'originalShippingFee']}'),
+        exchangeRate: num.parse('${json[r'exchangeRate']}'),
+        originalShippingFee: num.parse('${json[r'originalShippingFee']}'),
         exchangeRateTime: mapDateTime(json, r'exchangeRateTime', r''),
         usingDefaultRate: mapValueOfType<bool>(json, r'usingDefaultRate'),
         buyerName: mapValueOfType<String>(json, r'buyerName'),
@@ -490,4 +572,358 @@ class Order {
     'updatedAt',
   };
 }
+
+/// 取貨服務類型（訂單創建時確定，基於買家選擇的地址）
+class OrderPickupServiceTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const OrderPickupServiceTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const HOME_DELIVERY = OrderPickupServiceTypeEnum._(r'HOME_DELIVERY');
+  static const SEVEN_ELEVEN = OrderPickupServiceTypeEnum._(r'SEVEN_ELEVEN');
+  static const FAMILY_MART = OrderPickupServiceTypeEnum._(r'FAMILY_MART');
+  static const HILIFE = OrderPickupServiceTypeEnum._(r'HILIFE');
+  static const OK_MART = OrderPickupServiceTypeEnum._(r'OK_MART');
+  static const PLATFORM_DELIVERY = OrderPickupServiceTypeEnum._(r'PLATFORM_DELIVERY');
+  static const unknownDefaultOpenApi = OrderPickupServiceTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][OrderPickupServiceTypeEnum].
+  static const values = <OrderPickupServiceTypeEnum>[
+    HOME_DELIVERY,
+    SEVEN_ELEVEN,
+    FAMILY_MART,
+    HILIFE,
+    OK_MART,
+    PLATFORM_DELIVERY,
+    unknownDefaultOpenApi,
+  ];
+
+  static OrderPickupServiceTypeEnum? fromJson(dynamic value) => OrderPickupServiceTypeEnumTypeTransformer().decode(value);
+
+  static List<OrderPickupServiceTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <OrderPickupServiceTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = OrderPickupServiceTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [OrderPickupServiceTypeEnum] to String,
+/// and [decode] dynamic data back to [OrderPickupServiceTypeEnum].
+class OrderPickupServiceTypeEnumTypeTransformer {
+  factory OrderPickupServiceTypeEnumTypeTransformer() => _instance ??= const OrderPickupServiceTypeEnumTypeTransformer._();
+
+  const OrderPickupServiceTypeEnumTypeTransformer._();
+
+  String encode(OrderPickupServiceTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a OrderPickupServiceTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  OrderPickupServiceTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'HOME_DELIVERY': return OrderPickupServiceTypeEnum.HOME_DELIVERY;
+        case r'SEVEN_ELEVEN': return OrderPickupServiceTypeEnum.SEVEN_ELEVEN;
+        case r'FAMILY_MART': return OrderPickupServiceTypeEnum.FAMILY_MART;
+        case r'HILIFE': return OrderPickupServiceTypeEnum.HILIFE;
+        case r'OK_MART': return OrderPickupServiceTypeEnum.OK_MART;
+        case r'PLATFORM_DELIVERY': return OrderPickupServiceTypeEnum.PLATFORM_DELIVERY;
+        case r'unknown_default_open_api': return OrderPickupServiceTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [OrderPickupServiceTypeEnumTypeTransformer] instance.
+  static OrderPickupServiceTypeEnumTypeTransformer? _instance;
+}
+
+
+/// 物流公司（賣家發貨時選擇）
+class OrderShippingCompanyEnum {
+  /// Instantiate a new enum with the provided [value].
+  const OrderShippingCompanyEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const BLACK_CAT = OrderShippingCompanyEnum._(r'BLACK_CAT');
+  static const HCT = OrderShippingCompanyEnum._(r'HCT');
+  static const KERRY = OrderShippingCompanyEnum._(r'KERRY');
+  static const SF_EXPRESS = OrderShippingCompanyEnum._(r'SF_EXPRESS');
+  static const HOME_DELIVERY_EXPRESS = OrderShippingCompanyEnum._(r'HOME_DELIVERY_EXPRESS');
+  static const TAIWAN_HOME_DELIVERY = OrderShippingCompanyEnum._(r'TAIWAN_HOME_DELIVERY');
+  static const PLATFORM_DELIVERY = OrderShippingCompanyEnum._(r'PLATFORM_DELIVERY');
+  static const SEVEN_ELEVEN = OrderShippingCompanyEnum._(r'SEVEN_ELEVEN');
+  static const FAMILY_MART = OrderShippingCompanyEnum._(r'FAMILY_MART');
+  static const HILIFE = OrderShippingCompanyEnum._(r'HILIFE');
+  static const OK_MART = OrderShippingCompanyEnum._(r'OK_MART');
+  static const CHUNGHWA_POST = OrderShippingCompanyEnum._(r'CHUNGHWA_POST');
+  static const OTHER = OrderShippingCompanyEnum._(r'OTHER');
+  static const unknownDefaultOpenApi = OrderShippingCompanyEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][OrderShippingCompanyEnum].
+  static const values = <OrderShippingCompanyEnum>[
+    BLACK_CAT,
+    HCT,
+    KERRY,
+    SF_EXPRESS,
+    HOME_DELIVERY_EXPRESS,
+    TAIWAN_HOME_DELIVERY,
+    PLATFORM_DELIVERY,
+    SEVEN_ELEVEN,
+    FAMILY_MART,
+    HILIFE,
+    OK_MART,
+    CHUNGHWA_POST,
+    OTHER,
+    unknownDefaultOpenApi,
+  ];
+
+  static OrderShippingCompanyEnum? fromJson(dynamic value) => OrderShippingCompanyEnumTypeTransformer().decode(value);
+
+  static List<OrderShippingCompanyEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <OrderShippingCompanyEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = OrderShippingCompanyEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [OrderShippingCompanyEnum] to String,
+/// and [decode] dynamic data back to [OrderShippingCompanyEnum].
+class OrderShippingCompanyEnumTypeTransformer {
+  factory OrderShippingCompanyEnumTypeTransformer() => _instance ??= const OrderShippingCompanyEnumTypeTransformer._();
+
+  const OrderShippingCompanyEnumTypeTransformer._();
+
+  String encode(OrderShippingCompanyEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a OrderShippingCompanyEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  OrderShippingCompanyEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'BLACK_CAT': return OrderShippingCompanyEnum.BLACK_CAT;
+        case r'HCT': return OrderShippingCompanyEnum.HCT;
+        case r'KERRY': return OrderShippingCompanyEnum.KERRY;
+        case r'SF_EXPRESS': return OrderShippingCompanyEnum.SF_EXPRESS;
+        case r'HOME_DELIVERY_EXPRESS': return OrderShippingCompanyEnum.HOME_DELIVERY_EXPRESS;
+        case r'TAIWAN_HOME_DELIVERY': return OrderShippingCompanyEnum.TAIWAN_HOME_DELIVERY;
+        case r'PLATFORM_DELIVERY': return OrderShippingCompanyEnum.PLATFORM_DELIVERY;
+        case r'SEVEN_ELEVEN': return OrderShippingCompanyEnum.SEVEN_ELEVEN;
+        case r'FAMILY_MART': return OrderShippingCompanyEnum.FAMILY_MART;
+        case r'HILIFE': return OrderShippingCompanyEnum.HILIFE;
+        case r'OK_MART': return OrderShippingCompanyEnum.OK_MART;
+        case r'CHUNGHWA_POST': return OrderShippingCompanyEnum.CHUNGHWA_POST;
+        case r'OTHER': return OrderShippingCompanyEnum.OTHER;
+        case r'unknown_default_open_api': return OrderShippingCompanyEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [OrderShippingCompanyEnumTypeTransformer] instance.
+  static OrderShippingCompanyEnumTypeTransformer? _instance;
+}
+
+
+/// 訂單狀態
+class OrderStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const OrderStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const PENDING_SHIPMENT = OrderStatusEnum._(r'PENDING_SHIPMENT');
+  static const SHIPPED = OrderStatusEnum._(r'SHIPPED');
+  static const DELIVERY_ASSIGNING = OrderStatusEnum._(r'DELIVERY_ASSIGNING');
+  static const DELIVERY_ASSIGNED = OrderStatusEnum._(r'DELIVERY_ASSIGNED');
+  static const DELIVERY_EN_ROUTE_TO_PICKUP = OrderStatusEnum._(r'DELIVERY_EN_ROUTE_TO_PICKUP');
+  static const DELIVERY_PICKUP_DELAYED = OrderStatusEnum._(r'DELIVERY_PICKUP_DELAYED');
+  static const DELIVERY_PICKED_UP = OrderStatusEnum._(r'DELIVERY_PICKED_UP');
+  static const DELIVERY_EN_ROUTE_TO_BUYER = OrderStatusEnum._(r'DELIVERY_EN_ROUTE_TO_BUYER');
+  static const DELIVERY_DELIVERY_DELAYED = OrderStatusEnum._(r'DELIVERY_DELIVERY_DELAYED');
+  static const DELIVERY_FAILED = OrderStatusEnum._(r'DELIVERY_FAILED');
+  static const DELIVERY_RETURNING = OrderStatusEnum._(r'DELIVERY_RETURNING');
+  static const DELIVERY_COMPLETED = OrderStatusEnum._(r'DELIVERY_COMPLETED');
+  static const RETURN_REQUESTED = OrderStatusEnum._(r'RETURN_REQUESTED');
+  static const RETURN_REJECTED = OrderStatusEnum._(r'RETURN_REJECTED');
+  static const RETURN_APPROVED = OrderStatusEnum._(r'RETURN_APPROVED');
+  static const RETURN_SHIPPED_BY_BUYER = OrderStatusEnum._(r'RETURN_SHIPPED_BY_BUYER');
+  static const RETURN_SHIPPING_DELAYED = OrderStatusEnum._(r'RETURN_SHIPPING_DELAYED');
+  static const RETURN_RECEIVED = OrderStatusEnum._(r'RETURN_RECEIVED');
+  static const REFUND_NO_RETURN_OFFERED = OrderStatusEnum._(r'REFUND_NO_RETURN_OFFERED');
+  static const REFUND_NO_RETURN_PARTIAL_OFFERED = OrderStatusEnum._(r'REFUND_NO_RETURN_PARTIAL_OFFERED');
+  static const DISPUTE_OPENED = OrderStatusEnum._(r'DISPUTE_OPENED');
+  static const DISPUTE_RESPONDED = OrderStatusEnum._(r'DISPUTE_RESPONDED');
+  static const CANCELLED_BY_BUYER = OrderStatusEnum._(r'CANCELLED_BY_BUYER');
+  static const CANCELLED_BY_SELLER = OrderStatusEnum._(r'CANCELLED_BY_SELLER');
+  static const CANCELLED_BY_PLATFORM = OrderStatusEnum._(r'CANCELLED_BY_PLATFORM');
+  static const REFUNDED = OrderStatusEnum._(r'REFUNDED');
+  static const DISPUTE_RESOLVED = OrderStatusEnum._(r'DISPUTE_RESOLVED');
+  static const COMPLETED_FINAL = OrderStatusEnum._(r'COMPLETED_FINAL');
+  static const unknownDefaultOpenApi = OrderStatusEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][OrderStatusEnum].
+  static const values = <OrderStatusEnum>[
+    PENDING_SHIPMENT,
+    SHIPPED,
+    DELIVERY_ASSIGNING,
+    DELIVERY_ASSIGNED,
+    DELIVERY_EN_ROUTE_TO_PICKUP,
+    DELIVERY_PICKUP_DELAYED,
+    DELIVERY_PICKED_UP,
+    DELIVERY_EN_ROUTE_TO_BUYER,
+    DELIVERY_DELIVERY_DELAYED,
+    DELIVERY_FAILED,
+    DELIVERY_RETURNING,
+    DELIVERY_COMPLETED,
+    RETURN_REQUESTED,
+    RETURN_REJECTED,
+    RETURN_APPROVED,
+    RETURN_SHIPPED_BY_BUYER,
+    RETURN_SHIPPING_DELAYED,
+    RETURN_RECEIVED,
+    REFUND_NO_RETURN_OFFERED,
+    REFUND_NO_RETURN_PARTIAL_OFFERED,
+    DISPUTE_OPENED,
+    DISPUTE_RESPONDED,
+    CANCELLED_BY_BUYER,
+    CANCELLED_BY_SELLER,
+    CANCELLED_BY_PLATFORM,
+    REFUNDED,
+    DISPUTE_RESOLVED,
+    COMPLETED_FINAL,
+    unknownDefaultOpenApi,
+  ];
+
+  static OrderStatusEnum? fromJson(dynamic value) => OrderStatusEnumTypeTransformer().decode(value);
+
+  static List<OrderStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <OrderStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = OrderStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [OrderStatusEnum] to String,
+/// and [decode] dynamic data back to [OrderStatusEnum].
+class OrderStatusEnumTypeTransformer {
+  factory OrderStatusEnumTypeTransformer() => _instance ??= const OrderStatusEnumTypeTransformer._();
+
+  const OrderStatusEnumTypeTransformer._();
+
+  String encode(OrderStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a OrderStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  OrderStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'PENDING_SHIPMENT': return OrderStatusEnum.PENDING_SHIPMENT;
+        case r'SHIPPED': return OrderStatusEnum.SHIPPED;
+        case r'DELIVERY_ASSIGNING': return OrderStatusEnum.DELIVERY_ASSIGNING;
+        case r'DELIVERY_ASSIGNED': return OrderStatusEnum.DELIVERY_ASSIGNED;
+        case r'DELIVERY_EN_ROUTE_TO_PICKUP': return OrderStatusEnum.DELIVERY_EN_ROUTE_TO_PICKUP;
+        case r'DELIVERY_PICKUP_DELAYED': return OrderStatusEnum.DELIVERY_PICKUP_DELAYED;
+        case r'DELIVERY_PICKED_UP': return OrderStatusEnum.DELIVERY_PICKED_UP;
+        case r'DELIVERY_EN_ROUTE_TO_BUYER': return OrderStatusEnum.DELIVERY_EN_ROUTE_TO_BUYER;
+        case r'DELIVERY_DELIVERY_DELAYED': return OrderStatusEnum.DELIVERY_DELIVERY_DELAYED;
+        case r'DELIVERY_FAILED': return OrderStatusEnum.DELIVERY_FAILED;
+        case r'DELIVERY_RETURNING': return OrderStatusEnum.DELIVERY_RETURNING;
+        case r'DELIVERY_COMPLETED': return OrderStatusEnum.DELIVERY_COMPLETED;
+        case r'RETURN_REQUESTED': return OrderStatusEnum.RETURN_REQUESTED;
+        case r'RETURN_REJECTED': return OrderStatusEnum.RETURN_REJECTED;
+        case r'RETURN_APPROVED': return OrderStatusEnum.RETURN_APPROVED;
+        case r'RETURN_SHIPPED_BY_BUYER': return OrderStatusEnum.RETURN_SHIPPED_BY_BUYER;
+        case r'RETURN_SHIPPING_DELAYED': return OrderStatusEnum.RETURN_SHIPPING_DELAYED;
+        case r'RETURN_RECEIVED': return OrderStatusEnum.RETURN_RECEIVED;
+        case r'REFUND_NO_RETURN_OFFERED': return OrderStatusEnum.REFUND_NO_RETURN_OFFERED;
+        case r'REFUND_NO_RETURN_PARTIAL_OFFERED': return OrderStatusEnum.REFUND_NO_RETURN_PARTIAL_OFFERED;
+        case r'DISPUTE_OPENED': return OrderStatusEnum.DISPUTE_OPENED;
+        case r'DISPUTE_RESPONDED': return OrderStatusEnum.DISPUTE_RESPONDED;
+        case r'CANCELLED_BY_BUYER': return OrderStatusEnum.CANCELLED_BY_BUYER;
+        case r'CANCELLED_BY_SELLER': return OrderStatusEnum.CANCELLED_BY_SELLER;
+        case r'CANCELLED_BY_PLATFORM': return OrderStatusEnum.CANCELLED_BY_PLATFORM;
+        case r'REFUNDED': return OrderStatusEnum.REFUNDED;
+        case r'DISPUTE_RESOLVED': return OrderStatusEnum.DISPUTE_RESOLVED;
+        case r'COMPLETED_FINAL': return OrderStatusEnum.COMPLETED_FINAL;
+        case r'unknown_default_open_api': return OrderStatusEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [OrderStatusEnumTypeTransformer] instance.
+  static OrderStatusEnumTypeTransformer? _instance;
+}
+
 

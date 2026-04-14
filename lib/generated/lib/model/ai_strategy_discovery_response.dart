@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -25,7 +25,7 @@ class AiStrategyDiscoveryResponse {
     this.failedCount,
   });
 
-  /// ?祆活?Ｗ??寞活 ID
+  /// 本次探勘批次 ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -33,14 +33,17 @@ class AiStrategyDiscoveryResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? discoveryBatch;
-  /// 鈭斗?撠?  ///
+
+  /// 交易對
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? symbol;
-  /// K 蝺望?
+
+  /// K 線週期
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -48,7 +51,8 @@ class AiStrategyDiscoveryResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? intervalCode;
-  /// ?葫????
+
+  /// 回測開始時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -56,7 +60,8 @@ class AiStrategyDiscoveryResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? startTime;
-  /// ?葫蝯???
+
+  /// 回測結束時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -64,12 +69,20 @@ class AiStrategyDiscoveryResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? endTime;
-  /// ??蝑??皜祉????梯????唬???嚗?
 
+  /// 所有候選策略的回測結果（由評分高到低排序）
   List<CandidateResult> candidates;
+
+  /// 評分最高的候選策略（若所有候選均無效交易則為 null）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   CandidateResult? bestStrategy;
 
-  /// 撖阡??瑁??蝮賣
+  /// 實際執行的候選總數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -77,20 +90,25 @@ class AiStrategyDiscoveryResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? totalCandidates;
-  /// 閰? > 0 ?????  ///
+
+  /// 評分 > 0 的有效候選數
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? validCount;
-  /// 撱箇???皜砍仃?????  ///
+
+  /// 建立或回測失敗的候選數
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? failedCount;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is AiStrategyDiscoveryResponse &&
     other.discoveryBatch == discoveryBatch &&
@@ -250,5 +268,4 @@ class AiStrategyDiscoveryResponse {
   static const requiredKeys = <String>{
   };
 }
-
 

@@ -73,21 +73,11 @@ class QuickLogisticsResult {
   ///
   num? weight;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  ShippingCompanyEnum? carrier;
+  /// 物流公司
+  QuickLogisticsResultCarrierEnum? carrier;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  PickupServiceTypeEnum? serviceType;
+  /// 取件類型
+  QuickLogisticsResultServiceTypeEnum? serviceType;
 
   /// 運費(台幣)
   ///
@@ -266,8 +256,8 @@ class QuickLogisticsResult {
         fromCity: mapValueOfType<String>(json, r'fromCity'),
         toCity: mapValueOfType<String>(json, r'toCity'),
         weight: num.parse('${json[r'weight']}'),
-        carrier: ShippingCompanyEnum.fromJson(json[r'carrier']),
-        serviceType: PickupServiceTypeEnum.fromJson(json[r'serviceType']),
+        carrier: QuickLogisticsResultCarrierEnum.fromJson(json[r'carrier']),
+        serviceType: QuickLogisticsResultServiceTypeEnum.fromJson(json[r'serviceType']),
         shippingFee: num.parse('${json[r'shippingFee']}'),
         estimatedDays: mapValueOfType<int>(json, r'estimatedDays'),
         description: mapValueOfType<String>(json, r'description'),
@@ -323,6 +313,205 @@ class QuickLogisticsResult {
   static const requiredKeys = <String>{
   };
 }
+
+/// 物流公司
+class QuickLogisticsResultCarrierEnum {
+  /// Instantiate a new enum with the provided [value].
+  const QuickLogisticsResultCarrierEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const BLACK_CAT = QuickLogisticsResultCarrierEnum._(r'BLACK_CAT');
+  static const HCT = QuickLogisticsResultCarrierEnum._(r'HCT');
+  static const KERRY = QuickLogisticsResultCarrierEnum._(r'KERRY');
+  static const SF_EXPRESS = QuickLogisticsResultCarrierEnum._(r'SF_EXPRESS');
+  static const HOME_DELIVERY_EXPRESS = QuickLogisticsResultCarrierEnum._(r'HOME_DELIVERY_EXPRESS');
+  static const TAIWAN_HOME_DELIVERY = QuickLogisticsResultCarrierEnum._(r'TAIWAN_HOME_DELIVERY');
+  static const PLATFORM_DELIVERY = QuickLogisticsResultCarrierEnum._(r'PLATFORM_DELIVERY');
+  static const SEVEN_ELEVEN = QuickLogisticsResultCarrierEnum._(r'SEVEN_ELEVEN');
+  static const FAMILY_MART = QuickLogisticsResultCarrierEnum._(r'FAMILY_MART');
+  static const HILIFE = QuickLogisticsResultCarrierEnum._(r'HILIFE');
+  static const OK_MART = QuickLogisticsResultCarrierEnum._(r'OK_MART');
+  static const CHUNGHWA_POST = QuickLogisticsResultCarrierEnum._(r'CHUNGHWA_POST');
+  static const OTHER = QuickLogisticsResultCarrierEnum._(r'OTHER');
+  static const unknownDefaultOpenApi = QuickLogisticsResultCarrierEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][QuickLogisticsResultCarrierEnum].
+  static const values = <QuickLogisticsResultCarrierEnum>[
+    BLACK_CAT,
+    HCT,
+    KERRY,
+    SF_EXPRESS,
+    HOME_DELIVERY_EXPRESS,
+    TAIWAN_HOME_DELIVERY,
+    PLATFORM_DELIVERY,
+    SEVEN_ELEVEN,
+    FAMILY_MART,
+    HILIFE,
+    OK_MART,
+    CHUNGHWA_POST,
+    OTHER,
+    unknownDefaultOpenApi,
+  ];
+
+  static QuickLogisticsResultCarrierEnum? fromJson(dynamic value) => QuickLogisticsResultCarrierEnumTypeTransformer().decode(value);
+
+  static List<QuickLogisticsResultCarrierEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <QuickLogisticsResultCarrierEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = QuickLogisticsResultCarrierEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [QuickLogisticsResultCarrierEnum] to String,
+/// and [decode] dynamic data back to [QuickLogisticsResultCarrierEnum].
+class QuickLogisticsResultCarrierEnumTypeTransformer {
+  factory QuickLogisticsResultCarrierEnumTypeTransformer() => _instance ??= const QuickLogisticsResultCarrierEnumTypeTransformer._();
+
+  const QuickLogisticsResultCarrierEnumTypeTransformer._();
+
+  String encode(QuickLogisticsResultCarrierEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a QuickLogisticsResultCarrierEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  QuickLogisticsResultCarrierEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'BLACK_CAT': return QuickLogisticsResultCarrierEnum.BLACK_CAT;
+        case r'HCT': return QuickLogisticsResultCarrierEnum.HCT;
+        case r'KERRY': return QuickLogisticsResultCarrierEnum.KERRY;
+        case r'SF_EXPRESS': return QuickLogisticsResultCarrierEnum.SF_EXPRESS;
+        case r'HOME_DELIVERY_EXPRESS': return QuickLogisticsResultCarrierEnum.HOME_DELIVERY_EXPRESS;
+        case r'TAIWAN_HOME_DELIVERY': return QuickLogisticsResultCarrierEnum.TAIWAN_HOME_DELIVERY;
+        case r'PLATFORM_DELIVERY': return QuickLogisticsResultCarrierEnum.PLATFORM_DELIVERY;
+        case r'SEVEN_ELEVEN': return QuickLogisticsResultCarrierEnum.SEVEN_ELEVEN;
+        case r'FAMILY_MART': return QuickLogisticsResultCarrierEnum.FAMILY_MART;
+        case r'HILIFE': return QuickLogisticsResultCarrierEnum.HILIFE;
+        case r'OK_MART': return QuickLogisticsResultCarrierEnum.OK_MART;
+        case r'CHUNGHWA_POST': return QuickLogisticsResultCarrierEnum.CHUNGHWA_POST;
+        case r'OTHER': return QuickLogisticsResultCarrierEnum.OTHER;
+        case r'unknown_default_open_api': return QuickLogisticsResultCarrierEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [QuickLogisticsResultCarrierEnumTypeTransformer] instance.
+  static QuickLogisticsResultCarrierEnumTypeTransformer? _instance;
+}
+
+
+/// 取件類型
+class QuickLogisticsResultServiceTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const QuickLogisticsResultServiceTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const HOME_DELIVERY = QuickLogisticsResultServiceTypeEnum._(r'HOME_DELIVERY');
+  static const SEVEN_ELEVEN = QuickLogisticsResultServiceTypeEnum._(r'SEVEN_ELEVEN');
+  static const FAMILY_MART = QuickLogisticsResultServiceTypeEnum._(r'FAMILY_MART');
+  static const HILIFE = QuickLogisticsResultServiceTypeEnum._(r'HILIFE');
+  static const OK_MART = QuickLogisticsResultServiceTypeEnum._(r'OK_MART');
+  static const PLATFORM_DELIVERY = QuickLogisticsResultServiceTypeEnum._(r'PLATFORM_DELIVERY');
+  static const unknownDefaultOpenApi = QuickLogisticsResultServiceTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][QuickLogisticsResultServiceTypeEnum].
+  static const values = <QuickLogisticsResultServiceTypeEnum>[
+    HOME_DELIVERY,
+    SEVEN_ELEVEN,
+    FAMILY_MART,
+    HILIFE,
+    OK_MART,
+    PLATFORM_DELIVERY,
+    unknownDefaultOpenApi,
+  ];
+
+  static QuickLogisticsResultServiceTypeEnum? fromJson(dynamic value) => QuickLogisticsResultServiceTypeEnumTypeTransformer().decode(value);
+
+  static List<QuickLogisticsResultServiceTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <QuickLogisticsResultServiceTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = QuickLogisticsResultServiceTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [QuickLogisticsResultServiceTypeEnum] to String,
+/// and [decode] dynamic data back to [QuickLogisticsResultServiceTypeEnum].
+class QuickLogisticsResultServiceTypeEnumTypeTransformer {
+  factory QuickLogisticsResultServiceTypeEnumTypeTransformer() => _instance ??= const QuickLogisticsResultServiceTypeEnumTypeTransformer._();
+
+  const QuickLogisticsResultServiceTypeEnumTypeTransformer._();
+
+  String encode(QuickLogisticsResultServiceTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a QuickLogisticsResultServiceTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  QuickLogisticsResultServiceTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'HOME_DELIVERY': return QuickLogisticsResultServiceTypeEnum.HOME_DELIVERY;
+        case r'SEVEN_ELEVEN': return QuickLogisticsResultServiceTypeEnum.SEVEN_ELEVEN;
+        case r'FAMILY_MART': return QuickLogisticsResultServiceTypeEnum.FAMILY_MART;
+        case r'HILIFE': return QuickLogisticsResultServiceTypeEnum.HILIFE;
+        case r'OK_MART': return QuickLogisticsResultServiceTypeEnum.OK_MART;
+        case r'PLATFORM_DELIVERY': return QuickLogisticsResultServiceTypeEnum.PLATFORM_DELIVERY;
+        case r'unknown_default_open_api': return QuickLogisticsResultServiceTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [QuickLogisticsResultServiceTypeEnumTypeTransformer] instance.
+  static QuickLogisticsResultServiceTypeEnumTypeTransformer? _instance;
+}
+
 
 /// 距離等級
 class QuickLogisticsResultDistanceLevelEnum {

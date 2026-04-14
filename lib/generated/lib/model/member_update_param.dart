@@ -17,7 +17,7 @@ class MemberUpdateParam {
     this.username,
     this.email,
     this.phone,
-    this.status,
+    this.status = const MemberUpdateParamStatusEnum._('ACTIVE'),
     this.isSeller,
     this.remark,
   });
@@ -58,13 +58,8 @@ class MemberUpdateParam {
   ///
   String? phone;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  UserStatusEnum? status;
+  /// 用戶狀態
+  MemberUpdateParamStatusEnum status;
 
   /// 是否為賣家
   ///
@@ -101,7 +96,7 @@ class MemberUpdateParam {
     (username == null ? 0 : username!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
     (phone == null ? 0 : phone!.hashCode) +
-    (status == null ? 0 : status!.hashCode) +
+    (status.hashCode) +
     (isSeller == null ? 0 : isSeller!.hashCode) +
     (remark == null ? 0 : remark!.hashCode);
 
@@ -130,11 +125,7 @@ class MemberUpdateParam {
     } else {
       json[r'phone'] = null;
     }
-    if (this.status != null) {
       json[r'status'] = this.status;
-    } else {
-      json[r'status'] = null;
-    }
     if (this.isSeller != null) {
       json[r'isSeller'] = this.isSeller;
     } else {
@@ -171,7 +162,7 @@ class MemberUpdateParam {
         username: mapValueOfType<String>(json, r'username'),
         email: mapValueOfType<String>(json, r'email'),
         phone: mapValueOfType<String>(json, r'phone'),
-        status: UserStatusEnum.fromJson(json[r'status']),
+        status: MemberUpdateParamStatusEnum.fromJson(json[r'status']) ?? 'ACTIVE',
         isSeller: mapValueOfType<bool>(json, r'isSeller'),
         remark: mapValueOfType<String>(json, r'remark'),
       );
@@ -223,4 +214,90 @@ class MemberUpdateParam {
   static const requiredKeys = <String>{
   };
 }
+
+/// 用戶狀態
+class MemberUpdateParamStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const MemberUpdateParamStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const ACTIVE = MemberUpdateParamStatusEnum._(r'ACTIVE');
+  static const INACTIVE = MemberUpdateParamStatusEnum._(r'INACTIVE');
+  static const SUSPENDED = MemberUpdateParamStatusEnum._(r'SUSPENDED');
+  static const BANNED = MemberUpdateParamStatusEnum._(r'BANNED');
+  static const DELETED = MemberUpdateParamStatusEnum._(r'DELETED');
+  static const unknownDefaultOpenApi = MemberUpdateParamStatusEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][MemberUpdateParamStatusEnum].
+  static const values = <MemberUpdateParamStatusEnum>[
+    ACTIVE,
+    INACTIVE,
+    SUSPENDED,
+    BANNED,
+    DELETED,
+    unknownDefaultOpenApi,
+  ];
+
+  static MemberUpdateParamStatusEnum? fromJson(dynamic value) => MemberUpdateParamStatusEnumTypeTransformer().decode(value);
+
+  static List<MemberUpdateParamStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <MemberUpdateParamStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = MemberUpdateParamStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [MemberUpdateParamStatusEnum] to String,
+/// and [decode] dynamic data back to [MemberUpdateParamStatusEnum].
+class MemberUpdateParamStatusEnumTypeTransformer {
+  factory MemberUpdateParamStatusEnumTypeTransformer() => _instance ??= const MemberUpdateParamStatusEnumTypeTransformer._();
+
+  const MemberUpdateParamStatusEnumTypeTransformer._();
+
+  String encode(MemberUpdateParamStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a MemberUpdateParamStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  MemberUpdateParamStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'ACTIVE': return MemberUpdateParamStatusEnum.ACTIVE;
+        case r'INACTIVE': return MemberUpdateParamStatusEnum.INACTIVE;
+        case r'SUSPENDED': return MemberUpdateParamStatusEnum.SUSPENDED;
+        case r'BANNED': return MemberUpdateParamStatusEnum.BANNED;
+        case r'DELETED': return MemberUpdateParamStatusEnum.DELETED;
+        case r'unknown_default_open_api': return MemberUpdateParamStatusEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [MemberUpdateParamStatusEnumTypeTransformer] instance.
+  static MemberUpdateParamStatusEnumTypeTransformer? _instance;
+}
+
 

@@ -13,10 +13,16 @@ part of openapi.api;
 class GenerateLoginTokenRequest {
   /// Returns a new [GenerateLoginTokenRequest] instance.
   GenerateLoginTokenRequest({
-    required this.redirectUri,
+    this.redirectUri,
   });
 
-  String redirectUri;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? redirectUri;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is GenerateLoginTokenRequest &&
@@ -25,14 +31,18 @@ class GenerateLoginTokenRequest {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (redirectUri.hashCode);
+    (redirectUri == null ? 0 : redirectUri!.hashCode);
 
   @override
   String toString() => 'GenerateLoginTokenRequest[redirectUri=$redirectUri]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.redirectUri != null) {
       json[r'redirectUri'] = this.redirectUri;
+    } else {
+      json[r'redirectUri'] = null;
+    }
     return json;
   }
 
@@ -55,7 +65,7 @@ class GenerateLoginTokenRequest {
       }());
 
       return GenerateLoginTokenRequest(
-        redirectUri: mapValueOfType<String>(json, r'redirectUri')!,
+        redirectUri: mapValueOfType<String>(json, r'redirectUri'),
       );
     }
     return null;
@@ -103,7 +113,6 @@ class GenerateLoginTokenRequest {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'redirectUri',
   };
 }
 

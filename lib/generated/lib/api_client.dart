@@ -216,6 +216,8 @@ class ApiClient {
           return ApiResponseListKnowledgeResponse.fromJson(value);
         case 'ApiResponseListLoginMethod':
           return ApiResponseListLoginMethod.fromJson(value);
+        case 'ApiResponseListMapStringObject':
+          return ApiResponseListMapStringObject.fromJson(value);
         case 'ApiResponseListPendingQuestionResponse':
           return ApiResponseListPendingQuestionResponse.fromJson(value);
         case 'ApiResponseListPostResponse':
@@ -232,6 +234,8 @@ class ApiClient {
           return ApiResponseOAuth2AuthorizeResponse.fromJson(value);
         case 'ApiResponseOAuth2TokenResponse':
           return ApiResponseOAuth2TokenResponse.fromJson(value);
+        case 'ApiResponseObject':
+          return ApiResponseObject.fromJson(value);
         case 'ApiResponsePageClientLog':
           return ApiResponsePageClientLog.fromJson(value);
         case 'ApiResponsePageColdWallet':
@@ -324,8 +328,6 @@ class ApiClient {
           return ClientLogDto.fromJson(value);
         case 'ColdWallet':
           return ColdWallet.fromJson(value);
-        case 'ColdWalletStatusEnum':
-          return ColdWalletStatusEnumTypeTransformer().decode(value);
         case 'CreateActivityRequest':
           return CreateActivityRequest.fromJson(value);
         case 'CreateColdWalletParam':
@@ -346,18 +348,16 @@ class ApiClient {
           return CustomerIssue.fromJson(value);
         case 'CustomerStats':
           return CustomerStats.fromJson(value);
+        case 'DailyRow':
+          return DailyRow.fromJson(value);
         case 'DailyStatDto':
           return DailyStatDto.fromJson(value);
-        case 'DefaultHomePageEnum':
-          return DefaultHomePageEnumTypeTransformer().decode(value);
         case 'DeliveryDetail':
           return DeliveryDetail.fromJson(value);
         case 'DeliveryHistoryParam':
           return DeliveryHistoryParam.fromJson(value);
         case 'DeliveryOrderSearchParam':
           return DeliveryOrderSearchParam.fromJson(value);
-        case 'DeliveryReportTypeEnum':
-          return DeliveryReportTypeEnumTypeTransformer().decode(value);
         case 'DeliveryStatisticsDTO':
           return DeliveryStatisticsDTO.fromJson(value);
         case 'Deliveryer':
@@ -384,8 +384,6 @@ class ApiClient {
           return DisputeDetailParam.fromJson(value);
         case 'DisputeJudgmentParam':
           return DisputeJudgmentParam.fromJson(value);
-        case 'DisputeOutcome':
-          return DisputeOutcomeTypeTransformer().decode(value);
         case 'DisputeQueryResult':
           return DisputeQueryResult.fromJson(value);
         case 'DisputeReplyParam':
@@ -394,8 +392,6 @@ class ApiClient {
           return DisputeSearchParam.fromJson(value);
         case 'DisputeStatisticsDTO':
           return DisputeStatisticsDTO.fromJson(value);
-        case 'DisputeStatusEnum':
-          return DisputeStatusEnumTypeTransformer().decode(value);
         case 'EmailLoginRequest':
           return EmailLoginRequest.fromJson(value);
         case 'EmailLoginSendCodeRequest':
@@ -436,6 +432,8 @@ class ApiClient {
           return GroupAiSimulationRequest.fromJson(value);
         case 'GroupAiSimulationResponseDTO':
           return GroupAiSimulationResponseDTO.fromJson(value);
+        case 'GroupConversionStatsDTO':
+          return GroupConversionStatsDTO.fromJson(value);
         case 'GroupDetailDTO':
           return GroupDetailDTO.fromJson(value);
         case 'GroupEditRequest':
@@ -452,10 +450,6 @@ class ApiClient {
           return InterestRecordSearchParam.fromJson(value);
         case 'IssueSearchParam':
           return IssueSearchParam.fromJson(value);
-        case 'IssueStatusEnum':
-          return IssueStatusEnumTypeTransformer().decode(value);
-        case 'IssueTypeEnum':
-          return IssueTypeEnumTypeTransformer().decode(value);
         case 'JobTypeInfo':
           return JobTypeInfo.fromJson(value);
         case 'KlineBarDTO':
@@ -464,6 +458,8 @@ class ApiClient {
           return KlineImportRequest.fromJson(value);
         case 'KlineImportResponse':
           return KlineImportResponse.fromJson(value);
+        case 'KlineInfoResponse':
+          return KlineInfoResponse.fromJson(value);
         case 'KlineSubscribeRequest':
           return KlineSubscribeRequest.fromJson(value);
         case 'KlineSubscriptionInfo':
@@ -498,8 +494,6 @@ class ApiClient {
           return MarketResponse.fromJson(value);
         case 'MarketSearchRequest':
           return MarketSearchRequest.fromJson(value);
-        case 'MarketStatusEnum':
-          return MarketStatusEnumTypeTransformer().decode(value);
         case 'MemberSearchParam':
           return MemberSearchParam.fromJson(value);
         case 'MemberUpdateParam':
@@ -516,14 +510,8 @@ class ApiClient {
           return NotificationResponseDTO.fromJson(value);
         case 'NotificationSearchParam':
           return NotificationSearchParam.fromJson(value);
-        case 'NotificationStatusEnum':
-          return NotificationStatusEnumTypeTransformer().decode(value);
-        case 'NotificationTypeEnum':
-          return NotificationTypeEnumTypeTransformer().decode(value);
         case 'NotificationUpdateParam':
           return NotificationUpdateParam.fromJson(value);
-        case 'NotifyEventTypeEnum':
-          return NotifyEventTypeEnumTypeTransformer().decode(value);
         case 'OAuth2AuthorizeRequest':
           return OAuth2AuthorizeRequest.fromJson(value);
         case 'OAuth2AuthorizeResponse':
@@ -544,8 +532,6 @@ class ApiClient {
           return OrderQueryResult.fromJson(value);
         case 'OrderReturnRecord':
           return OrderReturnRecord.fromJson(value);
-        case 'OrderSearchDateTypeEnum':
-          return OrderSearchDateTypeEnumTypeTransformer().decode(value);
         case 'OrderSearchParam':
           return OrderSearchParam.fromJson(value);
         case 'OrderShipLogisticsParam':
@@ -554,8 +540,6 @@ class ApiClient {
           return OrderShipPlatformParam.fromJson(value);
         case 'OrderStatisticsDTO':
           return OrderStatisticsDTO.fromJson(value);
-        case 'OrderStatusEnum':
-          return OrderStatusEnumTypeTransformer().decode(value);
         case 'OrderSumbitParam':
           return OrderSumbitParam.fromJson(value);
         case 'PageActivityDTO':
@@ -634,8 +618,6 @@ class ApiClient {
           return PaytableWithRtpDTO.fromJson(value);
         case 'PendingQuestionResponse':
           return PendingQuestionResponse.fromJson(value);
-        case 'PickupServiceTypeEnum':
-          return PickupServiceTypeEnumTypeTransformer().decode(value);
         case 'PickupStore':
           return PickupStore.fromJson(value);
         case 'PickupStoreSearchParam':
@@ -662,8 +644,6 @@ class ApiClient {
           return PostalSearchParam.fromJson(value);
         case 'Product':
           return Product.fromJson(value);
-        case 'ProductCategoryEnum':
-          return ProductCategoryEnumTypeTransformer().decode(value);
         case 'ProductCreateParam':
           return ProductCreateParam.fromJson(value);
         case 'ProductInventoryStats':
@@ -672,18 +652,12 @@ class ApiClient {
           return ProductSeachParam.fromJson(value);
         case 'ProductStats':
           return ProductStats.fromJson(value);
-        case 'ProductStatusEnum':
-          return ProductStatusEnumTypeTransformer().decode(value);
         case 'ProductUpdateParam':
           return ProductUpdateParam.fromJson(value);
         case 'PromoCode':
           return PromoCode.fromJson(value);
         case 'PromoCodeStatDto':
           return PromoCodeStatDto.fromJson(value);
-        case 'PromoCodeStatusEnum':
-          return PromoCodeStatusEnumTypeTransformer().decode(value);
-        case 'ProtocolEnum':
-          return ProtocolEnumTypeTransformer().decode(value);
         case 'PushHealthResponseDTO':
           return PushHealthResponseDTO.fromJson(value);
         case 'PushNotificationDTO':
@@ -714,16 +688,12 @@ class ApiClient {
           return RechargeResponse.fromJson(value);
         case 'RechargeSearchParam':
           return RechargeSearchParam.fromJson(value);
-        case 'RechargeStatusEnum':
-          return RechargeStatusEnumTypeTransformer().decode(value);
         case 'RefundOfferResponseParam':
           return RefundOfferResponseParam.fromJson(value);
         case 'RegisterParam':
           return RegisterParam.fromJson(value);
         case 'RegisterResult':
           return RegisterResult.fromJson(value);
-        case 'RegistrationMethodEnum':
-          return RegistrationMethodEnumTypeTransformer().decode(value);
         case 'RegistrationOverviewResponse':
           return RegistrationOverviewResponse.fromJson(value);
         case 'ReplyIssueParam':
@@ -734,8 +704,6 @@ class ApiClient {
           return ResolveRequest.fromJson(value);
         case 'ReturnProcessParam':
           return ReturnProcessParam.fromJson(value);
-        case 'ReturnReasonEnum':
-          return ReturnReasonEnumTypeTransformer().decode(value);
         case 'ReturnRequestParam':
           return ReturnRequestParam.fromJson(value);
         case 'ReturnShippingParam':
@@ -780,8 +748,6 @@ class ApiClient {
           return ShippingAddress.fromJson(value);
         case 'ShippingAddressOption':
           return ShippingAddressOption.fromJson(value);
-        case 'ShippingCompanyEnum':
-          return ShippingCompanyEnumTypeTransformer().decode(value);
         case 'ShippingOptions':
           return ShippingOptions.fromJson(value);
         case 'ShippingServiceGroup':
@@ -826,8 +792,6 @@ class ApiClient {
           return StakingSearchParam.fromJson(value);
         case 'StakingStatisticsDTO':
           return StakingStatisticsDTO.fromJson(value);
-        case 'StakingStatusEnum':
-          return StakingStatusEnumTypeTransformer().decode(value);
         case 'Store':
           return Store.fromJson(value);
         case 'StoreAnalyticsDTO':
@@ -854,8 +818,8 @@ class ApiClient {
           return StrategyResponse.fromJson(value);
         case 'SuggestionActionParam':
           return SuggestionActionParam.fromJson(value);
-        case 'SupportedCurrencyEnum':
-          return SupportedCurrencyEnumTypeTransformer().decode(value);
+        case 'Summary':
+          return Summary.fromJson(value);
         case 'TaiwanPostalArea':
           return TaiwanPostalArea.fromJson(value);
         case 'TelegramBotInfo':
@@ -880,8 +844,6 @@ class ApiClient {
           return TransactionListParam.fromJson(value);
         case 'TransactionSearchParam':
           return TransactionSearchParam.fromJson(value);
-        case 'TransactionTypeEnum':
-          return TransactionTypeEnumTypeTransformer().decode(value);
         case 'TwoFactorManageParam':
           return TwoFactorManageParam.fromJson(value);
         case 'TwoFactorSetupResponse':
@@ -908,8 +870,6 @@ class ApiClient {
           return UserPostStatistics.fromJson(value);
         case 'UserProfileUpdateParam':
           return UserProfileUpdateParam.fromJson(value);
-        case 'UserStatusEnum':
-          return UserStatusEnumTypeTransformer().decode(value);
         case 'VapidPublicKeyResponseDTO':
           return VapidPublicKeyResponseDTO.fromJson(value);
         case 'VerifyCodeRequest':
@@ -946,8 +906,6 @@ class ApiClient {
           return Withdraw.fromJson(value);
         case 'WithdrawSearchParam':
           return WithdrawSearchParam.fromJson(value);
-        case 'WithdrawStatusEnum':
-          return WithdrawStatusEnumTypeTransformer().decode(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {

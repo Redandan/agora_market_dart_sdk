@@ -119,21 +119,11 @@ class IssueSearchParam {
   ///
   String? username;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  IssueTypeEnum? issueType;
+  /// 問題類型
+  IssueSearchParamIssueTypeEnum? issueType;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  IssueStatusEnum? status;
+  /// 問題狀態
+  IssueSearchParamStatusEnum? status;
 
   /// 操作人ID
   ///
@@ -295,8 +285,8 @@ class IssueSearchParam {
         issueId: mapValueOfType<String>(json, r'issueId'),
         userId: mapValueOfType<int>(json, r'userId'),
         username: mapValueOfType<String>(json, r'username'),
-        issueType: IssueTypeEnum.fromJson(json[r'issueType']),
-        status: IssueStatusEnum.fromJson(json[r'status']),
+        issueType: IssueSearchParamIssueTypeEnum.fromJson(json[r'issueType']),
+        status: IssueSearchParamStatusEnum.fromJson(json[r'status']),
         operatorId: mapValueOfType<int>(json, r'operatorId'),
         operatorName: mapValueOfType<String>(json, r'operatorName'),
       );
@@ -348,4 +338,164 @@ class IssueSearchParam {
   static const requiredKeys = <String>{
   };
 }
+
+/// 問題類型
+class IssueSearchParamIssueTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const IssueSearchParamIssueTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const RECHARGE_NOT_RECEIVED = IssueSearchParamIssueTypeEnum._(r'RECHARGE_NOT_RECEIVED');
+  static const WITHDRAW_NOT_RECEIVED = IssueSearchParamIssueTypeEnum._(r'WITHDRAW_NOT_RECEIVED');
+  static const OTHER = IssueSearchParamIssueTypeEnum._(r'OTHER');
+  static const unknownDefaultOpenApi = IssueSearchParamIssueTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][IssueSearchParamIssueTypeEnum].
+  static const values = <IssueSearchParamIssueTypeEnum>[
+    RECHARGE_NOT_RECEIVED,
+    WITHDRAW_NOT_RECEIVED,
+    OTHER,
+    unknownDefaultOpenApi,
+  ];
+
+  static IssueSearchParamIssueTypeEnum? fromJson(dynamic value) => IssueSearchParamIssueTypeEnumTypeTransformer().decode(value);
+
+  static List<IssueSearchParamIssueTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <IssueSearchParamIssueTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = IssueSearchParamIssueTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [IssueSearchParamIssueTypeEnum] to String,
+/// and [decode] dynamic data back to [IssueSearchParamIssueTypeEnum].
+class IssueSearchParamIssueTypeEnumTypeTransformer {
+  factory IssueSearchParamIssueTypeEnumTypeTransformer() => _instance ??= const IssueSearchParamIssueTypeEnumTypeTransformer._();
+
+  const IssueSearchParamIssueTypeEnumTypeTransformer._();
+
+  String encode(IssueSearchParamIssueTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a IssueSearchParamIssueTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  IssueSearchParamIssueTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'RECHARGE_NOT_RECEIVED': return IssueSearchParamIssueTypeEnum.RECHARGE_NOT_RECEIVED;
+        case r'WITHDRAW_NOT_RECEIVED': return IssueSearchParamIssueTypeEnum.WITHDRAW_NOT_RECEIVED;
+        case r'OTHER': return IssueSearchParamIssueTypeEnum.OTHER;
+        case r'unknown_default_open_api': return IssueSearchParamIssueTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [IssueSearchParamIssueTypeEnumTypeTransformer] instance.
+  static IssueSearchParamIssueTypeEnumTypeTransformer? _instance;
+}
+
+
+/// 問題狀態
+class IssueSearchParamStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const IssueSearchParamStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const PENDING = IssueSearchParamStatusEnum._(r'PENDING');
+  static const REPLIED = IssueSearchParamStatusEnum._(r'REPLIED');
+  static const CLOSED = IssueSearchParamStatusEnum._(r'CLOSED');
+  static const unknownDefaultOpenApi = IssueSearchParamStatusEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][IssueSearchParamStatusEnum].
+  static const values = <IssueSearchParamStatusEnum>[
+    PENDING,
+    REPLIED,
+    CLOSED,
+    unknownDefaultOpenApi,
+  ];
+
+  static IssueSearchParamStatusEnum? fromJson(dynamic value) => IssueSearchParamStatusEnumTypeTransformer().decode(value);
+
+  static List<IssueSearchParamStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <IssueSearchParamStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = IssueSearchParamStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [IssueSearchParamStatusEnum] to String,
+/// and [decode] dynamic data back to [IssueSearchParamStatusEnum].
+class IssueSearchParamStatusEnumTypeTransformer {
+  factory IssueSearchParamStatusEnumTypeTransformer() => _instance ??= const IssueSearchParamStatusEnumTypeTransformer._();
+
+  const IssueSearchParamStatusEnumTypeTransformer._();
+
+  String encode(IssueSearchParamStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a IssueSearchParamStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  IssueSearchParamStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'PENDING': return IssueSearchParamStatusEnum.PENDING;
+        case r'REPLIED': return IssueSearchParamStatusEnum.REPLIED;
+        case r'CLOSED': return IssueSearchParamStatusEnum.CLOSED;
+        case r'unknown_default_open_api': return IssueSearchParamStatusEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [IssueSearchParamStatusEnumTypeTransformer] instance.
+  static IssueSearchParamStatusEnumTypeTransformer? _instance;
+}
+
 

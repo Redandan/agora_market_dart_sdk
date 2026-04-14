@@ -130,21 +130,11 @@ class NotificationSearchParam {
   ///
   String? title;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  NotificationTypeEnum? type;
+  /// 通知類型
+  NotificationSearchParamTypeEnum? type;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  NotificationStatusEnum? status;
+  /// 通知狀態
+  NotificationSearchParamStatusEnum? status;
 
   /// 是否推送
   ///
@@ -330,8 +320,8 @@ class NotificationSearchParam {
         userId: mapValueOfType<int>(json, r'userId'),
         senderId: mapValueOfType<int>(json, r'senderId'),
         title: mapValueOfType<String>(json, r'title'),
-        type: NotificationTypeEnum.fromJson(json[r'type']),
-        status: NotificationStatusEnum.fromJson(json[r'status']),
+        type: NotificationSearchParamTypeEnum.fromJson(json[r'type']),
+        status: NotificationSearchParamStatusEnum.fromJson(json[r'status']),
         isPushed: mapValueOfType<bool>(json, r'isPushed'),
         relatedObjectId: mapValueOfType<String>(json, r'relatedObjectId'),
         relatedObjectType: mapValueOfType<String>(json, r'relatedObjectType'),
@@ -384,4 +374,185 @@ class NotificationSearchParam {
   static const requiredKeys = <String>{
   };
 }
+
+/// 通知類型
+class NotificationSearchParamTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const NotificationSearchParamTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const SYSTEM = NotificationSearchParamTypeEnum._(r'SYSTEM');
+  static const ORDER = NotificationSearchParamTypeEnum._(r'ORDER');
+  static const DELIVERY = NotificationSearchParamTypeEnum._(r'DELIVERY');
+  static const CHAT = NotificationSearchParamTypeEnum._(r'CHAT');
+  static const FINANCIAL = NotificationSearchParamTypeEnum._(r'FINANCIAL');
+  static const SECURITY = NotificationSearchParamTypeEnum._(r'SECURITY');
+  static const PROMOTION = NotificationSearchParamTypeEnum._(r'PROMOTION');
+  static const INVENTORY = NotificationSearchParamTypeEnum._(r'INVENTORY');
+  static const REVIEW = NotificationSearchParamTypeEnum._(r'REVIEW');
+  static const DISPUTE = NotificationSearchParamTypeEnum._(r'DISPUTE');
+  static const unknownDefaultOpenApi = NotificationSearchParamTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][NotificationSearchParamTypeEnum].
+  static const values = <NotificationSearchParamTypeEnum>[
+    SYSTEM,
+    ORDER,
+    DELIVERY,
+    CHAT,
+    FINANCIAL,
+    SECURITY,
+    PROMOTION,
+    INVENTORY,
+    REVIEW,
+    DISPUTE,
+    unknownDefaultOpenApi,
+  ];
+
+  static NotificationSearchParamTypeEnum? fromJson(dynamic value) => NotificationSearchParamTypeEnumTypeTransformer().decode(value);
+
+  static List<NotificationSearchParamTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <NotificationSearchParamTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = NotificationSearchParamTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [NotificationSearchParamTypeEnum] to String,
+/// and [decode] dynamic data back to [NotificationSearchParamTypeEnum].
+class NotificationSearchParamTypeEnumTypeTransformer {
+  factory NotificationSearchParamTypeEnumTypeTransformer() => _instance ??= const NotificationSearchParamTypeEnumTypeTransformer._();
+
+  const NotificationSearchParamTypeEnumTypeTransformer._();
+
+  String encode(NotificationSearchParamTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a NotificationSearchParamTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  NotificationSearchParamTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'SYSTEM': return NotificationSearchParamTypeEnum.SYSTEM;
+        case r'ORDER': return NotificationSearchParamTypeEnum.ORDER;
+        case r'DELIVERY': return NotificationSearchParamTypeEnum.DELIVERY;
+        case r'CHAT': return NotificationSearchParamTypeEnum.CHAT;
+        case r'FINANCIAL': return NotificationSearchParamTypeEnum.FINANCIAL;
+        case r'SECURITY': return NotificationSearchParamTypeEnum.SECURITY;
+        case r'PROMOTION': return NotificationSearchParamTypeEnum.PROMOTION;
+        case r'INVENTORY': return NotificationSearchParamTypeEnum.INVENTORY;
+        case r'REVIEW': return NotificationSearchParamTypeEnum.REVIEW;
+        case r'DISPUTE': return NotificationSearchParamTypeEnum.DISPUTE;
+        case r'unknown_default_open_api': return NotificationSearchParamTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [NotificationSearchParamTypeEnumTypeTransformer] instance.
+  static NotificationSearchParamTypeEnumTypeTransformer? _instance;
+}
+
+
+/// 通知狀態
+class NotificationSearchParamStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const NotificationSearchParamStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const UNREAD = NotificationSearchParamStatusEnum._(r'UNREAD');
+  static const READ = NotificationSearchParamStatusEnum._(r'READ');
+  static const DELETED = NotificationSearchParamStatusEnum._(r'DELETED');
+  static const unknownDefaultOpenApi = NotificationSearchParamStatusEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][NotificationSearchParamStatusEnum].
+  static const values = <NotificationSearchParamStatusEnum>[
+    UNREAD,
+    READ,
+    DELETED,
+    unknownDefaultOpenApi,
+  ];
+
+  static NotificationSearchParamStatusEnum? fromJson(dynamic value) => NotificationSearchParamStatusEnumTypeTransformer().decode(value);
+
+  static List<NotificationSearchParamStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <NotificationSearchParamStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = NotificationSearchParamStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [NotificationSearchParamStatusEnum] to String,
+/// and [decode] dynamic data back to [NotificationSearchParamStatusEnum].
+class NotificationSearchParamStatusEnumTypeTransformer {
+  factory NotificationSearchParamStatusEnumTypeTransformer() => _instance ??= const NotificationSearchParamStatusEnumTypeTransformer._();
+
+  const NotificationSearchParamStatusEnumTypeTransformer._();
+
+  String encode(NotificationSearchParamStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a NotificationSearchParamStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  NotificationSearchParamStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'UNREAD': return NotificationSearchParamStatusEnum.UNREAD;
+        case r'READ': return NotificationSearchParamStatusEnum.READ;
+        case r'DELETED': return NotificationSearchParamStatusEnum.DELETED;
+        case r'unknown_default_open_api': return NotificationSearchParamStatusEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [NotificationSearchParamStatusEnumTypeTransformer] instance.
+  static NotificationSearchParamStatusEnumTypeTransformer? _instance;
+}
+
 

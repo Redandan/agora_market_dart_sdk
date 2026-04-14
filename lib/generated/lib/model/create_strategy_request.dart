@@ -15,6 +15,7 @@ class CreateStrategyRequest {
   CreateStrategyRequest({
     required this.name,
     required this.strategyType,
+    required this.symbols,
     required this.config,
   });
 
@@ -24,12 +25,17 @@ class CreateStrategyRequest {
   /// 策略類型
   String strategyType;
 
+  /// 監控交易對，逗號分隔（必填）
+  String symbols;
+
+  /// 策略參數配置
   SopMtfAdxConfig config;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateStrategyRequest &&
     other.name == name &&
     other.strategyType == strategyType &&
+    other.symbols == symbols &&
     other.config == config;
 
   @override
@@ -37,15 +43,17 @@ class CreateStrategyRequest {
     // ignore: unnecessary_parenthesis
     (name.hashCode) +
     (strategyType.hashCode) +
+    (symbols.hashCode) +
     (config.hashCode);
 
   @override
-  String toString() => 'CreateStrategyRequest[name=$name, strategyType=$strategyType, config=$config]';
+  String toString() => 'CreateStrategyRequest[name=$name, strategyType=$strategyType, symbols=$symbols, config=$config]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'name'] = this.name;
       json[r'strategyType'] = this.strategyType;
+      json[r'symbols'] = this.symbols;
       json[r'config'] = this.config;
     return json;
   }
@@ -71,6 +79,7 @@ class CreateStrategyRequest {
       return CreateStrategyRequest(
         name: mapValueOfType<String>(json, r'name')!,
         strategyType: mapValueOfType<String>(json, r'strategyType')!,
+        symbols: mapValueOfType<String>(json, r'symbols')!,
         config: SopMtfAdxConfig.fromJson(json[r'config'])!,
       );
     }
@@ -121,6 +130,7 @@ class CreateStrategyRequest {
   static const requiredKeys = <String>{
     'name',
     'strategyType',
+    'symbols',
     'config',
   };
 }

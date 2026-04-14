@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -17,11 +17,12 @@ class StrategyBacktestDetailResponse {
     this.results = const [],
   });
 
+  /// 策略資訊
   StrategyResponse strategy;
 
-  /// ?葫蝯??”
-
+  /// 回測結果列表
   List<BacktestResultResponse> results;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is StrategyBacktestDetailResponse &&
     other.strategy == strategy &&
@@ -115,5 +116,4 @@ class StrategyBacktestDetailResponse {
     'results',
   };
 }
-
 

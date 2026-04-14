@@ -23,13 +23,8 @@ class PickupStoreSearchParam {
     this.size,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  PickupServiceTypeEnum? storeType;
+  /// 商店類型（SEVEN_ELEVEN, FAMILY_MART, HILIFE, OK_MART）
+  PickupStoreSearchParamStoreTypeEnum? storeType;
 
   /// 門市代號（精確查詢）
   ///
@@ -184,7 +179,7 @@ class PickupStoreSearchParam {
       }());
 
       return PickupStoreSearchParam(
-        storeType: PickupServiceTypeEnum.fromJson(json[r'storeType']),
+        storeType: PickupStoreSearchParamStoreTypeEnum.fromJson(json[r'storeType']),
         storeCode: mapValueOfType<String>(json, r'storeCode'),
         city: mapValueOfType<String>(json, r'city'),
         district: mapValueOfType<String>(json, r'district'),
@@ -241,4 +236,93 @@ class PickupStoreSearchParam {
   static const requiredKeys = <String>{
   };
 }
+
+/// 商店類型（SEVEN_ELEVEN, FAMILY_MART, HILIFE, OK_MART）
+class PickupStoreSearchParamStoreTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const PickupStoreSearchParamStoreTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const HOME_DELIVERY = PickupStoreSearchParamStoreTypeEnum._(r'HOME_DELIVERY');
+  static const SEVEN_ELEVEN = PickupStoreSearchParamStoreTypeEnum._(r'SEVEN_ELEVEN');
+  static const FAMILY_MART = PickupStoreSearchParamStoreTypeEnum._(r'FAMILY_MART');
+  static const HILIFE = PickupStoreSearchParamStoreTypeEnum._(r'HILIFE');
+  static const OK_MART = PickupStoreSearchParamStoreTypeEnum._(r'OK_MART');
+  static const PLATFORM_DELIVERY = PickupStoreSearchParamStoreTypeEnum._(r'PLATFORM_DELIVERY');
+  static const unknownDefaultOpenApi = PickupStoreSearchParamStoreTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][PickupStoreSearchParamStoreTypeEnum].
+  static const values = <PickupStoreSearchParamStoreTypeEnum>[
+    HOME_DELIVERY,
+    SEVEN_ELEVEN,
+    FAMILY_MART,
+    HILIFE,
+    OK_MART,
+    PLATFORM_DELIVERY,
+    unknownDefaultOpenApi,
+  ];
+
+  static PickupStoreSearchParamStoreTypeEnum? fromJson(dynamic value) => PickupStoreSearchParamStoreTypeEnumTypeTransformer().decode(value);
+
+  static List<PickupStoreSearchParamStoreTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PickupStoreSearchParamStoreTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = PickupStoreSearchParamStoreTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [PickupStoreSearchParamStoreTypeEnum] to String,
+/// and [decode] dynamic data back to [PickupStoreSearchParamStoreTypeEnum].
+class PickupStoreSearchParamStoreTypeEnumTypeTransformer {
+  factory PickupStoreSearchParamStoreTypeEnumTypeTransformer() => _instance ??= const PickupStoreSearchParamStoreTypeEnumTypeTransformer._();
+
+  const PickupStoreSearchParamStoreTypeEnumTypeTransformer._();
+
+  String encode(PickupStoreSearchParamStoreTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a PickupStoreSearchParamStoreTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  PickupStoreSearchParamStoreTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'HOME_DELIVERY': return PickupStoreSearchParamStoreTypeEnum.HOME_DELIVERY;
+        case r'SEVEN_ELEVEN': return PickupStoreSearchParamStoreTypeEnum.SEVEN_ELEVEN;
+        case r'FAMILY_MART': return PickupStoreSearchParamStoreTypeEnum.FAMILY_MART;
+        case r'HILIFE': return PickupStoreSearchParamStoreTypeEnum.HILIFE;
+        case r'OK_MART': return PickupStoreSearchParamStoreTypeEnum.OK_MART;
+        case r'PLATFORM_DELIVERY': return PickupStoreSearchParamStoreTypeEnum.PLATFORM_DELIVERY;
+        case r'unknown_default_open_api': return PickupStoreSearchParamStoreTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [PickupStoreSearchParamStoreTypeEnumTypeTransformer] instance.
+  static PickupStoreSearchParamStoreTypeEnumTypeTransformer? _instance;
+}
+
 

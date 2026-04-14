@@ -13,12 +13,18 @@ part of openapi.api;
 class OrderShipPlatformParam {
   /// Returns a new [OrderShipPlatformParam] instance.
   OrderShipPlatformParam({
-    required this.orderId,
+    this.orderId,
     this.remark,
   });
 
   /// 訂單ID
-  String orderId;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? orderId;
 
   /// 發貨備註
   ///
@@ -37,7 +43,7 @@ class OrderShipPlatformParam {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (orderId.hashCode) +
+    (orderId == null ? 0 : orderId!.hashCode) +
     (remark == null ? 0 : remark!.hashCode);
 
   @override
@@ -45,7 +51,11 @@ class OrderShipPlatformParam {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.orderId != null) {
       json[r'orderId'] = this.orderId;
+    } else {
+      json[r'orderId'] = null;
+    }
     if (this.remark != null) {
       json[r'remark'] = this.remark;
     } else {
@@ -73,7 +83,7 @@ class OrderShipPlatformParam {
       }());
 
       return OrderShipPlatformParam(
-        orderId: mapValueOfType<String>(json, r'orderId')!,
+        orderId: mapValueOfType<String>(json, r'orderId'),
         remark: mapValueOfType<String>(json, r'remark'),
       );
     }
@@ -122,7 +132,6 @@ class OrderShipPlatformParam {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'orderId',
   };
 }
 

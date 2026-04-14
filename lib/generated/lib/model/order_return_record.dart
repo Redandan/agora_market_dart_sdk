@@ -36,8 +36,8 @@ class OrderReturnRecord {
     this.seller,
     this.returnShippingOptions = const [],
     this.imageUrls = const {},
-    this.returnOverdue,
     this.returnDeadlineFromApproval,
+    this.returnOverdue,
   });
 
   /// 退貨記錄ID（與訂單ID一致）
@@ -49,58 +49,152 @@ class OrderReturnRecord {
   /// 賣家ID
   int sellerId;
 
-  ReturnReasonEnum reason;
+  /// 退貨原因
+  OrderReturnRecordReasonEnum reason;
 
   /// 退貨說明
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? description;
 
   /// 賣家回覆
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? sellerReply;
 
   /// 退貨物流單號
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? trackingNumber;
 
   /// 退貨物流公司
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? shippingCompany;
 
   /// 申請時間
   DateTime requestedAt;
 
   /// 處理時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? processedAt;
 
   /// 寄出時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? shippedAt;
 
   /// 收到時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? receivedAt;
 
   /// 買家退回截止時間（賣家同意退回時起算 +7 天）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? returnDeadline;
 
   /// 更新時間
   DateTime updatedAt;
 
   /// 備註
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? remark;
 
   /// 收貨人姓名
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? returnRecipientName;
 
   /// 收貨人電話
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? returnRecipientPhone;
 
   /// 收貨完整地址
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? returnAddress;
 
+  /// 關聯的訂單
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   Order? order;
 
+  /// 買家信息
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   User? buyer;
 
+  /// 賣家信息
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   User? seller;
 
   /// 賣家可退貨的地址列表（供買家寄回商品時選擇）
-  List<ShippingAddressOption>? returnShippingOptions;
+  List<ShippingAddressOption> returnShippingOptions;
 
   Set<String> imageUrls;
 
@@ -110,7 +204,7 @@ class OrderReturnRecord {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? returnOverdue;
+  DateTime? returnDeadlineFromApproval;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -118,7 +212,7 @@ class OrderReturnRecord {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  DateTime? returnDeadlineFromApproval;
+  bool? returnOverdue;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrderReturnRecord &&
@@ -145,8 +239,8 @@ class OrderReturnRecord {
     other.seller == seller &&
     _deepEquality.equals(other.returnShippingOptions, returnShippingOptions) &&
     _deepEquality.equals(other.imageUrls, imageUrls) &&
-    other.returnOverdue == returnOverdue &&
-    other.returnDeadlineFromApproval == returnDeadlineFromApproval;
+    other.returnDeadlineFromApproval == returnDeadlineFromApproval &&
+    other.returnOverdue == returnOverdue;
 
   @override
   int get hashCode =>
@@ -172,13 +266,13 @@ class OrderReturnRecord {
     (order == null ? 0 : order!.hashCode) +
     (buyer == null ? 0 : buyer!.hashCode) +
     (seller == null ? 0 : seller!.hashCode) +
-    (returnShippingOptions == null ? 0 : returnShippingOptions!.hashCode) +
+    (returnShippingOptions.hashCode) +
     (imageUrls.hashCode) +
-    (returnOverdue == null ? 0 : returnOverdue!.hashCode) +
-    (returnDeadlineFromApproval == null ? 0 : returnDeadlineFromApproval!.hashCode);
+    (returnDeadlineFromApproval == null ? 0 : returnDeadlineFromApproval!.hashCode) +
+    (returnOverdue == null ? 0 : returnOverdue!.hashCode);
 
   @override
-  String toString() => 'OrderReturnRecord[id=$id, buyerId=$buyerId, sellerId=$sellerId, reason=$reason, description=$description, sellerReply=$sellerReply, trackingNumber=$trackingNumber, shippingCompany=$shippingCompany, requestedAt=$requestedAt, processedAt=$processedAt, shippedAt=$shippedAt, receivedAt=$receivedAt, returnDeadline=$returnDeadline, updatedAt=$updatedAt, remark=$remark, returnRecipientName=$returnRecipientName, returnRecipientPhone=$returnRecipientPhone, returnAddress=$returnAddress, order=$order, buyer=$buyer, seller=$seller, returnShippingOptions=$returnShippingOptions, imageUrls=$imageUrls, returnOverdue=$returnOverdue, returnDeadlineFromApproval=$returnDeadlineFromApproval]';
+  String toString() => 'OrderReturnRecord[id=$id, buyerId=$buyerId, sellerId=$sellerId, reason=$reason, description=$description, sellerReply=$sellerReply, trackingNumber=$trackingNumber, shippingCompany=$shippingCompany, requestedAt=$requestedAt, processedAt=$processedAt, shippedAt=$shippedAt, receivedAt=$receivedAt, returnDeadline=$returnDeadline, updatedAt=$updatedAt, remark=$remark, returnRecipientName=$returnRecipientName, returnRecipientPhone=$returnRecipientPhone, returnAddress=$returnAddress, order=$order, buyer=$buyer, seller=$seller, returnShippingOptions=$returnShippingOptions, imageUrls=$imageUrls, returnDeadlineFromApproval=$returnDeadlineFromApproval, returnOverdue=$returnOverdue]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -263,21 +357,17 @@ class OrderReturnRecord {
     } else {
       json[r'seller'] = null;
     }
-    if (this.returnShippingOptions != null) {
-      json[r'returnShippingOptions'] = this.returnShippingOptions;
-    } else {
-      json[r'returnShippingOptions'] = null;
-    }
+      json[r'returnShippingOptions'] = this.returnShippingOptions.map((e) => e.toJson()).toList();
       json[r'imageUrls'] = this.imageUrls.toList(growable: false);
-    if (this.returnOverdue != null) {
-      json[r'returnOverdue'] = this.returnOverdue;
-    } else {
-      json[r'returnOverdue'] = null;
-    }
     if (this.returnDeadlineFromApproval != null) {
       json[r'returnDeadlineFromApproval'] = this.returnDeadlineFromApproval!.toUtc().toIso8601String();
     } else {
       json[r'returnDeadlineFromApproval'] = null;
+    }
+    if (this.returnOverdue != null) {
+      json[r'returnOverdue'] = this.returnOverdue;
+    } else {
+      json[r'returnOverdue'] = null;
     }
     return json;
   }
@@ -304,7 +394,7 @@ class OrderReturnRecord {
         id: mapValueOfType<String>(json, r'id')!,
         buyerId: mapValueOfType<int>(json, r'buyerId')!,
         sellerId: mapValueOfType<int>(json, r'sellerId')!,
-        reason: ReturnReasonEnum.fromJson(json[r'reason'])!,
+        reason: OrderReturnRecordReasonEnum.fromJson(json[r'reason'])!,
         description: mapValueOfType<String>(json, r'description'),
         sellerReply: mapValueOfType<String>(json, r'sellerReply'),
         trackingNumber: mapValueOfType<String>(json, r'trackingNumber'),
@@ -326,8 +416,8 @@ class OrderReturnRecord {
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
             : const {},
-        returnOverdue: mapValueOfType<bool>(json, r'returnOverdue'),
         returnDeadlineFromApproval: mapDateTime(json, r'returnDeadlineFromApproval', r''),
+        returnOverdue: mapValueOfType<bool>(json, r'returnOverdue'),
       );
     }
     return null;
@@ -383,4 +473,90 @@ class OrderReturnRecord {
     'updatedAt',
   };
 }
+
+/// 退貨原因
+class OrderReturnRecordReasonEnum {
+  /// Instantiate a new enum with the provided [value].
+  const OrderReturnRecordReasonEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const NOT_AS_DESCRIBED = OrderReturnRecordReasonEnum._(r'NOT_AS_DESCRIBED');
+  static const DAMAGED_OR_DEFECTIVE = OrderReturnRecordReasonEnum._(r'DAMAGED_OR_DEFECTIVE');
+  static const WRONG_OR_MISSING_ITEM = OrderReturnRecordReasonEnum._(r'WRONG_OR_MISSING_ITEM');
+  static const NOT_DELIVERED_OR_UNCLAIMABLE = OrderReturnRecordReasonEnum._(r'NOT_DELIVERED_OR_UNCLAIMABLE');
+  static const OTHER = OrderReturnRecordReasonEnum._(r'OTHER');
+  static const unknownDefaultOpenApi = OrderReturnRecordReasonEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][OrderReturnRecordReasonEnum].
+  static const values = <OrderReturnRecordReasonEnum>[
+    NOT_AS_DESCRIBED,
+    DAMAGED_OR_DEFECTIVE,
+    WRONG_OR_MISSING_ITEM,
+    NOT_DELIVERED_OR_UNCLAIMABLE,
+    OTHER,
+    unknownDefaultOpenApi,
+  ];
+
+  static OrderReturnRecordReasonEnum? fromJson(dynamic value) => OrderReturnRecordReasonEnumTypeTransformer().decode(value);
+
+  static List<OrderReturnRecordReasonEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <OrderReturnRecordReasonEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = OrderReturnRecordReasonEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [OrderReturnRecordReasonEnum] to String,
+/// and [decode] dynamic data back to [OrderReturnRecordReasonEnum].
+class OrderReturnRecordReasonEnumTypeTransformer {
+  factory OrderReturnRecordReasonEnumTypeTransformer() => _instance ??= const OrderReturnRecordReasonEnumTypeTransformer._();
+
+  const OrderReturnRecordReasonEnumTypeTransformer._();
+
+  String encode(OrderReturnRecordReasonEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a OrderReturnRecordReasonEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  OrderReturnRecordReasonEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'NOT_AS_DESCRIBED': return OrderReturnRecordReasonEnum.NOT_AS_DESCRIBED;
+        case r'DAMAGED_OR_DEFECTIVE': return OrderReturnRecordReasonEnum.DAMAGED_OR_DEFECTIVE;
+        case r'WRONG_OR_MISSING_ITEM': return OrderReturnRecordReasonEnum.WRONG_OR_MISSING_ITEM;
+        case r'NOT_DELIVERED_OR_UNCLAIMABLE': return OrderReturnRecordReasonEnum.NOT_DELIVERED_OR_UNCLAIMABLE;
+        case r'OTHER': return OrderReturnRecordReasonEnum.OTHER;
+        case r'unknown_default_open_api': return OrderReturnRecordReasonEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [OrderReturnRecordReasonEnumTypeTransformer] instance.
+  static OrderReturnRecordReasonEnumTypeTransformer? _instance;
+}
+
 

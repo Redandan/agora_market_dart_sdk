@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -44,57 +44,65 @@ class ProductCreateParam {
     this.purchaseUrl,
   });
 
-  /// ???迂
-
+  /// 商品名稱
   String title;
-  /// ???寞
+
+  /// 商品價格
   ///
   /// Minimum value: 0.0
   num price;
-  SupportedCurrencyEnum? currency;
 
-  /// ??摨怠?
+  /// 貨幣類型
+  ProductCreateParamCurrencyEnum currency;
+
+  /// 商品庫存
   ///
   /// Minimum value: 0
   int stock;
-  /// ???膩
 
+  /// 商品描述
   String description;
-  ProductCategoryEnum category;
 
-  /// ????URL??
+  /// 商品分類
+  ProductCreateParamCategoryEnum category;
 
+  /// 商品圖片URL集合
   Set<String> imageUrls;
-  /// ?辣?啣?蝬漲
+
+  /// 取件地址經度
   ///
   /// Minimum value: -180.0
   /// Maximum value: 180.0
   double pickupLongitude;
-  /// ?辣?啣?蝺臬漲
+
+  /// 取件地址緯度
   ///
   /// Minimum value: -90.0
   /// Maximum value: 90.0
   double pickupLatitude;
-  /// ?辣????
 
+  /// 取件開始時間
   String pickupTimeStart;
-  /// ?辣蝯???
 
+  /// 取件結束時間
   String pickupTimeEnd;
-  /// ?辣?啣?
 
+  /// 取件地址
   String pickupAddress;
-  /// ?撟喳??  ///
+
+  /// 啟用平台配送
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? enablePlatformDelivery;
-  /// ??SKU??蝣潮???
 
+  /// 商品SKU或條碼集合
   Set<String> skus;
-  /// ???迂
+
+  /// 品牌名稱
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -102,7 +110,9 @@ class ProductCreateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? brand;
-  /// ?雿澈摮郎??  ///
+
+  /// 最低庫存警告
+  ///
   /// Minimum value: 0
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -111,7 +121,8 @@ class ProductCreateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? minStock;
-  /// ??璅惜嚗誑????
+
+  /// 商品標籤，以逗號分隔
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -119,7 +130,8 @@ class ProductCreateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? tags;
-  /// ?箄疏皞???嚗???
+
+  /// 出貨準備時間（小時）
   ///
   /// Minimum value: 0
   ///
@@ -129,14 +141,17 @@ class ProductCreateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? shippingPreparationHours;
-  /// ?箄疏?芣迫??嚗?憭拙嗾暺?銝?嗅予?箄疏嚗?  ///
+
+  /// 出貨截止時間（每天幾點前下單當天出貨）
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? dailyShippingDeadline;
-  /// ?箄疏?酉
+
+  /// 出貨備註
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -144,7 +159,8 @@ class ProductCreateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? shippingDescription;
-  /// ??????嚗予?賂?
+
+  /// 預計送達時間（天數）
   ///
   /// Minimum value: 1
   ///
@@ -154,7 +170,8 @@ class ProductCreateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? estimatedDeliveryDays;
-  /// ?臬?舀????箄疏?交?
+
+  /// 是否支持指定出貨日期
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -162,7 +179,8 @@ class ProductCreateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? supportsScheduledShipping;
-  /// ?舫???箄疏?交?蝭?嚗予?賂?
+
+  /// 可選擇的出貨日期範圍（天數）
   ///
   /// Minimum value: 1
   ///
@@ -172,13 +190,15 @@ class ProductCreateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? shippingDateRange;
-  /// ?舀??鞎冽?????
 
-  List<PickupServiceTypeEnum> pickupServiceTypes;
-  /// ??鞎冽?????鞎餃??”
+  /// 支援的取貨服務類型
+  List<ProductCreateParamPickupServiceTypesEnum> pickupServiceTypes;
 
+  /// 各取貨服務類型運費對應表
   Map<String, num> pickupServiceTypeFees;
-  /// ??鞎駁?瑼?  ///
+
+  /// 免運費門檻
+  ///
   /// Minimum value: 0.0
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -187,7 +207,9 @@ class ProductCreateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? freeShippingThreshold;
-  /// 摨怠?霅血??曉?  ///
+
+  /// 庫存警告閾值
+  ///
   /// Minimum value: 0
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -196,14 +218,17 @@ class ProductCreateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? stockAlertThreshold;
-  /// ?臬?迂鞎澈摮?  ///
+
+  /// 是否允許負庫存
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? allowNegativeStock;
-  /// 隞?頃銝URL(?芸?鞈?振撅內)
+
+  /// 代購下單URL(只對賣家展示)
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -211,6 +236,7 @@ class ProductCreateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? purchaseUrl;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductCreateParam &&
     other.title == title &&
@@ -248,7 +274,7 @@ class ProductCreateParam {
     // ignore: unnecessary_parenthesis
     (title.hashCode) +
     (price.hashCode) +
-    (currency == null ? 0 : currency!.hashCode) +
+    (currency.hashCode) +
     (stock.hashCode) +
     (description.hashCode) +
     (category.hashCode) +
@@ -283,11 +309,7 @@ class ProductCreateParam {
     final json = <String, dynamic>{};
       json[r'title'] = this.title;
       json[r'price'] = this.price;
-    if (this.currency != null) {
       json[r'currency'] = this.currency;
-    } else {
-      json[r'currency'] = null;
-    }
       json[r'stock'] = this.stock;
       json[r'description'] = this.description;
       json[r'category'] = this.category;
@@ -348,7 +370,7 @@ class ProductCreateParam {
     } else {
       json[r'shippingDateRange'] = null;
     }
-      json[r'pickupServiceTypes'] = this.pickupServiceTypes.map((e) => e.toJson()).toList();
+      json[r'pickupServiceTypes'] = this.pickupServiceTypes;
       json[r'pickupServiceTypeFees'] = this.pickupServiceTypeFees;
     if (this.freeShippingThreshold != null) {
       json[r'freeShippingThreshold'] = this.freeShippingThreshold;
@@ -394,10 +416,10 @@ class ProductCreateParam {
       return ProductCreateParam(
         title: mapValueOfType<String>(json, r'title')!,
         price: num.parse('${json[r'price']}'),
-        currency: SupportedCurrencyEnum.fromJson(json[r'currency']),
+        currency: ProductCreateParamCurrencyEnum.fromJson(json[r'currency'])!,
         stock: mapValueOfType<int>(json, r'stock')!,
         description: mapValueOfType<String>(json, r'description')!,
-        category: ProductCategoryEnum.fromJson(json[r'category'])!,
+        category: ProductCreateParamCategoryEnum.fromJson(json[r'category'])!,
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
             : const {},
@@ -419,7 +441,7 @@ class ProductCreateParam {
         estimatedDeliveryDays: mapValueOfType<int>(json, r'estimatedDeliveryDays'),
         supportsScheduledShipping: mapValueOfType<bool>(json, r'supportsScheduledShipping'),
         shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
-        pickupServiceTypes: PickupServiceTypeEnum.listFromJson(json[r'pickupServiceTypes']),
+        pickupServiceTypes: ProductCreateParamPickupServiceTypesEnum.listFromJson(json[r'pickupServiceTypes']),
         pickupServiceTypeFees: mapCastOfType<String, num>(json, r'pickupServiceTypeFees')!,
         freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
         stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
@@ -487,6 +509,326 @@ class ProductCreateParam {
     'pickupServiceTypes',
     'pickupServiceTypeFees',
   };
+}
+
+/// 貨幣類型
+class ProductCreateParamCurrencyEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ProductCreateParamCurrencyEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const USDT = ProductCreateParamCurrencyEnum._(r'USDT');
+  static const USD = ProductCreateParamCurrencyEnum._(r'USD');
+  static const TWD = ProductCreateParamCurrencyEnum._(r'TWD');
+  static const CNY = ProductCreateParamCurrencyEnum._(r'CNY');
+  static const JPY = ProductCreateParamCurrencyEnum._(r'JPY');
+  static const EUR = ProductCreateParamCurrencyEnum._(r'EUR');
+  static const GBP = ProductCreateParamCurrencyEnum._(r'GBP');
+  static const KRW = ProductCreateParamCurrencyEnum._(r'KRW');
+  static const SGD = ProductCreateParamCurrencyEnum._(r'SGD');
+  static const HKD = ProductCreateParamCurrencyEnum._(r'HKD');
+  static const AUD = ProductCreateParamCurrencyEnum._(r'AUD');
+  static const unknownDefaultOpenApi = ProductCreateParamCurrencyEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ProductCreateParamCurrencyEnum].
+  static const values = <ProductCreateParamCurrencyEnum>[
+    USDT,
+    USD,
+    TWD,
+    CNY,
+    JPY,
+    EUR,
+    GBP,
+    KRW,
+    SGD,
+    HKD,
+    AUD,
+    unknownDefaultOpenApi,
+  ];
+
+  static ProductCreateParamCurrencyEnum? fromJson(dynamic value) => ProductCreateParamCurrencyEnumTypeTransformer().decode(value);
+
+  static List<ProductCreateParamCurrencyEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProductCreateParamCurrencyEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProductCreateParamCurrencyEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ProductCreateParamCurrencyEnum] to String,
+/// and [decode] dynamic data back to [ProductCreateParamCurrencyEnum].
+class ProductCreateParamCurrencyEnumTypeTransformer {
+  factory ProductCreateParamCurrencyEnumTypeTransformer() => _instance ??= const ProductCreateParamCurrencyEnumTypeTransformer._();
+
+  const ProductCreateParamCurrencyEnumTypeTransformer._();
+
+  String encode(ProductCreateParamCurrencyEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ProductCreateParamCurrencyEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ProductCreateParamCurrencyEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'USDT': return ProductCreateParamCurrencyEnum.USDT;
+        case r'USD': return ProductCreateParamCurrencyEnum.USD;
+        case r'TWD': return ProductCreateParamCurrencyEnum.TWD;
+        case r'CNY': return ProductCreateParamCurrencyEnum.CNY;
+        case r'JPY': return ProductCreateParamCurrencyEnum.JPY;
+        case r'EUR': return ProductCreateParamCurrencyEnum.EUR;
+        case r'GBP': return ProductCreateParamCurrencyEnum.GBP;
+        case r'KRW': return ProductCreateParamCurrencyEnum.KRW;
+        case r'SGD': return ProductCreateParamCurrencyEnum.SGD;
+        case r'HKD': return ProductCreateParamCurrencyEnum.HKD;
+        case r'AUD': return ProductCreateParamCurrencyEnum.AUD;
+        case r'unknown_default_open_api': return ProductCreateParamCurrencyEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ProductCreateParamCurrencyEnumTypeTransformer] instance.
+  static ProductCreateParamCurrencyEnumTypeTransformer? _instance;
+}
+
+
+/// 商品分類
+class ProductCreateParamCategoryEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ProductCreateParamCategoryEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const ELECTRONICS = ProductCreateParamCategoryEnum._(r'ELECTRONICS');
+  static const MOBILE = ProductCreateParamCategoryEnum._(r'MOBILE');
+  static const CLOTHING = ProductCreateParamCategoryEnum._(r'CLOTHING');
+  static const SHOES = ProductCreateParamCategoryEnum._(r'SHOES');
+  static const BAGS = ProductCreateParamCategoryEnum._(r'BAGS');
+  static const BEAUTY = ProductCreateParamCategoryEnum._(r'BEAUTY');
+  static const HEALTH = ProductCreateParamCategoryEnum._(r'HEALTH');
+  static const FOOD = ProductCreateParamCategoryEnum._(r'FOOD');
+  static const HOME = ProductCreateParamCategoryEnum._(r'HOME');
+  static const FURNITURE = ProductCreateParamCategoryEnum._(r'FURNITURE');
+  static const BABY = ProductCreateParamCategoryEnum._(r'BABY');
+  static const TOYS = ProductCreateParamCategoryEnum._(r'TOYS');
+  static const PET_SUPPLIES = ProductCreateParamCategoryEnum._(r'PET_SUPPLIES');
+  static const SPORTS = ProductCreateParamCategoryEnum._(r'SPORTS');
+  static const OUTDOOR = ProductCreateParamCategoryEnum._(r'OUTDOOR');
+  static const AUTOMOTIVE = ProductCreateParamCategoryEnum._(r'AUTOMOTIVE');
+  static const BOOKS = ProductCreateParamCategoryEnum._(r'BOOKS');
+  static const SECOND_HAND = ProductCreateParamCategoryEnum._(r'SECOND_HAND');
+  static const OTHER = ProductCreateParamCategoryEnum._(r'OTHER');
+  static const unknownDefaultOpenApi = ProductCreateParamCategoryEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ProductCreateParamCategoryEnum].
+  static const values = <ProductCreateParamCategoryEnum>[
+    ELECTRONICS,
+    MOBILE,
+    CLOTHING,
+    SHOES,
+    BAGS,
+    BEAUTY,
+    HEALTH,
+    FOOD,
+    HOME,
+    FURNITURE,
+    BABY,
+    TOYS,
+    PET_SUPPLIES,
+    SPORTS,
+    OUTDOOR,
+    AUTOMOTIVE,
+    BOOKS,
+    SECOND_HAND,
+    OTHER,
+    unknownDefaultOpenApi,
+  ];
+
+  static ProductCreateParamCategoryEnum? fromJson(dynamic value) => ProductCreateParamCategoryEnumTypeTransformer().decode(value);
+
+  static List<ProductCreateParamCategoryEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProductCreateParamCategoryEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProductCreateParamCategoryEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ProductCreateParamCategoryEnum] to String,
+/// and [decode] dynamic data back to [ProductCreateParamCategoryEnum].
+class ProductCreateParamCategoryEnumTypeTransformer {
+  factory ProductCreateParamCategoryEnumTypeTransformer() => _instance ??= const ProductCreateParamCategoryEnumTypeTransformer._();
+
+  const ProductCreateParamCategoryEnumTypeTransformer._();
+
+  String encode(ProductCreateParamCategoryEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ProductCreateParamCategoryEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ProductCreateParamCategoryEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'ELECTRONICS': return ProductCreateParamCategoryEnum.ELECTRONICS;
+        case r'MOBILE': return ProductCreateParamCategoryEnum.MOBILE;
+        case r'CLOTHING': return ProductCreateParamCategoryEnum.CLOTHING;
+        case r'SHOES': return ProductCreateParamCategoryEnum.SHOES;
+        case r'BAGS': return ProductCreateParamCategoryEnum.BAGS;
+        case r'BEAUTY': return ProductCreateParamCategoryEnum.BEAUTY;
+        case r'HEALTH': return ProductCreateParamCategoryEnum.HEALTH;
+        case r'FOOD': return ProductCreateParamCategoryEnum.FOOD;
+        case r'HOME': return ProductCreateParamCategoryEnum.HOME;
+        case r'FURNITURE': return ProductCreateParamCategoryEnum.FURNITURE;
+        case r'BABY': return ProductCreateParamCategoryEnum.BABY;
+        case r'TOYS': return ProductCreateParamCategoryEnum.TOYS;
+        case r'PET_SUPPLIES': return ProductCreateParamCategoryEnum.PET_SUPPLIES;
+        case r'SPORTS': return ProductCreateParamCategoryEnum.SPORTS;
+        case r'OUTDOOR': return ProductCreateParamCategoryEnum.OUTDOOR;
+        case r'AUTOMOTIVE': return ProductCreateParamCategoryEnum.AUTOMOTIVE;
+        case r'BOOKS': return ProductCreateParamCategoryEnum.BOOKS;
+        case r'SECOND_HAND': return ProductCreateParamCategoryEnum.SECOND_HAND;
+        case r'OTHER': return ProductCreateParamCategoryEnum.OTHER;
+        case r'unknown_default_open_api': return ProductCreateParamCategoryEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ProductCreateParamCategoryEnumTypeTransformer] instance.
+  static ProductCreateParamCategoryEnumTypeTransformer? _instance;
+}
+
+
+/// 取貨服務類型
+class ProductCreateParamPickupServiceTypesEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ProductCreateParamPickupServiceTypesEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const HOME_DELIVERY = ProductCreateParamPickupServiceTypesEnum._(r'HOME_DELIVERY');
+  static const SEVEN_ELEVEN = ProductCreateParamPickupServiceTypesEnum._(r'SEVEN_ELEVEN');
+  static const FAMILY_MART = ProductCreateParamPickupServiceTypesEnum._(r'FAMILY_MART');
+  static const HILIFE = ProductCreateParamPickupServiceTypesEnum._(r'HILIFE');
+  static const OK_MART = ProductCreateParamPickupServiceTypesEnum._(r'OK_MART');
+  static const PLATFORM_DELIVERY = ProductCreateParamPickupServiceTypesEnum._(r'PLATFORM_DELIVERY');
+  static const unknownDefaultOpenApi = ProductCreateParamPickupServiceTypesEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ProductCreateParamPickupServiceTypesEnum].
+  static const values = <ProductCreateParamPickupServiceTypesEnum>[
+    HOME_DELIVERY,
+    SEVEN_ELEVEN,
+    FAMILY_MART,
+    HILIFE,
+    OK_MART,
+    PLATFORM_DELIVERY,
+    unknownDefaultOpenApi,
+  ];
+
+  static ProductCreateParamPickupServiceTypesEnum? fromJson(dynamic value) => ProductCreateParamPickupServiceTypesEnumTypeTransformer().decode(value);
+
+  static List<ProductCreateParamPickupServiceTypesEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProductCreateParamPickupServiceTypesEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProductCreateParamPickupServiceTypesEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ProductCreateParamPickupServiceTypesEnum] to String,
+/// and [decode] dynamic data back to [ProductCreateParamPickupServiceTypesEnum].
+class ProductCreateParamPickupServiceTypesEnumTypeTransformer {
+  factory ProductCreateParamPickupServiceTypesEnumTypeTransformer() => _instance ??= const ProductCreateParamPickupServiceTypesEnumTypeTransformer._();
+
+  const ProductCreateParamPickupServiceTypesEnumTypeTransformer._();
+
+  String encode(ProductCreateParamPickupServiceTypesEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ProductCreateParamPickupServiceTypesEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ProductCreateParamPickupServiceTypesEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'HOME_DELIVERY': return ProductCreateParamPickupServiceTypesEnum.HOME_DELIVERY;
+        case r'SEVEN_ELEVEN': return ProductCreateParamPickupServiceTypesEnum.SEVEN_ELEVEN;
+        case r'FAMILY_MART': return ProductCreateParamPickupServiceTypesEnum.FAMILY_MART;
+        case r'HILIFE': return ProductCreateParamPickupServiceTypesEnum.HILIFE;
+        case r'OK_MART': return ProductCreateParamPickupServiceTypesEnum.OK_MART;
+        case r'PLATFORM_DELIVERY': return ProductCreateParamPickupServiceTypesEnum.PLATFORM_DELIVERY;
+        case r'unknown_default_open_api': return ProductCreateParamPickupServiceTypesEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ProductCreateParamPickupServiceTypesEnumTypeTransformer] instance.
+  static ProductCreateParamPickupServiceTypesEnumTypeTransformer? _instance;
 }
 
 

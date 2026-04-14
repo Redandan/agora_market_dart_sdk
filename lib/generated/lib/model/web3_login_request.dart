@@ -13,20 +13,38 @@ part of openapi.api;
 class Web3LoginRequest {
   /// Returns a new [Web3LoginRequest] instance.
   Web3LoginRequest({
-    required this.walletAddress,
-    required this.signature,
-    required this.nonce,
+    this.walletAddress,
+    this.signature,
+    this.nonce,
     this.timestamp,
   });
 
   /// 钱包地址（以太坊或 Tron）
-  String walletAddress;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? walletAddress;
 
   /// 签名（hex格式，65字节）
-  String signature;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? signature;
 
   /// Nonce 值
-  String nonce;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? nonce;
 
   /// 时间戳
   ///
@@ -47,9 +65,9 @@ class Web3LoginRequest {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (walletAddress.hashCode) +
-    (signature.hashCode) +
-    (nonce.hashCode) +
+    (walletAddress == null ? 0 : walletAddress!.hashCode) +
+    (signature == null ? 0 : signature!.hashCode) +
+    (nonce == null ? 0 : nonce!.hashCode) +
     (timestamp == null ? 0 : timestamp!.hashCode);
 
   @override
@@ -57,9 +75,21 @@ class Web3LoginRequest {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.walletAddress != null) {
       json[r'walletAddress'] = this.walletAddress;
+    } else {
+      json[r'walletAddress'] = null;
+    }
+    if (this.signature != null) {
       json[r'signature'] = this.signature;
+    } else {
+      json[r'signature'] = null;
+    }
+    if (this.nonce != null) {
       json[r'nonce'] = this.nonce;
+    } else {
+      json[r'nonce'] = null;
+    }
     if (this.timestamp != null) {
       json[r'timestamp'] = this.timestamp;
     } else {
@@ -87,9 +117,9 @@ class Web3LoginRequest {
       }());
 
       return Web3LoginRequest(
-        walletAddress: mapValueOfType<String>(json, r'walletAddress')!,
-        signature: mapValueOfType<String>(json, r'signature')!,
-        nonce: mapValueOfType<String>(json, r'nonce')!,
+        walletAddress: mapValueOfType<String>(json, r'walletAddress'),
+        signature: mapValueOfType<String>(json, r'signature'),
+        nonce: mapValueOfType<String>(json, r'nonce'),
         timestamp: mapValueOfType<int>(json, r'timestamp'),
       );
     }
@@ -138,9 +168,6 @@ class Web3LoginRequest {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'walletAddress',
-    'signature',
-    'nonce',
   };
 }
 

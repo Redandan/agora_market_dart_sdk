@@ -17,7 +17,8 @@ class CreateIssueParam {
     required this.content,
   });
 
-  IssueTypeEnum issueType;
+  /// 問題類型
+  CreateIssueParamIssueTypeEnum issueType;
 
   /// 問題內容
   String content;
@@ -62,7 +63,7 @@ class CreateIssueParam {
       }());
 
       return CreateIssueParam(
-        issueType: IssueTypeEnum.fromJson(json[r'issueType'])!,
+        issueType: CreateIssueParamIssueTypeEnum.fromJson(json[r'issueType'])!,
         content: mapValueOfType<String>(json, r'content')!,
       );
     }
@@ -115,4 +116,84 @@ class CreateIssueParam {
     'content',
   };
 }
+
+/// 問題類型
+class CreateIssueParamIssueTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const CreateIssueParamIssueTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const RECHARGE_NOT_RECEIVED = CreateIssueParamIssueTypeEnum._(r'RECHARGE_NOT_RECEIVED');
+  static const WITHDRAW_NOT_RECEIVED = CreateIssueParamIssueTypeEnum._(r'WITHDRAW_NOT_RECEIVED');
+  static const OTHER = CreateIssueParamIssueTypeEnum._(r'OTHER');
+  static const unknownDefaultOpenApi = CreateIssueParamIssueTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][CreateIssueParamIssueTypeEnum].
+  static const values = <CreateIssueParamIssueTypeEnum>[
+    RECHARGE_NOT_RECEIVED,
+    WITHDRAW_NOT_RECEIVED,
+    OTHER,
+    unknownDefaultOpenApi,
+  ];
+
+  static CreateIssueParamIssueTypeEnum? fromJson(dynamic value) => CreateIssueParamIssueTypeEnumTypeTransformer().decode(value);
+
+  static List<CreateIssueParamIssueTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CreateIssueParamIssueTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CreateIssueParamIssueTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CreateIssueParamIssueTypeEnum] to String,
+/// and [decode] dynamic data back to [CreateIssueParamIssueTypeEnum].
+class CreateIssueParamIssueTypeEnumTypeTransformer {
+  factory CreateIssueParamIssueTypeEnumTypeTransformer() => _instance ??= const CreateIssueParamIssueTypeEnumTypeTransformer._();
+
+  const CreateIssueParamIssueTypeEnumTypeTransformer._();
+
+  String encode(CreateIssueParamIssueTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a CreateIssueParamIssueTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CreateIssueParamIssueTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'RECHARGE_NOT_RECEIVED': return CreateIssueParamIssueTypeEnum.RECHARGE_NOT_RECEIVED;
+        case r'WITHDRAW_NOT_RECEIVED': return CreateIssueParamIssueTypeEnum.WITHDRAW_NOT_RECEIVED;
+        case r'OTHER': return CreateIssueParamIssueTypeEnum.OTHER;
+        case r'unknown_default_open_api': return CreateIssueParamIssueTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [CreateIssueParamIssueTypeEnumTypeTransformer] instance.
+  static CreateIssueParamIssueTypeEnumTypeTransformer? _instance;
+}
+
 

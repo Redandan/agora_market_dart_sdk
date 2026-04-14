@@ -46,38 +46,87 @@ class ShippingAddressOption {
   String? recipientName;
 
   /// 收件人電話
-  String? recipientPhone;
-
-  /// 完整地址
-  String? fullAddress;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PickupServiceTypeEnum? serviceType;
+  String? recipientPhone;
+
+  /// 完整地址
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? fullAddress;
+
+  /// 取件類型
+  ShippingAddressOptionServiceTypeEnum? serviceType;
 
   /// 門市名稱（便利商店取件用）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? storeName;
 
   /// 門市地址（便利商店取件用）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? storeAddress;
 
   /// 運費
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? shippingFee;
 
   /// 預計送達時間（天數）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? estimatedDays;
 
   /// 是否可用
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? isAvailable;
 
   /// 是否為預設地址
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? isDefault;
 
   /// 備註
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? remark;
 
   @override
@@ -202,12 +251,10 @@ class ShippingAddressOption {
         recipientName: mapValueOfType<String>(json, r'recipientName'),
         recipientPhone: mapValueOfType<String>(json, r'recipientPhone'),
         fullAddress: mapValueOfType<String>(json, r'fullAddress'),
-        serviceType: PickupServiceTypeEnum.fromJson(json[r'serviceType']),
+        serviceType: ShippingAddressOptionServiceTypeEnum.fromJson(json[r'serviceType']),
         storeName: mapValueOfType<String>(json, r'storeName'),
         storeAddress: mapValueOfType<String>(json, r'storeAddress'),
-        shippingFee: json[r'shippingFee'] == null
-            ? null
-            : num.parse('${json[r'shippingFee']}'),
+        shippingFee: num.parse('${json[r'shippingFee']}'),
         estimatedDays: mapValueOfType<int>(json, r'estimatedDays'),
         isAvailable: mapValueOfType<bool>(json, r'isAvailable'),
         isDefault: mapValueOfType<bool>(json, r'isDefault'),
@@ -261,4 +308,93 @@ class ShippingAddressOption {
   static const requiredKeys = <String>{
   };
 }
+
+/// 取件類型
+class ShippingAddressOptionServiceTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ShippingAddressOptionServiceTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const HOME_DELIVERY = ShippingAddressOptionServiceTypeEnum._(r'HOME_DELIVERY');
+  static const SEVEN_ELEVEN = ShippingAddressOptionServiceTypeEnum._(r'SEVEN_ELEVEN');
+  static const FAMILY_MART = ShippingAddressOptionServiceTypeEnum._(r'FAMILY_MART');
+  static const HILIFE = ShippingAddressOptionServiceTypeEnum._(r'HILIFE');
+  static const OK_MART = ShippingAddressOptionServiceTypeEnum._(r'OK_MART');
+  static const PLATFORM_DELIVERY = ShippingAddressOptionServiceTypeEnum._(r'PLATFORM_DELIVERY');
+  static const unknownDefaultOpenApi = ShippingAddressOptionServiceTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ShippingAddressOptionServiceTypeEnum].
+  static const values = <ShippingAddressOptionServiceTypeEnum>[
+    HOME_DELIVERY,
+    SEVEN_ELEVEN,
+    FAMILY_MART,
+    HILIFE,
+    OK_MART,
+    PLATFORM_DELIVERY,
+    unknownDefaultOpenApi,
+  ];
+
+  static ShippingAddressOptionServiceTypeEnum? fromJson(dynamic value) => ShippingAddressOptionServiceTypeEnumTypeTransformer().decode(value);
+
+  static List<ShippingAddressOptionServiceTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ShippingAddressOptionServiceTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ShippingAddressOptionServiceTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ShippingAddressOptionServiceTypeEnum] to String,
+/// and [decode] dynamic data back to [ShippingAddressOptionServiceTypeEnum].
+class ShippingAddressOptionServiceTypeEnumTypeTransformer {
+  factory ShippingAddressOptionServiceTypeEnumTypeTransformer() => _instance ??= const ShippingAddressOptionServiceTypeEnumTypeTransformer._();
+
+  const ShippingAddressOptionServiceTypeEnumTypeTransformer._();
+
+  String encode(ShippingAddressOptionServiceTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ShippingAddressOptionServiceTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ShippingAddressOptionServiceTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'HOME_DELIVERY': return ShippingAddressOptionServiceTypeEnum.HOME_DELIVERY;
+        case r'SEVEN_ELEVEN': return ShippingAddressOptionServiceTypeEnum.SEVEN_ELEVEN;
+        case r'FAMILY_MART': return ShippingAddressOptionServiceTypeEnum.FAMILY_MART;
+        case r'HILIFE': return ShippingAddressOptionServiceTypeEnum.HILIFE;
+        case r'OK_MART': return ShippingAddressOptionServiceTypeEnum.OK_MART;
+        case r'PLATFORM_DELIVERY': return ShippingAddressOptionServiceTypeEnum.PLATFORM_DELIVERY;
+        case r'unknown_default_open_api': return ShippingAddressOptionServiceTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ShippingAddressOptionServiceTypeEnumTypeTransformer] instance.
+  static ShippingAddressOptionServiceTypeEnumTypeTransformer? _instance;
+}
+
 

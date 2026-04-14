@@ -51,9 +51,21 @@ class InterestRecordDTO {
   String? username;
 
   /// 質押記錄ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? stakingId;
 
   /// 質押金額
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? stakingAmount;
 
   /// 收益金額
@@ -66,6 +78,12 @@ class InterestRecordDTO {
   num? interestAmount;
 
   /// 結算日期
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? settleDate;
 
   /// 發放時間
@@ -171,9 +189,7 @@ class InterestRecordDTO {
         userId: mapValueOfType<int>(json, r'userId'),
         username: mapValueOfType<String>(json, r'username'),
         stakingId: mapValueOfType<String>(json, r'stakingId'),
-        stakingAmount: json[r'stakingAmount'] == null
-            ? null
-            : num.parse('${json[r'stakingAmount']}'),
+        stakingAmount: num.parse('${json[r'stakingAmount']}'),
         interestAmount: num.parse('${json[r'interestAmount']}'),
         settleDate: mapDateTime(json, r'settleDate', r''),
         createdAt: mapDateTime(json, r'createdAt', r''),

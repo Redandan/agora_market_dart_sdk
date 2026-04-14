@@ -34,7 +34,8 @@ class CreateRechargeParam {
   /// 貨幣
   String currency;
 
-  ProtocolEnum protocolEnum;
+  /// 協議
+  CreateRechargeParamProtocolEnumEnum protocolEnum;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateRechargeParam &&
@@ -89,7 +90,7 @@ class CreateRechargeParam {
         userId: mapValueOfType<int>(json, r'userId'),
         amount: num.parse('${json[r'amount']}'),
         currency: mapValueOfType<String>(json, r'currency')!,
-        protocolEnum: ProtocolEnum.fromJson(json[r'protocolEnum'])!,
+        protocolEnum: CreateRechargeParamProtocolEnumEnum.fromJson(json[r'protocolEnum'])!,
       );
     }
     return null;
@@ -142,4 +143,84 @@ class CreateRechargeParam {
     'protocolEnum',
   };
 }
+
+/// 協議
+class CreateRechargeParamProtocolEnumEnum {
+  /// Instantiate a new enum with the provided [value].
+  const CreateRechargeParamProtocolEnumEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const tRC20 = CreateRechargeParamProtocolEnumEnum._(r'TRC20');
+  static const eRC20 = CreateRechargeParamProtocolEnumEnum._(r'ERC20');
+  static const bEP20 = CreateRechargeParamProtocolEnumEnum._(r'BEP20');
+  static const unknownDefaultOpenApi = CreateRechargeParamProtocolEnumEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][CreateRechargeParamProtocolEnumEnum].
+  static const values = <CreateRechargeParamProtocolEnumEnum>[
+    tRC20,
+    eRC20,
+    bEP20,
+    unknownDefaultOpenApi,
+  ];
+
+  static CreateRechargeParamProtocolEnumEnum? fromJson(dynamic value) => CreateRechargeParamProtocolEnumEnumTypeTransformer().decode(value);
+
+  static List<CreateRechargeParamProtocolEnumEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CreateRechargeParamProtocolEnumEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CreateRechargeParamProtocolEnumEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CreateRechargeParamProtocolEnumEnum] to String,
+/// and [decode] dynamic data back to [CreateRechargeParamProtocolEnumEnum].
+class CreateRechargeParamProtocolEnumEnumTypeTransformer {
+  factory CreateRechargeParamProtocolEnumEnumTypeTransformer() => _instance ??= const CreateRechargeParamProtocolEnumEnumTypeTransformer._();
+
+  const CreateRechargeParamProtocolEnumEnumTypeTransformer._();
+
+  String encode(CreateRechargeParamProtocolEnumEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a CreateRechargeParamProtocolEnumEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CreateRechargeParamProtocolEnumEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'TRC20': return CreateRechargeParamProtocolEnumEnum.tRC20;
+        case r'ERC20': return CreateRechargeParamProtocolEnumEnum.eRC20;
+        case r'BEP20': return CreateRechargeParamProtocolEnumEnum.bEP20;
+        case r'unknown_default_open_api': return CreateRechargeParamProtocolEnumEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [CreateRechargeParamProtocolEnumEnumTypeTransformer] instance.
+  static CreateRechargeParamProtocolEnumEnumTypeTransformer? _instance;
+}
+
 

@@ -21,7 +21,7 @@ class DisputeReplyParam {
   String reply;
 
   /// 賣家回覆時的圖片URL列表（證據或說明）
-  Set<String>? sellerImageUrls;
+  Set<String> sellerImageUrls;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is DisputeReplyParam &&
@@ -32,7 +32,7 @@ class DisputeReplyParam {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (reply.hashCode) +
-    (sellerImageUrls == null ? 0 : sellerImageUrls!.hashCode);
+    (sellerImageUrls.hashCode);
 
   @override
   String toString() => 'DisputeReplyParam[reply=$reply, sellerImageUrls=$sellerImageUrls]';
@@ -40,11 +40,7 @@ class DisputeReplyParam {
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'reply'] = this.reply;
-    if (this.sellerImageUrls != null) {
-      json[r'sellerImageUrls'] = this.sellerImageUrls!.toList(growable: false);
-    } else {
-      json[r'sellerImageUrls'] = null;
-    }
+      json[r'sellerImageUrls'] = this.sellerImageUrls.toList(growable: false);
     return json;
   }
 

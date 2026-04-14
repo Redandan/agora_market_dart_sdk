@@ -116,13 +116,8 @@ class MemberSearchParam {
   ///
   String? email;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  UserStatusEnum? status;
+  /// 用戶狀態
+  MemberSearchParamStatusEnum? status;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is MemberSearchParam &&
@@ -245,7 +240,7 @@ class MemberSearchParam {
         userId: mapValueOfType<int>(json, r'userId'),
         username: mapValueOfType<String>(json, r'username'),
         email: mapValueOfType<String>(json, r'email'),
-        status: UserStatusEnum.fromJson(json[r'status']),
+        status: MemberSearchParamStatusEnum.fromJson(json[r'status']),
       );
     }
     return null;
@@ -295,4 +290,90 @@ class MemberSearchParam {
   static const requiredKeys = <String>{
   };
 }
+
+/// 用戶狀態
+class MemberSearchParamStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const MemberSearchParamStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const ACTIVE = MemberSearchParamStatusEnum._(r'ACTIVE');
+  static const INACTIVE = MemberSearchParamStatusEnum._(r'INACTIVE');
+  static const SUSPENDED = MemberSearchParamStatusEnum._(r'SUSPENDED');
+  static const BANNED = MemberSearchParamStatusEnum._(r'BANNED');
+  static const DELETED = MemberSearchParamStatusEnum._(r'DELETED');
+  static const unknownDefaultOpenApi = MemberSearchParamStatusEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][MemberSearchParamStatusEnum].
+  static const values = <MemberSearchParamStatusEnum>[
+    ACTIVE,
+    INACTIVE,
+    SUSPENDED,
+    BANNED,
+    DELETED,
+    unknownDefaultOpenApi,
+  ];
+
+  static MemberSearchParamStatusEnum? fromJson(dynamic value) => MemberSearchParamStatusEnumTypeTransformer().decode(value);
+
+  static List<MemberSearchParamStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <MemberSearchParamStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = MemberSearchParamStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [MemberSearchParamStatusEnum] to String,
+/// and [decode] dynamic data back to [MemberSearchParamStatusEnum].
+class MemberSearchParamStatusEnumTypeTransformer {
+  factory MemberSearchParamStatusEnumTypeTransformer() => _instance ??= const MemberSearchParamStatusEnumTypeTransformer._();
+
+  const MemberSearchParamStatusEnumTypeTransformer._();
+
+  String encode(MemberSearchParamStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a MemberSearchParamStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  MemberSearchParamStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'ACTIVE': return MemberSearchParamStatusEnum.ACTIVE;
+        case r'INACTIVE': return MemberSearchParamStatusEnum.INACTIVE;
+        case r'SUSPENDED': return MemberSearchParamStatusEnum.SUSPENDED;
+        case r'BANNED': return MemberSearchParamStatusEnum.BANNED;
+        case r'DELETED': return MemberSearchParamStatusEnum.DELETED;
+        case r'unknown_default_open_api': return MemberSearchParamStatusEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [MemberSearchParamStatusEnumTypeTransformer] instance.
+  static MemberSearchParamStatusEnumTypeTransformer? _instance;
+}
+
 

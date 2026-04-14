@@ -32,6 +32,7 @@ class BacktestResultResponse {
     this.configSnapshotJson,
     this.longTradeCount,
     this.shortTradeCount,
+    this.filteredEntryCount,
     this.longWinRate,
     this.shortWinRate,
     this.marketOpenPrice,
@@ -155,6 +156,12 @@ class BacktestResultResponse {
   num? winRate;
 
   /// 簡化夏普比率（mean(returnPct) / sampleStdDev(returnPct)）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? sharpeRatio;
 
   /// 交易筆數
@@ -185,49 +192,130 @@ class BacktestResultResponse {
   DateTime? createdAt;
 
   /// 策略參數快照 JSON
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? configSnapshotJson;
 
   /// 多頭交易筆數
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? longTradeCount;
 
   /// 空頭交易筆數
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? shortTradeCount;
 
+  /// applyFilters=true 時被歷史過濾器略過的進場次數
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? filteredEntryCount;
+
   /// 多頭勝率
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? longWinRate;
 
   /// 空頭勝率
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? shortWinRate;
 
   /// 行情開盤價（回測期首根 K）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? marketOpenPrice;
 
   /// 行情收盤價（回測期末根 K）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? marketClosePrice;
 
   /// 行情最高價（回測期間）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? marketHighPrice;
 
   /// 行情最低價（回測期間）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? marketLowPrice;
 
   /// 行情波動幅度 % = (high - low) / low
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? marketVolatilityPct;
 
   /// 行情漲跌幅 % = (close - open) / open
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? marketPriceChangePct;
 
   /// 行情走勢分類
   BacktestResultResponseMarketTrendEnum? marketTrend;
 
   /// 買持報酬率（Buy & Hold），與 totalReturn 對比使用
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? benchmarkReturn;
 
   /// 交易明細
-  List<TradeRecordDto>? trades;
+  List<TradeRecordDto> trades;
 
   /// 未觸發交易時的診斷日誌（結構化）
-  List<DiagnosticLogDto>? diagnosticLogs;
+  List<DiagnosticLogDto> diagnosticLogs;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is BacktestResultResponse &&
@@ -250,6 +338,7 @@ class BacktestResultResponse {
     other.configSnapshotJson == configSnapshotJson &&
     other.longTradeCount == longTradeCount &&
     other.shortTradeCount == shortTradeCount &&
+    other.filteredEntryCount == filteredEntryCount &&
     other.longWinRate == longWinRate &&
     other.shortWinRate == shortWinRate &&
     other.marketOpenPrice == marketOpenPrice &&
@@ -285,6 +374,7 @@ class BacktestResultResponse {
     (configSnapshotJson == null ? 0 : configSnapshotJson!.hashCode) +
     (longTradeCount == null ? 0 : longTradeCount!.hashCode) +
     (shortTradeCount == null ? 0 : shortTradeCount!.hashCode) +
+    (filteredEntryCount == null ? 0 : filteredEntryCount!.hashCode) +
     (longWinRate == null ? 0 : longWinRate!.hashCode) +
     (shortWinRate == null ? 0 : shortWinRate!.hashCode) +
     (marketOpenPrice == null ? 0 : marketOpenPrice!.hashCode) +
@@ -295,11 +385,11 @@ class BacktestResultResponse {
     (marketPriceChangePct == null ? 0 : marketPriceChangePct!.hashCode) +
     (marketTrend == null ? 0 : marketTrend!.hashCode) +
     (benchmarkReturn == null ? 0 : benchmarkReturn!.hashCode) +
-    (trades == null ? 0 : trades!.hashCode) +
-    (diagnosticLogs == null ? 0 : diagnosticLogs!.hashCode);
+    (trades.hashCode) +
+    (diagnosticLogs.hashCode);
 
   @override
-  String toString() => 'BacktestResultResponse[id=$id, strategyId=$strategyId, strategyName=$strategyName, symbol=$symbol, intervalCode=$intervalCode, startTime=$startTime, endTime=$endTime, initialCapital=$initialCapital, finalCapital=$finalCapital, totalReturn=$totalReturn, maxDrawdown=$maxDrawdown, winRate=$winRate, sharpeRatio=$sharpeRatio, tradeCount=$tradeCount, feeRate=$feeRate, createdAt=$createdAt, configSnapshotJson=$configSnapshotJson, longTradeCount=$longTradeCount, shortTradeCount=$shortTradeCount, longWinRate=$longWinRate, shortWinRate=$shortWinRate, marketOpenPrice=$marketOpenPrice, marketClosePrice=$marketClosePrice, marketHighPrice=$marketHighPrice, marketLowPrice=$marketLowPrice, marketVolatilityPct=$marketVolatilityPct, marketPriceChangePct=$marketPriceChangePct, marketTrend=$marketTrend, benchmarkReturn=$benchmarkReturn, trades=$trades, diagnosticLogs=$diagnosticLogs]';
+  String toString() => 'BacktestResultResponse[id=$id, strategyId=$strategyId, strategyName=$strategyName, symbol=$symbol, intervalCode=$intervalCode, startTime=$startTime, endTime=$endTime, initialCapital=$initialCapital, finalCapital=$finalCapital, totalReturn=$totalReturn, maxDrawdown=$maxDrawdown, winRate=$winRate, sharpeRatio=$sharpeRatio, tradeCount=$tradeCount, feeRate=$feeRate, createdAt=$createdAt, configSnapshotJson=$configSnapshotJson, longTradeCount=$longTradeCount, shortTradeCount=$shortTradeCount, filteredEntryCount=$filteredEntryCount, longWinRate=$longWinRate, shortWinRate=$shortWinRate, marketOpenPrice=$marketOpenPrice, marketClosePrice=$marketClosePrice, marketHighPrice=$marketHighPrice, marketLowPrice=$marketLowPrice, marketVolatilityPct=$marketVolatilityPct, marketPriceChangePct=$marketPriceChangePct, marketTrend=$marketTrend, benchmarkReturn=$benchmarkReturn, trades=$trades, diagnosticLogs=$diagnosticLogs]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -398,6 +488,11 @@ class BacktestResultResponse {
     } else {
       json[r'shortTradeCount'] = null;
     }
+    if (this.filteredEntryCount != null) {
+      json[r'filteredEntryCount'] = this.filteredEntryCount;
+    } else {
+      json[r'filteredEntryCount'] = null;
+    }
     if (this.longWinRate != null) {
       json[r'longWinRate'] = this.longWinRate;
     } else {
@@ -448,16 +543,8 @@ class BacktestResultResponse {
     } else {
       json[r'benchmarkReturn'] = null;
     }
-    if (this.trades != null) {
-      json[r'trades'] = this.trades;
-    } else {
-      json[r'trades'] = null;
-    }
-    if (this.diagnosticLogs != null) {
-      json[r'diagnosticLogs'] = this.diagnosticLogs;
-    } else {
-      json[r'diagnosticLogs'] = null;
-    }
+      json[r'trades'] = this.trades.map((e) => e.toJson()).toList();
+      json[r'diagnosticLogs'] = this.diagnosticLogs.map((e) => e.toJson()).toList();
     return json;
   }
 
@@ -492,43 +579,24 @@ class BacktestResultResponse {
         totalReturn: num.parse('${json[r'totalReturn']}'),
         maxDrawdown: num.parse('${json[r'maxDrawdown']}'),
         winRate: num.parse('${json[r'winRate']}'),
-        sharpeRatio: json[r'sharpeRatio'] == null
-            ? null
-            : num.parse('${json[r'sharpeRatio']}'),
+        sharpeRatio: num.parse('${json[r'sharpeRatio']}'),
         tradeCount: mapValueOfType<int>(json, r'tradeCount'),
         feeRate: num.parse('${json[r'feeRate']}'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         configSnapshotJson: mapValueOfType<String>(json, r'configSnapshotJson'),
         longTradeCount: mapValueOfType<int>(json, r'longTradeCount'),
         shortTradeCount: mapValueOfType<int>(json, r'shortTradeCount'),
-        longWinRate: json[r'longWinRate'] == null
-            ? null
-            : num.parse('${json[r'longWinRate']}'),
-        shortWinRate: json[r'shortWinRate'] == null
-            ? null
-            : num.parse('${json[r'shortWinRate']}'),
-        marketOpenPrice: json[r'marketOpenPrice'] == null
-            ? null
-            : num.parse('${json[r'marketOpenPrice']}'),
-        marketClosePrice: json[r'marketClosePrice'] == null
-            ? null
-            : num.parse('${json[r'marketClosePrice']}'),
-        marketHighPrice: json[r'marketHighPrice'] == null
-            ? null
-            : num.parse('${json[r'marketHighPrice']}'),
-        marketLowPrice: json[r'marketLowPrice'] == null
-            ? null
-            : num.parse('${json[r'marketLowPrice']}'),
-        marketVolatilityPct: json[r'marketVolatilityPct'] == null
-            ? null
-            : num.parse('${json[r'marketVolatilityPct']}'),
-        marketPriceChangePct: json[r'marketPriceChangePct'] == null
-            ? null
-            : num.parse('${json[r'marketPriceChangePct']}'),
+        filteredEntryCount: mapValueOfType<int>(json, r'filteredEntryCount'),
+        longWinRate: num.parse('${json[r'longWinRate']}'),
+        shortWinRate: num.parse('${json[r'shortWinRate']}'),
+        marketOpenPrice: num.parse('${json[r'marketOpenPrice']}'),
+        marketClosePrice: num.parse('${json[r'marketClosePrice']}'),
+        marketHighPrice: num.parse('${json[r'marketHighPrice']}'),
+        marketLowPrice: num.parse('${json[r'marketLowPrice']}'),
+        marketVolatilityPct: num.parse('${json[r'marketVolatilityPct']}'),
+        marketPriceChangePct: num.parse('${json[r'marketPriceChangePct']}'),
         marketTrend: BacktestResultResponseMarketTrendEnum.fromJson(json[r'marketTrend']),
-        benchmarkReturn: json[r'benchmarkReturn'] == null
-            ? null
-            : num.parse('${json[r'benchmarkReturn']}'),
+        benchmarkReturn: num.parse('${json[r'benchmarkReturn']}'),
         trades: TradeRecordDto.listFromJson(json[r'trades']),
         diagnosticLogs: DiagnosticLogDto.listFromJson(json[r'diagnosticLogs']),
       );

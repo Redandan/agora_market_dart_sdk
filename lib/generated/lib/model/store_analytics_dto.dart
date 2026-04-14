@@ -18,6 +18,7 @@ class StoreAnalyticsDTO {
     this.customerStats,
   });
 
+  /// 銷售統計
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -26,6 +27,7 @@ class StoreAnalyticsDTO {
   ///
   SalesStats? salesStats;
 
+  /// 商品分析
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -34,6 +36,7 @@ class StoreAnalyticsDTO {
   ///
   ProductStats? productStats;
 
+  /// 買家分布
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated

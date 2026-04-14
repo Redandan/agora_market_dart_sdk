@@ -13,10 +13,16 @@ part of openapi.api;
 class TelegramWebAppAuthRequest {
   /// Returns a new [TelegramWebAppAuthRequest] instance.
   TelegramWebAppAuthRequest({
-    required this.initData,
+    this.initData,
   });
 
-  String initData;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? initData;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TelegramWebAppAuthRequest &&
@@ -25,14 +31,18 @@ class TelegramWebAppAuthRequest {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (initData.hashCode);
+    (initData == null ? 0 : initData!.hashCode);
 
   @override
   String toString() => 'TelegramWebAppAuthRequest[initData=$initData]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.initData != null) {
       json[r'initData'] = this.initData;
+    } else {
+      json[r'initData'] = null;
+    }
     return json;
   }
 
@@ -55,7 +65,7 @@ class TelegramWebAppAuthRequest {
       }());
 
       return TelegramWebAppAuthRequest(
-        initData: mapValueOfType<String>(json, r'initData')!,
+        initData: mapValueOfType<String>(json, r'initData'),
       );
     }
     return null;
@@ -103,7 +113,6 @@ class TelegramWebAppAuthRequest {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'initData',
   };
 }
 

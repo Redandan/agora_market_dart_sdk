@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -23,10 +23,10 @@ class StoreShippingConfigParam {
     this.shippingDateRange,
   });
 
-  /// ?舀?瘚??
+  /// 支援的物流公司
+  List<StoreShippingConfigParamSupportedShippingCompaniesEnum> supportedShippingCompanies;
 
-  List<ShippingCompanyEnum> supportedShippingCompanies;
-  /// ?身?祥
+  /// 預設運費
   ///
   /// Minimum value: 0
   ///
@@ -36,7 +36,9 @@ class StoreShippingConfigParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? defaultShippingFee;
-  /// ??鞎駁?瑼?  ///
+
+  /// 免運費門檻
+  ///
   /// Minimum value: 0
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -45,14 +47,17 @@ class StoreShippingConfigParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? freeShippingThreshold;
-  /// ?牧??  ///
+
+  /// 運送說明
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? shippingDescription;
-  /// ?箄疏皞???嚗???
+
+  /// 出貨準備時間（小時）
   ///
   /// Minimum value: 0
   ///
@@ -62,7 +67,8 @@ class StoreShippingConfigParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? shippingPreparationHours;
-  /// ??????嚗予?賂?
+
+  /// 預計送達時間（天數）
   ///
   /// Minimum value: 1
   ///
@@ -72,7 +78,8 @@ class StoreShippingConfigParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? estimatedDeliveryDays;
-  /// ?臬?舀???箄疏?交?
+
+  /// 是否支援指定出貨日期
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -80,7 +87,8 @@ class StoreShippingConfigParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? supportsScheduledShipping;
-  /// ?舫???箄疏?交?蝭?嚗予?賂?
+
+  /// 可選擇的出貨日期範圍（天數）
   ///
   /// Minimum value: 1
   ///
@@ -90,6 +98,7 @@ class StoreShippingConfigParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? shippingDateRange;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is StoreShippingConfigParam &&
     _deepEquality.equals(other.supportedShippingCompanies, supportedShippingCompanies) &&
@@ -118,7 +127,7 @@ class StoreShippingConfigParam {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies.map((e) => e.toJson()).toList();
+      json[r'supportedShippingCompanies'] = this.supportedShippingCompanies;
     if (this.defaultShippingFee != null) {
       json[r'defaultShippingFee'] = this.defaultShippingFee;
     } else {
@@ -176,7 +185,7 @@ class StoreShippingConfigParam {
       }());
 
       return StoreShippingConfigParam(
-        supportedShippingCompanies: ShippingCompanyEnum.listFromJson(json[r'supportedShippingCompanies']),
+        supportedShippingCompanies: StoreShippingConfigParamSupportedShippingCompaniesEnum.listFromJson(json[r'supportedShippingCompanies']),
         defaultShippingFee: mapValueOfType<double>(json, r'defaultShippingFee'),
         freeShippingThreshold: mapValueOfType<double>(json, r'freeShippingThreshold'),
         shippingDescription: mapValueOfType<String>(json, r'shippingDescription'),
@@ -232,6 +241,115 @@ class StoreShippingConfigParam {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
   };
+}
+
+/// 物流公司
+class StoreShippingConfigParamSupportedShippingCompaniesEnum {
+  /// Instantiate a new enum with the provided [value].
+  const StoreShippingConfigParamSupportedShippingCompaniesEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const BLACK_CAT = StoreShippingConfigParamSupportedShippingCompaniesEnum._(r'BLACK_CAT');
+  static const HCT = StoreShippingConfigParamSupportedShippingCompaniesEnum._(r'HCT');
+  static const KERRY = StoreShippingConfigParamSupportedShippingCompaniesEnum._(r'KERRY');
+  static const SF_EXPRESS = StoreShippingConfigParamSupportedShippingCompaniesEnum._(r'SF_EXPRESS');
+  static const HOME_DELIVERY_EXPRESS = StoreShippingConfigParamSupportedShippingCompaniesEnum._(r'HOME_DELIVERY_EXPRESS');
+  static const TAIWAN_HOME_DELIVERY = StoreShippingConfigParamSupportedShippingCompaniesEnum._(r'TAIWAN_HOME_DELIVERY');
+  static const PLATFORM_DELIVERY = StoreShippingConfigParamSupportedShippingCompaniesEnum._(r'PLATFORM_DELIVERY');
+  static const SEVEN_ELEVEN = StoreShippingConfigParamSupportedShippingCompaniesEnum._(r'SEVEN_ELEVEN');
+  static const FAMILY_MART = StoreShippingConfigParamSupportedShippingCompaniesEnum._(r'FAMILY_MART');
+  static const HILIFE = StoreShippingConfigParamSupportedShippingCompaniesEnum._(r'HILIFE');
+  static const OK_MART = StoreShippingConfigParamSupportedShippingCompaniesEnum._(r'OK_MART');
+  static const CHUNGHWA_POST = StoreShippingConfigParamSupportedShippingCompaniesEnum._(r'CHUNGHWA_POST');
+  static const OTHER = StoreShippingConfigParamSupportedShippingCompaniesEnum._(r'OTHER');
+  static const unknownDefaultOpenApi = StoreShippingConfigParamSupportedShippingCompaniesEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][StoreShippingConfigParamSupportedShippingCompaniesEnum].
+  static const values = <StoreShippingConfigParamSupportedShippingCompaniesEnum>[
+    BLACK_CAT,
+    HCT,
+    KERRY,
+    SF_EXPRESS,
+    HOME_DELIVERY_EXPRESS,
+    TAIWAN_HOME_DELIVERY,
+    PLATFORM_DELIVERY,
+    SEVEN_ELEVEN,
+    FAMILY_MART,
+    HILIFE,
+    OK_MART,
+    CHUNGHWA_POST,
+    OTHER,
+    unknownDefaultOpenApi,
+  ];
+
+  static StoreShippingConfigParamSupportedShippingCompaniesEnum? fromJson(dynamic value) => StoreShippingConfigParamSupportedShippingCompaniesEnumTypeTransformer().decode(value);
+
+  static List<StoreShippingConfigParamSupportedShippingCompaniesEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <StoreShippingConfigParamSupportedShippingCompaniesEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = StoreShippingConfigParamSupportedShippingCompaniesEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [StoreShippingConfigParamSupportedShippingCompaniesEnum] to String,
+/// and [decode] dynamic data back to [StoreShippingConfigParamSupportedShippingCompaniesEnum].
+class StoreShippingConfigParamSupportedShippingCompaniesEnumTypeTransformer {
+  factory StoreShippingConfigParamSupportedShippingCompaniesEnumTypeTransformer() => _instance ??= const StoreShippingConfigParamSupportedShippingCompaniesEnumTypeTransformer._();
+
+  const StoreShippingConfigParamSupportedShippingCompaniesEnumTypeTransformer._();
+
+  String encode(StoreShippingConfigParamSupportedShippingCompaniesEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a StoreShippingConfigParamSupportedShippingCompaniesEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  StoreShippingConfigParamSupportedShippingCompaniesEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'BLACK_CAT': return StoreShippingConfigParamSupportedShippingCompaniesEnum.BLACK_CAT;
+        case r'HCT': return StoreShippingConfigParamSupportedShippingCompaniesEnum.HCT;
+        case r'KERRY': return StoreShippingConfigParamSupportedShippingCompaniesEnum.KERRY;
+        case r'SF_EXPRESS': return StoreShippingConfigParamSupportedShippingCompaniesEnum.SF_EXPRESS;
+        case r'HOME_DELIVERY_EXPRESS': return StoreShippingConfigParamSupportedShippingCompaniesEnum.HOME_DELIVERY_EXPRESS;
+        case r'TAIWAN_HOME_DELIVERY': return StoreShippingConfigParamSupportedShippingCompaniesEnum.TAIWAN_HOME_DELIVERY;
+        case r'PLATFORM_DELIVERY': return StoreShippingConfigParamSupportedShippingCompaniesEnum.PLATFORM_DELIVERY;
+        case r'SEVEN_ELEVEN': return StoreShippingConfigParamSupportedShippingCompaniesEnum.SEVEN_ELEVEN;
+        case r'FAMILY_MART': return StoreShippingConfigParamSupportedShippingCompaniesEnum.FAMILY_MART;
+        case r'HILIFE': return StoreShippingConfigParamSupportedShippingCompaniesEnum.HILIFE;
+        case r'OK_MART': return StoreShippingConfigParamSupportedShippingCompaniesEnum.OK_MART;
+        case r'CHUNGHWA_POST': return StoreShippingConfigParamSupportedShippingCompaniesEnum.CHUNGHWA_POST;
+        case r'OTHER': return StoreShippingConfigParamSupportedShippingCompaniesEnum.OTHER;
+        case r'unknown_default_open_api': return StoreShippingConfigParamSupportedShippingCompaniesEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [StoreShippingConfigParamSupportedShippingCompaniesEnumTypeTransformer] instance.
+  static StoreShippingConfigParamSupportedShippingCompaniesEnumTypeTransformer? _instance;
 }
 
 

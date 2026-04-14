@@ -14,7 +14,7 @@ class CreatePromoCodeParam {
   /// Returns a new [CreatePromoCodeParam] instance.
   CreatePromoCodeParam({
     this.code,
-    required this.name,
+    this.name,
     this.description,
   });
 
@@ -28,7 +28,13 @@ class CreatePromoCodeParam {
   String? code;
 
   /// 推廣碼名稱
-  String name;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? name;
 
   /// 推廣碼描述
   ///
@@ -49,7 +55,7 @@ class CreatePromoCodeParam {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (code == null ? 0 : code!.hashCode) +
-    (name.hashCode) +
+    (name == null ? 0 : name!.hashCode) +
     (description == null ? 0 : description!.hashCode);
 
   @override
@@ -62,7 +68,11 @@ class CreatePromoCodeParam {
     } else {
       json[r'code'] = null;
     }
+    if (this.name != null) {
       json[r'name'] = this.name;
+    } else {
+      json[r'name'] = null;
+    }
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
@@ -91,7 +101,7 @@ class CreatePromoCodeParam {
 
       return CreatePromoCodeParam(
         code: mapValueOfType<String>(json, r'code'),
-        name: mapValueOfType<String>(json, r'name')!,
+        name: mapValueOfType<String>(json, r'name'),
         description: mapValueOfType<String>(json, r'description'),
       );
     }
@@ -140,7 +150,6 @@ class CreatePromoCodeParam {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'name',
   };
 }
 

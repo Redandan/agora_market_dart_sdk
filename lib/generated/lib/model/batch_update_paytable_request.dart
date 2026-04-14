@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -18,15 +18,15 @@ class BatchUpdatePaytableRequest {
     this.entries = const [],
   });
 
-  /// ?憿?
-
+  /// 遊戲類型
   BatchUpdatePaytableRequestGameTypeEnum gameType;
-  /// ?文憿?
 
+  /// 盤口類型
   BatchUpdatePaytableRequestHandicapTypeEnum handicapType;
-  /// 鞈?閬??”
 
+  /// 賠付規則列表
   List<PaytableEntryRequest> entries;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is BatchUpdatePaytableRequest &&
     other.gameType == gameType &&
@@ -126,14 +126,14 @@ class BatchUpdatePaytableRequest {
   };
 }
 
-/// ?憿?
+/// 遊戲類型
 class BatchUpdatePaytableRequestGameTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const BatchUpdatePaytableRequestGameTypeEnum._(this.value);
 
   /// The underlying value of this enum member.
-
   final String value;
+
   @override
   String toString() => value;
 
@@ -211,19 +211,18 @@ class BatchUpdatePaytableRequestGameTypeEnumTypeTransformer {
   }
 
   /// Singleton [BatchUpdatePaytableRequestGameTypeEnumTypeTransformer] instance.
-
   static BatchUpdatePaytableRequestGameTypeEnumTypeTransformer? _instance;
 }
 
 
-/// ?文憿?
+/// 盤口類型
 class BatchUpdatePaytableRequestHandicapTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const BatchUpdatePaytableRequestHandicapTypeEnum._(this.value);
 
   /// The underlying value of this enum member.
-
   final String value;
+
   @override
   String toString() => value;
 
@@ -295,9 +294,7 @@ class BatchUpdatePaytableRequestHandicapTypeEnumTypeTransformer {
   }
 
   /// Singleton [BatchUpdatePaytableRequestHandicapTypeEnumTypeTransformer] instance.
-
   static BatchUpdatePaytableRequestHandicapTypeEnumTypeTransformer? _instance;
 }
-
 
 

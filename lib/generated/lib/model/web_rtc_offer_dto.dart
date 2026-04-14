@@ -15,7 +15,7 @@ class WebRTCOfferDto {
   WebRTCOfferDto({
     required this.fromUserId,
     required this.toUserId,
-    required this.sdp,
+    this.sdp,
     this.type,
     this.timestamp,
     this.callType,
@@ -30,7 +30,13 @@ class WebRTCOfferDto {
   int toUserId;
 
   /// WebRTC SDP Offer 內容
-  String sdp;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sdp;
 
   /// 信令類型
   ///
@@ -87,7 +93,7 @@ class WebRTCOfferDto {
     // ignore: unnecessary_parenthesis
     (fromUserId.hashCode) +
     (toUserId.hashCode) +
-    (sdp.hashCode) +
+    (sdp == null ? 0 : sdp!.hashCode) +
     (type == null ? 0 : type!.hashCode) +
     (timestamp == null ? 0 : timestamp!.hashCode) +
     (callType == null ? 0 : callType!.hashCode) +
@@ -101,7 +107,11 @@ class WebRTCOfferDto {
     final json = <String, dynamic>{};
       json[r'fromUserId'] = this.fromUserId;
       json[r'toUserId'] = this.toUserId;
+    if (this.sdp != null) {
       json[r'sdp'] = this.sdp;
+    } else {
+      json[r'sdp'] = null;
+    }
     if (this.type != null) {
       json[r'type'] = this.type;
     } else {
@@ -151,7 +161,7 @@ class WebRTCOfferDto {
       return WebRTCOfferDto(
         fromUserId: mapValueOfType<int>(json, r'fromUserId')!,
         toUserId: mapValueOfType<int>(json, r'toUserId')!,
-        sdp: mapValueOfType<String>(json, r'sdp')!,
+        sdp: mapValueOfType<String>(json, r'sdp'),
         type: mapValueOfType<String>(json, r'type'),
         timestamp: mapDateTime(json, r'timestamp', r''),
         callType: WebRTCOfferDtoCallTypeEnum.fromJson(json[r'callType']),
@@ -206,7 +216,6 @@ class WebRTCOfferDto {
   static const requiredKeys = <String>{
     'fromUserId',
     'toUserId',
-    'sdp',
   };
 }
 

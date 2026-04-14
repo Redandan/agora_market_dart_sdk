@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -43,86 +43,186 @@ class User {
     this.trustedDevices = const [],
   });
 
-  /// ?冽ID
-
+  /// 用戶ID
   int id;
-  /// ?冽??
 
+  /// 用戶名
   String username;
-  /// 撖Ⅳ
 
+  /// 密碼
   String password;
-  /// 閫
 
+  /// 角色
   String role;
+
+  /// 用戶狀態
   UserStatusEnum status;
 
-  /// 憪?
-
-  String? name;
-  /// ?餉店?Ⅳ
-
-  String? phone;
-  /// ?餃??萎辣
-
-  String? email;
-  /// ?剖?
-
-  String? avatar;
-  /// ?酉
-
-  String? remark;
-  /// 摨?迂
-
-  String? storeName;
+  /// 姓名
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  DefaultHomePageEnum? defaultHomePage;
-  /// ?典誨憭找蝙?迂
+  String? name;
 
+  /// 電話號碼
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? phone;
+
+  /// 電子郵件
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? email;
+
+  /// 頭像
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? avatar;
+
+  /// 備註
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? remark;
+
+  /// 店鋪名稱
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? storeName;
+
+  /// 用戶默認首頁設置（登入後跳轉的頁面）
+  UserDefaultHomePageEnum? defaultHomePage;
+
+  /// 推廣大使名稱
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? ambassadorName;
-  /// 憿舐內??迂
 
+  /// 顯示配送員名稱
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? displayDeliveryerName;
-  /// 閮餃??典誨蝣?
 
+  /// 註冊推廣碼
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? promoCode;
-  RegistrationMethodEnum? registrationMethod;
 
-  /// 閮餃??? IP ?啣?
+  /// 註冊方式
+  UserRegistrationMethodEnum? registrationMethod;
 
+  /// 註冊時的 IP 地址
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? registrationIp;
-  /// 閮餃??? User-Agent
 
+  /// 註冊時的 User-Agent
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? registrationUa;
-  /// ?臬???蝝?霅?
 
+  /// 是否啟用雙因素認證
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? twoFactorEnabled;
-  /// ??蝝?霅???
 
+  /// 雙因素認證密鑰
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? twoFactorSecret;
-  /// ?萎辣?臬撌脤?霅?
 
+  /// 郵件是否已驗證
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? emailVerified;
-  /// ?縑隞餉身??銵剁?JSON?澆?嚗??憭?摮?0蝯身??
 
+  /// 受信任設備列表（JSON格式），最多保存10組設備
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? trustedDevicesJson;
-  /// ?嗅?隢??身??蝝?
 
+  /// 當前請求的設備指紋
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? currentDeviceFingerprint;
-  /// ?嗅?隢??P?啣?
 
+  /// 當前請求的IP地址
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? currentIpAddress;
-  /// ?萄遣??
 
+  /// 創建時間
   DateTime createdAt;
-  /// ?敺?唳???
 
+  /// 最後更新時間
   DateTime updatedAt;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -130,6 +230,7 @@ class User {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? admin;
+
   List<DeviceInfo> trustedDevices;
 
   @override
@@ -341,11 +442,11 @@ class User {
         avatar: mapValueOfType<String>(json, r'avatar'),
         remark: mapValueOfType<String>(json, r'remark'),
         storeName: mapValueOfType<String>(json, r'storeName'),
-        defaultHomePage: DefaultHomePageEnum.fromJson(json[r'defaultHomePage']),
+        defaultHomePage: UserDefaultHomePageEnum.fromJson(json[r'defaultHomePage']),
         ambassadorName: mapValueOfType<String>(json, r'ambassadorName'),
         displayDeliveryerName: mapValueOfType<String>(json, r'displayDeliveryerName'),
         promoCode: mapValueOfType<String>(json, r'promoCode'),
-        registrationMethod: RegistrationMethodEnum.fromJson(json[r'registrationMethod']),
+        registrationMethod: UserRegistrationMethodEnum.fromJson(json[r'registrationMethod']),
         registrationIp: mapValueOfType<String>(json, r'registrationIp'),
         registrationUa: mapValueOfType<String>(json, r'registrationUa'),
         twoFactorEnabled: mapValueOfType<bool>(json, r'twoFactorEnabled'),
@@ -413,6 +514,269 @@ class User {
     'createdAt',
     'updatedAt',
   };
+}
+
+/// 用戶狀態
+class UserStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const UserStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const ACTIVE = UserStatusEnum._(r'ACTIVE');
+  static const INACTIVE = UserStatusEnum._(r'INACTIVE');
+  static const SUSPENDED = UserStatusEnum._(r'SUSPENDED');
+  static const BANNED = UserStatusEnum._(r'BANNED');
+  static const DELETED = UserStatusEnum._(r'DELETED');
+  static const unknownDefaultOpenApi = UserStatusEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][UserStatusEnum].
+  static const values = <UserStatusEnum>[
+    ACTIVE,
+    INACTIVE,
+    SUSPENDED,
+    BANNED,
+    DELETED,
+    unknownDefaultOpenApi,
+  ];
+
+  static UserStatusEnum? fromJson(dynamic value) => UserStatusEnumTypeTransformer().decode(value);
+
+  static List<UserStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <UserStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = UserStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [UserStatusEnum] to String,
+/// and [decode] dynamic data back to [UserStatusEnum].
+class UserStatusEnumTypeTransformer {
+  factory UserStatusEnumTypeTransformer() => _instance ??= const UserStatusEnumTypeTransformer._();
+
+  const UserStatusEnumTypeTransformer._();
+
+  String encode(UserStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a UserStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  UserStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'ACTIVE': return UserStatusEnum.ACTIVE;
+        case r'INACTIVE': return UserStatusEnum.INACTIVE;
+        case r'SUSPENDED': return UserStatusEnum.SUSPENDED;
+        case r'BANNED': return UserStatusEnum.BANNED;
+        case r'DELETED': return UserStatusEnum.DELETED;
+        case r'unknown_default_open_api': return UserStatusEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [UserStatusEnumTypeTransformer] instance.
+  static UserStatusEnumTypeTransformer? _instance;
+}
+
+
+/// 用戶默認首頁設置（登入後跳轉的頁面）
+class UserDefaultHomePageEnum {
+  /// Instantiate a new enum with the provided [value].
+  const UserDefaultHomePageEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const BUYER = UserDefaultHomePageEnum._(r'BUYER');
+  static const SELLER = UserDefaultHomePageEnum._(r'SELLER');
+  static const DELIVERYER = UserDefaultHomePageEnum._(r'DELIVERYER');
+  static const ADMIN = UserDefaultHomePageEnum._(r'ADMIN');
+  static const unknownDefaultOpenApi = UserDefaultHomePageEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][UserDefaultHomePageEnum].
+  static const values = <UserDefaultHomePageEnum>[
+    BUYER,
+    SELLER,
+    DELIVERYER,
+    ADMIN,
+    unknownDefaultOpenApi,
+  ];
+
+  static UserDefaultHomePageEnum? fromJson(dynamic value) => UserDefaultHomePageEnumTypeTransformer().decode(value);
+
+  static List<UserDefaultHomePageEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <UserDefaultHomePageEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = UserDefaultHomePageEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [UserDefaultHomePageEnum] to String,
+/// and [decode] dynamic data back to [UserDefaultHomePageEnum].
+class UserDefaultHomePageEnumTypeTransformer {
+  factory UserDefaultHomePageEnumTypeTransformer() => _instance ??= const UserDefaultHomePageEnumTypeTransformer._();
+
+  const UserDefaultHomePageEnumTypeTransformer._();
+
+  String encode(UserDefaultHomePageEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a UserDefaultHomePageEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  UserDefaultHomePageEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'BUYER': return UserDefaultHomePageEnum.BUYER;
+        case r'SELLER': return UserDefaultHomePageEnum.SELLER;
+        case r'DELIVERYER': return UserDefaultHomePageEnum.DELIVERYER;
+        case r'ADMIN': return UserDefaultHomePageEnum.ADMIN;
+        case r'unknown_default_open_api': return UserDefaultHomePageEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [UserDefaultHomePageEnumTypeTransformer] instance.
+  static UserDefaultHomePageEnumTypeTransformer? _instance;
+}
+
+
+/// 註冊方式
+class UserRegistrationMethodEnum {
+  /// Instantiate a new enum with the provided [value].
+  const UserRegistrationMethodEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const FORM = UserRegistrationMethodEnum._(r'FORM');
+  static const EMAIL_CODE = UserRegistrationMethodEnum._(r'EMAIL_CODE');
+  static const GOOGLE = UserRegistrationMethodEnum._(r'GOOGLE');
+  static const TELEGRAM_BOT = UserRegistrationMethodEnum._(r'TELEGRAM_BOT');
+  static const TELEGRAM_WEBAPP = UserRegistrationMethodEnum._(r'TELEGRAM_WEBAPP');
+  static const WALLET_CONNECT = UserRegistrationMethodEnum._(r'WALLET_CONNECT');
+  static const TRON = UserRegistrationMethodEnum._(r'TRON');
+  static const ADMIN = UserRegistrationMethodEnum._(r'ADMIN');
+  static const unknownDefaultOpenApi = UserRegistrationMethodEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][UserRegistrationMethodEnum].
+  static const values = <UserRegistrationMethodEnum>[
+    FORM,
+    EMAIL_CODE,
+    GOOGLE,
+    TELEGRAM_BOT,
+    TELEGRAM_WEBAPP,
+    WALLET_CONNECT,
+    TRON,
+    ADMIN,
+    unknownDefaultOpenApi,
+  ];
+
+  static UserRegistrationMethodEnum? fromJson(dynamic value) => UserRegistrationMethodEnumTypeTransformer().decode(value);
+
+  static List<UserRegistrationMethodEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <UserRegistrationMethodEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = UserRegistrationMethodEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [UserRegistrationMethodEnum] to String,
+/// and [decode] dynamic data back to [UserRegistrationMethodEnum].
+class UserRegistrationMethodEnumTypeTransformer {
+  factory UserRegistrationMethodEnumTypeTransformer() => _instance ??= const UserRegistrationMethodEnumTypeTransformer._();
+
+  const UserRegistrationMethodEnumTypeTransformer._();
+
+  String encode(UserRegistrationMethodEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a UserRegistrationMethodEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  UserRegistrationMethodEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'FORM': return UserRegistrationMethodEnum.FORM;
+        case r'EMAIL_CODE': return UserRegistrationMethodEnum.EMAIL_CODE;
+        case r'GOOGLE': return UserRegistrationMethodEnum.GOOGLE;
+        case r'TELEGRAM_BOT': return UserRegistrationMethodEnum.TELEGRAM_BOT;
+        case r'TELEGRAM_WEBAPP': return UserRegistrationMethodEnum.TELEGRAM_WEBAPP;
+        case r'WALLET_CONNECT': return UserRegistrationMethodEnum.WALLET_CONNECT;
+        case r'TRON': return UserRegistrationMethodEnum.TRON;
+        case r'ADMIN': return UserRegistrationMethodEnum.ADMIN;
+        case r'unknown_default_open_api': return UserRegistrationMethodEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [UserRegistrationMethodEnumTypeTransformer] instance.
+  static UserRegistrationMethodEnumTypeTransformer? _instance;
 }
 
 

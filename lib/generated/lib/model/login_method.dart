@@ -41,6 +41,7 @@ class LoginMethod {
   ///
   bool? available;
 
+  /// Telegram Bot 信息（仅当 type 为 TELEGRAM_BOT 时返回）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -49,6 +50,7 @@ class LoginMethod {
   ///
   TelegramBotInfo? telegramBot;
 
+  /// WalletConnect 信息（仅当 type 为 WALLET_CONNECT 时返回）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated

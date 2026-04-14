@@ -13,11 +13,17 @@ part of openapi.api;
 class Web3NonceRequest {
   /// Returns a new [Web3NonceRequest] instance.
   Web3NonceRequest({
-    required this.walletAddress,
+    this.walletAddress,
   });
 
   /// 钱包地址（以太坊或 Tron）
-  String walletAddress;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? walletAddress;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Web3NonceRequest &&
@@ -26,14 +32,18 @@ class Web3NonceRequest {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (walletAddress.hashCode);
+    (walletAddress == null ? 0 : walletAddress!.hashCode);
 
   @override
   String toString() => 'Web3NonceRequest[walletAddress=$walletAddress]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.walletAddress != null) {
       json[r'walletAddress'] = this.walletAddress;
+    } else {
+      json[r'walletAddress'] = null;
+    }
     return json;
   }
 
@@ -56,7 +66,7 @@ class Web3NonceRequest {
       }());
 
       return Web3NonceRequest(
-        walletAddress: mapValueOfType<String>(json, r'walletAddress')!,
+        walletAddress: mapValueOfType<String>(json, r'walletAddress'),
       );
     }
     return null;
@@ -104,7 +114,6 @@ class Web3NonceRequest {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'walletAddress',
   };
 }
 

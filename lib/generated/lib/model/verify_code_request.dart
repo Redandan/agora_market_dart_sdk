@@ -13,13 +13,25 @@ part of openapi.api;
 class VerifyCodeRequest {
   /// Returns a new [VerifyCodeRequest] instance.
   VerifyCodeRequest({
-    required this.loginToken,
-    required this.verificationCode,
+    this.loginToken,
+    this.verificationCode,
   });
 
-  String loginToken;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? loginToken;
 
-  String verificationCode;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? verificationCode;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is VerifyCodeRequest &&
@@ -29,16 +41,24 @@ class VerifyCodeRequest {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (loginToken.hashCode) +
-    (verificationCode.hashCode);
+    (loginToken == null ? 0 : loginToken!.hashCode) +
+    (verificationCode == null ? 0 : verificationCode!.hashCode);
 
   @override
   String toString() => 'VerifyCodeRequest[loginToken=$loginToken, verificationCode=$verificationCode]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.loginToken != null) {
       json[r'loginToken'] = this.loginToken;
+    } else {
+      json[r'loginToken'] = null;
+    }
+    if (this.verificationCode != null) {
       json[r'verificationCode'] = this.verificationCode;
+    } else {
+      json[r'verificationCode'] = null;
+    }
     return json;
   }
 
@@ -61,8 +81,8 @@ class VerifyCodeRequest {
       }());
 
       return VerifyCodeRequest(
-        loginToken: mapValueOfType<String>(json, r'loginToken')!,
-        verificationCode: mapValueOfType<String>(json, r'verificationCode')!,
+        loginToken: mapValueOfType<String>(json, r'loginToken'),
+        verificationCode: mapValueOfType<String>(json, r'verificationCode'),
       );
     }
     return null;
@@ -110,8 +130,6 @@ class VerifyCodeRequest {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'loginToken',
-    'verificationCode',
   };
 }
 

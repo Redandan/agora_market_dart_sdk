@@ -90,21 +90,11 @@ class NotificationResponseDTO {
   ///
   String? content;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  NotificationTypeEnum? type;
+  /// 通知類型
+  NotificationResponseDTOTypeEnum? type;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  NotificationStatusEnum? status;
+  /// 通知狀態
+  NotificationResponseDTOStatusEnum? status;
 
   /// 相關鏈接
   ///
@@ -410,8 +400,8 @@ class NotificationResponseDTO {
         senderName: mapValueOfType<String>(json, r'senderName'),
         title: mapValueOfType<String>(json, r'title'),
         content: mapValueOfType<String>(json, r'content'),
-        type: NotificationTypeEnum.fromJson(json[r'type']),
-        status: NotificationStatusEnum.fromJson(json[r'status']),
+        type: NotificationResponseDTOTypeEnum.fromJson(json[r'type']),
+        status: NotificationResponseDTOStatusEnum.fromJson(json[r'status']),
         link: mapValueOfType<String>(json, r'link'),
         relatedObjectId: mapValueOfType<String>(json, r'relatedObjectId'),
         relatedObjectType: mapValueOfType<String>(json, r'relatedObjectType'),
@@ -474,4 +464,185 @@ class NotificationResponseDTO {
   static const requiredKeys = <String>{
   };
 }
+
+/// 通知類型
+class NotificationResponseDTOTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const NotificationResponseDTOTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const SYSTEM = NotificationResponseDTOTypeEnum._(r'SYSTEM');
+  static const ORDER = NotificationResponseDTOTypeEnum._(r'ORDER');
+  static const DELIVERY = NotificationResponseDTOTypeEnum._(r'DELIVERY');
+  static const CHAT = NotificationResponseDTOTypeEnum._(r'CHAT');
+  static const FINANCIAL = NotificationResponseDTOTypeEnum._(r'FINANCIAL');
+  static const SECURITY = NotificationResponseDTOTypeEnum._(r'SECURITY');
+  static const PROMOTION = NotificationResponseDTOTypeEnum._(r'PROMOTION');
+  static const INVENTORY = NotificationResponseDTOTypeEnum._(r'INVENTORY');
+  static const REVIEW = NotificationResponseDTOTypeEnum._(r'REVIEW');
+  static const DISPUTE = NotificationResponseDTOTypeEnum._(r'DISPUTE');
+  static const unknownDefaultOpenApi = NotificationResponseDTOTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][NotificationResponseDTOTypeEnum].
+  static const values = <NotificationResponseDTOTypeEnum>[
+    SYSTEM,
+    ORDER,
+    DELIVERY,
+    CHAT,
+    FINANCIAL,
+    SECURITY,
+    PROMOTION,
+    INVENTORY,
+    REVIEW,
+    DISPUTE,
+    unknownDefaultOpenApi,
+  ];
+
+  static NotificationResponseDTOTypeEnum? fromJson(dynamic value) => NotificationResponseDTOTypeEnumTypeTransformer().decode(value);
+
+  static List<NotificationResponseDTOTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <NotificationResponseDTOTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = NotificationResponseDTOTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [NotificationResponseDTOTypeEnum] to String,
+/// and [decode] dynamic data back to [NotificationResponseDTOTypeEnum].
+class NotificationResponseDTOTypeEnumTypeTransformer {
+  factory NotificationResponseDTOTypeEnumTypeTransformer() => _instance ??= const NotificationResponseDTOTypeEnumTypeTransformer._();
+
+  const NotificationResponseDTOTypeEnumTypeTransformer._();
+
+  String encode(NotificationResponseDTOTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a NotificationResponseDTOTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  NotificationResponseDTOTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'SYSTEM': return NotificationResponseDTOTypeEnum.SYSTEM;
+        case r'ORDER': return NotificationResponseDTOTypeEnum.ORDER;
+        case r'DELIVERY': return NotificationResponseDTOTypeEnum.DELIVERY;
+        case r'CHAT': return NotificationResponseDTOTypeEnum.CHAT;
+        case r'FINANCIAL': return NotificationResponseDTOTypeEnum.FINANCIAL;
+        case r'SECURITY': return NotificationResponseDTOTypeEnum.SECURITY;
+        case r'PROMOTION': return NotificationResponseDTOTypeEnum.PROMOTION;
+        case r'INVENTORY': return NotificationResponseDTOTypeEnum.INVENTORY;
+        case r'REVIEW': return NotificationResponseDTOTypeEnum.REVIEW;
+        case r'DISPUTE': return NotificationResponseDTOTypeEnum.DISPUTE;
+        case r'unknown_default_open_api': return NotificationResponseDTOTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [NotificationResponseDTOTypeEnumTypeTransformer] instance.
+  static NotificationResponseDTOTypeEnumTypeTransformer? _instance;
+}
+
+
+/// 通知狀態
+class NotificationResponseDTOStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const NotificationResponseDTOStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const UNREAD = NotificationResponseDTOStatusEnum._(r'UNREAD');
+  static const READ = NotificationResponseDTOStatusEnum._(r'READ');
+  static const DELETED = NotificationResponseDTOStatusEnum._(r'DELETED');
+  static const unknownDefaultOpenApi = NotificationResponseDTOStatusEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][NotificationResponseDTOStatusEnum].
+  static const values = <NotificationResponseDTOStatusEnum>[
+    UNREAD,
+    READ,
+    DELETED,
+    unknownDefaultOpenApi,
+  ];
+
+  static NotificationResponseDTOStatusEnum? fromJson(dynamic value) => NotificationResponseDTOStatusEnumTypeTransformer().decode(value);
+
+  static List<NotificationResponseDTOStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <NotificationResponseDTOStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = NotificationResponseDTOStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [NotificationResponseDTOStatusEnum] to String,
+/// and [decode] dynamic data back to [NotificationResponseDTOStatusEnum].
+class NotificationResponseDTOStatusEnumTypeTransformer {
+  factory NotificationResponseDTOStatusEnumTypeTransformer() => _instance ??= const NotificationResponseDTOStatusEnumTypeTransformer._();
+
+  const NotificationResponseDTOStatusEnumTypeTransformer._();
+
+  String encode(NotificationResponseDTOStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a NotificationResponseDTOStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  NotificationResponseDTOStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'UNREAD': return NotificationResponseDTOStatusEnum.UNREAD;
+        case r'READ': return NotificationResponseDTOStatusEnum.READ;
+        case r'DELETED': return NotificationResponseDTOStatusEnum.DELETED;
+        case r'unknown_default_open_api': return NotificationResponseDTOStatusEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [NotificationResponseDTOStatusEnumTypeTransformer] instance.
+  static NotificationResponseDTOStatusEnumTypeTransformer? _instance;
+}
+
 

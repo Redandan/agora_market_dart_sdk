@@ -280,6 +280,126 @@ class BacktestApi {
     return null;
   }
 
+  /// 執行回測（包含停用策略）
+  ///
+  /// 與 /results 相同，但允許對停用策略執行回測，用於探索/分析目的。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [BacktestRunRequest] backtestRunRequest (required):
+  Future<Response> runBacktestExplorationWithHttpInfo(BacktestRunRequest backtestRunRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/backtests/results/exploration';
+
+    // ignore: prefer_final_locals
+    Object? postBody = backtestRunRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 執行回測（包含停用策略）
+  ///
+  /// 與 /results 相同，但允許對停用策略執行回測，用於探索/分析目的。
+  ///
+  /// Parameters:
+  ///
+  /// * [BacktestRunRequest] backtestRunRequest (required):
+  Future<BacktestResultResponse?> runBacktestExploration(BacktestRunRequest backtestRunRequest,) async {
+    final response = await runBacktestExplorationWithHttpInfo(backtestRunRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BacktestResultResponse',) as BacktestResultResponse;
+    
+    }
+    return null;
+  }
+
+  /// 市場感知自適應策略探勘
+  ///
+  /// 分析當前 K 線指標後，依指定風格（style）生成並回測候選策略。style 可選：HIGH_FREQ / TREND / CONSERVATIVE / BALANCED（預設）。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [AiStrategyDiscoveryRequest] aiStrategyDiscoveryRequest (required):
+  ///
+  /// * [String] style:
+  Future<Response> triggerAdaptiveDiscoveryWithHttpInfo(AiStrategyDiscoveryRequest aiStrategyDiscoveryRequest, { String? style, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/backtests/adaptive-discovery';
+
+    // ignore: prefer_final_locals
+    Object? postBody = aiStrategyDiscoveryRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (style != null) {
+      queryParams.addAll(_queryParams('', 'style', style));
+    }
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 市場感知自適應策略探勘
+  ///
+  /// 分析當前 K 線指標後，依指定風格（style）生成並回測候選策略。style 可選：HIGH_FREQ / TREND / CONSERVATIVE / BALANCED（預設）。
+  ///
+  /// Parameters:
+  ///
+  /// * [AiStrategyDiscoveryRequest] aiStrategyDiscoveryRequest (required):
+  ///
+  /// * [String] style:
+  Future<AiStrategyDiscoveryResponse?> triggerAdaptiveDiscovery(AiStrategyDiscoveryRequest aiStrategyDiscoveryRequest, { String? style, }) async {
+    final response = await triggerAdaptiveDiscoveryWithHttpInfo(aiStrategyDiscoveryRequest,  style: style, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AiStrategyDiscoveryResponse',) as AiStrategyDiscoveryResponse;
+    
+    }
+    return null;
+  }
+
   /// AI 策略自動探勘
   ///
   /// 呼叫 Groq AI 生成多組 SOP_MTF_ADX 候選策略配置，對每組執行回測並依評分排序，回傳最佳策略。若 Groq API key 未設定，則使用內建預設候選配置。所有生成策略皆以 aiGenerated=true 儲存在資料庫，可透過查詢策略 API 過濾。

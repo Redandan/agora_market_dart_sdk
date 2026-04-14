@@ -13,10 +13,10 @@ part of openapi.api;
 class WebRTCIceCandidateDto {
   /// Returns a new [WebRTCIceCandidateDto] instance.
   WebRTCIceCandidateDto({
-    required this.callId,
+    this.callId,
     required this.fromUserId,
     required this.toUserId,
-    required this.candidate,
+    this.candidate,
     this.sdpMid,
     this.sdpMLineIndex,
     this.type,
@@ -24,7 +24,13 @@ class WebRTCIceCandidateDto {
   });
 
   /// 通話唯一識別碼
-  String callId;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? callId;
 
   /// 發起通話的用戶ID
   int fromUserId;
@@ -33,7 +39,13 @@ class WebRTCIceCandidateDto {
   int toUserId;
 
   /// ICE Candidate 內容
-  String candidate;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? candidate;
 
   /// SDP Media ID
   ///
@@ -85,10 +97,10 @@ class WebRTCIceCandidateDto {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (callId.hashCode) +
+    (callId == null ? 0 : callId!.hashCode) +
     (fromUserId.hashCode) +
     (toUserId.hashCode) +
-    (candidate.hashCode) +
+    (candidate == null ? 0 : candidate!.hashCode) +
     (sdpMid == null ? 0 : sdpMid!.hashCode) +
     (sdpMLineIndex == null ? 0 : sdpMLineIndex!.hashCode) +
     (type == null ? 0 : type!.hashCode) +
@@ -99,10 +111,18 @@ class WebRTCIceCandidateDto {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.callId != null) {
       json[r'callId'] = this.callId;
+    } else {
+      json[r'callId'] = null;
+    }
       json[r'fromUserId'] = this.fromUserId;
       json[r'toUserId'] = this.toUserId;
+    if (this.candidate != null) {
       json[r'candidate'] = this.candidate;
+    } else {
+      json[r'candidate'] = null;
+    }
     if (this.sdpMid != null) {
       json[r'sdpMid'] = this.sdpMid;
     } else {
@@ -145,10 +165,10 @@ class WebRTCIceCandidateDto {
       }());
 
       return WebRTCIceCandidateDto(
-        callId: mapValueOfType<String>(json, r'callId')!,
+        callId: mapValueOfType<String>(json, r'callId'),
         fromUserId: mapValueOfType<int>(json, r'fromUserId')!,
         toUserId: mapValueOfType<int>(json, r'toUserId')!,
-        candidate: mapValueOfType<String>(json, r'candidate')!,
+        candidate: mapValueOfType<String>(json, r'candidate'),
         sdpMid: mapValueOfType<String>(json, r'sdpMid'),
         sdpMLineIndex: mapValueOfType<int>(json, r'sdpMLineIndex'),
         type: mapValueOfType<String>(json, r'type'),
@@ -200,10 +220,8 @@ class WebRTCIceCandidateDto {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'callId',
     'fromUserId',
     'toUserId',
-    'candidate',
   };
 }
 

@@ -20,7 +20,7 @@ class OAuthBindingInfo {
     this.boundAt,
   });
 
-  /// OAuth第三方登录提供商
+  /// OAuth提供商
   OAuthBindingInfoProviderEnum? provider;
 
   /// OAuth郵箱
@@ -183,7 +183,7 @@ class OAuthBindingInfo {
   };
 }
 
-/// OAuth第三方登录提供商
+/// OAuth提供商
 class OAuthBindingInfoProviderEnum {
   /// Instantiate a new enum with the provided [value].
   const OAuthBindingInfoProviderEnum._(this.value);

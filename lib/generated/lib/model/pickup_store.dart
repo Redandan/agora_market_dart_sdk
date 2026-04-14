@@ -24,14 +24,15 @@ class PickupStore {
     required this.createdAt,
     required this.updatedAt,
     this.fullStoreInfo,
-    this.sevenEleven,
     this.familyMart,
+    this.sevenEleven,
   });
 
   /// 門市ID
   int id;
 
-  PickupServiceTypeEnum storeType;
+  /// 商店類型（SEVEN_ELEVEN/FAMILY_MART/HILIFE/OK_MART）
+  PickupStoreStoreTypeEnum storeType;
 
   /// 門市代號（唯一）
   String storeCode;
@@ -43,9 +44,21 @@ class PickupStore {
   String storeAddress;
 
   /// 縣市（從地址中解析）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? city;
 
   /// 鄉鎮市區（從地址中解析）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? district;
 
   /// 是否啟用
@@ -71,7 +84,7 @@ class PickupStore {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? sevenEleven;
+  bool? familyMart;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -79,7 +92,7 @@ class PickupStore {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? familyMart;
+  bool? sevenEleven;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PickupStore &&
@@ -94,8 +107,8 @@ class PickupStore {
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
     other.fullStoreInfo == fullStoreInfo &&
-    other.sevenEleven == sevenEleven &&
-    other.familyMart == familyMart;
+    other.familyMart == familyMart &&
+    other.sevenEleven == sevenEleven;
 
   @override
   int get hashCode =>
@@ -111,11 +124,11 @@ class PickupStore {
     (createdAt.hashCode) +
     (updatedAt.hashCode) +
     (fullStoreInfo == null ? 0 : fullStoreInfo!.hashCode) +
-    (sevenEleven == null ? 0 : sevenEleven!.hashCode) +
-    (familyMart == null ? 0 : familyMart!.hashCode);
+    (familyMart == null ? 0 : familyMart!.hashCode) +
+    (sevenEleven == null ? 0 : sevenEleven!.hashCode);
 
   @override
-  String toString() => 'PickupStore[id=$id, storeType=$storeType, storeCode=$storeCode, storeName=$storeName, storeAddress=$storeAddress, city=$city, district=$district, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, fullStoreInfo=$fullStoreInfo, sevenEleven=$sevenEleven, familyMart=$familyMart]';
+  String toString() => 'PickupStore[id=$id, storeType=$storeType, storeCode=$storeCode, storeName=$storeName, storeAddress=$storeAddress, city=$city, district=$district, isActive=$isActive, createdAt=$createdAt, updatedAt=$updatedAt, fullStoreInfo=$fullStoreInfo, familyMart=$familyMart, sevenEleven=$sevenEleven]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -142,15 +155,15 @@ class PickupStore {
     } else {
       json[r'fullStoreInfo'] = null;
     }
-    if (this.sevenEleven != null) {
-      json[r'sevenEleven'] = this.sevenEleven;
-    } else {
-      json[r'sevenEleven'] = null;
-    }
     if (this.familyMart != null) {
       json[r'familyMart'] = this.familyMart;
     } else {
       json[r'familyMart'] = null;
+    }
+    if (this.sevenEleven != null) {
+      json[r'sevenEleven'] = this.sevenEleven;
+    } else {
+      json[r'sevenEleven'] = null;
     }
     return json;
   }
@@ -175,7 +188,7 @@ class PickupStore {
 
       return PickupStore(
         id: mapValueOfType<int>(json, r'id')!,
-        storeType: PickupServiceTypeEnum.fromJson(json[r'storeType'])!,
+        storeType: PickupStoreStoreTypeEnum.fromJson(json[r'storeType'])!,
         storeCode: mapValueOfType<String>(json, r'storeCode')!,
         storeName: mapValueOfType<String>(json, r'storeName')!,
         storeAddress: mapValueOfType<String>(json, r'storeAddress')!,
@@ -185,8 +198,8 @@ class PickupStore {
         createdAt: mapDateTime(json, r'createdAt', r'')!,
         updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         fullStoreInfo: mapValueOfType<String>(json, r'fullStoreInfo'),
-        sevenEleven: mapValueOfType<bool>(json, r'sevenEleven'),
         familyMart: mapValueOfType<bool>(json, r'familyMart'),
+        sevenEleven: mapValueOfType<bool>(json, r'sevenEleven'),
       );
     }
     return null;
@@ -244,4 +257,93 @@ class PickupStore {
     'updatedAt',
   };
 }
+
+/// 商店類型（SEVEN_ELEVEN/FAMILY_MART/HILIFE/OK_MART）
+class PickupStoreStoreTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const PickupStoreStoreTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const HOME_DELIVERY = PickupStoreStoreTypeEnum._(r'HOME_DELIVERY');
+  static const SEVEN_ELEVEN = PickupStoreStoreTypeEnum._(r'SEVEN_ELEVEN');
+  static const FAMILY_MART = PickupStoreStoreTypeEnum._(r'FAMILY_MART');
+  static const HILIFE = PickupStoreStoreTypeEnum._(r'HILIFE');
+  static const OK_MART = PickupStoreStoreTypeEnum._(r'OK_MART');
+  static const PLATFORM_DELIVERY = PickupStoreStoreTypeEnum._(r'PLATFORM_DELIVERY');
+  static const unknownDefaultOpenApi = PickupStoreStoreTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][PickupStoreStoreTypeEnum].
+  static const values = <PickupStoreStoreTypeEnum>[
+    HOME_DELIVERY,
+    SEVEN_ELEVEN,
+    FAMILY_MART,
+    HILIFE,
+    OK_MART,
+    PLATFORM_DELIVERY,
+    unknownDefaultOpenApi,
+  ];
+
+  static PickupStoreStoreTypeEnum? fromJson(dynamic value) => PickupStoreStoreTypeEnumTypeTransformer().decode(value);
+
+  static List<PickupStoreStoreTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PickupStoreStoreTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = PickupStoreStoreTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [PickupStoreStoreTypeEnum] to String,
+/// and [decode] dynamic data back to [PickupStoreStoreTypeEnum].
+class PickupStoreStoreTypeEnumTypeTransformer {
+  factory PickupStoreStoreTypeEnumTypeTransformer() => _instance ??= const PickupStoreStoreTypeEnumTypeTransformer._();
+
+  const PickupStoreStoreTypeEnumTypeTransformer._();
+
+  String encode(PickupStoreStoreTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a PickupStoreStoreTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  PickupStoreStoreTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'HOME_DELIVERY': return PickupStoreStoreTypeEnum.HOME_DELIVERY;
+        case r'SEVEN_ELEVEN': return PickupStoreStoreTypeEnum.SEVEN_ELEVEN;
+        case r'FAMILY_MART': return PickupStoreStoreTypeEnum.FAMILY_MART;
+        case r'HILIFE': return PickupStoreStoreTypeEnum.HILIFE;
+        case r'OK_MART': return PickupStoreStoreTypeEnum.OK_MART;
+        case r'PLATFORM_DELIVERY': return PickupStoreStoreTypeEnum.PLATFORM_DELIVERY;
+        case r'unknown_default_open_api': return PickupStoreStoreTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [PickupStoreStoreTypeEnumTypeTransformer] instance.
+  static PickupStoreStoreTypeEnumTypeTransformer? _instance;
+}
+
 

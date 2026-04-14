@@ -13,14 +13,26 @@ part of openapi.api;
 class KlineSubscribeRequest {
   /// Returns a new [KlineSubscribeRequest] instance.
   KlineSubscribeRequest({
-    required this.symbol,
-    required this.intervalCode,
+    this.symbol,
+    this.intervalCode,
     this.marketType,
   });
 
-  String symbol;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? symbol;
 
-  String intervalCode;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? intervalCode;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -39,8 +51,8 @@ class KlineSubscribeRequest {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (symbol.hashCode) +
-    (intervalCode.hashCode) +
+    (symbol == null ? 0 : symbol!.hashCode) +
+    (intervalCode == null ? 0 : intervalCode!.hashCode) +
     (marketType == null ? 0 : marketType!.hashCode);
 
   @override
@@ -48,8 +60,16 @@ class KlineSubscribeRequest {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.symbol != null) {
       json[r'symbol'] = this.symbol;
+    } else {
+      json[r'symbol'] = null;
+    }
+    if (this.intervalCode != null) {
       json[r'intervalCode'] = this.intervalCode;
+    } else {
+      json[r'intervalCode'] = null;
+    }
     if (this.marketType != null) {
       json[r'marketType'] = this.marketType;
     } else {
@@ -77,8 +97,8 @@ class KlineSubscribeRequest {
       }());
 
       return KlineSubscribeRequest(
-        symbol: mapValueOfType<String>(json, r'symbol')!,
-        intervalCode: mapValueOfType<String>(json, r'intervalCode')!,
+        symbol: mapValueOfType<String>(json, r'symbol'),
+        intervalCode: mapValueOfType<String>(json, r'intervalCode'),
         marketType: mapValueOfType<String>(json, r'marketType'),
       );
     }
@@ -127,8 +147,6 @@ class KlineSubscribeRequest {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'symbol',
-    'intervalCode',
   };
 }
 

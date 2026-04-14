@@ -43,7 +43,8 @@ class NotificationCreateParam {
   /// 通知內容
   String content;
 
-  NotificationTypeEnum type;
+  /// 通知類型
+  NotificationCreateParamTypeEnum type;
 
   /// 相關鏈接
   ///
@@ -182,7 +183,7 @@ class NotificationCreateParam {
         senderId: mapValueOfType<int>(json, r'senderId'),
         title: mapValueOfType<String>(json, r'title')!,
         content: mapValueOfType<String>(json, r'content')!,
-        type: NotificationTypeEnum.fromJson(json[r'type'])!,
+        type: NotificationCreateParamTypeEnum.fromJson(json[r'type'])!,
         link: mapValueOfType<String>(json, r'link'),
         relatedObjectId: mapValueOfType<String>(json, r'relatedObjectId'),
         relatedObjectType: mapValueOfType<String>(json, r'relatedObjectType'),
@@ -241,4 +242,105 @@ class NotificationCreateParam {
     'type',
   };
 }
+
+/// 通知類型
+class NotificationCreateParamTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const NotificationCreateParamTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const SYSTEM = NotificationCreateParamTypeEnum._(r'SYSTEM');
+  static const ORDER = NotificationCreateParamTypeEnum._(r'ORDER');
+  static const DELIVERY = NotificationCreateParamTypeEnum._(r'DELIVERY');
+  static const CHAT = NotificationCreateParamTypeEnum._(r'CHAT');
+  static const FINANCIAL = NotificationCreateParamTypeEnum._(r'FINANCIAL');
+  static const SECURITY = NotificationCreateParamTypeEnum._(r'SECURITY');
+  static const PROMOTION = NotificationCreateParamTypeEnum._(r'PROMOTION');
+  static const INVENTORY = NotificationCreateParamTypeEnum._(r'INVENTORY');
+  static const REVIEW = NotificationCreateParamTypeEnum._(r'REVIEW');
+  static const DISPUTE = NotificationCreateParamTypeEnum._(r'DISPUTE');
+  static const unknownDefaultOpenApi = NotificationCreateParamTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][NotificationCreateParamTypeEnum].
+  static const values = <NotificationCreateParamTypeEnum>[
+    SYSTEM,
+    ORDER,
+    DELIVERY,
+    CHAT,
+    FINANCIAL,
+    SECURITY,
+    PROMOTION,
+    INVENTORY,
+    REVIEW,
+    DISPUTE,
+    unknownDefaultOpenApi,
+  ];
+
+  static NotificationCreateParamTypeEnum? fromJson(dynamic value) => NotificationCreateParamTypeEnumTypeTransformer().decode(value);
+
+  static List<NotificationCreateParamTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <NotificationCreateParamTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = NotificationCreateParamTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [NotificationCreateParamTypeEnum] to String,
+/// and [decode] dynamic data back to [NotificationCreateParamTypeEnum].
+class NotificationCreateParamTypeEnumTypeTransformer {
+  factory NotificationCreateParamTypeEnumTypeTransformer() => _instance ??= const NotificationCreateParamTypeEnumTypeTransformer._();
+
+  const NotificationCreateParamTypeEnumTypeTransformer._();
+
+  String encode(NotificationCreateParamTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a NotificationCreateParamTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  NotificationCreateParamTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'SYSTEM': return NotificationCreateParamTypeEnum.SYSTEM;
+        case r'ORDER': return NotificationCreateParamTypeEnum.ORDER;
+        case r'DELIVERY': return NotificationCreateParamTypeEnum.DELIVERY;
+        case r'CHAT': return NotificationCreateParamTypeEnum.CHAT;
+        case r'FINANCIAL': return NotificationCreateParamTypeEnum.FINANCIAL;
+        case r'SECURITY': return NotificationCreateParamTypeEnum.SECURITY;
+        case r'PROMOTION': return NotificationCreateParamTypeEnum.PROMOTION;
+        case r'INVENTORY': return NotificationCreateParamTypeEnum.INVENTORY;
+        case r'REVIEW': return NotificationCreateParamTypeEnum.REVIEW;
+        case r'DISPUTE': return NotificationCreateParamTypeEnum.DISPUTE;
+        case r'unknown_default_open_api': return NotificationCreateParamTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [NotificationCreateParamTypeEnumTypeTransformer] instance.
+  static NotificationCreateParamTypeEnumTypeTransformer? _instance;
+}
+
 

@@ -21,7 +21,7 @@ class BatchReviewPromoCodeParam {
   /// 要審核的推廣碼列表
   List<String> codes;
 
-  /// 推廣碼申請狀態
+  /// 審核結果
   BatchReviewPromoCodeParamStatusEnum status;
 
   /// 審核備註
@@ -132,12 +132,11 @@ class BatchReviewPromoCodeParam {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'codes',
     'status',
   };
 }
 
-/// 推廣碼申請狀態
+/// 審核結果
 class BatchReviewPromoCodeParamStatusEnum {
   /// Instantiate a new enum with the provided [value].
   const BatchReviewPromoCodeParamStatusEnum._(this.value);

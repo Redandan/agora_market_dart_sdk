@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -36,7 +36,7 @@ class SlotOverviewResponse {
     this.hourlyDistribution = const [],
   });
 
-  /// ?亥岷韏瑕???
+  /// 查詢起始時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -44,7 +44,8 @@ class SlotOverviewResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? startTime;
-  /// ?亥岷蝯???
+
+  /// 查詢結束時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -52,7 +53,8 @@ class SlotOverviewResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? endTime;
-  /// 蝭拚????ID嚗ull 隞?”?券?
+
+  /// 篩選的遊戲 ID，null 代表全部遊戲
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -60,35 +62,44 @@ class SlotOverviewResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? gameId;
-  /// ??蜇撅??  ///
+
+  /// 區間總局數
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? totalRounds;
-  /// 隞蝮賢???  ///
+
+  /// 今日總局數
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? todayRounds;
-  /// ?冽蝮賢??賂?撠?嚗?  ///
+
+  /// 昨日總局數（對比）
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? yesterdayRounds;
-  /// 銝剔?撅??  ///
+
+  /// 中獎局數
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? winRounds;
-  /// 銝剔???%嚗???2 雿??賂?
+
+  /// 中獎率 %（保留 2 位小數）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -96,49 +107,62 @@ class SlotOverviewResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? winRate;
-  /// ??暑頨摰嗆嚗銝?冽嚗?  ///
+
+  /// 區間活躍玩家數（唯一用戶）
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? activePlayers;
-  /// 隞瘣餉??拙振??  ///
+
+  /// 今日活躍玩家數
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? todayActivePlayers;
-  /// 蝮賭?瘜券?憿?  ///
+
+  /// 總下注金額
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? totalBet;
-  /// 隞蝮賭?瘜券?憿?  ///
+
+  /// 今日總下注金額
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? todayBet;
-  /// 蝮賣晷敶拚?憿?  ///
+
+  /// 總派彩金額
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? totalPayout;
-  /// 瘥嚗otalBet - totalPayout嚗?  ///
+
+  /// 毛利（totalBet - totalPayout）
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? grossRevenue;
-  /// 隞瘥
+
+  /// 今日毛利
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -146,14 +170,17 @@ class SlotOverviewResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? todayGrossRevenue;
-  /// 撖阡? RTP %嚗otalPayout / totalBet ? 100嚗?  ///
+
+  /// 實際 RTP %（totalPayout / totalBet × 100）
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? actualRtp;
-  /// 撟喳?瘥?銝釣
+
+  /// 平均每局下注
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -161,14 +188,17 @@ class SlotOverviewResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? avgBetPerRound;
-  /// 撟喳?瘥摰嗡?瘜剁?蝮賭?瘜?/ 瘣餉??拙振嚗?  ///
+
+  /// 平均每玩家下注（總下注 / 活躍玩家）
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? avgBetPerPlayer;
-  /// ???擃葉??
+
+  /// 區間最高中獎倍率
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -176,12 +206,13 @@ class SlotOverviewResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? maxMultiplier;
-  /// 瘥頞典嚗??詻暑頨摰嗚?瘜具??抬?
 
+  /// 每日趨勢（局數、活躍玩家、下注、毛利）
   List<SlotDailyStatDto> dailyTrend;
-  /// 瘥???雿??亥岷蝭? ??48 撠??‵???血???null嚗?
 
+  /// 每小時分佈（查詢範圍 ≤ 48 小時時填充，否則為 null）
   List<SlotHourlyStatDto> hourlyDistribution;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is SlotOverviewResponse &&
     other.startTime == startTime &&
@@ -425,5 +456,4 @@ class SlotOverviewResponse {
   static const requiredKeys = <String>{
   };
 }
-
 

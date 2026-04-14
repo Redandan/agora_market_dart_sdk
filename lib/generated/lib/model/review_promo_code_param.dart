@@ -17,7 +17,7 @@ class ReviewPromoCodeParam {
     this.reviewRemark,
   });
 
-  /// 推廣碼申請狀態
+  /// 審核結果
   ReviewPromoCodeParamStatusEnum status;
 
   /// 審核備註
@@ -126,7 +126,7 @@ class ReviewPromoCodeParam {
   };
 }
 
-/// 推廣碼申請狀態
+/// 審核結果
 class ReviewPromoCodeParamStatusEnum {
   /// Instantiate a new enum with the provided [value].
   const ReviewPromoCodeParamStatusEnum._(this.value);

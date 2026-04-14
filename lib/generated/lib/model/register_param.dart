@@ -13,8 +13,8 @@ part of openapi.api;
 class RegisterParam {
   /// Returns a new [RegisterParam] instance.
   RegisterParam({
-    required this.username,
-    required this.password,
+    this.username,
+    this.password,
     this.confirmPassword,
     this.email,
     this.promoCode,
@@ -23,10 +23,22 @@ class RegisterParam {
   });
 
   /// 用戶名
-  String username;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? username;
 
   /// 密碼
-  String password;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? password;
 
   /// 確認密碼
   ///
@@ -65,6 +77,12 @@ class RegisterParam {
   String? turnstileToken;
 
   /// 來源頁面 URL（可選，由前端傳入 document.referrer），用於流量分析
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? referrer;
 
   @override
@@ -80,8 +98,8 @@ class RegisterParam {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (username.hashCode) +
-    (password.hashCode) +
+    (username == null ? 0 : username!.hashCode) +
+    (password == null ? 0 : password!.hashCode) +
     (confirmPassword == null ? 0 : confirmPassword!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
     (promoCode == null ? 0 : promoCode!.hashCode) +
@@ -93,8 +111,16 @@ class RegisterParam {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.username != null) {
       json[r'username'] = this.username;
+    } else {
+      json[r'username'] = null;
+    }
+    if (this.password != null) {
       json[r'password'] = this.password;
+    } else {
+      json[r'password'] = null;
+    }
     if (this.confirmPassword != null) {
       json[r'confirmPassword'] = this.confirmPassword;
     } else {
@@ -142,8 +168,8 @@ class RegisterParam {
       }());
 
       return RegisterParam(
-        username: mapValueOfType<String>(json, r'username')!,
-        password: mapValueOfType<String>(json, r'password')!,
+        username: mapValueOfType<String>(json, r'username'),
+        password: mapValueOfType<String>(json, r'password'),
         confirmPassword: mapValueOfType<String>(json, r'confirmPassword'),
         email: mapValueOfType<String>(json, r'email'),
         promoCode: mapValueOfType<String>(json, r'promoCode'),
@@ -196,8 +222,6 @@ class RegisterParam {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'username',
-    'password',
   };
 }
 

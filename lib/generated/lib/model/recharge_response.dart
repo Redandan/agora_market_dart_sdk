@@ -43,58 +43,138 @@ class RechargeResponse {
   bool? success;
 
   /// 錯誤代碼（僅在失敗時提供）
-  String? errorCode;
-
-  /// 錯誤消息（僅在失敗時提供）
-  String? errorMessage;
-
-  /// 充值ID
-  String? rechargeId;
-
-  /// 用戶ID
-  int? userId;
-
-  /// 充值金額
-  num? amount;
-
-  /// 貨幣
-  String? currency;
-
-  RechargeStatusEnum? status;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  ProtocolEnum? protocol;
+  String? errorCode;
+
+  /// 錯誤消息（僅在失敗時提供）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? errorMessage;
+
+  /// 充值ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? rechargeId;
+
+  /// 用戶ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? userId;
+
+  /// 充值金額
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? amount;
+
+  /// 貨幣
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? currency;
+
+  /// 充值狀態
+  RechargeResponseStatusEnum? status;
+
+  /// 協議
+  RechargeResponseProtocolEnum? protocol;
 
   /// 接收地址
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? receiveAddress;
 
   /// 冷錢包ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? coldWalletId;
 
   /// 創建時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? createdAt;
 
   /// 過期時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? expireTime;
 
   /// 支付鏈接
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? paymentUrl;
 
   /// 備註
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? remark;
 
   /// 建議的可用金額列表（當請求金額不可用時提供）
-  List<num>? suggestedAmounts;
+  List<num> suggestedAmounts;
 
   /// 請求的原始金額
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? requestedAmount;
 
   /// 建議金額
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? suggestedAmount;
 
   @override
@@ -136,7 +216,7 @@ class RechargeResponse {
     (expireTime == null ? 0 : expireTime!.hashCode) +
     (paymentUrl == null ? 0 : paymentUrl!.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
-    (suggestedAmounts == null ? 0 : suggestedAmounts!.hashCode) +
+    (suggestedAmounts.hashCode) +
     (requestedAmount == null ? 0 : requestedAmount!.hashCode) +
     (suggestedAmount == null ? 0 : suggestedAmount!.hashCode);
 
@@ -220,11 +300,7 @@ class RechargeResponse {
     } else {
       json[r'remark'] = null;
     }
-    if (this.suggestedAmounts != null) {
       json[r'suggestedAmounts'] = this.suggestedAmounts;
-    } else {
-      json[r'suggestedAmounts'] = null;
-    }
     if (this.requestedAmount != null) {
       json[r'requestedAmount'] = this.requestedAmount;
     } else {
@@ -262,12 +338,10 @@ class RechargeResponse {
         errorMessage: mapValueOfType<String>(json, r'errorMessage'),
         rechargeId: mapValueOfType<String>(json, r'rechargeId'),
         userId: mapValueOfType<int>(json, r'userId'),
-        amount: json[r'amount'] == null
-            ? null
-            : num.parse('${json[r'amount']}'),
+        amount: num.parse('${json[r'amount']}'),
         currency: mapValueOfType<String>(json, r'currency'),
-        status: RechargeStatusEnum.fromJson(json[r'status']),
-        protocol: ProtocolEnum.fromJson(json[r'protocol']),
+        status: RechargeResponseStatusEnum.fromJson(json[r'status']),
+        protocol: RechargeResponseProtocolEnum.fromJson(json[r'protocol']),
         receiveAddress: mapValueOfType<String>(json, r'receiveAddress'),
         coldWalletId: mapValueOfType<int>(json, r'coldWalletId'),
         createdAt: mapDateTime(json, r'createdAt', r''),
@@ -277,12 +351,8 @@ class RechargeResponse {
         suggestedAmounts: json[r'suggestedAmounts'] is Iterable
             ? (json[r'suggestedAmounts'] as Iterable).cast<num>().toList(growable: false)
             : const [],
-        requestedAmount: json[r'requestedAmount'] == null
-            ? null
-            : num.parse('${json[r'requestedAmount']}'),
-        suggestedAmount: json[r'suggestedAmount'] == null
-            ? null
-            : num.parse('${json[r'suggestedAmount']}'),
+        requestedAmount: num.parse('${json[r'requestedAmount']}'),
+        suggestedAmount: num.parse('${json[r'suggestedAmount']}'),
       );
     }
     return null;
@@ -332,4 +402,167 @@ class RechargeResponse {
   static const requiredKeys = <String>{
   };
 }
+
+/// 充值狀態
+class RechargeResponseStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const RechargeResponseStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const PENDING = RechargeResponseStatusEnum._(r'PENDING');
+  static const COMPLETED = RechargeResponseStatusEnum._(r'COMPLETED');
+  static const EXPIRED = RechargeResponseStatusEnum._(r'EXPIRED');
+  static const FAILED = RechargeResponseStatusEnum._(r'FAILED');
+  static const unknownDefaultOpenApi = RechargeResponseStatusEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][RechargeResponseStatusEnum].
+  static const values = <RechargeResponseStatusEnum>[
+    PENDING,
+    COMPLETED,
+    EXPIRED,
+    FAILED,
+    unknownDefaultOpenApi,
+  ];
+
+  static RechargeResponseStatusEnum? fromJson(dynamic value) => RechargeResponseStatusEnumTypeTransformer().decode(value);
+
+  static List<RechargeResponseStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <RechargeResponseStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = RechargeResponseStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [RechargeResponseStatusEnum] to String,
+/// and [decode] dynamic data back to [RechargeResponseStatusEnum].
+class RechargeResponseStatusEnumTypeTransformer {
+  factory RechargeResponseStatusEnumTypeTransformer() => _instance ??= const RechargeResponseStatusEnumTypeTransformer._();
+
+  const RechargeResponseStatusEnumTypeTransformer._();
+
+  String encode(RechargeResponseStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a RechargeResponseStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  RechargeResponseStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'PENDING': return RechargeResponseStatusEnum.PENDING;
+        case r'COMPLETED': return RechargeResponseStatusEnum.COMPLETED;
+        case r'EXPIRED': return RechargeResponseStatusEnum.EXPIRED;
+        case r'FAILED': return RechargeResponseStatusEnum.FAILED;
+        case r'unknown_default_open_api': return RechargeResponseStatusEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [RechargeResponseStatusEnumTypeTransformer] instance.
+  static RechargeResponseStatusEnumTypeTransformer? _instance;
+}
+
+
+/// 協議
+class RechargeResponseProtocolEnum {
+  /// Instantiate a new enum with the provided [value].
+  const RechargeResponseProtocolEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const tRC20 = RechargeResponseProtocolEnum._(r'TRC20');
+  static const eRC20 = RechargeResponseProtocolEnum._(r'ERC20');
+  static const bEP20 = RechargeResponseProtocolEnum._(r'BEP20');
+  static const unknownDefaultOpenApi = RechargeResponseProtocolEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][RechargeResponseProtocolEnum].
+  static const values = <RechargeResponseProtocolEnum>[
+    tRC20,
+    eRC20,
+    bEP20,
+    unknownDefaultOpenApi,
+  ];
+
+  static RechargeResponseProtocolEnum? fromJson(dynamic value) => RechargeResponseProtocolEnumTypeTransformer().decode(value);
+
+  static List<RechargeResponseProtocolEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <RechargeResponseProtocolEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = RechargeResponseProtocolEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [RechargeResponseProtocolEnum] to String,
+/// and [decode] dynamic data back to [RechargeResponseProtocolEnum].
+class RechargeResponseProtocolEnumTypeTransformer {
+  factory RechargeResponseProtocolEnumTypeTransformer() => _instance ??= const RechargeResponseProtocolEnumTypeTransformer._();
+
+  const RechargeResponseProtocolEnumTypeTransformer._();
+
+  String encode(RechargeResponseProtocolEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a RechargeResponseProtocolEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  RechargeResponseProtocolEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'TRC20': return RechargeResponseProtocolEnum.tRC20;
+        case r'ERC20': return RechargeResponseProtocolEnum.eRC20;
+        case r'BEP20': return RechargeResponseProtocolEnum.bEP20;
+        case r'unknown_default_open_api': return RechargeResponseProtocolEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [RechargeResponseProtocolEnumTypeTransformer] instance.
+  static RechargeResponseProtocolEnumTypeTransformer? _instance;
+}
+
 

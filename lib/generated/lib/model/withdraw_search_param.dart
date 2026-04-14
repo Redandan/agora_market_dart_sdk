@@ -110,21 +110,11 @@ class WithdrawSearchParam {
   ///
   String? withdrawId;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  WithdrawStatusEnum? status;
+  /// 提款狀態
+  WithdrawSearchParamStatusEnum? status;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  ProtocolEnum? protocol;
+  /// 協議
+  WithdrawSearchParamProtocolEnum? protocol;
 
   /// 貨幣
   ///
@@ -294,8 +284,8 @@ class WithdrawSearchParam {
         sortDirection: mapValueOfType<String>(json, r'sortDirection'),
         userId: mapValueOfType<int>(json, r'userId'),
         withdrawId: mapValueOfType<String>(json, r'withdrawId'),
-        status: WithdrawStatusEnum.fromJson(json[r'status']),
-        protocol: ProtocolEnum.fromJson(json[r'protocol']),
+        status: WithdrawSearchParamStatusEnum.fromJson(json[r'status']),
+        protocol: WithdrawSearchParamProtocolEnum.fromJson(json[r'protocol']),
         currency: mapValueOfType<String>(json, r'currency'),
         toAddress: mapValueOfType<String>(json, r'toAddress'),
         txHash: mapValueOfType<String>(json, r'txHash'),
@@ -348,4 +338,170 @@ class WithdrawSearchParam {
   static const requiredKeys = <String>{
   };
 }
+
+/// 提款狀態
+class WithdrawSearchParamStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const WithdrawSearchParamStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const PENDING = WithdrawSearchParamStatusEnum._(r'PENDING');
+  static const PROCESSING = WithdrawSearchParamStatusEnum._(r'PROCESSING');
+  static const COMPLETED = WithdrawSearchParamStatusEnum._(r'COMPLETED');
+  static const CANCELLED = WithdrawSearchParamStatusEnum._(r'CANCELLED');
+  static const FAILED = WithdrawSearchParamStatusEnum._(r'FAILED');
+  static const unknownDefaultOpenApi = WithdrawSearchParamStatusEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][WithdrawSearchParamStatusEnum].
+  static const values = <WithdrawSearchParamStatusEnum>[
+    PENDING,
+    PROCESSING,
+    COMPLETED,
+    CANCELLED,
+    FAILED,
+    unknownDefaultOpenApi,
+  ];
+
+  static WithdrawSearchParamStatusEnum? fromJson(dynamic value) => WithdrawSearchParamStatusEnumTypeTransformer().decode(value);
+
+  static List<WithdrawSearchParamStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <WithdrawSearchParamStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = WithdrawSearchParamStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [WithdrawSearchParamStatusEnum] to String,
+/// and [decode] dynamic data back to [WithdrawSearchParamStatusEnum].
+class WithdrawSearchParamStatusEnumTypeTransformer {
+  factory WithdrawSearchParamStatusEnumTypeTransformer() => _instance ??= const WithdrawSearchParamStatusEnumTypeTransformer._();
+
+  const WithdrawSearchParamStatusEnumTypeTransformer._();
+
+  String encode(WithdrawSearchParamStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a WithdrawSearchParamStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  WithdrawSearchParamStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'PENDING': return WithdrawSearchParamStatusEnum.PENDING;
+        case r'PROCESSING': return WithdrawSearchParamStatusEnum.PROCESSING;
+        case r'COMPLETED': return WithdrawSearchParamStatusEnum.COMPLETED;
+        case r'CANCELLED': return WithdrawSearchParamStatusEnum.CANCELLED;
+        case r'FAILED': return WithdrawSearchParamStatusEnum.FAILED;
+        case r'unknown_default_open_api': return WithdrawSearchParamStatusEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [WithdrawSearchParamStatusEnumTypeTransformer] instance.
+  static WithdrawSearchParamStatusEnumTypeTransformer? _instance;
+}
+
+
+/// 協議
+class WithdrawSearchParamProtocolEnum {
+  /// Instantiate a new enum with the provided [value].
+  const WithdrawSearchParamProtocolEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const tRC20 = WithdrawSearchParamProtocolEnum._(r'TRC20');
+  static const eRC20 = WithdrawSearchParamProtocolEnum._(r'ERC20');
+  static const bEP20 = WithdrawSearchParamProtocolEnum._(r'BEP20');
+  static const unknownDefaultOpenApi = WithdrawSearchParamProtocolEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][WithdrawSearchParamProtocolEnum].
+  static const values = <WithdrawSearchParamProtocolEnum>[
+    tRC20,
+    eRC20,
+    bEP20,
+    unknownDefaultOpenApi,
+  ];
+
+  static WithdrawSearchParamProtocolEnum? fromJson(dynamic value) => WithdrawSearchParamProtocolEnumTypeTransformer().decode(value);
+
+  static List<WithdrawSearchParamProtocolEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <WithdrawSearchParamProtocolEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = WithdrawSearchParamProtocolEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [WithdrawSearchParamProtocolEnum] to String,
+/// and [decode] dynamic data back to [WithdrawSearchParamProtocolEnum].
+class WithdrawSearchParamProtocolEnumTypeTransformer {
+  factory WithdrawSearchParamProtocolEnumTypeTransformer() => _instance ??= const WithdrawSearchParamProtocolEnumTypeTransformer._();
+
+  const WithdrawSearchParamProtocolEnumTypeTransformer._();
+
+  String encode(WithdrawSearchParamProtocolEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a WithdrawSearchParamProtocolEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  WithdrawSearchParamProtocolEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'TRC20': return WithdrawSearchParamProtocolEnum.tRC20;
+        case r'ERC20': return WithdrawSearchParamProtocolEnum.eRC20;
+        case r'BEP20': return WithdrawSearchParamProtocolEnum.bEP20;
+        case r'unknown_default_open_api': return WithdrawSearchParamProtocolEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [WithdrawSearchParamProtocolEnumTypeTransformer] instance.
+  static WithdrawSearchParamProtocolEnumTypeTransformer? _instance;
+}
+
 

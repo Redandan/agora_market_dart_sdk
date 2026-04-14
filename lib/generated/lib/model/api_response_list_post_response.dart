@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -26,6 +26,7 @@ class ApiResponseListPostResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? success;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -33,6 +34,7 @@ class ApiResponseListPostResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? message;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -40,6 +42,7 @@ class ApiResponseListPostResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? code;
+
   List<PostResponse> data;
 
   @override
@@ -153,5 +156,4 @@ class ApiResponseListPostResponse {
   static const requiredKeys = <String>{
   };
 }
-
 

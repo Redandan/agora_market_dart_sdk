@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -21,7 +21,7 @@ class DisputeStatisticsDTO {
     this.topDisputedSellers = const [],
   });
 
-  /// 蝮賜鳥蝝
+  /// 總糾紛數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -29,10 +29,11 @@ class DisputeStatisticsDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? totalDisputes;
-  /// ???鳥蝝??
 
+  /// 各狀態糾紛數量
   Map<String, int> disputesByStatus;
-  /// 撟喳?????嚗???
+
+  /// 平均處理時間（小時）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -40,7 +41,8 @@ class DisputeStatisticsDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   double? averageResolutionTime;
-  /// ?甈曄蜇??
+
+  /// 退款總金額
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -48,12 +50,13 @@ class DisputeStatisticsDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? totalRefundAmount;
-  /// ?梢?蝟曄???嚗?5??
 
+  /// 熱門糾紛商品（前5個）
   List<TopDisputedProductDTO> topDisputedProducts;
-  /// ?梢?蝟曄?鞈?振嚗?5??
 
+  /// 熱門糾紛賣家（前5個）
   List<TopDisputedSellerDTO> topDisputedSellers;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is DisputeStatisticsDTO &&
     other.totalDisputes == totalDisputes &&
@@ -173,5 +176,4 @@ class DisputeStatisticsDTO {
   static const requiredKeys = <String>{
   };
 }
-
 

@@ -37,42 +37,90 @@ class BetResponse {
   int userId;
 
   /// 用戶名
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? username;
 
   /// 市場ID
   int marketId;
 
   /// 市場標題
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? marketTitle;
 
   /// 選項ID
   int optionId;
 
   /// 選項描述
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? optionDescription;
 
   /// 投注金額
   num betAmount;
 
   /// 下注時的賠率
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? oddsAtBet;
 
   /// 潛在收益
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? potentialPayout;
 
   /// 實際收益
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? actualPayout;
 
   /// 投注狀態
   BetResponseStatusEnum status;
 
   /// 結算時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? settledAt;
 
   /// 下注時間
   DateTime createdAt;
 
   /// 實際收益率
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? actualReturnRate;
 
   @override
@@ -194,21 +242,13 @@ class BetResponse {
         optionId: mapValueOfType<int>(json, r'optionId')!,
         optionDescription: mapValueOfType<String>(json, r'optionDescription'),
         betAmount: num.parse('${json[r'betAmount']}'),
-        oddsAtBet: json[r'oddsAtBet'] == null
-            ? null
-            : num.parse('${json[r'oddsAtBet']}'),
-        potentialPayout: json[r'potentialPayout'] == null
-            ? null
-            : num.parse('${json[r'potentialPayout']}'),
-        actualPayout: json[r'actualPayout'] == null
-            ? null
-            : num.parse('${json[r'actualPayout']}'),
+        oddsAtBet: num.parse('${json[r'oddsAtBet']}'),
+        potentialPayout: num.parse('${json[r'potentialPayout']}'),
+        actualPayout: num.parse('${json[r'actualPayout']}'),
         status: BetResponseStatusEnum.fromJson(json[r'status'])!,
         settledAt: mapDateTime(json, r'settledAt', r''),
         createdAt: mapDateTime(json, r'createdAt', r'')!,
-        actualReturnRate: json[r'actualReturnRate'] == null
-            ? null
-            : num.parse('${json[r'actualReturnRate']}'),
+        actualReturnRate: num.parse('${json[r'actualReturnRate']}'),
       );
     }
     return null;

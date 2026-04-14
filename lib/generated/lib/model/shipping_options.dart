@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -21,24 +21,24 @@ class ShippingOptions {
     this.postal = const [],
   });
 
-  /// 7-11?疏?賊?
-
+  /// 7-11取貨選項
   List<ShippingServiceGroup> sevenEleven;
-  /// ?典振?疏?賊?
 
+  /// 全家取貨選項
   List<ShippingServiceGroup> familyMart;
-  /// ?撖?鞎券??
 
+  /// 萊爾富取貨選項
   List<ShippingServiceGroup> hilife;
-  /// OK頞??疏?賊?
 
+  /// OK超商取貨選項
   List<ShippingServiceGroup> okMart;
-  /// 摰??賊?
 
+  /// 宅配選項
   List<ShippingServiceGroup> homeDelivery;
-  /// ?萄????
 
+  /// 郵局配送選項
   List<ShippingServiceGroup> postal;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ShippingOptions &&
     _deepEquality.equals(other.sevenEleven, sevenEleven) &&
@@ -146,5 +146,4 @@ class ShippingOptions {
   static const requiredKeys = <String>{
   };
 }
-
 

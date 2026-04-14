@@ -23,6 +23,7 @@ class CandidateResult {
     this.score,
     this.config,
     this.aiRationale,
+    this.walkForwardNote,
     this.errorMessage,
   });
 
@@ -72,6 +73,12 @@ class CandidateResult {
   num? winRate;
 
   /// 夏普比率
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? sharpeRatio;
 
   /// 交易筆數
@@ -93,12 +100,39 @@ class CandidateResult {
   double? score;
 
   /// AI 建議的策略參數（JSON 物件）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   Object? config;
 
   /// AI 建議說明
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? aiRationale;
 
+  /// Walk-Forward 30 天驗證結果（通過品質門檻後自動執行）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? walkForwardNote;
+
   /// 失敗原因（成功時為 null）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? errorMessage;
 
   @override
@@ -113,6 +147,7 @@ class CandidateResult {
     other.score == score &&
     other.config == config &&
     other.aiRationale == aiRationale &&
+    other.walkForwardNote == walkForwardNote &&
     other.errorMessage == errorMessage;
 
   @override
@@ -128,10 +163,11 @@ class CandidateResult {
     (score == null ? 0 : score!.hashCode) +
     (config == null ? 0 : config!.hashCode) +
     (aiRationale == null ? 0 : aiRationale!.hashCode) +
+    (walkForwardNote == null ? 0 : walkForwardNote!.hashCode) +
     (errorMessage == null ? 0 : errorMessage!.hashCode);
 
   @override
-  String toString() => 'CandidateResult[strategyId=$strategyId, strategyName=$strategyName, totalReturn=$totalReturn, maxDrawdown=$maxDrawdown, winRate=$winRate, sharpeRatio=$sharpeRatio, tradeCount=$tradeCount, score=$score, config=$config, aiRationale=$aiRationale, errorMessage=$errorMessage]';
+  String toString() => 'CandidateResult[strategyId=$strategyId, strategyName=$strategyName, totalReturn=$totalReturn, maxDrawdown=$maxDrawdown, winRate=$winRate, sharpeRatio=$sharpeRatio, tradeCount=$tradeCount, score=$score, config=$config, aiRationale=$aiRationale, walkForwardNote=$walkForwardNote, errorMessage=$errorMessage]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -185,6 +221,11 @@ class CandidateResult {
     } else {
       json[r'aiRationale'] = null;
     }
+    if (this.walkForwardNote != null) {
+      json[r'walkForwardNote'] = this.walkForwardNote;
+    } else {
+      json[r'walkForwardNote'] = null;
+    }
     if (this.errorMessage != null) {
       json[r'errorMessage'] = this.errorMessage;
     } else {
@@ -217,13 +258,12 @@ class CandidateResult {
         totalReturn: num.parse('${json[r'totalReturn']}'),
         maxDrawdown: num.parse('${json[r'maxDrawdown']}'),
         winRate: num.parse('${json[r'winRate']}'),
-        sharpeRatio: json[r'sharpeRatio'] == null
-            ? null
-            : num.parse('${json[r'sharpeRatio']}'),
+        sharpeRatio: num.parse('${json[r'sharpeRatio']}'),
         tradeCount: mapValueOfType<int>(json, r'tradeCount'),
         score: mapValueOfType<double>(json, r'score'),
         config: mapValueOfType<Object>(json, r'config'),
         aiRationale: mapValueOfType<String>(json, r'aiRationale'),
+        walkForwardNote: mapValueOfType<String>(json, r'walkForwardNote'),
         errorMessage: mapValueOfType<String>(json, r'errorMessage'),
       );
     }

@@ -31,11 +31,25 @@ class SopMtfAdxConfig {
     this.dailyMaPeriod,
     this.rsiSellThreshold,
     this.allowShort,
+    this.shortOnly,
     this.dailyBorrowingRate,
     this.atrTrailingStopEnabled,
     this.atrPeriod,
     this.atrMultiplier,
+    this.requiredDailyTrend,
+    this.atrSlMultiplier,
+    this.atrTpMultiplier,
     this.diagnostics = const {},
+    this.yearLookbackBars,
+    this.medLookbackBars,
+    this.shortLookbackBars,
+    this.rsiOversold,
+    this.rsiOverbought,
+    this.buyThreshold,
+    this.volumeBreakoutMultiplier,
+    this.scoreScale,
+    this.scoreShift,
+    this.diagScoreFloor,
   });
 
   /// 是否啟用多時框過濾（1D 趨勢 + MTF K 線）
@@ -235,10 +249,25 @@ class SopMtfAdxConfig {
   ///
   bool? allowShort;
 
+  /// 純空頭模式：只執行空頭訊號，完全跳過多頭進場邏輯（自動啟用 allowShort）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? shortOnly;
+
   /// 借貨日利率（參考幣安方式，每小時扣 dailyBorrowingRate÷24，最少計 1 小時，僅 allowShort=true 時有效）
   ///
   /// Minimum value: 0.0
   /// Maximum value: 1.0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   double? dailyBorrowingRate;
 
   /// 是否啟用 ATR 追蹤止損（替代固定止損追隨價格移動）
@@ -253,15 +282,157 @@ class SopMtfAdxConfig {
   /// ATR 追蹤止損的 ATR 週期，僅 atrTrailingStopEnabled=true 時有效
   ///
   /// Minimum value: 1
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? atrPeriod;
 
   /// ATR 追蹤止損的 ATR 倍數，僅 atrTrailingStopEnabled=true 時有效
   ///
   /// Minimum value: 0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   double? atrMultiplier;
 
+  /// 要求的日線趨勢方向（BULLISH/BEARISH/ANY）。不符合時策略靜默跳過實盤評估，不影響回測。
+  SopMtfAdxConfigRequiredDailyTrendEnum? requiredDailyTrend;
+
+  /// ATR 動態初始止損倍數（SL = ATR% × multiplier，優先於 fixedStopLossPct）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? atrSlMultiplier;
+
+  /// ATR 動態初始止盈倍數（TP = ATR% × multiplier，優先於 fixedTakeProfitPct）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? atrTpMultiplier;
+
   /// 診斷碼開關設定（false 表示停用該診斷碼，預設全部啟用，null 表示全部啟用）
-  Map<String, bool>? diagnostics;
+  Map<String, bool> diagnostics;
+
+  /// [SCORE_BUY] 回看年高的 K 線數（1d 用 252，1h 用 8760）
+  ///
+  /// Minimum value: 1
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? yearLookbackBars;
+
+  /// [SCORE_BUY] 中期相對低點回看 K 線數（1d 用 63，1h 用 504）
+  ///
+  /// Minimum value: 1
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? medLookbackBars;
+
+  /// [SCORE_BUY] 短期相對低點回看 K 線數（1d 用 10，1h 用 48）
+  ///
+  /// Minimum value: 1
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? shortLookbackBars;
+
+  /// [SCORE_BUY] RSI 超賣門檻，低於此值視為超賣
+  ///
+  /// Minimum value: 0.0
+  /// Maximum value: 100.0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? rsiOversold;
+
+  /// [SCORE_BUY] RSI 超漲門檻，高於此值觸發賣出訊號
+  ///
+  /// Minimum value: 0.0
+  /// Maximum value: 100.0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? rsiOverbought;
+
+  /// [SCORE_BUY] nnOutput 買入門檻（sigmoid 輸出）
+  ///
+  /// Minimum value: 0.0
+  /// Maximum value: 1.0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? buyThreshold;
+
+  /// [SCORE_BUY] 量能放大倍數門檻
+  ///
+  /// Minimum value: 0.0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? volumeBreakoutMultiplier;
+
+  /// [SCORE_BUY] sigmoid 輸入縮放係數（score × scoreScale - scoreShift）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? scoreScale;
+
+  /// [SCORE_BUY] sigmoid 輸入平移量（score × scoreScale - scoreShift）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? scoreShift;
+
+  /// [SCORE_BUY] 記錄診斷 log 的 score 最低門檻（低於此值不記錄）
+  ///
+  /// Minimum value: 0.0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? diagScoreFloor;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is SopMtfAdxConfig &&
@@ -283,11 +454,25 @@ class SopMtfAdxConfig {
     other.dailyMaPeriod == dailyMaPeriod &&
     other.rsiSellThreshold == rsiSellThreshold &&
     other.allowShort == allowShort &&
+    other.shortOnly == shortOnly &&
     other.dailyBorrowingRate == dailyBorrowingRate &&
     other.atrTrailingStopEnabled == atrTrailingStopEnabled &&
     other.atrPeriod == atrPeriod &&
     other.atrMultiplier == atrMultiplier &&
-    _deepEquality.equals(other.diagnostics, diagnostics);
+    other.requiredDailyTrend == requiredDailyTrend &&
+    other.atrSlMultiplier == atrSlMultiplier &&
+    other.atrTpMultiplier == atrTpMultiplier &&
+    _deepEquality.equals(other.diagnostics, diagnostics) &&
+    other.yearLookbackBars == yearLookbackBars &&
+    other.medLookbackBars == medLookbackBars &&
+    other.shortLookbackBars == shortLookbackBars &&
+    other.rsiOversold == rsiOversold &&
+    other.rsiOverbought == rsiOverbought &&
+    other.buyThreshold == buyThreshold &&
+    other.volumeBreakoutMultiplier == volumeBreakoutMultiplier &&
+    other.scoreScale == scoreScale &&
+    other.scoreShift == scoreShift &&
+    other.diagScoreFloor == diagScoreFloor;
 
   @override
   int get hashCode =>
@@ -310,14 +495,28 @@ class SopMtfAdxConfig {
     (dailyMaPeriod == null ? 0 : dailyMaPeriod!.hashCode) +
     (rsiSellThreshold == null ? 0 : rsiSellThreshold!.hashCode) +
     (allowShort == null ? 0 : allowShort!.hashCode) +
+    (shortOnly == null ? 0 : shortOnly!.hashCode) +
     (dailyBorrowingRate == null ? 0 : dailyBorrowingRate!.hashCode) +
     (atrTrailingStopEnabled == null ? 0 : atrTrailingStopEnabled!.hashCode) +
     (atrPeriod == null ? 0 : atrPeriod!.hashCode) +
     (atrMultiplier == null ? 0 : atrMultiplier!.hashCode) +
-    (diagnostics == null ? 0 : diagnostics!.hashCode);
+    (requiredDailyTrend == null ? 0 : requiredDailyTrend!.hashCode) +
+    (atrSlMultiplier == null ? 0 : atrSlMultiplier!.hashCode) +
+    (atrTpMultiplier == null ? 0 : atrTpMultiplier!.hashCode) +
+    (diagnostics.hashCode) +
+    (yearLookbackBars == null ? 0 : yearLookbackBars!.hashCode) +
+    (medLookbackBars == null ? 0 : medLookbackBars!.hashCode) +
+    (shortLookbackBars == null ? 0 : shortLookbackBars!.hashCode) +
+    (rsiOversold == null ? 0 : rsiOversold!.hashCode) +
+    (rsiOverbought == null ? 0 : rsiOverbought!.hashCode) +
+    (buyThreshold == null ? 0 : buyThreshold!.hashCode) +
+    (volumeBreakoutMultiplier == null ? 0 : volumeBreakoutMultiplier!.hashCode) +
+    (scoreScale == null ? 0 : scoreScale!.hashCode) +
+    (scoreShift == null ? 0 : scoreShift!.hashCode) +
+    (diagScoreFloor == null ? 0 : diagScoreFloor!.hashCode);
 
   @override
-  String toString() => 'SopMtfAdxConfig[enableMtf=$enableMtf, minSignals=$minSignals, adxEntryThreshold=$adxEntryThreshold, maxDistanceFromEma=$maxDistanceFromEma, fixedStopLossPct=$fixedStopLossPct, fixedTakeProfitPct=$fixedTakeProfitPct, maxHoldingHours=$maxHoldingHours, moveSlToBreakeven=$moveSlToBreakeven, rsiPullbackThreshold=$rsiPullbackThreshold, rsiReboundConfirm=$rsiReboundConfirm, requireCandleBreak=$requireCandleBreak, minRsiDelta=$minRsiDelta, reboundLookbackBars=$reboundLookbackBars, minRR=$minRR, keyLevelLookbackBars=$keyLevelLookbackBars, dailyMaPeriod=$dailyMaPeriod, rsiSellThreshold=$rsiSellThreshold, allowShort=$allowShort, dailyBorrowingRate=$dailyBorrowingRate, atrTrailingStopEnabled=$atrTrailingStopEnabled, atrPeriod=$atrPeriod, atrMultiplier=$atrMultiplier, diagnostics=$diagnostics]';
+  String toString() => 'SopMtfAdxConfig[enableMtf=$enableMtf, minSignals=$minSignals, adxEntryThreshold=$adxEntryThreshold, maxDistanceFromEma=$maxDistanceFromEma, fixedStopLossPct=$fixedStopLossPct, fixedTakeProfitPct=$fixedTakeProfitPct, maxHoldingHours=$maxHoldingHours, moveSlToBreakeven=$moveSlToBreakeven, rsiPullbackThreshold=$rsiPullbackThreshold, rsiReboundConfirm=$rsiReboundConfirm, requireCandleBreak=$requireCandleBreak, minRsiDelta=$minRsiDelta, reboundLookbackBars=$reboundLookbackBars, minRR=$minRR, keyLevelLookbackBars=$keyLevelLookbackBars, dailyMaPeriod=$dailyMaPeriod, rsiSellThreshold=$rsiSellThreshold, allowShort=$allowShort, shortOnly=$shortOnly, dailyBorrowingRate=$dailyBorrowingRate, atrTrailingStopEnabled=$atrTrailingStopEnabled, atrPeriod=$atrPeriod, atrMultiplier=$atrMultiplier, requiredDailyTrend=$requiredDailyTrend, atrSlMultiplier=$atrSlMultiplier, atrTpMultiplier=$atrTpMultiplier, diagnostics=$diagnostics, yearLookbackBars=$yearLookbackBars, medLookbackBars=$medLookbackBars, shortLookbackBars=$shortLookbackBars, rsiOversold=$rsiOversold, rsiOverbought=$rsiOverbought, buyThreshold=$buyThreshold, volumeBreakoutMultiplier=$volumeBreakoutMultiplier, scoreScale=$scoreScale, scoreShift=$scoreShift, diagScoreFloor=$diagScoreFloor]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -411,6 +610,11 @@ class SopMtfAdxConfig {
     } else {
       json[r'allowShort'] = null;
     }
+    if (this.shortOnly != null) {
+      json[r'shortOnly'] = this.shortOnly;
+    } else {
+      json[r'shortOnly'] = null;
+    }
     if (this.dailyBorrowingRate != null) {
       json[r'dailyBorrowingRate'] = this.dailyBorrowingRate;
     } else {
@@ -431,10 +635,71 @@ class SopMtfAdxConfig {
     } else {
       json[r'atrMultiplier'] = null;
     }
-    if (this.diagnostics != null) {
-      json[r'diagnostics'] = this.diagnostics;
+    if (this.requiredDailyTrend != null) {
+      json[r'requiredDailyTrend'] = this.requiredDailyTrend;
     } else {
-      json[r'diagnostics'] = null;
+      json[r'requiredDailyTrend'] = null;
+    }
+    if (this.atrSlMultiplier != null) {
+      json[r'atrSlMultiplier'] = this.atrSlMultiplier;
+    } else {
+      json[r'atrSlMultiplier'] = null;
+    }
+    if (this.atrTpMultiplier != null) {
+      json[r'atrTpMultiplier'] = this.atrTpMultiplier;
+    } else {
+      json[r'atrTpMultiplier'] = null;
+    }
+      json[r'diagnostics'] = this.diagnostics;
+    if (this.yearLookbackBars != null) {
+      json[r'yearLookbackBars'] = this.yearLookbackBars;
+    } else {
+      json[r'yearLookbackBars'] = null;
+    }
+    if (this.medLookbackBars != null) {
+      json[r'medLookbackBars'] = this.medLookbackBars;
+    } else {
+      json[r'medLookbackBars'] = null;
+    }
+    if (this.shortLookbackBars != null) {
+      json[r'shortLookbackBars'] = this.shortLookbackBars;
+    } else {
+      json[r'shortLookbackBars'] = null;
+    }
+    if (this.rsiOversold != null) {
+      json[r'rsiOversold'] = this.rsiOversold;
+    } else {
+      json[r'rsiOversold'] = null;
+    }
+    if (this.rsiOverbought != null) {
+      json[r'rsiOverbought'] = this.rsiOverbought;
+    } else {
+      json[r'rsiOverbought'] = null;
+    }
+    if (this.buyThreshold != null) {
+      json[r'buyThreshold'] = this.buyThreshold;
+    } else {
+      json[r'buyThreshold'] = null;
+    }
+    if (this.volumeBreakoutMultiplier != null) {
+      json[r'volumeBreakoutMultiplier'] = this.volumeBreakoutMultiplier;
+    } else {
+      json[r'volumeBreakoutMultiplier'] = null;
+    }
+    if (this.scoreScale != null) {
+      json[r'scoreScale'] = this.scoreScale;
+    } else {
+      json[r'scoreScale'] = null;
+    }
+    if (this.scoreShift != null) {
+      json[r'scoreShift'] = this.scoreShift;
+    } else {
+      json[r'scoreShift'] = null;
+    }
+    if (this.diagScoreFloor != null) {
+      json[r'diagScoreFloor'] = this.diagScoreFloor;
+    } else {
+      json[r'diagScoreFloor'] = null;
     }
     return json;
   }
@@ -476,11 +741,25 @@ class SopMtfAdxConfig {
         dailyMaPeriod: mapValueOfType<int>(json, r'dailyMaPeriod'),
         rsiSellThreshold: mapValueOfType<double>(json, r'rsiSellThreshold'),
         allowShort: mapValueOfType<bool>(json, r'allowShort'),
+        shortOnly: mapValueOfType<bool>(json, r'shortOnly'),
         dailyBorrowingRate: mapValueOfType<double>(json, r'dailyBorrowingRate'),
         atrTrailingStopEnabled: mapValueOfType<bool>(json, r'atrTrailingStopEnabled'),
         atrPeriod: mapValueOfType<int>(json, r'atrPeriod'),
         atrMultiplier: mapValueOfType<double>(json, r'atrMultiplier'),
+        requiredDailyTrend: SopMtfAdxConfigRequiredDailyTrendEnum.fromJson(json[r'requiredDailyTrend']),
+        atrSlMultiplier: mapValueOfType<double>(json, r'atrSlMultiplier'),
+        atrTpMultiplier: mapValueOfType<double>(json, r'atrTpMultiplier'),
         diagnostics: mapCastOfType<String, bool>(json, r'diagnostics') ?? const {},
+        yearLookbackBars: mapValueOfType<int>(json, r'yearLookbackBars'),
+        medLookbackBars: mapValueOfType<int>(json, r'medLookbackBars'),
+        shortLookbackBars: mapValueOfType<int>(json, r'shortLookbackBars'),
+        rsiOversold: mapValueOfType<double>(json, r'rsiOversold'),
+        rsiOverbought: mapValueOfType<double>(json, r'rsiOverbought'),
+        buyThreshold: mapValueOfType<double>(json, r'buyThreshold'),
+        volumeBreakoutMultiplier: mapValueOfType<double>(json, r'volumeBreakoutMultiplier'),
+        scoreScale: mapValueOfType<double>(json, r'scoreScale'),
+        scoreShift: mapValueOfType<double>(json, r'scoreShift'),
+        diagScoreFloor: mapValueOfType<double>(json, r'diagScoreFloor'),
       );
     }
     return null;
@@ -530,4 +809,84 @@ class SopMtfAdxConfig {
   static const requiredKeys = <String>{
   };
 }
+
+/// 要求的日線趨勢方向（BULLISH/BEARISH/ANY）。不符合時策略靜默跳過實盤評估，不影響回測。
+class SopMtfAdxConfigRequiredDailyTrendEnum {
+  /// Instantiate a new enum with the provided [value].
+  const SopMtfAdxConfigRequiredDailyTrendEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const BULLISH = SopMtfAdxConfigRequiredDailyTrendEnum._(r'BULLISH');
+  static const BEARISH = SopMtfAdxConfigRequiredDailyTrendEnum._(r'BEARISH');
+  static const ANY = SopMtfAdxConfigRequiredDailyTrendEnum._(r'ANY');
+  static const unknownDefaultOpenApi = SopMtfAdxConfigRequiredDailyTrendEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][SopMtfAdxConfigRequiredDailyTrendEnum].
+  static const values = <SopMtfAdxConfigRequiredDailyTrendEnum>[
+    BULLISH,
+    BEARISH,
+    ANY,
+    unknownDefaultOpenApi,
+  ];
+
+  static SopMtfAdxConfigRequiredDailyTrendEnum? fromJson(dynamic value) => SopMtfAdxConfigRequiredDailyTrendEnumTypeTransformer().decode(value);
+
+  static List<SopMtfAdxConfigRequiredDailyTrendEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <SopMtfAdxConfigRequiredDailyTrendEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = SopMtfAdxConfigRequiredDailyTrendEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [SopMtfAdxConfigRequiredDailyTrendEnum] to String,
+/// and [decode] dynamic data back to [SopMtfAdxConfigRequiredDailyTrendEnum].
+class SopMtfAdxConfigRequiredDailyTrendEnumTypeTransformer {
+  factory SopMtfAdxConfigRequiredDailyTrendEnumTypeTransformer() => _instance ??= const SopMtfAdxConfigRequiredDailyTrendEnumTypeTransformer._();
+
+  const SopMtfAdxConfigRequiredDailyTrendEnumTypeTransformer._();
+
+  String encode(SopMtfAdxConfigRequiredDailyTrendEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a SopMtfAdxConfigRequiredDailyTrendEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  SopMtfAdxConfigRequiredDailyTrendEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'BULLISH': return SopMtfAdxConfigRequiredDailyTrendEnum.BULLISH;
+        case r'BEARISH': return SopMtfAdxConfigRequiredDailyTrendEnum.BEARISH;
+        case r'ANY': return SopMtfAdxConfigRequiredDailyTrendEnum.ANY;
+        case r'unknown_default_open_api': return SopMtfAdxConfigRequiredDailyTrendEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [SopMtfAdxConfigRequiredDailyTrendEnumTypeTransformer] instance.
+  static SopMtfAdxConfigRequiredDailyTrendEnumTypeTransformer? _instance;
+}
+
 

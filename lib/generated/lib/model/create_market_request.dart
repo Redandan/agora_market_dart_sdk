@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -27,44 +27,82 @@ class CreateMarketRequest {
     this.options = const [],
   });
 
-  /// 撣璅?
-
+  /// 市場標題
   String title;
-  /// 撣?膩
 
+  /// 市場描述
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? description;
-  /// 撣憿?
 
+  /// 市場類型
   CreateMarketRequestTypeEnum type;
-  /// ????
 
+  /// 開始時間
   DateTime startTime;
-  /// 蝯???
 
+  /// 結束時間
   DateTime endTime;
-  /// ?撠?瘜券?憿?  ///
+
+  /// 最小投注金額
+  ///
   /// Minimum value: 1.0
   num minBetAmount;
-  /// ?憭扳?瘜券?憿?  ///
+
+  /// 最大投注金額
+  ///
   /// Minimum value: 1.0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? maxBetAmount;
-  /// 撟喳??鞎餌??嚗?-10嚗?  ///
+
+  /// 平台手續費百分比（0-10）
+  ///
   /// Minimum value: 0.0
   /// Maximum value: 10.0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? feePercentage;
-  /// 撣??URL
 
+  /// 市場圖片URL
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? imageUrl;
-  /// 撣??
 
+  /// 市場分類
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? category;
-  /// ??瘚??改???鞈?嚗?  ///
+
+  /// 初始流動性（做莊資金）
+  ///
   /// Minimum value: 50.0
   /// Maximum value: 1000000.0
   num initialLiquidity;
-  /// 撣?賊??”
 
+  /// 市場選項列表
   List<MarketOptionRequest> options;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateMarketRequest &&
     other.title == title &&
@@ -161,12 +199,8 @@ class CreateMarketRequest {
         startTime: mapDateTime(json, r'startTime', r'')!,
         endTime: mapDateTime(json, r'endTime', r'')!,
         minBetAmount: num.parse('${json[r'minBetAmount']}'),
-        maxBetAmount: json[r'maxBetAmount'] == null
-            ? null
-            : num.parse('${json[r'maxBetAmount']}'),
-        feePercentage: json[r'feePercentage'] == null
-            ? null
-            : num.parse('${json[r'feePercentage']}'),
+        maxBetAmount: num.parse('${json[r'maxBetAmount']}'),
+        feePercentage: num.parse('${json[r'feePercentage']}'),
         imageUrl: mapValueOfType<String>(json, r'imageUrl'),
         category: mapValueOfType<String>(json, r'category'),
         initialLiquidity: num.parse('${json[r'initialLiquidity']}'),
@@ -228,14 +262,14 @@ class CreateMarketRequest {
   };
 }
 
-/// 撣憿?
+/// 市場類型
 class CreateMarketRequestTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const CreateMarketRequestTypeEnum._(this.value);
 
   /// The underlying value of this enum member.
-
   final String value;
+
   @override
   String toString() => value;
 
@@ -301,9 +335,7 @@ class CreateMarketRequestTypeEnumTypeTransformer {
   }
 
   /// Singleton [CreateMarketRequestTypeEnumTypeTransformer] instance.
-
   static CreateMarketRequestTypeEnumTypeTransformer? _instance;
 }
-
 
 

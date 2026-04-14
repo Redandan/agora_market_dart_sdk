@@ -25,7 +25,8 @@ class CreateWithdrawParam {
   /// 貨幣代碼
   String currency;
 
-  ProtocolEnum protocolEnum;
+  /// 提現協議
+  CreateWithdrawParamProtocolEnumEnum protocolEnum;
 
   /// 提現目標地址
   String toAddress;
@@ -78,7 +79,7 @@ class CreateWithdrawParam {
       return CreateWithdrawParam(
         amount: num.parse('${json[r'amount']}'),
         currency: mapValueOfType<String>(json, r'currency')!,
-        protocolEnum: ProtocolEnum.fromJson(json[r'protocolEnum'])!,
+        protocolEnum: CreateWithdrawParamProtocolEnumEnum.fromJson(json[r'protocolEnum'])!,
         toAddress: mapValueOfType<String>(json, r'toAddress')!,
       );
     }
@@ -133,4 +134,84 @@ class CreateWithdrawParam {
     'toAddress',
   };
 }
+
+/// 提現協議
+class CreateWithdrawParamProtocolEnumEnum {
+  /// Instantiate a new enum with the provided [value].
+  const CreateWithdrawParamProtocolEnumEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const tRC20 = CreateWithdrawParamProtocolEnumEnum._(r'TRC20');
+  static const eRC20 = CreateWithdrawParamProtocolEnumEnum._(r'ERC20');
+  static const bEP20 = CreateWithdrawParamProtocolEnumEnum._(r'BEP20');
+  static const unknownDefaultOpenApi = CreateWithdrawParamProtocolEnumEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][CreateWithdrawParamProtocolEnumEnum].
+  static const values = <CreateWithdrawParamProtocolEnumEnum>[
+    tRC20,
+    eRC20,
+    bEP20,
+    unknownDefaultOpenApi,
+  ];
+
+  static CreateWithdrawParamProtocolEnumEnum? fromJson(dynamic value) => CreateWithdrawParamProtocolEnumEnumTypeTransformer().decode(value);
+
+  static List<CreateWithdrawParamProtocolEnumEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CreateWithdrawParamProtocolEnumEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CreateWithdrawParamProtocolEnumEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CreateWithdrawParamProtocolEnumEnum] to String,
+/// and [decode] dynamic data back to [CreateWithdrawParamProtocolEnumEnum].
+class CreateWithdrawParamProtocolEnumEnumTypeTransformer {
+  factory CreateWithdrawParamProtocolEnumEnumTypeTransformer() => _instance ??= const CreateWithdrawParamProtocolEnumEnumTypeTransformer._();
+
+  const CreateWithdrawParamProtocolEnumEnumTypeTransformer._();
+
+  String encode(CreateWithdrawParamProtocolEnumEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a CreateWithdrawParamProtocolEnumEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CreateWithdrawParamProtocolEnumEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'TRC20': return CreateWithdrawParamProtocolEnumEnum.tRC20;
+        case r'ERC20': return CreateWithdrawParamProtocolEnumEnum.eRC20;
+        case r'BEP20': return CreateWithdrawParamProtocolEnumEnum.bEP20;
+        case r'unknown_default_open_api': return CreateWithdrawParamProtocolEnumEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [CreateWithdrawParamProtocolEnumEnumTypeTransformer] instance.
+  static CreateWithdrawParamProtocolEnumEnumTypeTransformer? _instance;
+}
+
 

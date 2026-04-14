@@ -41,17 +41,31 @@ class Dispute {
   /// 賣家ID
   int sellerId;
 
+  /// 爭議狀態
   DisputeStatusEnum status;
 
-  DisputeOutcome? outcome;
+  /// 處理申訴結果
+  DisputeOutcomeEnum? outcome;
 
   /// 爭議描述
   String description;
 
   /// 賣家回覆
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? sellerReply;
 
   /// 管理員處理說明
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? adminComment;
 
   /// 創建時間
@@ -61,6 +75,12 @@ class Dispute {
   DateTime updatedAt;
 
   /// 處理時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? resolvedAt;
 
   Set<String> imageUrls;
@@ -164,7 +184,7 @@ class Dispute {
         buyerId: mapValueOfType<int>(json, r'buyerId')!,
         sellerId: mapValueOfType<int>(json, r'sellerId')!,
         status: DisputeStatusEnum.fromJson(json[r'status'])!,
-        outcome: DisputeOutcome.fromJson(json[r'outcome']),
+        outcome: DisputeOutcomeEnum.fromJson(json[r'outcome']),
         description: mapValueOfType<String>(json, r'description')!,
         sellerReply: mapValueOfType<String>(json, r'sellerReply'),
         adminComment: mapValueOfType<String>(json, r'adminComment'),
@@ -234,4 +254,164 @@ class Dispute {
     'updatedAt',
   };
 }
+
+/// 爭議狀態
+class DisputeStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const DisputeStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const PENDING = DisputeStatusEnum._(r'PENDING');
+  static const COMPLETED = DisputeStatusEnum._(r'COMPLETED');
+  static const REJECTED = DisputeStatusEnum._(r'REJECTED');
+  static const unknownDefaultOpenApi = DisputeStatusEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][DisputeStatusEnum].
+  static const values = <DisputeStatusEnum>[
+    PENDING,
+    COMPLETED,
+    REJECTED,
+    unknownDefaultOpenApi,
+  ];
+
+  static DisputeStatusEnum? fromJson(dynamic value) => DisputeStatusEnumTypeTransformer().decode(value);
+
+  static List<DisputeStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <DisputeStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = DisputeStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [DisputeStatusEnum] to String,
+/// and [decode] dynamic data back to [DisputeStatusEnum].
+class DisputeStatusEnumTypeTransformer {
+  factory DisputeStatusEnumTypeTransformer() => _instance ??= const DisputeStatusEnumTypeTransformer._();
+
+  const DisputeStatusEnumTypeTransformer._();
+
+  String encode(DisputeStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a DisputeStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  DisputeStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'PENDING': return DisputeStatusEnum.PENDING;
+        case r'COMPLETED': return DisputeStatusEnum.COMPLETED;
+        case r'REJECTED': return DisputeStatusEnum.REJECTED;
+        case r'unknown_default_open_api': return DisputeStatusEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [DisputeStatusEnumTypeTransformer] instance.
+  static DisputeStatusEnumTypeTransformer? _instance;
+}
+
+
+/// 處理申訴結果
+class DisputeOutcomeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const DisputeOutcomeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const FULL_REFUND = DisputeOutcomeEnum._(r'FULL_REFUND');
+  static const PARTIAL_REFUND = DisputeOutcomeEnum._(r'PARTIAL_REFUND');
+  static const REJECTED = DisputeOutcomeEnum._(r'REJECTED');
+  static const unknownDefaultOpenApi = DisputeOutcomeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][DisputeOutcomeEnum].
+  static const values = <DisputeOutcomeEnum>[
+    FULL_REFUND,
+    PARTIAL_REFUND,
+    REJECTED,
+    unknownDefaultOpenApi,
+  ];
+
+  static DisputeOutcomeEnum? fromJson(dynamic value) => DisputeOutcomeEnumTypeTransformer().decode(value);
+
+  static List<DisputeOutcomeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <DisputeOutcomeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = DisputeOutcomeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [DisputeOutcomeEnum] to String,
+/// and [decode] dynamic data back to [DisputeOutcomeEnum].
+class DisputeOutcomeEnumTypeTransformer {
+  factory DisputeOutcomeEnumTypeTransformer() => _instance ??= const DisputeOutcomeEnumTypeTransformer._();
+
+  const DisputeOutcomeEnumTypeTransformer._();
+
+  String encode(DisputeOutcomeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a DisputeOutcomeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  DisputeOutcomeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'FULL_REFUND': return DisputeOutcomeEnum.FULL_REFUND;
+        case r'PARTIAL_REFUND': return DisputeOutcomeEnum.PARTIAL_REFUND;
+        case r'REJECTED': return DisputeOutcomeEnum.REJECTED;
+        case r'unknown_default_open_api': return DisputeOutcomeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [DisputeOutcomeEnumTypeTransformer] instance.
+  static DisputeOutcomeEnumTypeTransformer? _instance;
+}
+
 

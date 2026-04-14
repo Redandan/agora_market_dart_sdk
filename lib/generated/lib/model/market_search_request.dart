@@ -88,18 +88,25 @@ class MarketSearchRequest {
   ///
   String? sortDirection;
 
+  /// 市場狀態
+  MarketSearchRequestStatusEnum? status;
+
+  /// 市場分類
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  MarketStatusEnum? status;
-
-  /// 市場分類
   String? category;
 
   /// 是否只顯示精選
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? featured;
 
   @override
@@ -213,7 +220,7 @@ class MarketSearchRequest {
         keyword: mapValueOfType<String>(json, r'keyword'),
         sortBy: mapValueOfType<String>(json, r'sortBy'),
         sortDirection: mapValueOfType<String>(json, r'sortDirection'),
-        status: MarketStatusEnum.fromJson(json[r'status']),
+        status: MarketSearchRequestStatusEnum.fromJson(json[r'status']),
         category: mapValueOfType<String>(json, r'category'),
         featured: mapValueOfType<bool>(json, r'featured'),
       );
@@ -265,4 +272,87 @@ class MarketSearchRequest {
   static const requiredKeys = <String>{
   };
 }
+
+/// 市場狀態
+class MarketSearchRequestStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const MarketSearchRequestStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const OPEN = MarketSearchRequestStatusEnum._(r'OPEN');
+  static const CLOSED = MarketSearchRequestStatusEnum._(r'CLOSED');
+  static const RESOLVED = MarketSearchRequestStatusEnum._(r'RESOLVED');
+  static const CANCELLED = MarketSearchRequestStatusEnum._(r'CANCELLED');
+  static const unknownDefaultOpenApi = MarketSearchRequestStatusEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][MarketSearchRequestStatusEnum].
+  static const values = <MarketSearchRequestStatusEnum>[
+    OPEN,
+    CLOSED,
+    RESOLVED,
+    CANCELLED,
+    unknownDefaultOpenApi,
+  ];
+
+  static MarketSearchRequestStatusEnum? fromJson(dynamic value) => MarketSearchRequestStatusEnumTypeTransformer().decode(value);
+
+  static List<MarketSearchRequestStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <MarketSearchRequestStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = MarketSearchRequestStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [MarketSearchRequestStatusEnum] to String,
+/// and [decode] dynamic data back to [MarketSearchRequestStatusEnum].
+class MarketSearchRequestStatusEnumTypeTransformer {
+  factory MarketSearchRequestStatusEnumTypeTransformer() => _instance ??= const MarketSearchRequestStatusEnumTypeTransformer._();
+
+  const MarketSearchRequestStatusEnumTypeTransformer._();
+
+  String encode(MarketSearchRequestStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a MarketSearchRequestStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  MarketSearchRequestStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'OPEN': return MarketSearchRequestStatusEnum.OPEN;
+        case r'CLOSED': return MarketSearchRequestStatusEnum.CLOSED;
+        case r'RESOLVED': return MarketSearchRequestStatusEnum.RESOLVED;
+        case r'CANCELLED': return MarketSearchRequestStatusEnum.CANCELLED;
+        case r'unknown_default_open_api': return MarketSearchRequestStatusEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [MarketSearchRequestStatusEnumTypeTransformer] instance.
+  static MarketSearchRequestStatusEnumTypeTransformer? _instance;
+}
+
 

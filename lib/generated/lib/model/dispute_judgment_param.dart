@@ -18,7 +18,7 @@ class DisputeJudgmentParam {
     this.comment,
   });
 
-  /// 爭議責任類型
+  /// 責任類型：SELLER_FAULT(賣家退款-全額), BUYER_FAULT(賣家不退款), PARTIAL_FAULT(賣家部分退款)
   DisputeJudgmentParamFaultTypeEnum faultType;
 
   /// 部分退款金額（當 faultType 為 PARTIAL_FAULT 時必填）。金額必須大於0且小於訂單總金額
@@ -144,7 +144,7 @@ class DisputeJudgmentParam {
   };
 }
 
-/// 爭議責任類型
+/// 責任類型：SELLER_FAULT(賣家退款-全額), BUYER_FAULT(賣家不退款), PARTIAL_FAULT(賣家部分退款)
 class DisputeJudgmentParamFaultTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const DisputeJudgmentParamFaultTypeEnum._(this.value);

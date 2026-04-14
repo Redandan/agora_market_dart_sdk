@@ -19,6 +19,7 @@ class StrategyResponse {
     this.enabled,
     this.aiGenerated,
     this.discoveryBatch,
+    this.symbols,
     this.config,
     this.createdAt,
     this.updatedAt,
@@ -70,8 +71,24 @@ class StrategyResponse {
   bool? aiGenerated;
 
   /// AI 探勘批次 ID，僅 AI 探勘策略才有值
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? discoveryBatch;
 
+  /// 監控交易對，逗號分隔，null=全部
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? symbols;
+
+  /// 策略參數配置
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -81,9 +98,21 @@ class StrategyResponse {
   SopMtfAdxConfig? config;
 
   /// 建立時間（ISO-8601）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? createdAt;
 
   /// 更新時間（ISO-8601）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? updatedAt;
 
   @override
@@ -94,6 +123,7 @@ class StrategyResponse {
     other.enabled == enabled &&
     other.aiGenerated == aiGenerated &&
     other.discoveryBatch == discoveryBatch &&
+    other.symbols == symbols &&
     other.config == config &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt;
@@ -107,12 +137,13 @@ class StrategyResponse {
     (enabled == null ? 0 : enabled!.hashCode) +
     (aiGenerated == null ? 0 : aiGenerated!.hashCode) +
     (discoveryBatch == null ? 0 : discoveryBatch!.hashCode) +
+    (symbols == null ? 0 : symbols!.hashCode) +
     (config == null ? 0 : config!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'StrategyResponse[id=$id, name=$name, strategyType=$strategyType, enabled=$enabled, aiGenerated=$aiGenerated, discoveryBatch=$discoveryBatch, config=$config, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'StrategyResponse[id=$id, name=$name, strategyType=$strategyType, enabled=$enabled, aiGenerated=$aiGenerated, discoveryBatch=$discoveryBatch, symbols=$symbols, config=$config, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -145,6 +176,11 @@ class StrategyResponse {
       json[r'discoveryBatch'] = this.discoveryBatch;
     } else {
       json[r'discoveryBatch'] = null;
+    }
+    if (this.symbols != null) {
+      json[r'symbols'] = this.symbols;
+    } else {
+      json[r'symbols'] = null;
     }
     if (this.config != null) {
       json[r'config'] = this.config;
@@ -189,6 +225,7 @@ class StrategyResponse {
         enabled: mapValueOfType<bool>(json, r'enabled'),
         aiGenerated: mapValueOfType<bool>(json, r'aiGenerated'),
         discoveryBatch: mapValueOfType<String>(json, r'discoveryBatch'),
+        symbols: mapValueOfType<String>(json, r'symbols'),
         config: SopMtfAdxConfig.fromJson(json[r'config']),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),

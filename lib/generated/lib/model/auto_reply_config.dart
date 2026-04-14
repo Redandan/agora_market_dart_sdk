@@ -33,6 +33,12 @@ class AutoReplyConfig {
   String name;
 
   /// 配置描述
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? description;
 
   /// 關鍵詞（唯一）
@@ -51,6 +57,12 @@ class AutoReplyConfig {
   int hitCount;
 
   /// 最後命中時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? lastHitTime;
 
   /// 創建時間

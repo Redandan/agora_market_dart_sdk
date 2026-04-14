@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -21,14 +21,10 @@ class ShippingServiceGroup {
     this.message,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  ShippingCompanyEnum? shippingCompany;
-  /// ?祥
+  /// 物流公司
+  ShippingServiceGroupShippingCompanyEnum? shippingCompany;
+
+  /// 運費
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -36,7 +32,8 @@ class ShippingServiceGroup {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? shippingFee;
-  /// ??????嚗予?賂?
+
+  /// 預計送達時間（天數）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -44,10 +41,11 @@ class ShippingServiceGroup {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? estimatedDays;
-  /// ?舫????啣??”
 
+  /// 可配送的地址列表
   List<ShippingAddress> addresses;
-  /// ?臬?閬溶??
+
+  /// 是否需要添加地址
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -55,7 +53,8 @@ class ShippingServiceGroup {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? needsAddress;
-  /// ?內閮
+
+  /// 提示訊息
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -63,6 +62,7 @@ class ShippingServiceGroup {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? message;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ShippingServiceGroup &&
     other.shippingCompany == shippingCompany &&
@@ -135,7 +135,7 @@ class ShippingServiceGroup {
       }());
 
       return ShippingServiceGroup(
-        shippingCompany: ShippingCompanyEnum.fromJson(json[r'shippingCompany']),
+        shippingCompany: ShippingServiceGroupShippingCompanyEnum.fromJson(json[r'shippingCompany']),
         shippingFee: num.parse('${json[r'shippingFee']}'),
         estimatedDays: mapValueOfType<int>(json, r'estimatedDays'),
         addresses: ShippingAddress.listFromJson(json[r'addresses']),
@@ -189,6 +189,115 @@ class ShippingServiceGroup {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
   };
+}
+
+/// 物流公司
+class ShippingServiceGroupShippingCompanyEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ShippingServiceGroupShippingCompanyEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const BLACK_CAT = ShippingServiceGroupShippingCompanyEnum._(r'BLACK_CAT');
+  static const HCT = ShippingServiceGroupShippingCompanyEnum._(r'HCT');
+  static const KERRY = ShippingServiceGroupShippingCompanyEnum._(r'KERRY');
+  static const SF_EXPRESS = ShippingServiceGroupShippingCompanyEnum._(r'SF_EXPRESS');
+  static const HOME_DELIVERY_EXPRESS = ShippingServiceGroupShippingCompanyEnum._(r'HOME_DELIVERY_EXPRESS');
+  static const TAIWAN_HOME_DELIVERY = ShippingServiceGroupShippingCompanyEnum._(r'TAIWAN_HOME_DELIVERY');
+  static const PLATFORM_DELIVERY = ShippingServiceGroupShippingCompanyEnum._(r'PLATFORM_DELIVERY');
+  static const SEVEN_ELEVEN = ShippingServiceGroupShippingCompanyEnum._(r'SEVEN_ELEVEN');
+  static const FAMILY_MART = ShippingServiceGroupShippingCompanyEnum._(r'FAMILY_MART');
+  static const HILIFE = ShippingServiceGroupShippingCompanyEnum._(r'HILIFE');
+  static const OK_MART = ShippingServiceGroupShippingCompanyEnum._(r'OK_MART');
+  static const CHUNGHWA_POST = ShippingServiceGroupShippingCompanyEnum._(r'CHUNGHWA_POST');
+  static const OTHER = ShippingServiceGroupShippingCompanyEnum._(r'OTHER');
+  static const unknownDefaultOpenApi = ShippingServiceGroupShippingCompanyEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ShippingServiceGroupShippingCompanyEnum].
+  static const values = <ShippingServiceGroupShippingCompanyEnum>[
+    BLACK_CAT,
+    HCT,
+    KERRY,
+    SF_EXPRESS,
+    HOME_DELIVERY_EXPRESS,
+    TAIWAN_HOME_DELIVERY,
+    PLATFORM_DELIVERY,
+    SEVEN_ELEVEN,
+    FAMILY_MART,
+    HILIFE,
+    OK_MART,
+    CHUNGHWA_POST,
+    OTHER,
+    unknownDefaultOpenApi,
+  ];
+
+  static ShippingServiceGroupShippingCompanyEnum? fromJson(dynamic value) => ShippingServiceGroupShippingCompanyEnumTypeTransformer().decode(value);
+
+  static List<ShippingServiceGroupShippingCompanyEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ShippingServiceGroupShippingCompanyEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ShippingServiceGroupShippingCompanyEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ShippingServiceGroupShippingCompanyEnum] to String,
+/// and [decode] dynamic data back to [ShippingServiceGroupShippingCompanyEnum].
+class ShippingServiceGroupShippingCompanyEnumTypeTransformer {
+  factory ShippingServiceGroupShippingCompanyEnumTypeTransformer() => _instance ??= const ShippingServiceGroupShippingCompanyEnumTypeTransformer._();
+
+  const ShippingServiceGroupShippingCompanyEnumTypeTransformer._();
+
+  String encode(ShippingServiceGroupShippingCompanyEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ShippingServiceGroupShippingCompanyEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ShippingServiceGroupShippingCompanyEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'BLACK_CAT': return ShippingServiceGroupShippingCompanyEnum.BLACK_CAT;
+        case r'HCT': return ShippingServiceGroupShippingCompanyEnum.HCT;
+        case r'KERRY': return ShippingServiceGroupShippingCompanyEnum.KERRY;
+        case r'SF_EXPRESS': return ShippingServiceGroupShippingCompanyEnum.SF_EXPRESS;
+        case r'HOME_DELIVERY_EXPRESS': return ShippingServiceGroupShippingCompanyEnum.HOME_DELIVERY_EXPRESS;
+        case r'TAIWAN_HOME_DELIVERY': return ShippingServiceGroupShippingCompanyEnum.TAIWAN_HOME_DELIVERY;
+        case r'PLATFORM_DELIVERY': return ShippingServiceGroupShippingCompanyEnum.PLATFORM_DELIVERY;
+        case r'SEVEN_ELEVEN': return ShippingServiceGroupShippingCompanyEnum.SEVEN_ELEVEN;
+        case r'FAMILY_MART': return ShippingServiceGroupShippingCompanyEnum.FAMILY_MART;
+        case r'HILIFE': return ShippingServiceGroupShippingCompanyEnum.HILIFE;
+        case r'OK_MART': return ShippingServiceGroupShippingCompanyEnum.OK_MART;
+        case r'CHUNGHWA_POST': return ShippingServiceGroupShippingCompanyEnum.CHUNGHWA_POST;
+        case r'OTHER': return ShippingServiceGroupShippingCompanyEnum.OTHER;
+        case r'unknown_default_open_api': return ShippingServiceGroupShippingCompanyEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ShippingServiceGroupShippingCompanyEnumTypeTransformer] instance.
+  static ShippingServiceGroupShippingCompanyEnumTypeTransformer? _instance;
 }
 
 

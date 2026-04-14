@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -25,7 +25,7 @@ class RegistrationOverviewResponse {
     this.topPromoCodes = const [],
   });
 
-  /// ?亥岷韏瑕???
+  /// 查詢起始時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -33,7 +33,8 @@ class RegistrationOverviewResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? startTime;
-  /// ?亥岷蝯???
+
+  /// 查詢結束時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -41,7 +42,8 @@ class RegistrationOverviewResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? endTime;
-  /// ??蝮質酉?
+
+  /// 區間內總註冊數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -49,14 +51,17 @@ class RegistrationOverviewResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? totalRegistrations;
-  /// 隞閮餃???  ///
+
+  /// 今日註冊數
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? todayRegistrations;
-  /// ?冽閮餃??賂?撠??剁?
+
+  /// 昨日註冊數（對比用）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -64,25 +69,28 @@ class RegistrationOverviewResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? yesterdayRegistrations;
-  /// 銝勗??亥酉?嚗?瘥嚗?  ///
+
+  /// 上週同日註冊數（對比用）
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? lastWeekSameDayRegistrations;
-  /// ??????亥酉?隅??
 
+  /// 按日分組的每日註冊趨勢
   List<DailyStatDto> dailyTrend;
-  /// ????蝯??亥岷蝭? ??48 撠??‵???血???null嚗?
 
+  /// 按小時分組（查詢範圍 ≤ 48 小時時填充，否則為 null）
   List<HourlyStatDto> hourlyDistribution;
-  /// ?酉?????孵?嚗?蝯?
 
+  /// 按註冊渠道（方式）分組
   List<ChannelStatDto> channelBreakdown;
-  /// Top N ?典誨蝣潔蝙?券?
 
+  /// Top N 推廣碼使用量
   List<PromoCodeStatDto> topPromoCodes;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is RegistrationOverviewResponse &&
     other.startTime == startTime &&
@@ -230,5 +238,4 @@ class RegistrationOverviewResponse {
   static const requiredKeys = <String>{
   };
 }
-
 

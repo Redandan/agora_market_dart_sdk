@@ -20,6 +20,8 @@ class BacktestRunRequest {
     required this.endTime,
     required this.initialCapital,
     required this.feeRate,
+    this.applyFilters,
+    this.source_,
   });
 
   /// 策略 ID
@@ -47,6 +49,24 @@ class BacktestRunRequest {
   /// Minimum value: 0.0
   num feeRate;
 
+  /// 套用歷史過濾器（F&G、事件日曆、資金費率）進行回測。預設 false。
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? applyFilters;
+
+  /// K 線資料源：binance 或 okx。預設 binance（涵蓋全歷史）；當 OKX 累積足夠歷史後可切換以對齊交易執行面。
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? source_;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is BacktestRunRequest &&
     other.strategyId == strategyId &&
@@ -55,7 +75,9 @@ class BacktestRunRequest {
     other.startTime == startTime &&
     other.endTime == endTime &&
     other.initialCapital == initialCapital &&
-    other.feeRate == feeRate;
+    other.feeRate == feeRate &&
+    other.applyFilters == applyFilters &&
+    other.source_ == source_;
 
   @override
   int get hashCode =>
@@ -66,10 +88,12 @@ class BacktestRunRequest {
     (startTime.hashCode) +
     (endTime.hashCode) +
     (initialCapital.hashCode) +
-    (feeRate.hashCode);
+    (feeRate.hashCode) +
+    (applyFilters == null ? 0 : applyFilters!.hashCode) +
+    (source_ == null ? 0 : source_!.hashCode);
 
   @override
-  String toString() => 'BacktestRunRequest[strategyId=$strategyId, symbol=$symbol, intervalCode=$intervalCode, startTime=$startTime, endTime=$endTime, initialCapital=$initialCapital, feeRate=$feeRate]';
+  String toString() => 'BacktestRunRequest[strategyId=$strategyId, symbol=$symbol, intervalCode=$intervalCode, startTime=$startTime, endTime=$endTime, initialCapital=$initialCapital, feeRate=$feeRate, applyFilters=$applyFilters, source_=$source_]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -80,6 +104,16 @@ class BacktestRunRequest {
       json[r'endTime'] = this.endTime.toUtc().toIso8601String();
       json[r'initialCapital'] = this.initialCapital;
       json[r'feeRate'] = this.feeRate;
+    if (this.applyFilters != null) {
+      json[r'applyFilters'] = this.applyFilters;
+    } else {
+      json[r'applyFilters'] = null;
+    }
+    if (this.source_ != null) {
+      json[r'source'] = this.source_;
+    } else {
+      json[r'source'] = null;
+    }
     return json;
   }
 
@@ -109,6 +143,8 @@ class BacktestRunRequest {
         endTime: mapDateTime(json, r'endTime', r'')!,
         initialCapital: num.parse('${json[r'initialCapital']}'),
         feeRate: num.parse('${json[r'feeRate']}'),
+        applyFilters: mapValueOfType<bool>(json, r'applyFilters'),
+        source_: mapValueOfType<String>(json, r'source'),
       );
     }
     return null;

@@ -157,6 +157,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**updateCartItem**](doc//DefaultApi.md#updatecartitem) | **PUT** /api/cart/{cartItemId} | 更新購物車項目
 *DefaultApi* | [**updatePost**](doc//DefaultApi.md#updatepost) | **PUT** /api/posts | 更新貼文
 *DefaultApi* | [**validatePostalCode**](doc//DefaultApi.md#validatepostalcode) | **GET** /api/logistics/postal-codes/{postalCode}/validate | 郵遞區號驗證
+*AdminAiControllerApi* | [**getConversionStats**](doc//AdminAiControllerApi.md#getconversionstats) | **GET** /api/admin/ai/conversion/stats | 查詢 AI 群組對話轉化效率統計（可按群組 + 日期區間篩選）
 *AdminAiControllerApi* | [**getStats**](doc//AdminAiControllerApi.md#getstats) | **GET** /api/admin/ai/stats | 
 *AdminBotControllerApi* | [**refreshBotCommands**](doc//AdminBotControllerApi.md#refreshbotcommands) | **POST** /api/admin/bot/refresh-commands | 
 *AdminDeliveryApi* | [**assignDeliveryer**](doc//AdminDeliveryApi.md#assigndeliveryer) | **POST** /admin/delivery/orders/{orderId}/assign | 手動分配配送員
@@ -189,6 +190,10 @@ Class | Method | HTTP request | Description
 *AdminNotificationsApi* | [**getSystemNotificationStats**](doc//AdminNotificationsApi.md#getsystemnotificationstats) | **GET** /admin/notifications/stats | 獲取通知統計
 *AdminNotificationsApi* | [**searchNotifications1**](doc//AdminNotificationsApi.md#searchnotifications1) | **POST** /admin/notifications/search | 搜索通知
 *AdminNotificationsApi* | [**updateNotification1**](doc//AdminNotificationsApi.md#updatenotification1) | **PUT** /admin/notifications/{notificationId} | 更新通知
+*AdminOcoControllerApi* | [**listPositions**](doc//AdminOcoControllerApi.md#listpositions) | **GET** /admin/oco/positions | 
+*AdminOcoControllerApi* | [**marketSellOrphan**](doc//AdminOcoControllerApi.md#marketsellorphan) | **POST** /admin/oco/market-sell/{currency} | 
+*AdminOcoControllerApi* | [**retryOco**](doc//AdminOcoControllerApi.md#retryoco) | **POST** /admin/oco/retry/{positionId} | 
+*AdminOcoControllerApi* | [**swapCheck**](doc//AdminOcoControllerApi.md#swapcheck) | **GET** /admin/oco/swap-check | 
 *AdminOrdersApi* | [**cancelOrderByAdmin**](doc//AdminOrdersApi.md#cancelorderbyadmin) | **POST** /admin/orders/{orderId}/cancel | 取消訂單
 *AdminOrdersApi* | [**getOrderDetail**](doc//AdminOrdersApi.md#getorderdetail) | **GET** /admin/orders/{orderId} | 查看訂單詳情
 *AdminOrdersApi* | [**getOrderStatistics**](doc//AdminOrdersApi.md#getorderstatistics) | **GET** /admin/orders/statistics | 訂單統計報告
@@ -257,6 +262,8 @@ Class | Method | HTTP request | Description
 *BacktestApi* | [**queryStrategies**](doc//BacktestApi.md#querystrategies) | **POST** /backtests/strategies/query | 多條件查詢策略
 *BacktestApi* | [**queryStrategyBacktestDetail**](doc//BacktestApi.md#querystrategybacktestdetail) | **POST** /backtests/strategies/results/query | 查詢策略詳情（含回測結果）
 *BacktestApi* | [**runBacktest**](doc//BacktestApi.md#runbacktest) | **POST** /backtests/results | 執行回測
+*BacktestApi* | [**runBacktestExploration**](doc//BacktestApi.md#runbacktestexploration) | **POST** /backtests/results/exploration | 執行回測（包含停用策略）
+*BacktestApi* | [**triggerAdaptiveDiscovery**](doc//BacktestApi.md#triggeradaptivediscovery) | **POST** /backtests/adaptive-discovery | 市場感知自適應策略探勘
 *BacktestApi* | [**triggerAiDiscovery**](doc//BacktestApi.md#triggeraidiscovery) | **POST** /backtests/ai-discovery | AI 策略自動探勘
 *BacktestApi* | [**updateStrategy**](doc//BacktestApi.md#updatestrategy) | **PUT** /backtests/strategies/{strategyId} | 編輯策略
 *BettingApi* | [**getMarketBets**](doc//BettingApi.md#getmarketbets) | **GET** /api/bets/market/{marketId} | 市場投注記錄
@@ -312,9 +319,12 @@ Class | Method | HTTP request | Description
 *MarketChartApi* | [**getSymbols1**](doc//MarketChartApi.md#getsymbols1) | **GET** /market/symbols | 查詢可用交易對清單
 *MarketChartApi* | [**getTicker**](doc//MarketChartApi.md#getticker) | **GET** /market/ticker | 查詢最新 K 線（即時價格快照）
 *MarketDataAdminApi* | [**importHistorical**](doc//MarketDataAdminApi.md#importhistorical) | **POST** /admin/market/import | 批次拉取 Binance 歷史 K 線
-*MarketDataAdminApi* | [**listSubscriptions**](doc//MarketDataAdminApi.md#listsubscriptions) | **GET** /admin/market/subscriptions | 查詢所有 WS 訂閱狀態
-*MarketDataAdminApi* | [**subscribe1**](doc//MarketDataAdminApi.md#subscribe1) | **POST** /admin/market/subscribe | 開始 WS 即時訂閱
-*MarketDataAdminApi* | [**unsubscribe1**](doc//MarketDataAdminApi.md#unsubscribe1) | **DELETE** /admin/market/subscribe | 停止 WS 訂閱
+*MarketDataAdminApi* | [**klineInfo**](doc//MarketDataAdminApi.md#klineinfo) | **GET** /admin/market/info | 查詢 K 線資料質量統計
+*MarketDataAdminApi* | [**listSubscriptions**](doc//MarketDataAdminApi.md#listsubscriptions) | **GET** /admin/market/subscriptions | 查詢所有 WS 訂閱狀態（雙源合併）
+*MarketDataAdminApi* | [**reimportHistorical**](doc//MarketDataAdminApi.md#reimporthistorical) | **POST** /admin/market/reimport | 刪除並重新匯入 K 線
+*MarketDataAdminApi* | [**subscribe1**](doc//MarketDataAdminApi.md#subscribe1) | **POST** /admin/market/subscribe | 開始 WS 即時訂閱（對所有 provider 同步訂閱）
+*MarketDataAdminApi* | [**unsubscribe1**](doc//MarketDataAdminApi.md#unsubscribe1) | **DELETE** /admin/market/subscribe | 停止 WS 訂閱（對所有 provider 同步移除）
+*McpStreamableHttpControllerApi* | [**handleMcp**](doc//McpStreamableHttpControllerApi.md#handlemcp) | **POST** /mcp | 
 *MemberDisputesApi* | [**createDispute**](doc//MemberDisputesApi.md#createdispute) | **POST** /disputes | 創建糾紛
 *MemberDisputesApi* | [**getDisputeDetail**](doc//MemberDisputesApi.md#getdisputedetail) | **POST** /disputes/detail | 查看糾紛詳情
 *MemberDisputesApi* | [**replyDispute**](doc//MemberDisputesApi.md#replydispute) | **POST** /disputes/{disputeId}/reply | 回覆糾紛
@@ -445,8 +455,6 @@ Class | Method | HTTP request | Description
 *TelegramApi* | [**getGroupDetail**](doc//TelegramApi.md#getgroupdetail) | **GET** /api/admin/telegram-monitor/groups/{groupId}/detail | 獲取群組詳細資訊（活躍度統計 + 活躍用戶 + 最近消息）
 *TelegramApi* | [**getGroups**](doc//TelegramApi.md#getgroups) | **GET** /api/admin/telegram-monitor/groups | 獲取已監聽群組列表
 *TelegramApi* | [**simulateGroupMessage**](doc//TelegramApi.md#simulategroupmessage) | **POST** /api/admin/telegram-monitor/groups/{groupId}/ai-simulate | 模擬 AI 生成群組消息（previewOnly=true 時只預覽 prompt，不呼叫 AI）
-*TelegramBotLoginApi* | [**generateLoginToken**](doc//TelegramBotLoginApi.md#generatelogintoken) | **POST** /auth/telegram-bot/generate-login-token | 生成登录 loginToken
-*TelegramBotLoginApi* | [**verifyCode**](doc//TelegramBotLoginApi.md#verifycode) | **POST** /auth/telegram-bot/verify-code | 验证验证码
 *TelegramWebappAuthApi* | [**exchangeJwt**](doc//TelegramWebappAuthApi.md#exchangejwt) | **POST** /auth/telegram-webapp/exchange-jwt | Telegram WebApp 交換 JWT
 *TestApi* | [**generateAutoReplyTestData**](doc//TestApi.md#generateautoreplytestdata) | **POST** /test/auto-reply | 生成自動回復測試數據
 *TestApi* | [**generateDeliveryAcceptOrderTestData**](doc//TestApi.md#generatedeliveryacceptordertestdata) | **POST** /test/delivery-accept-order | 生成配送員接單測試數據
@@ -467,6 +475,8 @@ Class | Method | HTTP request | Description
 *UserAddressesApi* | [**getUserAddressesPage**](doc//UserAddressesApi.md#getuseraddressespage) | **GET** /user-addresses/page | 分頁獲取用戶地址
 *UserAddressesApi* | [**setDefaultAddress**](doc//UserAddressesApi.md#setdefaultaddress) | **POST** /user-addresses/{addressId}/set-default | 設置預設地址
 *UserAddressesApi* | [**updateAddress**](doc//UserAddressesApi.md#updateaddress) | **POST** /user-addresses/update | 更新地址
+*VerificationCodeLoginApi* | [**generateLoginToken**](doc//VerificationCodeLoginApi.md#generatelogintoken) | **POST** /auth/telegram-bot/generate-login-token | 生成驗證碼登入 Token
+*VerificationCodeLoginApi* | [**verifyCode**](doc//VerificationCodeLoginApi.md#verifycode) | **POST** /auth/telegram-bot/verify-code | 驗證碼登入
 *WalletConnectApi* | [**getNonce**](doc//WalletConnectApi.md#getnonce) | **POST** /auth/wallet-connect/nonce | 获取 Nonce（通用）
 *WalletConnectApi* | [**login**](doc//WalletConnectApi.md#login) | **POST** /auth/wallet-connect/login | Web3 钱包登录（通用）
 *WebpushApi* | [**getHealthStatus**](doc//WebpushApi.md#gethealthstatus) | **GET** /webpush/health | 獲取服務健康狀態
@@ -504,6 +514,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseKnowledgeResponse](doc//ApiResponseKnowledgeResponse.md)
  - [ApiResponseListKnowledgeResponse](doc//ApiResponseListKnowledgeResponse.md)
  - [ApiResponseListLoginMethod](doc//ApiResponseListLoginMethod.md)
+ - [ApiResponseListMapStringObject](doc//ApiResponseListMapStringObject.md)
  - [ApiResponseListPendingQuestionResponse](doc//ApiResponseListPendingQuestionResponse.md)
  - [ApiResponseListPostResponse](doc//ApiResponseListPostResponse.md)
  - [ApiResponseLoginResult](doc//ApiResponseLoginResult.md)
@@ -512,6 +523,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseMapStringObject](doc//ApiResponseMapStringObject.md)
  - [ApiResponseOAuth2AuthorizeResponse](doc//ApiResponseOAuth2AuthorizeResponse.md)
  - [ApiResponseOAuth2TokenResponse](doc//ApiResponseOAuth2TokenResponse.md)
+ - [ApiResponseObject](doc//ApiResponseObject.md)
  - [ApiResponsePageClientLog](doc//ApiResponsePageClientLog.md)
  - [ApiResponsePageColdWallet](doc//ApiResponsePageColdWallet.md)
  - [ApiResponsePageFileRecord](doc//ApiResponsePageFileRecord.md)
@@ -558,7 +570,6 @@ Class | Method | HTTP request | Description
  - [ClientLog](doc//ClientLog.md)
  - [ClientLogDto](doc//ClientLogDto.md)
  - [ColdWallet](doc//ColdWallet.md)
- - [ColdWalletStatusEnum](doc//ColdWalletStatusEnum.md)
  - [CreateActivityRequest](doc//CreateActivityRequest.md)
  - [CreateColdWalletParam](doc//CreateColdWalletParam.md)
  - [CreateIssueParam](doc//CreateIssueParam.md)
@@ -569,12 +580,11 @@ Class | Method | HTTP request | Description
  - [CreateWithdrawParam](doc//CreateWithdrawParam.md)
  - [CustomerIssue](doc//CustomerIssue.md)
  - [CustomerStats](doc//CustomerStats.md)
+ - [DailyRow](doc//DailyRow.md)
  - [DailyStatDto](doc//DailyStatDto.md)
- - [DefaultHomePageEnum](doc//DefaultHomePageEnum.md)
  - [DeliveryDetail](doc//DeliveryDetail.md)
  - [DeliveryHistoryParam](doc//DeliveryHistoryParam.md)
  - [DeliveryOrderSearchParam](doc//DeliveryOrderSearchParam.md)
- - [DeliveryReportTypeEnum](doc//DeliveryReportTypeEnum.md)
  - [DeliveryStatisticsDTO](doc//DeliveryStatisticsDTO.md)
  - [Deliveryer](doc//Deliveryer.md)
  - [DeliveryerPerformanceDTO](doc//DeliveryerPerformanceDTO.md)
@@ -588,12 +598,10 @@ Class | Method | HTTP request | Description
  - [DisputeCreateParam](doc//DisputeCreateParam.md)
  - [DisputeDetailParam](doc//DisputeDetailParam.md)
  - [DisputeJudgmentParam](doc//DisputeJudgmentParam.md)
- - [DisputeOutcome](doc//DisputeOutcome.md)
  - [DisputeQueryResult](doc//DisputeQueryResult.md)
  - [DisputeReplyParam](doc//DisputeReplyParam.md)
  - [DisputeSearchParam](doc//DisputeSearchParam.md)
  - [DisputeStatisticsDTO](doc//DisputeStatisticsDTO.md)
- - [DisputeStatusEnum](doc//DisputeStatusEnum.md)
  - [EmailLoginRequest](doc//EmailLoginRequest.md)
  - [EmailLoginSendCodeRequest](doc//EmailLoginSendCodeRequest.md)
  - [EmailLoginSendCodeResponse](doc//EmailLoginSendCodeResponse.md)
@@ -614,6 +622,7 @@ Class | Method | HTTP request | Description
  - [GroupAiPromptPreviewDTO](doc//GroupAiPromptPreviewDTO.md)
  - [GroupAiSimulationRequest](doc//GroupAiSimulationRequest.md)
  - [GroupAiSimulationResponseDTO](doc//GroupAiSimulationResponseDTO.md)
+ - [GroupConversionStatsDTO](doc//GroupConversionStatsDTO.md)
  - [GroupDetailDTO](doc//GroupDetailDTO.md)
  - [GroupEditRequest](doc//GroupEditRequest.md)
  - [GroupMessageDTO](doc//GroupMessageDTO.md)
@@ -622,12 +631,11 @@ Class | Method | HTTP request | Description
  - [InterestRecordDTO](doc//InterestRecordDTO.md)
  - [InterestRecordSearchParam](doc//InterestRecordSearchParam.md)
  - [IssueSearchParam](doc//IssueSearchParam.md)
- - [IssueStatusEnum](doc//IssueStatusEnum.md)
- - [IssueTypeEnum](doc//IssueTypeEnum.md)
  - [JobTypeInfo](doc//JobTypeInfo.md)
  - [KlineBarDTO](doc//KlineBarDTO.md)
  - [KlineImportRequest](doc//KlineImportRequest.md)
  - [KlineImportResponse](doc//KlineImportResponse.md)
+ - [KlineInfoResponse](doc//KlineInfoResponse.md)
  - [KlineSubscribeRequest](doc//KlineSubscribeRequest.md)
  - [KlineSubscriptionInfo](doc//KlineSubscriptionInfo.md)
  - [KnowledgeEntry](doc//KnowledgeEntry.md)
@@ -645,7 +653,6 @@ Class | Method | HTTP request | Description
  - [MarketOptionResponse](doc//MarketOptionResponse.md)
  - [MarketResponse](doc//MarketResponse.md)
  - [MarketSearchRequest](doc//MarketSearchRequest.md)
- - [MarketStatusEnum](doc//MarketStatusEnum.md)
  - [MemberSearchParam](doc//MemberSearchParam.md)
  - [MemberUpdateParam](doc//MemberUpdateParam.md)
  - [MessageSendResponseDTO](doc//MessageSendResponseDTO.md)
@@ -654,10 +661,7 @@ Class | Method | HTTP request | Description
  - [NotificationCreateParam](doc//NotificationCreateParam.md)
  - [NotificationResponseDTO](doc//NotificationResponseDTO.md)
  - [NotificationSearchParam](doc//NotificationSearchParam.md)
- - [NotificationStatusEnum](doc//NotificationStatusEnum.md)
- - [NotificationTypeEnum](doc//NotificationTypeEnum.md)
  - [NotificationUpdateParam](doc//NotificationUpdateParam.md)
- - [NotifyEventTypeEnum](doc//NotifyEventTypeEnum.md)
  - [OAuth2AuthorizeRequest](doc//OAuth2AuthorizeRequest.md)
  - [OAuth2AuthorizeResponse](doc//OAuth2AuthorizeResponse.md)
  - [OAuth2TokenIdRequest](doc//OAuth2TokenIdRequest.md)
@@ -668,12 +672,10 @@ Class | Method | HTTP request | Description
  - [OrderConfirmParam](doc//OrderConfirmParam.md)
  - [OrderQueryResult](doc//OrderQueryResult.md)
  - [OrderReturnRecord](doc//OrderReturnRecord.md)
- - [OrderSearchDateTypeEnum](doc//OrderSearchDateTypeEnum.md)
  - [OrderSearchParam](doc//OrderSearchParam.md)
  - [OrderShipLogisticsParam](doc//OrderShipLogisticsParam.md)
  - [OrderShipPlatformParam](doc//OrderShipPlatformParam.md)
  - [OrderStatisticsDTO](doc//OrderStatisticsDTO.md)
- - [OrderStatusEnum](doc//OrderStatusEnum.md)
  - [OrderSumbitParam](doc//OrderSumbitParam.md)
  - [PageActivityDTO](doc//PageActivityDTO.md)
  - [PageAutoReplyConfig](doc//PageAutoReplyConfig.md)
@@ -713,7 +715,6 @@ Class | Method | HTTP request | Description
  - [PaytableEntryRequest](doc//PaytableEntryRequest.md)
  - [PaytableWithRtpDTO](doc//PaytableWithRtpDTO.md)
  - [PendingQuestionResponse](doc//PendingQuestionResponse.md)
- - [PickupServiceTypeEnum](doc//PickupServiceTypeEnum.md)
  - [PickupStore](doc//PickupStore.md)
  - [PickupStoreSearchParam](doc//PickupStoreSearchParam.md)
  - [PickupStoreSyncCheckResponse](doc//PickupStoreSyncCheckResponse.md)
@@ -727,17 +728,13 @@ Class | Method | HTTP request | Description
  - [PostUpdateParam](doc//PostUpdateParam.md)
  - [PostalSearchParam](doc//PostalSearchParam.md)
  - [Product](doc//Product.md)
- - [ProductCategoryEnum](doc//ProductCategoryEnum.md)
  - [ProductCreateParam](doc//ProductCreateParam.md)
  - [ProductInventoryStats](doc//ProductInventoryStats.md)
  - [ProductSeachParam](doc//ProductSeachParam.md)
  - [ProductStats](doc//ProductStats.md)
- - [ProductStatusEnum](doc//ProductStatusEnum.md)
  - [ProductUpdateParam](doc//ProductUpdateParam.md)
  - [PromoCode](doc//PromoCode.md)
  - [PromoCodeStatDto](doc//PromoCodeStatDto.md)
- - [PromoCodeStatusEnum](doc//PromoCodeStatusEnum.md)
- - [ProtocolEnum](doc//ProtocolEnum.md)
  - [PushHealthResponseDTO](doc//PushHealthResponseDTO.md)
  - [PushNotificationDTO](doc//PushNotificationDTO.md)
  - [PushNotificationResponseDTO](doc//PushNotificationResponseDTO.md)
@@ -753,17 +750,14 @@ Class | Method | HTTP request | Description
  - [Recharge](doc//Recharge.md)
  - [RechargeResponse](doc//RechargeResponse.md)
  - [RechargeSearchParam](doc//RechargeSearchParam.md)
- - [RechargeStatusEnum](doc//RechargeStatusEnum.md)
  - [RefundOfferResponseParam](doc//RefundOfferResponseParam.md)
  - [RegisterParam](doc//RegisterParam.md)
  - [RegisterResult](doc//RegisterResult.md)
- - [RegistrationMethodEnum](doc//RegistrationMethodEnum.md)
  - [RegistrationOverviewResponse](doc//RegistrationOverviewResponse.md)
  - [ReplyIssueParam](doc//ReplyIssueParam.md)
  - [ResolveMarketRequest](doc//ResolveMarketRequest.md)
  - [ResolveRequest](doc//ResolveRequest.md)
  - [ReturnProcessParam](doc//ReturnProcessParam.md)
- - [ReturnReasonEnum](doc//ReturnReasonEnum.md)
  - [ReturnRequestParam](doc//ReturnRequestParam.md)
  - [ReturnShippingParam](doc//ReturnShippingParam.md)
  - [Review](doc//Review.md)
@@ -786,7 +780,6 @@ Class | Method | HTTP request | Description
  - [SevenElevenStoreDTO](doc//SevenElevenStoreDTO.md)
  - [ShippingAddress](doc//ShippingAddress.md)
  - [ShippingAddressOption](doc//ShippingAddressOption.md)
- - [ShippingCompanyEnum](doc//ShippingCompanyEnum.md)
  - [ShippingOptions](doc//ShippingOptions.md)
  - [ShippingServiceGroup](doc//ShippingServiceGroup.md)
  - [SlotDailyStatDto](doc//SlotDailyStatDto.md)
@@ -809,7 +802,6 @@ Class | Method | HTTP request | Description
  - [StakingInterestDetail](doc//StakingInterestDetail.md)
  - [StakingSearchParam](doc//StakingSearchParam.md)
  - [StakingStatisticsDTO](doc//StakingStatisticsDTO.md)
- - [StakingStatusEnum](doc//StakingStatusEnum.md)
  - [Store](doc//Store.md)
  - [StoreAnalyticsDTO](doc//StoreAnalyticsDTO.md)
  - [StoreCreateParam](doc//StoreCreateParam.md)
@@ -823,7 +815,7 @@ Class | Method | HTTP request | Description
  - [StrategyQueryRequest](doc//StrategyQueryRequest.md)
  - [StrategyResponse](doc//StrategyResponse.md)
  - [SuggestionActionParam](doc//SuggestionActionParam.md)
- - [SupportedCurrencyEnum](doc//SupportedCurrencyEnum.md)
+ - [Summary](doc//Summary.md)
  - [TaiwanPostalArea](doc//TaiwanPostalArea.md)
  - [TelegramBotInfo](doc//TelegramBotInfo.md)
  - [TelegramWebAppAuthRequest](doc//TelegramWebAppAuthRequest.md)
@@ -836,7 +828,6 @@ Class | Method | HTTP request | Description
  - [Transaction](doc//Transaction.md)
  - [TransactionListParam](doc//TransactionListParam.md)
  - [TransactionSearchParam](doc//TransactionSearchParam.md)
- - [TransactionTypeEnum](doc//TransactionTypeEnum.md)
  - [TwoFactorManageParam](doc//TwoFactorManageParam.md)
  - [TwoFactorSetupResponse](doc//TwoFactorSetupResponse.md)
  - [TwoFactorVerifyParam](doc//TwoFactorVerifyParam.md)
@@ -850,7 +841,6 @@ Class | Method | HTTP request | Description
  - [UserOrderSearchParam](doc//UserOrderSearchParam.md)
  - [UserPostStatistics](doc//UserPostStatistics.md)
  - [UserProfileUpdateParam](doc//UserProfileUpdateParam.md)
- - [UserStatusEnum](doc//UserStatusEnum.md)
  - [VapidPublicKeyResponseDTO](doc//VapidPublicKeyResponseDTO.md)
  - [VerifyCodeRequest](doc//VerifyCodeRequest.md)
  - [WalletConnectInfo](doc//WalletConnectInfo.md)
@@ -869,7 +859,6 @@ Class | Method | HTTP request | Description
  - [WebRTCResponseDto](doc//WebRTCResponseDto.md)
  - [Withdraw](doc//Withdraw.md)
  - [WithdrawSearchParam](doc//WithdrawSearchParam.md)
- - [WithdrawStatusEnum](doc//WithdrawStatusEnum.md)
 
 
 ## Documentation For Authorization

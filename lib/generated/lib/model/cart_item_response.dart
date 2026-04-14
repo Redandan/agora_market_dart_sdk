@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -43,7 +43,7 @@ class CartItemResponse {
     this.shippingOptions,
   });
 
-  /// 鞈潛頠??埋D
+  /// 購物車項目ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -51,7 +51,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? id;
-  /// ??ID
+
+  /// 商品ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -59,7 +60,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? productId;
-  /// ??璅?
+
+  /// 商品標題
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -67,7 +69,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? productTitle;
-  /// ???膩
+
+  /// 商品描述
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -75,7 +78,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? productDescription;
-  /// ??銝餃?
+
+  /// 商品主圖
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -83,7 +87,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? productImage;
-  /// ???賊?
+
+  /// 商品數量
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -91,7 +96,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? quantity;
-  /// ???桀
+
+  /// 商品單價
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -99,7 +105,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? unitPrice;
-  /// 鞎典馳憿?
+
+  /// 貨幣類型
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -107,7 +114,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? currency;
-  /// ?祥
+
+  /// 運費
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -115,7 +123,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? shippingFee;
-  /// 撠?
+
+  /// 小計
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -123,7 +132,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? subtotal;
-  /// 蝮賢
+
+  /// 總價
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -131,7 +141,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? totalPrice;
-  /// 鞈?振ID
+
+  /// 賣家ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -139,7 +150,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? sellerId;
-  /// 鞈?振?迂
+
+  /// 賣家名稱
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -147,7 +159,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? sellerName;
-  /// ?疏?啣?
+
+  /// 取貨地址
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -155,10 +168,11 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? pickupAddress;
-  /// ?豢???????
 
+  /// 選擇的商品規格
   Map<String, String> selectedSpecifications;
-  /// 閬?膩
+
+  /// 規格描述
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -166,7 +180,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? specificationDescription;
-  /// ??SKU
+
+  /// 商品SKU
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -174,7 +189,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? sku;
-  /// ???迂
+
+  /// 品牌名稱
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -182,7 +198,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? brand;
-  /// ?舐摨怠?
+
+  /// 可用庫存
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -190,7 +207,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? availableStock;
-  /// ?臬??摨怠?
+
+  /// 是否還有庫存
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -198,14 +216,17 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? isInStock;
-  /// 摨怠????  ///
+
+  /// 庫存狀態
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? stockStatus;
-  /// 摨怠?霅血?靽⊥
+
+  /// 庫存警告信息
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -213,7 +234,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? stockWarning;
-  /// ?臬?臭誑鞈潸眺
+
+  /// 是否可以購買
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -221,7 +243,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? canPurchase;
-  /// 鞈潸眺???
+
+  /// 購買限制原因
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -229,7 +252,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? purchaseRestrictionReason;
-  /// ?萄遣??
+
+  /// 創建時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -237,7 +261,8 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? createdAt;
-  /// ?湔??
+
+  /// 更新時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -245,9 +270,11 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? updatedAt;
-  /// ???賊??”
 
+  /// 運送地址選項列表
   List<ShippingAddressOption> shippingAddressOptions;
+
+  /// 運送選項（按物流公司分組）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -255,6 +282,7 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   ShippingOptions? shippingOptions;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CartItemResponse &&
     other.id == id &&
@@ -554,5 +582,4 @@ class CartItemResponse {
   static const requiredKeys = <String>{
   };
 }
-
 

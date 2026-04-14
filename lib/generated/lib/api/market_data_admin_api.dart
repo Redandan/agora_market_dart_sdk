@@ -72,7 +72,80 @@ class MarketDataAdminApi {
     return null;
   }
 
-  /// 查詢所有 WS 訂閱狀態
+  /// 查詢 K 線資料質量統計
+  ///
+  /// 回傳指定範圍內的 K 線數量、起訖時間、最小/最大/平均量能，用於排查數據問題
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] symbol (required):
+  ///
+  /// * [String] intervalCode (required):
+  ///
+  /// * [DateTime] startTime (required):
+  ///
+  /// * [DateTime] endTime (required):
+  Future<Response> klineInfoWithHttpInfo(String symbol, String intervalCode, DateTime startTime, DateTime endTime,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/market/info';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'symbol', symbol));
+      queryParams.addAll(_queryParams('', 'intervalCode', intervalCode));
+      queryParams.addAll(_queryParams('', 'startTime', startTime));
+      queryParams.addAll(_queryParams('', 'endTime', endTime));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查詢 K 線資料質量統計
+  ///
+  /// 回傳指定範圍內的 K 線數量、起訖時間、最小/最大/平均量能，用於排查數據問題
+  ///
+  /// Parameters:
+  ///
+  /// * [String] symbol (required):
+  ///
+  /// * [String] intervalCode (required):
+  ///
+  /// * [DateTime] startTime (required):
+  ///
+  /// * [DateTime] endTime (required):
+  Future<KlineInfoResponse?> klineInfo(String symbol, String intervalCode, DateTime startTime, DateTime endTime,) async {
+    final response = await klineInfoWithHttpInfo(symbol, intervalCode, startTime, endTime,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'KlineInfoResponse',) as KlineInfoResponse;
+    
+    }
+    return null;
+  }
+
+  /// 查詢所有 WS 訂閱狀態（雙源合併）
   ///
   /// Note: This method returns the HTTP [Response].
   Future<Response> listSubscriptionsWithHttpInfo() async {
@@ -100,7 +173,7 @@ class MarketDataAdminApi {
     );
   }
 
-  /// 查詢所有 WS 訂閱狀態
+  /// 查詢所有 WS 訂閱狀態（雙源合併）
   Future<List<KlineSubscriptionInfo>?> listSubscriptions() async {
     final response = await listSubscriptionsWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -119,9 +192,65 @@ class MarketDataAdminApi {
     return null;
   }
 
-  /// 開始 WS 即時訂閱
+  /// 刪除並重新匯入 K 線
   ///
-  /// 依 marketType 連接 SPOT/FUTURES WS stream，發生錯誤時會發送 Telegram 告警並停止該訂閱
+  /// 先刪除 DB 中指定範圍 + 對應 source 的舊資料，再從 Binance API 重新拉取（用於修復量能等欄位錯誤）
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [KlineImportRequest] klineImportRequest (required):
+  Future<Response> reimportHistoricalWithHttpInfo(KlineImportRequest klineImportRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/market/reimport';
+
+    // ignore: prefer_final_locals
+    Object? postBody = klineImportRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 刪除並重新匯入 K 線
+  ///
+  /// 先刪除 DB 中指定範圍 + 對應 source 的舊資料，再從 Binance API 重新拉取（用於修復量能等欄位錯誤）
+  ///
+  /// Parameters:
+  ///
+  /// * [KlineImportRequest] klineImportRequest (required):
+  Future<KlineImportResponse?> reimportHistorical(KlineImportRequest klineImportRequest,) async {
+    final response = await reimportHistoricalWithHttpInfo(klineImportRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'KlineImportResponse',) as KlineImportResponse;
+    
+    }
+    return null;
+  }
+
+  /// 開始 WS 即時訂閱（對所有 provider 同步訂閱）
+  ///
+  /// 在每個 KlineStreamService（binance + okx）上各建立一個訂閱；DB 以 source 欄位區分兩個源
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -153,14 +282,14 @@ class MarketDataAdminApi {
     );
   }
 
-  /// 開始 WS 即時訂閱
+  /// 開始 WS 即時訂閱（對所有 provider 同步訂閱）
   ///
-  /// 依 marketType 連接 SPOT/FUTURES WS stream，發生錯誤時會發送 Telegram 告警並停止該訂閱
+  /// 在每個 KlineStreamService（binance + okx）上各建立一個訂閱；DB 以 source 欄位區分兩個源
   ///
   /// Parameters:
   ///
   /// * [KlineSubscribeRequest] klineSubscribeRequest (required):
-  Future<KlineSubscriptionInfo?> subscribe1(KlineSubscribeRequest klineSubscribeRequest,) async {
+  Future<List<KlineSubscriptionInfo>?> subscribe1(KlineSubscribeRequest klineSubscribeRequest,) async {
     final response = await subscribe1WithHttpInfo(klineSubscribeRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -169,15 +298,18 @@ class MarketDataAdminApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'KlineSubscriptionInfo',) as KlineSubscriptionInfo;
-    
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<KlineSubscriptionInfo>') as List)
+        .cast<KlineSubscriptionInfo>()
+        .toList(growable: false);
+
     }
     return null;
   }
 
-  /// 停止 WS 訂閱
+  /// 停止 WS 訂閱（對所有 provider 同步移除）
   ///
-  /// 移除指定 symbol + intervalCode 的 WS 連線
+  /// 在每個 provider 上各移除該 symbol + intervalCode 連線
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -219,9 +351,9 @@ class MarketDataAdminApi {
     );
   }
 
-  /// 停止 WS 訂閱
+  /// 停止 WS 訂閱（對所有 provider 同步移除）
   ///
-  /// 移除指定 symbol + intervalCode 的 WS 連線
+  /// 在每個 provider 上各移除該 symbol + intervalCode 連線
   ///
   /// Parameters:
   ///

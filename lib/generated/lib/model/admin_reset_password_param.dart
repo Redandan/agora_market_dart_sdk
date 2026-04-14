@@ -13,15 +13,27 @@ part of openapi.api;
 class AdminResetPasswordParam {
   /// Returns a new [AdminResetPasswordParam] instance.
   AdminResetPasswordParam({
-    required this.memberId,
-    required this.newPassword,
+    this.memberId,
+    this.newPassword,
   });
 
   /// 會員ID
-  String memberId;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? memberId;
 
   /// 新密碼
-  String newPassword;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? newPassword;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is AdminResetPasswordParam &&
@@ -31,16 +43,24 @@ class AdminResetPasswordParam {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (memberId.hashCode) +
-    (newPassword.hashCode);
+    (memberId == null ? 0 : memberId!.hashCode) +
+    (newPassword == null ? 0 : newPassword!.hashCode);
 
   @override
   String toString() => 'AdminResetPasswordParam[memberId=$memberId, newPassword=$newPassword]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.memberId != null) {
       json[r'memberId'] = this.memberId;
+    } else {
+      json[r'memberId'] = null;
+    }
+    if (this.newPassword != null) {
       json[r'newPassword'] = this.newPassword;
+    } else {
+      json[r'newPassword'] = null;
+    }
     return json;
   }
 
@@ -63,8 +83,8 @@ class AdminResetPasswordParam {
       }());
 
       return AdminResetPasswordParam(
-        memberId: mapValueOfType<String>(json, r'memberId')!,
-        newPassword: mapValueOfType<String>(json, r'newPassword')!,
+        memberId: mapValueOfType<String>(json, r'memberId'),
+        newPassword: mapValueOfType<String>(json, r'newPassword'),
       );
     }
     return null;
@@ -112,8 +132,6 @@ class AdminResetPasswordParam {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'memberId',
-    'newPassword',
   };
 }
 

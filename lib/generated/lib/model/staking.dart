@@ -44,6 +44,7 @@ class Staking {
   /// 質押幣種
   String currency;
 
+  /// 質押狀態 (STAKING/COMPLETED)
   StakingStatusEnum status;
 
   /// 申請時間
@@ -53,33 +54,93 @@ class Staking {
   DateTime startTime;
 
   /// 質押結束時間（活期質押為NULL）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? endTime;
 
   /// 已獲得收益（累計）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? earnedRewards;
 
   /// 解除申請時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? unfreezeRequestTime;
 
   /// 解除完成時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? unfreezeCompleteTime;
 
   /// 上次結算日期
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? lastSettleDate;
 
   /// 上次結算的實際時間（精確到秒）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? lastSettleTime;
 
   /// 上次結算收益
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? lastSettleReward;
 
   /// 備註
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? remark;
 
   /// 下次預計發放時間（實時計算，不存數據庫）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? nextExpectedSettleTime;
 
   /// 預計發放收益（實時計算，不存數據庫）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? expectedReward;
 
   @override
@@ -215,21 +276,15 @@ class Staking {
         applyTime: mapDateTime(json, r'applyTime', r'')!,
         startTime: mapDateTime(json, r'startTime', r'')!,
         endTime: mapDateTime(json, r'endTime', r''),
-        earnedRewards: json[r'earnedRewards'] == null
-            ? null
-            : num.parse('${json[r'earnedRewards']}'),
+        earnedRewards: num.parse('${json[r'earnedRewards']}'),
         unfreezeRequestTime: mapDateTime(json, r'unfreezeRequestTime', r''),
         unfreezeCompleteTime: mapDateTime(json, r'unfreezeCompleteTime', r''),
         lastSettleDate: mapDateTime(json, r'lastSettleDate', r''),
         lastSettleTime: mapDateTime(json, r'lastSettleTime', r''),
-        lastSettleReward: json[r'lastSettleReward'] == null
-            ? null
-            : num.parse('${json[r'lastSettleReward']}'),
+        lastSettleReward: num.parse('${json[r'lastSettleReward']}'),
         remark: mapValueOfType<String>(json, r'remark'),
         nextExpectedSettleTime: mapDateTime(json, r'nextExpectedSettleTime', r''),
-        expectedReward: json[r'expectedReward'] == null
-            ? null
-            : num.parse('${json[r'expectedReward']}'),
+        expectedReward: num.parse('${json[r'expectedReward']}'),
       );
     }
     return null;
@@ -286,4 +341,81 @@ class Staking {
     'startTime',
   };
 }
+
+/// 質押狀態 (STAKING/COMPLETED)
+class StakingStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const StakingStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const STAKING = StakingStatusEnum._(r'STAKING');
+  static const COMPLETED = StakingStatusEnum._(r'COMPLETED');
+  static const unknownDefaultOpenApi = StakingStatusEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][StakingStatusEnum].
+  static const values = <StakingStatusEnum>[
+    STAKING,
+    COMPLETED,
+    unknownDefaultOpenApi,
+  ];
+
+  static StakingStatusEnum? fromJson(dynamic value) => StakingStatusEnumTypeTransformer().decode(value);
+
+  static List<StakingStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <StakingStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = StakingStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [StakingStatusEnum] to String,
+/// and [decode] dynamic data back to [StakingStatusEnum].
+class StakingStatusEnumTypeTransformer {
+  factory StakingStatusEnumTypeTransformer() => _instance ??= const StakingStatusEnumTypeTransformer._();
+
+  const StakingStatusEnumTypeTransformer._();
+
+  String encode(StakingStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a StakingStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  StakingStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'STAKING': return StakingStatusEnum.STAKING;
+        case r'COMPLETED': return StakingStatusEnum.COMPLETED;
+        case r'unknown_default_open_api': return StakingStatusEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [StakingStatusEnumTypeTransformer] instance.
+  static StakingStatusEnumTypeTransformer? _instance;
+}
+
 

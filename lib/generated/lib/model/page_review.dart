@@ -1,4 +1,4 @@
-﻿//
+//
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 // @dart=2.18
@@ -13,16 +13,16 @@ part of openapi.api;
 class PageReview {
   /// Returns a new [PageReview] instance.
   PageReview({
-    this.totalPages,
     this.totalElements,
+    this.totalPages,
+    this.size,
+    this.content = const [],
+    this.number,
     this.sort,
     this.numberOfElements,
     this.pageable,
     this.first,
     this.last,
-    this.size,
-    this.content = const [],
-    this.number,
     this.empty,
   });
 
@@ -32,49 +32,16 @@ class PageReview {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalPages;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? totalElements;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SortObject? sort;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? numberOfElements;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  PageableObject? pageable;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? first;
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? last;
+  int? totalPages;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -82,6 +49,7 @@ class PageReview {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? size;
+
   List<Review> content;
 
   ///
@@ -91,6 +59,47 @@ class PageReview {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? number;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  SortObject? sort;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? numberOfElements;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  PageableObject? pageable;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? first;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? last;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -98,49 +107,61 @@ class PageReview {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? empty;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is PageReview &&
-    other.totalPages == totalPages &&
     other.totalElements == totalElements &&
+    other.totalPages == totalPages &&
+    other.size == size &&
+    _deepEquality.equals(other.content, content) &&
+    other.number == number &&
     other.sort == sort &&
     other.numberOfElements == numberOfElements &&
     other.pageable == pageable &&
     other.first == first &&
     other.last == last &&
-    other.size == size &&
-    _deepEquality.equals(other.content, content) &&
-    other.number == number &&
     other.empty == empty;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalPages == null ? 0 : totalPages!.hashCode) +
     (totalElements == null ? 0 : totalElements!.hashCode) +
+    (totalPages == null ? 0 : totalPages!.hashCode) +
+    (size == null ? 0 : size!.hashCode) +
+    (content.hashCode) +
+    (number == null ? 0 : number!.hashCode) +
     (sort == null ? 0 : sort!.hashCode) +
     (numberOfElements == null ? 0 : numberOfElements!.hashCode) +
     (pageable == null ? 0 : pageable!.hashCode) +
     (first == null ? 0 : first!.hashCode) +
     (last == null ? 0 : last!.hashCode) +
-    (size == null ? 0 : size!.hashCode) +
-    (content.hashCode) +
-    (number == null ? 0 : number!.hashCode) +
     (empty == null ? 0 : empty!.hashCode);
 
   @override
-  String toString() => 'PageReview[totalPages=$totalPages, totalElements=$totalElements, sort=$sort, numberOfElements=$numberOfElements, pageable=$pageable, first=$first, last=$last, size=$size, content=$content, number=$number, empty=$empty]';
+  String toString() => 'PageReview[totalElements=$totalElements, totalPages=$totalPages, size=$size, content=$content, number=$number, sort=$sort, numberOfElements=$numberOfElements, pageable=$pageable, first=$first, last=$last, empty=$empty]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.totalElements != null) {
+      json[r'totalElements'] = this.totalElements;
+    } else {
+      json[r'totalElements'] = null;
+    }
     if (this.totalPages != null) {
       json[r'totalPages'] = this.totalPages;
     } else {
       json[r'totalPages'] = null;
     }
-    if (this.totalElements != null) {
-      json[r'totalElements'] = this.totalElements;
+    if (this.size != null) {
+      json[r'size'] = this.size;
     } else {
-      json[r'totalElements'] = null;
+      json[r'size'] = null;
+    }
+      json[r'content'] = this.content.map((e) => e.toJson()).toList();
+    if (this.number != null) {
+      json[r'number'] = this.number;
+    } else {
+      json[r'number'] = null;
     }
     if (this.sort != null) {
       json[r'sort'] = this.sort;
@@ -166,17 +187,6 @@ class PageReview {
       json[r'last'] = this.last;
     } else {
       json[r'last'] = null;
-    }
-    if (this.size != null) {
-      json[r'size'] = this.size;
-    } else {
-      json[r'size'] = null;
-    }
-      json[r'content'] = this.content.map((e) => e.toJson()).toList();
-    if (this.number != null) {
-      json[r'number'] = this.number;
-    } else {
-      json[r'number'] = null;
     }
     if (this.empty != null) {
       json[r'empty'] = this.empty;
@@ -205,16 +215,16 @@ class PageReview {
       }());
 
       return PageReview(
-        totalPages: mapValueOfType<int>(json, r'totalPages'),
         totalElements: mapValueOfType<int>(json, r'totalElements'),
+        totalPages: mapValueOfType<int>(json, r'totalPages'),
+        size: mapValueOfType<int>(json, r'size'),
+        content: Review.listFromJson(json[r'content']),
+        number: mapValueOfType<int>(json, r'number'),
         sort: SortObject.fromJson(json[r'sort']),
         numberOfElements: mapValueOfType<int>(json, r'numberOfElements'),
         pageable: PageableObject.fromJson(json[r'pageable']),
         first: mapValueOfType<bool>(json, r'first'),
         last: mapValueOfType<bool>(json, r'last'),
-        size: mapValueOfType<int>(json, r'size'),
-        content: Review.listFromJson(json[r'content']),
-        number: mapValueOfType<int>(json, r'number'),
         empty: mapValueOfType<bool>(json, r'empty'),
       );
     }
@@ -265,5 +275,4 @@ class PageReview {
   static const requiredKeys = <String>{
   };
 }
-
 
