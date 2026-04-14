@@ -6,32 +6,64 @@
 
 這個專案是從 `https://agoramarketapi.purrtechllc.com/api/v3/api-docs` 自動生成的 Dart/Flutter SDK 包裝器。
 - 生成器: OpenAPI Generator 7.20.0 (`openapi-generator-cli-7.20.0.jar`)
-- 序列化: built_value (透過 `build_runner`)
 - 產出位置: `lib/generated/`
 - 客製檔案 (不會被覆寫): `lib/api/file_upload_api.dart`、`lib/error_handler.dart`
 
-## 重新生成完整流程
+## 自動同步流程(正式作業)
+
+**每次 API 部署完會自動同步,不需要人工介入。**
+
+```
+AgoraMarketAPI 推 main
+  → 本機跑 deploy-backend.bat
+  → SSH 141.148.142.175 執行 deploy-server-build.sh
+  → Maven 打包 / 重啟服務 / health_check
+  → sync_sdk()  呼叫 ~/sync-sdk.sh
+      ├─ clone/update SDK repo
+      ├─ curl localhost:8080/api/v3/api-docs (繞過 Cloudflare)
+      ├─ ci/normalize_hash.sh 比對 .swagger-hash
+      ├─ 變了才 generate_api.sh (filter + generator + repair)
+      └─ commit 為 sdk-sync-bot + push main (透過 github-sdk deploy key)
+```
+
+**換句話說:API 部署 = SDK 同步**。沒有 GitHub Actions,沒有 PAT,沒有 Cloudflare。
+Server 端 `~/sync-sdk.sh` 是唯一 orchestrator。
+
+### 關鍵觀念
+
+- `.swagger-hash` 是上次生成時的正規化 swagger 雜湊 — **不要手動改**。
+- 正規化會剝除 `info`、`servers`、所有 `description`/`summary` — 純文案改動不會誤觸同步。
+- SDK sync 對部署是 non-blocking — 失敗只留 warning,不中斷部署主流程。
+- Localhost 的 swagger 來源需要 SpringDoc ≥ 2.8.6,早期版有 Spring Security PathPattern 匹配 bug。
+
+## 手動觸發 / 本機跑
 
 本機 (Windows):
 ```powershell
 .\generate_api.ps1
 ```
 
-CI (`.github/workflows/sync-sdk.yml`,Ubuntu):
+Server 端(跟部署腳本呼叫的同一支):
 ```bash
-bash generate_api.sh
+ssh ubuntu@141.148.142.175 '~/sync-sdk.sh'
 ```
 
-兩個腳本邏輯相同 — 改動時要同步維護。CI 走 bash 版,因為 ubuntu-latest runner 比 windows-latest 快約 3 倍且免費額度多 10 倍。
+純 bash(假設 swagger 已預抓):
+```bash
+SWAGGER_SOURCE=/tmp/swagger.json bash generate_api.sh
+```
 
-兩者依序執行:
-1. 透過 `Jabba` 切到 Java 17 (`openjdk@1.17.0`)
-2. 從 prod 下載最新 swagger → `lib/api/swagger.yaml`
-3. **過濾移除** `/files/upload`、`/flutter/deployment/deploy` 兩個端點及對應 model
-4. 清空 `lib/generated/`
-5. 用 `java -jar openapi-generator-cli-7.20.0.jar generate` 重新產出
-6. 跑 `Repair-GeneratedModelListSerialization` 修補 `List<T>.toJson()` 的已知 bug
-7. 在 `lib/generated/` 內跑 `dart pub get` + `dart run build_runner build --delete-conflicting-outputs`
+## 生成 pipeline 細節
+
+`generate_api.sh` 依序:
+1. 驗 Java / dart / jq / sha256sum
+2. 確保 `openapi-generator-cli-7.20.0.jar` 存在(缺的話下載)
+3. 取 swagger — `SWAGGER_SOURCE` env 給檔則跳過 curl;否則從 prod URL 抓(server 端永遠給預抓的 localhost 版)
+4. `ci/filter_swagger.sh` 刪除 `/files/upload`、`/flutter/deployment/deploy` 及對應 schema → 寫入 `lib/api/swagger.yaml`
+5. 清空 `lib/generated/`
+6. `java -jar` 跑 openapi-generator
+7. `ci/repair_models.sh` 修補 `List<T>.toJson()` 序列化
+8. `dart pub get` + `build_runner`(若 pubspec 有 build_runner 才跑 — 目前版本不需要)
 
 ## 客製檔案保護機制
 
@@ -43,56 +75,43 @@ lib/api/custom_*.dart
 **/*.md
 ```
 
-新增客製 API 時用 `lib/api/custom_<name>.dart` 命名以避免被覆寫。
+新增客製 API 用 `lib/api/custom_<name>.dart` 命名。
 
 ## 常見問題
 
-### Java 版本不符
-腳本要求 Java 17 (`openjdk@1.17.0`)。若 Jabba 未安裝,腳本會報錯並提示安裝。
-→ 從 https://github.com/shyiko/jabba 安裝 Jabba,然後 `jabba install openjdk@1.17.0`。
+### sync 突然沒跑
+1. Server 上 `~/sync-sdk.sh` 存在且可執行嗎?`ls -la ~/sync-sdk.sh`
+2. Server 能抓到 swagger 嗎?`curl -sf http://localhost:8080/api/v3/api-docs | head`
+3. Deploy key 是否還有 write 權限?`gh repo deploy-key list -R Redandan/agora_market_dart_sdk`
+4. SSH config `github-sdk` alias 是否被改掉?`ssh -T git@github-sdk`
 
-### `Repair-GeneratedModelListSerialization` 在做什麼
-OpenAPI Generator 7.20.0 對 `List<CustomModel>` 欄位產生的 `toJson()` 會直接賦值物件,而非呼叫 `.map((e) => e.toJson()).toList()`。
-腳本以 regex 比對「item type 對應到另一個產生的 model 檔」的 List 屬性並修補。修改生成器版本後要驗證這段是否還需要。
+### hash 一直 mismatch(重複產生空 commit)
+`ci/normalize_hash.sh` 與 `ci/filter_swagger.sh` 的過濾清單必須一致。兩邊都刪的東西要對齊。
 
-### `build_runner` 衝突
-腳本已用 `--delete-conflicting-outputs`。若仍失敗,通常是 `lib/generated/` 沒清乾淨 — 手動 `Remove-Item -Recurse -Force lib/generated` 後重跑。
+### `ci/repair_models.sh` 在做什麼
+OpenAPI Generator 7.20.0 對 `List<CustomModel>` 產生的 `toJson()` 直接賦值物件、不呼叫 `.map((e) => e.toJson()).toList()`。腳本用 sed 修補。升級生成器時要重驗。
 
 ### `/files/upload` 為何被過濾
-此端點需要 multipart/form-data,OpenAPI Generator 在 Dart 端產出的型別處理不一致。改由手寫的 `lib/api/file_upload_api.dart` (用 `package:http`) 處理。
-若 swagger 又新增需要 multipart 的端點,加到腳本第 100~115 行的過濾清單。
+multipart/form-data 端點,Dart 生成器型別處理不一致。改用手寫的 `lib/api/file_upload_api.dart`。新增 multipart 端點時,把路徑加到 `ci/filter_swagger.sh` + `ci/normalize_hash.sh`。
 
-## CI/CD 自動同步流程
+## Server 端配置(只做一次)
 
-```
-AgoraMarketAPI push (controller/dto/pom.xml)
-  → notify-sdk.yml 用 SDK_DISPATCH_TOKEN 觸發 repository_dispatch (api-changed)
-  → sync-sdk.yml 啟動
-  → 下載 swagger → scripts/normalize_hash.js → 比對 .swagger-hash
-  → 不同才 generate_api.sh → 更新 .swagger-hash → 開 PR (auto/sync-sdk)
-```
-
-`.swagger-hash` 是「上次生成時的正規化 swagger 雜湊」— 不要手動改。
-正規化會剝除 `info`、`servers`、所有 `description`/`summary`,所以純文案改動不會誤觸 PR。
-
-備用機制:每週一早上 8:17 (Asia/Taipei) 排程跑同樣的 hash 比對。
-
-要新增/移除過濾的端點時,**三個地方都要改**:
-1. `generate_api.ps1` 第 100~131 行 (本機)
-2. `ci/filter_swagger.js` (CI 過濾)
-3. `ci/normalize_hash.js` (hash 計算 — 必須與過濾一致,否則 hash 漂移)
+- Deploy key: `~/.ssh/deploy_keys/agoramarket_sdk_key` — 註冊在 SDK repo 的 Settings → Deploy keys(read-write)
+- SSH alias: `~/.ssh/config` 的 `Host github-sdk` 段
+- 本地 working clone: `/home/ubuntu/agora_market_dart_sdk/`
+- Flutter/dart: 系統安裝 `/opt/flutter/bin`(透過 `export PATH` 加入 script)
 
 ## 規模參考
 
-- API 類別: 55 (`lib/generated/lib/api/*.dart`)
-- Model 類別: 383 (`lib/generated/lib/model/*.dart`)
+- API 類別: 55+ (`lib/generated/lib/api/*.dart`)
+- Model 類別: 380+ (`lib/generated/lib/model/*.dart`)
 - 客製 API: 1 (`file_upload_api`)
 
 ## 不要做的事
 
-- **不要手改 `lib/generated/` 內的檔案** — 下次重生會被蓋掉。要改 swagger 端 (在 `agora_market_api` repo) 或加客製檔。
-- **不要直接 commit `swagger.yaml`** — 它是每次生成從 prod 拉的快照,改它不會影響真實 API。
-- **不要改 `pubspec.yaml` 加未在生成 SDK 用到的依賴** — 生成器產生的 `lib/generated/pubspec.yaml` 才是執行期清單。
+- **不要手改 `lib/generated/` 內的檔案** — 下次自動同步會蓋掉。要改 swagger 來源 (`AgoraMarketAPI` 的 DTO/Controller) 或在 `lib/api/` 加客製檔。
+- **不要手動 commit `lib/api/swagger.yaml`** — 它是生成 pipeline 的中繼產物,本機改它下次 sync 就被蓋。
+- **不要改 `pubspec.yaml` 加生成 SDK 用不到的依賴** — 執行期依賴看的是 `lib/generated/pubspec.yaml`。
 
 ## 入口檔
 
