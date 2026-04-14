@@ -27,7 +27,12 @@ if [ ! -f "$GENERATOR_JAR" ]; then
 fi
 
 echo "==> Downloading swagger from $API_URL"
-curl -sfL "$API_URL" -o "$SWAGGER_RAW"
+curl -sfL \
+  -A 'Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0' \
+  -H 'Accept: application/json' \
+  --retry 3 --retry-delay 5 \
+  "$API_URL" -o "$SWAGGER_RAW"
+test -s "$SWAGGER_RAW"
 
 echo "==> Filtering excluded endpoints/schemas"
 mkdir -p "$(dirname "$SWAGGER_FILTERED")"

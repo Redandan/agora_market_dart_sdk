@@ -22,7 +22,14 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Download upstream swagger
-        run: curl -sfL https://agoramarketapi.purrtechllc.com/api/v3/api-docs -o /tmp/swagger-raw.json
+        run: |
+          curl -sfL \
+            -A 'Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0' \
+            -H 'Accept: application/json' \
+            --retry 3 --retry-delay 5 \
+            https://agoramarketapi.purrtechllc.com/api/v3/api-docs \
+            -o /tmp/swagger-raw.json
+          test -s /tmp/swagger-raw.json
 
       - name: Compute normalized hash
         id: hash
