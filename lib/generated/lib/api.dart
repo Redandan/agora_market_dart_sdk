@@ -328,6 +328,7 @@ part 'model/product_inventory_stats.dart';
 part 'model/product_report.dart';
 part 'model/product_report_create_param.dart';
 part 'model/product_report_resolve_param.dart';
+part 'model/product_report_stats_dto.dart';
 part 'model/product_seach_param.dart';
 part 'model/product_stats.dart';
 part 'model/product_update_param.dart';

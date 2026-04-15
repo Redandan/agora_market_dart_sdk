@@ -48,7 +48,7 @@ class OrderDeliveryProof {
   ///
   String? fileUrl;
 
-  /// 序號/兌換碼(視為敏感資訊,應加密儲存)
+  /// 序號/兌換碼(DB 透過 AES 加密儲存,API 出入皆為明文)
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated

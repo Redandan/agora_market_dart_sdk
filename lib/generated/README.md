@@ -122,6 +122,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getRechargeByTxHash**](doc//DefaultApi.md#getrechargebytxhash) | **GET** /recharge/tx/{txHash} | 通過交易哈希查詢充值
 *DefaultApi* | [**getRechargeHistory**](doc//DefaultApi.md#getrechargehistory) | **GET** /recharge/history | 獲取充值記錄
 *DefaultApi* | [**getServiceTypes**](doc//DefaultApi.md#getservicetypes) | **GET** /api/logistics/carriers/{carrier}/services | 取得物流公司服務類型
+*DefaultApi* | [**getStats1**](doc//DefaultApi.md#getstats1) | **GET** /admin/reports/stats | admin 檢舉統計
 *DefaultApi* | [**getStorePostStatistics**](doc//DefaultApi.md#getstorepoststatistics) | **GET** /api/posts/store/{storeId}/statistics | 獲取商店貼文統計
 *DefaultApi* | [**getStorePosts**](doc//DefaultApi.md#getstoreposts) | **GET** /api/posts/store/{storeId} | 獲取商店貼文
 *DefaultApi* | [**getTopPosts**](doc//DefaultApi.md#gettopposts) | **GET** /api/posts/top | 獲取置頂貼文
@@ -259,7 +260,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**verifyTwoFactorCode**](doc//AuthApi.md#verifytwofactorcode) | **POST** /auth/2fa/verify | 驗證雙因素認證碼
 *AutoReplyApi* | [**createConfig**](doc//AutoReplyApi.md#createconfig) | **POST** /admin/auto-reply/configs | 創建新配置
 *AutoReplyApi* | [**deleteConfig**](doc//AutoReplyApi.md#deleteconfig) | **DELETE** /admin/auto-reply/configs/{id} | 刪除配置
-*AutoReplyApi* | [**getStats1**](doc//AutoReplyApi.md#getstats1) | **GET** /admin/auto-reply/stats | 獲取統計信息
+*AutoReplyApi* | [**getStats2**](doc//AutoReplyApi.md#getstats2) | **GET** /admin/auto-reply/stats | 獲取統計信息
 *AutoReplyApi* | [**resetStats**](doc//AutoReplyApi.md#resetstats) | **POST** /admin/auto-reply/stats/reset | 重置統計
 *AutoReplyApi* | [**searchConfigs**](doc//AutoReplyApi.md#searchconfigs) | **POST** /admin/auto-reply/configs/search | 搜尋自動回復配置
 *AutoReplyApi* | [**toggleConfig**](doc//AutoReplyApi.md#toggleconfig) | **PUT** /admin/auto-reply/configs/{id}/toggle | 啟用/禁用配置
@@ -750,6 +751,7 @@ Class | Method | HTTP request | Description
  - [ProductReport](doc//ProductReport.md)
  - [ProductReportCreateParam](doc//ProductReportCreateParam.md)
  - [ProductReportResolveParam](doc//ProductReportResolveParam.md)
+ - [ProductReportStatsDto](doc//ProductReportStatsDto.md)
  - [ProductSeachParam](doc//ProductSeachParam.md)
  - [ProductStats](doc//ProductStats.md)
  - [ProductUpdateParam](doc//ProductUpdateParam.md)

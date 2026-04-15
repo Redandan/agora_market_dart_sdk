@@ -3548,6 +3548,73 @@ class DefaultApi {
     return null;
   }
 
+  /// admin 檢舉統計
+  ///
+  /// 近 N 天新進量、各 status 當前數、reason 分布、SLA 違規數(超過 X 小時未結案)
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] periodDays:
+  ///
+  /// * [int] slaThresholdHours:
+  Future<Response> getStats1WithHttpInfo({ int? periodDays, int? slaThresholdHours, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/reports/stats';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (periodDays != null) {
+      queryParams.addAll(_queryParams('', 'periodDays', periodDays));
+    }
+    if (slaThresholdHours != null) {
+      queryParams.addAll(_queryParams('', 'slaThresholdHours', slaThresholdHours));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// admin 檢舉統計
+  ///
+  /// 近 N 天新進量、各 status 當前數、reason 分布、SLA 違規數(超過 X 小時未結案)
+  ///
+  /// Parameters:
+  ///
+  /// * [int] periodDays:
+  ///
+  /// * [int] slaThresholdHours:
+  Future<ProductReportStatsDto?> getStats1({ int? periodDays, int? slaThresholdHours, }) async {
+    final response = await getStats1WithHttpInfo( periodDays: periodDays, slaThresholdHours: slaThresholdHours, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductReportStatsDto',) as ProductReportStatsDto;
+    
+    }
+    return null;
+  }
+
   /// 獲取商店貼文統計
   ///
   /// 獲取商店的貼文統計信息

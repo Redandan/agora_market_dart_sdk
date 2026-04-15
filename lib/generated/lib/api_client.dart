@@ -666,6 +666,8 @@ class ApiClient {
           return ProductReportCreateParam.fromJson(value);
         case 'ProductReportResolveParam':
           return ProductReportResolveParam.fromJson(value);
+        case 'ProductReportStatsDto':
+          return ProductReportStatsDto.fromJson(value);
         case 'ProductSeachParam':
           return ProductSeachParam.fromJson(value);
         case 'ProductStats':

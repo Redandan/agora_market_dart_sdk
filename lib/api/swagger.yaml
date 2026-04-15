@@ -14866,6 +14866,50 @@
         }
       }
     },
+    "/admin/reports/stats": {
+      "get": {
+        "tags": [
+          "商品檢舉"
+        ],
+        "summary": "admin 檢舉統計",
+        "description": "近 N 天新進量、各 status 當前數、reason 分布、SLA 違規數(超過 X 小時未結案)",
+        "operationId": "getStats_1",
+        "parameters": [
+          {
+            "name": "periodDays",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 7
+            }
+          },
+          {
+            "name": "slaThresholdHours",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 48
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductReportStatsDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/products/{productId}": {
       "get": {
         "tags": [
@@ -15457,7 +15501,7 @@
         ],
         "summary": "獲取統計信息",
         "description": "獲取自動回復系統的統計信息",
-        "operationId": "getStats_1",
+        "operationId": "getStats_2",
         "responses": {
           "200": {
             "description": "OK",
@@ -24587,7 +24631,7 @@
           },
           "codePayload": {
             "type": "string",
-            "description": "序號/兌換碼(視為敏感資訊,應加密儲存)"
+            "description": "序號/兌換碼(DB 透過 AES 加密儲存,API 出入皆為明文)"
           },
           "sellerNote": {
             "type": "string",
@@ -34238,6 +34282,62 @@
             "items": {
               "$ref": "#/components/schemas/RtpEntry"
             }
+          }
+        }
+      },
+      "ProductReportStatsDto": {
+        "type": "object",
+        "description": "商品檢舉統計儀表板",
+        "properties": {
+          "periodDays": {
+            "type": "integer",
+            "format": "int32",
+            "description": "查詢區間天數",
+            "example": 7
+          },
+          "newReportsInPeriod": {
+            "type": "integer",
+            "format": "int64",
+            "description": "區間內新進檢舉數"
+          },
+          "pendingCount": {
+            "type": "integer",
+            "format": "int64",
+            "description": "目前 PENDING 數"
+          },
+          "reviewingCount": {
+            "type": "integer",
+            "format": "int64",
+            "description": "目前 REVIEWING 數"
+          },
+          "resolvedCount": {
+            "type": "integer",
+            "format": "int64",
+            "description": "目前 RESOLVED 數"
+          },
+          "dismissedCount": {
+            "type": "integer",
+            "format": "int64",
+            "description": "目前 DISMISSED 數"
+          },
+          "slaBreachCount": {
+            "type": "integer",
+            "format": "int64",
+            "description": "SLA 違規:超過 slaHours 仍未結案的數量"
+          },
+          "slaThresholdHours": {
+            "type": "integer",
+            "format": "int32",
+            "description": "SLA 閾值(小時)",
+            "example": 48
+          },
+          "reasonBreakdown": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "區間內各 reason_category 的數量(key=enum name)"
           }
         }
       },
