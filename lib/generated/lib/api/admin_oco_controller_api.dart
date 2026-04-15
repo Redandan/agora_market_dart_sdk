@@ -42,7 +42,7 @@ class AdminOcoControllerApi {
     );
   }
 
-  Future<ApiResponseListMapStringObject?> listPositions() async {
+  Future<ApiResponseListOpenPositionDto?> listPositions() async {
     final response = await listPositionsWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -51,7 +51,7 @@ class AdminOcoControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseListMapStringObject',) as ApiResponseListMapStringObject;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseListOpenPositionDto',) as ApiResponseListOpenPositionDto;
     
     }
     return null;

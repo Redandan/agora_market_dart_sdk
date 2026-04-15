@@ -14576,7 +14576,7 @@
             "content": {
               "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/ApiResponseListMapStringObject"
+                  "$ref": "#/components/schemas/ApiResponseListOpenPositionDto"
                 }
               }
             }
@@ -29367,7 +29367,6 @@
           },
           "status": {
             "type": "string",
-            "default": "ACTIVE",
             "description": "用戶狀態",
             "enum": [
               "ACTIVE",
@@ -33180,7 +33179,7 @@
           }
         }
       },
-      "ApiResponseListMapStringObject": {
+      "ApiResponseListOpenPositionDto": {
         "type": "object",
         "properties": {
           "success": {
@@ -33195,11 +33194,53 @@
           "data": {
             "type": "array",
             "items": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
+              "$ref": "#/components/schemas/OpenPositionDto"
             }
+          }
+        }
+      },
+      "OpenPositionDto": {
+        "type": "object",
+        "description": "自動交易開倉狀態 + OCO 保護資訊",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "倉位 ID (bt_live_signal.id)"
+          },
+          "symbol": {
+            "type": "string",
+            "description": "交易對",
+            "example": "BTCUSDT"
+          },
+          "tradedQty": {
+            "type": "number",
+            "description": "成交數量"
+          },
+          "actualEntryPrice": {
+            "type": "number",
+            "description": "實際進場均價"
+          },
+          "suggestedTp": {
+            "type": "number",
+            "description": "建議止盈價"
+          },
+          "suggestedSl": {
+            "type": "number",
+            "description": "建議止損價"
+          },
+          "ocoOrderListId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "OCO 訂單組 ID(交易所端)"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "倉位建立時間(格式: yyyy-MM-dd HH:mm:ss)"
+          },
+          "protected": {
+            "type": "boolean",
+            "description": "是否已有 OCO 保護"
           }
         }
       },

@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class ApiResponseListMapStringObject {
-  /// Returns a new [ApiResponseListMapStringObject] instance.
-  ApiResponseListMapStringObject({
+class ApiResponseListOpenPositionDto {
+  /// Returns a new [ApiResponseListOpenPositionDto] instance.
+  ApiResponseListOpenPositionDto({
     this.success,
     this.message,
     this.code,
@@ -43,10 +43,10 @@ class ApiResponseListMapStringObject {
   ///
   String? code;
 
-  List<Map<String, Object>> data;
+  List<OpenPositionDto> data;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ApiResponseListMapStringObject &&
+  bool operator ==(Object other) => identical(this, other) || other is ApiResponseListOpenPositionDto &&
     other.success == success &&
     other.message == message &&
     other.code == code &&
@@ -61,7 +61,7 @@ class ApiResponseListMapStringObject {
     (data.hashCode);
 
   @override
-  String toString() => 'ApiResponseListMapStringObject[success=$success, message=$message, code=$code, data=$data]';
+  String toString() => 'ApiResponseListOpenPositionDto[success=$success, message=$message, code=$code, data=$data]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -80,14 +80,14 @@ class ApiResponseListMapStringObject {
     } else {
       json[r'code'] = null;
     }
-      json[r'data'] = this.data;
+      json[r'data'] = this.data.map((e) => e.toJson()).toList();
     return json;
   }
 
-  /// Returns a new [ApiResponseListMapStringObject] instance and imports its values from
+  /// Returns a new [ApiResponseListOpenPositionDto] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ApiResponseListMapStringObject? fromJson(dynamic value) {
+  static ApiResponseListOpenPositionDto? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -96,27 +96,27 @@ class ApiResponseListMapStringObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ApiResponseListMapStringObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ApiResponseListMapStringObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ApiResponseListOpenPositionDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ApiResponseListOpenPositionDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ApiResponseListMapStringObject(
+      return ApiResponseListOpenPositionDto(
         success: mapValueOfType<bool>(json, r'success'),
         message: mapValueOfType<String>(json, r'message'),
         code: mapValueOfType<String>(json, r'code'),
-        data: Map.listFromJson(json[r'data']),
+        data: OpenPositionDto.listFromJson(json[r'data']),
       );
     }
     return null;
   }
 
-  static List<ApiResponseListMapStringObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ApiResponseListMapStringObject>[];
+  static List<ApiResponseListOpenPositionDto> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ApiResponseListOpenPositionDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ApiResponseListMapStringObject.fromJson(row);
+        final value = ApiResponseListOpenPositionDto.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -125,12 +125,12 @@ class ApiResponseListMapStringObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ApiResponseListMapStringObject> mapFromJson(dynamic json) {
-    final map = <String, ApiResponseListMapStringObject>{};
+  static Map<String, ApiResponseListOpenPositionDto> mapFromJson(dynamic json) {
+    final map = <String, ApiResponseListOpenPositionDto>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ApiResponseListMapStringObject.fromJson(entry.value);
+        final value = ApiResponseListOpenPositionDto.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -139,14 +139,14 @@ class ApiResponseListMapStringObject {
     return map;
   }
 
-  // maps a json object with a list of ApiResponseListMapStringObject-objects as value to a dart map
-  static Map<String, List<ApiResponseListMapStringObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ApiResponseListMapStringObject>>{};
+  // maps a json object with a list of ApiResponseListOpenPositionDto-objects as value to a dart map
+  static Map<String, List<ApiResponseListOpenPositionDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ApiResponseListOpenPositionDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ApiResponseListMapStringObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ApiResponseListOpenPositionDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

@@ -17,7 +17,7 @@ class MemberUpdateParam {
     this.username,
     this.email,
     this.phone,
-    this.status = const MemberUpdateParamStatusEnum._('ACTIVE'),
+    this.status,
     this.isSeller,
     this.remark,
   });
@@ -59,7 +59,7 @@ class MemberUpdateParam {
   String? phone;
 
   /// 用戶狀態
-  MemberUpdateParamStatusEnum status;
+  MemberUpdateParamStatusEnum? status;
 
   /// 是否為賣家
   ///
@@ -96,7 +96,7 @@ class MemberUpdateParam {
     (username == null ? 0 : username!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
     (phone == null ? 0 : phone!.hashCode) +
-    (status.hashCode) +
+    (status == null ? 0 : status!.hashCode) +
     (isSeller == null ? 0 : isSeller!.hashCode) +
     (remark == null ? 0 : remark!.hashCode);
 
@@ -125,7 +125,11 @@ class MemberUpdateParam {
     } else {
       json[r'phone'] = null;
     }
+    if (this.status != null) {
       json[r'status'] = this.status;
+    } else {
+      json[r'status'] = null;
+    }
     if (this.isSeller != null) {
       json[r'isSeller'] = this.isSeller;
     } else {
@@ -162,7 +166,7 @@ class MemberUpdateParam {
         username: mapValueOfType<String>(json, r'username'),
         email: mapValueOfType<String>(json, r'email'),
         phone: mapValueOfType<String>(json, r'phone'),
-        status: MemberUpdateParamStatusEnum.fromJson(json[r'status']) ?? 'ACTIVE',
+        status: MemberUpdateParamStatusEnum.fromJson(json[r'status']),
         isSeller: mapValueOfType<bool>(json, r'isSeller'),
         remark: mapValueOfType<String>(json, r'remark'),
       );

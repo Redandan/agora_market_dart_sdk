@@ -216,8 +216,8 @@ class ApiClient {
           return ApiResponseListKnowledgeResponse.fromJson(value);
         case 'ApiResponseListLoginMethod':
           return ApiResponseListLoginMethod.fromJson(value);
-        case 'ApiResponseListMapStringObject':
-          return ApiResponseListMapStringObject.fromJson(value);
+        case 'ApiResponseListOpenPositionDto':
+          return ApiResponseListOpenPositionDto.fromJson(value);
         case 'ApiResponseListPendingQuestionResponse':
           return ApiResponseListPendingQuestionResponse.fromJson(value);
         case 'ApiResponseListPostResponse':
@@ -522,6 +522,8 @@ class ApiClient {
           return OAuth2TokenResponse.fromJson(value);
         case 'OAuthBindingInfo':
           return OAuthBindingInfo.fromJson(value);
+        case 'OpenPositionDto':
+          return OpenPositionDto.fromJson(value);
         case 'Order':
           return Order.fromJson(value);
         case 'OrderCancelParam':
