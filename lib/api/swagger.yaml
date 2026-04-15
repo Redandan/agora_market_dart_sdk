@@ -3867,6 +3867,38 @@
         }
       }
     },
+    "/products/search/natural": {
+      "post": {
+        "tags": [
+          "products"
+        ],
+        "summary": "自然語言商品搜尋",
+        "description": "買家用自然語言表達需求(例如「我要日本 Apple 禮物卡 5000 日幣」),Groq 解析意圖抽出 productType / sourceRegion / keyword 等 filter,回匹配商品。AI 失敗降級為純關鍵字搜尋(aiFallbackUsed=true)。",
+        "operationId": "naturalSearch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NaturalSearchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/NaturalSearchResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/products/my-products": {
       "post": {
         "tags": [
@@ -17112,7 +17144,13 @@
           },
           "role": {
             "type": "string",
-            "description": "角色",
+            "description": "角色 — ADMIN=管理員, USER=一般用戶/買家, SELLER=賣家, DELIVERYER=外送員。前端顯示須做 enum→label 轉換(此 field 回傳為 enum name 大寫英文)。",
+            "enum": [
+              "ADMIN",
+              "USER",
+              "SELLER",
+              "DELIVERYER"
+            ],
             "example": "USER",
             "maxLength": 255
           },
@@ -23359,6 +23397,130 @@
             "type": "string",
             "description": "代購來源地區 ISO 代碼",
             "example": "JP"
+          }
+        }
+      },
+      "NaturalSearchRequest": {
+        "type": "object",
+        "description": "自然語言商品搜尋請求",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "自然語言查詢",
+            "example": "我想找日本 Apple 禮物卡 5000 日幣",
+            "maxLength": 200,
+            "minLength": 0
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "description": "分頁頁碼(0-based)",
+            "example": 0
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32",
+            "description": "每頁筆數",
+            "example": 20
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "NaturalSearchResponse": {
+        "type": "object",
+        "description": "自然語言搜尋結果",
+        "properties": {
+          "parsedIntent": {
+            "$ref": "#/components/schemas/ParsedIntent",
+            "description": "AI 解析後的查詢意圖"
+          },
+          "products": {
+            "type": "array",
+            "description": "匹配的商品列表(目前頁)",
+            "items": {
+              "$ref": "#/components/schemas/Product"
+            }
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32",
+            "description": "本頁筆數"
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "description": "當前頁碼"
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64",
+            "description": "總筆數"
+          },
+          "hasMore": {
+            "type": "boolean",
+            "description": "是否有更多頁"
+          },
+          "explanation": {
+            "type": "string",
+            "description": "AI 解釋(給買家看,說明為什麼推薦這些商品)"
+          },
+          "aiFallbackUsed": {
+            "type": "boolean",
+            "description": "是否 AI 降級為 fallback(關鍵字匹配而非意圖理解)"
+          }
+        }
+      },
+      "ParsedIntent": {
+        "type": "object",
+        "description": "AI 解析後的搜尋意圖",
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "description": "搜尋關鍵字"
+          },
+          "productType": {
+            "type": "string",
+            "description": "推斷的商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "category": {
+            "type": "string",
+            "description": "推斷的分類",
+            "enum": [
+              "ELECTRONICS",
+              "MOBILE",
+              "CLOTHING",
+              "SHOES",
+              "BAGS",
+              "BEAUTY",
+              "HEALTH",
+              "FOOD",
+              "HOME",
+              "FURNITURE",
+              "BABY",
+              "TOYS",
+              "PET_SUPPLIES",
+              "SPORTS",
+              "OUTDOOR",
+              "AUTOMOTIVE",
+              "BOOKS",
+              "SECOND_HAND",
+              "DIGITAL_SERVICE",
+              "OTHER"
+            ]
+          },
+          "sourceRegion": {
+            "type": "string",
+            "description": "推斷的來源地區(數位商品)"
+          },
+          "sourcePlatform": {
+            "type": "string",
+            "description": "推斷的來源平台(數位商品)"
           }
         }
       },

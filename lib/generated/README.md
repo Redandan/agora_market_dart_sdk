@@ -392,6 +392,7 @@ Class | Method | HTTP request | Description
 *ProductsApi* | [**getOutOfStockProducts**](doc//ProductsApi.md#getoutofstockproducts) | **GET** /products/out-of-stock | 獲取缺貨商品列表
 *ProductsApi* | [**getProductById**](doc//ProductsApi.md#getproductbyid) | **GET** /products/{id} | 根據ID獲取商品
 *ProductsApi* | [**increaseStock**](doc//ProductsApi.md#increasestock) | **POST** /products/{id}/stock/increase | 增加商品庫存
+*ProductsApi* | [**naturalSearch**](doc//ProductsApi.md#naturalsearch) | **POST** /products/search/natural | 自然語言商品搜尋
 *ProductsApi* | [**searchProducts**](doc//ProductsApi.md#searchproducts) | **POST** /products/search | 搜索商品
 *ProductsApi* | [**setStock**](doc//ProductsApi.md#setstock) | **POST** /products/{id}/stock/set | 設置商品庫存
 *ProductsApi* | [**updateProduct**](doc//ProductsApi.md#updateproduct) | **POST** /products/update | 更新商品
@@ -671,6 +672,8 @@ Class | Method | HTTP request | Description
  - [MemberUpdateParam](doc//MemberUpdateParam.md)
  - [MessageSendResponseDTO](doc//MessageSendResponseDTO.md)
  - [MonitoredGroupDTO](doc//MonitoredGroupDTO.md)
+ - [NaturalSearchRequest](doc//NaturalSearchRequest.md)
+ - [NaturalSearchResponse](doc//NaturalSearchResponse.md)
  - [NextInterestEstimateDTO](doc//NextInterestEstimateDTO.md)
  - [NotificationCreateParam](doc//NotificationCreateParam.md)
  - [NotificationResponseDTO](doc//NotificationResponseDTO.md)
@@ -727,6 +730,7 @@ Class | Method | HTTP request | Description
  - [PageWithdraw](doc//PageWithdraw.md)
  - [Pageable](doc//Pageable.md)
  - [PageableObject](doc//PageableObject.md)
+ - [ParsedIntent](doc//ParsedIntent.md)
  - [PasswordResetParam](doc//PasswordResetParam.md)
  - [PaytableDTO](doc//PaytableDTO.md)
  - [PaytableEntryRequest](doc//PaytableEntryRequest.md)

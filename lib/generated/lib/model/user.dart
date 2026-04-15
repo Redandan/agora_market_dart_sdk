@@ -52,8 +52,8 @@ class User {
   /// 密碼
   String password;
 
-  /// 角色
-  String role;
+  /// 角色 — ADMIN=管理員, USER=一般用戶/買家, SELLER=賣家, DELIVERYER=外送員。前端顯示須做 enum→label 轉換(此 field 回傳為 enum name 大寫英文)。
+  UserRoleEnum role;
 
   /// 用戶狀態
   UserStatusEnum status;
@@ -434,7 +434,7 @@ class User {
         id: mapValueOfType<int>(json, r'id')!,
         username: mapValueOfType<String>(json, r'username')!,
         password: mapValueOfType<String>(json, r'password')!,
-        role: mapValueOfType<String>(json, r'role')!,
+        role: UserRoleEnum.fromJson(json[r'role'])!,
         status: UserStatusEnum.fromJson(json[r'status'])!,
         name: mapValueOfType<String>(json, r'name'),
         phone: mapValueOfType<String>(json, r'phone'),
@@ -515,6 +515,89 @@ class User {
     'updatedAt',
   };
 }
+
+/// 角色 — ADMIN=管理員, USER=一般用戶/買家, SELLER=賣家, DELIVERYER=外送員。前端顯示須做 enum→label 轉換(此 field 回傳為 enum name 大寫英文)。
+class UserRoleEnum {
+  /// Instantiate a new enum with the provided [value].
+  const UserRoleEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const ADMIN = UserRoleEnum._(r'ADMIN');
+  static const USER = UserRoleEnum._(r'USER');
+  static const SELLER = UserRoleEnum._(r'SELLER');
+  static const DELIVERYER = UserRoleEnum._(r'DELIVERYER');
+  static const unknownDefaultOpenApi = UserRoleEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][UserRoleEnum].
+  static const values = <UserRoleEnum>[
+    ADMIN,
+    USER,
+    SELLER,
+    DELIVERYER,
+    unknownDefaultOpenApi,
+  ];
+
+  static UserRoleEnum? fromJson(dynamic value) => UserRoleEnumTypeTransformer().decode(value);
+
+  static List<UserRoleEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <UserRoleEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = UserRoleEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [UserRoleEnum] to String,
+/// and [decode] dynamic data back to [UserRoleEnum].
+class UserRoleEnumTypeTransformer {
+  factory UserRoleEnumTypeTransformer() => _instance ??= const UserRoleEnumTypeTransformer._();
+
+  const UserRoleEnumTypeTransformer._();
+
+  String encode(UserRoleEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a UserRoleEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  UserRoleEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'ADMIN': return UserRoleEnum.ADMIN;
+        case r'USER': return UserRoleEnum.USER;
+        case r'SELLER': return UserRoleEnum.SELLER;
+        case r'DELIVERYER': return UserRoleEnum.DELIVERYER;
+        case r'unknown_default_open_api': return UserRoleEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [UserRoleEnumTypeTransformer] instance.
+  static UserRoleEnumTypeTransformer? _instance;
+}
+
 
 /// 用戶狀態
 class UserStatusEnum {

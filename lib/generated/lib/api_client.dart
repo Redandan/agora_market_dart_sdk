@@ -504,6 +504,10 @@ class ApiClient {
           return MessageSendResponseDTO.fromJson(value);
         case 'MonitoredGroupDTO':
           return MonitoredGroupDTO.fromJson(value);
+        case 'NaturalSearchRequest':
+          return NaturalSearchRequest.fromJson(value);
+        case 'NaturalSearchResponse':
+          return NaturalSearchResponse.fromJson(value);
         case 'NextInterestEstimateDTO':
           return NextInterestEstimateDTO.fromJson(value);
         case 'NotificationCreateParam':
@@ -616,6 +620,8 @@ class ApiClient {
           return Pageable.fromJson(value);
         case 'PageableObject':
           return PageableObject.fromJson(value);
+        case 'ParsedIntent':
+          return ParsedIntent.fromJson(value);
         case 'PasswordResetParam':
           return PasswordResetParam.fromJson(value);
         case 'PaytableDTO':
