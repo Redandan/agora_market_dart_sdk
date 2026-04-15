@@ -29,6 +29,7 @@ class Order {
     this.trackingNumber,
     required this.status,
     this.remark,
+    this.buyerProvidedInfoJson,
     required this.createdAt,
     required this.updatedAt,
     this.cancelledAt,
@@ -108,6 +109,15 @@ class Order {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? remark;
+
+  /// 買家提供的代購必要資訊 JSON(僅 DIGITAL_SERVICE 訂單),依商品 buyerInfoRequired schema 填
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? buyerProvidedInfoJson;
 
   /// 創建時間
   DateTime createdAt;
@@ -277,6 +287,7 @@ class Order {
     other.trackingNumber == trackingNumber &&
     other.status == status &&
     other.remark == remark &&
+    other.buyerProvidedInfoJson == buyerProvidedInfoJson &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
     other.cancelledAt == cancelledAt &&
@@ -315,6 +326,7 @@ class Order {
     (trackingNumber == null ? 0 : trackingNumber!.hashCode) +
     (status.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
+    (buyerProvidedInfoJson == null ? 0 : buyerProvidedInfoJson!.hashCode) +
     (createdAt.hashCode) +
     (updatedAt.hashCode) +
     (cancelledAt == null ? 0 : cancelledAt!.hashCode) +
@@ -335,7 +347,7 @@ class Order {
     (store == null ? 0 : store!.hashCode);
 
   @override
-  String toString() => 'Order[id=$id, version=$version, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, pickupServiceType=$pickupServiceType, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, status=$status, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, refundAmount=$refundAmount, refundOfferExpiresAt=$refundOfferExpiresAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, buyerName=$buyerName, buyerUsername=$buyerUsername, product=$product, deliveryDetail=$deliveryDetail, store=$store]';
+  String toString() => 'Order[id=$id, version=$version, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, pickupServiceType=$pickupServiceType, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, status=$status, remark=$remark, buyerProvidedInfoJson=$buyerProvidedInfoJson, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, refundAmount=$refundAmount, refundOfferExpiresAt=$refundOfferExpiresAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, buyerName=$buyerName, buyerUsername=$buyerUsername, product=$product, deliveryDetail=$deliveryDetail, store=$store]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -370,6 +382,11 @@ class Order {
       json[r'remark'] = this.remark;
     } else {
       json[r'remark'] = null;
+    }
+    if (this.buyerProvidedInfoJson != null) {
+      json[r'buyerProvidedInfoJson'] = this.buyerProvidedInfoJson;
+    } else {
+      json[r'buyerProvidedInfoJson'] = null;
     }
       json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
       json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
@@ -491,6 +508,7 @@ class Order {
         trackingNumber: mapValueOfType<String>(json, r'trackingNumber'),
         status: OrderStatusEnum.fromJson(json[r'status'])!,
         remark: mapValueOfType<String>(json, r'remark'),
+        buyerProvidedInfoJson: mapValueOfType<String>(json, r'buyerProvidedInfoJson'),
         createdAt: mapDateTime(json, r'createdAt', r'')!,
         updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         cancelledAt: mapDateTime(json, r'cancelledAt', r''),

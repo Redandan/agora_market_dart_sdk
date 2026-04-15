@@ -4403,6 +4403,48 @@
         }
       }
     },
+    "/orders/{orderId}/cancel-digital": {
+      "post": {
+        "tags": [
+          "member-orders"
+        ],
+        "summary": "取消數位商品訂單(買家或賣家)",
+        "description": "僅 PURCHASE_IN_PROGRESS 階段可呼叫;觸發退款 + 還庫存。已提交 proof 後須走爭議流程",
+        "operationId": "cancelDigitalOrder",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "訂單ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reason",
+            "in": "query",
+            "description": "取消理由",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/orders/ship/platform": {
       "post": {
         "tags": [
@@ -16721,10 +16763,10 @@
           "empty": {
             "type": "boolean"
           },
-          "unsorted": {
+          "sorted": {
             "type": "boolean"
           },
-          "sorted": {
+          "unsorted": {
             "type": "boolean"
           }
         }
@@ -23193,6 +23235,19 @@
           "inStock": {
             "type": "boolean",
             "description": "是否有庫存"
+          },
+          "productType": {
+            "type": "string",
+            "description": "商品類型 PHYSICAL / DIGITAL_SERVICE",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "sourceRegion": {
+            "type": "string",
+            "description": "代購來源地區 ISO 代碼",
+            "example": "JP"
           }
         }
       },
@@ -24118,6 +24173,10 @@
           "remark": {
             "type": "string",
             "description": "備註"
+          },
+          "buyerProvidedInfoJson": {
+            "type": "string",
+            "description": "買家提供的代購必要資訊 JSON(僅 DIGITAL_SERVICE 訂單),依商品 buyerInfoRequired schema 填"
           },
           "createdAt": {
             "type": "string",

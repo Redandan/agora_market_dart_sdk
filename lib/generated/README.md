@@ -349,6 +349,7 @@ Class | Method | HTTP request | Description
 *MemberNotificationsApi* | [**markAsRead**](doc//MemberNotificationsApi.md#markasread) | **POST** /notifications/{notificationId}/read | 標記為已讀
 *MemberNotificationsApi* | [**searchNotifications**](doc//MemberNotificationsApi.md#searchnotifications) | **POST** /notifications/search | 搜索通知
 *MemberNotificationsApi* | [**updateNotification**](doc//MemberNotificationsApi.md#updatenotification) | **PUT** /notifications/{notificationId} | 更新通知
+*MemberOrdersApi* | [**cancelDigitalOrder**](doc//MemberOrdersApi.md#canceldigitalorder) | **POST** /orders/{orderId}/cancel-digital | 取消數位商品訂單(買家或賣家)
 *MemberOrdersApi* | [**cancelOrder**](doc//MemberOrdersApi.md#cancelorder) | **POST** /orders/cancel | 取消訂單
 *MemberOrdersApi* | [**confirmDeliveryProof**](doc//MemberOrdersApi.md#confirmdeliveryproof) | **POST** /orders/{orderId}/delivery-proof/confirm | 買家確認交付證明
 *MemberOrdersApi* | [**confirmOrder**](doc//MemberOrdersApi.md#confirmorder) | **POST** /orders/confirm | 確認收貨

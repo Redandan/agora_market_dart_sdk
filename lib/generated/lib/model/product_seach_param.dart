@@ -29,6 +29,8 @@ class ProductSeachParam {
     this.latitude,
     this.tag,
     this.inStock,
+    this.productType,
+    this.sourceRegion,
   });
 
   /// 頁碼，從1開始
@@ -163,6 +165,18 @@ class ProductSeachParam {
   ///
   bool? inStock;
 
+  /// 商品類型 PHYSICAL / DIGITAL_SERVICE
+  ProductSeachParamProductTypeEnum? productType;
+
+  /// 代購來源地區 ISO 代碼
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sourceRegion;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductSeachParam &&
     other.page == page &&
@@ -180,7 +194,9 @@ class ProductSeachParam {
     other.longitude == longitude &&
     other.latitude == latitude &&
     other.tag == tag &&
-    other.inStock == inStock;
+    other.inStock == inStock &&
+    other.productType == productType &&
+    other.sourceRegion == sourceRegion;
 
   @override
   int get hashCode =>
@@ -200,10 +216,12 @@ class ProductSeachParam {
     (longitude == null ? 0 : longitude!.hashCode) +
     (latitude == null ? 0 : latitude!.hashCode) +
     (tag == null ? 0 : tag!.hashCode) +
-    (inStock == null ? 0 : inStock!.hashCode);
+    (inStock == null ? 0 : inStock!.hashCode) +
+    (productType == null ? 0 : productType!.hashCode) +
+    (sourceRegion == null ? 0 : sourceRegion!.hashCode);
 
   @override
-  String toString() => 'ProductSeachParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, id=$id, sellerId=$sellerId, status=$status, category=$category, postalCode=$postalCode, longitude=$longitude, latitude=$latitude, tag=$tag, inStock=$inStock]';
+  String toString() => 'ProductSeachParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, id=$id, sellerId=$sellerId, status=$status, category=$category, postalCode=$postalCode, longitude=$longitude, latitude=$latitude, tag=$tag, inStock=$inStock, productType=$productType, sourceRegion=$sourceRegion]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -287,6 +305,16 @@ class ProductSeachParam {
     } else {
       json[r'inStock'] = null;
     }
+    if (this.productType != null) {
+      json[r'productType'] = this.productType;
+    } else {
+      json[r'productType'] = null;
+    }
+    if (this.sourceRegion != null) {
+      json[r'sourceRegion'] = this.sourceRegion;
+    } else {
+      json[r'sourceRegion'] = null;
+    }
     return json;
   }
 
@@ -325,6 +353,8 @@ class ProductSeachParam {
         latitude: mapValueOfType<double>(json, r'latitude'),
         tag: mapValueOfType<String>(json, r'tag'),
         inStock: mapValueOfType<bool>(json, r'inStock'),
+        productType: ProductSeachParamProductTypeEnum.fromJson(json[r'productType']),
+        sourceRegion: mapValueOfType<String>(json, r'sourceRegion'),
       );
     }
     return null;
@@ -586,6 +616,83 @@ class ProductSeachParamCategoryEnumTypeTransformer {
 
   /// Singleton [ProductSeachParamCategoryEnumTypeTransformer] instance.
   static ProductSeachParamCategoryEnumTypeTransformer? _instance;
+}
+
+
+/// 商品類型 PHYSICAL / DIGITAL_SERVICE
+class ProductSeachParamProductTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ProductSeachParamProductTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const PHYSICAL = ProductSeachParamProductTypeEnum._(r'PHYSICAL');
+  static const DIGITAL_SERVICE = ProductSeachParamProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const unknownDefaultOpenApi = ProductSeachParamProductTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ProductSeachParamProductTypeEnum].
+  static const values = <ProductSeachParamProductTypeEnum>[
+    PHYSICAL,
+    DIGITAL_SERVICE,
+    unknownDefaultOpenApi,
+  ];
+
+  static ProductSeachParamProductTypeEnum? fromJson(dynamic value) => ProductSeachParamProductTypeEnumTypeTransformer().decode(value);
+
+  static List<ProductSeachParamProductTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProductSeachParamProductTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProductSeachParamProductTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ProductSeachParamProductTypeEnum] to String,
+/// and [decode] dynamic data back to [ProductSeachParamProductTypeEnum].
+class ProductSeachParamProductTypeEnumTypeTransformer {
+  factory ProductSeachParamProductTypeEnumTypeTransformer() => _instance ??= const ProductSeachParamProductTypeEnumTypeTransformer._();
+
+  const ProductSeachParamProductTypeEnumTypeTransformer._();
+
+  String encode(ProductSeachParamProductTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ProductSeachParamProductTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ProductSeachParamProductTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'PHYSICAL': return ProductSeachParamProductTypeEnum.PHYSICAL;
+        case r'DIGITAL_SERVICE': return ProductSeachParamProductTypeEnum.DIGITAL_SERVICE;
+        case r'unknown_default_open_api': return ProductSeachParamProductTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ProductSeachParamProductTypeEnumTypeTransformer] instance.
+  static ProductSeachParamProductTypeEnumTypeTransformer? _instance;
 }
 
 
