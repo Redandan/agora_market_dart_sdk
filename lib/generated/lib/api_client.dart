@@ -358,6 +358,8 @@ class ApiClient {
           return DeliveryHistoryParam.fromJson(value);
         case 'DeliveryOrderSearchParam':
           return DeliveryOrderSearchParam.fromJson(value);
+        case 'DeliveryProofSubmitParam':
+          return DeliveryProofSubmitParam.fromJson(value);
         case 'DeliveryStatisticsDTO':
           return DeliveryStatisticsDTO.fromJson(value);
         case 'Deliveryer':
@@ -530,6 +532,8 @@ class ApiClient {
           return OrderCancelParam.fromJson(value);
         case 'OrderConfirmParam':
           return OrderConfirmParam.fromJson(value);
+        case 'OrderDeliveryProof':
+          return OrderDeliveryProof.fromJson(value);
         case 'OrderQueryResult':
           return OrderQueryResult.fromJson(value);
         case 'OrderReturnRecord':
@@ -588,6 +592,8 @@ class ApiClient {
           return PagePostResponse.fromJson(value);
         case 'PageProduct':
           return PageProduct.fromJson(value);
+        case 'PageProductReport':
+          return PageProductReport.fromJson(value);
         case 'PagePromoCode':
           return PagePromoCode.fromJson(value);
         case 'PageRecharge':
@@ -648,8 +654,18 @@ class ApiClient {
           return Product.fromJson(value);
         case 'ProductCreateParam':
           return ProductCreateParam.fromJson(value);
+        case 'ProductDraftRequest':
+          return ProductDraftRequest.fromJson(value);
+        case 'ProductDraftResponse':
+          return ProductDraftResponse.fromJson(value);
         case 'ProductInventoryStats':
           return ProductInventoryStats.fromJson(value);
+        case 'ProductReport':
+          return ProductReport.fromJson(value);
+        case 'ProductReportCreateParam':
+          return ProductReportCreateParam.fromJson(value);
+        case 'ProductReportResolveParam':
+          return ProductReportResolveParam.fromJson(value);
         case 'ProductSeachParam':
           return ProductSeachParam.fromJson(value);
         case 'ProductStats':

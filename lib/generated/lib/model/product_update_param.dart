@@ -39,6 +39,13 @@ class ProductUpdateParam {
     this.pickupServiceTypeFees = const {},
     this.freeShippingThreshold,
     this.purchaseUrl,
+    this.productType,
+    this.sourceRegion,
+    this.sourcePlatform,
+    this.serviceLeadTimeHours,
+    this.maxConcurrentOrders,
+    this.buyerInfoRequiredJson,
+    this.dataResidencyNotice,
   });
 
   /// 商品ID
@@ -162,7 +169,7 @@ class ProductUpdateParam {
   /// 商品狀態
   ProductUpdateParamStatusEnum? status;
 
-  /// 商品SKU或條碼集合
+  /// 商品SKU或條碼集合(數位商品可空)
   Set<String> skus;
 
   /// 品牌名稱
@@ -223,10 +230,10 @@ class ProductUpdateParam {
   ///
   int? shippingDateRange;
 
-  /// 支援的取貨服務類型
+  /// 支援的取貨服務類型(實體商品必填)
   List<ProductUpdateParamPickupServiceTypesEnum> pickupServiceTypes;
 
-  /// 各取貨服務類型運費對應表
+  /// 各取貨服務類型運費對應表(實體商品必填)
   Map<String, num> pickupServiceTypeFees;
 
   /// 免運費門檻
@@ -248,6 +255,67 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? purchaseUrl;
+
+  /// 商品類型
+  ProductUpdateParamProductTypeEnum? productType;
+
+  /// 代購來源地區 ISO 代碼(數位商品必填)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sourceRegion;
+
+  /// 代購來源平台(數位商品必填)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sourcePlatform;
+
+  /// 預計完成時數(數位商品必填)
+  ///
+  /// Minimum value: 0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? serviceLeadTimeHours;
+
+  /// 同時可處理單數上限(數位商品必填)
+  ///
+  /// Minimum value: 1
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? maxConcurrentOrders;
+
+  /// 買家需提供資訊 schema(JSON)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? buyerInfoRequiredJson;
+
+  /// 資料出境聲明文字
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? dataResidencyNotice;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductUpdateParam &&
@@ -276,7 +344,14 @@ class ProductUpdateParam {
     _deepEquality.equals(other.pickupServiceTypes, pickupServiceTypes) &&
     _deepEquality.equals(other.pickupServiceTypeFees, pickupServiceTypeFees) &&
     other.freeShippingThreshold == freeShippingThreshold &&
-    other.purchaseUrl == purchaseUrl;
+    other.purchaseUrl == purchaseUrl &&
+    other.productType == productType &&
+    other.sourceRegion == sourceRegion &&
+    other.sourcePlatform == sourcePlatform &&
+    other.serviceLeadTimeHours == serviceLeadTimeHours &&
+    other.maxConcurrentOrders == maxConcurrentOrders &&
+    other.buyerInfoRequiredJson == buyerInfoRequiredJson &&
+    other.dataResidencyNotice == dataResidencyNotice;
 
   @override
   int get hashCode =>
@@ -306,10 +381,17 @@ class ProductUpdateParam {
     (pickupServiceTypes.hashCode) +
     (pickupServiceTypeFees.hashCode) +
     (freeShippingThreshold == null ? 0 : freeShippingThreshold!.hashCode) +
-    (purchaseUrl == null ? 0 : purchaseUrl!.hashCode);
+    (purchaseUrl == null ? 0 : purchaseUrl!.hashCode) +
+    (productType == null ? 0 : productType!.hashCode) +
+    (sourceRegion == null ? 0 : sourceRegion!.hashCode) +
+    (sourcePlatform == null ? 0 : sourcePlatform!.hashCode) +
+    (serviceLeadTimeHours == null ? 0 : serviceLeadTimeHours!.hashCode) +
+    (maxConcurrentOrders == null ? 0 : maxConcurrentOrders!.hashCode) +
+    (buyerInfoRequiredJson == null ? 0 : buyerInfoRequiredJson!.hashCode) +
+    (dataResidencyNotice == null ? 0 : dataResidencyNotice!.hashCode);
 
   @override
-  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, status=$status, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, purchaseUrl=$purchaseUrl]';
+  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, status=$status, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, purchaseUrl=$purchaseUrl, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, serviceLeadTimeHours=$serviceLeadTimeHours, maxConcurrentOrders=$maxConcurrentOrders, buyerInfoRequiredJson=$buyerInfoRequiredJson, dataResidencyNotice=$dataResidencyNotice]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -419,6 +501,41 @@ class ProductUpdateParam {
     } else {
       json[r'purchaseUrl'] = null;
     }
+    if (this.productType != null) {
+      json[r'productType'] = this.productType;
+    } else {
+      json[r'productType'] = null;
+    }
+    if (this.sourceRegion != null) {
+      json[r'sourceRegion'] = this.sourceRegion;
+    } else {
+      json[r'sourceRegion'] = null;
+    }
+    if (this.sourcePlatform != null) {
+      json[r'sourcePlatform'] = this.sourcePlatform;
+    } else {
+      json[r'sourcePlatform'] = null;
+    }
+    if (this.serviceLeadTimeHours != null) {
+      json[r'serviceLeadTimeHours'] = this.serviceLeadTimeHours;
+    } else {
+      json[r'serviceLeadTimeHours'] = null;
+    }
+    if (this.maxConcurrentOrders != null) {
+      json[r'maxConcurrentOrders'] = this.maxConcurrentOrders;
+    } else {
+      json[r'maxConcurrentOrders'] = null;
+    }
+    if (this.buyerInfoRequiredJson != null) {
+      json[r'buyerInfoRequiredJson'] = this.buyerInfoRequiredJson;
+    } else {
+      json[r'buyerInfoRequiredJson'] = null;
+    }
+    if (this.dataResidencyNotice != null) {
+      json[r'dataResidencyNotice'] = this.dataResidencyNotice;
+    } else {
+      json[r'dataResidencyNotice'] = null;
+    }
     return json;
   }
 
@@ -468,9 +585,16 @@ class ProductUpdateParam {
         supportsScheduledShipping: mapValueOfType<bool>(json, r'supportsScheduledShipping'),
         shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
         pickupServiceTypes: ProductUpdateParamPickupServiceTypesEnum.listFromJson(json[r'pickupServiceTypes']),
-        pickupServiceTypeFees: mapCastOfType<String, num>(json, r'pickupServiceTypeFees')!,
+        pickupServiceTypeFees: mapCastOfType<String, num>(json, r'pickupServiceTypeFees') ?? const {},
         freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
         purchaseUrl: mapValueOfType<String>(json, r'purchaseUrl'),
+        productType: ProductUpdateParamProductTypeEnum.fromJson(json[r'productType']),
+        sourceRegion: mapValueOfType<String>(json, r'sourceRegion'),
+        sourcePlatform: mapValueOfType<String>(json, r'sourcePlatform'),
+        serviceLeadTimeHours: mapValueOfType<int>(json, r'serviceLeadTimeHours'),
+        maxConcurrentOrders: mapValueOfType<int>(json, r'maxConcurrentOrders'),
+        buyerInfoRequiredJson: mapValueOfType<String>(json, r'buyerInfoRequiredJson'),
+        dataResidencyNotice: mapValueOfType<String>(json, r'dataResidencyNotice'),
       );
     }
     return null;
@@ -520,9 +644,6 @@ class ProductUpdateParam {
   static const requiredKeys = <String>{
     'id',
     'currency',
-    'skus',
-    'pickupServiceTypes',
-    'pickupServiceTypeFees',
   };
 }
 
@@ -799,6 +920,83 @@ class ProductUpdateParamPickupServiceTypesEnumTypeTransformer {
 
   /// Singleton [ProductUpdateParamPickupServiceTypesEnumTypeTransformer] instance.
   static ProductUpdateParamPickupServiceTypesEnumTypeTransformer? _instance;
+}
+
+
+/// 商品類型
+class ProductUpdateParamProductTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ProductUpdateParamProductTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const PHYSICAL = ProductUpdateParamProductTypeEnum._(r'PHYSICAL');
+  static const DIGITAL_SERVICE = ProductUpdateParamProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const unknownDefaultOpenApi = ProductUpdateParamProductTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ProductUpdateParamProductTypeEnum].
+  static const values = <ProductUpdateParamProductTypeEnum>[
+    PHYSICAL,
+    DIGITAL_SERVICE,
+    unknownDefaultOpenApi,
+  ];
+
+  static ProductUpdateParamProductTypeEnum? fromJson(dynamic value) => ProductUpdateParamProductTypeEnumTypeTransformer().decode(value);
+
+  static List<ProductUpdateParamProductTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProductUpdateParamProductTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProductUpdateParamProductTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ProductUpdateParamProductTypeEnum] to String,
+/// and [decode] dynamic data back to [ProductUpdateParamProductTypeEnum].
+class ProductUpdateParamProductTypeEnumTypeTransformer {
+  factory ProductUpdateParamProductTypeEnumTypeTransformer() => _instance ??= const ProductUpdateParamProductTypeEnumTypeTransformer._();
+
+  const ProductUpdateParamProductTypeEnumTypeTransformer._();
+
+  String encode(ProductUpdateParamProductTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ProductUpdateParamProductTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ProductUpdateParamProductTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'PHYSICAL': return ProductUpdateParamProductTypeEnum.PHYSICAL;
+        case r'DIGITAL_SERVICE': return ProductUpdateParamProductTypeEnum.DIGITAL_SERVICE;
+        case r'unknown_default_open_api': return ProductUpdateParamProductTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ProductUpdateParamProductTypeEnumTypeTransformer] instance.
+  static ProductUpdateParamProductTypeEnumTypeTransformer? _instance;
 }
 
 

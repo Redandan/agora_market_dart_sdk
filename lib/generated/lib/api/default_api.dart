@@ -625,6 +625,59 @@ class DefaultApi {
     return null;
   }
 
+  /// admin 查單筆檢舉詳情
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] reportId (required):
+  Future<Response> callGetWithHttpInfo(int reportId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/reports/{reportId}'
+      .replaceAll('{reportId}', reportId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// admin 查單筆檢舉詳情
+  ///
+  /// Parameters:
+  ///
+  /// * [int] reportId (required):
+  Future<ProductReport?> callGet(int reportId,) async {
+    final response = await callGetWithHttpInfo(reportId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductReport',) as ProductReport;
+    
+    }
+    return null;
+  }
+
   /// 取消充值
   ///
   /// Note: This method returns the HTTP [Response].
@@ -1190,6 +1243,73 @@ class DefaultApi {
     return null;
   }
 
+  /// 檢舉商品
+  ///
+  /// 登入使用者對商品建立檢舉(同人同商品一次一筆)
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] productId (required):
+  ///
+  /// * [User] reporter (required):
+  ///
+  /// * [ProductReportCreateParam] productReportCreateParam (required):
+  Future<Response> createReportWithHttpInfo(int productId, User reporter, ProductReportCreateParam productReportCreateParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/products/{productId}/reports'
+      .replaceAll('{productId}', productId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody = productReportCreateParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'reporter', reporter));
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 檢舉商品
+  ///
+  /// 登入使用者對商品建立檢舉(同人同商品一次一筆)
+  ///
+  /// Parameters:
+  ///
+  /// * [int] productId (required):
+  ///
+  /// * [User] reporter (required):
+  ///
+  /// * [ProductReportCreateParam] productReportCreateParam (required):
+  Future<ProductReport?> createReport(int productId, User reporter, ProductReportCreateParam productReportCreateParam,) async {
+    final response = await createReportWithHttpInfo(productId, reporter, productReportCreateParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductReport',) as ProductReport;
+    
+    }
+    return null;
+  }
+
   /// 發起提款
   ///
   /// Note: This method returns the HTTP [Response].
@@ -1408,6 +1528,76 @@ class DefaultApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseVoid',) as ApiResponseVoid;
+    
+    }
+    return null;
+  }
+
+  /// admin 駁回檢舉
+  ///
+  /// 檢舉不成立,記備註結案
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] reportId (required):
+  ///
+  /// * [User] admin (required):
+  ///
+  /// * [String] adminNote:
+  Future<Response> dismissWithHttpInfo(int reportId, User admin, { String? adminNote, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/reports/{reportId}/dismiss'
+      .replaceAll('{reportId}', reportId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (adminNote != null) {
+      queryParams.addAll(_queryParams('', 'adminNote', adminNote));
+    }
+      queryParams.addAll(_queryParams('', 'admin', admin));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// admin 駁回檢舉
+  ///
+  /// 檢舉不成立,記備註結案
+  ///
+  /// Parameters:
+  ///
+  /// * [int] reportId (required):
+  ///
+  /// * [User] admin (required):
+  ///
+  /// * [String] adminNote:
+  Future<ProductReport?> dismiss(int reportId, User admin, { String? adminNote, }) async {
+    final response = await dismissWithHttpInfo(reportId, admin,  adminNote: adminNote, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductReport',) as ProductReport;
     
     }
     return null;
@@ -4143,6 +4333,152 @@ class DefaultApi {
     return null;
   }
 
+  /// 查某商品檢舉紀錄
+  ///
+  /// 分頁返回,時間降序
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] productId (required):
+  ///
+  /// * [int] page:
+  ///
+  /// * [int] size:
+  Future<Response> listByProductWithHttpInfo(int productId, { int? page, int? size, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/products/{productId}/reports'
+      .replaceAll('{productId}', productId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查某商品檢舉紀錄
+  ///
+  /// 分頁返回,時間降序
+  ///
+  /// Parameters:
+  ///
+  /// * [int] productId (required):
+  ///
+  /// * [int] page:
+  ///
+  /// * [int] size:
+  Future<PageProductReport?> listByProduct(int productId, { int? page, int? size, }) async {
+    final response = await listByProductWithHttpInfo(productId,  page: page, size: size, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageProductReport',) as PageProductReport;
+    
+    }
+    return null;
+  }
+
+  /// admin 檢舉處理隊列
+  ///
+  /// 依 status 過濾(預設 PENDING),時間升序
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] status:
+  ///
+  /// * [int] page:
+  ///
+  /// * [int] size:
+  Future<Response> listByStatusWithHttpInfo({ String? status, int? page, int? size, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/reports';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (status != null) {
+      queryParams.addAll(_queryParams('', 'status', status));
+    }
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// admin 檢舉處理隊列
+  ///
+  /// 依 status 過濾(預設 PENDING),時間升序
+  ///
+  /// Parameters:
+  ///
+  /// * [String] status:
+  ///
+  /// * [int] page:
+  ///
+  /// * [int] size:
+  Future<PageProductReport?> listByStatus({ String? status, int? page, int? size, }) async {
+    final response = await listByStatusWithHttpInfo( status: status, page: page, size: size, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageProductReport',) as PageProductReport;
+    
+    }
+    return null;
+  }
+
   /// 列出待確認問題
   ///
   /// status 可為 PENDING / RESOLVED / IGNORED，不傳則列出全部
@@ -4569,6 +4905,73 @@ class DefaultApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponsePendingQuestionResponse',) as ApiResponsePendingQuestionResponse;
+    
+    }
+    return null;
+  }
+
+  /// admin 結案檢舉
+  ///
+  /// 依 action 可能隱藏或移除商品
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] reportId (required):
+  ///
+  /// * [User] admin (required):
+  ///
+  /// * [ProductReportResolveParam] productReportResolveParam (required):
+  Future<Response> resolve1WithHttpInfo(int reportId, User admin, ProductReportResolveParam productReportResolveParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/reports/{reportId}/resolve'
+      .replaceAll('{reportId}', reportId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody = productReportResolveParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'admin', admin));
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// admin 結案檢舉
+  ///
+  /// 依 action 可能隱藏或移除商品
+  ///
+  /// Parameters:
+  ///
+  /// * [int] reportId (required):
+  ///
+  /// * [User] admin (required):
+  ///
+  /// * [ProductReportResolveParam] productReportResolveParam (required):
+  Future<ProductReport?> resolve1(int reportId, User admin, ProductReportResolveParam productReportResolveParam,) async {
+    final response = await resolve1WithHttpInfo(reportId, admin, productReportResolveParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductReport',) as ProductReport;
     
     }
     return null;

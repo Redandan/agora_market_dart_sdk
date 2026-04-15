@@ -489,6 +489,7 @@ class ProductSeachParamCategoryEnum {
   static const AUTOMOTIVE = ProductSeachParamCategoryEnum._(r'AUTOMOTIVE');
   static const BOOKS = ProductSeachParamCategoryEnum._(r'BOOKS');
   static const SECOND_HAND = ProductSeachParamCategoryEnum._(r'SECOND_HAND');
+  static const DIGITAL_SERVICE = ProductSeachParamCategoryEnum._(r'DIGITAL_SERVICE');
   static const OTHER = ProductSeachParamCategoryEnum._(r'OTHER');
   static const unknownDefaultOpenApi = ProductSeachParamCategoryEnum._(r'unknown_default_open_api');
 
@@ -512,6 +513,7 @@ class ProductSeachParamCategoryEnum {
     AUTOMOTIVE,
     BOOKS,
     SECOND_HAND,
+    DIGITAL_SERVICE,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -570,6 +572,7 @@ class ProductSeachParamCategoryEnumTypeTransformer {
         case r'AUTOMOTIVE': return ProductSeachParamCategoryEnum.AUTOMOTIVE;
         case r'BOOKS': return ProductSeachParamCategoryEnum.BOOKS;
         case r'SECOND_HAND': return ProductSeachParamCategoryEnum.SECOND_HAND;
+        case r'DIGITAL_SERVICE': return ProductSeachParamCategoryEnum.DIGITAL_SERVICE;
         case r'OTHER': return ProductSeachParamCategoryEnum.OTHER;
         case r'unknown_default_open_api': return ProductSeachParamCategoryEnum.unknownDefaultOpenApi;
         default:

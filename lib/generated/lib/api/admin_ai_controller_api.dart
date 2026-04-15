@@ -16,6 +16,62 @@ class AdminAiControllerApi {
 
   final ApiClient apiClient;
 
+  /// AI 生成商品草稿
+  ///
+  /// 賣家輸入商品關鍵字/圖片,AI 生成標題/描述/分類/標籤等建議,供前端表單預填。失敗時回傳 fallbackUsed=true。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [ProductDraftRequest] productDraftRequest (required):
+  Future<Response> generateProductDraftWithHttpInfo(ProductDraftRequest productDraftRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/admin/ai/product-draft';
+
+    // ignore: prefer_final_locals
+    Object? postBody = productDraftRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// AI 生成商品草稿
+  ///
+  /// 賣家輸入商品關鍵字/圖片,AI 生成標題/描述/分類/標籤等建議,供前端表單預填。失敗時回傳 fallbackUsed=true。
+  ///
+  /// Parameters:
+  ///
+  /// * [ProductDraftRequest] productDraftRequest (required):
+  Future<ProductDraftResponse?> generateProductDraft(ProductDraftRequest productDraftRequest,) async {
+    final response = await generateProductDraftWithHttpInfo(productDraftRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductDraftResponse',) as ProductDraftResponse;
+    
+    }
+    return null;
+  }
+
   /// 查詢 AI 群組對話轉化效率統計（可按群組 + 日期區間篩選）
   ///
   /// Note: This method returns the HTTP [Response].

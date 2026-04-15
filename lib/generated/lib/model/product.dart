@@ -22,11 +22,11 @@ class Product {
     required this.category,
     required this.sellerId,
     this.imageUrlsJson,
-    required this.pickupAddress,
-    required this.pickupLongitude,
-    required this.pickupLatitude,
-    required this.pickupTimeStart,
-    required this.pickupTimeEnd,
+    this.pickupAddress,
+    this.pickupLongitude,
+    this.pickupLatitude,
+    this.pickupTimeStart,
+    this.pickupTimeEnd,
     required this.enablePlatformDelivery,
     this.dailyShippingDeadline,
     this.shippingPreparationHours,
@@ -51,6 +51,14 @@ class Product {
     this.stockAlertThreshold,
     this.allowNegativeStock,
     this.purchaseUrl,
+    required this.productType,
+    this.sourceRegion,
+    this.sourcePlatform,
+    this.serviceLeadTimeHours,
+    this.maxConcurrentOrders,
+    this.buyerInfoRequiredJson,
+    this.dataResidencyNotice,
+    required this.reportCount,
     this.store,
     this.userSupportedShippingAddresses = const [],
     this.shippingAddressOptions = const [],
@@ -108,26 +116,56 @@ class Product {
   ///
   String? imageUrlsJson;
 
-  /// 取貨地址
-  String pickupAddress;
+  /// 取貨地址(實體商品必填)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? pickupAddress;
 
-  /// 取貨地址經度
+  /// 取貨地址經度(實體商品必填)
   ///
   /// Minimum value: -180.0
   /// Maximum value: 180.0
-  double pickupLongitude;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? pickupLongitude;
 
-  /// 取貨地址緯度
+  /// 取貨地址緯度(實體商品必填)
   ///
   /// Minimum value: -90.0
   /// Maximum value: 90.0
-  double pickupLatitude;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? pickupLatitude;
 
-  /// 取貨開始時間
-  String pickupTimeStart;
+  /// 取貨開始時間(實體商品必填)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? pickupTimeStart;
 
-  /// 取貨結束時間
-  String pickupTimeEnd;
+  /// 取貨結束時間(實體商品必填)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? pickupTimeEnd;
 
   /// 啟用平台配送
   bool enablePlatformDelivery;
@@ -320,6 +358,72 @@ class Product {
   ///
   String? purchaseUrl;
 
+  /// 商品類型
+  ProductProductTypeEnum productType;
+
+  /// 代購來源地區 ISO 代碼(數位商品必填)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sourceRegion;
+
+  /// 代購來源平台(數位商品必填)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sourcePlatform;
+
+  /// 預計完成時數(數位商品必填)
+  ///
+  /// Minimum value: 0
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? serviceLeadTimeHours;
+
+  /// 同時可處理單數上限(service slot,數位商品必填)
+  ///
+  /// Minimum value: 1
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? maxConcurrentOrders;
+
+  /// 買家需提供資訊 schema(JSON array)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? buyerInfoRequiredJson;
+
+  /// 資料出境聲明文字(中國/俄羅斯等來源建議填)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? dataResidencyNotice;
+
+  /// 累積檢舉次數(由 ProductReportService 維護)
+  ///
+  /// Minimum value: 0
+  int reportCount;
+
   /// 賣場資訊
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -477,6 +581,14 @@ class Product {
     other.stockAlertThreshold == stockAlertThreshold &&
     other.allowNegativeStock == allowNegativeStock &&
     other.purchaseUrl == purchaseUrl &&
+    other.productType == productType &&
+    other.sourceRegion == sourceRegion &&
+    other.sourcePlatform == sourcePlatform &&
+    other.serviceLeadTimeHours == serviceLeadTimeHours &&
+    other.maxConcurrentOrders == maxConcurrentOrders &&
+    other.buyerInfoRequiredJson == buyerInfoRequiredJson &&
+    other.dataResidencyNotice == dataResidencyNotice &&
+    other.reportCount == reportCount &&
     other.store == store &&
     _deepEquality.equals(other.userSupportedShippingAddresses, userSupportedShippingAddresses) &&
     _deepEquality.equals(other.shippingAddressOptions, shippingAddressOptions) &&
@@ -508,11 +620,11 @@ class Product {
     (category.hashCode) +
     (sellerId.hashCode) +
     (imageUrlsJson == null ? 0 : imageUrlsJson!.hashCode) +
-    (pickupAddress.hashCode) +
-    (pickupLongitude.hashCode) +
-    (pickupLatitude.hashCode) +
-    (pickupTimeStart.hashCode) +
-    (pickupTimeEnd.hashCode) +
+    (pickupAddress == null ? 0 : pickupAddress!.hashCode) +
+    (pickupLongitude == null ? 0 : pickupLongitude!.hashCode) +
+    (pickupLatitude == null ? 0 : pickupLatitude!.hashCode) +
+    (pickupTimeStart == null ? 0 : pickupTimeStart!.hashCode) +
+    (pickupTimeEnd == null ? 0 : pickupTimeEnd!.hashCode) +
     (enablePlatformDelivery.hashCode) +
     (dailyShippingDeadline == null ? 0 : dailyShippingDeadline!.hashCode) +
     (shippingPreparationHours == null ? 0 : shippingPreparationHours!.hashCode) +
@@ -537,6 +649,14 @@ class Product {
     (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
     (allowNegativeStock == null ? 0 : allowNegativeStock!.hashCode) +
     (purchaseUrl == null ? 0 : purchaseUrl!.hashCode) +
+    (productType.hashCode) +
+    (sourceRegion == null ? 0 : sourceRegion!.hashCode) +
+    (sourcePlatform == null ? 0 : sourcePlatform!.hashCode) +
+    (serviceLeadTimeHours == null ? 0 : serviceLeadTimeHours!.hashCode) +
+    (maxConcurrentOrders == null ? 0 : maxConcurrentOrders!.hashCode) +
+    (buyerInfoRequiredJson == null ? 0 : buyerInfoRequiredJson!.hashCode) +
+    (dataResidencyNotice == null ? 0 : dataResidencyNotice!.hashCode) +
+    (reportCount.hashCode) +
     (store == null ? 0 : store!.hashCode) +
     (userSupportedShippingAddresses.hashCode) +
     (shippingAddressOptions.hashCode) +
@@ -557,7 +677,7 @@ class Product {
     (shippingFee == null ? 0 : shippingFee!.hashCode);
 
   @override
-  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, stock=$stock, category=$category, sellerId=$sellerId, imageUrlsJson=$imageUrlsJson, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, reviewCount=$reviewCount, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skusJson=$skusJson, brand=$brand, minStock=$minStock, pickupServiceTypesJson=$pickupServiceTypesJson, pickupServiceTypeFeesJson=$pickupServiceTypeFeesJson, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions, priceUsdt=$priceUsdt, exchangeRate=$exchangeRate, usingDefaultRate=$usingDefaultRate, freeShippingThresholdUsdt=$freeShippingThresholdUsdt, imageUrls=$imageUrls, skus=$skus, minimumShippingFee=$minimumShippingFee, inStock=$inStock, stockLow=$stockLow, stockBelowMinimum=$stockBelowMinimum, defaultShippingFee=$defaultShippingFee, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, shippingFee=$shippingFee]';
+  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, stock=$stock, category=$category, sellerId=$sellerId, imageUrlsJson=$imageUrlsJson, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, reviewCount=$reviewCount, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skusJson=$skusJson, brand=$brand, minStock=$minStock, pickupServiceTypesJson=$pickupServiceTypesJson, pickupServiceTypeFeesJson=$pickupServiceTypeFeesJson, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, serviceLeadTimeHours=$serviceLeadTimeHours, maxConcurrentOrders=$maxConcurrentOrders, buyerInfoRequiredJson=$buyerInfoRequiredJson, dataResidencyNotice=$dataResidencyNotice, reportCount=$reportCount, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions, priceUsdt=$priceUsdt, exchangeRate=$exchangeRate, usingDefaultRate=$usingDefaultRate, freeShippingThresholdUsdt=$freeShippingThresholdUsdt, imageUrls=$imageUrls, skus=$skus, minimumShippingFee=$minimumShippingFee, inStock=$inStock, stockLow=$stockLow, stockBelowMinimum=$stockBelowMinimum, defaultShippingFee=$defaultShippingFee, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, shippingFee=$shippingFee]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -578,11 +698,31 @@ class Product {
     } else {
       json[r'imageUrlsJson'] = null;
     }
+    if (this.pickupAddress != null) {
       json[r'pickupAddress'] = this.pickupAddress;
+    } else {
+      json[r'pickupAddress'] = null;
+    }
+    if (this.pickupLongitude != null) {
       json[r'pickupLongitude'] = this.pickupLongitude;
+    } else {
+      json[r'pickupLongitude'] = null;
+    }
+    if (this.pickupLatitude != null) {
       json[r'pickupLatitude'] = this.pickupLatitude;
+    } else {
+      json[r'pickupLatitude'] = null;
+    }
+    if (this.pickupTimeStart != null) {
       json[r'pickupTimeStart'] = this.pickupTimeStart;
+    } else {
+      json[r'pickupTimeStart'] = null;
+    }
+    if (this.pickupTimeEnd != null) {
       json[r'pickupTimeEnd'] = this.pickupTimeEnd;
+    } else {
+      json[r'pickupTimeEnd'] = null;
+    }
       json[r'enablePlatformDelivery'] = this.enablePlatformDelivery;
     if (this.dailyShippingDeadline != null) {
       json[r'dailyShippingDeadline'] = this.dailyShippingDeadline;
@@ -679,6 +819,38 @@ class Product {
     } else {
       json[r'purchaseUrl'] = null;
     }
+      json[r'productType'] = this.productType;
+    if (this.sourceRegion != null) {
+      json[r'sourceRegion'] = this.sourceRegion;
+    } else {
+      json[r'sourceRegion'] = null;
+    }
+    if (this.sourcePlatform != null) {
+      json[r'sourcePlatform'] = this.sourcePlatform;
+    } else {
+      json[r'sourcePlatform'] = null;
+    }
+    if (this.serviceLeadTimeHours != null) {
+      json[r'serviceLeadTimeHours'] = this.serviceLeadTimeHours;
+    } else {
+      json[r'serviceLeadTimeHours'] = null;
+    }
+    if (this.maxConcurrentOrders != null) {
+      json[r'maxConcurrentOrders'] = this.maxConcurrentOrders;
+    } else {
+      json[r'maxConcurrentOrders'] = null;
+    }
+    if (this.buyerInfoRequiredJson != null) {
+      json[r'buyerInfoRequiredJson'] = this.buyerInfoRequiredJson;
+    } else {
+      json[r'buyerInfoRequiredJson'] = null;
+    }
+    if (this.dataResidencyNotice != null) {
+      json[r'dataResidencyNotice'] = this.dataResidencyNotice;
+    } else {
+      json[r'dataResidencyNotice'] = null;
+    }
+      json[r'reportCount'] = this.reportCount;
     if (this.store != null) {
       json[r'store'] = this.store;
     } else {
@@ -776,11 +948,11 @@ class Product {
         category: ProductCategoryEnum.fromJson(json[r'category'])!,
         sellerId: mapValueOfType<int>(json, r'sellerId')!,
         imageUrlsJson: mapValueOfType<String>(json, r'imageUrlsJson'),
-        pickupAddress: mapValueOfType<String>(json, r'pickupAddress')!,
-        pickupLongitude: mapValueOfType<double>(json, r'pickupLongitude')!,
-        pickupLatitude: mapValueOfType<double>(json, r'pickupLatitude')!,
-        pickupTimeStart: mapValueOfType<String>(json, r'pickupTimeStart')!,
-        pickupTimeEnd: mapValueOfType<String>(json, r'pickupTimeEnd')!,
+        pickupAddress: mapValueOfType<String>(json, r'pickupAddress'),
+        pickupLongitude: mapValueOfType<double>(json, r'pickupLongitude'),
+        pickupLatitude: mapValueOfType<double>(json, r'pickupLatitude'),
+        pickupTimeStart: mapValueOfType<String>(json, r'pickupTimeStart'),
+        pickupTimeEnd: mapValueOfType<String>(json, r'pickupTimeEnd'),
         enablePlatformDelivery: mapValueOfType<bool>(json, r'enablePlatformDelivery')!,
         dailyShippingDeadline: mapValueOfType<String>(json, r'dailyShippingDeadline'),
         shippingPreparationHours: mapValueOfType<int>(json, r'shippingPreparationHours'),
@@ -805,6 +977,14 @@ class Product {
         stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
         allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
         purchaseUrl: mapValueOfType<String>(json, r'purchaseUrl'),
+        productType: ProductProductTypeEnum.fromJson(json[r'productType'])!,
+        sourceRegion: mapValueOfType<String>(json, r'sourceRegion'),
+        sourcePlatform: mapValueOfType<String>(json, r'sourcePlatform'),
+        serviceLeadTimeHours: mapValueOfType<int>(json, r'serviceLeadTimeHours'),
+        maxConcurrentOrders: mapValueOfType<int>(json, r'maxConcurrentOrders'),
+        buyerInfoRequiredJson: mapValueOfType<String>(json, r'buyerInfoRequiredJson'),
+        dataResidencyNotice: mapValueOfType<String>(json, r'dataResidencyNotice'),
+        reportCount: mapValueOfType<int>(json, r'reportCount')!,
         store: Store.fromJson(json[r'store']),
         userSupportedShippingAddresses: UserAddress.listFromJson(json[r'userSupportedShippingAddresses']),
         shippingAddressOptions: ShippingAddressOption.listFromJson(json[r'shippingAddressOptions']),
@@ -881,17 +1061,14 @@ class Product {
     'stock',
     'category',
     'sellerId',
-    'pickupAddress',
-    'pickupLongitude',
-    'pickupLatitude',
-    'pickupTimeStart',
-    'pickupTimeEnd',
     'enablePlatformDelivery',
     'status',
     'reviewCount',
     'viewCount',
     'salesCount',
     'minStock',
+    'productType',
+    'reportCount',
   };
 }
 
@@ -1030,6 +1207,7 @@ class ProductCategoryEnum {
   static const AUTOMOTIVE = ProductCategoryEnum._(r'AUTOMOTIVE');
   static const BOOKS = ProductCategoryEnum._(r'BOOKS');
   static const SECOND_HAND = ProductCategoryEnum._(r'SECOND_HAND');
+  static const DIGITAL_SERVICE = ProductCategoryEnum._(r'DIGITAL_SERVICE');
   static const OTHER = ProductCategoryEnum._(r'OTHER');
   static const unknownDefaultOpenApi = ProductCategoryEnum._(r'unknown_default_open_api');
 
@@ -1053,6 +1231,7 @@ class ProductCategoryEnum {
     AUTOMOTIVE,
     BOOKS,
     SECOND_HAND,
+    DIGITAL_SERVICE,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -1111,6 +1290,7 @@ class ProductCategoryEnumTypeTransformer {
         case r'AUTOMOTIVE': return ProductCategoryEnum.AUTOMOTIVE;
         case r'BOOKS': return ProductCategoryEnum.BOOKS;
         case r'SECOND_HAND': return ProductCategoryEnum.SECOND_HAND;
+        case r'DIGITAL_SERVICE': return ProductCategoryEnum.DIGITAL_SERVICE;
         case r'OTHER': return ProductCategoryEnum.OTHER;
         case r'unknown_default_open_api': return ProductCategoryEnum.unknownDefaultOpenApi;
         default:
@@ -1207,6 +1387,83 @@ class ProductStatusEnumTypeTransformer {
 
   /// Singleton [ProductStatusEnumTypeTransformer] instance.
   static ProductStatusEnumTypeTransformer? _instance;
+}
+
+
+/// 商品類型
+class ProductProductTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ProductProductTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const PHYSICAL = ProductProductTypeEnum._(r'PHYSICAL');
+  static const DIGITAL_SERVICE = ProductProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const unknownDefaultOpenApi = ProductProductTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ProductProductTypeEnum].
+  static const values = <ProductProductTypeEnum>[
+    PHYSICAL,
+    DIGITAL_SERVICE,
+    unknownDefaultOpenApi,
+  ];
+
+  static ProductProductTypeEnum? fromJson(dynamic value) => ProductProductTypeEnumTypeTransformer().decode(value);
+
+  static List<ProductProductTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProductProductTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProductProductTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ProductProductTypeEnum] to String,
+/// and [decode] dynamic data back to [ProductProductTypeEnum].
+class ProductProductTypeEnumTypeTransformer {
+  factory ProductProductTypeEnumTypeTransformer() => _instance ??= const ProductProductTypeEnumTypeTransformer._();
+
+  const ProductProductTypeEnumTypeTransformer._();
+
+  String encode(ProductProductTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ProductProductTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ProductProductTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'PHYSICAL': return ProductProductTypeEnum.PHYSICAL;
+        case r'DIGITAL_SERVICE': return ProductProductTypeEnum.DIGITAL_SERVICE;
+        case r'unknown_default_open_api': return ProductProductTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ProductProductTypeEnumTypeTransformer] instance.
+  static ProductProductTypeEnumTypeTransformer? _instance;
 }
 
 

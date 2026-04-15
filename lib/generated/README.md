@@ -69,6 +69,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**adminUpdateCartItem**](doc//DefaultApi.md#adminupdatecartitem) | **PUT** /api/cart/admin/{cartItemId} | 管理員更新購物車項目
 *DefaultApi* | [**archivePost**](doc//DefaultApi.md#archivepost) | **POST** /api/posts/{id}/archive | 下架貼文
 *DefaultApi* | [**calculateLogistics**](doc//DefaultApi.md#calculatelogistics) | **POST** /api/logistics/calculate | 物流計算
+*DefaultApi* | [**callGet**](doc//DefaultApi.md#callget) | **GET** /admin/reports/{reportId} | admin 查單筆檢舉詳情
 *DefaultApi* | [**cancelRecharge**](doc//DefaultApi.md#cancelrecharge) | **POST** /recharge/{rechargeId}/cancel | 取消充值
 *DefaultApi* | [**checkCartItemStockStatus**](doc//DefaultApi.md#checkcartitemstockstatus) | **POST** /api/cart/check-stock | 檢查庫存狀態
 *DefaultApi* | [**clearCart**](doc//DefaultApi.md#clearcart) | **DELETE** /api/cart/clear | 清空購物車
@@ -80,10 +81,12 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**createIssue**](doc//DefaultApi.md#createissue) | **POST** /customer-issues | 創建客戶問題
 *DefaultApi* | [**createPost**](doc//DefaultApi.md#createpost) | **POST** /api/posts | 創建貼文
 *DefaultApi* | [**createRecharge**](doc//DefaultApi.md#createrecharge) | **POST** /recharge | 創建充值
+*DefaultApi* | [**createReport**](doc//DefaultApi.md#createreport) | **POST** /products/{productId}/reports | 檢舉商品
 *DefaultApi* | [**createWithdraw**](doc//DefaultApi.md#createwithdraw) | **POST** /withdraws | 發起提款
 *DefaultApi* | [**delete**](doc//DefaultApi.md#delete) | **DELETE** /api/admin/knowledge/{id} | 刪除知識文件
 *DefaultApi* | [**deletePost**](doc//DefaultApi.md#deletepost) | **DELETE** /api/posts/{id} | 刪除貼文
 *DefaultApi* | [**deletePost1**](doc//DefaultApi.md#deletepost1) | **DELETE** /api/admin/posts/{id} | 管理員刪除貼文
+*DefaultApi* | [**dismiss**](doc//DefaultApi.md#dismiss) | **POST** /admin/reports/{reportId}/dismiss | admin 駁回檢舉
 *DefaultApi* | [**executeJob**](doc//DefaultApi.md#executejob) | **POST** /api/admin/scheduler/execute | 執行定時任務
 *DefaultApi* | [**failWithdraw**](doc//DefaultApi.md#failwithdraw) | **POST** /withdraws/{withdrawId}/fail | 提款失敗
 *DefaultApi* | [**getAllActive**](doc//DefaultApi.md#getallactive) | **GET** /postal-areas | 獲取所有啟用的郵遞區號
@@ -133,6 +136,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**importBatch**](doc//DefaultApi.md#importbatch) | **POST** /api/admin/knowledge/batch | 批量匯入知識文件
 *DefaultApi* | [**likePost**](doc//DefaultApi.md#likepost) | **POST** /api/posts/{id}/like | 點讚貼文
 *DefaultApi* | [**list**](doc//DefaultApi.md#list) | **GET** /api/admin/knowledge | 列出所有知識文件
+*DefaultApi* | [**listByProduct**](doc//DefaultApi.md#listbyproduct) | **GET** /products/{productId}/reports | 查某商品檢舉紀錄
+*DefaultApi* | [**listByStatus**](doc//DefaultApi.md#listbystatus) | **GET** /admin/reports | admin 檢舉處理隊列
 *DefaultApi* | [**listPending**](doc//DefaultApi.md#listpending) | **GET** /api/admin/knowledge/pending | 列出待確認問題
 *DefaultApi* | [**manualAdjustByAdmin**](doc//DefaultApi.md#manualadjustbyadmin) | **POST** /transactions/admin/manual-adjust | 管理員手動調帳
 *DefaultApi* | [**pendingCount**](doc//DefaultApi.md#pendingcount) | **GET** /api/admin/knowledge/pending/count | 查詢未處理問題數量
@@ -141,6 +146,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**removeFromCart**](doc//DefaultApi.md#removefromcart) | **DELETE** /api/cart/{cartItemId} | 從購物車移除商品
 *DefaultApi* | [**replyIssue**](doc//DefaultApi.md#replyissue) | **POST** /customer-issues/{issueId}/reply | 回覆客戶問題
 *DefaultApi* | [**resolve**](doc//DefaultApi.md#resolve) | **POST** /api/admin/knowledge/pending/{id}/resolve | 解答待確認問題
+*DefaultApi* | [**resolve1**](doc//DefaultApi.md#resolve1) | **POST** /admin/reports/{reportId}/resolve | admin 結案檢舉
 *DefaultApi* | [**search**](doc//DefaultApi.md#search) | **GET** /postal-areas/search | 搜索郵遞區號
 *DefaultApi* | [**search1**](doc//DefaultApi.md#search1) | **GET** /api/admin/knowledge/search | 語意搜尋測試
 *DefaultApi* | [**searchCarts**](doc//DefaultApi.md#searchcarts) | **POST** /api/cart/admin/search | 搜索購物車
@@ -157,6 +163,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**updateCartItem**](doc//DefaultApi.md#updatecartitem) | **PUT** /api/cart/{cartItemId} | 更新購物車項目
 *DefaultApi* | [**updatePost**](doc//DefaultApi.md#updatepost) | **PUT** /api/posts | 更新貼文
 *DefaultApi* | [**validatePostalCode**](doc//DefaultApi.md#validatepostalcode) | **GET** /api/logistics/postal-codes/{postalCode}/validate | 郵遞區號驗證
+*AdminAiControllerApi* | [**generateProductDraft**](doc//AdminAiControllerApi.md#generateproductdraft) | **POST** /api/admin/ai/product-draft | AI 生成商品草稿
 *AdminAiControllerApi* | [**getConversionStats**](doc//AdminAiControllerApi.md#getconversionstats) | **GET** /api/admin/ai/conversion/stats | 查詢 AI 群組對話轉化效率統計（可按群組 + 日期區間篩選）
 *AdminAiControllerApi* | [**getStats**](doc//AdminAiControllerApi.md#getstats) | **GET** /api/admin/ai/stats | 
 *AdminBotControllerApi* | [**refreshBotCommands**](doc//AdminBotControllerApi.md#refreshbotcommands) | **POST** /api/admin/bot/refresh-commands | 
@@ -343,6 +350,7 @@ Class | Method | HTTP request | Description
 *MemberNotificationsApi* | [**searchNotifications**](doc//MemberNotificationsApi.md#searchnotifications) | **POST** /notifications/search | 搜索通知
 *MemberNotificationsApi* | [**updateNotification**](doc//MemberNotificationsApi.md#updatenotification) | **PUT** /notifications/{notificationId} | 更新通知
 *MemberOrdersApi* | [**cancelOrder**](doc//MemberOrdersApi.md#cancelorder) | **POST** /orders/cancel | 取消訂單
+*MemberOrdersApi* | [**confirmDeliveryProof**](doc//MemberOrdersApi.md#confirmdeliveryproof) | **POST** /orders/{orderId}/delivery-proof/confirm | 買家確認交付證明
 *MemberOrdersApi* | [**confirmOrder**](doc//MemberOrdersApi.md#confirmorder) | **POST** /orders/confirm | 確認收貨
 *MemberOrdersApi* | [**confirmReturnReceived**](doc//MemberOrdersApi.md#confirmreturnreceived) | **POST** /orders/{orderId}/return/confirm-received | 確認收到退貨商品
 *MemberOrdersApi* | [**getOrderByBuyer**](doc//MemberOrdersApi.md#getorderbybuyer) | **GET** /orders/buyer/{orderId} | 獲取買家訂單詳情
@@ -350,12 +358,14 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**getOrderBySeller**](doc//MemberOrdersApi.md#getorderbyseller) | **POST** /orders/seller/{orderId} | 獲取賣家訂單詳情
 *MemberOrdersApi* | [**getSellerOrderStats**](doc//MemberOrdersApi.md#getsellerorderstats) | **GET** /orders/seller/stats | 賣家訂單統計
 *MemberOrdersApi* | [**processReturn**](doc//MemberOrdersApi.md#processreturn) | **POST** /orders/{orderId}/return/process | 賣家處理退貨申請
+*MemberOrdersApi* | [**rejectDeliveryProof**](doc//MemberOrdersApi.md#rejectdeliveryproof) | **POST** /orders/{orderId}/delivery-proof/reject | 買家拒絕交付證明
 *MemberOrdersApi* | [**requestReturn**](doc//MemberOrdersApi.md#requestreturn) | **POST** /orders/{orderId}/return | 申請退貨
 *MemberOrdersApi* | [**respondToRefundOffer**](doc//MemberOrdersApi.md#respondtorefundoffer) | **POST** /orders/{orderId}/refund-offer/respond | 買家回應退款方案
 *MemberOrdersApi* | [**searchOrdersByBuyer**](doc//MemberOrdersApi.md#searchordersbybuyer) | **POST** /orders/buyer/search | 買家查詢訂單列表
 *MemberOrdersApi* | [**searchOrdersBySeller**](doc//MemberOrdersApi.md#searchordersbyseller) | **POST** /orders/seller/search | 賣家查詢訂單列表
 *MemberOrdersApi* | [**shipOrderLogistics**](doc//MemberOrdersApi.md#shiporderlogistics) | **POST** /orders/ship/logistics | 第三方物流發貨
 *MemberOrdersApi* | [**shipOrderPlatform**](doc//MemberOrdersApi.md#shiporderplatform) | **POST** /orders/ship/platform | 平台配送發貨
+*MemberOrdersApi* | [**submitDeliveryProof**](doc//MemberOrdersApi.md#submitdeliveryproof) | **POST** /orders/{orderId}/delivery-proof/submit | 賣家提交交付證明
 *MemberOrdersApi* | [**submitOrder**](doc//MemberOrdersApi.md#submitorder) | **POST** /orders | 提交訂單
 *MemberOrdersApi* | [**updateReturnShipping**](doc//MemberOrdersApi.md#updatereturnshipping) | **POST** /orders/{orderId}/return/shipping | 更新退貨物流信息
 *Oauth2StandardApi* | [**authorizeGoogle**](doc//Oauth2StandardApi.md#authorizegoogle) | **POST** /auth/oauth2/authorize/google | Google OAuth2 授权
@@ -585,6 +595,7 @@ Class | Method | HTTP request | Description
  - [DeliveryDetail](doc//DeliveryDetail.md)
  - [DeliveryHistoryParam](doc//DeliveryHistoryParam.md)
  - [DeliveryOrderSearchParam](doc//DeliveryOrderSearchParam.md)
+ - [DeliveryProofSubmitParam](doc//DeliveryProofSubmitParam.md)
  - [DeliveryStatisticsDTO](doc//DeliveryStatisticsDTO.md)
  - [Deliveryer](doc//Deliveryer.md)
  - [DeliveryerPerformanceDTO](doc//DeliveryerPerformanceDTO.md)
@@ -671,6 +682,7 @@ Class | Method | HTTP request | Description
  - [Order](doc//Order.md)
  - [OrderCancelParam](doc//OrderCancelParam.md)
  - [OrderConfirmParam](doc//OrderConfirmParam.md)
+ - [OrderDeliveryProof](doc//OrderDeliveryProof.md)
  - [OrderQueryResult](doc//OrderQueryResult.md)
  - [OrderReturnRecord](doc//OrderReturnRecord.md)
  - [OrderSearchParam](doc//OrderSearchParam.md)
@@ -700,6 +712,7 @@ Class | Method | HTTP request | Description
  - [PagePickupStore](doc//PagePickupStore.md)
  - [PagePostResponse](doc//PagePostResponse.md)
  - [PageProduct](doc//PageProduct.md)
+ - [PageProductReport](doc//PageProductReport.md)
  - [PagePromoCode](doc//PagePromoCode.md)
  - [PageRecharge](doc//PageRecharge.md)
  - [PageReview](doc//PageReview.md)
@@ -730,7 +743,12 @@ Class | Method | HTTP request | Description
  - [PostalSearchParam](doc//PostalSearchParam.md)
  - [Product](doc//Product.md)
  - [ProductCreateParam](doc//ProductCreateParam.md)
+ - [ProductDraftRequest](doc//ProductDraftRequest.md)
+ - [ProductDraftResponse](doc//ProductDraftResponse.md)
  - [ProductInventoryStats](doc//ProductInventoryStats.md)
+ - [ProductReport](doc//ProductReport.md)
+ - [ProductReportCreateParam](doc//ProductReportCreateParam.md)
+ - [ProductReportResolveParam](doc//ProductReportResolveParam.md)
  - [ProductSeachParam](doc//ProductSeachParam.md)
  - [ProductStats](doc//ProductStats.md)
  - [ProductUpdateParam](doc//ProductUpdateParam.md)

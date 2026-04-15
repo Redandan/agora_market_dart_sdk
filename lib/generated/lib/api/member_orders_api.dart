@@ -72,6 +72,65 @@ class MemberOrdersApi {
     return null;
   }
 
+  /// 買家確認交付證明
+  ///
+  /// 確認後訂單結案,款項撥入賣家錢包
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  ///   訂單ID
+  Future<Response> confirmDeliveryProofWithHttpInfo(String orderId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/orders/{orderId}/delivery-proof/confirm'
+      .replaceAll('{orderId}', orderId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 買家確認交付證明
+  ///
+  /// 確認後訂單結案,款項撥入賣家錢包
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  ///   訂單ID
+  Future<OrderDeliveryProof?> confirmDeliveryProof(String orderId,) async {
+    final response = await confirmDeliveryProofWithHttpInfo(orderId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderDeliveryProof',) as OrderDeliveryProof;
+    
+    }
+    return null;
+  }
+
   /// 確認收貨
   ///
   /// 買家確認收貨，完成訂單。  **使用場景說明：**  1. **平台配送（PLATFORM_DELIVERY）**：    - 訂單狀態必須為 `DELIVERED`（已送達）    - 必須提供驗證碼（`verifyCode`），由配送員確認送達後系統發送給買家    - 驗證碼為6位數字    - 請求示例：`{\"orderId\": \"ORD001\", \"verifyCode\": \"123456\", \"remark\": \"已收到\"}`  2. **第三方物流（非平台配送）**：    - 訂單狀態可以是 `SHIPPED`（已發貨）或 `DELIVERED`（已送達）    - 不需要提供驗證碼（`verifyCode` 可為空或null）    - 特別適用於缺少物流單號（trackingNumber）的情況，買家可手動確認收貨    - 請求示例：`{\"orderId\": \"ORD002\", \"verifyCode\": null, \"remark\": \"已收到\"}`  **確認收貨後：** - 訂單狀態更新為 `COMPLETED`（已完成） - 款項自動轉入賣家帳戶 - 系統發送完成通知給買家和賣家 - 買家可以開始進行商品評價
@@ -451,6 +510,75 @@ class MemberOrdersApi {
     }
   }
 
+  /// 買家拒絕交付證明
+  ///
+  /// 證明不合格,賣家可重新提交
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  ///   訂單ID
+  ///
+  /// * [String] reason:
+  ///   拒絕理由
+  Future<Response> rejectDeliveryProofWithHttpInfo(String orderId, { String? reason, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/orders/{orderId}/delivery-proof/reject'
+      .replaceAll('{orderId}', orderId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (reason != null) {
+      queryParams.addAll(_queryParams('', 'reason', reason));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 買家拒絕交付證明
+  ///
+  /// 證明不合格,賣家可重新提交
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  ///   訂單ID
+  ///
+  /// * [String] reason:
+  ///   拒絕理由
+  Future<OrderDeliveryProof?> rejectDeliveryProof(String orderId, { String? reason, }) async {
+    final response = await rejectDeliveryProofWithHttpInfo(orderId,  reason: reason, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderDeliveryProof',) as OrderDeliveryProof;
+    
+    }
+    return null;
+  }
+
   /// 申請退貨
   ///
   /// 買家可以為已完成的訂單申請退貨，支持上傳圖片作為證據（最多5張）
@@ -767,6 +895,69 @@ class MemberOrdersApi {
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+  }
+
+  /// 賣家提交交付證明
+  ///
+  /// 數位商品代購完成後,賣家上傳截圖/序號/發票等證明
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  ///   訂單ID
+  ///
+  /// * [DeliveryProofSubmitParam] deliveryProofSubmitParam (required):
+  Future<Response> submitDeliveryProofWithHttpInfo(String orderId, DeliveryProofSubmitParam deliveryProofSubmitParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/orders/{orderId}/delivery-proof/submit'
+      .replaceAll('{orderId}', orderId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = deliveryProofSubmitParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 賣家提交交付證明
+  ///
+  /// 數位商品代購完成後,賣家上傳截圖/序號/發票等證明
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  ///   訂單ID
+  ///
+  /// * [DeliveryProofSubmitParam] deliveryProofSubmitParam (required):
+  Future<OrderDeliveryProof?> submitDeliveryProof(String orderId, DeliveryProofSubmitParam deliveryProofSubmitParam,) async {
+    final response = await submitDeliveryProofWithHttpInfo(orderId, deliveryProofSubmitParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderDeliveryProof',) as OrderDeliveryProof;
+    
+    }
+    return null;
   }
 
   /// 提交訂單

@@ -312,6 +312,9 @@ class UserOrderSearchParamStatusEnum {
   static const DELIVERY_FAILED = UserOrderSearchParamStatusEnum._(r'DELIVERY_FAILED');
   static const DELIVERY_RETURNING = UserOrderSearchParamStatusEnum._(r'DELIVERY_RETURNING');
   static const DELIVERY_COMPLETED = UserOrderSearchParamStatusEnum._(r'DELIVERY_COMPLETED');
+  static const PURCHASE_IN_PROGRESS = UserOrderSearchParamStatusEnum._(r'PURCHASE_IN_PROGRESS');
+  static const PROOF_SUBMITTED = UserOrderSearchParamStatusEnum._(r'PROOF_SUBMITTED');
+  static const BUYER_CONFIRMED = UserOrderSearchParamStatusEnum._(r'BUYER_CONFIRMED');
   static const RETURN_REQUESTED = UserOrderSearchParamStatusEnum._(r'RETURN_REQUESTED');
   static const RETURN_REJECTED = UserOrderSearchParamStatusEnum._(r'RETURN_REJECTED');
   static const RETURN_APPROVED = UserOrderSearchParamStatusEnum._(r'RETURN_APPROVED');
@@ -344,6 +347,9 @@ class UserOrderSearchParamStatusEnum {
     DELIVERY_FAILED,
     DELIVERY_RETURNING,
     DELIVERY_COMPLETED,
+    PURCHASE_IN_PROGRESS,
+    PROOF_SUBMITTED,
+    BUYER_CONFIRMED,
     RETURN_REQUESTED,
     RETURN_REJECTED,
     RETURN_APPROVED,
@@ -411,6 +417,9 @@ class UserOrderSearchParamStatusEnumTypeTransformer {
         case r'DELIVERY_FAILED': return UserOrderSearchParamStatusEnum.DELIVERY_FAILED;
         case r'DELIVERY_RETURNING': return UserOrderSearchParamStatusEnum.DELIVERY_RETURNING;
         case r'DELIVERY_COMPLETED': return UserOrderSearchParamStatusEnum.DELIVERY_COMPLETED;
+        case r'PURCHASE_IN_PROGRESS': return UserOrderSearchParamStatusEnum.PURCHASE_IN_PROGRESS;
+        case r'PROOF_SUBMITTED': return UserOrderSearchParamStatusEnum.PROOF_SUBMITTED;
+        case r'BUYER_CONFIRMED': return UserOrderSearchParamStatusEnum.BUYER_CONFIRMED;
         case r'RETURN_REQUESTED': return UserOrderSearchParamStatusEnum.RETURN_REQUESTED;
         case r'RETURN_REJECTED': return UserOrderSearchParamStatusEnum.RETURN_REJECTED;
         case r'RETURN_APPROVED': return UserOrderSearchParamStatusEnum.RETURN_APPROVED;

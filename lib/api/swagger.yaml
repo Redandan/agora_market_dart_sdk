@@ -157,6 +157,10 @@
       "description": "查詢群組監聽列表、活躍度、活躍用戶與最近消息"
     },
     {
+      "name": "商品檢舉",
+      "description": "使用者檢舉商品 & admin 處理檢舉"
+    },
+    {
       "name": "webrtc",
       "description": "WebRTC 信令 API"
     },
@@ -3520,6 +3524,108 @@
         ]
       }
     },
+    "/products/{productId}/reports": {
+      "get": {
+        "tags": [
+          "商品檢舉"
+        ],
+        "summary": "查某商品檢舉紀錄",
+        "description": "分頁返回,時間降序",
+        "operationId": "listByProduct",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageProductReport"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "商品檢舉"
+        ],
+        "summary": "檢舉商品",
+        "description": "登入使用者對商品建立檢舉(同人同商品一次一筆)",
+        "operationId": "createReport",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "reporter",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductReportCreateParam"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/products/{id}/stock/set": {
       "post": {
         "tags": [
@@ -4175,6 +4281,124 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      }
+    },
+    "/orders/{orderId}/delivery-proof/submit": {
+      "post": {
+        "tags": [
+          "member-orders"
+        ],
+        "summary": "賣家提交交付證明",
+        "description": "數位商品代購完成後,賣家上傳截圖/序號/發票等證明",
+        "operationId": "submitDeliveryProof",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "訂單ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeliveryProofSubmitParam"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderDeliveryProof"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/{orderId}/delivery-proof/reject": {
+      "post": {
+        "tags": [
+          "member-orders"
+        ],
+        "summary": "買家拒絕交付證明",
+        "description": "證明不合格,賣家可重新提交",
+        "operationId": "rejectDeliveryProof",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "訂單ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reason",
+            "in": "query",
+            "description": "拒絕理由",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderDeliveryProof"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/{orderId}/delivery-proof/confirm": {
+      "post": {
+        "tags": [
+          "member-orders"
+        ],
+        "summary": "買家確認交付證明",
+        "description": "確認後訂單結案,款項撥入賣家錢包",
+        "operationId": "confirmDeliveryProof",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "訂單ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderDeliveryProof"
+                }
+              }
+            }
           }
         }
       }
@@ -7652,6 +7876,38 @@
         }
       }
     },
+    "/api/admin/ai/product-draft": {
+      "post": {
+        "tags": [
+          "admin-ai-controller"
+        ],
+        "summary": "AI 生成商品草稿",
+        "description": "賣家輸入商品關鍵字/圖片,AI 生成標題/描述/分類/標籤等建議,供前端表單預填。失敗時回傳 fallbackUsed=true。",
+        "operationId": "generateProductDraft",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductDraftRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDraftResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/stores/{storeId}/update": {
       "post": {
         "tags": [
@@ -7897,6 +8153,106 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/PageInterestRecordDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/reports/{reportId}/resolve": {
+      "post": {
+        "tags": [
+          "商品檢舉"
+        ],
+        "summary": "admin 結案檢舉",
+        "description": "依 action 可能隱藏或移除商品",
+        "operationId": "resolve_1",
+        "parameters": [
+          {
+            "name": "reportId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "admin",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductReportResolveParam"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/reports/{reportId}/dismiss": {
+      "post": {
+        "tags": [
+          "商品檢舉"
+        ],
+        "summary": "admin 駁回檢舉",
+        "description": "檢舉不成立,記備註結案",
+        "operationId": "dismiss",
+        "parameters": [
+          {
+            "name": "reportId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "adminNote",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "admin",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductReport"
                 }
               }
             }
@@ -14376,6 +14732,98 @@
         }
       }
     },
+    "/admin/reports": {
+      "get": {
+        "tags": [
+          "商品檢舉"
+        ],
+        "summary": "admin 檢舉處理隊列",
+        "description": "依 status 過濾(預設 PENDING),時間升序",
+        "operationId": "listByStatus",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "PENDING",
+              "description": "商品檢舉處理狀態",
+              "enum": [
+                "PENDING",
+                "REVIEWING",
+                "RESOLVED",
+                "DISMISSED"
+              ]
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageProductReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/reports/{reportId}": {
+      "get": {
+        "tags": [
+          "商品檢舉"
+        ],
+        "summary": "admin 查單筆檢舉詳情",
+        "operationId": "get",
+        "parameters": [
+          {
+            "name": "reportId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/products/{productId}": {
       "get": {
         "tags": [
@@ -16273,10 +16721,10 @@
           "empty": {
             "type": "boolean"
           },
-          "sorted": {
+          "unsorted": {
             "type": "boolean"
           },
-          "unsorted": {
+          "sorted": {
             "type": "boolean"
           }
         }
@@ -19690,6 +20138,7 @@
               "AUTOMOTIVE",
               "BOOKS",
               "SECOND_HAND",
+              "DIGITAL_SERVICE",
               "OTHER"
             ],
             "maxLength": 50
@@ -19710,7 +20159,7 @@
           },
           "pickupAddress": {
             "type": "string",
-            "description": "取貨地址",
+            "description": "取貨地址(實體商品必填)",
             "example": "台北市大安區敦化南路二段216號",
             "maxLength": 255,
             "minLength": 0
@@ -19718,7 +20167,7 @@
           "pickupLongitude": {
             "type": "number",
             "format": "double",
-            "description": "取貨地址經度",
+            "description": "取貨地址經度(實體商品必填)",
             "example": 121.5432,
             "maximum": 180.0,
             "minimum": -180.0
@@ -19726,21 +20175,21 @@
           "pickupLatitude": {
             "type": "number",
             "format": "double",
-            "description": "取貨地址緯度",
+            "description": "取貨地址緯度(實體商品必填)",
             "example": 25.033,
             "maximum": 90.0,
             "minimum": -90.0
           },
           "pickupTimeStart": {
             "type": "string",
-            "description": "取貨開始時間",
+            "description": "取貨開始時間(實體商品必填)",
             "example": "09:00",
             "maxLength": 10,
             "minLength": 0
           },
           "pickupTimeEnd": {
             "type": "string",
-            "description": "取貨結束時間",
+            "description": "取貨結束時間(實體商品必填)",
             "example": "18:00",
             "maxLength": 10,
             "minLength": 0
@@ -19905,6 +20354,65 @@
             "maxLength": 500,
             "minLength": 0
           },
+          "productType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ],
+            "maxLength": 30
+          },
+          "sourceRegion": {
+            "type": "string",
+            "description": "代購來源地區 ISO 代碼(數位商品必填)",
+            "example": "JP",
+            "maxLength": 10,
+            "minLength": 0
+          },
+          "sourcePlatform": {
+            "type": "string",
+            "description": "代購來源平台(數位商品必填)",
+            "example": "DeepSeek",
+            "maxLength": 100,
+            "minLength": 0
+          },
+          "serviceLeadTimeHours": {
+            "type": "integer",
+            "format": "int32",
+            "description": "預計完成時數(數位商品必填)",
+            "example": 24,
+            "minimum": 0
+          },
+          "maxConcurrentOrders": {
+            "type": "integer",
+            "format": "int32",
+            "description": "同時可處理單數上限(service slot,數位商品必填)",
+            "example": 5,
+            "minimum": 1
+          },
+          "buyerInfoRequiredJson": {
+            "type": "string",
+            "description": "買家需提供資訊 schema(JSON array)",
+            "example": [
+              {
+                "key": "apple_id",
+                "required": true,
+                "label": "Apple ID Email"
+              }
+            ]
+          },
+          "dataResidencyNotice": {
+            "type": "string",
+            "description": "資料出境聲明文字(中國/俄羅斯等來源建議填)"
+          },
+          "reportCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "累積檢舉次數(由 ProductReportService 維護)",
+            "example": 0,
+            "minimum": 0
+          },
           "store": {
             "$ref": "#/components/schemas/Store",
             "description": "賣場資訊"
@@ -20004,12 +20512,9 @@
           "enablePlatformDelivery",
           "id",
           "minStock",
-          "pickupAddress",
-          "pickupLatitude",
-          "pickupLongitude",
-          "pickupTimeEnd",
-          "pickupTimeStart",
           "price",
+          "productType",
+          "reportCount",
           "reviewCount",
           "salesCount",
           "sellerId",
@@ -22229,6 +22734,123 @@
           }
         }
       },
+      "ProductReportCreateParam": {
+        "type": "object",
+        "description": "建立商品檢舉參數",
+        "properties": {
+          "reasonCategory": {
+            "type": "string",
+            "description": "檢舉原因分類",
+            "enum": [
+              "ILLEGAL_CONTENT",
+              "SCAM",
+              "TOS_VIOLATION",
+              "COUNTERFEIT",
+              "FALSE_INFO",
+              "PROHIBITED_ITEM",
+              "OTHER"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "description": "檢舉說明(建議 ≥ 10 字)",
+            "maxLength": 1000,
+            "minLength": 0
+          }
+        },
+        "required": [
+          "reasonCategory"
+        ]
+      },
+      "ProductReport": {
+        "type": "object",
+        "description": "商品檢舉紀錄",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "檢舉 ID"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "被檢舉商品 ID"
+          },
+          "reporterId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "檢舉人 user ID"
+          },
+          "reasonCategory": {
+            "type": "string",
+            "description": "檢舉原因分類",
+            "enum": [
+              "ILLEGAL_CONTENT",
+              "SCAM",
+              "TOS_VIOLATION",
+              "COUNTERFEIT",
+              "FALSE_INFO",
+              "PROHIBITED_ITEM",
+              "OTHER"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "description": "檢舉說明(建議 ≥ 10 字)",
+            "maxLength": 1000,
+            "minLength": 0
+          },
+          "status": {
+            "type": "string",
+            "description": "處理狀態",
+            "enum": [
+              "PENDING",
+              "REVIEWING",
+              "RESOLVED",
+              "DISMISSED"
+            ]
+          },
+          "adminId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "處理此檢舉的 admin user ID"
+          },
+          "adminNote": {
+            "type": "string",
+            "description": "admin 處理備註",
+            "maxLength": 1000,
+            "minLength": 0
+          },
+          "actionTaken": {
+            "type": "string",
+            "description": "採取的行動",
+            "enum": [
+              "NONE",
+              "WARNED_SELLER",
+              "PRODUCT_HIDDEN",
+              "PRODUCT_REMOVED",
+              "SELLER_SUSPENDED"
+            ]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "檢舉建立時間"
+          },
+          "resolvedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "admin 結案時間"
+          }
+        },
+        "required": [
+          "id",
+          "productId",
+          "reasonCategory",
+          "reporterId",
+          "status"
+        ]
+      },
       "ProductUpdateParam": {
         "type": "object",
         "description": "商品更新參數",
@@ -22338,7 +22960,7 @@
           },
           "skus": {
             "type": "array",
-            "description": "商品SKU或條碼集合",
+            "description": "商品SKU或條碼集合(數位商品可空)",
             "items": {
               "type": "string"
             },
@@ -22380,7 +23002,7 @@
           },
           "pickupServiceTypes": {
             "type": "array",
-            "description": "支援的取貨服務類型",
+            "description": "支援的取貨服務類型(實體商品必填)",
             "items": {
               "type": "string",
               "description": "取貨服務類型",
@@ -22399,7 +23021,7 @@
             "additionalProperties": {
               "type": "number"
             },
-            "description": "各取貨服務類型運費對應表"
+            "description": "各取貨服務類型運費對應表(實體商品必填)"
           },
           "freeShippingThreshold": {
             "type": "number",
@@ -22411,14 +23033,57 @@
             "description": "代購下單URL(只對賣家展示)",
             "maxLength": 500,
             "minLength": 0
+          },
+          "productType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "sourceRegion": {
+            "type": "string",
+            "description": "代購來源地區 ISO 代碼(數位商品必填)",
+            "example": "JP",
+            "maxLength": 10,
+            "minLength": 0
+          },
+          "sourcePlatform": {
+            "type": "string",
+            "description": "代購來源平台(數位商品必填)",
+            "example": "DeepSeek",
+            "maxLength": 100,
+            "minLength": 0
+          },
+          "serviceLeadTimeHours": {
+            "type": "integer",
+            "format": "int32",
+            "description": "預計完成時數(數位商品必填)",
+            "example": 24,
+            "minimum": 0
+          },
+          "maxConcurrentOrders": {
+            "type": "integer",
+            "format": "int32",
+            "description": "同時可處理單數上限(數位商品必填)",
+            "example": 5,
+            "minimum": 1
+          },
+          "buyerInfoRequiredJson": {
+            "type": "string",
+            "description": "買家需提供資訊 schema(JSON)"
+          },
+          "dataResidencyNotice": {
+            "type": "string",
+            "description": "資料出境聲明文字",
+            "maxLength": 5000,
+            "minLength": 0
           }
         },
         "required": [
           "currency",
-          "id",
-          "pickupServiceTypeFees",
-          "pickupServiceTypes",
-          "skus"
+          "id"
         ]
       },
       "ProductSeachParam": {
@@ -22503,6 +23168,7 @@
               "AUTOMOTIVE",
               "BOOKS",
               "SECOND_HAND",
+              "DIGITAL_SERVICE",
               "OTHER"
             ]
           },
@@ -22596,6 +23262,7 @@
               "AUTOMOTIVE",
               "BOOKS",
               "SECOND_HAND",
+              "DIGITAL_SERVICE",
               "OTHER"
             ]
           },
@@ -22623,19 +23290,19 @@
           },
           "pickupTimeStart": {
             "type": "string",
-            "description": "取件開始時間",
+            "description": "取件開始時間(實體商品必填)",
             "maxLength": 10,
             "minLength": 0
           },
           "pickupTimeEnd": {
             "type": "string",
-            "description": "取件結束時間",
+            "description": "取件結束時間(實體商品必填)",
             "maxLength": 10,
             "minLength": 0
           },
           "pickupAddress": {
             "type": "string",
-            "description": "取件地址",
+            "description": "取件地址(實體商品必填)",
             "maxLength": 500,
             "minLength": 0
           },
@@ -22645,7 +23312,7 @@
           },
           "skus": {
             "type": "array",
-            "description": "商品SKU或條碼集合",
+            "description": "商品SKU或條碼集合(實體商品建議填,數位商品可空)",
             "items": {
               "type": "string"
             },
@@ -22705,7 +23372,7 @@
           },
           "pickupServiceTypes": {
             "type": "array",
-            "description": "支援的取貨服務類型",
+            "description": "支援的取貨服務類型(實體商品必填)",
             "items": {
               "type": "string",
               "description": "取貨服務類型",
@@ -22724,7 +23391,7 @@
             "additionalProperties": {
               "type": "number"
             },
-            "description": "各取貨服務類型運費對應表"
+            "description": "各取貨服務類型運費對應表(實體商品必填)"
           },
           "freeShippingThreshold": {
             "type": "number",
@@ -22746,21 +23413,68 @@
             "description": "代購下單URL(只對賣家展示)",
             "maxLength": 500,
             "minLength": 0
+          },
+          "productType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "sourceRegion": {
+            "type": "string",
+            "description": "代購來源地區 ISO 代碼(數位商品必填)",
+            "example": "JP",
+            "maxLength": 10,
+            "minLength": 0
+          },
+          "sourcePlatform": {
+            "type": "string",
+            "description": "代購來源平台(數位商品必填)",
+            "example": "DeepSeek",
+            "maxLength": 100,
+            "minLength": 0
+          },
+          "serviceLeadTimeHours": {
+            "type": "integer",
+            "format": "int32",
+            "description": "預計完成時數(數位商品必填)",
+            "example": 24,
+            "minimum": 0
+          },
+          "maxConcurrentOrders": {
+            "type": "integer",
+            "format": "int32",
+            "description": "同時可處理單數上限(service slot,數位商品必填)",
+            "example": 5,
+            "minimum": 1
+          },
+          "buyerInfoRequiredJson": {
+            "type": "string",
+            "description": "買家需提供資訊 schema(JSON)",
+            "example": [
+              {
+                "key": "apple_id",
+                "required": true,
+                "label": "Apple ID Email"
+              }
+            ]
+          },
+          "dataResidencyNotice": {
+            "type": "string",
+            "description": "資料出境聲明文字(中國/俄羅斯等來源建議填)",
+            "maxLength": 5000,
+            "minLength": 0
           }
         },
         "required": [
           "category",
           "currency",
           "description",
-          "pickupAddress",
           "pickupLatitude",
           "pickupLongitude",
-          "pickupServiceTypeFees",
-          "pickupServiceTypes",
-          "pickupTimeEnd",
-          "pickupTimeStart",
           "price",
-          "skus",
           "stock",
           "title"
         ]
@@ -22955,10 +23669,10 @@
           "fullStoreInfo": {
             "type": "string"
           },
-          "familyMart": {
+          "sevenEleven": {
             "type": "boolean"
           },
-          "sevenEleven": {
+          "familyMart": {
             "type": "boolean"
           }
         },
@@ -23033,27 +23747,42 @@
           },
           "selectedSku": {
             "type": "string",
-            "description": "選擇的商品SKU"
+            "description": "選擇的商品SKU(實體商品必填,數位商品可空)"
           },
           "cartItemId": {
             "type": "integer",
             "format": "int64",
-            "description": "購物車項目ID（可選，如果提供則會扣除對應購物車數量）"
+            "description": "購物車項目ID(可選,如果提供則會扣除對應購物車數量)"
           },
           "addressId": {
             "type": "integer",
             "format": "int64",
-            "description": "收貨地址ID"
+            "description": "收貨地址ID(實體商品必填,數位商品可空)"
           },
           "remark": {
             "type": "string",
             "description": "訂單備註"
+          },
+          "buyerProvidedInfoJson": {
+            "type": "string",
+            "description": "買家提供資訊 JSON(依商品 buyerInfoRequired schema 填寫,如 Apple ID email 等)"
+          },
+          "acceptedDataResidency": {
+            "type": "boolean",
+            "description": "是否接受資料出境聲明(數位商品必填 true)"
+          },
+          "acceptedNoRefundAfterProof": {
+            "type": "boolean",
+            "description": "是否接受確認後不得退款聲明(數位商品必填 true)"
+          },
+          "termsVersion": {
+            "type": "string",
+            "description": "ToS 版本號(數位商品必填)",
+            "example": "v1.0"
           }
         },
         "required": [
-          "addressId",
-          "productId",
-          "selectedSku"
+          "productId"
         ]
       },
       "ReturnRequestParam": {
@@ -23365,6 +24094,9 @@
               "DELIVERY_FAILED",
               "DELIVERY_RETURNING",
               "DELIVERY_COMPLETED",
+              "PURCHASE_IN_PROGRESS",
+              "PROOF_SUBMITTED",
+              "BUYER_CONFIRMED",
               "RETURN_REQUESTED",
               "RETURN_REJECTED",
               "RETURN_APPROVED",
@@ -23723,6 +24455,127 @@
           "accepted"
         ]
       },
+      "DeliveryProofSubmitParam": {
+        "type": "object",
+        "description": "提交交付證明參數(數位商品賣家用)",
+        "properties": {
+          "proofType": {
+            "type": "string",
+            "description": "證明類型",
+            "enum": [
+              "SCREENSHOT",
+              "RECEIPT",
+              "REDEMPTION_CODE",
+              "EMAIL_FORWARD",
+              "OTHER"
+            ]
+          },
+          "fileUrl": {
+            "type": "string",
+            "description": "OCI 檔案 URL(截圖/發票等)",
+            "maxLength": 500,
+            "minLength": 0
+          },
+          "codePayload": {
+            "type": "string",
+            "description": "兌換碼/序號(敏感資訊,平台側加密儲存)"
+          },
+          "sellerNote": {
+            "type": "string",
+            "description": "賣家備註",
+            "maxLength": 1000,
+            "minLength": 0
+          }
+        },
+        "required": [
+          "proofType"
+        ]
+      },
+      "OrderDeliveryProof": {
+        "type": "object",
+        "description": "數位商品交付證明",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "證明 ID"
+          },
+          "orderId": {
+            "type": "string",
+            "description": "訂單 ID"
+          },
+          "sellerId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "上傳者(賣家)ID"
+          },
+          "proofType": {
+            "type": "string",
+            "description": "證明類型",
+            "enum": [
+              "SCREENSHOT",
+              "RECEIPT",
+              "REDEMPTION_CODE",
+              "EMAIL_FORWARD",
+              "OTHER"
+            ]
+          },
+          "fileUrl": {
+            "type": "string",
+            "description": "OCI 檔案 URL(截圖/PDF/圖檔)",
+            "maxLength": 500,
+            "minLength": 0
+          },
+          "codePayload": {
+            "type": "string",
+            "description": "序號/兌換碼(視為敏感資訊,應加密儲存)"
+          },
+          "sellerNote": {
+            "type": "string",
+            "description": "賣家備註",
+            "maxLength": 1000,
+            "minLength": 0
+          },
+          "status": {
+            "type": "string",
+            "description": "證明狀態",
+            "enum": [
+              "SUBMITTED",
+              "BUYER_CONFIRMED",
+              "BUYER_REJECTED",
+              "EXPIRED"
+            ]
+          },
+          "buyerConfirmedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "買家確認時間"
+          },
+          "buyerRejectReason": {
+            "type": "string",
+            "description": "買家拒絕理由",
+            "maxLength": 500,
+            "minLength": 0
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "建立時間"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "最後更新時間"
+          }
+        },
+        "required": [
+          "id",
+          "orderId",
+          "proofType",
+          "sellerId",
+          "status"
+        ]
+      },
       "OrderShipPlatformParam": {
         "type": "object",
         "description": "平台配送發貨參數",
@@ -23981,6 +24834,9 @@
                 "DELIVERY_FAILED",
                 "DELIVERY_RETURNING",
                 "DELIVERY_COMPLETED",
+                "PURCHASE_IN_PROGRESS",
+                "PROOF_SUBMITTED",
+                "BUYER_CONFIRMED",
                 "RETURN_REQUESTED",
                 "RETURN_REJECTED",
                 "RETURN_APPROVED",
@@ -24196,6 +25052,9 @@
                 "DELIVERY_FAILED",
                 "DELIVERY_RETURNING",
                 "DELIVERY_COMPLETED",
+                "PURCHASE_IN_PROGRESS",
+                "PROOF_SUBMITTED",
+                "BUYER_CONFIRMED",
                 "RETURN_REQUESTED",
                 "RETURN_REJECTED",
                 "RETURN_APPROVED",
@@ -28865,6 +29724,147 @@
           }
         }
       },
+      "ProductDraftRequest": {
+        "type": "object",
+        "description": "AI 商品草稿生成請求",
+        "properties": {
+          "productType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "titleHint": {
+            "type": "string",
+            "description": "賣家提供的商品關鍵字/大致描述",
+            "example": "iPhone 15 Pro 256GB 黑色",
+            "maxLength": 200,
+            "minLength": 0
+          },
+          "imageUrls": {
+            "type": "array",
+            "description": "已上傳的圖片 URL(OCI bucket),供多模態 AI 讀取",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sourceRegion": {
+            "type": "string",
+            "description": "數位商品來源地區(若已知,幫助 AI 準確生成)",
+            "example": "JP",
+            "maxLength": 10,
+            "minLength": 0
+          },
+          "sourcePlatform": {
+            "type": "string",
+            "description": "數位商品來源平台(若已知)",
+            "example": "Apple App Store",
+            "maxLength": 100,
+            "minLength": 0
+          }
+        },
+        "required": [
+          "productType"
+        ]
+      },
+      "ProductDraftResponse": {
+        "type": "object",
+        "description": "AI 生成的商品草稿",
+        "properties": {
+          "productType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "description": "建議標題(1-100 字)"
+          },
+          "description": {
+            "type": "string",
+            "description": "建議描述(1-1000 字)"
+          },
+          "category": {
+            "type": "string",
+            "description": "建議分類",
+            "enum": [
+              "ELECTRONICS",
+              "MOBILE",
+              "CLOTHING",
+              "SHOES",
+              "BAGS",
+              "BEAUTY",
+              "HEALTH",
+              "FOOD",
+              "HOME",
+              "FURNITURE",
+              "BABY",
+              "TOYS",
+              "PET_SUPPLIES",
+              "SPORTS",
+              "OUTDOOR",
+              "AUTOMOTIVE",
+              "BOOKS",
+              "SECOND_HAND",
+              "DIGITAL_SERVICE",
+              "OTHER"
+            ]
+          },
+          "brand": {
+            "type": "string",
+            "description": "建議品牌(若可辨識)"
+          },
+          "tags": {
+            "type": "string",
+            "description": "建議標籤,逗號分隔"
+          },
+          "sourceRegion": {
+            "type": "string",
+            "description": "來源地區(數位商品)"
+          },
+          "sourcePlatform": {
+            "type": "string",
+            "description": "來源平台(數位商品)"
+          },
+          "serviceLeadTimeHours": {
+            "type": "integer",
+            "format": "int32",
+            "description": "建議完成時數(數位商品)"
+          },
+          "maxConcurrentOrders": {
+            "type": "integer",
+            "format": "int32",
+            "description": "建議同時處理上限(數位商品)"
+          },
+          "dataResidencyNotice": {
+            "type": "string",
+            "description": "資料出境聲明(中國/俄羅斯等敏感來源)"
+          },
+          "buyerInfoRequiredJson": {
+            "type": "string",
+            "description": "買家需提供資訊 schema(JSON)"
+          },
+          "aiProvider": {
+            "type": "string",
+            "description": "AI provider",
+            "example": "groq"
+          },
+          "rawResponse": {
+            "type": "string",
+            "description": "AI 原始回應(debug 用,可刪)"
+          },
+          "fallbackUsed": {
+            "type": "boolean",
+            "description": "是否 fallback 到預設值(AI 失敗時)",
+            "example": false
+          }
+        }
+      },
       "AdminStoreUpdateParam": {
         "type": "object",
         "description": "管理員更新商店參數",
@@ -29337,6 +30337,32 @@
             "type": "boolean"
           }
         }
+      },
+      "ProductReportResolveParam": {
+        "type": "object",
+        "description": "admin 處理檢舉參數",
+        "properties": {
+          "actionTaken": {
+            "type": "string",
+            "description": "採取的行動",
+            "enum": [
+              "NONE",
+              "WARNED_SELLER",
+              "PRODUCT_HIDDEN",
+              "PRODUCT_REMOVED",
+              "SELLER_SUSPENDED"
+            ]
+          },
+          "adminNote": {
+            "type": "string",
+            "description": "admin 處理備註",
+            "maxLength": 1000,
+            "minLength": 0
+          }
+        },
+        "required": [
+          "actionTaken"
+        ]
       },
       "ApiResponseMapStringObject": {
         "type": "object",
@@ -30996,6 +32022,52 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/PromoCode"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PageProductReport": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductReport"
             }
           },
           "number": {

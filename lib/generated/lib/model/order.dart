@@ -797,6 +797,9 @@ class OrderStatusEnum {
   static const DELIVERY_FAILED = OrderStatusEnum._(r'DELIVERY_FAILED');
   static const DELIVERY_RETURNING = OrderStatusEnum._(r'DELIVERY_RETURNING');
   static const DELIVERY_COMPLETED = OrderStatusEnum._(r'DELIVERY_COMPLETED');
+  static const PURCHASE_IN_PROGRESS = OrderStatusEnum._(r'PURCHASE_IN_PROGRESS');
+  static const PROOF_SUBMITTED = OrderStatusEnum._(r'PROOF_SUBMITTED');
+  static const BUYER_CONFIRMED = OrderStatusEnum._(r'BUYER_CONFIRMED');
   static const RETURN_REQUESTED = OrderStatusEnum._(r'RETURN_REQUESTED');
   static const RETURN_REJECTED = OrderStatusEnum._(r'RETURN_REJECTED');
   static const RETURN_APPROVED = OrderStatusEnum._(r'RETURN_APPROVED');
@@ -829,6 +832,9 @@ class OrderStatusEnum {
     DELIVERY_FAILED,
     DELIVERY_RETURNING,
     DELIVERY_COMPLETED,
+    PURCHASE_IN_PROGRESS,
+    PROOF_SUBMITTED,
+    BUYER_CONFIRMED,
     RETURN_REQUESTED,
     RETURN_REJECTED,
     RETURN_APPROVED,
@@ -896,6 +902,9 @@ class OrderStatusEnumTypeTransformer {
         case r'DELIVERY_FAILED': return OrderStatusEnum.DELIVERY_FAILED;
         case r'DELIVERY_RETURNING': return OrderStatusEnum.DELIVERY_RETURNING;
         case r'DELIVERY_COMPLETED': return OrderStatusEnum.DELIVERY_COMPLETED;
+        case r'PURCHASE_IN_PROGRESS': return OrderStatusEnum.PURCHASE_IN_PROGRESS;
+        case r'PROOF_SUBMITTED': return OrderStatusEnum.PROOF_SUBMITTED;
+        case r'BUYER_CONFIRMED': return OrderStatusEnum.BUYER_CONFIRMED;
         case r'RETURN_REQUESTED': return OrderStatusEnum.RETURN_REQUESTED;
         case r'RETURN_REJECTED': return OrderStatusEnum.RETURN_REJECTED;
         case r'RETURN_APPROVED': return OrderStatusEnum.RETURN_APPROVED;
