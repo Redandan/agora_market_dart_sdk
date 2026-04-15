@@ -27,7 +27,7 @@ class DefaultApi {
   /// * [KnowledgeEntry] knowledgeEntry (required):
   Future<Response> addKnowledgeWithHttpInfo(KnowledgeEntry knowledgeEntry,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/knowledge';
+    final path = r'/admin/knowledge';
 
     // ignore: prefer_final_locals
     Object? postBody = knowledgeEntry;
@@ -83,7 +83,7 @@ class DefaultApi {
   /// * [CartItemCreateParam] cartItemCreateParam (required):
   Future<Response> addToCartWithHttpInfo(CartItemCreateParam cartItemCreateParam,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/add';
+    final path = r'/cart/add';
 
     // ignore: prefer_final_locals
     Object? postBody = cartItemCreateParam;
@@ -142,7 +142,7 @@ class DefaultApi {
   /// * [CartItemCreateParam] cartItemCreateParam (required):
   Future<Response> adminAddToCartWithHttpInfo(int userId, CartItemCreateParam cartItemCreateParam,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/admin/add';
+    final path = r'/cart/admin/add';
 
     // ignore: prefer_final_locals
     Object? postBody = cartItemCreateParam;
@@ -204,7 +204,7 @@ class DefaultApi {
   ///   用戶ID
   Future<Response> adminClearCartWithHttpInfo(int userId,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/admin/clear';
+    final path = r'/cart/admin/clear';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -256,7 +256,7 @@ class DefaultApi {
   ///   用戶ID
   Future<Response> adminGetCartSummaryWithHttpInfo(int userId,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/admin/summary';
+    final path = r'/cart/admin/summary';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -322,7 +322,7 @@ class DefaultApi {
   ///   每頁大小
   Future<Response> adminGetUserCartWithHttpInfo(int userId, { int? page, int? size, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/admin/list';
+    final path = r'/cart/admin/list';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -397,7 +397,7 @@ class DefaultApi {
   ///   購物車項目ID
   Future<Response> adminRemoveFromCartWithHttpInfo(int userId, int cartItemId,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/admin/{cartItemId}'
+    final path = r'/cart/admin/{cartItemId}'
       .replaceAll('{cartItemId}', cartItemId.toString());
 
     // ignore: prefer_final_locals
@@ -458,7 +458,7 @@ class DefaultApi {
   /// * [CartItemUpdateParam] cartItemUpdateParam (required):
   Future<Response> adminUpdateCartItemWithHttpInfo(int userId, int cartItemId, CartItemUpdateParam cartItemUpdateParam,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/admin/{cartItemId}'
+    final path = r'/cart/admin/{cartItemId}'
       .replaceAll('{cartItemId}', cartItemId.toString());
 
     // ignore: prefer_final_locals
@@ -523,7 +523,7 @@ class DefaultApi {
   /// * [int] id (required):
   Future<Response> archivePostWithHttpInfo(int id,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/posts/{id}/archive'
+    final path = r'/posts/{id}/archive'
       .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
@@ -580,7 +580,7 @@ class DefaultApi {
   /// * [QuickLogisticsRequest] quickLogisticsRequest (required):
   Future<Response> calculateLogisticsWithHttpInfo(QuickLogisticsRequest quickLogisticsRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/logistics/calculate';
+    final path = r'/logistics/calculate';
 
     // ignore: prefer_final_locals
     Object? postBody = quickLogisticsRequest;
@@ -746,7 +746,7 @@ class DefaultApi {
   /// Note: This method returns the HTTP [Response].
   Future<Response> checkCartItemStockStatusWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/check-stock';
+    final path = r'/cart/check-stock';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -786,7 +786,7 @@ class DefaultApi {
   /// Note: This method returns the HTTP [Response].
   Future<Response> clearCartWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/clear';
+    final path = r'/cart/clear';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -830,7 +830,7 @@ class DefaultApi {
   /// * [int] userId (required):
   Future<Response> clearUserCartWithHttpInfo(int userId,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/admin/user/{userId}'
+    final path = r'/cart/admin/user/{userId}'
       .replaceAll('{userId}', userId.toString());
 
     // ignore: prefer_final_locals
@@ -1044,7 +1044,7 @@ class DefaultApi {
   /// Note: This method returns the HTTP [Response].
   Future<Response> countWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/knowledge/count';
+    final path = r'/admin/knowledge/count';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -1146,7 +1146,7 @@ class DefaultApi {
   /// * [PostCreateParam] postCreateParam (required):
   Future<Response> createPostWithHttpInfo(PostCreateParam postCreateParam,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/posts';
+    final path = r'/posts';
 
     // ignore: prefer_final_locals
     Object? postBody = postCreateParam;
@@ -1373,7 +1373,7 @@ class DefaultApi {
   /// * [String] id (required):
   Future<Response> deleteWithHttpInfo(String id,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/knowledge/{id}'
+    final path = r'/admin/knowledge/{id}'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
@@ -1430,7 +1430,7 @@ class DefaultApi {
   /// * [int] id (required):
   Future<Response> deletePostWithHttpInfo(int id,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/posts/{id}'
+    final path = r'/posts/{id}'
       .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
@@ -1487,7 +1487,7 @@ class DefaultApi {
   /// * [int] id (required):
   Future<Response> deletePost1WithHttpInfo(int id,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/posts/{id}'
+    final path = r'/admin/posts/{id}'
       .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
@@ -1614,7 +1614,7 @@ class DefaultApi {
   /// * [SchedulerJobRequest] schedulerJobRequest (required):
   Future<Response> executeJobWithHttpInfo(SchedulerJobRequest schedulerJobRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/scheduler/execute';
+    final path = r'/admin/scheduler/execute';
 
     // ignore: prefer_final_locals
     Object? postBody = schedulerJobRequest;
@@ -1782,7 +1782,7 @@ class DefaultApi {
   /// * [PostSearchParam] param (required):
   Future<Response> getAuthorPostsWithHttpInfo(int authorId, PostSearchParam param,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/posts/author/{authorId}'
+    final path = r'/posts/author/{authorId}'
       .replaceAll('{authorId}', authorId.toString());
 
     // ignore: prefer_final_locals
@@ -1839,7 +1839,7 @@ class DefaultApi {
   /// Note: This method returns the HTTP [Response].
   Future<Response> getAvailableCarriersWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/api/logistics/carriers';
+    final path = r'/logistics/carriers';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -1890,7 +1890,7 @@ class DefaultApi {
   /// Note: This method returns the HTTP [Response].
   Future<Response> getAvailableCitiesWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/api/logistics/postal/cities';
+    final path = r'/logistics/postal/cities';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -2074,7 +2074,7 @@ class DefaultApi {
   /// * [String] id (required):
   Future<Response> getByIdWithHttpInfo(String id,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/knowledge/{id}'
+    final path = r'/admin/knowledge/{id}'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
@@ -2187,7 +2187,7 @@ class DefaultApi {
   /// Note: This method returns the HTTP [Response].
   Future<Response> getCartGroupedBySellerWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/grouped-by-seller';
+    final path = r'/cart/grouped-by-seller';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -2238,7 +2238,7 @@ class DefaultApi {
   /// Note: This method returns the HTTP [Response].
   Future<Response> getCartSummaryWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/summary';
+    final path = r'/cart/summary';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -2286,7 +2286,7 @@ class DefaultApi {
   /// Note: This method returns the HTTP [Response].
   Future<Response> getCartSummaryReportWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/admin/cart-summary';
+    final path = r'/cart/admin/cart-summary';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -2452,7 +2452,7 @@ class DefaultApi {
   ///   城市名稱
   Future<Response> getDistrictsByCity1WithHttpInfo(String city,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/logistics/postal/city/{city}/districts'
+    final path = r'/logistics/postal/city/{city}/districts'
       .replaceAll('{city}', city);
 
     // ignore: prefer_final_locals
@@ -2513,7 +2513,7 @@ class DefaultApi {
   /// * [PostSearchParam] param (required):
   Future<Response> getFeaturedPostsWithHttpInfo(PostSearchParam param,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/posts/featured';
+    final path = r'/posts/featured';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -2687,7 +2687,7 @@ class DefaultApi {
   /// Note: This method returns the HTTP [Response].
   Future<Response> getJobTypesWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/scheduler/job-types';
+    final path = r'/admin/scheduler/job-types';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -2782,7 +2782,7 @@ class DefaultApi {
   /// Note: This method returns the HTTP [Response].
   Future<Response> getLowStockItemsWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/low-stock';
+    final path = r'/cart/low-stock';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -2833,7 +2833,7 @@ class DefaultApi {
   /// Note: This method returns the HTTP [Response].
   Future<Response> getOutOfStockItemsWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/out-of-stock';
+    final path = r'/cart/out-of-stock';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -2884,7 +2884,7 @@ class DefaultApi {
   /// Note: This method returns the HTTP [Response].
   Future<Response> getOverviewStatisticsWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/posts/statistics/overview';
+    final path = r'/admin/posts/statistics/overview';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -2980,7 +2980,7 @@ class DefaultApi {
   /// * [int] id (required):
   Future<Response> getPostWithHttpInfo(int id,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/posts/{id}'
+    final path = r'/posts/{id}'
       .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
@@ -3037,7 +3037,7 @@ class DefaultApi {
   /// * [int] id (required):
   Future<Response> getPost1WithHttpInfo(int id,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/posts/{id}'
+    final path = r'/admin/posts/{id}'
       .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
@@ -3094,7 +3094,7 @@ class DefaultApi {
   /// * [int] id (required):
   Future<Response> getPostStatisticsWithHttpInfo(int id,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/posts/{id}/statistics'
+    final path = r'/posts/{id}/statistics'
       .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
@@ -3152,7 +3152,7 @@ class DefaultApi {
   ///   郵遞區號
   Future<Response> getPostalAreaByCodeWithHttpInfo(String postalCode,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/logistics/postal-codes/{postalCode}'
+    final path = r'/logistics/postal-codes/{postalCode}'
       .replaceAll('{postalCode}', postalCode);
 
     // ignore: prefer_final_locals
@@ -3214,7 +3214,7 @@ class DefaultApi {
   ///   城市名稱
   Future<Response> getPostalAreasByCityWithHttpInfo(String city,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/logistics/postal/city/{city}'
+    final path = r'/logistics/postal/city/{city}'
       .replaceAll('{city}', city);
 
     // ignore: prefer_final_locals
@@ -3498,7 +3498,7 @@ class DefaultApi {
   ///   物流公司
   Future<Response> getServiceTypesWithHttpInfo(String carrier,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/logistics/carriers/{carrier}/services'
+    final path = r'/logistics/carriers/{carrier}/services'
       .replaceAll('{carrier}', carrier);
 
     // ignore: prefer_final_locals
@@ -3559,7 +3559,7 @@ class DefaultApi {
   /// * [int] periodDays:
   ///
   /// * [int] slaThresholdHours:
-  Future<Response> getStats1WithHttpInfo({ int? periodDays, int? slaThresholdHours, }) async {
+  Future<Response> getStatsWithHttpInfo({ int? periodDays, int? slaThresholdHours, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/reports/stats';
 
@@ -3600,8 +3600,8 @@ class DefaultApi {
   /// * [int] periodDays:
   ///
   /// * [int] slaThresholdHours:
-  Future<ProductReportStatsDto?> getStats1({ int? periodDays, int? slaThresholdHours, }) async {
-    final response = await getStats1WithHttpInfo( periodDays: periodDays, slaThresholdHours: slaThresholdHours, );
+  Future<ProductReportStatsDto?> getStats({ int? periodDays, int? slaThresholdHours, }) async {
+    final response = await getStatsWithHttpInfo( periodDays: periodDays, slaThresholdHours: slaThresholdHours, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -3626,7 +3626,7 @@ class DefaultApi {
   /// * [int] storeId (required):
   Future<Response> getStorePostStatisticsWithHttpInfo(int storeId,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/posts/store/{storeId}/statistics'
+    final path = r'/posts/store/{storeId}/statistics'
       .replaceAll('{storeId}', storeId.toString());
 
     // ignore: prefer_final_locals
@@ -3685,7 +3685,7 @@ class DefaultApi {
   /// * [PostSearchParam] param (required):
   Future<Response> getStorePostsWithHttpInfo(int storeId, PostSearchParam param,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/posts/store/{storeId}'
+    final path = r'/posts/store/{storeId}'
       .replaceAll('{storeId}', storeId.toString());
 
     // ignore: prefer_final_locals
@@ -3742,7 +3742,7 @@ class DefaultApi {
   /// Note: This method returns the HTTP [Response].
   Future<Response> getTopPostsWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/api/posts/top';
+    final path = r'/posts/top';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -3942,6 +3942,90 @@ class DefaultApi {
     return null;
   }
 
+  /// 查詢帳變歷史(GET 版)
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] token:
+  ///
+  /// * [int] page:
+  ///
+  /// * [int] size:
+  ///
+  /// * [DateTime] startDate:
+  ///
+  /// * [DateTime] endDate:
+  Future<Response> getTransactionListGetWithHttpInfo({ String? token, int? page, int? size, DateTime? startDate, DateTime? endDate, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/transactions/list';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (token != null) {
+      queryParams.addAll(_queryParams('', 'token', token));
+    }
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
+    if (startDate != null) {
+      queryParams.addAll(_queryParams('', 'startDate', startDate));
+    }
+    if (endDate != null) {
+      queryParams.addAll(_queryParams('', 'endDate', endDate));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查詢帳變歷史(GET 版)
+  ///
+  /// Parameters:
+  ///
+  /// * [String] token:
+  ///
+  /// * [int] page:
+  ///
+  /// * [int] size:
+  ///
+  /// * [DateTime] startDate:
+  ///
+  /// * [DateTime] endDate:
+  Future<PageTransaction?> getTransactionListGet({ String? token, int? page, int? size, DateTime? startDate, DateTime? endDate, }) async {
+    final response = await getTransactionListGetWithHttpInfo( token: token, page: page, size: size, startDate: startDate, endDate: endDate, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageTransaction',) as PageTransaction;
+    
+    }
+    return null;
+  }
+
   /// 獲取用戶購物車
   ///
   /// 分頁獲取用戶的購物車項目列表
@@ -3957,7 +4041,7 @@ class DefaultApi {
   ///   每頁大小
   Future<Response> getUserCartWithHttpInfo({ int? page, int? size, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart';
+    final path = r'/cart';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -4024,7 +4108,7 @@ class DefaultApi {
   /// * [int] userId (required):
   Future<Response> getUserPostStatisticsWithHttpInfo(int userId,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/posts/user/{userId}/statistics'
+    final path = r'/posts/user/{userId}/statistics'
       .replaceAll('{userId}', userId.toString());
 
     // ignore: prefer_final_locals
@@ -4197,7 +4281,7 @@ class DefaultApi {
   /// * [int] id (required):
   Future<Response> ignoreWithHttpInfo(int id,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/knowledge/pending/{id}/ignore'
+    final path = r'/admin/knowledge/pending/{id}/ignore'
       .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
@@ -4254,7 +4338,7 @@ class DefaultApi {
   /// * [List<KnowledgeEntry>] knowledgeEntry (required):
   Future<Response> importBatchWithHttpInfo(List<KnowledgeEntry> knowledgeEntry,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/knowledge/batch';
+    final path = r'/admin/knowledge/batch';
 
     // ignore: prefer_final_locals
     Object? postBody = knowledgeEntry;
@@ -4310,7 +4394,7 @@ class DefaultApi {
   /// * [int] id (required):
   Future<Response> likePostWithHttpInfo(int id,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/posts/{id}/like'
+    final path = r'/posts/{id}/like'
       .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
@@ -4361,7 +4445,7 @@ class DefaultApi {
   /// Note: This method returns the HTTP [Response].
   Future<Response> listWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/knowledge';
+    final path = r'/admin/knowledge';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -4557,7 +4641,7 @@ class DefaultApi {
   /// * [String] status:
   Future<Response> listPendingWithHttpInfo({ String? status, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/knowledge/pending';
+    final path = r'/admin/knowledge/pending';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -4663,7 +4747,7 @@ class DefaultApi {
   /// Note: This method returns the HTTP [Response].
   Future<Response> pendingCountWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/knowledge/pending/count';
+    final path = r'/admin/knowledge/pending/count';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -4713,7 +4797,7 @@ class DefaultApi {
   /// * [int] id (required):
   Future<Response> publishPostWithHttpInfo(int id,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/posts/{id}/publish'
+    final path = r'/posts/{id}/publish'
       .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
@@ -4770,7 +4854,7 @@ class DefaultApi {
   /// * [int] cartItemId (required):
   Future<Response> removeCartItemWithHttpInfo(int cartItemId,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/admin/item/{cartItemId}'
+    final path = r'/cart/admin/item/{cartItemId}'
       .replaceAll('{cartItemId}', cartItemId.toString());
 
     // ignore: prefer_final_locals
@@ -4820,7 +4904,7 @@ class DefaultApi {
   ///   購物車項目ID
   Future<Response> removeFromCartWithHttpInfo(int cartItemId,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/{cartItemId}'
+    final path = r'/cart/{cartItemId}'
       .replaceAll('{cartItemId}', cartItemId.toString());
 
     // ignore: prefer_final_locals
@@ -4916,67 +5000,6 @@ class DefaultApi {
     return null;
   }
 
-  /// 解答待確認問題
-  ///
-  /// 填寫回答，addToKnowledge=true 可同時加入知識庫
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] id (required):
-  ///
-  /// * [ResolveRequest] resolveRequest (required):
-  Future<Response> resolveWithHttpInfo(int id, ResolveRequest resolveRequest,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/admin/knowledge/pending/{id}/resolve'
-      .replaceAll('{id}', id.toString());
-
-    // ignore: prefer_final_locals
-    Object? postBody = resolveRequest;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 解答待確認問題
-  ///
-  /// 填寫回答，addToKnowledge=true 可同時加入知識庫
-  ///
-  /// Parameters:
-  ///
-  /// * [int] id (required):
-  ///
-  /// * [ResolveRequest] resolveRequest (required):
-  Future<ApiResponsePendingQuestionResponse?> resolve(int id, ResolveRequest resolveRequest,) async {
-    final response = await resolveWithHttpInfo(id, resolveRequest,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponsePendingQuestionResponse',) as ApiResponsePendingQuestionResponse;
-    
-    }
-    return null;
-  }
-
   /// admin 結案檢舉
   ///
   /// 依 action 可能隱藏或移除商品
@@ -4990,7 +5013,7 @@ class DefaultApi {
   /// * [User] admin (required):
   ///
   /// * [ProductReportResolveParam] productReportResolveParam (required):
-  Future<Response> resolve1WithHttpInfo(int reportId, User admin, ProductReportResolveParam productReportResolveParam,) async {
+  Future<Response> resolveWithHttpInfo(int reportId, User admin, ProductReportResolveParam productReportResolveParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/reports/{reportId}/resolve'
       .replaceAll('{reportId}', reportId.toString());
@@ -5029,8 +5052,8 @@ class DefaultApi {
   /// * [User] admin (required):
   ///
   /// * [ProductReportResolveParam] productReportResolveParam (required):
-  Future<ProductReport?> resolve1(int reportId, User admin, ProductReportResolveParam productReportResolveParam,) async {
-    final response = await resolve1WithHttpInfo(reportId, admin, productReportResolveParam,);
+  Future<ProductReport?> resolve(int reportId, User admin, ProductReportResolveParam productReportResolveParam,) async {
+    final response = await resolveWithHttpInfo(reportId, admin, productReportResolveParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -5039,6 +5062,67 @@ class DefaultApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductReport',) as ProductReport;
+    
+    }
+    return null;
+  }
+
+  /// 解答待確認問題
+  ///
+  /// 填寫回答，addToKnowledge=true 可同時加入知識庫
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///
+  /// * [ResolveRequest] resolveRequest (required):
+  Future<Response> resolve1WithHttpInfo(int id, ResolveRequest resolveRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/knowledge/pending/{id}/resolve'
+      .replaceAll('{id}', id.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody = resolveRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 解答待確認問題
+  ///
+  /// 填寫回答，addToKnowledge=true 可同時加入知識庫
+  ///
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///
+  /// * [ResolveRequest] resolveRequest (required):
+  Future<ApiResponsePendingQuestionResponse?> resolve1(int id, ResolveRequest resolveRequest,) async {
+    final response = await resolve1WithHttpInfo(id, resolveRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponsePendingQuestionResponse',) as ApiResponsePendingQuestionResponse;
     
     }
     return null;
@@ -5120,7 +5204,7 @@ class DefaultApi {
   /// * [int] n:
   Future<Response> search1WithHttpInfo(String q, { int? n, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/knowledge/search';
+    final path = r'/admin/knowledge/search';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -5189,7 +5273,7 @@ class DefaultApi {
   ///   每頁大小
   Future<Response> searchCartsWithHttpInfo(CartSearchParam cartSearchParam, { int? page, int? size, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/admin/search';
+    final path = r'/cart/admin/search';
 
     // ignore: prefer_final_locals
     Object? postBody = cartSearchParam;
@@ -5310,7 +5394,7 @@ class DefaultApi {
   /// * [PostalSearchParam] postalSearchParam (required):
   Future<Response> searchPostalAreasWithHttpInfo(PostalSearchParam postalSearchParam,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/logistics/postal/search';
+    final path = r'/logistics/postal/search';
 
     // ignore: prefer_final_locals
     Object? postBody = postalSearchParam;
@@ -5369,7 +5453,7 @@ class DefaultApi {
   /// * [PostSearchParam] param (required):
   Future<Response> searchPostsWithHttpInfo(PostSearchParam param,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/posts/search';
+    final path = r'/posts/search';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -5427,7 +5511,7 @@ class DefaultApi {
   /// * [PostSearchParam] param (required):
   Future<Response> searchPosts1WithHttpInfo(PostSearchParam param,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/posts/search';
+    final path = r'/admin/posts/search';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -5591,7 +5675,7 @@ class DefaultApi {
   /// * [bool] isFeatured (required):
   Future<Response> setFeaturedWithHttpInfo(int id, bool isFeatured,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/posts/{id}/featured'
+    final path = r'/admin/posts/{id}/featured'
       .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
@@ -5654,7 +5738,7 @@ class DefaultApi {
   /// * [bool] isTop (required):
   Future<Response> setTopWithHttpInfo(int id, bool isTop,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/posts/{id}/top'
+    final path = r'/admin/posts/{id}/top'
       .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
@@ -5715,7 +5799,7 @@ class DefaultApi {
   /// * [int] id (required):
   Future<Response> sharePostWithHttpInfo(int id,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/posts/{id}/share'
+    final path = r'/posts/{id}/share'
       .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
@@ -5772,7 +5856,7 @@ class DefaultApi {
   /// * [int] id (required):
   Future<Response> unlikePostWithHttpInfo(int id,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/posts/{id}/unlike'
+    final path = r'/posts/{id}/unlike'
       .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
@@ -5832,7 +5916,7 @@ class DefaultApi {
   /// * [CartItemUpdateParam] cartItemUpdateParam (required):
   Future<Response> updateCartItemWithHttpInfo(int cartItemId, CartItemUpdateParam cartItemUpdateParam,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/cart/{cartItemId}'
+    final path = r'/cart/{cartItemId}'
       .replaceAll('{cartItemId}', cartItemId.toString());
 
     // ignore: prefer_final_locals
@@ -5892,7 +5976,7 @@ class DefaultApi {
   /// * [PostUpdateParam] postUpdateParam (required):
   Future<Response> updatePostWithHttpInfo(PostUpdateParam postUpdateParam,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/posts';
+    final path = r'/posts';
 
     // ignore: prefer_final_locals
     Object? postBody = postUpdateParam;
@@ -5949,7 +6033,7 @@ class DefaultApi {
   ///   郵遞區號
   Future<Response> validatePostalCodeWithHttpInfo(String postalCode,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/logistics/postal-codes/{postalCode}/validate'
+    final path = r'/logistics/postal-codes/{postalCode}/validate'
       .replaceAll('{postalCode}', postalCode);
 
     // ignore: prefer_final_locals

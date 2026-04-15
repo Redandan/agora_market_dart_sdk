@@ -28,7 +28,7 @@ class TelegramApi {
   /// * [GroupEditRequest] groupEditRequest (required):
   Future<Response> editGroupWithHttpInfo(int groupId, GroupEditRequest groupEditRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/telegram-monitor/groups/{groupId}/edit'
+    final path = r'/admin/telegram-monitor/groups/{groupId}/edit'
       .replaceAll('{groupId}', groupId.toString());
 
     // ignore: prefer_final_locals
@@ -91,7 +91,7 @@ class TelegramApi {
   ///   最近消息返回筆數上限
   Future<Response> getGroupDetailWithHttpInfo(int groupId, { int? userLimit, int? messageLimit, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/telegram-monitor/groups/{groupId}/detail'
+    final path = r'/admin/telegram-monitor/groups/{groupId}/detail'
       .replaceAll('{groupId}', groupId.toString());
 
     // ignore: prefer_final_locals
@@ -154,7 +154,7 @@ class TelegramApi {
   /// Note: This method returns the HTTP [Response].
   Future<Response> getGroupsWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/telegram-monitor/groups';
+    final path = r'/admin/telegram-monitor/groups';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -208,7 +208,7 @@ class TelegramApi {
   /// * [GroupAiSimulationRequest] groupAiSimulationRequest:
   Future<Response> simulateGroupMessageWithHttpInfo(int groupId, { GroupAiSimulationRequest? groupAiSimulationRequest, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/telegram-monitor/groups/{groupId}/ai-simulate'
+    final path = r'/admin/telegram-monitor/groups/{groupId}/ai-simulate'
       .replaceAll('{groupId}', groupId.toString());
 
     // ignore: prefer_final_locals

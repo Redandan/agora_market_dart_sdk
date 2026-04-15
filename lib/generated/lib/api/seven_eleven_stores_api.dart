@@ -23,7 +23,7 @@ class SevenElevenStoresApi {
   /// Note: This method returns the HTTP [Response].
   Future<Response> getAllCitiesWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/api/stores/seven-eleven/cities';
+    final path = r'/stores/seven-eleven/cities';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -79,7 +79,7 @@ class SevenElevenStoresApi {
   ///   縣市名稱，例如：台北市、新北市
   Future<Response> getStoresByCityWithHttpInfo(String city,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/stores/seven-eleven/stores';
+    final path = r'/stores/seven-eleven/stores';
 
     // ignore: prefer_final_locals
     Object? postBody;

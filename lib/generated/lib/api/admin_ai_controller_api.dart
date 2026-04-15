@@ -27,7 +27,7 @@ class AdminAiControllerApi {
   /// * [ProductDraftRequest] productDraftRequest (required):
   Future<Response> generateProductDraftWithHttpInfo(ProductDraftRequest productDraftRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/ai/product-draft';
+    final path = r'/admin/ai/product-draft';
 
     // ignore: prefer_final_locals
     Object? postBody = productDraftRequest;
@@ -88,7 +88,7 @@ class AdminAiControllerApi {
   ///   結束日期，格式 yyyy-MM-dd，預設今日
   Future<Response> getConversionStatsWithHttpInfo({ int? groupId, DateTime? from, DateTime? to, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/ai/conversion/stats';
+    final path = r'/admin/ai/conversion/stats';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -151,10 +151,10 @@ class AdminAiControllerApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /api/admin/ai/stats' operation and returns the [Response].
-  Future<Response> getStatsWithHttpInfo() async {
+  /// Performs an HTTP 'GET /admin/ai/stats' operation and returns the [Response].
+  Future<Response> getStats2WithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/ai/stats';
+    final path = r'/admin/ai/stats';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -177,8 +177,8 @@ class AdminAiControllerApi {
     );
   }
 
-  Future<GroqUsageStatsDTO?> getStats() async {
-    final response = await getStatsWithHttpInfo();
+  Future<GroqUsageStatsDTO?> getStats2() async {
+    final response = await getStats2WithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

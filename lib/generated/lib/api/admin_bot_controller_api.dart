@@ -16,10 +16,10 @@ class AdminBotControllerApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /api/admin/bot/refresh-commands' operation and returns the [Response].
+  /// Performs an HTTP 'POST /admin/bot/refresh-commands' operation and returns the [Response].
   Future<Response> refreshBotCommandsWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/api/admin/bot/refresh-commands';
+    final path = r'/admin/bot/refresh-commands';
 
     // ignore: prefer_final_locals
     Object? postBody;

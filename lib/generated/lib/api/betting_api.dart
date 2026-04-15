@@ -33,7 +33,7 @@ class BettingApi {
   ///   每頁數量
   Future<Response> getMarketBetsWithHttpInfo(int marketId, { int? page, int? size, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/bets/market/{marketId}'
+    final path = r'/bets/market/{marketId}'
       .replaceAll('{marketId}', marketId.toString());
 
     // ignore: prefer_final_locals
@@ -110,7 +110,7 @@ class BettingApi {
   ///   每頁數量
   Future<Response> getMyBetsWithHttpInfo({ String? status, int? page, int? size, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/bets/my';
+    final path = r'/bets/my';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -183,7 +183,7 @@ class BettingApi {
   /// * [PlaceBetRequest] placeBetRequest (required):
   Future<Response> placeBetWithHttpInfo(PlaceBetRequest placeBetRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/bets';
+    final path = r'/bets';
 
     // ignore: prefer_final_locals
     Object? postBody = placeBetRequest;

@@ -59,115 +59,116 @@ All URIs are relative to *https://agoramarketapi.purrtechllc.com/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**addKnowledge**](doc//DefaultApi.md#addknowledge) | **POST** /api/admin/knowledge | 新增知識文件
-*DefaultApi* | [**addToCart**](doc//DefaultApi.md#addtocart) | **POST** /api/cart/add | 添加商品到購物車
-*DefaultApi* | [**adminAddToCart**](doc//DefaultApi.md#adminaddtocart) | **POST** /api/cart/admin/add | 管理員添加商品到購物車
-*DefaultApi* | [**adminClearCart**](doc//DefaultApi.md#adminclearcart) | **DELETE** /api/cart/admin/clear | 管理員清空購物車
-*DefaultApi* | [**adminGetCartSummary**](doc//DefaultApi.md#admingetcartsummary) | **GET** /api/cart/admin/summary | 管理員獲取購物車統計
-*DefaultApi* | [**adminGetUserCart**](doc//DefaultApi.md#admingetusercart) | **GET** /api/cart/admin/list | 管理員獲取購物車列表
-*DefaultApi* | [**adminRemoveFromCart**](doc//DefaultApi.md#adminremovefromcart) | **DELETE** /api/cart/admin/{cartItemId} | 管理員從購物車移除商品
-*DefaultApi* | [**adminUpdateCartItem**](doc//DefaultApi.md#adminupdatecartitem) | **PUT** /api/cart/admin/{cartItemId} | 管理員更新購物車項目
-*DefaultApi* | [**archivePost**](doc//DefaultApi.md#archivepost) | **POST** /api/posts/{id}/archive | 下架貼文
-*DefaultApi* | [**calculateLogistics**](doc//DefaultApi.md#calculatelogistics) | **POST** /api/logistics/calculate | 物流計算
+*DefaultApi* | [**addKnowledge**](doc//DefaultApi.md#addknowledge) | **POST** /admin/knowledge | 新增知識文件
+*DefaultApi* | [**addToCart**](doc//DefaultApi.md#addtocart) | **POST** /cart/add | 添加商品到購物車
+*DefaultApi* | [**adminAddToCart**](doc//DefaultApi.md#adminaddtocart) | **POST** /cart/admin/add | 管理員添加商品到購物車
+*DefaultApi* | [**adminClearCart**](doc//DefaultApi.md#adminclearcart) | **DELETE** /cart/admin/clear | 管理員清空購物車
+*DefaultApi* | [**adminGetCartSummary**](doc//DefaultApi.md#admingetcartsummary) | **GET** /cart/admin/summary | 管理員獲取購物車統計
+*DefaultApi* | [**adminGetUserCart**](doc//DefaultApi.md#admingetusercart) | **GET** /cart/admin/list | 管理員獲取購物車列表
+*DefaultApi* | [**adminRemoveFromCart**](doc//DefaultApi.md#adminremovefromcart) | **DELETE** /cart/admin/{cartItemId} | 管理員從購物車移除商品
+*DefaultApi* | [**adminUpdateCartItem**](doc//DefaultApi.md#adminupdatecartitem) | **PUT** /cart/admin/{cartItemId} | 管理員更新購物車項目
+*DefaultApi* | [**archivePost**](doc//DefaultApi.md#archivepost) | **POST** /posts/{id}/archive | 下架貼文
+*DefaultApi* | [**calculateLogistics**](doc//DefaultApi.md#calculatelogistics) | **POST** /logistics/calculate | 物流計算
 *DefaultApi* | [**callGet**](doc//DefaultApi.md#callget) | **GET** /admin/reports/{reportId} | admin 查單筆檢舉詳情
 *DefaultApi* | [**cancelRecharge**](doc//DefaultApi.md#cancelrecharge) | **POST** /recharge/{rechargeId}/cancel | 取消充值
-*DefaultApi* | [**checkCartItemStockStatus**](doc//DefaultApi.md#checkcartitemstockstatus) | **POST** /api/cart/check-stock | 檢查庫存狀態
-*DefaultApi* | [**clearCart**](doc//DefaultApi.md#clearcart) | **DELETE** /api/cart/clear | 清空購物車
-*DefaultApi* | [**clearUserCart**](doc//DefaultApi.md#clearusercart) | **DELETE** /api/cart/admin/user/{userId} | 清空指定用戶的購物車
+*DefaultApi* | [**checkCartItemStockStatus**](doc//DefaultApi.md#checkcartitemstockstatus) | **POST** /cart/check-stock | 檢查庫存狀態
+*DefaultApi* | [**clearCart**](doc//DefaultApi.md#clearcart) | **DELETE** /cart/clear | 清空購物車
+*DefaultApi* | [**clearUserCart**](doc//DefaultApi.md#clearusercart) | **DELETE** /cart/admin/user/{userId} | 清空指定用戶的購物車
 *DefaultApi* | [**closeIssue**](doc//DefaultApi.md#closeissue) | **POST** /customer-issues/{issueId}/close | 關閉客戶問題
 *DefaultApi* | [**completeRecharge**](doc//DefaultApi.md#completerecharge) | **POST** /recharge/{rechargeId}/complete | 完成充值
 *DefaultApi* | [**completeWithdraw**](doc//DefaultApi.md#completewithdraw) | **POST** /withdraws/{withdrawId}/complete | 完成提款
-*DefaultApi* | [**count**](doc//DefaultApi.md#count) | **GET** /api/admin/knowledge/count | 查詢知識庫文件數量
+*DefaultApi* | [**count**](doc//DefaultApi.md#count) | **GET** /admin/knowledge/count | 查詢知識庫文件數量
 *DefaultApi* | [**createIssue**](doc//DefaultApi.md#createissue) | **POST** /customer-issues | 創建客戶問題
-*DefaultApi* | [**createPost**](doc//DefaultApi.md#createpost) | **POST** /api/posts | 創建貼文
+*DefaultApi* | [**createPost**](doc//DefaultApi.md#createpost) | **POST** /posts | 創建貼文
 *DefaultApi* | [**createRecharge**](doc//DefaultApi.md#createrecharge) | **POST** /recharge | 創建充值
 *DefaultApi* | [**createReport**](doc//DefaultApi.md#createreport) | **POST** /products/{productId}/reports | 檢舉商品
 *DefaultApi* | [**createWithdraw**](doc//DefaultApi.md#createwithdraw) | **POST** /withdraws | 發起提款
-*DefaultApi* | [**delete**](doc//DefaultApi.md#delete) | **DELETE** /api/admin/knowledge/{id} | 刪除知識文件
-*DefaultApi* | [**deletePost**](doc//DefaultApi.md#deletepost) | **DELETE** /api/posts/{id} | 刪除貼文
-*DefaultApi* | [**deletePost1**](doc//DefaultApi.md#deletepost1) | **DELETE** /api/admin/posts/{id} | 管理員刪除貼文
+*DefaultApi* | [**delete**](doc//DefaultApi.md#delete) | **DELETE** /admin/knowledge/{id} | 刪除知識文件
+*DefaultApi* | [**deletePost**](doc//DefaultApi.md#deletepost) | **DELETE** /posts/{id} | 刪除貼文
+*DefaultApi* | [**deletePost1**](doc//DefaultApi.md#deletepost1) | **DELETE** /admin/posts/{id} | 管理員刪除貼文
 *DefaultApi* | [**dismiss**](doc//DefaultApi.md#dismiss) | **POST** /admin/reports/{reportId}/dismiss | admin 駁回檢舉
-*DefaultApi* | [**executeJob**](doc//DefaultApi.md#executejob) | **POST** /api/admin/scheduler/execute | 執行定時任務
+*DefaultApi* | [**executeJob**](doc//DefaultApi.md#executejob) | **POST** /admin/scheduler/execute | 執行定時任務
 *DefaultApi* | [**failWithdraw**](doc//DefaultApi.md#failwithdraw) | **POST** /withdraws/{withdrawId}/fail | 提款失敗
 *DefaultApi* | [**getAllActive**](doc//DefaultApi.md#getallactive) | **GET** /postal-areas | 獲取所有啟用的郵遞區號
-*DefaultApi* | [**getAuthorPosts**](doc//DefaultApi.md#getauthorposts) | **GET** /api/posts/author/{authorId} | 獲取作者貼文
-*DefaultApi* | [**getAvailableCarriers**](doc//DefaultApi.md#getavailablecarriers) | **GET** /api/logistics/carriers | 取得可用物流公司
-*DefaultApi* | [**getAvailableCities**](doc//DefaultApi.md#getavailablecities) | **GET** /api/logistics/postal/cities | 取得所有城市列表
+*DefaultApi* | [**getAuthorPosts**](doc//DefaultApi.md#getauthorposts) | **GET** /posts/author/{authorId} | 獲取作者貼文
+*DefaultApi* | [**getAvailableCarriers**](doc//DefaultApi.md#getavailablecarriers) | **GET** /logistics/carriers | 取得可用物流公司
+*DefaultApi* | [**getAvailableCities**](doc//DefaultApi.md#getavailablecities) | **GET** /logistics/postal/cities | 取得所有城市列表
 *DefaultApi* | [**getByCity**](doc//DefaultApi.md#getbycity) | **GET** /postal-areas/city/{city} | 根據城市查詢
 *DefaultApi* | [**getByCityAndDistrict**](doc//DefaultApi.md#getbycityanddistrict) | **GET** /postal-areas/city/{city}/district/{district} | 根據城市和行政區查詢
-*DefaultApi* | [**getById**](doc//DefaultApi.md#getbyid) | **GET** /api/admin/knowledge/{id} | 查詢單筆知識文件
+*DefaultApi* | [**getById**](doc//DefaultApi.md#getbyid) | **GET** /admin/knowledge/{id} | 查詢單筆知識文件
 *DefaultApi* | [**getByPostalCode**](doc//DefaultApi.md#getbypostalcode) | **GET** /postal-areas/code/{postalCode} | 根據郵遞區號查詢
-*DefaultApi* | [**getCartGroupedBySeller**](doc//DefaultApi.md#getcartgroupedbyseller) | **GET** /api/cart/grouped-by-seller | 按賣家分組
-*DefaultApi* | [**getCartSummary**](doc//DefaultApi.md#getcartsummary) | **GET** /api/cart/summary | 獲取購物車統計
-*DefaultApi* | [**getCartSummaryReport**](doc//DefaultApi.md#getcartsummaryreport) | **GET** /api/cart/admin/cart-summary | 購物車統計報告
+*DefaultApi* | [**getCartGroupedBySeller**](doc//DefaultApi.md#getcartgroupedbyseller) | **GET** /cart/grouped-by-seller | 按賣家分組
+*DefaultApi* | [**getCartSummary**](doc//DefaultApi.md#getcartsummary) | **GET** /cart/summary | 獲取購物車統計
+*DefaultApi* | [**getCartSummaryReport**](doc//DefaultApi.md#getcartsummaryreport) | **GET** /cart/admin/cart-summary | 購物車統計報告
 *DefaultApi* | [**getCities**](doc//DefaultApi.md#getcities) | **GET** /postal-areas/cities | 獲取城市列表
 *DefaultApi* | [**getDistrictsByCity**](doc//DefaultApi.md#getdistrictsbycity) | **GET** /postal-areas/cities/{city}/districts | 獲取城市行政區列表
-*DefaultApi* | [**getDistrictsByCity1**](doc//DefaultApi.md#getdistrictsbycity1) | **GET** /api/logistics/postal/city/{city}/districts | 查詢城市行政區
-*DefaultApi* | [**getFeaturedPosts**](doc//DefaultApi.md#getfeaturedposts) | **GET** /api/posts/featured | 獲取精選貼文
+*DefaultApi* | [**getDistrictsByCity1**](doc//DefaultApi.md#getdistrictsbycity1) | **GET** /logistics/postal/city/{city}/districts | 查詢城市行政區
+*DefaultApi* | [**getFeaturedPosts**](doc//DefaultApi.md#getfeaturedposts) | **GET** /posts/featured | 獲取精選貼文
 *DefaultApi* | [**getIssue**](doc//DefaultApi.md#getissue) | **GET** /customer-issues/{issueId} | 查詢客戶問題記錄
 *DefaultApi* | [**getIssueHistory**](doc//DefaultApi.md#getissuehistory) | **GET** /customer-issues/history | 查詢客戶問題歷史
-*DefaultApi* | [**getJobTypes**](doc//DefaultApi.md#getjobtypes) | **GET** /api/admin/scheduler/job-types | 獲取任務列表
+*DefaultApi* | [**getJobTypes**](doc//DefaultApi.md#getjobtypes) | **GET** /admin/scheduler/job-types | 獲取任務列表
 *DefaultApi* | [**getLatestOngoingWithdraw**](doc//DefaultApi.md#getlatestongoingwithdraw) | **GET** /withdraws/ongoing | 查詢當前用戶最新一筆進行中的提現
-*DefaultApi* | [**getLowStockItems**](doc//DefaultApi.md#getlowstockitems) | **GET** /api/cart/low-stock | 獲取庫存不足商品
-*DefaultApi* | [**getOutOfStockItems**](doc//DefaultApi.md#getoutofstockitems) | **GET** /api/cart/out-of-stock | 獲取缺貨商品
-*DefaultApi* | [**getOverviewStatistics**](doc//DefaultApi.md#getoverviewstatistics) | **GET** /api/admin/posts/statistics/overview | 獲取貼文總覽統計
+*DefaultApi* | [**getLowStockItems**](doc//DefaultApi.md#getlowstockitems) | **GET** /cart/low-stock | 獲取庫存不足商品
+*DefaultApi* | [**getOutOfStockItems**](doc//DefaultApi.md#getoutofstockitems) | **GET** /cart/out-of-stock | 獲取缺貨商品
+*DefaultApi* | [**getOverviewStatistics**](doc//DefaultApi.md#getoverviewstatistics) | **GET** /admin/posts/statistics/overview | 獲取貼文總覽統計
 *DefaultApi* | [**getPendingRecharge**](doc//DefaultApi.md#getpendingrecharge) | **GET** /recharge/pending | 查詢當前用戶是否有進行中的充值
-*DefaultApi* | [**getPost**](doc//DefaultApi.md#getpost) | **GET** /api/posts/{id} | 獲取貼文詳情
-*DefaultApi* | [**getPost1**](doc//DefaultApi.md#getpost1) | **GET** /api/admin/posts/{id} | 管理員獲取貼文詳情
-*DefaultApi* | [**getPostStatistics**](doc//DefaultApi.md#getpoststatistics) | **GET** /api/posts/{id}/statistics | 獲取貼文統計
-*DefaultApi* | [**getPostalAreaByCode**](doc//DefaultApi.md#getpostalareabycode) | **GET** /api/logistics/postal-codes/{postalCode} | 郵遞區號查詢
-*DefaultApi* | [**getPostalAreasByCity**](doc//DefaultApi.md#getpostalareasbycity) | **GET** /api/logistics/postal/city/{city} | 查詢城市所有行政區
+*DefaultApi* | [**getPost**](doc//DefaultApi.md#getpost) | **GET** /posts/{id} | 獲取貼文詳情
+*DefaultApi* | [**getPost1**](doc//DefaultApi.md#getpost1) | **GET** /admin/posts/{id} | 管理員獲取貼文詳情
+*DefaultApi* | [**getPostStatistics**](doc//DefaultApi.md#getpoststatistics) | **GET** /posts/{id}/statistics | 獲取貼文統計
+*DefaultApi* | [**getPostalAreaByCode**](doc//DefaultApi.md#getpostalareabycode) | **GET** /logistics/postal-codes/{postalCode} | 郵遞區號查詢
+*DefaultApi* | [**getPostalAreasByCity**](doc//DefaultApi.md#getpostalareasbycity) | **GET** /logistics/postal/city/{city} | 查詢城市所有行政區
 *DefaultApi* | [**getRecharge**](doc//DefaultApi.md#getrecharge) | **GET** /recharge/{rechargeId} | 獲取充值詳情
 *DefaultApi* | [**getRechargeByReceiveAddress**](doc//DefaultApi.md#getrechargebyreceiveaddress) | **GET** /recharge/address/{receiveAddress} | 通過接收地址查詢充值
 *DefaultApi* | [**getRechargeByTxHash**](doc//DefaultApi.md#getrechargebytxhash) | **GET** /recharge/tx/{txHash} | 通過交易哈希查詢充值
 *DefaultApi* | [**getRechargeHistory**](doc//DefaultApi.md#getrechargehistory) | **GET** /recharge/history | 獲取充值記錄
-*DefaultApi* | [**getServiceTypes**](doc//DefaultApi.md#getservicetypes) | **GET** /api/logistics/carriers/{carrier}/services | 取得物流公司服務類型
-*DefaultApi* | [**getStats1**](doc//DefaultApi.md#getstats1) | **GET** /admin/reports/stats | admin 檢舉統計
-*DefaultApi* | [**getStorePostStatistics**](doc//DefaultApi.md#getstorepoststatistics) | **GET** /api/posts/store/{storeId}/statistics | 獲取商店貼文統計
-*DefaultApi* | [**getStorePosts**](doc//DefaultApi.md#getstoreposts) | **GET** /api/posts/store/{storeId} | 獲取商店貼文
-*DefaultApi* | [**getTopPosts**](doc//DefaultApi.md#gettopposts) | **GET** /api/posts/top | 獲取置頂貼文
+*DefaultApi* | [**getServiceTypes**](doc//DefaultApi.md#getservicetypes) | **GET** /logistics/carriers/{carrier}/services | 取得物流公司服務類型
+*DefaultApi* | [**getStats**](doc//DefaultApi.md#getstats) | **GET** /admin/reports/stats | admin 檢舉統計
+*DefaultApi* | [**getStorePostStatistics**](doc//DefaultApi.md#getstorepoststatistics) | **GET** /posts/store/{storeId}/statistics | 獲取商店貼文統計
+*DefaultApi* | [**getStorePosts**](doc//DefaultApi.md#getstoreposts) | **GET** /posts/store/{storeId} | 獲取商店貼文
+*DefaultApi* | [**getTopPosts**](doc//DefaultApi.md#gettopposts) | **GET** /posts/top | 獲取置頂貼文
 *DefaultApi* | [**getTransactionById**](doc//DefaultApi.md#gettransactionbyid) | **GET** /transactions/{id} | 根據交易ID查詢交易記錄
 *DefaultApi* | [**getTransactionList**](doc//DefaultApi.md#gettransactionlist) | **POST** /transactions/list | 查詢帳變歷史
 *DefaultApi* | [**getTransactionListByAdmin**](doc//DefaultApi.md#gettransactionlistbyadmin) | **POST** /transactions/admin/search | 管理員查看帳變記錄
-*DefaultApi* | [**getUserCart**](doc//DefaultApi.md#getusercart) | **GET** /api/cart | 獲取用戶購物車
-*DefaultApi* | [**getUserPostStatistics**](doc//DefaultApi.md#getuserpoststatistics) | **GET** /api/posts/user/{userId}/statistics | 獲取用戶貼文統計
+*DefaultApi* | [**getTransactionListGet**](doc//DefaultApi.md#gettransactionlistget) | **GET** /transactions/list | 查詢帳變歷史(GET 版)
+*DefaultApi* | [**getUserCart**](doc//DefaultApi.md#getusercart) | **GET** /cart | 獲取用戶購物車
+*DefaultApi* | [**getUserPostStatistics**](doc//DefaultApi.md#getuserpoststatistics) | **GET** /posts/user/{userId}/statistics | 獲取用戶貼文統計
 *DefaultApi* | [**getWithdraw**](doc//DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 *DefaultApi* | [**getWithdrawHistory**](doc//DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
-*DefaultApi* | [**ignore**](doc//DefaultApi.md#ignore) | **POST** /api/admin/knowledge/pending/{id}/ignore | 忽略待確認問題
-*DefaultApi* | [**importBatch**](doc//DefaultApi.md#importbatch) | **POST** /api/admin/knowledge/batch | 批量匯入知識文件
-*DefaultApi* | [**likePost**](doc//DefaultApi.md#likepost) | **POST** /api/posts/{id}/like | 點讚貼文
-*DefaultApi* | [**list**](doc//DefaultApi.md#list) | **GET** /api/admin/knowledge | 列出所有知識文件
+*DefaultApi* | [**ignore**](doc//DefaultApi.md#ignore) | **POST** /admin/knowledge/pending/{id}/ignore | 忽略待確認問題
+*DefaultApi* | [**importBatch**](doc//DefaultApi.md#importbatch) | **POST** /admin/knowledge/batch | 批量匯入知識文件
+*DefaultApi* | [**likePost**](doc//DefaultApi.md#likepost) | **POST** /posts/{id}/like | 點讚貼文
+*DefaultApi* | [**list**](doc//DefaultApi.md#list) | **GET** /admin/knowledge | 列出所有知識文件
 *DefaultApi* | [**listByProduct**](doc//DefaultApi.md#listbyproduct) | **GET** /products/{productId}/reports | 查某商品檢舉紀錄
 *DefaultApi* | [**listByStatus**](doc//DefaultApi.md#listbystatus) | **GET** /admin/reports | admin 檢舉處理隊列
-*DefaultApi* | [**listPending**](doc//DefaultApi.md#listpending) | **GET** /api/admin/knowledge/pending | 列出待確認問題
+*DefaultApi* | [**listPending**](doc//DefaultApi.md#listpending) | **GET** /admin/knowledge/pending | 列出待確認問題
 *DefaultApi* | [**manualAdjustByAdmin**](doc//DefaultApi.md#manualadjustbyadmin) | **POST** /transactions/admin/manual-adjust | 管理員手動調帳
-*DefaultApi* | [**pendingCount**](doc//DefaultApi.md#pendingcount) | **GET** /api/admin/knowledge/pending/count | 查詢未處理問題數量
-*DefaultApi* | [**publishPost**](doc//DefaultApi.md#publishpost) | **POST** /api/posts/{id}/publish | 發布貼文
-*DefaultApi* | [**removeCartItem**](doc//DefaultApi.md#removecartitem) | **DELETE** /api/cart/admin/item/{cartItemId} | 刪除指定購物車項目
-*DefaultApi* | [**removeFromCart**](doc//DefaultApi.md#removefromcart) | **DELETE** /api/cart/{cartItemId} | 從購物車移除商品
+*DefaultApi* | [**pendingCount**](doc//DefaultApi.md#pendingcount) | **GET** /admin/knowledge/pending/count | 查詢未處理問題數量
+*DefaultApi* | [**publishPost**](doc//DefaultApi.md#publishpost) | **POST** /posts/{id}/publish | 發布貼文
+*DefaultApi* | [**removeCartItem**](doc//DefaultApi.md#removecartitem) | **DELETE** /cart/admin/item/{cartItemId} | 刪除指定購物車項目
+*DefaultApi* | [**removeFromCart**](doc//DefaultApi.md#removefromcart) | **DELETE** /cart/{cartItemId} | 從購物車移除商品
 *DefaultApi* | [**replyIssue**](doc//DefaultApi.md#replyissue) | **POST** /customer-issues/{issueId}/reply | 回覆客戶問題
-*DefaultApi* | [**resolve**](doc//DefaultApi.md#resolve) | **POST** /api/admin/knowledge/pending/{id}/resolve | 解答待確認問題
-*DefaultApi* | [**resolve1**](doc//DefaultApi.md#resolve1) | **POST** /admin/reports/{reportId}/resolve | admin 結案檢舉
+*DefaultApi* | [**resolve**](doc//DefaultApi.md#resolve) | **POST** /admin/reports/{reportId}/resolve | admin 結案檢舉
+*DefaultApi* | [**resolve1**](doc//DefaultApi.md#resolve1) | **POST** /admin/knowledge/pending/{id}/resolve | 解答待確認問題
 *DefaultApi* | [**search**](doc//DefaultApi.md#search) | **GET** /postal-areas/search | 搜索郵遞區號
-*DefaultApi* | [**search1**](doc//DefaultApi.md#search1) | **GET** /api/admin/knowledge/search | 語意搜尋測試
-*DefaultApi* | [**searchCarts**](doc//DefaultApi.md#searchcarts) | **POST** /api/cart/admin/search | 搜索購物車
+*DefaultApi* | [**search1**](doc//DefaultApi.md#search1) | **GET** /admin/knowledge/search | 語意搜尋測試
+*DefaultApi* | [**searchCarts**](doc//DefaultApi.md#searchcarts) | **POST** /cart/admin/search | 搜索購物車
 *DefaultApi* | [**searchIssues**](doc//DefaultApi.md#searchissues) | **POST** /customer-issues/search | 管理員搜尋客戶問題記錄
-*DefaultApi* | [**searchPostalAreas**](doc//DefaultApi.md#searchpostalareas) | **POST** /api/logistics/postal/search | 郵遞區號模糊查詢
-*DefaultApi* | [**searchPosts**](doc//DefaultApi.md#searchposts) | **GET** /api/posts/search | 搜索貼文
-*DefaultApi* | [**searchPosts1**](doc//DefaultApi.md#searchposts1) | **GET** /api/admin/posts/search | 管理員搜索貼文
+*DefaultApi* | [**searchPostalAreas**](doc//DefaultApi.md#searchpostalareas) | **POST** /logistics/postal/search | 郵遞區號模糊查詢
+*DefaultApi* | [**searchPosts**](doc//DefaultApi.md#searchposts) | **GET** /posts/search | 搜索貼文
+*DefaultApi* | [**searchPosts1**](doc//DefaultApi.md#searchposts1) | **GET** /admin/posts/search | 管理員搜索貼文
 *DefaultApi* | [**searchRecharges**](doc//DefaultApi.md#searchrecharges) | **POST** /recharge/search | 管理員搜尋充值記錄
 *DefaultApi* | [**searchWithdraws**](doc//DefaultApi.md#searchwithdraws) | **POST** /withdraws/search | 管理員搜尋提款記錄
-*DefaultApi* | [**setFeatured**](doc//DefaultApi.md#setfeatured) | **POST** /api/admin/posts/{id}/featured | 設置精選貼文
-*DefaultApi* | [**setTop**](doc//DefaultApi.md#settop) | **POST** /api/admin/posts/{id}/top | 設置置頂貼文
-*DefaultApi* | [**sharePost**](doc//DefaultApi.md#sharepost) | **POST** /api/posts/{id}/share | 分享貼文
-*DefaultApi* | [**unlikePost**](doc//DefaultApi.md#unlikepost) | **POST** /api/posts/{id}/unlike | 取消點讚
-*DefaultApi* | [**updateCartItem**](doc//DefaultApi.md#updatecartitem) | **PUT** /api/cart/{cartItemId} | 更新購物車項目
-*DefaultApi* | [**updatePost**](doc//DefaultApi.md#updatepost) | **PUT** /api/posts | 更新貼文
-*DefaultApi* | [**validatePostalCode**](doc//DefaultApi.md#validatepostalcode) | **GET** /api/logistics/postal-codes/{postalCode}/validate | 郵遞區號驗證
-*AdminAiControllerApi* | [**generateProductDraft**](doc//AdminAiControllerApi.md#generateproductdraft) | **POST** /api/admin/ai/product-draft | AI 生成商品草稿
-*AdminAiControllerApi* | [**getConversionStats**](doc//AdminAiControllerApi.md#getconversionstats) | **GET** /api/admin/ai/conversion/stats | 查詢 AI 群組對話轉化效率統計（可按群組 + 日期區間篩選）
-*AdminAiControllerApi* | [**getStats**](doc//AdminAiControllerApi.md#getstats) | **GET** /api/admin/ai/stats | 
-*AdminBotControllerApi* | [**refreshBotCommands**](doc//AdminBotControllerApi.md#refreshbotcommands) | **POST** /api/admin/bot/refresh-commands | 
+*DefaultApi* | [**setFeatured**](doc//DefaultApi.md#setfeatured) | **POST** /admin/posts/{id}/featured | 設置精選貼文
+*DefaultApi* | [**setTop**](doc//DefaultApi.md#settop) | **POST** /admin/posts/{id}/top | 設置置頂貼文
+*DefaultApi* | [**sharePost**](doc//DefaultApi.md#sharepost) | **POST** /posts/{id}/share | 分享貼文
+*DefaultApi* | [**unlikePost**](doc//DefaultApi.md#unlikepost) | **POST** /posts/{id}/unlike | 取消點讚
+*DefaultApi* | [**updateCartItem**](doc//DefaultApi.md#updatecartitem) | **PUT** /cart/{cartItemId} | 更新購物車項目
+*DefaultApi* | [**updatePost**](doc//DefaultApi.md#updatepost) | **PUT** /posts | 更新貼文
+*DefaultApi* | [**validatePostalCode**](doc//DefaultApi.md#validatepostalcode) | **GET** /logistics/postal-codes/{postalCode}/validate | 郵遞區號驗證
+*AdminAiControllerApi* | [**generateProductDraft**](doc//AdminAiControllerApi.md#generateproductdraft) | **POST** /admin/ai/product-draft | AI 生成商品草稿
+*AdminAiControllerApi* | [**getConversionStats**](doc//AdminAiControllerApi.md#getconversionstats) | **GET** /admin/ai/conversion/stats | 查詢 AI 群組對話轉化效率統計（可按群組 + 日期區間篩選）
+*AdminAiControllerApi* | [**getStats2**](doc//AdminAiControllerApi.md#getstats2) | **GET** /admin/ai/stats | 
+*AdminBotControllerApi* | [**refreshBotCommands**](doc//AdminBotControllerApi.md#refreshbotcommands) | **POST** /admin/bot/refresh-commands | 
 *AdminDeliveryApi* | [**assignDeliveryer**](doc//AdminDeliveryApi.md#assigndeliveryer) | **POST** /admin/delivery/orders/{orderId}/assign | 手動分配配送員
 *AdminDeliveryApi* | [**getDeliveryOrderDetail**](doc//AdminDeliveryApi.md#getdeliveryorderdetail) | **GET** /admin/delivery/orders/{orderId} | 查看配送訂單詳情
 *AdminDeliveryApi* | [**getDeliveryStatistics**](doc//AdminDeliveryApi.md#getdeliverystatistics) | **GET** /admin/delivery/statistics | 配送統計報告
@@ -260,7 +261,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**verifyTwoFactorCode**](doc//AuthApi.md#verifytwofactorcode) | **POST** /auth/2fa/verify | 驗證雙因素認證碼
 *AutoReplyApi* | [**createConfig**](doc//AutoReplyApi.md#createconfig) | **POST** /admin/auto-reply/configs | 創建新配置
 *AutoReplyApi* | [**deleteConfig**](doc//AutoReplyApi.md#deleteconfig) | **DELETE** /admin/auto-reply/configs/{id} | 刪除配置
-*AutoReplyApi* | [**getStats2**](doc//AutoReplyApi.md#getstats2) | **GET** /admin/auto-reply/stats | 獲取統計信息
+*AutoReplyApi* | [**getStats1**](doc//AutoReplyApi.md#getstats1) | **GET** /admin/auto-reply/stats | 獲取統計信息
 *AutoReplyApi* | [**resetStats**](doc//AutoReplyApi.md#resetstats) | **POST** /admin/auto-reply/stats/reset | 重置統計
 *AutoReplyApi* | [**searchConfigs**](doc//AutoReplyApi.md#searchconfigs) | **POST** /admin/auto-reply/configs/search | 搜尋自動回復配置
 *AutoReplyApi* | [**toggleConfig**](doc//AutoReplyApi.md#toggleconfig) | **PUT** /admin/auto-reply/configs/{id}/toggle | 啟用/禁用配置
@@ -274,9 +275,9 @@ Class | Method | HTTP request | Description
 *BacktestApi* | [**triggerAdaptiveDiscovery**](doc//BacktestApi.md#triggeradaptivediscovery) | **POST** /backtests/adaptive-discovery | 市場感知自適應策略探勘
 *BacktestApi* | [**triggerAiDiscovery**](doc//BacktestApi.md#triggeraidiscovery) | **POST** /backtests/ai-discovery | AI 策略自動探勘
 *BacktestApi* | [**updateStrategy**](doc//BacktestApi.md#updatestrategy) | **PUT** /backtests/strategies/{strategyId} | 編輯策略
-*BettingApi* | [**getMarketBets**](doc//BettingApi.md#getmarketbets) | **GET** /api/bets/market/{marketId} | 市場投注記錄
-*BettingApi* | [**getMyBets**](doc//BettingApi.md#getmybets) | **GET** /api/bets/my | 我的投注記錄
-*BettingApi* | [**placeBet**](doc//BettingApi.md#placebet) | **POST** /api/bets | 下注
+*BettingApi* | [**getMarketBets**](doc//BettingApi.md#getmarketbets) | **GET** /bets/market/{marketId} | 市場投注記錄
+*BettingApi* | [**getMyBets**](doc//BettingApi.md#getmybets) | **GET** /bets/my | 我的投注記錄
+*BettingApi* | [**placeBet**](doc//BettingApi.md#placebet) | **POST** /bets | 下注
 *BettingMarketsApi* | [**cancelMarket**](doc//BettingMarketsApi.md#cancelmarket) | **POST** /markets/{id}/cancel | 取消市場
 *BettingMarketsApi* | [**closeMarket**](doc//BettingMarketsApi.md#closemarket) | **PUT** /markets/{id}/close | 關閉市場
 *BettingMarketsApi* | [**createMarket**](doc//BettingMarketsApi.md#createmarket) | **POST** /markets | 創建市場
@@ -421,8 +422,8 @@ Class | Method | HTTP request | Description
 *ReviewsApi* | [**replyToReview**](doc//ReviewsApi.md#replytoreview) | **POST** /reviews/reply | 回覆評價
 *ReviewsApi* | [**searchReviews**](doc//ReviewsApi.md#searchreviews) | **POST** /reviews/search | 搜索評價
 *ReviewsApi* | [**updateReview**](doc//ReviewsApi.md#updatereview) | **POST** /reviews/update | 更新評價
-*SevenElevenStoresApi* | [**getAllCities**](doc//SevenElevenStoresApi.md#getallcities) | **GET** /api/stores/seven-eleven/cities | 取得所有縣市列表
-*SevenElevenStoresApi* | [**getStoresByCity**](doc//SevenElevenStoresApi.md#getstoresbycity) | **GET** /api/stores/seven-eleven/stores | 根據縣市取得7-11門市列表
+*SevenElevenStoresApi* | [**getAllCities**](doc//SevenElevenStoresApi.md#getallcities) | **GET** /stores/seven-eleven/cities | 取得所有縣市列表
+*SevenElevenStoresApi* | [**getStoresByCity**](doc//SevenElevenStoresApi.md#getstoresbycity) | **GET** /stores/seven-eleven/stores | 根據縣市取得7-11門市列表
 *SlotApi* | [**getMemberOddsTable**](doc//SlotApi.md#getmemberoddstable) | **GET** /slot/rtp | 取得會員賠率展示資料
 *SlotApi* | [**getPaytable**](doc//SlotApi.md#getpaytable) | **GET** /slot/paytable/{gameId} | 查詢 Slot 賠率
 *SlotApi* | [**getRevenue**](doc//SlotApi.md#getrevenue) | **GET** /slot/revenue | Slot 收益統計
@@ -463,10 +464,10 @@ Class | Method | HTTP request | Description
 *TGApi* | [**getPlayerRounds**](doc//TGApi.md#getplayerrounds) | **GET** /tg-game/rounds | 查詢玩家流水
 *TGApi* | [**searchActivities**](doc//TGApi.md#searchactivities) | **POST** /tg-game/activity/search | 查詢活動
 *TGApi* | [**updateActivity**](doc//TGApi.md#updateactivity) | **PUT** /tg-game/activity/{id} | 更新活動
-*TelegramApi* | [**editGroup**](doc//TelegramApi.md#editgroup) | **POST** /api/admin/telegram-monitor/groups/{groupId}/edit | 統一更新群組設定（aiChatEnabled / replyMode / messageCountThreshold / minIntervalMinutes / personality / customPrompt）
-*TelegramApi* | [**getGroupDetail**](doc//TelegramApi.md#getgroupdetail) | **GET** /api/admin/telegram-monitor/groups/{groupId}/detail | 獲取群組詳細資訊（活躍度統計 + 活躍用戶 + 最近消息）
-*TelegramApi* | [**getGroups**](doc//TelegramApi.md#getgroups) | **GET** /api/admin/telegram-monitor/groups | 獲取已監聽群組列表
-*TelegramApi* | [**simulateGroupMessage**](doc//TelegramApi.md#simulategroupmessage) | **POST** /api/admin/telegram-monitor/groups/{groupId}/ai-simulate | 模擬 AI 生成群組消息（previewOnly=true 時只預覽 prompt，不呼叫 AI）
+*TelegramApi* | [**editGroup**](doc//TelegramApi.md#editgroup) | **POST** /admin/telegram-monitor/groups/{groupId}/edit | 統一更新群組設定（aiChatEnabled / replyMode / messageCountThreshold / minIntervalMinutes / personality / customPrompt）
+*TelegramApi* | [**getGroupDetail**](doc//TelegramApi.md#getgroupdetail) | **GET** /admin/telegram-monitor/groups/{groupId}/detail | 獲取群組詳細資訊（活躍度統計 + 活躍用戶 + 最近消息）
+*TelegramApi* | [**getGroups**](doc//TelegramApi.md#getgroups) | **GET** /admin/telegram-monitor/groups | 獲取已監聽群組列表
+*TelegramApi* | [**simulateGroupMessage**](doc//TelegramApi.md#simulategroupmessage) | **POST** /admin/telegram-monitor/groups/{groupId}/ai-simulate | 模擬 AI 生成群組消息（previewOnly=true 時只預覽 prompt，不呼叫 AI）
 *TelegramWebappAuthApi* | [**exchangeJwt**](doc//TelegramWebappAuthApi.md#exchangejwt) | **POST** /auth/telegram-webapp/exchange-jwt | Telegram WebApp 交換 JWT
 *TestApi* | [**generateAutoReplyTestData**](doc//TestApi.md#generateautoreplytestdata) | **POST** /test/auto-reply | 生成自動回復測試數據
 *TestApi* | [**generateDeliveryAcceptOrderTestData**](doc//TestApi.md#generatedeliveryacceptordertestdata) | **POST** /test/delivery-accept-order | 生成配送員接單測試數據
