@@ -18,6 +18,7 @@ class UpdateStrategyRequest {
     required this.enabled,
     required this.symbols,
     required this.config,
+    this.notes,
   });
 
   /// 策略名稱
@@ -35,13 +36,23 @@ class UpdateStrategyRequest {
   /// 策略參數配置
   SopMtfAdxConfig config;
 
+  /// 啟用/停用說明備註(MCP enable/disable 會強制要求)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? notes;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdateStrategyRequest &&
     other.name == name &&
     other.strategyType == strategyType &&
     other.enabled == enabled &&
     other.symbols == symbols &&
-    other.config == config;
+    other.config == config &&
+    other.notes == notes;
 
   @override
   int get hashCode =>
@@ -50,10 +61,11 @@ class UpdateStrategyRequest {
     (strategyType.hashCode) +
     (enabled.hashCode) +
     (symbols.hashCode) +
-    (config.hashCode);
+    (config.hashCode) +
+    (notes == null ? 0 : notes!.hashCode);
 
   @override
-  String toString() => 'UpdateStrategyRequest[name=$name, strategyType=$strategyType, enabled=$enabled, symbols=$symbols, config=$config]';
+  String toString() => 'UpdateStrategyRequest[name=$name, strategyType=$strategyType, enabled=$enabled, symbols=$symbols, config=$config, notes=$notes]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -62,6 +74,11 @@ class UpdateStrategyRequest {
       json[r'enabled'] = this.enabled;
       json[r'symbols'] = this.symbols;
       json[r'config'] = this.config;
+    if (this.notes != null) {
+      json[r'notes'] = this.notes;
+    } else {
+      json[r'notes'] = null;
+    }
     return json;
   }
 
@@ -89,6 +106,7 @@ class UpdateStrategyRequest {
         enabled: mapValueOfType<bool>(json, r'enabled')!,
         symbols: mapValueOfType<String>(json, r'symbols')!,
         config: SopMtfAdxConfig.fromJson(json[r'config'])!,
+        notes: mapValueOfType<String>(json, r'notes'),
       );
     }
     return null;

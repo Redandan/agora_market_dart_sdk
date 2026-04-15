@@ -16793,6 +16793,10 @@
           "config": {
             "$ref": "#/components/schemas/SopMtfAdxConfig",
             "description": "策略參數配置"
+          },
+          "notes": {
+            "type": "string",
+            "description": "啟用/停用說明備註(MCP enable/disable 會強制要求)"
           }
         },
         "required": [
@@ -16846,6 +16850,10 @@
           "config": {
             "$ref": "#/components/schemas/SopMtfAdxConfig",
             "description": "策略參數配置"
+          },
+          "notes": {
+            "type": "string",
+            "description": "啟用/停用備註說明"
           },
           "createdAt": {
             "type": "string",
@@ -26963,6 +26971,11 @@
             "type": "string",
             "description": "K 線資料源：binance 或 okx。預設 binance（涵蓋全歷史）；當 OKX 累積足夠歷史後可切換以對齊交易執行面。",
             "example": "binance"
+          },
+          "skipPersist": {
+            "type": "boolean",
+            "description": "skipPersist=true 時不寫入 bt_backtest_result(WF 驗證等用)。預設 false。",
+            "example": false
           }
         },
         "required": [

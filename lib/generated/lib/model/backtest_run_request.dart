@@ -22,6 +22,7 @@ class BacktestRunRequest {
     required this.feeRate,
     this.applyFilters,
     this.source_,
+    this.skipPersist,
   });
 
   /// 策略 ID
@@ -67,6 +68,15 @@ class BacktestRunRequest {
   ///
   String? source_;
 
+  /// skipPersist=true 時不寫入 bt_backtest_result(WF 驗證等用)。預設 false。
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? skipPersist;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is BacktestRunRequest &&
     other.strategyId == strategyId &&
@@ -77,7 +87,8 @@ class BacktestRunRequest {
     other.initialCapital == initialCapital &&
     other.feeRate == feeRate &&
     other.applyFilters == applyFilters &&
-    other.source_ == source_;
+    other.source_ == source_ &&
+    other.skipPersist == skipPersist;
 
   @override
   int get hashCode =>
@@ -90,10 +101,11 @@ class BacktestRunRequest {
     (initialCapital.hashCode) +
     (feeRate.hashCode) +
     (applyFilters == null ? 0 : applyFilters!.hashCode) +
-    (source_ == null ? 0 : source_!.hashCode);
+    (source_ == null ? 0 : source_!.hashCode) +
+    (skipPersist == null ? 0 : skipPersist!.hashCode);
 
   @override
-  String toString() => 'BacktestRunRequest[strategyId=$strategyId, symbol=$symbol, intervalCode=$intervalCode, startTime=$startTime, endTime=$endTime, initialCapital=$initialCapital, feeRate=$feeRate, applyFilters=$applyFilters, source_=$source_]';
+  String toString() => 'BacktestRunRequest[strategyId=$strategyId, symbol=$symbol, intervalCode=$intervalCode, startTime=$startTime, endTime=$endTime, initialCapital=$initialCapital, feeRate=$feeRate, applyFilters=$applyFilters, source_=$source_, skipPersist=$skipPersist]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -113,6 +125,11 @@ class BacktestRunRequest {
       json[r'source'] = this.source_;
     } else {
       json[r'source'] = null;
+    }
+    if (this.skipPersist != null) {
+      json[r'skipPersist'] = this.skipPersist;
+    } else {
+      json[r'skipPersist'] = null;
     }
     return json;
   }
@@ -145,6 +162,7 @@ class BacktestRunRequest {
         feeRate: num.parse('${json[r'feeRate']}'),
         applyFilters: mapValueOfType<bool>(json, r'applyFilters'),
         source_: mapValueOfType<String>(json, r'source'),
+        skipPersist: mapValueOfType<bool>(json, r'skipPersist'),
       );
     }
     return null;

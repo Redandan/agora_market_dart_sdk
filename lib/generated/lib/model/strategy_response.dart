@@ -21,6 +21,7 @@ class StrategyResponse {
     this.discoveryBatch,
     this.symbols,
     this.config,
+    this.notes,
     this.createdAt,
     this.updatedAt,
   });
@@ -97,6 +98,15 @@ class StrategyResponse {
   ///
   SopMtfAdxConfig? config;
 
+  /// 啟用/停用備註說明
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? notes;
+
   /// 建立時間（ISO-8601）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -125,6 +135,7 @@ class StrategyResponse {
     other.discoveryBatch == discoveryBatch &&
     other.symbols == symbols &&
     other.config == config &&
+    other.notes == notes &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt;
 
@@ -139,11 +150,12 @@ class StrategyResponse {
     (discoveryBatch == null ? 0 : discoveryBatch!.hashCode) +
     (symbols == null ? 0 : symbols!.hashCode) +
     (config == null ? 0 : config!.hashCode) +
+    (notes == null ? 0 : notes!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'StrategyResponse[id=$id, name=$name, strategyType=$strategyType, enabled=$enabled, aiGenerated=$aiGenerated, discoveryBatch=$discoveryBatch, symbols=$symbols, config=$config, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'StrategyResponse[id=$id, name=$name, strategyType=$strategyType, enabled=$enabled, aiGenerated=$aiGenerated, discoveryBatch=$discoveryBatch, symbols=$symbols, config=$config, notes=$notes, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -187,6 +199,11 @@ class StrategyResponse {
     } else {
       json[r'config'] = null;
     }
+    if (this.notes != null) {
+      json[r'notes'] = this.notes;
+    } else {
+      json[r'notes'] = null;
+    }
     if (this.createdAt != null) {
       json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
     } else {
@@ -227,6 +244,7 @@ class StrategyResponse {
         discoveryBatch: mapValueOfType<String>(json, r'discoveryBatch'),
         symbols: mapValueOfType<String>(json, r'symbols'),
         config: SopMtfAdxConfig.fromJson(json[r'config']),
+        notes: mapValueOfType<String>(json, r'notes'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
       );
