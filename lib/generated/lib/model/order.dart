@@ -19,7 +19,7 @@ class Order {
     required this.buyerId,
     required this.sellerId,
     required this.quantity,
-    required this.selectedSku,
+    this.selectedSku,
     required this.shippingFee,
     required this.productPrice,
     required this.orderAmount,
@@ -68,8 +68,14 @@ class Order {
   /// 商品數量
   int quantity;
 
-  /// 選擇的商品SKU
-  String selectedSku;
+  /// 選擇的商品SKU(實體商品必填,DIGITAL_SERVICE 訂單可為 null)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? selectedSku;
 
   /// 運費
   num shippingFee;
@@ -316,7 +322,7 @@ class Order {
     (buyerId.hashCode) +
     (sellerId.hashCode) +
     (quantity.hashCode) +
-    (selectedSku.hashCode) +
+    (selectedSku == null ? 0 : selectedSku!.hashCode) +
     (shippingFee.hashCode) +
     (productPrice.hashCode) +
     (orderAmount.hashCode) +
@@ -357,7 +363,11 @@ class Order {
       json[r'buyerId'] = this.buyerId;
       json[r'sellerId'] = this.sellerId;
       json[r'quantity'] = this.quantity;
+    if (this.selectedSku != null) {
       json[r'selectedSku'] = this.selectedSku;
+    } else {
+      json[r'selectedSku'] = null;
+    }
       json[r'shippingFee'] = this.shippingFee;
       json[r'productPrice'] = this.productPrice;
       json[r'orderAmount'] = this.orderAmount;
@@ -498,7 +508,7 @@ class Order {
         buyerId: mapValueOfType<int>(json, r'buyerId')!,
         sellerId: mapValueOfType<int>(json, r'sellerId')!,
         quantity: mapValueOfType<int>(json, r'quantity')!,
-        selectedSku: mapValueOfType<String>(json, r'selectedSku')!,
+        selectedSku: mapValueOfType<String>(json, r'selectedSku'),
         shippingFee: num.parse('${json[r'shippingFee']}'),
         productPrice: num.parse('${json[r'productPrice']}'),
         orderAmount: num.parse('${json[r'orderAmount']}'),
@@ -580,7 +590,6 @@ class Order {
     'buyerId',
     'sellerId',
     'quantity',
-    'selectedSku',
     'shippingFee',
     'productPrice',
     'orderAmount',

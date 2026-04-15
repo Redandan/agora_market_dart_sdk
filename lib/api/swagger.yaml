@@ -24271,7 +24271,7 @@
           },
           "selectedSku": {
             "type": "string",
-            "description": "選擇的商品SKU"
+            "description": "選擇的商品SKU(實體商品必填,DIGITAL_SERVICE 訂單可為 null)"
           },
           "shippingFee": {
             "type": "number",
@@ -24458,7 +24458,6 @@
           "productId",
           "productPrice",
           "quantity",
-          "selectedSku",
           "sellerId",
           "shippingFee",
           "status",
