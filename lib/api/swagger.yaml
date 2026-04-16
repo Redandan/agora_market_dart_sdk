@@ -4549,6 +4549,49 @@
         }
       }
     },
+    "/orders/{orderId}/proofs/{proofId}/ai-validate": {
+      "post": {
+        "tags": [
+          "member-orders"
+        ],
+        "summary": "AI 驗證 proof 是否符合訂單要求(買家預判)",
+        "description": "買家在按『確認』或『拒絕』前呼叫,AI 讀訂單要求 + 賣家 proof(含截圖 multimodal)→ 回 recommendation(ACCEPT/ASK_CLARIFICATION/REJECT/MANUAL_REVIEW)。**僅供參考**,最終決定仍由買家做。PII 送 LLM 前經 redactor 處理。",
+        "operationId": "aiValidateProof",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "訂單ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proofId",
+            "in": "path",
+            "description": "Proof ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProofAiValidationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/orders/{orderId}/delivery-proof/submit": {
       "post": {
         "tags": [
@@ -9261,6 +9304,39 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/Dispute"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/disputes/{disputeId}/ai-analysis": {
+      "post": {
+        "tags": [
+          "admin-disputes"
+        ],
+        "summary": "AI 仲裁建議",
+        "description": "讀取 dispute 完整 context(含 buyer 描述、seller 回覆、所有 proof 歷史)後由 AI 生結構化判決建議。**僅供參考**,admin 仍須 POST /judge 人工 apply outcome。PII(user name/email/完整序號)送 LLM 前經 redactor 處理。",
+        "operationId": "aiAnalysis",
+        "parameters": [
+          {
+            "name": "disputeId",
+            "in": "path",
+            "description": "糾紛ID(= 訂單ID)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/DisputeAiAnalysisResponse"
                 }
               }
             }
@@ -24866,6 +24942,63 @@
           "accepted"
         ]
       },
+      "ProofAiValidationResponse": {
+        "type": "object",
+        "description": "數位 proof AI 驗證結果(建議用,買家仍須人工確認)",
+        "properties": {
+          "matchesRequest": {
+            "type": "boolean",
+            "description": "AI 判定 proof 是否符合訂單要求。null = AI 無法判斷(例如圖片讀不出來)。",
+            "example": true
+          },
+          "confidence": {
+            "type": "number",
+            "format": "double",
+            "description": "AI 信心度 0.0-1.0",
+            "example": 0.85
+          },
+          "reasoning": {
+            "type": "string",
+            "description": "AI 推理摘要"
+          },
+          "concerns": {
+            "type": "array",
+            "description": "AI 偵測的疑慮點 list",
+            "example": [
+              "序號格式看似非 Apple 地區碼",
+              "sellerNote 未說明如何 redeem"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "recommendation": {
+            "type": "string",
+            "description": "AI 推薦動作 — ACCEPT(可確認)/ ASK_CLARIFICATION(先問賣家)/ REJECT(證明明顯不符)/ MANUAL_REVIEW(AI 無法判斷,請人工檢視)",
+            "enum": [
+              "ACCEPT",
+              "ASK_CLARIFICATION",
+              "REJECT",
+              "MANUAL_REVIEW"
+            ],
+            "example": "ACCEPT"
+          },
+          "aiProvider": {
+            "type": "string",
+            "description": "實際使用的 AI provider",
+            "example": "gemini-multimodal"
+          },
+          "fallbackUsed": {
+            "type": "boolean",
+            "description": "AI 失敗時 true,recommendation 會是 MANUAL_REVIEW",
+            "example": false
+          },
+          "rawResponse": {
+            "type": "string",
+            "description": "LLM 原始回應(debug 用)"
+          }
+        }
+      },
       "DeliveryProofSubmitParam": {
         "type": "object",
         "description": "提交交付證明參數(數位商品賣家用)",
@@ -31108,6 +31241,72 @@
         "required": [
           "faultType"
         ]
+      },
+      "DisputeAiAnalysisResponse": {
+        "type": "object",
+        "description": "Dispute AI 仲裁分析結果(建議用,admin 仍須人工 judge)",
+        "properties": {
+          "suggestedOutcome": {
+            "type": "string",
+            "description": "AI 建議的判決結果 — FULL_REFUND / PARTIAL_REFUND / REJECTED。admin 可採納或否決,最終 judge 仍由人類決定。",
+            "enum": [
+              "FULL_REFUND",
+              "PARTIAL_REFUND",
+              "REJECTED"
+            ],
+            "example": "PARTIAL_REFUND"
+          },
+          "suggestedPartialRefundAmount": {
+            "type": "number",
+            "description": "建議部分退款金額 — 僅 PARTIAL_REFUND 時有值",
+            "example": 15.5
+          },
+          "confidence": {
+            "type": "number",
+            "format": "double",
+            "description": "AI 對建議結果的信心度 0.0-1.0",
+            "example": 0.78
+          },
+          "reasoning": {
+            "type": "string",
+            "description": "AI 推理摘要(繁中 200-500 字)"
+          },
+          "redFlags": {
+            "type": "array",
+            "description": "風險標籤 — AI 偵測到的不利因素 code list",
+            "example": [
+              "proof_rejected_3_times",
+              "no_seller_reply"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "keyEvidence": {
+            "type": "array",
+            "description": "關鍵證據 — 支撐建議結果的具體事實",
+            "example": [
+              "proof SCREENSHOT @ 2026-04-15 顯示非訂單指定平台"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "aiProvider": {
+            "type": "string",
+            "description": "實際使用的 AI provider — groq / groq-fallback / gemini-multimodal",
+            "example": "groq"
+          },
+          "fallbackUsed": {
+            "type": "boolean",
+            "description": "AI 呼叫失敗時為 true,reasoning 會說明失敗原因",
+            "example": false
+          },
+          "rawResponse": {
+            "type": "string",
+            "description": "LLM 原始回應(debug / audit 用)"
+          }
+        }
       },
       "DeliveryOrderSearchParam": {
         "type": "object",

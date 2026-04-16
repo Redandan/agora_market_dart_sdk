@@ -16,6 +16,72 @@ class MemberOrdersApi {
 
   final ApiClient apiClient;
 
+  /// AI 驗證 proof 是否符合訂單要求(買家預判)
+  ///
+  /// 買家在按『確認』或『拒絕』前呼叫,AI 讀訂單要求 + 賣家 proof(含截圖 multimodal)→ 回 recommendation(ACCEPT/ASK_CLARIFICATION/REJECT/MANUAL_REVIEW)。**僅供參考**,最終決定仍由買家做。PII 送 LLM 前經 redactor 處理。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  ///   訂單ID
+  ///
+  /// * [int] proofId (required):
+  ///   Proof ID
+  Future<Response> aiValidateProofWithHttpInfo(String orderId, int proofId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/orders/{orderId}/proofs/{proofId}/ai-validate'
+      .replaceAll('{orderId}', orderId)
+      .replaceAll('{proofId}', proofId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// AI 驗證 proof 是否符合訂單要求(買家預判)
+  ///
+  /// 買家在按『確認』或『拒絕』前呼叫,AI 讀訂單要求 + 賣家 proof(含截圖 multimodal)→ 回 recommendation(ACCEPT/ASK_CLARIFICATION/REJECT/MANUAL_REVIEW)。**僅供參考**,最終決定仍由買家做。PII 送 LLM 前經 redactor 處理。
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  ///   訂單ID
+  ///
+  /// * [int] proofId (required):
+  ///   Proof ID
+  Future<ProofAiValidationResponse?> aiValidateProof(String orderId, int proofId,) async {
+    final response = await aiValidateProofWithHttpInfo(orderId, proofId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProofAiValidationResponse',) as ProofAiValidationResponse;
+    
+    }
+    return null;
+  }
+
   /// 取消數位商品訂單(買家或賣家)
   ///
   /// 僅 PURCHASE_IN_PROGRESS 階段可呼叫;觸發退款 + 還庫存。已提交 proof 後須走爭議流程

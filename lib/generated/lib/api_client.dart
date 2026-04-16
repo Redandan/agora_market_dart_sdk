@@ -380,6 +380,8 @@ class ApiClient {
           return DiagnosticLogDto.fromJson(value);
         case 'Dispute':
           return Dispute.fromJson(value);
+        case 'DisputeAiAnalysisResponse':
+          return DisputeAiAnalysisResponse.fromJson(value);
         case 'DisputeCreateParam':
           return DisputeCreateParam.fromJson(value);
         case 'DisputeDetailParam':
@@ -684,6 +686,8 @@ class ApiClient {
           return PromoCode.fromJson(value);
         case 'PromoCodeStatDto':
           return PromoCodeStatDto.fromJson(value);
+        case 'ProofAiValidationResponse':
+          return ProofAiValidationResponse.fromJson(value);
         case 'PushHealthResponseDTO':
           return PushHealthResponseDTO.fromJson(value);
         case 'PushNotificationDTO':

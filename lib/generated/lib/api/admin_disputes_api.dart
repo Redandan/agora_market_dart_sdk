@@ -16,6 +16,65 @@ class AdminDisputesApi {
 
   final ApiClient apiClient;
 
+  /// AI 仲裁建議
+  ///
+  /// 讀取 dispute 完整 context(含 buyer 描述、seller 回覆、所有 proof 歷史)後由 AI 生結構化判決建議。**僅供參考**,admin 仍須 POST /judge 人工 apply outcome。PII(user name/email/完整序號)送 LLM 前經 redactor 處理。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] disputeId (required):
+  ///   糾紛ID(= 訂單ID)
+  Future<Response> aiAnalysisWithHttpInfo(String disputeId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/disputes/{disputeId}/ai-analysis'
+      .replaceAll('{disputeId}', disputeId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// AI 仲裁建議
+  ///
+  /// 讀取 dispute 完整 context(含 buyer 描述、seller 回覆、所有 proof 歷史)後由 AI 生結構化判決建議。**僅供參考**,admin 仍須 POST /judge 人工 apply outcome。PII(user name/email/完整序號)送 LLM 前經 redactor 處理。
+  ///
+  /// Parameters:
+  ///
+  /// * [String] disputeId (required):
+  ///   糾紛ID(= 訂單ID)
+  Future<DisputeAiAnalysisResponse?> aiAnalysis(String disputeId,) async {
+    final response = await aiAnalysisWithHttpInfo(disputeId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DisputeAiAnalysisResponse',) as DisputeAiAnalysisResponse;
+    
+    }
+    return null;
+  }
+
   /// 查看糾紛詳情
   ///
   /// 管理員可查看糾紛的詳細信息

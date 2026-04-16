@@ -176,6 +176,7 @@ Class | Method | HTTP request | Description
 *AdminDeliveryApi* | [**searchDeliveryOrders**](doc//AdminDeliveryApi.md#searchdeliveryorders) | **POST** /admin/delivery/orders/search | 搜索配送訂單
 *AdminDeliveryApi* | [**searchDeliveryers**](doc//AdminDeliveryApi.md#searchdeliveryers) | **POST** /admin/delivery/deliveryers/search | 搜索配送員
 *AdminDeliveryApi* | [**updateDeliveryerStatus**](doc//AdminDeliveryApi.md#updatedeliveryerstatus) | **POST** /admin/delivery/deliveryers/{deliveryerId}/status | 更新配送員狀態
+*AdminDisputesApi* | [**aiAnalysis**](doc//AdminDisputesApi.md#aianalysis) | **POST** /admin/disputes/{disputeId}/ai-analysis | AI 仲裁建議
 *AdminDisputesApi* | [**getDisputeDetail1**](doc//AdminDisputesApi.md#getdisputedetail1) | **GET** /admin/disputes/{disputeId} | 查看糾紛詳情
 *AdminDisputesApi* | [**getDisputeStatistics**](doc//AdminDisputesApi.md#getdisputestatistics) | **GET** /admin/disputes/statistics | 糾紛統計報告
 *AdminDisputesApi* | [**judgeDispute**](doc//AdminDisputesApi.md#judgedispute) | **POST** /admin/disputes/{disputeId}/judge | 判定爭議責任
@@ -351,6 +352,7 @@ Class | Method | HTTP request | Description
 *MemberNotificationsApi* | [**markAsRead**](doc//MemberNotificationsApi.md#markasread) | **POST** /notifications/{notificationId}/read | 標記為已讀
 *MemberNotificationsApi* | [**searchNotifications**](doc//MemberNotificationsApi.md#searchnotifications) | **POST** /notifications/search | 搜索通知
 *MemberNotificationsApi* | [**updateNotification**](doc//MemberNotificationsApi.md#updatenotification) | **PUT** /notifications/{notificationId} | 更新通知
+*MemberOrdersApi* | [**aiValidateProof**](doc//MemberOrdersApi.md#aivalidateproof) | **POST** /orders/{orderId}/proofs/{proofId}/ai-validate | AI 驗證 proof 是否符合訂單要求(買家預判)
 *MemberOrdersApi* | [**cancelDigitalOrder**](doc//MemberOrdersApi.md#canceldigitalorder) | **POST** /orders/{orderId}/cancel-digital | 取消數位商品訂單(買家或賣家)
 *MemberOrdersApi* | [**cancelOrder**](doc//MemberOrdersApi.md#cancelorder) | **POST** /orders/cancel | 取消訂單
 *MemberOrdersApi* | [**confirmDeliveryProof**](doc//MemberOrdersApi.md#confirmdeliveryproof) | **POST** /orders/{orderId}/delivery-proof/confirm | 買家確認交付證明
@@ -610,6 +612,7 @@ Class | Method | HTTP request | Description
  - [DeviceInfo](doc//DeviceInfo.md)
  - [DiagnosticLogDto](doc//DiagnosticLogDto.md)
  - [Dispute](doc//Dispute.md)
+ - [DisputeAiAnalysisResponse](doc//DisputeAiAnalysisResponse.md)
  - [DisputeCreateParam](doc//DisputeCreateParam.md)
  - [DisputeDetailParam](doc//DisputeDetailParam.md)
  - [DisputeJudgmentParam](doc//DisputeJudgmentParam.md)
@@ -762,6 +765,7 @@ Class | Method | HTTP request | Description
  - [ProductUpdateParam](doc//ProductUpdateParam.md)
  - [PromoCode](doc//PromoCode.md)
  - [PromoCodeStatDto](doc//PromoCodeStatDto.md)
+ - [ProofAiValidationResponse](doc//ProofAiValidationResponse.md)
  - [PushHealthResponseDTO](doc//PushHealthResponseDTO.md)
  - [PushNotificationDTO](doc//PushNotificationDTO.md)
  - [PushNotificationResponseDTO](doc//PushNotificationResponseDTO.md)
