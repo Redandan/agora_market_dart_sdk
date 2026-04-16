@@ -48,6 +48,7 @@ class Order {
     this.product,
     this.deliveryDetail,
     this.store,
+    this.latestProofId,
   });
 
   /// 訂單ID
@@ -275,6 +276,15 @@ class Order {
   ///
   Store? store;
 
+  /// 最新交付證明 ID(DIGITAL_SERVICE 訂單且 status ≥ PROOF_SUBMITTED 才非 null;前端 aiValidateProof 需要此值)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? latestProofId;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Order &&
     other.id == id &&
@@ -311,7 +321,8 @@ class Order {
     other.buyerUsername == buyerUsername &&
     other.product == product &&
     other.deliveryDetail == deliveryDetail &&
-    other.store == store;
+    other.store == store &&
+    other.latestProofId == latestProofId;
 
   @override
   int get hashCode =>
@@ -350,10 +361,11 @@ class Order {
     (buyerUsername == null ? 0 : buyerUsername!.hashCode) +
     (product == null ? 0 : product!.hashCode) +
     (deliveryDetail == null ? 0 : deliveryDetail!.hashCode) +
-    (store == null ? 0 : store!.hashCode);
+    (store == null ? 0 : store!.hashCode) +
+    (latestProofId == null ? 0 : latestProofId!.hashCode);
 
   @override
-  String toString() => 'Order[id=$id, version=$version, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, pickupServiceType=$pickupServiceType, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, status=$status, remark=$remark, buyerProvidedInfoJson=$buyerProvidedInfoJson, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, refundAmount=$refundAmount, refundOfferExpiresAt=$refundOfferExpiresAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, buyerName=$buyerName, buyerUsername=$buyerUsername, product=$product, deliveryDetail=$deliveryDetail, store=$store]';
+  String toString() => 'Order[id=$id, version=$version, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, pickupServiceType=$pickupServiceType, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, status=$status, remark=$remark, buyerProvidedInfoJson=$buyerProvidedInfoJson, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, refundAmount=$refundAmount, refundOfferExpiresAt=$refundOfferExpiresAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, buyerName=$buyerName, buyerUsername=$buyerUsername, product=$product, deliveryDetail=$deliveryDetail, store=$store, latestProofId=$latestProofId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -480,6 +492,11 @@ class Order {
     } else {
       json[r'store'] = null;
     }
+    if (this.latestProofId != null) {
+      json[r'latestProofId'] = this.latestProofId;
+    } else {
+      json[r'latestProofId'] = null;
+    }
     return json;
   }
 
@@ -537,6 +554,7 @@ class Order {
         product: Product.fromJson(json[r'product']),
         deliveryDetail: DeliveryDetail.fromJson(json[r'deliveryDetail']),
         store: Store.fromJson(json[r'store']),
+        latestProofId: mapValueOfType<int>(json, r'latestProofId'),
       );
     }
     return null;

@@ -24685,6 +24685,11 @@
           "store": {
             "$ref": "#/components/schemas/Store",
             "description": "賣家商店"
+          },
+          "latestProofId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "最新交付證明 ID(DIGITAL_SERVICE 訂單且 status ≥ PROOF_SUBMITTED 才非 null;前端 aiValidateProof 需要此值)"
           }
         },
         "required": [
