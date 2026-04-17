@@ -59,7 +59,7 @@ class BacktestRunRequest {
   ///
   bool? applyFilters;
 
-  /// K 線資料源：binance 或 okx。預設 binance（涵蓋全歷史）；當 OKX 累積足夠歷史後可切換以對齊交易執行面。
+  /// K 線資料源覆寫：binance 或 okx。留白時使用 strategy.klineSource（V041 起的 source of truth），後者若也為 null 則退回 market.signal.source（預設 okx）。僅 MCP 研究工具（如 validateRobustness、MetaControlAttribution）會明確指定；一般 Controller 呼叫應留白讓策略自決。
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated

@@ -165,6 +165,12 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**updateCartItem**](doc//DefaultApi.md#updatecartitem) | **PUT** /cart/{cartItemId} | 更新購物車項目
 *DefaultApi* | [**updatePost**](doc//DefaultApi.md#updatepost) | **PUT** /posts | 更新貼文
 *DefaultApi* | [**validatePostalCode**](doc//DefaultApi.md#validatepostalcode) | **GET** /logistics/postal-codes/{postalCode}/validate | 郵遞區號驗證
+*ActuatorApi* | [**health**](doc//ActuatorApi.md#health) | **GET** /actuator/health | Actuator web endpoint 'health'
+*ActuatorApi* | [**info**](doc//ActuatorApi.md#info) | **GET** /actuator/info | Actuator web endpoint 'info'
+*ActuatorApi* | [**links**](doc//ActuatorApi.md#links) | **GET** /actuator | Actuator root web endpoint
+*ActuatorApi* | [**listNames**](doc//ActuatorApi.md#listnames) | **GET** /actuator/metrics | Actuator web endpoint 'metrics'
+*ActuatorApi* | [**metric**](doc//ActuatorApi.md#metric) | **GET** /actuator/metrics/{requiredMetricName} | Actuator web endpoint 'metrics-requiredMetricName'
+*ActuatorApi* | [**scrape**](doc//ActuatorApi.md#scrape) | **GET** /actuator/prometheus | Actuator web endpoint 'prometheus'
 *AdminAiControllerApi* | [**generateProductDraft**](doc//AdminAiControllerApi.md#generateproductdraft) | **POST** /admin/ai/product-draft | AI 生成商品草稿
 *AdminAiControllerApi* | [**getConversionStats**](doc//AdminAiControllerApi.md#getconversionstats) | **GET** /admin/ai/conversion/stats | 查詢 AI 群組對話轉化效率統計（可按群組 + 日期區間篩選）
 *AdminAiControllerApi* | [**getStats2**](doc//AdminAiControllerApi.md#getstats2) | **GET** /admin/ai/stats | 
@@ -658,6 +664,7 @@ Class | Method | HTTP request | Description
  - [KlineSubscriptionInfo](doc//KlineSubscriptionInfo.md)
  - [KnowledgeEntry](doc//KnowledgeEntry.md)
  - [KnowledgeResponse](doc//KnowledgeResponse.md)
+ - [Link](doc//Link.md)
  - [LoginBindingsResponse](doc//LoginBindingsResponse.md)
  - [LoginMethod](doc//LoginMethod.md)
  - [LoginParam](doc//LoginParam.md)

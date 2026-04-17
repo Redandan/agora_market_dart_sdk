@@ -472,6 +472,8 @@ class ApiClient {
           return KnowledgeEntry.fromJson(value);
         case 'KnowledgeResponse':
           return KnowledgeResponse.fromJson(value);
+        case 'Link':
+          return Link.fromJson(value);
         case 'LoginBindingsResponse':
           return LoginBindingsResponse.fromJson(value);
         case 'LoginMethod':

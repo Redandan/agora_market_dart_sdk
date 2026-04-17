@@ -177,6 +177,14 @@
       "description": "管理員訂單管理 API"
     },
     {
+      "name": "Actuator",
+      "description": "Monitor and interact",
+      "externalDocs": {
+        "description": "Spring Boot Actuator Web API Documentation",
+        "url": "https://docs.spring.io/spring-boot/docs/current/actuator-api/html/"
+      }
+    },
+    {
       "name": "Market Chart",
       "description": "K 線圖表資料查詢（公開端點，無需認證）"
     },
@@ -15691,6 +15699,251 @@
         }
       }
     },
+    "/actuator": {
+      "get": {
+        "tags": [
+          "Actuator"
+        ],
+        "summary": "Actuator root web endpoint",
+        "operationId": "links",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.spring-boot.actuator.v3+json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "$ref": "#/components/schemas/Link"
+                    }
+                  }
+                }
+              },
+              "application/vnd.spring-boot.actuator.v2+json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "$ref": "#/components/schemas/Link"
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "$ref": "#/components/schemas/Link"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actuator/prometheus": {
+      "get": {
+        "tags": [
+          "Actuator"
+        ],
+        "summary": "Actuator web endpoint 'prometheus'",
+        "operationId": "scrape",
+        "parameters": [
+          {
+            "name": "format",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "CONTENT_TYPE_004",
+                "CONTENT_TYPE_OPENMETRICS_100",
+                "CONTENT_TYPE_PROTOBUF"
+              ]
+            }
+          },
+          {
+            "name": "includedNames",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain;version=0.0.4;charset=utf-8": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/openmetrics-text;version=1.0.0;charset=utf-8": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/vnd.google.protobuf;proto=io.prometheus.client.MetricFamily;encoding=delimited": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actuator/metrics": {
+      "get": {
+        "tags": [
+          "Actuator"
+        ],
+        "summary": "Actuator web endpoint 'metrics'",
+        "operationId": "listNames",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.spring-boot.actuator.v3+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/vnd.spring-boot.actuator.v2+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actuator/metrics/{requiredMetricName}": {
+      "get": {
+        "tags": [
+          "Actuator"
+        ],
+        "summary": "Actuator web endpoint 'metrics-requiredMetricName'",
+        "operationId": "metric",
+        "parameters": [
+          {
+            "name": "requiredMetricName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tag",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.spring-boot.actuator.v3+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/vnd.spring-boot.actuator.v2+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/actuator/info": {
+      "get": {
+        "tags": [
+          "Actuator"
+        ],
+        "summary": "Actuator web endpoint 'info'",
+        "operationId": "info",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.spring-boot.actuator.v3+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/vnd.spring-boot.actuator.v2+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actuator/health": {
+      "get": {
+        "tags": [
+          "Actuator"
+        ],
+        "summary": "Actuator web endpoint 'health'",
+        "operationId": "health",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.spring-boot.actuator.v3+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/vnd.spring-boot.actuator.v2+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/sse/disconnect/{clientId}": {
       "delete": {
         "tags": [
@@ -28938,8 +29191,8 @@
           },
           "source": {
             "type": "string",
-            "description": "K 線資料源：binance 或 okx。預設 binance（涵蓋全歷史）；當 OKX 累積足夠歷史後可切換以對齊交易執行面。",
-            "example": "binance"
+            "description": "K 線資料源覆寫：binance 或 okx。留白時使用 strategy.klineSource（V041 起的 source of truth），後者若也為 null 則退回 market.signal.source（預設 okx）。僅 MCP 研究工具（如 validateRobustness、MetaControlAttribution）會明確指定；一般 Controller 呼叫應留白讓策略自決。",
+            "example": "okx"
           },
           "skipPersist": {
             "type": "boolean",
@@ -35161,6 +35414,17 @@
             "type": "number",
             "format": "double",
             "description": "Skill 命中率，例如 76.5"
+          }
+        }
+      },
+      "Link": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string"
+          },
+          "templated": {
+            "type": "boolean"
           }
         }
       },

@@ -29,6 +29,7 @@ part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
 part 'api/default_api.dart';
+part 'api/actuator_api.dart';
 part 'api/admin_ai_controller_api.dart';
 part 'api/admin_bot_controller_api.dart';
 part 'api/admin_delivery_api.dart';
@@ -231,6 +232,7 @@ part 'model/kline_subscribe_request.dart';
 part 'model/kline_subscription_info.dart';
 part 'model/knowledge_entry.dart';
 part 'model/knowledge_response.dart';
+part 'model/link.dart';
 part 'model/login_bindings_response.dart';
 part 'model/login_method.dart';
 part 'model/login_param.dart';
