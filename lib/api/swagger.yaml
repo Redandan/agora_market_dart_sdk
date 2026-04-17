@@ -8492,6 +8492,61 @@
         }
       }
     },
+    "/admin/oco/market-buy": {
+      "post": {
+        "tags": [
+          "admin-oco-controller"
+        ],
+        "operationId": "marketBuyManual",
+        "parameters": [
+          {
+            "name": "symbol",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "usdtAmount",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "slPrice",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "tpPrice",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseMapStringObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/notifications": {
       "post": {
         "tags": [
@@ -20991,10 +21046,10 @@
           "inStock": {
             "type": "boolean"
           },
-          "stockLow": {
+          "stockBelowMinimum": {
             "type": "boolean"
           },
-          "stockBelowMinimum": {
+          "stockLow": {
             "type": "boolean"
           },
           "defaultShippingFee": {

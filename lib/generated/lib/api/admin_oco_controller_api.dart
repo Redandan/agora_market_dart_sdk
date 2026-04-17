@@ -57,6 +57,70 @@ class AdminOcoControllerApi {
     return null;
   }
 
+  /// Performs an HTTP 'POST /admin/oco/market-buy' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] symbol (required):
+  ///
+  /// * [double] usdtAmount (required):
+  ///
+  /// * [num] slPrice (required):
+  ///
+  /// * [num] tpPrice (required):
+  Future<Response> marketBuyManualWithHttpInfo(String symbol, double usdtAmount, num slPrice, num tpPrice,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/oco/market-buy';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'symbol', symbol));
+      queryParams.addAll(_queryParams('', 'usdtAmount', usdtAmount));
+      queryParams.addAll(_queryParams('', 'slPrice', slPrice));
+      queryParams.addAll(_queryParams('', 'tpPrice', tpPrice));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] symbol (required):
+  ///
+  /// * [double] usdtAmount (required):
+  ///
+  /// * [num] slPrice (required):
+  ///
+  /// * [num] tpPrice (required):
+  Future<ApiResponseMapStringObject?> marketBuyManual(String symbol, double usdtAmount, num slPrice, num tpPrice,) async {
+    final response = await marketBuyManualWithHttpInfo(symbol, usdtAmount, slPrice, tpPrice,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseMapStringObject',) as ApiResponseMapStringObject;
+    
+    }
+    return null;
+  }
+
   /// Performs an HTTP 'POST /admin/oco/market-sell/{currency}' operation and returns the [Response].
   /// Parameters:
   ///
