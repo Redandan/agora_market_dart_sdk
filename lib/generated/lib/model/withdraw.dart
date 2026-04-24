@@ -23,6 +23,10 @@ class Withdraw {
     required this.status,
     this.txHash,
     this.remark,
+    this.rejectedReason,
+    this.adminReviewerId,
+    this.adminReviewerNotes,
+    this.reviewedAt,
     required this.createdAt,
     required this.updatedAt,
   });
@@ -69,6 +73,42 @@ class Withdraw {
   ///
   String? remark;
 
+  /// 拒絕原因（REJECTED 狀態才有值）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? rejectedReason;
+
+  /// 審核 Admin 用戶 ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? adminReviewerId;
+
+  /// Admin 審核備註
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? adminReviewerNotes;
+
+  /// 審核時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? reviewedAt;
+
   /// 創建時間
   DateTime createdAt;
 
@@ -87,6 +127,10 @@ class Withdraw {
     other.status == status &&
     other.txHash == txHash &&
     other.remark == remark &&
+    other.rejectedReason == rejectedReason &&
+    other.adminReviewerId == adminReviewerId &&
+    other.adminReviewerNotes == adminReviewerNotes &&
+    other.reviewedAt == reviewedAt &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt;
 
@@ -103,11 +147,15 @@ class Withdraw {
     (status.hashCode) +
     (txHash == null ? 0 : txHash!.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
+    (rejectedReason == null ? 0 : rejectedReason!.hashCode) +
+    (adminReviewerId == null ? 0 : adminReviewerId!.hashCode) +
+    (adminReviewerNotes == null ? 0 : adminReviewerNotes!.hashCode) +
+    (reviewedAt == null ? 0 : reviewedAt!.hashCode) +
     (createdAt.hashCode) +
     (updatedAt.hashCode);
 
   @override
-  String toString() => 'Withdraw[id=$id, userId=$userId, amount=$amount, fee=$fee, currency=$currency, protocolEnum=$protocolEnum, toAddress=$toAddress, status=$status, txHash=$txHash, remark=$remark, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'Withdraw[id=$id, userId=$userId, amount=$amount, fee=$fee, currency=$currency, protocolEnum=$protocolEnum, toAddress=$toAddress, status=$status, txHash=$txHash, remark=$remark, rejectedReason=$rejectedReason, adminReviewerId=$adminReviewerId, adminReviewerNotes=$adminReviewerNotes, reviewedAt=$reviewedAt, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -128,6 +176,26 @@ class Withdraw {
       json[r'remark'] = this.remark;
     } else {
       json[r'remark'] = null;
+    }
+    if (this.rejectedReason != null) {
+      json[r'rejectedReason'] = this.rejectedReason;
+    } else {
+      json[r'rejectedReason'] = null;
+    }
+    if (this.adminReviewerId != null) {
+      json[r'adminReviewerId'] = this.adminReviewerId;
+    } else {
+      json[r'adminReviewerId'] = null;
+    }
+    if (this.adminReviewerNotes != null) {
+      json[r'adminReviewerNotes'] = this.adminReviewerNotes;
+    } else {
+      json[r'adminReviewerNotes'] = null;
+    }
+    if (this.reviewedAt != null) {
+      json[r'reviewedAt'] = this.reviewedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'reviewedAt'] = null;
     }
       json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
       json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
@@ -163,6 +231,10 @@ class Withdraw {
         status: WithdrawStatusEnum.fromJson(json[r'status'])!,
         txHash: mapValueOfType<String>(json, r'txHash'),
         remark: mapValueOfType<String>(json, r'remark'),
+        rejectedReason: mapValueOfType<String>(json, r'rejectedReason'),
+        adminReviewerId: mapValueOfType<int>(json, r'adminReviewerId'),
+        adminReviewerNotes: mapValueOfType<String>(json, r'adminReviewerNotes'),
+        reviewedAt: mapDateTime(json, r'reviewedAt', r''),
         createdAt: mapDateTime(json, r'createdAt', r'')!,
         updatedAt: mapDateTime(json, r'updatedAt', r'')!,
       );
@@ -319,19 +391,23 @@ class WithdrawStatusEnum {
   String toJson() => value;
 
   static const PENDING = WithdrawStatusEnum._(r'PENDING');
+  static const PENDING_REVIEW = WithdrawStatusEnum._(r'PENDING_REVIEW');
   static const PROCESSING = WithdrawStatusEnum._(r'PROCESSING');
   static const COMPLETED = WithdrawStatusEnum._(r'COMPLETED');
   static const CANCELLED = WithdrawStatusEnum._(r'CANCELLED');
   static const FAILED = WithdrawStatusEnum._(r'FAILED');
+  static const REJECTED = WithdrawStatusEnum._(r'REJECTED');
   static const unknownDefaultOpenApi = WithdrawStatusEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][WithdrawStatusEnum].
   static const values = <WithdrawStatusEnum>[
     PENDING,
+    PENDING_REVIEW,
     PROCESSING,
     COMPLETED,
     CANCELLED,
     FAILED,
+    REJECTED,
     unknownDefaultOpenApi,
   ];
 
@@ -372,10 +448,12 @@ class WithdrawStatusEnumTypeTransformer {
     if (data != null) {
       switch (data) {
         case r'PENDING': return WithdrawStatusEnum.PENDING;
+        case r'PENDING_REVIEW': return WithdrawStatusEnum.PENDING_REVIEW;
         case r'PROCESSING': return WithdrawStatusEnum.PROCESSING;
         case r'COMPLETED': return WithdrawStatusEnum.COMPLETED;
         case r'CANCELLED': return WithdrawStatusEnum.CANCELLED;
         case r'FAILED': return WithdrawStatusEnum.FAILED;
+        case r'REJECTED': return WithdrawStatusEnum.REJECTED;
         case r'unknown_default_open_api': return WithdrawStatusEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

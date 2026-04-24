@@ -608,6 +608,8 @@ class ApiClient {
           return PageRecharge.fromJson(value);
         case 'PageReview':
           return PageReview.fromJson(value);
+        case 'PageSanctionBlacklistAddress':
+          return PageSanctionBlacklistAddress.fromJson(value);
         case 'PageStaking':
           return PageStaking.fromJson(value);
         case 'PageStoreResponseDTO':
@@ -764,6 +766,8 @@ class ApiClient {
           return SSEEventResponse.fromJson(value);
         case 'SalesStats':
           return SalesStats.fromJson(value);
+        case 'SanctionBlacklistAddress':
+          return SanctionBlacklistAddress.fromJson(value);
         case 'ScheduledPushResponseDTO':
           return ScheduledPushResponseDTO.fromJson(value);
         case 'SchedulerJobRequest':

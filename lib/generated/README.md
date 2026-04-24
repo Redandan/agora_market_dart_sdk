@@ -42,13 +42,17 @@ import 'package:agora_market_dart_sdk/api.dart';
 
 
 final api_instance = DefaultApi();
-final knowledgeEntry = KnowledgeEntry(); // KnowledgeEntry | 
+final address = address_example; // String | 
+final chain = chain_example; // String | 
+final source_ = source__example; // String | 
+final severity = severity_example; // String | 
+final reason = reason_example; // String | 
 
 try {
-    final result = api_instance.addKnowledge(knowledgeEntry);
+    final result = api_instance.add(address, chain, source_, severity, reason);
     print(result);
 } catch (e) {
-    print('Exception when calling DefaultApi->addKnowledge: $e\n');
+    print('Exception when calling DefaultApi->add: $e\n');
 }
 
 ```
@@ -59,6 +63,7 @@ All URIs are relative to *https://agoramarketapi.purrtechllc.com/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DefaultApi* | [**add**](doc//DefaultApi.md#add) | **POST** /admin/sanctions | 新增黑名單地址
 *DefaultApi* | [**addKnowledge**](doc//DefaultApi.md#addknowledge) | **POST** /admin/knowledge | 新增知識文件
 *DefaultApi* | [**addToCart**](doc//DefaultApi.md#addtocart) | **POST** /cart/add | 添加商品到購物車
 *DefaultApi* | [**adminAddToCart**](doc//DefaultApi.md#adminaddtocart) | **POST** /cart/admin/add | 管理員添加商品到購物車
@@ -137,13 +142,16 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**ignore**](doc//DefaultApi.md#ignore) | **POST** /admin/knowledge/pending/{id}/ignore | 忽略待確認問題
 *DefaultApi* | [**importBatch**](doc//DefaultApi.md#importbatch) | **POST** /admin/knowledge/batch | 批量匯入知識文件
 *DefaultApi* | [**likePost**](doc//DefaultApi.md#likepost) | **POST** /posts/{id}/like | 點讚貼文
-*DefaultApi* | [**list**](doc//DefaultApi.md#list) | **GET** /admin/knowledge | 列出所有知識文件
+*DefaultApi* | [**list**](doc//DefaultApi.md#list) | **GET** /admin/sanctions | 列出黑名單地址
+*DefaultApi* | [**list1**](doc//DefaultApi.md#list1) | **GET** /admin/knowledge | 列出所有知識文件
 *DefaultApi* | [**listByProduct**](doc//DefaultApi.md#listbyproduct) | **GET** /products/{productId}/reports | 查某商品檢舉紀錄
 *DefaultApi* | [**listByStatus**](doc//DefaultApi.md#listbystatus) | **GET** /admin/reports | admin 檢舉處理隊列
 *DefaultApi* | [**listPending**](doc//DefaultApi.md#listpending) | **GET** /admin/knowledge/pending | 列出待確認問題
 *DefaultApi* | [**manualAdjustByAdmin**](doc//DefaultApi.md#manualadjustbyadmin) | **POST** /transactions/admin/manual-adjust | 管理員手動調帳
 *DefaultApi* | [**pendingCount**](doc//DefaultApi.md#pendingcount) | **GET** /admin/knowledge/pending/count | 查詢未處理問題數量
 *DefaultApi* | [**publishPost**](doc//DefaultApi.md#publishpost) | **POST** /posts/{id}/publish | 發布貼文
+*DefaultApi* | [**rejectWithdraw**](doc//DefaultApi.md#rejectwithdraw) | **POST** /withdraws/{withdrawId}/reject | Admin 拒絕提款申請（退款給用戶）
+*DefaultApi* | [**remove**](doc//DefaultApi.md#remove) | **DELETE** /admin/sanctions/{id} | 移除黑名單地址
 *DefaultApi* | [**removeCartItem**](doc//DefaultApi.md#removecartitem) | **DELETE** /cart/admin/item/{cartItemId} | 刪除指定購物車項目
 *DefaultApi* | [**removeFromCart**](doc//DefaultApi.md#removefromcart) | **DELETE** /cart/{cartItemId} | 從購物車移除商品
 *DefaultApi* | [**replyIssue**](doc//DefaultApi.md#replyissue) | **POST** /customer-issues/{issueId}/reply | 回覆客戶問題
@@ -244,6 +252,7 @@ Class | Method | HTTP request | Description
 *AdminTrafficApi* | [**getSlotOverview**](doc//AdminTrafficApi.md#getslotoverview) | **GET** /admin/traffic/slot/overview | Slot 遊戲流量概覽
 *AdminTrafficApi* | [**getSlotToday**](doc//AdminTrafficApi.md#getslottoday) | **GET** /admin/traffic/slot/today | 今日 Slot 小時分佈
 *AdminTrafficApi* | [**getTodayRegistrations**](doc//AdminTrafficApi.md#gettodayregistrations) | **GET** /admin/traffic/registrations/today | 今日註冊小時分佈
+*AuthApi* | [**acceptTerms**](doc//AuthApi.md#acceptterms) | **POST** /auth/accept-terms | 用戶接受服務條款
 *AuthApi* | [**bindEmail**](doc//AuthApi.md#bindemail) | **POST** /auth/bind-email | 綁定或更新郵箱
 *AuthApi* | [**bindOAuth**](doc//AuthApi.md#bindoauth) | **POST** /auth/bind-oauth | 綁定OAuth賬號
 *AuthApi* | [**changePassword**](doc//AuthApi.md#changepassword) | **POST** /auth/change-password | 修改/設置密碼
@@ -733,6 +742,7 @@ Class | Method | HTTP request | Description
  - [PagePromoCode](doc//PagePromoCode.md)
  - [PageRecharge](doc//PageRecharge.md)
  - [PageReview](doc//PageReview.md)
+ - [PageSanctionBlacklistAddress](doc//PageSanctionBlacklistAddress.md)
  - [PageStaking](doc//PageStaking.md)
  - [PageStoreResponseDTO](doc//PageStoreResponseDTO.md)
  - [PageTransaction](doc//PageTransaction.md)
@@ -811,6 +821,7 @@ Class | Method | HTTP request | Description
  - [SSEEventRequest](doc//SSEEventRequest.md)
  - [SSEEventResponse](doc//SSEEventResponse.md)
  - [SalesStats](doc//SalesStats.md)
+ - [SanctionBlacklistAddress](doc//SanctionBlacklistAddress.md)
  - [ScheduledPushResponseDTO](doc//ScheduledPushResponseDTO.md)
  - [SchedulerJobRequest](doc//SchedulerJobRequest.md)
  - [SchedulerJobResponse](doc//SchedulerJobResponse.md)

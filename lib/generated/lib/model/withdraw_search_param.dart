@@ -353,19 +353,23 @@ class WithdrawSearchParamStatusEnum {
   String toJson() => value;
 
   static const PENDING = WithdrawSearchParamStatusEnum._(r'PENDING');
+  static const PENDING_REVIEW = WithdrawSearchParamStatusEnum._(r'PENDING_REVIEW');
   static const PROCESSING = WithdrawSearchParamStatusEnum._(r'PROCESSING');
   static const COMPLETED = WithdrawSearchParamStatusEnum._(r'COMPLETED');
   static const CANCELLED = WithdrawSearchParamStatusEnum._(r'CANCELLED');
   static const FAILED = WithdrawSearchParamStatusEnum._(r'FAILED');
+  static const REJECTED = WithdrawSearchParamStatusEnum._(r'REJECTED');
   static const unknownDefaultOpenApi = WithdrawSearchParamStatusEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][WithdrawSearchParamStatusEnum].
   static const values = <WithdrawSearchParamStatusEnum>[
     PENDING,
+    PENDING_REVIEW,
     PROCESSING,
     COMPLETED,
     CANCELLED,
     FAILED,
+    REJECTED,
     unknownDefaultOpenApi,
   ];
 
@@ -406,10 +410,12 @@ class WithdrawSearchParamStatusEnumTypeTransformer {
     if (data != null) {
       switch (data) {
         case r'PENDING': return WithdrawSearchParamStatusEnum.PENDING;
+        case r'PENDING_REVIEW': return WithdrawSearchParamStatusEnum.PENDING_REVIEW;
         case r'PROCESSING': return WithdrawSearchParamStatusEnum.PROCESSING;
         case r'COMPLETED': return WithdrawSearchParamStatusEnum.COMPLETED;
         case r'CANCELLED': return WithdrawSearchParamStatusEnum.CANCELLED;
         case r'FAILED': return WithdrawSearchParamStatusEnum.FAILED;
+        case r'REJECTED': return WithdrawSearchParamStatusEnum.REJECTED;
         case r'unknown_default_open_api': return WithdrawSearchParamStatusEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

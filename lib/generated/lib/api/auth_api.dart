@@ -16,6 +16,56 @@ class AuthApi {
 
   final ApiClient apiClient;
 
+  /// 用戶接受服務條款
+  ///
+  /// 記錄用戶接受的 ToS 版本與時間
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] version (required):
+  Future<Response> acceptTermsWithHttpInfo(String version,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/accept-terms';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'version', version));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 用戶接受服務條款
+  ///
+  /// 記錄用戶接受的 ToS 版本與時間
+  ///
+  /// Parameters:
+  ///
+  /// * [String] version (required):
+  Future<void> acceptTerms(String version,) async {
+    final response = await acceptTermsWithHttpInfo(version,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
   /// 綁定或更新郵箱
   ///
   /// 為無郵箱的賬戶綁定郵箱，或為已有郵箱的賬戶更新郵箱。需要先調用 /auth/email-verification/send 發送驗證碼到新郵箱，然後使用驗證碼綁定或更新郵箱。注意：驗證碼只能使用一次，使用後會自動清除。

@@ -1311,6 +1311,45 @@
         }
       }
     },
+    "/withdraws/{withdrawId}/reject": {
+      "post": {
+        "tags": [
+          "提款管理"
+        ],
+        "summary": "Admin 拒絕提款申請（退款給用戶）",
+        "operationId": "rejectWithdraw",
+        "parameters": [
+          {
+            "name": "withdrawId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reason",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Withdraw"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/withdraws/{withdrawId}/fail": {
       "post": {
         "tags": [
@@ -7618,6 +7657,36 @@
         ]
       }
     },
+    "/auth/accept-terms": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "用戶接受服務條款",
+        "description": "記錄用戶接受的 ToS 版本與時間",
+        "operationId": "acceptTerms",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/auth/2fa/verify": {
       "post": {
         "tags": [
@@ -8049,6 +8118,112 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/SchedulerJobResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/sanctions": {
+      "get": {
+        "tags": [
+          "制裁黑名單管理"
+        ],
+        "summary": "列出黑名單地址",
+        "operationId": "list",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageSanctionBlacklistAddress"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "制裁黑名單管理"
+        ],
+        "summary": "新增黑名單地址",
+        "operationId": "add",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "chain",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "source",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "INTERNAL"
+            }
+          },
+          {
+            "name": "severity",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "BLOCK"
+            }
+          },
+          {
+            "name": "reason",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SanctionBlacklistAddress"
                 }
               }
             }
@@ -9039,7 +9214,7 @@
           "項目知識庫管理"
         ],
         "summary": "列出所有知識文件",
-        "operationId": "list",
+        "operationId": "list_1",
         "responses": {
           "200": {
             "description": "OK",
@@ -16389,6 +16564,31 @@
         ]
       }
     },
+    "/admin/sanctions/{id}": {
+      "delete": {
+        "tags": [
+          "制裁黑名單管理"
+        ],
+        "summary": "移除黑名單地址",
+        "operationId": "remove",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/admin/products/batch": {
       "delete": {
         "tags": [
@@ -17678,6 +17878,26 @@
             "description": "當前請求的IP地址",
             "example": "192.168.1.1"
           },
+          "termsAcceptedVersion": {
+            "type": "string",
+            "description": "已接受 ToS 版本（null=尚未接受當前版本）",
+            "maxLength": 20
+          },
+          "termsAcceptedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "接受 ToS 時間"
+          },
+          "countryCode": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2 國家代碼（signup 時由 CF-IPCountry 偵測）",
+            "maxLength": 2
+          },
+          "countryDetectedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "IP 國家偵測時間"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time",
@@ -18697,10 +18917,12 @@
             "description": "提款狀態",
             "enum": [
               "PENDING",
+              "PENDING_REVIEW",
               "PROCESSING",
               "COMPLETED",
               "CANCELLED",
-              "FAILED"
+              "FAILED",
+              "REJECTED"
             ],
             "maxLength": 255
           },
@@ -18715,6 +18937,26 @@
             "description": "備註",
             "example": "用戶提款",
             "maxLength": 255
+          },
+          "rejectedReason": {
+            "type": "string",
+            "description": "拒絕原因（REJECTED 狀態才有值）",
+            "maxLength": 255
+          },
+          "adminReviewerId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "審核 Admin 用戶 ID"
+          },
+          "adminReviewerNotes": {
+            "type": "string",
+            "description": "Admin 審核備註",
+            "maxLength": 500
+          },
+          "reviewedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "審核時間"
           },
           "createdAt": {
             "type": "string",
@@ -18799,10 +19041,12 @@
             "description": "提款狀態",
             "enum": [
               "PENDING",
+              "PENDING_REVIEW",
               "PROCESSING",
               "COMPLETED",
               "CANCELLED",
-              "FAILED"
+              "FAILED",
+              "REJECTED"
             ]
           },
           "protocol": {
@@ -21046,10 +21290,10 @@
           "inStock": {
             "type": "boolean"
           },
-          "stockBelowMinimum": {
+          "stockLow": {
             "type": "boolean"
           },
-          "stockLow": {
+          "stockBelowMinimum": {
             "type": "boolean"
           },
           "defaultShippingFee": {
@@ -30866,6 +31110,60 @@
           }
         }
       },
+      "SanctionBlacklistAddress": {
+        "type": "object",
+        "description": "制裁黑名單地址",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "address": {
+            "type": "string",
+            "description": "錢包地址",
+            "example": "T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb"
+          },
+          "chain": {
+            "type": "string",
+            "description": "鏈名稱",
+            "enum": [
+              "TRON",
+              "ETH",
+              "BSC"
+            ],
+            "example": "TRON"
+          },
+          "source": {
+            "type": "string",
+            "description": "來源",
+            "enum": [
+              "OFAC",
+              "CHAINALYSIS",
+              "INTERNAL",
+              "USER_REPORT"
+            ],
+            "example": "OFAC"
+          },
+          "severity": {
+            "type": "string",
+            "description": "嚴重程度 BLOCK=自動拒絕, WARN=人工審核",
+            "example": "BLOCK"
+          },
+          "reason": {
+            "type": "string",
+            "description": "備註"
+          },
+          "addedByAdminId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "新增的 Admin 用戶 ID"
+          },
+          "addedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
       "ProductReportResolveParam": {
         "type": "object",
         "description": "admin 處理檢舉參數",
@@ -34723,6 +35021,52 @@
             "type": "string",
             "description": "任務描述",
             "example": "每日下午3點執行，處理質押收益發放"
+          }
+        }
+      },
+      "PageSanctionBlacklistAddress": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SanctionBlacklistAddress"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
           }
         }
       },

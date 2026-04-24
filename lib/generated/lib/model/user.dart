@@ -37,6 +37,10 @@ class User {
     this.trustedDevicesJson,
     this.currentDeviceFingerprint,
     this.currentIpAddress,
+    this.termsAcceptedVersion,
+    this.termsAcceptedAt,
+    this.countryCode,
+    this.countryDetectedAt,
     required this.createdAt,
     required this.updatedAt,
     this.admin,
@@ -217,6 +221,42 @@ class User {
   ///
   String? currentIpAddress;
 
+  /// 已接受 ToS 版本（null=尚未接受當前版本）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? termsAcceptedVersion;
+
+  /// 接受 ToS 時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? termsAcceptedAt;
+
+  /// ISO 3166-1 alpha-2 國家代碼（signup 時由 CF-IPCountry 偵測）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? countryCode;
+
+  /// IP 國家偵測時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? countryDetectedAt;
+
   /// 創建時間
   DateTime createdAt;
 
@@ -259,6 +299,10 @@ class User {
     other.trustedDevicesJson == trustedDevicesJson &&
     other.currentDeviceFingerprint == currentDeviceFingerprint &&
     other.currentIpAddress == currentIpAddress &&
+    other.termsAcceptedVersion == termsAcceptedVersion &&
+    other.termsAcceptedAt == termsAcceptedAt &&
+    other.countryCode == countryCode &&
+    other.countryDetectedAt == countryDetectedAt &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
     other.admin == admin &&
@@ -291,13 +335,17 @@ class User {
     (trustedDevicesJson == null ? 0 : trustedDevicesJson!.hashCode) +
     (currentDeviceFingerprint == null ? 0 : currentDeviceFingerprint!.hashCode) +
     (currentIpAddress == null ? 0 : currentIpAddress!.hashCode) +
+    (termsAcceptedVersion == null ? 0 : termsAcceptedVersion!.hashCode) +
+    (termsAcceptedAt == null ? 0 : termsAcceptedAt!.hashCode) +
+    (countryCode == null ? 0 : countryCode!.hashCode) +
+    (countryDetectedAt == null ? 0 : countryDetectedAt!.hashCode) +
     (createdAt.hashCode) +
     (updatedAt.hashCode) +
     (admin == null ? 0 : admin!.hashCode) +
     (trustedDevices.hashCode);
 
   @override
-  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, defaultHomePage=$defaultHomePage, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, registrationMethod=$registrationMethod, registrationIp=$registrationIp, registrationUa=$registrationUa, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, trustedDevicesJson=$trustedDevicesJson, currentDeviceFingerprint=$currentDeviceFingerprint, currentIpAddress=$currentIpAddress, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin, trustedDevices=$trustedDevices]';
+  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, defaultHomePage=$defaultHomePage, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, registrationMethod=$registrationMethod, registrationIp=$registrationIp, registrationUa=$registrationUa, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, trustedDevicesJson=$trustedDevicesJson, currentDeviceFingerprint=$currentDeviceFingerprint, currentIpAddress=$currentIpAddress, termsAcceptedVersion=$termsAcceptedVersion, termsAcceptedAt=$termsAcceptedAt, countryCode=$countryCode, countryDetectedAt=$countryDetectedAt, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin, trustedDevices=$trustedDevices]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -401,6 +449,26 @@ class User {
     } else {
       json[r'currentIpAddress'] = null;
     }
+    if (this.termsAcceptedVersion != null) {
+      json[r'termsAcceptedVersion'] = this.termsAcceptedVersion;
+    } else {
+      json[r'termsAcceptedVersion'] = null;
+    }
+    if (this.termsAcceptedAt != null) {
+      json[r'termsAcceptedAt'] = this.termsAcceptedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'termsAcceptedAt'] = null;
+    }
+    if (this.countryCode != null) {
+      json[r'countryCode'] = this.countryCode;
+    } else {
+      json[r'countryCode'] = null;
+    }
+    if (this.countryDetectedAt != null) {
+      json[r'countryDetectedAt'] = this.countryDetectedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'countryDetectedAt'] = null;
+    }
       json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
       json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
     if (this.admin != null) {
@@ -455,6 +523,10 @@ class User {
         trustedDevicesJson: mapValueOfType<String>(json, r'trustedDevicesJson'),
         currentDeviceFingerprint: mapValueOfType<String>(json, r'currentDeviceFingerprint'),
         currentIpAddress: mapValueOfType<String>(json, r'currentIpAddress'),
+        termsAcceptedVersion: mapValueOfType<String>(json, r'termsAcceptedVersion'),
+        termsAcceptedAt: mapDateTime(json, r'termsAcceptedAt', r''),
+        countryCode: mapValueOfType<String>(json, r'countryCode'),
+        countryDetectedAt: mapDateTime(json, r'countryDetectedAt', r''),
         createdAt: mapDateTime(json, r'createdAt', r'')!,
         updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         admin: mapValueOfType<bool>(json, r'admin'),

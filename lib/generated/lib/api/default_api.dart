@@ -16,6 +16,86 @@ class DefaultApi {
 
   final ApiClient apiClient;
 
+  /// 新增黑名單地址
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] address (required):
+  ///
+  /// * [String] chain (required):
+  ///
+  /// * [String] source_:
+  ///
+  /// * [String] severity:
+  ///
+  /// * [String] reason:
+  Future<Response> addWithHttpInfo(String address, String chain, { String? source_, String? severity, String? reason, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/sanctions';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'address', address));
+      queryParams.addAll(_queryParams('', 'chain', chain));
+    if (source_ != null) {
+      queryParams.addAll(_queryParams('', 'source', source_));
+    }
+    if (severity != null) {
+      queryParams.addAll(_queryParams('', 'severity', severity));
+    }
+    if (reason != null) {
+      queryParams.addAll(_queryParams('', 'reason', reason));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 新增黑名單地址
+  ///
+  /// Parameters:
+  ///
+  /// * [String] address (required):
+  ///
+  /// * [String] chain (required):
+  ///
+  /// * [String] source_:
+  ///
+  /// * [String] severity:
+  ///
+  /// * [String] reason:
+  Future<SanctionBlacklistAddress?> add(String address, String chain, { String? source_, String? severity, String? reason, }) async {
+    final response = await addWithHttpInfo(address, chain,  source_: source_, severity: severity, reason: reason, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SanctionBlacklistAddress',) as SanctionBlacklistAddress;
+    
+    }
+    return null;
+  }
+
   /// 新增知識文件
   ///
   /// 新增單筆知識文件至 AI 知識庫
@@ -4440,10 +4520,73 @@ class DefaultApi {
     return null;
   }
 
+  /// 列出黑名單地址
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] page:
+  ///
+  /// * [int] size:
+  Future<Response> listWithHttpInfo({ int? page, int? size, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/sanctions';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (size != null) {
+      queryParams.addAll(_queryParams('', 'size', size));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 列出黑名單地址
+  ///
+  /// Parameters:
+  ///
+  /// * [int] page:
+  ///
+  /// * [int] size:
+  Future<PageSanctionBlacklistAddress?> list({ int? page, int? size, }) async {
+    final response = await listWithHttpInfo( page: page, size: size, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageSanctionBlacklistAddress',) as PageSanctionBlacklistAddress;
+    
+    }
+    return null;
+  }
+
   /// 列出所有知識文件
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> listWithHttpInfo() async {
+  Future<Response> list1WithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/admin/knowledge';
 
@@ -4469,8 +4612,8 @@ class DefaultApi {
   }
 
   /// 列出所有知識文件
-  Future<ApiResponseListKnowledgeResponse?> list() async {
-    final response = await listWithHttpInfo();
+  Future<ApiResponseListKnowledgeResponse?> list1() async {
+    final response = await list1WithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -4841,6 +4984,110 @@ class DefaultApi {
     
     }
     return null;
+  }
+
+  /// Admin 拒絕提款申請（退款給用戶）
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] withdrawId (required):
+  ///
+  /// * [String] reason (required):
+  Future<Response> rejectWithdrawWithHttpInfo(String withdrawId, String reason,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/withdraws/{withdrawId}/reject'
+      .replaceAll('{withdrawId}', withdrawId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'reason', reason));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Admin 拒絕提款申請（退款給用戶）
+  ///
+  /// Parameters:
+  ///
+  /// * [String] withdrawId (required):
+  ///
+  /// * [String] reason (required):
+  Future<Withdraw?> rejectWithdraw(String withdrawId, String reason,) async {
+    final response = await rejectWithdrawWithHttpInfo(withdrawId, reason,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Withdraw',) as Withdraw;
+    
+    }
+    return null;
+  }
+
+  /// 移除黑名單地址
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  Future<Response> removeWithHttpInfo(int id,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/sanctions/{id}'
+      .replaceAll('{id}', id.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 移除黑名單地址
+  ///
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  Future<void> remove(int id,) async {
+    final response = await removeWithHttpInfo(id,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
   }
 
   /// 刪除指定購物車項目
