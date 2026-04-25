@@ -9281,6 +9281,29 @@
         }
       }
     },
+    "/admin/market/backfill-oi": {
+      "post": {
+        "tags": [
+          "admin-market-controller"
+        ],
+        "operationId": "backfillOi",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/knowledge": {
       "get": {
         "tags": [

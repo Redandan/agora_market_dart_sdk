@@ -201,6 +201,7 @@ Class | Method | HTTP request | Description
 *AdminExchangeRateRangeApi* | [**editRange**](doc//AdminExchangeRateRangeApi.md#editrange) | **POST** /admin/exchange-rate-range/edit | 更新匯率範圍
 *AdminExchangeRateRangeApi* | [**getAllRanges**](doc//AdminExchangeRateRangeApi.md#getallranges) | **POST** /admin/exchange-rate-range/all | 搜尋匯率範圍
 *AdminExchangeRateRangeApi* | [**rejectSuggestion**](doc//AdminExchangeRateRangeApi.md#rejectsuggestion) | **POST** /admin/exchange-rate-range/suggestions/{id}/reject | 拒絕建議
+*AdminMarketControllerApi* | [**backfillOi**](doc//AdminMarketControllerApi.md#backfilloi) | **POST** /admin/market/backfill-oi | 
 *AdminMembersApi* | [**createUserByAdmin**](doc//AdminMembersApi.md#createuserbyadmin) | **POST** /admin/members/create-user | 管理員創建用戶
 *AdminMembersApi* | [**getMemberDetail**](doc//AdminMembersApi.md#getmemberdetail) | **GET** /admin/members/{memberId} | 查看會員詳情
 *AdminMembersApi* | [**getMemberStatistics**](doc//AdminMembersApi.md#getmemberstatistics) | **GET** /admin/members/statistics | 會員統計報告

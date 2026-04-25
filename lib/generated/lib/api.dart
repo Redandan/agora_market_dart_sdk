@@ -35,6 +35,7 @@ part 'api/admin_bot_controller_api.dart';
 part 'api/admin_delivery_api.dart';
 part 'api/admin_disputes_api.dart';
 part 'api/admin_exchange_rate_range_api.dart';
+part 'api/admin_market_controller_api.dart';
 part 'api/admin_members_api.dart';
 part 'api/admin_notifications_api.dart';
 part 'api/admin_oco_controller_api.dart';
