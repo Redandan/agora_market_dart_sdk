@@ -2532,6 +2532,37 @@
         }
       }
     },
+    "/stores/return-policy": {
+      "post": {
+        "tags": [
+          "stores"
+        ],
+        "summary": "更新賣家退換貨政策",
+        "operationId": "updateReturnPolicy",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StoreReturnPolicyDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/StoreReturnPolicyDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/stores/products/search": {
       "post": {
         "tags": [
@@ -5723,6 +5754,48 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/DisputeReplyParam"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Dispute"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/disputes/{disputeId}/appeal": {
+      "post": {
+        "tags": [
+          "member-disputes"
+        ],
+        "summary": "申請糾紛複審",
+        "description": "買家或賣家可在判決後申請複審，每個糾紛只能申請一次",
+        "operationId": "requestAppeal",
+        "parameters": [
+          {
+            "name": "disputeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DisputeAppealParam"
               }
             }
           },
@@ -9582,6 +9655,86 @@
         }
       }
     },
+    "/admin/disputes/{disputeId}/reexamine": {
+      "post": {
+        "tags": [
+          "admin-disputes"
+        ],
+        "summary": "接受複審申請",
+        "description": "將糾紛重新設為待處理，通知雙方",
+        "operationId": "reexamineDispute",
+        "parameters": [
+          {
+            "name": "disputeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "comment",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Dispute"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/disputes/{disputeId}/deny-appeal": {
+      "post": {
+        "tags": [
+          "admin-disputes"
+        ],
+        "summary": "拒絕複審申請",
+        "description": "拒絕複審並通知申請方",
+        "operationId": "denyAppeal",
+        "parameters": [
+          {
+            "name": "disputeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "comment",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Dispute"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/disputes/search": {
       "post": {
         "tags": [
@@ -10679,6 +10832,39 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/SellerTrustScoreDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stores/{sellerId}/return-policy": {
+      "get": {
+        "tags": [
+          "stores"
+        ],
+        "summary": "查詢賣家退換貨政策",
+        "operationId": "getReturnPolicy",
+        "parameters": [
+          {
+            "name": "sellerId",
+            "in": "path",
+            "description": "賣家ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/StoreReturnPolicyDto"
                 }
               }
             }
@@ -19963,14 +20149,14 @@
           "formattedAddress": {
             "type": "string"
           },
-          "convenienceStorePickup": {
-            "type": "boolean"
-          },
           "logisticsDescription": {
             "type": "string"
           },
           "recipientInfo": {
             "type": "string"
+          },
+          "convenienceStorePickup": {
+            "type": "boolean"
           }
         },
         "required": [
@@ -20875,6 +21061,30 @@
           }
         }
       },
+      "StoreReturnPolicyDto": {
+        "type": "object",
+        "description": "商店退換貨政策",
+        "properties": {
+          "returnDaysAllowed": {
+            "type": "integer",
+            "format": "int32",
+            "description": "退換貨天數（0 = 不接受退貨）",
+            "example": 7,
+            "maximum": 30,
+            "minimum": 0
+          },
+          "returnConditions": {
+            "type": "string",
+            "description": "退換貨條件說明",
+            "maxLength": 500
+          },
+          "noReturnPolicy": {
+            "type": "boolean",
+            "description": "是否拒絕一切退貨",
+            "example": false
+          }
+        }
+      },
       "StoreProductSearchParam": {
         "type": "object",
         "description": "商店商品搜索參數",
@@ -21619,6 +21829,21 @@
             "type": "string",
             "description": "管理員備註",
             "example": "優質商家"
+          },
+          "returnDaysAllowed": {
+            "type": "integer",
+            "format": "int32",
+            "description": "退換貨天數（0 = 不接受退貨）",
+            "example": 7
+          },
+          "returnConditions": {
+            "type": "string",
+            "description": "退換貨條件說明"
+          },
+          "noReturnPolicy": {
+            "type": "boolean",
+            "description": "是否拒絕一切退貨",
+            "example": false
           }
         },
         "required": [
@@ -25894,6 +26119,24 @@
             "format": "date-time",
             "description": "SLA 升級時間（逾期未處理自動標記）"
           },
+          "appealRequestedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "申請複審時間"
+          },
+          "appealBy": {
+            "type": "string",
+            "description": "申請複審方（BUYER / SELLER）"
+          },
+          "appealReason": {
+            "type": "string",
+            "description": "複審申請理由"
+          },
+          "appealDeniedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "複審申請被拒絕時間"
+          },
           "imageUrls": {
             "type": "array",
             "items": {
@@ -27676,6 +27919,19 @@
         "required": [
           "reply"
         ]
+      },
+      "DisputeAppealParam": {
+        "type": "object",
+        "description": "糾紛複審申請參數",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "description": "複審理由",
+            "example": "判決有誤，我有額外證據",
+            "maxLength": 1000,
+            "minLength": 0
+          }
+        }
       },
       "DisputeSearchParam": {
         "type": "object",
@@ -31525,6 +31781,9 @@
           "receivedCount": {
             "type": "integer",
             "format": "int64"
+          },
+          "source": {
+            "type": "string"
           }
         }
       },

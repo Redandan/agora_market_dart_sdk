@@ -26,6 +26,10 @@ class Dispute {
     required this.updatedAt,
     this.resolvedAt,
     this.escalatedAt,
+    this.appealRequestedAt,
+    this.appealBy,
+    this.appealReason,
+    this.appealDeniedAt,
     this.imageUrls = const {},
     this.sellerReplyImageUrls = const {},
   });
@@ -93,6 +97,42 @@ class Dispute {
   ///
   DateTime? escalatedAt;
 
+  /// 申請複審時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? appealRequestedAt;
+
+  /// 申請複審方（BUYER / SELLER）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? appealBy;
+
+  /// 複審申請理由
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? appealReason;
+
+  /// 複審申請被拒絕時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? appealDeniedAt;
+
   Set<String> imageUrls;
 
   Set<String> sellerReplyImageUrls;
@@ -112,6 +152,10 @@ class Dispute {
     other.updatedAt == updatedAt &&
     other.resolvedAt == resolvedAt &&
     other.escalatedAt == escalatedAt &&
+    other.appealRequestedAt == appealRequestedAt &&
+    other.appealBy == appealBy &&
+    other.appealReason == appealReason &&
+    other.appealDeniedAt == appealDeniedAt &&
     _deepEquality.equals(other.imageUrls, imageUrls) &&
     _deepEquality.equals(other.sellerReplyImageUrls, sellerReplyImageUrls);
 
@@ -131,11 +175,15 @@ class Dispute {
     (updatedAt.hashCode) +
     (resolvedAt == null ? 0 : resolvedAt!.hashCode) +
     (escalatedAt == null ? 0 : escalatedAt!.hashCode) +
+    (appealRequestedAt == null ? 0 : appealRequestedAt!.hashCode) +
+    (appealBy == null ? 0 : appealBy!.hashCode) +
+    (appealReason == null ? 0 : appealReason!.hashCode) +
+    (appealDeniedAt == null ? 0 : appealDeniedAt!.hashCode) +
     (imageUrls.hashCode) +
     (sellerReplyImageUrls.hashCode);
 
   @override
-  String toString() => 'Dispute[id=$id, version=$version, buyerId=$buyerId, sellerId=$sellerId, status=$status, outcome=$outcome, description=$description, sellerReply=$sellerReply, adminComment=$adminComment, createdAt=$createdAt, updatedAt=$updatedAt, resolvedAt=$resolvedAt, escalatedAt=$escalatedAt, imageUrls=$imageUrls, sellerReplyImageUrls=$sellerReplyImageUrls]';
+  String toString() => 'Dispute[id=$id, version=$version, buyerId=$buyerId, sellerId=$sellerId, status=$status, outcome=$outcome, description=$description, sellerReply=$sellerReply, adminComment=$adminComment, createdAt=$createdAt, updatedAt=$updatedAt, resolvedAt=$resolvedAt, escalatedAt=$escalatedAt, appealRequestedAt=$appealRequestedAt, appealBy=$appealBy, appealReason=$appealReason, appealDeniedAt=$appealDeniedAt, imageUrls=$imageUrls, sellerReplyImageUrls=$sellerReplyImageUrls]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -171,6 +219,26 @@ class Dispute {
       json[r'escalatedAt'] = this.escalatedAt!.toUtc().toIso8601String();
     } else {
       json[r'escalatedAt'] = null;
+    }
+    if (this.appealRequestedAt != null) {
+      json[r'appealRequestedAt'] = this.appealRequestedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'appealRequestedAt'] = null;
+    }
+    if (this.appealBy != null) {
+      json[r'appealBy'] = this.appealBy;
+    } else {
+      json[r'appealBy'] = null;
+    }
+    if (this.appealReason != null) {
+      json[r'appealReason'] = this.appealReason;
+    } else {
+      json[r'appealReason'] = null;
+    }
+    if (this.appealDeniedAt != null) {
+      json[r'appealDeniedAt'] = this.appealDeniedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'appealDeniedAt'] = null;
     }
       json[r'imageUrls'] = this.imageUrls.toList(growable: false);
       json[r'sellerReplyImageUrls'] = this.sellerReplyImageUrls.toList(growable: false);
@@ -209,6 +277,10 @@ class Dispute {
         updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         resolvedAt: mapDateTime(json, r'resolvedAt', r''),
         escalatedAt: mapDateTime(json, r'escalatedAt', r''),
+        appealRequestedAt: mapDateTime(json, r'appealRequestedAt', r''),
+        appealBy: mapValueOfType<String>(json, r'appealBy'),
+        appealReason: mapValueOfType<String>(json, r'appealReason'),
+        appealDeniedAt: mapDateTime(json, r'appealDeniedAt', r''),
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
             : const {},

@@ -48,6 +48,9 @@ class Store {
     required this.createdAt,
     required this.updatedAt,
     this.adminRemark,
+    this.returnDaysAllowed,
+    this.returnConditions,
+    this.noReturnPolicy,
   });
 
   /// 商店擁有者ID
@@ -293,6 +296,33 @@ class Store {
   ///
   String? adminRemark;
 
+  /// 退換貨天數（0 = 不接受退貨）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? returnDaysAllowed;
+
+  /// 退換貨條件說明
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? returnConditions;
+
+  /// 是否拒絕一切退貨
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? noReturnPolicy;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Store &&
     other.id == id &&
@@ -329,7 +359,10 @@ class Store {
     other.shippingDateRange == shippingDateRange &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
-    other.adminRemark == adminRemark;
+    other.adminRemark == adminRemark &&
+    other.returnDaysAllowed == returnDaysAllowed &&
+    other.returnConditions == returnConditions &&
+    other.noReturnPolicy == noReturnPolicy;
 
   @override
   int get hashCode =>
@@ -368,10 +401,13 @@ class Store {
     (shippingDateRange == null ? 0 : shippingDateRange!.hashCode) +
     (createdAt.hashCode) +
     (updatedAt.hashCode) +
-    (adminRemark == null ? 0 : adminRemark!.hashCode);
+    (adminRemark == null ? 0 : adminRemark!.hashCode) +
+    (returnDaysAllowed == null ? 0 : returnDaysAllowed!.hashCode) +
+    (returnConditions == null ? 0 : returnConditions!.hashCode) +
+    (noReturnPolicy == null ? 0 : noReturnPolicy!.hashCode);
 
   @override
-  String toString() => 'Store[id=$id, name=$name, description=$description, address=$address, longitude=$longitude, latitude=$latitude, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, logoDescription=$logoDescription, logoUploadTime=$logoUploadTime, coverImageUrl=$coverImageUrl, coverDescription=$coverDescription, coverUploadTime=$coverUploadTime, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, creditLevel=$creditLevel, productCount=$productCount, orderCount=$orderCount, totalSales=$totalSales, averageRating=$averageRating, responseRate=$responseRate, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, createdAt=$createdAt, updatedAt=$updatedAt, adminRemark=$adminRemark]';
+  String toString() => 'Store[id=$id, name=$name, description=$description, address=$address, longitude=$longitude, latitude=$latitude, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, logoDescription=$logoDescription, logoUploadTime=$logoUploadTime, coverImageUrl=$coverImageUrl, coverDescription=$coverDescription, coverUploadTime=$coverUploadTime, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, creditLevel=$creditLevel, productCount=$productCount, orderCount=$orderCount, totalSales=$totalSales, averageRating=$averageRating, responseRate=$responseRate, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, createdAt=$createdAt, updatedAt=$updatedAt, adminRemark=$adminRemark, returnDaysAllowed=$returnDaysAllowed, returnConditions=$returnConditions, noReturnPolicy=$noReturnPolicy]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -502,6 +538,21 @@ class Store {
     } else {
       json[r'adminRemark'] = null;
     }
+    if (this.returnDaysAllowed != null) {
+      json[r'returnDaysAllowed'] = this.returnDaysAllowed;
+    } else {
+      json[r'returnDaysAllowed'] = null;
+    }
+    if (this.returnConditions != null) {
+      json[r'returnConditions'] = this.returnConditions;
+    } else {
+      json[r'returnConditions'] = null;
+    }
+    if (this.noReturnPolicy != null) {
+      json[r'noReturnPolicy'] = this.noReturnPolicy;
+    } else {
+      json[r'noReturnPolicy'] = null;
+    }
     return json;
   }
 
@@ -559,6 +610,9 @@ class Store {
         createdAt: mapDateTime(json, r'createdAt', r'')!,
         updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         adminRemark: mapValueOfType<String>(json, r'adminRemark'),
+        returnDaysAllowed: mapValueOfType<int>(json, r'returnDaysAllowed'),
+        returnConditions: mapValueOfType<String>(json, r'returnConditions'),
+        noReturnPolicy: mapValueOfType<bool>(json, r'noReturnPolicy'),
       );
     }
     return null;

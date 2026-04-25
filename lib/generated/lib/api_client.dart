@@ -382,6 +382,8 @@ class ApiClient {
           return Dispute.fromJson(value);
         case 'DisputeAiAnalysisResponse':
           return DisputeAiAnalysisResponse.fromJson(value);
+        case 'DisputeAppealParam':
+          return DisputeAppealParam.fromJson(value);
         case 'DisputeCreateParam':
           return DisputeCreateParam.fromJson(value);
         case 'DisputeDetailParam':
@@ -844,6 +846,8 @@ class ApiClient {
           return StoreProductSearchParam.fromJson(value);
         case 'StoreResponseDTO':
           return StoreResponseDTO.fromJson(value);
+        case 'StoreReturnPolicyDto':
+          return StoreReturnPolicyDto.fromJson(value);
         case 'StoreShippingConfigParam':
           return StoreShippingConfigParam.fromJson(value);
         case 'StoreUpdateParam':

@@ -19,6 +19,7 @@ class KlineSubscriptionInfo {
     this.status,
     this.connectedAt,
     this.receivedCount,
+    this.source_,
   });
 
   ///
@@ -69,6 +70,14 @@ class KlineSubscriptionInfo {
   ///
   int? receivedCount;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? source_;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is KlineSubscriptionInfo &&
     other.symbol == symbol &&
@@ -76,7 +85,8 @@ class KlineSubscriptionInfo {
     other.marketType == marketType &&
     other.status == status &&
     other.connectedAt == connectedAt &&
-    other.receivedCount == receivedCount;
+    other.receivedCount == receivedCount &&
+    other.source_ == source_;
 
   @override
   int get hashCode =>
@@ -86,10 +96,11 @@ class KlineSubscriptionInfo {
     (marketType == null ? 0 : marketType!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
     (connectedAt == null ? 0 : connectedAt!.hashCode) +
-    (receivedCount == null ? 0 : receivedCount!.hashCode);
+    (receivedCount == null ? 0 : receivedCount!.hashCode) +
+    (source_ == null ? 0 : source_!.hashCode);
 
   @override
-  String toString() => 'KlineSubscriptionInfo[symbol=$symbol, intervalCode=$intervalCode, marketType=$marketType, status=$status, connectedAt=$connectedAt, receivedCount=$receivedCount]';
+  String toString() => 'KlineSubscriptionInfo[symbol=$symbol, intervalCode=$intervalCode, marketType=$marketType, status=$status, connectedAt=$connectedAt, receivedCount=$receivedCount, source_=$source_]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -123,6 +134,11 @@ class KlineSubscriptionInfo {
     } else {
       json[r'receivedCount'] = null;
     }
+    if (this.source_ != null) {
+      json[r'source'] = this.source_;
+    } else {
+      json[r'source'] = null;
+    }
     return json;
   }
 
@@ -151,6 +167,7 @@ class KlineSubscriptionInfo {
         status: mapValueOfType<String>(json, r'status'),
         connectedAt: mapDateTime(json, r'connectedAt', r''),
         receivedCount: mapValueOfType<int>(json, r'receivedCount'),
+        source_: mapValueOfType<String>(json, r'source'),
       );
     }
     return null;

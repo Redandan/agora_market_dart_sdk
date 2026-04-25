@@ -112,6 +112,61 @@ class StoresApi {
     return null;
   }
 
+  /// 查詢賣家退換貨政策
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] sellerId (required):
+  ///   賣家ID
+  Future<Response> getReturnPolicyWithHttpInfo(int sellerId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/stores/{sellerId}/return-policy'
+      .replaceAll('{sellerId}', sellerId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查詢賣家退換貨政策
+  ///
+  /// Parameters:
+  ///
+  /// * [int] sellerId (required):
+  ///   賣家ID
+  Future<StoreReturnPolicyDto?> getReturnPolicy(int sellerId,) async {
+    final response = await getReturnPolicyWithHttpInfo(sellerId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StoreReturnPolicyDto',) as StoreReturnPolicyDto;
+    
+    }
+    return null;
+  }
+
   /// 獲取賣家儀表板統計（訂單/財務/評價/信任分）
   ///
   /// Note: This method returns the HTTP [Response].
@@ -427,6 +482,58 @@ class StoresApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageProduct',) as PageProduct;
+    
+    }
+    return null;
+  }
+
+  /// 更新賣家退換貨政策
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [StoreReturnPolicyDto] storeReturnPolicyDto (required):
+  Future<Response> updateReturnPolicyWithHttpInfo(StoreReturnPolicyDto storeReturnPolicyDto,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/stores/return-policy';
+
+    // ignore: prefer_final_locals
+    Object? postBody = storeReturnPolicyDto;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 更新賣家退換貨政策
+  ///
+  /// Parameters:
+  ///
+  /// * [StoreReturnPolicyDto] storeReturnPolicyDto (required):
+  Future<StoreReturnPolicyDto?> updateReturnPolicy(StoreReturnPolicyDto storeReturnPolicyDto,) async {
+    final response = await updateReturnPolicyWithHttpInfo(storeReturnPolicyDto,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StoreReturnPolicyDto',) as StoreReturnPolicyDto;
     
     }
     return null;
