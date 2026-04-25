@@ -776,8 +776,12 @@ class ApiClient {
           return SchedulerJobResponse.fromJson(value);
         case 'SchedulerStatusResponseDTO':
           return SchedulerStatusResponseDTO.fromJson(value);
+        case 'SellerDashboardDto':
+          return SellerDashboardDto.fromJson(value);
         case 'SellerOrderStatsDTO':
           return SellerOrderStatsDTO.fromJson(value);
+        case 'SellerTrustScoreDto':
+          return SellerTrustScoreDto.fromJson(value);
         case 'SevenElevenStoreDTO':
           return SevenElevenStoreDTO.fromJson(value);
         case 'ShippingAddress':

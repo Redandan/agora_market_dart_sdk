@@ -10653,6 +10653,72 @@
         }
       }
     },
+    "/stores/{sellerId}/trust-score": {
+      "get": {
+        "tags": [
+          "stores"
+        ],
+        "summary": "獲取賣家信任評分（基於歷史交易）",
+        "operationId": "getSellerTrustScore",
+        "parameters": [
+          {
+            "name": "sellerId",
+            "in": "path",
+            "description": "賣家ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SellerTrustScoreDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stores/{sellerId}/dashboard": {
+      "get": {
+        "tags": [
+          "stores"
+        ],
+        "summary": "獲取賣家儀表板統計（訂單/財務/評價/信任分）",
+        "operationId": "getSellerDashboard",
+        "parameters": [
+          {
+            "name": "sellerId",
+            "in": "path",
+            "description": "賣家ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SellerDashboardDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/stores/seven-eleven/stores": {
       "get": {
         "tags": [
@@ -19897,14 +19963,14 @@
           "formattedAddress": {
             "type": "string"
           },
+          "convenienceStorePickup": {
+            "type": "boolean"
+          },
           "logisticsDescription": {
             "type": "string"
           },
           "recipientInfo": {
             "type": "string"
-          },
-          "convenienceStorePickup": {
-            "type": "boolean"
           }
         },
         "required": [
@@ -25822,6 +25888,11 @@
             "format": "date-time",
             "description": "處理時間",
             "example": "2024-01-01T11:00:00"
+          },
+          "escalatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "SLA 升級時間（逾期未處理自動標記）"
           },
           "imageUrls": {
             "type": "array",
@@ -32811,6 +32882,187 @@
           "totalPlayers": {
             "type": "integer",
             "format": "int64"
+          }
+        }
+      },
+      "SellerTrustScoreDto": {
+        "type": "object",
+        "description": "賣家信任分析結果",
+        "properties": {
+          "trustScore": {
+            "type": "number",
+            "format": "double",
+            "description": "信任評分 (0-100)",
+            "example": 72.5
+          },
+          "creditLevel": {
+            "type": "integer",
+            "format": "int32",
+            "description": "信用等級 (1-5)",
+            "example": 3
+          },
+          "creditLevelLabel": {
+            "type": "string",
+            "description": "信用等級標籤",
+            "example": "可信"
+          },
+          "avgRating": {
+            "type": "number",
+            "format": "double",
+            "description": "評論平均分 (0-5)",
+            "example": 4.2
+          },
+          "reviewCount": {
+            "type": "integer",
+            "format": "int64",
+            "description": "評論數量",
+            "example": 38
+          },
+          "completionRate": {
+            "type": "number",
+            "format": "double",
+            "description": "訂單完成率 (0-1)",
+            "example": 0.92
+          },
+          "totalOrders": {
+            "type": "integer",
+            "format": "int64",
+            "description": "總接單數",
+            "example": 120
+          },
+          "completedOrders": {
+            "type": "integer",
+            "format": "int64",
+            "description": "已完成訂單數",
+            "example": 110
+          },
+          "disputeRate": {
+            "type": "number",
+            "format": "double",
+            "description": "糾紛率 (糾紛數 / 已完成訂單數)",
+            "example": 0.03
+          },
+          "totalDisputes": {
+            "type": "integer",
+            "format": "int64",
+            "description": "糾紛數量",
+            "example": 3
+          },
+          "accountAgeDays": {
+            "type": "integer",
+            "format": "int64",
+            "description": "帳號年齡（天）",
+            "example": 180
+          },
+          "responseRate": {
+            "type": "integer",
+            "format": "int32",
+            "description": "回覆率 (0-100)",
+            "example": 85
+          }
+        }
+      },
+      "SellerDashboardDto": {
+        "type": "object",
+        "description": "賣家儀表板統計",
+        "properties": {
+          "totalOrders": {
+            "type": "integer",
+            "format": "int64",
+            "description": "總接單數"
+          },
+          "completedOrders": {
+            "type": "integer",
+            "format": "int64",
+            "description": "已完成訂單數（含爭議結案）"
+          },
+          "pendingOrders": {
+            "type": "integer",
+            "format": "int64",
+            "description": "待出貨訂單數"
+          },
+          "cancelledOrders": {
+            "type": "integer",
+            "format": "int64",
+            "description": "取消訂單數"
+          },
+          "returnOrders": {
+            "type": "integer",
+            "format": "int64",
+            "description": "退貨相關訂單數"
+          },
+          "disputeOrders": {
+            "type": "integer",
+            "format": "int64",
+            "description": "糾紛訂單數"
+          },
+          "totalRevenue": {
+            "type": "number",
+            "description": "累計成交金額 USDT"
+          },
+          "avgOrderValue": {
+            "type": "number",
+            "description": "平均訂單金額 USDT"
+          },
+          "completionRate": {
+            "type": "number",
+            "format": "double",
+            "description": "訂單完成率 (0-1)",
+            "example": 0.92
+          },
+          "returnRate": {
+            "type": "number",
+            "format": "double",
+            "description": "退貨率 (退貨訂單 / 已完成)",
+            "example": 0.05
+          },
+          "disputeRate": {
+            "type": "number",
+            "format": "double",
+            "description": "糾紛率 (糾紛訂單 / 已完成)",
+            "example": 0.02
+          },
+          "last30DaysOrders": {
+            "type": "integer",
+            "format": "int64",
+            "description": "近 30 天訂單數"
+          },
+          "last30DaysRevenue": {
+            "type": "number",
+            "description": "近 30 天成交金額 USDT"
+          },
+          "avgRating": {
+            "type": "number",
+            "format": "double",
+            "description": "評論平均分 (0-5)",
+            "example": 4.2
+          },
+          "reviewCount": {
+            "type": "integer",
+            "format": "int64",
+            "description": "評論總數"
+          },
+          "responseRate": {
+            "type": "integer",
+            "format": "int32",
+            "description": "回覆率 (0-100)",
+            "example": 85
+          },
+          "creditLevel": {
+            "type": "integer",
+            "format": "int32",
+            "description": "信用等級 (0-5)"
+          },
+          "creditLevelLabel": {
+            "type": "string",
+            "description": "信用等級標籤",
+            "example": "可靠"
+          },
+          "trustScore": {
+            "type": "number",
+            "format": "double",
+            "description": "信任評分 (0-100)",
+            "example": 72.5
           }
         }
       },

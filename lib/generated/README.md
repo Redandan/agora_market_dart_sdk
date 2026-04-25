@@ -469,6 +469,8 @@ Class | Method | HTTP request | Description
 *StakingApi* | [**unfreezeStaking**](doc//StakingApi.md#unfreezestaking) | **POST** /staking/unfreeze | 申請解除質押
 *StoresApi* | [**createStore**](doc//StoresApi.md#createstore) | **POST** /stores/create | 創建商店
 *StoresApi* | [**getMyStore**](doc//StoresApi.md#getmystore) | **GET** /stores/my-store | 獲取當前用戶的商店
+*StoresApi* | [**getSellerDashboard**](doc//StoresApi.md#getsellerdashboard) | **GET** /stores/{sellerId}/dashboard | 獲取賣家儀表板統計（訂單/財務/評價/信任分）
+*StoresApi* | [**getSellerTrustScore**](doc//StoresApi.md#getsellertrustscore) | **GET** /stores/{sellerId}/trust-score | 獲取賣家信任評分（基於歷史交易）
 *StoresApi* | [**getShippingConfig**](doc//StoresApi.md#getshippingconfig) | **GET** /stores/shipping-config | 獲取商店物流設定
 *StoresApi* | [**getStoreAnalytics**](doc//StoresApi.md#getstoreanalytics) | **GET** /stores/analytics | 獲取商店分析數據
 *StoresApi* | [**getStoreBySellerId**](doc//StoresApi.md#getstorebysellerid) | **GET** /stores/{sellerId} | 根據賣家ID獲取商店信息
@@ -826,7 +828,9 @@ Class | Method | HTTP request | Description
  - [SchedulerJobRequest](doc//SchedulerJobRequest.md)
  - [SchedulerJobResponse](doc//SchedulerJobResponse.md)
  - [SchedulerStatusResponseDTO](doc//SchedulerStatusResponseDTO.md)
+ - [SellerDashboardDto](doc//SellerDashboardDto.md)
  - [SellerOrderStatsDTO](doc//SellerOrderStatsDTO.md)
+ - [SellerTrustScoreDto](doc//SellerTrustScoreDto.md)
  - [SevenElevenStoreDTO](doc//SevenElevenStoreDTO.md)
  - [ShippingAddress](doc//ShippingAddress.md)
  - [ShippingAddressOption](doc//ShippingAddressOption.md)

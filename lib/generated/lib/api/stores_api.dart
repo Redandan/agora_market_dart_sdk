@@ -112,6 +112,116 @@ class StoresApi {
     return null;
   }
 
+  /// 獲取賣家儀表板統計（訂單/財務/評價/信任分）
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] sellerId (required):
+  ///   賣家ID
+  Future<Response> getSellerDashboardWithHttpInfo(int sellerId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/stores/{sellerId}/dashboard'
+      .replaceAll('{sellerId}', sellerId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 獲取賣家儀表板統計（訂單/財務/評價/信任分）
+  ///
+  /// Parameters:
+  ///
+  /// * [int] sellerId (required):
+  ///   賣家ID
+  Future<SellerDashboardDto?> getSellerDashboard(int sellerId,) async {
+    final response = await getSellerDashboardWithHttpInfo(sellerId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SellerDashboardDto',) as SellerDashboardDto;
+    
+    }
+    return null;
+  }
+
+  /// 獲取賣家信任評分（基於歷史交易）
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] sellerId (required):
+  ///   賣家ID
+  Future<Response> getSellerTrustScoreWithHttpInfo(int sellerId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/stores/{sellerId}/trust-score'
+      .replaceAll('{sellerId}', sellerId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 獲取賣家信任評分（基於歷史交易）
+  ///
+  /// Parameters:
+  ///
+  /// * [int] sellerId (required):
+  ///   賣家ID
+  Future<SellerTrustScoreDto?> getSellerTrustScore(int sellerId,) async {
+    final response = await getSellerTrustScoreWithHttpInfo(sellerId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SellerTrustScoreDto',) as SellerTrustScoreDto;
+    
+    }
+    return null;
+  }
+
   /// 獲取商店物流設定
   ///
   /// Note: This method returns the HTTP [Response].

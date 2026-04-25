@@ -25,6 +25,7 @@ class Dispute {
     required this.createdAt,
     required this.updatedAt,
     this.resolvedAt,
+    this.escalatedAt,
     this.imageUrls = const {},
     this.sellerReplyImageUrls = const {},
   });
@@ -83,6 +84,15 @@ class Dispute {
   ///
   DateTime? resolvedAt;
 
+  /// SLA 升級時間（逾期未處理自動標記）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? escalatedAt;
+
   Set<String> imageUrls;
 
   Set<String> sellerReplyImageUrls;
@@ -101,6 +111,7 @@ class Dispute {
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
     other.resolvedAt == resolvedAt &&
+    other.escalatedAt == escalatedAt &&
     _deepEquality.equals(other.imageUrls, imageUrls) &&
     _deepEquality.equals(other.sellerReplyImageUrls, sellerReplyImageUrls);
 
@@ -119,11 +130,12 @@ class Dispute {
     (createdAt.hashCode) +
     (updatedAt.hashCode) +
     (resolvedAt == null ? 0 : resolvedAt!.hashCode) +
+    (escalatedAt == null ? 0 : escalatedAt!.hashCode) +
     (imageUrls.hashCode) +
     (sellerReplyImageUrls.hashCode);
 
   @override
-  String toString() => 'Dispute[id=$id, version=$version, buyerId=$buyerId, sellerId=$sellerId, status=$status, outcome=$outcome, description=$description, sellerReply=$sellerReply, adminComment=$adminComment, createdAt=$createdAt, updatedAt=$updatedAt, resolvedAt=$resolvedAt, imageUrls=$imageUrls, sellerReplyImageUrls=$sellerReplyImageUrls]';
+  String toString() => 'Dispute[id=$id, version=$version, buyerId=$buyerId, sellerId=$sellerId, status=$status, outcome=$outcome, description=$description, sellerReply=$sellerReply, adminComment=$adminComment, createdAt=$createdAt, updatedAt=$updatedAt, resolvedAt=$resolvedAt, escalatedAt=$escalatedAt, imageUrls=$imageUrls, sellerReplyImageUrls=$sellerReplyImageUrls]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -154,6 +166,11 @@ class Dispute {
       json[r'resolvedAt'] = this.resolvedAt!.toUtc().toIso8601String();
     } else {
       json[r'resolvedAt'] = null;
+    }
+    if (this.escalatedAt != null) {
+      json[r'escalatedAt'] = this.escalatedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'escalatedAt'] = null;
     }
       json[r'imageUrls'] = this.imageUrls.toList(growable: false);
       json[r'sellerReplyImageUrls'] = this.sellerReplyImageUrls.toList(growable: false);
@@ -191,6 +208,7 @@ class Dispute {
         createdAt: mapDateTime(json, r'createdAt', r'')!,
         updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         resolvedAt: mapDateTime(json, r'resolvedAt', r''),
+        escalatedAt: mapDateTime(json, r'escalatedAt', r''),
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
             : const {},
