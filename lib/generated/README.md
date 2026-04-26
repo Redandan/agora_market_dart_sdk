@@ -259,6 +259,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**bindEmail**](doc//AuthApi.md#bindemail) | **POST** /auth/bind-email | 綁定或更新郵箱
 *AuthApi* | [**bindOAuth**](doc//AuthApi.md#bindoauth) | **POST** /auth/bind-oauth | 綁定OAuth賬號
 *AuthApi* | [**changePassword**](doc//AuthApi.md#changepassword) | **POST** /auth/change-password | 修改/設置密碼
+*AuthApi* | [**deactivateAccount**](doc//AuthApi.md#deactivateaccount) | **DELETE** /auth/me | 用戶自助停用帳號
 *AuthApi* | [**forgotPassword**](doc//AuthApi.md#forgotpassword) | **POST** /auth/forgot-password | 忘記密碼 - 發送驗證碼到郵箱
 *AuthApi* | [**getCurrentUser**](doc//AuthApi.md#getcurrentuser) | **GET** /auth/me | 獲取當前用戶信息
 *AuthApi* | [**getEmailVerificationRemainingTime**](doc//AuthApi.md#getemailverificationremainingtime) | **GET** /auth/email-verification/remaining-time | 查詢郵件驗證碼的剩餘等待時間

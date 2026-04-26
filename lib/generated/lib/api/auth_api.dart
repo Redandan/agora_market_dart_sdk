@@ -210,6 +210,46 @@ class AuthApi {
     }
   }
 
+  /// 用戶自助停用帳號
+  ///
+  /// 將當前登入用戶的狀態設為 SUSPENDED 並清除 SecurityContext。後續任何攜帶舊 JWT 的請求會在 UserDetailsService 階段被拒絕，達到撤銷 token 的效果。可逆操作：用戶可透過客服或重新登入流程申請恢復帳號。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> deactivateAccountWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/me';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 用戶自助停用帳號
+  ///
+  /// 將當前登入用戶的狀態設為 SUSPENDED 並清除 SecurityContext。後續任何攜帶舊 JWT 的請求會在 UserDetailsService 階段被拒絕，達到撤銷 token 的效果。可逆操作：用戶可透過客服或重新登入流程申請恢復帳號。
+  Future<void> deactivateAccount() async {
+    final response = await deactivateAccountWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
   /// 忘記密碼 - 發送驗證碼到郵箱
   ///
   /// Note: This method returns the HTTP [Response].
