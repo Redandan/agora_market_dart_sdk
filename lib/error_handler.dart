@@ -202,6 +202,90 @@ class SdkError {
 /// 错误处理回调函数类型
 typedef ErrorHandlerCallback = Future<void> Function(SdkError error);
 
+/// 错误上报接口
+///
+/// SDK 不直接依赖任何特定上报后端（Sentry / Bugsnag / 自家 telemetry）。
+/// 由整合方（通常是 Flutter app）注入具体实作。
+///
+/// ## 用法范例
+///
+/// ### 1. 接 Sentry（需在 app 端加 `sentry_flutter` 依赖）
+///
+/// ```dart
+/// import 'package:sentry_flutter/sentry_flutter.dart';
+///
+/// class SentryErrorReporter implements ErrorReporter {
+///   @override
+///   Future<void> report(
+///     Object error,
+///     StackTrace? stackTrace, {
+///     Map<String, dynamic>? context,
+///   }) async {
+///     await Sentry.captureException(
+///       error,
+///       stackTrace: stackTrace,
+///       withScope: (scope) {
+///         context?.forEach((k, v) => scope.setExtra(k, v));
+///       },
+///     );
+///   }
+/// }
+///
+/// // app 启动时
+/// globalErrorHandler.setErrorReporter(SentryErrorReporter());
+/// globalErrorHandler.setReportingEnabled(true);
+/// ```
+///
+/// ### 2. 接自家 telemetry endpoint
+///
+/// ```dart
+/// class HttpErrorReporter implements ErrorReporter {
+///   final String endpoint;
+///   HttpErrorReporter(this.endpoint);
+///
+///   @override
+///   Future<void> report(
+///     Object error,
+///     StackTrace? stackTrace, {
+///     Map<String, dynamic>? context,
+///   }) async {
+///     await http.post(Uri.parse(endpoint), body: jsonEncode({
+///       'error': error.toString(),
+///       'stack': stackTrace?.toString(),
+///       'context': context,
+///     }));
+///   }
+/// }
+/// ```
+abstract class ErrorReporter {
+  /// 上报一笔错误。
+  ///
+  /// - [error]：原始 error 对象（通常是 [SdkError] 或其 originalException）
+  /// - [stackTrace]：可选的堆栈
+  /// - [context]：附加 metadata（apiName / methodName / userId / 等）
+  ///
+  /// 实作方应捕获自身异常，避免上报失败再次触发 error handler 形成回圈。
+  Future<void> report(
+    Object error,
+    StackTrace? stackTrace, {
+    Map<String, dynamic>? context,
+  });
+}
+
+/// 默认 no-op 上报器：不做任何事，确保未配置时 SDK 行为不变。
+class _NoopErrorReporter implements ErrorReporter {
+  const _NoopErrorReporter();
+
+  @override
+  Future<void> report(
+    Object error,
+    StackTrace? stackTrace, {
+    Map<String, dynamic>? context,
+  }) async {
+    // intentionally empty
+  }
+}
+
 /// 全局错误处理器
 class GlobalErrorHandler {
   static final GlobalErrorHandler _instance = GlobalErrorHandler._internal();
@@ -225,6 +309,20 @@ class GlobalErrorHandler {
 
   /// 当前用户ID
   String? _currentUserId;
+
+  /// 错误上报器（默认 no-op，由整合方通过 [setErrorReporter] 注入）
+  ErrorReporter _reporter = const _NoopErrorReporter();
+
+  /// 注入错误上报器（Sentry / 自家 telemetry / 其他）。
+  ///
+  /// 注入后还需呼叫 [setReportingEnabled]`(true)` 才会真正上报。
+  /// 详见 [ErrorReporter] 文件中的接 Sentry / HTTP endpoint 范例。
+  void setErrorReporter(ErrorReporter reporter) {
+    _reporter = reporter;
+  }
+
+  /// 取得目前注入的 reporter（测试 / 诊断用）。
+  ErrorReporter get errorReporter => _reporter;
 
   /// 添加错误处理回调
   void addErrorHandler(ErrorHandlerCallback handler) {
@@ -389,10 +487,34 @@ User ID: ${error.context.userId}
   }
 
   /// 错误上报
+  ///
+  /// 透过注入的 [ErrorReporter] 上报。预设为 no-op；整合方需呼叫
+  /// [setErrorReporter] 注入实作（例：Sentry / Bugsnag / 自家 telemetry endpoint）
+  /// 并 [setReportingEnabled]`(true)` 才会真正送出。
+  ///
+  /// reporter 内部如抛出例外会被本方法捕获并写入 developer.log，
+  /// 避免上报失败导致原本的 error handler 链路中断。
   Future<void> _reportError(SdkError error) async {
-    // TODO: 实现错误上报逻辑
-    // 可以上报到第三方服务如 Sentry, Bugsnag 等
+    // 仍保留本地 log 方便除错（与原行为一致）
     developer.log('Error reported: ${error.toJson()}', name: 'ErrorReporter');
+
+    try {
+      await _reporter.report(
+        error.originalException ?? error,
+        error.context.stackTrace,
+        context: error.toJson(),
+      );
+    } catch (e, st) {
+      developer.log(
+        'ErrorReporter.report() threw: $e\n$st',
+        name: 'GlobalErrorHandler',
+      );
+    }
+  }
+
+  /// 重设 reporter 为 no-op（主要测试用）。
+  void resetErrorReporter() {
+    _reporter = const _NoopErrorReporter();
   }
 
   /// 清除所有错误处理器
