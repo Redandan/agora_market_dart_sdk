@@ -19001,6 +19001,14 @@
             "type": "string",
             "description": "啟用/停用備註說明"
           },
+          "alphaSource": {
+            "type": "string",
+            "description": "Alpha 來源分類（V084）：技術面趨勢 / 崩盤底部 / 市場結構(OI+Funding) 等"
+          },
+          "triggerConditions": {
+            "type": "string",
+            "description": "結構化觸發條件說明（V084）"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time",

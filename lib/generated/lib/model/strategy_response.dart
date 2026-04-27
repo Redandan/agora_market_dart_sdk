@@ -22,6 +22,8 @@ class StrategyResponse {
     this.symbols,
     this.config,
     this.notes,
+    this.alphaSource,
+    this.triggerConditions,
     this.createdAt,
     this.updatedAt,
   });
@@ -107,6 +109,24 @@ class StrategyResponse {
   ///
   String? notes;
 
+  /// Alpha 來源分類（V084）：技術面趨勢 / 崩盤底部 / 市場結構(OI+Funding) 等
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? alphaSource;
+
+  /// 結構化觸發條件說明（V084）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? triggerConditions;
+
   /// 建立時間（ISO-8601）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -136,6 +156,8 @@ class StrategyResponse {
     other.symbols == symbols &&
     other.config == config &&
     other.notes == notes &&
+    other.alphaSource == alphaSource &&
+    other.triggerConditions == triggerConditions &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt;
 
@@ -151,11 +173,13 @@ class StrategyResponse {
     (symbols == null ? 0 : symbols!.hashCode) +
     (config == null ? 0 : config!.hashCode) +
     (notes == null ? 0 : notes!.hashCode) +
+    (alphaSource == null ? 0 : alphaSource!.hashCode) +
+    (triggerConditions == null ? 0 : triggerConditions!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'StrategyResponse[id=$id, name=$name, strategyType=$strategyType, enabled=$enabled, aiGenerated=$aiGenerated, discoveryBatch=$discoveryBatch, symbols=$symbols, config=$config, notes=$notes, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'StrategyResponse[id=$id, name=$name, strategyType=$strategyType, enabled=$enabled, aiGenerated=$aiGenerated, discoveryBatch=$discoveryBatch, symbols=$symbols, config=$config, notes=$notes, alphaSource=$alphaSource, triggerConditions=$triggerConditions, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -204,6 +228,16 @@ class StrategyResponse {
     } else {
       json[r'notes'] = null;
     }
+    if (this.alphaSource != null) {
+      json[r'alphaSource'] = this.alphaSource;
+    } else {
+      json[r'alphaSource'] = null;
+    }
+    if (this.triggerConditions != null) {
+      json[r'triggerConditions'] = this.triggerConditions;
+    } else {
+      json[r'triggerConditions'] = null;
+    }
     if (this.createdAt != null) {
       json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
     } else {
@@ -245,6 +279,8 @@ class StrategyResponse {
         symbols: mapValueOfType<String>(json, r'symbols'),
         config: SopMtfAdxConfig.fromJson(json[r'config']),
         notes: mapValueOfType<String>(json, r'notes'),
+        alphaSource: mapValueOfType<String>(json, r'alphaSource'),
+        triggerConditions: mapValueOfType<String>(json, r'triggerConditions'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
       );
