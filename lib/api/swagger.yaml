@@ -8710,6 +8710,53 @@
         }
       }
     },
+    "/admin/oco/modify/{positionId}": {
+      "post": {
+        "tags": [
+          "admin-oco-controller"
+        ],
+        "operationId": "modifyOco",
+        "parameters": [
+          {
+            "name": "positionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "newSl",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "newTp",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseMapStringObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/oco/market-sell/{currency}": {
       "post": {
         "tags": [

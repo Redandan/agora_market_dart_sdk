@@ -169,6 +169,67 @@ class AdminOcoControllerApi {
     return null;
   }
 
+  /// Performs an HTTP 'POST /admin/oco/modify/{positionId}' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] positionId (required):
+  ///
+  /// * [num] newSl (required):
+  ///
+  /// * [num] newTp:
+  Future<Response> modifyOcoWithHttpInfo(int positionId, num newSl, { num? newTp, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/oco/modify/{positionId}'
+      .replaceAll('{positionId}', positionId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'newSl', newSl));
+    if (newTp != null) {
+      queryParams.addAll(_queryParams('', 'newTp', newTp));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] positionId (required):
+  ///
+  /// * [num] newSl (required):
+  ///
+  /// * [num] newTp:
+  Future<ApiResponseMapStringObject?> modifyOco(int positionId, num newSl, { num? newTp, }) async {
+    final response = await modifyOcoWithHttpInfo(positionId, newSl,  newTp: newTp, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseMapStringObject',) as ApiResponseMapStringObject;
+    
+    }
+    return null;
+  }
+
   /// Performs an HTTP 'POST /admin/oco/retry/{positionId}' operation and returns the [Response].
   /// Parameters:
   ///
