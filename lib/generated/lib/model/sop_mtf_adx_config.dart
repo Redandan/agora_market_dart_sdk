@@ -39,6 +39,8 @@ class SopMtfAdxConfig {
     this.requiredDailyTrend,
     this.atrSlMultiplier,
     this.atrTpMultiplier,
+    this.higherTfForSl,
+    this.antiStopHuntOffset,
     this.diagnostics = const {},
     this.yearLookbackBars,
     this.medLookbackBars,
@@ -322,6 +324,24 @@ class SopMtfAdxConfig {
   ///
   double? atrTpMultiplier;
 
+  /// 用更大時框的 ATR 計算 SL（防止 stop hunt）。例如 '4h' 在 1h 策略上使用 4h ATR 計算 SL，更寬的止損可避免整數位被掃。TP 仍用原時框 ATR。
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? higherTfForSl;
+
+  /// 防整數位止損獵殺：在 SL 加入 0.03%–0.08% 隨機 offset，使 SL 落在非整數位置（預設 true）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? antiStopHuntOffset;
+
   /// 診斷碼開關設定（false 表示停用該診斷碼，預設全部啟用，null 表示全部啟用）
   Map<String, bool> diagnostics;
 
@@ -462,6 +482,8 @@ class SopMtfAdxConfig {
     other.requiredDailyTrend == requiredDailyTrend &&
     other.atrSlMultiplier == atrSlMultiplier &&
     other.atrTpMultiplier == atrTpMultiplier &&
+    other.higherTfForSl == higherTfForSl &&
+    other.antiStopHuntOffset == antiStopHuntOffset &&
     _deepEquality.equals(other.diagnostics, diagnostics) &&
     other.yearLookbackBars == yearLookbackBars &&
     other.medLookbackBars == medLookbackBars &&
@@ -503,6 +525,8 @@ class SopMtfAdxConfig {
     (requiredDailyTrend == null ? 0 : requiredDailyTrend!.hashCode) +
     (atrSlMultiplier == null ? 0 : atrSlMultiplier!.hashCode) +
     (atrTpMultiplier == null ? 0 : atrTpMultiplier!.hashCode) +
+    (higherTfForSl == null ? 0 : higherTfForSl!.hashCode) +
+    (antiStopHuntOffset == null ? 0 : antiStopHuntOffset!.hashCode) +
     (diagnostics.hashCode) +
     (yearLookbackBars == null ? 0 : yearLookbackBars!.hashCode) +
     (medLookbackBars == null ? 0 : medLookbackBars!.hashCode) +
@@ -516,7 +540,7 @@ class SopMtfAdxConfig {
     (diagScoreFloor == null ? 0 : diagScoreFloor!.hashCode);
 
   @override
-  String toString() => 'SopMtfAdxConfig[enableMtf=$enableMtf, minSignals=$minSignals, adxEntryThreshold=$adxEntryThreshold, maxDistanceFromEma=$maxDistanceFromEma, fixedStopLossPct=$fixedStopLossPct, fixedTakeProfitPct=$fixedTakeProfitPct, maxHoldingHours=$maxHoldingHours, moveSlToBreakeven=$moveSlToBreakeven, rsiPullbackThreshold=$rsiPullbackThreshold, rsiReboundConfirm=$rsiReboundConfirm, requireCandleBreak=$requireCandleBreak, minRsiDelta=$minRsiDelta, reboundLookbackBars=$reboundLookbackBars, minRR=$minRR, keyLevelLookbackBars=$keyLevelLookbackBars, dailyMaPeriod=$dailyMaPeriod, rsiSellThreshold=$rsiSellThreshold, allowShort=$allowShort, shortOnly=$shortOnly, dailyBorrowingRate=$dailyBorrowingRate, atrTrailingStopEnabled=$atrTrailingStopEnabled, atrPeriod=$atrPeriod, atrMultiplier=$atrMultiplier, requiredDailyTrend=$requiredDailyTrend, atrSlMultiplier=$atrSlMultiplier, atrTpMultiplier=$atrTpMultiplier, diagnostics=$diagnostics, yearLookbackBars=$yearLookbackBars, medLookbackBars=$medLookbackBars, shortLookbackBars=$shortLookbackBars, rsiOversold=$rsiOversold, rsiOverbought=$rsiOverbought, buyThreshold=$buyThreshold, volumeBreakoutMultiplier=$volumeBreakoutMultiplier, scoreScale=$scoreScale, scoreShift=$scoreShift, diagScoreFloor=$diagScoreFloor]';
+  String toString() => 'SopMtfAdxConfig[enableMtf=$enableMtf, minSignals=$minSignals, adxEntryThreshold=$adxEntryThreshold, maxDistanceFromEma=$maxDistanceFromEma, fixedStopLossPct=$fixedStopLossPct, fixedTakeProfitPct=$fixedTakeProfitPct, maxHoldingHours=$maxHoldingHours, moveSlToBreakeven=$moveSlToBreakeven, rsiPullbackThreshold=$rsiPullbackThreshold, rsiReboundConfirm=$rsiReboundConfirm, requireCandleBreak=$requireCandleBreak, minRsiDelta=$minRsiDelta, reboundLookbackBars=$reboundLookbackBars, minRR=$minRR, keyLevelLookbackBars=$keyLevelLookbackBars, dailyMaPeriod=$dailyMaPeriod, rsiSellThreshold=$rsiSellThreshold, allowShort=$allowShort, shortOnly=$shortOnly, dailyBorrowingRate=$dailyBorrowingRate, atrTrailingStopEnabled=$atrTrailingStopEnabled, atrPeriod=$atrPeriod, atrMultiplier=$atrMultiplier, requiredDailyTrend=$requiredDailyTrend, atrSlMultiplier=$atrSlMultiplier, atrTpMultiplier=$atrTpMultiplier, higherTfForSl=$higherTfForSl, antiStopHuntOffset=$antiStopHuntOffset, diagnostics=$diagnostics, yearLookbackBars=$yearLookbackBars, medLookbackBars=$medLookbackBars, shortLookbackBars=$shortLookbackBars, rsiOversold=$rsiOversold, rsiOverbought=$rsiOverbought, buyThreshold=$buyThreshold, volumeBreakoutMultiplier=$volumeBreakoutMultiplier, scoreScale=$scoreScale, scoreShift=$scoreShift, diagScoreFloor=$diagScoreFloor]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -650,6 +674,16 @@ class SopMtfAdxConfig {
     } else {
       json[r'atrTpMultiplier'] = null;
     }
+    if (this.higherTfForSl != null) {
+      json[r'higherTfForSl'] = this.higherTfForSl;
+    } else {
+      json[r'higherTfForSl'] = null;
+    }
+    if (this.antiStopHuntOffset != null) {
+      json[r'antiStopHuntOffset'] = this.antiStopHuntOffset;
+    } else {
+      json[r'antiStopHuntOffset'] = null;
+    }
       json[r'diagnostics'] = this.diagnostics;
     if (this.yearLookbackBars != null) {
       json[r'yearLookbackBars'] = this.yearLookbackBars;
@@ -749,6 +783,8 @@ class SopMtfAdxConfig {
         requiredDailyTrend: SopMtfAdxConfigRequiredDailyTrendEnum.fromJson(json[r'requiredDailyTrend']),
         atrSlMultiplier: mapValueOfType<double>(json, r'atrSlMultiplier'),
         atrTpMultiplier: mapValueOfType<double>(json, r'atrTpMultiplier'),
+        higherTfForSl: mapValueOfType<String>(json, r'higherTfForSl'),
+        antiStopHuntOffset: mapValueOfType<bool>(json, r'antiStopHuntOffset'),
         diagnostics: mapCastOfType<String, bool>(json, r'diagnostics') ?? const {},
         yearLookbackBars: mapValueOfType<int>(json, r'yearLookbackBars'),
         medLookbackBars: mapValueOfType<int>(json, r'medLookbackBars'),

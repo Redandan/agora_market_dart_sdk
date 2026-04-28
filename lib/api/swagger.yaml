@@ -18825,6 +18825,16 @@
             "description": "ATR 動態初始止盈倍數（TP = ATR% × multiplier，優先於 fixedTakeProfitPct）",
             "example": 7.0
           },
+          "higherTfForSl": {
+            "type": "string",
+            "description": "用更大時框的 ATR 計算 SL（防止 stop hunt）。例如 '4h' 在 1h 策略上使用 4h ATR 計算 SL，更寬的止損可避免整數位被掃。TP 仍用原時框 ATR。",
+            "example": "4h"
+          },
+          "antiStopHuntOffset": {
+            "type": "boolean",
+            "description": "防整數位止損獵殺：在 SL 加入 0.03%–0.08% 隨機 offset，使 SL 落在非整數位置（預設 true）",
+            "example": true
+          },
           "diagnostics": {
             "type": "object",
             "additionalProperties": {
