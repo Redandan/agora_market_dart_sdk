@@ -42,6 +42,7 @@ class SopMtfAdxConfig {
     this.higherTfForSl,
     this.antiStopHuntOffset,
     this.allowRsiBypassRegime,
+    this.mlGateSidewaysThreshold,
     this.diagnostics = const {},
     this.yearLookbackBars,
     this.medLookbackBars,
@@ -352,6 +353,15 @@ class SopMtfAdxConfig {
   ///
   bool? allowRsiBypassRegime;
 
+  /// #249 ML gate threshold override for SIDEWAYS/VOLATILE regime. Default 0 = auto-compute as buyThreshold*0.85. Set explicitly to relax or tighten ML gate in sideways markets.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? mlGateSidewaysThreshold;
+
   /// 診斷碼開關設定（false 表示停用該診斷碼，預設全部啟用，null 表示全部啟用）
   Map<String, bool> diagnostics;
 
@@ -495,6 +505,7 @@ class SopMtfAdxConfig {
     other.higherTfForSl == higherTfForSl &&
     other.antiStopHuntOffset == antiStopHuntOffset &&
     other.allowRsiBypassRegime == allowRsiBypassRegime &&
+    other.mlGateSidewaysThreshold == mlGateSidewaysThreshold &&
     _deepEquality.equals(other.diagnostics, diagnostics) &&
     other.yearLookbackBars == yearLookbackBars &&
     other.medLookbackBars == medLookbackBars &&
@@ -539,6 +550,7 @@ class SopMtfAdxConfig {
     (higherTfForSl == null ? 0 : higherTfForSl!.hashCode) +
     (antiStopHuntOffset == null ? 0 : antiStopHuntOffset!.hashCode) +
     (allowRsiBypassRegime == null ? 0 : allowRsiBypassRegime!.hashCode) +
+    (mlGateSidewaysThreshold == null ? 0 : mlGateSidewaysThreshold!.hashCode) +
     (diagnostics.hashCode) +
     (yearLookbackBars == null ? 0 : yearLookbackBars!.hashCode) +
     (medLookbackBars == null ? 0 : medLookbackBars!.hashCode) +
@@ -552,7 +564,7 @@ class SopMtfAdxConfig {
     (diagScoreFloor == null ? 0 : diagScoreFloor!.hashCode);
 
   @override
-  String toString() => 'SopMtfAdxConfig[enableMtf=$enableMtf, minSignals=$minSignals, adxEntryThreshold=$adxEntryThreshold, maxDistanceFromEma=$maxDistanceFromEma, fixedStopLossPct=$fixedStopLossPct, fixedTakeProfitPct=$fixedTakeProfitPct, maxHoldingHours=$maxHoldingHours, moveSlToBreakeven=$moveSlToBreakeven, rsiPullbackThreshold=$rsiPullbackThreshold, rsiReboundConfirm=$rsiReboundConfirm, requireCandleBreak=$requireCandleBreak, minRsiDelta=$minRsiDelta, reboundLookbackBars=$reboundLookbackBars, minRR=$minRR, keyLevelLookbackBars=$keyLevelLookbackBars, dailyMaPeriod=$dailyMaPeriod, rsiSellThreshold=$rsiSellThreshold, allowShort=$allowShort, shortOnly=$shortOnly, dailyBorrowingRate=$dailyBorrowingRate, atrTrailingStopEnabled=$atrTrailingStopEnabled, atrPeriod=$atrPeriod, atrMultiplier=$atrMultiplier, requiredDailyTrend=$requiredDailyTrend, atrSlMultiplier=$atrSlMultiplier, atrTpMultiplier=$atrTpMultiplier, higherTfForSl=$higherTfForSl, antiStopHuntOffset=$antiStopHuntOffset, allowRsiBypassRegime=$allowRsiBypassRegime, diagnostics=$diagnostics, yearLookbackBars=$yearLookbackBars, medLookbackBars=$medLookbackBars, shortLookbackBars=$shortLookbackBars, rsiOversold=$rsiOversold, rsiOverbought=$rsiOverbought, buyThreshold=$buyThreshold, volumeBreakoutMultiplier=$volumeBreakoutMultiplier, scoreScale=$scoreScale, scoreShift=$scoreShift, diagScoreFloor=$diagScoreFloor]';
+  String toString() => 'SopMtfAdxConfig[enableMtf=$enableMtf, minSignals=$minSignals, adxEntryThreshold=$adxEntryThreshold, maxDistanceFromEma=$maxDistanceFromEma, fixedStopLossPct=$fixedStopLossPct, fixedTakeProfitPct=$fixedTakeProfitPct, maxHoldingHours=$maxHoldingHours, moveSlToBreakeven=$moveSlToBreakeven, rsiPullbackThreshold=$rsiPullbackThreshold, rsiReboundConfirm=$rsiReboundConfirm, requireCandleBreak=$requireCandleBreak, minRsiDelta=$minRsiDelta, reboundLookbackBars=$reboundLookbackBars, minRR=$minRR, keyLevelLookbackBars=$keyLevelLookbackBars, dailyMaPeriod=$dailyMaPeriod, rsiSellThreshold=$rsiSellThreshold, allowShort=$allowShort, shortOnly=$shortOnly, dailyBorrowingRate=$dailyBorrowingRate, atrTrailingStopEnabled=$atrTrailingStopEnabled, atrPeriod=$atrPeriod, atrMultiplier=$atrMultiplier, requiredDailyTrend=$requiredDailyTrend, atrSlMultiplier=$atrSlMultiplier, atrTpMultiplier=$atrTpMultiplier, higherTfForSl=$higherTfForSl, antiStopHuntOffset=$antiStopHuntOffset, allowRsiBypassRegime=$allowRsiBypassRegime, mlGateSidewaysThreshold=$mlGateSidewaysThreshold, diagnostics=$diagnostics, yearLookbackBars=$yearLookbackBars, medLookbackBars=$medLookbackBars, shortLookbackBars=$shortLookbackBars, rsiOversold=$rsiOversold, rsiOverbought=$rsiOverbought, buyThreshold=$buyThreshold, volumeBreakoutMultiplier=$volumeBreakoutMultiplier, scoreScale=$scoreScale, scoreShift=$scoreShift, diagScoreFloor=$diagScoreFloor]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -701,6 +713,11 @@ class SopMtfAdxConfig {
     } else {
       json[r'allowRsiBypassRegime'] = null;
     }
+    if (this.mlGateSidewaysThreshold != null) {
+      json[r'mlGateSidewaysThreshold'] = this.mlGateSidewaysThreshold;
+    } else {
+      json[r'mlGateSidewaysThreshold'] = null;
+    }
       json[r'diagnostics'] = this.diagnostics;
     if (this.yearLookbackBars != null) {
       json[r'yearLookbackBars'] = this.yearLookbackBars;
@@ -803,6 +820,7 @@ class SopMtfAdxConfig {
         higherTfForSl: mapValueOfType<String>(json, r'higherTfForSl'),
         antiStopHuntOffset: mapValueOfType<bool>(json, r'antiStopHuntOffset'),
         allowRsiBypassRegime: mapValueOfType<bool>(json, r'allowRsiBypassRegime'),
+        mlGateSidewaysThreshold: mapValueOfType<double>(json, r'mlGateSidewaysThreshold'),
         diagnostics: mapCastOfType<String, bool>(json, r'diagnostics') ?? const {},
         yearLookbackBars: mapValueOfType<int>(json, r'yearLookbackBars'),
         medLookbackBars: mapValueOfType<int>(json, r'medLookbackBars'),

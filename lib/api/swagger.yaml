@@ -18840,6 +18840,12 @@
             "description": "#221 per-strategy RegimeFilter bypass: only crash-bottom strategies (e.g. SCORE_BUY_V2) should set true. Trend strategies keep false — RSI<20 in bear market is a short signal, not a long entry.",
             "example": false
           },
+          "mlGateSidewaysThreshold": {
+            "type": "number",
+            "format": "double",
+            "description": "#249 ML gate threshold override for SIDEWAYS/VOLATILE regime. Default 0 = auto-compute as buyThreshold*0.85. Set explicitly to relax or tighten ML gate in sideways markets.",
+            "example": 0.28
+          },
           "diagnostics": {
             "type": "object",
             "additionalProperties": {
