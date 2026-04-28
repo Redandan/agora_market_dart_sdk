@@ -18835,6 +18835,11 @@
             "description": "防整數位止損獵殺：在 SL 加入 0.03%–0.08% 隨機 offset，使 SL 落在非整數位置（預設 true）",
             "example": true
           },
+          "allowRsiBypassRegime": {
+            "type": "boolean",
+            "description": "#221 per-strategy RegimeFilter bypass: only crash-bottom strategies (e.g. SCORE_BUY_V2) should set true. Trend strategies keep false — RSI<20 in bear market is a short signal, not a long entry.",
+            "example": false
+          },
           "diagnostics": {
             "type": "object",
             "additionalProperties": {
