@@ -942,7 +942,7 @@ class Product {
         id: mapValueOfType<int>(json, r'id')!,
         title: mapValueOfType<String>(json, r'title')!,
         description: mapValueOfType<String>(json, r'description')!,
-        price: num.parse('${json[r'price']}'),
+        price: json[r'price'] != null ? num.parse('${json[r'price']}') : 0,
         currency: ProductCurrencyEnum.fromJson(json[r'currency']),
         stock: mapValueOfType<int>(json, r'stock')!,
         category: ProductCategoryEnum.fromJson(json[r'category'])!,
@@ -963,7 +963,7 @@ class Product {
         status: ProductStatusEnum.fromJson(json[r'status'])!,
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
-        rating: num.parse('${json[r'rating']}'),
+        rating: json[r'rating'] != null ? num.parse('${json[r'rating']}') : null,
         reviewCount: mapValueOfType<int>(json, r'reviewCount')!,
         viewCount: mapValueOfType<int>(json, r'viewCount')!,
         salesCount: mapValueOfType<int>(json, r'salesCount')!,
@@ -973,7 +973,7 @@ class Product {
         minStock: mapValueOfType<int>(json, r'minStock')!,
         pickupServiceTypesJson: mapValueOfType<String>(json, r'pickupServiceTypesJson'),
         pickupServiceTypeFeesJson: mapValueOfType<String>(json, r'pickupServiceTypeFeesJson'),
-        freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
+        freeShippingThreshold: json[r'freeShippingThreshold'] != null ? num.parse('${json[r'freeShippingThreshold']}') : null,
         stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
         allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
         purchaseUrl: mapValueOfType<String>(json, r'purchaseUrl'),
@@ -989,24 +989,24 @@ class Product {
         userSupportedShippingAddresses: UserAddress.listFromJson(json[r'userSupportedShippingAddresses']),
         shippingAddressOptions: ShippingAddressOption.listFromJson(json[r'shippingAddressOptions']),
         shippingOptions: ShippingOptions.fromJson(json[r'shippingOptions']),
-        priceUsdt: num.parse('${json[r'priceUsdt']}'),
-        exchangeRate: num.parse('${json[r'exchangeRate']}'),
+        priceUsdt: json[r'priceUsdt'] != null ? num.parse('${json[r'priceUsdt']}') : null,
+        exchangeRate: json[r'exchangeRate'] != null ? num.parse('${json[r'exchangeRate']}') : null,
         usingDefaultRate: mapValueOfType<bool>(json, r'usingDefaultRate'),
-        freeShippingThresholdUsdt: num.parse('${json[r'freeShippingThresholdUsdt']}'),
+        freeShippingThresholdUsdt: json[r'freeShippingThresholdUsdt'] != null ? num.parse('${json[r'freeShippingThresholdUsdt']}') : null,
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
             : const {},
         skus: json[r'skus'] is Iterable
             ? (json[r'skus'] as Iterable).cast<String>().toSet()
             : const {},
-        minimumShippingFee: num.parse('${json[r'minimumShippingFee']}'),
+        minimumShippingFee: json[r'minimumShippingFee'] != null ? num.parse('${json[r'minimumShippingFee']}') : null,
         inStock: mapValueOfType<bool>(json, r'inStock'),
         stockLow: mapValueOfType<bool>(json, r'stockLow'),
         stockBelowMinimum: mapValueOfType<bool>(json, r'stockBelowMinimum'),
-        defaultShippingFee: num.parse('${json[r'defaultShippingFee']}'),
+        defaultShippingFee: json[r'defaultShippingFee'] != null ? num.parse('${json[r'defaultShippingFee']}') : null,
         pickupServiceTypes: ProductPickupServiceTypesEnum.listFromJson(json[r'pickupServiceTypes']),
         pickupServiceTypeFees: mapCastOfType<String, num>(json, r'pickupServiceTypeFees') ?? const {},
-        shippingFee: num.parse('${json[r'shippingFee']}'),
+        shippingFee: json[r'shippingFee'] != null ? num.parse('${json[r'shippingFee']}') : null,
       );
     }
     return null;
