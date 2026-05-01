@@ -29941,6 +29941,13 @@
             "type": "boolean",
             "description": "skipPersist=true 時不寫入 bt_backtest_result(WF 驗證等用)。預設 false。",
             "example": false
+          },
+          "configOverride": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            },
+            "description": "臨時 config 覆蓋（不改 DB），供參數探索使用。"
           }
         },
         "required": [

@@ -23,6 +23,7 @@ class BacktestRunRequest {
     this.applyFilters,
     this.source_,
     this.skipPersist,
+    this.configOverride = const {},
   });
 
   /// 策略 ID
@@ -77,6 +78,9 @@ class BacktestRunRequest {
   ///
   bool? skipPersist;
 
+  /// 臨時 config 覆蓋（不改 DB），供參數探索使用。
+  Map<String, Object> configOverride;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is BacktestRunRequest &&
     other.strategyId == strategyId &&
@@ -88,7 +92,8 @@ class BacktestRunRequest {
     other.feeRate == feeRate &&
     other.applyFilters == applyFilters &&
     other.source_ == source_ &&
-    other.skipPersist == skipPersist;
+    other.skipPersist == skipPersist &&
+    _deepEquality.equals(other.configOverride, configOverride);
 
   @override
   int get hashCode =>
@@ -102,10 +107,11 @@ class BacktestRunRequest {
     (feeRate.hashCode) +
     (applyFilters == null ? 0 : applyFilters!.hashCode) +
     (source_ == null ? 0 : source_!.hashCode) +
-    (skipPersist == null ? 0 : skipPersist!.hashCode);
+    (skipPersist == null ? 0 : skipPersist!.hashCode) +
+    (configOverride.hashCode);
 
   @override
-  String toString() => 'BacktestRunRequest[strategyId=$strategyId, symbol=$symbol, intervalCode=$intervalCode, startTime=$startTime, endTime=$endTime, initialCapital=$initialCapital, feeRate=$feeRate, applyFilters=$applyFilters, source_=$source_, skipPersist=$skipPersist]';
+  String toString() => 'BacktestRunRequest[strategyId=$strategyId, symbol=$symbol, intervalCode=$intervalCode, startTime=$startTime, endTime=$endTime, initialCapital=$initialCapital, feeRate=$feeRate, applyFilters=$applyFilters, source_=$source_, skipPersist=$skipPersist, configOverride=$configOverride]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -131,6 +137,7 @@ class BacktestRunRequest {
     } else {
       json[r'skipPersist'] = null;
     }
+      json[r'configOverride'] = this.configOverride;
     return json;
   }
 
@@ -163,6 +170,7 @@ class BacktestRunRequest {
         applyFilters: mapValueOfType<bool>(json, r'applyFilters'),
         source_: mapValueOfType<String>(json, r'source'),
         skipPersist: mapValueOfType<bool>(json, r'skipPersist'),
+        configOverride: mapCastOfType<String, Object>(json, r'configOverride') ?? const {},
       );
     }
     return null;
