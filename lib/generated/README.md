@@ -220,6 +220,7 @@ Class | Method | HTTP request | Description
 *AdminOcoControllerApi* | [**listPositions**](doc//AdminOcoControllerApi.md#listpositions) | **GET** /admin/oco/positions | 
 *AdminOcoControllerApi* | [**marketBuyManual**](doc//AdminOcoControllerApi.md#marketbuymanual) | **POST** /admin/oco/market-buy | 
 *AdminOcoControllerApi* | [**marketSellOrphan**](doc//AdminOcoControllerApi.md#marketsellorphan) | **POST** /admin/oco/market-sell/{currency} | 
+*AdminOcoControllerApi* | [**marketSellQty**](doc//AdminOcoControllerApi.md#marketsellqty) | **POST** /admin/oco/market-sell/{currency}/{qty} | 
 *AdminOcoControllerApi* | [**modifyOco**](doc//AdminOcoControllerApi.md#modifyoco) | **POST** /admin/oco/modify/{positionId} | 
 *AdminOcoControllerApi* | [**retryOco**](doc//AdminOcoControllerApi.md#retryoco) | **POST** /admin/oco/retry/{positionId} | 
 *AdminOcoControllerApi* | [**swapCheck**](doc//AdminOcoControllerApi.md#swapcheck) | **GET** /admin/oco/swap-check | 
