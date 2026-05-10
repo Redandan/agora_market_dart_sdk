@@ -8530,6 +8530,37 @@
         }
       }
     },
+    "/admin/products/images/cleanup": {
+      "post": {
+        "tags": [
+          "admin-products"
+        ],
+        "summary": "清理商品/商店壞圖 URL",
+        "description": "預設 dry-run；只有 dryRun=false 且 confirmCleanup=REMOVE_BROKEN_IMAGE_URLS 時才移除明確可清理的壞圖 DB URL。",
+        "operationId": "cleanupProductAndStoreImages",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BrokenImageAuditRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BrokenImageCleanupResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/products/images/audit": {
       "post": {
         "tags": [
@@ -31766,8 +31797,12 @@
           },
           "dryRun": {
             "type": "boolean",
-            "description": "Dry-run only. Cleanup is intentionally not implemented yet.",
+            "description": "Dry-run by default. Cleanup requires dryRun=false and confirmCleanup.",
             "example": true
+          },
+          "confirmCleanup": {
+            "type": "string",
+            "description": "Required for cleanup writes when dryRun=false. Must equal REMOVE_BROKEN_IMAGE_URLS."
           },
           "timeoutMillis": {
             "type": "integer",
@@ -31813,6 +31848,57 @@
             "items": {
               "$ref": "#/components/schemas/BrokenImageFinding"
             }
+          }
+        }
+      },
+      "BrokenImageCleanupResponse": {
+        "type": "object",
+        "description": "Admin broken product/store image cleanup response",
+        "properties": {
+          "dryRun": {
+            "type": "boolean"
+          },
+          "cleanupPerformed": {
+            "type": "boolean"
+          },
+          "productScanned": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "storeScanned": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "urlChecked": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "okCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "badCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "transientFailureCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productUpdated": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "storeUpdated": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "removedUrlCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "audit": {
+            "$ref": "#/components/schemas/BrokenImageAuditResponse"
           }
         }
       },

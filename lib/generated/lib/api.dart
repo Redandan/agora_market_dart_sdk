@@ -143,6 +143,7 @@ part 'model/bind_email_param.dart';
 part 'model/bind_o_auth_param.dart';
 part 'model/broken_image_audit_request.dart';
 part 'model/broken_image_audit_response.dart';
+part 'model/broken_image_cleanup_response.dart';
 part 'model/broken_image_finding.dart';
 part 'model/candidate_result.dart';
 part 'model/cart_group_by_seller.dart';

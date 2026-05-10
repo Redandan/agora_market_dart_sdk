@@ -19,6 +19,7 @@ class BrokenImageAuditRequest {
     this.olderThanDays,
     this.includeStores,
     this.dryRun,
+    this.confirmCleanup,
     this.timeoutMillis,
   });
 
@@ -61,7 +62,7 @@ class BrokenImageAuditRequest {
   ///
   bool? includeStores;
 
-  /// Dry-run only. Cleanup is intentionally not implemented yet.
+  /// Dry-run by default. Cleanup requires dryRun=false and confirmCleanup.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -69,6 +70,15 @@ class BrokenImageAuditRequest {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? dryRun;
+
+  /// Required for cleanup writes when dryRun=false. Must equal REMOVE_BROKEN_IMAGE_URLS.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? confirmCleanup;
 
   /// HTTP probe timeout in milliseconds
   ///
@@ -87,6 +97,7 @@ class BrokenImageAuditRequest {
     other.olderThanDays == olderThanDays &&
     other.includeStores == includeStores &&
     other.dryRun == dryRun &&
+    other.confirmCleanup == confirmCleanup &&
     other.timeoutMillis == timeoutMillis;
 
   @override
@@ -98,10 +109,11 @@ class BrokenImageAuditRequest {
     (olderThanDays == null ? 0 : olderThanDays!.hashCode) +
     (includeStores == null ? 0 : includeStores!.hashCode) +
     (dryRun == null ? 0 : dryRun!.hashCode) +
+    (confirmCleanup == null ? 0 : confirmCleanup!.hashCode) +
     (timeoutMillis == null ? 0 : timeoutMillis!.hashCode);
 
   @override
-  String toString() => 'BrokenImageAuditRequest[limit=$limit, status=$status, sellerId=$sellerId, olderThanDays=$olderThanDays, includeStores=$includeStores, dryRun=$dryRun, timeoutMillis=$timeoutMillis]';
+  String toString() => 'BrokenImageAuditRequest[limit=$limit, status=$status, sellerId=$sellerId, olderThanDays=$olderThanDays, includeStores=$includeStores, dryRun=$dryRun, confirmCleanup=$confirmCleanup, timeoutMillis=$timeoutMillis]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -134,6 +146,11 @@ class BrokenImageAuditRequest {
       json[r'dryRun'] = this.dryRun;
     } else {
       json[r'dryRun'] = null;
+    }
+    if (this.confirmCleanup != null) {
+      json[r'confirmCleanup'] = this.confirmCleanup;
+    } else {
+      json[r'confirmCleanup'] = null;
     }
     if (this.timeoutMillis != null) {
       json[r'timeoutMillis'] = this.timeoutMillis;
@@ -168,6 +185,7 @@ class BrokenImageAuditRequest {
         olderThanDays: mapValueOfType<int>(json, r'olderThanDays'),
         includeStores: mapValueOfType<bool>(json, r'includeStores'),
         dryRun: mapValueOfType<bool>(json, r'dryRun'),
+        confirmCleanup: mapValueOfType<String>(json, r'confirmCleanup'),
         timeoutMillis: mapValueOfType<int>(json, r'timeoutMillis'),
       );
     }

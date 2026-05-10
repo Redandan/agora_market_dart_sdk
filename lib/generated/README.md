@@ -230,6 +230,7 @@ Class | Method | HTTP request | Description
 *AdminOrdersApi* | [**searchOrders**](doc//AdminOrdersApi.md#searchorders) | **POST** /admin/orders/search | 搜索訂單
 *AdminProductsApi* | [**auditProductAndStoreImages**](doc//AdminProductsApi.md#auditproductandstoreimages) | **POST** /admin/products/images/audit | 審計商品/商店壞圖 URL
 *AdminProductsApi* | [**batchDeleteProductsByAdmin**](doc//AdminProductsApi.md#batchdeleteproductsbyadmin) | **DELETE** /admin/products/batch | 管理員批量刪除商品
+*AdminProductsApi* | [**cleanupProductAndStoreImages**](doc//AdminProductsApi.md#cleanupproductandstoreimages) | **POST** /admin/products/images/cleanup | 清理商品/商店壞圖 URL
 *AdminProductsApi* | [**deleteProductByAdmin**](doc//AdminProductsApi.md#deleteproductbyadmin) | **DELETE** /admin/products/{productId} | 管理員刪除商品
 *AdminProductsApi* | [**getProductDetail**](doc//AdminProductsApi.md#getproductdetail) | **GET** /admin/products/{productId} | 查看商品詳情
 *AdminProductsApi* | [**getProductStatistics**](doc//AdminProductsApi.md#getproductstatistics) | **GET** /admin/products/statistics | 獲取商品統計數據
@@ -596,6 +597,7 @@ Class | Method | HTTP request | Description
  - [BindOAuthParam](doc//BindOAuthParam.md)
  - [BrokenImageAuditRequest](doc//BrokenImageAuditRequest.md)
  - [BrokenImageAuditResponse](doc//BrokenImageAuditResponse.md)
+ - [BrokenImageCleanupResponse](doc//BrokenImageCleanupResponse.md)
  - [BrokenImageFinding](doc//BrokenImageFinding.md)
  - [CandidateResult](doc//CandidateResult.md)
  - [CartGroupBySeller](doc//CartGroupBySeller.md)

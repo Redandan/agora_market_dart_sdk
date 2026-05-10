@@ -292,6 +292,8 @@ class ApiClient {
           return BrokenImageAuditRequest.fromJson(value);
         case 'BrokenImageAuditResponse':
           return BrokenImageAuditResponse.fromJson(value);
+        case 'BrokenImageCleanupResponse':
+          return BrokenImageCleanupResponse.fromJson(value);
         case 'BrokenImageFinding':
           return BrokenImageFinding.fromJson(value);
         case 'CandidateResult':

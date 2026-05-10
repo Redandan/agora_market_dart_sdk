@@ -128,6 +128,62 @@ class AdminProductsApi {
     return null;
   }
 
+  /// 清理商品/商店壞圖 URL
+  ///
+  /// 預設 dry-run；只有 dryRun=false 且 confirmCleanup=REMOVE_BROKEN_IMAGE_URLS 時才移除明確可清理的壞圖 DB URL。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [BrokenImageAuditRequest] brokenImageAuditRequest:
+  Future<Response> cleanupProductAndStoreImagesWithHttpInfo({ BrokenImageAuditRequest? brokenImageAuditRequest, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/products/images/cleanup';
+
+    // ignore: prefer_final_locals
+    Object? postBody = brokenImageAuditRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 清理商品/商店壞圖 URL
+  ///
+  /// 預設 dry-run；只有 dryRun=false 且 confirmCleanup=REMOVE_BROKEN_IMAGE_URLS 時才移除明確可清理的壞圖 DB URL。
+  ///
+  /// Parameters:
+  ///
+  /// * [BrokenImageAuditRequest] brokenImageAuditRequest:
+  Future<BrokenImageCleanupResponse?> cleanupProductAndStoreImages({ BrokenImageAuditRequest? brokenImageAuditRequest, }) async {
+    final response = await cleanupProductAndStoreImagesWithHttpInfo( brokenImageAuditRequest: brokenImageAuditRequest, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BrokenImageCleanupResponse',) as BrokenImageCleanupResponse;
+    
+    }
+    return null;
+  }
+
   /// 管理員刪除商品
   ///
   /// 管理員可以強制刪除任何商品，此操作不可恢復
