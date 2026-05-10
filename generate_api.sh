@@ -18,7 +18,7 @@ echo "==> Verifying tooling"
 java -version
 dart --version
 jq --version
-sha256sum --version | head -1
+sha256sum --version
 
 echo "==> Ensuring openapi-generator jar"
 if [ ! -f "$GENERATOR_JAR" ]; then
