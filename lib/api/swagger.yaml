@@ -8530,6 +8530,37 @@
         }
       }
     },
+    "/admin/products/images/audit": {
+      "post": {
+        "tags": [
+          "admin-products"
+        ],
+        "summary": "審計商品/商店壞圖 URL",
+        "description": "Dry-run 掃描商品圖片與商店 logo/cover URL，不修改 DB。",
+        "operationId": "auditProductAndStoreImages",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BrokenImageAuditRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BrokenImageAuditResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/posts/{id}/top": {
       "post": {
         "tags": [
@@ -31697,6 +31728,129 @@
         "required": [
           "actionTaken"
         ]
+      },
+      "BrokenImageAuditRequest": {
+        "type": "object",
+        "description": "Admin broken product/store image audit request",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Maximum products to scan",
+            "example": 100
+          },
+          "status": {
+            "type": "string",
+            "description": "Optional product status filter",
+            "enum": [
+              "ON_SALE",
+              "OFF_SALE",
+              "PENDING_REVIEW",
+              "DELETED"
+            ]
+          },
+          "sellerId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Optional seller/store owner id filter"
+          },
+          "olderThanDays": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Only scan records not updated in the last N days"
+          },
+          "includeStores": {
+            "type": "boolean",
+            "description": "Also scan store logo/cover image URLs",
+            "example": true
+          },
+          "dryRun": {
+            "type": "boolean",
+            "description": "Dry-run only. Cleanup is intentionally not implemented yet.",
+            "example": true
+          },
+          "timeoutMillis": {
+            "type": "integer",
+            "format": "int32",
+            "description": "HTTP probe timeout in milliseconds",
+            "example": 3000
+          }
+        }
+      },
+      "BrokenImageAuditResponse": {
+        "type": "object",
+        "description": "Admin broken product/store image audit response",
+        "properties": {
+          "dryRun": {
+            "type": "boolean"
+          },
+          "productScanned": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "storeScanned": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "urlChecked": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "okCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "badCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "transientFailureCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "findings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BrokenImageFinding"
+            }
+          }
+        }
+      },
+      "BrokenImageFinding": {
+        "type": "object",
+        "description": "Broken product/store image finding",
+        "properties": {
+          "objectType": {
+            "type": "string"
+          },
+          "objectId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ownerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "sourceField": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "httpStatus": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "errorCode": {
+            "type": "string"
+          },
+          "recommendedAction": {
+            "type": "string"
+          }
+        }
       },
       "ApiResponseMapStringObject": {
         "type": "object",

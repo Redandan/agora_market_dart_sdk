@@ -228,6 +228,7 @@ Class | Method | HTTP request | Description
 *AdminOrdersApi* | [**getOrderDetail**](doc//AdminOrdersApi.md#getorderdetail) | **GET** /admin/orders/{orderId} | 查看訂單詳情
 *AdminOrdersApi* | [**getOrderStatistics**](doc//AdminOrdersApi.md#getorderstatistics) | **GET** /admin/orders/statistics | 訂單統計報告
 *AdminOrdersApi* | [**searchOrders**](doc//AdminOrdersApi.md#searchorders) | **POST** /admin/orders/search | 搜索訂單
+*AdminProductsApi* | [**auditProductAndStoreImages**](doc//AdminProductsApi.md#auditproductandstoreimages) | **POST** /admin/products/images/audit | 審計商品/商店壞圖 URL
 *AdminProductsApi* | [**batchDeleteProductsByAdmin**](doc//AdminProductsApi.md#batchdeleteproductsbyadmin) | **DELETE** /admin/products/batch | 管理員批量刪除商品
 *AdminProductsApi* | [**deleteProductByAdmin**](doc//AdminProductsApi.md#deleteproductbyadmin) | **DELETE** /admin/products/{productId} | 管理員刪除商品
 *AdminProductsApi* | [**getProductDetail**](doc//AdminProductsApi.md#getproductdetail) | **GET** /admin/products/{productId} | 查看商品詳情
@@ -593,6 +594,9 @@ Class | Method | HTTP request | Description
  - [BetResponse](doc//BetResponse.md)
  - [BindEmailParam](doc//BindEmailParam.md)
  - [BindOAuthParam](doc//BindOAuthParam.md)
+ - [BrokenImageAuditRequest](doc//BrokenImageAuditRequest.md)
+ - [BrokenImageAuditResponse](doc//BrokenImageAuditResponse.md)
+ - [BrokenImageFinding](doc//BrokenImageFinding.md)
  - [CandidateResult](doc//CandidateResult.md)
  - [CartGroupBySeller](doc//CartGroupBySeller.md)
  - [CartItem](doc//CartItem.md)

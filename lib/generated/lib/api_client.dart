@@ -288,6 +288,12 @@ class ApiClient {
           return BindEmailParam.fromJson(value);
         case 'BindOAuthParam':
           return BindOAuthParam.fromJson(value);
+        case 'BrokenImageAuditRequest':
+          return BrokenImageAuditRequest.fromJson(value);
+        case 'BrokenImageAuditResponse':
+          return BrokenImageAuditResponse.fromJson(value);
+        case 'BrokenImageFinding':
+          return BrokenImageFinding.fromJson(value);
         case 'CandidateResult':
           return CandidateResult.fromJson(value);
         case 'CartGroupBySeller':

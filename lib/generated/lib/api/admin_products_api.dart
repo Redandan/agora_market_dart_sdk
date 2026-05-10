@@ -16,6 +16,62 @@ class AdminProductsApi {
 
   final ApiClient apiClient;
 
+  /// 審計商品/商店壞圖 URL
+  ///
+  /// Dry-run 掃描商品圖片與商店 logo/cover URL，不修改 DB。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [BrokenImageAuditRequest] brokenImageAuditRequest:
+  Future<Response> auditProductAndStoreImagesWithHttpInfo({ BrokenImageAuditRequest? brokenImageAuditRequest, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/products/images/audit';
+
+    // ignore: prefer_final_locals
+    Object? postBody = brokenImageAuditRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 審計商品/商店壞圖 URL
+  ///
+  /// Dry-run 掃描商品圖片與商店 logo/cover URL，不修改 DB。
+  ///
+  /// Parameters:
+  ///
+  /// * [BrokenImageAuditRequest] brokenImageAuditRequest:
+  Future<BrokenImageAuditResponse?> auditProductAndStoreImages({ BrokenImageAuditRequest? brokenImageAuditRequest, }) async {
+    final response = await auditProductAndStoreImagesWithHttpInfo( brokenImageAuditRequest: brokenImageAuditRequest, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BrokenImageAuditResponse',) as BrokenImageAuditResponse;
+    
+    }
+    return null;
+  }
+
   /// 管理員批量刪除商品
   ///
   /// 管理員可以批量強制刪除商品，此操作不可恢復
