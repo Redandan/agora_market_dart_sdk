@@ -215,8 +215,8 @@ class MemberOrdersApi {
   ///
   /// Parameters:
   ///
-  /// * [OrderSumbitParam] orderSumbitParam (required):
-  Future<Response> checkoutPreviewWithHttpInfo(OrderSumbitParam orderSumbitParam,) async {
+  /// * [OrderSumbitParam] orderSumbitParam:
+  Future<Response> checkoutPreviewWithHttpInfo({ OrderSumbitParam? orderSumbitParam, }) async {
     // ignore: prefer_const_declarations
     final path = r'/orders/checkout-preview';
 
@@ -247,9 +247,9 @@ class MemberOrdersApi {
   ///
   /// Parameters:
   ///
-  /// * [OrderSumbitParam] orderSumbitParam (required):
-  Future<CheckoutPreflightResponse?> checkoutPreview(OrderSumbitParam orderSumbitParam,) async {
-    final response = await checkoutPreviewWithHttpInfo(orderSumbitParam,);
+  /// * [OrderSumbitParam] orderSumbitParam:
+  Future<CheckoutPreflightResponse?> checkoutPreview({ OrderSumbitParam? orderSumbitParam, }) async {
+    final response = await checkoutPreviewWithHttpInfo( orderSumbitParam: orderSumbitParam, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

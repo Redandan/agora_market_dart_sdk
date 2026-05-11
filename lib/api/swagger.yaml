@@ -5036,8 +5036,7 @@
                 "$ref": "#/components/schemas/OrderSumbitParam"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -34504,13 +34503,13 @@
             "type": "integer",
             "format": "int32"
           },
+          "belowMinimum": {
+            "type": "boolean"
+          },
           "lowStock": {
             "type": "boolean"
           },
           "outOfStock": {
-            "type": "boolean"
-          },
-          "belowMinimum": {
             "type": "boolean"
           }
         }
