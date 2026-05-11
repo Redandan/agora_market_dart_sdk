@@ -207,6 +207,62 @@ class MemberOrdersApi {
     return null;
   }
 
+  /// 付款前 checkout preview
+  ///
+  /// 付款前 read-only 檢查商品、SKU、地址、配送資格、價格、USDT 餘額與代購風險；不建立訂單、不扣款、不扣庫存。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [OrderSumbitParam] orderSumbitParam (required):
+  Future<Response> checkoutPreviewWithHttpInfo(OrderSumbitParam orderSumbitParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/orders/checkout-preview';
+
+    // ignore: prefer_final_locals
+    Object? postBody = orderSumbitParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 付款前 checkout preview
+  ///
+  /// 付款前 read-only 檢查商品、SKU、地址、配送資格、價格、USDT 餘額與代購風險；不建立訂單、不扣款、不扣庫存。
+  ///
+  /// Parameters:
+  ///
+  /// * [OrderSumbitParam] orderSumbitParam (required):
+  Future<CheckoutPreflightResponse?> checkoutPreview(OrderSumbitParam orderSumbitParam,) async {
+    final response = await checkoutPreviewWithHttpInfo(orderSumbitParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CheckoutPreflightResponse',) as CheckoutPreflightResponse;
+    
+    }
+    return null;
+  }
+
   /// 買家確認交付證明
   ///
   /// 確認後訂單結案,款項撥入賣家錢包

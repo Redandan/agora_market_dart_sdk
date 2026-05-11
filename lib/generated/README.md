@@ -380,6 +380,7 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**aiValidateProof**](doc//MemberOrdersApi.md#aivalidateproof) | **POST** /orders/{orderId}/proofs/{proofId}/ai-validate | AI 驗證 proof 是否符合訂單要求(買家預判)
 *MemberOrdersApi* | [**cancelDigitalOrder**](doc//MemberOrdersApi.md#canceldigitalorder) | **POST** /orders/{orderId}/cancel-digital | 取消數位商品訂單(買家或賣家)
 *MemberOrdersApi* | [**cancelOrder**](doc//MemberOrdersApi.md#cancelorder) | **POST** /orders/cancel | 取消訂單
+*MemberOrdersApi* | [**checkoutPreview**](doc//MemberOrdersApi.md#checkoutpreview) | **POST** /orders/checkout-preview | 付款前 checkout preview
 *MemberOrdersApi* | [**confirmDeliveryProof**](doc//MemberOrdersApi.md#confirmdeliveryproof) | **POST** /orders/{orderId}/delivery-proof/confirm | 買家確認交付證明
 *MemberOrdersApi* | [**confirmOrder**](doc//MemberOrdersApi.md#confirmorder) | **POST** /orders/confirm | 確認收貨
 *MemberOrdersApi* | [**confirmReturnReceived**](doc//MemberOrdersApi.md#confirmreturnreceived) | **POST** /orders/{orderId}/return/confirm-received | 確認收到退貨商品
@@ -546,6 +547,7 @@ Class | Method | HTTP request | Description
  - [ActivityDTO](doc//ActivityDTO.md)
  - [ActivitySearchParam](doc//ActivitySearchParam.md)
  - [ActivityStatDTO](doc//ActivityStatDTO.md)
+ - [AddressState](doc//AddressState.md)
  - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
  - [AdminResetPasswordParam](doc//AdminResetPasswordParam.md)
  - [AdminStoreSearchParam](doc//AdminStoreSearchParam.md)
@@ -616,6 +618,7 @@ Class | Method | HTTP request | Description
  - [ChatMessageUpdateDTO](doc//ChatMessageUpdateDTO.md)
  - [ChatSession](doc//ChatSession.md)
  - [ChatSessionQueryParam](doc//ChatSessionQueryParam.md)
+ - [CheckoutPreflightResponse](doc//CheckoutPreflightResponse.md)
  - [ClientLog](doc//ClientLog.md)
  - [ClientLogDto](doc//ClientLogDto.md)
  - [ColdWallet](doc//ColdWallet.md)
@@ -787,6 +790,7 @@ Class | Method | HTTP request | Description
  - [PostStatistics](doc//PostStatistics.md)
  - [PostUpdateParam](doc//PostUpdateParam.md)
  - [PostalSearchParam](doc//PostalSearchParam.md)
+ - [PricingState](doc//PricingState.md)
  - [Product](doc//Product.md)
  - [ProductCreateParam](doc//ProductCreateParam.md)
  - [ProductDraftRequest](doc//ProductDraftRequest.md)
@@ -797,11 +801,13 @@ Class | Method | HTTP request | Description
  - [ProductReportResolveParam](doc//ProductReportResolveParam.md)
  - [ProductReportStatsDto](doc//ProductReportStatsDto.md)
  - [ProductSeachParam](doc//ProductSeachParam.md)
+ - [ProductState](doc//ProductState.md)
  - [ProductStats](doc//ProductStats.md)
  - [ProductUpdateParam](doc//ProductUpdateParam.md)
  - [PromoCode](doc//PromoCode.md)
  - [PromoCodeStatDto](doc//PromoCodeStatDto.md)
  - [ProofAiValidationResponse](doc//ProofAiValidationResponse.md)
+ - [ProxyOrderState](doc//ProxyOrderState.md)
  - [PushHealthResponseDTO](doc//PushHealthResponseDTO.md)
  - [PushNotificationDTO](doc//PushNotificationDTO.md)
  - [PushNotificationResponseDTO](doc//PushNotificationResponseDTO.md)
@@ -890,6 +896,7 @@ Class | Method | HTTP request | Description
  - [TaiwanPostalArea](doc//TaiwanPostalArea.md)
  - [TelegramBotInfo](doc//TelegramBotInfo.md)
  - [TelegramWebAppAuthRequest](doc//TelegramWebAppAuthRequest.md)
+ - [TermsState](doc//TermsState.md)
  - [TopDeliveryAreaDTO](doc//TopDeliveryAreaDTO.md)
  - [TopDisputedProductDTO](doc//TopDisputedProductDTO.md)
  - [TopDisputedSellerDTO](doc//TopDisputedSellerDTO.md)
@@ -916,6 +923,7 @@ Class | Method | HTTP request | Description
  - [VerifyCodeRequest](doc//VerifyCodeRequest.md)
  - [WalletConnectInfo](doc//WalletConnectInfo.md)
  - [WalletConnectNonceResponse](doc//WalletConnectNonceResponse.md)
+ - [WalletState](doc//WalletState.md)
  - [Web3LoginRequest](doc//Web3LoginRequest.md)
  - [Web3NonceRequest](doc//Web3NonceRequest.md)
  - [WebPushDetails](doc//WebPushDetails.md)

@@ -5021,6 +5021,38 @@
         }
       }
     },
+    "/orders/checkout-preview": {
+      "post": {
+        "tags": [
+          "member-orders"
+        ],
+        "summary": "付款前 checkout preview",
+        "description": "付款前 read-only 檢查商品、SKU、地址、配送資格、價格、USDT 餘額與代購風險；不建立訂單、不扣款、不扣庫存。",
+        "operationId": "checkoutPreview",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderSumbitParam"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckoutPreflightResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/orders/cancel": {
       "post": {
         "tags": [
@@ -21802,10 +21834,10 @@
           "inStock": {
             "type": "boolean"
           },
-          "stockLow": {
+          "stockBelowMinimum": {
             "type": "boolean"
           },
-          "stockBelowMinimum": {
+          "stockLow": {
             "type": "boolean"
           },
           "defaultShippingFee": {
@@ -25295,7 +25327,7 @@
       },
       "OrderSumbitParam": {
         "type": "object",
-        "description": "提交參數",
+        "description": "預檢參數",
         "properties": {
           "productId": {
             "type": "integer",
@@ -26604,6 +26636,270 @@
           },
           "details": {
             "type": "string"
+          }
+        }
+      },
+      "AddressState": {
+        "type": "object",
+        "properties": {
+          "addressId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "addressPresent": {
+            "type": "boolean"
+          },
+          "addressOwnedByBuyer": {
+            "type": "boolean"
+          },
+          "pickupServiceType": {
+            "type": "string",
+            "description": "取貨服務類型",
+            "enum": [
+              "HOME_DELIVERY",
+              "SEVEN_ELEVEN",
+              "FAMILY_MART",
+              "HILIFE",
+              "OK_MART",
+              "PLATFORM_DELIVERY"
+            ]
+          },
+          "productSupportsPickupServiceType": {
+            "type": "boolean"
+          },
+          "inferredDeliveryCountry": {
+            "type": "string"
+          },
+          "requiredDeliveryCountry": {
+            "type": "string"
+          },
+          "deliveryEligible": {
+            "type": "boolean"
+          },
+          "buyerMessage": {
+            "type": "string"
+          }
+        }
+      },
+      "CheckoutPreflightResponse": {
+        "type": "object",
+        "properties": {
+          "canSubmit": {
+            "type": "boolean"
+          },
+          "blockingReasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "nextActions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "product": {
+            "$ref": "#/components/schemas/ProductState"
+          },
+          "pricing": {
+            "$ref": "#/components/schemas/PricingState"
+          },
+          "address": {
+            "$ref": "#/components/schemas/AddressState"
+          },
+          "proxyOrder": {
+            "$ref": "#/components/schemas/ProxyOrderState"
+          },
+          "wallet": {
+            "$ref": "#/components/schemas/WalletState"
+          },
+          "terms": {
+            "$ref": "#/components/schemas/TermsState"
+          }
+        }
+      },
+      "PricingState": {
+        "type": "object",
+        "properties": {
+          "listingCurrency": {
+            "type": "string",
+            "enum": [
+              "USDT",
+              "USD",
+              "TWD",
+              "CNY",
+              "JPY",
+              "EUR",
+              "GBP",
+              "KRW",
+              "SGD",
+              "HKD",
+              "AUD"
+            ]
+          },
+          "originalUnitPrice": {
+            "type": "number"
+          },
+          "originalSubtotal": {
+            "type": "number"
+          },
+          "originalShippingFee": {
+            "type": "number"
+          },
+          "exchangeRate": {
+            "type": "number"
+          },
+          "exchangeRateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "usingDefaultRate": {
+            "type": "boolean"
+          },
+          "priceUsdt": {
+            "type": "number"
+          },
+          "shippingFeeUsdt": {
+            "type": "number"
+          },
+          "orderAmountUsdt": {
+            "type": "number"
+          },
+          "freeShippingThreshold": {
+            "type": "number"
+          },
+          "freeShippingApplied": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ProductState": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "productType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "description": "商品狀態",
+            "enum": [
+              "ON_SALE",
+              "OFF_SALE",
+              "PENDING_REVIEW",
+              "DELETED"
+            ]
+          },
+          "selectedSku": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "stockAvailable": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "stockEnough": {
+            "type": "boolean"
+          },
+          "skuValid": {
+            "type": "boolean"
+          },
+          "cartSnapshotMatched": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ProxyOrderState": {
+        "type": "object",
+        "properties": {
+          "sourcePlatform": {
+            "type": "string"
+          },
+          "pricingBreakdownExists": {
+            "type": "boolean"
+          },
+          "priceCheckedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "maxAllowedCostDriftAmount": {
+            "type": "number"
+          },
+          "maxAllowedCostDriftPct": {
+            "type": "number"
+          },
+          "marginStatus": {
+            "type": "string"
+          },
+          "sourcePriceDriftWarning": {
+            "type": "boolean"
+          },
+          "fulfillmentNote": {
+            "type": "string"
+          }
+        }
+      },
+      "TermsState": {
+        "type": "object",
+        "properties": {
+          "buyerInfoRequired": {
+            "type": "boolean"
+          },
+          "buyerInfoValid": {
+            "type": "boolean"
+          },
+          "missingRequiredFields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "acceptedDataResidency": {
+            "type": "boolean"
+          },
+          "acceptedNoRefundAfterProof": {
+            "type": "boolean"
+          },
+          "termsVersionProvided": {
+            "type": "boolean"
+          }
+        }
+      },
+      "WalletState": {
+        "type": "object",
+        "properties": {
+          "buyerUsdtBalance": {
+            "type": "number"
+          },
+          "requiredUsdtAmount": {
+            "type": "number"
+          },
+          "balanceEnough": {
+            "type": "boolean"
+          },
+          "topUpNeededUsdt": {
+            "type": "number"
           }
         }
       },

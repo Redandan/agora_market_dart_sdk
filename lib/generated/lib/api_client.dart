@@ -190,6 +190,8 @@ class ApiClient {
           return ActivitySearchParam.fromJson(value);
         case 'ActivityStatDTO':
           return ActivityStatDTO.fromJson(value);
+        case 'AddressState':
+          return AddressState.fromJson(value);
         case 'AdminCreateUserParam':
           return AdminCreateUserParam.fromJson(value);
         case 'AdminResetPasswordParam':
@@ -330,6 +332,8 @@ class ApiClient {
           return ChatSession.fromJson(value);
         case 'ChatSessionQueryParam':
           return ChatSessionQueryParam.fromJson(value);
+        case 'CheckoutPreflightResponse':
+          return CheckoutPreflightResponse.fromJson(value);
         case 'ClientLog':
           return ClientLog.fromJson(value);
         case 'ClientLogDto':
@@ -672,6 +676,8 @@ class ApiClient {
           return PostUpdateParam.fromJson(value);
         case 'PostalSearchParam':
           return PostalSearchParam.fromJson(value);
+        case 'PricingState':
+          return PricingState.fromJson(value);
         case 'Product':
           return Product.fromJson(value);
         case 'ProductCreateParam':
@@ -692,6 +698,8 @@ class ApiClient {
           return ProductReportStatsDto.fromJson(value);
         case 'ProductSeachParam':
           return ProductSeachParam.fromJson(value);
+        case 'ProductState':
+          return ProductState.fromJson(value);
         case 'ProductStats':
           return ProductStats.fromJson(value);
         case 'ProductUpdateParam':
@@ -702,6 +710,8 @@ class ApiClient {
           return PromoCodeStatDto.fromJson(value);
         case 'ProofAiValidationResponse':
           return ProofAiValidationResponse.fromJson(value);
+        case 'ProxyOrderState':
+          return ProxyOrderState.fromJson(value);
         case 'PushHealthResponseDTO':
           return PushHealthResponseDTO.fromJson(value);
         case 'PushNotificationDTO':
@@ -878,6 +888,8 @@ class ApiClient {
           return TelegramBotInfo.fromJson(value);
         case 'TelegramWebAppAuthRequest':
           return TelegramWebAppAuthRequest.fromJson(value);
+        case 'TermsState':
+          return TermsState.fromJson(value);
         case 'TopDeliveryAreaDTO':
           return TopDeliveryAreaDTO.fromJson(value);
         case 'TopDisputedProductDTO':
@@ -930,6 +942,8 @@ class ApiClient {
           return WalletConnectInfo.fromJson(value);
         case 'WalletConnectNonceResponse':
           return WalletConnectNonceResponse.fromJson(value);
+        case 'WalletState':
+          return WalletState.fromJson(value);
         case 'Web3LoginRequest':
           return Web3LoginRequest.fromJson(value);
         case 'Web3NonceRequest':
