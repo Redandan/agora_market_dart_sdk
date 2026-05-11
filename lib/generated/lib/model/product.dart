@@ -1088,6 +1088,7 @@ class ProductCurrencyEnum {
   static const USDT = ProductCurrencyEnum._(r'USDT');
   static const USD = ProductCurrencyEnum._(r'USD');
   static const TWD = ProductCurrencyEnum._(r'TWD');
+  static const THB = ProductCurrencyEnum._(r'THB');
   static const CNY = ProductCurrencyEnum._(r'CNY');
   static const JPY = ProductCurrencyEnum._(r'JPY');
   static const EUR = ProductCurrencyEnum._(r'EUR');
@@ -1103,6 +1104,7 @@ class ProductCurrencyEnum {
     USDT,
     USD,
     TWD,
+    THB,
     CNY,
     JPY,
     EUR,
@@ -1153,6 +1155,7 @@ class ProductCurrencyEnumTypeTransformer {
         case r'USDT': return ProductCurrencyEnum.USDT;
         case r'USD': return ProductCurrencyEnum.USD;
         case r'TWD': return ProductCurrencyEnum.TWD;
+        case r'THB': return ProductCurrencyEnum.THB;
         case r'CNY': return ProductCurrencyEnum.CNY;
         case r'JPY': return ProductCurrencyEnum.JPY;
         case r'EUR': return ProductCurrencyEnum.EUR;

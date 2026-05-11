@@ -21460,6 +21460,7 @@
               "USDT",
               "USD",
               "TWD",
+              "THB",
               "CNY",
               "JPY",
               "EUR",
@@ -24254,6 +24255,7 @@
               "USDT",
               "USD",
               "TWD",
+              "THB",
               "CNY",
               "JPY",
               "EUR",
@@ -24732,6 +24734,7 @@
               "USDT",
               "USD",
               "TWD",
+              "THB",
               "CNY",
               "JPY",
               "EUR",
@@ -26733,6 +26736,7 @@
               "USDT",
               "USD",
               "TWD",
+              "THB",
               "CNY",
               "JPY",
               "EUR",
@@ -34503,13 +34507,13 @@
             "type": "integer",
             "format": "int32"
           },
-          "belowMinimum": {
-            "type": "boolean"
-          },
           "lowStock": {
             "type": "boolean"
           },
           "outOfStock": {
+            "type": "boolean"
+          },
+          "belowMinimum": {
             "type": "boolean"
           }
         }
