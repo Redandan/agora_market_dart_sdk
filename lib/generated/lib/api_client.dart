@@ -712,6 +712,8 @@ class ApiClient {
           return ProofAiValidationResponse.fromJson(value);
         case 'ProxyOrderState':
           return ProxyOrderState.fromJson(value);
+        case 'ProxyPricingBreakdown':
+          return ProxyPricingBreakdown.fromJson(value);
         case 'PushHealthResponseDTO':
           return PushHealthResponseDTO.fromJson(value);
         case 'PushNotificationDTO':

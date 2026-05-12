@@ -15,6 +15,7 @@ class ProxyOrderState {
   ProxyOrderState({
     this.sourcePlatform,
     this.pricingBreakdownExists,
+    this.pricingBreakdown,
     this.priceCheckedAt,
     this.maxAllowedCostDriftAmount,
     this.maxAllowedCostDriftPct,
@@ -38,6 +39,14 @@ class ProxyOrderState {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? pricingBreakdownExists;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  ProxyPricingBreakdown? pricingBreakdown;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -91,6 +100,7 @@ class ProxyOrderState {
   bool operator ==(Object other) => identical(this, other) || other is ProxyOrderState &&
     other.sourcePlatform == sourcePlatform &&
     other.pricingBreakdownExists == pricingBreakdownExists &&
+    other.pricingBreakdown == pricingBreakdown &&
     other.priceCheckedAt == priceCheckedAt &&
     other.maxAllowedCostDriftAmount == maxAllowedCostDriftAmount &&
     other.maxAllowedCostDriftPct == maxAllowedCostDriftPct &&
@@ -103,6 +113,7 @@ class ProxyOrderState {
     // ignore: unnecessary_parenthesis
     (sourcePlatform == null ? 0 : sourcePlatform!.hashCode) +
     (pricingBreakdownExists == null ? 0 : pricingBreakdownExists!.hashCode) +
+    (pricingBreakdown == null ? 0 : pricingBreakdown!.hashCode) +
     (priceCheckedAt == null ? 0 : priceCheckedAt!.hashCode) +
     (maxAllowedCostDriftAmount == null ? 0 : maxAllowedCostDriftAmount!.hashCode) +
     (maxAllowedCostDriftPct == null ? 0 : maxAllowedCostDriftPct!.hashCode) +
@@ -111,7 +122,7 @@ class ProxyOrderState {
     (fulfillmentNote == null ? 0 : fulfillmentNote!.hashCode);
 
   @override
-  String toString() => 'ProxyOrderState[sourcePlatform=$sourcePlatform, pricingBreakdownExists=$pricingBreakdownExists, priceCheckedAt=$priceCheckedAt, maxAllowedCostDriftAmount=$maxAllowedCostDriftAmount, maxAllowedCostDriftPct=$maxAllowedCostDriftPct, marginStatus=$marginStatus, sourcePriceDriftWarning=$sourcePriceDriftWarning, fulfillmentNote=$fulfillmentNote]';
+  String toString() => 'ProxyOrderState[sourcePlatform=$sourcePlatform, pricingBreakdownExists=$pricingBreakdownExists, pricingBreakdown=$pricingBreakdown, priceCheckedAt=$priceCheckedAt, maxAllowedCostDriftAmount=$maxAllowedCostDriftAmount, maxAllowedCostDriftPct=$maxAllowedCostDriftPct, marginStatus=$marginStatus, sourcePriceDriftWarning=$sourcePriceDriftWarning, fulfillmentNote=$fulfillmentNote]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -124,6 +135,11 @@ class ProxyOrderState {
       json[r'pricingBreakdownExists'] = this.pricingBreakdownExists;
     } else {
       json[r'pricingBreakdownExists'] = null;
+    }
+    if (this.pricingBreakdown != null) {
+      json[r'pricingBreakdown'] = this.pricingBreakdown;
+    } else {
+      json[r'pricingBreakdown'] = null;
     }
     if (this.priceCheckedAt != null) {
       json[r'priceCheckedAt'] = this.priceCheckedAt!.toUtc().toIso8601String();
@@ -179,6 +195,7 @@ class ProxyOrderState {
       return ProxyOrderState(
         sourcePlatform: mapValueOfType<String>(json, r'sourcePlatform'),
         pricingBreakdownExists: mapValueOfType<bool>(json, r'pricingBreakdownExists'),
+        pricingBreakdown: ProxyPricingBreakdown.fromJson(json[r'pricingBreakdown']),
         priceCheckedAt: mapDateTime(json, r'priceCheckedAt', r''),
         maxAllowedCostDriftAmount: num.parse('${json[r'maxAllowedCostDriftAmount']}'),
         maxAllowedCostDriftPct: num.parse('${json[r'maxAllowedCostDriftPct']}'),

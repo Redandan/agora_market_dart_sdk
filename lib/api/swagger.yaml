@@ -26846,6 +26846,9 @@
           "pricingBreakdownExists": {
             "type": "boolean"
           },
+          "pricingBreakdown": {
+            "$ref": "#/components/schemas/ProxyPricingBreakdown"
+          },
           "priceCheckedAt": {
             "type": "string",
             "format": "date-time"
@@ -26864,6 +26867,71 @@
           },
           "fulfillmentNote": {
             "type": "string"
+          }
+        }
+      },
+      "ProxyPricingBreakdown": {
+        "type": "object",
+        "properties": {
+          "externalPlatform": {
+            "type": "string"
+          },
+          "externalItemName": {
+            "type": "string"
+          },
+          "externalItemUrl": {
+            "type": "string"
+          },
+          "externalItemPrice": {
+            "type": "number"
+          },
+          "estimatedTax": {
+            "type": "number"
+          },
+          "estimatedDeliveryFee": {
+            "type": "number"
+          },
+          "estimatedPlatformFee": {
+            "type": "number"
+          },
+          "serviceFee": {
+            "type": "number"
+          },
+          "riskBuffer": {
+            "type": "number"
+          },
+          "expectedTotalCost": {
+            "type": "number"
+          },
+          "listingPrice": {
+            "type": "number"
+          },
+          "expectedMargin": {
+            "type": "number"
+          },
+          "currency": {
+            "type": "string",
+            "enum": [
+              "USDT",
+              "USD",
+              "TWD",
+              "THB",
+              "CNY",
+              "JPY",
+              "EUR",
+              "GBP",
+              "KRW",
+              "SGD",
+              "HKD",
+              "AUD"
+            ]
+          },
+          "priceSourceUrl": {
+            "type": "string"
+          },
+          "priceCheckedAt": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },

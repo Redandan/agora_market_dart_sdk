@@ -353,6 +353,7 @@ part 'model/promo_code.dart';
 part 'model/promo_code_stat_dto.dart';
 part 'model/proof_ai_validation_response.dart';
 part 'model/proxy_order_state.dart';
+part 'model/proxy_pricing_breakdown.dart';
 part 'model/push_health_response_dto.dart';
 part 'model/push_notification_dto.dart';
 part 'model/push_notification_response_dto.dart';

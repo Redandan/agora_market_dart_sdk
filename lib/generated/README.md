@@ -808,6 +808,7 @@ Class | Method | HTTP request | Description
  - [PromoCodeStatDto](doc//PromoCodeStatDto.md)
  - [ProofAiValidationResponse](doc//ProofAiValidationResponse.md)
  - [ProxyOrderState](doc//ProxyOrderState.md)
+ - [ProxyPricingBreakdown](doc//ProxyPricingBreakdown.md)
  - [PushHealthResponseDTO](doc//PushHealthResponseDTO.md)
  - [PushNotificationDTO](doc//PushNotificationDTO.md)
  - [PushNotificationResponseDTO](doc//PushNotificationResponseDTO.md)
