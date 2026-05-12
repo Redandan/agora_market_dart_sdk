@@ -20407,11 +20407,11 @@
             "description": "最後更新時間",
             "example": "2024-01-01T10:00:00"
           },
-          "fullAddress": {
-            "type": "string"
-          },
           "homeDelivery": {
             "type": "boolean"
+          },
+          "fullAddress": {
+            "type": "string"
           },
           "formattedAddress": {
             "type": "string"
@@ -21821,6 +21821,9 @@
             },
             "uniqueItems": true
           },
+          "inStock": {
+            "type": "boolean"
+          },
           "skus": {
             "type": "array",
             "items": {
@@ -21831,13 +21834,10 @@
           "minimumShippingFee": {
             "type": "number"
           },
-          "inStock": {
+          "stockLow": {
             "type": "boolean"
           },
           "stockBelowMinimum": {
-            "type": "boolean"
-          },
-          "stockLow": {
             "type": "boolean"
           },
           "defaultShippingFee": {
@@ -25674,6 +25674,10 @@
           "trackingNumber": {
             "type": "string",
             "description": "追蹤號碼（賣家出貨時輸入）"
+          },
+          "sourceOrderRef": {
+            "type": "string",
+            "description": "外部來源平台訂單號（Costco/Makro 等 proxy direct-ship 訂單使用）"
           },
           "status": {
             "type": "string",
@@ -34510,10 +34514,10 @@
           "lowStock": {
             "type": "boolean"
           },
-          "outOfStock": {
+          "belowMinimum": {
             "type": "boolean"
           },
-          "belowMinimum": {
+          "outOfStock": {
             "type": "boolean"
           }
         }

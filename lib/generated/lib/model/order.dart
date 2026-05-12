@@ -27,6 +27,7 @@ class Order {
     this.pickupServiceType,
     this.shippingCompany,
     this.trackingNumber,
+    this.sourceOrderRef,
     required this.status,
     this.remark,
     this.buyerProvidedInfoJson,
@@ -104,6 +105,15 @@ class Order {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? trackingNumber;
+
+  /// 外部來源平台訂單號（Costco/Makro 等 proxy direct-ship 訂單使用）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sourceOrderRef;
 
   /// 訂單狀態
   OrderStatusEnum status;
@@ -301,6 +311,7 @@ class Order {
     other.pickupServiceType == pickupServiceType &&
     other.shippingCompany == shippingCompany &&
     other.trackingNumber == trackingNumber &&
+    other.sourceOrderRef == sourceOrderRef &&
     other.status == status &&
     other.remark == remark &&
     other.buyerProvidedInfoJson == buyerProvidedInfoJson &&
@@ -341,6 +352,7 @@ class Order {
     (pickupServiceType == null ? 0 : pickupServiceType!.hashCode) +
     (shippingCompany == null ? 0 : shippingCompany!.hashCode) +
     (trackingNumber == null ? 0 : trackingNumber!.hashCode) +
+    (sourceOrderRef == null ? 0 : sourceOrderRef!.hashCode) +
     (status.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
     (buyerProvidedInfoJson == null ? 0 : buyerProvidedInfoJson!.hashCode) +
@@ -365,7 +377,7 @@ class Order {
     (latestProofId == null ? 0 : latestProofId!.hashCode);
 
   @override
-  String toString() => 'Order[id=$id, version=$version, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, pickupServiceType=$pickupServiceType, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, status=$status, remark=$remark, buyerProvidedInfoJson=$buyerProvidedInfoJson, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, refundAmount=$refundAmount, refundOfferExpiresAt=$refundOfferExpiresAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, buyerName=$buyerName, buyerUsername=$buyerUsername, product=$product, deliveryDetail=$deliveryDetail, store=$store, latestProofId=$latestProofId]';
+  String toString() => 'Order[id=$id, version=$version, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, pickupServiceType=$pickupServiceType, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, sourceOrderRef=$sourceOrderRef, status=$status, remark=$remark, buyerProvidedInfoJson=$buyerProvidedInfoJson, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, refundAmount=$refundAmount, refundOfferExpiresAt=$refundOfferExpiresAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, buyerName=$buyerName, buyerUsername=$buyerUsername, product=$product, deliveryDetail=$deliveryDetail, store=$store, latestProofId=$latestProofId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -398,6 +410,11 @@ class Order {
       json[r'trackingNumber'] = this.trackingNumber;
     } else {
       json[r'trackingNumber'] = null;
+    }
+    if (this.sourceOrderRef != null) {
+      json[r'sourceOrderRef'] = this.sourceOrderRef;
+    } else {
+      json[r'sourceOrderRef'] = null;
     }
       json[r'status'] = this.status;
     if (this.remark != null) {
@@ -533,6 +550,7 @@ class Order {
         pickupServiceType: OrderPickupServiceTypeEnum.fromJson(json[r'pickupServiceType']),
         shippingCompany: OrderShippingCompanyEnum.fromJson(json[r'shippingCompany']),
         trackingNumber: mapValueOfType<String>(json, r'trackingNumber'),
+        sourceOrderRef: mapValueOfType<String>(json, r'sourceOrderRef'),
         status: OrderStatusEnum.fromJson(json[r'status'])!,
         remark: mapValueOfType<String>(json, r'remark'),
         buyerProvidedInfoJson: mapValueOfType<String>(json, r'buyerProvidedInfoJson'),
