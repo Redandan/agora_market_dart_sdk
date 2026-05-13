@@ -111,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
         _usernameController.text,
         _passwordController.text,
       );
-      
+
       if (result.success) {
         // 導航到首頁或處理登入成功
         print('登入成功：${result.token}');
@@ -155,6 +155,24 @@ class _LoginPageState extends State<LoginPage> {
 ```
 
 ## API 參考
+
+## Generator Guards
+
+After regenerating `lib/generated`, run the nullable numeric guard to prevent
+Flutter Web deserialization crashes such as `FormatException: null`:
+
+```powershell
+pwsh -NoProfile -File ci/check_nullable_numeric_parsing.ps1
+```
+
+or on Linux/server CI:
+
+```bash
+bash ci/check_nullable_numeric_parsing.sh
+```
+
+The guard fails when a generated nullable `num?` field still uses direct
+`num.parse('${json[...]}' )` without a JSON null check.
 
 ### 身份驗證
 
@@ -258,4 +276,4 @@ SDK 支持不同環境的 API 端點：
 
 - Flutter 團隊
 - Agora Market 團隊
-- 所有貢獻者 
+- 所有貢獻者

@@ -59,3 +59,18 @@ ssh -i "C:/Users/Redan/Desktop/sshkey/ssh-key-2025-06-14.key" ubuntu@141.148.142
 - ❌ **不要手動 commit `lib/api/swagger.yaml`** — 它是 sync pipeline 的中繼產物
 - ❌ **不要把 swagger filter 邏輯只改 ci/ 不改 `generate_api.ps1`** — 兩邊要對齊,否則本機 PS 跑出來跟 server 跑出來不一致
 - ❌ **不要改 `.swagger-hash`** — sync pipeline 自己會更新
+
+## Guardrails
+
+Generated Dart models must not parse nullable numeric JSON values with direct
+`num.parse('${json[...]}' )`. If a model declares `num? field;`, its `fromJson`
+assignment must preserve JSON null before parsing. Run one of these after SDK
+regeneration or repair-script changes:
+
+```powershell
+pwsh -NoProfile -File ci/check_nullable_numeric_parsing.ps1
+```
+
+```bash
+bash ci/check_nullable_numeric_parsing.sh
+```
