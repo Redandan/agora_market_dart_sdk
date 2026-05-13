@@ -902,6 +902,8 @@ class ApiClient {
           return TopProductDTO.fromJson(value);
         case 'TopSellerDTO':
           return TopSellerDTO.fromJson(value);
+        case 'TrackReferrerRequest':
+          return TrackReferrerRequest.fromJson(value);
         case 'TradeRecordDto':
           return TradeRecordDto.fromJson(value);
         case 'Transaction':

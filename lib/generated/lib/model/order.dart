@@ -28,6 +28,7 @@ class Order {
     this.shippingCompany,
     this.trackingNumber,
     this.sourceOrderRef,
+    this.referrerGroupId,
     required this.status,
     this.remark,
     this.buyerProvidedInfoJson,
@@ -114,6 +115,15 @@ class Order {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? sourceOrderRef;
+
+  /// 下單時 snapshot 的 Mini App / TG 群組來源歸因 ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? referrerGroupId;
 
   /// 訂單狀態
   OrderStatusEnum status;
@@ -312,6 +322,7 @@ class Order {
     other.shippingCompany == shippingCompany &&
     other.trackingNumber == trackingNumber &&
     other.sourceOrderRef == sourceOrderRef &&
+    other.referrerGroupId == referrerGroupId &&
     other.status == status &&
     other.remark == remark &&
     other.buyerProvidedInfoJson == buyerProvidedInfoJson &&
@@ -353,6 +364,7 @@ class Order {
     (shippingCompany == null ? 0 : shippingCompany!.hashCode) +
     (trackingNumber == null ? 0 : trackingNumber!.hashCode) +
     (sourceOrderRef == null ? 0 : sourceOrderRef!.hashCode) +
+    (referrerGroupId == null ? 0 : referrerGroupId!.hashCode) +
     (status.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
     (buyerProvidedInfoJson == null ? 0 : buyerProvidedInfoJson!.hashCode) +
@@ -377,7 +389,7 @@ class Order {
     (latestProofId == null ? 0 : latestProofId!.hashCode);
 
   @override
-  String toString() => 'Order[id=$id, version=$version, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, pickupServiceType=$pickupServiceType, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, sourceOrderRef=$sourceOrderRef, status=$status, remark=$remark, buyerProvidedInfoJson=$buyerProvidedInfoJson, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, refundAmount=$refundAmount, refundOfferExpiresAt=$refundOfferExpiresAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, buyerName=$buyerName, buyerUsername=$buyerUsername, product=$product, deliveryDetail=$deliveryDetail, store=$store, latestProofId=$latestProofId]';
+  String toString() => 'Order[id=$id, version=$version, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, pickupServiceType=$pickupServiceType, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, sourceOrderRef=$sourceOrderRef, referrerGroupId=$referrerGroupId, status=$status, remark=$remark, buyerProvidedInfoJson=$buyerProvidedInfoJson, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, refundAmount=$refundAmount, refundOfferExpiresAt=$refundOfferExpiresAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, buyerName=$buyerName, buyerUsername=$buyerUsername, product=$product, deliveryDetail=$deliveryDetail, store=$store, latestProofId=$latestProofId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -415,6 +427,11 @@ class Order {
       json[r'sourceOrderRef'] = this.sourceOrderRef;
     } else {
       json[r'sourceOrderRef'] = null;
+    }
+    if (this.referrerGroupId != null) {
+      json[r'referrerGroupId'] = this.referrerGroupId;
+    } else {
+      json[r'referrerGroupId'] = null;
     }
       json[r'status'] = this.status;
     if (this.remark != null) {
@@ -551,6 +568,7 @@ class Order {
         shippingCompany: OrderShippingCompanyEnum.fromJson(json[r'shippingCompany']),
         trackingNumber: mapValueOfType<String>(json, r'trackingNumber'),
         sourceOrderRef: mapValueOfType<String>(json, r'sourceOrderRef'),
+        referrerGroupId: mapValueOfType<int>(json, r'referrerGroupId'),
         status: OrderStatusEnum.fromJson(json[r'status'])!,
         remark: mapValueOfType<String>(json, r'remark'),
         buyerProvidedInfoJson: mapValueOfType<String>(json, r'buyerProvidedInfoJson'),

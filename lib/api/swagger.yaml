@@ -81,6 +81,10 @@
       "description": "手動觸發定時任務"
     },
     {
+      "name": "users",
+      "description": "用戶資料 API"
+    },
+    {
       "name": "郵遞區號",
       "description": "提供台灣地區郵遞區號查詢的接口"
     },
@@ -1934,6 +1938,35 @@
                 }
               }
             }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/users/me/track-referrer": {
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "summary": "記錄 Mini App / TG 群組來源歸因",
+        "operationId": "trackReferrer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TrackReferrerRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         },
         "security": [
@@ -18306,6 +18339,11 @@
             "example": "PROMO2024",
             "maxLength": 50
           },
+          "referrerGroupId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Mini App / TG 群組來源歸因 ID，供訂單建立時 snapshot"
+          },
           "registrationMethod": {
             "type": "string",
             "description": "註冊方式",
@@ -20283,6 +20321,21 @@
             "description": "詳細錯誤信息（如果失敗）"
           }
         }
+      },
+      "TrackReferrerRequest": {
+        "type": "object",
+        "description": "Mini App / TG 來源歸因追蹤參數",
+        "properties": {
+          "referrerGroupId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Telegram group id 或 Mini App ref 解析出的 group id",
+            "example": -1001234567
+          }
+        },
+        "required": [
+          "referrerGroupId"
+        ]
       },
       "UserAddress": {
         "type": "object",
@@ -24585,6 +24638,11 @@
             "type": "string",
             "description": "代購來源地區 ISO 代碼",
             "example": "JP"
+          },
+          "sourcePlatform": {
+            "type": "string",
+            "description": "來源平台代碼",
+            "example": "COSTCO_TW"
           }
         }
       },
@@ -25678,6 +25736,11 @@
           "sourceOrderRef": {
             "type": "string",
             "description": "外部來源平台訂單號（Costco/Makro 等 proxy direct-ship 訂單使用）"
+          },
+          "referrerGroupId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "下單時 snapshot 的 Mini App / TG 群組來源歸因 ID"
           },
           "status": {
             "type": "string",

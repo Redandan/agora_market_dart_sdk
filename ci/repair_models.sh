@@ -39,17 +39,18 @@ repair_nullable_num_from_json() {
       }
     }
     END {
+      sq = sprintf("%c", 39)
       for (i = 1; i <= NR; i++) {
         line = lines[i]
         matched = 0
         for (prop in nullableNum) {
-          pattern = "^[[:space:]]*" prop ":[[:space:]]*num\\.parse\\('\\$\\{json\\[r" sprintf("%c", 39) prop sprintf("%c", 39) "\\]\\}'\\),[[:space:]]*$"
+          pattern = "^[[:space:]]*" prop ":[[:space:]]*num\\.parse\\(" sq "\\$\\{json\\[r" sq prop sq "\\]\\}" sq "\\),[[:space:]]*$"
           if (line ~ pattern) {
             indent = line
             sub(/[^ ].*$/, "", indent)
-            print indent prop ": json[r" sprintf("%c", 39) prop sprintf("%c", 39) "] == null"
+            print indent prop ": json[r" sq prop sq "] == null"
             print indent "    ? null"
-            print indent "    : num.parse('\\${json[r" sprintf("%c", 39) prop sprintf("%c", 39) "]}'),"
+            print indent "    : num.parse(" sq "${json[r" sq prop sq "]}" sq "),"
             matched = 1
             break
           }

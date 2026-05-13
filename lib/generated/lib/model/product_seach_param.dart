@@ -31,6 +31,7 @@ class ProductSeachParam {
     this.inStock,
     this.productType,
     this.sourceRegion,
+    this.sourcePlatform,
   });
 
   /// 頁碼，從1開始
@@ -177,6 +178,15 @@ class ProductSeachParam {
   ///
   String? sourceRegion;
 
+  /// 來源平台代碼
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sourcePlatform;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductSeachParam &&
     other.page == page &&
@@ -196,7 +206,8 @@ class ProductSeachParam {
     other.tag == tag &&
     other.inStock == inStock &&
     other.productType == productType &&
-    other.sourceRegion == sourceRegion;
+    other.sourceRegion == sourceRegion &&
+    other.sourcePlatform == sourcePlatform;
 
   @override
   int get hashCode =>
@@ -218,10 +229,11 @@ class ProductSeachParam {
     (tag == null ? 0 : tag!.hashCode) +
     (inStock == null ? 0 : inStock!.hashCode) +
     (productType == null ? 0 : productType!.hashCode) +
-    (sourceRegion == null ? 0 : sourceRegion!.hashCode);
+    (sourceRegion == null ? 0 : sourceRegion!.hashCode) +
+    (sourcePlatform == null ? 0 : sourcePlatform!.hashCode);
 
   @override
-  String toString() => 'ProductSeachParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, id=$id, sellerId=$sellerId, status=$status, category=$category, postalCode=$postalCode, longitude=$longitude, latitude=$latitude, tag=$tag, inStock=$inStock, productType=$productType, sourceRegion=$sourceRegion]';
+  String toString() => 'ProductSeachParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, id=$id, sellerId=$sellerId, status=$status, category=$category, postalCode=$postalCode, longitude=$longitude, latitude=$latitude, tag=$tag, inStock=$inStock, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -315,6 +327,11 @@ class ProductSeachParam {
     } else {
       json[r'sourceRegion'] = null;
     }
+    if (this.sourcePlatform != null) {
+      json[r'sourcePlatform'] = this.sourcePlatform;
+    } else {
+      json[r'sourcePlatform'] = null;
+    }
     return json;
   }
 
@@ -355,6 +372,7 @@ class ProductSeachParam {
         inStock: mapValueOfType<bool>(json, r'inStock'),
         productType: ProductSeachParamProductTypeEnum.fromJson(json[r'productType']),
         sourceRegion: mapValueOfType<String>(json, r'sourceRegion'),
+        sourcePlatform: mapValueOfType<String>(json, r'sourcePlatform'),
       );
     }
     return null;

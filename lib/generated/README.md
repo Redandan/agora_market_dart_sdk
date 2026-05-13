@@ -521,6 +521,7 @@ Class | Method | HTTP request | Description
 *UserAddressesApi* | [**getUserAddressesPage**](doc//UserAddressesApi.md#getuseraddressespage) | **GET** /user-addresses/page | 分頁獲取用戶地址
 *UserAddressesApi* | [**setDefaultAddress**](doc//UserAddressesApi.md#setdefaultaddress) | **POST** /user-addresses/{addressId}/set-default | 設置預設地址
 *UserAddressesApi* | [**updateAddress**](doc//UserAddressesApi.md#updateaddress) | **POST** /user-addresses/update | 更新地址
+*UsersApi* | [**trackReferrer**](doc//UsersApi.md#trackreferrer) | **POST** /users/me/track-referrer | 記錄 Mini App / TG 群組來源歸因
 *VerificationCodeLoginApi* | [**generateLoginToken**](doc//VerificationCodeLoginApi.md#generatelogintoken) | **POST** /auth/telegram-bot/generate-login-token | 生成驗證碼登入 Token
 *VerificationCodeLoginApi* | [**verifyCode**](doc//VerificationCodeLoginApi.md#verifycode) | **POST** /auth/telegram-bot/verify-code | 驗證碼登入
 *WalletConnectApi* | [**getNonce**](doc//WalletConnectApi.md#getnonce) | **POST** /auth/wallet-connect/nonce | 获取 Nonce（通用）
@@ -903,6 +904,7 @@ Class | Method | HTTP request | Description
  - [TopDisputedSellerDTO](doc//TopDisputedSellerDTO.md)
  - [TopProductDTO](doc//TopProductDTO.md)
  - [TopSellerDTO](doc//TopSellerDTO.md)
+ - [TrackReferrerRequest](doc//TrackReferrerRequest.md)
  - [TradeRecordDto](doc//TradeRecordDto.md)
  - [Transaction](doc//Transaction.md)
  - [TransactionListParam](doc//TransactionListParam.md)

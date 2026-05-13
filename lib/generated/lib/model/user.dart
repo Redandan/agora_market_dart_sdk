@@ -28,6 +28,7 @@ class User {
     this.ambassadorName,
     this.displayDeliveryerName,
     this.promoCode,
+    this.referrerGroupId,
     this.registrationMethod,
     this.registrationIp,
     this.registrationUa,
@@ -145,6 +146,15 @@ class User {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? promoCode;
+
+  /// Mini App / TG 群組來源歸因 ID，供訂單建立時 snapshot
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? referrerGroupId;
 
   /// 註冊方式
   UserRegistrationMethodEnum? registrationMethod;
@@ -290,6 +300,7 @@ class User {
     other.ambassadorName == ambassadorName &&
     other.displayDeliveryerName == displayDeliveryerName &&
     other.promoCode == promoCode &&
+    other.referrerGroupId == referrerGroupId &&
     other.registrationMethod == registrationMethod &&
     other.registrationIp == registrationIp &&
     other.registrationUa == registrationUa &&
@@ -326,6 +337,7 @@ class User {
     (ambassadorName == null ? 0 : ambassadorName!.hashCode) +
     (displayDeliveryerName == null ? 0 : displayDeliveryerName!.hashCode) +
     (promoCode == null ? 0 : promoCode!.hashCode) +
+    (referrerGroupId == null ? 0 : referrerGroupId!.hashCode) +
     (registrationMethod == null ? 0 : registrationMethod!.hashCode) +
     (registrationIp == null ? 0 : registrationIp!.hashCode) +
     (registrationUa == null ? 0 : registrationUa!.hashCode) +
@@ -345,7 +357,7 @@ class User {
     (trustedDevices.hashCode);
 
   @override
-  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, defaultHomePage=$defaultHomePage, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, registrationMethod=$registrationMethod, registrationIp=$registrationIp, registrationUa=$registrationUa, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, trustedDevicesJson=$trustedDevicesJson, currentDeviceFingerprint=$currentDeviceFingerprint, currentIpAddress=$currentIpAddress, termsAcceptedVersion=$termsAcceptedVersion, termsAcceptedAt=$termsAcceptedAt, countryCode=$countryCode, countryDetectedAt=$countryDetectedAt, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin, trustedDevices=$trustedDevices]';
+  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, defaultHomePage=$defaultHomePage, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, referrerGroupId=$referrerGroupId, registrationMethod=$registrationMethod, registrationIp=$registrationIp, registrationUa=$registrationUa, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, trustedDevicesJson=$trustedDevicesJson, currentDeviceFingerprint=$currentDeviceFingerprint, currentIpAddress=$currentIpAddress, termsAcceptedVersion=$termsAcceptedVersion, termsAcceptedAt=$termsAcceptedAt, countryCode=$countryCode, countryDetectedAt=$countryDetectedAt, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin, trustedDevices=$trustedDevices]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -403,6 +415,11 @@ class User {
       json[r'promoCode'] = this.promoCode;
     } else {
       json[r'promoCode'] = null;
+    }
+    if (this.referrerGroupId != null) {
+      json[r'referrerGroupId'] = this.referrerGroupId;
+    } else {
+      json[r'referrerGroupId'] = null;
     }
     if (this.registrationMethod != null) {
       json[r'registrationMethod'] = this.registrationMethod;
@@ -514,6 +531,7 @@ class User {
         ambassadorName: mapValueOfType<String>(json, r'ambassadorName'),
         displayDeliveryerName: mapValueOfType<String>(json, r'displayDeliveryerName'),
         promoCode: mapValueOfType<String>(json, r'promoCode'),
+        referrerGroupId: mapValueOfType<int>(json, r'referrerGroupId'),
         registrationMethod: UserRegistrationMethodEnum.fromJson(json[r'registrationMethod']),
         registrationIp: mapValueOfType<String>(json, r'registrationIp'),
         registrationUa: mapValueOfType<String>(json, r'registrationUa'),
