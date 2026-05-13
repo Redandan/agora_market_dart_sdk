@@ -574,29 +574,61 @@ class BacktestResultResponse {
         intervalCode: mapValueOfType<String>(json, r'intervalCode'),
         startTime: mapDateTime(json, r'startTime', r''),
         endTime: mapDateTime(json, r'endTime', r''),
-        initialCapital: num.parse('${json[r'initialCapital']}'),
-        finalCapital: num.parse('${json[r'finalCapital']}'),
-        totalReturn: num.parse('${json[r'totalReturn']}'),
-        maxDrawdown: num.parse('${json[r'maxDrawdown']}'),
-        winRate: num.parse('${json[r'winRate']}'),
-        sharpeRatio: num.parse('${json[r'sharpeRatio']}'),
+        initialCapital: json[r'initialCapital'] == null
+            ? null
+            : num.parse('${json[r'initialCapital']}'),
+        finalCapital: json[r'finalCapital'] == null
+            ? null
+            : num.parse('${json[r'finalCapital']}'),
+        totalReturn: json[r'totalReturn'] == null
+            ? null
+            : num.parse('${json[r'totalReturn']}'),
+        maxDrawdown: json[r'maxDrawdown'] == null
+            ? null
+            : num.parse('${json[r'maxDrawdown']}'),
+        winRate: json[r'winRate'] == null
+            ? null
+            : num.parse('${json[r'winRate']}'),
+        sharpeRatio: json[r'sharpeRatio'] == null
+            ? null
+            : num.parse('${json[r'sharpeRatio']}'),
         tradeCount: mapValueOfType<int>(json, r'tradeCount'),
-        feeRate: num.parse('${json[r'feeRate']}'),
+        feeRate: json[r'feeRate'] == null
+            ? null
+            : num.parse('${json[r'feeRate']}'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         configSnapshotJson: mapValueOfType<String>(json, r'configSnapshotJson'),
         longTradeCount: mapValueOfType<int>(json, r'longTradeCount'),
         shortTradeCount: mapValueOfType<int>(json, r'shortTradeCount'),
         filteredEntryCount: mapValueOfType<int>(json, r'filteredEntryCount'),
-        longWinRate: num.parse('${json[r'longWinRate']}'),
-        shortWinRate: num.parse('${json[r'shortWinRate']}'),
-        marketOpenPrice: num.parse('${json[r'marketOpenPrice']}'),
-        marketClosePrice: num.parse('${json[r'marketClosePrice']}'),
-        marketHighPrice: num.parse('${json[r'marketHighPrice']}'),
-        marketLowPrice: num.parse('${json[r'marketLowPrice']}'),
-        marketVolatilityPct: num.parse('${json[r'marketVolatilityPct']}'),
-        marketPriceChangePct: num.parse('${json[r'marketPriceChangePct']}'),
+        longWinRate: json[r'longWinRate'] == null
+            ? null
+            : num.parse('${json[r'longWinRate']}'),
+        shortWinRate: json[r'shortWinRate'] == null
+            ? null
+            : num.parse('${json[r'shortWinRate']}'),
+        marketOpenPrice: json[r'marketOpenPrice'] == null
+            ? null
+            : num.parse('${json[r'marketOpenPrice']}'),
+        marketClosePrice: json[r'marketClosePrice'] == null
+            ? null
+            : num.parse('${json[r'marketClosePrice']}'),
+        marketHighPrice: json[r'marketHighPrice'] == null
+            ? null
+            : num.parse('${json[r'marketHighPrice']}'),
+        marketLowPrice: json[r'marketLowPrice'] == null
+            ? null
+            : num.parse('${json[r'marketLowPrice']}'),
+        marketVolatilityPct: json[r'marketVolatilityPct'] == null
+            ? null
+            : num.parse('${json[r'marketVolatilityPct']}'),
+        marketPriceChangePct: json[r'marketPriceChangePct'] == null
+            ? null
+            : num.parse('${json[r'marketPriceChangePct']}'),
         marketTrend: BacktestResultResponseMarketTrendEnum.fromJson(json[r'marketTrend']),
-        benchmarkReturn: num.parse('${json[r'benchmarkReturn']}'),
+        benchmarkReturn: json[r'benchmarkReturn'] == null
+            ? null
+            : num.parse('${json[r'benchmarkReturn']}'),
         trades: TradeRecordDto.listFromJson(json[r'trades']),
         diagnosticLogs: DiagnosticLogDto.listFromJson(json[r'diagnosticLogs']),
       );

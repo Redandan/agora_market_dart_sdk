@@ -276,15 +276,21 @@ class Staking {
         applyTime: mapDateTime(json, r'applyTime', r'')!,
         startTime: mapDateTime(json, r'startTime', r'')!,
         endTime: mapDateTime(json, r'endTime', r''),
-        earnedRewards: num.parse('${json[r'earnedRewards']}'),
+        earnedRewards: json[r'earnedRewards'] == null
+            ? null
+            : num.parse('${json[r'earnedRewards']}'),
         unfreezeRequestTime: mapDateTime(json, r'unfreezeRequestTime', r''),
         unfreezeCompleteTime: mapDateTime(json, r'unfreezeCompleteTime', r''),
         lastSettleDate: mapDateTime(json, r'lastSettleDate', r''),
         lastSettleTime: mapDateTime(json, r'lastSettleTime', r''),
-        lastSettleReward: num.parse('${json[r'lastSettleReward']}'),
+        lastSettleReward: json[r'lastSettleReward'] == null
+            ? null
+            : num.parse('${json[r'lastSettleReward']}'),
         remark: mapValueOfType<String>(json, r'remark'),
         nextExpectedSettleTime: mapDateTime(json, r'nextExpectedSettleTime', r''),
-        expectedReward: num.parse('${json[r'expectedReward']}'),
+        expectedReward: json[r'expectedReward'] == null
+            ? null
+            : num.parse('${json[r'expectedReward']}'),
       );
     }
     return null;

@@ -396,14 +396,28 @@ class SlotOverviewResponse {
         winRate: mapValueOfType<double>(json, r'winRate'),
         activePlayers: mapValueOfType<int>(json, r'activePlayers'),
         todayActivePlayers: mapValueOfType<int>(json, r'todayActivePlayers'),
-        totalBet: num.parse('${json[r'totalBet']}'),
-        todayBet: num.parse('${json[r'todayBet']}'),
-        totalPayout: num.parse('${json[r'totalPayout']}'),
-        grossRevenue: num.parse('${json[r'grossRevenue']}'),
-        todayGrossRevenue: num.parse('${json[r'todayGrossRevenue']}'),
+        totalBet: json[r'totalBet'] == null
+            ? null
+            : num.parse('${json[r'totalBet']}'),
+        todayBet: json[r'todayBet'] == null
+            ? null
+            : num.parse('${json[r'todayBet']}'),
+        totalPayout: json[r'totalPayout'] == null
+            ? null
+            : num.parse('${json[r'totalPayout']}'),
+        grossRevenue: json[r'grossRevenue'] == null
+            ? null
+            : num.parse('${json[r'grossRevenue']}'),
+        todayGrossRevenue: json[r'todayGrossRevenue'] == null
+            ? null
+            : num.parse('${json[r'todayGrossRevenue']}'),
         actualRtp: mapValueOfType<double>(json, r'actualRtp'),
-        avgBetPerRound: num.parse('${json[r'avgBetPerRound']}'),
-        avgBetPerPlayer: num.parse('${json[r'avgBetPerPlayer']}'),
+        avgBetPerRound: json[r'avgBetPerRound'] == null
+            ? null
+            : num.parse('${json[r'avgBetPerRound']}'),
+        avgBetPerPlayer: json[r'avgBetPerPlayer'] == null
+            ? null
+            : num.parse('${json[r'avgBetPerPlayer']}'),
         maxMultiplier: mapValueOfType<int>(json, r'maxMultiplier'),
         dailyTrend: SlotDailyStatDto.listFromJson(json[r'dailyTrend']),
         hourlyDistribution: SlotHourlyStatDto.listFromJson(json[r'hourlyDistribution']),

@@ -23,7 +23,7 @@ Write-Host "Switching to Java 17..." -ForegroundColor Yellow
 try {
     # 設置環境變數以啟用 shell 集成
     $env:JABBA_SHELL_INTEGRATION = "ON"
-    
+
     # 使用 Jabba 切換到 Java 17
     & $jabbaExePath use openjdk@1.17.0
     if ($LASTEXITCODE -ne 0) {
@@ -36,7 +36,7 @@ try {
             exit 1
         }
     }
-    
+
     # 手動設置 Java 環境變數
     $javaHome = & $jabbaExePath which openjdk@1.17.0
     if ($javaHome) {
@@ -90,12 +90,12 @@ try {
     $webClient = New-Object System.Net.WebClient
     $webClient.Encoding = [System.Text.Encoding]::UTF8
     $jsonContent = $webClient.DownloadString($apiUrl)
-    
+
     # 過濾掉 files/upload 端點
     Write-Host "Filtering out files/upload endpoint..." -ForegroundColor Yellow
     try {
         $apiDoc = $jsonContent | ConvertFrom-Json
-        
+
         # 檢查並移除 files/upload 端點
         if ($apiDoc.paths.PSObject.Properties.Name -contains "/files/upload") {
             Write-Host "Found /files/upload endpoint, removing it..." -ForegroundColor Yellow
@@ -104,7 +104,7 @@ try {
         } else {
             Write-Host "No /files/upload endpoint found in current API documentation" -ForegroundColor Green
         }
-        
+
         # 檢查並移除 flutter/deployment/deploy 端點
         if ($apiDoc.paths.PSObject.Properties.Name -contains "/flutter/deployment/deploy") {
             Write-Host "Found /flutter/deployment/deploy endpoint, removing it..." -ForegroundColor Yellow
@@ -113,7 +113,7 @@ try {
         } else {
             Write-Host "No /flutter/deployment/deploy endpoint found in current API documentation" -ForegroundColor Green
         }
-        
+
         # 移除相關的文件上傳模型
         Write-Host "Removing file upload related models..." -ForegroundColor Yellow
         if ($apiDoc.components.schemas.PSObject.Properties.Name -contains "FileUploadResponse") {
@@ -128,10 +128,10 @@ try {
             $apiDoc.components.schemas.PSObject.Properties.Remove("UploadFileRequest")
             Write-Host "Removed UploadFileRequest model" -ForegroundColor Green
         }
-        
+
         # 將過濾後的文檔轉換回JSON
         $filteredJsonContent = $apiDoc | ConvertTo-Json -Depth 100 -Compress
-        
+
         # 寫入過濾後的文件
         [System.IO.File]::WriteAllText($swaggerPath, $filteredJsonContent, [System.Text.Encoding]::UTF8)
         Write-Host "Successfully filtered and saved API documentation to $swaggerPath" -ForegroundColor Green
@@ -261,6 +261,67 @@ function Repair-GeneratedModelListSerialization {
     }
 }
 
+function Repair-GeneratedModelNullableNumericParsing {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$ModelDirectory
+    )
+
+    if (-not (Test-Path $ModelDirectory)) {
+        Write-Host "Model directory not found, skipping nullable numeric repair: $ModelDirectory" -ForegroundColor Yellow
+        return
+    }
+
+    $patchedFiles = 0
+    $patchedLines = 0
+    $modelFiles = Get-ChildItem -Path $ModelDirectory -File -Filter "*.dart"
+
+    foreach ($modelFile in $modelFiles) {
+        $content = Get-Content -Path $modelFile.FullName -Raw
+        $nullableNumericMatches = [System.Text.RegularExpressions.Regex]::Matches(
+            $content,
+            '(?m)^\s*num\?\s+([A-Za-z_][A-Za-z0-9_]*);\s*$'
+        )
+
+        if ($nullableNumericMatches.Count -eq 0) {
+            continue
+        }
+
+        $updatedContent = $content
+        foreach ($match in $nullableNumericMatches) {
+            $propertyName = $match.Groups[1].Value
+            $escapedPropertyName = [System.Text.RegularExpressions.Regex]::Escape($propertyName)
+            $assignmentPattern = "(?m)^(\s*)$escapedPropertyName\s*:\s*num\.parse\('\$\{json\[r'$escapedPropertyName'\]\}'\),\s*$"
+            $replacement = '$1' + "${propertyName}: json[r'$propertyName'] == null" +
+                "`r`n" + '$1' + "    ? null" +
+                "`r`n" + '$1' + "    : num.parse('`${json[r'$propertyName']}'),"
+
+            $newContent = [System.Text.RegularExpressions.Regex]::Replace(
+                $updatedContent,
+                $assignmentPattern,
+                $replacement
+            )
+
+            if ($newContent -ne $updatedContent) {
+                $updatedContent = $newContent
+                $patchedLines++
+            }
+        }
+
+        if ($updatedContent -ne $content) {
+            Set-Content -Path $modelFile.FullName -Value $updatedContent -Encoding UTF8
+            $patchedFiles++
+            Write-Host "Patched nullable numeric parsing in: $($modelFile.FullName)" -ForegroundColor Cyan
+        }
+    }
+
+    if ($patchedLines -gt 0) {
+        Write-Host "Applied nullable numeric parsing repair: $patchedLines line(s) in $patchedFiles file(s)." -ForegroundColor Green
+    } else {
+        Write-Host "No nullable numeric parsing repairs were needed." -ForegroundColor Green
+    }
+}
+
 # 清理舊的生成文件
 Write-Host "Cleaning old generated files..." -ForegroundColor Yellow
 try {
@@ -285,7 +346,7 @@ try {
 
     if ($LASTEXITCODE -eq 0) {
         Write-Host "Code generation completed successfully!" -ForegroundColor Green
-        
+
         # 檢查生成的文件
         if (Test-Path "lib/generated") {
             $generatedFiles = Get-ChildItem -Path "lib/generated" -Recurse -File
@@ -297,6 +358,7 @@ try {
             Write-Host "`nRepairing known list serialization issues in generated models..." -ForegroundColor Yellow
             try {
                 Repair-GeneratedModelListSerialization -ModelDirectory "lib/generated/lib/model"
+                Repair-GeneratedModelNullableNumericParsing -ModelDirectory "lib/generated/lib/model"
             } catch {
                 Write-Host "Error while repairing generated model serialization: $_" -ForegroundColor Red
                 exit 1
@@ -330,4 +392,4 @@ try {
     exit 1
 }
 
-Write-Host "`nProcess completed!" -ForegroundColor Green 
+Write-Host "`nProcess completed!" -ForegroundColor Green

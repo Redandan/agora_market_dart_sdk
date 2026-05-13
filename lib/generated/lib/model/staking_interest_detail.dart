@@ -119,8 +119,12 @@ class StakingInterestDetail {
       return StakingInterestDetail(
         stakingId: mapValueOfType<String>(json, r'stakingId'),
         userId: mapValueOfType<int>(json, r'userId'),
-        stakingAmount: num.parse('${json[r'stakingAmount']}'),
-        estimatedInterest: num.parse('${json[r'estimatedInterest']}'),
+        stakingAmount: json[r'stakingAmount'] == null
+            ? null
+            : num.parse('${json[r'stakingAmount']}'),
+        estimatedInterest: json[r'estimatedInterest'] == null
+            ? null
+            : num.parse('${json[r'estimatedInterest']}'),
       );
     }
     return null;

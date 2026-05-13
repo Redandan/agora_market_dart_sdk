@@ -511,11 +511,19 @@ class CartItemResponse {
         productDescription: mapValueOfType<String>(json, r'productDescription'),
         productImage: mapValueOfType<String>(json, r'productImage'),
         quantity: mapValueOfType<int>(json, r'quantity'),
-        unitPrice: num.parse('${json[r'unitPrice']}'),
+        unitPrice: json[r'unitPrice'] == null
+            ? null
+            : num.parse('${json[r'unitPrice']}'),
         currency: mapValueOfType<String>(json, r'currency'),
-        shippingFee: num.parse('${json[r'shippingFee']}'),
-        subtotal: num.parse('${json[r'subtotal']}'),
-        totalPrice: num.parse('${json[r'totalPrice']}'),
+        shippingFee: json[r'shippingFee'] == null
+            ? null
+            : num.parse('${json[r'shippingFee']}'),
+        subtotal: json[r'subtotal'] == null
+            ? null
+            : num.parse('${json[r'subtotal']}'),
+        totalPrice: json[r'totalPrice'] == null
+            ? null
+            : num.parse('${json[r'totalPrice']}'),
         sellerId: mapValueOfType<int>(json, r'sellerId'),
         sellerName: mapValueOfType<String>(json, r'sellerName'),
         pickupAddress: mapValueOfType<String>(json, r'pickupAddress'),

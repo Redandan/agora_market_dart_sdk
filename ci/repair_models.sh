@@ -25,6 +25,47 @@ camel_to_snake() {
 files_changed=0
 lines_changed=0
 
+repair_nullable_num_from_json() {
+  local f="$1"
+  local tmp="${f}.tmp"
+  awk '
+    {
+      lines[NR] = $0
+      if ($0 ~ /^[[:space:]]+num\?[[:space:]]+[A-Za-z_][A-Za-z0-9_]*;[[:space:]]*$/) {
+        prop = $0
+        sub(/^[[:space:]]+num\?[[:space:]]+/, "", prop)
+        sub(/;.*/, "", prop)
+        nullableNum[prop] = 1
+      }
+    }
+    END {
+      for (i = 1; i <= NR; i++) {
+        line = lines[i]
+        matched = 0
+        for (prop in nullableNum) {
+          pattern = "^[[:space:]]*" prop ":[[:space:]]*num\\.parse\\('\\$\\{json\\[r" sprintf("%c", 39) prop sprintf("%c", 39) "\\]\\}'\\),[[:space:]]*$"
+          if (line ~ pattern) {
+            indent = line
+            sub(/[^ ].*$/, "", indent)
+            print indent prop ": json[r" sprintf("%c", 39) prop sprintf("%c", 39) "] == null"
+            print indent "    ? null"
+            print indent "    : num.parse('\\${json[r" sprintf("%c", 39) prop sprintf("%c", 39) "]}'),"
+            matched = 1
+            break
+          }
+        }
+        if (!matched) print line
+      }
+    }
+  ' "$f" > "$tmp"
+  if ! cmp -s "$f" "$tmp"; then
+    mv "$tmp" "$f"
+    return 0
+  fi
+  rm -f "$tmp"
+  return 1
+}
+
 for f in "$MODEL_DIR"/*.dart; do
   [ -f "$f" ] || continue
   grep -q 'Map<String, dynamic> toJson()' "$f" || continue
@@ -51,6 +92,13 @@ for f in "$MODEL_DIR"/*.dart; do
   if [ "$file_touched" -eq 1 ]; then
     files_changed=$((files_changed + 1))
     echo "patched: $f"
+  fi
+
+  if repair_nullable_num_from_json "$f"; then
+    files_changed=$((files_changed + 1))
+    changed=$(grep -c "json\\[r'.*'\\] == null" "$f" || true)
+    lines_changed=$((lines_changed + changed))
+    echo "patched nullable numeric parsing: $f"
   fi
 done
 

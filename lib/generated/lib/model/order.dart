@@ -558,13 +558,21 @@ class Order {
         updatedAt: mapDateTime(json, r'updatedAt', r'')!,
         cancelledAt: mapDateTime(json, r'cancelledAt', r''),
         refundedAt: mapDateTime(json, r'refundedAt', r''),
-        refundAmount: num.parse('${json[r'refundAmount']}'),
+        refundAmount: json[r'refundAmount'] == null
+            ? null
+            : num.parse('${json[r'refundAmount']}'),
         refundOfferExpiresAt: mapDateTime(json, r'refundOfferExpiresAt', r''),
         reviewedAt: mapDateTime(json, r'reviewedAt', r''),
-        originalPrice: num.parse('${json[r'originalPrice']}'),
+        originalPrice: json[r'originalPrice'] == null
+            ? null
+            : num.parse('${json[r'originalPrice']}'),
         originalCurrency: mapValueOfType<String>(json, r'originalCurrency'),
-        exchangeRate: num.parse('${json[r'exchangeRate']}'),
-        originalShippingFee: num.parse('${json[r'originalShippingFee']}'),
+        exchangeRate: json[r'exchangeRate'] == null
+            ? null
+            : num.parse('${json[r'exchangeRate']}'),
+        originalShippingFee: json[r'originalShippingFee'] == null
+            ? null
+            : num.parse('${json[r'originalShippingFee']}'),
         exchangeRateTime: mapDateTime(json, r'exchangeRateTime', r''),
         usingDefaultRate: mapValueOfType<bool>(json, r'usingDefaultRate'),
         buyerName: mapValueOfType<String>(json, r'buyerName'),

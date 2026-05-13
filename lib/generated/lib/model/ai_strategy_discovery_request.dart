@@ -188,7 +188,9 @@ class AiStrategyDiscoveryRequest {
         endTime: mapDateTime(json, r'endTime', r'')!,
         initialCapital: num.parse('${json[r'initialCapital']}'),
         candidateCount: mapValueOfType<int>(json, r'candidateCount'),
-        feeRate: num.parse('${json[r'feeRate']}'),
+        feeRate: json[r'feeRate'] == null
+            ? null
+            : num.parse('${json[r'feeRate']}'),
         minTradeCount: mapValueOfType<int>(json, r'minTradeCount'),
         source_: mapValueOfType<String>(json, r'source'),
       );

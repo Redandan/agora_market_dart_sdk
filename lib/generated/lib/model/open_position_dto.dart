@@ -204,10 +204,18 @@ class OpenPositionDto {
       return OpenPositionDto(
         id: mapValueOfType<int>(json, r'id'),
         symbol: mapValueOfType<String>(json, r'symbol'),
-        tradedQty: num.parse('${json[r'tradedQty']}'),
-        actualEntryPrice: num.parse('${json[r'actualEntryPrice']}'),
-        suggestedTp: num.parse('${json[r'suggestedTp']}'),
-        suggestedSl: num.parse('${json[r'suggestedSl']}'),
+        tradedQty: json[r'tradedQty'] == null
+            ? null
+            : num.parse('${json[r'tradedQty']}'),
+        actualEntryPrice: json[r'actualEntryPrice'] == null
+            ? null
+            : num.parse('${json[r'actualEntryPrice']}'),
+        suggestedTp: json[r'suggestedTp'] == null
+            ? null
+            : num.parse('${json[r'suggestedTp']}'),
+        suggestedSl: json[r'suggestedSl'] == null
+            ? null
+            : num.parse('${json[r'suggestedSl']}'),
         ocoOrderListId: mapValueOfType<int>(json, r'ocoOrderListId'),
         createdAt: mapValueOfType<String>(json, r'createdAt'),
         protected: mapValueOfType<bool>(json, r'protected'),

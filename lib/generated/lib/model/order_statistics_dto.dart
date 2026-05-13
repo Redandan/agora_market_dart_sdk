@@ -122,8 +122,12 @@ class OrderStatisticsDTO {
 
       return OrderStatisticsDTO(
         totalOrders: mapValueOfType<int>(json, r'totalOrders'),
-        totalAmount: num.parse('${json[r'totalAmount']}'),
-        averageOrderAmount: num.parse('${json[r'averageOrderAmount']}'),
+        totalAmount: json[r'totalAmount'] == null
+            ? null
+            : num.parse('${json[r'totalAmount']}'),
+        averageOrderAmount: json[r'averageOrderAmount'] == null
+            ? null
+            : num.parse('${json[r'averageOrderAmount']}'),
         ordersByStatus: mapCastOfType<String, int>(json, r'ordersByStatus') ?? const {},
         topProducts: TopProductDTO.listFromJson(json[r'topProducts']),
         topSellers: TopSellerDTO.listFromJson(json[r'topSellers']),

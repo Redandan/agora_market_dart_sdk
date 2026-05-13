@@ -110,8 +110,12 @@ class PaytableWithRtpDTO {
         gameType: PaytableWithRtpDTOGameTypeEnum.fromJson(json[r'gameType']),
         handicapType: PaytableWithRtpDTOHandicapTypeEnum.fromJson(json[r'handicapType']),
         paytables: PaytableDTO.listFromJson(json[r'paytables']),
-        totalRtp: num.parse('${json[r'totalRtp']}'),
-        expectedProfit: num.parse('${json[r'expectedProfit']}'),
+        totalRtp: json[r'totalRtp'] == null
+            ? null
+            : num.parse('${json[r'totalRtp']}'),
+        expectedProfit: json[r'expectedProfit'] == null
+            ? null
+            : num.parse('${json[r'expectedProfit']}'),
       );
     }
     return null;

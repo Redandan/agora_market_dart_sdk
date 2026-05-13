@@ -232,15 +232,29 @@ class TradeRecordDto {
       return TradeRecordDto(
         entryTime: mapDateTime(json, r'entryTime', r''),
         exitTime: mapDateTime(json, r'exitTime', r''),
-        entryPrice: num.parse('${json[r'entryPrice']}'),
-        exitPrice: num.parse('${json[r'exitPrice']}'),
-        quantity: num.parse('${json[r'quantity']}'),
-        grossPnl: num.parse('${json[r'grossPnl']}'),
-        netPnl: num.parse('${json[r'netPnl']}'),
-        returnPct: num.parse('${json[r'returnPct']}'),
+        entryPrice: json[r'entryPrice'] == null
+            ? null
+            : num.parse('${json[r'entryPrice']}'),
+        exitPrice: json[r'exitPrice'] == null
+            ? null
+            : num.parse('${json[r'exitPrice']}'),
+        quantity: json[r'quantity'] == null
+            ? null
+            : num.parse('${json[r'quantity']}'),
+        grossPnl: json[r'grossPnl'] == null
+            ? null
+            : num.parse('${json[r'grossPnl']}'),
+        netPnl: json[r'netPnl'] == null
+            ? null
+            : num.parse('${json[r'netPnl']}'),
+        returnPct: json[r'returnPct'] == null
+            ? null
+            : num.parse('${json[r'returnPct']}'),
         exitReason: mapValueOfType<String>(json, r'exitReason'),
         side: TradeRecordDtoSideEnum.fromJson(json[r'side']),
-        borrowingCost: num.parse('${json[r'borrowingCost']}'),
+        borrowingCost: json[r'borrowingCost'] == null
+            ? null
+            : num.parse('${json[r'borrowingCost']}'),
       );
     }
     return null;

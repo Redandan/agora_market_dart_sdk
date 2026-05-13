@@ -338,7 +338,9 @@ class RechargeResponse {
         errorMessage: mapValueOfType<String>(json, r'errorMessage'),
         rechargeId: mapValueOfType<String>(json, r'rechargeId'),
         userId: mapValueOfType<int>(json, r'userId'),
-        amount: num.parse('${json[r'amount']}'),
+        amount: json[r'amount'] == null
+            ? null
+            : num.parse('${json[r'amount']}'),
         currency: mapValueOfType<String>(json, r'currency'),
         status: RechargeResponseStatusEnum.fromJson(json[r'status']),
         protocol: RechargeResponseProtocolEnum.fromJson(json[r'protocol']),
@@ -351,8 +353,12 @@ class RechargeResponse {
         suggestedAmounts: json[r'suggestedAmounts'] is Iterable
             ? (json[r'suggestedAmounts'] as Iterable).cast<num>().toList(growable: false)
             : const [],
-        requestedAmount: num.parse('${json[r'requestedAmount']}'),
-        suggestedAmount: num.parse('${json[r'suggestedAmount']}'),
+        requestedAmount: json[r'requestedAmount'] == null
+            ? null
+            : num.parse('${json[r'requestedAmount']}'),
+        suggestedAmount: json[r'suggestedAmount'] == null
+            ? null
+            : num.parse('${json[r'suggestedAmount']}'),
       );
     }
     return null;

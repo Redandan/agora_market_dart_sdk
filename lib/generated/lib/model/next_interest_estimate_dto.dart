@@ -177,11 +177,21 @@ class NextInterestEstimateDTO {
       return NextInterestEstimateDTO(
         nextSettlementTime: mapDateTime(json, r'nextSettlementTime', r''),
         estimatedStakingCount: mapValueOfType<int>(json, r'estimatedStakingCount'),
-        totalEstimatedInterest: num.parse('${json[r'totalEstimatedInterest']}'),
-        averageEstimatedInterest: num.parse('${json[r'averageEstimatedInterest']}'),
-        totalStakedAmount: num.parse('${json[r'totalStakedAmount']}'),
-        annualInterestRate: num.parse('${json[r'annualInterestRate']}'),
-        dailyInterestRate: num.parse('${json[r'dailyInterestRate']}'),
+        totalEstimatedInterest: json[r'totalEstimatedInterest'] == null
+            ? null
+            : num.parse('${json[r'totalEstimatedInterest']}'),
+        averageEstimatedInterest: json[r'averageEstimatedInterest'] == null
+            ? null
+            : num.parse('${json[r'averageEstimatedInterest']}'),
+        totalStakedAmount: json[r'totalStakedAmount'] == null
+            ? null
+            : num.parse('${json[r'totalStakedAmount']}'),
+        annualInterestRate: json[r'annualInterestRate'] == null
+            ? null
+            : num.parse('${json[r'annualInterestRate']}'),
+        dailyInterestRate: json[r'dailyInterestRate'] == null
+            ? null
+            : num.parse('${json[r'dailyInterestRate']}'),
         details: StakingInterestDetail.listFromJson(json[r'details']),
       );
     }

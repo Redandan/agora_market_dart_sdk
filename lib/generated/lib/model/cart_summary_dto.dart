@@ -115,8 +115,12 @@ class CartSummaryDTO {
 
       return CartSummaryDTO(
         totalItems: mapValueOfType<int>(json, r'totalItems'),
-        totalValue: num.parse('${json[r'totalValue']}'),
-        averageCartValue: num.parse('${json[r'averageCartValue']}'),
+        totalValue: json[r'totalValue'] == null
+            ? null
+            : num.parse('${json[r'totalValue']}'),
+        averageCartValue: json[r'averageCartValue'] == null
+            ? null
+            : num.parse('${json[r'averageCartValue']}'),
         topProducts: TopProductDTO.listFromJson(json[r'topProducts']),
         lowStockWarnings: LowStockWarningDTO.listFromJson(json[r'lowStockWarnings']),
       );

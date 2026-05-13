@@ -138,9 +138,15 @@ class CartGroupBySeller {
         sellerId: mapValueOfType<int>(json, r'sellerId'),
         sellerName: mapValueOfType<String>(json, r'sellerName'),
         items: CartItemResponse.listFromJson(json[r'items']),
-        sellerSubtotal: num.parse('${json[r'sellerSubtotal']}'),
-        sellerShippingFee: num.parse('${json[r'sellerShippingFee']}'),
-        sellerTotal: num.parse('${json[r'sellerTotal']}'),
+        sellerSubtotal: json[r'sellerSubtotal'] == null
+            ? null
+            : num.parse('${json[r'sellerSubtotal']}'),
+        sellerShippingFee: json[r'sellerShippingFee'] == null
+            ? null
+            : num.parse('${json[r'sellerShippingFee']}'),
+        sellerTotal: json[r'sellerTotal'] == null
+            ? null
+            : num.parse('${json[r'sellerTotal']}'),
       );
     }
     return null;

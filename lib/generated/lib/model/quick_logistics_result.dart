@@ -255,10 +255,14 @@ class QuickLogisticsResult {
         toPostalCode: mapValueOfType<String>(json, r'toPostalCode'),
         fromCity: mapValueOfType<String>(json, r'fromCity'),
         toCity: mapValueOfType<String>(json, r'toCity'),
-        weight: num.parse('${json[r'weight']}'),
+        weight: json[r'weight'] == null
+            ? null
+            : num.parse('${json[r'weight']}'),
         carrier: QuickLogisticsResultCarrierEnum.fromJson(json[r'carrier']),
         serviceType: QuickLogisticsResultServiceTypeEnum.fromJson(json[r'serviceType']),
-        shippingFee: num.parse('${json[r'shippingFee']}'),
+        shippingFee: json[r'shippingFee'] == null
+            ? null
+            : num.parse('${json[r'shippingFee']}'),
         estimatedDays: mapValueOfType<int>(json, r'estimatedDays'),
         description: mapValueOfType<String>(json, r'description'),
         queryTime: mapDateTime(json, r'queryTime', r''),

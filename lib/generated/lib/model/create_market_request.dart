@@ -199,8 +199,12 @@ class CreateMarketRequest {
         startTime: mapDateTime(json, r'startTime', r'')!,
         endTime: mapDateTime(json, r'endTime', r'')!,
         minBetAmount: num.parse('${json[r'minBetAmount']}'),
-        maxBetAmount: num.parse('${json[r'maxBetAmount']}'),
-        feePercentage: num.parse('${json[r'feePercentage']}'),
+        maxBetAmount: json[r'maxBetAmount'] == null
+            ? null
+            : num.parse('${json[r'maxBetAmount']}'),
+        feePercentage: json[r'feePercentage'] == null
+            ? null
+            : num.parse('${json[r'feePercentage']}'),
         imageUrl: mapValueOfType<String>(json, r'imageUrl'),
         category: mapValueOfType<String>(json, r'category'),
         initialLiquidity: num.parse('${json[r'initialLiquidity']}'),

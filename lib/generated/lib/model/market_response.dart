@@ -370,10 +370,18 @@ class MarketResponse {
         status: MarketResponseStatusEnum.fromJson(json[r'status'])!,
         creatorId: mapValueOfType<int>(json, r'creatorId')!,
         creatorUsername: mapValueOfType<String>(json, r'creatorUsername'),
-        totalPool: num.parse('${json[r'totalPool']}'),
-        minBetAmount: num.parse('${json[r'minBetAmount']}'),
-        maxBetAmount: num.parse('${json[r'maxBetAmount']}'),
-        feePercentage: num.parse('${json[r'feePercentage']}'),
+        totalPool: json[r'totalPool'] == null
+            ? null
+            : num.parse('${json[r'totalPool']}'),
+        minBetAmount: json[r'minBetAmount'] == null
+            ? null
+            : num.parse('${json[r'minBetAmount']}'),
+        maxBetAmount: json[r'maxBetAmount'] == null
+            ? null
+            : num.parse('${json[r'maxBetAmount']}'),
+        feePercentage: json[r'feePercentage'] == null
+            ? null
+            : num.parse('${json[r'feePercentage']}'),
         startTime: mapDateTime(json, r'startTime', r''),
         endTime: mapDateTime(json, r'endTime', r''),
         resolutionTime: mapDateTime(json, r'resolutionTime', r''),

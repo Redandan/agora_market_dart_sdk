@@ -255,10 +255,18 @@ class CandidateResult {
       return CandidateResult(
         strategyId: mapValueOfType<int>(json, r'strategyId'),
         strategyName: mapValueOfType<String>(json, r'strategyName'),
-        totalReturn: num.parse('${json[r'totalReturn']}'),
-        maxDrawdown: num.parse('${json[r'maxDrawdown']}'),
-        winRate: num.parse('${json[r'winRate']}'),
-        sharpeRatio: num.parse('${json[r'sharpeRatio']}'),
+        totalReturn: json[r'totalReturn'] == null
+            ? null
+            : num.parse('${json[r'totalReturn']}'),
+        maxDrawdown: json[r'maxDrawdown'] == null
+            ? null
+            : num.parse('${json[r'maxDrawdown']}'),
+        winRate: json[r'winRate'] == null
+            ? null
+            : num.parse('${json[r'winRate']}'),
+        sharpeRatio: json[r'sharpeRatio'] == null
+            ? null
+            : num.parse('${json[r'sharpeRatio']}'),
         tradeCount: mapValueOfType<int>(json, r'tradeCount'),
         score: mapValueOfType<double>(json, r'score'),
         config: mapValueOfType<Object>(json, r'config'),

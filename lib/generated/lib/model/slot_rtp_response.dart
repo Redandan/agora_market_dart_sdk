@@ -142,9 +142,13 @@ class SlotRtpResponse {
 
       return SlotRtpResponse(
         totalCombinations: mapValueOfType<int>(json, r'totalCombinations'),
-        totalRtp: num.parse('${json[r'totalRtp']}'),
+        totalRtp: json[r'totalRtp'] == null
+            ? null
+            : num.parse('${json[r'totalRtp']}'),
         totalRtpPct: mapValueOfType<String>(json, r'totalRtpPct'),
-        houseEdge: num.parse('${json[r'houseEdge']}'),
+        houseEdge: json[r'houseEdge'] == null
+            ? null
+            : num.parse('${json[r'houseEdge']}'),
         houseEdgePct: mapValueOfType<String>(json, r'houseEdgePct'),
         entries: RtpEntry.listFromJson(json[r'entries']),
       );

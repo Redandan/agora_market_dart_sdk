@@ -91,7 +91,9 @@ class DisputeJudgmentParam {
 
       return DisputeJudgmentParam(
         faultType: DisputeJudgmentParamFaultTypeEnum.fromJson(json[r'faultType'])!,
-        partialRefundAmount: num.parse('${json[r'partialRefundAmount']}'),
+        partialRefundAmount: json[r'partialRefundAmount'] == null
+            ? null
+            : num.parse('${json[r'partialRefundAmount']}'),
         comment: mapValueOfType<String>(json, r'comment'),
       );
     }

@@ -136,7 +136,9 @@ class ShippingServiceGroup {
 
       return ShippingServiceGroup(
         shippingCompany: ShippingServiceGroupShippingCompanyEnum.fromJson(json[r'shippingCompany']),
-        shippingFee: num.parse('${json[r'shippingFee']}'),
+        shippingFee: json[r'shippingFee'] == null
+            ? null
+            : num.parse('${json[r'shippingFee']}'),
         estimatedDays: mapValueOfType<int>(json, r'estimatedDays'),
         addresses: ShippingAddress.listFromJson(json[r'addresses']),
         needsAddress: mapValueOfType<bool>(json, r'needsAddress'),

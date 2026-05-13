@@ -378,13 +378,19 @@ class SellerDashboardDto {
         cancelledOrders: mapValueOfType<int>(json, r'cancelledOrders'),
         returnOrders: mapValueOfType<int>(json, r'returnOrders'),
         disputeOrders: mapValueOfType<int>(json, r'disputeOrders'),
-        totalRevenue: num.parse('${json[r'totalRevenue']}'),
-        avgOrderValue: num.parse('${json[r'avgOrderValue']}'),
+        totalRevenue: json[r'totalRevenue'] == null
+            ? null
+            : num.parse('${json[r'totalRevenue']}'),
+        avgOrderValue: json[r'avgOrderValue'] == null
+            ? null
+            : num.parse('${json[r'avgOrderValue']}'),
         completionRate: mapValueOfType<double>(json, r'completionRate'),
         returnRate: mapValueOfType<double>(json, r'returnRate'),
         disputeRate: mapValueOfType<double>(json, r'disputeRate'),
         last30DaysOrders: mapValueOfType<int>(json, r'last30DaysOrders'),
-        last30DaysRevenue: num.parse('${json[r'last30DaysRevenue']}'),
+        last30DaysRevenue: json[r'last30DaysRevenue'] == null
+            ? null
+            : num.parse('${json[r'last30DaysRevenue']}'),
         avgRating: mapValueOfType<double>(json, r'avgRating'),
         reviewCount: mapValueOfType<int>(json, r'reviewCount'),
         responseRate: mapValueOfType<int>(json, r'responseRate'),

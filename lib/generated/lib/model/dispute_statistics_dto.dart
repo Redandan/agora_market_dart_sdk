@@ -124,7 +124,9 @@ class DisputeStatisticsDTO {
         totalDisputes: mapValueOfType<int>(json, r'totalDisputes'),
         disputesByStatus: mapCastOfType<String, int>(json, r'disputesByStatus') ?? const {},
         averageResolutionTime: mapValueOfType<double>(json, r'averageResolutionTime'),
-        totalRefundAmount: num.parse('${json[r'totalRefundAmount']}'),
+        totalRefundAmount: json[r'totalRefundAmount'] == null
+            ? null
+            : num.parse('${json[r'totalRefundAmount']}'),
         topDisputedProducts: TopDisputedProductDTO.listFromJson(json[r'topDisputedProducts']),
         topDisputedSellers: TopDisputedSellerDTO.listFromJson(json[r'topDisputedSellers']),
       );

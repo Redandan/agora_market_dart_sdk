@@ -147,8 +147,12 @@ class GameRoundDTO {
       return GameRoundDTO(
         id: mapValueOfType<int>(json, r'id'),
         diceValue: mapValueOfType<int>(json, r'diceValue'),
-        betAmount: num.parse('${json[r'betAmount']}'),
-        winAmount: num.parse('${json[r'winAmount']}'),
+        betAmount: json[r'betAmount'] == null
+            ? null
+            : num.parse('${json[r'betAmount']}'),
+        winAmount: json[r'winAmount'] == null
+            ? null
+            : num.parse('${json[r'winAmount']}'),
         status: mapValueOfType<String>(json, r'status'),
         createdAt: mapDateTime(json, r'createdAt', r''),
       );

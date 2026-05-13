@@ -164,8 +164,12 @@ class CartSummary {
         totalItems: mapValueOfType<int>(json, r'totalItems'),
         totalProducts: mapValueOfType<int>(json, r'totalProducts'),
         totalSellers: mapValueOfType<int>(json, r'totalSellers'),
-        totalAmount: num.parse('${json[r'totalAmount']}'),
-        totalShippingFee: num.parse('${json[r'totalShippingFee']}'),
+        totalAmount: json[r'totalAmount'] == null
+            ? null
+            : num.parse('${json[r'totalAmount']}'),
+        totalShippingFee: json[r'totalShippingFee'] == null
+            ? null
+            : num.parse('${json[r'totalShippingFee']}'),
         lowStockItems: mapValueOfType<int>(json, r'lowStockItems'),
         outOfStockItems: mapValueOfType<int>(json, r'outOfStockItems'),
       );

@@ -590,7 +590,9 @@ class ProductCreateParam {
         shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
         pickupServiceTypes: ProductCreateParamPickupServiceTypesEnum.listFromJson(json[r'pickupServiceTypes']),
         pickupServiceTypeFees: mapCastOfType<String, num>(json, r'pickupServiceTypeFees') ?? const {},
-        freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
+        freeShippingThreshold: json[r'freeShippingThreshold'] == null
+            ? null
+            : num.parse('${json[r'freeShippingThreshold']}'),
         stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
         allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
         purchaseUrl: mapValueOfType<String>(json, r'purchaseUrl'),

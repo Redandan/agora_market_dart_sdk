@@ -170,11 +170,21 @@ class KlineBarDTO {
       return KlineBarDTO(
         openTime: mapDateTime(json, r'openTime', r''),
         closeTime: mapDateTime(json, r'closeTime', r''),
-        open: num.parse('${json[r'open']}'),
-        high: num.parse('${json[r'high']}'),
-        low: num.parse('${json[r'low']}'),
-        close: num.parse('${json[r'close']}'),
-        volume: num.parse('${json[r'volume']}'),
+        open: json[r'open'] == null
+            ? null
+            : num.parse('${json[r'open']}'),
+        high: json[r'high'] == null
+            ? null
+            : num.parse('${json[r'high']}'),
+        low: json[r'low'] == null
+            ? null
+            : num.parse('${json[r'low']}'),
+        close: json[r'close'] == null
+            ? null
+            : num.parse('${json[r'close']}'),
+        volume: json[r'volume'] == null
+            ? null
+            : num.parse('${json[r'volume']}'),
       );
     }
     return null;
