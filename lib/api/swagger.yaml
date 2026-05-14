@@ -30813,6 +30813,10 @@
           "initData": {
             "type": "string",
             "minLength": 1
+          },
+          "referrerGroupId": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },

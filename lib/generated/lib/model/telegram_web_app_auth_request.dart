@@ -14,6 +14,7 @@ class TelegramWebAppAuthRequest {
   /// Returns a new [TelegramWebAppAuthRequest] instance.
   TelegramWebAppAuthRequest({
     this.initData,
+    this.referrerGroupId,
   });
 
   ///
@@ -24,17 +25,27 @@ class TelegramWebAppAuthRequest {
   ///
   String? initData;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? referrerGroupId;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is TelegramWebAppAuthRequest &&
-    other.initData == initData;
+    other.initData == initData &&
+    other.referrerGroupId == referrerGroupId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (initData == null ? 0 : initData!.hashCode);
+    (initData == null ? 0 : initData!.hashCode) +
+    (referrerGroupId == null ? 0 : referrerGroupId!.hashCode);
 
   @override
-  String toString() => 'TelegramWebAppAuthRequest[initData=$initData]';
+  String toString() => 'TelegramWebAppAuthRequest[initData=$initData, referrerGroupId=$referrerGroupId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -42,6 +53,11 @@ class TelegramWebAppAuthRequest {
       json[r'initData'] = this.initData;
     } else {
       json[r'initData'] = null;
+    }
+    if (this.referrerGroupId != null) {
+      json[r'referrerGroupId'] = this.referrerGroupId;
+    } else {
+      json[r'referrerGroupId'] = null;
     }
     return json;
   }
@@ -66,6 +82,7 @@ class TelegramWebAppAuthRequest {
 
       return TelegramWebAppAuthRequest(
         initData: mapValueOfType<String>(json, r'initData'),
+        referrerGroupId: mapValueOfType<int>(json, r'referrerGroupId'),
       );
     }
     return null;
