@@ -642,8 +642,14 @@ class ApiClient {
           return PageableObject.fromJson(value);
         case 'ParsedIntent':
           return ParsedIntent.fromJson(value);
+        case 'PasswordResetCodeValidateParam':
+          return PasswordResetCodeValidateParam.fromJson(value);
+        case 'PasswordResetCodeValidateResponse':
+          return PasswordResetCodeValidateResponse.fromJson(value);
         case 'PasswordResetParam':
           return PasswordResetParam.fromJson(value);
+        case 'PasswordResetWithCodeParam':
+          return PasswordResetWithCodeParam.fromJson(value);
         case 'PaytableDTO':
           return PaytableDTO.fromJson(value);
         case 'PaytableEntryRequest':

@@ -7339,6 +7339,63 @@
         }
       }
     },
+    "/auth/reset-password-with-code/validate": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "校驗密碼重置驗證碼",
+        "description": "校驗 email + code 是否可用，但不消耗驗證碼。前端可用於顯示新密碼表單前的 preflight。",
+        "operationId": "validatePasswordResetCode",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordResetCodeValidateParam"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasswordResetCodeValidateResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/reset-password-with-code/submit": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "使用驗證碼提交新密碼",
+        "description": "使用 email + code + newPassword 重置密碼；成功後驗證碼會被消耗。",
+        "operationId": "resetPasswordWithCodeSubmit",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordResetWithCodeParam"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/auth/register": {
       "post": {
         "tags": [
@@ -30910,6 +30967,78 @@
           "oldPassword"
         ]
       },
+      "PasswordResetCodeValidateParam": {
+        "type": "object",
+        "description": "密碼重置驗證碼校驗請求",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "用戶郵箱",
+            "minLength": 1
+          },
+          "code": {
+            "type": "string",
+            "description": "郵件驗證碼",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "code",
+          "email"
+        ]
+      },
+      "PasswordResetCodeValidateResponse": {
+        "type": "object",
+        "description": "密碼重置驗證碼校驗結果",
+        "properties": {
+          "valid": {
+            "type": "boolean",
+            "description": "驗證碼是否有效"
+          },
+          "status": {
+            "type": "string",
+            "description": "穩定狀態碼",
+            "example": "VALID"
+          },
+          "message": {
+            "type": "string",
+            "description": "前端可顯示訊息"
+          }
+        }
+      },
+      "PasswordResetWithCodeParam": {
+        "type": "object",
+        "description": "使用郵件驗證碼提交新密碼",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "用戶郵箱",
+            "minLength": 1
+          },
+          "code": {
+            "type": "string",
+            "description": "郵件驗證碼",
+            "minLength": 1
+          },
+          "newPassword": {
+            "type": "string",
+            "description": "新密碼",
+            "maxLength": 128,
+            "minLength": 8
+          },
+          "confirmNewPassword": {
+            "type": "string",
+            "description": "確認新密碼",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "code",
+          "confirmNewPassword",
+          "email",
+          "newPassword"
+        ]
+      },
       "RegisterResult": {
         "type": "object",
         "description": "註冊結果",
@@ -34646,13 +34775,13 @@
             "type": "integer",
             "format": "int32"
           },
+          "outOfStock": {
+            "type": "boolean"
+          },
           "lowStock": {
             "type": "boolean"
           },
           "belowMinimum": {
-            "type": "boolean"
-          },
-          "outOfStock": {
             "type": "boolean"
           }
         }

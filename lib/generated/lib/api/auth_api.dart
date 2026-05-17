@@ -953,6 +953,54 @@ class AuthApi {
     }
   }
 
+  /// 使用驗證碼提交新密碼
+  ///
+  /// 使用 email + code + newPassword 重置密碼；成功後驗證碼會被消耗。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [PasswordResetWithCodeParam] passwordResetWithCodeParam (required):
+  Future<Response> resetPasswordWithCodeSubmitWithHttpInfo(PasswordResetWithCodeParam passwordResetWithCodeParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/reset-password-with-code/submit';
+
+    // ignore: prefer_final_locals
+    Object? postBody = passwordResetWithCodeParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 使用驗證碼提交新密碼
+  ///
+  /// 使用 email + code + newPassword 重置密碼；成功後驗證碼會被消耗。
+  ///
+  /// Parameters:
+  ///
+  /// * [PasswordResetWithCodeParam] passwordResetWithCodeParam (required):
+  Future<void> resetPasswordWithCodeSubmit(PasswordResetWithCodeParam passwordResetWithCodeParam,) async {
+    final response = await resetPasswordWithCodeSubmitWithHttpInfo(passwordResetWithCodeParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
   /// 發送郵箱登入驗證碼
   ///
   /// 向指定郵箱發送登入驗證碼
@@ -1163,6 +1211,62 @@ class AuthApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UserInfo',) as UserInfo;
+    
+    }
+    return null;
+  }
+
+  /// 校驗密碼重置驗證碼
+  ///
+  /// 校驗 email + code 是否可用，但不消耗驗證碼。前端可用於顯示新密碼表單前的 preflight。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [PasswordResetCodeValidateParam] passwordResetCodeValidateParam (required):
+  Future<Response> validatePasswordResetCodeWithHttpInfo(PasswordResetCodeValidateParam passwordResetCodeValidateParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/reset-password-with-code/validate';
+
+    // ignore: prefer_final_locals
+    Object? postBody = passwordResetCodeValidateParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 校驗密碼重置驗證碼
+  ///
+  /// 校驗 email + code 是否可用，但不消耗驗證碼。前端可用於顯示新密碼表單前的 preflight。
+  ///
+  /// Parameters:
+  ///
+  /// * [PasswordResetCodeValidateParam] passwordResetCodeValidateParam (required):
+  Future<PasswordResetCodeValidateResponse?> validatePasswordResetCode(PasswordResetCodeValidateParam passwordResetCodeValidateParam,) async {
+    final response = await validatePasswordResetCodeWithHttpInfo(passwordResetCodeValidateParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PasswordResetCodeValidateResponse',) as PasswordResetCodeValidateResponse;
     
     }
     return null;

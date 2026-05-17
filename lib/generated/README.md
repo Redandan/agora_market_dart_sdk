@@ -278,10 +278,12 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**resendVerificationEmail**](doc//AuthApi.md#resendverificationemail) | **POST** /auth/email-verification/resend | 重發郵件驗證碼
 *AuthApi* | [**resetPassword**](doc//AuthApi.md#resetpassword) | **POST** /auth/reset-password | 重設密碼
 *AuthApi* | [**resetPasswordWithCode**](doc//AuthApi.md#resetpasswordwithcode) | **POST** /auth/reset-password-with-code | 使用驗證碼重置密碼
+*AuthApi* | [**resetPasswordWithCodeSubmit**](doc//AuthApi.md#resetpasswordwithcodesubmit) | **POST** /auth/reset-password-with-code/submit | 使用驗證碼提交新密碼
 *AuthApi* | [**sendEmailLoginCode**](doc//AuthApi.md#sendemaillogincode) | **POST** /auth/email-login/send-code | 發送郵箱登入驗證碼
 *AuthApi* | [**sendEmailVerification**](doc//AuthApi.md#sendemailverification) | **POST** /auth/email-verification/send | 發送郵件驗證碼
 *AuthApi* | [**unbindOAuth**](doc//AuthApi.md#unbindoauth) | **DELETE** /auth/unbind-oauth/{provider} | 解綁OAuth賬號
 *AuthApi* | [**updateProfile**](doc//AuthApi.md#updateprofile) | **POST** /auth/update-profile | 更新用戶資料
+*AuthApi* | [**validatePasswordResetCode**](doc//AuthApi.md#validatepasswordresetcode) | **POST** /auth/reset-password-with-code/validate | 校驗密碼重置驗證碼
 *AuthApi* | [**verifyEmail**](doc//AuthApi.md#verifyemail) | **POST** /auth/email-verification/verify | 驗證郵件驗證碼
 *AuthApi* | [**verifyTwoFactorCode**](doc//AuthApi.md#verifytwofactorcode) | **POST** /auth/2fa/verify | 驗證雙因素認證碼
 *AutoReplyApi* | [**createConfig**](doc//AutoReplyApi.md#createconfig) | **POST** /admin/auto-reply/configs | 創建新配置
@@ -774,7 +776,10 @@ Class | Method | HTTP request | Description
  - [Pageable](doc//Pageable.md)
  - [PageableObject](doc//PageableObject.md)
  - [ParsedIntent](doc//ParsedIntent.md)
+ - [PasswordResetCodeValidateParam](doc//PasswordResetCodeValidateParam.md)
+ - [PasswordResetCodeValidateResponse](doc//PasswordResetCodeValidateResponse.md)
  - [PasswordResetParam](doc//PasswordResetParam.md)
+ - [PasswordResetWithCodeParam](doc//PasswordResetWithCodeParam.md)
  - [PaytableDTO](doc//PaytableDTO.md)
  - [PaytableEntryRequest](doc//PaytableEntryRequest.md)
  - [PaytableWithRtpDTO](doc//PaytableWithRtpDTO.md)
