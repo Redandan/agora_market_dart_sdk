@@ -24700,6 +24700,11 @@
             "type": "string",
             "description": "來源平台代碼",
             "example": "COSTCO_TW"
+          },
+          "viewerCountryCode": {
+            "type": "string",
+            "description": "搜尋者國家代碼（同國優先排序）",
+            "example": "TW"
           }
         }
       },
@@ -34775,13 +34780,13 @@
             "type": "integer",
             "format": "int32"
           },
-          "outOfStock": {
-            "type": "boolean"
-          },
           "lowStock": {
             "type": "boolean"
           },
           "belowMinimum": {
+            "type": "boolean"
+          },
+          "outOfStock": {
             "type": "boolean"
           }
         }
