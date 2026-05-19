@@ -26,6 +26,7 @@ class ProductClassificationResponse {
     this.taxonomyTargetCode,
     this.taxonomyReason,
     this.pendingRequestId,
+    this.suggestionId,
     this.aiProvider,
     this.fallbackUsed,
     this.rawResponse,
@@ -125,6 +126,15 @@ class ProductClassificationResponse {
   ///
   int? pendingRequestId;
 
+  /// 若 persistSuggestion=true 且有建立/復用，回傳 admin review suggestion id
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? suggestionId;
+
   /// AI provider 或 heuristic
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -170,6 +180,7 @@ class ProductClassificationResponse {
     other.taxonomyTargetCode == taxonomyTargetCode &&
     other.taxonomyReason == taxonomyReason &&
     other.pendingRequestId == pendingRequestId &&
+    other.suggestionId == suggestionId &&
     other.aiProvider == aiProvider &&
     other.fallbackUsed == fallbackUsed &&
     other.rawResponse == rawResponse &&
@@ -191,13 +202,14 @@ class ProductClassificationResponse {
     (taxonomyTargetCode == null ? 0 : taxonomyTargetCode!.hashCode) +
     (taxonomyReason == null ? 0 : taxonomyReason!.hashCode) +
     (pendingRequestId == null ? 0 : pendingRequestId!.hashCode) +
+    (suggestionId == null ? 0 : suggestionId!.hashCode) +
     (aiProvider == null ? 0 : aiProvider!.hashCode) +
     (fallbackUsed == null ? 0 : fallbackUsed!.hashCode) +
     (rawResponse == null ? 0 : rawResponse!.hashCode) +
     (warnings.hashCode);
 
   @override
-  String toString() => 'ProductClassificationResponse[suggestedProductType=$suggestedProductType, suggestedCategory=$suggestedCategory, categoryConfidence=$categoryConfidence, reason=$reason, alternativeCategories=$alternativeCategories, suggestedTags=$suggestedTags, suggestedSourceRegion=$suggestedSourceRegion, suggestedSourcePlatform=$suggestedSourcePlatform, needsTaxonomyRequest=$needsTaxonomyRequest, taxonomyRequestType=$taxonomyRequestType, taxonomyTargetCode=$taxonomyTargetCode, taxonomyReason=$taxonomyReason, pendingRequestId=$pendingRequestId, aiProvider=$aiProvider, fallbackUsed=$fallbackUsed, rawResponse=$rawResponse, warnings=$warnings]';
+  String toString() => 'ProductClassificationResponse[suggestedProductType=$suggestedProductType, suggestedCategory=$suggestedCategory, categoryConfidence=$categoryConfidence, reason=$reason, alternativeCategories=$alternativeCategories, suggestedTags=$suggestedTags, suggestedSourceRegion=$suggestedSourceRegion, suggestedSourcePlatform=$suggestedSourcePlatform, needsTaxonomyRequest=$needsTaxonomyRequest, taxonomyRequestType=$taxonomyRequestType, taxonomyTargetCode=$taxonomyTargetCode, taxonomyReason=$taxonomyReason, pendingRequestId=$pendingRequestId, suggestionId=$suggestionId, aiProvider=$aiProvider, fallbackUsed=$fallbackUsed, rawResponse=$rawResponse, warnings=$warnings]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -258,6 +270,11 @@ class ProductClassificationResponse {
     } else {
       json[r'pendingRequestId'] = null;
     }
+    if (this.suggestionId != null) {
+      json[r'suggestionId'] = this.suggestionId;
+    } else {
+      json[r'suggestionId'] = null;
+    }
     if (this.aiProvider != null) {
       json[r'aiProvider'] = this.aiProvider;
     } else {
@@ -311,6 +328,7 @@ class ProductClassificationResponse {
         taxonomyTargetCode: mapValueOfType<String>(json, r'taxonomyTargetCode'),
         taxonomyReason: mapValueOfType<String>(json, r'taxonomyReason'),
         pendingRequestId: mapValueOfType<int>(json, r'pendingRequestId'),
+        suggestionId: mapValueOfType<int>(json, r'suggestionId'),
         aiProvider: mapValueOfType<String>(json, r'aiProvider'),
         fallbackUsed: mapValueOfType<bool>(json, r'fallbackUsed'),
         rawResponse: mapValueOfType<String>(json, r'rawResponse'),

@@ -228,6 +228,17 @@ Class | Method | HTTP request | Description
 *AdminOrdersApi* | [**getOrderDetail**](doc//AdminOrdersApi.md#getorderdetail) | **GET** /admin/orders/{orderId} | 查看訂單詳情
 *AdminOrdersApi* | [**getOrderStatistics**](doc//AdminOrdersApi.md#getorderstatistics) | **GET** /admin/orders/statistics | 訂單統計報告
 *AdminOrdersApi* | [**searchOrders**](doc//AdminOrdersApi.md#searchorders) | **POST** /admin/orders/search | 搜索訂單
+*AdminProductTaxonomyApi* | [**applyClassificationSuggestion**](doc//AdminProductTaxonomyApi.md#applyclassificationsuggestion) | **POST** /admin/product-taxonomy/classification-suggestions/{id}/apply | 套用 AI 商品分類建議
+*AdminProductTaxonomyApi* | [**deprecateProductType**](doc//AdminProductTaxonomyApi.md#deprecateproducttype) | **POST** /admin/product-taxonomy/product-types/{code}/deprecate | 將 product type dictionary 標記 DEPRECATED
+*AdminProductTaxonomyApi* | [**dryRunRecategorization**](doc//AdminProductTaxonomyApi.md#dryrunrecategorization) | **POST** /admin/product-taxonomy/proposals/dry-run | bulk recategorization dry-run preview；不修改 DB
+*AdminProductTaxonomyApi* | [**ignoreClassificationSuggestion**](doc//AdminProductTaxonomyApi.md#ignoreclassificationsuggestion) | **POST** /admin/product-taxonomy/classification-suggestions/{id}/ignore | 忽略 AI 商品分類建議
+*AdminProductTaxonomyApi* | [**listClassificationSuggestions**](doc//AdminProductTaxonomyApi.md#listclassificationsuggestions) | **GET** /admin/product-taxonomy/classification-suggestions | 列出 AI 商品分類建議
+*AdminProductTaxonomyApi* | [**listProductTypes**](doc//AdminProductTaxonomyApi.md#listproducttypes) | **GET** /admin/product-taxonomy/product-types | 列出受控 product type dictionary
+*AdminProductTaxonomyApi* | [**listTaxonomyProposals**](doc//AdminProductTaxonomyApi.md#listtaxonomyproposals) | **GET** /admin/product-taxonomy/proposals | 列出 taxonomy/category/productType proposal
+*AdminProductTaxonomyApi* | [**markTaxonomyProposalImplemented**](doc//AdminProductTaxonomyApi.md#marktaxonomyproposalimplemented) | **POST** /admin/product-taxonomy/proposals/{id}/implemented | 標記 taxonomy proposal 已實作
+*AdminProductTaxonomyApi* | [**overrideClassificationSuggestion**](doc//AdminProductTaxonomyApi.md#overrideclassificationsuggestion) | **POST** /admin/product-taxonomy/classification-suggestions/{id}/override | 以 admin override 套用 AI 商品分類建議
+*AdminProductTaxonomyApi* | [**reviewTaxonomyProposal**](doc//AdminProductTaxonomyApi.md#reviewtaxonomyproposal) | **POST** /admin/product-taxonomy/proposals/{id}/review | 審核 taxonomy proposal
+*AdminProductTaxonomyApi* | [**upsertProductType**](doc//AdminProductTaxonomyApi.md#upsertproducttype) | **POST** /admin/product-taxonomy/product-types | 新增或更新受控 product type dictionary
 *AdminProductsApi* | [**auditProductAndStoreImages**](doc//AdminProductsApi.md#auditproductandstoreimages) | **POST** /admin/products/images/audit | 審計商品/商店壞圖 URL
 *AdminProductsApi* | [**batchDeleteProductsByAdmin**](doc//AdminProductsApi.md#batchdeleteproductsbyadmin) | **DELETE** /admin/products/batch | 管理員批量刪除商品
 *AdminProductsApi* | [**cleanupProductAndStoreImages**](doc//AdminProductsApi.md#cleanupproductandstoreimages) | **POST** /admin/products/images/cleanup | 清理商品/商店壞圖 URL
@@ -556,6 +567,7 @@ Class | Method | HTTP request | Description
  - [AdminResetPasswordParam](doc//AdminResetPasswordParam.md)
  - [AdminStoreSearchParam](doc//AdminStoreSearchParam.md)
  - [AdminStoreUpdateParam](doc//AdminStoreUpdateParam.md)
+ - [AiProductClassificationSuggestion](doc//AiProductClassificationSuggestion.md)
  - [AiStrategyDiscoveryRequest](doc//AiStrategyDiscoveryRequest.md)
  - [AiStrategyDiscoveryResponse](doc//AiStrategyDiscoveryResponse.md)
  - [ApiResponseColdWallet](doc//ApiResponseColdWallet.md)
@@ -624,6 +636,7 @@ Class | Method | HTTP request | Description
  - [ChatSession](doc//ChatSession.md)
  - [ChatSessionQueryParam](doc//ChatSessionQueryParam.md)
  - [CheckoutPreflightResponse](doc//CheckoutPreflightResponse.md)
+ - [ClassificationSuggestionActionRequest](doc//ClassificationSuggestionActionRequest.md)
  - [ClientLog](doc//ClientLog.md)
  - [ClientLogDto](doc//ClientLogDto.md)
  - [ColdWallet](doc//ColdWallet.md)
@@ -800,6 +813,7 @@ Class | Method | HTTP request | Description
  - [PostalSearchParam](doc//PostalSearchParam.md)
  - [PricingState](doc//PricingState.md)
  - [Product](doc//Product.md)
+ - [ProductCategoryChangeRequest](doc//ProductCategoryChangeRequest.md)
  - [ProductClassificationRequest](doc//ProductClassificationRequest.md)
  - [ProductClassificationResponse](doc//ProductClassificationResponse.md)
  - [ProductCreateParam](doc//ProductCreateParam.md)
@@ -810,9 +824,12 @@ Class | Method | HTTP request | Description
  - [ProductReportCreateParam](doc//ProductReportCreateParam.md)
  - [ProductReportResolveParam](doc//ProductReportResolveParam.md)
  - [ProductReportStatsDto](doc//ProductReportStatsDto.md)
+ - [ProductSample](doc//ProductSample.md)
  - [ProductSeachParam](doc//ProductSeachParam.md)
  - [ProductState](doc//ProductState.md)
  - [ProductStats](doc//ProductStats.md)
+ - [ProductTypeDictionary](doc//ProductTypeDictionary.md)
+ - [ProductTypeDictionaryUpsertRequest](doc//ProductTypeDictionaryUpsertRequest.md)
  - [ProductUpdateParam](doc//ProductUpdateParam.md)
  - [PromoCode](doc//PromoCode.md)
  - [PromoCodeStatDto](doc//PromoCodeStatDto.md)
@@ -905,6 +922,10 @@ Class | Method | HTTP request | Description
  - [SuggestionActionParam](doc//SuggestionActionParam.md)
  - [Summary](doc//Summary.md)
  - [TaiwanPostalArea](doc//TaiwanPostalArea.md)
+ - [TaxonomyDryRunRequest](doc//TaxonomyDryRunRequest.md)
+ - [TaxonomyDryRunResponse](doc//TaxonomyDryRunResponse.md)
+ - [TaxonomyProposalImplementedRequest](doc//TaxonomyProposalImplementedRequest.md)
+ - [TaxonomyProposalReviewRequest](doc//TaxonomyProposalReviewRequest.md)
  - [TelegramBotInfo](doc//TelegramBotInfo.md)
  - [TelegramWebAppAuthRequest](doc//TelegramWebAppAuthRequest.md)
  - [TermsState](doc//TermsState.md)

@@ -200,6 +200,8 @@ class ApiClient {
           return AdminStoreSearchParam.fromJson(value);
         case 'AdminStoreUpdateParam':
           return AdminStoreUpdateParam.fromJson(value);
+        case 'AiProductClassificationSuggestion':
+          return AiProductClassificationSuggestion.fromJson(value);
         case 'AiStrategyDiscoveryRequest':
           return AiStrategyDiscoveryRequest.fromJson(value);
         case 'AiStrategyDiscoveryResponse':
@@ -336,6 +338,8 @@ class ApiClient {
           return ChatSessionQueryParam.fromJson(value);
         case 'CheckoutPreflightResponse':
           return CheckoutPreflightResponse.fromJson(value);
+        case 'ClassificationSuggestionActionRequest':
+          return ClassificationSuggestionActionRequest.fromJson(value);
         case 'ClientLog':
           return ClientLog.fromJson(value);
         case 'ClientLogDto':
@@ -688,6 +692,8 @@ class ApiClient {
           return PricingState.fromJson(value);
         case 'Product':
           return Product.fromJson(value);
+        case 'ProductCategoryChangeRequest':
+          return ProductCategoryChangeRequest.fromJson(value);
         case 'ProductClassificationRequest':
           return ProductClassificationRequest.fromJson(value);
         case 'ProductClassificationResponse':
@@ -708,12 +714,18 @@ class ApiClient {
           return ProductReportResolveParam.fromJson(value);
         case 'ProductReportStatsDto':
           return ProductReportStatsDto.fromJson(value);
+        case 'ProductSample':
+          return ProductSample.fromJson(value);
         case 'ProductSeachParam':
           return ProductSeachParam.fromJson(value);
         case 'ProductState':
           return ProductState.fromJson(value);
         case 'ProductStats':
           return ProductStats.fromJson(value);
+        case 'ProductTypeDictionary':
+          return ProductTypeDictionary.fromJson(value);
+        case 'ProductTypeDictionaryUpsertRequest':
+          return ProductTypeDictionaryUpsertRequest.fromJson(value);
         case 'ProductUpdateParam':
           return ProductUpdateParam.fromJson(value);
         case 'PromoCode':
@@ -898,6 +910,14 @@ class ApiClient {
           return Summary.fromJson(value);
         case 'TaiwanPostalArea':
           return TaiwanPostalArea.fromJson(value);
+        case 'TaxonomyDryRunRequest':
+          return TaxonomyDryRunRequest.fromJson(value);
+        case 'TaxonomyDryRunResponse':
+          return TaxonomyDryRunResponse.fromJson(value);
+        case 'TaxonomyProposalImplementedRequest':
+          return TaxonomyProposalImplementedRequest.fromJson(value);
+        case 'TaxonomyProposalReviewRequest':
+          return TaxonomyProposalReviewRequest.fromJson(value);
         case 'TelegramBotInfo':
           return TelegramBotInfo.fromJson(value);
         case 'TelegramWebAppAuthRequest':

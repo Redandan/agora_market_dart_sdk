@@ -21,6 +21,7 @@ class ProductClassificationRequest {
     this.sourceRegion,
     this.sourcePlatform,
     this.createPendingRequest,
+    this.persistSuggestion,
   });
 
   /// 既有商品 ID（可選，用於審計 evidence）
@@ -89,6 +90,15 @@ class ProductClassificationRequest {
   ///
   bool? createPendingRequest;
 
+  /// 是否持久化為 admin 可審核的 AI 分類建議。預設 false。
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? persistSuggestion;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductClassificationRequest &&
     other.productId == productId &&
@@ -98,7 +108,8 @@ class ProductClassificationRequest {
     other.tags == tags &&
     other.sourceRegion == sourceRegion &&
     other.sourcePlatform == sourcePlatform &&
-    other.createPendingRequest == createPendingRequest;
+    other.createPendingRequest == createPendingRequest &&
+    other.persistSuggestion == persistSuggestion;
 
   @override
   int get hashCode =>
@@ -110,10 +121,11 @@ class ProductClassificationRequest {
     (tags == null ? 0 : tags!.hashCode) +
     (sourceRegion == null ? 0 : sourceRegion!.hashCode) +
     (sourcePlatform == null ? 0 : sourcePlatform!.hashCode) +
-    (createPendingRequest == null ? 0 : createPendingRequest!.hashCode);
+    (createPendingRequest == null ? 0 : createPendingRequest!.hashCode) +
+    (persistSuggestion == null ? 0 : persistSuggestion!.hashCode);
 
   @override
-  String toString() => 'ProductClassificationRequest[productId=$productId, productType=$productType, title=$title, description=$description, tags=$tags, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, createPendingRequest=$createPendingRequest]';
+  String toString() => 'ProductClassificationRequest[productId=$productId, productType=$productType, title=$title, description=$description, tags=$tags, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, createPendingRequest=$createPendingRequest, persistSuggestion=$persistSuggestion]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -157,6 +169,11 @@ class ProductClassificationRequest {
     } else {
       json[r'createPendingRequest'] = null;
     }
+    if (this.persistSuggestion != null) {
+      json[r'persistSuggestion'] = this.persistSuggestion;
+    } else {
+      json[r'persistSuggestion'] = null;
+    }
     return json;
   }
 
@@ -187,6 +204,7 @@ class ProductClassificationRequest {
         sourceRegion: mapValueOfType<String>(json, r'sourceRegion'),
         sourcePlatform: mapValueOfType<String>(json, r'sourcePlatform'),
         createPendingRequest: mapValueOfType<bool>(json, r'createPendingRequest'),
+        persistSuggestion: mapValueOfType<bool>(json, r'persistSuggestion'),
       );
     }
     return null;

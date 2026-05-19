@@ -89,6 +89,10 @@
       "description": "提供台灣地區郵遞區號查詢的接口"
     },
     {
+      "name": "admin-product-taxonomy",
+      "description": "商品 AI 分類與 taxonomy 治理 API"
+    },
+    {
       "name": "Betting Markets",
       "description": "對賭市場管理 API"
     },
@@ -8745,6 +8749,373 @@
         }
       }
     },
+    "/admin/product-taxonomy/proposals/{id}/review": {
+      "post": {
+        "tags": [
+          "admin-product-taxonomy"
+        ],
+        "summary": "審核 taxonomy proposal",
+        "operationId": "reviewTaxonomyProposal",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaxonomyProposalReviewRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductCategoryChangeRequest"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/product-taxonomy/proposals/{id}/implemented": {
+      "post": {
+        "tags": [
+          "admin-product-taxonomy"
+        ],
+        "summary": "標記 taxonomy proposal 已實作",
+        "operationId": "markTaxonomyProposalImplemented",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaxonomyProposalImplementedRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductCategoryChangeRequest"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/product-taxonomy/proposals/dry-run": {
+      "post": {
+        "tags": [
+          "admin-product-taxonomy"
+        ],
+        "summary": "bulk recategorization dry-run preview；不修改 DB",
+        "operationId": "dryRunRecategorization",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaxonomyDryRunRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaxonomyDryRunResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/product-taxonomy/product-types": {
+      "get": {
+        "tags": [
+          "admin-product-taxonomy"
+        ],
+        "summary": "列出受控 product type dictionary",
+        "operationId": "listProductTypes",
+        "parameters": [
+          {
+            "name": "statusName",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductTypeDictionary"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "admin-product-taxonomy"
+        ],
+        "summary": "新增或更新受控 product type dictionary",
+        "operationId": "upsertProductType",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductTypeDictionaryUpsertRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductTypeDictionary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/product-taxonomy/product-types/{code}/deprecate": {
+      "post": {
+        "tags": [
+          "admin-product-taxonomy"
+        ],
+        "summary": "將 product type dictionary 標記 DEPRECATED",
+        "operationId": "deprecateProductType",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductTypeDictionary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/product-taxonomy/classification-suggestions/{id}/override": {
+      "post": {
+        "tags": [
+          "admin-product-taxonomy"
+        ],
+        "summary": "以 admin override 套用 AI 商品分類建議",
+        "operationId": "overrideClassificationSuggestion",
+        "parameters": [
+          {
+            "name": "admin",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClassificationSuggestionActionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AiProductClassificationSuggestion"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/product-taxonomy/classification-suggestions/{id}/ignore": {
+      "post": {
+        "tags": [
+          "admin-product-taxonomy"
+        ],
+        "summary": "忽略 AI 商品分類建議",
+        "operationId": "ignoreClassificationSuggestion",
+        "parameters": [
+          {
+            "name": "admin",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClassificationSuggestionActionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AiProductClassificationSuggestion"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/product-taxonomy/classification-suggestions/{id}/apply": {
+      "post": {
+        "tags": [
+          "admin-product-taxonomy"
+        ],
+        "summary": "套用 AI 商品分類建議",
+        "operationId": "applyClassificationSuggestion",
+        "parameters": [
+          {
+            "name": "admin",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClassificationSuggestionActionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AiProductClassificationSuggestion"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/posts/{id}/top": {
       "post": {
         "tags": [
@@ -15642,6 +16013,112 @@
                   "type": "object",
                   "additionalProperties": {
                     "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/product-taxonomy/proposals": {
+      "get": {
+        "tags": [
+          "admin-product-taxonomy"
+        ],
+        "summary": "列出 taxonomy/category/productType proposal",
+        "operationId": "listTaxonomyProposals",
+        "parameters": [
+          {
+            "name": "statusName",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 50
+            }
+          },
+          {
+            "name": "includeTestRecords",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductCategoryChangeRequest"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/product-taxonomy/classification-suggestions": {
+      "get": {
+        "tags": [
+          "admin-product-taxonomy"
+        ],
+        "summary": "列出 AI 商品分類建議",
+        "operationId": "listClassificationSuggestions",
+        "parameters": [
+          {
+            "name": "statusName",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "productId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 50
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AiProductClassificationSuggestion"
                   }
                 }
               }
@@ -25201,6 +25678,10 @@
           "createPendingRequest": {
             "type": "boolean",
             "description": "若需要 taxonomy request，是否同時建立 PENDING 提案。預設 false。"
+          },
+          "persistSuggestion": {
+            "type": "boolean",
+            "description": "是否持久化為 admin 可審核的 AI 分類建議。預設 false。"
           }
         }
       },
@@ -25332,6 +25813,11 @@
             "type": "integer",
             "format": "int64",
             "description": "若 createPendingRequest=true 且有建立，回傳 request id"
+          },
+          "suggestionId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "若 persistSuggestion=true 且有建立/復用，回傳 admin review suggestion id"
           },
           "aiProvider": {
             "type": "string",
@@ -32745,6 +33231,678 @@
           },
           "recommendedAction": {
             "type": "string"
+          }
+        }
+      },
+      "TaxonomyProposalReviewRequest": {
+        "type": "object",
+        "description": "taxonomy proposal 審核請求",
+        "properties": {
+          "decision": {
+            "type": "string"
+          },
+          "reviewerNotes": {
+            "type": "string"
+          }
+        }
+      },
+      "ProductCategoryChangeRequest": {
+        "type": "object",
+        "description": "商品 taxonomy/category/productType 變更提案。只代表待審請求，不會直接修改正式分類。",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "requestType": {
+            "type": "string",
+            "enum": [
+              "ADD",
+              "MERGE",
+              "RENAME",
+              "ALIAS",
+              "DEPRECATE",
+              "PRODUCT_TYPE_ADD",
+              "PRODUCT_TYPE_ALIAS"
+            ]
+          },
+          "targetCode": {
+            "type": "string"
+          },
+          "sourceCodesJson": {
+            "type": "string"
+          },
+          "proposedDisplayName": {
+            "type": "string"
+          },
+          "proposedParentCode": {
+            "type": "string"
+          },
+          "aliasesJson": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "SERVER_AI",
+              "EXTERNAL_MCP_AI",
+              "ADMIN"
+            ]
+          },
+          "evidenceJson": {
+            "type": "string"
+          },
+          "impactJson": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "APPROVED",
+              "REJECTED",
+              "IMPLEMENTED"
+            ]
+          },
+          "reviewerNotes": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reviewedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "implementedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "TaxonomyProposalImplementedRequest": {
+        "type": "object",
+        "description": "taxonomy proposal 標記已實作請求",
+        "properties": {
+          "implementationNotes": {
+            "type": "string"
+          }
+        }
+      },
+      "TaxonomyDryRunRequest": {
+        "type": "object",
+        "description": "商品 taxonomy bulk recategorization dry-run 請求。只預覽不修改。",
+        "properties": {
+          "productIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "currentCategory": {
+            "type": "string",
+            "description": "商品分類枚舉",
+            "enum": [
+              "ELECTRONICS",
+              "MOBILE",
+              "CLOTHING",
+              "SHOES",
+              "BAGS",
+              "BEAUTY",
+              "HEALTH",
+              "FOOD",
+              "HOME",
+              "FURNITURE",
+              "BABY",
+              "TOYS",
+              "PET_SUPPLIES",
+              "SPORTS",
+              "OUTDOOR",
+              "AUTOMOTIVE",
+              "BOOKS",
+              "SECOND_HAND",
+              "DIGITAL_SERVICE",
+              "OTHER"
+            ]
+          },
+          "currentProductType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "description": "商品狀態",
+            "enum": [
+              "ON_SALE",
+              "OFF_SALE",
+              "PENDING_REVIEW",
+              "DELETED"
+            ]
+          },
+          "keyword": {
+            "type": "string"
+          },
+          "proposedCategory": {
+            "type": "string",
+            "description": "商品分類枚舉",
+            "enum": [
+              "ELECTRONICS",
+              "MOBILE",
+              "CLOTHING",
+              "SHOES",
+              "BAGS",
+              "BEAUTY",
+              "HEALTH",
+              "FOOD",
+              "HOME",
+              "FURNITURE",
+              "BABY",
+              "TOYS",
+              "PET_SUPPLIES",
+              "SPORTS",
+              "OUTDOOR",
+              "AUTOMOTIVE",
+              "BOOKS",
+              "SECOND_HAND",
+              "DIGITAL_SERVICE",
+              "OTHER"
+            ]
+          },
+          "proposedProductType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "proposedTags": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "ProductSample": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "currentCategory": {
+            "type": "string",
+            "description": "商品分類枚舉",
+            "enum": [
+              "ELECTRONICS",
+              "MOBILE",
+              "CLOTHING",
+              "SHOES",
+              "BAGS",
+              "BEAUTY",
+              "HEALTH",
+              "FOOD",
+              "HOME",
+              "FURNITURE",
+              "BABY",
+              "TOYS",
+              "PET_SUPPLIES",
+              "SPORTS",
+              "OUTDOOR",
+              "AUTOMOTIVE",
+              "BOOKS",
+              "SECOND_HAND",
+              "DIGITAL_SERVICE",
+              "OTHER"
+            ]
+          },
+          "currentProductType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "currentTags": {
+            "type": "string"
+          },
+          "proposedCategory": {
+            "type": "string",
+            "description": "商品分類枚舉",
+            "enum": [
+              "ELECTRONICS",
+              "MOBILE",
+              "CLOTHING",
+              "SHOES",
+              "BAGS",
+              "BEAUTY",
+              "HEALTH",
+              "FOOD",
+              "HOME",
+              "FURNITURE",
+              "BABY",
+              "TOYS",
+              "PET_SUPPLIES",
+              "SPORTS",
+              "OUTDOOR",
+              "AUTOMOTIVE",
+              "BOOKS",
+              "SECOND_HAND",
+              "DIGITAL_SERVICE",
+              "OTHER"
+            ]
+          },
+          "proposedProductType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "proposedTags": {
+            "type": "string"
+          }
+        }
+      },
+      "TaxonomyDryRunResponse": {
+        "type": "object",
+        "description": "商品 taxonomy bulk recategorization dry-run 回應。無任何 DB mutation。",
+        "properties": {
+          "dryRun": {
+            "type": "boolean"
+          },
+          "affectedProductCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "proposedCategory": {
+            "type": "string",
+            "description": "商品分類枚舉",
+            "enum": [
+              "ELECTRONICS",
+              "MOBILE",
+              "CLOTHING",
+              "SHOES",
+              "BAGS",
+              "BEAUTY",
+              "HEALTH",
+              "FOOD",
+              "HOME",
+              "FURNITURE",
+              "BABY",
+              "TOYS",
+              "PET_SUPPLIES",
+              "SPORTS",
+              "OUTDOOR",
+              "AUTOMOTIVE",
+              "BOOKS",
+              "SECOND_HAND",
+              "DIGITAL_SERVICE",
+              "OTHER"
+            ]
+          },
+          "proposedProductType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "proposedTags": {
+            "type": "string"
+          },
+          "migrationRisk": {
+            "type": "string"
+          },
+          "samples": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductSample"
+            }
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ProductTypeDictionaryUpsertRequest": {
+        "type": "object",
+        "description": "受控 product type dictionary upsert 請求",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "parentCategory": {
+            "type": "string",
+            "description": "商品分類枚舉",
+            "enum": [
+              "ELECTRONICS",
+              "MOBILE",
+              "CLOTHING",
+              "SHOES",
+              "BAGS",
+              "BEAUTY",
+              "HEALTH",
+              "FOOD",
+              "HOME",
+              "FURNITURE",
+              "BABY",
+              "TOYS",
+              "PET_SUPPLIES",
+              "SPORTS",
+              "OUTDOOR",
+              "AUTOMOTIVE",
+              "BOOKS",
+              "SECOND_HAND",
+              "DIGITAL_SERVICE",
+              "OTHER"
+            ]
+          },
+          "aliases": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "PENDING",
+              "DEPRECATED"
+            ]
+          },
+          "createdSource": {
+            "type": "string",
+            "enum": [
+              "SYSTEM",
+              "SERVER_AI",
+              "EXTERNAL_MCP_AI",
+              "ADMIN"
+            ]
+          }
+        }
+      },
+      "ProductTypeDictionary": {
+        "type": "object",
+        "description": "受控 productType/display facet 字典。AI 只能選 ACTIVE 值或建立 pending request。",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "code": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "parentCategory": {
+            "type": "string",
+            "description": "商品分類枚舉",
+            "enum": [
+              "ELECTRONICS",
+              "MOBILE",
+              "CLOTHING",
+              "SHOES",
+              "BAGS",
+              "BEAUTY",
+              "HEALTH",
+              "FOOD",
+              "HOME",
+              "FURNITURE",
+              "BABY",
+              "TOYS",
+              "PET_SUPPLIES",
+              "SPORTS",
+              "OUTDOOR",
+              "AUTOMOTIVE",
+              "BOOKS",
+              "SECOND_HAND",
+              "DIGITAL_SERVICE",
+              "OTHER"
+            ]
+          },
+          "aliasesJson": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "PENDING",
+              "DEPRECATED"
+            ]
+          },
+          "createdSource": {
+            "type": "string",
+            "enum": [
+              "SYSTEM",
+              "SERVER_AI",
+              "EXTERNAL_MCP_AI",
+              "ADMIN"
+            ]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ClassificationSuggestionActionRequest": {
+        "type": "object",
+        "description": "AI 分類建議 apply/override 請求",
+        "properties": {
+          "reviewerNotes": {
+            "type": "string"
+          },
+          "overrideReason": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string",
+            "description": "商品分類枚舉",
+            "enum": [
+              "ELECTRONICS",
+              "MOBILE",
+              "CLOTHING",
+              "SHOES",
+              "BAGS",
+              "BEAUTY",
+              "HEALTH",
+              "FOOD",
+              "HOME",
+              "FURNITURE",
+              "BABY",
+              "TOYS",
+              "PET_SUPPLIES",
+              "SPORTS",
+              "OUTDOOR",
+              "AUTOMOTIVE",
+              "BOOKS",
+              "SECOND_HAND",
+              "DIGITAL_SERVICE",
+              "OTHER"
+            ]
+          },
+          "productType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sourceRegion": {
+            "type": "string"
+          },
+          "sourcePlatform": {
+            "type": "string"
+          }
+        }
+      },
+      "AiProductClassificationSuggestion": {
+        "type": "object",
+        "description": "AI 商品分類建議審計記錄。只有 admin 明確套用才會修改商品。",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sellerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "inputSnapshotJson": {
+            "type": "string"
+          },
+          "suggestedCategory": {
+            "type": "string",
+            "description": "商品分類枚舉",
+            "enum": [
+              "ELECTRONICS",
+              "MOBILE",
+              "CLOTHING",
+              "SHOES",
+              "BAGS",
+              "BEAUTY",
+              "HEALTH",
+              "FOOD",
+              "HOME",
+              "FURNITURE",
+              "BABY",
+              "TOYS",
+              "PET_SUPPLIES",
+              "SPORTS",
+              "OUTDOOR",
+              "AUTOMOTIVE",
+              "BOOKS",
+              "SECOND_HAND",
+              "DIGITAL_SERVICE",
+              "OTHER"
+            ]
+          },
+          "suggestedCategoryConfidence": {
+            "type": "number"
+          },
+          "alternativeCategoriesJson": {
+            "type": "string"
+          },
+          "suggestedProductType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "suggestedProductTypeConfidence": {
+            "type": "number"
+          },
+          "suggestedTagsJson": {
+            "type": "string"
+          },
+          "suggestedSourceRegion": {
+            "type": "string"
+          },
+          "suggestedSourcePlatform": {
+            "type": "string"
+          },
+          "modelProvider": {
+            "type": "string"
+          },
+          "modelName": {
+            "type": "string"
+          },
+          "promptVersion": {
+            "type": "string"
+          },
+          "classifierVersion": {
+            "type": "string"
+          },
+          "rawResponseJson": {
+            "type": "string"
+          },
+          "normalizedOutputJson": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": "number"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "APPLIED",
+              "IGNORED",
+              "OVERRIDDEN"
+            ]
+          },
+          "reviewedBy": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "reviewerNotes": {
+            "type": "string"
+          },
+          "overrideReason": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reviewedAt": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
