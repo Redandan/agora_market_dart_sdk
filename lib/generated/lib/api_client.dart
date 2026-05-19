@@ -316,6 +316,8 @@ class ApiClient {
           return CartSummary.fromJson(value);
         case 'CartSummaryDTO':
           return CartSummaryDTO.fromJson(value);
+        case 'CategoryCandidate':
+          return CategoryCandidate.fromJson(value);
         case 'ChangePasswordParam':
           return ChangePasswordParam.fromJson(value);
         case 'ChannelStatDto':
@@ -686,6 +688,10 @@ class ApiClient {
           return PricingState.fromJson(value);
         case 'Product':
           return Product.fromJson(value);
+        case 'ProductClassificationRequest':
+          return ProductClassificationRequest.fromJson(value);
+        case 'ProductClassificationResponse':
+          return ProductClassificationResponse.fromJson(value);
         case 'ProductCreateParam':
           return ProductCreateParam.fromJson(value);
         case 'ProductDraftRequest':

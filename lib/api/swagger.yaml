@@ -4096,6 +4096,38 @@
         }
       }
     },
+    "/products/classification/suggest": {
+      "post": {
+        "tags": [
+          "products"
+        ],
+        "summary": "商品分類建議",
+        "description": "低風險 server-side AI/heuristic 分類助手。只回傳既有 enum 建議或 pending request，不會修改正式分類或商品資料。",
+        "operationId": "suggestClassification",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductClassificationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductClassificationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/products/batch-create": {
       "post": {
         "tags": [
@@ -25115,6 +25147,212 @@
           "stock",
           "title"
         ]
+      },
+      "ProductClassificationRequest": {
+        "type": "object",
+        "description": "商品分類建議請求。只做建議或 pending request，不會修改商品。",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "既有商品 ID（可選，用於審計 evidence）"
+          },
+          "productType": {
+            "type": "string",
+            "description": "商品類型（可選；未提供時會嘗試推斷）",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "description": "商品標題或賣家輸入",
+            "example": "Kirkland 即溶咖啡 454g",
+            "maxLength": 200,
+            "minLength": 0
+          },
+          "description": {
+            "type": "string",
+            "description": "商品描述",
+            "maxLength": 1000,
+            "minLength": 0
+          },
+          "tags": {
+            "type": "string",
+            "description": "既有或候選 tags，逗號分隔",
+            "maxLength": 255,
+            "minLength": 0
+          },
+          "sourceRegion": {
+            "type": "string",
+            "description": "數位商品來源地區",
+            "example": "JP",
+            "maxLength": 10,
+            "minLength": 0
+          },
+          "sourcePlatform": {
+            "type": "string",
+            "description": "來源平台",
+            "example": "Costco TW",
+            "maxLength": 100,
+            "minLength": 0
+          },
+          "createPendingRequest": {
+            "type": "boolean",
+            "description": "若需要 taxonomy request，是否同時建立 PENDING 提案。預設 false。"
+          }
+        }
+      },
+      "CategoryCandidate": {
+        "type": "object",
+        "description": "候選分類",
+        "properties": {
+          "category": {
+            "type": "string",
+            "description": "商品分類枚舉",
+            "enum": [
+              "ELECTRONICS",
+              "MOBILE",
+              "CLOTHING",
+              "SHOES",
+              "BAGS",
+              "BEAUTY",
+              "HEALTH",
+              "FOOD",
+              "HOME",
+              "FURNITURE",
+              "BABY",
+              "TOYS",
+              "PET_SUPPLIES",
+              "SPORTS",
+              "OUTDOOR",
+              "AUTOMOTIVE",
+              "BOOKS",
+              "SECOND_HAND",
+              "DIGITAL_SERVICE",
+              "OTHER"
+            ]
+          },
+          "confidence": {
+            "type": "number",
+            "format": "double"
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      },
+      "ProductClassificationResponse": {
+        "type": "object",
+        "description": "商品分類建議結果。所有正式分類值都受 enum whitelist 限制。",
+        "properties": {
+          "suggestedProductType": {
+            "type": "string",
+            "description": "建議商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "suggestedCategory": {
+            "type": "string",
+            "description": "建議 canonical category",
+            "enum": [
+              "ELECTRONICS",
+              "MOBILE",
+              "CLOTHING",
+              "SHOES",
+              "BAGS",
+              "BEAUTY",
+              "HEALTH",
+              "FOOD",
+              "HOME",
+              "FURNITURE",
+              "BABY",
+              "TOYS",
+              "PET_SUPPLIES",
+              "SPORTS",
+              "OUTDOOR",
+              "AUTOMOTIVE",
+              "BOOKS",
+              "SECOND_HAND",
+              "DIGITAL_SERVICE",
+              "OTHER"
+            ]
+          },
+          "categoryConfidence": {
+            "type": "number",
+            "format": "double",
+            "description": "分類信心 0..1"
+          },
+          "reason": {
+            "type": "string",
+            "description": "分類理由"
+          },
+          "alternativeCategories": {
+            "type": "array",
+            "description": "候選替代分類",
+            "items": {
+              "$ref": "#/components/schemas/CategoryCandidate"
+            }
+          },
+          "suggestedTags": {
+            "type": "array",
+            "description": "建議 tags",
+            "items": {
+              "type": "string"
+            }
+          },
+          "suggestedSourceRegion": {
+            "type": "string",
+            "description": "建議來源地區"
+          },
+          "suggestedSourcePlatform": {
+            "type": "string",
+            "description": "建議來源平台"
+          },
+          "needsTaxonomyRequest": {
+            "type": "boolean",
+            "description": "是否需要 taxonomy/category/productType pending request"
+          },
+          "taxonomyRequestType": {
+            "type": "string",
+            "description": "建議的 taxonomy request type"
+          },
+          "taxonomyTargetCode": {
+            "type": "string",
+            "description": "建議的 pending request target code"
+          },
+          "taxonomyReason": {
+            "type": "string",
+            "description": "taxonomy request 原因"
+          },
+          "pendingRequestId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "若 createPendingRequest=true 且有建立，回傳 request id"
+          },
+          "aiProvider": {
+            "type": "string",
+            "description": "AI provider 或 heuristic"
+          },
+          "fallbackUsed": {
+            "type": "boolean",
+            "description": "是否 fallback 到 deterministic heuristic"
+          },
+          "rawResponse": {
+            "type": "string",
+            "description": "AI 原始回應/debug"
+          },
+          "warnings": {
+            "type": "array",
+            "description": "警告訊息",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
       },
       "PostCreateParam": {
         "type": "object",

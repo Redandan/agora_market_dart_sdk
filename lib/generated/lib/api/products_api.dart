@@ -809,6 +809,62 @@ class ProductsApi {
     }
   }
 
+  /// 商品分類建議
+  ///
+  /// 低風險 server-side AI/heuristic 分類助手。只回傳既有 enum 建議或 pending request，不會修改正式分類或商品資料。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [ProductClassificationRequest] productClassificationRequest (required):
+  Future<Response> suggestClassificationWithHttpInfo(ProductClassificationRequest productClassificationRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/products/classification/suggest';
+
+    // ignore: prefer_final_locals
+    Object? postBody = productClassificationRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 商品分類建議
+  ///
+  /// 低風險 server-side AI/heuristic 分類助手。只回傳既有 enum 建議或 pending request，不會修改正式分類或商品資料。
+  ///
+  /// Parameters:
+  ///
+  /// * [ProductClassificationRequest] productClassificationRequest (required):
+  Future<ProductClassificationResponse?> suggestClassification(ProductClassificationRequest productClassificationRequest,) async {
+    final response = await suggestClassificationWithHttpInfo(productClassificationRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductClassificationResponse',) as ProductClassificationResponse;
+    
+    }
+    return null;
+  }
+
   /// 更新商品
   ///
   /// Note: This method returns the HTTP [Response].

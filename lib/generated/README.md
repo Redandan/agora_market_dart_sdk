@@ -425,6 +425,7 @@ Class | Method | HTTP request | Description
 *ProductsApi* | [**naturalSearch**](doc//ProductsApi.md#naturalsearch) | **POST** /products/search/natural | 自然語言商品搜尋
 *ProductsApi* | [**searchProducts**](doc//ProductsApi.md#searchproducts) | **POST** /products/search | 搜索商品
 *ProductsApi* | [**setStock**](doc//ProductsApi.md#setstock) | **POST** /products/{id}/stock/set | 設置商品庫存
+*ProductsApi* | [**suggestClassification**](doc//ProductsApi.md#suggestclassification) | **POST** /products/classification/suggest | 商品分類建議
 *ProductsApi* | [**updateProduct**](doc//ProductsApi.md#updateproduct) | **POST** /products/update | 更新商品
 *PromoCodesApi* | [**applyPromoCode**](doc//PromoCodesApi.md#applypromocode) | **POST** /promo-codes/apply | 申請推廣碼
 *PromoCodesApi* | [**batchReviewPromoCodes**](doc//PromoCodesApi.md#batchreviewpromocodes) | **POST** /promo-codes/batch-review | 批量審核推廣碼
@@ -613,6 +614,7 @@ Class | Method | HTTP request | Description
  - [CartSearchParam](doc//CartSearchParam.md)
  - [CartSummary](doc//CartSummary.md)
  - [CartSummaryDTO](doc//CartSummaryDTO.md)
+ - [CategoryCandidate](doc//CategoryCandidate.md)
  - [ChangePasswordParam](doc//ChangePasswordParam.md)
  - [ChannelStatDto](doc//ChannelStatDto.md)
  - [ChatMessage](doc//ChatMessage.md)
@@ -798,6 +800,8 @@ Class | Method | HTTP request | Description
  - [PostalSearchParam](doc//PostalSearchParam.md)
  - [PricingState](doc//PricingState.md)
  - [Product](doc//Product.md)
+ - [ProductClassificationRequest](doc//ProductClassificationRequest.md)
+ - [ProductClassificationResponse](doc//ProductClassificationResponse.md)
  - [ProductCreateParam](doc//ProductCreateParam.md)
  - [ProductDraftRequest](doc//ProductDraftRequest.md)
  - [ProductDraftResponse](doc//ProductDraftResponse.md)
