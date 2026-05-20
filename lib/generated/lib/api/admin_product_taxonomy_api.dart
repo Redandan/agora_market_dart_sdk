@@ -22,12 +22,10 @@ class AdminProductTaxonomyApi {
   ///
   /// Parameters:
   ///
-  /// * [User] admin (required):
-  ///
   /// * [int] id (required):
   ///
   /// * [ClassificationSuggestionActionRequest] classificationSuggestionActionRequest:
-  Future<Response> applyClassificationSuggestionWithHttpInfo(User admin, int id, { ClassificationSuggestionActionRequest? classificationSuggestionActionRequest, }) async {
+  Future<Response> applyClassificationSuggestionWithHttpInfo(int id, { ClassificationSuggestionActionRequest? classificationSuggestionActionRequest, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/product-taxonomy/classification-suggestions/{id}/apply'
       .replaceAll('{id}', id.toString());
@@ -38,8 +36,6 @@ class AdminProductTaxonomyApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'admin', admin));
 
     const contentTypes = <String>['application/json'];
 
@@ -59,13 +55,11 @@ class AdminProductTaxonomyApi {
   ///
   /// Parameters:
   ///
-  /// * [User] admin (required):
-  ///
   /// * [int] id (required):
   ///
   /// * [ClassificationSuggestionActionRequest] classificationSuggestionActionRequest:
-  Future<AiProductClassificationSuggestion?> applyClassificationSuggestion(User admin, int id, { ClassificationSuggestionActionRequest? classificationSuggestionActionRequest, }) async {
-    final response = await applyClassificationSuggestionWithHttpInfo(admin, id,  classificationSuggestionActionRequest: classificationSuggestionActionRequest, );
+  Future<AiProductClassificationSuggestion?> applyClassificationSuggestion(int id, { ClassificationSuggestionActionRequest? classificationSuggestionActionRequest, }) async {
+    final response = await applyClassificationSuggestionWithHttpInfo(id,  classificationSuggestionActionRequest: classificationSuggestionActionRequest, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -190,12 +184,10 @@ class AdminProductTaxonomyApi {
   ///
   /// Parameters:
   ///
-  /// * [User] admin (required):
-  ///
   /// * [int] id (required):
   ///
   /// * [ClassificationSuggestionActionRequest] classificationSuggestionActionRequest:
-  Future<Response> ignoreClassificationSuggestionWithHttpInfo(User admin, int id, { ClassificationSuggestionActionRequest? classificationSuggestionActionRequest, }) async {
+  Future<Response> ignoreClassificationSuggestionWithHttpInfo(int id, { ClassificationSuggestionActionRequest? classificationSuggestionActionRequest, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/product-taxonomy/classification-suggestions/{id}/ignore'
       .replaceAll('{id}', id.toString());
@@ -206,8 +198,6 @@ class AdminProductTaxonomyApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'admin', admin));
 
     const contentTypes = <String>['application/json'];
 
@@ -227,13 +217,11 @@ class AdminProductTaxonomyApi {
   ///
   /// Parameters:
   ///
-  /// * [User] admin (required):
-  ///
   /// * [int] id (required):
   ///
   /// * [ClassificationSuggestionActionRequest] classificationSuggestionActionRequest:
-  Future<AiProductClassificationSuggestion?> ignoreClassificationSuggestion(User admin, int id, { ClassificationSuggestionActionRequest? classificationSuggestionActionRequest, }) async {
-    final response = await ignoreClassificationSuggestionWithHttpInfo(admin, id,  classificationSuggestionActionRequest: classificationSuggestionActionRequest, );
+  Future<AiProductClassificationSuggestion?> ignoreClassificationSuggestion(int id, { ClassificationSuggestionActionRequest? classificationSuggestionActionRequest, }) async {
+    final response = await ignoreClassificationSuggestionWithHttpInfo(id,  classificationSuggestionActionRequest: classificationSuggestionActionRequest, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -522,12 +510,10 @@ class AdminProductTaxonomyApi {
   ///
   /// Parameters:
   ///
-  /// * [User] admin (required):
-  ///
   /// * [int] id (required):
   ///
   /// * [ClassificationSuggestionActionRequest] classificationSuggestionActionRequest (required):
-  Future<Response> overrideClassificationSuggestionWithHttpInfo(User admin, int id, ClassificationSuggestionActionRequest classificationSuggestionActionRequest,) async {
+  Future<Response> overrideClassificationSuggestionWithHttpInfo(int id, ClassificationSuggestionActionRequest classificationSuggestionActionRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/product-taxonomy/classification-suggestions/{id}/override'
       .replaceAll('{id}', id.toString());
@@ -538,8 +524,6 @@ class AdminProductTaxonomyApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'admin', admin));
 
     const contentTypes = <String>['application/json'];
 
@@ -559,13 +543,11 @@ class AdminProductTaxonomyApi {
   ///
   /// Parameters:
   ///
-  /// * [User] admin (required):
-  ///
   /// * [int] id (required):
   ///
   /// * [ClassificationSuggestionActionRequest] classificationSuggestionActionRequest (required):
-  Future<AiProductClassificationSuggestion?> overrideClassificationSuggestion(User admin, int id, ClassificationSuggestionActionRequest classificationSuggestionActionRequest,) async {
-    final response = await overrideClassificationSuggestionWithHttpInfo(admin, id, classificationSuggestionActionRequest,);
+  Future<AiProductClassificationSuggestion?> overrideClassificationSuggestion(int id, ClassificationSuggestionActionRequest classificationSuggestionActionRequest,) async {
+    final response = await overrideClassificationSuggestionWithHttpInfo(id, classificationSuggestionActionRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

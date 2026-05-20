@@ -8977,14 +8977,6 @@
         "operationId": "overrideClassificationSuggestion",
         "parameters": [
           {
-            "name": "admin",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/User"
-            }
-          },
-          {
             "name": "id",
             "in": "path",
             "required": true,
@@ -9027,14 +9019,6 @@
         "operationId": "ignoreClassificationSuggestion",
         "parameters": [
           {
-            "name": "admin",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/User"
-            }
-          },
-          {
             "name": "id",
             "in": "path",
             "required": true,
@@ -9075,14 +9059,6 @@
         "summary": "套用 AI 商品分類建議",
         "operationId": "applyClassificationSuggestion",
         "parameters": [
-          {
-            "name": "admin",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/User"
-            }
-          },
           {
             "name": "id",
             "in": "path",
