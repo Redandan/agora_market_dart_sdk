@@ -692,6 +692,8 @@ class ApiClient {
           return PricingState.fromJson(value);
         case 'Product':
           return Product.fromJson(value);
+        case 'ProductCategoryCatalogResponse':
+          return ProductCategoryCatalogResponse.fromJson(value);
         case 'ProductCategoryChangeRequest':
           return ProductCategoryChangeRequest.fromJson(value);
         case 'ProductClassificationRequest':
@@ -726,6 +728,8 @@ class ApiClient {
           return ProductTypeDictionary.fromJson(value);
         case 'ProductTypeDictionaryUpsertRequest':
           return ProductTypeDictionaryUpsertRequest.fromJson(value);
+        case 'ProductTypeOption':
+          return ProductTypeOption.fromJson(value);
         case 'ProductUpdateParam':
           return ProductUpdateParam.fromJson(value);
         case 'PromoCode':

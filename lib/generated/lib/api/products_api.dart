@@ -648,6 +648,53 @@ class ProductsApi {
     }
   }
 
+  /// Public buyer-facing product categories
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> listCategoriesWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/products/categories';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Public buyer-facing product categories
+  Future<List<ProductCategoryCatalogResponse>?> listCategories() async {
+    final response = await listCategoriesWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<ProductCategoryCatalogResponse>') as List)
+        .cast<ProductCategoryCatalogResponse>()
+        .toList(growable: false);
+
+    }
+    return null;
+  }
+
   /// 自然語言商品搜尋
   ///
   /// 買家用自然語言表達需求(例如「我要日本 Apple 禮物卡 5000 日幣」),Groq 解析意圖抽出 productType / sourceRegion / keyword 等 filter,回匹配商品。AI 失敗降級為純關鍵字搜尋(aiFallbackUsed=true)。

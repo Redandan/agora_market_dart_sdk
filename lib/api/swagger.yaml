@@ -13046,6 +13046,30 @@
         }
       }
     },
+    "/products/categories": {
+      "get": {
+        "tags": [
+          "products"
+        ],
+        "summary": "Public buyer-facing product categories",
+        "operationId": "listCategories",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductCategoryCatalogResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/posts/{id}": {
       "get": {
         "tags": [
@@ -36160,6 +36184,120 @@
           },
           "outOfStock": {
             "type": "boolean"
+          }
+        }
+      },
+      "ProductCategoryCatalogResponse": {
+        "type": "object",
+        "description": "Public buyer-facing product category catalog entry",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Stable category code usable by ProductSeachParam.category"
+          },
+          "displayName": {
+            "type": "string",
+            "description": "Buyer-facing display name"
+          },
+          "parentCategory": {
+            "type": "string",
+            "description": "Parent category. Top-level categories point to themselves.",
+            "enum": [
+              "ELECTRONICS",
+              "MOBILE",
+              "CLOTHING",
+              "SHOES",
+              "BAGS",
+              "BEAUTY",
+              "HEALTH",
+              "FOOD",
+              "HOME",
+              "FURNITURE",
+              "BABY",
+              "TOYS",
+              "PET_SUPPLIES",
+              "SPORTS",
+              "OUTDOOR",
+              "AUTOMOTIVE",
+              "BOOKS",
+              "SECOND_HAND",
+              "DIGITAL_SERVICE",
+              "OTHER"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "description": "Public display status",
+            "enum": [
+              "ACTIVE",
+              "PENDING",
+              "DEPRECATED"
+            ]
+          },
+          "sortOrder": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Stable ordering hint for frontstage category chips"
+          },
+          "iconKey": {
+            "type": "string",
+            "description": "Frontend icon mapping key"
+          },
+          "productTypes": {
+            "type": "array",
+            "description": "Active product-type dictionary rows mapped under this category",
+            "items": {
+              "$ref": "#/components/schemas/ProductTypeOption"
+            }
+          }
+        }
+      },
+      "ProductTypeOption": {
+        "type": "object",
+        "description": "Active product-type option under a public category",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Stable product type code"
+          },
+          "displayName": {
+            "type": "string",
+            "description": "Buyer-facing display name"
+          },
+          "parentCategory": {
+            "type": "string",
+            "description": "Category code usable by ProductSeachParam.category",
+            "enum": [
+              "ELECTRONICS",
+              "MOBILE",
+              "CLOTHING",
+              "SHOES",
+              "BAGS",
+              "BEAUTY",
+              "HEALTH",
+              "FOOD",
+              "HOME",
+              "FURNITURE",
+              "BABY",
+              "TOYS",
+              "PET_SUPPLIES",
+              "SPORTS",
+              "OUTDOOR",
+              "AUTOMOTIVE",
+              "BOOKS",
+              "SECOND_HAND",
+              "DIGITAL_SERVICE",
+              "OTHER"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "description": "Public display status",
+            "enum": [
+              "ACTIVE",
+              "PENDING",
+              "DEPRECATED"
+            ]
           }
         }
       },

@@ -433,6 +433,7 @@ Class | Method | HTTP request | Description
 *ProductsApi* | [**getOutOfStockProducts**](doc//ProductsApi.md#getoutofstockproducts) | **GET** /products/out-of-stock | 獲取缺貨商品列表
 *ProductsApi* | [**getProductById**](doc//ProductsApi.md#getproductbyid) | **GET** /products/{id} | 根據ID獲取商品
 *ProductsApi* | [**increaseStock**](doc//ProductsApi.md#increasestock) | **POST** /products/{id}/stock/increase | 增加商品庫存
+*ProductsApi* | [**listCategories**](doc//ProductsApi.md#listcategories) | **GET** /products/categories | Public buyer-facing product categories
 *ProductsApi* | [**naturalSearch**](doc//ProductsApi.md#naturalsearch) | **POST** /products/search/natural | 自然語言商品搜尋
 *ProductsApi* | [**searchProducts**](doc//ProductsApi.md#searchproducts) | **POST** /products/search | 搜索商品
 *ProductsApi* | [**setStock**](doc//ProductsApi.md#setstock) | **POST** /products/{id}/stock/set | 設置商品庫存
@@ -813,6 +814,7 @@ Class | Method | HTTP request | Description
  - [PostalSearchParam](doc//PostalSearchParam.md)
  - [PricingState](doc//PricingState.md)
  - [Product](doc//Product.md)
+ - [ProductCategoryCatalogResponse](doc//ProductCategoryCatalogResponse.md)
  - [ProductCategoryChangeRequest](doc//ProductCategoryChangeRequest.md)
  - [ProductClassificationRequest](doc//ProductClassificationRequest.md)
  - [ProductClassificationResponse](doc//ProductClassificationResponse.md)
@@ -830,6 +832,7 @@ Class | Method | HTTP request | Description
  - [ProductStats](doc//ProductStats.md)
  - [ProductTypeDictionary](doc//ProductTypeDictionary.md)
  - [ProductTypeDictionaryUpsertRequest](doc//ProductTypeDictionaryUpsertRequest.md)
+ - [ProductTypeOption](doc//ProductTypeOption.md)
  - [ProductUpdateParam](doc//ProductUpdateParam.md)
  - [PromoCode](doc//PromoCode.md)
  - [PromoCodeStatDto](doc//PromoCodeStatDto.md)
