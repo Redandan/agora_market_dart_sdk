@@ -31,6 +31,12 @@ class ProductClassificationResponse {
     this.fallbackUsed,
     this.rawResponse,
     this.warnings = const [],
+    this.tags = const [],
+    this.category,
+    this.productType,
+    this.sourceRegion,
+    this.sourcePlatform,
+    this.confidence,
   });
 
   /// 建議商品類型
@@ -165,6 +171,42 @@ class ProductClassificationResponse {
   /// 警告訊息
   List<String> warnings;
 
+  /// Issue #519 compatibility alias for suggestedTags
+  List<String> tags;
+
+  /// Issue #519 compatibility alias for suggestedCategory
+  ProductClassificationResponseCategoryEnum? category;
+
+  /// Issue #519 compatibility alias for suggestedProductType
+  ProductClassificationResponseProductTypeEnum? productType;
+
+  /// Issue #519 compatibility alias for suggestedSourceRegion
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sourceRegion;
+
+  /// Issue #519 compatibility alias for suggestedSourcePlatform
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sourcePlatform;
+
+  /// Issue #519 compatibility alias for categoryConfidence
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? confidence;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductClassificationResponse &&
     other.suggestedProductType == suggestedProductType &&
@@ -184,7 +226,13 @@ class ProductClassificationResponse {
     other.aiProvider == aiProvider &&
     other.fallbackUsed == fallbackUsed &&
     other.rawResponse == rawResponse &&
-    _deepEquality.equals(other.warnings, warnings);
+    _deepEquality.equals(other.warnings, warnings) &&
+    _deepEquality.equals(other.tags, tags) &&
+    other.category == category &&
+    other.productType == productType &&
+    other.sourceRegion == sourceRegion &&
+    other.sourcePlatform == sourcePlatform &&
+    other.confidence == confidence;
 
   @override
   int get hashCode =>
@@ -206,10 +254,16 @@ class ProductClassificationResponse {
     (aiProvider == null ? 0 : aiProvider!.hashCode) +
     (fallbackUsed == null ? 0 : fallbackUsed!.hashCode) +
     (rawResponse == null ? 0 : rawResponse!.hashCode) +
-    (warnings.hashCode);
+    (warnings.hashCode) +
+    (tags.hashCode) +
+    (category == null ? 0 : category!.hashCode) +
+    (productType == null ? 0 : productType!.hashCode) +
+    (sourceRegion == null ? 0 : sourceRegion!.hashCode) +
+    (sourcePlatform == null ? 0 : sourcePlatform!.hashCode) +
+    (confidence == null ? 0 : confidence!.hashCode);
 
   @override
-  String toString() => 'ProductClassificationResponse[suggestedProductType=$suggestedProductType, suggestedCategory=$suggestedCategory, categoryConfidence=$categoryConfidence, reason=$reason, alternativeCategories=$alternativeCategories, suggestedTags=$suggestedTags, suggestedSourceRegion=$suggestedSourceRegion, suggestedSourcePlatform=$suggestedSourcePlatform, needsTaxonomyRequest=$needsTaxonomyRequest, taxonomyRequestType=$taxonomyRequestType, taxonomyTargetCode=$taxonomyTargetCode, taxonomyReason=$taxonomyReason, pendingRequestId=$pendingRequestId, suggestionId=$suggestionId, aiProvider=$aiProvider, fallbackUsed=$fallbackUsed, rawResponse=$rawResponse, warnings=$warnings]';
+  String toString() => 'ProductClassificationResponse[suggestedProductType=$suggestedProductType, suggestedCategory=$suggestedCategory, categoryConfidence=$categoryConfidence, reason=$reason, alternativeCategories=$alternativeCategories, suggestedTags=$suggestedTags, suggestedSourceRegion=$suggestedSourceRegion, suggestedSourcePlatform=$suggestedSourcePlatform, needsTaxonomyRequest=$needsTaxonomyRequest, taxonomyRequestType=$taxonomyRequestType, taxonomyTargetCode=$taxonomyTargetCode, taxonomyReason=$taxonomyReason, pendingRequestId=$pendingRequestId, suggestionId=$suggestionId, aiProvider=$aiProvider, fallbackUsed=$fallbackUsed, rawResponse=$rawResponse, warnings=$warnings, tags=$tags, category=$category, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, confidence=$confidence]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -291,6 +345,32 @@ class ProductClassificationResponse {
       json[r'rawResponse'] = null;
     }
       json[r'warnings'] = this.warnings;
+      json[r'tags'] = this.tags;
+    if (this.category != null) {
+      json[r'category'] = this.category;
+    } else {
+      json[r'category'] = null;
+    }
+    if (this.productType != null) {
+      json[r'productType'] = this.productType;
+    } else {
+      json[r'productType'] = null;
+    }
+    if (this.sourceRegion != null) {
+      json[r'sourceRegion'] = this.sourceRegion;
+    } else {
+      json[r'sourceRegion'] = null;
+    }
+    if (this.sourcePlatform != null) {
+      json[r'sourcePlatform'] = this.sourcePlatform;
+    } else {
+      json[r'sourcePlatform'] = null;
+    }
+    if (this.confidence != null) {
+      json[r'confidence'] = this.confidence;
+    } else {
+      json[r'confidence'] = null;
+    }
     return json;
   }
 
@@ -335,6 +415,14 @@ class ProductClassificationResponse {
         warnings: json[r'warnings'] is Iterable
             ? (json[r'warnings'] as Iterable).cast<String>().toList(growable: false)
             : const [],
+        tags: json[r'tags'] is Iterable
+            ? (json[r'tags'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
+        category: ProductClassificationResponseCategoryEnum.fromJson(json[r'category']),
+        productType: ProductClassificationResponseProductTypeEnum.fromJson(json[r'productType']),
+        sourceRegion: mapValueOfType<String>(json, r'sourceRegion'),
+        sourcePlatform: mapValueOfType<String>(json, r'sourcePlatform'),
+        confidence: mapValueOfType<double>(json, r'confidence'),
       );
     }
     return null;
@@ -590,6 +678,214 @@ class ProductClassificationResponseSuggestedCategoryEnumTypeTransformer {
 
   /// Singleton [ProductClassificationResponseSuggestedCategoryEnumTypeTransformer] instance.
   static ProductClassificationResponseSuggestedCategoryEnumTypeTransformer? _instance;
+}
+
+
+/// Issue #519 compatibility alias for suggestedCategory
+class ProductClassificationResponseCategoryEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ProductClassificationResponseCategoryEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const ELECTRONICS = ProductClassificationResponseCategoryEnum._(r'ELECTRONICS');
+  static const MOBILE = ProductClassificationResponseCategoryEnum._(r'MOBILE');
+  static const CLOTHING = ProductClassificationResponseCategoryEnum._(r'CLOTHING');
+  static const SHOES = ProductClassificationResponseCategoryEnum._(r'SHOES');
+  static const BAGS = ProductClassificationResponseCategoryEnum._(r'BAGS');
+  static const BEAUTY = ProductClassificationResponseCategoryEnum._(r'BEAUTY');
+  static const HEALTH = ProductClassificationResponseCategoryEnum._(r'HEALTH');
+  static const FOOD = ProductClassificationResponseCategoryEnum._(r'FOOD');
+  static const HOME = ProductClassificationResponseCategoryEnum._(r'HOME');
+  static const FURNITURE = ProductClassificationResponseCategoryEnum._(r'FURNITURE');
+  static const BABY = ProductClassificationResponseCategoryEnum._(r'BABY');
+  static const TOYS = ProductClassificationResponseCategoryEnum._(r'TOYS');
+  static const PET_SUPPLIES = ProductClassificationResponseCategoryEnum._(r'PET_SUPPLIES');
+  static const SPORTS = ProductClassificationResponseCategoryEnum._(r'SPORTS');
+  static const OUTDOOR = ProductClassificationResponseCategoryEnum._(r'OUTDOOR');
+  static const AUTOMOTIVE = ProductClassificationResponseCategoryEnum._(r'AUTOMOTIVE');
+  static const BOOKS = ProductClassificationResponseCategoryEnum._(r'BOOKS');
+  static const SECOND_HAND = ProductClassificationResponseCategoryEnum._(r'SECOND_HAND');
+  static const DIGITAL_SERVICE = ProductClassificationResponseCategoryEnum._(r'DIGITAL_SERVICE');
+  static const OTHER = ProductClassificationResponseCategoryEnum._(r'OTHER');
+  static const unknownDefaultOpenApi = ProductClassificationResponseCategoryEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ProductClassificationResponseCategoryEnum].
+  static const values = <ProductClassificationResponseCategoryEnum>[
+    ELECTRONICS,
+    MOBILE,
+    CLOTHING,
+    SHOES,
+    BAGS,
+    BEAUTY,
+    HEALTH,
+    FOOD,
+    HOME,
+    FURNITURE,
+    BABY,
+    TOYS,
+    PET_SUPPLIES,
+    SPORTS,
+    OUTDOOR,
+    AUTOMOTIVE,
+    BOOKS,
+    SECOND_HAND,
+    DIGITAL_SERVICE,
+    OTHER,
+    unknownDefaultOpenApi,
+  ];
+
+  static ProductClassificationResponseCategoryEnum? fromJson(dynamic value) => ProductClassificationResponseCategoryEnumTypeTransformer().decode(value);
+
+  static List<ProductClassificationResponseCategoryEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProductClassificationResponseCategoryEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProductClassificationResponseCategoryEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ProductClassificationResponseCategoryEnum] to String,
+/// and [decode] dynamic data back to [ProductClassificationResponseCategoryEnum].
+class ProductClassificationResponseCategoryEnumTypeTransformer {
+  factory ProductClassificationResponseCategoryEnumTypeTransformer() => _instance ??= const ProductClassificationResponseCategoryEnumTypeTransformer._();
+
+  const ProductClassificationResponseCategoryEnumTypeTransformer._();
+
+  String encode(ProductClassificationResponseCategoryEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ProductClassificationResponseCategoryEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ProductClassificationResponseCategoryEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'ELECTRONICS': return ProductClassificationResponseCategoryEnum.ELECTRONICS;
+        case r'MOBILE': return ProductClassificationResponseCategoryEnum.MOBILE;
+        case r'CLOTHING': return ProductClassificationResponseCategoryEnum.CLOTHING;
+        case r'SHOES': return ProductClassificationResponseCategoryEnum.SHOES;
+        case r'BAGS': return ProductClassificationResponseCategoryEnum.BAGS;
+        case r'BEAUTY': return ProductClassificationResponseCategoryEnum.BEAUTY;
+        case r'HEALTH': return ProductClassificationResponseCategoryEnum.HEALTH;
+        case r'FOOD': return ProductClassificationResponseCategoryEnum.FOOD;
+        case r'HOME': return ProductClassificationResponseCategoryEnum.HOME;
+        case r'FURNITURE': return ProductClassificationResponseCategoryEnum.FURNITURE;
+        case r'BABY': return ProductClassificationResponseCategoryEnum.BABY;
+        case r'TOYS': return ProductClassificationResponseCategoryEnum.TOYS;
+        case r'PET_SUPPLIES': return ProductClassificationResponseCategoryEnum.PET_SUPPLIES;
+        case r'SPORTS': return ProductClassificationResponseCategoryEnum.SPORTS;
+        case r'OUTDOOR': return ProductClassificationResponseCategoryEnum.OUTDOOR;
+        case r'AUTOMOTIVE': return ProductClassificationResponseCategoryEnum.AUTOMOTIVE;
+        case r'BOOKS': return ProductClassificationResponseCategoryEnum.BOOKS;
+        case r'SECOND_HAND': return ProductClassificationResponseCategoryEnum.SECOND_HAND;
+        case r'DIGITAL_SERVICE': return ProductClassificationResponseCategoryEnum.DIGITAL_SERVICE;
+        case r'OTHER': return ProductClassificationResponseCategoryEnum.OTHER;
+        case r'unknown_default_open_api': return ProductClassificationResponseCategoryEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ProductClassificationResponseCategoryEnumTypeTransformer] instance.
+  static ProductClassificationResponseCategoryEnumTypeTransformer? _instance;
+}
+
+
+/// Issue #519 compatibility alias for suggestedProductType
+class ProductClassificationResponseProductTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ProductClassificationResponseProductTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const PHYSICAL = ProductClassificationResponseProductTypeEnum._(r'PHYSICAL');
+  static const DIGITAL_SERVICE = ProductClassificationResponseProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const unknownDefaultOpenApi = ProductClassificationResponseProductTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ProductClassificationResponseProductTypeEnum].
+  static const values = <ProductClassificationResponseProductTypeEnum>[
+    PHYSICAL,
+    DIGITAL_SERVICE,
+    unknownDefaultOpenApi,
+  ];
+
+  static ProductClassificationResponseProductTypeEnum? fromJson(dynamic value) => ProductClassificationResponseProductTypeEnumTypeTransformer().decode(value);
+
+  static List<ProductClassificationResponseProductTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProductClassificationResponseProductTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProductClassificationResponseProductTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ProductClassificationResponseProductTypeEnum] to String,
+/// and [decode] dynamic data back to [ProductClassificationResponseProductTypeEnum].
+class ProductClassificationResponseProductTypeEnumTypeTransformer {
+  factory ProductClassificationResponseProductTypeEnumTypeTransformer() => _instance ??= const ProductClassificationResponseProductTypeEnumTypeTransformer._();
+
+  const ProductClassificationResponseProductTypeEnumTypeTransformer._();
+
+  String encode(ProductClassificationResponseProductTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ProductClassificationResponseProductTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ProductClassificationResponseProductTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'PHYSICAL': return ProductClassificationResponseProductTypeEnum.PHYSICAL;
+        case r'DIGITAL_SERVICE': return ProductClassificationResponseProductTypeEnum.DIGITAL_SERVICE;
+        case r'unknown_default_open_api': return ProductClassificationResponseProductTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ProductClassificationResponseProductTypeEnumTypeTransformer] instance.
+  static ProductClassificationResponseProductTypeEnumTypeTransformer? _instance;
 }
 
 

@@ -25837,6 +25837,60 @@
             "items": {
               "type": "string"
             }
+          },
+          "tags": {
+            "type": "array",
+            "description": "Issue #519 compatibility alias for suggestedTags",
+            "items": {
+              "type": "string"
+            }
+          },
+          "category": {
+            "type": "string",
+            "description": "Issue #519 compatibility alias for suggestedCategory",
+            "enum": [
+              "ELECTRONICS",
+              "MOBILE",
+              "CLOTHING",
+              "SHOES",
+              "BAGS",
+              "BEAUTY",
+              "HEALTH",
+              "FOOD",
+              "HOME",
+              "FURNITURE",
+              "BABY",
+              "TOYS",
+              "PET_SUPPLIES",
+              "SPORTS",
+              "OUTDOOR",
+              "AUTOMOTIVE",
+              "BOOKS",
+              "SECOND_HAND",
+              "DIGITAL_SERVICE",
+              "OTHER"
+            ]
+          },
+          "productType": {
+            "type": "string",
+            "description": "Issue #519 compatibility alias for suggestedProductType",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "sourceRegion": {
+            "type": "string",
+            "description": "Issue #519 compatibility alias for suggestedSourceRegion"
+          },
+          "sourcePlatform": {
+            "type": "string",
+            "description": "Issue #519 compatibility alias for suggestedSourcePlatform"
+          },
+          "confidence": {
+            "type": "number",
+            "format": "double",
+            "description": "Issue #519 compatibility alias for categoryConfidence"
           }
         }
       },
