@@ -207,6 +207,118 @@ class MemberOrdersApi {
     return null;
   }
 
+  /// 同賣家購物車合併結帳
+  ///
+  /// 同一賣家、同一收貨地址的實體商品購物車項目 all-or-nothing 建立單一訂單與多個 order items。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [CartCheckoutParam] cartCheckoutParam (required):
+  Future<Response> cartCheckoutWithHttpInfo(CartCheckoutParam cartCheckoutParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/orders/cart-checkout';
+
+    // ignore: prefer_final_locals
+    Object? postBody = cartCheckoutParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 同賣家購物車合併結帳
+  ///
+  /// 同一賣家、同一收貨地址的實體商品購物車項目 all-or-nothing 建立單一訂單與多個 order items。
+  ///
+  /// Parameters:
+  ///
+  /// * [CartCheckoutParam] cartCheckoutParam (required):
+  Future<OrderQueryResult?> cartCheckout(CartCheckoutParam cartCheckoutParam,) async {
+    final response = await cartCheckoutWithHttpInfo(cartCheckoutParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderQueryResult',) as OrderQueryResult;
+    
+    }
+    return null;
+  }
+
+  /// 同賣家購物車合併結帳 preview
+  ///
+  /// 付款前 read-only 檢查同賣家實體商品批量結帳；不建立訂單、不扣款、不扣庫存。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [CartCheckoutParam] cartCheckoutParam:
+  Future<Response> cartCheckoutPreviewWithHttpInfo({ CartCheckoutParam? cartCheckoutParam, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/orders/cart-checkout-preview';
+
+    // ignore: prefer_final_locals
+    Object? postBody = cartCheckoutParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 同賣家購物車合併結帳 preview
+  ///
+  /// 付款前 read-only 檢查同賣家實體商品批量結帳；不建立訂單、不扣款、不扣庫存。
+  ///
+  /// Parameters:
+  ///
+  /// * [CartCheckoutParam] cartCheckoutParam:
+  Future<CartCheckoutPreflightResponse?> cartCheckoutPreview({ CartCheckoutParam? cartCheckoutParam, }) async {
+    final response = await cartCheckoutPreviewWithHttpInfo( cartCheckoutParam: cartCheckoutParam, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CartCheckoutPreflightResponse',) as CartCheckoutPreflightResponse;
+    
+    }
+    return null;
+  }
+
   /// 付款前 checkout preview
   ///
   /// 付款前 read-only 檢查商品、SKU、地址、配送資格、價格、USDT 餘額與代購風險；不建立訂單、不扣款、不扣庫存。

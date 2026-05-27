@@ -393,6 +393,8 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**aiValidateProof**](doc//MemberOrdersApi.md#aivalidateproof) | **POST** /orders/{orderId}/proofs/{proofId}/ai-validate | AI 驗證 proof 是否符合訂單要求(買家預判)
 *MemberOrdersApi* | [**cancelDigitalOrder**](doc//MemberOrdersApi.md#canceldigitalorder) | **POST** /orders/{orderId}/cancel-digital | 取消數位商品訂單(買家或賣家)
 *MemberOrdersApi* | [**cancelOrder**](doc//MemberOrdersApi.md#cancelorder) | **POST** /orders/cancel | 取消訂單
+*MemberOrdersApi* | [**cartCheckout**](doc//MemberOrdersApi.md#cartcheckout) | **POST** /orders/cart-checkout | 同賣家購物車合併結帳
+*MemberOrdersApi* | [**cartCheckoutPreview**](doc//MemberOrdersApi.md#cartcheckoutpreview) | **POST** /orders/cart-checkout-preview | 同賣家購物車合併結帳 preview
 *MemberOrdersApi* | [**checkoutPreview**](doc//MemberOrdersApi.md#checkoutpreview) | **POST** /orders/checkout-preview | 付款前 checkout preview
 *MemberOrdersApi* | [**confirmDeliveryProof**](doc//MemberOrdersApi.md#confirmdeliveryproof) | **POST** /orders/{orderId}/delivery-proof/confirm | 買家確認交付證明
 *MemberOrdersApi* | [**confirmOrder**](doc//MemberOrdersApi.md#confirmorder) | **POST** /orders/confirm | 確認收貨
@@ -619,6 +621,9 @@ Class | Method | HTTP request | Description
  - [BrokenImageCleanupResponse](doc//BrokenImageCleanupResponse.md)
  - [BrokenImageFinding](doc//BrokenImageFinding.md)
  - [CandidateResult](doc//CandidateResult.md)
+ - [CartCheckoutItemParam](doc//CartCheckoutItemParam.md)
+ - [CartCheckoutParam](doc//CartCheckoutParam.md)
+ - [CartCheckoutPreflightResponse](doc//CartCheckoutPreflightResponse.md)
  - [CartGroupBySeller](doc//CartGroupBySeller.md)
  - [CartItem](doc//CartItem.md)
  - [CartItemCreateParam](doc//CartItemCreateParam.md)
@@ -705,6 +710,7 @@ Class | Method | HTTP request | Description
  - [InterestRecordDTO](doc//InterestRecordDTO.md)
  - [InterestRecordSearchParam](doc//InterestRecordSearchParam.md)
  - [IssueSearchParam](doc//IssueSearchParam.md)
+ - [ItemState](doc//ItemState.md)
  - [JobTypeInfo](doc//JobTypeInfo.md)
  - [KlineBarDTO](doc//KlineBarDTO.md)
  - [KlineImportRequest](doc//KlineImportRequest.md)
@@ -749,6 +755,7 @@ Class | Method | HTTP request | Description
  - [OrderCancelParam](doc//OrderCancelParam.md)
  - [OrderConfirmParam](doc//OrderConfirmParam.md)
  - [OrderDeliveryProof](doc//OrderDeliveryProof.md)
+ - [OrderItem](doc//OrderItem.md)
  - [OrderQueryResult](doc//OrderQueryResult.md)
  - [OrderReturnRecord](doc//OrderReturnRecord.md)
  - [OrderSearchParam](doc//OrderSearchParam.md)

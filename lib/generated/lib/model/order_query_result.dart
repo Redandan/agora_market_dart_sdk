@@ -15,6 +15,7 @@ class OrderQueryResult {
   OrderQueryResult({
     this.order,
     this.deliveryDetail,
+    this.orderItems = const [],
     this.returnRecord,
     this.dispute,
   });
@@ -34,6 +35,8 @@ class OrderQueryResult {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DeliveryDetail? deliveryDetail;
+
+  List<OrderItem> orderItems;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -55,6 +58,7 @@ class OrderQueryResult {
   bool operator ==(Object other) => identical(this, other) || other is OrderQueryResult &&
     other.order == order &&
     other.deliveryDetail == deliveryDetail &&
+    _deepEquality.equals(other.orderItems, orderItems) &&
     other.returnRecord == returnRecord &&
     other.dispute == dispute;
 
@@ -63,11 +67,12 @@ class OrderQueryResult {
     // ignore: unnecessary_parenthesis
     (order == null ? 0 : order!.hashCode) +
     (deliveryDetail == null ? 0 : deliveryDetail!.hashCode) +
+    (orderItems.hashCode) +
     (returnRecord == null ? 0 : returnRecord!.hashCode) +
     (dispute == null ? 0 : dispute!.hashCode);
 
   @override
-  String toString() => 'OrderQueryResult[order=$order, deliveryDetail=$deliveryDetail, returnRecord=$returnRecord, dispute=$dispute]';
+  String toString() => 'OrderQueryResult[order=$order, deliveryDetail=$deliveryDetail, orderItems=$orderItems, returnRecord=$returnRecord, dispute=$dispute]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -81,6 +86,7 @@ class OrderQueryResult {
     } else {
       json[r'deliveryDetail'] = null;
     }
+      json[r'orderItems'] = this.orderItems.map((e) => e.toJson()).toList();
     if (this.returnRecord != null) {
       json[r'returnRecord'] = this.returnRecord;
     } else {
@@ -115,6 +121,7 @@ class OrderQueryResult {
       return OrderQueryResult(
         order: Order.fromJson(json[r'order']),
         deliveryDetail: DeliveryDetail.fromJson(json[r'deliveryDetail']),
+        orderItems: OrderItem.listFromJson(json[r'orderItems']),
         returnRecord: OrderReturnRecord.fromJson(json[r'returnRecord']),
         dispute: Dispute.fromJson(json[r'dispute']),
       );

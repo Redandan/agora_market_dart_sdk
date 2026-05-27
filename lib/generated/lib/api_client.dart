@@ -302,6 +302,12 @@ class ApiClient {
           return BrokenImageFinding.fromJson(value);
         case 'CandidateResult':
           return CandidateResult.fromJson(value);
+        case 'CartCheckoutItemParam':
+          return CartCheckoutItemParam.fromJson(value);
+        case 'CartCheckoutParam':
+          return CartCheckoutParam.fromJson(value);
+        case 'CartCheckoutPreflightResponse':
+          return CartCheckoutPreflightResponse.fromJson(value);
         case 'CartGroupBySeller':
           return CartGroupBySeller.fromJson(value);
         case 'CartItem':
@@ -474,6 +480,8 @@ class ApiClient {
           return InterestRecordSearchParam.fromJson(value);
         case 'IssueSearchParam':
           return IssueSearchParam.fromJson(value);
+        case 'ItemState':
+          return ItemState.fromJson(value);
         case 'JobTypeInfo':
           return JobTypeInfo.fromJson(value);
         case 'KlineBarDTO':
@@ -562,6 +570,8 @@ class ApiClient {
           return OrderConfirmParam.fromJson(value);
         case 'OrderDeliveryProof':
           return OrderDeliveryProof.fromJson(value);
+        case 'OrderItem':
+          return OrderItem.fromJson(value);
         case 'OrderQueryResult':
           return OrderQueryResult.fromJson(value);
         case 'OrderReturnRecord':

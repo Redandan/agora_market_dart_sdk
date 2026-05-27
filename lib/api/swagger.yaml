@@ -5121,6 +5121,69 @@
         }
       }
     },
+    "/orders/cart-checkout": {
+      "post": {
+        "tags": [
+          "member-orders"
+        ],
+        "summary": "同賣家購物車合併結帳",
+        "description": "同一賣家、同一收貨地址的實體商品購物車項目 all-or-nothing 建立單一訂單與多個 order items。",
+        "operationId": "cartCheckout",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CartCheckoutParam"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderQueryResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/cart-checkout-preview": {
+      "post": {
+        "tags": [
+          "member-orders"
+        ],
+        "summary": "同賣家購物車合併結帳 preview",
+        "description": "付款前 read-only 檢查同賣家實體商品批量結帳；不建立訂單、不扣款、不扣庫存。",
+        "operationId": "cartCheckoutPreview",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CartCheckoutParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CartCheckoutPreflightResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/orders/cancel": {
       "post": {
         "tags": [
@@ -25845,6 +25908,11 @@
               "type": "string"
             }
           },
+          "confidence": {
+            "type": "number",
+            "format": "double",
+            "description": "Issue #519 compatibility alias for categoryConfidence"
+          },
           "category": {
             "type": "string",
             "description": "Issue #519 compatibility alias for suggestedCategory",
@@ -25886,11 +25954,6 @@
           "sourcePlatform": {
             "type": "string",
             "description": "Issue #519 compatibility alias for suggestedSourcePlatform"
-          },
-          "confidence": {
-            "type": "number",
-            "format": "double",
-            "description": "Issue #519 compatibility alias for categoryConfidence"
           }
         }
       },
@@ -26518,6 +26581,11 @@
             "format": "int32",
             "description": "商品數量"
           },
+          "itemCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "訂單商品明細數量;舊單品訂單為 1"
+          },
           "selectedSku": {
             "type": "string",
             "description": "選擇的商品SKU(實體商品必填,DIGITAL_SERVICE 訂單可為 null)"
@@ -26698,6 +26766,13 @@
             "$ref": "#/components/schemas/Product",
             "description": "商品"
           },
+          "orderItems": {
+            "type": "array",
+            "description": "訂單商品明細",
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            }
+          },
           "deliveryDetail": {
             "$ref": "#/components/schemas/DeliveryDetail",
             "description": "配送詳情"
@@ -26717,6 +26792,7 @@
           "createdAt",
           "currency",
           "id",
+          "itemCount",
           "orderAmount",
           "productId",
           "productPrice",
@@ -26727,6 +26803,66 @@
           "updatedAt",
           "version"
         ]
+      },
+      "OrderItem": {
+        "type": "object",
+        "description": "訂單商品明細",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "productTitle": {
+            "type": "string"
+          },
+          "productImage": {
+            "type": "string"
+          },
+          "selectedSku": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "originalUnitPrice": {
+            "type": "number"
+          },
+          "originalSubtotal": {
+            "type": "number"
+          },
+          "originalCurrency": {
+            "type": "string"
+          },
+          "exchangeRate": {
+            "type": "number"
+          },
+          "unitPriceUsdt": {
+            "type": "number"
+          },
+          "lineAmountUsdt": {
+            "type": "number"
+          },
+          "cartItemId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
       },
       "OrderReturnRecord": {
         "type": "object",
@@ -27349,6 +27485,12 @@
           "deliveryDetail": {
             "$ref": "#/components/schemas/DeliveryDetail"
           },
+          "orderItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            }
+          },
           "returnRecord": {
             "$ref": "#/components/schemas/OrderReturnRecord"
           },
@@ -27877,6 +28019,184 @@
             "type": "boolean"
           },
           "topUpNeededUsdt": {
+            "type": "number"
+          }
+        }
+      },
+      "CartCheckoutItemParam": {
+        "type": "object",
+        "description": "購物車合併結帳商品項",
+        "properties": {
+          "cartItemId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "購物車項目ID"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "商品ID"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32",
+            "description": "商品數量",
+            "minimum": 1
+          },
+          "selectedSku": {
+            "type": "string",
+            "description": "選擇的商品SKU"
+          }
+        },
+        "required": [
+          "cartItemId",
+          "productId"
+        ]
+      },
+      "CartCheckoutParam": {
+        "type": "object",
+        "description": "合併結帳預檢參數",
+        "properties": {
+          "sellerId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "賣家ID"
+          },
+          "addressId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "收貨地址ID"
+          },
+          "remark": {
+            "type": "string",
+            "description": "訂單備註"
+          },
+          "items": {
+            "type": "array",
+            "description": "同賣家購物車商品項",
+            "items": {
+              "$ref": "#/components/schemas/CartCheckoutItemParam"
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "addressId",
+          "sellerId"
+        ]
+      },
+      "CartCheckoutPreflightResponse": {
+        "type": "object",
+        "properties": {
+          "canSubmit": {
+            "type": "boolean"
+          },
+          "sellerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "addressId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pickupServiceType": {
+            "type": "string",
+            "description": "取貨服務類型",
+            "enum": [
+              "HOME_DELIVERY",
+              "SEVEN_ELEVEN",
+              "FAMILY_MART",
+              "HILIFE",
+              "OK_MART",
+              "PLATFORM_DELIVERY"
+            ]
+          },
+          "itemCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productSubtotalUsdt": {
+            "type": "number"
+          },
+          "shippingFeeUsdt": {
+            "type": "number"
+          },
+          "orderAmountUsdt": {
+            "type": "number"
+          },
+          "buyerUsdtBalance": {
+            "type": "number"
+          },
+          "topUpNeededUsdt": {
+            "type": "number"
+          },
+          "blockingReasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ItemState"
+            }
+          }
+        }
+      },
+      "ItemState": {
+        "type": "object",
+        "properties": {
+          "cartItemId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "selectedSku": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sellerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "physicalProduct": {
+            "type": "boolean"
+          },
+          "productOnSale": {
+            "type": "boolean"
+          },
+          "skuValid": {
+            "type": "boolean"
+          },
+          "stockEnough": {
+            "type": "boolean"
+          },
+          "addressEligible": {
+            "type": "boolean"
+          },
+          "unitPriceUsdt": {
+            "type": "number"
+          },
+          "lineAmountUsdt": {
+            "type": "number"
+          },
+          "shippingFeeUsdt": {
             "type": "number"
           }
         }

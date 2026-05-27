@@ -19,6 +19,7 @@ class Order {
     required this.buyerId,
     required this.sellerId,
     required this.quantity,
+    required this.itemCount,
     this.selectedSku,
     required this.shippingFee,
     required this.productPrice,
@@ -48,6 +49,7 @@ class Order {
     this.buyerName,
     this.buyerUsername,
     this.product,
+    this.orderItems = const [],
     this.deliveryDetail,
     this.store,
     this.latestProofId,
@@ -70,6 +72,9 @@ class Order {
 
   /// 商品數量
   int quantity;
+
+  /// 訂單商品明細數量;舊單品訂單為 1
+  int itemCount;
 
   /// 選擇的商品SKU(實體商品必填,DIGITAL_SERVICE 訂單可為 null)
   ///
@@ -278,6 +283,9 @@ class Order {
   ///
   Product? product;
 
+  /// 訂單商品明細
+  List<OrderItem> orderItems;
+
   /// 配送詳情
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -313,6 +321,7 @@ class Order {
     other.buyerId == buyerId &&
     other.sellerId == sellerId &&
     other.quantity == quantity &&
+    other.itemCount == itemCount &&
     other.selectedSku == selectedSku &&
     other.shippingFee == shippingFee &&
     other.productPrice == productPrice &&
@@ -342,6 +351,7 @@ class Order {
     other.buyerName == buyerName &&
     other.buyerUsername == buyerUsername &&
     other.product == product &&
+    _deepEquality.equals(other.orderItems, orderItems) &&
     other.deliveryDetail == deliveryDetail &&
     other.store == store &&
     other.latestProofId == latestProofId;
@@ -355,6 +365,7 @@ class Order {
     (buyerId.hashCode) +
     (sellerId.hashCode) +
     (quantity.hashCode) +
+    (itemCount.hashCode) +
     (selectedSku == null ? 0 : selectedSku!.hashCode) +
     (shippingFee.hashCode) +
     (productPrice.hashCode) +
@@ -384,12 +395,13 @@ class Order {
     (buyerName == null ? 0 : buyerName!.hashCode) +
     (buyerUsername == null ? 0 : buyerUsername!.hashCode) +
     (product == null ? 0 : product!.hashCode) +
+    (orderItems.hashCode) +
     (deliveryDetail == null ? 0 : deliveryDetail!.hashCode) +
     (store == null ? 0 : store!.hashCode) +
     (latestProofId == null ? 0 : latestProofId!.hashCode);
 
   @override
-  String toString() => 'Order[id=$id, version=$version, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, pickupServiceType=$pickupServiceType, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, sourceOrderRef=$sourceOrderRef, referrerGroupId=$referrerGroupId, status=$status, remark=$remark, buyerProvidedInfoJson=$buyerProvidedInfoJson, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, refundAmount=$refundAmount, refundOfferExpiresAt=$refundOfferExpiresAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, buyerName=$buyerName, buyerUsername=$buyerUsername, product=$product, deliveryDetail=$deliveryDetail, store=$store, latestProofId=$latestProofId]';
+  String toString() => 'Order[id=$id, version=$version, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, itemCount=$itemCount, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, pickupServiceType=$pickupServiceType, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, sourceOrderRef=$sourceOrderRef, referrerGroupId=$referrerGroupId, status=$status, remark=$remark, buyerProvidedInfoJson=$buyerProvidedInfoJson, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, refundAmount=$refundAmount, refundOfferExpiresAt=$refundOfferExpiresAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, buyerName=$buyerName, buyerUsername=$buyerUsername, product=$product, orderItems=$orderItems, deliveryDetail=$deliveryDetail, store=$store, latestProofId=$latestProofId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -399,6 +411,7 @@ class Order {
       json[r'buyerId'] = this.buyerId;
       json[r'sellerId'] = this.sellerId;
       json[r'quantity'] = this.quantity;
+      json[r'itemCount'] = this.itemCount;
     if (this.selectedSku != null) {
       json[r'selectedSku'] = this.selectedSku;
     } else {
@@ -516,6 +529,7 @@ class Order {
     } else {
       json[r'product'] = null;
     }
+      json[r'orderItems'] = this.orderItems.map((e) => e.toJson()).toList();
     if (this.deliveryDetail != null) {
       json[r'deliveryDetail'] = this.deliveryDetail;
     } else {
@@ -559,6 +573,7 @@ class Order {
         buyerId: mapValueOfType<int>(json, r'buyerId')!,
         sellerId: mapValueOfType<int>(json, r'sellerId')!,
         quantity: mapValueOfType<int>(json, r'quantity')!,
+        itemCount: mapValueOfType<int>(json, r'itemCount')!,
         selectedSku: mapValueOfType<String>(json, r'selectedSku'),
         shippingFee: num.parse('${json[r'shippingFee']}'),
         productPrice: num.parse('${json[r'productPrice']}'),
@@ -596,6 +611,7 @@ class Order {
         buyerName: mapValueOfType<String>(json, r'buyerName'),
         buyerUsername: mapValueOfType<String>(json, r'buyerUsername'),
         product: Product.fromJson(json[r'product']),
+        orderItems: OrderItem.listFromJson(json[r'orderItems']),
         deliveryDetail: DeliveryDetail.fromJson(json[r'deliveryDetail']),
         store: Store.fromJson(json[r'store']),
         latestProofId: mapValueOfType<int>(json, r'latestProofId'),
@@ -652,6 +668,7 @@ class Order {
     'buyerId',
     'sellerId',
     'quantity',
+    'itemCount',
     'shippingFee',
     'productPrice',
     'orderAmount',
