@@ -394,6 +394,7 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**cancelDigitalOrder**](doc//MemberOrdersApi.md#canceldigitalorder) | **POST** /orders/{orderId}/cancel-digital | 取消數位商品訂單(買家或賣家)
 *MemberOrdersApi* | [**cancelOrder**](doc//MemberOrdersApi.md#cancelorder) | **POST** /orders/cancel | 取消訂單
 *MemberOrdersApi* | [**cartCheckout**](doc//MemberOrdersApi.md#cartcheckout) | **POST** /orders/cart-checkout | 同賣家購物車合併結帳
+*MemberOrdersApi* | [**cartCheckoutPlan**](doc//MemberOrdersApi.md#cartcheckoutplan) | **POST** /orders/cart-checkout-plan | 購物車合併結帳分組計畫
 *MemberOrdersApi* | [**cartCheckoutPreview**](doc//MemberOrdersApi.md#cartcheckoutpreview) | **POST** /orders/cart-checkout-preview | 同賣家購物車合併結帳 preview
 *MemberOrdersApi* | [**checkoutPreview**](doc//MemberOrdersApi.md#checkoutpreview) | **POST** /orders/checkout-preview | 付款前 checkout preview
 *MemberOrdersApi* | [**confirmDeliveryProof**](doc//MemberOrdersApi.md#confirmdeliveryproof) | **POST** /orders/{orderId}/delivery-proof/confirm | 買家確認交付證明
@@ -623,6 +624,8 @@ Class | Method | HTTP request | Description
  - [CandidateResult](doc//CandidateResult.md)
  - [CartCheckoutItemParam](doc//CartCheckoutItemParam.md)
  - [CartCheckoutParam](doc//CartCheckoutParam.md)
+ - [CartCheckoutPlanParam](doc//CartCheckoutPlanParam.md)
+ - [CartCheckoutPlanResponse](doc//CartCheckoutPlanResponse.md)
  - [CartCheckoutPreflightResponse](doc//CartCheckoutPreflightResponse.md)
  - [CartGroupBySeller](doc//CartGroupBySeller.md)
  - [CartItem](doc//CartItem.md)
@@ -696,6 +699,7 @@ Class | Method | HTTP request | Description
  - [GameRoundDTO](doc//GameRoundDTO.md)
  - [GenerateLoginTokenRequest](doc//GenerateLoginTokenRequest.md)
  - [GroqUsageStatsDTO](doc//GroqUsageStatsDTO.md)
+ - [Group](doc//Group.md)
  - [GroupActiveUserDTO](doc//GroupActiveUserDTO.md)
  - [GroupActivityStatsDTO](doc//GroupActivityStatsDTO.md)
  - [GroupAiPromptPreviewDTO](doc//GroupAiPromptPreviewDTO.md)
@@ -710,6 +714,7 @@ Class | Method | HTTP request | Description
  - [InterestRecordDTO](doc//InterestRecordDTO.md)
  - [InterestRecordSearchParam](doc//InterestRecordSearchParam.md)
  - [IssueSearchParam](doc//IssueSearchParam.md)
+ - [Item](doc//Item.md)
  - [ItemState](doc//ItemState.md)
  - [JobTypeInfo](doc//JobTypeInfo.md)
  - [KlineBarDTO](doc//KlineBarDTO.md)
@@ -952,6 +957,7 @@ Class | Method | HTTP request | Description
  - [TwoFactorManageParam](doc//TwoFactorManageParam.md)
  - [TwoFactorSetupResponse](doc//TwoFactorSetupResponse.md)
  - [TwoFactorVerifyParam](doc//TwoFactorVerifyParam.md)
+ - [UnmergeableItem](doc//UnmergeableItem.md)
  - [UpdateActivityRequest](doc//UpdateActivityRequest.md)
  - [UpdateDeliveryOrderParam](doc//UpdateDeliveryOrderParam.md)
  - [UpdatePromoCodeParam](doc//UpdatePromoCodeParam.md)

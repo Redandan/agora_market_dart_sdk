@@ -5184,6 +5184,37 @@
         }
       }
     },
+    "/orders/cart-checkout-plan": {
+      "post": {
+        "tags": [
+          "member-orders"
+        ],
+        "summary": "購物車合併結帳分組計畫",
+        "description": "Read-only 回傳後端分組、運費、金額與不可合併原因；提交仍由 cart-checkout 最終驗證。",
+        "operationId": "cartCheckoutPlan",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CartCheckoutPlanParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CartCheckoutPlanResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/orders/cancel": {
       "post": {
         "tags": [
@@ -28249,6 +28280,173 @@
           },
           "shippingFeeUsdt": {
             "type": "number"
+          }
+        }
+      },
+      "CartCheckoutPlanParam": {
+        "type": "object",
+        "description": "合併結帳分組計畫參數",
+        "properties": {
+          "addressId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "本次預計使用的收貨地址ID；實體商品分組使用，純數位商品可空"
+          },
+          "items": {
+            "type": "array",
+            "description": "要納入計畫的購物車商品；空陣列或 null 代表使用登入者目前整個購物車",
+            "items": {
+              "$ref": "#/components/schemas/CartCheckoutItemParam"
+            }
+          }
+        }
+      },
+      "CartCheckoutPlanResponse": {
+        "type": "object",
+        "properties": {
+          "groups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Group"
+            }
+          },
+          "unmergeableItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UnmergeableItem"
+            }
+          },
+          "totalOrderCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalAmountUsdt": {
+            "type": "number"
+          }
+        }
+      },
+      "Group": {
+        "type": "object",
+        "properties": {
+          "groupId": {
+            "type": "string"
+          },
+          "sellerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sellerName": {
+            "type": "string"
+          },
+          "addressId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "serviceType": {
+            "type": "string",
+            "description": "取貨服務類型",
+            "enum": [
+              "HOME_DELIVERY",
+              "SEVEN_ELEVEN",
+              "FAMILY_MART",
+              "HILIFE",
+              "OK_MART",
+              "PLATFORM_DELIVERY"
+            ]
+          },
+          "productType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "productSubtotalUsdt": {
+            "type": "number"
+          },
+          "shippingFeeUsdt": {
+            "type": "number"
+          },
+          "orderAmountUsdt": {
+            "type": "number"
+          },
+          "canSubmit": {
+            "type": "boolean"
+          },
+          "canMerge": {
+            "type": "boolean"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Item"
+            }
+          },
+          "blockingReasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Item": {
+        "type": "object",
+        "properties": {
+          "cartItemId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "selectedSku": {
+            "type": "string"
+          },
+          "productType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "buyerProvidedInfoJson": {
+            "type": "string"
+          },
+          "acceptedDataResidency": {
+            "type": "boolean"
+          },
+          "acceptedNoRefundAfterProof": {
+            "type": "boolean"
+          },
+          "termsVersion": {
+            "type": "string"
+          }
+        }
+      },
+      "UnmergeableItem": {
+        "type": "object",
+        "properties": {
+          "cartItemId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "reasonCode": {
+            "type": "string"
+          },
+          "reasonMessage": {
+            "type": "string"
           }
         }
       },

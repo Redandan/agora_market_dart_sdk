@@ -263,6 +263,62 @@ class MemberOrdersApi {
     return null;
   }
 
+  /// 購物車合併結帳分組計畫
+  ///
+  /// Read-only 回傳後端分組、運費、金額與不可合併原因；提交仍由 cart-checkout 最終驗證。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [CartCheckoutPlanParam] cartCheckoutPlanParam:
+  Future<Response> cartCheckoutPlanWithHttpInfo({ CartCheckoutPlanParam? cartCheckoutPlanParam, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/orders/cart-checkout-plan';
+
+    // ignore: prefer_final_locals
+    Object? postBody = cartCheckoutPlanParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 購物車合併結帳分組計畫
+  ///
+  /// Read-only 回傳後端分組、運費、金額與不可合併原因；提交仍由 cart-checkout 最終驗證。
+  ///
+  /// Parameters:
+  ///
+  /// * [CartCheckoutPlanParam] cartCheckoutPlanParam:
+  Future<CartCheckoutPlanResponse?> cartCheckoutPlan({ CartCheckoutPlanParam? cartCheckoutPlanParam, }) async {
+    final response = await cartCheckoutPlanWithHttpInfo( cartCheckoutPlanParam: cartCheckoutPlanParam, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CartCheckoutPlanResponse',) as CartCheckoutPlanResponse;
+    
+    }
+    return null;
+  }
+
   /// 同賣家購物車合併結帳 preview
   ///
   /// 付款前 read-only 檢查同賣家實體商品批量結帳；不建立訂單、不扣款、不扣庫存。

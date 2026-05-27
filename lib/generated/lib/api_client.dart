@@ -306,6 +306,10 @@ class ApiClient {
           return CartCheckoutItemParam.fromJson(value);
         case 'CartCheckoutParam':
           return CartCheckoutParam.fromJson(value);
+        case 'CartCheckoutPlanParam':
+          return CartCheckoutPlanParam.fromJson(value);
+        case 'CartCheckoutPlanResponse':
+          return CartCheckoutPlanResponse.fromJson(value);
         case 'CartCheckoutPreflightResponse':
           return CartCheckoutPreflightResponse.fromJson(value);
         case 'CartGroupBySeller':
@@ -452,6 +456,8 @@ class ApiClient {
           return GenerateLoginTokenRequest.fromJson(value);
         case 'GroqUsageStatsDTO':
           return GroqUsageStatsDTO.fromJson(value);
+        case 'Group':
+          return Group.fromJson(value);
         case 'GroupActiveUserDTO':
           return GroupActiveUserDTO.fromJson(value);
         case 'GroupActivityStatsDTO':
@@ -480,6 +486,8 @@ class ApiClient {
           return InterestRecordSearchParam.fromJson(value);
         case 'IssueSearchParam':
           return IssueSearchParam.fromJson(value);
+        case 'Item':
+          return Item.fromJson(value);
         case 'ItemState':
           return ItemState.fromJson(value);
         case 'JobTypeInfo':
@@ -964,6 +972,8 @@ class ApiClient {
           return TwoFactorSetupResponse.fromJson(value);
         case 'TwoFactorVerifyParam':
           return TwoFactorVerifyParam.fromJson(value);
+        case 'UnmergeableItem':
+          return UnmergeableItem.fromJson(value);
         case 'UpdateActivityRequest':
           return UpdateActivityRequest.fromJson(value);
         case 'UpdateDeliveryOrderParam':
