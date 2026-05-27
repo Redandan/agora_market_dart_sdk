@@ -14,7 +14,7 @@ class CartCheckoutParam {
   /// Returns a new [CartCheckoutParam] instance.
   CartCheckoutParam({
     required this.sellerId,
-    required this.addressId,
+    this.addressId,
     this.remark,
     this.items = const [],
   });
@@ -22,8 +22,14 @@ class CartCheckoutParam {
   /// 賣家ID
   int sellerId;
 
-  /// 收貨地址ID
-  int addressId;
+  /// 收貨地址ID；實體商品必填，純數位商品可空
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? addressId;
 
   /// 訂單備註
   ///
@@ -48,7 +54,7 @@ class CartCheckoutParam {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (sellerId.hashCode) +
-    (addressId.hashCode) +
+    (addressId == null ? 0 : addressId!.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
     (items.hashCode);
 
@@ -58,7 +64,11 @@ class CartCheckoutParam {
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'sellerId'] = this.sellerId;
+    if (this.addressId != null) {
       json[r'addressId'] = this.addressId;
+    } else {
+      json[r'addressId'] = null;
+    }
     if (this.remark != null) {
       json[r'remark'] = this.remark;
     } else {
@@ -88,7 +98,7 @@ class CartCheckoutParam {
 
       return CartCheckoutParam(
         sellerId: mapValueOfType<int>(json, r'sellerId')!,
-        addressId: mapValueOfType<int>(json, r'addressId')!,
+        addressId: mapValueOfType<int>(json, r'addressId'),
         remark: mapValueOfType<String>(json, r'remark'),
         items: CartCheckoutItemParam.listFromJson(json[r'items']),
       );
@@ -139,7 +149,6 @@ class CartCheckoutParam {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'sellerId',
-    'addressId',
   };
 }
 

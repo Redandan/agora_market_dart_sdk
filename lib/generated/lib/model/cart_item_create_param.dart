@@ -15,7 +15,7 @@ class CartItemCreateParam {
   CartItemCreateParam({
     required this.productId,
     required this.quantity,
-    required this.sku,
+    this.sku,
     this.note,
   });
 
@@ -28,8 +28,14 @@ class CartItemCreateParam {
   /// Maximum value: 999
   int quantity;
 
-  /// 商品SKU
-  String sku;
+  /// 商品SKU；實體商品必填，數位商品可空
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sku;
 
   /// 備註
   ///
@@ -52,7 +58,7 @@ class CartItemCreateParam {
     // ignore: unnecessary_parenthesis
     (productId.hashCode) +
     (quantity.hashCode) +
-    (sku.hashCode) +
+    (sku == null ? 0 : sku!.hashCode) +
     (note == null ? 0 : note!.hashCode);
 
   @override
@@ -62,7 +68,11 @@ class CartItemCreateParam {
     final json = <String, dynamic>{};
       json[r'productId'] = this.productId;
       json[r'quantity'] = this.quantity;
+    if (this.sku != null) {
       json[r'sku'] = this.sku;
+    } else {
+      json[r'sku'] = null;
+    }
     if (this.note != null) {
       json[r'note'] = this.note;
     } else {
@@ -92,7 +102,7 @@ class CartItemCreateParam {
       return CartItemCreateParam(
         productId: mapValueOfType<int>(json, r'productId')!,
         quantity: mapValueOfType<int>(json, r'quantity')!,
-        sku: mapValueOfType<String>(json, r'sku')!,
+        sku: mapValueOfType<String>(json, r'sku'),
         note: mapValueOfType<String>(json, r'note'),
       );
     }
@@ -143,7 +153,6 @@ class CartItemCreateParam {
   static const requiredKeys = <String>{
     'productId',
     'quantity',
-    'sku',
   };
 }
 

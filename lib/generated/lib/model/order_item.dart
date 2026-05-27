@@ -27,6 +27,10 @@ class OrderItem {
     this.unitPriceUsdt,
     this.lineAmountUsdt,
     this.cartItemId,
+    this.buyerProvidedInfoJson,
+    this.termsVersion,
+    this.acceptedDataResidency,
+    this.acceptedNoRefundAfterProof,
     this.createdAt,
     this.updatedAt,
   });
@@ -149,6 +153,38 @@ class OrderItem {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  String? buyerProvidedInfoJson;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? termsVersion;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? acceptedDataResidency;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? acceptedNoRefundAfterProof;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? createdAt;
 
   ///
@@ -175,6 +211,10 @@ class OrderItem {
     other.unitPriceUsdt == unitPriceUsdt &&
     other.lineAmountUsdt == lineAmountUsdt &&
     other.cartItemId == cartItemId &&
+    other.buyerProvidedInfoJson == buyerProvidedInfoJson &&
+    other.termsVersion == termsVersion &&
+    other.acceptedDataResidency == acceptedDataResidency &&
+    other.acceptedNoRefundAfterProof == acceptedNoRefundAfterProof &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt;
 
@@ -195,11 +235,15 @@ class OrderItem {
     (unitPriceUsdt == null ? 0 : unitPriceUsdt!.hashCode) +
     (lineAmountUsdt == null ? 0 : lineAmountUsdt!.hashCode) +
     (cartItemId == null ? 0 : cartItemId!.hashCode) +
+    (buyerProvidedInfoJson == null ? 0 : buyerProvidedInfoJson!.hashCode) +
+    (termsVersion == null ? 0 : termsVersion!.hashCode) +
+    (acceptedDataResidency == null ? 0 : acceptedDataResidency!.hashCode) +
+    (acceptedNoRefundAfterProof == null ? 0 : acceptedNoRefundAfterProof!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'OrderItem[id=$id, orderId=$orderId, productId=$productId, productTitle=$productTitle, productImage=$productImage, selectedSku=$selectedSku, quantity=$quantity, originalUnitPrice=$originalUnitPrice, originalSubtotal=$originalSubtotal, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, unitPriceUsdt=$unitPriceUsdt, lineAmountUsdt=$lineAmountUsdt, cartItemId=$cartItemId, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'OrderItem[id=$id, orderId=$orderId, productId=$productId, productTitle=$productTitle, productImage=$productImage, selectedSku=$selectedSku, quantity=$quantity, originalUnitPrice=$originalUnitPrice, originalSubtotal=$originalSubtotal, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, unitPriceUsdt=$unitPriceUsdt, lineAmountUsdt=$lineAmountUsdt, cartItemId=$cartItemId, buyerProvidedInfoJson=$buyerProvidedInfoJson, termsVersion=$termsVersion, acceptedDataResidency=$acceptedDataResidency, acceptedNoRefundAfterProof=$acceptedNoRefundAfterProof, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -273,6 +317,26 @@ class OrderItem {
     } else {
       json[r'cartItemId'] = null;
     }
+    if (this.buyerProvidedInfoJson != null) {
+      json[r'buyerProvidedInfoJson'] = this.buyerProvidedInfoJson;
+    } else {
+      json[r'buyerProvidedInfoJson'] = null;
+    }
+    if (this.termsVersion != null) {
+      json[r'termsVersion'] = this.termsVersion;
+    } else {
+      json[r'termsVersion'] = null;
+    }
+    if (this.acceptedDataResidency != null) {
+      json[r'acceptedDataResidency'] = this.acceptedDataResidency;
+    } else {
+      json[r'acceptedDataResidency'] = null;
+    }
+    if (this.acceptedNoRefundAfterProof != null) {
+      json[r'acceptedNoRefundAfterProof'] = this.acceptedNoRefundAfterProof;
+    } else {
+      json[r'acceptedNoRefundAfterProof'] = null;
+    }
     if (this.createdAt != null) {
       json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
     } else {
@@ -329,6 +393,10 @@ class OrderItem {
             ? null
             : num.parse('${json[r'lineAmountUsdt']}'),
         cartItemId: mapValueOfType<int>(json, r'cartItemId'),
+        buyerProvidedInfoJson: mapValueOfType<String>(json, r'buyerProvidedInfoJson'),
+        termsVersion: mapValueOfType<String>(json, r'termsVersion'),
+        acceptedDataResidency: mapValueOfType<bool>(json, r'acceptedDataResidency'),
+        acceptedNoRefundAfterProof: mapValueOfType<bool>(json, r'acceptedNoRefundAfterProof'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
       );

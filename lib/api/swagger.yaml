@@ -25908,11 +25908,6 @@
               "type": "string"
             }
           },
-          "confidence": {
-            "type": "number",
-            "format": "double",
-            "description": "Issue #519 compatibility alias for categoryConfidence"
-          },
           "category": {
             "type": "string",
             "description": "Issue #519 compatibility alias for suggestedCategory",
@@ -25954,6 +25949,11 @@
           "sourcePlatform": {
             "type": "string",
             "description": "Issue #519 compatibility alias for suggestedSourcePlatform"
+          },
+          "confidence": {
+            "type": "number",
+            "format": "double",
+            "description": "Issue #519 compatibility alias for categoryConfidence"
           }
         }
       },
@@ -26853,6 +26853,18 @@
           "cartItemId": {
             "type": "integer",
             "format": "int64"
+          },
+          "buyerProvidedInfoJson": {
+            "type": "string"
+          },
+          "termsVersion": {
+            "type": "string"
+          },
+          "acceptedDataResidency": {
+            "type": "boolean"
+          },
+          "acceptedNoRefundAfterProof": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",
@@ -28046,6 +28058,23 @@
           "selectedSku": {
             "type": "string",
             "description": "選擇的商品SKU"
+          },
+          "buyerProvidedInfoJson": {
+            "type": "string",
+            "description": "數位商品買家提供資訊 JSON"
+          },
+          "acceptedDataResidency": {
+            "type": "boolean",
+            "description": "數位商品是否接受資料出境聲明"
+          },
+          "acceptedNoRefundAfterProof": {
+            "type": "boolean",
+            "description": "數位商品是否接受確認後不得退款聲明"
+          },
+          "termsVersion": {
+            "type": "string",
+            "description": "數位商品 ToS 版本號",
+            "example": "v1.0"
           }
         },
         "required": [
@@ -28065,7 +28094,7 @@
           "addressId": {
             "type": "integer",
             "format": "int64",
-            "description": "收貨地址ID"
+            "description": "收貨地址ID；實體商品必填，純數位商品可空"
           },
           "remark": {
             "type": "string",
@@ -28081,7 +28110,6 @@
           }
         },
         "required": [
-          "addressId",
           "sellerId"
         ]
       },
@@ -28175,7 +28203,18 @@
             "type": "integer",
             "format": "int64"
           },
+          "productType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
           "physicalProduct": {
+            "type": "boolean"
+          },
+          "digitalProduct": {
             "type": "boolean"
           },
           "productOnSale": {
@@ -28188,6 +28227,18 @@
             "type": "boolean"
           },
           "addressEligible": {
+            "type": "boolean"
+          },
+          "buyerInfoValid": {
+            "type": "boolean"
+          },
+          "acceptedDataResidency": {
+            "type": "boolean"
+          },
+          "acceptedNoRefundAfterProof": {
+            "type": "boolean"
+          },
+          "termsVersionProvided": {
             "type": "boolean"
           },
           "unitPriceUsdt": {
@@ -31029,9 +31080,9 @@
           },
           "sku": {
             "type": "string",
-            "description": "商品SKU",
+            "description": "商品SKU；實體商品必填，數位商品可空",
             "maxLength": 100,
-            "minLength": 1
+            "minLength": 0
           },
           "note": {
             "type": "string",
@@ -31042,8 +31093,7 @@
         },
         "required": [
           "productId",
-          "quantity",
-          "sku"
+          "quantity"
         ]
       },
       "PlaceBetRequest": {

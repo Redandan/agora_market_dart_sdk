@@ -17,6 +17,10 @@ class CartCheckoutItemParam {
     required this.productId,
     this.quantity,
     this.selectedSku,
+    this.buyerProvidedInfoJson,
+    this.acceptedDataResidency,
+    this.acceptedNoRefundAfterProof,
+    this.termsVersion,
   });
 
   /// 購物車項目ID
@@ -45,12 +49,52 @@ class CartCheckoutItemParam {
   ///
   String? selectedSku;
 
+  /// 數位商品買家提供資訊 JSON
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? buyerProvidedInfoJson;
+
+  /// 數位商品是否接受資料出境聲明
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? acceptedDataResidency;
+
+  /// 數位商品是否接受確認後不得退款聲明
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? acceptedNoRefundAfterProof;
+
+  /// 數位商品 ToS 版本號
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? termsVersion;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CartCheckoutItemParam &&
     other.cartItemId == cartItemId &&
     other.productId == productId &&
     other.quantity == quantity &&
-    other.selectedSku == selectedSku;
+    other.selectedSku == selectedSku &&
+    other.buyerProvidedInfoJson == buyerProvidedInfoJson &&
+    other.acceptedDataResidency == acceptedDataResidency &&
+    other.acceptedNoRefundAfterProof == acceptedNoRefundAfterProof &&
+    other.termsVersion == termsVersion;
 
   @override
   int get hashCode =>
@@ -58,10 +102,14 @@ class CartCheckoutItemParam {
     (cartItemId.hashCode) +
     (productId.hashCode) +
     (quantity == null ? 0 : quantity!.hashCode) +
-    (selectedSku == null ? 0 : selectedSku!.hashCode);
+    (selectedSku == null ? 0 : selectedSku!.hashCode) +
+    (buyerProvidedInfoJson == null ? 0 : buyerProvidedInfoJson!.hashCode) +
+    (acceptedDataResidency == null ? 0 : acceptedDataResidency!.hashCode) +
+    (acceptedNoRefundAfterProof == null ? 0 : acceptedNoRefundAfterProof!.hashCode) +
+    (termsVersion == null ? 0 : termsVersion!.hashCode);
 
   @override
-  String toString() => 'CartCheckoutItemParam[cartItemId=$cartItemId, productId=$productId, quantity=$quantity, selectedSku=$selectedSku]';
+  String toString() => 'CartCheckoutItemParam[cartItemId=$cartItemId, productId=$productId, quantity=$quantity, selectedSku=$selectedSku, buyerProvidedInfoJson=$buyerProvidedInfoJson, acceptedDataResidency=$acceptedDataResidency, acceptedNoRefundAfterProof=$acceptedNoRefundAfterProof, termsVersion=$termsVersion]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -76,6 +124,26 @@ class CartCheckoutItemParam {
       json[r'selectedSku'] = this.selectedSku;
     } else {
       json[r'selectedSku'] = null;
+    }
+    if (this.buyerProvidedInfoJson != null) {
+      json[r'buyerProvidedInfoJson'] = this.buyerProvidedInfoJson;
+    } else {
+      json[r'buyerProvidedInfoJson'] = null;
+    }
+    if (this.acceptedDataResidency != null) {
+      json[r'acceptedDataResidency'] = this.acceptedDataResidency;
+    } else {
+      json[r'acceptedDataResidency'] = null;
+    }
+    if (this.acceptedNoRefundAfterProof != null) {
+      json[r'acceptedNoRefundAfterProof'] = this.acceptedNoRefundAfterProof;
+    } else {
+      json[r'acceptedNoRefundAfterProof'] = null;
+    }
+    if (this.termsVersion != null) {
+      json[r'termsVersion'] = this.termsVersion;
+    } else {
+      json[r'termsVersion'] = null;
     }
     return json;
   }
@@ -103,6 +171,10 @@ class CartCheckoutItemParam {
         productId: mapValueOfType<int>(json, r'productId')!,
         quantity: mapValueOfType<int>(json, r'quantity'),
         selectedSku: mapValueOfType<String>(json, r'selectedSku'),
+        buyerProvidedInfoJson: mapValueOfType<String>(json, r'buyerProvidedInfoJson'),
+        acceptedDataResidency: mapValueOfType<bool>(json, r'acceptedDataResidency'),
+        acceptedNoRefundAfterProof: mapValueOfType<bool>(json, r'acceptedNoRefundAfterProof'),
+        termsVersion: mapValueOfType<String>(json, r'termsVersion'),
       );
     }
     return null;

@@ -19,11 +19,17 @@ class ItemState {
     this.selectedSku,
     this.quantity,
     this.sellerId,
+    this.productType,
     this.physicalProduct,
+    this.digitalProduct,
     this.productOnSale,
     this.skuValid,
     this.stockEnough,
     this.addressEligible,
+    this.buyerInfoValid,
+    this.acceptedDataResidency,
+    this.acceptedNoRefundAfterProof,
+    this.termsVersionProvided,
     this.unitPriceUsdt,
     this.lineAmountUsdt,
     this.shippingFeeUsdt,
@@ -77,6 +83,9 @@ class ItemState {
   ///
   int? sellerId;
 
+  /// 商品類型
+  ItemStateProductTypeEnum? productType;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -84,6 +93,14 @@ class ItemState {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? physicalProduct;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? digitalProduct;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -123,6 +140,38 @@ class ItemState {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  bool? buyerInfoValid;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? acceptedDataResidency;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? acceptedNoRefundAfterProof;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? termsVersionProvided;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? unitPriceUsdt;
 
   ///
@@ -149,11 +198,17 @@ class ItemState {
     other.selectedSku == selectedSku &&
     other.quantity == quantity &&
     other.sellerId == sellerId &&
+    other.productType == productType &&
     other.physicalProduct == physicalProduct &&
+    other.digitalProduct == digitalProduct &&
     other.productOnSale == productOnSale &&
     other.skuValid == skuValid &&
     other.stockEnough == stockEnough &&
     other.addressEligible == addressEligible &&
+    other.buyerInfoValid == buyerInfoValid &&
+    other.acceptedDataResidency == acceptedDataResidency &&
+    other.acceptedNoRefundAfterProof == acceptedNoRefundAfterProof &&
+    other.termsVersionProvided == termsVersionProvided &&
     other.unitPriceUsdt == unitPriceUsdt &&
     other.lineAmountUsdt == lineAmountUsdt &&
     other.shippingFeeUsdt == shippingFeeUsdt;
@@ -167,17 +222,23 @@ class ItemState {
     (selectedSku == null ? 0 : selectedSku!.hashCode) +
     (quantity == null ? 0 : quantity!.hashCode) +
     (sellerId == null ? 0 : sellerId!.hashCode) +
+    (productType == null ? 0 : productType!.hashCode) +
     (physicalProduct == null ? 0 : physicalProduct!.hashCode) +
+    (digitalProduct == null ? 0 : digitalProduct!.hashCode) +
     (productOnSale == null ? 0 : productOnSale!.hashCode) +
     (skuValid == null ? 0 : skuValid!.hashCode) +
     (stockEnough == null ? 0 : stockEnough!.hashCode) +
     (addressEligible == null ? 0 : addressEligible!.hashCode) +
+    (buyerInfoValid == null ? 0 : buyerInfoValid!.hashCode) +
+    (acceptedDataResidency == null ? 0 : acceptedDataResidency!.hashCode) +
+    (acceptedNoRefundAfterProof == null ? 0 : acceptedNoRefundAfterProof!.hashCode) +
+    (termsVersionProvided == null ? 0 : termsVersionProvided!.hashCode) +
     (unitPriceUsdt == null ? 0 : unitPriceUsdt!.hashCode) +
     (lineAmountUsdt == null ? 0 : lineAmountUsdt!.hashCode) +
     (shippingFeeUsdt == null ? 0 : shippingFeeUsdt!.hashCode);
 
   @override
-  String toString() => 'ItemState[cartItemId=$cartItemId, productId=$productId, title=$title, selectedSku=$selectedSku, quantity=$quantity, sellerId=$sellerId, physicalProduct=$physicalProduct, productOnSale=$productOnSale, skuValid=$skuValid, stockEnough=$stockEnough, addressEligible=$addressEligible, unitPriceUsdt=$unitPriceUsdt, lineAmountUsdt=$lineAmountUsdt, shippingFeeUsdt=$shippingFeeUsdt]';
+  String toString() => 'ItemState[cartItemId=$cartItemId, productId=$productId, title=$title, selectedSku=$selectedSku, quantity=$quantity, sellerId=$sellerId, productType=$productType, physicalProduct=$physicalProduct, digitalProduct=$digitalProduct, productOnSale=$productOnSale, skuValid=$skuValid, stockEnough=$stockEnough, addressEligible=$addressEligible, buyerInfoValid=$buyerInfoValid, acceptedDataResidency=$acceptedDataResidency, acceptedNoRefundAfterProof=$acceptedNoRefundAfterProof, termsVersionProvided=$termsVersionProvided, unitPriceUsdt=$unitPriceUsdt, lineAmountUsdt=$lineAmountUsdt, shippingFeeUsdt=$shippingFeeUsdt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -211,10 +272,20 @@ class ItemState {
     } else {
       json[r'sellerId'] = null;
     }
+    if (this.productType != null) {
+      json[r'productType'] = this.productType;
+    } else {
+      json[r'productType'] = null;
+    }
     if (this.physicalProduct != null) {
       json[r'physicalProduct'] = this.physicalProduct;
     } else {
       json[r'physicalProduct'] = null;
+    }
+    if (this.digitalProduct != null) {
+      json[r'digitalProduct'] = this.digitalProduct;
+    } else {
+      json[r'digitalProduct'] = null;
     }
     if (this.productOnSale != null) {
       json[r'productOnSale'] = this.productOnSale;
@@ -235,6 +306,26 @@ class ItemState {
       json[r'addressEligible'] = this.addressEligible;
     } else {
       json[r'addressEligible'] = null;
+    }
+    if (this.buyerInfoValid != null) {
+      json[r'buyerInfoValid'] = this.buyerInfoValid;
+    } else {
+      json[r'buyerInfoValid'] = null;
+    }
+    if (this.acceptedDataResidency != null) {
+      json[r'acceptedDataResidency'] = this.acceptedDataResidency;
+    } else {
+      json[r'acceptedDataResidency'] = null;
+    }
+    if (this.acceptedNoRefundAfterProof != null) {
+      json[r'acceptedNoRefundAfterProof'] = this.acceptedNoRefundAfterProof;
+    } else {
+      json[r'acceptedNoRefundAfterProof'] = null;
+    }
+    if (this.termsVersionProvided != null) {
+      json[r'termsVersionProvided'] = this.termsVersionProvided;
+    } else {
+      json[r'termsVersionProvided'] = null;
     }
     if (this.unitPriceUsdt != null) {
       json[r'unitPriceUsdt'] = this.unitPriceUsdt;
@@ -279,11 +370,17 @@ class ItemState {
         selectedSku: mapValueOfType<String>(json, r'selectedSku'),
         quantity: mapValueOfType<int>(json, r'quantity'),
         sellerId: mapValueOfType<int>(json, r'sellerId'),
+        productType: ItemStateProductTypeEnum.fromJson(json[r'productType']),
         physicalProduct: mapValueOfType<bool>(json, r'physicalProduct'),
+        digitalProduct: mapValueOfType<bool>(json, r'digitalProduct'),
         productOnSale: mapValueOfType<bool>(json, r'productOnSale'),
         skuValid: mapValueOfType<bool>(json, r'skuValid'),
         stockEnough: mapValueOfType<bool>(json, r'stockEnough'),
         addressEligible: mapValueOfType<bool>(json, r'addressEligible'),
+        buyerInfoValid: mapValueOfType<bool>(json, r'buyerInfoValid'),
+        acceptedDataResidency: mapValueOfType<bool>(json, r'acceptedDataResidency'),
+        acceptedNoRefundAfterProof: mapValueOfType<bool>(json, r'acceptedNoRefundAfterProof'),
+        termsVersionProvided: mapValueOfType<bool>(json, r'termsVersionProvided'),
         unitPriceUsdt: json[r'unitPriceUsdt'] == null
             ? null
             : num.parse('${json[r'unitPriceUsdt']}'),
@@ -342,4 +439,81 @@ class ItemState {
   static const requiredKeys = <String>{
   };
 }
+
+/// 商品類型
+class ItemStateProductTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ItemStateProductTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const PHYSICAL = ItemStateProductTypeEnum._(r'PHYSICAL');
+  static const DIGITAL_SERVICE = ItemStateProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const unknownDefaultOpenApi = ItemStateProductTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][ItemStateProductTypeEnum].
+  static const values = <ItemStateProductTypeEnum>[
+    PHYSICAL,
+    DIGITAL_SERVICE,
+    unknownDefaultOpenApi,
+  ];
+
+  static ItemStateProductTypeEnum? fromJson(dynamic value) => ItemStateProductTypeEnumTypeTransformer().decode(value);
+
+  static List<ItemStateProductTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ItemStateProductTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ItemStateProductTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ItemStateProductTypeEnum] to String,
+/// and [decode] dynamic data back to [ItemStateProductTypeEnum].
+class ItemStateProductTypeEnumTypeTransformer {
+  factory ItemStateProductTypeEnumTypeTransformer() => _instance ??= const ItemStateProductTypeEnumTypeTransformer._();
+
+  const ItemStateProductTypeEnumTypeTransformer._();
+
+  String encode(ItemStateProductTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ItemStateProductTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ItemStateProductTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'PHYSICAL': return ItemStateProductTypeEnum.PHYSICAL;
+        case r'DIGITAL_SERVICE': return ItemStateProductTypeEnum.DIGITAL_SERVICE;
+        case r'unknown_default_open_api': return ItemStateProductTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ItemStateProductTypeEnumTypeTransformer] instance.
+  static ItemStateProductTypeEnumTypeTransformer? _instance;
+}
+
 
