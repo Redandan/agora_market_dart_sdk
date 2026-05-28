@@ -15,6 +15,12 @@ class CartGroupBySeller {
   CartGroupBySeller({
     this.sellerId,
     this.sellerName,
+    this.storeId,
+    this.storeName,
+    this.storeLogoUrl,
+    this.storeCanCheckout,
+    this.storeCheckoutWarning,
+    this.currency,
     this.items = const [],
     this.sellerSubtotal,
     this.sellerShippingFee,
@@ -36,6 +42,54 @@ class CartGroupBySeller {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? sellerName;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? storeId;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? storeName;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? storeLogoUrl;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? storeCanCheckout;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? storeCheckoutWarning;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? currency;
 
   List<CartItemResponse> items;
 
@@ -67,6 +121,12 @@ class CartGroupBySeller {
   bool operator ==(Object other) => identical(this, other) || other is CartGroupBySeller &&
     other.sellerId == sellerId &&
     other.sellerName == sellerName &&
+    other.storeId == storeId &&
+    other.storeName == storeName &&
+    other.storeLogoUrl == storeLogoUrl &&
+    other.storeCanCheckout == storeCanCheckout &&
+    other.storeCheckoutWarning == storeCheckoutWarning &&
+    other.currency == currency &&
     _deepEquality.equals(other.items, items) &&
     other.sellerSubtotal == sellerSubtotal &&
     other.sellerShippingFee == sellerShippingFee &&
@@ -77,13 +137,19 @@ class CartGroupBySeller {
     // ignore: unnecessary_parenthesis
     (sellerId == null ? 0 : sellerId!.hashCode) +
     (sellerName == null ? 0 : sellerName!.hashCode) +
+    (storeId == null ? 0 : storeId!.hashCode) +
+    (storeName == null ? 0 : storeName!.hashCode) +
+    (storeLogoUrl == null ? 0 : storeLogoUrl!.hashCode) +
+    (storeCanCheckout == null ? 0 : storeCanCheckout!.hashCode) +
+    (storeCheckoutWarning == null ? 0 : storeCheckoutWarning!.hashCode) +
+    (currency == null ? 0 : currency!.hashCode) +
     (items.hashCode) +
     (sellerSubtotal == null ? 0 : sellerSubtotal!.hashCode) +
     (sellerShippingFee == null ? 0 : sellerShippingFee!.hashCode) +
     (sellerTotal == null ? 0 : sellerTotal!.hashCode);
 
   @override
-  String toString() => 'CartGroupBySeller[sellerId=$sellerId, sellerName=$sellerName, items=$items, sellerSubtotal=$sellerSubtotal, sellerShippingFee=$sellerShippingFee, sellerTotal=$sellerTotal]';
+  String toString() => 'CartGroupBySeller[sellerId=$sellerId, sellerName=$sellerName, storeId=$storeId, storeName=$storeName, storeLogoUrl=$storeLogoUrl, storeCanCheckout=$storeCanCheckout, storeCheckoutWarning=$storeCheckoutWarning, currency=$currency, items=$items, sellerSubtotal=$sellerSubtotal, sellerShippingFee=$sellerShippingFee, sellerTotal=$sellerTotal]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -96,6 +162,36 @@ class CartGroupBySeller {
       json[r'sellerName'] = this.sellerName;
     } else {
       json[r'sellerName'] = null;
+    }
+    if (this.storeId != null) {
+      json[r'storeId'] = this.storeId;
+    } else {
+      json[r'storeId'] = null;
+    }
+    if (this.storeName != null) {
+      json[r'storeName'] = this.storeName;
+    } else {
+      json[r'storeName'] = null;
+    }
+    if (this.storeLogoUrl != null) {
+      json[r'storeLogoUrl'] = this.storeLogoUrl;
+    } else {
+      json[r'storeLogoUrl'] = null;
+    }
+    if (this.storeCanCheckout != null) {
+      json[r'storeCanCheckout'] = this.storeCanCheckout;
+    } else {
+      json[r'storeCanCheckout'] = null;
+    }
+    if (this.storeCheckoutWarning != null) {
+      json[r'storeCheckoutWarning'] = this.storeCheckoutWarning;
+    } else {
+      json[r'storeCheckoutWarning'] = null;
+    }
+    if (this.currency != null) {
+      json[r'currency'] = this.currency;
+    } else {
+      json[r'currency'] = null;
     }
       json[r'items'] = this.items.map((e) => e.toJson()).toList();
     if (this.sellerSubtotal != null) {
@@ -137,6 +233,12 @@ class CartGroupBySeller {
       return CartGroupBySeller(
         sellerId: mapValueOfType<int>(json, r'sellerId'),
         sellerName: mapValueOfType<String>(json, r'sellerName'),
+        storeId: mapValueOfType<int>(json, r'storeId'),
+        storeName: mapValueOfType<String>(json, r'storeName'),
+        storeLogoUrl: mapValueOfType<String>(json, r'storeLogoUrl'),
+        storeCanCheckout: mapValueOfType<bool>(json, r'storeCanCheckout'),
+        storeCheckoutWarning: mapValueOfType<String>(json, r'storeCheckoutWarning'),
+        currency: mapValueOfType<String>(json, r'currency'),
         items: CartItemResponse.listFromJson(json[r'items']),
         sellerSubtotal: json[r'sellerSubtotal'] == null
             ? null

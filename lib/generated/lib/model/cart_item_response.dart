@@ -26,6 +26,9 @@ class CartItemResponse {
     this.totalPrice,
     this.sellerId,
     this.sellerName,
+    this.storeId,
+    this.storeName,
+    this.storeLogoUrl,
     this.pickupAddress,
     this.selectedSpecifications = const {},
     this.specificationDescription,
@@ -159,6 +162,33 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? sellerName;
+
+  /// 店鋪ID；目前等同 sellerId
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? storeId;
+
+  /// 店鋪名稱
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? storeName;
+
+  /// 店鋪Logo URL
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? storeLogoUrl;
 
   /// 取貨地址
   ///
@@ -298,6 +328,9 @@ class CartItemResponse {
     other.totalPrice == totalPrice &&
     other.sellerId == sellerId &&
     other.sellerName == sellerName &&
+    other.storeId == storeId &&
+    other.storeName == storeName &&
+    other.storeLogoUrl == storeLogoUrl &&
     other.pickupAddress == pickupAddress &&
     _deepEquality.equals(other.selectedSpecifications, selectedSpecifications) &&
     other.specificationDescription == specificationDescription &&
@@ -330,6 +363,9 @@ class CartItemResponse {
     (totalPrice == null ? 0 : totalPrice!.hashCode) +
     (sellerId == null ? 0 : sellerId!.hashCode) +
     (sellerName == null ? 0 : sellerName!.hashCode) +
+    (storeId == null ? 0 : storeId!.hashCode) +
+    (storeName == null ? 0 : storeName!.hashCode) +
+    (storeLogoUrl == null ? 0 : storeLogoUrl!.hashCode) +
     (pickupAddress == null ? 0 : pickupAddress!.hashCode) +
     (selectedSpecifications.hashCode) +
     (specificationDescription == null ? 0 : specificationDescription!.hashCode) +
@@ -347,7 +383,7 @@ class CartItemResponse {
     (shippingOptions == null ? 0 : shippingOptions!.hashCode);
 
   @override
-  String toString() => 'CartItemResponse[id=$id, productId=$productId, productTitle=$productTitle, productDescription=$productDescription, productImage=$productImage, quantity=$quantity, unitPrice=$unitPrice, currency=$currency, shippingFee=$shippingFee, subtotal=$subtotal, totalPrice=$totalPrice, sellerId=$sellerId, sellerName=$sellerName, pickupAddress=$pickupAddress, selectedSpecifications=$selectedSpecifications, specificationDescription=$specificationDescription, sku=$sku, brand=$brand, availableStock=$availableStock, isInStock=$isInStock, stockStatus=$stockStatus, stockWarning=$stockWarning, canPurchase=$canPurchase, purchaseRestrictionReason=$purchaseRestrictionReason, createdAt=$createdAt, updatedAt=$updatedAt, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions]';
+  String toString() => 'CartItemResponse[id=$id, productId=$productId, productTitle=$productTitle, productDescription=$productDescription, productImage=$productImage, quantity=$quantity, unitPrice=$unitPrice, currency=$currency, shippingFee=$shippingFee, subtotal=$subtotal, totalPrice=$totalPrice, sellerId=$sellerId, sellerName=$sellerName, storeId=$storeId, storeName=$storeName, storeLogoUrl=$storeLogoUrl, pickupAddress=$pickupAddress, selectedSpecifications=$selectedSpecifications, specificationDescription=$specificationDescription, sku=$sku, brand=$brand, availableStock=$availableStock, isInStock=$isInStock, stockStatus=$stockStatus, stockWarning=$stockWarning, canPurchase=$canPurchase, purchaseRestrictionReason=$purchaseRestrictionReason, createdAt=$createdAt, updatedAt=$updatedAt, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -415,6 +451,21 @@ class CartItemResponse {
       json[r'sellerName'] = this.sellerName;
     } else {
       json[r'sellerName'] = null;
+    }
+    if (this.storeId != null) {
+      json[r'storeId'] = this.storeId;
+    } else {
+      json[r'storeId'] = null;
+    }
+    if (this.storeName != null) {
+      json[r'storeName'] = this.storeName;
+    } else {
+      json[r'storeName'] = null;
+    }
+    if (this.storeLogoUrl != null) {
+      json[r'storeLogoUrl'] = this.storeLogoUrl;
+    } else {
+      json[r'storeLogoUrl'] = null;
     }
     if (this.pickupAddress != null) {
       json[r'pickupAddress'] = this.pickupAddress;
@@ -526,6 +577,9 @@ class CartItemResponse {
             : num.parse('${json[r'totalPrice']}'),
         sellerId: mapValueOfType<int>(json, r'sellerId'),
         sellerName: mapValueOfType<String>(json, r'sellerName'),
+        storeId: mapValueOfType<int>(json, r'storeId'),
+        storeName: mapValueOfType<String>(json, r'storeName'),
+        storeLogoUrl: mapValueOfType<String>(json, r'storeLogoUrl'),
         pickupAddress: mapValueOfType<String>(json, r'pickupAddress'),
         selectedSpecifications: mapCastOfType<String, String>(json, r'selectedSpecifications') ?? const {},
         specificationDescription: mapValueOfType<String>(json, r'specificationDescription'),

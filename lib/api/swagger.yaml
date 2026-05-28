@@ -19215,6 +19215,19 @@
             "type": "string",
             "description": "賣家名稱"
           },
+          "storeId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "店鋪ID；目前等同 sellerId"
+          },
+          "storeName": {
+            "type": "string",
+            "description": "店鋪名稱"
+          },
+          "storeLogoUrl": {
+            "type": "string",
+            "description": "店鋪Logo URL"
+          },
           "pickupAddress": {
             "type": "string",
             "description": "取貨地址"
@@ -31188,16 +31201,16 @@
           "subtotal": {
             "type": "number"
           },
-          "totalPrice": {
-            "type": "number"
-          },
           "stockStatus": {
             "type": "string"
           },
-          "specificationDescription": {
+          "purchaseRestrictionReason": {
             "type": "string"
           },
-          "purchaseRestrictionReason": {
+          "totalPrice": {
+            "type": "number"
+          },
+          "specificationDescription": {
             "type": "string"
           }
         },
@@ -37653,6 +37666,25 @@
             "format": "int64"
           },
           "sellerName": {
+            "type": "string"
+          },
+          "storeId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "storeName": {
+            "type": "string"
+          },
+          "storeLogoUrl": {
+            "type": "string"
+          },
+          "storeCanCheckout": {
+            "type": "boolean"
+          },
+          "storeCheckoutWarning": {
+            "type": "string"
+          },
+          "currency": {
             "type": "string"
           },
           "items": {
