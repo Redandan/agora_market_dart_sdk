@@ -393,9 +393,9 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**aiValidateProof**](doc//MemberOrdersApi.md#aivalidateproof) | **POST** /orders/{orderId}/proofs/{proofId}/ai-validate | AI 驗證 proof 是否符合訂單要求(買家預判)
 *MemberOrdersApi* | [**cancelDigitalOrder**](doc//MemberOrdersApi.md#canceldigitalorder) | **POST** /orders/{orderId}/cancel-digital | 取消數位商品訂單(買家或賣家)
 *MemberOrdersApi* | [**cancelOrder**](doc//MemberOrdersApi.md#cancelorder) | **POST** /orders/cancel | 取消訂單
-*MemberOrdersApi* | [**cartCheckout**](doc//MemberOrdersApi.md#cartcheckout) | **POST** /orders/cart-checkout | 同賣家購物車合併結帳
-*MemberOrdersApi* | [**cartCheckoutPlan**](doc//MemberOrdersApi.md#cartcheckoutplan) | **POST** /orders/cart-checkout-plan | 購物車合併結帳分組計畫
-*MemberOrdersApi* | [**cartCheckoutPreview**](doc//MemberOrdersApi.md#cartcheckoutpreview) | **POST** /orders/cart-checkout-preview | 同賣家購物車合併結帳 preview
+*MemberOrdersApi* | [**cartCheckout**](doc//MemberOrdersApi.md#cartcheckout) | **POST** /orders/cart-checkout/submit | 同賣家購物車合併結帳
+*MemberOrdersApi* | [**cartCheckoutPlan**](doc//MemberOrdersApi.md#cartcheckoutplan) | **POST** /orders/cart-checkout/plan | 購物車合併結帳分組計畫
+*MemberOrdersApi* | [**cartCheckoutPreview**](doc//MemberOrdersApi.md#cartcheckoutpreview) | **POST** /orders/cart-checkout/preview | 同賣家購物車合併結帳 preview
 *MemberOrdersApi* | [**checkoutPreview**](doc//MemberOrdersApi.md#checkoutpreview) | **POST** /orders/checkout-preview | 付款前 checkout preview
 *MemberOrdersApi* | [**confirmDeliveryProof**](doc//MemberOrdersApi.md#confirmdeliveryproof) | **POST** /orders/{orderId}/delivery-proof/confirm | 買家確認交付證明
 *MemberOrdersApi* | [**confirmOrder**](doc//MemberOrdersApi.md#confirmorder) | **POST** /orders/confirm | 確認收貨

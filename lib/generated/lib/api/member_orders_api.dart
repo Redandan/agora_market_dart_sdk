@@ -218,7 +218,7 @@ class MemberOrdersApi {
   /// * [CartCheckoutParam] cartCheckoutParam (required):
   Future<Response> cartCheckoutWithHttpInfo(CartCheckoutParam cartCheckoutParam,) async {
     // ignore: prefer_const_declarations
-    final path = r'/orders/cart-checkout';
+    final path = r'/orders/cart-checkout/submit';
 
     // ignore: prefer_final_locals
     Object? postBody = cartCheckoutParam;
@@ -274,7 +274,7 @@ class MemberOrdersApi {
   /// * [CartCheckoutPlanParam] cartCheckoutPlanParam:
   Future<Response> cartCheckoutPlanWithHttpInfo({ CartCheckoutPlanParam? cartCheckoutPlanParam, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/orders/cart-checkout-plan';
+    final path = r'/orders/cart-checkout/plan';
 
     // ignore: prefer_final_locals
     Object? postBody = cartCheckoutPlanParam;
@@ -330,7 +330,7 @@ class MemberOrdersApi {
   /// * [CartCheckoutParam] cartCheckoutParam:
   Future<Response> cartCheckoutPreviewWithHttpInfo({ CartCheckoutParam? cartCheckoutParam, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/orders/cart-checkout-preview';
+    final path = r'/orders/cart-checkout/preview';
 
     // ignore: prefer_final_locals
     Object? postBody = cartCheckoutParam;

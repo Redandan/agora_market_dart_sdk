@@ -5121,7 +5121,7 @@
         }
       }
     },
-    "/orders/cart-checkout": {
+    "/orders/cart-checkout/submit": {
       "post": {
         "tags": [
           "member-orders"
@@ -5153,7 +5153,7 @@
         }
       }
     },
-    "/orders/cart-checkout-preview": {
+    "/orders/cart-checkout/preview": {
       "post": {
         "tags": [
           "member-orders"
@@ -5184,7 +5184,7 @@
         }
       }
     },
-    "/orders/cart-checkout-plan": {
+    "/orders/cart-checkout/plan": {
       "post": {
         "tags": [
           "member-orders"
