@@ -395,7 +395,7 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**cancelOrder**](doc//MemberOrdersApi.md#cancelorder) | **POST** /orders/cancel | 取消訂單
 *MemberOrdersApi* | [**cartCheckoutPlan**](doc//MemberOrdersApi.md#cartcheckoutplan) | **POST** /orders/cart-checkout/plan | 購物車合併結帳分組計畫
 *MemberOrdersApi* | [**cartCheckoutPreview**](doc//MemberOrdersApi.md#cartcheckoutpreview) | **POST** /orders/cart-checkout/preview | 購物車合併結帳 preview
-*MemberOrdersApi* | [**cartCheckoutSubmit**](doc//MemberOrdersApi.md#cartcheckoutsubmit) | **POST** /orders/cart-checkout/submit | 提交購物車合併結帳
+*MemberOrdersApi* | [**cartCheckoutSubmit**](doc//MemberOrdersApi.md#cartcheckoutsubmit) | **POST** /orders/cart-checkout/submit | 提交購物車多店鋪結帳
 *MemberOrdersApi* | [**checkoutPreview**](doc//MemberOrdersApi.md#checkoutpreview) | **POST** /orders/checkout-preview | 付款前 checkout preview
 *MemberOrdersApi* | [**confirmDeliveryProof**](doc//MemberOrdersApi.md#confirmdeliveryproof) | **POST** /orders/{orderId}/delivery-proof/confirm | 買家確認交付證明
 *MemberOrdersApi* | [**confirmOrder**](doc//MemberOrdersApi.md#confirmorder) | **POST** /orders/confirm | 確認收貨
@@ -627,6 +627,8 @@ Class | Method | HTTP request | Description
  - [CartCheckoutPlanParam](doc//CartCheckoutPlanParam.md)
  - [CartCheckoutPlanResponse](doc//CartCheckoutPlanResponse.md)
  - [CartCheckoutPreflightResponse](doc//CartCheckoutPreflightResponse.md)
+ - [CartCheckoutSubmitParam](doc//CartCheckoutSubmitParam.md)
+ - [CartCheckoutSubmitResponse](doc//CartCheckoutSubmitResponse.md)
  - [CartGroupBySeller](doc//CartGroupBySeller.md)
  - [CartItem](doc//CartItem.md)
  - [CartItemCreateParam](doc//CartItemCreateParam.md)
@@ -934,6 +936,7 @@ Class | Method | HTTP request | Description
  - [StrategyBacktestDetailResponse](doc//StrategyBacktestDetailResponse.md)
  - [StrategyQueryRequest](doc//StrategyQueryRequest.md)
  - [StrategyResponse](doc//StrategyResponse.md)
+ - [SubmittedOrder](doc//SubmittedOrder.md)
  - [SuggestionActionParam](doc//SuggestionActionParam.md)
  - [Summary](doc//Summary.md)
  - [TaiwanPostalArea](doc//TaiwanPostalArea.md)

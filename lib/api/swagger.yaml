@@ -5126,14 +5126,14 @@
         "tags": [
           "member-orders"
         ],
-        "summary": "提交購物車合併結帳",
-        "description": "依後端分組後的單一 group 建立訂單；提交時仍重新驗證商品、地址、庫存、條款與錢包餘額。",
+        "summary": "提交購物車多店鋪結帳",
+        "description": "後端重新分組 selected cart items，all-or-nothing 為每個可提交 group 建立獨立訂單。",
         "operationId": "cartCheckoutSubmit",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CartCheckoutParam"
+                "$ref": "#/components/schemas/CartCheckoutSubmitParam"
               }
             }
           },
@@ -5145,7 +5145,7 @@
             "content": {
               "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/OrderQueryResult"
+                  "$ref": "#/components/schemas/CartCheckoutSubmitResponse"
                 }
               }
             }
@@ -28125,6 +28125,83 @@
           "cartItemId",
           "productId"
         ]
+      },
+      "CartCheckoutSubmitParam": {
+        "type": "object",
+        "description": "多店鋪合併結帳提交參數",
+        "properties": {
+          "addressId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "本次預計使用的收貨地址ID；實體商品 group 必填，純數位商品可空"
+          },
+          "remark": {
+            "type": "string",
+            "description": "套用到本批建立訂單的備註"
+          },
+          "items": {
+            "type": "array",
+            "description": "要提交的購物車商品；後端會重新分組並為每個可提交 group 建立獨立訂單",
+            "items": {
+              "$ref": "#/components/schemas/CartCheckoutItemParam"
+            },
+            "minItems": 1
+          }
+        }
+      },
+      "CartCheckoutSubmitResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "totalOrderCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalAmountUsdt": {
+            "type": "number"
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SubmittedOrder"
+            }
+          }
+        }
+      },
+      "SubmittedOrder": {
+        "type": "object",
+        "properties": {
+          "groupId": {
+            "type": "string"
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "sellerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sellerName": {
+            "type": "string"
+          },
+          "productType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "itemCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "orderAmountUsdt": {
+            "type": "number"
+          }
+        }
       },
       "CartCheckoutParam": {
         "type": "object",

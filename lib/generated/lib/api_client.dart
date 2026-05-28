@@ -312,6 +312,10 @@ class ApiClient {
           return CartCheckoutPlanResponse.fromJson(value);
         case 'CartCheckoutPreflightResponse':
           return CartCheckoutPreflightResponse.fromJson(value);
+        case 'CartCheckoutSubmitParam':
+          return CartCheckoutSubmitParam.fromJson(value);
+        case 'CartCheckoutSubmitResponse':
+          return CartCheckoutSubmitResponse.fromJson(value);
         case 'CartGroupBySeller':
           return CartGroupBySeller.fromJson(value);
         case 'CartItem':
@@ -926,6 +930,8 @@ class ApiClient {
           return StrategyQueryRequest.fromJson(value);
         case 'StrategyResponse':
           return StrategyResponse.fromJson(value);
+        case 'SubmittedOrder':
+          return SubmittedOrder.fromJson(value);
         case 'SuggestionActionParam':
           return SuggestionActionParam.fromJson(value);
         case 'Summary':

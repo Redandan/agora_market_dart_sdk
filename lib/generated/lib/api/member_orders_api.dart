@@ -319,21 +319,21 @@ class MemberOrdersApi {
     return null;
   }
 
-  /// 提交購物車合併結帳
+  /// 提交購物車多店鋪結帳
   ///
-  /// 依後端分組後的單一 group 建立訂單；提交時仍重新驗證商品、地址、庫存、條款與錢包餘額。
+  /// 後端重新分組 selected cart items，all-or-nothing 為每個可提交 group 建立獨立訂單。
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [CartCheckoutParam] cartCheckoutParam (required):
-  Future<Response> cartCheckoutSubmitWithHttpInfo(CartCheckoutParam cartCheckoutParam,) async {
+  /// * [CartCheckoutSubmitParam] cartCheckoutSubmitParam (required):
+  Future<Response> cartCheckoutSubmitWithHttpInfo(CartCheckoutSubmitParam cartCheckoutSubmitParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/orders/cart-checkout/submit';
 
     // ignore: prefer_final_locals
-    Object? postBody = cartCheckoutParam;
+    Object? postBody = cartCheckoutSubmitParam;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -353,15 +353,15 @@ class MemberOrdersApi {
     );
   }
 
-  /// 提交購物車合併結帳
+  /// 提交購物車多店鋪結帳
   ///
-  /// 依後端分組後的單一 group 建立訂單；提交時仍重新驗證商品、地址、庫存、條款與錢包餘額。
+  /// 後端重新分組 selected cart items，all-or-nothing 為每個可提交 group 建立獨立訂單。
   ///
   /// Parameters:
   ///
-  /// * [CartCheckoutParam] cartCheckoutParam (required):
-  Future<OrderQueryResult?> cartCheckoutSubmit(CartCheckoutParam cartCheckoutParam,) async {
-    final response = await cartCheckoutSubmitWithHttpInfo(cartCheckoutParam,);
+  /// * [CartCheckoutSubmitParam] cartCheckoutSubmitParam (required):
+  Future<CartCheckoutSubmitResponse?> cartCheckoutSubmit(CartCheckoutSubmitParam cartCheckoutSubmitParam,) async {
+    final response = await cartCheckoutSubmitWithHttpInfo(cartCheckoutSubmitParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -369,7 +369,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderQueryResult',) as OrderQueryResult;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CartCheckoutSubmitResponse',) as CartCheckoutSubmitResponse;
     
     }
     return null;
