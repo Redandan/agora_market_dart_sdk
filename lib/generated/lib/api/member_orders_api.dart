@@ -207,65 +207,9 @@ class MemberOrdersApi {
     return null;
   }
 
-  /// 同賣家購物車合併結帳
-  ///
-  /// 同一賣家、同一收貨地址的實體商品購物車項目 all-or-nothing 建立單一訂單與多個 order items。
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [CartCheckoutParam] cartCheckoutParam (required):
-  Future<Response> cartCheckoutWithHttpInfo(CartCheckoutParam cartCheckoutParam,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/orders/cart-checkout/submit';
-
-    // ignore: prefer_final_locals
-    Object? postBody = cartCheckoutParam;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 同賣家購物車合併結帳
-  ///
-  /// 同一賣家、同一收貨地址的實體商品購物車項目 all-or-nothing 建立單一訂單與多個 order items。
-  ///
-  /// Parameters:
-  ///
-  /// * [CartCheckoutParam] cartCheckoutParam (required):
-  Future<OrderQueryResult?> cartCheckout(CartCheckoutParam cartCheckoutParam,) async {
-    final response = await cartCheckoutWithHttpInfo(cartCheckoutParam,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderQueryResult',) as OrderQueryResult;
-    
-    }
-    return null;
-  }
-
   /// 購物車合併結帳分組計畫
   ///
-  /// Read-only 回傳後端分組、運費、金額與不可合併原因；提交仍由 cart-checkout 最終驗證。
+  /// Read-only 回傳後端分組、運費、金額與不可合併原因；提交仍由 cart-checkout/submit 最終驗證。
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -299,7 +243,7 @@ class MemberOrdersApi {
 
   /// 購物車合併結帳分組計畫
   ///
-  /// Read-only 回傳後端分組、運費、金額與不可合併原因；提交仍由 cart-checkout 最終驗證。
+  /// Read-only 回傳後端分組、運費、金額與不可合併原因；提交仍由 cart-checkout/submit 最終驗證。
   ///
   /// Parameters:
   ///
@@ -319,9 +263,9 @@ class MemberOrdersApi {
     return null;
   }
 
-  /// 同賣家購物車合併結帳 preview
+  /// 購物車合併結帳 preview
   ///
-  /// 付款前 read-only 檢查同賣家實體商品批量結帳；不建立訂單、不扣款、不扣庫存。
+  /// 付款前 read-only 檢查單一購物車結帳 group；不建立訂單、不扣款、不扣庫存。
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -353,9 +297,9 @@ class MemberOrdersApi {
     );
   }
 
-  /// 同賣家購物車合併結帳 preview
+  /// 購物車合併結帳 preview
   ///
-  /// 付款前 read-only 檢查同賣家實體商品批量結帳；不建立訂單、不扣款、不扣庫存。
+  /// 付款前 read-only 檢查單一購物車結帳 group；不建立訂單、不扣款、不扣庫存。
   ///
   /// Parameters:
   ///
@@ -370,6 +314,62 @@ class MemberOrdersApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CartCheckoutPreflightResponse',) as CartCheckoutPreflightResponse;
+    
+    }
+    return null;
+  }
+
+  /// 提交購物車合併結帳
+  ///
+  /// 依後端分組後的單一 group 建立訂單；提交時仍重新驗證商品、地址、庫存、條款與錢包餘額。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [CartCheckoutParam] cartCheckoutParam (required):
+  Future<Response> cartCheckoutSubmitWithHttpInfo(CartCheckoutParam cartCheckoutParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/orders/cart-checkout/submit';
+
+    // ignore: prefer_final_locals
+    Object? postBody = cartCheckoutParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 提交購物車合併結帳
+  ///
+  /// 依後端分組後的單一 group 建立訂單；提交時仍重新驗證商品、地址、庫存、條款與錢包餘額。
+  ///
+  /// Parameters:
+  ///
+  /// * [CartCheckoutParam] cartCheckoutParam (required):
+  Future<OrderQueryResult?> cartCheckoutSubmit(CartCheckoutParam cartCheckoutParam,) async {
+    final response = await cartCheckoutSubmitWithHttpInfo(cartCheckoutParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderQueryResult',) as OrderQueryResult;
     
     }
     return null;

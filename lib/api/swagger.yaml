@@ -5126,9 +5126,9 @@
         "tags": [
           "member-orders"
         ],
-        "summary": "同賣家購物車合併結帳",
-        "description": "同一賣家、同一收貨地址的實體商品購物車項目 all-or-nothing 建立單一訂單與多個 order items。",
-        "operationId": "cartCheckout",
+        "summary": "提交購物車合併結帳",
+        "description": "依後端分組後的單一 group 建立訂單；提交時仍重新驗證商品、地址、庫存、條款與錢包餘額。",
+        "operationId": "cartCheckoutSubmit",
         "requestBody": {
           "content": {
             "application/json": {
@@ -5158,8 +5158,8 @@
         "tags": [
           "member-orders"
         ],
-        "summary": "同賣家購物車合併結帳 preview",
-        "description": "付款前 read-only 檢查同賣家實體商品批量結帳；不建立訂單、不扣款、不扣庫存。",
+        "summary": "購物車合併結帳 preview",
+        "description": "付款前 read-only 檢查單一購物車結帳 group；不建立訂單、不扣款、不扣庫存。",
         "operationId": "cartCheckoutPreview",
         "requestBody": {
           "content": {
@@ -5190,7 +5190,7 @@
           "member-orders"
         ],
         "summary": "購物車合併結帳分組計畫",
-        "description": "Read-only 回傳後端分組、運費、金額與不可合併原因；提交仍由 cart-checkout 最終驗證。",
+        "description": "Read-only 回傳後端分組、運費、金額與不可合併原因；提交仍由 cart-checkout/submit 最終驗證。",
         "operationId": "cartCheckoutPlan",
         "requestBody": {
           "content": {
