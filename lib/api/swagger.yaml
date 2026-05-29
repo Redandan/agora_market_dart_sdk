@@ -7726,6 +7726,36 @@
         }
       }
     },
+    "/auth/passkey/login/capability": {
+      "post": {
+        "tags": [
+          "auth-passkey"
+        ],
+        "summary": "Get Passkey quick-login capability for current origin",
+        "operationId": "loginCapability",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasskeyOptionsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasskeyCapabilityResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/auth/oauth2/token/by-token-id": {
       "post": {
         "tags": [
@@ -32836,6 +32866,72 @@
           "publicKey": {
             "$ref": "#/components/schemas/JsonNode",
             "description": "JSON object passed as publicKey options to WebAuthn JS."
+          },
+          "discoverableCredentialLogin": {
+            "type": "boolean",
+            "description": "Whether options are for username-less discoverable credential login.",
+            "example": true
+          },
+          "allowCredentialsEmpty": {
+            "type": "boolean",
+            "description": "Whether allowCredentials is deliberately empty/omitted for account-less passkey selection.",
+            "example": true
+          },
+          "residentKeyRequirement": {
+            "type": "string",
+            "description": "Effective residentKey requirement for registration options.",
+            "example": "required"
+          },
+          "userVerificationRequirement": {
+            "type": "string",
+            "description": "Effective userVerification requirement.",
+            "example": "required"
+          }
+        }
+      },
+      "PasskeyCapabilityResponse": {
+        "type": "object",
+        "description": "Passkey quick-login capability for the current origin",
+        "properties": {
+          "available": {
+            "type": "boolean",
+            "description": "Whether backend has an active RP config for this origin.",
+            "example": true
+          },
+          "rpId": {
+            "type": "string",
+            "description": "Selected relying party id.",
+            "example": "purrtechllc.com"
+          },
+          "origin": {
+            "type": "string",
+            "description": "Matched browser origin.",
+            "example": "https://agoramarket.purrtechllc.com"
+          },
+          "discoverableCredentialLogin": {
+            "type": "boolean",
+            "description": "Whether anonymous / username-less discoverable credential login is supported.",
+            "example": true
+          },
+          "residentKeyRequirement": {
+            "type": "string",
+            "description": "Registration residentKey requirement.",
+            "example": "required"
+          },
+          "userVerificationRequirement": {
+            "type": "string",
+            "description": "Registration/login userVerification requirement.",
+            "example": "required"
+          },
+          "accountEnumerationProtected": {
+            "type": "boolean",
+            "description": "Backend does not expose account/passkey existence checks.",
+            "example": true
+          },
+          "requiresClientSideCapabilityCheck": {
+            "type": "boolean",
+            "description": "Frontend should still use browser capability and local successful-passkey hint.",
+            "example": true
           }
         }
       },

@@ -335,6 +335,7 @@ part 'model/page_withdraw.dart';
 part 'model/pageable.dart';
 part 'model/pageable_object.dart';
 part 'model/parsed_intent.dart';
+part 'model/passkey_capability_response.dart';
 part 'model/passkey_credential_response.dart';
 part 'model/passkey_options_request.dart';
 part 'model/passkey_options_response.dart';

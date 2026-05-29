@@ -167,6 +167,58 @@ class AuthPasskeyApi {
     return null;
   }
 
+  /// Get Passkey quick-login capability for current origin
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [PasskeyOptionsRequest] passkeyOptionsRequest:
+  Future<Response> loginCapabilityWithHttpInfo({ PasskeyOptionsRequest? passkeyOptionsRequest, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/passkey/login/capability';
+
+    // ignore: prefer_final_locals
+    Object? postBody = passkeyOptionsRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Get Passkey quick-login capability for current origin
+  ///
+  /// Parameters:
+  ///
+  /// * [PasskeyOptionsRequest] passkeyOptionsRequest:
+  Future<PasskeyCapabilityResponse?> loginCapability({ PasskeyOptionsRequest? passkeyOptionsRequest, }) async {
+    final response = await loginCapabilityWithHttpInfo( passkeyOptionsRequest: passkeyOptionsRequest, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PasskeyCapabilityResponse',) as PasskeyCapabilityResponse;
+    
+    }
+    return null;
+  }
+
   /// Disable/revoke a registered passkey
   ///
   /// Note: This method returns the HTTP [Response].

@@ -300,6 +300,7 @@ Class | Method | HTTP request | Description
 *AuthPasskeyApi* | [**finishLogin**](doc//AuthPasskeyApi.md#finishlogin) | **POST** /auth/passkey/login/verify | Verify WebAuthn passkey login response and return LoginResult
 *AuthPasskeyApi* | [**finishRegistration**](doc//AuthPasskeyApi.md#finishregistration) | **POST** /auth/passkey/register/verify | Verify WebAuthn passkey registration response
 *AuthPasskeyApi* | [**listCredentials**](doc//AuthPasskeyApi.md#listcredentials) | **GET** /auth/passkey/credentials | List current user's registered passkeys
+*AuthPasskeyApi* | [**loginCapability**](doc//AuthPasskeyApi.md#logincapability) | **POST** /auth/passkey/login/capability | Get Passkey quick-login capability for current origin
 *AuthPasskeyApi* | [**revokeCredential**](doc//AuthPasskeyApi.md#revokecredential) | **DELETE** /auth/passkey/credentials/{credentialId} | Disable/revoke a registered passkey
 *AuthPasskeyApi* | [**startLogin**](doc//AuthPasskeyApi.md#startlogin) | **POST** /auth/passkey/login/options | Generate WebAuthn passkey login options
 *AuthPasskeyApi* | [**startRegistration**](doc//AuthPasskeyApi.md#startregistration) | **POST** /auth/passkey/register/options | Generate WebAuthn passkey registration options
@@ -812,6 +813,7 @@ Class | Method | HTTP request | Description
  - [Pageable](doc//Pageable.md)
  - [PageableObject](doc//PageableObject.md)
  - [ParsedIntent](doc//ParsedIntent.md)
+ - [PasskeyCapabilityResponse](doc//PasskeyCapabilityResponse.md)
  - [PasskeyCredentialResponse](doc//PasskeyCredentialResponse.md)
  - [PasskeyOptionsRequest](doc//PasskeyOptionsRequest.md)
  - [PasskeyOptionsResponse](doc//PasskeyOptionsResponse.md)

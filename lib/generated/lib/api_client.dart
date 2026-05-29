@@ -670,6 +670,8 @@ class ApiClient {
           return PageableObject.fromJson(value);
         case 'ParsedIntent':
           return ParsedIntent.fromJson(value);
+        case 'PasskeyCapabilityResponse':
+          return PasskeyCapabilityResponse.fromJson(value);
         case 'PasskeyCredentialResponse':
           return PasskeyCredentialResponse.fromJson(value);
         case 'PasskeyOptionsRequest':

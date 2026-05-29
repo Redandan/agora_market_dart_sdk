@@ -10,27 +10,27 @@
 
 part of openapi.api;
 
-class PasskeyOptionsResponse {
-  /// Returns a new [PasskeyOptionsResponse] instance.
-  PasskeyOptionsResponse({
-    this.requestId,
+class PasskeyCapabilityResponse {
+  /// Returns a new [PasskeyCapabilityResponse] instance.
+  PasskeyCapabilityResponse({
+    this.available,
     this.rpId,
     this.origin,
-    this.publicKey,
     this.discoverableCredentialLogin,
-    this.allowCredentialsEmpty,
     this.residentKeyRequirement,
     this.userVerificationRequirement,
+    this.accountEnumerationProtected,
+    this.requiresClientSideCapabilityCheck,
   });
 
-  /// Opaque request id to send back to verify.
+  /// Whether backend has an active RP config for this origin.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? requestId;
+  bool? available;
 
   /// Selected relying party id.
   ///
@@ -50,16 +50,7 @@ class PasskeyOptionsResponse {
   ///
   String? origin;
 
-  /// JSON object passed as publicKey options to WebAuthn JS.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  Object? publicKey;
-
-  /// Whether options are for username-less discoverable credential login.
+  /// Whether anonymous / username-less discoverable credential login is supported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -68,16 +59,7 @@ class PasskeyOptionsResponse {
   ///
   bool? discoverableCredentialLogin;
 
-  /// Whether allowCredentials is deliberately empty/omitted for account-less passkey selection.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? allowCredentialsEmpty;
-
-  /// Effective residentKey requirement for registration options.
+  /// Registration residentKey requirement.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -86,7 +68,7 @@ class PasskeyOptionsResponse {
   ///
   String? residentKeyRequirement;
 
-  /// Effective userVerification requirement.
+  /// Registration/login userVerification requirement.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -95,38 +77,56 @@ class PasskeyOptionsResponse {
   ///
   String? userVerificationRequirement;
 
+  /// Backend does not expose account/passkey existence checks.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? accountEnumerationProtected;
+
+  /// Frontend should still use browser capability and local successful-passkey hint.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? requiresClientSideCapabilityCheck;
+
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PasskeyOptionsResponse &&
-    other.requestId == requestId &&
+  bool operator ==(Object other) => identical(this, other) || other is PasskeyCapabilityResponse &&
+    other.available == available &&
     other.rpId == rpId &&
     other.origin == origin &&
-    other.publicKey == publicKey &&
     other.discoverableCredentialLogin == discoverableCredentialLogin &&
-    other.allowCredentialsEmpty == allowCredentialsEmpty &&
     other.residentKeyRequirement == residentKeyRequirement &&
-    other.userVerificationRequirement == userVerificationRequirement;
+    other.userVerificationRequirement == userVerificationRequirement &&
+    other.accountEnumerationProtected == accountEnumerationProtected &&
+    other.requiresClientSideCapabilityCheck == requiresClientSideCapabilityCheck;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (requestId == null ? 0 : requestId!.hashCode) +
+    (available == null ? 0 : available!.hashCode) +
     (rpId == null ? 0 : rpId!.hashCode) +
     (origin == null ? 0 : origin!.hashCode) +
-    (publicKey == null ? 0 : publicKey!.hashCode) +
     (discoverableCredentialLogin == null ? 0 : discoverableCredentialLogin!.hashCode) +
-    (allowCredentialsEmpty == null ? 0 : allowCredentialsEmpty!.hashCode) +
     (residentKeyRequirement == null ? 0 : residentKeyRequirement!.hashCode) +
-    (userVerificationRequirement == null ? 0 : userVerificationRequirement!.hashCode);
+    (userVerificationRequirement == null ? 0 : userVerificationRequirement!.hashCode) +
+    (accountEnumerationProtected == null ? 0 : accountEnumerationProtected!.hashCode) +
+    (requiresClientSideCapabilityCheck == null ? 0 : requiresClientSideCapabilityCheck!.hashCode);
 
   @override
-  String toString() => 'PasskeyOptionsResponse[requestId=$requestId, rpId=$rpId, origin=$origin, publicKey=$publicKey, discoverableCredentialLogin=$discoverableCredentialLogin, allowCredentialsEmpty=$allowCredentialsEmpty, residentKeyRequirement=$residentKeyRequirement, userVerificationRequirement=$userVerificationRequirement]';
+  String toString() => 'PasskeyCapabilityResponse[available=$available, rpId=$rpId, origin=$origin, discoverableCredentialLogin=$discoverableCredentialLogin, residentKeyRequirement=$residentKeyRequirement, userVerificationRequirement=$userVerificationRequirement, accountEnumerationProtected=$accountEnumerationProtected, requiresClientSideCapabilityCheck=$requiresClientSideCapabilityCheck]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.requestId != null) {
-      json[r'requestId'] = this.requestId;
+    if (this.available != null) {
+      json[r'available'] = this.available;
     } else {
-      json[r'requestId'] = null;
+      json[r'available'] = null;
     }
     if (this.rpId != null) {
       json[r'rpId'] = this.rpId;
@@ -138,20 +138,10 @@ class PasskeyOptionsResponse {
     } else {
       json[r'origin'] = null;
     }
-    if (this.publicKey != null) {
-      json[r'publicKey'] = this.publicKey;
-    } else {
-      json[r'publicKey'] = null;
-    }
     if (this.discoverableCredentialLogin != null) {
       json[r'discoverableCredentialLogin'] = this.discoverableCredentialLogin;
     } else {
       json[r'discoverableCredentialLogin'] = null;
-    }
-    if (this.allowCredentialsEmpty != null) {
-      json[r'allowCredentialsEmpty'] = this.allowCredentialsEmpty;
-    } else {
-      json[r'allowCredentialsEmpty'] = null;
     }
     if (this.residentKeyRequirement != null) {
       json[r'residentKeyRequirement'] = this.residentKeyRequirement;
@@ -163,13 +153,23 @@ class PasskeyOptionsResponse {
     } else {
       json[r'userVerificationRequirement'] = null;
     }
+    if (this.accountEnumerationProtected != null) {
+      json[r'accountEnumerationProtected'] = this.accountEnumerationProtected;
+    } else {
+      json[r'accountEnumerationProtected'] = null;
+    }
+    if (this.requiresClientSideCapabilityCheck != null) {
+      json[r'requiresClientSideCapabilityCheck'] = this.requiresClientSideCapabilityCheck;
+    } else {
+      json[r'requiresClientSideCapabilityCheck'] = null;
+    }
     return json;
   }
 
-  /// Returns a new [PasskeyOptionsResponse] instance and imports its values from
+  /// Returns a new [PasskeyCapabilityResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PasskeyOptionsResponse? fromJson(dynamic value) {
+  static PasskeyCapabilityResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -178,31 +178,31 @@ class PasskeyOptionsResponse {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PasskeyOptionsResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PasskeyOptionsResponse[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PasskeyCapabilityResponse[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PasskeyCapabilityResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PasskeyOptionsResponse(
-        requestId: mapValueOfType<String>(json, r'requestId'),
+      return PasskeyCapabilityResponse(
+        available: mapValueOfType<bool>(json, r'available'),
         rpId: mapValueOfType<String>(json, r'rpId'),
         origin: mapValueOfType<String>(json, r'origin'),
-        publicKey: mapValueOfType<Object>(json, r'publicKey'),
         discoverableCredentialLogin: mapValueOfType<bool>(json, r'discoverableCredentialLogin'),
-        allowCredentialsEmpty: mapValueOfType<bool>(json, r'allowCredentialsEmpty'),
         residentKeyRequirement: mapValueOfType<String>(json, r'residentKeyRequirement'),
         userVerificationRequirement: mapValueOfType<String>(json, r'userVerificationRequirement'),
+        accountEnumerationProtected: mapValueOfType<bool>(json, r'accountEnumerationProtected'),
+        requiresClientSideCapabilityCheck: mapValueOfType<bool>(json, r'requiresClientSideCapabilityCheck'),
       );
     }
     return null;
   }
 
-  static List<PasskeyOptionsResponse> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PasskeyOptionsResponse>[];
+  static List<PasskeyCapabilityResponse> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PasskeyCapabilityResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PasskeyOptionsResponse.fromJson(row);
+        final value = PasskeyCapabilityResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -211,12 +211,12 @@ class PasskeyOptionsResponse {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PasskeyOptionsResponse> mapFromJson(dynamic json) {
-    final map = <String, PasskeyOptionsResponse>{};
+  static Map<String, PasskeyCapabilityResponse> mapFromJson(dynamic json) {
+    final map = <String, PasskeyCapabilityResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PasskeyOptionsResponse.fromJson(entry.value);
+        final value = PasskeyCapabilityResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -225,14 +225,14 @@ class PasskeyOptionsResponse {
     return map;
   }
 
-  // maps a json object with a list of PasskeyOptionsResponse-objects as value to a dart map
-  static Map<String, List<PasskeyOptionsResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PasskeyOptionsResponse>>{};
+  // maps a json object with a list of PasskeyCapabilityResponse-objects as value to a dart map
+  static Map<String, List<PasskeyCapabilityResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<PasskeyCapabilityResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PasskeyOptionsResponse.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = PasskeyCapabilityResponse.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
