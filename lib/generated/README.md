@@ -297,6 +297,12 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**validatePasswordResetCode**](doc//AuthApi.md#validatepasswordresetcode) | **POST** /auth/reset-password-with-code/validate | 校驗密碼重置驗證碼
 *AuthApi* | [**verifyEmail**](doc//AuthApi.md#verifyemail) | **POST** /auth/email-verification/verify | 驗證郵件驗證碼
 *AuthApi* | [**verifyTwoFactorCode**](doc//AuthApi.md#verifytwofactorcode) | **POST** /auth/2fa/verify | 驗證雙因素認證碼
+*AuthPasskeyApi* | [**finishLogin**](doc//AuthPasskeyApi.md#finishlogin) | **POST** /auth/passkey/login/verify | Verify WebAuthn passkey login response and return LoginResult
+*AuthPasskeyApi* | [**finishRegistration**](doc//AuthPasskeyApi.md#finishregistration) | **POST** /auth/passkey/register/verify | Verify WebAuthn passkey registration response
+*AuthPasskeyApi* | [**listCredentials**](doc//AuthPasskeyApi.md#listcredentials) | **GET** /auth/passkey/credentials | List current user's registered passkeys
+*AuthPasskeyApi* | [**revokeCredential**](doc//AuthPasskeyApi.md#revokecredential) | **DELETE** /auth/passkey/credentials/{credentialId} | Disable/revoke a registered passkey
+*AuthPasskeyApi* | [**startLogin**](doc//AuthPasskeyApi.md#startlogin) | **POST** /auth/passkey/login/options | Generate WebAuthn passkey login options
+*AuthPasskeyApi* | [**startRegistration**](doc//AuthPasskeyApi.md#startregistration) | **POST** /auth/passkey/register/options | Generate WebAuthn passkey registration options
 *AutoReplyApi* | [**createConfig**](doc//AutoReplyApi.md#createconfig) | **POST** /admin/auto-reply/configs | 創建新配置
 *AutoReplyApi* | [**deleteConfig**](doc//AutoReplyApi.md#deleteconfig) | **DELETE** /admin/auto-reply/configs/{id} | 刪除配置
 *AutoReplyApi* | [**getStats1**](doc//AutoReplyApi.md#getstats1) | **GET** /admin/auto-reply/stats | 獲取統計信息
@@ -806,6 +812,11 @@ Class | Method | HTTP request | Description
  - [Pageable](doc//Pageable.md)
  - [PageableObject](doc//PageableObject.md)
  - [ParsedIntent](doc//ParsedIntent.md)
+ - [PasskeyCredentialResponse](doc//PasskeyCredentialResponse.md)
+ - [PasskeyOptionsRequest](doc//PasskeyOptionsRequest.md)
+ - [PasskeyOptionsResponse](doc//PasskeyOptionsResponse.md)
+ - [PasskeyRegistrationResponse](doc//PasskeyRegistrationResponse.md)
+ - [PasskeyVerifyRequest](doc//PasskeyVerifyRequest.md)
  - [PasswordResetCodeValidateParam](doc//PasswordResetCodeValidateParam.md)
  - [PasswordResetCodeValidateResponse](doc//PasswordResetCodeValidateResponse.md)
  - [PasswordResetParam](doc//PasswordResetParam.md)

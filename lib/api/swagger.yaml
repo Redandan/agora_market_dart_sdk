@@ -121,6 +121,10 @@
       "description": "Web Push 推送 API"
     },
     {
+      "name": "auth-passkey",
+      "description": "WebAuthn / Passkey authentication API"
+    },
+    {
       "name": "login-methods",
       "description": "登录方式 API"
     },
@@ -7583,6 +7587,138 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/LoginResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/passkey/register/verify": {
+      "post": {
+        "tags": [
+          "auth-passkey"
+        ],
+        "summary": "Verify WebAuthn passkey registration response",
+        "operationId": "finishRegistration",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasskeyVerifyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasskeyRegistrationResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/auth/passkey/register/options": {
+      "post": {
+        "tags": [
+          "auth-passkey"
+        ],
+        "summary": "Generate WebAuthn passkey registration options",
+        "operationId": "startRegistration",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasskeyOptionsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasskeyOptionsResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/auth/passkey/login/verify": {
+      "post": {
+        "tags": [
+          "auth-passkey"
+        ],
+        "summary": "Verify WebAuthn passkey login response and return LoginResult",
+        "operationId": "finishLogin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasskeyVerifyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/passkey/login/options": {
+      "post": {
+        "tags": [
+          "auth-passkey"
+        ],
+        "summary": "Generate WebAuthn passkey login options",
+        "operationId": "startLogin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasskeyOptionsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasskeyOptionsResponse"
                 }
               }
             }
@@ -15128,6 +15264,35 @@
         }
       }
     },
+    "/auth/passkey/credentials": {
+      "get": {
+        "tags": [
+          "auth-passkey"
+        ],
+        "summary": "List current user's registered passkeys",
+        "operationId": "listCredentials",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PasskeyCredentialResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/auth/oauth2/code/google": {
       "get": {
         "tags": [
@@ -17732,6 +17897,36 @@
                 "WALLET_CONNECT",
                 "TRON"
               ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/auth/passkey/credentials/{credentialId}": {
+      "delete": {
+        "tags": [
+          "auth-passkey"
+        ],
+        "summary": "Disable/revoke a registered passkey",
+        "operationId": "revokeCredential",
+        "parameters": [
+          {
+            "name": "credentialId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
             }
           }
         ],
@@ -32552,6 +32747,98 @@
           }
         }
       },
+      "JsonNode": {
+        "type": "object"
+      },
+      "PasskeyVerifyRequest": {
+        "type": "object",
+        "description": "Passkey WebAuthn verify request",
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "description": "Opaque request id returned by options endpoint.",
+            "minLength": 1
+          },
+          "credential": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "PublicKeyCredential JSON returned by webauthn-json create/get."
+          },
+          "credentialName": {
+            "type": "string",
+            "description": "Optional display name for the registered passkey.",
+            "example": "iPhone 15 Pro"
+          }
+        },
+        "required": [
+          "credential"
+        ]
+      },
+      "PasskeyRegistrationResponse": {
+        "type": "object",
+        "description": "Passkey registration verification response",
+        "properties": {
+          "credentialId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "rpId": {
+            "type": "string"
+          },
+          "passkeyCredentialId": {
+            "type": "string"
+          },
+          "discoverable": {
+            "type": "boolean"
+          },
+          "backupEligible": {
+            "type": "boolean"
+          },
+          "backedUp": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PasskeyOptionsRequest": {
+        "type": "object",
+        "description": "Passkey options request",
+        "properties": {
+          "origin": {
+            "type": "string",
+            "description": "Browser origin. Backend also accepts the Origin header.",
+            "example": "https://agoramarket.purrtechllc.com"
+          },
+          "username": {
+            "type": "string",
+            "description": "Optional username hint for non-discoverable login flows.",
+            "example": "user123"
+          }
+        }
+      },
+      "PasskeyOptionsResponse": {
+        "type": "object",
+        "description": "Passkey WebAuthn options response",
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "description": "Opaque request id to send back to verify.",
+            "example": "c1c46e59-9810-4b6e-8d13-dccf2a8cbf3c"
+          },
+          "rpId": {
+            "type": "string",
+            "description": "Selected relying party id.",
+            "example": "purrtechllc.com"
+          },
+          "origin": {
+            "type": "string",
+            "description": "Matched browser origin.",
+            "example": "https://agoramarket.purrtechllc.com"
+          },
+          "publicKey": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "JSON object passed as publicKey options to WebAuthn JS."
+          }
+        }
+      },
       "OAuth2TokenIdRequest": {
         "type": "object",
         "description": "OAuth2 Token ID 请求（后端方案）",
@@ -37931,6 +38218,48 @@
           },
           "empty": {
             "type": "boolean"
+          }
+        }
+      },
+      "PasskeyCredentialResponse": {
+        "type": "object",
+        "description": "Registered passkey credential",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "rpId": {
+            "type": "string"
+          },
+          "credentialId": {
+            "type": "string"
+          },
+          "credentialName": {
+            "type": "string"
+          },
+          "transports": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "backupEligible": {
+            "type": "boolean"
+          },
+          "backedUp": {
+            "type": "boolean"
+          },
+          "discoverable": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUsedAt": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
