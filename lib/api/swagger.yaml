@@ -29821,6 +29821,48 @@
             "example": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
             "maxLength": 64
           },
+          "mediaType": {
+            "type": "string",
+            "description": "媒體類型",
+            "example": "IMAGE",
+            "maxLength": 20
+          },
+          "originalWidth": {
+            "type": "integer",
+            "format": "int32",
+            "description": "原始圖片寬度",
+            "example": 3024
+          },
+          "originalHeight": {
+            "type": "integer",
+            "format": "int32",
+            "description": "原始圖片高度",
+            "example": 4032
+          },
+          "optimizedWidth": {
+            "type": "integer",
+            "format": "int32",
+            "description": "壓縮後圖片寬度",
+            "example": 540
+          },
+          "optimizedHeight": {
+            "type": "integer",
+            "format": "int32",
+            "description": "壓縮後圖片高度",
+            "example": 720
+          },
+          "optimizedSize": {
+            "type": "integer",
+            "format": "int64",
+            "description": "壓縮後檔案大小",
+            "example": 153600
+          },
+          "processingStatus": {
+            "type": "string",
+            "description": "媒體處理狀態",
+            "example": "READY",
+            "maxLength": 20
+          },
           "uploadTime": {
             "type": "string",
             "format": "date-time",

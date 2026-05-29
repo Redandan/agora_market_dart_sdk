@@ -27,6 +27,13 @@ class FileRecord {
     this.description,
     this.tags,
     this.fileHash,
+    this.mediaType,
+    this.originalWidth,
+    this.originalHeight,
+    this.optimizedWidth,
+    this.optimizedHeight,
+    this.optimizedSize,
+    this.processingStatus,
     required this.uploadTime,
     required this.lastUpdated,
     this.archive,
@@ -113,6 +120,69 @@ class FileRecord {
   ///
   String? fileHash;
 
+  /// 媒體類型
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? mediaType;
+
+  /// 原始圖片寬度
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? originalWidth;
+
+  /// 原始圖片高度
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? originalHeight;
+
+  /// 壓縮後圖片寬度
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? optimizedWidth;
+
+  /// 壓縮後圖片高度
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? optimizedHeight;
+
+  /// 壓縮後檔案大小
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? optimizedSize;
+
+  /// 媒體處理狀態
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? processingStatus;
+
   /// 上傳時間
   DateTime uploadTime;
 
@@ -167,6 +237,13 @@ class FileRecord {
     other.description == description &&
     other.tags == tags &&
     other.fileHash == fileHash &&
+    other.mediaType == mediaType &&
+    other.originalWidth == originalWidth &&
+    other.originalHeight == originalHeight &&
+    other.optimizedWidth == optimizedWidth &&
+    other.optimizedHeight == optimizedHeight &&
+    other.optimizedSize == optimizedSize &&
+    other.processingStatus == processingStatus &&
     other.uploadTime == uploadTime &&
     other.lastUpdated == lastUpdated &&
     other.archive == archive &&
@@ -191,6 +268,13 @@ class FileRecord {
     (description == null ? 0 : description!.hashCode) +
     (tags == null ? 0 : tags!.hashCode) +
     (fileHash == null ? 0 : fileHash!.hashCode) +
+    (mediaType == null ? 0 : mediaType!.hashCode) +
+    (originalWidth == null ? 0 : originalWidth!.hashCode) +
+    (originalHeight == null ? 0 : originalHeight!.hashCode) +
+    (optimizedWidth == null ? 0 : optimizedWidth!.hashCode) +
+    (optimizedHeight == null ? 0 : optimizedHeight!.hashCode) +
+    (optimizedSize == null ? 0 : optimizedSize!.hashCode) +
+    (processingStatus == null ? 0 : processingStatus!.hashCode) +
     (uploadTime.hashCode) +
     (lastUpdated.hashCode) +
     (archive == null ? 0 : archive!.hashCode) +
@@ -199,7 +283,7 @@ class FileRecord {
     (fileSizeFormatted == null ? 0 : fileSizeFormatted!.hashCode);
 
   @override
-  String toString() => 'FileRecord[id=$id, originalFilename=$originalFilename, objectName=$objectName, fileSize=$fileSize, contentType=$contentType, fileExtension=$fileExtension, fileUrl=$fileUrl, businessType=$businessType, uploaderId=$uploaderId, uploaderName=$uploaderName, isPublic=$isPublic, description=$description, tags=$tags, fileHash=$fileHash, uploadTime=$uploadTime, lastUpdated=$lastUpdated, archive=$archive, image=$image, document=$document, fileSizeFormatted=$fileSizeFormatted]';
+  String toString() => 'FileRecord[id=$id, originalFilename=$originalFilename, objectName=$objectName, fileSize=$fileSize, contentType=$contentType, fileExtension=$fileExtension, fileUrl=$fileUrl, businessType=$businessType, uploaderId=$uploaderId, uploaderName=$uploaderName, isPublic=$isPublic, description=$description, tags=$tags, fileHash=$fileHash, mediaType=$mediaType, originalWidth=$originalWidth, originalHeight=$originalHeight, optimizedWidth=$optimizedWidth, optimizedHeight=$optimizedHeight, optimizedSize=$optimizedSize, processingStatus=$processingStatus, uploadTime=$uploadTime, lastUpdated=$lastUpdated, archive=$archive, image=$image, document=$document, fileSizeFormatted=$fileSizeFormatted]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -240,6 +324,41 @@ class FileRecord {
       json[r'fileHash'] = this.fileHash;
     } else {
       json[r'fileHash'] = null;
+    }
+    if (this.mediaType != null) {
+      json[r'mediaType'] = this.mediaType;
+    } else {
+      json[r'mediaType'] = null;
+    }
+    if (this.originalWidth != null) {
+      json[r'originalWidth'] = this.originalWidth;
+    } else {
+      json[r'originalWidth'] = null;
+    }
+    if (this.originalHeight != null) {
+      json[r'originalHeight'] = this.originalHeight;
+    } else {
+      json[r'originalHeight'] = null;
+    }
+    if (this.optimizedWidth != null) {
+      json[r'optimizedWidth'] = this.optimizedWidth;
+    } else {
+      json[r'optimizedWidth'] = null;
+    }
+    if (this.optimizedHeight != null) {
+      json[r'optimizedHeight'] = this.optimizedHeight;
+    } else {
+      json[r'optimizedHeight'] = null;
+    }
+    if (this.optimizedSize != null) {
+      json[r'optimizedSize'] = this.optimizedSize;
+    } else {
+      json[r'optimizedSize'] = null;
+    }
+    if (this.processingStatus != null) {
+      json[r'processingStatus'] = this.processingStatus;
+    } else {
+      json[r'processingStatus'] = null;
     }
       json[r'uploadTime'] = this.uploadTime.toUtc().toIso8601String();
       json[r'lastUpdated'] = this.lastUpdated.toUtc().toIso8601String();
@@ -299,6 +418,13 @@ class FileRecord {
         description: mapValueOfType<String>(json, r'description'),
         tags: mapValueOfType<String>(json, r'tags'),
         fileHash: mapValueOfType<String>(json, r'fileHash'),
+        mediaType: mapValueOfType<String>(json, r'mediaType'),
+        originalWidth: mapValueOfType<int>(json, r'originalWidth'),
+        originalHeight: mapValueOfType<int>(json, r'originalHeight'),
+        optimizedWidth: mapValueOfType<int>(json, r'optimizedWidth'),
+        optimizedHeight: mapValueOfType<int>(json, r'optimizedHeight'),
+        optimizedSize: mapValueOfType<int>(json, r'optimizedSize'),
+        processingStatus: mapValueOfType<String>(json, r'processingStatus'),
         uploadTime: mapDateTime(json, r'uploadTime', r'')!,
         lastUpdated: mapDateTime(json, r'lastUpdated', r'')!,
         archive: mapValueOfType<bool>(json, r'archive'),
