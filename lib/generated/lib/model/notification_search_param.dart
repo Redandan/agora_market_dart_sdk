@@ -398,6 +398,7 @@ class NotificationSearchParamTypeEnum {
   static const INVENTORY = NotificationSearchParamTypeEnum._(r'INVENTORY');
   static const REVIEW = NotificationSearchParamTypeEnum._(r'REVIEW');
   static const DISPUTE = NotificationSearchParamTypeEnum._(r'DISPUTE');
+  static const DEMAND = NotificationSearchParamTypeEnum._(r'DEMAND');
   static const unknownDefaultOpenApi = NotificationSearchParamTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][NotificationSearchParamTypeEnum].
@@ -412,6 +413,7 @@ class NotificationSearchParamTypeEnum {
     INVENTORY,
     REVIEW,
     DISPUTE,
+    DEMAND,
     unknownDefaultOpenApi,
   ];
 
@@ -461,6 +463,7 @@ class NotificationSearchParamTypeEnumTypeTransformer {
         case r'INVENTORY': return NotificationSearchParamTypeEnum.INVENTORY;
         case r'REVIEW': return NotificationSearchParamTypeEnum.REVIEW;
         case r'DISPUTE': return NotificationSearchParamTypeEnum.DISPUTE;
+        case r'DEMAND': return NotificationSearchParamTypeEnum.DEMAND;
         case r'unknown_default_open_api': return NotificationSearchParamTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

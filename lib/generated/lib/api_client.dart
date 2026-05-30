@@ -406,6 +406,24 @@ class ApiClient {
           return DeliveryerStatsDTO.fromJson(value);
         case 'DeliveryerUpdateParam':
           return DeliveryerUpdateParam.fromJson(value);
+        case 'DemandCreateRequest':
+          return DemandCreateRequest.fromJson(value);
+        case 'DemandDetailResponse':
+          return DemandDetailResponse.fromJson(value);
+        case 'DemandLinkProductRequest':
+          return DemandLinkProductRequest.fromJson(value);
+        case 'DemandOfferCreateRequest':
+          return DemandOfferCreateRequest.fromJson(value);
+        case 'DemandOfferResponse':
+          return DemandOfferResponse.fromJson(value);
+        case 'DemandOfferReviewRequest':
+          return DemandOfferReviewRequest.fromJson(value);
+        case 'DemandSearchParam':
+          return DemandSearchParam.fromJson(value);
+        case 'DemandStatusHistoryResponse':
+          return DemandStatusHistoryResponse.fromJson(value);
+        case 'DemandStatusUpdateRequest':
+          return DemandStatusUpdateRequest.fromJson(value);
         case 'DeviceInfo':
           return DeviceInfo.fromJson(value);
         case 'DiagnosticLogDto':
@@ -622,6 +640,8 @@ class ApiClient {
           return PageDeliveryDetail.fromJson(value);
         case 'PageDeliveryer':
           return PageDeliveryer.fromJson(value);
+        case 'PageDemandDetailResponse':
+          return PageDemandDetailResponse.fromJson(value);
         case 'PageDispute':
           return PageDispute.fromJson(value);
         case 'PageFileRecord':

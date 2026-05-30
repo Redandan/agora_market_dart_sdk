@@ -488,6 +488,7 @@ class NotificationResponseDTOTypeEnum {
   static const INVENTORY = NotificationResponseDTOTypeEnum._(r'INVENTORY');
   static const REVIEW = NotificationResponseDTOTypeEnum._(r'REVIEW');
   static const DISPUTE = NotificationResponseDTOTypeEnum._(r'DISPUTE');
+  static const DEMAND = NotificationResponseDTOTypeEnum._(r'DEMAND');
   static const unknownDefaultOpenApi = NotificationResponseDTOTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][NotificationResponseDTOTypeEnum].
@@ -502,6 +503,7 @@ class NotificationResponseDTOTypeEnum {
     INVENTORY,
     REVIEW,
     DISPUTE,
+    DEMAND,
     unknownDefaultOpenApi,
   ];
 
@@ -551,6 +553,7 @@ class NotificationResponseDTOTypeEnumTypeTransformer {
         case r'INVENTORY': return NotificationResponseDTOTypeEnum.INVENTORY;
         case r'REVIEW': return NotificationResponseDTOTypeEnum.REVIEW;
         case r'DISPUTE': return NotificationResponseDTOTypeEnum.DISPUTE;
+        case r'DEMAND': return NotificationResponseDTOTypeEnum.DEMAND;
         case r'unknown_default_open_api': return NotificationResponseDTOTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

@@ -5385,7 +5385,7 @@ class DefaultApi {
   ///
   /// * [String] keyword (required):
   ///   搜索關鍵字
-  Future<Response> searchWithHttpInfo(String keyword,) async {
+  Future<Response> search1WithHttpInfo(String keyword,) async {
     // ignore: prefer_const_declarations
     final path = r'/postal-areas/search';
 
@@ -5420,8 +5420,8 @@ class DefaultApi {
   ///
   /// * [String] keyword (required):
   ///   搜索關鍵字
-  Future<List<TaiwanPostalArea>?> search(String keyword,) async {
-    final response = await searchWithHttpInfo(keyword,);
+  Future<List<TaiwanPostalArea>?> search1(String keyword,) async {
+    final response = await search1WithHttpInfo(keyword,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -5449,7 +5449,7 @@ class DefaultApi {
   /// * [String] q (required):
   ///
   /// * [int] n:
-  Future<Response> search1WithHttpInfo(String q, { int? n, }) async {
+  Future<Response> search2WithHttpInfo(String q, { int? n, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/knowledge/search';
 
@@ -5488,8 +5488,8 @@ class DefaultApi {
   /// * [String] q (required):
   ///
   /// * [int] n:
-  Future<ApiResponseListKnowledgeResponse?> search1(String q, { int? n, }) async {
-    final response = await search1WithHttpInfo(q,  n: n, );
+  Future<ApiResponseListKnowledgeResponse?> search2(String q, { int? n, }) async {
+    final response = await search2WithHttpInfo(q,  n: n, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

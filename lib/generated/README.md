@@ -157,8 +157,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**replyIssue**](doc//DefaultApi.md#replyissue) | **POST** /customer-issues/{issueId}/reply | 回覆客戶問題
 *DefaultApi* | [**resolve**](doc//DefaultApi.md#resolve) | **POST** /admin/reports/{reportId}/resolve | admin 結案檢舉
 *DefaultApi* | [**resolve1**](doc//DefaultApi.md#resolve1) | **POST** /admin/knowledge/pending/{id}/resolve | 解答待確認問題
-*DefaultApi* | [**search**](doc//DefaultApi.md#search) | **GET** /postal-areas/search | 搜索郵遞區號
-*DefaultApi* | [**search1**](doc//DefaultApi.md#search1) | **GET** /admin/knowledge/search | 語意搜尋測試
+*DefaultApi* | [**search1**](doc//DefaultApi.md#search1) | **GET** /postal-areas/search | 搜索郵遞區號
+*DefaultApi* | [**search2**](doc//DefaultApi.md#search2) | **GET** /admin/knowledge/search | 語意搜尋測試
 *DefaultApi* | [**searchCarts**](doc//DefaultApi.md#searchcarts) | **POST** /cart/admin/search | 搜索購物車
 *DefaultApi* | [**searchIssues**](doc//DefaultApi.md#searchissues) | **POST** /customer-issues/search | 管理員搜尋客戶問題記錄
 *DefaultApi* | [**searchPostalAreas**](doc//DefaultApi.md#searchpostalareas) | **POST** /logistics/postal/search | 郵遞區號模糊查詢
@@ -190,6 +190,11 @@ Class | Method | HTTP request | Description
 *AdminDeliveryApi* | [**searchDeliveryOrders**](doc//AdminDeliveryApi.md#searchdeliveryorders) | **POST** /admin/delivery/orders/search | 搜索配送訂單
 *AdminDeliveryApi* | [**searchDeliveryers**](doc//AdminDeliveryApi.md#searchdeliveryers) | **POST** /admin/delivery/deliveryers/search | 搜索配送員
 *AdminDeliveryApi* | [**updateDeliveryerStatus**](doc//AdminDeliveryApi.md#updatedeliveryerstatus) | **POST** /admin/delivery/deliveryers/{deliveryerId}/status | 更新配送員狀態
+*AdminDemandPoolApi* | [**detail**](doc//AdminDemandPoolApi.md#detail) | **GET** /admin/demands/{demandId} | Admin demand detail
+*AdminDemandPoolApi* | [**linkProduct**](doc//AdminDemandPoolApi.md#linkproduct) | **POST** /admin/demands/{demandId}/link-product | Admin link demand to product
+*AdminDemandPoolApi* | [**reviewOffer**](doc//AdminDemandPoolApi.md#reviewoffer) | **POST** /admin/demands/{demandId}/offers/{offerId}/review | Admin review seller offer before buyer visibility
+*AdminDemandPoolApi* | [**search**](doc//AdminDemandPoolApi.md#search) | **POST** /admin/demands/search | Admin search demand pool
+*AdminDemandPoolApi* | [**updateStatus**](doc//AdminDemandPoolApi.md#updatestatus) | **POST** /admin/demands/{demandId}/status | Admin update demand status or close demand
 *AdminDisputesApi* | [**aiAnalysis**](doc//AdminDisputesApi.md#aianalysis) | **POST** /admin/disputes/{disputeId}/ai-analysis | AI 仲裁建議
 *AdminDisputesApi* | [**denyAppeal**](doc//AdminDisputesApi.md#denyappeal) | **POST** /admin/disputes/{disputeId}/deny-appeal | 拒絕複審申請
 *AdminDisputesApi* | [**getDisputeDetail1**](doc//AdminDisputesApi.md#getdisputedetail1) | **GET** /admin/disputes/{disputeId} | 查看糾紛詳情
@@ -362,6 +367,11 @@ Class | Method | HTTP request | Description
 *DeliveryApi* | [**updateDeliveryOrder**](doc//DeliveryApi.md#updatedeliveryorder) | **POST** /delivery/update/order | 更新配送進度
 *DeliveryApi* | [**updateDeliveryer**](doc//DeliveryApi.md#updatedeliveryer) | **POST** /delivery/update | 更新配送員資料
 *DeliveryApi* | [**updateWorkingStatus**](doc//DeliveryApi.md#updateworkingstatus) | **POST** /delivery/update/status | 更新工作狀態
+*DemandPoolApi* | [**cancelInterest**](doc//DemandPoolApi.md#cancelinterest) | **POST** /demands/{demandId}/cancel-interest | Cancel my interest in a demand
+*DemandPoolApi* | [**createDemand**](doc//DemandPoolApi.md#createdemand) | **POST** /demands | Create or join demand pool row
+*DemandPoolApi* | [**getDemand**](doc//DemandPoolApi.md#getdemand) | **GET** /demands/{demandId} | Get my demand tracking detail
+*DemandPoolApi* | [**myDemands**](doc//DemandPoolApi.md#mydemands) | **POST** /demands/my/search | List my active demand interests
+*DemandPoolApi* | [**selectOffer**](doc//DemandPoolApi.md#selectoffer) | **POST** /demands/{demandId}/offers/{offerId}/select | Select a visible offer
 *FileManagementApi* | [**deleteFile**](doc//FileManagementApi.md#deletefile) | **DELETE** /files/{objectName} | 刪除文件
 *FileManagementApi* | [**searchFileRecords**](doc//FileManagementApi.md#searchfilerecords) | **POST** /files/records/search | 查詢檔案記錄
 *FileManagementApi* | [**syncFileRecords**](doc//FileManagementApi.md#syncfilerecords) | **POST** /files/auto-clean | 檔案清理
@@ -476,6 +486,8 @@ Class | Method | HTTP request | Description
 *ReviewsApi* | [**replyToReview**](doc//ReviewsApi.md#replytoreview) | **POST** /reviews/reply | 回覆評價
 *ReviewsApi* | [**searchReviews**](doc//ReviewsApi.md#searchreviews) | **POST** /reviews/search | 搜索評價
 *ReviewsApi* | [**updateReview**](doc//ReviewsApi.md#updatereview) | **POST** /reviews/update | 更新評價
+*SellerDemandPoolApi* | [**searchOpen**](doc//SellerDemandPoolApi.md#searchopen) | **POST** /seller/demands/open/search | Seller search open demand pool
+*SellerDemandPoolApi* | [**submitOffer**](doc//SellerDemandPoolApi.md#submitoffer) | **POST** /seller/demands/{demandId}/offers | Seller submit structured offer for demand
 *SevenElevenStoresApi* | [**getAllCities**](doc//SevenElevenStoresApi.md#getallcities) | **GET** /stores/seven-eleven/cities | 取得所有縣市列表
 *SevenElevenStoresApi* | [**getStoresByCity**](doc//SevenElevenStoresApi.md#getstoresbycity) | **GET** /stores/seven-eleven/stores | 根據縣市取得7-11門市列表
 *SlotApi* | [**getMemberOddsTable**](doc//SlotApi.md#getmemberoddstable) | **GET** /slot/rtp | 取得會員賠率展示資料
@@ -681,6 +693,15 @@ Class | Method | HTTP request | Description
  - [DeliveryerSearchParam](doc//DeliveryerSearchParam.md)
  - [DeliveryerStatsDTO](doc//DeliveryerStatsDTO.md)
  - [DeliveryerUpdateParam](doc//DeliveryerUpdateParam.md)
+ - [DemandCreateRequest](doc//DemandCreateRequest.md)
+ - [DemandDetailResponse](doc//DemandDetailResponse.md)
+ - [DemandLinkProductRequest](doc//DemandLinkProductRequest.md)
+ - [DemandOfferCreateRequest](doc//DemandOfferCreateRequest.md)
+ - [DemandOfferResponse](doc//DemandOfferResponse.md)
+ - [DemandOfferReviewRequest](doc//DemandOfferReviewRequest.md)
+ - [DemandSearchParam](doc//DemandSearchParam.md)
+ - [DemandStatusHistoryResponse](doc//DemandStatusHistoryResponse.md)
+ - [DemandStatusUpdateRequest](doc//DemandStatusUpdateRequest.md)
  - [DeviceInfo](doc//DeviceInfo.md)
  - [DiagnosticLogDto](doc//DiagnosticLogDto.md)
  - [Dispute](doc//Dispute.md)
@@ -789,6 +810,7 @@ Class | Method | HTTP request | Description
  - [PageCustomerIssue](doc//PageCustomerIssue.md)
  - [PageDeliveryDetail](doc//PageDeliveryDetail.md)
  - [PageDeliveryer](doc//PageDeliveryer.md)
+ - [PageDemandDetailResponse](doc//PageDemandDetailResponse.md)
  - [PageDispute](doc//PageDispute.md)
  - [PageFileRecord](doc//PageFileRecord.md)
  - [PageGameRoundDTO](doc//PageGameRoundDTO.md)
