@@ -22,10 +22,8 @@ class DemandPoolApi {
   ///
   /// Parameters:
   ///
-  /// * [User] buyer (required):
-  ///
   /// * [int] demandId (required):
-  Future<Response> cancelInterestWithHttpInfo(User buyer, int demandId,) async {
+  Future<Response> cancelInterestWithHttpInfo(int demandId,) async {
     // ignore: prefer_const_declarations
     final path = r'/demands/{demandId}/cancel-interest'
       .replaceAll('{demandId}', demandId.toString());
@@ -36,8 +34,6 @@ class DemandPoolApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'buyer', buyer));
 
     const contentTypes = <String>[];
 
@@ -57,11 +53,9 @@ class DemandPoolApi {
   ///
   /// Parameters:
   ///
-  /// * [User] buyer (required):
-  ///
   /// * [int] demandId (required):
-  Future<DemandDetailResponse?> cancelInterest(User buyer, int demandId,) async {
-    final response = await cancelInterestWithHttpInfo(buyer, demandId,);
+  Future<DemandDetailResponse?> cancelInterest(int demandId,) async {
+    final response = await cancelInterestWithHttpInfo(demandId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -81,10 +75,8 @@ class DemandPoolApi {
   ///
   /// Parameters:
   ///
-  /// * [User] buyer (required):
-  ///
   /// * [DemandCreateRequest] demandCreateRequest (required):
-  Future<Response> createDemandWithHttpInfo(User buyer, DemandCreateRequest demandCreateRequest,) async {
+  Future<Response> createDemandWithHttpInfo(DemandCreateRequest demandCreateRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/demands';
 
@@ -94,8 +86,6 @@ class DemandPoolApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'buyer', buyer));
 
     const contentTypes = <String>['application/json'];
 
@@ -115,11 +105,9 @@ class DemandPoolApi {
   ///
   /// Parameters:
   ///
-  /// * [User] buyer (required):
-  ///
   /// * [DemandCreateRequest] demandCreateRequest (required):
-  Future<DemandDetailResponse?> createDemand(User buyer, DemandCreateRequest demandCreateRequest,) async {
-    final response = await createDemandWithHttpInfo(buyer, demandCreateRequest,);
+  Future<DemandDetailResponse?> createDemand(DemandCreateRequest demandCreateRequest,) async {
+    final response = await createDemandWithHttpInfo(demandCreateRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -139,10 +127,8 @@ class DemandPoolApi {
   ///
   /// Parameters:
   ///
-  /// * [User] buyer (required):
-  ///
   /// * [int] demandId (required):
-  Future<Response> getDemandWithHttpInfo(User buyer, int demandId,) async {
+  Future<Response> getDemandWithHttpInfo(int demandId,) async {
     // ignore: prefer_const_declarations
     final path = r'/demands/{demandId}'
       .replaceAll('{demandId}', demandId.toString());
@@ -153,8 +139,6 @@ class DemandPoolApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'buyer', buyer));
 
     const contentTypes = <String>[];
 
@@ -174,11 +158,9 @@ class DemandPoolApi {
   ///
   /// Parameters:
   ///
-  /// * [User] buyer (required):
-  ///
   /// * [int] demandId (required):
-  Future<DemandDetailResponse?> getDemand(User buyer, int demandId,) async {
-    final response = await getDemandWithHttpInfo(buyer, demandId,);
+  Future<DemandDetailResponse?> getDemand(int demandId,) async {
+    final response = await getDemandWithHttpInfo(demandId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -198,10 +180,8 @@ class DemandPoolApi {
   ///
   /// Parameters:
   ///
-  /// * [User] buyer (required):
-  ///
   /// * [DemandSearchParam] demandSearchParam:
-  Future<Response> myDemandsWithHttpInfo(User buyer, { DemandSearchParam? demandSearchParam, }) async {
+  Future<Response> myDemandsWithHttpInfo({ DemandSearchParam? demandSearchParam, }) async {
     // ignore: prefer_const_declarations
     final path = r'/demands/my/search';
 
@@ -211,8 +191,6 @@ class DemandPoolApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'buyer', buyer));
 
     const contentTypes = <String>['application/json'];
 
@@ -232,11 +210,9 @@ class DemandPoolApi {
   ///
   /// Parameters:
   ///
-  /// * [User] buyer (required):
-  ///
   /// * [DemandSearchParam] demandSearchParam:
-  Future<PageDemandDetailResponse?> myDemands(User buyer, { DemandSearchParam? demandSearchParam, }) async {
-    final response = await myDemandsWithHttpInfo(buyer,  demandSearchParam: demandSearchParam, );
+  Future<PageDemandDetailResponse?> myDemands({ DemandSearchParam? demandSearchParam, }) async {
+    final response = await myDemandsWithHttpInfo( demandSearchParam: demandSearchParam, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -256,12 +232,10 @@ class DemandPoolApi {
   ///
   /// Parameters:
   ///
-  /// * [User] buyer (required):
-  ///
   /// * [int] demandId (required):
   ///
   /// * [int] offerId (required):
-  Future<Response> selectOfferWithHttpInfo(User buyer, int demandId, int offerId,) async {
+  Future<Response> selectOfferWithHttpInfo(int demandId, int offerId,) async {
     // ignore: prefer_const_declarations
     final path = r'/demands/{demandId}/offers/{offerId}/select'
       .replaceAll('{demandId}', demandId.toString())
@@ -273,8 +247,6 @@ class DemandPoolApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'buyer', buyer));
 
     const contentTypes = <String>[];
 
@@ -294,13 +266,11 @@ class DemandPoolApi {
   ///
   /// Parameters:
   ///
-  /// * [User] buyer (required):
-  ///
   /// * [int] demandId (required):
   ///
   /// * [int] offerId (required):
-  Future<DemandOfferResponse?> selectOffer(User buyer, int demandId, int offerId,) async {
-    final response = await selectOfferWithHttpInfo(buyer, demandId, offerId,);
+  Future<DemandOfferResponse?> selectOffer(int demandId, int offerId,) async {
+    final response = await selectOfferWithHttpInfo(demandId, offerId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

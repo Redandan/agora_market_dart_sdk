@@ -75,12 +75,10 @@ class AdminDemandPoolApi {
   ///
   /// Parameters:
   ///
-  /// * [User] admin (required):
-  ///
   /// * [int] demandId (required):
   ///
   /// * [DemandLinkProductRequest] demandLinkProductRequest (required):
-  Future<Response> linkProductWithHttpInfo(User admin, int demandId, DemandLinkProductRequest demandLinkProductRequest,) async {
+  Future<Response> linkProductWithHttpInfo(int demandId, DemandLinkProductRequest demandLinkProductRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/demands/{demandId}/link-product'
       .replaceAll('{demandId}', demandId.toString());
@@ -91,8 +89,6 @@ class AdminDemandPoolApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'admin', admin));
 
     const contentTypes = <String>['application/json'];
 
@@ -112,13 +108,11 @@ class AdminDemandPoolApi {
   ///
   /// Parameters:
   ///
-  /// * [User] admin (required):
-  ///
   /// * [int] demandId (required):
   ///
   /// * [DemandLinkProductRequest] demandLinkProductRequest (required):
-  Future<DemandDetailResponse?> linkProduct(User admin, int demandId, DemandLinkProductRequest demandLinkProductRequest,) async {
-    final response = await linkProductWithHttpInfo(admin, demandId, demandLinkProductRequest,);
+  Future<DemandDetailResponse?> linkProduct(int demandId, DemandLinkProductRequest demandLinkProductRequest,) async {
+    final response = await linkProductWithHttpInfo(demandId, demandLinkProductRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -138,14 +132,12 @@ class AdminDemandPoolApi {
   ///
   /// Parameters:
   ///
-  /// * [User] admin (required):
-  ///
   /// * [int] demandId (required):
   ///
   /// * [int] offerId (required):
   ///
   /// * [DemandOfferReviewRequest] demandOfferReviewRequest (required):
-  Future<Response> reviewOfferWithHttpInfo(User admin, int demandId, int offerId, DemandOfferReviewRequest demandOfferReviewRequest,) async {
+  Future<Response> reviewOfferWithHttpInfo(int demandId, int offerId, DemandOfferReviewRequest demandOfferReviewRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/demands/{demandId}/offers/{offerId}/review'
       .replaceAll('{demandId}', demandId.toString())
@@ -157,8 +149,6 @@ class AdminDemandPoolApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'admin', admin));
 
     const contentTypes = <String>['application/json'];
 
@@ -178,15 +168,13 @@ class AdminDemandPoolApi {
   ///
   /// Parameters:
   ///
-  /// * [User] admin (required):
-  ///
   /// * [int] demandId (required):
   ///
   /// * [int] offerId (required):
   ///
   /// * [DemandOfferReviewRequest] demandOfferReviewRequest (required):
-  Future<DemandOfferResponse?> reviewOffer(User admin, int demandId, int offerId, DemandOfferReviewRequest demandOfferReviewRequest,) async {
-    final response = await reviewOfferWithHttpInfo(admin, demandId, offerId, demandOfferReviewRequest,);
+  Future<DemandOfferResponse?> reviewOffer(int demandId, int offerId, DemandOfferReviewRequest demandOfferReviewRequest,) async {
+    final response = await reviewOfferWithHttpInfo(demandId, offerId, demandOfferReviewRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -258,12 +246,10 @@ class AdminDemandPoolApi {
   ///
   /// Parameters:
   ///
-  /// * [User] admin (required):
-  ///
   /// * [int] demandId (required):
   ///
   /// * [DemandStatusUpdateRequest] demandStatusUpdateRequest (required):
-  Future<Response> updateStatusWithHttpInfo(User admin, int demandId, DemandStatusUpdateRequest demandStatusUpdateRequest,) async {
+  Future<Response> updateStatusWithHttpInfo(int demandId, DemandStatusUpdateRequest demandStatusUpdateRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/demands/{demandId}/status'
       .replaceAll('{demandId}', demandId.toString());
@@ -274,8 +260,6 @@ class AdminDemandPoolApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'admin', admin));
 
     const contentTypes = <String>['application/json'];
 
@@ -295,13 +279,11 @@ class AdminDemandPoolApi {
   ///
   /// Parameters:
   ///
-  /// * [User] admin (required):
-  ///
   /// * [int] demandId (required):
   ///
   /// * [DemandStatusUpdateRequest] demandStatusUpdateRequest (required):
-  Future<DemandDetailResponse?> updateStatus(User admin, int demandId, DemandStatusUpdateRequest demandStatusUpdateRequest,) async {
-    final response = await updateStatusWithHttpInfo(admin, demandId, demandStatusUpdateRequest,);
+  Future<DemandDetailResponse?> updateStatus(int demandId, DemandStatusUpdateRequest demandStatusUpdateRequest,) async {
+    final response = await updateStatusWithHttpInfo(demandId, demandStatusUpdateRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

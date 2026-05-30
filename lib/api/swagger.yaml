@@ -3214,14 +3214,6 @@
         "operationId": "submitOffer",
         "parameters": [
           {
-            "name": "seller",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/User"
-            }
-          },
-          {
             "name": "demandId",
             "in": "path",
             "required": true,
@@ -3262,16 +3254,6 @@
         ],
         "summary": "Seller search open demand pool",
         "operationId": "searchOpen",
-        "parameters": [
-          {
-            "name": "seller",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/User"
-            }
-          }
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -6218,16 +6200,6 @@
         ],
         "summary": "Create or join demand pool row",
         "operationId": "createDemand",
-        "parameters": [
-          {
-            "name": "buyer",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/User"
-            }
-          }
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -6260,14 +6232,6 @@
         "summary": "Select a visible offer",
         "operationId": "selectOffer",
         "parameters": [
-          {
-            "name": "buyer",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/User"
-            }
-          },
           {
             "name": "demandId",
             "in": "path",
@@ -6310,14 +6274,6 @@
         "operationId": "cancelInterest",
         "parameters": [
           {
-            "name": "buyer",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/User"
-            }
-          },
-          {
             "name": "demandId",
             "in": "path",
             "required": true,
@@ -6348,16 +6304,6 @@
         ],
         "summary": "List my active demand interests",
         "operationId": "myDemands",
-        "parameters": [
-          {
-            "name": "buyer",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/User"
-            }
-          }
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -10997,14 +10943,6 @@
         "operationId": "updateStatus",
         "parameters": [
           {
-            "name": "admin",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/User"
-            }
-          },
-          {
             "name": "demandId",
             "in": "path",
             "required": true,
@@ -11046,14 +10984,6 @@
         "summary": "Admin review seller offer before buyer visibility",
         "operationId": "reviewOffer",
         "parameters": [
-          {
-            "name": "admin",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/User"
-            }
-          },
           {
             "name": "demandId",
             "in": "path",
@@ -11105,14 +11035,6 @@
         "summary": "Admin link demand to product",
         "operationId": "linkProduct",
         "parameters": [
-          {
-            "name": "admin",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/User"
-            }
-          },
           {
             "name": "demandId",
             "in": "path",
@@ -15089,14 +15011,6 @@
         "summary": "Get my demand tracking detail",
         "operationId": "getDemand",
         "parameters": [
-          {
-            "name": "buyer",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/User"
-            }
-          },
           {
             "name": "demandId",
             "in": "path",

@@ -22,10 +22,8 @@ class SellerDemandPoolApi {
   ///
   /// Parameters:
   ///
-  /// * [User] seller (required):
-  ///
   /// * [DemandSearchParam] demandSearchParam:
-  Future<Response> searchOpenWithHttpInfo(User seller, { DemandSearchParam? demandSearchParam, }) async {
+  Future<Response> searchOpenWithHttpInfo({ DemandSearchParam? demandSearchParam, }) async {
     // ignore: prefer_const_declarations
     final path = r'/seller/demands/open/search';
 
@@ -35,8 +33,6 @@ class SellerDemandPoolApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'seller', seller));
 
     const contentTypes = <String>['application/json'];
 
@@ -56,11 +52,9 @@ class SellerDemandPoolApi {
   ///
   /// Parameters:
   ///
-  /// * [User] seller (required):
-  ///
   /// * [DemandSearchParam] demandSearchParam:
-  Future<PageDemandDetailResponse?> searchOpen(User seller, { DemandSearchParam? demandSearchParam, }) async {
-    final response = await searchOpenWithHttpInfo(seller,  demandSearchParam: demandSearchParam, );
+  Future<PageDemandDetailResponse?> searchOpen({ DemandSearchParam? demandSearchParam, }) async {
+    final response = await searchOpenWithHttpInfo( demandSearchParam: demandSearchParam, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -80,12 +74,10 @@ class SellerDemandPoolApi {
   ///
   /// Parameters:
   ///
-  /// * [User] seller (required):
-  ///
   /// * [int] demandId (required):
   ///
   /// * [DemandOfferCreateRequest] demandOfferCreateRequest (required):
-  Future<Response> submitOfferWithHttpInfo(User seller, int demandId, DemandOfferCreateRequest demandOfferCreateRequest,) async {
+  Future<Response> submitOfferWithHttpInfo(int demandId, DemandOfferCreateRequest demandOfferCreateRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/seller/demands/{demandId}/offers'
       .replaceAll('{demandId}', demandId.toString());
@@ -96,8 +88,6 @@ class SellerDemandPoolApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'seller', seller));
 
     const contentTypes = <String>['application/json'];
 
@@ -117,13 +107,11 @@ class SellerDemandPoolApi {
   ///
   /// Parameters:
   ///
-  /// * [User] seller (required):
-  ///
   /// * [int] demandId (required):
   ///
   /// * [DemandOfferCreateRequest] demandOfferCreateRequest (required):
-  Future<DemandOfferResponse?> submitOffer(User seller, int demandId, DemandOfferCreateRequest demandOfferCreateRequest,) async {
-    final response = await submitOfferWithHttpInfo(seller, demandId, demandOfferCreateRequest,);
+  Future<DemandOfferResponse?> submitOffer(int demandId, DemandOfferCreateRequest demandOfferCreateRequest,) async {
+    final response = await submitOfferWithHttpInfo(demandId, demandOfferCreateRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
