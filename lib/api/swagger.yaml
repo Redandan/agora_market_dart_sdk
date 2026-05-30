@@ -17,6 +17,10 @@
   ],
   "tags": [
     {
+      "name": "knowledge",
+      "description": "管理員維護 AI 知識庫文件與待確認問題"
+    },
+    {
       "name": "wallet-connect",
       "description": "Web3 钱包登录 API（支持 WalletConnect 和 Tron）"
     },
@@ -43,10 +47,6 @@
     {
       "name": "admin-system-config",
       "description": "管理員系統配置 API"
-    },
-    {
-      "name": "項目知識庫管理",
-      "description": "管理員維護 AI 知識庫文件與待確認問題"
     },
     {
       "name": "管理員貼文管理",
@@ -89,10 +89,6 @@
       "description": "用戶資料 API"
     },
     {
-      "name": "郵遞區號",
-      "description": "提供台灣地區郵遞區號查詢的接口"
-    },
-    {
       "name": "admin-product-taxonomy",
       "description": "商品 AI 分類與 taxonomy 治理 API"
     },
@@ -119,6 +115,10 @@
     {
       "name": "pwa-logs",
       "description": "PWA 日誌管理 API（開發調試用）"
+    },
+    {
+      "name": "logistics",
+      "description": "物流計算、郵遞區號查詢等相關 API"
     },
     {
       "name": "webpush",
@@ -161,6 +161,10 @@
       "description": "管理員配送管理 API"
     },
     {
+      "name": "postal-area",
+      "description": "提供台灣地區郵遞區號查詢的接口"
+    },
+    {
       "name": "Backtest",
       "description": "量化回測 MVP API"
     },
@@ -187,10 +191,6 @@
     {
       "name": "chat",
       "description": "聊天管理 API"
-    },
-    {
-      "name": "物流服務",
-      "description": "物流計算、郵遞區號查詢等相關 API"
     },
     {
       "name": "admin-orders",
@@ -5789,11 +5789,11 @@
     "/logistics/postal/search": {
       "post": {
         "tags": [
-          "物流服務"
+          "logistics"
         ],
         "summary": "郵遞區號模糊查詢",
         "description": "根據關鍵字查詢郵遞區號、城市、行政區",
-        "operationId": "searchPostalAreas",
+        "operationId": "searchLogisticsPostalAreas",
         "requestBody": {
           "content": {
             "application/json": {
@@ -5824,7 +5824,7 @@
     "/logistics/calculate": {
       "post": {
         "tags": [
-          "物流服務"
+          "logistics"
         ],
         "summary": "物流計算",
         "description": "根據郵遞區號計算運費和運送天數，其他參數可選",
@@ -8890,10 +8890,10 @@
     "/admin/sanctions": {
       "get": {
         "tags": [
-          "制裁黑名單管理"
+          "sanction-blacklist"
         ],
         "summary": "列出黑名單地址",
-        "operationId": "list",
+        "operationId": "listSanctionBlacklistAddresses",
         "parameters": [
           {
             "name": "page",
@@ -8931,10 +8931,10 @@
       },
       "post": {
         "tags": [
-          "制裁黑名單管理"
+          "sanction-blacklist"
         ],
         "summary": "新增黑名單地址",
-        "operationId": "add",
+        "operationId": "addSanctionBlacklistAddress",
         "parameters": [
           {
             "name": "address",
@@ -10505,10 +10505,10 @@
     "/admin/knowledge": {
       "get": {
         "tags": [
-          "項目知識庫管理"
+          "knowledge"
         ],
         "summary": "列出所有知識文件",
-        "operationId": "list_1",
+        "operationId": "listKnowledge",
         "responses": {
           "200": {
             "description": "OK",
@@ -10524,7 +10524,7 @@
       },
       "post": {
         "tags": [
-          "項目知識庫管理"
+          "knowledge"
         ],
         "summary": "新增知識文件",
         "description": "新增單筆知識文件至 AI 知識庫",
@@ -10556,11 +10556,11 @@
     "/admin/knowledge/pending/{id}/resolve": {
       "post": {
         "tags": [
-          "項目知識庫管理"
+          "knowledge"
         ],
         "summary": "解答待確認問題",
         "description": "填寫回答，addToKnowledge=true 可同時加入知識庫",
-        "operationId": "resolve_1",
+        "operationId": "resolvePendingKnowledgeQuestion",
         "parameters": [
           {
             "name": "id",
@@ -10599,11 +10599,11 @@
     "/admin/knowledge/pending/{id}/ignore": {
       "post": {
         "tags": [
-          "項目知識庫管理"
+          "knowledge"
         ],
         "summary": "忽略待確認問題",
         "description": "標記為不需要回答",
-        "operationId": "ignore",
+        "operationId": "ignorePendingKnowledgeQuestion",
         "parameters": [
           {
             "name": "id",
@@ -10632,11 +10632,11 @@
     "/admin/knowledge/batch": {
       "post": {
         "tags": [
-          "項目知識庫管理"
+          "knowledge"
         ],
         "summary": "批量匯入知識文件",
         "description": "一次匯入多筆知識文件",
-        "operationId": "importBatch",
+        "operationId": "importKnowledgeBatch",
         "requestBody": {
           "content": {
             "application/json": {
@@ -14125,11 +14125,11 @@
     "/postal-areas": {
       "get": {
         "tags": [
-          "郵遞區號"
+          "postal-area"
         ],
         "summary": "獲取所有啟用的郵遞區號",
         "description": "返回所有啟用狀態的郵遞區號列表",
-        "operationId": "getAllActive",
+        "operationId": "listPostalAreas",
         "responses": {
           "200": {
             "description": "OK",
@@ -14150,11 +14150,11 @@
     "/postal-areas/search": {
       "get": {
         "tags": [
-          "郵遞區號"
+          "postal-area"
         ],
         "summary": "搜索郵遞區號",
         "description": "根據關鍵字搜索郵遞區號、城市或行政區",
-        "operationId": "search_1",
+        "operationId": "searchPostalAreas",
         "parameters": [
           {
             "name": "keyword",
@@ -14186,11 +14186,11 @@
     "/postal-areas/code/{postalCode}": {
       "get": {
         "tags": [
-          "郵遞區號"
+          "postal-area"
         ],
         "summary": "根據郵遞區號查詢",
         "description": "根據指定的郵遞區號查詢相關的行政區信息",
-        "operationId": "getByPostalCode",
+        "operationId": "getPostalAreasByCode",
         "parameters": [
           {
             "name": "postalCode",
@@ -14222,11 +14222,11 @@
     "/postal-areas/city/{city}": {
       "get": {
         "tags": [
-          "郵遞區號"
+          "postal-area"
         ],
         "summary": "根據城市查詢",
         "description": "根據指定的城市名稱查詢相關的郵遞區號信息",
-        "operationId": "getByCity",
+        "operationId": "getPostalAreasByCity",
         "parameters": [
           {
             "name": "city",
@@ -14258,11 +14258,11 @@
     "/postal-areas/city/{city}/district/{district}": {
       "get": {
         "tags": [
-          "郵遞區號"
+          "postal-area"
         ],
         "summary": "根據城市和行政區查詢",
         "description": "根據指定的城市和行政區名稱查詢相關的郵遞區號信息",
-        "operationId": "getByCityAndDistrict",
+        "operationId": "getPostalAreasByCityAndDistrict",
         "parameters": [
           {
             "name": "city",
@@ -14303,11 +14303,11 @@
     "/postal-areas/cities": {
       "get": {
         "tags": [
-          "郵遞區號"
+          "postal-area"
         ],
         "summary": "獲取城市列表",
         "description": "返回所有可用的城市名稱列表",
-        "operationId": "getCities",
+        "operationId": "listPostalAreaCities",
         "responses": {
           "200": {
             "description": "OK",
@@ -14328,11 +14328,11 @@
     "/postal-areas/cities/{city}/districts": {
       "get": {
         "tags": [
-          "郵遞區號"
+          "postal-area"
         ],
         "summary": "獲取城市行政區列表",
         "description": "返回指定城市的所有行政區名稱列表",
-        "operationId": "getDistrictsByCity",
+        "operationId": "listPostalAreaDistrictsByCity",
         "parameters": [
           {
             "name": "city",
@@ -14827,11 +14827,11 @@
     "/logistics/postal/city/{city}": {
       "get": {
         "tags": [
-          "物流服務"
+          "logistics"
         ],
         "summary": "查詢城市所有行政區",
         "description": "根據城市名稱查詢所有行政區",
-        "operationId": "getPostalAreasByCity",
+        "operationId": "getLogisticsPostalAreasByCity",
         "parameters": [
           {
             "name": "city",
@@ -14864,11 +14864,11 @@
     "/logistics/postal/city/{city}/districts": {
       "get": {
         "tags": [
-          "物流服務"
+          "logistics"
         ],
         "summary": "查詢城市行政區",
         "description": "取得指定城市的所有行政區名稱",
-        "operationId": "getDistrictsByCity_1",
+        "operationId": "listLogisticsPostalDistrictsByCity",
         "parameters": [
           {
             "name": "city",
@@ -14901,11 +14901,11 @@
     "/logistics/postal/cities": {
       "get": {
         "tags": [
-          "物流服務"
+          "logistics"
         ],
         "summary": "取得所有城市列表",
         "description": "取得所有可用的城市名稱列表",
-        "operationId": "getAvailableCities",
+        "operationId": "listLogisticsPostalCities",
         "responses": {
           "200": {
             "description": "OK",
@@ -14926,11 +14926,11 @@
     "/logistics/postal-codes/{postalCode}": {
       "get": {
         "tags": [
-          "物流服務"
+          "logistics"
         ],
         "summary": "郵遞區號查詢",
         "description": "根據郵遞區號查詢地區資訊",
-        "operationId": "getPostalAreaByCode",
+        "operationId": "getLogisticsPostalAreaByCode",
         "parameters": [
           {
             "name": "postalCode",
@@ -14963,11 +14963,11 @@
     "/logistics/postal-codes/{postalCode}/validate": {
       "get": {
         "tags": [
-          "物流服務"
+          "logistics"
         ],
         "summary": "郵遞區號驗證",
         "description": "驗證郵遞區號是否有效",
-        "operationId": "validatePostalCode",
+        "operationId": "validateLogisticsPostalCode",
         "parameters": [
           {
             "name": "postalCode",
@@ -14997,11 +14997,11 @@
     "/logistics/carriers": {
       "get": {
         "tags": [
-          "物流服務"
+          "logistics"
         ],
         "summary": "取得可用物流公司",
         "description": "取得系統支援的物流公司列表",
-        "operationId": "getAvailableCarriers",
+        "operationId": "listLogisticsCarriers",
         "responses": {
           "200": {
             "description": "OK",
@@ -15038,11 +15038,11 @@
     "/logistics/carriers/{carrier}/services": {
       "get": {
         "tags": [
-          "物流服務"
+          "logistics"
         ],
         "summary": "取得物流公司服務類型",
         "description": "取得指定物流公司提供的服務類型",
-        "operationId": "getServiceTypes",
+        "operationId": "listLogisticsCarrierServices",
         "parameters": [
           {
             "name": "carrier",
@@ -17343,10 +17343,10 @@
     "/admin/knowledge/{id}": {
       "get": {
         "tags": [
-          "項目知識庫管理"
+          "knowledge"
         ],
         "summary": "查詢單筆知識文件",
-        "operationId": "getById",
+        "operationId": "getKnowledgeById",
         "parameters": [
           {
             "name": "id",
@@ -17372,11 +17372,11 @@
       },
       "delete": {
         "tags": [
-          "項目知識庫管理"
+          "knowledge"
         ],
         "summary": "刪除知識文件",
         "description": "依 ID 刪除單筆知識文件",
-        "operationId": "delete",
+        "operationId": "deleteKnowledge",
         "parameters": [
           {
             "name": "id",
@@ -17404,11 +17404,11 @@
     "/admin/knowledge/search": {
       "get": {
         "tags": [
-          "項目知識庫管理"
+          "knowledge"
         ],
         "summary": "語意搜尋測試",
         "description": "測試知識庫查詢效果，q=查詢詞，n=回傳筆數",
-        "operationId": "search_2",
+        "operationId": "searchKnowledge",
         "parameters": [
           {
             "name": "q",
@@ -17446,11 +17446,11 @@
     "/admin/knowledge/pending": {
       "get": {
         "tags": [
-          "項目知識庫管理"
+          "knowledge"
         ],
         "summary": "列出待確認問題",
         "description": "status 可為 PENDING / RESOLVED / IGNORED，不傳則列出全部",
-        "operationId": "listPending",
+        "operationId": "listPendingKnowledgeQuestions",
         "parameters": [
           {
             "name": "status",
@@ -17483,10 +17483,10 @@
     "/admin/knowledge/pending/count": {
       "get": {
         "tags": [
-          "項目知識庫管理"
+          "knowledge"
         ],
         "summary": "查詢未處理問題數量",
-        "operationId": "pendingCount",
+        "operationId": "countPendingKnowledgeQuestions",
         "responses": {
           "200": {
             "description": "OK",
@@ -17504,10 +17504,10 @@
     "/admin/knowledge/count": {
       "get": {
         "tags": [
-          "項目知識庫管理"
+          "knowledge"
         ],
         "summary": "查詢知識庫文件數量",
-        "operationId": "count",
+        "operationId": "countKnowledge",
         "responses": {
           "200": {
             "description": "OK",
@@ -18508,10 +18508,10 @@
     "/admin/sanctions/{id}": {
       "delete": {
         "tags": [
-          "制裁黑名單管理"
+          "sanction-blacklist"
         ],
         "summary": "移除黑名單地址",
-        "operationId": "remove",
+        "operationId": "removeSanctionBlacklistAddress",
         "parameters": [
           {
             "name": "id",
