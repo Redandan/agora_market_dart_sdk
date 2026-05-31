@@ -1097,10 +1097,8 @@ class DefaultApi {
   ///
   /// * [int] productId (required):
   ///
-  /// * [User] reporter (required):
-  ///
   /// * [ProductReportCreateParam] productReportCreateParam (required):
-  Future<Response> createReportWithHttpInfo(int productId, User reporter, ProductReportCreateParam productReportCreateParam,) async {
+  Future<Response> createReportWithHttpInfo(int productId, ProductReportCreateParam productReportCreateParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/products/{productId}/reports'
       .replaceAll('{productId}', productId.toString());
@@ -1111,8 +1109,6 @@ class DefaultApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'reporter', reporter));
 
     const contentTypes = <String>['application/json'];
 
@@ -1136,11 +1132,9 @@ class DefaultApi {
   ///
   /// * [int] productId (required):
   ///
-  /// * [User] reporter (required):
-  ///
   /// * [ProductReportCreateParam] productReportCreateParam (required):
-  Future<ProductReport?> createReport(int productId, User reporter, ProductReportCreateParam productReportCreateParam,) async {
-    final response = await createReportWithHttpInfo(productId, reporter, productReportCreateParam,);
+  Future<ProductReport?> createReport(int productId, ProductReportCreateParam productReportCreateParam,) async {
+    final response = await createReportWithHttpInfo(productId, productReportCreateParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1330,10 +1324,8 @@ class DefaultApi {
   ///
   /// * [int] reportId (required):
   ///
-  /// * [User] admin (required):
-  ///
   /// * [String] adminNote:
-  Future<Response> dismissWithHttpInfo(int reportId, User admin, { String? adminNote, }) async {
+  Future<Response> dismissWithHttpInfo(int reportId, { String? adminNote, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/reports/{reportId}/dismiss'
       .replaceAll('{reportId}', reportId.toString());
@@ -1348,7 +1340,6 @@ class DefaultApi {
     if (adminNote != null) {
       queryParams.addAll(_queryParams('', 'adminNote', adminNote));
     }
-      queryParams.addAll(_queryParams('', 'admin', admin));
 
     const contentTypes = <String>[];
 
@@ -1372,11 +1363,9 @@ class DefaultApi {
   ///
   /// * [int] reportId (required):
   ///
-  /// * [User] admin (required):
-  ///
   /// * [String] adminNote:
-  Future<ProductReport?> dismiss(int reportId, User admin, { String? adminNote, }) async {
-    final response = await dismissWithHttpInfo(reportId, admin,  adminNote: adminNote, );
+  Future<ProductReport?> dismiss(int reportId, { String? adminNote, }) async {
+    final response = await dismissWithHttpInfo(reportId,  adminNote: adminNote, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -3835,10 +3824,8 @@ class DefaultApi {
   ///
   /// * [int] reportId (required):
   ///
-  /// * [User] admin (required):
-  ///
   /// * [ProductReportResolveParam] productReportResolveParam (required):
-  Future<Response> resolveWithHttpInfo(int reportId, User admin, ProductReportResolveParam productReportResolveParam,) async {
+  Future<Response> resolveWithHttpInfo(int reportId, ProductReportResolveParam productReportResolveParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/reports/{reportId}/resolve'
       .replaceAll('{reportId}', reportId.toString());
@@ -3849,8 +3836,6 @@ class DefaultApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'admin', admin));
 
     const contentTypes = <String>['application/json'];
 
@@ -3874,11 +3859,9 @@ class DefaultApi {
   ///
   /// * [int] reportId (required):
   ///
-  /// * [User] admin (required):
-  ///
   /// * [ProductReportResolveParam] productReportResolveParam (required):
-  Future<ProductReport?> resolve(int reportId, User admin, ProductReportResolveParam productReportResolveParam,) async {
-    final response = await resolveWithHttpInfo(reportId, admin, productReportResolveParam,);
+  Future<ProductReport?> resolve(int reportId, ProductReportResolveParam productReportResolveParam,) async {
+    final response = await resolveWithHttpInfo(reportId, productReportResolveParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

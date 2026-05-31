@@ -3862,14 +3862,6 @@
               "type": "integer",
               "format": "int64"
             }
-          },
-          {
-            "name": "reporter",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/User"
-            }
           }
         ],
         "requestBody": {
@@ -8956,14 +8948,6 @@
               "type": "integer",
               "format": "int64"
             }
-          },
-          {
-            "name": "admin",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/User"
-            }
           }
         ],
         "requestBody": {
@@ -9014,14 +8998,6 @@
             "required": false,
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "admin",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/User"
             }
           }
         ],
