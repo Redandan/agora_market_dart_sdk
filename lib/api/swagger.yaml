@@ -3247,6 +3247,57 @@
         }
       }
     },
+    "/seller/demands/{demandId}/offers/{offerId}/revision": {
+      "post": {
+        "tags": [
+          "seller-demand-pool"
+        ],
+        "summary": "Seller revise an offer after buyer missing requirement",
+        "operationId": "reviseOffer",
+        "parameters": [
+          {
+            "name": "demandId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "offerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemandOfferCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemandOfferResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/seller/demands/open/search": {
       "post": {
         "tags": [
@@ -12685,6 +12736,41 @@
         }
       }
     },
+    "/seller/demands/{demandId}/missing-requirements": {
+      "get": {
+        "tags": [
+          "seller-demand-pool"
+        ],
+        "summary": "Seller list relevant missing requirements",
+        "operationId": "missingRequirements",
+        "parameters": [
+          {
+            "name": "demandId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DemandMissingRequirementResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/reviews/{id}": {
       "get": {
         "tags": [
@@ -17563,6 +17649,41 @@
         }
       }
     },
+    "/admin/demands/{demandId}/missing-requirements": {
+      "get": {
+        "tags": [
+          "admin-demand-pool"
+        ],
+        "summary": "Admin list demand missing requirements",
+        "operationId": "missingRequirements_1",
+        "parameters": [
+          {
+            "name": "demandId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DemandMissingRequirementResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/delivery/statistics": {
       "get": {
         "tags": [
@@ -19548,9 +19669,6 @@
           "sort": {
             "$ref": "#/components/schemas/SortObject"
           },
-          "unpaged": {
-            "type": "boolean"
-          },
           "paged": {
             "type": "boolean"
           },
@@ -19561,6 +19679,9 @@
           "pageSize": {
             "type": "integer",
             "format": "int32"
+          },
+          "unpaged": {
+            "type": "boolean"
           }
         }
       },
@@ -38796,13 +38917,13 @@
             "type": "integer",
             "format": "int32"
           },
-          "outOfStock": {
-            "type": "boolean"
-          },
           "lowStock": {
             "type": "boolean"
           },
           "belowMinimum": {
+            "type": "boolean"
+          },
+          "outOfStock": {
             "type": "boolean"
           }
         }

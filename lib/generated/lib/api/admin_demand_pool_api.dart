@@ -126,6 +126,62 @@ class AdminDemandPoolApi {
     return null;
   }
 
+  /// Admin list demand missing requirements
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] demandId (required):
+  Future<Response> missingRequirements1WithHttpInfo(int demandId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/demands/{demandId}/missing-requirements'
+      .replaceAll('{demandId}', demandId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Admin list demand missing requirements
+  ///
+  /// Parameters:
+  ///
+  /// * [int] demandId (required):
+  Future<List<DemandMissingRequirementResponse>?> missingRequirements1(int demandId,) async {
+    final response = await missingRequirements1WithHttpInfo(demandId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<DemandMissingRequirementResponse>') as List)
+        .cast<DemandMissingRequirementResponse>()
+        .toList(growable: false);
+
+    }
+    return null;
+  }
+
   /// Admin review seller offer before buyer visibility
   ///
   /// Note: This method returns the HTTP [Response].

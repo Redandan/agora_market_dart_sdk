@@ -158,6 +158,7 @@ Class | Method | HTTP request | Description
 *AdminDeliveryApi* | [**updateDeliveryerStatus**](doc//AdminDeliveryApi.md#updatedeliveryerstatus) | **POST** /admin/delivery/deliveryers/{deliveryerId}/status | 更新配送員狀態
 *AdminDemandPoolApi* | [**detail**](doc//AdminDemandPoolApi.md#detail) | **GET** /admin/demands/{demandId} | Admin demand detail
 *AdminDemandPoolApi* | [**linkProduct**](doc//AdminDemandPoolApi.md#linkproduct) | **POST** /admin/demands/{demandId}/link-product | Admin link demand to product
+*AdminDemandPoolApi* | [**missingRequirements1**](doc//AdminDemandPoolApi.md#missingrequirements1) | **GET** /admin/demands/{demandId}/missing-requirements | Admin list demand missing requirements
 *AdminDemandPoolApi* | [**reviewOffer**](doc//AdminDemandPoolApi.md#reviewoffer) | **POST** /admin/demands/{demandId}/offers/{offerId}/review | Admin review seller offer before buyer visibility
 *AdminDemandPoolApi* | [**search**](doc//AdminDemandPoolApi.md#search) | **POST** /admin/demands/search | Admin search demand pool
 *AdminDemandPoolApi* | [**updateStatus**](doc//AdminDemandPoolApi.md#updatestatus) | **POST** /admin/demands/{demandId}/status | Admin update demand status or close demand
@@ -483,6 +484,8 @@ Class | Method | HTTP request | Description
 *SanctionBlacklistApi* | [**addSanctionBlacklistAddress**](doc//SanctionBlacklistApi.md#addsanctionblacklistaddress) | **POST** /admin/sanctions | 新增黑名單地址
 *SanctionBlacklistApi* | [**listSanctionBlacklistAddresses**](doc//SanctionBlacklistApi.md#listsanctionblacklistaddresses) | **GET** /admin/sanctions | 列出黑名單地址
 *SanctionBlacklistApi* | [**removeSanctionBlacklistAddress**](doc//SanctionBlacklistApi.md#removesanctionblacklistaddress) | **DELETE** /admin/sanctions/{id} | 移除黑名單地址
+*SellerDemandPoolApi* | [**missingRequirements**](doc//SellerDemandPoolApi.md#missingrequirements) | **GET** /seller/demands/{demandId}/missing-requirements | Seller list relevant missing requirements
+*SellerDemandPoolApi* | [**reviseOffer**](doc//SellerDemandPoolApi.md#reviseoffer) | **POST** /seller/demands/{demandId}/offers/{offerId}/revision | Seller revise an offer after buyer missing requirement
 *SellerDemandPoolApi* | [**searchOpen**](doc//SellerDemandPoolApi.md#searchopen) | **POST** /seller/demands/open/search | Seller search open demand pool
 *SellerDemandPoolApi* | [**submitOffer**](doc//SellerDemandPoolApi.md#submitoffer) | **POST** /seller/demands/{demandId}/offers | Seller submit structured offer for demand
 *SevenElevenStoresApi* | [**getAllCities**](doc//SevenElevenStoresApi.md#getallcities) | **GET** /stores/seven-eleven/cities | 取得所有縣市列表
