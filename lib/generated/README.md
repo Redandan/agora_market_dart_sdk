@@ -338,7 +338,10 @@ Class | Method | HTTP request | Description
 *DemandPoolApi* | [**cancelInterest**](doc//DemandPoolApi.md#cancelinterest) | **POST** /demands/{demandId}/cancel-interest | Cancel my interest in a demand
 *DemandPoolApi* | [**createDemand**](doc//DemandPoolApi.md#createdemand) | **POST** /demands | Create or join demand pool row
 *DemandPoolApi* | [**getDemand**](doc//DemandPoolApi.md#getdemand) | **GET** /demands/{demandId} | Get my demand tracking detail
+*DemandPoolApi* | [**getOpenDemand**](doc//DemandPoolApi.md#getopendemand) | **GET** /demands/open/{demandId} | Get public open demand detail
+*DemandPoolApi* | [**joinDemand**](doc//DemandPoolApi.md#joindemand) | **POST** /demands/{demandId}/join | Join a public demand as an interested buyer
 *DemandPoolApi* | [**myDemands**](doc//DemandPoolApi.md#mydemands) | **POST** /demands/my/search | List my active demand interests
+*DemandPoolApi* | [**searchOpen1**](doc//DemandPoolApi.md#searchopen1) | **POST** /demands/open/search | Search public open demand pool
 *DemandPoolApi* | [**selectOffer**](doc//DemandPoolApi.md#selectoffer) | **POST** /demands/{demandId}/offers/{offerId}/select | Select a visible offer
 *FileManagementApi* | [**deleteFile**](doc//FileManagementApi.md#deletefile) | **DELETE** /files/{objectName} | 刪除文件
 *FileManagementApi* | [**searchFileRecords**](doc//FileManagementApi.md#searchfilerecords) | **POST** /files/records/search | 查詢檔案記錄
@@ -695,12 +698,15 @@ Class | Method | HTTP request | Description
  - [DeliveryerUpdateParam](doc//DeliveryerUpdateParam.md)
  - [DemandCreateRequest](doc//DemandCreateRequest.md)
  - [DemandDetailResponse](doc//DemandDetailResponse.md)
+ - [DemandJoinRequest](doc//DemandJoinRequest.md)
  - [DemandLinkProductRequest](doc//DemandLinkProductRequest.md)
  - [DemandMissingRequirementCreateRequest](doc//DemandMissingRequirementCreateRequest.md)
  - [DemandMissingRequirementResponse](doc//DemandMissingRequirementResponse.md)
  - [DemandOfferCreateRequest](doc//DemandOfferCreateRequest.md)
  - [DemandOfferResponse](doc//DemandOfferResponse.md)
  - [DemandOfferReviewRequest](doc//DemandOfferReviewRequest.md)
+ - [DemandPublicDetailResponse](doc//DemandPublicDetailResponse.md)
+ - [DemandPublicSummaryResponse](doc//DemandPublicSummaryResponse.md)
  - [DemandSearchParam](doc//DemandSearchParam.md)
  - [DemandStatusHistoryResponse](doc//DemandStatusHistoryResponse.md)
  - [DemandStatusUpdateRequest](doc//DemandStatusUpdateRequest.md)
@@ -813,6 +819,7 @@ Class | Method | HTTP request | Description
  - [PageDeliveryDetail](doc//PageDeliveryDetail.md)
  - [PageDeliveryer](doc//PageDeliveryer.md)
  - [PageDemandDetailResponse](doc//PageDemandDetailResponse.md)
+ - [PageDemandPublicSummaryResponse](doc//PageDemandPublicSummaryResponse.md)
  - [PageDispute](doc//PageDispute.md)
  - [PageFileRecord](doc//PageFileRecord.md)
  - [PageGameRoundDTO](doc//PageGameRoundDTO.md)

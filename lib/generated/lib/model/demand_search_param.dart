@@ -22,6 +22,7 @@ class DemandSearchParam {
     this.sortDirection,
     this.status,
     this.category,
+    this.productType,
   });
 
   /// 頁碼，從1開始
@@ -93,6 +94,9 @@ class DemandSearchParam {
   /// 商品分類枚舉
   DemandSearchParamCategoryEnum? category;
 
+  /// 商品類型
+  DemandSearchParamProductTypeEnum? productType;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is DemandSearchParam &&
     other.page == page &&
@@ -103,7 +107,8 @@ class DemandSearchParam {
     other.sortBy == sortBy &&
     other.sortDirection == sortDirection &&
     other.status == status &&
-    other.category == category;
+    other.category == category &&
+    other.productType == productType;
 
   @override
   int get hashCode =>
@@ -116,10 +121,11 @@ class DemandSearchParam {
     (sortBy == null ? 0 : sortBy!.hashCode) +
     (sortDirection == null ? 0 : sortDirection!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
-    (category == null ? 0 : category!.hashCode);
+    (category == null ? 0 : category!.hashCode) +
+    (productType == null ? 0 : productType!.hashCode);
 
   @override
-  String toString() => 'DemandSearchParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, status=$status, category=$category]';
+  String toString() => 'DemandSearchParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, status=$status, category=$category, productType=$productType]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -168,6 +174,11 @@ class DemandSearchParam {
     } else {
       json[r'category'] = null;
     }
+    if (this.productType != null) {
+      json[r'productType'] = this.productType;
+    } else {
+      json[r'productType'] = null;
+    }
     return json;
   }
 
@@ -199,6 +210,7 @@ class DemandSearchParam {
         sortDirection: mapValueOfType<String>(json, r'sortDirection'),
         status: DemandSearchParamStatusEnum.fromJson(json[r'status']),
         category: DemandSearchParamCategoryEnum.fromJson(json[r'category']),
+        productType: DemandSearchParamProductTypeEnum.fromJson(json[r'productType']),
       );
     }
     return null;
@@ -481,6 +493,83 @@ class DemandSearchParamCategoryEnumTypeTransformer {
 
   /// Singleton [DemandSearchParamCategoryEnumTypeTransformer] instance.
   static DemandSearchParamCategoryEnumTypeTransformer? _instance;
+}
+
+
+/// 商品類型
+class DemandSearchParamProductTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const DemandSearchParamProductTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const PHYSICAL = DemandSearchParamProductTypeEnum._(r'PHYSICAL');
+  static const DIGITAL_SERVICE = DemandSearchParamProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const unknownDefaultOpenApi = DemandSearchParamProductTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][DemandSearchParamProductTypeEnum].
+  static const values = <DemandSearchParamProductTypeEnum>[
+    PHYSICAL,
+    DIGITAL_SERVICE,
+    unknownDefaultOpenApi,
+  ];
+
+  static DemandSearchParamProductTypeEnum? fromJson(dynamic value) => DemandSearchParamProductTypeEnumTypeTransformer().decode(value);
+
+  static List<DemandSearchParamProductTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <DemandSearchParamProductTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = DemandSearchParamProductTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [DemandSearchParamProductTypeEnum] to String,
+/// and [decode] dynamic data back to [DemandSearchParamProductTypeEnum].
+class DemandSearchParamProductTypeEnumTypeTransformer {
+  factory DemandSearchParamProductTypeEnumTypeTransformer() => _instance ??= const DemandSearchParamProductTypeEnumTypeTransformer._();
+
+  const DemandSearchParamProductTypeEnumTypeTransformer._();
+
+  String encode(DemandSearchParamProductTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a DemandSearchParamProductTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  DemandSearchParamProductTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'PHYSICAL': return DemandSearchParamProductTypeEnum.PHYSICAL;
+        case r'DIGITAL_SERVICE': return DemandSearchParamProductTypeEnum.DIGITAL_SERVICE;
+        case r'unknown_default_open_api': return DemandSearchParamProductTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [DemandSearchParamProductTypeEnumTypeTransformer] instance.
+  static DemandSearchParamProductTypeEnumTypeTransformer? _instance;
 }
 
 

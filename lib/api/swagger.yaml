@@ -6350,6 +6350,47 @@
         }
       }
     },
+    "/demands/{demandId}/join": {
+      "post": {
+        "tags": [
+          "demand-pool"
+        ],
+        "summary": "Join a public demand as an interested buyer",
+        "operationId": "joinDemand",
+        "parameters": [
+          {
+            "name": "demandId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemandJoinRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemandDetailResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/demands/{demandId}/cancel-interest": {
       "post": {
         "tags": [
@@ -6375,6 +6416,36 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/DemandDetailResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/demands/open/search": {
+      "post": {
+        "tags": [
+          "demand-pool"
+        ],
+        "summary": "Search public open demand pool",
+        "operationId": "searchOpen_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemandSearchParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageDemandPublicSummaryResponse"
                 }
               }
             }
@@ -15139,6 +15210,38 @@
         }
       }
     },
+    "/demands/open/{demandId}": {
+      "get": {
+        "tags": [
+          "demand-pool"
+        ],
+        "summary": "Get public open demand detail",
+        "operationId": "getOpenDemand",
+        "parameters": [
+          {
+            "name": "demandId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemandPublicDetailResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/delivery/status": {
       "get": {
         "tags": [
@@ -23352,6 +23455,9 @@
             "type": "number",
             "description": "免运费门槛USDT金额"
           },
+          "minimumShippingFee": {
+            "type": "number"
+          },
           "imageUrls": {
             "type": "array",
             "items": {
@@ -23368,9 +23474,6 @@
               "type": "string"
             },
             "uniqueItems": true
-          },
-          "minimumShippingFee": {
-            "type": "number"
           },
           "stockLow": {
             "type": "boolean"
@@ -24935,6 +25038,14 @@
               "SECOND_HAND",
               "DIGITAL_SERVICE",
               "OTHER"
+            ]
+          },
+          "productType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
             ]
           }
         }
@@ -31997,6 +32108,236 @@
         "required": [
           "missingRequirementType"
         ]
+      },
+      "DemandJoinRequest": {
+        "type": "object",
+        "description": "Join an existing public demand as an interested buyer",
+        "properties": {
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "budgetAmount": {
+            "type": "number",
+            "minimum": 0.0
+          },
+          "budgetCurrency": {
+            "type": "string",
+            "enum": [
+              "USDT",
+              "USD",
+              "TWD",
+              "THB",
+              "CNY",
+              "JPY",
+              "EUR",
+              "GBP",
+              "KRW",
+              "SGD",
+              "HKD",
+              "AUD"
+            ]
+          },
+          "buyerNote": {
+            "type": "string",
+            "maxLength": 1000,
+            "minLength": 0
+          },
+          "bountyAmount": {
+            "type": "number",
+            "minimum": 0.0
+          },
+          "bountyCurrency": {
+            "type": "string",
+            "enum": [
+              "USDT",
+              "USD",
+              "TWD",
+              "THB",
+              "CNY",
+              "JPY",
+              "EUR",
+              "GBP",
+              "KRW",
+              "SGD",
+              "HKD",
+              "AUD"
+            ]
+          }
+        }
+      },
+      "DemandPublicSummaryResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "demandNo": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "sourceSearchKeyword": {
+            "type": "string"
+          },
+          "sourceType": {
+            "type": "string",
+            "description": "Demand source",
+            "enum": [
+              "SEARCH_ZERO_RESULT",
+              "MANUAL_BUYER_REQUEST",
+              "ADMIN_CREATED",
+              "MCP_CREATED",
+              "TELEGRAM_CREATED"
+            ]
+          },
+          "category": {
+            "type": "string",
+            "description": "商品分類枚舉",
+            "enum": [
+              "ELECTRONICS",
+              "MOBILE",
+              "CLOTHING",
+              "SHOES",
+              "BAGS",
+              "BEAUTY",
+              "HEALTH",
+              "FOOD",
+              "HOME",
+              "FURNITURE",
+              "BABY",
+              "TOYS",
+              "PET_SUPPLIES",
+              "SPORTS",
+              "OUTDOOR",
+              "AUTOMOTIVE",
+              "BOOKS",
+              "SECOND_HAND",
+              "DIGITAL_SERVICE",
+              "OTHER"
+            ]
+          },
+          "productType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "description": "Demand pool lifecycle status",
+            "enum": [
+              "OPEN",
+              "SOURCING",
+              "HAS_OFFERS",
+              "BUYER_DECISION_PENDING",
+              "BUYER_SELECTED_OFFER",
+              "MATCHED",
+              "COMPLETED",
+              "CLOSED_BY_PLATFORM",
+              "CLOSED_EXPIRED",
+              "CLOSED_MERGED",
+              "CANCELLED"
+            ]
+          },
+          "buyerFacingStatus": {
+            "type": "string",
+            "description": "Buyer-facing demand tracking status",
+            "enum": [
+              "REQUEST_RECEIVED",
+              "SEARCHING",
+              "SELLERS_RESPONDED",
+              "OFFERS_READY",
+              "BUYER_DECISION_NEEDED",
+              "PRODUCT_AVAILABLE",
+              "COMPLETED",
+              "CLOSED",
+              "EXPIRED",
+              "CANCELLED"
+            ]
+          },
+          "interestCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "visibleOfferCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "expectedFirstResponseAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "nextUpdateAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "viewerInterestStatus": {
+            "type": "string"
+          }
+        }
+      },
+      "PageDemandPublicSummaryResponse": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DemandPublicSummaryResponse"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
       },
       "DeliveryerUpdateParam": {
         "type": "object",
@@ -39409,6 +39750,163 @@
             "type": "number",
             "description": "成交量",
             "example": 23.45
+          }
+        }
+      },
+      "DemandPublicDetailResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "demandNo": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "sourceSearchKeyword": {
+            "type": "string"
+          },
+          "sourceType": {
+            "type": "string",
+            "description": "Demand source",
+            "enum": [
+              "SEARCH_ZERO_RESULT",
+              "MANUAL_BUYER_REQUEST",
+              "ADMIN_CREATED",
+              "MCP_CREATED",
+              "TELEGRAM_CREATED"
+            ]
+          },
+          "category": {
+            "type": "string",
+            "description": "商品分類枚舉",
+            "enum": [
+              "ELECTRONICS",
+              "MOBILE",
+              "CLOTHING",
+              "SHOES",
+              "BAGS",
+              "BEAUTY",
+              "HEALTH",
+              "FOOD",
+              "HOME",
+              "FURNITURE",
+              "BABY",
+              "TOYS",
+              "PET_SUPPLIES",
+              "SPORTS",
+              "OUTDOOR",
+              "AUTOMOTIVE",
+              "BOOKS",
+              "SECOND_HAND",
+              "DIGITAL_SERVICE",
+              "OTHER"
+            ]
+          },
+          "productType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "description": "Demand pool lifecycle status",
+            "enum": [
+              "OPEN",
+              "SOURCING",
+              "HAS_OFFERS",
+              "BUYER_DECISION_PENDING",
+              "BUYER_SELECTED_OFFER",
+              "MATCHED",
+              "COMPLETED",
+              "CLOSED_BY_PLATFORM",
+              "CLOSED_EXPIRED",
+              "CLOSED_MERGED",
+              "CANCELLED"
+            ]
+          },
+          "buyerFacingStatus": {
+            "type": "string",
+            "description": "Buyer-facing demand tracking status",
+            "enum": [
+              "REQUEST_RECEIVED",
+              "SEARCHING",
+              "SELLERS_RESPONDED",
+              "OFFERS_READY",
+              "BUYER_DECISION_NEEDED",
+              "PRODUCT_AVAILABLE",
+              "COMPLETED",
+              "CLOSED",
+              "EXPIRED",
+              "CANCELLED"
+            ]
+          },
+          "interestCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "visibleOfferCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "expectedFirstResponseAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "nextUpdateAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "viewerInterestStatus": {
+            "type": "string"
+          },
+          "lowestVisibleOfferTotalAmount": {
+            "type": "number"
+          },
+          "lowestVisibleOfferCurrency": {
+            "type": "string",
+            "enum": [
+              "USDT",
+              "USD",
+              "TWD",
+              "THB",
+              "CNY",
+              "JPY",
+              "EUR",
+              "GBP",
+              "KRW",
+              "SGD",
+              "HKD",
+              "AUD"
+            ]
+          },
+          "fastestDeliveryText": {
+            "type": "string"
+          },
+          "recommendedVisibleOfferCount": {
+            "type": "integer",
+            "format": "int32"
           }
         }
       },

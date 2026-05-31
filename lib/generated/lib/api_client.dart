@@ -410,6 +410,8 @@ class ApiClient {
           return DemandCreateRequest.fromJson(value);
         case 'DemandDetailResponse':
           return DemandDetailResponse.fromJson(value);
+        case 'DemandJoinRequest':
+          return DemandJoinRequest.fromJson(value);
         case 'DemandLinkProductRequest':
           return DemandLinkProductRequest.fromJson(value);
         case 'DemandMissingRequirementCreateRequest':
@@ -422,6 +424,10 @@ class ApiClient {
           return DemandOfferResponse.fromJson(value);
         case 'DemandOfferReviewRequest':
           return DemandOfferReviewRequest.fromJson(value);
+        case 'DemandPublicDetailResponse':
+          return DemandPublicDetailResponse.fromJson(value);
+        case 'DemandPublicSummaryResponse':
+          return DemandPublicSummaryResponse.fromJson(value);
         case 'DemandSearchParam':
           return DemandSearchParam.fromJson(value);
         case 'DemandStatusHistoryResponse':
@@ -646,6 +652,8 @@ class ApiClient {
           return PageDeliveryer.fromJson(value);
         case 'PageDemandDetailResponse':
           return PageDemandDetailResponse.fromJson(value);
+        case 'PageDemandPublicSummaryResponse':
+          return PageDemandPublicSummaryResponse.fromJson(value);
         case 'PageDispute':
           return PageDispute.fromJson(value);
         case 'PageFileRecord':

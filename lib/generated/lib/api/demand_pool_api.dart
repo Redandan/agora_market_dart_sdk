@@ -231,6 +231,116 @@ class DemandPoolApi {
     return null;
   }
 
+  /// Get public open demand detail
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] demandId (required):
+  Future<Response> getOpenDemandWithHttpInfo(int demandId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/demands/open/{demandId}'
+      .replaceAll('{demandId}', demandId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Get public open demand detail
+  ///
+  /// Parameters:
+  ///
+  /// * [int] demandId (required):
+  Future<DemandPublicDetailResponse?> getOpenDemand(int demandId,) async {
+    final response = await getOpenDemandWithHttpInfo(demandId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DemandPublicDetailResponse',) as DemandPublicDetailResponse;
+    
+    }
+    return null;
+  }
+
+  /// Join a public demand as an interested buyer
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] demandId (required):
+  ///
+  /// * [DemandJoinRequest] demandJoinRequest:
+  Future<Response> joinDemandWithHttpInfo(int demandId, { DemandJoinRequest? demandJoinRequest, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/demands/{demandId}/join'
+      .replaceAll('{demandId}', demandId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody = demandJoinRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Join a public demand as an interested buyer
+  ///
+  /// Parameters:
+  ///
+  /// * [int] demandId (required):
+  ///
+  /// * [DemandJoinRequest] demandJoinRequest:
+  Future<DemandDetailResponse?> joinDemand(int demandId, { DemandJoinRequest? demandJoinRequest, }) async {
+    final response = await joinDemandWithHttpInfo(demandId,  demandJoinRequest: demandJoinRequest, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DemandDetailResponse',) as DemandDetailResponse;
+    
+    }
+    return null;
+  }
+
   /// List my active demand interests
   ///
   /// Note: This method returns the HTTP [Response].
@@ -278,6 +388,58 @@ class DemandPoolApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDemandDetailResponse',) as PageDemandDetailResponse;
+    
+    }
+    return null;
+  }
+
+  /// Search public open demand pool
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [DemandSearchParam] demandSearchParam:
+  Future<Response> searchOpen1WithHttpInfo({ DemandSearchParam? demandSearchParam, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/demands/open/search';
+
+    // ignore: prefer_final_locals
+    Object? postBody = demandSearchParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Search public open demand pool
+  ///
+  /// Parameters:
+  ///
+  /// * [DemandSearchParam] demandSearchParam:
+  Future<PageDemandPublicSummaryResponse?> searchOpen1({ DemandSearchParam? demandSearchParam, }) async {
+    final response = await searchOpen1WithHttpInfo( demandSearchParam: demandSearchParam, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDemandPublicSummaryResponse',) as PageDemandPublicSummaryResponse;
     
     }
     return null;
