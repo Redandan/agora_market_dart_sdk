@@ -213,6 +213,8 @@ part 'model/deliveryer_update_param.dart';
 part 'model/demand_create_request.dart';
 part 'model/demand_detail_response.dart';
 part 'model/demand_link_product_request.dart';
+part 'model/demand_missing_requirement_create_request.dart';
+part 'model/demand_missing_requirement_response.dart';
 part 'model/demand_offer_create_request.dart';
 part 'model/demand_offer_response.dart';
 part 'model/demand_offer_review_request.dart';

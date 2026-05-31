@@ -333,6 +333,7 @@ Class | Method | HTTP request | Description
 *DeliveryApi* | [**updateDeliveryOrder**](doc//DeliveryApi.md#updatedeliveryorder) | **POST** /delivery/update/order | 更新配送進度
 *DeliveryApi* | [**updateDeliveryer**](doc//DeliveryApi.md#updatedeliveryer) | **POST** /delivery/update | 更新配送員資料
 *DeliveryApi* | [**updateWorkingStatus**](doc//DeliveryApi.md#updateworkingstatus) | **POST** /delivery/update/status | 更新工作狀態
+*DemandPoolApi* | [**addMissingRequirement**](doc//DemandPoolApi.md#addmissingrequirement) | **POST** /demands/{demandId}/missing-requirements | Add a missing requirement when visible offers do not satisfy the buyer need
 *DemandPoolApi* | [**cancelInterest**](doc//DemandPoolApi.md#cancelinterest) | **POST** /demands/{demandId}/cancel-interest | Cancel my interest in a demand
 *DemandPoolApi* | [**createDemand**](doc//DemandPoolApi.md#createdemand) | **POST** /demands | Create or join demand pool row
 *DemandPoolApi* | [**getDemand**](doc//DemandPoolApi.md#getdemand) | **GET** /demands/{demandId} | Get my demand tracking detail
@@ -692,6 +693,8 @@ Class | Method | HTTP request | Description
  - [DemandCreateRequest](doc//DemandCreateRequest.md)
  - [DemandDetailResponse](doc//DemandDetailResponse.md)
  - [DemandLinkProductRequest](doc//DemandLinkProductRequest.md)
+ - [DemandMissingRequirementCreateRequest](doc//DemandMissingRequirementCreateRequest.md)
+ - [DemandMissingRequirementResponse](doc//DemandMissingRequirementResponse.md)
  - [DemandOfferCreateRequest](doc//DemandOfferCreateRequest.md)
  - [DemandOfferResponse](doc//DemandOfferResponse.md)
  - [DemandOfferReviewRequest](doc//DemandOfferReviewRequest.md)

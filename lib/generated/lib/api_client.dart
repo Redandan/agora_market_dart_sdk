@@ -412,6 +412,10 @@ class ApiClient {
           return DemandDetailResponse.fromJson(value);
         case 'DemandLinkProductRequest':
           return DemandLinkProductRequest.fromJson(value);
+        case 'DemandMissingRequirementCreateRequest':
+          return DemandMissingRequirementCreateRequest.fromJson(value);
+        case 'DemandMissingRequirementResponse':
+          return DemandMissingRequirementResponse.fromJson(value);
         case 'DemandOfferCreateRequest':
           return DemandOfferCreateRequest.fromJson(value);
         case 'DemandOfferResponse':

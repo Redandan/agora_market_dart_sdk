@@ -212,6 +212,8 @@ class DemandOfferReviewRequestStatusEnum {
   static const RECOMMENDED = DemandOfferReviewRequestStatusEnum._(r'RECOMMENDED');
   static const BUYER_SELECTED = DemandOfferReviewRequestStatusEnum._(r'BUYER_SELECTED');
   static const REJECTED_BY_BUYER = DemandOfferReviewRequestStatusEnum._(r'REJECTED_BY_BUYER');
+  static const NEEDS_REVISION = DemandOfferReviewRequestStatusEnum._(r'NEEDS_REVISION');
+  static const SELLER_REVISED = DemandOfferReviewRequestStatusEnum._(r'SELLER_REVISED');
   static const REJECTED_BY_ADMIN = DemandOfferReviewRequestStatusEnum._(r'REJECTED_BY_ADMIN');
   static const EXPIRED = DemandOfferReviewRequestStatusEnum._(r'EXPIRED');
   static const CANCELLED = DemandOfferReviewRequestStatusEnum._(r'CANCELLED');
@@ -227,6 +229,8 @@ class DemandOfferReviewRequestStatusEnum {
     RECOMMENDED,
     BUYER_SELECTED,
     REJECTED_BY_BUYER,
+    NEEDS_REVISION,
+    SELLER_REVISED,
     REJECTED_BY_ADMIN,
     EXPIRED,
     CANCELLED,
@@ -277,6 +281,8 @@ class DemandOfferReviewRequestStatusEnumTypeTransformer {
         case r'RECOMMENDED': return DemandOfferReviewRequestStatusEnum.RECOMMENDED;
         case r'BUYER_SELECTED': return DemandOfferReviewRequestStatusEnum.BUYER_SELECTED;
         case r'REJECTED_BY_BUYER': return DemandOfferReviewRequestStatusEnum.REJECTED_BY_BUYER;
+        case r'NEEDS_REVISION': return DemandOfferReviewRequestStatusEnum.NEEDS_REVISION;
+        case r'SELLER_REVISED': return DemandOfferReviewRequestStatusEnum.SELLER_REVISED;
         case r'REJECTED_BY_ADMIN': return DemandOfferReviewRequestStatusEnum.REJECTED_BY_ADMIN;
         case r'EXPIRED': return DemandOfferReviewRequestStatusEnum.EXPIRED;
         case r'CANCELLED': return DemandOfferReviewRequestStatusEnum.CANCELLED;

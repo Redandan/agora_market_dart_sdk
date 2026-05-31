@@ -16,6 +16,63 @@ class DemandPoolApi {
 
   final ApiClient apiClient;
 
+  /// Add a missing requirement when visible offers do not satisfy the buyer need
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] demandId (required):
+  ///
+  /// * [DemandMissingRequirementCreateRequest] demandMissingRequirementCreateRequest (required):
+  Future<Response> addMissingRequirementWithHttpInfo(int demandId, DemandMissingRequirementCreateRequest demandMissingRequirementCreateRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/demands/{demandId}/missing-requirements'
+      .replaceAll('{demandId}', demandId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody = demandMissingRequirementCreateRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Add a missing requirement when visible offers do not satisfy the buyer need
+  ///
+  /// Parameters:
+  ///
+  /// * [int] demandId (required):
+  ///
+  /// * [DemandMissingRequirementCreateRequest] demandMissingRequirementCreateRequest (required):
+  Future<DemandMissingRequirementResponse?> addMissingRequirement(int demandId, DemandMissingRequirementCreateRequest demandMissingRequirementCreateRequest,) async {
+    final response = await addMissingRequirementWithHttpInfo(demandId, demandMissingRequirementCreateRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DemandMissingRequirementResponse',) as DemandMissingRequirementResponse;
+    
+    }
+    return null;
+  }
+
   /// Cancel my interest in a demand
   ///
   /// Note: This method returns the HTTP [Response].

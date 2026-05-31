@@ -40,6 +40,7 @@ class DemandDetailResponse {
     this.createdAt,
     this.updatedAt,
     this.offers = const [],
+    this.missingRequirements = const [],
     this.history = const [],
   });
 
@@ -228,6 +229,8 @@ class DemandDetailResponse {
 
   List<DemandOfferResponse> offers;
 
+  List<DemandMissingRequirementResponse> missingRequirements;
+
   List<DemandStatusHistoryResponse> history;
 
   @override
@@ -259,6 +262,7 @@ class DemandDetailResponse {
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
     _deepEquality.equals(other.offers, offers) &&
+    _deepEquality.equals(other.missingRequirements, missingRequirements) &&
     _deepEquality.equals(other.history, history);
 
   @override
@@ -291,10 +295,11 @@ class DemandDetailResponse {
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (offers.hashCode) +
+    (missingRequirements.hashCode) +
     (history.hashCode);
 
   @override
-  String toString() => 'DemandDetailResponse[id=$id, demandNo=$demandNo, title=$title, description=$description, sourceSearchKeyword=$sourceSearchKeyword, normalizedKeyword=$normalizedKeyword, sourceType=$sourceType, category=$category, productType=$productType, status=$status, buyerFacingStatus=$buyerFacingStatus, interestCount=$interestCount, offerCount=$offerCount, visibleOfferCount=$visibleOfferCount, selectedOfferId=$selectedOfferId, matchedProductId=$matchedProductId, matchedOrderId=$matchedOrderId, assignedAdminId=$assignedAdminId, expectedFirstResponseAt=$expectedFirstResponseAt, nextUpdateAt=$nextUpdateAt, expiresAt=$expiresAt, lastStatusChangedAt=$lastStatusChangedAt, closedAt=$closedAt, closedReason=$closedReason, createdAt=$createdAt, updatedAt=$updatedAt, offers=$offers, history=$history]';
+  String toString() => 'DemandDetailResponse[id=$id, demandNo=$demandNo, title=$title, description=$description, sourceSearchKeyword=$sourceSearchKeyword, normalizedKeyword=$normalizedKeyword, sourceType=$sourceType, category=$category, productType=$productType, status=$status, buyerFacingStatus=$buyerFacingStatus, interestCount=$interestCount, offerCount=$offerCount, visibleOfferCount=$visibleOfferCount, selectedOfferId=$selectedOfferId, matchedProductId=$matchedProductId, matchedOrderId=$matchedOrderId, assignedAdminId=$assignedAdminId, expectedFirstResponseAt=$expectedFirstResponseAt, nextUpdateAt=$nextUpdateAt, expiresAt=$expiresAt, lastStatusChangedAt=$lastStatusChangedAt, closedAt=$closedAt, closedReason=$closedReason, createdAt=$createdAt, updatedAt=$updatedAt, offers=$offers, missingRequirements=$missingRequirements, history=$history]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -429,6 +434,7 @@ class DemandDetailResponse {
       json[r'updatedAt'] = null;
     }
       json[r'offers'] = this.offers.map((e) => e.toJson()).toList();
+      json[r'missingRequirements'] = this.missingRequirements.map((e) => e.toJson()).toList();
       json[r'history'] = this.history.map((e) => e.toJson()).toList();
     return json;
   }
@@ -479,6 +485,7 @@ class DemandDetailResponse {
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         offers: DemandOfferResponse.listFromJson(json[r'offers']),
+        missingRequirements: DemandMissingRequirementResponse.listFromJson(json[r'missingRequirements']),
         history: DemandStatusHistoryResponse.listFromJson(json[r'history']),
       );
     }
