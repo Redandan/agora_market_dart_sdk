@@ -99,6 +99,7 @@ part 'api/webpush_api.dart';
 part 'api/webrtc_api.dart';
 
 part 'model/accept_order_param.dart';
+part 'model/account_recovery_advisory.dart';
 part 'model/activity_dto.dart';
 part 'model/activity_search_param.dart';
 part 'model/activity_stat_dto.dart';

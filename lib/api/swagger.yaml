@@ -19833,9 +19833,6 @@
           "sort": {
             "$ref": "#/components/schemas/SortObject"
           },
-          "unpaged": {
-            "type": "boolean"
-          },
           "paged": {
             "type": "boolean"
           },
@@ -19846,6 +19843,9 @@
           "pageSize": {
             "type": "integer",
             "format": "int32"
+          },
+          "unpaged": {
+            "type": "boolean"
           }
         }
       },
@@ -19855,10 +19855,10 @@
           "empty": {
             "type": "boolean"
           },
-          "unsorted": {
+          "sorted": {
             "type": "boolean"
           },
-          "sorted": {
+          "unsorted": {
             "type": "boolean"
           }
         }
@@ -26235,6 +26235,40 @@
           }
         }
       },
+      "AccountRecoveryAdvisory": {
+        "type": "object",
+        "description": "Account recovery advisory for login/security UI prompts",
+        "properties": {
+          "shouldPrompt": {
+            "type": "boolean",
+            "description": "Whether frontend should prompt the user to add recovery/login methods.",
+            "example": true
+          },
+          "severity": {
+            "type": "string",
+            "description": "Advisory severity.",
+            "example": "WARNING"
+          },
+          "reasonCodes": {
+            "type": "array",
+            "description": "Stable reason codes for frontend analytics/branching.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "recommendedMethods": {
+            "type": "array",
+            "description": "Recommended methods the user can bind next.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable advisory message."
+          }
+        }
+      },
       "BalanceConversion": {
         "type": "object",
         "description": "餘額換算信息",
@@ -26334,6 +26368,10 @@
           "userInfo": {
             "$ref": "#/components/schemas/UserInfo",
             "description": "用戶詳細信息"
+          },
+          "recoveryAdvisory": {
+            "$ref": "#/components/schemas/AccountRecoveryAdvisory",
+            "description": "帳號恢復方式建議，用於提示 Passkey-only 或缺少恢復方式的用戶"
           }
         }
       },
@@ -26437,6 +26475,10 @@
               "DELIVERYER",
               "ADMIN"
             ]
+          },
+          "recoveryAdvisory": {
+            "$ref": "#/components/schemas/AccountRecoveryAdvisory",
+            "description": "帳號恢復方式建議，用於提示 Passkey-only 或缺少恢復方式的用戶"
           }
         }
       },
@@ -40737,6 +40779,10 @@
             "items": {
               "$ref": "#/components/schemas/OAuthBindingInfo"
             }
+          },
+          "recoveryAdvisory": {
+            "$ref": "#/components/schemas/AccountRecoveryAdvisory",
+            "description": "帳號恢復方式建議"
           }
         }
       },

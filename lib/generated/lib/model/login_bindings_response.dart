@@ -19,6 +19,7 @@ class LoginBindingsResponse {
     this.canUseEmailLogin,
     this.canUsePasswordLogin,
     this.oauthBindings = const [],
+    this.recoveryAdvisory,
   });
 
   /// 是否有密碼
@@ -69,6 +70,15 @@ class LoginBindingsResponse {
   /// OAuth綁定列表
   List<OAuthBindingInfo> oauthBindings;
 
+  /// 帳號恢復方式建議
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  AccountRecoveryAdvisory? recoveryAdvisory;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is LoginBindingsResponse &&
     other.hasPassword == hasPassword &&
@@ -76,7 +86,8 @@ class LoginBindingsResponse {
     other.emailVerified == emailVerified &&
     other.canUseEmailLogin == canUseEmailLogin &&
     other.canUsePasswordLogin == canUsePasswordLogin &&
-    _deepEquality.equals(other.oauthBindings, oauthBindings);
+    _deepEquality.equals(other.oauthBindings, oauthBindings) &&
+    other.recoveryAdvisory == recoveryAdvisory;
 
   @override
   int get hashCode =>
@@ -86,10 +97,11 @@ class LoginBindingsResponse {
     (emailVerified == null ? 0 : emailVerified!.hashCode) +
     (canUseEmailLogin == null ? 0 : canUseEmailLogin!.hashCode) +
     (canUsePasswordLogin == null ? 0 : canUsePasswordLogin!.hashCode) +
-    (oauthBindings.hashCode);
+    (oauthBindings.hashCode) +
+    (recoveryAdvisory == null ? 0 : recoveryAdvisory!.hashCode);
 
   @override
-  String toString() => 'LoginBindingsResponse[hasPassword=$hasPassword, hasEmail=$hasEmail, emailVerified=$emailVerified, canUseEmailLogin=$canUseEmailLogin, canUsePasswordLogin=$canUsePasswordLogin, oauthBindings=$oauthBindings]';
+  String toString() => 'LoginBindingsResponse[hasPassword=$hasPassword, hasEmail=$hasEmail, emailVerified=$emailVerified, canUseEmailLogin=$canUseEmailLogin, canUsePasswordLogin=$canUsePasswordLogin, oauthBindings=$oauthBindings, recoveryAdvisory=$recoveryAdvisory]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -119,6 +131,11 @@ class LoginBindingsResponse {
       json[r'canUsePasswordLogin'] = null;
     }
       json[r'oauthBindings'] = this.oauthBindings;
+    if (this.recoveryAdvisory != null) {
+      json[r'recoveryAdvisory'] = this.recoveryAdvisory;
+    } else {
+      json[r'recoveryAdvisory'] = null;
+    }
     return json;
   }
 
@@ -147,6 +164,7 @@ class LoginBindingsResponse {
         canUseEmailLogin: mapValueOfType<bool>(json, r'canUseEmailLogin'),
         canUsePasswordLogin: mapValueOfType<bool>(json, r'canUsePasswordLogin'),
         oauthBindings: OAuthBindingInfo.listFromJson(json[r'oauthBindings']),
+        recoveryAdvisory: AccountRecoveryAdvisory.fromJson(json[r'recoveryAdvisory']),
       );
     }
     return null;

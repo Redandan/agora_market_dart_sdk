@@ -25,6 +25,7 @@ class LoginResult {
     this.defaultHomePage,
     this.homePageInMaintenance,
     this.userInfo,
+    this.recoveryAdvisory,
   });
 
   /// 操作是否成功
@@ -129,6 +130,15 @@ class LoginResult {
   ///
   UserInfo? userInfo;
 
+  /// 帳號恢復方式建議，用於提示 Passkey-only 或缺少恢復方式的用戶
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  AccountRecoveryAdvisory? recoveryAdvisory;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is LoginResult &&
     other.success == success &&
@@ -142,7 +152,8 @@ class LoginResult {
     other.username == username &&
     other.defaultHomePage == defaultHomePage &&
     other.homePageInMaintenance == homePageInMaintenance &&
-    other.userInfo == userInfo;
+    other.userInfo == userInfo &&
+    other.recoveryAdvisory == recoveryAdvisory;
 
   @override
   int get hashCode =>
@@ -158,10 +169,11 @@ class LoginResult {
     (username == null ? 0 : username!.hashCode) +
     (defaultHomePage == null ? 0 : defaultHomePage!.hashCode) +
     (homePageInMaintenance == null ? 0 : homePageInMaintenance!.hashCode) +
-    (userInfo == null ? 0 : userInfo!.hashCode);
+    (userInfo == null ? 0 : userInfo!.hashCode) +
+    (recoveryAdvisory == null ? 0 : recoveryAdvisory!.hashCode);
 
   @override
-  String toString() => 'LoginResult[success=$success, message=$message, token=$token, refreshToken=$refreshToken, tokenIssuedAt=$tokenIssuedAt, tokenExpiration=$tokenExpiration, refreshTokenExpiration=$refreshTokenExpiration, userId=$userId, username=$username, defaultHomePage=$defaultHomePage, homePageInMaintenance=$homePageInMaintenance, userInfo=$userInfo]';
+  String toString() => 'LoginResult[success=$success, message=$message, token=$token, refreshToken=$refreshToken, tokenIssuedAt=$tokenIssuedAt, tokenExpiration=$tokenExpiration, refreshTokenExpiration=$refreshTokenExpiration, userId=$userId, username=$username, defaultHomePage=$defaultHomePage, homePageInMaintenance=$homePageInMaintenance, userInfo=$userInfo, recoveryAdvisory=$recoveryAdvisory]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -225,6 +237,11 @@ class LoginResult {
     } else {
       json[r'userInfo'] = null;
     }
+    if (this.recoveryAdvisory != null) {
+      json[r'recoveryAdvisory'] = this.recoveryAdvisory;
+    } else {
+      json[r'recoveryAdvisory'] = null;
+    }
     return json;
   }
 
@@ -259,6 +276,7 @@ class LoginResult {
         defaultHomePage: LoginResultDefaultHomePageEnum.fromJson(json[r'defaultHomePage']),
         homePageInMaintenance: mapValueOfType<bool>(json, r'homePageInMaintenance'),
         userInfo: UserInfo.fromJson(json[r'userInfo']),
+        recoveryAdvisory: AccountRecoveryAdvisory.fromJson(json[r'recoveryAdvisory']),
       );
     }
     return null;

@@ -587,6 +587,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AcceptOrderParam](doc//AcceptOrderParam.md)
+ - [AccountRecoveryAdvisory](doc//AccountRecoveryAdvisory.md)
  - [ActivityDTO](doc//ActivityDTO.md)
  - [ActivitySearchParam](doc//ActivitySearchParam.md)
  - [ActivityStatDTO](doc//ActivityStatDTO.md)

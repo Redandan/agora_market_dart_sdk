@@ -184,6 +184,8 @@ class ApiClient {
           return value is DateTime ? value : DateTime.tryParse(value);
         case 'AcceptOrderParam':
           return AcceptOrderParam.fromJson(value);
+        case 'AccountRecoveryAdvisory':
+          return AccountRecoveryAdvisory.fromJson(value);
         case 'ActivityDTO':
           return ActivityDTO.fromJson(value);
         case 'ActivitySearchParam':
