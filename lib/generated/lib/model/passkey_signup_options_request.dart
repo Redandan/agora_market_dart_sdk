@@ -10,126 +10,132 @@
 
 part of openapi.api;
 
-class PageableObject {
-  /// Returns a new [PageableObject] instance.
-  PageableObject({
-    this.offset,
-    this.sort,
-    this.unpaged,
-    this.paged,
-    this.pageNumber,
-    this.pageSize,
+class PasskeySignupOptionsRequest {
+  /// Returns a new [PasskeySignupOptionsRequest] instance.
+  PasskeySignupOptionsRequest({
+    this.origin,
+    this.username,
+    this.email,
+    this.displayName,
+    this.promoCode,
+    this.referrer,
   });
 
+  /// Browser origin. Backend also accepts the Origin header.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? offset;
+  String? origin;
 
+  /// Optional username. Backend generates one when omitted.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  SortObject? sort;
+  String? username;
 
+  /// Optional email attached to the newly created account.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unpaged;
+  String? email;
 
+  /// Optional display name used in the WebAuthn prompt.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? paged;
+  String? displayName;
 
+  /// Optional promo code.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageNumber;
+  String? promoCode;
 
+  /// Optional source page URL for traffic attribution.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageSize;
+  String? referrer;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PageableObject &&
-    other.offset == offset &&
-    other.sort == sort &&
-    other.unpaged == unpaged &&
-    other.paged == paged &&
-    other.pageNumber == pageNumber &&
-    other.pageSize == pageSize;
+  bool operator ==(Object other) => identical(this, other) || other is PasskeySignupOptionsRequest &&
+    other.origin == origin &&
+    other.username == username &&
+    other.email == email &&
+    other.displayName == displayName &&
+    other.promoCode == promoCode &&
+    other.referrer == referrer;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (offset == null ? 0 : offset!.hashCode) +
-    (sort == null ? 0 : sort!.hashCode) +
-    (unpaged == null ? 0 : unpaged!.hashCode) +
-    (paged == null ? 0 : paged!.hashCode) +
-    (pageNumber == null ? 0 : pageNumber!.hashCode) +
-    (pageSize == null ? 0 : pageSize!.hashCode);
+    (origin == null ? 0 : origin!.hashCode) +
+    (username == null ? 0 : username!.hashCode) +
+    (email == null ? 0 : email!.hashCode) +
+    (displayName == null ? 0 : displayName!.hashCode) +
+    (promoCode == null ? 0 : promoCode!.hashCode) +
+    (referrer == null ? 0 : referrer!.hashCode);
 
   @override
-  String toString() => 'PageableObject[offset=$offset, sort=$sort, unpaged=$unpaged, paged=$paged, pageNumber=$pageNumber, pageSize=$pageSize]';
+  String toString() => 'PasskeySignupOptionsRequest[origin=$origin, username=$username, email=$email, displayName=$displayName, promoCode=$promoCode, referrer=$referrer]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.offset != null) {
-      json[r'offset'] = this.offset;
+    if (this.origin != null) {
+      json[r'origin'] = this.origin;
     } else {
-      json[r'offset'] = null;
+      json[r'origin'] = null;
     }
-    if (this.sort != null) {
-      json[r'sort'] = this.sort;
+    if (this.username != null) {
+      json[r'username'] = this.username;
     } else {
-      json[r'sort'] = null;
+      json[r'username'] = null;
     }
-    if (this.unpaged != null) {
-      json[r'unpaged'] = this.unpaged;
+    if (this.email != null) {
+      json[r'email'] = this.email;
     } else {
-      json[r'unpaged'] = null;
+      json[r'email'] = null;
     }
-    if (this.paged != null) {
-      json[r'paged'] = this.paged;
+    if (this.displayName != null) {
+      json[r'displayName'] = this.displayName;
     } else {
-      json[r'paged'] = null;
+      json[r'displayName'] = null;
     }
-    if (this.pageNumber != null) {
-      json[r'pageNumber'] = this.pageNumber;
+    if (this.promoCode != null) {
+      json[r'promoCode'] = this.promoCode;
     } else {
-      json[r'pageNumber'] = null;
+      json[r'promoCode'] = null;
     }
-    if (this.pageSize != null) {
-      json[r'pageSize'] = this.pageSize;
+    if (this.referrer != null) {
+      json[r'referrer'] = this.referrer;
     } else {
-      json[r'pageSize'] = null;
+      json[r'referrer'] = null;
     }
     return json;
   }
 
-  /// Returns a new [PageableObject] instance and imports its values from
+  /// Returns a new [PasskeySignupOptionsRequest] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageableObject? fromJson(dynamic value) {
+  static PasskeySignupOptionsRequest? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -138,29 +144,29 @@ class PageableObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PageableObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PageableObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PasskeySignupOptionsRequest[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PasskeySignupOptionsRequest[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PageableObject(
-        offset: mapValueOfType<int>(json, r'offset'),
-        sort: SortObject.fromJson(json[r'sort']),
-        unpaged: mapValueOfType<bool>(json, r'unpaged'),
-        paged: mapValueOfType<bool>(json, r'paged'),
-        pageNumber: mapValueOfType<int>(json, r'pageNumber'),
-        pageSize: mapValueOfType<int>(json, r'pageSize'),
+      return PasskeySignupOptionsRequest(
+        origin: mapValueOfType<String>(json, r'origin'),
+        username: mapValueOfType<String>(json, r'username'),
+        email: mapValueOfType<String>(json, r'email'),
+        displayName: mapValueOfType<String>(json, r'displayName'),
+        promoCode: mapValueOfType<String>(json, r'promoCode'),
+        referrer: mapValueOfType<String>(json, r'referrer'),
       );
     }
     return null;
   }
 
-  static List<PageableObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PageableObject>[];
+  static List<PasskeySignupOptionsRequest> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PasskeySignupOptionsRequest>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageableObject.fromJson(row);
+        final value = PasskeySignupOptionsRequest.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -169,12 +175,12 @@ class PageableObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageableObject> mapFromJson(dynamic json) {
-    final map = <String, PageableObject>{};
+  static Map<String, PasskeySignupOptionsRequest> mapFromJson(dynamic json) {
+    final map = <String, PasskeySignupOptionsRequest>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageableObject.fromJson(entry.value);
+        final value = PasskeySignupOptionsRequest.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -183,14 +189,14 @@ class PageableObject {
     return map;
   }
 
-  // maps a json object with a list of PageableObject-objects as value to a dart map
-  static Map<String, List<PageableObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PageableObject>>{};
+  // maps a json object with a list of PasskeySignupOptionsRequest-objects as value to a dart map
+  static Map<String, List<PasskeySignupOptionsRequest>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<PasskeySignupOptionsRequest>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageableObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = PasskeySignupOptionsRequest.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

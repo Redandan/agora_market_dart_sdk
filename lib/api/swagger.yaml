@@ -7968,6 +7968,67 @@
         }
       }
     },
+    "/auth/passkey/signup/verify": {
+      "post": {
+        "tags": [
+          "auth-passkey"
+        ],
+        "summary": "Verify WebAuthn passkey signup response, create account, and return LoginResult",
+        "operationId": "finishSignup",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasskeyVerifyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasskeySignupVerifyResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/passkey/signup/options": {
+      "post": {
+        "tags": [
+          "auth-passkey"
+        ],
+        "summary": "Generate WebAuthn passkey first-time signup options",
+        "operationId": "startSignup",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasskeySignupOptionsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasskeyOptionsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/auth/passkey/register/verify": {
       "post": {
         "tags": [
@@ -19772,6 +19833,9 @@
           "sort": {
             "$ref": "#/components/schemas/SortObject"
           },
+          "unpaged": {
+            "type": "boolean"
+          },
           "paged": {
             "type": "boolean"
           },
@@ -19782,9 +19846,6 @@
           "pageSize": {
             "type": "integer",
             "format": "int32"
-          },
-          "unpaged": {
-            "type": "boolean"
           }
         }
       },
@@ -19794,10 +19855,10 @@
           "empty": {
             "type": "boolean"
           },
-          "sorted": {
+          "unsorted": {
             "type": "boolean"
           },
-          "unsorted": {
+          "sorted": {
             "type": "boolean"
           }
         }
@@ -19930,6 +19991,7 @@
               "TELEGRAM_WEBAPP",
               "WALLET_CONNECT",
               "TRON",
+              "PASSKEY",
               "ADMIN"
             ],
             "example": "FORM"
@@ -23455,9 +23517,6 @@
             "type": "number",
             "description": "免运费门槛USDT金额"
           },
-          "minimumShippingFee": {
-            "type": "number"
-          },
           "imageUrls": {
             "type": "array",
             "items": {
@@ -23474,6 +23533,9 @@
               "type": "string"
             },
             "uniqueItems": true
+          },
+          "minimumShippingFee": {
+            "type": "number"
           },
           "stockLow": {
             "type": "boolean"
@@ -34632,10 +34694,13 @@
           "credential"
         ]
       },
-      "PasskeyRegistrationResponse": {
+      "PasskeySignupVerifyResponse": {
         "type": "object",
-        "description": "Passkey registration verification response",
+        "description": "Passkey first-time signup verification response",
         "properties": {
+          "loginResult": {
+            "$ref": "#/components/schemas/LoginResult"
+          },
           "credentialId": {
             "type": "integer",
             "format": "int64"
@@ -34657,19 +34722,45 @@
           }
         }
       },
-      "PasskeyOptionsRequest": {
+      "PasskeySignupOptionsRequest": {
         "type": "object",
-        "description": "Passkey options request",
+        "description": "Passkey first-time signup options request",
         "properties": {
           "origin": {
             "type": "string",
             "description": "Browser origin. Backend also accepts the Origin header.",
-            "example": "https://agoramarket.purrtechllc.com"
+            "example": "https://redandan.github.io"
           },
           "username": {
             "type": "string",
-            "description": "Optional username hint for non-discoverable login flows.",
-            "example": "user123"
+            "description": "Optional username. Backend generates one when omitted.",
+            "example": "redan",
+            "maxLength": 20,
+            "minLength": 3
+          },
+          "email": {
+            "type": "string",
+            "description": "Optional email attached to the newly created account.",
+            "example": "user@example.com"
+          },
+          "displayName": {
+            "type": "string",
+            "description": "Optional display name used in the WebAuthn prompt.",
+            "example": "Redan",
+            "maxLength": 120,
+            "minLength": 0
+          },
+          "promoCode": {
+            "type": "string",
+            "description": "Optional promo code.",
+            "maxLength": 50,
+            "minLength": 0
+          },
+          "referrer": {
+            "type": "string",
+            "description": "Optional source page URL for traffic attribution.",
+            "maxLength": 500,
+            "minLength": 0
           }
         }
       },
@@ -34715,6 +34806,47 @@
             "type": "string",
             "description": "Effective userVerification requirement.",
             "example": "required"
+          }
+        }
+      },
+      "PasskeyRegistrationResponse": {
+        "type": "object",
+        "description": "Passkey registration verification response",
+        "properties": {
+          "credentialId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "rpId": {
+            "type": "string"
+          },
+          "passkeyCredentialId": {
+            "type": "string"
+          },
+          "discoverable": {
+            "type": "boolean"
+          },
+          "backupEligible": {
+            "type": "boolean"
+          },
+          "backedUp": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PasskeyOptionsRequest": {
+        "type": "object",
+        "description": "Passkey options request",
+        "properties": {
+          "origin": {
+            "type": "string",
+            "description": "Browser origin. Backend also accepts the Origin header.",
+            "example": "https://agoramarket.purrtechllc.com"
+          },
+          "username": {
+            "type": "string",
+            "description": "Optional username hint for non-discoverable login flows.",
+            "example": "user123"
           }
         }
       },

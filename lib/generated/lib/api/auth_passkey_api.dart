@@ -120,6 +120,58 @@ class AuthPasskeyApi {
     return null;
   }
 
+  /// Verify WebAuthn passkey signup response, create account, and return LoginResult
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [PasskeyVerifyRequest] passkeyVerifyRequest (required):
+  Future<Response> finishSignupWithHttpInfo(PasskeyVerifyRequest passkeyVerifyRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/passkey/signup/verify';
+
+    // ignore: prefer_final_locals
+    Object? postBody = passkeyVerifyRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Verify WebAuthn passkey signup response, create account, and return LoginResult
+  ///
+  /// Parameters:
+  ///
+  /// * [PasskeyVerifyRequest] passkeyVerifyRequest (required):
+  Future<PasskeySignupVerifyResponse?> finishSignup(PasskeyVerifyRequest passkeyVerifyRequest,) async {
+    final response = await finishSignupWithHttpInfo(passkeyVerifyRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PasskeySignupVerifyResponse',) as PasskeySignupVerifyResponse;
+    
+    }
+    return null;
+  }
+
   /// List current user's registered passkeys
   ///
   /// Note: This method returns the HTTP [Response].
@@ -355,6 +407,58 @@ class AuthPasskeyApi {
   /// * [PasskeyOptionsRequest] passkeyOptionsRequest:
   Future<PasskeyOptionsResponse?> startRegistration({ PasskeyOptionsRequest? passkeyOptionsRequest, }) async {
     final response = await startRegistrationWithHttpInfo( passkeyOptionsRequest: passkeyOptionsRequest, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PasskeyOptionsResponse',) as PasskeyOptionsResponse;
+    
+    }
+    return null;
+  }
+
+  /// Generate WebAuthn passkey first-time signup options
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [PasskeySignupOptionsRequest] passkeySignupOptionsRequest:
+  Future<Response> startSignupWithHttpInfo({ PasskeySignupOptionsRequest? passkeySignupOptionsRequest, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/passkey/signup/options';
+
+    // ignore: prefer_final_locals
+    Object? postBody = passkeySignupOptionsRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Generate WebAuthn passkey first-time signup options
+  ///
+  /// Parameters:
+  ///
+  /// * [PasskeySignupOptionsRequest] passkeySignupOptionsRequest:
+  Future<PasskeyOptionsResponse?> startSignup({ PasskeySignupOptionsRequest? passkeySignupOptionsRequest, }) async {
+    final response = await startSignupWithHttpInfo( passkeySignupOptionsRequest: passkeySignupOptionsRequest, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

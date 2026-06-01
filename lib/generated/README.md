@@ -271,11 +271,13 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**verifyTwoFactorCode**](doc//AuthApi.md#verifytwofactorcode) | **POST** /auth/2fa/verify | 驗證雙因素認證碼
 *AuthPasskeyApi* | [**finishLogin**](doc//AuthPasskeyApi.md#finishlogin) | **POST** /auth/passkey/login/verify | Verify WebAuthn passkey login response and return LoginResult
 *AuthPasskeyApi* | [**finishRegistration**](doc//AuthPasskeyApi.md#finishregistration) | **POST** /auth/passkey/register/verify | Verify WebAuthn passkey registration response
+*AuthPasskeyApi* | [**finishSignup**](doc//AuthPasskeyApi.md#finishsignup) | **POST** /auth/passkey/signup/verify | Verify WebAuthn passkey signup response, create account, and return LoginResult
 *AuthPasskeyApi* | [**listCredentials**](doc//AuthPasskeyApi.md#listcredentials) | **GET** /auth/passkey/credentials | List current user's registered passkeys
 *AuthPasskeyApi* | [**loginCapability**](doc//AuthPasskeyApi.md#logincapability) | **POST** /auth/passkey/login/capability | Get Passkey quick-login capability for current origin
 *AuthPasskeyApi* | [**revokeCredential**](doc//AuthPasskeyApi.md#revokecredential) | **DELETE** /auth/passkey/credentials/{credentialId} | Disable/revoke a registered passkey
 *AuthPasskeyApi* | [**startLogin**](doc//AuthPasskeyApi.md#startlogin) | **POST** /auth/passkey/login/options | Generate WebAuthn passkey login options
 *AuthPasskeyApi* | [**startRegistration**](doc//AuthPasskeyApi.md#startregistration) | **POST** /auth/passkey/register/options | Generate WebAuthn passkey registration options
+*AuthPasskeyApi* | [**startSignup**](doc//AuthPasskeyApi.md#startsignup) | **POST** /auth/passkey/signup/options | Generate WebAuthn passkey first-time signup options
 *AutoReplyApi* | [**createConfig**](doc//AutoReplyApi.md#createconfig) | **POST** /admin/auto-reply/configs | 創建新配置
 *AutoReplyApi* | [**deleteConfig**](doc//AutoReplyApi.md#deleteconfig) | **DELETE** /admin/auto-reply/configs/{id} | 刪除配置
 *AutoReplyApi* | [**getStats1**](doc//AutoReplyApi.md#getstats1) | **GET** /admin/auto-reply/stats | 獲取統計信息
@@ -849,6 +851,8 @@ Class | Method | HTTP request | Description
  - [PasskeyOptionsRequest](doc//PasskeyOptionsRequest.md)
  - [PasskeyOptionsResponse](doc//PasskeyOptionsResponse.md)
  - [PasskeyRegistrationResponse](doc//PasskeyRegistrationResponse.md)
+ - [PasskeySignupOptionsRequest](doc//PasskeySignupOptionsRequest.md)
+ - [PasskeySignupVerifyResponse](doc//PasskeySignupVerifyResponse.md)
  - [PasskeyVerifyRequest](doc//PasskeyVerifyRequest.md)
  - [PasswordResetCodeValidateParam](doc//PasswordResetCodeValidateParam.md)
  - [PasswordResetCodeValidateResponse](doc//PasswordResetCodeValidateResponse.md)

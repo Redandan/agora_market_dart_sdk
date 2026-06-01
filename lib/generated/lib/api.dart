@@ -363,6 +363,8 @@ part 'model/passkey_credential_response.dart';
 part 'model/passkey_options_request.dart';
 part 'model/passkey_options_response.dart';
 part 'model/passkey_registration_response.dart';
+part 'model/passkey_signup_options_request.dart';
+part 'model/passkey_signup_verify_response.dart';
 part 'model/passkey_verify_request.dart';
 part 'model/password_reset_code_validate_param.dart';
 part 'model/password_reset_code_validate_response.dart';

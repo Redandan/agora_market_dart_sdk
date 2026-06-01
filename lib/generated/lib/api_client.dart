@@ -712,6 +712,10 @@ class ApiClient {
           return PasskeyOptionsResponse.fromJson(value);
         case 'PasskeyRegistrationResponse':
           return PasskeyRegistrationResponse.fromJson(value);
+        case 'PasskeySignupOptionsRequest':
+          return PasskeySignupOptionsRequest.fromJson(value);
+        case 'PasskeySignupVerifyResponse':
+          return PasskeySignupVerifyResponse.fromJson(value);
         case 'PasskeyVerifyRequest':
           return PasskeyVerifyRequest.fromJson(value);
         case 'PasswordResetCodeValidateParam':

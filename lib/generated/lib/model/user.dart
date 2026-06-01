@@ -878,6 +878,7 @@ class UserRegistrationMethodEnum {
   static const TELEGRAM_WEBAPP = UserRegistrationMethodEnum._(r'TELEGRAM_WEBAPP');
   static const WALLET_CONNECT = UserRegistrationMethodEnum._(r'WALLET_CONNECT');
   static const TRON = UserRegistrationMethodEnum._(r'TRON');
+  static const PASSKEY = UserRegistrationMethodEnum._(r'PASSKEY');
   static const ADMIN = UserRegistrationMethodEnum._(r'ADMIN');
   static const unknownDefaultOpenApi = UserRegistrationMethodEnum._(r'unknown_default_open_api');
 
@@ -890,6 +891,7 @@ class UserRegistrationMethodEnum {
     TELEGRAM_WEBAPP,
     WALLET_CONNECT,
     TRON,
+    PASSKEY,
     ADMIN,
     unknownDefaultOpenApi,
   ];
@@ -937,6 +939,7 @@ class UserRegistrationMethodEnumTypeTransformer {
         case r'TELEGRAM_WEBAPP': return UserRegistrationMethodEnum.TELEGRAM_WEBAPP;
         case r'WALLET_CONNECT': return UserRegistrationMethodEnum.WALLET_CONNECT;
         case r'TRON': return UserRegistrationMethodEnum.TRON;
+        case r'PASSKEY': return UserRegistrationMethodEnum.PASSKEY;
         case r'ADMIN': return UserRegistrationMethodEnum.ADMIN;
         case r'unknown_default_open_api': return UserRegistrationMethodEnum.unknownDefaultOpenApi;
         default:
