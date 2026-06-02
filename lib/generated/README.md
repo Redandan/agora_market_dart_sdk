@@ -382,6 +382,7 @@ Class | Method | HTTP request | Description
 *MarketDataAdminApi* | [**subscribe1**](doc//MarketDataAdminApi.md#subscribe1) | **POST** /admin/market/subscribe | 開始 WS 即時訂閱（對所有 provider 同步訂閱）
 *MarketDataAdminApi* | [**unsubscribe1**](doc//MarketDataAdminApi.md#unsubscribe1) | **DELETE** /admin/market/subscribe | 停止 WS 訂閱（對所有 provider 同步移除）
 *McpStreamableHttpControllerApi* | [**handleMcp**](doc//McpStreamableHttpControllerApi.md#handlemcp) | **POST** /mcp | 
+*McpStreamableHttpControllerApi* | [**handleUserMcp**](doc//McpStreamableHttpControllerApi.md#handleusermcp) | **POST** /mcp/user | 
 *MemberDisputesApi* | [**createDispute**](doc//MemberDisputesApi.md#createdispute) | **POST** /disputes | 創建糾紛
 *MemberDisputesApi* | [**getDisputeDetail**](doc//MemberDisputesApi.md#getdisputedetail) | **POST** /disputes/detail | 查看糾紛詳情
 *MemberDisputesApi* | [**replyDispute**](doc//MemberDisputesApi.md#replydispute) | **POST** /disputes/{disputeId}/reply | 回覆糾紛
