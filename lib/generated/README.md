@@ -150,11 +150,14 @@ Class | Method | HTTP request | Description
 *AdminAiControllerApi* | [**getStats2**](doc//AdminAiControllerApi.md#getstats2) | **GET** /admin/ai/stats | 
 *AdminBotControllerApi* | [**refreshBotCommands**](doc//AdminBotControllerApi.md#refreshbotcommands) | **POST** /admin/bot/refresh-commands | 
 *AdminDeliveryApi* | [**assignDeliveryer**](doc//AdminDeliveryApi.md#assigndeliveryer) | **POST** /admin/delivery/orders/{orderId}/assign | 手動分配配送員
+*AdminDeliveryApi* | [**createDeliveryer**](doc//AdminDeliveryApi.md#createdeliveryer) | **POST** /admin/delivery/deliveryers | 管理員新增配送員
 *AdminDeliveryApi* | [**getDeliveryOrderDetail**](doc//AdminDeliveryApi.md#getdeliveryorderdetail) | **GET** /admin/delivery/orders/{orderId} | 查看配送訂單詳情
 *AdminDeliveryApi* | [**getDeliveryStatistics**](doc//AdminDeliveryApi.md#getdeliverystatistics) | **GET** /admin/delivery/statistics | 配送統計報告
 *AdminDeliveryApi* | [**getDeliveryerDetail**](doc//AdminDeliveryApi.md#getdeliveryerdetail) | **GET** /admin/delivery/deliveryers/{deliveryerId} | 查看配送員詳情
+*AdminDeliveryApi* | [**revokeDeliveryer**](doc//AdminDeliveryApi.md#revokedeliveryer) | **DELETE** /admin/delivery/deliveryers/{deliveryerId} | 管理員撤銷配送員身份
 *AdminDeliveryApi* | [**searchDeliveryOrders**](doc//AdminDeliveryApi.md#searchdeliveryorders) | **POST** /admin/delivery/orders/search | 搜索配送訂單
 *AdminDeliveryApi* | [**searchDeliveryers**](doc//AdminDeliveryApi.md#searchdeliveryers) | **POST** /admin/delivery/deliveryers/search | 搜索配送員
+*AdminDeliveryApi* | [**updateDeliveryer**](doc//AdminDeliveryApi.md#updatedeliveryer) | **PUT** /admin/delivery/deliveryers/{deliveryerId} | 管理員編輯配送員資料
 *AdminDeliveryApi* | [**updateDeliveryerStatus**](doc//AdminDeliveryApi.md#updatedeliveryerstatus) | **POST** /admin/delivery/deliveryers/{deliveryerId}/status | 更新配送員狀態
 *AdminDemandPoolApi* | [**detail**](doc//AdminDemandPoolApi.md#detail) | **GET** /admin/demands/{demandId} | Admin demand detail
 *AdminDemandPoolApi* | [**linkProduct**](doc//AdminDemandPoolApi.md#linkproduct) | **POST** /admin/demands/{demandId}/link-product | Admin link demand to product
@@ -226,6 +229,7 @@ Class | Method | HTTP request | Description
 *AdminStakingApi* | [**getNextInterestEstimate**](doc//AdminStakingApi.md#getnextinterestestimate) | **GET** /admin/staking/next-interest-estimate | 預估下次收益發放
 *AdminStakingApi* | [**getStatistics1**](doc//AdminStakingApi.md#getstatistics1) | **GET** /admin/staking/statistics | 質押統計報告
 *AdminStakingApi* | [**updateStakingConfig**](doc//AdminStakingApi.md#updatestakingconfig) | **PUT** /admin/staking/config | 更新質押配置
+*AdminStoresApi* | [**createStoreByAdmin**](doc//AdminStoresApi.md#createstorebyadmin) | **POST** /admin/stores | 管理員新增商店
 *AdminStoresApi* | [**deleteStore**](doc//AdminStoresApi.md#deletestore) | **DELETE** /admin/stores/{storeId} | 刪除商店
 *AdminStoresApi* | [**disableStore**](doc//AdminStoresApi.md#disablestore) | **POST** /admin/stores/{storeId}/disable | 停用商店
 *AdminStoresApi* | [**enableStore**](doc//AdminStoresApi.md#enablestore) | **POST** /admin/stores/{storeId}/enable | 啟用商店
@@ -334,7 +338,7 @@ Class | Method | HTTP request | Description
 *DeliveryApi* | [**getDeliveryerStats**](doc//DeliveryApi.md#getdeliveryerstats) | **GET** /delivery/stats | 獲取配送員統計數據
 *DeliveryApi* | [**registerDeliveryer**](doc//DeliveryApi.md#registerdeliveryer) | **POST** /delivery/register | 註冊配送員
 *DeliveryApi* | [**updateDeliveryOrder**](doc//DeliveryApi.md#updatedeliveryorder) | **POST** /delivery/update/order | 更新配送進度
-*DeliveryApi* | [**updateDeliveryer**](doc//DeliveryApi.md#updatedeliveryer) | **POST** /delivery/update | 更新配送員資料
+*DeliveryApi* | [**updateDeliveryer1**](doc//DeliveryApi.md#updatedeliveryer1) | **POST** /delivery/update | 更新配送員資料
 *DeliveryApi* | [**updateWorkingStatus**](doc//DeliveryApi.md#updateworkingstatus) | **POST** /delivery/update/status | 更新工作狀態
 *DemandPoolApi* | [**addMissingRequirement**](doc//DemandPoolApi.md#addmissingrequirement) | **POST** /demands/{demandId}/missing-requirements | Add a missing requirement when visible offers do not satisfy the buyer need
 *DemandPoolApi* | [**cancelInterest**](doc//DemandPoolApi.md#cancelinterest) | **POST** /demands/{demandId}/cancel-interest | Cancel my interest in a demand
@@ -594,7 +598,9 @@ Class | Method | HTTP request | Description
  - [ActivityStatDTO](doc//ActivityStatDTO.md)
  - [AddressState](doc//AddressState.md)
  - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
+ - [AdminDeliveryerCreateParam](doc//AdminDeliveryerCreateParam.md)
  - [AdminResetPasswordParam](doc//AdminResetPasswordParam.md)
+ - [AdminStoreCreateParam](doc//AdminStoreCreateParam.md)
  - [AdminStoreSearchParam](doc//AdminStoreSearchParam.md)
  - [AdminStoreUpdateParam](doc//AdminStoreUpdateParam.md)
  - [AiProductClassificationSuggestion](doc//AiProductClassificationSuggestion.md)

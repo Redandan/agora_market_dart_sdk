@@ -396,7 +396,7 @@ class DeliveryApi {
   /// Parameters:
   ///
   /// * [DeliveryerUpdateParam] deliveryerUpdateParam (required):
-  Future<Response> updateDeliveryerWithHttpInfo(DeliveryerUpdateParam deliveryerUpdateParam,) async {
+  Future<Response> updateDeliveryer1WithHttpInfo(DeliveryerUpdateParam deliveryerUpdateParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/delivery/update';
 
@@ -428,8 +428,8 @@ class DeliveryApi {
   /// Parameters:
   ///
   /// * [DeliveryerUpdateParam] deliveryerUpdateParam (required):
-  Future<Deliveryer?> updateDeliveryer(DeliveryerUpdateParam deliveryerUpdateParam,) async {
-    final response = await updateDeliveryerWithHttpInfo(deliveryerUpdateParam,);
+  Future<Deliveryer?> updateDeliveryer1(DeliveryerUpdateParam deliveryerUpdateParam,) async {
+    final response = await updateDeliveryer1WithHttpInfo(deliveryerUpdateParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

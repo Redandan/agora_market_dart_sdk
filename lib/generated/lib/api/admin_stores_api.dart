@@ -16,6 +16,62 @@ class AdminStoresApi {
 
   final ApiClient apiClient;
 
+  /// 管理員新增商店
+  ///
+  /// 管理員可指定 ownerUserId 建立商店，不混用當前登入賣家的自建語義
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [AdminStoreCreateParam] adminStoreCreateParam (required):
+  Future<Response> createStoreByAdminWithHttpInfo(AdminStoreCreateParam adminStoreCreateParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/stores';
+
+    // ignore: prefer_final_locals
+    Object? postBody = adminStoreCreateParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 管理員新增商店
+  ///
+  /// 管理員可指定 ownerUserId 建立商店，不混用當前登入賣家的自建語義
+  ///
+  /// Parameters:
+  ///
+  /// * [AdminStoreCreateParam] adminStoreCreateParam (required):
+  Future<StoreResponseDTO?> createStoreByAdmin(AdminStoreCreateParam adminStoreCreateParam,) async {
+    final response = await createStoreByAdminWithHttpInfo(adminStoreCreateParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StoreResponseDTO',) as StoreResponseDTO;
+    
+    }
+    return null;
+  }
+
   /// 刪除商店
   ///
   /// 管理員可以刪除指定的商店（謹慎使用）

@@ -83,6 +83,62 @@ class AdminDeliveryApi {
     return null;
   }
 
+  /// 管理員新增配送員
+  ///
+  /// 管理員可指定既有用戶成為配送員；targetUserId 是明確查找策略。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [AdminDeliveryerCreateParam] adminDeliveryerCreateParam (required):
+  Future<Response> createDeliveryerWithHttpInfo(AdminDeliveryerCreateParam adminDeliveryerCreateParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/delivery/deliveryers';
+
+    // ignore: prefer_final_locals
+    Object? postBody = adminDeliveryerCreateParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 管理員新增配送員
+  ///
+  /// 管理員可指定既有用戶成為配送員；targetUserId 是明確查找策略。
+  ///
+  /// Parameters:
+  ///
+  /// * [AdminDeliveryerCreateParam] adminDeliveryerCreateParam (required):
+  Future<Deliveryer?> createDeliveryer(AdminDeliveryerCreateParam adminDeliveryerCreateParam,) async {
+    final response = await createDeliveryerWithHttpInfo(adminDeliveryerCreateParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Deliveryer',) as Deliveryer;
+    
+    }
+    return null;
+  }
+
   /// 查看配送訂單詳情
   ///
   /// 管理員可查看配送訂單的詳細信息
@@ -272,6 +328,65 @@ class AdminDeliveryApi {
     return null;
   }
 
+  /// 管理員撤銷配送員身份
+  ///
+  /// 保留歷史資料並停用配送員，不硬刪 deliveryers row
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] deliveryerId (required):
+  ///   配送員ID
+  Future<Response> revokeDeliveryerWithHttpInfo(int deliveryerId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/delivery/deliveryers/{deliveryerId}'
+      .replaceAll('{deliveryerId}', deliveryerId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 管理員撤銷配送員身份
+  ///
+  /// 保留歷史資料並停用配送員，不硬刪 deliveryers row
+  ///
+  /// Parameters:
+  ///
+  /// * [int] deliveryerId (required):
+  ///   配送員ID
+  Future<Deliveryer?> revokeDeliveryer(int deliveryerId,) async {
+    final response = await revokeDeliveryerWithHttpInfo(deliveryerId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Deliveryer',) as Deliveryer;
+    
+    }
+    return null;
+  }
+
   /// 搜索配送訂單
   ///
   /// 管理員可根據多個條件搜索配送訂單
@@ -401,6 +516,69 @@ class AdminDeliveryApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDeliveryer',) as PageDeliveryer;
+    
+    }
+    return null;
+  }
+
+  /// 管理員編輯配送員資料
+  ///
+  /// 管理員可修改配送員顯示名稱、配送區域與啟用狀態
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] deliveryerId (required):
+  ///   配送員ID
+  ///
+  /// * [DeliveryerUpdateParam] deliveryerUpdateParam (required):
+  Future<Response> updateDeliveryerWithHttpInfo(int deliveryerId, DeliveryerUpdateParam deliveryerUpdateParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/delivery/deliveryers/{deliveryerId}'
+      .replaceAll('{deliveryerId}', deliveryerId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody = deliveryerUpdateParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 管理員編輯配送員資料
+  ///
+  /// 管理員可修改配送員顯示名稱、配送區域與啟用狀態
+  ///
+  /// Parameters:
+  ///
+  /// * [int] deliveryerId (required):
+  ///   配送員ID
+  ///
+  /// * [DeliveryerUpdateParam] deliveryerUpdateParam (required):
+  Future<Deliveryer?> updateDeliveryer(int deliveryerId, DeliveryerUpdateParam deliveryerUpdateParam,) async {
+    final response = await updateDeliveryerWithHttpInfo(deliveryerId, deliveryerUpdateParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Deliveryer',) as Deliveryer;
     
     }
     return null;

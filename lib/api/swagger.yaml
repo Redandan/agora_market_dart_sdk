@@ -1185,6 +1185,114 @@
         }
       }
     },
+    "/admin/delivery/deliveryers/{deliveryerId}": {
+      "get": {
+        "tags": [
+          "admin-delivery"
+        ],
+        "summary": "查看配送員詳情",
+        "description": "管理員可查看配送員的詳細信息",
+        "operationId": "getDeliveryerDetail",
+        "parameters": [
+          {
+            "name": "deliveryerId",
+            "in": "path",
+            "description": "配送員ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Deliveryer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "admin-delivery"
+        ],
+        "summary": "管理員編輯配送員資料",
+        "description": "管理員可修改配送員顯示名稱、配送區域與啟用狀態",
+        "operationId": "updateDeliveryer",
+        "parameters": [
+          {
+            "name": "deliveryerId",
+            "in": "path",
+            "description": "配送員ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeliveryerUpdateParam"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Deliveryer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "admin-delivery"
+        ],
+        "summary": "管理員撤銷配送員身份",
+        "description": "保留歷史資料並停用配送員，不硬刪 deliveryers row",
+        "operationId": "revokeDeliveryer",
+        "parameters": [
+          {
+            "name": "deliveryerId",
+            "in": "path",
+            "description": "配送員ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Deliveryer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/auto-reply/configs/{id}": {
       "put": {
         "tags": [
@@ -6526,7 +6634,7 @@
         ],
         "summary": "更新配送員資料",
         "description": "用戶更新自己的配送員資料",
-        "operationId": "updateDeliveryer",
+        "operationId": "updateDeliveryer_1",
         "requestBody": {
           "content": {
             "application/json": {
@@ -8795,6 +8903,38 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/GroupAiSimulationResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/stores": {
+      "post": {
+        "tags": [
+          "admin-stores"
+        ],
+        "summary": "管理員新增商店",
+        "description": "管理員可指定 ownerUserId 建立商店，不混用當前登入賣家的自建語義",
+        "operationId": "createStoreByAdmin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminStoreCreateParam"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/StoreResponseDTO"
                 }
               }
             }
@@ -11407,6 +11547,38 @@
                   "items": {
                     "$ref": "#/components/schemas/DeliveryDetail"
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/delivery/deliveryers": {
+      "post": {
+        "tags": [
+          "admin-delivery"
+        ],
+        "summary": "管理員新增配送員",
+        "description": "管理員可指定既有用戶成為配送員；targetUserId 是明確查找策略。",
+        "operationId": "createDeliveryer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminDeliveryerCreateParam"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Deliveryer"
                 }
               }
             }
@@ -17961,40 +18133,6 @@
         }
       }
     },
-    "/admin/delivery/deliveryers/{deliveryerId}": {
-      "get": {
-        "tags": [
-          "admin-delivery"
-        ],
-        "summary": "查看配送員詳情",
-        "description": "管理員可查看配送員的詳細信息",
-        "operationId": "getDeliveryerDetail",
-        "parameters": [
-          {
-            "name": "deliveryerId",
-            "in": "path",
-            "description": "配送員ID",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Deliveryer"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/admin/auto-reply/stats": {
       "get": {
         "tags": [
@@ -20992,6 +21130,108 @@
           }
         }
       },
+      "DeliveryerUpdateParam": {
+        "type": "object",
+        "description": "配送員更新參數",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "description": "顯示名稱",
+            "example": "delivery"
+          },
+          "deliveryAreas": {
+            "type": "array",
+            "description": "配送區域列表",
+            "example": [
+              "台北市",
+              "新北市"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "是否啟用"
+          }
+        }
+      },
+      "Deliveryer": {
+        "type": "object",
+        "description": "配送員",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "用戶ID",
+            "example": 1
+          },
+          "displayName": {
+            "type": "string",
+            "description": "顯示名稱",
+            "example": "張三",
+            "maxLength": 255
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "是否啟用",
+            "example": true
+          },
+          "deliveryAreasJson": {
+            "type": "string",
+            "description": "配送區域列表，JSON格式",
+            "example": [
+              "台北市",
+              "新北市"
+            ]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "創建時間",
+            "example": "2024-01-01T10:00:00"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "更新時間",
+            "example": "2024-01-01T10:00:00"
+          },
+          "deliveringOrderId": {
+            "type": "string",
+            "description": "正在配送訂單ID",
+            "example": "ORD202401010001",
+            "maxLength": 255
+          },
+          "latitude": {
+            "type": "number",
+            "format": "double",
+            "description": "緯度",
+            "example": 25.0329
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double",
+            "description": "經度",
+            "example": 121.5654
+          },
+          "deliveryAreas": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "createdAt",
+          "displayName",
+          "enabled",
+          "updatedAt",
+          "userId"
+        ]
+      },
       "AutoReplyConfig": {
         "type": "object",
         "description": "自動回復配置",
@@ -22149,10 +22389,10 @@
           "homeDelivery": {
             "type": "boolean"
           },
-          "fullAddress": {
+          "formattedAddress": {
             "type": "string"
           },
-          "formattedAddress": {
+          "fullAddress": {
             "type": "string"
           },
           "logisticsDescription": {
@@ -23573,14 +23813,14 @@
           "minimumShippingFee": {
             "type": "number"
           },
+          "defaultShippingFee": {
+            "type": "number"
+          },
           "stockLow": {
             "type": "boolean"
           },
           "stockBelowMinimum": {
             "type": "boolean"
-          },
-          "defaultShippingFee": {
-            "type": "number"
           },
           "pickupServiceTypes": {
             "type": "array",
@@ -32479,108 +32719,6 @@
           }
         }
       },
-      "DeliveryerUpdateParam": {
-        "type": "object",
-        "description": "配送員更新參數",
-        "properties": {
-          "displayName": {
-            "type": "string",
-            "description": "顯示名稱",
-            "example": "delivery"
-          },
-          "deliveryAreas": {
-            "type": "array",
-            "description": "配送區域列表",
-            "example": [
-              "台北市",
-              "新北市"
-            ],
-            "items": {
-              "type": "string"
-            },
-            "uniqueItems": true
-          },
-          "enabled": {
-            "type": "boolean",
-            "description": "是否啟用"
-          }
-        }
-      },
-      "Deliveryer": {
-        "type": "object",
-        "description": "配送員",
-        "properties": {
-          "userId": {
-            "type": "integer",
-            "format": "int64",
-            "description": "用戶ID",
-            "example": 1
-          },
-          "displayName": {
-            "type": "string",
-            "description": "顯示名稱",
-            "example": "張三",
-            "maxLength": 255
-          },
-          "enabled": {
-            "type": "boolean",
-            "description": "是否啟用",
-            "example": true
-          },
-          "deliveryAreasJson": {
-            "type": "string",
-            "description": "配送區域列表，JSON格式",
-            "example": [
-              "台北市",
-              "新北市"
-            ]
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "創建時間",
-            "example": "2024-01-01T10:00:00"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "更新時間",
-            "example": "2024-01-01T10:00:00"
-          },
-          "deliveringOrderId": {
-            "type": "string",
-            "description": "正在配送訂單ID",
-            "example": "ORD202401010001",
-            "maxLength": 255
-          },
-          "latitude": {
-            "type": "number",
-            "format": "double",
-            "description": "緯度",
-            "example": 25.0329
-          },
-          "longitude": {
-            "type": "number",
-            "format": "double",
-            "description": "經度",
-            "example": 121.5654
-          },
-          "deliveryAreas": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "uniqueItems": true
-          }
-        },
-        "required": [
-          "createdAt",
-          "displayName",
-          "enabled",
-          "updatedAt",
-          "userId"
-        ]
-      },
       "UpdateDeliveryOrderParam": {
         "type": "object",
         "description": "訂單更新參數",
@@ -35589,6 +35727,29 @@
           "promptPreview"
         ]
       },
+      "AdminStoreCreateParam": {
+        "type": "object",
+        "description": "管理員新增商店參數",
+        "properties": {
+          "ownerUserId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "商店歸屬的賣家/用戶ID"
+          },
+          "store": {
+            "$ref": "#/components/schemas/StoreCreateParam",
+            "description": "商店建立資料"
+          },
+          "isActive": {
+            "type": "boolean",
+            "description": "建立後是否啟用；未填則使用一般商店建立預設值"
+          }
+        },
+        "required": [
+          "ownerUserId",
+          "store"
+        ]
+      },
       "AdminStoreUpdateParam": {
         "type": "object",
         "description": "管理員更新商店參數",
@@ -37988,6 +38149,41 @@
             ]
           }
         }
+      },
+      "AdminDeliveryerCreateParam": {
+        "type": "object",
+        "description": "管理員新增配送員參數",
+        "properties": {
+          "targetUserId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "要授予配送員身份的目標用戶ID"
+          },
+          "displayName": {
+            "type": "string",
+            "description": "配送員顯示名稱",
+            "minLength": 1
+          },
+          "deliveryAreas": {
+            "type": "array",
+            "description": "配送區域列表",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "enabled": {
+            "type": "boolean",
+            "default": "true",
+            "description": "初始是否啟用"
+          }
+        },
+        "required": [
+          "deliveryAreas",
+          "displayName",
+          "targetUserId"
+        ]
       },
       "DeliveryerSearchParam": {
         "type": "object",

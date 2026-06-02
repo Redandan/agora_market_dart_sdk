@@ -196,8 +196,12 @@ class ApiClient {
           return AddressState.fromJson(value);
         case 'AdminCreateUserParam':
           return AdminCreateUserParam.fromJson(value);
+        case 'AdminDeliveryerCreateParam':
+          return AdminDeliveryerCreateParam.fromJson(value);
         case 'AdminResetPasswordParam':
           return AdminResetPasswordParam.fromJson(value);
+        case 'AdminStoreCreateParam':
+          return AdminStoreCreateParam.fromJson(value);
         case 'AdminStoreSearchParam':
           return AdminStoreSearchParam.fromJson(value);
         case 'AdminStoreUpdateParam':
