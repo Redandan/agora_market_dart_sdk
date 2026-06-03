@@ -387,6 +387,11 @@ Class | Method | HTTP request | Description
 *MarketDataAdminApi* | [**unsubscribe1**](doc//MarketDataAdminApi.md#unsubscribe1) | **DELETE** /admin/market/subscribe | 停止 WS 訂閱（對所有 provider 同步移除）
 *McpStreamableHttpControllerApi* | [**handleMcp**](doc//McpStreamableHttpControllerApi.md#handlemcp) | **POST** /mcp | 
 *McpStreamableHttpControllerApi* | [**handleUserMcp**](doc//McpStreamableHttpControllerApi.md#handleusermcp) | **POST** /mcp/user | 
+*McpUserConnectorApi* | [**activitySummary**](doc//McpUserConnectorApi.md#activitysummary) | **GET** /mcp/user/connector/activity/summary | Get current user's best-effort ChatGPT MCP activity summary
+*McpUserConnectorApi* | [**config**](doc//McpUserConnectorApi.md#config) | **GET** /mcp/user/connector/config | Get public ChatGPT user MCP connector setup config
+*McpUserConnectorApi* | [**grants**](doc//McpUserConnectorApi.md#grants) | **GET** /mcp/user/connector/grants | List current user's ChatGPT MCP OAuth grants
+*McpUserConnectorApi* | [**readiness**](doc//McpUserConnectorApi.md#readiness) | **GET** /mcp/user/connector/readiness | Get current user's ChatGPT MCP connector readiness summary
+*McpUserConnectorApi* | [**revokeGrant**](doc//McpUserConnectorApi.md#revokegrant) | **DELETE** /mcp/user/connector/grants/{grantId} | Revoke one current-user ChatGPT MCP OAuth grant
 *MemberDisputesApi* | [**createDispute**](doc//MemberDisputesApi.md#createdispute) | **POST** /disputes | 創建糾紛
 *MemberDisputesApi* | [**getDisputeDetail**](doc//MemberDisputesApi.md#getdisputedetail) | **POST** /disputes/detail | 查看糾紛詳情
 *MemberDisputesApi* | [**replyDispute**](doc//MemberDisputesApi.md#replydispute) | **POST** /disputes/{disputeId}/reply | 回覆糾紛
@@ -787,6 +792,17 @@ Class | Method | HTTP request | Description
  - [MarketOptionResponse](doc//MarketOptionResponse.md)
  - [MarketResponse](doc//MarketResponse.md)
  - [MarketSearchRequest](doc//MarketSearchRequest.md)
+ - [McpConnectorAccountStatus](doc//McpConnectorAccountStatus.md)
+ - [McpConnectorAction](doc//McpConnectorAction.md)
+ - [McpConnectorActivitySummaryResponse](doc//McpConnectorActivitySummaryResponse.md)
+ - [McpConnectorChatGptStatus](doc//McpConnectorChatGptStatus.md)
+ - [McpConnectorConfigResponse](doc//McpConnectorConfigResponse.md)
+ - [McpConnectorGrantResponse](doc//McpConnectorGrantResponse.md)
+ - [McpConnectorGrantsResponse](doc//McpConnectorGrantsResponse.md)
+ - [McpConnectorInfo](doc//McpConnectorInfo.md)
+ - [McpConnectorOAuthStatus](doc//McpConnectorOAuthStatus.md)
+ - [McpConnectorReadinessResponse](doc//McpConnectorReadinessResponse.md)
+ - [McpConnectorReason](doc//McpConnectorReason.md)
  - [MemberSearchParam](doc//MemberSearchParam.md)
  - [MemberUpdateParam](doc//MemberUpdateParam.md)
  - [MessageSendResponseDTO](doc//MessageSendResponseDTO.md)

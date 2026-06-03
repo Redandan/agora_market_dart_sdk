@@ -574,6 +574,28 @@ class ApiClient {
           return MarketResponse.fromJson(value);
         case 'MarketSearchRequest':
           return MarketSearchRequest.fromJson(value);
+        case 'McpConnectorAccountStatus':
+          return McpConnectorAccountStatus.fromJson(value);
+        case 'McpConnectorAction':
+          return McpConnectorAction.fromJson(value);
+        case 'McpConnectorActivitySummaryResponse':
+          return McpConnectorActivitySummaryResponse.fromJson(value);
+        case 'McpConnectorChatGptStatus':
+          return McpConnectorChatGptStatus.fromJson(value);
+        case 'McpConnectorConfigResponse':
+          return McpConnectorConfigResponse.fromJson(value);
+        case 'McpConnectorGrantResponse':
+          return McpConnectorGrantResponse.fromJson(value);
+        case 'McpConnectorGrantsResponse':
+          return McpConnectorGrantsResponse.fromJson(value);
+        case 'McpConnectorInfo':
+          return McpConnectorInfo.fromJson(value);
+        case 'McpConnectorOAuthStatus':
+          return McpConnectorOAuthStatus.fromJson(value);
+        case 'McpConnectorReadinessResponse':
+          return McpConnectorReadinessResponse.fromJson(value);
+        case 'McpConnectorReason':
+          return McpConnectorReason.fromJson(value);
         case 'MemberSearchParam':
           return MemberSearchParam.fromJson(value);
         case 'MemberUpdateParam':

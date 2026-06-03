@@ -217,6 +217,10 @@
       "description": "Binance K 線歷史匯入與 WS 即時訂閱管理（需 JWT 認證）"
     },
     {
+      "name": "mcp-user-connector",
+      "description": "ChatGPT user MCP connector setup and status APIs"
+    },
+    {
       "name": "member-disputes",
       "description": "會員糾紛管理 API"
     },
@@ -14910,6 +14914,105 @@
         }
       }
     },
+    "/mcp/user/connector/readiness": {
+      "get": {
+        "tags": [
+          "mcp-user-connector"
+        ],
+        "summary": "Get current user's ChatGPT MCP connector readiness summary",
+        "operationId": "readiness",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/McpConnectorReadinessResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/mcp/user/connector/grants": {
+      "get": {
+        "tags": [
+          "mcp-user-connector"
+        ],
+        "summary": "List current user's ChatGPT MCP OAuth grants",
+        "operationId": "grants",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/McpConnectorGrantsResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/mcp/user/connector/config": {
+      "get": {
+        "tags": [
+          "mcp-user-connector"
+        ],
+        "summary": "Get public ChatGPT user MCP connector setup config",
+        "operationId": "config",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/McpConnectorConfigResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/mcp/user/connector/activity/summary": {
+      "get": {
+        "tags": [
+          "mcp-user-connector"
+        ],
+        "summary": "Get current user's best-effort ChatGPT MCP activity summary",
+        "operationId": "activitySummary",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/McpConnectorActivitySummaryResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/markets/{id}": {
       "get": {
         "tags": [
@@ -18569,6 +18672,35 @@
             }
           }
         }
+      }
+    },
+    "/mcp/user/connector/grants/{grantId}": {
+      "delete": {
+        "tags": [
+          "mcp-user-connector"
+        ],
+        "summary": "Revoke one current-user ChatGPT MCP OAuth grant",
+        "operationId": "revokeGrant",
+        "parameters": [
+          {
+            "name": "grantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/flutter/deployment/versions/{versionId}": {
@@ -40113,6 +40245,285 @@
             "type": "integer",
             "format": "int64",
             "description": "總訂單數量"
+          }
+        }
+      },
+      "McpConnectorAccountStatus": {
+        "type": "object",
+        "description": "Current user's account readiness for ChatGPT MCP connector",
+        "properties": {
+          "loggedIn": {
+            "type": "boolean"
+          },
+          "passkeySupported": {
+            "type": "boolean"
+          },
+          "passkeyCredentialCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hasTelegramBinding": {
+            "type": "boolean"
+          },
+          "hasRecoveryMethod": {
+            "type": "boolean"
+          },
+          "recoveryAdvisory": {
+            "$ref": "#/components/schemas/AccountRecoveryAdvisory"
+          }
+        }
+      },
+      "McpConnectorAction": {
+        "type": "object",
+        "description": "Frontend action for MCP connector setup UX",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "route": {
+            "type": "string"
+          }
+        }
+      },
+      "McpConnectorChatGptStatus": {
+        "type": "object",
+        "description": "Best-effort ChatGPT connector status inferred from Agora OAuth and MCP activity",
+        "properties": {
+          "connectionStatus": {
+            "type": "string"
+          },
+          "lastSeenAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastOAuthGrantAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastToolCallAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "McpConnectorInfo": {
+        "type": "object",
+        "description": "MCP connector identity and deployment readiness",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "documentationUrl": {
+            "type": "string"
+          },
+          "oauthMetadataReady": {
+            "type": "boolean"
+          },
+          "mcpInitializeReady": {
+            "type": "boolean"
+          }
+        }
+      },
+      "McpConnectorOAuthStatus": {
+        "type": "object",
+        "description": "OAuth readiness for ChatGPT user MCP connector",
+        "properties": {
+          "authorizationReady": {
+            "type": "boolean"
+          },
+          "passkeyAuthorizeReady": {
+            "type": "boolean"
+          },
+          "scopeEnforcementReady": {
+            "type": "boolean"
+          },
+          "refreshTokenReady": {
+            "type": "boolean"
+          },
+          "supportedScopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "McpConnectorReadinessResponse": {
+        "type": "object",
+        "description": "ChatGPT user MCP connector readiness summary",
+        "properties": {
+          "connector": {
+            "$ref": "#/components/schemas/McpConnectorInfo"
+          },
+          "account": {
+            "$ref": "#/components/schemas/McpConnectorAccountStatus"
+          },
+          "oauth": {
+            "$ref": "#/components/schemas/McpConnectorOAuthStatus"
+          },
+          "chatgpt": {
+            "$ref": "#/components/schemas/McpConnectorChatGptStatus"
+          },
+          "blockingReasons": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/McpConnectorReason"
+            }
+          },
+          "recommendedActions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/McpConnectorReason"
+            }
+          }
+        }
+      },
+      "McpConnectorReason": {
+        "type": "object",
+        "description": "Machine-readable MCP connector readiness reason",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "action": {
+            "$ref": "#/components/schemas/McpConnectorAction"
+          }
+        }
+      },
+      "McpConnectorGrantResponse": {
+        "type": "object",
+        "description": "User MCP OAuth connector grant",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "clientName": {
+            "type": "string"
+          },
+          "clientId": {
+            "type": "string"
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUsedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "revokedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "revocable": {
+            "type": "boolean"
+          }
+        }
+      },
+      "McpConnectorGrantsResponse": {
+        "type": "object",
+        "description": "Current user's MCP connector OAuth grants",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/McpConnectorGrantResponse"
+            }
+          }
+        }
+      },
+      "McpConnectorConfigResponse": {
+        "type": "object",
+        "description": "Machine-readable ChatGPT user MCP connector setup config",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "documentationUrl": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "recommendedScopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "knownLimitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "McpConnectorActivitySummaryResponse": {
+        "type": "object",
+        "description": "Current user's best-effort MCP connector activity summary",
+        "properties": {
+          "connectionStatus": {
+            "type": "string"
+          },
+          "lastSeenAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastOAuthGrantAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastTokenRefreshAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastToolCallAt": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
