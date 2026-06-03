@@ -18,6 +18,7 @@ class KnowledgeResponse {
     this.content,
     this.source_,
     this.createdAt,
+    this.distance,
   });
 
   ///
@@ -60,13 +61,22 @@ class KnowledgeResponse {
   ///
   String? createdAt;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? distance;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is KnowledgeResponse &&
     other.id == id &&
     other.title == title &&
     other.content == content &&
     other.source_ == source_ &&
-    other.createdAt == createdAt;
+    other.createdAt == createdAt &&
+    other.distance == distance;
 
   @override
   int get hashCode =>
@@ -75,10 +85,11 @@ class KnowledgeResponse {
     (title == null ? 0 : title!.hashCode) +
     (content == null ? 0 : content!.hashCode) +
     (source_ == null ? 0 : source_!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode);
+    (createdAt == null ? 0 : createdAt!.hashCode) +
+    (distance == null ? 0 : distance!.hashCode);
 
   @override
-  String toString() => 'KnowledgeResponse[id=$id, title=$title, content=$content, source_=$source_, createdAt=$createdAt]';
+  String toString() => 'KnowledgeResponse[id=$id, title=$title, content=$content, source_=$source_, createdAt=$createdAt, distance=$distance]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -107,6 +118,11 @@ class KnowledgeResponse {
     } else {
       json[r'createdAt'] = null;
     }
+    if (this.distance != null) {
+      json[r'distance'] = this.distance;
+    } else {
+      json[r'distance'] = null;
+    }
     return json;
   }
 
@@ -134,6 +150,7 @@ class KnowledgeResponse {
         content: mapValueOfType<String>(json, r'content'),
         source_: mapValueOfType<String>(json, r'source'),
         createdAt: mapValueOfType<String>(json, r'createdAt'),
+        distance: mapValueOfType<double>(json, r'distance'),
       );
     }
     return null;

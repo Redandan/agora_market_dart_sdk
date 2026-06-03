@@ -21,6 +21,11 @@ class MessageSendResponseDTO {
     this.sentAt,
     this.errorMessage,
     this.webPushDetails,
+    this.autoReplySource,
+    this.humanSupportRequired,
+    this.pendingQuestionRecorded,
+    this.knowledgeId,
+    this.knowledgeDistance,
   });
 
   /// 消息ID
@@ -89,6 +94,45 @@ class MessageSendResponseDTO {
   ///
   WebPushDetails? webPushDetails;
 
+  /// 智能客服回覆來源
+  MessageSendResponseDTOAutoReplySourceEnum? autoReplySource;
+
+  /// 智能客服是否建議人工介入
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? humanSupportRequired;
+
+  /// 智能客服是否已將問題記錄為待確認
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? pendingQuestionRecorded;
+
+  /// 命中的知識庫文件 ID
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? knowledgeId;
+
+  /// 命中的知識庫向量距離，越低越相近
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? knowledgeDistance;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is MessageSendResponseDTO &&
     other.messageId == messageId &&
@@ -98,7 +142,12 @@ class MessageSendResponseDTO {
     other.receiverOnline == receiverOnline &&
     other.sentAt == sentAt &&
     other.errorMessage == errorMessage &&
-    other.webPushDetails == webPushDetails;
+    other.webPushDetails == webPushDetails &&
+    other.autoReplySource == autoReplySource &&
+    other.humanSupportRequired == humanSupportRequired &&
+    other.pendingQuestionRecorded == pendingQuestionRecorded &&
+    other.knowledgeId == knowledgeId &&
+    other.knowledgeDistance == knowledgeDistance;
 
   @override
   int get hashCode =>
@@ -110,10 +159,15 @@ class MessageSendResponseDTO {
     (receiverOnline == null ? 0 : receiverOnline!.hashCode) +
     (sentAt == null ? 0 : sentAt!.hashCode) +
     (errorMessage == null ? 0 : errorMessage!.hashCode) +
-    (webPushDetails == null ? 0 : webPushDetails!.hashCode);
+    (webPushDetails == null ? 0 : webPushDetails!.hashCode) +
+    (autoReplySource == null ? 0 : autoReplySource!.hashCode) +
+    (humanSupportRequired == null ? 0 : humanSupportRequired!.hashCode) +
+    (pendingQuestionRecorded == null ? 0 : pendingQuestionRecorded!.hashCode) +
+    (knowledgeId == null ? 0 : knowledgeId!.hashCode) +
+    (knowledgeDistance == null ? 0 : knowledgeDistance!.hashCode);
 
   @override
-  String toString() => 'MessageSendResponseDTO[messageId=$messageId, sessionId=$sessionId, status=$status, sseStatus=$sseStatus, receiverOnline=$receiverOnline, sentAt=$sentAt, errorMessage=$errorMessage, webPushDetails=$webPushDetails]';
+  String toString() => 'MessageSendResponseDTO[messageId=$messageId, sessionId=$sessionId, status=$status, sseStatus=$sseStatus, receiverOnline=$receiverOnline, sentAt=$sentAt, errorMessage=$errorMessage, webPushDetails=$webPushDetails, autoReplySource=$autoReplySource, humanSupportRequired=$humanSupportRequired, pendingQuestionRecorded=$pendingQuestionRecorded, knowledgeId=$knowledgeId, knowledgeDistance=$knowledgeDistance]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -157,6 +211,31 @@ class MessageSendResponseDTO {
     } else {
       json[r'webPushDetails'] = null;
     }
+    if (this.autoReplySource != null) {
+      json[r'autoReplySource'] = this.autoReplySource;
+    } else {
+      json[r'autoReplySource'] = null;
+    }
+    if (this.humanSupportRequired != null) {
+      json[r'humanSupportRequired'] = this.humanSupportRequired;
+    } else {
+      json[r'humanSupportRequired'] = null;
+    }
+    if (this.pendingQuestionRecorded != null) {
+      json[r'pendingQuestionRecorded'] = this.pendingQuestionRecorded;
+    } else {
+      json[r'pendingQuestionRecorded'] = null;
+    }
+    if (this.knowledgeId != null) {
+      json[r'knowledgeId'] = this.knowledgeId;
+    } else {
+      json[r'knowledgeId'] = null;
+    }
+    if (this.knowledgeDistance != null) {
+      json[r'knowledgeDistance'] = this.knowledgeDistance;
+    } else {
+      json[r'knowledgeDistance'] = null;
+    }
     return json;
   }
 
@@ -187,6 +266,11 @@ class MessageSendResponseDTO {
         sentAt: mapDateTime(json, r'sentAt', r''),
         errorMessage: mapValueOfType<String>(json, r'errorMessage'),
         webPushDetails: WebPushDetails.fromJson(json[r'webPushDetails']),
+        autoReplySource: MessageSendResponseDTOAutoReplySourceEnum.fromJson(json[r'autoReplySource']),
+        humanSupportRequired: mapValueOfType<bool>(json, r'humanSupportRequired'),
+        pendingQuestionRecorded: mapValueOfType<bool>(json, r'pendingQuestionRecorded'),
+        knowledgeId: mapValueOfType<String>(json, r'knowledgeId'),
+        knowledgeDistance: mapValueOfType<double>(json, r'knowledgeDistance'),
       );
     }
     return null;
@@ -323,6 +407,89 @@ class MessageSendResponseDTOSseStatusEnumTypeTransformer {
 
   /// Singleton [MessageSendResponseDTOSseStatusEnumTypeTransformer] instance.
   static MessageSendResponseDTOSseStatusEnumTypeTransformer? _instance;
+}
+
+
+/// 智能客服回覆來源
+class MessageSendResponseDTOAutoReplySourceEnum {
+  /// Instantiate a new enum with the provided [value].
+  const MessageSendResponseDTOAutoReplySourceEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const RULE = MessageSendResponseDTOAutoReplySourceEnum._(r'RULE');
+  static const KNOWLEDGE = MessageSendResponseDTOAutoReplySourceEnum._(r'KNOWLEDGE');
+  static const FALLBACK = MessageSendResponseDTOAutoReplySourceEnum._(r'FALLBACK');
+  static const ERROR = MessageSendResponseDTOAutoReplySourceEnum._(r'ERROR');
+  static const unknownDefaultOpenApi = MessageSendResponseDTOAutoReplySourceEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][MessageSendResponseDTOAutoReplySourceEnum].
+  static const values = <MessageSendResponseDTOAutoReplySourceEnum>[
+    RULE,
+    KNOWLEDGE,
+    FALLBACK,
+    ERROR,
+    unknownDefaultOpenApi,
+  ];
+
+  static MessageSendResponseDTOAutoReplySourceEnum? fromJson(dynamic value) => MessageSendResponseDTOAutoReplySourceEnumTypeTransformer().decode(value);
+
+  static List<MessageSendResponseDTOAutoReplySourceEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <MessageSendResponseDTOAutoReplySourceEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = MessageSendResponseDTOAutoReplySourceEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [MessageSendResponseDTOAutoReplySourceEnum] to String,
+/// and [decode] dynamic data back to [MessageSendResponseDTOAutoReplySourceEnum].
+class MessageSendResponseDTOAutoReplySourceEnumTypeTransformer {
+  factory MessageSendResponseDTOAutoReplySourceEnumTypeTransformer() => _instance ??= const MessageSendResponseDTOAutoReplySourceEnumTypeTransformer._();
+
+  const MessageSendResponseDTOAutoReplySourceEnumTypeTransformer._();
+
+  String encode(MessageSendResponseDTOAutoReplySourceEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a MessageSendResponseDTOAutoReplySourceEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  MessageSendResponseDTOAutoReplySourceEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'RULE': return MessageSendResponseDTOAutoReplySourceEnum.RULE;
+        case r'KNOWLEDGE': return MessageSendResponseDTOAutoReplySourceEnum.KNOWLEDGE;
+        case r'FALLBACK': return MessageSendResponseDTOAutoReplySourceEnum.FALLBACK;
+        case r'ERROR': return MessageSendResponseDTOAutoReplySourceEnum.ERROR;
+        case r'unknown_default_open_api': return MessageSendResponseDTOAutoReplySourceEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [MessageSendResponseDTOAutoReplySourceEnumTypeTransformer] instance.
+  static MessageSendResponseDTOAutoReplySourceEnumTypeTransformer? _instance;
 }
 
 

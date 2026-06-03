@@ -33575,6 +33575,33 @@
           "webPushDetails": {
             "$ref": "#/components/schemas/WebPushDetails",
             "description": "Web Push 推送詳情（僅在 webPushTest 時返回）"
+          },
+          "autoReplySource": {
+            "type": "string",
+            "description": "智能客服回覆來源",
+            "enum": [
+              "RULE",
+              "KNOWLEDGE",
+              "FALLBACK",
+              "ERROR"
+            ]
+          },
+          "humanSupportRequired": {
+            "type": "boolean",
+            "description": "智能客服是否建議人工介入"
+          },
+          "pendingQuestionRecorded": {
+            "type": "boolean",
+            "description": "智能客服是否已將問題記錄為待確認"
+          },
+          "knowledgeId": {
+            "type": "string",
+            "description": "命中的知識庫文件 ID"
+          },
+          "knowledgeDistance": {
+            "type": "number",
+            "format": "double",
+            "description": "命中的知識庫向量距離，越低越相近"
           }
         }
       },
@@ -33781,13 +33808,13 @@
           "inStock": {
             "type": "boolean"
           },
+          "purchaseRestrictionReason": {
+            "type": "string"
+          },
           "subtotal": {
             "type": "number"
           },
           "stockStatus": {
-            "type": "string"
-          },
-          "purchaseRestrictionReason": {
             "type": "string"
           },
           "totalPrice": {
@@ -42480,6 +42507,10 @@
           },
           "createdAt": {
             "type": "string"
+          },
+          "distance": {
+            "type": "number",
+            "format": "double"
           }
         }
       },
