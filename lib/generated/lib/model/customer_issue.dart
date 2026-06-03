@@ -316,6 +316,10 @@ class CustomerIssueIssueTypeEnum {
 
   String toJson() => value;
 
+  static const ORDER_ISSUE = CustomerIssueIssueTypeEnum._(r'ORDER_ISSUE');
+  static const PRODUCT_ISSUE = CustomerIssueIssueTypeEnum._(r'PRODUCT_ISSUE');
+  static const DELIVERY_ISSUE = CustomerIssueIssueTypeEnum._(r'DELIVERY_ISSUE');
+  static const SELLER_BUYER_COMMUNICATION = CustomerIssueIssueTypeEnum._(r'SELLER_BUYER_COMMUNICATION');
   static const RECHARGE_NOT_RECEIVED = CustomerIssueIssueTypeEnum._(r'RECHARGE_NOT_RECEIVED');
   static const WITHDRAW_NOT_RECEIVED = CustomerIssueIssueTypeEnum._(r'WITHDRAW_NOT_RECEIVED');
   static const OTHER = CustomerIssueIssueTypeEnum._(r'OTHER');
@@ -323,6 +327,10 @@ class CustomerIssueIssueTypeEnum {
 
   /// List of all possible values in this [enum][CustomerIssueIssueTypeEnum].
   static const values = <CustomerIssueIssueTypeEnum>[
+    ORDER_ISSUE,
+    PRODUCT_ISSUE,
+    DELIVERY_ISSUE,
+    SELLER_BUYER_COMMUNICATION,
     RECHARGE_NOT_RECEIVED,
     WITHDRAW_NOT_RECEIVED,
     OTHER,
@@ -365,6 +373,10 @@ class CustomerIssueIssueTypeEnumTypeTransformer {
   CustomerIssueIssueTypeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
+        case r'ORDER_ISSUE': return CustomerIssueIssueTypeEnum.ORDER_ISSUE;
+        case r'PRODUCT_ISSUE': return CustomerIssueIssueTypeEnum.PRODUCT_ISSUE;
+        case r'DELIVERY_ISSUE': return CustomerIssueIssueTypeEnum.DELIVERY_ISSUE;
+        case r'SELLER_BUYER_COMMUNICATION': return CustomerIssueIssueTypeEnum.SELLER_BUYER_COMMUNICATION;
         case r'RECHARGE_NOT_RECEIVED': return CustomerIssueIssueTypeEnum.RECHARGE_NOT_RECEIVED;
         case r'WITHDRAW_NOT_RECEIVED': return CustomerIssueIssueTypeEnum.WITHDRAW_NOT_RECEIVED;
         case r'OTHER': return CustomerIssueIssueTypeEnum.OTHER;

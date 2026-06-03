@@ -33032,6 +33032,10 @@
             "type": "string",
             "description": "問題類型",
             "enum": [
+              "ORDER_ISSUE",
+              "PRODUCT_ISSUE",
+              "DELIVERY_ISSUE",
+              "SELLER_BUYER_COMMUNICATION",
               "RECHARGE_NOT_RECEIVED",
               "WITHDRAW_NOT_RECEIVED",
               "OTHER"
@@ -33070,6 +33074,10 @@
             "type": "string",
             "description": "問題類型",
             "enum": [
+              "ORDER_ISSUE",
+              "PRODUCT_ISSUE",
+              "DELIVERY_ISSUE",
+              "SELLER_BUYER_COMMUNICATION",
               "RECHARGE_NOT_RECEIVED",
               "WITHDRAW_NOT_RECEIVED",
               "OTHER"
@@ -33194,6 +33202,10 @@
             "type": "string",
             "description": "問題類型",
             "enum": [
+              "ORDER_ISSUE",
+              "PRODUCT_ISSUE",
+              "DELIVERY_ISSUE",
+              "SELLER_BUYER_COMMUNICATION",
               "RECHARGE_NOT_RECEIVED",
               "WITHDRAW_NOT_RECEIVED",
               "OTHER"

@@ -352,6 +352,10 @@ class IssueSearchParamIssueTypeEnum {
 
   String toJson() => value;
 
+  static const ORDER_ISSUE = IssueSearchParamIssueTypeEnum._(r'ORDER_ISSUE');
+  static const PRODUCT_ISSUE = IssueSearchParamIssueTypeEnum._(r'PRODUCT_ISSUE');
+  static const DELIVERY_ISSUE = IssueSearchParamIssueTypeEnum._(r'DELIVERY_ISSUE');
+  static const SELLER_BUYER_COMMUNICATION = IssueSearchParamIssueTypeEnum._(r'SELLER_BUYER_COMMUNICATION');
   static const RECHARGE_NOT_RECEIVED = IssueSearchParamIssueTypeEnum._(r'RECHARGE_NOT_RECEIVED');
   static const WITHDRAW_NOT_RECEIVED = IssueSearchParamIssueTypeEnum._(r'WITHDRAW_NOT_RECEIVED');
   static const OTHER = IssueSearchParamIssueTypeEnum._(r'OTHER');
@@ -359,6 +363,10 @@ class IssueSearchParamIssueTypeEnum {
 
   /// List of all possible values in this [enum][IssueSearchParamIssueTypeEnum].
   static const values = <IssueSearchParamIssueTypeEnum>[
+    ORDER_ISSUE,
+    PRODUCT_ISSUE,
+    DELIVERY_ISSUE,
+    SELLER_BUYER_COMMUNICATION,
     RECHARGE_NOT_RECEIVED,
     WITHDRAW_NOT_RECEIVED,
     OTHER,
@@ -401,6 +409,10 @@ class IssueSearchParamIssueTypeEnumTypeTransformer {
   IssueSearchParamIssueTypeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
+        case r'ORDER_ISSUE': return IssueSearchParamIssueTypeEnum.ORDER_ISSUE;
+        case r'PRODUCT_ISSUE': return IssueSearchParamIssueTypeEnum.PRODUCT_ISSUE;
+        case r'DELIVERY_ISSUE': return IssueSearchParamIssueTypeEnum.DELIVERY_ISSUE;
+        case r'SELLER_BUYER_COMMUNICATION': return IssueSearchParamIssueTypeEnum.SELLER_BUYER_COMMUNICATION;
         case r'RECHARGE_NOT_RECEIVED': return IssueSearchParamIssueTypeEnum.RECHARGE_NOT_RECEIVED;
         case r'WITHDRAW_NOT_RECEIVED': return IssueSearchParamIssueTypeEnum.WITHDRAW_NOT_RECEIVED;
         case r'OTHER': return IssueSearchParamIssueTypeEnum.OTHER;
