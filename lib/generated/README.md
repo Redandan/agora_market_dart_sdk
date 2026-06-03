@@ -365,6 +365,7 @@ Class | Method | HTTP request | Description
 *KnowledgeApi* | [**listPendingKnowledgeQuestions**](doc//KnowledgeApi.md#listpendingknowledgequestions) | **GET** /admin/knowledge/pending | 列出待確認問題
 *KnowledgeApi* | [**resolvePendingKnowledgeQuestion**](doc//KnowledgeApi.md#resolvependingknowledgequestion) | **POST** /admin/knowledge/pending/{id}/resolve | 解答待確認問題
 *KnowledgeApi* | [**searchKnowledge**](doc//KnowledgeApi.md#searchknowledge) | **GET** /admin/knowledge/search | 語意搜尋測試
+*KnowledgeApi* | [**seedDefaultCustomerSupportKnowledge**](doc//KnowledgeApi.md#seeddefaultcustomersupportknowledge) | **POST** /admin/knowledge/defaults/customer-support/seed | 匯入預設客服 FAQ
 *LoginMethodsApi* | [**getLoginMethods**](doc//LoginMethodsApi.md#getloginmethods) | **GET** /auth/login-methods | 获取所有可用的登录方式
 *LogisticsApi* | [**calculateLogistics**](doc//LogisticsApi.md#calculatelogistics) | **POST** /logistics/calculate | 物流計算
 *LogisticsApi* | [**getLogisticsPostalAreaByCode**](doc//LogisticsApi.md#getlogisticspostalareabycode) | **GET** /logistics/postal-codes/{postalCode} | 郵遞區號查詢

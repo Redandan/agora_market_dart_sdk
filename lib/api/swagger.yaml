@@ -10956,6 +10956,28 @@
         }
       }
     },
+    "/admin/knowledge/defaults/customer-support/seed": {
+      "post": {
+        "tags": [
+          "knowledge"
+        ],
+        "summary": "匯入預設客服 FAQ",
+        "description": "以固定 ID upsert 商城客服常見問題，重跑不會重複新增",
+        "operationId": "seedDefaultCustomerSupportKnowledge",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseImportResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/knowledge/batch": {
       "post": {
         "tags": [
@@ -22518,23 +22540,23 @@
             "description": "最後更新時間",
             "example": "2024-01-01T10:00:00"
           },
+          "fullAddress": {
+            "type": "string"
+          },
           "homeDelivery": {
             "type": "boolean"
           },
           "formattedAddress": {
             "type": "string"
           },
-          "fullAddress": {
-            "type": "string"
-          },
           "logisticsDescription": {
-            "type": "string"
-          },
-          "recipientInfo": {
             "type": "string"
           },
           "convenienceStorePickup": {
             "type": "boolean"
+          },
+          "recipientInfo": {
+            "type": "string"
           }
         },
         "required": [
@@ -29222,17 +29244,17 @@
               "$ref": "#/components/schemas/ShippingAddressOption"
             }
           },
+          "returnDeadlineFromApproval": {
+            "type": "string",
+            "format": "date-time",
+            "writeOnly": true
+          },
           "imageUrls": {
             "type": "array",
             "items": {
               "type": "string"
             },
             "uniqueItems": true
-          },
-          "returnDeadlineFromApproval": {
-            "type": "string",
-            "format": "date-time",
-            "writeOnly": true
           },
           "returnOverdue": {
             "type": "boolean"
@@ -33817,9 +33839,6 @@
             "description": "更新時間",
             "example": "2024-01-01T10:00:00"
           },
-          "inStock": {
-            "type": "boolean"
-          },
           "purchaseRestrictionReason": {
             "type": "string"
           },
@@ -33828,6 +33847,9 @@
           },
           "stockStatus": {
             "type": "string"
+          },
+          "inStock": {
+            "type": "boolean"
           },
           "totalPrice": {
             "type": "number"
