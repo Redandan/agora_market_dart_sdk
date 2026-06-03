@@ -358,14 +358,18 @@ Class | Method | HTTP request | Description
 *KnowledgeApi* | [**countKnowledge**](doc//KnowledgeApi.md#countknowledge) | **GET** /admin/knowledge/count | 查詢知識庫文件數量
 *KnowledgeApi* | [**countPendingKnowledgeQuestions**](doc//KnowledgeApi.md#countpendingknowledgequestions) | **GET** /admin/knowledge/pending/count | 查詢未處理問題數量
 *KnowledgeApi* | [**deleteKnowledge**](doc//KnowledgeApi.md#deleteknowledge) | **DELETE** /admin/knowledge/{id} | 刪除知識文件
+*KnowledgeApi* | [**getCodeSupportKnowledgeCandidate**](doc//KnowledgeApi.md#getcodesupportknowledgecandidate) | **GET** /admin/knowledge/code-support/candidates/{id} | 查詢單筆代碼來源客服知識候選
 *KnowledgeApi* | [**getKnowledgeById**](doc//KnowledgeApi.md#getknowledgebyid) | **GET** /admin/knowledge/{id} | 查詢單筆知識文件
 *KnowledgeApi* | [**ignorePendingKnowledgeQuestion**](doc//KnowledgeApi.md#ignorependingknowledgequestion) | **POST** /admin/knowledge/pending/{id}/ignore | 忽略待確認問題
 *KnowledgeApi* | [**importKnowledgeBatch**](doc//KnowledgeApi.md#importknowledgebatch) | **POST** /admin/knowledge/batch | 批量匯入知識文件
+*KnowledgeApi* | [**listCodeSupportKnowledgeCandidates**](doc//KnowledgeApi.md#listcodesupportknowledgecandidates) | **GET** /admin/knowledge/code-support/candidates | 列出由後端代碼來源產生的客服知識候選
 *KnowledgeApi* | [**listKnowledge**](doc//KnowledgeApi.md#listknowledge) | **GET** /admin/knowledge | 列出所有知識文件
 *KnowledgeApi* | [**listPendingKnowledgeQuestions**](doc//KnowledgeApi.md#listpendingknowledgequestions) | **GET** /admin/knowledge/pending | 列出待確認問題
 *KnowledgeApi* | [**resolvePendingKnowledgeQuestion**](doc//KnowledgeApi.md#resolvependingknowledgequestion) | **POST** /admin/knowledge/pending/{id}/resolve | 解答待確認問題
 *KnowledgeApi* | [**searchKnowledge**](doc//KnowledgeApi.md#searchknowledge) | **GET** /admin/knowledge/search | 語意搜尋測試
+*KnowledgeApi* | [**seedCodeSupportKnowledge**](doc//KnowledgeApi.md#seedcodesupportknowledge) | **POST** /admin/knowledge/code-support/seed | 將所有代碼來源客服知識候選 upsert 至知識庫
 *KnowledgeApi* | [**seedDefaultCustomerSupportKnowledge**](doc//KnowledgeApi.md#seeddefaultcustomersupportknowledge) | **POST** /admin/knowledge/defaults/customer-support/seed | 匯入預設客服 FAQ
+*KnowledgeApi* | [**upsertCodeSupportKnowledgeCandidate**](doc//KnowledgeApi.md#upsertcodesupportknowledgecandidate) | **POST** /admin/knowledge/code-support/candidates/{id}/upsert | 將單筆代碼來源客服知識候選 upsert 至知識庫
 *LoginMethodsApi* | [**getLoginMethods**](doc//LoginMethodsApi.md#getloginmethods) | **GET** /auth/login-methods | 获取所有可用的登录方式
 *LogisticsApi* | [**calculateLogistics**](doc//LogisticsApi.md#calculatelogistics) | **POST** /logistics/calculate | 物流計算
 *LogisticsApi* | [**getLogisticsPostalAreaByCode**](doc//LogisticsApi.md#getlogisticspostalareabycode) | **GET** /logistics/postal-codes/{postalCode} | 郵遞區號查詢
@@ -612,11 +616,14 @@ Class | Method | HTTP request | Description
  - [AiProductClassificationSuggestion](doc//AiProductClassificationSuggestion.md)
  - [AiStrategyDiscoveryRequest](doc//AiStrategyDiscoveryRequest.md)
  - [AiStrategyDiscoveryResponse](doc//AiStrategyDiscoveryResponse.md)
+ - [ApiResponseCodeSupportKnowledgeCandidate](doc//ApiResponseCodeSupportKnowledgeCandidate.md)
+ - [ApiResponseCodeSupportKnowledgeImportResult](doc//ApiResponseCodeSupportKnowledgeImportResult.md)
  - [ApiResponseColdWallet](doc//ApiResponseColdWallet.md)
  - [ApiResponseFileSyncResponse](doc//ApiResponseFileSyncResponse.md)
  - [ApiResponseFlutterAppDeploymentResponse](doc//ApiResponseFlutterAppDeploymentResponse.md)
  - [ApiResponseImportResult](doc//ApiResponseImportResult.md)
  - [ApiResponseKnowledgeResponse](doc//ApiResponseKnowledgeResponse.md)
+ - [ApiResponseListCodeSupportKnowledgeCandidate](doc//ApiResponseListCodeSupportKnowledgeCandidate.md)
  - [ApiResponseListKnowledgeResponse](doc//ApiResponseListKnowledgeResponse.md)
  - [ApiResponseListLoginMethod](doc//ApiResponseListLoginMethod.md)
  - [ApiResponseListOpenPositionDto](doc//ApiResponseListOpenPositionDto.md)
@@ -688,6 +695,8 @@ Class | Method | HTTP request | Description
  - [ClassificationSuggestionActionRequest](doc//ClassificationSuggestionActionRequest.md)
  - [ClientLog](doc//ClientLog.md)
  - [ClientLogDto](doc//ClientLogDto.md)
+ - [CodeSupportKnowledgeCandidate](doc//CodeSupportKnowledgeCandidate.md)
+ - [CodeSupportKnowledgeImportResult](doc//CodeSupportKnowledgeImportResult.md)
  - [ColdWallet](doc//ColdWallet.md)
  - [CreateActivityRequest](doc//CreateActivityRequest.md)
  - [CreateColdWalletParam](doc//CreateColdWalletParam.md)

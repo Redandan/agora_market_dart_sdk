@@ -217,6 +217,59 @@ class KnowledgeApi {
     return null;
   }
 
+  /// 查詢單筆代碼來源客服知識候選
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  Future<Response> getCodeSupportKnowledgeCandidateWithHttpInfo(String id,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/knowledge/code-support/candidates/{id}'
+      .replaceAll('{id}', id);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查詢單筆代碼來源客服知識候選
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  Future<ApiResponseCodeSupportKnowledgeCandidate?> getCodeSupportKnowledgeCandidate(String id,) async {
+    final response = await getCodeSupportKnowledgeCandidateWithHttpInfo(id,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseCodeSupportKnowledgeCandidate',) as ApiResponseCodeSupportKnowledgeCandidate;
+    
+    }
+    return null;
+  }
+
   /// 查詢單筆知識文件
   ///
   /// Note: This method returns the HTTP [Response].
@@ -378,6 +431,50 @@ class KnowledgeApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseImportResult',) as ApiResponseImportResult;
+    
+    }
+    return null;
+  }
+
+  /// 列出由後端代碼來源產生的客服知識候選
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> listCodeSupportKnowledgeCandidatesWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/knowledge/code-support/candidates';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 列出由後端代碼來源產生的客服知識候選
+  Future<ApiResponseListCodeSupportKnowledgeCandidate?> listCodeSupportKnowledgeCandidates() async {
+    final response = await listCodeSupportKnowledgeCandidatesWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseListCodeSupportKnowledgeCandidate',) as ApiResponseListCodeSupportKnowledgeCandidate;
     
     }
     return null;
@@ -613,6 +710,50 @@ class KnowledgeApi {
     return null;
   }
 
+  /// 將所有代碼來源客服知識候選 upsert 至知識庫
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> seedCodeSupportKnowledgeWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/knowledge/code-support/seed';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 將所有代碼來源客服知識候選 upsert 至知識庫
+  Future<ApiResponseCodeSupportKnowledgeImportResult?> seedCodeSupportKnowledge() async {
+    final response = await seedCodeSupportKnowledgeWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseCodeSupportKnowledgeImportResult',) as ApiResponseCodeSupportKnowledgeImportResult;
+    
+    }
+    return null;
+  }
+
   /// 匯入預設客服 FAQ
   ///
   /// 以固定 ID upsert 商城客服常見問題，重跑不會重複新增
@@ -656,6 +797,59 @@ class KnowledgeApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseImportResult',) as ApiResponseImportResult;
+    
+    }
+    return null;
+  }
+
+  /// 將單筆代碼來源客服知識候選 upsert 至知識庫
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  Future<Response> upsertCodeSupportKnowledgeCandidateWithHttpInfo(String id,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/knowledge/code-support/candidates/{id}/upsert'
+      .replaceAll('{id}', id);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 將單筆代碼來源客服知識候選 upsert 至知識庫
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  Future<ApiResponseString?> upsertCodeSupportKnowledgeCandidate(String id,) async {
+    final response = await upsertCodeSupportKnowledgeCandidateWithHttpInfo(id,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseString',) as ApiResponseString;
     
     }
     return null;

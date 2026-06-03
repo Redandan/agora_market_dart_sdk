@@ -10978,6 +10978,58 @@
         }
       }
     },
+    "/admin/knowledge/code-support/seed": {
+      "post": {
+        "tags": [
+          "knowledge"
+        ],
+        "summary": "將所有代碼來源客服知識候選 upsert 至知識庫",
+        "operationId": "seedCodeSupportKnowledge",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseCodeSupportKnowledgeImportResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/knowledge/code-support/candidates/{id}/upsert": {
+      "post": {
+        "tags": [
+          "knowledge"
+        ],
+        "summary": "將單筆代碼來源客服知識候選 upsert 至知識庫",
+        "operationId": "upsertCodeSupportKnowledgeCandidate",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseString"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/knowledge/batch": {
       "post": {
         "tags": [
@@ -18037,6 +18089,58 @@
         }
       }
     },
+    "/admin/knowledge/code-support/candidates": {
+      "get": {
+        "tags": [
+          "knowledge"
+        ],
+        "summary": "列出由後端代碼來源產生的客服知識候選",
+        "operationId": "listCodeSupportKnowledgeCandidates",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListCodeSupportKnowledgeCandidate"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/knowledge/code-support/candidates/{id}": {
+      "get": {
+        "tags": [
+          "knowledge"
+        ],
+        "summary": "查詢單筆代碼來源客服知識候選",
+        "operationId": "getCodeSupportKnowledgeCandidate",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseCodeSupportKnowledgeCandidate"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/disputes/{disputeId}": {
       "get": {
         "tags": [
@@ -22540,23 +22644,23 @@
             "description": "最後更新時間",
             "example": "2024-01-01T10:00:00"
           },
-          "fullAddress": {
-            "type": "string"
-          },
           "homeDelivery": {
             "type": "boolean"
           },
           "formattedAddress": {
             "type": "string"
           },
+          "fullAddress": {
+            "type": "string"
+          },
           "logisticsDescription": {
+            "type": "string"
+          },
+          "recipientInfo": {
             "type": "string"
           },
           "convenienceStorePickup": {
             "type": "boolean"
-          },
-          "recipientInfo": {
-            "type": "string"
           }
         },
         "required": [
@@ -29244,17 +29348,17 @@
               "$ref": "#/components/schemas/ShippingAddressOption"
             }
           },
-          "returnDeadlineFromApproval": {
-            "type": "string",
-            "format": "date-time",
-            "writeOnly": true
-          },
           "imageUrls": {
             "type": "array",
             "items": {
               "type": "string"
             },
             "uniqueItems": true
+          },
+          "returnDeadlineFromApproval": {
+            "type": "string",
+            "format": "date-time",
+            "writeOnly": true
           },
           "returnOverdue": {
             "type": "boolean"
@@ -33839,6 +33943,9 @@
             "description": "更新時間",
             "example": "2024-01-01T10:00:00"
           },
+          "inStock": {
+            "type": "boolean"
+          },
           "purchaseRestrictionReason": {
             "type": "string"
           },
@@ -33847,9 +33954,6 @@
           },
           "stockStatus": {
             "type": "string"
-          },
-          "inStock": {
-            "type": "boolean"
           },
           "totalPrice": {
             "type": "number"
@@ -37859,6 +37963,42 @@
           "total": {
             "type": "integer",
             "format": "int32"
+          }
+        }
+      },
+      "ApiResponseCodeSupportKnowledgeImportResult": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/CodeSupportKnowledgeImportResult"
+          }
+        }
+      },
+      "CodeSupportKnowledgeImportResult": {
+        "type": "object",
+        "properties": {
+          "imported": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "importedIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -42600,6 +42740,69 @@
           "data": {
             "type": "integer",
             "format": "int64"
+          }
+        }
+      },
+      "ApiResponseListCodeSupportKnowledgeCandidate": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CodeSupportKnowledgeCandidate"
+            }
+          }
+        }
+      },
+      "CodeSupportKnowledgeCandidate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "sourceRefs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ApiResponseCodeSupportKnowledgeCandidate": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/CodeSupportKnowledgeCandidate"
           }
         }
       },

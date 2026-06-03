@@ -212,6 +212,10 @@ class ApiClient {
           return AiStrategyDiscoveryRequest.fromJson(value);
         case 'AiStrategyDiscoveryResponse':
           return AiStrategyDiscoveryResponse.fromJson(value);
+        case 'ApiResponseCodeSupportKnowledgeCandidate':
+          return ApiResponseCodeSupportKnowledgeCandidate.fromJson(value);
+        case 'ApiResponseCodeSupportKnowledgeImportResult':
+          return ApiResponseCodeSupportKnowledgeImportResult.fromJson(value);
         case 'ApiResponseColdWallet':
           return ApiResponseColdWallet.fromJson(value);
         case 'ApiResponseFileSyncResponse':
@@ -222,6 +226,8 @@ class ApiClient {
           return ApiResponseImportResult.fromJson(value);
         case 'ApiResponseKnowledgeResponse':
           return ApiResponseKnowledgeResponse.fromJson(value);
+        case 'ApiResponseListCodeSupportKnowledgeCandidate':
+          return ApiResponseListCodeSupportKnowledgeCandidate.fromJson(value);
         case 'ApiResponseListKnowledgeResponse':
           return ApiResponseListKnowledgeResponse.fromJson(value);
         case 'ApiResponseListLoginMethod':
@@ -364,6 +370,10 @@ class ApiClient {
           return ClientLog.fromJson(value);
         case 'ClientLogDto':
           return ClientLogDto.fromJson(value);
+        case 'CodeSupportKnowledgeCandidate':
+          return CodeSupportKnowledgeCandidate.fromJson(value);
+        case 'CodeSupportKnowledgeImportResult':
+          return CodeSupportKnowledgeImportResult.fromJson(value);
         case 'ColdWallet':
           return ColdWallet.fromJson(value);
         case 'CreateActivityRequest':
