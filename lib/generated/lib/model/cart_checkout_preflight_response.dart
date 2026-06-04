@@ -14,6 +14,7 @@ class CartCheckoutPreflightResponse {
   /// Returns a new [CartCheckoutPreflightResponse] instance.
   CartCheckoutPreflightResponse({
     this.canSubmit,
+    this.canCheckout,
     this.sellerId,
     this.addressId,
     this.pickupServiceType,
@@ -35,6 +36,14 @@ class CartCheckoutPreflightResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? canSubmit;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? canCheckout;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -112,6 +121,7 @@ class CartCheckoutPreflightResponse {
   @override
   bool operator ==(Object other) => identical(this, other) || other is CartCheckoutPreflightResponse &&
     other.canSubmit == canSubmit &&
+    other.canCheckout == canCheckout &&
     other.sellerId == sellerId &&
     other.addressId == addressId &&
     other.pickupServiceType == pickupServiceType &&
@@ -129,6 +139,7 @@ class CartCheckoutPreflightResponse {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (canSubmit == null ? 0 : canSubmit!.hashCode) +
+    (canCheckout == null ? 0 : canCheckout!.hashCode) +
     (sellerId == null ? 0 : sellerId!.hashCode) +
     (addressId == null ? 0 : addressId!.hashCode) +
     (pickupServiceType == null ? 0 : pickupServiceType!.hashCode) +
@@ -143,7 +154,7 @@ class CartCheckoutPreflightResponse {
     (items.hashCode);
 
   @override
-  String toString() => 'CartCheckoutPreflightResponse[canSubmit=$canSubmit, sellerId=$sellerId, addressId=$addressId, pickupServiceType=$pickupServiceType, itemCount=$itemCount, productSubtotalUsdt=$productSubtotalUsdt, shippingFeeUsdt=$shippingFeeUsdt, orderAmountUsdt=$orderAmountUsdt, buyerUsdtBalance=$buyerUsdtBalance, topUpNeededUsdt=$topUpNeededUsdt, blockingReasons=$blockingReasons, warnings=$warnings, items=$items]';
+  String toString() => 'CartCheckoutPreflightResponse[canSubmit=$canSubmit, canCheckout=$canCheckout, sellerId=$sellerId, addressId=$addressId, pickupServiceType=$pickupServiceType, itemCount=$itemCount, productSubtotalUsdt=$productSubtotalUsdt, shippingFeeUsdt=$shippingFeeUsdt, orderAmountUsdt=$orderAmountUsdt, buyerUsdtBalance=$buyerUsdtBalance, topUpNeededUsdt=$topUpNeededUsdt, blockingReasons=$blockingReasons, warnings=$warnings, items=$items]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -151,6 +162,11 @@ class CartCheckoutPreflightResponse {
       json[r'canSubmit'] = this.canSubmit;
     } else {
       json[r'canSubmit'] = null;
+    }
+    if (this.canCheckout != null) {
+      json[r'canCheckout'] = this.canCheckout;
+    } else {
+      json[r'canCheckout'] = null;
     }
     if (this.sellerId != null) {
       json[r'sellerId'] = this.sellerId;
@@ -223,6 +239,7 @@ class CartCheckoutPreflightResponse {
 
       return CartCheckoutPreflightResponse(
         canSubmit: mapValueOfType<bool>(json, r'canSubmit'),
+        canCheckout: mapValueOfType<bool>(json, r'canCheckout'),
         sellerId: mapValueOfType<int>(json, r'sellerId'),
         addressId: mapValueOfType<int>(json, r'addressId'),
         pickupServiceType: CartCheckoutPreflightResponsePickupServiceTypeEnum.fromJson(json[r'pickupServiceType']),

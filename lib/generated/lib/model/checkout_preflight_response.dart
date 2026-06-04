@@ -14,6 +14,7 @@ class CheckoutPreflightResponse {
   /// Returns a new [CheckoutPreflightResponse] instance.
   CheckoutPreflightResponse({
     this.canSubmit,
+    this.canCheckout,
     this.blockingReasons = const [],
     this.warnings = const [],
     this.nextActions = const [],
@@ -32,6 +33,14 @@ class CheckoutPreflightResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? canSubmit;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? canCheckout;
 
   List<String> blockingReasons;
 
@@ -90,6 +99,7 @@ class CheckoutPreflightResponse {
   @override
   bool operator ==(Object other) => identical(this, other) || other is CheckoutPreflightResponse &&
     other.canSubmit == canSubmit &&
+    other.canCheckout == canCheckout &&
     _deepEquality.equals(other.blockingReasons, blockingReasons) &&
     _deepEquality.equals(other.warnings, warnings) &&
     _deepEquality.equals(other.nextActions, nextActions) &&
@@ -104,6 +114,7 @@ class CheckoutPreflightResponse {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (canSubmit == null ? 0 : canSubmit!.hashCode) +
+    (canCheckout == null ? 0 : canCheckout!.hashCode) +
     (blockingReasons.hashCode) +
     (warnings.hashCode) +
     (nextActions.hashCode) +
@@ -115,7 +126,7 @@ class CheckoutPreflightResponse {
     (terms == null ? 0 : terms!.hashCode);
 
   @override
-  String toString() => 'CheckoutPreflightResponse[canSubmit=$canSubmit, blockingReasons=$blockingReasons, warnings=$warnings, nextActions=$nextActions, product=$product, pricing=$pricing, address=$address, proxyOrder=$proxyOrder, wallet=$wallet, terms=$terms]';
+  String toString() => 'CheckoutPreflightResponse[canSubmit=$canSubmit, canCheckout=$canCheckout, blockingReasons=$blockingReasons, warnings=$warnings, nextActions=$nextActions, product=$product, pricing=$pricing, address=$address, proxyOrder=$proxyOrder, wallet=$wallet, terms=$terms]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -123,6 +134,11 @@ class CheckoutPreflightResponse {
       json[r'canSubmit'] = this.canSubmit;
     } else {
       json[r'canSubmit'] = null;
+    }
+    if (this.canCheckout != null) {
+      json[r'canCheckout'] = this.canCheckout;
+    } else {
+      json[r'canCheckout'] = null;
     }
       json[r'blockingReasons'] = this.blockingReasons;
       json[r'warnings'] = this.warnings;
@@ -180,6 +196,7 @@ class CheckoutPreflightResponse {
 
       return CheckoutPreflightResponse(
         canSubmit: mapValueOfType<bool>(json, r'canSubmit'),
+        canCheckout: mapValueOfType<bool>(json, r'canCheckout'),
         blockingReasons: json[r'blockingReasons'] is Iterable
             ? (json[r'blockingReasons'] as Iterable).cast<String>().toList(growable: false)
             : const [],

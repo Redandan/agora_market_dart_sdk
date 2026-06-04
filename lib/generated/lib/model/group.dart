@@ -23,6 +23,7 @@ class Group {
     this.shippingFeeUsdt,
     this.orderAmountUsdt,
     this.canSubmit,
+    this.canCheckout,
     this.canMerge,
     this.items = const [],
     this.blockingReasons = const [],
@@ -104,6 +105,14 @@ class Group {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  bool? canCheckout;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? canMerge;
 
   List<Item> items;
@@ -122,6 +131,7 @@ class Group {
     other.shippingFeeUsdt == shippingFeeUsdt &&
     other.orderAmountUsdt == orderAmountUsdt &&
     other.canSubmit == canSubmit &&
+    other.canCheckout == canCheckout &&
     other.canMerge == canMerge &&
     _deepEquality.equals(other.items, items) &&
     _deepEquality.equals(other.blockingReasons, blockingReasons);
@@ -139,12 +149,13 @@ class Group {
     (shippingFeeUsdt == null ? 0 : shippingFeeUsdt!.hashCode) +
     (orderAmountUsdt == null ? 0 : orderAmountUsdt!.hashCode) +
     (canSubmit == null ? 0 : canSubmit!.hashCode) +
+    (canCheckout == null ? 0 : canCheckout!.hashCode) +
     (canMerge == null ? 0 : canMerge!.hashCode) +
     (items.hashCode) +
     (blockingReasons.hashCode);
 
   @override
-  String toString() => 'Group[groupId=$groupId, sellerId=$sellerId, sellerName=$sellerName, addressId=$addressId, serviceType=$serviceType, productType=$productType, productSubtotalUsdt=$productSubtotalUsdt, shippingFeeUsdt=$shippingFeeUsdt, orderAmountUsdt=$orderAmountUsdt, canSubmit=$canSubmit, canMerge=$canMerge, items=$items, blockingReasons=$blockingReasons]';
+  String toString() => 'Group[groupId=$groupId, sellerId=$sellerId, sellerName=$sellerName, addressId=$addressId, serviceType=$serviceType, productType=$productType, productSubtotalUsdt=$productSubtotalUsdt, shippingFeeUsdt=$shippingFeeUsdt, orderAmountUsdt=$orderAmountUsdt, canSubmit=$canSubmit, canCheckout=$canCheckout, canMerge=$canMerge, items=$items, blockingReasons=$blockingReasons]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -198,6 +209,11 @@ class Group {
     } else {
       json[r'canSubmit'] = null;
     }
+    if (this.canCheckout != null) {
+      json[r'canCheckout'] = this.canCheckout;
+    } else {
+      json[r'canCheckout'] = null;
+    }
     if (this.canMerge != null) {
       json[r'canMerge'] = this.canMerge;
     } else {
@@ -243,6 +259,7 @@ class Group {
             ? null
             : num.parse('${json[r'orderAmountUsdt']}'),
         canSubmit: mapValueOfType<bool>(json, r'canSubmit'),
+        canCheckout: mapValueOfType<bool>(json, r'canCheckout'),
         canMerge: mapValueOfType<bool>(json, r'canMerge'),
         items: Item.listFromJson(json[r'items']),
         blockingReasons: json[r'blockingReasons'] is Iterable

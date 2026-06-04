@@ -29823,6 +29823,65 @@
           "version"
         ]
       },
+      "OrderActionState": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "CANCEL_ORDER",
+              "SHIP_LOGISTICS",
+              "SHIP_PLATFORM",
+              "CONFIRM_RECEIVED",
+              "CONFIRM_DELIVERY_COMPLETED",
+              "REQUEST_RETURN",
+              "PROCESS_RETURN",
+              "UPDATE_RETURN_SHIPPING",
+              "CONFIRM_RETURN_RECEIVED",
+              "RESPOND_REFUND_OFFER",
+              "UPDATE_DELIVERY_ORDER",
+              "SUBMIT_DELIVERY_PROOF",
+              "CONFIRM_DELIVERY_PROOF",
+              "REJECT_DELIVERY_PROOF",
+              "CANCEL_DIGITAL_ORDER",
+              "OPEN_DISPUTE",
+              "RESPOND_DISPUTE",
+              "ADMIN_CANCEL_ORDER",
+              "ADMIN_JUDGE_DISPUTE",
+              "ADMIN_REEXAMINE_DISPUTE"
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "endpoint": {
+            "type": "string"
+          },
+          "method": {
+            "type": "string"
+          },
+          "reasonCode": {
+            "type": "string"
+          },
+          "reasonMessage": {
+            "type": "string"
+          }
+        }
+      },
+      "OrderNextStep": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "actor": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
       "OrderQueryResult": {
         "type": "object",
         "properties": {
@@ -29843,6 +29902,21 @@
           },
           "dispute": {
             "$ref": "#/components/schemas/Dispute"
+          },
+          "availableActions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderActionState"
+            }
+          },
+          "blockedActions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderActionState"
+            }
+          },
+          "nextStep": {
+            "$ref": "#/components/schemas/OrderNextStep"
           }
         }
       },
@@ -30083,6 +30157,9 @@
         "type": "object",
         "properties": {
           "canSubmit": {
+            "type": "boolean"
+          },
+          "canCheckout": {
             "type": "boolean"
           },
           "blockingReasons": {
@@ -30531,6 +30608,9 @@
           "canSubmit": {
             "type": "boolean"
           },
+          "canCheckout": {
+            "type": "boolean"
+          },
           "sellerId": {
             "type": "integer",
             "format": "int64"
@@ -30753,6 +30833,9 @@
             "type": "number"
           },
           "canSubmit": {
+            "type": "boolean"
+          },
+          "canCheckout": {
             "type": "boolean"
           },
           "canMerge": {

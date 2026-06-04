@@ -642,6 +642,8 @@ class ApiClient {
           return OpenPositionDto.fromJson(value);
         case 'Order':
           return Order.fromJson(value);
+        case 'OrderActionState':
+          return OrderActionState.fromJson(value);
         case 'OrderCancelParam':
           return OrderCancelParam.fromJson(value);
         case 'OrderConfirmParam':
@@ -650,6 +652,8 @@ class ApiClient {
           return OrderDeliveryProof.fromJson(value);
         case 'OrderItem':
           return OrderItem.fromJson(value);
+        case 'OrderNextStep':
+          return OrderNextStep.fromJson(value);
         case 'OrderQueryResult':
           return OrderQueryResult.fromJson(value);
         case 'OrderReturnRecord':

@@ -18,6 +18,9 @@ class OrderQueryResult {
     this.orderItems = const [],
     this.returnRecord,
     this.dispute,
+    this.availableActions = const [],
+    this.blockedActions = const [],
+    this.nextStep,
   });
 
   ///
@@ -54,13 +57,28 @@ class OrderQueryResult {
   ///
   Dispute? dispute;
 
+  List<OrderActionState> availableActions;
+
+  List<OrderActionState> blockedActions;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  OrderNextStep? nextStep;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrderQueryResult &&
     other.order == order &&
     other.deliveryDetail == deliveryDetail &&
     _deepEquality.equals(other.orderItems, orderItems) &&
     other.returnRecord == returnRecord &&
-    other.dispute == dispute;
+    other.dispute == dispute &&
+    _deepEquality.equals(other.availableActions, availableActions) &&
+    _deepEquality.equals(other.blockedActions, blockedActions) &&
+    other.nextStep == nextStep;
 
   @override
   int get hashCode =>
@@ -69,10 +87,13 @@ class OrderQueryResult {
     (deliveryDetail == null ? 0 : deliveryDetail!.hashCode) +
     (orderItems.hashCode) +
     (returnRecord == null ? 0 : returnRecord!.hashCode) +
-    (dispute == null ? 0 : dispute!.hashCode);
+    (dispute == null ? 0 : dispute!.hashCode) +
+    (availableActions.hashCode) +
+    (blockedActions.hashCode) +
+    (nextStep == null ? 0 : nextStep!.hashCode);
 
   @override
-  String toString() => 'OrderQueryResult[order=$order, deliveryDetail=$deliveryDetail, orderItems=$orderItems, returnRecord=$returnRecord, dispute=$dispute]';
+  String toString() => 'OrderQueryResult[order=$order, deliveryDetail=$deliveryDetail, orderItems=$orderItems, returnRecord=$returnRecord, dispute=$dispute, availableActions=$availableActions, blockedActions=$blockedActions, nextStep=$nextStep]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -96,6 +117,13 @@ class OrderQueryResult {
       json[r'dispute'] = this.dispute;
     } else {
       json[r'dispute'] = null;
+    }
+      json[r'availableActions'] = this.availableActions.map((e) => e.toJson()).toList();
+      json[r'blockedActions'] = this.blockedActions.map((e) => e.toJson()).toList();
+    if (this.nextStep != null) {
+      json[r'nextStep'] = this.nextStep;
+    } else {
+      json[r'nextStep'] = null;
     }
     return json;
   }
@@ -124,6 +152,9 @@ class OrderQueryResult {
         orderItems: OrderItem.listFromJson(json[r'orderItems']),
         returnRecord: OrderReturnRecord.fromJson(json[r'returnRecord']),
         dispute: Dispute.fromJson(json[r'dispute']),
+        availableActions: OrderActionState.listFromJson(json[r'availableActions']),
+        blockedActions: OrderActionState.listFromJson(json[r'blockedActions']),
+        nextStep: OrderNextStep.fromJson(json[r'nextStep']),
       );
     }
     return null;
