@@ -19,6 +19,7 @@ class OrderActionState {
     this.method,
     this.reasonCode,
     this.reasonMessage,
+    this.requiredFields = const [],
   });
 
   OrderActionStateCodeEnum? code;
@@ -63,6 +64,8 @@ class OrderActionState {
   ///
   String? reasonMessage;
 
+  List<String> requiredFields;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrderActionState &&
     other.code == code &&
@@ -70,7 +73,8 @@ class OrderActionState {
     other.endpoint == endpoint &&
     other.method == method &&
     other.reasonCode == reasonCode &&
-    other.reasonMessage == reasonMessage;
+    other.reasonMessage == reasonMessage &&
+    _deepEquality.equals(other.requiredFields, requiredFields);
 
   @override
   int get hashCode =>
@@ -80,10 +84,11 @@ class OrderActionState {
     (endpoint == null ? 0 : endpoint!.hashCode) +
     (method == null ? 0 : method!.hashCode) +
     (reasonCode == null ? 0 : reasonCode!.hashCode) +
-    (reasonMessage == null ? 0 : reasonMessage!.hashCode);
+    (reasonMessage == null ? 0 : reasonMessage!.hashCode) +
+    (requiredFields.hashCode);
 
   @override
-  String toString() => 'OrderActionState[code=$code, label=$label, endpoint=$endpoint, method=$method, reasonCode=$reasonCode, reasonMessage=$reasonMessage]';
+  String toString() => 'OrderActionState[code=$code, label=$label, endpoint=$endpoint, method=$method, reasonCode=$reasonCode, reasonMessage=$reasonMessage, requiredFields=$requiredFields]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -117,6 +122,7 @@ class OrderActionState {
     } else {
       json[r'reasonMessage'] = null;
     }
+      json[r'requiredFields'] = this.requiredFields;
     return json;
   }
 
@@ -145,6 +151,9 @@ class OrderActionState {
         method: mapValueOfType<String>(json, r'method'),
         reasonCode: mapValueOfType<String>(json, r'reasonCode'),
         reasonMessage: mapValueOfType<String>(json, r'reasonMessage'),
+        requiredFields: json[r'requiredFields'] is Iterable
+            ? (json[r'requiredFields'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
       );
     }
     return null;
