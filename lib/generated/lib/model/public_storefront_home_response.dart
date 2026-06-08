@@ -14,7 +14,6 @@ class PublicStorefrontHomeResponse {
   /// Returns a new [PublicStorefrontHomeResponse] instance.
   PublicStorefrontHomeResponse({
     this.sellerId,
-    this.slug,
     this.html,
   });
 
@@ -32,31 +31,21 @@ class PublicStorefrontHomeResponse {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? slug;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? html;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PublicStorefrontHomeResponse &&
     other.sellerId == sellerId &&
-    other.slug == slug &&
     other.html == html;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (sellerId == null ? 0 : sellerId!.hashCode) +
-    (slug == null ? 0 : slug!.hashCode) +
     (html == null ? 0 : html!.hashCode);
 
   @override
-  String toString() => 'PublicStorefrontHomeResponse[sellerId=$sellerId, slug=$slug, html=$html]';
+  String toString() => 'PublicStorefrontHomeResponse[sellerId=$sellerId, html=$html]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -64,11 +53,6 @@ class PublicStorefrontHomeResponse {
       json[r'sellerId'] = this.sellerId;
     } else {
       json[r'sellerId'] = null;
-    }
-    if (this.slug != null) {
-      json[r'slug'] = this.slug;
-    } else {
-      json[r'slug'] = null;
     }
     if (this.html != null) {
       json[r'html'] = this.html;
@@ -98,7 +82,6 @@ class PublicStorefrontHomeResponse {
 
       return PublicStorefrontHomeResponse(
         sellerId: mapValueOfType<int>(json, r'sellerId'),
-        slug: mapValueOfType<String>(json, r'slug'),
         html: mapValueOfType<String>(json, r'html'),
       );
     }

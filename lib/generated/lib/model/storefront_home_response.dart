@@ -14,7 +14,6 @@ class StorefrontHomeResponse {
   /// Returns a new [StorefrontHomeResponse] instance.
   StorefrontHomeResponse({
     this.sellerId,
-    this.slug,
     this.status,
     this.draftHtml,
     this.publishedHtml,
@@ -32,14 +31,6 @@ class StorefrontHomeResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? sellerId;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? slug;
 
   StorefrontHomeResponseStatusEnum? status;
 
@@ -102,7 +93,6 @@ class StorefrontHomeResponse {
   @override
   bool operator ==(Object other) => identical(this, other) || other is StorefrontHomeResponse &&
     other.sellerId == sellerId &&
-    other.slug == slug &&
     other.status == status &&
     other.draftHtml == draftHtml &&
     other.publishedHtml == publishedHtml &&
@@ -116,7 +106,6 @@ class StorefrontHomeResponse {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (sellerId == null ? 0 : sellerId!.hashCode) +
-    (slug == null ? 0 : slug!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
     (draftHtml == null ? 0 : draftHtml!.hashCode) +
     (publishedHtml == null ? 0 : publishedHtml!.hashCode) +
@@ -127,7 +116,7 @@ class StorefrontHomeResponse {
     (publishedAt == null ? 0 : publishedAt!.hashCode);
 
   @override
-  String toString() => 'StorefrontHomeResponse[sellerId=$sellerId, slug=$slug, status=$status, draftHtml=$draftHtml, publishedHtml=$publishedHtml, reviewNote=$reviewNote, reviewedBy=$reviewedBy, reviewedAt=$reviewedAt, updatedAt=$updatedAt, publishedAt=$publishedAt]';
+  String toString() => 'StorefrontHomeResponse[sellerId=$sellerId, status=$status, draftHtml=$draftHtml, publishedHtml=$publishedHtml, reviewNote=$reviewNote, reviewedBy=$reviewedBy, reviewedAt=$reviewedAt, updatedAt=$updatedAt, publishedAt=$publishedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -135,11 +124,6 @@ class StorefrontHomeResponse {
       json[r'sellerId'] = this.sellerId;
     } else {
       json[r'sellerId'] = null;
-    }
-    if (this.slug != null) {
-      json[r'slug'] = this.slug;
-    } else {
-      json[r'slug'] = null;
     }
     if (this.status != null) {
       json[r'status'] = this.status;
@@ -204,7 +188,6 @@ class StorefrontHomeResponse {
 
       return StorefrontHomeResponse(
         sellerId: mapValueOfType<int>(json, r'sellerId'),
-        slug: mapValueOfType<String>(json, r'slug'),
         status: StorefrontHomeResponseStatusEnum.fromJson(json[r'status']),
         draftHtml: mapValueOfType<String>(json, r'draftHtml'),
         publishedHtml: mapValueOfType<String>(json, r'publishedHtml'),

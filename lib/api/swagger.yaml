@@ -13073,20 +13073,21 @@
         }
       }
     },
-    "/storefront/home/{slug}": {
+    "/storefront/home/{sellerId}": {
       "get": {
         "tags": [
           "storefront-home"
         ],
-        "summary": "Get published storefront home by slug",
+        "summary": "Get published storefront home by seller id",
         "operationId": "getPublished",
         "parameters": [
           {
-            "name": "slug",
+            "name": "sellerId",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "format": "int64"
             }
           }
         ],
@@ -19818,12 +19819,6 @@
         "type": "object",
         "description": "Seller storefront home draft update",
         "properties": {
-          "slug": {
-            "type": "string",
-            "description": "Optional public slug. Lowercase letters, numbers, and dash only.",
-            "maxLength": 80,
-            "minLength": 0
-          },
           "html": {
             "type": "string",
             "description": "Single HTML document for the seller storefront home draft",
@@ -19839,9 +19834,6 @@
           "sellerId": {
             "type": "integer",
             "format": "int64"
-          },
-          "slug": {
-            "type": "string"
           },
           "status": {
             "type": "string",
@@ -20664,9 +20656,6 @@
           "sort": {
             "$ref": "#/components/schemas/SortObject"
           },
-          "unpaged": {
-            "type": "boolean"
-          },
           "paged": {
             "type": "boolean"
           },
@@ -20677,6 +20666,9 @@
           "pageSize": {
             "type": "integer",
             "format": "int32"
+          },
+          "unpaged": {
+            "type": "boolean"
           }
         }
       },
@@ -20686,10 +20678,10 @@
           "empty": {
             "type": "boolean"
           },
-          "unsorted": {
+          "sorted": {
             "type": "boolean"
           },
-          "sorted": {
+          "unsorted": {
             "type": "boolean"
           }
         }
@@ -40152,9 +40144,6 @@
           "sellerId": {
             "type": "integer",
             "format": "int64"
-          },
-          "slug": {
-            "type": "string"
           },
           "html": {
             "type": "string"

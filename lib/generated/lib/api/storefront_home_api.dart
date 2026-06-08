@@ -104,17 +104,17 @@ class StorefrontHomeApi {
     return null;
   }
 
-  /// Get published storefront home by slug
+  /// Get published storefront home by seller id
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [String] slug (required):
-  Future<Response> getPublishedWithHttpInfo(String slug,) async {
+  /// * [int] sellerId (required):
+  Future<Response> getPublishedWithHttpInfo(int sellerId,) async {
     // ignore: prefer_const_declarations
-    final path = r'/storefront/home/{slug}'
-      .replaceAll('{slug}', slug);
+    final path = r'/storefront/home/{sellerId}'
+      .replaceAll('{sellerId}', sellerId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -137,13 +137,13 @@ class StorefrontHomeApi {
     );
   }
 
-  /// Get published storefront home by slug
+  /// Get published storefront home by seller id
   ///
   /// Parameters:
   ///
-  /// * [String] slug (required):
-  Future<PublicStorefrontHomeResponse?> getPublished(String slug,) async {
-    final response = await getPublishedWithHttpInfo(slug,);
+  /// * [int] sellerId (required):
+  Future<PublicStorefrontHomeResponse?> getPublished(int sellerId,) async {
+    final response = await getPublishedWithHttpInfo(sellerId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

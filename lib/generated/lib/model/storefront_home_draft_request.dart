@@ -13,18 +13,8 @@ part of openapi.api;
 class StorefrontHomeDraftRequest {
   /// Returns a new [StorefrontHomeDraftRequest] instance.
   StorefrontHomeDraftRequest({
-    this.slug,
     this.html,
   });
-
-  /// Optional public slug. Lowercase letters, numbers, and dash only.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? slug;
 
   /// Single HTML document for the seller storefront home draft
   ///
@@ -37,25 +27,18 @@ class StorefrontHomeDraftRequest {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is StorefrontHomeDraftRequest &&
-    other.slug == slug &&
     other.html == html;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (slug == null ? 0 : slug!.hashCode) +
     (html == null ? 0 : html!.hashCode);
 
   @override
-  String toString() => 'StorefrontHomeDraftRequest[slug=$slug, html=$html]';
+  String toString() => 'StorefrontHomeDraftRequest[html=$html]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.slug != null) {
-      json[r'slug'] = this.slug;
-    } else {
-      json[r'slug'] = null;
-    }
     if (this.html != null) {
       json[r'html'] = this.html;
     } else {
@@ -83,7 +66,6 @@ class StorefrontHomeDraftRequest {
       }());
 
       return StorefrontHomeDraftRequest(
-        slug: mapValueOfType<String>(json, r'slug'),
         html: mapValueOfType<String>(json, r'html'),
       );
     }

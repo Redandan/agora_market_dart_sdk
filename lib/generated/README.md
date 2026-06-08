@@ -541,7 +541,7 @@ Class | Method | HTTP request | Description
 *StakingApi* | [**unfreezeStaking**](doc//StakingApi.md#unfreezestaking) | **POST** /staking/unfreeze | 申請解除質押
 *StorefrontHomeApi* | [**disableMyHome**](doc//StorefrontHomeApi.md#disablemyhome) | **POST** /stores/my-storefront-home/disable | Disable current seller custom storefront home
 *StorefrontHomeApi* | [**getMyHome**](doc//StorefrontHomeApi.md#getmyhome) | **GET** /stores/my-storefront-home | Get current seller storefront home draft/published state
-*StorefrontHomeApi* | [**getPublished**](doc//StorefrontHomeApi.md#getpublished) | **GET** /storefront/home/{slug} | Get published storefront home by slug
+*StorefrontHomeApi* | [**getPublished**](doc//StorefrontHomeApi.md#getpublished) | **GET** /storefront/home/{sellerId} | Get published storefront home by seller id
 *StorefrontHomeApi* | [**preview**](doc//StorefrontHomeApi.md#preview) | **GET** /stores/my-storefront-home/preview | Get current seller storefront home draft for preview
 *StorefrontHomeApi* | [**saveDraft**](doc//StorefrontHomeApi.md#savedraft) | **PUT** /stores/my-storefront-home/draft | Save current seller storefront home draft HTML
 *StorefrontHomeApi* | [**submitReview**](doc//StorefrontHomeApi.md#submitreview) | **POST** /stores/my-storefront-home/submit-review | Submit current seller storefront home draft for OPS review
