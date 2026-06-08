@@ -110,11 +110,11 @@ class StorefrontHomeApi {
   ///
   /// Parameters:
   ///
-  /// * [int] sellerId (required):
-  Future<Response> getPublishedWithHttpInfo(int sellerId,) async {
+  /// * [String] sellerId (required):
+  Future<Response> getPublishedWithHttpInfo(String sellerId,) async {
     // ignore: prefer_const_declarations
     final path = r'/storefront/home/{sellerId}'
-      .replaceAll('{sellerId}', sellerId.toString());
+      .replaceAll('{sellerId}', sellerId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -141,8 +141,8 @@ class StorefrontHomeApi {
   ///
   /// Parameters:
   ///
-  /// * [int] sellerId (required):
-  Future<PublicStorefrontHomeResponse?> getPublished(int sellerId,) async {
+  /// * [String] sellerId (required):
+  Future<PublicStorefrontHomeResponse?> getPublished(String sellerId,) async {
     final response = await getPublishedWithHttpInfo(sellerId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
