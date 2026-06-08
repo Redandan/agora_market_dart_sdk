@@ -854,6 +854,8 @@ class ApiClient {
           return ProxyOrderState.fromJson(value);
         case 'ProxyPricingBreakdown':
           return ProxyPricingBreakdown.fromJson(value);
+        case 'PublicStorefrontHomeResponse':
+          return PublicStorefrontHomeResponse.fromJson(value);
         case 'PushHealthResponseDTO':
           return PushHealthResponseDTO.fromJson(value);
         case 'PushNotificationDTO':
@@ -1012,6 +1014,12 @@ class ApiClient {
           return StoreShippingConfigParam.fromJson(value);
         case 'StoreUpdateParam':
           return StoreUpdateParam.fromJson(value);
+        case 'StorefrontHomeDraftRequest':
+          return StorefrontHomeDraftRequest.fromJson(value);
+        case 'StorefrontHomeResponse':
+          return StorefrontHomeResponse.fromJson(value);
+        case 'StorefrontHomeReviewRequest':
+          return StorefrontHomeReviewRequest.fromJson(value);
         case 'StrategyBacktestDetailQueryRequest':
           return StrategyBacktestDetailQueryRequest.fromJson(value);
         case 'StrategyBacktestDetailResponse':

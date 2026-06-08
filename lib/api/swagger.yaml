@@ -49,6 +49,10 @@
       "description": "管理員系統配置 API"
     },
     {
+      "name": "storefront-home",
+      "description": "Seller AI-customized storefront home APIs"
+    },
+    {
       "name": "管理員貼文管理",
       "description": "管理員管理貼文的API接口"
     },
@@ -229,6 +233,10 @@
       "description": "用戶認證 API"
     },
     {
+      "name": "admin-storefront-homes",
+      "description": "Admin/OPS storefront home review APIs"
+    },
+    {
       "name": "admin-stores",
       "description": "管理員商店管理 API"
     },
@@ -355,6 +363,37 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/ActivityDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stores/my-storefront-home/draft": {
+      "put": {
+        "tags": [
+          "storefront-home"
+        ],
+        "summary": "Save current seller storefront home draft HTML",
+        "operationId": "saveDraft",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StorefrontHomeDraftRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/StorefrontHomeResponse"
                 }
               }
             }
@@ -2774,6 +2813,48 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/PageProduct"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stores/my-storefront-home/submit-review": {
+      "post": {
+        "tags": [
+          "storefront-home"
+        ],
+        "summary": "Submit current seller storefront home draft for OPS review",
+        "operationId": "submitReview",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/StorefrontHomeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stores/my-storefront-home/disable": {
+      "post": {
+        "tags": [
+          "storefront-home"
+        ],
+        "summary": "Disable current seller custom storefront home",
+        "operationId": "disableMyHome",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/StorefrontHomeResponse"
                 }
               }
             }
@@ -9142,6 +9223,129 @@
         }
       }
     },
+    "/admin/storefront-homes/{sellerId}/reject": {
+      "post": {
+        "tags": [
+          "admin-storefront-homes"
+        ],
+        "summary": "Reject a seller storefront home draft",
+        "operationId": "reject",
+        "parameters": [
+          {
+            "name": "sellerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StorefrontHomeReviewRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/StorefrontHomeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/storefront-homes/{sellerId}/disable": {
+      "post": {
+        "tags": [
+          "admin-storefront-homes"
+        ],
+        "summary": "Disable a published seller custom storefront home",
+        "operationId": "disable",
+        "parameters": [
+          {
+            "name": "sellerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StorefrontHomeReviewRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/StorefrontHomeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/storefront-homes/{sellerId}/approve": {
+      "post": {
+        "tags": [
+          "admin-storefront-homes"
+        ],
+        "summary": "Approve and publish a seller storefront home draft",
+        "operationId": "approve",
+        "parameters": [
+          {
+            "name": "sellerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StorefrontHomeReviewRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/StorefrontHomeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/staking/interest-records": {
       "post": {
         "tags": [
@@ -12785,6 +12989,48 @@
         }
       }
     },
+    "/stores/my-storefront-home": {
+      "get": {
+        "tags": [
+          "storefront-home"
+        ],
+        "summary": "Get current seller storefront home draft/published state",
+        "operationId": "getMyHome",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/StorefrontHomeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stores/my-storefront-home/preview": {
+      "get": {
+        "tags": [
+          "storefront-home"
+        ],
+        "summary": "Get current seller storefront home draft for preview",
+        "operationId": "preview",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/StorefrontHomeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/stores/my-store": {
       "get": {
         "tags": [
@@ -12820,6 +13066,37 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/StoreAnalyticsDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/storefront/home/{slug}": {
+      "get": {
+        "tags": [
+          "storefront-home"
+        ],
+        "summary": "Get published storefront home by slug",
+        "operationId": "getPublished",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublicStorefrontHomeResponse"
                 }
               }
             }
@@ -17038,6 +17315,62 @@
         }
       }
     },
+    "/admin/storefront-homes/{sellerId}": {
+      "get": {
+        "tags": [
+          "admin-storefront-homes"
+        ],
+        "summary": "Get one seller storefront home for review",
+        "operationId": "getHome",
+        "parameters": [
+          {
+            "name": "sellerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/StorefrontHomeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/storefront-homes/reviewing": {
+      "get": {
+        "tags": [
+          "admin-storefront-homes"
+        ],
+        "summary": "List storefront home drafts waiting for OPS review",
+        "operationId": "listReviewing",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StorefrontHomeResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/staking/statistics": {
       "get": {
         "tags": [
@@ -19478,6 +19811,72 @@
           },
           "status": {
             "type": "string"
+          }
+        }
+      },
+      "StorefrontHomeDraftRequest": {
+        "type": "object",
+        "description": "Seller storefront home draft update",
+        "properties": {
+          "slug": {
+            "type": "string",
+            "description": "Optional public slug. Lowercase letters, numbers, and dash only.",
+            "maxLength": 80,
+            "minLength": 0
+          },
+          "html": {
+            "type": "string",
+            "description": "Single HTML document for the seller storefront home draft",
+            "maxLength": 500000,
+            "minLength": 0
+          }
+        }
+      },
+      "StorefrontHomeResponse": {
+        "type": "object",
+        "description": "Seller storefront home response",
+        "properties": {
+          "sellerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "EMPTY",
+              "DRAFT",
+              "REVIEWING",
+              "PUBLISHED",
+              "DISABLED"
+            ]
+          },
+          "draftHtml": {
+            "type": "string"
+          },
+          "publishedHtml": {
+            "type": "string"
+          },
+          "reviewNote": {
+            "type": "string"
+          },
+          "reviewedBy": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "reviewedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishedAt": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
@@ -36469,6 +36868,17 @@
           }
         }
       },
+      "StorefrontHomeReviewRequest": {
+        "type": "object",
+        "description": "OPS/Admin storefront home review request",
+        "properties": {
+          "reviewNote": {
+            "type": "string",
+            "maxLength": 2000,
+            "minLength": 0
+          }
+        }
+      },
       "InterestRecordSearchParam": {
         "type": "object",
         "description": "收益發放記錄搜尋參數",
@@ -39732,6 +40142,22 @@
           "customerStats": {
             "$ref": "#/components/schemas/CustomerStats",
             "description": "買家分布"
+          }
+        }
+      },
+      "PublicStorefrontHomeResponse": {
+        "type": "object",
+        "description": "Public published storefront home response",
+        "properties": {
+          "sellerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "html": {
+            "type": "string"
           }
         }
       },

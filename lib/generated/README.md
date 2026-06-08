@@ -229,6 +229,11 @@ Class | Method | HTTP request | Description
 *AdminStakingApi* | [**getNextInterestEstimate**](doc//AdminStakingApi.md#getnextinterestestimate) | **GET** /admin/staking/next-interest-estimate | 預估下次收益發放
 *AdminStakingApi* | [**getStatistics1**](doc//AdminStakingApi.md#getstatistics1) | **GET** /admin/staking/statistics | 質押統計報告
 *AdminStakingApi* | [**updateStakingConfig**](doc//AdminStakingApi.md#updatestakingconfig) | **PUT** /admin/staking/config | 更新質押配置
+*AdminStorefrontHomesApi* | [**approve**](doc//AdminStorefrontHomesApi.md#approve) | **POST** /admin/storefront-homes/{sellerId}/approve | Approve and publish a seller storefront home draft
+*AdminStorefrontHomesApi* | [**disable**](doc//AdminStorefrontHomesApi.md#disable) | **POST** /admin/storefront-homes/{sellerId}/disable | Disable a published seller custom storefront home
+*AdminStorefrontHomesApi* | [**getHome**](doc//AdminStorefrontHomesApi.md#gethome) | **GET** /admin/storefront-homes/{sellerId} | Get one seller storefront home for review
+*AdminStorefrontHomesApi* | [**listReviewing**](doc//AdminStorefrontHomesApi.md#listreviewing) | **GET** /admin/storefront-homes/reviewing | List storefront home drafts waiting for OPS review
+*AdminStorefrontHomesApi* | [**reject**](doc//AdminStorefrontHomesApi.md#reject) | **POST** /admin/storefront-homes/{sellerId}/reject | Reject a seller storefront home draft
 *AdminStoresApi* | [**createStoreByAdmin**](doc//AdminStoresApi.md#createstorebyadmin) | **POST** /admin/stores | 管理員新增商店
 *AdminStoresApi* | [**deleteStore**](doc//AdminStoresApi.md#deletestore) | **DELETE** /admin/stores/{storeId} | 刪除商店
 *AdminStoresApi* | [**disableStore**](doc//AdminStoresApi.md#disablestore) | **POST** /admin/stores/{storeId}/disable | 停用商店
@@ -534,6 +539,12 @@ Class | Method | HTTP request | Description
 *StakingApi* | [**getActiveStakings**](doc//StakingApi.md#getactivestakings) | **GET** /staking/active | 查詢正在進行中的質押
 *StakingApi* | [**searchStakings**](doc//StakingApi.md#searchstakings) | **POST** /staking/search | 管理員搜尋質押記錄
 *StakingApi* | [**unfreezeStaking**](doc//StakingApi.md#unfreezestaking) | **POST** /staking/unfreeze | 申請解除質押
+*StorefrontHomeApi* | [**disableMyHome**](doc//StorefrontHomeApi.md#disablemyhome) | **POST** /stores/my-storefront-home/disable | Disable current seller custom storefront home
+*StorefrontHomeApi* | [**getMyHome**](doc//StorefrontHomeApi.md#getmyhome) | **GET** /stores/my-storefront-home | Get current seller storefront home draft/published state
+*StorefrontHomeApi* | [**getPublished**](doc//StorefrontHomeApi.md#getpublished) | **GET** /storefront/home/{slug} | Get published storefront home by slug
+*StorefrontHomeApi* | [**preview**](doc//StorefrontHomeApi.md#preview) | **GET** /stores/my-storefront-home/preview | Get current seller storefront home draft for preview
+*StorefrontHomeApi* | [**saveDraft**](doc//StorefrontHomeApi.md#savedraft) | **PUT** /stores/my-storefront-home/draft | Save current seller storefront home draft HTML
+*StorefrontHomeApi* | [**submitReview**](doc//StorefrontHomeApi.md#submitreview) | **POST** /stores/my-storefront-home/submit-review | Submit current seller storefront home draft for OPS review
 *StoresApi* | [**createStore**](doc//StoresApi.md#createstore) | **POST** /stores/create | 創建商店
 *StoresApi* | [**getMyStore**](doc//StoresApi.md#getmystore) | **GET** /stores/my-store | 獲取當前用戶的商店
 *StoresApi* | [**getReturnPolicy**](doc//StoresApi.md#getreturnpolicy) | **GET** /stores/{sellerId}/return-policy | 查詢賣家退換貨政策
@@ -937,6 +948,7 @@ Class | Method | HTTP request | Description
  - [ProofAiValidationResponse](doc//ProofAiValidationResponse.md)
  - [ProxyOrderState](doc//ProxyOrderState.md)
  - [ProxyPricingBreakdown](doc//ProxyPricingBreakdown.md)
+ - [PublicStorefrontHomeResponse](doc//PublicStorefrontHomeResponse.md)
  - [PushHealthResponseDTO](doc//PushHealthResponseDTO.md)
  - [PushNotificationDTO](doc//PushNotificationDTO.md)
  - [PushNotificationResponseDTO](doc//PushNotificationResponseDTO.md)
@@ -1016,6 +1028,9 @@ Class | Method | HTTP request | Description
  - [StoreReturnPolicyDto](doc//StoreReturnPolicyDto.md)
  - [StoreShippingConfigParam](doc//StoreShippingConfigParam.md)
  - [StoreUpdateParam](doc//StoreUpdateParam.md)
+ - [StorefrontHomeDraftRequest](doc//StorefrontHomeDraftRequest.md)
+ - [StorefrontHomeResponse](doc//StorefrontHomeResponse.md)
+ - [StorefrontHomeReviewRequest](doc//StorefrontHomeReviewRequest.md)
  - [StrategyBacktestDetailQueryRequest](doc//StrategyBacktestDetailQueryRequest.md)
  - [StrategyBacktestDetailResponse](doc//StrategyBacktestDetailResponse.md)
  - [StrategyQueryRequest](doc//StrategyQueryRequest.md)
