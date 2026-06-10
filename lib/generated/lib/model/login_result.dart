@@ -26,6 +26,7 @@ class LoginResult {
     this.homePageInMaintenance,
     this.userInfo,
     this.recoveryAdvisory,
+    this.passkeySecuritySummary,
   });
 
   /// 操作是否成功
@@ -139,6 +140,15 @@ class LoginResult {
   ///
   AccountRecoveryAdvisory? recoveryAdvisory;
 
+  /// 目前登入帳號的 Passkey 綁定摘要；只針對目前 user，不提供任意 username 查詢
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  PasskeySecuritySummaryResponse? passkeySecuritySummary;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is LoginResult &&
     other.success == success &&
@@ -153,7 +163,8 @@ class LoginResult {
     other.defaultHomePage == defaultHomePage &&
     other.homePageInMaintenance == homePageInMaintenance &&
     other.userInfo == userInfo &&
-    other.recoveryAdvisory == recoveryAdvisory;
+    other.recoveryAdvisory == recoveryAdvisory &&
+    other.passkeySecuritySummary == passkeySecuritySummary;
 
   @override
   int get hashCode =>
@@ -170,10 +181,11 @@ class LoginResult {
     (defaultHomePage == null ? 0 : defaultHomePage!.hashCode) +
     (homePageInMaintenance == null ? 0 : homePageInMaintenance!.hashCode) +
     (userInfo == null ? 0 : userInfo!.hashCode) +
-    (recoveryAdvisory == null ? 0 : recoveryAdvisory!.hashCode);
+    (recoveryAdvisory == null ? 0 : recoveryAdvisory!.hashCode) +
+    (passkeySecuritySummary == null ? 0 : passkeySecuritySummary!.hashCode);
 
   @override
-  String toString() => 'LoginResult[success=$success, message=$message, token=$token, refreshToken=$refreshToken, tokenIssuedAt=$tokenIssuedAt, tokenExpiration=$tokenExpiration, refreshTokenExpiration=$refreshTokenExpiration, userId=$userId, username=$username, defaultHomePage=$defaultHomePage, homePageInMaintenance=$homePageInMaintenance, userInfo=$userInfo, recoveryAdvisory=$recoveryAdvisory]';
+  String toString() => 'LoginResult[success=$success, message=$message, token=$token, refreshToken=$refreshToken, tokenIssuedAt=$tokenIssuedAt, tokenExpiration=$tokenExpiration, refreshTokenExpiration=$refreshTokenExpiration, userId=$userId, username=$username, defaultHomePage=$defaultHomePage, homePageInMaintenance=$homePageInMaintenance, userInfo=$userInfo, recoveryAdvisory=$recoveryAdvisory, passkeySecuritySummary=$passkeySecuritySummary]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -242,6 +254,11 @@ class LoginResult {
     } else {
       json[r'recoveryAdvisory'] = null;
     }
+    if (this.passkeySecuritySummary != null) {
+      json[r'passkeySecuritySummary'] = this.passkeySecuritySummary;
+    } else {
+      json[r'passkeySecuritySummary'] = null;
+    }
     return json;
   }
 
@@ -277,6 +294,7 @@ class LoginResult {
         homePageInMaintenance: mapValueOfType<bool>(json, r'homePageInMaintenance'),
         userInfo: UserInfo.fromJson(json[r'userInfo']),
         recoveryAdvisory: AccountRecoveryAdvisory.fromJson(json[r'recoveryAdvisory']),
+        passkeySecuritySummary: PasskeySecuritySummaryResponse.fromJson(json[r'passkeySecuritySummary']),
       );
     }
     return null;

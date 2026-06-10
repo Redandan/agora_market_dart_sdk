@@ -16639,6 +16639,32 @@
         }
       }
     },
+    "/auth/passkey/security-summary": {
+      "get": {
+        "tags": [
+          "auth-passkey"
+        ],
+        "summary": "Get current user's Passkey binding summary without account enumeration",
+        "operationId": "securitySummary",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasskeySecuritySummaryResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/auth/passkey/credentials": {
       "get": {
         "tags": [
@@ -20655,9 +20681,6 @@
           "sort": {
             "$ref": "#/components/schemas/SortObject"
           },
-          "unpaged": {
-            "type": "boolean"
-          },
           "paged": {
             "type": "boolean"
           },
@@ -20668,6 +20691,9 @@
           "pageSize": {
             "type": "integer",
             "format": "int32"
+          },
+          "unpaged": {
+            "type": "boolean"
           }
         }
       },
@@ -20677,10 +20703,10 @@
           "empty": {
             "type": "boolean"
           },
-          "unsorted": {
+          "sorted": {
             "type": "boolean"
           },
-          "sorted": {
+          "unsorted": {
             "type": "boolean"
           }
         }
@@ -27296,6 +27322,76 @@
           "recoveryAdvisory": {
             "$ref": "#/components/schemas/AccountRecoveryAdvisory",
             "description": "帳號恢復方式建議，用於提示 Passkey-only 或缺少恢復方式的用戶"
+          },
+          "passkeySecuritySummary": {
+            "$ref": "#/components/schemas/PasskeySecuritySummaryResponse",
+            "description": "目前登入帳號的 Passkey 綁定摘要；只針對目前 user，不提供任意 username 查詢"
+          }
+        }
+      },
+      "PasskeySecuritySummaryResponse": {
+        "type": "object",
+        "description": "Authenticated current-user Passkey binding summary. Never returned for arbitrary usernames.",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Current authenticated user id.",
+            "example": 2
+          },
+          "passkeyCredentialCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Number of active, non-revoked Passkey credentials bound to the current user.",
+            "example": 1
+          },
+          "hasPasskeyCredential": {
+            "type": "boolean",
+            "description": "Whether the current user has at least one active Passkey credential.",
+            "example": true
+          },
+          "discoverableCredentialCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Number of active credentials marked discoverable by the authenticator.",
+            "example": 1
+          },
+          "hasDiscoverableCredential": {
+            "type": "boolean",
+            "description": "Whether the current user has at least one discoverable credential.",
+            "example": true
+          },
+          "rpIds": {
+            "type": "array",
+            "description": "RP IDs for the current user's active Passkeys.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "latestCredentialCreatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Most recent active Passkey creation time for this user."
+          },
+          "latestCredentialLastUsedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Most recent active Passkey use time for this user."
+          },
+          "accountQuickLoginEligible": {
+            "type": "boolean",
+            "description": "Frontend hint for whether account-style Passkey quick login can be shown for this remembered account."
+          },
+          "passkeyAdvisoryCodes": {
+            "type": "array",
+            "description": "Stable advisory reason codes for Passkey UI decisions.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "recoveryAdvisory": {
+            "$ref": "#/components/schemas/AccountRecoveryAdvisory",
+            "description": "Account recovery advisory for Passkey-only or weak recovery setups."
           }
         }
       },
@@ -27403,6 +27499,10 @@
           "recoveryAdvisory": {
             "$ref": "#/components/schemas/AccountRecoveryAdvisory",
             "description": "帳號恢復方式建議，用於提示 Passkey-only 或缺少恢復方式的用戶"
+          },
+          "passkeySecuritySummary": {
+            "$ref": "#/components/schemas/PasskeySecuritySummaryResponse",
+            "description": "目前登入帳號的 Passkey 綁定摘要；只針對目前 user，不提供任意 username 查詢"
           }
         }
       },
@@ -35693,6 +35793,10 @@
           "loginResult": {
             "$ref": "#/components/schemas/LoginResult"
           },
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
           "credentialId": {
             "type": "integer",
             "format": "int64"
@@ -35711,6 +35815,13 @@
           },
           "backedUp": {
             "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "passkeySecuritySummary": {
+            "$ref": "#/components/schemas/PasskeySecuritySummaryResponse"
           }
         }
       },
@@ -35805,6 +35916,10 @@
         "type": "object",
         "description": "Passkey registration verification response",
         "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
           "credentialId": {
             "type": "integer",
             "format": "int64"
@@ -35823,6 +35938,13 @@
           },
           "backedUp": {
             "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "passkeySecuritySummary": {
+            "$ref": "#/components/schemas/PasskeySecuritySummaryResponse"
           }
         }
       },

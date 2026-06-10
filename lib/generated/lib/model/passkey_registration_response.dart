@@ -13,13 +13,24 @@ part of openapi.api;
 class PasskeyRegistrationResponse {
   /// Returns a new [PasskeyRegistrationResponse] instance.
   PasskeyRegistrationResponse({
+    this.userId,
     this.credentialId,
     this.rpId,
     this.passkeyCredentialId,
     this.discoverable,
     this.backupEligible,
     this.backedUp,
+    this.createdAt,
+    this.passkeySecuritySummary,
   });
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? userId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -69,30 +80,57 @@ class PasskeyRegistrationResponse {
   ///
   bool? backedUp;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? createdAt;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  PasskeySecuritySummaryResponse? passkeySecuritySummary;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is PasskeyRegistrationResponse &&
+    other.userId == userId &&
     other.credentialId == credentialId &&
     other.rpId == rpId &&
     other.passkeyCredentialId == passkeyCredentialId &&
     other.discoverable == discoverable &&
     other.backupEligible == backupEligible &&
-    other.backedUp == backedUp;
+    other.backedUp == backedUp &&
+    other.createdAt == createdAt &&
+    other.passkeySecuritySummary == passkeySecuritySummary;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (userId == null ? 0 : userId!.hashCode) +
     (credentialId == null ? 0 : credentialId!.hashCode) +
     (rpId == null ? 0 : rpId!.hashCode) +
     (passkeyCredentialId == null ? 0 : passkeyCredentialId!.hashCode) +
     (discoverable == null ? 0 : discoverable!.hashCode) +
     (backupEligible == null ? 0 : backupEligible!.hashCode) +
-    (backedUp == null ? 0 : backedUp!.hashCode);
+    (backedUp == null ? 0 : backedUp!.hashCode) +
+    (createdAt == null ? 0 : createdAt!.hashCode) +
+    (passkeySecuritySummary == null ? 0 : passkeySecuritySummary!.hashCode);
 
   @override
-  String toString() => 'PasskeyRegistrationResponse[credentialId=$credentialId, rpId=$rpId, passkeyCredentialId=$passkeyCredentialId, discoverable=$discoverable, backupEligible=$backupEligible, backedUp=$backedUp]';
+  String toString() => 'PasskeyRegistrationResponse[userId=$userId, credentialId=$credentialId, rpId=$rpId, passkeyCredentialId=$passkeyCredentialId, discoverable=$discoverable, backupEligible=$backupEligible, backedUp=$backedUp, createdAt=$createdAt, passkeySecuritySummary=$passkeySecuritySummary]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.userId != null) {
+      json[r'userId'] = this.userId;
+    } else {
+      json[r'userId'] = null;
+    }
     if (this.credentialId != null) {
       json[r'credentialId'] = this.credentialId;
     } else {
@@ -123,6 +161,16 @@ class PasskeyRegistrationResponse {
     } else {
       json[r'backedUp'] = null;
     }
+    if (this.createdAt != null) {
+      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
+    } else {
+      json[r'createdAt'] = null;
+    }
+    if (this.passkeySecuritySummary != null) {
+      json[r'passkeySecuritySummary'] = this.passkeySecuritySummary;
+    } else {
+      json[r'passkeySecuritySummary'] = null;
+    }
     return json;
   }
 
@@ -145,12 +193,15 @@ class PasskeyRegistrationResponse {
       }());
 
       return PasskeyRegistrationResponse(
+        userId: mapValueOfType<int>(json, r'userId'),
         credentialId: mapValueOfType<int>(json, r'credentialId'),
         rpId: mapValueOfType<String>(json, r'rpId'),
         passkeyCredentialId: mapValueOfType<String>(json, r'passkeyCredentialId'),
         discoverable: mapValueOfType<bool>(json, r'discoverable'),
         backupEligible: mapValueOfType<bool>(json, r'backupEligible'),
         backedUp: mapValueOfType<bool>(json, r'backedUp'),
+        createdAt: mapDateTime(json, r'createdAt', r''),
+        passkeySecuritySummary: PasskeySecuritySummaryResponse.fromJson(json[r'passkeySecuritySummary']),
       );
     }
     return null;

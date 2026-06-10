@@ -754,6 +754,8 @@ class ApiClient {
           return PasskeyOptionsResponse.fromJson(value);
         case 'PasskeyRegistrationResponse':
           return PasskeyRegistrationResponse.fromJson(value);
+        case 'PasskeySecuritySummaryResponse':
+          return PasskeySecuritySummaryResponse.fromJson(value);
         case 'PasskeySignupOptionsRequest':
           return PasskeySignupOptionsRequest.fromJson(value);
         case 'PasskeySignupVerifyResponse':

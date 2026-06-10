@@ -284,6 +284,7 @@ Class | Method | HTTP request | Description
 *AuthPasskeyApi* | [**listCredentials**](doc//AuthPasskeyApi.md#listcredentials) | **GET** /auth/passkey/credentials | List current user's registered passkeys
 *AuthPasskeyApi* | [**loginCapability**](doc//AuthPasskeyApi.md#logincapability) | **POST** /auth/passkey/login/capability | Get Passkey quick-login capability for current origin
 *AuthPasskeyApi* | [**revokeCredential**](doc//AuthPasskeyApi.md#revokecredential) | **DELETE** /auth/passkey/credentials/{credentialId} | Disable/revoke a registered passkey
+*AuthPasskeyApi* | [**securitySummary**](doc//AuthPasskeyApi.md#securitysummary) | **GET** /auth/passkey/security-summary | Get current user's Passkey binding summary without account enumeration
 *AuthPasskeyApi* | [**startLogin**](doc//AuthPasskeyApi.md#startlogin) | **POST** /auth/passkey/login/options | Generate WebAuthn passkey login options
 *AuthPasskeyApi* | [**startRegistration**](doc//AuthPasskeyApi.md#startregistration) | **POST** /auth/passkey/register/options | Generate WebAuthn passkey registration options
 *AuthPasskeyApi* | [**startSignup**](doc//AuthPasskeyApi.md#startsignup) | **POST** /auth/passkey/signup/options | Generate WebAuthn passkey first-time signup options
@@ -898,6 +899,7 @@ Class | Method | HTTP request | Description
  - [PasskeyOptionsRequest](doc//PasskeyOptionsRequest.md)
  - [PasskeyOptionsResponse](doc//PasskeyOptionsResponse.md)
  - [PasskeyRegistrationResponse](doc//PasskeyRegistrationResponse.md)
+ - [PasskeySecuritySummaryResponse](doc//PasskeySecuritySummaryResponse.md)
  - [PasskeySignupOptionsRequest](doc//PasskeySignupOptionsRequest.md)
  - [PasskeySignupVerifyResponse](doc//PasskeySignupVerifyResponse.md)
  - [PasskeyVerifyRequest](doc//PasskeyVerifyRequest.md)
