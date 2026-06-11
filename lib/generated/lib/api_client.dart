@@ -208,10 +208,6 @@ class ApiClient {
           return AdminStoreUpdateParam.fromJson(value);
         case 'AiProductClassificationSuggestion':
           return AiProductClassificationSuggestion.fromJson(value);
-        case 'AiStrategyDiscoveryRequest':
-          return AiStrategyDiscoveryRequest.fromJson(value);
-        case 'AiStrategyDiscoveryResponse':
-          return AiStrategyDiscoveryResponse.fromJson(value);
         case 'ApiResponseCodeSupportKnowledgeCandidate':
           return ApiResponseCodeSupportKnowledgeCandidate.fromJson(value);
         case 'ApiResponseCodeSupportKnowledgeImportResult':
@@ -232,8 +228,6 @@ class ApiClient {
           return ApiResponseListKnowledgeResponse.fromJson(value);
         case 'ApiResponseListLoginMethod':
           return ApiResponseListLoginMethod.fromJson(value);
-        case 'ApiResponseListOpenPositionDto':
-          return ApiResponseListOpenPositionDto.fromJson(value);
         case 'ApiResponseListPendingQuestionResponse':
           return ApiResponseListPendingQuestionResponse.fromJson(value);
         case 'ApiResponseListPostResponse':
@@ -250,8 +244,6 @@ class ApiClient {
           return ApiResponseOAuth2AuthorizeResponse.fromJson(value);
         case 'ApiResponseOAuth2TokenResponse':
           return ApiResponseOAuth2TokenResponse.fromJson(value);
-        case 'ApiResponseObject':
-          return ApiResponseObject.fromJson(value);
         case 'ApiResponsePageClientLog':
           return ApiResponsePageClientLog.fromJson(value);
         case 'ApiResponsePageColdWallet':
@@ -286,10 +278,6 @@ class ApiClient {
           return AutoReplyResetStatsResponse.fromJson(value);
         case 'AutoReplyStats':
           return AutoReplyStats.fromJson(value);
-        case 'BacktestResultResponse':
-          return BacktestResultResponse.fromJson(value);
-        case 'BacktestRunRequest':
-          return BacktestRunRequest.fromJson(value);
         case 'BalanceConversion':
           return BalanceConversion.fromJson(value);
         case 'BatchReviewPromoCodeParam':
@@ -312,8 +300,6 @@ class ApiClient {
           return BrokenImageCleanupResponse.fromJson(value);
         case 'BrokenImageFinding':
           return BrokenImageFinding.fromJson(value);
-        case 'CandidateResult':
-          return CandidateResult.fromJson(value);
         case 'CartCheckoutItemParam':
           return CartCheckoutItemParam.fromJson(value);
         case 'CartCheckoutParam':
@@ -388,8 +374,6 @@ class ApiClient {
           return CreatePromoCodeParam.fromJson(value);
         case 'CreateRechargeParam':
           return CreateRechargeParam.fromJson(value);
-        case 'CreateStrategyRequest':
-          return CreateStrategyRequest.fromJson(value);
         case 'CreateWithdrawParam':
           return CreateWithdrawParam.fromJson(value);
         case 'CustomerIssue':
@@ -452,8 +436,6 @@ class ApiClient {
           return DemandStatusUpdateRequest.fromJson(value);
         case 'DeviceInfo':
           return DeviceInfo.fromJson(value);
-        case 'DiagnosticLogDto':
-          return DiagnosticLogDto.fromJson(value);
         case 'Dispute':
           return Dispute.fromJson(value);
         case 'DisputeAiAnalysisResponse':
@@ -540,18 +522,6 @@ class ApiClient {
           return ItemState.fromJson(value);
         case 'JobTypeInfo':
           return JobTypeInfo.fromJson(value);
-        case 'KlineBarDTO':
-          return KlineBarDTO.fromJson(value);
-        case 'KlineImportRequest':
-          return KlineImportRequest.fromJson(value);
-        case 'KlineImportResponse':
-          return KlineImportResponse.fromJson(value);
-        case 'KlineInfoResponse':
-          return KlineInfoResponse.fromJson(value);
-        case 'KlineSubscribeRequest':
-          return KlineSubscribeRequest.fromJson(value);
-        case 'KlineSubscriptionInfo':
-          return KlineSubscriptionInfo.fromJson(value);
         case 'KnowledgeEntry':
           return KnowledgeEntry.fromJson(value);
         case 'KnowledgeResponse':
@@ -638,8 +608,6 @@ class ApiClient {
           return OAuth2TokenResponse.fromJson(value);
         case 'OAuthBindingInfo':
           return OAuthBindingInfo.fromJson(value);
-        case 'OpenPositionDto':
-          return OpenPositionDto.fromJson(value);
         case 'Order':
           return Order.fromJson(value);
         case 'OrderActionState':
@@ -982,8 +950,6 @@ class ApiClient {
           return SlotSpinResponse.fromJson(value);
         case 'SlotSymbolInfo':
           return SlotSymbolInfo.fromJson(value);
-        case 'SopMtfAdxConfig':
-          return SopMtfAdxConfig.fromJson(value);
         case 'SortObject':
           return SortObject.fromJson(value);
         case 'Staking':
@@ -1022,14 +988,6 @@ class ApiClient {
           return StorefrontHomeResponse.fromJson(value);
         case 'StorefrontHomeReviewRequest':
           return StorefrontHomeReviewRequest.fromJson(value);
-        case 'StrategyBacktestDetailQueryRequest':
-          return StrategyBacktestDetailQueryRequest.fromJson(value);
-        case 'StrategyBacktestDetailResponse':
-          return StrategyBacktestDetailResponse.fromJson(value);
-        case 'StrategyQueryRequest':
-          return StrategyQueryRequest.fromJson(value);
-        case 'StrategyResponse':
-          return StrategyResponse.fromJson(value);
         case 'SubmittedOrder':
           return SubmittedOrder.fromJson(value);
         case 'SuggestionActionParam':
@@ -1064,8 +1022,6 @@ class ApiClient {
           return TopSellerDTO.fromJson(value);
         case 'TrackReferrerRequest':
           return TrackReferrerRequest.fromJson(value);
-        case 'TradeRecordDto':
-          return TradeRecordDto.fromJson(value);
         case 'Transaction':
           return Transaction.fromJson(value);
         case 'TransactionListParam':
@@ -1086,8 +1042,6 @@ class ApiClient {
           return UpdateDeliveryOrderParam.fromJson(value);
         case 'UpdatePromoCodeParam':
           return UpdatePromoCodeParam.fromJson(value);
-        case 'UpdateStrategyRequest':
-          return UpdateStrategyRequest.fromJson(value);
         case 'User':
           return User.fromJson(value);
         case 'UserAddress':

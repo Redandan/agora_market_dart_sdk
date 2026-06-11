@@ -176,7 +176,6 @@ Class | Method | HTTP request | Description
 *AdminExchangeRateRangeApi* | [**editRange**](doc//AdminExchangeRateRangeApi.md#editrange) | **POST** /admin/exchange-rate-range/edit | 更新匯率範圍
 *AdminExchangeRateRangeApi* | [**getAllRanges**](doc//AdminExchangeRateRangeApi.md#getallranges) | **POST** /admin/exchange-rate-range/all | 搜尋匯率範圍
 *AdminExchangeRateRangeApi* | [**rejectSuggestion**](doc//AdminExchangeRateRangeApi.md#rejectsuggestion) | **POST** /admin/exchange-rate-range/suggestions/{id}/reject | 拒絕建議
-*AdminMarketControllerApi* | [**backfillOi**](doc//AdminMarketControllerApi.md#backfilloi) | **POST** /admin/market/backfill-oi | 
 *AdminMembersApi* | [**createUserByAdmin**](doc//AdminMembersApi.md#createuserbyadmin) | **POST** /admin/members/create-user | 管理員創建用戶
 *AdminMembersApi* | [**getMemberDetail**](doc//AdminMembersApi.md#getmemberdetail) | **GET** /admin/members/{memberId} | 查看會員詳情
 *AdminMembersApi* | [**getMemberStatistics**](doc//AdminMembersApi.md#getmemberstatistics) | **GET** /admin/members/statistics | 會員統計報告
@@ -192,13 +191,6 @@ Class | Method | HTTP request | Description
 *AdminNotificationsApi* | [**getSystemNotificationStats**](doc//AdminNotificationsApi.md#getsystemnotificationstats) | **GET** /admin/notifications/stats | 獲取通知統計
 *AdminNotificationsApi* | [**searchNotifications1**](doc//AdminNotificationsApi.md#searchnotifications1) | **POST** /admin/notifications/search | 搜索通知
 *AdminNotificationsApi* | [**updateNotification1**](doc//AdminNotificationsApi.md#updatenotification1) | **PUT** /admin/notifications/{notificationId} | 更新通知
-*AdminOcoControllerApi* | [**listPositions**](doc//AdminOcoControllerApi.md#listpositions) | **GET** /admin/oco/positions | 
-*AdminOcoControllerApi* | [**marketBuyManual**](doc//AdminOcoControllerApi.md#marketbuymanual) | **POST** /admin/oco/market-buy | 
-*AdminOcoControllerApi* | [**marketSellOrphan**](doc//AdminOcoControllerApi.md#marketsellorphan) | **POST** /admin/oco/market-sell/{currency} | 
-*AdminOcoControllerApi* | [**marketSellQty**](doc//AdminOcoControllerApi.md#marketsellqty) | **POST** /admin/oco/market-sell/{currency}/{qty} | 
-*AdminOcoControllerApi* | [**modifyOco**](doc//AdminOcoControllerApi.md#modifyoco) | **POST** /admin/oco/modify/{positionId} | 
-*AdminOcoControllerApi* | [**retryOco**](doc//AdminOcoControllerApi.md#retryoco) | **POST** /admin/oco/retry/{positionId} | 
-*AdminOcoControllerApi* | [**swapCheck**](doc//AdminOcoControllerApi.md#swapcheck) | **GET** /admin/oco/swap-check | 
 *AdminOrdersApi* | [**cancelOrderByAdmin**](doc//AdminOrdersApi.md#cancelorderbyadmin) | **POST** /admin/orders/{orderId}/cancel | 取消訂單
 *AdminOrdersApi* | [**getOrderDetail**](doc//AdminOrdersApi.md#getorderdetail) | **GET** /admin/orders/{orderId} | 查看訂單詳情
 *AdminOrdersApi* | [**getOrderStatistics**](doc//AdminOrdersApi.md#getorderstatistics) | **GET** /admin/orders/statistics | 訂單統計報告
@@ -295,15 +287,6 @@ Class | Method | HTTP request | Description
 *AutoReplyApi* | [**searchConfigs**](doc//AutoReplyApi.md#searchconfigs) | **POST** /admin/auto-reply/configs/search | 搜尋自動回復配置
 *AutoReplyApi* | [**toggleConfig**](doc//AutoReplyApi.md#toggleconfig) | **PUT** /admin/auto-reply/configs/{id}/toggle | 啟用/禁用配置
 *AutoReplyApi* | [**updateReplyConfig**](doc//AutoReplyApi.md#updatereplyconfig) | **PUT** /admin/auto-reply/configs/{id} | 更新配置
-*BacktestApi* | [**createStrategy**](doc//BacktestApi.md#createstrategy) | **POST** /backtests/strategies | 建立策略
-*BacktestApi* | [**deleteStrategy**](doc//BacktestApi.md#deletestrategy) | **DELETE** /backtests/strategies/{strategyId} | 刪除策略
-*BacktestApi* | [**queryStrategies**](doc//BacktestApi.md#querystrategies) | **POST** /backtests/strategies/query | 多條件查詢策略
-*BacktestApi* | [**queryStrategyBacktestDetail**](doc//BacktestApi.md#querystrategybacktestdetail) | **POST** /backtests/strategies/results/query | 查詢策略詳情（含回測結果）
-*BacktestApi* | [**runBacktest**](doc//BacktestApi.md#runbacktest) | **POST** /backtests/results | 執行回測
-*BacktestApi* | [**runBacktestExploration**](doc//BacktestApi.md#runbacktestexploration) | **POST** /backtests/results/exploration | 執行回測（包含停用策略）
-*BacktestApi* | [**triggerAdaptiveDiscovery**](doc//BacktestApi.md#triggeradaptivediscovery) | **POST** /backtests/adaptive-discovery | 市場感知自適應策略探勘
-*BacktestApi* | [**triggerAiDiscovery**](doc//BacktestApi.md#triggeraidiscovery) | **POST** /backtests/ai-discovery | AI 策略自動探勘
-*BacktestApi* | [**updateStrategy**](doc//BacktestApi.md#updatestrategy) | **PUT** /backtests/strategies/{strategyId} | 編輯策略
 *BettingApi* | [**getMarketBets**](doc//BettingApi.md#getmarketbets) | **GET** /bets/market/{marketId} | 市場投注記錄
 *BettingApi* | [**getMyBets**](doc//BettingApi.md#getmybets) | **GET** /bets/my | 我的投注記錄
 *BettingApi* | [**placeBet**](doc//BettingApi.md#placebet) | **POST** /bets | 下注
@@ -386,16 +369,6 @@ Class | Method | HTTP request | Description
 *LogisticsApi* | [**listLogisticsPostalDistrictsByCity**](doc//LogisticsApi.md#listlogisticspostaldistrictsbycity) | **GET** /logistics/postal/city/{city}/districts | 查詢城市行政區
 *LogisticsApi* | [**searchLogisticsPostalAreas**](doc//LogisticsApi.md#searchlogisticspostalareas) | **POST** /logistics/postal/search | 郵遞區號模糊查詢
 *LogisticsApi* | [**validateLogisticsPostalCode**](doc//LogisticsApi.md#validatelogisticspostalcode) | **GET** /logistics/postal-codes/{postalCode}/validate | 郵遞區號驗證
-*MarketChartApi* | [**getIntervals**](doc//MarketChartApi.md#getintervals) | **GET** /market/intervals | 查詢某交易對可用週期清單
-*MarketChartApi* | [**getKlines**](doc//MarketChartApi.md#getklines) | **GET** /market/klines | 查詢 K 線圖表資料
-*MarketChartApi* | [**getSymbols1**](doc//MarketChartApi.md#getsymbols1) | **GET** /market/symbols | 查詢可用交易對清單
-*MarketChartApi* | [**getTicker**](doc//MarketChartApi.md#getticker) | **GET** /market/ticker | 查詢最新 K 線（即時價格快照）
-*MarketDataAdminApi* | [**importHistorical**](doc//MarketDataAdminApi.md#importhistorical) | **POST** /admin/market/import | 批次拉取 Binance 歷史 K 線
-*MarketDataAdminApi* | [**klineInfo**](doc//MarketDataAdminApi.md#klineinfo) | **GET** /admin/market/info | 查詢 K 線資料質量統計
-*MarketDataAdminApi* | [**listSubscriptions**](doc//MarketDataAdminApi.md#listsubscriptions) | **GET** /admin/market/subscriptions | 查詢所有 WS 訂閱狀態（雙源合併）
-*MarketDataAdminApi* | [**reimportHistorical**](doc//MarketDataAdminApi.md#reimporthistorical) | **POST** /admin/market/reimport | 刪除並重新匯入 K 線
-*MarketDataAdminApi* | [**subscribe1**](doc//MarketDataAdminApi.md#subscribe1) | **POST** /admin/market/subscribe | 開始 WS 即時訂閱（對所有 provider 同步訂閱）
-*MarketDataAdminApi* | [**unsubscribe1**](doc//MarketDataAdminApi.md#unsubscribe1) | **DELETE** /admin/market/subscribe | 停止 WS 訂閱（對所有 provider 同步移除）
 *McpStreamableHttpControllerApi* | [**handleMcp**](doc//McpStreamableHttpControllerApi.md#handlemcp) | **POST** /mcp | 
 *McpStreamableHttpControllerApi* | [**handleUserMcp**](doc//McpStreamableHttpControllerApi.md#handleusermcp) | **POST** /mcp/user | 
 *McpUserConnectorApi* | [**activitySummary**](doc//McpUserConnectorApi.md#activitysummary) | **GET** /mcp/user/connector/activity/summary | Get current user's best-effort ChatGPT MCP activity summary
@@ -626,8 +599,6 @@ Class | Method | HTTP request | Description
  - [AdminStoreSearchParam](doc//AdminStoreSearchParam.md)
  - [AdminStoreUpdateParam](doc//AdminStoreUpdateParam.md)
  - [AiProductClassificationSuggestion](doc//AiProductClassificationSuggestion.md)
- - [AiStrategyDiscoveryRequest](doc//AiStrategyDiscoveryRequest.md)
- - [AiStrategyDiscoveryResponse](doc//AiStrategyDiscoveryResponse.md)
  - [ApiResponseCodeSupportKnowledgeCandidate](doc//ApiResponseCodeSupportKnowledgeCandidate.md)
  - [ApiResponseCodeSupportKnowledgeImportResult](doc//ApiResponseCodeSupportKnowledgeImportResult.md)
  - [ApiResponseColdWallet](doc//ApiResponseColdWallet.md)
@@ -638,7 +609,6 @@ Class | Method | HTTP request | Description
  - [ApiResponseListCodeSupportKnowledgeCandidate](doc//ApiResponseListCodeSupportKnowledgeCandidate.md)
  - [ApiResponseListKnowledgeResponse](doc//ApiResponseListKnowledgeResponse.md)
  - [ApiResponseListLoginMethod](doc//ApiResponseListLoginMethod.md)
- - [ApiResponseListOpenPositionDto](doc//ApiResponseListOpenPositionDto.md)
  - [ApiResponseListPendingQuestionResponse](doc//ApiResponseListPendingQuestionResponse.md)
  - [ApiResponseListPostResponse](doc//ApiResponseListPostResponse.md)
  - [ApiResponseLoginResult](doc//ApiResponseLoginResult.md)
@@ -647,7 +617,6 @@ Class | Method | HTTP request | Description
  - [ApiResponseMapStringObject](doc//ApiResponseMapStringObject.md)
  - [ApiResponseOAuth2AuthorizeResponse](doc//ApiResponseOAuth2AuthorizeResponse.md)
  - [ApiResponseOAuth2TokenResponse](doc//ApiResponseOAuth2TokenResponse.md)
- - [ApiResponseObject](doc//ApiResponseObject.md)
  - [ApiResponsePageClientLog](doc//ApiResponsePageClientLog.md)
  - [ApiResponsePageColdWallet](doc//ApiResponsePageColdWallet.md)
  - [ApiResponsePageFileRecord](doc//ApiResponsePageFileRecord.md)
@@ -665,8 +634,6 @@ Class | Method | HTTP request | Description
  - [AutoReplyDeleteResponse](doc//AutoReplyDeleteResponse.md)
  - [AutoReplyResetStatsResponse](doc//AutoReplyResetStatsResponse.md)
  - [AutoReplyStats](doc//AutoReplyStats.md)
- - [BacktestResultResponse](doc//BacktestResultResponse.md)
- - [BacktestRunRequest](doc//BacktestRunRequest.md)
  - [BalanceConversion](doc//BalanceConversion.md)
  - [BatchReviewPromoCodeParam](doc//BatchReviewPromoCodeParam.md)
  - [BatchReviewResult](doc//BatchReviewResult.md)
@@ -678,7 +645,6 @@ Class | Method | HTTP request | Description
  - [BrokenImageAuditResponse](doc//BrokenImageAuditResponse.md)
  - [BrokenImageCleanupResponse](doc//BrokenImageCleanupResponse.md)
  - [BrokenImageFinding](doc//BrokenImageFinding.md)
- - [CandidateResult](doc//CandidateResult.md)
  - [CartCheckoutItemParam](doc//CartCheckoutItemParam.md)
  - [CartCheckoutParam](doc//CartCheckoutParam.md)
  - [CartCheckoutPlanParam](doc//CartCheckoutPlanParam.md)
@@ -716,7 +682,6 @@ Class | Method | HTTP request | Description
  - [CreateMarketRequest](doc//CreateMarketRequest.md)
  - [CreatePromoCodeParam](doc//CreatePromoCodeParam.md)
  - [CreateRechargeParam](doc//CreateRechargeParam.md)
- - [CreateStrategyRequest](doc//CreateStrategyRequest.md)
  - [CreateWithdrawParam](doc//CreateWithdrawParam.md)
  - [CustomerIssue](doc//CustomerIssue.md)
  - [CustomerStats](doc//CustomerStats.md)
@@ -748,7 +713,6 @@ Class | Method | HTTP request | Description
  - [DemandStatusHistoryResponse](doc//DemandStatusHistoryResponse.md)
  - [DemandStatusUpdateRequest](doc//DemandStatusUpdateRequest.md)
  - [DeviceInfo](doc//DeviceInfo.md)
- - [DiagnosticLogDto](doc//DiagnosticLogDto.md)
  - [Dispute](doc//Dispute.md)
  - [DisputeAiAnalysisResponse](doc//DisputeAiAnalysisResponse.md)
  - [DisputeAppealParam](doc//DisputeAppealParam.md)
@@ -792,12 +756,6 @@ Class | Method | HTTP request | Description
  - [Item](doc//Item.md)
  - [ItemState](doc//ItemState.md)
  - [JobTypeInfo](doc//JobTypeInfo.md)
- - [KlineBarDTO](doc//KlineBarDTO.md)
- - [KlineImportRequest](doc//KlineImportRequest.md)
- - [KlineImportResponse](doc//KlineImportResponse.md)
- - [KlineInfoResponse](doc//KlineInfoResponse.md)
- - [KlineSubscribeRequest](doc//KlineSubscribeRequest.md)
- - [KlineSubscriptionInfo](doc//KlineSubscriptionInfo.md)
  - [KnowledgeEntry](doc//KnowledgeEntry.md)
  - [KnowledgeResponse](doc//KnowledgeResponse.md)
  - [Link](doc//Link.md)
@@ -841,7 +799,6 @@ Class | Method | HTTP request | Description
  - [OAuth2TokenIdRequest](doc//OAuth2TokenIdRequest.md)
  - [OAuth2TokenResponse](doc//OAuth2TokenResponse.md)
  - [OAuthBindingInfo](doc//OAuthBindingInfo.md)
- - [OpenPositionDto](doc//OpenPositionDto.md)
  - [Order](doc//Order.md)
  - [OrderActionState](doc//OrderActionState.md)
  - [OrderCancelParam](doc//OrderCancelParam.md)
@@ -1013,7 +970,6 @@ Class | Method | HTTP request | Description
  - [SlotSpinRequest](doc//SlotSpinRequest.md)
  - [SlotSpinResponse](doc//SlotSpinResponse.md)
  - [SlotSymbolInfo](doc//SlotSymbolInfo.md)
- - [SopMtfAdxConfig](doc//SopMtfAdxConfig.md)
  - [SortObject](doc//SortObject.md)
  - [Staking](doc//Staking.md)
  - [StakingConfigDTO](doc//StakingConfigDTO.md)
@@ -1033,10 +989,6 @@ Class | Method | HTTP request | Description
  - [StorefrontHomeDraftRequest](doc//StorefrontHomeDraftRequest.md)
  - [StorefrontHomeResponse](doc//StorefrontHomeResponse.md)
  - [StorefrontHomeReviewRequest](doc//StorefrontHomeReviewRequest.md)
- - [StrategyBacktestDetailQueryRequest](doc//StrategyBacktestDetailQueryRequest.md)
- - [StrategyBacktestDetailResponse](doc//StrategyBacktestDetailResponse.md)
- - [StrategyQueryRequest](doc//StrategyQueryRequest.md)
- - [StrategyResponse](doc//StrategyResponse.md)
  - [SubmittedOrder](doc//SubmittedOrder.md)
  - [SuggestionActionParam](doc//SuggestionActionParam.md)
  - [Summary](doc//Summary.md)
@@ -1054,7 +1006,6 @@ Class | Method | HTTP request | Description
  - [TopProductDTO](doc//TopProductDTO.md)
  - [TopSellerDTO](doc//TopSellerDTO.md)
  - [TrackReferrerRequest](doc//TrackReferrerRequest.md)
- - [TradeRecordDto](doc//TradeRecordDto.md)
  - [Transaction](doc//Transaction.md)
  - [TransactionListParam](doc//TransactionListParam.md)
  - [TransactionSearchParam](doc//TransactionSearchParam.md)
@@ -1065,7 +1016,6 @@ Class | Method | HTTP request | Description
  - [UpdateActivityRequest](doc//UpdateActivityRequest.md)
  - [UpdateDeliveryOrderParam](doc//UpdateDeliveryOrderParam.md)
  - [UpdatePromoCodeParam](doc//UpdatePromoCodeParam.md)
- - [UpdateStrategyRequest](doc//UpdateStrategyRequest.md)
  - [User](doc//User.md)
  - [UserAddress](doc//UserAddress.md)
  - [UserInfo](doc//UserInfo.md)
