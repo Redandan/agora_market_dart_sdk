@@ -2743,6 +2743,37 @@
         }
       }
     },
+    "/stores/my-storefront-home/validate": {
+      "post": {
+        "tags": [
+          "storefront-home"
+        ],
+        "summary": "Validate current seller storefront home draft HTML",
+        "operationId": "validateDraft",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StorefrontHomeDraftRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/StorefrontHomeValidationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/stores/my-storefront-home/submit-review": {
       "post": {
         "tags": [
@@ -12337,6 +12368,27 @@
         }
       }
     },
+    "/stores/my-storefront-home/authoring-guide": {
+      "get": {
+        "tags": [
+          "storefront-home"
+        ],
+        "summary": "Get current storefront home authoring rules",
+        "operationId": "getAuthoringGuide",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/StorefrontHomeAuthoringGuideResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/stores/my-store": {
       "get": {
         "tags": [
@@ -19664,9 +19716,6 @@
           "sort": {
             "$ref": "#/components/schemas/SortObject"
           },
-          "unpaged": {
-            "type": "boolean"
-          },
           "paged": {
             "type": "boolean"
           },
@@ -19677,6 +19726,9 @@
           "pageSize": {
             "type": "integer",
             "format": "int32"
+          },
+          "unpaged": {
+            "type": "boolean"
           }
         }
       },
@@ -19686,10 +19738,10 @@
           "empty": {
             "type": "boolean"
           },
-          "unsorted": {
+          "sorted": {
             "type": "boolean"
           },
-          "sorted": {
+          "unsorted": {
             "type": "boolean"
           }
         }
@@ -23065,10 +23117,10 @@
             },
             "uniqueItems": true
           },
-          "minimumShippingFee": {
+          "defaultShippingFee": {
             "type": "number"
           },
-          "defaultShippingFee": {
+          "minimumShippingFee": {
             "type": "number"
           },
           "stockLow": {
@@ -23362,6 +23414,33 @@
           "totalSales",
           "updatedAt"
         ]
+      },
+      "StorefrontHomeValidationResponse": {
+        "type": "object",
+        "description": "Storefront home draft validation result",
+        "properties": {
+          "valid": {
+            "type": "boolean"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "normalizedHints": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
       },
       "StoreCreateParam": {
         "type": "object",
@@ -37942,6 +38021,75 @@
           }
         }
       },
+      "ActionRule": {
+        "type": "object",
+        "properties": {
+          "tag": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "BlockRule": {
+        "type": "object",
+        "properties": {
+          "tag": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "Snippets": {
+        "type": "object",
+        "properties": {
+          "platformProductList": {
+            "type": "string"
+          },
+          "customProductCard": {
+            "type": "string"
+          }
+        }
+      },
+      "StorefrontHomeAuthoringGuideResponse": {
+        "type": "object",
+        "description": "Storefront home authoring rules for platform-compatible seller home markup",
+        "properties": {
+          "version": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "requiredBlocks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BlockRule"
+            }
+          },
+          "supportedActions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ActionRule"
+            }
+          },
+          "forbiddenPatterns": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "snippets": {
+            "$ref": "#/components/schemas/Snippets"
+          }
+        }
+      },
       "CustomerStats": {
         "type": "object",
         "description": "買家分布",
@@ -38399,13 +38547,13 @@
             "type": "integer",
             "format": "int32"
           },
+          "outOfStock": {
+            "type": "boolean"
+          },
           "lowStock": {
             "type": "boolean"
           },
           "belowMinimum": {
-            "type": "boolean"
-          },
-          "outOfStock": {
             "type": "boolean"
           }
         }

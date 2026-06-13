@@ -514,11 +514,13 @@ Class | Method | HTTP request | Description
 *StakingApi* | [**searchStakings**](doc//StakingApi.md#searchstakings) | **POST** /staking/search | 管理員搜尋質押記錄
 *StakingApi* | [**unfreezeStaking**](doc//StakingApi.md#unfreezestaking) | **POST** /staking/unfreeze | 申請解除質押
 *StorefrontHomeApi* | [**disableMyHome**](doc//StorefrontHomeApi.md#disablemyhome) | **POST** /stores/my-storefront-home/disable | Disable current seller custom storefront home
+*StorefrontHomeApi* | [**getAuthoringGuide**](doc//StorefrontHomeApi.md#getauthoringguide) | **GET** /stores/my-storefront-home/authoring-guide | Get current storefront home authoring rules
 *StorefrontHomeApi* | [**getMyHome**](doc//StorefrontHomeApi.md#getmyhome) | **GET** /stores/my-storefront-home | Get current seller storefront home draft/published state
 *StorefrontHomeApi* | [**getPublished**](doc//StorefrontHomeApi.md#getpublished) | **GET** /storefront/home/{sellerId} | Get published storefront home by seller id
 *StorefrontHomeApi* | [**preview**](doc//StorefrontHomeApi.md#preview) | **GET** /stores/my-storefront-home/preview | Get current seller storefront home draft for preview
 *StorefrontHomeApi* | [**saveDraft**](doc//StorefrontHomeApi.md#savedraft) | **PUT** /stores/my-storefront-home/draft | Save current seller storefront home draft HTML
 *StorefrontHomeApi* | [**submitReview**](doc//StorefrontHomeApi.md#submitreview) | **POST** /stores/my-storefront-home/submit-review | Submit current seller storefront home draft for OPS review
+*StorefrontHomeApi* | [**validateDraft**](doc//StorefrontHomeApi.md#validatedraft) | **POST** /stores/my-storefront-home/validate | Validate current seller storefront home draft HTML
 *StoresApi* | [**createStore**](doc//StoresApi.md#createstore) | **POST** /stores/create | 創建商店
 *StoresApi* | [**getMyStore**](doc//StoresApi.md#getmystore) | **GET** /stores/my-store | 獲取當前用戶的商店
 *StoresApi* | [**getReturnPolicy**](doc//StoresApi.md#getreturnpolicy) | **GET** /stores/{sellerId}/return-policy | 查詢賣家退換貨政策
@@ -588,6 +590,7 @@ Class | Method | HTTP request | Description
 
  - [AcceptOrderParam](doc//AcceptOrderParam.md)
  - [AccountRecoveryAdvisory](doc//AccountRecoveryAdvisory.md)
+ - [ActionRule](doc//ActionRule.md)
  - [ActivityDTO](doc//ActivityDTO.md)
  - [ActivitySearchParam](doc//ActivitySearchParam.md)
  - [ActivityStatDTO](doc//ActivityStatDTO.md)
@@ -641,6 +644,7 @@ Class | Method | HTTP request | Description
  - [BetResponse](doc//BetResponse.md)
  - [BindEmailParam](doc//BindEmailParam.md)
  - [BindOAuthParam](doc//BindOAuthParam.md)
+ - [BlockRule](doc//BlockRule.md)
  - [BrokenImageAuditRequest](doc//BrokenImageAuditRequest.md)
  - [BrokenImageAuditResponse](doc//BrokenImageAuditResponse.md)
  - [BrokenImageCleanupResponse](doc//BrokenImageCleanupResponse.md)
@@ -970,6 +974,7 @@ Class | Method | HTTP request | Description
  - [SlotSpinRequest](doc//SlotSpinRequest.md)
  - [SlotSpinResponse](doc//SlotSpinResponse.md)
  - [SlotSymbolInfo](doc//SlotSymbolInfo.md)
+ - [Snippets](doc//Snippets.md)
  - [SortObject](doc//SortObject.md)
  - [Staking](doc//Staking.md)
  - [StakingConfigDTO](doc//StakingConfigDTO.md)
@@ -986,9 +991,11 @@ Class | Method | HTTP request | Description
  - [StoreReturnPolicyDto](doc//StoreReturnPolicyDto.md)
  - [StoreShippingConfigParam](doc//StoreShippingConfigParam.md)
  - [StoreUpdateParam](doc//StoreUpdateParam.md)
+ - [StorefrontHomeAuthoringGuideResponse](doc//StorefrontHomeAuthoringGuideResponse.md)
  - [StorefrontHomeDraftRequest](doc//StorefrontHomeDraftRequest.md)
  - [StorefrontHomeResponse](doc//StorefrontHomeResponse.md)
  - [StorefrontHomeReviewRequest](doc//StorefrontHomeReviewRequest.md)
+ - [StorefrontHomeValidationResponse](doc//StorefrontHomeValidationResponse.md)
  - [SubmittedOrder](doc//SubmittedOrder.md)
  - [SuggestionActionParam](doc//SuggestionActionParam.md)
  - [Summary](doc//Summary.md)

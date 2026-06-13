@@ -10,12 +10,11 @@
 
 part of openapi.api;
 
-class SortObject {
-  /// Returns a new [SortObject] instance.
-  SortObject({
-    this.empty,
-    this.sorted,
-    this.unsorted,
+class Snippets {
+  /// Returns a new [Snippets] instance.
+  Snippets({
+    this.platformProductList,
+    this.customProductCard,
   });
 
   ///
@@ -24,7 +23,7 @@ class SortObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? empty;
+  String? platformProductList;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -32,56 +31,41 @@ class SortObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? sorted;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? unsorted;
+  String? customProductCard;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SortObject &&
-    other.empty == empty &&
-    other.sorted == sorted &&
-    other.unsorted == unsorted;
+  bool operator ==(Object other) => identical(this, other) || other is Snippets &&
+    other.platformProductList == platformProductList &&
+    other.customProductCard == customProductCard;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (empty == null ? 0 : empty!.hashCode) +
-    (sorted == null ? 0 : sorted!.hashCode) +
-    (unsorted == null ? 0 : unsorted!.hashCode);
+    (platformProductList == null ? 0 : platformProductList!.hashCode) +
+    (customProductCard == null ? 0 : customProductCard!.hashCode);
 
   @override
-  String toString() => 'SortObject[empty=$empty, sorted=$sorted, unsorted=$unsorted]';
+  String toString() => 'Snippets[platformProductList=$platformProductList, customProductCard=$customProductCard]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.empty != null) {
-      json[r'empty'] = this.empty;
+    if (this.platformProductList != null) {
+      json[r'platformProductList'] = this.platformProductList;
     } else {
-      json[r'empty'] = null;
+      json[r'platformProductList'] = null;
     }
-    if (this.sorted != null) {
-      json[r'sorted'] = this.sorted;
+    if (this.customProductCard != null) {
+      json[r'customProductCard'] = this.customProductCard;
     } else {
-      json[r'sorted'] = null;
-    }
-    if (this.unsorted != null) {
-      json[r'unsorted'] = this.unsorted;
-    } else {
-      json[r'unsorted'] = null;
+      json[r'customProductCard'] = null;
     }
     return json;
   }
 
-  /// Returns a new [SortObject] instance and imports its values from
+  /// Returns a new [Snippets] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static SortObject? fromJson(dynamic value) {
+  static Snippets? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -90,26 +74,25 @@ class SortObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "SortObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "SortObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "Snippets[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "Snippets[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return SortObject(
-        empty: mapValueOfType<bool>(json, r'empty'),
-        sorted: mapValueOfType<bool>(json, r'sorted'),
-        unsorted: mapValueOfType<bool>(json, r'unsorted'),
+      return Snippets(
+        platformProductList: mapValueOfType<String>(json, r'platformProductList'),
+        customProductCard: mapValueOfType<String>(json, r'customProductCard'),
       );
     }
     return null;
   }
 
-  static List<SortObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <SortObject>[];
+  static List<Snippets> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <Snippets>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = SortObject.fromJson(row);
+        final value = Snippets.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -118,12 +101,12 @@ class SortObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, SortObject> mapFromJson(dynamic json) {
-    final map = <String, SortObject>{};
+  static Map<String, Snippets> mapFromJson(dynamic json) {
+    final map = <String, Snippets>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = SortObject.fromJson(entry.value);
+        final value = Snippets.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -132,14 +115,14 @@ class SortObject {
     return map;
   }
 
-  // maps a json object with a list of SortObject-objects as value to a dart map
-  static Map<String, List<SortObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<SortObject>>{};
+  // maps a json object with a list of Snippets-objects as value to a dart map
+  static Map<String, List<Snippets>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<Snippets>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SortObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = Snippets.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

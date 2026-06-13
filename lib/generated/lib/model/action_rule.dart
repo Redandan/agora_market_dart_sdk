@@ -10,12 +10,12 @@
 
 part of openapi.api;
 
-class SortObject {
-  /// Returns a new [SortObject] instance.
-  SortObject({
-    this.empty,
-    this.sorted,
-    this.unsorted,
+class ActionRule {
+  /// Returns a new [ActionRule] instance.
+  ActionRule({
+    this.tag,
+    this.type,
+    this.description,
   });
 
   ///
@@ -24,7 +24,7 @@ class SortObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? empty;
+  String? tag;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -32,7 +32,7 @@ class SortObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? sorted;
+  String? type;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -40,48 +40,48 @@ class SortObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unsorted;
+  String? description;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SortObject &&
-    other.empty == empty &&
-    other.sorted == sorted &&
-    other.unsorted == unsorted;
+  bool operator ==(Object other) => identical(this, other) || other is ActionRule &&
+    other.tag == tag &&
+    other.type == type &&
+    other.description == description;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (empty == null ? 0 : empty!.hashCode) +
-    (sorted == null ? 0 : sorted!.hashCode) +
-    (unsorted == null ? 0 : unsorted!.hashCode);
+    (tag == null ? 0 : tag!.hashCode) +
+    (type == null ? 0 : type!.hashCode) +
+    (description == null ? 0 : description!.hashCode);
 
   @override
-  String toString() => 'SortObject[empty=$empty, sorted=$sorted, unsorted=$unsorted]';
+  String toString() => 'ActionRule[tag=$tag, type=$type, description=$description]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.empty != null) {
-      json[r'empty'] = this.empty;
+    if (this.tag != null) {
+      json[r'tag'] = this.tag;
     } else {
-      json[r'empty'] = null;
+      json[r'tag'] = null;
     }
-    if (this.sorted != null) {
-      json[r'sorted'] = this.sorted;
+    if (this.type != null) {
+      json[r'type'] = this.type;
     } else {
-      json[r'sorted'] = null;
+      json[r'type'] = null;
     }
-    if (this.unsorted != null) {
-      json[r'unsorted'] = this.unsorted;
+    if (this.description != null) {
+      json[r'description'] = this.description;
     } else {
-      json[r'unsorted'] = null;
+      json[r'description'] = null;
     }
     return json;
   }
 
-  /// Returns a new [SortObject] instance and imports its values from
+  /// Returns a new [ActionRule] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static SortObject? fromJson(dynamic value) {
+  static ActionRule? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -90,26 +90,26 @@ class SortObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "SortObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "SortObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ActionRule[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ActionRule[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return SortObject(
-        empty: mapValueOfType<bool>(json, r'empty'),
-        sorted: mapValueOfType<bool>(json, r'sorted'),
-        unsorted: mapValueOfType<bool>(json, r'unsorted'),
+      return ActionRule(
+        tag: mapValueOfType<String>(json, r'tag'),
+        type: mapValueOfType<String>(json, r'type'),
+        description: mapValueOfType<String>(json, r'description'),
       );
     }
     return null;
   }
 
-  static List<SortObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <SortObject>[];
+  static List<ActionRule> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ActionRule>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = SortObject.fromJson(row);
+        final value = ActionRule.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -118,12 +118,12 @@ class SortObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, SortObject> mapFromJson(dynamic json) {
-    final map = <String, SortObject>{};
+  static Map<String, ActionRule> mapFromJson(dynamic json) {
+    final map = <String, ActionRule>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = SortObject.fromJson(entry.value);
+        final value = ActionRule.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -132,14 +132,14 @@ class SortObject {
     return map;
   }
 
-  // maps a json object with a list of SortObject-objects as value to a dart map
-  static Map<String, List<SortObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<SortObject>>{};
+  // maps a json object with a list of ActionRule-objects as value to a dart map
+  static Map<String, List<ActionRule>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ActionRule>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SortObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ActionRule.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

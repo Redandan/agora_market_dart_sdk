@@ -186,6 +186,8 @@ class ApiClient {
           return AcceptOrderParam.fromJson(value);
         case 'AccountRecoveryAdvisory':
           return AccountRecoveryAdvisory.fromJson(value);
+        case 'ActionRule':
+          return ActionRule.fromJson(value);
         case 'ActivityDTO':
           return ActivityDTO.fromJson(value);
         case 'ActivitySearchParam':
@@ -292,6 +294,8 @@ class ApiClient {
           return BindEmailParam.fromJson(value);
         case 'BindOAuthParam':
           return BindOAuthParam.fromJson(value);
+        case 'BlockRule':
+          return BlockRule.fromJson(value);
         case 'BrokenImageAuditRequest':
           return BrokenImageAuditRequest.fromJson(value);
         case 'BrokenImageAuditResponse':
@@ -950,6 +954,8 @@ class ApiClient {
           return SlotSpinResponse.fromJson(value);
         case 'SlotSymbolInfo':
           return SlotSymbolInfo.fromJson(value);
+        case 'Snippets':
+          return Snippets.fromJson(value);
         case 'SortObject':
           return SortObject.fromJson(value);
         case 'Staking':
@@ -982,12 +988,16 @@ class ApiClient {
           return StoreShippingConfigParam.fromJson(value);
         case 'StoreUpdateParam':
           return StoreUpdateParam.fromJson(value);
+        case 'StorefrontHomeAuthoringGuideResponse':
+          return StorefrontHomeAuthoringGuideResponse.fromJson(value);
         case 'StorefrontHomeDraftRequest':
           return StorefrontHomeDraftRequest.fromJson(value);
         case 'StorefrontHomeResponse':
           return StorefrontHomeResponse.fromJson(value);
         case 'StorefrontHomeReviewRequest':
           return StorefrontHomeReviewRequest.fromJson(value);
+        case 'StorefrontHomeValidationResponse':
+          return StorefrontHomeValidationResponse.fromJson(value);
         case 'SubmittedOrder':
           return SubmittedOrder.fromJson(value);
         case 'SuggestionActionParam':
