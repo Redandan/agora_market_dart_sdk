@@ -169,6 +169,10 @@
       "description": "提供台灣地區郵遞區號查詢的接口"
     },
     {
+      "name": "public-stores",
+      "description": "Public store display API"
+    },
+    {
       "name": "admin-products",
       "description": "管理員商品管理 API"
     },
@@ -13486,6 +13490,39 @@
         }
       }
     },
+    "/public/stores/{sellerId}": {
+      "get": {
+        "tags": [
+          "public-stores"
+        ],
+        "summary": "Get public seller store summary",
+        "operationId": "getPublicStoreSummary",
+        "parameters": [
+          {
+            "name": "sellerId",
+            "in": "path",
+            "description": "Seller ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublicStoreSummaryResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/promo-codes/{code}": {
       "get": {
         "tags": [
@@ -23063,7 +23100,7 @@
             "minimum": 0
           },
           "store": {
-            "$ref": "#/components/schemas/Store",
+            "$ref": "#/components/schemas/PublicStoreSummaryResponse",
             "description": "賣場資訊"
           },
           "userSupportedShippingAddresses": {
@@ -23173,247 +23210,65 @@
           "viewCount"
         ]
       },
-      "Store": {
+      "PublicStoreSummaryResponse": {
         "type": "object",
-        "description": "商店",
+        "description": "Public seller store summary for storefront and product display",
         "properties": {
-          "id": {
+          "sellerId": {
             "type": "integer",
             "format": "int64",
-            "description": "商店擁有者ID",
-            "example": 1
+            "description": "Seller user ID"
           },
           "name": {
             "type": "string",
-            "description": "商店名稱",
-            "example": "優質商品專賣店",
-            "maxLength": 255
+            "description": "Public store name"
           },
           "description": {
             "type": "string",
-            "description": "商店描述",
-            "example": "專營優質商品，品質保證",
-            "maxLength": 1000
-          },
-          "address": {
-            "type": "string",
-            "description": "商店地址",
-            "example": "台北市大安區敦化南路二段216號",
-            "maxLength": 255
-          },
-          "longitude": {
-            "type": "number",
-            "format": "double",
-            "description": "商店經度",
-            "example": 121.5432
-          },
-          "latitude": {
-            "type": "number",
-            "format": "double",
-            "description": "商店緯度",
-            "example": 25.033
-          },
-          "phone": {
-            "type": "string",
-            "description": "商店電話",
-            "example": "0912345678",
-            "maxLength": 255
-          },
-          "email": {
-            "type": "string",
-            "description": "商店郵箱",
-            "example": "store@example.com",
-            "maxLength": 255
-          },
-          "businessHours": {
-            "type": "string",
-            "description": "營業時間",
-            "example": "週一至週五 09:00-18:00",
-            "maxLength": 255
+            "description": "Public store description"
           },
           "logoUrl": {
             "type": "string",
-            "description": "商店Logo",
-            "example": "https://example.com/logo.jpg",
-            "maxLength": 255
-          },
-          "logoDescription": {
-            "type": "string",
-            "description": "Logo描述",
-            "example": "商店Logo圖片",
-            "maxLength": 500
-          },
-          "logoUploadTime": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Logo上传时间",
-            "example": "2024-01-01T10:00:00"
+            "description": "Public store logo URL"
           },
           "coverImageUrl": {
             "type": "string",
-            "description": "商店封面圖片",
-            "example": "https://example.com/cover.jpg",
-            "maxLength": 255
-          },
-          "coverDescription": {
-            "type": "string",
-            "description": "封面图片描述",
-            "example": "商店封面圖片",
-            "maxLength": 500
-          },
-          "coverUploadTime": {
-            "type": "string",
-            "format": "date-time",
-            "description": "封面图片上传时间",
-            "example": "2024-01-01T10:00:00"
+            "description": "Public store cover image URL"
           },
           "isActive": {
             "type": "boolean",
-            "description": "是否啟用",
-            "example": true
-          },
-          "viewCount": {
-            "type": "integer",
-            "format": "int64",
-            "description": "瀏覽次數",
-            "example": 1000
+            "description": "Whether the store is active"
           },
           "rating": {
             "type": "number",
             "format": "double",
-            "description": "評分",
-            "example": 4.5
+            "description": "Public store rating"
           },
           "ratingCount": {
             "type": "integer",
             "format": "int64",
-            "description": "評分次數",
-            "example": 100
-          },
-          "creditLevel": {
-            "type": "integer",
-            "format": "int32",
-            "description": "信用等級",
-            "example": 5
-          },
-          "productCount": {
-            "type": "integer",
-            "format": "int32",
-            "description": "商品數量",
-            "example": 50
-          },
-          "orderCount": {
-            "type": "integer",
-            "format": "int32",
-            "description": "訂單數量",
-            "example": 200
-          },
-          "totalSales": {
-            "type": "number",
-            "format": "double",
-            "description": "總銷售額",
-            "example": 100000.0
-          },
-          "averageRating": {
-            "type": "number",
-            "format": "double",
-            "description": "平均評分",
-            "example": 4.5
+            "description": "Public store rating count"
           },
           "responseRate": {
             "type": "integer",
             "format": "int32",
-            "description": "回覆率",
-            "example": 95
+            "description": "Seller response rate"
           },
-          "defaultShippingFee": {
-            "type": "number",
-            "format": "double",
-            "description": "預設運費",
-            "example": 60.0
-          },
-          "freeShippingThreshold": {
-            "type": "number",
-            "format": "double",
-            "description": "免運費門檻",
-            "example": 500.0
-          },
-          "shippingDescription": {
-            "type": "string",
-            "description": "運送說明",
-            "example": "工作日發貨，3-5天送達",
-            "maxLength": 500
-          },
-          "shippingPreparationHours": {
+          "productCount": {
             "type": "integer",
             "format": "int32",
-            "description": "出貨準備時間（小時）",
-            "example": 24
+            "description": "Public product count"
           },
-          "estimatedDeliveryDays": {
+          "viewCount": {
             "type": "integer",
-            "format": "int32",
-            "description": "預計送達時間（天數）",
-            "example": 3
+            "format": "int64",
+            "description": "Public view count"
           },
-          "supportsScheduledShipping": {
-            "type": "boolean",
-            "description": "是否支援指定出貨日期",
-            "example": false
-          },
-          "shippingDateRange": {
-            "type": "integer",
-            "format": "int32",
-            "description": "可選擇的出貨日期範圍（天數）",
-            "example": 7
-          },
-          "createdAt": {
+          "businessHours": {
             "type": "string",
-            "format": "date-time",
-            "description": "創建時間",
-            "example": "2024-01-01T10:00:00"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "更新時間",
-            "example": "2024-01-01T10:00:00"
-          },
-          "adminRemark": {
-            "type": "string",
-            "description": "管理員備註",
-            "example": "優質商家"
-          },
-          "returnDaysAllowed": {
-            "type": "integer",
-            "format": "int32",
-            "description": "退換貨天數（0 = 不接受退貨）",
-            "example": 7
-          },
-          "returnConditions": {
-            "type": "string",
-            "description": "退換貨條件說明"
-          },
-          "noReturnPolicy": {
-            "type": "boolean",
-            "description": "是否拒絕一切退貨",
-            "example": false
+            "description": "Public business hours"
           }
-        },
-        "required": [
-          "address",
-          "averageRating",
-          "createdAt",
-          "creditLevel",
-          "id",
-          "isActive",
-          "name",
-          "orderCount",
-          "productCount",
-          "responseRate",
-          "totalSales",
-          "updatedAt"
-        ]
+        }
       },
       "StorefrontHomeValidationResponse": {
         "type": "object",
@@ -28520,6 +28375,248 @@
           "reason",
           "requestedAt",
           "sellerId",
+          "updatedAt"
+        ]
+      },
+      "Store": {
+        "type": "object",
+        "description": "商店",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "商店擁有者ID",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "商店名稱",
+            "example": "優質商品專賣店",
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "description": "商店描述",
+            "example": "專營優質商品，品質保證",
+            "maxLength": 1000
+          },
+          "address": {
+            "type": "string",
+            "description": "商店地址",
+            "example": "台北市大安區敦化南路二段216號",
+            "maxLength": 255
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double",
+            "description": "商店經度",
+            "example": 121.5432
+          },
+          "latitude": {
+            "type": "number",
+            "format": "double",
+            "description": "商店緯度",
+            "example": 25.033
+          },
+          "phone": {
+            "type": "string",
+            "description": "商店電話",
+            "example": "0912345678",
+            "maxLength": 255
+          },
+          "email": {
+            "type": "string",
+            "description": "商店郵箱",
+            "example": "store@example.com",
+            "maxLength": 255
+          },
+          "businessHours": {
+            "type": "string",
+            "description": "營業時間",
+            "example": "週一至週五 09:00-18:00",
+            "maxLength": 255
+          },
+          "logoUrl": {
+            "type": "string",
+            "description": "商店Logo",
+            "example": "https://example.com/logo.jpg",
+            "maxLength": 255
+          },
+          "logoDescription": {
+            "type": "string",
+            "description": "Logo描述",
+            "example": "商店Logo圖片",
+            "maxLength": 500
+          },
+          "logoUploadTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Logo上传时间",
+            "example": "2024-01-01T10:00:00"
+          },
+          "coverImageUrl": {
+            "type": "string",
+            "description": "商店封面圖片",
+            "example": "https://example.com/cover.jpg",
+            "maxLength": 255
+          },
+          "coverDescription": {
+            "type": "string",
+            "description": "封面图片描述",
+            "example": "商店封面圖片",
+            "maxLength": 500
+          },
+          "coverUploadTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "封面图片上传时间",
+            "example": "2024-01-01T10:00:00"
+          },
+          "isActive": {
+            "type": "boolean",
+            "description": "是否啟用",
+            "example": true
+          },
+          "viewCount": {
+            "type": "integer",
+            "format": "int64",
+            "description": "瀏覽次數",
+            "example": 1000
+          },
+          "rating": {
+            "type": "number",
+            "format": "double",
+            "description": "評分",
+            "example": 4.5
+          },
+          "ratingCount": {
+            "type": "integer",
+            "format": "int64",
+            "description": "評分次數",
+            "example": 100
+          },
+          "creditLevel": {
+            "type": "integer",
+            "format": "int32",
+            "description": "信用等級",
+            "example": 5
+          },
+          "productCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "商品數量",
+            "example": 50
+          },
+          "orderCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "訂單數量",
+            "example": 200
+          },
+          "totalSales": {
+            "type": "number",
+            "format": "double",
+            "description": "總銷售額",
+            "example": 100000.0
+          },
+          "averageRating": {
+            "type": "number",
+            "format": "double",
+            "description": "平均評分",
+            "example": 4.5
+          },
+          "responseRate": {
+            "type": "integer",
+            "format": "int32",
+            "description": "回覆率",
+            "example": 95
+          },
+          "defaultShippingFee": {
+            "type": "number",
+            "format": "double",
+            "description": "預設運費",
+            "example": 60.0
+          },
+          "freeShippingThreshold": {
+            "type": "number",
+            "format": "double",
+            "description": "免運費門檻",
+            "example": 500.0
+          },
+          "shippingDescription": {
+            "type": "string",
+            "description": "運送說明",
+            "example": "工作日發貨，3-5天送達",
+            "maxLength": 500
+          },
+          "shippingPreparationHours": {
+            "type": "integer",
+            "format": "int32",
+            "description": "出貨準備時間（小時）",
+            "example": 24
+          },
+          "estimatedDeliveryDays": {
+            "type": "integer",
+            "format": "int32",
+            "description": "預計送達時間（天數）",
+            "example": 3
+          },
+          "supportsScheduledShipping": {
+            "type": "boolean",
+            "description": "是否支援指定出貨日期",
+            "example": false
+          },
+          "shippingDateRange": {
+            "type": "integer",
+            "format": "int32",
+            "description": "可選擇的出貨日期範圍（天數）",
+            "example": 7
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "創建時間",
+            "example": "2024-01-01T10:00:00"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "更新時間",
+            "example": "2024-01-01T10:00:00"
+          },
+          "adminRemark": {
+            "type": "string",
+            "description": "管理員備註",
+            "example": "優質商家"
+          },
+          "returnDaysAllowed": {
+            "type": "integer",
+            "format": "int32",
+            "description": "退換貨天數（0 = 不接受退貨）",
+            "example": 7
+          },
+          "returnConditions": {
+            "type": "string",
+            "description": "退換貨條件說明"
+          },
+          "noReturnPolicy": {
+            "type": "boolean",
+            "description": "是否拒絕一切退貨",
+            "example": false
+          }
+        },
+        "required": [
+          "address",
+          "averageRating",
+          "createdAt",
+          "creditLevel",
+          "id",
+          "isActive",
+          "name",
+          "orderCount",
+          "productCount",
+          "responseRate",
+          "totalSales",
           "updatedAt"
         ]
       },
@@ -38547,13 +38644,13 @@
             "type": "integer",
             "format": "int32"
           },
-          "outOfStock": {
-            "type": "boolean"
-          },
           "lowStock": {
             "type": "boolean"
           },
           "belowMinimum": {
+            "type": "boolean"
+          },
+          "outOfStock": {
             "type": "boolean"
           }
         }

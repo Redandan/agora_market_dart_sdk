@@ -431,7 +431,7 @@ class Product {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  Store? store;
+  PublicStoreSummaryResponse? store;
 
   /// 支援該商品運送的用戶地址列表
   List<UserAddress> userSupportedShippingAddresses;
@@ -989,7 +989,7 @@ class Product {
         buyerInfoRequiredJson: mapValueOfType<String>(json, r'buyerInfoRequiredJson'),
         dataResidencyNotice: mapValueOfType<String>(json, r'dataResidencyNotice'),
         reportCount: mapValueOfType<int>(json, r'reportCount')!,
-        store: Store.fromJson(json[r'store']),
+        store: PublicStoreSummaryResponse.fromJson(json[r'store']),
         userSupportedShippingAddresses: UserAddress.listFromJson(json[r'userSupportedShippingAddresses']),
         shippingAddressOptions: ShippingAddressOption.listFromJson(json[r'shippingAddressOptions']),
         shippingOptions: ShippingOptions.fromJson(json[r'shippingOptions']),

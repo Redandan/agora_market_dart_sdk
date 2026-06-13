@@ -828,6 +828,8 @@ class ApiClient {
           return ProxyOrderState.fromJson(value);
         case 'ProxyPricingBreakdown':
           return ProxyPricingBreakdown.fromJson(value);
+        case 'PublicStoreSummaryResponse':
+          return PublicStoreSummaryResponse.fromJson(value);
         case 'PublicStorefrontHomeResponse':
           return PublicStorefrontHomeResponse.fromJson(value);
         case 'PushHealthResponseDTO':

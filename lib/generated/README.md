@@ -464,6 +464,7 @@ Class | Method | HTTP request | Description
 *PromoCodesApi* | [**searchPromoCodes**](doc//PromoCodesApi.md#searchpromocodes) | **GET** /promo-codes/search | 搜尋推廣碼
 *PromoCodesApi* | [**updateMyPromoCode**](doc//PromoCodesApi.md#updatemypromocode) | **PUT** /promo-codes/my-promo-code | 編輯我的推廣碼
 *PublicControllerApi* | [**test**](doc//PublicControllerApi.md#test) | **GET** /public/test | 
+*PublicStoresApi* | [**getPublicStoreSummary**](doc//PublicStoresApi.md#getpublicstoresummary) | **GET** /public/stores/{sellerId} | Get public seller store summary
 *PwaLogsApi* | [**getLogs**](doc//PwaLogsApi.md#getlogs) | **GET** /pwa-logs | 下載當前所有日誌
 *PwaLogsApi* | [**receivePwaLogs**](doc//PwaLogsApi.md#receivepwalogs) | **POST** /pwa-logs | 上傳 PWA 日誌
 *ReviewsApi* | [**batchDeleteReviews**](doc//ReviewsApi.md#batchdeletereviews) | **DELETE** /reviews/batch | 批量刪除評價（管理員功能）
@@ -911,6 +912,7 @@ Class | Method | HTTP request | Description
  - [ProofAiValidationResponse](doc//ProofAiValidationResponse.md)
  - [ProxyOrderState](doc//ProxyOrderState.md)
  - [ProxyPricingBreakdown](doc//ProxyPricingBreakdown.md)
+ - [PublicStoreSummaryResponse](doc//PublicStoreSummaryResponse.md)
  - [PublicStorefrontHomeResponse](doc//PublicStorefrontHomeResponse.md)
  - [PushHealthResponseDTO](doc//PushHealthResponseDTO.md)
  - [PushNotificationDTO](doc//PushNotificationDTO.md)
