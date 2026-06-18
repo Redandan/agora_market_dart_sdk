@@ -215,6 +215,12 @@ Class | Method | HTTP request | Description
 *AdminProductsApi* | [**searchProducts1**](doc//AdminProductsApi.md#searchproducts1) | **POST** /admin/products/search | 搜索商品
 *AdminProductsApi* | [**updateProductByAdmin**](doc//AdminProductsApi.md#updateproductbyadmin) | **POST** /admin/products/{productId}/update | 更新商品
 *AdminProductsApi* | [**updateProductStatusEnum**](doc//AdminProductsApi.md#updateproductstatusenum) | **POST** /admin/products/{productId}/status | 更新商品狀態
+*AdminSlotApi* | [**getAdminRtpTable**](doc//AdminSlotApi.md#getadminrtptable) | **GET** /admin/slot/rtp | 取得管理員 RTP 設定表
+*AdminStakingApi* | [**getConfig**](doc//AdminStakingApi.md#getconfig) | **GET** /admin/staking/config | 獲取質押配置
+*AdminStakingApi* | [**getInterestRecords**](doc//AdminStakingApi.md#getinterestrecords) | **POST** /admin/staking/interest-records | 查詢收益發放記錄
+*AdminStakingApi* | [**getNextInterestEstimate**](doc//AdminStakingApi.md#getnextinterestestimate) | **GET** /admin/staking/next-interest-estimate | 預估下次收益發放
+*AdminStakingApi* | [**getStatistics1**](doc//AdminStakingApi.md#getstatistics1) | **GET** /admin/staking/statistics | 質押統計報告
+*AdminStakingApi* | [**updateStakingConfig**](doc//AdminStakingApi.md#updatestakingconfig) | **PUT** /admin/staking/config | 更新質押配置
 *AdminStorefrontHomesApi* | [**approve**](doc//AdminStorefrontHomesApi.md#approve) | **POST** /admin/storefront-homes/{sellerId}/approve | Approve and publish a seller storefront home draft
 *AdminStorefrontHomesApi* | [**disable**](doc//AdminStorefrontHomesApi.md#disable) | **POST** /admin/storefront-homes/{sellerId}/disable | Disable a published seller custom storefront home
 *AdminStorefrontHomesApi* | [**getHome**](doc//AdminStorefrontHomesApi.md#gethome) | **GET** /admin/storefront-homes/{sellerId} | Get one seller storefront home for review
@@ -234,6 +240,8 @@ Class | Method | HTTP request | Description
 *AdminSystemConfigApi* | [**setDeliveryMaintenance**](doc//AdminSystemConfigApi.md#setdeliverymaintenance) | **PUT** /admin/system-config/maintenance/delivery | 設置外送員入口維護開關
 *AdminSystemConfigApi* | [**setSellerMaintenance**](doc//AdminSystemConfigApi.md#setsellermaintenance) | **PUT** /admin/system-config/maintenance/seller | 設置賣家入口維護開關
 *AdminTrafficApi* | [**getRegistrationOverview**](doc//AdminTrafficApi.md#getregistrationoverview) | **GET** /admin/traffic/registrations/overview | 獲取註冊流量概覽
+*AdminTrafficApi* | [**getSlotOverview**](doc//AdminTrafficApi.md#getslotoverview) | **GET** /admin/traffic/slot/overview | Slot 遊戲流量概覽
+*AdminTrafficApi* | [**getSlotToday**](doc//AdminTrafficApi.md#getslottoday) | **GET** /admin/traffic/slot/today | 今日 Slot 小時分佈
 *AdminTrafficApi* | [**getTodayRegistrations**](doc//AdminTrafficApi.md#gettodayregistrations) | **GET** /admin/traffic/registrations/today | 今日註冊小時分佈
 *AuthApi* | [**acceptTerms**](doc//AuthApi.md#acceptterms) | **POST** /auth/accept-terms | 用戶接受服務條款
 *AuthApi* | [**bindEmail**](doc//AuthApi.md#bindemail) | **POST** /auth/bind-email | 綁定或更新郵箱
@@ -279,6 +287,16 @@ Class | Method | HTTP request | Description
 *AutoReplyApi* | [**searchConfigs**](doc//AutoReplyApi.md#searchconfigs) | **POST** /admin/auto-reply/configs/search | 搜尋自動回復配置
 *AutoReplyApi* | [**toggleConfig**](doc//AutoReplyApi.md#toggleconfig) | **PUT** /admin/auto-reply/configs/{id}/toggle | 啟用/禁用配置
 *AutoReplyApi* | [**updateReplyConfig**](doc//AutoReplyApi.md#updatereplyconfig) | **PUT** /admin/auto-reply/configs/{id} | 更新配置
+*BettingApi* | [**getMarketBets**](doc//BettingApi.md#getmarketbets) | **GET** /bets/market/{marketId} | 市場投注記錄
+*BettingApi* | [**getMyBets**](doc//BettingApi.md#getmybets) | **GET** /bets/my | 我的投注記錄
+*BettingApi* | [**placeBet**](doc//BettingApi.md#placebet) | **POST** /bets | 下注
+*BettingMarketsApi* | [**cancelMarket**](doc//BettingMarketsApi.md#cancelmarket) | **POST** /markets/{id}/cancel | 取消市場
+*BettingMarketsApi* | [**closeMarket**](doc//BettingMarketsApi.md#closemarket) | **PUT** /markets/{id}/close | 關閉市場
+*BettingMarketsApi* | [**createMarket**](doc//BettingMarketsApi.md#createmarket) | **POST** /markets | 創建市場
+*BettingMarketsApi* | [**getActiveMarkets**](doc//BettingMarketsApi.md#getactivemarkets) | **GET** /markets/active | 查詢活躍市場
+*BettingMarketsApi* | [**getMarket**](doc//BettingMarketsApi.md#getmarket) | **GET** /markets/{id} | 獲取市場詳情
+*BettingMarketsApi* | [**resolveMarket**](doc//BettingMarketsApi.md#resolvemarket) | **POST** /markets/{id}/resolve | 結算市場
+*BettingMarketsApi* | [**searchMarkets**](doc//BettingMarketsApi.md#searchmarkets) | **POST** /markets/search | 搜索市場
 *ChatApi* | [**clearSession**](doc//ChatApi.md#clearsession) | **DELETE** /chat/sessions/{sessionId}/messages | 清空會話
 *ChatApi* | [**deleteMessage**](doc//ChatApi.md#deletemessage) | **DELETE** /chat/messages/{messageId} | 刪除消息
 *ChatApi* | [**deleteSession**](doc//ChatApi.md#deletesession) | **DELETE** /chat/sessions/{sessionId} | 刪除會話
@@ -472,6 +490,13 @@ Class | Method | HTTP request | Description
 *SellerDemandPoolApi* | [**submitOffer**](doc//SellerDemandPoolApi.md#submitoffer) | **POST** /seller/demands/{demandId}/offers | Seller submit structured offer for demand
 *SevenElevenStoresApi* | [**getAllCities**](doc//SevenElevenStoresApi.md#getallcities) | **GET** /stores/seven-eleven/cities | 取得所有縣市列表
 *SevenElevenStoresApi* | [**getStoresByCity**](doc//SevenElevenStoresApi.md#getstoresbycity) | **GET** /stores/seven-eleven/stores | 根據縣市取得7-11門市列表
+*SlotApi* | [**getMemberOddsTable**](doc//SlotApi.md#getmemberoddstable) | **GET** /slot/rtp | 取得會員賠率展示資料
+*SlotApi* | [**getPaytable**](doc//SlotApi.md#getpaytable) | **GET** /slot/paytable/{gameId} | 查詢 Slot 賠率
+*SlotApi* | [**getRevenue**](doc//SlotApi.md#getrevenue) | **GET** /slot/revenue | Slot 收益統計
+*SlotApi* | [**getRevenueByVersion**](doc//SlotApi.md#getrevenuebyversion) | **GET** /slot/revenue/by-version | Slot 收益統計（按賠率版本）
+*SlotApi* | [**getSymbols**](doc//SlotApi.md#getsymbols) | **GET** /slot/symbols | 取得 Symbol 目錄
+*SlotApi* | [**savePaytable**](doc//SlotApi.md#savepaytable) | **POST** /slot/paytable/{gameId} | 設定 Slot 賠率
+*SlotApi* | [**spin**](doc//SlotApi.md#spin) | **POST** /slot/spin | Spin
 *SseApi* | [**broadcastMessage**](doc//SseApi.md#broadcastmessage) | **POST** /sse/broadcast | 廣播消息
 *SseApi* | [**connect**](doc//SseApi.md#connect) | **GET** /sse/connect/{clientId} | 建立 SSE 連接
 *SseApi* | [**disconnect**](doc//SseApi.md#disconnect) | **DELETE** /sse/disconnect/{clientId} | 斷開 SSE 連接
@@ -485,6 +510,10 @@ Class | Method | HTTP request | Description
 *SseTestApi* | [**testOrderEvent**](doc//SseTestApi.md#testorderevent) | **POST** /sse-test/order-event | 測試訂單事件
 *SseTestApi* | [**testSystemEvent**](doc//SseTestApi.md#testsystemevent) | **POST** /sse-test/system-event | 測試系統事件
 *SseTestApi* | [**testTypingEvent**](doc//SseTestApi.md#testtypingevent) | **POST** /sse-test/typing-event | 測試輸入事件
+*StakingApi* | [**applyStaking**](doc//StakingApi.md#applystaking) | **POST** /staking/apply | 申請質押（活期）
+*StakingApi* | [**getActiveStakings**](doc//StakingApi.md#getactivestakings) | **GET** /staking/active | 查詢正在進行中的質押
+*StakingApi* | [**searchStakings**](doc//StakingApi.md#searchstakings) | **POST** /staking/search | 管理員搜尋質押記錄
+*StakingApi* | [**unfreezeStaking**](doc//StakingApi.md#unfreezestaking) | **POST** /staking/unfreeze | 申請解除質押
 *StorefrontHomeApi* | [**disableMyHome**](doc//StorefrontHomeApi.md#disablemyhome) | **POST** /stores/my-storefront-home/disable | Disable current seller custom storefront home
 *StorefrontHomeApi* | [**getAuthoringGuide**](doc//StorefrontHomeApi.md#getauthoringguide) | **GET** /stores/my-storefront-home/authoring-guide | Get current storefront home authoring rules
 *StorefrontHomeApi* | [**getMyHome**](doc//StorefrontHomeApi.md#getmyhome) | **GET** /stores/my-storefront-home | Get current seller storefront home draft/published state
@@ -505,6 +534,14 @@ Class | Method | HTTP request | Description
 *StoresApi* | [**updateReturnPolicy**](doc//StoresApi.md#updatereturnpolicy) | **POST** /stores/return-policy | 更新賣家退換貨政策
 *StoresApi* | [**updateShippingConfig**](doc//StoresApi.md#updateshippingconfig) | **POST** /stores/shipping-config | 更新商店物流設定
 *StoresApi* | [**updateStore**](doc//StoresApi.md#updatestore) | **POST** /stores/update | 更新商店
+*TGApi* | [**batchUpdatePaytable**](doc//TGApi.md#batchupdatepaytable) | **PUT** /tg-game/paytable/batch | 批次更新賠付規則
+*TGApi* | [**createActivity**](doc//TGApi.md#createactivity) | **POST** /tg-game/activity | 建立活動
+*TGApi* | [**finishActivity**](doc//TGApi.md#finishactivity) | **PATCH** /tg-game/activity/{id}/finish | 結束活動
+*TGApi* | [**getActivityStatistics**](doc//TGApi.md#getactivitystatistics) | **GET** /tg-game/activity/{id}/stat | 查詢活動統計
+*TGApi* | [**getPaytableByGameAndHandicap**](doc//TGApi.md#getpaytablebygameandhandicap) | **GET** /tg-game/paytable | 查詢賠付規則及 RTP
+*TGApi* | [**getPlayerRounds**](doc//TGApi.md#getplayerrounds) | **GET** /tg-game/rounds | 查詢玩家流水
+*TGApi* | [**searchActivities**](doc//TGApi.md#searchactivities) | **POST** /tg-game/activity/search | 查詢活動
+*TGApi* | [**updateActivity**](doc//TGApi.md#updateactivity) | **PUT** /tg-game/activity/{id} | 更新活動
 *TelegramApi* | [**editGroup**](doc//TelegramApi.md#editgroup) | **POST** /admin/telegram-monitor/groups/{groupId}/edit | 統一更新群組設定（aiChatEnabled / replyMode / messageCountThreshold / minIntervalMinutes / personality / customPrompt）
 *TelegramApi* | [**getGroupDetail**](doc//TelegramApi.md#getgroupdetail) | **GET** /admin/telegram-monitor/groups/{groupId}/detail | 獲取群組詳細資訊（活躍度統計 + 活躍用戶 + 最近消息）
 *TelegramApi* | [**getGroups**](doc//TelegramApi.md#getgroups) | **GET** /admin/telegram-monitor/groups | 獲取已監聽群組列表
@@ -555,6 +592,9 @@ Class | Method | HTTP request | Description
  - [AcceptOrderParam](doc//AcceptOrderParam.md)
  - [AccountRecoveryAdvisory](doc//AccountRecoveryAdvisory.md)
  - [ActionRule](doc//ActionRule.md)
+ - [ActivityDTO](doc//ActivityDTO.md)
+ - [ActivitySearchParam](doc//ActivitySearchParam.md)
+ - [ActivityStatDTO](doc//ActivityStatDTO.md)
  - [AddressState](doc//AddressState.md)
  - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
  - [AdminDeliveryerCreateParam](doc//AdminDeliveryerCreateParam.md)
@@ -592,6 +632,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseUserPostStatistics](doc//ApiResponseUserPostStatistics.md)
  - [ApiResponseVoid](doc//ApiResponseVoid.md)
  - [AppVersion](doc//AppVersion.md)
+ - [ApplyStakingParam](doc//ApplyStakingParam.md)
  - [AutoReplyConfig](doc//AutoReplyConfig.md)
  - [AutoReplyConfigSearchRequest](doc//AutoReplyConfigSearchRequest.md)
  - [AutoReplyDeleteResponse](doc//AutoReplyDeleteResponse.md)
@@ -600,6 +641,8 @@ Class | Method | HTTP request | Description
  - [BalanceConversion](doc//BalanceConversion.md)
  - [BatchReviewPromoCodeParam](doc//BatchReviewPromoCodeParam.md)
  - [BatchReviewResult](doc//BatchReviewResult.md)
+ - [BatchUpdatePaytableRequest](doc//BatchUpdatePaytableRequest.md)
+ - [BetResponse](doc//BetResponse.md)
  - [BindEmailParam](doc//BindEmailParam.md)
  - [BindOAuthParam](doc//BindOAuthParam.md)
  - [BlockRule](doc//BlockRule.md)
@@ -638,8 +681,10 @@ Class | Method | HTTP request | Description
  - [CodeSupportKnowledgeCandidate](doc//CodeSupportKnowledgeCandidate.md)
  - [CodeSupportKnowledgeImportResult](doc//CodeSupportKnowledgeImportResult.md)
  - [ColdWallet](doc//ColdWallet.md)
+ - [CreateActivityRequest](doc//CreateActivityRequest.md)
  - [CreateColdWalletParam](doc//CreateColdWalletParam.md)
  - [CreateIssueParam](doc//CreateIssueParam.md)
+ - [CreateMarketRequest](doc//CreateMarketRequest.md)
  - [CreatePromoCodeParam](doc//CreatePromoCodeParam.md)
  - [CreateRechargeParam](doc//CreateRechargeParam.md)
  - [CreateWithdrawParam](doc//CreateWithdrawParam.md)
@@ -695,6 +740,7 @@ Class | Method | HTTP request | Description
  - [FileRecordSearchRequest](doc//FileRecordSearchRequest.md)
  - [FileSyncResponse](doc//FileSyncResponse.md)
  - [FlutterAppDeploymentResponse](doc//FlutterAppDeploymentResponse.md)
+ - [GameRoundDTO](doc//GameRoundDTO.md)
  - [GenerateLoginTokenRequest](doc//GenerateLoginTokenRequest.md)
  - [GroqUsageStatsDTO](doc//GroqUsageStatsDTO.md)
  - [Group](doc//Group.md)
@@ -709,6 +755,8 @@ Class | Method | HTTP request | Description
  - [GroupMessageDTO](doc//GroupMessageDTO.md)
  - [HourlyStatDto](doc//HourlyStatDto.md)
  - [ImportResult](doc//ImportResult.md)
+ - [InterestRecordDTO](doc//InterestRecordDTO.md)
+ - [InterestRecordSearchParam](doc//InterestRecordSearchParam.md)
  - [IssueSearchParam](doc//IssueSearchParam.md)
  - [Item](doc//Item.md)
  - [ItemState](doc//ItemState.md)
@@ -725,6 +773,10 @@ Class | Method | HTTP request | Description
  - [MaintenanceStatusResponse](doc//MaintenanceStatusResponse.md)
  - [MaintenanceToggleRequest](doc//MaintenanceToggleRequest.md)
  - [ManualAdjustBalanceParam](doc//ManualAdjustBalanceParam.md)
+ - [MarketOptionRequest](doc//MarketOptionRequest.md)
+ - [MarketOptionResponse](doc//MarketOptionResponse.md)
+ - [MarketResponse](doc//MarketResponse.md)
+ - [MarketSearchRequest](doc//MarketSearchRequest.md)
  - [McpConnectorAccountStatus](doc//McpConnectorAccountStatus.md)
  - [McpConnectorAction](doc//McpConnectorAction.md)
  - [McpConnectorActivitySummaryResponse](doc//McpConnectorActivitySummaryResponse.md)
@@ -742,6 +794,7 @@ Class | Method | HTTP request | Description
  - [MonitoredGroupDTO](doc//MonitoredGroupDTO.md)
  - [NaturalSearchRequest](doc//NaturalSearchRequest.md)
  - [NaturalSearchResponse](doc//NaturalSearchResponse.md)
+ - [NextInterestEstimateDTO](doc//NextInterestEstimateDTO.md)
  - [NotificationCreateParam](doc//NotificationCreateParam.md)
  - [NotificationResponseDTO](doc//NotificationResponseDTO.md)
  - [NotificationSearchParam](doc//NotificationSearchParam.md)
@@ -765,7 +818,9 @@ Class | Method | HTTP request | Description
  - [OrderShipPlatformParam](doc//OrderShipPlatformParam.md)
  - [OrderStatisticsDTO](doc//OrderStatisticsDTO.md)
  - [OrderSumbitParam](doc//OrderSumbitParam.md)
+ - [PageActivityDTO](doc//PageActivityDTO.md)
  - [PageAutoReplyConfig](doc//PageAutoReplyConfig.md)
+ - [PageBetResponse](doc//PageBetResponse.md)
  - [PageCartItem](doc//PageCartItem.md)
  - [PageCartItemResponse](doc//PageCartItemResponse.md)
  - [PageChatMessage](doc//PageChatMessage.md)
@@ -779,6 +834,9 @@ Class | Method | HTTP request | Description
  - [PageDemandPublicSummaryResponse](doc//PageDemandPublicSummaryResponse.md)
  - [PageDispute](doc//PageDispute.md)
  - [PageFileRecord](doc//PageFileRecord.md)
+ - [PageGameRoundDTO](doc//PageGameRoundDTO.md)
+ - [PageInterestRecordDTO](doc//PageInterestRecordDTO.md)
+ - [PageMarketResponse](doc//PageMarketResponse.md)
  - [PageNotificationResponseDTO](doc//PageNotificationResponseDTO.md)
  - [PageOrder](doc//PageOrder.md)
  - [PagePickupStore](doc//PagePickupStore.md)
@@ -789,6 +847,7 @@ Class | Method | HTTP request | Description
  - [PageRecharge](doc//PageRecharge.md)
  - [PageReview](doc//PageReview.md)
  - [PageSanctionBlacklistAddress](doc//PageSanctionBlacklistAddress.md)
+ - [PageStaking](doc//PageStaking.md)
  - [PageStoreResponseDTO](doc//PageStoreResponseDTO.md)
  - [PageTransaction](doc//PageTransaction.md)
  - [PageUser](doc//PageUser.md)
@@ -810,12 +869,16 @@ Class | Method | HTTP request | Description
  - [PasswordResetCodeValidateResponse](doc//PasswordResetCodeValidateResponse.md)
  - [PasswordResetParam](doc//PasswordResetParam.md)
  - [PasswordResetWithCodeParam](doc//PasswordResetWithCodeParam.md)
+ - [PaytableDTO](doc//PaytableDTO.md)
+ - [PaytableEntryRequest](doc//PaytableEntryRequest.md)
+ - [PaytableWithRtpDTO](doc//PaytableWithRtpDTO.md)
  - [PendingQuestionResponse](doc//PendingQuestionResponse.md)
  - [PickupStore](doc//PickupStore.md)
  - [PickupStoreSearchParam](doc//PickupStoreSearchParam.md)
  - [PickupStoreSyncCheckResponse](doc//PickupStoreSyncCheckResponse.md)
  - [PickupStoreSyncResponse](doc//PickupStoreSyncResponse.md)
  - [PickupStoreSyncStatusResponse](doc//PickupStoreSyncStatusResponse.md)
+ - [PlaceBetRequest](doc//PlaceBetRequest.md)
  - [PostCreateParam](doc//PostCreateParam.md)
  - [PostResponse](doc//PostResponse.md)
  - [PostSearchParam](doc//PostSearchParam.md)
@@ -871,6 +934,7 @@ Class | Method | HTTP request | Description
  - [RegisterResult](doc//RegisterResult.md)
  - [RegistrationOverviewResponse](doc//RegistrationOverviewResponse.md)
  - [ReplyIssueParam](doc//ReplyIssueParam.md)
+ - [ResolveMarketRequest](doc//ResolveMarketRequest.md)
  - [ResolveRequest](doc//ResolveRequest.md)
  - [ReturnProcessParam](doc//ReturnProcessParam.md)
  - [ReturnRequestParam](doc//ReturnRequestParam.md)
@@ -883,6 +947,7 @@ Class | Method | HTTP request | Description
  - [ReviewSearchParam](doc//ReviewSearchParam.md)
  - [ReviewStatisticsDTO](doc//ReviewStatisticsDTO.md)
  - [ReviewUpdateParam](doc//ReviewUpdateParam.md)
+ - [RtpEntry](doc//RtpEntry.md)
  - [SSEEventRequest](doc//SSEEventRequest.md)
  - [SSEEventResponse](doc//SSEEventResponse.md)
  - [SalesStats](doc//SalesStats.md)
@@ -899,8 +964,26 @@ Class | Method | HTTP request | Description
  - [ShippingAddressOption](doc//ShippingAddressOption.md)
  - [ShippingOptions](doc//ShippingOptions.md)
  - [ShippingServiceGroup](doc//ShippingServiceGroup.md)
+ - [SlotDailyStatDto](doc//SlotDailyStatDto.md)
+ - [SlotHourlyStatDto](doc//SlotHourlyStatDto.md)
+ - [SlotMemberOddsEntry](doc//SlotMemberOddsEntry.md)
+ - [SlotMemberOddsResponse](doc//SlotMemberOddsResponse.md)
+ - [SlotOverviewResponse](doc//SlotOverviewResponse.md)
+ - [SlotPaytableConfigRequest](doc//SlotPaytableConfigRequest.md)
+ - [SlotPaytableConfigResponse](doc//SlotPaytableConfigResponse.md)
+ - [SlotRevenueResponse](doc//SlotRevenueResponse.md)
+ - [SlotRtpResponse](doc//SlotRtpResponse.md)
+ - [SlotSpinRequest](doc//SlotSpinRequest.md)
+ - [SlotSpinResponse](doc//SlotSpinResponse.md)
+ - [SlotSymbolInfo](doc//SlotSymbolInfo.md)
  - [Snippets](doc//Snippets.md)
  - [SortObject](doc//SortObject.md)
+ - [Staking](doc//Staking.md)
+ - [StakingConfigDTO](doc//StakingConfigDTO.md)
+ - [StakingConfigUpdateParam](doc//StakingConfigUpdateParam.md)
+ - [StakingInterestDetail](doc//StakingInterestDetail.md)
+ - [StakingSearchParam](doc//StakingSearchParam.md)
+ - [StakingStatisticsDTO](doc//StakingStatisticsDTO.md)
  - [Store](doc//Store.md)
  - [StoreAnalyticsDTO](doc//StoreAnalyticsDTO.md)
  - [StoreCreateParam](doc//StoreCreateParam.md)
@@ -939,6 +1022,7 @@ Class | Method | HTTP request | Description
  - [TwoFactorSetupResponse](doc//TwoFactorSetupResponse.md)
  - [TwoFactorVerifyParam](doc//TwoFactorVerifyParam.md)
  - [UnmergeableItem](doc//UnmergeableItem.md)
+ - [UpdateActivityRequest](doc//UpdateActivityRequest.md)
  - [UpdateDeliveryOrderParam](doc//UpdateDeliveryOrderParam.md)
  - [UpdatePromoCodeParam](doc//UpdatePromoCodeParam.md)
  - [User](doc//User.md)

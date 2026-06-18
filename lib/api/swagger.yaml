@@ -57,8 +57,16 @@
       "description": "管理員管理貼文的API接口"
     },
     {
+      "name": "Admin Slot",
+      "description": "管理員 Slot API"
+    },
+    {
       "name": "Admin Traffic",
       "description": "管理員流量與註冊分析 API"
+    },
+    {
+      "name": "staking",
+      "description": "質押管理 API"
     },
     {
       "name": "購物車管理",
@@ -89,12 +97,24 @@
       "description": "商品 AI 分類與 taxonomy 治理 API"
     },
     {
+      "name": "Betting Markets",
+      "description": "對賭市場管理 API"
+    },
+    {
       "name": "delivery",
       "description": "配送管理 API"
     },
     {
+      "name": "admin-staking",
+      "description": "管理員質押管理 API"
+    },
+    {
       "name": "oauth2-standard",
       "description": "OAuth2 标准流程 API"
+    },
+    {
+      "name": "Betting",
+      "description": "投注管理 API"
     },
     {
       "name": "pwa-logs",
@@ -119,6 +139,10 @@
     {
       "name": "telegram-webapp-auth",
       "description": "Telegram WebApp initData 认证 API"
+    },
+    {
+      "name": "TG 遊戲管理",
+      "description": "Telegram 🎰 拉霸遊戲管理"
     },
     {
       "name": "member-notifications",
@@ -225,6 +249,10 @@
       "description": "商品管理 API"
     },
     {
+      "name": "Slot",
+      "description": "Slot 遊戲 API"
+    },
+    {
       "name": "sse-test",
       "description": "SSE推播測試 API"
     },
@@ -258,6 +286,82 @@
     }
   ],
   "paths": {
+    "/tg-game/paytable/batch": {
+      "put": {
+        "tags": [
+          "TG 遊戲管理"
+        ],
+        "summary": "批次更新賠付規則",
+        "description": "批次更新特定遊戲和盤口的所有賠付規則（會替換現有所有規則）",
+        "operationId": "batchUpdatePaytable",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BatchUpdatePaytableRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaytableWithRtpDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tg-game/activity/{id}": {
+      "put": {
+        "tags": [
+          "TG 遊戲管理"
+        ],
+        "summary": "更新活動",
+        "description": "更新拉霸活動設定（只更新有傳入的欄位）",
+        "operationId": "updateActivity",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "活動 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateActivityRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivityDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/stores/my-storefront-home/draft": {
       "put": {
         "tags": [
@@ -498,6 +602,32 @@
             "name": "notificationId",
             "in": "path",
             "description": "通知ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/markets/{id}/close": {
+      "put": {
+        "tags": [
+          "Betting Markets"
+        ],
+        "summary": "關閉市場",
+        "description": "關閉市場，停止接受新的投注（僅創建者或管理員）",
+        "operationId": "closeMarket",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
             "required": true,
             "schema": {
               "type": "integer",
@@ -865,6 +995,58 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/MaintenanceStatusResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/staking/config": {
+      "get": {
+        "tags": [
+          "admin-staking"
+        ],
+        "summary": "獲取質押配置",
+        "description": "獲取當前有效的質押配置信息",
+        "operationId": "getConfig",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/StakingConfigDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "admin-staking"
+        ],
+        "summary": "更新質押配置",
+        "description": "更新質押利率和最低質押金額配置",
+        "operationId": "updateStakingConfig",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StakingConfigUpdateParam"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/StakingConfigDTO"
                 }
               }
             }
@@ -2147,6 +2329,70 @@
         }
       }
     },
+    "/tg-game/activity": {
+      "post": {
+        "tags": [
+          "TG 遊戲管理"
+        ],
+        "summary": "建立活動",
+        "description": "建立拉霸活動，groupId 可選，不傳則不限制群組",
+        "operationId": "createActivity",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateActivityRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivityDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tg-game/activity/search": {
+      "post": {
+        "tags": [
+          "TG 遊戲管理"
+        ],
+        "summary": "查詢活動",
+        "description": "多條件查詢活動，支援分頁",
+        "operationId": "searchActivities",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivitySearchParam"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageActivityDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/test/review": {
       "post": {
         "tags": [
@@ -2605,6 +2851,102 @@
         }
       }
     },
+    "/staking/unfreeze": {
+      "post": {
+        "tags": [
+          "staking"
+        ],
+        "summary": "申請解除質押",
+        "description": "用戶申請解除指定質押記錄。解除質押不發放收益，只退回本金。",
+        "operationId": "unfreezeStaking",
+        "parameters": [
+          {
+            "name": "stakingId",
+            "in": "query",
+            "description": "質押ID（業務ID）",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Staking"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/staking/search": {
+      "post": {
+        "tags": [
+          "staking"
+        ],
+        "summary": "管理員搜尋質押記錄",
+        "operationId": "searchStakings",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StakingSearchParam"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageStaking"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/staking/apply": {
+      "post": {
+        "tags": [
+          "staking"
+        ],
+        "summary": "申請質押（活期）",
+        "description": "用戶申請活期質押指定金額的資產，每天自動結算發放收益，可隨時解除質押。一次只能發起一筆質押。",
+        "operationId": "applyStaking",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplyStakingParam"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Staking"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/sse/send/user/{userId}": {
       "post": {
         "tags": [
@@ -2899,6 +3241,114 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/SSEEventResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/slot/spin": {
+      "post": {
+        "tags": [
+          "Slot"
+        ],
+        "summary": "Spin",
+        "description": "執行一次 Slot Spin，支援 REAL 與 DEMO 模式",
+        "operationId": "spin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlotSpinRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlotSpinResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/slot/paytable/{gameId}": {
+      "get": {
+        "tags": [
+          "Slot"
+        ],
+        "summary": "查詢 Slot 賠率",
+        "description": "查詢指定遊戲的賠率設定（需 ROLE_ADMIN）",
+        "operationId": "getPaytable",
+        "parameters": [
+          {
+            "name": "gameId",
+            "in": "path",
+            "description": "遊戲 ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "moon_dance"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlotPaytableConfigResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Slot"
+        ],
+        "summary": "設定 Slot 賠率",
+        "description": "新增或覆蓋指定遊戲的完整賠率設定，所有倍率欄位皆必填（需 ROLE_ADMIN）",
+        "operationId": "savePaytable",
+        "parameters": [
+          {
+            "name": "gameId",
+            "in": "path",
+            "description": "遊戲 ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "moon_dance"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlotPaytableConfigRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlotPaytableConfigResponse"
                 }
               }
             }
@@ -5413,6 +5863,141 @@
         }
       }
     },
+    "/markets": {
+      "post": {
+        "tags": [
+          "Betting Markets"
+        ],
+        "summary": "創建市場",
+        "description": "創建新的對賭市場（需要認證）",
+        "operationId": "createMarket",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMarketRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/markets/{id}/resolve": {
+      "post": {
+        "tags": [
+          "Betting Markets"
+        ],
+        "summary": "結算市場",
+        "description": "結算市場並分配獎金（僅解決者或管理員）",
+        "operationId": "resolveMarket",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResolveMarketRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/markets/{id}/cancel": {
+      "post": {
+        "tags": [
+          "Betting Markets"
+        ],
+        "summary": "取消市場",
+        "description": "取消市場並退款給所有參與者（僅創建者或管理員）",
+        "operationId": "cancelMarket",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "reason",
+            "in": "query",
+            "description": "取消原因",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/markets/search": {
+      "post": {
+        "tags": [
+          "Betting Markets"
+        ],
+        "summary": "搜索市場",
+        "description": "根據條件搜索市場",
+        "operationId": "searchMarkets",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarketSearchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageMarketResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/logistics/postal/search": {
       "post": {
         "tags": [
@@ -6917,6 +7502,38 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/CartItemResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bets": {
+      "post": {
+        "tags": [
+          "Betting"
+        ],
+        "summary": "下注",
+        "description": "在市場上下注（需要認證）",
+        "operationId": "placeBet",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlaceBetRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BetResponse"
                 }
               }
             }
@@ -8445,6 +9062,62 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/StorefrontHomeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/staking/interest-records": {
+      "post": {
+        "tags": [
+          "admin-staking"
+        ],
+        "summary": "查詢收益發放記錄",
+        "description": "查詢質押收益發放記錄",
+        "operationId": "getInterestRecords",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "頁碼，從1開始",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "每頁數量",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InterestRecordSearchParam"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageInterestRecordDTO"
                 }
               }
             }
@@ -10773,6 +11446,40 @@
         }
       }
     },
+    "/tg-game/activity/{id}/finish": {
+      "patch": {
+        "tags": [
+          "TG 遊戲管理"
+        ],
+        "summary": "結束活動",
+        "description": "將活動狀態設為 FINISHED",
+        "operationId": "finishActivity",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "活動 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivityDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/withdraws/{withdrawId}": {
       "get": {
         "tags": [
@@ -11259,6 +11966,154 @@
         }
       }
     },
+    "/tg-game/rounds": {
+      "get": {
+        "tags": [
+          "TG 遊戲管理"
+        ],
+        "summary": "查詢玩家流水",
+        "description": "查詢玩家的遊戲記錄",
+        "operationId": "getPlayerRounds",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "用戶 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "頁碼",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            },
+            "example": 0
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "每頁數量",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            },
+            "example": 20
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageGameRoundDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tg-game/paytable": {
+      "get": {
+        "tags": [
+          "TG 遊戲管理"
+        ],
+        "summary": "查詢賠付規則及 RTP",
+        "description": "查詢特定遊戲和盤口的賠付規則及 RTP",
+        "operationId": "getPaytableByGameAndHandicap",
+        "parameters": [
+          {
+            "name": "gameType",
+            "in": "query",
+            "description": "遊戲類型",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "SLOT_MACHINE",
+                "DICE",
+                "DARTS",
+                "BASKETBALL",
+                "FOOTBALL",
+                "BOWLING"
+              ]
+            }
+          },
+          {
+            "name": "handicapType",
+            "in": "query",
+            "description": "盤口類型",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "STANDARD",
+                "HIGH_ROLLER",
+                "PROMOTIONAL",
+                "VIP"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaytableWithRtpDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tg-game/activity/{id}/stat": {
+      "get": {
+        "tags": [
+          "TG 遊戲管理"
+        ],
+        "summary": "查詢活動統計",
+        "description": "查詢活動的統計數據（總投注、總獎金、利潤、玩家數）",
+        "operationId": "getActivityStatistics",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "活動 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivityStatDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/test/jwt-config": {
       "get": {
         "tags": [
@@ -11611,6 +12466,31 @@
         }
       }
     },
+    "/staking/active": {
+      "get": {
+        "tags": [
+          "staking"
+        ],
+        "summary": "查詢正在進行中的質押",
+        "description": "獲取用戶當前正在進行中的質押記錄（質押中）",
+        "operationId": "getActiveStakings",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Staking"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/sse/status": {
       "get": {
         "tags": [
@@ -11734,6 +12614,183 @@
             "bearerAuth": []
           }
         ]
+      }
+    },
+    "/slot/symbols": {
+      "get": {
+        "tags": [
+          "Slot"
+        ],
+        "summary": "取得 Symbol 目錄",
+        "description": "返回所有 Symbol 的顯示資訊",
+        "operationId": "getSymbols",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SlotSymbolInfo"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/slot/rtp": {
+      "get": {
+        "tags": [
+          "Slot"
+        ],
+        "summary": "取得會員賠率展示資料",
+        "description": "返回會員前台可展示的賠率資訊",
+        "operationId": "getMemberOddsTable",
+        "parameters": [
+          {
+            "name": "gameId",
+            "in": "query",
+            "description": "遊戲 ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "moon_dance"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlotMemberOddsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/slot/revenue": {
+      "get": {
+        "tags": [
+          "Slot"
+        ],
+        "summary": "Slot 收益統計",
+        "description": "查詢指定時間區間內的下注、派彩與平台毛利（需 ROLE_ADMIN）",
+        "operationId": "getRevenue",
+        "parameters": [
+          {
+            "name": "gameId",
+            "in": "query",
+            "description": "遊戲 ID（不填則查全部遊戲）",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "moon_dance"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "區間起始，ISO 格式",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "example": "2026-01-01T00:00:00"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "區間結束，ISO 格式",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "example": "2026-12-31T23:59:59"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SlotRevenueResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/slot/revenue/by-version": {
+      "get": {
+        "tags": [
+          "Slot"
+        ],
+        "summary": "Slot 收益統計（按賠率版本）",
+        "description": "按賠率版本分組，每版附帶理論 RTP 與實際 RTP 供比對（需 ROLE_ADMIN）",
+        "operationId": "getRevenueByVersion",
+        "parameters": [
+          {
+            "name": "gameId",
+            "in": "query",
+            "description": "遊戲 ID（不填則查全部遊戲）",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "moon_dance"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "區間起始，ISO 格式",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "example": "2026-01-01T00:00:00"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "區間結束，ISO 格式",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "example": "2026-12-31T23:59:59"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SlotRevenueResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/seller/demands/{demandId}/missing-requirements": {
@@ -13702,6 +14759,85 @@
         ]
       }
     },
+    "/markets/{id}": {
+      "get": {
+        "tags": [
+          "Betting Markets"
+        ],
+        "summary": "獲取市場詳情",
+        "description": "根據ID獲取市場的完整信息",
+        "operationId": "getMarket",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/markets/active": {
+      "get": {
+        "tags": [
+          "Betting Markets"
+        ],
+        "summary": "查詢活躍市場",
+        "description": "查詢當前可以投注的市場",
+        "operationId": "getActiveMarkets",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "頁碼（從0開始）",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "每頁數量",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageMarketResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/logistics/postal/city/{city}": {
       "get": {
         "tags": [
@@ -14581,6 +15717,122 @@
         }
       }
     },
+    "/bets/my": {
+      "get": {
+        "tags": [
+          "Betting"
+        ],
+        "summary": "我的投注記錄",
+        "description": "查詢當前用戶的投注記錄",
+        "operationId": "getMyBets",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "description": "投注狀態",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ACTIVE",
+                "WON",
+                "LOST",
+                "REFUNDED"
+              ]
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "頁碼（從0開始）",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "每頁數量",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageBetResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bets/market/{marketId}": {
+      "get": {
+        "tags": [
+          "Betting"
+        ],
+        "summary": "市場投注記錄",
+        "description": "查詢特定市場的所有投注記錄",
+        "operationId": "getMarketBets",
+        "parameters": [
+          {
+            "name": "marketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "頁碼（從0開始）",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "每頁數量",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageBetResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/auth/passkey/security-summary": {
       "get": {
         "tags": [
@@ -14815,6 +16067,102 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/TwoFactorSetupResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/admin/traffic/slot/today": {
+      "get": {
+        "tags": [
+          "Admin Traffic"
+        ],
+        "summary": "今日 Slot 小時分佈",
+        "description": "返回今日 00:00 至現在的 Slot 每小時局數、玩家數、下注量。",
+        "operationId": "getSlotToday",
+        "parameters": [
+          {
+            "name": "gameId",
+            "in": "query",
+            "description": "遊戲 ID（可選），不傳代表全部遊戲",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlotOverviewResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/admin/traffic/slot/overview": {
+      "get": {
+        "tags": [
+          "Admin Traffic"
+        ],
+        "summary": "Slot 遊戲流量概覽",
+        "description": "返回指定時間範圍內的 Slot 局數、活躍玩家、下注/派彩/毛利、實際 RTP、每日趨勢及每小時分佈。可按 gameId 篩選，不傳則統計全部遊戲。默認查詢最近 30 天。",
+        "operationId": "getSlotOverview",
+        "parameters": [
+          {
+            "name": "gameId",
+            "in": "query",
+            "description": "遊戲 ID（可選），不傳代表全部遊戲",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "起始時間 (ISO-8601)，不傳則默認 30 天前",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "description": "結束時間 (ISO-8601)，不傳則默認現在",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlotOverviewResponse"
                 }
               }
             }
@@ -15236,6 +16584,94 @@
                   "items": {
                     "$ref": "#/components/schemas/StorefrontHomeResponse"
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/staking/statistics": {
+      "get": {
+        "tags": [
+          "admin-staking"
+        ],
+        "summary": "質押統計報告",
+        "description": "獲取質押相關的統計數據",
+        "operationId": "getStatistics_1",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "開始日期 (ISO-8601 格式)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "結束日期 (ISO-8601 格式)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/StakingStatisticsDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/staking/next-interest-estimate": {
+      "get": {
+        "tags": [
+          "admin-staking"
+        ],
+        "summary": "預估下次收益發放",
+        "description": "預估下次結算時將發放的收益金額統計",
+        "operationId": "getNextInterestEstimate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/NextInterestEstimateDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/slot/rtp": {
+      "get": {
+        "tags": [
+          "Admin Slot"
+        ],
+        "summary": "取得管理員 RTP 設定表",
+        "description": "返回完整中獎組合機率與 RTP 貢獻明細（僅管理員）",
+        "operationId": "getAdminRtpTable",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlotRtpResponse"
                 }
               }
             }
@@ -17213,6 +18649,269 @@
   },
   "components": {
     "schemas": {
+      "BatchUpdatePaytableRequest": {
+        "type": "object",
+        "description": "批次更新賠付規則請求",
+        "properties": {
+          "gameType": {
+            "type": "string",
+            "description": "遊戲類型",
+            "enum": [
+              "SLOT_MACHINE",
+              "DICE",
+              "DARTS",
+              "BASKETBALL",
+              "FOOTBALL",
+              "BOWLING"
+            ],
+            "example": "SLOT_MACHINE"
+          },
+          "handicapType": {
+            "type": "string",
+            "description": "盤口類型",
+            "enum": [
+              "STANDARD",
+              "HIGH_ROLLER",
+              "PROMOTIONAL",
+              "VIP"
+            ],
+            "example": "STANDARD"
+          },
+          "entries": {
+            "type": "array",
+            "description": "賠付規則列表",
+            "items": {
+              "$ref": "#/components/schemas/PaytableEntryRequest"
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "entries",
+          "gameType",
+          "handicapType"
+        ]
+      },
+      "PaytableEntryRequest": {
+        "type": "object",
+        "properties": {
+          "diceValue": {
+            "type": "integer",
+            "format": "int32",
+            "description": "骰子值 (1-64)",
+            "example": 64,
+            "maximum": 64,
+            "minimum": 1
+          },
+          "multiplier": {
+            "type": "number",
+            "description": "賠率倍數",
+            "example": 10.0,
+            "minimum": 0.0
+          },
+          "description": {
+            "type": "string",
+            "description": "描述",
+            "example": "最高獎 10倍"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "default": "1",
+            "description": "狀態 (0=停用, 1=啟用)",
+            "example": 1
+          }
+        },
+        "required": [
+          "diceValue",
+          "multiplier"
+        ]
+      },
+      "PaytableDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "gameType": {
+            "type": "string",
+            "enum": [
+              "SLOT_MACHINE",
+              "DICE",
+              "DARTS",
+              "BASKETBALL",
+              "FOOTBALL",
+              "BOWLING"
+            ]
+          },
+          "handicapType": {
+            "type": "string",
+            "enum": [
+              "STANDARD",
+              "HIGH_ROLLER",
+              "PROMOTIONAL",
+              "VIP"
+            ]
+          },
+          "diceValue": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "multiplier": {
+            "type": "number"
+          },
+          "description": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "probability": {
+            "type": "number"
+          },
+          "rtpContribution": {
+            "type": "number"
+          }
+        }
+      },
+      "PaytableWithRtpDTO": {
+        "type": "object",
+        "properties": {
+          "gameType": {
+            "type": "string",
+            "enum": [
+              "SLOT_MACHINE",
+              "DICE",
+              "DARTS",
+              "BASKETBALL",
+              "FOOTBALL",
+              "BOWLING"
+            ]
+          },
+          "handicapType": {
+            "type": "string",
+            "enum": [
+              "STANDARD",
+              "HIGH_ROLLER",
+              "PROMOTIONAL",
+              "VIP"
+            ]
+          },
+          "paytables": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaytableDTO"
+            }
+          },
+          "totalRtp": {
+            "type": "number"
+          },
+          "expectedProfit": {
+            "type": "number"
+          }
+        }
+      },
+      "UpdateActivityRequest": {
+        "type": "object",
+        "description": "更新活動請求",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "活動名稱",
+            "example": "週末拉霸活動"
+          },
+          "groupId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Telegram 群組 ID（可選，未填則維持原值）",
+            "example": -100123456
+          },
+          "startTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "開始時間",
+            "example": "2026-02-16T20:00:00"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "結束時間",
+            "example": "2026-02-16T23:59:59"
+          },
+          "betAmount": {
+            "type": "number",
+            "description": "下注金額",
+            "example": 150.0,
+            "minimum": 0.0
+          },
+          "status": {
+            "type": "string",
+            "description": "活動狀態",
+            "enum": [
+              "PENDING",
+              "RUNNING",
+              "FINISHED"
+            ],
+            "example": "RUNNING"
+          },
+          "gameType": {
+            "type": "string",
+            "description": "遊戲類型",
+            "enum": [
+              "SLOT_MACHINE",
+              "DICE",
+              "DARTS",
+              "BASKETBALL",
+              "FOOTBALL",
+              "BOWLING"
+            ],
+            "example": "SLOT_MACHINE"
+          },
+          "handicapType": {
+            "type": "string",
+            "description": "盤口類型",
+            "enum": [
+              "STANDARD",
+              "HIGH_ROLLER",
+              "PROMOTIONAL",
+              "VIP"
+            ],
+            "example": "STANDARD"
+          }
+        }
+      },
+      "ActivityDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "groupId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "betAmount": {
+            "type": "number"
+          },
+          "startTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
       "StorefrontHomeDraftRequest": {
         "type": "object",
         "description": "Seller storefront home draft update",
@@ -18737,6 +20436,61 @@
           },
           "deliveryMaintenance": {
             "type": "boolean"
+          }
+        }
+      },
+      "StakingConfigUpdateParam": {
+        "type": "object",
+        "description": "更新質押配置參數",
+        "properties": {
+          "annualInterestRate": {
+            "type": "number",
+            "description": "年利率（0-1之間，例如0.05表示5%）",
+            "example": 0.05,
+            "maximum": 1.0,
+            "minimum": 0.0
+          },
+          "minStakingAmount": {
+            "type": "number",
+            "description": "最低質押金額",
+            "example": 50,
+            "minimum": 0.0
+          },
+          "remark": {
+            "type": "string",
+            "description": "備註"
+          }
+        },
+        "required": [
+          "annualInterestRate",
+          "minStakingAmount"
+        ]
+      },
+      "StakingConfigDTO": {
+        "type": "object",
+        "description": "質押配置信息",
+        "properties": {
+          "annualInterestRate": {
+            "type": "number",
+            "description": "年利率"
+          },
+          "minStakingAmount": {
+            "type": "number",
+            "description": "最低質押金額"
+          },
+          "isActive": {
+            "type": "boolean",
+            "description": "是否啟用"
+          },
+          "effectiveFrom": {
+            "type": "string",
+            "format": "date-time",
+            "description": "生效時間"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "更新時間"
           }
         }
       },
@@ -20321,6 +22075,216 @@
           "userId"
         ]
       },
+      "CreateActivityRequest": {
+        "type": "object",
+        "description": "建立活動請求",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "活動名稱",
+            "example": "今晚拉霸活動",
+            "minLength": 1
+          },
+          "groupId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Telegram 群組 ID（可選，未填則不限制群組）",
+            "example": -100123456
+          },
+          "startTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "開始時間",
+            "example": "2026-02-15T20:00:00"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "結束時間",
+            "example": "2026-02-15T23:59:59"
+          },
+          "betAmount": {
+            "type": "number",
+            "description": "下注金額",
+            "example": 100.0,
+            "minimum": 0.0
+          },
+          "status": {
+            "type": "string",
+            "description": "活動狀態",
+            "enum": [
+              "PENDING",
+              "RUNNING",
+              "FINISHED"
+            ],
+            "example": "RUNNING"
+          },
+          "gameType": {
+            "type": "string",
+            "description": "遊戲類型",
+            "enum": [
+              "SLOT_MACHINE",
+              "DICE",
+              "DARTS",
+              "BASKETBALL",
+              "FOOTBALL",
+              "BOWLING"
+            ],
+            "example": "SLOT_MACHINE"
+          },
+          "handicapType": {
+            "type": "string",
+            "description": "盤口類型",
+            "enum": [
+              "STANDARD",
+              "HIGH_ROLLER",
+              "PROMOTIONAL",
+              "VIP"
+            ],
+            "example": "STANDARD"
+          }
+        },
+        "required": [
+          "betAmount",
+          "endTime",
+          "name",
+          "startTime"
+        ]
+      },
+      "ActivitySearchParam": {
+        "type": "object",
+        "description": "查詢條件",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "description": "頁碼，從1開始",
+            "example": 1
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32",
+            "description": "每頁數量",
+            "example": 20
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "開始日期 (ISO-8601 格式)",
+            "example": "2024-01-01T00:00:00"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "結束日期 (ISO-8601 格式)",
+            "example": "2024-12-31T23:59:59"
+          },
+          "keyword": {
+            "type": "string",
+            "description": "搜索關鍵字"
+          },
+          "sortBy": {
+            "type": "string",
+            "description": "排序字段"
+          },
+          "sortDirection": {
+            "type": "string",
+            "description": "排序方向 (ASC/DESC)",
+            "example": "DESC"
+          },
+          "name": {
+            "type": "string",
+            "description": "活動名稱（模糊匹配）",
+            "example": "拉霸"
+          },
+          "groupId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Telegram 群組 ID",
+            "example": -100123456
+          },
+          "status": {
+            "type": "string",
+            "description": "活動狀態",
+            "enum": [
+              "PENDING",
+              "RUNNING",
+              "FINISHED"
+            ],
+            "example": "RUNNING"
+          },
+          "gameType": {
+            "type": "string",
+            "description": "遊戲類型",
+            "enum": [
+              "SLOT_MACHINE",
+              "DICE",
+              "DARTS",
+              "BASKETBALL",
+              "FOOTBALL",
+              "BOWLING"
+            ],
+            "example": "SLOT_MACHINE"
+          },
+          "handicapType": {
+            "type": "string",
+            "description": "盤口類型",
+            "enum": [
+              "STANDARD",
+              "HIGH_ROLLER",
+              "PROMOTIONAL",
+              "VIP"
+            ],
+            "example": "STANDARD"
+          }
+        }
+      },
+      "PageActivityDTO": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ActivityDTO"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
       "StoreUpdateParam": {
         "type": "object",
         "description": "更新商店參數",
@@ -21486,6 +23450,249 @@
           }
         }
       },
+      "Staking": {
+        "type": "object",
+        "description": "質押記錄（活期質押）",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "質押ID（業務ID）",
+            "example": "STK202401010001",
+            "maxLength": 50
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "用戶ID",
+            "example": 1
+          },
+          "amount": {
+            "type": "number",
+            "description": "質押金額",
+            "example": 1000.0
+          },
+          "currency": {
+            "type": "string",
+            "description": "質押幣種",
+            "example": "USDT",
+            "maxLength": 10
+          },
+          "status": {
+            "type": "string",
+            "description": "質押狀態 (STAKING/COMPLETED)",
+            "enum": [
+              "STAKING",
+              "COMPLETED"
+            ],
+            "maxLength": 20
+          },
+          "applyTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "申請時間",
+            "example": "2024-01-01T10:00:00"
+          },
+          "startTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "質押開始時間",
+            "example": "2024-01-01T10:00:00"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "質押結束時間（活期質押為NULL）",
+            "example": "2024-12-31T23:59:59"
+          },
+          "earnedRewards": {
+            "type": "number",
+            "description": "已獲得收益（累計）",
+            "example": 50.0
+          },
+          "unfreezeRequestTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "解除申請時間",
+            "example": "2024-01-01T11:00:00"
+          },
+          "unfreezeCompleteTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "解除完成時間",
+            "example": "2024-01-01T12:00:00"
+          },
+          "lastSettleDate": {
+            "type": "string",
+            "format": "date",
+            "description": "上次結算日期",
+            "example": "2024-01-01"
+          },
+          "lastSettleTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "上次結算的實際時間（精確到秒）",
+            "example": "2024-01-01T10:00:00"
+          },
+          "lastSettleReward": {
+            "type": "number",
+            "description": "上次結算收益",
+            "example": 10.0
+          },
+          "remark": {
+            "type": "string",
+            "description": "備註",
+            "example": "活期質押",
+            "maxLength": 500
+          },
+          "nextExpectedSettleTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "下次預計發放時間（實時計算，不存數據庫）",
+            "example": "2024-01-02T10:00:00"
+          },
+          "expectedReward": {
+            "type": "number",
+            "description": "預計發放收益（實時計算，不存數據庫）",
+            "example": 5.0
+          }
+        },
+        "required": [
+          "amount",
+          "applyTime",
+          "currency",
+          "id",
+          "startTime",
+          "status",
+          "userId"
+        ]
+      },
+      "StakingSearchParam": {
+        "type": "object",
+        "description": "質押搜尋參數",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "description": "頁碼，從1開始",
+            "example": 1
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32",
+            "description": "每頁數量",
+            "example": 20
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "開始日期 (ISO-8601 格式)",
+            "example": "2024-01-01T00:00:00"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "結束日期 (ISO-8601 格式)",
+            "example": "2024-12-31T23:59:59"
+          },
+          "keyword": {
+            "type": "string",
+            "description": "搜索關鍵字"
+          },
+          "sortBy": {
+            "type": "string",
+            "description": "排序字段"
+          },
+          "sortDirection": {
+            "type": "string",
+            "description": "排序方向 (ASC/DESC)",
+            "example": "DESC"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "用戶ID",
+            "example": 123
+          },
+          "stakingId": {
+            "type": "string",
+            "description": "質押ID",
+            "example": "S2501151430250001A1B2"
+          },
+          "status": {
+            "type": "string",
+            "description": "質押狀態",
+            "enum": [
+              "STAKING",
+              "COMPLETED"
+            ]
+          },
+          "currency": {
+            "type": "string",
+            "description": "貨幣",
+            "example": "USDT"
+          }
+        }
+      },
+      "PageStaking": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Staking"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ApplyStakingParam": {
+        "type": "object",
+        "description": "申請質押參數（活期質押）",
+        "properties": {
+          "amount": {
+            "type": "number",
+            "description": "質押金額",
+            "minimum": 1.0
+          }
+        },
+        "required": [
+          "amount"
+        ]
+      },
       "SSEEventRequest": {
         "type": "object",
         "description": "通用SSE事件請求",
@@ -21632,6 +23839,382 @@
             }
           }
         }
+      },
+      "SlotSpinRequest": {
+        "type": "object",
+        "description": "Spin 請求（mode 欄位可選，預設 REAL）",
+        "properties": {
+          "gameId": {
+            "type": "string",
+            "description": "遊戲 ID",
+            "example": "moon_dance",
+            "maxLength": 50,
+            "minLength": 0
+          },
+          "betAmount": {
+            "type": "number",
+            "description": "下注金額",
+            "example": 250,
+            "minimum": 1
+          },
+          "clientSeed": {
+            "type": "string",
+            "description": "玩家種子（Provably Fair）",
+            "example": "player123",
+            "maxLength": 100,
+            "minLength": 0
+          },
+          "nonce": {
+            "type": "integer",
+            "format": "int64",
+            "description": "回合序號（Provably Fair）",
+            "example": 1,
+            "minimum": 0
+          },
+          "clientRoundId": {
+            "type": "string",
+            "description": "客戶端回合 ID（防重複，真實模式必填，試玩模式可省略）",
+            "example": "rnd_1709961600_abc",
+            "maxLength": 100,
+            "minLength": 0
+          },
+          "mode": {
+            "type": "string",
+            "description": "遊玩模式：REAL（真實，預設）或 DEMO（試玩，不扣款、不儲存記錄）",
+            "enum": [
+              "REAL",
+              "DEMO"
+            ],
+            "example": "REAL",
+            "pattern": "^(?i)(REAL|DEMO)$"
+          },
+          "demoMode": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "betAmount",
+          "clientSeed",
+          "gameId",
+          "nonce"
+        ]
+      },
+      "SlotSpinResponse": {
+        "type": "object",
+        "description": "Slot Spin 回應",
+        "properties": {
+          "roundId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "回合 ID",
+            "example": 1
+          },
+          "reels": {
+            "type": "array",
+            "description": "三個 Reel 的停止索引 (0-31)",
+            "example": [
+              5,
+              5,
+              5
+            ],
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "symbols": {
+            "type": "array",
+            "description": "三個 Reel 顯示的 Symbol 名稱",
+            "example": [
+              "GRAPE",
+              "GRAPE",
+              "GRAPE"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "symbolIds": {
+            "type": "array",
+            "description": "三個 Reel 對應的 Symbol ID",
+            "example": [
+              5,
+              5,
+              5
+            ],
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "symbolDisplays": {
+            "type": "array",
+            "description": "三個 Reel 的 Symbol Emoji 顯示（供前端備註用途）",
+            "example": [
+              "🍇",
+              "🍇",
+              "🍇"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "multiplier": {
+            "type": "integer",
+            "format": "int32",
+            "description": "中獎倍率（0 = 未中獎）",
+            "example": 20
+          },
+          "winAmount": {
+            "type": "number",
+            "description": "中獎金額",
+            "example": 5000
+          },
+          "balance": {
+            "type": "number",
+            "description": "Spin 後餘額",
+            "example": 10500
+          },
+          "nonce": {
+            "type": "integer",
+            "format": "int64",
+            "description": "本局 nonce（Provably Fair）",
+            "example": 1
+          },
+          "serverSeedHash": {
+            "type": "string",
+            "description": "伺服器種子 Hash（Provably Fair，可驗證）",
+            "example": "a3f8..."
+          }
+        }
+      },
+      "SlotPaytableConfigRequest": {
+        "type": "object",
+        "description": "Slot 賠率設定請求（所有倍率皆必填）",
+        "properties": {
+          "multApple": {
+            "type": "integer",
+            "format": "int32",
+            "description": "🍎 APPLE×3 倍率（WILD Jackpot）",
+            "example": 500,
+            "minimum": 1
+          },
+          "multCherry": {
+            "type": "integer",
+            "format": "int32",
+            "description": "🍒 CHERRY×3 倍率",
+            "example": 120,
+            "minimum": 1
+          },
+          "multSeven": {
+            "type": "integer",
+            "format": "int32",
+            "description": "7️⃣ SEVEN×3 倍率",
+            "example": 80,
+            "minimum": 1
+          },
+          "multLemon": {
+            "type": "integer",
+            "format": "int32",
+            "description": "🍋 LEMON×3 倍率",
+            "example": 40,
+            "minimum": 1
+          },
+          "multBar": {
+            "type": "integer",
+            "format": "int32",
+            "description": "BAR BAR×3 倍率",
+            "example": 25,
+            "minimum": 1
+          },
+          "multGrape": {
+            "type": "integer",
+            "format": "int32",
+            "description": "🍇 GRAPE×3 倍率",
+            "example": 20,
+            "minimum": 1
+          },
+          "multHeart": {
+            "type": "integer",
+            "format": "int32",
+            "description": "❤️ HEART×3 倍率",
+            "example": 12,
+            "minimum": 1
+          },
+          "multBell": {
+            "type": "integer",
+            "format": "int32",
+            "description": "🔔 BELL×3 倍率",
+            "example": 8,
+            "minimum": 1
+          },
+          "multWatermelon": {
+            "type": "integer",
+            "format": "int32",
+            "description": "🍉 WATERMELON×3 倍率",
+            "example": 5,
+            "minimum": 1
+          },
+          "consoleWatermelon": {
+            "type": "integer",
+            "format": "int32",
+            "description": "🍉🍉X WATERMELON×2 安慰獎倍率（必須小於 multWatermelon）",
+            "example": 2,
+            "minimum": 1
+          },
+          "consoleGrape": {
+            "type": "integer",
+            "format": "int32",
+            "description": "🍇🍇X GRAPE×2 安慰獎倍率（必須小於 multGrape）",
+            "example": 3,
+            "minimum": 1
+          },
+          "wildTwoMin": {
+            "type": "integer",
+            "format": "int32",
+            "description": "🍎🍎X WILD×2 最低保底倍率（不足時取第三張符號的三連倍率）",
+            "example": 20,
+            "minimum": 1
+          }
+        },
+        "required": [
+          "consoleGrape",
+          "consoleWatermelon",
+          "multApple",
+          "multBar",
+          "multBell",
+          "multCherry",
+          "multGrape",
+          "multHeart",
+          "multLemon",
+          "multSeven",
+          "multWatermelon",
+          "wildTwoMin"
+        ]
+      },
+      "SlotPaytableConfigResponse": {
+        "type": "object",
+        "description": "Slot 賠率設定回應",
+        "properties": {
+          "gameId": {
+            "type": "string",
+            "description": "遊戲 ID",
+            "example": "moon_dance"
+          },
+          "multApple": {
+            "type": "integer",
+            "format": "int32",
+            "description": "🍎 APPLE×3 倍率（WILD Jackpot）",
+            "example": 500
+          },
+          "multCherry": {
+            "type": "integer",
+            "format": "int32",
+            "description": "🍒 CHERRY×3 倍率",
+            "example": 120
+          },
+          "multSeven": {
+            "type": "integer",
+            "format": "int32",
+            "description": "7️⃣ SEVEN×3 倍率",
+            "example": 80
+          },
+          "multLemon": {
+            "type": "integer",
+            "format": "int32",
+            "description": "🍋 LEMON×3 倍率",
+            "example": 40
+          },
+          "multBar": {
+            "type": "integer",
+            "format": "int32",
+            "description": "BAR BAR×3 倍率",
+            "example": 25
+          },
+          "multGrape": {
+            "type": "integer",
+            "format": "int32",
+            "description": "🍇 GRAPE×3 倍率",
+            "example": 20
+          },
+          "multHeart": {
+            "type": "integer",
+            "format": "int32",
+            "description": "❤️ HEART×3 倍率",
+            "example": 12
+          },
+          "multBell": {
+            "type": "integer",
+            "format": "int32",
+            "description": "🔔 BELL×3 倍率",
+            "example": 8
+          },
+          "multWatermelon": {
+            "type": "integer",
+            "format": "int32",
+            "description": "🍉 WATERMELON×3 倍率",
+            "example": 5
+          },
+          "consoleWatermelon": {
+            "type": "integer",
+            "format": "int32",
+            "description": "🍉🍉X WATERMELON×2 安慰獎倍率",
+            "example": 2
+          },
+          "consoleGrape": {
+            "type": "integer",
+            "format": "int32",
+            "description": "🍇🍇X GRAPE×2 安慰獎倍率",
+            "example": 3
+          },
+          "wildTwoMin": {
+            "type": "integer",
+            "format": "int32",
+            "description": "🍎🍎X WILD×2 最低保底倍率",
+            "example": 20
+          },
+          "version": {
+            "type": "integer",
+            "format": "int32",
+            "description": "賠率版本號，每次儲存自動遞增",
+            "example": 3
+          },
+          "theoreticalRtp": {
+            "type": "number",
+            "description": "理論 RTP（%），儲存時自動計算",
+            "example": 88.22
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "最後更新時間",
+            "example": "2026-03-15T10:30:00"
+          },
+          "updatedBy": {
+            "type": "string",
+            "description": "最後更新者",
+            "example": "admin"
+          }
+        },
+        "required": [
+          "consoleGrape",
+          "consoleWatermelon",
+          "gameId",
+          "multApple",
+          "multBar",
+          "multBell",
+          "multCherry",
+          "multGrape",
+          "multHeart",
+          "multLemon",
+          "multSeven",
+          "multWatermelon",
+          "theoreticalRtp",
+          "updatedAt",
+          "updatedBy",
+          "version",
+          "wildTwoMin"
+        ]
       },
       "DemandOfferCreateRequest": {
         "type": "object",
@@ -27979,6 +30562,431 @@
           }
         }
       },
+      "CreateMarketRequest": {
+        "type": "object",
+        "description": "創建市場請求",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "市場標題",
+            "example": "比特幣在2026年2月底會超過$100,000嗎？",
+            "maxLength": 500,
+            "minLength": 0
+          },
+          "description": {
+            "type": "string",
+            "description": "市場描述",
+            "example": "根據 CoinMarketCap 的數據...",
+            "maxLength": 5000,
+            "minLength": 0
+          },
+          "type": {
+            "type": "string",
+            "description": "市場類型",
+            "enum": [
+              "BINARY",
+              "MULTIPLE_CHOICE"
+            ]
+          },
+          "startTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "開始時間",
+            "example": "2026-02-10T10:00:00"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "結束時間",
+            "example": "2026-02-28T23:59:59"
+          },
+          "minBetAmount": {
+            "type": "number",
+            "description": "最小投注金額",
+            "example": 10.0,
+            "minimum": 1.0
+          },
+          "maxBetAmount": {
+            "type": "number",
+            "description": "最大投注金額",
+            "example": 10000.0,
+            "minimum": 1.0
+          },
+          "feePercentage": {
+            "type": "number",
+            "description": "平台手續費百分比（0-10）",
+            "example": 2.0,
+            "maximum": 10.0,
+            "minimum": 0.0
+          },
+          "imageUrl": {
+            "type": "string",
+            "description": "市場圖片URL",
+            "example": "https://example.com/image.jpg",
+            "maxLength": 500,
+            "minLength": 0
+          },
+          "category": {
+            "type": "string",
+            "description": "市場分類",
+            "example": "Crypto",
+            "maxLength": 100,
+            "minLength": 0
+          },
+          "initialLiquidity": {
+            "type": "number",
+            "description": "初始流動性（做莊資金）",
+            "example": 300.0,
+            "maximum": 1000000.0,
+            "minimum": 50.0
+          },
+          "options": {
+            "type": "array",
+            "description": "市場選項列表",
+            "items": {
+              "$ref": "#/components/schemas/MarketOptionRequest"
+            },
+            "maxItems": 2147483647,
+            "minItems": 2
+          }
+        },
+        "required": [
+          "endTime",
+          "initialLiquidity",
+          "minBetAmount",
+          "options",
+          "startTime",
+          "title",
+          "type"
+        ]
+      },
+      "MarketOptionRequest": {
+        "type": "object",
+        "description": "市場選項",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "選項描述",
+            "example": "是",
+            "maxLength": 200,
+            "minLength": 0
+          },
+          "displayOrder": {
+            "type": "integer",
+            "format": "int32",
+            "description": "顯示順序",
+            "example": 0,
+            "minimum": 0
+          }
+        },
+        "required": [
+          "description"
+        ]
+      },
+      "MarketOptionResponse": {
+        "type": "object",
+        "description": "市場選項信息",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "選項ID",
+            "example": 1
+          },
+          "description": {
+            "type": "string",
+            "description": "選項描述",
+            "example": "是"
+          },
+          "displayOrder": {
+            "type": "integer",
+            "format": "int32",
+            "description": "顯示順序",
+            "example": 0
+          },
+          "totalBets": {
+            "type": "number",
+            "description": "該選項的總投注金額",
+            "example": 5000.0
+          },
+          "totalParticipants": {
+            "type": "integer",
+            "format": "int64",
+            "description": "該選項的參與人數",
+            "example": 50
+          },
+          "currentOdds": {
+            "type": "number",
+            "description": "當前賠率",
+            "example": 2.5
+          },
+          "oddsPercentage": {
+            "type": "number",
+            "description": "賠率百分比",
+            "example": 40.0
+          },
+          "isWinningOption": {
+            "type": "boolean",
+            "description": "是否為獲勝選項"
+          }
+        }
+      },
+      "MarketResponse": {
+        "type": "object",
+        "description": "市場信息",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "市場ID",
+            "example": 1
+          },
+          "title": {
+            "type": "string",
+            "description": "市場標題",
+            "example": "比特幣在2026年2月底會超過$100,000嗎？"
+          },
+          "description": {
+            "type": "string",
+            "description": "市場描述"
+          },
+          "type": {
+            "type": "string",
+            "description": "市場類型",
+            "enum": [
+              "BINARY",
+              "MULTIPLE_CHOICE"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "description": "市場狀態",
+            "enum": [
+              "OPEN",
+              "CLOSED",
+              "RESOLVED",
+              "CANCELLED"
+            ]
+          },
+          "creatorId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "創建者ID"
+          },
+          "creatorUsername": {
+            "type": "string",
+            "description": "創建者用戶名"
+          },
+          "totalPool": {
+            "type": "number",
+            "description": "總獎池金額",
+            "example": 10000.0
+          },
+          "minBetAmount": {
+            "type": "number",
+            "description": "最小投注金額",
+            "example": 10.0
+          },
+          "maxBetAmount": {
+            "type": "number",
+            "description": "最大投注金額",
+            "example": 10000.0
+          },
+          "feePercentage": {
+            "type": "number",
+            "description": "平台手續費百分比",
+            "example": 2.0
+          },
+          "startTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "開始時間"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "結束時間"
+          },
+          "resolutionTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "結算時間"
+          },
+          "resolutionSource": {
+            "type": "string",
+            "description": "結算依據/證明"
+          },
+          "imageUrl": {
+            "type": "string",
+            "description": "市場圖片URL"
+          },
+          "category": {
+            "type": "string",
+            "description": "市場分類"
+          },
+          "isFeatured": {
+            "type": "boolean",
+            "description": "是否為精選市場"
+          },
+          "totalParticipants": {
+            "type": "integer",
+            "format": "int64",
+            "description": "總參與人數"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "創建時間"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "更新時間"
+          },
+          "options": {
+            "type": "array",
+            "description": "市場選項列表",
+            "items": {
+              "$ref": "#/components/schemas/MarketOptionResponse"
+            }
+          }
+        },
+        "required": [
+          "creatorId",
+          "id",
+          "status",
+          "title",
+          "type"
+        ]
+      },
+      "ResolveMarketRequest": {
+        "type": "object",
+        "description": "結算市場請求",
+        "properties": {
+          "winningOptionId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "獲勝選項ID",
+            "example": 1
+          },
+          "resolutionSource": {
+            "type": "string",
+            "description": "結算依據/證明",
+            "example": "CoinMarketCap BTC/USD price on 2026-02-28: $105,000"
+          }
+        },
+        "required": [
+          "winningOptionId"
+        ]
+      },
+      "MarketSearchRequest": {
+        "type": "object",
+        "description": "市場搜索請求",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "description": "頁碼，從1開始",
+            "example": 1
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32",
+            "description": "每頁數量",
+            "example": 20
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "開始日期 (ISO-8601 格式)",
+            "example": "2024-01-01T00:00:00"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "結束日期 (ISO-8601 格式)",
+            "example": "2024-12-31T23:59:59"
+          },
+          "keyword": {
+            "type": "string",
+            "description": "搜索關鍵字"
+          },
+          "sortBy": {
+            "type": "string",
+            "description": "排序字段"
+          },
+          "sortDirection": {
+            "type": "string",
+            "description": "排序方向 (ASC/DESC)",
+            "example": "DESC"
+          },
+          "status": {
+            "type": "string",
+            "description": "市場狀態",
+            "enum": [
+              "OPEN",
+              "CLOSED",
+              "RESOLVED",
+              "CANCELLED"
+            ]
+          },
+          "category": {
+            "type": "string",
+            "description": "市場分類",
+            "example": "Crypto"
+          },
+          "featured": {
+            "type": "boolean",
+            "description": "是否只顯示精選"
+          }
+        }
+      },
+      "PageMarketResponse": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MarketResponse"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
       "PostalSearchParam": {
         "type": "object",
         "description": "郵遞區號搜索參數",
@@ -30297,13 +33305,13 @@
           "inStock": {
             "type": "boolean"
           },
-          "purchaseRestrictionReason": {
-            "type": "string"
-          },
           "subtotal": {
             "type": "number"
           },
           "stockStatus": {
+            "type": "string"
+          },
+          "purchaseRestrictionReason": {
             "type": "string"
           },
           "totalPrice": {
@@ -30404,6 +33412,134 @@
         "required": [
           "productId",
           "quantity"
+        ]
+      },
+      "PlaceBetRequest": {
+        "type": "object",
+        "description": "下注請求",
+        "properties": {
+          "marketId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "市場ID",
+            "example": 1
+          },
+          "optionId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "選項ID",
+            "example": 1
+          },
+          "betAmount": {
+            "type": "number",
+            "description": "投注金額",
+            "example": 100.0,
+            "minimum": 1.0
+          }
+        },
+        "required": [
+          "betAmount",
+          "marketId",
+          "optionId"
+        ]
+      },
+      "BetResponse": {
+        "type": "object",
+        "description": "投注記錄信息",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "投注ID",
+            "example": 1
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "用戶ID",
+            "example": 1
+          },
+          "username": {
+            "type": "string",
+            "description": "用戶名",
+            "example": "user123"
+          },
+          "marketId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "市場ID",
+            "example": 1
+          },
+          "marketTitle": {
+            "type": "string",
+            "description": "市場標題",
+            "example": "比特幣在2026年2月底會超過$100,000嗎？"
+          },
+          "optionId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "選項ID",
+            "example": 1
+          },
+          "optionDescription": {
+            "type": "string",
+            "description": "選項描述",
+            "example": "是"
+          },
+          "betAmount": {
+            "type": "number",
+            "description": "投注金額",
+            "example": 100.0
+          },
+          "oddsAtBet": {
+            "type": "number",
+            "description": "下注時的賠率",
+            "example": 2.5
+          },
+          "potentialPayout": {
+            "type": "number",
+            "description": "潛在收益",
+            "example": 250.0
+          },
+          "actualPayout": {
+            "type": "number",
+            "description": "實際收益",
+            "example": 250.0
+          },
+          "status": {
+            "type": "string",
+            "description": "投注狀態",
+            "enum": [
+              "ACTIVE",
+              "WON",
+              "LOST",
+              "REFUNDED"
+            ]
+          },
+          "settledAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "結算時間"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "下注時間"
+          },
+          "actualReturnRate": {
+            "type": "number",
+            "description": "實際收益率",
+            "example": 150.0
+          }
+        },
+        "required": [
+          "betAmount",
+          "createdAt",
+          "id",
+          "marketId",
+          "optionId",
+          "status",
+          "userId"
         ]
       },
       "Web3NonceRequest": {
@@ -31944,6 +35080,146 @@
           }
         }
       },
+      "InterestRecordSearchParam": {
+        "type": "object",
+        "description": "收益發放記錄搜尋參數",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "description": "頁碼，從1開始",
+            "example": 1
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32",
+            "description": "每頁數量",
+            "example": 20
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "開始日期 (ISO-8601 格式)",
+            "example": "2024-01-01T00:00:00"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "結束日期 (ISO-8601 格式)",
+            "example": "2024-12-31T23:59:59"
+          },
+          "keyword": {
+            "type": "string",
+            "description": "搜索關鍵字"
+          },
+          "sortBy": {
+            "type": "string",
+            "description": "排序字段"
+          },
+          "sortDirection": {
+            "type": "string",
+            "description": "排序方向 (ASC/DESC)",
+            "example": "DESC"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "用戶ID"
+          },
+          "stakingId": {
+            "type": "string",
+            "description": "質押記錄ID"
+          }
+        }
+      },
+      "InterestRecordDTO": {
+        "type": "object",
+        "description": "收益發放記錄",
+        "properties": {
+          "transactionId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "交易記錄ID"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "用戶ID"
+          },
+          "username": {
+            "type": "string",
+            "description": "用戶名"
+          },
+          "stakingId": {
+            "type": "string",
+            "description": "質押記錄ID"
+          },
+          "stakingAmount": {
+            "type": "number",
+            "description": "質押金額"
+          },
+          "interestAmount": {
+            "type": "number",
+            "description": "收益金額"
+          },
+          "settleDate": {
+            "type": "string",
+            "format": "date",
+            "description": "結算日期"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "發放時間"
+          }
+        }
+      },
+      "PageInterestRecordDTO": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InterestRecordDTO"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
       "SchedulerJobRequest": {
         "type": "object",
         "description": "定時任務執行請求",
@@ -31952,6 +35228,7 @@
             "type": "string",
             "description": "任務類型",
             "enum": [
+              "STAKING_SETTLEMENT",
               "EXPIRED_RECHARGES",
               "CLOSE_EXPIRED_ORDERS"
             ],
@@ -31985,6 +35262,7 @@
             "type": "string",
             "description": "任務類型",
             "enum": [
+              "STAKING_SETTLEMENT",
               "EXPIRED_RECHARGES",
               "CLOSE_EXPIRED_ORDERS"
             ],
@@ -34574,6 +37852,96 @@
           }
         }
       },
+      "GameRoundDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "diceValue": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "betAmount": {
+            "type": "number"
+          },
+          "winAmount": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "PageGameRoundDTO": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GameRoundDTO"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ActivityStatDTO": {
+        "type": "object",
+        "properties": {
+          "totalBet": {
+            "type": "number"
+          },
+          "totalWin": {
+            "type": "number"
+          },
+          "profit": {
+            "type": "number"
+          },
+          "totalPlayers": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
       "SellerTrustScoreDto": {
         "type": "object",
         "description": "賣家信任分析結果",
@@ -34948,6 +38316,173 @@
           }
         }
       },
+      "SlotSymbolInfo": {
+        "type": "object",
+        "description": "Slot Symbol 資訊",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Symbol ID (0-8)",
+            "example": 0
+          },
+          "name": {
+            "type": "string",
+            "description": "Symbol 名稱",
+            "example": "APPLE"
+          },
+          "display": {
+            "type": "string",
+            "description": "Symbol Emoji 顯示",
+            "example": "🍎"
+          },
+          "wild": {
+            "type": "boolean",
+            "description": "是否為 WILD",
+            "example": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Symbol 中文名稱備註",
+            "example": "蘋果 (WILD)"
+          }
+        }
+      },
+      "SlotMemberOddsEntry": {
+        "type": "object",
+        "description": "會員賠率表中的一筆展示資料",
+        "properties": {
+          "symbolId": {
+            "type": "integer",
+            "format": "int32",
+            "description": "主要 Symbol ID（對應 SlotSymbol.id）",
+            "example": 8
+          },
+          "combo": {
+            "type": "string",
+            "description": "組合描述",
+            "example": "🍉🍉🍉 WATERMELON×3"
+          },
+          "multiplier": {
+            "type": "integer",
+            "format": "int32",
+            "description": "中獎倍率",
+            "example": 5
+          },
+          "probability": {
+            "type": "number",
+            "description": "觸發機率（hits / 32768）",
+            "example": 0.08374023
+          }
+        }
+      },
+      "SlotMemberOddsResponse": {
+        "type": "object",
+        "description": "會員賠率展示回應",
+        "properties": {
+          "totalCombinations": {
+            "type": "integer",
+            "format": "int32",
+            "description": "三個 Reel 的總組合數（32³）",
+            "example": 32768
+          },
+          "totalRtpPct": {
+            "type": "string",
+            "description": "理論 RTP 百分比字串，例如 \"95.37%\"",
+            "example": "95.37%"
+          },
+          "entries": {
+            "type": "array",
+            "description": "會員可展示的賠率資料",
+            "items": {
+              "$ref": "#/components/schemas/SlotMemberOddsEntry"
+            }
+          }
+        }
+      },
+      "SlotRevenueResponse": {
+        "type": "object",
+        "description": "Slot 收益統計回應",
+        "properties": {
+          "gameId": {
+            "type": "string",
+            "description": "遊戲 ID",
+            "example": "moon_dance"
+          },
+          "startTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "查詢區間起始",
+            "example": "2026-01-01T00:00:00"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "查詢區間結束",
+            "example": "2026-12-31T23:59:59"
+          },
+          "paytableVersion": {
+            "type": "integer",
+            "format": "int32",
+            "description": "賠率版本號（對應 slot_paytable_configs.version），僅 /revenue/by-version 有值",
+            "example": 3
+          },
+          "theoreticalRtpPct": {
+            "type": "number",
+            "description": "此版本設定的理論 RTP（%），僅 /revenue/by-version 有值",
+            "example": 88.22
+          },
+          "totalRounds": {
+            "type": "integer",
+            "format": "int64",
+            "description": "總局數",
+            "example": 15832
+          },
+          "winRounds": {
+            "type": "integer",
+            "format": "int64",
+            "description": "中獎局數（multiplier > 0）",
+            "example": 5241
+          },
+          "winRatePct": {
+            "type": "number",
+            "description": "中獎率（%）",
+            "example": 33.1
+          },
+          "totalBet": {
+            "type": "number",
+            "description": "總下注額",
+            "example": 158320.0
+          },
+          "totalPayout": {
+            "type": "number",
+            "description": "總派彩",
+            "example": 139445.6
+          },
+          "grossRevenue": {
+            "type": "number",
+            "description": "平台毛利 = 總下注 - 總派彩",
+            "example": 18874.4
+          },
+          "actualRtpPct": {
+            "type": "number",
+            "description": "實際 RTP（%）",
+            "example": 88.07
+          }
+        },
+        "required": [
+          "actualRtpPct",
+          "endTime",
+          "gameId",
+          "grossRevenue",
+          "startTime",
+          "totalBet",
+          "totalPayout",
+          "totalRounds",
+          "winRatePct",
+          "winRounds"
+        ]
+      },
       "ReviewStatisticsDTO": {
         "type": "object",
         "description": "評價統計數據",
@@ -35132,13 +38667,13 @@
             "type": "integer",
             "format": "int32"
           },
-          "outOfStock": {
-            "type": "boolean"
-          },
           "lowStock": {
             "type": "boolean"
           },
           "belowMinimum": {
+            "type": "boolean"
+          },
+          "outOfStock": {
             "type": "boolean"
           }
         }
@@ -36495,6 +40030,52 @@
           }
         }
       },
+      "PageBetResponse": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BetResponse"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
       "PasskeyCredentialResponse": {
         "type": "object",
         "description": "Registered passkey credential",
@@ -36741,6 +40322,183 @@
           "configured": {
             "type": "boolean",
             "description": "是否已配置"
+          }
+        }
+      },
+      "SlotDailyStatDto": {
+        "type": "object",
+        "description": "Slot 每日統計點",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "日期，格式 yyyy-MM-dd",
+            "example": "2026-03-15"
+          },
+          "rounds": {
+            "type": "integer",
+            "format": "int64",
+            "description": "當日局數",
+            "example": 342
+          },
+          "players": {
+            "type": "integer",
+            "format": "int64",
+            "description": "當日活躍玩家",
+            "example": 23
+          },
+          "totalBet": {
+            "type": "number",
+            "description": "當日總下注"
+          },
+          "grossRevenue": {
+            "type": "number",
+            "description": "當日毛利（下注 - 派彩）"
+          }
+        }
+      },
+      "SlotHourlyStatDto": {
+        "type": "object",
+        "description": "Slot 每小時統計點",
+        "properties": {
+          "hour": {
+            "type": "integer",
+            "format": "int32",
+            "description": "小時（0-23）",
+            "example": 14
+          },
+          "rounds": {
+            "type": "integer",
+            "format": "int64",
+            "description": "當小時局數",
+            "example": 58
+          },
+          "players": {
+            "type": "integer",
+            "format": "int64",
+            "description": "當小時活躍玩家",
+            "example": 12
+          },
+          "totalBet": {
+            "type": "number",
+            "description": "當小時總下注"
+          }
+        }
+      },
+      "SlotOverviewResponse": {
+        "type": "object",
+        "description": "Slot 遊戲流量概覽統計",
+        "properties": {
+          "startTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "查詢起始時間"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "查詢結束時間"
+          },
+          "gameId": {
+            "type": "string",
+            "description": "篩選的遊戲 ID，null 代表全部遊戲"
+          },
+          "totalRounds": {
+            "type": "integer",
+            "format": "int64",
+            "description": "區間總局數",
+            "example": 12480
+          },
+          "todayRounds": {
+            "type": "integer",
+            "format": "int64",
+            "description": "今日總局數",
+            "example": 342
+          },
+          "yesterdayRounds": {
+            "type": "integer",
+            "format": "int64",
+            "description": "昨日總局數（對比）",
+            "example": 410
+          },
+          "winRounds": {
+            "type": "integer",
+            "format": "int64",
+            "description": "中獎局數",
+            "example": 5832
+          },
+          "winRate": {
+            "type": "number",
+            "format": "double",
+            "description": "中獎率 %（保留 2 位小數）",
+            "example": 46.73
+          },
+          "activePlayers": {
+            "type": "integer",
+            "format": "int64",
+            "description": "區間活躍玩家數（唯一用戶）",
+            "example": 87
+          },
+          "todayActivePlayers": {
+            "type": "integer",
+            "format": "int64",
+            "description": "今日活躍玩家數",
+            "example": 23
+          },
+          "totalBet": {
+            "type": "number",
+            "description": "總下注金額"
+          },
+          "todayBet": {
+            "type": "number",
+            "description": "今日總下注金額"
+          },
+          "totalPayout": {
+            "type": "number",
+            "description": "總派彩金額"
+          },
+          "grossRevenue": {
+            "type": "number",
+            "description": "毛利（totalBet - totalPayout）"
+          },
+          "todayGrossRevenue": {
+            "type": "number",
+            "description": "今日毛利"
+          },
+          "actualRtp": {
+            "type": "number",
+            "format": "double",
+            "description": "實際 RTP %（totalPayout / totalBet × 100）",
+            "example": 88.34
+          },
+          "avgBetPerRound": {
+            "type": "number",
+            "description": "平均每局下注",
+            "example": 10.5
+          },
+          "avgBetPerPlayer": {
+            "type": "number",
+            "description": "平均每玩家下注（總下注 / 活躍玩家）",
+            "example": 143.68
+          },
+          "maxMultiplier": {
+            "type": "integer",
+            "format": "int32",
+            "description": "區間最高中獎倍率",
+            "example": 500
+          },
+          "dailyTrend": {
+            "type": "array",
+            "description": "每日趨勢（局數、活躍玩家、下注、毛利）",
+            "items": {
+              "$ref": "#/components/schemas/SlotDailyStatDto"
+            }
+          },
+          "hourlyDistribution": {
+            "type": "array",
+            "description": "每小時分佈（查詢範圍 ≤ 48 小時時填充，否則為 null）",
+            "items": {
+              "$ref": "#/components/schemas/SlotHourlyStatDto"
+            }
           }
         }
       },
@@ -37022,6 +40780,203 @@
           "messageType",
           "sentAt"
         ]
+      },
+      "StakingStatisticsDTO": {
+        "type": "object",
+        "description": "質押統計數據",
+        "properties": {
+          "totalStakings": {
+            "type": "integer",
+            "format": "int64",
+            "description": "總質押記錄數"
+          },
+          "totalStakedAmount": {
+            "type": "number",
+            "description": "總質押金額"
+          },
+          "totalEarnedRewards": {
+            "type": "number",
+            "description": "總收益金額"
+          },
+          "averageStakingAmount": {
+            "type": "number",
+            "description": "平均質押金額"
+          },
+          "activeStakings": {
+            "type": "integer",
+            "format": "int64",
+            "description": "進行中的質押數"
+          },
+          "activeStakedAmount": {
+            "type": "number",
+            "description": "進行中的質押金額"
+          },
+          "stakingsByStatus": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "各狀態質押數量"
+          },
+          "newStakingsInPeriod": {
+            "type": "integer",
+            "format": "int64",
+            "description": "期間新增質押數"
+          },
+          "newStakedAmountInPeriod": {
+            "type": "number",
+            "description": "期間新增質押金額"
+          },
+          "totalEarnedInPeriod": {
+            "type": "number",
+            "description": "期間總收益"
+          }
+        }
+      },
+      "NextInterestEstimateDTO": {
+        "type": "object",
+        "description": "下次收益發放預估",
+        "properties": {
+          "nextSettlementTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "下次發放時間（帶時區，ISO-8601格式）"
+          },
+          "estimatedStakingCount": {
+            "type": "integer",
+            "format": "int64",
+            "description": "預計發放的質押記錄數"
+          },
+          "totalEstimatedInterest": {
+            "type": "number",
+            "description": "預計發放的總收益金額"
+          },
+          "averageEstimatedInterest": {
+            "type": "number",
+            "description": "平均每筆質押的預計收益"
+          },
+          "totalStakedAmount": {
+            "type": "number",
+            "description": "預計參與的總質押金額"
+          },
+          "annualInterestRate": {
+            "type": "number",
+            "description": "當前年利率"
+          },
+          "dailyInterestRate": {
+            "type": "number",
+            "description": "當前日利率"
+          },
+          "details": {
+            "type": "array",
+            "description": "按質押記錄的詳細預估列表",
+            "items": {
+              "$ref": "#/components/schemas/StakingInterestDetail"
+            }
+          }
+        }
+      },
+      "StakingInterestDetail": {
+        "type": "object",
+        "description": "質押收益詳情",
+        "properties": {
+          "stakingId": {
+            "type": "string",
+            "description": "質押記錄ID"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "用戶ID"
+          },
+          "stakingAmount": {
+            "type": "number",
+            "description": "質押金額"
+          },
+          "estimatedInterest": {
+            "type": "number",
+            "description": "預計收益金額"
+          }
+        }
+      },
+      "RtpEntry": {
+        "type": "object",
+        "description": "RTP 表中的一筆中獎組合",
+        "properties": {
+          "symbolId": {
+            "type": "integer",
+            "format": "int32",
+            "description": "主要 Symbol ID（對應 SlotSymbol.id）",
+            "example": 8
+          },
+          "combo": {
+            "type": "string",
+            "description": "組合描述",
+            "example": "🍉🍉🍉 WATERMELON×3"
+          },
+          "multiplier": {
+            "type": "integer",
+            "format": "int32",
+            "description": "中獎倍率",
+            "example": 5
+          },
+          "hits": {
+            "type": "integer",
+            "format": "int64",
+            "description": "32768 種組合中可觸發此獎項的組合數",
+            "example": 2744
+          },
+          "probability": {
+            "type": "number",
+            "description": "觸發機率（hits / 32768）",
+            "example": 0.08374023
+          },
+          "rtpContribution": {
+            "type": "number",
+            "description": "對總 RTP 的貢獻（probability × multiplier）",
+            "example": 0.418701
+          }
+        }
+      },
+      "SlotRtpResponse": {
+        "type": "object",
+        "description": "Moon Dance Slot 理論 RTP 明細表",
+        "properties": {
+          "totalCombinations": {
+            "type": "integer",
+            "format": "int32",
+            "description": "三個 Reel 的總組合數（32³）",
+            "example": 32768
+          },
+          "totalRtp": {
+            "type": "number",
+            "description": "理論 RTP（Return to Player），例如 0.95370000 = ~95.37%",
+            "example": 0.9537
+          },
+          "totalRtpPct": {
+            "type": "string",
+            "description": "理論 RTP 百分比字串，例如 \"95.37%\"",
+            "example": "95.37%"
+          },
+          "houseEdge": {
+            "type": "number",
+            "description": "莊家優勢（1 - RTP）",
+            "example": 0.0463
+          },
+          "houseEdgePct": {
+            "type": "string",
+            "description": "莊家優勢百分比字串，例如 \"4.63%\"",
+            "example": "4.63%"
+          },
+          "entries": {
+            "type": "array",
+            "description": "各中獎組合詳情，依 RTP 貢獻由高到低排列",
+            "items": {
+              "$ref": "#/components/schemas/RtpEntry"
+            }
+          }
+        }
       },
       "JobTypeInfo": {
         "type": "object",

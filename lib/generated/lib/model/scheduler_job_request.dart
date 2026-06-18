@@ -157,12 +157,14 @@ class SchedulerJobRequestJobTypeEnum {
 
   String toJson() => value;
 
+  static const STAKING_SETTLEMENT = SchedulerJobRequestJobTypeEnum._(r'STAKING_SETTLEMENT');
   static const EXPIRED_RECHARGES = SchedulerJobRequestJobTypeEnum._(r'EXPIRED_RECHARGES');
   static const CLOSE_EXPIRED_ORDERS = SchedulerJobRequestJobTypeEnum._(r'CLOSE_EXPIRED_ORDERS');
   static const unknownDefaultOpenApi = SchedulerJobRequestJobTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][SchedulerJobRequestJobTypeEnum].
   static const values = <SchedulerJobRequestJobTypeEnum>[
+    STAKING_SETTLEMENT,
     EXPIRED_RECHARGES,
     CLOSE_EXPIRED_ORDERS,
     unknownDefaultOpenApi,
@@ -204,6 +206,7 @@ class SchedulerJobRequestJobTypeEnumTypeTransformer {
   SchedulerJobRequestJobTypeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
+        case r'STAKING_SETTLEMENT': return SchedulerJobRequestJobTypeEnum.STAKING_SETTLEMENT;
         case r'EXPIRED_RECHARGES': return SchedulerJobRequestJobTypeEnum.EXPIRED_RECHARGES;
         case r'CLOSE_EXPIRED_ORDERS': return SchedulerJobRequestJobTypeEnum.CLOSE_EXPIRED_ORDERS;
         case r'unknown_default_open_api': return SchedulerJobRequestJobTypeEnum.unknownDefaultOpenApi;

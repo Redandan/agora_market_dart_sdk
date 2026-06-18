@@ -10,158 +10,166 @@
 
 part of openapi.api;
 
-class ProductInventoryStats {
-  /// Returns a new [ProductInventoryStats] instance.
-  ProductInventoryStats({
-    this.productId,
-    this.productName,
-    this.currentStock,
-    this.minStock,
-    this.stockAlertThreshold,
-    this.lowStock,
-    this.belowMinimum,
-    this.outOfStock,
+class InterestRecordDTO {
+  /// Returns a new [InterestRecordDTO] instance.
+  InterestRecordDTO({
+    this.transactionId,
+    this.userId,
+    this.username,
+    this.stakingId,
+    this.stakingAmount,
+    this.interestAmount,
+    this.settleDate,
+    this.createdAt,
   });
 
+  /// 交易記錄ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? productId;
+  int? transactionId;
 
+  /// 用戶ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? productName;
+  int? userId;
 
+  /// 用戶名
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? currentStock;
+  String? username;
 
+  /// 質押記錄ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? minStock;
+  String? stakingId;
 
+  /// 質押金額
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? stockAlertThreshold;
+  num? stakingAmount;
 
+  /// 收益金額
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? lowStock;
+  num? interestAmount;
 
+  /// 結算日期
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? belowMinimum;
+  DateTime? settleDate;
 
+  /// 發放時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? outOfStock;
+  DateTime? createdAt;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ProductInventoryStats &&
-    other.productId == productId &&
-    other.productName == productName &&
-    other.currentStock == currentStock &&
-    other.minStock == minStock &&
-    other.stockAlertThreshold == stockAlertThreshold &&
-    other.lowStock == lowStock &&
-    other.belowMinimum == belowMinimum &&
-    other.outOfStock == outOfStock;
+  bool operator ==(Object other) => identical(this, other) || other is InterestRecordDTO &&
+    other.transactionId == transactionId &&
+    other.userId == userId &&
+    other.username == username &&
+    other.stakingId == stakingId &&
+    other.stakingAmount == stakingAmount &&
+    other.interestAmount == interestAmount &&
+    other.settleDate == settleDate &&
+    other.createdAt == createdAt;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (productId == null ? 0 : productId!.hashCode) +
-    (productName == null ? 0 : productName!.hashCode) +
-    (currentStock == null ? 0 : currentStock!.hashCode) +
-    (minStock == null ? 0 : minStock!.hashCode) +
-    (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
-    (lowStock == null ? 0 : lowStock!.hashCode) +
-    (belowMinimum == null ? 0 : belowMinimum!.hashCode) +
-    (outOfStock == null ? 0 : outOfStock!.hashCode);
+    (transactionId == null ? 0 : transactionId!.hashCode) +
+    (userId == null ? 0 : userId!.hashCode) +
+    (username == null ? 0 : username!.hashCode) +
+    (stakingId == null ? 0 : stakingId!.hashCode) +
+    (stakingAmount == null ? 0 : stakingAmount!.hashCode) +
+    (interestAmount == null ? 0 : interestAmount!.hashCode) +
+    (settleDate == null ? 0 : settleDate!.hashCode) +
+    (createdAt == null ? 0 : createdAt!.hashCode);
 
   @override
-  String toString() => 'ProductInventoryStats[productId=$productId, productName=$productName, currentStock=$currentStock, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, lowStock=$lowStock, belowMinimum=$belowMinimum, outOfStock=$outOfStock]';
+  String toString() => 'InterestRecordDTO[transactionId=$transactionId, userId=$userId, username=$username, stakingId=$stakingId, stakingAmount=$stakingAmount, interestAmount=$interestAmount, settleDate=$settleDate, createdAt=$createdAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.productId != null) {
-      json[r'productId'] = this.productId;
+    if (this.transactionId != null) {
+      json[r'transactionId'] = this.transactionId;
     } else {
-      json[r'productId'] = null;
+      json[r'transactionId'] = null;
     }
-    if (this.productName != null) {
-      json[r'productName'] = this.productName;
+    if (this.userId != null) {
+      json[r'userId'] = this.userId;
     } else {
-      json[r'productName'] = null;
+      json[r'userId'] = null;
     }
-    if (this.currentStock != null) {
-      json[r'currentStock'] = this.currentStock;
+    if (this.username != null) {
+      json[r'username'] = this.username;
     } else {
-      json[r'currentStock'] = null;
+      json[r'username'] = null;
     }
-    if (this.minStock != null) {
-      json[r'minStock'] = this.minStock;
+    if (this.stakingId != null) {
+      json[r'stakingId'] = this.stakingId;
     } else {
-      json[r'minStock'] = null;
+      json[r'stakingId'] = null;
     }
-    if (this.stockAlertThreshold != null) {
-      json[r'stockAlertThreshold'] = this.stockAlertThreshold;
+    if (this.stakingAmount != null) {
+      json[r'stakingAmount'] = this.stakingAmount;
     } else {
-      json[r'stockAlertThreshold'] = null;
+      json[r'stakingAmount'] = null;
     }
-    if (this.lowStock != null) {
-      json[r'lowStock'] = this.lowStock;
+    if (this.interestAmount != null) {
+      json[r'interestAmount'] = this.interestAmount;
     } else {
-      json[r'lowStock'] = null;
+      json[r'interestAmount'] = null;
     }
-    if (this.belowMinimum != null) {
-      json[r'belowMinimum'] = this.belowMinimum;
+    if (this.settleDate != null) {
+      json[r'settleDate'] = _dateFormatter.format(this.settleDate!.toUtc());
     } else {
-      json[r'belowMinimum'] = null;
+      json[r'settleDate'] = null;
     }
-    if (this.outOfStock != null) {
-      json[r'outOfStock'] = this.outOfStock;
+    if (this.createdAt != null) {
+      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
     } else {
-      json[r'outOfStock'] = null;
+      json[r'createdAt'] = null;
     }
     return json;
   }
 
-  /// Returns a new [ProductInventoryStats] instance and imports its values from
+  /// Returns a new [InterestRecordDTO] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ProductInventoryStats? fromJson(dynamic value) {
+  static InterestRecordDTO? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -170,31 +178,35 @@ class ProductInventoryStats {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ProductInventoryStats[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ProductInventoryStats[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "InterestRecordDTO[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "InterestRecordDTO[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ProductInventoryStats(
-        productId: mapValueOfType<int>(json, r'productId'),
-        productName: mapValueOfType<String>(json, r'productName'),
-        currentStock: mapValueOfType<int>(json, r'currentStock'),
-        minStock: mapValueOfType<int>(json, r'minStock'),
-        stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
-        lowStock: mapValueOfType<bool>(json, r'lowStock'),
-        belowMinimum: mapValueOfType<bool>(json, r'belowMinimum'),
-        outOfStock: mapValueOfType<bool>(json, r'outOfStock'),
+      return InterestRecordDTO(
+        transactionId: mapValueOfType<int>(json, r'transactionId'),
+        userId: mapValueOfType<int>(json, r'userId'),
+        username: mapValueOfType<String>(json, r'username'),
+        stakingId: mapValueOfType<String>(json, r'stakingId'),
+        stakingAmount: json[r'stakingAmount'] == null
+            ? null
+            : num.parse('${json[r'stakingAmount']}'),
+        interestAmount: json[r'interestAmount'] == null
+            ? null
+            : num.parse('${json[r'interestAmount']}'),
+        settleDate: mapDateTime(json, r'settleDate', r''),
+        createdAt: mapDateTime(json, r'createdAt', r''),
       );
     }
     return null;
   }
 
-  static List<ProductInventoryStats> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProductInventoryStats>[];
+  static List<InterestRecordDTO> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <InterestRecordDTO>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ProductInventoryStats.fromJson(row);
+        final value = InterestRecordDTO.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -203,12 +215,12 @@ class ProductInventoryStats {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ProductInventoryStats> mapFromJson(dynamic json) {
-    final map = <String, ProductInventoryStats>{};
+  static Map<String, InterestRecordDTO> mapFromJson(dynamic json) {
+    final map = <String, InterestRecordDTO>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ProductInventoryStats.fromJson(entry.value);
+        final value = InterestRecordDTO.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -217,14 +229,14 @@ class ProductInventoryStats {
     return map;
   }
 
-  // maps a json object with a list of ProductInventoryStats-objects as value to a dart map
-  static Map<String, List<ProductInventoryStats>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ProductInventoryStats>>{};
+  // maps a json object with a list of InterestRecordDTO-objects as value to a dart map
+  static Map<String, List<InterestRecordDTO>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<InterestRecordDTO>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ProductInventoryStats.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = InterestRecordDTO.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

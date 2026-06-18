@@ -10,158 +10,166 @@
 
 part of openapi.api;
 
-class ProductInventoryStats {
-  /// Returns a new [ProductInventoryStats] instance.
-  ProductInventoryStats({
-    this.productId,
-    this.productName,
-    this.currentStock,
-    this.minStock,
-    this.stockAlertThreshold,
-    this.lowStock,
-    this.belowMinimum,
-    this.outOfStock,
+class MarketOptionResponse {
+  /// Returns a new [MarketOptionResponse] instance.
+  MarketOptionResponse({
+    this.id,
+    this.description,
+    this.displayOrder,
+    this.totalBets,
+    this.totalParticipants,
+    this.currentOdds,
+    this.oddsPercentage,
+    this.isWinningOption,
   });
 
+  /// 選項ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? productId;
+  int? id;
 
+  /// 選項描述
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? productName;
+  String? description;
 
+  /// 顯示順序
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? currentStock;
+  int? displayOrder;
 
+  /// 該選項的總投注金額
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? minStock;
+  num? totalBets;
 
+  /// 該選項的參與人數
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? stockAlertThreshold;
+  int? totalParticipants;
 
+  /// 當前賠率
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? lowStock;
+  num? currentOdds;
 
+  /// 賠率百分比
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? belowMinimum;
+  num? oddsPercentage;
 
+  /// 是否為獲勝選項
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? outOfStock;
+  bool? isWinningOption;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ProductInventoryStats &&
-    other.productId == productId &&
-    other.productName == productName &&
-    other.currentStock == currentStock &&
-    other.minStock == minStock &&
-    other.stockAlertThreshold == stockAlertThreshold &&
-    other.lowStock == lowStock &&
-    other.belowMinimum == belowMinimum &&
-    other.outOfStock == outOfStock;
+  bool operator ==(Object other) => identical(this, other) || other is MarketOptionResponse &&
+    other.id == id &&
+    other.description == description &&
+    other.displayOrder == displayOrder &&
+    other.totalBets == totalBets &&
+    other.totalParticipants == totalParticipants &&
+    other.currentOdds == currentOdds &&
+    other.oddsPercentage == oddsPercentage &&
+    other.isWinningOption == isWinningOption;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (productId == null ? 0 : productId!.hashCode) +
-    (productName == null ? 0 : productName!.hashCode) +
-    (currentStock == null ? 0 : currentStock!.hashCode) +
-    (minStock == null ? 0 : minStock!.hashCode) +
-    (stockAlertThreshold == null ? 0 : stockAlertThreshold!.hashCode) +
-    (lowStock == null ? 0 : lowStock!.hashCode) +
-    (belowMinimum == null ? 0 : belowMinimum!.hashCode) +
-    (outOfStock == null ? 0 : outOfStock!.hashCode);
+    (id == null ? 0 : id!.hashCode) +
+    (description == null ? 0 : description!.hashCode) +
+    (displayOrder == null ? 0 : displayOrder!.hashCode) +
+    (totalBets == null ? 0 : totalBets!.hashCode) +
+    (totalParticipants == null ? 0 : totalParticipants!.hashCode) +
+    (currentOdds == null ? 0 : currentOdds!.hashCode) +
+    (oddsPercentage == null ? 0 : oddsPercentage!.hashCode) +
+    (isWinningOption == null ? 0 : isWinningOption!.hashCode);
 
   @override
-  String toString() => 'ProductInventoryStats[productId=$productId, productName=$productName, currentStock=$currentStock, minStock=$minStock, stockAlertThreshold=$stockAlertThreshold, lowStock=$lowStock, belowMinimum=$belowMinimum, outOfStock=$outOfStock]';
+  String toString() => 'MarketOptionResponse[id=$id, description=$description, displayOrder=$displayOrder, totalBets=$totalBets, totalParticipants=$totalParticipants, currentOdds=$currentOdds, oddsPercentage=$oddsPercentage, isWinningOption=$isWinningOption]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.productId != null) {
-      json[r'productId'] = this.productId;
+    if (this.id != null) {
+      json[r'id'] = this.id;
     } else {
-      json[r'productId'] = null;
+      json[r'id'] = null;
     }
-    if (this.productName != null) {
-      json[r'productName'] = this.productName;
+    if (this.description != null) {
+      json[r'description'] = this.description;
     } else {
-      json[r'productName'] = null;
+      json[r'description'] = null;
     }
-    if (this.currentStock != null) {
-      json[r'currentStock'] = this.currentStock;
+    if (this.displayOrder != null) {
+      json[r'displayOrder'] = this.displayOrder;
     } else {
-      json[r'currentStock'] = null;
+      json[r'displayOrder'] = null;
     }
-    if (this.minStock != null) {
-      json[r'minStock'] = this.minStock;
+    if (this.totalBets != null) {
+      json[r'totalBets'] = this.totalBets;
     } else {
-      json[r'minStock'] = null;
+      json[r'totalBets'] = null;
     }
-    if (this.stockAlertThreshold != null) {
-      json[r'stockAlertThreshold'] = this.stockAlertThreshold;
+    if (this.totalParticipants != null) {
+      json[r'totalParticipants'] = this.totalParticipants;
     } else {
-      json[r'stockAlertThreshold'] = null;
+      json[r'totalParticipants'] = null;
     }
-    if (this.lowStock != null) {
-      json[r'lowStock'] = this.lowStock;
+    if (this.currentOdds != null) {
+      json[r'currentOdds'] = this.currentOdds;
     } else {
-      json[r'lowStock'] = null;
+      json[r'currentOdds'] = null;
     }
-    if (this.belowMinimum != null) {
-      json[r'belowMinimum'] = this.belowMinimum;
+    if (this.oddsPercentage != null) {
+      json[r'oddsPercentage'] = this.oddsPercentage;
     } else {
-      json[r'belowMinimum'] = null;
+      json[r'oddsPercentage'] = null;
     }
-    if (this.outOfStock != null) {
-      json[r'outOfStock'] = this.outOfStock;
+    if (this.isWinningOption != null) {
+      json[r'isWinningOption'] = this.isWinningOption;
     } else {
-      json[r'outOfStock'] = null;
+      json[r'isWinningOption'] = null;
     }
     return json;
   }
 
-  /// Returns a new [ProductInventoryStats] instance and imports its values from
+  /// Returns a new [MarketOptionResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ProductInventoryStats? fromJson(dynamic value) {
+  static MarketOptionResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -170,31 +178,37 @@ class ProductInventoryStats {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ProductInventoryStats[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ProductInventoryStats[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "MarketOptionResponse[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "MarketOptionResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ProductInventoryStats(
-        productId: mapValueOfType<int>(json, r'productId'),
-        productName: mapValueOfType<String>(json, r'productName'),
-        currentStock: mapValueOfType<int>(json, r'currentStock'),
-        minStock: mapValueOfType<int>(json, r'minStock'),
-        stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
-        lowStock: mapValueOfType<bool>(json, r'lowStock'),
-        belowMinimum: mapValueOfType<bool>(json, r'belowMinimum'),
-        outOfStock: mapValueOfType<bool>(json, r'outOfStock'),
+      return MarketOptionResponse(
+        id: mapValueOfType<int>(json, r'id'),
+        description: mapValueOfType<String>(json, r'description'),
+        displayOrder: mapValueOfType<int>(json, r'displayOrder'),
+        totalBets: json[r'totalBets'] == null
+            ? null
+            : num.parse('${json[r'totalBets']}'),
+        totalParticipants: mapValueOfType<int>(json, r'totalParticipants'),
+        currentOdds: json[r'currentOdds'] == null
+            ? null
+            : num.parse('${json[r'currentOdds']}'),
+        oddsPercentage: json[r'oddsPercentage'] == null
+            ? null
+            : num.parse('${json[r'oddsPercentage']}'),
+        isWinningOption: mapValueOfType<bool>(json, r'isWinningOption'),
       );
     }
     return null;
   }
 
-  static List<ProductInventoryStats> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProductInventoryStats>[];
+  static List<MarketOptionResponse> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <MarketOptionResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ProductInventoryStats.fromJson(row);
+        final value = MarketOptionResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -203,12 +217,12 @@ class ProductInventoryStats {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ProductInventoryStats> mapFromJson(dynamic json) {
-    final map = <String, ProductInventoryStats>{};
+  static Map<String, MarketOptionResponse> mapFromJson(dynamic json) {
+    final map = <String, MarketOptionResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ProductInventoryStats.fromJson(entry.value);
+        final value = MarketOptionResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -217,14 +231,14 @@ class ProductInventoryStats {
     return map;
   }
 
-  // maps a json object with a list of ProductInventoryStats-objects as value to a dart map
-  static Map<String, List<ProductInventoryStats>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ProductInventoryStats>>{};
+  // maps a json object with a list of MarketOptionResponse-objects as value to a dart map
+  static Map<String, List<MarketOptionResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<MarketOptionResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ProductInventoryStats.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = MarketOptionResponse.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
