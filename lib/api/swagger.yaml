@@ -18404,6 +18404,26 @@
             "type": "number",
             "description": "總價"
           },
+          "settlementCurrency": {
+            "type": "string",
+            "description": "結算貨幣，買家側固定為 USDT"
+          },
+          "settlementUnitPrice": {
+            "type": "number",
+            "description": "USDT 結算商品單價"
+          },
+          "settlementShippingFee": {
+            "type": "number",
+            "description": "USDT 結算運費"
+          },
+          "settlementSubtotal": {
+            "type": "number",
+            "description": "USDT 結算小計"
+          },
+          "settlementTotalPrice": {
+            "type": "number",
+            "description": "USDT 結算總價"
+          },
           "sellerId": {
             "type": "integer",
             "format": "int64",
@@ -26873,6 +26893,9 @@
       "PricingState": {
         "type": "object",
         "properties": {
+          "settlementCurrency": {
+            "type": "string"
+          },
           "listingCurrency": {
             "type": "string",
             "enum": [
@@ -36391,6 +36414,18 @@
             "type": "number"
           },
           "sellerTotal": {
+            "type": "number"
+          },
+          "settlementCurrency": {
+            "type": "string"
+          },
+          "settlementSellerSubtotal": {
+            "type": "number"
+          },
+          "settlementSellerShippingFee": {
+            "type": "number"
+          },
+          "settlementSellerTotal": {
             "type": "number"
           }
         }

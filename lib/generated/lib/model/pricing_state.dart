@@ -13,6 +13,7 @@ part of openapi.api;
 class PricingState {
   /// Returns a new [PricingState] instance.
   PricingState({
+    this.settlementCurrency,
     this.listingCurrency,
     this.originalUnitPrice,
     this.originalSubtotal,
@@ -26,6 +27,14 @@ class PricingState {
     this.freeShippingThreshold,
     this.freeShippingApplied,
   });
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? settlementCurrency;
 
   PricingStateListingCurrencyEnum? listingCurrency;
 
@@ -119,6 +128,7 @@ class PricingState {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PricingState &&
+    other.settlementCurrency == settlementCurrency &&
     other.listingCurrency == listingCurrency &&
     other.originalUnitPrice == originalUnitPrice &&
     other.originalSubtotal == originalSubtotal &&
@@ -135,6 +145,7 @@ class PricingState {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (settlementCurrency == null ? 0 : settlementCurrency!.hashCode) +
     (listingCurrency == null ? 0 : listingCurrency!.hashCode) +
     (originalUnitPrice == null ? 0 : originalUnitPrice!.hashCode) +
     (originalSubtotal == null ? 0 : originalSubtotal!.hashCode) +
@@ -149,10 +160,15 @@ class PricingState {
     (freeShippingApplied == null ? 0 : freeShippingApplied!.hashCode);
 
   @override
-  String toString() => 'PricingState[listingCurrency=$listingCurrency, originalUnitPrice=$originalUnitPrice, originalSubtotal=$originalSubtotal, originalShippingFee=$originalShippingFee, exchangeRate=$exchangeRate, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, priceUsdt=$priceUsdt, shippingFeeUsdt=$shippingFeeUsdt, orderAmountUsdt=$orderAmountUsdt, freeShippingThreshold=$freeShippingThreshold, freeShippingApplied=$freeShippingApplied]';
+  String toString() => 'PricingState[settlementCurrency=$settlementCurrency, listingCurrency=$listingCurrency, originalUnitPrice=$originalUnitPrice, originalSubtotal=$originalSubtotal, originalShippingFee=$originalShippingFee, exchangeRate=$exchangeRate, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, priceUsdt=$priceUsdt, shippingFeeUsdt=$shippingFeeUsdt, orderAmountUsdt=$orderAmountUsdt, freeShippingThreshold=$freeShippingThreshold, freeShippingApplied=$freeShippingApplied]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.settlementCurrency != null) {
+      json[r'settlementCurrency'] = this.settlementCurrency;
+    } else {
+      json[r'settlementCurrency'] = null;
+    }
     if (this.listingCurrency != null) {
       json[r'listingCurrency'] = this.listingCurrency;
     } else {
@@ -235,6 +251,7 @@ class PricingState {
       }());
 
       return PricingState(
+        settlementCurrency: mapValueOfType<String>(json, r'settlementCurrency'),
         listingCurrency: PricingStateListingCurrencyEnum.fromJson(json[r'listingCurrency']),
         originalUnitPrice: json[r'originalUnitPrice'] == null
             ? null

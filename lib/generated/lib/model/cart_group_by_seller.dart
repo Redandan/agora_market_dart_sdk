@@ -25,6 +25,10 @@ class CartGroupBySeller {
     this.sellerSubtotal,
     this.sellerShippingFee,
     this.sellerTotal,
+    this.settlementCurrency,
+    this.settlementSellerSubtotal,
+    this.settlementSellerShippingFee,
+    this.settlementSellerTotal,
   });
 
   ///
@@ -117,6 +121,38 @@ class CartGroupBySeller {
   ///
   num? sellerTotal;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? settlementCurrency;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? settlementSellerSubtotal;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? settlementSellerShippingFee;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? settlementSellerTotal;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CartGroupBySeller &&
     other.sellerId == sellerId &&
@@ -130,7 +166,11 @@ class CartGroupBySeller {
     _deepEquality.equals(other.items, items) &&
     other.sellerSubtotal == sellerSubtotal &&
     other.sellerShippingFee == sellerShippingFee &&
-    other.sellerTotal == sellerTotal;
+    other.sellerTotal == sellerTotal &&
+    other.settlementCurrency == settlementCurrency &&
+    other.settlementSellerSubtotal == settlementSellerSubtotal &&
+    other.settlementSellerShippingFee == settlementSellerShippingFee &&
+    other.settlementSellerTotal == settlementSellerTotal;
 
   @override
   int get hashCode =>
@@ -146,10 +186,14 @@ class CartGroupBySeller {
     (items.hashCode) +
     (sellerSubtotal == null ? 0 : sellerSubtotal!.hashCode) +
     (sellerShippingFee == null ? 0 : sellerShippingFee!.hashCode) +
-    (sellerTotal == null ? 0 : sellerTotal!.hashCode);
+    (sellerTotal == null ? 0 : sellerTotal!.hashCode) +
+    (settlementCurrency == null ? 0 : settlementCurrency!.hashCode) +
+    (settlementSellerSubtotal == null ? 0 : settlementSellerSubtotal!.hashCode) +
+    (settlementSellerShippingFee == null ? 0 : settlementSellerShippingFee!.hashCode) +
+    (settlementSellerTotal == null ? 0 : settlementSellerTotal!.hashCode);
 
   @override
-  String toString() => 'CartGroupBySeller[sellerId=$sellerId, sellerName=$sellerName, storeId=$storeId, storeName=$storeName, storeLogoUrl=$storeLogoUrl, storeCanCheckout=$storeCanCheckout, storeCheckoutWarning=$storeCheckoutWarning, currency=$currency, items=$items, sellerSubtotal=$sellerSubtotal, sellerShippingFee=$sellerShippingFee, sellerTotal=$sellerTotal]';
+  String toString() => 'CartGroupBySeller[sellerId=$sellerId, sellerName=$sellerName, storeId=$storeId, storeName=$storeName, storeLogoUrl=$storeLogoUrl, storeCanCheckout=$storeCanCheckout, storeCheckoutWarning=$storeCheckoutWarning, currency=$currency, items=$items, sellerSubtotal=$sellerSubtotal, sellerShippingFee=$sellerShippingFee, sellerTotal=$sellerTotal, settlementCurrency=$settlementCurrency, settlementSellerSubtotal=$settlementSellerSubtotal, settlementSellerShippingFee=$settlementSellerShippingFee, settlementSellerTotal=$settlementSellerTotal]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -209,6 +253,26 @@ class CartGroupBySeller {
     } else {
       json[r'sellerTotal'] = null;
     }
+    if (this.settlementCurrency != null) {
+      json[r'settlementCurrency'] = this.settlementCurrency;
+    } else {
+      json[r'settlementCurrency'] = null;
+    }
+    if (this.settlementSellerSubtotal != null) {
+      json[r'settlementSellerSubtotal'] = this.settlementSellerSubtotal;
+    } else {
+      json[r'settlementSellerSubtotal'] = null;
+    }
+    if (this.settlementSellerShippingFee != null) {
+      json[r'settlementSellerShippingFee'] = this.settlementSellerShippingFee;
+    } else {
+      json[r'settlementSellerShippingFee'] = null;
+    }
+    if (this.settlementSellerTotal != null) {
+      json[r'settlementSellerTotal'] = this.settlementSellerTotal;
+    } else {
+      json[r'settlementSellerTotal'] = null;
+    }
     return json;
   }
 
@@ -249,6 +313,16 @@ class CartGroupBySeller {
         sellerTotal: json[r'sellerTotal'] == null
             ? null
             : num.parse('${json[r'sellerTotal']}'),
+        settlementCurrency: mapValueOfType<String>(json, r'settlementCurrency'),
+        settlementSellerSubtotal: json[r'settlementSellerSubtotal'] == null
+            ? null
+            : num.parse('${json[r'settlementSellerSubtotal']}'),
+        settlementSellerShippingFee: json[r'settlementSellerShippingFee'] == null
+            ? null
+            : num.parse('${json[r'settlementSellerShippingFee']}'),
+        settlementSellerTotal: json[r'settlementSellerTotal'] == null
+            ? null
+            : num.parse('${json[r'settlementSellerTotal']}'),
       );
     }
     return null;

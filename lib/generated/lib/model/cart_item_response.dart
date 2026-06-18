@@ -24,6 +24,11 @@ class CartItemResponse {
     this.shippingFee,
     this.subtotal,
     this.totalPrice,
+    this.settlementCurrency,
+    this.settlementUnitPrice,
+    this.settlementShippingFee,
+    this.settlementSubtotal,
+    this.settlementTotalPrice,
     this.sellerId,
     this.sellerName,
     this.storeId,
@@ -144,6 +149,51 @@ class CartItemResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? totalPrice;
+
+  /// 結算貨幣，買家側固定為 USDT
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? settlementCurrency;
+
+  /// USDT 結算商品單價
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? settlementUnitPrice;
+
+  /// USDT 結算運費
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? settlementShippingFee;
+
+  /// USDT 結算小計
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? settlementSubtotal;
+
+  /// USDT 結算總價
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? settlementTotalPrice;
 
   /// 賣家ID
   ///
@@ -326,6 +376,11 @@ class CartItemResponse {
     other.shippingFee == shippingFee &&
     other.subtotal == subtotal &&
     other.totalPrice == totalPrice &&
+    other.settlementCurrency == settlementCurrency &&
+    other.settlementUnitPrice == settlementUnitPrice &&
+    other.settlementShippingFee == settlementShippingFee &&
+    other.settlementSubtotal == settlementSubtotal &&
+    other.settlementTotalPrice == settlementTotalPrice &&
     other.sellerId == sellerId &&
     other.sellerName == sellerName &&
     other.storeId == storeId &&
@@ -361,6 +416,11 @@ class CartItemResponse {
     (shippingFee == null ? 0 : shippingFee!.hashCode) +
     (subtotal == null ? 0 : subtotal!.hashCode) +
     (totalPrice == null ? 0 : totalPrice!.hashCode) +
+    (settlementCurrency == null ? 0 : settlementCurrency!.hashCode) +
+    (settlementUnitPrice == null ? 0 : settlementUnitPrice!.hashCode) +
+    (settlementShippingFee == null ? 0 : settlementShippingFee!.hashCode) +
+    (settlementSubtotal == null ? 0 : settlementSubtotal!.hashCode) +
+    (settlementTotalPrice == null ? 0 : settlementTotalPrice!.hashCode) +
     (sellerId == null ? 0 : sellerId!.hashCode) +
     (sellerName == null ? 0 : sellerName!.hashCode) +
     (storeId == null ? 0 : storeId!.hashCode) +
@@ -383,7 +443,7 @@ class CartItemResponse {
     (shippingOptions == null ? 0 : shippingOptions!.hashCode);
 
   @override
-  String toString() => 'CartItemResponse[id=$id, productId=$productId, productTitle=$productTitle, productDescription=$productDescription, productImage=$productImage, quantity=$quantity, unitPrice=$unitPrice, currency=$currency, shippingFee=$shippingFee, subtotal=$subtotal, totalPrice=$totalPrice, sellerId=$sellerId, sellerName=$sellerName, storeId=$storeId, storeName=$storeName, storeLogoUrl=$storeLogoUrl, pickupAddress=$pickupAddress, selectedSpecifications=$selectedSpecifications, specificationDescription=$specificationDescription, sku=$sku, brand=$brand, availableStock=$availableStock, isInStock=$isInStock, stockStatus=$stockStatus, stockWarning=$stockWarning, canPurchase=$canPurchase, purchaseRestrictionReason=$purchaseRestrictionReason, createdAt=$createdAt, updatedAt=$updatedAt, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions]';
+  String toString() => 'CartItemResponse[id=$id, productId=$productId, productTitle=$productTitle, productDescription=$productDescription, productImage=$productImage, quantity=$quantity, unitPrice=$unitPrice, currency=$currency, shippingFee=$shippingFee, subtotal=$subtotal, totalPrice=$totalPrice, settlementCurrency=$settlementCurrency, settlementUnitPrice=$settlementUnitPrice, settlementShippingFee=$settlementShippingFee, settlementSubtotal=$settlementSubtotal, settlementTotalPrice=$settlementTotalPrice, sellerId=$sellerId, sellerName=$sellerName, storeId=$storeId, storeName=$storeName, storeLogoUrl=$storeLogoUrl, pickupAddress=$pickupAddress, selectedSpecifications=$selectedSpecifications, specificationDescription=$specificationDescription, sku=$sku, brand=$brand, availableStock=$availableStock, isInStock=$isInStock, stockStatus=$stockStatus, stockWarning=$stockWarning, canPurchase=$canPurchase, purchaseRestrictionReason=$purchaseRestrictionReason, createdAt=$createdAt, updatedAt=$updatedAt, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -441,6 +501,31 @@ class CartItemResponse {
       json[r'totalPrice'] = this.totalPrice;
     } else {
       json[r'totalPrice'] = null;
+    }
+    if (this.settlementCurrency != null) {
+      json[r'settlementCurrency'] = this.settlementCurrency;
+    } else {
+      json[r'settlementCurrency'] = null;
+    }
+    if (this.settlementUnitPrice != null) {
+      json[r'settlementUnitPrice'] = this.settlementUnitPrice;
+    } else {
+      json[r'settlementUnitPrice'] = null;
+    }
+    if (this.settlementShippingFee != null) {
+      json[r'settlementShippingFee'] = this.settlementShippingFee;
+    } else {
+      json[r'settlementShippingFee'] = null;
+    }
+    if (this.settlementSubtotal != null) {
+      json[r'settlementSubtotal'] = this.settlementSubtotal;
+    } else {
+      json[r'settlementSubtotal'] = null;
+    }
+    if (this.settlementTotalPrice != null) {
+      json[r'settlementTotalPrice'] = this.settlementTotalPrice;
+    } else {
+      json[r'settlementTotalPrice'] = null;
     }
     if (this.sellerId != null) {
       json[r'sellerId'] = this.sellerId;
@@ -575,6 +660,19 @@ class CartItemResponse {
         totalPrice: json[r'totalPrice'] == null
             ? null
             : num.parse('${json[r'totalPrice']}'),
+        settlementCurrency: mapValueOfType<String>(json, r'settlementCurrency'),
+        settlementUnitPrice: json[r'settlementUnitPrice'] == null
+            ? null
+            : num.parse('${json[r'settlementUnitPrice']}'),
+        settlementShippingFee: json[r'settlementShippingFee'] == null
+            ? null
+            : num.parse('${json[r'settlementShippingFee']}'),
+        settlementSubtotal: json[r'settlementSubtotal'] == null
+            ? null
+            : num.parse('${json[r'settlementSubtotal']}'),
+        settlementTotalPrice: json[r'settlementTotalPrice'] == null
+            ? null
+            : num.parse('${json[r'settlementTotalPrice']}'),
         sellerId: mapValueOfType<int>(json, r'sellerId'),
         sellerName: mapValueOfType<String>(json, r'sellerName'),
         storeId: mapValueOfType<int>(json, r'storeId'),
