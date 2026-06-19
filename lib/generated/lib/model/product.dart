@@ -63,6 +63,7 @@ class Product {
     this.userSupportedShippingAddresses = const [],
     this.shippingAddressOptions = const [],
     this.shippingOptions,
+    this.viewerLoggedIn,
     this.priceUsdt,
     this.exchangeRate,
     this.usingDefaultRate,
@@ -448,6 +449,15 @@ class Product {
   ///
   ShippingOptions? shippingOptions;
 
+  /// 目前訪問者是否已登入; public 商品詳情/搜尋 response 用於前端登入提示判斷
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? viewerLoggedIn;
+
   /// USDT价格（换算后）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -593,6 +603,7 @@ class Product {
     _deepEquality.equals(other.userSupportedShippingAddresses, userSupportedShippingAddresses) &&
     _deepEquality.equals(other.shippingAddressOptions, shippingAddressOptions) &&
     other.shippingOptions == shippingOptions &&
+    other.viewerLoggedIn == viewerLoggedIn &&
     other.priceUsdt == priceUsdt &&
     other.exchangeRate == exchangeRate &&
     other.usingDefaultRate == usingDefaultRate &&
@@ -661,6 +672,7 @@ class Product {
     (userSupportedShippingAddresses.hashCode) +
     (shippingAddressOptions.hashCode) +
     (shippingOptions == null ? 0 : shippingOptions!.hashCode) +
+    (viewerLoggedIn == null ? 0 : viewerLoggedIn!.hashCode) +
     (priceUsdt == null ? 0 : priceUsdt!.hashCode) +
     (exchangeRate == null ? 0 : exchangeRate!.hashCode) +
     (usingDefaultRate == null ? 0 : usingDefaultRate!.hashCode) +
@@ -677,7 +689,7 @@ class Product {
     (shippingFee == null ? 0 : shippingFee!.hashCode);
 
   @override
-  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, stock=$stock, category=$category, sellerId=$sellerId, imageUrlsJson=$imageUrlsJson, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, reviewCount=$reviewCount, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skusJson=$skusJson, brand=$brand, minStock=$minStock, pickupServiceTypesJson=$pickupServiceTypesJson, pickupServiceTypeFeesJson=$pickupServiceTypeFeesJson, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, serviceLeadTimeHours=$serviceLeadTimeHours, maxConcurrentOrders=$maxConcurrentOrders, buyerInfoRequiredJson=$buyerInfoRequiredJson, dataResidencyNotice=$dataResidencyNotice, reportCount=$reportCount, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions, priceUsdt=$priceUsdt, exchangeRate=$exchangeRate, usingDefaultRate=$usingDefaultRate, freeShippingThresholdUsdt=$freeShippingThresholdUsdt, imageUrls=$imageUrls, inStock=$inStock, skus=$skus, defaultShippingFee=$defaultShippingFee, minimumShippingFee=$minimumShippingFee, stockLow=$stockLow, stockBelowMinimum=$stockBelowMinimum, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, shippingFee=$shippingFee]';
+  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, stock=$stock, category=$category, sellerId=$sellerId, imageUrlsJson=$imageUrlsJson, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, reviewCount=$reviewCount, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skusJson=$skusJson, brand=$brand, minStock=$minStock, pickupServiceTypesJson=$pickupServiceTypesJson, pickupServiceTypeFeesJson=$pickupServiceTypeFeesJson, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, serviceLeadTimeHours=$serviceLeadTimeHours, maxConcurrentOrders=$maxConcurrentOrders, buyerInfoRequiredJson=$buyerInfoRequiredJson, dataResidencyNotice=$dataResidencyNotice, reportCount=$reportCount, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions, viewerLoggedIn=$viewerLoggedIn, priceUsdt=$priceUsdt, exchangeRate=$exchangeRate, usingDefaultRate=$usingDefaultRate, freeShippingThresholdUsdt=$freeShippingThresholdUsdt, imageUrls=$imageUrls, inStock=$inStock, skus=$skus, defaultShippingFee=$defaultShippingFee, minimumShippingFee=$minimumShippingFee, stockLow=$stockLow, stockBelowMinimum=$stockBelowMinimum, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, shippingFee=$shippingFee]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -863,6 +875,11 @@ class Product {
     } else {
       json[r'shippingOptions'] = null;
     }
+    if (this.viewerLoggedIn != null) {
+      json[r'viewerLoggedIn'] = this.viewerLoggedIn;
+    } else {
+      json[r'viewerLoggedIn'] = null;
+    }
     if (this.priceUsdt != null) {
       json[r'priceUsdt'] = this.priceUsdt;
     } else {
@@ -993,6 +1010,7 @@ class Product {
         userSupportedShippingAddresses: UserAddress.listFromJson(json[r'userSupportedShippingAddresses']),
         shippingAddressOptions: ShippingAddressOption.listFromJson(json[r'shippingAddressOptions']),
         shippingOptions: ShippingOptions.fromJson(json[r'shippingOptions']),
+        viewerLoggedIn: mapValueOfType<bool>(json, r'viewerLoggedIn'),
         priceUsdt: json[r'priceUsdt'] == null
             ? null
             : num.parse('${json[r'priceUsdt']}'),

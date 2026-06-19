@@ -23141,6 +23141,10 @@
             "$ref": "#/components/schemas/ShippingOptions",
             "description": "運送選項"
           },
+          "viewerLoggedIn": {
+            "type": "boolean",
+            "description": "目前訪問者是否已登入; public 商品詳情/搜尋 response 用於前端登入提示判斷"
+          },
           "priceUsdt": {
             "type": "number",
             "description": "USDT价格（换算后）"
@@ -38675,13 +38679,13 @@
             "type": "integer",
             "format": "int32"
           },
-          "outOfStock": {
-            "type": "boolean"
-          },
           "lowStock": {
             "type": "boolean"
           },
           "belowMinimum": {
+            "type": "boolean"
+          },
+          "outOfStock": {
             "type": "boolean"
           }
         }
