@@ -27946,6 +27946,14 @@
             "format": "int32",
             "description": "訂單商品明細數量;舊單品訂單為 1"
           },
+          "orderTitle": {
+            "type": "string",
+            "description": "下單時生成的訂單列表顯示名稱快照"
+          },
+          "orderCoverImage": {
+            "type": "string",
+            "description": "下單時生成的訂單列表封面圖片快照"
+          },
           "selectedSku": {
             "type": "string",
             "description": "選擇的商品SKU(實體商品必填,DIGITAL_SERVICE 訂單可為 null)"
@@ -38667,13 +38675,13 @@
             "type": "integer",
             "format": "int32"
           },
+          "outOfStock": {
+            "type": "boolean"
+          },
           "lowStock": {
             "type": "boolean"
           },
           "belowMinimum": {
-            "type": "boolean"
-          },
-          "outOfStock": {
             "type": "boolean"
           }
         }

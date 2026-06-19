@@ -20,6 +20,8 @@ class Order {
     required this.sellerId,
     required this.quantity,
     required this.itemCount,
+    this.orderTitle,
+    this.orderCoverImage,
     this.selectedSku,
     required this.shippingFee,
     required this.productPrice,
@@ -75,6 +77,24 @@ class Order {
 
   /// 訂單商品明細數量;舊單品訂單為 1
   int itemCount;
+
+  /// 下單時生成的訂單列表顯示名稱快照
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? orderTitle;
+
+  /// 下單時生成的訂單列表封面圖片快照
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? orderCoverImage;
 
   /// 選擇的商品SKU(實體商品必填,DIGITAL_SERVICE 訂單可為 null)
   ///
@@ -322,6 +342,8 @@ class Order {
     other.sellerId == sellerId &&
     other.quantity == quantity &&
     other.itemCount == itemCount &&
+    other.orderTitle == orderTitle &&
+    other.orderCoverImage == orderCoverImage &&
     other.selectedSku == selectedSku &&
     other.shippingFee == shippingFee &&
     other.productPrice == productPrice &&
@@ -366,6 +388,8 @@ class Order {
     (sellerId.hashCode) +
     (quantity.hashCode) +
     (itemCount.hashCode) +
+    (orderTitle == null ? 0 : orderTitle!.hashCode) +
+    (orderCoverImage == null ? 0 : orderCoverImage!.hashCode) +
     (selectedSku == null ? 0 : selectedSku!.hashCode) +
     (shippingFee.hashCode) +
     (productPrice.hashCode) +
@@ -401,7 +425,7 @@ class Order {
     (latestProofId == null ? 0 : latestProofId!.hashCode);
 
   @override
-  String toString() => 'Order[id=$id, version=$version, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, itemCount=$itemCount, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, pickupServiceType=$pickupServiceType, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, sourceOrderRef=$sourceOrderRef, referrerGroupId=$referrerGroupId, status=$status, remark=$remark, buyerProvidedInfoJson=$buyerProvidedInfoJson, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, refundAmount=$refundAmount, refundOfferExpiresAt=$refundOfferExpiresAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, buyerName=$buyerName, buyerUsername=$buyerUsername, product=$product, orderItems=$orderItems, deliveryDetail=$deliveryDetail, store=$store, latestProofId=$latestProofId]';
+  String toString() => 'Order[id=$id, version=$version, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, itemCount=$itemCount, orderTitle=$orderTitle, orderCoverImage=$orderCoverImage, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, pickupServiceType=$pickupServiceType, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, sourceOrderRef=$sourceOrderRef, referrerGroupId=$referrerGroupId, status=$status, remark=$remark, buyerProvidedInfoJson=$buyerProvidedInfoJson, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, refundAmount=$refundAmount, refundOfferExpiresAt=$refundOfferExpiresAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, buyerName=$buyerName, buyerUsername=$buyerUsername, product=$product, orderItems=$orderItems, deliveryDetail=$deliveryDetail, store=$store, latestProofId=$latestProofId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -412,6 +436,16 @@ class Order {
       json[r'sellerId'] = this.sellerId;
       json[r'quantity'] = this.quantity;
       json[r'itemCount'] = this.itemCount;
+    if (this.orderTitle != null) {
+      json[r'orderTitle'] = this.orderTitle;
+    } else {
+      json[r'orderTitle'] = null;
+    }
+    if (this.orderCoverImage != null) {
+      json[r'orderCoverImage'] = this.orderCoverImage;
+    } else {
+      json[r'orderCoverImage'] = null;
+    }
     if (this.selectedSku != null) {
       json[r'selectedSku'] = this.selectedSku;
     } else {
@@ -574,6 +608,8 @@ class Order {
         sellerId: mapValueOfType<int>(json, r'sellerId')!,
         quantity: mapValueOfType<int>(json, r'quantity')!,
         itemCount: mapValueOfType<int>(json, r'itemCount')!,
+        orderTitle: mapValueOfType<String>(json, r'orderTitle'),
+        orderCoverImage: mapValueOfType<String>(json, r'orderCoverImage'),
         selectedSku: mapValueOfType<String>(json, r'selectedSku'),
         shippingFee: num.parse('${json[r'shippingFee']}'),
         productPrice: num.parse('${json[r'productPrice']}'),
