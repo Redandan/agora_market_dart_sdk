@@ -200,6 +200,10 @@ class ApiClient {
           return AdminCreateUserParam.fromJson(value);
         case 'AdminDeliveryerCreateParam':
           return AdminDeliveryerCreateParam.fromJson(value);
+        case 'AdminMemberPwaUsageResponse':
+          return AdminMemberPwaUsageResponse.fromJson(value);
+        case 'AdminMemberResponse':
+          return AdminMemberResponse.fromJson(value);
         case 'AdminResetPasswordParam':
           return AdminResetPasswordParam.fromJson(value);
         case 'AdminStoreCreateParam':
@@ -642,6 +646,8 @@ class ApiClient {
           return OrderSumbitParam.fromJson(value);
         case 'PageActivityDTO':
           return PageActivityDTO.fromJson(value);
+        case 'PageAdminMemberResponse':
+          return PageAdminMemberResponse.fromJson(value);
         case 'PageAutoReplyConfig':
           return PageAutoReplyConfig.fromJson(value);
         case 'PageBetResponse':

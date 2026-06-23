@@ -112,7 +112,7 @@ class AdminMembersApi {
   ///
   /// * [int] memberId (required):
   ///   會員ID
-  Future<User?> getMemberDetail(int memberId,) async {
+  Future<AdminMemberResponse?> getMemberDetail(int memberId,) async {
     final response = await getMemberDetailWithHttpInfo(memberId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -121,7 +121,7 @@ class AdminMembersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'User',) as User;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AdminMemberResponse',) as AdminMemberResponse;
     
     }
     return null;
@@ -294,7 +294,7 @@ class AdminMembersApi {
   /// Parameters:
   ///
   /// * [MemberSearchParam] memberSearchParam (required):
-  Future<PageUser?> searchMembers(MemberSearchParam memberSearchParam,) async {
+  Future<PageAdminMemberResponse?> searchMembers(MemberSearchParam memberSearchParam,) async {
     final response = await searchMembersWithHttpInfo(memberSearchParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -303,7 +303,7 @@ class AdminMembersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageUser',) as PageUser;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageAdminMemberResponse',) as PageAdminMemberResponse;
     
     }
     return null;

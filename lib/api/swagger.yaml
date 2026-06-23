@@ -10390,7 +10390,7 @@
             "content": {
               "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/PageUser"
+                  "$ref": "#/components/schemas/PageAdminMemberResponse"
                 }
               }
             }
@@ -17343,7 +17343,7 @@
             "content": {
               "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/AdminMemberResponse"
                 }
               }
             }
@@ -19835,10 +19835,10 @@
           "empty": {
             "type": "boolean"
           },
-          "sorted": {
+          "unsorted": {
             "type": "boolean"
           },
-          "unsorted": {
+          "sorted": {
             "type": "boolean"
           }
         }
@@ -36623,7 +36623,356 @@
           }
         }
       },
-      "PageUser": {
+      "AdminMemberPwaUsageResponse": {
+        "type": "object",
+        "description": "管理後台會員 PWA 使用信號摘要。所有狀態皆為後端觀測到的行為信號，不代表絕對安裝狀態。",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "會員 ID"
+          },
+          "pwaUsageObserved": {
+            "type": "boolean",
+            "description": "是否已觀測到任何 PWA/訪問信號。false 只代表後端尚未收到信號，不代表用戶一定沒有使用 PWA。"
+          },
+          "pwaLaunchObserved": {
+            "type": "boolean",
+            "description": "是否觀測到 PWA standalone/fullscreen/minimal-ui 啟動信號。"
+          },
+          "lastEventType": {
+            "type": "string",
+            "enum": [
+              "VISIT",
+              "PWA_LAUNCH",
+              "BEFORE_INSTALL_PROMPT",
+              "APP_INSTALLED",
+              "INSTALL_PROMPT_DISMISSED",
+              "MANUAL_INSTALL_ACKNOWLEDGED",
+              "OPEN_IN_EXTERNAL_BROWSER_PROMPT",
+              "OTHER"
+            ]
+          },
+          "lastEventAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastVisitMode": {
+            "type": "string",
+            "enum": [
+              "BROWSER",
+              "PWA_STANDALONE",
+              "PWA_FULLSCREEN",
+              "PWA_MINIMAL_UI",
+              "TELEGRAM_WEBVIEW",
+              "IN_APP_BROWSER",
+              "UNKNOWN"
+            ]
+          },
+          "lastVisitSource": {
+            "type": "string"
+          },
+          "lastDisplayMode": {
+            "type": "string"
+          },
+          "lastPlatform": {
+            "type": "string"
+          },
+          "lastVisitAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastPwaLaunchAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "pwaLaunchCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "beforeInstallPromptObserved": {
+            "type": "boolean",
+            "description": "是否觀測到瀏覽器 beforeinstallprompt 可用信號。"
+          },
+          "beforeInstallPromptCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastBeforeInstallPromptAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "appInstalledEventObserved": {
+            "type": "boolean",
+            "description": "是否觀測到瀏覽器 appinstalled 事件。"
+          },
+          "appInstalledEventCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastAppInstalledEventAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "manualInstallAcknowledgedObserved": {
+            "type": "boolean",
+            "description": "是否觀測到用戶手動確認已安裝/已加入主畫面。"
+          },
+          "manualInstallAcknowledgedCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastManualInstallAcknowledgedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AdminMemberResponse": {
+        "type": "object",
+        "description": "管理後台會員資料",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "用戶ID",
+            "example": 1
+          },
+          "username": {
+            "type": "string",
+            "description": "用戶名",
+            "example": "user123",
+            "maxLength": 255
+          },
+          "password": {
+            "type": "string",
+            "description": "密碼",
+            "example": "$2a$10$...",
+            "maxLength": 255
+          },
+          "role": {
+            "type": "string",
+            "description": "角色 — ADMIN=管理員, USER=一般用戶/買家, SELLER=賣家, DELIVERYER=外送員。前端顯示須做 enum→label 轉換(此 field 回傳為 enum name 大寫英文)。",
+            "enum": [
+              "ADMIN",
+              "USER",
+              "SELLER",
+              "DELIVERYER"
+            ],
+            "example": "USER",
+            "maxLength": 255
+          },
+          "status": {
+            "type": "string",
+            "description": "用戶狀態",
+            "enum": [
+              "ACTIVE",
+              "INACTIVE",
+              "SUSPENDED",
+              "BANNED",
+              "DELETED"
+            ],
+            "maxLength": 255
+          },
+          "name": {
+            "type": "string",
+            "description": "姓名",
+            "example": "王小明",
+            "maxLength": 50
+          },
+          "phone": {
+            "type": "string",
+            "description": "電話號碼",
+            "example": "0912345678",
+            "maxLength": 20
+          },
+          "email": {
+            "type": "string",
+            "description": "電子郵件",
+            "example": "user@example.com",
+            "maxLength": 100
+          },
+          "avatar": {
+            "type": "string",
+            "description": "頭像",
+            "example": "https://example.com/avatar.jpg",
+            "maxLength": 255
+          },
+          "remark": {
+            "type": "string",
+            "description": "備註",
+            "example": "VIP用戶",
+            "maxLength": 500
+          },
+          "storeName": {
+            "type": "string",
+            "description": "店鋪名稱",
+            "example": "優質商品專賣店",
+            "maxLength": 200
+          },
+          "defaultHomePage": {
+            "type": "string",
+            "description": "用戶默認首頁設置（登入後跳轉的頁面）",
+            "enum": [
+              "BUYER",
+              "SELLER",
+              "DELIVERYER",
+              "ADMIN"
+            ],
+            "example": "BUYER",
+            "maxLength": 50
+          },
+          "ambassadorName": {
+            "type": "string",
+            "description": "推廣大使名稱",
+            "example": "推廣大使001",
+            "maxLength": 200
+          },
+          "displayDeliveryerName": {
+            "type": "string",
+            "description": "顯示配送員名稱",
+            "example": "配送員001",
+            "maxLength": 200
+          },
+          "promoCode": {
+            "type": "string",
+            "description": "註冊推廣碼",
+            "example": "PROMO2024",
+            "maxLength": 50
+          },
+          "referrerGroupId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Mini App / TG 群組來源歸因 ID，供訂單建立時 snapshot"
+          },
+          "registrationMethod": {
+            "type": "string",
+            "description": "註冊方式",
+            "enum": [
+              "FORM",
+              "EMAIL_CODE",
+              "GOOGLE",
+              "TELEGRAM_BOT",
+              "TELEGRAM_WEBAPP",
+              "WALLET_CONNECT",
+              "TRON",
+              "PASSKEY",
+              "ADMIN"
+            ],
+            "example": "FORM"
+          },
+          "registrationIp": {
+            "type": "string",
+            "description": "註冊時的 IP 地址",
+            "example": "203.0.113.42",
+            "maxLength": 45
+          },
+          "registrationUa": {
+            "type": "string",
+            "description": "註冊時的 User-Agent",
+            "maxLength": 512
+          },
+          "twoFactorEnabled": {
+            "type": "boolean",
+            "description": "是否啟用雙因素認證",
+            "example": false
+          },
+          "twoFactorSecret": {
+            "type": "string",
+            "description": "雙因素認證密鑰",
+            "example": "JBSWY3DPEHPK3PXP",
+            "maxLength": 255
+          },
+          "emailVerified": {
+            "type": "boolean",
+            "description": "郵件是否已驗證",
+            "example": false
+          },
+          "trustedDevicesJson": {
+            "type": "string",
+            "description": "受信任設備列表（JSON格式），最多保存10組設備",
+            "example": [
+              {
+                "deviceFingerprint": "abc123",
+                "ipAddress": "192.168.1.1"
+              }
+            ]
+          },
+          "currentDeviceFingerprint": {
+            "type": "string",
+            "description": "當前請求的設備指紋",
+            "example": "TW-TAIPEI-WIN-CHROME-ABCDEF"
+          },
+          "currentIpAddress": {
+            "type": "string",
+            "description": "當前請求的IP地址",
+            "example": "192.168.1.1"
+          },
+          "termsAcceptedVersion": {
+            "type": "string",
+            "description": "已接受 ToS 版本（null=尚未接受當前版本）",
+            "maxLength": 20
+          },
+          "termsAcceptedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "接受 ToS 時間"
+          },
+          "countryCode": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2 國家代碼（signup 時由 CF-IPCountry 偵測）",
+            "maxLength": 2
+          },
+          "countryDetectedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "IP 國家偵測時間"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "創建時間",
+            "example": "2024-01-01T10:00:00"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "最後更新時間",
+            "example": "2024-01-01T10:00:00"
+          },
+          "pwaUsage": {
+            "$ref": "#/components/schemas/AdminMemberPwaUsageResponse",
+            "description": "會員 PWA 使用信號摘要；信號為觀測值，不代表絕對安裝狀態。"
+          },
+          "admin": {
+            "type": "boolean"
+          },
+          "trustedDevices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeviceInfo"
+            }
+          }
+        },
+        "required": [
+          "createdAt",
+          "id",
+          "password",
+          "role",
+          "status",
+          "updatedAt",
+          "username"
+        ]
+      },
+      "PageAdminMemberResponse": {
         "type": "object",
         "properties": {
           "totalElements": {
@@ -36641,7 +36990,7 @@
           "content": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/User"
+              "$ref": "#/components/schemas/AdminMemberResponse"
             }
           },
           "number": {
@@ -38807,6 +39156,52 @@
             "items": {
               "type": "string"
             }
+          }
+        }
+      },
+      "PageUser": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
           }
         }
       },
