@@ -432,6 +432,8 @@ part 'model/push_subscription_response_dto.dart';
 part 'model/push_test_response_dto.dart';
 part 'model/push_unsubscription_response_dto.dart';
 part 'model/pwa_log_entry.dart';
+part 'model/pwa_signal_report_request.dart';
+part 'model/pwa_signal_summary_response.dart';
 part 'model/quick_logistics_request.dart';
 part 'model/quick_logistics_result.dart';
 part 'model/recharge.dart';

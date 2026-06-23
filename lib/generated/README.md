@@ -566,6 +566,8 @@ Class | Method | HTTP request | Description
 *UserAddressesApi* | [**getUserAddressesPage**](doc//UserAddressesApi.md#getuseraddressespage) | **GET** /user-addresses/page | 分頁獲取用戶地址
 *UserAddressesApi* | [**setDefaultAddress**](doc//UserAddressesApi.md#setdefaultaddress) | **POST** /user-addresses/{addressId}/set-default | 設置預設地址
 *UserAddressesApi* | [**updateAddress**](doc//UserAddressesApi.md#updateaddress) | **POST** /user-addresses/update | 更新地址
+*UsersApi* | [**getSummary**](doc//UsersApi.md#getsummary) | **GET** /users/me/pwa-signals | 取得目前用戶的 PWA 行為信號摘要
+*UsersApi* | [**reportSignal**](doc//UsersApi.md#reportsignal) | **POST** /users/me/pwa-signals | 上報 PWA 訪問與安裝事件觀測
 *UsersApi* | [**trackReferrer**](doc//UsersApi.md#trackreferrer) | **POST** /users/me/track-referrer | 記錄 Mini App / TG 群組來源歸因
 *VerificationCodeLoginApi* | [**generateLoginToken**](doc//VerificationCodeLoginApi.md#generatelogintoken) | **POST** /auth/telegram-bot/generate-login-token | 生成驗證碼登入 Token
 *VerificationCodeLoginApi* | [**verifyCode**](doc//VerificationCodeLoginApi.md#verifycode) | **POST** /auth/telegram-bot/verify-code | 驗證碼登入
@@ -924,6 +926,8 @@ Class | Method | HTTP request | Description
  - [PushTestResponseDTO](doc//PushTestResponseDTO.md)
  - [PushUnsubscriptionResponseDTO](doc//PushUnsubscriptionResponseDTO.md)
  - [PwaLogEntry](doc//PwaLogEntry.md)
+ - [PwaSignalReportRequest](doc//PwaSignalReportRequest.md)
+ - [PwaSignalSummaryResponse](doc//PwaSignalSummaryResponse.md)
  - [QuickLogisticsRequest](doc//QuickLogisticsRequest.md)
  - [QuickLogisticsResult](doc//QuickLogisticsResult.md)
  - [Recharge](doc//Recharge.md)

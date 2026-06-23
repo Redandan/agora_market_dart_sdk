@@ -2074,6 +2074,66 @@
         ]
       }
     },
+    "/users/me/pwa-signals": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "取得目前用戶的 PWA 行為信號摘要",
+        "operationId": "getSummary",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PwaSignalSummaryResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "summary": "上報 PWA 訪問與安裝事件觀測",
+        "description": "保存登入用戶的 PWA 行為信號摘要；不表示目前絕對已安裝狀態。",
+        "operationId": "reportSignal",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PwaSignalReportRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PwaSignalSummaryResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/user-addresses/{addressId}/set-default": {
       "post": {
         "tags": [
@@ -21626,6 +21686,191 @@
         "required": [
           "referrerGroupId"
         ]
+      },
+      "PwaSignalReportRequest": {
+        "type": "object",
+        "description": "PWA 訪問與安裝事件觀測上報",
+        "properties": {
+          "eventType": {
+            "type": "string",
+            "description": "事件類型。語意是行為信號，不代表目前絕對安裝狀態。",
+            "enum": [
+              "VISIT",
+              "PWA_LAUNCH",
+              "BEFORE_INSTALL_PROMPT",
+              "APP_INSTALLED",
+              "INSTALL_PROMPT_DISMISSED",
+              "MANUAL_INSTALL_ACKNOWLEDGED",
+              "OPEN_IN_EXTERNAL_BROWSER_PROMPT",
+              "OTHER"
+            ]
+          },
+          "visitMode": {
+            "type": "string",
+            "description": "本次訪問模式，例如普通瀏覽器、PWA standalone、Telegram WebView。",
+            "enum": [
+              "BROWSER",
+              "PWA_STANDALONE",
+              "PWA_FULLSCREEN",
+              "PWA_MINIMAL_UI",
+              "TELEGRAM_WEBVIEW",
+              "IN_APP_BROWSER",
+              "UNKNOWN"
+            ]
+          },
+          "occurredAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "事件發生時間；未提供或明顯晚於伺服器時間時使用伺服器時間。"
+          },
+          "eventId": {
+            "type": "string",
+            "description": "前端可選冪等事件 ID；同一 user 重送相同 eventId 不重複增加計數。",
+            "maxLength": 120,
+            "minLength": 0
+          },
+          "visitSource": {
+            "type": "string",
+            "description": "訪問來源，例如 browser、telegram_webview、external_browser_prompt。",
+            "maxLength": 80,
+            "minLength": 0
+          },
+          "displayMode": {
+            "type": "string",
+            "description": "瀏覽器 display-mode 原始值，例如 browser、standalone、fullscreen、minimal-ui。",
+            "maxLength": 80,
+            "minLength": 0
+          },
+          "platform": {
+            "type": "string",
+            "description": "前端偵測平台，例如 ios、android、desktop、telegram。",
+            "maxLength": 80,
+            "minLength": 0
+          },
+          "deviceFingerprint": {
+            "type": "string",
+            "description": "設備指紋；僅用於分析同裝置重訪，不作為身份來源。",
+            "maxLength": 120,
+            "minLength": 0
+          },
+          "userAgent": {
+            "type": "string",
+            "description": "前端觀測 user agent；未提供時後端使用 HTTP User-Agent。",
+            "maxLength": 512,
+            "minLength": 0
+          },
+          "standaloneObserved": {
+            "type": "boolean",
+            "description": "是否觀測到 standalone/display-mode PWA 啟動。"
+          },
+          "iosStandaloneObserved": {
+            "type": "boolean",
+            "description": "是否觀測到 iOS navigator.standalone。"
+          },
+          "beforeInstallPromptAvailable": {
+            "type": "boolean",
+            "description": "是否觀測到 beforeinstallprompt 可用。"
+          }
+        },
+        "required": [
+          "eventType",
+          "visitMode"
+        ]
+      },
+      "PwaSignalSummaryResponse": {
+        "type": "object",
+        "description": "PWA 訪問與安裝事件觀測摘要",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastEventType": {
+            "type": "string",
+            "enum": [
+              "VISIT",
+              "PWA_LAUNCH",
+              "BEFORE_INSTALL_PROMPT",
+              "APP_INSTALLED",
+              "INSTALL_PROMPT_DISMISSED",
+              "MANUAL_INSTALL_ACKNOWLEDGED",
+              "OPEN_IN_EXTERNAL_BROWSER_PROMPT",
+              "OTHER"
+            ]
+          },
+          "lastEventAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastVisitMode": {
+            "type": "string",
+            "enum": [
+              "BROWSER",
+              "PWA_STANDALONE",
+              "PWA_FULLSCREEN",
+              "PWA_MINIMAL_UI",
+              "TELEGRAM_WEBVIEW",
+              "IN_APP_BROWSER",
+              "UNKNOWN"
+            ]
+          },
+          "lastVisitSource": {
+            "type": "string"
+          },
+          "lastDisplayMode": {
+            "type": "string"
+          },
+          "lastPlatform": {
+            "type": "string"
+          },
+          "lastVisitAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastPwaLaunchAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "pwaLaunchCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "beforeInstallPromptCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastBeforeInstallPromptAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "appInstalledEventCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastAppInstalledEventAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "appInstalledEventObserved": {
+            "type": "boolean"
+          },
+          "manualInstallAcknowledgedCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastManualInstallAcknowledgedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
       },
       "UserAddress": {
         "type": "object",
