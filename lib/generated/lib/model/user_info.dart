@@ -36,6 +36,7 @@ class UserInfo {
     this.defaultHomePage,
     this.recoveryAdvisory,
     this.passkeySecuritySummary,
+    this.marketplaceUi,
   });
 
   /// 用戶ID
@@ -233,6 +234,15 @@ class UserInfo {
   ///
   PasskeySecuritySummaryResponse? passkeySecuritySummary;
 
+  /// Marketplace UI bootstrap configuration; currently includes product-list carousel items
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  MarketplaceUiConfigResponse? marketplaceUi;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserInfo &&
     other.id == id &&
@@ -257,7 +267,8 @@ class UserInfo {
     other.unreadMessageCount == unreadMessageCount &&
     other.defaultHomePage == defaultHomePage &&
     other.recoveryAdvisory == recoveryAdvisory &&
-    other.passkeySecuritySummary == passkeySecuritySummary;
+    other.passkeySecuritySummary == passkeySecuritySummary &&
+    other.marketplaceUi == marketplaceUi;
 
   @override
   int get hashCode =>
@@ -284,10 +295,11 @@ class UserInfo {
     (unreadMessageCount == null ? 0 : unreadMessageCount!.hashCode) +
     (defaultHomePage == null ? 0 : defaultHomePage!.hashCode) +
     (recoveryAdvisory == null ? 0 : recoveryAdvisory!.hashCode) +
-    (passkeySecuritySummary == null ? 0 : passkeySecuritySummary!.hashCode);
+    (passkeySecuritySummary == null ? 0 : passkeySecuritySummary!.hashCode) +
+    (marketplaceUi == null ? 0 : marketplaceUi!.hashCode);
 
   @override
-  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, cartItemCount=$cartItemCount, stackingBalance=$stackingBalance, totalAssets=$totalAssets, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar, balanceConversions=$balanceConversions, sellerMaintenance=$sellerMaintenance, deliveryMaintenance=$deliveryMaintenance, unreadMessageCount=$unreadMessageCount, defaultHomePage=$defaultHomePage, recoveryAdvisory=$recoveryAdvisory, passkeySecuritySummary=$passkeySecuritySummary]';
+  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, cartItemCount=$cartItemCount, stackingBalance=$stackingBalance, totalAssets=$totalAssets, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar, balanceConversions=$balanceConversions, sellerMaintenance=$sellerMaintenance, deliveryMaintenance=$deliveryMaintenance, unreadMessageCount=$unreadMessageCount, defaultHomePage=$defaultHomePage, recoveryAdvisory=$recoveryAdvisory, passkeySecuritySummary=$passkeySecuritySummary, marketplaceUi=$marketplaceUi]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -402,6 +414,11 @@ class UserInfo {
     } else {
       json[r'passkeySecuritySummary'] = null;
     }
+    if (this.marketplaceUi != null) {
+      json[r'marketplaceUi'] = this.marketplaceUi;
+    } else {
+      json[r'marketplaceUi'] = null;
+    }
     return json;
   }
 
@@ -455,6 +472,7 @@ class UserInfo {
         defaultHomePage: UserInfoDefaultHomePageEnum.fromJson(json[r'defaultHomePage']),
         recoveryAdvisory: AccountRecoveryAdvisory.fromJson(json[r'recoveryAdvisory']),
         passkeySecuritySummary: PasskeySecuritySummaryResponse.fromJson(json[r'passkeySecuritySummary']),
+        marketplaceUi: MarketplaceUiConfigResponse.fromJson(json[r'marketplaceUi']),
       );
     }
     return null;

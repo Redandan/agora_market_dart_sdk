@@ -19813,6 +19813,9 @@
           "sort": {
             "$ref": "#/components/schemas/SortObject"
           },
+          "unpaged": {
+            "type": "boolean"
+          },
           "paged": {
             "type": "boolean"
           },
@@ -19823,9 +19826,6 @@
           "pageSize": {
             "type": "integer",
             "format": "int32"
-          },
-          "unpaged": {
-            "type": "boolean"
           }
         }
       },
@@ -19835,10 +19835,10 @@
           "empty": {
             "type": "boolean"
           },
-          "unsorted": {
+          "sorted": {
             "type": "boolean"
           },
-          "sorted": {
+          "unsorted": {
             "type": "boolean"
           }
         }
@@ -26113,6 +26113,16 @@
           }
         }
       },
+      "MarketplaceUiConfigResponse": {
+        "type": "object",
+        "description": "Marketplace UI bootstrap configuration",
+        "properties": {
+          "productListCarousel": {
+            "$ref": "#/components/schemas/ProductListCarousel",
+            "description": "Buyer product-list carousel configuration"
+          }
+        }
+      },
       "PasskeySecuritySummaryResponse": {
         "type": "object",
         "description": "Authenticated current-user Passkey binding summary. Never returned for arbitrary usernames.",
@@ -26176,6 +26186,93 @@
           "recoveryAdvisory": {
             "$ref": "#/components/schemas/AccountRecoveryAdvisory",
             "description": "Account recovery advisory for Passkey-only or weak recovery setups."
+          }
+        }
+      },
+      "ProductListCarousel": {
+        "type": "object",
+        "description": "Product-list carousel configuration",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether frontend should render the carousel",
+            "example": true
+          },
+          "displayMode": {
+            "type": "string",
+            "description": "Frontend display mode",
+            "example": "CAROUSEL"
+          },
+          "autoPlay": {
+            "type": "boolean",
+            "description": "Whether frontend may auto-play the carousel",
+            "example": true
+          },
+          "intervalMs": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Auto-play interval in milliseconds",
+            "example": 3500
+          },
+          "items": {
+            "type": "array",
+            "description": "Carousel items ordered by backend priority",
+            "items": {
+              "$ref": "#/components/schemas/ProductListCarouselItem"
+            }
+          }
+        }
+      },
+      "ProductListCarouselItem": {
+        "type": "object",
+        "description": "One product-list carousel item",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stable frontend item id",
+            "example": "game-entry"
+          },
+          "type": {
+            "type": "string",
+            "description": "Item type",
+            "enum": [
+              "GAME_ENTRY",
+              "ADVERTISEMENT"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "description": "Display title",
+            "example": "電子遊戲"
+          },
+          "subtitle": {
+            "type": "string",
+            "description": "Display subtitle",
+            "example": "Moon Dance Stage"
+          },
+          "imageUrl": {
+            "type": "string",
+            "description": "Optional image URL"
+          },
+          "actionType": {
+            "type": "string",
+            "description": "Click action type",
+            "enum": [
+              "NONE",
+              "ROUTE",
+              "EXTERNAL_URL"
+            ]
+          },
+          "actionValue": {
+            "type": "string",
+            "description": "Route or URL for the action",
+            "example": "/games"
+          },
+          "priority": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Backend ordering priority",
+            "example": 10
           }
         }
       },
@@ -26287,6 +26384,10 @@
           "passkeySecuritySummary": {
             "$ref": "#/components/schemas/PasskeySecuritySummaryResponse",
             "description": "目前登入帳號的 Passkey 綁定摘要；只針對目前 user，不提供任意 username 查詢"
+          },
+          "marketplaceUi": {
+            "$ref": "#/components/schemas/MarketplaceUiConfigResponse",
+            "description": "Marketplace UI bootstrap configuration; currently includes product-list carousel items"
           }
         }
       },

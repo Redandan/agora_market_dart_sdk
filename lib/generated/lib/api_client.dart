@@ -562,6 +562,8 @@ class ApiClient {
           return MarketResponse.fromJson(value);
         case 'MarketSearchRequest':
           return MarketSearchRequest.fromJson(value);
+        case 'MarketplaceUiConfigResponse':
+          return MarketplaceUiConfigResponse.fromJson(value);
         case 'McpConnectorAccountStatus':
           return McpConnectorAccountStatus.fromJson(value);
         case 'McpConnectorAction':
@@ -800,6 +802,10 @@ class ApiClient {
           return ProductDraftResponse.fromJson(value);
         case 'ProductInventoryStats':
           return ProductInventoryStats.fromJson(value);
+        case 'ProductListCarousel':
+          return ProductListCarousel.fromJson(value);
+        case 'ProductListCarouselItem':
+          return ProductListCarouselItem.fromJson(value);
         case 'ProductReport':
           return ProductReport.fromJson(value);
         case 'ProductReportCreateParam':
