@@ -164,7 +164,7 @@ Class | Method | HTTP request | Description
 *AdminDemandPoolApi* | [**missingRequirements1**](doc//AdminDemandPoolApi.md#missingrequirements1) | **GET** /admin/demands/{demandId}/missing-requirements | Admin list demand missing requirements
 *AdminDemandPoolApi* | [**reviewOffer**](doc//AdminDemandPoolApi.md#reviewoffer) | **POST** /admin/demands/{demandId}/offers/{offerId}/review | Admin review seller offer before buyer visibility
 *AdminDemandPoolApi* | [**search**](doc//AdminDemandPoolApi.md#search) | **POST** /admin/demands/search | Admin search demand pool
-*AdminDemandPoolApi* | [**updateStatus1**](doc//AdminDemandPoolApi.md#updatestatus1) | **POST** /admin/demands/{demandId}/status | Admin update demand status or close demand
+*AdminDemandPoolApi* | [**updateStatus**](doc//AdminDemandPoolApi.md#updatestatus) | **POST** /admin/demands/{demandId}/status | Admin update demand status or close demand
 *AdminDisputesApi* | [**aiAnalysis**](doc//AdminDisputesApi.md#aianalysis) | **POST** /admin/disputes/{disputeId}/ai-analysis | AI 仲裁建議
 *AdminDisputesApi* | [**denyAppeal**](doc//AdminDisputesApi.md#denyappeal) | **POST** /admin/disputes/{disputeId}/deny-appeal | 拒絕複審申請
 *AdminDisputesApi* | [**getDisputeDetail1**](doc//AdminDisputesApi.md#getdisputedetail1) | **GET** /admin/disputes/{disputeId} | 查看糾紛詳情
@@ -176,12 +176,8 @@ Class | Method | HTTP request | Description
 *AdminExchangeRateRangeApi* | [**editRange**](doc//AdminExchangeRateRangeApi.md#editrange) | **POST** /admin/exchange-rate-range/edit | 更新匯率範圍
 *AdminExchangeRateRangeApi* | [**getAllRanges**](doc//AdminExchangeRateRangeApi.md#getallranges) | **POST** /admin/exchange-rate-range/all | 搜尋匯率範圍
 *AdminExchangeRateRangeApi* | [**rejectSuggestion**](doc//AdminExchangeRateRangeApi.md#rejectsuggestion) | **POST** /admin/exchange-rate-range/suggestions/{id}/reject | 拒絕建議
-*AdminMarketplaceUiApi* | [**createPlacement**](doc//AdminMarketplaceUiApi.md#createplacement) | **POST** /admin/marketplace-ui/placements | Create marketplace UI placement
-*AdminMarketplaceUiApi* | [**getPlacement**](doc//AdminMarketplaceUiApi.md#getplacement) | **GET** /admin/marketplace-ui/placements/{id} | Get one marketplace UI placement
-*AdminMarketplaceUiApi* | [**listPlacements**](doc//AdminMarketplaceUiApi.md#listplacements) | **GET** /admin/marketplace-ui/placements | List marketplace UI placements
-*AdminMarketplaceUiApi* | [**productListPreview**](doc//AdminMarketplaceUiApi.md#productlistpreview) | **GET** /admin/marketplace-ui/product-list-preview | Preview current buyer product-list UI config
-*AdminMarketplaceUiApi* | [**updatePlacement**](doc//AdminMarketplaceUiApi.md#updateplacement) | **PUT** /admin/marketplace-ui/placements/{id} | Update marketplace UI placement
-*AdminMarketplaceUiApi* | [**updateStatus**](doc//AdminMarketplaceUiApi.md#updatestatus) | **PUT** /admin/marketplace-ui/placements/{id}/status | Enable or disable marketplace UI placement
+*AdminMarketplaceUiApi* | [**getProductListCarousel**](doc//AdminMarketplaceUiApi.md#getproductlistcarousel) | **GET** /admin/marketplace-ui/product-list-carousel | Get product-list carousel admin configuration
+*AdminMarketplaceUiApi* | [**replaceProductListCarousel**](doc//AdminMarketplaceUiApi.md#replaceproductlistcarousel) | **PUT** /admin/marketplace-ui/product-list-carousel | Replace product-list carousel admin configuration
 *AdminMembersApi* | [**createUserByAdmin**](doc//AdminMembersApi.md#createuserbyadmin) | **POST** /admin/members/create-user | 管理員創建用戶
 *AdminMembersApi* | [**getMemberDetail**](doc//AdminMembersApi.md#getmemberdetail) | **GET** /admin/members/{memberId} | 查看會員詳情
 *AdminMembersApi* | [**getMemberStatistics**](doc//AdminMembersApi.md#getmemberstatistics) | **GET** /admin/members/statistics | 會員統計報告
@@ -790,7 +786,8 @@ Class | Method | HTTP request | Description
  - [MarketplaceUiConfigResponse](doc//MarketplaceUiConfigResponse.md)
  - [MarketplaceUiPlacementAdminRequest](doc//MarketplaceUiPlacementAdminRequest.md)
  - [MarketplaceUiPlacementAdminResponse](doc//MarketplaceUiPlacementAdminResponse.md)
- - [MarketplaceUiPlacementStatusRequest](doc//MarketplaceUiPlacementStatusRequest.md)
+ - [MarketplaceUiProductListCarouselAdminRequest](doc//MarketplaceUiProductListCarouselAdminRequest.md)
+ - [MarketplaceUiProductListCarouselAdminResponse](doc//MarketplaceUiProductListCarouselAdminResponse.md)
  - [McpConnectorAccountStatus](doc//McpConnectorAccountStatus.md)
  - [McpConnectorAction](doc//McpConnectorAction.md)
  - [McpConnectorActivitySummaryResponse](doc//McpConnectorActivitySummaryResponse.md)

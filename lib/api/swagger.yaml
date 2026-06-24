@@ -1159,31 +1159,20 @@
         }
       }
     },
-    "/admin/marketplace-ui/placements/{id}": {
+    "/admin/marketplace-ui/product-list-carousel": {
       "get": {
         "tags": [
           "admin-marketplace-ui"
         ],
-        "summary": "Get one marketplace UI placement",
-        "operationId": "getPlacement",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
+        "summary": "Get product-list carousel admin configuration",
+        "operationId": "getProductListCarousel",
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/MarketplaceUiPlacementAdminResponse"
+                  "$ref": "#/components/schemas/MarketplaceUiProductListCarouselAdminResponse"
                 }
               }
             }
@@ -1194,24 +1183,13 @@
         "tags": [
           "admin-marketplace-ui"
         ],
-        "summary": "Update marketplace UI placement",
-        "operationId": "updatePlacement",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
+        "summary": "Replace product-list carousel admin configuration",
+        "operationId": "replaceProductListCarousel",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MarketplaceUiPlacementAdminRequest"
+                "$ref": "#/components/schemas/MarketplaceUiProductListCarouselAdminRequest"
               }
             }
           },
@@ -1223,49 +1201,7 @@
             "content": {
               "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/MarketplaceUiPlacementAdminResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/admin/marketplace-ui/placements/{id}/status": {
-      "put": {
-        "tags": [
-          "admin-marketplace-ui"
-        ],
-        "summary": "Enable or disable marketplace UI placement",
-        "operationId": "updateStatus",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/MarketplaceUiPlacementStatusRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/MarketplaceUiPlacementAdminResponse"
+                  "$ref": "#/components/schemas/MarketplaceUiProductListCarouselAdminResponse"
                 }
               }
             }
@@ -10552,86 +10488,6 @@
         ]
       }
     },
-    "/admin/marketplace-ui/placements": {
-      "get": {
-        "tags": [
-          "admin-marketplace-ui"
-        ],
-        "summary": "List marketplace UI placements",
-        "operationId": "listPlacements",
-        "parameters": [
-          {
-            "name": "surface",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "description": "Marketplace UI surface",
-              "enum": [
-                "PRODUCT_LIST"
-              ]
-            }
-          },
-          {
-            "name": "status",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "description": "Marketplace UI placement status",
-              "enum": [
-                "ENABLED",
-                "DISABLED"
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/MarketplaceUiPlacementAdminResponse"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "admin-marketplace-ui"
-        ],
-        "summary": "Create marketplace UI placement",
-        "operationId": "createPlacement",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/MarketplaceUiPlacementAdminRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/MarketplaceUiPlacementAdminResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/admin/knowledge": {
       "get": {
         "tags": [
@@ -11198,7 +11054,7 @@
           "admin-demand-pool"
         ],
         "summary": "Admin update demand status or close demand",
-        "operationId": "updateStatus_1",
+        "operationId": "updateStatus",
         "parameters": [
           {
             "name": "demandId",
@@ -17596,27 +17452,6 @@
         }
       }
     },
-    "/admin/marketplace-ui/product-list-preview": {
-      "get": {
-        "tags": [
-          "admin-marketplace-ui"
-        ],
-        "summary": "Preview current buyer product-list UI config",
-        "operationId": "productListPreview",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/MarketplaceUiConfigResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/admin/knowledge/{id}": {
       "get": {
         "tags": [
@@ -20032,9 +19867,6 @@
           "sort": {
             "$ref": "#/components/schemas/SortObject"
           },
-          "unpaged": {
-            "type": "boolean"
-          },
           "paged": {
             "type": "boolean"
           },
@@ -20045,6 +19877,9 @@
           "pageSize": {
             "type": "integer",
             "format": "int32"
+          },
+          "unpaged": {
+            "type": "boolean"
           }
         }
       },
@@ -20054,10 +19889,10 @@
           "empty": {
             "type": "boolean"
           },
-          "unsorted": {
+          "sorted": {
             "type": "boolean"
           },
-          "sorted": {
+          "unsorted": {
             "type": "boolean"
           }
         }
@@ -20785,13 +20620,6 @@
             "minLength": 0,
             "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$"
           },
-          "surface": {
-            "type": "string",
-            "description": "Frontend surface",
-            "enum": [
-              "PRODUCT_LIST"
-            ]
-          },
           "placementType": {
             "type": "string",
             "description": "Placement type",
@@ -20872,9 +20700,33 @@
         "required": [
           "actionType",
           "placementType",
-          "status",
-          "surface"
+          "status"
         ]
+      },
+      "MarketplaceUiProductListCarouselAdminRequest": {
+        "type": "object",
+        "description": "Admin request to replace the product-list carousel configuration",
+        "properties": {
+          "items": {
+            "type": "array",
+            "description": "Full product-list carousel item list. Missing existing items are disabled, not deleted.",
+            "items": {
+              "$ref": "#/components/schemas/MarketplaceUiPlacementAdminRequest"
+            },
+            "maxItems": 20,
+            "minItems": 0
+          }
+        }
+      },
+      "MarketplaceUiConfigResponse": {
+        "type": "object",
+        "description": "Marketplace UI bootstrap configuration",
+        "properties": {
+          "productListCarousel": {
+            "$ref": "#/components/schemas/ProductListCarousel",
+            "description": "Buyer product-list carousel configuration"
+          }
+        }
       },
       "MarketplaceUiPlacementAdminResponse": {
         "type": "object",
@@ -20959,22 +20811,113 @@
           }
         }
       },
-      "MarketplaceUiPlacementStatusRequest": {
+      "MarketplaceUiProductListCarouselAdminResponse": {
         "type": "object",
-        "description": "Admin marketplace UI placement status request",
+        "description": "Admin product-list carousel configuration response",
         "properties": {
-          "status": {
-            "type": "string",
-            "description": "New placement status",
-            "enum": [
-              "ENABLED",
-              "DISABLED"
-            ]
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether the buyer-facing carousel currently has visible items"
+          },
+          "items": {
+            "type": "array",
+            "description": "All admin-managed product-list carousel items, including disabled/future items",
+            "items": {
+              "$ref": "#/components/schemas/MarketplaceUiPlacementAdminResponse"
+            }
+          },
+          "buyerPreview": {
+            "$ref": "#/components/schemas/MarketplaceUiConfigResponse",
+            "description": "Buyer-facing preview using the same contract as auth/me"
           }
-        },
-        "required": [
-          "status"
-        ]
+        }
+      },
+      "ProductListCarousel": {
+        "type": "object",
+        "description": "Product-list carousel configuration",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether frontend should render the carousel",
+            "example": true
+          },
+          "displayMode": {
+            "type": "string",
+            "description": "Frontend display mode",
+            "example": "CAROUSEL"
+          },
+          "autoPlay": {
+            "type": "boolean",
+            "description": "Whether frontend may auto-play the carousel",
+            "example": true
+          },
+          "intervalMs": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Auto-play interval in milliseconds",
+            "example": 3500
+          },
+          "items": {
+            "type": "array",
+            "description": "Carousel items ordered by backend priority",
+            "items": {
+              "$ref": "#/components/schemas/ProductListCarouselItem"
+            }
+          }
+        }
+      },
+      "ProductListCarouselItem": {
+        "type": "object",
+        "description": "One product-list carousel item",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stable frontend item id",
+            "example": "game-entry"
+          },
+          "type": {
+            "type": "string",
+            "description": "Item type",
+            "enum": [
+              "GAME_ENTRY",
+              "ADVERTISEMENT"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "description": "Display title",
+            "example": "電子遊戲"
+          },
+          "subtitle": {
+            "type": "string",
+            "description": "Display subtitle",
+            "example": "Moon Dance Stage"
+          },
+          "imageUrl": {
+            "type": "string",
+            "description": "Optional image URL"
+          },
+          "actionType": {
+            "type": "string",
+            "description": "Click action type",
+            "enum": [
+              "NONE",
+              "ROUTE",
+              "EXTERNAL_URL"
+            ]
+          },
+          "actionValue": {
+            "type": "string",
+            "description": "Route or URL for the action",
+            "example": "/games"
+          },
+          "priority": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Backend ordering priority",
+            "example": 10
+          }
+        }
       },
       "DeliveryerUpdateParam": {
         "type": "object",
@@ -26535,16 +26478,6 @@
           }
         }
       },
-      "MarketplaceUiConfigResponse": {
-        "type": "object",
-        "description": "Marketplace UI bootstrap configuration",
-        "properties": {
-          "productListCarousel": {
-            "$ref": "#/components/schemas/ProductListCarousel",
-            "description": "Buyer product-list carousel configuration"
-          }
-        }
-      },
       "PasskeySecuritySummaryResponse": {
         "type": "object",
         "description": "Authenticated current-user Passkey binding summary. Never returned for arbitrary usernames.",
@@ -26608,93 +26541,6 @@
           "recoveryAdvisory": {
             "$ref": "#/components/schemas/AccountRecoveryAdvisory",
             "description": "Account recovery advisory for Passkey-only or weak recovery setups."
-          }
-        }
-      },
-      "ProductListCarousel": {
-        "type": "object",
-        "description": "Product-list carousel configuration",
-        "properties": {
-          "enabled": {
-            "type": "boolean",
-            "description": "Whether frontend should render the carousel",
-            "example": true
-          },
-          "displayMode": {
-            "type": "string",
-            "description": "Frontend display mode",
-            "example": "CAROUSEL"
-          },
-          "autoPlay": {
-            "type": "boolean",
-            "description": "Whether frontend may auto-play the carousel",
-            "example": true
-          },
-          "intervalMs": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Auto-play interval in milliseconds",
-            "example": 3500
-          },
-          "items": {
-            "type": "array",
-            "description": "Carousel items ordered by backend priority",
-            "items": {
-              "$ref": "#/components/schemas/ProductListCarouselItem"
-            }
-          }
-        }
-      },
-      "ProductListCarouselItem": {
-        "type": "object",
-        "description": "One product-list carousel item",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Stable frontend item id",
-            "example": "game-entry"
-          },
-          "type": {
-            "type": "string",
-            "description": "Item type",
-            "enum": [
-              "GAME_ENTRY",
-              "ADVERTISEMENT"
-            ]
-          },
-          "title": {
-            "type": "string",
-            "description": "Display title",
-            "example": "電子遊戲"
-          },
-          "subtitle": {
-            "type": "string",
-            "description": "Display subtitle",
-            "example": "Moon Dance Stage"
-          },
-          "imageUrl": {
-            "type": "string",
-            "description": "Optional image URL"
-          },
-          "actionType": {
-            "type": "string",
-            "description": "Click action type",
-            "enum": [
-              "NONE",
-              "ROUTE",
-              "EXTERNAL_URL"
-            ]
-          },
-          "actionValue": {
-            "type": "string",
-            "description": "Route or URL for the action",
-            "example": "/games"
-          },
-          "priority": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Backend ordering priority",
-            "example": 10
           }
         }
       },

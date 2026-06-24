@@ -568,8 +568,10 @@ class ApiClient {
           return MarketplaceUiPlacementAdminRequest.fromJson(value);
         case 'MarketplaceUiPlacementAdminResponse':
           return MarketplaceUiPlacementAdminResponse.fromJson(value);
-        case 'MarketplaceUiPlacementStatusRequest':
-          return MarketplaceUiPlacementStatusRequest.fromJson(value);
+        case 'MarketplaceUiProductListCarouselAdminRequest':
+          return MarketplaceUiProductListCarouselAdminRequest.fromJson(value);
+        case 'MarketplaceUiProductListCarouselAdminResponse':
+          return MarketplaceUiProductListCarouselAdminResponse.fromJson(value);
         case 'McpConnectorAccountStatus':
           return McpConnectorAccountStatus.fromJson(value);
         case 'McpConnectorAction':

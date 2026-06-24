@@ -305,7 +305,7 @@ class AdminDemandPoolApi {
   /// * [int] demandId (required):
   ///
   /// * [DemandStatusUpdateRequest] demandStatusUpdateRequest (required):
-  Future<Response> updateStatus1WithHttpInfo(int demandId, DemandStatusUpdateRequest demandStatusUpdateRequest,) async {
+  Future<Response> updateStatusWithHttpInfo(int demandId, DemandStatusUpdateRequest demandStatusUpdateRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/demands/{demandId}/status'
       .replaceAll('{demandId}', demandId.toString());
@@ -338,8 +338,8 @@ class AdminDemandPoolApi {
   /// * [int] demandId (required):
   ///
   /// * [DemandStatusUpdateRequest] demandStatusUpdateRequest (required):
-  Future<DemandDetailResponse?> updateStatus1(int demandId, DemandStatusUpdateRequest demandStatusUpdateRequest,) async {
-    final response = await updateStatus1WithHttpInfo(demandId, demandStatusUpdateRequest,);
+  Future<DemandDetailResponse?> updateStatus(int demandId, DemandStatusUpdateRequest demandStatusUpdateRequest,) async {
+    final response = await updateStatusWithHttpInfo(demandId, demandStatusUpdateRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

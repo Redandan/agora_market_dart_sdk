@@ -14,7 +14,6 @@ class MarketplaceUiPlacementAdminRequest {
   /// Returns a new [MarketplaceUiPlacementAdminRequest] instance.
   MarketplaceUiPlacementAdminRequest({
     this.placementKey,
-    required this.surface,
     required this.placementType,
     required this.status,
     this.title,
@@ -36,9 +35,6 @@ class MarketplaceUiPlacementAdminRequest {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? placementKey;
-
-  /// Frontend surface
-  MarketplaceUiPlacementAdminRequestSurfaceEnum surface;
 
   /// Placement type
   MarketplaceUiPlacementAdminRequestPlacementTypeEnum placementType;
@@ -127,7 +123,6 @@ class MarketplaceUiPlacementAdminRequest {
   @override
   bool operator ==(Object other) => identical(this, other) || other is MarketplaceUiPlacementAdminRequest &&
     other.placementKey == placementKey &&
-    other.surface == surface &&
     other.placementType == placementType &&
     other.status == status &&
     other.title == title &&
@@ -144,7 +139,6 @@ class MarketplaceUiPlacementAdminRequest {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (placementKey == null ? 0 : placementKey!.hashCode) +
-    (surface.hashCode) +
     (placementType.hashCode) +
     (status.hashCode) +
     (title == null ? 0 : title!.hashCode) +
@@ -158,7 +152,7 @@ class MarketplaceUiPlacementAdminRequest {
     (metadataJson == null ? 0 : metadataJson!.hashCode);
 
   @override
-  String toString() => 'MarketplaceUiPlacementAdminRequest[placementKey=$placementKey, surface=$surface, placementType=$placementType, status=$status, title=$title, subtitle=$subtitle, imageUrl=$imageUrl, actionType=$actionType, actionValue=$actionValue, priority=$priority, startsAt=$startsAt, endsAt=$endsAt, metadataJson=$metadataJson]';
+  String toString() => 'MarketplaceUiPlacementAdminRequest[placementKey=$placementKey, placementType=$placementType, status=$status, title=$title, subtitle=$subtitle, imageUrl=$imageUrl, actionType=$actionType, actionValue=$actionValue, priority=$priority, startsAt=$startsAt, endsAt=$endsAt, metadataJson=$metadataJson]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -167,7 +161,6 @@ class MarketplaceUiPlacementAdminRequest {
     } else {
       json[r'placementKey'] = null;
     }
-      json[r'surface'] = this.surface;
       json[r'placementType'] = this.placementType;
       json[r'status'] = this.status;
     if (this.title != null) {
@@ -234,7 +227,6 @@ class MarketplaceUiPlacementAdminRequest {
 
       return MarketplaceUiPlacementAdminRequest(
         placementKey: mapValueOfType<String>(json, r'placementKey'),
-        surface: MarketplaceUiPlacementAdminRequestSurfaceEnum.fromJson(json[r'surface'])!,
         placementType: MarketplaceUiPlacementAdminRequestPlacementTypeEnum.fromJson(json[r'placementType'])!,
         status: MarketplaceUiPlacementAdminRequestStatusEnum.fromJson(json[r'status'])!,
         title: mapValueOfType<String>(json, r'title'),
@@ -293,86 +285,11 @@ class MarketplaceUiPlacementAdminRequest {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'surface',
     'placementType',
     'status',
     'actionType',
   };
 }
-
-/// Frontend surface
-class MarketplaceUiPlacementAdminRequestSurfaceEnum {
-  /// Instantiate a new enum with the provided [value].
-  const MarketplaceUiPlacementAdminRequestSurfaceEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const PRODUCT_LIST = MarketplaceUiPlacementAdminRequestSurfaceEnum._(r'PRODUCT_LIST');
-  static const unknownDefaultOpenApi = MarketplaceUiPlacementAdminRequestSurfaceEnum._(r'unknown_default_open_api');
-
-  /// List of all possible values in this [enum][MarketplaceUiPlacementAdminRequestSurfaceEnum].
-  static const values = <MarketplaceUiPlacementAdminRequestSurfaceEnum>[
-    PRODUCT_LIST,
-    unknownDefaultOpenApi,
-  ];
-
-  static MarketplaceUiPlacementAdminRequestSurfaceEnum? fromJson(dynamic value) => MarketplaceUiPlacementAdminRequestSurfaceEnumTypeTransformer().decode(value);
-
-  static List<MarketplaceUiPlacementAdminRequestSurfaceEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <MarketplaceUiPlacementAdminRequestSurfaceEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = MarketplaceUiPlacementAdminRequestSurfaceEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [MarketplaceUiPlacementAdminRequestSurfaceEnum] to String,
-/// and [decode] dynamic data back to [MarketplaceUiPlacementAdminRequestSurfaceEnum].
-class MarketplaceUiPlacementAdminRequestSurfaceEnumTypeTransformer {
-  factory MarketplaceUiPlacementAdminRequestSurfaceEnumTypeTransformer() => _instance ??= const MarketplaceUiPlacementAdminRequestSurfaceEnumTypeTransformer._();
-
-  const MarketplaceUiPlacementAdminRequestSurfaceEnumTypeTransformer._();
-
-  String encode(MarketplaceUiPlacementAdminRequestSurfaceEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a MarketplaceUiPlacementAdminRequestSurfaceEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  MarketplaceUiPlacementAdminRequestSurfaceEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'PRODUCT_LIST': return MarketplaceUiPlacementAdminRequestSurfaceEnum.PRODUCT_LIST;
-        case r'unknown_default_open_api': return MarketplaceUiPlacementAdminRequestSurfaceEnum.unknownDefaultOpenApi;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [MarketplaceUiPlacementAdminRequestSurfaceEnumTypeTransformer] instance.
-  static MarketplaceUiPlacementAdminRequestSurfaceEnumTypeTransformer? _instance;
-}
-
 
 /// Placement type
 class MarketplaceUiPlacementAdminRequestPlacementTypeEnum {
