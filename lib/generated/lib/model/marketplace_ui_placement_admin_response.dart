@@ -455,14 +455,12 @@ class MarketplaceUiPlacementAdminResponsePlacementTypeEnum {
 
   String toJson() => value;
 
-  static const GAME_ENTRY = MarketplaceUiPlacementAdminResponsePlacementTypeEnum._(r'GAME_ENTRY');
-  static const ADVERTISEMENT = MarketplaceUiPlacementAdminResponsePlacementTypeEnum._(r'ADVERTISEMENT');
+  static const ACTIVITY_ENTRY = MarketplaceUiPlacementAdminResponsePlacementTypeEnum._(r'ACTIVITY_ENTRY');
   static const unknownDefaultOpenApi = MarketplaceUiPlacementAdminResponsePlacementTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][MarketplaceUiPlacementAdminResponsePlacementTypeEnum].
   static const values = <MarketplaceUiPlacementAdminResponsePlacementTypeEnum>[
-    GAME_ENTRY,
-    ADVERTISEMENT,
+    ACTIVITY_ENTRY,
     unknownDefaultOpenApi,
   ];
 
@@ -502,8 +500,7 @@ class MarketplaceUiPlacementAdminResponsePlacementTypeEnumTypeTransformer {
   MarketplaceUiPlacementAdminResponsePlacementTypeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'GAME_ENTRY': return MarketplaceUiPlacementAdminResponsePlacementTypeEnum.GAME_ENTRY;
-        case r'ADVERTISEMENT': return MarketplaceUiPlacementAdminResponsePlacementTypeEnum.ADVERTISEMENT;
+        case r'ACTIVITY_ENTRY': return MarketplaceUiPlacementAdminResponsePlacementTypeEnum.ACTIVITY_ENTRY;
         case r'unknown_default_open_api': return MarketplaceUiPlacementAdminResponsePlacementTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
@@ -610,14 +607,14 @@ class MarketplaceUiPlacementAdminResponseActionTypeEnum {
   String toJson() => value;
 
   static const NONE = MarketplaceUiPlacementAdminResponseActionTypeEnum._(r'NONE');
-  static const ROUTE = MarketplaceUiPlacementAdminResponseActionTypeEnum._(r'ROUTE');
+  static const INTERNAL_PATH = MarketplaceUiPlacementAdminResponseActionTypeEnum._(r'INTERNAL_PATH');
   static const EXTERNAL_URL = MarketplaceUiPlacementAdminResponseActionTypeEnum._(r'EXTERNAL_URL');
   static const unknownDefaultOpenApi = MarketplaceUiPlacementAdminResponseActionTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][MarketplaceUiPlacementAdminResponseActionTypeEnum].
   static const values = <MarketplaceUiPlacementAdminResponseActionTypeEnum>[
     NONE,
-    ROUTE,
+    INTERNAL_PATH,
     EXTERNAL_URL,
     unknownDefaultOpenApi,
   ];
@@ -659,7 +656,7 @@ class MarketplaceUiPlacementAdminResponseActionTypeEnumTypeTransformer {
     if (data != null) {
       switch (data) {
         case r'NONE': return MarketplaceUiPlacementAdminResponseActionTypeEnum.NONE;
-        case r'ROUTE': return MarketplaceUiPlacementAdminResponseActionTypeEnum.ROUTE;
+        case r'INTERNAL_PATH': return MarketplaceUiPlacementAdminResponseActionTypeEnum.INTERNAL_PATH;
         case r'EXTERNAL_URL': return MarketplaceUiPlacementAdminResponseActionTypeEnum.EXTERNAL_URL;
         case r'unknown_default_open_api': return MarketplaceUiPlacementAdminResponseActionTypeEnum.unknownDefaultOpenApi;
         default:

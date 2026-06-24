@@ -20614,19 +20614,11 @@
         "properties": {
           "placementKey": {
             "type": "string",
-            "description": "Stable frontend item id",
-            "example": "game-entry",
+            "description": "Stable frontend activity entry id",
+            "example": "games-activity",
             "maxLength": 80,
             "minLength": 0,
             "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$"
-          },
-          "placementType": {
-            "type": "string",
-            "description": "Placement type",
-            "enum": [
-              "GAME_ENTRY",
-              "ADVERTISEMENT"
-            ]
           },
           "status": {
             "type": "string",
@@ -20639,7 +20631,7 @@
           "title": {
             "type": "string",
             "description": "Display title",
-            "example": "電子遊戲",
+            "example": "電子遊戲活動",
             "maxLength": 120,
             "minLength": 0
           },
@@ -20661,13 +20653,13 @@
             "description": "Click action type",
             "enum": [
               "NONE",
-              "ROUTE",
+              "INTERNAL_PATH",
               "EXTERNAL_URL"
             ]
           },
           "actionValue": {
             "type": "string",
-            "description": "Route or URL for the action",
+            "description": "Internal path or external URL for the action",
             "example": "/games",
             "maxLength": 1000,
             "minLength": 0
@@ -20699,7 +20691,6 @@
         },
         "required": [
           "actionType",
-          "placementType",
           "status"
         ]
       },
@@ -20750,8 +20741,7 @@
             "type": "string",
             "description": "Marketplace UI placement item type",
             "enum": [
-              "GAME_ENTRY",
-              "ADVERTISEMENT"
+              "ACTIVITY_ENTRY"
             ]
           },
           "status": {
@@ -20776,7 +20766,7 @@
             "description": "Marketplace UI placement action type",
             "enum": [
               "NONE",
-              "ROUTE",
+              "INTERNAL_PATH",
               "EXTERNAL_URL"
             ]
           },
@@ -20872,21 +20862,20 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "Stable frontend item id",
-            "example": "game-entry"
+            "description": "Stable frontend activity entry id",
+            "example": "games-activity"
           },
           "type": {
             "type": "string",
             "description": "Item type",
             "enum": [
-              "GAME_ENTRY",
-              "ADVERTISEMENT"
+              "ACTIVITY_ENTRY"
             ]
           },
           "title": {
             "type": "string",
             "description": "Display title",
-            "example": "電子遊戲"
+            "example": "電子遊戲活動"
           },
           "subtitle": {
             "type": "string",
@@ -20902,13 +20891,13 @@
             "description": "Click action type",
             "enum": [
               "NONE",
-              "ROUTE",
+              "INTERNAL_PATH",
               "EXTERNAL_URL"
             ]
           },
           "actionValue": {
             "type": "string",
-            "description": "Route or URL for the action",
+            "description": "Internal path or external URL for the action",
             "example": "/games"
           },
           "priority": {

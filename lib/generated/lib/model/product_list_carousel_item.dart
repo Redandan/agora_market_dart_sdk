@@ -23,7 +23,7 @@ class ProductListCarouselItem {
     this.priority,
   });
 
-  /// Stable frontend item id
+  /// Stable frontend activity entry id
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -65,7 +65,7 @@ class ProductListCarouselItem {
   /// Click action type
   ProductListCarouselItemActionTypeEnum? actionType;
 
-  /// Route or URL for the action
+  /// Internal path or external URL for the action
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -244,14 +244,12 @@ class ProductListCarouselItemTypeEnum {
 
   String toJson() => value;
 
-  static const GAME_ENTRY = ProductListCarouselItemTypeEnum._(r'GAME_ENTRY');
-  static const ADVERTISEMENT = ProductListCarouselItemTypeEnum._(r'ADVERTISEMENT');
+  static const ACTIVITY_ENTRY = ProductListCarouselItemTypeEnum._(r'ACTIVITY_ENTRY');
   static const unknownDefaultOpenApi = ProductListCarouselItemTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][ProductListCarouselItemTypeEnum].
   static const values = <ProductListCarouselItemTypeEnum>[
-    GAME_ENTRY,
-    ADVERTISEMENT,
+    ACTIVITY_ENTRY,
     unknownDefaultOpenApi,
   ];
 
@@ -291,8 +289,7 @@ class ProductListCarouselItemTypeEnumTypeTransformer {
   ProductListCarouselItemTypeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'GAME_ENTRY': return ProductListCarouselItemTypeEnum.GAME_ENTRY;
-        case r'ADVERTISEMENT': return ProductListCarouselItemTypeEnum.ADVERTISEMENT;
+        case r'ACTIVITY_ENTRY': return ProductListCarouselItemTypeEnum.ACTIVITY_ENTRY;
         case r'unknown_default_open_api': return ProductListCarouselItemTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
@@ -322,14 +319,14 @@ class ProductListCarouselItemActionTypeEnum {
   String toJson() => value;
 
   static const NONE = ProductListCarouselItemActionTypeEnum._(r'NONE');
-  static const ROUTE = ProductListCarouselItemActionTypeEnum._(r'ROUTE');
+  static const INTERNAL_PATH = ProductListCarouselItemActionTypeEnum._(r'INTERNAL_PATH');
   static const EXTERNAL_URL = ProductListCarouselItemActionTypeEnum._(r'EXTERNAL_URL');
   static const unknownDefaultOpenApi = ProductListCarouselItemActionTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][ProductListCarouselItemActionTypeEnum].
   static const values = <ProductListCarouselItemActionTypeEnum>[
     NONE,
-    ROUTE,
+    INTERNAL_PATH,
     EXTERNAL_URL,
     unknownDefaultOpenApi,
   ];
@@ -371,7 +368,7 @@ class ProductListCarouselItemActionTypeEnumTypeTransformer {
     if (data != null) {
       switch (data) {
         case r'NONE': return ProductListCarouselItemActionTypeEnum.NONE;
-        case r'ROUTE': return ProductListCarouselItemActionTypeEnum.ROUTE;
+        case r'INTERNAL_PATH': return ProductListCarouselItemActionTypeEnum.INTERNAL_PATH;
         case r'EXTERNAL_URL': return ProductListCarouselItemActionTypeEnum.EXTERNAL_URL;
         case r'unknown_default_open_api': return ProductListCarouselItemActionTypeEnum.unknownDefaultOpenApi;
         default:
