@@ -11,80 +11,24 @@
 part of openapi.api;
 
 
-class AdminDemandPoolApi {
-  AdminDemandPoolApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+class AdminMarketplaceUiApi {
+  AdminMarketplaceUiApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
-  /// Admin demand detail
+  /// Create marketplace UI placement
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [int] demandId (required):
-  Future<Response> detailWithHttpInfo(int demandId,) async {
+  /// * [MarketplaceUiPlacementAdminRequest] marketplaceUiPlacementAdminRequest (required):
+  Future<Response> createPlacementWithHttpInfo(MarketplaceUiPlacementAdminRequest marketplaceUiPlacementAdminRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/admin/demands/{demandId}'
-      .replaceAll('{demandId}', demandId.toString());
+    final path = r'/admin/marketplace-ui/placements';
 
     // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Admin demand detail
-  ///
-  /// Parameters:
-  ///
-  /// * [int] demandId (required):
-  Future<DemandDetailResponse?> detail(int demandId,) async {
-    final response = await detailWithHttpInfo(demandId,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DemandDetailResponse',) as DemandDetailResponse;
-    
-    }
-    return null;
-  }
-
-  /// Admin link demand to product
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] demandId (required):
-  ///
-  /// * [DemandLinkProductRequest] demandLinkProductRequest (required):
-  Future<Response> linkProductWithHttpInfo(int demandId, DemandLinkProductRequest demandLinkProductRequest,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/admin/demands/{demandId}/link-product'
-      .replaceAll('{demandId}', demandId.toString());
-
-    // ignore: prefer_final_locals
-    Object? postBody = demandLinkProductRequest;
+    Object? postBody = marketplaceUiPlacementAdminRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -104,15 +48,13 @@ class AdminDemandPoolApi {
     );
   }
 
-  /// Admin link demand to product
+  /// Create marketplace UI placement
   ///
   /// Parameters:
   ///
-  /// * [int] demandId (required):
-  ///
-  /// * [DemandLinkProductRequest] demandLinkProductRequest (required):
-  Future<DemandDetailResponse?> linkProduct(int demandId, DemandLinkProductRequest demandLinkProductRequest,) async {
-    final response = await linkProductWithHttpInfo(demandId, demandLinkProductRequest,);
+  /// * [MarketplaceUiPlacementAdminRequest] marketplaceUiPlacementAdminRequest (required):
+  Future<MarketplaceUiPlacementAdminResponse?> createPlacement(MarketplaceUiPlacementAdminRequest marketplaceUiPlacementAdminRequest,) async {
+    final response = await createPlacementWithHttpInfo(marketplaceUiPlacementAdminRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -120,23 +62,23 @@ class AdminDemandPoolApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DemandDetailResponse',) as DemandDetailResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MarketplaceUiPlacementAdminResponse',) as MarketplaceUiPlacementAdminResponse;
     
     }
     return null;
   }
 
-  /// Admin list demand missing requirements
+  /// Get one marketplace UI placement
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [int] demandId (required):
-  Future<Response> missingRequirements1WithHttpInfo(int demandId,) async {
+  /// * [int] id (required):
+  Future<Response> getPlacementWithHttpInfo(int id,) async {
     // ignore: prefer_const_declarations
-    final path = r'/admin/demands/{demandId}/missing-requirements'
-      .replaceAll('{demandId}', demandId.toString());
+    final path = r'/admin/marketplace-ui/placements/{id}'
+      .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -159,13 +101,76 @@ class AdminDemandPoolApi {
     );
   }
 
-  /// Admin list demand missing requirements
+  /// Get one marketplace UI placement
   ///
   /// Parameters:
   ///
-  /// * [int] demandId (required):
-  Future<List<DemandMissingRequirementResponse>?> missingRequirements1(int demandId,) async {
-    final response = await missingRequirements1WithHttpInfo(demandId,);
+  /// * [int] id (required):
+  Future<MarketplaceUiPlacementAdminResponse?> getPlacement(int id,) async {
+    final response = await getPlacementWithHttpInfo(id,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MarketplaceUiPlacementAdminResponse',) as MarketplaceUiPlacementAdminResponse;
+    
+    }
+    return null;
+  }
+
+  /// List marketplace UI placements
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] surface:
+  ///
+  /// * [String] status:
+  Future<Response> listPlacementsWithHttpInfo({ String? surface, String? status, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/marketplace-ui/placements';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (surface != null) {
+      queryParams.addAll(_queryParams('', 'surface', surface));
+    }
+    if (status != null) {
+      queryParams.addAll(_queryParams('', 'status', status));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// List marketplace UI placements
+  ///
+  /// Parameters:
+  ///
+  /// * [String] surface:
+  ///
+  /// * [String] status:
+  Future<List<MarketplaceUiPlacementAdminResponse>?> listPlacements({ String? surface, String? status, }) async {
+    final response = await listPlacementsWithHttpInfo( surface: surface, status: status, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -174,44 +179,34 @@ class AdminDemandPoolApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<DemandMissingRequirementResponse>') as List)
-        .cast<DemandMissingRequirementResponse>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<MarketplaceUiPlacementAdminResponse>') as List)
+        .cast<MarketplaceUiPlacementAdminResponse>()
         .toList(growable: false);
 
     }
     return null;
   }
 
-  /// Admin review seller offer before buyer visibility
+  /// Preview current buyer product-list UI config
   ///
   /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] demandId (required):
-  ///
-  /// * [int] offerId (required):
-  ///
-  /// * [DemandOfferReviewRequest] demandOfferReviewRequest (required):
-  Future<Response> reviewOfferWithHttpInfo(int demandId, int offerId, DemandOfferReviewRequest demandOfferReviewRequest,) async {
+  Future<Response> productListPreviewWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/admin/demands/{demandId}/offers/{offerId}/review'
-      .replaceAll('{demandId}', demandId.toString())
-      .replaceAll('{offerId}', offerId.toString());
+    final path = r'/admin/marketplace-ui/product-list-preview';
 
     // ignore: prefer_final_locals
-    Object? postBody = demandOfferReviewRequest;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>['application/json'];
+    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
       path,
-      'POST',
+      'GET',
       queryParams,
       postBody,
       headerParams,
@@ -220,17 +215,9 @@ class AdminDemandPoolApi {
     );
   }
 
-  /// Admin review seller offer before buyer visibility
-  ///
-  /// Parameters:
-  ///
-  /// * [int] demandId (required):
-  ///
-  /// * [int] offerId (required):
-  ///
-  /// * [DemandOfferReviewRequest] demandOfferReviewRequest (required):
-  Future<DemandOfferResponse?> reviewOffer(int demandId, int offerId, DemandOfferReviewRequest demandOfferReviewRequest,) async {
-    final response = await reviewOfferWithHttpInfo(demandId, offerId, demandOfferReviewRequest,);
+  /// Preview current buyer product-list UI config
+  Future<MarketplaceUiConfigResponse?> productListPreview() async {
+    final response = await productListPreviewWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -238,25 +225,28 @@ class AdminDemandPoolApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DemandOfferResponse',) as DemandOfferResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MarketplaceUiConfigResponse',) as MarketplaceUiConfigResponse;
     
     }
     return null;
   }
 
-  /// Admin search demand pool
+  /// Update marketplace UI placement
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [DemandSearchParam] demandSearchParam:
-  Future<Response> searchWithHttpInfo({ DemandSearchParam? demandSearchParam, }) async {
+  /// * [int] id (required):
+  ///
+  /// * [MarketplaceUiPlacementAdminRequest] marketplaceUiPlacementAdminRequest (required):
+  Future<Response> updatePlacementWithHttpInfo(int id, MarketplaceUiPlacementAdminRequest marketplaceUiPlacementAdminRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/admin/demands/search';
+    final path = r'/admin/marketplace-ui/placements/{id}'
+      .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
-    Object? postBody = demandSearchParam;
+    Object? postBody = marketplaceUiPlacementAdminRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -267,7 +257,7 @@ class AdminDemandPoolApi {
 
     return apiClient.invokeAPI(
       path,
-      'POST',
+      'PUT',
       queryParams,
       postBody,
       headerParams,
@@ -276,13 +266,15 @@ class AdminDemandPoolApi {
     );
   }
 
-  /// Admin search demand pool
+  /// Update marketplace UI placement
   ///
   /// Parameters:
   ///
-  /// * [DemandSearchParam] demandSearchParam:
-  Future<PageDemandDetailResponse?> search({ DemandSearchParam? demandSearchParam, }) async {
-    final response = await searchWithHttpInfo( demandSearchParam: demandSearchParam, );
+  /// * [int] id (required):
+  ///
+  /// * [MarketplaceUiPlacementAdminRequest] marketplaceUiPlacementAdminRequest (required):
+  Future<MarketplaceUiPlacementAdminResponse?> updatePlacement(int id, MarketplaceUiPlacementAdminRequest marketplaceUiPlacementAdminRequest,) async {
+    final response = await updatePlacementWithHttpInfo(id, marketplaceUiPlacementAdminRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -290,28 +282,28 @@ class AdminDemandPoolApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDemandDetailResponse',) as PageDemandDetailResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MarketplaceUiPlacementAdminResponse',) as MarketplaceUiPlacementAdminResponse;
     
     }
     return null;
   }
 
-  /// Admin update demand status or close demand
+  /// Enable or disable marketplace UI placement
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [int] demandId (required):
+  /// * [int] id (required):
   ///
-  /// * [DemandStatusUpdateRequest] demandStatusUpdateRequest (required):
-  Future<Response> updateStatus1WithHttpInfo(int demandId, DemandStatusUpdateRequest demandStatusUpdateRequest,) async {
+  /// * [MarketplaceUiPlacementStatusRequest] marketplaceUiPlacementStatusRequest (required):
+  Future<Response> updateStatusWithHttpInfo(int id, MarketplaceUiPlacementStatusRequest marketplaceUiPlacementStatusRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/admin/demands/{demandId}/status'
-      .replaceAll('{demandId}', demandId.toString());
+    final path = r'/admin/marketplace-ui/placements/{id}/status'
+      .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
-    Object? postBody = demandStatusUpdateRequest;
+    Object? postBody = marketplaceUiPlacementStatusRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -322,7 +314,7 @@ class AdminDemandPoolApi {
 
     return apiClient.invokeAPI(
       path,
-      'POST',
+      'PUT',
       queryParams,
       postBody,
       headerParams,
@@ -331,15 +323,15 @@ class AdminDemandPoolApi {
     );
   }
 
-  /// Admin update demand status or close demand
+  /// Enable or disable marketplace UI placement
   ///
   /// Parameters:
   ///
-  /// * [int] demandId (required):
+  /// * [int] id (required):
   ///
-  /// * [DemandStatusUpdateRequest] demandStatusUpdateRequest (required):
-  Future<DemandDetailResponse?> updateStatus1(int demandId, DemandStatusUpdateRequest demandStatusUpdateRequest,) async {
-    final response = await updateStatus1WithHttpInfo(demandId, demandStatusUpdateRequest,);
+  /// * [MarketplaceUiPlacementStatusRequest] marketplaceUiPlacementStatusRequest (required):
+  Future<MarketplaceUiPlacementAdminResponse?> updateStatus(int id, MarketplaceUiPlacementStatusRequest marketplaceUiPlacementStatusRequest,) async {
+    final response = await updateStatusWithHttpInfo(id, marketplaceUiPlacementStatusRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -347,7 +339,7 @@ class AdminDemandPoolApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DemandDetailResponse',) as DemandDetailResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MarketplaceUiPlacementAdminResponse',) as MarketplaceUiPlacementAdminResponse;
     
     }
     return null;

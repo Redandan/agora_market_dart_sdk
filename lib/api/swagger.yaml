@@ -253,6 +253,10 @@
       "description": "Slot 遊戲 API"
     },
     {
+      "name": "admin-marketplace-ui",
+      "description": "Admin marketplace UI placement APIs"
+    },
+    {
       "name": "sse-test",
       "description": "SSE推播測試 API"
     },
@@ -1151,6 +1155,120 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      }
+    },
+    "/admin/marketplace-ui/placements/{id}": {
+      "get": {
+        "tags": [
+          "admin-marketplace-ui"
+        ],
+        "summary": "Get one marketplace UI placement",
+        "operationId": "getPlacement",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketplaceUiPlacementAdminResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "admin-marketplace-ui"
+        ],
+        "summary": "Update marketplace UI placement",
+        "operationId": "updatePlacement",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarketplaceUiPlacementAdminRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketplaceUiPlacementAdminResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/marketplace-ui/placements/{id}/status": {
+      "put": {
+        "tags": [
+          "admin-marketplace-ui"
+        ],
+        "summary": "Enable or disable marketplace UI placement",
+        "operationId": "updateStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarketplaceUiPlacementStatusRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketplaceUiPlacementAdminResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -10434,6 +10552,86 @@
         ]
       }
     },
+    "/admin/marketplace-ui/placements": {
+      "get": {
+        "tags": [
+          "admin-marketplace-ui"
+        ],
+        "summary": "List marketplace UI placements",
+        "operationId": "listPlacements",
+        "parameters": [
+          {
+            "name": "surface",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Marketplace UI surface",
+              "enum": [
+                "PRODUCT_LIST"
+              ]
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Marketplace UI placement status",
+              "enum": [
+                "ENABLED",
+                "DISABLED"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MarketplaceUiPlacementAdminResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "admin-marketplace-ui"
+        ],
+        "summary": "Create marketplace UI placement",
+        "operationId": "createPlacement",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarketplaceUiPlacementAdminRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketplaceUiPlacementAdminResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/knowledge": {
       "get": {
         "tags": [
@@ -11000,7 +11198,7 @@
           "admin-demand-pool"
         ],
         "summary": "Admin update demand status or close demand",
-        "operationId": "updateStatus",
+        "operationId": "updateStatus_1",
         "parameters": [
           {
             "name": "demandId",
@@ -17398,6 +17596,27 @@
         }
       }
     },
+    "/admin/marketplace-ui/product-list-preview": {
+      "get": {
+        "tags": [
+          "admin-marketplace-ui"
+        ],
+        "summary": "Preview current buyer product-list UI config",
+        "operationId": "productListPreview",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketplaceUiConfigResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/knowledge/{id}": {
       "get": {
         "tags": [
@@ -19835,10 +20054,10 @@
           "empty": {
             "type": "boolean"
           },
-          "sorted": {
+          "unsorted": {
             "type": "boolean"
           },
-          "unsorted": {
+          "sorted": {
             "type": "boolean"
           }
         }
@@ -20553,6 +20772,209 @@
             "description": "更新時間"
           }
         }
+      },
+      "MarketplaceUiPlacementAdminRequest": {
+        "type": "object",
+        "description": "Admin request for marketplace UI placement create/update",
+        "properties": {
+          "placementKey": {
+            "type": "string",
+            "description": "Stable frontend item id",
+            "example": "game-entry",
+            "maxLength": 80,
+            "minLength": 0,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$"
+          },
+          "surface": {
+            "type": "string",
+            "description": "Frontend surface",
+            "enum": [
+              "PRODUCT_LIST"
+            ]
+          },
+          "placementType": {
+            "type": "string",
+            "description": "Placement type",
+            "enum": [
+              "GAME_ENTRY",
+              "ADVERTISEMENT"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "description": "Visibility status",
+            "enum": [
+              "ENABLED",
+              "DISABLED"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "description": "Display title",
+            "example": "電子遊戲",
+            "maxLength": 120,
+            "minLength": 0
+          },
+          "subtitle": {
+            "type": "string",
+            "description": "Display subtitle",
+            "example": "Moon Dance Stage",
+            "maxLength": 255,
+            "minLength": 0
+          },
+          "imageUrl": {
+            "type": "string",
+            "description": "Optional image URL",
+            "maxLength": 1000,
+            "minLength": 0
+          },
+          "actionType": {
+            "type": "string",
+            "description": "Click action type",
+            "enum": [
+              "NONE",
+              "ROUTE",
+              "EXTERNAL_URL"
+            ]
+          },
+          "actionValue": {
+            "type": "string",
+            "description": "Route or URL for the action",
+            "example": "/games",
+            "maxLength": 1000,
+            "minLength": 0
+          },
+          "priority": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Ascending display priority",
+            "example": 10,
+            "maximum": 100000,
+            "minimum": 0
+          },
+          "startsAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "UTC start time; null means immediately active"
+          },
+          "endsAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "UTC end time; null means no end"
+          },
+          "metadataJson": {
+            "type": "string",
+            "description": "Optional JSON metadata for frontend experiments",
+            "maxLength": 65535,
+            "minLength": 0
+          }
+        },
+        "required": [
+          "actionType",
+          "placementType",
+          "status",
+          "surface"
+        ]
+      },
+      "MarketplaceUiPlacementAdminResponse": {
+        "type": "object",
+        "description": "Admin marketplace UI placement response",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "placementKey": {
+            "type": "string"
+          },
+          "surface": {
+            "type": "string",
+            "description": "Marketplace UI surface",
+            "enum": [
+              "PRODUCT_LIST"
+            ]
+          },
+          "placementType": {
+            "type": "string",
+            "description": "Marketplace UI placement item type",
+            "enum": [
+              "GAME_ENTRY",
+              "ADVERTISEMENT"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "description": "Marketplace UI placement status",
+            "enum": [
+              "ENABLED",
+              "DISABLED"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "subtitle": {
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string"
+          },
+          "actionType": {
+            "type": "string",
+            "description": "Marketplace UI placement action type",
+            "enum": [
+              "NONE",
+              "ROUTE",
+              "EXTERNAL_URL"
+            ]
+          },
+          "actionValue": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "startsAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endsAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "metadataJson": {
+            "type": "string"
+          },
+          "visibleNow": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "MarketplaceUiPlacementStatusRequest": {
+        "type": "object",
+        "description": "Admin marketplace UI placement status request",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "New placement status",
+            "enum": [
+              "ENABLED",
+              "DISABLED"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
       },
       "DeliveryerUpdateParam": {
         "type": "object",

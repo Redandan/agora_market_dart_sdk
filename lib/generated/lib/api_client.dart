@@ -564,6 +564,12 @@ class ApiClient {
           return MarketSearchRequest.fromJson(value);
         case 'MarketplaceUiConfigResponse':
           return MarketplaceUiConfigResponse.fromJson(value);
+        case 'MarketplaceUiPlacementAdminRequest':
+          return MarketplaceUiPlacementAdminRequest.fromJson(value);
+        case 'MarketplaceUiPlacementAdminResponse':
+          return MarketplaceUiPlacementAdminResponse.fromJson(value);
+        case 'MarketplaceUiPlacementStatusRequest':
+          return MarketplaceUiPlacementStatusRequest.fromJson(value);
         case 'McpConnectorAccountStatus':
           return McpConnectorAccountStatus.fromJson(value);
         case 'McpConnectorAction':
