@@ -157,6 +157,7 @@ part 'model/bet_response.dart';
 part 'model/bind_email_param.dart';
 part 'model/bind_o_auth_param.dart';
 part 'model/block_rule.dart';
+part 'model/bot_moderation_readiness_dto.dart';
 part 'model/broken_image_audit_request.dart';
 part 'model/broken_image_audit_response.dart';
 part 'model/broken_image_cleanup_response.dart';

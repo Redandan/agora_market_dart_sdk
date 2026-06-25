@@ -300,6 +300,8 @@ class ApiClient {
           return BindOAuthParam.fromJson(value);
         case 'BlockRule':
           return BlockRule.fromJson(value);
+        case 'BotModerationReadinessDTO':
+          return BotModerationReadinessDTO.fromJson(value);
         case 'BrokenImageAuditRequest':
           return BrokenImageAuditRequest.fromJson(value);
         case 'BrokenImageAuditResponse':

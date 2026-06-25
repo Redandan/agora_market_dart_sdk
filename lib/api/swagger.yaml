@@ -35424,6 +35424,69 @@
           "raidMode"
         ]
       },
+      "BotModerationReadinessDTO": {
+        "type": "object",
+        "description": "Telegram Bot 在群內執行防護所需的管理權限狀態",
+        "properties": {
+          "ready": {
+            "type": "boolean",
+            "description": "是否具備自動刪訊息與禁言所需權限"
+          },
+          "botUserId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Bot 自己的 Telegram user id"
+          },
+          "botUsername": {
+            "type": "string",
+            "description": "Bot username"
+          },
+          "botStatus": {
+            "type": "string",
+            "description": "Bot 在群內的 Telegram member status"
+          },
+          "administrator": {
+            "type": "boolean",
+            "description": "是否為群管理員"
+          },
+          "canManageChat": {
+            "type": "boolean",
+            "description": "是否可管理群"
+          },
+          "canDeleteMessages": {
+            "type": "boolean",
+            "description": "是否可刪除訊息"
+          },
+          "canRestrictMembers": {
+            "type": "boolean",
+            "description": "是否可限制/禁言成員"
+          },
+          "canPinMessages": {
+            "type": "boolean",
+            "description": "是否可置頂訊息"
+          },
+          "canInviteUsers": {
+            "type": "boolean",
+            "description": "是否可邀請使用者"
+          },
+          "missingRequirements": {
+            "type": "array",
+            "description": "缺少的必要權限或前置條件",
+            "items": {
+              "type": "string"
+            }
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "讀取 Telegram 權限時的錯誤"
+          }
+        },
+        "required": [
+          "administrator",
+          "missingRequirements",
+          "ready"
+        ]
+      },
       "GroupActivityStatsDTO": {
         "type": "object",
         "description": "Telegram 群組活躍度統計",
@@ -35522,6 +35585,10 @@
             "$ref": "#/components/schemas/GroupActivityStatsDTO",
             "description": "目前活躍度"
           },
+          "botReadiness": {
+            "$ref": "#/components/schemas/BotModerationReadinessDTO",
+            "description": "Bot 管理權限 readiness，用於判斷自動刪訊息/禁言是否可真正執行"
+          },
           "recentEvents": {
             "type": "array",
             "description": "最近防護事件",
@@ -35532,6 +35599,7 @@
         },
         "required": [
           "activity",
+          "botReadiness",
           "groupId",
           "groupPurpose",
           "moderationEnabled",

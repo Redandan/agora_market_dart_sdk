@@ -23,6 +23,7 @@ class GroupModerationStatusDTO {
     required this.raidActive,
     this.lastRaidTriggeredAt,
     required this.activity,
+    required this.botReadiness,
     this.recentEvents = const [],
   });
 
@@ -80,6 +81,9 @@ class GroupModerationStatusDTO {
   /// 目前活躍度
   GroupActivityStatsDTO activity;
 
+  /// Bot 管理權限 readiness，用於判斷自動刪訊息/禁言是否可真正執行
+  BotModerationReadinessDTO botReadiness;
+
   /// 最近防護事件
   List<ModerationAuditEventDTO> recentEvents;
 
@@ -95,6 +99,7 @@ class GroupModerationStatusDTO {
     other.raidActive == raidActive &&
     other.lastRaidTriggeredAt == lastRaidTriggeredAt &&
     other.activity == activity &&
+    other.botReadiness == botReadiness &&
     _deepEquality.equals(other.recentEvents, recentEvents);
 
   @override
@@ -110,10 +115,11 @@ class GroupModerationStatusDTO {
     (raidActive.hashCode) +
     (lastRaidTriggeredAt == null ? 0 : lastRaidTriggeredAt!.hashCode) +
     (activity.hashCode) +
+    (botReadiness.hashCode) +
     (recentEvents.hashCode);
 
   @override
-  String toString() => 'GroupModerationStatusDTO[groupId=$groupId, groupName=$groupName, groupPurpose=$groupPurpose, moderationEnabled=$moderationEnabled, raidMode=$raidMode, raidModeUntil=$raidModeUntil, raidReason=$raidReason, raidActive=$raidActive, lastRaidTriggeredAt=$lastRaidTriggeredAt, activity=$activity, recentEvents=$recentEvents]';
+  String toString() => 'GroupModerationStatusDTO[groupId=$groupId, groupName=$groupName, groupPurpose=$groupPurpose, moderationEnabled=$moderationEnabled, raidMode=$raidMode, raidModeUntil=$raidModeUntil, raidReason=$raidReason, raidActive=$raidActive, lastRaidTriggeredAt=$lastRaidTriggeredAt, activity=$activity, botReadiness=$botReadiness, recentEvents=$recentEvents]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -143,6 +149,7 @@ class GroupModerationStatusDTO {
       json[r'lastRaidTriggeredAt'] = null;
     }
       json[r'activity'] = this.activity;
+      json[r'botReadiness'] = this.botReadiness;
       json[r'recentEvents'] = this.recentEvents.map((e) => e.toJson()).toList();
     return json;
   }
@@ -176,6 +183,7 @@ class GroupModerationStatusDTO {
         raidActive: mapValueOfType<bool>(json, r'raidActive')!,
         lastRaidTriggeredAt: mapDateTime(json, r'lastRaidTriggeredAt', r''),
         activity: GroupActivityStatsDTO.fromJson(json[r'activity'])!,
+        botReadiness: BotModerationReadinessDTO.fromJson(json[r'botReadiness'])!,
         recentEvents: ModerationAuditEventDTO.listFromJson(json[r'recentEvents']),
       );
     }
@@ -230,6 +238,7 @@ class GroupModerationStatusDTO {
     'raidMode',
     'raidActive',
     'activity',
+    'botReadiness',
     'recentEvents',
   };
 }

@@ -658,6 +658,7 @@ Class | Method | HTTP request | Description
  - [BindEmailParam](doc//BindEmailParam.md)
  - [BindOAuthParam](doc//BindOAuthParam.md)
  - [BlockRule](doc//BlockRule.md)
+ - [BotModerationReadinessDTO](doc//BotModerationReadinessDTO.md)
  - [BrokenImageAuditRequest](doc//BrokenImageAuditRequest.md)
  - [BrokenImageAuditResponse](doc//BrokenImageAuditResponse.md)
  - [BrokenImageCleanupResponse](doc//BrokenImageCleanupResponse.md)
