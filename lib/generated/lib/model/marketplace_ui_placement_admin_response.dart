@@ -456,11 +456,13 @@ class MarketplaceUiPlacementAdminResponsePlacementTypeEnum {
   String toJson() => value;
 
   static const ACTIVITY_ENTRY = MarketplaceUiPlacementAdminResponsePlacementTypeEnum._(r'ACTIVITY_ENTRY');
+  static const APP_INSTALL = MarketplaceUiPlacementAdminResponsePlacementTypeEnum._(r'APP_INSTALL');
   static const unknownDefaultOpenApi = MarketplaceUiPlacementAdminResponsePlacementTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][MarketplaceUiPlacementAdminResponsePlacementTypeEnum].
   static const values = <MarketplaceUiPlacementAdminResponsePlacementTypeEnum>[
     ACTIVITY_ENTRY,
+    APP_INSTALL,
     unknownDefaultOpenApi,
   ];
 
@@ -501,6 +503,7 @@ class MarketplaceUiPlacementAdminResponsePlacementTypeEnumTypeTransformer {
     if (data != null) {
       switch (data) {
         case r'ACTIVITY_ENTRY': return MarketplaceUiPlacementAdminResponsePlacementTypeEnum.ACTIVITY_ENTRY;
+        case r'APP_INSTALL': return MarketplaceUiPlacementAdminResponsePlacementTypeEnum.APP_INSTALL;
         case r'unknown_default_open_api': return MarketplaceUiPlacementAdminResponsePlacementTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

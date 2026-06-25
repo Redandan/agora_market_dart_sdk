@@ -20628,6 +20628,14 @@
               "DISABLED"
             ]
           },
+          "placementType": {
+            "type": "string",
+            "description": "Semantic item type. Defaults to ACTIVITY_ENTRY for generic campaign entries.",
+            "enum": [
+              "ACTIVITY_ENTRY",
+              "APP_INSTALL"
+            ]
+          },
           "title": {
             "type": "string",
             "description": "Display title",
@@ -20741,7 +20749,8 @@
             "type": "string",
             "description": "Marketplace UI placement item type",
             "enum": [
-              "ACTIVITY_ENTRY"
+              "ACTIVITY_ENTRY",
+              "APP_INSTALL"
             ]
           },
           "status": {
@@ -20869,7 +20878,8 @@
             "type": "string",
             "description": "Item type",
             "enum": [
-              "ACTIVITY_ENTRY"
+              "ACTIVITY_ENTRY",
+              "APP_INSTALL"
             ]
           },
           "title": {
@@ -27909,10 +27919,6 @@
               "DIGITAL_SERVICE"
             ]
           },
-          "sourceRegion": {
-            "type": "string",
-            "description": "Issue #519 compatibility alias for suggestedSourceRegion"
-          },
           "sourcePlatform": {
             "type": "string",
             "description": "Issue #519 compatibility alias for suggestedSourcePlatform"
@@ -27921,6 +27927,10 @@
             "type": "number",
             "format": "double",
             "description": "Issue #519 compatibility alias for categoryConfidence"
+          },
+          "sourceRegion": {
+            "type": "string",
+            "description": "Issue #519 compatibility alias for suggestedSourceRegion"
           }
         }
       },
@@ -39677,13 +39687,13 @@
             "type": "integer",
             "format": "int32"
           },
+          "outOfStock": {
+            "type": "boolean"
+          },
           "lowStock": {
             "type": "boolean"
           },
           "belowMinimum": {
-            "type": "boolean"
-          },
-          "outOfStock": {
             "type": "boolean"
           }
         }

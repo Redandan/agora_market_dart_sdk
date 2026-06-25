@@ -245,11 +245,13 @@ class ProductListCarouselItemTypeEnum {
   String toJson() => value;
 
   static const ACTIVITY_ENTRY = ProductListCarouselItemTypeEnum._(r'ACTIVITY_ENTRY');
+  static const APP_INSTALL = ProductListCarouselItemTypeEnum._(r'APP_INSTALL');
   static const unknownDefaultOpenApi = ProductListCarouselItemTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][ProductListCarouselItemTypeEnum].
   static const values = <ProductListCarouselItemTypeEnum>[
     ACTIVITY_ENTRY,
+    APP_INSTALL,
     unknownDefaultOpenApi,
   ];
 
@@ -290,6 +292,7 @@ class ProductListCarouselItemTypeEnumTypeTransformer {
     if (data != null) {
       switch (data) {
         case r'ACTIVITY_ENTRY': return ProductListCarouselItemTypeEnum.ACTIVITY_ENTRY;
+        case r'APP_INSTALL': return ProductListCarouselItemTypeEnum.APP_INSTALL;
         case r'unknown_default_open_api': return ProductListCarouselItemTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

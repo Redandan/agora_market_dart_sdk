@@ -15,6 +15,7 @@ class MarketplaceUiPlacementAdminRequest {
   MarketplaceUiPlacementAdminRequest({
     this.placementKey,
     required this.status,
+    this.placementType,
     this.title,
     this.subtitle,
     this.imageUrl,
@@ -37,6 +38,9 @@ class MarketplaceUiPlacementAdminRequest {
 
   /// Visibility status
   MarketplaceUiPlacementAdminRequestStatusEnum status;
+
+  /// Semantic item type. Defaults to ACTIVITY_ENTRY for generic campaign entries.
+  MarketplaceUiPlacementAdminRequestPlacementTypeEnum? placementType;
 
   /// Display title
   ///
@@ -120,6 +124,7 @@ class MarketplaceUiPlacementAdminRequest {
   bool operator ==(Object other) => identical(this, other) || other is MarketplaceUiPlacementAdminRequest &&
     other.placementKey == placementKey &&
     other.status == status &&
+    other.placementType == placementType &&
     other.title == title &&
     other.subtitle == subtitle &&
     other.imageUrl == imageUrl &&
@@ -135,6 +140,7 @@ class MarketplaceUiPlacementAdminRequest {
     // ignore: unnecessary_parenthesis
     (placementKey == null ? 0 : placementKey!.hashCode) +
     (status.hashCode) +
+    (placementType == null ? 0 : placementType!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
     (subtitle == null ? 0 : subtitle!.hashCode) +
     (imageUrl == null ? 0 : imageUrl!.hashCode) +
@@ -146,7 +152,7 @@ class MarketplaceUiPlacementAdminRequest {
     (metadataJson == null ? 0 : metadataJson!.hashCode);
 
   @override
-  String toString() => 'MarketplaceUiPlacementAdminRequest[placementKey=$placementKey, status=$status, title=$title, subtitle=$subtitle, imageUrl=$imageUrl, actionType=$actionType, actionValue=$actionValue, priority=$priority, startsAt=$startsAt, endsAt=$endsAt, metadataJson=$metadataJson]';
+  String toString() => 'MarketplaceUiPlacementAdminRequest[placementKey=$placementKey, status=$status, placementType=$placementType, title=$title, subtitle=$subtitle, imageUrl=$imageUrl, actionType=$actionType, actionValue=$actionValue, priority=$priority, startsAt=$startsAt, endsAt=$endsAt, metadataJson=$metadataJson]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -156,6 +162,11 @@ class MarketplaceUiPlacementAdminRequest {
       json[r'placementKey'] = null;
     }
       json[r'status'] = this.status;
+    if (this.placementType != null) {
+      json[r'placementType'] = this.placementType;
+    } else {
+      json[r'placementType'] = null;
+    }
     if (this.title != null) {
       json[r'title'] = this.title;
     } else {
@@ -221,6 +232,7 @@ class MarketplaceUiPlacementAdminRequest {
       return MarketplaceUiPlacementAdminRequest(
         placementKey: mapValueOfType<String>(json, r'placementKey'),
         status: MarketplaceUiPlacementAdminRequestStatusEnum.fromJson(json[r'status'])!,
+        placementType: MarketplaceUiPlacementAdminRequestPlacementTypeEnum.fromJson(json[r'placementType']),
         title: mapValueOfType<String>(json, r'title'),
         subtitle: mapValueOfType<String>(json, r'subtitle'),
         imageUrl: mapValueOfType<String>(json, r'imageUrl'),
@@ -356,6 +368,83 @@ class MarketplaceUiPlacementAdminRequestStatusEnumTypeTransformer {
 
   /// Singleton [MarketplaceUiPlacementAdminRequestStatusEnumTypeTransformer] instance.
   static MarketplaceUiPlacementAdminRequestStatusEnumTypeTransformer? _instance;
+}
+
+
+/// Semantic item type. Defaults to ACTIVITY_ENTRY for generic campaign entries.
+class MarketplaceUiPlacementAdminRequestPlacementTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const MarketplaceUiPlacementAdminRequestPlacementTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const ACTIVITY_ENTRY = MarketplaceUiPlacementAdminRequestPlacementTypeEnum._(r'ACTIVITY_ENTRY');
+  static const APP_INSTALL = MarketplaceUiPlacementAdminRequestPlacementTypeEnum._(r'APP_INSTALL');
+  static const unknownDefaultOpenApi = MarketplaceUiPlacementAdminRequestPlacementTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][MarketplaceUiPlacementAdminRequestPlacementTypeEnum].
+  static const values = <MarketplaceUiPlacementAdminRequestPlacementTypeEnum>[
+    ACTIVITY_ENTRY,
+    APP_INSTALL,
+    unknownDefaultOpenApi,
+  ];
+
+  static MarketplaceUiPlacementAdminRequestPlacementTypeEnum? fromJson(dynamic value) => MarketplaceUiPlacementAdminRequestPlacementTypeEnumTypeTransformer().decode(value);
+
+  static List<MarketplaceUiPlacementAdminRequestPlacementTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <MarketplaceUiPlacementAdminRequestPlacementTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = MarketplaceUiPlacementAdminRequestPlacementTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [MarketplaceUiPlacementAdminRequestPlacementTypeEnum] to String,
+/// and [decode] dynamic data back to [MarketplaceUiPlacementAdminRequestPlacementTypeEnum].
+class MarketplaceUiPlacementAdminRequestPlacementTypeEnumTypeTransformer {
+  factory MarketplaceUiPlacementAdminRequestPlacementTypeEnumTypeTransformer() => _instance ??= const MarketplaceUiPlacementAdminRequestPlacementTypeEnumTypeTransformer._();
+
+  const MarketplaceUiPlacementAdminRequestPlacementTypeEnumTypeTransformer._();
+
+  String encode(MarketplaceUiPlacementAdminRequestPlacementTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a MarketplaceUiPlacementAdminRequestPlacementTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  MarketplaceUiPlacementAdminRequestPlacementTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'ACTIVITY_ENTRY': return MarketplaceUiPlacementAdminRequestPlacementTypeEnum.ACTIVITY_ENTRY;
+        case r'APP_INSTALL': return MarketplaceUiPlacementAdminRequestPlacementTypeEnum.APP_INSTALL;
+        case r'unknown_default_open_api': return MarketplaceUiPlacementAdminRequestPlacementTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [MarketplaceUiPlacementAdminRequestPlacementTypeEnumTypeTransformer] instance.
+  static MarketplaceUiPlacementAdminRequestPlacementTypeEnumTypeTransformer? _instance;
 }
 
 
