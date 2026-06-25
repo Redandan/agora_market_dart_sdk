@@ -258,12 +258,16 @@ class GroupModerationStatusDTOGroupPurposeEnum {
 
   static const GENERAL = GroupModerationStatusDTOGroupPurposeEnum._(r'GENERAL');
   static const SELLER_COMMUNITY = GroupModerationStatusDTOGroupPurposeEnum._(r'SELLER_COMMUNITY');
+  static const OPERATIONS_NOTIFICATION = GroupModerationStatusDTOGroupPurposeEnum._(r'OPERATIONS_NOTIFICATION');
+  static const PUBLIC_COMMUNITY = GroupModerationStatusDTOGroupPurposeEnum._(r'PUBLIC_COMMUNITY');
   static const unknownDefaultOpenApi = GroupModerationStatusDTOGroupPurposeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][GroupModerationStatusDTOGroupPurposeEnum].
   static const values = <GroupModerationStatusDTOGroupPurposeEnum>[
     GENERAL,
     SELLER_COMMUNITY,
+    OPERATIONS_NOTIFICATION,
+    PUBLIC_COMMUNITY,
     unknownDefaultOpenApi,
   ];
 
@@ -305,6 +309,8 @@ class GroupModerationStatusDTOGroupPurposeEnumTypeTransformer {
       switch (data) {
         case r'GENERAL': return GroupModerationStatusDTOGroupPurposeEnum.GENERAL;
         case r'SELLER_COMMUNITY': return GroupModerationStatusDTOGroupPurposeEnum.SELLER_COMMUNITY;
+        case r'OPERATIONS_NOTIFICATION': return GroupModerationStatusDTOGroupPurposeEnum.OPERATIONS_NOTIFICATION;
+        case r'PUBLIC_COMMUNITY': return GroupModerationStatusDTOGroupPurposeEnum.PUBLIC_COMMUNITY;
         case r'unknown_default_open_api': return GroupModerationStatusDTOGroupPurposeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

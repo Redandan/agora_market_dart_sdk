@@ -372,12 +372,16 @@ class MonitoredGroupDTOGroupPurposeEnum {
 
   static const GENERAL = MonitoredGroupDTOGroupPurposeEnum._(r'GENERAL');
   static const SELLER_COMMUNITY = MonitoredGroupDTOGroupPurposeEnum._(r'SELLER_COMMUNITY');
+  static const OPERATIONS_NOTIFICATION = MonitoredGroupDTOGroupPurposeEnum._(r'OPERATIONS_NOTIFICATION');
+  static const PUBLIC_COMMUNITY = MonitoredGroupDTOGroupPurposeEnum._(r'PUBLIC_COMMUNITY');
   static const unknownDefaultOpenApi = MonitoredGroupDTOGroupPurposeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][MonitoredGroupDTOGroupPurposeEnum].
   static const values = <MonitoredGroupDTOGroupPurposeEnum>[
     GENERAL,
     SELLER_COMMUNITY,
+    OPERATIONS_NOTIFICATION,
+    PUBLIC_COMMUNITY,
     unknownDefaultOpenApi,
   ];
 
@@ -419,6 +423,8 @@ class MonitoredGroupDTOGroupPurposeEnumTypeTransformer {
       switch (data) {
         case r'GENERAL': return MonitoredGroupDTOGroupPurposeEnum.GENERAL;
         case r'SELLER_COMMUNITY': return MonitoredGroupDTOGroupPurposeEnum.SELLER_COMMUNITY;
+        case r'OPERATIONS_NOTIFICATION': return MonitoredGroupDTOGroupPurposeEnum.OPERATIONS_NOTIFICATION;
+        case r'PUBLIC_COMMUNITY': return MonitoredGroupDTOGroupPurposeEnum.PUBLIC_COMMUNITY;
         case r'unknown_default_open_api': return MonitoredGroupDTOGroupPurposeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

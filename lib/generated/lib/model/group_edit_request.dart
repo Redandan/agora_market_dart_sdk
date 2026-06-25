@@ -240,12 +240,16 @@ class GroupEditRequestGroupPurposeEnum {
 
   static const GENERAL = GroupEditRequestGroupPurposeEnum._(r'GENERAL');
   static const SELLER_COMMUNITY = GroupEditRequestGroupPurposeEnum._(r'SELLER_COMMUNITY');
+  static const OPERATIONS_NOTIFICATION = GroupEditRequestGroupPurposeEnum._(r'OPERATIONS_NOTIFICATION');
+  static const PUBLIC_COMMUNITY = GroupEditRequestGroupPurposeEnum._(r'PUBLIC_COMMUNITY');
   static const unknownDefaultOpenApi = GroupEditRequestGroupPurposeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][GroupEditRequestGroupPurposeEnum].
   static const values = <GroupEditRequestGroupPurposeEnum>[
     GENERAL,
     SELLER_COMMUNITY,
+    OPERATIONS_NOTIFICATION,
+    PUBLIC_COMMUNITY,
     unknownDefaultOpenApi,
   ];
 
@@ -287,6 +291,8 @@ class GroupEditRequestGroupPurposeEnumTypeTransformer {
       switch (data) {
         case r'GENERAL': return GroupEditRequestGroupPurposeEnum.GENERAL;
         case r'SELLER_COMMUNITY': return GroupEditRequestGroupPurposeEnum.SELLER_COMMUNITY;
+        case r'OPERATIONS_NOTIFICATION': return GroupEditRequestGroupPurposeEnum.OPERATIONS_NOTIFICATION;
+        case r'PUBLIC_COMMUNITY': return GroupEditRequestGroupPurposeEnum.PUBLIC_COMMUNITY;
         case r'unknown_default_open_api': return GroupEditRequestGroupPurposeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

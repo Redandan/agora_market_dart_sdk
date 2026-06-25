@@ -35546,7 +35546,9 @@
             "description": "群用途",
             "enum": [
               "GENERAL",
-              "SELLER_COMMUNITY"
+              "SELLER_COMMUNITY",
+              "OPERATIONS_NOTIFICATION",
+              "PUBLIC_COMMUNITY"
             ]
           },
           "moderationEnabled": {
@@ -35705,9 +35707,11 @@
             "description": "群用途",
             "enum": [
               "GENERAL",
-              "SELLER_COMMUNITY"
+              "SELLER_COMMUNITY",
+              "OPERATIONS_NOTIFICATION",
+              "PUBLIC_COMMUNITY"
             ],
-            "example": "SELLER_COMMUNITY"
+            "example": "PUBLIC_COMMUNITY"
           },
           "moderationEnabled": {
             "type": "boolean",
@@ -35778,9 +35782,11 @@
             "description": "群用途",
             "enum": [
               "GENERAL",
-              "SELLER_COMMUNITY"
+              "SELLER_COMMUNITY",
+              "OPERATIONS_NOTIFICATION",
+              "PUBLIC_COMMUNITY"
             ],
-            "example": "SELLER_COMMUNITY"
+            "example": "PUBLIC_COMMUNITY"
           },
           "firstSeenAt": {
             "type": "string",
