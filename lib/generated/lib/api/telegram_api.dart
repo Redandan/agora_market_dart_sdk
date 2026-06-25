@@ -16,6 +16,68 @@ class TelegramApi {
 
   final ApiClient apiClient;
 
+  /// 刪除一則 Telegram 群公告訊息
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] groupId (required):
+  ///   Telegram 群組 ID
+  ///
+  /// * [int] announcementId (required):
+  ///   公告 ID
+  Future<Response> deleteAnnouncementWithHttpInfo(int groupId, int announcementId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/telegram-monitor/groups/{groupId}/announcements/{announcementId}/delete'
+      .replaceAll('{groupId}', groupId.toString())
+      .replaceAll('{announcementId}', announcementId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 刪除一則 Telegram 群公告訊息
+  ///
+  /// Parameters:
+  ///
+  /// * [int] groupId (required):
+  ///   Telegram 群組 ID
+  ///
+  /// * [int] announcementId (required):
+  ///   公告 ID
+  Future<GroupAnnouncementDTO?> deleteAnnouncement(int groupId, int announcementId,) async {
+    final response = await deleteAnnouncementWithHttpInfo(groupId, announcementId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GroupAnnouncementDTO',) as GroupAnnouncementDTO;
+    
+    }
+    return null;
+  }
+
   /// 統一更新群組設定（aiChatEnabled / groupPurpose / moderationEnabled / replyMode / messageCountThreshold / minIntervalMinutes / personality / customPrompt）
   ///
   /// Note: This method returns the HTTP [Response].
@@ -261,6 +323,133 @@ class TelegramApi {
     return null;
   }
 
+  /// 查詢 Telegram 群公告歷史
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] groupId (required):
+  ///   Telegram 群組 ID
+  ///
+  /// * [int] limit:
+  ///   返回筆數上限
+  Future<Response> listAnnouncementsWithHttpInfo(int groupId, { int? limit, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/telegram-monitor/groups/{groupId}/announcements'
+      .replaceAll('{groupId}', groupId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查詢 Telegram 群公告歷史
+  ///
+  /// Parameters:
+  ///
+  /// * [int] groupId (required):
+  ///   Telegram 群組 ID
+  ///
+  /// * [int] limit:
+  ///   返回筆數上限
+  Future<List<GroupAnnouncementDTO>?> listAnnouncements(int groupId, { int? limit, }) async {
+    final response = await listAnnouncementsWithHttpInfo(groupId,  limit: limit, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<GroupAnnouncementDTO>') as List)
+        .cast<GroupAnnouncementDTO>()
+        .toList(growable: false);
+
+    }
+    return null;
+  }
+
+  /// 發布 Telegram 群公告；可選置頂並替換上一則置頂公告
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] groupId (required):
+  ///   Telegram 群組 ID
+  ///
+  /// * [GroupAnnouncementRequest] groupAnnouncementRequest (required):
+  Future<Response> sendAnnouncementWithHttpInfo(int groupId, GroupAnnouncementRequest groupAnnouncementRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/telegram-monitor/groups/{groupId}/announcements'
+      .replaceAll('{groupId}', groupId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody = groupAnnouncementRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 發布 Telegram 群公告；可選置頂並替換上一則置頂公告
+  ///
+  /// Parameters:
+  ///
+  /// * [int] groupId (required):
+  ///   Telegram 群組 ID
+  ///
+  /// * [GroupAnnouncementRequest] groupAnnouncementRequest (required):
+  Future<GroupAnnouncementDTO?> sendAnnouncement(int groupId, GroupAnnouncementRequest groupAnnouncementRequest,) async {
+    final response = await sendAnnouncementWithHttpInfo(groupId, groupAnnouncementRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GroupAnnouncementDTO',) as GroupAnnouncementDTO;
+    
+    }
+    return null;
+  }
+
   /// 模擬 AI 生成群組消息（previewOnly=true 時只預覽 prompt，不呼叫 AI）
   ///
   /// Note: This method returns the HTTP [Response].
@@ -315,6 +504,68 @@ class TelegramApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GroupAiSimulationResponseDTO',) as GroupAiSimulationResponseDTO;
+    
+    }
+    return null;
+  }
+
+  /// 取消置頂一則 Telegram 群公告
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] groupId (required):
+  ///   Telegram 群組 ID
+  ///
+  /// * [int] announcementId (required):
+  ///   公告 ID
+  Future<Response> unpinAnnouncementWithHttpInfo(int groupId, int announcementId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/telegram-monitor/groups/{groupId}/announcements/{announcementId}/unpin'
+      .replaceAll('{groupId}', groupId.toString())
+      .replaceAll('{announcementId}', announcementId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 取消置頂一則 Telegram 群公告
+  ///
+  /// Parameters:
+  ///
+  /// * [int] groupId (required):
+  ///   Telegram 群組 ID
+  ///
+  /// * [int] announcementId (required):
+  ///   公告 ID
+  Future<GroupAnnouncementDTO?> unpinAnnouncement(int groupId, int announcementId,) async {
+    final response = await unpinAnnouncementWithHttpInfo(groupId, announcementId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GroupAnnouncementDTO',) as GroupAnnouncementDTO;
     
     }
     return null;

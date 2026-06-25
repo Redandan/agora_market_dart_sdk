@@ -8833,6 +8833,189 @@
         }
       }
     },
+    "/admin/telegram-monitor/groups/{groupId}/announcements": {
+      "get": {
+        "tags": [
+          "Telegram 群消息監聽管理"
+        ],
+        "summary": "查詢 Telegram 群公告歷史",
+        "operationId": "listAnnouncements",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "Telegram 群組 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": -1001234567890
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "返回筆數上限",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1
+            },
+            "example": 20
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GroupAnnouncementDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Telegram 群消息監聽管理"
+        ],
+        "summary": "發布 Telegram 群公告；可選置頂並替換上一則置頂公告",
+        "operationId": "sendAnnouncement",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "Telegram 群組 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": -1001234567890
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupAnnouncementRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupAnnouncementDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/telegram-monitor/groups/{groupId}/announcements/{announcementId}/unpin": {
+      "post": {
+        "tags": [
+          "Telegram 群消息監聽管理"
+        ],
+        "summary": "取消置頂一則 Telegram 群公告",
+        "operationId": "unpinAnnouncement",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "Telegram 群組 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": -1001234567890
+          },
+          {
+            "name": "announcementId",
+            "in": "path",
+            "description": "公告 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupAnnouncementDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/telegram-monitor/groups/{groupId}/announcements/{announcementId}/delete": {
+      "post": {
+        "tags": [
+          "Telegram 群消息監聽管理"
+        ],
+        "summary": "刪除一則 Telegram 群公告訊息",
+        "operationId": "deleteAnnouncement",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "Telegram 群組 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": -1001234567890
+          },
+          {
+            "name": "announcementId",
+            "in": "path",
+            "description": "公告 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupAnnouncementDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/telegram-monitor/groups/{groupId}/ai-simulate": {
       "post": {
         "tags": [
@@ -23879,10 +24062,10 @@
             },
             "uniqueItems": true
           },
-          "minimumShippingFee": {
+          "defaultShippingFee": {
             "type": "number"
           },
-          "defaultShippingFee": {
+          "minimumShippingFee": {
             "type": "number"
           },
           "stockLow": {
@@ -28015,14 +28198,14 @@
             "type": "string",
             "description": "Issue #519 compatibility alias for suggestedSourcePlatform"
           },
-          "sourceRegion": {
-            "type": "string",
-            "description": "Issue #519 compatibility alias for suggestedSourceRegion"
-          },
           "confidence": {
             "type": "number",
             "format": "double",
             "description": "Issue #519 compatibility alias for categoryConfidence"
+          },
+          "sourceRegion": {
+            "type": "string",
+            "description": "Issue #519 compatibility alias for suggestedSourceRegion"
           }
         }
       },
@@ -35641,6 +35824,140 @@
           "moderationEnabled",
           "raidActive",
           "raidMode"
+        ]
+      },
+      "GroupAnnouncementRequest": {
+        "type": "object",
+        "description": "Telegram 群公告發布請求",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "公告標題，會顯示在正文前方",
+            "example": "平台任務更新",
+            "maxLength": 200,
+            "minLength": 0
+          },
+          "messageText": {
+            "type": "string",
+            "description": "公告內容。parseMode=HTML/MARKDOWN 時由管理員負責提供合法格式。",
+            "maxLength": 3500,
+            "minLength": 0
+          },
+          "parseMode": {
+            "type": "string",
+            "description": "Telegram parse mode；NONE 為純文字",
+            "enum": [
+              "NONE",
+              "HTML",
+              "MARKDOWN",
+              "MARKDOWN_V2"
+            ],
+            "example": "NONE"
+          },
+          "pinToTop": {
+            "type": "boolean",
+            "description": "是否置頂公告",
+            "example": true
+          },
+          "replaceLastPinned": {
+            "type": "boolean",
+            "description": "置頂前是否取消上一則仍標記為置頂的公告",
+            "example": true
+          },
+          "disableNotification": {
+            "type": "boolean",
+            "description": "是否靜默發送與靜默置頂",
+            "example": false
+          }
+        },
+        "required": [
+          "messageText"
+        ]
+      },
+      "GroupAnnouncementDTO": {
+        "type": "object",
+        "description": "Telegram 群公告",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "公告 ID"
+          },
+          "groupId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Telegram 群組 ID"
+          },
+          "title": {
+            "type": "string",
+            "description": "公告標題"
+          },
+          "messageText": {
+            "type": "string",
+            "description": "公告內容"
+          },
+          "parseMode": {
+            "type": "string",
+            "description": "Telegram parse mode",
+            "enum": [
+              "NONE",
+              "HTML",
+              "MARKDOWN",
+              "MARKDOWN_V2"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "description": "公告狀態",
+            "enum": [
+              "PENDING",
+              "SENT",
+              "FAILED",
+              "DELETED"
+            ]
+          },
+          "telegramMessageId": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Telegram message ID"
+          },
+          "pinned": {
+            "type": "boolean",
+            "description": "是否目前標記為置頂"
+          },
+          "deleted": {
+            "type": "boolean",
+            "description": "是否已刪除 Telegram 訊息"
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "失敗原因"
+          },
+          "sentAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "送出時間"
+          },
+          "deletedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "刪除時間"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "建立時間"
+          }
+        },
+        "required": [
+          "createdAt",
+          "deleted",
+          "groupId",
+          "id",
+          "messageText",
+          "parseMode",
+          "pinned",
+          "status"
         ]
       },
       "GroupAiSimulationRequest": {

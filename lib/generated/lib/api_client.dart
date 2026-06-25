@@ -506,6 +506,10 @@ class ApiClient {
           return GroupAiSimulationRequest.fromJson(value);
         case 'GroupAiSimulationResponseDTO':
           return GroupAiSimulationResponseDTO.fromJson(value);
+        case 'GroupAnnouncementDTO':
+          return GroupAnnouncementDTO.fromJson(value);
+        case 'GroupAnnouncementRequest':
+          return GroupAnnouncementRequest.fromJson(value);
         case 'GroupConversionStatsDTO':
           return GroupConversionStatsDTO.fromJson(value);
         case 'GroupDetailDTO':

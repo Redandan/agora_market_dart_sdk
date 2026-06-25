@@ -260,6 +260,8 @@ part 'model/group_activity_stats_dto.dart';
 part 'model/group_ai_prompt_preview_dto.dart';
 part 'model/group_ai_simulation_request.dart';
 part 'model/group_ai_simulation_response_dto.dart';
+part 'model/group_announcement_dto.dart';
+part 'model/group_announcement_request.dart';
 part 'model/group_conversion_stats_dto.dart';
 part 'model/group_detail_dto.dart';
 part 'model/group_edit_request.dart';
