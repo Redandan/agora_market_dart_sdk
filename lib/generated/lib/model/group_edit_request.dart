@@ -14,6 +14,8 @@ class GroupEditRequest {
   /// Returns a new [GroupEditRequest] instance.
   GroupEditRequest({
     this.aiChatEnabled,
+    this.groupPurpose,
+    this.moderationEnabled,
     this.replyMode,
     this.messageCountThreshold,
     this.minIntervalMinutes,
@@ -29,6 +31,18 @@ class GroupEditRequest {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? aiChatEnabled;
+
+  /// 群用途
+  GroupEditRequestGroupPurposeEnum? groupPurpose;
+
+  /// 是否啟用自動防護偵測
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? moderationEnabled;
 
   /// 回覆模式
   GroupEditRequestReplyModeEnum? replyMode;
@@ -66,6 +80,8 @@ class GroupEditRequest {
   @override
   bool operator ==(Object other) => identical(this, other) || other is GroupEditRequest &&
     other.aiChatEnabled == aiChatEnabled &&
+    other.groupPurpose == groupPurpose &&
+    other.moderationEnabled == moderationEnabled &&
     other.replyMode == replyMode &&
     other.messageCountThreshold == messageCountThreshold &&
     other.minIntervalMinutes == minIntervalMinutes &&
@@ -76,6 +92,8 @@ class GroupEditRequest {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (aiChatEnabled == null ? 0 : aiChatEnabled!.hashCode) +
+    (groupPurpose == null ? 0 : groupPurpose!.hashCode) +
+    (moderationEnabled == null ? 0 : moderationEnabled!.hashCode) +
     (replyMode == null ? 0 : replyMode!.hashCode) +
     (messageCountThreshold == null ? 0 : messageCountThreshold!.hashCode) +
     (minIntervalMinutes == null ? 0 : minIntervalMinutes!.hashCode) +
@@ -83,7 +101,7 @@ class GroupEditRequest {
     (customPrompt == null ? 0 : customPrompt!.hashCode);
 
   @override
-  String toString() => 'GroupEditRequest[aiChatEnabled=$aiChatEnabled, replyMode=$replyMode, messageCountThreshold=$messageCountThreshold, minIntervalMinutes=$minIntervalMinutes, personality=$personality, customPrompt=$customPrompt]';
+  String toString() => 'GroupEditRequest[aiChatEnabled=$aiChatEnabled, groupPurpose=$groupPurpose, moderationEnabled=$moderationEnabled, replyMode=$replyMode, messageCountThreshold=$messageCountThreshold, minIntervalMinutes=$minIntervalMinutes, personality=$personality, customPrompt=$customPrompt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -91,6 +109,16 @@ class GroupEditRequest {
       json[r'aiChatEnabled'] = this.aiChatEnabled;
     } else {
       json[r'aiChatEnabled'] = null;
+    }
+    if (this.groupPurpose != null) {
+      json[r'groupPurpose'] = this.groupPurpose;
+    } else {
+      json[r'groupPurpose'] = null;
+    }
+    if (this.moderationEnabled != null) {
+      json[r'moderationEnabled'] = this.moderationEnabled;
+    } else {
+      json[r'moderationEnabled'] = null;
     }
     if (this.replyMode != null) {
       json[r'replyMode'] = this.replyMode;
@@ -140,6 +168,8 @@ class GroupEditRequest {
 
       return GroupEditRequest(
         aiChatEnabled: mapValueOfType<bool>(json, r'aiChatEnabled'),
+        groupPurpose: GroupEditRequestGroupPurposeEnum.fromJson(json[r'groupPurpose']),
+        moderationEnabled: mapValueOfType<bool>(json, r'moderationEnabled'),
         replyMode: GroupEditRequestReplyModeEnum.fromJson(json[r'replyMode']),
         messageCountThreshold: mapValueOfType<int>(json, r'messageCountThreshold'),
         minIntervalMinutes: mapValueOfType<int>(json, r'minIntervalMinutes'),
@@ -194,6 +224,83 @@ class GroupEditRequest {
   static const requiredKeys = <String>{
   };
 }
+
+/// 群用途
+class GroupEditRequestGroupPurposeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const GroupEditRequestGroupPurposeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const GENERAL = GroupEditRequestGroupPurposeEnum._(r'GENERAL');
+  static const SELLER_COMMUNITY = GroupEditRequestGroupPurposeEnum._(r'SELLER_COMMUNITY');
+  static const unknownDefaultOpenApi = GroupEditRequestGroupPurposeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][GroupEditRequestGroupPurposeEnum].
+  static const values = <GroupEditRequestGroupPurposeEnum>[
+    GENERAL,
+    SELLER_COMMUNITY,
+    unknownDefaultOpenApi,
+  ];
+
+  static GroupEditRequestGroupPurposeEnum? fromJson(dynamic value) => GroupEditRequestGroupPurposeEnumTypeTransformer().decode(value);
+
+  static List<GroupEditRequestGroupPurposeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <GroupEditRequestGroupPurposeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = GroupEditRequestGroupPurposeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [GroupEditRequestGroupPurposeEnum] to String,
+/// and [decode] dynamic data back to [GroupEditRequestGroupPurposeEnum].
+class GroupEditRequestGroupPurposeEnumTypeTransformer {
+  factory GroupEditRequestGroupPurposeEnumTypeTransformer() => _instance ??= const GroupEditRequestGroupPurposeEnumTypeTransformer._();
+
+  const GroupEditRequestGroupPurposeEnumTypeTransformer._();
+
+  String encode(GroupEditRequestGroupPurposeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a GroupEditRequestGroupPurposeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  GroupEditRequestGroupPurposeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'GENERAL': return GroupEditRequestGroupPurposeEnum.GENERAL;
+        case r'SELLER_COMMUNITY': return GroupEditRequestGroupPurposeEnum.SELLER_COMMUNITY;
+        case r'unknown_default_open_api': return GroupEditRequestGroupPurposeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [GroupEditRequestGroupPurposeEnumTypeTransformer] instance.
+  static GroupEditRequestGroupPurposeEnumTypeTransformer? _instance;
+}
+
 
 /// 回覆模式
 class GroupEditRequestReplyModeEnum {

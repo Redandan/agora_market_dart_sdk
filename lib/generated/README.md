@@ -544,10 +544,12 @@ Class | Method | HTTP request | Description
 *TGApi* | [**getPlayerRounds**](doc//TGApi.md#getplayerrounds) | **GET** /tg-game/rounds | 查詢玩家流水
 *TGApi* | [**searchActivities**](doc//TGApi.md#searchactivities) | **POST** /tg-game/activity/search | 查詢活動
 *TGApi* | [**updateActivity**](doc//TGApi.md#updateactivity) | **PUT** /tg-game/activity/{id} | 更新活動
-*TelegramApi* | [**editGroup**](doc//TelegramApi.md#editgroup) | **POST** /admin/telegram-monitor/groups/{groupId}/edit | 統一更新群組設定（aiChatEnabled / replyMode / messageCountThreshold / minIntervalMinutes / personality / customPrompt）
+*TelegramApi* | [**editGroup**](doc//TelegramApi.md#editgroup) | **POST** /admin/telegram-monitor/groups/{groupId}/edit | 統一更新群組設定（aiChatEnabled / groupPurpose / moderationEnabled / replyMode / messageCountThreshold / minIntervalMinutes / personality / customPrompt）
 *TelegramApi* | [**getGroupDetail**](doc//TelegramApi.md#getgroupdetail) | **GET** /admin/telegram-monitor/groups/{groupId}/detail | 獲取群組詳細資訊（活躍度統計 + 活躍用戶 + 最近消息）
 *TelegramApi* | [**getGroups**](doc//TelegramApi.md#getgroups) | **GET** /admin/telegram-monitor/groups | 獲取已監聽群組列表
+*TelegramApi* | [**getModerationStatus**](doc//TelegramApi.md#getmoderationstatus) | **GET** /admin/telegram-monitor/groups/{groupId}/moderation | 獲取群組防護狀態與最近審計事件
 *TelegramApi* | [**simulateGroupMessage**](doc//TelegramApi.md#simulategroupmessage) | **POST** /admin/telegram-monitor/groups/{groupId}/ai-simulate | 模擬 AI 生成群組消息（previewOnly=true 時只預覽 prompt，不呼叫 AI）
+*TelegramApi* | [**updateRaidMode**](doc//TelegramApi.md#updateraidmode) | **POST** /admin/telegram-monitor/groups/{groupId}/raid-mode | 手動切換群組 Raid Mode；預設只改後端狀態，不呼叫 Telegram 管理 API
 *TelegramWebappAuthApi* | [**exchangeJwt**](doc//TelegramWebappAuthApi.md#exchangejwt) | **POST** /auth/telegram-webapp/exchange-jwt | Telegram WebApp 交換 JWT
 *TestApi* | [**generateAutoReplyTestData**](doc//TestApi.md#generateautoreplytestdata) | **POST** /test/auto-reply | 生成自動回復測試數據
 *TestApi* | [**generateDeliveryAcceptOrderTestData**](doc//TestApi.md#generatedeliveryacceptordertestdata) | **POST** /test/delivery-accept-order | 生成配送員接單測試數據
@@ -759,6 +761,8 @@ Class | Method | HTTP request | Description
  - [GroupDetailDTO](doc//GroupDetailDTO.md)
  - [GroupEditRequest](doc//GroupEditRequest.md)
  - [GroupMessageDTO](doc//GroupMessageDTO.md)
+ - [GroupModerationStatusDTO](doc//GroupModerationStatusDTO.md)
+ - [GroupRaidModeUpdateRequest](doc//GroupRaidModeUpdateRequest.md)
  - [HourlyStatDto](doc//HourlyStatDto.md)
  - [ImportResult](doc//ImportResult.md)
  - [InterestRecordDTO](doc//InterestRecordDTO.md)
@@ -802,6 +806,7 @@ Class | Method | HTTP request | Description
  - [MemberSearchParam](doc//MemberSearchParam.md)
  - [MemberUpdateParam](doc//MemberUpdateParam.md)
  - [MessageSendResponseDTO](doc//MessageSendResponseDTO.md)
+ - [ModerationAuditEventDTO](doc//ModerationAuditEventDTO.md)
  - [MonitoredGroupDTO](doc//MonitoredGroupDTO.md)
  - [NaturalSearchRequest](doc//NaturalSearchRequest.md)
  - [NaturalSearchResponse](doc//NaturalSearchResponse.md)

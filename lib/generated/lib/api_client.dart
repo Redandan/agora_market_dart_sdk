@@ -514,6 +514,10 @@ class ApiClient {
           return GroupEditRequest.fromJson(value);
         case 'GroupMessageDTO':
           return GroupMessageDTO.fromJson(value);
+        case 'GroupModerationStatusDTO':
+          return GroupModerationStatusDTO.fromJson(value);
+        case 'GroupRaidModeUpdateRequest':
+          return GroupRaidModeUpdateRequest.fromJson(value);
         case 'HourlyStatDto':
           return HourlyStatDto.fromJson(value);
         case 'ImportResult':
@@ -600,6 +604,8 @@ class ApiClient {
           return MemberUpdateParam.fromJson(value);
         case 'MessageSendResponseDTO':
           return MessageSendResponseDTO.fromJson(value);
+        case 'ModerationAuditEventDTO':
+          return ModerationAuditEventDTO.fromJson(value);
         case 'MonitoredGroupDTO':
           return MonitoredGroupDTO.fromJson(value);
         case 'NaturalSearchRequest':

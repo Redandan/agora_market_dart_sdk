@@ -16,9 +16,16 @@ class MonitoredGroupDTO {
     required this.groupId,
     this.groupName,
     required this.groupType,
+    required this.groupPurpose,
     required this.firstSeenAt,
     this.lastMessageAt,
     required this.aiChatEnabled,
+    required this.moderationEnabled,
+    required this.raidMode,
+    this.raidModeUntil,
+    this.raidReason,
+    required this.raidActive,
+    this.lastRaidTriggeredAt,
     required this.aiManualPromptEnabled,
     this.aiManualPromptText,
     required this.bufferedMessageCount,
@@ -43,6 +50,9 @@ class MonitoredGroupDTO {
   /// 群組類型
   String groupType;
 
+  /// 群用途
+  MonitoredGroupDTOGroupPurposeEnum groupPurpose;
+
   /// 首次監聽時間
   DateTime firstSeenAt;
 
@@ -57,6 +67,42 @@ class MonitoredGroupDTO {
 
   /// 是否啟用群組 AI 聊天
   bool aiChatEnabled;
+
+  /// 是否啟用自動防護偵測
+  bool moderationEnabled;
+
+  /// 目前 Raid Mode
+  MonitoredGroupDTORaidModeEnum raidMode;
+
+  /// Raid Mode 到期時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? raidModeUntil;
+
+  /// Raid Mode 原因
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? raidReason;
+
+  /// 是否仍處於有效 Raid Mode
+  bool raidActive;
+
+  /// 最近一次自動觸發 Raid 時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? lastRaidTriggeredAt;
 
   /// 是否啟用手動 Prompt
   bool aiManualPromptEnabled;
@@ -102,9 +148,16 @@ class MonitoredGroupDTO {
     other.groupId == groupId &&
     other.groupName == groupName &&
     other.groupType == groupType &&
+    other.groupPurpose == groupPurpose &&
     other.firstSeenAt == firstSeenAt &&
     other.lastMessageAt == lastMessageAt &&
     other.aiChatEnabled == aiChatEnabled &&
+    other.moderationEnabled == moderationEnabled &&
+    other.raidMode == raidMode &&
+    other.raidModeUntil == raidModeUntil &&
+    other.raidReason == raidReason &&
+    other.raidActive == raidActive &&
+    other.lastRaidTriggeredAt == lastRaidTriggeredAt &&
     other.aiManualPromptEnabled == aiManualPromptEnabled &&
     other.aiManualPromptText == aiManualPromptText &&
     other.bufferedMessageCount == bufferedMessageCount &&
@@ -119,9 +172,16 @@ class MonitoredGroupDTO {
     (groupId.hashCode) +
     (groupName == null ? 0 : groupName!.hashCode) +
     (groupType.hashCode) +
+    (groupPurpose.hashCode) +
     (firstSeenAt.hashCode) +
     (lastMessageAt == null ? 0 : lastMessageAt!.hashCode) +
     (aiChatEnabled.hashCode) +
+    (moderationEnabled.hashCode) +
+    (raidMode.hashCode) +
+    (raidModeUntil == null ? 0 : raidModeUntil!.hashCode) +
+    (raidReason == null ? 0 : raidReason!.hashCode) +
+    (raidActive.hashCode) +
+    (lastRaidTriggeredAt == null ? 0 : lastRaidTriggeredAt!.hashCode) +
     (aiManualPromptEnabled.hashCode) +
     (aiManualPromptText == null ? 0 : aiManualPromptText!.hashCode) +
     (bufferedMessageCount.hashCode) +
@@ -131,7 +191,7 @@ class MonitoredGroupDTO {
     (personality == null ? 0 : personality!.hashCode);
 
   @override
-  String toString() => 'MonitoredGroupDTO[groupId=$groupId, groupName=$groupName, groupType=$groupType, firstSeenAt=$firstSeenAt, lastMessageAt=$lastMessageAt, aiChatEnabled=$aiChatEnabled, aiManualPromptEnabled=$aiManualPromptEnabled, aiManualPromptText=$aiManualPromptText, bufferedMessageCount=$bufferedMessageCount, replyMode=$replyMode, messageCountThreshold=$messageCountThreshold, minIntervalMinutes=$minIntervalMinutes, personality=$personality]';
+  String toString() => 'MonitoredGroupDTO[groupId=$groupId, groupName=$groupName, groupType=$groupType, groupPurpose=$groupPurpose, firstSeenAt=$firstSeenAt, lastMessageAt=$lastMessageAt, aiChatEnabled=$aiChatEnabled, moderationEnabled=$moderationEnabled, raidMode=$raidMode, raidModeUntil=$raidModeUntil, raidReason=$raidReason, raidActive=$raidActive, lastRaidTriggeredAt=$lastRaidTriggeredAt, aiManualPromptEnabled=$aiManualPromptEnabled, aiManualPromptText=$aiManualPromptText, bufferedMessageCount=$bufferedMessageCount, replyMode=$replyMode, messageCountThreshold=$messageCountThreshold, minIntervalMinutes=$minIntervalMinutes, personality=$personality]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -142,6 +202,7 @@ class MonitoredGroupDTO {
       json[r'groupName'] = null;
     }
       json[r'groupType'] = this.groupType;
+      json[r'groupPurpose'] = this.groupPurpose;
       json[r'firstSeenAt'] = this.firstSeenAt.toUtc().toIso8601String();
     if (this.lastMessageAt != null) {
       json[r'lastMessageAt'] = this.lastMessageAt!.toUtc().toIso8601String();
@@ -149,6 +210,24 @@ class MonitoredGroupDTO {
       json[r'lastMessageAt'] = null;
     }
       json[r'aiChatEnabled'] = this.aiChatEnabled;
+      json[r'moderationEnabled'] = this.moderationEnabled;
+      json[r'raidMode'] = this.raidMode;
+    if (this.raidModeUntil != null) {
+      json[r'raidModeUntil'] = this.raidModeUntil!.toUtc().toIso8601String();
+    } else {
+      json[r'raidModeUntil'] = null;
+    }
+    if (this.raidReason != null) {
+      json[r'raidReason'] = this.raidReason;
+    } else {
+      json[r'raidReason'] = null;
+    }
+      json[r'raidActive'] = this.raidActive;
+    if (this.lastRaidTriggeredAt != null) {
+      json[r'lastRaidTriggeredAt'] = this.lastRaidTriggeredAt!.toUtc().toIso8601String();
+    } else {
+      json[r'lastRaidTriggeredAt'] = null;
+    }
       json[r'aiManualPromptEnabled'] = this.aiManualPromptEnabled;
     if (this.aiManualPromptText != null) {
       json[r'aiManualPromptText'] = this.aiManualPromptText;
@@ -201,9 +280,16 @@ class MonitoredGroupDTO {
         groupId: mapValueOfType<int>(json, r'groupId')!,
         groupName: mapValueOfType<String>(json, r'groupName'),
         groupType: mapValueOfType<String>(json, r'groupType')!,
+        groupPurpose: MonitoredGroupDTOGroupPurposeEnum.fromJson(json[r'groupPurpose'])!,
         firstSeenAt: mapDateTime(json, r'firstSeenAt', r'')!,
         lastMessageAt: mapDateTime(json, r'lastMessageAt', r''),
         aiChatEnabled: mapValueOfType<bool>(json, r'aiChatEnabled')!,
+        moderationEnabled: mapValueOfType<bool>(json, r'moderationEnabled')!,
+        raidMode: MonitoredGroupDTORaidModeEnum.fromJson(json[r'raidMode'])!,
+        raidModeUntil: mapDateTime(json, r'raidModeUntil', r''),
+        raidReason: mapValueOfType<String>(json, r'raidReason'),
+        raidActive: mapValueOfType<bool>(json, r'raidActive')!,
+        lastRaidTriggeredAt: mapDateTime(json, r'lastRaidTriggeredAt', r''),
         aiManualPromptEnabled: mapValueOfType<bool>(json, r'aiManualPromptEnabled')!,
         aiManualPromptText: mapValueOfType<String>(json, r'aiManualPromptText'),
         bufferedMessageCount: mapValueOfType<int>(json, r'bufferedMessageCount')!,
@@ -260,12 +346,176 @@ class MonitoredGroupDTO {
   static const requiredKeys = <String>{
     'groupId',
     'groupType',
+    'groupPurpose',
     'firstSeenAt',
     'aiChatEnabled',
+    'moderationEnabled',
+    'raidMode',
+    'raidActive',
     'aiManualPromptEnabled',
     'bufferedMessageCount',
   };
 }
+
+/// 群用途
+class MonitoredGroupDTOGroupPurposeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const MonitoredGroupDTOGroupPurposeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const GENERAL = MonitoredGroupDTOGroupPurposeEnum._(r'GENERAL');
+  static const SELLER_COMMUNITY = MonitoredGroupDTOGroupPurposeEnum._(r'SELLER_COMMUNITY');
+  static const unknownDefaultOpenApi = MonitoredGroupDTOGroupPurposeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][MonitoredGroupDTOGroupPurposeEnum].
+  static const values = <MonitoredGroupDTOGroupPurposeEnum>[
+    GENERAL,
+    SELLER_COMMUNITY,
+    unknownDefaultOpenApi,
+  ];
+
+  static MonitoredGroupDTOGroupPurposeEnum? fromJson(dynamic value) => MonitoredGroupDTOGroupPurposeEnumTypeTransformer().decode(value);
+
+  static List<MonitoredGroupDTOGroupPurposeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <MonitoredGroupDTOGroupPurposeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = MonitoredGroupDTOGroupPurposeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [MonitoredGroupDTOGroupPurposeEnum] to String,
+/// and [decode] dynamic data back to [MonitoredGroupDTOGroupPurposeEnum].
+class MonitoredGroupDTOGroupPurposeEnumTypeTransformer {
+  factory MonitoredGroupDTOGroupPurposeEnumTypeTransformer() => _instance ??= const MonitoredGroupDTOGroupPurposeEnumTypeTransformer._();
+
+  const MonitoredGroupDTOGroupPurposeEnumTypeTransformer._();
+
+  String encode(MonitoredGroupDTOGroupPurposeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a MonitoredGroupDTOGroupPurposeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  MonitoredGroupDTOGroupPurposeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'GENERAL': return MonitoredGroupDTOGroupPurposeEnum.GENERAL;
+        case r'SELLER_COMMUNITY': return MonitoredGroupDTOGroupPurposeEnum.SELLER_COMMUNITY;
+        case r'unknown_default_open_api': return MonitoredGroupDTOGroupPurposeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [MonitoredGroupDTOGroupPurposeEnumTypeTransformer] instance.
+  static MonitoredGroupDTOGroupPurposeEnumTypeTransformer? _instance;
+}
+
+
+/// 目前 Raid Mode
+class MonitoredGroupDTORaidModeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const MonitoredGroupDTORaidModeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const OFF = MonitoredGroupDTORaidModeEnum._(r'OFF');
+  static const WATCH = MonitoredGroupDTORaidModeEnum._(r'WATCH');
+  static const ACTIVE = MonitoredGroupDTORaidModeEnum._(r'ACTIVE');
+  static const LOCKDOWN = MonitoredGroupDTORaidModeEnum._(r'LOCKDOWN');
+  static const unknownDefaultOpenApi = MonitoredGroupDTORaidModeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][MonitoredGroupDTORaidModeEnum].
+  static const values = <MonitoredGroupDTORaidModeEnum>[
+    OFF,
+    WATCH,
+    ACTIVE,
+    LOCKDOWN,
+    unknownDefaultOpenApi,
+  ];
+
+  static MonitoredGroupDTORaidModeEnum? fromJson(dynamic value) => MonitoredGroupDTORaidModeEnumTypeTransformer().decode(value);
+
+  static List<MonitoredGroupDTORaidModeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <MonitoredGroupDTORaidModeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = MonitoredGroupDTORaidModeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [MonitoredGroupDTORaidModeEnum] to String,
+/// and [decode] dynamic data back to [MonitoredGroupDTORaidModeEnum].
+class MonitoredGroupDTORaidModeEnumTypeTransformer {
+  factory MonitoredGroupDTORaidModeEnumTypeTransformer() => _instance ??= const MonitoredGroupDTORaidModeEnumTypeTransformer._();
+
+  const MonitoredGroupDTORaidModeEnumTypeTransformer._();
+
+  String encode(MonitoredGroupDTORaidModeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a MonitoredGroupDTORaidModeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  MonitoredGroupDTORaidModeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'OFF': return MonitoredGroupDTORaidModeEnum.OFF;
+        case r'WATCH': return MonitoredGroupDTORaidModeEnum.WATCH;
+        case r'ACTIVE': return MonitoredGroupDTORaidModeEnum.ACTIVE;
+        case r'LOCKDOWN': return MonitoredGroupDTORaidModeEnum.LOCKDOWN;
+        case r'unknown_default_open_api': return MonitoredGroupDTORaidModeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [MonitoredGroupDTORaidModeEnumTypeTransformer] instance.
+  static MonitoredGroupDTORaidModeEnumTypeTransformer? _instance;
+}
+
 
 /// 回覆模式
 class MonitoredGroupDTOReplyModeEnum {

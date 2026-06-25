@@ -35,8 +35,8 @@ class ProductClassificationResponse {
     this.category,
     this.productType,
     this.sourcePlatform,
-    this.confidence,
     this.sourceRegion,
+    this.confidence,
   });
 
   /// 建議商品類型
@@ -189,15 +189,6 @@ class ProductClassificationResponse {
   ///
   String? sourcePlatform;
 
-  /// Issue #519 compatibility alias for categoryConfidence
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  double? confidence;
-
   /// Issue #519 compatibility alias for suggestedSourceRegion
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -206,6 +197,15 @@ class ProductClassificationResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? sourceRegion;
+
+  /// Issue #519 compatibility alias for categoryConfidence
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? confidence;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductClassificationResponse &&
@@ -231,8 +231,8 @@ class ProductClassificationResponse {
     other.category == category &&
     other.productType == productType &&
     other.sourcePlatform == sourcePlatform &&
-    other.confidence == confidence &&
-    other.sourceRegion == sourceRegion;
+    other.sourceRegion == sourceRegion &&
+    other.confidence == confidence;
 
   @override
   int get hashCode =>
@@ -259,11 +259,11 @@ class ProductClassificationResponse {
     (category == null ? 0 : category!.hashCode) +
     (productType == null ? 0 : productType!.hashCode) +
     (sourcePlatform == null ? 0 : sourcePlatform!.hashCode) +
-    (confidence == null ? 0 : confidence!.hashCode) +
-    (sourceRegion == null ? 0 : sourceRegion!.hashCode);
+    (sourceRegion == null ? 0 : sourceRegion!.hashCode) +
+    (confidence == null ? 0 : confidence!.hashCode);
 
   @override
-  String toString() => 'ProductClassificationResponse[suggestedProductType=$suggestedProductType, suggestedCategory=$suggestedCategory, categoryConfidence=$categoryConfidence, reason=$reason, alternativeCategories=$alternativeCategories, suggestedTags=$suggestedTags, suggestedSourceRegion=$suggestedSourceRegion, suggestedSourcePlatform=$suggestedSourcePlatform, needsTaxonomyRequest=$needsTaxonomyRequest, taxonomyRequestType=$taxonomyRequestType, taxonomyTargetCode=$taxonomyTargetCode, taxonomyReason=$taxonomyReason, pendingRequestId=$pendingRequestId, suggestionId=$suggestionId, aiProvider=$aiProvider, fallbackUsed=$fallbackUsed, rawResponse=$rawResponse, warnings=$warnings, tags=$tags, category=$category, productType=$productType, sourcePlatform=$sourcePlatform, confidence=$confidence, sourceRegion=$sourceRegion]';
+  String toString() => 'ProductClassificationResponse[suggestedProductType=$suggestedProductType, suggestedCategory=$suggestedCategory, categoryConfidence=$categoryConfidence, reason=$reason, alternativeCategories=$alternativeCategories, suggestedTags=$suggestedTags, suggestedSourceRegion=$suggestedSourceRegion, suggestedSourcePlatform=$suggestedSourcePlatform, needsTaxonomyRequest=$needsTaxonomyRequest, taxonomyRequestType=$taxonomyRequestType, taxonomyTargetCode=$taxonomyTargetCode, taxonomyReason=$taxonomyReason, pendingRequestId=$pendingRequestId, suggestionId=$suggestionId, aiProvider=$aiProvider, fallbackUsed=$fallbackUsed, rawResponse=$rawResponse, warnings=$warnings, tags=$tags, category=$category, productType=$productType, sourcePlatform=$sourcePlatform, sourceRegion=$sourceRegion, confidence=$confidence]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -361,15 +361,15 @@ class ProductClassificationResponse {
     } else {
       json[r'sourcePlatform'] = null;
     }
-    if (this.confidence != null) {
-      json[r'confidence'] = this.confidence;
-    } else {
-      json[r'confidence'] = null;
-    }
     if (this.sourceRegion != null) {
       json[r'sourceRegion'] = this.sourceRegion;
     } else {
       json[r'sourceRegion'] = null;
+    }
+    if (this.confidence != null) {
+      json[r'confidence'] = this.confidence;
+    } else {
+      json[r'confidence'] = null;
     }
     return json;
   }
@@ -421,8 +421,8 @@ class ProductClassificationResponse {
         category: ProductClassificationResponseCategoryEnum.fromJson(json[r'category']),
         productType: ProductClassificationResponseProductTypeEnum.fromJson(json[r'productType']),
         sourcePlatform: mapValueOfType<String>(json, r'sourcePlatform'),
-        confidence: mapValueOfType<double>(json, r'confidence'),
         sourceRegion: mapValueOfType<String>(json, r'sourceRegion'),
+        confidence: mapValueOfType<double>(json, r'confidence'),
       );
     }
     return null;

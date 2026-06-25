@@ -8745,12 +8745,56 @@
         ]
       }
     },
+    "/admin/telegram-monitor/groups/{groupId}/raid-mode": {
+      "post": {
+        "tags": [
+          "Telegram 群消息監聽管理"
+        ],
+        "summary": "手動切換群組 Raid Mode；預設只改後端狀態，不呼叫 Telegram 管理 API",
+        "operationId": "updateRaidMode",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "Telegram 群組 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": -1001234567890
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupRaidModeUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupModerationStatusDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/telegram-monitor/groups/{groupId}/edit": {
       "post": {
         "tags": [
           "Telegram 群消息監聽管理"
         ],
-        "summary": "統一更新群組設定（aiChatEnabled / replyMode / messageCountThreshold / minIntervalMinutes / personality / customPrompt）",
+        "summary": "統一更新群組設定（aiChatEnabled / groupPurpose / moderationEnabled / replyMode / messageCountThreshold / minIntervalMinutes / personality / customPrompt）",
         "operationId": "editGroup",
         "parameters": [
           {
@@ -16413,6 +16457,54 @@
         }
       }
     },
+    "/admin/telegram-monitor/groups/{groupId}/moderation": {
+      "get": {
+        "tags": [
+          "Telegram 群消息監聽管理"
+        ],
+        "summary": "獲取群組防護狀態與最近審計事件",
+        "operationId": "getModerationStatus",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "Telegram 群組 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": -1001234567890
+          },
+          {
+            "name": "eventLimit",
+            "in": "query",
+            "description": "最近審計事件筆數上限",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1
+            },
+            "example": 20
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupModerationStatusDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/telegram-monitor/groups/{groupId}/detail": {
       "get": {
         "tags": [
@@ -23787,10 +23879,10 @@
             },
             "uniqueItems": true
           },
-          "defaultShippingFee": {
+          "minimumShippingFee": {
             "type": "number"
           },
-          "minimumShippingFee": {
+          "defaultShippingFee": {
             "type": "number"
           },
           "stockLow": {
@@ -27923,14 +28015,14 @@
             "type": "string",
             "description": "Issue #519 compatibility alias for suggestedSourcePlatform"
           },
+          "sourceRegion": {
+            "type": "string",
+            "description": "Issue #519 compatibility alias for suggestedSourceRegion"
+          },
           "confidence": {
             "type": "number",
             "format": "double",
             "description": "Issue #519 compatibility alias for categoryConfidence"
-          },
-          "sourceRegion": {
-            "type": "string",
-            "description": "Issue #519 compatibility alias for suggestedSourceRegion"
           }
         }
       },
@@ -35103,6 +35195,251 @@
           }
         }
       },
+      "GroupRaidModeUpdateRequest": {
+        "type": "object",
+        "description": "Telegram 群 Raid Mode 更新請求",
+        "properties": {
+          "raidMode": {
+            "type": "string",
+            "description": "目標 Raid Mode",
+            "enum": [
+              "OFF",
+              "WATCH",
+              "ACTIVE",
+              "LOCKDOWN"
+            ],
+            "example": "ACTIVE"
+          },
+          "untilMinutes": {
+            "type": "integer",
+            "format": "int32",
+            "description": "有效分鐘數；OFF 時忽略。未填時 ACTIVE 預設 30 分鐘，LOCKDOWN 預設 15 分鐘。",
+            "example": 30
+          },
+          "reason": {
+            "type": "string",
+            "description": "原因，會寫入審計",
+            "example": "seller group spam burst"
+          },
+          "executeTelegramAction": {
+            "type": "boolean",
+            "description": "是否立即呼叫 Telegram 管理 API。預設 false，只更新後端狀態。",
+            "example": false
+          },
+          "lockGroupMessages": {
+            "type": "boolean",
+            "description": "LOCKDOWN 時是否限制群組預設發言權限。只有 executeTelegramAction=true 時有效。",
+            "example": false
+          },
+          "restoreGroupMessages": {
+            "type": "boolean",
+            "description": "OFF 時是否嘗試恢復群組預設發言權限。只有 executeTelegramAction=true 時有效。",
+            "example": false
+          }
+        },
+        "required": [
+          "raidMode"
+        ]
+      },
+      "GroupActivityStatsDTO": {
+        "type": "object",
+        "description": "Telegram 群組活躍度統計",
+        "properties": {
+          "groupId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Telegram 群組 ID",
+            "example": -1001234567890
+          },
+          "messagesPerMinute": {
+            "type": "integer",
+            "format": "int64",
+            "description": "最近 1 分鐘消息數",
+            "example": 12
+          },
+          "messagesPerHour": {
+            "type": "integer",
+            "format": "int64",
+            "description": "最近 1 小時消息數",
+            "example": 188
+          },
+          "lastMessageTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "最近消息時間"
+          },
+          "recentActiveUsers": {
+            "type": "integer",
+            "format": "int64",
+            "description": "最近 1 小時活躍用戶數",
+            "example": 25
+          }
+        },
+        "required": [
+          "groupId",
+          "messagesPerHour",
+          "messagesPerMinute",
+          "recentActiveUsers"
+        ]
+      },
+      "GroupModerationStatusDTO": {
+        "type": "object",
+        "description": "Telegram 群防護狀態",
+        "properties": {
+          "groupId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Telegram 群組 ID"
+          },
+          "groupName": {
+            "type": "string",
+            "description": "群組名稱"
+          },
+          "groupPurpose": {
+            "type": "string",
+            "description": "群用途",
+            "enum": [
+              "GENERAL",
+              "SELLER_COMMUNITY"
+            ]
+          },
+          "moderationEnabled": {
+            "type": "boolean",
+            "description": "是否啟用自動防護"
+          },
+          "raidMode": {
+            "type": "string",
+            "description": "目前 Raid Mode",
+            "enum": [
+              "OFF",
+              "WATCH",
+              "ACTIVE",
+              "LOCKDOWN"
+            ]
+          },
+          "raidModeUntil": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Raid Mode 到期時間"
+          },
+          "raidReason": {
+            "type": "string",
+            "description": "Raid Mode 原因"
+          },
+          "raidActive": {
+            "type": "boolean",
+            "description": "是否仍處於有效 Raid Mode"
+          },
+          "lastRaidTriggeredAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "最近一次自動觸發 Raid 時間"
+          },
+          "activity": {
+            "$ref": "#/components/schemas/GroupActivityStatsDTO",
+            "description": "目前活躍度"
+          },
+          "recentEvents": {
+            "type": "array",
+            "description": "最近防護事件",
+            "items": {
+              "$ref": "#/components/schemas/ModerationAuditEventDTO"
+            }
+          }
+        },
+        "required": [
+          "activity",
+          "groupId",
+          "groupPurpose",
+          "moderationEnabled",
+          "raidActive",
+          "raidMode",
+          "recentEvents"
+        ]
+      },
+      "ModerationAuditEventDTO": {
+        "type": "object",
+        "description": "Telegram 群防護審計事件",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "事件 ID"
+          },
+          "groupId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Telegram 群組 ID"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Telegram 用戶 ID"
+          },
+          "messageId": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Telegram 消息 ID"
+          },
+          "action": {
+            "type": "string",
+            "description": "防護動作",
+            "enum": [
+              "RAID_MODE_UPDATE",
+              "RAID_AUTO_TRIGGER",
+              "HIGH_RISK_MESSAGE_OBSERVED",
+              "SPAM_BURST_OBSERVED",
+              "DUPLICATE_MESSAGE_BURST_OBSERVED",
+              "DELETE_MESSAGE",
+              "MUTE_USER",
+              "BAN_USER",
+              "LOCK_GROUP_MESSAGES",
+              "RESTORE_GROUP_MESSAGES",
+              "REVOKE_INVITE_LINK"
+            ]
+          },
+          "raidMode": {
+            "type": "string",
+            "description": "事件發生時的 Raid Mode",
+            "enum": [
+              "OFF",
+              "WATCH",
+              "ACTIVE",
+              "LOCKDOWN"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "description": "原因"
+          },
+          "executed": {
+            "type": "boolean",
+            "description": "是否真的呼叫 Telegram 管理 API"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "Telegram 管理 API 是否成功"
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "失敗原因"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "建立時間"
+          }
+        },
+        "required": [
+          "action",
+          "createdAt",
+          "executed",
+          "groupId",
+          "id",
+          "raidMode",
+          "success"
+        ]
+      },
       "GroupEditRequest": {
         "type": "object",
         "description": "群組設定更新請求（所有欄位皆為可選，只傳需要修改的欄位）",
@@ -35111,6 +35448,20 @@
             "type": "boolean",
             "description": "是否啟用群組 AI 聊天",
             "example": true
+          },
+          "groupPurpose": {
+            "type": "string",
+            "description": "群用途",
+            "enum": [
+              "GENERAL",
+              "SELLER_COMMUNITY"
+            ],
+            "example": "SELLER_COMMUNITY"
+          },
+          "moderationEnabled": {
+            "type": "boolean",
+            "description": "是否啟用自動防護偵測",
+            "example": false
           },
           "replyMode": {
             "type": "string",
@@ -35171,6 +35522,15 @@
             "description": "群組類型",
             "example": "supergroup"
           },
+          "groupPurpose": {
+            "type": "string",
+            "description": "群用途",
+            "enum": [
+              "GENERAL",
+              "SELLER_COMMUNITY"
+            ],
+            "example": "SELLER_COMMUNITY"
+          },
           "firstSeenAt": {
             "type": "string",
             "format": "date-time",
@@ -35185,6 +35545,41 @@
             "type": "boolean",
             "description": "是否啟用群組 AI 聊天",
             "example": true
+          },
+          "moderationEnabled": {
+            "type": "boolean",
+            "description": "是否啟用自動防護偵測",
+            "example": false
+          },
+          "raidMode": {
+            "type": "string",
+            "description": "目前 Raid Mode",
+            "enum": [
+              "OFF",
+              "WATCH",
+              "ACTIVE",
+              "LOCKDOWN"
+            ],
+            "example": "OFF"
+          },
+          "raidModeUntil": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Raid Mode 到期時間"
+          },
+          "raidReason": {
+            "type": "string",
+            "description": "Raid Mode 原因"
+          },
+          "raidActive": {
+            "type": "boolean",
+            "description": "是否仍處於有效 Raid Mode",
+            "example": false
+          },
+          "lastRaidTriggeredAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "最近一次自動觸發 Raid 時間"
           },
           "aiManualPromptEnabled": {
             "type": "boolean",
@@ -35241,7 +35636,11 @@
           "bufferedMessageCount",
           "firstSeenAt",
           "groupId",
-          "groupType"
+          "groupPurpose",
+          "groupType",
+          "moderationEnabled",
+          "raidActive",
+          "raidMode"
         ]
       },
       "GroupAiSimulationRequest": {
@@ -39687,13 +40086,13 @@
             "type": "integer",
             "format": "int32"
           },
-          "outOfStock": {
-            "type": "boolean"
-          },
           "lowStock": {
             "type": "boolean"
           },
           "belowMinimum": {
+            "type": "boolean"
+          },
+          "outOfStock": {
             "type": "boolean"
           }
         }
@@ -41685,47 +42084,6 @@
         "required": [
           "messageCount",
           "userId"
-        ]
-      },
-      "GroupActivityStatsDTO": {
-        "type": "object",
-        "description": "Telegram 群組活躍度統計",
-        "properties": {
-          "groupId": {
-            "type": "integer",
-            "format": "int64",
-            "description": "Telegram 群組 ID",
-            "example": -1001234567890
-          },
-          "messagesPerMinute": {
-            "type": "integer",
-            "format": "int64",
-            "description": "最近 1 分鐘消息數",
-            "example": 12
-          },
-          "messagesPerHour": {
-            "type": "integer",
-            "format": "int64",
-            "description": "最近 1 小時消息數",
-            "example": 188
-          },
-          "lastMessageTime": {
-            "type": "string",
-            "format": "date-time",
-            "description": "最近消息時間"
-          },
-          "recentActiveUsers": {
-            "type": "integer",
-            "format": "int64",
-            "description": "最近 1 小時活躍用戶數",
-            "example": 25
-          }
-        },
-        "required": [
-          "groupId",
-          "messagesPerHour",
-          "messagesPerMinute",
-          "recentActiveUsers"
         ]
       },
       "GroupDetailDTO": {

@@ -16,7 +16,7 @@ class TelegramApi {
 
   final ApiClient apiClient;
 
-  /// 統一更新群組設定（aiChatEnabled / replyMode / messageCountThreshold / minIntervalMinutes / personality / customPrompt）
+  /// 統一更新群組設定（aiChatEnabled / groupPurpose / moderationEnabled / replyMode / messageCountThreshold / minIntervalMinutes / personality / customPrompt）
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -52,7 +52,7 @@ class TelegramApi {
     );
   }
 
-  /// 統一更新群組設定（aiChatEnabled / replyMode / messageCountThreshold / minIntervalMinutes / personality / customPrompt）
+  /// 統一更新群組設定（aiChatEnabled / groupPurpose / moderationEnabled / replyMode / messageCountThreshold / minIntervalMinutes / personality / customPrompt）
   ///
   /// Parameters:
   ///
@@ -196,6 +196,71 @@ class TelegramApi {
     return null;
   }
 
+  /// 獲取群組防護狀態與最近審計事件
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] groupId (required):
+  ///   Telegram 群組 ID
+  ///
+  /// * [int] eventLimit:
+  ///   最近審計事件筆數上限
+  Future<Response> getModerationStatusWithHttpInfo(int groupId, { int? eventLimit, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/telegram-monitor/groups/{groupId}/moderation'
+      .replaceAll('{groupId}', groupId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (eventLimit != null) {
+      queryParams.addAll(_queryParams('', 'eventLimit', eventLimit));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 獲取群組防護狀態與最近審計事件
+  ///
+  /// Parameters:
+  ///
+  /// * [int] groupId (required):
+  ///   Telegram 群組 ID
+  ///
+  /// * [int] eventLimit:
+  ///   最近審計事件筆數上限
+  Future<GroupModerationStatusDTO?> getModerationStatus(int groupId, { int? eventLimit, }) async {
+    final response = await getModerationStatusWithHttpInfo(groupId,  eventLimit: eventLimit, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GroupModerationStatusDTO',) as GroupModerationStatusDTO;
+    
+    }
+    return null;
+  }
+
   /// 模擬 AI 生成群組消息（previewOnly=true 時只預覽 prompt，不呼叫 AI）
   ///
   /// Note: This method returns the HTTP [Response].
@@ -250,6 +315,65 @@ class TelegramApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GroupAiSimulationResponseDTO',) as GroupAiSimulationResponseDTO;
+    
+    }
+    return null;
+  }
+
+  /// 手動切換群組 Raid Mode；預設只改後端狀態，不呼叫 Telegram 管理 API
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] groupId (required):
+  ///   Telegram 群組 ID
+  ///
+  /// * [GroupRaidModeUpdateRequest] groupRaidModeUpdateRequest (required):
+  Future<Response> updateRaidModeWithHttpInfo(int groupId, GroupRaidModeUpdateRequest groupRaidModeUpdateRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/telegram-monitor/groups/{groupId}/raid-mode'
+      .replaceAll('{groupId}', groupId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody = groupRaidModeUpdateRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 手動切換群組 Raid Mode；預設只改後端狀態，不呼叫 Telegram 管理 API
+  ///
+  /// Parameters:
+  ///
+  /// * [int] groupId (required):
+  ///   Telegram 群組 ID
+  ///
+  /// * [GroupRaidModeUpdateRequest] groupRaidModeUpdateRequest (required):
+  Future<GroupModerationStatusDTO?> updateRaidMode(int groupId, GroupRaidModeUpdateRequest groupRaidModeUpdateRequest,) async {
+    final response = await updateRaidModeWithHttpInfo(groupId, groupRaidModeUpdateRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GroupModerationStatusDTO',) as GroupModerationStatusDTO;
     
     }
     return null;
