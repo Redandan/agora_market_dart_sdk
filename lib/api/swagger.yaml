@@ -16616,6 +16616,27 @@
         ]
       }
     },
+    "/admin/telegram-monitor/routing-status": {
+      "get": {
+        "tags": [
+          "Telegram 群消息監聽管理"
+        ],
+        "summary": "查詢 Telegram 群 routing 診斷狀態（TELEGRAM_CHANNEL_ID / operations notification / public community）",
+        "operationId": "getRoutingStatus",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelegramGroupRoutingStatusDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/telegram-monitor/groups": {
       "get": {
         "tags": [
@@ -42452,6 +42473,72 @@
             "items": {
               "$ref": "#/components/schemas/PromoCodeStatDto"
             }
+          }
+        }
+      },
+      "TelegramGroupRoutingStatusDTO": {
+        "type": "object",
+        "description": "Telegram 群用途 routing 診斷狀態",
+        "properties": {
+          "telegramChannelId": {
+            "type": "string",
+            "description": "目前 runtime 設定的 TELEGRAM_CHANNEL_ID 原始值",
+            "example": -1003885932854
+          },
+          "telegramChannelGroupId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "TELEGRAM_CHANNEL_ID 解析後的數字群組 ID",
+            "example": -1003885932854
+          },
+          "notificationTarget": {
+            "$ref": "#/components/schemas/MonitoredGroupDTO",
+            "description": "TELEGRAM_CHANNEL_ID 對應的 monitored group；找不到時為 null"
+          },
+          "operationsNotificationGroups": {
+            "type": "array",
+            "description": "標記為 OPERATIONS_NOTIFICATION 的 monitored groups",
+            "items": {
+              "$ref": "#/components/schemas/MonitoredGroupDTO"
+            }
+          },
+          "publicCommunityGroups": {
+            "type": "array",
+            "description": "標記為 PUBLIC_COMMUNITY 的 monitored groups",
+            "items": {
+              "$ref": "#/components/schemas/MonitoredGroupDTO"
+            }
+          },
+          "healthy": {
+            "type": "boolean",
+            "description": "沒有 hard problem 時為 true；warning 不會讓此值變 false",
+            "example": true
+          },
+          "checksPassed": {
+            "type": "array",
+            "description": "通過的診斷檢查代碼",
+            "items": {
+              "type": "string"
+            }
+          },
+          "problems": {
+            "type": "array",
+            "description": "需要處理的硬錯誤代碼",
+            "items": {
+              "type": "string"
+            }
+          },
+          "warnings": {
+            "type": "array",
+            "description": "可觀察但不一定需要立即修復的警告代碼",
+            "items": {
+              "type": "string"
+            }
+          },
+          "checkedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "診斷產生時間"
           }
         }
       },

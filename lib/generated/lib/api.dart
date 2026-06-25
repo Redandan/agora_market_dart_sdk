@@ -534,6 +534,7 @@ part 'model/taxonomy_dry_run_response.dart';
 part 'model/taxonomy_proposal_implemented_request.dart';
 part 'model/taxonomy_proposal_review_request.dart';
 part 'model/telegram_bot_info.dart';
+part 'model/telegram_group_routing_status_dto.dart';
 part 'model/telegram_web_app_auth_request.dart';
 part 'model/terms_state.dart';
 part 'model/top_delivery_area_dto.dart';

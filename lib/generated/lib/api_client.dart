@@ -1054,6 +1054,8 @@ class ApiClient {
           return TaxonomyProposalReviewRequest.fromJson(value);
         case 'TelegramBotInfo':
           return TelegramBotInfo.fromJson(value);
+        case 'TelegramGroupRoutingStatusDTO':
+          return TelegramGroupRoutingStatusDTO.fromJson(value);
         case 'TelegramWebAppAuthRequest':
           return TelegramWebAppAuthRequest.fromJson(value);
         case 'TermsState':
