@@ -186,6 +186,8 @@ class ApiClient {
           return AcceptOrderParam.fromJson(value);
         case 'AccountRecoveryAdvisory':
           return AccountRecoveryAdvisory.fromJson(value);
+        case 'Action':
+          return Action.fromJson(value);
         case 'ActionRule':
           return ActionRule.fromJson(value);
         case 'ActivityDTO':
@@ -894,6 +896,8 @@ class ApiClient {
           return QuickLogisticsRequest.fromJson(value);
         case 'QuickLogisticsResult':
           return QuickLogisticsResult.fromJson(value);
+        case 'Reason':
+          return Reason.fromJson(value);
         case 'Recharge':
           return Recharge.fromJson(value);
         case 'RechargeResponse':
@@ -936,6 +940,8 @@ class ApiClient {
           return ReviewStatisticsDTO.fromJson(value);
         case 'ReviewUpdateParam':
           return ReviewUpdateParam.fromJson(value);
+        case 'RiskState':
+          return RiskState.fromJson(value);
         case 'RtpEntry':
           return RtpEntry.fromJson(value);
         case 'SSEEventRequest':
@@ -1122,6 +1128,8 @@ class ApiClient {
           return WalletConnectInfo.fromJson(value);
         case 'WalletConnectNonceResponse':
           return WalletConnectNonceResponse.fromJson(value);
+        case 'WalletSafetySummaryResponse':
+          return WalletSafetySummaryResponse.fromJson(value);
         case 'WalletState':
           return WalletState.fromJson(value);
         case 'Web3LoginRequest':

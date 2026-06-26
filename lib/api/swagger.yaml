@@ -81,6 +81,10 @@
       "description": "自動回復管理 API"
     },
     {
+      "name": "wallet-safety",
+      "description": "USDT wallet safety summary API"
+    },
+    {
       "name": "admin-notifications",
       "description": "管理員通知管理 API"
     },
@@ -12405,6 +12409,80 @@
         ]
       }
     },
+    "/wallet/safety-summary": {
+      "get": {
+        "tags": [
+          "wallet-safety"
+        ],
+        "summary": "Get current user's USDT wallet or withdrawal safety summary",
+        "operationId": "getSafetySummary",
+        "parameters": [
+          {
+            "name": "context",
+            "in": "query",
+            "description": "Summary context: WALLET or WITHDRAW",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "WALLET"
+            },
+            "example": "WITHDRAW"
+          },
+          {
+            "name": "amount",
+            "in": "query",
+            "description": "Optional USDT withdrawal amount",
+            "required": false,
+            "schema": {
+              "type": "number"
+            },
+            "example": 500
+          },
+          {
+            "name": "protocol",
+            "in": "query",
+            "description": "Optional USDT withdrawal protocol/network",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "協議",
+              "enum": [
+                "TRC20",
+                "ERC20",
+                "BEP20"
+              ]
+            },
+            "example": "TRC20"
+          },
+          {
+            "name": "toAddress",
+            "in": "query",
+            "description": "Optional USDT withdrawal target address. Never echoed back.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletSafetySummaryResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/user-addresses/{addressId}": {
       "get": {
         "tags": [
@@ -20551,10 +20629,10 @@
           "empty": {
             "type": "boolean"
           },
-          "sorted": {
+          "unsorted": {
             "type": "boolean"
           },
-          "unsorted": {
+          "sorted": {
             "type": "boolean"
           }
         }
@@ -40201,6 +40279,158 @@
           "details": {
             "type": "string",
             "description": "詳細信息"
+          }
+        }
+      },
+      "Action": {
+        "type": "object",
+        "description": "Recommended wallet safety action",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "routeHint": {
+            "type": "string"
+          }
+        }
+      },
+      "Reason": {
+        "type": "object",
+        "description": "Wallet safety reason",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string"
+          },
+          "actionCode": {
+            "type": "string"
+          }
+        }
+      },
+      "RiskState": {
+        "type": "object",
+        "description": "Non-sensitive withdrawal risk state",
+        "properties": {
+          "successfulWithdrawCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "flaggedCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dailyUsedUsdt": {
+            "type": "number"
+          },
+          "monthlyUsedUsdt": {
+            "type": "number"
+          },
+          "dailyLimitUsdt": {
+            "type": "number"
+          },
+          "monthlyLimitUsdt": {
+            "type": "number"
+          },
+          "cooldownActive": {
+            "type": "boolean"
+          },
+          "cooldownUntil": {
+            "type": "string"
+          },
+          "accountAgeDays": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "WalletSafetySummaryResponse": {
+        "type": "object",
+        "description": "Current user's USDT wallet and withdrawal safety summary",
+        "properties": {
+          "showReminder": {
+            "type": "boolean",
+            "description": "Whether frontend should show the reminder card",
+            "example": true
+          },
+          "severity": {
+            "type": "string",
+            "description": "Overall UI severity",
+            "enum": [
+              "HIDDEN",
+              "INFO",
+              "WARNING",
+              "CRITICAL"
+            ],
+            "example": "WARNING"
+          },
+          "statusText": {
+            "type": "string",
+            "description": "Short status text for compact UI",
+            "example": "建議檢查"
+          },
+          "title": {
+            "type": "string",
+            "description": "Reminder title"
+          },
+          "message": {
+            "type": "string",
+            "description": "Reminder message"
+          },
+          "currency": {
+            "type": "string",
+            "description": "Wallet currency. Agora wallet scope is USDT-only.",
+            "example": "USDT"
+          },
+          "context": {
+            "type": "string",
+            "description": "Summary context",
+            "enum": [
+              "WALLET",
+              "WITHDRAW"
+            ],
+            "example": "WITHDRAW"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Optional withdrawal amount used by this safety preview"
+          },
+          "network": {
+            "type": "string",
+            "description": "Optional USDT withdrawal network/protocol, e.g. TRC20 or ERC20"
+          },
+          "reasons": {
+            "type": "array",
+            "description": "Stable reason codes for frontend i18n and action mapping",
+            "items": {
+              "$ref": "#/components/schemas/Reason"
+            }
+          },
+          "recommendedActions": {
+            "type": "array",
+            "description": "Recommended frontend actions",
+            "items": {
+              "$ref": "#/components/schemas/Action"
+            }
+          },
+          "canProceed": {
+            "type": "boolean",
+            "description": "Whether the user can proceed from this safety summary"
+          },
+          "blockedReason": {
+            "type": "string",
+            "description": "Stable blocking reason code when canProceed=false"
+          },
+          "riskState": {
+            "$ref": "#/components/schemas/RiskState",
+            "description": "Risk-state counters, without sensitive details"
           }
         }
       },

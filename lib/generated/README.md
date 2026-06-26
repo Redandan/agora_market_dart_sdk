@@ -590,6 +590,7 @@ Class | Method | HTTP request | Description
 *VerificationCodeLoginApi* | [**verifyCode**](doc//VerificationCodeLoginApi.md#verifycode) | **POST** /auth/telegram-bot/verify-code | 驗證碼登入
 *WalletConnectApi* | [**getNonce**](doc//WalletConnectApi.md#getnonce) | **POST** /auth/wallet-connect/nonce | 获取 Nonce（通用）
 *WalletConnectApi* | [**login**](doc//WalletConnectApi.md#login) | **POST** /auth/wallet-connect/login | Web3 钱包登录（通用）
+*WalletSafetyApi* | [**getSafetySummary**](doc//WalletSafetyApi.md#getsafetysummary) | **GET** /wallet/safety-summary | Get current user's USDT wallet or withdrawal safety summary
 *WebpushApi* | [**getHealthStatus**](doc//WebpushApi.md#gethealthstatus) | **GET** /webpush/health | 獲取服務健康狀態
 *WebpushApi* | [**getSchedulerStatus**](doc//WebpushApi.md#getschedulerstatus) | **GET** /webpush/scheduled/status | 獲取定時推送狀態
 *WebpushApi* | [**getStatistics**](doc//WebpushApi.md#getstatistics) | **GET** /webpush/statistics | 獲取推送統計信息
@@ -610,6 +611,7 @@ Class | Method | HTTP request | Description
 
  - [AcceptOrderParam](doc//AcceptOrderParam.md)
  - [AccountRecoveryAdvisory](doc//AccountRecoveryAdvisory.md)
+ - [Action](doc//Action.md)
  - [ActionRule](doc//ActionRule.md)
  - [ActivityDTO](doc//ActivityDTO.md)
  - [ActivitySearchParam](doc//ActivitySearchParam.md)
@@ -964,6 +966,7 @@ Class | Method | HTTP request | Description
  - [PwaSignalSummaryResponse](doc//PwaSignalSummaryResponse.md)
  - [QuickLogisticsRequest](doc//QuickLogisticsRequest.md)
  - [QuickLogisticsResult](doc//QuickLogisticsResult.md)
+ - [Reason](doc//Reason.md)
  - [Recharge](doc//Recharge.md)
  - [RechargeResponse](doc//RechargeResponse.md)
  - [RechargeSearchParam](doc//RechargeSearchParam.md)
@@ -985,6 +988,7 @@ Class | Method | HTTP request | Description
  - [ReviewSearchParam](doc//ReviewSearchParam.md)
  - [ReviewStatisticsDTO](doc//ReviewStatisticsDTO.md)
  - [ReviewUpdateParam](doc//ReviewUpdateParam.md)
+ - [RiskState](doc//RiskState.md)
  - [RtpEntry](doc//RtpEntry.md)
  - [SSEEventRequest](doc//SSEEventRequest.md)
  - [SSEEventResponse](doc//SSEEventResponse.md)
@@ -1078,6 +1082,7 @@ Class | Method | HTTP request | Description
  - [VerifyCodeRequest](doc//VerifyCodeRequest.md)
  - [WalletConnectInfo](doc//WalletConnectInfo.md)
  - [WalletConnectNonceResponse](doc//WalletConnectNonceResponse.md)
+ - [WalletSafetySummaryResponse](doc//WalletSafetySummaryResponse.md)
  - [WalletState](doc//WalletState.md)
  - [Web3LoginRequest](doc//Web3LoginRequest.md)
  - [Web3NonceRequest](doc//Web3NonceRequest.md)

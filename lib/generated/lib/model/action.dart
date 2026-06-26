@@ -10,12 +10,12 @@
 
 part of openapi.api;
 
-class SortObject {
-  /// Returns a new [SortObject] instance.
-  SortObject({
-    this.empty,
-    this.unsorted,
-    this.sorted,
+class Action {
+  /// Returns a new [Action] instance.
+  Action({
+    this.code,
+    this.label,
+    this.routeHint,
   });
 
   ///
@@ -24,7 +24,7 @@ class SortObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? empty;
+  String? code;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -32,7 +32,7 @@ class SortObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unsorted;
+  String? label;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -40,48 +40,48 @@ class SortObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? sorted;
+  String? routeHint;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SortObject &&
-    other.empty == empty &&
-    other.unsorted == unsorted &&
-    other.sorted == sorted;
+  bool operator ==(Object other) => identical(this, other) || other is Action &&
+    other.code == code &&
+    other.label == label &&
+    other.routeHint == routeHint;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (empty == null ? 0 : empty!.hashCode) +
-    (unsorted == null ? 0 : unsorted!.hashCode) +
-    (sorted == null ? 0 : sorted!.hashCode);
+    (code == null ? 0 : code!.hashCode) +
+    (label == null ? 0 : label!.hashCode) +
+    (routeHint == null ? 0 : routeHint!.hashCode);
 
   @override
-  String toString() => 'SortObject[empty=$empty, unsorted=$unsorted, sorted=$sorted]';
+  String toString() => 'Action[code=$code, label=$label, routeHint=$routeHint]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.empty != null) {
-      json[r'empty'] = this.empty;
+    if (this.code != null) {
+      json[r'code'] = this.code;
     } else {
-      json[r'empty'] = null;
+      json[r'code'] = null;
     }
-    if (this.unsorted != null) {
-      json[r'unsorted'] = this.unsorted;
+    if (this.label != null) {
+      json[r'label'] = this.label;
     } else {
-      json[r'unsorted'] = null;
+      json[r'label'] = null;
     }
-    if (this.sorted != null) {
-      json[r'sorted'] = this.sorted;
+    if (this.routeHint != null) {
+      json[r'routeHint'] = this.routeHint;
     } else {
-      json[r'sorted'] = null;
+      json[r'routeHint'] = null;
     }
     return json;
   }
 
-  /// Returns a new [SortObject] instance and imports its values from
+  /// Returns a new [Action] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static SortObject? fromJson(dynamic value) {
+  static Action? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -90,26 +90,26 @@ class SortObject {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "SortObject[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "SortObject[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "Action[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "Action[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return SortObject(
-        empty: mapValueOfType<bool>(json, r'empty'),
-        unsorted: mapValueOfType<bool>(json, r'unsorted'),
-        sorted: mapValueOfType<bool>(json, r'sorted'),
+      return Action(
+        code: mapValueOfType<String>(json, r'code'),
+        label: mapValueOfType<String>(json, r'label'),
+        routeHint: mapValueOfType<String>(json, r'routeHint'),
       );
     }
     return null;
   }
 
-  static List<SortObject> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <SortObject>[];
+  static List<Action> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <Action>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = SortObject.fromJson(row);
+        final value = Action.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -118,12 +118,12 @@ class SortObject {
     return result.toList(growable: growable);
   }
 
-  static Map<String, SortObject> mapFromJson(dynamic json) {
-    final map = <String, SortObject>{};
+  static Map<String, Action> mapFromJson(dynamic json) {
+    final map = <String, Action>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = SortObject.fromJson(entry.value);
+        final value = Action.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -132,14 +132,14 @@ class SortObject {
     return map;
   }
 
-  // maps a json object with a list of SortObject-objects as value to a dart map
-  static Map<String, List<SortObject>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<SortObject>>{};
+  // maps a json object with a list of Action-objects as value to a dart map
+  static Map<String, List<Action>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<Action>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SortObject.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = Action.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
