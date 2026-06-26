@@ -546,6 +546,8 @@ Class | Method | HTTP request | Description
 *TGApi* | [**getPlayerRounds**](doc//TGApi.md#getplayerrounds) | **GET** /tg-game/rounds | 查詢玩家流水
 *TGApi* | [**searchActivities**](doc//TGApi.md#searchactivities) | **POST** /tg-game/activity/search | 查詢活動
 *TGApi* | [**updateActivity**](doc//TGApi.md#updateactivity) | **PUT** /tg-game/activity/{id} | 更新活動
+*TelegramApi* | [**approveJoinRequest**](doc//TelegramApi.md#approvejoinrequest) | **POST** /admin/telegram-monitor/groups/{groupId}/join-requests/{requestId}/approve | 批准一筆 Telegram 入群申請；會呼叫 Telegram Bot API
+*TelegramApi* | [**declineJoinRequest**](doc//TelegramApi.md#declinejoinrequest) | **POST** /admin/telegram-monitor/groups/{groupId}/join-requests/{requestId}/decline | 拒絕一筆 Telegram 入群申請；會呼叫 Telegram Bot API
 *TelegramApi* | [**deleteAnnouncement**](doc//TelegramApi.md#deleteannouncement) | **POST** /admin/telegram-monitor/groups/{groupId}/announcements/{announcementId}/delete | 刪除一則 Telegram 群公告訊息
 *TelegramApi* | [**editGroup**](doc//TelegramApi.md#editgroup) | **POST** /admin/telegram-monitor/groups/{groupId}/edit | 統一更新群組設定（aiChatEnabled / groupPurpose / moderationEnabled / replyMode / messageCountThreshold / minIntervalMinutes / personality / customPrompt）
 *TelegramApi* | [**getGroupDetail**](doc//TelegramApi.md#getgroupdetail) | **GET** /admin/telegram-monitor/groups/{groupId}/detail | 獲取群組詳細資訊（活躍度統計 + 活躍用戶 + 最近消息）
@@ -553,6 +555,7 @@ Class | Method | HTTP request | Description
 *TelegramApi* | [**getModerationStatus**](doc//TelegramApi.md#getmoderationstatus) | **GET** /admin/telegram-monitor/groups/{groupId}/moderation | 獲取群組防護狀態與最近審計事件
 *TelegramApi* | [**getRoutingStatus**](doc//TelegramApi.md#getroutingstatus) | **GET** /admin/telegram-monitor/routing-status | 查詢 Telegram 群 routing 診斷狀態（TELEGRAM_CHANNEL_ID / operations notification / public community）
 *TelegramApi* | [**listAnnouncements**](doc//TelegramApi.md#listannouncements) | **GET** /admin/telegram-monitor/groups/{groupId}/announcements | 查詢 Telegram 群公告歷史
+*TelegramApi* | [**listJoinRequests**](doc//TelegramApi.md#listjoinrequests) | **GET** /admin/telegram-monitor/groups/{groupId}/join-requests | 查詢 Telegram 入群申請；預設只返回待審核申請
 *TelegramApi* | [**sendAnnouncement**](doc//TelegramApi.md#sendannouncement) | **POST** /admin/telegram-monitor/groups/{groupId}/announcements | 發布 Telegram 群公告；可選置頂並替換上一則置頂公告
 *TelegramApi* | [**simulateGroupMessage**](doc//TelegramApi.md#simulategroupmessage) | **POST** /admin/telegram-monitor/groups/{groupId}/ai-simulate | 模擬 AI 生成群組消息（previewOnly=true 時只預覽 prompt，不呼叫 AI）
 *TelegramApi* | [**unpinAnnouncement**](doc//TelegramApi.md#unpinannouncement) | **POST** /admin/telegram-monitor/groups/{groupId}/announcements/{announcementId}/unpin | 取消置頂一則 Telegram 群公告
@@ -1040,6 +1043,8 @@ Class | Method | HTTP request | Description
  - [TaxonomyProposalReviewRequest](doc//TaxonomyProposalReviewRequest.md)
  - [TelegramBotInfo](doc//TelegramBotInfo.md)
  - [TelegramGroupRoutingStatusDTO](doc//TelegramGroupRoutingStatusDTO.md)
+ - [TelegramJoinRequestDTO](doc//TelegramJoinRequestDTO.md)
+ - [TelegramJoinRequestDecisionRequest](doc//TelegramJoinRequestDecisionRequest.md)
  - [TelegramWebAppAuthRequest](doc//TelegramWebAppAuthRequest.md)
  - [TermsState](doc//TermsState.md)
  - [TopDeliveryAreaDTO](doc//TopDeliveryAreaDTO.md)

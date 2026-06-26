@@ -16,6 +16,138 @@ class TelegramApi {
 
   final ApiClient apiClient;
 
+  /// 批准一筆 Telegram 入群申請；會呼叫 Telegram Bot API
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] groupId (required):
+  ///   Telegram 群組 ID
+  ///
+  /// * [int] requestId (required):
+  ///   入群申請 ID
+  ///
+  /// * [TelegramJoinRequestDecisionRequest] telegramJoinRequestDecisionRequest:
+  Future<Response> approveJoinRequestWithHttpInfo(int groupId, int requestId, { TelegramJoinRequestDecisionRequest? telegramJoinRequestDecisionRequest, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/telegram-monitor/groups/{groupId}/join-requests/{requestId}/approve'
+      .replaceAll('{groupId}', groupId.toString())
+      .replaceAll('{requestId}', requestId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody = telegramJoinRequestDecisionRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 批准一筆 Telegram 入群申請；會呼叫 Telegram Bot API
+  ///
+  /// Parameters:
+  ///
+  /// * [int] groupId (required):
+  ///   Telegram 群組 ID
+  ///
+  /// * [int] requestId (required):
+  ///   入群申請 ID
+  ///
+  /// * [TelegramJoinRequestDecisionRequest] telegramJoinRequestDecisionRequest:
+  Future<TelegramJoinRequestDTO?> approveJoinRequest(int groupId, int requestId, { TelegramJoinRequestDecisionRequest? telegramJoinRequestDecisionRequest, }) async {
+    final response = await approveJoinRequestWithHttpInfo(groupId, requestId,  telegramJoinRequestDecisionRequest: telegramJoinRequestDecisionRequest, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TelegramJoinRequestDTO',) as TelegramJoinRequestDTO;
+    
+    }
+    return null;
+  }
+
+  /// 拒絕一筆 Telegram 入群申請；會呼叫 Telegram Bot API
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] groupId (required):
+  ///   Telegram 群組 ID
+  ///
+  /// * [int] requestId (required):
+  ///   入群申請 ID
+  ///
+  /// * [TelegramJoinRequestDecisionRequest] telegramJoinRequestDecisionRequest:
+  Future<Response> declineJoinRequestWithHttpInfo(int groupId, int requestId, { TelegramJoinRequestDecisionRequest? telegramJoinRequestDecisionRequest, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/telegram-monitor/groups/{groupId}/join-requests/{requestId}/decline'
+      .replaceAll('{groupId}', groupId.toString())
+      .replaceAll('{requestId}', requestId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody = telegramJoinRequestDecisionRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 拒絕一筆 Telegram 入群申請；會呼叫 Telegram Bot API
+  ///
+  /// Parameters:
+  ///
+  /// * [int] groupId (required):
+  ///   Telegram 群組 ID
+  ///
+  /// * [int] requestId (required):
+  ///   入群申請 ID
+  ///
+  /// * [TelegramJoinRequestDecisionRequest] telegramJoinRequestDecisionRequest:
+  Future<TelegramJoinRequestDTO?> declineJoinRequest(int groupId, int requestId, { TelegramJoinRequestDecisionRequest? telegramJoinRequestDecisionRequest, }) async {
+    final response = await declineJoinRequestWithHttpInfo(groupId, requestId,  telegramJoinRequestDecisionRequest: telegramJoinRequestDecisionRequest, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TelegramJoinRequestDTO',) as TelegramJoinRequestDTO;
+    
+    }
+    return null;
+  }
+
   /// 刪除一則 Telegram 群公告訊息
   ///
   /// Note: This method returns the HTTP [Response].
@@ -429,6 +561,83 @@ class TelegramApi {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<GroupAnnouncementDTO>') as List)
         .cast<GroupAnnouncementDTO>()
+        .toList(growable: false);
+
+    }
+    return null;
+  }
+
+  /// 查詢 Telegram 入群申請；預設只返回待審核申請
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] groupId (required):
+  ///   Telegram 群組 ID
+  ///
+  /// * [String] status:
+  ///   入群申請狀態；不傳則返回 PENDING
+  ///
+  /// * [int] limit:
+  ///   返回筆數上限
+  Future<Response> listJoinRequestsWithHttpInfo(int groupId, { String? status, int? limit, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/telegram-monitor/groups/{groupId}/join-requests'
+      .replaceAll('{groupId}', groupId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (status != null) {
+      queryParams.addAll(_queryParams('', 'status', status));
+    }
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查詢 Telegram 入群申請；預設只返回待審核申請
+  ///
+  /// Parameters:
+  ///
+  /// * [int] groupId (required):
+  ///   Telegram 群組 ID
+  ///
+  /// * [String] status:
+  ///   入群申請狀態；不傳則返回 PENDING
+  ///
+  /// * [int] limit:
+  ///   返回筆數上限
+  Future<List<TelegramJoinRequestDTO>?> listJoinRequests(int groupId, { String? status, int? limit, }) async {
+    final response = await listJoinRequestsWithHttpInfo(groupId,  status: status, limit: limit, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<TelegramJoinRequestDTO>') as List)
+        .cast<TelegramJoinRequestDTO>()
         .toList(growable: false);
 
     }

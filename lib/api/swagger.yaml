@@ -8820,6 +8820,114 @@
         }
       }
     },
+    "/admin/telegram-monitor/groups/{groupId}/join-requests/{requestId}/decline": {
+      "post": {
+        "tags": [
+          "Telegram 群消息監聽管理"
+        ],
+        "summary": "拒絕一筆 Telegram 入群申請；會呼叫 Telegram Bot API",
+        "operationId": "declineJoinRequest",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "Telegram 群組 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": -1001234567890
+          },
+          {
+            "name": "requestId",
+            "in": "path",
+            "description": "入群申請 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TelegramJoinRequestDecisionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelegramJoinRequestDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/telegram-monitor/groups/{groupId}/join-requests/{requestId}/approve": {
+      "post": {
+        "tags": [
+          "Telegram 群消息監聽管理"
+        ],
+        "summary": "批准一筆 Telegram 入群申請；會呼叫 Telegram Bot API",
+        "operationId": "approveJoinRequest",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "Telegram 群組 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": -1001234567890
+          },
+          {
+            "name": "requestId",
+            "in": "path",
+            "description": "入群申請 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TelegramJoinRequestDecisionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelegramJoinRequestDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/telegram-monitor/groups/{groupId}/edit": {
       "post": {
         "tags": [
@@ -16764,6 +16872,74 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/GroupModerationStatusDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/telegram-monitor/groups/{groupId}/join-requests": {
+      "get": {
+        "tags": [
+          "Telegram 群消息監聽管理"
+        ],
+        "summary": "查詢 Telegram 入群申請；預設只返回待審核申請",
+        "operationId": "listJoinRequests",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "Telegram 群組 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": -1001234567890
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "入群申請狀態；不傳則返回 PENDING",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Telegram group join request review status",
+              "enum": [
+                "PENDING",
+                "APPROVED",
+                "DECLINED",
+                "FAILED"
+              ]
+            },
+            "example": "PENDING"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "返回筆數上限",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 50,
+              "maximum": 100,
+              "minimum": 1
+            },
+            "example": 50
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TelegramJoinRequestDTO"
+                  }
                 }
               }
             }
@@ -35775,6 +35951,97 @@
           "raidMode",
           "success"
         ]
+      },
+      "TelegramJoinRequestDecisionRequest": {
+        "type": "object",
+        "description": "Admin review request for a Telegram group join request",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "description": "Optional admin review reason",
+            "example": "Verified marketplace user",
+            "maxLength": 500,
+            "minLength": 0
+          }
+        }
+      },
+      "TelegramJoinRequestDTO": {
+        "type": "object",
+        "description": "Telegram group join request",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "groupId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "groupName": {
+            "type": "string"
+          },
+          "groupType": {
+            "type": "string"
+          },
+          "telegramUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "userChatId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "username": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "bio": {
+            "type": "string"
+          },
+          "inviteLink": {
+            "type": "string"
+          },
+          "inviteLinkName": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "description": "Telegram group join request review status",
+            "enum": [
+              "PENDING",
+              "APPROVED",
+              "DECLINED",
+              "FAILED"
+            ]
+          },
+          "requestedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "decidedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "decisionReason": {
+            "type": "string"
+          },
+          "errorMessage": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
       },
       "GroupEditRequest": {
         "type": "object",

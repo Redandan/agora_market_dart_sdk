@@ -1058,6 +1058,10 @@ class ApiClient {
           return TelegramBotInfo.fromJson(value);
         case 'TelegramGroupRoutingStatusDTO':
           return TelegramGroupRoutingStatusDTO.fromJson(value);
+        case 'TelegramJoinRequestDTO':
+          return TelegramJoinRequestDTO.fromJson(value);
+        case 'TelegramJoinRequestDecisionRequest':
+          return TelegramJoinRequestDecisionRequest.fromJson(value);
         case 'TelegramWebAppAuthRequest':
           return TelegramWebAppAuthRequest.fromJson(value);
         case 'TermsState':
