@@ -20,7 +20,7 @@ class ProductListCarousel {
     this.items = const [],
   });
 
-  /// Whether frontend should render the carousel
+  /// Whether frontend should render the activity banner
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -29,7 +29,7 @@ class ProductListCarousel {
   ///
   bool? enabled;
 
-  /// Frontend display mode
+  /// Frontend activity banner display mode
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -38,7 +38,7 @@ class ProductListCarousel {
   ///
   String? displayMode;
 
-  /// Whether frontend may auto-play the carousel
+  /// Whether frontend may auto-play the activity banner
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -47,7 +47,7 @@ class ProductListCarousel {
   ///
   bool? autoPlay;
 
-  /// Auto-play interval in milliseconds
+  /// Activity banner auto-play interval in milliseconds
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -56,7 +56,7 @@ class ProductListCarousel {
   ///
   int? intervalMs;
 
-  /// Carousel items ordered by backend priority
+  /// Activity banner items ordered by backend priority
   List<ProductListCarouselItem> items;
 
   @override

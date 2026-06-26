@@ -296,6 +296,7 @@ part 'model/market_search_request.dart';
 part 'model/marketplace_ui_config_response.dart';
 part 'model/marketplace_ui_placement_admin_request.dart';
 part 'model/marketplace_ui_placement_admin_response.dart';
+part 'model/marketplace_ui_placement_status_update_request.dart';
 part 'model/marketplace_ui_product_list_carousel_admin_request.dart';
 part 'model/marketplace_ui_product_list_carousel_admin_response.dart';
 part 'model/mcp_connector_account_status.dart';

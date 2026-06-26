@@ -23,7 +23,7 @@ class ProductListCarouselItem {
     this.priority,
   });
 
-  /// Stable frontend activity entry id
+  /// Stable frontend activity banner item id
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -32,10 +32,10 @@ class ProductListCarouselItem {
   ///
   String? id;
 
-  /// Item type
+  /// Activity banner item type
   ProductListCarouselItemTypeEnum? type;
 
-  /// Display title
+  /// Activity banner display title
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -44,7 +44,7 @@ class ProductListCarouselItem {
   ///
   String? title;
 
-  /// Display subtitle
+  /// Activity banner display subtitle
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -62,10 +62,10 @@ class ProductListCarouselItem {
   ///
   String? imageUrl;
 
-  /// Click action type
+  /// Activity banner click action type
   ProductListCarouselItemActionTypeEnum? actionType;
 
-  /// Internal path or external URL for the action
+  /// Internal path or external URL for the activity banner action
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -74,7 +74,7 @@ class ProductListCarouselItem {
   ///
   String? actionValue;
 
-  /// Backend ordering priority
+  /// Activity banner backend ordering priority
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -231,7 +231,7 @@ class ProductListCarouselItem {
   };
 }
 
-/// Item type
+/// Activity banner item type
 class ProductListCarouselItemTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const ProductListCarouselItemTypeEnum._(this.value);
@@ -308,7 +308,7 @@ class ProductListCarouselItemTypeEnumTypeTransformer {
 }
 
 
-/// Click action type
+/// Activity banner click action type
 class ProductListCarouselItemActionTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const ProductListCarouselItemActionTypeEnum._(this.value);

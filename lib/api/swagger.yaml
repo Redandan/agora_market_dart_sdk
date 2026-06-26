@@ -1164,7 +1164,7 @@
         "tags": [
           "admin-marketplace-ui"
         ],
-        "summary": "Get product-list carousel admin configuration",
+        "summary": "Get product-list activity banner admin configuration",
         "operationId": "getProductListCarousel",
         "responses": {
           "200": {
@@ -1183,13 +1183,44 @@
         "tags": [
           "admin-marketplace-ui"
         ],
-        "summary": "Replace product-list carousel admin configuration",
+        "summary": "Replace product-list activity banner admin configuration",
         "operationId": "replaceProductListCarousel",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/MarketplaceUiProductListCarouselAdminRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketplaceUiProductListCarouselAdminResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/marketplace-ui/product-list-carousel/items": {
+      "put": {
+        "tags": [
+          "admin-marketplace-ui"
+        ],
+        "summary": "Upsert one product-list activity banner item without disabling other items",
+        "operationId": "upsertProductListCarouselItem",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarketplaceUiPlacementAdminRequest"
               }
             }
           },
@@ -11821,6 +11852,37 @@
         }
       }
     },
+    "/admin/marketplace-ui/product-list-carousel/items/status": {
+      "patch": {
+        "tags": [
+          "admin-marketplace-ui"
+        ],
+        "summary": "Update one product-list activity banner item status",
+        "operationId": "updateProductListCarouselItemStatus",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarketplaceUiPlacementStatusUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketplaceUiProductListCarouselAdminResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/withdraws/{withdrawId}": {
       "get": {
         "tags": [
@@ -20906,11 +20968,11 @@
       },
       "MarketplaceUiPlacementAdminRequest": {
         "type": "object",
-        "description": "Admin request for marketplace UI placement create/update",
+        "description": "Admin request for marketplace UI activity banner item create/update",
         "properties": {
           "placementKey": {
             "type": "string",
-            "description": "Stable frontend activity entry id",
+            "description": "Stable frontend activity banner item id",
             "example": "games-activity",
             "maxLength": 80,
             "minLength": 0,
@@ -20926,7 +20988,7 @@
           },
           "placementType": {
             "type": "string",
-            "description": "Semantic item type. Defaults to ACTIVITY_ENTRY for generic campaign entries.",
+            "description": "Semantic activity banner item type. Defaults to ACTIVITY_ENTRY for generic campaign entries.",
             "enum": [
               "ACTIVITY_ENTRY",
               "APP_INSTALL"
@@ -20934,14 +20996,14 @@
           },
           "title": {
             "type": "string",
-            "description": "Display title",
+            "description": "Activity banner display title",
             "example": "電子遊戲活動",
             "maxLength": 120,
             "minLength": 0
           },
           "subtitle": {
             "type": "string",
-            "description": "Display subtitle",
+            "description": "Activity banner display subtitle",
             "example": "Moon Dance Stage",
             "maxLength": 255,
             "minLength": 0
@@ -20954,7 +21016,7 @@
           },
           "actionType": {
             "type": "string",
-            "description": "Click action type",
+            "description": "Activity banner click action type",
             "enum": [
               "NONE",
               "INTERNAL_PATH",
@@ -20963,7 +21025,7 @@
           },
           "actionValue": {
             "type": "string",
-            "description": "Internal path or external URL for the action",
+            "description": "Internal path or external URL for the activity banner action",
             "example": "/games",
             "maxLength": 1000,
             "minLength": 0
@@ -20971,7 +21033,7 @@
           "priority": {
             "type": "integer",
             "format": "int32",
-            "description": "Ascending display priority",
+            "description": "Ascending activity banner display priority",
             "example": 10,
             "maximum": 100000,
             "minimum": 0
@@ -20988,7 +21050,7 @@
           },
           "metadataJson": {
             "type": "string",
-            "description": "Optional JSON metadata for frontend experiments",
+            "description": "Optional JSON metadata for activity banner frontend experiments",
             "maxLength": 65535,
             "minLength": 0
           }
@@ -21000,11 +21062,11 @@
       },
       "MarketplaceUiProductListCarouselAdminRequest": {
         "type": "object",
-        "description": "Admin request to replace the product-list carousel configuration",
+        "description": "Admin request to replace the product-list activity banner configuration",
         "properties": {
           "items": {
             "type": "array",
-            "description": "Full product-list carousel item list. Missing existing items are disabled, not deleted.",
+            "description": "Full product-list activity banner item list. Missing existing items are disabled, not deleted.",
             "items": {
               "$ref": "#/components/schemas/MarketplaceUiPlacementAdminRequest"
             },
@@ -21019,7 +21081,7 @@
         "properties": {
           "productListCarousel": {
             "$ref": "#/components/schemas/ProductListCarousel",
-            "description": "Buyer product-list carousel configuration"
+            "description": "Buyer product-list activity banner configuration exposed through the existing productListCarousel payload contract"
           }
         }
       },
@@ -21036,14 +21098,14 @@
           },
           "surface": {
             "type": "string",
-            "description": "Marketplace UI surface",
+            "description": "Marketplace UI activity banner surface",
             "enum": [
               "PRODUCT_LIST"
             ]
           },
           "placementType": {
             "type": "string",
-            "description": "Marketplace UI placement item type",
+            "description": "Marketplace UI activity banner item type",
             "enum": [
               "ACTIVITY_ENTRY",
               "APP_INSTALL"
@@ -21108,15 +21170,15 @@
       },
       "MarketplaceUiProductListCarouselAdminResponse": {
         "type": "object",
-        "description": "Admin product-list carousel configuration response",
+        "description": "Admin product-list activity banner configuration response",
         "properties": {
           "enabled": {
             "type": "boolean",
-            "description": "Whether the buyer-facing carousel currently has visible items"
+            "description": "Whether the buyer-facing activity banner currently has visible items"
           },
           "items": {
             "type": "array",
-            "description": "All admin-managed product-list carousel items, including disabled/future items",
+            "description": "All admin-managed product-list activity banner items, including disabled/future items",
             "items": {
               "$ref": "#/components/schemas/MarketplaceUiPlacementAdminResponse"
             }
@@ -21129,32 +21191,32 @@
       },
       "ProductListCarousel": {
         "type": "object",
-        "description": "Product-list carousel configuration",
+        "description": "Product-list activity banner configuration",
         "properties": {
           "enabled": {
             "type": "boolean",
-            "description": "Whether frontend should render the carousel",
+            "description": "Whether frontend should render the activity banner",
             "example": true
           },
           "displayMode": {
             "type": "string",
-            "description": "Frontend display mode",
+            "description": "Frontend activity banner display mode",
             "example": "CAROUSEL"
           },
           "autoPlay": {
             "type": "boolean",
-            "description": "Whether frontend may auto-play the carousel",
+            "description": "Whether frontend may auto-play the activity banner",
             "example": true
           },
           "intervalMs": {
             "type": "integer",
             "format": "int32",
-            "description": "Auto-play interval in milliseconds",
+            "description": "Activity banner auto-play interval in milliseconds",
             "example": 3500
           },
           "items": {
             "type": "array",
-            "description": "Carousel items ordered by backend priority",
+            "description": "Activity banner items ordered by backend priority",
             "items": {
               "$ref": "#/components/schemas/ProductListCarouselItem"
             }
@@ -21163,16 +21225,16 @@
       },
       "ProductListCarouselItem": {
         "type": "object",
-        "description": "One product-list carousel item",
+        "description": "One product-list activity banner item",
         "properties": {
           "id": {
             "type": "string",
-            "description": "Stable frontend activity entry id",
+            "description": "Stable frontend activity banner item id",
             "example": "games-activity"
           },
           "type": {
             "type": "string",
-            "description": "Item type",
+            "description": "Activity banner item type",
             "enum": [
               "ACTIVITY_ENTRY",
               "APP_INSTALL"
@@ -21180,12 +21242,12 @@
           },
           "title": {
             "type": "string",
-            "description": "Display title",
+            "description": "Activity banner display title",
             "example": "電子遊戲活動"
           },
           "subtitle": {
             "type": "string",
-            "description": "Display subtitle",
+            "description": "Activity banner display subtitle",
             "example": "Moon Dance Stage"
           },
           "imageUrl": {
@@ -21194,7 +21256,7 @@
           },
           "actionType": {
             "type": "string",
-            "description": "Click action type",
+            "description": "Activity banner click action type",
             "enum": [
               "NONE",
               "INTERNAL_PATH",
@@ -21203,13 +21265,13 @@
           },
           "actionValue": {
             "type": "string",
-            "description": "Internal path or external URL for the action",
+            "description": "Internal path or external URL for the activity banner action",
             "example": "/games"
           },
           "priority": {
             "type": "integer",
             "format": "int32",
-            "description": "Backend ordering priority",
+            "description": "Activity banner backend ordering priority",
             "example": 10
           }
         }
@@ -24083,10 +24145,10 @@
             },
             "uniqueItems": true
           },
-          "defaultShippingFee": {
+          "minimumShippingFee": {
             "type": "number"
           },
-          "minimumShippingFee": {
+          "defaultShippingFee": {
             "type": "number"
           },
           "stockLow": {
@@ -26950,7 +27012,7 @@
           },
           "marketplaceUi": {
             "$ref": "#/components/schemas/MarketplaceUiConfigResponse",
-            "description": "Marketplace UI bootstrap configuration; currently includes product-list carousel items"
+            "description": "Marketplace UI bootstrap configuration; currently includes product-list activity banner items through productListCarousel"
           }
         }
       },
@@ -39278,6 +39340,31 @@
             "example": false
           }
         }
+      },
+      "MarketplaceUiPlacementStatusUpdateRequest": {
+        "type": "object",
+        "description": "Admin request to update one marketplace UI activity banner item status",
+        "properties": {
+          "placementKey": {
+            "type": "string",
+            "description": "Stable frontend activity banner item id",
+            "example": "telegram-community-activity",
+            "maxLength": 80,
+            "minLength": 0,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$"
+          },
+          "status": {
+            "type": "string",
+            "description": "Visibility status",
+            "enum": [
+              "ENABLED",
+              "DISABLED"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
       },
       "VapidPublicKeyResponseDTO": {
         "type": "object",

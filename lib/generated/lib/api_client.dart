@@ -578,6 +578,8 @@ class ApiClient {
           return MarketplaceUiPlacementAdminRequest.fromJson(value);
         case 'MarketplaceUiPlacementAdminResponse':
           return MarketplaceUiPlacementAdminResponse.fromJson(value);
+        case 'MarketplaceUiPlacementStatusUpdateRequest':
+          return MarketplaceUiPlacementStatusUpdateRequest.fromJson(value);
         case 'MarketplaceUiProductListCarouselAdminRequest':
           return MarketplaceUiProductListCarouselAdminRequest.fromJson(value);
         case 'MarketplaceUiProductListCarouselAdminResponse':

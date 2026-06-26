@@ -16,7 +16,7 @@ class MarketplaceUiConfigResponse {
     this.productListCarousel,
   });
 
-  /// Buyer product-list carousel configuration
+  /// Buyer product-list activity banner configuration exposed through the existing productListCarousel payload contract
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated

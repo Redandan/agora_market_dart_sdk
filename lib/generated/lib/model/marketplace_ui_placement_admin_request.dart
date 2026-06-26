@@ -27,7 +27,7 @@ class MarketplaceUiPlacementAdminRequest {
     this.metadataJson,
   });
 
-  /// Stable frontend activity entry id
+  /// Stable frontend activity banner item id
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -39,10 +39,10 @@ class MarketplaceUiPlacementAdminRequest {
   /// Visibility status
   MarketplaceUiPlacementAdminRequestStatusEnum status;
 
-  /// Semantic item type. Defaults to ACTIVITY_ENTRY for generic campaign entries.
+  /// Semantic activity banner item type. Defaults to ACTIVITY_ENTRY for generic campaign entries.
   MarketplaceUiPlacementAdminRequestPlacementTypeEnum? placementType;
 
-  /// Display title
+  /// Activity banner display title
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -51,7 +51,7 @@ class MarketplaceUiPlacementAdminRequest {
   ///
   String? title;
 
-  /// Display subtitle
+  /// Activity banner display subtitle
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -69,10 +69,10 @@ class MarketplaceUiPlacementAdminRequest {
   ///
   String? imageUrl;
 
-  /// Click action type
+  /// Activity banner click action type
   MarketplaceUiPlacementAdminRequestActionTypeEnum actionType;
 
-  /// Internal path or external URL for the action
+  /// Internal path or external URL for the activity banner action
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -81,7 +81,7 @@ class MarketplaceUiPlacementAdminRequest {
   ///
   String? actionValue;
 
-  /// Ascending display priority
+  /// Ascending activity banner display priority
   ///
   /// Minimum value: 0
   /// Maximum value: 100000
@@ -111,7 +111,7 @@ class MarketplaceUiPlacementAdminRequest {
   ///
   DateTime? endsAt;
 
-  /// Optional JSON metadata for frontend experiments
+  /// Optional JSON metadata for activity banner frontend experiments
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -371,7 +371,7 @@ class MarketplaceUiPlacementAdminRequestStatusEnumTypeTransformer {
 }
 
 
-/// Semantic item type. Defaults to ACTIVITY_ENTRY for generic campaign entries.
+/// Semantic activity banner item type. Defaults to ACTIVITY_ENTRY for generic campaign entries.
 class MarketplaceUiPlacementAdminRequestPlacementTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const MarketplaceUiPlacementAdminRequestPlacementTypeEnum._(this.value);
@@ -448,7 +448,7 @@ class MarketplaceUiPlacementAdminRequestPlacementTypeEnumTypeTransformer {
 }
 
 
-/// Click action type
+/// Activity banner click action type
 class MarketplaceUiPlacementAdminRequestActionTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const MarketplaceUiPlacementAdminRequestActionTypeEnum._(this.value);

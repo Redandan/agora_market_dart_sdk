@@ -176,8 +176,10 @@ Class | Method | HTTP request | Description
 *AdminExchangeRateRangeApi* | [**editRange**](doc//AdminExchangeRateRangeApi.md#editrange) | **POST** /admin/exchange-rate-range/edit | 更新匯率範圍
 *AdminExchangeRateRangeApi* | [**getAllRanges**](doc//AdminExchangeRateRangeApi.md#getallranges) | **POST** /admin/exchange-rate-range/all | 搜尋匯率範圍
 *AdminExchangeRateRangeApi* | [**rejectSuggestion**](doc//AdminExchangeRateRangeApi.md#rejectsuggestion) | **POST** /admin/exchange-rate-range/suggestions/{id}/reject | 拒絕建議
-*AdminMarketplaceUiApi* | [**getProductListCarousel**](doc//AdminMarketplaceUiApi.md#getproductlistcarousel) | **GET** /admin/marketplace-ui/product-list-carousel | Get product-list carousel admin configuration
-*AdminMarketplaceUiApi* | [**replaceProductListCarousel**](doc//AdminMarketplaceUiApi.md#replaceproductlistcarousel) | **PUT** /admin/marketplace-ui/product-list-carousel | Replace product-list carousel admin configuration
+*AdminMarketplaceUiApi* | [**getProductListCarousel**](doc//AdminMarketplaceUiApi.md#getproductlistcarousel) | **GET** /admin/marketplace-ui/product-list-carousel | Get product-list activity banner admin configuration
+*AdminMarketplaceUiApi* | [**replaceProductListCarousel**](doc//AdminMarketplaceUiApi.md#replaceproductlistcarousel) | **PUT** /admin/marketplace-ui/product-list-carousel | Replace product-list activity banner admin configuration
+*AdminMarketplaceUiApi* | [**updateProductListCarouselItemStatus**](doc//AdminMarketplaceUiApi.md#updateproductlistcarouselitemstatus) | **PATCH** /admin/marketplace-ui/product-list-carousel/items/status | Update one product-list activity banner item status
+*AdminMarketplaceUiApi* | [**upsertProductListCarouselItem**](doc//AdminMarketplaceUiApi.md#upsertproductlistcarouselitem) | **PUT** /admin/marketplace-ui/product-list-carousel/items | Upsert one product-list activity banner item without disabling other items
 *AdminMembersApi* | [**createUserByAdmin**](doc//AdminMembersApi.md#createuserbyadmin) | **POST** /admin/members/create-user | 管理員創建用戶
 *AdminMembersApi* | [**getMemberDetail**](doc//AdminMembersApi.md#getmemberdetail) | **GET** /admin/members/{memberId} | 查看會員詳情
 *AdminMembersApi* | [**getMemberStatistics**](doc//AdminMembersApi.md#getmemberstatistics) | **GET** /admin/members/statistics | 會員統計報告
@@ -798,6 +800,7 @@ Class | Method | HTTP request | Description
  - [MarketplaceUiConfigResponse](doc//MarketplaceUiConfigResponse.md)
  - [MarketplaceUiPlacementAdminRequest](doc//MarketplaceUiPlacementAdminRequest.md)
  - [MarketplaceUiPlacementAdminResponse](doc//MarketplaceUiPlacementAdminResponse.md)
+ - [MarketplaceUiPlacementStatusUpdateRequest](doc//MarketplaceUiPlacementStatusUpdateRequest.md)
  - [MarketplaceUiProductListCarouselAdminRequest](doc//MarketplaceUiProductListCarouselAdminRequest.md)
  - [MarketplaceUiProductListCarouselAdminResponse](doc//MarketplaceUiProductListCarouselAdminResponse.md)
  - [McpConnectorAccountStatus](doc//McpConnectorAccountStatus.md)

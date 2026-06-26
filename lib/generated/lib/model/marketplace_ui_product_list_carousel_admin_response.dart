@@ -18,7 +18,7 @@ class MarketplaceUiProductListCarouselAdminResponse {
     this.buyerPreview,
   });
 
-  /// Whether the buyer-facing carousel currently has visible items
+  /// Whether the buyer-facing activity banner currently has visible items
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -27,7 +27,7 @@ class MarketplaceUiProductListCarouselAdminResponse {
   ///
   bool? enabled;
 
-  /// All admin-managed product-list carousel items, including disabled/future items
+  /// All admin-managed product-list activity banner items, including disabled/future items
   List<MarketplaceUiPlacementAdminResponse> items;
 
   /// Buyer-facing preview using the same contract as auth/me

@@ -16,7 +16,7 @@ class MarketplaceUiProductListCarouselAdminRequest {
     this.items = const [],
   });
 
-  /// Full product-list carousel item list. Missing existing items are disabled, not deleted.
+  /// Full product-list activity banner item list. Missing existing items are disabled, not deleted.
   List<MarketplaceUiPlacementAdminRequest> items;
 
   @override

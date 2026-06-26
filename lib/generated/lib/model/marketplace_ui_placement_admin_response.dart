@@ -48,10 +48,10 @@ class MarketplaceUiPlacementAdminResponse {
   ///
   String? placementKey;
 
-  /// Marketplace UI surface
+  /// Marketplace UI activity banner surface
   MarketplaceUiPlacementAdminResponseSurfaceEnum? surface;
 
-  /// Marketplace UI placement item type
+  /// Marketplace UI activity banner item type
   MarketplaceUiPlacementAdminResponsePlacementTypeEnum? placementType;
 
   /// Marketplace UI placement status
@@ -368,7 +368,7 @@ class MarketplaceUiPlacementAdminResponse {
   };
 }
 
-/// Marketplace UI surface
+/// Marketplace UI activity banner surface
 class MarketplaceUiPlacementAdminResponseSurfaceEnum {
   /// Instantiate a new enum with the provided [value].
   const MarketplaceUiPlacementAdminResponseSurfaceEnum._(this.value);
@@ -442,7 +442,7 @@ class MarketplaceUiPlacementAdminResponseSurfaceEnumTypeTransformer {
 }
 
 
-/// Marketplace UI placement item type
+/// Marketplace UI activity banner item type
 class MarketplaceUiPlacementAdminResponsePlacementTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const MarketplaceUiPlacementAdminResponsePlacementTypeEnum._(this.value);
