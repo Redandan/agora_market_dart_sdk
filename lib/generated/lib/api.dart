@@ -538,6 +538,8 @@ part 'model/telegram_bot_info.dart';
 part 'model/telegram_group_routing_status_dto.dart';
 part 'model/telegram_join_request_dto.dart';
 part 'model/telegram_join_request_decision_request.dart';
+part 'model/telegram_join_review_list_dto.dart';
+part 'model/telegram_join_review_list_request.dart';
 part 'model/telegram_web_app_auth_request.dart';
 part 'model/terms_state.dart';
 part 'model/top_delivery_area_dto.dart';

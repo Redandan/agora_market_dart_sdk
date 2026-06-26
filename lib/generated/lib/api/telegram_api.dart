@@ -210,6 +210,61 @@ class TelegramApi {
     return null;
   }
 
+  /// 停用 Telegram 入群審查 allow/block list 項目
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   清單項目 ID
+  Future<Response> disableJoinReviewListEntryWithHttpInfo(int id,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/telegram-monitor/join-review-list/{id}/disable'
+      .replaceAll('{id}', id.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 停用 Telegram 入群審查 allow/block list 項目
+  ///
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   清單項目 ID
+  Future<TelegramJoinReviewListDTO?> disableJoinReviewListEntry(int id,) async {
+    final response = await disableJoinReviewListEntryWithHttpInfo(id,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TelegramJoinReviewListDTO',) as TelegramJoinReviewListDTO;
+    
+    }
+    return null;
+  }
+
   /// 統一更新群組設定（aiChatEnabled / groupPurpose / moderationEnabled / replyMode / messageCountThreshold / minIntervalMinutes / personality / customPrompt）
   ///
   /// Note: This method returns the HTTP [Response].
@@ -644,6 +699,85 @@ class TelegramApi {
     return null;
   }
 
+  /// 查詢 Telegram 入群審查 allow/block list
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] listType:
+  ///   清單類型；不傳則返回所有類型
+  ///
+  /// * [bool] enabled:
+  ///   是否只查啟用/停用項目；不傳則返回全部
+  ///
+  /// * [int] limit:
+  ///   返回筆數上限
+  Future<Response> listJoinReviewListWithHttpInfo({ String? listType, bool? enabled, int? limit, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/telegram-monitor/join-review-list';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (listType != null) {
+      queryParams.addAll(_queryParams('', 'listType', listType));
+    }
+    if (enabled != null) {
+      queryParams.addAll(_queryParams('', 'enabled', enabled));
+    }
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查詢 Telegram 入群審查 allow/block list
+  ///
+  /// Parameters:
+  ///
+  /// * [String] listType:
+  ///   清單類型；不傳則返回所有類型
+  ///
+  /// * [bool] enabled:
+  ///   是否只查啟用/停用項目；不傳則返回全部
+  ///
+  /// * [int] limit:
+  ///   返回筆數上限
+  Future<List<TelegramJoinReviewListDTO>?> listJoinReviewList({ String? listType, bool? enabled, int? limit, }) async {
+    final response = await listJoinReviewListWithHttpInfo( listType: listType, enabled: enabled, limit: limit, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<TelegramJoinReviewListDTO>') as List)
+        .cast<TelegramJoinReviewListDTO>()
+        .toList(growable: false);
+
+    }
+    return null;
+  }
+
   /// 發布 Telegram 群公告；可選置頂並替換上一則置頂公告
   ///
   /// Note: This method returns the HTTP [Response].
@@ -878,6 +1012,58 @@ class TelegramApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GroupModerationStatusDTO',) as GroupModerationStatusDTO;
+    
+    }
+    return null;
+  }
+
+  /// 新增或更新 Telegram 入群審查 allow/block list 項目
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [TelegramJoinReviewListRequest] telegramJoinReviewListRequest (required):
+  Future<Response> upsertJoinReviewListEntryWithHttpInfo(TelegramJoinReviewListRequest telegramJoinReviewListRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/telegram-monitor/join-review-list';
+
+    // ignore: prefer_final_locals
+    Object? postBody = telegramJoinReviewListRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 新增或更新 Telegram 入群審查 allow/block list 項目
+  ///
+  /// Parameters:
+  ///
+  /// * [TelegramJoinReviewListRequest] telegramJoinReviewListRequest (required):
+  Future<TelegramJoinReviewListDTO?> upsertJoinReviewListEntry(TelegramJoinReviewListRequest telegramJoinReviewListRequest,) async {
+    final response = await upsertJoinReviewListEntryWithHttpInfo(telegramJoinReviewListRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TelegramJoinReviewListDTO',) as TelegramJoinReviewListDTO;
     
     }
     return null;

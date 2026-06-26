@@ -30,6 +30,14 @@ class TelegramJoinRequestDTO {
     this.decidedAt,
     this.decisionReason,
     this.errorMessage,
+    this.riskScore,
+    this.riskLevel,
+    this.reviewAction,
+    this.reviewReason,
+    this.riskFeaturesJson,
+    this.autoReviewedAt,
+    this.reviewPolicyVersion,
+    this.matchedUserId,
     this.createdAt,
     this.updatedAt,
   });
@@ -171,6 +179,60 @@ class TelegramJoinRequestDTO {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  int? riskScore;
+
+  /// Telegram join request auto-review risk level
+  TelegramJoinRequestDTORiskLevelEnum? riskLevel;
+
+  /// Telegram join request auto-review action
+  TelegramJoinRequestDTOReviewActionEnum? reviewAction;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? reviewReason;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? riskFeaturesJson;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? autoReviewedAt;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? reviewPolicyVersion;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? matchedUserId;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? createdAt;
 
   ///
@@ -200,6 +262,14 @@ class TelegramJoinRequestDTO {
     other.decidedAt == decidedAt &&
     other.decisionReason == decisionReason &&
     other.errorMessage == errorMessage &&
+    other.riskScore == riskScore &&
+    other.riskLevel == riskLevel &&
+    other.reviewAction == reviewAction &&
+    other.reviewReason == reviewReason &&
+    other.riskFeaturesJson == riskFeaturesJson &&
+    other.autoReviewedAt == autoReviewedAt &&
+    other.reviewPolicyVersion == reviewPolicyVersion &&
+    other.matchedUserId == matchedUserId &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt;
 
@@ -223,11 +293,19 @@ class TelegramJoinRequestDTO {
     (decidedAt == null ? 0 : decidedAt!.hashCode) +
     (decisionReason == null ? 0 : decisionReason!.hashCode) +
     (errorMessage == null ? 0 : errorMessage!.hashCode) +
+    (riskScore == null ? 0 : riskScore!.hashCode) +
+    (riskLevel == null ? 0 : riskLevel!.hashCode) +
+    (reviewAction == null ? 0 : reviewAction!.hashCode) +
+    (reviewReason == null ? 0 : reviewReason!.hashCode) +
+    (riskFeaturesJson == null ? 0 : riskFeaturesJson!.hashCode) +
+    (autoReviewedAt == null ? 0 : autoReviewedAt!.hashCode) +
+    (reviewPolicyVersion == null ? 0 : reviewPolicyVersion!.hashCode) +
+    (matchedUserId == null ? 0 : matchedUserId!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'TelegramJoinRequestDTO[id=$id, groupId=$groupId, groupName=$groupName, groupType=$groupType, telegramUserId=$telegramUserId, userChatId=$userChatId, username=$username, firstName=$firstName, lastName=$lastName, bio=$bio, inviteLink=$inviteLink, inviteLinkName=$inviteLinkName, status=$status, requestedAt=$requestedAt, decidedAt=$decidedAt, decisionReason=$decisionReason, errorMessage=$errorMessage, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'TelegramJoinRequestDTO[id=$id, groupId=$groupId, groupName=$groupName, groupType=$groupType, telegramUserId=$telegramUserId, userChatId=$userChatId, username=$username, firstName=$firstName, lastName=$lastName, bio=$bio, inviteLink=$inviteLink, inviteLinkName=$inviteLinkName, status=$status, requestedAt=$requestedAt, decidedAt=$decidedAt, decisionReason=$decisionReason, errorMessage=$errorMessage, riskScore=$riskScore, riskLevel=$riskLevel, reviewAction=$reviewAction, reviewReason=$reviewReason, riskFeaturesJson=$riskFeaturesJson, autoReviewedAt=$autoReviewedAt, reviewPolicyVersion=$reviewPolicyVersion, matchedUserId=$matchedUserId, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -316,6 +394,46 @@ class TelegramJoinRequestDTO {
     } else {
       json[r'errorMessage'] = null;
     }
+    if (this.riskScore != null) {
+      json[r'riskScore'] = this.riskScore;
+    } else {
+      json[r'riskScore'] = null;
+    }
+    if (this.riskLevel != null) {
+      json[r'riskLevel'] = this.riskLevel;
+    } else {
+      json[r'riskLevel'] = null;
+    }
+    if (this.reviewAction != null) {
+      json[r'reviewAction'] = this.reviewAction;
+    } else {
+      json[r'reviewAction'] = null;
+    }
+    if (this.reviewReason != null) {
+      json[r'reviewReason'] = this.reviewReason;
+    } else {
+      json[r'reviewReason'] = null;
+    }
+    if (this.riskFeaturesJson != null) {
+      json[r'riskFeaturesJson'] = this.riskFeaturesJson;
+    } else {
+      json[r'riskFeaturesJson'] = null;
+    }
+    if (this.autoReviewedAt != null) {
+      json[r'autoReviewedAt'] = this.autoReviewedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'autoReviewedAt'] = null;
+    }
+    if (this.reviewPolicyVersion != null) {
+      json[r'reviewPolicyVersion'] = this.reviewPolicyVersion;
+    } else {
+      json[r'reviewPolicyVersion'] = null;
+    }
+    if (this.matchedUserId != null) {
+      json[r'matchedUserId'] = this.matchedUserId;
+    } else {
+      json[r'matchedUserId'] = null;
+    }
     if (this.createdAt != null) {
       json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
     } else {
@@ -365,6 +483,14 @@ class TelegramJoinRequestDTO {
         decidedAt: mapDateTime(json, r'decidedAt', r''),
         decisionReason: mapValueOfType<String>(json, r'decisionReason'),
         errorMessage: mapValueOfType<String>(json, r'errorMessage'),
+        riskScore: mapValueOfType<int>(json, r'riskScore'),
+        riskLevel: TelegramJoinRequestDTORiskLevelEnum.fromJson(json[r'riskLevel']),
+        reviewAction: TelegramJoinRequestDTOReviewActionEnum.fromJson(json[r'reviewAction']),
+        reviewReason: mapValueOfType<String>(json, r'reviewReason'),
+        riskFeaturesJson: mapValueOfType<String>(json, r'riskFeaturesJson'),
+        autoReviewedAt: mapDateTime(json, r'autoReviewedAt', r''),
+        reviewPolicyVersion: mapValueOfType<String>(json, r'reviewPolicyVersion'),
+        matchedUserId: mapValueOfType<int>(json, r'matchedUserId'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
       );
@@ -497,6 +623,169 @@ class TelegramJoinRequestDTOStatusEnumTypeTransformer {
 
   /// Singleton [TelegramJoinRequestDTOStatusEnumTypeTransformer] instance.
   static TelegramJoinRequestDTOStatusEnumTypeTransformer? _instance;
+}
+
+
+/// Telegram join request auto-review risk level
+class TelegramJoinRequestDTORiskLevelEnum {
+  /// Instantiate a new enum with the provided [value].
+  const TelegramJoinRequestDTORiskLevelEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const LOW = TelegramJoinRequestDTORiskLevelEnum._(r'LOW');
+  static const MEDIUM = TelegramJoinRequestDTORiskLevelEnum._(r'MEDIUM');
+  static const HIGH = TelegramJoinRequestDTORiskLevelEnum._(r'HIGH');
+  static const BLOCKED = TelegramJoinRequestDTORiskLevelEnum._(r'BLOCKED');
+  static const unknownDefaultOpenApi = TelegramJoinRequestDTORiskLevelEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][TelegramJoinRequestDTORiskLevelEnum].
+  static const values = <TelegramJoinRequestDTORiskLevelEnum>[
+    LOW,
+    MEDIUM,
+    HIGH,
+    BLOCKED,
+    unknownDefaultOpenApi,
+  ];
+
+  static TelegramJoinRequestDTORiskLevelEnum? fromJson(dynamic value) => TelegramJoinRequestDTORiskLevelEnumTypeTransformer().decode(value);
+
+  static List<TelegramJoinRequestDTORiskLevelEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <TelegramJoinRequestDTORiskLevelEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = TelegramJoinRequestDTORiskLevelEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [TelegramJoinRequestDTORiskLevelEnum] to String,
+/// and [decode] dynamic data back to [TelegramJoinRequestDTORiskLevelEnum].
+class TelegramJoinRequestDTORiskLevelEnumTypeTransformer {
+  factory TelegramJoinRequestDTORiskLevelEnumTypeTransformer() => _instance ??= const TelegramJoinRequestDTORiskLevelEnumTypeTransformer._();
+
+  const TelegramJoinRequestDTORiskLevelEnumTypeTransformer._();
+
+  String encode(TelegramJoinRequestDTORiskLevelEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a TelegramJoinRequestDTORiskLevelEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  TelegramJoinRequestDTORiskLevelEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'LOW': return TelegramJoinRequestDTORiskLevelEnum.LOW;
+        case r'MEDIUM': return TelegramJoinRequestDTORiskLevelEnum.MEDIUM;
+        case r'HIGH': return TelegramJoinRequestDTORiskLevelEnum.HIGH;
+        case r'BLOCKED': return TelegramJoinRequestDTORiskLevelEnum.BLOCKED;
+        case r'unknown_default_open_api': return TelegramJoinRequestDTORiskLevelEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [TelegramJoinRequestDTORiskLevelEnumTypeTransformer] instance.
+  static TelegramJoinRequestDTORiskLevelEnumTypeTransformer? _instance;
+}
+
+
+/// Telegram join request auto-review action
+class TelegramJoinRequestDTOReviewActionEnum {
+  /// Instantiate a new enum with the provided [value].
+  const TelegramJoinRequestDTOReviewActionEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const AUTO_APPROVE = TelegramJoinRequestDTOReviewActionEnum._(r'AUTO_APPROVE');
+  static const AUTO_DECLINE = TelegramJoinRequestDTOReviewActionEnum._(r'AUTO_DECLINE');
+  static const MANUAL_REVIEW = TelegramJoinRequestDTOReviewActionEnum._(r'MANUAL_REVIEW');
+  static const unknownDefaultOpenApi = TelegramJoinRequestDTOReviewActionEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][TelegramJoinRequestDTOReviewActionEnum].
+  static const values = <TelegramJoinRequestDTOReviewActionEnum>[
+    AUTO_APPROVE,
+    AUTO_DECLINE,
+    MANUAL_REVIEW,
+    unknownDefaultOpenApi,
+  ];
+
+  static TelegramJoinRequestDTOReviewActionEnum? fromJson(dynamic value) => TelegramJoinRequestDTOReviewActionEnumTypeTransformer().decode(value);
+
+  static List<TelegramJoinRequestDTOReviewActionEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <TelegramJoinRequestDTOReviewActionEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = TelegramJoinRequestDTOReviewActionEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [TelegramJoinRequestDTOReviewActionEnum] to String,
+/// and [decode] dynamic data back to [TelegramJoinRequestDTOReviewActionEnum].
+class TelegramJoinRequestDTOReviewActionEnumTypeTransformer {
+  factory TelegramJoinRequestDTOReviewActionEnumTypeTransformer() => _instance ??= const TelegramJoinRequestDTOReviewActionEnumTypeTransformer._();
+
+  const TelegramJoinRequestDTOReviewActionEnumTypeTransformer._();
+
+  String encode(TelegramJoinRequestDTOReviewActionEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a TelegramJoinRequestDTOReviewActionEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  TelegramJoinRequestDTOReviewActionEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'AUTO_APPROVE': return TelegramJoinRequestDTOReviewActionEnum.AUTO_APPROVE;
+        case r'AUTO_DECLINE': return TelegramJoinRequestDTOReviewActionEnum.AUTO_DECLINE;
+        case r'MANUAL_REVIEW': return TelegramJoinRequestDTOReviewActionEnum.MANUAL_REVIEW;
+        case r'unknown_default_open_api': return TelegramJoinRequestDTOReviewActionEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [TelegramJoinRequestDTOReviewActionEnumTypeTransformer] instance.
+  static TelegramJoinRequestDTOReviewActionEnumTypeTransformer? _instance;
 }
 
 

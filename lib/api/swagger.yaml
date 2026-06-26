@@ -8776,6 +8776,134 @@
         ]
       }
     },
+    "/admin/telegram-monitor/join-review-list": {
+      "get": {
+        "tags": [
+          "Telegram 群消息監聽管理"
+        ],
+        "summary": "查詢 Telegram 入群審查 allow/block list",
+        "operationId": "listJoinReviewList",
+        "parameters": [
+          {
+            "name": "listType",
+            "in": "query",
+            "description": "清單類型；不傳則返回所有類型",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Telegram join review allow/block list type",
+              "enum": [
+                "ALLOWLIST",
+                "BLOCKLIST"
+              ]
+            },
+            "example": "BLOCKLIST"
+          },
+          {
+            "name": "enabled",
+            "in": "query",
+            "description": "是否只查啟用/停用項目；不傳則返回全部",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "example": true
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "返回筆數上限",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 100,
+              "maximum": 300,
+              "minimum": 1
+            },
+            "example": 100
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TelegramJoinReviewListDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Telegram 群消息監聽管理"
+        ],
+        "summary": "新增或更新 Telegram 入群審查 allow/block list 項目",
+        "operationId": "upsertJoinReviewListEntry",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TelegramJoinReviewListRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelegramJoinReviewListDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/telegram-monitor/join-review-list/{id}/disable": {
+      "post": {
+        "tags": [
+          "Telegram 群消息監聽管理"
+        ],
+        "summary": "停用 Telegram 入群審查 allow/block list 項目",
+        "operationId": "disableJoinReviewListEntry",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "清單項目 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelegramJoinReviewListDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/telegram-monitor/groups/{groupId}/raid-mode": {
       "post": {
         "tags": [
@@ -35637,6 +35765,97 @@
           }
         }
       },
+      "TelegramJoinReviewListRequest": {
+        "type": "object",
+        "description": "Create or update a Telegram join review allow/block list entry",
+        "properties": {
+          "telegramUserId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Telegram user id",
+            "example": 123456789
+          },
+          "username": {
+            "type": "string",
+            "description": "Optional latest Telegram username",
+            "example": "agora_user",
+            "maxLength": 255,
+            "minLength": 0
+          },
+          "listType": {
+            "type": "string",
+            "description": "List type",
+            "enum": [
+              "ALLOWLIST",
+              "BLOCKLIST"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "description": "Operator reason",
+            "example": "Repeated spam join request",
+            "maxLength": 500,
+            "minLength": 0
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether this rule is active",
+            "example": true
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Optional expiry timestamp"
+          }
+        },
+        "required": [
+          "listType",
+          "telegramUserId"
+        ]
+      },
+      "TelegramJoinReviewListDTO": {
+        "type": "object",
+        "description": "Telegram join review allow/block list entry",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "telegramUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "username": {
+            "type": "string"
+          },
+          "listType": {
+            "type": "string",
+            "description": "Telegram join review allow/block list type",
+            "enum": [
+              "ALLOWLIST",
+              "BLOCKLIST"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
       "GroupRaidModeUpdateRequest": {
         "type": "object",
         "description": "Telegram 群 Raid Mode 更新請求",
@@ -36032,6 +36251,46 @@
           },
           "errorMessage": {
             "type": "string"
+          },
+          "riskScore": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "riskLevel": {
+            "type": "string",
+            "description": "Telegram join request auto-review risk level",
+            "enum": [
+              "LOW",
+              "MEDIUM",
+              "HIGH",
+              "BLOCKED"
+            ]
+          },
+          "reviewAction": {
+            "type": "string",
+            "description": "Telegram join request auto-review action",
+            "enum": [
+              "AUTO_APPROVE",
+              "AUTO_DECLINE",
+              "MANUAL_REVIEW"
+            ]
+          },
+          "reviewReason": {
+            "type": "string"
+          },
+          "riskFeaturesJson": {
+            "type": "string"
+          },
+          "autoReviewedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reviewPolicyVersion": {
+            "type": "string"
+          },
+          "matchedUserId": {
+            "type": "integer",
+            "format": "int64"
           },
           "createdAt": {
             "type": "string",

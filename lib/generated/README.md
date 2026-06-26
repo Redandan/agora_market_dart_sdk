@@ -549,6 +549,7 @@ Class | Method | HTTP request | Description
 *TelegramApi* | [**approveJoinRequest**](doc//TelegramApi.md#approvejoinrequest) | **POST** /admin/telegram-monitor/groups/{groupId}/join-requests/{requestId}/approve | 批准一筆 Telegram 入群申請；會呼叫 Telegram Bot API
 *TelegramApi* | [**declineJoinRequest**](doc//TelegramApi.md#declinejoinrequest) | **POST** /admin/telegram-monitor/groups/{groupId}/join-requests/{requestId}/decline | 拒絕一筆 Telegram 入群申請；會呼叫 Telegram Bot API
 *TelegramApi* | [**deleteAnnouncement**](doc//TelegramApi.md#deleteannouncement) | **POST** /admin/telegram-monitor/groups/{groupId}/announcements/{announcementId}/delete | 刪除一則 Telegram 群公告訊息
+*TelegramApi* | [**disableJoinReviewListEntry**](doc//TelegramApi.md#disablejoinreviewlistentry) | **POST** /admin/telegram-monitor/join-review-list/{id}/disable | 停用 Telegram 入群審查 allow/block list 項目
 *TelegramApi* | [**editGroup**](doc//TelegramApi.md#editgroup) | **POST** /admin/telegram-monitor/groups/{groupId}/edit | 統一更新群組設定（aiChatEnabled / groupPurpose / moderationEnabled / replyMode / messageCountThreshold / minIntervalMinutes / personality / customPrompt）
 *TelegramApi* | [**getGroupDetail**](doc//TelegramApi.md#getgroupdetail) | **GET** /admin/telegram-monitor/groups/{groupId}/detail | 獲取群組詳細資訊（活躍度統計 + 活躍用戶 + 最近消息）
 *TelegramApi* | [**getGroups**](doc//TelegramApi.md#getgroups) | **GET** /admin/telegram-monitor/groups | 獲取已監聽群組列表
@@ -556,10 +557,12 @@ Class | Method | HTTP request | Description
 *TelegramApi* | [**getRoutingStatus**](doc//TelegramApi.md#getroutingstatus) | **GET** /admin/telegram-monitor/routing-status | 查詢 Telegram 群 routing 診斷狀態（TELEGRAM_CHANNEL_ID / operations notification / public community）
 *TelegramApi* | [**listAnnouncements**](doc//TelegramApi.md#listannouncements) | **GET** /admin/telegram-monitor/groups/{groupId}/announcements | 查詢 Telegram 群公告歷史
 *TelegramApi* | [**listJoinRequests**](doc//TelegramApi.md#listjoinrequests) | **GET** /admin/telegram-monitor/groups/{groupId}/join-requests | 查詢 Telegram 入群申請；預設只返回待審核申請
+*TelegramApi* | [**listJoinReviewList**](doc//TelegramApi.md#listjoinreviewlist) | **GET** /admin/telegram-monitor/join-review-list | 查詢 Telegram 入群審查 allow/block list
 *TelegramApi* | [**sendAnnouncement**](doc//TelegramApi.md#sendannouncement) | **POST** /admin/telegram-monitor/groups/{groupId}/announcements | 發布 Telegram 群公告；可選置頂並替換上一則置頂公告
 *TelegramApi* | [**simulateGroupMessage**](doc//TelegramApi.md#simulategroupmessage) | **POST** /admin/telegram-monitor/groups/{groupId}/ai-simulate | 模擬 AI 生成群組消息（previewOnly=true 時只預覽 prompt，不呼叫 AI）
 *TelegramApi* | [**unpinAnnouncement**](doc//TelegramApi.md#unpinannouncement) | **POST** /admin/telegram-monitor/groups/{groupId}/announcements/{announcementId}/unpin | 取消置頂一則 Telegram 群公告
 *TelegramApi* | [**updateRaidMode**](doc//TelegramApi.md#updateraidmode) | **POST** /admin/telegram-monitor/groups/{groupId}/raid-mode | 手動切換群組 Raid Mode；預設只改後端狀態，不呼叫 Telegram 管理 API
+*TelegramApi* | [**upsertJoinReviewListEntry**](doc//TelegramApi.md#upsertjoinreviewlistentry) | **POST** /admin/telegram-monitor/join-review-list | 新增或更新 Telegram 入群審查 allow/block list 項目
 *TelegramWebappAuthApi* | [**exchangeJwt**](doc//TelegramWebappAuthApi.md#exchangejwt) | **POST** /auth/telegram-webapp/exchange-jwt | Telegram WebApp 交換 JWT
 *TestApi* | [**generateAutoReplyTestData**](doc//TestApi.md#generateautoreplytestdata) | **POST** /test/auto-reply | 生成自動回復測試數據
 *TestApi* | [**generateDeliveryAcceptOrderTestData**](doc//TestApi.md#generatedeliveryacceptordertestdata) | **POST** /test/delivery-accept-order | 生成配送員接單測試數據
@@ -1045,6 +1048,8 @@ Class | Method | HTTP request | Description
  - [TelegramGroupRoutingStatusDTO](doc//TelegramGroupRoutingStatusDTO.md)
  - [TelegramJoinRequestDTO](doc//TelegramJoinRequestDTO.md)
  - [TelegramJoinRequestDecisionRequest](doc//TelegramJoinRequestDecisionRequest.md)
+ - [TelegramJoinReviewListDTO](doc//TelegramJoinReviewListDTO.md)
+ - [TelegramJoinReviewListRequest](doc//TelegramJoinReviewListRequest.md)
  - [TelegramWebAppAuthRequest](doc//TelegramWebAppAuthRequest.md)
  - [TermsState](doc//TermsState.md)
  - [TopDeliveryAreaDTO](doc//TopDeliveryAreaDTO.md)

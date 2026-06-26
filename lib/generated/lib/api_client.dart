@@ -1062,6 +1062,10 @@ class ApiClient {
           return TelegramJoinRequestDTO.fromJson(value);
         case 'TelegramJoinRequestDecisionRequest':
           return TelegramJoinRequestDecisionRequest.fromJson(value);
+        case 'TelegramJoinReviewListDTO':
+          return TelegramJoinReviewListDTO.fromJson(value);
+        case 'TelegramJoinReviewListRequest':
+          return TelegramJoinReviewListRequest.fromJson(value);
         case 'TelegramWebAppAuthRequest':
           return TelegramWebAppAuthRequest.fromJson(value);
         case 'TermsState':
