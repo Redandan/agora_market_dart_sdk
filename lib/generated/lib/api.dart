@@ -95,7 +95,6 @@ part 'api/user_addresses_api.dart';
 part 'api/users_api.dart';
 part 'api/verification_code_login_api.dart';
 part 'api/wallet_connect_api.dart';
-part 'api/wallet_safety_api.dart';
 part 'api/webpush_api.dart';
 part 'api/webrtc_api.dart';
 

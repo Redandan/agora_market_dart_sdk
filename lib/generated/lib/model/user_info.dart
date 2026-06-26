@@ -37,6 +37,7 @@ class UserInfo {
     this.recoveryAdvisory,
     this.passkeySecuritySummary,
     this.marketplaceUi,
+    this.walletSafetySummary,
   });
 
   /// 用戶ID
@@ -243,6 +244,15 @@ class UserInfo {
   ///
   MarketplaceUiConfigResponse? marketplaceUi;
 
+  /// 目前登入帳號的 USDT 錢包安全提醒摘要；由 /auth/me 回傳給前端啟動畫面使用
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  WalletSafetySummaryResponse? walletSafetySummary;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserInfo &&
     other.id == id &&
@@ -268,7 +278,8 @@ class UserInfo {
     other.defaultHomePage == defaultHomePage &&
     other.recoveryAdvisory == recoveryAdvisory &&
     other.passkeySecuritySummary == passkeySecuritySummary &&
-    other.marketplaceUi == marketplaceUi;
+    other.marketplaceUi == marketplaceUi &&
+    other.walletSafetySummary == walletSafetySummary;
 
   @override
   int get hashCode =>
@@ -296,10 +307,11 @@ class UserInfo {
     (defaultHomePage == null ? 0 : defaultHomePage!.hashCode) +
     (recoveryAdvisory == null ? 0 : recoveryAdvisory!.hashCode) +
     (passkeySecuritySummary == null ? 0 : passkeySecuritySummary!.hashCode) +
-    (marketplaceUi == null ? 0 : marketplaceUi!.hashCode);
+    (marketplaceUi == null ? 0 : marketplaceUi!.hashCode) +
+    (walletSafetySummary == null ? 0 : walletSafetySummary!.hashCode);
 
   @override
-  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, cartItemCount=$cartItemCount, stackingBalance=$stackingBalance, totalAssets=$totalAssets, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar, balanceConversions=$balanceConversions, sellerMaintenance=$sellerMaintenance, deliveryMaintenance=$deliveryMaintenance, unreadMessageCount=$unreadMessageCount, defaultHomePage=$defaultHomePage, recoveryAdvisory=$recoveryAdvisory, passkeySecuritySummary=$passkeySecuritySummary, marketplaceUi=$marketplaceUi]';
+  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, cartItemCount=$cartItemCount, stackingBalance=$stackingBalance, totalAssets=$totalAssets, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar, balanceConversions=$balanceConversions, sellerMaintenance=$sellerMaintenance, deliveryMaintenance=$deliveryMaintenance, unreadMessageCount=$unreadMessageCount, defaultHomePage=$defaultHomePage, recoveryAdvisory=$recoveryAdvisory, passkeySecuritySummary=$passkeySecuritySummary, marketplaceUi=$marketplaceUi, walletSafetySummary=$walletSafetySummary]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -419,6 +431,11 @@ class UserInfo {
     } else {
       json[r'marketplaceUi'] = null;
     }
+    if (this.walletSafetySummary != null) {
+      json[r'walletSafetySummary'] = this.walletSafetySummary;
+    } else {
+      json[r'walletSafetySummary'] = null;
+    }
     return json;
   }
 
@@ -473,6 +490,7 @@ class UserInfo {
         recoveryAdvisory: AccountRecoveryAdvisory.fromJson(json[r'recoveryAdvisory']),
         passkeySecuritySummary: PasskeySecuritySummaryResponse.fromJson(json[r'passkeySecuritySummary']),
         marketplaceUi: MarketplaceUiConfigResponse.fromJson(json[r'marketplaceUi']),
+        walletSafetySummary: WalletSafetySummaryResponse.fromJson(json[r'walletSafetySummary']),
       );
     }
     return null;

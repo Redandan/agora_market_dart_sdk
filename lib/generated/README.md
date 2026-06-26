@@ -590,7 +590,6 @@ Class | Method | HTTP request | Description
 *VerificationCodeLoginApi* | [**verifyCode**](doc//VerificationCodeLoginApi.md#verifycode) | **POST** /auth/telegram-bot/verify-code | 驗證碼登入
 *WalletConnectApi* | [**getNonce**](doc//WalletConnectApi.md#getnonce) | **POST** /auth/wallet-connect/nonce | 获取 Nonce（通用）
 *WalletConnectApi* | [**login**](doc//WalletConnectApi.md#login) | **POST** /auth/wallet-connect/login | Web3 钱包登录（通用）
-*WalletSafetyApi* | [**getSafetySummary**](doc//WalletSafetyApi.md#getsafetysummary) | **GET** /wallet/safety-summary | Get current user's USDT wallet or withdrawal safety summary
 *WebpushApi* | [**getHealthStatus**](doc//WebpushApi.md#gethealthstatus) | **GET** /webpush/health | 獲取服務健康狀態
 *WebpushApi* | [**getSchedulerStatus**](doc//WebpushApi.md#getschedulerstatus) | **GET** /webpush/scheduled/status | 獲取定時推送狀態
 *WebpushApi* | [**getStatistics**](doc//WebpushApi.md#getstatistics) | **GET** /webpush/statistics | 獲取推送統計信息
