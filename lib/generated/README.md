@@ -453,6 +453,7 @@ Class | Method | HTTP request | Description
 *ProductsApi* | [**increaseStock**](doc//ProductsApi.md#increasestock) | **POST** /products/{id}/stock/increase | 增加商品庫存
 *ProductsApi* | [**listCategories**](doc//ProductsApi.md#listcategories) | **GET** /products/categories | Public buyer-facing product categories
 *ProductsApi* | [**listHotKeywords**](doc//ProductsApi.md#listhotkeywords) | **GET** /products/hot-keywords | Public buyer-facing hot product search keywords
+*ProductsApi* | [**listRecommendations**](doc//ProductsApi.md#listrecommendations) | **GET** /products/recommendations | Buyer-facing product recommendations
 *ProductsApi* | [**naturalSearch**](doc//ProductsApi.md#naturalsearch) | **POST** /products/search/natural | 自然語言商品搜尋
 *ProductsApi* | [**searchProducts**](doc//ProductsApi.md#searchproducts) | **POST** /products/search | 搜索商品
 *ProductsApi* | [**setStock**](doc//ProductsApi.md#setstock) | **POST** /products/{id}/stock/set | 設置商品庫存
@@ -584,6 +585,7 @@ Class | Method | HTTP request | Description
 *UserAddressesApi* | [**getUserAddressesPage**](doc//UserAddressesApi.md#getuseraddressespage) | **GET** /user-addresses/page | 分頁獲取用戶地址
 *UserAddressesApi* | [**setDefaultAddress**](doc//UserAddressesApi.md#setdefaultaddress) | **POST** /user-addresses/{addressId}/set-default | 設置預設地址
 *UserAddressesApi* | [**updateAddress**](doc//UserAddressesApi.md#updateaddress) | **POST** /user-addresses/update | 更新地址
+*UsersApi* | [**getPreferenceSummary**](doc//UsersApi.md#getpreferencesummary) | **GET** /users/me/preference-summary | Current buyer preference summary
 *UsersApi* | [**getSummary**](doc//UsersApi.md#getsummary) | **GET** /users/me/pwa-signals | 取得目前用戶的 PWA 行為信號摘要
 *UsersApi* | [**reportSignal**](doc//UsersApi.md#reportsignal) | **POST** /users/me/pwa-signals | 上報 PWA 訪問與安裝事件觀測
 *UsersApi* | [**trackReferrer**](doc//UsersApi.md#trackreferrer) | **POST** /users/me/track-referrer | 記錄 Mini App / TG 群組來源歸因
@@ -674,6 +676,7 @@ Class | Method | HTTP request | Description
  - [BrokenImageAuditResponse](doc//BrokenImageAuditResponse.md)
  - [BrokenImageCleanupResponse](doc//BrokenImageCleanupResponse.md)
  - [BrokenImageFinding](doc//BrokenImageFinding.md)
+ - [BuyerPreferenceSummaryResponse](doc//BuyerPreferenceSummaryResponse.md)
  - [CartCheckoutItemParam](doc//CartCheckoutItemParam.md)
  - [CartCheckoutParam](doc//CartCheckoutParam.md)
  - [CartCheckoutPlanParam](doc//CartCheckoutPlanParam.md)
@@ -921,6 +924,7 @@ Class | Method | HTTP request | Description
  - [PostStatistics](doc//PostStatistics.md)
  - [PostUpdateParam](doc//PostUpdateParam.md)
  - [PostalSearchParam](doc//PostalSearchParam.md)
+ - [PreferenceScore](doc//PreferenceScore.md)
  - [PricingState](doc//PricingState.md)
  - [Product](doc//Product.md)
  - [ProductCategoryCatalogResponse](doc//ProductCategoryCatalogResponse.md)
@@ -934,6 +938,7 @@ Class | Method | HTTP request | Description
  - [ProductInventoryStats](doc//ProductInventoryStats.md)
  - [ProductListCarousel](doc//ProductListCarousel.md)
  - [ProductListCarouselItem](doc//ProductListCarouselItem.md)
+ - [ProductRecommendationResponse](doc//ProductRecommendationResponse.md)
  - [ProductReport](doc//ProductReport.md)
  - [ProductReportCreateParam](doc//ProductReportCreateParam.md)
  - [ProductReportResolveParam](doc//ProductReportResolveParam.md)

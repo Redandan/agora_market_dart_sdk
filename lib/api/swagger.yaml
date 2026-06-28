@@ -12405,6 +12405,32 @@
         ]
       }
     },
+    "/users/me/preference-summary": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Current buyer preference summary",
+        "operationId": "getPreferenceSummary",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BuyerPreferenceSummaryResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/user-addresses/{addressId}": {
       "get": {
         "tags": [
@@ -14444,6 +14470,49 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/ProductInventoryStats"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/recommendations": {
+      "get": {
+        "tags": [
+          "products"
+        ],
+        "summary": "Buyer-facing product recommendations",
+        "operationId": "listRecommendations",
+        "parameters": [
+          {
+            "name": "scene",
+            "in": "query",
+            "description": "Recommendation scene, default HOME",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "HOME"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of products, default 12, max 50",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductRecommendationResponse"
                 }
               }
             }
@@ -40406,6 +40475,105 @@
           }
         }
       },
+      "BuyerPreferenceSummaryResponse": {
+        "type": "object",
+        "description": "Buyer preference summary inferred from existing marketplace signals",
+        "properties": {
+          "personalized": {
+            "type": "boolean",
+            "description": "Whether the summary is based on an authenticated buyer"
+          },
+          "confidenceScore": {
+            "type": "number",
+            "format": "double",
+            "description": "Simple confidence score from 0.0 to 1.0"
+          },
+          "signalCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total weighted signals used by the profile builder"
+          },
+          "averageOrderAmountUsdt": {
+            "type": "number",
+            "description": "Average historical order amount in USDT"
+          },
+          "categories": {
+            "type": "array",
+            "description": "Top product categories",
+            "items": {
+              "$ref": "#/components/schemas/PreferenceScore"
+            }
+          },
+          "productTypes": {
+            "type": "array",
+            "description": "Top product types",
+            "items": {
+              "$ref": "#/components/schemas/PreferenceScore"
+            }
+          },
+          "tags": {
+            "type": "array",
+            "description": "Top product tags",
+            "items": {
+              "$ref": "#/components/schemas/PreferenceScore"
+            }
+          },
+          "brands": {
+            "type": "array",
+            "description": "Top brands",
+            "items": {
+              "$ref": "#/components/schemas/PreferenceScore"
+            }
+          },
+          "sourceRegions": {
+            "type": "array",
+            "description": "Top source regions",
+            "items": {
+              "$ref": "#/components/schemas/PreferenceScore"
+            }
+          },
+          "sourcePlatforms": {
+            "type": "array",
+            "description": "Top source platforms",
+            "items": {
+              "$ref": "#/components/schemas/PreferenceScore"
+            }
+          },
+          "recentKeywords": {
+            "type": "array",
+            "description": "Recent normalized product search keywords",
+            "items": {
+              "$ref": "#/components/schemas/PreferenceScore"
+            }
+          },
+          "generatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When the summary was generated"
+          }
+        }
+      },
+      "PreferenceScore": {
+        "type": "object",
+        "description": "Preference dimension score",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "Preference value",
+            "example": "DIGITAL_SERVICE"
+          },
+          "score": {
+            "type": "number",
+            "format": "double",
+            "description": "Weighted score"
+          },
+          "signalCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Number of contributing signals"
+          }
+        }
+      },
       "PageUserAddress": {
         "type": "object",
         "properties": {
@@ -41313,14 +41481,46 @@
             "type": "integer",
             "format": "int32"
           },
-          "outOfStock": {
-            "type": "boolean"
-          },
           "lowStock": {
             "type": "boolean"
           },
           "belowMinimum": {
             "type": "boolean"
+          },
+          "outOfStock": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ProductRecommendationResponse": {
+        "type": "object",
+        "description": "Buyer product recommendation response",
+        "properties": {
+          "scene": {
+            "type": "string",
+            "description": "Recommendation scene",
+            "example": "HOME"
+          },
+          "fallbackUsed": {
+            "type": "boolean",
+            "description": "Whether backend used non-personalized fallback"
+          },
+          "profileConfidence": {
+            "type": "number",
+            "format": "double",
+            "description": "Preference confidence from 0.0 to 1.0"
+          },
+          "items": {
+            "type": "array",
+            "description": "Recommended products",
+            "items": {
+              "$ref": "#/components/schemas/Item"
+            }
+          },
+          "generatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When recommendations were generated"
           }
         }
       },

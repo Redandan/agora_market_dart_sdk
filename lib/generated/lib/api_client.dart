@@ -312,6 +312,8 @@ class ApiClient {
           return BrokenImageCleanupResponse.fromJson(value);
         case 'BrokenImageFinding':
           return BrokenImageFinding.fromJson(value);
+        case 'BuyerPreferenceSummaryResponse':
+          return BuyerPreferenceSummaryResponse.fromJson(value);
         case 'CartCheckoutItemParam':
           return CartCheckoutItemParam.fromJson(value);
         case 'CartCheckoutParam':
@@ -806,6 +808,8 @@ class ApiClient {
           return PostUpdateParam.fromJson(value);
         case 'PostalSearchParam':
           return PostalSearchParam.fromJson(value);
+        case 'PreferenceScore':
+          return PreferenceScore.fromJson(value);
         case 'PricingState':
           return PricingState.fromJson(value);
         case 'Product':
@@ -832,6 +836,8 @@ class ApiClient {
           return ProductListCarousel.fromJson(value);
         case 'ProductListCarouselItem':
           return ProductListCarouselItem.fromJson(value);
+        case 'ProductRecommendationResponse':
+          return ProductRecommendationResponse.fromJson(value);
         case 'ProductReport':
           return ProductReport.fromJson(value);
         case 'ProductReportCreateParam':

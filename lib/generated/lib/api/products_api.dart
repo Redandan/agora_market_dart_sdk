@@ -765,6 +765,73 @@ class ProductsApi {
     return null;
   }
 
+  /// Buyer-facing product recommendations
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] scene:
+  ///   Recommendation scene, default HOME
+  ///
+  /// * [int] limit:
+  ///   Maximum number of products, default 12, max 50
+  Future<Response> listRecommendationsWithHttpInfo({ String? scene, int? limit, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/products/recommendations';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (scene != null) {
+      queryParams.addAll(_queryParams('', 'scene', scene));
+    }
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Buyer-facing product recommendations
+  ///
+  /// Parameters:
+  ///
+  /// * [String] scene:
+  ///   Recommendation scene, default HOME
+  ///
+  /// * [int] limit:
+  ///   Maximum number of products, default 12, max 50
+  Future<ProductRecommendationResponse?> listRecommendations({ String? scene, int? limit, }) async {
+    final response = await listRecommendationsWithHttpInfo( scene: scene, limit: limit, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductRecommendationResponse',) as ProductRecommendationResponse;
+    
+    }
+    return null;
+  }
+
   /// 自然語言商品搜尋
   ///
   /// 買家用自然語言表達需求(例如「我要日本 Apple 禮物卡 5000 日幣」),Groq 解析意圖抽出 productType / sourceRegion / keyword 等 filter,回匹配商品。AI 失敗降級為純關鍵字搜尋(aiFallbackUsed=true)。
