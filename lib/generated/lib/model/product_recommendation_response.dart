@@ -48,7 +48,7 @@ class ProductRecommendationResponse {
   double? profileConfidence;
 
   /// Recommended products
-  List<Item> items;
+  List<ProductRecommendationItem> items;
 
   /// When recommendations were generated
   ///
@@ -127,7 +127,7 @@ class ProductRecommendationResponse {
         scene: mapValueOfType<String>(json, r'scene'),
         fallbackUsed: mapValueOfType<bool>(json, r'fallbackUsed'),
         profileConfidence: mapValueOfType<double>(json, r'profileConfidence'),
-        items: Item.listFromJson(json[r'items']),
+        items: ProductRecommendationItem.listFromJson(json[r'items']),
         generatedAt: mapDateTime(json, r'generatedAt', r''),
       );
     }

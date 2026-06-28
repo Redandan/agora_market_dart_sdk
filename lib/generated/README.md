@@ -938,6 +938,7 @@ Class | Method | HTTP request | Description
  - [ProductInventoryStats](doc//ProductInventoryStats.md)
  - [ProductListCarousel](doc//ProductListCarousel.md)
  - [ProductListCarouselItem](doc//ProductListCarouselItem.md)
+ - [ProductRecommendationItem](doc//ProductRecommendationItem.md)
  - [ProductRecommendationResponse](doc//ProductRecommendationResponse.md)
  - [ProductReport](doc//ProductReport.md)
  - [ProductReportCreateParam](doc//ProductReportCreateParam.md)

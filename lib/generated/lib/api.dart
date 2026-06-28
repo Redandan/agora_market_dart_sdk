@@ -425,6 +425,7 @@ part 'model/product_hot_keyword_response.dart';
 part 'model/product_inventory_stats.dart';
 part 'model/product_list_carousel.dart';
 part 'model/product_list_carousel_item.dart';
+part 'model/product_recommendation_item.dart';
 part 'model/product_recommendation_response.dart';
 part 'model/product_report.dart';
 part 'model/product_report_create_param.dart';

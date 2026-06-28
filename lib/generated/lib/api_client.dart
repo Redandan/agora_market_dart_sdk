@@ -836,6 +836,8 @@ class ApiClient {
           return ProductListCarousel.fromJson(value);
         case 'ProductListCarouselItem':
           return ProductListCarouselItem.fromJson(value);
+        case 'ProductRecommendationItem':
+          return ProductRecommendationItem.fromJson(value);
         case 'ProductRecommendationResponse':
           return ProductRecommendationResponse.fromJson(value);
         case 'ProductReport':

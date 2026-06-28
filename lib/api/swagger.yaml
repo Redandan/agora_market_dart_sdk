@@ -41481,14 +41481,41 @@
             "type": "integer",
             "format": "int32"
           },
+          "outOfStock": {
+            "type": "boolean"
+          },
           "lowStock": {
             "type": "boolean"
           },
           "belowMinimum": {
             "type": "boolean"
+          }
+        }
+      },
+      "ProductRecommendationItem": {
+        "type": "object",
+        "description": "One recommended product with explanation",
+        "properties": {
+          "product": {
+            "$ref": "#/components/schemas/Product",
+            "description": "Product payload sanitized for buyer display"
           },
-          "outOfStock": {
-            "type": "boolean"
+          "score": {
+            "type": "number",
+            "format": "double",
+            "description": "Recommendation score"
+          },
+          "source": {
+            "type": "string",
+            "description": "Recommendation source",
+            "example": "PERSONALIZED"
+          },
+          "reasons": {
+            "type": "array",
+            "description": "Human-readable reasons",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -41514,7 +41541,7 @@
             "type": "array",
             "description": "Recommended products",
             "items": {
-              "$ref": "#/components/schemas/Item"
+              "$ref": "#/components/schemas/ProductRecommendationItem"
             }
           },
           "generatedAt": {
