@@ -211,6 +211,7 @@ Class | Method | HTTP request | Description
 *AdminProductTaxonomyApi* | [**reviewTaxonomyProposal**](doc//AdminProductTaxonomyApi.md#reviewtaxonomyproposal) | **POST** /admin/product-taxonomy/proposals/{id}/review | 審核 taxonomy proposal
 *AdminProductTaxonomyApi* | [**upsertProductType**](doc//AdminProductTaxonomyApi.md#upsertproducttype) | **POST** /admin/product-taxonomy/product-types | 新增或更新受控 product type dictionary
 *AdminProductsApi* | [**auditProductAndStoreImages**](doc//AdminProductsApi.md#auditproductandstoreimages) | **POST** /admin/products/images/audit | 審計商品/商店壞圖 URL
+*AdminProductsApi* | [**backfillProductStatistics**](doc//AdminProductsApi.md#backfillproductstatistics) | **POST** /admin/products/statistics/backfill | 回填商品 sales/rating/review 統計
 *AdminProductsApi* | [**batchDeleteProductsByAdmin**](doc//AdminProductsApi.md#batchdeleteproductsbyadmin) | **DELETE** /admin/products/batch | 管理員批量刪除商品
 *AdminProductsApi* | [**cleanupProductAndStoreImages**](doc//AdminProductsApi.md#cleanupproductandstoreimages) | **POST** /admin/products/images/cleanup | 清理商品/商店壞圖 URL
 *AdminProductsApi* | [**deleteProductByAdmin**](doc//AdminProductsApi.md#deleteproductbyadmin) | **DELETE** /admin/products/{productId} | 管理員刪除商品
@@ -948,6 +949,8 @@ Class | Method | HTTP request | Description
  - [ProductSeachParam](doc//ProductSeachParam.md)
  - [ProductState](doc//ProductState.md)
  - [ProductStats](doc//ProductStats.md)
+ - [ProductStatsBackfillRequest](doc//ProductStatsBackfillRequest.md)
+ - [ProductStatsBackfillResponse](doc//ProductStatsBackfillResponse.md)
  - [ProductTypeDictionary](doc//ProductTypeDictionary.md)
  - [ProductTypeDictionaryUpsertRequest](doc//ProductTypeDictionaryUpsertRequest.md)
  - [ProductTypeOption](doc//ProductTypeOption.md)

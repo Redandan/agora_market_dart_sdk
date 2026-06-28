@@ -856,6 +856,10 @@ class ApiClient {
           return ProductState.fromJson(value);
         case 'ProductStats':
           return ProductStats.fromJson(value);
+        case 'ProductStatsBackfillRequest':
+          return ProductStatsBackfillRequest.fromJson(value);
+        case 'ProductStatsBackfillResponse':
+          return ProductStatsBackfillResponse.fromJson(value);
         case 'ProductTypeDictionary':
           return ProductTypeDictionary.fromJson(value);
         case 'ProductTypeDictionaryUpsertRequest':

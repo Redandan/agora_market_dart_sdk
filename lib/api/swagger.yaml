@@ -10049,6 +10049,37 @@
         }
       }
     },
+    "/admin/products/statistics/backfill": {
+      "post": {
+        "tags": [
+          "admin-products"
+        ],
+        "summary": "回填商品 sales/rating/review 統計",
+        "description": "預設 dry-run；只有 dryRun=false 且 confirmApply=APPLY_PRODUCT_STATS_BACKFILL 時才寫入 products。",
+        "operationId": "backfillProductStatistics",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductStatsBackfillRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductStatsBackfillResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/products/search": {
       "post": {
         "tags": [
@@ -37685,6 +37716,98 @@
           "actionTaken"
         ]
       },
+      "ProductStatsBackfillRequest": {
+        "type": "object",
+        "description": "Product statistics backfill request. Dry-run by default.",
+        "properties": {
+          "dryRun": {
+            "type": "boolean",
+            "description": "Dry-run by default. When true, no product rows are saved.",
+            "example": true
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Optional single product id. Omit to scan products by page.",
+            "example": 422
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Maximum products to inspect when productId is omitted. Default 500, max 5000.",
+            "example": 500
+          },
+          "confirmApply": {
+            "type": "string",
+            "description": "Required when dryRun=false. Must equal APPLY_PRODUCT_STATS_BACKFILL."
+          }
+        }
+      },
+      "ProductStatsBackfillResponse": {
+        "type": "object",
+        "description": "Product statistics backfill preview/apply response",
+        "properties": {
+          "dryRun": {
+            "type": "boolean",
+            "description": "Whether this run avoided DB writes"
+          },
+          "applied": {
+            "type": "boolean",
+            "description": "Whether product rows were saved"
+          },
+          "scannedProducts": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Products inspected"
+          },
+          "changedProducts": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Products whose stored stats differ from computed stats"
+          },
+          "updatedProducts": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Products saved when applied"
+          },
+          "productsWithSales": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Products with at least one counted sales order"
+          },
+          "productsWithReviews": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Products with at least one review"
+          },
+          "salesStatusRule": {
+            "type": "string",
+            "description": "Applied/preview order status rule"
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Maximum products requested"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Optional product id filter"
+          },
+          "generatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Run timestamp"
+          },
+          "samples": {
+            "type": "array",
+            "description": "Changed product samples",
+            "items": {
+              "$ref": "#/components/schemas/Item"
+            }
+          }
+        }
+      },
       "BrokenImageAuditRequest": {
         "type": "object",
         "description": "Admin broken product/store image audit request",
@@ -41481,13 +41604,13 @@
             "type": "integer",
             "format": "int32"
           },
-          "outOfStock": {
-            "type": "boolean"
-          },
           "lowStock": {
             "type": "boolean"
           },
           "belowMinimum": {
+            "type": "boolean"
+          },
+          "outOfStock": {
             "type": "boolean"
           }
         }

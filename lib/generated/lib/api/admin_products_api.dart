@@ -72,6 +72,62 @@ class AdminProductsApi {
     return null;
   }
 
+  /// 回填商品 sales/rating/review 統計
+  ///
+  /// 預設 dry-run；只有 dryRun=false 且 confirmApply=APPLY_PRODUCT_STATS_BACKFILL 時才寫入 products。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [ProductStatsBackfillRequest] productStatsBackfillRequest:
+  Future<Response> backfillProductStatisticsWithHttpInfo({ ProductStatsBackfillRequest? productStatsBackfillRequest, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/products/statistics/backfill';
+
+    // ignore: prefer_final_locals
+    Object? postBody = productStatsBackfillRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 回填商品 sales/rating/review 統計
+  ///
+  /// 預設 dry-run；只有 dryRun=false 且 confirmApply=APPLY_PRODUCT_STATS_BACKFILL 時才寫入 products。
+  ///
+  /// Parameters:
+  ///
+  /// * [ProductStatsBackfillRequest] productStatsBackfillRequest:
+  Future<ProductStatsBackfillResponse?> backfillProductStatistics({ ProductStatsBackfillRequest? productStatsBackfillRequest, }) async {
+    final response = await backfillProductStatisticsWithHttpInfo( productStatsBackfillRequest: productStatsBackfillRequest, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductStatsBackfillResponse',) as ProductStatsBackfillResponse;
+    
+    }
+    return null;
+  }
+
   /// 管理員批量刪除商品
   ///
   /// 管理員可以批量強制刪除商品，此操作不可恢復

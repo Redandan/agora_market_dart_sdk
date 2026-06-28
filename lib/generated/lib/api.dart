@@ -435,6 +435,8 @@ part 'model/product_sample.dart';
 part 'model/product_seach_param.dart';
 part 'model/product_state.dart';
 part 'model/product_stats.dart';
+part 'model/product_stats_backfill_request.dart';
+part 'model/product_stats_backfill_response.dart';
 part 'model/product_type_dictionary.dart';
 part 'model/product_type_dictionary_upsert_request.dart';
 part 'model/product_type_option.dart';
