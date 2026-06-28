@@ -695,6 +695,76 @@ class ProductsApi {
     return null;
   }
 
+  /// Public buyer-facing hot product search keywords
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] days:
+  ///   Lookback window in days, default 7
+  ///
+  /// * [int] limit:
+  ///   Maximum number of keywords, default 10, max 50
+  Future<Response> listHotKeywordsWithHttpInfo({ int? days, int? limit, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/products/hot-keywords';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (days != null) {
+      queryParams.addAll(_queryParams('', 'days', days));
+    }
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Public buyer-facing hot product search keywords
+  ///
+  /// Parameters:
+  ///
+  /// * [int] days:
+  ///   Lookback window in days, default 7
+  ///
+  /// * [int] limit:
+  ///   Maximum number of keywords, default 10, max 50
+  Future<List<ProductHotKeywordResponse>?> listHotKeywords({ int? days, int? limit, }) async {
+    final response = await listHotKeywordsWithHttpInfo( days: days, limit: limit, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<ProductHotKeywordResponse>') as List)
+        .cast<ProductHotKeywordResponse>()
+        .toList(growable: false);
+
+    }
+    return null;
+  }
+
   /// 自然語言商品搜尋
   ///
   /// 買家用自然語言表達需求(例如「我要日本 Apple 禮物卡 5000 日幣」),Groq 解析意圖抽出 productType / sourceRegion / keyword 等 filter,回匹配商品。AI 失敗降級為純關鍵字搜尋(aiFallbackUsed=true)。

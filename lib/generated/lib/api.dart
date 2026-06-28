@@ -419,6 +419,7 @@ part 'model/product_classification_response.dart';
 part 'model/product_create_param.dart';
 part 'model/product_draft_request.dart';
 part 'model/product_draft_response.dart';
+part 'model/product_hot_keyword_response.dart';
 part 'model/product_inventory_stats.dart';
 part 'model/product_list_carousel.dart';
 part 'model/product_list_carousel_item.dart';

@@ -14522,6 +14522,52 @@
         }
       }
     },
+    "/products/hot-keywords": {
+      "get": {
+        "tags": [
+          "products"
+        ],
+        "summary": "Public buyer-facing hot product search keywords",
+        "operationId": "listHotKeywords",
+        "parameters": [
+          {
+            "name": "days",
+            "in": "query",
+            "description": "Lookback window in days, default 7",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of keywords, default 10, max 50",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductHotKeywordResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/products/categories": {
       "get": {
         "tags": [
@@ -41267,14 +41313,47 @@
             "type": "integer",
             "format": "int32"
           },
+          "outOfStock": {
+            "type": "boolean"
+          },
           "lowStock": {
             "type": "boolean"
           },
           "belowMinimum": {
             "type": "boolean"
+          }
+        }
+      },
+      "ProductHotKeywordResponse": {
+        "type": "object",
+        "description": "Buyer-facing product hot search keyword",
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "description": "Normalized keyword used for aggregation",
+            "example": "coffee"
           },
-          "outOfStock": {
-            "type": "boolean"
+          "sampleQuery": {
+            "type": "string",
+            "description": "Sample raw buyer query for display fallback",
+            "example": "咖啡"
+          },
+          "searchCount": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Search count in the requested window",
+            "example": 12
+          },
+          "zeroResultCount": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Zero-result search count in the requested window",
+            "example": 1
+          },
+          "lastSeenAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last time this keyword was searched"
           }
         }
       },

@@ -824,6 +824,8 @@ class ApiClient {
           return ProductDraftRequest.fromJson(value);
         case 'ProductDraftResponse':
           return ProductDraftResponse.fromJson(value);
+        case 'ProductHotKeywordResponse':
+          return ProductHotKeywordResponse.fromJson(value);
         case 'ProductInventoryStats':
           return ProductInventoryStats.fromJson(value);
         case 'ProductListCarousel':

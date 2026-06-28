@@ -452,6 +452,7 @@ Class | Method | HTTP request | Description
 *ProductsApi* | [**getProductById**](doc//ProductsApi.md#getproductbyid) | **GET** /products/{id} | 根據ID獲取商品
 *ProductsApi* | [**increaseStock**](doc//ProductsApi.md#increasestock) | **POST** /products/{id}/stock/increase | 增加商品庫存
 *ProductsApi* | [**listCategories**](doc//ProductsApi.md#listcategories) | **GET** /products/categories | Public buyer-facing product categories
+*ProductsApi* | [**listHotKeywords**](doc//ProductsApi.md#listhotkeywords) | **GET** /products/hot-keywords | Public buyer-facing hot product search keywords
 *ProductsApi* | [**naturalSearch**](doc//ProductsApi.md#naturalsearch) | **POST** /products/search/natural | 自然語言商品搜尋
 *ProductsApi* | [**searchProducts**](doc//ProductsApi.md#searchproducts) | **POST** /products/search | 搜索商品
 *ProductsApi* | [**setStock**](doc//ProductsApi.md#setstock) | **POST** /products/{id}/stock/set | 設置商品庫存
@@ -929,6 +930,7 @@ Class | Method | HTTP request | Description
  - [ProductCreateParam](doc//ProductCreateParam.md)
  - [ProductDraftRequest](doc//ProductDraftRequest.md)
  - [ProductDraftResponse](doc//ProductDraftResponse.md)
+ - [ProductHotKeywordResponse](doc//ProductHotKeywordResponse.md)
  - [ProductInventoryStats](doc//ProductInventoryStats.md)
  - [ProductListCarousel](doc//ProductListCarousel.md)
  - [ProductListCarouselItem](doc//ProductListCarouselItem.md)
