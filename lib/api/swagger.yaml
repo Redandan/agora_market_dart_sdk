@@ -37,6 +37,10 @@
       "description": "Demand Pool buyer APIs"
     },
     {
+      "name": "seller-product-board",
+      "description": "Seller product board APIs"
+    },
+    {
       "name": "flutter-deployment",
       "description": "Flutter App 部署 API"
     },
@@ -209,6 +213,10 @@
       }
     },
     {
+      "name": "admin-product-board",
+      "description": "Admin product board moderation APIs"
+    },
+    {
       "name": "pickup-stores",
       "description": "取貨商店門市管理 API"
     },
@@ -227,6 +235,10 @@
     {
       "name": "admin-storefront-homes",
       "description": "Admin/OPS storefront home review APIs"
+    },
+    {
+      "name": "product-board",
+      "description": "Product board APIs"
     },
     {
       "name": "admin-stores",
@@ -3501,6 +3513,70 @@
         }
       }
     },
+    "/seller/product-board/posts/{postId}/unpin": {
+      "post": {
+        "tags": [
+          "seller-product-board"
+        ],
+        "summary": "Unpin a product board post for seller-owned product",
+        "operationId": "unpin",
+        "parameters": [
+          {
+            "name": "postId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductBoardPostResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/seller/product-board/posts/{postId}/pin": {
+      "post": {
+        "tags": [
+          "seller-product-board"
+        ],
+        "summary": "Pin a product board post for seller-owned product",
+        "operationId": "pin",
+        "parameters": [
+          {
+            "name": "postId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductBoardPostResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/seller/demands/{demandId}/offers": {
       "post": {
         "tags": [
@@ -4235,6 +4311,86 @@
         }
       }
     },
+    "/products/{productId}/board/posts": {
+      "get": {
+        "tags": [
+          "product-board"
+        ],
+        "summary": "List product board posts",
+        "operationId": "posts",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "searchParam",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/ProductBoardSearchParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageProductBoardPostResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "product-board"
+        ],
+        "summary": "Create a product board post",
+        "operationId": "createPost_1",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductBoardPostCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductBoardPostResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/products/{id}/stock/set": {
       "post": {
         "tags": [
@@ -4598,6 +4754,234 @@
         }
       }
     },
+    "/product-board/replies/{replyId}/report": {
+      "post": {
+        "tags": [
+          "product-board"
+        ],
+        "summary": "Report a product board reply",
+        "operationId": "reportReply",
+        "parameters": [
+          {
+            "name": "replyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductBoardReportCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductBoardReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product-board/replies/{replyId}/like": {
+      "post": {
+        "tags": [
+          "product-board"
+        ],
+        "summary": "Like a product board reply",
+        "operationId": "likeReply",
+        "parameters": [
+          {
+            "name": "replyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductBoardReplyResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product-board/posts/{postId}/report": {
+      "post": {
+        "tags": [
+          "product-board"
+        ],
+        "summary": "Report a product board post",
+        "operationId": "reportPost",
+        "parameters": [
+          {
+            "name": "postId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductBoardReportCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductBoardReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product-board/posts/{postId}/replies": {
+      "get": {
+        "tags": [
+          "product-board"
+        ],
+        "summary": "List product board post replies",
+        "operationId": "replies",
+        "parameters": [
+          {
+            "name": "postId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "searchParam",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/ProductBoardSearchParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageProductBoardReplyResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "product-board"
+        ],
+        "summary": "Create a product board reply",
+        "operationId": "createReply",
+        "parameters": [
+          {
+            "name": "postId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductBoardReplyCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductBoardReplyResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product-board/posts/{postId}/like": {
+      "post": {
+        "tags": [
+          "product-board"
+        ],
+        "summary": "Like a product board post",
+        "operationId": "likePost",
+        "parameters": [
+          {
+            "name": "postId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductBoardPostResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/posts/{id}/unlike": {
       "post": {
         "tags": [
@@ -4704,7 +5088,7 @@
         ],
         "summary": "點讚貼文",
         "description": "用戶點讚貼文",
-        "operationId": "likePost",
+        "operationId": "likePost_1",
         "parameters": [
           {
             "name": "id",
@@ -10510,6 +10894,88 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/AiProductClassificationSuggestion"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/product-board/replies/{replyId}/hide": {
+      "post": {
+        "tags": [
+          "admin-product-board"
+        ],
+        "summary": "Hide a product board reply",
+        "operationId": "hideReply",
+        "parameters": [
+          {
+            "name": "replyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductBoardHideRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductBoardReplyResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/product-board/posts/{postId}/hide": {
+      "post": {
+        "tags": [
+          "admin-product-board"
+        ],
+        "summary": "Hide a product board post",
+        "operationId": "hidePost",
+        "parameters": [
+          {
+            "name": "postId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductBoardHideRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductBoardPostResponse"
                 }
               }
             }
@@ -17960,6 +18426,63 @@
         }
       }
     },
+    "/admin/product-board/reports": {
+      "get": {
+        "tags": [
+          "admin-product-board"
+        ],
+        "summary": "List product board reports",
+        "operationId": "reports",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "商品留言板檢舉狀態",
+              "enum": [
+                "PENDING",
+                "REVIEWED",
+                "DISMISSED"
+              ]
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageProductBoardReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/posts/{id}": {
       "get": {
         "tags": [
@@ -23168,6 +23691,9 @@
             "description": "最後更新時間",
             "example": "2024-01-01T10:00:00"
           },
+          "convenienceStorePickup": {
+            "type": "boolean"
+          },
           "homeDelivery": {
             "type": "boolean"
           },
@@ -23182,9 +23708,6 @@
           },
           "recipientInfo": {
             "type": "string"
-          },
-          "convenienceStorePickup": {
-            "type": "boolean"
           }
         },
         "required": [
@@ -25638,6 +26161,79 @@
           "wildTwoMin"
         ]
       },
+      "ProductBoardPostResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "authorUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "authorUsername": {
+            "type": "string"
+          },
+          "authorBadge": {
+            "type": "string",
+            "description": "商品留言板作者標籤",
+            "enum": [
+              "USER",
+              "SELLER",
+              "PURCHASED_BUYER",
+              "ADMIN"
+            ]
+          },
+          "body": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "description": "商品留言板內容狀態",
+            "enum": [
+              "VISIBLE",
+              "PENDING_REVIEW",
+              "HIDDEN",
+              "DELETED"
+            ]
+          },
+          "pinned": {
+            "type": "boolean"
+          },
+          "likeCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "replyCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reportCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "viewerLiked": {
+            "type": "boolean"
+          },
+          "lastReplyAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
       "DemandOfferCreateRequest": {
         "type": "object",
         "description": "Structured demand offer create request",
@@ -27853,6 +28449,16 @@
           "status"
         ]
       },
+      "ProductBoardPostCreateRequest": {
+        "type": "object",
+        "properties": {
+          "body": {
+            "type": "string",
+            "maxLength": 1000,
+            "minLength": 1
+          }
+        }
+      },
       "ProductUpdateParam": {
         "type": "object",
         "description": "商品更新參數",
@@ -28896,6 +29502,169 @@
           "sourceRegion": {
             "type": "string",
             "description": "Issue #519 compatibility alias for suggestedSourceRegion"
+          }
+        }
+      },
+      "ProductBoardReportCreateRequest": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "maxLength": 50,
+            "minLength": 0
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 0
+          }
+        }
+      },
+      "ProductBoardReport": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "targetType": {
+            "type": "string",
+            "description": "商品留言板互動目標類型",
+            "enum": [
+              "POST",
+              "REPLY"
+            ]
+          },
+          "targetId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "reporterUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 50,
+            "minLength": 0
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 0
+          },
+          "status": {
+            "type": "string",
+            "description": "商品留言板檢舉狀態",
+            "enum": [
+              "PENDING",
+              "REVIEWED",
+              "DISMISSED"
+            ]
+          },
+          "adminId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "adminNote": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 0
+          },
+          "resolvedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "productId",
+          "reporterUserId",
+          "status",
+          "targetId",
+          "targetType"
+        ]
+      },
+      "ProductBoardReplyResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "postId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "authorUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "authorUsername": {
+            "type": "string"
+          },
+          "authorBadge": {
+            "type": "string",
+            "description": "商品留言板作者標籤",
+            "enum": [
+              "USER",
+              "SELLER",
+              "PURCHASED_BUYER",
+              "ADMIN"
+            ]
+          },
+          "body": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "description": "商品留言板內容狀態",
+            "enum": [
+              "VISIBLE",
+              "PENDING_REVIEW",
+              "HIDDEN",
+              "DELETED"
+            ]
+          },
+          "likeCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reportCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "viewerLiked": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ProductBoardReplyCreateRequest": {
+        "type": "object",
+        "properties": {
+          "body": {
+            "type": "string",
+            "maxLength": 1000,
+            "minLength": 1
           }
         }
       },
@@ -38659,6 +39428,16 @@
           }
         }
       },
+      "ProductBoardHideRequest": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 0
+          }
+        }
+      },
       "MemberUpdateParam": {
         "type": "object",
         "description": "會員更新參數",
@@ -41583,6 +42362,97 @@
           }
         }
       },
+      "ProductBoardSearchParam": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "description": "頁碼，從1開始",
+            "example": 1
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32",
+            "description": "每頁數量",
+            "example": 20
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "開始日期 (ISO-8601 格式)",
+            "example": "2024-01-01T00:00:00"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "結束日期 (ISO-8601 格式)",
+            "example": "2024-12-31T23:59:59"
+          },
+          "keyword": {
+            "type": "string",
+            "description": "搜索關鍵字"
+          },
+          "sortBy": {
+            "type": "string",
+            "description": "排序字段"
+          },
+          "sortDirection": {
+            "type": "string",
+            "description": "排序方向 (ASC/DESC)",
+            "example": "DESC"
+          },
+          "sort": {
+            "type": "string"
+          }
+        }
+      },
+      "PageProductBoardPostResponse": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductBoardPostResponse"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
       "ProductInventoryStats": {
         "type": "object",
         "properties": {
@@ -41819,6 +42689,52 @@
               "PENDING",
               "DEPRECATED"
             ]
+          }
+        }
+      },
+      "PageProductBoardReplyResponse": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductBoardReplyResponse"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
           }
         }
       },
@@ -44153,6 +45069,52 @@
               "format": "int64"
             },
             "description": "區間內各 reason_category 的數量(key=enum name)"
+          }
+        }
+      },
+      "PageProductBoardReport": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductBoardReport"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
           }
         }
       },

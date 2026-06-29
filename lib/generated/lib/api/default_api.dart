@@ -3295,7 +3295,7 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [int] id (required):
-  Future<Response> likePostWithHttpInfo(int id,) async {
+  Future<Response> likePost1WithHttpInfo(int id,) async {
     // ignore: prefer_const_declarations
     final path = r'/posts/{id}/like'
       .replaceAll('{id}', id.toString());
@@ -3328,8 +3328,8 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [int] id (required):
-  Future<ApiResponseVoid?> likePost(int id,) async {
-    final response = await likePostWithHttpInfo(id,);
+  Future<ApiResponseVoid?> likePost1(int id,) async {
+    final response = await likePost1WithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

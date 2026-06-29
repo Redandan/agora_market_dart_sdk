@@ -722,6 +722,12 @@ class ApiClient {
           return PagePostResponse.fromJson(value);
         case 'PageProduct':
           return PageProduct.fromJson(value);
+        case 'PageProductBoardPostResponse':
+          return PageProductBoardPostResponse.fromJson(value);
+        case 'PageProductBoardReplyResponse':
+          return PageProductBoardReplyResponse.fromJson(value);
+        case 'PageProductBoardReport':
+          return PageProductBoardReport.fromJson(value);
         case 'PageProductReport':
           return PageProductReport.fromJson(value);
         case 'PagePromoCode':
@@ -814,6 +820,22 @@ class ApiClient {
           return PricingState.fromJson(value);
         case 'Product':
           return Product.fromJson(value);
+        case 'ProductBoardHideRequest':
+          return ProductBoardHideRequest.fromJson(value);
+        case 'ProductBoardPostCreateRequest':
+          return ProductBoardPostCreateRequest.fromJson(value);
+        case 'ProductBoardPostResponse':
+          return ProductBoardPostResponse.fromJson(value);
+        case 'ProductBoardReplyCreateRequest':
+          return ProductBoardReplyCreateRequest.fromJson(value);
+        case 'ProductBoardReplyResponse':
+          return ProductBoardReplyResponse.fromJson(value);
+        case 'ProductBoardReport':
+          return ProductBoardReport.fromJson(value);
+        case 'ProductBoardReportCreateRequest':
+          return ProductBoardReportCreateRequest.fromJson(value);
+        case 'ProductBoardSearchParam':
+          return ProductBoardSearchParam.fromJson(value);
         case 'ProductCategoryCatalogResponse':
           return ProductCategoryCatalogResponse.fromJson(value);
         case 'ProductCategoryChangeRequest':

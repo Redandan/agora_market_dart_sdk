@@ -117,7 +117,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getUserPostStatistics**](doc//DefaultApi.md#getuserpoststatistics) | **GET** /posts/user/{userId}/statistics | 獲取用戶貼文統計
 *DefaultApi* | [**getWithdraw**](doc//DefaultApi.md#getwithdraw) | **GET** /withdraws/{withdrawId} | 查詢提款記錄
 *DefaultApi* | [**getWithdrawHistory**](doc//DefaultApi.md#getwithdrawhistory) | **GET** /withdraws/history | 查詢提款歷史
-*DefaultApi* | [**likePost**](doc//DefaultApi.md#likepost) | **POST** /posts/{id}/like | 點讚貼文
+*DefaultApi* | [**likePost1**](doc//DefaultApi.md#likepost1) | **POST** /posts/{id}/like | 點讚貼文
 *DefaultApi* | [**listByProduct**](doc//DefaultApi.md#listbyproduct) | **GET** /products/{productId}/reports | 查某商品檢舉紀錄
 *DefaultApi* | [**listByStatus**](doc//DefaultApi.md#listbystatus) | **GET** /admin/reports | admin 檢舉處理隊列
 *DefaultApi* | [**manualAdjustByAdmin**](doc//DefaultApi.md#manualadjustbyadmin) | **POST** /transactions/admin/manual-adjust | 管理員手動調帳
@@ -199,6 +199,9 @@ Class | Method | HTTP request | Description
 *AdminOrdersApi* | [**getOrderDetail**](doc//AdminOrdersApi.md#getorderdetail) | **GET** /admin/orders/{orderId} | 查看訂單詳情
 *AdminOrdersApi* | [**getOrderStatistics**](doc//AdminOrdersApi.md#getorderstatistics) | **GET** /admin/orders/statistics | 訂單統計報告
 *AdminOrdersApi* | [**searchOrders**](doc//AdminOrdersApi.md#searchorders) | **POST** /admin/orders/search | 搜索訂單
+*AdminProductBoardApi* | [**hidePost**](doc//AdminProductBoardApi.md#hidepost) | **POST** /admin/product-board/posts/{postId}/hide | Hide a product board post
+*AdminProductBoardApi* | [**hideReply**](doc//AdminProductBoardApi.md#hidereply) | **POST** /admin/product-board/replies/{replyId}/hide | Hide a product board reply
+*AdminProductBoardApi* | [**reports**](doc//AdminProductBoardApi.md#reports) | **GET** /admin/product-board/reports | List product board reports
 *AdminProductTaxonomyApi* | [**applyClassificationSuggestion**](doc//AdminProductTaxonomyApi.md#applyclassificationsuggestion) | **POST** /admin/product-taxonomy/classification-suggestions/{id}/apply | 套用 AI 商品分類建議
 *AdminProductTaxonomyApi* | [**deprecateProductType**](doc//AdminProductTaxonomyApi.md#deprecateproducttype) | **POST** /admin/product-taxonomy/product-types/{code}/deprecate | 將 product type dictionary 標記 DEPRECATED
 *AdminProductTaxonomyApi* | [**dryRunRecategorization**](doc//AdminProductTaxonomyApi.md#dryrunrecategorization) | **POST** /admin/product-taxonomy/proposals/dry-run | bulk recategorization dry-run preview；不修改 DB
@@ -441,6 +444,14 @@ Class | Method | HTTP request | Description
 *PostalAreaApi* | [**listPostalAreaDistrictsByCity**](doc//PostalAreaApi.md#listpostalareadistrictsbycity) | **GET** /postal-areas/cities/{city}/districts | 獲取城市行政區列表
 *PostalAreaApi* | [**listPostalAreas**](doc//PostalAreaApi.md#listpostalareas) | **GET** /postal-areas | 獲取所有啟用的郵遞區號
 *PostalAreaApi* | [**searchPostalAreas**](doc//PostalAreaApi.md#searchpostalareas) | **GET** /postal-areas/search | 搜索郵遞區號
+*ProductBoardApi* | [**createPost1**](doc//ProductBoardApi.md#createpost1) | **POST** /products/{productId}/board/posts | Create a product board post
+*ProductBoardApi* | [**createReply**](doc//ProductBoardApi.md#createreply) | **POST** /product-board/posts/{postId}/replies | Create a product board reply
+*ProductBoardApi* | [**likePost**](doc//ProductBoardApi.md#likepost) | **POST** /product-board/posts/{postId}/like | Like a product board post
+*ProductBoardApi* | [**likeReply**](doc//ProductBoardApi.md#likereply) | **POST** /product-board/replies/{replyId}/like | Like a product board reply
+*ProductBoardApi* | [**posts**](doc//ProductBoardApi.md#posts) | **GET** /products/{productId}/board/posts | List product board posts
+*ProductBoardApi* | [**replies**](doc//ProductBoardApi.md#replies) | **GET** /product-board/posts/{postId}/replies | List product board post replies
+*ProductBoardApi* | [**reportPost**](doc//ProductBoardApi.md#reportpost) | **POST** /product-board/posts/{postId}/report | Report a product board post
+*ProductBoardApi* | [**reportReply**](doc//ProductBoardApi.md#reportreply) | **POST** /product-board/replies/{replyId}/report | Report a product board reply
 *ProductsApi* | [**batchCreateProducts**](doc//ProductsApi.md#batchcreateproducts) | **POST** /products/batch-create | 批量創建商品
 *ProductsApi* | [**batchDeleteProducts**](doc//ProductsApi.md#batchdeleteproducts) | **DELETE** /products/batch | 批量刪除商品
 *ProductsApi* | [**createProduct**](doc//ProductsApi.md#createproduct) | **POST** /products/create | 創建商品
@@ -495,6 +506,8 @@ Class | Method | HTTP request | Description
 *SellerDemandPoolApi* | [**reviseOffer**](doc//SellerDemandPoolApi.md#reviseoffer) | **POST** /seller/demands/{demandId}/offers/{offerId}/revision | Seller revise an offer after buyer missing requirement
 *SellerDemandPoolApi* | [**searchOpen**](doc//SellerDemandPoolApi.md#searchopen) | **POST** /seller/demands/open/search | Seller search open demand pool
 *SellerDemandPoolApi* | [**submitOffer**](doc//SellerDemandPoolApi.md#submitoffer) | **POST** /seller/demands/{demandId}/offers | Seller submit structured offer for demand
+*SellerProductBoardApi* | [**pin**](doc//SellerProductBoardApi.md#pin) | **POST** /seller/product-board/posts/{postId}/pin | Pin a product board post for seller-owned product
+*SellerProductBoardApi* | [**unpin**](doc//SellerProductBoardApi.md#unpin) | **POST** /seller/product-board/posts/{postId}/unpin | Unpin a product board post for seller-owned product
 *SevenElevenStoresApi* | [**getAllCities**](doc//SevenElevenStoresApi.md#getallcities) | **GET** /stores/seven-eleven/cities | 取得所有縣市列表
 *SevenElevenStoresApi* | [**getStoresByCity**](doc//SevenElevenStoresApi.md#getstoresbycity) | **GET** /stores/seven-eleven/stores | 根據縣市取得7-11門市列表
 *SlotApi* | [**getMemberOddsTable**](doc//SlotApi.md#getmemberoddstable) | **GET** /slot/rtp | 取得會員賠率展示資料
@@ -882,6 +895,9 @@ Class | Method | HTTP request | Description
  - [PagePickupStore](doc//PagePickupStore.md)
  - [PagePostResponse](doc//PagePostResponse.md)
  - [PageProduct](doc//PageProduct.md)
+ - [PageProductBoardPostResponse](doc//PageProductBoardPostResponse.md)
+ - [PageProductBoardReplyResponse](doc//PageProductBoardReplyResponse.md)
+ - [PageProductBoardReport](doc//PageProductBoardReport.md)
  - [PageProductReport](doc//PageProductReport.md)
  - [PagePromoCode](doc//PagePromoCode.md)
  - [PageRecharge](doc//PageRecharge.md)
@@ -928,6 +944,14 @@ Class | Method | HTTP request | Description
  - [PreferenceScore](doc//PreferenceScore.md)
  - [PricingState](doc//PricingState.md)
  - [Product](doc//Product.md)
+ - [ProductBoardHideRequest](doc//ProductBoardHideRequest.md)
+ - [ProductBoardPostCreateRequest](doc//ProductBoardPostCreateRequest.md)
+ - [ProductBoardPostResponse](doc//ProductBoardPostResponse.md)
+ - [ProductBoardReplyCreateRequest](doc//ProductBoardReplyCreateRequest.md)
+ - [ProductBoardReplyResponse](doc//ProductBoardReplyResponse.md)
+ - [ProductBoardReport](doc//ProductBoardReport.md)
+ - [ProductBoardReportCreateRequest](doc//ProductBoardReportCreateRequest.md)
+ - [ProductBoardSearchParam](doc//ProductBoardSearchParam.md)
  - [ProductCategoryCatalogResponse](doc//ProductCategoryCatalogResponse.md)
  - [ProductCategoryChangeRequest](doc//ProductCategoryChangeRequest.md)
  - [ProductClassificationRequest](doc//ProductClassificationRequest.md)
