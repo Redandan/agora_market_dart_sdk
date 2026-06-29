@@ -702,7 +702,7 @@ class ProductsApi {
   /// Parameters:
   ///
   /// * [int] days:
-  ///   Lookback window in days, default 7
+  ///   Deprecated. Backend now chooses fallback lookback windows automatically.
   ///
   /// * [int] limit:
   ///   Maximum number of keywords, default 10, max 50
@@ -743,7 +743,7 @@ class ProductsApi {
   /// Parameters:
   ///
   /// * [int] days:
-  ///   Lookback window in days, default 7
+  ///   Deprecated. Backend now chooses fallback lookback windows automatically.
   ///
   /// * [int] limit:
   ///   Maximum number of keywords, default 10, max 50

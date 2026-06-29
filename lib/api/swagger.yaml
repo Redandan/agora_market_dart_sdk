@@ -14633,8 +14633,9 @@
           {
             "name": "days",
             "in": "query",
-            "description": "Lookback window in days, default 7",
+            "description": "Deprecated. Backend now chooses fallback lookback windows automatically.",
             "required": false,
+            "deprecated": true,
             "schema": {
               "type": "integer",
               "format": "int32"
