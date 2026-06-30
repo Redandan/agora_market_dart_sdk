@@ -24106,6 +24106,7 @@
               "BET_REFUND",
               "SLOT_BET",
               "SLOT_WIN",
+              "PARTNER_COMMISSION",
               "MANUAL_ADJUST"
             ],
             "maxLength": 255

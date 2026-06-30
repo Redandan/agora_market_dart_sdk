@@ -261,6 +261,7 @@ class TransactionTypeEnum {
   static const BET_REFUND = TransactionTypeEnum._(r'BET_REFUND');
   static const SLOT_BET = TransactionTypeEnum._(r'SLOT_BET');
   static const SLOT_WIN = TransactionTypeEnum._(r'SLOT_WIN');
+  static const PARTNER_COMMISSION = TransactionTypeEnum._(r'PARTNER_COMMISSION');
   static const MANUAL_ADJUST = TransactionTypeEnum._(r'MANUAL_ADJUST');
   static const unknownDefaultOpenApi = TransactionTypeEnum._(r'unknown_default_open_api');
 
@@ -280,6 +281,7 @@ class TransactionTypeEnum {
     BET_REFUND,
     SLOT_BET,
     SLOT_WIN,
+    PARTNER_COMMISSION,
     MANUAL_ADJUST,
     unknownDefaultOpenApi,
   ];
@@ -334,6 +336,7 @@ class TransactionTypeEnumTypeTransformer {
         case r'BET_REFUND': return TransactionTypeEnum.BET_REFUND;
         case r'SLOT_BET': return TransactionTypeEnum.SLOT_BET;
         case r'SLOT_WIN': return TransactionTypeEnum.SLOT_WIN;
+        case r'PARTNER_COMMISSION': return TransactionTypeEnum.PARTNER_COMMISSION;
         case r'MANUAL_ADJUST': return TransactionTypeEnum.MANUAL_ADJUST;
         case r'unknown_default_open_api': return TransactionTypeEnum.unknownDefaultOpenApi;
         default:
