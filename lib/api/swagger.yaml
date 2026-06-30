@@ -28379,12 +28379,47 @@
             "type": "integer",
             "format": "int64"
           },
+          "telegramUsername": {
+            "type": "string"
+          },
           "partner": {
             "type": "boolean"
           },
           "partnerCount": {
             "type": "integer",
             "format": "int32"
+          },
+          "partnerStatus": {
+            "type": "string",
+            "enum": [
+              "NOT_BOUND",
+              "NOT_PARTNER",
+              "PENDING_REVIEW",
+              "ACTIVE",
+              "SUSPENDED",
+              "TEMPORARILY_UNAVAILABLE"
+            ]
+          },
+          "requiredAction": {
+            "type": "string",
+            "enum": [
+              "BIND_TELEGRAM",
+              "CONTACT_ADMIN",
+              "WAIT_REVIEW",
+              "NONE",
+              "RETRY_LATER"
+            ]
+          },
+          "reasonCode": {
+            "type": "string",
+            "enum": [
+              "TELEGRAM_NOT_BOUND",
+              "NO_PARTNER_RECORD",
+              "PARTNER_PENDING_REVIEW",
+              "PARTNER_DISABLED",
+              "PARTNER_ACTIVE",
+              "PARTNER_STATUS_UNAVAILABLE"
+            ]
           }
         }
       },
