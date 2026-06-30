@@ -12497,6 +12497,71 @@
         }
       }
     },
+    "/admin/community-partners/group-evaluations": {
+      "get": {
+        "tags": [
+          "Community Partner Admin"
+        ],
+        "summary": "List Telegram group potential evaluations ranked by expected commission",
+        "operationId": "listGroupPotentials",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CommunityPartnerGroupEvaluationResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Community Partner Admin"
+        ],
+        "summary": "Create or update a Telegram group potential evaluation",
+        "operationId": "evaluateGroupPotential",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommunityPartnerGroupEvaluationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommunityPartnerGroupEvaluationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/bot/refresh-commands": {
       "post": {
         "tags": [
@@ -19486,6 +19551,38 @@
                   "items": {
                     "$ref": "#/components/schemas/CommunityPartnerResponse"
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/community-partners/group-evaluations/{telegramGroupId}": {
+      "get": {
+        "tags": [
+          "Community Partner Admin"
+        ],
+        "summary": "Get a Telegram group potential evaluation",
+        "operationId": "getGroupPotential",
+        "parameters": [
+          {
+            "name": "telegramGroupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommunityPartnerGroupEvaluationResponse"
                 }
               }
             }
@@ -41147,6 +41244,222 @@
           "commissionRate",
           "telegramGroupId"
         ]
+      },
+      "CommunityPartnerGroupEvaluationRequest": {
+        "type": "object",
+        "properties": {
+          "telegramGroupId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "memberCount": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          },
+          "dailyActiveEstimate": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          },
+          "topic": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 0
+          },
+          "topicMatchScore": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": 0.0
+          },
+          "ownerTrustScore": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": 0.0
+          },
+          "spamRiskScore": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": 0.0
+          },
+          "fakeMemberRiskScore": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": 0.0
+          },
+          "mismatchRiskScore": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": 0.0
+          },
+          "commissionRate": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": 0.0
+          },
+          "expectedAov": {
+            "type": "number",
+            "minimum": 0.0
+          },
+          "clickRate": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": 0.0
+          },
+          "registrationRate": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": 0.0
+          },
+          "firstOrderRate": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": 0.0
+          },
+          "completionRate": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": 0.0
+          },
+          "evaluationSource": {
+            "type": "string",
+            "enum": [
+              "MANUAL_INPUT",
+              "BOT_OBSERVED",
+              "ACTUAL_CONVERSION",
+              "MCP_ESTIMATE"
+            ]
+          },
+          "notes": {
+            "type": "string",
+            "maxLength": 1000,
+            "minLength": 0
+          }
+        },
+        "required": [
+          "telegramGroupId"
+        ]
+      },
+      "CommunityPartnerGroupEvaluationResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "telegramGroupId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "memberCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "dailyActiveEstimate": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "messageCount7d": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "uniqueSpeakerCount7d": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "topic": {
+            "type": "string"
+          },
+          "topicMatchScore": {
+            "type": "number"
+          },
+          "ownerTrustScore": {
+            "type": "number"
+          },
+          "spamRiskScore": {
+            "type": "number"
+          },
+          "fakeMemberRiskScore": {
+            "type": "number"
+          },
+          "mismatchRiskScore": {
+            "type": "number"
+          },
+          "commissionRate": {
+            "type": "number"
+          },
+          "expectedAov": {
+            "type": "number"
+          },
+          "clickRate": {
+            "type": "number"
+          },
+          "registrationRate": {
+            "type": "number"
+          },
+          "firstOrderRate": {
+            "type": "number"
+          },
+          "completionRate": {
+            "type": "number"
+          },
+          "expectedBuyers30d": {
+            "type": "number"
+          },
+          "expectedOrders30d": {
+            "type": "number"
+          },
+          "expectedGmv30d": {
+            "type": "number"
+          },
+          "expectedCommission30d": {
+            "type": "number"
+          },
+          "riskDiscount": {
+            "type": "number"
+          },
+          "confidenceLevel": {
+            "type": "string",
+            "enum": [
+              "LOW",
+              "MEDIUM",
+              "HIGH"
+            ]
+          },
+          "recommendation": {
+            "type": "string",
+            "enum": [
+              "REJECT",
+              "TEST_SMALL",
+              "NEGOTIATE",
+              "SCALE"
+            ]
+          },
+          "evaluationSource": {
+            "type": "string",
+            "enum": [
+              "MANUAL_INPUT",
+              "BOT_OBSERVED",
+              "ACTUAL_CONVERSION",
+              "MCP_ESTIMATE"
+            ]
+          },
+          "evaluatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
       },
       "AutoReplyResetStatsResponse": {
         "type": "object",

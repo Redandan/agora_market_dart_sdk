@@ -200,6 +200,8 @@ part 'model/client_log_dto.dart';
 part 'model/code_support_knowledge_candidate.dart';
 part 'model/code_support_knowledge_import_result.dart';
 part 'model/cold_wallet.dart';
+part 'model/community_partner_group_evaluation_request.dart';
+part 'model/community_partner_group_evaluation_response.dart';
 part 'model/community_partner_me_summary_response.dart';
 part 'model/community_partner_response.dart';
 part 'model/community_partner_upsert_request.dart';

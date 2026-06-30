@@ -16,6 +16,170 @@ class CommunityPartnerAdminApi {
 
   final ApiClient apiClient;
 
+  /// Create or update a Telegram group potential evaluation
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [CommunityPartnerGroupEvaluationRequest] communityPartnerGroupEvaluationRequest (required):
+  Future<Response> evaluateGroupPotentialWithHttpInfo(CommunityPartnerGroupEvaluationRequest communityPartnerGroupEvaluationRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/community-partners/group-evaluations';
+
+    // ignore: prefer_final_locals
+    Object? postBody = communityPartnerGroupEvaluationRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Create or update a Telegram group potential evaluation
+  ///
+  /// Parameters:
+  ///
+  /// * [CommunityPartnerGroupEvaluationRequest] communityPartnerGroupEvaluationRequest (required):
+  Future<CommunityPartnerGroupEvaluationResponse?> evaluateGroupPotential(CommunityPartnerGroupEvaluationRequest communityPartnerGroupEvaluationRequest,) async {
+    final response = await evaluateGroupPotentialWithHttpInfo(communityPartnerGroupEvaluationRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerGroupEvaluationResponse',) as CommunityPartnerGroupEvaluationResponse;
+    
+    }
+    return null;
+  }
+
+  /// Get a Telegram group potential evaluation
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] telegramGroupId (required):
+  Future<Response> getGroupPotentialWithHttpInfo(int telegramGroupId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/community-partners/group-evaluations/{telegramGroupId}'
+      .replaceAll('{telegramGroupId}', telegramGroupId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Get a Telegram group potential evaluation
+  ///
+  /// Parameters:
+  ///
+  /// * [int] telegramGroupId (required):
+  Future<CommunityPartnerGroupEvaluationResponse?> getGroupPotential(int telegramGroupId,) async {
+    final response = await getGroupPotentialWithHttpInfo(telegramGroupId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerGroupEvaluationResponse',) as CommunityPartnerGroupEvaluationResponse;
+    
+    }
+    return null;
+  }
+
+  /// List Telegram group potential evaluations ranked by expected commission
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] limit:
+  Future<Response> listGroupPotentialsWithHttpInfo({ int? limit, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/community-partners/group-evaluations';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// List Telegram group potential evaluations ranked by expected commission
+  ///
+  /// Parameters:
+  ///
+  /// * [int] limit:
+  Future<List<CommunityPartnerGroupEvaluationResponse>?> listGroupPotentials({ int? limit, }) async {
+    final response = await listGroupPotentialsWithHttpInfo( limit: limit, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<CommunityPartnerGroupEvaluationResponse>') as List)
+        .cast<CommunityPartnerGroupEvaluationResponse>()
+        .toList(growable: false);
+
+    }
+    return null;
+  }
+
   /// List Telegram group owner/community partners
   ///
   /// Note: This method returns the HTTP [Response].

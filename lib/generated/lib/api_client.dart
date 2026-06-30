@@ -376,6 +376,10 @@ class ApiClient {
           return CodeSupportKnowledgeImportResult.fromJson(value);
         case 'ColdWallet':
           return ColdWallet.fromJson(value);
+        case 'CommunityPartnerGroupEvaluationRequest':
+          return CommunityPartnerGroupEvaluationRequest.fromJson(value);
+        case 'CommunityPartnerGroupEvaluationResponse':
+          return CommunityPartnerGroupEvaluationResponse.fromJson(value);
         case 'CommunityPartnerMeSummaryResponse':
           return CommunityPartnerMeSummaryResponse.fromJson(value);
         case 'CommunityPartnerResponse':

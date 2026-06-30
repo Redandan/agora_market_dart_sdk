@@ -331,6 +331,9 @@ Class | Method | HTTP request | Description
 *CommunityPartnerApi* | [**listMyPartners**](doc//CommunityPartnerApi.md#listmypartners) | **GET** /community-partners/me | List current user's Telegram group owner partner records
 *CommunityPartnerApi* | [**myLedgers**](doc//CommunityPartnerApi.md#myledgers) | **GET** /community-partners/me/ledgers | List current user's partner commission ledger rows
 *CommunityPartnerApi* | [**mySummary**](doc//CommunityPartnerApi.md#mysummary) | **GET** /community-partners/me/summary | Get current user's Telegram group owner partner summary
+*CommunityPartnerAdminApi* | [**evaluateGroupPotential**](doc//CommunityPartnerAdminApi.md#evaluategrouppotential) | **POST** /admin/community-partners/group-evaluations | Create or update a Telegram group potential evaluation
+*CommunityPartnerAdminApi* | [**getGroupPotential**](doc//CommunityPartnerAdminApi.md#getgrouppotential) | **GET** /admin/community-partners/group-evaluations/{telegramGroupId} | Get a Telegram group potential evaluation
+*CommunityPartnerAdminApi* | [**listGroupPotentials**](doc//CommunityPartnerAdminApi.md#listgrouppotentials) | **GET** /admin/community-partners/group-evaluations | List Telegram group potential evaluations ranked by expected commission
 *CommunityPartnerAdminApi* | [**listPartners**](doc//CommunityPartnerAdminApi.md#listpartners) | **GET** /admin/community-partners | List Telegram group owner/community partners
 *CommunityPartnerAdminApi* | [**updateStatus1**](doc//CommunityPartnerAdminApi.md#updatestatus1) | **POST** /admin/community-partners/{partnerId}/status | Update community partner status
 *CommunityPartnerAdminApi* | [**upsertTelegramGroupPartner**](doc//CommunityPartnerAdminApi.md#upserttelegramgrouppartner) | **POST** /admin/community-partners/telegram-group | Create or update a Telegram group owner/community partner
@@ -729,6 +732,8 @@ Class | Method | HTTP request | Description
  - [CodeSupportKnowledgeCandidate](doc//CodeSupportKnowledgeCandidate.md)
  - [CodeSupportKnowledgeImportResult](doc//CodeSupportKnowledgeImportResult.md)
  - [ColdWallet](doc//ColdWallet.md)
+ - [CommunityPartnerGroupEvaluationRequest](doc//CommunityPartnerGroupEvaluationRequest.md)
+ - [CommunityPartnerGroupEvaluationResponse](doc//CommunityPartnerGroupEvaluationResponse.md)
  - [CommunityPartnerMeSummaryResponse](doc//CommunityPartnerMeSummaryResponse.md)
  - [CommunityPartnerResponse](doc//CommunityPartnerResponse.md)
  - [CommunityPartnerUpsertRequest](doc//CommunityPartnerUpsertRequest.md)
