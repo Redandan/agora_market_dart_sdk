@@ -328,6 +328,9 @@ Class | Method | HTTP request | Description
 *ColdWalletApi* | [**freezeColdWallet**](doc//ColdWalletApi.md#freezecoldwallet) | **POST** /cold-wallet/{id}/freeze | 凍結冷錢包
 *ColdWalletApi* | [**getColdWallets**](doc//ColdWalletApi.md#getcoldwallets) | **GET** /cold-wallet | 獲取冷錢包列表
 *ColdWalletApi* | [**releaseColdWallet**](doc//ColdWalletApi.md#releasecoldwallet) | **POST** /cold-wallet/{id}/release | 釋放冷錢包
+*CommunityPartnerAdminApi* | [**listPartners**](doc//CommunityPartnerAdminApi.md#listpartners) | **GET** /admin/community-partners | List Telegram group owner/community partners
+*CommunityPartnerAdminApi* | [**updateStatus1**](doc//CommunityPartnerAdminApi.md#updatestatus1) | **POST** /admin/community-partners/{partnerId}/status | Update community partner status
+*CommunityPartnerAdminApi* | [**upsertTelegramGroupPartner**](doc//CommunityPartnerAdminApi.md#upserttelegramgrouppartner) | **POST** /admin/community-partners/telegram-group | Create or update a Telegram group owner/community partner
 *DeliveryApi* | [**acceptOrder**](doc//DeliveryApi.md#acceptorder) | **POST** /delivery/accept | 配送員接單
 *DeliveryApi* | [**currentStatus**](doc//DeliveryApi.md#currentstatus) | **GET** /delivery/status | 獲取當前配送狀態
 *DeliveryApi* | [**getAvailableOrders**](doc//DeliveryApi.md#getavailableorders) | **GET** /delivery/available-orders | 獲取可接訂單列表
@@ -723,6 +726,8 @@ Class | Method | HTTP request | Description
  - [CodeSupportKnowledgeCandidate](doc//CodeSupportKnowledgeCandidate.md)
  - [CodeSupportKnowledgeImportResult](doc//CodeSupportKnowledgeImportResult.md)
  - [ColdWallet](doc//ColdWallet.md)
+ - [CommunityPartnerResponse](doc//CommunityPartnerResponse.md)
+ - [CommunityPartnerUpsertRequest](doc//CommunityPartnerUpsertRequest.md)
  - [CreateActivityRequest](doc//CreateActivityRequest.md)
  - [CreateColdWalletParam](doc//CreateColdWalletParam.md)
  - [CreateIssueParam](doc//CreateIssueParam.md)

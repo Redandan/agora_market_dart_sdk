@@ -125,6 +125,10 @@
       "description": "PWA 日誌管理 API（開發調試用）"
     },
     {
+      "name": "Community Partner Admin",
+      "description": "Telegram group owner partner configuration and revenue-share setup"
+    },
+    {
       "name": "logistics",
       "description": "物流計算、郵遞區號查詢等相關 API"
     },
@@ -12413,6 +12417,82 @@
         }
       }
     },
+    "/admin/community-partners/{partnerId}/status": {
+      "post": {
+        "tags": [
+          "Community Partner Admin"
+        ],
+        "summary": "Update community partner status",
+        "operationId": "updateStatus_1",
+        "parameters": [
+          {
+            "name": "partnerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ACTIVE",
+                "PAUSED",
+                "DISABLED"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommunityPartnerResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/community-partners/telegram-group": {
+      "post": {
+        "tags": [
+          "Community Partner Admin"
+        ],
+        "summary": "Create or update a Telegram group owner/community partner",
+        "operationId": "upsertTelegramGroupPartner",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommunityPartnerUpsertRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommunityPartnerResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/bot/refresh-commands": {
       "post": {
         "tags": [
@@ -19275,6 +19355,30 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/DeliveryDetail"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/community-partners": {
+      "get": {
+        "tags": [
+          "Community Partner Admin"
+        ],
+        "summary": "List Telegram group owner/community partners",
+        "operationId": "listPartners",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CommunityPartnerResponse"
+                  }
                 }
               }
             }
@@ -40807,6 +40911,111 @@
             "type": "boolean"
           }
         }
+      },
+      "CommunityPartnerResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "partnerType": {
+            "type": "string",
+            "enum": [
+              "TELEGRAM_GROUP_OWNER"
+            ]
+          },
+          "telegramGroupId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "telegramGroupTitle": {
+            "type": "string"
+          },
+          "telegramOwnerUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "commissionRate": {
+            "type": "number"
+          },
+          "commissionBaseType": {
+            "type": "string",
+            "enum": [
+              "ORDER_AMOUNT"
+            ]
+          },
+          "settlementDelayDays": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "settlementCurrency": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "PAUSED",
+              "DISABLED"
+            ]
+          },
+          "notes": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "CommunityPartnerUpsertRequest": {
+        "type": "object",
+        "properties": {
+          "telegramGroupId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "telegramGroupTitle": {
+            "type": "string"
+          },
+          "telegramOwnerUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "displayName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "commissionRate": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": 0.0
+          },
+          "settlementDelayDays": {
+            "type": "integer",
+            "format": "int32",
+            "maximum": 365,
+            "minimum": 0
+          },
+          "settlementCurrency": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "commissionRate",
+          "telegramGroupId"
+        ]
       },
       "AutoReplyResetStatsResponse": {
         "type": "object",

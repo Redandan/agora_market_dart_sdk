@@ -376,6 +376,10 @@ class ApiClient {
           return CodeSupportKnowledgeImportResult.fromJson(value);
         case 'ColdWallet':
           return ColdWallet.fromJson(value);
+        case 'CommunityPartnerResponse':
+          return CommunityPartnerResponse.fromJson(value);
+        case 'CommunityPartnerUpsertRequest':
+          return CommunityPartnerUpsertRequest.fromJson(value);
         case 'CreateActivityRequest':
           return CreateActivityRequest.fromJson(value);
         case 'CreateColdWalletParam':
