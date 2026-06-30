@@ -376,6 +376,8 @@ class ApiClient {
           return CodeSupportKnowledgeImportResult.fromJson(value);
         case 'ColdWallet':
           return ColdWallet.fromJson(value);
+        case 'CommunityPartnerMeSummaryResponse':
+          return CommunityPartnerMeSummaryResponse.fromJson(value);
         case 'CommunityPartnerResponse':
           return CommunityPartnerResponse.fromJson(value);
         case 'CommunityPartnerUpsertRequest':
@@ -722,6 +724,8 @@ class ApiClient {
           return PageNotificationResponseDTO.fromJson(value);
         case 'PageOrder':
           return PageOrder.fromJson(value);
+        case 'PagePartnerCommissionLedgerResponse':
+          return PagePartnerCommissionLedgerResponse.fromJson(value);
         case 'PagePickupStore':
           return PagePickupStore.fromJson(value);
         case 'PagePostResponse':
@@ -762,6 +766,8 @@ class ApiClient {
           return PageableObject.fromJson(value);
         case 'ParsedIntent':
           return ParsedIntent.fromJson(value);
+        case 'PartnerCommissionLedgerResponse':
+          return PartnerCommissionLedgerResponse.fromJson(value);
         case 'PasskeyCapabilityResponse':
           return PasskeyCapabilityResponse.fromJson(value);
         case 'PasskeyCredentialResponse':
@@ -1124,6 +1130,8 @@ class ApiClient {
           return TelegramWebAppAuthRequest.fromJson(value);
         case 'TermsState':
           return TermsState.fromJson(value);
+        case 'TgPartnerAuthSummary':
+          return TgPartnerAuthSummary.fromJson(value);
         case 'TopDeliveryAreaDTO':
           return TopDeliveryAreaDTO.fromJson(value);
         case 'TopDisputedProductDTO':

@@ -38,6 +38,7 @@ class UserInfo {
     this.passkeySecuritySummary,
     this.marketplaceUi,
     this.walletSafetySummary,
+    this.tgPartnerSummary,
   });
 
   /// 用戶ID
@@ -253,6 +254,15 @@ class UserInfo {
   ///
   WalletSafetySummaryResponse? walletSafetySummary;
 
+  /// 目前登入帳號的 Telegram 群主合作方入口狀態；僅用於前端 bootstrap，不包含 ledger 明細
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  TgPartnerAuthSummary? tgPartnerSummary;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserInfo &&
     other.id == id &&
@@ -279,7 +289,8 @@ class UserInfo {
     other.recoveryAdvisory == recoveryAdvisory &&
     other.passkeySecuritySummary == passkeySecuritySummary &&
     other.marketplaceUi == marketplaceUi &&
-    other.walletSafetySummary == walletSafetySummary;
+    other.walletSafetySummary == walletSafetySummary &&
+    other.tgPartnerSummary == tgPartnerSummary;
 
   @override
   int get hashCode =>
@@ -308,10 +319,11 @@ class UserInfo {
     (recoveryAdvisory == null ? 0 : recoveryAdvisory!.hashCode) +
     (passkeySecuritySummary == null ? 0 : passkeySecuritySummary!.hashCode) +
     (marketplaceUi == null ? 0 : marketplaceUi!.hashCode) +
-    (walletSafetySummary == null ? 0 : walletSafetySummary!.hashCode);
+    (walletSafetySummary == null ? 0 : walletSafetySummary!.hashCode) +
+    (tgPartnerSummary == null ? 0 : tgPartnerSummary!.hashCode);
 
   @override
-  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, cartItemCount=$cartItemCount, stackingBalance=$stackingBalance, totalAssets=$totalAssets, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar, balanceConversions=$balanceConversions, sellerMaintenance=$sellerMaintenance, deliveryMaintenance=$deliveryMaintenance, unreadMessageCount=$unreadMessageCount, defaultHomePage=$defaultHomePage, recoveryAdvisory=$recoveryAdvisory, passkeySecuritySummary=$passkeySecuritySummary, marketplaceUi=$marketplaceUi, walletSafetySummary=$walletSafetySummary]';
+  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, cartItemCount=$cartItemCount, stackingBalance=$stackingBalance, totalAssets=$totalAssets, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar, balanceConversions=$balanceConversions, sellerMaintenance=$sellerMaintenance, deliveryMaintenance=$deliveryMaintenance, unreadMessageCount=$unreadMessageCount, defaultHomePage=$defaultHomePage, recoveryAdvisory=$recoveryAdvisory, passkeySecuritySummary=$passkeySecuritySummary, marketplaceUi=$marketplaceUi, walletSafetySummary=$walletSafetySummary, tgPartnerSummary=$tgPartnerSummary]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -436,6 +448,11 @@ class UserInfo {
     } else {
       json[r'walletSafetySummary'] = null;
     }
+    if (this.tgPartnerSummary != null) {
+      json[r'tgPartnerSummary'] = this.tgPartnerSummary;
+    } else {
+      json[r'tgPartnerSummary'] = null;
+    }
     return json;
   }
 
@@ -491,6 +508,7 @@ class UserInfo {
         passkeySecuritySummary: PasskeySecuritySummaryResponse.fromJson(json[r'passkeySecuritySummary']),
         marketplaceUi: MarketplaceUiConfigResponse.fromJson(json[r'marketplaceUi']),
         walletSafetySummary: WalletSafetySummaryResponse.fromJson(json[r'walletSafetySummary']),
+        tgPartnerSummary: TgPartnerAuthSummary.fromJson(json[r'tgPartnerSummary']),
       );
     }
     return null;

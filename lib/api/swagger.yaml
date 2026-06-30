@@ -281,6 +281,10 @@
       "description": "推廣碼管理 API"
     },
     {
+      "name": "Community Partner",
+      "description": "Current-user scoped Telegram group owner partner APIs"
+    },
+    {
       "name": "admin-exchange-rate-range",
       "description": "管理員匯率範圍管理 API"
     },
@@ -16679,6 +16683,109 @@
         }
       }
     },
+    "/community-partners/me": {
+      "get": {
+        "tags": [
+          "Community Partner"
+        ],
+        "summary": "List current user's Telegram group owner partner records",
+        "operationId": "listMyPartners",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CommunityPartnerResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/community-partners/me/summary": {
+      "get": {
+        "tags": [
+          "Community Partner"
+        ],
+        "summary": "Get current user's Telegram group owner partner summary",
+        "operationId": "mySummary",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommunityPartnerMeSummaryResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/community-partners/me/ledgers": {
+      "get": {
+        "tags": [
+          "Community Partner"
+        ],
+        "summary": "List current user's partner commission ledger rows",
+        "operationId": "myLedgers",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "PENDING",
+                "PAYABLE",
+                "PAID",
+                "CANCELLED",
+                "REVERSED"
+              ]
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagePartnerCommissionLedgerResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/chat/unread/count": {
       "get": {
         "tags": [
@@ -28164,6 +28271,25 @@
           }
         }
       },
+      "TgPartnerAuthSummary": {
+        "type": "object",
+        "properties": {
+          "telegramLinked": {
+            "type": "boolean"
+          },
+          "telegramUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "partner": {
+            "type": "boolean"
+          },
+          "partnerCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
       "UserInfo": {
         "type": "object",
         "description": "用戶信息",
@@ -28280,6 +28406,10 @@
           "walletSafetySummary": {
             "$ref": "#/components/schemas/WalletSafetySummaryResponse",
             "description": "目前登入帳號的 USDT 錢包安全提醒摘要；由 /auth/me 回傳給前端啟動畫面使用"
+          },
+          "tgPartnerSummary": {
+            "$ref": "#/components/schemas/TgPartnerAuthSummary",
+            "description": "目前登入帳號的 Telegram 群主合作方入口狀態；僅用於前端 bootstrap，不包含 ledger 明細"
           }
         }
       },
@@ -44008,6 +44138,188 @@
             "format": "int64",
             "description": "配送中訂單數",
             "example": 3
+          }
+        }
+      },
+      "CommunityPartnerMeSummaryResponse": {
+        "type": "object",
+        "properties": {
+          "telegramLinked": {
+            "type": "boolean"
+          },
+          "telegramUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "partner": {
+            "type": "boolean"
+          },
+          "partnerCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "attributedBuyerCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ledgerCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pendingLedgerCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "payableLedgerCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "paidLedgerCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pendingCommissionAmount": {
+            "type": "number"
+          },
+          "payableCommissionAmount": {
+            "type": "number"
+          },
+          "paidCommissionAmount": {
+            "type": "number"
+          },
+          "settlementCurrency": {
+            "type": "string"
+          },
+          "statuses": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ACTIVE",
+                "PAUSED",
+                "DISABLED"
+              ]
+            }
+          }
+        }
+      },
+      "PagePartnerCommissionLedgerResponse": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PartnerCommissionLedgerResponse"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PartnerCommissionLedgerResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "partnerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "telegramGroupId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "commissionBaseType": {
+            "type": "string",
+            "enum": [
+              "ORDER_AMOUNT"
+            ]
+          },
+          "baseAmount": {
+            "type": "number"
+          },
+          "commissionRate": {
+            "type": "number"
+          },
+          "commissionAmount": {
+            "type": "number"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "PAYABLE",
+              "PAID",
+              "CANCELLED",
+              "REVERSED"
+            ]
+          },
+          "source": {
+            "type": "string"
+          },
+          "availableAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "paidAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reversalOfId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },

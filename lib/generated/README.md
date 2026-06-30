@@ -328,6 +328,9 @@ Class | Method | HTTP request | Description
 *ColdWalletApi* | [**freezeColdWallet**](doc//ColdWalletApi.md#freezecoldwallet) | **POST** /cold-wallet/{id}/freeze | 凍結冷錢包
 *ColdWalletApi* | [**getColdWallets**](doc//ColdWalletApi.md#getcoldwallets) | **GET** /cold-wallet | 獲取冷錢包列表
 *ColdWalletApi* | [**releaseColdWallet**](doc//ColdWalletApi.md#releasecoldwallet) | **POST** /cold-wallet/{id}/release | 釋放冷錢包
+*CommunityPartnerApi* | [**listMyPartners**](doc//CommunityPartnerApi.md#listmypartners) | **GET** /community-partners/me | List current user's Telegram group owner partner records
+*CommunityPartnerApi* | [**myLedgers**](doc//CommunityPartnerApi.md#myledgers) | **GET** /community-partners/me/ledgers | List current user's partner commission ledger rows
+*CommunityPartnerApi* | [**mySummary**](doc//CommunityPartnerApi.md#mysummary) | **GET** /community-partners/me/summary | Get current user's Telegram group owner partner summary
 *CommunityPartnerAdminApi* | [**listPartners**](doc//CommunityPartnerAdminApi.md#listpartners) | **GET** /admin/community-partners | List Telegram group owner/community partners
 *CommunityPartnerAdminApi* | [**updateStatus1**](doc//CommunityPartnerAdminApi.md#updatestatus1) | **POST** /admin/community-partners/{partnerId}/status | Update community partner status
 *CommunityPartnerAdminApi* | [**upsertTelegramGroupPartner**](doc//CommunityPartnerAdminApi.md#upserttelegramgrouppartner) | **POST** /admin/community-partners/telegram-group | Create or update a Telegram group owner/community partner
@@ -726,6 +729,7 @@ Class | Method | HTTP request | Description
  - [CodeSupportKnowledgeCandidate](doc//CodeSupportKnowledgeCandidate.md)
  - [CodeSupportKnowledgeImportResult](doc//CodeSupportKnowledgeImportResult.md)
  - [ColdWallet](doc//ColdWallet.md)
+ - [CommunityPartnerMeSummaryResponse](doc//CommunityPartnerMeSummaryResponse.md)
  - [CommunityPartnerResponse](doc//CommunityPartnerResponse.md)
  - [CommunityPartnerUpsertRequest](doc//CommunityPartnerUpsertRequest.md)
  - [CreateActivityRequest](doc//CreateActivityRequest.md)
@@ -899,6 +903,7 @@ Class | Method | HTTP request | Description
  - [PageMarketResponse](doc//PageMarketResponse.md)
  - [PageNotificationResponseDTO](doc//PageNotificationResponseDTO.md)
  - [PageOrder](doc//PageOrder.md)
+ - [PagePartnerCommissionLedgerResponse](doc//PagePartnerCommissionLedgerResponse.md)
  - [PagePickupStore](doc//PagePickupStore.md)
  - [PagePostResponse](doc//PagePostResponse.md)
  - [PageProduct](doc//PageProduct.md)
@@ -919,6 +924,7 @@ Class | Method | HTTP request | Description
  - [Pageable](doc//Pageable.md)
  - [PageableObject](doc//PageableObject.md)
  - [ParsedIntent](doc//ParsedIntent.md)
+ - [PartnerCommissionLedgerResponse](doc//PartnerCommissionLedgerResponse.md)
  - [PasskeyCapabilityResponse](doc//PasskeyCapabilityResponse.md)
  - [PasskeyCredentialResponse](doc//PasskeyCredentialResponse.md)
  - [PasskeyOptionsRequest](doc//PasskeyOptionsRequest.md)
@@ -1100,6 +1106,7 @@ Class | Method | HTTP request | Description
  - [TelegramJoinReviewListRequest](doc//TelegramJoinReviewListRequest.md)
  - [TelegramWebAppAuthRequest](doc//TelegramWebAppAuthRequest.md)
  - [TermsState](doc//TermsState.md)
+ - [TgPartnerAuthSummary](doc//TgPartnerAuthSummary.md)
  - [TopDeliveryAreaDTO](doc//TopDeliveryAreaDTO.md)
  - [TopDisputedProductDTO](doc//TopDisputedProductDTO.md)
  - [TopDisputedSellerDTO](doc//TopDisputedSellerDTO.md)
