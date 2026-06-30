@@ -438,6 +438,8 @@ class ApiClient {
           return DemandOfferResponse.fromJson(value);
         case 'DemandOfferReviewRequest':
           return DemandOfferReviewRequest.fromJson(value);
+        case 'DemandPrefill':
+          return DemandPrefill.fromJson(value);
         case 'DemandPublicDetailResponse':
           return DemandPublicDetailResponse.fromJson(value);
         case 'DemandPublicSummaryResponse':
@@ -826,6 +828,8 @@ class ApiClient {
           return ProductBoardPostCreateRequest.fromJson(value);
         case 'ProductBoardPostResponse':
           return ProductBoardPostResponse.fromJson(value);
+        case 'ProductBoardPrompt':
+          return ProductBoardPrompt.fromJson(value);
         case 'ProductBoardReplyCreateRequest':
           return ProductBoardReplyCreateRequest.fromJson(value);
         case 'ProductBoardReplyResponse':
@@ -850,6 +854,8 @@ class ApiClient {
           return ProductDraftRequest.fromJson(value);
         case 'ProductDraftResponse':
           return ProductDraftResponse.fromJson(value);
+        case 'ProductGuidedSuggestionResponse':
+          return ProductGuidedSuggestionResponse.fromJson(value);
         case 'ProductHotKeywordResponse':
           return ProductHotKeywordResponse.fromJson(value);
         case 'ProductInventoryStats':
@@ -882,6 +888,8 @@ class ApiClient {
           return ProductStatsBackfillRequest.fromJson(value);
         case 'ProductStatsBackfillResponse':
           return ProductStatsBackfillResponse.fromJson(value);
+        case 'ProductSummary':
+          return ProductSummary.fromJson(value);
         case 'ProductTypeDictionary':
           return ProductTypeDictionary.fromJson(value);
         case 'ProductTypeDictionaryUpsertRequest':

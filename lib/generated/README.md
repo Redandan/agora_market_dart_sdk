@@ -462,6 +462,7 @@ Class | Method | HTTP request | Description
 *ProductsApi* | [**getMyProducts**](doc//ProductsApi.md#getmyproducts) | **POST** /products/my-products | 獲取賣家自己的商品列表
 *ProductsApi* | [**getOutOfStockProducts**](doc//ProductsApi.md#getoutofstockproducts) | **GET** /products/out-of-stock | 獲取缺貨商品列表
 *ProductsApi* | [**getProductById**](doc//ProductsApi.md#getproductbyid) | **GET** /products/{id} | 根據ID獲取商品
+*ProductsApi* | [**guidedSuggestions**](doc//ProductsApi.md#guidedsuggestions) | **GET** /products/search/guided-suggestions | Read-only guided suggestions for zero-result product searches
 *ProductsApi* | [**increaseStock**](doc//ProductsApi.md#increasestock) | **POST** /products/{id}/stock/increase | 增加商品庫存
 *ProductsApi* | [**listCategories**](doc//ProductsApi.md#listcategories) | **GET** /products/categories | Public buyer-facing product categories
 *ProductsApi* | [**listHotKeywords**](doc//ProductsApi.md#listhotkeywords) | **GET** /products/hot-keywords | Public buyer-facing hot product search keywords
@@ -753,6 +754,7 @@ Class | Method | HTTP request | Description
  - [DemandOfferCreateRequest](doc//DemandOfferCreateRequest.md)
  - [DemandOfferResponse](doc//DemandOfferResponse.md)
  - [DemandOfferReviewRequest](doc//DemandOfferReviewRequest.md)
+ - [DemandPrefill](doc//DemandPrefill.md)
  - [DemandPublicDetailResponse](doc//DemandPublicDetailResponse.md)
  - [DemandPublicSummaryResponse](doc//DemandPublicSummaryResponse.md)
  - [DemandSearchParam](doc//DemandSearchParam.md)
@@ -947,6 +949,7 @@ Class | Method | HTTP request | Description
  - [ProductBoardHideRequest](doc//ProductBoardHideRequest.md)
  - [ProductBoardPostCreateRequest](doc//ProductBoardPostCreateRequest.md)
  - [ProductBoardPostResponse](doc//ProductBoardPostResponse.md)
+ - [ProductBoardPrompt](doc//ProductBoardPrompt.md)
  - [ProductBoardReplyCreateRequest](doc//ProductBoardReplyCreateRequest.md)
  - [ProductBoardReplyResponse](doc//ProductBoardReplyResponse.md)
  - [ProductBoardReport](doc//ProductBoardReport.md)
@@ -959,6 +962,7 @@ Class | Method | HTTP request | Description
  - [ProductCreateParam](doc//ProductCreateParam.md)
  - [ProductDraftRequest](doc//ProductDraftRequest.md)
  - [ProductDraftResponse](doc//ProductDraftResponse.md)
+ - [ProductGuidedSuggestionResponse](doc//ProductGuidedSuggestionResponse.md)
  - [ProductHotKeywordResponse](doc//ProductHotKeywordResponse.md)
  - [ProductInventoryStats](doc//ProductInventoryStats.md)
  - [ProductListCarousel](doc//ProductListCarousel.md)
@@ -975,6 +979,7 @@ Class | Method | HTTP request | Description
  - [ProductStats](doc//ProductStats.md)
  - [ProductStatsBackfillRequest](doc//ProductStatsBackfillRequest.md)
  - [ProductStatsBackfillResponse](doc//ProductStatsBackfillResponse.md)
+ - [ProductSummary](doc//ProductSummary.md)
  - [ProductTypeDictionary](doc//ProductTypeDictionary.md)
  - [ProductTypeDictionaryUpsertRequest](doc//ProductTypeDictionaryUpsertRequest.md)
  - [ProductTypeOption](doc//ProductTypeOption.md)

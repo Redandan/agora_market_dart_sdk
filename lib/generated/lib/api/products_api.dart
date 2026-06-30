@@ -595,6 +595,75 @@ class ProductsApi {
     return null;
   }
 
+  /// Read-only guided suggestions for zero-result product searches
+  ///
+  /// Returns target keyword family guidance, matching products, substitute keywords, product-board prompt metadata, and demand prefill metadata. Does not create demands or mutate product/order/fund state.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] keyword (required):
+  ///   Search keyword to normalize and map into a guided suggestion family
+  ///
+  /// * [int] limit:
+  ///   Maximum product matches to include, default 6, max 12
+  Future<Response> guidedSuggestionsWithHttpInfo(String keyword, { int? limit, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/products/search/guided-suggestions';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'keyword', keyword));
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Read-only guided suggestions for zero-result product searches
+  ///
+  /// Returns target keyword family guidance, matching products, substitute keywords, product-board prompt metadata, and demand prefill metadata. Does not create demands or mutate product/order/fund state.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] keyword (required):
+  ///   Search keyword to normalize and map into a guided suggestion family
+  ///
+  /// * [int] limit:
+  ///   Maximum product matches to include, default 6, max 12
+  Future<ProductGuidedSuggestionResponse?> guidedSuggestions(String keyword, { int? limit, }) async {
+    final response = await guidedSuggestionsWithHttpInfo(keyword,  limit: limit, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductGuidedSuggestionResponse',) as ProductGuidedSuggestionResponse;
+    
+    }
+    return null;
+  }
+
   /// 增加商品庫存
   ///
   /// Note: This method returns the HTTP [Response].

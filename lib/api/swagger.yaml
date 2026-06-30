@@ -14974,6 +14974,49 @@
         }
       }
     },
+    "/products/search/guided-suggestions": {
+      "get": {
+        "tags": [
+          "products"
+        ],
+        "summary": "Read-only guided suggestions for zero-result product searches",
+        "description": "Returns target keyword family guidance, matching products, substitute keywords, product-board prompt metadata, and demand prefill metadata. Does not create demands or mutate product/order/fund state.",
+        "operationId": "guidedSuggestions",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "description": "Search keyword to normalize and map into a guided suggestion family",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum product matches to include, default 6, max 12",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductGuidedSuggestionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/products/recommendations": {
       "get": {
         "tags": [
@@ -23691,9 +23734,6 @@
             "description": "最後更新時間",
             "example": "2024-01-01T10:00:00"
           },
-          "convenienceStorePickup": {
-            "type": "boolean"
-          },
           "homeDelivery": {
             "type": "boolean"
           },
@@ -23708,6 +23748,9 @@
           },
           "recipientInfo": {
             "type": "string"
+          },
+          "convenienceStorePickup": {
+            "type": "boolean"
           }
         },
         "required": [
@@ -42483,6 +42526,234 @@
           },
           "outOfStock": {
             "type": "boolean"
+          }
+        }
+      },
+      "DemandPrefill": {
+        "type": "object",
+        "description": "Demand creation prefill metadata",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "sourceSearchKeyword": {
+            "type": "string"
+          },
+          "normalizedKeyword": {
+            "type": "string"
+          },
+          "sourceType": {
+            "type": "string",
+            "description": "Demand source",
+            "enum": [
+              "SEARCH_ZERO_RESULT",
+              "MANUAL_BUYER_REQUEST",
+              "ADMIN_CREATED",
+              "MCP_CREATED",
+              "TELEGRAM_CREATED"
+            ]
+          },
+          "category": {
+            "type": "string",
+            "description": "商品分類枚舉",
+            "enum": [
+              "ELECTRONICS",
+              "MOBILE",
+              "CLOTHING",
+              "SHOES",
+              "BAGS",
+              "BEAUTY",
+              "HEALTH",
+              "FOOD",
+              "HOME",
+              "FURNITURE",
+              "BABY",
+              "TOYS",
+              "PET_SUPPLIES",
+              "SPORTS",
+              "OUTDOOR",
+              "AUTOMOTIVE",
+              "BOOKS",
+              "SECOND_HAND",
+              "DIGITAL_SERVICE",
+              "OTHER"
+            ]
+          },
+          "productType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "buyerNote": {
+            "type": "string"
+          }
+        }
+      },
+      "ProductBoardPrompt": {
+        "type": "object",
+        "description": "Product-board/community prompt metadata",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "bodySeed": {
+            "type": "string"
+          },
+          "callToAction": {
+            "type": "string"
+          }
+        }
+      },
+      "ProductGuidedSuggestionResponse": {
+        "type": "object",
+        "description": "Read-only guided suggestions for a product search that may have no direct results",
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "description": "Original keyword from the request",
+            "example": "gift card"
+          },
+          "normalizedKeyword": {
+            "type": "string",
+            "description": "Normalized keyword used for matching",
+            "example": "gift card"
+          },
+          "family": {
+            "type": "string",
+            "description": "Matched guided family",
+            "example": "GIFT_CARD"
+          },
+          "zeroResultKnown": {
+            "type": "boolean",
+            "description": "Whether the keyword is a known zero-result or guided-discovery candidate"
+          },
+          "title": {
+            "type": "string",
+            "description": "Short buyer-facing title for the guided module"
+          },
+          "summary": {
+            "type": "string",
+            "description": "Short buyer-facing explanation for the guided module"
+          },
+          "matchedProducts": {
+            "type": "array",
+            "description": "Matching on-sale products, if any",
+            "items": {
+              "$ref": "#/components/schemas/ProductSummary"
+            }
+          },
+          "substituteKeywords": {
+            "type": "array",
+            "description": "Alternative keywords or product families to try",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requiredBuyerInputs": {
+            "type": "array",
+            "description": "Information the buyer should provide before sourcing",
+            "items": {
+              "type": "string"
+            }
+          },
+          "riskNotes": {
+            "type": "array",
+            "description": "Buyer-facing risk or fulfillment notes",
+            "items": {
+              "type": "string"
+            }
+          },
+          "demandPrefill": {
+            "$ref": "#/components/schemas/DemandPrefill",
+            "description": "Read-only demand prefill metadata. The backend does not create a demand from this endpoint."
+          },
+          "productBoardPrompt": {
+            "$ref": "#/components/schemas/ProductBoardPrompt",
+            "description": "Optional product-board/community prompt metadata"
+          }
+        }
+      },
+      "ProductSummary": {
+        "type": "object",
+        "description": "Small public product summary for guided suggestions",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string",
+            "description": "商品分類枚舉",
+            "enum": [
+              "ELECTRONICS",
+              "MOBILE",
+              "CLOTHING",
+              "SHOES",
+              "BAGS",
+              "BEAUTY",
+              "HEALTH",
+              "FOOD",
+              "HOME",
+              "FURNITURE",
+              "BABY",
+              "TOYS",
+              "PET_SUPPLIES",
+              "SPORTS",
+              "OUTDOOR",
+              "AUTOMOTIVE",
+              "BOOKS",
+              "SECOND_HAND",
+              "DIGITAL_SERVICE",
+              "OTHER"
+            ]
+          },
+          "productType": {
+            "type": "string",
+            "description": "商品類型",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE"
+            ]
+          },
+          "sourceRegion": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "currency": {
+            "type": "string",
+            "enum": [
+              "USDT",
+              "USD",
+              "TWD",
+              "THB",
+              "CNY",
+              "JPY",
+              "EUR",
+              "GBP",
+              "KRW",
+              "SGD",
+              "HKD",
+              "AUD"
+            ]
+          },
+          "salesCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reviewCount": {
+            "type": "integer",
+            "format": "int32"
           }
         }
       },
