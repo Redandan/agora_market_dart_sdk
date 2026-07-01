@@ -3708,6 +3708,185 @@
         }
       }
     },
+    "/seller/creator-contents": {
+      "get": {
+        "tags": [
+          "seller-creator-content-controller"
+        ],
+        "operationId": "listMine",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CreatorContentResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "seller-creator-content-controller"
+        ],
+        "operationId": "create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatorContentUpsertRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatorContentResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/seller/creator-contents/{contentId}": {
+      "post": {
+        "tags": [
+          "seller-creator-content-controller"
+        ],
+        "operationId": "update",
+        "parameters": [
+          {
+            "name": "contentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatorContentUpsertRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatorContentResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/seller/creator-contents/{contentId}/publish": {
+      "post": {
+        "tags": [
+          "seller-creator-content-controller"
+        ],
+        "operationId": "publish",
+        "parameters": [
+          {
+            "name": "contentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatorContentResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/seller/creator-contents/{contentId}/archive": {
+      "post": {
+        "tags": [
+          "seller-creator-content-controller"
+        ],
+        "operationId": "archive",
+        "parameters": [
+          {
+            "name": "contentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatorContentResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/reviews/update": {
       "post": {
         "tags": [
@@ -7532,6 +7711,42 @@
             }
           }
         }
+      }
+    },
+    "/creator-subscriptions/products/{productId}/subscribe": {
+      "post": {
+        "tags": [
+          "creator-subscription-controller"
+        ],
+        "operationId": "subscribe_1",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatorSubscriptionResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/community-partners/me/applications": {
@@ -17141,6 +17356,150 @@
         }
       }
     },
+    "/creator-subscriptions/products/{productId}/access": {
+      "get": {
+        "tags": [
+          "creator-subscription-controller"
+        ],
+        "operationId": "getAccess",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatorSubscriptionAccessResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/creator-subscriptions/me": {
+      "get": {
+        "tags": [
+          "creator-subscription-controller"
+        ],
+        "operationId": "listMine_1",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CreatorSubscriptionResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/creator-contents": {
+      "get": {
+        "tags": [
+          "creator-content-controller"
+        ],
+        "operationId": "listPublished",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "pageable",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Pageable"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageCreatorContentResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/creator-contents/{contentId}": {
+      "get": {
+        "tags": [
+          "creator-content-controller"
+        ],
+        "operationId": "getDetail",
+        "parameters": [
+          {
+            "name": "contentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatorContentResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/community-partners/me": {
       "get": {
         "tags": [
@@ -25602,6 +25961,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ],
             "maxLength": 50
@@ -25822,7 +26182,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ],
             "maxLength": 30
           },
@@ -25868,6 +26229,19 @@
           "dataResidencyNotice": {
             "type": "string",
             "description": "資料出境聲明文字(中國/俄羅斯等來源建議填)"
+          },
+          "subscriptionDurationDays": {
+            "type": "integer",
+            "format": "int32",
+            "description": "訂閱有效天數(創作者訂閱商品)",
+            "example": 30,
+            "minimum": 1
+          },
+          "subscriptionAccessNote": {
+            "type": "string",
+            "description": "訂閱開通後可見的補充說明",
+            "maxLength": 1000,
+            "minLength": 0
           },
           "reportCount": {
             "type": "integer",
@@ -27418,6 +27792,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -27426,7 +27801,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           }
         }
@@ -27487,6 +27863,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -27495,7 +27872,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "status": {
@@ -27785,6 +28163,111 @@
           },
           "empty": {
             "type": "boolean"
+          }
+        }
+      },
+      "CreatorContentUpsertRequest": {
+        "type": "object",
+        "description": "創作者內容建立/更新請求",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 160,
+            "minLength": 0
+          },
+          "summary": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 0
+          },
+          "contentType": {
+            "type": "string",
+            "description": "創作者內容類型",
+            "enum": [
+              "ARTICLE",
+              "VIDEO",
+              "FILE",
+              "LINK"
+            ]
+          },
+          "body": {
+            "type": "string"
+          },
+          "mediaUrl": {
+            "type": "string",
+            "maxLength": 1000,
+            "minLength": 0
+          }
+        },
+        "required": [
+          "productId"
+        ]
+      },
+      "CreatorContentResponse": {
+        "type": "object",
+        "description": "創作者內容回應",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "creatorUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "contentType": {
+            "type": "string",
+            "description": "創作者內容類型",
+            "enum": [
+              "ARTICLE",
+              "VIDEO",
+              "FILE",
+              "LINK"
+            ]
+          },
+          "body": {
+            "type": "string"
+          },
+          "mediaUrl": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "description": "創作者內容狀態",
+            "enum": [
+              "DRAFT",
+              "PUBLISHED",
+              "ARCHIVED"
+            ]
+          },
+          "accessible": {
+            "type": "boolean"
+          },
+          "publishedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
@@ -29522,7 +30005,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "sourceRegion": {
@@ -29561,6 +30045,20 @@
             "type": "string",
             "description": "資料出境聲明文字",
             "maxLength": 5000,
+            "minLength": 0
+          },
+          "subscriptionDurationDays": {
+            "type": "integer",
+            "format": "int32",
+            "description": "訂閱有效天數(創作者訂閱商品必填)",
+            "example": 30,
+            "maximum": 366,
+            "minimum": 1
+          },
+          "subscriptionAccessNote": {
+            "type": "string",
+            "description": "訂閱開通後可見的補充說明",
+            "maxLength": 1000,
             "minLength": 0
           }
         },
@@ -29652,6 +30150,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -29682,7 +30181,8 @@
             "description": "商品類型 PHYSICAL / DIGITAL_SERVICE",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "sourceRegion": {
@@ -29787,7 +30287,8 @@
             "description": "推斷的商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "category": {
@@ -29813,6 +30314,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -29894,6 +30396,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -30050,7 +30553,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "sourceRegion": {
@@ -30097,6 +30601,20 @@
             "description": "資料出境聲明文字(中國/俄羅斯等來源建議填)",
             "maxLength": 5000,
             "minLength": 0
+          },
+          "subscriptionDurationDays": {
+            "type": "integer",
+            "format": "int32",
+            "description": "訂閱有效天數(創作者訂閱商品必填)",
+            "example": 30,
+            "maximum": 366,
+            "minimum": 1
+          },
+          "subscriptionAccessNote": {
+            "type": "string",
+            "description": "訂閱開通後可見的補充說明",
+            "maxLength": 1000,
+            "minLength": 0
           }
         },
         "required": [
@@ -30124,7 +30642,8 @@
             "description": "商品類型（可選；未提供時會嘗試推斷）",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "title": {
@@ -30197,6 +30716,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -30218,7 +30738,8 @@
             "description": "建議商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "suggestedCategory": {
@@ -30244,6 +30765,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -30353,6 +30875,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -30361,7 +30884,8 @@
             "description": "Issue #519 compatibility alias for suggestedProductType",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "sourcePlatform": {
@@ -31237,6 +31761,11 @@
           "sourceOrderRef": {
             "type": "string",
             "description": "外部來源平台訂單號（Costco/Makro 等 proxy direct-ship 訂單使用）"
+          },
+          "subscriptionId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "創作者訂閱 ID(訂閱商品訂單)"
           },
           "referrerGroupId": {
             "type": "integer",
@@ -32780,7 +33309,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "status": {
@@ -33068,7 +33598,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "itemCount": {
@@ -33209,7 +33740,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "physicalProduct": {
@@ -33329,7 +33861,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "productSubtotalUsdt": {
@@ -33387,7 +33920,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "buyerProvidedInfoJson": {
@@ -35227,6 +35761,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -35235,7 +35770,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "quantity": {
@@ -35446,6 +35982,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -35454,7 +35991,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "status": {
@@ -35994,6 +36532,58 @@
           },
           "empty": {
             "type": "boolean"
+          }
+        }
+      },
+      "CreatorSubscriptionResponse": {
+        "type": "object",
+        "description": "創作者訂閱回應",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "buyerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "creatorUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "latestOrderId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "description": "創作者訂閱狀態",
+            "enum": [
+              "ACTIVE",
+              "EXPIRED",
+              "CANCELLED"
+            ]
+          },
+          "validFrom": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "validUntil": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "renewalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "paidAmountUsdt": {
+            "type": "number"
           }
         }
       },
@@ -39948,6 +40538,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -39956,7 +40547,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "status": {
@@ -39995,6 +40587,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -40003,7 +40596,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "proposedTags": {
@@ -40048,6 +40642,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -40056,7 +40651,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "currentTags": {
@@ -40085,6 +40681,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -40093,7 +40690,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "proposedTags": {
@@ -40135,6 +40733,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -40143,7 +40742,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "proposedTags": {
@@ -40199,6 +40799,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -40264,6 +40865,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -40330,6 +40932,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -40338,7 +40941,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "tags": {
@@ -40397,6 +41001,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -40411,7 +41016,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "suggestedProductTypeConfidence": {
@@ -42364,7 +42970,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "titleHint": {
@@ -42409,7 +43016,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "title": {
@@ -42443,6 +43051,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -43991,6 +44600,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -43999,7 +44609,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "buyerNote": {
@@ -44125,6 +44736,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -44133,7 +44745,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "sourceRegion": {
@@ -44296,6 +44909,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -44361,6 +44975,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -45080,6 +45695,7 @@
               "BOOKS",
               "SECOND_HAND",
               "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
           },
@@ -45088,7 +45704,8 @@
             "description": "商品類型",
             "enum": [
               "PHYSICAL",
-              "DIGITAL_SERVICE"
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
             ]
           },
           "status": {
@@ -45211,6 +45828,73 @@
             "format": "int64",
             "description": "配送中訂單數",
             "example": 3
+          }
+        }
+      },
+      "CreatorSubscriptionAccessResponse": {
+        "type": "object",
+        "description": "創作者訂閱權限狀態",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "buyerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "hasAccess": {
+            "type": "boolean"
+          },
+          "validUntil": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "PageCreatorContentResponse": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreatorContentResponse"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
           }
         }
       },

@@ -177,6 +177,7 @@ class CategoryCandidateCategoryEnum {
   static const BOOKS = CategoryCandidateCategoryEnum._(r'BOOKS');
   static const SECOND_HAND = CategoryCandidateCategoryEnum._(r'SECOND_HAND');
   static const DIGITAL_SERVICE = CategoryCandidateCategoryEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = CategoryCandidateCategoryEnum._(r'CREATOR_SUBSCRIPTION');
   static const OTHER = CategoryCandidateCategoryEnum._(r'OTHER');
   static const unknownDefaultOpenApi = CategoryCandidateCategoryEnum._(r'unknown_default_open_api');
 
@@ -201,6 +202,7 @@ class CategoryCandidateCategoryEnum {
     BOOKS,
     SECOND_HAND,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -260,6 +262,7 @@ class CategoryCandidateCategoryEnumTypeTransformer {
         case r'BOOKS': return CategoryCandidateCategoryEnum.BOOKS;
         case r'SECOND_HAND': return CategoryCandidateCategoryEnum.SECOND_HAND;
         case r'DIGITAL_SERVICE': return CategoryCandidateCategoryEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return CategoryCandidateCategoryEnum.CREATOR_SUBSCRIPTION;
         case r'OTHER': return CategoryCandidateCategoryEnum.OTHER;
         case r'unknown_default_open_api': return CategoryCandidateCategoryEnum.unknownDefaultOpenApi;
         default:

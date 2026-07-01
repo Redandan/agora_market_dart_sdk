@@ -191,6 +191,7 @@ class ProductTypeOptionParentCategoryEnum {
   static const BOOKS = ProductTypeOptionParentCategoryEnum._(r'BOOKS');
   static const SECOND_HAND = ProductTypeOptionParentCategoryEnum._(r'SECOND_HAND');
   static const DIGITAL_SERVICE = ProductTypeOptionParentCategoryEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = ProductTypeOptionParentCategoryEnum._(r'CREATOR_SUBSCRIPTION');
   static const OTHER = ProductTypeOptionParentCategoryEnum._(r'OTHER');
   static const unknownDefaultOpenApi = ProductTypeOptionParentCategoryEnum._(r'unknown_default_open_api');
 
@@ -215,6 +216,7 @@ class ProductTypeOptionParentCategoryEnum {
     BOOKS,
     SECOND_HAND,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -274,6 +276,7 @@ class ProductTypeOptionParentCategoryEnumTypeTransformer {
         case r'BOOKS': return ProductTypeOptionParentCategoryEnum.BOOKS;
         case r'SECOND_HAND': return ProductTypeOptionParentCategoryEnum.SECOND_HAND;
         case r'DIGITAL_SERVICE': return ProductTypeOptionParentCategoryEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return ProductTypeOptionParentCategoryEnum.CREATOR_SUBSCRIPTION;
         case r'OTHER': return ProductTypeOptionParentCategoryEnum.OTHER;
         case r'unknown_default_open_api': return ProductTypeOptionParentCategoryEnum.unknownDefaultOpenApi;
         default:

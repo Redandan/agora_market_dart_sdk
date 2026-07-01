@@ -58,6 +58,8 @@ class Product {
     this.maxConcurrentOrders,
     this.buyerInfoRequiredJson,
     this.dataResidencyNotice,
+    this.subscriptionDurationDays,
+    this.subscriptionAccessNote,
     required this.reportCount,
     this.store,
     this.userSupportedShippingAddresses = const [],
@@ -420,6 +422,26 @@ class Product {
   ///
   String? dataResidencyNotice;
 
+  /// 訂閱有效天數(創作者訂閱商品)
+  ///
+  /// Minimum value: 1
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? subscriptionDurationDays;
+
+  /// 訂閱開通後可見的補充說明
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? subscriptionAccessNote;
+
   /// 累積檢舉次數(由 ProductReportService 維護)
   ///
   /// Minimum value: 0
@@ -598,6 +620,8 @@ class Product {
     other.maxConcurrentOrders == maxConcurrentOrders &&
     other.buyerInfoRequiredJson == buyerInfoRequiredJson &&
     other.dataResidencyNotice == dataResidencyNotice &&
+    other.subscriptionDurationDays == subscriptionDurationDays &&
+    other.subscriptionAccessNote == subscriptionAccessNote &&
     other.reportCount == reportCount &&
     other.store == store &&
     _deepEquality.equals(other.userSupportedShippingAddresses, userSupportedShippingAddresses) &&
@@ -667,6 +691,8 @@ class Product {
     (maxConcurrentOrders == null ? 0 : maxConcurrentOrders!.hashCode) +
     (buyerInfoRequiredJson == null ? 0 : buyerInfoRequiredJson!.hashCode) +
     (dataResidencyNotice == null ? 0 : dataResidencyNotice!.hashCode) +
+    (subscriptionDurationDays == null ? 0 : subscriptionDurationDays!.hashCode) +
+    (subscriptionAccessNote == null ? 0 : subscriptionAccessNote!.hashCode) +
     (reportCount.hashCode) +
     (store == null ? 0 : store!.hashCode) +
     (userSupportedShippingAddresses.hashCode) +
@@ -689,7 +715,7 @@ class Product {
     (shippingFee == null ? 0 : shippingFee!.hashCode);
 
   @override
-  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, stock=$stock, category=$category, sellerId=$sellerId, imageUrlsJson=$imageUrlsJson, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, reviewCount=$reviewCount, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skusJson=$skusJson, brand=$brand, minStock=$minStock, pickupServiceTypesJson=$pickupServiceTypesJson, pickupServiceTypeFeesJson=$pickupServiceTypeFeesJson, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, serviceLeadTimeHours=$serviceLeadTimeHours, maxConcurrentOrders=$maxConcurrentOrders, buyerInfoRequiredJson=$buyerInfoRequiredJson, dataResidencyNotice=$dataResidencyNotice, reportCount=$reportCount, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions, viewerLoggedIn=$viewerLoggedIn, priceUsdt=$priceUsdt, exchangeRate=$exchangeRate, usingDefaultRate=$usingDefaultRate, freeShippingThresholdUsdt=$freeShippingThresholdUsdt, imageUrls=$imageUrls, inStock=$inStock, skus=$skus, minimumShippingFee=$minimumShippingFee, defaultShippingFee=$defaultShippingFee, stockLow=$stockLow, stockBelowMinimum=$stockBelowMinimum, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, shippingFee=$shippingFee]';
+  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, stock=$stock, category=$category, sellerId=$sellerId, imageUrlsJson=$imageUrlsJson, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, reviewCount=$reviewCount, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skusJson=$skusJson, brand=$brand, minStock=$minStock, pickupServiceTypesJson=$pickupServiceTypesJson, pickupServiceTypeFeesJson=$pickupServiceTypeFeesJson, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, serviceLeadTimeHours=$serviceLeadTimeHours, maxConcurrentOrders=$maxConcurrentOrders, buyerInfoRequiredJson=$buyerInfoRequiredJson, dataResidencyNotice=$dataResidencyNotice, subscriptionDurationDays=$subscriptionDurationDays, subscriptionAccessNote=$subscriptionAccessNote, reportCount=$reportCount, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions, viewerLoggedIn=$viewerLoggedIn, priceUsdt=$priceUsdt, exchangeRate=$exchangeRate, usingDefaultRate=$usingDefaultRate, freeShippingThresholdUsdt=$freeShippingThresholdUsdt, imageUrls=$imageUrls, inStock=$inStock, skus=$skus, minimumShippingFee=$minimumShippingFee, defaultShippingFee=$defaultShippingFee, stockLow=$stockLow, stockBelowMinimum=$stockBelowMinimum, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, shippingFee=$shippingFee]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -862,6 +888,16 @@ class Product {
     } else {
       json[r'dataResidencyNotice'] = null;
     }
+    if (this.subscriptionDurationDays != null) {
+      json[r'subscriptionDurationDays'] = this.subscriptionDurationDays;
+    } else {
+      json[r'subscriptionDurationDays'] = null;
+    }
+    if (this.subscriptionAccessNote != null) {
+      json[r'subscriptionAccessNote'] = this.subscriptionAccessNote;
+    } else {
+      json[r'subscriptionAccessNote'] = null;
+    }
       json[r'reportCount'] = this.reportCount;
     if (this.store != null) {
       json[r'store'] = this.store;
@@ -1005,6 +1041,8 @@ class Product {
         maxConcurrentOrders: mapValueOfType<int>(json, r'maxConcurrentOrders'),
         buyerInfoRequiredJson: mapValueOfType<String>(json, r'buyerInfoRequiredJson'),
         dataResidencyNotice: mapValueOfType<String>(json, r'dataResidencyNotice'),
+        subscriptionDurationDays: mapValueOfType<int>(json, r'subscriptionDurationDays'),
+        subscriptionAccessNote: mapValueOfType<String>(json, r'subscriptionAccessNote'),
         reportCount: mapValueOfType<int>(json, r'reportCount')!,
         store: PublicStoreSummaryResponse.fromJson(json[r'store']),
         userSupportedShippingAddresses: UserAddress.listFromJson(json[r'userSupportedShippingAddresses']),
@@ -1245,6 +1283,7 @@ class ProductCategoryEnum {
   static const BOOKS = ProductCategoryEnum._(r'BOOKS');
   static const SECOND_HAND = ProductCategoryEnum._(r'SECOND_HAND');
   static const DIGITAL_SERVICE = ProductCategoryEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = ProductCategoryEnum._(r'CREATOR_SUBSCRIPTION');
   static const OTHER = ProductCategoryEnum._(r'OTHER');
   static const unknownDefaultOpenApi = ProductCategoryEnum._(r'unknown_default_open_api');
 
@@ -1269,6 +1308,7 @@ class ProductCategoryEnum {
     BOOKS,
     SECOND_HAND,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -1328,6 +1368,7 @@ class ProductCategoryEnumTypeTransformer {
         case r'BOOKS': return ProductCategoryEnum.BOOKS;
         case r'SECOND_HAND': return ProductCategoryEnum.SECOND_HAND;
         case r'DIGITAL_SERVICE': return ProductCategoryEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return ProductCategoryEnum.CREATOR_SUBSCRIPTION;
         case r'OTHER': return ProductCategoryEnum.OTHER;
         case r'unknown_default_open_api': return ProductCategoryEnum.unknownDefaultOpenApi;
         default:
@@ -1442,12 +1483,14 @@ class ProductProductTypeEnum {
 
   static const PHYSICAL = ProductProductTypeEnum._(r'PHYSICAL');
   static const DIGITAL_SERVICE = ProductProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = ProductProductTypeEnum._(r'CREATOR_SUBSCRIPTION');
   static const unknownDefaultOpenApi = ProductProductTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][ProductProductTypeEnum].
   static const values = <ProductProductTypeEnum>[
     PHYSICAL,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     unknownDefaultOpenApi,
   ];
 
@@ -1489,6 +1532,7 @@ class ProductProductTypeEnumTypeTransformer {
       switch (data) {
         case r'PHYSICAL': return ProductProductTypeEnum.PHYSICAL;
         case r'DIGITAL_SERVICE': return ProductProductTypeEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return ProductProductTypeEnum.CREATOR_SUBSCRIPTION;
         case r'unknown_default_open_api': return ProductProductTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

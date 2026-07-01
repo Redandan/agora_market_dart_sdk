@@ -350,6 +350,11 @@ Class | Method | HTTP request | Description
 *CommunityPartnerAdminApi* | [**rejectApplication**](doc//CommunityPartnerAdminApi.md#rejectapplication) | **POST** /admin/community-partners/applications/{applicationId}/reject | Reject a Telegram group owner/community partner application
 *CommunityPartnerAdminApi* | [**updateStatus1**](doc//CommunityPartnerAdminApi.md#updatestatus1) | **POST** /admin/community-partners/{partnerId}/status | Update community partner status
 *CommunityPartnerAdminApi* | [**upsertTelegramGroupPartner**](doc//CommunityPartnerAdminApi.md#upserttelegramgrouppartner) | **POST** /admin/community-partners/telegram-group | Create or update a Telegram group owner/community partner
+*CreatorContentControllerApi* | [**getDetail**](doc//CreatorContentControllerApi.md#getdetail) | **GET** /creator-contents/{contentId} | 
+*CreatorContentControllerApi* | [**listPublished**](doc//CreatorContentControllerApi.md#listpublished) | **GET** /creator-contents | 
+*CreatorSubscriptionControllerApi* | [**getAccess**](doc//CreatorSubscriptionControllerApi.md#getaccess) | **GET** /creator-subscriptions/products/{productId}/access | 
+*CreatorSubscriptionControllerApi* | [**listMine1**](doc//CreatorSubscriptionControllerApi.md#listmine1) | **GET** /creator-subscriptions/me | 
+*CreatorSubscriptionControllerApi* | [**subscribe1**](doc//CreatorSubscriptionControllerApi.md#subscribe1) | **POST** /creator-subscriptions/products/{productId}/subscribe | 
 *DeliveryApi* | [**acceptOrder**](doc//DeliveryApi.md#acceptorder) | **POST** /delivery/accept | 配送員接單
 *DeliveryApi* | [**currentStatus**](doc//DeliveryApi.md#currentstatus) | **GET** /delivery/status | 獲取當前配送狀態
 *DeliveryApi* | [**getAvailableOrders**](doc//DeliveryApi.md#getavailableorders) | **GET** /delivery/available-orders | 獲取可接訂單列表
@@ -525,6 +530,11 @@ Class | Method | HTTP request | Description
 *SanctionBlacklistApi* | [**addSanctionBlacklistAddress**](doc//SanctionBlacklistApi.md#addsanctionblacklistaddress) | **POST** /admin/sanctions | 新增黑名單地址
 *SanctionBlacklistApi* | [**listSanctionBlacklistAddresses**](doc//SanctionBlacklistApi.md#listsanctionblacklistaddresses) | **GET** /admin/sanctions | 列出黑名單地址
 *SanctionBlacklistApi* | [**removeSanctionBlacklistAddress**](doc//SanctionBlacklistApi.md#removesanctionblacklistaddress) | **DELETE** /admin/sanctions/{id} | 移除黑名單地址
+*SellerCreatorContentControllerApi* | [**archive**](doc//SellerCreatorContentControllerApi.md#archive) | **POST** /seller/creator-contents/{contentId}/archive | 
+*SellerCreatorContentControllerApi* | [**create**](doc//SellerCreatorContentControllerApi.md#create) | **POST** /seller/creator-contents | 
+*SellerCreatorContentControllerApi* | [**listMine**](doc//SellerCreatorContentControllerApi.md#listmine) | **GET** /seller/creator-contents | 
+*SellerCreatorContentControllerApi* | [**publish**](doc//SellerCreatorContentControllerApi.md#publish) | **POST** /seller/creator-contents/{contentId}/publish | 
+*SellerCreatorContentControllerApi* | [**update**](doc//SellerCreatorContentControllerApi.md#update) | **POST** /seller/creator-contents/{contentId} | 
 *SellerDemandPoolApi* | [**missingRequirements**](doc//SellerDemandPoolApi.md#missingrequirements) | **GET** /seller/demands/{demandId}/missing-requirements | Seller list relevant missing requirements
 *SellerDemandPoolApi* | [**reviseOffer**](doc//SellerDemandPoolApi.md#reviseoffer) | **POST** /seller/demands/{demandId}/offers/{offerId}/revision | Seller revise an offer after buyer missing requirement
 *SellerDemandPoolApi* | [**searchOpen**](doc//SellerDemandPoolApi.md#searchopen) | **POST** /seller/demands/open/search | Seller search open demand pool
@@ -764,6 +774,10 @@ Class | Method | HTTP request | Description
  - [CreatePromoCodeParam](doc//CreatePromoCodeParam.md)
  - [CreateRechargeParam](doc//CreateRechargeParam.md)
  - [CreateWithdrawParam](doc//CreateWithdrawParam.md)
+ - [CreatorContentResponse](doc//CreatorContentResponse.md)
+ - [CreatorContentUpsertRequest](doc//CreatorContentUpsertRequest.md)
+ - [CreatorSubscriptionAccessResponse](doc//CreatorSubscriptionAccessResponse.md)
+ - [CreatorSubscriptionResponse](doc//CreatorSubscriptionResponse.md)
  - [CustomerIssue](doc//CustomerIssue.md)
  - [CustomerStats](doc//CustomerStats.md)
  - [DailyRow](doc//DailyRow.md)
@@ -916,6 +930,7 @@ Class | Method | HTTP request | Description
  - [PageChatSession](doc//PageChatSession.md)
  - [PageClientLog](doc//PageClientLog.md)
  - [PageColdWallet](doc//PageColdWallet.md)
+ - [PageCreatorContentResponse](doc//PageCreatorContentResponse.md)
  - [PageCustomerIssue](doc//PageCustomerIssue.md)
  - [PageDeliveryDetail](doc//PageDeliveryDetail.md)
  - [PageDeliveryer](doc//PageDeliveryer.md)

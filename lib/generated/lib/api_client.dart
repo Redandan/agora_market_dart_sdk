@@ -414,6 +414,14 @@ class ApiClient {
           return CreateRechargeParam.fromJson(value);
         case 'CreateWithdrawParam':
           return CreateWithdrawParam.fromJson(value);
+        case 'CreatorContentResponse':
+          return CreatorContentResponse.fromJson(value);
+        case 'CreatorContentUpsertRequest':
+          return CreatorContentUpsertRequest.fromJson(value);
+        case 'CreatorSubscriptionAccessResponse':
+          return CreatorSubscriptionAccessResponse.fromJson(value);
+        case 'CreatorSubscriptionResponse':
+          return CreatorSubscriptionResponse.fromJson(value);
         case 'CustomerIssue':
           return CustomerIssue.fromJson(value);
         case 'CustomerStats':
@@ -718,6 +726,8 @@ class ApiClient {
           return PageClientLog.fromJson(value);
         case 'PageColdWallet':
           return PageColdWallet.fromJson(value);
+        case 'PageCreatorContentResponse':
+          return PageCreatorContentResponse.fromJson(value);
         case 'PageCustomerIssue':
           return PageCustomerIssue.fromJson(value);
         case 'PageDeliveryDetail':

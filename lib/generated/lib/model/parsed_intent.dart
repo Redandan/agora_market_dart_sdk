@@ -192,12 +192,14 @@ class ParsedIntentProductTypeEnum {
 
   static const PHYSICAL = ParsedIntentProductTypeEnum._(r'PHYSICAL');
   static const DIGITAL_SERVICE = ParsedIntentProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = ParsedIntentProductTypeEnum._(r'CREATOR_SUBSCRIPTION');
   static const unknownDefaultOpenApi = ParsedIntentProductTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][ParsedIntentProductTypeEnum].
   static const values = <ParsedIntentProductTypeEnum>[
     PHYSICAL,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     unknownDefaultOpenApi,
   ];
 
@@ -239,6 +241,7 @@ class ParsedIntentProductTypeEnumTypeTransformer {
       switch (data) {
         case r'PHYSICAL': return ParsedIntentProductTypeEnum.PHYSICAL;
         case r'DIGITAL_SERVICE': return ParsedIntentProductTypeEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return ParsedIntentProductTypeEnum.CREATOR_SUBSCRIPTION;
         case r'unknown_default_open_api': return ParsedIntentProductTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
@@ -286,6 +289,7 @@ class ParsedIntentCategoryEnum {
   static const BOOKS = ParsedIntentCategoryEnum._(r'BOOKS');
   static const SECOND_HAND = ParsedIntentCategoryEnum._(r'SECOND_HAND');
   static const DIGITAL_SERVICE = ParsedIntentCategoryEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = ParsedIntentCategoryEnum._(r'CREATOR_SUBSCRIPTION');
   static const OTHER = ParsedIntentCategoryEnum._(r'OTHER');
   static const unknownDefaultOpenApi = ParsedIntentCategoryEnum._(r'unknown_default_open_api');
 
@@ -310,6 +314,7 @@ class ParsedIntentCategoryEnum {
     BOOKS,
     SECOND_HAND,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -369,6 +374,7 @@ class ParsedIntentCategoryEnumTypeTransformer {
         case r'BOOKS': return ParsedIntentCategoryEnum.BOOKS;
         case r'SECOND_HAND': return ParsedIntentCategoryEnum.SECOND_HAND;
         case r'DIGITAL_SERVICE': return ParsedIntentCategoryEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return ParsedIntentCategoryEnum.CREATOR_SUBSCRIPTION;
         case r'OTHER': return ParsedIntentCategoryEnum.OTHER;
         case r'unknown_default_open_api': return ParsedIntentCategoryEnum.unknownDefaultOpenApi;
         default:

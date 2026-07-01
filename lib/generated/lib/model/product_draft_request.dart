@@ -187,12 +187,14 @@ class ProductDraftRequestProductTypeEnum {
 
   static const PHYSICAL = ProductDraftRequestProductTypeEnum._(r'PHYSICAL');
   static const DIGITAL_SERVICE = ProductDraftRequestProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = ProductDraftRequestProductTypeEnum._(r'CREATOR_SUBSCRIPTION');
   static const unknownDefaultOpenApi = ProductDraftRequestProductTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][ProductDraftRequestProductTypeEnum].
   static const values = <ProductDraftRequestProductTypeEnum>[
     PHYSICAL,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     unknownDefaultOpenApi,
   ];
 
@@ -234,6 +236,7 @@ class ProductDraftRequestProductTypeEnumTypeTransformer {
       switch (data) {
         case r'PHYSICAL': return ProductDraftRequestProductTypeEnum.PHYSICAL;
         case r'DIGITAL_SERVICE': return ProductDraftRequestProductTypeEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return ProductDraftRequestProductTypeEnum.CREATOR_SUBSCRIPTION;
         case r'unknown_default_open_api': return ProductDraftRequestProductTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

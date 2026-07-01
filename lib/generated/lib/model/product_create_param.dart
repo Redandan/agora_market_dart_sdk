@@ -49,6 +49,8 @@ class ProductCreateParam {
     this.maxConcurrentOrders,
     this.buyerInfoRequiredJson,
     this.dataResidencyNotice,
+    this.subscriptionDurationDays,
+    this.subscriptionAccessNote,
   });
 
   /// 商品名稱
@@ -323,6 +325,27 @@ class ProductCreateParam {
   ///
   String? dataResidencyNotice;
 
+  /// 訂閱有效天數(創作者訂閱商品必填)
+  ///
+  /// Minimum value: 1
+  /// Maximum value: 366
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? subscriptionDurationDays;
+
+  /// 訂閱開通後可見的補充說明
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? subscriptionAccessNote;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductCreateParam &&
     other.title == title &&
@@ -360,7 +383,9 @@ class ProductCreateParam {
     other.serviceLeadTimeHours == serviceLeadTimeHours &&
     other.maxConcurrentOrders == maxConcurrentOrders &&
     other.buyerInfoRequiredJson == buyerInfoRequiredJson &&
-    other.dataResidencyNotice == dataResidencyNotice;
+    other.dataResidencyNotice == dataResidencyNotice &&
+    other.subscriptionDurationDays == subscriptionDurationDays &&
+    other.subscriptionAccessNote == subscriptionAccessNote;
 
   @override
   int get hashCode =>
@@ -400,10 +425,12 @@ class ProductCreateParam {
     (serviceLeadTimeHours == null ? 0 : serviceLeadTimeHours!.hashCode) +
     (maxConcurrentOrders == null ? 0 : maxConcurrentOrders!.hashCode) +
     (buyerInfoRequiredJson == null ? 0 : buyerInfoRequiredJson!.hashCode) +
-    (dataResidencyNotice == null ? 0 : dataResidencyNotice!.hashCode);
+    (dataResidencyNotice == null ? 0 : dataResidencyNotice!.hashCode) +
+    (subscriptionDurationDays == null ? 0 : subscriptionDurationDays!.hashCode) +
+    (subscriptionAccessNote == null ? 0 : subscriptionAccessNote!.hashCode);
 
   @override
-  String toString() => 'ProductCreateParam[title=$title, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, enablePlatformDelivery=$enablePlatformDelivery, skus=$skus, brand=$brand, minStock=$minStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, serviceLeadTimeHours=$serviceLeadTimeHours, maxConcurrentOrders=$maxConcurrentOrders, buyerInfoRequiredJson=$buyerInfoRequiredJson, dataResidencyNotice=$dataResidencyNotice]';
+  String toString() => 'ProductCreateParam[title=$title, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, enablePlatformDelivery=$enablePlatformDelivery, skus=$skus, brand=$brand, minStock=$minStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, serviceLeadTimeHours=$serviceLeadTimeHours, maxConcurrentOrders=$maxConcurrentOrders, buyerInfoRequiredJson=$buyerInfoRequiredJson, dataResidencyNotice=$dataResidencyNotice, subscriptionDurationDays=$subscriptionDurationDays, subscriptionAccessNote=$subscriptionAccessNote]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -539,6 +566,16 @@ class ProductCreateParam {
     } else {
       json[r'dataResidencyNotice'] = null;
     }
+    if (this.subscriptionDurationDays != null) {
+      json[r'subscriptionDurationDays'] = this.subscriptionDurationDays;
+    } else {
+      json[r'subscriptionDurationDays'] = null;
+    }
+    if (this.subscriptionAccessNote != null) {
+      json[r'subscriptionAccessNote'] = this.subscriptionAccessNote;
+    } else {
+      json[r'subscriptionAccessNote'] = null;
+    }
     return json;
   }
 
@@ -603,6 +640,8 @@ class ProductCreateParam {
         maxConcurrentOrders: mapValueOfType<int>(json, r'maxConcurrentOrders'),
         buyerInfoRequiredJson: mapValueOfType<String>(json, r'buyerInfoRequiredJson'),
         dataResidencyNotice: mapValueOfType<String>(json, r'dataResidencyNotice'),
+        subscriptionDurationDays: mapValueOfType<int>(json, r'subscriptionDurationDays'),
+        subscriptionAccessNote: mapValueOfType<String>(json, r'subscriptionAccessNote'),
       );
     }
     return null;
@@ -800,6 +839,7 @@ class ProductCreateParamCategoryEnum {
   static const BOOKS = ProductCreateParamCategoryEnum._(r'BOOKS');
   static const SECOND_HAND = ProductCreateParamCategoryEnum._(r'SECOND_HAND');
   static const DIGITAL_SERVICE = ProductCreateParamCategoryEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = ProductCreateParamCategoryEnum._(r'CREATOR_SUBSCRIPTION');
   static const OTHER = ProductCreateParamCategoryEnum._(r'OTHER');
   static const unknownDefaultOpenApi = ProductCreateParamCategoryEnum._(r'unknown_default_open_api');
 
@@ -824,6 +864,7 @@ class ProductCreateParamCategoryEnum {
     BOOKS,
     SECOND_HAND,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -883,6 +924,7 @@ class ProductCreateParamCategoryEnumTypeTransformer {
         case r'BOOKS': return ProductCreateParamCategoryEnum.BOOKS;
         case r'SECOND_HAND': return ProductCreateParamCategoryEnum.SECOND_HAND;
         case r'DIGITAL_SERVICE': return ProductCreateParamCategoryEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return ProductCreateParamCategoryEnum.CREATOR_SUBSCRIPTION;
         case r'OTHER': return ProductCreateParamCategoryEnum.OTHER;
         case r'unknown_default_open_api': return ProductCreateParamCategoryEnum.unknownDefaultOpenApi;
         default:
@@ -1003,12 +1045,14 @@ class ProductCreateParamProductTypeEnum {
 
   static const PHYSICAL = ProductCreateParamProductTypeEnum._(r'PHYSICAL');
   static const DIGITAL_SERVICE = ProductCreateParamProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = ProductCreateParamProductTypeEnum._(r'CREATOR_SUBSCRIPTION');
   static const unknownDefaultOpenApi = ProductCreateParamProductTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][ProductCreateParamProductTypeEnum].
   static const values = <ProductCreateParamProductTypeEnum>[
     PHYSICAL,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     unknownDefaultOpenApi,
   ];
 
@@ -1050,6 +1094,7 @@ class ProductCreateParamProductTypeEnumTypeTransformer {
       switch (data) {
         case r'PHYSICAL': return ProductCreateParamProductTypeEnum.PHYSICAL;
         case r'DIGITAL_SERVICE': return ProductCreateParamProductTypeEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return ProductCreateParamProductTypeEnum.CREATOR_SUBSCRIPTION;
         case r'unknown_default_open_api': return ProductCreateParamProductTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

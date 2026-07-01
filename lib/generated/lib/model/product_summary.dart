@@ -270,6 +270,7 @@ class ProductSummaryCategoryEnum {
   static const BOOKS = ProductSummaryCategoryEnum._(r'BOOKS');
   static const SECOND_HAND = ProductSummaryCategoryEnum._(r'SECOND_HAND');
   static const DIGITAL_SERVICE = ProductSummaryCategoryEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = ProductSummaryCategoryEnum._(r'CREATOR_SUBSCRIPTION');
   static const OTHER = ProductSummaryCategoryEnum._(r'OTHER');
   static const unknownDefaultOpenApi = ProductSummaryCategoryEnum._(r'unknown_default_open_api');
 
@@ -294,6 +295,7 @@ class ProductSummaryCategoryEnum {
     BOOKS,
     SECOND_HAND,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -353,6 +355,7 @@ class ProductSummaryCategoryEnumTypeTransformer {
         case r'BOOKS': return ProductSummaryCategoryEnum.BOOKS;
         case r'SECOND_HAND': return ProductSummaryCategoryEnum.SECOND_HAND;
         case r'DIGITAL_SERVICE': return ProductSummaryCategoryEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return ProductSummaryCategoryEnum.CREATOR_SUBSCRIPTION;
         case r'OTHER': return ProductSummaryCategoryEnum.OTHER;
         case r'unknown_default_open_api': return ProductSummaryCategoryEnum.unknownDefaultOpenApi;
         default:
@@ -384,12 +387,14 @@ class ProductSummaryProductTypeEnum {
 
   static const PHYSICAL = ProductSummaryProductTypeEnum._(r'PHYSICAL');
   static const DIGITAL_SERVICE = ProductSummaryProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = ProductSummaryProductTypeEnum._(r'CREATOR_SUBSCRIPTION');
   static const unknownDefaultOpenApi = ProductSummaryProductTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][ProductSummaryProductTypeEnum].
   static const values = <ProductSummaryProductTypeEnum>[
     PHYSICAL,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     unknownDefaultOpenApi,
   ];
 
@@ -431,6 +436,7 @@ class ProductSummaryProductTypeEnumTypeTransformer {
       switch (data) {
         case r'PHYSICAL': return ProductSummaryProductTypeEnum.PHYSICAL;
         case r'DIGITAL_SERVICE': return ProductSummaryProductTypeEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return ProductSummaryProductTypeEnum.CREATOR_SUBSCRIPTION;
         case r'unknown_default_open_api': return ProductSummaryProductTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

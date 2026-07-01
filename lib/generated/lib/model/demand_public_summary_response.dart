@@ -481,6 +481,7 @@ class DemandPublicSummaryResponseCategoryEnum {
   static const BOOKS = DemandPublicSummaryResponseCategoryEnum._(r'BOOKS');
   static const SECOND_HAND = DemandPublicSummaryResponseCategoryEnum._(r'SECOND_HAND');
   static const DIGITAL_SERVICE = DemandPublicSummaryResponseCategoryEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = DemandPublicSummaryResponseCategoryEnum._(r'CREATOR_SUBSCRIPTION');
   static const OTHER = DemandPublicSummaryResponseCategoryEnum._(r'OTHER');
   static const unknownDefaultOpenApi = DemandPublicSummaryResponseCategoryEnum._(r'unknown_default_open_api');
 
@@ -505,6 +506,7 @@ class DemandPublicSummaryResponseCategoryEnum {
     BOOKS,
     SECOND_HAND,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -564,6 +566,7 @@ class DemandPublicSummaryResponseCategoryEnumTypeTransformer {
         case r'BOOKS': return DemandPublicSummaryResponseCategoryEnum.BOOKS;
         case r'SECOND_HAND': return DemandPublicSummaryResponseCategoryEnum.SECOND_HAND;
         case r'DIGITAL_SERVICE': return DemandPublicSummaryResponseCategoryEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return DemandPublicSummaryResponseCategoryEnum.CREATOR_SUBSCRIPTION;
         case r'OTHER': return DemandPublicSummaryResponseCategoryEnum.OTHER;
         case r'unknown_default_open_api': return DemandPublicSummaryResponseCategoryEnum.unknownDefaultOpenApi;
         default:
@@ -595,12 +598,14 @@ class DemandPublicSummaryResponseProductTypeEnum {
 
   static const PHYSICAL = DemandPublicSummaryResponseProductTypeEnum._(r'PHYSICAL');
   static const DIGITAL_SERVICE = DemandPublicSummaryResponseProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = DemandPublicSummaryResponseProductTypeEnum._(r'CREATOR_SUBSCRIPTION');
   static const unknownDefaultOpenApi = DemandPublicSummaryResponseProductTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][DemandPublicSummaryResponseProductTypeEnum].
   static const values = <DemandPublicSummaryResponseProductTypeEnum>[
     PHYSICAL,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     unknownDefaultOpenApi,
   ];
 
@@ -642,6 +647,7 @@ class DemandPublicSummaryResponseProductTypeEnumTypeTransformer {
       switch (data) {
         case r'PHYSICAL': return DemandPublicSummaryResponseProductTypeEnum.PHYSICAL;
         case r'DIGITAL_SERVICE': return DemandPublicSummaryResponseProductTypeEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return DemandPublicSummaryResponseProductTypeEnum.CREATOR_SUBSCRIPTION;
         case r'unknown_default_open_api': return DemandPublicSummaryResponseProductTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

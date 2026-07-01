@@ -338,6 +338,7 @@ class DemandPrefillCategoryEnum {
   static const BOOKS = DemandPrefillCategoryEnum._(r'BOOKS');
   static const SECOND_HAND = DemandPrefillCategoryEnum._(r'SECOND_HAND');
   static const DIGITAL_SERVICE = DemandPrefillCategoryEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = DemandPrefillCategoryEnum._(r'CREATOR_SUBSCRIPTION');
   static const OTHER = DemandPrefillCategoryEnum._(r'OTHER');
   static const unknownDefaultOpenApi = DemandPrefillCategoryEnum._(r'unknown_default_open_api');
 
@@ -362,6 +363,7 @@ class DemandPrefillCategoryEnum {
     BOOKS,
     SECOND_HAND,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -421,6 +423,7 @@ class DemandPrefillCategoryEnumTypeTransformer {
         case r'BOOKS': return DemandPrefillCategoryEnum.BOOKS;
         case r'SECOND_HAND': return DemandPrefillCategoryEnum.SECOND_HAND;
         case r'DIGITAL_SERVICE': return DemandPrefillCategoryEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return DemandPrefillCategoryEnum.CREATOR_SUBSCRIPTION;
         case r'OTHER': return DemandPrefillCategoryEnum.OTHER;
         case r'unknown_default_open_api': return DemandPrefillCategoryEnum.unknownDefaultOpenApi;
         default:
@@ -452,12 +455,14 @@ class DemandPrefillProductTypeEnum {
 
   static const PHYSICAL = DemandPrefillProductTypeEnum._(r'PHYSICAL');
   static const DIGITAL_SERVICE = DemandPrefillProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = DemandPrefillProductTypeEnum._(r'CREATOR_SUBSCRIPTION');
   static const unknownDefaultOpenApi = DemandPrefillProductTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][DemandPrefillProductTypeEnum].
   static const values = <DemandPrefillProductTypeEnum>[
     PHYSICAL,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     unknownDefaultOpenApi,
   ];
 
@@ -499,6 +504,7 @@ class DemandPrefillProductTypeEnumTypeTransformer {
       switch (data) {
         case r'PHYSICAL': return DemandPrefillProductTypeEnum.PHYSICAL;
         case r'DIGITAL_SERVICE': return DemandPrefillProductTypeEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return DemandPrefillProductTypeEnum.CREATOR_SUBSCRIPTION;
         case r'unknown_default_open_api': return DemandPrefillProductTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

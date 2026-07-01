@@ -556,6 +556,7 @@ class ProductSeachParamCategoryEnum {
   static const BOOKS = ProductSeachParamCategoryEnum._(r'BOOKS');
   static const SECOND_HAND = ProductSeachParamCategoryEnum._(r'SECOND_HAND');
   static const DIGITAL_SERVICE = ProductSeachParamCategoryEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = ProductSeachParamCategoryEnum._(r'CREATOR_SUBSCRIPTION');
   static const OTHER = ProductSeachParamCategoryEnum._(r'OTHER');
   static const unknownDefaultOpenApi = ProductSeachParamCategoryEnum._(r'unknown_default_open_api');
 
@@ -580,6 +581,7 @@ class ProductSeachParamCategoryEnum {
     BOOKS,
     SECOND_HAND,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -639,6 +641,7 @@ class ProductSeachParamCategoryEnumTypeTransformer {
         case r'BOOKS': return ProductSeachParamCategoryEnum.BOOKS;
         case r'SECOND_HAND': return ProductSeachParamCategoryEnum.SECOND_HAND;
         case r'DIGITAL_SERVICE': return ProductSeachParamCategoryEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return ProductSeachParamCategoryEnum.CREATOR_SUBSCRIPTION;
         case r'OTHER': return ProductSeachParamCategoryEnum.OTHER;
         case r'unknown_default_open_api': return ProductSeachParamCategoryEnum.unknownDefaultOpenApi;
         default:
@@ -670,12 +673,14 @@ class ProductSeachParamProductTypeEnum {
 
   static const PHYSICAL = ProductSeachParamProductTypeEnum._(r'PHYSICAL');
   static const DIGITAL_SERVICE = ProductSeachParamProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = ProductSeachParamProductTypeEnum._(r'CREATOR_SUBSCRIPTION');
   static const unknownDefaultOpenApi = ProductSeachParamProductTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][ProductSeachParamProductTypeEnum].
   static const values = <ProductSeachParamProductTypeEnum>[
     PHYSICAL,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     unknownDefaultOpenApi,
   ];
 
@@ -717,6 +722,7 @@ class ProductSeachParamProductTypeEnumTypeTransformer {
       switch (data) {
         case r'PHYSICAL': return ProductSeachParamProductTypeEnum.PHYSICAL;
         case r'DIGITAL_SERVICE': return ProductSeachParamProductTypeEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return ProductSeachParamProductTypeEnum.CREATOR_SUBSCRIPTION;
         case r'unknown_default_open_api': return ProductSeachParamProductTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

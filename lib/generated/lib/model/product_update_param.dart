@@ -46,6 +46,8 @@ class ProductUpdateParam {
     this.maxConcurrentOrders,
     this.buyerInfoRequiredJson,
     this.dataResidencyNotice,
+    this.subscriptionDurationDays,
+    this.subscriptionAccessNote,
   });
 
   /// 商品ID
@@ -317,6 +319,27 @@ class ProductUpdateParam {
   ///
   String? dataResidencyNotice;
 
+  /// 訂閱有效天數(創作者訂閱商品必填)
+  ///
+  /// Minimum value: 1
+  /// Maximum value: 366
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? subscriptionDurationDays;
+
+  /// 訂閱開通後可見的補充說明
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? subscriptionAccessNote;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductUpdateParam &&
     other.id == id &&
@@ -351,7 +374,9 @@ class ProductUpdateParam {
     other.serviceLeadTimeHours == serviceLeadTimeHours &&
     other.maxConcurrentOrders == maxConcurrentOrders &&
     other.buyerInfoRequiredJson == buyerInfoRequiredJson &&
-    other.dataResidencyNotice == dataResidencyNotice;
+    other.dataResidencyNotice == dataResidencyNotice &&
+    other.subscriptionDurationDays == subscriptionDurationDays &&
+    other.subscriptionAccessNote == subscriptionAccessNote;
 
   @override
   int get hashCode =>
@@ -388,10 +413,12 @@ class ProductUpdateParam {
     (serviceLeadTimeHours == null ? 0 : serviceLeadTimeHours!.hashCode) +
     (maxConcurrentOrders == null ? 0 : maxConcurrentOrders!.hashCode) +
     (buyerInfoRequiredJson == null ? 0 : buyerInfoRequiredJson!.hashCode) +
-    (dataResidencyNotice == null ? 0 : dataResidencyNotice!.hashCode);
+    (dataResidencyNotice == null ? 0 : dataResidencyNotice!.hashCode) +
+    (subscriptionDurationDays == null ? 0 : subscriptionDurationDays!.hashCode) +
+    (subscriptionAccessNote == null ? 0 : subscriptionAccessNote!.hashCode);
 
   @override
-  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, status=$status, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, purchaseUrl=$purchaseUrl, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, serviceLeadTimeHours=$serviceLeadTimeHours, maxConcurrentOrders=$maxConcurrentOrders, buyerInfoRequiredJson=$buyerInfoRequiredJson, dataResidencyNotice=$dataResidencyNotice]';
+  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, status=$status, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, purchaseUrl=$purchaseUrl, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, serviceLeadTimeHours=$serviceLeadTimeHours, maxConcurrentOrders=$maxConcurrentOrders, buyerInfoRequiredJson=$buyerInfoRequiredJson, dataResidencyNotice=$dataResidencyNotice, subscriptionDurationDays=$subscriptionDurationDays, subscriptionAccessNote=$subscriptionAccessNote]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -536,6 +563,16 @@ class ProductUpdateParam {
     } else {
       json[r'dataResidencyNotice'] = null;
     }
+    if (this.subscriptionDurationDays != null) {
+      json[r'subscriptionDurationDays'] = this.subscriptionDurationDays;
+    } else {
+      json[r'subscriptionDurationDays'] = null;
+    }
+    if (this.subscriptionAccessNote != null) {
+      json[r'subscriptionAccessNote'] = this.subscriptionAccessNote;
+    } else {
+      json[r'subscriptionAccessNote'] = null;
+    }
     return json;
   }
 
@@ -599,6 +636,8 @@ class ProductUpdateParam {
         maxConcurrentOrders: mapValueOfType<int>(json, r'maxConcurrentOrders'),
         buyerInfoRequiredJson: mapValueOfType<String>(json, r'buyerInfoRequiredJson'),
         dataResidencyNotice: mapValueOfType<String>(json, r'dataResidencyNotice'),
+        subscriptionDurationDays: mapValueOfType<int>(json, r'subscriptionDurationDays'),
+        subscriptionAccessNote: mapValueOfType<String>(json, r'subscriptionAccessNote'),
       );
     }
     return null;
@@ -945,12 +984,14 @@ class ProductUpdateParamProductTypeEnum {
 
   static const PHYSICAL = ProductUpdateParamProductTypeEnum._(r'PHYSICAL');
   static const DIGITAL_SERVICE = ProductUpdateParamProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = ProductUpdateParamProductTypeEnum._(r'CREATOR_SUBSCRIPTION');
   static const unknownDefaultOpenApi = ProductUpdateParamProductTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][ProductUpdateParamProductTypeEnum].
   static const values = <ProductUpdateParamProductTypeEnum>[
     PHYSICAL,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     unknownDefaultOpenApi,
   ];
 
@@ -992,6 +1033,7 @@ class ProductUpdateParamProductTypeEnumTypeTransformer {
       switch (data) {
         case r'PHYSICAL': return ProductUpdateParamProductTypeEnum.PHYSICAL;
         case r'DIGITAL_SERVICE': return ProductUpdateParamProductTypeEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return ProductUpdateParamProductTypeEnum.CREATOR_SUBSCRIPTION;
         case r'unknown_default_open_api': return ProductUpdateParamProductTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

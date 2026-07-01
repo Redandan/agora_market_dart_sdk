@@ -251,6 +251,7 @@ class TaxonomyDryRunRequestCurrentCategoryEnum {
   static const BOOKS = TaxonomyDryRunRequestCurrentCategoryEnum._(r'BOOKS');
   static const SECOND_HAND = TaxonomyDryRunRequestCurrentCategoryEnum._(r'SECOND_HAND');
   static const DIGITAL_SERVICE = TaxonomyDryRunRequestCurrentCategoryEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = TaxonomyDryRunRequestCurrentCategoryEnum._(r'CREATOR_SUBSCRIPTION');
   static const OTHER = TaxonomyDryRunRequestCurrentCategoryEnum._(r'OTHER');
   static const unknownDefaultOpenApi = TaxonomyDryRunRequestCurrentCategoryEnum._(r'unknown_default_open_api');
 
@@ -275,6 +276,7 @@ class TaxonomyDryRunRequestCurrentCategoryEnum {
     BOOKS,
     SECOND_HAND,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -334,6 +336,7 @@ class TaxonomyDryRunRequestCurrentCategoryEnumTypeTransformer {
         case r'BOOKS': return TaxonomyDryRunRequestCurrentCategoryEnum.BOOKS;
         case r'SECOND_HAND': return TaxonomyDryRunRequestCurrentCategoryEnum.SECOND_HAND;
         case r'DIGITAL_SERVICE': return TaxonomyDryRunRequestCurrentCategoryEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return TaxonomyDryRunRequestCurrentCategoryEnum.CREATOR_SUBSCRIPTION;
         case r'OTHER': return TaxonomyDryRunRequestCurrentCategoryEnum.OTHER;
         case r'unknown_default_open_api': return TaxonomyDryRunRequestCurrentCategoryEnum.unknownDefaultOpenApi;
         default:
@@ -365,12 +368,14 @@ class TaxonomyDryRunRequestCurrentProductTypeEnum {
 
   static const PHYSICAL = TaxonomyDryRunRequestCurrentProductTypeEnum._(r'PHYSICAL');
   static const DIGITAL_SERVICE = TaxonomyDryRunRequestCurrentProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = TaxonomyDryRunRequestCurrentProductTypeEnum._(r'CREATOR_SUBSCRIPTION');
   static const unknownDefaultOpenApi = TaxonomyDryRunRequestCurrentProductTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][TaxonomyDryRunRequestCurrentProductTypeEnum].
   static const values = <TaxonomyDryRunRequestCurrentProductTypeEnum>[
     PHYSICAL,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     unknownDefaultOpenApi,
   ];
 
@@ -412,6 +417,7 @@ class TaxonomyDryRunRequestCurrentProductTypeEnumTypeTransformer {
       switch (data) {
         case r'PHYSICAL': return TaxonomyDryRunRequestCurrentProductTypeEnum.PHYSICAL;
         case r'DIGITAL_SERVICE': return TaxonomyDryRunRequestCurrentProductTypeEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return TaxonomyDryRunRequestCurrentProductTypeEnum.CREATOR_SUBSCRIPTION;
         case r'unknown_default_open_api': return TaxonomyDryRunRequestCurrentProductTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
@@ -542,6 +548,7 @@ class TaxonomyDryRunRequestProposedCategoryEnum {
   static const BOOKS = TaxonomyDryRunRequestProposedCategoryEnum._(r'BOOKS');
   static const SECOND_HAND = TaxonomyDryRunRequestProposedCategoryEnum._(r'SECOND_HAND');
   static const DIGITAL_SERVICE = TaxonomyDryRunRequestProposedCategoryEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = TaxonomyDryRunRequestProposedCategoryEnum._(r'CREATOR_SUBSCRIPTION');
   static const OTHER = TaxonomyDryRunRequestProposedCategoryEnum._(r'OTHER');
   static const unknownDefaultOpenApi = TaxonomyDryRunRequestProposedCategoryEnum._(r'unknown_default_open_api');
 
@@ -566,6 +573,7 @@ class TaxonomyDryRunRequestProposedCategoryEnum {
     BOOKS,
     SECOND_HAND,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -625,6 +633,7 @@ class TaxonomyDryRunRequestProposedCategoryEnumTypeTransformer {
         case r'BOOKS': return TaxonomyDryRunRequestProposedCategoryEnum.BOOKS;
         case r'SECOND_HAND': return TaxonomyDryRunRequestProposedCategoryEnum.SECOND_HAND;
         case r'DIGITAL_SERVICE': return TaxonomyDryRunRequestProposedCategoryEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return TaxonomyDryRunRequestProposedCategoryEnum.CREATOR_SUBSCRIPTION;
         case r'OTHER': return TaxonomyDryRunRequestProposedCategoryEnum.OTHER;
         case r'unknown_default_open_api': return TaxonomyDryRunRequestProposedCategoryEnum.unknownDefaultOpenApi;
         default:
@@ -656,12 +665,14 @@ class TaxonomyDryRunRequestProposedProductTypeEnum {
 
   static const PHYSICAL = TaxonomyDryRunRequestProposedProductTypeEnum._(r'PHYSICAL');
   static const DIGITAL_SERVICE = TaxonomyDryRunRequestProposedProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = TaxonomyDryRunRequestProposedProductTypeEnum._(r'CREATOR_SUBSCRIPTION');
   static const unknownDefaultOpenApi = TaxonomyDryRunRequestProposedProductTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][TaxonomyDryRunRequestProposedProductTypeEnum].
   static const values = <TaxonomyDryRunRequestProposedProductTypeEnum>[
     PHYSICAL,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     unknownDefaultOpenApi,
   ];
 
@@ -703,6 +714,7 @@ class TaxonomyDryRunRequestProposedProductTypeEnumTypeTransformer {
       switch (data) {
         case r'PHYSICAL': return TaxonomyDryRunRequestProposedProductTypeEnum.PHYSICAL;
         case r'DIGITAL_SERVICE': return TaxonomyDryRunRequestProposedProductTypeEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return TaxonomyDryRunRequestProposedProductTypeEnum.CREATOR_SUBSCRIPTION;
         case r'unknown_default_open_api': return TaxonomyDryRunRequestProposedProductTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

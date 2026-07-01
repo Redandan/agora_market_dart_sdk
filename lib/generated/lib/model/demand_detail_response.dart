@@ -655,6 +655,7 @@ class DemandDetailResponseCategoryEnum {
   static const BOOKS = DemandDetailResponseCategoryEnum._(r'BOOKS');
   static const SECOND_HAND = DemandDetailResponseCategoryEnum._(r'SECOND_HAND');
   static const DIGITAL_SERVICE = DemandDetailResponseCategoryEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = DemandDetailResponseCategoryEnum._(r'CREATOR_SUBSCRIPTION');
   static const OTHER = DemandDetailResponseCategoryEnum._(r'OTHER');
   static const unknownDefaultOpenApi = DemandDetailResponseCategoryEnum._(r'unknown_default_open_api');
 
@@ -679,6 +680,7 @@ class DemandDetailResponseCategoryEnum {
     BOOKS,
     SECOND_HAND,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -738,6 +740,7 @@ class DemandDetailResponseCategoryEnumTypeTransformer {
         case r'BOOKS': return DemandDetailResponseCategoryEnum.BOOKS;
         case r'SECOND_HAND': return DemandDetailResponseCategoryEnum.SECOND_HAND;
         case r'DIGITAL_SERVICE': return DemandDetailResponseCategoryEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return DemandDetailResponseCategoryEnum.CREATOR_SUBSCRIPTION;
         case r'OTHER': return DemandDetailResponseCategoryEnum.OTHER;
         case r'unknown_default_open_api': return DemandDetailResponseCategoryEnum.unknownDefaultOpenApi;
         default:
@@ -769,12 +772,14 @@ class DemandDetailResponseProductTypeEnum {
 
   static const PHYSICAL = DemandDetailResponseProductTypeEnum._(r'PHYSICAL');
   static const DIGITAL_SERVICE = DemandDetailResponseProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = DemandDetailResponseProductTypeEnum._(r'CREATOR_SUBSCRIPTION');
   static const unknownDefaultOpenApi = DemandDetailResponseProductTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][DemandDetailResponseProductTypeEnum].
   static const values = <DemandDetailResponseProductTypeEnum>[
     PHYSICAL,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     unknownDefaultOpenApi,
   ];
 
@@ -816,6 +821,7 @@ class DemandDetailResponseProductTypeEnumTypeTransformer {
       switch (data) {
         case r'PHYSICAL': return DemandDetailResponseProductTypeEnum.PHYSICAL;
         case r'DIGITAL_SERVICE': return DemandDetailResponseProductTypeEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return DemandDetailResponseProductTypeEnum.CREATOR_SUBSCRIPTION;
         case r'unknown_default_open_api': return DemandDetailResponseProductTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

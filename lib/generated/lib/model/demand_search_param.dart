@@ -397,6 +397,7 @@ class DemandSearchParamCategoryEnum {
   static const BOOKS = DemandSearchParamCategoryEnum._(r'BOOKS');
   static const SECOND_HAND = DemandSearchParamCategoryEnum._(r'SECOND_HAND');
   static const DIGITAL_SERVICE = DemandSearchParamCategoryEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = DemandSearchParamCategoryEnum._(r'CREATOR_SUBSCRIPTION');
   static const OTHER = DemandSearchParamCategoryEnum._(r'OTHER');
   static const unknownDefaultOpenApi = DemandSearchParamCategoryEnum._(r'unknown_default_open_api');
 
@@ -421,6 +422,7 @@ class DemandSearchParamCategoryEnum {
     BOOKS,
     SECOND_HAND,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -480,6 +482,7 @@ class DemandSearchParamCategoryEnumTypeTransformer {
         case r'BOOKS': return DemandSearchParamCategoryEnum.BOOKS;
         case r'SECOND_HAND': return DemandSearchParamCategoryEnum.SECOND_HAND;
         case r'DIGITAL_SERVICE': return DemandSearchParamCategoryEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return DemandSearchParamCategoryEnum.CREATOR_SUBSCRIPTION;
         case r'OTHER': return DemandSearchParamCategoryEnum.OTHER;
         case r'unknown_default_open_api': return DemandSearchParamCategoryEnum.unknownDefaultOpenApi;
         default:
@@ -511,12 +514,14 @@ class DemandSearchParamProductTypeEnum {
 
   static const PHYSICAL = DemandSearchParamProductTypeEnum._(r'PHYSICAL');
   static const DIGITAL_SERVICE = DemandSearchParamProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = DemandSearchParamProductTypeEnum._(r'CREATOR_SUBSCRIPTION');
   static const unknownDefaultOpenApi = DemandSearchParamProductTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][DemandSearchParamProductTypeEnum].
   static const values = <DemandSearchParamProductTypeEnum>[
     PHYSICAL,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     unknownDefaultOpenApi,
   ];
 
@@ -558,6 +563,7 @@ class DemandSearchParamProductTypeEnumTypeTransformer {
       switch (data) {
         case r'PHYSICAL': return DemandSearchParamProductTypeEnum.PHYSICAL;
         case r'DIGITAL_SERVICE': return DemandSearchParamProductTypeEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return DemandSearchParamProductTypeEnum.CREATOR_SUBSCRIPTION;
         case r'unknown_default_open_api': return DemandSearchParamProductTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

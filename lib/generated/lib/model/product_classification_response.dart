@@ -488,12 +488,14 @@ class ProductClassificationResponseSuggestedProductTypeEnum {
 
   static const PHYSICAL = ProductClassificationResponseSuggestedProductTypeEnum._(r'PHYSICAL');
   static const DIGITAL_SERVICE = ProductClassificationResponseSuggestedProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = ProductClassificationResponseSuggestedProductTypeEnum._(r'CREATOR_SUBSCRIPTION');
   static const unknownDefaultOpenApi = ProductClassificationResponseSuggestedProductTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][ProductClassificationResponseSuggestedProductTypeEnum].
   static const values = <ProductClassificationResponseSuggestedProductTypeEnum>[
     PHYSICAL,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     unknownDefaultOpenApi,
   ];
 
@@ -535,6 +537,7 @@ class ProductClassificationResponseSuggestedProductTypeEnumTypeTransformer {
       switch (data) {
         case r'PHYSICAL': return ProductClassificationResponseSuggestedProductTypeEnum.PHYSICAL;
         case r'DIGITAL_SERVICE': return ProductClassificationResponseSuggestedProductTypeEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return ProductClassificationResponseSuggestedProductTypeEnum.CREATOR_SUBSCRIPTION;
         case r'unknown_default_open_api': return ProductClassificationResponseSuggestedProductTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
@@ -582,6 +585,7 @@ class ProductClassificationResponseSuggestedCategoryEnum {
   static const BOOKS = ProductClassificationResponseSuggestedCategoryEnum._(r'BOOKS');
   static const SECOND_HAND = ProductClassificationResponseSuggestedCategoryEnum._(r'SECOND_HAND');
   static const DIGITAL_SERVICE = ProductClassificationResponseSuggestedCategoryEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = ProductClassificationResponseSuggestedCategoryEnum._(r'CREATOR_SUBSCRIPTION');
   static const OTHER = ProductClassificationResponseSuggestedCategoryEnum._(r'OTHER');
   static const unknownDefaultOpenApi = ProductClassificationResponseSuggestedCategoryEnum._(r'unknown_default_open_api');
 
@@ -606,6 +610,7 @@ class ProductClassificationResponseSuggestedCategoryEnum {
     BOOKS,
     SECOND_HAND,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -665,6 +670,7 @@ class ProductClassificationResponseSuggestedCategoryEnumTypeTransformer {
         case r'BOOKS': return ProductClassificationResponseSuggestedCategoryEnum.BOOKS;
         case r'SECOND_HAND': return ProductClassificationResponseSuggestedCategoryEnum.SECOND_HAND;
         case r'DIGITAL_SERVICE': return ProductClassificationResponseSuggestedCategoryEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return ProductClassificationResponseSuggestedCategoryEnum.CREATOR_SUBSCRIPTION;
         case r'OTHER': return ProductClassificationResponseSuggestedCategoryEnum.OTHER;
         case r'unknown_default_open_api': return ProductClassificationResponseSuggestedCategoryEnum.unknownDefaultOpenApi;
         default:
@@ -713,6 +719,7 @@ class ProductClassificationResponseCategoryEnum {
   static const BOOKS = ProductClassificationResponseCategoryEnum._(r'BOOKS');
   static const SECOND_HAND = ProductClassificationResponseCategoryEnum._(r'SECOND_HAND');
   static const DIGITAL_SERVICE = ProductClassificationResponseCategoryEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = ProductClassificationResponseCategoryEnum._(r'CREATOR_SUBSCRIPTION');
   static const OTHER = ProductClassificationResponseCategoryEnum._(r'OTHER');
   static const unknownDefaultOpenApi = ProductClassificationResponseCategoryEnum._(r'unknown_default_open_api');
 
@@ -737,6 +744,7 @@ class ProductClassificationResponseCategoryEnum {
     BOOKS,
     SECOND_HAND,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -796,6 +804,7 @@ class ProductClassificationResponseCategoryEnumTypeTransformer {
         case r'BOOKS': return ProductClassificationResponseCategoryEnum.BOOKS;
         case r'SECOND_HAND': return ProductClassificationResponseCategoryEnum.SECOND_HAND;
         case r'DIGITAL_SERVICE': return ProductClassificationResponseCategoryEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return ProductClassificationResponseCategoryEnum.CREATOR_SUBSCRIPTION;
         case r'OTHER': return ProductClassificationResponseCategoryEnum.OTHER;
         case r'unknown_default_open_api': return ProductClassificationResponseCategoryEnum.unknownDefaultOpenApi;
         default:
@@ -827,12 +836,14 @@ class ProductClassificationResponseProductTypeEnum {
 
   static const PHYSICAL = ProductClassificationResponseProductTypeEnum._(r'PHYSICAL');
   static const DIGITAL_SERVICE = ProductClassificationResponseProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = ProductClassificationResponseProductTypeEnum._(r'CREATOR_SUBSCRIPTION');
   static const unknownDefaultOpenApi = ProductClassificationResponseProductTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][ProductClassificationResponseProductTypeEnum].
   static const values = <ProductClassificationResponseProductTypeEnum>[
     PHYSICAL,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     unknownDefaultOpenApi,
   ];
 
@@ -874,6 +885,7 @@ class ProductClassificationResponseProductTypeEnumTypeTransformer {
       switch (data) {
         case r'PHYSICAL': return ProductClassificationResponseProductTypeEnum.PHYSICAL;
         case r'DIGITAL_SERVICE': return ProductClassificationResponseProductTypeEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return ProductClassificationResponseProductTypeEnum.CREATOR_SUBSCRIPTION;
         case r'unknown_default_open_api': return ProductClassificationResponseProductTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

@@ -372,12 +372,14 @@ class ProductDraftResponseProductTypeEnum {
 
   static const PHYSICAL = ProductDraftResponseProductTypeEnum._(r'PHYSICAL');
   static const DIGITAL_SERVICE = ProductDraftResponseProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = ProductDraftResponseProductTypeEnum._(r'CREATOR_SUBSCRIPTION');
   static const unknownDefaultOpenApi = ProductDraftResponseProductTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][ProductDraftResponseProductTypeEnum].
   static const values = <ProductDraftResponseProductTypeEnum>[
     PHYSICAL,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     unknownDefaultOpenApi,
   ];
 
@@ -419,6 +421,7 @@ class ProductDraftResponseProductTypeEnumTypeTransformer {
       switch (data) {
         case r'PHYSICAL': return ProductDraftResponseProductTypeEnum.PHYSICAL;
         case r'DIGITAL_SERVICE': return ProductDraftResponseProductTypeEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return ProductDraftResponseProductTypeEnum.CREATOR_SUBSCRIPTION;
         case r'unknown_default_open_api': return ProductDraftResponseProductTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
@@ -466,6 +469,7 @@ class ProductDraftResponseCategoryEnum {
   static const BOOKS = ProductDraftResponseCategoryEnum._(r'BOOKS');
   static const SECOND_HAND = ProductDraftResponseCategoryEnum._(r'SECOND_HAND');
   static const DIGITAL_SERVICE = ProductDraftResponseCategoryEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = ProductDraftResponseCategoryEnum._(r'CREATOR_SUBSCRIPTION');
   static const OTHER = ProductDraftResponseCategoryEnum._(r'OTHER');
   static const unknownDefaultOpenApi = ProductDraftResponseCategoryEnum._(r'unknown_default_open_api');
 
@@ -490,6 +494,7 @@ class ProductDraftResponseCategoryEnum {
     BOOKS,
     SECOND_HAND,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -549,6 +554,7 @@ class ProductDraftResponseCategoryEnumTypeTransformer {
         case r'BOOKS': return ProductDraftResponseCategoryEnum.BOOKS;
         case r'SECOND_HAND': return ProductDraftResponseCategoryEnum.SECOND_HAND;
         case r'DIGITAL_SERVICE': return ProductDraftResponseCategoryEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return ProductDraftResponseCategoryEnum.CREATOR_SUBSCRIPTION;
         case r'OTHER': return ProductDraftResponseCategoryEnum.OTHER;
         case r'unknown_default_open_api': return ProductDraftResponseCategoryEnum.unknownDefaultOpenApi;
         default:

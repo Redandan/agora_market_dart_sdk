@@ -419,12 +419,14 @@ class GroupProductTypeEnum {
 
   static const PHYSICAL = GroupProductTypeEnum._(r'PHYSICAL');
   static const DIGITAL_SERVICE = GroupProductTypeEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = GroupProductTypeEnum._(r'CREATOR_SUBSCRIPTION');
   static const unknownDefaultOpenApi = GroupProductTypeEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][GroupProductTypeEnum].
   static const values = <GroupProductTypeEnum>[
     PHYSICAL,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     unknownDefaultOpenApi,
   ];
 
@@ -466,6 +468,7 @@ class GroupProductTypeEnumTypeTransformer {
       switch (data) {
         case r'PHYSICAL': return GroupProductTypeEnum.PHYSICAL;
         case r'DIGITAL_SERVICE': return GroupProductTypeEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return GroupProductTypeEnum.CREATOR_SUBSCRIPTION;
         case r'unknown_default_open_api': return GroupProductTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

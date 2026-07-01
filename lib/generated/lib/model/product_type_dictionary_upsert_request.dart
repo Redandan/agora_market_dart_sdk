@@ -208,6 +208,7 @@ class ProductTypeDictionaryUpsertRequestParentCategoryEnum {
   static const BOOKS = ProductTypeDictionaryUpsertRequestParentCategoryEnum._(r'BOOKS');
   static const SECOND_HAND = ProductTypeDictionaryUpsertRequestParentCategoryEnum._(r'SECOND_HAND');
   static const DIGITAL_SERVICE = ProductTypeDictionaryUpsertRequestParentCategoryEnum._(r'DIGITAL_SERVICE');
+  static const CREATOR_SUBSCRIPTION = ProductTypeDictionaryUpsertRequestParentCategoryEnum._(r'CREATOR_SUBSCRIPTION');
   static const OTHER = ProductTypeDictionaryUpsertRequestParentCategoryEnum._(r'OTHER');
   static const unknownDefaultOpenApi = ProductTypeDictionaryUpsertRequestParentCategoryEnum._(r'unknown_default_open_api');
 
@@ -232,6 +233,7 @@ class ProductTypeDictionaryUpsertRequestParentCategoryEnum {
     BOOKS,
     SECOND_HAND,
     DIGITAL_SERVICE,
+    CREATOR_SUBSCRIPTION,
     OTHER,
     unknownDefaultOpenApi,
   ];
@@ -291,6 +293,7 @@ class ProductTypeDictionaryUpsertRequestParentCategoryEnumTypeTransformer {
         case r'BOOKS': return ProductTypeDictionaryUpsertRequestParentCategoryEnum.BOOKS;
         case r'SECOND_HAND': return ProductTypeDictionaryUpsertRequestParentCategoryEnum.SECOND_HAND;
         case r'DIGITAL_SERVICE': return ProductTypeDictionaryUpsertRequestParentCategoryEnum.DIGITAL_SERVICE;
+        case r'CREATOR_SUBSCRIPTION': return ProductTypeDictionaryUpsertRequestParentCategoryEnum.CREATOR_SUBSCRIPTION;
         case r'OTHER': return ProductTypeDictionaryUpsertRequestParentCategoryEnum.OTHER;
         case r'unknown_default_open_api': return ProductTypeDictionaryUpsertRequestParentCategoryEnum.unknownDefaultOpenApi;
         default:
