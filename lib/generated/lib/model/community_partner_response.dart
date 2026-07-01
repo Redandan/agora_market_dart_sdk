@@ -18,6 +18,7 @@ class CommunityPartnerResponse {
     this.telegramGroupId,
     this.telegramGroupTitle,
     this.telegramOwnerUserId,
+    this.ownerUserId,
     this.displayName,
     this.commissionRate,
     this.commissionBaseType,
@@ -62,6 +63,14 @@ class CommunityPartnerResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? telegramOwnerUserId;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? ownerUserId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -130,6 +139,7 @@ class CommunityPartnerResponse {
     other.telegramGroupId == telegramGroupId &&
     other.telegramGroupTitle == telegramGroupTitle &&
     other.telegramOwnerUserId == telegramOwnerUserId &&
+    other.ownerUserId == ownerUserId &&
     other.displayName == displayName &&
     other.commissionRate == commissionRate &&
     other.commissionBaseType == commissionBaseType &&
@@ -148,6 +158,7 @@ class CommunityPartnerResponse {
     (telegramGroupId == null ? 0 : telegramGroupId!.hashCode) +
     (telegramGroupTitle == null ? 0 : telegramGroupTitle!.hashCode) +
     (telegramOwnerUserId == null ? 0 : telegramOwnerUserId!.hashCode) +
+    (ownerUserId == null ? 0 : ownerUserId!.hashCode) +
     (displayName == null ? 0 : displayName!.hashCode) +
     (commissionRate == null ? 0 : commissionRate!.hashCode) +
     (commissionBaseType == null ? 0 : commissionBaseType!.hashCode) +
@@ -159,7 +170,7 @@ class CommunityPartnerResponse {
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'CommunityPartnerResponse[id=$id, partnerType=$partnerType, telegramGroupId=$telegramGroupId, telegramGroupTitle=$telegramGroupTitle, telegramOwnerUserId=$telegramOwnerUserId, displayName=$displayName, commissionRate=$commissionRate, commissionBaseType=$commissionBaseType, settlementDelayDays=$settlementDelayDays, settlementCurrency=$settlementCurrency, status=$status, notes=$notes, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'CommunityPartnerResponse[id=$id, partnerType=$partnerType, telegramGroupId=$telegramGroupId, telegramGroupTitle=$telegramGroupTitle, telegramOwnerUserId=$telegramOwnerUserId, ownerUserId=$ownerUserId, displayName=$displayName, commissionRate=$commissionRate, commissionBaseType=$commissionBaseType, settlementDelayDays=$settlementDelayDays, settlementCurrency=$settlementCurrency, status=$status, notes=$notes, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -187,6 +198,11 @@ class CommunityPartnerResponse {
       json[r'telegramOwnerUserId'] = this.telegramOwnerUserId;
     } else {
       json[r'telegramOwnerUserId'] = null;
+    }
+    if (this.ownerUserId != null) {
+      json[r'ownerUserId'] = this.ownerUserId;
+    } else {
+      json[r'ownerUserId'] = null;
     }
     if (this.displayName != null) {
       json[r'displayName'] = this.displayName;
@@ -260,6 +276,7 @@ class CommunityPartnerResponse {
         telegramGroupId: mapValueOfType<int>(json, r'telegramGroupId'),
         telegramGroupTitle: mapValueOfType<String>(json, r'telegramGroupTitle'),
         telegramOwnerUserId: mapValueOfType<int>(json, r'telegramOwnerUserId'),
+        ownerUserId: mapValueOfType<int>(json, r'ownerUserId'),
         displayName: mapValueOfType<String>(json, r'displayName'),
         commissionRate: json[r'commissionRate'] == null
             ? null

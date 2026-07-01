@@ -12742,6 +12742,38 @@
         }
       }
     },
+    "/admin/community-partners/invitations/{invitationId}/regenerate-link": {
+      "post": {
+        "tags": [
+          "Community Partner Admin"
+        ],
+        "summary": "Regenerate a Telegram group owner/community partner invitation link",
+        "operationId": "regenerateInvitationLink",
+        "parameters": [
+          {
+            "name": "invitationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommunityPartnerInvitationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/community-partners/invitations/{invitationId}/cancel": {
       "post": {
         "tags": [
@@ -41809,6 +41841,10 @@
             "type": "string"
           },
           "telegramOwnerUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ownerUserId": {
             "type": "integer",
             "format": "int64"
           },
