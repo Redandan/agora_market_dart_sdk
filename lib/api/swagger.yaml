@@ -7534,6 +7534,107 @@
         }
       }
     },
+    "/community-partners/me/applications": {
+      "get": {
+        "tags": [
+          "Community Partner"
+        ],
+        "summary": "List current user's Telegram group owner partner applications",
+        "operationId": "listMyApplications",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "PENDING",
+                "APPROVED",
+                "REJECTED",
+                "CANCELLED"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CommunityPartnerApplicationResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Community Partner"
+        ],
+        "summary": "Submit or resubmit a Telegram group owner partner application",
+        "operationId": "submitMyApplication",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommunityPartnerApplicationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommunityPartnerApplicationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/community-partners/me/applications/{applicationId}/cancel": {
+      "post": {
+        "tags": [
+          "Community Partner"
+        ],
+        "summary": "Cancel current user's pending Telegram group owner partner application",
+        "operationId": "cancelMyApplication",
+        "parameters": [
+          {
+            "name": "applicationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommunityPartnerApplicationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/cold-wallet": {
       "get": {
         "tags": [
@@ -12555,6 +12656,90 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/CommunityPartnerGroupEvaluationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/community-partners/applications/{applicationId}/reject": {
+      "post": {
+        "tags": [
+          "Community Partner Admin"
+        ],
+        "summary": "Reject a Telegram group owner/community partner application",
+        "operationId": "rejectApplication",
+        "parameters": [
+          {
+            "name": "applicationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommunityPartnerApplicationRejectRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommunityPartnerApplicationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/community-partners/applications/{applicationId}/approve": {
+      "post": {
+        "tags": [
+          "Community Partner Admin"
+        ],
+        "summary": "Approve a Telegram group owner/community partner application",
+        "operationId": "approveApplication",
+        "parameters": [
+          {
+            "name": "applicationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommunityPartnerApplicationApproveRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommunityPartnerApplicationResponse"
                 }
               }
             }
@@ -19583,6 +19768,46 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/CommunityPartnerGroupEvaluationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/community-partners/applications": {
+      "get": {
+        "tags": [
+          "Community Partner Admin"
+        ],
+        "summary": "List Telegram group owner/community partner applications",
+        "operationId": "listApplications",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "PENDING",
+                "APPROVED",
+                "REJECTED",
+                "CANCELLED"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CommunityPartnerApplicationResponse"
+                  }
                 }
               }
             }
@@ -35533,6 +35758,93 @@
           }
         }
       },
+      "CommunityPartnerApplicationRequest": {
+        "type": "object",
+        "properties": {
+          "telegramGroupId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "telegramGroupTitle": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "applicantNotes": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "telegramGroupId"
+        ]
+      },
+      "CommunityPartnerApplicationResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "telegramGroupId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "telegramGroupTitle": {
+            "type": "string"
+          },
+          "telegramOwnerUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "applicantUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "applicantTelegramUsername": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "APPROVED",
+              "REJECTED",
+              "CANCELLED"
+            ]
+          },
+          "applicantNotes": {
+            "type": "string"
+          },
+          "reviewNotes": {
+            "type": "string"
+          },
+          "reviewedByUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "reviewedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "partnerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
       "CreateColdWalletParam": {
         "type": "object",
         "description": "冷錢包創建參數",
@@ -41495,6 +41807,46 @@
             "format": "date-time"
           }
         }
+      },
+      "CommunityPartnerApplicationRejectRequest": {
+        "type": "object",
+        "properties": {
+          "reviewNotes": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "CommunityPartnerApplicationApproveRequest": {
+        "type": "object",
+        "properties": {
+          "telegramGroupTitle": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "commissionRate": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": 0.0
+          },
+          "settlementDelayDays": {
+            "type": "integer",
+            "format": "int32",
+            "maximum": 365,
+            "minimum": 0
+          },
+          "settlementCurrency": {
+            "type": "string"
+          },
+          "reviewNotes": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "commissionRate"
+        ]
       },
       "AutoReplyResetStatsResponse": {
         "type": "object",

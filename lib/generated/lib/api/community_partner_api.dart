@@ -16,6 +16,118 @@ class CommunityPartnerApi {
 
   final ApiClient apiClient;
 
+  /// Cancel current user's pending Telegram group owner partner application
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] applicationId (required):
+  Future<Response> cancelMyApplicationWithHttpInfo(int applicationId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/community-partners/me/applications/{applicationId}/cancel'
+      .replaceAll('{applicationId}', applicationId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Cancel current user's pending Telegram group owner partner application
+  ///
+  /// Parameters:
+  ///
+  /// * [int] applicationId (required):
+  Future<CommunityPartnerApplicationResponse?> cancelMyApplication(int applicationId,) async {
+    final response = await cancelMyApplicationWithHttpInfo(applicationId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerApplicationResponse',) as CommunityPartnerApplicationResponse;
+    
+    }
+    return null;
+  }
+
+  /// List current user's Telegram group owner partner applications
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] status:
+  Future<Response> listMyApplicationsWithHttpInfo({ String? status, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/community-partners/me/applications';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (status != null) {
+      queryParams.addAll(_queryParams('', 'status', status));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// List current user's Telegram group owner partner applications
+  ///
+  /// Parameters:
+  ///
+  /// * [String] status:
+  Future<List<CommunityPartnerApplicationResponse>?> listMyApplications({ String? status, }) async {
+    final response = await listMyApplicationsWithHttpInfo( status: status, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<CommunityPartnerApplicationResponse>') as List)
+        .cast<CommunityPartnerApplicationResponse>()
+        .toList(growable: false);
+
+    }
+    return null;
+  }
+
   /// List current user's Telegram group owner partner records
   ///
   /// Note: This method returns the HTTP [Response].
@@ -172,6 +284,58 @@ class CommunityPartnerApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerMeSummaryResponse',) as CommunityPartnerMeSummaryResponse;
+    
+    }
+    return null;
+  }
+
+  /// Submit or resubmit a Telegram group owner partner application
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [CommunityPartnerApplicationRequest] communityPartnerApplicationRequest (required):
+  Future<Response> submitMyApplicationWithHttpInfo(CommunityPartnerApplicationRequest communityPartnerApplicationRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/community-partners/me/applications';
+
+    // ignore: prefer_final_locals
+    Object? postBody = communityPartnerApplicationRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Submit or resubmit a Telegram group owner partner application
+  ///
+  /// Parameters:
+  ///
+  /// * [CommunityPartnerApplicationRequest] communityPartnerApplicationRequest (required):
+  Future<CommunityPartnerApplicationResponse?> submitMyApplication(CommunityPartnerApplicationRequest communityPartnerApplicationRequest,) async {
+    final response = await submitMyApplicationWithHttpInfo(communityPartnerApplicationRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerApplicationResponse',) as CommunityPartnerApplicationResponse;
     
     }
     return null;

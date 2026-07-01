@@ -16,6 +16,63 @@ class CommunityPartnerAdminApi {
 
   final ApiClient apiClient;
 
+  /// Approve a Telegram group owner/community partner application
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] applicationId (required):
+  ///
+  /// * [CommunityPartnerApplicationApproveRequest] communityPartnerApplicationApproveRequest (required):
+  Future<Response> approveApplicationWithHttpInfo(int applicationId, CommunityPartnerApplicationApproveRequest communityPartnerApplicationApproveRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/community-partners/applications/{applicationId}/approve'
+      .replaceAll('{applicationId}', applicationId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody = communityPartnerApplicationApproveRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Approve a Telegram group owner/community partner application
+  ///
+  /// Parameters:
+  ///
+  /// * [int] applicationId (required):
+  ///
+  /// * [CommunityPartnerApplicationApproveRequest] communityPartnerApplicationApproveRequest (required):
+  Future<CommunityPartnerApplicationResponse?> approveApplication(int applicationId, CommunityPartnerApplicationApproveRequest communityPartnerApplicationApproveRequest,) async {
+    final response = await approveApplicationWithHttpInfo(applicationId, communityPartnerApplicationApproveRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerApplicationResponse',) as CommunityPartnerApplicationResponse;
+    
+    }
+    return null;
+  }
+
   /// Create or update a Telegram group potential evaluation
   ///
   /// Note: This method returns the HTTP [Response].
@@ -117,6 +174,65 @@ class CommunityPartnerAdminApi {
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerGroupEvaluationResponse',) as CommunityPartnerGroupEvaluationResponse;
     
+    }
+    return null;
+  }
+
+  /// List Telegram group owner/community partner applications
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] status:
+  Future<Response> listApplicationsWithHttpInfo({ String? status, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/community-partners/applications';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (status != null) {
+      queryParams.addAll(_queryParams('', 'status', status));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// List Telegram group owner/community partner applications
+  ///
+  /// Parameters:
+  ///
+  /// * [String] status:
+  Future<List<CommunityPartnerApplicationResponse>?> listApplications({ String? status, }) async {
+    final response = await listApplicationsWithHttpInfo( status: status, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<CommunityPartnerApplicationResponse>') as List)
+        .cast<CommunityPartnerApplicationResponse>()
+        .toList(growable: false);
+
     }
     return null;
   }
@@ -223,6 +339,63 @@ class CommunityPartnerAdminApi {
         .cast<CommunityPartnerResponse>()
         .toList(growable: false);
 
+    }
+    return null;
+  }
+
+  /// Reject a Telegram group owner/community partner application
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] applicationId (required):
+  ///
+  /// * [CommunityPartnerApplicationRejectRequest] communityPartnerApplicationRejectRequest (required):
+  Future<Response> rejectApplicationWithHttpInfo(int applicationId, CommunityPartnerApplicationRejectRequest communityPartnerApplicationRejectRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/community-partners/applications/{applicationId}/reject'
+      .replaceAll('{applicationId}', applicationId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody = communityPartnerApplicationRejectRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Reject a Telegram group owner/community partner application
+  ///
+  /// Parameters:
+  ///
+  /// * [int] applicationId (required):
+  ///
+  /// * [CommunityPartnerApplicationRejectRequest] communityPartnerApplicationRejectRequest (required):
+  Future<CommunityPartnerApplicationResponse?> rejectApplication(int applicationId, CommunityPartnerApplicationRejectRequest communityPartnerApplicationRejectRequest,) async {
+    final response = await rejectApplicationWithHttpInfo(applicationId, communityPartnerApplicationRejectRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerApplicationResponse',) as CommunityPartnerApplicationResponse;
+    
     }
     return null;
   }
