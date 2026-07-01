@@ -16,6 +16,63 @@ class CommunityPartnerApi {
 
   final ApiClient apiClient;
 
+  /// Apply to become a Telegram group owner partner using an invitation token
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] token (required):
+  ///
+  /// * [CommunityPartnerInvitationApplyRequest] communityPartnerInvitationApplyRequest (required):
+  Future<Response> applyInvitationWithHttpInfo(String token, CommunityPartnerInvitationApplyRequest communityPartnerInvitationApplyRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/community-partners/invitations/{token}/apply'
+      .replaceAll('{token}', token);
+
+    // ignore: prefer_final_locals
+    Object? postBody = communityPartnerInvitationApplyRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Apply to become a Telegram group owner partner using an invitation token
+  ///
+  /// Parameters:
+  ///
+  /// * [String] token (required):
+  ///
+  /// * [CommunityPartnerInvitationApplyRequest] communityPartnerInvitationApplyRequest (required):
+  Future<CommunityPartnerApplicationResponse?> applyInvitation(String token, CommunityPartnerInvitationApplyRequest communityPartnerInvitationApplyRequest,) async {
+    final response = await applyInvitationWithHttpInfo(token, communityPartnerInvitationApplyRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerApplicationResponse',) as CommunityPartnerApplicationResponse;
+    
+    }
+    return null;
+  }
+
   /// Cancel current user's pending Telegram group owner partner application
   ///
   /// Note: This method returns the HTTP [Response].
@@ -64,6 +121,59 @@ class CommunityPartnerApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerApplicationResponse',) as CommunityPartnerApplicationResponse;
+    
+    }
+    return null;
+  }
+
+  /// Get a Telegram group owner partner invitation by token
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] token (required):
+  Future<Response> getInvitationWithHttpInfo(String token,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/community-partners/invitations/{token}'
+      .replaceAll('{token}', token);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Get a Telegram group owner partner invitation by token
+  ///
+  /// Parameters:
+  ///
+  /// * [String] token (required):
+  Future<CommunityPartnerInvitationResponse?> getInvitation(String token,) async {
+    final response = await getInvitationWithHttpInfo(token,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerInvitationResponse',) as CommunityPartnerInvitationResponse;
     
     }
     return null;
@@ -284,6 +394,59 @@ class CommunityPartnerApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerMeSummaryResponse',) as CommunityPartnerMeSummaryResponse;
+    
+    }
+    return null;
+  }
+
+  /// Mark a Telegram group owner partner invitation as opened
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] token (required):
+  Future<Response> openInvitationWithHttpInfo(String token,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/community-partners/invitations/{token}/open'
+      .replaceAll('{token}', token);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Mark a Telegram group owner partner invitation as opened
+  ///
+  /// Parameters:
+  ///
+  /// * [String] token (required):
+  Future<CommunityPartnerInvitationResponse?> openInvitation(String token,) async {
+    final response = await openInvitationWithHttpInfo(token,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerInvitationResponse',) as CommunityPartnerInvitationResponse;
     
     }
     return null;

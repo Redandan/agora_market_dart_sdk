@@ -328,17 +328,23 @@ Class | Method | HTTP request | Description
 *ColdWalletApi* | [**freezeColdWallet**](doc//ColdWalletApi.md#freezecoldwallet) | **POST** /cold-wallet/{id}/freeze | 凍結冷錢包
 *ColdWalletApi* | [**getColdWallets**](doc//ColdWalletApi.md#getcoldwallets) | **GET** /cold-wallet | 獲取冷錢包列表
 *ColdWalletApi* | [**releaseColdWallet**](doc//ColdWalletApi.md#releasecoldwallet) | **POST** /cold-wallet/{id}/release | 釋放冷錢包
+*CommunityPartnerApi* | [**applyInvitation**](doc//CommunityPartnerApi.md#applyinvitation) | **POST** /community-partners/invitations/{token}/apply | Apply to become a Telegram group owner partner using an invitation token
 *CommunityPartnerApi* | [**cancelMyApplication**](doc//CommunityPartnerApi.md#cancelmyapplication) | **POST** /community-partners/me/applications/{applicationId}/cancel | Cancel current user's pending Telegram group owner partner application
+*CommunityPartnerApi* | [**getInvitation**](doc//CommunityPartnerApi.md#getinvitation) | **GET** /community-partners/invitations/{token} | Get a Telegram group owner partner invitation by token
 *CommunityPartnerApi* | [**listMyApplications**](doc//CommunityPartnerApi.md#listmyapplications) | **GET** /community-partners/me/applications | List current user's Telegram group owner partner applications
 *CommunityPartnerApi* | [**listMyPartners**](doc//CommunityPartnerApi.md#listmypartners) | **GET** /community-partners/me | List current user's Telegram group owner partner records
 *CommunityPartnerApi* | [**myLedgers**](doc//CommunityPartnerApi.md#myledgers) | **GET** /community-partners/me/ledgers | List current user's partner commission ledger rows
 *CommunityPartnerApi* | [**mySummary**](doc//CommunityPartnerApi.md#mysummary) | **GET** /community-partners/me/summary | Get current user's Telegram group owner partner summary
+*CommunityPartnerApi* | [**openInvitation**](doc//CommunityPartnerApi.md#openinvitation) | **POST** /community-partners/invitations/{token}/open | Mark a Telegram group owner partner invitation as opened
 *CommunityPartnerApi* | [**submitMyApplication**](doc//CommunityPartnerApi.md#submitmyapplication) | **POST** /community-partners/me/applications | Submit or resubmit a Telegram group owner partner application
 *CommunityPartnerAdminApi* | [**approveApplication**](doc//CommunityPartnerAdminApi.md#approveapplication) | **POST** /admin/community-partners/applications/{applicationId}/approve | Approve a Telegram group owner/community partner application
+*CommunityPartnerAdminApi* | [**cancelInvitation**](doc//CommunityPartnerAdminApi.md#cancelinvitation) | **POST** /admin/community-partners/invitations/{invitationId}/cancel | Cancel a Telegram group owner/community partner invitation
+*CommunityPartnerAdminApi* | [**createInvitation**](doc//CommunityPartnerAdminApi.md#createinvitation) | **POST** /admin/community-partners/invitations | Create a Telegram group owner/community partner invitation
 *CommunityPartnerAdminApi* | [**evaluateGroupPotential**](doc//CommunityPartnerAdminApi.md#evaluategrouppotential) | **POST** /admin/community-partners/group-evaluations | Create or update a Telegram group potential evaluation
 *CommunityPartnerAdminApi* | [**getGroupPotential**](doc//CommunityPartnerAdminApi.md#getgrouppotential) | **GET** /admin/community-partners/group-evaluations/{telegramGroupId} | Get a Telegram group potential evaluation
 *CommunityPartnerAdminApi* | [**listApplications**](doc//CommunityPartnerAdminApi.md#listapplications) | **GET** /admin/community-partners/applications | List Telegram group owner/community partner applications
 *CommunityPartnerAdminApi* | [**listGroupPotentials**](doc//CommunityPartnerAdminApi.md#listgrouppotentials) | **GET** /admin/community-partners/group-evaluations | List Telegram group potential evaluations ranked by expected commission
+*CommunityPartnerAdminApi* | [**listInvitations**](doc//CommunityPartnerAdminApi.md#listinvitations) | **GET** /admin/community-partners/invitations | List Telegram group owner/community partner invitations
 *CommunityPartnerAdminApi* | [**listPartners**](doc//CommunityPartnerAdminApi.md#listpartners) | **GET** /admin/community-partners | List Telegram group owner/community partners
 *CommunityPartnerAdminApi* | [**rejectApplication**](doc//CommunityPartnerAdminApi.md#rejectapplication) | **POST** /admin/community-partners/applications/{applicationId}/reject | Reject a Telegram group owner/community partner application
 *CommunityPartnerAdminApi* | [**updateStatus1**](doc//CommunityPartnerAdminApi.md#updatestatus1) | **POST** /admin/community-partners/{partnerId}/status | Update community partner status
@@ -744,6 +750,9 @@ Class | Method | HTTP request | Description
  - [CommunityPartnerApplicationResponse](doc//CommunityPartnerApplicationResponse.md)
  - [CommunityPartnerGroupEvaluationRequest](doc//CommunityPartnerGroupEvaluationRequest.md)
  - [CommunityPartnerGroupEvaluationResponse](doc//CommunityPartnerGroupEvaluationResponse.md)
+ - [CommunityPartnerInvitationApplyRequest](doc//CommunityPartnerInvitationApplyRequest.md)
+ - [CommunityPartnerInvitationCreateRequest](doc//CommunityPartnerInvitationCreateRequest.md)
+ - [CommunityPartnerInvitationResponse](doc//CommunityPartnerInvitationResponse.md)
  - [CommunityPartnerMeSummaryResponse](doc//CommunityPartnerMeSummaryResponse.md)
  - [CommunityPartnerResponse](doc//CommunityPartnerResponse.md)
  - [CommunityPartnerUpsertRequest](doc//CommunityPartnerUpsertRequest.md)

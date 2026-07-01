@@ -388,6 +388,12 @@ class ApiClient {
           return CommunityPartnerGroupEvaluationRequest.fromJson(value);
         case 'CommunityPartnerGroupEvaluationResponse':
           return CommunityPartnerGroupEvaluationResponse.fromJson(value);
+        case 'CommunityPartnerInvitationApplyRequest':
+          return CommunityPartnerInvitationApplyRequest.fromJson(value);
+        case 'CommunityPartnerInvitationCreateRequest':
+          return CommunityPartnerInvitationCreateRequest.fromJson(value);
+        case 'CommunityPartnerInvitationResponse':
+          return CommunityPartnerInvitationResponse.fromJson(value);
         case 'CommunityPartnerMeSummaryResponse':
           return CommunityPartnerMeSummaryResponse.fromJson(value);
         case 'CommunityPartnerResponse':

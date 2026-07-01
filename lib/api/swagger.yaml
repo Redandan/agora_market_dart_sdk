@@ -7635,6 +7635,78 @@
         }
       }
     },
+    "/community-partners/invitations/{token}/open": {
+      "post": {
+        "tags": [
+          "Community Partner"
+        ],
+        "summary": "Mark a Telegram group owner partner invitation as opened",
+        "operationId": "openInvitation",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommunityPartnerInvitationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/community-partners/invitations/{token}/apply": {
+      "post": {
+        "tags": [
+          "Community Partner"
+        ],
+        "summary": "Apply to become a Telegram group owner partner using an invitation token",
+        "operationId": "applyInvitation",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommunityPartnerInvitationApplyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommunityPartnerApplicationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/cold-wallet": {
       "get": {
         "tags": [
@@ -12598,6 +12670,110 @@
         }
       }
     },
+    "/admin/community-partners/invitations": {
+      "get": {
+        "tags": [
+          "Community Partner Admin"
+        ],
+        "summary": "List Telegram group owner/community partner invitations",
+        "operationId": "listInvitations",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "SENT",
+                "OPENED",
+                "APPLIED",
+                "APPROVED",
+                "REJECTED",
+                "EXPIRED",
+                "CANCELLED"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CommunityPartnerInvitationResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Community Partner Admin"
+        ],
+        "summary": "Create a Telegram group owner/community partner invitation",
+        "operationId": "createInvitation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommunityPartnerInvitationCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommunityPartnerInvitationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/community-partners/invitations/{invitationId}/cancel": {
+      "post": {
+        "tags": [
+          "Community Partner Admin"
+        ],
+        "summary": "Cancel a Telegram group owner/community partner invitation",
+        "operationId": "cancelInvitation",
+        "parameters": [
+          {
+            "name": "invitationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommunityPartnerInvitationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/community-partners/group-evaluations": {
       "get": {
         "tags": [
@@ -17029,6 +17205,37 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/PagePartnerCommissionLedgerResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/community-partners/invitations/{token}": {
+      "get": {
+        "tags": [
+          "Community Partner"
+        ],
+        "summary": "Get a Telegram group owner partner invitation by token",
+        "operationId": "getInvitation",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommunityPartnerInvitationResponse"
                 }
               }
             }
@@ -35845,6 +36052,100 @@
           }
         }
       },
+      "CommunityPartnerInvitationResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "telegramGroupId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "telegramGroupTitle": {
+            "type": "string"
+          },
+          "expectedOwnerTelegramUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "expectedOwnerUsername": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "invitedByUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "SENT",
+              "OPENED",
+              "APPLIED",
+              "APPROVED",
+              "REJECTED",
+              "EXPIRED",
+              "CANCELLED"
+            ]
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "openedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "openedByUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "openedTelegramUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "applicationId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "partnerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "inviteLink": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "CommunityPartnerInvitationApplyRequest": {
+        "type": "object",
+        "properties": {
+          "telegramGroupTitle": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "applicantNotes": {
+            "type": "string"
+          }
+        }
+      },
       "CreateColdWalletParam": {
         "type": "object",
         "description": "冷錢包創建參數",
@@ -41589,6 +41890,41 @@
         },
         "required": [
           "commissionRate",
+          "telegramGroupId"
+        ]
+      },
+      "CommunityPartnerInvitationCreateRequest": {
+        "type": "object",
+        "properties": {
+          "telegramGroupId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "telegramGroupTitle": {
+            "type": "string"
+          },
+          "expectedOwnerTelegramUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "expectedOwnerUsername": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expiresInDays": {
+            "type": "integer",
+            "format": "int32",
+            "maximum": 365,
+            "minimum": 1
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "required": [
           "telegramGroupId"
         ]
       },
