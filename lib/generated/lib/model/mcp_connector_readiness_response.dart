@@ -14,6 +14,7 @@ class McpConnectorReadinessResponse {
   /// Returns a new [McpConnectorReadinessResponse] instance.
   McpConnectorReadinessResponse({
     this.connector,
+    this.toolSurface,
     this.account,
     this.oauth,
     this.chatgpt,
@@ -28,6 +29,14 @@ class McpConnectorReadinessResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   McpConnectorInfo? connector;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  McpConnectorToolSurfaceContract? toolSurface;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -60,6 +69,7 @@ class McpConnectorReadinessResponse {
   @override
   bool operator ==(Object other) => identical(this, other) || other is McpConnectorReadinessResponse &&
     other.connector == connector &&
+    other.toolSurface == toolSurface &&
     other.account == account &&
     other.oauth == oauth &&
     other.chatgpt == chatgpt &&
@@ -70,6 +80,7 @@ class McpConnectorReadinessResponse {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (connector == null ? 0 : connector!.hashCode) +
+    (toolSurface == null ? 0 : toolSurface!.hashCode) +
     (account == null ? 0 : account!.hashCode) +
     (oauth == null ? 0 : oauth!.hashCode) +
     (chatgpt == null ? 0 : chatgpt!.hashCode) +
@@ -77,7 +88,7 @@ class McpConnectorReadinessResponse {
     (recommendedActions.hashCode);
 
   @override
-  String toString() => 'McpConnectorReadinessResponse[connector=$connector, account=$account, oauth=$oauth, chatgpt=$chatgpt, blockingReasons=$blockingReasons, recommendedActions=$recommendedActions]';
+  String toString() => 'McpConnectorReadinessResponse[connector=$connector, toolSurface=$toolSurface, account=$account, oauth=$oauth, chatgpt=$chatgpt, blockingReasons=$blockingReasons, recommendedActions=$recommendedActions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -85,6 +96,11 @@ class McpConnectorReadinessResponse {
       json[r'connector'] = this.connector;
     } else {
       json[r'connector'] = null;
+    }
+    if (this.toolSurface != null) {
+      json[r'toolSurface'] = this.toolSurface;
+    } else {
+      json[r'toolSurface'] = null;
     }
     if (this.account != null) {
       json[r'account'] = this.account;
@@ -126,6 +142,7 @@ class McpConnectorReadinessResponse {
 
       return McpConnectorReadinessResponse(
         connector: McpConnectorInfo.fromJson(json[r'connector']),
+        toolSurface: McpConnectorToolSurfaceContract.fromJson(json[r'toolSurface']),
         account: McpConnectorAccountStatus.fromJson(json[r'account']),
         oauth: McpConnectorOAuthStatus.fromJson(json[r'oauth']),
         chatgpt: McpConnectorChatGptStatus.fromJson(json[r'chatgpt']),

@@ -23,6 +23,8 @@ class McpConnectorGrantResponse {
     this.revokedAt,
     this.active,
     this.revocable,
+    this.productImportScopeReady,
+    this.missingProductImportScopes = const [],
   });
 
   ///
@@ -99,6 +101,16 @@ class McpConnectorGrantResponse {
   ///
   bool? revocable;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? productImportScopeReady;
+
+  List<String> missingProductImportScopes;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is McpConnectorGrantResponse &&
     other.id == id &&
@@ -110,7 +122,9 @@ class McpConnectorGrantResponse {
     other.expiresAt == expiresAt &&
     other.revokedAt == revokedAt &&
     other.active == active &&
-    other.revocable == revocable;
+    other.revocable == revocable &&
+    other.productImportScopeReady == productImportScopeReady &&
+    _deepEquality.equals(other.missingProductImportScopes, missingProductImportScopes);
 
   @override
   int get hashCode =>
@@ -124,10 +138,12 @@ class McpConnectorGrantResponse {
     (expiresAt == null ? 0 : expiresAt!.hashCode) +
     (revokedAt == null ? 0 : revokedAt!.hashCode) +
     (active == null ? 0 : active!.hashCode) +
-    (revocable == null ? 0 : revocable!.hashCode);
+    (revocable == null ? 0 : revocable!.hashCode) +
+    (productImportScopeReady == null ? 0 : productImportScopeReady!.hashCode) +
+    (missingProductImportScopes.hashCode);
 
   @override
-  String toString() => 'McpConnectorGrantResponse[id=$id, clientName=$clientName, clientId=$clientId, scopes=$scopes, createdAt=$createdAt, lastUsedAt=$lastUsedAt, expiresAt=$expiresAt, revokedAt=$revokedAt, active=$active, revocable=$revocable]';
+  String toString() => 'McpConnectorGrantResponse[id=$id, clientName=$clientName, clientId=$clientId, scopes=$scopes, createdAt=$createdAt, lastUsedAt=$lastUsedAt, expiresAt=$expiresAt, revokedAt=$revokedAt, active=$active, revocable=$revocable, productImportScopeReady=$productImportScopeReady, missingProductImportScopes=$missingProductImportScopes]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -177,6 +193,12 @@ class McpConnectorGrantResponse {
     } else {
       json[r'revocable'] = null;
     }
+    if (this.productImportScopeReady != null) {
+      json[r'productImportScopeReady'] = this.productImportScopeReady;
+    } else {
+      json[r'productImportScopeReady'] = null;
+    }
+      json[r'missingProductImportScopes'] = this.missingProductImportScopes;
     return json;
   }
 
@@ -211,6 +233,10 @@ class McpConnectorGrantResponse {
         revokedAt: mapDateTime(json, r'revokedAt', r''),
         active: mapValueOfType<bool>(json, r'active'),
         revocable: mapValueOfType<bool>(json, r'revocable'),
+        productImportScopeReady: mapValueOfType<bool>(json, r'productImportScopeReady'),
+        missingProductImportScopes: json[r'missingProductImportScopes'] is Iterable
+            ? (json[r'missingProductImportScopes'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
       );
     }
     return null;

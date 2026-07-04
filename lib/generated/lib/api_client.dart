@@ -644,6 +644,8 @@ class ApiClient {
           return McpConnectorReadinessResponse.fromJson(value);
         case 'McpConnectorReason':
           return McpConnectorReason.fromJson(value);
+        case 'McpConnectorToolSurfaceContract':
+          return McpConnectorToolSurfaceContract.fromJson(value);
         case 'MemberSearchParam':
           return MemberSearchParam.fromJson(value);
         case 'MemberUpdateParam':

@@ -337,6 +337,7 @@ part 'model/mcp_connector_info.dart';
 part 'model/mcp_connector_o_auth_status.dart';
 part 'model/mcp_connector_readiness_response.dart';
 part 'model/mcp_connector_reason.dart';
+part 'model/mcp_connector_tool_surface_contract.dart';
 part 'model/member_search_param.dart';
 part 'model/member_update_param.dart';
 part 'model/message_send_response_dto.dart';

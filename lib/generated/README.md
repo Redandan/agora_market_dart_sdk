@@ -889,6 +889,7 @@ Class | Method | HTTP request | Description
  - [McpConnectorOAuthStatus](doc//McpConnectorOAuthStatus.md)
  - [McpConnectorReadinessResponse](doc//McpConnectorReadinessResponse.md)
  - [McpConnectorReason](doc//McpConnectorReason.md)
+ - [McpConnectorToolSurfaceContract](doc//McpConnectorToolSurfaceContract.md)
  - [MemberSearchParam](doc//MemberSearchParam.md)
  - [MemberUpdateParam](doc//MemberUpdateParam.md)
  - [MessageSendResponseDTO](doc//MessageSendResponseDTO.md)

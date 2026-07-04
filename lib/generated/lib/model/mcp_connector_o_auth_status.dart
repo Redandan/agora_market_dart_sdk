@@ -18,6 +18,9 @@ class McpConnectorOAuthStatus {
     this.scopeEnforcementReady,
     this.refreshTokenReady,
     this.supportedScopes = const [],
+    this.productImportScopeReady,
+    this.productImportRequiredScopes = const [],
+    this.missingProductImportScopes = const [],
   });
 
   ///
@@ -54,13 +57,28 @@ class McpConnectorOAuthStatus {
 
   List<String> supportedScopes;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? productImportScopeReady;
+
+  List<String> productImportRequiredScopes;
+
+  List<String> missingProductImportScopes;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is McpConnectorOAuthStatus &&
     other.authorizationReady == authorizationReady &&
     other.passkeyAuthorizeReady == passkeyAuthorizeReady &&
     other.scopeEnforcementReady == scopeEnforcementReady &&
     other.refreshTokenReady == refreshTokenReady &&
-    _deepEquality.equals(other.supportedScopes, supportedScopes);
+    _deepEquality.equals(other.supportedScopes, supportedScopes) &&
+    other.productImportScopeReady == productImportScopeReady &&
+    _deepEquality.equals(other.productImportRequiredScopes, productImportRequiredScopes) &&
+    _deepEquality.equals(other.missingProductImportScopes, missingProductImportScopes);
 
   @override
   int get hashCode =>
@@ -69,10 +87,13 @@ class McpConnectorOAuthStatus {
     (passkeyAuthorizeReady == null ? 0 : passkeyAuthorizeReady!.hashCode) +
     (scopeEnforcementReady == null ? 0 : scopeEnforcementReady!.hashCode) +
     (refreshTokenReady == null ? 0 : refreshTokenReady!.hashCode) +
-    (supportedScopes.hashCode);
+    (supportedScopes.hashCode) +
+    (productImportScopeReady == null ? 0 : productImportScopeReady!.hashCode) +
+    (productImportRequiredScopes.hashCode) +
+    (missingProductImportScopes.hashCode);
 
   @override
-  String toString() => 'McpConnectorOAuthStatus[authorizationReady=$authorizationReady, passkeyAuthorizeReady=$passkeyAuthorizeReady, scopeEnforcementReady=$scopeEnforcementReady, refreshTokenReady=$refreshTokenReady, supportedScopes=$supportedScopes]';
+  String toString() => 'McpConnectorOAuthStatus[authorizationReady=$authorizationReady, passkeyAuthorizeReady=$passkeyAuthorizeReady, scopeEnforcementReady=$scopeEnforcementReady, refreshTokenReady=$refreshTokenReady, supportedScopes=$supportedScopes, productImportScopeReady=$productImportScopeReady, productImportRequiredScopes=$productImportRequiredScopes, missingProductImportScopes=$missingProductImportScopes]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -97,6 +118,13 @@ class McpConnectorOAuthStatus {
       json[r'refreshTokenReady'] = null;
     }
       json[r'supportedScopes'] = this.supportedScopes;
+    if (this.productImportScopeReady != null) {
+      json[r'productImportScopeReady'] = this.productImportScopeReady;
+    } else {
+      json[r'productImportScopeReady'] = null;
+    }
+      json[r'productImportRequiredScopes'] = this.productImportRequiredScopes;
+      json[r'missingProductImportScopes'] = this.missingProductImportScopes;
     return json;
   }
 
@@ -125,6 +153,13 @@ class McpConnectorOAuthStatus {
         refreshTokenReady: mapValueOfType<bool>(json, r'refreshTokenReady'),
         supportedScopes: json[r'supportedScopes'] is Iterable
             ? (json[r'supportedScopes'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
+        productImportScopeReady: mapValueOfType<bool>(json, r'productImportScopeReady'),
+        productImportRequiredScopes: json[r'productImportRequiredScopes'] is Iterable
+            ? (json[r'productImportRequiredScopes'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
+        missingProductImportScopes: json[r'missingProductImportScopes'] is Iterable
+            ? (json[r'missingProductImportScopes'] as Iterable).cast<String>().toList(growable: false)
             : const [],
       );
     }

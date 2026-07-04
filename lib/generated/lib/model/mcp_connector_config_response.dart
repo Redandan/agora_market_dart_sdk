@@ -19,6 +19,7 @@ class McpConnectorConfigResponse {
     this.documentationUrl,
     this.status,
     this.recommendedScopes = const [],
+    this.toolSurface,
     this.knownLimitations = const [],
     this.warnings = const [],
   });
@@ -65,6 +66,14 @@ class McpConnectorConfigResponse {
 
   List<String> recommendedScopes;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  McpConnectorToolSurfaceContract? toolSurface;
+
   List<String> knownLimitations;
 
   List<String> warnings;
@@ -77,6 +86,7 @@ class McpConnectorConfigResponse {
     other.documentationUrl == documentationUrl &&
     other.status == status &&
     _deepEquality.equals(other.recommendedScopes, recommendedScopes) &&
+    other.toolSurface == toolSurface &&
     _deepEquality.equals(other.knownLimitations, knownLimitations) &&
     _deepEquality.equals(other.warnings, warnings);
 
@@ -89,11 +99,12 @@ class McpConnectorConfigResponse {
     (documentationUrl == null ? 0 : documentationUrl!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
     (recommendedScopes.hashCode) +
+    (toolSurface == null ? 0 : toolSurface!.hashCode) +
     (knownLimitations.hashCode) +
     (warnings.hashCode);
 
   @override
-  String toString() => 'McpConnectorConfigResponse[name=$name, url=$url, description=$description, documentationUrl=$documentationUrl, status=$status, recommendedScopes=$recommendedScopes, knownLimitations=$knownLimitations, warnings=$warnings]';
+  String toString() => 'McpConnectorConfigResponse[name=$name, url=$url, description=$description, documentationUrl=$documentationUrl, status=$status, recommendedScopes=$recommendedScopes, toolSurface=$toolSurface, knownLimitations=$knownLimitations, warnings=$warnings]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -123,6 +134,11 @@ class McpConnectorConfigResponse {
       json[r'status'] = null;
     }
       json[r'recommendedScopes'] = this.recommendedScopes;
+    if (this.toolSurface != null) {
+      json[r'toolSurface'] = this.toolSurface;
+    } else {
+      json[r'toolSurface'] = null;
+    }
       json[r'knownLimitations'] = this.knownLimitations;
       json[r'warnings'] = this.warnings;
     return json;
@@ -155,6 +171,7 @@ class McpConnectorConfigResponse {
         recommendedScopes: json[r'recommendedScopes'] is Iterable
             ? (json[r'recommendedScopes'] as Iterable).cast<String>().toList(growable: false)
             : const [],
+        toolSurface: McpConnectorToolSurfaceContract.fromJson(json[r'toolSurface']),
         knownLimitations: json[r'knownLimitations'] is Iterable
             ? (json[r'knownLimitations'] as Iterable).cast<String>().toList(growable: false)
             : const [],
