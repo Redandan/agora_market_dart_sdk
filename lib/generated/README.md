@@ -405,7 +405,8 @@ Class | Method | HTTP request | Description
 *LogisticsApi* | [**searchLogisticsPostalAreas**](doc//LogisticsApi.md#searchlogisticspostalareas) | **POST** /logistics/postal/search | 郵遞區號模糊查詢
 *LogisticsApi* | [**validateLogisticsPostalCode**](doc//LogisticsApi.md#validatelogisticspostalcode) | **GET** /logistics/postal-codes/{postalCode}/validate | 郵遞區號驗證
 *McpStreamableHttpControllerApi* | [**handleMcp**](doc//McpStreamableHttpControllerApi.md#handlemcp) | **POST** /mcp | 
-*McpStreamableHttpControllerApi* | [**handleUserMcp**](doc//McpStreamableHttpControllerApi.md#handleusermcp) | **POST** /mcp/user | 
+*McpStreamableHttpControllerApi* | [**handleUserMcp**](doc//McpStreamableHttpControllerApi.md#handleusermcp) | **POST** /mcp/user/v2 | 
+*McpStreamableHttpControllerApi* | [**handleUserMcp1**](doc//McpStreamableHttpControllerApi.md#handleusermcp1) | **POST** /mcp/user | 
 *McpUserConnectorApi* | [**activitySummary**](doc//McpUserConnectorApi.md#activitysummary) | **GET** /mcp/user/connector/activity/summary | Get current user's best-effort ChatGPT MCP activity summary
 *McpUserConnectorApi* | [**config**](doc//McpUserConnectorApi.md#config) | **GET** /mcp/user/connector/config | Get public ChatGPT user MCP connector setup config
 *McpUserConnectorApi* | [**grants**](doc//McpUserConnectorApi.md#grants) | **GET** /mcp/user/connector/grants | List current user's ChatGPT MCP OAuth grants
