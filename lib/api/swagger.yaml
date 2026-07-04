@@ -6507,12 +6507,48 @@
         }
       }
     },
-    "/mcp": {
+    "/mcp/v2": {
       "post": {
         "tags": [
           "mcp-streamable-http-controller"
         ],
         "operationId": "handleMcp",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/mcp": {
+      "post": {
+        "tags": [
+          "mcp-streamable-http-controller"
+        ],
+        "operationId": "handleMcp_1",
         "requestBody": {
           "content": {
             "application/json": {
@@ -45584,7 +45620,26 @@
           "surface": {
             "type": "string"
           },
+          "currentResource": {
+            "type": "string"
+          },
+          "legacyResourceAliases": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "manifestVersion": {
+            "type": "string"
+          },
+          "toolCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "registryVersion": {
+            "type": "string"
+          },
+          "resourceNamesHash": {
             "type": "string"
           },
           "expectedMinimumToolCount": {
@@ -45595,6 +45650,15 @@
             "type": "array",
             "items": {
               "type": "string"
+            }
+          },
+          "requiredScopesByWorkflow": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             }
           },
           "productImportTools": {
@@ -45617,6 +45681,12 @@
           },
           "cacheDriftSignal": {
             "type": "string"
+          },
+          "versionBumpPolicy": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
