@@ -2494,6 +2494,95 @@
         }
       }
     },
+    "/tg-games/{gameKey}/sessions": {
+      "post": {
+        "tags": [
+          "tg-mini-app-game-session-controller"
+        ],
+        "operationId": "startSession",
+        "parameters": [
+          {
+            "name": "gameKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GameSessionStartRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameSessionResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/tg-games/{gameKey}/sessions/{sessionId}/end": {
+      "post": {
+        "tags": [
+          "tg-mini-app-game-session-controller"
+        ],
+        "operationId": "endSession",
+        "parameters": [
+          {
+            "name": "gameKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameSessionResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/tg-game/activity": {
       "post": {
         "tags": [
@@ -6871,6 +6960,41 @@
             }
           }
         }
+      }
+    },
+    "/game-access/purchase": {
+      "post": {
+        "tags": [
+          "game-access-controller"
+        ],
+        "operationId": "purchase",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GameAccessPurchaseRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameAccessPurchaseResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/flutter/deployment/apps": {
@@ -17219,6 +17343,41 @@
         }
       }
     },
+    "/game-access/me": {
+      "get": {
+        "tags": [
+          "game-access-controller"
+        ],
+        "operationId": "getMyAccess",
+        "parameters": [
+          {
+            "name": "gameKey",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameAccessStatusResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/demands/{demandId}": {
       "get": {
         "tags": [
@@ -25099,6 +25258,8 @@
               "SLOT_BET",
               "SLOT_WIN",
               "PARTNER_COMMISSION",
+              "GAME_ACCESS_DEPOSIT",
+              "GAME_ACCESS_REFUND",
               "MANUAL_ADJUST"
             ],
             "maxLength": 255
@@ -25262,6 +25423,66 @@
           "remark",
           "userId"
         ]
+      },
+      "GameSessionStartRequest": {
+        "type": "object",
+        "properties": {
+          "clientSessionId": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 0
+          },
+          "telegramUserId": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 0
+          },
+          "telegramInitDataHash": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 0
+          }
+        }
+      },
+      "GameSessionResponse": {
+        "type": "object",
+        "properties": {
+          "sessionId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "entitlementId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "gameKey": {
+            "type": "string"
+          },
+          "clientSessionId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "description": "遊戲 Session 狀態",
+            "enum": [
+              "CREATED",
+              "ACTIVE",
+              "ENDED",
+              "DENIED"
+            ]
+          },
+          "denyReason": {
+            "type": "string"
+          },
+          "startedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
       },
       "CreateActivityRequest": {
         "type": "object",
@@ -35012,6 +35233,62 @@
           },
           "available": {
             "type": "boolean"
+          }
+        }
+      },
+      "GameAccessPurchaseRequest": {
+        "type": "object",
+        "properties": {
+          "gameKey": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 0
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 0
+          }
+        }
+      },
+      "GameAccessPurchaseResponse": {
+        "type": "object",
+        "properties": {
+          "entitlementId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "status": {
+            "type": "string",
+            "description": "用戶權益狀態",
+            "enum": [
+              "PENDING_REFUND",
+              "ACTIVE",
+              "REVOKED",
+              "EXPIRED",
+              "CANCELLED"
+            ]
+          },
+          "currency": {
+            "type": "string"
+          },
+          "depositAmount": {
+            "type": "number"
+          },
+          "debitTransactionId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "refundTransactionId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "launchUrl": {
+            "type": "string"
           }
         }
       },
@@ -45818,6 +46095,39 @@
           "lastToolCallAt": {
             "type": "string",
             "format": "date-time"
+          }
+        }
+      },
+      "GameAccessStatusResponse": {
+        "type": "object",
+        "properties": {
+          "gameKey": {
+            "type": "string"
+          },
+          "eligible": {
+            "type": "boolean"
+          },
+          "hasActiveEntitlement": {
+            "type": "boolean"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "requiredBalance": {
+            "type": "number"
+          },
+          "currentBalance": {
+            "type": "number"
+          },
+          "denyReason": {
+            "type": "string"
+          },
+          "launchUrl": {
+            "type": "string"
+          },
+          "entitlementId": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },

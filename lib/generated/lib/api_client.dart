@@ -528,8 +528,18 @@ class ApiClient {
           return FileSyncResponse.fromJson(value);
         case 'FlutterAppDeploymentResponse':
           return FlutterAppDeploymentResponse.fromJson(value);
+        case 'GameAccessPurchaseRequest':
+          return GameAccessPurchaseRequest.fromJson(value);
+        case 'GameAccessPurchaseResponse':
+          return GameAccessPurchaseResponse.fromJson(value);
+        case 'GameAccessStatusResponse':
+          return GameAccessStatusResponse.fromJson(value);
         case 'GameRoundDTO':
           return GameRoundDTO.fromJson(value);
+        case 'GameSessionResponse':
+          return GameSessionResponse.fromJson(value);
+        case 'GameSessionStartRequest':
+          return GameSessionStartRequest.fromJson(value);
         case 'GenerateLoginTokenRequest':
           return GenerateLoginTokenRequest.fromJson(value);
         case 'GroqUsageStatsDTO':

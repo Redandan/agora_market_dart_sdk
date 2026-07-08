@@ -378,6 +378,8 @@ Class | Method | HTTP request | Description
 *FileManagementApi* | [**syncFileRecords**](doc//FileManagementApi.md#syncfilerecords) | **POST** /files/auto-clean | 檔案清理
 *FlutterDeploymentApi* | [**deleteVersion**](doc//FlutterDeploymentApi.md#deleteversion) | **DELETE** /flutter/deployment/versions/{versionId} | 刪除 APP 版本
 *FlutterDeploymentApi* | [**getApps**](doc//FlutterDeploymentApi.md#getapps) | **POST** /flutter/deployment/apps | 獲取可下載的 APP
+*GameAccessControllerApi* | [**getMyAccess**](doc//GameAccessControllerApi.md#getmyaccess) | **GET** /game-access/me | 
+*GameAccessControllerApi* | [**purchase**](doc//GameAccessControllerApi.md#purchase) | **POST** /game-access/purchase | 
 *KnowledgeApi* | [**addKnowledge**](doc//KnowledgeApi.md#addknowledge) | **POST** /admin/knowledge | 新增知識文件
 *KnowledgeApi* | [**countKnowledge**](doc//KnowledgeApi.md#countknowledge) | **GET** /admin/knowledge/count | 查詢知識庫文件數量
 *KnowledgeApi* | [**countPendingKnowledgeQuestions**](doc//KnowledgeApi.md#countpendingknowledgequestions) | **GET** /admin/knowledge/pending/count | 查詢未處理問題數量
@@ -625,6 +627,8 @@ Class | Method | HTTP request | Description
 *TestApi* | [**generateReviewData**](doc//TestApi.md#generatereviewdata) | **POST** /test/review | 
 *TestApi* | [**generateTestData**](doc//TestApi.md#generatetestdata) | **POST** /test/generate-test-data | 生成測試數據
 *TestApi* | [**getJwtConfig**](doc//TestApi.md#getjwtconfig) | **GET** /test/jwt-config | 
+*TgMiniAppGameSessionControllerApi* | [**endSession**](doc//TgMiniAppGameSessionControllerApi.md#endsession) | **POST** /tg-games/{gameKey}/sessions/{sessionId}/end | 
+*TgMiniAppGameSessionControllerApi* | [**startSession**](doc//TgMiniAppGameSessionControllerApi.md#startsession) | **POST** /tg-games/{gameKey}/sessions | 
 *UserAddressesApi* | [**createAddress**](doc//UserAddressesApi.md#createaddress) | **POST** /user-addresses/create | 創建地址
 *UserAddressesApi* | [**deleteAddress**](doc//UserAddressesApi.md#deleteaddress) | **DELETE** /user-addresses/{addressId} | 刪除地址
 *UserAddressesApi* | [**getAddressById**](doc//UserAddressesApi.md#getaddressbyid) | **GET** /user-addresses/{addressId} | 根據ID獲取地址詳情
@@ -833,7 +837,12 @@ Class | Method | HTTP request | Description
  - [FileRecordSearchRequest](doc//FileRecordSearchRequest.md)
  - [FileSyncResponse](doc//FileSyncResponse.md)
  - [FlutterAppDeploymentResponse](doc//FlutterAppDeploymentResponse.md)
+ - [GameAccessPurchaseRequest](doc//GameAccessPurchaseRequest.md)
+ - [GameAccessPurchaseResponse](doc//GameAccessPurchaseResponse.md)
+ - [GameAccessStatusResponse](doc//GameAccessStatusResponse.md)
  - [GameRoundDTO](doc//GameRoundDTO.md)
+ - [GameSessionResponse](doc//GameSessionResponse.md)
+ - [GameSessionStartRequest](doc//GameSessionStartRequest.md)
  - [GenerateLoginTokenRequest](doc//GenerateLoginTokenRequest.md)
  - [GroqUsageStatsDTO](doc//GroqUsageStatsDTO.md)
  - [Group](doc//Group.md)
