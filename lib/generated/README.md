@@ -353,6 +353,7 @@ Class | Method | HTTP request | Description
 *CreatorContentControllerApi* | [**getDetail**](doc//CreatorContentControllerApi.md#getdetail) | **GET** /creator-contents/{contentId} | 
 *CreatorContentControllerApi* | [**listPublished**](doc//CreatorContentControllerApi.md#listpublished) | **GET** /creator-contents | 
 *CreatorSubscriptionControllerApi* | [**getAccess**](doc//CreatorSubscriptionControllerApi.md#getaccess) | **GET** /creator-subscriptions/products/{productId}/access | 
+*CreatorSubscriptionControllerApi* | [**getEntry**](doc//CreatorSubscriptionControllerApi.md#getentry) | **GET** /creator-subscriptions/products/{productId}/entry | 
 *CreatorSubscriptionControllerApi* | [**listMine1**](doc//CreatorSubscriptionControllerApi.md#listmine1) | **GET** /creator-subscriptions/me | 
 *CreatorSubscriptionControllerApi* | [**subscribe1**](doc//CreatorSubscriptionControllerApi.md#subscribe1) | **POST** /creator-subscriptions/products/{productId}/subscribe | 
 *DeliveryApi* | [**acceptOrder**](doc//DeliveryApi.md#acceptorder) | **POST** /delivery/accept | 配送員接單
@@ -783,6 +784,7 @@ Class | Method | HTTP request | Description
  - [CreatorContentResponse](doc//CreatorContentResponse.md)
  - [CreatorContentUpsertRequest](doc//CreatorContentUpsertRequest.md)
  - [CreatorSubscriptionAccessResponse](doc//CreatorSubscriptionAccessResponse.md)
+ - [CreatorSubscriptionEntryResponse](doc//CreatorSubscriptionEntryResponse.md)
  - [CreatorSubscriptionResponse](doc//CreatorSubscriptionResponse.md)
  - [CustomerIssue](doc//CustomerIssue.md)
  - [CustomerStats](doc//CustomerStats.md)

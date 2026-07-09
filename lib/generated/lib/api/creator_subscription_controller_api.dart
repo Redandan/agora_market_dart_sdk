@@ -64,6 +64,54 @@ class CreatorSubscriptionControllerApi {
     return null;
   }
 
+  /// Performs an HTTP 'GET /creator-subscriptions/products/{productId}/entry' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] productId (required):
+  Future<Response> getEntryWithHttpInfo(int productId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/creator-subscriptions/products/{productId}/entry'
+      .replaceAll('{productId}', productId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] productId (required):
+  Future<CreatorSubscriptionEntryResponse?> getEntry(int productId,) async {
+    final response = await getEntryWithHttpInfo(productId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CreatorSubscriptionEntryResponse',) as CreatorSubscriptionEntryResponse;
+    
+    }
+    return null;
+  }
+
   /// Performs an HTTP 'GET /creator-subscriptions/me' operation and returns the [Response].
   Future<Response> listMine1WithHttpInfo() async {
     // ignore: prefer_const_declarations

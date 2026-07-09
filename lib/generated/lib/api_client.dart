@@ -420,6 +420,8 @@ class ApiClient {
           return CreatorContentUpsertRequest.fromJson(value);
         case 'CreatorSubscriptionAccessResponse':
           return CreatorSubscriptionAccessResponse.fromJson(value);
+        case 'CreatorSubscriptionEntryResponse':
+          return CreatorSubscriptionEntryResponse.fromJson(value);
         case 'CreatorSubscriptionResponse':
           return CreatorSubscriptionResponse.fromJson(value);
         case 'CustomerIssue':

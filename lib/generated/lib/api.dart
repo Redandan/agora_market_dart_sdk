@@ -227,6 +227,7 @@ part 'model/create_withdraw_param.dart';
 part 'model/creator_content_response.dart';
 part 'model/creator_content_upsert_request.dart';
 part 'model/creator_subscription_access_response.dart';
+part 'model/creator_subscription_entry_response.dart';
 part 'model/creator_subscription_response.dart';
 part 'model/customer_issue.dart';
 part 'model/customer_stats.dart';

@@ -21,6 +21,10 @@ class CreatorContentResponse {
     this.contentType,
     this.body,
     this.mediaUrl,
+    this.entryUrl,
+    this.entryType,
+    this.entryLabel,
+    this.canOpenEntry,
     this.status,
     this.accessible,
     this.publishedAt,
@@ -87,6 +91,33 @@ class CreatorContentResponse {
   ///
   String? mediaUrl;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? entryUrl;
+
+  /// 創作者訂閱入口類型
+  CreatorContentResponseEntryTypeEnum? entryType;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? entryLabel;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? canOpenEntry;
+
   /// 創作者內容狀態
   CreatorContentResponseStatusEnum? status;
 
@@ -132,6 +163,10 @@ class CreatorContentResponse {
     other.contentType == contentType &&
     other.body == body &&
     other.mediaUrl == mediaUrl &&
+    other.entryUrl == entryUrl &&
+    other.entryType == entryType &&
+    other.entryLabel == entryLabel &&
+    other.canOpenEntry == canOpenEntry &&
     other.status == status &&
     other.accessible == accessible &&
     other.publishedAt == publishedAt &&
@@ -149,6 +184,10 @@ class CreatorContentResponse {
     (contentType == null ? 0 : contentType!.hashCode) +
     (body == null ? 0 : body!.hashCode) +
     (mediaUrl == null ? 0 : mediaUrl!.hashCode) +
+    (entryUrl == null ? 0 : entryUrl!.hashCode) +
+    (entryType == null ? 0 : entryType!.hashCode) +
+    (entryLabel == null ? 0 : entryLabel!.hashCode) +
+    (canOpenEntry == null ? 0 : canOpenEntry!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
     (accessible == null ? 0 : accessible!.hashCode) +
     (publishedAt == null ? 0 : publishedAt!.hashCode) +
@@ -156,7 +195,7 @@ class CreatorContentResponse {
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'CreatorContentResponse[id=$id, creatorUserId=$creatorUserId, productId=$productId, title=$title, summary=$summary, contentType=$contentType, body=$body, mediaUrl=$mediaUrl, status=$status, accessible=$accessible, publishedAt=$publishedAt, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'CreatorContentResponse[id=$id, creatorUserId=$creatorUserId, productId=$productId, title=$title, summary=$summary, contentType=$contentType, body=$body, mediaUrl=$mediaUrl, entryUrl=$entryUrl, entryType=$entryType, entryLabel=$entryLabel, canOpenEntry=$canOpenEntry, status=$status, accessible=$accessible, publishedAt=$publishedAt, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -199,6 +238,26 @@ class CreatorContentResponse {
       json[r'mediaUrl'] = this.mediaUrl;
     } else {
       json[r'mediaUrl'] = null;
+    }
+    if (this.entryUrl != null) {
+      json[r'entryUrl'] = this.entryUrl;
+    } else {
+      json[r'entryUrl'] = null;
+    }
+    if (this.entryType != null) {
+      json[r'entryType'] = this.entryType;
+    } else {
+      json[r'entryType'] = null;
+    }
+    if (this.entryLabel != null) {
+      json[r'entryLabel'] = this.entryLabel;
+    } else {
+      json[r'entryLabel'] = null;
+    }
+    if (this.canOpenEntry != null) {
+      json[r'canOpenEntry'] = this.canOpenEntry;
+    } else {
+      json[r'canOpenEntry'] = null;
     }
     if (this.status != null) {
       json[r'status'] = this.status;
@@ -255,6 +314,10 @@ class CreatorContentResponse {
         contentType: CreatorContentResponseContentTypeEnum.fromJson(json[r'contentType']),
         body: mapValueOfType<String>(json, r'body'),
         mediaUrl: mapValueOfType<String>(json, r'mediaUrl'),
+        entryUrl: mapValueOfType<String>(json, r'entryUrl'),
+        entryType: CreatorContentResponseEntryTypeEnum.fromJson(json[r'entryType']),
+        entryLabel: mapValueOfType<String>(json, r'entryLabel'),
+        canOpenEntry: mapValueOfType<bool>(json, r'canOpenEntry'),
         status: CreatorContentResponseStatusEnum.fromJson(json[r'status']),
         accessible: mapValueOfType<bool>(json, r'accessible'),
         publishedAt: mapDateTime(json, r'publishedAt', r''),
@@ -390,6 +453,89 @@ class CreatorContentResponseContentTypeEnumTypeTransformer {
 
   /// Singleton [CreatorContentResponseContentTypeEnumTypeTransformer] instance.
   static CreatorContentResponseContentTypeEnumTypeTransformer? _instance;
+}
+
+
+/// 創作者訂閱入口類型
+class CreatorContentResponseEntryTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const CreatorContentResponseEntryTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const TELEGRAM_GAME = CreatorContentResponseEntryTypeEnum._(r'TELEGRAM_GAME');
+  static const WEB_URL = CreatorContentResponseEntryTypeEnum._(r'WEB_URL');
+  static const DOWNLOAD = CreatorContentResponseEntryTypeEnum._(r'DOWNLOAD');
+  static const ARTICLE_ONLY = CreatorContentResponseEntryTypeEnum._(r'ARTICLE_ONLY');
+  static const unknownDefaultOpenApi = CreatorContentResponseEntryTypeEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][CreatorContentResponseEntryTypeEnum].
+  static const values = <CreatorContentResponseEntryTypeEnum>[
+    TELEGRAM_GAME,
+    WEB_URL,
+    DOWNLOAD,
+    ARTICLE_ONLY,
+    unknownDefaultOpenApi,
+  ];
+
+  static CreatorContentResponseEntryTypeEnum? fromJson(dynamic value) => CreatorContentResponseEntryTypeEnumTypeTransformer().decode(value);
+
+  static List<CreatorContentResponseEntryTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CreatorContentResponseEntryTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CreatorContentResponseEntryTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CreatorContentResponseEntryTypeEnum] to String,
+/// and [decode] dynamic data back to [CreatorContentResponseEntryTypeEnum].
+class CreatorContentResponseEntryTypeEnumTypeTransformer {
+  factory CreatorContentResponseEntryTypeEnumTypeTransformer() => _instance ??= const CreatorContentResponseEntryTypeEnumTypeTransformer._();
+
+  const CreatorContentResponseEntryTypeEnumTypeTransformer._();
+
+  String encode(CreatorContentResponseEntryTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a CreatorContentResponseEntryTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CreatorContentResponseEntryTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'TELEGRAM_GAME': return CreatorContentResponseEntryTypeEnum.TELEGRAM_GAME;
+        case r'WEB_URL': return CreatorContentResponseEntryTypeEnum.WEB_URL;
+        case r'DOWNLOAD': return CreatorContentResponseEntryTypeEnum.DOWNLOAD;
+        case r'ARTICLE_ONLY': return CreatorContentResponseEntryTypeEnum.ARTICLE_ONLY;
+        case r'unknown_default_open_api': return CreatorContentResponseEntryTypeEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [CreatorContentResponseEntryTypeEnumTypeTransformer] instance.
+  static CreatorContentResponseEntryTypeEnumTypeTransformer? _instance;
 }
 
 

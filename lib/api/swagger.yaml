@@ -17587,6 +17587,42 @@
         }
       }
     },
+    "/creator-subscriptions/products/{productId}/entry": {
+      "get": {
+        "tags": [
+          "creator-subscription-controller"
+        ],
+        "operationId": "getEntry",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatorSubscriptionEntryResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/creator-subscriptions/products/{productId}/access": {
       "get": {
         "tags": [
@@ -25096,11 +25132,11 @@
             "description": "最後更新時間",
             "example": "2024-01-01T10:00:00"
           },
-          "homeDelivery": {
-            "type": "boolean"
-          },
           "formattedAddress": {
             "type": "string"
+          },
+          "homeDelivery": {
+            "type": "boolean"
           },
           "fullAddress": {
             "type": "string"
@@ -26585,13 +26621,6 @@
             "type": "number",
             "description": "免运费门槛USDT金额"
           },
-          "imageUrls": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "uniqueItems": true
-          },
           "inStock": {
             "type": "boolean"
           },
@@ -26607,6 +26636,13 @@
           },
           "defaultShippingFee": {
             "type": "number"
+          },
+          "imageUrls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
           },
           "stockLow": {
             "type": "boolean"
@@ -28537,6 +28573,25 @@
           },
           "mediaUrl": {
             "type": "string"
+          },
+          "entryUrl": {
+            "type": "string"
+          },
+          "entryType": {
+            "type": "string",
+            "description": "創作者訂閱入口類型",
+            "enum": [
+              "TELEGRAM_GAME",
+              "WEB_URL",
+              "DOWNLOAD",
+              "ARTICLE_ONLY"
+            ]
+          },
+          "entryLabel": {
+            "type": "string"
+          },
+          "canOpenEntry": {
+            "type": "boolean"
           },
           "status": {
             "type": "string",
@@ -31145,6 +31200,28 @@
               "type": "string"
             }
           },
+          "confidence": {
+            "type": "number",
+            "format": "double",
+            "description": "Issue #519 compatibility alias for categoryConfidence"
+          },
+          "sourceRegion": {
+            "type": "string",
+            "description": "Issue #519 compatibility alias for suggestedSourceRegion"
+          },
+          "productType": {
+            "type": "string",
+            "description": "Issue #519 compatibility alias for suggestedProductType",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
+            ]
+          },
+          "sourcePlatform": {
+            "type": "string",
+            "description": "Issue #519 compatibility alias for suggestedSourcePlatform"
+          },
           "category": {
             "type": "string",
             "description": "Issue #519 compatibility alias for suggestedCategory",
@@ -31171,28 +31248,6 @@
               "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
-          },
-          "productType": {
-            "type": "string",
-            "description": "Issue #519 compatibility alias for suggestedProductType",
-            "enum": [
-              "PHYSICAL",
-              "DIGITAL_SERVICE",
-              "CREATOR_SUBSCRIPTION"
-            ]
-          },
-          "sourcePlatform": {
-            "type": "string",
-            "description": "Issue #519 compatibility alias for suggestedSourcePlatform"
-          },
-          "confidence": {
-            "type": "number",
-            "format": "double",
-            "description": "Issue #519 compatibility alias for categoryConfidence"
-          },
-          "sourceRegion": {
-            "type": "string",
-            "description": "Issue #519 compatibility alias for suggestedSourceRegion"
           }
         }
       },
@@ -46317,6 +46372,56 @@
             "format": "int64",
             "description": "配送中訂單數",
             "example": 3
+          }
+        }
+      },
+      "CreatorSubscriptionEntryResponse": {
+        "type": "object",
+        "description": "創作者訂閱入口回應",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "buyerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "hasAccess": {
+            "type": "boolean"
+          },
+          "validUntil": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "canOpenEntry": {
+            "type": "boolean"
+          },
+          "statusReason": {
+            "type": "string"
+          },
+          "contentId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "entryTitle": {
+            "type": "string"
+          },
+          "entryLabel": {
+            "type": "string"
+          },
+          "entryUrl": {
+            "type": "string"
+          },
+          "entryType": {
+            "type": "string",
+            "description": "創作者訂閱入口類型",
+            "enum": [
+              "TELEGRAM_GAME",
+              "WEB_URL",
+              "DOWNLOAD",
+              "ARTICLE_ONLY"
+            ]
           }
         }
       },
