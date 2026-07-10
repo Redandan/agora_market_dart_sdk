@@ -233,8 +233,15 @@ class McpConnectorToolSurfaceContract {
             ? (json[r'essentialTools'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         requiredScopesByWorkflow: json[r'requiredScopesByWorkflow'] == null
-          ? const {}
-            : mapCastOfType<String, List>(json, r'requiredScopesByWorkflow'),
+            ? const {}
+            : (json[r'requiredScopesByWorkflow'] as Map).map(
+                (key, value) => MapEntry(
+                  '$key',
+                  value is Iterable
+                      ? value.cast<String>().toList(growable: false)
+                      : const <String>[],
+                ),
+              ),
         productImportTools: json[r'productImportTools'] is Iterable
             ? (json[r'productImportTools'] as Iterable).cast<String>().toList(growable: false)
             : const [],
