@@ -14529,6 +14529,27 @@
         }
       }
     },
+    "/stores/my-dashboard/overview": {
+      "get": {
+        "tags": [
+          "stores"
+        ],
+        "summary": "獲取當前登入賣家的首頁工作台聚合資料",
+        "operationId": "getMySellerDashboardOverview",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SellerDashboardOverviewDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/stores/analytics": {
       "get": {
         "tags": [
@@ -25132,11 +25153,11 @@
             "description": "最後更新時間",
             "example": "2024-01-01T10:00:00"
           },
-          "formattedAddress": {
-            "type": "string"
-          },
           "homeDelivery": {
             "type": "boolean"
+          },
+          "formattedAddress": {
+            "type": "string"
           },
           "fullAddress": {
             "type": "string"
@@ -26621,8 +26642,12 @@
             "type": "number",
             "description": "免运费门槛USDT金额"
           },
-          "inStock": {
-            "type": "boolean"
+          "imageUrls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
           },
           "skus": {
             "type": "array",
@@ -26631,18 +26656,14 @@
             },
             "uniqueItems": true
           },
+          "inStock": {
+            "type": "boolean"
+          },
           "minimumShippingFee": {
             "type": "number"
           },
           "defaultShippingFee": {
             "type": "number"
-          },
-          "imageUrls": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "uniqueItems": true
           },
           "stockLow": {
             "type": "boolean"
@@ -31200,28 +31221,6 @@
               "type": "string"
             }
           },
-          "confidence": {
-            "type": "number",
-            "format": "double",
-            "description": "Issue #519 compatibility alias for categoryConfidence"
-          },
-          "sourceRegion": {
-            "type": "string",
-            "description": "Issue #519 compatibility alias for suggestedSourceRegion"
-          },
-          "productType": {
-            "type": "string",
-            "description": "Issue #519 compatibility alias for suggestedProductType",
-            "enum": [
-              "PHYSICAL",
-              "DIGITAL_SERVICE",
-              "CREATOR_SUBSCRIPTION"
-            ]
-          },
-          "sourcePlatform": {
-            "type": "string",
-            "description": "Issue #519 compatibility alias for suggestedSourcePlatform"
-          },
           "category": {
             "type": "string",
             "description": "Issue #519 compatibility alias for suggestedCategory",
@@ -31248,6 +31247,28 @@
               "CREATOR_SUBSCRIPTION",
               "OTHER"
             ]
+          },
+          "sourcePlatform": {
+            "type": "string",
+            "description": "Issue #519 compatibility alias for suggestedSourcePlatform"
+          },
+          "productType": {
+            "type": "string",
+            "description": "Issue #519 compatibility alias for suggestedProductType",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
+            ]
+          },
+          "confidence": {
+            "type": "number",
+            "format": "double",
+            "description": "Issue #519 compatibility alias for categoryConfidence"
+          },
+          "sourceRegion": {
+            "type": "string",
+            "description": "Issue #519 compatibility alias for suggestedSourceRegion"
           }
         }
       },
@@ -44346,6 +44367,246 @@
           },
           "snippets": {
             "$ref": "#/components/schemas/Snippets"
+          }
+        }
+      },
+      "AttentionProductBlock": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "description": "商品狀態",
+            "enum": [
+              "ON_SALE",
+              "OFF_SALE",
+              "PENDING_REVIEW",
+              "DELETED"
+            ]
+          },
+          "stock": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "OUT_OF_STOCK",
+              "LOW_STOCK",
+              "PENDING_REVIEW",
+              "OFF_SALE"
+            ]
+          }
+        }
+      },
+      "MetricsBlock": {
+        "type": "object",
+        "properties": {
+          "todayOrders": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "todayRevenueUsdt": {
+            "type": "number"
+          },
+          "activeProducts": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "todayCompletedOrders": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "walletAvailableUsdt": {
+            "type": "number"
+          },
+          "walletFrozenUsdt": {
+            "type": "number"
+          }
+        }
+      },
+      "ProductStatusBlock": {
+        "type": "object",
+        "properties": {
+          "onSale": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offSale": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pendingReview": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lowStock": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "outOfStock": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "RecentOrderBlock": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "description": "訂單狀態",
+            "enum": [
+              "PENDING_SHIPMENT",
+              "SHIPPED",
+              "DELIVERY_ASSIGNING",
+              "DELIVERY_ASSIGNED",
+              "DELIVERY_EN_ROUTE_TO_PICKUP",
+              "DELIVERY_PICKUP_DELAYED",
+              "DELIVERY_PICKED_UP",
+              "DELIVERY_EN_ROUTE_TO_BUYER",
+              "DELIVERY_DELIVERY_DELAYED",
+              "DELIVERY_FAILED",
+              "DELIVERY_RETURNING",
+              "DELIVERY_COMPLETED",
+              "PURCHASE_IN_PROGRESS",
+              "PROOF_SUBMITTED",
+              "BUYER_CONFIRMED",
+              "RETURN_REQUESTED",
+              "RETURN_REJECTED",
+              "RETURN_APPROVED",
+              "RETURN_SHIPPED_BY_BUYER",
+              "RETURN_SHIPPING_DELAYED",
+              "RETURN_RECEIVED",
+              "REFUND_NO_RETURN_OFFERED",
+              "REFUND_NO_RETURN_PARTIAL_OFFERED",
+              "DISPUTE_OPENED",
+              "DISPUTE_RESPONDED",
+              "CANCELLED_BY_BUYER",
+              "CANCELLED_BY_SELLER",
+              "CANCELLED_BY_PLATFORM",
+              "REFUNDED",
+              "DISPUTE_RESOLVED",
+              "COMPLETED_FINAL"
+            ]
+          },
+          "buyerDisplayName": {
+            "type": "string"
+          },
+          "amountUsdt": {
+            "type": "number"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "nextAction": {
+            "type": "string",
+            "enum": [
+              "SHIP",
+              "REPLY_DISPUTE",
+              "REVIEW_RETURN",
+              "CONTACT_BUYER",
+              "NONE"
+            ]
+          }
+        }
+      },
+      "SellerDashboardOverviewDto": {
+        "type": "object",
+        "description": "Current seller dashboard overview for the seller home workbench",
+        "properties": {
+          "store": {
+            "$ref": "#/components/schemas/StoreBlock"
+          },
+          "tasks": {
+            "$ref": "#/components/schemas/TasksBlock"
+          },
+          "metrics": {
+            "$ref": "#/components/schemas/MetricsBlock"
+          },
+          "productStatus": {
+            "$ref": "#/components/schemas/ProductStatusBlock"
+          },
+          "recentOrders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecentOrderBlock"
+            }
+          },
+          "attentionProducts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AttentionProductBlock"
+            }
+          }
+        }
+      },
+      "StoreBlock": {
+        "type": "object",
+        "properties": {
+          "storeId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "storeName": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "maintenance": {
+            "type": "boolean"
+          },
+          "readinessScore": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "readinessTotal": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "TasksBlock": {
+        "type": "object",
+        "properties": {
+          "pendingShipment": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "afterSalesPending": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "unreadMessages": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "inProgressOrders": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "unansweredReviews": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lowStockProducts": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pendingReviewProducts": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },

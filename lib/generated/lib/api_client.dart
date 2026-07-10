@@ -276,6 +276,8 @@ class ApiClient {
           return AppVersion.fromJson(value);
         case 'ApplyStakingParam':
           return ApplyStakingParam.fromJson(value);
+        case 'AttentionProductBlock':
+          return AttentionProductBlock.fromJson(value);
         case 'AutoReplyConfig':
           return AutoReplyConfig.fromJson(value);
         case 'AutoReplyConfigSearchRequest':
@@ -664,6 +666,8 @@ class ApiClient {
           return MemberUpdateParam.fromJson(value);
         case 'MessageSendResponseDTO':
           return MessageSendResponseDTO.fromJson(value);
+        case 'MetricsBlock':
+          return MetricsBlock.fromJson(value);
         case 'ModerationAuditEventDTO':
           return ModerationAuditEventDTO.fromJson(value);
         case 'MonitoredGroupDTO':
@@ -940,6 +944,8 @@ class ApiClient {
           return ProductStatsBackfillRequest.fromJson(value);
         case 'ProductStatsBackfillResponse':
           return ProductStatsBackfillResponse.fromJson(value);
+        case 'ProductStatusBlock':
+          return ProductStatusBlock.fromJson(value);
         case 'ProductSummary':
           return ProductSummary.fromJson(value);
         case 'ProductTypeDictionary':
@@ -994,6 +1000,8 @@ class ApiClient {
           return QuickLogisticsResult.fromJson(value);
         case 'Reason':
           return Reason.fromJson(value);
+        case 'RecentOrderBlock':
+          return RecentOrderBlock.fromJson(value);
         case 'Recharge':
           return Recharge.fromJson(value);
         case 'RechargeResponse':
@@ -1058,6 +1066,8 @@ class ApiClient {
           return SchedulerStatusResponseDTO.fromJson(value);
         case 'SellerDashboardDto':
           return SellerDashboardDto.fromJson(value);
+        case 'SellerDashboardOverviewDto':
+          return SellerDashboardOverviewDto.fromJson(value);
         case 'SellerOrderStatsDTO':
           return SellerOrderStatsDTO.fromJson(value);
         case 'SellerTrustScoreDto':
@@ -1116,6 +1126,8 @@ class ApiClient {
           return Store.fromJson(value);
         case 'StoreAnalyticsDTO':
           return StoreAnalyticsDTO.fromJson(value);
+        case 'StoreBlock':
+          return StoreBlock.fromJson(value);
         case 'StoreCreateParam':
           return StoreCreateParam.fromJson(value);
         case 'StorePostStatistics':
@@ -1148,6 +1160,8 @@ class ApiClient {
           return Summary.fromJson(value);
         case 'TaiwanPostalArea':
           return TaiwanPostalArea.fromJson(value);
+        case 'TasksBlock':
+          return TasksBlock.fromJson(value);
         case 'TaxonomyDryRunRequest':
           return TaxonomyDryRunRequest.fromJson(value);
         case 'TaxonomyDryRunResponse':

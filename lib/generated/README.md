@@ -581,6 +581,7 @@ Class | Method | HTTP request | Description
 *StorefrontHomeApi* | [**submitReview**](doc//StorefrontHomeApi.md#submitreview) | **POST** /stores/my-storefront-home/submit-review | Submit current seller storefront home draft for OPS review
 *StorefrontHomeApi* | [**validateDraft**](doc//StorefrontHomeApi.md#validatedraft) | **POST** /stores/my-storefront-home/validate | Validate current seller storefront home draft HTML
 *StoresApi* | [**createStore**](doc//StoresApi.md#createstore) | **POST** /stores/create | 創建商店
+*StoresApi* | [**getMySellerDashboardOverview**](doc//StoresApi.md#getmysellerdashboardoverview) | **GET** /stores/my-dashboard/overview | 獲取當前登入賣家的首頁工作台聚合資料
 *StoresApi* | [**getMyStore**](doc//StoresApi.md#getmystore) | **GET** /stores/my-store | 獲取當前用戶的商店
 *StoresApi* | [**getReturnPolicy**](doc//StoresApi.md#getreturnpolicy) | **GET** /stores/{sellerId}/return-policy | 查詢賣家退換貨政策
 *StoresApi* | [**getSellerDashboard**](doc//StoresApi.md#getsellerdashboard) | **GET** /stores/{sellerId}/dashboard | 獲取賣家儀表板統計（訂單/財務/評價/信任分）
@@ -712,6 +713,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseVoid](doc//ApiResponseVoid.md)
  - [AppVersion](doc//AppVersion.md)
  - [ApplyStakingParam](doc//ApplyStakingParam.md)
+ - [AttentionProductBlock](doc//AttentionProductBlock.md)
  - [AutoReplyConfig](doc//AutoReplyConfig.md)
  - [AutoReplyConfigSearchRequest](doc//AutoReplyConfigSearchRequest.md)
  - [AutoReplyDeleteResponse](doc//AutoReplyDeleteResponse.md)
@@ -906,6 +908,7 @@ Class | Method | HTTP request | Description
  - [MemberSearchParam](doc//MemberSearchParam.md)
  - [MemberUpdateParam](doc//MemberUpdateParam.md)
  - [MessageSendResponseDTO](doc//MessageSendResponseDTO.md)
+ - [MetricsBlock](doc//MetricsBlock.md)
  - [ModerationAuditEventDTO](doc//ModerationAuditEventDTO.md)
  - [MonitoredGroupDTO](doc//MonitoredGroupDTO.md)
  - [NaturalSearchRequest](doc//NaturalSearchRequest.md)
@@ -1044,6 +1047,7 @@ Class | Method | HTTP request | Description
  - [ProductStats](doc//ProductStats.md)
  - [ProductStatsBackfillRequest](doc//ProductStatsBackfillRequest.md)
  - [ProductStatsBackfillResponse](doc//ProductStatsBackfillResponse.md)
+ - [ProductStatusBlock](doc//ProductStatusBlock.md)
  - [ProductSummary](doc//ProductSummary.md)
  - [ProductTypeDictionary](doc//ProductTypeDictionary.md)
  - [ProductTypeDictionaryUpsertRequest](doc//ProductTypeDictionaryUpsertRequest.md)
@@ -1071,6 +1075,7 @@ Class | Method | HTTP request | Description
  - [QuickLogisticsRequest](doc//QuickLogisticsRequest.md)
  - [QuickLogisticsResult](doc//QuickLogisticsResult.md)
  - [Reason](doc//Reason.md)
+ - [RecentOrderBlock](doc//RecentOrderBlock.md)
  - [Recharge](doc//Recharge.md)
  - [RechargeResponse](doc//RechargeResponse.md)
  - [RechargeSearchParam](doc//RechargeSearchParam.md)
@@ -1103,6 +1108,7 @@ Class | Method | HTTP request | Description
  - [SchedulerJobResponse](doc//SchedulerJobResponse.md)
  - [SchedulerStatusResponseDTO](doc//SchedulerStatusResponseDTO.md)
  - [SellerDashboardDto](doc//SellerDashboardDto.md)
+ - [SellerDashboardOverviewDto](doc//SellerDashboardOverviewDto.md)
  - [SellerOrderStatsDTO](doc//SellerOrderStatsDTO.md)
  - [SellerTrustScoreDto](doc//SellerTrustScoreDto.md)
  - [SevenElevenStoreDTO](doc//SevenElevenStoreDTO.md)
@@ -1132,6 +1138,7 @@ Class | Method | HTTP request | Description
  - [StakingStatisticsDTO](doc//StakingStatisticsDTO.md)
  - [Store](doc//Store.md)
  - [StoreAnalyticsDTO](doc//StoreAnalyticsDTO.md)
+ - [StoreBlock](doc//StoreBlock.md)
  - [StoreCreateParam](doc//StoreCreateParam.md)
  - [StorePostStatistics](doc//StorePostStatistics.md)
  - [StoreProductSearchParam](doc//StoreProductSearchParam.md)
@@ -1148,6 +1155,7 @@ Class | Method | HTTP request | Description
  - [SuggestionActionParam](doc//SuggestionActionParam.md)
  - [Summary](doc//Summary.md)
  - [TaiwanPostalArea](doc//TaiwanPostalArea.md)
+ - [TasksBlock](doc//TasksBlock.md)
  - [TaxonomyDryRunRequest](doc//TaxonomyDryRunRequest.md)
  - [TaxonomyDryRunResponse](doc//TaxonomyDryRunResponse.md)
  - [TaxonomyProposalImplementedRequest](doc//TaxonomyProposalImplementedRequest.md)
