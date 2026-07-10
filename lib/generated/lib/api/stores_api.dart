@@ -213,6 +213,8 @@ class StoresApi {
 
   /// 獲取賣家儀表板統計（訂單/財務/評價/信任分）
   ///
+  /// 相容端點，僅允許賣家本人或管理員；新賣家首頁請使用 /stores/my-dashboard/overview。
+  ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
@@ -246,6 +248,8 @@ class StoresApi {
   }
 
   /// 獲取賣家儀表板統計（訂單/財務/評價/信任分）
+  ///
+  /// 相容端點，僅允許賣家本人或管理員；新賣家首頁請使用 /stores/my-dashboard/overview。
   ///
   /// Parameters:
   ///

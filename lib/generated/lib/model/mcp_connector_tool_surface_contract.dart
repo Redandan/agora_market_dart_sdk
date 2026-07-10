@@ -109,52 +109,44 @@ class McpConnectorToolSurfaceContract {
   List<String> versionBumpPolicy;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is McpConnectorToolSurfaceContract &&
-          other.surface == surface &&
-          other.currentResource == currentResource &&
-          _deepEquality.equals(
-              other.legacyResourceAliases, legacyResourceAliases) &&
-          other.manifestVersion == manifestVersion &&
-          other.toolCount == toolCount &&
-          other.registryVersion == registryVersion &&
-          other.resourceNamesHash == resourceNamesHash &&
-          other.expectedMinimumToolCount == expectedMinimumToolCount &&
-          _deepEquality.equals(other.essentialTools, essentialTools) &&
-          _deepEquality.equals(
-              other.requiredScopesByWorkflow, requiredScopesByWorkflow) &&
-          _deepEquality.equals(other.productImportTools, productImportTools) &&
-          _deepEquality.equals(
-              other.productImportRequiredScopes, productImportRequiredScopes) &&
-          _deepEquality.equals(other.verificationSteps, verificationSteps) &&
-          other.cacheDriftSignal == cacheDriftSignal &&
-          _deepEquality.equals(other.versionBumpPolicy, versionBumpPolicy);
+  bool operator ==(Object other) => identical(this, other) || other is McpConnectorToolSurfaceContract &&
+    other.surface == surface &&
+    other.currentResource == currentResource &&
+    _deepEquality.equals(other.legacyResourceAliases, legacyResourceAliases) &&
+    other.manifestVersion == manifestVersion &&
+    other.toolCount == toolCount &&
+    other.registryVersion == registryVersion &&
+    other.resourceNamesHash == resourceNamesHash &&
+    other.expectedMinimumToolCount == expectedMinimumToolCount &&
+    _deepEquality.equals(other.essentialTools, essentialTools) &&
+    _deepEquality.equals(other.requiredScopesByWorkflow, requiredScopesByWorkflow) &&
+    _deepEquality.equals(other.productImportTools, productImportTools) &&
+    _deepEquality.equals(other.productImportRequiredScopes, productImportRequiredScopes) &&
+    _deepEquality.equals(other.verificationSteps, verificationSteps) &&
+    other.cacheDriftSignal == cacheDriftSignal &&
+    _deepEquality.equals(other.versionBumpPolicy, versionBumpPolicy);
 
   @override
   int get hashCode =>
-      // ignore: unnecessary_parenthesis
-      (surface == null ? 0 : surface!.hashCode) +
-      (currentResource == null ? 0 : currentResource!.hashCode) +
-      (legacyResourceAliases.hashCode) +
-      (manifestVersion == null ? 0 : manifestVersion!.hashCode) +
-      (toolCount == null ? 0 : toolCount!.hashCode) +
-      (registryVersion == null ? 0 : registryVersion!.hashCode) +
-      (resourceNamesHash == null ? 0 : resourceNamesHash!.hashCode) +
-      (expectedMinimumToolCount == null
-          ? 0
-          : expectedMinimumToolCount!.hashCode) +
-      (essentialTools.hashCode) +
-      (requiredScopesByWorkflow.hashCode) +
-      (productImportTools.hashCode) +
-      (productImportRequiredScopes.hashCode) +
-      (verificationSteps.hashCode) +
-      (cacheDriftSignal == null ? 0 : cacheDriftSignal!.hashCode) +
-      (versionBumpPolicy.hashCode);
+    // ignore: unnecessary_parenthesis
+    (surface == null ? 0 : surface!.hashCode) +
+    (currentResource == null ? 0 : currentResource!.hashCode) +
+    (legacyResourceAliases.hashCode) +
+    (manifestVersion == null ? 0 : manifestVersion!.hashCode) +
+    (toolCount == null ? 0 : toolCount!.hashCode) +
+    (registryVersion == null ? 0 : registryVersion!.hashCode) +
+    (resourceNamesHash == null ? 0 : resourceNamesHash!.hashCode) +
+    (expectedMinimumToolCount == null ? 0 : expectedMinimumToolCount!.hashCode) +
+    (essentialTools.hashCode) +
+    (requiredScopesByWorkflow.hashCode) +
+    (productImportTools.hashCode) +
+    (productImportRequiredScopes.hashCode) +
+    (verificationSteps.hashCode) +
+    (cacheDriftSignal == null ? 0 : cacheDriftSignal!.hashCode) +
+    (versionBumpPolicy.hashCode);
 
   @override
-  String toString() =>
-      'McpConnectorToolSurfaceContract[surface=$surface, currentResource=$currentResource, legacyResourceAliases=$legacyResourceAliases, manifestVersion=$manifestVersion, toolCount=$toolCount, registryVersion=$registryVersion, resourceNamesHash=$resourceNamesHash, expectedMinimumToolCount=$expectedMinimumToolCount, essentialTools=$essentialTools, requiredScopesByWorkflow=$requiredScopesByWorkflow, productImportTools=$productImportTools, productImportRequiredScopes=$productImportRequiredScopes, verificationSteps=$verificationSteps, cacheDriftSignal=$cacheDriftSignal, versionBumpPolicy=$versionBumpPolicy]';
+  String toString() => 'McpConnectorToolSurfaceContract[surface=$surface, currentResource=$currentResource, legacyResourceAliases=$legacyResourceAliases, manifestVersion=$manifestVersion, toolCount=$toolCount, registryVersion=$registryVersion, resourceNamesHash=$resourceNamesHash, expectedMinimumToolCount=$expectedMinimumToolCount, essentialTools=$essentialTools, requiredScopesByWorkflow=$requiredScopesByWorkflow, productImportTools=$productImportTools, productImportRequiredScopes=$productImportRequiredScopes, verificationSteps=$verificationSteps, cacheDriftSignal=$cacheDriftSignal, versionBumpPolicy=$versionBumpPolicy]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -168,7 +160,7 @@ class McpConnectorToolSurfaceContract {
     } else {
       json[r'currentResource'] = null;
     }
-    json[r'legacyResourceAliases'] = this.legacyResourceAliases;
+      json[r'legacyResourceAliases'] = this.legacyResourceAliases;
     if (this.manifestVersion != null) {
       json[r'manifestVersion'] = this.manifestVersion;
     } else {
@@ -194,17 +186,17 @@ class McpConnectorToolSurfaceContract {
     } else {
       json[r'expectedMinimumToolCount'] = null;
     }
-    json[r'essentialTools'] = this.essentialTools;
-    json[r'requiredScopesByWorkflow'] = this.requiredScopesByWorkflow;
-    json[r'productImportTools'] = this.productImportTools;
-    json[r'productImportRequiredScopes'] = this.productImportRequiredScopes;
-    json[r'verificationSteps'] = this.verificationSteps;
+      json[r'essentialTools'] = this.essentialTools;
+      json[r'requiredScopesByWorkflow'] = this.requiredScopesByWorkflow;
+      json[r'productImportTools'] = this.productImportTools;
+      json[r'productImportRequiredScopes'] = this.productImportRequiredScopes;
+      json[r'verificationSteps'] = this.verificationSteps;
     if (this.cacheDriftSignal != null) {
       json[r'cacheDriftSignal'] = this.cacheDriftSignal;
     } else {
       json[r'cacheDriftSignal'] = null;
     }
-    json[r'versionBumpPolicy'] = this.versionBumpPolicy;
+      json[r'versionBumpPolicy'] = this.versionBumpPolicy;
     return json;
   }
 
@@ -220,10 +212,8 @@ class McpConnectorToolSurfaceContract {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key),
-              'Required key "McpConnectorToolSurfaceContract[$key]" is missing from JSON.');
-          assert(json[key] != null,
-              'Required key "McpConnectorToolSurfaceContract[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "McpConnectorToolSurfaceContract[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "McpConnectorToolSurfaceContract[$key]" has a null value in JSON.');
         });
         return true;
       }());
@@ -232,62 +222,38 @@ class McpConnectorToolSurfaceContract {
         surface: mapValueOfType<String>(json, r'surface'),
         currentResource: mapValueOfType<String>(json, r'currentResource'),
         legacyResourceAliases: json[r'legacyResourceAliases'] is Iterable
-            ? (json[r'legacyResourceAliases'] as Iterable)
-                .cast<String>()
-                .toList(growable: false)
+            ? (json[r'legacyResourceAliases'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         manifestVersion: mapValueOfType<String>(json, r'manifestVersion'),
         toolCount: mapValueOfType<int>(json, r'toolCount'),
         registryVersion: mapValueOfType<String>(json, r'registryVersion'),
         resourceNamesHash: mapValueOfType<String>(json, r'resourceNamesHash'),
-        expectedMinimumToolCount:
-            mapValueOfType<int>(json, r'expectedMinimumToolCount'),
+        expectedMinimumToolCount: mapValueOfType<int>(json, r'expectedMinimumToolCount'),
         essentialTools: json[r'essentialTools'] is Iterable
-            ? (json[r'essentialTools'] as Iterable)
-                .cast<String>()
-                .toList(growable: false)
+            ? (json[r'essentialTools'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         requiredScopesByWorkflow: json[r'requiredScopesByWorkflow'] == null
-            ? const {}
-            : (json[r'requiredScopesByWorkflow'] as Map).map(
-                (key, value) => MapEntry(
-                  '$key',
-                  value is Iterable
-                      ? value.cast<String>().toList(growable: false)
-                      : const <String>[],
-                ),
-              ),
+          ? const {}
+            : mapCastOfType<String, List>(json, r'requiredScopesByWorkflow'),
         productImportTools: json[r'productImportTools'] is Iterable
-            ? (json[r'productImportTools'] as Iterable)
-                .cast<String>()
-                .toList(growable: false)
+            ? (json[r'productImportTools'] as Iterable).cast<String>().toList(growable: false)
             : const [],
-        productImportRequiredScopes:
-            json[r'productImportRequiredScopes'] is Iterable
-                ? (json[r'productImportRequiredScopes'] as Iterable)
-                    .cast<String>()
-                    .toList(growable: false)
-                : const [],
+        productImportRequiredScopes: json[r'productImportRequiredScopes'] is Iterable
+            ? (json[r'productImportRequiredScopes'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
         verificationSteps: json[r'verificationSteps'] is Iterable
-            ? (json[r'verificationSteps'] as Iterable)
-                .cast<String>()
-                .toList(growable: false)
+            ? (json[r'verificationSteps'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         cacheDriftSignal: mapValueOfType<String>(json, r'cacheDriftSignal'),
         versionBumpPolicy: json[r'versionBumpPolicy'] is Iterable
-            ? (json[r'versionBumpPolicy'] as Iterable)
-                .cast<String>()
-                .toList(growable: false)
+            ? (json[r'versionBumpPolicy'] as Iterable).cast<String>().toList(growable: false)
             : const [],
       );
     }
     return null;
   }
 
-  static List<McpConnectorToolSurfaceContract> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<McpConnectorToolSurfaceContract> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <McpConnectorToolSurfaceContract>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -300,8 +266,7 @@ class McpConnectorToolSurfaceContract {
     return result.toList(growable: growable);
   }
 
-  static Map<String, McpConnectorToolSurfaceContract> mapFromJson(
-      dynamic json) {
+  static Map<String, McpConnectorToolSurfaceContract> mapFromJson(dynamic json) {
     final map = <String, McpConnectorToolSurfaceContract>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
@@ -316,24 +281,20 @@ class McpConnectorToolSurfaceContract {
   }
 
   // maps a json object with a list of McpConnectorToolSurfaceContract-objects as value to a dart map
-  static Map<String, List<McpConnectorToolSurfaceContract>> mapListFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static Map<String, List<McpConnectorToolSurfaceContract>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<McpConnectorToolSurfaceContract>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = McpConnectorToolSurfaceContract.listFromJson(
-          entry.value,
-          growable: growable,
-        );
+        map[entry.key] = McpConnectorToolSurfaceContract.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{};
+  static const requiredKeys = <String>{
+  };
 }
+

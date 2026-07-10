@@ -370,6 +370,7 @@ class RecentOrderBlockNextActionEnum {
   String toJson() => value;
 
   static const SHIP = RecentOrderBlockNextActionEnum._(r'SHIP');
+  static const FULFILL_DIGITAL = RecentOrderBlockNextActionEnum._(r'FULFILL_DIGITAL');
   static const REPLY_DISPUTE = RecentOrderBlockNextActionEnum._(r'REPLY_DISPUTE');
   static const REVIEW_RETURN = RecentOrderBlockNextActionEnum._(r'REVIEW_RETURN');
   static const CONTACT_BUYER = RecentOrderBlockNextActionEnum._(r'CONTACT_BUYER');
@@ -379,6 +380,7 @@ class RecentOrderBlockNextActionEnum {
   /// List of all possible values in this [enum][RecentOrderBlockNextActionEnum].
   static const values = <RecentOrderBlockNextActionEnum>[
     SHIP,
+    FULFILL_DIGITAL,
     REPLY_DISPUTE,
     REVIEW_RETURN,
     CONTACT_BUYER,
@@ -423,6 +425,7 @@ class RecentOrderBlockNextActionEnumTypeTransformer {
     if (data != null) {
       switch (data) {
         case r'SHIP': return RecentOrderBlockNextActionEnum.SHIP;
+        case r'FULFILL_DIGITAL': return RecentOrderBlockNextActionEnum.FULFILL_DIGITAL;
         case r'REPLY_DISPUTE': return RecentOrderBlockNextActionEnum.REPLY_DISPUTE;
         case r'REVIEW_RETURN': return RecentOrderBlockNextActionEnum.REVIEW_RETURN;
         case r'CONTACT_BUYER': return RecentOrderBlockNextActionEnum.CONTACT_BUYER;
