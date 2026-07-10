@@ -322,6 +322,76 @@ function Repair-GeneratedModelNullableNumericParsing {
     }
 }
 
+function Repair-GeneratedModelStringListMapParsing {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$ModelDirectory
+    )
+
+    if (-not (Test-Path $ModelDirectory)) {
+        Write-Host "Model directory not found, skipping string-list map repair: $ModelDirectory" -ForegroundColor Yellow
+        return
+    }
+
+    $patchedFiles = 0
+    $patchedProperties = 0
+    $modelFiles = Get-ChildItem -Path $ModelDirectory -File -Filter "*.dart"
+
+    foreach ($modelFile in $modelFiles) {
+        $content = Get-Content -Path $modelFile.FullName -Raw
+        $mapPropertyMatches = [System.Text.RegularExpressions.Regex]::Matches(
+            $content,
+            '(?m)^\s*Map<String, List<String>>\s+([A-Za-z_][A-Za-z0-9_]*);\s*$'
+        )
+
+        if ($mapPropertyMatches.Count -eq 0) {
+            continue
+        }
+
+        $updatedContent = $content
+        foreach ($match in $mapPropertyMatches) {
+            $propertyName = $match.Groups[1].Value
+            $escapedPropertyName = [System.Text.RegularExpressions.Regex]::Escape($propertyName)
+            $assignmentPattern = "(?m)^([ \t]*)$escapedPropertyName[ \t]*:[ \t]*json\[r'$escapedPropertyName'\][ \t]*==[ \t]*null[ \t]*\r?\n[ \t]*\?[ \t]*const[ \t]*\{\}[ \t]*\r?\n[ \t]*:[ \t]*mapCastOfType<String,[ \t]*List>\(json,[ \t]*r'$escapedPropertyName'\),[ \t]*$"
+            $replacement = @(
+                '$1' + "${propertyName}: json[r'$propertyName'] == null"
+                '$1' + '    ? const {}'
+                '$1' + "    : (json[r'$propertyName'] as Map).map("
+                '$1' + '        (key, value) => MapEntry('
+                '$1' + "          '`$key',"
+                '$1' + '          value is Iterable'
+                '$1' + '              ? value.cast<String>().toList(growable: false)'
+                '$1' + '              : const <String>[],'
+                '$1' + '        ),'
+                '$1' + '      ),'
+            ) -join "`r`n"
+
+            $newContent = [System.Text.RegularExpressions.Regex]::Replace(
+                $updatedContent,
+                $assignmentPattern,
+                $replacement
+            )
+
+            if ($newContent -ne $updatedContent) {
+                $updatedContent = $newContent
+                $patchedProperties++
+            }
+        }
+
+        if ($updatedContent -ne $content) {
+            Set-Content -Path $modelFile.FullName -Value $updatedContent -Encoding UTF8
+            $patchedFiles++
+            Write-Host "Patched string-list map parsing in: $($modelFile.FullName)" -ForegroundColor Cyan
+        }
+    }
+
+    if ($patchedProperties -gt 0) {
+        Write-Host "Applied string-list map parsing repair: $patchedProperties property/properties in $patchedFiles file(s)." -ForegroundColor Green
+    } else {
+        Write-Host "No string-list map parsing repairs were needed." -ForegroundColor Green
+    }
+}
+
 # 清理舊的生成文件
 Write-Host "Cleaning old generated files..." -ForegroundColor Yellow
 try {
@@ -359,6 +429,7 @@ try {
             try {
                 Repair-GeneratedModelListSerialization -ModelDirectory "lib/generated/lib/model"
                 Repair-GeneratedModelNullableNumericParsing -ModelDirectory "lib/generated/lib/model"
+                Repair-GeneratedModelStringListMapParsing -ModelDirectory "lib/generated/lib/model"
             } catch {
                 Write-Host "Error while repairing generated model serialization: $_" -ForegroundColor Red
                 exit 1
@@ -369,6 +440,12 @@ try {
             try {
                 Push-Location "lib/generated"
                 dart pub get
+                dart analyze lib/api.dart
+                if ($LASTEXITCODE -ne 0) {
+                    Write-Host "Generated SDK analysis failed." -ForegroundColor Red
+                    Pop-Location
+                    exit 1
+                }
                 dart run build_runner build --delete-conflicting-outputs
                 if ($LASTEXITCODE -eq 0) {
                     Write-Host "build_runner completed successfully!" -ForegroundColor Green
