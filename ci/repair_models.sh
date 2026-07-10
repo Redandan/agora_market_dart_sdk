@@ -166,3 +166,8 @@ if [ "$lines_changed" -gt 0 ]; then
 else
   echo "no list serialization repairs were needed"
 fi
+
+# OpenAPI Generator erases the nested item type when reading
+# Map<String, List<T>>, producing Map<String, List<dynamic>>. Repair this with
+# a Dart helper so primitive and generated-model item types stay type-safe.
+dart ci/repair_map_list_from_json.dart "$MODEL_DIR"

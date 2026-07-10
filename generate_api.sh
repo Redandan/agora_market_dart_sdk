@@ -59,13 +59,15 @@ bash ci/repair_models.sh "$GENERATED_DIR/lib/model"
 echo "==> Running dart pub get + build_runner inside $GENERATED_DIR"
 pushd "$GENERATED_DIR" > /dev/null
 dart pub get
-dart analyze lib/api.dart
 # build_runner is optional — skip if the generated pubspec doesn't declare it
 if grep -q '^\s*build_runner:' pubspec.yaml; then
     dart run build_runner build --delete-conflicting-outputs
 else
     echo "build_runner not in pubspec — skipping (no .g.dart generation needed)"
 fi
+
+echo "==> Analyzing generated SDK"
+dart analyze
 popd > /dev/null
 
 echo "==> Done"
