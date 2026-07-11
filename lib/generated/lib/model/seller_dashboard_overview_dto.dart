@@ -14,6 +14,7 @@ class SellerDashboardOverviewDto {
   /// Returns a new [SellerDashboardOverviewDto] instance.
   SellerDashboardOverviewDto({
     this.store,
+    this.period,
     this.tasks,
     this.metrics,
     this.productStatus,
@@ -28,6 +29,14 @@ class SellerDashboardOverviewDto {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   StoreBlock? store;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  PeriodBlock? period;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -60,6 +69,7 @@ class SellerDashboardOverviewDto {
   @override
   bool operator ==(Object other) => identical(this, other) || other is SellerDashboardOverviewDto &&
     other.store == store &&
+    other.period == period &&
     other.tasks == tasks &&
     other.metrics == metrics &&
     other.productStatus == productStatus &&
@@ -70,6 +80,7 @@ class SellerDashboardOverviewDto {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (store == null ? 0 : store!.hashCode) +
+    (period == null ? 0 : period!.hashCode) +
     (tasks == null ? 0 : tasks!.hashCode) +
     (metrics == null ? 0 : metrics!.hashCode) +
     (productStatus == null ? 0 : productStatus!.hashCode) +
@@ -77,7 +88,7 @@ class SellerDashboardOverviewDto {
     (attentionProducts.hashCode);
 
   @override
-  String toString() => 'SellerDashboardOverviewDto[store=$store, tasks=$tasks, metrics=$metrics, productStatus=$productStatus, recentOrders=$recentOrders, attentionProducts=$attentionProducts]';
+  String toString() => 'SellerDashboardOverviewDto[store=$store, period=$period, tasks=$tasks, metrics=$metrics, productStatus=$productStatus, recentOrders=$recentOrders, attentionProducts=$attentionProducts]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -85,6 +96,11 @@ class SellerDashboardOverviewDto {
       json[r'store'] = this.store;
     } else {
       json[r'store'] = null;
+    }
+    if (this.period != null) {
+      json[r'period'] = this.period;
+    } else {
+      json[r'period'] = null;
     }
     if (this.tasks != null) {
       json[r'tasks'] = this.tasks;
@@ -126,6 +142,7 @@ class SellerDashboardOverviewDto {
 
       return SellerDashboardOverviewDto(
         store: StoreBlock.fromJson(json[r'store']),
+        period: PeriodBlock.fromJson(json[r'period']),
         tasks: TasksBlock.fromJson(json[r'tasks']),
         metrics: MetricsBlock.fromJson(json[r'metrics']),
         productStatus: ProductStatusBlock.fromJson(json[r'productStatus']),

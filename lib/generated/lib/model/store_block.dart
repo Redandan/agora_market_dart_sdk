@@ -16,6 +16,7 @@ class StoreBlock {
     this.storeId,
     this.storeName,
     this.status,
+    this.timeZone,
     this.maintenance,
     this.readinessScore,
     this.readinessTotal,
@@ -51,6 +52,14 @@ class StoreBlock {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  String? timeZone;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? maintenance;
 
   ///
@@ -74,6 +83,7 @@ class StoreBlock {
     other.storeId == storeId &&
     other.storeName == storeName &&
     other.status == status &&
+    other.timeZone == timeZone &&
     other.maintenance == maintenance &&
     other.readinessScore == readinessScore &&
     other.readinessTotal == readinessTotal;
@@ -84,12 +94,13 @@ class StoreBlock {
     (storeId == null ? 0 : storeId!.hashCode) +
     (storeName == null ? 0 : storeName!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
+    (timeZone == null ? 0 : timeZone!.hashCode) +
     (maintenance == null ? 0 : maintenance!.hashCode) +
     (readinessScore == null ? 0 : readinessScore!.hashCode) +
     (readinessTotal == null ? 0 : readinessTotal!.hashCode);
 
   @override
-  String toString() => 'StoreBlock[storeId=$storeId, storeName=$storeName, status=$status, maintenance=$maintenance, readinessScore=$readinessScore, readinessTotal=$readinessTotal]';
+  String toString() => 'StoreBlock[storeId=$storeId, storeName=$storeName, status=$status, timeZone=$timeZone, maintenance=$maintenance, readinessScore=$readinessScore, readinessTotal=$readinessTotal]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -107,6 +118,11 @@ class StoreBlock {
       json[r'status'] = this.status;
     } else {
       json[r'status'] = null;
+    }
+    if (this.timeZone != null) {
+      json[r'timeZone'] = this.timeZone;
+    } else {
+      json[r'timeZone'] = null;
     }
     if (this.maintenance != null) {
       json[r'maintenance'] = this.maintenance;
@@ -148,6 +164,7 @@ class StoreBlock {
         storeId: mapValueOfType<int>(json, r'storeId'),
         storeName: mapValueOfType<String>(json, r'storeName'),
         status: mapValueOfType<String>(json, r'status'),
+        timeZone: mapValueOfType<String>(json, r'timeZone'),
         maintenance: mapValueOfType<bool>(json, r'maintenance'),
         readinessScore: mapValueOfType<int>(json, r'readinessScore'),
         readinessTotal: mapValueOfType<int>(json, r'readinessTotal'),

@@ -19,6 +19,7 @@ class StoreUpdateParam {
     this.phone,
     this.email,
     this.businessHours,
+    this.timeZone,
     this.logoUrl,
     this.logoDescription,
     this.coverImageUrl,
@@ -87,6 +88,15 @@ class StoreUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? businessHours;
+
+  /// 賣場營運時區（IANA）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? timeZone;
 
   /// 商店頭像 URL
   ///
@@ -207,6 +217,7 @@ class StoreUpdateParam {
     other.phone == phone &&
     other.email == email &&
     other.businessHours == businessHours &&
+    other.timeZone == timeZone &&
     other.logoUrl == logoUrl &&
     other.logoDescription == logoDescription &&
     other.coverImageUrl == coverImageUrl &&
@@ -230,6 +241,7 @@ class StoreUpdateParam {
     (phone == null ? 0 : phone!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
     (businessHours == null ? 0 : businessHours!.hashCode) +
+    (timeZone == null ? 0 : timeZone!.hashCode) +
     (logoUrl == null ? 0 : logoUrl!.hashCode) +
     (logoDescription == null ? 0 : logoDescription!.hashCode) +
     (coverImageUrl == null ? 0 : coverImageUrl!.hashCode) +
@@ -245,7 +257,7 @@ class StoreUpdateParam {
     (shippingDateRange == null ? 0 : shippingDateRange!.hashCode);
 
   @override
-  String toString() => 'StoreUpdateParam[name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, logoDescription=$logoDescription, coverImageUrl=$coverImageUrl, coverDescription=$coverDescription, isActive=$isActive, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange]';
+  String toString() => 'StoreUpdateParam[name=$name, description=$description, address=$address, phone=$phone, email=$email, businessHours=$businessHours, timeZone=$timeZone, logoUrl=$logoUrl, logoDescription=$logoDescription, coverImageUrl=$coverImageUrl, coverDescription=$coverDescription, isActive=$isActive, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -278,6 +290,11 @@ class StoreUpdateParam {
       json[r'businessHours'] = this.businessHours;
     } else {
       json[r'businessHours'] = null;
+    }
+    if (this.timeZone != null) {
+      json[r'timeZone'] = this.timeZone;
+    } else {
+      json[r'timeZone'] = null;
     }
     if (this.logoUrl != null) {
       json[r'logoUrl'] = this.logoUrl;
@@ -368,6 +385,7 @@ class StoreUpdateParam {
         phone: mapValueOfType<String>(json, r'phone'),
         email: mapValueOfType<String>(json, r'email'),
         businessHours: mapValueOfType<String>(json, r'businessHours'),
+        timeZone: mapValueOfType<String>(json, r'timeZone'),
         logoUrl: mapValueOfType<String>(json, r'logoUrl'),
         logoDescription: mapValueOfType<String>(json, r'logoDescription'),
         coverImageUrl: mapValueOfType<String>(json, r'coverImageUrl'),

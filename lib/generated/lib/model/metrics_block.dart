@@ -16,6 +16,7 @@ class MetricsBlock {
     this.todayOrders,
     this.todayRevenueUsdt,
     this.activeProducts,
+    this.todaySettledOrders,
     this.todayCompletedOrders,
     this.walletAvailableUsdt,
     this.walletFrozenUsdt,
@@ -51,6 +52,14 @@ class MetricsBlock {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  int? todaySettledOrders;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? todayCompletedOrders;
 
   ///
@@ -74,6 +83,7 @@ class MetricsBlock {
     other.todayOrders == todayOrders &&
     other.todayRevenueUsdt == todayRevenueUsdt &&
     other.activeProducts == activeProducts &&
+    other.todaySettledOrders == todaySettledOrders &&
     other.todayCompletedOrders == todayCompletedOrders &&
     other.walletAvailableUsdt == walletAvailableUsdt &&
     other.walletFrozenUsdt == walletFrozenUsdt;
@@ -84,12 +94,13 @@ class MetricsBlock {
     (todayOrders == null ? 0 : todayOrders!.hashCode) +
     (todayRevenueUsdt == null ? 0 : todayRevenueUsdt!.hashCode) +
     (activeProducts == null ? 0 : activeProducts!.hashCode) +
+    (todaySettledOrders == null ? 0 : todaySettledOrders!.hashCode) +
     (todayCompletedOrders == null ? 0 : todayCompletedOrders!.hashCode) +
     (walletAvailableUsdt == null ? 0 : walletAvailableUsdt!.hashCode) +
     (walletFrozenUsdt == null ? 0 : walletFrozenUsdt!.hashCode);
 
   @override
-  String toString() => 'MetricsBlock[todayOrders=$todayOrders, todayRevenueUsdt=$todayRevenueUsdt, activeProducts=$activeProducts, todayCompletedOrders=$todayCompletedOrders, walletAvailableUsdt=$walletAvailableUsdt, walletFrozenUsdt=$walletFrozenUsdt]';
+  String toString() => 'MetricsBlock[todayOrders=$todayOrders, todayRevenueUsdt=$todayRevenueUsdt, activeProducts=$activeProducts, todaySettledOrders=$todaySettledOrders, todayCompletedOrders=$todayCompletedOrders, walletAvailableUsdt=$walletAvailableUsdt, walletFrozenUsdt=$walletFrozenUsdt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -107,6 +118,11 @@ class MetricsBlock {
       json[r'activeProducts'] = this.activeProducts;
     } else {
       json[r'activeProducts'] = null;
+    }
+    if (this.todaySettledOrders != null) {
+      json[r'todaySettledOrders'] = this.todaySettledOrders;
+    } else {
+      json[r'todaySettledOrders'] = null;
     }
     if (this.todayCompletedOrders != null) {
       json[r'todayCompletedOrders'] = this.todayCompletedOrders;
@@ -150,6 +166,7 @@ class MetricsBlock {
             ? null
             : num.parse('${json[r'todayRevenueUsdt']}'),
         activeProducts: mapValueOfType<int>(json, r'activeProducts'),
+        todaySettledOrders: mapValueOfType<int>(json, r'todaySettledOrders'),
         todayCompletedOrders: mapValueOfType<int>(json, r'todayCompletedOrders'),
         walletAvailableUsdt: json[r'walletAvailableUsdt'] == null
             ? null

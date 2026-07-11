@@ -999,6 +999,7 @@ Class | Method | HTTP request | Description
  - [PaytableEntryRequest](doc//PaytableEntryRequest.md)
  - [PaytableWithRtpDTO](doc//PaytableWithRtpDTO.md)
  - [PendingQuestionResponse](doc//PendingQuestionResponse.md)
+ - [PeriodBlock](doc//PeriodBlock.md)
  - [PickupStore](doc//PickupStore.md)
  - [PickupStoreSearchParam](doc//PickupStoreSearchParam.md)
  - [PickupStoreSyncCheckResponse](doc//PickupStoreSyncCheckResponse.md)

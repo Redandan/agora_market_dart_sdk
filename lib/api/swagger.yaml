@@ -25793,6 +25793,13 @@
             "maxLength": 200,
             "minLength": 0
           },
+          "timeZone": {
+            "type": "string",
+            "description": "賣場營運時區（IANA）",
+            "example": "Asia/Bangkok",
+            "maxLength": 64,
+            "minLength": 0
+          },
           "logoUrl": {
             "type": "string",
             "description": "商店頭像 URL"
@@ -25915,6 +25922,11 @@
           "businessHours": {
             "type": "string",
             "description": "營業時間"
+          },
+          "timeZone": {
+            "type": "string",
+            "description": "賣場營運時區（IANA）",
+            "example": "Asia/Taipei"
           },
           "logoUrl": {
             "type": "string",
@@ -26848,6 +26860,13 @@
             "description": "營業時間",
             "example": "週一至週五 09:00-18:00",
             "maxLength": 200,
+            "minLength": 0
+          },
+          "timeZone": {
+            "type": "string",
+            "description": "賣場營運時區（IANA）",
+            "example": "Asia/Taipei",
+            "maxLength": 64,
             "minLength": 0
           },
           "logoUrl": {
@@ -32589,6 +32608,11 @@
             "example": "週一至週五 09:00-18:00",
             "maxLength": 255
           },
+          "timeZone": {
+            "type": "string",
+            "description": "賣場營運時區（IANA）",
+            "example": "Asia/Taipei"
+          },
           "logoUrl": {
             "type": "string",
             "description": "商店Logo",
@@ -32769,6 +32793,7 @@
           "orderCount",
           "productCount",
           "responseRate",
+          "timeZone",
           "totalSales",
           "updatedAt"
         ]
@@ -44421,6 +44446,10 @@
             "type": "integer",
             "format": "int64"
           },
+          "todaySettledOrders": {
+            "type": "integer",
+            "format": "int64"
+          },
           "todayCompletedOrders": {
             "type": "integer",
             "format": "int64"
@@ -44430,6 +44459,26 @@
           },
           "walletFrozenUsdt": {
             "type": "number"
+          }
+        }
+      },
+      "PeriodBlock": {
+        "type": "object",
+        "properties": {
+          "businessDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "timeZone": {
+            "type": "string"
+          },
+          "periodStartUtc": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "periodEndUtc": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
@@ -44531,6 +44580,9 @@
           "store": {
             "$ref": "#/components/schemas/StoreBlock"
           },
+          "period": {
+            "$ref": "#/components/schemas/PeriodBlock"
+          },
           "tasks": {
             "$ref": "#/components/schemas/TasksBlock"
           },
@@ -44565,6 +44617,9 @@
             "type": "string"
           },
           "status": {
+            "type": "string"
+          },
+          "timeZone": {
             "type": "string"
           },
           "maintenance": {

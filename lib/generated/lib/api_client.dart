@@ -848,6 +848,8 @@ class ApiClient {
           return PaytableWithRtpDTO.fromJson(value);
         case 'PendingQuestionResponse':
           return PendingQuestionResponse.fromJson(value);
+        case 'PeriodBlock':
+          return PeriodBlock.fromJson(value);
         case 'PickupStore':
           return PickupStore.fromJson(value);
         case 'PickupStoreSearchParam':

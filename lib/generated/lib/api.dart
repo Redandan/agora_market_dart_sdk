@@ -441,6 +441,7 @@ part 'model/paytable_dto.dart';
 part 'model/paytable_entry_request.dart';
 part 'model/paytable_with_rtp_dto.dart';
 part 'model/pending_question_response.dart';
+part 'model/period_block.dart';
 part 'model/pickup_store.dart';
 part 'model/pickup_store_search_param.dart';
 part 'model/pickup_store_sync_check_response.dart';

@@ -22,6 +22,7 @@ class StoreResponseDTO {
     this.phone,
     this.email,
     this.businessHours,
+    this.timeZone,
     this.logoUrl,
     this.logoDescription,
     this.logoUploadTime,
@@ -131,6 +132,15 @@ class StoreResponseDTO {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? businessHours;
+
+  /// 賣場營運時區（IANA）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? timeZone;
 
   /// 商店頭像
   ///
@@ -380,6 +390,7 @@ class StoreResponseDTO {
     other.phone == phone &&
     other.email == email &&
     other.businessHours == businessHours &&
+    other.timeZone == timeZone &&
     other.logoUrl == logoUrl &&
     other.logoDescription == logoDescription &&
     other.logoUploadTime == logoUploadTime &&
@@ -420,6 +431,7 @@ class StoreResponseDTO {
     (phone == null ? 0 : phone!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
     (businessHours == null ? 0 : businessHours!.hashCode) +
+    (timeZone == null ? 0 : timeZone!.hashCode) +
     (logoUrl == null ? 0 : logoUrl!.hashCode) +
     (logoDescription == null ? 0 : logoDescription!.hashCode) +
     (logoUploadTime == null ? 0 : logoUploadTime!.hashCode) +
@@ -449,7 +461,7 @@ class StoreResponseDTO {
     (adminRemark == null ? 0 : adminRemark!.hashCode);
 
   @override
-  String toString() => 'StoreResponseDTO[id=$id, name=$name, description=$description, address=$address, longitude=$longitude, latitude=$latitude, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, logoDescription=$logoDescription, logoUploadTime=$logoUploadTime, coverImageUrl=$coverImageUrl, coverDescription=$coverDescription, coverUploadTime=$coverUploadTime, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, creditLevel=$creditLevel, productCount=$productCount, orderCount=$orderCount, totalSales=$totalSales, averageRating=$averageRating, responseRate=$responseRate, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, createdAt=$createdAt, updatedAt=$updatedAt, adminRemark=$adminRemark]';
+  String toString() => 'StoreResponseDTO[id=$id, name=$name, description=$description, address=$address, longitude=$longitude, latitude=$latitude, phone=$phone, email=$email, businessHours=$businessHours, timeZone=$timeZone, logoUrl=$logoUrl, logoDescription=$logoDescription, logoUploadTime=$logoUploadTime, coverImageUrl=$coverImageUrl, coverDescription=$coverDescription, coverUploadTime=$coverUploadTime, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, creditLevel=$creditLevel, productCount=$productCount, orderCount=$orderCount, totalSales=$totalSales, averageRating=$averageRating, responseRate=$responseRate, supportedShippingCompanies=$supportedShippingCompanies, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, createdAt=$createdAt, updatedAt=$updatedAt, adminRemark=$adminRemark]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -497,6 +509,11 @@ class StoreResponseDTO {
       json[r'businessHours'] = this.businessHours;
     } else {
       json[r'businessHours'] = null;
+    }
+    if (this.timeZone != null) {
+      json[r'timeZone'] = this.timeZone;
+    } else {
+      json[r'timeZone'] = null;
     }
     if (this.logoUrl != null) {
       json[r'logoUrl'] = this.logoUrl;
@@ -660,6 +677,7 @@ class StoreResponseDTO {
         phone: mapValueOfType<String>(json, r'phone'),
         email: mapValueOfType<String>(json, r'email'),
         businessHours: mapValueOfType<String>(json, r'businessHours'),
+        timeZone: mapValueOfType<String>(json, r'timeZone'),
         logoUrl: mapValueOfType<String>(json, r'logoUrl'),
         logoDescription: mapValueOfType<String>(json, r'logoDescription'),
         logoUploadTime: mapDateTime(json, r'logoUploadTime', r''),

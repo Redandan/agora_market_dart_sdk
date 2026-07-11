@@ -22,6 +22,7 @@ class Store {
     this.phone,
     this.email,
     this.businessHours,
+    required this.timeZone,
     this.logoUrl,
     this.logoDescription,
     this.logoUploadTime,
@@ -115,6 +116,9 @@ class Store {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? businessHours;
+
+  /// 賣場營運時區（IANA）
+  String timeZone;
 
   /// 商店Logo
   ///
@@ -334,6 +338,7 @@ class Store {
     other.phone == phone &&
     other.email == email &&
     other.businessHours == businessHours &&
+    other.timeZone == timeZone &&
     other.logoUrl == logoUrl &&
     other.logoDescription == logoDescription &&
     other.logoUploadTime == logoUploadTime &&
@@ -376,6 +381,7 @@ class Store {
     (phone == null ? 0 : phone!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
     (businessHours == null ? 0 : businessHours!.hashCode) +
+    (timeZone.hashCode) +
     (logoUrl == null ? 0 : logoUrl!.hashCode) +
     (logoDescription == null ? 0 : logoDescription!.hashCode) +
     (logoUploadTime == null ? 0 : logoUploadTime!.hashCode) +
@@ -407,7 +413,7 @@ class Store {
     (noReturnPolicy == null ? 0 : noReturnPolicy!.hashCode);
 
   @override
-  String toString() => 'Store[id=$id, name=$name, description=$description, address=$address, longitude=$longitude, latitude=$latitude, phone=$phone, email=$email, businessHours=$businessHours, logoUrl=$logoUrl, logoDescription=$logoDescription, logoUploadTime=$logoUploadTime, coverImageUrl=$coverImageUrl, coverDescription=$coverDescription, coverUploadTime=$coverUploadTime, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, creditLevel=$creditLevel, productCount=$productCount, orderCount=$orderCount, totalSales=$totalSales, averageRating=$averageRating, responseRate=$responseRate, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, createdAt=$createdAt, updatedAt=$updatedAt, adminRemark=$adminRemark, returnDaysAllowed=$returnDaysAllowed, returnConditions=$returnConditions, noReturnPolicy=$noReturnPolicy]';
+  String toString() => 'Store[id=$id, name=$name, description=$description, address=$address, longitude=$longitude, latitude=$latitude, phone=$phone, email=$email, businessHours=$businessHours, timeZone=$timeZone, logoUrl=$logoUrl, logoDescription=$logoDescription, logoUploadTime=$logoUploadTime, coverImageUrl=$coverImageUrl, coverDescription=$coverDescription, coverUploadTime=$coverUploadTime, isActive=$isActive, viewCount=$viewCount, rating=$rating, ratingCount=$ratingCount, creditLevel=$creditLevel, productCount=$productCount, orderCount=$orderCount, totalSales=$totalSales, averageRating=$averageRating, responseRate=$responseRate, defaultShippingFee=$defaultShippingFee, freeShippingThreshold=$freeShippingThreshold, shippingDescription=$shippingDescription, shippingPreparationHours=$shippingPreparationHours, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, createdAt=$createdAt, updatedAt=$updatedAt, adminRemark=$adminRemark, returnDaysAllowed=$returnDaysAllowed, returnConditions=$returnConditions, noReturnPolicy=$noReturnPolicy]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -444,6 +450,7 @@ class Store {
     } else {
       json[r'businessHours'] = null;
     }
+      json[r'timeZone'] = this.timeZone;
     if (this.logoUrl != null) {
       json[r'logoUrl'] = this.logoUrl;
     } else {
@@ -584,6 +591,7 @@ class Store {
         phone: mapValueOfType<String>(json, r'phone'),
         email: mapValueOfType<String>(json, r'email'),
         businessHours: mapValueOfType<String>(json, r'businessHours'),
+        timeZone: mapValueOfType<String>(json, r'timeZone')!,
         logoUrl: mapValueOfType<String>(json, r'logoUrl'),
         logoDescription: mapValueOfType<String>(json, r'logoDescription'),
         logoUploadTime: mapDateTime(json, r'logoUploadTime', r''),
@@ -663,6 +671,7 @@ class Store {
     'id',
     'name',
     'address',
+    'timeZone',
     'isActive',
     'creditLevel',
     'productCount',
