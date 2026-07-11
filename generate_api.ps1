@@ -322,76 +322,6 @@ function Repair-GeneratedModelNullableNumericParsing {
     }
 }
 
-function Repair-GeneratedModelStringListMapParsing {
-    param(
-        [Parameter(Mandatory = $true)]
-        [string]$ModelDirectory
-    )
-
-    if (-not (Test-Path $ModelDirectory)) {
-        Write-Host "Model directory not found, skipping string-list map repair: $ModelDirectory" -ForegroundColor Yellow
-        return
-    }
-
-    $patchedFiles = 0
-    $patchedProperties = 0
-    $modelFiles = Get-ChildItem -Path $ModelDirectory -File -Filter "*.dart"
-
-    foreach ($modelFile in $modelFiles) {
-        $content = Get-Content -Path $modelFile.FullName -Raw
-        $mapPropertyMatches = [System.Text.RegularExpressions.Regex]::Matches(
-            $content,
-            '(?m)^\s*Map<String, List<String>>\s+([A-Za-z_][A-Za-z0-9_]*);\s*$'
-        )
-
-        if ($mapPropertyMatches.Count -eq 0) {
-            continue
-        }
-
-        $updatedContent = $content
-        foreach ($match in $mapPropertyMatches) {
-            $propertyName = $match.Groups[1].Value
-            $escapedPropertyName = [System.Text.RegularExpressions.Regex]::Escape($propertyName)
-            $assignmentPattern = "(?m)^([ \t]*)$escapedPropertyName[ \t]*:[ \t]*json\[r'$escapedPropertyName'\][ \t]*==[ \t]*null[ \t]*\r?\n[ \t]*\?[ \t]*const[ \t]*\{\}[ \t]*\r?\n[ \t]*:[ \t]*mapCastOfType<String,[ \t]*List>\(json,[ \t]*r'$escapedPropertyName'\),[ \t]*$"
-            $replacement = @(
-                '$1' + "${propertyName}: json[r'$propertyName'] == null"
-                '$1' + '    ? const {}'
-                '$1' + "    : (json[r'$propertyName'] as Map).map("
-                '$1' + '        (key, value) => MapEntry('
-                '$1' + "          '`$key',"
-                '$1' + '          value is Iterable'
-                '$1' + '              ? value.cast<String>().toList(growable: false)'
-                '$1' + '              : const <String>[],'
-                '$1' + '        ),'
-                '$1' + '      ),'
-            ) -join "`r`n"
-
-            $newContent = [System.Text.RegularExpressions.Regex]::Replace(
-                $updatedContent,
-                $assignmentPattern,
-                $replacement
-            )
-
-            if ($newContent -ne $updatedContent) {
-                $updatedContent = $newContent
-                $patchedProperties++
-            }
-        }
-
-        if ($updatedContent -ne $content) {
-            Set-Content -Path $modelFile.FullName -Value $updatedContent -Encoding UTF8
-            $patchedFiles++
-            Write-Host "Patched string-list map parsing in: $($modelFile.FullName)" -ForegroundColor Cyan
-        }
-    }
-
-    if ($patchedProperties -gt 0) {
-        Write-Host "Applied string-list map parsing repair: $patchedProperties property/properties in $patchedFiles file(s)." -ForegroundColor Green
-    } else {
-        Write-Host "No string-list map parsing repairs were needed." -ForegroundColor Green
-    }
-}
-
 # 清理舊的生成文件
 Write-Host "Cleaning old generated files..." -ForegroundColor Yellow
 try {
@@ -414,55 +344,51 @@ try {
         --global-property=apiDocs=false,modelDocs=false,apiTests=false,modelTests=false `
         --additional-properties=pubName=agora_market_dart_sdk,pubVersion=1.0.0,serializationLibrary=built_value,dateLibrary=core,nullableFields=true,useEnumExtension=true,enumUnknownDefaultCase=true,generateSourceCodeOnly=true,useBuiltValue=true,useEnumExtension=true,enumUnknownDefaultCase=true,useCollectionWrappers=true,useNullSafety=true
 
-    if ($LASTEXITCODE -eq 0) {
-        Write-Host "Code generation completed successfully!" -ForegroundColor Green
+    if ($LASTEXITCODE -ne 0) {
+        throw "OpenAPI generation failed with exit code $LASTEXITCODE"
+    }
+    Write-Host "Code generation completed successfully!" -ForegroundColor Green
 
-        # 檢查生成的文件
-        if (Test-Path "lib/generated") {
-            $generatedFiles = Get-ChildItem -Path "lib/generated" -Recurse -File
-            Write-Host "Generated files:" -ForegroundColor Green
-            foreach ($file in $generatedFiles) {
-                Write-Host "  - $($file.FullName)" -ForegroundColor Cyan
-            }
+    if (-not (Test-Path "lib/generated/lib/model")) {
+        throw "Generated SDK model directory was not created"
+    }
 
-            Write-Host "`nRepairing known list serialization issues in generated models..." -ForegroundColor Yellow
-            try {
-                Repair-GeneratedModelListSerialization -ModelDirectory "lib/generated/lib/model"
-                Repair-GeneratedModelNullableNumericParsing -ModelDirectory "lib/generated/lib/model"
-                Repair-GeneratedModelStringListMapParsing -ModelDirectory "lib/generated/lib/model"
-            } catch {
-                Write-Host "Error while repairing generated model serialization: $_" -ForegroundColor Red
-                exit 1
-            }
+    Write-Host "`nRepairing known generated model issues..." -ForegroundColor Yellow
+    Repair-GeneratedModelListSerialization -ModelDirectory "lib/generated/lib/model"
+    Repair-GeneratedModelNullableNumericParsing -ModelDirectory "lib/generated/lib/model"
 
-            # 運行 build_runner
-            Write-Host "`nRunning build_runner..." -ForegroundColor Yellow
-            try {
-                Push-Location "lib/generated"
-                dart pub get
-                dart analyze lib/api.dart
-                if ($LASTEXITCODE -ne 0) {
-                    Write-Host "Generated SDK analysis failed." -ForegroundColor Red
-                    Pop-Location
-                    exit 1
-                }
-                dart run build_runner build --delete-conflicting-outputs
-                if ($LASTEXITCODE -eq 0) {
-                    Write-Host "build_runner completed successfully!" -ForegroundColor Green
-                } else {
-                    Write-Host "build_runner completed with warnings or errors. Please check the output above." -ForegroundColor Yellow
-                }
-                Pop-Location
-            } catch {
-                Write-Host "Error during build_runner execution: $_" -ForegroundColor Red
-                Pop-Location
-                exit 1
+    dart ci/repair_map_list_from_json_test.dart
+    if ($LASTEXITCODE -ne 0) {
+        throw "Generic map-list repair test failed with exit code $LASTEXITCODE"
+    }
+
+    dart ci/repair_map_list_from_json.dart "lib/generated/lib/model"
+    if ($LASTEXITCODE -ne 0) {
+        throw "Generic map-list repair failed with exit code $LASTEXITCODE"
+    }
+
+    Push-Location "lib/generated"
+    try {
+        dart pub get
+        if ($LASTEXITCODE -ne 0) {
+            throw "Generated SDK dependency resolution failed with exit code $LASTEXITCODE"
+        }
+
+        if (Select-String -Path "pubspec.yaml" -Pattern '^\s*build_runner:' -Quiet) {
+            dart run build_runner build --delete-conflicting-outputs
+            if ($LASTEXITCODE -ne 0) {
+                throw "Generated SDK build_runner failed with exit code $LASTEXITCODE"
             }
         } else {
-            Write-Host "Warning: No generated files found in lib/generated" -ForegroundColor Yellow
+            Write-Host "build_runner not in pubspec - skipping" -ForegroundColor Yellow
         }
-    } else {
-        Write-Host "Code generation completed with warnings or errors. Please check the output above." -ForegroundColor Yellow
+
+        dart analyze
+        if ($LASTEXITCODE -ne 0) {
+            throw "Generated SDK analysis failed with exit code $LASTEXITCODE"
+        }
+    } finally {
+        Pop-Location
     }
 } catch {
     Write-Host "Error during code generation: $_" -ForegroundColor Red
