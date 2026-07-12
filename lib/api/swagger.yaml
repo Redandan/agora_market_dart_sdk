@@ -6740,6 +6740,42 @@
         }
       }
     },
+    "/mcp/user/v3": {
+      "post": {
+        "tags": [
+          "mcp-streamable-http-controller"
+        ],
+        "operationId": "handleUserMcp_2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/markets": {
       "post": {
         "tags": [

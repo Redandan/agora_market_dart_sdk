@@ -203,4 +203,51 @@ class McpStreamableHttpControllerApi {
     }
     return null;
   }
+
+  /// Performs an HTTP 'POST /mcp/user/v3' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [Map<String, Object>] requestBody (required):
+  Future<Response> handleUserMcp2WithHttpInfo(Map<String, Object> requestBody,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/mcp/user/v3';
+
+    // ignore: prefer_final_locals
+    Object? postBody = requestBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [Map<String, Object>] requestBody (required):
+  Future<Map<String, Object>?> handleUserMcp2(Map<String, Object> requestBody,) async {
+    final response = await handleUserMcp2WithHttpInfo(requestBody,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
+
+    }
+    return null;
+  }
 }
