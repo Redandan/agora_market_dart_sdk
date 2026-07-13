@@ -80,6 +80,7 @@ class GameAccessStatusResponse {
   ///
   String? denyReason;
 
+  /// Launch URL for the configured game; null until the user has an active entitlement
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated

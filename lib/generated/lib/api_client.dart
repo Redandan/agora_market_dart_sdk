@@ -532,6 +532,10 @@ class ApiClient {
           return FileSyncResponse.fromJson(value);
         case 'FlutterAppDeploymentResponse':
           return FlutterAppDeploymentResponse.fromJson(value);
+        case 'GameAccessProductDescriptorResponse':
+          return GameAccessProductDescriptorResponse.fromJson(value);
+        case 'GameAccessProductPurchaseRequest':
+          return GameAccessProductPurchaseRequest.fromJson(value);
         case 'GameAccessPurchaseRequest':
           return GameAccessPurchaseRequest.fromJson(value);
         case 'GameAccessPurchaseResponse':

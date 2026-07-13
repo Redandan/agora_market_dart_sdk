@@ -65,6 +65,7 @@ class GameAccessPurchaseResponse {
   ///
   int? refundTransactionId;
 
+  /// Configured Telegram launch URL returned only for active access
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated

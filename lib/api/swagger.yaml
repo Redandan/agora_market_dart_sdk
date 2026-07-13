@@ -7003,12 +7003,60 @@
         "tags": [
           "game-access-controller"
         ],
+        "description": "Compatibility endpoint; use POST /game-access/products/{productId}/purchase",
         "operationId": "purchase",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/GameAccessPurchaseRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameAccessPurchaseResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/game-access/products/{productId}/purchase": {
+      "post": {
+        "tags": [
+          "game-access-product-controller"
+        ],
+        "operationId": "purchase_1",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GameAccessProductPurchaseRequest"
               }
             }
           },
@@ -17402,12 +17450,82 @@
         }
       }
     },
+    "/game-access/products/{productId}": {
+      "get": {
+        "tags": [
+          "game-access-product-controller"
+        ],
+        "summary": "Get a server-owned refundable game access descriptor",
+        "description": "Public product mapping that never contains a game launch URL",
+        "operationId": "getDescriptor",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameAccessProductDescriptorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/game-access/products/{productId}/me": {
+      "get": {
+        "tags": [
+          "game-access-product-controller"
+        ],
+        "operationId": "getMyAccess",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameAccessStatusResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/game-access/me": {
       "get": {
         "tags": [
           "game-access-controller"
         ],
-        "operationId": "getMyAccess",
+        "description": "Compatibility endpoint; use GET /game-access/products/{productId}/me",
+        "operationId": "getMyAccess_1",
         "parameters": [
           {
             "name": "gameKey",
@@ -17430,6 +17548,7 @@
             }
           }
         },
+        "deprecated": true,
         "security": [
           {
             "bearerAuth": []
@@ -35427,9 +35546,24 @@
             "format": "int64"
           },
           "launchUrl": {
-            "type": "string"
+            "type": "string",
+            "description": "Configured Telegram launch URL returned only for active access"
           }
         }
+      },
+      "GameAccessProductPurchaseRequest": {
+        "type": "object",
+        "description": "Product-authoritative refundable game access purchase request",
+        "properties": {
+          "idempotencyKey": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 0
+          }
+        },
+        "required": [
+          "idempotencyKey"
+        ]
       },
       "ApiResponseFlutterAppDeploymentResponse": {
         "type": "object",
@@ -46508,6 +46642,71 @@
           }
         }
       },
+      "GameAccessProductDescriptorResponse": {
+        "type": "object",
+        "description": "Server-owned refundable game access descriptor. Never contains a launch URL.",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "gameKey": {
+            "type": "string",
+            "minLength": 1
+          },
+          "accessType": {
+            "type": "string",
+            "description": "Server-owned product access experience type",
+            "enum": [
+              "REFUNDABLE_TG_GAME"
+            ]
+          },
+          "deliveryChannel": {
+            "type": "string",
+            "description": "Game delivery channel",
+            "enum": [
+              "TELEGRAM_MINI_APP"
+            ]
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "currency": {
+            "type": "string",
+            "enum": [
+              "USDT",
+              "USD",
+              "TWD",
+              "THB",
+              "CNY",
+              "JPY",
+              "EUR",
+              "GBP",
+              "KRW",
+              "SGD",
+              "HKD",
+              "AUD"
+            ]
+          },
+          "requiredBalance": {
+            "type": "number"
+          },
+          "entitlementDurationDays": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "required": [
+          "accessType",
+          "currency",
+          "deliveryChannel",
+          "enabled",
+          "entitlementDurationDays",
+          "gameKey",
+          "productId",
+          "requiredBalance"
+        ]
+      },
       "GameAccessStatusResponse": {
         "type": "object",
         "properties": {
@@ -46533,7 +46732,8 @@
             "type": "string"
           },
           "launchUrl": {
-            "type": "string"
+            "type": "string",
+            "description": "Launch URL for the configured game; null until the user has an active entitlement"
           },
           "entitlementId": {
             "type": "integer",

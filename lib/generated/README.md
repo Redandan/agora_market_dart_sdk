@@ -379,8 +379,11 @@ Class | Method | HTTP request | Description
 *FileManagementApi* | [**syncFileRecords**](doc//FileManagementApi.md#syncfilerecords) | **POST** /files/auto-clean | 檔案清理
 *FlutterDeploymentApi* | [**deleteVersion**](doc//FlutterDeploymentApi.md#deleteversion) | **DELETE** /flutter/deployment/versions/{versionId} | 刪除 APP 版本
 *FlutterDeploymentApi* | [**getApps**](doc//FlutterDeploymentApi.md#getapps) | **POST** /flutter/deployment/apps | 獲取可下載的 APP
-*GameAccessControllerApi* | [**getMyAccess**](doc//GameAccessControllerApi.md#getmyaccess) | **GET** /game-access/me | 
+*GameAccessControllerApi* | [**getMyAccess1**](doc//GameAccessControllerApi.md#getmyaccess1) | **GET** /game-access/me | 
 *GameAccessControllerApi* | [**purchase**](doc//GameAccessControllerApi.md#purchase) | **POST** /game-access/purchase | 
+*GameAccessProductControllerApi* | [**getDescriptor**](doc//GameAccessProductControllerApi.md#getdescriptor) | **GET** /game-access/products/{productId} | Get a server-owned refundable game access descriptor
+*GameAccessProductControllerApi* | [**getMyAccess**](doc//GameAccessProductControllerApi.md#getmyaccess) | **GET** /game-access/products/{productId}/me | 
+*GameAccessProductControllerApi* | [**purchase1**](doc//GameAccessProductControllerApi.md#purchase1) | **POST** /game-access/products/{productId}/purchase | 
 *KnowledgeApi* | [**addKnowledge**](doc//KnowledgeApi.md#addknowledge) | **POST** /admin/knowledge | 新增知識文件
 *KnowledgeApi* | [**countKnowledge**](doc//KnowledgeApi.md#countknowledge) | **GET** /admin/knowledge/count | 查詢知識庫文件數量
 *KnowledgeApi* | [**countPendingKnowledgeQuestions**](doc//KnowledgeApi.md#countpendingknowledgequestions) | **GET** /admin/knowledge/pending/count | 查詢未處理問題數量
@@ -842,6 +845,8 @@ Class | Method | HTTP request | Description
  - [FileRecordSearchRequest](doc//FileRecordSearchRequest.md)
  - [FileSyncResponse](doc//FileSyncResponse.md)
  - [FlutterAppDeploymentResponse](doc//FlutterAppDeploymentResponse.md)
+ - [GameAccessProductDescriptorResponse](doc//GameAccessProductDescriptorResponse.md)
+ - [GameAccessProductPurchaseRequest](doc//GameAccessProductPurchaseRequest.md)
  - [GameAccessPurchaseRequest](doc//GameAccessPurchaseRequest.md)
  - [GameAccessPurchaseResponse](doc//GameAccessPurchaseResponse.md)
  - [GameAccessStatusResponse](doc//GameAccessStatusResponse.md)

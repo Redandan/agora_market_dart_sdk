@@ -16,11 +16,14 @@ class GameAccessControllerApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'GET /game-access/me' operation and returns the [Response].
+  /// Compatibility endpoint; use GET /game-access/products/{productId}/me
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [String] gameKey (required):
-  Future<Response> getMyAccessWithHttpInfo(String gameKey,) async {
+  Future<Response> getMyAccess1WithHttpInfo(String gameKey,) async {
     // ignore: prefer_const_declarations
     final path = r'/game-access/me';
 
@@ -47,11 +50,13 @@ class GameAccessControllerApi {
     );
   }
 
+  /// Compatibility endpoint; use GET /game-access/products/{productId}/me
+  ///
   /// Parameters:
   ///
   /// * [String] gameKey (required):
-  Future<GameAccessStatusResponse?> getMyAccess(String gameKey,) async {
-    final response = await getMyAccessWithHttpInfo(gameKey,);
+  Future<GameAccessStatusResponse?> getMyAccess1(String gameKey,) async {
+    final response = await getMyAccess1WithHttpInfo(gameKey,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -65,7 +70,10 @@ class GameAccessControllerApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /game-access/purchase' operation and returns the [Response].
+  /// Compatibility endpoint; use POST /game-access/products/{productId}/purchase
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [GameAccessPurchaseRequest] gameAccessPurchaseRequest (required):
@@ -94,6 +102,8 @@ class GameAccessControllerApi {
     );
   }
 
+  /// Compatibility endpoint; use POST /game-access/products/{productId}/purchase
+  ///
   /// Parameters:
   ///
   /// * [GameAccessPurchaseRequest] gameAccessPurchaseRequest (required):
