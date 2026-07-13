@@ -10,10 +10,10 @@
 
 part of openapi.api;
 
-class GameSessionStartRequest {
-  /// Returns a new [GameSessionStartRequest] instance.
-  GameSessionStartRequest({
-    this.clientSessionId,
+class GameLaunchExchangeRequest {
+  /// Returns a new [GameLaunchExchangeRequest] instance.
+  GameLaunchExchangeRequest({
+    this.initData,
   });
 
   ///
@@ -22,34 +22,34 @@ class GameSessionStartRequest {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? clientSessionId;
+  String? initData;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is GameSessionStartRequest &&
-    other.clientSessionId == clientSessionId;
+  bool operator ==(Object other) => identical(this, other) || other is GameLaunchExchangeRequest &&
+    other.initData == initData;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (clientSessionId == null ? 0 : clientSessionId!.hashCode);
+    (initData == null ? 0 : initData!.hashCode);
 
   @override
-  String toString() => 'GameSessionStartRequest[clientSessionId=$clientSessionId]';
+  String toString() => 'GameLaunchExchangeRequest[initData=$initData]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.clientSessionId != null) {
-      json[r'clientSessionId'] = this.clientSessionId;
+    if (this.initData != null) {
+      json[r'initData'] = this.initData;
     } else {
-      json[r'clientSessionId'] = null;
+      json[r'initData'] = null;
     }
     return json;
   }
 
-  /// Returns a new [GameSessionStartRequest] instance and imports its values from
+  /// Returns a new [GameLaunchExchangeRequest] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static GameSessionStartRequest? fromJson(dynamic value) {
+  static GameLaunchExchangeRequest? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -58,24 +58,24 @@ class GameSessionStartRequest {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "GameSessionStartRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "GameSessionStartRequest[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "GameLaunchExchangeRequest[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "GameLaunchExchangeRequest[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return GameSessionStartRequest(
-        clientSessionId: mapValueOfType<String>(json, r'clientSessionId'),
+      return GameLaunchExchangeRequest(
+        initData: mapValueOfType<String>(json, r'initData'),
       );
     }
     return null;
   }
 
-  static List<GameSessionStartRequest> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <GameSessionStartRequest>[];
+  static List<GameLaunchExchangeRequest> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <GameLaunchExchangeRequest>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = GameSessionStartRequest.fromJson(row);
+        final value = GameLaunchExchangeRequest.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -84,12 +84,12 @@ class GameSessionStartRequest {
     return result.toList(growable: growable);
   }
 
-  static Map<String, GameSessionStartRequest> mapFromJson(dynamic json) {
-    final map = <String, GameSessionStartRequest>{};
+  static Map<String, GameLaunchExchangeRequest> mapFromJson(dynamic json) {
+    final map = <String, GameLaunchExchangeRequest>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = GameSessionStartRequest.fromJson(entry.value);
+        final value = GameLaunchExchangeRequest.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -98,14 +98,14 @@ class GameSessionStartRequest {
     return map;
   }
 
-  // maps a json object with a list of GameSessionStartRequest-objects as value to a dart map
-  static Map<String, List<GameSessionStartRequest>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<GameSessionStartRequest>>{};
+  // maps a json object with a list of GameLaunchExchangeRequest-objects as value to a dart map
+  static Map<String, List<GameLaunchExchangeRequest>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<GameLaunchExchangeRequest>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = GameSessionStartRequest.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = GameLaunchExchangeRequest.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

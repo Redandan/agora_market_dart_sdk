@@ -19,7 +19,6 @@ class GameAccessPurchaseResponse {
     this.depositAmount,
     this.debitTransactionId,
     this.refundTransactionId,
-    this.launchUrl,
   });
 
   ///
@@ -65,15 +64,6 @@ class GameAccessPurchaseResponse {
   ///
   int? refundTransactionId;
 
-  /// Configured Telegram launch URL returned only for active access
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? launchUrl;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is GameAccessPurchaseResponse &&
     other.entitlementId == entitlementId &&
@@ -81,8 +71,7 @@ class GameAccessPurchaseResponse {
     other.currency == currency &&
     other.depositAmount == depositAmount &&
     other.debitTransactionId == debitTransactionId &&
-    other.refundTransactionId == refundTransactionId &&
-    other.launchUrl == launchUrl;
+    other.refundTransactionId == refundTransactionId;
 
   @override
   int get hashCode =>
@@ -92,11 +81,10 @@ class GameAccessPurchaseResponse {
     (currency == null ? 0 : currency!.hashCode) +
     (depositAmount == null ? 0 : depositAmount!.hashCode) +
     (debitTransactionId == null ? 0 : debitTransactionId!.hashCode) +
-    (refundTransactionId == null ? 0 : refundTransactionId!.hashCode) +
-    (launchUrl == null ? 0 : launchUrl!.hashCode);
+    (refundTransactionId == null ? 0 : refundTransactionId!.hashCode);
 
   @override
-  String toString() => 'GameAccessPurchaseResponse[entitlementId=$entitlementId, status=$status, currency=$currency, depositAmount=$depositAmount, debitTransactionId=$debitTransactionId, refundTransactionId=$refundTransactionId, launchUrl=$launchUrl]';
+  String toString() => 'GameAccessPurchaseResponse[entitlementId=$entitlementId, status=$status, currency=$currency, depositAmount=$depositAmount, debitTransactionId=$debitTransactionId, refundTransactionId=$refundTransactionId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -130,11 +118,6 @@ class GameAccessPurchaseResponse {
     } else {
       json[r'refundTransactionId'] = null;
     }
-    if (this.launchUrl != null) {
-      json[r'launchUrl'] = this.launchUrl;
-    } else {
-      json[r'launchUrl'] = null;
-    }
     return json;
   }
 
@@ -165,7 +148,6 @@ class GameAccessPurchaseResponse {
             : num.parse('${json[r'depositAmount']}'),
         debitTransactionId: mapValueOfType<int>(json, r'debitTransactionId'),
         refundTransactionId: mapValueOfType<int>(json, r'refundTransactionId'),
-        launchUrl: mapValueOfType<String>(json, r'launchUrl'),
       );
     }
     return null;

@@ -13,23 +13,18 @@ part of openapi.api;
 class GameSessionResponse {
   /// Returns a new [GameSessionResponse] instance.
   GameSessionResponse({
-    this.sessionId,
+    required this.sessionId,
     this.entitlementId,
-    this.gameKey,
-    this.clientSessionId,
-    this.status,
+    required this.gameKey,
+    required this.clientSessionId,
+    required this.status,
     this.denyReason,
     this.startedAt,
+    this.expiresAt,
     this.endedAt,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? sessionId;
+  int sessionId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -39,24 +34,12 @@ class GameSessionResponse {
   ///
   int? entitlementId;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? gameKey;
+  String gameKey;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? clientSessionId;
+  String clientSessionId;
 
   /// 遊戲 Session 狀態
-  GameSessionResponseStatusEnum? status;
+  GameSessionResponseStatusEnum status;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -80,6 +63,14 @@ class GameSessionResponse {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  DateTime? expiresAt;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? endedAt;
 
   @override
@@ -91,50 +82,36 @@ class GameSessionResponse {
     other.status == status &&
     other.denyReason == denyReason &&
     other.startedAt == startedAt &&
+    other.expiresAt == expiresAt &&
     other.endedAt == endedAt;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (sessionId == null ? 0 : sessionId!.hashCode) +
+    (sessionId.hashCode) +
     (entitlementId == null ? 0 : entitlementId!.hashCode) +
-    (gameKey == null ? 0 : gameKey!.hashCode) +
-    (clientSessionId == null ? 0 : clientSessionId!.hashCode) +
-    (status == null ? 0 : status!.hashCode) +
+    (gameKey.hashCode) +
+    (clientSessionId.hashCode) +
+    (status.hashCode) +
     (denyReason == null ? 0 : denyReason!.hashCode) +
     (startedAt == null ? 0 : startedAt!.hashCode) +
+    (expiresAt == null ? 0 : expiresAt!.hashCode) +
     (endedAt == null ? 0 : endedAt!.hashCode);
 
   @override
-  String toString() => 'GameSessionResponse[sessionId=$sessionId, entitlementId=$entitlementId, gameKey=$gameKey, clientSessionId=$clientSessionId, status=$status, denyReason=$denyReason, startedAt=$startedAt, endedAt=$endedAt]';
+  String toString() => 'GameSessionResponse[sessionId=$sessionId, entitlementId=$entitlementId, gameKey=$gameKey, clientSessionId=$clientSessionId, status=$status, denyReason=$denyReason, startedAt=$startedAt, expiresAt=$expiresAt, endedAt=$endedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.sessionId != null) {
       json[r'sessionId'] = this.sessionId;
-    } else {
-      json[r'sessionId'] = null;
-    }
     if (this.entitlementId != null) {
       json[r'entitlementId'] = this.entitlementId;
     } else {
       json[r'entitlementId'] = null;
     }
-    if (this.gameKey != null) {
       json[r'gameKey'] = this.gameKey;
-    } else {
-      json[r'gameKey'] = null;
-    }
-    if (this.clientSessionId != null) {
       json[r'clientSessionId'] = this.clientSessionId;
-    } else {
-      json[r'clientSessionId'] = null;
-    }
-    if (this.status != null) {
       json[r'status'] = this.status;
-    } else {
-      json[r'status'] = null;
-    }
     if (this.denyReason != null) {
       json[r'denyReason'] = this.denyReason;
     } else {
@@ -144,6 +121,11 @@ class GameSessionResponse {
       json[r'startedAt'] = this.startedAt!.toUtc().toIso8601String();
     } else {
       json[r'startedAt'] = null;
+    }
+    if (this.expiresAt != null) {
+      json[r'expiresAt'] = this.expiresAt!.toUtc().toIso8601String();
+    } else {
+      json[r'expiresAt'] = null;
     }
     if (this.endedAt != null) {
       json[r'endedAt'] = this.endedAt!.toUtc().toIso8601String();
@@ -172,13 +154,14 @@ class GameSessionResponse {
       }());
 
       return GameSessionResponse(
-        sessionId: mapValueOfType<int>(json, r'sessionId'),
+        sessionId: mapValueOfType<int>(json, r'sessionId')!,
         entitlementId: mapValueOfType<int>(json, r'entitlementId'),
-        gameKey: mapValueOfType<String>(json, r'gameKey'),
-        clientSessionId: mapValueOfType<String>(json, r'clientSessionId'),
-        status: GameSessionResponseStatusEnum.fromJson(json[r'status']),
+        gameKey: mapValueOfType<String>(json, r'gameKey')!,
+        clientSessionId: mapValueOfType<String>(json, r'clientSessionId')!,
+        status: GameSessionResponseStatusEnum.fromJson(json[r'status'])!,
         denyReason: mapValueOfType<String>(json, r'denyReason'),
         startedAt: mapDateTime(json, r'startedAt', r''),
+        expiresAt: mapDateTime(json, r'expiresAt', r''),
         endedAt: mapDateTime(json, r'endedAt', r''),
       );
     }
@@ -227,6 +210,10 @@ class GameSessionResponse {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'sessionId',
+    'gameKey',
+    'clientSessionId',
+    'status',
   };
 }
 
@@ -246,6 +233,7 @@ class GameSessionResponseStatusEnum {
   static const CREATED = GameSessionResponseStatusEnum._(r'CREATED');
   static const ACTIVE = GameSessionResponseStatusEnum._(r'ACTIVE');
   static const ENDED = GameSessionResponseStatusEnum._(r'ENDED');
+  static const EXPIRED = GameSessionResponseStatusEnum._(r'EXPIRED');
   static const DENIED = GameSessionResponseStatusEnum._(r'DENIED');
   static const unknownDefaultOpenApi = GameSessionResponseStatusEnum._(r'unknown_default_open_api');
 
@@ -254,6 +242,7 @@ class GameSessionResponseStatusEnum {
     CREATED,
     ACTIVE,
     ENDED,
+    EXPIRED,
     DENIED,
     unknownDefaultOpenApi,
   ];
@@ -297,6 +286,7 @@ class GameSessionResponseStatusEnumTypeTransformer {
         case r'CREATED': return GameSessionResponseStatusEnum.CREATED;
         case r'ACTIVE': return GameSessionResponseStatusEnum.ACTIVE;
         case r'ENDED': return GameSessionResponseStatusEnum.ENDED;
+        case r'EXPIRED': return GameSessionResponseStatusEnum.EXPIRED;
         case r'DENIED': return GameSessionResponseStatusEnum.DENIED;
         case r'unknown_default_open_api': return GameSessionResponseStatusEnum.unknownDefaultOpenApi;
         default:

@@ -542,12 +542,18 @@ class ApiClient {
           return GameAccessPurchaseResponse.fromJson(value);
         case 'GameAccessStatusResponse':
           return GameAccessStatusResponse.fromJson(value);
+        case 'GameLaunchExchangeRequest':
+          return GameLaunchExchangeRequest.fromJson(value);
+        case 'GameLaunchExchangeResponse':
+          return GameLaunchExchangeResponse.fromJson(value);
         case 'GameRoundDTO':
           return GameRoundDTO.fromJson(value);
         case 'GameSessionResponse':
           return GameSessionResponse.fromJson(value);
         case 'GameSessionStartRequest':
           return GameSessionStartRequest.fromJson(value);
+        case 'GameSessionStartResponse':
+          return GameSessionStartResponse.fromJson(value);
         case 'GenerateLoginTokenRequest':
           return GenerateLoginTokenRequest.fromJson(value);
         case 'GroqUsageStatsDTO':

@@ -2526,7 +2526,7 @@
             "content": {
               "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/GameSessionResponse"
+                  "$ref": "#/components/schemas/GameSessionStartResponse"
                 }
               }
             }
@@ -2571,6 +2571,51 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/GameSessionResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/tg-games/{gameKey}/launch/exchange": {
+      "post": {
+        "tags": [
+          "tg-mini-app-game-session-controller"
+        ],
+        "operationId": "exchangeLaunch",
+        "parameters": [
+          {
+            "name": "gameKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GameLaunchExchangeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameLaunchExchangeResponse"
                 }
               }
             }
@@ -25645,18 +25690,65 @@
             "type": "string",
             "maxLength": 128,
             "minLength": 0
-          },
-          "telegramUserId": {
-            "type": "string",
-            "maxLength": 64,
-            "minLength": 0
-          },
-          "telegramInitDataHash": {
-            "type": "string",
-            "maxLength": 128,
-            "minLength": 0
           }
         }
+      },
+      "GameSessionStartResponse": {
+        "type": "object",
+        "properties": {
+          "sessionId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "entitlementId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "gameKey": {
+            "type": "string"
+          },
+          "clientSessionId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "description": "遊戲 Session 狀態",
+            "enum": [
+              "CREATED",
+              "ACTIVE",
+              "ENDED",
+              "EXPIRED",
+              "DENIED"
+            ]
+          },
+          "startedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "launchUrl": {
+            "type": "string",
+            "description": "Short-lived Telegram transport URL carrying a one-time start capability"
+          },
+          "launchExpiresAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "clientSessionId",
+          "entitlementId",
+          "expiresAt",
+          "gameKey",
+          "launchExpiresAt",
+          "launchUrl",
+          "sessionId",
+          "startedAt",
+          "status"
+        ]
       },
       "GameSessionResponse": {
         "type": "object",
@@ -25682,6 +25774,7 @@
               "CREATED",
               "ACTIVE",
               "ENDED",
+              "EXPIRED",
               "DENIED"
             ]
           },
@@ -25692,11 +25785,82 @@
             "type": "string",
             "format": "date-time"
           },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
           "endedAt": {
             "type": "string",
             "format": "date-time"
           }
+        },
+        "required": [
+          "clientSessionId",
+          "gameKey",
+          "sessionId",
+          "status"
+        ]
+      },
+      "GameLaunchExchangeRequest": {
+        "type": "object",
+        "properties": {
+          "initData": {
+            "type": "string",
+            "maxLength": 8192,
+            "minLength": 0
+          }
         }
+      },
+      "GameLaunchExchangeResponse": {
+        "type": "object",
+        "properties": {
+          "sessionId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "entitlementId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "gameKey": {
+            "type": "string"
+          },
+          "clientSessionId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "description": "遊戲 Session 狀態",
+            "enum": [
+              "CREATED",
+              "ACTIVE",
+              "ENDED",
+              "EXPIRED",
+              "DENIED"
+            ]
+          },
+          "verifiedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "sessionExpiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "gameplayAllowed": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "clientSessionId",
+          "entitlementId",
+          "gameKey",
+          "gameplayAllowed",
+          "sessionExpiresAt",
+          "sessionId",
+          "status",
+          "verifiedAt"
+        ]
       },
       "CreateActivityRequest": {
         "type": "object",
@@ -35544,10 +35708,6 @@
           "refundTransactionId": {
             "type": "integer",
             "format": "int64"
-          },
-          "launchUrl": {
-            "type": "string",
-            "description": "Configured Telegram launch URL returned only for active access"
           }
         }
       },
@@ -46730,10 +46890,6 @@
           },
           "denyReason": {
             "type": "string"
-          },
-          "launchUrl": {
-            "type": "string",
-            "description": "Launch URL for the configured game; null until the user has an active entitlement"
           },
           "entitlementId": {
             "type": "integer",

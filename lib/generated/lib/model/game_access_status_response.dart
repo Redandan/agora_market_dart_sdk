@@ -20,7 +20,6 @@ class GameAccessStatusResponse {
     this.requiredBalance,
     this.currentBalance,
     this.denyReason,
-    this.launchUrl,
     this.entitlementId,
   });
 
@@ -80,15 +79,6 @@ class GameAccessStatusResponse {
   ///
   String? denyReason;
 
-  /// Launch URL for the configured game; null until the user has an active entitlement
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? launchUrl;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -106,7 +96,6 @@ class GameAccessStatusResponse {
     other.requiredBalance == requiredBalance &&
     other.currentBalance == currentBalance &&
     other.denyReason == denyReason &&
-    other.launchUrl == launchUrl &&
     other.entitlementId == entitlementId;
 
   @override
@@ -119,11 +108,10 @@ class GameAccessStatusResponse {
     (requiredBalance == null ? 0 : requiredBalance!.hashCode) +
     (currentBalance == null ? 0 : currentBalance!.hashCode) +
     (denyReason == null ? 0 : denyReason!.hashCode) +
-    (launchUrl == null ? 0 : launchUrl!.hashCode) +
     (entitlementId == null ? 0 : entitlementId!.hashCode);
 
   @override
-  String toString() => 'GameAccessStatusResponse[gameKey=$gameKey, eligible=$eligible, hasActiveEntitlement=$hasActiveEntitlement, currency=$currency, requiredBalance=$requiredBalance, currentBalance=$currentBalance, denyReason=$denyReason, launchUrl=$launchUrl, entitlementId=$entitlementId]';
+  String toString() => 'GameAccessStatusResponse[gameKey=$gameKey, eligible=$eligible, hasActiveEntitlement=$hasActiveEntitlement, currency=$currency, requiredBalance=$requiredBalance, currentBalance=$currentBalance, denyReason=$denyReason, entitlementId=$entitlementId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -161,11 +149,6 @@ class GameAccessStatusResponse {
       json[r'denyReason'] = this.denyReason;
     } else {
       json[r'denyReason'] = null;
-    }
-    if (this.launchUrl != null) {
-      json[r'launchUrl'] = this.launchUrl;
-    } else {
-      json[r'launchUrl'] = null;
     }
     if (this.entitlementId != null) {
       json[r'entitlementId'] = this.entitlementId;
@@ -205,7 +188,6 @@ class GameAccessStatusResponse {
             ? null
             : num.parse('${json[r'currentBalance']}'),
         denyReason: mapValueOfType<String>(json, r'denyReason'),
-        launchUrl: mapValueOfType<String>(json, r'launchUrl'),
         entitlementId: mapValueOfType<int>(json, r'entitlementId'),
       );
     }

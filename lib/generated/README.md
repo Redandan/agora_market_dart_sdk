@@ -634,6 +634,7 @@ Class | Method | HTTP request | Description
 *TestApi* | [**generateTestData**](doc//TestApi.md#generatetestdata) | **POST** /test/generate-test-data | 生成測試數據
 *TestApi* | [**getJwtConfig**](doc//TestApi.md#getjwtconfig) | **GET** /test/jwt-config | 
 *TgMiniAppGameSessionControllerApi* | [**endSession**](doc//TgMiniAppGameSessionControllerApi.md#endsession) | **POST** /tg-games/{gameKey}/sessions/{sessionId}/end | 
+*TgMiniAppGameSessionControllerApi* | [**exchangeLaunch**](doc//TgMiniAppGameSessionControllerApi.md#exchangelaunch) | **POST** /tg-games/{gameKey}/launch/exchange | 
 *TgMiniAppGameSessionControllerApi* | [**startSession**](doc//TgMiniAppGameSessionControllerApi.md#startsession) | **POST** /tg-games/{gameKey}/sessions | 
 *UserAddressesApi* | [**createAddress**](doc//UserAddressesApi.md#createaddress) | **POST** /user-addresses/create | 創建地址
 *UserAddressesApi* | [**deleteAddress**](doc//UserAddressesApi.md#deleteaddress) | **DELETE** /user-addresses/{addressId} | 刪除地址
@@ -850,9 +851,12 @@ Class | Method | HTTP request | Description
  - [GameAccessPurchaseRequest](doc//GameAccessPurchaseRequest.md)
  - [GameAccessPurchaseResponse](doc//GameAccessPurchaseResponse.md)
  - [GameAccessStatusResponse](doc//GameAccessStatusResponse.md)
+ - [GameLaunchExchangeRequest](doc//GameLaunchExchangeRequest.md)
+ - [GameLaunchExchangeResponse](doc//GameLaunchExchangeResponse.md)
  - [GameRoundDTO](doc//GameRoundDTO.md)
  - [GameSessionResponse](doc//GameSessionResponse.md)
  - [GameSessionStartRequest](doc//GameSessionStartRequest.md)
+ - [GameSessionStartResponse](doc//GameSessionStartResponse.md)
  - [GenerateLoginTokenRequest](doc//GenerateLoginTokenRequest.md)
  - [GroqUsageStatsDTO](doc//GroqUsageStatsDTO.md)
  - [Group](doc//Group.md)
