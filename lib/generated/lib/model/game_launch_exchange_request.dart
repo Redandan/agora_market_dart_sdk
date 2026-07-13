@@ -13,16 +13,10 @@ part of openapi.api;
 class GameLaunchExchangeRequest {
   /// Returns a new [GameLaunchExchangeRequest] instance.
   GameLaunchExchangeRequest({
-    this.initData,
+    required this.initData,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? initData;
+  String initData;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is GameLaunchExchangeRequest &&
@@ -31,18 +25,14 @@ class GameLaunchExchangeRequest {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (initData == null ? 0 : initData!.hashCode);
+    (initData.hashCode);
 
   @override
   String toString() => 'GameLaunchExchangeRequest[initData=$initData]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.initData != null) {
       json[r'initData'] = this.initData;
-    } else {
-      json[r'initData'] = null;
-    }
     return json;
   }
 
@@ -65,7 +55,7 @@ class GameLaunchExchangeRequest {
       }());
 
       return GameLaunchExchangeRequest(
-        initData: mapValueOfType<String>(json, r'initData'),
+        initData: mapValueOfType<String>(json, r'initData')!,
       );
     }
     return null;
@@ -113,6 +103,7 @@ class GameLaunchExchangeRequest {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'initData',
   };
 }
 

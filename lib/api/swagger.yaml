@@ -2620,12 +2620,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
+        }
       }
     },
     "/tg-game/activity": {
@@ -25809,7 +25804,10 @@
             "maxLength": 8192,
             "minLength": 0
           }
-        }
+        },
+        "required": [
+          "initData"
+        ]
       },
       "GameLaunchExchangeResponse": {
         "type": "object",
