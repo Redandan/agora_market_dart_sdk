@@ -35,13 +35,16 @@ class GameSessionStartResponse {
   /// 遊戲 Session 狀態
   GameSessionStartResponseStatusEnum status;
 
+  /// Session start instant in UTC
   DateTime startedAt;
 
+  /// Session expiry instant in UTC
   DateTime expiresAt;
 
   /// Short-lived Telegram transport URL carrying a one-time start capability
   String launchUrl;
 
+  /// One-time Telegram launch capability expiry instant in UTC
   DateTime launchExpiresAt;
 
   @override

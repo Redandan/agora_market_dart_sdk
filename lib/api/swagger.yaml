@@ -25455,14 +25455,14 @@
           "fullAddress": {
             "type": "string"
           },
+          "convenienceStorePickup": {
+            "type": "boolean"
+          },
           "logisticsDescription": {
             "type": "string"
           },
           "recipientInfo": {
             "type": "string"
-          },
-          "convenienceStorePickup": {
-            "type": "boolean"
           }
         },
         "required": [
@@ -25814,11 +25814,15 @@
           },
           "startedAt": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "Session start instant in UTC",
+            "example": "2026-07-13T13:15:00Z"
           },
           "expiresAt": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "Session expiry instant in UTC",
+            "example": "2026-07-13T13:30:00Z"
           },
           "launchUrl": {
             "type": "string",
@@ -25826,7 +25830,9 @@
           },
           "launchExpiresAt": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "One-time Telegram launch capability expiry instant in UTC",
+            "example": "2026-07-13T13:17:00Z"
           }
         },
         "required": [
@@ -25874,15 +25880,21 @@
           },
           "startedAt": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "Session start instant in UTC",
+            "example": "2026-07-13T13:15:00Z"
           },
           "expiresAt": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "Session expiry instant in UTC",
+            "example": "2026-07-13T13:30:00Z"
           },
           "endedAt": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "Session end instant in UTC",
+            "example": "2026-07-13T13:20:00Z"
           }
         },
         "required": [
@@ -25935,11 +25947,15 @@
           },
           "verifiedAt": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "Telegram launch verification instant in UTC",
+            "example": "2026-07-13T13:15:30Z"
           },
           "sessionExpiresAt": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "Session expiry instant in UTC",
+            "example": "2026-07-13T13:30:00Z"
           },
           "gameplayAllowed": {
             "type": "boolean"
@@ -27086,10 +27102,10 @@
             },
             "uniqueItems": true
           },
-          "defaultShippingFee": {
+          "minimumShippingFee": {
             "type": "number"
           },
-          "minimumShippingFee": {
+          "defaultShippingFee": {
             "type": "number"
           },
           "stockLow": {
@@ -45686,13 +45702,13 @@
             "type": "integer",
             "format": "int32"
           },
+          "outOfStock": {
+            "type": "boolean"
+          },
           "lowStock": {
             "type": "boolean"
           },
           "belowMinimum": {
-            "type": "boolean"
-          },
-          "outOfStock": {
             "type": "boolean"
           }
         }

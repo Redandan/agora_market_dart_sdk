@@ -49,6 +49,7 @@ class GameSessionResponse {
   ///
   String? denyReason;
 
+  /// Session start instant in UTC
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -57,6 +58,7 @@ class GameSessionResponse {
   ///
   DateTime? startedAt;
 
+  /// Session expiry instant in UTC
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -65,6 +67,7 @@ class GameSessionResponse {
   ///
   DateTime? expiresAt;
 
+  /// Session end instant in UTC
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated

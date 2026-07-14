@@ -34,8 +34,10 @@ class GameLaunchExchangeResponse {
   /// 遊戲 Session 狀態
   GameLaunchExchangeResponseStatusEnum status;
 
+  /// Telegram launch verification instant in UTC
   DateTime verifiedAt;
 
+  /// Session expiry instant in UTC
   DateTime sessionExpiresAt;
 
   bool gameplayAllowed;
