@@ -488,6 +488,8 @@ class ApiClient {
           return DemandStatusUpdateRequest.fromJson(value);
         case 'DeviceInfo':
           return DeviceInfo.fromJson(value);
+        case 'DimensionBreakdown':
+          return DimensionBreakdown.fromJson(value);
         case 'Dispute':
           return Dispute.fromJson(value);
         case 'DisputeAiAnalysisResponse':
@@ -514,6 +516,8 @@ class ApiClient {
           return EmailLoginSendCodeRequest.fromJson(value);
         case 'EmailLoginSendCodeResponse':
           return EmailLoginSendCodeResponse.fromJson(value);
+        case 'Engagement':
+          return Engagement.fromJson(value);
         case 'ErrorResponse':
           return ErrorResponse.fromJson(value);
         case 'ExchangeRateRange':
@@ -858,6 +862,8 @@ class ApiClient {
           return PaytableWithRtpDTO.fromJson(value);
         case 'PendingQuestionResponse':
           return PendingQuestionResponse.fromJson(value);
+        case 'Period':
+          return Period.fromJson(value);
         case 'PeriodBlock':
           return PeriodBlock.fromJson(value);
         case 'PickupStore':
@@ -872,6 +878,8 @@ class ApiClient {
           return PickupStoreSyncStatusResponse.fromJson(value);
         case 'PlaceBetRequest':
           return PlaceBetRequest.fromJson(value);
+        case 'PlatformTrafficOverviewResponse':
+          return PlatformTrafficOverviewResponse.fromJson(value);
         case 'PostCreateParam':
           return PostCreateParam.fromJson(value);
         case 'PostResponse':
@@ -1006,6 +1014,8 @@ class ApiClient {
           return PwaSignalReportRequest.fromJson(value);
         case 'PwaSignalSummaryResponse':
           return PwaSignalSummaryResponse.fromJson(value);
+        case 'Quality':
+          return Quality.fromJson(value);
         case 'QuickLogisticsRequest':
           return QuickLogisticsRequest.fromJson(value);
         case 'QuickLogisticsResult':
@@ -1212,6 +1222,8 @@ class ApiClient {
           return TopSellerDTO.fromJson(value);
         case 'TrackReferrerRequest':
           return TrackReferrerRequest.fromJson(value);
+        case 'TrafficSummary':
+          return TrafficSummary.fromJson(value);
         case 'Transaction':
           return Transaction.fromJson(value);
         case 'TransactionListParam':

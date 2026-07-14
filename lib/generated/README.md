@@ -247,6 +247,7 @@ Class | Method | HTTP request | Description
 *AdminSystemConfigApi* | [**getMaintenanceStatus**](doc//AdminSystemConfigApi.md#getmaintenancestatus) | **GET** /admin/system-config/maintenance | 獲取維護開關狀態
 *AdminSystemConfigApi* | [**setDeliveryMaintenance**](doc//AdminSystemConfigApi.md#setdeliverymaintenance) | **PUT** /admin/system-config/maintenance/delivery | 設置外送員入口維護開關
 *AdminSystemConfigApi* | [**setSellerMaintenance**](doc//AdminSystemConfigApi.md#setsellermaintenance) | **PUT** /admin/system-config/maintenance/seller | 設置賣家入口維護開關
+*AdminTrafficApi* | [**getPlatformOverview**](doc//AdminTrafficApi.md#getplatformoverview) | **GET** /admin/traffic/platform/overview | 獲取 APP 服務流量概覽
 *AdminTrafficApi* | [**getRegistrationOverview**](doc//AdminTrafficApi.md#getregistrationoverview) | **GET** /admin/traffic/registrations/overview | 獲取註冊流量概覽
 *AdminTrafficApi* | [**getSlotOverview**](doc//AdminTrafficApi.md#getslotoverview) | **GET** /admin/traffic/slot/overview | Slot 遊戲流量概覽
 *AdminTrafficApi* | [**getSlotToday**](doc//AdminTrafficApi.md#getslottoday) | **GET** /admin/traffic/slot/today | 今日 Slot 小時分佈
@@ -825,6 +826,7 @@ Class | Method | HTTP request | Description
  - [DemandStatusHistoryResponse](doc//DemandStatusHistoryResponse.md)
  - [DemandStatusUpdateRequest](doc//DemandStatusUpdateRequest.md)
  - [DeviceInfo](doc//DeviceInfo.md)
+ - [DimensionBreakdown](doc//DimensionBreakdown.md)
  - [Dispute](doc//Dispute.md)
  - [DisputeAiAnalysisResponse](doc//DisputeAiAnalysisResponse.md)
  - [DisputeAppealParam](doc//DisputeAppealParam.md)
@@ -838,6 +840,7 @@ Class | Method | HTTP request | Description
  - [EmailLoginRequest](doc//EmailLoginRequest.md)
  - [EmailLoginSendCodeRequest](doc//EmailLoginSendCodeRequest.md)
  - [EmailLoginSendCodeResponse](doc//EmailLoginSendCodeResponse.md)
+ - [Engagement](doc//Engagement.md)
  - [ErrorResponse](doc//ErrorResponse.md)
  - [ExchangeRateRange](doc//ExchangeRateRange.md)
  - [ExchangeRateRangeSuggestionDTO](doc//ExchangeRateRangeSuggestionDTO.md)
@@ -1010,6 +1013,7 @@ Class | Method | HTTP request | Description
  - [PaytableEntryRequest](doc//PaytableEntryRequest.md)
  - [PaytableWithRtpDTO](doc//PaytableWithRtpDTO.md)
  - [PendingQuestionResponse](doc//PendingQuestionResponse.md)
+ - [Period](doc//Period.md)
  - [PeriodBlock](doc//PeriodBlock.md)
  - [PickupStore](doc//PickupStore.md)
  - [PickupStoreSearchParam](doc//PickupStoreSearchParam.md)
@@ -1017,6 +1021,7 @@ Class | Method | HTTP request | Description
  - [PickupStoreSyncResponse](doc//PickupStoreSyncResponse.md)
  - [PickupStoreSyncStatusResponse](doc//PickupStoreSyncStatusResponse.md)
  - [PlaceBetRequest](doc//PlaceBetRequest.md)
+ - [PlatformTrafficOverviewResponse](doc//PlatformTrafficOverviewResponse.md)
  - [PostCreateParam](doc//PostCreateParam.md)
  - [PostResponse](doc//PostResponse.md)
  - [PostSearchParam](doc//PostSearchParam.md)
@@ -1084,6 +1089,7 @@ Class | Method | HTTP request | Description
  - [PwaLogEntry](doc//PwaLogEntry.md)
  - [PwaSignalReportRequest](doc//PwaSignalReportRequest.md)
  - [PwaSignalSummaryResponse](doc//PwaSignalSummaryResponse.md)
+ - [Quality](doc//Quality.md)
  - [QuickLogisticsRequest](doc//QuickLogisticsRequest.md)
  - [QuickLogisticsResult](doc//QuickLogisticsResult.md)
  - [Reason](doc//Reason.md)
@@ -1187,6 +1193,7 @@ Class | Method | HTTP request | Description
  - [TopProductDTO](doc//TopProductDTO.md)
  - [TopSellerDTO](doc//TopSellerDTO.md)
  - [TrackReferrerRequest](doc//TrackReferrerRequest.md)
+ - [TrafficSummary](doc//TrafficSummary.md)
  - [Transaction](doc//Transaction.md)
  - [TransactionListParam](doc//TransactionListParam.md)
  - [TransactionSearchParam](doc//TransactionSearchParam.md)

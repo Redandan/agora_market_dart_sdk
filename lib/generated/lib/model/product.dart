@@ -73,8 +73,8 @@ class Product {
     this.imageUrls = const {},
     this.inStock,
     this.skus = const {},
-    this.minimumShippingFee,
     this.defaultShippingFee,
+    this.minimumShippingFee,
     this.stockLow,
     this.stockBelowMinimum,
     this.pickupServiceTypes = const [],
@@ -534,7 +534,7 @@ class Product {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  num? minimumShippingFee;
+  num? defaultShippingFee;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -542,7 +542,7 @@ class Product {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  num? defaultShippingFee;
+  num? minimumShippingFee;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -635,8 +635,8 @@ class Product {
     _deepEquality.equals(other.imageUrls, imageUrls) &&
     other.inStock == inStock &&
     _deepEquality.equals(other.skus, skus) &&
-    other.minimumShippingFee == minimumShippingFee &&
     other.defaultShippingFee == defaultShippingFee &&
+    other.minimumShippingFee == minimumShippingFee &&
     other.stockLow == stockLow &&
     other.stockBelowMinimum == stockBelowMinimum &&
     _deepEquality.equals(other.pickupServiceTypes, pickupServiceTypes) &&
@@ -706,8 +706,8 @@ class Product {
     (imageUrls.hashCode) +
     (inStock == null ? 0 : inStock!.hashCode) +
     (skus.hashCode) +
-    (minimumShippingFee == null ? 0 : minimumShippingFee!.hashCode) +
     (defaultShippingFee == null ? 0 : defaultShippingFee!.hashCode) +
+    (minimumShippingFee == null ? 0 : minimumShippingFee!.hashCode) +
     (stockLow == null ? 0 : stockLow!.hashCode) +
     (stockBelowMinimum == null ? 0 : stockBelowMinimum!.hashCode) +
     (pickupServiceTypes.hashCode) +
@@ -715,7 +715,7 @@ class Product {
     (shippingFee == null ? 0 : shippingFee!.hashCode);
 
   @override
-  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, stock=$stock, category=$category, sellerId=$sellerId, imageUrlsJson=$imageUrlsJson, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, reviewCount=$reviewCount, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skusJson=$skusJson, brand=$brand, minStock=$minStock, pickupServiceTypesJson=$pickupServiceTypesJson, pickupServiceTypeFeesJson=$pickupServiceTypeFeesJson, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, serviceLeadTimeHours=$serviceLeadTimeHours, maxConcurrentOrders=$maxConcurrentOrders, buyerInfoRequiredJson=$buyerInfoRequiredJson, dataResidencyNotice=$dataResidencyNotice, subscriptionDurationDays=$subscriptionDurationDays, subscriptionAccessNote=$subscriptionAccessNote, reportCount=$reportCount, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions, viewerLoggedIn=$viewerLoggedIn, priceUsdt=$priceUsdt, exchangeRate=$exchangeRate, usingDefaultRate=$usingDefaultRate, freeShippingThresholdUsdt=$freeShippingThresholdUsdt, imageUrls=$imageUrls, inStock=$inStock, skus=$skus, minimumShippingFee=$minimumShippingFee, defaultShippingFee=$defaultShippingFee, stockLow=$stockLow, stockBelowMinimum=$stockBelowMinimum, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, shippingFee=$shippingFee]';
+  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, stock=$stock, category=$category, sellerId=$sellerId, imageUrlsJson=$imageUrlsJson, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, reviewCount=$reviewCount, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skusJson=$skusJson, brand=$brand, minStock=$minStock, pickupServiceTypesJson=$pickupServiceTypesJson, pickupServiceTypeFeesJson=$pickupServiceTypeFeesJson, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, serviceLeadTimeHours=$serviceLeadTimeHours, maxConcurrentOrders=$maxConcurrentOrders, buyerInfoRequiredJson=$buyerInfoRequiredJson, dataResidencyNotice=$dataResidencyNotice, subscriptionDurationDays=$subscriptionDurationDays, subscriptionAccessNote=$subscriptionAccessNote, reportCount=$reportCount, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions, viewerLoggedIn=$viewerLoggedIn, priceUsdt=$priceUsdt, exchangeRate=$exchangeRate, usingDefaultRate=$usingDefaultRate, freeShippingThresholdUsdt=$freeShippingThresholdUsdt, imageUrls=$imageUrls, inStock=$inStock, skus=$skus, defaultShippingFee=$defaultShippingFee, minimumShippingFee=$minimumShippingFee, stockLow=$stockLow, stockBelowMinimum=$stockBelowMinimum, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, shippingFee=$shippingFee]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -943,15 +943,15 @@ class Product {
       json[r'inStock'] = null;
     }
       json[r'skus'] = this.skus.toList(growable: false);
-    if (this.minimumShippingFee != null) {
-      json[r'minimumShippingFee'] = this.minimumShippingFee;
-    } else {
-      json[r'minimumShippingFee'] = null;
-    }
     if (this.defaultShippingFee != null) {
       json[r'defaultShippingFee'] = this.defaultShippingFee;
     } else {
       json[r'defaultShippingFee'] = null;
+    }
+    if (this.minimumShippingFee != null) {
+      json[r'minimumShippingFee'] = this.minimumShippingFee;
+    } else {
+      json[r'minimumShippingFee'] = null;
     }
     if (this.stockLow != null) {
       json[r'stockLow'] = this.stockLow;
@@ -1066,12 +1066,12 @@ class Product {
         skus: json[r'skus'] is Iterable
             ? (json[r'skus'] as Iterable).cast<String>().toSet()
             : const {},
-        minimumShippingFee: json[r'minimumShippingFee'] == null
-            ? null
-            : num.parse('${json[r'minimumShippingFee']}'),
         defaultShippingFee: json[r'defaultShippingFee'] == null
             ? null
             : num.parse('${json[r'defaultShippingFee']}'),
+        minimumShippingFee: json[r'minimumShippingFee'] == null
+            ? null
+            : num.parse('${json[r'minimumShippingFee']}'),
         stockLow: mapValueOfType<bool>(json, r'stockLow'),
         stockBelowMinimum: mapValueOfType<bool>(json, r'stockBelowMinimum'),
         pickupServiceTypes: ProductPickupServiceTypesEnum.listFromJson(json[r'pickupServiceTypes']),

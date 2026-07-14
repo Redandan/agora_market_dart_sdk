@@ -16,6 +16,86 @@ class AdminTrafficApi {
 
   final ApiClient apiClient;
 
+  /// 獲取 APP 服務流量概覽
+  ///
+  /// 返回後端可證明的 30 分鐘訪問窗口、APP 服務/載體/渠道分佈、商品瀏覽、有效搜尋及資料品質。不包含完整 URL、IP、User-Agent 或訪客識別鍵。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] days:
+  ///   本地日曆天數，包含今天；1 至 90，默認 7
+  ///
+  /// * [String] timeZone:
+  ///   報表日界線時區，默認 Asia/Taipei
+  ///
+  /// * [bool] includeTest:
+  ///   是否納入已識別測試帳號；bot 永遠排除於主指標
+  Future<Response> getPlatformOverviewWithHttpInfo({ int? days, String? timeZone, bool? includeTest, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/traffic/platform/overview';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (days != null) {
+      queryParams.addAll(_queryParams('', 'days', days));
+    }
+    if (timeZone != null) {
+      queryParams.addAll(_queryParams('', 'timeZone', timeZone));
+    }
+    if (includeTest != null) {
+      queryParams.addAll(_queryParams('', 'includeTest', includeTest));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 獲取 APP 服務流量概覽
+  ///
+  /// 返回後端可證明的 30 分鐘訪問窗口、APP 服務/載體/渠道分佈、商品瀏覽、有效搜尋及資料品質。不包含完整 URL、IP、User-Agent 或訪客識別鍵。
+  ///
+  /// Parameters:
+  ///
+  /// * [int] days:
+  ///   本地日曆天數，包含今天；1 至 90，默認 7
+  ///
+  /// * [String] timeZone:
+  ///   報表日界線時區，默認 Asia/Taipei
+  ///
+  /// * [bool] includeTest:
+  ///   是否納入已識別測試帳號；bot 永遠排除於主指標
+  Future<PlatformTrafficOverviewResponse?> getPlatformOverview({ int? days, String? timeZone, bool? includeTest, }) async {
+    final response = await getPlatformOverviewWithHttpInfo( days: days, timeZone: timeZone, includeTest: includeTest, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PlatformTrafficOverviewResponse',) as PlatformTrafficOverviewResponse;
+    
+    }
+    return null;
+  }
+
   /// 獲取註冊流量概覽
   ///
   /// 返回指定時間範圍內的總註冊數、今日/昨日/上週同日對比、每日趨勢、渠道分佈、推廣碼排行。默認查詢最近 30 天。

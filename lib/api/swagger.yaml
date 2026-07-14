@@ -19126,6 +19126,66 @@
         ]
       }
     },
+    "/admin/traffic/platform/overview": {
+      "get": {
+        "tags": [
+          "Admin Traffic"
+        ],
+        "summary": "獲取 APP 服務流量概覽",
+        "description": "返回後端可證明的 30 分鐘訪問窗口、APP 服務/載體/渠道分佈、商品瀏覽、有效搜尋及資料品質。不包含完整 URL、IP、User-Agent 或訪客識別鍵。",
+        "operationId": "getPlatformOverview",
+        "parameters": [
+          {
+            "name": "days",
+            "in": "query",
+            "description": "本地日曆天數，包含今天；1 至 90，默認 7",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 7
+            }
+          },
+          {
+            "name": "timeZone",
+            "in": "query",
+            "description": "報表日界線時區，默認 Asia/Taipei",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "Asia/Taipei"
+            }
+          },
+          {
+            "name": "includeTest",
+            "in": "query",
+            "description": "是否納入已識別測試帳號；bot 永遠排除於主指標",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformTrafficOverviewResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/admin/telegram-monitor/routing-status": {
       "get": {
         "tags": [
@@ -27026,10 +27086,10 @@
             },
             "uniqueItems": true
           },
-          "minimumShippingFee": {
+          "defaultShippingFee": {
             "type": "number"
           },
-          "defaultShippingFee": {
+          "minimumShippingFee": {
             "type": "number"
           },
           "stockLow": {
@@ -48476,6 +48536,165 @@
             "items": {
               "$ref": "#/components/schemas/PromoCodeStatDto"
             }
+          }
+        }
+      },
+      "DimensionBreakdown": {
+        "type": "object",
+        "properties": {
+          "dimension": {
+            "type": "string"
+          },
+          "visitWindows30m": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "estimatedUniqueVisitors": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "authenticatedUsers": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Engagement": {
+        "type": "object",
+        "properties": {
+          "productViews": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "productViewers": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "activeProductSearches": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "zeroResultProductSearches": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Period": {
+        "type": "object",
+        "properties": {
+          "days": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "timeZone": {
+            "type": "string"
+          },
+          "localStartDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "startUtc": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endUtc": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "coverageSinceUtc": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "PlatformTrafficOverviewResponse": {
+        "type": "object",
+        "description": "後端可證明的 APP 服務流量概覽",
+        "properties": {
+          "period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "traffic": {
+            "$ref": "#/components/schemas/TrafficSummary"
+          },
+          "engagement": {
+            "$ref": "#/components/schemas/Engagement"
+          },
+          "quality": {
+            "$ref": "#/components/schemas/Quality"
+          },
+          "byService": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DimensionBreakdown"
+            }
+          },
+          "bySurface": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DimensionBreakdown"
+            }
+          },
+          "byChannel": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DimensionBreakdown"
+            }
+          }
+        }
+      },
+      "Quality": {
+        "type": "object",
+        "properties": {
+          "includeTest": {
+            "type": "boolean"
+          },
+          "recognizedTestVisitWindows": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "excludedTestVisitWindows": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "excludedBotVisitWindows": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "unknownSurfaceVisitWindows": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "unknownChannelVisitWindows": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "visitSemantics": {
+            "type": "string"
+          },
+          "engagementSemantics": {
+            "type": "string"
+          },
+          "conversionCoverage": {
+            "type": "string"
+          }
+        }
+      },
+      "TrafficSummary": {
+        "type": "object",
+        "properties": {
+          "visitWindows30m": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "estimatedUniqueVisitors": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "authenticatedUsers": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },
