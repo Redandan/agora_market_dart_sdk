@@ -937,6 +937,7 @@ Class | Method | HTTP request | Description
  - [OAuth2TokenIdRequest](doc//OAuth2TokenIdRequest.md)
  - [OAuth2TokenResponse](doc//OAuth2TokenResponse.md)
  - [OAuthBindingInfo](doc//OAuthBindingInfo.md)
+ - [ObservationHealth](doc//ObservationHealth.md)
  - [Order](doc//Order.md)
  - [OrderActionState](doc//OrderActionState.md)
  - [OrderCancelParam](doc//OrderCancelParam.md)

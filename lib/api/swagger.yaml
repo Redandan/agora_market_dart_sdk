@@ -48580,6 +48580,89 @@
           }
         }
       },
+      "ObservationHealth": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "metricsSinceUtc": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "acceptedObservations": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "locallyDeduplicatedObservations": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "scheduledObservations": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "scheduledTestObservations": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "scheduledBotObservations": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "attributionFailures": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "asyncRejectedObservations": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "schedulingFailures": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "persistedNewWindows": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "databaseDeduplicatedObservations": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "persistenceFailures": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastSuccessfulPersistenceAtUtc": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastFailureAtUtc": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastFailureType": {
+            "type": "string"
+          },
+          "executorActiveThreads": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "executorPoolSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "executorQueueDepth": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "executorQueueRemainingCapacity": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
       "Period": {
         "type": "object",
         "properties": {
@@ -48623,6 +48706,9 @@
           },
           "quality": {
             "$ref": "#/components/schemas/Quality"
+          },
+          "observationHealth": {
+            "$ref": "#/components/schemas/ObservationHealth"
           },
           "byService": {
             "type": "array",

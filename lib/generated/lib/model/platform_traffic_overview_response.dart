@@ -17,6 +17,7 @@ class PlatformTrafficOverviewResponse {
     this.traffic,
     this.engagement,
     this.quality,
+    this.observationHealth,
     this.byService = const [],
     this.bySurface = const [],
     this.byChannel = const [],
@@ -54,6 +55,14 @@ class PlatformTrafficOverviewResponse {
   ///
   Quality? quality;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  ObservationHealth? observationHealth;
+
   List<DimensionBreakdown> byService;
 
   List<DimensionBreakdown> bySurface;
@@ -66,6 +75,7 @@ class PlatformTrafficOverviewResponse {
     other.traffic == traffic &&
     other.engagement == engagement &&
     other.quality == quality &&
+    other.observationHealth == observationHealth &&
     _deepEquality.equals(other.byService, byService) &&
     _deepEquality.equals(other.bySurface, bySurface) &&
     _deepEquality.equals(other.byChannel, byChannel);
@@ -77,12 +87,13 @@ class PlatformTrafficOverviewResponse {
     (traffic == null ? 0 : traffic!.hashCode) +
     (engagement == null ? 0 : engagement!.hashCode) +
     (quality == null ? 0 : quality!.hashCode) +
+    (observationHealth == null ? 0 : observationHealth!.hashCode) +
     (byService.hashCode) +
     (bySurface.hashCode) +
     (byChannel.hashCode);
 
   @override
-  String toString() => 'PlatformTrafficOverviewResponse[period=$period, traffic=$traffic, engagement=$engagement, quality=$quality, byService=$byService, bySurface=$bySurface, byChannel=$byChannel]';
+  String toString() => 'PlatformTrafficOverviewResponse[period=$period, traffic=$traffic, engagement=$engagement, quality=$quality, observationHealth=$observationHealth, byService=$byService, bySurface=$bySurface, byChannel=$byChannel]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -105,6 +116,11 @@ class PlatformTrafficOverviewResponse {
       json[r'quality'] = this.quality;
     } else {
       json[r'quality'] = null;
+    }
+    if (this.observationHealth != null) {
+      json[r'observationHealth'] = this.observationHealth;
+    } else {
+      json[r'observationHealth'] = null;
     }
       json[r'byService'] = this.byService.map((e) => e.toJson()).toList();
       json[r'bySurface'] = this.bySurface.map((e) => e.toJson()).toList();
@@ -135,6 +151,7 @@ class PlatformTrafficOverviewResponse {
         traffic: TrafficSummary.fromJson(json[r'traffic']),
         engagement: Engagement.fromJson(json[r'engagement']),
         quality: Quality.fromJson(json[r'quality']),
+        observationHealth: ObservationHealth.fromJson(json[r'observationHealth']),
         byService: DimensionBreakdown.listFromJson(json[r'byService']),
         bySurface: DimensionBreakdown.listFromJson(json[r'bySurface']),
         byChannel: DimensionBreakdown.listFromJson(json[r'byChannel']),

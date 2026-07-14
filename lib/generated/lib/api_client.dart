@@ -710,6 +710,8 @@ class ApiClient {
           return OAuth2TokenResponse.fromJson(value);
         case 'OAuthBindingInfo':
           return OAuthBindingInfo.fromJson(value);
+        case 'ObservationHealth':
+          return ObservationHealth.fromJson(value);
         case 'Order':
           return Order.fromJson(value);
         case 'OrderActionState':

@@ -373,6 +373,7 @@ part 'model/o_auth2_authorize_response.dart';
 part 'model/o_auth2_token_id_request.dart';
 part 'model/o_auth2_token_response.dart';
 part 'model/o_auth_binding_info.dart';
+part 'model/observation_health.dart';
 part 'model/order.dart';
 part 'model/order_action_state.dart';
 part 'model/order_cancel_param.dart';
