@@ -15952,6 +15952,38 @@
         }
       }
     },
+    "/public/seo/catalog": {
+      "get": {
+        "tags": [
+          "public-product-seo-controller"
+        ],
+        "operationId": "catalog",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/promo-codes/{code}": {
       "get": {
         "tags": [
