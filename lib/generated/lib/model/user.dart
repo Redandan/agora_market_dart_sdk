@@ -29,6 +29,8 @@ class User {
     this.displayDeliveryerName,
     this.promoCode,
     this.referrerGroupId,
+    this.referrerAttributionSource,
+    this.referrerAttributionCapturedAt,
     this.registrationMethod,
     this.registrationIp,
     this.registrationUa,
@@ -155,6 +157,18 @@ class User {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? referrerGroupId;
+
+  /// first-touch 歸因可信來源；null 代表 LEGACY_UNKNOWN
+  UserReferrerAttributionSourceEnum? referrerAttributionSource;
+
+  /// first-touch 歸因首次寫入時間；舊資料可為 null
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? referrerAttributionCapturedAt;
 
   /// 註冊方式
   UserRegistrationMethodEnum? registrationMethod;
@@ -301,6 +315,8 @@ class User {
     other.displayDeliveryerName == displayDeliveryerName &&
     other.promoCode == promoCode &&
     other.referrerGroupId == referrerGroupId &&
+    other.referrerAttributionSource == referrerAttributionSource &&
+    other.referrerAttributionCapturedAt == referrerAttributionCapturedAt &&
     other.registrationMethod == registrationMethod &&
     other.registrationIp == registrationIp &&
     other.registrationUa == registrationUa &&
@@ -338,6 +354,8 @@ class User {
     (displayDeliveryerName == null ? 0 : displayDeliveryerName!.hashCode) +
     (promoCode == null ? 0 : promoCode!.hashCode) +
     (referrerGroupId == null ? 0 : referrerGroupId!.hashCode) +
+    (referrerAttributionSource == null ? 0 : referrerAttributionSource!.hashCode) +
+    (referrerAttributionCapturedAt == null ? 0 : referrerAttributionCapturedAt!.hashCode) +
     (registrationMethod == null ? 0 : registrationMethod!.hashCode) +
     (registrationIp == null ? 0 : registrationIp!.hashCode) +
     (registrationUa == null ? 0 : registrationUa!.hashCode) +
@@ -357,7 +375,7 @@ class User {
     (trustedDevices.hashCode);
 
   @override
-  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, defaultHomePage=$defaultHomePage, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, referrerGroupId=$referrerGroupId, registrationMethod=$registrationMethod, registrationIp=$registrationIp, registrationUa=$registrationUa, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, trustedDevicesJson=$trustedDevicesJson, currentDeviceFingerprint=$currentDeviceFingerprint, currentIpAddress=$currentIpAddress, termsAcceptedVersion=$termsAcceptedVersion, termsAcceptedAt=$termsAcceptedAt, countryCode=$countryCode, countryDetectedAt=$countryDetectedAt, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin, trustedDevices=$trustedDevices]';
+  String toString() => 'User[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, defaultHomePage=$defaultHomePage, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, referrerGroupId=$referrerGroupId, referrerAttributionSource=$referrerAttributionSource, referrerAttributionCapturedAt=$referrerAttributionCapturedAt, registrationMethod=$registrationMethod, registrationIp=$registrationIp, registrationUa=$registrationUa, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, trustedDevicesJson=$trustedDevicesJson, currentDeviceFingerprint=$currentDeviceFingerprint, currentIpAddress=$currentIpAddress, termsAcceptedVersion=$termsAcceptedVersion, termsAcceptedAt=$termsAcceptedAt, countryCode=$countryCode, countryDetectedAt=$countryDetectedAt, createdAt=$createdAt, updatedAt=$updatedAt, admin=$admin, trustedDevices=$trustedDevices]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -420,6 +438,16 @@ class User {
       json[r'referrerGroupId'] = this.referrerGroupId;
     } else {
       json[r'referrerGroupId'] = null;
+    }
+    if (this.referrerAttributionSource != null) {
+      json[r'referrerAttributionSource'] = this.referrerAttributionSource;
+    } else {
+      json[r'referrerAttributionSource'] = null;
+    }
+    if (this.referrerAttributionCapturedAt != null) {
+      json[r'referrerAttributionCapturedAt'] = this.referrerAttributionCapturedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'referrerAttributionCapturedAt'] = null;
     }
     if (this.registrationMethod != null) {
       json[r'registrationMethod'] = this.registrationMethod;
@@ -532,6 +560,8 @@ class User {
         displayDeliveryerName: mapValueOfType<String>(json, r'displayDeliveryerName'),
         promoCode: mapValueOfType<String>(json, r'promoCode'),
         referrerGroupId: mapValueOfType<int>(json, r'referrerGroupId'),
+        referrerAttributionSource: UserReferrerAttributionSourceEnum.fromJson(json[r'referrerAttributionSource']),
+        referrerAttributionCapturedAt: mapDateTime(json, r'referrerAttributionCapturedAt', r''),
         registrationMethod: UserRegistrationMethodEnum.fromJson(json[r'registrationMethod']),
         registrationIp: mapValueOfType<String>(json, r'registrationIp'),
         registrationUa: mapValueOfType<String>(json, r'registrationUa'),
@@ -855,6 +885,86 @@ class UserDefaultHomePageEnumTypeTransformer {
 
   /// Singleton [UserDefaultHomePageEnumTypeTransformer] instance.
   static UserDefaultHomePageEnumTypeTransformer? _instance;
+}
+
+
+/// first-touch 歸因可信來源；null 代表 LEGACY_UNKNOWN
+class UserReferrerAttributionSourceEnum {
+  /// Instantiate a new enum with the provided [value].
+  const UserReferrerAttributionSourceEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const TELEGRAM_SIGNED_START_PARAM = UserReferrerAttributionSourceEnum._(r'TELEGRAM_SIGNED_START_PARAM');
+  static const CLIENT_CANDIDATE_UNVERIFIED = UserReferrerAttributionSourceEnum._(r'CLIENT_CANDIDATE_UNVERIFIED');
+  static const LEGACY_UNKNOWN = UserReferrerAttributionSourceEnum._(r'LEGACY_UNKNOWN');
+  static const unknownDefaultOpenApi = UserReferrerAttributionSourceEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][UserReferrerAttributionSourceEnum].
+  static const values = <UserReferrerAttributionSourceEnum>[
+    TELEGRAM_SIGNED_START_PARAM,
+    CLIENT_CANDIDATE_UNVERIFIED,
+    LEGACY_UNKNOWN,
+    unknownDefaultOpenApi,
+  ];
+
+  static UserReferrerAttributionSourceEnum? fromJson(dynamic value) => UserReferrerAttributionSourceEnumTypeTransformer().decode(value);
+
+  static List<UserReferrerAttributionSourceEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <UserReferrerAttributionSourceEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = UserReferrerAttributionSourceEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [UserReferrerAttributionSourceEnum] to String,
+/// and [decode] dynamic data back to [UserReferrerAttributionSourceEnum].
+class UserReferrerAttributionSourceEnumTypeTransformer {
+  factory UserReferrerAttributionSourceEnumTypeTransformer() => _instance ??= const UserReferrerAttributionSourceEnumTypeTransformer._();
+
+  const UserReferrerAttributionSourceEnumTypeTransformer._();
+
+  String encode(UserReferrerAttributionSourceEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a UserReferrerAttributionSourceEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  UserReferrerAttributionSourceEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'TELEGRAM_SIGNED_START_PARAM': return UserReferrerAttributionSourceEnum.TELEGRAM_SIGNED_START_PARAM;
+        case r'CLIENT_CANDIDATE_UNVERIFIED': return UserReferrerAttributionSourceEnum.CLIENT_CANDIDATE_UNVERIFIED;
+        case r'LEGACY_UNKNOWN': return UserReferrerAttributionSourceEnum.LEGACY_UNKNOWN;
+        case r'unknown_default_open_api': return UserReferrerAttributionSourceEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [UserReferrerAttributionSourceEnumTypeTransformer] instance.
+  static UserReferrerAttributionSourceEnumTypeTransformer? _instance;
 }
 
 

@@ -23173,6 +23173,20 @@
             "format": "int64",
             "description": "Mini App / TG 群組來源歸因 ID，供訂單建立時 snapshot"
           },
+          "referrerAttributionSource": {
+            "type": "string",
+            "description": "first-touch 歸因可信來源；null 代表 LEGACY_UNKNOWN",
+            "enum": [
+              "TELEGRAM_SIGNED_START_PARAM",
+              "CLIENT_CANDIDATE_UNVERIFIED",
+              "LEGACY_UNKNOWN"
+            ]
+          },
+          "referrerAttributionCapturedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "first-touch 歸因首次寫入時間；舊資料可為 null"
+          },
           "registrationMethod": {
             "type": "string",
             "description": "註冊方式",
@@ -32662,6 +32676,20 @@
             "type": "integer",
             "format": "int64",
             "description": "下單時 snapshot 的 Mini App / TG 群組來源歸因 ID"
+          },
+          "referrerAttributionSource": {
+            "type": "string",
+            "description": "下單時不可變 snapshot 的歸因可信來源；null 代表 LEGACY_UNKNOWN",
+            "enum": [
+              "TELEGRAM_SIGNED_START_PARAM",
+              "CLIENT_CANDIDATE_UNVERIFIED",
+              "LEGACY_UNKNOWN"
+            ]
+          },
+          "referrerAttributionCapturedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "下單時 snapshot 的 buyer first-touch 歸因捕捉時間"
           },
           "status": {
             "type": "string",
@@ -42418,6 +42446,20 @@
             "type": "integer",
             "format": "int64",
             "description": "Mini App / TG 群組來源歸因 ID，供訂單建立時 snapshot"
+          },
+          "referrerAttributionSource": {
+            "type": "string",
+            "description": "first-touch 歸因可信來源；null 代表 LEGACY_UNKNOWN",
+            "enum": [
+              "TELEGRAM_SIGNED_START_PARAM",
+              "CLIENT_CANDIDATE_UNVERIFIED",
+              "LEGACY_UNKNOWN"
+            ]
+          },
+          "referrerAttributionCapturedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "first-touch 歸因首次寫入時間；舊資料可為 null"
           },
           "registrationMethod": {
             "type": "string",

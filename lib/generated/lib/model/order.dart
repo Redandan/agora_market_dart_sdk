@@ -33,6 +33,8 @@ class Order {
     this.sourceOrderRef,
     this.subscriptionId,
     this.referrerGroupId,
+    this.referrerAttributionSource,
+    this.referrerAttributionCapturedAt,
     required this.status,
     this.remark,
     this.buyerProvidedInfoJson,
@@ -159,6 +161,18 @@ class Order {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? referrerGroupId;
+
+  /// 下單時不可變 snapshot 的歸因可信來源；null 代表 LEGACY_UNKNOWN
+  OrderReferrerAttributionSourceEnum? referrerAttributionSource;
+
+  /// 下單時 snapshot 的 buyer first-touch 歸因捕捉時間
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? referrerAttributionCapturedAt;
 
   /// 訂單狀態
   OrderStatusEnum status;
@@ -365,6 +379,8 @@ class Order {
     other.sourceOrderRef == sourceOrderRef &&
     other.subscriptionId == subscriptionId &&
     other.referrerGroupId == referrerGroupId &&
+    other.referrerAttributionSource == referrerAttributionSource &&
+    other.referrerAttributionCapturedAt == referrerAttributionCapturedAt &&
     other.status == status &&
     other.remark == remark &&
     other.buyerProvidedInfoJson == buyerProvidedInfoJson &&
@@ -412,6 +428,8 @@ class Order {
     (sourceOrderRef == null ? 0 : sourceOrderRef!.hashCode) +
     (subscriptionId == null ? 0 : subscriptionId!.hashCode) +
     (referrerGroupId == null ? 0 : referrerGroupId!.hashCode) +
+    (referrerAttributionSource == null ? 0 : referrerAttributionSource!.hashCode) +
+    (referrerAttributionCapturedAt == null ? 0 : referrerAttributionCapturedAt!.hashCode) +
     (status.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
     (buyerProvidedInfoJson == null ? 0 : buyerProvidedInfoJson!.hashCode) +
@@ -437,7 +455,7 @@ class Order {
     (latestProofId == null ? 0 : latestProofId!.hashCode);
 
   @override
-  String toString() => 'Order[id=$id, version=$version, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, itemCount=$itemCount, orderTitle=$orderTitle, orderCoverImage=$orderCoverImage, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, pickupServiceType=$pickupServiceType, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, sourceOrderRef=$sourceOrderRef, subscriptionId=$subscriptionId, referrerGroupId=$referrerGroupId, status=$status, remark=$remark, buyerProvidedInfoJson=$buyerProvidedInfoJson, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, refundAmount=$refundAmount, refundOfferExpiresAt=$refundOfferExpiresAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, buyerName=$buyerName, buyerUsername=$buyerUsername, product=$product, orderItems=$orderItems, deliveryDetail=$deliveryDetail, store=$store, latestProofId=$latestProofId]';
+  String toString() => 'Order[id=$id, version=$version, productId=$productId, buyerId=$buyerId, sellerId=$sellerId, quantity=$quantity, itemCount=$itemCount, orderTitle=$orderTitle, orderCoverImage=$orderCoverImage, selectedSku=$selectedSku, shippingFee=$shippingFee, productPrice=$productPrice, orderAmount=$orderAmount, currency=$currency, pickupServiceType=$pickupServiceType, shippingCompany=$shippingCompany, trackingNumber=$trackingNumber, sourceOrderRef=$sourceOrderRef, subscriptionId=$subscriptionId, referrerGroupId=$referrerGroupId, referrerAttributionSource=$referrerAttributionSource, referrerAttributionCapturedAt=$referrerAttributionCapturedAt, status=$status, remark=$remark, buyerProvidedInfoJson=$buyerProvidedInfoJson, createdAt=$createdAt, updatedAt=$updatedAt, cancelledAt=$cancelledAt, refundedAt=$refundedAt, refundAmount=$refundAmount, refundOfferExpiresAt=$refundOfferExpiresAt, reviewedAt=$reviewedAt, originalPrice=$originalPrice, originalCurrency=$originalCurrency, exchangeRate=$exchangeRate, originalShippingFee=$originalShippingFee, exchangeRateTime=$exchangeRateTime, usingDefaultRate=$usingDefaultRate, buyerName=$buyerName, buyerUsername=$buyerUsername, product=$product, orderItems=$orderItems, deliveryDetail=$deliveryDetail, store=$store, latestProofId=$latestProofId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -496,6 +514,16 @@ class Order {
       json[r'referrerGroupId'] = this.referrerGroupId;
     } else {
       json[r'referrerGroupId'] = null;
+    }
+    if (this.referrerAttributionSource != null) {
+      json[r'referrerAttributionSource'] = this.referrerAttributionSource;
+    } else {
+      json[r'referrerAttributionSource'] = null;
+    }
+    if (this.referrerAttributionCapturedAt != null) {
+      json[r'referrerAttributionCapturedAt'] = this.referrerAttributionCapturedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'referrerAttributionCapturedAt'] = null;
     }
       json[r'status'] = this.status;
     if (this.remark != null) {
@@ -638,6 +666,8 @@ class Order {
         sourceOrderRef: mapValueOfType<String>(json, r'sourceOrderRef'),
         subscriptionId: mapValueOfType<int>(json, r'subscriptionId'),
         referrerGroupId: mapValueOfType<int>(json, r'referrerGroupId'),
+        referrerAttributionSource: OrderReferrerAttributionSourceEnum.fromJson(json[r'referrerAttributionSource']),
+        referrerAttributionCapturedAt: mapDateTime(json, r'referrerAttributionCapturedAt', r''),
         status: OrderStatusEnum.fromJson(json[r'status'])!,
         remark: mapValueOfType<String>(json, r'remark'),
         buyerProvidedInfoJson: mapValueOfType<String>(json, r'buyerProvidedInfoJson'),
@@ -929,6 +959,86 @@ class OrderShippingCompanyEnumTypeTransformer {
 
   /// Singleton [OrderShippingCompanyEnumTypeTransformer] instance.
   static OrderShippingCompanyEnumTypeTransformer? _instance;
+}
+
+
+/// 下單時不可變 snapshot 的歸因可信來源；null 代表 LEGACY_UNKNOWN
+class OrderReferrerAttributionSourceEnum {
+  /// Instantiate a new enum with the provided [value].
+  const OrderReferrerAttributionSourceEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const TELEGRAM_SIGNED_START_PARAM = OrderReferrerAttributionSourceEnum._(r'TELEGRAM_SIGNED_START_PARAM');
+  static const CLIENT_CANDIDATE_UNVERIFIED = OrderReferrerAttributionSourceEnum._(r'CLIENT_CANDIDATE_UNVERIFIED');
+  static const LEGACY_UNKNOWN = OrderReferrerAttributionSourceEnum._(r'LEGACY_UNKNOWN');
+  static const unknownDefaultOpenApi = OrderReferrerAttributionSourceEnum._(r'unknown_default_open_api');
+
+  /// List of all possible values in this [enum][OrderReferrerAttributionSourceEnum].
+  static const values = <OrderReferrerAttributionSourceEnum>[
+    TELEGRAM_SIGNED_START_PARAM,
+    CLIENT_CANDIDATE_UNVERIFIED,
+    LEGACY_UNKNOWN,
+    unknownDefaultOpenApi,
+  ];
+
+  static OrderReferrerAttributionSourceEnum? fromJson(dynamic value) => OrderReferrerAttributionSourceEnumTypeTransformer().decode(value);
+
+  static List<OrderReferrerAttributionSourceEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <OrderReferrerAttributionSourceEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = OrderReferrerAttributionSourceEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [OrderReferrerAttributionSourceEnum] to String,
+/// and [decode] dynamic data back to [OrderReferrerAttributionSourceEnum].
+class OrderReferrerAttributionSourceEnumTypeTransformer {
+  factory OrderReferrerAttributionSourceEnumTypeTransformer() => _instance ??= const OrderReferrerAttributionSourceEnumTypeTransformer._();
+
+  const OrderReferrerAttributionSourceEnumTypeTransformer._();
+
+  String encode(OrderReferrerAttributionSourceEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a OrderReferrerAttributionSourceEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  OrderReferrerAttributionSourceEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'TELEGRAM_SIGNED_START_PARAM': return OrderReferrerAttributionSourceEnum.TELEGRAM_SIGNED_START_PARAM;
+        case r'CLIENT_CANDIDATE_UNVERIFIED': return OrderReferrerAttributionSourceEnum.CLIENT_CANDIDATE_UNVERIFIED;
+        case r'LEGACY_UNKNOWN': return OrderReferrerAttributionSourceEnum.LEGACY_UNKNOWN;
+        case r'unknown_default_open_api': return OrderReferrerAttributionSourceEnum.unknownDefaultOpenApi;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [OrderReferrerAttributionSourceEnumTypeTransformer] instance.
+  static OrderReferrerAttributionSourceEnumTypeTransformer? _instance;
 }
 
 
