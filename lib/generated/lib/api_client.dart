@@ -686,6 +686,8 @@ class ApiClient {
           return ModerationAuditEventDTO.fromJson(value);
         case 'MonitoredGroupDTO':
           return MonitoredGroupDTO.fromJson(value);
+        case 'MultiValueMapStringString':
+          return MultiValueMapStringString.fromJson(value);
         case 'NaturalSearchRequest':
           return NaturalSearchRequest.fromJson(value);
         case 'NaturalSearchResponse':

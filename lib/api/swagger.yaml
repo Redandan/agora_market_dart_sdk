@@ -15893,6 +15893,65 @@
         }
       }
     },
+    "/public/seo/sitemap.xml": {
+      "get": {
+        "tags": [
+          "public-product-seo-controller"
+        ],
+        "operationId": "sitemap",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/xml;charset=UTF-8": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/public/seo/products/{id}": {
+      "get": {
+        "tags": [
+          "public-product-seo-controller"
+        ],
+        "operationId": "product",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "parameters",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/MultiValueMapStringString"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/promo-codes/{code}": {
       "get": {
         "tags": [
@@ -31797,14 +31856,14 @@
               "CREATOR_SUBSCRIPTION"
             ]
           },
+          "sourceRegion": {
+            "type": "string",
+            "description": "Issue #519 compatibility alias for suggestedSourceRegion"
+          },
           "confidence": {
             "type": "number",
             "format": "double",
             "description": "Issue #519 compatibility alias for categoryConfidence"
-          },
-          "sourceRegion": {
-            "type": "string",
-            "description": "Issue #519 compatibility alias for suggestedSourceRegion"
           }
         }
       },
@@ -45541,6 +45600,27 @@
             "type": "number",
             "format": "double",
             "description": "最近30天平均評分"
+          }
+        }
+      },
+      "MultiValueMapStringString": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "properties": {
+          "all": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "writeOnly": true
+          },
+          "empty": {
+            "type": "boolean"
           }
         }
       },

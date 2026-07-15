@@ -523,6 +523,8 @@ Class | Method | HTTP request | Description
 *PromoCodesApi* | [**searchPromoCodes**](doc//PromoCodesApi.md#searchpromocodes) | **GET** /promo-codes/search | 搜尋推廣碼
 *PromoCodesApi* | [**updateMyPromoCode**](doc//PromoCodesApi.md#updatemypromocode) | **PUT** /promo-codes/my-promo-code | 編輯我的推廣碼
 *PublicControllerApi* | [**test**](doc//PublicControllerApi.md#test) | **GET** /public/test | 
+*PublicProductSeoControllerApi* | [**product**](doc//PublicProductSeoControllerApi.md#product) | **GET** /public/seo/products/{id} | 
+*PublicProductSeoControllerApi* | [**sitemap**](doc//PublicProductSeoControllerApi.md#sitemap) | **GET** /public/seo/sitemap.xml | 
 *PublicStoresApi* | [**getPublicStoreSummary**](doc//PublicStoresApi.md#getpublicstoresummary) | **GET** /public/stores/{sellerId} | Get public seller store summary
 *PwaLogsApi* | [**getLogs**](doc//PwaLogsApi.md#getlogs) | **GET** /pwa-logs | 下載當前所有日誌
 *PwaLogsApi* | [**receivePwaLogs**](doc//PwaLogsApi.md#receivepwalogs) | **POST** /pwa-logs | 上傳 PWA 日誌
@@ -927,6 +929,7 @@ Class | Method | HTTP request | Description
  - [MetricsBlock](doc//MetricsBlock.md)
  - [ModerationAuditEventDTO](doc//ModerationAuditEventDTO.md)
  - [MonitoredGroupDTO](doc//MonitoredGroupDTO.md)
+ - [MultiValueMapStringString](doc//MultiValueMapStringString.md)
  - [NaturalSearchRequest](doc//NaturalSearchRequest.md)
  - [NaturalSearchResponse](doc//NaturalSearchResponse.md)
  - [NextInterestEstimateDTO](doc//NextInterestEstimateDTO.md)
