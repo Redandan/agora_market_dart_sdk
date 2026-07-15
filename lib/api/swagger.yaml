@@ -15952,6 +15952,46 @@
         }
       }
     },
+    "/public/seo/categories/{slug}": {
+      "get": {
+        "tags": [
+          "public-product-seo-controller"
+        ],
+        "operationId": "categoryCatalog",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/public/seo/catalog": {
       "get": {
         "tags": [
@@ -25632,14 +25672,14 @@
           "fullAddress": {
             "type": "string"
           },
+          "convenienceStorePickup": {
+            "type": "boolean"
+          },
           "logisticsDescription": {
             "type": "string"
           },
           "recipientInfo": {
             "type": "string"
-          },
-          "convenienceStorePickup": {
-            "type": "boolean"
           }
         },
         "required": [
