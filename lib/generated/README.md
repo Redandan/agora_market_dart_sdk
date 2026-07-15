@@ -414,9 +414,10 @@ Class | Method | HTTP request | Description
 *McpStreamableHttpControllerApi* | [**handleMcp**](doc//McpStreamableHttpControllerApi.md#handlemcp) | **POST** /mcp/v2 | 
 *McpStreamableHttpControllerApi* | [**handleMcp1**](doc//McpStreamableHttpControllerApi.md#handlemcp1) | **POST** /mcp | 
 *McpStreamableHttpControllerApi* | [**handleUserMcp**](doc//McpStreamableHttpControllerApi.md#handleusermcp) | **POST** /mcp/user/v4 | 
-*McpStreamableHttpControllerApi* | [**handleUserMcp1**](doc//McpStreamableHttpControllerApi.md#handleusermcp1) | **POST** /mcp/user/v2 | 
-*McpStreamableHttpControllerApi* | [**handleUserMcp2**](doc//McpStreamableHttpControllerApi.md#handleusermcp2) | **POST** /mcp/user | 
-*McpStreamableHttpControllerApi* | [**handleUserMcp3**](doc//McpStreamableHttpControllerApi.md#handleusermcp3) | **POST** /mcp/user/v3 | 
+*McpStreamableHttpControllerApi* | [**handleUserMcp1**](doc//McpStreamableHttpControllerApi.md#handleusermcp1) | **POST** /mcp/user/v5 | 
+*McpStreamableHttpControllerApi* | [**handleUserMcp2**](doc//McpStreamableHttpControllerApi.md#handleusermcp2) | **POST** /mcp/user/v2 | 
+*McpStreamableHttpControllerApi* | [**handleUserMcp3**](doc//McpStreamableHttpControllerApi.md#handleusermcp3) | **POST** /mcp/user | 
+*McpStreamableHttpControllerApi* | [**handleUserMcp4**](doc//McpStreamableHttpControllerApi.md#handleusermcp4) | **POST** /mcp/user/v3 | 
 *McpUserConnectorApi* | [**activitySummary**](doc//McpUserConnectorApi.md#activitysummary) | **GET** /mcp/user/connector/activity/summary | Get current user's best-effort ChatGPT MCP activity summary
 *McpUserConnectorApi* | [**config**](doc//McpUserConnectorApi.md#config) | **GET** /mcp/user/connector/config | Get public ChatGPT user MCP connector setup config
 *McpUserConnectorApi* | [**grants**](doc//McpUserConnectorApi.md#grants) | **GET** /mcp/user/connector/grants | List current user's ChatGPT MCP OAuth grants
