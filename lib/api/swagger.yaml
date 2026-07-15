@@ -6708,7 +6708,7 @@
         }
       }
     },
-    "/mcp/user/v4": {
+    "/mcp/user/v6": {
       "post": {
         "tags": [
           "mcp-streamable-http-controller"
@@ -6744,7 +6744,7 @@
         }
       }
     },
-    "/mcp/user/v5": {
+    "/mcp/user/v4": {
       "post": {
         "tags": [
           "mcp-streamable-http-controller"
@@ -6780,7 +6780,7 @@
         }
       }
     },
-    "/mcp/user/v2": {
+    "/mcp/user/v5": {
       "post": {
         "tags": [
           "mcp-streamable-http-controller"
@@ -6816,7 +6816,7 @@
         }
       }
     },
-    "/mcp/user": {
+    "/mcp/user/v2": {
       "post": {
         "tags": [
           "mcp-streamable-http-controller"
@@ -6852,12 +6852,48 @@
         }
       }
     },
-    "/mcp/user/v3": {
+    "/mcp/user": {
       "post": {
         "tags": [
           "mcp-streamable-http-controller"
         ],
         "operationId": "handleUserMcp_4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/mcp/user/v3": {
+      "post": {
+        "tags": [
+          "mcp-streamable-http-controller"
+        ],
+        "operationId": "handleUserMcp_5",
         "requestBody": {
           "content": {
             "application/json": {
@@ -27138,10 +27174,10 @@
             },
             "uniqueItems": true
           },
-          "defaultShippingFee": {
+          "minimumShippingFee": {
             "type": "number"
           },
-          "minimumShippingFee": {
+          "defaultShippingFee": {
             "type": "number"
           },
           "stockLow": {

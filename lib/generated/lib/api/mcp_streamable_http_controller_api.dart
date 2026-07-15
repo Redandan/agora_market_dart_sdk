@@ -110,13 +110,13 @@ class McpStreamableHttpControllerApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /mcp/user/v4' operation and returns the [Response].
+  /// Performs an HTTP 'POST /mcp/user/v6' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [Map<String, Object>] requestBody (required):
   Future<Response> handleUserMcpWithHttpInfo(Map<String, Object> requestBody,) async {
     // ignore: prefer_const_declarations
-    final path = r'/mcp/user/v4';
+    final path = r'/mcp/user/v6';
 
     // ignore: prefer_final_locals
     Object? postBody = requestBody;
@@ -157,13 +157,13 @@ class McpStreamableHttpControllerApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /mcp/user/v5' operation and returns the [Response].
+  /// Performs an HTTP 'POST /mcp/user/v4' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [Map<String, Object>] requestBody (required):
   Future<Response> handleUserMcp1WithHttpInfo(Map<String, Object> requestBody,) async {
     // ignore: prefer_const_declarations
-    final path = r'/mcp/user/v5';
+    final path = r'/mcp/user/v4';
 
     // ignore: prefer_final_locals
     Object? postBody = requestBody;
@@ -204,13 +204,13 @@ class McpStreamableHttpControllerApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /mcp/user/v2' operation and returns the [Response].
+  /// Performs an HTTP 'POST /mcp/user/v5' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [Map<String, Object>] requestBody (required):
   Future<Response> handleUserMcp2WithHttpInfo(Map<String, Object> requestBody,) async {
     // ignore: prefer_const_declarations
-    final path = r'/mcp/user/v2';
+    final path = r'/mcp/user/v5';
 
     // ignore: prefer_final_locals
     Object? postBody = requestBody;
@@ -251,13 +251,13 @@ class McpStreamableHttpControllerApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /mcp/user' operation and returns the [Response].
+  /// Performs an HTTP 'POST /mcp/user/v2' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [Map<String, Object>] requestBody (required):
   Future<Response> handleUserMcp3WithHttpInfo(Map<String, Object> requestBody,) async {
     // ignore: prefer_const_declarations
-    final path = r'/mcp/user';
+    final path = r'/mcp/user/v2';
 
     // ignore: prefer_final_locals
     Object? postBody = requestBody;
@@ -298,13 +298,13 @@ class McpStreamableHttpControllerApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /mcp/user/v3' operation and returns the [Response].
+  /// Performs an HTTP 'POST /mcp/user' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [Map<String, Object>] requestBody (required):
   Future<Response> handleUserMcp4WithHttpInfo(Map<String, Object> requestBody,) async {
     // ignore: prefer_const_declarations
-    final path = r'/mcp/user/v3';
+    final path = r'/mcp/user';
 
     // ignore: prefer_final_locals
     Object? postBody = requestBody;
@@ -332,6 +332,53 @@ class McpStreamableHttpControllerApi {
   /// * [Map<String, Object>] requestBody (required):
   Future<Map<String, Object>?> handleUserMcp4(Map<String, Object> requestBody,) async {
     final response = await handleUserMcp4WithHttpInfo(requestBody,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
+
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'POST /mcp/user/v3' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [Map<String, Object>] requestBody (required):
+  Future<Response> handleUserMcp5WithHttpInfo(Map<String, Object> requestBody,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/mcp/user/v3';
+
+    // ignore: prefer_final_locals
+    Object? postBody = requestBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [Map<String, Object>] requestBody (required):
+  Future<Map<String, Object>?> handleUserMcp5(Map<String, Object> requestBody,) async {
+    final response = await handleUserMcp5WithHttpInfo(requestBody,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
