@@ -18,6 +18,7 @@ class Period {
     this.localStartDate,
     this.startUtc,
     this.endUtc,
+    this.observationPersistedSinceUtc,
     this.coverageSinceUtc,
   });
 
@@ -67,6 +68,14 @@ class Period {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  DateTime? observationPersistedSinceUtc;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? coverageSinceUtc;
 
   @override
@@ -76,6 +85,7 @@ class Period {
     other.localStartDate == localStartDate &&
     other.startUtc == startUtc &&
     other.endUtc == endUtc &&
+    other.observationPersistedSinceUtc == observationPersistedSinceUtc &&
     other.coverageSinceUtc == coverageSinceUtc;
 
   @override
@@ -86,10 +96,11 @@ class Period {
     (localStartDate == null ? 0 : localStartDate!.hashCode) +
     (startUtc == null ? 0 : startUtc!.hashCode) +
     (endUtc == null ? 0 : endUtc!.hashCode) +
+    (observationPersistedSinceUtc == null ? 0 : observationPersistedSinceUtc!.hashCode) +
     (coverageSinceUtc == null ? 0 : coverageSinceUtc!.hashCode);
 
   @override
-  String toString() => 'Period[days=$days, timeZone=$timeZone, localStartDate=$localStartDate, startUtc=$startUtc, endUtc=$endUtc, coverageSinceUtc=$coverageSinceUtc]';
+  String toString() => 'Period[days=$days, timeZone=$timeZone, localStartDate=$localStartDate, startUtc=$startUtc, endUtc=$endUtc, observationPersistedSinceUtc=$observationPersistedSinceUtc, coverageSinceUtc=$coverageSinceUtc]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -117,6 +128,11 @@ class Period {
       json[r'endUtc'] = this.endUtc!.toUtc().toIso8601String();
     } else {
       json[r'endUtc'] = null;
+    }
+    if (this.observationPersistedSinceUtc != null) {
+      json[r'observationPersistedSinceUtc'] = this.observationPersistedSinceUtc!.toUtc().toIso8601String();
+    } else {
+      json[r'observationPersistedSinceUtc'] = null;
     }
     if (this.coverageSinceUtc != null) {
       json[r'coverageSinceUtc'] = this.coverageSinceUtc!.toUtc().toIso8601String();
@@ -150,6 +166,7 @@ class Period {
         localStartDate: mapDateTime(json, r'localStartDate', r''),
         startUtc: mapDateTime(json, r'startUtc', r''),
         endUtc: mapDateTime(json, r'endUtc', r''),
+        observationPersistedSinceUtc: mapDateTime(json, r'observationPersistedSinceUtc', r''),
         coverageSinceUtc: mapDateTime(json, r'coverageSinceUtc', r''),
       );
     }

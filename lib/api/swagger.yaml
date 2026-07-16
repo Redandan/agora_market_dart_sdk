@@ -46084,10 +46084,10 @@
             "type": "integer",
             "format": "int32"
           },
-          "belowMinimum": {
+          "lowStock": {
             "type": "boolean"
           },
-          "lowStock": {
+          "belowMinimum": {
             "type": "boolean"
           },
           "outOfStock": {
@@ -49080,6 +49080,10 @@
             "format": "date-time"
           },
           "endUtc": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "observationPersistedSinceUtc": {
             "type": "string",
             "format": "date-time"
           },
