@@ -16,6 +16,8 @@ class TrafficSummary {
     this.visitWindows30m,
     this.estimatedUniqueVisitors,
     this.authenticatedUsers,
+    this.firstVisitWindowStartUtc,
+    this.lastVisitWindowStartUtc,
   });
 
   ///
@@ -42,21 +44,41 @@ class TrafficSummary {
   ///
   int? authenticatedUsers;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? firstVisitWindowStartUtc;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? lastVisitWindowStartUtc;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is TrafficSummary &&
     other.visitWindows30m == visitWindows30m &&
     other.estimatedUniqueVisitors == estimatedUniqueVisitors &&
-    other.authenticatedUsers == authenticatedUsers;
+    other.authenticatedUsers == authenticatedUsers &&
+    other.firstVisitWindowStartUtc == firstVisitWindowStartUtc &&
+    other.lastVisitWindowStartUtc == lastVisitWindowStartUtc;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (visitWindows30m == null ? 0 : visitWindows30m!.hashCode) +
     (estimatedUniqueVisitors == null ? 0 : estimatedUniqueVisitors!.hashCode) +
-    (authenticatedUsers == null ? 0 : authenticatedUsers!.hashCode);
+    (authenticatedUsers == null ? 0 : authenticatedUsers!.hashCode) +
+    (firstVisitWindowStartUtc == null ? 0 : firstVisitWindowStartUtc!.hashCode) +
+    (lastVisitWindowStartUtc == null ? 0 : lastVisitWindowStartUtc!.hashCode);
 
   @override
-  String toString() => 'TrafficSummary[visitWindows30m=$visitWindows30m, estimatedUniqueVisitors=$estimatedUniqueVisitors, authenticatedUsers=$authenticatedUsers]';
+  String toString() => 'TrafficSummary[visitWindows30m=$visitWindows30m, estimatedUniqueVisitors=$estimatedUniqueVisitors, authenticatedUsers=$authenticatedUsers, firstVisitWindowStartUtc=$firstVisitWindowStartUtc, lastVisitWindowStartUtc=$lastVisitWindowStartUtc]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -74,6 +96,16 @@ class TrafficSummary {
       json[r'authenticatedUsers'] = this.authenticatedUsers;
     } else {
       json[r'authenticatedUsers'] = null;
+    }
+    if (this.firstVisitWindowStartUtc != null) {
+      json[r'firstVisitWindowStartUtc'] = this.firstVisitWindowStartUtc!.toUtc().toIso8601String();
+    } else {
+      json[r'firstVisitWindowStartUtc'] = null;
+    }
+    if (this.lastVisitWindowStartUtc != null) {
+      json[r'lastVisitWindowStartUtc'] = this.lastVisitWindowStartUtc!.toUtc().toIso8601String();
+    } else {
+      json[r'lastVisitWindowStartUtc'] = null;
     }
     return json;
   }
@@ -100,6 +132,8 @@ class TrafficSummary {
         visitWindows30m: mapValueOfType<int>(json, r'visitWindows30m'),
         estimatedUniqueVisitors: mapValueOfType<int>(json, r'estimatedUniqueVisitors'),
         authenticatedUsers: mapValueOfType<int>(json, r'authenticatedUsers'),
+        firstVisitWindowStartUtc: mapDateTime(json, r'firstVisitWindowStartUtc', r''),
+        lastVisitWindowStartUtc: mapDateTime(json, r'lastVisitWindowStartUtc', r''),
       );
     }
     return null;

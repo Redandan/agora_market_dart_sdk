@@ -49158,6 +49158,10 @@
             "type": "integer",
             "format": "int64"
           },
+          "excludedUnknownVisitWindows": {
+            "type": "integer",
+            "format": "int64"
+          },
           "unknownSurfaceVisitWindows": {
             "type": "integer",
             "format": "int64"
@@ -49191,6 +49195,14 @@
           "authenticatedUsers": {
             "type": "integer",
             "format": "int64"
+          },
+          "firstVisitWindowStartUtc": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastVisitWindowStartUtc": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },

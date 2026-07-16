@@ -17,6 +17,7 @@ class Quality {
     this.recognizedTestVisitWindows,
     this.excludedTestVisitWindows,
     this.excludedBotVisitWindows,
+    this.excludedUnknownVisitWindows,
     this.unknownSurfaceVisitWindows,
     this.unknownChannelVisitWindows,
     this.visitSemantics,
@@ -55,6 +56,14 @@ class Quality {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? excludedBotVisitWindows;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? excludedUnknownVisitWindows;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -102,6 +111,7 @@ class Quality {
     other.recognizedTestVisitWindows == recognizedTestVisitWindows &&
     other.excludedTestVisitWindows == excludedTestVisitWindows &&
     other.excludedBotVisitWindows == excludedBotVisitWindows &&
+    other.excludedUnknownVisitWindows == excludedUnknownVisitWindows &&
     other.unknownSurfaceVisitWindows == unknownSurfaceVisitWindows &&
     other.unknownChannelVisitWindows == unknownChannelVisitWindows &&
     other.visitSemantics == visitSemantics &&
@@ -115,6 +125,7 @@ class Quality {
     (recognizedTestVisitWindows == null ? 0 : recognizedTestVisitWindows!.hashCode) +
     (excludedTestVisitWindows == null ? 0 : excludedTestVisitWindows!.hashCode) +
     (excludedBotVisitWindows == null ? 0 : excludedBotVisitWindows!.hashCode) +
+    (excludedUnknownVisitWindows == null ? 0 : excludedUnknownVisitWindows!.hashCode) +
     (unknownSurfaceVisitWindows == null ? 0 : unknownSurfaceVisitWindows!.hashCode) +
     (unknownChannelVisitWindows == null ? 0 : unknownChannelVisitWindows!.hashCode) +
     (visitSemantics == null ? 0 : visitSemantics!.hashCode) +
@@ -122,7 +133,7 @@ class Quality {
     (conversionCoverage == null ? 0 : conversionCoverage!.hashCode);
 
   @override
-  String toString() => 'Quality[includeTest=$includeTest, recognizedTestVisitWindows=$recognizedTestVisitWindows, excludedTestVisitWindows=$excludedTestVisitWindows, excludedBotVisitWindows=$excludedBotVisitWindows, unknownSurfaceVisitWindows=$unknownSurfaceVisitWindows, unknownChannelVisitWindows=$unknownChannelVisitWindows, visitSemantics=$visitSemantics, engagementSemantics=$engagementSemantics, conversionCoverage=$conversionCoverage]';
+  String toString() => 'Quality[includeTest=$includeTest, recognizedTestVisitWindows=$recognizedTestVisitWindows, excludedTestVisitWindows=$excludedTestVisitWindows, excludedBotVisitWindows=$excludedBotVisitWindows, excludedUnknownVisitWindows=$excludedUnknownVisitWindows, unknownSurfaceVisitWindows=$unknownSurfaceVisitWindows, unknownChannelVisitWindows=$unknownChannelVisitWindows, visitSemantics=$visitSemantics, engagementSemantics=$engagementSemantics, conversionCoverage=$conversionCoverage]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -145,6 +156,11 @@ class Quality {
       json[r'excludedBotVisitWindows'] = this.excludedBotVisitWindows;
     } else {
       json[r'excludedBotVisitWindows'] = null;
+    }
+    if (this.excludedUnknownVisitWindows != null) {
+      json[r'excludedUnknownVisitWindows'] = this.excludedUnknownVisitWindows;
+    } else {
+      json[r'excludedUnknownVisitWindows'] = null;
     }
     if (this.unknownSurfaceVisitWindows != null) {
       json[r'unknownSurfaceVisitWindows'] = this.unknownSurfaceVisitWindows;
@@ -197,6 +213,7 @@ class Quality {
         recognizedTestVisitWindows: mapValueOfType<int>(json, r'recognizedTestVisitWindows'),
         excludedTestVisitWindows: mapValueOfType<int>(json, r'excludedTestVisitWindows'),
         excludedBotVisitWindows: mapValueOfType<int>(json, r'excludedBotVisitWindows'),
+        excludedUnknownVisitWindows: mapValueOfType<int>(json, r'excludedUnknownVisitWindows'),
         unknownSurfaceVisitWindows: mapValueOfType<int>(json, r'unknownSurfaceVisitWindows'),
         unknownChannelVisitWindows: mapValueOfType<int>(json, r'unknownChannelVisitWindows'),
         visitSemantics: mapValueOfType<String>(json, r'visitSemantics'),
