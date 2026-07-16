@@ -6636,7 +6636,7 @@
         }
       }
     },
-    "/mcp/v2": {
+    "/mcp/v3": {
       "post": {
         "tags": [
           "mcp-streamable-http-controller"
@@ -6672,12 +6672,48 @@
         }
       }
     },
-    "/mcp": {
+    "/mcp/v2": {
       "post": {
         "tags": [
           "mcp-streamable-http-controller"
         ],
         "operationId": "handleMcp_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/mcp": {
+      "post": {
+        "tags": [
+          "mcp-streamable-http-controller"
+        ],
+        "operationId": "handleMcp_2",
         "requestBody": {
           "content": {
             "application/json": {
@@ -46048,10 +46084,10 @@
             "type": "integer",
             "format": "int32"
           },
-          "lowStock": {
+          "belowMinimum": {
             "type": "boolean"
           },
-          "belowMinimum": {
+          "lowStock": {
             "type": "boolean"
           },
           "outOfStock": {

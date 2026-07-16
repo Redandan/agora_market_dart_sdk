@@ -411,8 +411,9 @@ Class | Method | HTTP request | Description
 *LogisticsApi* | [**listLogisticsPostalDistrictsByCity**](doc//LogisticsApi.md#listlogisticspostaldistrictsbycity) | **GET** /logistics/postal/city/{city}/districts | 查詢城市行政區
 *LogisticsApi* | [**searchLogisticsPostalAreas**](doc//LogisticsApi.md#searchlogisticspostalareas) | **POST** /logistics/postal/search | 郵遞區號模糊查詢
 *LogisticsApi* | [**validateLogisticsPostalCode**](doc//LogisticsApi.md#validatelogisticspostalcode) | **GET** /logistics/postal-codes/{postalCode}/validate | 郵遞區號驗證
-*McpStreamableHttpControllerApi* | [**handleMcp**](doc//McpStreamableHttpControllerApi.md#handlemcp) | **POST** /mcp/v2 | 
-*McpStreamableHttpControllerApi* | [**handleMcp1**](doc//McpStreamableHttpControllerApi.md#handlemcp1) | **POST** /mcp | 
+*McpStreamableHttpControllerApi* | [**handleMcp**](doc//McpStreamableHttpControllerApi.md#handlemcp) | **POST** /mcp/v3 | 
+*McpStreamableHttpControllerApi* | [**handleMcp1**](doc//McpStreamableHttpControllerApi.md#handlemcp1) | **POST** /mcp/v2 | 
+*McpStreamableHttpControllerApi* | [**handleMcp2**](doc//McpStreamableHttpControllerApi.md#handlemcp2) | **POST** /mcp | 
 *McpStreamableHttpControllerApi* | [**handleUserMcp**](doc//McpStreamableHttpControllerApi.md#handleusermcp) | **POST** /mcp/user/v6 | 
 *McpStreamableHttpControllerApi* | [**handleUserMcp1**](doc//McpStreamableHttpControllerApi.md#handleusermcp1) | **POST** /mcp/user/v4 | 
 *McpStreamableHttpControllerApi* | [**handleUserMcp2**](doc//McpStreamableHttpControllerApi.md#handleusermcp2) | **POST** /mcp/user/v5 | 
