@@ -15997,6 +15997,14 @@
         "operationId": "product",
         "parameters": [
           {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          },
+          {
             "name": "id",
             "in": "path",
             "required": true,

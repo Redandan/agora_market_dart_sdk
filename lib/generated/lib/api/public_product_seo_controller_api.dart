@@ -182,10 +182,12 @@ class PublicProductSeoControllerApi {
   /// Performs an HTTP 'GET /public/seo/products/{id}' operation and returns the [Response].
   /// Parameters:
   ///
+  /// * [User] user (required):
+  ///
   /// * [int] id (required):
   ///
   /// * [MultiValueMapStringString] parameters (required):
-  Future<Response> productWithHttpInfo(int id, MultiValueMapStringString parameters,) async {
+  Future<Response> productWithHttpInfo(User user, int id, MultiValueMapStringString parameters,) async {
     // ignore: prefer_const_declarations
     final path = r'/public/seo/products/{id}'
       .replaceAll('{id}', id.toString());
@@ -197,6 +199,7 @@ class PublicProductSeoControllerApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+      queryParams.addAll(_queryParams('', 'user', user));
       queryParams.addAll(_queryParams('', 'parameters', parameters));
 
     const contentTypes = <String>[];
@@ -215,11 +218,13 @@ class PublicProductSeoControllerApi {
 
   /// Parameters:
   ///
+  /// * [User] user (required):
+  ///
   /// * [int] id (required):
   ///
   /// * [MultiValueMapStringString] parameters (required):
-  Future<String?> product(int id, MultiValueMapStringString parameters,) async {
-    final response = await productWithHttpInfo(id, parameters,);
+  Future<String?> product(User user, int id, MultiValueMapStringString parameters,) async {
+    final response = await productWithHttpInfo(user, id, parameters,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
