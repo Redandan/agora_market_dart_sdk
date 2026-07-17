@@ -524,6 +524,7 @@ Class | Method | HTTP request | Description
 *PromoCodesApi* | [**searchPromoCodes**](doc//PromoCodesApi.md#searchpromocodes) | **GET** /promo-codes/search | 搜尋推廣碼
 *PromoCodesApi* | [**updateMyPromoCode**](doc//PromoCodesApi.md#updatemypromocode) | **PUT** /promo-codes/my-promo-code | 編輯我的推廣碼
 *PublicControllerApi* | [**test**](doc//PublicControllerApi.md#test) | **GET** /public/test | 
+*PublicProductSeoControllerApi* | [**atomFeed**](doc//PublicProductSeoControllerApi.md#atomfeed) | **GET** /public/seo/feed.xml | 
 *PublicProductSeoControllerApi* | [**brandCatalog**](doc//PublicProductSeoControllerApi.md#brandcatalog) | **GET** /public/seo/brands/{slug} | 
 *PublicProductSeoControllerApi* | [**catalog**](doc//PublicProductSeoControllerApi.md#catalog) | **GET** /public/seo/catalog | 
 *PublicProductSeoControllerApi* | [**categoryCatalog**](doc//PublicProductSeoControllerApi.md#categorycatalog) | **GET** /public/seo/categories/{slug} | 

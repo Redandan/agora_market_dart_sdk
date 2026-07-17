@@ -16036,6 +16036,26 @@
         }
       }
     },
+    "/public/seo/feed.xml": {
+      "get": {
+        "tags": [
+          "public-product-seo-controller"
+        ],
+        "operationId": "atomFeed",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/atom+xml;charset=UTF-8": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/public/seo/categories/{slug}": {
       "get": {
         "tags": [
@@ -34006,14 +34026,14 @@
             "format": "date-time",
             "description": "複審申請被拒絕時間"
           },
-          "imageUrls": {
+          "sellerReplyImageUrls": {
             "type": "array",
             "items": {
               "type": "string"
             },
             "uniqueItems": true
           },
-          "sellerReplyImageUrls": {
+          "imageUrls": {
             "type": "array",
             "items": {
               "type": "string"
