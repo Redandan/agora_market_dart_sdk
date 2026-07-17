@@ -85,6 +85,7 @@ part 'api/promo_codes_api.dart';
 part 'api/public_controller_api.dart';
 part 'api/public_product_seo_controller_api.dart';
 part 'api/public_stores_api.dart';
+part 'api/public_traffic_observation_controller_api.dart';
 part 'api/pwa_logs_api.dart';
 part 'api/reviews_api.dart';
 part 'api/sanction_blacklist_api.dart';

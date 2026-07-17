@@ -4373,6 +4373,19 @@
         }
       }
     },
+    "/public/traffic/visit": {
+      "post": {
+        "tags": [
+          "public-traffic-observation-controller"
+        ],
+        "operationId": "visit",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/promo-codes/{code}/review": {
       "post": {
         "tags": [
@@ -34026,14 +34039,14 @@
             "format": "date-time",
             "description": "複審申請被拒絕時間"
           },
-          "sellerReplyImageUrls": {
+          "imageUrls": {
             "type": "array",
             "items": {
               "type": "string"
             },
             "uniqueItems": true
           },
-          "imageUrls": {
+          "sellerReplyImageUrls": {
             "type": "array",
             "items": {
               "type": "string"
