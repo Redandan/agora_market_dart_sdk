@@ -536,6 +536,7 @@ class UsdtLandingEventRequestStartappEnum {
 
   String toJson() => value;
 
+  static const USDT_SHOP = UsdtLandingEventRequestStartappEnum._(r'USDT_SHOP');
   static const PRODUCT = UsdtLandingEventRequestStartappEnum._(r'PRODUCT');
   static const CATALOG_COSTCO_TW_HOUSEHOLD = UsdtLandingEventRequestStartappEnum._(r'CATALOG_COSTCO_TW_HOUSEHOLD');
   static const CATALOG_COSTCO_TW_PET = UsdtLandingEventRequestStartappEnum._(r'CATALOG_COSTCO_TW_PET');
@@ -544,6 +545,7 @@ class UsdtLandingEventRequestStartappEnum {
 
   /// List of all possible values in this [enum][UsdtLandingEventRequestStartappEnum].
   static const values = <UsdtLandingEventRequestStartappEnum>[
+    USDT_SHOP,
     PRODUCT,
     CATALOG_COSTCO_TW_HOUSEHOLD,
     CATALOG_COSTCO_TW_PET,
@@ -587,6 +589,7 @@ class UsdtLandingEventRequestStartappEnumTypeTransformer {
   UsdtLandingEventRequestStartappEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
+        case r'USDT_SHOP': return UsdtLandingEventRequestStartappEnum.USDT_SHOP;
         case r'PRODUCT': return UsdtLandingEventRequestStartappEnum.PRODUCT;
         case r'CATALOG_COSTCO_TW_HOUSEHOLD': return UsdtLandingEventRequestStartappEnum.CATALOG_COSTCO_TW_HOUSEHOLD;
         case r'CATALOG_COSTCO_TW_PET': return UsdtLandingEventRequestStartappEnum.CATALOG_COSTCO_TW_PET;

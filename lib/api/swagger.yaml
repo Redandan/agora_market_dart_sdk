@@ -30246,6 +30246,7 @@
           "startapp": {
             "type": "string",
             "enum": [
+              "USDT_SHOP",
               "PRODUCT",
               "CATALOG_COSTCO_TW_HOUSEHOLD",
               "CATALOG_COSTCO_TW_PET",
