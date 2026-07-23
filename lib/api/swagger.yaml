@@ -4386,6 +4386,36 @@
         }
       }
     },
+    "/public/traffic/usdt-landing/events": {
+      "post": {
+        "tags": [
+          "public-traffic-observation-controller"
+        ],
+        "operationId": "recordUsdtLandingEvent",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsdtLandingEventRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsdtLandingEventResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/promo-codes/{code}/review": {
       "post": {
         "tags": [
@@ -30160,6 +30190,90 @@
           "log": {
             "type": "string",
             "minLength": 1
+          }
+        }
+      },
+      "UsdtLandingEventRequest": {
+        "type": "object",
+        "description": "Public USDT landing behavior event. Traffic and identity fields are always resolved server-side.",
+        "properties": {
+          "eventId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "page": {
+            "type": "string",
+            "enum": [
+              "USDT_COSTCO_TW",
+              "USDT_TELEGRAM_SHOP"
+            ]
+          },
+          "event": {
+            "type": "string",
+            "enum": [
+              "USDT_LANDING_VIEW",
+              "USDT_MODULE_IMPRESSION",
+              "USDT_PRIMARY_CTA_CLICK",
+              "USDT_SECONDARY_CTA_CLICK",
+              "USDT_PRODUCT_CLICK",
+              "USDT_TG_OPEN_CLICK",
+              "USDT_STARTAPP_RECEIVED",
+              "CHECKOUT_SIGNAL"
+            ]
+          },
+          "cta": {
+            "type": "string",
+            "enum": [
+              "COSTCO_BROWSE_PRODUCTS",
+              "COSTCO_OPEN_TELEGRAM",
+              "TELEGRAM_OPEN_SHOP",
+              "TELEGRAM_BROWSE_WEB"
+            ]
+          },
+          "module": {
+            "type": "string",
+            "enum": [
+              "HERO",
+              "PRODUCT_GRID",
+              "HOW_IT_WORKS",
+              "TRUST",
+              "FAQ",
+              "CATALOG_COSTCO_TW_HOUSEHOLD",
+              "CATALOG_COSTCO_TW_PET",
+              "CATALOG_MAKRO_TH_HOUSEHOLD"
+            ]
+          },
+          "startapp": {
+            "type": "string",
+            "enum": [
+              "PRODUCT",
+              "CATALOG_COSTCO_TW_HOUSEHOLD",
+              "CATALOG_COSTCO_TW_PET",
+              "CATALOG_MAKRO_TH_HOUSEHOLD"
+            ]
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "required": [
+          "event",
+          "eventId",
+          "page"
+        ]
+      },
+      "UsdtLandingEventResponse": {
+        "type": "object",
+        "properties": {
+          "eventId": {
+            "type": "string"
+          },
+          "accepted": {
+            "type": "boolean"
+          },
+          "duplicate": {
+            "type": "boolean"
           }
         }
       },

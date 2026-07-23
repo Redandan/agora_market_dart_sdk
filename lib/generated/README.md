@@ -532,6 +532,7 @@ Class | Method | HTTP request | Description
 *PublicProductSeoControllerApi* | [**sitemap**](doc//PublicProductSeoControllerApi.md#sitemap) | **GET** /public/seo/sitemap.xml | 
 *PublicProductSeoControllerApi* | [**sourceCatalog**](doc//PublicProductSeoControllerApi.md#sourcecatalog) | **GET** /public/seo/sources/{slug} | 
 *PublicStoresApi* | [**getPublicStoreSummary**](doc//PublicStoresApi.md#getpublicstoresummary) | **GET** /public/stores/{sellerId} | Get public seller store summary
+*PublicTrafficObservationControllerApi* | [**recordUsdtLandingEvent**](doc//PublicTrafficObservationControllerApi.md#recordusdtlandingevent) | **POST** /public/traffic/usdt-landing/events | 
 *PublicTrafficObservationControllerApi* | [**visit**](doc//PublicTrafficObservationControllerApi.md#visit) | **POST** /public/traffic/visit | 
 *PwaLogsApi* | [**getLogs**](doc//PwaLogsApi.md#getlogs) | **GET** /pwa-logs | 下載當前所有日誌
 *PwaLogsApi* | [**receivePwaLogs**](doc//PwaLogsApi.md#receivepwalogs) | **POST** /pwa-logs | 上傳 PWA 日誌
@@ -1217,6 +1218,8 @@ Class | Method | HTTP request | Description
  - [UpdateActivityRequest](doc//UpdateActivityRequest.md)
  - [UpdateDeliveryOrderParam](doc//UpdateDeliveryOrderParam.md)
  - [UpdatePromoCodeParam](doc//UpdatePromoCodeParam.md)
+ - [UsdtLandingEventRequest](doc//UsdtLandingEventRequest.md)
+ - [UsdtLandingEventResponse](doc//UsdtLandingEventResponse.md)
  - [User](doc//User.md)
  - [UserAddress](doc//UserAddress.md)
  - [UserInfo](doc//UserInfo.md)

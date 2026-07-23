@@ -1248,6 +1248,10 @@ class ApiClient {
           return UpdateDeliveryOrderParam.fromJson(value);
         case 'UpdatePromoCodeParam':
           return UpdatePromoCodeParam.fromJson(value);
+        case 'UsdtLandingEventRequest':
+          return UsdtLandingEventRequest.fromJson(value);
+        case 'UsdtLandingEventResponse':
+          return UsdtLandingEventResponse.fromJson(value);
         case 'User':
           return User.fromJson(value);
         case 'UserAddress':

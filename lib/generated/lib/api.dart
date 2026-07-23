@@ -644,6 +644,8 @@ part 'model/unmergeable_item.dart';
 part 'model/update_activity_request.dart';
 part 'model/update_delivery_order_param.dart';
 part 'model/update_promo_code_param.dart';
+part 'model/usdt_landing_event_request.dart';
+part 'model/usdt_landing_event_response.dart';
 part 'model/user.dart';
 part 'model/user_address.dart';
 part 'model/user_info.dart';
