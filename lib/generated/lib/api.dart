@@ -102,7 +102,6 @@ part 'api/stores_api.dart';
 part 'api/tg_api.dart';
 part 'api/telegram_api.dart';
 part 'api/telegram_webapp_auth_api.dart';
-part 'api/test_api.dart';
 part 'api/tg_mini_app_game_session_controller_api.dart';
 part 'api/user_addresses_api.dart';
 part 'api/users_api.dart';

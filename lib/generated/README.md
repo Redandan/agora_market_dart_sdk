@@ -637,16 +637,6 @@ Class | Method | HTTP request | Description
 *TelegramApi* | [**updateRaidMode**](doc//TelegramApi.md#updateraidmode) | **POST** /admin/telegram-monitor/groups/{groupId}/raid-mode | 手動切換群組 Raid Mode；預設只改後端狀態，不呼叫 Telegram 管理 API
 *TelegramApi* | [**upsertJoinReviewListEntry**](doc//TelegramApi.md#upsertjoinreviewlistentry) | **POST** /admin/telegram-monitor/join-review-list | 新增或更新 Telegram 入群審查 allow/block list 項目
 *TelegramWebappAuthApi* | [**exchangeJwt**](doc//TelegramWebappAuthApi.md#exchangejwt) | **POST** /auth/telegram-webapp/exchange-jwt | Telegram WebApp 交換 JWT
-*TestApi* | [**generateAutoReplyTestData**](doc//TestApi.md#generateautoreplytestdata) | **POST** /test/auto-reply | 生成自動回復測試數據
-*TestApi* | [**generateDeliveryAcceptOrderTestData**](doc//TestApi.md#generatedeliveryacceptordertestdata) | **POST** /test/delivery-accept-order | 生成配送員接單測試數據
-*TestApi* | [**generateLogisticsOrder**](doc//TestApi.md#generatelogisticsorder) | **POST** /test/logistics | 
-*TestApi* | [**generateNotificationTestData**](doc//TestApi.md#generatenotificationtestdata) | **POST** /test/notification | 生成通知測試數據
-*TestApi* | [**generatePlatformDeliveryOrder**](doc//TestApi.md#generateplatformdeliveryorder) | **POST** /test/platform | 
-*TestApi* | [**generateRechargeAndWithdraw**](doc//TestApi.md#generaterechargeandwithdraw) | **POST** /test/recharge&withdraw | 
-*TestApi* | [**generateReturnProcessTestData**](doc//TestApi.md#generatereturnprocesstestdata) | **POST** /test/return-process | 生成退貨流程測試數據
-*TestApi* | [**generateReviewData**](doc//TestApi.md#generatereviewdata) | **POST** /test/review | 
-*TestApi* | [**generateTestData**](doc//TestApi.md#generatetestdata) | **POST** /test/generate-test-data | 生成測試數據
-*TestApi* | [**getJwtConfig**](doc//TestApi.md#getjwtconfig) | **GET** /test/jwt-config | 
 *TgMiniAppGameSessionControllerApi* | [**endSession**](doc//TgMiniAppGameSessionControllerApi.md#endsession) | **POST** /tg-games/{gameKey}/sessions/{sessionId}/end | 
 *TgMiniAppGameSessionControllerApi* | [**exchangeLaunch**](doc//TgMiniAppGameSessionControllerApi.md#exchangelaunch) | **POST** /tg-games/{gameKey}/launch/exchange | 
 *TgMiniAppGameSessionControllerApi* | [**startSession**](doc//TgMiniAppGameSessionControllerApi.md#startsession) | **POST** /tg-games/{gameKey}/sessions | 

@@ -161,10 +161,6 @@
       "description": "Admin Demand Pool APIs"
     },
     {
-      "name": "test",
-      "description": "測試數據 API"
-    },
-    {
       "name": "stores",
       "description": "商店管理 API"
     },
@@ -2680,195 +2676,6 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/PageActivityDTO"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/test/review": {
-      "post": {
-        "tags": [
-          "test"
-        ],
-        "operationId": "generateReviewData",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/test/return-process": {
-      "post": {
-        "tags": [
-          "test"
-        ],
-        "summary": "生成退貨流程測試數據",
-        "description": "生成各種退貨情況的測試數據，包括不同退貨原因、賣家處理、物流流程等",
-        "operationId": "generateReturnProcessTestData",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/test/recharge&withdraw": {
-      "post": {
-        "tags": [
-          "test"
-        ],
-        "operationId": "generateRechargeAndWithdraw",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/test/platform": {
-      "post": {
-        "tags": [
-          "test"
-        ],
-        "operationId": "generatePlatformDeliveryOrder",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/test/notification": {
-      "post": {
-        "tags": [
-          "test"
-        ],
-        "summary": "生成通知測試數據",
-        "description": "生成各種類型的通知測試數據，包括系統通知、訂單通知、配送通知等",
-        "operationId": "generateNotificationTestData",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/test/logistics": {
-      "post": {
-        "tags": [
-          "test"
-        ],
-        "operationId": "generateLogisticsOrder",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/test/generate-test-data": {
-      "post": {
-        "tags": [
-          "test"
-        ],
-        "summary": "生成測試數據",
-        "operationId": "generateTestData",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/test/delivery-accept-order": {
-      "post": {
-        "tags": [
-          "test"
-        ],
-        "summary": "生成配送員接單測試數據",
-        "description": "生成配送員接單相關的測試數據，包括待接單訂單、多個配送員等",
-        "operationId": "generateDeliveryAcceptOrderTestData",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/test/auto-reply": {
-      "post": {
-        "tags": [
-          "test"
-        ],
-        "summary": "生成自動回復測試數據",
-        "description": "生成測試用戶與自動回復機器人的對話記錄和反饋數據",
-        "operationId": "generateAutoReplyTestData",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
                 }
               }
             }
@@ -14540,29 +14347,6 @@
         }
       }
     },
-    "/test/jwt-config": {
-      "get": {
-        "tags": [
-          "test"
-        ],
-        "operationId": "getJwtConfig",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "object"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/stores/{sellerId}": {
       "get": {
         "tags": [
@@ -25859,14 +25643,14 @@
           "fullAddress": {
             "type": "string"
           },
-          "convenienceStorePickup": {
-            "type": "boolean"
-          },
           "logisticsDescription": {
             "type": "string"
           },
           "recipientInfo": {
             "type": "string"
+          },
+          "convenienceStorePickup": {
+            "type": "boolean"
           }
         },
         "required": [
@@ -46247,13 +46031,13 @@
             "type": "integer",
             "format": "int32"
           },
+          "outOfStock": {
+            "type": "boolean"
+          },
           "lowStock": {
             "type": "boolean"
           },
           "belowMinimum": {
-            "type": "boolean"
-          },
-          "outOfStock": {
             "type": "boolean"
           }
         }
