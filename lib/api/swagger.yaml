@@ -25859,14 +25859,14 @@
           "fullAddress": {
             "type": "string"
           },
+          "convenienceStorePickup": {
+            "type": "boolean"
+          },
           "logisticsDescription": {
             "type": "string"
           },
           "recipientInfo": {
             "type": "string"
-          },
-          "convenienceStorePickup": {
-            "type": "boolean"
           }
         },
         "required": [
@@ -30205,7 +30205,8 @@
             "type": "string",
             "enum": [
               "USDT_COSTCO_TW",
-              "USDT_TELEGRAM_SHOP"
+              "USDT_TELEGRAM_SHOP",
+              "OPERATOR_MARKETPLACE"
             ]
           },
           "event": {
@@ -30218,7 +30219,11 @@
               "USDT_PRODUCT_CLICK",
               "USDT_TG_OPEN_CLICK",
               "USDT_STARTAPP_RECEIVED",
-              "CHECKOUT_SIGNAL"
+              "CHECKOUT_SIGNAL",
+              "OPERATOR_LANDING_VIEW",
+              "OPERATOR_BUYER_DEMO_CLICK",
+              "OPERATOR_SALES_CONTACT_CLICK",
+              "OPERATOR_BOT_START"
             ]
           },
           "cta": {
@@ -30227,7 +30232,9 @@
               "COSTCO_BROWSE_PRODUCTS",
               "COSTCO_OPEN_TELEGRAM",
               "TELEGRAM_OPEN_SHOP",
-              "TELEGRAM_BROWSE_WEB"
+              "TELEGRAM_BROWSE_WEB",
+              "OPERATOR_BUYER_DEMO",
+              "OPERATOR_SALES_CONTACT"
             ]
           },
           "module": {

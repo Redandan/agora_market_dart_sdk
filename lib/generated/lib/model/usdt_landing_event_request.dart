@@ -188,12 +188,14 @@ class UsdtLandingEventRequestPageEnum {
 
   static const USDT_COSTCO_TW = UsdtLandingEventRequestPageEnum._(r'USDT_COSTCO_TW');
   static const USDT_TELEGRAM_SHOP = UsdtLandingEventRequestPageEnum._(r'USDT_TELEGRAM_SHOP');
+  static const OPERATOR_MARKETPLACE = UsdtLandingEventRequestPageEnum._(r'OPERATOR_MARKETPLACE');
   static const unknownDefaultOpenApi = UsdtLandingEventRequestPageEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][UsdtLandingEventRequestPageEnum].
   static const values = <UsdtLandingEventRequestPageEnum>[
     USDT_COSTCO_TW,
     USDT_TELEGRAM_SHOP,
+    OPERATOR_MARKETPLACE,
     unknownDefaultOpenApi,
   ];
 
@@ -235,6 +237,7 @@ class UsdtLandingEventRequestPageEnumTypeTransformer {
       switch (data) {
         case r'USDT_COSTCO_TW': return UsdtLandingEventRequestPageEnum.USDT_COSTCO_TW;
         case r'USDT_TELEGRAM_SHOP': return UsdtLandingEventRequestPageEnum.USDT_TELEGRAM_SHOP;
+        case r'OPERATOR_MARKETPLACE': return UsdtLandingEventRequestPageEnum.OPERATOR_MARKETPLACE;
         case r'unknown_default_open_api': return UsdtLandingEventRequestPageEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
@@ -271,6 +274,10 @@ class UsdtLandingEventRequestEventEnum {
   static const USDT_TG_OPEN_CLICK = UsdtLandingEventRequestEventEnum._(r'USDT_TG_OPEN_CLICK');
   static const USDT_STARTAPP_RECEIVED = UsdtLandingEventRequestEventEnum._(r'USDT_STARTAPP_RECEIVED');
   static const CHECKOUT_SIGNAL = UsdtLandingEventRequestEventEnum._(r'CHECKOUT_SIGNAL');
+  static const OPERATOR_LANDING_VIEW = UsdtLandingEventRequestEventEnum._(r'OPERATOR_LANDING_VIEW');
+  static const OPERATOR_BUYER_DEMO_CLICK = UsdtLandingEventRequestEventEnum._(r'OPERATOR_BUYER_DEMO_CLICK');
+  static const OPERATOR_SALES_CONTACT_CLICK = UsdtLandingEventRequestEventEnum._(r'OPERATOR_SALES_CONTACT_CLICK');
+  static const OPERATOR_BOT_START = UsdtLandingEventRequestEventEnum._(r'OPERATOR_BOT_START');
   static const unknownDefaultOpenApi = UsdtLandingEventRequestEventEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][UsdtLandingEventRequestEventEnum].
@@ -283,6 +290,10 @@ class UsdtLandingEventRequestEventEnum {
     USDT_TG_OPEN_CLICK,
     USDT_STARTAPP_RECEIVED,
     CHECKOUT_SIGNAL,
+    OPERATOR_LANDING_VIEW,
+    OPERATOR_BUYER_DEMO_CLICK,
+    OPERATOR_SALES_CONTACT_CLICK,
+    OPERATOR_BOT_START,
     unknownDefaultOpenApi,
   ];
 
@@ -330,6 +341,10 @@ class UsdtLandingEventRequestEventEnumTypeTransformer {
         case r'USDT_TG_OPEN_CLICK': return UsdtLandingEventRequestEventEnum.USDT_TG_OPEN_CLICK;
         case r'USDT_STARTAPP_RECEIVED': return UsdtLandingEventRequestEventEnum.USDT_STARTAPP_RECEIVED;
         case r'CHECKOUT_SIGNAL': return UsdtLandingEventRequestEventEnum.CHECKOUT_SIGNAL;
+        case r'OPERATOR_LANDING_VIEW': return UsdtLandingEventRequestEventEnum.OPERATOR_LANDING_VIEW;
+        case r'OPERATOR_BUYER_DEMO_CLICK': return UsdtLandingEventRequestEventEnum.OPERATOR_BUYER_DEMO_CLICK;
+        case r'OPERATOR_SALES_CONTACT_CLICK': return UsdtLandingEventRequestEventEnum.OPERATOR_SALES_CONTACT_CLICK;
+        case r'OPERATOR_BOT_START': return UsdtLandingEventRequestEventEnum.OPERATOR_BOT_START;
         case r'unknown_default_open_api': return UsdtLandingEventRequestEventEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
@@ -362,6 +377,8 @@ class UsdtLandingEventRequestCtaEnum {
   static const COSTCO_OPEN_TELEGRAM = UsdtLandingEventRequestCtaEnum._(r'COSTCO_OPEN_TELEGRAM');
   static const TELEGRAM_OPEN_SHOP = UsdtLandingEventRequestCtaEnum._(r'TELEGRAM_OPEN_SHOP');
   static const TELEGRAM_BROWSE_WEB = UsdtLandingEventRequestCtaEnum._(r'TELEGRAM_BROWSE_WEB');
+  static const OPERATOR_BUYER_DEMO = UsdtLandingEventRequestCtaEnum._(r'OPERATOR_BUYER_DEMO');
+  static const OPERATOR_SALES_CONTACT = UsdtLandingEventRequestCtaEnum._(r'OPERATOR_SALES_CONTACT');
   static const unknownDefaultOpenApi = UsdtLandingEventRequestCtaEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][UsdtLandingEventRequestCtaEnum].
@@ -370,6 +387,8 @@ class UsdtLandingEventRequestCtaEnum {
     COSTCO_OPEN_TELEGRAM,
     TELEGRAM_OPEN_SHOP,
     TELEGRAM_BROWSE_WEB,
+    OPERATOR_BUYER_DEMO,
+    OPERATOR_SALES_CONTACT,
     unknownDefaultOpenApi,
   ];
 
@@ -413,6 +432,8 @@ class UsdtLandingEventRequestCtaEnumTypeTransformer {
         case r'COSTCO_OPEN_TELEGRAM': return UsdtLandingEventRequestCtaEnum.COSTCO_OPEN_TELEGRAM;
         case r'TELEGRAM_OPEN_SHOP': return UsdtLandingEventRequestCtaEnum.TELEGRAM_OPEN_SHOP;
         case r'TELEGRAM_BROWSE_WEB': return UsdtLandingEventRequestCtaEnum.TELEGRAM_BROWSE_WEB;
+        case r'OPERATOR_BUYER_DEMO': return UsdtLandingEventRequestCtaEnum.OPERATOR_BUYER_DEMO;
+        case r'OPERATOR_SALES_CONTACT': return UsdtLandingEventRequestCtaEnum.OPERATOR_SALES_CONTACT;
         case r'unknown_default_open_api': return UsdtLandingEventRequestCtaEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
