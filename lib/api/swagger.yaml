@@ -30005,6 +30005,7 @@
               "USDT_STARTAPP_RECEIVED",
               "CHECKOUT_SIGNAL",
               "OPERATOR_LANDING_VIEW",
+              "OPERATOR_LABORX_LANDING_VIEW",
               "OPERATOR_BUYER_DEMO_CLICK",
               "OPERATOR_SALES_CONTACT_CLICK",
               "OPERATOR_BOT_START"
@@ -38504,11 +38505,11 @@
           "purchaseRestrictionReason": {
             "type": "string"
           },
-          "totalPrice": {
-            "type": "number"
-          },
           "specificationDescription": {
             "type": "string"
+          },
+          "totalPrice": {
+            "type": "number"
           }
         },
         "required": [
@@ -46031,13 +46032,13 @@
             "type": "integer",
             "format": "int32"
           },
-          "outOfStock": {
-            "type": "boolean"
-          },
           "lowStock": {
             "type": "boolean"
           },
           "belowMinimum": {
+            "type": "boolean"
+          },
+          "outOfStock": {
             "type": "boolean"
           }
         }

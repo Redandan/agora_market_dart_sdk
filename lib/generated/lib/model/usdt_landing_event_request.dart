@@ -275,6 +275,7 @@ class UsdtLandingEventRequestEventEnum {
   static const USDT_STARTAPP_RECEIVED = UsdtLandingEventRequestEventEnum._(r'USDT_STARTAPP_RECEIVED');
   static const CHECKOUT_SIGNAL = UsdtLandingEventRequestEventEnum._(r'CHECKOUT_SIGNAL');
   static const OPERATOR_LANDING_VIEW = UsdtLandingEventRequestEventEnum._(r'OPERATOR_LANDING_VIEW');
+  static const OPERATOR_LABORX_LANDING_VIEW = UsdtLandingEventRequestEventEnum._(r'OPERATOR_LABORX_LANDING_VIEW');
   static const OPERATOR_BUYER_DEMO_CLICK = UsdtLandingEventRequestEventEnum._(r'OPERATOR_BUYER_DEMO_CLICK');
   static const OPERATOR_SALES_CONTACT_CLICK = UsdtLandingEventRequestEventEnum._(r'OPERATOR_SALES_CONTACT_CLICK');
   static const OPERATOR_BOT_START = UsdtLandingEventRequestEventEnum._(r'OPERATOR_BOT_START');
@@ -291,6 +292,7 @@ class UsdtLandingEventRequestEventEnum {
     USDT_STARTAPP_RECEIVED,
     CHECKOUT_SIGNAL,
     OPERATOR_LANDING_VIEW,
+    OPERATOR_LABORX_LANDING_VIEW,
     OPERATOR_BUYER_DEMO_CLICK,
     OPERATOR_SALES_CONTACT_CLICK,
     OPERATOR_BOT_START,
@@ -342,6 +344,7 @@ class UsdtLandingEventRequestEventEnumTypeTransformer {
         case r'USDT_STARTAPP_RECEIVED': return UsdtLandingEventRequestEventEnum.USDT_STARTAPP_RECEIVED;
         case r'CHECKOUT_SIGNAL': return UsdtLandingEventRequestEventEnum.CHECKOUT_SIGNAL;
         case r'OPERATOR_LANDING_VIEW': return UsdtLandingEventRequestEventEnum.OPERATOR_LANDING_VIEW;
+        case r'OPERATOR_LABORX_LANDING_VIEW': return UsdtLandingEventRequestEventEnum.OPERATOR_LABORX_LANDING_VIEW;
         case r'OPERATOR_BUYER_DEMO_CLICK': return UsdtLandingEventRequestEventEnum.OPERATOR_BUYER_DEMO_CLICK;
         case r'OPERATOR_SALES_CONTACT_CLICK': return UsdtLandingEventRequestEventEnum.OPERATOR_SALES_CONTACT_CLICK;
         case r'OPERATOR_BOT_START': return UsdtLandingEventRequestEventEnum.OPERATOR_BOT_START;
