@@ -30007,8 +30007,11 @@
               "OPERATOR_LANDING_VIEW",
               "OPERATOR_LABORX_LANDING_VIEW",
               "OPERATOR_BUYER_DEMO_CLICK",
+              "OPERATOR_LABORX_BUYER_DEMO_CLICK",
               "OPERATOR_SALES_CONTACT_CLICK",
-              "OPERATOR_BOT_START"
+              "OPERATOR_LABORX_SALES_CONTACT_CLICK",
+              "OPERATOR_BOT_START",
+              "OPERATOR_LABORX_BOT_START"
             ]
           },
           "cta": {
@@ -38505,11 +38508,11 @@
           "purchaseRestrictionReason": {
             "type": "string"
           },
-          "specificationDescription": {
-            "type": "string"
-          },
           "totalPrice": {
             "type": "number"
+          },
+          "specificationDescription": {
+            "type": "string"
           }
         },
         "required": [

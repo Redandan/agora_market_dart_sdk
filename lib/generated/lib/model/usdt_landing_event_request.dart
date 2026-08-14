@@ -277,8 +277,11 @@ class UsdtLandingEventRequestEventEnum {
   static const OPERATOR_LANDING_VIEW = UsdtLandingEventRequestEventEnum._(r'OPERATOR_LANDING_VIEW');
   static const OPERATOR_LABORX_LANDING_VIEW = UsdtLandingEventRequestEventEnum._(r'OPERATOR_LABORX_LANDING_VIEW');
   static const OPERATOR_BUYER_DEMO_CLICK = UsdtLandingEventRequestEventEnum._(r'OPERATOR_BUYER_DEMO_CLICK');
+  static const OPERATOR_LABORX_BUYER_DEMO_CLICK = UsdtLandingEventRequestEventEnum._(r'OPERATOR_LABORX_BUYER_DEMO_CLICK');
   static const OPERATOR_SALES_CONTACT_CLICK = UsdtLandingEventRequestEventEnum._(r'OPERATOR_SALES_CONTACT_CLICK');
+  static const OPERATOR_LABORX_SALES_CONTACT_CLICK = UsdtLandingEventRequestEventEnum._(r'OPERATOR_LABORX_SALES_CONTACT_CLICK');
   static const OPERATOR_BOT_START = UsdtLandingEventRequestEventEnum._(r'OPERATOR_BOT_START');
+  static const OPERATOR_LABORX_BOT_START = UsdtLandingEventRequestEventEnum._(r'OPERATOR_LABORX_BOT_START');
   static const unknownDefaultOpenApi = UsdtLandingEventRequestEventEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][UsdtLandingEventRequestEventEnum].
@@ -294,8 +297,11 @@ class UsdtLandingEventRequestEventEnum {
     OPERATOR_LANDING_VIEW,
     OPERATOR_LABORX_LANDING_VIEW,
     OPERATOR_BUYER_DEMO_CLICK,
+    OPERATOR_LABORX_BUYER_DEMO_CLICK,
     OPERATOR_SALES_CONTACT_CLICK,
+    OPERATOR_LABORX_SALES_CONTACT_CLICK,
     OPERATOR_BOT_START,
+    OPERATOR_LABORX_BOT_START,
     unknownDefaultOpenApi,
   ];
 
@@ -346,8 +352,11 @@ class UsdtLandingEventRequestEventEnumTypeTransformer {
         case r'OPERATOR_LANDING_VIEW': return UsdtLandingEventRequestEventEnum.OPERATOR_LANDING_VIEW;
         case r'OPERATOR_LABORX_LANDING_VIEW': return UsdtLandingEventRequestEventEnum.OPERATOR_LABORX_LANDING_VIEW;
         case r'OPERATOR_BUYER_DEMO_CLICK': return UsdtLandingEventRequestEventEnum.OPERATOR_BUYER_DEMO_CLICK;
+        case r'OPERATOR_LABORX_BUYER_DEMO_CLICK': return UsdtLandingEventRequestEventEnum.OPERATOR_LABORX_BUYER_DEMO_CLICK;
         case r'OPERATOR_SALES_CONTACT_CLICK': return UsdtLandingEventRequestEventEnum.OPERATOR_SALES_CONTACT_CLICK;
+        case r'OPERATOR_LABORX_SALES_CONTACT_CLICK': return UsdtLandingEventRequestEventEnum.OPERATOR_LABORX_SALES_CONTACT_CLICK;
         case r'OPERATOR_BOT_START': return UsdtLandingEventRequestEventEnum.OPERATOR_BOT_START;
+        case r'OPERATOR_LABORX_BOT_START': return UsdtLandingEventRequestEventEnum.OPERATOR_LABORX_BOT_START;
         case r'unknown_default_open_api': return UsdtLandingEventRequestEventEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
