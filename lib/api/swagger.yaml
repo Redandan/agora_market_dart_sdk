@@ -47333,10 +47333,16 @@
           "entitlementDurationDays": {
             "type": "integer",
             "format": "int32"
+          },
+          "activatedUserCount": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of distinct users that completed refundable access activation."
           }
         },
         "required": [
           "accessType",
+          "activatedUserCount",
           "currency",
           "deliveryChannel",
           "enabled",

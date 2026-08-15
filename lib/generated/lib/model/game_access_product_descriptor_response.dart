@@ -21,6 +21,7 @@ class GameAccessProductDescriptorResponse {
     required this.currency,
     required this.requiredBalance,
     required this.entitlementDurationDays,
+    required this.activatedUserCount,
   });
 
   int productId;
@@ -41,6 +42,9 @@ class GameAccessProductDescriptorResponse {
 
   int entitlementDurationDays;
 
+  /// Number of distinct users that completed refundable access activation.
+  int activatedUserCount;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is GameAccessProductDescriptorResponse &&
     other.productId == productId &&
@@ -50,7 +54,8 @@ class GameAccessProductDescriptorResponse {
     other.enabled == enabled &&
     other.currency == currency &&
     other.requiredBalance == requiredBalance &&
-    other.entitlementDurationDays == entitlementDurationDays;
+    other.entitlementDurationDays == entitlementDurationDays &&
+    other.activatedUserCount == activatedUserCount;
 
   @override
   int get hashCode =>
@@ -62,10 +67,11 @@ class GameAccessProductDescriptorResponse {
     (enabled.hashCode) +
     (currency.hashCode) +
     (requiredBalance.hashCode) +
-    (entitlementDurationDays.hashCode);
+    (entitlementDurationDays.hashCode) +
+    (activatedUserCount.hashCode);
 
   @override
-  String toString() => 'GameAccessProductDescriptorResponse[productId=$productId, gameKey=$gameKey, accessType=$accessType, deliveryChannel=$deliveryChannel, enabled=$enabled, currency=$currency, requiredBalance=$requiredBalance, entitlementDurationDays=$entitlementDurationDays]';
+  String toString() => 'GameAccessProductDescriptorResponse[productId=$productId, gameKey=$gameKey, accessType=$accessType, deliveryChannel=$deliveryChannel, enabled=$enabled, currency=$currency, requiredBalance=$requiredBalance, entitlementDurationDays=$entitlementDurationDays, activatedUserCount=$activatedUserCount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -77,6 +83,7 @@ class GameAccessProductDescriptorResponse {
       json[r'currency'] = this.currency;
       json[r'requiredBalance'] = this.requiredBalance;
       json[r'entitlementDurationDays'] = this.entitlementDurationDays;
+      json[r'activatedUserCount'] = this.activatedUserCount;
     return json;
   }
 
@@ -107,6 +114,7 @@ class GameAccessProductDescriptorResponse {
         currency: GameAccessProductDescriptorResponseCurrencyEnum.fromJson(json[r'currency'])!,
         requiredBalance: num.parse('${json[r'requiredBalance']}'),
         entitlementDurationDays: mapValueOfType<int>(json, r'entitlementDurationDays')!,
+        activatedUserCount: mapValueOfType<int>(json, r'activatedUserCount')!,
       );
     }
     return null;
@@ -162,6 +170,7 @@ class GameAccessProductDescriptorResponse {
     'currency',
     'requiredBalance',
     'entitlementDurationDays',
+    'activatedUserCount',
   };
 }
 
