@@ -390,6 +390,8 @@ class UsdtLandingEventRequestCtaEnum {
   static const TELEGRAM_OPEN_SHOP = UsdtLandingEventRequestCtaEnum._(r'TELEGRAM_OPEN_SHOP');
   static const TELEGRAM_BROWSE_WEB = UsdtLandingEventRequestCtaEnum._(r'TELEGRAM_BROWSE_WEB');
   static const OPERATOR_BUYER_DEMO = UsdtLandingEventRequestCtaEnum._(r'OPERATOR_BUYER_DEMO');
+  static const OPERATOR_WEB_BUYER_DEMO = UsdtLandingEventRequestCtaEnum._(r'OPERATOR_WEB_BUYER_DEMO');
+  static const OPERATOR_TELEGRAM_BUYER_DEMO = UsdtLandingEventRequestCtaEnum._(r'OPERATOR_TELEGRAM_BUYER_DEMO');
   static const OPERATOR_SALES_CONTACT = UsdtLandingEventRequestCtaEnum._(r'OPERATOR_SALES_CONTACT');
   static const unknownDefaultOpenApi = UsdtLandingEventRequestCtaEnum._(r'unknown_default_open_api');
 
@@ -400,6 +402,8 @@ class UsdtLandingEventRequestCtaEnum {
     TELEGRAM_OPEN_SHOP,
     TELEGRAM_BROWSE_WEB,
     OPERATOR_BUYER_DEMO,
+    OPERATOR_WEB_BUYER_DEMO,
+    OPERATOR_TELEGRAM_BUYER_DEMO,
     OPERATOR_SALES_CONTACT,
     unknownDefaultOpenApi,
   ];
@@ -445,6 +449,8 @@ class UsdtLandingEventRequestCtaEnumTypeTransformer {
         case r'TELEGRAM_OPEN_SHOP': return UsdtLandingEventRequestCtaEnum.TELEGRAM_OPEN_SHOP;
         case r'TELEGRAM_BROWSE_WEB': return UsdtLandingEventRequestCtaEnum.TELEGRAM_BROWSE_WEB;
         case r'OPERATOR_BUYER_DEMO': return UsdtLandingEventRequestCtaEnum.OPERATOR_BUYER_DEMO;
+        case r'OPERATOR_WEB_BUYER_DEMO': return UsdtLandingEventRequestCtaEnum.OPERATOR_WEB_BUYER_DEMO;
+        case r'OPERATOR_TELEGRAM_BUYER_DEMO': return UsdtLandingEventRequestCtaEnum.OPERATOR_TELEGRAM_BUYER_DEMO;
         case r'OPERATOR_SALES_CONTACT': return UsdtLandingEventRequestCtaEnum.OPERATOR_SALES_CONTACT;
         case r'unknown_default_open_api': return UsdtLandingEventRequestCtaEnum.unknownDefaultOpenApi;
         default:

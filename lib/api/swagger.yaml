@@ -30058,6 +30058,8 @@
               "TELEGRAM_OPEN_SHOP",
               "TELEGRAM_BROWSE_WEB",
               "OPERATOR_BUYER_DEMO",
+              "OPERATOR_WEB_BUYER_DEMO",
+              "OPERATOR_TELEGRAM_BUYER_DEMO",
               "OPERATOR_SALES_CONTACT"
             ]
           },
@@ -38544,11 +38546,11 @@
           "purchaseRestrictionReason": {
             "type": "string"
           },
-          "totalPrice": {
-            "type": "number"
-          },
           "specificationDescription": {
             "type": "string"
+          },
+          "totalPrice": {
+            "type": "number"
           }
         },
         "required": [
