@@ -608,6 +608,7 @@ part 'model/storefront_home_draft_request.dart';
 part 'model/storefront_home_response.dart';
 part 'model/storefront_home_review_request.dart';
 part 'model/storefront_home_validation_response.dart';
+part 'model/storefront_readiness_event_request.dart';
 part 'model/submitted_order.dart';
 part 'model/suggestion_action_param.dart';
 part 'model/summary.dart';

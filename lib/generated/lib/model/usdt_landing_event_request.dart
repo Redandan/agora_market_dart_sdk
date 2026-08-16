@@ -189,6 +189,7 @@ class UsdtLandingEventRequestPageEnum {
   static const USDT_COSTCO_TW = UsdtLandingEventRequestPageEnum._(r'USDT_COSTCO_TW');
   static const USDT_TELEGRAM_SHOP = UsdtLandingEventRequestPageEnum._(r'USDT_TELEGRAM_SHOP');
   static const OPERATOR_MARKETPLACE = UsdtLandingEventRequestPageEnum._(r'OPERATOR_MARKETPLACE');
+  static const TELEGRAM_STOREFRONT = UsdtLandingEventRequestPageEnum._(r'TELEGRAM_STOREFRONT');
   static const unknownDefaultOpenApi = UsdtLandingEventRequestPageEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][UsdtLandingEventRequestPageEnum].
@@ -196,6 +197,7 @@ class UsdtLandingEventRequestPageEnum {
     USDT_COSTCO_TW,
     USDT_TELEGRAM_SHOP,
     OPERATOR_MARKETPLACE,
+    TELEGRAM_STOREFRONT,
     unknownDefaultOpenApi,
   ];
 
@@ -238,6 +240,7 @@ class UsdtLandingEventRequestPageEnumTypeTransformer {
         case r'USDT_COSTCO_TW': return UsdtLandingEventRequestPageEnum.USDT_COSTCO_TW;
         case r'USDT_TELEGRAM_SHOP': return UsdtLandingEventRequestPageEnum.USDT_TELEGRAM_SHOP;
         case r'OPERATOR_MARKETPLACE': return UsdtLandingEventRequestPageEnum.OPERATOR_MARKETPLACE;
+        case r'TELEGRAM_STOREFRONT': return UsdtLandingEventRequestPageEnum.TELEGRAM_STOREFRONT;
         case r'unknown_default_open_api': return UsdtLandingEventRequestPageEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
@@ -282,6 +285,10 @@ class UsdtLandingEventRequestEventEnum {
   static const OPERATOR_LABORX_SALES_CONTACT_CLICK = UsdtLandingEventRequestEventEnum._(r'OPERATOR_LABORX_SALES_CONTACT_CLICK');
   static const OPERATOR_BOT_START = UsdtLandingEventRequestEventEnum._(r'OPERATOR_BOT_START');
   static const OPERATOR_LABORX_BOT_START = UsdtLandingEventRequestEventEnum._(r'OPERATOR_LABORX_BOT_START');
+  static const STOREFRONT_OPEN_ATTEMPT = UsdtLandingEventRequestEventEnum._(r'STOREFRONT_OPEN_ATTEMPT');
+  static const STOREFRONT_PRODUCTS_VISIBLE = UsdtLandingEventRequestEventEnum._(r'STOREFRONT_PRODUCTS_VISIBLE');
+  static const STOREFRONT_CATALOG_EMPTY = UsdtLandingEventRequestEventEnum._(r'STOREFRONT_CATALOG_EMPTY');
+  static const STOREFRONT_CATALOG_FAILED = UsdtLandingEventRequestEventEnum._(r'STOREFRONT_CATALOG_FAILED');
   static const unknownDefaultOpenApi = UsdtLandingEventRequestEventEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][UsdtLandingEventRequestEventEnum].
@@ -302,6 +309,10 @@ class UsdtLandingEventRequestEventEnum {
     OPERATOR_LABORX_SALES_CONTACT_CLICK,
     OPERATOR_BOT_START,
     OPERATOR_LABORX_BOT_START,
+    STOREFRONT_OPEN_ATTEMPT,
+    STOREFRONT_PRODUCTS_VISIBLE,
+    STOREFRONT_CATALOG_EMPTY,
+    STOREFRONT_CATALOG_FAILED,
     unknownDefaultOpenApi,
   ];
 
@@ -357,6 +368,10 @@ class UsdtLandingEventRequestEventEnumTypeTransformer {
         case r'OPERATOR_LABORX_SALES_CONTACT_CLICK': return UsdtLandingEventRequestEventEnum.OPERATOR_LABORX_SALES_CONTACT_CLICK;
         case r'OPERATOR_BOT_START': return UsdtLandingEventRequestEventEnum.OPERATOR_BOT_START;
         case r'OPERATOR_LABORX_BOT_START': return UsdtLandingEventRequestEventEnum.OPERATOR_LABORX_BOT_START;
+        case r'STOREFRONT_OPEN_ATTEMPT': return UsdtLandingEventRequestEventEnum.STOREFRONT_OPEN_ATTEMPT;
+        case r'STOREFRONT_PRODUCTS_VISIBLE': return UsdtLandingEventRequestEventEnum.STOREFRONT_PRODUCTS_VISIBLE;
+        case r'STOREFRONT_CATALOG_EMPTY': return UsdtLandingEventRequestEventEnum.STOREFRONT_CATALOG_EMPTY;
+        case r'STOREFRONT_CATALOG_FAILED': return UsdtLandingEventRequestEventEnum.STOREFRONT_CATALOG_FAILED;
         case r'unknown_default_open_api': return UsdtLandingEventRequestEventEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

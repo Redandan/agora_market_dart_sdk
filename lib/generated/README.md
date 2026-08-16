@@ -533,6 +533,7 @@ Class | Method | HTTP request | Description
 *PublicProductSeoControllerApi* | [**sitemap**](doc//PublicProductSeoControllerApi.md#sitemap) | **GET** /public/seo/sitemap.xml | 
 *PublicProductSeoControllerApi* | [**sourceCatalog**](doc//PublicProductSeoControllerApi.md#sourcecatalog) | **GET** /public/seo/sources/{slug} | 
 *PublicStoresApi* | [**getPublicStoreSummary**](doc//PublicStoresApi.md#getpublicstoresummary) | **GET** /public/stores/{sellerId} | Get public seller store summary
+*PublicTrafficObservationControllerApi* | [**recordStorefrontReadinessEvent**](doc//PublicTrafficObservationControllerApi.md#recordstorefrontreadinessevent) | **POST** /public/traffic/storefront-readiness/events | 
 *PublicTrafficObservationControllerApi* | [**recordUsdtLandingEvent**](doc//PublicTrafficObservationControllerApi.md#recordusdtlandingevent) | **POST** /public/traffic/usdt-landing/events | 
 *PublicTrafficObservationControllerApi* | [**visit**](doc//PublicTrafficObservationControllerApi.md#visit) | **POST** /public/traffic/visit | 
 *PwaLogsApi* | [**getLogs**](doc//PwaLogsApi.md#getlogs) | **GET** /pwa-logs | 下載當前所有日誌
@@ -1174,6 +1175,7 @@ Class | Method | HTTP request | Description
  - [StorefrontHomeResponse](doc//StorefrontHomeResponse.md)
  - [StorefrontHomeReviewRequest](doc//StorefrontHomeReviewRequest.md)
  - [StorefrontHomeValidationResponse](doc//StorefrontHomeValidationResponse.md)
+ - [StorefrontReadinessEventRequest](doc//StorefrontReadinessEventRequest.md)
  - [SubmittedOrder](doc//SubmittedOrder.md)
  - [SuggestionActionParam](doc//SuggestionActionParam.md)
  - [Summary](doc//Summary.md)

@@ -1178,6 +1178,8 @@ class ApiClient {
           return StorefrontHomeReviewRequest.fromJson(value);
         case 'StorefrontHomeValidationResponse':
           return StorefrontHomeValidationResponse.fromJson(value);
+        case 'StorefrontReadinessEventRequest':
+          return StorefrontReadinessEventRequest.fromJson(value);
         case 'SubmittedOrder':
           return SubmittedOrder.fromJson(value);
         case 'SuggestionActionParam':

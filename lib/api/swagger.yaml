@@ -4223,6 +4223,36 @@
         }
       }
     },
+    "/public/traffic/storefront-readiness/events": {
+      "post": {
+        "tags": [
+          "public-traffic-observation-controller"
+        ],
+        "operationId": "recordStorefrontReadinessEvent",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StorefrontReadinessEventRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsdtLandingEventResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/promo-codes/{code}/review": {
       "post": {
         "tags": [
@@ -25679,14 +25709,14 @@
           "fullAddress": {
             "type": "string"
           },
+          "convenienceStorePickup": {
+            "type": "boolean"
+          },
           "logisticsDescription": {
             "type": "string"
           },
           "recipientInfo": {
             "type": "string"
-          },
-          "convenienceStorePickup": {
-            "type": "boolean"
           }
         },
         "required": [
@@ -30026,7 +30056,8 @@
             "enum": [
               "USDT_COSTCO_TW",
               "USDT_TELEGRAM_SHOP",
-              "OPERATOR_MARKETPLACE"
+              "OPERATOR_MARKETPLACE",
+              "TELEGRAM_STOREFRONT"
             ]
           },
           "event": {
@@ -30047,7 +30078,11 @@
               "OPERATOR_SALES_CONTACT_CLICK",
               "OPERATOR_LABORX_SALES_CONTACT_CLICK",
               "OPERATOR_BOT_START",
-              "OPERATOR_LABORX_BOT_START"
+              "OPERATOR_LABORX_BOT_START",
+              "STOREFRONT_OPEN_ATTEMPT",
+              "STOREFRONT_PRODUCTS_VISIBLE",
+              "STOREFRONT_CATALOG_EMPTY",
+              "STOREFRONT_CATALOG_FAILED"
             ]
           },
           "cta": {
@@ -30110,6 +30145,39 @@
             "type": "boolean"
           }
         }
+      },
+      "StorefrontReadinessEventRequest": {
+        "type": "object",
+        "description": "Privacy-safe Telegram storefront readiness event. Traffic identity remains server-resolved.",
+        "properties": {
+          "eventId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "journeyId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "event": {
+            "type": "string",
+            "enum": [
+              "STOREFRONT_OPEN_ATTEMPT",
+              "STOREFRONT_PRODUCTS_VISIBLE",
+              "STOREFRONT_CATALOG_EMPTY",
+              "STOREFRONT_CATALOG_FAILED"
+            ]
+          },
+          "durationMs": {
+            "type": "integer",
+            "format": "int32",
+            "maximum": 300000
+          }
+        },
+        "required": [
+          "event",
+          "eventId",
+          "journeyId"
+        ]
       },
       "ReviewPromoCodeParam": {
         "type": "object",
