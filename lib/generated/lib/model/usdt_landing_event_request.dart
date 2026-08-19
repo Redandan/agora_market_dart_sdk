@@ -279,12 +279,16 @@ class UsdtLandingEventRequestEventEnum {
   static const CHECKOUT_SIGNAL = UsdtLandingEventRequestEventEnum._(r'CHECKOUT_SIGNAL');
   static const OPERATOR_LANDING_VIEW = UsdtLandingEventRequestEventEnum._(r'OPERATOR_LANDING_VIEW');
   static const OPERATOR_LABORX_LANDING_VIEW = UsdtLandingEventRequestEventEnum._(r'OPERATOR_LABORX_LANDING_VIEW');
+  static const OPERATOR_LINKEDIN_LANDING_VIEW = UsdtLandingEventRequestEventEnum._(r'OPERATOR_LINKEDIN_LANDING_VIEW');
   static const OPERATOR_BUYER_DEMO_CLICK = UsdtLandingEventRequestEventEnum._(r'OPERATOR_BUYER_DEMO_CLICK');
   static const OPERATOR_LABORX_BUYER_DEMO_CLICK = UsdtLandingEventRequestEventEnum._(r'OPERATOR_LABORX_BUYER_DEMO_CLICK');
+  static const OPERATOR_LINKEDIN_BUYER_DEMO_CLICK = UsdtLandingEventRequestEventEnum._(r'OPERATOR_LINKEDIN_BUYER_DEMO_CLICK');
   static const OPERATOR_SALES_CONTACT_CLICK = UsdtLandingEventRequestEventEnum._(r'OPERATOR_SALES_CONTACT_CLICK');
   static const OPERATOR_LABORX_SALES_CONTACT_CLICK = UsdtLandingEventRequestEventEnum._(r'OPERATOR_LABORX_SALES_CONTACT_CLICK');
+  static const OPERATOR_LINKEDIN_SALES_CONTACT_CLICK = UsdtLandingEventRequestEventEnum._(r'OPERATOR_LINKEDIN_SALES_CONTACT_CLICK');
   static const OPERATOR_BOT_START = UsdtLandingEventRequestEventEnum._(r'OPERATOR_BOT_START');
   static const OPERATOR_LABORX_BOT_START = UsdtLandingEventRequestEventEnum._(r'OPERATOR_LABORX_BOT_START');
+  static const OPERATOR_LINKEDIN_BOT_START = UsdtLandingEventRequestEventEnum._(r'OPERATOR_LINKEDIN_BOT_START');
   static const STOREFRONT_OPEN_ATTEMPT = UsdtLandingEventRequestEventEnum._(r'STOREFRONT_OPEN_ATTEMPT');
   static const STOREFRONT_PRODUCTS_VISIBLE = UsdtLandingEventRequestEventEnum._(r'STOREFRONT_PRODUCTS_VISIBLE');
   static const STOREFRONT_CATALOG_EMPTY = UsdtLandingEventRequestEventEnum._(r'STOREFRONT_CATALOG_EMPTY');
@@ -303,12 +307,16 @@ class UsdtLandingEventRequestEventEnum {
     CHECKOUT_SIGNAL,
     OPERATOR_LANDING_VIEW,
     OPERATOR_LABORX_LANDING_VIEW,
+    OPERATOR_LINKEDIN_LANDING_VIEW,
     OPERATOR_BUYER_DEMO_CLICK,
     OPERATOR_LABORX_BUYER_DEMO_CLICK,
+    OPERATOR_LINKEDIN_BUYER_DEMO_CLICK,
     OPERATOR_SALES_CONTACT_CLICK,
     OPERATOR_LABORX_SALES_CONTACT_CLICK,
+    OPERATOR_LINKEDIN_SALES_CONTACT_CLICK,
     OPERATOR_BOT_START,
     OPERATOR_LABORX_BOT_START,
+    OPERATOR_LINKEDIN_BOT_START,
     STOREFRONT_OPEN_ATTEMPT,
     STOREFRONT_PRODUCTS_VISIBLE,
     STOREFRONT_CATALOG_EMPTY,
@@ -362,12 +370,16 @@ class UsdtLandingEventRequestEventEnumTypeTransformer {
         case r'CHECKOUT_SIGNAL': return UsdtLandingEventRequestEventEnum.CHECKOUT_SIGNAL;
         case r'OPERATOR_LANDING_VIEW': return UsdtLandingEventRequestEventEnum.OPERATOR_LANDING_VIEW;
         case r'OPERATOR_LABORX_LANDING_VIEW': return UsdtLandingEventRequestEventEnum.OPERATOR_LABORX_LANDING_VIEW;
+        case r'OPERATOR_LINKEDIN_LANDING_VIEW': return UsdtLandingEventRequestEventEnum.OPERATOR_LINKEDIN_LANDING_VIEW;
         case r'OPERATOR_BUYER_DEMO_CLICK': return UsdtLandingEventRequestEventEnum.OPERATOR_BUYER_DEMO_CLICK;
         case r'OPERATOR_LABORX_BUYER_DEMO_CLICK': return UsdtLandingEventRequestEventEnum.OPERATOR_LABORX_BUYER_DEMO_CLICK;
+        case r'OPERATOR_LINKEDIN_BUYER_DEMO_CLICK': return UsdtLandingEventRequestEventEnum.OPERATOR_LINKEDIN_BUYER_DEMO_CLICK;
         case r'OPERATOR_SALES_CONTACT_CLICK': return UsdtLandingEventRequestEventEnum.OPERATOR_SALES_CONTACT_CLICK;
         case r'OPERATOR_LABORX_SALES_CONTACT_CLICK': return UsdtLandingEventRequestEventEnum.OPERATOR_LABORX_SALES_CONTACT_CLICK;
+        case r'OPERATOR_LINKEDIN_SALES_CONTACT_CLICK': return UsdtLandingEventRequestEventEnum.OPERATOR_LINKEDIN_SALES_CONTACT_CLICK;
         case r'OPERATOR_BOT_START': return UsdtLandingEventRequestEventEnum.OPERATOR_BOT_START;
         case r'OPERATOR_LABORX_BOT_START': return UsdtLandingEventRequestEventEnum.OPERATOR_LABORX_BOT_START;
+        case r'OPERATOR_LINKEDIN_BOT_START': return UsdtLandingEventRequestEventEnum.OPERATOR_LINKEDIN_BOT_START;
         case r'STOREFRONT_OPEN_ATTEMPT': return UsdtLandingEventRequestEventEnum.STOREFRONT_OPEN_ATTEMPT;
         case r'STOREFRONT_PRODUCTS_VISIBLE': return UsdtLandingEventRequestEventEnum.STOREFRONT_PRODUCTS_VISIBLE;
         case r'STOREFRONT_CATALOG_EMPTY': return UsdtLandingEventRequestEventEnum.STOREFRONT_CATALOG_EMPTY;

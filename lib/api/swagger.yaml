@@ -25709,14 +25709,14 @@
           "fullAddress": {
             "type": "string"
           },
-          "convenienceStorePickup": {
-            "type": "boolean"
-          },
           "logisticsDescription": {
             "type": "string"
           },
           "recipientInfo": {
             "type": "string"
+          },
+          "convenienceStorePickup": {
+            "type": "boolean"
           }
         },
         "required": [
@@ -30073,12 +30073,16 @@
               "CHECKOUT_SIGNAL",
               "OPERATOR_LANDING_VIEW",
               "OPERATOR_LABORX_LANDING_VIEW",
+              "OPERATOR_LINKEDIN_LANDING_VIEW",
               "OPERATOR_BUYER_DEMO_CLICK",
               "OPERATOR_LABORX_BUYER_DEMO_CLICK",
+              "OPERATOR_LINKEDIN_BUYER_DEMO_CLICK",
               "OPERATOR_SALES_CONTACT_CLICK",
               "OPERATOR_LABORX_SALES_CONTACT_CLICK",
+              "OPERATOR_LINKEDIN_SALES_CONTACT_CLICK",
               "OPERATOR_BOT_START",
               "OPERATOR_LABORX_BOT_START",
+              "OPERATOR_LINKEDIN_BOT_START",
               "STOREFRONT_OPEN_ATTEMPT",
               "STOREFRONT_PRODUCTS_VISIBLE",
               "STOREFRONT_CATALOG_EMPTY",
@@ -38614,11 +38618,11 @@
           "purchaseRestrictionReason": {
             "type": "string"
           },
-          "specificationDescription": {
-            "type": "string"
-          },
           "totalPrice": {
             "type": "number"
+          },
+          "specificationDescription": {
+            "type": "string"
           }
         },
         "required": [
