@@ -372,6 +372,10 @@ class ApiClient {
           return ClientLog.fromJson(value);
         case 'ClientLogDto':
           return ClientLogDto.fromJson(value);
+        case 'ClientLogEntry':
+          return ClientLogEntry.fromJson(value);
+        case 'ClientViewportDiagnosticRequest':
+          return ClientViewportDiagnosticRequest.fromJson(value);
         case 'CodeSupportKnowledgeCandidate':
           return CodeSupportKnowledgeCandidate.fromJson(value);
         case 'CodeSupportKnowledgeImportResult':
@@ -510,6 +514,8 @@ class ApiClient {
           return DisputeSearchParam.fromJson(value);
         case 'DisputeStatisticsDTO':
           return DisputeStatisticsDTO.fromJson(value);
+        case 'ElementSnapshot':
+          return ElementSnapshot.fromJson(value);
         case 'EmailLoginRequest':
           return EmailLoginRequest.fromJson(value);
         case 'EmailLoginSendCodeRequest':
@@ -714,6 +720,8 @@ class ApiClient {
           return OAuthBindingInfo.fromJson(value);
         case 'ObservationHealth':
           return ObservationHealth.fromJson(value);
+        case 'OffsetStatus':
+          return OffsetStatus.fromJson(value);
         case 'Order':
           return Order.fromJson(value);
         case 'OrderActionState':
@@ -1034,6 +1042,8 @@ class ApiClient {
           return RechargeResponse.fromJson(value);
         case 'RechargeSearchParam':
           return RechargeSearchParam.fromJson(value);
+        case 'RectSnapshot':
+          return RectSnapshot.fromJson(value);
         case 'RefundOfferResponseParam':
           return RefundOfferResponseParam.fromJson(value);
         case 'RegisterParam':
@@ -1074,6 +1084,8 @@ class ApiClient {
           return RiskState.fromJson(value);
         case 'RtpEntry':
           return RtpEntry.fromJson(value);
+        case 'RuntimeState':
+          return RuntimeState.fromJson(value);
         case 'SSEEventRequest':
           return SSEEventRequest.fromJson(value);
         case 'SSEEventResponse':
@@ -1270,6 +1282,8 @@ class ApiClient {
           return VapidPublicKeyResponseDTO.fromJson(value);
         case 'VerifyCodeRequest':
           return VerifyCodeRequest.fromJson(value);
+        case 'ViewportSnapshot':
+          return ViewportSnapshot.fromJson(value);
         case 'WalletConnectInfo':
           return WalletConnectInfo.fromJson(value);
         case 'WalletConnectNonceResponse':

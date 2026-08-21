@@ -4253,6 +4253,29 @@
         }
       }
     },
+    "/public/traffic/client-viewport-diagnostics": {
+      "post": {
+        "tags": [
+          "public-traffic-observation-controller"
+        ],
+        "operationId": "recordClientViewportDiagnostic",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientViewportDiagnosticRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/promo-codes/{code}/review": {
       "post": {
         "tags": [
@@ -25709,14 +25732,14 @@
           "fullAddress": {
             "type": "string"
           },
+          "convenienceStorePickup": {
+            "type": "boolean"
+          },
           "logisticsDescription": {
             "type": "string"
           },
           "recipientInfo": {
             "type": "string"
-          },
-          "convenienceStorePickup": {
-            "type": "boolean"
           }
         },
         "required": [
@@ -30182,6 +30205,360 @@
           "eventId",
           "journeyId"
         ]
+      },
+      "ClientLogEntry": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "maxLength": 40,
+            "minLength": 0,
+            "pattern": "^[0-9TZ:.+\\-]{10,40}$"
+          },
+          "level": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(INFO|WARN|ERROR)$"
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 300,
+            "minLength": 0
+          }
+        }
+      },
+      "ClientViewportDiagnosticRequest": {
+        "type": "object",
+        "description": "Ephemeral, privacy-safe storefront viewport diagnostic snapshot.",
+        "properties": {
+          "traceId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sequence": {
+            "type": "integer",
+            "format": "int32",
+            "maximum": 8,
+            "minimum": 1
+          },
+          "phase": {
+            "type": "string",
+            "enum": [
+              "INITIAL",
+              "FLUTTER_FIRST_FRAME",
+              "STOREFRONT_READY",
+              "VIEWPORT_CHANGED",
+              "PAGE_VISIBLE",
+              "MANUAL"
+            ]
+          },
+          "version": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 0,
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+\\+[0-9]+$"
+          },
+          "sourceCommit": {
+            "type": "string",
+            "maxLength": 40,
+            "minLength": 0,
+            "pattern": "^[0-9a-fA-F]{40}$"
+          },
+          "path": {
+            "type": "string",
+            "maxLength": 160,
+            "minLength": 0,
+            "pattern": "^/[A-Za-z0-9._~/%-]*$"
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "IOS",
+              "ANDROID",
+              "DESKTOP",
+              "OTHER"
+            ]
+          },
+          "standalone": {
+            "type": "boolean"
+          },
+          "telegramMiniApp": {
+            "type": "boolean"
+          },
+          "runtime": {
+            "$ref": "#/components/schemas/RuntimeState"
+          },
+          "viewport": {
+            "$ref": "#/components/schemas/ViewportSnapshot"
+          },
+          "flutterRoot": {
+            "$ref": "#/components/schemas/ElementSnapshot"
+          },
+          "glassPane": {
+            "$ref": "#/components/schemas/ElementSnapshot"
+          },
+          "canvas": {
+            "$ref": "#/components/schemas/ElementSnapshot"
+          },
+          "offsetStatus": {
+            "$ref": "#/components/schemas/OffsetStatus"
+          },
+          "logs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClientLogEntry"
+            },
+            "maxItems": 12,
+            "minItems": 0
+          }
+        },
+        "required": [
+          "canvas",
+          "flutterRoot",
+          "glassPane",
+          "offsetStatus",
+          "phase",
+          "platform",
+          "runtime",
+          "standalone",
+          "telegramMiniApp",
+          "traceId",
+          "viewport"
+        ]
+      },
+      "ElementSnapshot": {
+        "type": "object",
+        "properties": {
+          "present": {
+            "type": "boolean"
+          },
+          "visible": {
+            "type": "boolean"
+          },
+          "rect": {
+            "$ref": "#/components/schemas/RectSnapshot"
+          },
+          "transform": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 0,
+            "pattern": "^(none|matrix(?:3d)?\\([0-9eE+.,\\- ]+\\)|translate3d\\([0-9eE+.,%px\\- ]+\\))$"
+          }
+        },
+        "required": [
+          "present",
+          "visible"
+        ]
+      },
+      "OffsetStatus": {
+        "type": "object",
+        "properties": {
+          "detected": {
+            "type": "boolean"
+          },
+          "offsetTop": {
+            "type": "number",
+            "format": "double",
+            "maximum": 20000.0,
+            "minimum": -20000.0
+          },
+          "offsetLeft": {
+            "type": "number",
+            "format": "double",
+            "maximum": 20000.0,
+            "minimum": -20000.0
+          },
+          "threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1000.0,
+            "minimum": 0.0
+          }
+        },
+        "required": [
+          "detected"
+        ]
+      },
+      "RectSnapshot": {
+        "type": "object",
+        "properties": {
+          "left": {
+            "type": "number",
+            "format": "double",
+            "maximum": 20000.0,
+            "minimum": -20000.0
+          },
+          "top": {
+            "type": "number",
+            "format": "double",
+            "maximum": 20000.0,
+            "minimum": -20000.0
+          },
+          "width": {
+            "type": "number",
+            "format": "double",
+            "maximum": 20000.0,
+            "minimum": 0.0
+          },
+          "height": {
+            "type": "number",
+            "format": "double",
+            "maximum": 20000.0,
+            "minimum": 0.0
+          }
+        }
+      },
+      "RuntimeState": {
+        "type": "object",
+        "properties": {
+          "readyState": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(loading|interactive|complete)$"
+          },
+          "flutterReady": {
+            "type": "boolean"
+          },
+          "immediate": {
+            "type": "boolean"
+          },
+          "startupLayoutReady": {
+            "type": "boolean"
+          },
+          "serviceWorkerControlled": {
+            "type": "boolean"
+          },
+          "elapsedMs": {
+            "type": "integer",
+            "format": "int64",
+            "maximum": 600000
+          },
+          "bootstrapAsset": {
+            "type": "string",
+            "maxLength": 96,
+            "minLength": 0,
+            "pattern": "^flutter_bootstrap(?:\\.[0-9]+\\.[0-9]+\\.[0-9]+)?\\.js$"
+          }
+        },
+        "required": [
+          "flutterReady",
+          "immediate",
+          "serviceWorkerControlled",
+          "startupLayoutReady"
+        ]
+      },
+      "ViewportSnapshot": {
+        "type": "object",
+        "properties": {
+          "screenWidth": {
+            "type": "number",
+            "format": "double",
+            "maximum": 20000.0,
+            "minimum": 0.0
+          },
+          "screenHeight": {
+            "type": "number",
+            "format": "double",
+            "maximum": 20000.0,
+            "minimum": 0.0
+          },
+          "innerWidth": {
+            "type": "number",
+            "format": "double",
+            "maximum": 20000.0,
+            "minimum": 0.0
+          },
+          "innerHeight": {
+            "type": "number",
+            "format": "double",
+            "maximum": 20000.0,
+            "minimum": 0.0
+          },
+          "scrollX": {
+            "type": "number",
+            "format": "double",
+            "maximum": 20000.0,
+            "minimum": -20000.0
+          },
+          "scrollY": {
+            "type": "number",
+            "format": "double",
+            "maximum": 20000.0,
+            "minimum": -20000.0
+          },
+          "devicePixelRatio": {
+            "type": "number",
+            "format": "double",
+            "maximum": 100.0,
+            "minimum": 0.0
+          },
+          "visualWidth": {
+            "type": "number",
+            "format": "double",
+            "maximum": 20000.0,
+            "minimum": 0.0
+          },
+          "visualHeight": {
+            "type": "number",
+            "format": "double",
+            "maximum": 20000.0,
+            "minimum": 0.0
+          },
+          "visualOffsetLeft": {
+            "type": "number",
+            "format": "double",
+            "maximum": 20000.0,
+            "minimum": -20000.0
+          },
+          "visualOffsetTop": {
+            "type": "number",
+            "format": "double",
+            "maximum": 20000.0,
+            "minimum": -20000.0
+          },
+          "visualPageLeft": {
+            "type": "number",
+            "format": "double",
+            "maximum": 20000.0,
+            "minimum": -20000.0
+          },
+          "visualPageTop": {
+            "type": "number",
+            "format": "double",
+            "maximum": 20000.0,
+            "minimum": -20000.0
+          },
+          "visualScale": {
+            "type": "number",
+            "format": "double",
+            "maximum": 100.0,
+            "minimum": 0.01
+          },
+          "documentClientWidth": {
+            "type": "number",
+            "format": "double",
+            "maximum": 20000.0,
+            "minimum": 0.0
+          },
+          "documentClientHeight": {
+            "type": "number",
+            "format": "double",
+            "maximum": 20000.0,
+            "minimum": 0.0
+          },
+          "documentScrollWidth": {
+            "type": "number",
+            "format": "double",
+            "maximum": 100000.0,
+            "minimum": 0.0
+          },
+          "documentScrollHeight": {
+            "type": "number",
+            "format": "double",
+            "maximum": 100000.0,
+            "minimum": 0.0
+          }
+        }
       },
       "ReviewPromoCodeParam": {
         "type": "object",
@@ -38618,11 +38995,11 @@
           "purchaseRestrictionReason": {
             "type": "string"
           },
-          "totalPrice": {
-            "type": "number"
-          },
           "specificationDescription": {
             "type": "string"
+          },
+          "totalPrice": {
+            "type": "number"
           }
         },
         "required": [

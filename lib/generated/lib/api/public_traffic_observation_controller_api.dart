@@ -16,6 +16,45 @@ class PublicTrafficObservationControllerApi {
 
   final ApiClient apiClient;
 
+  /// Performs an HTTP 'POST /public/traffic/client-viewport-diagnostics' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [ClientViewportDiagnosticRequest] clientViewportDiagnosticRequest (required):
+  Future<Response> recordClientViewportDiagnosticWithHttpInfo(ClientViewportDiagnosticRequest clientViewportDiagnosticRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/public/traffic/client-viewport-diagnostics';
+
+    // ignore: prefer_final_locals
+    Object? postBody = clientViewportDiagnosticRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [ClientViewportDiagnosticRequest] clientViewportDiagnosticRequest (required):
+  Future<void> recordClientViewportDiagnostic(ClientViewportDiagnosticRequest clientViewportDiagnosticRequest,) async {
+    final response = await recordClientViewportDiagnosticWithHttpInfo(clientViewportDiagnosticRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
   /// Performs an HTTP 'POST /public/traffic/storefront-readiness/events' operation and returns the [Response].
   /// Parameters:
   ///

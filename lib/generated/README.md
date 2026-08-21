@@ -533,6 +533,7 @@ Class | Method | HTTP request | Description
 *PublicProductSeoControllerApi* | [**sitemap**](doc//PublicProductSeoControllerApi.md#sitemap) | **GET** /public/seo/sitemap.xml | 
 *PublicProductSeoControllerApi* | [**sourceCatalog**](doc//PublicProductSeoControllerApi.md#sourcecatalog) | **GET** /public/seo/sources/{slug} | 
 *PublicStoresApi* | [**getPublicStoreSummary**](doc//PublicStoresApi.md#getpublicstoresummary) | **GET** /public/stores/{sellerId} | Get public seller store summary
+*PublicTrafficObservationControllerApi* | [**recordClientViewportDiagnostic**](doc//PublicTrafficObservationControllerApi.md#recordclientviewportdiagnostic) | **POST** /public/traffic/client-viewport-diagnostics | 
 *PublicTrafficObservationControllerApi* | [**recordStorefrontReadinessEvent**](doc//PublicTrafficObservationControllerApi.md#recordstorefrontreadinessevent) | **POST** /public/traffic/storefront-readiness/events | 
 *PublicTrafficObservationControllerApi* | [**recordUsdtLandingEvent**](doc//PublicTrafficObservationControllerApi.md#recordusdtlandingevent) | **POST** /public/traffic/usdt-landing/events | 
 *PublicTrafficObservationControllerApi* | [**visit**](doc//PublicTrafficObservationControllerApi.md#visit) | **POST** /public/traffic/visit | 
@@ -772,6 +773,8 @@ Class | Method | HTTP request | Description
  - [ClassificationSuggestionActionRequest](doc//ClassificationSuggestionActionRequest.md)
  - [ClientLog](doc//ClientLog.md)
  - [ClientLogDto](doc//ClientLogDto.md)
+ - [ClientLogEntry](doc//ClientLogEntry.md)
+ - [ClientViewportDiagnosticRequest](doc//ClientViewportDiagnosticRequest.md)
  - [CodeSupportKnowledgeCandidate](doc//CodeSupportKnowledgeCandidate.md)
  - [CodeSupportKnowledgeImportResult](doc//CodeSupportKnowledgeImportResult.md)
  - [ColdWallet](doc//ColdWallet.md)
@@ -841,6 +844,7 @@ Class | Method | HTTP request | Description
  - [DisputeReplyParam](doc//DisputeReplyParam.md)
  - [DisputeSearchParam](doc//DisputeSearchParam.md)
  - [DisputeStatisticsDTO](doc//DisputeStatisticsDTO.md)
+ - [ElementSnapshot](doc//ElementSnapshot.md)
  - [EmailLoginRequest](doc//EmailLoginRequest.md)
  - [EmailLoginSendCodeRequest](doc//EmailLoginSendCodeRequest.md)
  - [EmailLoginSendCodeResponse](doc//EmailLoginSendCodeResponse.md)
@@ -943,6 +947,7 @@ Class | Method | HTTP request | Description
  - [OAuth2TokenResponse](doc//OAuth2TokenResponse.md)
  - [OAuthBindingInfo](doc//OAuthBindingInfo.md)
  - [ObservationHealth](doc//ObservationHealth.md)
+ - [OffsetStatus](doc//OffsetStatus.md)
  - [Order](doc//Order.md)
  - [OrderActionState](doc//OrderActionState.md)
  - [OrderCancelParam](doc//OrderCancelParam.md)
@@ -1103,6 +1108,7 @@ Class | Method | HTTP request | Description
  - [Recharge](doc//Recharge.md)
  - [RechargeResponse](doc//RechargeResponse.md)
  - [RechargeSearchParam](doc//RechargeSearchParam.md)
+ - [RectSnapshot](doc//RectSnapshot.md)
  - [RefundOfferResponseParam](doc//RefundOfferResponseParam.md)
  - [RegisterParam](doc//RegisterParam.md)
  - [RegisterResult](doc//RegisterResult.md)
@@ -1123,6 +1129,7 @@ Class | Method | HTTP request | Description
  - [ReviewUpdateParam](doc//ReviewUpdateParam.md)
  - [RiskState](doc//RiskState.md)
  - [RtpEntry](doc//RtpEntry.md)
+ - [RuntimeState](doc//RuntimeState.md)
  - [SSEEventRequest](doc//SSEEventRequest.md)
  - [SSEEventResponse](doc//SSEEventResponse.md)
  - [SalesStats](doc//SalesStats.md)
@@ -1221,6 +1228,7 @@ Class | Method | HTTP request | Description
  - [UserProfileUpdateParam](doc//UserProfileUpdateParam.md)
  - [VapidPublicKeyResponseDTO](doc//VapidPublicKeyResponseDTO.md)
  - [VerifyCodeRequest](doc//VerifyCodeRequest.md)
+ - [ViewportSnapshot](doc//ViewportSnapshot.md)
  - [WalletConnectInfo](doc//WalletConnectInfo.md)
  - [WalletConnectNonceResponse](doc//WalletConnectNonceResponse.md)
  - [WalletSafetySummaryResponse](doc//WalletSafetySummaryResponse.md)
