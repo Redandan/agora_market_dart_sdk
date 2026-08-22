@@ -58,7 +58,7 @@ class WebpushApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PushHealthResponseDTO',) as PushHealthResponseDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PushHealthResponseDTO.fromJson(value)) as PushHealthResponseDTO;
     
     }
     return null;
@@ -106,7 +106,7 @@ class WebpushApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SchedulerStatusResponseDTO',) as SchedulerStatusResponseDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => SchedulerStatusResponseDTO.fromJson(value)) as SchedulerStatusResponseDTO;
     
     }
     return null;
@@ -154,7 +154,7 @@ class WebpushApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PushStatisticsResponseDTO',) as PushStatisticsResponseDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PushStatisticsResponseDTO.fromJson(value)) as PushStatisticsResponseDTO;
     
     }
     return null;
@@ -203,7 +203,7 @@ class WebpushApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<PushSubscription>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => PushSubscription.fromJson(item))) as List)
         .cast<PushSubscription>()
         .toList(growable: false);
 
@@ -253,7 +253,7 @@ class WebpushApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'VapidPublicKeyResponseDTO',) as VapidPublicKeyResponseDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => VapidPublicKeyResponseDTO.fromJson(value)) as VapidPublicKeyResponseDTO;
     
     }
     return null;
@@ -309,7 +309,7 @@ class WebpushApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PushNotificationResponseDTO',) as PushNotificationResponseDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PushNotificationResponseDTO.fromJson(value)) as PushNotificationResponseDTO;
     
     }
     return null;
@@ -357,7 +357,7 @@ class WebpushApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PushTestResponseDTO',) as PushTestResponseDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PushTestResponseDTO.fromJson(value)) as PushTestResponseDTO;
     
     }
     return null;
@@ -413,7 +413,7 @@ class WebpushApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PushSubscriptionResponseDTO',) as PushSubscriptionResponseDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PushSubscriptionResponseDTO.fromJson(value)) as PushSubscriptionResponseDTO;
     
     }
     return null;
@@ -461,7 +461,7 @@ class WebpushApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ScheduledPushResponseDTO',) as ScheduledPushResponseDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ScheduledPushResponseDTO.fromJson(value)) as ScheduledPushResponseDTO;
     
     }
     return null;
@@ -521,7 +521,7 @@ class WebpushApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PushUnsubscriptionResponseDTO',) as PushUnsubscriptionResponseDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PushUnsubscriptionResponseDTO.fromJson(value)) as PushUnsubscriptionResponseDTO;
     
     }
     return null;

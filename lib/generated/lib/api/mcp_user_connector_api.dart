@@ -54,7 +54,7 @@ class McpUserConnectorApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'McpConnectorActivitySummaryResponse',) as McpConnectorActivitySummaryResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => McpConnectorActivitySummaryResponse.fromJson(value)) as McpConnectorActivitySummaryResponse;
     
     }
     return null;
@@ -98,7 +98,7 @@ class McpUserConnectorApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'McpConnectorConfigResponse',) as McpConnectorConfigResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => McpConnectorConfigResponse.fromJson(value)) as McpConnectorConfigResponse;
     
     }
     return null;
@@ -142,7 +142,7 @@ class McpUserConnectorApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'McpConnectorGrantsResponse',) as McpConnectorGrantsResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => McpConnectorGrantsResponse.fromJson(value)) as McpConnectorGrantsResponse;
     
     }
     return null;
@@ -186,7 +186,7 @@ class McpUserConnectorApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'McpConnectorReadinessResponse',) as McpConnectorReadinessResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => McpConnectorReadinessResponse.fromJson(value)) as McpConnectorReadinessResponse;
     
     }
     return null;

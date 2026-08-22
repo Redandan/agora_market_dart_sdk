@@ -70,7 +70,7 @@ class SlotApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SlotMemberOddsResponse',) as SlotMemberOddsResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => SlotMemberOddsResponse.fromJson(value)) as SlotMemberOddsResponse;
     
     }
     return null;
@@ -129,7 +129,7 @@ class SlotApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SlotPaytableConfigResponse',) as SlotPaytableConfigResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => SlotPaytableConfigResponse.fromJson(value)) as SlotPaytableConfigResponse;
     
     }
     return null;
@@ -206,7 +206,7 @@ class SlotApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<SlotRevenueResponse>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => SlotRevenueResponse.fromJson(item))) as List)
         .cast<SlotRevenueResponse>()
         .toList(growable: false);
 
@@ -285,7 +285,7 @@ class SlotApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<SlotRevenueResponse>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => SlotRevenueResponse.fromJson(item))) as List)
         .cast<SlotRevenueResponse>()
         .toList(growable: false);
 
@@ -336,7 +336,7 @@ class SlotApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<SlotSymbolInfo>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => SlotSymbolInfo.fromJson(item))) as List)
         .cast<SlotSymbolInfo>()
         .toList(growable: false);
 
@@ -401,7 +401,7 @@ class SlotApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SlotPaytableConfigResponse',) as SlotPaytableConfigResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => SlotPaytableConfigResponse.fromJson(value)) as SlotPaytableConfigResponse;
     
     }
     return null;
@@ -457,7 +457,7 @@ class SlotApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SlotSpinResponse',) as SlotSpinResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => SlotSpinResponse.fromJson(value)) as SlotSpinResponse;
     
     }
     return null;

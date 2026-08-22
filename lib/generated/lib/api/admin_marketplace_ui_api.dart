@@ -54,7 +54,7 @@ class AdminMarketplaceUiApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MarketplaceUiProductListCarouselAdminResponse',) as MarketplaceUiProductListCarouselAdminResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => MarketplaceUiProductListCarouselAdminResponse.fromJson(value)) as MarketplaceUiProductListCarouselAdminResponse;
     
     }
     return null;
@@ -106,7 +106,7 @@ class AdminMarketplaceUiApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MarketplaceUiProductListCarouselAdminResponse',) as MarketplaceUiProductListCarouselAdminResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => MarketplaceUiProductListCarouselAdminResponse.fromJson(value)) as MarketplaceUiProductListCarouselAdminResponse;
     
     }
     return null;
@@ -158,7 +158,7 @@ class AdminMarketplaceUiApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MarketplaceUiProductListCarouselAdminResponse',) as MarketplaceUiProductListCarouselAdminResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => MarketplaceUiProductListCarouselAdminResponse.fromJson(value)) as MarketplaceUiProductListCarouselAdminResponse;
     
     }
     return null;
@@ -210,7 +210,7 @@ class AdminMarketplaceUiApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MarketplaceUiProductListCarouselAdminResponse',) as MarketplaceUiProductListCarouselAdminResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => MarketplaceUiProductListCarouselAdminResponse.fromJson(value)) as MarketplaceUiProductListCarouselAdminResponse;
     
     }
     return null;

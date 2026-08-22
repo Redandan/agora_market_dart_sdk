@@ -66,7 +66,7 @@ class Oauth2StandardApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseOAuth2AuthorizeResponse',) as ApiResponseOAuth2AuthorizeResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ApiResponseOAuth2AuthorizeResponse.fromJson(value)) as ApiResponseOAuth2AuthorizeResponse;
     
     }
     return null;
@@ -122,7 +122,7 @@ class Oauth2StandardApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseOAuth2TokenResponse',) as ApiResponseOAuth2TokenResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ApiResponseOAuth2TokenResponse.fromJson(value)) as ApiResponseOAuth2TokenResponse;
     
     }
     return null;

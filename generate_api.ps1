@@ -367,6 +367,12 @@ try {
         throw "Generic map-list repair failed with exit code $LASTEXITCODE"
     }
 
+    Write-Host "Rewriting endpoint deserializers for web tree shaking..." -ForegroundColor Yellow
+    dart ci/rewrite_api_deserializers.dart "lib/generated/lib"
+    if ($LASTEXITCODE -ne 0) {
+        throw "Endpoint deserializer rewrite failed with exit code $LASTEXITCODE"
+    }
+
     Push-Location "lib/generated"
     try {
         dart pub get
@@ -386,6 +392,11 @@ try {
         dart analyze
         if ($LASTEXITCODE -ne 0) {
             throw "Generated SDK analysis failed with exit code $LASTEXITCODE"
+        }
+
+        dart --packages=.dart_tool/package_config.json "../../ci/verify_typed_deserializer.dart"
+        if ($LASTEXITCODE -ne 0) {
+            throw "Typed deserializer verification failed with exit code $LASTEXITCODE"
         }
     } finally {
         Pop-Location

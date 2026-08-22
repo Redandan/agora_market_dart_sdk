@@ -90,7 +90,7 @@ class SanctionBlacklistApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SanctionBlacklistAddress',) as SanctionBlacklistAddress;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => SanctionBlacklistAddress.fromJson(value)) as SanctionBlacklistAddress;
     
     }
     return null;
@@ -153,7 +153,7 @@ class SanctionBlacklistApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageSanctionBlacklistAddress',) as PageSanctionBlacklistAddress;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageSanctionBlacklistAddress.fromJson(value)) as PageSanctionBlacklistAddress;
     
     }
     return null;

@@ -66,7 +66,7 @@ class VerificationCodeLoginApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseLoginTokenResponse',) as ApiResponseLoginTokenResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ApiResponseLoginTokenResponse.fromJson(value)) as ApiResponseLoginTokenResponse;
     
     }
     return null;
@@ -122,7 +122,7 @@ class VerificationCodeLoginApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseLoginResult',) as ApiResponseLoginResult;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ApiResponseLoginResult.fromJson(value)) as ApiResponseLoginResult;
     
     }
     return null;

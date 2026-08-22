@@ -59,7 +59,7 @@ class SevenElevenStoresApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<String>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => item is String ? item : item.toString())) as List)
         .cast<String>()
         .toList(growable: false);
 
@@ -122,7 +122,7 @@ class SevenElevenStoresApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<SevenElevenStoreDTO>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => SevenElevenStoreDTO.fromJson(item))) as List)
         .cast<SevenElevenStoreDTO>()
         .toList(growable: false);
 

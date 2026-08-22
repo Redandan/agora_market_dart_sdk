@@ -62,7 +62,7 @@ class AuthPasskeyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LoginResult',) as LoginResult;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => LoginResult.fromJson(value)) as LoginResult;
     
     }
     return null;
@@ -114,7 +114,7 @@ class AuthPasskeyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PasskeyRegistrationResponse',) as PasskeyRegistrationResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PasskeyRegistrationResponse.fromJson(value)) as PasskeyRegistrationResponse;
     
     }
     return null;
@@ -166,7 +166,7 @@ class AuthPasskeyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PasskeySignupVerifyResponse',) as PasskeySignupVerifyResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PasskeySignupVerifyResponse.fromJson(value)) as PasskeySignupVerifyResponse;
     
     }
     return null;
@@ -211,7 +211,7 @@ class AuthPasskeyApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<PasskeyCredentialResponse>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => PasskeyCredentialResponse.fromJson(item))) as List)
         .cast<PasskeyCredentialResponse>()
         .toList(growable: false);
 
@@ -265,7 +265,7 @@ class AuthPasskeyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PasskeyCapabilityResponse',) as PasskeyCapabilityResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PasskeyCapabilityResponse.fromJson(value)) as PasskeyCapabilityResponse;
     
     }
     return null;
@@ -354,7 +354,7 @@ class AuthPasskeyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PasskeySecuritySummaryResponse',) as PasskeySecuritySummaryResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PasskeySecuritySummaryResponse.fromJson(value)) as PasskeySecuritySummaryResponse;
     
     }
     return null;
@@ -406,7 +406,7 @@ class AuthPasskeyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PasskeyOptionsResponse',) as PasskeyOptionsResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PasskeyOptionsResponse.fromJson(value)) as PasskeyOptionsResponse;
     
     }
     return null;
@@ -458,7 +458,7 @@ class AuthPasskeyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PasskeyOptionsResponse',) as PasskeyOptionsResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PasskeyOptionsResponse.fromJson(value)) as PasskeyOptionsResponse;
     
     }
     return null;
@@ -510,7 +510,7 @@ class AuthPasskeyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PasskeyOptionsResponse',) as PasskeyOptionsResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PasskeyOptionsResponse.fromJson(value)) as PasskeyOptionsResponse;
     
     }
     return null;

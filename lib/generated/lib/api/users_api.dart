@@ -54,7 +54,7 @@ class UsersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BuyerPreferenceSummaryResponse',) as BuyerPreferenceSummaryResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => BuyerPreferenceSummaryResponse.fromJson(value)) as BuyerPreferenceSummaryResponse;
     
     }
     return null;
@@ -98,7 +98,7 @@ class UsersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PwaSignalSummaryResponse',) as PwaSignalSummaryResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PwaSignalSummaryResponse.fromJson(value)) as PwaSignalSummaryResponse;
     
     }
     return null;
@@ -154,7 +154,7 @@ class UsersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PwaSignalSummaryResponse',) as PwaSignalSummaryResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PwaSignalSummaryResponse.fromJson(value)) as PwaSignalSummaryResponse;
     
     }
     return null;

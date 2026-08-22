@@ -79,7 +79,7 @@ class PickupStoresApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PickupStoreSyncCheckResponse',) as PickupStoreSyncCheckResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PickupStoreSyncCheckResponse.fromJson(value)) as PickupStoreSyncCheckResponse;
     
     }
     return null;
@@ -127,7 +127,7 @@ class PickupStoresApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PickupStoreSyncStatusResponse',) as PickupStoreSyncStatusResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PickupStoreSyncStatusResponse.fromJson(value)) as PickupStoreSyncStatusResponse;
     
     }
     return null;
@@ -183,7 +183,7 @@ class PickupStoresApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PagePickupStore',) as PagePickupStore;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PagePickupStore.fromJson(value)) as PagePickupStore;
     
     }
     return null;
@@ -231,7 +231,7 @@ class PickupStoresApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PickupStoreSyncResponse',) as PickupStoreSyncResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PickupStoreSyncResponse.fromJson(value)) as PickupStoreSyncResponse;
     
     }
     return null;
@@ -291,7 +291,7 @@ class PickupStoresApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'String',) as String;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => value is String ? value : value.toString(), decodeJson: false) as String;
     
     }
     return null;

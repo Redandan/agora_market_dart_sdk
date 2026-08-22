@@ -96,7 +96,7 @@ class PublicTrafficObservationControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UsdtLandingEventResponse',) as UsdtLandingEventResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => UsdtLandingEventResponse.fromJson(value)) as UsdtLandingEventResponse;
     
     }
     return null;
@@ -143,7 +143,7 @@ class PublicTrafficObservationControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UsdtLandingEventResponse',) as UsdtLandingEventResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => UsdtLandingEventResponse.fromJson(value)) as UsdtLandingEventResponse;
     
     }
     return null;

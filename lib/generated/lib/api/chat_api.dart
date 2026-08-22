@@ -222,7 +222,7 @@ class ChatApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ChatSession',) as ChatSession;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ChatSession.fromJson(value)) as ChatSession;
     
     }
     return null;
@@ -278,7 +278,7 @@ class ChatApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ChatSession',) as ChatSession;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ChatSession.fromJson(value)) as ChatSession;
     
     }
     return null;
@@ -337,7 +337,7 @@ class ChatApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'int',) as int;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => value is int ? value : int.parse('$value')) as int;
     
     }
     return null;
@@ -385,7 +385,7 @@ class ChatApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'int',) as int;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => value is int ? value : int.parse('$value')) as int;
     
     }
     return null;
@@ -444,7 +444,7 @@ class ChatApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => value is bool ? value : '$value'.toLowerCase() == 'true' || '$value' == '1') as bool;
     
     }
     return null;
@@ -504,7 +504,7 @@ class ChatApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageChatSession',) as PageChatSession;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageChatSession.fromJson(value)) as PageChatSession;
     
     }
     return null;
@@ -670,7 +670,7 @@ class ChatApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MessageSendResponseDTO',) as MessageSendResponseDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => MessageSendResponseDTO.fromJson(value)) as MessageSendResponseDTO;
     
     }
     return null;
@@ -833,7 +833,7 @@ class ChatApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ChatSession',) as ChatSession;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ChatSession.fromJson(value)) as ChatSession;
     
     }
     return null;
@@ -896,7 +896,7 @@ class ChatApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ChatMessage',) as ChatMessage;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ChatMessage.fromJson(value)) as ChatMessage;
     
     }
     return null;

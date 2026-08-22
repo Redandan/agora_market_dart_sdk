@@ -62,7 +62,7 @@ class AdminMembersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UserInfo',) as UserInfo;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => UserInfo.fromJson(value)) as UserInfo;
     
     }
     return null;
@@ -121,7 +121,7 @@ class AdminMembersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AdminMemberResponse',) as AdminMemberResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AdminMemberResponse.fromJson(value)) as AdminMemberResponse;
     
     }
     return null;
@@ -192,7 +192,7 @@ class AdminMembersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
+      return Map<String, Object>.from(await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ApiClient.decodeGeneratedMap(value, (dynamic item) => item)),);
 
     }
     return null;
@@ -303,7 +303,7 @@ class AdminMembersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageAdminMemberResponse',) as PageAdminMemberResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageAdminMemberResponse.fromJson(value)) as PageAdminMemberResponse;
     
     }
     return null;
@@ -366,7 +366,7 @@ class AdminMembersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'User',) as User;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => User.fromJson(value)) as User;
     
     }
     return null;
@@ -433,7 +433,7 @@ class AdminMembersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'User',) as User;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => User.fromJson(value)) as User;
     
     }
     return null;

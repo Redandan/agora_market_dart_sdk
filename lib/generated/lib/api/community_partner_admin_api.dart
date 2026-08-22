@@ -67,7 +67,7 @@ class CommunityPartnerAdminApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerApplicationResponse',) as CommunityPartnerApplicationResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CommunityPartnerApplicationResponse.fromJson(value)) as CommunityPartnerApplicationResponse;
     
     }
     return null;
@@ -120,7 +120,7 @@ class CommunityPartnerAdminApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerInvitationResponse',) as CommunityPartnerInvitationResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CommunityPartnerInvitationResponse.fromJson(value)) as CommunityPartnerInvitationResponse;
     
     }
     return null;
@@ -172,7 +172,7 @@ class CommunityPartnerAdminApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerInvitationResponse',) as CommunityPartnerInvitationResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CommunityPartnerInvitationResponse.fromJson(value)) as CommunityPartnerInvitationResponse;
     
     }
     return null;
@@ -224,7 +224,7 @@ class CommunityPartnerAdminApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerGroupEvaluationResponse',) as CommunityPartnerGroupEvaluationResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CommunityPartnerGroupEvaluationResponse.fromJson(value)) as CommunityPartnerGroupEvaluationResponse;
     
     }
     return null;
@@ -277,7 +277,7 @@ class CommunityPartnerAdminApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerGroupEvaluationResponse',) as CommunityPartnerGroupEvaluationResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CommunityPartnerGroupEvaluationResponse.fromJson(value)) as CommunityPartnerGroupEvaluationResponse;
     
     }
     return null;
@@ -334,7 +334,7 @@ class CommunityPartnerAdminApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<CommunityPartnerApplicationResponse>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => CommunityPartnerApplicationResponse.fromJson(item))) as List)
         .cast<CommunityPartnerApplicationResponse>()
         .toList(growable: false);
 
@@ -393,7 +393,7 @@ class CommunityPartnerAdminApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<CommunityPartnerGroupEvaluationResponse>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => CommunityPartnerGroupEvaluationResponse.fromJson(item))) as List)
         .cast<CommunityPartnerGroupEvaluationResponse>()
         .toList(growable: false);
 
@@ -452,7 +452,7 @@ class CommunityPartnerAdminApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<CommunityPartnerInvitationResponse>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => CommunityPartnerInvitationResponse.fromJson(item))) as List)
         .cast<CommunityPartnerInvitationResponse>()
         .toList(growable: false);
 
@@ -499,7 +499,7 @@ class CommunityPartnerAdminApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<CommunityPartnerResponse>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => CommunityPartnerResponse.fromJson(item))) as List)
         .cast<CommunityPartnerResponse>()
         .toList(growable: false);
 
@@ -554,7 +554,7 @@ class CommunityPartnerAdminApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerInvitationResponse',) as CommunityPartnerInvitationResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CommunityPartnerInvitationResponse.fromJson(value)) as CommunityPartnerInvitationResponse;
     
     }
     return null;
@@ -611,7 +611,7 @@ class CommunityPartnerAdminApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerApplicationResponse',) as CommunityPartnerApplicationResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CommunityPartnerApplicationResponse.fromJson(value)) as CommunityPartnerApplicationResponse;
     
     }
     return null;
@@ -670,7 +670,7 @@ class CommunityPartnerAdminApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerResponse',) as CommunityPartnerResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CommunityPartnerResponse.fromJson(value)) as CommunityPartnerResponse;
     
     }
     return null;
@@ -722,7 +722,7 @@ class CommunityPartnerAdminApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CommunityPartnerResponse',) as CommunityPartnerResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CommunityPartnerResponse.fromJson(value)) as CommunityPartnerResponse;
     
     }
     return null;

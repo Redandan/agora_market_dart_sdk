@@ -70,7 +70,7 @@ class PostalAreaApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<TaiwanPostalArea>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => TaiwanPostalArea.fromJson(item))) as List)
         .cast<TaiwanPostalArea>()
         .toList(growable: false);
 
@@ -139,7 +139,7 @@ class PostalAreaApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<TaiwanPostalArea>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => TaiwanPostalArea.fromJson(item))) as List)
         .cast<TaiwanPostalArea>()
         .toList(growable: false);
 
@@ -201,7 +201,7 @@ class PostalAreaApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<TaiwanPostalArea>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => TaiwanPostalArea.fromJson(item))) as List)
         .cast<TaiwanPostalArea>()
         .toList(growable: false);
 
@@ -252,7 +252,7 @@ class PostalAreaApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<String>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => item is String ? item : item.toString())) as List)
         .cast<String>()
         .toList(growable: false);
 
@@ -314,7 +314,7 @@ class PostalAreaApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<String>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => item is String ? item : item.toString())) as List)
         .cast<String>()
         .toList(growable: false);
 
@@ -365,7 +365,7 @@ class PostalAreaApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<TaiwanPostalArea>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => TaiwanPostalArea.fromJson(item))) as List)
         .cast<TaiwanPostalArea>()
         .toList(growable: false);
 
@@ -428,7 +428,7 @@ class PostalAreaApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<TaiwanPostalArea>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => TaiwanPostalArea.fromJson(item))) as List)
         .cast<TaiwanPostalArea>()
         .toList(growable: false);
 
