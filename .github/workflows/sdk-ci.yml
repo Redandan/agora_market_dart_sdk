@@ -1,0 +1,69 @@
+name: SDK regression checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sdk-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Analyze, test, and verify generated SDK
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          channel: stable
+          flutter-version: 3.41.6
+          cache: true
+
+      - name: Resolve root dependencies
+        run: flutter pub get
+
+      - name: Verify generator repair contracts
+        run: |
+          dart ci/generate_api_ps1_contract_test.dart
+          dart ci/repair_map_list_from_json_test.dart
+          bash ci/check_nullable_numeric_parsing.sh
+
+      - name: Verify endpoint rewrite is idempotent
+        run: |
+          dart ci/rewrite_api_deserializers.dart lib/generated/lib
+          git diff --exit-code -- lib/generated/lib
+
+      - name: Resolve generated SDK dependencies
+        working-directory: lib/generated
+        run: dart pub get
+
+      - name: Analyze generated SDK
+        working-directory: lib/generated
+        run: dart analyze
+
+      - name: Verify typed deserializer behavior
+        working-directory: lib/generated
+        run: >-
+          dart --packages=.dart_tool/package_config.json
+          ../../ci/verify_typed_deserializer.dart
+
+      - name: Run root tests
+        run: flutter test --no-pub
+
+      - name: Reject root compile errors
+        run: flutter analyze --no-pub --no-fatal-infos --no-fatal-warnings
+
+      - name: Verify the checks did not modify tracked files
+        run: git diff --exit-code
