@@ -66,7 +66,7 @@ class LogisticsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'QuickLogisticsResult',) as QuickLogisticsResult;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => QuickLogisticsResult.fromJson(value)) as QuickLogisticsResult;
     
     }
     return null;
@@ -126,7 +126,7 @@ class LogisticsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<TaiwanPostalArea>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => TaiwanPostalArea.fromJson(item))) as List)
         .cast<TaiwanPostalArea>()
         .toList(growable: false);
 
@@ -188,7 +188,7 @@ class LogisticsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<TaiwanPostalArea>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => TaiwanPostalArea.fromJson(item))) as List)
         .cast<TaiwanPostalArea>()
         .toList(growable: false);
 
@@ -250,7 +250,7 @@ class LogisticsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<String>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => item is String ? item : item.toString())) as List)
         .cast<String>()
         .toList(growable: false);
 
@@ -301,7 +301,7 @@ class LogisticsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<String>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => item is String ? item : item.toString())) as List)
         .cast<String>()
         .toList(growable: false);
 
@@ -352,7 +352,7 @@ class LogisticsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<String>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => item is String ? item : item.toString())) as List)
         .cast<String>()
         .toList(growable: false);
 
@@ -414,7 +414,7 @@ class LogisticsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<String>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => item is String ? item : item.toString())) as List)
         .cast<String>()
         .toList(growable: false);
 
@@ -473,7 +473,7 @@ class LogisticsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<TaiwanPostalArea>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => TaiwanPostalArea.fromJson(item))) as List)
         .cast<TaiwanPostalArea>()
         .toList(growable: false);
 
@@ -534,7 +534,7 @@ class LogisticsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => value is bool ? value : '$value'.toLowerCase() == 'true' || '$value' == '1') as bool;
     
     }
     return null;

@@ -336,7 +336,7 @@ class AuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UserInfo',) as UserInfo;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => UserInfo.fromJson(value)) as UserInfo;
     
     }
     return null;
@@ -392,7 +392,7 @@ class AuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return Map<String, Object>.from(await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Map<String, Object>'),);
+      return Map<String, Object>.from(await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ApiClient.decodeGeneratedMap(value, (dynamic item) => item)),);
 
     }
     return null;
@@ -440,7 +440,7 @@ class AuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LoginBindingsResponse',) as LoginBindingsResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => LoginBindingsResponse.fromJson(value)) as LoginBindingsResponse;
     
     }
     return null;
@@ -488,7 +488,7 @@ class AuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TwoFactorSetupResponse',) as TwoFactorSetupResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => TwoFactorSetupResponse.fromJson(value)) as TwoFactorSetupResponse;
     
     }
     return null;
@@ -544,7 +544,7 @@ class AuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LoginResult',) as LoginResult;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => LoginResult.fromJson(value)) as LoginResult;
     
     }
     return null;
@@ -600,7 +600,7 @@ class AuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LoginResult',) as LoginResult;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => LoginResult.fromJson(value)) as LoginResult;
     
     }
     return null;
@@ -740,7 +740,7 @@ class AuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LoginResult',) as LoginResult;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => LoginResult.fromJson(value)) as LoginResult;
     
     }
     return null;
@@ -796,7 +796,7 @@ class AuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'RegisterResult',) as RegisterResult;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => RegisterResult.fromJson(value)) as RegisterResult;
     
     }
     return null;
@@ -1051,7 +1051,7 @@ class AuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'EmailLoginSendCodeResponse',) as EmailLoginSendCodeResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => EmailLoginSendCodeResponse.fromJson(value)) as EmailLoginSendCodeResponse;
     
     }
     return null;
@@ -1210,7 +1210,7 @@ class AuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UserInfo',) as UserInfo;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => UserInfo.fromJson(value)) as UserInfo;
     
     }
     return null;
@@ -1266,7 +1266,7 @@ class AuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PasswordResetCodeValidateResponse',) as PasswordResetCodeValidateResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PasswordResetCodeValidateResponse.fromJson(value)) as PasswordResetCodeValidateResponse;
     
     }
     return null;
@@ -1381,7 +1381,7 @@ class AuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => value is bool ? value : '$value'.toLowerCase() == 'true' || '$value' == '1') as bool;
     
     }
     return null;

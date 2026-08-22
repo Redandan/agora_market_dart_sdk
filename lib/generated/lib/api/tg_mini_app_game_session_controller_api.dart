@@ -63,7 +63,7 @@ class TgMiniAppGameSessionControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GameSessionResponse',) as GameSessionResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => GameSessionResponse.fromJson(value)) as GameSessionResponse;
     
     }
     return null;
@@ -115,7 +115,7 @@ class TgMiniAppGameSessionControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GameLaunchExchangeResponse',) as GameLaunchExchangeResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => GameLaunchExchangeResponse.fromJson(value)) as GameLaunchExchangeResponse;
     
     }
     return null;
@@ -167,7 +167,7 @@ class TgMiniAppGameSessionControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GameSessionStartResponse',) as GameSessionStartResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => GameSessionStartResponse.fromJson(value)) as GameSessionStartResponse;
     
     }
     return null;

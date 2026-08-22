@@ -67,7 +67,7 @@ class AdminProductTaxonomyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AiProductClassificationSuggestion',) as AiProductClassificationSuggestion;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AiProductClassificationSuggestion.fromJson(value)) as AiProductClassificationSuggestion;
     
     }
     return null;
@@ -120,7 +120,7 @@ class AdminProductTaxonomyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductTypeDictionary',) as ProductTypeDictionary;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ProductTypeDictionary.fromJson(value)) as ProductTypeDictionary;
     
     }
     return null;
@@ -172,7 +172,7 @@ class AdminProductTaxonomyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TaxonomyDryRunResponse',) as TaxonomyDryRunResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => TaxonomyDryRunResponse.fromJson(value)) as TaxonomyDryRunResponse;
     
     }
     return null;
@@ -229,7 +229,7 @@ class AdminProductTaxonomyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AiProductClassificationSuggestion',) as AiProductClassificationSuggestion;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AiProductClassificationSuggestion.fromJson(value)) as AiProductClassificationSuggestion;
     
     }
     return null;
@@ -300,7 +300,7 @@ class AdminProductTaxonomyApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<AiProductClassificationSuggestion>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => AiProductClassificationSuggestion.fromJson(item))) as List)
         .cast<AiProductClassificationSuggestion>()
         .toList(growable: false);
 
@@ -366,7 +366,7 @@ class AdminProductTaxonomyApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<ProductTypeDictionary>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => ProductTypeDictionary.fromJson(item))) as List)
         .cast<ProductTypeDictionary>()
         .toList(growable: false);
 
@@ -439,7 +439,7 @@ class AdminProductTaxonomyApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<ProductCategoryChangeRequest>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => ProductCategoryChangeRequest.fromJson(item))) as List)
         .cast<ProductCategoryChangeRequest>()
         .toList(growable: false);
 
@@ -498,7 +498,7 @@ class AdminProductTaxonomyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductCategoryChangeRequest',) as ProductCategoryChangeRequest;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ProductCategoryChangeRequest.fromJson(value)) as ProductCategoryChangeRequest;
     
     }
     return null;
@@ -555,7 +555,7 @@ class AdminProductTaxonomyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AiProductClassificationSuggestion',) as AiProductClassificationSuggestion;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AiProductClassificationSuggestion.fromJson(value)) as AiProductClassificationSuggestion;
     
     }
     return null;
@@ -612,7 +612,7 @@ class AdminProductTaxonomyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductCategoryChangeRequest',) as ProductCategoryChangeRequest;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ProductCategoryChangeRequest.fromJson(value)) as ProductCategoryChangeRequest;
     
     }
     return null;
@@ -664,7 +664,7 @@ class AdminProductTaxonomyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductTypeDictionary',) as ProductTypeDictionary;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ProductTypeDictionary.fromJson(value)) as ProductTypeDictionary;
     
     }
     return null;

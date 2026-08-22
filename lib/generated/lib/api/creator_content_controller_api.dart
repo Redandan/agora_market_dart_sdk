@@ -58,7 +58,7 @@ class CreatorContentControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CreatorContentResponse',) as CreatorContentResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CreatorContentResponse.fromJson(value)) as CreatorContentResponse;
     
     }
     return null;
@@ -112,7 +112,7 @@ class CreatorContentControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageCreatorContentResponse',) as PageCreatorContentResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageCreatorContentResponse.fromJson(value)) as PageCreatorContentResponse;
     
     }
     return null;

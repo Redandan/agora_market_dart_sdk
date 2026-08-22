@@ -66,7 +66,7 @@ class TGApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PaytableWithRtpDTO',) as PaytableWithRtpDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PaytableWithRtpDTO.fromJson(value)) as PaytableWithRtpDTO;
     
     }
     return null;
@@ -122,7 +122,7 @@ class TGApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ActivityDTO',) as ActivityDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ActivityDTO.fromJson(value)) as ActivityDTO;
     
     }
     return null;
@@ -181,7 +181,7 @@ class TGApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ActivityDTO',) as ActivityDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ActivityDTO.fromJson(value)) as ActivityDTO;
     
     }
     return null;
@@ -240,7 +240,7 @@ class TGApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ActivityStatDTO',) as ActivityStatDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ActivityStatDTO.fromJson(value)) as ActivityStatDTO;
     
     }
     return null;
@@ -307,7 +307,7 @@ class TGApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PaytableWithRtpDTO',) as PaytableWithRtpDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PaytableWithRtpDTO.fromJson(value)) as PaytableWithRtpDTO;
     
     }
     return null;
@@ -385,7 +385,7 @@ class TGApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageGameRoundDTO',) as PageGameRoundDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageGameRoundDTO.fromJson(value)) as PageGameRoundDTO;
     
     }
     return null;
@@ -441,7 +441,7 @@ class TGApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageActivityDTO',) as PageActivityDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageActivityDTO.fromJson(value)) as PageActivityDTO;
     
     }
     return null;
@@ -504,7 +504,7 @@ class TGApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ActivityDTO',) as ActivityDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ActivityDTO.fromJson(value)) as ActivityDTO;
     
     }
     return null;

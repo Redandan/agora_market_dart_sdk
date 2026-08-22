@@ -67,7 +67,7 @@ class DemandPoolApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DemandMissingRequirementResponse',) as DemandMissingRequirementResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => DemandMissingRequirementResponse.fromJson(value)) as DemandMissingRequirementResponse;
     
     }
     return null;
@@ -120,7 +120,7 @@ class DemandPoolApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DemandDetailResponse',) as DemandDetailResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => DemandDetailResponse.fromJson(value)) as DemandDetailResponse;
     
     }
     return null;
@@ -172,7 +172,7 @@ class DemandPoolApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DemandDetailResponse',) as DemandDetailResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => DemandDetailResponse.fromJson(value)) as DemandDetailResponse;
     
     }
     return null;
@@ -225,7 +225,7 @@ class DemandPoolApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DemandDetailResponse',) as DemandDetailResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => DemandDetailResponse.fromJson(value)) as DemandDetailResponse;
     
     }
     return null;
@@ -278,7 +278,7 @@ class DemandPoolApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DemandPublicDetailResponse',) as DemandPublicDetailResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => DemandPublicDetailResponse.fromJson(value)) as DemandPublicDetailResponse;
     
     }
     return null;
@@ -335,7 +335,7 @@ class DemandPoolApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DemandDetailResponse',) as DemandDetailResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => DemandDetailResponse.fromJson(value)) as DemandDetailResponse;
     
     }
     return null;
@@ -387,7 +387,7 @@ class DemandPoolApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDemandDetailResponse',) as PageDemandDetailResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageDemandDetailResponse.fromJson(value)) as PageDemandDetailResponse;
     
     }
     return null;
@@ -439,7 +439,7 @@ class DemandPoolApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDemandPublicSummaryResponse',) as PageDemandPublicSummaryResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageDemandPublicSummaryResponse.fromJson(value)) as PageDemandPublicSummaryResponse;
     
     }
     return null;
@@ -497,7 +497,7 @@ class DemandPoolApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DemandOfferResponse',) as DemandOfferResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => DemandOfferResponse.fromJson(value)) as DemandOfferResponse;
     
     }
     return null;

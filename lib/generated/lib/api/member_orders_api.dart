@@ -76,7 +76,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProofAiValidationResponse',) as ProofAiValidationResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ProofAiValidationResponse.fromJson(value)) as ProofAiValidationResponse;
     
     }
     return null;
@@ -145,7 +145,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Order',) as Order;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => Order.fromJson(value)) as Order;
     
     }
     return null;
@@ -201,7 +201,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Order',) as Order;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => Order.fromJson(value)) as Order;
     
     }
     return null;
@@ -257,7 +257,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CartCheckoutPlanResponse',) as CartCheckoutPlanResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CartCheckoutPlanResponse.fromJson(value)) as CartCheckoutPlanResponse;
     
     }
     return null;
@@ -313,7 +313,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CartCheckoutPreflightResponse',) as CartCheckoutPreflightResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CartCheckoutPreflightResponse.fromJson(value)) as CartCheckoutPreflightResponse;
     
     }
     return null;
@@ -369,7 +369,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CartCheckoutSubmitResponse',) as CartCheckoutSubmitResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CartCheckoutSubmitResponse.fromJson(value)) as CartCheckoutSubmitResponse;
     
     }
     return null;
@@ -425,7 +425,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CheckoutPreflightResponse',) as CheckoutPreflightResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CheckoutPreflightResponse.fromJson(value)) as CheckoutPreflightResponse;
     
     }
     return null;
@@ -484,7 +484,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderDeliveryProof',) as OrderDeliveryProof;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => OrderDeliveryProof.fromJson(value)) as OrderDeliveryProof;
     
     }
     return null;
@@ -642,7 +642,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderQueryResult',) as OrderQueryResult;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => OrderQueryResult.fromJson(value)) as OrderQueryResult;
     
     }
     return null;
@@ -701,7 +701,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderQueryResult',) as OrderQueryResult;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => OrderQueryResult.fromJson(value)) as OrderQueryResult;
     
     }
     return null;
@@ -760,7 +760,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderQueryResult',) as OrderQueryResult;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => OrderQueryResult.fromJson(value)) as OrderQueryResult;
     
     }
     return null;
@@ -808,7 +808,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SellerOrderStatsDTO',) as SellerOrderStatsDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => SellerOrderStatsDTO.fromJson(value)) as SellerOrderStatsDTO;
     
     }
     return null;
@@ -932,7 +932,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderDeliveryProof',) as OrderDeliveryProof;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => OrderDeliveryProof.fromJson(value)) as OrderDeliveryProof;
     
     }
     return null;
@@ -995,7 +995,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderReturnRecord',) as OrderReturnRecord;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => OrderReturnRecord.fromJson(value)) as OrderReturnRecord;
     
     }
     return null;
@@ -1102,7 +1102,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageOrder',) as PageOrder;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageOrder.fromJson(value)) as PageOrder;
     
     }
     return null;
@@ -1154,7 +1154,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageOrder',) as PageOrder;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageOrder.fromJson(value)) as PageOrder;
     
     }
     return null;
@@ -1313,7 +1313,7 @@ class MemberOrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderDeliveryProof',) as OrderDeliveryProof;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => OrderDeliveryProof.fromJson(value)) as OrderDeliveryProof;
     
     }
     return null;

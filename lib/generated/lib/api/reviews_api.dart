@@ -157,7 +157,7 @@ class ReviewsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Review',) as Review;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => Review.fromJson(value)) as Review;
     
     }
     return null;
@@ -255,7 +255,7 @@ class ReviewsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'double',) as double;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => value is double ? value : double.parse('$value')) as double;
     
     }
     return null;
@@ -381,7 +381,7 @@ class ReviewsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageReview',) as PageReview;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageReview.fromJson(value)) as PageReview;
     
     }
     return null;
@@ -502,7 +502,7 @@ class ReviewsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageReview',) as PageReview;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageReview.fromJson(value)) as PageReview;
     
     }
     return null;
@@ -555,7 +555,7 @@ class ReviewsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Review',) as Review;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => Review.fromJson(value)) as Review;
     
     }
     return null;
@@ -622,7 +622,7 @@ class ReviewsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ReviewStatisticsDTO',) as ReviewStatisticsDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ReviewStatisticsDTO.fromJson(value)) as ReviewStatisticsDTO;
     
     }
     return null;
@@ -743,7 +743,7 @@ class ReviewsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageReview',) as PageReview;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageReview.fromJson(value)) as PageReview;
     
     }
     return null;
@@ -796,7 +796,7 @@ class ReviewsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'double',) as double;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => value is double ? value : double.parse('$value')) as double;
     
     }
     return null;
@@ -848,7 +848,7 @@ class ReviewsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Review',) as Review;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => Review.fromJson(value)) as Review;
     
     }
     return null;
@@ -900,7 +900,7 @@ class ReviewsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageReview',) as PageReview;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageReview.fromJson(value)) as PageReview;
     
     }
     return null;
@@ -952,7 +952,7 @@ class ReviewsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Review',) as Review;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => Review.fromJson(value)) as Review;
     
     }
     return null;

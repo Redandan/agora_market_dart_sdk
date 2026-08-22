@@ -66,7 +66,7 @@ class AdminAiControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductDraftResponse',) as ProductDraftResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ProductDraftResponse.fromJson(value)) as ProductDraftResponse;
     
     }
     return null;
@@ -143,7 +143,7 @@ class AdminAiControllerApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<GroupConversionStatsDTO>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => GroupConversionStatsDTO.fromJson(item))) as List)
         .cast<GroupConversionStatsDTO>()
         .toList(growable: false);
 
@@ -186,7 +186,7 @@ class AdminAiControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GroqUsageStatsDTO',) as GroqUsageStatsDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => GroqUsageStatsDTO.fromJson(value)) as GroqUsageStatsDTO;
     
     }
     return null;
