@@ -66,7 +66,7 @@ class MemberDisputesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Dispute',) as Dispute;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => Dispute.fromJson(value)) as Dispute;
     
     }
     return null;
@@ -122,7 +122,7 @@ class MemberDisputesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DisputeQueryResult',) as DisputeQueryResult;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => DisputeQueryResult.fromJson(value)) as DisputeQueryResult;
     
     }
     return null;
@@ -185,7 +185,7 @@ class MemberDisputesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Dispute',) as Dispute;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => Dispute.fromJson(value)) as Dispute;
     
     }
     return null;
@@ -246,7 +246,7 @@ class MemberDisputesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Dispute',) as Dispute;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => Dispute.fromJson(value)) as Dispute;
     
     }
     return null;
@@ -302,7 +302,7 @@ class MemberDisputesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDispute',) as PageDispute;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageDispute.fromJson(value)) as PageDispute;
     
     }
     return null;
@@ -358,7 +358,7 @@ class MemberDisputesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDispute',) as PageDispute;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageDispute.fromJson(value)) as PageDispute;
     
     }
     return null;

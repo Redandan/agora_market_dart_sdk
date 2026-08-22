@@ -58,7 +58,7 @@ class AdminStakingApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StakingConfigDTO',) as StakingConfigDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => StakingConfigDTO.fromJson(value)) as StakingConfigDTO;
     
     }
     return null;
@@ -133,7 +133,7 @@ class AdminStakingApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageInterestRecordDTO',) as PageInterestRecordDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageInterestRecordDTO.fromJson(value)) as PageInterestRecordDTO;
     
     }
     return null;
@@ -181,7 +181,7 @@ class AdminStakingApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'NextInterestEstimateDTO',) as NextInterestEstimateDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => NextInterestEstimateDTO.fromJson(value)) as NextInterestEstimateDTO;
     
     }
     return null;
@@ -252,7 +252,7 @@ class AdminStakingApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StakingStatisticsDTO',) as StakingStatisticsDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => StakingStatisticsDTO.fromJson(value)) as StakingStatisticsDTO;
     
     }
     return null;
@@ -308,7 +308,7 @@ class AdminStakingApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StakingConfigDTO',) as StakingConfigDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => StakingConfigDTO.fromJson(value)) as StakingConfigDTO;
     
     }
     return null;

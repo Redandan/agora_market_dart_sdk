@@ -146,6 +146,44 @@ class ApiClient {
   Future<dynamic> deserializeAsync(String value, String targetType, {bool growable = false,}) async =>
     // ignore: deprecated_member_use_from_same_package
     deserialize(value, targetType, growable: growable);
+  /// Deserializes with an endpoint-local decoder so web tree shaking does not
+  /// retain the global generated-model switch for every API consumer.
+  Future<dynamic> deserializeWithAsync(
+    String value,
+    dynamic Function(dynamic) decoder, {
+    bool decodeJson = true,
+  }) async {
+    try {
+      return decoder(decodeJson ? json.decode(value) : value);
+    } on Exception catch (error, trace) {
+      throw ApiException.withInner(
+        HttpStatus.internalServerError,
+        'Exception during deserialization.',
+        error,
+        trace,
+      );
+    }
+  }
+
+  static List<dynamic> decodeGeneratedList(
+    dynamic value,
+    dynamic Function(dynamic) decoder,
+  ) {
+    final items = value as List<dynamic>;
+    return items.map<dynamic>(decoder).toList(growable: false);
+  }
+
+  static Map<String, dynamic> decodeGeneratedMap(
+    dynamic value,
+    dynamic Function(dynamic) decoder,
+  ) {
+    final map = value as Map;
+    return Map<String, dynamic>.fromIterables(
+      map.keys.cast<String>(),
+      map.values.map<dynamic>(decoder),
+    );
+  }
+
 
   @Deprecated('Scheduled for removal in OpenAPI Generator 6.x. Use deserializeAsync() instead.')
   dynamic deserialize(String value, String targetType, {bool growable = false,}) {

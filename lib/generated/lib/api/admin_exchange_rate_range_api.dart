@@ -69,7 +69,7 @@ class AdminExchangeRateRangeApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ExchangeRateRangeSuggestionDTO',) as ExchangeRateRangeSuggestionDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ExchangeRateRangeSuggestionDTO.fromJson(value)) as ExchangeRateRangeSuggestionDTO;
     
     }
     return null;
@@ -125,7 +125,7 @@ class AdminExchangeRateRangeApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ExchangeRateRange',) as ExchangeRateRange;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ExchangeRateRange.fromJson(value)) as ExchangeRateRange;
     
     }
     return null;
@@ -174,7 +174,7 @@ class AdminExchangeRateRangeApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<ExchangeRateRange>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => ExchangeRateRange.fromJson(item))) as List)
         .cast<ExchangeRateRange>()
         .toList(growable: false);
 
@@ -239,7 +239,7 @@ class AdminExchangeRateRangeApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ExchangeRateRangeSuggestionDTO',) as ExchangeRateRangeSuggestionDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ExchangeRateRangeSuggestionDTO.fromJson(value)) as ExchangeRateRangeSuggestionDTO;
     
     }
     return null;

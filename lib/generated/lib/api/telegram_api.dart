@@ -76,7 +76,7 @@ class TelegramApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TelegramJoinRequestDTO',) as TelegramJoinRequestDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => TelegramJoinRequestDTO.fromJson(value)) as TelegramJoinRequestDTO;
     
     }
     return null;
@@ -142,7 +142,7 @@ class TelegramApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TelegramJoinRequestDTO',) as TelegramJoinRequestDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => TelegramJoinRequestDTO.fromJson(value)) as TelegramJoinRequestDTO;
     
     }
     return null;
@@ -204,7 +204,7 @@ class TelegramApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GroupAnnouncementDTO',) as GroupAnnouncementDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => GroupAnnouncementDTO.fromJson(value)) as GroupAnnouncementDTO;
     
     }
     return null;
@@ -259,7 +259,7 @@ class TelegramApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TelegramJoinReviewListDTO',) as TelegramJoinReviewListDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => TelegramJoinReviewListDTO.fromJson(value)) as TelegramJoinReviewListDTO;
     
     }
     return null;
@@ -318,7 +318,7 @@ class TelegramApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MonitoredGroupDTO',) as MonitoredGroupDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => MonitoredGroupDTO.fromJson(value)) as MonitoredGroupDTO;
     
     }
     return null;
@@ -392,7 +392,7 @@ class TelegramApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GroupDetailDTO',) as GroupDetailDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => GroupDetailDTO.fromJson(value)) as GroupDetailDTO;
     
     }
     return null;
@@ -437,7 +437,7 @@ class TelegramApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<MonitoredGroupDTO>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => MonitoredGroupDTO.fromJson(item))) as List)
         .cast<MonitoredGroupDTO>()
         .toList(growable: false);
 
@@ -504,7 +504,7 @@ class TelegramApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GroupModerationStatusDTO',) as GroupModerationStatusDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => GroupModerationStatusDTO.fromJson(value)) as GroupModerationStatusDTO;
     
     }
     return null;
@@ -548,7 +548,7 @@ class TelegramApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TelegramGroupRoutingStatusDTO',) as TelegramGroupRoutingStatusDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => TelegramGroupRoutingStatusDTO.fromJson(value)) as TelegramGroupRoutingStatusDTO;
     
     }
     return null;
@@ -614,7 +614,7 @@ class TelegramApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<GroupAnnouncementDTO>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => GroupAnnouncementDTO.fromJson(item))) as List)
         .cast<GroupAnnouncementDTO>()
         .toList(growable: false);
 
@@ -691,7 +691,7 @@ class TelegramApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<TelegramJoinRequestDTO>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => TelegramJoinRequestDTO.fromJson(item))) as List)
         .cast<TelegramJoinRequestDTO>()
         .toList(growable: false);
 
@@ -770,7 +770,7 @@ class TelegramApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<TelegramJoinReviewListDTO>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => TelegramJoinReviewListDTO.fromJson(item))) as List)
         .cast<TelegramJoinReviewListDTO>()
         .toList(growable: false);
 
@@ -831,7 +831,7 @@ class TelegramApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GroupAnnouncementDTO',) as GroupAnnouncementDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => GroupAnnouncementDTO.fromJson(value)) as GroupAnnouncementDTO;
     
     }
     return null;
@@ -890,7 +890,7 @@ class TelegramApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GroupAiSimulationResponseDTO',) as GroupAiSimulationResponseDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => GroupAiSimulationResponseDTO.fromJson(value)) as GroupAiSimulationResponseDTO;
     
     }
     return null;
@@ -952,7 +952,7 @@ class TelegramApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GroupAnnouncementDTO',) as GroupAnnouncementDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => GroupAnnouncementDTO.fromJson(value)) as GroupAnnouncementDTO;
     
     }
     return null;
@@ -1011,7 +1011,7 @@ class TelegramApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GroupModerationStatusDTO',) as GroupModerationStatusDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => GroupModerationStatusDTO.fromJson(value)) as GroupModerationStatusDTO;
     
     }
     return null;
@@ -1063,7 +1063,7 @@ class TelegramApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TelegramJoinReviewListDTO',) as TelegramJoinReviewListDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => TelegramJoinReviewListDTO.fromJson(value)) as TelegramJoinReviewListDTO;
     
     }
     return null;

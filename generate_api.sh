@@ -56,6 +56,9 @@ java -jar "$GENERATOR_JAR" generate \
 echo "==> Repairing list serialization"
 bash ci/repair_models.sh "$GENERATED_DIR/lib/model"
 
+echo "==> Rewriting endpoint deserializers for web tree shaking"
+dart ci/rewrite_api_deserializers.dart "$GENERATED_DIR/lib"
+
 echo "==> Running dart pub get + build_runner inside $GENERATED_DIR"
 pushd "$GENERATED_DIR" > /dev/null
 dart pub get
@@ -68,6 +71,8 @@ fi
 
 echo "==> Analyzing generated SDK"
 dart analyze
+dart --packages=.dart_tool/package_config.json \
+  ../../ci/verify_typed_deserializer.dart
 popd > /dev/null
 
 echo "==> Done"

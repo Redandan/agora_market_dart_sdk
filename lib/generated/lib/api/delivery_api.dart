@@ -66,7 +66,7 @@ class DeliveryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Deliveryer',) as Deliveryer;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => Deliveryer.fromJson(value)) as Deliveryer;
     
     }
     return null;
@@ -114,7 +114,7 @@ class DeliveryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Deliveryer',) as Deliveryer;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => Deliveryer.fromJson(value)) as Deliveryer;
     
     }
     return null;
@@ -163,7 +163,7 @@ class DeliveryApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<DeliveryDetail>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => DeliveryDetail.fromJson(item))) as List)
         .cast<DeliveryDetail>()
         .toList(growable: false);
 
@@ -221,7 +221,7 @@ class DeliveryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDeliveryDetail',) as PageDeliveryDetail;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageDeliveryDetail.fromJson(value)) as PageDeliveryDetail;
     
     }
     return null;
@@ -269,7 +269,7 @@ class DeliveryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeliveryerStatsDTO',) as DeliveryerStatsDTO;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => DeliveryerStatsDTO.fromJson(value)) as DeliveryerStatsDTO;
     
     }
     return null;
@@ -325,7 +325,7 @@ class DeliveryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Deliveryer',) as Deliveryer;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => Deliveryer.fromJson(value)) as Deliveryer;
     
     }
     return null;
@@ -381,7 +381,7 @@ class DeliveryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Deliveryer',) as Deliveryer;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => Deliveryer.fromJson(value)) as Deliveryer;
     
     }
     return null;
@@ -437,7 +437,7 @@ class DeliveryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Deliveryer',) as Deliveryer;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => Deliveryer.fromJson(value)) as Deliveryer;
     
     }
     return null;
@@ -497,7 +497,7 @@ class DeliveryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Deliveryer',) as Deliveryer;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => Deliveryer.fromJson(value)) as Deliveryer;
     
     }
     return null;

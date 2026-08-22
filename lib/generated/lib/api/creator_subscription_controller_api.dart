@@ -58,7 +58,7 @@ class CreatorSubscriptionControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CreatorSubscriptionAccessResponse',) as CreatorSubscriptionAccessResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CreatorSubscriptionAccessResponse.fromJson(value)) as CreatorSubscriptionAccessResponse;
     
     }
     return null;
@@ -106,7 +106,7 @@ class CreatorSubscriptionControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CreatorSubscriptionEntryResponse',) as CreatorSubscriptionEntryResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CreatorSubscriptionEntryResponse.fromJson(value)) as CreatorSubscriptionEntryResponse;
     
     }
     return null;
@@ -148,7 +148,7 @@ class CreatorSubscriptionControllerApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<CreatorSubscriptionResponse>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => CreatorSubscriptionResponse.fromJson(item))) as List)
         .cast<CreatorSubscriptionResponse>()
         .toList(growable: false);
 
@@ -198,7 +198,7 @@ class CreatorSubscriptionControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CreatorSubscriptionResponse',) as CreatorSubscriptionResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CreatorSubscriptionResponse.fromJson(value)) as CreatorSubscriptionResponse;
     
     }
     return null;

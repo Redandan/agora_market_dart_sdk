@@ -66,7 +66,7 @@ class StakingApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Staking',) as Staking;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => Staking.fromJson(value)) as Staking;
     
     }
     return null;
@@ -115,7 +115,7 @@ class StakingApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<Staking>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => Staking.fromJson(item))) as List)
         .cast<Staking>()
         .toList(growable: false);
 
@@ -169,7 +169,7 @@ class StakingApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageStaking',) as PageStaking;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageStaking.fromJson(value)) as PageStaking;
     
     }
     return null;
@@ -229,7 +229,7 @@ class StakingApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Staking',) as Staking;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => Staking.fromJson(value)) as Staking;
     
     }
     return null;

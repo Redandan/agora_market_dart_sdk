@@ -51,7 +51,7 @@ class PublicProductSeoControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'String',) as String;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => value is String ? value : value.toString(), decodeJson: false) as String;
     
     }
     return null;
@@ -107,7 +107,7 @@ class PublicProductSeoControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'String',) as String;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => value is String ? value : value.toString(), decodeJson: false) as String;
     
     }
     return null;
@@ -158,7 +158,7 @@ class PublicProductSeoControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'String',) as String;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => value is String ? value : value.toString(), decodeJson: false) as String;
     
     }
     return null;
@@ -214,7 +214,7 @@ class PublicProductSeoControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'String',) as String;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => value is String ? value : value.toString(), decodeJson: false) as String;
     
     }
     return null;
@@ -273,7 +273,7 @@ class PublicProductSeoControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'String',) as String;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => value is String ? value : value.toString(), decodeJson: false) as String;
     
     }
     return null;
@@ -314,7 +314,7 @@ class PublicProductSeoControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'String',) as String;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => value is String ? value : value.toString(), decodeJson: false) as String;
     
     }
     return null;
@@ -370,7 +370,7 @@ class PublicProductSeoControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'String',) as String;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => value is String ? value : value.toString(), decodeJson: false) as String;
     
     }
     return null;

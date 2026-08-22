@@ -66,7 +66,7 @@ class WebrtcApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'WebRTCHangupResponseDto',) as WebRTCHangupResponseDto;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => WebRTCHangupResponseDto.fromJson(value)) as WebRTCHangupResponseDto;
     
     }
     return null;
@@ -122,7 +122,7 @@ class WebrtcApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'WebRTCAnswerResponseDto',) as WebRTCAnswerResponseDto;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => WebRTCAnswerResponseDto.fromJson(value)) as WebRTCAnswerResponseDto;
     
     }
     return null;
@@ -178,7 +178,7 @@ class WebrtcApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'WebRTCIceCandidateResponseDto',) as WebRTCIceCandidateResponseDto;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => WebRTCIceCandidateResponseDto.fromJson(value)) as WebRTCIceCandidateResponseDto;
     
     }
     return null;
@@ -234,7 +234,7 @@ class WebrtcApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'WebRTCOfferResponseDto',) as WebRTCOfferResponseDto;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => WebRTCOfferResponseDto.fromJson(value)) as WebRTCOfferResponseDto;
     
     }
     return null;

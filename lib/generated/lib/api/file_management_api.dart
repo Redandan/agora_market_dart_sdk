@@ -69,7 +69,7 @@ class FileManagementApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseString',) as ApiResponseString;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ApiResponseString.fromJson(value)) as ApiResponseString;
     
     }
     return null;
@@ -125,7 +125,7 @@ class FileManagementApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponsePageFileRecord',) as ApiResponsePageFileRecord;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ApiResponsePageFileRecord.fromJson(value)) as ApiResponsePageFileRecord;
     
     }
     return null;
@@ -187,7 +187,7 @@ class FileManagementApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ApiResponseFileSyncResponse',) as ApiResponseFileSyncResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ApiResponseFileSyncResponse.fromJson(value)) as ApiResponseFileSyncResponse;
     
     }
     return null;

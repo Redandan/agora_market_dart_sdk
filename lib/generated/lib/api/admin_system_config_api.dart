@@ -58,7 +58,7 @@ class AdminSystemConfigApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MaintenanceStatusResponse',) as MaintenanceStatusResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => MaintenanceStatusResponse.fromJson(value)) as MaintenanceStatusResponse;
     
     }
     return null;
@@ -114,7 +114,7 @@ class AdminSystemConfigApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MaintenanceStatusResponse',) as MaintenanceStatusResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => MaintenanceStatusResponse.fromJson(value)) as MaintenanceStatusResponse;
     
     }
     return null;
@@ -170,7 +170,7 @@ class AdminSystemConfigApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MaintenanceStatusResponse',) as MaintenanceStatusResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => MaintenanceStatusResponse.fromJson(value)) as MaintenanceStatusResponse;
     
     }
     return null;

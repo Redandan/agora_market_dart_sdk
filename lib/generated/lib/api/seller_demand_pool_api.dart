@@ -64,7 +64,7 @@ class SellerDemandPoolApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<DemandMissingRequirementResponse>') as List)
+      return (await apiClient.deserializeWithAsync(responseBody, (dynamic value) => ApiClient.decodeGeneratedList(value, (dynamic item) => DemandMissingRequirementResponse.fromJson(item))) as List)
         .cast<DemandMissingRequirementResponse>()
         .toList(growable: false);
 
@@ -128,7 +128,7 @@ class SellerDemandPoolApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DemandOfferResponse',) as DemandOfferResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => DemandOfferResponse.fromJson(value)) as DemandOfferResponse;
     
     }
     return null;
@@ -180,7 +180,7 @@ class SellerDemandPoolApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageDemandDetailResponse',) as PageDemandDetailResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageDemandDetailResponse.fromJson(value)) as PageDemandDetailResponse;
     
     }
     return null;
@@ -237,7 +237,7 @@ class SellerDemandPoolApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DemandOfferResponse',) as DemandOfferResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => DemandOfferResponse.fromJson(value)) as DemandOfferResponse;
     
     }
     return null;

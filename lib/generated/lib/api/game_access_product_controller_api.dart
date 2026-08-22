@@ -67,7 +67,7 @@ class GameAccessProductControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GameAccessProductDescriptorResponse',) as GameAccessProductDescriptorResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => GameAccessProductDescriptorResponse.fromJson(value)) as GameAccessProductDescriptorResponse;
     
     }
     return null;
@@ -115,7 +115,7 @@ class GameAccessProductControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GameAccessStatusResponse',) as GameAccessStatusResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => GameAccessStatusResponse.fromJson(value)) as GameAccessStatusResponse;
     
     }
     return null;
@@ -167,7 +167,7 @@ class GameAccessProductControllerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GameAccessPurchaseResponse',) as GameAccessPurchaseResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => GameAccessPurchaseResponse.fromJson(value)) as GameAccessPurchaseResponse;
     
     }
     return null;

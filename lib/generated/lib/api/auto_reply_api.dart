@@ -66,7 +66,7 @@ class AutoReplyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AutoReplyConfig',) as AutoReplyConfig;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AutoReplyConfig.fromJson(value)) as AutoReplyConfig;
     
     }
     return null;
@@ -125,7 +125,7 @@ class AutoReplyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AutoReplyDeleteResponse',) as AutoReplyDeleteResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AutoReplyDeleteResponse.fromJson(value)) as AutoReplyDeleteResponse;
     
     }
     return null;
@@ -173,7 +173,7 @@ class AutoReplyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AutoReplyStats',) as AutoReplyStats;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AutoReplyStats.fromJson(value)) as AutoReplyStats;
     
     }
     return null;
@@ -221,7 +221,7 @@ class AutoReplyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AutoReplyResetStatsResponse',) as AutoReplyResetStatsResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AutoReplyResetStatsResponse.fromJson(value)) as AutoReplyResetStatsResponse;
     
     }
     return null;
@@ -277,7 +277,7 @@ class AutoReplyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PageAutoReplyConfig',) as PageAutoReplyConfig;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageAutoReplyConfig.fromJson(value)) as PageAutoReplyConfig;
     
     }
     return null;
@@ -344,7 +344,7 @@ class AutoReplyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AutoReplyConfig',) as AutoReplyConfig;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AutoReplyConfig.fromJson(value)) as AutoReplyConfig;
     
     }
     return null;
@@ -407,7 +407,7 @@ class AutoReplyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AutoReplyConfig',) as AutoReplyConfig;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AutoReplyConfig.fromJson(value)) as AutoReplyConfig;
     
     }
     return null;
