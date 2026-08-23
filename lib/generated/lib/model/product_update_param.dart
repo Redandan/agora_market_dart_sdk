@@ -19,6 +19,7 @@ class ProductUpdateParam {
     required this.currency,
     this.stock,
     this.description,
+    this.defaultLocale,
     this.category,
     this.imageUrls = const {},
     this.pickupAddress,
@@ -95,6 +96,15 @@ class ProductUpdateParam {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? description;
+
+  /// 商品原始內容語言（BCP-47）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? defaultLocale;
 
   /// 商品分類
   ///
@@ -348,6 +358,7 @@ class ProductUpdateParam {
     other.currency == currency &&
     other.stock == stock &&
     other.description == description &&
+    other.defaultLocale == defaultLocale &&
     other.category == category &&
     _deepEquality.equals(other.imageUrls, imageUrls) &&
     other.pickupAddress == pickupAddress &&
@@ -387,6 +398,7 @@ class ProductUpdateParam {
     (currency.hashCode) +
     (stock == null ? 0 : stock!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
+    (defaultLocale == null ? 0 : defaultLocale!.hashCode) +
     (category == null ? 0 : category!.hashCode) +
     (imageUrls.hashCode) +
     (pickupAddress == null ? 0 : pickupAddress!.hashCode) +
@@ -418,7 +430,7 @@ class ProductUpdateParam {
     (subscriptionAccessNote == null ? 0 : subscriptionAccessNote!.hashCode);
 
   @override
-  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, status=$status, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, purchaseUrl=$purchaseUrl, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, serviceLeadTimeHours=$serviceLeadTimeHours, maxConcurrentOrders=$maxConcurrentOrders, buyerInfoRequiredJson=$buyerInfoRequiredJson, dataResidencyNotice=$dataResidencyNotice, subscriptionDurationDays=$subscriptionDurationDays, subscriptionAccessNote=$subscriptionAccessNote]';
+  String toString() => 'ProductUpdateParam[id=$id, name=$name, price=$price, currency=$currency, stock=$stock, description=$description, defaultLocale=$defaultLocale, category=$category, imageUrls=$imageUrls, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, status=$status, skus=$skus, brand=$brand, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, purchaseUrl=$purchaseUrl, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, serviceLeadTimeHours=$serviceLeadTimeHours, maxConcurrentOrders=$maxConcurrentOrders, buyerInfoRequiredJson=$buyerInfoRequiredJson, dataResidencyNotice=$dataResidencyNotice, subscriptionDurationDays=$subscriptionDurationDays, subscriptionAccessNote=$subscriptionAccessNote]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -443,6 +455,11 @@ class ProductUpdateParam {
       json[r'description'] = this.description;
     } else {
       json[r'description'] = null;
+    }
+    if (this.defaultLocale != null) {
+      json[r'defaultLocale'] = this.defaultLocale;
+    } else {
+      json[r'defaultLocale'] = null;
     }
     if (this.category != null) {
       json[r'category'] = this.category;
@@ -603,6 +620,7 @@ class ProductUpdateParam {
         currency: ProductUpdateParamCurrencyEnum.fromJson(json[r'currency'])!,
         stock: mapValueOfType<int>(json, r'stock'),
         description: mapValueOfType<String>(json, r'description'),
+        defaultLocale: mapValueOfType<String>(json, r'defaultLocale'),
         category: mapValueOfType<String>(json, r'category'),
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()

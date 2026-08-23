@@ -18,6 +18,7 @@ class ProductCreateParam {
     required this.currency,
     required this.stock,
     required this.description,
+    this.defaultLocale,
     required this.category,
     this.imageUrls = const {},
     required this.pickupLongitude,
@@ -71,6 +72,15 @@ class ProductCreateParam {
 
   /// 商品描述
   String description;
+
+  /// 商品原始內容語言（BCP-47）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? defaultLocale;
 
   /// 商品分類
   ProductCreateParamCategoryEnum category;
@@ -353,6 +363,7 @@ class ProductCreateParam {
     other.currency == currency &&
     other.stock == stock &&
     other.description == description &&
+    other.defaultLocale == defaultLocale &&
     other.category == category &&
     _deepEquality.equals(other.imageUrls, imageUrls) &&
     other.pickupLongitude == pickupLongitude &&
@@ -395,6 +406,7 @@ class ProductCreateParam {
     (currency.hashCode) +
     (stock.hashCode) +
     (description.hashCode) +
+    (defaultLocale == null ? 0 : defaultLocale!.hashCode) +
     (category.hashCode) +
     (imageUrls.hashCode) +
     (pickupLongitude.hashCode) +
@@ -430,7 +442,7 @@ class ProductCreateParam {
     (subscriptionAccessNote == null ? 0 : subscriptionAccessNote!.hashCode);
 
   @override
-  String toString() => 'ProductCreateParam[title=$title, price=$price, currency=$currency, stock=$stock, description=$description, category=$category, imageUrls=$imageUrls, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, enablePlatformDelivery=$enablePlatformDelivery, skus=$skus, brand=$brand, minStock=$minStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, serviceLeadTimeHours=$serviceLeadTimeHours, maxConcurrentOrders=$maxConcurrentOrders, buyerInfoRequiredJson=$buyerInfoRequiredJson, dataResidencyNotice=$dataResidencyNotice, subscriptionDurationDays=$subscriptionDurationDays, subscriptionAccessNote=$subscriptionAccessNote]';
+  String toString() => 'ProductCreateParam[title=$title, price=$price, currency=$currency, stock=$stock, description=$description, defaultLocale=$defaultLocale, category=$category, imageUrls=$imageUrls, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, pickupAddress=$pickupAddress, enablePlatformDelivery=$enablePlatformDelivery, skus=$skus, brand=$brand, minStock=$minStock, tags=$tags, shippingPreparationHours=$shippingPreparationHours, dailyShippingDeadline=$dailyShippingDeadline, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, serviceLeadTimeHours=$serviceLeadTimeHours, maxConcurrentOrders=$maxConcurrentOrders, buyerInfoRequiredJson=$buyerInfoRequiredJson, dataResidencyNotice=$dataResidencyNotice, subscriptionDurationDays=$subscriptionDurationDays, subscriptionAccessNote=$subscriptionAccessNote]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -439,6 +451,11 @@ class ProductCreateParam {
       json[r'currency'] = this.currency;
       json[r'stock'] = this.stock;
       json[r'description'] = this.description;
+    if (this.defaultLocale != null) {
+      json[r'defaultLocale'] = this.defaultLocale;
+    } else {
+      json[r'defaultLocale'] = null;
+    }
       json[r'category'] = this.category;
       json[r'imageUrls'] = this.imageUrls.toList(growable: false);
       json[r'pickupLongitude'] = this.pickupLongitude;
@@ -603,6 +620,7 @@ class ProductCreateParam {
         currency: ProductCreateParamCurrencyEnum.fromJson(json[r'currency'])!,
         stock: mapValueOfType<int>(json, r'stock')!,
         description: mapValueOfType<String>(json, r'description')!,
+        defaultLocale: mapValueOfType<String>(json, r'defaultLocale'),
         category: ProductCreateParamCategoryEnum.fromJson(json[r'category'])!,
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()

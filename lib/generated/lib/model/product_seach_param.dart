@@ -33,6 +33,7 @@ class ProductSeachParam {
     this.sourceRegion,
     this.sourcePlatform,
     this.viewerCountryCode,
+    this.locale,
   });
 
   /// 頁碼，從1開始
@@ -197,6 +198,15 @@ class ProductSeachParam {
   ///
   String? viewerCountryCode;
 
+  /// 商品內容語言（BCP-47）
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? locale;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductSeachParam &&
     other.page == page &&
@@ -218,7 +228,8 @@ class ProductSeachParam {
     other.productType == productType &&
     other.sourceRegion == sourceRegion &&
     other.sourcePlatform == sourcePlatform &&
-    other.viewerCountryCode == viewerCountryCode;
+    other.viewerCountryCode == viewerCountryCode &&
+    other.locale == locale;
 
   @override
   int get hashCode =>
@@ -242,10 +253,11 @@ class ProductSeachParam {
     (productType == null ? 0 : productType!.hashCode) +
     (sourceRegion == null ? 0 : sourceRegion!.hashCode) +
     (sourcePlatform == null ? 0 : sourcePlatform!.hashCode) +
-    (viewerCountryCode == null ? 0 : viewerCountryCode!.hashCode);
+    (viewerCountryCode == null ? 0 : viewerCountryCode!.hashCode) +
+    (locale == null ? 0 : locale!.hashCode);
 
   @override
-  String toString() => 'ProductSeachParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, id=$id, sellerId=$sellerId, status=$status, category=$category, postalCode=$postalCode, longitude=$longitude, latitude=$latitude, tag=$tag, inStock=$inStock, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, viewerCountryCode=$viewerCountryCode]';
+  String toString() => 'ProductSeachParam[page=$page, size=$size, startDate=$startDate, endDate=$endDate, keyword=$keyword, sortBy=$sortBy, sortDirection=$sortDirection, id=$id, sellerId=$sellerId, status=$status, category=$category, postalCode=$postalCode, longitude=$longitude, latitude=$latitude, tag=$tag, inStock=$inStock, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, viewerCountryCode=$viewerCountryCode, locale=$locale]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -349,6 +361,11 @@ class ProductSeachParam {
     } else {
       json[r'viewerCountryCode'] = null;
     }
+    if (this.locale != null) {
+      json[r'locale'] = this.locale;
+    } else {
+      json[r'locale'] = null;
+    }
     return json;
   }
 
@@ -391,6 +408,7 @@ class ProductSeachParam {
         sourceRegion: mapValueOfType<String>(json, r'sourceRegion'),
         sourcePlatform: mapValueOfType<String>(json, r'sourcePlatform'),
         viewerCountryCode: mapValueOfType<String>(json, r'viewerCountryCode'),
+        locale: mapValueOfType<String>(json, r'locale'),
       );
     }
     return null;

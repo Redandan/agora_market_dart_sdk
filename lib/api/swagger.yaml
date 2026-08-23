@@ -161,6 +161,10 @@
       "description": "Admin Demand Pool APIs"
     },
     {
+      "name": "product-translations",
+      "description": "賣家商品多語系管理 API"
+    },
+    {
       "name": "stores",
       "description": "商店管理 API"
     },
@@ -471,6 +475,57 @@
             "bearerAuth": []
           }
         ]
+      }
+    },
+    "/products/{productId}/translations/{locale}": {
+      "put": {
+        "tags": [
+          "product-translations"
+        ],
+        "summary": "新增或更新商品翻譯",
+        "description": "同一商品與語言只保留一筆翻譯",
+        "operationId": "upsertTranslation",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "locale",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductTranslationUpsertParam"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductTranslationResponse"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/posts": {
@@ -16278,6 +16333,42 @@
         ]
       }
     },
+    "/products/{productId}/translations": {
+      "get": {
+        "tags": [
+          "product-translations"
+        ],
+        "summary": "列出商品翻譯",
+        "description": "僅商品賣家或管理員可讀取草稿與翻譯來源資訊",
+        "operationId": "listTranslations",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductTranslationResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/products/{id}": {
       "get": {
         "tags": [
@@ -22569,6 +22660,81 @@
           "updatedAt"
         ]
       },
+      "ProductTranslationUpsertParam": {
+        "type": "object",
+        "description": "商品翻譯新增或更新參數",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "翻譯後商品標題",
+            "maxLength": 100,
+            "minLength": 0
+          },
+          "description": {
+            "type": "string",
+            "description": "翻譯後商品描述",
+            "maxLength": 1000,
+            "minLength": 0
+          },
+          "status": {
+            "type": "string",
+            "description": "DRAFT 不對買家顯示；PUBLISHED 對買家顯示",
+            "enum": [
+              "DRAFT",
+              "PUBLISHED"
+            ]
+          }
+        },
+        "required": [
+          "title"
+        ]
+      },
+      "ProductTranslationResponse": {
+        "type": "object",
+        "description": "商品翻譯",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "locale": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "SELLER",
+              "SOURCE_PLATFORM",
+              "AI",
+              "MIGRATED"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "PUBLISHED"
+            ]
+          },
+          "stale": {
+            "type": "boolean"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
       "PostUpdateParam": {
         "type": "object",
         "description": "更新貼文參數",
@@ -25732,14 +25898,14 @@
           "fullAddress": {
             "type": "string"
           },
-          "convenienceStorePickup": {
-            "type": "boolean"
-          },
           "logisticsDescription": {
             "type": "string"
           },
           "recipientInfo": {
             "type": "string"
+          },
+          "convenienceStorePickup": {
+            "type": "boolean"
           }
         },
         "required": [
@@ -26976,6 +27142,14 @@
             "maxLength": 1000,
             "minLength": 1
           },
+          "defaultLocale": {
+            "type": "string",
+            "default": "zh-TW",
+            "description": "商品原始內容語言（BCP-47）",
+            "example": "zh-TW",
+            "maxLength": 16,
+            "minLength": 0
+          },
           "price": {
             "type": "number",
             "description": "商品價格",
@@ -27345,6 +27519,24 @@
           "viewerLoggedIn": {
             "type": "boolean",
             "description": "目前訪問者是否已登入; public 商品詳情/搜尋 response 用於前端登入提示判斷"
+          },
+          "localizedTitle": {
+            "type": "string",
+            "description": "依請求語言解析後的商品標題；無可用翻譯時回傳原始標題"
+          },
+          "localizedDescription": {
+            "type": "string",
+            "description": "依請求語言解析後的商品描述；無可用翻譯時回傳原始描述"
+          },
+          "resolvedLocale": {
+            "type": "string",
+            "description": "本次商品內容實際使用的 BCP-47 語言",
+            "example": "en-US"
+          },
+          "translationAvailable": {
+            "type": "boolean",
+            "description": "本次回應是否使用已發布翻譯",
+            "example": true
           },
           "priceUsdt": {
             "type": "number",
@@ -31455,6 +31647,12 @@
             "maxLength": 1000,
             "minLength": 1
           },
+          "defaultLocale": {
+            "type": "string",
+            "description": "商品原始內容語言（BCP-47）",
+            "example": "zh-TW",
+            "pattern": "^(zh-TW|zh-CN|en-US|th-TH)$"
+          },
           "category": {
             "type": "string",
             "description": "商品分類"
@@ -31789,6 +31987,11 @@
             "type": "string",
             "description": "搜尋者國家代碼（同國優先排序）",
             "example": "TW"
+          },
+          "locale": {
+            "type": "string",
+            "description": "商品內容語言（BCP-47）",
+            "example": "en-US"
           }
         }
       },
@@ -31962,6 +32165,12 @@
             "description": "商品描述",
             "maxLength": 1000,
             "minLength": 1
+          },
+          "defaultLocale": {
+            "type": "string",
+            "description": "商品原始內容語言（BCP-47）",
+            "example": "zh-TW",
+            "pattern": "^(zh-TW|zh-CN|en-US|th-TH)$"
           },
           "category": {
             "type": "string",

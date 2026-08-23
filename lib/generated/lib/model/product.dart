@@ -16,6 +16,7 @@ class Product {
     required this.id,
     required this.title,
     required this.description,
+    this.defaultLocale = 'zh-TW',
     required this.price,
     this.currency,
     required this.stock,
@@ -66,6 +67,10 @@ class Product {
     this.shippingAddressOptions = const [],
     this.shippingOptions,
     this.viewerLoggedIn,
+    this.localizedTitle,
+    this.localizedDescription,
+    this.resolvedLocale,
+    this.translationAvailable,
     this.priceUsdt,
     this.exchangeRate,
     this.usingDefaultRate,
@@ -90,6 +95,9 @@ class Product {
 
   /// 商品描述
   String description;
+
+  /// 商品原始內容語言（BCP-47）
+  String defaultLocale;
 
   /// 商品價格
   ///
@@ -480,6 +488,42 @@ class Product {
   ///
   bool? viewerLoggedIn;
 
+  /// 依請求語言解析後的商品標題；無可用翻譯時回傳原始標題
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? localizedTitle;
+
+  /// 依請求語言解析後的商品描述；無可用翻譯時回傳原始描述
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? localizedDescription;
+
+  /// 本次商品內容實際使用的 BCP-47 語言
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? resolvedLocale;
+
+  /// 本次回應是否使用已發布翻譯
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? translationAvailable;
+
   /// USDT价格（换算后）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -578,6 +622,7 @@ class Product {
     other.id == id &&
     other.title == title &&
     other.description == description &&
+    other.defaultLocale == defaultLocale &&
     other.price == price &&
     other.currency == currency &&
     other.stock == stock &&
@@ -628,6 +673,10 @@ class Product {
     _deepEquality.equals(other.shippingAddressOptions, shippingAddressOptions) &&
     other.shippingOptions == shippingOptions &&
     other.viewerLoggedIn == viewerLoggedIn &&
+    other.localizedTitle == localizedTitle &&
+    other.localizedDescription == localizedDescription &&
+    other.resolvedLocale == resolvedLocale &&
+    other.translationAvailable == translationAvailable &&
     other.priceUsdt == priceUsdt &&
     other.exchangeRate == exchangeRate &&
     other.usingDefaultRate == usingDefaultRate &&
@@ -649,6 +698,7 @@ class Product {
     (id.hashCode) +
     (title.hashCode) +
     (description.hashCode) +
+    (defaultLocale.hashCode) +
     (price.hashCode) +
     (currency == null ? 0 : currency!.hashCode) +
     (stock.hashCode) +
@@ -699,6 +749,10 @@ class Product {
     (shippingAddressOptions.hashCode) +
     (shippingOptions == null ? 0 : shippingOptions!.hashCode) +
     (viewerLoggedIn == null ? 0 : viewerLoggedIn!.hashCode) +
+    (localizedTitle == null ? 0 : localizedTitle!.hashCode) +
+    (localizedDescription == null ? 0 : localizedDescription!.hashCode) +
+    (resolvedLocale == null ? 0 : resolvedLocale!.hashCode) +
+    (translationAvailable == null ? 0 : translationAvailable!.hashCode) +
     (priceUsdt == null ? 0 : priceUsdt!.hashCode) +
     (exchangeRate == null ? 0 : exchangeRate!.hashCode) +
     (usingDefaultRate == null ? 0 : usingDefaultRate!.hashCode) +
@@ -715,13 +769,14 @@ class Product {
     (shippingFee == null ? 0 : shippingFee!.hashCode);
 
   @override
-  String toString() => 'Product[id=$id, title=$title, description=$description, price=$price, currency=$currency, stock=$stock, category=$category, sellerId=$sellerId, imageUrlsJson=$imageUrlsJson, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, reviewCount=$reviewCount, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skusJson=$skusJson, brand=$brand, minStock=$minStock, pickupServiceTypesJson=$pickupServiceTypesJson, pickupServiceTypeFeesJson=$pickupServiceTypeFeesJson, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, serviceLeadTimeHours=$serviceLeadTimeHours, maxConcurrentOrders=$maxConcurrentOrders, buyerInfoRequiredJson=$buyerInfoRequiredJson, dataResidencyNotice=$dataResidencyNotice, subscriptionDurationDays=$subscriptionDurationDays, subscriptionAccessNote=$subscriptionAccessNote, reportCount=$reportCount, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions, viewerLoggedIn=$viewerLoggedIn, priceUsdt=$priceUsdt, exchangeRate=$exchangeRate, usingDefaultRate=$usingDefaultRate, freeShippingThresholdUsdt=$freeShippingThresholdUsdt, imageUrls=$imageUrls, inStock=$inStock, skus=$skus, minimumShippingFee=$minimumShippingFee, defaultShippingFee=$defaultShippingFee, stockLow=$stockLow, stockBelowMinimum=$stockBelowMinimum, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, shippingFee=$shippingFee]';
+  String toString() => 'Product[id=$id, title=$title, description=$description, defaultLocale=$defaultLocale, price=$price, currency=$currency, stock=$stock, category=$category, sellerId=$sellerId, imageUrlsJson=$imageUrlsJson, pickupAddress=$pickupAddress, pickupLongitude=$pickupLongitude, pickupLatitude=$pickupLatitude, pickupTimeStart=$pickupTimeStart, pickupTimeEnd=$pickupTimeEnd, enablePlatformDelivery=$enablePlatformDelivery, dailyShippingDeadline=$dailyShippingDeadline, shippingPreparationHours=$shippingPreparationHours, shippingDescription=$shippingDescription, estimatedDeliveryDays=$estimatedDeliveryDays, supportsScheduledShipping=$supportsScheduledShipping, shippingDateRange=$shippingDateRange, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, rating=$rating, reviewCount=$reviewCount, viewCount=$viewCount, salesCount=$salesCount, tags=$tags, skusJson=$skusJson, brand=$brand, minStock=$minStock, pickupServiceTypesJson=$pickupServiceTypesJson, pickupServiceTypeFeesJson=$pickupServiceTypeFeesJson, freeShippingThreshold=$freeShippingThreshold, stockAlertThreshold=$stockAlertThreshold, allowNegativeStock=$allowNegativeStock, purchaseUrl=$purchaseUrl, productType=$productType, sourceRegion=$sourceRegion, sourcePlatform=$sourcePlatform, serviceLeadTimeHours=$serviceLeadTimeHours, maxConcurrentOrders=$maxConcurrentOrders, buyerInfoRequiredJson=$buyerInfoRequiredJson, dataResidencyNotice=$dataResidencyNotice, subscriptionDurationDays=$subscriptionDurationDays, subscriptionAccessNote=$subscriptionAccessNote, reportCount=$reportCount, store=$store, userSupportedShippingAddresses=$userSupportedShippingAddresses, shippingAddressOptions=$shippingAddressOptions, shippingOptions=$shippingOptions, viewerLoggedIn=$viewerLoggedIn, localizedTitle=$localizedTitle, localizedDescription=$localizedDescription, resolvedLocale=$resolvedLocale, translationAvailable=$translationAvailable, priceUsdt=$priceUsdt, exchangeRate=$exchangeRate, usingDefaultRate=$usingDefaultRate, freeShippingThresholdUsdt=$freeShippingThresholdUsdt, imageUrls=$imageUrls, inStock=$inStock, skus=$skus, minimumShippingFee=$minimumShippingFee, defaultShippingFee=$defaultShippingFee, stockLow=$stockLow, stockBelowMinimum=$stockBelowMinimum, pickupServiceTypes=$pickupServiceTypes, pickupServiceTypeFees=$pickupServiceTypeFees, shippingFee=$shippingFee]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
       json[r'title'] = this.title;
       json[r'description'] = this.description;
+      json[r'defaultLocale'] = this.defaultLocale;
       json[r'price'] = this.price;
     if (this.currency != null) {
       json[r'currency'] = this.currency;
@@ -916,6 +971,26 @@ class Product {
     } else {
       json[r'viewerLoggedIn'] = null;
     }
+    if (this.localizedTitle != null) {
+      json[r'localizedTitle'] = this.localizedTitle;
+    } else {
+      json[r'localizedTitle'] = null;
+    }
+    if (this.localizedDescription != null) {
+      json[r'localizedDescription'] = this.localizedDescription;
+    } else {
+      json[r'localizedDescription'] = null;
+    }
+    if (this.resolvedLocale != null) {
+      json[r'resolvedLocale'] = this.resolvedLocale;
+    } else {
+      json[r'resolvedLocale'] = null;
+    }
+    if (this.translationAvailable != null) {
+      json[r'translationAvailable'] = this.translationAvailable;
+    } else {
+      json[r'translationAvailable'] = null;
+    }
     if (this.priceUsdt != null) {
       json[r'priceUsdt'] = this.priceUsdt;
     } else {
@@ -995,6 +1070,7 @@ class Product {
         id: mapValueOfType<int>(json, r'id')!,
         title: mapValueOfType<String>(json, r'title')!,
         description: mapValueOfType<String>(json, r'description')!,
+        defaultLocale: mapValueOfType<String>(json, r'defaultLocale') ?? 'zh-TW',
         price: num.parse('${json[r'price']}'),
         currency: ProductCurrencyEnum.fromJson(json[r'currency']),
         stock: mapValueOfType<int>(json, r'stock')!,
@@ -1049,6 +1125,10 @@ class Product {
         shippingAddressOptions: ShippingAddressOption.listFromJson(json[r'shippingAddressOptions']),
         shippingOptions: ShippingOptions.fromJson(json[r'shippingOptions']),
         viewerLoggedIn: mapValueOfType<bool>(json, r'viewerLoggedIn'),
+        localizedTitle: mapValueOfType<String>(json, r'localizedTitle'),
+        localizedDescription: mapValueOfType<String>(json, r'localizedDescription'),
+        resolvedLocale: mapValueOfType<String>(json, r'resolvedLocale'),
+        translationAvailable: mapValueOfType<bool>(json, r'translationAvailable'),
         priceUsdt: json[r'priceUsdt'] == null
             ? null
             : num.parse('${json[r'priceUsdt']}'),

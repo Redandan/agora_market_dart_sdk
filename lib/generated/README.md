@@ -494,6 +494,8 @@ Class | Method | HTTP request | Description
 *ProductBoardApi* | [**replies**](doc//ProductBoardApi.md#replies) | **GET** /product-board/posts/{postId}/replies | List product board post replies
 *ProductBoardApi* | [**reportPost**](doc//ProductBoardApi.md#reportpost) | **POST** /product-board/posts/{postId}/report | Report a product board post
 *ProductBoardApi* | [**reportReply**](doc//ProductBoardApi.md#reportreply) | **POST** /product-board/replies/{replyId}/report | Report a product board reply
+*ProductTranslationsApi* | [**listTranslations**](doc//ProductTranslationsApi.md#listtranslations) | **GET** /products/{productId}/translations | 列出商品翻譯
+*ProductTranslationsApi* | [**upsertTranslation**](doc//ProductTranslationsApi.md#upserttranslation) | **PUT** /products/{productId}/translations/{locale} | 新增或更新商品翻譯
 *ProductsApi* | [**batchCreateProducts**](doc//ProductsApi.md#batchcreateproducts) | **POST** /products/batch-create | 批量創建商品
 *ProductsApi* | [**batchDeleteProducts**](doc//ProductsApi.md#batchdeleteproducts) | **DELETE** /products/batch | 批量刪除商品
 *ProductsApi* | [**createProduct**](doc//ProductsApi.md#createproduct) | **POST** /products/create | 創建商品
@@ -1077,6 +1079,8 @@ Class | Method | HTTP request | Description
  - [ProductStatsBackfillResponse](doc//ProductStatsBackfillResponse.md)
  - [ProductStatusBlock](doc//ProductStatusBlock.md)
  - [ProductSummary](doc//ProductSummary.md)
+ - [ProductTranslationResponse](doc//ProductTranslationResponse.md)
+ - [ProductTranslationUpsertParam](doc//ProductTranslationUpsertParam.md)
  - [ProductTypeDictionary](doc//ProductTypeDictionary.md)
  - [ProductTypeDictionaryUpsertRequest](doc//ProductTypeDictionaryUpsertRequest.md)
  - [ProductTypeOption](doc//ProductTypeOption.md)

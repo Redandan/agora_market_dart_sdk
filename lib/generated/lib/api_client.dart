@@ -1018,6 +1018,10 @@ class ApiClient {
           return ProductStatusBlock.fromJson(value);
         case 'ProductSummary':
           return ProductSummary.fromJson(value);
+        case 'ProductTranslationResponse':
+          return ProductTranslationResponse.fromJson(value);
+        case 'ProductTranslationUpsertParam':
+          return ProductTranslationUpsertParam.fromJson(value);
         case 'ProductTypeDictionary':
           return ProductTypeDictionary.fromJson(value);
         case 'ProductTypeDictionaryUpsertRequest':
