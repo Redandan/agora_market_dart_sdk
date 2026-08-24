@@ -293,6 +293,10 @@ class UsdtLandingEventRequestEventEnum {
   static const STOREFRONT_PRODUCTS_VISIBLE = UsdtLandingEventRequestEventEnum._(r'STOREFRONT_PRODUCTS_VISIBLE');
   static const STOREFRONT_CATALOG_EMPTY = UsdtLandingEventRequestEventEnum._(r'STOREFRONT_CATALOG_EMPTY');
   static const STOREFRONT_CATALOG_FAILED = UsdtLandingEventRequestEventEnum._(r'STOREFRONT_CATALOG_FAILED');
+  static const TG_AUTH_STARTED = UsdtLandingEventRequestEventEnum._(r'TG_AUTH_STARTED');
+  static const TG_AUTH_SUCCEEDED = UsdtLandingEventRequestEventEnum._(r'TG_AUTH_SUCCEEDED');
+  static const TG_AUTH_FAILED = UsdtLandingEventRequestEventEnum._(r'TG_AUTH_FAILED');
+  static const FLUTTER_SESSION_READY = UsdtLandingEventRequestEventEnum._(r'FLUTTER_SESSION_READY');
   static const unknownDefaultOpenApi = UsdtLandingEventRequestEventEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][UsdtLandingEventRequestEventEnum].
@@ -321,6 +325,10 @@ class UsdtLandingEventRequestEventEnum {
     STOREFRONT_PRODUCTS_VISIBLE,
     STOREFRONT_CATALOG_EMPTY,
     STOREFRONT_CATALOG_FAILED,
+    TG_AUTH_STARTED,
+    TG_AUTH_SUCCEEDED,
+    TG_AUTH_FAILED,
+    FLUTTER_SESSION_READY,
     unknownDefaultOpenApi,
   ];
 
@@ -384,6 +392,10 @@ class UsdtLandingEventRequestEventEnumTypeTransformer {
         case r'STOREFRONT_PRODUCTS_VISIBLE': return UsdtLandingEventRequestEventEnum.STOREFRONT_PRODUCTS_VISIBLE;
         case r'STOREFRONT_CATALOG_EMPTY': return UsdtLandingEventRequestEventEnum.STOREFRONT_CATALOG_EMPTY;
         case r'STOREFRONT_CATALOG_FAILED': return UsdtLandingEventRequestEventEnum.STOREFRONT_CATALOG_FAILED;
+        case r'TG_AUTH_STARTED': return UsdtLandingEventRequestEventEnum.TG_AUTH_STARTED;
+        case r'TG_AUTH_SUCCEEDED': return UsdtLandingEventRequestEventEnum.TG_AUTH_SUCCEEDED;
+        case r'TG_AUTH_FAILED': return UsdtLandingEventRequestEventEnum.TG_AUTH_FAILED;
+        case r'FLUTTER_SESSION_READY': return UsdtLandingEventRequestEventEnum.FLUTTER_SESSION_READY;
         case r'unknown_default_open_api': return UsdtLandingEventRequestEventEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

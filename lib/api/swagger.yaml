@@ -25898,14 +25898,14 @@
           "fullAddress": {
             "type": "string"
           },
+          "convenienceStorePickup": {
+            "type": "boolean"
+          },
           "logisticsDescription": {
             "type": "string"
           },
           "recipientInfo": {
             "type": "string"
-          },
-          "convenienceStorePickup": {
-            "type": "boolean"
           }
         },
         "required": [
@@ -30301,7 +30301,11 @@
               "STOREFRONT_OPEN_ATTEMPT",
               "STOREFRONT_PRODUCTS_VISIBLE",
               "STOREFRONT_CATALOG_EMPTY",
-              "STOREFRONT_CATALOG_FAILED"
+              "STOREFRONT_CATALOG_FAILED",
+              "TG_AUTH_STARTED",
+              "TG_AUTH_SUCCEEDED",
+              "TG_AUTH_FAILED",
+              "FLUTTER_SESSION_READY"
             ]
           },
           "cta": {
@@ -30383,13 +30387,48 @@
               "STOREFRONT_OPEN_ATTEMPT",
               "STOREFRONT_PRODUCTS_VISIBLE",
               "STOREFRONT_CATALOG_EMPTY",
-              "STOREFRONT_CATALOG_FAILED"
+              "STOREFRONT_CATALOG_FAILED",
+              "TG_AUTH_STARTED",
+              "TG_AUTH_SUCCEEDED",
+              "TG_AUTH_FAILED",
+              "FLUTTER_SESSION_READY"
             ]
           },
           "durationMs": {
             "type": "integer",
             "format": "int32",
             "maximum": 300000
+          },
+          "clientPlatform": {
+            "type": "string",
+            "maxLength": 20,
+            "minLength": 0,
+            "pattern": "^[a-z0-9_-]+$"
+          },
+          "clientVersion": {
+            "type": "string",
+            "maxLength": 40,
+            "minLength": 0,
+            "pattern": "^(?:[0-9a-f]{7,40}|local|unknown)$"
+          },
+          "authPath": {
+            "type": "string",
+            "enum": [
+              "HOST_JWT_PRELOAD",
+              "FLUTTER_INITDATA_FALLBACK"
+            ]
+          },
+          "errorType": {
+            "type": "string",
+            "enum": [
+              "HTTP_CLIENT",
+              "HTTP_SERVER",
+              "NETWORK",
+              "TOKEN_MISSING",
+              "STORAGE_UNAVAILABLE",
+              "STARTUP",
+              "UNKNOWN"
+            ]
           }
         },
         "required": [
@@ -39204,11 +39243,11 @@
           "purchaseRestrictionReason": {
             "type": "string"
           },
-          "specificationDescription": {
-            "type": "string"
-          },
           "totalPrice": {
             "type": "number"
+          },
+          "specificationDescription": {
+            "type": "string"
           }
         },
         "required": [
