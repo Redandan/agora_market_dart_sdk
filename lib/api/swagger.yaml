@@ -13241,6 +13241,37 @@
         }
       }
     },
+    "/admin/delivery/deliveryers/summary/search": {
+      "post": {
+        "tags": [
+          "admin-delivery"
+        ],
+        "summary": "搜索跑腿安全摘要",
+        "description": "固定分頁且不返回用戶 ID、精確位置、目前訂單 ID 或聯絡資料",
+        "operationId": "searchDeliveryerSummaries",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminDeliveryerReadSearchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageAdminDeliveryerSummaryResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/delivery/deliveryers/search": {
       "post": {
         "tags": [
@@ -44639,6 +44670,117 @@
           "displayName",
           "targetUserId"
         ]
+      },
+      "AdminDeliveryerReadSearchRequest": {
+        "type": "object",
+        "description": "管理員跑腿唯讀搜尋參數",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "maximum": 10000,
+            "minimum": 1
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "isDelivering": {
+            "type": "boolean"
+          },
+          "deliveryArea": {
+            "type": "string",
+            "maxLength": 80,
+            "minLength": 0,
+            "pattern": "^[\\p{L}\\p{N}\\p{Zs}.-]*$"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      },
+      "AdminDeliveryerSummaryResponse": {
+        "type": "object",
+        "description": "管理員跑腿唯讀摘要；不含用戶 ID、精確位置、目前訂單 ID 或聯絡資料",
+        "properties": {
+          "deliveryerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "delivering": {
+            "type": "boolean"
+          },
+          "deliveryAreas": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "PageAdminDeliveryerSummaryResponse": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdminDeliveryerSummaryResponse"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
       },
       "DeliveryerSearchParam": {
         "type": "object",

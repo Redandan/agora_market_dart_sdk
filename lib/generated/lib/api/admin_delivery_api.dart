@@ -513,6 +513,62 @@ class AdminDeliveryApi {
     return null;
   }
 
+  /// 搜索跑腿安全摘要
+  ///
+  /// 固定分頁且不返回用戶 ID、精確位置、目前訂單 ID 或聯絡資料
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [AdminDeliveryerReadSearchRequest] adminDeliveryerReadSearchRequest:
+  Future<Response> searchDeliveryerSummariesWithHttpInfo({ AdminDeliveryerReadSearchRequest? adminDeliveryerReadSearchRequest, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/delivery/deliveryers/summary/search';
+
+    // ignore: prefer_final_locals
+    Object? postBody = adminDeliveryerReadSearchRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 搜索跑腿安全摘要
+  ///
+  /// 固定分頁且不返回用戶 ID、精確位置、目前訂單 ID 或聯絡資料
+  ///
+  /// Parameters:
+  ///
+  /// * [AdminDeliveryerReadSearchRequest] adminDeliveryerReadSearchRequest:
+  Future<PageAdminDeliveryerSummaryResponse?> searchDeliveryerSummaries({ AdminDeliveryerReadSearchRequest? adminDeliveryerReadSearchRequest, }) async {
+    final response = await searchDeliveryerSummariesWithHttpInfo( adminDeliveryerReadSearchRequest: adminDeliveryerReadSearchRequest, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageAdminDeliveryerSummaryResponse.fromJson(value)) as PageAdminDeliveryerSummaryResponse;
+    
+    }
+    return null;
+  }
+
   /// 搜索配送員
   ///
   /// 管理員可根據多個條件搜索配送員，包括位置、狀態等

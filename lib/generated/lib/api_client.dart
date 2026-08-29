@@ -242,6 +242,10 @@ class ApiClient {
           return AdminDeliveryOperationsSummaryResponse.fromJson(value);
         case 'AdminDeliveryerCreateParam':
           return AdminDeliveryerCreateParam.fromJson(value);
+        case 'AdminDeliveryerReadSearchRequest':
+          return AdminDeliveryerReadSearchRequest.fromJson(value);
+        case 'AdminDeliveryerSummaryResponse':
+          return AdminDeliveryerSummaryResponse.fromJson(value);
         case 'AdminMemberPwaUsageResponse':
           return AdminMemberPwaUsageResponse.fromJson(value);
         case 'AdminMemberResponse':
@@ -792,6 +796,8 @@ class ApiClient {
           return OrderSumbitParam.fromJson(value);
         case 'PageActivityDTO':
           return PageActivityDTO.fromJson(value);
+        case 'PageAdminDeliveryerSummaryResponse':
+          return PageAdminDeliveryerSummaryResponse.fromJson(value);
         case 'PageAdminMemberResponse':
           return PageAdminMemberResponse.fromJson(value);
         case 'PageAutoReplyConfig':

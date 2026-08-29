@@ -157,6 +157,7 @@ Class | Method | HTTP request | Description
 *AdminDeliveryApi* | [**getDeliveryerDetail**](doc//AdminDeliveryApi.md#getdeliveryerdetail) | **GET** /admin/delivery/deliveryers/{deliveryerId} | 查看配送員詳情
 *AdminDeliveryApi* | [**revokeDeliveryer**](doc//AdminDeliveryApi.md#revokedeliveryer) | **DELETE** /admin/delivery/deliveryers/{deliveryerId} | 管理員撤銷配送員身份
 *AdminDeliveryApi* | [**searchDeliveryOrders**](doc//AdminDeliveryApi.md#searchdeliveryorders) | **POST** /admin/delivery/orders/search | 搜索配送訂單
+*AdminDeliveryApi* | [**searchDeliveryerSummaries**](doc//AdminDeliveryApi.md#searchdeliveryersummaries) | **POST** /admin/delivery/deliveryers/summary/search | 搜索跑腿安全摘要
 *AdminDeliveryApi* | [**searchDeliveryers**](doc//AdminDeliveryApi.md#searchdeliveryers) | **POST** /admin/delivery/deliveryers/search | 搜索配送員
 *AdminDeliveryApi* | [**updateDeliveryer**](doc//AdminDeliveryApi.md#updatedeliveryer) | **PUT** /admin/delivery/deliveryers/{deliveryerId} | 管理員編輯配送員資料
 *AdminDeliveryApi* | [**updateDeliveryerStatus**](doc//AdminDeliveryApi.md#updatedeliveryerstatus) | **POST** /admin/delivery/deliveryers/{deliveryerId}/status | 更新配送員狀態
@@ -694,6 +695,8 @@ Class | Method | HTTP request | Description
  - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
  - [AdminDeliveryOperationsSummaryResponse](doc//AdminDeliveryOperationsSummaryResponse.md)
  - [AdminDeliveryerCreateParam](doc//AdminDeliveryerCreateParam.md)
+ - [AdminDeliveryerReadSearchRequest](doc//AdminDeliveryerReadSearchRequest.md)
+ - [AdminDeliveryerSummaryResponse](doc//AdminDeliveryerSummaryResponse.md)
  - [AdminMemberPwaUsageResponse](doc//AdminMemberPwaUsageResponse.md)
  - [AdminMemberResponse](doc//AdminMemberResponse.md)
  - [AdminResetPasswordParam](doc//AdminResetPasswordParam.md)
@@ -969,6 +972,7 @@ Class | Method | HTTP request | Description
  - [OrderStatisticsDTO](doc//OrderStatisticsDTO.md)
  - [OrderSumbitParam](doc//OrderSumbitParam.md)
  - [PageActivityDTO](doc//PageActivityDTO.md)
+ - [PageAdminDeliveryerSummaryResponse](doc//PageAdminDeliveryerSummaryResponse.md)
  - [PageAdminMemberResponse](doc//PageAdminMemberResponse.md)
  - [PageAutoReplyConfig](doc//PageAutoReplyConfig.md)
  - [PageBetResponse](doc//PageBetResponse.md)
