@@ -25898,14 +25898,14 @@
           "fullAddress": {
             "type": "string"
           },
-          "convenienceStorePickup": {
-            "type": "boolean"
-          },
           "logisticsDescription": {
             "type": "string"
           },
           "recipientInfo": {
             "type": "string"
+          },
+          "convenienceStorePickup": {
+            "type": "boolean"
           }
         },
         "required": [
@@ -39231,6 +39231,12 @@
             "description": "更新時間",
             "example": "2024-01-01T10:00:00"
           },
+          "totalPrice": {
+            "type": "number"
+          },
+          "specificationDescription": {
+            "type": "string"
+          },
           "inStock": {
             "type": "boolean"
           },
@@ -39241,12 +39247,6 @@
             "type": "string"
           },
           "purchaseRestrictionReason": {
-            "type": "string"
-          },
-          "totalPrice": {
-            "type": "number"
-          },
-          "specificationDescription": {
             "type": "string"
           }
         },
@@ -47083,8 +47083,8 @@
           },
           "sampleQuery": {
             "type": "string",
-            "description": "Sample raw buyer query for display fallback",
-            "example": "咖啡"
+            "description": "Moderated normalized display query; raw user text is never published",
+            "example": "coffee"
           },
           "searchCount": {
             "type": "integer",

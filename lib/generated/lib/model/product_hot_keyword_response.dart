@@ -29,7 +29,7 @@ class ProductHotKeywordResponse {
   ///
   String? keyword;
 
-  /// Sample raw buyer query for display fallback
+  /// Moderated normalized display query; raw user text is never published
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
