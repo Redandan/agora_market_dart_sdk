@@ -238,6 +238,8 @@ class ApiClient {
           return AddressState.fromJson(value);
         case 'AdminCreateUserParam':
           return AdminCreateUserParam.fromJson(value);
+        case 'AdminDeliveryOperationsSummaryResponse':
+          return AdminDeliveryOperationsSummaryResponse.fromJson(value);
         case 'AdminDeliveryerCreateParam':
           return AdminDeliveryerCreateParam.fromJson(value);
         case 'AdminMemberPwaUsageResponse':

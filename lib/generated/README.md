@@ -153,6 +153,7 @@ Class | Method | HTTP request | Description
 *AdminDeliveryApi* | [**createDeliveryer**](doc//AdminDeliveryApi.md#createdeliveryer) | **POST** /admin/delivery/deliveryers | 管理員新增配送員
 *AdminDeliveryApi* | [**getDeliveryOrderDetail**](doc//AdminDeliveryApi.md#getdeliveryorderdetail) | **GET** /admin/delivery/orders/{orderId} | 查看配送訂單詳情
 *AdminDeliveryApi* | [**getDeliveryStatistics**](doc//AdminDeliveryApi.md#getdeliverystatistics) | **GET** /admin/delivery/statistics | 配送統計報告
+*AdminDeliveryApi* | [**getDeliverySummaryStatistics**](doc//AdminDeliveryApi.md#getdeliverysummarystatistics) | **GET** /admin/delivery/summary/statistics | 配送安全聚合摘要
 *AdminDeliveryApi* | [**getDeliveryerDetail**](doc//AdminDeliveryApi.md#getdeliveryerdetail) | **GET** /admin/delivery/deliveryers/{deliveryerId} | 查看配送員詳情
 *AdminDeliveryApi* | [**revokeDeliveryer**](doc//AdminDeliveryApi.md#revokedeliveryer) | **DELETE** /admin/delivery/deliveryers/{deliveryerId} | 管理員撤銷配送員身份
 *AdminDeliveryApi* | [**searchDeliveryOrders**](doc//AdminDeliveryApi.md#searchdeliveryorders) | **POST** /admin/delivery/orders/search | 搜索配送訂單
@@ -691,6 +692,7 @@ Class | Method | HTTP request | Description
  - [ActivityStatDTO](doc//ActivityStatDTO.md)
  - [AddressState](doc//AddressState.md)
  - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
+ - [AdminDeliveryOperationsSummaryResponse](doc//AdminDeliveryOperationsSummaryResponse.md)
  - [AdminDeliveryerCreateParam](doc//AdminDeliveryerCreateParam.md)
  - [AdminMemberPwaUsageResponse](doc//AdminMemberPwaUsageResponse.md)
  - [AdminMemberResponse](doc//AdminMemberResponse.md)

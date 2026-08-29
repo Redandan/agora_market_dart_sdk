@@ -21237,6 +21237,48 @@
         }
       }
     },
+    "/admin/delivery/summary/statistics": {
+      "get": {
+        "tags": [
+          "admin-delivery"
+        ],
+        "summary": "配送安全聚合摘要",
+        "description": "不返回跑腿績效身份、熱門位置或訂單明細",
+        "operationId": "getDeliverySummaryStatistics",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminDeliveryOperationsSummaryResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/delivery/statistics": {
       "get": {
         "tags": [
@@ -51140,6 +51182,31 @@
           "refundAmount": {
             "type": "number",
             "description": "退款金額"
+          }
+        }
+      },
+      "AdminDeliveryOperationsSummaryResponse": {
+        "type": "object",
+        "description": "管理員配送聚合摘要；不含跑腿身份、位置或訂單明細",
+        "properties": {
+          "totalDeliveryers": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "activeDeliveryers": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ordersByStatus": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "averageDeliveryTime": {
+            "type": "number",
+            "format": "double"
           }
         }
       },

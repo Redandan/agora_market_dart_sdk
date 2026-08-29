@@ -120,6 +120,7 @@ part 'model/activity_search_param.dart';
 part 'model/activity_stat_dto.dart';
 part 'model/address_state.dart';
 part 'model/admin_create_user_param.dart';
+part 'model/admin_delivery_operations_summary_response.dart';
 part 'model/admin_deliveryer_create_param.dart';
 part 'model/admin_member_pwa_usage_response.dart';
 part 'model/admin_member_response.dart';

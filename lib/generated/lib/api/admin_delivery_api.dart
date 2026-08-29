@@ -269,6 +269,73 @@ class AdminDeliveryApi {
     return null;
   }
 
+  /// 配送安全聚合摘要
+  ///
+  /// 不返回跑腿績效身份、熱門位置或訂單明細
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [DateTime] startDate:
+  ///
+  /// * [DateTime] endDate:
+  Future<Response> getDeliverySummaryStatisticsWithHttpInfo({ DateTime? startDate, DateTime? endDate, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/delivery/summary/statistics';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (startDate != null) {
+      queryParams.addAll(_queryParams('', 'startDate', startDate));
+    }
+    if (endDate != null) {
+      queryParams.addAll(_queryParams('', 'endDate', endDate));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 配送安全聚合摘要
+  ///
+  /// 不返回跑腿績效身份、熱門位置或訂單明細
+  ///
+  /// Parameters:
+  ///
+  /// * [DateTime] startDate:
+  ///
+  /// * [DateTime] endDate:
+  Future<AdminDeliveryOperationsSummaryResponse?> getDeliverySummaryStatistics({ DateTime? startDate, DateTime? endDate, }) async {
+    final response = await getDeliverySummaryStatisticsWithHttpInfo( startDate: startDate, endDate: endDate, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AdminDeliveryOperationsSummaryResponse.fromJson(value)) as AdminDeliveryOperationsSummaryResponse;
+    
+    }
+    return null;
+  }
+
   /// 查看配送員詳情
   ///
   /// 管理員可查看配送員的詳細信息
