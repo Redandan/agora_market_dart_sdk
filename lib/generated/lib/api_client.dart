@@ -858,6 +858,8 @@ class ApiClient {
           return PageReview.fromJson(value);
         case 'PageSanctionBlacklistAddress':
           return PageSanctionBlacklistAddress.fromJson(value);
+        case 'PageSellerDemandSummaryResponse':
+          return PageSellerDemandSummaryResponse.fromJson(value);
         case 'PageStaking':
           return PageStaking.fromJson(value);
         case 'PageStoreResponseDTO':
@@ -1148,6 +1150,14 @@ class ApiClient {
           return SellerDashboardDto.fromJson(value);
         case 'SellerDashboardOverviewDto':
           return SellerDashboardOverviewDto.fromJson(value);
+        case 'SellerDemandDetailResponse':
+          return SellerDemandDetailResponse.fromJson(value);
+        case 'SellerDemandMissingRequirementResponse':
+          return SellerDemandMissingRequirementResponse.fromJson(value);
+        case 'SellerDemandOfferResponse':
+          return SellerDemandOfferResponse.fromJson(value);
+        case 'SellerDemandSummaryResponse':
+          return SellerDemandSummaryResponse.fromJson(value);
         case 'SellerOrderStatsDTO':
           return SellerOrderStatsDTO.fromJson(value);
         case 'SellerTrustScoreDto':

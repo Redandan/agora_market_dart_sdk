@@ -563,8 +563,10 @@ Class | Method | HTTP request | Description
 *SellerCreatorContentControllerApi* | [**listMine**](doc//SellerCreatorContentControllerApi.md#listmine) | **GET** /seller/creator-contents | 
 *SellerCreatorContentControllerApi* | [**publish**](doc//SellerCreatorContentControllerApi.md#publish) | **POST** /seller/creator-contents/{contentId}/publish | 
 *SellerCreatorContentControllerApi* | [**update**](doc//SellerCreatorContentControllerApi.md#update) | **POST** /seller/creator-contents/{contentId} | 
+*SellerDemandPoolApi* | [**getCurrentSellerOpenDemand**](doc//SellerDemandPoolApi.md#getcurrentselleropendemand) | **GET** /seller/demands/me/open/{demandId} | Current store owner get seller-safe open demand detail
 *SellerDemandPoolApi* | [**missingRequirements**](doc//SellerDemandPoolApi.md#missingrequirements) | **GET** /seller/demands/{demandId}/missing-requirements | Seller list relevant missing requirements
 *SellerDemandPoolApi* | [**reviseOffer**](doc//SellerDemandPoolApi.md#reviseoffer) | **POST** /seller/demands/{demandId}/offers/{offerId}/revision | Seller revise an offer after buyer missing requirement
+*SellerDemandPoolApi* | [**searchCurrentSellerOpen**](doc//SellerDemandPoolApi.md#searchcurrentselleropen) | **POST** /seller/demands/me/open/search | Current store owner search seller-safe open demand pool
 *SellerDemandPoolApi* | [**searchOpen**](doc//SellerDemandPoolApi.md#searchopen) | **POST** /seller/demands/open/search | Seller search open demand pool
 *SellerDemandPoolApi* | [**submitOffer**](doc//SellerDemandPoolApi.md#submitoffer) | **POST** /seller/demands/{demandId}/offers | Seller submit structured offer for demand
 *SellerProductBoardApi* | [**pin**](doc//SellerProductBoardApi.md#pin) | **POST** /seller/product-board/posts/{postId}/pin | Pin a product board post for seller-owned product
@@ -999,6 +1001,7 @@ Class | Method | HTTP request | Description
  - [PageRecharge](doc//PageRecharge.md)
  - [PageReview](doc//PageReview.md)
  - [PageSanctionBlacklistAddress](doc//PageSanctionBlacklistAddress.md)
+ - [PageSellerDemandSummaryResponse](doc//PageSellerDemandSummaryResponse.md)
  - [PageStaking](doc//PageStaking.md)
  - [PageStoreResponseDTO](doc//PageStoreResponseDTO.md)
  - [PageTransaction](doc//PageTransaction.md)
@@ -1144,6 +1147,10 @@ Class | Method | HTTP request | Description
  - [SchedulerStatusResponseDTO](doc//SchedulerStatusResponseDTO.md)
  - [SellerDashboardDto](doc//SellerDashboardDto.md)
  - [SellerDashboardOverviewDto](doc//SellerDashboardOverviewDto.md)
+ - [SellerDemandDetailResponse](doc//SellerDemandDetailResponse.md)
+ - [SellerDemandMissingRequirementResponse](doc//SellerDemandMissingRequirementResponse.md)
+ - [SellerDemandOfferResponse](doc//SellerDemandOfferResponse.md)
+ - [SellerDemandSummaryResponse](doc//SellerDemandSummaryResponse.md)
  - [SellerOrderStatsDTO](doc//SellerOrderStatsDTO.md)
  - [SellerTrustScoreDto](doc//SellerTrustScoreDto.md)
  - [SevenElevenStoreDTO](doc//SevenElevenStoreDTO.md)
