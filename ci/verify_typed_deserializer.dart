@@ -26,6 +26,7 @@ Future<void> main() async {
     "sellerId":7,
     "enablePlatformDelivery":false,
     "status":"ON_SALE",
+    "editorRevision":0,
     "reviewCount":0,
     "viewCount":0,
     "salesCount":0,

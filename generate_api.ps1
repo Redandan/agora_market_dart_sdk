@@ -357,6 +357,16 @@ try {
     Repair-GeneratedModelListSerialization -ModelDirectory "lib/generated/lib/model"
     Repair-GeneratedModelNullableNumericParsing -ModelDirectory "lib/generated/lib/model"
 
+    dart ci/repair_required_parameter_null_checks_test.dart
+    if ($LASTEXITCODE -ne 0) {
+        throw "Required-parameter null-check repair test failed with exit code $LASTEXITCODE"
+    }
+
+    dart ci/repair_required_parameter_null_checks.dart "lib/generated/lib/api"
+    if ($LASTEXITCODE -ne 0) {
+        throw "Required-parameter null-check repair failed with exit code $LASTEXITCODE"
+    }
+
     dart ci/repair_map_list_from_json_test.dart
     if ($LASTEXITCODE -ne 0) {
         throw "Generic map-list repair test failed with exit code $LASTEXITCODE"

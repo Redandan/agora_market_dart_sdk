@@ -38,7 +38,13 @@ jobs:
         run: |
           dart ci/generate_api_ps1_contract_test.dart
           dart ci/repair_map_list_from_json_test.dart
+          dart ci/repair_required_parameter_null_checks_test.dart
           bash ci/check_nullable_numeric_parsing.sh
+
+      - name: Verify required-parameter repair is idempotent
+        run: |
+          dart ci/repair_required_parameter_null_checks.dart lib/generated/lib/api
+          git diff --exit-code -- lib/generated/lib/api
 
       - name: Verify endpoint rewrite is idempotent
         run: |
