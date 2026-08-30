@@ -149,11 +149,11 @@ Class | Method | HTTP request | Description
 *AdminAiControllerApi* | [**getConversionStats**](doc//AdminAiControllerApi.md#getconversionstats) | **GET** /admin/ai/conversion/stats | 查詢 AI 群組對話轉化效率統計（可按群組 + 日期區間篩選）
 *AdminAiControllerApi* | [**getStats2**](doc//AdminAiControllerApi.md#getstats2) | **GET** /admin/ai/stats | 
 *AdminBettingV2ControllerApi* | [**cancel1**](doc//AdminBettingV2ControllerApi.md#cancel1) | **PUT** /admin/betting-markets/v2/{marketId}/cancel/operations/{operationId} | Cancel one ADMIN betting market and refund atomically with exact replay
-*AdminBettingV2ControllerApi* | [**capabilities6**](doc//AdminBettingV2ControllerApi.md#capabilities6) | **GET** /admin/betting-markets/v2/capabilities | Read fail-closed ADMIN betting capabilities
+*AdminBettingV2ControllerApi* | [**capabilities7**](doc//AdminBettingV2ControllerApi.md#capabilities7) | **GET** /admin/betting-markets/v2/capabilities | Read fail-closed ADMIN betting capabilities
 *AdminBettingV2ControllerApi* | [**close**](doc//AdminBettingV2ControllerApi.md#close) | **PUT** /admin/betting-markets/v2/{marketId}/close/operations/{operationId} | Close one ADMIN betting market with exact replay and receipt recovery
 *AdminBettingV2ControllerApi* | [**create2**](doc//AdminBettingV2ControllerApi.md#create2) | **PUT** /admin/betting-markets/v2/create/operations/{operationId} | Create one ADMIN betting market with exact replay and receipt recovery
 *AdminBettingV2ControllerApi* | [**detail1**](doc//AdminBettingV2ControllerApi.md#detail1) | **GET** /admin/betting-markets/v2/{marketId} | Read identity-minimized ADMIN betting market detail
-*AdminBettingV2ControllerApi* | [**operation9**](doc//AdminBettingV2ControllerApi.md#operation9) | **GET** /admin/betting-markets/v2/operations/{operationId} | Read one owned durable ADMIN betting operation receipt
+*AdminBettingV2ControllerApi* | [**operation10**](doc//AdminBettingV2ControllerApi.md#operation10) | **GET** /admin/betting-markets/v2/operations/{operationId} | Read one owned durable ADMIN betting operation receipt
 *AdminBettingV2ControllerApi* | [**resolve1**](doc//AdminBettingV2ControllerApi.md#resolve1) | **PUT** /admin/betting-markets/v2/{marketId}/resolve/operations/{operationId} | Resolve one ADMIN betting market atomically with exact replay
 *AdminBettingV2ControllerApi* | [**search4**](doc//AdminBettingV2ControllerApi.md#search4) | **POST** /admin/betting-markets/v2/search | Search fixed-size identity-minimized ADMIN betting markets
 *AdminBotControllerApi* | [**refreshBotCommands**](doc//AdminBotControllerApi.md#refreshbotcommands) | **POST** /admin/bot/refresh-commands | 
@@ -194,7 +194,7 @@ Class | Method | HTTP request | Description
 *AdminKnowledgeV2ControllerApi* | [**create1**](doc//AdminKnowledgeV2ControllerApi.md#create1) | **PUT** /admin/knowledge/v2/documents | Create or safely resume one deterministic knowledge document
 *AdminKnowledgeV2ControllerApi* | [**delete**](doc//AdminKnowledgeV2ControllerApi.md#delete) | **PUT** /admin/knowledge/v2/documents/{documentId}/deletion | Delete one expected-version knowledge document with durable recovery
 *AdminKnowledgeV2ControllerApi* | [**ignore**](doc//AdminKnowledgeV2ControllerApi.md#ignore) | **PUT** /admin/knowledge/v2/pending/{questionId}/ignore | Ignore one claimed pending question with a durable reason hash and receipt
-*AdminKnowledgeV2ControllerApi* | [**operation8**](doc//AdminKnowledgeV2ControllerApi.md#operation8) | **GET** /admin/knowledge/v2/operations/{operationId} | Read one durable ADMIN knowledge operation outcome
+*AdminKnowledgeV2ControllerApi* | [**operation9**](doc//AdminKnowledgeV2ControllerApi.md#operation9) | **GET** /admin/knowledge/v2/operations/{operationId} | Read one durable ADMIN knowledge operation outcome
 *AdminKnowledgeV2ControllerApi* | [**overview2**](doc//AdminKnowledgeV2ControllerApi.md#overview2) | **GET** /admin/knowledge/v2/overview | Read bounded identity-minimized ADMIN knowledge workbench state
 *AdminKnowledgeV2ControllerApi* | [**resolve**](doc//AdminKnowledgeV2ControllerApi.md#resolve) | **PUT** /admin/knowledge/v2/pending/{questionId}/resolution | Resolve one claimed pending question with optional deterministic knowledge upsert
 *AdminMarketplaceUiApi* | [**getProductListCarousel**](doc//AdminMarketplaceUiApi.md#getproductlistcarousel) | **GET** /admin/marketplace-ui/product-list-carousel | Get product-list activity banner admin configuration
@@ -210,8 +210,8 @@ Class | Method | HTTP request | Description
 *AdminMembersApi* | [**searchMembers**](doc//AdminMembersApi.md#searchmembers) | **POST** /admin/members/search | 搜索會員
 *AdminMembersApi* | [**updateMemberByAdmin**](doc//AdminMembersApi.md#updatememberbyadmin) | **POST** /admin/members/{memberId}/update | 更新會員信息
 *AdminMembersApi* | [**updateMemberStatus**](doc//AdminMembersApi.md#updatememberstatus) | **POST** /admin/members/{memberId}/status | 更新會員狀態
-*AdminMessagingV2ControllerApi* | [**capabilities5**](doc//AdminMessagingV2ControllerApi.md#capabilities5) | **GET** /admin/messaging/v2/capabilities | Read fail-closed ADMIN messaging V2 capabilities
-*AdminMessagingV2ControllerApi* | [**operation7**](doc//AdminMessagingV2ControllerApi.md#operation7) | **GET** /admin/messaging/v2/operations/{operationId} | Read one durable ADMIN batch-message operation receipt
+*AdminMessagingV2ControllerApi* | [**capabilities6**](doc//AdminMessagingV2ControllerApi.md#capabilities6) | **GET** /admin/messaging/v2/capabilities | Read fail-closed ADMIN messaging V2 capabilities
+*AdminMessagingV2ControllerApi* | [**operation8**](doc//AdminMessagingV2ControllerApi.md#operation8) | **GET** /admin/messaging/v2/operations/{operationId} | Read one durable ADMIN batch-message operation receipt
 *AdminMessagingV2ControllerApi* | [**sendBatch**](doc//AdminMessagingV2ControllerApi.md#sendbatch) | **PUT** /admin/messaging/v2/batches/operations/{operationId} | Atomically send one plain-text ADMIN message to a fixed recipient set
 *AdminNotificationsApi* | [**cleanupExpiredNotifications1**](doc//AdminNotificationsApi.md#cleanupexpirednotifications1) | **POST** /admin/notifications/cleanup | 清理過期通知
 *AdminNotificationsApi* | [**createBatchNotifications1**](doc//AdminNotificationsApi.md#createbatchnotifications1) | **POST** /admin/notifications/batch | 批量創建通知
@@ -264,7 +264,7 @@ Class | Method | HTTP request | Description
 *AdminStorefrontHomesApi* | [**disable1**](doc//AdminStorefrontHomesApi.md#disable1) | **POST** /admin/storefront-homes/{sellerId}/disable | Disable a published seller custom storefront home
 *AdminStorefrontHomesApi* | [**getHome**](doc//AdminStorefrontHomesApi.md#gethome) | **GET** /admin/storefront-homes/{sellerId} | Get one seller storefront home for review
 *AdminStorefrontHomesApi* | [**listReviewing**](doc//AdminStorefrontHomesApi.md#listreviewing) | **GET** /admin/storefront-homes/reviewing | List storefront home drafts waiting for OPS review
-*AdminStorefrontHomesApi* | [**reject**](doc//AdminStorefrontHomesApi.md#reject) | **POST** /admin/storefront-homes/{sellerId}/reject | Reject a seller storefront home draft
+*AdminStorefrontHomesApi* | [**reject1**](doc//AdminStorefrontHomesApi.md#reject1) | **POST** /admin/storefront-homes/{sellerId}/reject | Reject a seller storefront home draft
 *AdminStoresApi* | [**createStoreByAdmin**](doc//AdminStoresApi.md#createstorebyadmin) | **POST** /admin/stores | 管理員新增商店
 *AdminStoresApi* | [**deleteStore**](doc//AdminStoresApi.md#deletestore) | **DELETE** /admin/stores/{storeId} | 刪除商店
 *AdminStoresApi* | [**disableStore**](doc//AdminStoresApi.md#disablestore) | **POST** /admin/stores/{storeId}/disable | 停用商店
@@ -286,7 +286,6 @@ Class | Method | HTTP request | Description
 *AdminTrafficApi* | [**getSlotOverview**](doc//AdminTrafficApi.md#getslotoverview) | **GET** /admin/traffic/slot/overview | Slot 遊戲流量概覽
 *AdminTrafficApi* | [**getSlotToday**](doc//AdminTrafficApi.md#getslottoday) | **GET** /admin/traffic/slot/today | 今日 Slot 小時分佈
 *AdminTrafficApi* | [**getTodayRegistrations**](doc//AdminTrafficApi.md#gettodayregistrations) | **GET** /admin/traffic/registrations/today | 今日註冊小時分佈
-*AdminWithdrawV2ControllerApi* | [**search1**](doc//AdminWithdrawV2ControllerApi.md#search1) | **POST** /admin/withdraws/v2/summary/search | Search a fixed-size, identity-minimized withdrawal queue without actions
 *AuthApi* | [**acceptTerms**](doc//AuthApi.md#acceptterms) | **POST** /auth/accept-terms | 用戶接受服務條款
 *AuthApi* | [**bindEmail**](doc//AuthApi.md#bindemail) | **POST** /auth/bind-email | 綁定或更新郵箱
 *AuthApi* | [**bindOAuth**](doc//AuthApi.md#bindoauth) | **POST** /auth/bind-oauth | 綁定OAuth賬號
@@ -502,6 +501,12 @@ Class | Method | HTTP request | Description
 *GameAccessProductControllerApi* | [**getDescriptor**](doc//GameAccessProductControllerApi.md#getdescriptor) | **GET** /game-access/products/{productId} | Get a server-owned refundable game access descriptor
 *GameAccessProductControllerApi* | [**getMyAccess**](doc//GameAccessProductControllerApi.md#getmyaccess) | **GET** /game-access/products/{productId}/me | 
 *GameAccessProductControllerApi* | [**purchase2**](doc//GameAccessProductControllerApi.md#purchase2) | **POST** /game-access/products/{productId}/purchase | 
+*GuardedAdminWithdrawalV2Api* | [**capabilities5**](doc//GuardedAdminWithdrawalV2Api.md#capabilities5) | **GET** /admin/withdraws/v2/capabilities | Read fail-closed admin withdrawal operation gates
+*GuardedAdminWithdrawalV2Api* | [**claim**](doc//GuardedAdminWithdrawalV2Api.md#claim) | **PUT** /admin/withdraws/v2/{withdrawRef}/claims/{operationId} | Claim a pending withdrawal for external custody processing
+*GuardedAdminWithdrawalV2Api* | [**operation7**](doc//GuardedAdminWithdrawalV2Api.md#operation7) | **GET** /admin/withdraws/v2/operations/{operationId} | Read one actor-owned durable admin withdrawal receipt
+*GuardedAdminWithdrawalV2Api* | [**reject**](doc//GuardedAdminWithdrawalV2Api.md#reject) | **PUT** /admin/withdraws/v2/{withdrawRef}/rejections/{operationId} | Reject and atomically refund a not-yet-processing withdrawal
+*GuardedAdminWithdrawalV2Api* | [**search1**](doc//GuardedAdminWithdrawalV2Api.md#search1) | **POST** /admin/withdraws/v2/summary/search | Search a fixed-size, identity-minimized withdrawal queue
+*GuardedAdminWithdrawalV2Api* | [**verifyCompletion**](doc//GuardedAdminWithdrawalV2Api.md#verifycompletion) | **PUT** /admin/withdraws/v2/{withdrawRef}/verified-completions/{operationId} | Complete only after confirmed TRON USDT evidence matches the withdrawal
 *KnowledgeApi* | [**addKnowledge**](doc//KnowledgeApi.md#addknowledge) | **POST** /admin/knowledge | 新增知識文件
 *KnowledgeApi* | [**countKnowledge**](doc//KnowledgeApi.md#countknowledge) | **GET** /admin/knowledge/count | 查詢知識庫文件數量
 *KnowledgeApi* | [**countPendingKnowledgeQuestions**](doc//KnowledgeApi.md#countpendingknowledgequestions) | **GET** /admin/knowledge/pending/count | 查詢未處理問題數量
@@ -890,6 +895,11 @@ Class | Method | HTTP request | Description
  - [AdminWithdrawSummaryPageResponse](doc//AdminWithdrawSummaryPageResponse.md)
  - [AdminWithdrawSummaryResponse](doc//AdminWithdrawSummaryResponse.md)
  - [AdminWithdrawV2SearchRequest](doc//AdminWithdrawV2SearchRequest.md)
+ - [AdminWithdrawalV2CapabilitiesResponse](doc//AdminWithdrawalV2CapabilitiesResponse.md)
+ - [AdminWithdrawalV2ClaimRequest](doc//AdminWithdrawalV2ClaimRequest.md)
+ - [AdminWithdrawalV2OperationReceiptResponse](doc//AdminWithdrawalV2OperationReceiptResponse.md)
+ - [AdminWithdrawalV2RejectRequest](doc//AdminWithdrawalV2RejectRequest.md)
+ - [AdminWithdrawalV2VerifyCompletionRequest](doc//AdminWithdrawalV2VerifyCompletionRequest.md)
  - [AiProductClassificationSuggestion](doc//AiProductClassificationSuggestion.md)
  - [ApiResponseCodeSupportKnowledgeCandidate](doc//ApiResponseCodeSupportKnowledgeCandidate.md)
  - [ApiResponseCodeSupportKnowledgeImportResult](doc//ApiResponseCodeSupportKnowledgeImportResult.md)

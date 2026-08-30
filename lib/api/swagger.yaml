@@ -3654,6 +3654,234 @@
         ]
       }
     },
+    "/admin/withdraws/v2/{withdrawRef}/verified-completions/{operationId}": {
+      "put": {
+        "tags": [
+          "Guarded admin withdrawal V2"
+        ],
+        "summary": "Complete only after confirmed TRON USDT evidence matches the withdrawal",
+        "operationId": "verifyCompletion",
+        "parameters": [
+          {
+            "name": "withdrawRef",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminWithdrawalV2VerifyCompletionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Verified completion or exact replay",
+            "headers": {
+              "Mutation-Replayed": {
+                "style": "simple",
+                "schema": {}
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminWithdrawalV2OperationReceiptResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid confirmation or transaction hash"
+          },
+          "403": {
+            "description": "Administrator role required"
+          },
+          "404": {
+            "description": "Withdrawal or operation not found"
+          },
+          "409": {
+            "description": "Stale revision, state conflict or operation reuse"
+          },
+          "503": {
+            "description": "Policy gate or matching chain evidence unavailable"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/admin/withdraws/v2/{withdrawRef}/rejections/{operationId}": {
+      "put": {
+        "tags": [
+          "Guarded admin withdrawal V2"
+        ],
+        "summary": "Reject and atomically refund a not-yet-processing withdrawal",
+        "operationId": "reject",
+        "parameters": [
+          {
+            "name": "withdrawRef",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminWithdrawalV2RejectRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Refund committed or exactly replayed",
+            "headers": {
+              "Mutation-Replayed": {
+                "style": "simple",
+                "schema": {}
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminWithdrawalV2OperationReceiptResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid reason or confirmation"
+          },
+          "403": {
+            "description": "Administrator role required"
+          },
+          "404": {
+            "description": "Withdrawal not found"
+          },
+          "409": {
+            "description": "Stale revision, state conflict or operation reuse"
+          },
+          "503": {
+            "description": "Refund workflow or write gate unavailable"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/admin/withdraws/v2/{withdrawRef}/claims/{operationId}": {
+      "put": {
+        "tags": [
+          "Guarded admin withdrawal V2"
+        ],
+        "summary": "Claim a pending withdrawal for external custody processing",
+        "operationId": "claim",
+        "parameters": [
+          {
+            "name": "withdrawRef",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminWithdrawalV2ClaimRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Claim committed or exactly replayed",
+            "headers": {
+              "Mutation-Replayed": {
+                "style": "simple",
+                "schema": {}
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminWithdrawalV2OperationReceiptResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid confirmation or request"
+          },
+          "403": {
+            "description": "Administrator role required"
+          },
+          "404": {
+            "description": "Withdrawal not found"
+          },
+          "409": {
+            "description": "Stale revision, state conflict or operation reuse"
+          },
+          "503": {
+            "description": "Workflow or write gate unavailable"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/admin/system-config/maintenance/seller": {
       "put": {
         "tags": [
@@ -13980,9 +14208,9 @@
     "/admin/withdraws/v2/summary/search": {
       "post": {
         "tags": [
-          "admin-withdraw-v-2-controller"
+          "Guarded admin withdrawal V2"
         ],
-        "summary": "Search a fixed-size, identity-minimized withdrawal queue without actions",
+        "summary": "Search a fixed-size, identity-minimized withdrawal queue",
         "operationId": "search_1",
         "requestBody": {
           "content": {
@@ -14834,7 +15062,7 @@
           "admin-storefront-homes"
         ],
         "summary": "Reject a seller storefront home draft",
-        "operationId": "reject",
+        "operationId": "reject_1",
         "parameters": [
           {
             "name": "sellerId",
@@ -25024,6 +25252,81 @@
         ]
       }
     },
+    "/admin/withdraws/v2/operations/{operationId}": {
+      "get": {
+        "tags": [
+          "Guarded admin withdrawal V2"
+        ],
+        "summary": "Read one actor-owned durable admin withdrawal receipt",
+        "operationId": "operation_7",
+        "parameters": [
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Actor-owned durable receipt",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminWithdrawalV2OperationReceiptResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid operation ID"
+          },
+          "403": {
+            "description": "Administrator role required"
+          },
+          "404": {
+            "description": "Operation not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/admin/withdraws/v2/capabilities": {
+      "get": {
+        "tags": [
+          "Guarded admin withdrawal V2"
+        ],
+        "summary": "Read fail-closed admin withdrawal operation gates",
+        "operationId": "capabilities_5",
+        "responses": {
+          "200": {
+            "description": "Fail-closed operation gates",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminWithdrawalV2CapabilitiesResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Administrator role required"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/admin/traffic/slot/today": {
       "get": {
         "tags": [
@@ -26584,7 +26887,7 @@
           "admin-messaging-v-2-controller"
         ],
         "summary": "Read one durable ADMIN batch-message operation receipt",
-        "operationId": "operation_7",
+        "operationId": "operation_8",
         "parameters": [
           {
             "name": "operationId",
@@ -26630,7 +26933,7 @@
           "admin-messaging-v-2-controller"
         ],
         "summary": "Read fail-closed ADMIN messaging V2 capabilities",
-        "operationId": "capabilities_5",
+        "operationId": "capabilities_6",
         "responses": {
           "200": {
             "description": "ADMIN messaging capabilities",
@@ -26869,7 +27172,7 @@
           "admin-knowledge-v-2-controller"
         ],
         "summary": "Read one durable ADMIN knowledge operation outcome",
-        "operationId": "operation_8",
+        "operationId": "operation_9",
         "parameters": [
           {
             "name": "admin",
@@ -27550,7 +27853,7 @@
           "admin-betting-v-2-controller"
         ],
         "summary": "Read one owned durable ADMIN betting operation receipt",
-        "operationId": "operation_9",
+        "operationId": "operation_10",
         "parameters": [
           {
             "name": "operationId",
@@ -27596,7 +27899,7 @@
           "admin-betting-v-2-controller"
         ],
         "summary": "Read fail-closed ADMIN betting capabilities",
-        "operationId": "capabilities_6",
+        "operationId": "capabilities_7",
         "responses": {
           "200": {
             "description": "Read-only capability boundary",
@@ -32629,6 +32932,154 @@
           "status"
         ]
       },
+      "AdminWithdrawalV2VerifyCompletionRequest": {
+        "type": "object",
+        "properties": {
+          "contractRevision": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 0
+          },
+          "expectedRevision": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "transactionHash": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[0-9a-fA-F]{64}$"
+          },
+          "confirmedExternalBroadcast": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "expectedRevision"
+        ]
+      },
+      "AdminWithdrawalV2OperationReceiptResponse": {
+        "type": "object",
+        "properties": {
+          "operationId": {
+            "type": "string"
+          },
+          "operationType": {
+            "type": "string",
+            "enum": [
+              "CLAIM",
+              "REJECT",
+              "VERIFY_COMPLETE"
+            ]
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "CLAIMED",
+              "REJECTED",
+              "COMPLETED"
+            ]
+          },
+          "withdrawRef": {
+            "type": "string"
+          },
+          "expectedRevision": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "resultingRevision": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "previousStatus": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "PENDING_REVIEW",
+              "PROCESSING",
+              "COMPLETED",
+              "CANCELLED",
+              "FAILED",
+              "REJECTED"
+            ]
+          },
+          "resultingStatus": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "PENDING_REVIEW",
+              "PROCESSING",
+              "COMPLETED",
+              "CANCELLED",
+              "FAILED",
+              "REJECTED"
+            ]
+          },
+          "destinationPreview": {
+            "type": "string"
+          },
+          "transactionHash": {
+            "type": "string"
+          },
+          "chainTimestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "completedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AdminWithdrawalV2RejectRequest": {
+        "type": "object",
+        "properties": {
+          "contractRevision": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 0
+          },
+          "expectedRevision": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 255,
+            "minLength": 0
+          },
+          "confirmedRefund": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "expectedRevision"
+        ]
+      },
+      "AdminWithdrawalV2ClaimRequest": {
+        "type": "object",
+        "properties": {
+          "contractRevision": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 0
+          },
+          "expectedRevision": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "reviewerNote": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 0
+          },
+          "confirmedExternalCustodyWorkflow": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "expectedRevision"
+        ]
+      },
       "MaintenanceToggleRequest": {
         "type": "object",
         "properties": {
@@ -33723,6 +34174,11 @@
             "format": "date-time",
             "description": "最後更新時間",
             "example": "2024-01-01T10:00:00"
+          },
+          "rowVersion": {
+            "type": "integer",
+            "format": "int64",
+            "description": "併發版本"
           }
         },
         "required": [
@@ -33732,6 +34188,7 @@
           "fee",
           "id",
           "protocolEnum",
+          "rowVersion",
           "status",
           "toAddress",
           "updatedAt",
@@ -50464,6 +50921,10 @@
           "rejectionReasonPresent": {
             "type": "boolean"
           },
+          "revision": {
+            "type": "integer",
+            "format": "int64"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -63640,6 +64101,50 @@
           "configured": {
             "type": "boolean",
             "description": "是否已配置"
+          }
+        }
+      },
+      "AdminWithdrawalV2CapabilitiesResponse": {
+        "type": "object",
+        "properties": {
+          "readAvailable": {
+            "type": "boolean"
+          },
+          "workflowApproved": {
+            "type": "boolean"
+          },
+          "refundWorkflowApproved": {
+            "type": "boolean"
+          },
+          "custodyEvidenceApproved": {
+            "type": "boolean"
+          },
+          "writeEnabled": {
+            "type": "boolean"
+          },
+          "claimAvailable": {
+            "type": "boolean"
+          },
+          "rejectAvailable": {
+            "type": "boolean"
+          },
+          "verifiedCompletionAvailable": {
+            "type": "boolean"
+          },
+          "contractRevision": {
+            "type": "string"
+          },
+          "blockers": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "WORKFLOW_APPROVAL_REQUIRED",
+                "REFUND_WORKFLOW_APPROVAL_REQUIRED",
+                "CUSTODY_EVIDENCE_APPROVAL_REQUIRED",
+                "WRITE_DISABLED"
+              ]
+            }
           }
         }
       },

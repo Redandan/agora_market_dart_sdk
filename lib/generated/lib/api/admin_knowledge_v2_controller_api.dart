@@ -209,7 +209,7 @@ class AdminKnowledgeV2ControllerApi {
   /// * [User] admin (required):
   ///
   /// * [String] operationId (required):
-  Future<Response> operation8WithHttpInfo(User admin, String operationId,) async {
+  Future<Response> operation9WithHttpInfo(User admin, String operationId,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/knowledge/v2/operations/{operationId}'
       .replaceAll('{operationId}', operationId);
@@ -244,8 +244,8 @@ class AdminKnowledgeV2ControllerApi {
   /// * [User] admin (required):
   ///
   /// * [String] operationId (required):
-  Future<AdminKnowledgeOperationReceiptResponse?> operation8(User admin, String operationId,) async {
-    final response = await operation8WithHttpInfo(admin, operationId,);
+  Future<AdminKnowledgeOperationReceiptResponse?> operation9(User admin, String operationId,) async {
+    final response = await operation9WithHttpInfo(admin, operationId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

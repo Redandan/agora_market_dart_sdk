@@ -22,6 +22,7 @@ class AdminWithdrawSummaryResponse {
     this.destinationPreview,
     this.transactionHashPresent,
     this.rejectionReasonPresent,
+    this.revision,
     this.createdAt,
     this.updatedAt,
     this.reviewedAt,
@@ -94,6 +95,14 @@ class AdminWithdrawSummaryResponse {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  int? revision;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? createdAt;
 
   ///
@@ -123,6 +132,7 @@ class AdminWithdrawSummaryResponse {
     other.destinationPreview == destinationPreview &&
     other.transactionHashPresent == transactionHashPresent &&
     other.rejectionReasonPresent == rejectionReasonPresent &&
+    other.revision == revision &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt &&
     other.reviewedAt == reviewedAt;
@@ -139,12 +149,13 @@ class AdminWithdrawSummaryResponse {
     (destinationPreview == null ? 0 : destinationPreview!.hashCode) +
     (transactionHashPresent == null ? 0 : transactionHashPresent!.hashCode) +
     (rejectionReasonPresent == null ? 0 : rejectionReasonPresent!.hashCode) +
+    (revision == null ? 0 : revision!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (reviewedAt == null ? 0 : reviewedAt!.hashCode);
 
   @override
-  String toString() => 'AdminWithdrawSummaryResponse[withdrawRef=$withdrawRef, amount=$amount, fee=$fee, currency=$currency, protocol=$protocol, status=$status, destinationPreview=$destinationPreview, transactionHashPresent=$transactionHashPresent, rejectionReasonPresent=$rejectionReasonPresent, createdAt=$createdAt, updatedAt=$updatedAt, reviewedAt=$reviewedAt]';
+  String toString() => 'AdminWithdrawSummaryResponse[withdrawRef=$withdrawRef, amount=$amount, fee=$fee, currency=$currency, protocol=$protocol, status=$status, destinationPreview=$destinationPreview, transactionHashPresent=$transactionHashPresent, rejectionReasonPresent=$rejectionReasonPresent, revision=$revision, createdAt=$createdAt, updatedAt=$updatedAt, reviewedAt=$reviewedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -192,6 +203,11 @@ class AdminWithdrawSummaryResponse {
       json[r'rejectionReasonPresent'] = this.rejectionReasonPresent;
     } else {
       json[r'rejectionReasonPresent'] = null;
+    }
+    if (this.revision != null) {
+      json[r'revision'] = this.revision;
+    } else {
+      json[r'revision'] = null;
     }
     if (this.createdAt != null) {
       json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
@@ -243,6 +259,7 @@ class AdminWithdrawSummaryResponse {
         destinationPreview: mapValueOfType<String>(json, r'destinationPreview'),
         transactionHashPresent: mapValueOfType<bool>(json, r'transactionHashPresent'),
         rejectionReasonPresent: mapValueOfType<bool>(json, r'rejectionReasonPresent'),
+        revision: mapValueOfType<int>(json, r'revision'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         reviewedAt: mapDateTime(json, r'reviewedAt', r''),

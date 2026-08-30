@@ -239,7 +239,7 @@ class AdminStorefrontHomesApi {
   /// * [int] sellerId (required):
   ///
   /// * [StorefrontHomeReviewRequest] storefrontHomeReviewRequest:
-  Future<Response> rejectWithHttpInfo(int sellerId, { StorefrontHomeReviewRequest? storefrontHomeReviewRequest, }) async {
+  Future<Response> reject1WithHttpInfo(int sellerId, { StorefrontHomeReviewRequest? storefrontHomeReviewRequest, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/storefront-homes/{sellerId}/reject'
       .replaceAll('{sellerId}', sellerId.toString());
@@ -272,8 +272,8 @@ class AdminStorefrontHomesApi {
   /// * [int] sellerId (required):
   ///
   /// * [StorefrontHomeReviewRequest] storefrontHomeReviewRequest:
-  Future<StorefrontHomeResponse?> reject(int sellerId, { StorefrontHomeReviewRequest? storefrontHomeReviewRequest, }) async {
-    final response = await rejectWithHttpInfo(sellerId,  storefrontHomeReviewRequest: storefrontHomeReviewRequest, );
+  Future<StorefrontHomeResponse?> reject1(int sellerId, { StorefrontHomeReviewRequest? storefrontHomeReviewRequest, }) async {
+    final response = await reject1WithHttpInfo(sellerId,  storefrontHomeReviewRequest: storefrontHomeReviewRequest, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

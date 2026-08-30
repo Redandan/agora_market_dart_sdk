@@ -29,6 +29,7 @@ class Withdraw {
     this.reviewedAt,
     required this.createdAt,
     required this.updatedAt,
+    required this.rowVersion,
   });
 
   /// 提款ID
@@ -115,6 +116,9 @@ class Withdraw {
   /// 最後更新時間
   DateTime updatedAt;
 
+  /// 併發版本
+  int rowVersion;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Withdraw &&
     other.id == id &&
@@ -132,7 +136,8 @@ class Withdraw {
     other.adminReviewerNotes == adminReviewerNotes &&
     other.reviewedAt == reviewedAt &&
     other.createdAt == createdAt &&
-    other.updatedAt == updatedAt;
+    other.updatedAt == updatedAt &&
+    other.rowVersion == rowVersion;
 
   @override
   int get hashCode =>
@@ -152,10 +157,11 @@ class Withdraw {
     (adminReviewerNotes == null ? 0 : adminReviewerNotes!.hashCode) +
     (reviewedAt == null ? 0 : reviewedAt!.hashCode) +
     (createdAt.hashCode) +
-    (updatedAt.hashCode);
+    (updatedAt.hashCode) +
+    (rowVersion.hashCode);
 
   @override
-  String toString() => 'Withdraw[id=$id, userId=$userId, amount=$amount, fee=$fee, currency=$currency, protocolEnum=$protocolEnum, toAddress=$toAddress, status=$status, txHash=$txHash, remark=$remark, rejectedReason=$rejectedReason, adminReviewerId=$adminReviewerId, adminReviewerNotes=$adminReviewerNotes, reviewedAt=$reviewedAt, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'Withdraw[id=$id, userId=$userId, amount=$amount, fee=$fee, currency=$currency, protocolEnum=$protocolEnum, toAddress=$toAddress, status=$status, txHash=$txHash, remark=$remark, rejectedReason=$rejectedReason, adminReviewerId=$adminReviewerId, adminReviewerNotes=$adminReviewerNotes, reviewedAt=$reviewedAt, createdAt=$createdAt, updatedAt=$updatedAt, rowVersion=$rowVersion]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -199,6 +205,7 @@ class Withdraw {
     }
       json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
       json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
+      json[r'rowVersion'] = this.rowVersion;
     return json;
   }
 
@@ -237,6 +244,7 @@ class Withdraw {
         reviewedAt: mapDateTime(json, r'reviewedAt', r''),
         createdAt: mapDateTime(json, r'createdAt', r'')!,
         updatedAt: mapDateTime(json, r'updatedAt', r'')!,
+        rowVersion: mapValueOfType<int>(json, r'rowVersion')!,
       );
     }
     return null;
@@ -294,6 +302,7 @@ class Withdraw {
     'status',
     'createdAt',
     'updatedAt',
+    'rowVersion',
   };
 }
 
