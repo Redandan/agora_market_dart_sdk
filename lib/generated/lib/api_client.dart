@@ -378,6 +378,8 @@ class ApiClient {
           return AdminWithdrawSummaryResponse.fromJson(value);
         case 'AdminWithdrawV2SearchRequest':
           return AdminWithdrawV2SearchRequest.fromJson(value);
+        case 'AdminWithdrawalV2ApproveReviewRequest':
+          return AdminWithdrawalV2ApproveReviewRequest.fromJson(value);
         case 'AdminWithdrawalV2CapabilitiesResponse':
           return AdminWithdrawalV2CapabilitiesResponse.fromJson(value);
         case 'AdminWithdrawalV2ClaimRequest':

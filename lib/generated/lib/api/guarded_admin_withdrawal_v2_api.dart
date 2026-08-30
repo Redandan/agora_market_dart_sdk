@@ -16,6 +16,68 @@ class GuardedAdminWithdrawalV2Api {
 
   final ApiClient apiClient;
 
+  /// Approve a manually reviewed withdrawal back into the pending queue
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] withdrawRef (required):
+  ///
+  /// * [String] operationId (required):
+  ///
+  /// * [AdminWithdrawalV2ApproveReviewRequest] adminWithdrawalV2ApproveReviewRequest (required):
+  Future<Response> approveReviewWithHttpInfo(String withdrawRef, String operationId, AdminWithdrawalV2ApproveReviewRequest adminWithdrawalV2ApproveReviewRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/withdraws/v2/{withdrawRef}/review-approvals/{operationId}'
+      .replaceAll('{withdrawRef}', withdrawRef)
+      .replaceAll('{operationId}', operationId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = adminWithdrawalV2ApproveReviewRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Approve a manually reviewed withdrawal back into the pending queue
+  ///
+  /// Parameters:
+  ///
+  /// * [String] withdrawRef (required):
+  ///
+  /// * [String] operationId (required):
+  ///
+  /// * [AdminWithdrawalV2ApproveReviewRequest] adminWithdrawalV2ApproveReviewRequest (required):
+  Future<AdminWithdrawalV2OperationReceiptResponse?> approveReview(String withdrawRef, String operationId, AdminWithdrawalV2ApproveReviewRequest adminWithdrawalV2ApproveReviewRequest,) async {
+    final response = await approveReviewWithHttpInfo(withdrawRef, operationId, adminWithdrawalV2ApproveReviewRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AdminWithdrawalV2OperationReceiptResponse.fromJson(value)) as AdminWithdrawalV2OperationReceiptResponse;
+    
+    }
+    return null;
+  }
+
   /// Read fail-closed admin withdrawal operation gates
   ///
   /// Note: This method returns the HTTP [Response].

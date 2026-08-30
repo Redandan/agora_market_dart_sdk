@@ -293,6 +293,7 @@ class AdminWithdrawalV2OperationReceiptResponseOperationTypeEnum {
   String toJson() => value;
 
   static const CLAIM = AdminWithdrawalV2OperationReceiptResponseOperationTypeEnum._(r'CLAIM');
+  static const APPROVE_REVIEW = AdminWithdrawalV2OperationReceiptResponseOperationTypeEnum._(r'APPROVE_REVIEW');
   static const REJECT = AdminWithdrawalV2OperationReceiptResponseOperationTypeEnum._(r'REJECT');
   static const VERIFY_COMPLETE = AdminWithdrawalV2OperationReceiptResponseOperationTypeEnum._(r'VERIFY_COMPLETE');
   static const unknownDefaultOpenApi = AdminWithdrawalV2OperationReceiptResponseOperationTypeEnum._(r'unknown_default_open_api');
@@ -300,6 +301,7 @@ class AdminWithdrawalV2OperationReceiptResponseOperationTypeEnum {
   /// List of all possible values in this [enum][AdminWithdrawalV2OperationReceiptResponseOperationTypeEnum].
   static const values = <AdminWithdrawalV2OperationReceiptResponseOperationTypeEnum>[
     CLAIM,
+    APPROVE_REVIEW,
     REJECT,
     VERIFY_COMPLETE,
     unknownDefaultOpenApi,
@@ -342,6 +344,7 @@ class AdminWithdrawalV2OperationReceiptResponseOperationTypeEnumTypeTransformer 
     if (data != null) {
       switch (data) {
         case r'CLAIM': return AdminWithdrawalV2OperationReceiptResponseOperationTypeEnum.CLAIM;
+        case r'APPROVE_REVIEW': return AdminWithdrawalV2OperationReceiptResponseOperationTypeEnum.APPROVE_REVIEW;
         case r'REJECT': return AdminWithdrawalV2OperationReceiptResponseOperationTypeEnum.REJECT;
         case r'VERIFY_COMPLETE': return AdminWithdrawalV2OperationReceiptResponseOperationTypeEnum.VERIFY_COMPLETE;
         case r'unknown_default_open_api': return AdminWithdrawalV2OperationReceiptResponseOperationTypeEnum.unknownDefaultOpenApi;
@@ -373,6 +376,7 @@ class AdminWithdrawalV2OperationReceiptResponseOutcomeEnum {
   String toJson() => value;
 
   static const CLAIMED = AdminWithdrawalV2OperationReceiptResponseOutcomeEnum._(r'CLAIMED');
+  static const REVIEW_APPROVED = AdminWithdrawalV2OperationReceiptResponseOutcomeEnum._(r'REVIEW_APPROVED');
   static const REJECTED = AdminWithdrawalV2OperationReceiptResponseOutcomeEnum._(r'REJECTED');
   static const COMPLETED = AdminWithdrawalV2OperationReceiptResponseOutcomeEnum._(r'COMPLETED');
   static const unknownDefaultOpenApi = AdminWithdrawalV2OperationReceiptResponseOutcomeEnum._(r'unknown_default_open_api');
@@ -380,6 +384,7 @@ class AdminWithdrawalV2OperationReceiptResponseOutcomeEnum {
   /// List of all possible values in this [enum][AdminWithdrawalV2OperationReceiptResponseOutcomeEnum].
   static const values = <AdminWithdrawalV2OperationReceiptResponseOutcomeEnum>[
     CLAIMED,
+    REVIEW_APPROVED,
     REJECTED,
     COMPLETED,
     unknownDefaultOpenApi,
@@ -422,6 +427,7 @@ class AdminWithdrawalV2OperationReceiptResponseOutcomeEnumTypeTransformer {
     if (data != null) {
       switch (data) {
         case r'CLAIMED': return AdminWithdrawalV2OperationReceiptResponseOutcomeEnum.CLAIMED;
+        case r'REVIEW_APPROVED': return AdminWithdrawalV2OperationReceiptResponseOutcomeEnum.REVIEW_APPROVED;
         case r'REJECTED': return AdminWithdrawalV2OperationReceiptResponseOutcomeEnum.REJECTED;
         case r'COMPLETED': return AdminWithdrawalV2OperationReceiptResponseOutcomeEnum.COMPLETED;
         case r'unknown_default_open_api': return AdminWithdrawalV2OperationReceiptResponseOutcomeEnum.unknownDefaultOpenApi;

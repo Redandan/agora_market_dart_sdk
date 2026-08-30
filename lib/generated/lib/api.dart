@@ -218,6 +218,7 @@ part 'model/admin_telegram_monitor_overview_response.dart';
 part 'model/admin_withdraw_summary_page_response.dart';
 part 'model/admin_withdraw_summary_response.dart';
 part 'model/admin_withdraw_v2_search_request.dart';
+part 'model/admin_withdrawal_v2_approve_review_request.dart';
 part 'model/admin_withdrawal_v2_capabilities_response.dart';
 part 'model/admin_withdrawal_v2_claim_request.dart';
 part 'model/admin_withdrawal_v2_operation_receipt_response.dart';

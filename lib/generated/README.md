@@ -501,6 +501,7 @@ Class | Method | HTTP request | Description
 *GameAccessProductControllerApi* | [**getDescriptor**](doc//GameAccessProductControllerApi.md#getdescriptor) | **GET** /game-access/products/{productId} | Get a server-owned refundable game access descriptor
 *GameAccessProductControllerApi* | [**getMyAccess**](doc//GameAccessProductControllerApi.md#getmyaccess) | **GET** /game-access/products/{productId}/me | 
 *GameAccessProductControllerApi* | [**purchase2**](doc//GameAccessProductControllerApi.md#purchase2) | **POST** /game-access/products/{productId}/purchase | 
+*GuardedAdminWithdrawalV2Api* | [**approveReview**](doc//GuardedAdminWithdrawalV2Api.md#approvereview) | **PUT** /admin/withdraws/v2/{withdrawRef}/review-approvals/{operationId} | Approve a manually reviewed withdrawal back into the pending queue
 *GuardedAdminWithdrawalV2Api* | [**capabilities5**](doc//GuardedAdminWithdrawalV2Api.md#capabilities5) | **GET** /admin/withdraws/v2/capabilities | Read fail-closed admin withdrawal operation gates
 *GuardedAdminWithdrawalV2Api* | [**claim**](doc//GuardedAdminWithdrawalV2Api.md#claim) | **PUT** /admin/withdraws/v2/{withdrawRef}/claims/{operationId} | Claim a pending withdrawal for external custody processing
 *GuardedAdminWithdrawalV2Api* | [**operation7**](doc//GuardedAdminWithdrawalV2Api.md#operation7) | **GET** /admin/withdraws/v2/operations/{operationId} | Read one actor-owned durable admin withdrawal receipt
@@ -895,6 +896,7 @@ Class | Method | HTTP request | Description
  - [AdminWithdrawSummaryPageResponse](doc//AdminWithdrawSummaryPageResponse.md)
  - [AdminWithdrawSummaryResponse](doc//AdminWithdrawSummaryResponse.md)
  - [AdminWithdrawV2SearchRequest](doc//AdminWithdrawV2SearchRequest.md)
+ - [AdminWithdrawalV2ApproveReviewRequest](doc//AdminWithdrawalV2ApproveReviewRequest.md)
  - [AdminWithdrawalV2CapabilitiesResponse](doc//AdminWithdrawalV2CapabilitiesResponse.md)
  - [AdminWithdrawalV2ClaimRequest](doc//AdminWithdrawalV2ClaimRequest.md)
  - [AdminWithdrawalV2OperationReceiptResponse](doc//AdminWithdrawalV2OperationReceiptResponse.md)

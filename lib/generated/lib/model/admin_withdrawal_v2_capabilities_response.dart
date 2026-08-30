@@ -15,10 +15,12 @@ class AdminWithdrawalV2CapabilitiesResponse {
   AdminWithdrawalV2CapabilitiesResponse({
     this.readAvailable,
     this.workflowApproved,
+    this.riskReviewApproved,
     this.refundWorkflowApproved,
     this.custodyEvidenceApproved,
     this.writeEnabled,
     this.claimAvailable,
+    this.reviewApprovalAvailable,
     this.rejectAvailable,
     this.verifiedCompletionAvailable,
     this.contractRevision,
@@ -40,6 +42,14 @@ class AdminWithdrawalV2CapabilitiesResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? workflowApproved;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? riskReviewApproved;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -79,6 +89,14 @@ class AdminWithdrawalV2CapabilitiesResponse {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  bool? reviewApprovalAvailable;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? rejectAvailable;
 
   ///
@@ -103,10 +121,12 @@ class AdminWithdrawalV2CapabilitiesResponse {
   bool operator ==(Object other) => identical(this, other) || other is AdminWithdrawalV2CapabilitiesResponse &&
     other.readAvailable == readAvailable &&
     other.workflowApproved == workflowApproved &&
+    other.riskReviewApproved == riskReviewApproved &&
     other.refundWorkflowApproved == refundWorkflowApproved &&
     other.custodyEvidenceApproved == custodyEvidenceApproved &&
     other.writeEnabled == writeEnabled &&
     other.claimAvailable == claimAvailable &&
+    other.reviewApprovalAvailable == reviewApprovalAvailable &&
     other.rejectAvailable == rejectAvailable &&
     other.verifiedCompletionAvailable == verifiedCompletionAvailable &&
     other.contractRevision == contractRevision &&
@@ -117,17 +137,19 @@ class AdminWithdrawalV2CapabilitiesResponse {
     // ignore: unnecessary_parenthesis
     (readAvailable == null ? 0 : readAvailable!.hashCode) +
     (workflowApproved == null ? 0 : workflowApproved!.hashCode) +
+    (riskReviewApproved == null ? 0 : riskReviewApproved!.hashCode) +
     (refundWorkflowApproved == null ? 0 : refundWorkflowApproved!.hashCode) +
     (custodyEvidenceApproved == null ? 0 : custodyEvidenceApproved!.hashCode) +
     (writeEnabled == null ? 0 : writeEnabled!.hashCode) +
     (claimAvailable == null ? 0 : claimAvailable!.hashCode) +
+    (reviewApprovalAvailable == null ? 0 : reviewApprovalAvailable!.hashCode) +
     (rejectAvailable == null ? 0 : rejectAvailable!.hashCode) +
     (verifiedCompletionAvailable == null ? 0 : verifiedCompletionAvailable!.hashCode) +
     (contractRevision == null ? 0 : contractRevision!.hashCode) +
     (blockers.hashCode);
 
   @override
-  String toString() => 'AdminWithdrawalV2CapabilitiesResponse[readAvailable=$readAvailable, workflowApproved=$workflowApproved, refundWorkflowApproved=$refundWorkflowApproved, custodyEvidenceApproved=$custodyEvidenceApproved, writeEnabled=$writeEnabled, claimAvailable=$claimAvailable, rejectAvailable=$rejectAvailable, verifiedCompletionAvailable=$verifiedCompletionAvailable, contractRevision=$contractRevision, blockers=$blockers]';
+  String toString() => 'AdminWithdrawalV2CapabilitiesResponse[readAvailable=$readAvailable, workflowApproved=$workflowApproved, riskReviewApproved=$riskReviewApproved, refundWorkflowApproved=$refundWorkflowApproved, custodyEvidenceApproved=$custodyEvidenceApproved, writeEnabled=$writeEnabled, claimAvailable=$claimAvailable, reviewApprovalAvailable=$reviewApprovalAvailable, rejectAvailable=$rejectAvailable, verifiedCompletionAvailable=$verifiedCompletionAvailable, contractRevision=$contractRevision, blockers=$blockers]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -140,6 +162,11 @@ class AdminWithdrawalV2CapabilitiesResponse {
       json[r'workflowApproved'] = this.workflowApproved;
     } else {
       json[r'workflowApproved'] = null;
+    }
+    if (this.riskReviewApproved != null) {
+      json[r'riskReviewApproved'] = this.riskReviewApproved;
+    } else {
+      json[r'riskReviewApproved'] = null;
     }
     if (this.refundWorkflowApproved != null) {
       json[r'refundWorkflowApproved'] = this.refundWorkflowApproved;
@@ -160,6 +187,11 @@ class AdminWithdrawalV2CapabilitiesResponse {
       json[r'claimAvailable'] = this.claimAvailable;
     } else {
       json[r'claimAvailable'] = null;
+    }
+    if (this.reviewApprovalAvailable != null) {
+      json[r'reviewApprovalAvailable'] = this.reviewApprovalAvailable;
+    } else {
+      json[r'reviewApprovalAvailable'] = null;
     }
     if (this.rejectAvailable != null) {
       json[r'rejectAvailable'] = this.rejectAvailable;
@@ -201,10 +233,12 @@ class AdminWithdrawalV2CapabilitiesResponse {
       return AdminWithdrawalV2CapabilitiesResponse(
         readAvailable: mapValueOfType<bool>(json, r'readAvailable'),
         workflowApproved: mapValueOfType<bool>(json, r'workflowApproved'),
+        riskReviewApproved: mapValueOfType<bool>(json, r'riskReviewApproved'),
         refundWorkflowApproved: mapValueOfType<bool>(json, r'refundWorkflowApproved'),
         custodyEvidenceApproved: mapValueOfType<bool>(json, r'custodyEvidenceApproved'),
         writeEnabled: mapValueOfType<bool>(json, r'writeEnabled'),
         claimAvailable: mapValueOfType<bool>(json, r'claimAvailable'),
+        reviewApprovalAvailable: mapValueOfType<bool>(json, r'reviewApprovalAvailable'),
         rejectAvailable: mapValueOfType<bool>(json, r'rejectAvailable'),
         verifiedCompletionAvailable: mapValueOfType<bool>(json, r'verifiedCompletionAvailable'),
         contractRevision: mapValueOfType<String>(json, r'contractRevision'),
@@ -273,6 +307,7 @@ class AdminWithdrawalV2CapabilitiesResponseBlockersEnum {
   String toJson() => value;
 
   static const WORKFLOW_APPROVAL_REQUIRED = AdminWithdrawalV2CapabilitiesResponseBlockersEnum._(r'WORKFLOW_APPROVAL_REQUIRED');
+  static const RISK_REVIEW_APPROVAL_REQUIRED = AdminWithdrawalV2CapabilitiesResponseBlockersEnum._(r'RISK_REVIEW_APPROVAL_REQUIRED');
   static const REFUND_WORKFLOW_APPROVAL_REQUIRED = AdminWithdrawalV2CapabilitiesResponseBlockersEnum._(r'REFUND_WORKFLOW_APPROVAL_REQUIRED');
   static const CUSTODY_EVIDENCE_APPROVAL_REQUIRED = AdminWithdrawalV2CapabilitiesResponseBlockersEnum._(r'CUSTODY_EVIDENCE_APPROVAL_REQUIRED');
   static const WRITE_DISABLED = AdminWithdrawalV2CapabilitiesResponseBlockersEnum._(r'WRITE_DISABLED');
@@ -281,6 +316,7 @@ class AdminWithdrawalV2CapabilitiesResponseBlockersEnum {
   /// List of all possible values in this [enum][AdminWithdrawalV2CapabilitiesResponseBlockersEnum].
   static const values = <AdminWithdrawalV2CapabilitiesResponseBlockersEnum>[
     WORKFLOW_APPROVAL_REQUIRED,
+    RISK_REVIEW_APPROVAL_REQUIRED,
     REFUND_WORKFLOW_APPROVAL_REQUIRED,
     CUSTODY_EVIDENCE_APPROVAL_REQUIRED,
     WRITE_DISABLED,
@@ -324,6 +360,7 @@ class AdminWithdrawalV2CapabilitiesResponseBlockersEnumTypeTransformer {
     if (data != null) {
       switch (data) {
         case r'WORKFLOW_APPROVAL_REQUIRED': return AdminWithdrawalV2CapabilitiesResponseBlockersEnum.WORKFLOW_APPROVAL_REQUIRED;
+        case r'RISK_REVIEW_APPROVAL_REQUIRED': return AdminWithdrawalV2CapabilitiesResponseBlockersEnum.RISK_REVIEW_APPROVAL_REQUIRED;
         case r'REFUND_WORKFLOW_APPROVAL_REQUIRED': return AdminWithdrawalV2CapabilitiesResponseBlockersEnum.REFUND_WORKFLOW_APPROVAL_REQUIRED;
         case r'CUSTODY_EVIDENCE_APPROVAL_REQUIRED': return AdminWithdrawalV2CapabilitiesResponseBlockersEnum.CUSTODY_EVIDENCE_APPROVAL_REQUIRED;
         case r'WRITE_DISABLED': return AdminWithdrawalV2CapabilitiesResponseBlockersEnum.WRITE_DISABLED;

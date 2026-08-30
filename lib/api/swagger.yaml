@@ -3730,6 +3730,82 @@
         ]
       }
     },
+    "/admin/withdraws/v2/{withdrawRef}/review-approvals/{operationId}": {
+      "put": {
+        "tags": [
+          "Guarded admin withdrawal V2"
+        ],
+        "summary": "Approve a manually reviewed withdrawal back into the pending queue",
+        "operationId": "approveReview",
+        "parameters": [
+          {
+            "name": "withdrawRef",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminWithdrawalV2ApproveReviewRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Risk review approval committed or exactly replayed",
+            "headers": {
+              "Mutation-Replayed": {
+                "style": "simple",
+                "schema": {}
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminWithdrawalV2OperationReceiptResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid confirmation or request"
+          },
+          "403": {
+            "description": "Administrator role required"
+          },
+          "404": {
+            "description": "Withdrawal not found"
+          },
+          "409": {
+            "description": "Stale revision, state conflict or operation reuse"
+          },
+          "503": {
+            "description": "Risk review approval or write gate unavailable"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/admin/withdraws/v2/{withdrawRef}/rejections/{operationId}": {
       "put": {
         "tags": [
@@ -32967,6 +33043,7 @@
             "type": "string",
             "enum": [
               "CLAIM",
+              "APPROVE_REVIEW",
               "REJECT",
               "VERIFY_COMPLETE"
             ]
@@ -32975,6 +33052,7 @@
             "type": "string",
             "enum": [
               "CLAIMED",
+              "REVIEW_APPROVED",
               "REJECTED",
               "COMPLETED"
             ]
@@ -33029,6 +33107,31 @@
             "format": "date-time"
           }
         }
+      },
+      "AdminWithdrawalV2ApproveReviewRequest": {
+        "type": "object",
+        "properties": {
+          "contractRevision": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 0
+          },
+          "expectedRevision": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "reviewerNote": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 0
+          },
+          "confirmedRiskReview": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "expectedRevision"
+        ]
       },
       "AdminWithdrawalV2RejectRequest": {
         "type": "object",
@@ -64113,6 +64216,9 @@
           "workflowApproved": {
             "type": "boolean"
           },
+          "riskReviewApproved": {
+            "type": "boolean"
+          },
           "refundWorkflowApproved": {
             "type": "boolean"
           },
@@ -64123,6 +64229,9 @@
             "type": "boolean"
           },
           "claimAvailable": {
+            "type": "boolean"
+          },
+          "reviewApprovalAvailable": {
             "type": "boolean"
           },
           "rejectAvailable": {
@@ -64140,6 +64249,7 @@
               "type": "string",
               "enum": [
                 "WORKFLOW_APPROVAL_REQUIRED",
+                "RISK_REVIEW_APPROVAL_REQUIRED",
                 "REFUND_WORKFLOW_APPROVAL_REQUIRED",
                 "CUSTODY_EVIDENCE_APPROVAL_REQUIRED",
                 "WRITE_DISABLED"
