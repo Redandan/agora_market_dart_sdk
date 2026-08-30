@@ -49,6 +49,7 @@ void main() {
       'minStock': 0,
       'productType': 'PHYSICAL',
       'reportCount': 0,
+      'editorRevision': 0,
       'rating': null,
       'freeShippingThreshold': null,
       'priceUsdt': null,
