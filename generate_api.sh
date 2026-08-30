@@ -56,6 +56,9 @@ java -jar "$GENERATOR_JAR" generate \
 echo "==> Repairing list serialization"
 bash ci/repair_models.sh "$GENERATED_DIR/lib/model"
 
+echo "==> Repairing impossible required-parameter null checks"
+dart ci/repair_required_parameter_null_checks.dart "$GENERATED_DIR/lib/api"
+
 echo "==> Rewriting endpoint deserializers for web tree shaking"
 dart ci/rewrite_api_deserializers.dart "$GENERATED_DIR/lib"
 
