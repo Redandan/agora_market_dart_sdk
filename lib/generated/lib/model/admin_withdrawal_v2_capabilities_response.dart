@@ -311,6 +311,10 @@ class AdminWithdrawalV2CapabilitiesResponseBlockersEnum {
   static const REFUND_WORKFLOW_APPROVAL_REQUIRED = AdminWithdrawalV2CapabilitiesResponseBlockersEnum._(r'REFUND_WORKFLOW_APPROVAL_REQUIRED');
   static const CUSTODY_EVIDENCE_APPROVAL_REQUIRED = AdminWithdrawalV2CapabilitiesResponseBlockersEnum._(r'CUSTODY_EVIDENCE_APPROVAL_REQUIRED');
   static const WRITE_DISABLED = AdminWithdrawalV2CapabilitiesResponseBlockersEnum._(r'WRITE_DISABLED');
+  static const CLAIM_WRITE_DISABLED = AdminWithdrawalV2CapabilitiesResponseBlockersEnum._(r'CLAIM_WRITE_DISABLED');
+  static const REVIEW_APPROVAL_WRITE_DISABLED = AdminWithdrawalV2CapabilitiesResponseBlockersEnum._(r'REVIEW_APPROVAL_WRITE_DISABLED');
+  static const REJECT_WRITE_DISABLED = AdminWithdrawalV2CapabilitiesResponseBlockersEnum._(r'REJECT_WRITE_DISABLED');
+  static const VERIFIED_COMPLETION_WRITE_DISABLED = AdminWithdrawalV2CapabilitiesResponseBlockersEnum._(r'VERIFIED_COMPLETION_WRITE_DISABLED');
   static const unknownDefaultOpenApi = AdminWithdrawalV2CapabilitiesResponseBlockersEnum._(r'unknown_default_open_api');
 
   /// List of all possible values in this [enum][AdminWithdrawalV2CapabilitiesResponseBlockersEnum].
@@ -320,6 +324,10 @@ class AdminWithdrawalV2CapabilitiesResponseBlockersEnum {
     REFUND_WORKFLOW_APPROVAL_REQUIRED,
     CUSTODY_EVIDENCE_APPROVAL_REQUIRED,
     WRITE_DISABLED,
+    CLAIM_WRITE_DISABLED,
+    REVIEW_APPROVAL_WRITE_DISABLED,
+    REJECT_WRITE_DISABLED,
+    VERIFIED_COMPLETION_WRITE_DISABLED,
     unknownDefaultOpenApi,
   ];
 
@@ -364,6 +372,10 @@ class AdminWithdrawalV2CapabilitiesResponseBlockersEnumTypeTransformer {
         case r'REFUND_WORKFLOW_APPROVAL_REQUIRED': return AdminWithdrawalV2CapabilitiesResponseBlockersEnum.REFUND_WORKFLOW_APPROVAL_REQUIRED;
         case r'CUSTODY_EVIDENCE_APPROVAL_REQUIRED': return AdminWithdrawalV2CapabilitiesResponseBlockersEnum.CUSTODY_EVIDENCE_APPROVAL_REQUIRED;
         case r'WRITE_DISABLED': return AdminWithdrawalV2CapabilitiesResponseBlockersEnum.WRITE_DISABLED;
+        case r'CLAIM_WRITE_DISABLED': return AdminWithdrawalV2CapabilitiesResponseBlockersEnum.CLAIM_WRITE_DISABLED;
+        case r'REVIEW_APPROVAL_WRITE_DISABLED': return AdminWithdrawalV2CapabilitiesResponseBlockersEnum.REVIEW_APPROVAL_WRITE_DISABLED;
+        case r'REJECT_WRITE_DISABLED': return AdminWithdrawalV2CapabilitiesResponseBlockersEnum.REJECT_WRITE_DISABLED;
+        case r'VERIFIED_COMPLETION_WRITE_DISABLED': return AdminWithdrawalV2CapabilitiesResponseBlockersEnum.VERIFIED_COMPLETION_WRITE_DISABLED;
         case r'unknown_default_open_api': return AdminWithdrawalV2CapabilitiesResponseBlockersEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {

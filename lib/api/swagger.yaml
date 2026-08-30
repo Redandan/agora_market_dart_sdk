@@ -64252,7 +64252,11 @@
                 "RISK_REVIEW_APPROVAL_REQUIRED",
                 "REFUND_WORKFLOW_APPROVAL_REQUIRED",
                 "CUSTODY_EVIDENCE_APPROVAL_REQUIRED",
-                "WRITE_DISABLED"
+                "WRITE_DISABLED",
+                "CLAIM_WRITE_DISABLED",
+                "REVIEW_APPROVAL_WRITE_DISABLED",
+                "REJECT_WRITE_DISABLED",
+                "VERIFIED_COMPLETION_WRITE_DISABLED"
               ]
             }
           }
