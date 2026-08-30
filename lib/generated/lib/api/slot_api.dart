@@ -416,7 +416,7 @@ class SlotApi {
   /// Parameters:
   ///
   /// * [SlotSpinRequest] slotSpinRequest (required):
-  Future<Response> spinWithHttpInfo(SlotSpinRequest slotSpinRequest,) async {
+  Future<Response> spin1WithHttpInfo(SlotSpinRequest slotSpinRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/slot/spin';
 
@@ -448,8 +448,8 @@ class SlotApi {
   /// Parameters:
   ///
   /// * [SlotSpinRequest] slotSpinRequest (required):
-  Future<SlotSpinResponse?> spin(SlotSpinRequest slotSpinRequest,) async {
-    final response = await spinWithHttpInfo(slotSpinRequest,);
+  Future<SlotSpinResponse?> spin1(SlotSpinRequest slotSpinRequest,) async {
+    final response = await spin1WithHttpInfo(slotSpinRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

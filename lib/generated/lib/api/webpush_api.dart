@@ -16,6 +16,62 @@ class WebpushApi {
 
   final ApiClient apiClient;
 
+  /// 檢查目前瀏覽器推送綁定
+  ///
+  /// 依目前帳號與 body 中的端點只回傳布林狀態，不回傳端點、金鑰、資料庫ID或其他裝置。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [CurrentDevicePushSubscriptionRequest] currentDevicePushSubscriptionRequest (required):
+  Future<Response> getCurrentDeviceSubscriptionStatusWithHttpInfo(CurrentDevicePushSubscriptionRequest currentDevicePushSubscriptionRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/webpush/me/subscriptions/status';
+
+    // ignore: prefer_final_locals
+    Object? postBody = currentDevicePushSubscriptionRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 檢查目前瀏覽器推送綁定
+  ///
+  /// 依目前帳號與 body 中的端點只回傳布林狀態，不回傳端點、金鑰、資料庫ID或其他裝置。
+  ///
+  /// Parameters:
+  ///
+  /// * [CurrentDevicePushSubscriptionRequest] currentDevicePushSubscriptionRequest (required):
+  Future<CurrentDevicePushSubscriptionResponse?> getCurrentDeviceSubscriptionStatus(CurrentDevicePushSubscriptionRequest currentDevicePushSubscriptionRequest,) async {
+    final response = await getCurrentDeviceSubscriptionStatusWithHttpInfo(currentDevicePushSubscriptionRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CurrentDevicePushSubscriptionResponse.fromJson(value)) as CurrentDevicePushSubscriptionResponse;
+    
+    }
+    return null;
+  }
+
   /// 獲取服務健康狀態
   ///
   /// 獲取 Web Push 服務的健康狀態
@@ -419,6 +475,62 @@ class WebpushApi {
     return null;
   }
 
+  /// 綁定目前瀏覽器推送
+  ///
+  /// 以目前帳號綁定 body 中的瀏覽器訂閱；回應不包含端點或金鑰。若有效端點已屬另一帳號則拒絕。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [PushSubscriptionDTO] pushSubscriptionDTO (required):
+  Future<Response> subscribeCurrentDeviceWithHttpInfo(PushSubscriptionDTO pushSubscriptionDTO,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/webpush/me/subscriptions/subscribe';
+
+    // ignore: prefer_final_locals
+    Object? postBody = pushSubscriptionDTO;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 綁定目前瀏覽器推送
+  ///
+  /// 以目前帳號綁定 body 中的瀏覽器訂閱；回應不包含端點或金鑰。若有效端點已屬另一帳號則拒絕。
+  ///
+  /// Parameters:
+  ///
+  /// * [PushSubscriptionDTO] pushSubscriptionDTO (required):
+  Future<CurrentDevicePushSubscriptionResponse?> subscribeCurrentDevice(PushSubscriptionDTO pushSubscriptionDTO,) async {
+    final response = await subscribeCurrentDeviceWithHttpInfo(pushSubscriptionDTO,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CurrentDevicePushSubscriptionResponse.fromJson(value)) as CurrentDevicePushSubscriptionResponse;
+    
+    }
+    return null;
+  }
+
   /// 手動觸發定時推送
   ///
   /// 手動觸發一次定時推送通知
@@ -522,6 +634,62 @@ class WebpushApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PushUnsubscriptionResponseDTO.fromJson(value)) as PushUnsubscriptionResponseDTO;
+    
+    }
+    return null;
+  }
+
+  /// 停用目前瀏覽器推送
+  ///
+  /// 只停用目前帳號與 body 中的端點；重複呼叫保持停用，回應不包含敏感訂閱資料。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [CurrentDevicePushSubscriptionRequest] currentDevicePushSubscriptionRequest (required):
+  Future<Response> unsubscribeCurrentDeviceWithHttpInfo(CurrentDevicePushSubscriptionRequest currentDevicePushSubscriptionRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/webpush/me/subscriptions/unsubscribe';
+
+    // ignore: prefer_final_locals
+    Object? postBody = currentDevicePushSubscriptionRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 停用目前瀏覽器推送
+  ///
+  /// 只停用目前帳號與 body 中的端點；重複呼叫保持停用，回應不包含敏感訂閱資料。
+  ///
+  /// Parameters:
+  ///
+  /// * [CurrentDevicePushSubscriptionRequest] currentDevicePushSubscriptionRequest (required):
+  Future<CurrentDevicePushSubscriptionResponse?> unsubscribeCurrentDevice(CurrentDevicePushSubscriptionRequest currentDevicePushSubscriptionRequest,) async {
+    final response = await unsubscribeCurrentDeviceWithHttpInfo(currentDevicePushSubscriptionRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CurrentDevicePushSubscriptionResponse.fromJson(value)) as CurrentDevicePushSubscriptionResponse;
     
     }
     return null;

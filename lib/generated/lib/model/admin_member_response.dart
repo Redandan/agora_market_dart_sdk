@@ -16,12 +16,14 @@ class AdminMemberResponse {
     required this.id,
     required this.username,
     required this.password,
+    this.passwordLoginEnabled,
     required this.role,
     required this.status,
     this.name,
     this.phone,
     this.email,
     this.avatar,
+    required this.avatarRevision,
     this.remark,
     this.storeName,
     this.defaultHomePage,
@@ -59,6 +61,15 @@ class AdminMemberResponse {
 
   /// 密碼
   String password;
+
+  /// 密碼登入是否已確認可用；null 代表歷史帳號狀態未知，不可作為移除最後登入方式的依據
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? passwordLoginEnabled;
 
   /// 角色 — ADMIN=管理員, USER=一般用戶/買家, SELLER=賣家, DELIVERYER=外送員。前端顯示須做 enum→label 轉換(此 field 回傳為 enum name 大寫英文)。
   AdminMemberResponseRoleEnum role;
@@ -101,6 +112,9 @@ class AdminMemberResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? avatar;
+
+  /// 頭像生命週期版本
+  int avatarRevision;
 
   /// 備註
   ///
@@ -312,12 +326,14 @@ class AdminMemberResponse {
     other.id == id &&
     other.username == username &&
     other.password == password &&
+    other.passwordLoginEnabled == passwordLoginEnabled &&
     other.role == role &&
     other.status == status &&
     other.name == name &&
     other.phone == phone &&
     other.email == email &&
     other.avatar == avatar &&
+    other.avatarRevision == avatarRevision &&
     other.remark == remark &&
     other.storeName == storeName &&
     other.defaultHomePage == defaultHomePage &&
@@ -352,12 +368,14 @@ class AdminMemberResponse {
     (id.hashCode) +
     (username.hashCode) +
     (password.hashCode) +
+    (passwordLoginEnabled == null ? 0 : passwordLoginEnabled!.hashCode) +
     (role.hashCode) +
     (status.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (phone == null ? 0 : phone!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
     (avatar == null ? 0 : avatar!.hashCode) +
+    (avatarRevision.hashCode) +
     (remark == null ? 0 : remark!.hashCode) +
     (storeName == null ? 0 : storeName!.hashCode) +
     (defaultHomePage == null ? 0 : defaultHomePage!.hashCode) +
@@ -387,13 +405,18 @@ class AdminMemberResponse {
     (trustedDevices.hashCode);
 
   @override
-  String toString() => 'AdminMemberResponse[id=$id, username=$username, password=$password, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, remark=$remark, storeName=$storeName, defaultHomePage=$defaultHomePage, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, referrerGroupId=$referrerGroupId, referrerAttributionSource=$referrerAttributionSource, referrerAttributionCapturedAt=$referrerAttributionCapturedAt, registrationMethod=$registrationMethod, registrationIp=$registrationIp, registrationUa=$registrationUa, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, trustedDevicesJson=$trustedDevicesJson, currentDeviceFingerprint=$currentDeviceFingerprint, currentIpAddress=$currentIpAddress, termsAcceptedVersion=$termsAcceptedVersion, termsAcceptedAt=$termsAcceptedAt, countryCode=$countryCode, countryDetectedAt=$countryDetectedAt, createdAt=$createdAt, updatedAt=$updatedAt, pwaUsage=$pwaUsage, admin=$admin, trustedDevices=$trustedDevices]';
+  String toString() => 'AdminMemberResponse[id=$id, username=$username, password=$password, passwordLoginEnabled=$passwordLoginEnabled, role=$role, status=$status, name=$name, phone=$phone, email=$email, avatar=$avatar, avatarRevision=$avatarRevision, remark=$remark, storeName=$storeName, defaultHomePage=$defaultHomePage, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, promoCode=$promoCode, referrerGroupId=$referrerGroupId, referrerAttributionSource=$referrerAttributionSource, referrerAttributionCapturedAt=$referrerAttributionCapturedAt, registrationMethod=$registrationMethod, registrationIp=$registrationIp, registrationUa=$registrationUa, twoFactorEnabled=$twoFactorEnabled, twoFactorSecret=$twoFactorSecret, emailVerified=$emailVerified, trustedDevicesJson=$trustedDevicesJson, currentDeviceFingerprint=$currentDeviceFingerprint, currentIpAddress=$currentIpAddress, termsAcceptedVersion=$termsAcceptedVersion, termsAcceptedAt=$termsAcceptedAt, countryCode=$countryCode, countryDetectedAt=$countryDetectedAt, createdAt=$createdAt, updatedAt=$updatedAt, pwaUsage=$pwaUsage, admin=$admin, trustedDevices=$trustedDevices]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
       json[r'username'] = this.username;
       json[r'password'] = this.password;
+    if (this.passwordLoginEnabled != null) {
+      json[r'passwordLoginEnabled'] = this.passwordLoginEnabled;
+    } else {
+      json[r'passwordLoginEnabled'] = null;
+    }
       json[r'role'] = this.role;
       json[r'status'] = this.status;
     if (this.name != null) {
@@ -416,6 +439,7 @@ class AdminMemberResponse {
     } else {
       json[r'avatar'] = null;
     }
+      json[r'avatarRevision'] = this.avatarRevision;
     if (this.remark != null) {
       json[r'remark'] = this.remark;
     } else {
@@ -564,12 +588,14 @@ class AdminMemberResponse {
         id: mapValueOfType<int>(json, r'id')!,
         username: mapValueOfType<String>(json, r'username')!,
         password: mapValueOfType<String>(json, r'password')!,
+        passwordLoginEnabled: mapValueOfType<bool>(json, r'passwordLoginEnabled'),
         role: AdminMemberResponseRoleEnum.fromJson(json[r'role'])!,
         status: AdminMemberResponseStatusEnum.fromJson(json[r'status'])!,
         name: mapValueOfType<String>(json, r'name'),
         phone: mapValueOfType<String>(json, r'phone'),
         email: mapValueOfType<String>(json, r'email'),
         avatar: mapValueOfType<String>(json, r'avatar'),
+        avatarRevision: mapValueOfType<int>(json, r'avatarRevision')!,
         remark: mapValueOfType<String>(json, r'remark'),
         storeName: mapValueOfType<String>(json, r'storeName'),
         defaultHomePage: AdminMemberResponseDefaultHomePageEnum.fromJson(json[r'defaultHomePage']),
@@ -649,6 +675,7 @@ class AdminMemberResponse {
     'password',
     'role',
     'status',
+    'avatarRevision',
     'createdAt',
     'updatedAt',
   };

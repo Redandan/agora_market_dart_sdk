@@ -22,13 +22,13 @@ class UserAddressesApi {
   ///
   /// Parameters:
   ///
-  /// * [UserAddress] userAddress (required):
-  Future<Response> createAddressWithHttpInfo(UserAddress userAddress,) async {
+  /// * [UserAddressCreateRequest] userAddressCreateRequest (required):
+  Future<Response> createAddressWithHttpInfo(UserAddressCreateRequest userAddressCreateRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/user-addresses/create';
 
     // ignore: prefer_final_locals
-    Object? postBody = userAddress;
+    Object? postBody = userAddressCreateRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -52,9 +52,9 @@ class UserAddressesApi {
   ///
   /// Parameters:
   ///
-  /// * [UserAddress] userAddress (required):
-  Future<UserAddress?> createAddress(UserAddress userAddress,) async {
-    final response = await createAddressWithHttpInfo(userAddress,);
+  /// * [UserAddressCreateRequest] userAddressCreateRequest (required):
+  Future<UserAddress?> createAddress(UserAddressCreateRequest userAddressCreateRequest,) async {
+    final response = await createAddressWithHttpInfo(userAddressCreateRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -429,13 +429,13 @@ class UserAddressesApi {
   ///
   /// Parameters:
   ///
-  /// * [UserAddress] userAddress (required):
-  Future<Response> updateAddressWithHttpInfo(UserAddress userAddress,) async {
+  /// * [UserAddressUpdateRequest] userAddressUpdateRequest (required):
+  Future<Response> updateAddressWithHttpInfo(UserAddressUpdateRequest userAddressUpdateRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/user-addresses/update';
 
     // ignore: prefer_final_locals
-    Object? postBody = userAddress;
+    Object? postBody = userAddressUpdateRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -459,9 +459,9 @@ class UserAddressesApi {
   ///
   /// Parameters:
   ///
-  /// * [UserAddress] userAddress (required):
-  Future<UserAddress?> updateAddress(UserAddress userAddress,) async {
-    final response = await updateAddressWithHttpInfo(userAddress,);
+  /// * [UserAddressUpdateRequest] userAddressUpdateRequest (required):
+  Future<UserAddress?> updateAddress(UserAddressUpdateRequest userAddressUpdateRequest,) async {
+    final response = await updateAddressWithHttpInfo(userAddressUpdateRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

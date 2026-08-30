@@ -18,6 +18,8 @@ class LoginBindingsResponse {
     this.emailVerified,
     this.canUseEmailLogin,
     this.canUsePasswordLogin,
+    this.canRemoveLoginMethod,
+    this.activePasskeyCount,
     this.oauthBindings = const [],
     this.recoveryAdvisory,
   });
@@ -67,6 +69,24 @@ class LoginBindingsResponse {
   ///
   bool? canUsePasswordLogin;
 
+  /// 目前是否可安全移除任一單一登入方式
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? canRemoveLoginMethod;
+
+  /// 目前有效的 Passkey 數量
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? activePasskeyCount;
+
   /// OAuth綁定列表
   List<OAuthBindingInfo> oauthBindings;
 
@@ -86,6 +106,8 @@ class LoginBindingsResponse {
     other.emailVerified == emailVerified &&
     other.canUseEmailLogin == canUseEmailLogin &&
     other.canUsePasswordLogin == canUsePasswordLogin &&
+    other.canRemoveLoginMethod == canRemoveLoginMethod &&
+    other.activePasskeyCount == activePasskeyCount &&
     _deepEquality.equals(other.oauthBindings, oauthBindings) &&
     other.recoveryAdvisory == recoveryAdvisory;
 
@@ -97,11 +119,13 @@ class LoginBindingsResponse {
     (emailVerified == null ? 0 : emailVerified!.hashCode) +
     (canUseEmailLogin == null ? 0 : canUseEmailLogin!.hashCode) +
     (canUsePasswordLogin == null ? 0 : canUsePasswordLogin!.hashCode) +
+    (canRemoveLoginMethod == null ? 0 : canRemoveLoginMethod!.hashCode) +
+    (activePasskeyCount == null ? 0 : activePasskeyCount!.hashCode) +
     (oauthBindings.hashCode) +
     (recoveryAdvisory == null ? 0 : recoveryAdvisory!.hashCode);
 
   @override
-  String toString() => 'LoginBindingsResponse[hasPassword=$hasPassword, hasEmail=$hasEmail, emailVerified=$emailVerified, canUseEmailLogin=$canUseEmailLogin, canUsePasswordLogin=$canUsePasswordLogin, oauthBindings=$oauthBindings, recoveryAdvisory=$recoveryAdvisory]';
+  String toString() => 'LoginBindingsResponse[hasPassword=$hasPassword, hasEmail=$hasEmail, emailVerified=$emailVerified, canUseEmailLogin=$canUseEmailLogin, canUsePasswordLogin=$canUsePasswordLogin, canRemoveLoginMethod=$canRemoveLoginMethod, activePasskeyCount=$activePasskeyCount, oauthBindings=$oauthBindings, recoveryAdvisory=$recoveryAdvisory]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -129,6 +153,16 @@ class LoginBindingsResponse {
       json[r'canUsePasswordLogin'] = this.canUsePasswordLogin;
     } else {
       json[r'canUsePasswordLogin'] = null;
+    }
+    if (this.canRemoveLoginMethod != null) {
+      json[r'canRemoveLoginMethod'] = this.canRemoveLoginMethod;
+    } else {
+      json[r'canRemoveLoginMethod'] = null;
+    }
+    if (this.activePasskeyCount != null) {
+      json[r'activePasskeyCount'] = this.activePasskeyCount;
+    } else {
+      json[r'activePasskeyCount'] = null;
     }
       json[r'oauthBindings'] = this.oauthBindings;
     if (this.recoveryAdvisory != null) {
@@ -163,6 +197,8 @@ class LoginBindingsResponse {
         emailVerified: mapValueOfType<bool>(json, r'emailVerified'),
         canUseEmailLogin: mapValueOfType<bool>(json, r'canUseEmailLogin'),
         canUsePasswordLogin: mapValueOfType<bool>(json, r'canUsePasswordLogin'),
+        canRemoveLoginMethod: mapValueOfType<bool>(json, r'canRemoveLoginMethod'),
+        activePasskeyCount: mapValueOfType<int>(json, r'activePasskeyCount'),
         oauthBindings: OAuthBindingInfo.listFromJson(json[r'oauthBindings']),
         recoveryAdvisory: AccountRecoveryAdvisory.fromJson(json[r'recoveryAdvisory']),
       );

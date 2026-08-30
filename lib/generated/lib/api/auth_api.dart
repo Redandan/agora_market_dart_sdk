@@ -1169,7 +1169,7 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [UserProfileUpdateParam] userProfileUpdateParam (required):
-  Future<Response> updateProfileWithHttpInfo(UserProfileUpdateParam userProfileUpdateParam,) async {
+  Future<Response> updateProfile1WithHttpInfo(UserProfileUpdateParam userProfileUpdateParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/auth/update-profile';
 
@@ -1201,8 +1201,8 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [UserProfileUpdateParam] userProfileUpdateParam (required):
-  Future<UserInfo?> updateProfile(UserProfileUpdateParam userProfileUpdateParam,) async {
-    final response = await updateProfileWithHttpInfo(userProfileUpdateParam,);
+  Future<UserInfo?> updateProfile1(UserProfileUpdateParam userProfileUpdateParam,) async {
+    final response = await updateProfile1WithHttpInfo(userProfileUpdateParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

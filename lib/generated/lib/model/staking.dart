@@ -14,9 +14,15 @@ class Staking {
   /// Returns a new [Staking] instance.
   Staking({
     required this.id,
+    required this.publicId,
     required this.userId,
     required this.amount,
     required this.currency,
+    this.policyRevision,
+    this.annualInterestRateSnapshot,
+    this.dailyInterestRateSnapshot,
+    this.minimumAmountSnapshot,
+    this.policyEffectiveFromSnapshot,
     required this.status,
     required this.applyTime,
     required this.startTime,
@@ -35,6 +41,9 @@ class Staking {
   /// 質押ID（業務ID）
   String id;
 
+  /// Opaque current-user staking reference
+  String publicId;
+
   /// 用戶ID
   int userId;
 
@@ -43,6 +52,46 @@ class Staking {
 
   /// 質押幣種
   String currency;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? policyRevision;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? annualInterestRateSnapshot;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? dailyInterestRateSnapshot;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? minimumAmountSnapshot;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? policyEffectiveFromSnapshot;
 
   /// 質押狀態 (STAKING/COMPLETED)
   StakingStatusEnum status;
@@ -146,9 +195,15 @@ class Staking {
   @override
   bool operator ==(Object other) => identical(this, other) || other is Staking &&
     other.id == id &&
+    other.publicId == publicId &&
     other.userId == userId &&
     other.amount == amount &&
     other.currency == currency &&
+    other.policyRevision == policyRevision &&
+    other.annualInterestRateSnapshot == annualInterestRateSnapshot &&
+    other.dailyInterestRateSnapshot == dailyInterestRateSnapshot &&
+    other.minimumAmountSnapshot == minimumAmountSnapshot &&
+    other.policyEffectiveFromSnapshot == policyEffectiveFromSnapshot &&
     other.status == status &&
     other.applyTime == applyTime &&
     other.startTime == startTime &&
@@ -167,9 +222,15 @@ class Staking {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id.hashCode) +
+    (publicId.hashCode) +
     (userId.hashCode) +
     (amount.hashCode) +
     (currency.hashCode) +
+    (policyRevision == null ? 0 : policyRevision!.hashCode) +
+    (annualInterestRateSnapshot == null ? 0 : annualInterestRateSnapshot!.hashCode) +
+    (dailyInterestRateSnapshot == null ? 0 : dailyInterestRateSnapshot!.hashCode) +
+    (minimumAmountSnapshot == null ? 0 : minimumAmountSnapshot!.hashCode) +
+    (policyEffectiveFromSnapshot == null ? 0 : policyEffectiveFromSnapshot!.hashCode) +
     (status.hashCode) +
     (applyTime.hashCode) +
     (startTime.hashCode) +
@@ -185,14 +246,40 @@ class Staking {
     (expectedReward == null ? 0 : expectedReward!.hashCode);
 
   @override
-  String toString() => 'Staking[id=$id, userId=$userId, amount=$amount, currency=$currency, status=$status, applyTime=$applyTime, startTime=$startTime, endTime=$endTime, earnedRewards=$earnedRewards, unfreezeRequestTime=$unfreezeRequestTime, unfreezeCompleteTime=$unfreezeCompleteTime, lastSettleDate=$lastSettleDate, lastSettleTime=$lastSettleTime, lastSettleReward=$lastSettleReward, remark=$remark, nextExpectedSettleTime=$nextExpectedSettleTime, expectedReward=$expectedReward]';
+  String toString() => 'Staking[id=$id, publicId=$publicId, userId=$userId, amount=$amount, currency=$currency, policyRevision=$policyRevision, annualInterestRateSnapshot=$annualInterestRateSnapshot, dailyInterestRateSnapshot=$dailyInterestRateSnapshot, minimumAmountSnapshot=$minimumAmountSnapshot, policyEffectiveFromSnapshot=$policyEffectiveFromSnapshot, status=$status, applyTime=$applyTime, startTime=$startTime, endTime=$endTime, earnedRewards=$earnedRewards, unfreezeRequestTime=$unfreezeRequestTime, unfreezeCompleteTime=$unfreezeCompleteTime, lastSettleDate=$lastSettleDate, lastSettleTime=$lastSettleTime, lastSettleReward=$lastSettleReward, remark=$remark, nextExpectedSettleTime=$nextExpectedSettleTime, expectedReward=$expectedReward]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
+      json[r'publicId'] = this.publicId;
       json[r'userId'] = this.userId;
       json[r'amount'] = this.amount;
       json[r'currency'] = this.currency;
+    if (this.policyRevision != null) {
+      json[r'policyRevision'] = this.policyRevision;
+    } else {
+      json[r'policyRevision'] = null;
+    }
+    if (this.annualInterestRateSnapshot != null) {
+      json[r'annualInterestRateSnapshot'] = this.annualInterestRateSnapshot;
+    } else {
+      json[r'annualInterestRateSnapshot'] = null;
+    }
+    if (this.dailyInterestRateSnapshot != null) {
+      json[r'dailyInterestRateSnapshot'] = this.dailyInterestRateSnapshot;
+    } else {
+      json[r'dailyInterestRateSnapshot'] = null;
+    }
+    if (this.minimumAmountSnapshot != null) {
+      json[r'minimumAmountSnapshot'] = this.minimumAmountSnapshot;
+    } else {
+      json[r'minimumAmountSnapshot'] = null;
+    }
+    if (this.policyEffectiveFromSnapshot != null) {
+      json[r'policyEffectiveFromSnapshot'] = this.policyEffectiveFromSnapshot!.toUtc().toIso8601String();
+    } else {
+      json[r'policyEffectiveFromSnapshot'] = null;
+    }
       json[r'status'] = this.status;
       json[r'applyTime'] = this.applyTime.toUtc().toIso8601String();
       json[r'startTime'] = this.startTime.toUtc().toIso8601String();
@@ -269,9 +356,21 @@ class Staking {
 
       return Staking(
         id: mapValueOfType<String>(json, r'id')!,
+        publicId: mapValueOfType<String>(json, r'publicId')!,
         userId: mapValueOfType<int>(json, r'userId')!,
         amount: num.parse('${json[r'amount']}'),
         currency: mapValueOfType<String>(json, r'currency')!,
+        policyRevision: mapValueOfType<String>(json, r'policyRevision'),
+        annualInterestRateSnapshot: json[r'annualInterestRateSnapshot'] == null
+            ? null
+            : num.parse('${json[r'annualInterestRateSnapshot']}'),
+        dailyInterestRateSnapshot: json[r'dailyInterestRateSnapshot'] == null
+            ? null
+            : num.parse('${json[r'dailyInterestRateSnapshot']}'),
+        minimumAmountSnapshot: json[r'minimumAmountSnapshot'] == null
+            ? null
+            : num.parse('${json[r'minimumAmountSnapshot']}'),
+        policyEffectiveFromSnapshot: mapDateTime(json, r'policyEffectiveFromSnapshot', r''),
         status: StakingStatusEnum.fromJson(json[r'status'])!,
         applyTime: mapDateTime(json, r'applyTime', r'')!,
         startTime: mapDateTime(json, r'startTime', r'')!,
@@ -339,6 +438,7 @@ class Staking {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'id',
+    'publicId',
     'userId',
     'amount',
     'currency',

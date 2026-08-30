@@ -204,7 +204,7 @@ class StorefrontHomeApi {
   /// Get current seller storefront home draft for preview
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> previewWithHttpInfo() async {
+  Future<Response> preview1WithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/stores/my-storefront-home/preview';
 
@@ -230,8 +230,8 @@ class StorefrontHomeApi {
   }
 
   /// Get current seller storefront home draft for preview
-  Future<StorefrontHomeResponse?> preview() async {
-    final response = await previewWithHttpInfo();
+  Future<StorefrontHomeResponse?> preview1() async {
+    final response = await preview1WithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -300,7 +300,7 @@ class StorefrontHomeApi {
   /// Submit current seller storefront home draft for OPS review
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> submitReviewWithHttpInfo() async {
+  Future<Response> submitReview1WithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/stores/my-storefront-home/submit-review';
 
@@ -326,8 +326,8 @@ class StorefrontHomeApi {
   }
 
   /// Submit current seller storefront home draft for OPS review
-  Future<StorefrontHomeResponse?> submitReview() async {
-    final response = await submitReviewWithHttpInfo();
+  Future<StorefrontHomeResponse?> submitReview1() async {
+    final response = await submitReview1WithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

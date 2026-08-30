@@ -513,59 +513,6 @@ class DefaultApi {
     return null;
   }
 
-  /// admin 查單筆檢舉詳情
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [int] reportId (required):
-  Future<Response> callGetWithHttpInfo(int reportId,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/admin/reports/{reportId}'
-      .replaceAll('{reportId}', reportId.toString());
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// admin 查單筆檢舉詳情
-  ///
-  /// Parameters:
-  ///
-  /// * [int] reportId (required):
-  Future<ProductReport?> callGet(int reportId,) async {
-    final response = await callGetWithHttpInfo(reportId,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ProductReport.fromJson(value)) as ProductReport;
-    
-    }
-    return null;
-  }
-
   /// 取消充值
   ///
   /// Note: This method returns the HTTP [Response].
@@ -1489,6 +1436,59 @@ class DefaultApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => Withdraw.fromJson(value)) as Withdraw;
+    
+    }
+    return null;
+  }
+
+  /// admin 查單筆檢舉詳情
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] reportId (required):
+  Future<Response> get2WithHttpInfo(int reportId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/reports/{reportId}'
+      .replaceAll('{reportId}', reportId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// admin 查單筆檢舉詳情
+  ///
+  /// Parameters:
+  ///
+  /// * [int] reportId (required):
+  Future<ProductReport?> get2(int reportId,) async {
+    final response = await get2WithHttpInfo(reportId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ProductReport.fromJson(value)) as ProductReport;
     
     }
     return null;
@@ -3825,7 +3825,7 @@ class DefaultApi {
   /// * [int] reportId (required):
   ///
   /// * [ProductReportResolveParam] productReportResolveParam (required):
-  Future<Response> resolveWithHttpInfo(int reportId, ProductReportResolveParam productReportResolveParam,) async {
+  Future<Response> resolve2WithHttpInfo(int reportId, ProductReportResolveParam productReportResolveParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/reports/{reportId}/resolve'
       .replaceAll('{reportId}', reportId.toString());
@@ -3860,8 +3860,8 @@ class DefaultApi {
   /// * [int] reportId (required):
   ///
   /// * [ProductReportResolveParam] productReportResolveParam (required):
-  Future<ProductReport?> resolve(int reportId, ProductReportResolveParam productReportResolveParam,) async {
-    final response = await resolveWithHttpInfo(reportId, productReportResolveParam,);
+  Future<ProductReport?> resolve2(int reportId, ProductReportResolveParam productReportResolveParam,) async {
+    final response = await resolve2WithHttpInfo(reportId, productReportResolveParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

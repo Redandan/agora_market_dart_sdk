@@ -67,7 +67,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**adminRemoveFromCart**](doc//DefaultApi.md#adminremovefromcart) | **DELETE** /cart/admin/{cartItemId} | 管理員從購物車移除商品
 *DefaultApi* | [**adminUpdateCartItem**](doc//DefaultApi.md#adminupdatecartitem) | **PUT** /cart/admin/{cartItemId} | 管理員更新購物車項目
 *DefaultApi* | [**archivePost**](doc//DefaultApi.md#archivepost) | **POST** /posts/{id}/archive | 下架貼文
-*DefaultApi* | [**callGet**](doc//DefaultApi.md#callget) | **GET** /admin/reports/{reportId} | admin 查單筆檢舉詳情
 *DefaultApi* | [**cancelRecharge**](doc//DefaultApi.md#cancelrecharge) | **POST** /recharge/{rechargeId}/cancel | 取消充值
 *DefaultApi* | [**checkCartItemStockStatus**](doc//DefaultApi.md#checkcartitemstockstatus) | **POST** /cart/check-stock | 檢查庫存狀態
 *DefaultApi* | [**clearCart**](doc//DefaultApi.md#clearcart) | **DELETE** /cart/clear | 清空購物車
@@ -85,6 +84,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**dismiss**](doc//DefaultApi.md#dismiss) | **POST** /admin/reports/{reportId}/dismiss | admin 駁回檢舉
 *DefaultApi* | [**executeJob**](doc//DefaultApi.md#executejob) | **POST** /admin/scheduler/execute | 執行定時任務
 *DefaultApi* | [**failWithdraw**](doc//DefaultApi.md#failwithdraw) | **POST** /withdraws/{withdrawId}/fail | 提款失敗
+*DefaultApi* | [**get2**](doc//DefaultApi.md#get2) | **GET** /admin/reports/{reportId} | admin 查單筆檢舉詳情
 *DefaultApi* | [**getAuthorPosts**](doc//DefaultApi.md#getauthorposts) | **GET** /posts/author/{authorId} | 獲取作者貼文
 *DefaultApi* | [**getCartGroupedBySeller**](doc//DefaultApi.md#getcartgroupedbyseller) | **GET** /cart/grouped-by-seller | 按賣家分組
 *DefaultApi* | [**getCartSummary**](doc//DefaultApi.md#getcartsummary) | **GET** /cart/summary | 獲取購物車統計
@@ -126,7 +126,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**removeCartItem**](doc//DefaultApi.md#removecartitem) | **DELETE** /cart/admin/item/{cartItemId} | 刪除指定購物車項目
 *DefaultApi* | [**removeFromCart**](doc//DefaultApi.md#removefromcart) | **DELETE** /cart/{cartItemId} | 從購物車移除商品
 *DefaultApi* | [**replyIssue**](doc//DefaultApi.md#replyissue) | **POST** /customer-issues/{issueId}/reply | 回覆客戶問題
-*DefaultApi* | [**resolve**](doc//DefaultApi.md#resolve) | **POST** /admin/reports/{reportId}/resolve | admin 結案檢舉
+*DefaultApi* | [**resolve2**](doc//DefaultApi.md#resolve2) | **POST** /admin/reports/{reportId}/resolve | admin 結案檢舉
 *DefaultApi* | [**searchCarts**](doc//DefaultApi.md#searchcarts) | **POST** /cart/admin/search | 搜索購物車
 *DefaultApi* | [**searchIssues**](doc//DefaultApi.md#searchissues) | **POST** /customer-issues/search | 管理員搜尋客戶問題記錄
 *DefaultApi* | [**searchPosts**](doc//DefaultApi.md#searchposts) | **GET** /posts/search | 搜索貼文
@@ -148,6 +148,14 @@ Class | Method | HTTP request | Description
 *AdminAiControllerApi* | [**generateProductDraft**](doc//AdminAiControllerApi.md#generateproductdraft) | **POST** /admin/ai/product-draft | AI 生成商品草稿
 *AdminAiControllerApi* | [**getConversionStats**](doc//AdminAiControllerApi.md#getconversionstats) | **GET** /admin/ai/conversion/stats | 查詢 AI 群組對話轉化效率統計（可按群組 + 日期區間篩選）
 *AdminAiControllerApi* | [**getStats2**](doc//AdminAiControllerApi.md#getstats2) | **GET** /admin/ai/stats | 
+*AdminBettingV2ControllerApi* | [**cancel1**](doc//AdminBettingV2ControllerApi.md#cancel1) | **PUT** /admin/betting-markets/v2/{marketId}/cancel/operations/{operationId} | Cancel one ADMIN betting market and refund atomically with exact replay
+*AdminBettingV2ControllerApi* | [**capabilities6**](doc//AdminBettingV2ControllerApi.md#capabilities6) | **GET** /admin/betting-markets/v2/capabilities | Read fail-closed ADMIN betting capabilities
+*AdminBettingV2ControllerApi* | [**close**](doc//AdminBettingV2ControllerApi.md#close) | **PUT** /admin/betting-markets/v2/{marketId}/close/operations/{operationId} | Close one ADMIN betting market with exact replay and receipt recovery
+*AdminBettingV2ControllerApi* | [**create2**](doc//AdminBettingV2ControllerApi.md#create2) | **PUT** /admin/betting-markets/v2/create/operations/{operationId} | Create one ADMIN betting market with exact replay and receipt recovery
+*AdminBettingV2ControllerApi* | [**detail1**](doc//AdminBettingV2ControllerApi.md#detail1) | **GET** /admin/betting-markets/v2/{marketId} | Read identity-minimized ADMIN betting market detail
+*AdminBettingV2ControllerApi* | [**operation9**](doc//AdminBettingV2ControllerApi.md#operation9) | **GET** /admin/betting-markets/v2/operations/{operationId} | Read one owned durable ADMIN betting operation receipt
+*AdminBettingV2ControllerApi* | [**resolve1**](doc//AdminBettingV2ControllerApi.md#resolve1) | **PUT** /admin/betting-markets/v2/{marketId}/resolve/operations/{operationId} | Resolve one ADMIN betting market atomically with exact replay
+*AdminBettingV2ControllerApi* | [**search4**](doc//AdminBettingV2ControllerApi.md#search4) | **POST** /admin/betting-markets/v2/search | Search fixed-size identity-minimized ADMIN betting markets
 *AdminBotControllerApi* | [**refreshBotCommands**](doc//AdminBotControllerApi.md#refreshbotcommands) | **POST** /admin/bot/refresh-commands | 
 *AdminDeliveryApi* | [**assignDeliveryer**](doc//AdminDeliveryApi.md#assigndeliveryer) | **POST** /admin/delivery/orders/{orderId}/assign | 手動分配配送員
 *AdminDeliveryApi* | [**createDeliveryer**](doc//AdminDeliveryApi.md#createdeliveryer) | **POST** /admin/delivery/deliveryers | 管理員新增配送員
@@ -162,22 +170,33 @@ Class | Method | HTTP request | Description
 *AdminDeliveryApi* | [**updateDeliveryer**](doc//AdminDeliveryApi.md#updatedeliveryer) | **PUT** /admin/delivery/deliveryers/{deliveryerId} | 管理員編輯配送員資料
 *AdminDeliveryApi* | [**updateDeliveryerStatus**](doc//AdminDeliveryApi.md#updatedeliveryerstatus) | **POST** /admin/delivery/deliveryers/{deliveryerId}/status | 更新配送員狀態
 *AdminDemandPoolApi* | [**detail**](doc//AdminDemandPoolApi.md#detail) | **GET** /admin/demands/{demandId} | Admin demand detail
+*AdminDemandPoolApi* | [**detailSummary**](doc//AdminDemandPoolApi.md#detailsummary) | **GET** /admin/demands/{demandId}/summary | Admin demand identity-minimized detail (read-only)
 *AdminDemandPoolApi* | [**linkProduct**](doc//AdminDemandPoolApi.md#linkproduct) | **POST** /admin/demands/{demandId}/link-product | Admin link demand to product
 *AdminDemandPoolApi* | [**missingRequirements1**](doc//AdminDemandPoolApi.md#missingrequirements1) | **GET** /admin/demands/{demandId}/missing-requirements | Admin list demand missing requirements
 *AdminDemandPoolApi* | [**reviewOffer**](doc//AdminDemandPoolApi.md#reviewoffer) | **POST** /admin/demands/{demandId}/offers/{offerId}/review | Admin review seller offer before buyer visibility
-*AdminDemandPoolApi* | [**search**](doc//AdminDemandPoolApi.md#search) | **POST** /admin/demands/search | Admin search demand pool
+*AdminDemandPoolApi* | [**search3**](doc//AdminDemandPoolApi.md#search3) | **POST** /admin/demands/search | Admin search demand pool
+*AdminDemandPoolApi* | [**searchSummaries2**](doc//AdminDemandPoolApi.md#searchsummaries2) | **POST** /admin/demands/summary/search | Admin search demand pool summaries (read-only, identity minimized)
 *AdminDemandPoolApi* | [**updateStatus**](doc//AdminDemandPoolApi.md#updatestatus) | **POST** /admin/demands/{demandId}/status | Admin update demand status or close demand
 *AdminDisputesApi* | [**aiAnalysis**](doc//AdminDisputesApi.md#aianalysis) | **POST** /admin/disputes/{disputeId}/ai-analysis | AI 仲裁建議
 *AdminDisputesApi* | [**denyAppeal**](doc//AdminDisputesApi.md#denyappeal) | **POST** /admin/disputes/{disputeId}/deny-appeal | 拒絕複審申請
 *AdminDisputesApi* | [**getDisputeDetail1**](doc//AdminDisputesApi.md#getdisputedetail1) | **GET** /admin/disputes/{disputeId} | 查看糾紛詳情
 *AdminDisputesApi* | [**getDisputeStatistics**](doc//AdminDisputesApi.md#getdisputestatistics) | **GET** /admin/disputes/statistics | 糾紛統計報告
+*AdminDisputesApi* | [**getDisputeSummary**](doc//AdminDisputesApi.md#getdisputesummary) | **GET** /admin/disputes/{disputeId}/summary | 查看糾紛安全摘要詳情
 *AdminDisputesApi* | [**judgeDispute**](doc//AdminDisputesApi.md#judgedispute) | **POST** /admin/disputes/{disputeId}/judge | 判定爭議責任
 *AdminDisputesApi* | [**reexamineDispute**](doc//AdminDisputesApi.md#reexaminedispute) | **POST** /admin/disputes/{disputeId}/reexamine | 接受複審申請
 *AdminDisputesApi* | [**searchDisputes**](doc//AdminDisputesApi.md#searchdisputes) | **POST** /admin/disputes/search | 搜索糾紛
+*AdminDisputesApi* | [**searchSummaries1**](doc//AdminDisputesApi.md#searchsummaries1) | **POST** /admin/disputes/summary/search | 搜索糾紛安全摘要
 *AdminExchangeRateRangeApi* | [**approveSuggestion**](doc//AdminExchangeRateRangeApi.md#approvesuggestion) | **POST** /admin/exchange-rate-range/suggestions/{id}/approve | 同意建議
 *AdminExchangeRateRangeApi* | [**editRange**](doc//AdminExchangeRateRangeApi.md#editrange) | **POST** /admin/exchange-rate-range/edit | 更新匯率範圍
 *AdminExchangeRateRangeApi* | [**getAllRanges**](doc//AdminExchangeRateRangeApi.md#getallranges) | **POST** /admin/exchange-rate-range/all | 搜尋匯率範圍
 *AdminExchangeRateRangeApi* | [**rejectSuggestion**](doc//AdminExchangeRateRangeApi.md#rejectsuggestion) | **POST** /admin/exchange-rate-range/suggestions/{id}/reject | 拒絕建議
+*AdminFilesApi* | [**searchFileSummaries**](doc//AdminFilesApi.md#searchfilesummaries) | **POST** /admin/files/summary/search | 搜尋檔案安全摘要
+*AdminKnowledgeV2ControllerApi* | [**create1**](doc//AdminKnowledgeV2ControllerApi.md#create1) | **PUT** /admin/knowledge/v2/documents | Create or safely resume one deterministic knowledge document
+*AdminKnowledgeV2ControllerApi* | [**delete**](doc//AdminKnowledgeV2ControllerApi.md#delete) | **PUT** /admin/knowledge/v2/documents/{documentId}/deletion | Delete one expected-version knowledge document with durable recovery
+*AdminKnowledgeV2ControllerApi* | [**ignore**](doc//AdminKnowledgeV2ControllerApi.md#ignore) | **PUT** /admin/knowledge/v2/pending/{questionId}/ignore | Ignore one claimed pending question with a durable reason hash and receipt
+*AdminKnowledgeV2ControllerApi* | [**operation8**](doc//AdminKnowledgeV2ControllerApi.md#operation8) | **GET** /admin/knowledge/v2/operations/{operationId} | Read one durable ADMIN knowledge operation outcome
+*AdminKnowledgeV2ControllerApi* | [**overview2**](doc//AdminKnowledgeV2ControllerApi.md#overview2) | **GET** /admin/knowledge/v2/overview | Read bounded identity-minimized ADMIN knowledge workbench state
+*AdminKnowledgeV2ControllerApi* | [**resolve**](doc//AdminKnowledgeV2ControllerApi.md#resolve) | **PUT** /admin/knowledge/v2/pending/{questionId}/resolution | Resolve one claimed pending question with optional deterministic knowledge upsert
 *AdminMarketplaceUiApi* | [**getProductListCarousel**](doc//AdminMarketplaceUiApi.md#getproductlistcarousel) | **GET** /admin/marketplace-ui/product-list-carousel | Get product-list activity banner admin configuration
 *AdminMarketplaceUiApi* | [**replaceProductListCarousel**](doc//AdminMarketplaceUiApi.md#replaceproductlistcarousel) | **PUT** /admin/marketplace-ui/product-list-carousel | Replace product-list activity banner admin configuration
 *AdminMarketplaceUiApi* | [**updateProductListCarouselItemStatus**](doc//AdminMarketplaceUiApi.md#updateproductlistcarouselitemstatus) | **PATCH** /admin/marketplace-ui/product-list-carousel/items/status | Update one product-list activity banner item status
@@ -185,10 +204,15 @@ Class | Method | HTTP request | Description
 *AdminMembersApi* | [**createUserByAdmin**](doc//AdminMembersApi.md#createuserbyadmin) | **POST** /admin/members/create-user | 管理員創建用戶
 *AdminMembersApi* | [**getMemberDetail**](doc//AdminMembersApi.md#getmemberdetail) | **GET** /admin/members/{memberId} | 查看會員詳情
 *AdminMembersApi* | [**getMemberStatistics**](doc//AdminMembersApi.md#getmemberstatistics) | **GET** /admin/members/statistics | 會員統計報告
+*AdminMembersApi* | [**getMemberSummaryStatistics**](doc//AdminMembersApi.md#getmembersummarystatistics) | **GET** /admin/members/summary/statistics | 會員安全全域統計
 *AdminMembersApi* | [**resetMemberPassword**](doc//AdminMembersApi.md#resetmemberpassword) | **POST** /admin/members/{memberId}/reset-password | 管理員重設會員密碼
+*AdminMembersApi* | [**searchMemberSummaries**](doc//AdminMembersApi.md#searchmembersummaries) | **POST** /admin/members/summary/search | 搜索會員安全摘要
 *AdminMembersApi* | [**searchMembers**](doc//AdminMembersApi.md#searchmembers) | **POST** /admin/members/search | 搜索會員
 *AdminMembersApi* | [**updateMemberByAdmin**](doc//AdminMembersApi.md#updatememberbyadmin) | **POST** /admin/members/{memberId}/update | 更新會員信息
 *AdminMembersApi* | [**updateMemberStatus**](doc//AdminMembersApi.md#updatememberstatus) | **POST** /admin/members/{memberId}/status | 更新會員狀態
+*AdminMessagingV2ControllerApi* | [**capabilities5**](doc//AdminMessagingV2ControllerApi.md#capabilities5) | **GET** /admin/messaging/v2/capabilities | Read fail-closed ADMIN messaging V2 capabilities
+*AdminMessagingV2ControllerApi* | [**operation7**](doc//AdminMessagingV2ControllerApi.md#operation7) | **GET** /admin/messaging/v2/operations/{operationId} | Read one durable ADMIN batch-message operation receipt
+*AdminMessagingV2ControllerApi* | [**sendBatch**](doc//AdminMessagingV2ControllerApi.md#sendbatch) | **PUT** /admin/messaging/v2/batches/operations/{operationId} | Atomically send one plain-text ADMIN message to a fixed recipient set
 *AdminNotificationsApi* | [**cleanupExpiredNotifications1**](doc//AdminNotificationsApi.md#cleanupexpirednotifications1) | **POST** /admin/notifications/cleanup | 清理過期通知
 *AdminNotificationsApi* | [**createBatchNotifications1**](doc//AdminNotificationsApi.md#createbatchnotifications1) | **POST** /admin/notifications/batch | 批量創建通知
 *AdminNotificationsApi* | [**createNotification1**](doc//AdminNotificationsApi.md#createnotification1) | **POST** /admin/notifications | 創建通知
@@ -200,6 +224,8 @@ Class | Method | HTTP request | Description
 *AdminOrdersApi* | [**cancelOrderByAdmin**](doc//AdminOrdersApi.md#cancelorderbyadmin) | **POST** /admin/orders/{orderId}/cancel | 取消訂單
 *AdminOrdersApi* | [**getOrderDetail**](doc//AdminOrdersApi.md#getorderdetail) | **GET** /admin/orders/{orderId} | 查看訂單詳情
 *AdminOrdersApi* | [**getOrderStatistics**](doc//AdminOrdersApi.md#getorderstatistics) | **GET** /admin/orders/statistics | 訂單統計報告
+*AdminOrdersApi* | [**getOrderSummary**](doc//AdminOrdersApi.md#getordersummary) | **GET** /admin/orders/{orderId}/summary | 查看訂單安全摘要詳情
+*AdminOrdersApi* | [**searchOrderSummaries**](doc//AdminOrdersApi.md#searchordersummaries) | **POST** /admin/orders/summary/search | 搜索訂單安全摘要
 *AdminOrdersApi* | [**searchOrders**](doc//AdminOrdersApi.md#searchorders) | **POST** /admin/orders/search | 搜索訂單
 *AdminProductBoardApi* | [**hidePost**](doc//AdminProductBoardApi.md#hidepost) | **POST** /admin/product-board/posts/{postId}/hide | Hide a product board post
 *AdminProductBoardApi* | [**hideReply**](doc//AdminProductBoardApi.md#hidereply) | **POST** /admin/product-board/replies/{replyId}/hide | Hide a product board reply
@@ -222,9 +248,12 @@ Class | Method | HTTP request | Description
 *AdminProductsApi* | [**deleteProductByAdmin**](doc//AdminProductsApi.md#deleteproductbyadmin) | **DELETE** /admin/products/{productId} | 管理員刪除商品
 *AdminProductsApi* | [**getProductDetail**](doc//AdminProductsApi.md#getproductdetail) | **GET** /admin/products/{productId} | 查看商品詳情
 *AdminProductsApi* | [**getProductStatistics**](doc//AdminProductsApi.md#getproductstatistics) | **GET** /admin/products/statistics | 獲取商品統計數據
+*AdminProductsApi* | [**getProductSummary**](doc//AdminProductsApi.md#getproductsummary) | **GET** /admin/products/{productId}/summary | 查看商品安全摘要詳情
 *AdminProductsApi* | [**searchProducts1**](doc//AdminProductsApi.md#searchproducts1) | **POST** /admin/products/search | 搜索商品
+*AdminProductsApi* | [**searchSummaries**](doc//AdminProductsApi.md#searchsummaries) | **POST** /admin/products/summary/search | 搜索商品安全摘要
 *AdminProductsApi* | [**updateProductByAdmin**](doc//AdminProductsApi.md#updateproductbyadmin) | **POST** /admin/products/{productId}/update | 更新商品
 *AdminProductsApi* | [**updateProductStatusEnum**](doc//AdminProductsApi.md#updateproductstatusenum) | **POST** /admin/products/{productId}/status | 更新商品狀態
+*AdminReviewsApi* | [**search2**](doc//AdminReviewsApi.md#search2) | **POST** /admin/reviews/search | 管理員搜索評價（唯讀、最小揭露）
 *AdminSlotApi* | [**getAdminRtpTable**](doc//AdminSlotApi.md#getadminrtptable) | **GET** /admin/slot/rtp | 取得管理員 RTP 設定表
 *AdminStakingApi* | [**getConfig**](doc//AdminStakingApi.md#getconfig) | **GET** /admin/staking/config | 獲取質押配置
 *AdminStakingApi* | [**getInterestRecords**](doc//AdminStakingApi.md#getinterestrecords) | **POST** /admin/staking/interest-records | 查詢收益發放記錄
@@ -232,7 +261,7 @@ Class | Method | HTTP request | Description
 *AdminStakingApi* | [**getStatistics1**](doc//AdminStakingApi.md#getstatistics1) | **GET** /admin/staking/statistics | 質押統計報告
 *AdminStakingApi* | [**updateStakingConfig**](doc//AdminStakingApi.md#updatestakingconfig) | **PUT** /admin/staking/config | 更新質押配置
 *AdminStorefrontHomesApi* | [**approve**](doc//AdminStorefrontHomesApi.md#approve) | **POST** /admin/storefront-homes/{sellerId}/approve | Approve and publish a seller storefront home draft
-*AdminStorefrontHomesApi* | [**disable**](doc//AdminStorefrontHomesApi.md#disable) | **POST** /admin/storefront-homes/{sellerId}/disable | Disable a published seller custom storefront home
+*AdminStorefrontHomesApi* | [**disable1**](doc//AdminStorefrontHomesApi.md#disable1) | **POST** /admin/storefront-homes/{sellerId}/disable | Disable a published seller custom storefront home
 *AdminStorefrontHomesApi* | [**getHome**](doc//AdminStorefrontHomesApi.md#gethome) | **GET** /admin/storefront-homes/{sellerId} | Get one seller storefront home for review
 *AdminStorefrontHomesApi* | [**listReviewing**](doc//AdminStorefrontHomesApi.md#listreviewing) | **GET** /admin/storefront-homes/reviewing | List storefront home drafts waiting for OPS review
 *AdminStorefrontHomesApi* | [**reject**](doc//AdminStorefrontHomesApi.md#reject) | **POST** /admin/storefront-homes/{sellerId}/reject | Reject a seller storefront home draft
@@ -243,17 +272,21 @@ Class | Method | HTTP request | Description
 *AdminStoresApi* | [**getAllStores**](doc//AdminStoresApi.md#getallstores) | **GET** /admin/stores/list | 查看所有商店列表
 *AdminStoresApi* | [**getStoreDetail**](doc//AdminStoresApi.md#getstoredetail) | **GET** /admin/stores/{storeId} | 查看商店詳情
 *AdminStoresApi* | [**getStoreStatistics**](doc//AdminStoresApi.md#getstorestatistics) | **GET** /admin/stores/statistics | 商店統計報告
+*AdminStoresApi* | [**getStoreSummary**](doc//AdminStoresApi.md#getstoresummary) | **GET** /admin/stores/{storeId}/summary | 查看商店安全摘要詳情
+*AdminStoresApi* | [**searchStoreSummaries**](doc//AdminStoresApi.md#searchstoresummaries) | **POST** /admin/stores/summary/search | 搜索商店安全摘要
 *AdminStoresApi* | [**searchStores1**](doc//AdminStoresApi.md#searchstores1) | **POST** /admin/stores/search | 搜索商店
 *AdminStoresApi* | [**updateStoreByAdmin**](doc//AdminStoresApi.md#updatestorebyadmin) | **POST** /admin/stores/{storeId}/update | 管理員更新商店信息
 *AdminStoresApi* | [**updateStoreStatus**](doc//AdminStoresApi.md#updatestorestatus) | **POST** /admin/stores/{storeId}/status | 更新商店狀態
 *AdminSystemConfigApi* | [**getMaintenanceStatus**](doc//AdminSystemConfigApi.md#getmaintenancestatus) | **GET** /admin/system-config/maintenance | 獲取維護開關狀態
 *AdminSystemConfigApi* | [**setDeliveryMaintenance**](doc//AdminSystemConfigApi.md#setdeliverymaintenance) | **PUT** /admin/system-config/maintenance/delivery | 設置外送員入口維護開關
 *AdminSystemConfigApi* | [**setSellerMaintenance**](doc//AdminSystemConfigApi.md#setsellermaintenance) | **PUT** /admin/system-config/maintenance/seller | 設置賣家入口維護開關
+*AdminTelegramMonitorV2ControllerApi* | [**overview1**](doc//AdminTelegramMonitorV2ControllerApi.md#overview1) | **GET** /admin/telegram-monitor/v2/overview | Read identity-minimized ADMIN Telegram routing health
 *AdminTrafficApi* | [**getPlatformOverview**](doc//AdminTrafficApi.md#getplatformoverview) | **GET** /admin/traffic/platform/overview | 獲取 APP 服務流量概覽
 *AdminTrafficApi* | [**getRegistrationOverview**](doc//AdminTrafficApi.md#getregistrationoverview) | **GET** /admin/traffic/registrations/overview | 獲取註冊流量概覽
 *AdminTrafficApi* | [**getSlotOverview**](doc//AdminTrafficApi.md#getslotoverview) | **GET** /admin/traffic/slot/overview | Slot 遊戲流量概覽
 *AdminTrafficApi* | [**getSlotToday**](doc//AdminTrafficApi.md#getslottoday) | **GET** /admin/traffic/slot/today | 今日 Slot 小時分佈
 *AdminTrafficApi* | [**getTodayRegistrations**](doc//AdminTrafficApi.md#gettodayregistrations) | **GET** /admin/traffic/registrations/today | 今日註冊小時分佈
+*AdminWithdrawV2ControllerApi* | [**search1**](doc//AdminWithdrawV2ControllerApi.md#search1) | **POST** /admin/withdraws/v2/summary/search | Search a fixed-size, identity-minimized withdrawal queue without actions
 *AuthApi* | [**acceptTerms**](doc//AuthApi.md#acceptterms) | **POST** /auth/accept-terms | 用戶接受服務條款
 *AuthApi* | [**bindEmail**](doc//AuthApi.md#bindemail) | **POST** /auth/bind-email | 綁定或更新郵箱
 *AuthApi* | [**bindOAuth**](doc//AuthApi.md#bindoauth) | **POST** /auth/bind-oauth | 綁定OAuth賬號
@@ -277,7 +310,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**sendEmailLoginCode**](doc//AuthApi.md#sendemaillogincode) | **POST** /auth/email-login/send-code | 發送郵箱登入驗證碼
 *AuthApi* | [**sendEmailVerification**](doc//AuthApi.md#sendemailverification) | **POST** /auth/email-verification/send | 發送郵件驗證碼
 *AuthApi* | [**unbindOAuth**](doc//AuthApi.md#unbindoauth) | **DELETE** /auth/unbind-oauth/{provider} | 解綁OAuth賬號
-*AuthApi* | [**updateProfile**](doc//AuthApi.md#updateprofile) | **POST** /auth/update-profile | 更新用戶資料
+*AuthApi* | [**updateProfile1**](doc//AuthApi.md#updateprofile1) | **POST** /auth/update-profile | 更新用戶資料
 *AuthApi* | [**validatePasswordResetCode**](doc//AuthApi.md#validatepasswordresetcode) | **POST** /auth/reset-password-with-code/validate | 校驗密碼重置驗證碼
 *AuthApi* | [**verifyEmail**](doc//AuthApi.md#verifyemail) | **POST** /auth/email-verification/verify | 驗證郵件驗證碼
 *AuthApi* | [**verifyTwoFactorCode**](doc//AuthApi.md#verifytwofactorcode) | **POST** /auth/2fa/verify | 驗證雙因素認證碼
@@ -331,7 +364,7 @@ Class | Method | HTTP request | Description
 *ColdWalletApi* | [**freezeColdWallet**](doc//ColdWalletApi.md#freezecoldwallet) | **POST** /cold-wallet/{id}/freeze | 凍結冷錢包
 *ColdWalletApi* | [**getColdWallets**](doc//ColdWalletApi.md#getcoldwallets) | **GET** /cold-wallet | 獲取冷錢包列表
 *ColdWalletApi* | [**releaseColdWallet**](doc//ColdWalletApi.md#releasecoldwallet) | **POST** /cold-wallet/{id}/release | 釋放冷錢包
-*CommunityPartnerApi* | [**applyInvitation**](doc//CommunityPartnerApi.md#applyinvitation) | **POST** /community-partners/invitations/{token}/apply | Apply to become a Telegram group owner partner using an invitation token
+*CommunityPartnerApi* | [**applyInvitation1**](doc//CommunityPartnerApi.md#applyinvitation1) | **POST** /community-partners/invitations/{token}/apply | Apply to become a Telegram group owner partner using an invitation token
 *CommunityPartnerApi* | [**cancelMyApplication**](doc//CommunityPartnerApi.md#cancelmyapplication) | **POST** /community-partners/me/applications/{applicationId}/cancel | Cancel current user's pending Telegram group owner partner application
 *CommunityPartnerApi* | [**getInvitation**](doc//CommunityPartnerApi.md#getinvitation) | **GET** /community-partners/invitations/{token} | Get a Telegram group owner partner invitation by token
 *CommunityPartnerApi* | [**listMyApplications**](doc//CommunityPartnerApi.md#listmyapplications) | **GET** /community-partners/me/applications | List current user's Telegram group owner partner applications
@@ -359,9 +392,91 @@ Class | Method | HTTP request | Description
 *CreatorSubscriptionControllerApi* | [**getEntry**](doc//CreatorSubscriptionControllerApi.md#getentry) | **GET** /creator-subscriptions/products/{productId}/entry | 
 *CreatorSubscriptionControllerApi* | [**listMine1**](doc//CreatorSubscriptionControllerApi.md#listmine1) | **GET** /creator-subscriptions/me | 
 *CreatorSubscriptionControllerApi* | [**subscribe1**](doc//CreatorSubscriptionControllerApi.md#subscribe1) | **POST** /creator-subscriptions/products/{productId}/subscribe | 
+*CurrentAccountWithdrawalV2Api* | [**getOperation4**](doc//CurrentAccountWithdrawalV2Api.md#getoperation4) | **GET** /wallet/me/v2/withdrawals/operations/{operationId} | Read one owned durable withdrawal operation receipt
+*CurrentAccountWithdrawalV2Api* | [**request**](doc//CurrentAccountWithdrawalV2Api.md#request) | **PUT** /wallet/me/v2/withdrawals/requests/{operationId} | Request one USDT/TRC20 withdrawal with exact replay
+*CurrentAccountWithdrawalV2Api* | [**state1**](doc//CurrentAccountWithdrawalV2Api.md#state1) | **GET** /wallet/me/v2/withdrawals/state | Read the current account's withdrawal capability and one ongoing request
+*CurrentBettingV2ControllerApi* | [**activeMarkets**](doc//CurrentBettingV2ControllerApi.md#activemarkets) | **GET** /betting/me/v2/markets | Read one fixed-size page of currently active betting markets
+*CurrentBettingV2ControllerApi* | [**capabilities4**](doc//CurrentBettingV2ControllerApi.md#capabilities4) | **GET** /betting/me/v2/capabilities | Read fail-closed current-member betting capabilities
+*CurrentBettingV2ControllerApi* | [**marketDetail**](doc//CurrentBettingV2ControllerApi.md#marketdetail) | **GET** /betting/me/v2/markets/{marketId} | Read one identity-free betting market and its current options
+*CurrentBettingV2ControllerApi* | [**myRecords**](doc//CurrentBettingV2ControllerApi.md#myrecords) | **GET** /betting/me/v2/records | Read one fixed-size page of the current member's betting records
+*CurrentBettingV2ControllerApi* | [**operation6**](doc//CurrentBettingV2ControllerApi.md#operation6) | **GET** /betting/me/v2/operations/{operationId} | Read one owned durable bet-placement receipt
+*CurrentBettingV2ControllerApi* | [**place**](doc//CurrentBettingV2ControllerApi.md#place) | **PUT** /betting/me/v2/placements/operations/{operationId} | Place one current-member bet with exact replay and receipt recovery
+*CurrentBuyerOrderMutationsApi* | [**getDisputeResult**](doc//CurrentBuyerOrderMutationsApi.md#getdisputeresult) | **GET** /orders/me/{orderId}/dispute-submissions/{operationId} | 查回目前買家的爭議收據
+*CurrentBuyerOrderMutationsApi* | [**getReturnRequestResult**](doc//CurrentBuyerOrderMutationsApi.md#getreturnrequestresult) | **GET** /orders/me/{orderId}/return-request-submissions/{operationId} | 查回目前買家的退貨申請收據
+*CurrentBuyerOrderMutationsApi* | [**getReturnShippingResult**](doc//CurrentBuyerOrderMutationsApi.md#getreturnshippingresult) | **GET** /orders/me/{orderId}/return-shipping-submissions/{operationId} | 查回目前買家的退貨物流收據
+*CurrentBuyerOrderMutationsApi* | [**submitDispute**](doc//CurrentBuyerOrderMutationsApi.md#submitdispute) | **PUT** /orders/me/{orderId}/dispute-submissions/{operationId} | 提交目前買家的爭議
+*CurrentBuyerOrderMutationsApi* | [**submitReturnRequest**](doc//CurrentBuyerOrderMutationsApi.md#submitreturnrequest) | **PUT** /orders/me/{orderId}/return-request-submissions/{operationId} | 提交目前買家的退貨申請
+*CurrentBuyerOrderMutationsApi* | [**submitReturnShipping**](doc//CurrentBuyerOrderMutationsApi.md#submitreturnshipping) | **PUT** /orders/me/{orderId}/return-shipping-submissions/{operationId} | 提交目前買家的退貨物流
+*CurrentChatV2ControllerApi* | [**capabilities3**](doc//CurrentChatV2ControllerApi.md#capabilities3) | **GET** /chat/me/v2/capabilities | Read fail-closed current-member chat V2 capabilities
+*CurrentChatV2ControllerApi* | [**getOrCreate**](doc//CurrentChatV2ControllerApi.md#getorcreate) | **PUT** /chat/me/v2/sessions/by-partner/{partnerId}/operations/{operationId} | Idempotently get or create a member chat session
+*CurrentChatV2ControllerApi* | [**markRead1**](doc//CurrentChatV2ControllerApi.md#markread1) | **PUT** /chat/me/v2/sessions/{sessionRef}/read/operations/{operationId} | Advance the current participant read position idempotently
+*CurrentChatV2ControllerApi* | [**operation5**](doc//CurrentChatV2ControllerApi.md#operation5) | **GET** /chat/me/v2/operations/{operationId} | Read one durable current-member chat operation receipt
+*CurrentChatV2ControllerApi* | [**sendText**](doc//CurrentChatV2ControllerApi.md#sendtext) | **PUT** /chat/me/v2/sessions/{sessionRef}/messages/operations/{operationId} | Send one idempotent plain-text message in an owned session
+*CurrentChatV2ControllerApi* | [**session**](doc//CurrentChatV2ControllerApi.md#session) | **GET** /chat/me/v2/sessions/{sessionRef} | Read one owned chat session and newest-first message page
+*CurrentChatV2ControllerApi* | [**sessions**](doc//CurrentChatV2ControllerApi.md#sessions) | **GET** /chat/me/v2/sessions | List current-member chat sessions without participant IDs
+*CurrentChatV2ControllerApi* | [**setPreference**](doc//CurrentChatV2ControllerApi.md#setpreference) | **PUT** /chat/me/v2/sessions/{sessionRef}/preferences/operations/{operationId} | Set a current-participant-only chat preference idempotently
+*CurrentDeliveryRegistrationControllerApi* | [**getCurrent1**](doc//CurrentDeliveryRegistrationControllerApi.md#getcurrent1) | **GET** /delivery/me/registration | Read current-user courier registration state without creating a profile
+*CurrentDeliveryRegistrationControllerApi* | [**submit2**](doc//CurrentDeliveryRegistrationControllerApi.md#submit2) | **PUT** /delivery/me/registration | Create the current user's singleton courier registration with atomic terms evidence
+*CurrentDepositV2ControllerApi* | [**cancel**](doc//CurrentDepositV2ControllerApi.md#cancel) | **PUT** /wallet/me/v2/deposits/cancellations/{operationId} | Cancel one owned pending deposit with exact replay
+*CurrentDepositV2ControllerApi* | [**create**](doc//CurrentDepositV2ControllerApi.md#create) | **PUT** /wallet/me/v2/deposits/creations/{operationId} | Allocate one current-account deposit address with exact replay
+*CurrentDepositV2ControllerApi* | [**operation2**](doc//CurrentDepositV2ControllerApi.md#operation2) | **GET** /wallet/me/v2/deposits/operations/{operationId} | Read one owned durable deposit operation receipt
+*CurrentDepositV2ControllerApi* | [**state3**](doc//CurrentDepositV2ControllerApi.md#state3) | **GET** /wallet/me/v2/deposits/state | Read current-account deposit policy, balance and exact owned pending address
+*CurrentFundsV2ControllerApi* | [**funds**](doc//CurrentFundsV2ControllerApi.md#funds) | **GET** /wallet/me/v2/funds | Read current-account funding state with every V2 funds mutation disabled
+*CurrentNotificationV2ControllerApi* | [**get1**](doc//CurrentNotificationV2ControllerApi.md#get1) | **GET** /notifications/me/{notificationId} | Read one identity-minimized current-user notification
+*CurrentNotificationV2ControllerApi* | [**markRead**](doc//CurrentNotificationV2ControllerApi.md#markread) | **PUT** /notifications/me/{notificationId}/read | Idempotently mark one current-user notification read
+*CurrentNotificationV2ControllerApi* | [**search**](doc//CurrentNotificationV2ControllerApi.md#search) | **POST** /notifications/me/search | Search a bounded identity-minimized current-user notification page
+*CurrentOrderReturnWorkflowApi* | [**callGet**](doc//CurrentOrderReturnWorkflowApi.md#callget) | **GET** /orders/me/{orderId}/return-workflow | 取得目前訂單參與者可見的退貨工作流
+*CurrentPartnerV2ControllerApi* | [**applications**](doc//CurrentPartnerV2ControllerApi.md#applications) | **POST** /community-partners/me/v2/applications/search | Search fixed-size current partner applications
+*CurrentPartnerV2ControllerApi* | [**applyInvitation**](doc//CurrentPartnerV2ControllerApi.md#applyinvitation) | **PUT** /community-partners/me/v2/invitations/apply/operations/{operationId} | Apply through a captured invitation with exact replay
+*CurrentPartnerV2ControllerApi* | [**cancelApplication**](doc//CurrentPartnerV2ControllerApi.md#cancelapplication) | **PUT** /community-partners/me/v2/applications/{applicationRef}/cancel/operations/{operationId} | Cancel an owned pending current partner application with exact replay
+*CurrentPartnerV2ControllerApi* | [**capabilities2**](doc//CurrentPartnerV2ControllerApi.md#capabilities2) | **GET** /community-partners/me/v2/capabilities | Read fail-closed current partner capabilities
+*CurrentPartnerV2ControllerApi* | [**ledgers**](doc//CurrentPartnerV2ControllerApi.md#ledgers) | **POST** /community-partners/me/v2/ledgers/search | Search fixed-size identity-minimized current partner ledgers
+*CurrentPartnerV2ControllerApi* | [**operation4**](doc//CurrentPartnerV2ControllerApi.md#operation4) | **GET** /community-partners/me/v2/operations/{operationId} | Read one owned durable current partner operation receipt
+*CurrentPartnerV2ControllerApi* | [**overview**](doc//CurrentPartnerV2ControllerApi.md#overview) | **GET** /community-partners/me/v2/overview | Read identity-minimized current partner overview
+*CurrentPartnerV2ControllerApi* | [**previewInvitation**](doc//CurrentPartnerV2ControllerApi.md#previewinvitation) | **POST** /community-partners/me/v2/invitations/preview | Preview an invitation without persisting open or expiry state
+*CurrentPartnerV2ControllerApi* | [**submitApplication**](doc//CurrentPartnerV2ControllerApi.md#submitapplication) | **PUT** /community-partners/me/v2/applications/operations/{operationId} | Submit a current partner application with exact replay
+*CurrentSellerOrderMutationsApi* | [**getResult**](doc//CurrentSellerOrderMutationsApi.md#getresult) | **GET** /orders/me/{orderId}/return-review-submissions/{operationId} | 查回目前賣家的退貨審核收據
+*CurrentSellerOrderMutationsApi* | [**submit1**](doc//CurrentSellerOrderMutationsApi.md#submit1) | **PUT** /orders/me/{orderId}/return-review-submissions/{operationId} | 提交目前賣家的退貨審核
+*CurrentSellerProductEditorControllerApi* | [**getEditor**](doc//CurrentSellerProductEditorControllerApi.md#geteditor) | **GET** /seller/products/me/editor | Read current-seller product create defaults or owned editor state
+*CurrentSellerProductEditorControllerApi* | [**getOperation2**](doc//CurrentSellerProductEditorControllerApi.md#getoperation2) | **GET** /seller/products/me/editor/operations/{operationId} | Read one durable current-seller product editor outcome
+*CurrentSellerProductEditorControllerApi* | [**save**](doc//CurrentSellerProductEditorControllerApi.md#save) | **PUT** /seller/products/me/editor/operations/{operationId} | Create or full-replace one versioned current-seller product
+*CurrentSellerProductEditorControllerApi* | [**uploadImage**](doc//CurrentSellerProductEditorControllerApi.md#uploadimage) | **PUT** /seller/products/me/editor/media/operations/{operationId} | Upload one replay-safe current-seller product image
+*CurrentSellerProductImportControllerApi* | [**capabilities1**](doc//CurrentSellerProductImportControllerApi.md#capabilities1) | **GET** /seller/products/me/import | Read current-seller product import limits and fail-closed write availability
+*CurrentSellerProductImportControllerApi* | [**commit**](doc//CurrentSellerProductImportControllerApi.md#commit) | **PUT** /seller/products/me/import/operations/{operationId} | Atomically create one preview-bound current-seller product batch
+*CurrentSellerProductImportControllerApi* | [**getOperation1**](doc//CurrentSellerProductImportControllerApi.md#getoperation1) | **GET** /seller/products/me/import/operations/{operationId} | Read one durable current-seller product import receipt
+*CurrentSellerProductImportControllerApi* | [**preview**](doc//CurrentSellerProductImportControllerApi.md#preview) | **POST** /seller/products/me/import/preview | Validate a current-seller product import without database writes
+*CurrentSellerStoreRegistrationControllerApi* | [**getCurrent**](doc//CurrentSellerStoreRegistrationControllerApi.md#getcurrent) | **GET** /stores/me/registration | Read current-user singleton store registration state without creating a store
+*CurrentSellerStoreRegistrationControllerApi* | [**submit**](doc//CurrentSellerStoreRegistrationControllerApi.md#submit) | **PUT** /stores/me/registration | Create and immediately activate the current user's singleton store
+*CurrentSellerStoreSettingsControllerApi* | [**getCurrent3**](doc//CurrentSellerStoreSettingsControllerApi.md#getcurrent3) | **GET** /stores/me/settings | Read identity-minimized current-seller store settings
+*CurrentSellerStoreSettingsControllerApi* | [**getOperation6**](doc//CurrentSellerStoreSettingsControllerApi.md#getoperation6) | **GET** /stores/me/settings/operations/{operationId} | Read one durable current-seller store-settings outcome
+*CurrentSellerStoreSettingsControllerApi* | [**updateAvailability**](doc//CurrentSellerStoreSettingsControllerApi.md#updateavailability) | **PUT** /stores/me/settings/availability | Update versioned current-seller store availability
+*CurrentSellerStoreSettingsControllerApi* | [**updateProfile**](doc//CurrentSellerStoreSettingsControllerApi.md#updateprofile) | **PUT** /stores/me/settings/profile | Update versioned current-seller store profile settings
+*CurrentSellerStoreSettingsControllerApi* | [**updateShipping**](doc//CurrentSellerStoreSettingsControllerApi.md#updateshipping) | **PUT** /stores/me/settings/shipping | Update versioned current-seller store shipping settings
+*CurrentSellerStorefrontHomeControllerApi* | [**disable**](doc//CurrentSellerStorefrontHomeControllerApi.md#disable) | **PUT** /stores/me/storefront-home/disablement | Disable a versioned current-seller published storefront home
+*CurrentSellerStorefrontHomeControllerApi* | [**getCurrent2**](doc//CurrentSellerStorefrontHomeControllerApi.md#getcurrent2) | **GET** /stores/me/storefront-home | Read identity-minimized current-seller storefront home state
+*CurrentSellerStorefrontHomeControllerApi* | [**getOperation5**](doc//CurrentSellerStorefrontHomeControllerApi.md#getoperation5) | **GET** /stores/me/storefront-home/operations/{operationId} | Read one durable current-seller storefront operation outcome
+*CurrentSellerStorefrontHomeControllerApi* | [**saveDraft1**](doc//CurrentSellerStorefrontHomeControllerApi.md#savedraft1) | **PUT** /stores/me/storefront-home/draft | Save a versioned current-seller storefront draft
+*CurrentSellerStorefrontHomeControllerApi* | [**submitReview**](doc//CurrentSellerStorefrontHomeControllerApi.md#submitreview) | **PUT** /stores/me/storefront-home/review-submission | Submit a versioned current-seller storefront draft for review
+*CurrentStakingV2ControllerApi* | [**apply**](doc//CurrentStakingV2ControllerApi.md#apply) | **PUT** /wallet/me/v2/staking/applications/{operationId} | Apply for current-account staking with exact replay and receipt recovery
+*CurrentStakingV2ControllerApi* | [**operation1**](doc//CurrentStakingV2ControllerApi.md#operation1) | **GET** /wallet/me/v2/staking/operations/{operationId} | Read one owned durable staking operation receipt
+*CurrentStakingV2ControllerApi* | [**state2**](doc//CurrentStakingV2ControllerApi.md#state2) | **GET** /wallet/me/v2/staking/state | Read current-account staking policy, balance and active position
+*CurrentStakingV2ControllerApi* | [**unfreeze**](doc//CurrentStakingV2ControllerApi.md#unfreeze) | **PUT** /wallet/me/v2/staking/unfreezes/{operationId} | Unfreeze one owned staking principal with exact replay and receipt recovery
+*CurrentUserAvatarControllerApi* | [**getOperation**](doc//CurrentUserAvatarControllerApi.md#getoperation) | **GET** /users/me/avatar/operations/{operationId} | Read one current-user avatar operation receipt
+*CurrentUserAvatarControllerApi* | [**getState**](doc//CurrentUserAvatarControllerApi.md#getstate) | **GET** /users/me/avatar | Read the current user's revisioned avatar state
+*CurrentUserAvatarControllerApi* | [**replace**](doc//CurrentUserAvatarControllerApi.md#replace) | **PUT** /users/me/avatar/operations/{operationId} | Normalize, crop and atomically replace the current user's avatar
+*CurrentUserGameAccessWebV2ControllerApi* | [**getOperation3**](doc//CurrentUserGameAccessWebV2ControllerApi.md#getoperation3) | **GET** /game-access/products/{productId}/web-v2/operations/{operationId} | Read one owned V2 game-access activation receipt
+*CurrentUserGameAccessWebV2ControllerApi* | [**getState1**](doc//CurrentUserGameAccessWebV2ControllerApi.md#getstate1) | **GET** /game-access/products/{productId}/web-v2 | Read the current user's V2 refundable game-access state
+*CurrentUserGameAccessWebV2ControllerApi* | [**purchase**](doc//CurrentUserGameAccessWebV2ControllerApi.md#purchase) | **PUT** /game-access/products/{productId}/web-v2/operations/{operationId} | Activate refundable game access once for the mapped product
+*CurrentUserGameAccessWebV2ControllerApi* | [**startLaunch**](doc//CurrentUserGameAccessWebV2ControllerApi.md#startlaunch) | **POST** /game-access/products/{productId}/web-v2/sessions/{clientSessionId} | Issue one short-lived Telegram handoff for the mapped game product
+*CustomerSupportWorkbenchV2ControllerApi* | [**close1**](doc//CustomerSupportWorkbenchV2ControllerApi.md#close1) | **POST** /support/workbench/v2/close | Close or safely replay Telegram operator workbench takeover
+*CustomerSupportWorkbenchV2ControllerApi* | [**open**](doc//CustomerSupportWorkbenchV2ControllerApi.md#open) | **POST** /support/workbench/v2/open | Open or safely replay Telegram operator workbench takeover
+*CustomerSupportWorkbenchV2ControllerApi* | [**operation**](doc//CustomerSupportWorkbenchV2ControllerApi.md#operation) | **POST** /support/workbench/v2/operations/{operationId} | Read one durable Telegram operator workbench outcome
+*CustomerSupportWorkbenchV2ControllerApi* | [**reply**](doc//CustomerSupportWorkbenchV2ControllerApi.md#reply) | **POST** /support/workbench/v2/reply | Send or safely replay one Telegram operator support reply
+*CustomerSupportWorkbenchV2ControllerApi* | [**state**](doc//CustomerSupportWorkbenchV2ControllerApi.md#state) | **POST** /support/workbench/v2/state | Read identity-minimized Telegram operator support state
 *DeliveryApi* | [**acceptOrder**](doc//DeliveryApi.md#acceptorder) | **POST** /delivery/accept | 配送員接單
 *DeliveryApi* | [**currentStatus**](doc//DeliveryApi.md#currentstatus) | **GET** /delivery/status | 獲取當前配送狀態
 *DeliveryApi* | [**getAvailableOrders**](doc//DeliveryApi.md#getavailableorders) | **GET** /delivery/available-orders | 獲取可接訂單列表
+*DeliveryApi* | [**getCurrentDeliveryOrder**](doc//DeliveryApi.md#getcurrentdeliveryorder) | **GET** /delivery/orders/{orderId} | Get current courier-owned delivery detail
 *DeliveryApi* | [**getDeliveryHistory**](doc//DeliveryApi.md#getdeliveryhistory) | **POST** /delivery/history | 獲取歷史訂單
 *DeliveryApi* | [**getDeliveryerStats**](doc//DeliveryApi.md#getdeliveryerstats) | **GET** /delivery/stats | 獲取配送員統計數據
 *DeliveryApi* | [**registerDeliveryer**](doc//DeliveryApi.md#registerdeliveryer) | **POST** /delivery/register | 註冊配送員
@@ -383,10 +498,10 @@ Class | Method | HTTP request | Description
 *FlutterDeploymentApi* | [**deleteVersion**](doc//FlutterDeploymentApi.md#deleteversion) | **DELETE** /flutter/deployment/versions/{versionId} | 刪除 APP 版本
 *FlutterDeploymentApi* | [**getApps**](doc//FlutterDeploymentApi.md#getapps) | **POST** /flutter/deployment/apps | 獲取可下載的 APP
 *GameAccessControllerApi* | [**getMyAccess1**](doc//GameAccessControllerApi.md#getmyaccess1) | **GET** /game-access/me | 
-*GameAccessControllerApi* | [**purchase**](doc//GameAccessControllerApi.md#purchase) | **POST** /game-access/purchase | 
+*GameAccessControllerApi* | [**purchase1**](doc//GameAccessControllerApi.md#purchase1) | **POST** /game-access/purchase | 
 *GameAccessProductControllerApi* | [**getDescriptor**](doc//GameAccessProductControllerApi.md#getdescriptor) | **GET** /game-access/products/{productId} | Get a server-owned refundable game access descriptor
 *GameAccessProductControllerApi* | [**getMyAccess**](doc//GameAccessProductControllerApi.md#getmyaccess) | **GET** /game-access/products/{productId}/me | 
-*GameAccessProductControllerApi* | [**purchase1**](doc//GameAccessProductControllerApi.md#purchase1) | **POST** /game-access/products/{productId}/purchase | 
+*GameAccessProductControllerApi* | [**purchase2**](doc//GameAccessProductControllerApi.md#purchase2) | **POST** /game-access/products/{productId}/purchase | 
 *KnowledgeApi* | [**addKnowledge**](doc//KnowledgeApi.md#addknowledge) | **POST** /admin/knowledge | 新增知識文件
 *KnowledgeApi* | [**countKnowledge**](doc//KnowledgeApi.md#countknowledge) | **GET** /admin/knowledge/count | 查詢知識庫文件數量
 *KnowledgeApi* | [**countPendingKnowledgeQuestions**](doc//KnowledgeApi.md#countpendingknowledgequestions) | **GET** /admin/knowledge/pending/count | 查詢未處理問題數量
@@ -452,10 +567,13 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**cartCheckoutPlan**](doc//MemberOrdersApi.md#cartcheckoutplan) | **POST** /orders/cart-checkout/plan | 購物車合併結帳分組計畫
 *MemberOrdersApi* | [**cartCheckoutPreview**](doc//MemberOrdersApi.md#cartcheckoutpreview) | **POST** /orders/cart-checkout/preview | 購物車合併結帳 preview
 *MemberOrdersApi* | [**cartCheckoutSubmit**](doc//MemberOrdersApi.md#cartcheckoutsubmit) | **POST** /orders/cart-checkout/submit | 提交購物車多店鋪結帳
+*MemberOrdersApi* | [**cartCheckoutSubmitResult**](doc//MemberOrdersApi.md#cartcheckoutsubmitresult) | **GET** /orders/cart-checkout/submit-result | 查回購物車結帳結果
 *MemberOrdersApi* | [**checkoutPreview**](doc//MemberOrdersApi.md#checkoutpreview) | **POST** /orders/checkout-preview | 付款前 checkout preview
 *MemberOrdersApi* | [**confirmDeliveryProof**](doc//MemberOrdersApi.md#confirmdeliveryproof) | **POST** /orders/{orderId}/delivery-proof/confirm | 買家確認交付證明
 *MemberOrdersApi* | [**confirmOrder**](doc//MemberOrdersApi.md#confirmorder) | **POST** /orders/confirm | 確認收貨
 *MemberOrdersApi* | [**confirmReturnReceived**](doc//MemberOrdersApi.md#confirmreturnreceived) | **POST** /orders/{orderId}/return/confirm-received | 確認收到退貨商品
+*MemberOrdersApi* | [**directCheckoutSubmit**](doc//MemberOrdersApi.md#directcheckoutsubmit) | **POST** /orders/direct-checkout/submit | 提交直接購買
+*MemberOrdersApi* | [**directCheckoutSubmitResult**](doc//MemberOrdersApi.md#directcheckoutsubmitresult) | **GET** /orders/direct-checkout/submit-result | 查回直接購買結果
 *MemberOrdersApi* | [**getOrderByBuyer**](doc//MemberOrdersApi.md#getorderbybuyer) | **GET** /orders/buyer/{orderId} | 獲取買家訂單詳情
 *MemberOrdersApi* | [**getOrderByDeliveryer**](doc//MemberOrdersApi.md#getorderbydeliveryer) | **POST** /orders/deliveryer/{orderId} | 獲取配送員訂單詳情
 *MemberOrdersApi* | [**getOrderBySeller**](doc//MemberOrdersApi.md#getorderbyseller) | **POST** /orders/seller/{orderId} | 獲取賣家訂單詳情
@@ -547,6 +665,7 @@ Class | Method | HTTP request | Description
 *ReviewsApi* | [**batchReplyReviews**](doc//ReviewsApi.md#batchreplyreviews) | **POST** /reviews/batch-reply | 批量回覆評價
 *ReviewsApi* | [**createReview**](doc//ReviewsApi.md#createreview) | **POST** /reviews/create | 創建評價
 *ReviewsApi* | [**deleteReview**](doc//ReviewsApi.md#deletereview) | **DELETE** /reviews/{id} | 刪除評價
+*ReviewsApi* | [**getCurrentOrderReviewSubmission**](doc//ReviewsApi.md#getcurrentorderreviewsubmission) | **GET** /reviews/me/orders/{orderId}/submission | 取得目前買家的訂單評價提交狀態
 *ReviewsApi* | [**getProductAverageRating**](doc//ReviewsApi.md#getproductaveragerating) | **GET** /reviews/product/{productId}/average-rating | 獲取商品的平均評分
 *ReviewsApi* | [**getProductReviews**](doc//ReviewsApi.md#getproductreviews) | **GET** /reviews/product/{productId} | 獲取商品的評價
 *ReviewsApi* | [**getReceivedReviews**](doc//ReviewsApi.md#getreceivedreviews) | **GET** /reviews/received | 獲取用戶收到的評價
@@ -556,12 +675,13 @@ Class | Method | HTTP request | Description
 *ReviewsApi* | [**getUserAverageRating**](doc//ReviewsApi.md#getuseraveragerating) | **GET** /reviews/user/{userId}/average-rating | 獲取用戶的平均評分
 *ReviewsApi* | [**replyToReview**](doc//ReviewsApi.md#replytoreview) | **POST** /reviews/reply | 回覆評價
 *ReviewsApi* | [**searchReviews**](doc//ReviewsApi.md#searchreviews) | **POST** /reviews/search | 搜索評價
+*ReviewsApi* | [**submitCurrentOrderReview**](doc//ReviewsApi.md#submitcurrentorderreview) | **PUT** /reviews/me/orders/{orderId}/submission | 提交目前買家的訂單評價
 *ReviewsApi* | [**updateReview**](doc//ReviewsApi.md#updatereview) | **POST** /reviews/update | 更新評價
 *SanctionBlacklistApi* | [**addSanctionBlacklistAddress**](doc//SanctionBlacklistApi.md#addsanctionblacklistaddress) | **POST** /admin/sanctions | 新增黑名單地址
 *SanctionBlacklistApi* | [**listSanctionBlacklistAddresses**](doc//SanctionBlacklistApi.md#listsanctionblacklistaddresses) | **GET** /admin/sanctions | 列出黑名單地址
 *SanctionBlacklistApi* | [**removeSanctionBlacklistAddress**](doc//SanctionBlacklistApi.md#removesanctionblacklistaddress) | **DELETE** /admin/sanctions/{id} | 移除黑名單地址
 *SellerCreatorContentControllerApi* | [**archive**](doc//SellerCreatorContentControllerApi.md#archive) | **POST** /seller/creator-contents/{contentId}/archive | 
-*SellerCreatorContentControllerApi* | [**create**](doc//SellerCreatorContentControllerApi.md#create) | **POST** /seller/creator-contents | 
+*SellerCreatorContentControllerApi* | [**create3**](doc//SellerCreatorContentControllerApi.md#create3) | **POST** /seller/creator-contents | 
 *SellerCreatorContentControllerApi* | [**listMine**](doc//SellerCreatorContentControllerApi.md#listmine) | **GET** /seller/creator-contents | 
 *SellerCreatorContentControllerApi* | [**publish**](doc//SellerCreatorContentControllerApi.md#publish) | **POST** /seller/creator-contents/{contentId}/publish | 
 *SellerCreatorContentControllerApi* | [**update**](doc//SellerCreatorContentControllerApi.md#update) | **POST** /seller/creator-contents/{contentId} | 
@@ -581,7 +701,11 @@ Class | Method | HTTP request | Description
 *SlotApi* | [**getRevenueByVersion**](doc//SlotApi.md#getrevenuebyversion) | **GET** /slot/revenue/by-version | Slot 收益統計（按賠率版本）
 *SlotApi* | [**getSymbols**](doc//SlotApi.md#getsymbols) | **GET** /slot/symbols | 取得 Symbol 目錄
 *SlotApi* | [**savePaytable**](doc//SlotApi.md#savepaytable) | **POST** /slot/paytable/{gameId} | 設定 Slot 賠率
-*SlotApi* | [**spin**](doc//SlotApi.md#spin) | **POST** /slot/spin | Spin
+*SlotApi* | [**spin1**](doc//SlotApi.md#spin1) | **POST** /slot/spin | Spin
+*SlotWebV2ControllerApi* | [**capabilities**](doc//SlotWebV2ControllerApi.md#capabilities) | **GET** /slot/games/{gameId}/web-v2/capabilities | Read fail-closed V2 slot runtime capabilities
+*SlotWebV2ControllerApi* | [**operation3**](doc//SlotWebV2ControllerApi.md#operation3) | **GET** /slot/games/{gameId}/web-v2/operations/{operationId} | Recover one owned durable slot outcome
+*SlotWebV2ControllerApi* | [**spin**](doc//SlotWebV2ControllerApi.md#spin) | **PUT** /slot/games/{gameId}/web-v2/spins/operations/{operationId} | Execute one explicitly confirmed real slot spin with exact replay
+*SlotWebV2ControllerApi* | [**state4**](doc//SlotWebV2ControllerApi.md#state4) | **GET** /slot/games/{gameId}/web-v2/state | Read the current member's identity-minimized V2 slot state
 *SseApi* | [**broadcastMessage**](doc//SseApi.md#broadcastmessage) | **POST** /sse/broadcast | 廣播消息
 *SseApi* | [**connect**](doc//SseApi.md#connect) | **GET** /sse/connect/{clientId} | 建立 SSE 連接
 *SseApi* | [**disconnect**](doc//SseApi.md#disconnect) | **DELETE** /sse/disconnect/{clientId} | 斷開 SSE 連接
@@ -603,9 +727,9 @@ Class | Method | HTTP request | Description
 *StorefrontHomeApi* | [**getAuthoringGuide**](doc//StorefrontHomeApi.md#getauthoringguide) | **GET** /stores/my-storefront-home/authoring-guide | Get current storefront home authoring rules
 *StorefrontHomeApi* | [**getMyHome**](doc//StorefrontHomeApi.md#getmyhome) | **GET** /stores/my-storefront-home | Get current seller storefront home draft/published state
 *StorefrontHomeApi* | [**getPublished**](doc//StorefrontHomeApi.md#getpublished) | **GET** /storefront/home/{sellerId} | Get published storefront home by seller id
-*StorefrontHomeApi* | [**preview**](doc//StorefrontHomeApi.md#preview) | **GET** /stores/my-storefront-home/preview | Get current seller storefront home draft for preview
+*StorefrontHomeApi* | [**preview1**](doc//StorefrontHomeApi.md#preview1) | **GET** /stores/my-storefront-home/preview | Get current seller storefront home draft for preview
 *StorefrontHomeApi* | [**saveDraft**](doc//StorefrontHomeApi.md#savedraft) | **PUT** /stores/my-storefront-home/draft | Save current seller storefront home draft HTML
-*StorefrontHomeApi* | [**submitReview**](doc//StorefrontHomeApi.md#submitreview) | **POST** /stores/my-storefront-home/submit-review | Submit current seller storefront home draft for OPS review
+*StorefrontHomeApi* | [**submitReview1**](doc//StorefrontHomeApi.md#submitreview1) | **POST** /stores/my-storefront-home/submit-review | Submit current seller storefront home draft for OPS review
 *StorefrontHomeApi* | [**validateDraft**](doc//StorefrontHomeApi.md#validatedraft) | **POST** /stores/my-storefront-home/validate | Validate current seller storefront home draft HTML
 *StoresApi* | [**createStore**](doc//StoresApi.md#createstore) | **POST** /stores/create | 創建商店
 *StoresApi* | [**getMySellerDashboardOverview**](doc//StoresApi.md#getmysellerdashboardoverview) | **GET** /stores/my-dashboard/overview | 獲取當前登入賣家的首頁工作台聚合資料
@@ -666,6 +790,7 @@ Class | Method | HTTP request | Description
 *VerificationCodeLoginApi* | [**verifyCode**](doc//VerificationCodeLoginApi.md#verifycode) | **POST** /auth/telegram-bot/verify-code | 驗證碼登入
 *WalletConnectApi* | [**getNonce**](doc//WalletConnectApi.md#getnonce) | **POST** /auth/wallet-connect/nonce | 获取 Nonce（通用）
 *WalletConnectApi* | [**login**](doc//WalletConnectApi.md#login) | **POST** /auth/wallet-connect/login | Web3 钱包登录（通用）
+*WebpushApi* | [**getCurrentDeviceSubscriptionStatus**](doc//WebpushApi.md#getcurrentdevicesubscriptionstatus) | **POST** /webpush/me/subscriptions/status | 檢查目前瀏覽器推送綁定
 *WebpushApi* | [**getHealthStatus**](doc//WebpushApi.md#gethealthstatus) | **GET** /webpush/health | 獲取服務健康狀態
 *WebpushApi* | [**getSchedulerStatus**](doc//WebpushApi.md#getschedulerstatus) | **GET** /webpush/scheduled/status | 獲取定時推送狀態
 *WebpushApi* | [**getStatistics**](doc//WebpushApi.md#getstatistics) | **GET** /webpush/statistics | 獲取推送統計信息
@@ -674,8 +799,10 @@ Class | Method | HTTP request | Description
 *WebpushApi* | [**sendNotification**](doc//WebpushApi.md#sendnotification) | **POST** /webpush/send | 發送自定義通知
 *WebpushApi* | [**sendTestNotification**](doc//WebpushApi.md#sendtestnotification) | **POST** /webpush/test | 發送測試通知
 *WebpushApi* | [**subscribe**](doc//WebpushApi.md#subscribe) | **POST** /webpush/subscribe | 註冊推送訂閱
+*WebpushApi* | [**subscribeCurrentDevice**](doc//WebpushApi.md#subscribecurrentdevice) | **POST** /webpush/me/subscriptions/subscribe | 綁定目前瀏覽器推送
 *WebpushApi* | [**triggerScheduledPush**](doc//WebpushApi.md#triggerscheduledpush) | **POST** /webpush/scheduled/trigger | 手動觸發定時推送
 *WebpushApi* | [**unsubscribe**](doc//WebpushApi.md#unsubscribe) | **POST** /webpush/unsubscribe | 取消推送訂閱
+*WebpushApi* | [**unsubscribeCurrentDevice**](doc//WebpushApi.md#unsubscribecurrentdevice) | **POST** /webpush/me/subscriptions/unsubscribe | 停用目前瀏覽器推送
 *WebrtcApi* | [**hangupCall**](doc//WebrtcApi.md#hangupcall) | **POST** /webrtc/hangup | 掛斷 WebRTC 通話
 *WebrtcApi* | [**sendAnswer**](doc//WebrtcApi.md#sendanswer) | **POST** /webrtc/answer | 發送 WebRTC Answer
 *WebrtcApi* | [**sendIceCandidate**](doc//WebrtcApi.md#sendicecandidate) | **POST** /webrtc/ice-candidate | 發送 WebRTC ICE Candidate
@@ -692,17 +819,77 @@ Class | Method | HTTP request | Description
  - [ActivitySearchParam](doc//ActivitySearchParam.md)
  - [ActivityStatDTO](doc//ActivityStatDTO.md)
  - [AddressState](doc//AddressState.md)
+ - [AdminBettingCancelRequest](doc//AdminBettingCancelRequest.md)
+ - [AdminBettingCapabilitiesResponse](doc//AdminBettingCapabilitiesResponse.md)
+ - [AdminBettingConfirmRequest](doc//AdminBettingConfirmRequest.md)
+ - [AdminBettingCreateOption](doc//AdminBettingCreateOption.md)
+ - [AdminBettingCreateRequest](doc//AdminBettingCreateRequest.md)
+ - [AdminBettingMarketDetailResponse](doc//AdminBettingMarketDetailResponse.md)
+ - [AdminBettingMarketOptionResponse](doc//AdminBettingMarketOptionResponse.md)
+ - [AdminBettingMarketPageResponse](doc//AdminBettingMarketPageResponse.md)
+ - [AdminBettingMarketSearchRequest](doc//AdminBettingMarketSearchRequest.md)
+ - [AdminBettingMarketSummaryResponse](doc//AdminBettingMarketSummaryResponse.md)
+ - [AdminBettingOperationReceiptResponse](doc//AdminBettingOperationReceiptResponse.md)
+ - [AdminBettingResolveRequest](doc//AdminBettingResolveRequest.md)
  - [AdminCreateUserParam](doc//AdminCreateUserParam.md)
  - [AdminDeliveryOperationsSummaryResponse](doc//AdminDeliveryOperationsSummaryResponse.md)
  - [AdminDeliveryerCreateParam](doc//AdminDeliveryerCreateParam.md)
  - [AdminDeliveryerReadSearchRequest](doc//AdminDeliveryerReadSearchRequest.md)
  - [AdminDeliveryerSummaryResponse](doc//AdminDeliveryerSummaryResponse.md)
+ - [AdminDemandDetailResponse](doc//AdminDemandDetailResponse.md)
+ - [AdminDemandMissingRequirementResponse](doc//AdminDemandMissingRequirementResponse.md)
+ - [AdminDemandOfferResponse](doc//AdminDemandOfferResponse.md)
+ - [AdminDemandSearchRequest](doc//AdminDemandSearchRequest.md)
+ - [AdminDemandStatusHistoryResponse](doc//AdminDemandStatusHistoryResponse.md)
+ - [AdminDemandSummaryResponse](doc//AdminDemandSummaryResponse.md)
+ - [AdminDisputeDetailResponse](doc//AdminDisputeDetailResponse.md)
+ - [AdminDisputeOrderResponse](doc//AdminDisputeOrderResponse.md)
+ - [AdminDisputeReturnResponse](doc//AdminDisputeReturnResponse.md)
+ - [AdminDisputeSearchRequest](doc//AdminDisputeSearchRequest.md)
+ - [AdminDisputeSummaryResponse](doc//AdminDisputeSummaryResponse.md)
+ - [AdminFileReadSearchRequest](doc//AdminFileReadSearchRequest.md)
+ - [AdminFileSummaryResponse](doc//AdminFileSummaryResponse.md)
+ - [AdminKnowledgeCreateRequest](doc//AdminKnowledgeCreateRequest.md)
+ - [AdminKnowledgeDeleteRequest](doc//AdminKnowledgeDeleteRequest.md)
+ - [AdminKnowledgeDocumentSummaryResponse](doc//AdminKnowledgeDocumentSummaryResponse.md)
+ - [AdminKnowledgeIgnoreRequest](doc//AdminKnowledgeIgnoreRequest.md)
+ - [AdminKnowledgeOperationReceiptResponse](doc//AdminKnowledgeOperationReceiptResponse.md)
+ - [AdminKnowledgeOverviewResponse](doc//AdminKnowledgeOverviewResponse.md)
+ - [AdminKnowledgePendingQuestionSummaryResponse](doc//AdminKnowledgePendingQuestionSummaryResponse.md)
+ - [AdminKnowledgeResolveRequest](doc//AdminKnowledgeResolveRequest.md)
+ - [AdminMemberOperationsSummaryResponse](doc//AdminMemberOperationsSummaryResponse.md)
+ - [AdminMemberPwaReadSummaryResponse](doc//AdminMemberPwaReadSummaryResponse.md)
  - [AdminMemberPwaUsageResponse](doc//AdminMemberPwaUsageResponse.md)
+ - [AdminMemberReadSearchRequest](doc//AdminMemberReadSearchRequest.md)
  - [AdminMemberResponse](doc//AdminMemberResponse.md)
+ - [AdminMemberSummaryResponse](doc//AdminMemberSummaryResponse.md)
+ - [AdminMessageBatchReceiptResponse](doc//AdminMessageBatchReceiptResponse.md)
+ - [AdminMessageBatchRequest](doc//AdminMessageBatchRequest.md)
+ - [AdminMessagingCapabilitiesResponse](doc//AdminMessagingCapabilitiesResponse.md)
+ - [AdminOrderActionReadResponse](doc//AdminOrderActionReadResponse.md)
+ - [AdminOrderDetailResponse](doc//AdminOrderDetailResponse.md)
+ - [AdminOrderFulfillmentResponse](doc//AdminOrderFulfillmentResponse.md)
+ - [AdminOrderItemResponse](doc//AdminOrderItemResponse.md)
+ - [AdminOrderNextStepResponse](doc//AdminOrderNextStepResponse.md)
+ - [AdminOrderReadSearchRequest](doc//AdminOrderReadSearchRequest.md)
+ - [AdminOrderReturnResponse](doc//AdminOrderReturnResponse.md)
+ - [AdminOrderSummaryResponse](doc//AdminOrderSummaryResponse.md)
+ - [AdminProductDetailResponse](doc//AdminProductDetailResponse.md)
+ - [AdminProductSearchRequest](doc//AdminProductSearchRequest.md)
+ - [AdminProductSummaryResponse](doc//AdminProductSummaryResponse.md)
  - [AdminResetPasswordParam](doc//AdminResetPasswordParam.md)
+ - [AdminReviewResponse](doc//AdminReviewResponse.md)
+ - [AdminReviewSearchParam](doc//AdminReviewSearchParam.md)
  - [AdminStoreCreateParam](doc//AdminStoreCreateParam.md)
+ - [AdminStoreDetailResponse](doc//AdminStoreDetailResponse.md)
+ - [AdminStoreReadSearchRequest](doc//AdminStoreReadSearchRequest.md)
  - [AdminStoreSearchParam](doc//AdminStoreSearchParam.md)
+ - [AdminStoreSummaryResponse](doc//AdminStoreSummaryResponse.md)
  - [AdminStoreUpdateParam](doc//AdminStoreUpdateParam.md)
+ - [AdminTelegramMonitorOverviewResponse](doc//AdminTelegramMonitorOverviewResponse.md)
+ - [AdminWithdrawSummaryPageResponse](doc//AdminWithdrawSummaryPageResponse.md)
+ - [AdminWithdrawSummaryResponse](doc//AdminWithdrawSummaryResponse.md)
+ - [AdminWithdrawV2SearchRequest](doc//AdminWithdrawV2SearchRequest.md)
  - [AiProductClassificationSuggestion](doc//AiProductClassificationSuggestion.md)
  - [ApiResponseCodeSupportKnowledgeCandidate](doc//ApiResponseCodeSupportKnowledgeCandidate.md)
  - [ApiResponseCodeSupportKnowledgeImportResult](doc//ApiResponseCodeSupportKnowledgeImportResult.md)
@@ -811,6 +998,106 @@ Class | Method | HTTP request | Description
  - [CreatorSubscriptionAccessResponse](doc//CreatorSubscriptionAccessResponse.md)
  - [CreatorSubscriptionEntryResponse](doc//CreatorSubscriptionEntryResponse.md)
  - [CreatorSubscriptionResponse](doc//CreatorSubscriptionResponse.md)
+ - [CurrentBettingCapabilitiesResponse](doc//CurrentBettingCapabilitiesResponse.md)
+ - [CurrentBettingMarketDetailResponse](doc//CurrentBettingMarketDetailResponse.md)
+ - [CurrentBettingMarketOptionResponse](doc//CurrentBettingMarketOptionResponse.md)
+ - [CurrentBettingMarketPageResponse](doc//CurrentBettingMarketPageResponse.md)
+ - [CurrentBettingMarketSummaryResponse](doc//CurrentBettingMarketSummaryResponse.md)
+ - [CurrentBettingOperationReceiptResponse](doc//CurrentBettingOperationReceiptResponse.md)
+ - [CurrentBettingPlaceRequest](doc//CurrentBettingPlaceRequest.md)
+ - [CurrentBettingRecordPageResponse](doc//CurrentBettingRecordPageResponse.md)
+ - [CurrentBettingRecordResponse](doc//CurrentBettingRecordResponse.md)
+ - [CurrentBuyerDisputeSubmissionRequest](doc//CurrentBuyerDisputeSubmissionRequest.md)
+ - [CurrentBuyerReturnRequestSubmissionRequest](doc//CurrentBuyerReturnRequestSubmissionRequest.md)
+ - [CurrentBuyerReturnShippingSubmissionRequest](doc//CurrentBuyerReturnShippingSubmissionRequest.md)
+ - [CurrentChatCapabilitiesResponse](doc//CurrentChatCapabilitiesResponse.md)
+ - [CurrentChatMessagePageResponse](doc//CurrentChatMessagePageResponse.md)
+ - [CurrentChatMessageResponse](doc//CurrentChatMessageResponse.md)
+ - [CurrentChatOperationReceiptResponse](doc//CurrentChatOperationReceiptResponse.md)
+ - [CurrentChatPartnerResponse](doc//CurrentChatPartnerResponse.md)
+ - [CurrentChatPreferenceRequest](doc//CurrentChatPreferenceRequest.md)
+ - [CurrentChatReadRequest](doc//CurrentChatReadRequest.md)
+ - [CurrentChatSendMessageRequest](doc//CurrentChatSendMessageRequest.md)
+ - [CurrentChatSessionDetailResponse](doc//CurrentChatSessionDetailResponse.md)
+ - [CurrentChatSessionPageResponse](doc//CurrentChatSessionPageResponse.md)
+ - [CurrentChatSessionSummaryResponse](doc//CurrentChatSessionSummaryResponse.md)
+ - [CurrentDeliveryOrderDetailResponse](doc//CurrentDeliveryOrderDetailResponse.md)
+ - [CurrentDeliveryRegistrationRequest](doc//CurrentDeliveryRegistrationRequest.md)
+ - [CurrentDeliveryRegistrationResponse](doc//CurrentDeliveryRegistrationResponse.md)
+ - [CurrentDepositV2CancelRequest](doc//CurrentDepositV2CancelRequest.md)
+ - [CurrentDepositV2CapabilitiesResponse](doc//CurrentDepositV2CapabilitiesResponse.md)
+ - [CurrentDepositV2CreateRequest](doc//CurrentDepositV2CreateRequest.md)
+ - [CurrentDepositV2OperationReceiptResponse](doc//CurrentDepositV2OperationReceiptResponse.md)
+ - [CurrentDepositV2PendingResponse](doc//CurrentDepositV2PendingResponse.md)
+ - [CurrentDepositV2StateResponse](doc//CurrentDepositV2StateResponse.md)
+ - [CurrentDevicePushSubscriptionRequest](doc//CurrentDevicePushSubscriptionRequest.md)
+ - [CurrentDevicePushSubscriptionResponse](doc//CurrentDevicePushSubscriptionResponse.md)
+ - [CurrentFundsCapabilitiesResponse](doc//CurrentFundsCapabilitiesResponse.md)
+ - [CurrentFundsOverviewResponse](doc//CurrentFundsOverviewResponse.md)
+ - [CurrentNotificationPageResponse](doc//CurrentNotificationPageResponse.md)
+ - [CurrentNotificationResponse](doc//CurrentNotificationResponse.md)
+ - [CurrentNotificationSearchRequest](doc//CurrentNotificationSearchRequest.md)
+ - [CurrentOrderReturnWorkflowResponse](doc//CurrentOrderReturnWorkflowResponse.md)
+ - [CurrentOrderReviewSubmissionRequest](doc//CurrentOrderReviewSubmissionRequest.md)
+ - [CurrentOrderReviewSubmissionResponse](doc//CurrentOrderReviewSubmissionResponse.md)
+ - [CurrentPartnerApplicationCancelRequest](doc//CurrentPartnerApplicationCancelRequest.md)
+ - [CurrentPartnerApplicationPageResponse](doc//CurrentPartnerApplicationPageResponse.md)
+ - [CurrentPartnerApplicationSearchRequest](doc//CurrentPartnerApplicationSearchRequest.md)
+ - [CurrentPartnerApplicationSubmitRequest](doc//CurrentPartnerApplicationSubmitRequest.md)
+ - [CurrentPartnerApplicationSummaryResponse](doc//CurrentPartnerApplicationSummaryResponse.md)
+ - [CurrentPartnerCapabilitiesResponse](doc//CurrentPartnerCapabilitiesResponse.md)
+ - [CurrentPartnerGroupSummaryResponse](doc//CurrentPartnerGroupSummaryResponse.md)
+ - [CurrentPartnerInvitationApplyRequest](doc//CurrentPartnerInvitationApplyRequest.md)
+ - [CurrentPartnerInvitationPreviewRequest](doc//CurrentPartnerInvitationPreviewRequest.md)
+ - [CurrentPartnerInvitationPreviewResponse](doc//CurrentPartnerInvitationPreviewResponse.md)
+ - [CurrentPartnerLedgerPageResponse](doc//CurrentPartnerLedgerPageResponse.md)
+ - [CurrentPartnerLedgerSearchRequest](doc//CurrentPartnerLedgerSearchRequest.md)
+ - [CurrentPartnerLedgerSummaryResponse](doc//CurrentPartnerLedgerSummaryResponse.md)
+ - [CurrentPartnerOperationReceiptResponse](doc//CurrentPartnerOperationReceiptResponse.md)
+ - [CurrentPartnerOverviewResponse](doc//CurrentPartnerOverviewResponse.md)
+ - [CurrentRechargeSummaryResponse](doc//CurrentRechargeSummaryResponse.md)
+ - [CurrentSellerProductEditorReceiptResponse](doc//CurrentSellerProductEditorReceiptResponse.md)
+ - [CurrentSellerProductEditorRequest](doc//CurrentSellerProductEditorRequest.md)
+ - [CurrentSellerProductEditorResponse](doc//CurrentSellerProductEditorResponse.md)
+ - [CurrentSellerProductImageResponse](doc//CurrentSellerProductImageResponse.md)
+ - [CurrentSellerProductImportCapabilitiesResponse](doc//CurrentSellerProductImportCapabilitiesResponse.md)
+ - [CurrentSellerProductImportCommitRequest](doc//CurrentSellerProductImportCommitRequest.md)
+ - [CurrentSellerProductImportPreviewItemResponse](doc//CurrentSellerProductImportPreviewItemResponse.md)
+ - [CurrentSellerProductImportPreviewResponse](doc//CurrentSellerProductImportPreviewResponse.md)
+ - [CurrentSellerProductImportReceiptResponse](doc//CurrentSellerProductImportReceiptResponse.md)
+ - [CurrentSellerProductImportRequest](doc//CurrentSellerProductImportRequest.md)
+ - [CurrentSellerProductMediaResponse](doc//CurrentSellerProductMediaResponse.md)
+ - [CurrentSellerReturnReviewSubmissionRequest](doc//CurrentSellerReturnReviewSubmissionRequest.md)
+ - [CurrentSellerStoreRegistrationRequest](doc//CurrentSellerStoreRegistrationRequest.md)
+ - [CurrentSellerStoreRegistrationResponse](doc//CurrentSellerStoreRegistrationResponse.md)
+ - [CurrentSellerStoreSettingsAvailabilityRequest](doc//CurrentSellerStoreSettingsAvailabilityRequest.md)
+ - [CurrentSellerStoreSettingsOperationReceiptResponse](doc//CurrentSellerStoreSettingsOperationReceiptResponse.md)
+ - [CurrentSellerStoreSettingsProfileRequest](doc//CurrentSellerStoreSettingsProfileRequest.md)
+ - [CurrentSellerStoreSettingsResponse](doc//CurrentSellerStoreSettingsResponse.md)
+ - [CurrentSellerStoreSettingsShippingRequest](doc//CurrentSellerStoreSettingsShippingRequest.md)
+ - [CurrentSellerStorefrontDraftRequest](doc//CurrentSellerStorefrontDraftRequest.md)
+ - [CurrentSellerStorefrontHomeResponse](doc//CurrentSellerStorefrontHomeResponse.md)
+ - [CurrentSellerStorefrontOperationReceiptResponse](doc//CurrentSellerStorefrontOperationReceiptResponse.md)
+ - [CurrentSellerStorefrontTransitionRequest](doc//CurrentSellerStorefrontTransitionRequest.md)
+ - [CurrentStakingSummaryResponse](doc//CurrentStakingSummaryResponse.md)
+ - [CurrentStakingV2ApplyRequest](doc//CurrentStakingV2ApplyRequest.md)
+ - [CurrentStakingV2CapabilitiesResponse](doc//CurrentStakingV2CapabilitiesResponse.md)
+ - [CurrentStakingV2OperationReceiptResponse](doc//CurrentStakingV2OperationReceiptResponse.md)
+ - [CurrentStakingV2PolicyResponse](doc//CurrentStakingV2PolicyResponse.md)
+ - [CurrentStakingV2PositionResponse](doc//CurrentStakingV2PositionResponse.md)
+ - [CurrentStakingV2StateResponse](doc//CurrentStakingV2StateResponse.md)
+ - [CurrentStakingV2UnfreezeRequest](doc//CurrentStakingV2UnfreezeRequest.md)
+ - [CurrentUserAvatarOperationReceiptResponse](doc//CurrentUserAvatarOperationReceiptResponse.md)
+ - [CurrentUserAvatarStateResponse](doc//CurrentUserAvatarStateResponse.md)
+ - [CurrentUserGameAccessWebV2LaunchResponse](doc//CurrentUserGameAccessWebV2LaunchResponse.md)
+ - [CurrentUserGameAccessWebV2OperationReceiptResponse](doc//CurrentUserGameAccessWebV2OperationReceiptResponse.md)
+ - [CurrentUserGameAccessWebV2StateResponse](doc//CurrentUserGameAccessWebV2StateResponse.md)
+ - [CurrentWithdrawSummaryResponse](doc//CurrentWithdrawSummaryResponse.md)
+ - [CurrentWithdrawalV2CapabilitiesResponse](doc//CurrentWithdrawalV2CapabilitiesResponse.md)
+ - [CurrentWithdrawalV2OngoingResponse](doc//CurrentWithdrawalV2OngoingResponse.md)
+ - [CurrentWithdrawalV2OperationReceiptResponse](doc//CurrentWithdrawalV2OperationReceiptResponse.md)
+ - [CurrentWithdrawalV2Request](doc//CurrentWithdrawalV2Request.md)
+ - [CurrentWithdrawalV2StateResponse](doc//CurrentWithdrawalV2StateResponse.md)
  - [CustomerIssue](doc//CustomerIssue.md)
  - [CustomerStats](doc//CustomerStats.md)
  - [DailyRow](doc//DailyRow.md)
@@ -843,11 +1130,14 @@ Class | Method | HTTP request | Description
  - [DemandStatusUpdateRequest](doc//DemandStatusUpdateRequest.md)
  - [DeviceInfo](doc//DeviceInfo.md)
  - [DimensionBreakdown](doc//DimensionBreakdown.md)
+ - [DirectCheckoutSubmitParam](doc//DirectCheckoutSubmitParam.md)
+ - [DirectCheckoutSubmitResponse](doc//DirectCheckoutSubmitResponse.md)
  - [Dispute](doc//Dispute.md)
  - [DisputeAiAnalysisResponse](doc//DisputeAiAnalysisResponse.md)
  - [DisputeAppealParam](doc//DisputeAppealParam.md)
  - [DisputeCreateParam](doc//DisputeCreateParam.md)
  - [DisputeDetailParam](doc//DisputeDetailParam.md)
+ - [DisputeInfo](doc//DisputeInfo.md)
  - [DisputeJudgmentParam](doc//DisputeJudgmentParam.md)
  - [DisputeQueryResult](doc//DisputeQueryResult.md)
  - [DisputeReplyParam](doc//DisputeReplyParam.md)
@@ -946,6 +1236,7 @@ Class | Method | HTTP request | Description
  - [NaturalSearchRequest](doc//NaturalSearchRequest.md)
  - [NaturalSearchResponse](doc//NaturalSearchResponse.md)
  - [NextInterestEstimateDTO](doc//NextInterestEstimateDTO.md)
+ - [NextStep](doc//NextStep.md)
  - [NotificationCreateParam](doc//NotificationCreateParam.md)
  - [NotificationResponseDTO](doc//NotificationResponseDTO.md)
  - [NotificationSearchParam](doc//NotificationSearchParam.md)
@@ -963,6 +1254,7 @@ Class | Method | HTTP request | Description
  - [OrderConfirmParam](doc//OrderConfirmParam.md)
  - [OrderDeliveryProof](doc//OrderDeliveryProof.md)
  - [OrderItem](doc//OrderItem.md)
+ - [OrderMutationReceiptResponse](doc//OrderMutationReceiptResponse.md)
  - [OrderNextStep](doc//OrderNextStep.md)
  - [OrderQueryResult](doc//OrderQueryResult.md)
  - [OrderReturnRecord](doc//OrderReturnRecord.md)
@@ -973,7 +1265,15 @@ Class | Method | HTTP request | Description
  - [OrderSumbitParam](doc//OrderSumbitParam.md)
  - [PageActivityDTO](doc//PageActivityDTO.md)
  - [PageAdminDeliveryerSummaryResponse](doc//PageAdminDeliveryerSummaryResponse.md)
+ - [PageAdminDemandSummaryResponse](doc//PageAdminDemandSummaryResponse.md)
+ - [PageAdminDisputeSummaryResponse](doc//PageAdminDisputeSummaryResponse.md)
+ - [PageAdminFileSummaryResponse](doc//PageAdminFileSummaryResponse.md)
  - [PageAdminMemberResponse](doc//PageAdminMemberResponse.md)
+ - [PageAdminMemberSummaryResponse](doc//PageAdminMemberSummaryResponse.md)
+ - [PageAdminOrderSummaryResponse](doc//PageAdminOrderSummaryResponse.md)
+ - [PageAdminProductSummaryResponse](doc//PageAdminProductSummaryResponse.md)
+ - [PageAdminReviewResponse](doc//PageAdminReviewResponse.md)
+ - [PageAdminStoreSummaryResponse](doc//PageAdminStoreSummaryResponse.md)
  - [PageAutoReplyConfig](doc//PageAutoReplyConfig.md)
  - [PageBetResponse](doc//PageBetResponse.md)
  - [PageCartItem](doc//PageCartItem.md)
@@ -1129,6 +1429,9 @@ Class | Method | HTTP request | Description
  - [ReplyIssueParam](doc//ReplyIssueParam.md)
  - [ResolveMarketRequest](doc//ResolveMarketRequest.md)
  - [ResolveRequest](doc//ResolveRequest.md)
+ - [ReturnAddressOption](doc//ReturnAddressOption.md)
+ - [ReturnDestination](doc//ReturnDestination.md)
+ - [ReturnInfo](doc//ReturnInfo.md)
  - [ReturnProcessParam](doc//ReturnProcessParam.md)
  - [ReturnRequestParam](doc//ReturnRequestParam.md)
  - [ReturnShippingParam](doc//ReturnShippingParam.md)
@@ -1176,6 +1479,10 @@ Class | Method | HTTP request | Description
  - [SlotSpinRequest](doc//SlotSpinRequest.md)
  - [SlotSpinResponse](doc//SlotSpinResponse.md)
  - [SlotSymbolInfo](doc//SlotSymbolInfo.md)
+ - [SlotWebV2CapabilitiesResponse](doc//SlotWebV2CapabilitiesResponse.md)
+ - [SlotWebV2OperationReceiptResponse](doc//SlotWebV2OperationReceiptResponse.md)
+ - [SlotWebV2SpinRequest](doc//SlotWebV2SpinRequest.md)
+ - [SlotWebV2StateResponse](doc//SlotWebV2StateResponse.md)
  - [Snippets](doc//Snippets.md)
  - [SortObject](doc//SortObject.md)
  - [Staking](doc//Staking.md)
@@ -1203,6 +1510,12 @@ Class | Method | HTTP request | Description
  - [SubmittedOrder](doc//SubmittedOrder.md)
  - [SuggestionActionParam](doc//SuggestionActionParam.md)
  - [Summary](doc//Summary.md)
+ - [SupportWorkbenchAuthRequest](doc//SupportWorkbenchAuthRequest.md)
+ - [SupportWorkbenchMessageResponse](doc//SupportWorkbenchMessageResponse.md)
+ - [SupportWorkbenchMutationRequest](doc//SupportWorkbenchMutationRequest.md)
+ - [SupportWorkbenchOperationReceiptResponse](doc//SupportWorkbenchOperationReceiptResponse.md)
+ - [SupportWorkbenchReplyRequest](doc//SupportWorkbenchReplyRequest.md)
+ - [SupportWorkbenchStateResponse](doc//SupportWorkbenchStateResponse.md)
  - [TaiwanPostalArea](doc//TaiwanPostalArea.md)
  - [TasksBlock](doc//TasksBlock.md)
  - [TaxonomyDryRunRequest](doc//TaxonomyDryRunRequest.md)
@@ -1239,6 +1552,8 @@ Class | Method | HTTP request | Description
  - [UsdtLandingEventResponse](doc//UsdtLandingEventResponse.md)
  - [User](doc//User.md)
  - [UserAddress](doc//UserAddress.md)
+ - [UserAddressCreateRequest](doc//UserAddressCreateRequest.md)
+ - [UserAddressUpdateRequest](doc//UserAddressUpdateRequest.md)
  - [UserInfo](doc//UserInfo.md)
  - [UserOrderSearchParam](doc//UserOrderSearchParam.md)
  - [UserPostStatistics](doc//UserPostStatistics.md)

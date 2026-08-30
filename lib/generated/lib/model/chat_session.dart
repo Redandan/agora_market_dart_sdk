@@ -14,6 +14,7 @@ class ChatSession {
   /// Returns a new [ChatSession] instance.
   ChatSession({
     required this.id,
+    this.publicId,
     required this.userId,
     required this.partnerId,
     required this.userUnreadCount,
@@ -36,6 +37,15 @@ class ChatSession {
 
   /// 會話唯一標識ID（主鍵）
   String id;
+
+  /// Opaque V2 session reference
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? publicId;
 
   /// 用戶ID
   int userId;
@@ -160,6 +170,7 @@ class ChatSession {
   @override
   bool operator ==(Object other) => identical(this, other) || other is ChatSession &&
     other.id == id &&
+    other.publicId == publicId &&
     other.userId == userId &&
     other.partnerId == partnerId &&
     other.userUnreadCount == userUnreadCount &&
@@ -183,6 +194,7 @@ class ChatSession {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id.hashCode) +
+    (publicId == null ? 0 : publicId!.hashCode) +
     (userId.hashCode) +
     (partnerId.hashCode) +
     (userUnreadCount.hashCode) +
@@ -203,11 +215,16 @@ class ChatSession {
     (currentUser == null ? 0 : currentUser!.hashCode);
 
   @override
-  String toString() => 'ChatSession[id=$id, userId=$userId, partnerId=$partnerId, userUnreadCount=$userUnreadCount, partnerUnreadCount=$partnerUnreadCount, latestMessageId=$latestMessageId, latestMessageTime=$latestMessageTime, pinned=$pinned, partnerName=$partnerName, partnerAvatar=$partnerAvatar, latestMessageContent=$latestMessageContent, userReadMessageId=$userReadMessageId, partnerReadMessageId=$partnerReadMessageId, userReadAt=$userReadAt, partnerReadAt=$partnerReadAt, createdAt=$createdAt, updatedAt=$updatedAt, messages=$messages, currentUser=$currentUser]';
+  String toString() => 'ChatSession[id=$id, publicId=$publicId, userId=$userId, partnerId=$partnerId, userUnreadCount=$userUnreadCount, partnerUnreadCount=$partnerUnreadCount, latestMessageId=$latestMessageId, latestMessageTime=$latestMessageTime, pinned=$pinned, partnerName=$partnerName, partnerAvatar=$partnerAvatar, latestMessageContent=$latestMessageContent, userReadMessageId=$userReadMessageId, partnerReadMessageId=$partnerReadMessageId, userReadAt=$userReadAt, partnerReadAt=$partnerReadAt, createdAt=$createdAt, updatedAt=$updatedAt, messages=$messages, currentUser=$currentUser]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
+    if (this.publicId != null) {
+      json[r'publicId'] = this.publicId;
+    } else {
+      json[r'publicId'] = null;
+    }
       json[r'userId'] = this.userId;
       json[r'partnerId'] = this.partnerId;
       json[r'userUnreadCount'] = this.userUnreadCount;
@@ -293,6 +310,7 @@ class ChatSession {
 
       return ChatSession(
         id: mapValueOfType<String>(json, r'id')!,
+        publicId: mapValueOfType<String>(json, r'publicId'),
         userId: mapValueOfType<int>(json, r'userId')!,
         partnerId: mapValueOfType<int>(json, r'partnerId')!,
         userUnreadCount: mapValueOfType<int>(json, r'userUnreadCount')!,

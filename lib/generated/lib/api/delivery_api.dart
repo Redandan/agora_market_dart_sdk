@@ -171,6 +171,63 @@ class DeliveryApi {
     return null;
   }
 
+  /// Get current courier-owned delivery detail
+  ///
+  /// Returns operational contact fields only while the owned delivery is active; never returns verification code, coordinates, or courier identity
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  Future<Response> getCurrentDeliveryOrderWithHttpInfo(String orderId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/delivery/orders/{orderId}'
+      .replaceAll('{orderId}', orderId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Get current courier-owned delivery detail
+  ///
+  /// Returns operational contact fields only while the owned delivery is active; never returns verification code, coordinates, or courier identity
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  Future<CurrentDeliveryOrderDetailResponse?> getCurrentDeliveryOrder(String orderId,) async {
+    final response = await getCurrentDeliveryOrderWithHttpInfo(orderId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CurrentDeliveryOrderDetailResponse.fromJson(value)) as CurrentDeliveryOrderDetailResponse;
+    
+    }
+    return null;
+  }
+
   /// 獲取歷史訂單
   ///
   /// 獲取當前配送員的歷史配送訂單

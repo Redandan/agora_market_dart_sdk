@@ -15,6 +15,8 @@ class UserInfo {
   UserInfo({
     this.id,
     this.username,
+    this.name,
+    this.phone,
     this.email,
     this.emailVerified,
     this.role,
@@ -58,6 +60,24 @@ class UserInfo {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? username;
+
+  /// 姓名
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? name;
+
+  /// 電話號碼
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? phone;
 
   /// 郵箱
   ///
@@ -267,6 +287,8 @@ class UserInfo {
   bool operator ==(Object other) => identical(this, other) || other is UserInfo &&
     other.id == id &&
     other.username == username &&
+    other.name == name &&
+    other.phone == phone &&
     other.email == email &&
     other.emailVerified == emailVerified &&
     other.role == role &&
@@ -297,6 +319,8 @@ class UserInfo {
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
     (username == null ? 0 : username!.hashCode) +
+    (name == null ? 0 : name!.hashCode) +
+    (phone == null ? 0 : phone!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
     (emailVerified == null ? 0 : emailVerified!.hashCode) +
     (role == null ? 0 : role!.hashCode) +
@@ -323,7 +347,7 @@ class UserInfo {
     (tgPartnerSummary == null ? 0 : tgPartnerSummary!.hashCode);
 
   @override
-  String toString() => 'UserInfo[id=$id, username=$username, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, cartItemCount=$cartItemCount, stackingBalance=$stackingBalance, totalAssets=$totalAssets, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar, balanceConversions=$balanceConversions, sellerMaintenance=$sellerMaintenance, deliveryMaintenance=$deliveryMaintenance, unreadMessageCount=$unreadMessageCount, defaultHomePage=$defaultHomePage, recoveryAdvisory=$recoveryAdvisory, passkeySecuritySummary=$passkeySecuritySummary, marketplaceUi=$marketplaceUi, walletSafetySummary=$walletSafetySummary, tgPartnerSummary=$tgPartnerSummary]';
+  String toString() => 'UserInfo[id=$id, username=$username, name=$name, phone=$phone, email=$email, emailVerified=$emailVerified, role=$role, balance=$balance, cartItemCount=$cartItemCount, stackingBalance=$stackingBalance, totalAssets=$totalAssets, freezeBalance=$freezeBalance, enabled=$enabled, queryTime=$queryTime, storeName=$storeName, ambassadorName=$ambassadorName, displayDeliveryerName=$displayDeliveryerName, avatar=$avatar, balanceConversions=$balanceConversions, sellerMaintenance=$sellerMaintenance, deliveryMaintenance=$deliveryMaintenance, unreadMessageCount=$unreadMessageCount, defaultHomePage=$defaultHomePage, recoveryAdvisory=$recoveryAdvisory, passkeySecuritySummary=$passkeySecuritySummary, marketplaceUi=$marketplaceUi, walletSafetySummary=$walletSafetySummary, tgPartnerSummary=$tgPartnerSummary]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -336,6 +360,16 @@ class UserInfo {
       json[r'username'] = this.username;
     } else {
       json[r'username'] = null;
+    }
+    if (this.name != null) {
+      json[r'name'] = this.name;
+    } else {
+      json[r'name'] = null;
+    }
+    if (this.phone != null) {
+      json[r'phone'] = this.phone;
+    } else {
+      json[r'phone'] = null;
     }
     if (this.email != null) {
       json[r'email'] = this.email;
@@ -477,6 +511,8 @@ class UserInfo {
       return UserInfo(
         id: mapValueOfType<int>(json, r'id'),
         username: mapValueOfType<String>(json, r'username'),
+        name: mapValueOfType<String>(json, r'name'),
+        phone: mapValueOfType<String>(json, r'phone'),
         email: mapValueOfType<String>(json, r'email'),
         emailVerified: mapValueOfType<bool>(json, r'emailVerified'),
         role: mapValueOfType<String>(json, r'role'),

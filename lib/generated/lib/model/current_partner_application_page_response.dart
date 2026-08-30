@@ -1,0 +1,157 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
+
+class CurrentPartnerApplicationPageResponse {
+  /// Returns a new [CurrentPartnerApplicationPageResponse] instance.
+  CurrentPartnerApplicationPageResponse({
+    this.items = const [],
+    required this.page,
+    required this.pageSize,
+    required this.totalItems,
+    required this.totalPages,
+    required this.hasPrevious,
+    required this.hasNext,
+  });
+
+  List<CurrentPartnerApplicationSummaryResponse> items;
+
+  int page;
+
+  int pageSize;
+
+  int totalItems;
+
+  int totalPages;
+
+  bool hasPrevious;
+
+  bool hasNext;
+
+  @override
+  bool operator ==(Object other) => identical(this, other) || other is CurrentPartnerApplicationPageResponse &&
+    _deepEquality.equals(other.items, items) &&
+    other.page == page &&
+    other.pageSize == pageSize &&
+    other.totalItems == totalItems &&
+    other.totalPages == totalPages &&
+    other.hasPrevious == hasPrevious &&
+    other.hasNext == hasNext;
+
+  @override
+  int get hashCode =>
+    // ignore: unnecessary_parenthesis
+    (items.hashCode) +
+    (page.hashCode) +
+    (pageSize.hashCode) +
+    (totalItems.hashCode) +
+    (totalPages.hashCode) +
+    (hasPrevious.hashCode) +
+    (hasNext.hashCode);
+
+  @override
+  String toString() => 'CurrentPartnerApplicationPageResponse[items=$items, page=$page, pageSize=$pageSize, totalItems=$totalItems, totalPages=$totalPages, hasPrevious=$hasPrevious, hasNext=$hasNext]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+      json[r'items'] = this.items.map((e) => e.toJson()).toList();
+      json[r'page'] = this.page;
+      json[r'pageSize'] = this.pageSize;
+      json[r'totalItems'] = this.totalItems;
+      json[r'totalPages'] = this.totalPages;
+      json[r'hasPrevious'] = this.hasPrevious;
+      json[r'hasNext'] = this.hasNext;
+    return json;
+  }
+
+  /// Returns a new [CurrentPartnerApplicationPageResponse] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static CurrentPartnerApplicationPageResponse? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key), 'Required key "CurrentPartnerApplicationPageResponse[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "CurrentPartnerApplicationPageResponse[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return CurrentPartnerApplicationPageResponse(
+        items: CurrentPartnerApplicationSummaryResponse.listFromJson(json[r'items']),
+        page: mapValueOfType<int>(json, r'page')!,
+        pageSize: mapValueOfType<int>(json, r'pageSize')!,
+        totalItems: mapValueOfType<int>(json, r'totalItems')!,
+        totalPages: mapValueOfType<int>(json, r'totalPages')!,
+        hasPrevious: mapValueOfType<bool>(json, r'hasPrevious')!,
+        hasNext: mapValueOfType<bool>(json, r'hasNext')!,
+      );
+    }
+    return null;
+  }
+
+  static List<CurrentPartnerApplicationPageResponse> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CurrentPartnerApplicationPageResponse>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CurrentPartnerApplicationPageResponse.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+
+  static Map<String, CurrentPartnerApplicationPageResponse> mapFromJson(dynamic json) {
+    final map = <String, CurrentPartnerApplicationPageResponse>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = CurrentPartnerApplicationPageResponse.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
+  }
+
+  // maps a json object with a list of CurrentPartnerApplicationPageResponse-objects as value to a dart map
+  static Map<String, List<CurrentPartnerApplicationPageResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<CurrentPartnerApplicationPageResponse>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = CurrentPartnerApplicationPageResponse.listFromJson(entry.value, growable: growable,);
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'items',
+    'page',
+    'pageSize',
+    'totalItems',
+    'totalPages',
+    'hasPrevious',
+    'hasNext',
+  };
+}
+

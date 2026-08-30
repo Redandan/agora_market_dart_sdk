@@ -198,6 +198,54 @@ class AdminMembersApi {
     return null;
   }
 
+  /// 會員安全全域統計
+  ///
+  /// 返回真實全域與近 30 天統計，不使用更新時間推測線上狀態
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getMemberSummaryStatisticsWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/members/summary/statistics';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 會員安全全域統計
+  ///
+  /// 返回真實全域與近 30 天統計，不使用更新時間推測線上狀態
+  Future<AdminMemberOperationsSummaryResponse?> getMemberSummaryStatistics() async {
+    final response = await getMemberSummaryStatisticsWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AdminMemberOperationsSummaryResponse.fromJson(value)) as AdminMemberOperationsSummaryResponse;
+    
+    }
+    return null;
+  }
+
   /// 管理員重設會員密碼
   ///
   /// 管理員可以重設指定會員的密碼
@@ -251,6 +299,62 @@ class AdminMembersApi {
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+  }
+
+  /// 搜索會員安全摘要
+  ///
+  /// 固定分頁且不返回認證、裝置、網路、歸因、電話或備註資料
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [AdminMemberReadSearchRequest] adminMemberReadSearchRequest:
+  Future<Response> searchMemberSummariesWithHttpInfo({ AdminMemberReadSearchRequest? adminMemberReadSearchRequest, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/members/summary/search';
+
+    // ignore: prefer_final_locals
+    Object? postBody = adminMemberReadSearchRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 搜索會員安全摘要
+  ///
+  /// 固定分頁且不返回認證、裝置、網路、歸因、電話或備註資料
+  ///
+  /// Parameters:
+  ///
+  /// * [AdminMemberReadSearchRequest] adminMemberReadSearchRequest:
+  Future<PageAdminMemberSummaryResponse?> searchMemberSummaries({ AdminMemberReadSearchRequest? adminMemberReadSearchRequest, }) async {
+    final response = await searchMemberSummariesWithHttpInfo( adminMemberReadSearchRequest: adminMemberReadSearchRequest, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageAdminMemberSummaryResponse.fromJson(value)) as PageAdminMemberSummaryResponse;
+    
+    }
+    return null;
   }
 
   /// 搜索會員

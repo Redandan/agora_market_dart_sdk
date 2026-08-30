@@ -207,6 +207,119 @@ class AdminOrdersApi {
     return null;
   }
 
+  /// 查看訂單安全摘要詳情
+  ///
+  /// 不返回會員、地址、電話、座標、驗證碼、證據、代購資料或 mutation 端點
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  Future<Response> getOrderSummaryWithHttpInfo(String orderId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/orders/{orderId}/summary'
+      .replaceAll('{orderId}', orderId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查看訂單安全摘要詳情
+  ///
+  /// 不返回會員、地址、電話、座標、驗證碼、證據、代購資料或 mutation 端點
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  Future<AdminOrderDetailResponse?> getOrderSummary(String orderId,) async {
+    final response = await getOrderSummaryWithHttpInfo(orderId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AdminOrderDetailResponse.fromJson(value)) as AdminOrderDetailResponse;
+    
+    }
+    return null;
+  }
+
+  /// 搜索訂單安全摘要
+  ///
+  /// 固定分頁，身份篩選只進入請求且不返回會員、聯絡或位置資料
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [AdminOrderReadSearchRequest] adminOrderReadSearchRequest:
+  Future<Response> searchOrderSummariesWithHttpInfo({ AdminOrderReadSearchRequest? adminOrderReadSearchRequest, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/orders/summary/search';
+
+    // ignore: prefer_final_locals
+    Object? postBody = adminOrderReadSearchRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 搜索訂單安全摘要
+  ///
+  /// 固定分頁，身份篩選只進入請求且不返回會員、聯絡或位置資料
+  ///
+  /// Parameters:
+  ///
+  /// * [AdminOrderReadSearchRequest] adminOrderReadSearchRequest:
+  Future<PageAdminOrderSummaryResponse?> searchOrderSummaries({ AdminOrderReadSearchRequest? adminOrderReadSearchRequest, }) async {
+    final response = await searchOrderSummariesWithHttpInfo( adminOrderReadSearchRequest: adminOrderReadSearchRequest, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageAdminOrderSummaryResponse.fromJson(value)) as PageAdminOrderSummaryResponse;
+    
+    }
+    return null;
+  }
+
   /// 搜索訂單
   ///
   /// 管理員可根據多個條件搜索訂單

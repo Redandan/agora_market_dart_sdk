@@ -34,6 +34,10 @@ class FileRecord {
     this.optimizedHeight,
     this.optimizedSize,
     this.processingStatus,
+    this.productEditorStagedUntil,
+    this.productEditorAttachedProductId,
+    this.avatarStagedUntil,
+    this.avatarAttachedUserId,
     required this.uploadTime,
     required this.lastUpdated,
     this.archive,
@@ -183,6 +187,42 @@ class FileRecord {
   ///
   String? processingStatus;
 
+  /// Expiry for an unattached V2 product-editor upload
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? productEditorStagedUntil;
+
+  /// Product currently owning a V2 product-editor upload
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? productEditorAttachedProductId;
+
+  /// Expiry for an unattached or replaced V2 avatar object
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? avatarStagedUntil;
+
+  /// Current user owning a V2 avatar object
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? avatarAttachedUserId;
+
   /// 上傳時間
   DateTime uploadTime;
 
@@ -244,6 +284,10 @@ class FileRecord {
     other.optimizedHeight == optimizedHeight &&
     other.optimizedSize == optimizedSize &&
     other.processingStatus == processingStatus &&
+    other.productEditorStagedUntil == productEditorStagedUntil &&
+    other.productEditorAttachedProductId == productEditorAttachedProductId &&
+    other.avatarStagedUntil == avatarStagedUntil &&
+    other.avatarAttachedUserId == avatarAttachedUserId &&
     other.uploadTime == uploadTime &&
     other.lastUpdated == lastUpdated &&
     other.archive == archive &&
@@ -275,6 +319,10 @@ class FileRecord {
     (optimizedHeight == null ? 0 : optimizedHeight!.hashCode) +
     (optimizedSize == null ? 0 : optimizedSize!.hashCode) +
     (processingStatus == null ? 0 : processingStatus!.hashCode) +
+    (productEditorStagedUntil == null ? 0 : productEditorStagedUntil!.hashCode) +
+    (productEditorAttachedProductId == null ? 0 : productEditorAttachedProductId!.hashCode) +
+    (avatarStagedUntil == null ? 0 : avatarStagedUntil!.hashCode) +
+    (avatarAttachedUserId == null ? 0 : avatarAttachedUserId!.hashCode) +
     (uploadTime.hashCode) +
     (lastUpdated.hashCode) +
     (archive == null ? 0 : archive!.hashCode) +
@@ -283,7 +331,7 @@ class FileRecord {
     (fileSizeFormatted == null ? 0 : fileSizeFormatted!.hashCode);
 
   @override
-  String toString() => 'FileRecord[id=$id, originalFilename=$originalFilename, objectName=$objectName, fileSize=$fileSize, contentType=$contentType, fileExtension=$fileExtension, fileUrl=$fileUrl, businessType=$businessType, uploaderId=$uploaderId, uploaderName=$uploaderName, isPublic=$isPublic, description=$description, tags=$tags, fileHash=$fileHash, mediaType=$mediaType, originalWidth=$originalWidth, originalHeight=$originalHeight, optimizedWidth=$optimizedWidth, optimizedHeight=$optimizedHeight, optimizedSize=$optimizedSize, processingStatus=$processingStatus, uploadTime=$uploadTime, lastUpdated=$lastUpdated, archive=$archive, image=$image, document=$document, fileSizeFormatted=$fileSizeFormatted]';
+  String toString() => 'FileRecord[id=$id, originalFilename=$originalFilename, objectName=$objectName, fileSize=$fileSize, contentType=$contentType, fileExtension=$fileExtension, fileUrl=$fileUrl, businessType=$businessType, uploaderId=$uploaderId, uploaderName=$uploaderName, isPublic=$isPublic, description=$description, tags=$tags, fileHash=$fileHash, mediaType=$mediaType, originalWidth=$originalWidth, originalHeight=$originalHeight, optimizedWidth=$optimizedWidth, optimizedHeight=$optimizedHeight, optimizedSize=$optimizedSize, processingStatus=$processingStatus, productEditorStagedUntil=$productEditorStagedUntil, productEditorAttachedProductId=$productEditorAttachedProductId, avatarStagedUntil=$avatarStagedUntil, avatarAttachedUserId=$avatarAttachedUserId, uploadTime=$uploadTime, lastUpdated=$lastUpdated, archive=$archive, image=$image, document=$document, fileSizeFormatted=$fileSizeFormatted]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -360,6 +408,26 @@ class FileRecord {
     } else {
       json[r'processingStatus'] = null;
     }
+    if (this.productEditorStagedUntil != null) {
+      json[r'productEditorStagedUntil'] = this.productEditorStagedUntil!.toUtc().toIso8601String();
+    } else {
+      json[r'productEditorStagedUntil'] = null;
+    }
+    if (this.productEditorAttachedProductId != null) {
+      json[r'productEditorAttachedProductId'] = this.productEditorAttachedProductId;
+    } else {
+      json[r'productEditorAttachedProductId'] = null;
+    }
+    if (this.avatarStagedUntil != null) {
+      json[r'avatarStagedUntil'] = this.avatarStagedUntil!.toUtc().toIso8601String();
+    } else {
+      json[r'avatarStagedUntil'] = null;
+    }
+    if (this.avatarAttachedUserId != null) {
+      json[r'avatarAttachedUserId'] = this.avatarAttachedUserId;
+    } else {
+      json[r'avatarAttachedUserId'] = null;
+    }
       json[r'uploadTime'] = this.uploadTime.toUtc().toIso8601String();
       json[r'lastUpdated'] = this.lastUpdated.toUtc().toIso8601String();
     if (this.archive != null) {
@@ -425,6 +493,10 @@ class FileRecord {
         optimizedHeight: mapValueOfType<int>(json, r'optimizedHeight'),
         optimizedSize: mapValueOfType<int>(json, r'optimizedSize'),
         processingStatus: mapValueOfType<String>(json, r'processingStatus'),
+        productEditorStagedUntil: mapDateTime(json, r'productEditorStagedUntil', r''),
+        productEditorAttachedProductId: mapValueOfType<int>(json, r'productEditorAttachedProductId'),
+        avatarStagedUntil: mapDateTime(json, r'avatarStagedUntil', r''),
+        avatarAttachedUserId: mapValueOfType<int>(json, r'avatarAttachedUserId'),
         uploadTime: mapDateTime(json, r'uploadTime', r'')!,
         lastUpdated: mapDateTime(json, r'lastUpdated', r'')!,
         archive: mapValueOfType<bool>(json, r'archive'),

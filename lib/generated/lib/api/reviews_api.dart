@@ -208,6 +208,59 @@ class ReviewsApi {
     }
   }
 
+  /// 取得目前買家的訂單評價提交狀態
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  Future<Response> getCurrentOrderReviewSubmissionWithHttpInfo(String orderId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/reviews/me/orders/{orderId}/submission'
+      .replaceAll('{orderId}', orderId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 取得目前買家的訂單評價提交狀態
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  Future<CurrentOrderReviewSubmissionResponse?> getCurrentOrderReviewSubmission(String orderId,) async {
+    final response = await getCurrentOrderReviewSubmissionWithHttpInfo(orderId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CurrentOrderReviewSubmissionResponse.fromJson(value)) as CurrentOrderReviewSubmissionResponse;
+    
+    }
+    return null;
+  }
+
   /// 獲取商品的平均評分
   ///
   /// Note: This method returns the HTTP [Response].
@@ -901,6 +954,67 @@ class ReviewsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageReview.fromJson(value)) as PageReview;
+    
+    }
+    return null;
+  }
+
+  /// 提交目前買家的訂單評價
+  ///
+  /// 同一內容可安全重送；不同內容重複提交回傳衝突。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  ///
+  /// * [CurrentOrderReviewSubmissionRequest] currentOrderReviewSubmissionRequest (required):
+  Future<Response> submitCurrentOrderReviewWithHttpInfo(String orderId, CurrentOrderReviewSubmissionRequest currentOrderReviewSubmissionRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/reviews/me/orders/{orderId}/submission'
+      .replaceAll('{orderId}', orderId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = currentOrderReviewSubmissionRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 提交目前買家的訂單評價
+  ///
+  /// 同一內容可安全重送；不同內容重複提交回傳衝突。
+  ///
+  /// Parameters:
+  ///
+  /// * [String] orderId (required):
+  ///
+  /// * [CurrentOrderReviewSubmissionRequest] currentOrderReviewSubmissionRequest (required):
+  Future<CurrentOrderReviewSubmissionResponse?> submitCurrentOrderReview(String orderId, CurrentOrderReviewSubmissionRequest currentOrderReviewSubmissionRequest,) async {
+    final response = await submitCurrentOrderReviewWithHttpInfo(orderId, currentOrderReviewSubmissionRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CurrentOrderReviewSubmissionResponse.fromJson(value)) as CurrentOrderReviewSubmissionResponse;
     
     }
     return null;

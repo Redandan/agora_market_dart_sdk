@@ -270,6 +270,63 @@ class AdminDisputesApi {
     return null;
   }
 
+  /// 查看糾紛安全摘要詳情
+  ///
+  /// 不返回身份、地址、電話、追蹤碼或證據 URL
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] disputeId (required):
+  Future<Response> getDisputeSummaryWithHttpInfo(String disputeId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/disputes/{disputeId}/summary'
+      .replaceAll('{disputeId}', disputeId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查看糾紛安全摘要詳情
+  ///
+  /// 不返回身份、地址、電話、追蹤碼或證據 URL
+  ///
+  /// Parameters:
+  ///
+  /// * [String] disputeId (required):
+  Future<AdminDisputeDetailResponse?> getDisputeSummary(String disputeId,) async {
+    final response = await getDisputeSummaryWithHttpInfo(disputeId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AdminDisputeDetailResponse.fromJson(value)) as AdminDisputeDetailResponse;
+    
+    }
+    return null;
+  }
+
   /// 判定爭議責任
   ///
   /// 管理員判定爭議責任方，包括賣家責任、買家責任、雙方部分責任
@@ -449,6 +506,62 @@ class AdminDisputesApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageDispute.fromJson(value)) as PageDispute;
+    
+    }
+    return null;
+  }
+
+  /// 搜索糾紛安全摘要
+  ///
+  /// 固定分頁且不返回買賣方識別碼
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [AdminDisputeSearchRequest] adminDisputeSearchRequest:
+  Future<Response> searchSummaries1WithHttpInfo({ AdminDisputeSearchRequest? adminDisputeSearchRequest, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/disputes/summary/search';
+
+    // ignore: prefer_final_locals
+    Object? postBody = adminDisputeSearchRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 搜索糾紛安全摘要
+  ///
+  /// 固定分頁且不返回買賣方識別碼
+  ///
+  /// Parameters:
+  ///
+  /// * [AdminDisputeSearchRequest] adminDisputeSearchRequest:
+  Future<PageAdminDisputeSummaryResponse?> searchSummaries1({ AdminDisputeSearchRequest? adminDisputeSearchRequest, }) async {
+    final response = await searchSummaries1WithHttpInfo( adminDisputeSearchRequest: adminDisputeSearchRequest, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageAdminDisputeSummaryResponse.fromJson(value)) as PageAdminDisputeSummaryResponse;
     
     }
     return null;

@@ -69,6 +69,59 @@ class AdminDemandPoolApi {
     return null;
   }
 
+  /// Admin demand identity-minimized detail (read-only)
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] demandId (required):
+  Future<Response> detailSummaryWithHttpInfo(int demandId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/demands/{demandId}/summary'
+      .replaceAll('{demandId}', demandId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Admin demand identity-minimized detail (read-only)
+  ///
+  /// Parameters:
+  ///
+  /// * [int] demandId (required):
+  Future<AdminDemandDetailResponse?> detailSummary(int demandId,) async {
+    final response = await detailSummaryWithHttpInfo(demandId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AdminDemandDetailResponse.fromJson(value)) as AdminDemandDetailResponse;
+    
+    }
+    return null;
+  }
+
   /// Admin link demand to product
   ///
   /// Note: This method returns the HTTP [Response].
@@ -251,7 +304,7 @@ class AdminDemandPoolApi {
   /// Parameters:
   ///
   /// * [DemandSearchParam] demandSearchParam:
-  Future<Response> searchWithHttpInfo({ DemandSearchParam? demandSearchParam, }) async {
+  Future<Response> search3WithHttpInfo({ DemandSearchParam? demandSearchParam, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/demands/search';
 
@@ -281,8 +334,8 @@ class AdminDemandPoolApi {
   /// Parameters:
   ///
   /// * [DemandSearchParam] demandSearchParam:
-  Future<PageDemandDetailResponse?> search({ DemandSearchParam? demandSearchParam, }) async {
-    final response = await searchWithHttpInfo( demandSearchParam: demandSearchParam, );
+  Future<PageDemandDetailResponse?> search3({ DemandSearchParam? demandSearchParam, }) async {
+    final response = await search3WithHttpInfo( demandSearchParam: demandSearchParam, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -291,6 +344,58 @@ class AdminDemandPoolApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageDemandDetailResponse.fromJson(value)) as PageDemandDetailResponse;
+    
+    }
+    return null;
+  }
+
+  /// Admin search demand pool summaries (read-only, identity minimized)
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [AdminDemandSearchRequest] adminDemandSearchRequest:
+  Future<Response> searchSummaries2WithHttpInfo({ AdminDemandSearchRequest? adminDemandSearchRequest, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/demands/summary/search';
+
+    // ignore: prefer_final_locals
+    Object? postBody = adminDemandSearchRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Admin search demand pool summaries (read-only, identity minimized)
+  ///
+  /// Parameters:
+  ///
+  /// * [AdminDemandSearchRequest] adminDemandSearchRequest:
+  Future<PageAdminDemandSummaryResponse?> searchSummaries2({ AdminDemandSearchRequest? adminDemandSearchRequest, }) async {
+    final response = await searchSummaries2WithHttpInfo( adminDemandSearchRequest: adminDemandSearchRequest, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageAdminDemandSummaryResponse.fromJson(value)) as PageAdminDemandSummaryResponse;
     
     }
     return null;

@@ -82,7 +82,7 @@ class AdminStorefrontHomesApi {
   /// * [int] sellerId (required):
   ///
   /// * [StorefrontHomeReviewRequest] storefrontHomeReviewRequest:
-  Future<Response> disableWithHttpInfo(int sellerId, { StorefrontHomeReviewRequest? storefrontHomeReviewRequest, }) async {
+  Future<Response> disable1WithHttpInfo(int sellerId, { StorefrontHomeReviewRequest? storefrontHomeReviewRequest, }) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/storefront-homes/{sellerId}/disable'
       .replaceAll('{sellerId}', sellerId.toString());
@@ -115,8 +115,8 @@ class AdminStorefrontHomesApi {
   /// * [int] sellerId (required):
   ///
   /// * [StorefrontHomeReviewRequest] storefrontHomeReviewRequest:
-  Future<StorefrontHomeResponse?> disable(int sellerId, { StorefrontHomeReviewRequest? storefrontHomeReviewRequest, }) async {
-    final response = await disableWithHttpInfo(sellerId,  storefrontHomeReviewRequest: storefrontHomeReviewRequest, );
+  Future<StorefrontHomeResponse?> disable1(int sellerId, { StorefrontHomeReviewRequest? storefrontHomeReviewRequest, }) async {
+    final response = await disable1WithHttpInfo(sellerId,  storefrontHomeReviewRequest: storefrontHomeReviewRequest, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

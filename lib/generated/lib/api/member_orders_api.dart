@@ -321,14 +321,17 @@ class MemberOrdersApi {
 
   /// 提交購物車多店鋪結帳
   ///
-  /// 後端重新分組 selected cart items，all-or-nothing 為每個可提交 group 建立獨立訂單。
+  /// 後端重新分組 selected cart items，all-or-nothing 為每個可提交 group 建立獨立訂單。V2 應提供 Idempotency-Key；未提供時保留舊版 Flutter 行為。
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [CartCheckoutSubmitParam] cartCheckoutSubmitParam (required):
-  Future<Response> cartCheckoutSubmitWithHttpInfo(CartCheckoutSubmitParam cartCheckoutSubmitParam,) async {
+  ///
+  /// * [String] idempotencyKey:
+  ///   V2 結帳請求身分；16-128 個 ASCII 英數、點、底線、冒號或連字號。相同買家與相同內容可安全重送。
+  Future<Response> cartCheckoutSubmitWithHttpInfo(CartCheckoutSubmitParam cartCheckoutSubmitParam, { String? idempotencyKey, }) async {
     // ignore: prefer_const_declarations
     final path = r'/orders/cart-checkout/submit';
 
@@ -338,6 +341,10 @@ class MemberOrdersApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+    if (idempotencyKey != null) {
+      headerParams[r'Idempotency-Key'] = parameterToString(idempotencyKey);
+    }
 
     const contentTypes = <String>['application/json'];
 
@@ -355,13 +362,76 @@ class MemberOrdersApi {
 
   /// 提交購物車多店鋪結帳
   ///
-  /// 後端重新分組 selected cart items，all-or-nothing 為每個可提交 group 建立獨立訂單。
+  /// 後端重新分組 selected cart items，all-or-nothing 為每個可提交 group 建立獨立訂單。V2 應提供 Idempotency-Key；未提供時保留舊版 Flutter 行為。
   ///
   /// Parameters:
   ///
   /// * [CartCheckoutSubmitParam] cartCheckoutSubmitParam (required):
-  Future<CartCheckoutSubmitResponse?> cartCheckoutSubmit(CartCheckoutSubmitParam cartCheckoutSubmitParam,) async {
-    final response = await cartCheckoutSubmitWithHttpInfo(cartCheckoutSubmitParam,);
+  ///
+  /// * [String] idempotencyKey:
+  ///   V2 結帳請求身分；16-128 個 ASCII 英數、點、底線、冒號或連字號。相同買家與相同內容可安全重送。
+  Future<CartCheckoutSubmitResponse?> cartCheckoutSubmit(CartCheckoutSubmitParam cartCheckoutSubmitParam, { String? idempotencyKey, }) async {
+    final response = await cartCheckoutSubmitWithHttpInfo(cartCheckoutSubmitParam,  idempotencyKey: idempotencyKey, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CartCheckoutSubmitResponse.fromJson(value)) as CartCheckoutSubmitResponse;
+    
+    }
+    return null;
+  }
+
+  /// 查回購物車結帳結果
+  ///
+  /// 只依目前買家與 Idempotency-Key 查回已提交的原始訂單憑證；不重新建單、不扣款、不扣庫存。尚無已提交結果時回 204。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] idempotencyKey (required):
+  ///   原結帳請求身分；不放在 URL，避免進入一般路由紀錄。
+  Future<Response> cartCheckoutSubmitResultWithHttpInfo(String idempotencyKey,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/orders/cart-checkout/submit-result';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    headerParams[r'Idempotency-Key'] = parameterToString(idempotencyKey);
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查回購物車結帳結果
+  ///
+  /// 只依目前買家與 Idempotency-Key 查回已提交的原始訂單憑證；不重新建單、不扣款、不扣庫存。尚無已提交結果時回 204。
+  ///
+  /// Parameters:
+  ///
+  /// * [String] idempotencyKey (required):
+  ///   原結帳請求身分；不放在 URL，避免進入一般路由紀錄。
+  Future<CartCheckoutSubmitResponse?> cartCheckoutSubmitResult(String idempotencyKey,) async {
+    final response = await cartCheckoutSubmitResultWithHttpInfo(idempotencyKey,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -587,6 +657,130 @@ class MemberOrdersApi {
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+  }
+
+  /// 提交直接購買
+  ///
+  /// V2 專用的單品直接購買；要求 buyer-scoped Idempotency-Key，成功時回傳可回放的訂單憑證。舊 Flutter /orders 提交不變。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] idempotencyKey (required):
+  ///   直接購買請求身分；16-128 個 ASCII 英數、點、底線、冒號或連字號。
+  ///
+  /// * [DirectCheckoutSubmitParam] directCheckoutSubmitParam (required):
+  Future<Response> directCheckoutSubmitWithHttpInfo(String idempotencyKey, DirectCheckoutSubmitParam directCheckoutSubmitParam,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/orders/direct-checkout/submit';
+
+    // ignore: prefer_final_locals
+    Object? postBody = directCheckoutSubmitParam;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    headerParams[r'Idempotency-Key'] = parameterToString(idempotencyKey);
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 提交直接購買
+  ///
+  /// V2 專用的單品直接購買；要求 buyer-scoped Idempotency-Key，成功時回傳可回放的訂單憑證。舊 Flutter /orders 提交不變。
+  ///
+  /// Parameters:
+  ///
+  /// * [String] idempotencyKey (required):
+  ///   直接購買請求身分；16-128 個 ASCII 英數、點、底線、冒號或連字號。
+  ///
+  /// * [DirectCheckoutSubmitParam] directCheckoutSubmitParam (required):
+  Future<DirectCheckoutSubmitResponse?> directCheckoutSubmit(String idempotencyKey, DirectCheckoutSubmitParam directCheckoutSubmitParam,) async {
+    final response = await directCheckoutSubmitWithHttpInfo(idempotencyKey, directCheckoutSubmitParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => DirectCheckoutSubmitResponse.fromJson(value)) as DirectCheckoutSubmitResponse;
+    
+    }
+    return null;
+  }
+
+  /// 查回直接購買結果
+  ///
+  /// 只依目前買家與 Idempotency-Key 查回已提交的直接購買憑證；不重新建單、不扣款、不扣庫存。尚無已提交結果時回 204。
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] idempotencyKey (required):
+  ///   原直接購買請求身分；不放在 URL。
+  Future<Response> directCheckoutSubmitResultWithHttpInfo(String idempotencyKey,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/orders/direct-checkout/submit-result';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    headerParams[r'Idempotency-Key'] = parameterToString(idempotencyKey);
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查回直接購買結果
+  ///
+  /// 只依目前買家與 Idempotency-Key 查回已提交的直接購買憑證；不重新建單、不扣款、不扣庫存。尚無已提交結果時回 204。
+  ///
+  /// Parameters:
+  ///
+  /// * [String] idempotencyKey (required):
+  ///   原直接購買請求身分；不放在 URL。
+  Future<DirectCheckoutSubmitResponse?> directCheckoutSubmitResult(String idempotencyKey,) async {
+    final response = await directCheckoutSubmitResultWithHttpInfo(idempotencyKey,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => DirectCheckoutSubmitResponse.fromJson(value)) as DirectCheckoutSubmitResponse;
+    
+    }
+    return null;
   }
 
   /// 獲取買家訂單詳情

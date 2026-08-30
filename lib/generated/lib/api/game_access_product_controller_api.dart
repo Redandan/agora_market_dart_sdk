@@ -127,7 +127,7 @@ class GameAccessProductControllerApi {
   /// * [int] productId (required):
   ///
   /// * [GameAccessProductPurchaseRequest] gameAccessProductPurchaseRequest (required):
-  Future<Response> purchase1WithHttpInfo(int productId, GameAccessProductPurchaseRequest gameAccessProductPurchaseRequest,) async {
+  Future<Response> purchase2WithHttpInfo(int productId, GameAccessProductPurchaseRequest gameAccessProductPurchaseRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/game-access/products/{productId}/purchase'
       .replaceAll('{productId}', productId.toString());
@@ -158,8 +158,8 @@ class GameAccessProductControllerApi {
   /// * [int] productId (required):
   ///
   /// * [GameAccessProductPurchaseRequest] gameAccessProductPurchaseRequest (required):
-  Future<GameAccessPurchaseResponse?> purchase1(int productId, GameAccessProductPurchaseRequest gameAccessProductPurchaseRequest,) async {
-    final response = await purchase1WithHttpInfo(productId, gameAccessProductPurchaseRequest,);
+  Future<GameAccessPurchaseResponse?> purchase2(int productId, GameAccessProductPurchaseRequest gameAccessProductPurchaseRequest,) async {
+    final response = await purchase2WithHttpInfo(productId, gameAccessProductPurchaseRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

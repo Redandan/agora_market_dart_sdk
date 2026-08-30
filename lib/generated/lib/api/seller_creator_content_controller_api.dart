@@ -68,7 +68,7 @@ class SellerCreatorContentControllerApi {
   /// Parameters:
   ///
   /// * [CreatorContentUpsertRequest] creatorContentUpsertRequest (required):
-  Future<Response> createWithHttpInfo(CreatorContentUpsertRequest creatorContentUpsertRequest,) async {
+  Future<Response> create3WithHttpInfo(CreatorContentUpsertRequest creatorContentUpsertRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/seller/creator-contents';
 
@@ -96,8 +96,8 @@ class SellerCreatorContentControllerApi {
   /// Parameters:
   ///
   /// * [CreatorContentUpsertRequest] creatorContentUpsertRequest (required):
-  Future<CreatorContentResponse?> create(CreatorContentUpsertRequest creatorContentUpsertRequest,) async {
-    final response = await createWithHttpInfo(creatorContentUpsertRequest,);
+  Future<CreatorContentResponse?> create3(CreatorContentUpsertRequest creatorContentUpsertRequest,) async {
+    final response = await create3WithHttpInfo(creatorContentUpsertRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

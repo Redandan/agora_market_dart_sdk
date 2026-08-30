@@ -77,7 +77,7 @@ class GameAccessControllerApi {
   /// Parameters:
   ///
   /// * [GameAccessPurchaseRequest] gameAccessPurchaseRequest (required):
-  Future<Response> purchaseWithHttpInfo(GameAccessPurchaseRequest gameAccessPurchaseRequest,) async {
+  Future<Response> purchase1WithHttpInfo(GameAccessPurchaseRequest gameAccessPurchaseRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/game-access/purchase';
 
@@ -107,8 +107,8 @@ class GameAccessControllerApi {
   /// Parameters:
   ///
   /// * [GameAccessPurchaseRequest] gameAccessPurchaseRequest (required):
-  Future<GameAccessPurchaseResponse?> purchase(GameAccessPurchaseRequest gameAccessPurchaseRequest,) async {
-    final response = await purchaseWithHttpInfo(gameAccessPurchaseRequest,);
+  Future<GameAccessPurchaseResponse?> purchase1(GameAccessPurchaseRequest gameAccessPurchaseRequest,) async {
+    final response = await purchase1WithHttpInfo(gameAccessPurchaseRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

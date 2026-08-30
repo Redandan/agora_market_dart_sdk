@@ -236,6 +236,30 @@ class ApiClient {
           return ActivityStatDTO.fromJson(value);
         case 'AddressState':
           return AddressState.fromJson(value);
+        case 'AdminBettingCancelRequest':
+          return AdminBettingCancelRequest.fromJson(value);
+        case 'AdminBettingCapabilitiesResponse':
+          return AdminBettingCapabilitiesResponse.fromJson(value);
+        case 'AdminBettingConfirmRequest':
+          return AdminBettingConfirmRequest.fromJson(value);
+        case 'AdminBettingCreateOption':
+          return AdminBettingCreateOption.fromJson(value);
+        case 'AdminBettingCreateRequest':
+          return AdminBettingCreateRequest.fromJson(value);
+        case 'AdminBettingMarketDetailResponse':
+          return AdminBettingMarketDetailResponse.fromJson(value);
+        case 'AdminBettingMarketOptionResponse':
+          return AdminBettingMarketOptionResponse.fromJson(value);
+        case 'AdminBettingMarketPageResponse':
+          return AdminBettingMarketPageResponse.fromJson(value);
+        case 'AdminBettingMarketSearchRequest':
+          return AdminBettingMarketSearchRequest.fromJson(value);
+        case 'AdminBettingMarketSummaryResponse':
+          return AdminBettingMarketSummaryResponse.fromJson(value);
+        case 'AdminBettingOperationReceiptResponse':
+          return AdminBettingOperationReceiptResponse.fromJson(value);
+        case 'AdminBettingResolveRequest':
+          return AdminBettingResolveRequest.fromJson(value);
         case 'AdminCreateUserParam':
           return AdminCreateUserParam.fromJson(value);
         case 'AdminDeliveryOperationsSummaryResponse':
@@ -246,18 +270,114 @@ class ApiClient {
           return AdminDeliveryerReadSearchRequest.fromJson(value);
         case 'AdminDeliveryerSummaryResponse':
           return AdminDeliveryerSummaryResponse.fromJson(value);
+        case 'AdminDemandDetailResponse':
+          return AdminDemandDetailResponse.fromJson(value);
+        case 'AdminDemandMissingRequirementResponse':
+          return AdminDemandMissingRequirementResponse.fromJson(value);
+        case 'AdminDemandOfferResponse':
+          return AdminDemandOfferResponse.fromJson(value);
+        case 'AdminDemandSearchRequest':
+          return AdminDemandSearchRequest.fromJson(value);
+        case 'AdminDemandStatusHistoryResponse':
+          return AdminDemandStatusHistoryResponse.fromJson(value);
+        case 'AdminDemandSummaryResponse':
+          return AdminDemandSummaryResponse.fromJson(value);
+        case 'AdminDisputeDetailResponse':
+          return AdminDisputeDetailResponse.fromJson(value);
+        case 'AdminDisputeOrderResponse':
+          return AdminDisputeOrderResponse.fromJson(value);
+        case 'AdminDisputeReturnResponse':
+          return AdminDisputeReturnResponse.fromJson(value);
+        case 'AdminDisputeSearchRequest':
+          return AdminDisputeSearchRequest.fromJson(value);
+        case 'AdminDisputeSummaryResponse':
+          return AdminDisputeSummaryResponse.fromJson(value);
+        case 'AdminFileReadSearchRequest':
+          return AdminFileReadSearchRequest.fromJson(value);
+        case 'AdminFileSummaryResponse':
+          return AdminFileSummaryResponse.fromJson(value);
+        case 'AdminKnowledgeCreateRequest':
+          return AdminKnowledgeCreateRequest.fromJson(value);
+        case 'AdminKnowledgeDeleteRequest':
+          return AdminKnowledgeDeleteRequest.fromJson(value);
+        case 'AdminKnowledgeDocumentSummaryResponse':
+          return AdminKnowledgeDocumentSummaryResponse.fromJson(value);
+        case 'AdminKnowledgeIgnoreRequest':
+          return AdminKnowledgeIgnoreRequest.fromJson(value);
+        case 'AdminKnowledgeOperationReceiptResponse':
+          return AdminKnowledgeOperationReceiptResponse.fromJson(value);
+        case 'AdminKnowledgeOverviewResponse':
+          return AdminKnowledgeOverviewResponse.fromJson(value);
+        case 'AdminKnowledgePendingQuestionSummaryResponse':
+          return AdminKnowledgePendingQuestionSummaryResponse.fromJson(value);
+        case 'AdminKnowledgeResolveRequest':
+          return AdminKnowledgeResolveRequest.fromJson(value);
+        case 'AdminMemberOperationsSummaryResponse':
+          return AdminMemberOperationsSummaryResponse.fromJson(value);
+        case 'AdminMemberPwaReadSummaryResponse':
+          return AdminMemberPwaReadSummaryResponse.fromJson(value);
         case 'AdminMemberPwaUsageResponse':
           return AdminMemberPwaUsageResponse.fromJson(value);
+        case 'AdminMemberReadSearchRequest':
+          return AdminMemberReadSearchRequest.fromJson(value);
         case 'AdminMemberResponse':
           return AdminMemberResponse.fromJson(value);
+        case 'AdminMemberSummaryResponse':
+          return AdminMemberSummaryResponse.fromJson(value);
+        case 'AdminMessageBatchReceiptResponse':
+          return AdminMessageBatchReceiptResponse.fromJson(value);
+        case 'AdminMessageBatchRequest':
+          return AdminMessageBatchRequest.fromJson(value);
+        case 'AdminMessagingCapabilitiesResponse':
+          return AdminMessagingCapabilitiesResponse.fromJson(value);
+        case 'AdminOrderActionReadResponse':
+          return AdminOrderActionReadResponse.fromJson(value);
+        case 'AdminOrderDetailResponse':
+          return AdminOrderDetailResponse.fromJson(value);
+        case 'AdminOrderFulfillmentResponse':
+          return AdminOrderFulfillmentResponse.fromJson(value);
+        case 'AdminOrderItemResponse':
+          return AdminOrderItemResponse.fromJson(value);
+        case 'AdminOrderNextStepResponse':
+          return AdminOrderNextStepResponse.fromJson(value);
+        case 'AdminOrderReadSearchRequest':
+          return AdminOrderReadSearchRequest.fromJson(value);
+        case 'AdminOrderReturnResponse':
+          return AdminOrderReturnResponse.fromJson(value);
+        case 'AdminOrderSummaryResponse':
+          return AdminOrderSummaryResponse.fromJson(value);
+        case 'AdminProductDetailResponse':
+          return AdminProductDetailResponse.fromJson(value);
+        case 'AdminProductSearchRequest':
+          return AdminProductSearchRequest.fromJson(value);
+        case 'AdminProductSummaryResponse':
+          return AdminProductSummaryResponse.fromJson(value);
         case 'AdminResetPasswordParam':
           return AdminResetPasswordParam.fromJson(value);
+        case 'AdminReviewResponse':
+          return AdminReviewResponse.fromJson(value);
+        case 'AdminReviewSearchParam':
+          return AdminReviewSearchParam.fromJson(value);
         case 'AdminStoreCreateParam':
           return AdminStoreCreateParam.fromJson(value);
+        case 'AdminStoreDetailResponse':
+          return AdminStoreDetailResponse.fromJson(value);
+        case 'AdminStoreReadSearchRequest':
+          return AdminStoreReadSearchRequest.fromJson(value);
         case 'AdminStoreSearchParam':
           return AdminStoreSearchParam.fromJson(value);
+        case 'AdminStoreSummaryResponse':
+          return AdminStoreSummaryResponse.fromJson(value);
         case 'AdminStoreUpdateParam':
           return AdminStoreUpdateParam.fromJson(value);
+        case 'AdminTelegramMonitorOverviewResponse':
+          return AdminTelegramMonitorOverviewResponse.fromJson(value);
+        case 'AdminWithdrawSummaryPageResponse':
+          return AdminWithdrawSummaryPageResponse.fromJson(value);
+        case 'AdminWithdrawSummaryResponse':
+          return AdminWithdrawSummaryResponse.fromJson(value);
+        case 'AdminWithdrawV2SearchRequest':
+          return AdminWithdrawV2SearchRequest.fromJson(value);
         case 'AiProductClassificationSuggestion':
           return AiProductClassificationSuggestion.fromJson(value);
         case 'ApiResponseCodeSupportKnowledgeCandidate':
@@ -474,6 +594,206 @@ class ApiClient {
           return CreatorSubscriptionEntryResponse.fromJson(value);
         case 'CreatorSubscriptionResponse':
           return CreatorSubscriptionResponse.fromJson(value);
+        case 'CurrentBettingCapabilitiesResponse':
+          return CurrentBettingCapabilitiesResponse.fromJson(value);
+        case 'CurrentBettingMarketDetailResponse':
+          return CurrentBettingMarketDetailResponse.fromJson(value);
+        case 'CurrentBettingMarketOptionResponse':
+          return CurrentBettingMarketOptionResponse.fromJson(value);
+        case 'CurrentBettingMarketPageResponse':
+          return CurrentBettingMarketPageResponse.fromJson(value);
+        case 'CurrentBettingMarketSummaryResponse':
+          return CurrentBettingMarketSummaryResponse.fromJson(value);
+        case 'CurrentBettingOperationReceiptResponse':
+          return CurrentBettingOperationReceiptResponse.fromJson(value);
+        case 'CurrentBettingPlaceRequest':
+          return CurrentBettingPlaceRequest.fromJson(value);
+        case 'CurrentBettingRecordPageResponse':
+          return CurrentBettingRecordPageResponse.fromJson(value);
+        case 'CurrentBettingRecordResponse':
+          return CurrentBettingRecordResponse.fromJson(value);
+        case 'CurrentBuyerDisputeSubmissionRequest':
+          return CurrentBuyerDisputeSubmissionRequest.fromJson(value);
+        case 'CurrentBuyerReturnRequestSubmissionRequest':
+          return CurrentBuyerReturnRequestSubmissionRequest.fromJson(value);
+        case 'CurrentBuyerReturnShippingSubmissionRequest':
+          return CurrentBuyerReturnShippingSubmissionRequest.fromJson(value);
+        case 'CurrentChatCapabilitiesResponse':
+          return CurrentChatCapabilitiesResponse.fromJson(value);
+        case 'CurrentChatMessagePageResponse':
+          return CurrentChatMessagePageResponse.fromJson(value);
+        case 'CurrentChatMessageResponse':
+          return CurrentChatMessageResponse.fromJson(value);
+        case 'CurrentChatOperationReceiptResponse':
+          return CurrentChatOperationReceiptResponse.fromJson(value);
+        case 'CurrentChatPartnerResponse':
+          return CurrentChatPartnerResponse.fromJson(value);
+        case 'CurrentChatPreferenceRequest':
+          return CurrentChatPreferenceRequest.fromJson(value);
+        case 'CurrentChatReadRequest':
+          return CurrentChatReadRequest.fromJson(value);
+        case 'CurrentChatSendMessageRequest':
+          return CurrentChatSendMessageRequest.fromJson(value);
+        case 'CurrentChatSessionDetailResponse':
+          return CurrentChatSessionDetailResponse.fromJson(value);
+        case 'CurrentChatSessionPageResponse':
+          return CurrentChatSessionPageResponse.fromJson(value);
+        case 'CurrentChatSessionSummaryResponse':
+          return CurrentChatSessionSummaryResponse.fromJson(value);
+        case 'CurrentDeliveryOrderDetailResponse':
+          return CurrentDeliveryOrderDetailResponse.fromJson(value);
+        case 'CurrentDeliveryRegistrationRequest':
+          return CurrentDeliveryRegistrationRequest.fromJson(value);
+        case 'CurrentDeliveryRegistrationResponse':
+          return CurrentDeliveryRegistrationResponse.fromJson(value);
+        case 'CurrentDepositV2CancelRequest':
+          return CurrentDepositV2CancelRequest.fromJson(value);
+        case 'CurrentDepositV2CapabilitiesResponse':
+          return CurrentDepositV2CapabilitiesResponse.fromJson(value);
+        case 'CurrentDepositV2CreateRequest':
+          return CurrentDepositV2CreateRequest.fromJson(value);
+        case 'CurrentDepositV2OperationReceiptResponse':
+          return CurrentDepositV2OperationReceiptResponse.fromJson(value);
+        case 'CurrentDepositV2PendingResponse':
+          return CurrentDepositV2PendingResponse.fromJson(value);
+        case 'CurrentDepositV2StateResponse':
+          return CurrentDepositV2StateResponse.fromJson(value);
+        case 'CurrentDevicePushSubscriptionRequest':
+          return CurrentDevicePushSubscriptionRequest.fromJson(value);
+        case 'CurrentDevicePushSubscriptionResponse':
+          return CurrentDevicePushSubscriptionResponse.fromJson(value);
+        case 'CurrentFundsCapabilitiesResponse':
+          return CurrentFundsCapabilitiesResponse.fromJson(value);
+        case 'CurrentFundsOverviewResponse':
+          return CurrentFundsOverviewResponse.fromJson(value);
+        case 'CurrentNotificationPageResponse':
+          return CurrentNotificationPageResponse.fromJson(value);
+        case 'CurrentNotificationResponse':
+          return CurrentNotificationResponse.fromJson(value);
+        case 'CurrentNotificationSearchRequest':
+          return CurrentNotificationSearchRequest.fromJson(value);
+        case 'CurrentOrderReturnWorkflowResponse':
+          return CurrentOrderReturnWorkflowResponse.fromJson(value);
+        case 'CurrentOrderReviewSubmissionRequest':
+          return CurrentOrderReviewSubmissionRequest.fromJson(value);
+        case 'CurrentOrderReviewSubmissionResponse':
+          return CurrentOrderReviewSubmissionResponse.fromJson(value);
+        case 'CurrentPartnerApplicationCancelRequest':
+          return CurrentPartnerApplicationCancelRequest.fromJson(value);
+        case 'CurrentPartnerApplicationPageResponse':
+          return CurrentPartnerApplicationPageResponse.fromJson(value);
+        case 'CurrentPartnerApplicationSearchRequest':
+          return CurrentPartnerApplicationSearchRequest.fromJson(value);
+        case 'CurrentPartnerApplicationSubmitRequest':
+          return CurrentPartnerApplicationSubmitRequest.fromJson(value);
+        case 'CurrentPartnerApplicationSummaryResponse':
+          return CurrentPartnerApplicationSummaryResponse.fromJson(value);
+        case 'CurrentPartnerCapabilitiesResponse':
+          return CurrentPartnerCapabilitiesResponse.fromJson(value);
+        case 'CurrentPartnerGroupSummaryResponse':
+          return CurrentPartnerGroupSummaryResponse.fromJson(value);
+        case 'CurrentPartnerInvitationApplyRequest':
+          return CurrentPartnerInvitationApplyRequest.fromJson(value);
+        case 'CurrentPartnerInvitationPreviewRequest':
+          return CurrentPartnerInvitationPreviewRequest.fromJson(value);
+        case 'CurrentPartnerInvitationPreviewResponse':
+          return CurrentPartnerInvitationPreviewResponse.fromJson(value);
+        case 'CurrentPartnerLedgerPageResponse':
+          return CurrentPartnerLedgerPageResponse.fromJson(value);
+        case 'CurrentPartnerLedgerSearchRequest':
+          return CurrentPartnerLedgerSearchRequest.fromJson(value);
+        case 'CurrentPartnerLedgerSummaryResponse':
+          return CurrentPartnerLedgerSummaryResponse.fromJson(value);
+        case 'CurrentPartnerOperationReceiptResponse':
+          return CurrentPartnerOperationReceiptResponse.fromJson(value);
+        case 'CurrentPartnerOverviewResponse':
+          return CurrentPartnerOverviewResponse.fromJson(value);
+        case 'CurrentRechargeSummaryResponse':
+          return CurrentRechargeSummaryResponse.fromJson(value);
+        case 'CurrentSellerProductEditorReceiptResponse':
+          return CurrentSellerProductEditorReceiptResponse.fromJson(value);
+        case 'CurrentSellerProductEditorRequest':
+          return CurrentSellerProductEditorRequest.fromJson(value);
+        case 'CurrentSellerProductEditorResponse':
+          return CurrentSellerProductEditorResponse.fromJson(value);
+        case 'CurrentSellerProductImageResponse':
+          return CurrentSellerProductImageResponse.fromJson(value);
+        case 'CurrentSellerProductImportCapabilitiesResponse':
+          return CurrentSellerProductImportCapabilitiesResponse.fromJson(value);
+        case 'CurrentSellerProductImportCommitRequest':
+          return CurrentSellerProductImportCommitRequest.fromJson(value);
+        case 'CurrentSellerProductImportPreviewItemResponse':
+          return CurrentSellerProductImportPreviewItemResponse.fromJson(value);
+        case 'CurrentSellerProductImportPreviewResponse':
+          return CurrentSellerProductImportPreviewResponse.fromJson(value);
+        case 'CurrentSellerProductImportReceiptResponse':
+          return CurrentSellerProductImportReceiptResponse.fromJson(value);
+        case 'CurrentSellerProductImportRequest':
+          return CurrentSellerProductImportRequest.fromJson(value);
+        case 'CurrentSellerProductMediaResponse':
+          return CurrentSellerProductMediaResponse.fromJson(value);
+        case 'CurrentSellerReturnReviewSubmissionRequest':
+          return CurrentSellerReturnReviewSubmissionRequest.fromJson(value);
+        case 'CurrentSellerStoreRegistrationRequest':
+          return CurrentSellerStoreRegistrationRequest.fromJson(value);
+        case 'CurrentSellerStoreRegistrationResponse':
+          return CurrentSellerStoreRegistrationResponse.fromJson(value);
+        case 'CurrentSellerStoreSettingsAvailabilityRequest':
+          return CurrentSellerStoreSettingsAvailabilityRequest.fromJson(value);
+        case 'CurrentSellerStoreSettingsOperationReceiptResponse':
+          return CurrentSellerStoreSettingsOperationReceiptResponse.fromJson(value);
+        case 'CurrentSellerStoreSettingsProfileRequest':
+          return CurrentSellerStoreSettingsProfileRequest.fromJson(value);
+        case 'CurrentSellerStoreSettingsResponse':
+          return CurrentSellerStoreSettingsResponse.fromJson(value);
+        case 'CurrentSellerStoreSettingsShippingRequest':
+          return CurrentSellerStoreSettingsShippingRequest.fromJson(value);
+        case 'CurrentSellerStorefrontDraftRequest':
+          return CurrentSellerStorefrontDraftRequest.fromJson(value);
+        case 'CurrentSellerStorefrontHomeResponse':
+          return CurrentSellerStorefrontHomeResponse.fromJson(value);
+        case 'CurrentSellerStorefrontOperationReceiptResponse':
+          return CurrentSellerStorefrontOperationReceiptResponse.fromJson(value);
+        case 'CurrentSellerStorefrontTransitionRequest':
+          return CurrentSellerStorefrontTransitionRequest.fromJson(value);
+        case 'CurrentStakingSummaryResponse':
+          return CurrentStakingSummaryResponse.fromJson(value);
+        case 'CurrentStakingV2ApplyRequest':
+          return CurrentStakingV2ApplyRequest.fromJson(value);
+        case 'CurrentStakingV2CapabilitiesResponse':
+          return CurrentStakingV2CapabilitiesResponse.fromJson(value);
+        case 'CurrentStakingV2OperationReceiptResponse':
+          return CurrentStakingV2OperationReceiptResponse.fromJson(value);
+        case 'CurrentStakingV2PolicyResponse':
+          return CurrentStakingV2PolicyResponse.fromJson(value);
+        case 'CurrentStakingV2PositionResponse':
+          return CurrentStakingV2PositionResponse.fromJson(value);
+        case 'CurrentStakingV2StateResponse':
+          return CurrentStakingV2StateResponse.fromJson(value);
+        case 'CurrentStakingV2UnfreezeRequest':
+          return CurrentStakingV2UnfreezeRequest.fromJson(value);
+        case 'CurrentUserAvatarOperationReceiptResponse':
+          return CurrentUserAvatarOperationReceiptResponse.fromJson(value);
+        case 'CurrentUserAvatarStateResponse':
+          return CurrentUserAvatarStateResponse.fromJson(value);
+        case 'CurrentUserGameAccessWebV2LaunchResponse':
+          return CurrentUserGameAccessWebV2LaunchResponse.fromJson(value);
+        case 'CurrentUserGameAccessWebV2OperationReceiptResponse':
+          return CurrentUserGameAccessWebV2OperationReceiptResponse.fromJson(value);
+        case 'CurrentUserGameAccessWebV2StateResponse':
+          return CurrentUserGameAccessWebV2StateResponse.fromJson(value);
+        case 'CurrentWithdrawSummaryResponse':
+          return CurrentWithdrawSummaryResponse.fromJson(value);
+        case 'CurrentWithdrawalV2CapabilitiesResponse':
+          return CurrentWithdrawalV2CapabilitiesResponse.fromJson(value);
+        case 'CurrentWithdrawalV2OngoingResponse':
+          return CurrentWithdrawalV2OngoingResponse.fromJson(value);
+        case 'CurrentWithdrawalV2OperationReceiptResponse':
+          return CurrentWithdrawalV2OperationReceiptResponse.fromJson(value);
+        case 'CurrentWithdrawalV2Request':
+          return CurrentWithdrawalV2Request.fromJson(value);
+        case 'CurrentWithdrawalV2StateResponse':
+          return CurrentWithdrawalV2StateResponse.fromJson(value);
         case 'CustomerIssue':
           return CustomerIssue.fromJson(value);
         case 'CustomerStats':
@@ -538,6 +858,10 @@ class ApiClient {
           return DeviceInfo.fromJson(value);
         case 'DimensionBreakdown':
           return DimensionBreakdown.fromJson(value);
+        case 'DirectCheckoutSubmitParam':
+          return DirectCheckoutSubmitParam.fromJson(value);
+        case 'DirectCheckoutSubmitResponse':
+          return DirectCheckoutSubmitResponse.fromJson(value);
         case 'Dispute':
           return Dispute.fromJson(value);
         case 'DisputeAiAnalysisResponse':
@@ -548,6 +872,8 @@ class ApiClient {
           return DisputeCreateParam.fromJson(value);
         case 'DisputeDetailParam':
           return DisputeDetailParam.fromJson(value);
+        case 'DisputeInfo':
+          return DisputeInfo.fromJson(value);
         case 'DisputeJudgmentParam':
           return DisputeJudgmentParam.fromJson(value);
         case 'DisputeQueryResult':
@@ -744,6 +1070,8 @@ class ApiClient {
           return NaturalSearchResponse.fromJson(value);
         case 'NextInterestEstimateDTO':
           return NextInterestEstimateDTO.fromJson(value);
+        case 'NextStep':
+          return NextStep.fromJson(value);
         case 'NotificationCreateParam':
           return NotificationCreateParam.fromJson(value);
         case 'NotificationResponseDTO':
@@ -778,6 +1106,8 @@ class ApiClient {
           return OrderDeliveryProof.fromJson(value);
         case 'OrderItem':
           return OrderItem.fromJson(value);
+        case 'OrderMutationReceiptResponse':
+          return OrderMutationReceiptResponse.fromJson(value);
         case 'OrderNextStep':
           return OrderNextStep.fromJson(value);
         case 'OrderQueryResult':
@@ -798,8 +1128,24 @@ class ApiClient {
           return PageActivityDTO.fromJson(value);
         case 'PageAdminDeliveryerSummaryResponse':
           return PageAdminDeliveryerSummaryResponse.fromJson(value);
+        case 'PageAdminDemandSummaryResponse':
+          return PageAdminDemandSummaryResponse.fromJson(value);
+        case 'PageAdminDisputeSummaryResponse':
+          return PageAdminDisputeSummaryResponse.fromJson(value);
+        case 'PageAdminFileSummaryResponse':
+          return PageAdminFileSummaryResponse.fromJson(value);
         case 'PageAdminMemberResponse':
           return PageAdminMemberResponse.fromJson(value);
+        case 'PageAdminMemberSummaryResponse':
+          return PageAdminMemberSummaryResponse.fromJson(value);
+        case 'PageAdminOrderSummaryResponse':
+          return PageAdminOrderSummaryResponse.fromJson(value);
+        case 'PageAdminProductSummaryResponse':
+          return PageAdminProductSummaryResponse.fromJson(value);
+        case 'PageAdminReviewResponse':
+          return PageAdminReviewResponse.fromJson(value);
+        case 'PageAdminStoreSummaryResponse':
+          return PageAdminStoreSummaryResponse.fromJson(value);
         case 'PageAutoReplyConfig':
           return PageAutoReplyConfig.fromJson(value);
         case 'PageBetResponse':
@@ -1110,6 +1456,12 @@ class ApiClient {
           return ResolveMarketRequest.fromJson(value);
         case 'ResolveRequest':
           return ResolveRequest.fromJson(value);
+        case 'ReturnAddressOption':
+          return ReturnAddressOption.fromJson(value);
+        case 'ReturnDestination':
+          return ReturnDestination.fromJson(value);
+        case 'ReturnInfo':
+          return ReturnInfo.fromJson(value);
         case 'ReturnProcessParam':
           return ReturnProcessParam.fromJson(value);
         case 'ReturnRequestParam':
@@ -1204,6 +1556,14 @@ class ApiClient {
           return SlotSpinResponse.fromJson(value);
         case 'SlotSymbolInfo':
           return SlotSymbolInfo.fromJson(value);
+        case 'SlotWebV2CapabilitiesResponse':
+          return SlotWebV2CapabilitiesResponse.fromJson(value);
+        case 'SlotWebV2OperationReceiptResponse':
+          return SlotWebV2OperationReceiptResponse.fromJson(value);
+        case 'SlotWebV2SpinRequest':
+          return SlotWebV2SpinRequest.fromJson(value);
+        case 'SlotWebV2StateResponse':
+          return SlotWebV2StateResponse.fromJson(value);
         case 'Snippets':
           return Snippets.fromJson(value);
         case 'SortObject':
@@ -1258,6 +1618,18 @@ class ApiClient {
           return SuggestionActionParam.fromJson(value);
         case 'Summary':
           return Summary.fromJson(value);
+        case 'SupportWorkbenchAuthRequest':
+          return SupportWorkbenchAuthRequest.fromJson(value);
+        case 'SupportWorkbenchMessageResponse':
+          return SupportWorkbenchMessageResponse.fromJson(value);
+        case 'SupportWorkbenchMutationRequest':
+          return SupportWorkbenchMutationRequest.fromJson(value);
+        case 'SupportWorkbenchOperationReceiptResponse':
+          return SupportWorkbenchOperationReceiptResponse.fromJson(value);
+        case 'SupportWorkbenchReplyRequest':
+          return SupportWorkbenchReplyRequest.fromJson(value);
+        case 'SupportWorkbenchStateResponse':
+          return SupportWorkbenchStateResponse.fromJson(value);
         case 'TaiwanPostalArea':
           return TaiwanPostalArea.fromJson(value);
         case 'TasksBlock':
@@ -1330,6 +1702,10 @@ class ApiClient {
           return User.fromJson(value);
         case 'UserAddress':
           return UserAddress.fromJson(value);
+        case 'UserAddressCreateRequest':
+          return UserAddressCreateRequest.fromJson(value);
+        case 'UserAddressUpdateRequest':
+          return UserAddressUpdateRequest.fromJson(value);
         case 'UserInfo':
           return UserInfo.fromJson(value);
         case 'UserOrderSearchParam':

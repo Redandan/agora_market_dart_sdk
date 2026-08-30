@@ -25,7 +25,7 @@ class CommunityPartnerApi {
   /// * [String] token (required):
   ///
   /// * [CommunityPartnerInvitationApplyRequest] communityPartnerInvitationApplyRequest (required):
-  Future<Response> applyInvitationWithHttpInfo(String token, CommunityPartnerInvitationApplyRequest communityPartnerInvitationApplyRequest,) async {
+  Future<Response> applyInvitation1WithHttpInfo(String token, CommunityPartnerInvitationApplyRequest communityPartnerInvitationApplyRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/community-partners/invitations/{token}/apply'
       .replaceAll('{token}', token);
@@ -58,8 +58,8 @@ class CommunityPartnerApi {
   /// * [String] token (required):
   ///
   /// * [CommunityPartnerInvitationApplyRequest] communityPartnerInvitationApplyRequest (required):
-  Future<CommunityPartnerApplicationResponse?> applyInvitation(String token, CommunityPartnerInvitationApplyRequest communityPartnerInvitationApplyRequest,) async {
-    final response = await applyInvitationWithHttpInfo(token, communityPartnerInvitationApplyRequest,);
+  Future<CommunityPartnerApplicationResponse?> applyInvitation1(String token, CommunityPartnerInvitationApplyRequest communityPartnerInvitationApplyRequest,) async {
+    final response = await applyInvitation1WithHttpInfo(token, communityPartnerInvitationApplyRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

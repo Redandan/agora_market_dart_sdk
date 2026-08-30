@@ -452,6 +452,119 @@ class AdminStoresApi {
     return null;
   }
 
+  /// 查看商店安全摘要詳情
+  ///
+  /// 不返回地址、座標、電話、Email、營業時間或管理員備註
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] storeId (required):
+  Future<Response> getStoreSummaryWithHttpInfo(int storeId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/stores/{storeId}/summary'
+      .replaceAll('{storeId}', storeId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查看商店安全摘要詳情
+  ///
+  /// 不返回地址、座標、電話、Email、營業時間或管理員備註
+  ///
+  /// Parameters:
+  ///
+  /// * [int] storeId (required):
+  Future<AdminStoreDetailResponse?> getStoreSummary(int storeId,) async {
+    final response = await getStoreSummaryWithHttpInfo(storeId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AdminStoreDetailResponse.fromJson(value)) as AdminStoreDetailResponse;
+    
+    }
+    return null;
+  }
+
+  /// 搜索商店安全摘要
+  ///
+  /// 固定分頁且不返回地址、座標、聯絡方式或管理員備註
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [AdminStoreReadSearchRequest] adminStoreReadSearchRequest:
+  Future<Response> searchStoreSummariesWithHttpInfo({ AdminStoreReadSearchRequest? adminStoreReadSearchRequest, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/stores/summary/search';
+
+    // ignore: prefer_final_locals
+    Object? postBody = adminStoreReadSearchRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 搜索商店安全摘要
+  ///
+  /// 固定分頁且不返回地址、座標、聯絡方式或管理員備註
+  ///
+  /// Parameters:
+  ///
+  /// * [AdminStoreReadSearchRequest] adminStoreReadSearchRequest:
+  Future<PageAdminStoreSummaryResponse?> searchStoreSummaries({ AdminStoreReadSearchRequest? adminStoreReadSearchRequest, }) async {
+    final response = await searchStoreSummariesWithHttpInfo( adminStoreReadSearchRequest: adminStoreReadSearchRequest, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageAdminStoreSummaryResponse.fromJson(value)) as PageAdminStoreSummaryResponse;
+    
+    }
+    return null;
+  }
+
   /// 搜索商店
   ///
   /// 管理員可根據多個條件搜索商店

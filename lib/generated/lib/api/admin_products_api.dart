@@ -406,6 +406,63 @@ class AdminProductsApi {
     return null;
   }
 
+  /// 查看商品安全摘要詳情
+  ///
+  /// 不返回賣家帳戶、取貨地址座標、採購 URL 或原始 JSON
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] productId (required):
+  Future<Response> getProductSummaryWithHttpInfo(int productId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/products/{productId}/summary'
+      .replaceAll('{productId}', productId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 查看商品安全摘要詳情
+  ///
+  /// 不返回賣家帳戶、取貨地址座標、採購 URL 或原始 JSON
+  ///
+  /// Parameters:
+  ///
+  /// * [int] productId (required):
+  Future<AdminProductDetailResponse?> getProductSummary(int productId,) async {
+    final response = await getProductSummaryWithHttpInfo(productId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AdminProductDetailResponse.fromJson(value)) as AdminProductDetailResponse;
+    
+    }
+    return null;
+  }
+
   /// 搜索商品
   ///
   /// 管理員可根據多個條件搜索商品
@@ -457,6 +514,62 @@ class AdminProductsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageProduct.fromJson(value)) as PageProduct;
+    
+    }
+    return null;
+  }
+
+  /// 搜索商品安全摘要
+  ///
+  /// 固定分頁且不返回賣家、取貨位置或採購機密
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [AdminProductSearchRequest] adminProductSearchRequest:
+  Future<Response> searchSummariesWithHttpInfo({ AdminProductSearchRequest? adminProductSearchRequest, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/admin/products/summary/search';
+
+    // ignore: prefer_final_locals
+    Object? postBody = adminProductSearchRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// 搜索商品安全摘要
+  ///
+  /// 固定分頁且不返回賣家、取貨位置或採購機密
+  ///
+  /// Parameters:
+  ///
+  /// * [AdminProductSearchRequest] adminProductSearchRequest:
+  Future<PageAdminProductSummaryResponse?> searchSummaries({ AdminProductSearchRequest? adminProductSearchRequest, }) async {
+    final response = await searchSummariesWithHttpInfo( adminProductSearchRequest: adminProductSearchRequest, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => PageAdminProductSummaryResponse.fromJson(value)) as PageAdminProductSummaryResponse;
     
     }
     return null;
