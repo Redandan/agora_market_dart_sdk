@@ -74,7 +74,7 @@ class VerificationCodeLoginApi {
 
   /// 驗證碼登入
   ///
-  /// 驗證 Bot 傳送的 4 位驗證碼並完成登入
+  /// 驗證 Bot 傳送的 6 位驗證碼並完成登入
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -108,7 +108,7 @@ class VerificationCodeLoginApi {
 
   /// 驗證碼登入
   ///
-  /// 驗證 Bot 傳送的 4 位驗證碼並完成登入
+  /// 驗證 Bot 傳送的 6 位驗證碼並完成登入
   ///
   /// Parameters:
   ///

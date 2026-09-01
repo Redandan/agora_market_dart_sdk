@@ -13333,7 +13333,7 @@
           "verification-code-login"
         ],
         "summary": "驗證碼登入",
-        "description": "驗證 Bot 傳送的 4 位驗證碼並完成登入",
+        "description": "驗證 Bot 傳送的 6 位驗證碼並完成登入",
         "operationId": "verifyCode",
         "requestBody": {
           "content": {
@@ -50103,7 +50103,8 @@
           },
           "verificationCode": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "pattern": "\\d{6}"
           }
         }
       },
