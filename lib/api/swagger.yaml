@@ -16439,7 +16439,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PageAdminTransactionSummaryResponse"
                 }
@@ -16475,7 +16475,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PageAdminStakingSummaryResponse"
                 }
@@ -16511,7 +16511,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PageAdminTransactionSummaryResponse"
                 }
@@ -16547,7 +16547,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PageAdminRechargeSummaryResponse"
                 }
@@ -16583,7 +16583,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PageAdminInterestSummaryResponse"
                 }
@@ -16619,7 +16619,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PageAdminBetRecordSummaryResponse"
                 }
@@ -35657,14 +35657,14 @@
             "description": "最後更新時間",
             "example": "2024-01-01T10:00:00"
           },
-          "homeDelivery": {
-            "type": "boolean"
+          "fullAddress": {
+            "type": "string"
           },
           "formattedAddress": {
             "type": "string"
           },
-          "fullAddress": {
-            "type": "string"
+          "homeDelivery": {
+            "type": "boolean"
           },
           "logisticsDescription": {
             "type": "string"
@@ -37651,6 +37651,12 @@
             "type": "number",
             "description": "免运费门槛USDT金额"
           },
+          "minimumShippingFee": {
+            "type": "number"
+          },
+          "defaultShippingFee": {
+            "type": "number"
+          },
           "imageUrls": {
             "type": "array",
             "items": {
@@ -37668,17 +37674,17 @@
             },
             "uniqueItems": true
           },
-          "minimumShippingFee": {
-            "type": "number"
-          },
-          "defaultShippingFee": {
-            "type": "number"
-          },
           "stockLow": {
             "type": "boolean"
           },
           "stockBelowMinimum": {
             "type": "boolean"
+          },
+          "pickupServiceTypeFees": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
           },
           "pickupServiceTypes": {
             "type": "array",
@@ -37694,12 +37700,6 @@
                 "OK_MART",
                 "PLATFORM_DELIVERY"
               ]
-            }
-          },
-          "pickupServiceTypeFees": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "number"
             }
           },
           "shippingFee": {
@@ -42910,6 +42910,10 @@
               "type": "string"
             }
           },
+          "sourceRegion": {
+            "type": "string",
+            "description": "Issue #519 compatibility alias for suggestedSourceRegion"
+          },
           "category": {
             "type": "string",
             "description": "Issue #519 compatibility alias for suggestedCategory",
@@ -42949,10 +42953,6 @@
           "sourcePlatform": {
             "type": "string",
             "description": "Issue #519 compatibility alias for suggestedSourcePlatform"
-          },
-          "sourceRegion": {
-            "type": "string",
-            "description": "Issue #519 compatibility alias for suggestedSourceRegion"
           },
           "confidence": {
             "type": "number",
@@ -44911,14 +44911,14 @@
             "format": "date-time",
             "description": "複審申請被拒絕時間"
           },
-          "imageUrls": {
+          "sellerReplyImageUrls": {
             "type": "array",
             "items": {
               "type": "string"
             },
             "uniqueItems": true
           },
-          "sellerReplyImageUrls": {
+          "imageUrls": {
             "type": "array",
             "items": {
               "type": "string"
