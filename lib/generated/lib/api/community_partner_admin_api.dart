@@ -626,7 +626,7 @@ class CommunityPartnerAdminApi {
   /// * [int] partnerId (required):
   ///
   /// * [String] status (required):
-  Future<Response> updateStatus1WithHttpInfo(int partnerId, String status,) async {
+  Future<Response> updateStatus2WithHttpInfo(int partnerId, String status,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/community-partners/{partnerId}/status'
       .replaceAll('{partnerId}', partnerId.toString());
@@ -661,8 +661,8 @@ class CommunityPartnerAdminApi {
   /// * [int] partnerId (required):
   ///
   /// * [String] status (required):
-  Future<CommunityPartnerResponse?> updateStatus1(int partnerId, String status,) async {
-    final response = await updateStatus1WithHttpInfo(partnerId, status,);
+  Future<CommunityPartnerResponse?> updateStatus2(int partnerId, String status,) async {
+    final response = await updateStatus2WithHttpInfo(partnerId, status,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

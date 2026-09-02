@@ -25,7 +25,7 @@ class DeliveryApi {
   /// Parameters:
   ///
   /// * [AcceptOrderParam] acceptOrderParam (required):
-  Future<Response> acceptOrderWithHttpInfo(AcceptOrderParam acceptOrderParam,) async {
+  Future<Response> acceptOrder1WithHttpInfo(AcceptOrderParam acceptOrderParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/delivery/accept';
 
@@ -57,8 +57,8 @@ class DeliveryApi {
   /// Parameters:
   ///
   /// * [AcceptOrderParam] acceptOrderParam (required):
-  Future<Deliveryer?> acceptOrder(AcceptOrderParam acceptOrderParam,) async {
-    final response = await acceptOrderWithHttpInfo(acceptOrderParam,);
+  Future<Deliveryer?> acceptOrder1(AcceptOrderParam acceptOrderParam,) async {
+    final response = await acceptOrder1WithHttpInfo(acceptOrderParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -190,7 +190,7 @@ class CurrentPartnerV2ControllerApi {
   /// Read fail-closed current partner capabilities
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> capabilities2WithHttpInfo() async {
+  Future<Response> capabilities3WithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/community-partners/me/v2/capabilities';
 
@@ -216,8 +216,8 @@ class CurrentPartnerV2ControllerApi {
   }
 
   /// Read fail-closed current partner capabilities
-  Future<CurrentPartnerCapabilitiesResponse?> capabilities2() async {
-    final response = await capabilities2WithHttpInfo();
+  Future<CurrentPartnerCapabilitiesResponse?> capabilities3() async {
+    final response = await capabilities3WithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -290,7 +290,7 @@ class CurrentPartnerV2ControllerApi {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<Response> operation4WithHttpInfo(String operationId,) async {
+  Future<Response> operation5WithHttpInfo(String operationId,) async {
     // ignore: prefer_const_declarations
     final path = r'/community-partners/me/v2/operations/{operationId}'
       .replaceAll('{operationId}', operationId);
@@ -321,8 +321,8 @@ class CurrentPartnerV2ControllerApi {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<CurrentPartnerOperationReceiptResponse?> operation4(String operationId,) async {
-    final response = await operation4WithHttpInfo(operationId,);
+  Future<CurrentPartnerOperationReceiptResponse?> operation5(String operationId,) async {
+    final response = await operation5WithHttpInfo(operationId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -2694,6 +2694,294 @@
         ]
       }
     },
+    "/delivery/me/v2/status/operations/{operationId}": {
+      "put": {
+        "tags": [
+          "current-delivery-operations-v-2-controller"
+        ],
+        "summary": "Update current courier working status with exact replay",
+        "operationId": "updateStatus",
+        "parameters": [
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurrentDeliveryStatusUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Working status committed or replayed",
+            "headers": {
+              "Mutation-Replayed": {
+                "style": "simple",
+                "schema": {}
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentDeliveryOperationReceiptResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status, confirmation or operation ID"
+          },
+          "403": {
+            "description": "Authentication required"
+          },
+          "404": {
+            "description": "Current courier not found"
+          },
+          "409": {
+            "description": "Active task blocks status change or operation ID was reused"
+          },
+          "503": {
+            "description": "Policy or status writes are disabled"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/delivery/me/v2/orders/{orderId}/transition/operations/{operationId}": {
+      "put": {
+        "tags": [
+          "current-delivery-operations-v-2-controller"
+        ],
+        "summary": "Advance one owned delivery task through the guarded state machine",
+        "operationId": "transitionOrder",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurrentDeliveryOrderTransitionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Task transition committed or replayed",
+            "headers": {
+              "Mutation-Replayed": {
+                "style": "simple",
+                "schema": {}
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentDeliveryOperationReceiptResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid target, confirmation or operation ID"
+          },
+          "403": {
+            "description": "Authentication required"
+          },
+          "404": {
+            "description": "Owned active task not found"
+          },
+          "409": {
+            "description": "Task state changed or operation ID was reused"
+          },
+          "503": {
+            "description": "Policy or order writes are disabled"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/delivery/me/v2/orders/{orderId}/accept/operations/{operationId}": {
+      "put": {
+        "tags": [
+          "current-delivery-operations-v-2-controller"
+        ],
+        "summary": "Atomically accept one available delivery task with exact replay",
+        "operationId": "acceptOrder",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurrentDeliveryOrderAcceptRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Task acceptance committed or replayed",
+            "headers": {
+              "Mutation-Replayed": {
+                "style": "simple",
+                "schema": {}
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentDeliveryOperationReceiptResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid confirmation or operation ID"
+          },
+          "403": {
+            "description": "Authentication required"
+          },
+          "404": {
+            "description": "Eligible task or current courier not found"
+          },
+          "409": {
+            "description": "Task already claimed, active task exists or operation ID was reused"
+          },
+          "503": {
+            "description": "Policy or order writes are disabled"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/delivery/me/v2/location/operations/{operationId}": {
+      "put": {
+        "tags": [
+          "current-delivery-operations-v-2-controller"
+        ],
+        "summary": "Update current courier work location with exact replay",
+        "operationId": "updateLocation",
+        "parameters": [
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurrentDeliveryLocationUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Work location committed or replayed",
+            "headers": {
+              "Mutation-Replayed": {
+                "style": "simple",
+                "schema": {}
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentDeliveryOperationReceiptResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid coordinate, confirmation or operation ID"
+          },
+          "403": {
+            "description": "Authentication required"
+          },
+          "404": {
+            "description": "Current courier not found"
+          },
+          "409": {
+            "description": "Operation ID was reused"
+          },
+          "503": {
+            "description": "Policy or status writes are disabled"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/delivery/me/registration": {
       "get": {
         "tags": [
@@ -12150,7 +12438,7 @@
         ],
         "summary": "配送員接單",
         "description": "配送員接受配送任務",
-        "operationId": "acceptOrder",
+        "operationId": "acceptOrder_1",
         "requestBody": {
           "content": {
             "application/json": {
@@ -17640,7 +17928,7 @@
           "admin-demand-pool"
         ],
         "summary": "Admin update demand status or close demand",
-        "operationId": "updateStatus",
+        "operationId": "updateStatus_1",
         "parameters": [
           {
             "name": "demandId",
@@ -18075,7 +18363,7 @@
           "Community Partner Admin"
         ],
         "summary": "Update community partner status",
-        "operationId": "updateStatus_1",
+        "operationId": "updateStatus_2",
         "parameters": [
           {
             "name": "partnerId",
@@ -23822,6 +24110,113 @@
         }
       }
     },
+    "/delivery/me/v2/operations/{operationId}": {
+      "get": {
+        "tags": [
+          "current-delivery-operations-v-2-controller"
+        ],
+        "summary": "Read one owned durable delivery operation receipt",
+        "operationId": "operation_4",
+        "parameters": [
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Owned committed delivery receipt",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentDeliveryOperationReceiptResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid operation ID"
+          },
+          "403": {
+            "description": "Authentication required"
+          },
+          "404": {
+            "description": "Owned receipt not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/delivery/me/v2/capabilities": {
+      "get": {
+        "tags": [
+          "current-delivery-operations-v-2-controller"
+        ],
+        "summary": "Read fail-closed current courier operation capabilities",
+        "operationId": "capabilities_2",
+        "responses": {
+          "200": {
+            "description": "Current delivery operation gates",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentDeliveryOperationsCapabilitiesResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Authentication required"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/delivery/me/v2/board": {
+      "get": {
+        "tags": [
+          "current-delivery-operations-v-2-controller"
+        ],
+        "summary": "Read the current courier work board without customer identity",
+        "operationId": "board",
+        "responses": {
+          "200": {
+            "description": "Identity-minimized current courier board",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentDeliveryBoardResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Authentication required"
+          },
+          "404": {
+            "description": "Current user not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/delivery/available-orders": {
       "get": {
         "tags": [
@@ -24162,7 +24557,7 @@
           "current-partner-v-2-controller"
         ],
         "summary": "Read one owned durable current partner operation receipt",
-        "operationId": "operation_4",
+        "operationId": "operation_5",
         "parameters": [
           {
             "name": "operationId",
@@ -24208,7 +24603,7 @@
           "current-partner-v-2-controller"
         ],
         "summary": "Read fail-closed current partner capabilities",
-        "operationId": "capabilities_2",
+        "operationId": "capabilities_3",
         "responses": {
           "200": {
             "description": "Read-only capability boundary",
@@ -24639,7 +25034,7 @@
           "current-chat-v-2-controller"
         ],
         "summary": "Read one durable current-member chat operation receipt",
-        "operationId": "operation_5",
+        "operationId": "operation_6",
         "parameters": [
           {
             "name": "operationId",
@@ -24684,7 +25079,7 @@
           "current-chat-v-2-controller"
         ],
         "summary": "Read fail-closed current-member chat V2 capabilities",
-        "operationId": "capabilities_3",
+        "operationId": "capabilities_4",
         "responses": {
           "200": {
             "description": "Current-member chat capabilities",
@@ -25026,7 +25421,7 @@
           "current-betting-v-2-controller"
         ],
         "summary": "Read one owned durable bet-placement receipt",
-        "operationId": "operation_6",
+        "operationId": "operation_7",
         "parameters": [
           {
             "name": "operationId",
@@ -25159,7 +25554,7 @@
           "current-betting-v-2-controller"
         ],
         "summary": "Read fail-closed current-member betting capabilities",
-        "operationId": "capabilities_4",
+        "operationId": "capabilities_5",
         "responses": {
           "200": {
             "description": "Current betting capabilities",
@@ -25550,7 +25945,7 @@
           "Guarded admin withdrawal V2"
         ],
         "summary": "Read one actor-owned durable admin withdrawal receipt",
-        "operationId": "operation_7",
+        "operationId": "operation_8",
         "parameters": [
           {
             "name": "operationId",
@@ -25596,7 +25991,7 @@
           "Guarded admin withdrawal V2"
         ],
         "summary": "Read fail-closed admin withdrawal operation gates",
-        "operationId": "capabilities_5",
+        "operationId": "capabilities_6",
         "responses": {
           "200": {
             "description": "Fail-closed operation gates",
@@ -27179,7 +27574,7 @@
           "admin-messaging-v-2-controller"
         ],
         "summary": "Read one durable ADMIN batch-message operation receipt",
-        "operationId": "operation_8",
+        "operationId": "operation_9",
         "parameters": [
           {
             "name": "operationId",
@@ -27225,7 +27620,7 @@
           "admin-messaging-v-2-controller"
         ],
         "summary": "Read fail-closed ADMIN messaging V2 capabilities",
-        "operationId": "capabilities_6",
+        "operationId": "capabilities_7",
         "responses": {
           "200": {
             "description": "ADMIN messaging capabilities",
@@ -27464,7 +27859,7 @@
           "admin-knowledge-v-2-controller"
         ],
         "summary": "Read one durable ADMIN knowledge operation outcome",
-        "operationId": "operation_9",
+        "operationId": "operation_10",
         "parameters": [
           {
             "name": "admin",
@@ -28145,7 +28540,7 @@
           "admin-betting-v-2-controller"
         ],
         "summary": "Read one owned durable ADMIN betting operation receipt",
-        "operationId": "operation_10",
+        "operationId": "operation_11",
         "parameters": [
           {
             "name": "operationId",
@@ -28191,7 +28586,7 @@
           "admin-betting-v-2-controller"
         ],
         "summary": "Read fail-closed ADMIN betting capabilities",
-        "operationId": "capabilities_7",
+        "operationId": "capabilities_8",
         "responses": {
           "200": {
             "description": "Read-only capability boundary",
@@ -32179,6 +32574,112 @@
           "operationId",
           "productId",
           "status"
+        ]
+      },
+      "CurrentDeliveryStatusUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "confirmed": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "enabled"
+        ]
+      },
+      "CurrentDeliveryOperationReceiptResponse": {
+        "type": "object",
+        "description": "Owned identity-minimized delivery operation receipt",
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "operationType": {
+            "type": "string",
+            "enum": [
+              "STATUS_UPDATE",
+              "LOCATION_UPDATE",
+              "ORDER_ACCEPT",
+              "ORDER_TRANSITION"
+            ]
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "deliveryStatus": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "PICKING_UP",
+              "DELIVERING",
+              "DELIVERED",
+              "CANCELLED"
+            ]
+          },
+          "workingEnabled": {
+            "type": "boolean"
+          },
+          "locationUpdated": {
+            "type": "boolean"
+          },
+          "completedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "CurrentDeliveryOrderTransitionRequest": {
+        "type": "object",
+        "properties": {
+          "targetStatus": {
+            "type": "string",
+            "enum": [
+              "DELIVERING",
+              "DELIVERED"
+            ]
+          },
+          "confirmed": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "targetStatus"
+        ]
+      },
+      "CurrentDeliveryOrderAcceptRequest": {
+        "type": "object",
+        "properties": {
+          "confirmed": {
+            "type": "boolean"
+          }
+        }
+      },
+      "CurrentDeliveryLocationUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "type": "number",
+            "format": "double",
+            "maximum": 90.0,
+            "minimum": -90.0
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double",
+            "maximum": 180.0,
+            "minimum": -180.0
+          },
+          "confirmed": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "latitude",
+          "longitude"
         ]
       },
       "CurrentDeliveryRegistrationRequest": {
@@ -61163,13 +61664,13 @@
             "type": "integer",
             "format": "int32"
           },
+          "outOfStock": {
+            "type": "boolean"
+          },
           "lowStock": {
             "type": "boolean"
           },
           "belowMinimum": {
-            "type": "boolean"
-          },
-          "outOfStock": {
             "type": "boolean"
           }
         }
@@ -63111,6 +63612,82 @@
           "updatedAt": {
             "type": "string",
             "format": "date-time"
+          }
+        }
+      },
+      "CurrentDeliveryOperationsCapabilitiesResponse": {
+        "type": "object",
+        "description": "Fail-closed current courier operation capabilities",
+        "properties": {
+          "statusUpdatesAvailable": {
+            "type": "boolean"
+          },
+          "locationUpdatesAvailable": {
+            "type": "boolean"
+          },
+          "orderOperationsAvailable": {
+            "type": "boolean"
+          },
+          "blockers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "CurrentDeliveryAvailableOrderResponse": {
+        "type": "object",
+        "description": "Identity-minimized delivery task offered to the current courier",
+        "properties": {
+          "orderId": {
+            "type": "string"
+          },
+          "pickupPostalCode": {
+            "type": "string"
+          },
+          "shippingPostalCode": {
+            "type": "string"
+          },
+          "pickupDistance": {
+            "type": "number",
+            "format": "double"
+          },
+          "deliveryDistance": {
+            "type": "number",
+            "format": "double"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "CurrentDeliveryBoardResponse": {
+        "type": "object",
+        "description": "Current courier work board without coordinates or customer identity",
+        "properties": {
+          "registered": {
+            "type": "boolean"
+          },
+          "workingEnabled": {
+            "type": "boolean"
+          },
+          "locationReady": {
+            "type": "boolean"
+          },
+          "activeOrderId": {
+            "type": "string"
+          },
+          "availableOrders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CurrentDeliveryAvailableOrderResponse"
+            }
           }
         }
       },

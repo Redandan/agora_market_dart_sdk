@@ -11,30 +11,30 @@
 part of openapi.api;
 
 
-class GuardedAdminWithdrawalV2Api {
-  GuardedAdminWithdrawalV2Api([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+class CurrentDeliveryOperationsV2ControllerApi {
+  CurrentDeliveryOperationsV2ControllerApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
-  /// Approve a manually reviewed withdrawal back into the pending queue
+  /// Atomically accept one available delivery task with exact replay
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [String] withdrawRef (required):
+  /// * [String] orderId (required):
   ///
   /// * [String] operationId (required):
   ///
-  /// * [AdminWithdrawalV2ApproveReviewRequest] adminWithdrawalV2ApproveReviewRequest (required):
-  Future<Response> approveReviewWithHttpInfo(String withdrawRef, String operationId, AdminWithdrawalV2ApproveReviewRequest adminWithdrawalV2ApproveReviewRequest,) async {
+  /// * [CurrentDeliveryOrderAcceptRequest] currentDeliveryOrderAcceptRequest (required):
+  Future<Response> acceptOrderWithHttpInfo(String orderId, String operationId, CurrentDeliveryOrderAcceptRequest currentDeliveryOrderAcceptRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/admin/withdraws/v2/{withdrawRef}/review-approvals/{operationId}'
-      .replaceAll('{withdrawRef}', withdrawRef)
+    final path = r'/delivery/me/v2/orders/{orderId}/accept/operations/{operationId}'
+      .replaceAll('{orderId}', orderId)
       .replaceAll('{operationId}', operationId);
 
     // ignore: prefer_final_locals
-    Object? postBody = adminWithdrawalV2ApproveReviewRequest;
+    Object? postBody = currentDeliveryOrderAcceptRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -54,17 +54,17 @@ class GuardedAdminWithdrawalV2Api {
     );
   }
 
-  /// Approve a manually reviewed withdrawal back into the pending queue
+  /// Atomically accept one available delivery task with exact replay
   ///
   /// Parameters:
   ///
-  /// * [String] withdrawRef (required):
+  /// * [String] orderId (required):
   ///
   /// * [String] operationId (required):
   ///
-  /// * [AdminWithdrawalV2ApproveReviewRequest] adminWithdrawalV2ApproveReviewRequest (required):
-  Future<AdminWithdrawalV2OperationReceiptResponse?> approveReview(String withdrawRef, String operationId, AdminWithdrawalV2ApproveReviewRequest adminWithdrawalV2ApproveReviewRequest,) async {
-    final response = await approveReviewWithHttpInfo(withdrawRef, operationId, adminWithdrawalV2ApproveReviewRequest,);
+  /// * [CurrentDeliveryOrderAcceptRequest] currentDeliveryOrderAcceptRequest (required):
+  Future<CurrentDeliveryOperationReceiptResponse?> acceptOrder(String orderId, String operationId, CurrentDeliveryOrderAcceptRequest currentDeliveryOrderAcceptRequest,) async {
+    final response = await acceptOrderWithHttpInfo(orderId, operationId, currentDeliveryOrderAcceptRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -72,18 +72,18 @@ class GuardedAdminWithdrawalV2Api {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AdminWithdrawalV2OperationReceiptResponse.fromJson(value)) as AdminWithdrawalV2OperationReceiptResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CurrentDeliveryOperationReceiptResponse.fromJson(value)) as CurrentDeliveryOperationReceiptResponse;
     
     }
     return null;
   }
 
-  /// Read fail-closed admin withdrawal operation gates
+  /// Read the current courier work board without customer identity
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> capabilities6WithHttpInfo() async {
+  Future<Response> boardWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/admin/withdraws/v2/capabilities';
+    final path = r'/delivery/me/v2/board';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -106,9 +106,9 @@ class GuardedAdminWithdrawalV2Api {
     );
   }
 
-  /// Read fail-closed admin withdrawal operation gates
-  Future<AdminWithdrawalV2CapabilitiesResponse?> capabilities6() async {
-    final response = await capabilities6WithHttpInfo();
+  /// Read the current courier work board without customer identity
+  Future<CurrentDeliveryBoardResponse?> board() async {
+    final response = await boardWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -116,42 +116,32 @@ class GuardedAdminWithdrawalV2Api {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AdminWithdrawalV2CapabilitiesResponse.fromJson(value)) as AdminWithdrawalV2CapabilitiesResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CurrentDeliveryBoardResponse.fromJson(value)) as CurrentDeliveryBoardResponse;
     
     }
     return null;
   }
 
-  /// Claim a pending withdrawal for external custody processing
+  /// Read fail-closed current courier operation capabilities
   ///
   /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] withdrawRef (required):
-  ///
-  /// * [String] operationId (required):
-  ///
-  /// * [AdminWithdrawalV2ClaimRequest] adminWithdrawalV2ClaimRequest (required):
-  Future<Response> claimWithHttpInfo(String withdrawRef, String operationId, AdminWithdrawalV2ClaimRequest adminWithdrawalV2ClaimRequest,) async {
+  Future<Response> capabilities2WithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/admin/withdraws/v2/{withdrawRef}/claims/{operationId}'
-      .replaceAll('{withdrawRef}', withdrawRef)
-      .replaceAll('{operationId}', operationId);
+    final path = r'/delivery/me/v2/capabilities';
 
     // ignore: prefer_final_locals
-    Object? postBody = adminWithdrawalV2ClaimRequest;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>['application/json'];
+    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
       path,
-      'PUT',
+      'GET',
       queryParams,
       postBody,
       headerParams,
@@ -160,17 +150,9 @@ class GuardedAdminWithdrawalV2Api {
     );
   }
 
-  /// Claim a pending withdrawal for external custody processing
-  ///
-  /// Parameters:
-  ///
-  /// * [String] withdrawRef (required):
-  ///
-  /// * [String] operationId (required):
-  ///
-  /// * [AdminWithdrawalV2ClaimRequest] adminWithdrawalV2ClaimRequest (required):
-  Future<AdminWithdrawalV2OperationReceiptResponse?> claim(String withdrawRef, String operationId, AdminWithdrawalV2ClaimRequest adminWithdrawalV2ClaimRequest,) async {
-    final response = await claimWithHttpInfo(withdrawRef, operationId, adminWithdrawalV2ClaimRequest,);
+  /// Read fail-closed current courier operation capabilities
+  Future<CurrentDeliveryOperationsCapabilitiesResponse?> capabilities2() async {
+    final response = await capabilities2WithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -178,22 +160,22 @@ class GuardedAdminWithdrawalV2Api {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AdminWithdrawalV2OperationReceiptResponse.fromJson(value)) as AdminWithdrawalV2OperationReceiptResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CurrentDeliveryOperationsCapabilitiesResponse.fromJson(value)) as CurrentDeliveryOperationsCapabilitiesResponse;
     
     }
     return null;
   }
 
-  /// Read one actor-owned durable admin withdrawal receipt
+  /// Read one owned durable delivery operation receipt
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<Response> operation8WithHttpInfo(String operationId,) async {
+  Future<Response> operation4WithHttpInfo(String operationId,) async {
     // ignore: prefer_const_declarations
-    final path = r'/admin/withdraws/v2/operations/{operationId}'
+    final path = r'/delivery/me/v2/operations/{operationId}'
       .replaceAll('{operationId}', operationId);
 
     // ignore: prefer_final_locals
@@ -217,13 +199,13 @@ class GuardedAdminWithdrawalV2Api {
     );
   }
 
-  /// Read one actor-owned durable admin withdrawal receipt
+  /// Read one owned durable delivery operation receipt
   ///
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<AdminWithdrawalV2OperationReceiptResponse?> operation8(String operationId,) async {
-    final response = await operation8WithHttpInfo(operationId,);
+  Future<CurrentDeliveryOperationReceiptResponse?> operation4(String operationId,) async {
+    final response = await operation4WithHttpInfo(operationId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -231,31 +213,31 @@ class GuardedAdminWithdrawalV2Api {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AdminWithdrawalV2OperationReceiptResponse.fromJson(value)) as AdminWithdrawalV2OperationReceiptResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CurrentDeliveryOperationReceiptResponse.fromJson(value)) as CurrentDeliveryOperationReceiptResponse;
     
     }
     return null;
   }
 
-  /// Reject and atomically refund a not-yet-processing withdrawal
+  /// Advance one owned delivery task through the guarded state machine
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [String] withdrawRef (required):
+  /// * [String] orderId (required):
   ///
   /// * [String] operationId (required):
   ///
-  /// * [AdminWithdrawalV2RejectRequest] adminWithdrawalV2RejectRequest (required):
-  Future<Response> rejectWithHttpInfo(String withdrawRef, String operationId, AdminWithdrawalV2RejectRequest adminWithdrawalV2RejectRequest,) async {
+  /// * [CurrentDeliveryOrderTransitionRequest] currentDeliveryOrderTransitionRequest (required):
+  Future<Response> transitionOrderWithHttpInfo(String orderId, String operationId, CurrentDeliveryOrderTransitionRequest currentDeliveryOrderTransitionRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/admin/withdraws/v2/{withdrawRef}/rejections/{operationId}'
-      .replaceAll('{withdrawRef}', withdrawRef)
+    final path = r'/delivery/me/v2/orders/{orderId}/transition/operations/{operationId}'
+      .replaceAll('{orderId}', orderId)
       .replaceAll('{operationId}', operationId);
 
     // ignore: prefer_final_locals
-    Object? postBody = adminWithdrawalV2RejectRequest;
+    Object? postBody = currentDeliveryOrderTransitionRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -275,17 +257,17 @@ class GuardedAdminWithdrawalV2Api {
     );
   }
 
-  /// Reject and atomically refund a not-yet-processing withdrawal
+  /// Advance one owned delivery task through the guarded state machine
   ///
   /// Parameters:
   ///
-  /// * [String] withdrawRef (required):
+  /// * [String] orderId (required):
   ///
   /// * [String] operationId (required):
   ///
-  /// * [AdminWithdrawalV2RejectRequest] adminWithdrawalV2RejectRequest (required):
-  Future<AdminWithdrawalV2OperationReceiptResponse?> reject(String withdrawRef, String operationId, AdminWithdrawalV2RejectRequest adminWithdrawalV2RejectRequest,) async {
-    final response = await rejectWithHttpInfo(withdrawRef, operationId, adminWithdrawalV2RejectRequest,);
+  /// * [CurrentDeliveryOrderTransitionRequest] currentDeliveryOrderTransitionRequest (required):
+  Future<CurrentDeliveryOperationReceiptResponse?> transitionOrder(String orderId, String operationId, CurrentDeliveryOrderTransitionRequest currentDeliveryOrderTransitionRequest,) async {
+    final response = await transitionOrderWithHttpInfo(orderId, operationId, currentDeliveryOrderTransitionRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -293,83 +275,28 @@ class GuardedAdminWithdrawalV2Api {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AdminWithdrawalV2OperationReceiptResponse.fromJson(value)) as AdminWithdrawalV2OperationReceiptResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CurrentDeliveryOperationReceiptResponse.fromJson(value)) as CurrentDeliveryOperationReceiptResponse;
     
     }
     return null;
   }
 
-  /// Search a fixed-size, identity-minimized withdrawal queue
+  /// Update current courier work location with exact replay
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
-  ///
-  /// * [AdminWithdrawV2SearchRequest] adminWithdrawV2SearchRequest (required):
-  Future<Response> search1WithHttpInfo(AdminWithdrawV2SearchRequest adminWithdrawV2SearchRequest,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/admin/withdraws/v2/summary/search';
-
-    // ignore: prefer_final_locals
-    Object? postBody = adminWithdrawV2SearchRequest;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Search a fixed-size, identity-minimized withdrawal queue
-  ///
-  /// Parameters:
-  ///
-  /// * [AdminWithdrawV2SearchRequest] adminWithdrawV2SearchRequest (required):
-  Future<AdminWithdrawSummaryPageResponse?> search1(AdminWithdrawV2SearchRequest adminWithdrawV2SearchRequest,) async {
-    final response = await search1WithHttpInfo(adminWithdrawV2SearchRequest,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AdminWithdrawSummaryPageResponse.fromJson(value)) as AdminWithdrawSummaryPageResponse;
-    
-    }
-    return null;
-  }
-
-  /// Complete only after confirmed TRON USDT evidence matches the withdrawal
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] withdrawRef (required):
   ///
   /// * [String] operationId (required):
   ///
-  /// * [AdminWithdrawalV2VerifyCompletionRequest] adminWithdrawalV2VerifyCompletionRequest (required):
-  Future<Response> verifyCompletionWithHttpInfo(String withdrawRef, String operationId, AdminWithdrawalV2VerifyCompletionRequest adminWithdrawalV2VerifyCompletionRequest,) async {
+  /// * [CurrentDeliveryLocationUpdateRequest] currentDeliveryLocationUpdateRequest (required):
+  Future<Response> updateLocationWithHttpInfo(String operationId, CurrentDeliveryLocationUpdateRequest currentDeliveryLocationUpdateRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/admin/withdraws/v2/{withdrawRef}/verified-completions/{operationId}'
-      .replaceAll('{withdrawRef}', withdrawRef)
+    final path = r'/delivery/me/v2/location/operations/{operationId}'
       .replaceAll('{operationId}', operationId);
 
     // ignore: prefer_final_locals
-    Object? postBody = adminWithdrawalV2VerifyCompletionRequest;
+    Object? postBody = currentDeliveryLocationUpdateRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -389,17 +316,15 @@ class GuardedAdminWithdrawalV2Api {
     );
   }
 
-  /// Complete only after confirmed TRON USDT evidence matches the withdrawal
+  /// Update current courier work location with exact replay
   ///
   /// Parameters:
   ///
-  /// * [String] withdrawRef (required):
-  ///
   /// * [String] operationId (required):
   ///
-  /// * [AdminWithdrawalV2VerifyCompletionRequest] adminWithdrawalV2VerifyCompletionRequest (required):
-  Future<AdminWithdrawalV2OperationReceiptResponse?> verifyCompletion(String withdrawRef, String operationId, AdminWithdrawalV2VerifyCompletionRequest adminWithdrawalV2VerifyCompletionRequest,) async {
-    final response = await verifyCompletionWithHttpInfo(withdrawRef, operationId, adminWithdrawalV2VerifyCompletionRequest,);
+  /// * [CurrentDeliveryLocationUpdateRequest] currentDeliveryLocationUpdateRequest (required):
+  Future<CurrentDeliveryOperationReceiptResponse?> updateLocation(String operationId, CurrentDeliveryLocationUpdateRequest currentDeliveryLocationUpdateRequest,) async {
+    final response = await updateLocationWithHttpInfo(operationId, currentDeliveryLocationUpdateRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -407,7 +332,64 @@ class GuardedAdminWithdrawalV2Api {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => AdminWithdrawalV2OperationReceiptResponse.fromJson(value)) as AdminWithdrawalV2OperationReceiptResponse;
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CurrentDeliveryOperationReceiptResponse.fromJson(value)) as CurrentDeliveryOperationReceiptResponse;
+    
+    }
+    return null;
+  }
+
+  /// Update current courier working status with exact replay
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] operationId (required):
+  ///
+  /// * [CurrentDeliveryStatusUpdateRequest] currentDeliveryStatusUpdateRequest (required):
+  Future<Response> updateStatusWithHttpInfo(String operationId, CurrentDeliveryStatusUpdateRequest currentDeliveryStatusUpdateRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/delivery/me/v2/status/operations/{operationId}'
+      .replaceAll('{operationId}', operationId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = currentDeliveryStatusUpdateRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Update current courier working status with exact replay
+  ///
+  /// Parameters:
+  ///
+  /// * [String] operationId (required):
+  ///
+  /// * [CurrentDeliveryStatusUpdateRequest] currentDeliveryStatusUpdateRequest (required):
+  Future<CurrentDeliveryOperationReceiptResponse?> updateStatus(String operationId, CurrentDeliveryStatusUpdateRequest currentDeliveryStatusUpdateRequest,) async {
+    final response = await updateStatusWithHttpInfo(operationId, currentDeliveryStatusUpdateRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CurrentDeliveryOperationReceiptResponse.fromJson(value)) as CurrentDeliveryOperationReceiptResponse;
     
     }
     return null;

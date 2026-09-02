@@ -155,11 +155,11 @@ Class | Method | HTTP request | Description
 *AdminAiControllerApi* | [**getConversionStats**](doc//AdminAiControllerApi.md#getconversionstats) | **GET** /admin/ai/conversion/stats | 查詢 AI 群組對話轉化效率統計（可按群組 + 日期區間篩選）
 *AdminAiControllerApi* | [**getStats2**](doc//AdminAiControllerApi.md#getstats2) | **GET** /admin/ai/stats | 
 *AdminBettingV2ControllerApi* | [**cancel1**](doc//AdminBettingV2ControllerApi.md#cancel1) | **PUT** /admin/betting-markets/v2/{marketId}/cancel/operations/{operationId} | Cancel one ADMIN betting market and refund atomically with exact replay
-*AdminBettingV2ControllerApi* | [**capabilities7**](doc//AdminBettingV2ControllerApi.md#capabilities7) | **GET** /admin/betting-markets/v2/capabilities | Read fail-closed ADMIN betting capabilities
+*AdminBettingV2ControllerApi* | [**capabilities8**](doc//AdminBettingV2ControllerApi.md#capabilities8) | **GET** /admin/betting-markets/v2/capabilities | Read fail-closed ADMIN betting capabilities
 *AdminBettingV2ControllerApi* | [**close**](doc//AdminBettingV2ControllerApi.md#close) | **PUT** /admin/betting-markets/v2/{marketId}/close/operations/{operationId} | Close one ADMIN betting market with exact replay and receipt recovery
 *AdminBettingV2ControllerApi* | [**create2**](doc//AdminBettingV2ControllerApi.md#create2) | **PUT** /admin/betting-markets/v2/create/operations/{operationId} | Create one ADMIN betting market with exact replay and receipt recovery
 *AdminBettingV2ControllerApi* | [**detail1**](doc//AdminBettingV2ControllerApi.md#detail1) | **GET** /admin/betting-markets/v2/{marketId} | Read identity-minimized ADMIN betting market detail
-*AdminBettingV2ControllerApi* | [**operation10**](doc//AdminBettingV2ControllerApi.md#operation10) | **GET** /admin/betting-markets/v2/operations/{operationId} | Read one owned durable ADMIN betting operation receipt
+*AdminBettingV2ControllerApi* | [**operation11**](doc//AdminBettingV2ControllerApi.md#operation11) | **GET** /admin/betting-markets/v2/operations/{operationId} | Read one owned durable ADMIN betting operation receipt
 *AdminBettingV2ControllerApi* | [**resolve1**](doc//AdminBettingV2ControllerApi.md#resolve1) | **PUT** /admin/betting-markets/v2/{marketId}/resolve/operations/{operationId} | Resolve one ADMIN betting market atomically with exact replay
 *AdminBettingV2ControllerApi* | [**search4**](doc//AdminBettingV2ControllerApi.md#search4) | **POST** /admin/betting-markets/v2/search | Search fixed-size identity-minimized ADMIN betting markets
 *AdminBotControllerApi* | [**refreshBotCommands**](doc//AdminBotControllerApi.md#refreshbotcommands) | **POST** /admin/bot/refresh-commands | 
@@ -182,7 +182,7 @@ Class | Method | HTTP request | Description
 *AdminDemandPoolApi* | [**reviewOffer**](doc//AdminDemandPoolApi.md#reviewoffer) | **POST** /admin/demands/{demandId}/offers/{offerId}/review | Admin review seller offer before buyer visibility
 *AdminDemandPoolApi* | [**search3**](doc//AdminDemandPoolApi.md#search3) | **POST** /admin/demands/search | Admin search demand pool
 *AdminDemandPoolApi* | [**searchSummaries2**](doc//AdminDemandPoolApi.md#searchsummaries2) | **POST** /admin/demands/summary/search | Admin search demand pool summaries (read-only, identity minimized)
-*AdminDemandPoolApi* | [**updateStatus**](doc//AdminDemandPoolApi.md#updatestatus) | **POST** /admin/demands/{demandId}/status | Admin update demand status or close demand
+*AdminDemandPoolApi* | [**updateStatus1**](doc//AdminDemandPoolApi.md#updatestatus1) | **POST** /admin/demands/{demandId}/status | Admin update demand status or close demand
 *AdminDisputesApi* | [**aiAnalysis**](doc//AdminDisputesApi.md#aianalysis) | **POST** /admin/disputes/{disputeId}/ai-analysis | AI 仲裁建議
 *AdminDisputesApi* | [**denyAppeal**](doc//AdminDisputesApi.md#denyappeal) | **POST** /admin/disputes/{disputeId}/deny-appeal | 拒絕複審申請
 *AdminDisputesApi* | [**getDisputeDetail1**](doc//AdminDisputesApi.md#getdisputedetail1) | **GET** /admin/disputes/{disputeId} | 查看糾紛詳情
@@ -200,7 +200,7 @@ Class | Method | HTTP request | Description
 *AdminKnowledgeV2ControllerApi* | [**create1**](doc//AdminKnowledgeV2ControllerApi.md#create1) | **PUT** /admin/knowledge/v2/documents | Create or safely resume one deterministic knowledge document
 *AdminKnowledgeV2ControllerApi* | [**delete**](doc//AdminKnowledgeV2ControllerApi.md#delete) | **PUT** /admin/knowledge/v2/documents/{documentId}/deletion | Delete one expected-version knowledge document with durable recovery
 *AdminKnowledgeV2ControllerApi* | [**ignore**](doc//AdminKnowledgeV2ControllerApi.md#ignore) | **PUT** /admin/knowledge/v2/pending/{questionId}/ignore | Ignore one claimed pending question with a durable reason hash and receipt
-*AdminKnowledgeV2ControllerApi* | [**operation9**](doc//AdminKnowledgeV2ControllerApi.md#operation9) | **GET** /admin/knowledge/v2/operations/{operationId} | Read one durable ADMIN knowledge operation outcome
+*AdminKnowledgeV2ControllerApi* | [**operation10**](doc//AdminKnowledgeV2ControllerApi.md#operation10) | **GET** /admin/knowledge/v2/operations/{operationId} | Read one durable ADMIN knowledge operation outcome
 *AdminKnowledgeV2ControllerApi* | [**overview2**](doc//AdminKnowledgeV2ControllerApi.md#overview2) | **GET** /admin/knowledge/v2/overview | Read bounded identity-minimized ADMIN knowledge workbench state
 *AdminKnowledgeV2ControllerApi* | [**resolve**](doc//AdminKnowledgeV2ControllerApi.md#resolve) | **PUT** /admin/knowledge/v2/pending/{questionId}/resolution | Resolve one claimed pending question with optional deterministic knowledge upsert
 *AdminMarketplaceUiApi* | [**getProductListCarousel**](doc//AdminMarketplaceUiApi.md#getproductlistcarousel) | **GET** /admin/marketplace-ui/product-list-carousel | Get product-list activity banner admin configuration
@@ -216,8 +216,8 @@ Class | Method | HTTP request | Description
 *AdminMembersApi* | [**searchMembers**](doc//AdminMembersApi.md#searchmembers) | **POST** /admin/members/search | 搜索會員
 *AdminMembersApi* | [**updateMemberByAdmin**](doc//AdminMembersApi.md#updatememberbyadmin) | **POST** /admin/members/{memberId}/update | 更新會員信息
 *AdminMembersApi* | [**updateMemberStatus**](doc//AdminMembersApi.md#updatememberstatus) | **POST** /admin/members/{memberId}/status | 更新會員狀態
-*AdminMessagingV2ControllerApi* | [**capabilities6**](doc//AdminMessagingV2ControllerApi.md#capabilities6) | **GET** /admin/messaging/v2/capabilities | Read fail-closed ADMIN messaging V2 capabilities
-*AdminMessagingV2ControllerApi* | [**operation8**](doc//AdminMessagingV2ControllerApi.md#operation8) | **GET** /admin/messaging/v2/operations/{operationId} | Read one durable ADMIN batch-message operation receipt
+*AdminMessagingV2ControllerApi* | [**capabilities7**](doc//AdminMessagingV2ControllerApi.md#capabilities7) | **GET** /admin/messaging/v2/capabilities | Read fail-closed ADMIN messaging V2 capabilities
+*AdminMessagingV2ControllerApi* | [**operation9**](doc//AdminMessagingV2ControllerApi.md#operation9) | **GET** /admin/messaging/v2/operations/{operationId} | Read one durable ADMIN batch-message operation receipt
 *AdminMessagingV2ControllerApi* | [**sendBatch**](doc//AdminMessagingV2ControllerApi.md#sendbatch) | **PUT** /admin/messaging/v2/batches/operations/{operationId} | Atomically send one plain-text ADMIN message to a fixed recipient set
 *AdminNotificationsApi* | [**cleanupExpiredNotifications1**](doc//AdminNotificationsApi.md#cleanupexpirednotifications1) | **POST** /admin/notifications/cleanup | 清理過期通知
 *AdminNotificationsApi* | [**createBatchNotifications1**](doc//AdminNotificationsApi.md#createbatchnotifications1) | **POST** /admin/notifications/batch | 批量創建通知
@@ -389,7 +389,7 @@ Class | Method | HTTP request | Description
 *CommunityPartnerAdminApi* | [**listPartners**](doc//CommunityPartnerAdminApi.md#listpartners) | **GET** /admin/community-partners | List Telegram group owner/community partners
 *CommunityPartnerAdminApi* | [**regenerateInvitationLink**](doc//CommunityPartnerAdminApi.md#regenerateinvitationlink) | **POST** /admin/community-partners/invitations/{invitationId}/regenerate-link | Regenerate a Telegram group owner/community partner invitation link
 *CommunityPartnerAdminApi* | [**rejectApplication**](doc//CommunityPartnerAdminApi.md#rejectapplication) | **POST** /admin/community-partners/applications/{applicationId}/reject | Reject a Telegram group owner/community partner application
-*CommunityPartnerAdminApi* | [**updateStatus1**](doc//CommunityPartnerAdminApi.md#updatestatus1) | **POST** /admin/community-partners/{partnerId}/status | Update community partner status
+*CommunityPartnerAdminApi* | [**updateStatus2**](doc//CommunityPartnerAdminApi.md#updatestatus2) | **POST** /admin/community-partners/{partnerId}/status | Update community partner status
 *CommunityPartnerAdminApi* | [**upsertTelegramGroupPartner**](doc//CommunityPartnerAdminApi.md#upserttelegramgrouppartner) | **POST** /admin/community-partners/telegram-group | Create or update a Telegram group owner/community partner
 *CreatorContentControllerApi* | [**getDetail**](doc//CreatorContentControllerApi.md#getdetail) | **GET** /creator-contents/{contentId} | 
 *CreatorContentControllerApi* | [**listPublished**](doc//CreatorContentControllerApi.md#listpublished) | **GET** /creator-contents | 
@@ -401,10 +401,10 @@ Class | Method | HTTP request | Description
 *CurrentAccountWithdrawalV2Api* | [**request**](doc//CurrentAccountWithdrawalV2Api.md#request) | **PUT** /wallet/me/v2/withdrawals/requests/{operationId} | Request one USDT/TRC20 withdrawal with exact replay
 *CurrentAccountWithdrawalV2Api* | [**state1**](doc//CurrentAccountWithdrawalV2Api.md#state1) | **GET** /wallet/me/v2/withdrawals/state | Read the current account's withdrawal capability and one ongoing request
 *CurrentBettingV2ControllerApi* | [**activeMarkets**](doc//CurrentBettingV2ControllerApi.md#activemarkets) | **GET** /betting/me/v2/markets | Read one fixed-size page of currently active betting markets
-*CurrentBettingV2ControllerApi* | [**capabilities4**](doc//CurrentBettingV2ControllerApi.md#capabilities4) | **GET** /betting/me/v2/capabilities | Read fail-closed current-member betting capabilities
+*CurrentBettingV2ControllerApi* | [**capabilities5**](doc//CurrentBettingV2ControllerApi.md#capabilities5) | **GET** /betting/me/v2/capabilities | Read fail-closed current-member betting capabilities
 *CurrentBettingV2ControllerApi* | [**marketDetail**](doc//CurrentBettingV2ControllerApi.md#marketdetail) | **GET** /betting/me/v2/markets/{marketId} | Read one identity-free betting market and its current options
 *CurrentBettingV2ControllerApi* | [**myRecords**](doc//CurrentBettingV2ControllerApi.md#myrecords) | **GET** /betting/me/v2/records | Read one fixed-size page of the current member's betting records
-*CurrentBettingV2ControllerApi* | [**operation6**](doc//CurrentBettingV2ControllerApi.md#operation6) | **GET** /betting/me/v2/operations/{operationId} | Read one owned durable bet-placement receipt
+*CurrentBettingV2ControllerApi* | [**operation7**](doc//CurrentBettingV2ControllerApi.md#operation7) | **GET** /betting/me/v2/operations/{operationId} | Read one owned durable bet-placement receipt
 *CurrentBettingV2ControllerApi* | [**place**](doc//CurrentBettingV2ControllerApi.md#place) | **PUT** /betting/me/v2/placements/operations/{operationId} | Place one current-member bet with exact replay and receipt recovery
 *CurrentBuyerOrderMutationsApi* | [**getDisputeResult**](doc//CurrentBuyerOrderMutationsApi.md#getdisputeresult) | **GET** /orders/me/{orderId}/dispute-submissions/{operationId} | 查回目前買家的爭議收據
 *CurrentBuyerOrderMutationsApi* | [**getReturnRequestResult**](doc//CurrentBuyerOrderMutationsApi.md#getreturnrequestresult) | **GET** /orders/me/{orderId}/return-request-submissions/{operationId} | 查回目前買家的退貨申請收據
@@ -412,14 +412,21 @@ Class | Method | HTTP request | Description
 *CurrentBuyerOrderMutationsApi* | [**submitDispute**](doc//CurrentBuyerOrderMutationsApi.md#submitdispute) | **PUT** /orders/me/{orderId}/dispute-submissions/{operationId} | 提交目前買家的爭議
 *CurrentBuyerOrderMutationsApi* | [**submitReturnRequest**](doc//CurrentBuyerOrderMutationsApi.md#submitreturnrequest) | **PUT** /orders/me/{orderId}/return-request-submissions/{operationId} | 提交目前買家的退貨申請
 *CurrentBuyerOrderMutationsApi* | [**submitReturnShipping**](doc//CurrentBuyerOrderMutationsApi.md#submitreturnshipping) | **PUT** /orders/me/{orderId}/return-shipping-submissions/{operationId} | 提交目前買家的退貨物流
-*CurrentChatV2ControllerApi* | [**capabilities3**](doc//CurrentChatV2ControllerApi.md#capabilities3) | **GET** /chat/me/v2/capabilities | Read fail-closed current-member chat V2 capabilities
+*CurrentChatV2ControllerApi* | [**capabilities4**](doc//CurrentChatV2ControllerApi.md#capabilities4) | **GET** /chat/me/v2/capabilities | Read fail-closed current-member chat V2 capabilities
 *CurrentChatV2ControllerApi* | [**getOrCreate**](doc//CurrentChatV2ControllerApi.md#getorcreate) | **PUT** /chat/me/v2/sessions/by-partner/{partnerId}/operations/{operationId} | Idempotently get or create a member chat session
 *CurrentChatV2ControllerApi* | [**markRead1**](doc//CurrentChatV2ControllerApi.md#markread1) | **PUT** /chat/me/v2/sessions/{sessionRef}/read/operations/{operationId} | Advance the current participant read position idempotently
-*CurrentChatV2ControllerApi* | [**operation5**](doc//CurrentChatV2ControllerApi.md#operation5) | **GET** /chat/me/v2/operations/{operationId} | Read one durable current-member chat operation receipt
+*CurrentChatV2ControllerApi* | [**operation6**](doc//CurrentChatV2ControllerApi.md#operation6) | **GET** /chat/me/v2/operations/{operationId} | Read one durable current-member chat operation receipt
 *CurrentChatV2ControllerApi* | [**sendText**](doc//CurrentChatV2ControllerApi.md#sendtext) | **PUT** /chat/me/v2/sessions/{sessionRef}/messages/operations/{operationId} | Send one idempotent plain-text message in an owned session
 *CurrentChatV2ControllerApi* | [**session**](doc//CurrentChatV2ControllerApi.md#session) | **GET** /chat/me/v2/sessions/{sessionRef} | Read one owned chat session and newest-first message page
 *CurrentChatV2ControllerApi* | [**sessions**](doc//CurrentChatV2ControllerApi.md#sessions) | **GET** /chat/me/v2/sessions | List current-member chat sessions without participant IDs
 *CurrentChatV2ControllerApi* | [**setPreference**](doc//CurrentChatV2ControllerApi.md#setpreference) | **PUT** /chat/me/v2/sessions/{sessionRef}/preferences/operations/{operationId} | Set a current-participant-only chat preference idempotently
+*CurrentDeliveryOperationsV2ControllerApi* | [**acceptOrder**](doc//CurrentDeliveryOperationsV2ControllerApi.md#acceptorder) | **PUT** /delivery/me/v2/orders/{orderId}/accept/operations/{operationId} | Atomically accept one available delivery task with exact replay
+*CurrentDeliveryOperationsV2ControllerApi* | [**board**](doc//CurrentDeliveryOperationsV2ControllerApi.md#board) | **GET** /delivery/me/v2/board | Read the current courier work board without customer identity
+*CurrentDeliveryOperationsV2ControllerApi* | [**capabilities2**](doc//CurrentDeliveryOperationsV2ControllerApi.md#capabilities2) | **GET** /delivery/me/v2/capabilities | Read fail-closed current courier operation capabilities
+*CurrentDeliveryOperationsV2ControllerApi* | [**operation4**](doc//CurrentDeliveryOperationsV2ControllerApi.md#operation4) | **GET** /delivery/me/v2/operations/{operationId} | Read one owned durable delivery operation receipt
+*CurrentDeliveryOperationsV2ControllerApi* | [**transitionOrder**](doc//CurrentDeliveryOperationsV2ControllerApi.md#transitionorder) | **PUT** /delivery/me/v2/orders/{orderId}/transition/operations/{operationId} | Advance one owned delivery task through the guarded state machine
+*CurrentDeliveryOperationsV2ControllerApi* | [**updateLocation**](doc//CurrentDeliveryOperationsV2ControllerApi.md#updatelocation) | **PUT** /delivery/me/v2/location/operations/{operationId} | Update current courier work location with exact replay
+*CurrentDeliveryOperationsV2ControllerApi* | [**updateStatus**](doc//CurrentDeliveryOperationsV2ControllerApi.md#updatestatus) | **PUT** /delivery/me/v2/status/operations/{operationId} | Update current courier working status with exact replay
 *CurrentDeliveryRegistrationControllerApi* | [**getCurrent1**](doc//CurrentDeliveryRegistrationControllerApi.md#getcurrent1) | **GET** /delivery/me/registration | Read current-user courier registration state without creating a profile
 *CurrentDeliveryRegistrationControllerApi* | [**submit2**](doc//CurrentDeliveryRegistrationControllerApi.md#submit2) | **PUT** /delivery/me/registration | Create the current user's singleton courier registration with atomic terms evidence
 *CurrentDepositV2ControllerApi* | [**cancel**](doc//CurrentDepositV2ControllerApi.md#cancel) | **PUT** /wallet/me/v2/deposits/cancellations/{operationId} | Cancel one owned pending deposit with exact replay
@@ -434,9 +441,9 @@ Class | Method | HTTP request | Description
 *CurrentPartnerV2ControllerApi* | [**applications**](doc//CurrentPartnerV2ControllerApi.md#applications) | **POST** /community-partners/me/v2/applications/search | Search fixed-size current partner applications
 *CurrentPartnerV2ControllerApi* | [**applyInvitation**](doc//CurrentPartnerV2ControllerApi.md#applyinvitation) | **PUT** /community-partners/me/v2/invitations/apply/operations/{operationId} | Apply through a captured invitation with exact replay
 *CurrentPartnerV2ControllerApi* | [**cancelApplication**](doc//CurrentPartnerV2ControllerApi.md#cancelapplication) | **PUT** /community-partners/me/v2/applications/{applicationRef}/cancel/operations/{operationId} | Cancel an owned pending current partner application with exact replay
-*CurrentPartnerV2ControllerApi* | [**capabilities2**](doc//CurrentPartnerV2ControllerApi.md#capabilities2) | **GET** /community-partners/me/v2/capabilities | Read fail-closed current partner capabilities
+*CurrentPartnerV2ControllerApi* | [**capabilities3**](doc//CurrentPartnerV2ControllerApi.md#capabilities3) | **GET** /community-partners/me/v2/capabilities | Read fail-closed current partner capabilities
 *CurrentPartnerV2ControllerApi* | [**ledgers**](doc//CurrentPartnerV2ControllerApi.md#ledgers) | **POST** /community-partners/me/v2/ledgers/search | Search fixed-size identity-minimized current partner ledgers
-*CurrentPartnerV2ControllerApi* | [**operation4**](doc//CurrentPartnerV2ControllerApi.md#operation4) | **GET** /community-partners/me/v2/operations/{operationId} | Read one owned durable current partner operation receipt
+*CurrentPartnerV2ControllerApi* | [**operation5**](doc//CurrentPartnerV2ControllerApi.md#operation5) | **GET** /community-partners/me/v2/operations/{operationId} | Read one owned durable current partner operation receipt
 *CurrentPartnerV2ControllerApi* | [**overview**](doc//CurrentPartnerV2ControllerApi.md#overview) | **GET** /community-partners/me/v2/overview | Read identity-minimized current partner overview
 *CurrentPartnerV2ControllerApi* | [**previewInvitation**](doc//CurrentPartnerV2ControllerApi.md#previewinvitation) | **POST** /community-partners/me/v2/invitations/preview | Preview an invitation without persisting open or expiry state
 *CurrentPartnerV2ControllerApi* | [**submitApplication**](doc//CurrentPartnerV2ControllerApi.md#submitapplication) | **PUT** /community-partners/me/v2/applications/operations/{operationId} | Submit a current partner application with exact replay
@@ -478,7 +485,7 @@ Class | Method | HTTP request | Description
 *CustomerSupportWorkbenchV2ControllerApi* | [**operation**](doc//CustomerSupportWorkbenchV2ControllerApi.md#operation) | **POST** /support/workbench/v2/operations/{operationId} | Read one durable Telegram operator workbench outcome
 *CustomerSupportWorkbenchV2ControllerApi* | [**reply**](doc//CustomerSupportWorkbenchV2ControllerApi.md#reply) | **POST** /support/workbench/v2/reply | Send or safely replay one Telegram operator support reply
 *CustomerSupportWorkbenchV2ControllerApi* | [**state**](doc//CustomerSupportWorkbenchV2ControllerApi.md#state) | **POST** /support/workbench/v2/state | Read identity-minimized Telegram operator support state
-*DeliveryApi* | [**acceptOrder**](doc//DeliveryApi.md#acceptorder) | **POST** /delivery/accept | 配送員接單
+*DeliveryApi* | [**acceptOrder1**](doc//DeliveryApi.md#acceptorder1) | **POST** /delivery/accept | 配送員接單
 *DeliveryApi* | [**currentStatus**](doc//DeliveryApi.md#currentstatus) | **GET** /delivery/status | 獲取當前配送狀態
 *DeliveryApi* | [**getAvailableOrders**](doc//DeliveryApi.md#getavailableorders) | **GET** /delivery/available-orders | 獲取可接訂單列表
 *DeliveryApi* | [**getCurrentDeliveryOrder**](doc//DeliveryApi.md#getcurrentdeliveryorder) | **GET** /delivery/orders/{orderId} | Get current courier-owned delivery detail
@@ -508,9 +515,9 @@ Class | Method | HTTP request | Description
 *GameAccessProductControllerApi* | [**getMyAccess**](doc//GameAccessProductControllerApi.md#getmyaccess) | **GET** /game-access/products/{productId}/me | 
 *GameAccessProductControllerApi* | [**purchase2**](doc//GameAccessProductControllerApi.md#purchase2) | **POST** /game-access/products/{productId}/purchase | 
 *GuardedAdminWithdrawalV2Api* | [**approveReview**](doc//GuardedAdminWithdrawalV2Api.md#approvereview) | **PUT** /admin/withdraws/v2/{withdrawRef}/review-approvals/{operationId} | Approve a manually reviewed withdrawal back into the pending queue
-*GuardedAdminWithdrawalV2Api* | [**capabilities5**](doc//GuardedAdminWithdrawalV2Api.md#capabilities5) | **GET** /admin/withdraws/v2/capabilities | Read fail-closed admin withdrawal operation gates
+*GuardedAdminWithdrawalV2Api* | [**capabilities6**](doc//GuardedAdminWithdrawalV2Api.md#capabilities6) | **GET** /admin/withdraws/v2/capabilities | Read fail-closed admin withdrawal operation gates
 *GuardedAdminWithdrawalV2Api* | [**claim**](doc//GuardedAdminWithdrawalV2Api.md#claim) | **PUT** /admin/withdraws/v2/{withdrawRef}/claims/{operationId} | Claim a pending withdrawal for external custody processing
-*GuardedAdminWithdrawalV2Api* | [**operation7**](doc//GuardedAdminWithdrawalV2Api.md#operation7) | **GET** /admin/withdraws/v2/operations/{operationId} | Read one actor-owned durable admin withdrawal receipt
+*GuardedAdminWithdrawalV2Api* | [**operation8**](doc//GuardedAdminWithdrawalV2Api.md#operation8) | **GET** /admin/withdraws/v2/operations/{operationId} | Read one actor-owned durable admin withdrawal receipt
 *GuardedAdminWithdrawalV2Api* | [**reject**](doc//GuardedAdminWithdrawalV2Api.md#reject) | **PUT** /admin/withdraws/v2/{withdrawRef}/rejections/{operationId} | Reject and atomically refund a not-yet-processing withdrawal
 *GuardedAdminWithdrawalV2Api* | [**search1**](doc//GuardedAdminWithdrawalV2Api.md#search1) | **POST** /admin/withdraws/v2/summary/search | Search a fixed-size, identity-minimized withdrawal queue
 *GuardedAdminWithdrawalV2Api* | [**verifyCompletion**](doc//GuardedAdminWithdrawalV2Api.md#verifycompletion) | **PUT** /admin/withdraws/v2/{withdrawRef}/verified-completions/{operationId} | Complete only after confirmed TRON USDT evidence matches the withdrawal
@@ -1045,9 +1052,17 @@ Class | Method | HTTP request | Description
  - [CurrentChatSessionDetailResponse](doc//CurrentChatSessionDetailResponse.md)
  - [CurrentChatSessionPageResponse](doc//CurrentChatSessionPageResponse.md)
  - [CurrentChatSessionSummaryResponse](doc//CurrentChatSessionSummaryResponse.md)
+ - [CurrentDeliveryAvailableOrderResponse](doc//CurrentDeliveryAvailableOrderResponse.md)
+ - [CurrentDeliveryBoardResponse](doc//CurrentDeliveryBoardResponse.md)
+ - [CurrentDeliveryLocationUpdateRequest](doc//CurrentDeliveryLocationUpdateRequest.md)
+ - [CurrentDeliveryOperationReceiptResponse](doc//CurrentDeliveryOperationReceiptResponse.md)
+ - [CurrentDeliveryOperationsCapabilitiesResponse](doc//CurrentDeliveryOperationsCapabilitiesResponse.md)
+ - [CurrentDeliveryOrderAcceptRequest](doc//CurrentDeliveryOrderAcceptRequest.md)
  - [CurrentDeliveryOrderDetailResponse](doc//CurrentDeliveryOrderDetailResponse.md)
+ - [CurrentDeliveryOrderTransitionRequest](doc//CurrentDeliveryOrderTransitionRequest.md)
  - [CurrentDeliveryRegistrationRequest](doc//CurrentDeliveryRegistrationRequest.md)
  - [CurrentDeliveryRegistrationResponse](doc//CurrentDeliveryRegistrationResponse.md)
+ - [CurrentDeliveryStatusUpdateRequest](doc//CurrentDeliveryStatusUpdateRequest.md)
  - [CurrentDepositV2CancelRequest](doc//CurrentDepositV2CancelRequest.md)
  - [CurrentDepositV2CapabilitiesResponse](doc//CurrentDepositV2CapabilitiesResponse.md)
  - [CurrentDepositV2CreateRequest](doc//CurrentDepositV2CreateRequest.md)

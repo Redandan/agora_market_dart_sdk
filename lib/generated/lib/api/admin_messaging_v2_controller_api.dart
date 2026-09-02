@@ -19,7 +19,7 @@ class AdminMessagingV2ControllerApi {
   /// Read fail-closed ADMIN messaging V2 capabilities
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> capabilities6WithHttpInfo() async {
+  Future<Response> capabilities7WithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/admin/messaging/v2/capabilities';
 
@@ -45,8 +45,8 @@ class AdminMessagingV2ControllerApi {
   }
 
   /// Read fail-closed ADMIN messaging V2 capabilities
-  Future<AdminMessagingCapabilitiesResponse?> capabilities6() async {
-    final response = await capabilities6WithHttpInfo();
+  Future<AdminMessagingCapabilitiesResponse?> capabilities7() async {
+    final response = await capabilities7WithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -67,7 +67,7 @@ class AdminMessagingV2ControllerApi {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<Response> operation8WithHttpInfo(String operationId,) async {
+  Future<Response> operation9WithHttpInfo(String operationId,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/messaging/v2/operations/{operationId}'
       .replaceAll('{operationId}', operationId);
@@ -98,8 +98,8 @@ class AdminMessagingV2ControllerApi {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<AdminMessageBatchReceiptResponse?> operation8(String operationId,) async {
-    final response = await operation8WithHttpInfo(operationId,);
+  Future<AdminMessageBatchReceiptResponse?> operation9(String operationId,) async {
+    final response = await operation9WithHttpInfo(operationId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

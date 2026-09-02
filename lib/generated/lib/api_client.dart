@@ -664,12 +664,28 @@ class ApiClient {
           return CurrentChatSessionPageResponse.fromJson(value);
         case 'CurrentChatSessionSummaryResponse':
           return CurrentChatSessionSummaryResponse.fromJson(value);
+        case 'CurrentDeliveryAvailableOrderResponse':
+          return CurrentDeliveryAvailableOrderResponse.fromJson(value);
+        case 'CurrentDeliveryBoardResponse':
+          return CurrentDeliveryBoardResponse.fromJson(value);
+        case 'CurrentDeliveryLocationUpdateRequest':
+          return CurrentDeliveryLocationUpdateRequest.fromJson(value);
+        case 'CurrentDeliveryOperationReceiptResponse':
+          return CurrentDeliveryOperationReceiptResponse.fromJson(value);
+        case 'CurrentDeliveryOperationsCapabilitiesResponse':
+          return CurrentDeliveryOperationsCapabilitiesResponse.fromJson(value);
+        case 'CurrentDeliveryOrderAcceptRequest':
+          return CurrentDeliveryOrderAcceptRequest.fromJson(value);
         case 'CurrentDeliveryOrderDetailResponse':
           return CurrentDeliveryOrderDetailResponse.fromJson(value);
+        case 'CurrentDeliveryOrderTransitionRequest':
+          return CurrentDeliveryOrderTransitionRequest.fromJson(value);
         case 'CurrentDeliveryRegistrationRequest':
           return CurrentDeliveryRegistrationRequest.fromJson(value);
         case 'CurrentDeliveryRegistrationResponse':
           return CurrentDeliveryRegistrationResponse.fromJson(value);
+        case 'CurrentDeliveryStatusUpdateRequest':
+          return CurrentDeliveryStatusUpdateRequest.fromJson(value);
         case 'CurrentDepositV2CancelRequest':
           return CurrentDepositV2CancelRequest.fromJson(value);
         case 'CurrentDepositV2CapabilitiesResponse':

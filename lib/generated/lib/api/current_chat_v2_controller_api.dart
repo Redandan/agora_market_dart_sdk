@@ -19,7 +19,7 @@ class CurrentChatV2ControllerApi {
   /// Read fail-closed current-member chat V2 capabilities
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> capabilities3WithHttpInfo() async {
+  Future<Response> capabilities4WithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/chat/me/v2/capabilities';
 
@@ -45,8 +45,8 @@ class CurrentChatV2ControllerApi {
   }
 
   /// Read fail-closed current-member chat V2 capabilities
-  Future<CurrentChatCapabilitiesResponse?> capabilities3() async {
-    final response = await capabilities3WithHttpInfo();
+  Future<CurrentChatCapabilitiesResponse?> capabilities4() async {
+    final response = await capabilities4WithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -187,7 +187,7 @@ class CurrentChatV2ControllerApi {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<Response> operation5WithHttpInfo(String operationId,) async {
+  Future<Response> operation6WithHttpInfo(String operationId,) async {
     // ignore: prefer_const_declarations
     final path = r'/chat/me/v2/operations/{operationId}'
       .replaceAll('{operationId}', operationId);
@@ -218,8 +218,8 @@ class CurrentChatV2ControllerApi {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<CurrentChatOperationReceiptResponse?> operation5(String operationId,) async {
-    final response = await operation5WithHttpInfo(operationId,);
+  Future<CurrentChatOperationReceiptResponse?> operation6(String operationId,) async {
+    final response = await operation6WithHttpInfo(operationId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
