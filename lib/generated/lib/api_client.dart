@@ -236,6 +236,8 @@ class ApiClient {
           return ActivityStatDTO.fromJson(value);
         case 'AddressState':
           return AddressState.fromJson(value);
+        case 'AdminBetRecordSummaryResponse':
+          return AdminBetRecordSummaryResponse.fromJson(value);
         case 'AdminBettingCancelRequest':
           return AdminBettingCancelRequest.fromJson(value);
         case 'AdminBettingCapabilitiesResponse':
@@ -296,6 +298,8 @@ class ApiClient {
           return AdminFileReadSearchRequest.fromJson(value);
         case 'AdminFileSummaryResponse':
           return AdminFileSummaryResponse.fromJson(value);
+        case 'AdminInterestSummaryResponse':
+          return AdminInterestSummaryResponse.fromJson(value);
         case 'AdminKnowledgeCreateRequest':
           return AdminKnowledgeCreateRequest.fromJson(value);
         case 'AdminKnowledgeDeleteRequest':
@@ -330,6 +334,8 @@ class ApiClient {
           return AdminMessageBatchRequest.fromJson(value);
         case 'AdminMessagingCapabilitiesResponse':
           return AdminMessagingCapabilitiesResponse.fromJson(value);
+        case 'AdminOperationReadSearchRequest':
+          return AdminOperationReadSearchRequest.fromJson(value);
         case 'AdminOrderActionReadResponse':
           return AdminOrderActionReadResponse.fromJson(value);
         case 'AdminOrderDetailResponse':
@@ -352,12 +358,16 @@ class ApiClient {
           return AdminProductSearchRequest.fromJson(value);
         case 'AdminProductSummaryResponse':
           return AdminProductSummaryResponse.fromJson(value);
+        case 'AdminRechargeSummaryResponse':
+          return AdminRechargeSummaryResponse.fromJson(value);
         case 'AdminResetPasswordParam':
           return AdminResetPasswordParam.fromJson(value);
         case 'AdminReviewResponse':
           return AdminReviewResponse.fromJson(value);
         case 'AdminReviewSearchParam':
           return AdminReviewSearchParam.fromJson(value);
+        case 'AdminStakingSummaryResponse':
+          return AdminStakingSummaryResponse.fromJson(value);
         case 'AdminStoreCreateParam':
           return AdminStoreCreateParam.fromJson(value);
         case 'AdminStoreDetailResponse':
@@ -372,6 +382,8 @@ class ApiClient {
           return AdminStoreUpdateParam.fromJson(value);
         case 'AdminTelegramMonitorOverviewResponse':
           return AdminTelegramMonitorOverviewResponse.fromJson(value);
+        case 'AdminTransactionSummaryResponse':
+          return AdminTransactionSummaryResponse.fromJson(value);
         case 'AdminWithdrawSummaryPageResponse':
           return AdminWithdrawSummaryPageResponse.fromJson(value);
         case 'AdminWithdrawSummaryResponse':
@@ -1138,6 +1150,8 @@ class ApiClient {
           return OrderSumbitParam.fromJson(value);
         case 'PageActivityDTO':
           return PageActivityDTO.fromJson(value);
+        case 'PageAdminBetRecordSummaryResponse':
+          return PageAdminBetRecordSummaryResponse.fromJson(value);
         case 'PageAdminDeliveryerSummaryResponse':
           return PageAdminDeliveryerSummaryResponse.fromJson(value);
         case 'PageAdminDemandSummaryResponse':
@@ -1146,6 +1160,8 @@ class ApiClient {
           return PageAdminDisputeSummaryResponse.fromJson(value);
         case 'PageAdminFileSummaryResponse':
           return PageAdminFileSummaryResponse.fromJson(value);
+        case 'PageAdminInterestSummaryResponse':
+          return PageAdminInterestSummaryResponse.fromJson(value);
         case 'PageAdminMemberResponse':
           return PageAdminMemberResponse.fromJson(value);
         case 'PageAdminMemberSummaryResponse':
@@ -1154,10 +1170,16 @@ class ApiClient {
           return PageAdminOrderSummaryResponse.fromJson(value);
         case 'PageAdminProductSummaryResponse':
           return PageAdminProductSummaryResponse.fromJson(value);
+        case 'PageAdminRechargeSummaryResponse':
+          return PageAdminRechargeSummaryResponse.fromJson(value);
         case 'PageAdminReviewResponse':
           return PageAdminReviewResponse.fromJson(value);
+        case 'PageAdminStakingSummaryResponse':
+          return PageAdminStakingSummaryResponse.fromJson(value);
         case 'PageAdminStoreSummaryResponse':
           return PageAdminStoreSummaryResponse.fromJson(value);
+        case 'PageAdminTransactionSummaryResponse':
+          return PageAdminTransactionSummaryResponse.fromJson(value);
         case 'PageAutoReplyConfig':
           return PageAutoReplyConfig.fromJson(value);
         case 'PageBetResponse':

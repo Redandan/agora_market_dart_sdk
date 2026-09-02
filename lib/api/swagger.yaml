@@ -16418,6 +16418,222 @@
         }
       }
     },
+    "/admin/operations/v2/transactions/search": {
+      "post": {
+        "tags": [
+          "ADMIN operations V2 read surfaces"
+        ],
+        "summary": "Search a fixed-size ADMIN transaction summary page",
+        "operationId": "transactions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminOperationReadSearchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageAdminTransactionSummaryResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/admin/operations/v2/stakes/search": {
+      "post": {
+        "tags": [
+          "ADMIN operations V2 read surfaces"
+        ],
+        "summary": "Search a fixed-size identity-minimized ADMIN staking page",
+        "operationId": "stakes",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminOperationReadSearchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageAdminStakingSummaryResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/admin/operations/v2/slot-bets/search": {
+      "post": {
+        "tags": [
+          "ADMIN operations V2 read surfaces"
+        ],
+        "summary": "Search a fixed-size ADMIN Slot bet transaction summary page",
+        "operationId": "slotBets",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminOperationReadSearchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageAdminTransactionSummaryResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/admin/operations/v2/recharges/search": {
+      "post": {
+        "tags": [
+          "ADMIN operations V2 read surfaces"
+        ],
+        "summary": "Search a fixed-size identity-minimized ADMIN recharge page",
+        "operationId": "recharges",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminOperationReadSearchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageAdminRechargeSummaryResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/admin/operations/v2/interest-records/search": {
+      "post": {
+        "tags": [
+          "ADMIN operations V2 read surfaces"
+        ],
+        "summary": "Search a fixed-size identity-minimized ADMIN staking-interest page",
+        "operationId": "interestRecords",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminOperationReadSearchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageAdminInterestSummaryResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/admin/operations/v2/betting-records/search": {
+      "post": {
+        "tags": [
+          "ADMIN operations V2 read surfaces"
+        ],
+        "summary": "Search a fixed-size identity-minimized ADMIN betting record page",
+        "operationId": "bettingRecords",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminOperationReadSearchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageAdminBetRecordSummaryResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/admin/notifications": {
       "post": {
         "tags": [
@@ -54453,6 +54669,481 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/AdminOrderSummaryResponse"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
+      "AdminOperationReadSearchRequest": {
+        "type": "object",
+        "description": "Bounded ADMIN operations read request",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "maximum": 10000,
+            "minimum": 1
+          }
+        }
+      },
+      "AdminTransactionSummaryResponse": {
+        "type": "object",
+        "description": "ADMIN transaction read summary; excludes remarks and free-form descriptions",
+        "properties": {
+          "transactionRef": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "memberId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "description": "交易類型",
+            "enum": [
+              "DEPOSIT",
+              "WITHDRAW",
+              "PAYMENT",
+              "RECEIVE",
+              "REFUND",
+              "STAKING",
+              "UNSTAKING",
+              "INTEREST",
+              "MARKET_CREATION",
+              "BET",
+              "BET_WIN",
+              "BET_REFUND",
+              "SLOT_BET",
+              "SLOT_WIN",
+              "PARTNER_COMMISSION",
+              "GAME_ACCESS_DEPOSIT",
+              "GAME_ACCESS_REFUND",
+              "MANUAL_ADJUST"
+            ]
+          },
+          "amount": {
+            "type": "number"
+          },
+          "beforeAmount": {
+            "type": "number"
+          },
+          "afterAmount": {
+            "type": "number"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "PageAdminTransactionSummaryResponse": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdminTransactionSummaryResponse"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
+      "AdminStakingSummaryResponse": {
+        "type": "object",
+        "description": "ADMIN staking read summary; uses an opaque public reference and excludes remarks",
+        "properties": {
+          "stakingRef": {
+            "type": "string"
+          },
+          "memberId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "status": {
+            "type": "string",
+            "description": "質押狀態",
+            "enum": [
+              "STAKING",
+              "COMPLETED"
+            ]
+          },
+          "currency": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "earnedRewards": {
+            "type": "number"
+          },
+          "policyRevision": {
+            "type": "string"
+          },
+          "applyTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastSettleTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "PageAdminStakingSummaryResponse": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdminStakingSummaryResponse"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
+      "AdminRechargeSummaryResponse": {
+        "type": "object",
+        "description": "ADMIN recharge read summary; excludes addresses, transaction hashes, wallet IDs and remarks",
+        "properties": {
+          "rechargeRef": {
+            "type": "string"
+          },
+          "memberId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "status": {
+            "type": "string",
+            "description": "充值狀態",
+            "enum": [
+              "PENDING",
+              "COMPLETED",
+              "EXPIRED",
+              "FAILED"
+            ]
+          },
+          "protocol": {
+            "type": "string",
+            "description": "協議",
+            "enum": [
+              "TRC20",
+              "ERC20",
+              "BEP20"
+            ]
+          },
+          "currency": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "transactionHashPresent": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expireTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "completedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "PageAdminRechargeSummaryResponse": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdminRechargeSummaryResponse"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
+      "AdminInterestSummaryResponse": {
+        "type": "object",
+        "description": "ADMIN staking-interest read summary; excludes username and internal staking identifiers",
+        "properties": {
+          "transactionRef": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "memberId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "stakingAmount": {
+            "type": "number"
+          },
+          "interestAmount": {
+            "type": "number"
+          },
+          "settleDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "PageAdminInterestSummaryResponse": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdminInterestSummaryResponse"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
+      "AdminBetRecordSummaryResponse": {
+        "type": "object",
+        "description": "ADMIN betting record summary; excludes username, IP address and device fingerprint",
+        "properties": {
+          "betRef": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "memberId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "marketRef": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "marketTitle": {
+            "type": "string"
+          },
+          "optionRef": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "optionDescription": {
+            "type": "string"
+          },
+          "betAmount": {
+            "type": "number"
+          },
+          "oddsAtBet": {
+            "type": "number"
+          },
+          "potentialPayout": {
+            "type": "number"
+          },
+          "actualPayout": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "WON",
+              "LOST",
+              "REFUNDED"
+            ]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "settledAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "PageAdminBetRecordSummaryResponse": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdminBetRecordSummaryResponse"
             }
           },
           "number": {

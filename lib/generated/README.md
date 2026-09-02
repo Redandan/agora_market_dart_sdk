@@ -139,6 +139,12 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**unlikePost**](doc//DefaultApi.md#unlikepost) | **POST** /posts/{id}/unlike | 取消點讚
 *DefaultApi* | [**updateCartItem**](doc//DefaultApi.md#updatecartitem) | **PUT** /cart/{cartItemId} | 更新購物車項目
 *DefaultApi* | [**updatePost**](doc//DefaultApi.md#updatepost) | **PUT** /posts | 更新貼文
+*ADMINOperationsV2ReadSurfacesApi* | [**bettingRecords**](doc//ADMINOperationsV2ReadSurfacesApi.md#bettingrecords) | **POST** /admin/operations/v2/betting-records/search | Search a fixed-size identity-minimized ADMIN betting record page
+*ADMINOperationsV2ReadSurfacesApi* | [**interestRecords**](doc//ADMINOperationsV2ReadSurfacesApi.md#interestrecords) | **POST** /admin/operations/v2/interest-records/search | Search a fixed-size identity-minimized ADMIN staking-interest page
+*ADMINOperationsV2ReadSurfacesApi* | [**recharges**](doc//ADMINOperationsV2ReadSurfacesApi.md#recharges) | **POST** /admin/operations/v2/recharges/search | Search a fixed-size identity-minimized ADMIN recharge page
+*ADMINOperationsV2ReadSurfacesApi* | [**slotBets**](doc//ADMINOperationsV2ReadSurfacesApi.md#slotbets) | **POST** /admin/operations/v2/slot-bets/search | Search a fixed-size ADMIN Slot bet transaction summary page
+*ADMINOperationsV2ReadSurfacesApi* | [**stakes**](doc//ADMINOperationsV2ReadSurfacesApi.md#stakes) | **POST** /admin/operations/v2/stakes/search | Search a fixed-size identity-minimized ADMIN staking page
+*ADMINOperationsV2ReadSurfacesApi* | [**transactions**](doc//ADMINOperationsV2ReadSurfacesApi.md#transactions) | **POST** /admin/operations/v2/transactions/search | Search a fixed-size ADMIN transaction summary page
 *ActuatorApi* | [**health**](doc//ActuatorApi.md#health) | **GET** /actuator/health | Actuator web endpoint 'health'
 *ActuatorApi* | [**info**](doc//ActuatorApi.md#info) | **GET** /actuator/info | Actuator web endpoint 'info'
 *ActuatorApi* | [**links**](doc//ActuatorApi.md#links) | **GET** /actuator | Actuator root web endpoint
@@ -825,6 +831,7 @@ Class | Method | HTTP request | Description
  - [ActivitySearchParam](doc//ActivitySearchParam.md)
  - [ActivityStatDTO](doc//ActivityStatDTO.md)
  - [AddressState](doc//AddressState.md)
+ - [AdminBetRecordSummaryResponse](doc//AdminBetRecordSummaryResponse.md)
  - [AdminBettingCancelRequest](doc//AdminBettingCancelRequest.md)
  - [AdminBettingCapabilitiesResponse](doc//AdminBettingCapabilitiesResponse.md)
  - [AdminBettingConfirmRequest](doc//AdminBettingConfirmRequest.md)
@@ -855,6 +862,7 @@ Class | Method | HTTP request | Description
  - [AdminDisputeSummaryResponse](doc//AdminDisputeSummaryResponse.md)
  - [AdminFileReadSearchRequest](doc//AdminFileReadSearchRequest.md)
  - [AdminFileSummaryResponse](doc//AdminFileSummaryResponse.md)
+ - [AdminInterestSummaryResponse](doc//AdminInterestSummaryResponse.md)
  - [AdminKnowledgeCreateRequest](doc//AdminKnowledgeCreateRequest.md)
  - [AdminKnowledgeDeleteRequest](doc//AdminKnowledgeDeleteRequest.md)
  - [AdminKnowledgeDocumentSummaryResponse](doc//AdminKnowledgeDocumentSummaryResponse.md)
@@ -872,6 +880,7 @@ Class | Method | HTTP request | Description
  - [AdminMessageBatchReceiptResponse](doc//AdminMessageBatchReceiptResponse.md)
  - [AdminMessageBatchRequest](doc//AdminMessageBatchRequest.md)
  - [AdminMessagingCapabilitiesResponse](doc//AdminMessagingCapabilitiesResponse.md)
+ - [AdminOperationReadSearchRequest](doc//AdminOperationReadSearchRequest.md)
  - [AdminOrderActionReadResponse](doc//AdminOrderActionReadResponse.md)
  - [AdminOrderDetailResponse](doc//AdminOrderDetailResponse.md)
  - [AdminOrderFulfillmentResponse](doc//AdminOrderFulfillmentResponse.md)
@@ -883,9 +892,11 @@ Class | Method | HTTP request | Description
  - [AdminProductDetailResponse](doc//AdminProductDetailResponse.md)
  - [AdminProductSearchRequest](doc//AdminProductSearchRequest.md)
  - [AdminProductSummaryResponse](doc//AdminProductSummaryResponse.md)
+ - [AdminRechargeSummaryResponse](doc//AdminRechargeSummaryResponse.md)
  - [AdminResetPasswordParam](doc//AdminResetPasswordParam.md)
  - [AdminReviewResponse](doc//AdminReviewResponse.md)
  - [AdminReviewSearchParam](doc//AdminReviewSearchParam.md)
+ - [AdminStakingSummaryResponse](doc//AdminStakingSummaryResponse.md)
  - [AdminStoreCreateParam](doc//AdminStoreCreateParam.md)
  - [AdminStoreDetailResponse](doc//AdminStoreDetailResponse.md)
  - [AdminStoreReadSearchRequest](doc//AdminStoreReadSearchRequest.md)
@@ -893,6 +904,7 @@ Class | Method | HTTP request | Description
  - [AdminStoreSummaryResponse](doc//AdminStoreSummaryResponse.md)
  - [AdminStoreUpdateParam](doc//AdminStoreUpdateParam.md)
  - [AdminTelegramMonitorOverviewResponse](doc//AdminTelegramMonitorOverviewResponse.md)
+ - [AdminTransactionSummaryResponse](doc//AdminTransactionSummaryResponse.md)
  - [AdminWithdrawSummaryPageResponse](doc//AdminWithdrawSummaryPageResponse.md)
  - [AdminWithdrawSummaryResponse](doc//AdminWithdrawSummaryResponse.md)
  - [AdminWithdrawV2SearchRequest](doc//AdminWithdrawV2SearchRequest.md)
@@ -1276,16 +1288,21 @@ Class | Method | HTTP request | Description
  - [OrderStatisticsDTO](doc//OrderStatisticsDTO.md)
  - [OrderSumbitParam](doc//OrderSumbitParam.md)
  - [PageActivityDTO](doc//PageActivityDTO.md)
+ - [PageAdminBetRecordSummaryResponse](doc//PageAdminBetRecordSummaryResponse.md)
  - [PageAdminDeliveryerSummaryResponse](doc//PageAdminDeliveryerSummaryResponse.md)
  - [PageAdminDemandSummaryResponse](doc//PageAdminDemandSummaryResponse.md)
  - [PageAdminDisputeSummaryResponse](doc//PageAdminDisputeSummaryResponse.md)
  - [PageAdminFileSummaryResponse](doc//PageAdminFileSummaryResponse.md)
+ - [PageAdminInterestSummaryResponse](doc//PageAdminInterestSummaryResponse.md)
  - [PageAdminMemberResponse](doc//PageAdminMemberResponse.md)
  - [PageAdminMemberSummaryResponse](doc//PageAdminMemberSummaryResponse.md)
  - [PageAdminOrderSummaryResponse](doc//PageAdminOrderSummaryResponse.md)
  - [PageAdminProductSummaryResponse](doc//PageAdminProductSummaryResponse.md)
+ - [PageAdminRechargeSummaryResponse](doc//PageAdminRechargeSummaryResponse.md)
  - [PageAdminReviewResponse](doc//PageAdminReviewResponse.md)
+ - [PageAdminStakingSummaryResponse](doc//PageAdminStakingSummaryResponse.md)
  - [PageAdminStoreSummaryResponse](doc//PageAdminStoreSummaryResponse.md)
+ - [PageAdminTransactionSummaryResponse](doc//PageAdminTransactionSummaryResponse.md)
  - [PageAutoReplyConfig](doc//PageAutoReplyConfig.md)
  - [PageBetResponse](doc//PageBetResponse.md)
  - [PageCartItem](doc//PageCartItem.md)
