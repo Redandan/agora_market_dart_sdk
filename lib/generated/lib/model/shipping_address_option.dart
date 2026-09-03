@@ -254,7 +254,9 @@ class ShippingAddressOption {
         serviceType: ShippingAddressOptionServiceTypeEnum.fromJson(json[r'serviceType']),
         storeName: mapValueOfType<String>(json, r'storeName'),
         storeAddress: mapValueOfType<String>(json, r'storeAddress'),
-        shippingFee: num.parse('${json[r'shippingFee']}'),
+        shippingFee: json[r'shippingFee'] == null
+            ? null
+            : num.parse('${json[r'shippingFee']}'),
         estimatedDays: mapValueOfType<int>(json, r'estimatedDays'),
         isAvailable: mapValueOfType<bool>(json, r'isAvailable'),
         isDefault: mapValueOfType<bool>(json, r'isDefault'),

@@ -242,13 +242,21 @@ class BetResponse {
         optionId: mapValueOfType<int>(json, r'optionId')!,
         optionDescription: mapValueOfType<String>(json, r'optionDescription'),
         betAmount: num.parse('${json[r'betAmount']}'),
-        oddsAtBet: num.parse('${json[r'oddsAtBet']}'),
-        potentialPayout: num.parse('${json[r'potentialPayout']}'),
-        actualPayout: num.parse('${json[r'actualPayout']}'),
+        oddsAtBet: json[r'oddsAtBet'] == null
+            ? null
+            : num.parse('${json[r'oddsAtBet']}'),
+        potentialPayout: json[r'potentialPayout'] == null
+            ? null
+            : num.parse('${json[r'potentialPayout']}'),
+        actualPayout: json[r'actualPayout'] == null
+            ? null
+            : num.parse('${json[r'actualPayout']}'),
         status: BetResponseStatusEnum.fromJson(json[r'status'])!,
         settledAt: mapDateTime(json, r'settledAt', r''),
         createdAt: mapDateTime(json, r'createdAt', r'')!,
-        actualReturnRate: num.parse('${json[r'actualReturnRate']}'),
+        actualReturnRate: json[r'actualReturnRate'] == null
+            ? null
+            : num.parse('${json[r'actualReturnRate']}'),
       );
     }
     return null;

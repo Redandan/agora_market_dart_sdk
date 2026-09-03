@@ -153,10 +153,10 @@ class RegistrationOverviewResponse {
     } else {
       json[r'lastWeekSameDayRegistrations'] = null;
     }
-      json[r'dailyTrend'] = this.dailyTrend;
-      json[r'hourlyDistribution'] = this.hourlyDistribution;
-      json[r'channelBreakdown'] = this.channelBreakdown;
-      json[r'topPromoCodes'] = this.topPromoCodes;
+      json[r'dailyTrend'] = this.dailyTrend.map((e) => e.toJson()).toList();
+      json[r'hourlyDistribution'] = this.hourlyDistribution.map((e) => e.toJson()).toList();
+      json[r'channelBreakdown'] = this.channelBreakdown.map((e) => e.toJson()).toList();
+      json[r'topPromoCodes'] = this.topPromoCodes.map((e) => e.toJson()).toList();
     return json;
   }
 

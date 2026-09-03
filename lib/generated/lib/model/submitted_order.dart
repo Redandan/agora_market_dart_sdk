@@ -162,7 +162,9 @@ class SubmittedOrder {
         sellerName: mapValueOfType<String>(json, r'sellerName'),
         productType: SubmittedOrderProductTypeEnum.fromJson(json[r'productType']),
         itemCount: mapValueOfType<int>(json, r'itemCount'),
-        orderAmountUsdt: num.parse('${json[r'orderAmountUsdt']}'),
+        orderAmountUsdt: json[r'orderAmountUsdt'] == null
+            ? null
+            : num.parse('${json[r'orderAmountUsdt']}'),
       );
     }
     return null;

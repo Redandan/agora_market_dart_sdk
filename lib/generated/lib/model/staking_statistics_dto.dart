@@ -210,15 +210,27 @@ class StakingStatisticsDTO {
 
       return StakingStatisticsDTO(
         totalStakings: mapValueOfType<int>(json, r'totalStakings'),
-        totalStakedAmount: num.parse('${json[r'totalStakedAmount']}'),
-        totalEarnedRewards: num.parse('${json[r'totalEarnedRewards']}'),
-        averageStakingAmount: num.parse('${json[r'averageStakingAmount']}'),
+        totalStakedAmount: json[r'totalStakedAmount'] == null
+            ? null
+            : num.parse('${json[r'totalStakedAmount']}'),
+        totalEarnedRewards: json[r'totalEarnedRewards'] == null
+            ? null
+            : num.parse('${json[r'totalEarnedRewards']}'),
+        averageStakingAmount: json[r'averageStakingAmount'] == null
+            ? null
+            : num.parse('${json[r'averageStakingAmount']}'),
         activeStakings: mapValueOfType<int>(json, r'activeStakings'),
-        activeStakedAmount: num.parse('${json[r'activeStakedAmount']}'),
+        activeStakedAmount: json[r'activeStakedAmount'] == null
+            ? null
+            : num.parse('${json[r'activeStakedAmount']}'),
         stakingsByStatus: mapCastOfType<String, int>(json, r'stakingsByStatus') ?? const {},
         newStakingsInPeriod: mapValueOfType<int>(json, r'newStakingsInPeriod'),
-        newStakedAmountInPeriod: num.parse('${json[r'newStakedAmountInPeriod']}'),
-        totalEarnedInPeriod: num.parse('${json[r'totalEarnedInPeriod']}'),
+        newStakedAmountInPeriod: json[r'newStakedAmountInPeriod'] == null
+            ? null
+            : num.parse('${json[r'newStakedAmountInPeriod']}'),
+        totalEarnedInPeriod: json[r'totalEarnedInPeriod'] == null
+            ? null
+            : num.parse('${json[r'totalEarnedInPeriod']}'),
       );
     }
     return null;

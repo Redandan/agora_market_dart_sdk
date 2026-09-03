@@ -247,8 +247,12 @@ class AdminWithdrawSummaryResponse {
 
       return AdminWithdrawSummaryResponse(
         withdrawRef: mapValueOfType<String>(json, r'withdrawRef'),
-        amount: num.parse('${json[r'amount']}'),
-        fee: num.parse('${json[r'fee']}'),
+        amount: json[r'amount'] == null
+            ? null
+            : num.parse('${json[r'amount']}'),
+        fee: json[r'fee'] == null
+            ? null
+            : num.parse('${json[r'fee']}'),
         currency: mapValueOfType<String>(json, r'currency'),
         protocol: AdminWithdrawSummaryResponseProtocolEnum.fromJson(json[r'protocol']),
         status: AdminWithdrawSummaryResponseStatusEnum.fromJson(json[r'status']),

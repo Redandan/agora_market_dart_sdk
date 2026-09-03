@@ -54,7 +54,7 @@ class CurrentSellerProductImportCommitRequest {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'products'] = this.products;
+      json[r'products'] = this.products.map((e) => e.toJson()).toList();
     if (this.previewToken != null) {
       json[r'previewToken'] = this.previewToken;
     } else {

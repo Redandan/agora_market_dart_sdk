@@ -59,8 +59,8 @@ class CartCheckoutPlanResponse {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'groups'] = this.groups;
-      json[r'unmergeableItems'] = this.unmergeableItems;
+      json[r'groups'] = this.groups.map((e) => e.toJson()).toList();
+      json[r'unmergeableItems'] = this.unmergeableItems.map((e) => e.toJson()).toList();
     if (this.totalOrderCount != null) {
       json[r'totalOrderCount'] = this.totalOrderCount;
     } else {
@@ -96,7 +96,9 @@ class CartCheckoutPlanResponse {
         groups: Group.listFromJson(json[r'groups']),
         unmergeableItems: UnmergeableItem.listFromJson(json[r'unmergeableItems']),
         totalOrderCount: mapValueOfType<int>(json, r'totalOrderCount'),
-        totalAmountUsdt: num.parse('${json[r'totalAmountUsdt']}'),
+        totalAmountUsdt: json[r'totalAmountUsdt'] == null
+            ? null
+            : num.parse('${json[r'totalAmountUsdt']}'),
       );
     }
     return null;

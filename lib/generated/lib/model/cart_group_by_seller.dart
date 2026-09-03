@@ -237,7 +237,7 @@ class CartGroupBySeller {
     } else {
       json[r'currency'] = null;
     }
-      json[r'items'] = this.items;
+      json[r'items'] = this.items.map((e) => e.toJson()).toList();
     if (this.sellerSubtotal != null) {
       json[r'sellerSubtotal'] = this.sellerSubtotal;
     } else {
@@ -304,13 +304,25 @@ class CartGroupBySeller {
         storeCheckoutWarning: mapValueOfType<String>(json, r'storeCheckoutWarning'),
         currency: mapValueOfType<String>(json, r'currency'),
         items: CartItemResponse.listFromJson(json[r'items']),
-        sellerSubtotal: num.parse('${json[r'sellerSubtotal']}'),
-        sellerShippingFee: num.parse('${json[r'sellerShippingFee']}'),
-        sellerTotal: num.parse('${json[r'sellerTotal']}'),
+        sellerSubtotal: json[r'sellerSubtotal'] == null
+            ? null
+            : num.parse('${json[r'sellerSubtotal']}'),
+        sellerShippingFee: json[r'sellerShippingFee'] == null
+            ? null
+            : num.parse('${json[r'sellerShippingFee']}'),
+        sellerTotal: json[r'sellerTotal'] == null
+            ? null
+            : num.parse('${json[r'sellerTotal']}'),
         settlementCurrency: mapValueOfType<String>(json, r'settlementCurrency'),
-        settlementSellerSubtotal: num.parse('${json[r'settlementSellerSubtotal']}'),
-        settlementSellerShippingFee: num.parse('${json[r'settlementSellerShippingFee']}'),
-        settlementSellerTotal: num.parse('${json[r'settlementSellerTotal']}'),
+        settlementSellerSubtotal: json[r'settlementSellerSubtotal'] == null
+            ? null
+            : num.parse('${json[r'settlementSellerSubtotal']}'),
+        settlementSellerShippingFee: json[r'settlementSellerShippingFee'] == null
+            ? null
+            : num.parse('${json[r'settlementSellerShippingFee']}'),
+        settlementSellerTotal: json[r'settlementSellerTotal'] == null
+            ? null
+            : num.parse('${json[r'settlementSellerTotal']}'),
       );
     }
     return null;

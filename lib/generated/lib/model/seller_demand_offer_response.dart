@@ -346,11 +346,17 @@ class SellerDemandOfferResponse {
         candidateProductTitle: mapValueOfType<String>(json, r'candidateProductTitle'),
         candidateProductDescription: mapValueOfType<String>(json, r'candidateProductDescription'),
         candidateProductImageUrl: mapValueOfType<String>(json, r'candidateProductImageUrl'),
-        priceAmount: num.parse('${json[r'priceAmount']}'),
+        priceAmount: json[r'priceAmount'] == null
+            ? null
+            : num.parse('${json[r'priceAmount']}'),
         priceCurrency: SellerDemandOfferResponsePriceCurrencyEnum.fromJson(json[r'priceCurrency']),
-        shippingFeeAmount: num.parse('${json[r'shippingFeeAmount']}'),
+        shippingFeeAmount: json[r'shippingFeeAmount'] == null
+            ? null
+            : num.parse('${json[r'shippingFeeAmount']}'),
         shippingFeeCurrency: SellerDemandOfferResponseShippingFeeCurrencyEnum.fromJson(json[r'shippingFeeCurrency']),
-        totalEstimatedAmount: num.parse('${json[r'totalEstimatedAmount']}'),
+        totalEstimatedAmount: json[r'totalEstimatedAmount'] == null
+            ? null
+            : num.parse('${json[r'totalEstimatedAmount']}'),
         estimatedDeliveryTime: mapValueOfType<String>(json, r'estimatedDeliveryTime'),
         stockStatus: SellerDemandOfferResponseStockStatusEnum.fromJson(json[r'stockStatus']),
         conditionType: SellerDemandOfferResponseConditionTypeEnum.fromJson(json[r'conditionType']),

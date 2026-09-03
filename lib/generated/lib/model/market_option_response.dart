@@ -188,10 +188,16 @@ class MarketOptionResponse {
         id: mapValueOfType<int>(json, r'id'),
         description: mapValueOfType<String>(json, r'description'),
         displayOrder: mapValueOfType<int>(json, r'displayOrder'),
-        totalBets: num.parse('${json[r'totalBets']}'),
+        totalBets: json[r'totalBets'] == null
+            ? null
+            : num.parse('${json[r'totalBets']}'),
         totalParticipants: mapValueOfType<int>(json, r'totalParticipants'),
-        currentOdds: num.parse('${json[r'currentOdds']}'),
-        oddsPercentage: num.parse('${json[r'oddsPercentage']}'),
+        currentOdds: json[r'currentOdds'] == null
+            ? null
+            : num.parse('${json[r'currentOdds']}'),
+        oddsPercentage: json[r'oddsPercentage'] == null
+            ? null
+            : num.parse('${json[r'oddsPercentage']}'),
         isWinningOption: mapValueOfType<bool>(json, r'isWinningOption'),
       );
     }

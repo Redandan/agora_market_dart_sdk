@@ -120,7 +120,9 @@ class SlotMemberOddsEntry {
         symbolId: mapValueOfType<int>(json, r'symbolId'),
         combo: mapValueOfType<String>(json, r'combo'),
         multiplier: mapValueOfType<int>(json, r'multiplier'),
-        probability: num.parse('${json[r'probability']}'),
+        probability: json[r'probability'] == null
+            ? null
+            : num.parse('${json[r'probability']}'),
       );
     }
     return null;

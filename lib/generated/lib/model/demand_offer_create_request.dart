@@ -295,7 +295,9 @@ class DemandOfferCreateRequest {
         sourceUrl: mapValueOfType<String>(json, r'sourceUrl'),
         priceAmount: num.parse('${json[r'priceAmount']}'),
         priceCurrency: DemandOfferCreateRequestPriceCurrencyEnum.fromJson(json[r'priceCurrency'])!,
-        shippingFeeAmount: num.parse('${json[r'shippingFeeAmount']}'),
+        shippingFeeAmount: json[r'shippingFeeAmount'] == null
+            ? null
+            : num.parse('${json[r'shippingFeeAmount']}'),
         shippingFeeCurrency: DemandOfferCreateRequestShippingFeeCurrencyEnum.fromJson(json[r'shippingFeeCurrency']),
         estimatedDeliveryTime: mapValueOfType<String>(json, r'estimatedDeliveryTime'),
         stockStatus: DemandOfferCreateRequestStockStatusEnum.fromJson(json[r'stockStatus']),

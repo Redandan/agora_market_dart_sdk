@@ -32,7 +32,7 @@ class CurrentSellerProductImportRequest {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'products'] = this.products;
+      json[r'products'] = this.products.map((e) => e.toJson()).toList();
     return json;
   }
 

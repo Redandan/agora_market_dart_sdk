@@ -176,9 +176,15 @@ class AdminTransactionSummaryResponse {
         memberId: mapValueOfType<int>(json, r'memberId'),
         currency: mapValueOfType<String>(json, r'currency'),
         type: AdminTransactionSummaryResponseTypeEnum.fromJson(json[r'type']),
-        amount: num.parse('${json[r'amount']}'),
-        beforeAmount: num.parse('${json[r'beforeAmount']}'),
-        afterAmount: num.parse('${json[r'afterAmount']}'),
+        amount: json[r'amount'] == null
+            ? null
+            : num.parse('${json[r'amount']}'),
+        beforeAmount: json[r'beforeAmount'] == null
+            ? null
+            : num.parse('${json[r'beforeAmount']}'),
+        afterAmount: json[r'afterAmount'] == null
+            ? null
+            : num.parse('${json[r'afterAmount']}'),
         createdAt: mapDateTime(json, r'createdAt', r''),
       );
     }

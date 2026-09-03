@@ -278,7 +278,9 @@ class CommunityPartnerResponse {
         telegramOwnerUserId: mapValueOfType<int>(json, r'telegramOwnerUserId'),
         ownerUserId: mapValueOfType<int>(json, r'ownerUserId'),
         displayName: mapValueOfType<String>(json, r'displayName'),
-        commissionRate: num.parse('${json[r'commissionRate']}'),
+        commissionRate: json[r'commissionRate'] == null
+            ? null
+            : num.parse('${json[r'commissionRate']}'),
         commissionBaseType: CommunityPartnerResponseCommissionBaseTypeEnum.fromJson(json[r'commissionBaseType']),
         settlementDelayDays: mapValueOfType<int>(json, r'settlementDelayDays'),
         settlementCurrency: mapValueOfType<String>(json, r'settlementCurrency'),

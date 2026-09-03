@@ -394,9 +394,15 @@ class AdminOrderSummaryResponse {
         selectedSku: mapValueOfType<String>(json, r'selectedSku'),
         quantity: mapValueOfType<int>(json, r'quantity'),
         itemCount: mapValueOfType<int>(json, r'itemCount'),
-        shippingFee: num.parse('${json[r'shippingFee']}'),
-        productPrice: num.parse('${json[r'productPrice']}'),
-        orderAmount: num.parse('${json[r'orderAmount']}'),
+        shippingFee: json[r'shippingFee'] == null
+            ? null
+            : num.parse('${json[r'shippingFee']}'),
+        productPrice: json[r'productPrice'] == null
+            ? null
+            : num.parse('${json[r'productPrice']}'),
+        orderAmount: json[r'orderAmount'] == null
+            ? null
+            : num.parse('${json[r'orderAmount']}'),
         currency: mapValueOfType<String>(json, r'currency'),
         pickupServiceType: AdminOrderSummaryResponsePickupServiceTypeEnum.fromJson(json[r'pickupServiceType']),
         shippingCompany: AdminOrderSummaryResponseShippingCompanyEnum.fromJson(json[r'shippingCompany']),
@@ -406,7 +412,9 @@ class AdminOrderSummaryResponse {
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         cancelledAt: mapDateTime(json, r'cancelledAt', r''),
         refundedAt: mapDateTime(json, r'refundedAt', r''),
-        refundAmount: num.parse('${json[r'refundAmount']}'),
+        refundAmount: json[r'refundAmount'] == null
+            ? null
+            : num.parse('${json[r'refundAmount']}'),
         refundOfferExpiresAt: mapDateTime(json, r'refundOfferExpiresAt', r''),
       );
     }

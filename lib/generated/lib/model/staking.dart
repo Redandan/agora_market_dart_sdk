@@ -361,23 +361,35 @@ class Staking {
         amount: num.parse('${json[r'amount']}'),
         currency: mapValueOfType<String>(json, r'currency')!,
         policyRevision: mapValueOfType<String>(json, r'policyRevision'),
-        annualInterestRateSnapshot: num.parse('${json[r'annualInterestRateSnapshot']}'),
-        dailyInterestRateSnapshot: num.parse('${json[r'dailyInterestRateSnapshot']}'),
-        minimumAmountSnapshot: num.parse('${json[r'minimumAmountSnapshot']}'),
+        annualInterestRateSnapshot: json[r'annualInterestRateSnapshot'] == null
+            ? null
+            : num.parse('${json[r'annualInterestRateSnapshot']}'),
+        dailyInterestRateSnapshot: json[r'dailyInterestRateSnapshot'] == null
+            ? null
+            : num.parse('${json[r'dailyInterestRateSnapshot']}'),
+        minimumAmountSnapshot: json[r'minimumAmountSnapshot'] == null
+            ? null
+            : num.parse('${json[r'minimumAmountSnapshot']}'),
         policyEffectiveFromSnapshot: mapDateTime(json, r'policyEffectiveFromSnapshot', r''),
         status: StakingStatusEnum.fromJson(json[r'status'])!,
         applyTime: mapDateTime(json, r'applyTime', r'')!,
         startTime: mapDateTime(json, r'startTime', r'')!,
         endTime: mapDateTime(json, r'endTime', r''),
-        earnedRewards: num.parse('${json[r'earnedRewards']}'),
+        earnedRewards: json[r'earnedRewards'] == null
+            ? null
+            : num.parse('${json[r'earnedRewards']}'),
         unfreezeRequestTime: mapDateTime(json, r'unfreezeRequestTime', r''),
         unfreezeCompleteTime: mapDateTime(json, r'unfreezeCompleteTime', r''),
         lastSettleDate: mapDateTime(json, r'lastSettleDate', r''),
         lastSettleTime: mapDateTime(json, r'lastSettleTime', r''),
-        lastSettleReward: num.parse('${json[r'lastSettleReward']}'),
+        lastSettleReward: json[r'lastSettleReward'] == null
+            ? null
+            : num.parse('${json[r'lastSettleReward']}'),
         remark: mapValueOfType<String>(json, r'remark'),
         nextExpectedSettleTime: mapDateTime(json, r'nextExpectedSettleTime', r''),
-        expectedReward: num.parse('${json[r'expectedReward']}'),
+        expectedReward: json[r'expectedReward'] == null
+            ? null
+            : num.parse('${json[r'expectedReward']}'),
       );
     }
     return null;

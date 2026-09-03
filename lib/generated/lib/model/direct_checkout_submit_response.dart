@@ -155,7 +155,9 @@ class DirectCheckoutSubmitResponse {
         productId: mapValueOfType<int>(json, r'productId'),
         quantity: mapValueOfType<int>(json, r'quantity'),
         selectedSku: mapValueOfType<String>(json, r'selectedSku'),
-        orderAmountUsdt: num.parse('${json[r'orderAmountUsdt']}'),
+        orderAmountUsdt: json[r'orderAmountUsdt'] == null
+            ? null
+            : num.parse('${json[r'orderAmountUsdt']}'),
         settlementCurrency: mapValueOfType<String>(json, r'settlementCurrency'),
       );
     }

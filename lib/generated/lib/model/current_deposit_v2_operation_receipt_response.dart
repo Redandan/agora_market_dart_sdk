@@ -203,7 +203,9 @@ class CurrentDepositV2OperationReceiptResponse {
         contractRevision: mapValueOfType<String>(json, r'contractRevision')!,
         rechargeRef: mapValueOfType<String>(json, r'rechargeRef'),
         requestedAmount: num.parse('${json[r'requestedAmount']}'),
-        allocatedAmount: num.parse('${json[r'allocatedAmount']}'),
+        allocatedAmount: json[r'allocatedAmount'] == null
+            ? null
+            : num.parse('${json[r'allocatedAmount']}'),
         currency: CurrentDepositV2OperationReceiptResponseCurrencyEnum.fromJson(json[r'currency'])!,
         protocol: CurrentDepositV2OperationReceiptResponseProtocolEnum.fromJson(json[r'protocol'])!,
         status: CurrentDepositV2OperationReceiptResponseStatusEnum.fromJson(json[r'status']),

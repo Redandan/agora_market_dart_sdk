@@ -172,8 +172,12 @@ class CurrentStakingV2PositionResponse {
         earnedRewards: num.parse('${json[r'earnedRewards']}'),
         nextExpectedReward: num.parse('${json[r'nextExpectedReward']}'),
         policyRevision: mapValueOfType<String>(json, r'policyRevision'),
-        annualInterestRateSnapshot: num.parse('${json[r'annualInterestRateSnapshot']}'),
-        dailyInterestRateSnapshot: num.parse('${json[r'dailyInterestRateSnapshot']}'),
+        annualInterestRateSnapshot: json[r'annualInterestRateSnapshot'] == null
+            ? null
+            : num.parse('${json[r'annualInterestRateSnapshot']}'),
+        dailyInterestRateSnapshot: json[r'dailyInterestRateSnapshot'] == null
+            ? null
+            : num.parse('${json[r'dailyInterestRateSnapshot']}'),
       );
     }
     return null;

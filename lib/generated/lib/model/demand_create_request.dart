@@ -240,10 +240,14 @@ class DemandCreateRequest {
         category: DemandCreateRequestCategoryEnum.fromJson(json[r'category']),
         productType: DemandCreateRequestProductTypeEnum.fromJson(json[r'productType']),
         quantity: mapValueOfType<int>(json, r'quantity'),
-        budgetAmount: num.parse('${json[r'budgetAmount']}'),
+        budgetAmount: json[r'budgetAmount'] == null
+            ? null
+            : num.parse('${json[r'budgetAmount']}'),
         budgetCurrency: DemandCreateRequestBudgetCurrencyEnum.fromJson(json[r'budgetCurrency']),
         buyerNote: mapValueOfType<String>(json, r'buyerNote'),
-        bountyAmount: num.parse('${json[r'bountyAmount']}'),
+        bountyAmount: json[r'bountyAmount'] == null
+            ? null
+            : num.parse('${json[r'bountyAmount']}'),
         bountyCurrency: DemandCreateRequestBountyCurrencyEnum.fromJson(json[r'bountyCurrency']),
       );
     }

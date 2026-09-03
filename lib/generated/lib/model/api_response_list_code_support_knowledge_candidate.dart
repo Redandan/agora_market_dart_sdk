@@ -80,7 +80,7 @@ class ApiResponseListCodeSupportKnowledgeCandidate {
     } else {
       json[r'code'] = null;
     }
-      json[r'data'] = this.data;
+      json[r'data'] = this.data.map((e) => e.toJson()).toList();
     return json;
   }
 

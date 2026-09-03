@@ -313,7 +313,9 @@ class ProductCategoryChangeRequest {
         source_: ProductCategoryChangeRequestSource_Enum.fromJson(json[r'source']),
         evidenceJson: mapValueOfType<String>(json, r'evidenceJson'),
         impactJson: mapValueOfType<String>(json, r'impactJson'),
-        confidence: num.parse('${json[r'confidence']}'),
+        confidence: json[r'confidence'] == null
+            ? null
+            : num.parse('${json[r'confidence']}'),
         status: ProductCategoryChangeRequestStatusEnum.fromJson(json[r'status']),
         reviewerNotes: mapValueOfType<String>(json, r'reviewerNotes'),
         createdAt: mapDateTime(json, r'createdAt', r''),

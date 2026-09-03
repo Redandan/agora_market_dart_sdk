@@ -107,7 +107,7 @@ class OrderQueryResult {
     } else {
       json[r'deliveryDetail'] = null;
     }
-      json[r'orderItems'] = this.orderItems;
+      json[r'orderItems'] = this.orderItems.map((e) => e.toJson()).toList();
     if (this.returnRecord != null) {
       json[r'returnRecord'] = this.returnRecord;
     } else {
@@ -118,8 +118,8 @@ class OrderQueryResult {
     } else {
       json[r'dispute'] = null;
     }
-      json[r'availableActions'] = this.availableActions;
-      json[r'blockedActions'] = this.blockedActions;
+      json[r'availableActions'] = this.availableActions.map((e) => e.toJson()).toList();
+      json[r'blockedActions'] = this.blockedActions.map((e) => e.toJson()).toList();
     if (this.nextStep != null) {
       json[r'nextStep'] = this.nextStep;
     } else {

@@ -164,7 +164,9 @@ class ActivityDTO {
         id: mapValueOfType<int>(json, r'id'),
         name: mapValueOfType<String>(json, r'name'),
         groupId: mapValueOfType<int>(json, r'groupId'),
-        betAmount: num.parse('${json[r'betAmount']}'),
+        betAmount: json[r'betAmount'] == null
+            ? null
+            : num.parse('${json[r'betAmount']}'),
         startTime: mapDateTime(json, r'startTime', r''),
         endTime: mapDateTime(json, r'endTime', r''),
         status: mapValueOfType<String>(json, r'status'),

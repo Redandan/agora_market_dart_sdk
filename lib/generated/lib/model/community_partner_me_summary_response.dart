@@ -272,9 +272,15 @@ class CommunityPartnerMeSummaryResponse {
         pendingLedgerCount: mapValueOfType<int>(json, r'pendingLedgerCount'),
         payableLedgerCount: mapValueOfType<int>(json, r'payableLedgerCount'),
         paidLedgerCount: mapValueOfType<int>(json, r'paidLedgerCount'),
-        pendingCommissionAmount: num.parse('${json[r'pendingCommissionAmount']}'),
-        payableCommissionAmount: num.parse('${json[r'payableCommissionAmount']}'),
-        paidCommissionAmount: num.parse('${json[r'paidCommissionAmount']}'),
+        pendingCommissionAmount: json[r'pendingCommissionAmount'] == null
+            ? null
+            : num.parse('${json[r'pendingCommissionAmount']}'),
+        payableCommissionAmount: json[r'payableCommissionAmount'] == null
+            ? null
+            : num.parse('${json[r'payableCommissionAmount']}'),
+        paidCommissionAmount: json[r'paidCommissionAmount'] == null
+            ? null
+            : num.parse('${json[r'paidCommissionAmount']}'),
         settlementCurrency: mapValueOfType<String>(json, r'settlementCurrency'),
         statuses: CommunityPartnerMeSummaryResponseStatusesEnum.listFromJson(json[r'statuses']),
       );

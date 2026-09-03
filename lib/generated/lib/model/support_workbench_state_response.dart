@@ -80,7 +80,7 @@ class SupportWorkbenchStateResponse {
     } else {
       json[r'expiresAt'] = null;
     }
-      json[r'messages'] = this.messages;
+      json[r'messages'] = this.messages.map((e) => e.toJson()).toList();
     return json;
   }
 

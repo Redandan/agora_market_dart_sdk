@@ -96,7 +96,7 @@ class CurrentDeliveryBoardResponse {
     } else {
       json[r'activeOrderId'] = null;
     }
-      json[r'availableOrders'] = this.availableOrders;
+      json[r'availableOrders'] = this.availableOrders.map((e) => e.toJson()).toList();
     return json;
   }
 

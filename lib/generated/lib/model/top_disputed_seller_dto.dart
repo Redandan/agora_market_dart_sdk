@@ -120,7 +120,9 @@ class TopDisputedSellerDTO {
         sellerId: mapValueOfType<int>(json, r'sellerId'),
         sellerName: mapValueOfType<String>(json, r'sellerName'),
         disputeCount: mapValueOfType<int>(json, r'disputeCount'),
-        refundAmount: num.parse('${json[r'refundAmount']}'),
+        refundAmount: json[r'refundAmount'] == null
+            ? null
+            : num.parse('${json[r'refundAmount']}'),
       );
     }
     return null;

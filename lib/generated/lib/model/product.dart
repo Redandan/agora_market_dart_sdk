@@ -966,8 +966,8 @@ class Product {
     } else {
       json[r'store'] = null;
     }
-      json[r'userSupportedShippingAddresses'] = this.userSupportedShippingAddresses;
-      json[r'shippingAddressOptions'] = this.shippingAddressOptions;
+      json[r'userSupportedShippingAddresses'] = this.userSupportedShippingAddresses.map((e) => e.toJson()).toList();
+      json[r'shippingAddressOptions'] = this.shippingAddressOptions.map((e) => e.toJson()).toList();
     if (this.shippingOptions != null) {
       json[r'shippingOptions'] = this.shippingOptions;
     } else {
@@ -1100,7 +1100,9 @@ class Product {
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         editorRevision: mapValueOfType<int>(json, r'editorRevision')!,
-        rating: num.parse('${json[r'rating']}'),
+        rating: json[r'rating'] == null
+            ? null
+            : num.parse('${json[r'rating']}'),
         reviewCount: mapValueOfType<int>(json, r'reviewCount')!,
         viewCount: mapValueOfType<int>(json, r'viewCount')!,
         salesCount: mapValueOfType<int>(json, r'salesCount')!,
@@ -1110,7 +1112,9 @@ class Product {
         minStock: mapValueOfType<int>(json, r'minStock')!,
         pickupServiceTypesJson: mapValueOfType<String>(json, r'pickupServiceTypesJson'),
         pickupServiceTypeFeesJson: mapValueOfType<String>(json, r'pickupServiceTypeFeesJson'),
-        freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
+        freeShippingThreshold: json[r'freeShippingThreshold'] == null
+            ? null
+            : num.parse('${json[r'freeShippingThreshold']}'),
         stockAlertThreshold: mapValueOfType<int>(json, r'stockAlertThreshold'),
         allowNegativeStock: mapValueOfType<bool>(json, r'allowNegativeStock'),
         purchaseUrl: mapValueOfType<String>(json, r'purchaseUrl'),
@@ -1133,13 +1137,21 @@ class Product {
         localizedDescription: mapValueOfType<String>(json, r'localizedDescription'),
         resolvedLocale: mapValueOfType<String>(json, r'resolvedLocale'),
         translationAvailable: mapValueOfType<bool>(json, r'translationAvailable'),
-        priceUsdt: num.parse('${json[r'priceUsdt']}'),
-        exchangeRate: num.parse('${json[r'exchangeRate']}'),
+        priceUsdt: json[r'priceUsdt'] == null
+            ? null
+            : num.parse('${json[r'priceUsdt']}'),
+        exchangeRate: json[r'exchangeRate'] == null
+            ? null
+            : num.parse('${json[r'exchangeRate']}'),
         usingDefaultRate: mapValueOfType<bool>(json, r'usingDefaultRate'),
-        freeShippingThresholdUsdt: num.parse('${json[r'freeShippingThresholdUsdt']}'),
+        freeShippingThresholdUsdt: json[r'freeShippingThresholdUsdt'] == null
+            ? null
+            : num.parse('${json[r'freeShippingThresholdUsdt']}'),
         stockLow: mapValueOfType<bool>(json, r'stockLow'),
         stockBelowMinimum: mapValueOfType<bool>(json, r'stockBelowMinimum'),
-        defaultShippingFee: num.parse('${json[r'defaultShippingFee']}'),
+        defaultShippingFee: json[r'defaultShippingFee'] == null
+            ? null
+            : num.parse('${json[r'defaultShippingFee']}'),
         imageUrls: json[r'imageUrls'] is Iterable
             ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
             : const {},
@@ -1147,10 +1159,14 @@ class Product {
         skus: json[r'skus'] is Iterable
             ? (json[r'skus'] as Iterable).cast<String>().toSet()
             : const {},
-        minimumShippingFee: num.parse('${json[r'minimumShippingFee']}'),
+        minimumShippingFee: json[r'minimumShippingFee'] == null
+            ? null
+            : num.parse('${json[r'minimumShippingFee']}'),
         pickupServiceTypes: ProductPickupServiceTypesEnum.listFromJson(json[r'pickupServiceTypes']),
         pickupServiceTypeFees: mapCastOfType<String, num>(json, r'pickupServiceTypeFees') ?? const {},
-        shippingFee: num.parse('${json[r'shippingFee']}'),
+        shippingFee: json[r'shippingFee'] == null
+            ? null
+            : num.parse('${json[r'shippingFee']}'),
       );
     }
     return null;

@@ -219,7 +219,7 @@ class Group {
     } else {
       json[r'canMerge'] = null;
     }
-      json[r'items'] = this.items;
+      json[r'items'] = this.items.map((e) => e.toJson()).toList();
       json[r'blockingReasons'] = this.blockingReasons;
     return json;
   }
@@ -249,9 +249,15 @@ class Group {
         addressId: mapValueOfType<int>(json, r'addressId'),
         serviceType: GroupServiceTypeEnum.fromJson(json[r'serviceType']),
         productType: GroupProductTypeEnum.fromJson(json[r'productType']),
-        productSubtotalUsdt: num.parse('${json[r'productSubtotalUsdt']}'),
-        shippingFeeUsdt: num.parse('${json[r'shippingFeeUsdt']}'),
-        orderAmountUsdt: num.parse('${json[r'orderAmountUsdt']}'),
+        productSubtotalUsdt: json[r'productSubtotalUsdt'] == null
+            ? null
+            : num.parse('${json[r'productSubtotalUsdt']}'),
+        shippingFeeUsdt: json[r'shippingFeeUsdt'] == null
+            ? null
+            : num.parse('${json[r'shippingFeeUsdt']}'),
+        orderAmountUsdt: json[r'orderAmountUsdt'] == null
+            ? null
+            : num.parse('${json[r'orderAmountUsdt']}'),
         canSubmit: mapValueOfType<bool>(json, r'canSubmit'),
         canCheckout: mapValueOfType<bool>(json, r'canCheckout'),
         canMerge: mapValueOfType<bool>(json, r'canMerge'),

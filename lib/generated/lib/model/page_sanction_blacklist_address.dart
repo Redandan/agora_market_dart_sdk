@@ -157,7 +157,7 @@ class PageSanctionBlacklistAddress {
     } else {
       json[r'size'] = null;
     }
-      json[r'content'] = this.content;
+      json[r'content'] = this.content.map((e) => e.toJson()).toList();
     if (this.number != null) {
       json[r'number'] = this.number;
     } else {

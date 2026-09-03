@@ -62,7 +62,7 @@ class MarketplaceUiProductListCarouselAdminResponse {
     } else {
       json[r'enabled'] = null;
     }
-      json[r'items'] = this.items;
+      json[r'items'] = this.items.map((e) => e.toJson()).toList();
     if (this.buyerPreview != null) {
       json[r'buyerPreview'] = this.buyerPreview;
     } else {

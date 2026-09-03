@@ -102,7 +102,7 @@ class AdminOrderDetailResponse {
     } else {
       json[r'order'] = null;
     }
-      json[r'items'] = this.items;
+      json[r'items'] = this.items.map((e) => e.toJson()).toList();
     if (this.fulfillment != null) {
       json[r'fulfillment'] = this.fulfillment;
     } else {
@@ -118,8 +118,8 @@ class AdminOrderDetailResponse {
     } else {
       json[r'disputePresent'] = null;
     }
-      json[r'availableActions'] = this.availableActions;
-      json[r'blockedActions'] = this.blockedActions;
+      json[r'availableActions'] = this.availableActions.map((e) => e.toJson()).toList();
+      json[r'blockedActions'] = this.blockedActions.map((e) => e.toJson()).toList();
     if (this.nextStep != null) {
       json[r'nextStep'] = this.nextStep;
     } else {

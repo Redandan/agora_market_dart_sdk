@@ -141,7 +141,9 @@ class CurrentSellerReturnReviewSubmissionRequest {
         sellerReply: mapValueOfType<String>(json, r'sellerReply'),
         rejectionReason: mapValueOfType<String>(json, r'rejectionReason'),
         refundOption: CurrentSellerReturnReviewSubmissionRequestRefundOptionEnum.fromJson(json[r'refundOption']),
-        refundAmount: num.parse('${json[r'refundAmount']}'),
+        refundAmount: json[r'refundAmount'] == null
+            ? null
+            : num.parse('${json[r'refundAmount']}'),
         addressId: mapValueOfType<int>(json, r'addressId'),
       );
     }

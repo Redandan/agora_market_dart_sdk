@@ -706,7 +706,9 @@ class CurrentSellerProductEditorRequest {
         shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
         pickupServiceTypes: CurrentSellerProductEditorRequestPickupServiceTypesEnum.listFromJson(json[r'pickupServiceTypes']),
         pickupServiceTypeFees: mapCastOfType<String, num>(json, r'pickupServiceTypeFees') ?? const {},
-        freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
+        freeShippingThreshold: json[r'freeShippingThreshold'] == null
+            ? null
+            : num.parse('${json[r'freeShippingThreshold']}'),
         sourceRegion: mapValueOfType<String>(json, r'sourceRegion'),
         sourcePlatform: mapValueOfType<String>(json, r'sourcePlatform'),
         serviceLeadTimeHours: mapValueOfType<int>(json, r'serviceLeadTimeHours'),

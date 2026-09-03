@@ -332,17 +332,39 @@ class CommunityPartnerGroupEvaluationRequest {
         memberCount: mapValueOfType<int>(json, r'memberCount'),
         dailyActiveEstimate: mapValueOfType<int>(json, r'dailyActiveEstimate'),
         topic: mapValueOfType<String>(json, r'topic'),
-        topicMatchScore: num.parse('${json[r'topicMatchScore']}'),
-        ownerTrustScore: num.parse('${json[r'ownerTrustScore']}'),
-        spamRiskScore: num.parse('${json[r'spamRiskScore']}'),
-        fakeMemberRiskScore: num.parse('${json[r'fakeMemberRiskScore']}'),
-        mismatchRiskScore: num.parse('${json[r'mismatchRiskScore']}'),
-        commissionRate: num.parse('${json[r'commissionRate']}'),
-        expectedAov: num.parse('${json[r'expectedAov']}'),
-        clickRate: num.parse('${json[r'clickRate']}'),
-        registrationRate: num.parse('${json[r'registrationRate']}'),
-        firstOrderRate: num.parse('${json[r'firstOrderRate']}'),
-        completionRate: num.parse('${json[r'completionRate']}'),
+        topicMatchScore: json[r'topicMatchScore'] == null
+            ? null
+            : num.parse('${json[r'topicMatchScore']}'),
+        ownerTrustScore: json[r'ownerTrustScore'] == null
+            ? null
+            : num.parse('${json[r'ownerTrustScore']}'),
+        spamRiskScore: json[r'spamRiskScore'] == null
+            ? null
+            : num.parse('${json[r'spamRiskScore']}'),
+        fakeMemberRiskScore: json[r'fakeMemberRiskScore'] == null
+            ? null
+            : num.parse('${json[r'fakeMemberRiskScore']}'),
+        mismatchRiskScore: json[r'mismatchRiskScore'] == null
+            ? null
+            : num.parse('${json[r'mismatchRiskScore']}'),
+        commissionRate: json[r'commissionRate'] == null
+            ? null
+            : num.parse('${json[r'commissionRate']}'),
+        expectedAov: json[r'expectedAov'] == null
+            ? null
+            : num.parse('${json[r'expectedAov']}'),
+        clickRate: json[r'clickRate'] == null
+            ? null
+            : num.parse('${json[r'clickRate']}'),
+        registrationRate: json[r'registrationRate'] == null
+            ? null
+            : num.parse('${json[r'registrationRate']}'),
+        firstOrderRate: json[r'firstOrderRate'] == null
+            ? null
+            : num.parse('${json[r'firstOrderRate']}'),
+        completionRate: json[r'completionRate'] == null
+            ? null
+            : num.parse('${json[r'completionRate']}'),
         evaluationSource: CommunityPartnerGroupEvaluationRequestEvaluationSourceEnum.fromJson(json[r'evaluationSource']),
         notes: mapValueOfType<String>(json, r'notes'),
       );

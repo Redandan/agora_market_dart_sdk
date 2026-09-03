@@ -441,7 +441,7 @@ class UserInfo {
     } else {
       json[r'avatar'] = null;
     }
-      json[r'balanceConversions'] = this.balanceConversions;
+      json[r'balanceConversions'] = this.balanceConversions.map((e) => e.toJson()).toList();
     if (this.sellerMaintenance != null) {
       json[r'sellerMaintenance'] = this.sellerMaintenance;
     } else {
@@ -516,11 +516,19 @@ class UserInfo {
         email: mapValueOfType<String>(json, r'email'),
         emailVerified: mapValueOfType<bool>(json, r'emailVerified'),
         role: mapValueOfType<String>(json, r'role'),
-        balance: num.parse('${json[r'balance']}'),
+        balance: json[r'balance'] == null
+            ? null
+            : num.parse('${json[r'balance']}'),
         cartItemCount: mapValueOfType<int>(json, r'cartItemCount'),
-        stackingBalance: num.parse('${json[r'stackingBalance']}'),
-        totalAssets: num.parse('${json[r'totalAssets']}'),
-        freezeBalance: num.parse('${json[r'freezeBalance']}'),
+        stackingBalance: json[r'stackingBalance'] == null
+            ? null
+            : num.parse('${json[r'stackingBalance']}'),
+        totalAssets: json[r'totalAssets'] == null
+            ? null
+            : num.parse('${json[r'totalAssets']}'),
+        freezeBalance: json[r'freezeBalance'] == null
+            ? null
+            : num.parse('${json[r'freezeBalance']}'),
         enabled: mapValueOfType<bool>(json, r'enabled'),
         queryTime: mapDateTime(json, r'queryTime', r''),
         storeName: mapValueOfType<String>(json, r'storeName'),

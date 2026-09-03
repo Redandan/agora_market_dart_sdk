@@ -188,9 +188,9 @@ class FileSyncResponse {
       json[r'durationMs'] = null;
     }
       json[r'errorDetails'] = this.errorDetails;
-      json[r'newFileRecords'] = this.newFileRecords;
-      json[r'updatedFileRecords'] = this.updatedFileRecords;
-      json[r'deletedFileRecords'] = this.deletedFileRecords;
+      json[r'newFileRecords'] = this.newFileRecords.map((e) => e.toJson()).toList();
+      json[r'updatedFileRecords'] = this.updatedFileRecords.map((e) => e.toJson()).toList();
+      json[r'deletedFileRecords'] = this.deletedFileRecords.map((e) => e.toJson()).toList();
     return json;
   }
 

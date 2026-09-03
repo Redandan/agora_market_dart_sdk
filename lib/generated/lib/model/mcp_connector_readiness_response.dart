@@ -117,8 +117,8 @@ class McpConnectorReadinessResponse {
     } else {
       json[r'chatgpt'] = null;
     }
-      json[r'blockingReasons'] = this.blockingReasons;
-      json[r'recommendedActions'] = this.recommendedActions;
+      json[r'blockingReasons'] = this.blockingReasons.map((e) => e.toJson()).toList();
+      json[r'recommendedActions'] = this.recommendedActions.map((e) => e.toJson()).toList();
     return json;
   }
 

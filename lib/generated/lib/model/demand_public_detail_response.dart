@@ -388,7 +388,9 @@ class DemandPublicDetailResponse {
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         viewerInterestStatus: mapValueOfType<String>(json, r'viewerInterestStatus'),
-        lowestVisibleOfferTotalAmount: num.parse('${json[r'lowestVisibleOfferTotalAmount']}'),
+        lowestVisibleOfferTotalAmount: json[r'lowestVisibleOfferTotalAmount'] == null
+            ? null
+            : num.parse('${json[r'lowestVisibleOfferTotalAmount']}'),
         lowestVisibleOfferCurrency: DemandPublicDetailResponseLowestVisibleOfferCurrencyEnum.fromJson(json[r'lowestVisibleOfferCurrency']),
         fastestDeliveryText: mapValueOfType<String>(json, r'fastestDeliveryText'),
         recommendedVisibleOfferCount: mapValueOfType<int>(json, r'recommendedVisibleOfferCount'),

@@ -236,8 +236,12 @@ class SlotWebV2OperationReceiptResponse {
         operationId: mapValueOfType<String>(json, r'operationId'),
         roundId: mapValueOfType<int>(json, r'roundId'),
         gameId: mapValueOfType<String>(json, r'gameId'),
-        betAmount: num.parse('${json[r'betAmount']}'),
-        winAmount: num.parse('${json[r'winAmount']}'),
+        betAmount: json[r'betAmount'] == null
+            ? null
+            : num.parse('${json[r'betAmount']}'),
+        winAmount: json[r'winAmount'] == null
+            ? null
+            : num.parse('${json[r'winAmount']}'),
         multiplier: mapValueOfType<int>(json, r'multiplier'),
         reels: json[r'reels'] is Iterable
             ? (json[r'reels'] as Iterable).cast<int>().toList(growable: false)
@@ -251,7 +255,9 @@ class SlotWebV2OperationReceiptResponse {
         symbolDisplays: json[r'symbolDisplays'] is Iterable
             ? (json[r'symbolDisplays'] as Iterable).cast<String>().toList(growable: false)
             : const [],
-        balance: num.parse('${json[r'balance']}'),
+        balance: json[r'balance'] == null
+            ? null
+            : num.parse('${json[r'balance']}'),
         nonce: mapValueOfType<int>(json, r'nonce'),
         serverSeedHash: mapValueOfType<String>(json, r'serverSeedHash'),
         completedAt: mapDateTime(json, r'completedAt', r''),

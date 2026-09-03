@@ -33,7 +33,7 @@ class MarketplaceUiProductListCarouselAdminRequest {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'items'] = this.items;
+      json[r'items'] = this.items.map((e) => e.toJson()).toList();
     return json;
   }
 

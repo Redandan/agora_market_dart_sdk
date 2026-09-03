@@ -189,8 +189,12 @@ class InterestRecordDTO {
         userId: mapValueOfType<int>(json, r'userId'),
         username: mapValueOfType<String>(json, r'username'),
         stakingId: mapValueOfType<String>(json, r'stakingId'),
-        stakingAmount: num.parse('${json[r'stakingAmount']}'),
-        interestAmount: num.parse('${json[r'interestAmount']}'),
+        stakingAmount: json[r'stakingAmount'] == null
+            ? null
+            : num.parse('${json[r'stakingAmount']}'),
+        interestAmount: json[r'interestAmount'] == null
+            ? null
+            : num.parse('${json[r'interestAmount']}'),
         settleDate: mapDateTime(json, r'settleDate', r''),
         createdAt: mapDateTime(json, r'createdAt', r''),
       );

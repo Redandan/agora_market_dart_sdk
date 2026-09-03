@@ -215,7 +215,7 @@ class CartCheckoutPreflightResponse {
     }
       json[r'blockingReasons'] = this.blockingReasons;
       json[r'warnings'] = this.warnings;
-      json[r'items'] = this.items;
+      json[r'items'] = this.items.map((e) => e.toJson()).toList();
     return json;
   }
 
@@ -244,11 +244,21 @@ class CartCheckoutPreflightResponse {
         addressId: mapValueOfType<int>(json, r'addressId'),
         pickupServiceType: CartCheckoutPreflightResponsePickupServiceTypeEnum.fromJson(json[r'pickupServiceType']),
         itemCount: mapValueOfType<int>(json, r'itemCount'),
-        productSubtotalUsdt: num.parse('${json[r'productSubtotalUsdt']}'),
-        shippingFeeUsdt: num.parse('${json[r'shippingFeeUsdt']}'),
-        orderAmountUsdt: num.parse('${json[r'orderAmountUsdt']}'),
-        buyerUsdtBalance: num.parse('${json[r'buyerUsdtBalance']}'),
-        topUpNeededUsdt: num.parse('${json[r'topUpNeededUsdt']}'),
+        productSubtotalUsdt: json[r'productSubtotalUsdt'] == null
+            ? null
+            : num.parse('${json[r'productSubtotalUsdt']}'),
+        shippingFeeUsdt: json[r'shippingFeeUsdt'] == null
+            ? null
+            : num.parse('${json[r'shippingFeeUsdt']}'),
+        orderAmountUsdt: json[r'orderAmountUsdt'] == null
+            ? null
+            : num.parse('${json[r'orderAmountUsdt']}'),
+        buyerUsdtBalance: json[r'buyerUsdtBalance'] == null
+            ? null
+            : num.parse('${json[r'buyerUsdtBalance']}'),
+        topUpNeededUsdt: json[r'topUpNeededUsdt'] == null
+            ? null
+            : num.parse('${json[r'topUpNeededUsdt']}'),
         blockingReasons: json[r'blockingReasons'] is Iterable
             ? (json[r'blockingReasons'] as Iterable).cast<String>().toList(growable: false)
             : const [],

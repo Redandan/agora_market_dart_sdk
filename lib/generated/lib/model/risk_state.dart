@@ -195,10 +195,18 @@ class RiskState {
       return RiskState(
         successfulWithdrawCount: mapValueOfType<int>(json, r'successfulWithdrawCount'),
         flaggedCount: mapValueOfType<int>(json, r'flaggedCount'),
-        dailyUsedUsdt: num.parse('${json[r'dailyUsedUsdt']}'),
-        monthlyUsedUsdt: num.parse('${json[r'monthlyUsedUsdt']}'),
-        dailyLimitUsdt: num.parse('${json[r'dailyLimitUsdt']}'),
-        monthlyLimitUsdt: num.parse('${json[r'monthlyLimitUsdt']}'),
+        dailyUsedUsdt: json[r'dailyUsedUsdt'] == null
+            ? null
+            : num.parse('${json[r'dailyUsedUsdt']}'),
+        monthlyUsedUsdt: json[r'monthlyUsedUsdt'] == null
+            ? null
+            : num.parse('${json[r'monthlyUsedUsdt']}'),
+        dailyLimitUsdt: json[r'dailyLimitUsdt'] == null
+            ? null
+            : num.parse('${json[r'dailyLimitUsdt']}'),
+        monthlyLimitUsdt: json[r'monthlyLimitUsdt'] == null
+            ? null
+            : num.parse('${json[r'monthlyLimitUsdt']}'),
         cooldownActive: mapValueOfType<bool>(json, r'cooldownActive'),
         cooldownUntil: mapValueOfType<String>(json, r'cooldownUntil'),
         accountAgeDays: mapValueOfType<int>(json, r'accountAgeDays'),

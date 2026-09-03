@@ -173,7 +173,9 @@ class UpdateActivityRequest {
         groupId: mapValueOfType<int>(json, r'groupId'),
         startTime: mapDateTime(json, r'startTime', r''),
         endTime: mapDateTime(json, r'endTime', r''),
-        betAmount: num.parse('${json[r'betAmount']}'),
+        betAmount: json[r'betAmount'] == null
+            ? null
+            : num.parse('${json[r'betAmount']}'),
         status: UpdateActivityRequestStatusEnum.fromJson(json[r'status']),
         gameType: UpdateActivityRequestGameTypeEnum.fromJson(json[r'gameType']),
         handicapType: UpdateActivityRequestHandicapTypeEnum.fromJson(json[r'handicapType']),

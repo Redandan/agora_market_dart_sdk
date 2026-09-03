@@ -545,7 +545,7 @@ class User {
     } else {
       json[r'admin'] = null;
     }
-      json[r'trustedDevices'] = this.trustedDevices;
+      json[r'trustedDevices'] = this.trustedDevices.map((e) => e.toJson()).toList();
     return json;
   }
 

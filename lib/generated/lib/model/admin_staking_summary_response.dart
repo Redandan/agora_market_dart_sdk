@@ -192,8 +192,12 @@ class AdminStakingSummaryResponse {
         memberId: mapValueOfType<int>(json, r'memberId'),
         status: AdminStakingSummaryResponseStatusEnum.fromJson(json[r'status']),
         currency: mapValueOfType<String>(json, r'currency'),
-        amount: num.parse('${json[r'amount']}'),
-        earnedRewards: num.parse('${json[r'earnedRewards']}'),
+        amount: json[r'amount'] == null
+            ? null
+            : num.parse('${json[r'amount']}'),
+        earnedRewards: json[r'earnedRewards'] == null
+            ? null
+            : num.parse('${json[r'earnedRewards']}'),
         policyRevision: mapValueOfType<String>(json, r'policyRevision'),
         applyTime: mapDateTime(json, r'applyTime', r''),
         lastSettleTime: mapDateTime(json, r'lastSettleTime', r''),

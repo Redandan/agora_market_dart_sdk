@@ -314,9 +314,15 @@ class PartnerCommissionLedgerResponse {
         telegramGroupId: mapValueOfType<int>(json, r'telegramGroupId'),
         orderId: mapValueOfType<String>(json, r'orderId'),
         commissionBaseType: PartnerCommissionLedgerResponseCommissionBaseTypeEnum.fromJson(json[r'commissionBaseType']),
-        baseAmount: num.parse('${json[r'baseAmount']}'),
-        commissionRate: num.parse('${json[r'commissionRate']}'),
-        commissionAmount: num.parse('${json[r'commissionAmount']}'),
+        baseAmount: json[r'baseAmount'] == null
+            ? null
+            : num.parse('${json[r'baseAmount']}'),
+        commissionRate: json[r'commissionRate'] == null
+            ? null
+            : num.parse('${json[r'commissionRate']}'),
+        commissionAmount: json[r'commissionAmount'] == null
+            ? null
+            : num.parse('${json[r'commissionAmount']}'),
         currency: mapValueOfType<String>(json, r'currency'),
         status: PartnerCommissionLedgerResponseStatusEnum.fromJson(json[r'status']),
         source_: mapValueOfType<String>(json, r'source'),

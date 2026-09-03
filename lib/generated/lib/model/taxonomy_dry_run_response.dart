@@ -123,7 +123,7 @@ class TaxonomyDryRunResponse {
     } else {
       json[r'migrationRisk'] = null;
     }
-      json[r'samples'] = this.samples;
+      json[r'samples'] = this.samples.map((e) => e.toJson()).toList();
       json[r'warnings'] = this.warnings;
     return json;
   }

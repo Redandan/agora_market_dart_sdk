@@ -613,7 +613,7 @@ class CartItemResponse {
     } else {
       json[r'updatedAt'] = null;
     }
-      json[r'shippingAddressOptions'] = this.shippingAddressOptions;
+      json[r'shippingAddressOptions'] = this.shippingAddressOptions.map((e) => e.toJson()).toList();
     if (this.shippingOptions != null) {
       json[r'shippingOptions'] = this.shippingOptions;
     } else {
@@ -647,16 +647,32 @@ class CartItemResponse {
         productDescription: mapValueOfType<String>(json, r'productDescription'),
         productImage: mapValueOfType<String>(json, r'productImage'),
         quantity: mapValueOfType<int>(json, r'quantity'),
-        unitPrice: num.parse('${json[r'unitPrice']}'),
+        unitPrice: json[r'unitPrice'] == null
+            ? null
+            : num.parse('${json[r'unitPrice']}'),
         currency: mapValueOfType<String>(json, r'currency'),
-        shippingFee: num.parse('${json[r'shippingFee']}'),
-        subtotal: num.parse('${json[r'subtotal']}'),
-        totalPrice: num.parse('${json[r'totalPrice']}'),
+        shippingFee: json[r'shippingFee'] == null
+            ? null
+            : num.parse('${json[r'shippingFee']}'),
+        subtotal: json[r'subtotal'] == null
+            ? null
+            : num.parse('${json[r'subtotal']}'),
+        totalPrice: json[r'totalPrice'] == null
+            ? null
+            : num.parse('${json[r'totalPrice']}'),
         settlementCurrency: mapValueOfType<String>(json, r'settlementCurrency'),
-        settlementUnitPrice: num.parse('${json[r'settlementUnitPrice']}'),
-        settlementShippingFee: num.parse('${json[r'settlementShippingFee']}'),
-        settlementSubtotal: num.parse('${json[r'settlementSubtotal']}'),
-        settlementTotalPrice: num.parse('${json[r'settlementTotalPrice']}'),
+        settlementUnitPrice: json[r'settlementUnitPrice'] == null
+            ? null
+            : num.parse('${json[r'settlementUnitPrice']}'),
+        settlementShippingFee: json[r'settlementShippingFee'] == null
+            ? null
+            : num.parse('${json[r'settlementShippingFee']}'),
+        settlementSubtotal: json[r'settlementSubtotal'] == null
+            ? null
+            : num.parse('${json[r'settlementSubtotal']}'),
+        settlementTotalPrice: json[r'settlementTotalPrice'] == null
+            ? null
+            : num.parse('${json[r'settlementTotalPrice']}'),
         sellerId: mapValueOfType<int>(json, r'sellerId'),
         sellerName: mapValueOfType<String>(json, r'sellerName'),
         storeId: mapValueOfType<int>(json, r'storeId'),

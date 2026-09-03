@@ -273,7 +273,7 @@ class SellerDemandSummaryResponse {
     } else {
       json[r'updatedAt'] = null;
     }
-      json[r'currentSellerOffers'] = this.currentSellerOffers;
+      json[r'currentSellerOffers'] = this.currentSellerOffers.map((e) => e.toJson()).toList();
     return json;
   }
 

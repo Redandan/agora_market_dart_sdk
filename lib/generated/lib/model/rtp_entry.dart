@@ -155,8 +155,12 @@ class RtpEntry {
         combo: mapValueOfType<String>(json, r'combo'),
         multiplier: mapValueOfType<int>(json, r'multiplier'),
         hits: mapValueOfType<int>(json, r'hits'),
-        probability: num.parse('${json[r'probability']}'),
-        rtpContribution: num.parse('${json[r'rtpContribution']}'),
+        probability: json[r'probability'] == null
+            ? null
+            : num.parse('${json[r'probability']}'),
+        rtpContribution: json[r'rtpContribution'] == null
+            ? null
+            : num.parse('${json[r'rtpContribution']}'),
       );
     }
     return null;

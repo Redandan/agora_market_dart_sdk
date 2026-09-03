@@ -162,12 +162,18 @@ class MetricsBlock {
 
       return MetricsBlock(
         todayOrders: mapValueOfType<int>(json, r'todayOrders'),
-        todayRevenueUsdt: num.parse('${json[r'todayRevenueUsdt']}'),
+        todayRevenueUsdt: json[r'todayRevenueUsdt'] == null
+            ? null
+            : num.parse('${json[r'todayRevenueUsdt']}'),
         activeProducts: mapValueOfType<int>(json, r'activeProducts'),
         todaySettledOrders: mapValueOfType<int>(json, r'todaySettledOrders'),
         todayCompletedOrders: mapValueOfType<int>(json, r'todayCompletedOrders'),
-        walletAvailableUsdt: num.parse('${json[r'walletAvailableUsdt']}'),
-        walletFrozenUsdt: num.parse('${json[r'walletFrozenUsdt']}'),
+        walletAvailableUsdt: json[r'walletAvailableUsdt'] == null
+            ? null
+            : num.parse('${json[r'walletAvailableUsdt']}'),
+        walletFrozenUsdt: json[r'walletFrozenUsdt'] == null
+            ? null
+            : num.parse('${json[r'walletFrozenUsdt']}'),
       );
     }
     return null;

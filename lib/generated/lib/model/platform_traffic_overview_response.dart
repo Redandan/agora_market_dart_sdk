@@ -122,9 +122,9 @@ class PlatformTrafficOverviewResponse {
     } else {
       json[r'observationHealth'] = null;
     }
-      json[r'byService'] = this.byService;
-      json[r'bySurface'] = this.bySurface;
-      json[r'byChannel'] = this.byChannel;
+      json[r'byService'] = this.byService.map((e) => e.toJson()).toList();
+      json[r'bySurface'] = this.bySurface.map((e) => e.toJson()).toList();
+      json[r'byChannel'] = this.byChannel.map((e) => e.toJson()).toList();
     return json;
   }
 

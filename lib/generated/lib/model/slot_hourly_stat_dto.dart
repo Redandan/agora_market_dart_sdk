@@ -120,7 +120,9 @@ class SlotHourlyStatDto {
         hour: mapValueOfType<int>(json, r'hour'),
         rounds: mapValueOfType<int>(json, r'rounds'),
         players: mapValueOfType<int>(json, r'players'),
-        totalBet: num.parse('${json[r'totalBet']}'),
+        totalBet: json[r'totalBet'] == null
+            ? null
+            : num.parse('${json[r'totalBet']}'),
       );
     }
     return null;

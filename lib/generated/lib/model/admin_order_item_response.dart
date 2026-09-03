@@ -230,12 +230,22 @@ class AdminOrderItemResponse {
         productImage: mapValueOfType<String>(json, r'productImage'),
         selectedSku: mapValueOfType<String>(json, r'selectedSku'),
         quantity: mapValueOfType<int>(json, r'quantity'),
-        originalUnitPrice: num.parse('${json[r'originalUnitPrice']}'),
-        originalSubtotal: num.parse('${json[r'originalSubtotal']}'),
+        originalUnitPrice: json[r'originalUnitPrice'] == null
+            ? null
+            : num.parse('${json[r'originalUnitPrice']}'),
+        originalSubtotal: json[r'originalSubtotal'] == null
+            ? null
+            : num.parse('${json[r'originalSubtotal']}'),
         originalCurrency: mapValueOfType<String>(json, r'originalCurrency'),
-        exchangeRate: num.parse('${json[r'exchangeRate']}'),
-        unitPriceUsdt: num.parse('${json[r'unitPriceUsdt']}'),
-        lineAmountUsdt: num.parse('${json[r'lineAmountUsdt']}'),
+        exchangeRate: json[r'exchangeRate'] == null
+            ? null
+            : num.parse('${json[r'exchangeRate']}'),
+        unitPriceUsdt: json[r'unitPriceUsdt'] == null
+            ? null
+            : num.parse('${json[r'unitPriceUsdt']}'),
+        lineAmountUsdt: json[r'lineAmountUsdt'] == null
+            ? null
+            : num.parse('${json[r'lineAmountUsdt']}'),
       );
     }
     return null;

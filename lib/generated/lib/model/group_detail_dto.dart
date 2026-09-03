@@ -46,8 +46,8 @@ class GroupDetailDTO {
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'activity'] = this.activity;
-      json[r'activeUsers'] = this.activeUsers;
-      json[r'messages'] = this.messages;
+      json[r'activeUsers'] = this.activeUsers.map((e) => e.toJson()).toList();
+      json[r'messages'] = this.messages.map((e) => e.toJson()).toList();
     return json;
   }
 

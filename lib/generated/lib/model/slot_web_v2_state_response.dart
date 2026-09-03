@@ -147,9 +147,13 @@ class SlotWebV2StateResponse {
       return SlotWebV2StateResponse(
         gameId: mapValueOfType<String>(json, r'gameId'),
         currency: mapValueOfType<String>(json, r'currency'),
-        availableBalance: num.parse('${json[r'availableBalance']}'),
+        availableBalance: json[r'availableBalance'] == null
+            ? null
+            : num.parse('${json[r'availableBalance']}'),
         paytableVersion: mapValueOfType<int>(json, r'paytableVersion'),
-        theoreticalRtpPct: num.parse('${json[r'theoreticalRtpPct']}'),
+        theoreticalRtpPct: json[r'theoreticalRtpPct'] == null
+            ? null
+            : num.parse('${json[r'theoreticalRtpPct']}'),
         realSpinAvailable: mapValueOfType<bool>(json, r'realSpinAvailable'),
       );
     }

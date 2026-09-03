@@ -286,15 +286,33 @@ class ProxyPricingBreakdown {
         externalPlatform: mapValueOfType<String>(json, r'externalPlatform'),
         externalItemName: mapValueOfType<String>(json, r'externalItemName'),
         externalItemUrl: mapValueOfType<String>(json, r'externalItemUrl'),
-        externalItemPrice: num.parse('${json[r'externalItemPrice']}'),
-        estimatedTax: num.parse('${json[r'estimatedTax']}'),
-        estimatedDeliveryFee: num.parse('${json[r'estimatedDeliveryFee']}'),
-        estimatedPlatformFee: num.parse('${json[r'estimatedPlatformFee']}'),
-        serviceFee: num.parse('${json[r'serviceFee']}'),
-        riskBuffer: num.parse('${json[r'riskBuffer']}'),
-        expectedTotalCost: num.parse('${json[r'expectedTotalCost']}'),
-        listingPrice: num.parse('${json[r'listingPrice']}'),
-        expectedMargin: num.parse('${json[r'expectedMargin']}'),
+        externalItemPrice: json[r'externalItemPrice'] == null
+            ? null
+            : num.parse('${json[r'externalItemPrice']}'),
+        estimatedTax: json[r'estimatedTax'] == null
+            ? null
+            : num.parse('${json[r'estimatedTax']}'),
+        estimatedDeliveryFee: json[r'estimatedDeliveryFee'] == null
+            ? null
+            : num.parse('${json[r'estimatedDeliveryFee']}'),
+        estimatedPlatformFee: json[r'estimatedPlatformFee'] == null
+            ? null
+            : num.parse('${json[r'estimatedPlatformFee']}'),
+        serviceFee: json[r'serviceFee'] == null
+            ? null
+            : num.parse('${json[r'serviceFee']}'),
+        riskBuffer: json[r'riskBuffer'] == null
+            ? null
+            : num.parse('${json[r'riskBuffer']}'),
+        expectedTotalCost: json[r'expectedTotalCost'] == null
+            ? null
+            : num.parse('${json[r'expectedTotalCost']}'),
+        listingPrice: json[r'listingPrice'] == null
+            ? null
+            : num.parse('${json[r'listingPrice']}'),
+        expectedMargin: json[r'expectedMargin'] == null
+            ? null
+            : num.parse('${json[r'expectedMargin']}'),
         currency: ProxyPricingBreakdownCurrencyEnum.fromJson(json[r'currency']),
         priceSourceUrl: mapValueOfType<String>(json, r'priceSourceUrl'),
         priceCheckedAt: mapDateTime(json, r'priceCheckedAt', r''),

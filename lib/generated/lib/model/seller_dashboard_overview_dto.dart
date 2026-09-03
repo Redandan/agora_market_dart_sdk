@@ -117,8 +117,8 @@ class SellerDashboardOverviewDto {
     } else {
       json[r'productStatus'] = null;
     }
-      json[r'recentOrders'] = this.recentOrders;
-      json[r'attentionProducts'] = this.attentionProducts;
+      json[r'recentOrders'] = this.recentOrders.map((e) => e.toJson()).toList();
+      json[r'attentionProducts'] = this.attentionProducts.map((e) => e.toJson()).toList();
     return json;
   }
 

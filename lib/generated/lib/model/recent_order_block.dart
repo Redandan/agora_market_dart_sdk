@@ -137,7 +137,9 @@ class RecentOrderBlock {
         orderId: mapValueOfType<String>(json, r'orderId'),
         status: RecentOrderBlockStatusEnum.fromJson(json[r'status']),
         buyerDisplayName: mapValueOfType<String>(json, r'buyerDisplayName'),
-        amountUsdt: num.parse('${json[r'amountUsdt']}'),
+        amountUsdt: json[r'amountUsdt'] == null
+            ? null
+            : num.parse('${json[r'amountUsdt']}'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         nextAction: RecentOrderBlockNextActionEnum.fromJson(json[r'nextAction']),
       );

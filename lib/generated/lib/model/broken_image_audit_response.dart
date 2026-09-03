@@ -144,7 +144,7 @@ class BrokenImageAuditResponse {
     } else {
       json[r'transientFailureCount'] = null;
     }
-      json[r'findings'] = this.findings;
+      json[r'findings'] = this.findings.map((e) => e.toJson()).toList();
     return json;
   }
 

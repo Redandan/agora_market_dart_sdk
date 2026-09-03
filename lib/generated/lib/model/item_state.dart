@@ -381,9 +381,15 @@ class ItemState {
         acceptedDataResidency: mapValueOfType<bool>(json, r'acceptedDataResidency'),
         acceptedNoRefundAfterProof: mapValueOfType<bool>(json, r'acceptedNoRefundAfterProof'),
         termsVersionProvided: mapValueOfType<bool>(json, r'termsVersionProvided'),
-        unitPriceUsdt: num.parse('${json[r'unitPriceUsdt']}'),
-        lineAmountUsdt: num.parse('${json[r'lineAmountUsdt']}'),
-        shippingFeeUsdt: num.parse('${json[r'shippingFeeUsdt']}'),
+        unitPriceUsdt: json[r'unitPriceUsdt'] == null
+            ? null
+            : num.parse('${json[r'unitPriceUsdt']}'),
+        lineAmountUsdt: json[r'lineAmountUsdt'] == null
+            ? null
+            : num.parse('${json[r'lineAmountUsdt']}'),
+        shippingFeeUsdt: json[r'shippingFeeUsdt'] == null
+            ? null
+            : num.parse('${json[r'shippingFeeUsdt']}'),
       );
     }
     return null;
