@@ -136,7 +136,7 @@ class SellerDemandPoolApi {
   /// * [int] offerId (required):
   ///
   /// * [DemandOfferCreateRequest] demandOfferCreateRequest (required):
-  Future<Response> reviseOfferWithHttpInfo(int demandId, int offerId, DemandOfferCreateRequest demandOfferCreateRequest,) async {
+  Future<Response> reviseOffer1WithHttpInfo(int demandId, int offerId, DemandOfferCreateRequest demandOfferCreateRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/seller/demands/{demandId}/offers/{offerId}/revision'
       .replaceAll('{demandId}', demandId.toString())
@@ -172,8 +172,8 @@ class SellerDemandPoolApi {
   /// * [int] offerId (required):
   ///
   /// * [DemandOfferCreateRequest] demandOfferCreateRequest (required):
-  Future<DemandOfferResponse?> reviseOffer(int demandId, int offerId, DemandOfferCreateRequest demandOfferCreateRequest,) async {
-    final response = await reviseOfferWithHttpInfo(demandId, offerId, demandOfferCreateRequest,);
+  Future<DemandOfferResponse?> reviseOffer1(int demandId, int offerId, DemandOfferCreateRequest demandOfferCreateRequest,) async {
+    final response = await reviseOffer1WithHttpInfo(demandId, offerId, demandOfferCreateRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -300,7 +300,7 @@ class SellerDemandPoolApi {
   /// * [int] demandId (required):
   ///
   /// * [DemandOfferCreateRequest] demandOfferCreateRequest (required):
-  Future<Response> submitOfferWithHttpInfo(int demandId, DemandOfferCreateRequest demandOfferCreateRequest,) async {
+  Future<Response> submitOffer1WithHttpInfo(int demandId, DemandOfferCreateRequest demandOfferCreateRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/seller/demands/{demandId}/offers'
       .replaceAll('{demandId}', demandId.toString());
@@ -333,8 +333,8 @@ class SellerDemandPoolApi {
   /// * [int] demandId (required):
   ///
   /// * [DemandOfferCreateRequest] demandOfferCreateRequest (required):
-  Future<DemandOfferResponse?> submitOffer(int demandId, DemandOfferCreateRequest demandOfferCreateRequest,) async {
-    final response = await submitOfferWithHttpInfo(demandId, demandOfferCreateRequest,);
+  Future<DemandOfferResponse?> submitOffer1(int demandId, DemandOfferCreateRequest demandOfferCreateRequest,) async {
+    final response = await submitOffer1WithHttpInfo(demandId, demandOfferCreateRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -16,9 +16,9 @@ class PageableObject {
     this.offset,
     this.sort,
     this.paged,
-    this.pageNumber,
-    this.pageSize,
     this.unpaged,
+    this.pageSize,
+    this.pageNumber,
   });
 
   ///
@@ -51,7 +51,7 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? pageNumber;
+  bool? unpaged;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -67,16 +67,16 @@ class PageableObject {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? unpaged;
+  int? pageNumber;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PageableObject &&
     other.offset == offset &&
     other.sort == sort &&
     other.paged == paged &&
-    other.pageNumber == pageNumber &&
+    other.unpaged == unpaged &&
     other.pageSize == pageSize &&
-    other.unpaged == unpaged;
+    other.pageNumber == pageNumber;
 
   @override
   int get hashCode =>
@@ -84,12 +84,12 @@ class PageableObject {
     (offset == null ? 0 : offset!.hashCode) +
     (sort == null ? 0 : sort!.hashCode) +
     (paged == null ? 0 : paged!.hashCode) +
-    (pageNumber == null ? 0 : pageNumber!.hashCode) +
+    (unpaged == null ? 0 : unpaged!.hashCode) +
     (pageSize == null ? 0 : pageSize!.hashCode) +
-    (unpaged == null ? 0 : unpaged!.hashCode);
+    (pageNumber == null ? 0 : pageNumber!.hashCode);
 
   @override
-  String toString() => 'PageableObject[offset=$offset, sort=$sort, paged=$paged, pageNumber=$pageNumber, pageSize=$pageSize, unpaged=$unpaged]';
+  String toString() => 'PageableObject[offset=$offset, sort=$sort, paged=$paged, unpaged=$unpaged, pageSize=$pageSize, pageNumber=$pageNumber]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -108,20 +108,20 @@ class PageableObject {
     } else {
       json[r'paged'] = null;
     }
-    if (this.pageNumber != null) {
-      json[r'pageNumber'] = this.pageNumber;
+    if (this.unpaged != null) {
+      json[r'unpaged'] = this.unpaged;
     } else {
-      json[r'pageNumber'] = null;
+      json[r'unpaged'] = null;
     }
     if (this.pageSize != null) {
       json[r'pageSize'] = this.pageSize;
     } else {
       json[r'pageSize'] = null;
     }
-    if (this.unpaged != null) {
-      json[r'unpaged'] = this.unpaged;
+    if (this.pageNumber != null) {
+      json[r'pageNumber'] = this.pageNumber;
     } else {
-      json[r'unpaged'] = null;
+      json[r'pageNumber'] = null;
     }
     return json;
   }
@@ -148,9 +148,9 @@ class PageableObject {
         offset: mapValueOfType<int>(json, r'offset'),
         sort: SortObject.fromJson(json[r'sort']),
         paged: mapValueOfType<bool>(json, r'paged'),
-        pageNumber: mapValueOfType<int>(json, r'pageNumber'),
-        pageSize: mapValueOfType<int>(json, r'pageSize'),
         unpaged: mapValueOfType<bool>(json, r'unpaged'),
+        pageSize: mapValueOfType<int>(json, r'pageSize'),
+        pageNumber: mapValueOfType<int>(json, r'pageNumber'),
       );
     }
     return null;

@@ -754,6 +754,10 @@ class ApiClient {
           return CurrentSellerCancellationSubmissionRequest.fromJson(value);
         case 'CurrentSellerDeliveryProofSubmissionRequest':
           return CurrentSellerDeliveryProofSubmissionRequest.fromJson(value);
+        case 'CurrentSellerDemandOfferRequest':
+          return CurrentSellerDemandOfferRequest.fromJson(value);
+        case 'CurrentSellerDemandOperationReceiptResponse':
+          return CurrentSellerDemandOperationReceiptResponse.fromJson(value);
         case 'CurrentSellerDisputeReplySubmissionRequest':
           return CurrentSellerDisputeReplySubmissionRequest.fromJson(value);
         case 'CurrentSellerLogisticsShipmentSubmissionRequest':
