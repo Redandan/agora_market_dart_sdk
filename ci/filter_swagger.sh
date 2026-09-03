@@ -17,6 +17,12 @@ jq '
     .components.schemas.ApiResponseFileUploadResponse,
     .components.schemas.UploadFileRequest
   )
+  | (.paths["/seller/demands/me/operations/{operationId}"].get.parameters //= [])
+  | (.paths["/seller/demands/me/open/{demandId}/offers/operations/{operationId}"].put.parameters //= [])
+  | (.paths["/seller/demands/me/open/{demandId}/offers/{offerId}/revisions/operations/{operationId}"].put.parameters //= [])
+  | (.paths["/seller/demands/me/operations/{operationId}"].get.parameters |= map(select(.name != "user")))
+  | (.paths["/seller/demands/me/open/{demandId}/offers/operations/{operationId}"].put.parameters |= map(select(.name != "user")))
+  | (.paths["/seller/demands/me/open/{demandId}/offers/{offerId}/revisions/operations/{operationId}"].put.parameters |= map(select(.name != "user")))
 ' "$INPUT" > "$OUTPUT"
 
 echo "filtered: $INPUT -> $OUTPUT"
