@@ -412,14 +412,10 @@ class CartItem {
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),
         inStock: mapValueOfType<bool>(json, r'inStock'),
-        subtotal: json[r'subtotal'] == null
-            ? null
-            : num.parse('${json[r'subtotal']}'),
+        subtotal: num.parse('${json[r'subtotal']}'),
         stockStatus: mapValueOfType<String>(json, r'stockStatus'),
         purchaseRestrictionReason: mapValueOfType<String>(json, r'purchaseRestrictionReason'),
-        totalPrice: json[r'totalPrice'] == null
-            ? null
-            : num.parse('${json[r'totalPrice']}'),
+        totalPrice: num.parse('${json[r'totalPrice']}'),
         specificationDescription: mapValueOfType<String>(json, r'specificationDescription'),
       );
     }

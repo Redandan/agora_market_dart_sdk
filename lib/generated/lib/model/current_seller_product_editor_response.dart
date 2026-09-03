@@ -507,7 +507,7 @@ class CurrentSellerProductEditorResponse {
     } else {
       json[r'status'] = null;
     }
-      json[r'images'] = this.images.map((e) => e.toJson()).toList();
+      json[r'images'] = this.images;
       json[r'legacyMediaBlocked'] = this.legacyMediaBlocked;
       json[r'skus'] = this.skus.toList(growable: false);
     if (this.brand != null) {
@@ -665,9 +665,7 @@ class CurrentSellerProductEditorResponse {
         title: mapValueOfType<String>(json, r'title'),
         description: mapValueOfType<String>(json, r'description'),
         defaultLocale: mapValueOfType<String>(json, r'defaultLocale')!,
-        price: json[r'price'] == null
-            ? null
-            : num.parse('${json[r'price']}'),
+        price: num.parse('${json[r'price']}'),
         currency: CurrentSellerProductEditorResponseCurrencyEnum.fromJson(json[r'currency']),
         stock: mapValueOfType<int>(json, r'stock')!,
         category: CurrentSellerProductEditorResponseCategoryEnum.fromJson(json[r'category']),
@@ -698,9 +696,7 @@ class CurrentSellerProductEditorResponse {
         shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
         pickupServiceTypes: CurrentSellerProductEditorResponsePickupServiceTypesEnum.listFromJson(json[r'pickupServiceTypes']),
         pickupServiceTypeFees: mapCastOfType<String, num>(json, r'pickupServiceTypeFees') ?? const {},
-        freeShippingThreshold: json[r'freeShippingThreshold'] == null
-            ? null
-            : num.parse('${json[r'freeShippingThreshold']}'),
+        freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
         sourceRegion: mapValueOfType<String>(json, r'sourceRegion'),
         sourcePlatform: mapValueOfType<String>(json, r'sourcePlatform'),
         serviceLeadTimeHours: mapValueOfType<int>(json, r'serviceLeadTimeHours'),

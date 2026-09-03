@@ -67,7 +67,7 @@ class CartCheckoutSubmitParam {
     } else {
       json[r'remark'] = null;
     }
-      json[r'items'] = this.items.map((e) => e.toJson()).toList();
+      json[r'items'] = this.items;
     return json;
   }
 

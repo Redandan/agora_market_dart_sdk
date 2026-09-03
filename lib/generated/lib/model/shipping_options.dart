@@ -63,12 +63,12 @@ class ShippingOptions {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'sevenEleven'] = this.sevenEleven.map((e) => e.toJson()).toList();
-      json[r'familyMart'] = this.familyMart.map((e) => e.toJson()).toList();
-      json[r'hilife'] = this.hilife.map((e) => e.toJson()).toList();
-      json[r'okMart'] = this.okMart.map((e) => e.toJson()).toList();
-      json[r'homeDelivery'] = this.homeDelivery.map((e) => e.toJson()).toList();
-      json[r'postal'] = this.postal.map((e) => e.toJson()).toList();
+      json[r'sevenEleven'] = this.sevenEleven;
+      json[r'familyMart'] = this.familyMart;
+      json[r'hilife'] = this.hilife;
+      json[r'okMart'] = this.okMart;
+      json[r'homeDelivery'] = this.homeDelivery;
+      json[r'postal'] = this.postal;
     return json;
   }
 

@@ -150,7 +150,7 @@ class GroupModerationStatusDTO {
     }
       json[r'activity'] = this.activity;
       json[r'botReadiness'] = this.botReadiness;
-      json[r'recentEvents'] = this.recentEvents.map((e) => e.toJson()).toList();
+      json[r'recentEvents'] = this.recentEvents;
     return json;
   }
 

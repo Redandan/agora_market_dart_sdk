@@ -157,9 +157,7 @@ class SlotRevenueResponse {
         startTime: mapDateTime(json, r'startTime', r'')!,
         endTime: mapDateTime(json, r'endTime', r'')!,
         paytableVersion: mapValueOfType<int>(json, r'paytableVersion'),
-        theoreticalRtpPct: json[r'theoreticalRtpPct'] == null
-            ? null
-            : num.parse('${json[r'theoreticalRtpPct']}'),
+        theoreticalRtpPct: num.parse('${json[r'theoreticalRtpPct']}'),
         totalRounds: mapValueOfType<int>(json, r'totalRounds')!,
         winRounds: mapValueOfType<int>(json, r'winRounds')!,
         winRatePct: num.parse('${json[r'winRatePct']}'),

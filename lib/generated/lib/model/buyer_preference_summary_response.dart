@@ -149,13 +149,13 @@ class BuyerPreferenceSummaryResponse {
     } else {
       json[r'averageOrderAmountUsdt'] = null;
     }
-      json[r'categories'] = this.categories.map((e) => e.toJson()).toList();
-      json[r'productTypes'] = this.productTypes.map((e) => e.toJson()).toList();
-      json[r'tags'] = this.tags.map((e) => e.toJson()).toList();
-      json[r'brands'] = this.brands.map((e) => e.toJson()).toList();
-      json[r'sourceRegions'] = this.sourceRegions.map((e) => e.toJson()).toList();
-      json[r'sourcePlatforms'] = this.sourcePlatforms.map((e) => e.toJson()).toList();
-      json[r'recentKeywords'] = this.recentKeywords.map((e) => e.toJson()).toList();
+      json[r'categories'] = this.categories;
+      json[r'productTypes'] = this.productTypes;
+      json[r'tags'] = this.tags;
+      json[r'brands'] = this.brands;
+      json[r'sourceRegions'] = this.sourceRegions;
+      json[r'sourcePlatforms'] = this.sourcePlatforms;
+      json[r'recentKeywords'] = this.recentKeywords;
     if (this.generatedAt != null) {
       json[r'generatedAt'] = this.generatedAt!.toUtc().toIso8601String();
     } else {
@@ -186,9 +186,7 @@ class BuyerPreferenceSummaryResponse {
         personalized: mapValueOfType<bool>(json, r'personalized'),
         confidenceScore: mapValueOfType<double>(json, r'confidenceScore'),
         signalCount: mapValueOfType<int>(json, r'signalCount'),
-        averageOrderAmountUsdt: json[r'averageOrderAmountUsdt'] == null
-            ? null
-            : num.parse('${json[r'averageOrderAmountUsdt']}'),
+        averageOrderAmountUsdt: num.parse('${json[r'averageOrderAmountUsdt']}'),
         categories: PreferenceScore.listFromJson(json[r'categories']),
         productTypes: PreferenceScore.listFromJson(json[r'productTypes']),
         tags: PreferenceScore.listFromJson(json[r'tags']),

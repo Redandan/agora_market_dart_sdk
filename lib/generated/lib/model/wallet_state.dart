@@ -113,16 +113,10 @@ class WalletState {
       }());
 
       return WalletState(
-        buyerUsdtBalance: json[r'buyerUsdtBalance'] == null
-            ? null
-            : num.parse('${json[r'buyerUsdtBalance']}'),
-        requiredUsdtAmount: json[r'requiredUsdtAmount'] == null
-            ? null
-            : num.parse('${json[r'requiredUsdtAmount']}'),
+        buyerUsdtBalance: num.parse('${json[r'buyerUsdtBalance']}'),
+        requiredUsdtAmount: num.parse('${json[r'requiredUsdtAmount']}'),
         balanceEnough: mapValueOfType<bool>(json, r'balanceEnough'),
-        topUpNeededUsdt: json[r'topUpNeededUsdt'] == null
-            ? null
-            : num.parse('${json[r'topUpNeededUsdt']}'),
+        topUpNeededUsdt: num.parse('${json[r'topUpNeededUsdt']}'),
       );
     }
     return null;

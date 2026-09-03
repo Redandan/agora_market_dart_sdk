@@ -102,7 +102,7 @@ class ShippingServiceGroup {
     } else {
       json[r'estimatedDays'] = null;
     }
-      json[r'addresses'] = this.addresses.map((e) => e.toJson()).toList();
+      json[r'addresses'] = this.addresses;
     if (this.needsAddress != null) {
       json[r'needsAddress'] = this.needsAddress;
     } else {
@@ -136,9 +136,7 @@ class ShippingServiceGroup {
 
       return ShippingServiceGroup(
         shippingCompany: ShippingServiceGroupShippingCompanyEnum.fromJson(json[r'shippingCompany']),
-        shippingFee: json[r'shippingFee'] == null
-            ? null
-            : num.parse('${json[r'shippingFee']}'),
+        shippingFee: num.parse('${json[r'shippingFee']}'),
         estimatedDays: mapValueOfType<int>(json, r'estimatedDays'),
         addresses: ShippingAddress.listFromJson(json[r'addresses']),
         needsAddress: mapValueOfType<bool>(json, r'needsAddress'),

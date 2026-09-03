@@ -189,20 +189,14 @@ class CurrentStakingSummaryResponse {
 
       return CurrentStakingSummaryResponse(
         stakingRef: mapValueOfType<String>(json, r'stakingRef'),
-        amount: json[r'amount'] == null
-            ? null
-            : num.parse('${json[r'amount']}'),
+        amount: num.parse('${json[r'amount']}'),
         currency: mapValueOfType<String>(json, r'currency'),
         status: CurrentStakingSummaryResponseStatusEnum.fromJson(json[r'status']),
         applyTime: mapDateTime(json, r'applyTime', r''),
         startTime: mapDateTime(json, r'startTime', r''),
         nextExpectedSettleTime: mapDateTime(json, r'nextExpectedSettleTime', r''),
-        earnedRewards: json[r'earnedRewards'] == null
-            ? null
-            : num.parse('${json[r'earnedRewards']}'),
-        expectedReward: json[r'expectedReward'] == null
-            ? null
-            : num.parse('${json[r'expectedReward']}'),
+        earnedRewards: num.parse('${json[r'earnedRewards']}'),
+        expectedReward: num.parse('${json[r'expectedReward']}'),
       );
     }
     return null;

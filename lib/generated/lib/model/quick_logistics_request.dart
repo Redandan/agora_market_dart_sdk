@@ -104,9 +104,7 @@ class QuickLogisticsRequest {
       return QuickLogisticsRequest(
         fromPostalCode: mapValueOfType<String>(json, r'fromPostalCode')!,
         toPostalCode: mapValueOfType<String>(json, r'toPostalCode')!,
-        weight: json[r'weight'] == null
-            ? null
-            : num.parse('${json[r'weight']}'),
+        weight: num.parse('${json[r'weight']}'),
         carrier: QuickLogisticsRequestCarrierEnum.fromJson(json[r'carrier']),
         serviceType: QuickLogisticsRequestServiceTypeEnum.fromJson(json[r'serviceType']),
       );

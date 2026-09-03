@@ -85,8 +85,8 @@ class StorefrontHomeAuthoringGuideResponse {
     } else {
       json[r'summary'] = null;
     }
-      json[r'requiredBlocks'] = this.requiredBlocks.map((e) => e.toJson()).toList();
-      json[r'supportedActions'] = this.supportedActions.map((e) => e.toJson()).toList();
+      json[r'requiredBlocks'] = this.requiredBlocks;
+      json[r'supportedActions'] = this.supportedActions;
       json[r'forbiddenPatterns'] = this.forbiddenPatterns;
     if (this.snippets != null) {
       json[r'snippets'] = this.snippets;

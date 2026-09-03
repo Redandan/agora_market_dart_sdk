@@ -67,7 +67,7 @@ class SlotMemberOddsResponse {
     } else {
       json[r'totalRtpPct'] = null;
     }
-      json[r'entries'] = this.entries.map((e) => e.toJson()).toList();
+      json[r'entries'] = this.entries;
     return json;
   }
 

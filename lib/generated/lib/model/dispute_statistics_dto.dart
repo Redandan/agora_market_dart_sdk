@@ -97,8 +97,8 @@ class DisputeStatisticsDTO {
     } else {
       json[r'totalRefundAmount'] = null;
     }
-      json[r'topDisputedProducts'] = this.topDisputedProducts.map((e) => e.toJson()).toList();
-      json[r'topDisputedSellers'] = this.topDisputedSellers.map((e) => e.toJson()).toList();
+      json[r'topDisputedProducts'] = this.topDisputedProducts;
+      json[r'topDisputedSellers'] = this.topDisputedSellers;
     return json;
   }
 
@@ -124,9 +124,7 @@ class DisputeStatisticsDTO {
         totalDisputes: mapValueOfType<int>(json, r'totalDisputes'),
         disputesByStatus: mapCastOfType<String, int>(json, r'disputesByStatus') ?? const {},
         averageResolutionTime: mapValueOfType<double>(json, r'averageResolutionTime'),
-        totalRefundAmount: json[r'totalRefundAmount'] == null
-            ? null
-            : num.parse('${json[r'totalRefundAmount']}'),
+        totalRefundAmount: num.parse('${json[r'totalRefundAmount']}'),
         topDisputedProducts: TopDisputedProductDTO.listFromJson(json[r'topDisputedProducts']),
         topDisputedSellers: TopDisputedSellerDTO.listFromJson(json[r'topDisputedSellers']),
       );

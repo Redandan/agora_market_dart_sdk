@@ -47,7 +47,7 @@ class BatchUpdatePaytableRequest {
     final json = <String, dynamic>{};
       json[r'gameType'] = this.gameType;
       json[r'handicapType'] = this.handicapType;
-      json[r'entries'] = this.entries.map((e) => e.toJson()).toList();
+      json[r'entries'] = this.entries;
     return json;
   }
 

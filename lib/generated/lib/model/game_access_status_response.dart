@@ -181,12 +181,8 @@ class GameAccessStatusResponse {
         eligible: mapValueOfType<bool>(json, r'eligible'),
         hasActiveEntitlement: mapValueOfType<bool>(json, r'hasActiveEntitlement'),
         currency: mapValueOfType<String>(json, r'currency'),
-        requiredBalance: json[r'requiredBalance'] == null
-            ? null
-            : num.parse('${json[r'requiredBalance']}'),
-        currentBalance: json[r'currentBalance'] == null
-            ? null
-            : num.parse('${json[r'currentBalance']}'),
+        requiredBalance: num.parse('${json[r'requiredBalance']}'),
+        currentBalance: num.parse('${json[r'currentBalance']}'),
         denyReason: mapValueOfType<String>(json, r'denyReason'),
         entitlementId: mapValueOfType<int>(json, r'entitlementId'),
       );

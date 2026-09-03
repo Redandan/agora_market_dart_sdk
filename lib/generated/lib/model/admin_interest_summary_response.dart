@@ -147,12 +147,8 @@ class AdminInterestSummaryResponse {
       return AdminInterestSummaryResponse(
         transactionRef: mapValueOfType<int>(json, r'transactionRef'),
         memberId: mapValueOfType<int>(json, r'memberId'),
-        stakingAmount: json[r'stakingAmount'] == null
-            ? null
-            : num.parse('${json[r'stakingAmount']}'),
-        interestAmount: json[r'interestAmount'] == null
-            ? null
-            : num.parse('${json[r'interestAmount']}'),
+        stakingAmount: num.parse('${json[r'stakingAmount']}'),
+        interestAmount: num.parse('${json[r'interestAmount']}'),
         settleDate: mapDateTime(json, r'settleDate', r''),
         createdAt: mapDateTime(json, r'createdAt', r''),
       );

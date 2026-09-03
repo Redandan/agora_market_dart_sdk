@@ -52,7 +52,7 @@ class CurrentBettingMarketPageResponse {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'items'] = this.items.map((e) => e.toJson()).toList();
+      json[r'items'] = this.items;
       json[r'page'] = this.page;
       json[r'pageSize'] = this.pageSize;
       json[r'hasPrevious'] = this.hasPrevious;

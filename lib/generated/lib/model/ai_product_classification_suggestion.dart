@@ -470,14 +470,10 @@ class AiProductClassificationSuggestion {
         sellerId: mapValueOfType<int>(json, r'sellerId'),
         inputSnapshotJson: mapValueOfType<String>(json, r'inputSnapshotJson'),
         suggestedCategory: AiProductClassificationSuggestionSuggestedCategoryEnum.fromJson(json[r'suggestedCategory']),
-        suggestedCategoryConfidence: json[r'suggestedCategoryConfidence'] == null
-            ? null
-            : num.parse('${json[r'suggestedCategoryConfidence']}'),
+        suggestedCategoryConfidence: num.parse('${json[r'suggestedCategoryConfidence']}'),
         alternativeCategoriesJson: mapValueOfType<String>(json, r'alternativeCategoriesJson'),
         suggestedProductType: AiProductClassificationSuggestionSuggestedProductTypeEnum.fromJson(json[r'suggestedProductType']),
-        suggestedProductTypeConfidence: json[r'suggestedProductTypeConfidence'] == null
-            ? null
-            : num.parse('${json[r'suggestedProductTypeConfidence']}'),
+        suggestedProductTypeConfidence: num.parse('${json[r'suggestedProductTypeConfidence']}'),
         suggestedTagsJson: mapValueOfType<String>(json, r'suggestedTagsJson'),
         suggestedSourceRegion: mapValueOfType<String>(json, r'suggestedSourceRegion'),
         suggestedSourcePlatform: mapValueOfType<String>(json, r'suggestedSourcePlatform'),
@@ -487,9 +483,7 @@ class AiProductClassificationSuggestion {
         classifierVersion: mapValueOfType<String>(json, r'classifierVersion'),
         rawResponseJson: mapValueOfType<String>(json, r'rawResponseJson'),
         normalizedOutputJson: mapValueOfType<String>(json, r'normalizedOutputJson'),
-        confidence: json[r'confidence'] == null
-            ? null
-            : num.parse('${json[r'confidence']}'),
+        confidence: num.parse('${json[r'confidence']}'),
         reason: mapValueOfType<String>(json, r'reason'),
         status: AiProductClassificationSuggestionStatusEnum.fromJson(json[r'status']),
         reviewedBy: mapValueOfType<int>(json, r'reviewedBy'),

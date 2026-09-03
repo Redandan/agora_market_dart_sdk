@@ -357,7 +357,7 @@ class OrderReturnRecord {
     } else {
       json[r'seller'] = null;
     }
-      json[r'returnShippingOptions'] = this.returnShippingOptions.map((e) => e.toJson()).toList();
+      json[r'returnShippingOptions'] = this.returnShippingOptions;
       json[r'imageUrls'] = this.imageUrls.toList(growable: false);
     if (this.returnDeadlineFromApproval != null) {
       json[r'returnDeadlineFromApproval'] = this.returnDeadlineFromApproval!.toUtc().toIso8601String();

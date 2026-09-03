@@ -220,7 +220,7 @@ class ProductStatsBackfillResponse {
     } else {
       json[r'generatedAt'] = null;
     }
-      json[r'samples'] = this.samples.map((e) => e.toJson()).toList();
+      json[r'samples'] = this.samples;
     return json;
   }
 

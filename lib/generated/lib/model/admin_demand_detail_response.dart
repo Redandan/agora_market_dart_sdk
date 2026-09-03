@@ -122,9 +122,9 @@ class AdminDemandDetailResponse {
     } else {
       json[r'closedReason'] = null;
     }
-      json[r'offers'] = this.offers.map((e) => e.toJson()).toList();
-      json[r'missingRequirements'] = this.missingRequirements.map((e) => e.toJson()).toList();
-      json[r'history'] = this.history.map((e) => e.toJson()).toList();
+      json[r'offers'] = this.offers;
+      json[r'missingRequirements'] = this.missingRequirements;
+      json[r'history'] = this.history;
     return json;
   }
 

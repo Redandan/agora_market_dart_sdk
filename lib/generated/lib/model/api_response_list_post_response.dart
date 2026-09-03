@@ -80,7 +80,7 @@ class ApiResponseListPostResponse {
     } else {
       json[r'code'] = null;
     }
-      json[r'data'] = this.data.map((e) => e.toJson()).toList();
+      json[r'data'] = this.data;
     return json;
   }
 

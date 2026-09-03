@@ -122,7 +122,7 @@ class NaturalSearchResponse {
     } else {
       json[r'parsedIntent'] = null;
     }
-      json[r'products'] = this.products.map((e) => e.toJson()).toList();
+      json[r'products'] = this.products;
     if (this.pageSize != null) {
       json[r'pageSize'] = this.pageSize;
     } else {

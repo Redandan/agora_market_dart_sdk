@@ -164,7 +164,7 @@ class ClientViewportDiagnosticRequest {
       json[r'glassPane'] = this.glassPane;
       json[r'canvas'] = this.canvas;
       json[r'offsetStatus'] = this.offsetStatus;
-      json[r'logs'] = this.logs.map((e) => e.toJson()).toList();
+      json[r'logs'] = this.logs;
     return json;
   }
 

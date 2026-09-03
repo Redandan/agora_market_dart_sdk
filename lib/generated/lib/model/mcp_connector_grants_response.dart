@@ -32,7 +32,7 @@ class McpConnectorGrantsResponse {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'items'] = this.items.map((e) => e.toJson()).toList();
+      json[r'items'] = this.items;
     return json;
   }
 

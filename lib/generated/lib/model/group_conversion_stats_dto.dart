@@ -118,7 +118,7 @@ class GroupConversionStatsDTO {
     } else {
       json[r'summary'] = null;
     }
-      json[r'daily'] = this.daily.map((e) => e.toJson()).toList();
+      json[r'daily'] = this.daily;
     return json;
   }
 

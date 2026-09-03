@@ -190,7 +190,7 @@ class AdminBettingMarketDetailResponse {
       json[r'featured'] = this.featured;
       json[r'createdAt'] = this.createdAt.toUtc().toIso8601String();
       json[r'updatedAt'] = this.updatedAt.toUtc().toIso8601String();
-      json[r'options'] = this.options.map((e) => e.toJson()).toList();
+      json[r'options'] = this.options;
     return json;
   }
 
@@ -221,9 +221,7 @@ class AdminBettingMarketDetailResponse {
         category: mapValueOfType<String>(json, r'category'),
         totalPool: num.parse('${json[r'totalPool']}'),
         minBetAmount: num.parse('${json[r'minBetAmount']}'),
-        maxBetAmount: json[r'maxBetAmount'] == null
-            ? null
-            : num.parse('${json[r'maxBetAmount']}'),
+        maxBetAmount: num.parse('${json[r'maxBetAmount']}'),
         feePercentage: num.parse('${json[r'feePercentage']}'),
         participantCount: mapValueOfType<int>(json, r'participantCount')!,
         startAt: mapDateTime(json, r'startAt', r'')!,

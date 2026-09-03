@@ -562,7 +562,7 @@ class AdminMemberResponse {
     } else {
       json[r'admin'] = null;
     }
-      json[r'trustedDevices'] = this.trustedDevices.map((e) => e.toJson()).toList();
+      json[r'trustedDevices'] = this.trustedDevices;
     return json;
   }
 

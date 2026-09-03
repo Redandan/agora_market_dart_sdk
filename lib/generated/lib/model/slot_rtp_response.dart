@@ -118,7 +118,7 @@ class SlotRtpResponse {
     } else {
       json[r'houseEdgePct'] = null;
     }
-      json[r'entries'] = this.entries.map((e) => e.toJson()).toList();
+      json[r'entries'] = this.entries;
     return json;
   }
 
@@ -142,13 +142,9 @@ class SlotRtpResponse {
 
       return SlotRtpResponse(
         totalCombinations: mapValueOfType<int>(json, r'totalCombinations'),
-        totalRtp: json[r'totalRtp'] == null
-            ? null
-            : num.parse('${json[r'totalRtp']}'),
+        totalRtp: num.parse('${json[r'totalRtp']}'),
         totalRtpPct: mapValueOfType<String>(json, r'totalRtpPct'),
-        houseEdge: json[r'houseEdge'] == null
-            ? null
-            : num.parse('${json[r'houseEdge']}'),
+        houseEdge: num.parse('${json[r'houseEdge']}'),
         houseEdgePct: mapValueOfType<String>(json, r'houseEdgePct'),
         entries: RtpEntry.listFromJson(json[r'entries']),
       );

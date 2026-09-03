@@ -177,9 +177,7 @@ class DisputeAiAnalysisResponse {
 
       return DisputeAiAnalysisResponse(
         suggestedOutcome: DisputeAiAnalysisResponseSuggestedOutcomeEnum.fromJson(json[r'suggestedOutcome']),
-        suggestedPartialRefundAmount: json[r'suggestedPartialRefundAmount'] == null
-            ? null
-            : num.parse('${json[r'suggestedPartialRefundAmount']}'),
+        suggestedPartialRefundAmount: num.parse('${json[r'suggestedPartialRefundAmount']}'),
         confidence: mapValueOfType<double>(json, r'confidence'),
         reasoning: mapValueOfType<String>(json, r'reasoning'),
         redFlags: json[r'redFlags'] is Iterable

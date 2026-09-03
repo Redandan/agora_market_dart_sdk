@@ -287,7 +287,7 @@ class ProductClassificationResponse {
     } else {
       json[r'reason'] = null;
     }
-      json[r'alternativeCategories'] = this.alternativeCategories.map((e) => e.toJson()).toList();
+      json[r'alternativeCategories'] = this.alternativeCategories;
       json[r'suggestedTags'] = this.suggestedTags;
     if (this.suggestedSourceRegion != null) {
       json[r'suggestedSourceRegion'] = this.suggestedSourceRegion;

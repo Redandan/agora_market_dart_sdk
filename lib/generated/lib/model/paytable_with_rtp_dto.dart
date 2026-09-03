@@ -74,7 +74,7 @@ class PaytableWithRtpDTO {
     } else {
       json[r'handicapType'] = null;
     }
-      json[r'paytables'] = this.paytables.map((e) => e.toJson()).toList();
+      json[r'paytables'] = this.paytables;
     if (this.totalRtp != null) {
       json[r'totalRtp'] = this.totalRtp;
     } else {
@@ -110,12 +110,8 @@ class PaytableWithRtpDTO {
         gameType: PaytableWithRtpDTOGameTypeEnum.fromJson(json[r'gameType']),
         handicapType: PaytableWithRtpDTOHandicapTypeEnum.fromJson(json[r'handicapType']),
         paytables: PaytableDTO.listFromJson(json[r'paytables']),
-        totalRtp: json[r'totalRtp'] == null
-            ? null
-            : num.parse('${json[r'totalRtp']}'),
-        expectedProfit: json[r'expectedProfit'] == null
-            ? null
-            : num.parse('${json[r'expectedProfit']}'),
+        totalRtp: num.parse('${json[r'totalRtp']}'),
+        expectedProfit: num.parse('${json[r'expectedProfit']}'),
       );
     }
     return null;

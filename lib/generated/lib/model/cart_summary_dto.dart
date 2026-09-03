@@ -90,8 +90,8 @@ class CartSummaryDTO {
     } else {
       json[r'averageCartValue'] = null;
     }
-      json[r'topProducts'] = this.topProducts.map((e) => e.toJson()).toList();
-      json[r'lowStockWarnings'] = this.lowStockWarnings.map((e) => e.toJson()).toList();
+      json[r'topProducts'] = this.topProducts;
+      json[r'lowStockWarnings'] = this.lowStockWarnings;
     return json;
   }
 
@@ -115,12 +115,8 @@ class CartSummaryDTO {
 
       return CartSummaryDTO(
         totalItems: mapValueOfType<int>(json, r'totalItems'),
-        totalValue: json[r'totalValue'] == null
-            ? null
-            : num.parse('${json[r'totalValue']}'),
-        averageCartValue: json[r'averageCartValue'] == null
-            ? null
-            : num.parse('${json[r'averageCartValue']}'),
+        totalValue: num.parse('${json[r'totalValue']}'),
+        averageCartValue: num.parse('${json[r'averageCartValue']}'),
         topProducts: TopProductDTO.listFromJson(json[r'topProducts']),
         lowStockWarnings: LowStockWarningDTO.listFromJson(json[r'lowStockWarnings']),
       );

@@ -150,7 +150,7 @@ class AdminBettingCreateRequest {
     } else {
       json[r'category'] = null;
     }
-      json[r'options'] = this.options.map((e) => e.toJson()).toList();
+      json[r'options'] = this.options;
     return json;
   }
 
@@ -180,9 +180,7 @@ class AdminBettingCreateRequest {
         startAt: mapDateTime(json, r'startAt', r'')!,
         endAt: mapDateTime(json, r'endAt', r'')!,
         minBetAmount: num.parse('${json[r'minBetAmount']}'),
-        maxBetAmount: json[r'maxBetAmount'] == null
-            ? null
-            : num.parse('${json[r'maxBetAmount']}'),
+        maxBetAmount: num.parse('${json[r'maxBetAmount']}'),
         feePercentage: num.parse('${json[r'feePercentage']}'),
         initialLiquidity: num.parse('${json[r'initialLiquidity']}'),
         imageUrl: mapValueOfType<String>(json, r'imageUrl'),

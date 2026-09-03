@@ -152,9 +152,7 @@ class CurrentRechargeSummaryResponse {
 
       return CurrentRechargeSummaryResponse(
         rechargeRef: mapValueOfType<String>(json, r'rechargeRef'),
-        amount: json[r'amount'] == null
-            ? null
-            : num.parse('${json[r'amount']}'),
+        amount: num.parse('${json[r'amount']}'),
         currency: mapValueOfType<String>(json, r'currency'),
         protocol: CurrentRechargeSummaryResponseProtocolEnum.fromJson(json[r'protocol']),
         status: CurrentRechargeSummaryResponseStatusEnum.fromJson(json[r'status']),

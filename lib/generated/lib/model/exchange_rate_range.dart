@@ -317,20 +317,12 @@ class ExchangeRateRange {
       return ExchangeRateRange(
         id: mapValueOfType<int>(json, r'id'),
         currency: mapValueOfType<String>(json, r'currency'),
-        minRate: json[r'minRate'] == null
-            ? null
-            : num.parse('${json[r'minRate']}'),
-        maxRate: json[r'maxRate'] == null
-            ? null
-            : num.parse('${json[r'maxRate']}'),
+        minRate: num.parse('${json[r'minRate']}'),
+        maxRate: num.parse('${json[r'maxRate']}'),
         remark: mapValueOfType<String>(json, r'remark'),
         status: ExchangeRateRangeStatusEnum.fromJson(json[r'status']),
-        previousMinRate: json[r'previousMinRate'] == null
-            ? null
-            : num.parse('${json[r'previousMinRate']}'),
-        previousMaxRate: json[r'previousMaxRate'] == null
-            ? null
-            : num.parse('${json[r'previousMaxRate']}'),
+        previousMinRate: num.parse('${json[r'previousMinRate']}'),
+        previousMaxRate: num.parse('${json[r'previousMaxRate']}'),
         outOfRangeCount: mapValueOfType<int>(json, r'outOfRangeCount'),
         isBelowMin: mapValueOfType<bool>(json, r'isBelowMin'),
         processedBy: mapValueOfType<int>(json, r'processedBy'),

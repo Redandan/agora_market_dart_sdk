@@ -97,8 +97,8 @@ class OrderStatisticsDTO {
       json[r'averageOrderAmount'] = null;
     }
       json[r'ordersByStatus'] = this.ordersByStatus;
-      json[r'topProducts'] = this.topProducts.map((e) => e.toJson()).toList();
-      json[r'topSellers'] = this.topSellers.map((e) => e.toJson()).toList();
+      json[r'topProducts'] = this.topProducts;
+      json[r'topSellers'] = this.topSellers;
     return json;
   }
 
@@ -122,12 +122,8 @@ class OrderStatisticsDTO {
 
       return OrderStatisticsDTO(
         totalOrders: mapValueOfType<int>(json, r'totalOrders'),
-        totalAmount: json[r'totalAmount'] == null
-            ? null
-            : num.parse('${json[r'totalAmount']}'),
-        averageOrderAmount: json[r'averageOrderAmount'] == null
-            ? null
-            : num.parse('${json[r'averageOrderAmount']}'),
+        totalAmount: num.parse('${json[r'totalAmount']}'),
+        averageOrderAmount: num.parse('${json[r'averageOrderAmount']}'),
         ordersByStatus: mapCastOfType<String, int>(json, r'ordersByStatus') ?? const {},
         topProducts: TopProductDTO.listFromJson(json[r'topProducts']),
         topSellers: TopSellerDTO.listFromJson(json[r'topSellers']),

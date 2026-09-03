@@ -50,7 +50,7 @@ class CartCheckoutPlanParam {
     } else {
       json[r'addressId'] = null;
     }
-      json[r'items'] = this.items.map((e) => e.toJson()).toList();
+      json[r'items'] = this.items;
     return json;
   }
 

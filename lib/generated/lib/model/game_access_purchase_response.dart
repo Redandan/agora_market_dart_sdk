@@ -143,9 +143,7 @@ class GameAccessPurchaseResponse {
         entitlementId: mapValueOfType<int>(json, r'entitlementId'),
         status: GameAccessPurchaseResponseStatusEnum.fromJson(json[r'status']),
         currency: mapValueOfType<String>(json, r'currency'),
-        depositAmount: json[r'depositAmount'] == null
-            ? null
-            : num.parse('${json[r'depositAmount']}'),
+        depositAmount: num.parse('${json[r'depositAmount']}'),
         debitTransactionId: mapValueOfType<int>(json, r'debitTransactionId'),
         refundTransactionId: mapValueOfType<int>(json, r'refundTransactionId'),
       );

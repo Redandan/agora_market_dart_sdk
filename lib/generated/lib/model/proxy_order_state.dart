@@ -197,12 +197,8 @@ class ProxyOrderState {
         pricingBreakdownExists: mapValueOfType<bool>(json, r'pricingBreakdownExists'),
         pricingBreakdown: ProxyPricingBreakdown.fromJson(json[r'pricingBreakdown']),
         priceCheckedAt: mapDateTime(json, r'priceCheckedAt', r''),
-        maxAllowedCostDriftAmount: json[r'maxAllowedCostDriftAmount'] == null
-            ? null
-            : num.parse('${json[r'maxAllowedCostDriftAmount']}'),
-        maxAllowedCostDriftPct: json[r'maxAllowedCostDriftPct'] == null
-            ? null
-            : num.parse('${json[r'maxAllowedCostDriftPct']}'),
+        maxAllowedCostDriftAmount: num.parse('${json[r'maxAllowedCostDriftAmount']}'),
+        maxAllowedCostDriftPct: num.parse('${json[r'maxAllowedCostDriftPct']}'),
         marginStatus: mapValueOfType<String>(json, r'marginStatus'),
         sourcePriceDriftWarning: mapValueOfType<bool>(json, r'sourcePriceDriftWarning'),
         fulfillmentNote: mapValueOfType<String>(json, r'fulfillmentNote'),

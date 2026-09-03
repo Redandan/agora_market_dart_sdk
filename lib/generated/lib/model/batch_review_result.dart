@@ -74,7 +74,7 @@ class BatchReviewResult {
       json[r'failureCount'] = null;
     }
       json[r'successCodes'] = this.successCodes;
-      json[r'failures'] = this.failures.map((e) => e.toJson()).toList();
+      json[r'failures'] = this.failures;
     return json;
   }
 

@@ -216,8 +216,8 @@ class WalletSafetySummaryResponse {
     } else {
       json[r'network'] = null;
     }
-      json[r'reasons'] = this.reasons.map((e) => e.toJson()).toList();
-      json[r'recommendedActions'] = this.recommendedActions.map((e) => e.toJson()).toList();
+      json[r'reasons'] = this.reasons;
+      json[r'recommendedActions'] = this.recommendedActions;
     if (this.canProceed != null) {
       json[r'canProceed'] = this.canProceed;
     } else {
@@ -262,9 +262,7 @@ class WalletSafetySummaryResponse {
         message: mapValueOfType<String>(json, r'message'),
         currency: mapValueOfType<String>(json, r'currency'),
         context: WalletSafetySummaryResponseContextEnum.fromJson(json[r'context']),
-        amount: json[r'amount'] == null
-            ? null
-            : num.parse('${json[r'amount']}'),
+        amount: num.parse('${json[r'amount']}'),
         network: mapValueOfType<String>(json, r'network'),
         reasons: Reason.listFromJson(json[r'reasons']),
         recommendedActions: Action.listFromJson(json[r'recommendedActions']),

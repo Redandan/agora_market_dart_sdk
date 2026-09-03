@@ -193,12 +193,8 @@ class SlotSpinResponse {
             ? (json[r'symbolDisplays'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         multiplier: mapValueOfType<int>(json, r'multiplier'),
-        winAmount: json[r'winAmount'] == null
-            ? null
-            : num.parse('${json[r'winAmount']}'),
-        balance: json[r'balance'] == null
-            ? null
-            : num.parse('${json[r'balance']}'),
+        winAmount: num.parse('${json[r'winAmount']}'),
+        balance: num.parse('${json[r'balance']}'),
         nonce: mapValueOfType<int>(json, r'nonce'),
         serverSeedHash: mapValueOfType<String>(json, r'serverSeedHash'),
       );

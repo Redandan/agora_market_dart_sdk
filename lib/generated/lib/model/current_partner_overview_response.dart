@@ -143,7 +143,7 @@ class CurrentPartnerOverviewResponse {
       json[r'settlementCurrency'] = null;
     }
       json[r'statuses'] = this.statuses;
-      json[r'groups'] = this.groups.map((e) => e.toJson()).toList();
+      json[r'groups'] = this.groups;
       json[r'groupsTruncated'] = this.groupsTruncated;
     return json;
   }

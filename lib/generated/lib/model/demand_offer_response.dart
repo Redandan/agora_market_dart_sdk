@@ -527,17 +527,11 @@ class DemandOfferResponse {
         candidateProductDescription: mapValueOfType<String>(json, r'candidateProductDescription'),
         candidateProductImageUrl: mapValueOfType<String>(json, r'candidateProductImageUrl'),
         sourceUrl: mapValueOfType<String>(json, r'sourceUrl'),
-        priceAmount: json[r'priceAmount'] == null
-            ? null
-            : num.parse('${json[r'priceAmount']}'),
+        priceAmount: num.parse('${json[r'priceAmount']}'),
         priceCurrency: DemandOfferResponsePriceCurrencyEnum.fromJson(json[r'priceCurrency']),
-        shippingFeeAmount: json[r'shippingFeeAmount'] == null
-            ? null
-            : num.parse('${json[r'shippingFeeAmount']}'),
+        shippingFeeAmount: num.parse('${json[r'shippingFeeAmount']}'),
         shippingFeeCurrency: DemandOfferResponseShippingFeeCurrencyEnum.fromJson(json[r'shippingFeeCurrency']),
-        totalEstimatedAmount: json[r'totalEstimatedAmount'] == null
-            ? null
-            : num.parse('${json[r'totalEstimatedAmount']}'),
+        totalEstimatedAmount: num.parse('${json[r'totalEstimatedAmount']}'),
         estimatedDeliveryTime: mapValueOfType<String>(json, r'estimatedDeliveryTime'),
         stockStatus: DemandOfferResponseStockStatusEnum.fromJson(json[r'stockStatus']),
         conditionType: DemandOfferResponseConditionTypeEnum.fromJson(json[r'conditionType']),

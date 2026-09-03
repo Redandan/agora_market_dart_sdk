@@ -14,6 +14,7 @@ class SellerDemandSummaryResponse {
   /// Returns a new [SellerDemandSummaryResponse] instance.
   SellerDemandSummaryResponse({
     this.id,
+    this.revision,
     this.demandNo,
     this.title,
     this.description,
@@ -38,6 +39,14 @@ class SellerDemandSummaryResponse {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? id;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? revision;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -141,6 +150,7 @@ class SellerDemandSummaryResponse {
   @override
   bool operator ==(Object other) => identical(this, other) || other is SellerDemandSummaryResponse &&
     other.id == id &&
+    other.revision == revision &&
     other.demandNo == demandNo &&
     other.title == title &&
     other.description == description &&
@@ -161,6 +171,7 @@ class SellerDemandSummaryResponse {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
+    (revision == null ? 0 : revision!.hashCode) +
     (demandNo == null ? 0 : demandNo!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
@@ -178,7 +189,7 @@ class SellerDemandSummaryResponse {
     (currentSellerOffers.hashCode);
 
   @override
-  String toString() => 'SellerDemandSummaryResponse[id=$id, demandNo=$demandNo, title=$title, description=$description, sourceSearchKeyword=$sourceSearchKeyword, category=$category, productType=$productType, status=$status, interestCount=$interestCount, visibleOfferCount=$visibleOfferCount, expectedFirstResponseAt=$expectedFirstResponseAt, nextUpdateAt=$nextUpdateAt, expiresAt=$expiresAt, createdAt=$createdAt, updatedAt=$updatedAt, currentSellerOffers=$currentSellerOffers]';
+  String toString() => 'SellerDemandSummaryResponse[id=$id, revision=$revision, demandNo=$demandNo, title=$title, description=$description, sourceSearchKeyword=$sourceSearchKeyword, category=$category, productType=$productType, status=$status, interestCount=$interestCount, visibleOfferCount=$visibleOfferCount, expectedFirstResponseAt=$expectedFirstResponseAt, nextUpdateAt=$nextUpdateAt, expiresAt=$expiresAt, createdAt=$createdAt, updatedAt=$updatedAt, currentSellerOffers=$currentSellerOffers]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -186,6 +197,11 @@ class SellerDemandSummaryResponse {
       json[r'id'] = this.id;
     } else {
       json[r'id'] = null;
+    }
+    if (this.revision != null) {
+      json[r'revision'] = this.revision;
+    } else {
+      json[r'revision'] = null;
     }
     if (this.demandNo != null) {
       json[r'demandNo'] = this.demandNo;
@@ -257,7 +273,7 @@ class SellerDemandSummaryResponse {
     } else {
       json[r'updatedAt'] = null;
     }
-      json[r'currentSellerOffers'] = this.currentSellerOffers.map((e) => e.toJson()).toList();
+      json[r'currentSellerOffers'] = this.currentSellerOffers;
     return json;
   }
 
@@ -281,6 +297,7 @@ class SellerDemandSummaryResponse {
 
       return SellerDemandSummaryResponse(
         id: mapValueOfType<int>(json, r'id'),
+        revision: mapValueOfType<int>(json, r'revision'),
         demandNo: mapValueOfType<String>(json, r'demandNo'),
         title: mapValueOfType<String>(json, r'title'),
         description: mapValueOfType<String>(json, r'description'),

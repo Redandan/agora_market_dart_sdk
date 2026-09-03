@@ -134,12 +134,8 @@ class StakingConfigDTO {
       }());
 
       return StakingConfigDTO(
-        annualInterestRate: json[r'annualInterestRate'] == null
-            ? null
-            : num.parse('${json[r'annualInterestRate']}'),
-        minStakingAmount: json[r'minStakingAmount'] == null
-            ? null
-            : num.parse('${json[r'minStakingAmount']}'),
+        annualInterestRate: num.parse('${json[r'annualInterestRate']}'),
+        minStakingAmount: num.parse('${json[r'minStakingAmount']}'),
         isActive: mapValueOfType<bool>(json, r'isActive'),
         effectiveFrom: mapDateTime(json, r'effectiveFrom', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),

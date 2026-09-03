@@ -257,18 +257,10 @@ class AdminBetRecordSummaryResponse {
         marketTitle: mapValueOfType<String>(json, r'marketTitle'),
         optionRef: mapValueOfType<int>(json, r'optionRef'),
         optionDescription: mapValueOfType<String>(json, r'optionDescription'),
-        betAmount: json[r'betAmount'] == null
-            ? null
-            : num.parse('${json[r'betAmount']}'),
-        oddsAtBet: json[r'oddsAtBet'] == null
-            ? null
-            : num.parse('${json[r'oddsAtBet']}'),
-        potentialPayout: json[r'potentialPayout'] == null
-            ? null
-            : num.parse('${json[r'potentialPayout']}'),
-        actualPayout: json[r'actualPayout'] == null
-            ? null
-            : num.parse('${json[r'actualPayout']}'),
+        betAmount: num.parse('${json[r'betAmount']}'),
+        oddsAtBet: num.parse('${json[r'oddsAtBet']}'),
+        potentialPayout: num.parse('${json[r'potentialPayout']}'),
+        actualPayout: num.parse('${json[r'actualPayout']}'),
         status: AdminBetRecordSummaryResponseStatusEnum.fromJson(json[r'status']),
         createdAt: mapDateTime(json, r'createdAt', r''),
         settledAt: mapDateTime(json, r'settledAt', r''),

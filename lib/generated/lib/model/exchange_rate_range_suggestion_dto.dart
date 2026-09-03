@@ -300,18 +300,10 @@ class ExchangeRateRangeSuggestionDTO {
       return ExchangeRateRangeSuggestionDTO(
         id: mapValueOfType<int>(json, r'id'),
         currency: mapValueOfType<String>(json, r'currency'),
-        currentMinRate: json[r'currentMinRate'] == null
-            ? null
-            : num.parse('${json[r'currentMinRate']}'),
-        currentMaxRate: json[r'currentMaxRate'] == null
-            ? null
-            : num.parse('${json[r'currentMaxRate']}'),
-        suggestedMinRate: json[r'suggestedMinRate'] == null
-            ? null
-            : num.parse('${json[r'suggestedMinRate']}'),
-        suggestedMaxRate: json[r'suggestedMaxRate'] == null
-            ? null
-            : num.parse('${json[r'suggestedMaxRate']}'),
+        currentMinRate: num.parse('${json[r'currentMinRate']}'),
+        currentMaxRate: num.parse('${json[r'currentMaxRate']}'),
+        suggestedMinRate: num.parse('${json[r'suggestedMinRate']}'),
+        suggestedMaxRate: num.parse('${json[r'suggestedMaxRate']}'),
         outOfRangeCount: mapValueOfType<int>(json, r'outOfRangeCount'),
         isBelowMin: mapValueOfType<bool>(json, r'isBelowMin'),
         status: ExchangeRateRangeSuggestionDTOStatusEnum.fromJson(json[r'status']),

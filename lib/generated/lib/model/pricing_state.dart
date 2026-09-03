@@ -253,32 +253,16 @@ class PricingState {
       return PricingState(
         settlementCurrency: mapValueOfType<String>(json, r'settlementCurrency'),
         listingCurrency: PricingStateListingCurrencyEnum.fromJson(json[r'listingCurrency']),
-        originalUnitPrice: json[r'originalUnitPrice'] == null
-            ? null
-            : num.parse('${json[r'originalUnitPrice']}'),
-        originalSubtotal: json[r'originalSubtotal'] == null
-            ? null
-            : num.parse('${json[r'originalSubtotal']}'),
-        originalShippingFee: json[r'originalShippingFee'] == null
-            ? null
-            : num.parse('${json[r'originalShippingFee']}'),
-        exchangeRate: json[r'exchangeRate'] == null
-            ? null
-            : num.parse('${json[r'exchangeRate']}'),
+        originalUnitPrice: num.parse('${json[r'originalUnitPrice']}'),
+        originalSubtotal: num.parse('${json[r'originalSubtotal']}'),
+        originalShippingFee: num.parse('${json[r'originalShippingFee']}'),
+        exchangeRate: num.parse('${json[r'exchangeRate']}'),
         exchangeRateTime: mapDateTime(json, r'exchangeRateTime', r''),
         usingDefaultRate: mapValueOfType<bool>(json, r'usingDefaultRate'),
-        priceUsdt: json[r'priceUsdt'] == null
-            ? null
-            : num.parse('${json[r'priceUsdt']}'),
-        shippingFeeUsdt: json[r'shippingFeeUsdt'] == null
-            ? null
-            : num.parse('${json[r'shippingFeeUsdt']}'),
-        orderAmountUsdt: json[r'orderAmountUsdt'] == null
-            ? null
-            : num.parse('${json[r'orderAmountUsdt']}'),
-        freeShippingThreshold: json[r'freeShippingThreshold'] == null
-            ? null
-            : num.parse('${json[r'freeShippingThreshold']}'),
+        priceUsdt: num.parse('${json[r'priceUsdt']}'),
+        shippingFeeUsdt: num.parse('${json[r'shippingFeeUsdt']}'),
+        orderAmountUsdt: num.parse('${json[r'orderAmountUsdt']}'),
+        freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
         freeShippingApplied: mapValueOfType<bool>(json, r'freeShippingApplied'),
       );
     }

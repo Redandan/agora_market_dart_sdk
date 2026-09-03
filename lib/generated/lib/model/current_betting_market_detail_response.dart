@@ -200,7 +200,7 @@ class CurrentBettingMarketDetailResponse {
     } else {
       json[r'placementUnavailableReasonCode'] = null;
     }
-      json[r'options'] = this.options.map((e) => e.toJson()).toList();
+      json[r'options'] = this.options;
     return json;
   }
 
@@ -230,9 +230,7 @@ class CurrentBettingMarketDetailResponse {
         status: CurrentBettingMarketDetailResponseStatusEnum.fromJson(json[r'status'])!,
         totalPool: num.parse('${json[r'totalPool']}'),
         minBetAmount: num.parse('${json[r'minBetAmount']}'),
-        maxBetAmount: json[r'maxBetAmount'] == null
-            ? null
-            : num.parse('${json[r'maxBetAmount']}'),
+        maxBetAmount: num.parse('${json[r'maxBetAmount']}'),
         feePercentage: num.parse('${json[r'feePercentage']}'),
         startAt: mapDateTime(json, r'startAt', r'')!,
         endAt: mapDateTime(json, r'endAt', r'')!,

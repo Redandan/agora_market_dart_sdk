@@ -76,7 +76,7 @@ class AdminWithdrawSummaryPageResponse {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'items'] = this.items.map((e) => e.toJson()).toList();
+      json[r'items'] = this.items;
     if (this.logicalPage != null) {
       json[r'logicalPage'] = this.logicalPage;
     } else {

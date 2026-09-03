@@ -136,14 +136,10 @@ class DemandJoinRequest {
 
       return DemandJoinRequest(
         quantity: mapValueOfType<int>(json, r'quantity'),
-        budgetAmount: json[r'budgetAmount'] == null
-            ? null
-            : num.parse('${json[r'budgetAmount']}'),
+        budgetAmount: num.parse('${json[r'budgetAmount']}'),
         budgetCurrency: DemandJoinRequestBudgetCurrencyEnum.fromJson(json[r'budgetCurrency']),
         buyerNote: mapValueOfType<String>(json, r'buyerNote'),
-        bountyAmount: json[r'bountyAmount'] == null
-            ? null
-            : num.parse('${json[r'bountyAmount']}'),
+        bountyAmount: num.parse('${json[r'bountyAmount']}'),
         bountyCurrency: DemandJoinRequestBountyCurrencyEnum.fromJson(json[r'bountyCurrency']),
       );
     }

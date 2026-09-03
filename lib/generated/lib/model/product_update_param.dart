@@ -614,9 +614,7 @@ class ProductUpdateParam {
       return ProductUpdateParam(
         id: mapValueOfType<String>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name'),
-        price: json[r'price'] == null
-            ? null
-            : num.parse('${json[r'price']}'),
+        price: num.parse('${json[r'price']}'),
         currency: ProductUpdateParamCurrencyEnum.fromJson(json[r'currency'])!,
         stock: mapValueOfType<int>(json, r'stock'),
         description: mapValueOfType<String>(json, r'description'),
@@ -643,9 +641,7 @@ class ProductUpdateParam {
         shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
         pickupServiceTypes: ProductUpdateParamPickupServiceTypesEnum.listFromJson(json[r'pickupServiceTypes']),
         pickupServiceTypeFees: mapCastOfType<String, num>(json, r'pickupServiceTypeFees') ?? const {},
-        freeShippingThreshold: json[r'freeShippingThreshold'] == null
-            ? null
-            : num.parse('${json[r'freeShippingThreshold']}'),
+        freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
         purchaseUrl: mapValueOfType<String>(json, r'purchaseUrl'),
         productType: ProductUpdateParamProductTypeEnum.fromJson(json[r'productType']),
         sourceRegion: mapValueOfType<String>(json, r'sourceRegion'),

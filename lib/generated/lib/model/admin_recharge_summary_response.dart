@@ -204,9 +204,7 @@ class AdminRechargeSummaryResponse {
         status: AdminRechargeSummaryResponseStatusEnum.fromJson(json[r'status']),
         protocol: AdminRechargeSummaryResponseProtocolEnum.fromJson(json[r'protocol']),
         currency: mapValueOfType<String>(json, r'currency'),
-        amount: json[r'amount'] == null
-            ? null
-            : num.parse('${json[r'amount']}'),
+        amount: num.parse('${json[r'amount']}'),
         transactionHashPresent: mapValueOfType<bool>(json, r'transactionHashPresent'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         expireTime: mapDateTime(json, r'expireTime', r''),

@@ -137,12 +137,8 @@ class SlotDailyStatDto {
         date: mapValueOfType<String>(json, r'date'),
         rounds: mapValueOfType<int>(json, r'rounds'),
         players: mapValueOfType<int>(json, r'players'),
-        totalBet: json[r'totalBet'] == null
-            ? null
-            : num.parse('${json[r'totalBet']}'),
-        grossRevenue: json[r'grossRevenue'] == null
-            ? null
-            : num.parse('${json[r'grossRevenue']}'),
+        totalBet: num.parse('${json[r'totalBet']}'),
+        grossRevenue: num.parse('${json[r'grossRevenue']}'),
       );
     }
     return null;

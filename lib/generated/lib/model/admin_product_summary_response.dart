@@ -401,9 +401,7 @@ class AdminProductSummaryResponse {
         status: AdminProductSummaryResponseStatusEnum.fromJson(json[r'status']),
         category: AdminProductSummaryResponseCategoryEnum.fromJson(json[r'category']),
         productType: AdminProductSummaryResponseProductTypeEnum.fromJson(json[r'productType']),
-        price: json[r'price'] == null
-            ? null
-            : num.parse('${json[r'price']}'),
+        price: num.parse('${json[r'price']}'),
         currency: AdminProductSummaryResponseCurrencyEnum.fromJson(json[r'currency']),
         stock: mapValueOfType<int>(json, r'stock'),
         minStock: mapValueOfType<int>(json, r'minStock'),
@@ -412,9 +410,7 @@ class AdminProductSummaryResponse {
         reportCount: mapValueOfType<int>(json, r'reportCount'),
         salesCount: mapValueOfType<int>(json, r'salesCount'),
         viewCount: mapValueOfType<int>(json, r'viewCount'),
-        rating: json[r'rating'] == null
-            ? null
-            : num.parse('${json[r'rating']}'),
+        rating: num.parse('${json[r'rating']}'),
         reviewCount: mapValueOfType<int>(json, r'reviewCount'),
         brand: mapValueOfType<String>(json, r'brand'),
         defaultLocale: mapValueOfType<String>(json, r'defaultLocale'),

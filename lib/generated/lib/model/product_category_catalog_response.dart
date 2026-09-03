@@ -123,7 +123,7 @@ class ProductCategoryCatalogResponse {
     } else {
       json[r'iconKey'] = null;
     }
-      json[r'productTypes'] = this.productTypes.map((e) => e.toJson()).toList();
+      json[r'productTypes'] = this.productTypes;
     return json;
   }
 

@@ -140,9 +140,7 @@ class CurrentBettingMarketSummaryResponse {
         status: CurrentBettingMarketSummaryResponseStatusEnum.fromJson(json[r'status'])!,
         totalPool: num.parse('${json[r'totalPool']}'),
         minBetAmount: num.parse('${json[r'minBetAmount']}'),
-        maxBetAmount: json[r'maxBetAmount'] == null
-            ? null
-            : num.parse('${json[r'maxBetAmount']}'),
+        maxBetAmount: num.parse('${json[r'maxBetAmount']}'),
         startAt: mapDateTime(json, r'startAt', r'')!,
         endAt: mapDateTime(json, r'endAt', r'')!,
         category: mapValueOfType<String>(json, r'category'),

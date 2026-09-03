@@ -158,15 +158,11 @@ class CurrentBettingRecordResponse {
         betAmount: num.parse('${json[r'betAmount']}'),
         oddsAtBet: num.parse('${json[r'oddsAtBet']}'),
         potentialPayout: num.parse('${json[r'potentialPayout']}'),
-        actualPayout: json[r'actualPayout'] == null
-            ? null
-            : num.parse('${json[r'actualPayout']}'),
+        actualPayout: num.parse('${json[r'actualPayout']}'),
         status: CurrentBettingRecordResponseStatusEnum.fromJson(json[r'status'])!,
         createdAt: mapDateTime(json, r'createdAt', r'')!,
         settledAt: mapDateTime(json, r'settledAt', r''),
-        actualReturnRate: json[r'actualReturnRate'] == null
-            ? null
-            : num.parse('${json[r'actualReturnRate']}'),
+        actualReturnRate: num.parse('${json[r'actualReturnRate']}'),
       );
     }
     return null;

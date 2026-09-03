@@ -185,17 +185,11 @@ class PaytableDTO {
         gameType: PaytableDTOGameTypeEnum.fromJson(json[r'gameType']),
         handicapType: PaytableDTOHandicapTypeEnum.fromJson(json[r'handicapType']),
         diceValue: mapValueOfType<int>(json, r'diceValue'),
-        multiplier: json[r'multiplier'] == null
-            ? null
-            : num.parse('${json[r'multiplier']}'),
+        multiplier: num.parse('${json[r'multiplier']}'),
         description: mapValueOfType<String>(json, r'description'),
         status: mapValueOfType<int>(json, r'status'),
-        probability: json[r'probability'] == null
-            ? null
-            : num.parse('${json[r'probability']}'),
-        rtpContribution: json[r'rtpContribution'] == null
-            ? null
-            : num.parse('${json[r'rtpContribution']}'),
+        probability: num.parse('${json[r'probability']}'),
+        rtpContribution: num.parse('${json[r'rtpContribution']}'),
       );
     }
     return null;

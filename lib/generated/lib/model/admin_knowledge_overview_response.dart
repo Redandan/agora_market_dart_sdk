@@ -101,8 +101,8 @@ class AdminKnowledgeOverviewResponse {
     } else {
       json[r'mutationUnavailableReason'] = null;
     }
-      json[r'documents'] = this.documents.map((e) => e.toJson()).toList();
-      json[r'pendingQuestions'] = this.pendingQuestions.map((e) => e.toJson()).toList();
+      json[r'documents'] = this.documents;
+      json[r'pendingQuestions'] = this.pendingQuestions;
     return json;
   }
 

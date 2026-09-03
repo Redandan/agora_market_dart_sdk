@@ -92,13 +92,13 @@ class DeliveryStatisticsDTO {
       json[r'activeDeliveryers'] = null;
     }
       json[r'ordersByStatus'] = this.ordersByStatus;
-      json[r'deliveryerPerformance'] = this.deliveryerPerformance.map((e) => e.toJson()).toList();
+      json[r'deliveryerPerformance'] = this.deliveryerPerformance;
     if (this.averageDeliveryTime != null) {
       json[r'averageDeliveryTime'] = this.averageDeliveryTime;
     } else {
       json[r'averageDeliveryTime'] = null;
     }
-      json[r'topDeliveryAreas'] = this.topDeliveryAreas.map((e) => e.toJson()).toList();
+      json[r'topDeliveryAreas'] = this.topDeliveryAreas;
     return json;
   }
 

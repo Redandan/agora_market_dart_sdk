@@ -199,12 +199,8 @@ class CurrentWithdrawSummaryResponse {
 
       return CurrentWithdrawSummaryResponse(
         withdrawRef: mapValueOfType<String>(json, r'withdrawRef'),
-        amount: json[r'amount'] == null
-            ? null
-            : num.parse('${json[r'amount']}'),
-        fee: json[r'fee'] == null
-            ? null
-            : num.parse('${json[r'fee']}'),
+        amount: num.parse('${json[r'amount']}'),
+        fee: num.parse('${json[r'fee']}'),
         currency: mapValueOfType<String>(json, r'currency'),
         protocol: CurrentWithdrawSummaryResponseProtocolEnum.fromJson(json[r'protocol']),
         status: CurrentWithdrawSummaryResponseStatusEnum.fromJson(json[r'status']),

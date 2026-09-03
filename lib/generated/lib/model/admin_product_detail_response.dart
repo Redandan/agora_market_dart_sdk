@@ -322,9 +322,7 @@ class AdminProductDetailResponse {
         estimatedDeliveryDays: mapValueOfType<int>(json, r'estimatedDeliveryDays'),
         supportsScheduledShipping: mapValueOfType<bool>(json, r'supportsScheduledShipping'),
         shippingDateRange: mapValueOfType<int>(json, r'shippingDateRange'),
-        freeShippingThreshold: json[r'freeShippingThreshold'] == null
-            ? null
-            : num.parse('${json[r'freeShippingThreshold']}'),
+        freeShippingThreshold: num.parse('${json[r'freeShippingThreshold']}'),
         serviceLeadTimeHours: mapValueOfType<int>(json, r'serviceLeadTimeHours'),
         maxConcurrentOrders: mapValueOfType<int>(json, r'maxConcurrentOrders'),
         dataResidencyNotice: mapValueOfType<String>(json, r'dataResidencyNotice'),

@@ -137,12 +137,8 @@ class BalanceConversion {
         currency: mapValueOfType<String>(json, r'currency'),
         symbol: mapValueOfType<String>(json, r'symbol'),
         currencyName: mapValueOfType<String>(json, r'currencyName'),
-        convertedAmount: json[r'convertedAmount'] == null
-            ? null
-            : num.parse('${json[r'convertedAmount']}'),
-        exchangeRate: json[r'exchangeRate'] == null
-            ? null
-            : num.parse('${json[r'exchangeRate']}'),
+        convertedAmount: num.parse('${json[r'convertedAmount']}'),
+        exchangeRate: num.parse('${json[r'exchangeRate']}'),
       );
     }
     return null;

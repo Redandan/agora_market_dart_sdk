@@ -182,9 +182,7 @@ class ProductSummary {
         category: ProductSummaryCategoryEnum.fromJson(json[r'category']),
         productType: ProductSummaryProductTypeEnum.fromJson(json[r'productType']),
         sourceRegion: mapValueOfType<String>(json, r'sourceRegion'),
-        price: json[r'price'] == null
-            ? null
-            : num.parse('${json[r'price']}'),
+        price: num.parse('${json[r'price']}'),
         currency: ProductSummaryCurrencyEnum.fromJson(json[r'currency']),
         salesCount: mapValueOfType<int>(json, r'salesCount'),
         reviewCount: mapValueOfType<int>(json, r'reviewCount'),

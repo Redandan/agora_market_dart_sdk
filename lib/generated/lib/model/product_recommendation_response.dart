@@ -96,7 +96,7 @@ class ProductRecommendationResponse {
     } else {
       json[r'profileConfidence'] = null;
     }
-      json[r'items'] = this.items.map((e) => e.toJson()).toList();
+      json[r'items'] = this.items;
     if (this.generatedAt != null) {
       json[r'generatedAt'] = this.generatedAt!.toUtc().toIso8601String();
     } else {

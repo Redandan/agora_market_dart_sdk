@@ -80,7 +80,7 @@ class CartCheckoutSubmitResponse {
     } else {
       json[r'totalAmountUsdt'] = null;
     }
-      json[r'orders'] = this.orders.map((e) => e.toJson()).toList();
+      json[r'orders'] = this.orders;
     return json;
   }
 
@@ -105,9 +105,7 @@ class CartCheckoutSubmitResponse {
       return CartCheckoutSubmitResponse(
         success: mapValueOfType<bool>(json, r'success'),
         totalOrderCount: mapValueOfType<int>(json, r'totalOrderCount'),
-        totalAmountUsdt: json[r'totalAmountUsdt'] == null
-            ? null
-            : num.parse('${json[r'totalAmountUsdt']}'),
+        totalAmountUsdt: num.parse('${json[r'totalAmountUsdt']}'),
         orders: SubmittedOrder.listFromJson(json[r'orders']),
       );
     }

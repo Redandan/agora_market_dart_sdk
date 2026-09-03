@@ -209,7 +209,7 @@ class CurrentSellerProductImportPreviewResponse {
     } else {
       json[r'error'] = null;
     }
-      json[r'items'] = this.items.map((e) => e.toJson()).toList();
+      json[r'items'] = this.items;
     if (this.safeToCommit != null) {
       json[r'safeToCommit'] = this.safeToCommit;
     } else {

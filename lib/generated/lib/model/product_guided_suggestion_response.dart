@@ -177,7 +177,7 @@ class ProductGuidedSuggestionResponse {
     } else {
       json[r'summary'] = null;
     }
-      json[r'matchedProducts'] = this.matchedProducts.map((e) => e.toJson()).toList();
+      json[r'matchedProducts'] = this.matchedProducts;
       json[r'substituteKeywords'] = this.substituteKeywords;
       json[r'requiredBuyerInputs'] = this.requiredBuyerInputs;
       json[r'riskNotes'] = this.riskNotes;

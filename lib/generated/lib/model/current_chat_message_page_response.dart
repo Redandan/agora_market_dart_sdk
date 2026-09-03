@@ -76,7 +76,7 @@ class CurrentChatMessagePageResponse {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'items'] = this.items.map((e) => e.toJson()).toList();
+      json[r'items'] = this.items;
     if (this.page != null) {
       json[r'page'] = this.page;
     } else {

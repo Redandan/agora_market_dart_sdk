@@ -120,9 +120,7 @@ class TopSellerDTO {
         sellerId: mapValueOfType<int>(json, r'sellerId'),
         sellerName: mapValueOfType<String>(json, r'sellerName'),
         orderCount: mapValueOfType<int>(json, r'orderCount'),
-        amount: json[r'amount'] == null
-            ? null
-            : num.parse('${json[r'amount']}'),
+        amount: num.parse('${json[r'amount']}'),
       );
     }
     return null;

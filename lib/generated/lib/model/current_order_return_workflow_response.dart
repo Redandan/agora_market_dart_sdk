@@ -293,8 +293,8 @@ class CurrentOrderReturnWorkflowResponse {
     } else {
       json[r'returnDestination'] = null;
     }
-      json[r'sellerReturnAddressOptions'] = this.sellerReturnAddressOptions.map((e) => e.toJson()).toList();
-      json[r'actions'] = this.actions.map((e) => e.toJson()).toList();
+      json[r'sellerReturnAddressOptions'] = this.sellerReturnAddressOptions;
+      json[r'actions'] = this.actions;
     if (this.nextStep != null) {
       json[r'nextStep'] = this.nextStep;
     } else {
@@ -328,12 +328,8 @@ class CurrentOrderReturnWorkflowResponse {
         orderStatus: CurrentOrderReturnWorkflowResponseOrderStatusEnum.fromJson(json[r'orderStatus']),
         orderTitle: mapValueOfType<String>(json, r'orderTitle'),
         productId: mapValueOfType<int>(json, r'productId'),
-        orderAmount: json[r'orderAmount'] == null
-            ? null
-            : num.parse('${json[r'orderAmount']}'),
-        refundAmount: json[r'refundAmount'] == null
-            ? null
-            : num.parse('${json[r'refundAmount']}'),
+        orderAmount: num.parse('${json[r'orderAmount']}'),
+        refundAmount: num.parse('${json[r'refundAmount']}'),
         currency: mapValueOfType<String>(json, r'currency'),
         createdAt: mapDateTime(json, r'createdAt', r''),
         updatedAt: mapDateTime(json, r'updatedAt', r''),

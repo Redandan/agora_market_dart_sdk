@@ -230,9 +230,7 @@ class CreatorSubscriptionResponse {
         validUntil: mapDateTime(json, r'validUntil', r''),
         renewalCount: mapValueOfType<int>(json, r'renewalCount'),
         active: mapValueOfType<bool>(json, r'active'),
-        paidAmountUsdt: json[r'paidAmountUsdt'] == null
-            ? null
-            : num.parse('${json[r'paidAmountUsdt']}'),
+        paidAmountUsdt: num.parse('${json[r'paidAmountUsdt']}'),
       );
     }
     return null;

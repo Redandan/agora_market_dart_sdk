@@ -113,15 +113,9 @@ class ActivityStatDTO {
       }());
 
       return ActivityStatDTO(
-        totalBet: json[r'totalBet'] == null
-            ? null
-            : num.parse('${json[r'totalBet']}'),
-        totalWin: json[r'totalWin'] == null
-            ? null
-            : num.parse('${json[r'totalWin']}'),
-        profit: json[r'profit'] == null
-            ? null
-            : num.parse('${json[r'profit']}'),
+        totalBet: num.parse('${json[r'totalBet']}'),
+        totalWin: num.parse('${json[r'totalWin']}'),
+        profit: num.parse('${json[r'profit']}'),
         totalPlayers: mapValueOfType<int>(json, r'totalPlayers'),
       );
     }

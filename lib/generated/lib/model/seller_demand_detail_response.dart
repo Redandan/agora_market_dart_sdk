@@ -48,7 +48,7 @@ class SellerDemandDetailResponse {
     } else {
       json[r'demand'] = null;
     }
-      json[r'missingRequirements'] = this.missingRequirements.map((e) => e.toJson()).toList();
+      json[r'missingRequirements'] = this.missingRequirements;
     return json;
   }
 

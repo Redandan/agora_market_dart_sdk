@@ -132,8 +132,8 @@ class TelegramGroupRoutingStatusDTO {
     } else {
       json[r'notificationTarget'] = null;
     }
-      json[r'operationsNotificationGroups'] = this.operationsNotificationGroups.map((e) => e.toJson()).toList();
-      json[r'publicCommunityGroups'] = this.publicCommunityGroups.map((e) => e.toJson()).toList();
+      json[r'operationsNotificationGroups'] = this.operationsNotificationGroups;
+      json[r'publicCommunityGroups'] = this.publicCommunityGroups;
     if (this.healthy != null) {
       json[r'healthy'] = this.healthy;
     } else {
