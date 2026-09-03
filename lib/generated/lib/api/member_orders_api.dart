@@ -1462,7 +1462,7 @@ class MemberOrdersApi {
   ///   訂單ID
   ///
   /// * [DeliveryProofSubmitParam] deliveryProofSubmitParam (required):
-  Future<Response> submitDeliveryProofWithHttpInfo(String orderId, DeliveryProofSubmitParam deliveryProofSubmitParam,) async {
+  Future<Response> submitDeliveryProof1WithHttpInfo(String orderId, DeliveryProofSubmitParam deliveryProofSubmitParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/orders/{orderId}/delivery-proof/submit'
       .replaceAll('{orderId}', orderId);
@@ -1498,8 +1498,8 @@ class MemberOrdersApi {
   ///   訂單ID
   ///
   /// * [DeliveryProofSubmitParam] deliveryProofSubmitParam (required):
-  Future<OrderDeliveryProof?> submitDeliveryProof(String orderId, DeliveryProofSubmitParam deliveryProofSubmitParam,) async {
-    final response = await submitDeliveryProofWithHttpInfo(orderId, deliveryProofSubmitParam,);
+  Future<OrderDeliveryProof?> submitDeliveryProof1(String orderId, DeliveryProofSubmitParam deliveryProofSubmitParam,) async {
+    final response = await submitDeliveryProof1WithHttpInfo(orderId, deliveryProofSubmitParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -750,6 +750,16 @@ class ApiClient {
           return CurrentPartnerOverviewResponse.fromJson(value);
         case 'CurrentRechargeSummaryResponse':
           return CurrentRechargeSummaryResponse.fromJson(value);
+        case 'CurrentSellerCancellationSubmissionRequest':
+          return CurrentSellerCancellationSubmissionRequest.fromJson(value);
+        case 'CurrentSellerDeliveryProofSubmissionRequest':
+          return CurrentSellerDeliveryProofSubmissionRequest.fromJson(value);
+        case 'CurrentSellerDisputeReplySubmissionRequest':
+          return CurrentSellerDisputeReplySubmissionRequest.fromJson(value);
+        case 'CurrentSellerLogisticsShipmentSubmissionRequest':
+          return CurrentSellerLogisticsShipmentSubmissionRequest.fromJson(value);
+        case 'CurrentSellerPlatformShipmentSubmissionRequest':
+          return CurrentSellerPlatformShipmentSubmissionRequest.fromJson(value);
         case 'CurrentSellerProductEditorReceiptResponse':
           return CurrentSellerProductEditorReceiptResponse.fromJson(value);
         case 'CurrentSellerProductEditorRequest':
@@ -772,6 +782,8 @@ class ApiClient {
           return CurrentSellerProductImportRequest.fromJson(value);
         case 'CurrentSellerProductMediaResponse':
           return CurrentSellerProductMediaResponse.fromJson(value);
+        case 'CurrentSellerReturnReceivedSubmissionRequest':
+          return CurrentSellerReturnReceivedSubmissionRequest.fromJson(value);
         case 'CurrentSellerReturnReviewSubmissionRequest':
           return CurrentSellerReturnReviewSubmissionRequest.fromJson(value);
         case 'CurrentSellerStoreRegistrationRequest':

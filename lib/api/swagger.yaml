@@ -2288,6 +2288,153 @@
         }
       }
     },
+    "/orders/me/{orderId}/return-received-submissions/{operationId}": {
+      "put": {
+        "tags": [
+          "current-seller-order-mutations"
+        ],
+        "summary": "提交目前賣家的收到退貨確認",
+        "operationId": "submitReturnReceived",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurrentSellerReturnReceivedSubmissionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderMutationReceiptResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/me/{orderId}/platform-shipment-submissions/{operationId}": {
+      "put": {
+        "tags": [
+          "current-seller-order-mutations"
+        ],
+        "summary": "提交目前賣家的平台配送出貨",
+        "operationId": "submitPlatformShipment",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurrentSellerPlatformShipmentSubmissionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderMutationReceiptResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/me/{orderId}/logistics-shipment-submissions/{operationId}": {
+      "put": {
+        "tags": [
+          "current-seller-order-mutations"
+        ],
+        "summary": "提交目前賣家的第三方物流出貨",
+        "operationId": "submitLogisticsShipment",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurrentSellerLogisticsShipmentSubmissionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderMutationReceiptResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/orders/me/{orderId}/dispute-submissions/{operationId}": {
       "get": {
         "tags": [
@@ -2399,6 +2546,202 @@
           },
           "409": {
             "description": "操作內容或訂單版本衝突"
+          }
+        }
+      }
+    },
+    "/orders/me/{orderId}/dispute-reply-submissions/{operationId}": {
+      "put": {
+        "tags": [
+          "current-seller-order-mutations"
+        ],
+        "summary": "提交目前賣家的爭議回覆",
+        "operationId": "submitDisputeReply",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurrentSellerDisputeReplySubmissionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderMutationReceiptResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/me/{orderId}/digital-cancellation-submissions/{operationId}": {
+      "put": {
+        "tags": [
+          "current-seller-order-mutations"
+        ],
+        "summary": "提交目前賣家的數位訂單取消",
+        "operationId": "submitDigitalCancellation",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurrentSellerCancellationSubmissionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderMutationReceiptResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/me/{orderId}/delivery-proof-submissions/{operationId}": {
+      "put": {
+        "tags": [
+          "current-seller-order-mutations"
+        ],
+        "summary": "提交目前賣家的數位交付證明",
+        "operationId": "submitDeliveryProof",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurrentSellerDeliveryProofSubmissionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderMutationReceiptResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/me/{orderId}/cancellation-submissions/{operationId}": {
+      "put": {
+        "tags": [
+          "current-seller-order-mutations"
+        ],
+        "summary": "提交目前賣家的待出貨訂單取消",
+        "operationId": "submitCancellation",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurrentSellerCancellationSubmissionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderMutationReceiptResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -10108,7 +10451,7 @@
         ],
         "summary": "賣家提交交付證明",
         "description": "數位商品代購完成後,賣家上傳截圖/序號/發票等證明",
-        "operationId": "submitDeliveryProof",
+        "operationId": "submitDeliveryProof_1",
         "parameters": [
           {
             "name": "orderId",
@@ -23113,6 +23456,136 @@
         }
       }
     },
+    "/orders/me/{orderId}/seller-operation-results/{actionCode}/{operationId}": {
+      "get": {
+        "tags": [
+          "current-seller-order-mutations"
+        ],
+        "summary": "查回目前賣家的訂單操作收據",
+        "operationId": "getOperationResult",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "actionCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "CANCEL_ORDER",
+                "SHIP_LOGISTICS",
+                "SHIP_PLATFORM",
+                "CONFIRM_RECEIVED",
+                "CONFIRM_DELIVERY_COMPLETED",
+                "REQUEST_RETURN",
+                "PROCESS_RETURN",
+                "UPDATE_RETURN_SHIPPING",
+                "CONFIRM_RETURN_RECEIVED",
+                "RESPOND_REFUND_OFFER",
+                "UPDATE_DELIVERY_ORDER",
+                "SUBMIT_DELIVERY_PROOF",
+                "CONFIRM_DELIVERY_PROOF",
+                "REJECT_DELIVERY_PROOF",
+                "CANCEL_DIGITAL_ORDER",
+                "OPEN_DISPUTE",
+                "RESPOND_DISPUTE",
+                "ADMIN_CANCEL_ORDER",
+                "ADMIN_JUDGE_DISPUTE",
+                "ADMIN_REEXAMINE_DISPUTE"
+              ]
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderMutationReceiptResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/me/{orderId}/seller-operation-results/{actionCode}/latest": {
+      "get": {
+        "tags": [
+          "current-seller-order-mutations"
+        ],
+        "summary": "查回目前賣家此類訂單操作的最新收據",
+        "operationId": "getLatestOperationResult",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "actionCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "CANCEL_ORDER",
+                "SHIP_LOGISTICS",
+                "SHIP_PLATFORM",
+                "CONFIRM_RECEIVED",
+                "CONFIRM_DELIVERY_COMPLETED",
+                "REQUEST_RETURN",
+                "PROCESS_RETURN",
+                "UPDATE_RETURN_SHIPPING",
+                "CONFIRM_RETURN_RECEIVED",
+                "RESPOND_REFUND_OFFER",
+                "UPDATE_DELIVERY_ORDER",
+                "SUBMIT_DELIVERY_PROOF",
+                "CONFIRM_DELIVERY_PROOF",
+                "REJECT_DELIVERY_PROOF",
+                "CANCEL_DIGITAL_ORDER",
+                "OPEN_DISPUTE",
+                "RESPOND_DISPUTE",
+                "ADMIN_CANCEL_ORDER",
+                "ADMIN_JUDGE_DISPUTE",
+                "ADMIN_REEXAMINE_DISPUTE"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderMutationReceiptResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/orders/me/{orderId}/return-workflow": {
       "get": {
         "tags": [
@@ -32298,6 +32771,80 @@
           "reason"
         ]
       },
+      "CurrentSellerReturnReceivedSubmissionRequest": {
+        "type": "object",
+        "description": "目前登入賣家的可重播退貨收件確認",
+        "properties": {
+          "expectedOrderVersion": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "required": [
+          "expectedOrderVersion"
+        ]
+      },
+      "CurrentSellerPlatformShipmentSubmissionRequest": {
+        "type": "object",
+        "description": "目前登入賣家的可重播平台配送出貨提交",
+        "properties": {
+          "expectedOrderVersion": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "remark": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 0
+          }
+        },
+        "required": [
+          "expectedOrderVersion"
+        ]
+      },
+      "CurrentSellerLogisticsShipmentSubmissionRequest": {
+        "type": "object",
+        "description": "目前登入賣家的可重播第三方物流出貨提交",
+        "properties": {
+          "expectedOrderVersion": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "shippingCompany": {
+            "type": "string",
+            "description": "物流公司",
+            "enum": [
+              "BLACK_CAT",
+              "HCT",
+              "KERRY",
+              "SF_EXPRESS",
+              "HOME_DELIVERY_EXPRESS",
+              "TAIWAN_HOME_DELIVERY",
+              "PLATFORM_DELIVERY",
+              "SEVEN_ELEVEN",
+              "FAMILY_MART",
+              "HILIFE",
+              "OK_MART",
+              "CHUNGHWA_POST",
+              "OTHER"
+            ]
+          },
+          "trackingNumber": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 0
+          },
+          "remark": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 0
+          }
+        },
+        "required": [
+          "expectedOrderVersion",
+          "shippingCompany"
+        ]
+      },
       "CurrentBuyerDisputeSubmissionRequest": {
         "type": "object",
         "description": "目前買家的可重播爭議提交",
@@ -32314,6 +32861,93 @@
         },
         "required": [
           "expectedOrderVersion"
+        ]
+      },
+      "CurrentSellerDisputeReplySubmissionRequest": {
+        "type": "object",
+        "description": "目前登入賣家的可重播爭議回覆提交",
+        "properties": {
+          "expectedOrderVersion": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "reply": {
+            "type": "string",
+            "maxLength": 1000,
+            "minLength": 0
+          },
+          "sellerImageUrls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 1000,
+              "minLength": 0
+            },
+            "maxItems": 5,
+            "minItems": 0,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "expectedOrderVersion"
+        ]
+      },
+      "CurrentSellerCancellationSubmissionRequest": {
+        "type": "object",
+        "description": "目前登入賣家的可重播訂單取消提交",
+        "properties": {
+          "expectedOrderVersion": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 0
+          }
+        },
+        "required": [
+          "expectedOrderVersion"
+        ]
+      },
+      "CurrentSellerDeliveryProofSubmissionRequest": {
+        "type": "object",
+        "description": "目前登入賣家的可重播數位交付證明提交",
+        "properties": {
+          "expectedOrderVersion": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "proofType": {
+            "type": "string",
+            "description": "交付證明類型",
+            "enum": [
+              "SCREENSHOT",
+              "RECEIPT",
+              "REDEMPTION_CODE",
+              "EMAIL_FORWARD",
+              "OTHER"
+            ]
+          },
+          "fileUrl": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 0
+          },
+          "codePayload": {
+            "type": "string",
+            "maxLength": 4000,
+            "minLength": 0
+          },
+          "sellerNote": {
+            "type": "string",
+            "maxLength": 1000,
+            "minLength": 0
+          }
+        },
+        "required": [
+          "expectedOrderVersion",
+          "proofType"
         ]
       },
       "NotificationUpdateParam": {
@@ -61664,13 +62298,13 @@
             "type": "integer",
             "format": "int32"
           },
-          "outOfStock": {
-            "type": "boolean"
-          },
           "lowStock": {
             "type": "boolean"
           },
           "belowMinimum": {
+            "type": "boolean"
+          },
+          "outOfStock": {
             "type": "boolean"
           }
         }

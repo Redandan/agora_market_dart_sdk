@@ -447,8 +447,17 @@ Class | Method | HTTP request | Description
 *CurrentPartnerV2ControllerApi* | [**overview**](doc//CurrentPartnerV2ControllerApi.md#overview) | **GET** /community-partners/me/v2/overview | Read identity-minimized current partner overview
 *CurrentPartnerV2ControllerApi* | [**previewInvitation**](doc//CurrentPartnerV2ControllerApi.md#previewinvitation) | **POST** /community-partners/me/v2/invitations/preview | Preview an invitation without persisting open or expiry state
 *CurrentPartnerV2ControllerApi* | [**submitApplication**](doc//CurrentPartnerV2ControllerApi.md#submitapplication) | **PUT** /community-partners/me/v2/applications/operations/{operationId} | Submit a current partner application with exact replay
+*CurrentSellerOrderMutationsApi* | [**getLatestOperationResult**](doc//CurrentSellerOrderMutationsApi.md#getlatestoperationresult) | **GET** /orders/me/{orderId}/seller-operation-results/{actionCode}/latest | 查回目前賣家此類訂單操作的最新收據
+*CurrentSellerOrderMutationsApi* | [**getOperationResult**](doc//CurrentSellerOrderMutationsApi.md#getoperationresult) | **GET** /orders/me/{orderId}/seller-operation-results/{actionCode}/{operationId} | 查回目前賣家的訂單操作收據
 *CurrentSellerOrderMutationsApi* | [**getResult**](doc//CurrentSellerOrderMutationsApi.md#getresult) | **GET** /orders/me/{orderId}/return-review-submissions/{operationId} | 查回目前賣家的退貨審核收據
 *CurrentSellerOrderMutationsApi* | [**submit1**](doc//CurrentSellerOrderMutationsApi.md#submit1) | **PUT** /orders/me/{orderId}/return-review-submissions/{operationId} | 提交目前賣家的退貨審核
+*CurrentSellerOrderMutationsApi* | [**submitCancellation**](doc//CurrentSellerOrderMutationsApi.md#submitcancellation) | **PUT** /orders/me/{orderId}/cancellation-submissions/{operationId} | 提交目前賣家的待出貨訂單取消
+*CurrentSellerOrderMutationsApi* | [**submitDeliveryProof**](doc//CurrentSellerOrderMutationsApi.md#submitdeliveryproof) | **PUT** /orders/me/{orderId}/delivery-proof-submissions/{operationId} | 提交目前賣家的數位交付證明
+*CurrentSellerOrderMutationsApi* | [**submitDigitalCancellation**](doc//CurrentSellerOrderMutationsApi.md#submitdigitalcancellation) | **PUT** /orders/me/{orderId}/digital-cancellation-submissions/{operationId} | 提交目前賣家的數位訂單取消
+*CurrentSellerOrderMutationsApi* | [**submitDisputeReply**](doc//CurrentSellerOrderMutationsApi.md#submitdisputereply) | **PUT** /orders/me/{orderId}/dispute-reply-submissions/{operationId} | 提交目前賣家的爭議回覆
+*CurrentSellerOrderMutationsApi* | [**submitLogisticsShipment**](doc//CurrentSellerOrderMutationsApi.md#submitlogisticsshipment) | **PUT** /orders/me/{orderId}/logistics-shipment-submissions/{operationId} | 提交目前賣家的第三方物流出貨
+*CurrentSellerOrderMutationsApi* | [**submitPlatformShipment**](doc//CurrentSellerOrderMutationsApi.md#submitplatformshipment) | **PUT** /orders/me/{orderId}/platform-shipment-submissions/{operationId} | 提交目前賣家的平台配送出貨
+*CurrentSellerOrderMutationsApi* | [**submitReturnReceived**](doc//CurrentSellerOrderMutationsApi.md#submitreturnreceived) | **PUT** /orders/me/{orderId}/return-received-submissions/{operationId} | 提交目前賣家的收到退貨確認
 *CurrentSellerProductEditorControllerApi* | [**getEditor**](doc//CurrentSellerProductEditorControllerApi.md#geteditor) | **GET** /seller/products/me/editor | Read current-seller product create defaults or owned editor state
 *CurrentSellerProductEditorControllerApi* | [**getOperation2**](doc//CurrentSellerProductEditorControllerApi.md#getoperation2) | **GET** /seller/products/me/editor/operations/{operationId} | Read one durable current-seller product editor outcome
 *CurrentSellerProductEditorControllerApi* | [**save**](doc//CurrentSellerProductEditorControllerApi.md#save) | **PUT** /seller/products/me/editor/operations/{operationId} | Create or full-replace one versioned current-seller product
@@ -605,7 +614,7 @@ Class | Method | HTTP request | Description
 *MemberOrdersApi* | [**searchOrdersBySeller**](doc//MemberOrdersApi.md#searchordersbyseller) | **POST** /orders/seller/search | 賣家查詢訂單列表
 *MemberOrdersApi* | [**shipOrderLogistics**](doc//MemberOrdersApi.md#shiporderlogistics) | **POST** /orders/ship/logistics | 第三方物流發貨
 *MemberOrdersApi* | [**shipOrderPlatform**](doc//MemberOrdersApi.md#shiporderplatform) | **POST** /orders/ship/platform | 平台配送發貨
-*MemberOrdersApi* | [**submitDeliveryProof**](doc//MemberOrdersApi.md#submitdeliveryproof) | **POST** /orders/{orderId}/delivery-proof/submit | 賣家提交交付證明
+*MemberOrdersApi* | [**submitDeliveryProof1**](doc//MemberOrdersApi.md#submitdeliveryproof1) | **POST** /orders/{orderId}/delivery-proof/submit | 賣家提交交付證明
 *MemberOrdersApi* | [**submitOrder**](doc//MemberOrdersApi.md#submitorder) | **POST** /orders | 提交訂單
 *MemberOrdersApi* | [**updateReturnShipping**](doc//MemberOrdersApi.md#updatereturnshipping) | **POST** /orders/{orderId}/return/shipping | 更新退貨物流信息
 *Oauth2StandardApi* | [**authorizeGoogle**](doc//Oauth2StandardApi.md#authorizegoogle) | **POST** /auth/oauth2/authorize/google | Google OAuth2 授权
@@ -1095,6 +1104,11 @@ Class | Method | HTTP request | Description
  - [CurrentPartnerOperationReceiptResponse](doc//CurrentPartnerOperationReceiptResponse.md)
  - [CurrentPartnerOverviewResponse](doc//CurrentPartnerOverviewResponse.md)
  - [CurrentRechargeSummaryResponse](doc//CurrentRechargeSummaryResponse.md)
+ - [CurrentSellerCancellationSubmissionRequest](doc//CurrentSellerCancellationSubmissionRequest.md)
+ - [CurrentSellerDeliveryProofSubmissionRequest](doc//CurrentSellerDeliveryProofSubmissionRequest.md)
+ - [CurrentSellerDisputeReplySubmissionRequest](doc//CurrentSellerDisputeReplySubmissionRequest.md)
+ - [CurrentSellerLogisticsShipmentSubmissionRequest](doc//CurrentSellerLogisticsShipmentSubmissionRequest.md)
+ - [CurrentSellerPlatformShipmentSubmissionRequest](doc//CurrentSellerPlatformShipmentSubmissionRequest.md)
  - [CurrentSellerProductEditorReceiptResponse](doc//CurrentSellerProductEditorReceiptResponse.md)
  - [CurrentSellerProductEditorRequest](doc//CurrentSellerProductEditorRequest.md)
  - [CurrentSellerProductEditorResponse](doc//CurrentSellerProductEditorResponse.md)
@@ -1106,6 +1120,7 @@ Class | Method | HTTP request | Description
  - [CurrentSellerProductImportReceiptResponse](doc//CurrentSellerProductImportReceiptResponse.md)
  - [CurrentSellerProductImportRequest](doc//CurrentSellerProductImportRequest.md)
  - [CurrentSellerProductMediaResponse](doc//CurrentSellerProductMediaResponse.md)
+ - [CurrentSellerReturnReceivedSubmissionRequest](doc//CurrentSellerReturnReceivedSubmissionRequest.md)
  - [CurrentSellerReturnReviewSubmissionRequest](doc//CurrentSellerReturnReviewSubmissionRequest.md)
  - [CurrentSellerStoreRegistrationRequest](doc//CurrentSellerStoreRegistrationRequest.md)
  - [CurrentSellerStoreRegistrationResponse](doc//CurrentSellerStoreRegistrationResponse.md)
