@@ -22,10 +22,8 @@ class CurrentSellerDemandMutationControllerApi {
   ///
   /// Parameters:
   ///
-  /// * [User] user (required):
-  ///
   /// * [String] operationId (required):
-  Future<Response> getOperation7WithHttpInfo(User user, String operationId,) async {
+  Future<Response> getOperation7WithHttpInfo(String operationId,) async {
     // ignore: prefer_const_declarations
     final path = r'/seller/demands/me/operations/{operationId}'
       .replaceAll('{operationId}', operationId);
@@ -36,8 +34,6 @@ class CurrentSellerDemandMutationControllerApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'user', user));
 
     const contentTypes = <String>[];
 
@@ -57,11 +53,9 @@ class CurrentSellerDemandMutationControllerApi {
   ///
   /// Parameters:
   ///
-  /// * [User] user (required):
-  ///
   /// * [String] operationId (required):
-  Future<CurrentSellerDemandOperationReceiptResponse?> getOperation7(User user, String operationId,) async {
-    final response = await getOperation7WithHttpInfo(user, operationId,);
+  Future<CurrentSellerDemandOperationReceiptResponse?> getOperation7(String operationId,) async {
+    final response = await getOperation7WithHttpInfo(operationId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -81,8 +75,6 @@ class CurrentSellerDemandMutationControllerApi {
   ///
   /// Parameters:
   ///
-  /// * [User] user (required):
-  ///
   /// * [int] demandId (required):
   ///
   /// * [int] offerId (required):
@@ -90,7 +82,7 @@ class CurrentSellerDemandMutationControllerApi {
   /// * [String] operationId (required):
   ///
   /// * [CurrentSellerDemandOfferRequest] currentSellerDemandOfferRequest (required):
-  Future<Response> reviseOfferWithHttpInfo(User user, int demandId, int offerId, String operationId, CurrentSellerDemandOfferRequest currentSellerDemandOfferRequest,) async {
+  Future<Response> reviseOfferWithHttpInfo(int demandId, int offerId, String operationId, CurrentSellerDemandOfferRequest currentSellerDemandOfferRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/seller/demands/me/open/{demandId}/offers/{offerId}/revisions/operations/{operationId}'
       .replaceAll('{demandId}', demandId.toString())
@@ -104,8 +96,6 @@ class CurrentSellerDemandMutationControllerApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'user', user));
-
     const contentTypes = <String>['application/json'];
 
 
@@ -124,8 +114,6 @@ class CurrentSellerDemandMutationControllerApi {
   ///
   /// Parameters:
   ///
-  /// * [User] user (required):
-  ///
   /// * [int] demandId (required):
   ///
   /// * [int] offerId (required):
@@ -133,8 +121,8 @@ class CurrentSellerDemandMutationControllerApi {
   /// * [String] operationId (required):
   ///
   /// * [CurrentSellerDemandOfferRequest] currentSellerDemandOfferRequest (required):
-  Future<CurrentSellerDemandOperationReceiptResponse?> reviseOffer(User user, int demandId, int offerId, String operationId, CurrentSellerDemandOfferRequest currentSellerDemandOfferRequest,) async {
-    final response = await reviseOfferWithHttpInfo(user, demandId, offerId, operationId, currentSellerDemandOfferRequest,);
+  Future<CurrentSellerDemandOperationReceiptResponse?> reviseOffer(int demandId, int offerId, String operationId, CurrentSellerDemandOfferRequest currentSellerDemandOfferRequest,) async {
+    final response = await reviseOfferWithHttpInfo(demandId, offerId, operationId, currentSellerDemandOfferRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -154,14 +142,12 @@ class CurrentSellerDemandMutationControllerApi {
   ///
   /// Parameters:
   ///
-  /// * [User] user (required):
-  ///
   /// * [int] demandId (required):
   ///
   /// * [String] operationId (required):
   ///
   /// * [CurrentSellerDemandOfferRequest] currentSellerDemandOfferRequest (required):
-  Future<Response> submitOfferWithHttpInfo(User user, int demandId, String operationId, CurrentSellerDemandOfferRequest currentSellerDemandOfferRequest,) async {
+  Future<Response> submitOfferWithHttpInfo(int demandId, String operationId, CurrentSellerDemandOfferRequest currentSellerDemandOfferRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/seller/demands/me/open/{demandId}/offers/operations/{operationId}'
       .replaceAll('{demandId}', demandId.toString())
@@ -173,8 +159,6 @@ class CurrentSellerDemandMutationControllerApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-      queryParams.addAll(_queryParams('', 'user', user));
 
     const contentTypes = <String>['application/json'];
 
@@ -194,15 +178,13 @@ class CurrentSellerDemandMutationControllerApi {
   ///
   /// Parameters:
   ///
-  /// * [User] user (required):
-  ///
   /// * [int] demandId (required):
   ///
   /// * [String] operationId (required):
   ///
   /// * [CurrentSellerDemandOfferRequest] currentSellerDemandOfferRequest (required):
-  Future<CurrentSellerDemandOperationReceiptResponse?> submitOffer(User user, int demandId, String operationId, CurrentSellerDemandOfferRequest currentSellerDemandOfferRequest,) async {
-    final response = await submitOfferWithHttpInfo(user, demandId, operationId, currentSellerDemandOfferRequest,);
+  Future<CurrentSellerDemandOperationReceiptResponse?> submitOffer(int demandId, String operationId, CurrentSellerDemandOfferRequest currentSellerDemandOfferRequest,) async {
+    final response = await submitOfferWithHttpInfo(demandId, operationId, currentSellerDemandOfferRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

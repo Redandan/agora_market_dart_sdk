@@ -1699,6 +1699,157 @@
         }
       }
     },
+    "/seller/demands/me/open/{demandId}/offers/{offerId}/revisions/operations/{operationId}": {
+      "put": {
+        "tags": [
+          "current-seller-demand-mutation-controller"
+        ],
+        "summary": "Revise one owned current-seller demand offer with exact replay",
+        "operationId": "reviseOffer",
+        "parameters": [
+          {
+            "name": "demandId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "offerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurrentSellerDemandOfferRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Offer revision committed or exactly replayed",
+            "headers": {
+              "Mutation-Replayed": {
+                "style": "simple",
+                "schema": {}
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentSellerDemandOperationReceiptResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid offer"
+          },
+          "403": {
+            "description": "Current account does not own a store"
+          },
+          "404": {
+            "description": "Open demand or owned offer not found"
+          },
+          "409": {
+            "description": "Operation/body or demand revision conflict"
+          },
+          "503": {
+            "description": "Seller demand writes disabled or seller maintenance enabled"
+          }
+        }
+      }
+    },
+    "/seller/demands/me/open/{demandId}/offers/operations/{operationId}": {
+      "put": {
+        "tags": [
+          "current-seller-demand-mutation-controller"
+        ],
+        "summary": "Submit one current-seller demand offer with exact replay",
+        "operationId": "submitOffer",
+        "parameters": [
+          {
+            "name": "demandId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurrentSellerDemandOfferRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Offer committed or exactly replayed",
+            "headers": {
+              "Mutation-Replayed": {
+                "style": "simple",
+                "schema": {}
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentSellerDemandOperationReceiptResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid offer"
+          },
+          "403": {
+            "description": "Current account does not own a store"
+          },
+          "404": {
+            "description": "Open demand not found"
+          },
+          "409": {
+            "description": "Operation/body or demand revision conflict"
+          },
+          "503": {
+            "description": "Seller demand writes disabled or seller maintenance enabled"
+          }
+        }
+      }
+    },
     "/reviews/me/orders/{orderId}/submission": {
       "get": {
         "tags": [
@@ -8172,7 +8323,7 @@
           "seller-demand-pool"
         ],
         "summary": "Seller submit structured offer for demand",
-        "operationId": "submitOffer",
+        "operationId": "submitOffer_1",
         "parameters": [
           {
             "name": "demandId",
@@ -8214,7 +8365,7 @@
           "seller-demand-pool"
         ],
         "summary": "Seller revise an offer after buyer missing requirement",
-        "operationId": "reviseOffer",
+        "operationId": "reviseOffer_1",
         "parameters": [
           {
             "name": "demandId",
@@ -21313,6 +21464,43 @@
         }
       }
     },
+    "/seller/demands/me/operations/{operationId}": {
+      "get": {
+        "tags": [
+          "current-seller-demand-mutation-controller"
+        ],
+        "summary": "Read one durable current-seller demand outcome",
+        "operationId": "getOperation_7",
+        "parameters": [
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Owned operation receipt",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentSellerDemandOperationReceiptResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Current account does not own a store"
+          },
+          "404": {
+            "description": "Owned operation receipt not found"
+          }
+        }
+      }
+    },
     "/seller/demands/me/open/{demandId}": {
       "get": {
         "tags": [
@@ -32121,6 +32309,104 @@
           "operationId"
         ]
       },
+      "CurrentSellerDemandOfferRequest": {
+        "type": "object",
+        "properties": {
+          "expectedDemandRevision": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          },
+          "candidateProductTitle": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 0
+          },
+          "priceAmount": {
+            "type": "number",
+            "minimum": 0.0
+          },
+          "estimatedDeliveryTime": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 0
+          },
+          "warrantyText": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 0
+          },
+          "sellerNote": {
+            "type": "string",
+            "maxLength": 1000,
+            "minLength": 0
+          }
+        },
+        "required": [
+          "expectedDemandRevision",
+          "priceAmount"
+        ]
+      },
+      "CurrentSellerDemandOperationReceiptResponse": {
+        "type": "object",
+        "description": "Identity-free current-seller demand operation receipt",
+        "properties": {
+          "operationId": {
+            "type": "string"
+          },
+          "operationType": {
+            "type": "string",
+            "enum": [
+              "SUBMIT_OFFER",
+              "REVISE_OFFER"
+            ]
+          },
+          "demandId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "resultingDemandRevision": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "resultingOfferStatus": {
+            "type": "string",
+            "description": "Structured sourcing offer status",
+            "enum": [
+              "SUBMITTED",
+              "UNDER_REVIEW",
+              "VISIBLE_TO_BUYER",
+              "RECOMMENDED",
+              "BUYER_SELECTED",
+              "REJECTED_BY_BUYER",
+              "NEEDS_REVISION",
+              "SELLER_REVISED",
+              "REJECTED_BY_ADMIN",
+              "EXPIRED",
+              "CANCELLED",
+              "CONVERTED_TO_PRODUCT",
+              "CONVERTED_TO_ORDER"
+            ]
+          },
+          "completedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "completedAt",
+          "demandId",
+          "offerId",
+          "operationId",
+          "operationType",
+          "resultingDemandRevision",
+          "resultingOfferStatus"
+        ]
+      },
       "CurrentOrderReviewSubmissionRequest": {
         "type": "object",
         "description": "目前買家對目前訂單的評價提交；訂單與使用者身分皆由路徑及登入狀態決定",
@@ -40962,6 +41248,10 @@
         "type": "object",
         "properties": {
           "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "revision": {
             "type": "integer",
             "format": "int64"
           },
@@ -62298,13 +62588,13 @@
             "type": "integer",
             "format": "int32"
           },
-          "lowStock": {
-            "type": "boolean"
-          },
           "belowMinimum": {
             "type": "boolean"
           },
           "outOfStock": {
+            "type": "boolean"
+          },
+          "lowStock": {
             "type": "boolean"
           }
         }

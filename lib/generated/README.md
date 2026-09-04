@@ -447,6 +447,9 @@ Class | Method | HTTP request | Description
 *CurrentPartnerV2ControllerApi* | [**overview**](doc//CurrentPartnerV2ControllerApi.md#overview) | **GET** /community-partners/me/v2/overview | Read identity-minimized current partner overview
 *CurrentPartnerV2ControllerApi* | [**previewInvitation**](doc//CurrentPartnerV2ControllerApi.md#previewinvitation) | **POST** /community-partners/me/v2/invitations/preview | Preview an invitation without persisting open or expiry state
 *CurrentPartnerV2ControllerApi* | [**submitApplication**](doc//CurrentPartnerV2ControllerApi.md#submitapplication) | **PUT** /community-partners/me/v2/applications/operations/{operationId} | Submit a current partner application with exact replay
+*CurrentSellerDemandMutationControllerApi* | [**getOperation7**](doc//CurrentSellerDemandMutationControllerApi.md#getoperation7) | **GET** /seller/demands/me/operations/{operationId} | Read one durable current-seller demand outcome
+*CurrentSellerDemandMutationControllerApi* | [**reviseOffer**](doc//CurrentSellerDemandMutationControllerApi.md#reviseoffer) | **PUT** /seller/demands/me/open/{demandId}/offers/{offerId}/revisions/operations/{operationId} | Revise one owned current-seller demand offer with exact replay
+*CurrentSellerDemandMutationControllerApi* | [**submitOffer**](doc//CurrentSellerDemandMutationControllerApi.md#submitoffer) | **PUT** /seller/demands/me/open/{demandId}/offers/operations/{operationId} | Submit one current-seller demand offer with exact replay
 *CurrentSellerOrderMutationsApi* | [**getLatestOperationResult**](doc//CurrentSellerOrderMutationsApi.md#getlatestoperationresult) | **GET** /orders/me/{orderId}/seller-operation-results/{actionCode}/latest | 查回目前賣家此類訂單操作的最新收據
 *CurrentSellerOrderMutationsApi* | [**getOperationResult**](doc//CurrentSellerOrderMutationsApi.md#getoperationresult) | **GET** /orders/me/{orderId}/seller-operation-results/{actionCode}/{operationId} | 查回目前賣家的訂單操作收據
 *CurrentSellerOrderMutationsApi* | [**getResult**](doc//CurrentSellerOrderMutationsApi.md#getresult) | **GET** /orders/me/{orderId}/return-review-submissions/{operationId} | 查回目前賣家的退貨審核收據
@@ -715,10 +718,10 @@ Class | Method | HTTP request | Description
 *SellerCreatorContentControllerApi* | [**update**](doc//SellerCreatorContentControllerApi.md#update) | **POST** /seller/creator-contents/{contentId} | 
 *SellerDemandPoolApi* | [**getCurrentSellerOpenDemand**](doc//SellerDemandPoolApi.md#getcurrentselleropendemand) | **GET** /seller/demands/me/open/{demandId} | Current store owner get seller-safe open demand detail
 *SellerDemandPoolApi* | [**missingRequirements**](doc//SellerDemandPoolApi.md#missingrequirements) | **GET** /seller/demands/{demandId}/missing-requirements | Seller list relevant missing requirements
-*SellerDemandPoolApi* | [**reviseOffer**](doc//SellerDemandPoolApi.md#reviseoffer) | **POST** /seller/demands/{demandId}/offers/{offerId}/revision | Seller revise an offer after buyer missing requirement
+*SellerDemandPoolApi* | [**reviseOffer1**](doc//SellerDemandPoolApi.md#reviseoffer1) | **POST** /seller/demands/{demandId}/offers/{offerId}/revision | Seller revise an offer after buyer missing requirement
 *SellerDemandPoolApi* | [**searchCurrentSellerOpen**](doc//SellerDemandPoolApi.md#searchcurrentselleropen) | **POST** /seller/demands/me/open/search | Current store owner search seller-safe open demand pool
 *SellerDemandPoolApi* | [**searchOpen**](doc//SellerDemandPoolApi.md#searchopen) | **POST** /seller/demands/open/search | Seller search open demand pool
-*SellerDemandPoolApi* | [**submitOffer**](doc//SellerDemandPoolApi.md#submitoffer) | **POST** /seller/demands/{demandId}/offers | Seller submit structured offer for demand
+*SellerDemandPoolApi* | [**submitOffer1**](doc//SellerDemandPoolApi.md#submitoffer1) | **POST** /seller/demands/{demandId}/offers | Seller submit structured offer for demand
 *SellerProductBoardApi* | [**pin**](doc//SellerProductBoardApi.md#pin) | **POST** /seller/product-board/posts/{postId}/pin | Pin a product board post for seller-owned product
 *SellerProductBoardApi* | [**unpin**](doc//SellerProductBoardApi.md#unpin) | **POST** /seller/product-board/posts/{postId}/unpin | Unpin a product board post for seller-owned product
 *SevenElevenStoresApi* | [**getAllCities**](doc//SevenElevenStoresApi.md#getallcities) | **GET** /stores/seven-eleven/cities | 取得所有縣市列表
@@ -1106,6 +1109,8 @@ Class | Method | HTTP request | Description
  - [CurrentRechargeSummaryResponse](doc//CurrentRechargeSummaryResponse.md)
  - [CurrentSellerCancellationSubmissionRequest](doc//CurrentSellerCancellationSubmissionRequest.md)
  - [CurrentSellerDeliveryProofSubmissionRequest](doc//CurrentSellerDeliveryProofSubmissionRequest.md)
+ - [CurrentSellerDemandOfferRequest](doc//CurrentSellerDemandOfferRequest.md)
+ - [CurrentSellerDemandOperationReceiptResponse](doc//CurrentSellerDemandOperationReceiptResponse.md)
  - [CurrentSellerDisputeReplySubmissionRequest](doc//CurrentSellerDisputeReplySubmissionRequest.md)
  - [CurrentSellerLogisticsShipmentSubmissionRequest](doc//CurrentSellerLogisticsShipmentSubmissionRequest.md)
  - [CurrentSellerPlatformShipmentSubmissionRequest](doc//CurrentSellerPlatformShipmentSubmissionRequest.md)
