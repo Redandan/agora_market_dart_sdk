@@ -74,6 +74,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**closeIssue**](doc//DefaultApi.md#closeissue) | **POST** /customer-issues/{issueId}/close | 關閉客戶問題
 *DefaultApi* | [**completeRecharge**](doc//DefaultApi.md#completerecharge) | **POST** /recharge/{rechargeId}/complete | 完成充值
 *DefaultApi* | [**completeWithdraw**](doc//DefaultApi.md#completewithdraw) | **POST** /withdraws/{withdrawId}/complete | 完成提款
+*DefaultApi* | [**createConfirmedWithdraw**](doc//DefaultApi.md#createconfirmedwithdraw) | **POST** /withdraws/confirmed | Request a withdrawal using exactly the terms confirmed by the current user
 *DefaultApi* | [**createIssue**](doc//DefaultApi.md#createissue) | **POST** /customer-issues | 創建客戶問題
 *DefaultApi* | [**createPost**](doc//DefaultApi.md#createpost) | **POST** /posts | 創建貼文
 *DefaultApi* | [**createRecharge**](doc//DefaultApi.md#createrecharge) | **POST** /recharge | 創建充值
@@ -838,6 +839,7 @@ Class | Method | HTTP request | Description
 *WebrtcApi* | [**sendAnswer**](doc//WebrtcApi.md#sendanswer) | **POST** /webrtc/answer | 發送 WebRTC Answer
 *WebrtcApi* | [**sendIceCandidate**](doc//WebrtcApi.md#sendicecandidate) | **POST** /webrtc/ice-candidate | 發送 WebRTC ICE Candidate
 *WebrtcApi* | [**sendOffer**](doc//WebrtcApi.md#sendoffer) | **POST** /webrtc/offer | 發送 WebRTC Offer
+*WithdrawalTermsControllerApi* | [**terms**](doc//WithdrawalTermsControllerApi.md#terms) | **GET** /public/withdrawal-terms | Read current account-independent USDT withdrawal terms
 
 
 ## Documentation For Models
@@ -1029,6 +1031,7 @@ Class | Method | HTTP request | Description
  - [CommunityPartnerMeSummaryResponse](doc//CommunityPartnerMeSummaryResponse.md)
  - [CommunityPartnerResponse](doc//CommunityPartnerResponse.md)
  - [CommunityPartnerUpsertRequest](doc//CommunityPartnerUpsertRequest.md)
+ - [ConfirmedWithdrawRequest](doc//ConfirmedWithdrawRequest.md)
  - [CreateActivityRequest](doc//CreateActivityRequest.md)
  - [CreateColdWalletParam](doc//CreateColdWalletParam.md)
  - [CreateIssueParam](doc//CreateIssueParam.md)
@@ -1643,6 +1646,7 @@ Class | Method | HTTP request | Description
  - [WebRTCResponseDto](doc//WebRTCResponseDto.md)
  - [Withdraw](doc//Withdraw.md)
  - [WithdrawSearchParam](doc//WithdrawSearchParam.md)
+ - [WithdrawalTermsResponse](doc//WithdrawalTermsResponse.md)
 
 
 ## Documentation For Authorization

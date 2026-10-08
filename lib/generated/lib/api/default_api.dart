@@ -874,6 +874,58 @@ class DefaultApi {
     return null;
   }
 
+  /// Request a withdrawal using exactly the terms confirmed by the current user
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [ConfirmedWithdrawRequest] confirmedWithdrawRequest (required):
+  Future<Response> createConfirmedWithdrawWithHttpInfo(ConfirmedWithdrawRequest confirmedWithdrawRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/withdraws/confirmed';
+
+    // ignore: prefer_final_locals
+    Object? postBody = confirmedWithdrawRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Request a withdrawal using exactly the terms confirmed by the current user
+  ///
+  /// Parameters:
+  ///
+  /// * [ConfirmedWithdrawRequest] confirmedWithdrawRequest (required):
+  Future<Withdraw?> createConfirmedWithdraw(ConfirmedWithdrawRequest confirmedWithdrawRequest,) async {
+    final response = await createConfirmedWithdrawWithHttpInfo(confirmedWithdrawRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => Withdraw.fromJson(value)) as Withdraw;
+    
+    }
+    return null;
+  }
+
   /// 創建客戶問題
   ///
   /// Note: This method returns the HTTP [Response].

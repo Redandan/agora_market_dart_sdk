@@ -6074,6 +6074,47 @@
         }
       }
     },
+    "/withdraws/confirmed": {
+      "post": {
+        "tags": [
+          "提款管理"
+        ],
+        "summary": "Request a withdrawal using exactly the terms confirmed by the current user",
+        "operationId": "createConfirmedWithdraw",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfirmedWithdrawRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Withdrawal created with the confirmed amount and fee",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Withdraw"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "WITHDRAWAL_TERMS_CHANGED: no debit; read terms and obtain a new confirmation",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Withdraw"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/webrtc/offer": {
       "post": {
         "tags": [
@@ -22174,6 +22215,27 @@
         }
       }
     },
+    "/public/withdrawal-terms": {
+      "get": {
+        "tags": [
+          "withdrawal-terms-controller"
+        ],
+        "summary": "Read current account-independent USDT withdrawal terms",
+        "operationId": "terms",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/WithdrawalTermsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/public/test": {
       "get": {
         "tags": [
@@ -36071,6 +36133,48 @@
             "type": "boolean"
           }
         }
+      },
+      "ConfirmedWithdrawRequest": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number",
+            "maximum": 999999999.99,
+            "minimum": 0.01
+          },
+          "currency": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "USDT"
+          },
+          "protocolEnum": {
+            "type": "string",
+            "description": "協議",
+            "enum": [
+              "TRC20",
+              "ERC20",
+              "BEP20"
+            ]
+          },
+          "toAddress": {
+            "type": "string",
+            "maxLength": 255,
+            "minLength": 0
+          },
+          "termsRevision": {
+            "type": "string",
+            "description": "Revision from /public/withdrawal-terms that the user confirmed",
+            "minLength": 1,
+            "pattern": "[a-f0-9]{64}"
+          }
+        },
+        "required": [
+          "amount",
+          "currency",
+          "protocolEnum",
+          "termsRevision",
+          "toAddress"
+        ]
       },
       "WebRTCOfferDto": {
         "type": "object",
@@ -62295,6 +62399,55 @@
           }
         }
       },
+      "WithdrawalTermsResponse": {
+        "type": "object",
+        "properties": {
+          "revision": {
+            "type": "string"
+          },
+          "currency": {
+            "type": "string",
+            "enum": [
+              "USDT"
+            ]
+          },
+          "protocols": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "minimumAmount": {
+            "type": "number"
+          },
+          "maximumAmount": {
+            "type": "number"
+          },
+          "fee": {
+            "type": "number"
+          },
+          "amountScale": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "feeMode": {
+            "type": "string",
+            "enum": [
+              "ADDED_TO_AMOUNT"
+            ]
+          }
+        },
+        "required": [
+          "amountScale",
+          "currency",
+          "fee",
+          "feeMode",
+          "maximumAmount",
+          "minimumAmount",
+          "protocols",
+          "revision"
+        ]
+      },
       "MultiValueMapStringString": {
         "type": "object",
         "additionalProperties": {
@@ -62588,13 +62741,13 @@
             "type": "integer",
             "format": "int32"
           },
+          "lowStock": {
+            "type": "boolean"
+          },
           "belowMinimum": {
             "type": "boolean"
           },
           "outOfStock": {
-            "type": "boolean"
-          },
-          "lowStock": {
             "type": "boolean"
           }
         }

@@ -594,6 +594,8 @@ class ApiClient {
           return CommunityPartnerResponse.fromJson(value);
         case 'CommunityPartnerUpsertRequest':
           return CommunityPartnerUpsertRequest.fromJson(value);
+        case 'ConfirmedWithdrawRequest':
+          return ConfirmedWithdrawRequest.fromJson(value);
         case 'CreateActivityRequest':
           return CreateActivityRequest.fromJson(value);
         case 'CreateColdWalletParam':
@@ -1822,6 +1824,8 @@ class ApiClient {
           return Withdraw.fromJson(value);
         case 'WithdrawSearchParam':
           return WithdrawSearchParam.fromJson(value);
+        case 'WithdrawalTermsResponse':
+          return WithdrawalTermsResponse.fromJson(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {

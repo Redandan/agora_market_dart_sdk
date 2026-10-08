@@ -141,6 +141,7 @@ part 'api/verification_code_login_api.dart';
 part 'api/wallet_connect_api.dart';
 part 'api/webpush_api.dart';
 part 'api/webrtc_api.dart';
+part 'api/withdrawal_terms_controller_api.dart';
 
 part 'model/accept_order_param.dart';
 part 'model/account_recovery_advisory.dart';
@@ -329,6 +330,7 @@ part 'model/community_partner_invitation_response.dart';
 part 'model/community_partner_me_summary_response.dart';
 part 'model/community_partner_response.dart';
 part 'model/community_partner_upsert_request.dart';
+part 'model/confirmed_withdraw_request.dart';
 part 'model/create_activity_request.dart';
 part 'model/create_cold_wallet_param.dart';
 part 'model/create_issue_param.dart';
@@ -943,6 +945,7 @@ part 'model/web_rtc_offer_response_dto.dart';
 part 'model/web_rtc_response_dto.dart';
 part 'model/withdraw.dart';
 part 'model/withdraw_search_param.dart';
+part 'model/withdrawal_terms_response.dart';
 
 
 /// An [ApiClient] instance that uses the default values obtained from
