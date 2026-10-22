@@ -42,6 +42,9 @@ echo "==> Filtering excluded endpoints/schemas"
 mkdir -p "$(dirname "$SWAGGER_FILTERED")"
 bash ci/filter_swagger.sh "$SWAGGER_RAW" "$SWAGGER_FILTERED"
 
+echo "==> Validating specification before replacing generated code"
+java -jar "$GENERATOR_JAR" validate -i "$SWAGGER_FILTERED"
+
 echo "==> Cleaning $GENERATED_DIR"
 rm -rf "$GENERATED_DIR"
 

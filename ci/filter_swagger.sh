@@ -1,28 +1,10 @@
 #!/usr/bin/env bash
-# Strip endpoints + schemas that are intentionally excluded from generation.
-# Mirrors the filter block in generate_api.ps1.
-#
-# Usage: ci/filter_swagger.sh <input> <output>
-
+# Both server and Windows generation use the same reference-safe filter.
 set -euo pipefail
 
 INPUT=${1:?usage: filter_swagger.sh <input> <output>}
 OUTPUT=${2:?usage: filter_swagger.sh <input> <output>}
 
-jq '
-  del(
-    .paths["/files/upload"],
-    .paths["/flutter/deployment/deploy"],
-    .components.schemas.FileUploadResponse,
-    .components.schemas.ApiResponseFileUploadResponse,
-    .components.schemas.UploadFileRequest
-  )
-  | (.paths["/seller/demands/me/operations/{operationId}"].get.parameters //= [])
-  | (.paths["/seller/demands/me/open/{demandId}/offers/operations/{operationId}"].put.parameters //= [])
-  | (.paths["/seller/demands/me/open/{demandId}/offers/{offerId}/revisions/operations/{operationId}"].put.parameters //= [])
-  | (.paths["/seller/demands/me/operations/{operationId}"].get.parameters |= map(select(.name != "user")))
-  | (.paths["/seller/demands/me/open/{demandId}/offers/operations/{operationId}"].put.parameters |= map(select(.name != "user")))
-  | (.paths["/seller/demands/me/open/{demandId}/offers/{offerId}/revisions/operations/{operationId}"].put.parameters |= map(select(.name != "user")))
-' "$INPUT" > "$OUTPUT"
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 
-echo "filtered: $INPUT -> $OUTPUT"
+exec dart "$SCRIPT_DIR/filter_swagger.dart" "$INPUT" "$OUTPUT"

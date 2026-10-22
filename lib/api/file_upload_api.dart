@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:http/http.dart' as http;
 import 'package:agora_market_dart_sdk/generated/lib/api.dart';
-import 'api_response_file_upload_response.dart';
+import 'api_response_file_upload_response.dart' as upload;
 
 /// 自定义文件上传API
 /// 这个文件不会被OpenAPI Generator覆盖，可以安全地添加自定义逻辑
@@ -266,7 +266,7 @@ class FileUploadApi {
 
           // 使用标准的API响应模型
           final apiResponse =
-              ApiResponseFileUploadResponse.fromJson(jsonResponse);
+              upload.ApiResponseFileUploadResponse.fromJson(jsonResponse);
 
           if (apiResponse != null &&
               apiResponse.success == true &&
@@ -428,7 +428,7 @@ class FileUploadApi {
 
           // 使用标准的API响应模型
           final apiResponse =
-              ApiResponseFileUploadResponse.fromJson(jsonResponse);
+              upload.ApiResponseFileUploadResponse.fromJson(jsonResponse);
 
           if (apiResponse != null &&
               apiResponse.success == true &&
