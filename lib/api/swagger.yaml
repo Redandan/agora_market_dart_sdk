@@ -117,6 +117,10 @@
       "description": "OAuth2 标准流程 API"
     },
     {
+      "name": "session-call",
+      "description": "Original-login and endpoint-bound call signaling"
+    },
+    {
       "name": "current-order-return-workflow",
       "description": "目前訂單參與者的退貨、退款及爭議唯讀投影"
     },
@@ -197,6 +201,10 @@
       "description": "Public store display API"
     },
     {
+      "name": "webrtc",
+      "description": "Retired call protocol"
+    },
+    {
       "name": "admin-products",
       "description": "管理員商品管理 API"
     },
@@ -215,10 +223,6 @@
     {
       "name": "current-seller-order-mutations",
       "description": "目前登入賣家的可重播訂單操作"
-    },
-    {
-      "name": "webrtc",
-      "description": "WebRTC 信令 API"
     },
     {
       "name": "chat",
@@ -3568,6 +3572,108 @@
         }
       }
     },
+    "/creator-subscriptions/products/{productId}/web-v2/operations/{operationId}": {
+      "get": {
+        "tags": [
+          "creator-subscription-web-v-2-controller"
+        ],
+        "operationId": "operation",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Receipt"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "creator-subscription-web-v-2-controller"
+        ],
+        "operationId": "purchase_1",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JsonNode"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Receipt"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/community-partners/me/v2/invitations/apply/operations/{operationId}": {
       "put": {
         "tags": [
@@ -6115,19 +6221,17 @@
         }
       }
     },
-    "/webrtc/offer": {
+    "/webrtc/session/status": {
       "post": {
         "tags": [
-          "webrtc"
+          "session-call"
         ],
-        "summary": "發送 WebRTC Offer",
-        "description": "發送 WebRTC Offer 信令給指定用戶",
-        "operationId": "sendOffer",
+        "operationId": "sessionCallStatus",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/WebRTCOfferDto"
+                "$ref": "#/components/schemas/SessionCallStatus"
               }
             }
           },
@@ -6135,41 +6239,11 @@
         },
         "responses": {
           "200": {
-            "description": "Offer 發送成功",
+            "description": "OK",
             "content": {
               "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/WebRTCOfferResponseDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "請求參數錯誤",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebRTCResponseDto"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "未授權",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebRTCResponseDto"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "無權限發送信令",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebRTCResponseDto"
+                  "$ref": "#/components/schemas/SessionCallStatusResult"
                 }
               }
             }
@@ -6182,19 +6256,17 @@
         ]
       }
     },
-    "/webrtc/ice-candidate": {
+    "/webrtc/session/offer": {
       "post": {
         "tags": [
-          "webrtc"
+          "session-call"
         ],
-        "summary": "發送 WebRTC ICE Candidate",
-        "description": "發送 WebRTC ICE Candidate 信令給指定用戶",
-        "operationId": "sendIceCandidate",
+        "operationId": "sessionCallOffer",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/WebRTCIceCandidateDto"
+                "$ref": "#/components/schemas/SessionCallOffer"
               }
             }
           },
@@ -6202,31 +6274,116 @@
         },
         "responses": {
           "200": {
-            "description": "ICE Candidate 發送成功",
+            "description": "OK",
             "content": {
               "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/WebRTCIceCandidateResponseDto"
+                  "$ref": "#/components/schemas/SessionCallResult"
                 }
               }
             }
-          },
-          "400": {
-            "description": "請求參數錯誤",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebRTCResponseDto"
-                }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/webrtc/session/ice-candidate": {
+      "post": {
+        "tags": [
+          "session-call"
+        ],
+        "operationId": "sessionCallIce",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionCallIce"
               }
             }
           },
-          "401": {
-            "description": "未授權",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
             "content": {
               "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/WebRTCResponseDto"
+                  "$ref": "#/components/schemas/SessionCallResult"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/webrtc/session/hangup": {
+      "post": {
+        "tags": [
+          "session-call"
+        ],
+        "operationId": "sessionCallHangup",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionCallHangup"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionCallResult"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/webrtc/session/answer": {
+      "post": {
+        "tags": [
+          "session-call"
+        ],
+        "operationId": "sessionCallAnswer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionCallAnswer"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionCallResult"
                 }
               }
             }
@@ -6244,51 +6401,54 @@
         "tags": [
           "webrtc"
         ],
-        "summary": "掛斷 WebRTC 通話",
-        "description": "掛斷通話並通過 SSE 通知對方",
-        "operationId": "hangupCall",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/WebRTCHangupDto"
-              }
-            }
-          },
-          "required": true
-        },
+        "summary": "Update the app to use call protocol 2",
+        "operationId": "retired",
         "responses": {
           "200": {
-            "description": "通話掛斷成功",
+            "description": "OK",
             "content": {
               "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/WebRTCHangupResponseDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "請求參數錯誤",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebRTCResponseDto"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "未授權",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebRTCResponseDto"
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
                 }
               }
             }
           }
         },
+        "deprecated": true,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/webrtc/ice-candidate": {
+      "post": {
+        "tags": [
+          "webrtc"
+        ],
+        "summary": "Update the app to use call protocol 2",
+        "operationId": "retired_1",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true,
         "security": [
           {
             "bearerAuth": []
@@ -6301,51 +6461,54 @@
         "tags": [
           "webrtc"
         ],
-        "summary": "發送 WebRTC Answer",
-        "description": "發送 WebRTC Answer 信令給指定用戶",
-        "operationId": "sendAnswer",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/WebRTCAnswerDto"
-              }
-            }
-          },
-          "required": true
-        },
+        "summary": "Update the app to use call protocol 2",
+        "operationId": "retired_2",
         "responses": {
           "200": {
-            "description": "Answer 發送成功",
+            "description": "OK",
             "content": {
               "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/WebRTCAnswerResponseDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "請求參數錯誤",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebRTCResponseDto"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "未授權",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebRTCResponseDto"
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
                 }
               }
             }
           }
         },
+        "deprecated": true,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/webrtc/offer": {
+      "post": {
+        "tags": [
+          "webrtc"
+        ],
+        "summary": "Update the app to use call protocol 2",
+        "operationId": "retired_3",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true,
         "security": [
           {
             "bearerAuth": []
@@ -6708,6 +6871,46 @@
             "bearerAuth": []
           }
         ]
+      }
+    },
+    "/webpush/me/notifications/resolve": {
+      "post": {
+        "tags": [
+          "web-push-notification-controller"
+        ],
+        "operationId": "resolve_2",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Request"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Destination"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/users/me/track-referrer": {
@@ -7339,7 +7542,7 @@
           "customer-support-workbench-v-2-controller"
         ],
         "summary": "Read one durable Telegram operator workbench outcome",
-        "operationId": "operation",
+        "operationId": "operation_1",
         "parameters": [
           {
             "name": "operationId",
@@ -8250,6 +8453,52 @@
             }
           }
         }
+      }
+    },
+    "/slot/games/{gameId}/web-v2/demo-spins": {
+      "post": {
+        "tags": [
+          "slot-web-v-2-controller"
+        ],
+        "summary": "Simulate one demo spin without changing wallet balance or saving a round",
+        "operationId": "demo",
+        "parameters": [
+          {
+            "name": "gameId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlotWebV2DemoRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlotSpinResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/seller/products/me/import/preview": {
@@ -10910,6 +11159,62 @@
         }
       }
     },
+    "/orders/me/{orderId}/evidence/{purpose}": {
+      "post": {
+        "tags": [
+          "current-buyer-evidence"
+        ],
+        "operationId": "upload",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "purpose",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "file"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseFileUploadResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/orders/direct-checkout/submit": {
       "post": {
         "tags": [
@@ -11067,7 +11372,7 @@
           "member-orders"
         ],
         "summary": "提交購物車多店鋪結帳",
-        "description": "後端重新分組 selected cart items，all-or-nothing 為每個可提交 group 建立獨立訂單。V2 應提供 Idempotency-Key；未提供時保留舊版 Flutter 行為。",
+        "description": "後端重新分組 selected cart items，all-or-nothing 為每個可提交 group 建立獨立訂單。Web Session V2 必須提供 Idempotency-Key；legacy 登入未提供時保留舊版 Flutter 行為。",
         "operationId": "cartCheckoutSubmit",
         "parameters": [
           {
@@ -11419,6 +11724,44 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/notifications/me/read-all": {
+      "post": {
+        "tags": [
+          "current-notification-v-2-controller"
+        ],
+        "summary": "Mark only the current user's unread notifications read",
+        "operationId": "markAllRead",
+        "parameters": [
+          {
+            "name": "currentUser",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Number of unread notifications transitioned by this request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Notification writes are disabled"
           }
         }
       }
@@ -12089,7 +12432,7 @@
           "game-access-controller"
         ],
         "description": "Compatibility endpoint; use POST /game-access/products/{productId}/purchase",
-        "operationId": "purchase_1",
+        "operationId": "purchase_2",
         "requestBody": {
           "content": {
             "application/json": {
@@ -12121,6 +12464,48 @@
       }
     },
     "/game-access/products/{productId}/web-v2/sessions/{clientSessionId}": {
+      "get": {
+        "tags": [
+          "current-user-game-access-web-v-2-controller"
+        ],
+        "operationId": "getSession",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "clientSessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentUserGameAccessWebV2SessionResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
       "post": {
         "tags": [
           "current-user-game-access-web-v-2-controller"
@@ -12174,12 +12559,56 @@
         ]
       }
     },
+    "/game-access/products/{productId}/web-v2/sessions/{clientSessionId}/end": {
+      "post": {
+        "tags": [
+          "current-user-game-access-web-v-2-controller"
+        ],
+        "operationId": "endSession_1",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "clientSessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentUserGameAccessWebV2SessionResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/game-access/products/{productId}/purchase": {
       "post": {
         "tags": [
           "game-access-product-controller"
         ],
-        "operationId": "purchase_2",
+        "operationId": "purchase_3",
         "parameters": [
           {
             "name": "productId",
@@ -13132,6 +13561,63 @@
         }
       }
     },
+    "/creator-subscriptions/products/{productId}/web-v2/operations/{operationId}/cancel": {
+      "post": {
+        "tags": [
+          "creator-subscription-web-v-2-controller"
+        ],
+        "operationId": "cancel_2",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JsonNode"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Receipt"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/creator-subscriptions/products/{productId}/subscribe": {
       "post": {
         "tags": [
@@ -13744,6 +14230,54 @@
         }
       }
     },
+    "/chat/sessions/{sessionId}/attachments": {
+      "post": {
+        "tags": [
+          "buyer-chat-attachment-controller"
+        ],
+        "operationId": "upload_1",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "file"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseFileUploadResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/chat/sessions/messages": {
       "post": {
         "tags": [
@@ -13831,6 +14365,90 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      }
+    },
+    "/cart/guest-migrations/{operationId}": {
+      "get": {
+        "tags": [
+          "guest-cart-migration-controller"
+        ],
+        "operationId": "findCompleted",
+        "parameters": [
+          {
+            "name": "buyer",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GuestCartMigrationReceipt"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "guest-cart-migration-controller"
+        ],
+        "operationId": "submit_3",
+        "parameters": [
+          {
+            "name": "buyer",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuestCartMigrationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GuestCartMigrationReceipt"
+                }
+              }
+            }
           }
         }
       }
@@ -14081,6 +14699,39 @@
         }
       }
     },
+    "/auth/wallet-connect/login/second-factor": {
+      "post": {
+        "tags": [
+          "wallet-connect"
+        ],
+        "operationId": "completeSecondFactor",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Request"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/auth/update-profile": {
       "post": {
         "tags": [
@@ -14131,6 +14782,36 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/TelegramWebAppAuthRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/telegram-webapp/exchange-jwt/second-factor": {
+      "post": {
+        "tags": [
+          "telegram-webapp-auth"
+        ],
+        "operationId": "completeSecondFactor_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Request"
               }
             }
           },
@@ -14207,6 +14888,1734 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiResponseLoginTokenResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/wallet/start": {
+      "post": {
+        "tags": [
+          "web-session-wallet-controller"
+        ],
+        "operationId": "start",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Started"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/wallet/complete": {
+      "post": {
+        "tags": [
+          "web-session-wallet-controller"
+        ],
+        "operationId": "complete",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompleteRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/PendingDelivery"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SelectionPendingDelivery"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/telegram/start": {
+      "post": {
+        "tags": [
+          "web-session-telegram-controller"
+        ],
+        "operationId": "start_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Started"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/telegram/complete": {
+      "post": {
+        "tags": [
+          "web-session-telegram-controller"
+        ],
+        "operationId": "complete_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompleteRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/PendingDelivery"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SelectionPendingDelivery"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/telegram-miniapp/start": {
+      "post": {
+        "tags": [
+          "web-session-mini-app-controller"
+        ],
+        "operationId": "start_2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Started"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/telegram-miniapp/restore": {
+      "post": {
+        "tags": [
+          "web-session-mini-app-restore-controller"
+        ],
+        "operationId": "restore",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RestoreRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Access"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/telegram-miniapp/mutations": {
+      "post": {
+        "tags": [
+          "web-session-mini-app-controller"
+        ],
+        "operationId": "beginHost",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HostIntentRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Mutation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/telegram-miniapp/mutations/result": {
+      "post": {
+        "tags": [
+          "web-session-mini-app-controller"
+        ],
+        "operationId": "hostResult",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Mutation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/telegram-miniapp/complete": {
+      "post": {
+        "tags": [
+          "web-session-mini-app-controller"
+        ],
+        "operationId": "complete_2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompleteRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/PendingDelivery"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SelectionPendingDelivery"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/migrate": {
+      "post": {
+        "tags": [
+          "web-session-selected-migration-controller"
+        ],
+        "operationId": "migrate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Request"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PendingDelivery"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/inspect": {
+      "post": {
+        "tags": [
+          "web-session-selection-controller"
+        ],
+        "operationId": "inspect",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Candidate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Inspection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/contexts": {
+      "post": {
+        "tags": [
+          "web-session-selection-commands-controller"
+        ],
+        "operationId": "initialize",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContextRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Context"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/contexts/{context}/retirements/{id}": {
+      "get": {
+        "tags": [
+          "web-session-selection-retirement-controller"
+        ],
+        "operationId": "inspect_1",
+        "parameters": [
+          {
+            "name": "context",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/View"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "web-session-selection-retirement-controller"
+        ],
+        "operationId": "retire",
+        "parameters": [
+          {
+            "name": "context",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Request"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/View"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/contexts/{context}/retirements/{id}/cleanup": {
+      "post": {
+        "tags": [
+          "web-session-selection-retirement-controller"
+        ],
+        "operationId": "cleanup",
+        "parameters": [
+          {
+            "name": "context",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/View"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/contexts/{context}/confirm": {
+      "post": {
+        "tags": [
+          "web-session-selection-commands-controller"
+        ],
+        "operationId": "confirmContext",
+        "parameters": [
+          {
+            "name": "context",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Context"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/contexts/{context}/commands/{command}/legacy": {
+      "post": {
+        "tags": [
+          "web-session-selection-commands-controller"
+        ],
+        "operationId": "begin",
+        "parameters": [
+          {
+            "name": "context",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "command",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LegacyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Choice"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/contexts/{context}/commands/{command}/confirm": {
+      "post": {
+        "tags": [
+          "web-session-selection-commands-controller"
+        ],
+        "operationId": "confirm",
+        "parameters": [
+          {
+            "name": "context",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "command",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Expected"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Choice"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/contexts/{context}/commands/{command}/cancel": {
+      "post": {
+        "tags": [
+          "web-session-selection-commands-controller"
+        ],
+        "operationId": "cancel_3",
+        "parameters": [
+          {
+            "name": "context",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "command",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Expected"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Choice"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/classify-legacy": {
+      "post": {
+        "tags": [
+          "web-session-selection-controller"
+        ],
+        "operationId": "classify",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LegacyEvidence"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Classification"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/authentication/v2": {
+      "post": {
+        "tags": [
+          "web-session-selected-authentication-controller"
+        ],
+        "operationId": "issueV2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IssueRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PendingDelivery"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/authentication/mutations": {
+      "get": {
+        "tags": [
+          "web-session-authentication-recovery-controller"
+        ],
+        "operationId": "discover",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Inspection"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "web-session-selected-authentication-controller"
+        ],
+        "operationId": "begin_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Request"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Mutation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/authentication/legacy": {
+      "post": {
+        "tags": [
+          "web-session-selected-legacy-controller"
+        ],
+        "operationId": "issue",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IssueRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Delivery"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/authentication/legacy/validate": {
+      "post": {
+        "tags": [
+          "web-session-selected-legacy-controller"
+        ],
+        "operationId": "validate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/LegacyValidation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/revoke": {
+      "post": {
+        "tags": [
+          "web-session-controller"
+        ],
+        "operationId": "revoke",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RevokeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/auth/session/v2/restore": {
+      "post": {
+        "tags": [
+          "web-session-controller"
+        ],
+        "operationId": "restore_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RestoreRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Access"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/recovery/inspect": {
+      "post": {
+        "tags": [
+          "web-session-recovery-controller"
+        ],
+        "operationId": "inspect_2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Selection"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Inspection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/reauthenticate": {
+      "post": {
+        "tags": [
+          "web-session-controller"
+        ],
+        "operationId": "reauthenticate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReauthenticationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecentAuthentication"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/reauthenticate/passkey/verify": {
+      "post": {
+        "tags": [
+          "web-session-passkey-reauthentication-controller"
+        ],
+        "operationId": "verify",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecentAuthentication"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/reauthenticate/passkey/options": {
+      "post": {
+        "tags": [
+          "web-session-passkey-reauthentication-controller"
+        ],
+        "operationId": "options",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OptionsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasskeyOptionsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/ready-observation": {
+      "post": {
+        "tags": [
+          "web-session-controller"
+        ],
+        "operationId": "readyObservation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebSessionClientObservation"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/auth/session/v2/passkey/verify": {
+      "post": {
+        "tags": [
+          "web-session-passkey-controller"
+        ],
+        "operationId": "verify_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/PendingDelivery"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SelectionPendingDelivery"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/passkey/signup/verify": {
+      "post": {
+        "tags": [
+          "web-session-passkey-controller"
+        ],
+        "operationId": "signupVerify",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/PendingDelivery"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SelectionPendingDelivery"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/passkey/signup/options": {
+      "post": {
+        "tags": [
+          "web-session-passkey-controller"
+        ],
+        "operationId": "signupOptions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignupOptionsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Started"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/passkey/options": {
+      "post": {
+        "tags": [
+          "web-session-passkey-controller"
+        ],
+        "operationId": "options_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OptionsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Started"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/oauth/google/authorize": {
+      "post": {
+        "tags": [
+          "web-session-o-auth-controller"
+        ],
+        "operationId": "authorize",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Started"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/oauth/complete": {
+      "post": {
+        "tags": [
+          "web-session-o-auth-controller"
+        ],
+        "operationId": "complete_3",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompleteRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/PendingDelivery"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SelectionPendingDelivery"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/mutations": {
+      "post": {
+        "tags": [
+          "web-session-controller"
+        ],
+        "operationId": "begin_2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BeginRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Mutation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/migrate": {
+      "post": {
+        "tags": [
+          "web-session-controller"
+        ],
+        "operationId": "migrate_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MigrationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PendingDelivery"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/logout-all": {
+      "post": {
+        "tags": [
+          "web-session-controller"
+        ],
+        "operationId": "logoutAll",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/auth/session/v2/login": {
+      "post": {
+        "tags": [
+          "web-session-controller"
+        ],
+        "operationId": "login_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/PendingDelivery"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SelectionPendingDelivery"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/delivery/cleanup": {
+      "post": {
+        "tags": [
+          "web-session-controller"
+        ],
+        "operationId": "cleanup_1",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/auth/session/v2/contexts": {
+      "post": {
+        "tags": [
+          "web-session-controller"
+        ],
+        "operationId": "initialize_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContextRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContextCreated"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/contexts/confirm": {
+      "post": {
+        "tags": [
+          "web-session-controller"
+        ],
+        "operationId": "confirmContext_1",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContextCreated"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/confirm": {
+      "post": {
+        "tags": [
+          "web-session-controller"
+        ],
+        "operationId": "confirm_1",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PendingDelivery"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/client-observations": {
+      "post": {
+        "tags": [
+          "web-session-controller"
+        ],
+        "operationId": "clientObservation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebSessionClientObservation"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/auth/session/v2/bindings/wallet/start": {
+      "post": {
+        "tags": [
+          "web-session-wallet-binding-controller"
+        ],
+        "operationId": "start_3",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bootstrap"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/bindings/wallet/complete": {
+      "post": {
+        "tags": [
+          "web-session-wallet-binding-controller"
+        ],
+        "operationId": "complete_4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompleteRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Completed"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/bindings/wallet/cancel": {
+      "post": {
+        "tags": [
+          "web-session-wallet-binding-controller"
+        ],
+        "operationId": "cancel_4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Completed"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/bindings/telegram/start": {
+      "post": {
+        "tags": [
+          "web-session-telegram-binding-controller"
+        ],
+        "operationId": "start_4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Started"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/bindings/telegram/complete": {
+      "post": {
+        "tags": [
+          "web-session-telegram-binding-controller"
+        ],
+        "operationId": "complete_5",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompleteRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Completed"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/bindings/telegram/cancel": {
+      "post": {
+        "tags": [
+          "web-session-telegram-binding-controller"
+        ],
+        "operationId": "cancel_5",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Completed"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/bindings/google/complete": {
+      "post": {
+        "tags": [
+          "web-session-binding-controller"
+        ],
+        "operationId": "complete_6",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompleteRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Completed"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/bindings/google/authorize": {
+      "post": {
+        "tags": [
+          "web-session-binding-controller"
+        ],
+        "operationId": "authorize_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Started"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/bindings/cancel": {
+      "post": {
+        "tags": [
+          "web-session-binding-controller"
+        ],
+        "operationId": "cancel_6",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Completed"
                 }
               }
             }
@@ -14393,6 +16802,85 @@
         }
       }
     },
+    "/auth/profile/avatar/upload": {
+      "post": {
+        "tags": [
+          "current-buyer-avatar-upload-controller"
+        ],
+        "operationId": "upload_2",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "file"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseFileUploadResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/password/confirmed": {
+      "post": {
+        "tags": [
+          "web-session-password-controller"
+        ],
+        "operationId": "change",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          },
+          {
+            "name": "X-Agora-Recent-Auth",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordParam"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/auth/passkey/signup/verify": {
       "post": {
         "tags": [
@@ -14523,6 +17011,108 @@
             "bearerAuth": []
           }
         ]
+      }
+    },
+    "/auth/passkey/managed/register/verify": {
+      "post": {
+        "tags": [
+          "web-session-passkey-management-controller"
+        ],
+        "operationId": "finish",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasskeyVerifyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasskeyRegistrationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/passkey/managed/register/options": {
+      "post": {
+        "tags": [
+          "web-session-passkey-management-controller"
+        ],
+        "operationId": "start_5",
+        "parameters": [
+          {
+            "name": "X-Agora-Recent-Auth",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasskeyOptionsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/passkey/managed/credentials/{credentialId}/revoke": {
+      "post": {
+        "tags": [
+          "web-session-passkey-management-controller"
+        ],
+        "operationId": "revoke_1",
+        "parameters": [
+          {
+            "name": "credentialId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "X-Agora-Recent-Auth",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/auth/passkey/login/verify": {
@@ -14701,7 +17291,7 @@
         ],
         "summary": "用戶登入",
         "description": "支持多種登入方式：\n1. 傳統登入：提供 username 和 password\n2. 郵箱驗證碼登入：提供 email 和 verificationCode（不需要 password）\n3. 2FA雙因素認證：如果用戶啟用了2FA，必須在twoFactorCode字段提供驗證碼",
-        "operationId": "login_1",
+        "operationId": "login_2",
         "requestBody": {
           "content": {
             "application/json": {
@@ -14945,6 +17535,95 @@
             "bearerAuth": []
           }
         ]
+      }
+    },
+    "/auth/bindings/managed/remove": {
+      "post": {
+        "tags": [
+          "web-session-login-method-management-controller"
+        ],
+        "operationId": "remove",
+        "parameters": [
+          {
+            "name": "X-Agora-Recent-Auth",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebSessionLoginMethodAction"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/auth/bindings/managed/email/confirm": {
+      "post": {
+        "tags": [
+          "web-session-login-method-management-controller"
+        ],
+        "operationId": "email",
+        "parameters": [
+          {
+            "name": "X-Agora-Recent-Auth",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailChangeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/auth/bindings/managed/email/code": {
+      "post": {
+        "tags": [
+          "web-session-login-method-management-controller"
+        ],
+        "operationId": "send",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailCodeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/auth/bind-oauth": {
@@ -16309,7 +18988,7 @@
         ],
         "summary": "admin 結案檢舉",
         "description": "依 action 可能隱藏或移除商品",
-        "operationId": "resolve_2",
+        "operationId": "resolve_3",
         "parameters": [
           {
             "name": "reportId",
@@ -19890,7 +22569,7 @@
           "current-staking-v-2-controller"
         ],
         "summary": "Read one owned durable staking operation receipt",
-        "operationId": "operation_1",
+        "operationId": "operation_2",
         "parameters": [
           {
             "name": "operationId",
@@ -20000,7 +22679,7 @@
           "current-deposit-v-2-controller"
         ],
         "summary": "Read one owned durable deposit operation receipt",
-        "operationId": "operation_2",
+        "operationId": "operation_3",
         "parameters": [
           {
             "name": "operationId",
@@ -21072,6 +23751,16 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "callProtocol",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
           }
         ],
         "responses": {
@@ -21328,7 +24017,7 @@
           "slot-web-v-2-controller"
         ],
         "summary": "Recover one owned durable slot outcome",
-        "operationId": "operation_3",
+        "operationId": "operation_4",
         "parameters": [
           {
             "name": "gameId",
@@ -24061,6 +26750,49 @@
             "description": "Missing, deleted or foreign notification"
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "current-notification-v-2-controller"
+        ],
+        "summary": "Idempotently soft-delete one current-user notification",
+        "operationId": "delete_1",
+        "parameters": [
+          {
+            "name": "currentUser",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          },
+          {
+            "name": "notificationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted or already deleted",
+            "headers": {
+              "Mutation-Replayed": {
+                "style": "simple",
+                "schema": {}
+              }
+            }
+          },
+          "404": {
+            "description": "Missing or foreign notification"
+          },
+          "503": {
+            "description": "New notification writes are disabled"
+          }
+        }
       }
     },
     "/notifications/list": {
@@ -24839,7 +27571,7 @@
           "current-delivery-operations-v-2-controller"
         ],
         "summary": "Read one owned durable delivery operation receipt",
-        "operationId": "operation_4",
+        "operationId": "operation_5",
         "parameters": [
           {
             "name": "operationId",
@@ -25034,6 +27766,45 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/PageCustomerIssue"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/creator-subscriptions/products/{productId}/web-v2": {
+      "get": {
+        "tags": [
+          "creator-subscription-web-v-2-controller"
+        ],
+        "operationId": "quote",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Quote"
                 }
               }
             }
@@ -25280,7 +28051,7 @@
           "current-partner-v-2-controller"
         ],
         "summary": "Read one owned durable current partner operation receipt",
-        "operationId": "operation_5",
+        "operationId": "operation_6",
         "parameters": [
           {
             "name": "operationId",
@@ -25757,7 +28528,7 @@
           "current-chat-v-2-controller"
         ],
         "summary": "Read one durable current-member chat operation receipt",
-        "operationId": "operation_6",
+        "operationId": "operation_7",
         "parameters": [
           {
             "name": "operationId",
@@ -26144,7 +28915,7 @@
           "current-betting-v-2-controller"
         ],
         "summary": "Read one owned durable bet-placement receipt",
-        "operationId": "operation_7",
+        "operationId": "operation_8",
         "parameters": [
           {
             "name": "operationId",
@@ -26416,6 +29187,547 @@
         }
       }
     },
+    "/auth/session/v2/wallet/flows/{flowId}": {
+      "get": {
+        "tags": [
+          "web-session-wallet-controller"
+        ],
+        "operationId": "bootstrap",
+        "parameters": [
+          {
+            "name": "flowId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Started"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/telegram/flows/{flowId}": {
+      "get": {
+        "tags": [
+          "web-session-telegram-controller"
+        ],
+        "operationId": "bootstrap_1",
+        "parameters": [
+          {
+            "name": "flowId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Started"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/telegram-miniapp/flows/{flowId}": {
+      "get": {
+        "tags": [
+          "web-session-mini-app-controller"
+        ],
+        "operationId": "bootstrap_2",
+        "parameters": [
+          {
+            "name": "flowId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Started"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/contexts/{context}": {
+      "get": {
+        "tags": [
+          "web-session-selection-commands-controller"
+        ],
+        "operationId": "inspectContext",
+        "parameters": [
+          {
+            "name": "context",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContextView"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/contexts/{context}/retirements": {
+      "get": {
+        "tags": [
+          "web-session-selection-retirement-controller"
+        ],
+        "operationId": "discover_1",
+        "parameters": [
+          {
+            "name": "context",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/View"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/contexts/{context}/retirements/bootstrap": {
+      "get": {
+        "tags": [
+          "web-session-selection-retirement-controller"
+        ],
+        "operationId": "prepare",
+        "parameters": [
+          {
+            "name": "context",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Preparation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/contexts/{context}/commands/{command}": {
+      "get": {
+        "tags": [
+          "web-session-selection-commands-controller"
+        ],
+        "operationId": "inspect_3",
+        "parameters": [
+          {
+            "name": "context",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "command",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Choice"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/discover": {
+      "get": {
+        "tags": [
+          "web-session-selection-controller"
+        ],
+        "operationId": "bootstrap_3",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Discovery"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/bootstrap": {
+      "get": {
+        "tags": [
+          "web-session-selection-controller"
+        ],
+        "operationId": "bootstrap_4",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Discovery"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/selection/authentication/mutations/{mutationId}": {
+      "get": {
+        "tags": [
+          "web-session-authentication-recovery-controller"
+        ],
+        "operationId": "inspect_4",
+        "parameters": [
+          {
+            "name": "mutationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Inspection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/recovery/candidates": {
+      "get": {
+        "tags": [
+          "web-session-recovery-controller"
+        ],
+        "operationId": "candidates",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/oauth/bootstrap": {
+      "get": {
+        "tags": [
+          "web-session-o-auth-controller"
+        ],
+        "operationId": "bootstrap_5",
+        "parameters": [
+          {
+            "name": "flowId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bootstrap"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/mutations/result": {
+      "get": {
+        "tags": [
+          "web-session-controller"
+        ],
+        "operationId": "result",
+        "parameters": [
+          {
+            "name": "mutationId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Mutation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/devices": {
+      "get": {
+        "tags": [
+          "web-session-controller"
+        ],
+        "operationId": "devices",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Device"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/delivery/bootstrap": {
+      "get": {
+        "tags": [
+          "web-session-controller"
+        ],
+        "operationId": "delivery",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeliveryBootstrap"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/capabilities": {
+      "get": {
+        "tags": [
+          "web-session-controller"
+        ],
+        "operationId": "capabilities_6",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Capabilities"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/bootstrap": {
+      "get": {
+        "tags": [
+          "web-session-controller"
+        ],
+        "operationId": "bootstrap_6",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContextBootstrap"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/bindings/wallet/bootstrap": {
+      "get": {
+        "tags": [
+          "web-session-wallet-binding-controller"
+        ],
+        "operationId": "bootstrap_7",
+        "parameters": [
+          {
+            "name": "flowId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bootstrap"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/bindings/telegram/bootstrap": {
+      "get": {
+        "tags": [
+          "web-session-telegram-binding-controller"
+        ],
+        "operationId": "bootstrap_8",
+        "parameters": [
+          {
+            "name": "flowId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bootstrap"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/session/v2/bindings/bootstrap": {
+      "get": {
+        "tags": [
+          "web-session-binding-controller"
+        ],
+        "operationId": "bootstrap_9",
+        "parameters": [
+          {
+            "name": "flowId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bootstrap"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/auth/passkey/security-summary": {
       "get": {
         "tags": [
@@ -26440,6 +29752,29 @@
             "bearerAuth": []
           }
         ]
+      }
+    },
+    "/auth/passkey/managed/credentials": {
+      "get": {
+        "tags": [
+          "web-session-passkey-management-controller"
+        ],
+        "operationId": "list",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PasskeyCredentialResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/auth/passkey/credentials": {
@@ -26635,6 +29970,26 @@
         ]
       }
     },
+    "/auth/bindings/managed": {
+      "get": {
+        "tags": [
+          "web-session-login-method-management-controller"
+        ],
+        "operationId": "list_1",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Overview"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/auth/2fa": {
       "get": {
         "tags": [
@@ -26668,7 +30023,7 @@
           "Guarded admin withdrawal V2"
         ],
         "summary": "Read one actor-owned durable admin withdrawal receipt",
-        "operationId": "operation_8",
+        "operationId": "operation_9",
         "parameters": [
           {
             "name": "operationId",
@@ -26714,7 +30069,7 @@
           "Guarded admin withdrawal V2"
         ],
         "summary": "Read fail-closed admin withdrawal operation gates",
-        "operationId": "capabilities_6",
+        "operationId": "capabilities_7",
         "responses": {
           "200": {
             "description": "Fail-closed operation gates",
@@ -28297,7 +31652,7 @@
           "admin-messaging-v-2-controller"
         ],
         "summary": "Read one durable ADMIN batch-message operation receipt",
-        "operationId": "operation_9",
+        "operationId": "operation_10",
         "parameters": [
           {
             "name": "operationId",
@@ -28343,7 +31698,7 @@
           "admin-messaging-v-2-controller"
         ],
         "summary": "Read fail-closed ADMIN messaging V2 capabilities",
-        "operationId": "capabilities_7",
+        "operationId": "capabilities_8",
         "responses": {
           "200": {
             "description": "ADMIN messaging capabilities",
@@ -28582,7 +31937,7 @@
           "admin-knowledge-v-2-controller"
         ],
         "summary": "Read one durable ADMIN knowledge operation outcome",
-        "operationId": "operation_10",
+        "operationId": "operation_11",
         "parameters": [
           {
             "name": "admin",
@@ -29263,7 +32618,7 @@
           "admin-betting-v-2-controller"
         ],
         "summary": "Read one owned durable ADMIN betting operation receipt",
-        "operationId": "operation_11",
+        "operationId": "operation_12",
         "parameters": [
           {
             "name": "operationId",
@@ -29309,7 +32664,7 @@
           "admin-betting-v-2-controller"
         ],
         "summary": "Read fail-closed ADMIN betting capabilities",
-        "operationId": "capabilities_8",
+        "operationId": "capabilities_9",
         "responses": {
           "200": {
             "description": "Read-only capability boundary",
@@ -30194,7 +33549,7 @@
           "amount": {
             "type": "number",
             "maximum": 999999999.99,
-            "minimum": 10.00
+            "minimum": 10.0
           },
           "toAddress": {
             "type": "string",
@@ -30250,7 +33605,7 @@
           "requestedAmount": {
             "type": "number",
             "maximum": 999999999.99,
-            "minimum": 10.00
+            "minimum": 10.0
           },
           "amount": {
             "type": "number",
@@ -30260,7 +33615,7 @@
           "fee": {
             "type": "number",
             "maximum": 999999999.99,
-            "minimum": 0.00
+            "minimum": 0.0
           },
           "totalDebit": {
             "type": "number",
@@ -33205,6 +36560,17 @@
             "type": "string",
             "maxLength": 1000,
             "minLength": 0
+          },
+          "imageUrls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 1000,
+              "minLength": 0
+            },
+            "maxItems": 5,
+            "minItems": 0,
+            "uniqueItems": true
           }
         },
         "required": [
@@ -33756,6 +37122,54 @@
             "type": "string",
             "format": "date-time",
             "description": "Time the admitted terms were atomically accepted"
+          }
+        }
+      },
+      "JsonNode": {
+        "type": "object"
+      },
+      "Receipt": {
+        "type": "object",
+        "properties": {
+          "operationId": {
+            "type": "string"
+          },
+          "productId": {
+            "type": "string"
+          },
+          "subscriptionId": {
+            "type": "string"
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "amountUsdt": {
+            "type": "string"
+          },
+          "durationDays": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "quoteRevision": {
+            "type": "string"
+          },
+          "validUntil": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "renewalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "completedAt": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
@@ -34648,7 +38062,7 @@
           },
           "betAmount": {
             "type": "number",
-            "minimum": 1.00
+            "minimum": 1.0
           }
         },
         "required": [
@@ -35709,21 +39123,21 @@
           },
           "minBetAmount": {
             "type": "number",
-            "minimum": 1.00
+            "minimum": 1.0
           },
           "maxBetAmount": {
             "type": "number",
-            "minimum": 1.00
+            "minimum": 1.0
           },
           "feePercentage": {
             "type": "number",
-            "maximum": 10.00,
-            "minimum": 0.00
+            "maximum": 10.0,
+            "minimum": 0.0
           },
           "initialLiquidity": {
             "type": "number",
-            "maximum": 1000000.00,
-            "minimum": 50.00
+            "maximum": 1000000.0,
+            "minimum": 50.0
           },
           "imageUrl": {
             "type": "string",
@@ -36176,386 +39590,219 @@
           "toAddress"
         ]
       },
-      "WebRTCOfferDto": {
+      "SessionCallStatus": {
         "type": "object",
-        "description": "WebRTC Offer 資料",
         "properties": {
-          "fromUserId": {
-            "type": "integer",
-            "format": "int64",
-            "description": "發起通話的用戶ID",
-            "example": 123
+          "clientId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "user_[0-9]{1,19}_[A-Za-z0-9_-]{8,32}"
+          },
+          "callId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[a-f0-9]{32}"
           },
           "toUserId": {
             "type": "integer",
             "format": "int64",
-            "description": "接收通話的用戶ID",
-            "example": 456
-          },
-          "sdp": {
-            "type": "string",
-            "description": "WebRTC SDP Offer 內容",
-            "minLength": 1
-          },
-          "type": {
-            "type": "string",
-            "description": "信令類型",
-            "example": "offer"
-          },
-          "timestamp": {
-            "type": "string",
-            "format": "date-time",
-            "description": "發送時間"
-          },
-          "callType": {
-            "type": "string",
-            "description": "通話類型",
-            "enum": [
-              "video",
-              "audio"
-            ],
-            "example": "video"
-          },
-          "audioEnabled": {
-            "type": "boolean",
-            "description": "是否包含音訊",
-            "example": true
-          },
-          "videoEnabled": {
-            "type": "boolean",
-            "description": "是否包含視訊",
-            "example": true
+            "minimum": 1
           }
         },
         "required": [
-          "fromUserId",
+          "callId",
+          "clientId",
           "toUserId"
         ]
       },
-      "WebRTCOfferResponseDto": {
+      "SessionCallStatusResult": {
         "type": "object",
-        "description": "WebRTC Offer 響應",
         "properties": {
           "success": {
-            "type": "boolean",
-            "description": "操作是否成功",
-            "example": true
+            "type": "boolean"
           },
-          "message": {
-            "type": "string",
-            "description": "響應訊息",
-            "example": "操作成功"
-          },
-          "errorCode": {
-            "type": "string",
-            "description": "錯誤代碼（失敗時）",
-            "example": "INVALID_PARAMETER"
-          },
-          "timestamp": {
-            "type": "string",
-            "description": "時間戳",
-            "example": "2025-09-27T12:36:27.036"
+          "callProtocol": {
+            "type": "integer",
+            "format": "int32"
           },
           "callId": {
+            "type": "string"
+          },
+          "state": {
             "type": "string",
-            "description": "通話唯一識別碼",
-            "example": "call_1758976586035_2"
+            "enum": [
+              "ringing",
+              "active",
+              "ended",
+              "unknown"
+            ]
+          }
+        },
+        "required": [
+          "callId",
+          "callProtocol",
+          "state",
+          "success"
+        ]
+      },
+      "SessionCallOffer": {
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "user_[0-9]{1,19}_[A-Za-z0-9_-]{8,32}"
+          },
+          "operationId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[a-f0-9]{32}"
           },
           "toUserId": {
             "type": "integer",
             "format": "int64",
-            "description": "目標用戶ID",
-            "example": 3
-          }
-        }
-      },
-      "WebRTCResponseDto": {
-        "type": "object",
-        "description": "WebRTC API 響應基礎物件",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "操作是否成功",
-            "example": true
+            "minimum": 1
           },
-          "message": {
+          "sdp": {
             "type": "string",
-            "description": "響應訊息",
-            "example": "操作成功"
-          },
-          "errorCode": {
-            "type": "string",
-            "description": "錯誤代碼（失敗時）",
-            "example": "INVALID_PARAMETER"
-          },
-          "timestamp": {
-            "type": "string",
-            "description": "時間戳",
-            "example": "2025-09-27T12:36:27.036"
-          }
-        }
-      },
-      "WebRTCIceCandidateDto": {
-        "type": "object",
-        "description": "WebRTC ICE Candidate 資料",
-        "properties": {
-          "callId": {
-            "type": "string",
-            "description": "通話唯一識別碼",
-            "example": "call_12345_67890",
+            "maxLength": 65536,
             "minLength": 1
           },
-          "fromUserId": {
+          "callType": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "audio|video"
+          }
+        },
+        "required": [
+          "callType",
+          "clientId",
+          "operationId",
+          "sdp",
+          "toUserId"
+        ]
+      },
+      "SessionCallResult": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "callProtocol": {
             "type": "integer",
-            "format": "int64",
-            "description": "發起通話的用戶ID",
-            "example": 123
+            "format": "int32"
+          },
+          "callId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "callId",
+          "callProtocol",
+          "success"
+        ]
+      },
+      "SessionCallIce": {
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "user_[0-9]{1,19}_[A-Za-z0-9_-]{8,32}"
+          },
+          "callId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[a-f0-9]{32}"
           },
           "toUserId": {
             "type": "integer",
             "format": "int64",
-            "description": "接收通話的用戶ID",
-            "example": 456
+            "minimum": 1
           },
           "candidate": {
             "type": "string",
-            "description": "ICE Candidate 內容",
+            "maxLength": 4096,
             "minLength": 1
           },
           "sdpMid": {
             "type": "string",
-            "description": "SDP Media ID",
-            "example": 0
+            "maxLength": 128,
+            "minLength": 0
           },
           "sdpMLineIndex": {
             "type": "integer",
             "format": "int32",
-            "description": "SDP Media Line Index",
-            "example": 0
-          },
-          "type": {
-            "type": "string",
-            "description": "信令類型",
-            "example": "ice-candidate"
-          },
-          "timestamp": {
-            "type": "string",
-            "format": "date-time",
-            "description": "發送時間"
+            "maximum": 65535,
+            "minimum": 0
           }
         },
         "required": [
-          "fromUserId",
+          "callId",
+          "candidate",
+          "clientId",
           "toUserId"
         ]
       },
-      "WebRTCIceCandidateResponseDto": {
+      "SessionCallHangup": {
         "type": "object",
-        "description": "WebRTC ICE Candidate 響應",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "操作是否成功",
-            "example": true
-          },
-          "message": {
+          "clientId": {
             "type": "string",
-            "description": "響應訊息",
-            "example": "操作成功"
-          },
-          "errorCode": {
-            "type": "string",
-            "description": "錯誤代碼（失敗時）",
-            "example": "INVALID_PARAMETER"
-          },
-          "timestamp": {
-            "type": "string",
-            "description": "時間戳",
-            "example": "2025-09-27T12:36:27.036"
+            "minLength": 1,
+            "pattern": "user_[0-9]{1,19}_[A-Za-z0-9_-]{8,32}"
           },
           "callId": {
             "type": "string",
-            "description": "通話唯一識別碼",
-            "example": "call_1758976586035_2"
+            "minLength": 1,
+            "pattern": "[a-f0-9]{32}"
           },
           "toUserId": {
             "type": "integer",
             "format": "int64",
-            "description": "目標用戶ID",
-            "example": 3
-          }
-        }
-      },
-      "WebRTCHangupDto": {
-        "type": "object",
-        "description": "WebRTC 掛斷通話資料",
-        "properties": {
-          "toUserId": {
-            "type": "integer",
-            "format": "int64",
-            "description": "接收掛斷通知的用戶ID",
-            "example": 3
-          },
-          "reason": {
-            "type": "string",
-            "description": "掛斷原因",
-            "enum": [
-              "user_hangup",
-              "timeout",
-              "network_error",
-              "busy",
-              "rejected"
-            ],
-            "example": "user_hangup"
-          },
-          "timestamp": {
-            "type": "integer",
-            "format": "int64",
-            "description": "掛斷時間戳",
-            "example": 1758976586035
-          },
-          "duration": {
-            "type": "integer",
-            "format": "int64",
-            "description": "通話持續時間（毫秒）",
-            "example": 120000
+            "minimum": 1
           }
         },
         "required": [
+          "callId",
+          "clientId",
           "toUserId"
         ]
       },
-      "WebRTCHangupResponseDto": {
+      "SessionCallAnswer": {
         "type": "object",
-        "description": "WebRTC 掛斷通話響應資料傳輸物件",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "操作是否成功",
-            "example": true
-          },
-          "message": {
+          "clientId": {
             "type": "string",
-            "description": "響應訊息",
-            "example": "操作成功"
-          },
-          "errorCode": {
-            "type": "string",
-            "description": "錯誤代碼（失敗時）",
-            "example": "INVALID_PARAMETER"
-          },
-          "timestamp": {
-            "type": "string",
-            "description": "時間戳",
-            "example": "2025-09-27T12:36:27.036"
+            "minLength": 1,
+            "pattern": "user_[0-9]{1,19}_[A-Za-z0-9_-]{8,32}"
           },
           "callId": {
             "type": "string",
-            "description": "通話唯一識別碼",
-            "example": "call_1758976586035_2"
-          },
-          "reason": {
-            "type": "string",
-            "description": "掛斷原因",
-            "example": "user_hangup"
-          },
-          "duration": {
-            "type": "integer",
-            "format": "int64",
-            "description": "通話持續時間（毫秒）",
-            "example": 120000
-          }
-        }
-      },
-      "WebRTCAnswerDto": {
-        "type": "object",
-        "description": "WebRTC Answer 資料",
-        "properties": {
-          "callId": {
-            "type": "string",
-            "description": "通話唯一識別碼",
-            "example": "call_12345_67890",
-            "minLength": 1
-          },
-          "fromUserId": {
-            "type": "integer",
-            "format": "int64",
-            "description": "發起通話的用戶ID",
-            "example": 123
+            "minLength": 1,
+            "pattern": "[a-f0-9]{32}"
           },
           "toUserId": {
             "type": "integer",
             "format": "int64",
-            "description": "接收通話的用戶ID",
-            "example": 456
+            "minimum": 1
+          },
+          "accepted": {
+            "type": "boolean"
           },
           "sdp": {
             "type": "string",
-            "description": "WebRTC SDP Answer 內容",
-            "minLength": 1
-          },
-          "type": {
-            "type": "string",
-            "description": "信令類型",
-            "example": "answer"
-          },
-          "timestamp": {
-            "type": "string",
-            "format": "date-time",
-            "description": "發送時間"
-          },
-          "accepted": {
-            "type": "boolean",
-            "description": "是否接受通話",
-            "example": true
+            "maxLength": 65536,
+            "minLength": 0
           }
         },
         "required": [
-          "fromUserId",
+          "accepted",
+          "callId",
+          "clientId",
+          "sdp",
           "toUserId"
         ]
-      },
-      "WebRTCAnswerResponseDto": {
-        "type": "object",
-        "description": "WebRTC Answer 響應",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "操作是否成功",
-            "example": true
-          },
-          "message": {
-            "type": "string",
-            "description": "響應訊息",
-            "example": "操作成功"
-          },
-          "errorCode": {
-            "type": "string",
-            "description": "錯誤代碼（失敗時）",
-            "example": "INVALID_PARAMETER"
-          },
-          "timestamp": {
-            "type": "string",
-            "description": "時間戳",
-            "example": "2025-09-27T12:36:27.036"
-          },
-          "callId": {
-            "type": "string",
-            "description": "通話唯一識別碼",
-            "example": "call_1758976586035_2"
-          },
-          "toUserId": {
-            "type": "integer",
-            "format": "int64",
-            "description": "目標用戶ID",
-            "example": 3
-          },
-          "accepted": {
-            "type": "boolean",
-            "description": "是否接受通話",
-            "example": true
-          }
-        }
       },
       "PushUnsubscriptionResponseDTO": {
         "type": "object",
@@ -36858,6 +40105,22 @@
         "required": [
           "registered"
         ]
+      },
+      "Request": {
+        "type": "object",
+        "properties": {
+          "receipt": {
+            "type": "string"
+          }
+        }
+      },
+      "Destination": {
+        "type": "object",
+        "properties": {
+          "destination": {
+            "type": "string"
+          }
+        }
       },
       "TrackReferrerRequest": {
         "type": "object",
@@ -37641,7 +40904,7 @@
             "type": "number",
             "description": "調帳金額（正數）",
             "example": 100,
-            "minimum": 1E-8
+            "minimum": 1e-8
           },
           "operation": {
             "type": "string",
@@ -40263,6 +43526,29 @@
           "updatedBy",
           "version",
           "wildTwoMin"
+        ]
+      },
+      "SlotWebV2DemoRequest": {
+        "type": "object",
+        "properties": {
+          "betAmount": {
+            "type": "number",
+            "minimum": 1
+          },
+          "clientSeed": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 0
+          },
+          "nonce": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "betAmount",
+          "nonce"
         ]
       },
       "CurrentSellerProductImportRequest": {
@@ -44439,6 +47725,15 @@
               "type": "string"
             }
           },
+          "productType": {
+            "type": "string",
+            "description": "Issue #519 compatibility alias for suggestedProductType",
+            "enum": [
+              "PHYSICAL",
+              "DIGITAL_SERVICE",
+              "CREATOR_SUBSCRIPTION"
+            ]
+          },
           "category": {
             "type": "string",
             "description": "Issue #519 compatibility alias for suggestedCategory",
@@ -44464,15 +47759,6 @@
               "DIGITAL_SERVICE",
               "CREATOR_SUBSCRIPTION",
               "OTHER"
-            ]
-          },
-          "productType": {
-            "type": "string",
-            "description": "Issue #519 compatibility alias for suggestedProductType",
-            "enum": [
-              "PHYSICAL",
-              "DIGITAL_SERVICE",
-              "CREATOR_SUBSCRIPTION"
             ]
           },
           "sourcePlatform": {
@@ -46087,6 +49373,12 @@
           "accepted": {
             "type": "boolean",
             "description": "是否接受退款方案"
+          },
+          "expectedOrderVersion": {
+            "type": "integer",
+            "format": "int64",
+            "description": "使用者所見訂單版本；V2 買家必填，legacy 可省略",
+            "minimum": 0
           }
         },
         "required": [
@@ -47669,7 +50961,8 @@
         "properties": {
           "orderId": {
             "type": "string",
-            "description": "訂單ID"
+            "description": "訂單ID",
+            "minLength": 1
           },
           "reason": {
             "type": "string",
@@ -48798,6 +52091,46 @@
           "launchUrl",
           "sessionExpiresAt"
         ]
+      },
+      "CurrentUserGameAccessWebV2SessionResponse": {
+        "type": "object",
+        "properties": {
+          "gameKey": {
+            "type": "string"
+          },
+          "clientSessionId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "description": "遊戲 Session 狀態",
+            "enum": [
+              "CREATED",
+              "ACTIVE",
+              "ENDED",
+              "EXPIRED",
+              "DENIED"
+            ]
+          },
+          "sessionExpiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "launchExpiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "launchConsumed": {
+            "type": "boolean"
+          },
+          "endedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "denyReason": {
+            "type": "string"
+          }
+        }
       },
       "GameAccessProductPurchaseRequest": {
         "type": "object",
@@ -51354,6 +54687,64 @@
           }
         }
       },
+      "GuestCartMigrationRequest": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32",
+            "maximum": 10,
+            "minimum": 1
+          },
+          "sku": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 0
+          }
+        },
+        "required": [
+          "productId",
+          "quantity"
+        ]
+      },
+      "GuestCartMigrationReceipt": {
+        "type": "object",
+        "properties": {
+          "operationId": {
+            "type": "string"
+          },
+          "buyerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sku": {
+            "type": "string"
+          },
+          "requestedQuantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cartItemId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "cartQuantityAfter": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "quantityPolicy": {
+            "type": "string"
+          }
+        }
+      },
       "CartSearchParam": {
         "type": "object",
         "description": "購物車搜索參數",
@@ -51850,6 +55241,11 @@
             "type": "string",
             "minLength": 1,
             "pattern": "^\\d{6}$"
+          },
+          "twoFactorCode": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 0
           }
         }
       },
@@ -51904,6 +55300,1175 @@
           },
           "deepLink": {
             "type": "string"
+          }
+        }
+      },
+      "StartRequest": {
+        "type": "object",
+        "properties": {
+          "mutationId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+          },
+          "walletAddress": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "(?:0x[0-9a-fA-F]{40}|T[1-9A-HJ-NP-Za-km-z]{33})"
+          }
+        }
+      },
+      "Started": {
+        "type": "object",
+        "properties": {
+          "flowId": {
+            "type": "string"
+          },
+          "csrfToken": {
+            "type": "string"
+          },
+          "walletAddress": {
+            "type": "string"
+          },
+          "walletType": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "CompleteRequest": {
+        "type": "object",
+        "properties": {
+          "flowId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+          },
+          "signature": {
+            "type": "string",
+            "maxLength": 1024,
+            "minLength": 0
+          },
+          "twoFactorCode": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 0
+          }
+        }
+      },
+      "Delivery": {
+        "type": "object"
+      },
+      "PendingDelivery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Delivery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "contextId": {
+                "type": "string"
+              },
+              "mutationId": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      },
+      "SelectionPendingDelivery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Delivery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "contextId": {
+                "type": "string"
+              },
+              "mutationId": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              },
+              "selectionContextId": {
+                "type": "string"
+              },
+              "commandId": {
+                "type": "string"
+              },
+              "generation": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "LEGACY",
+                  "V2"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "RestoreRequest": {
+        "type": "object",
+        "properties": {
+          "initData": {
+            "type": "string",
+            "maxLength": 8192,
+            "minLength": 0
+          },
+          "interactive": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Access": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string"
+          },
+          "accessTokenExpiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "csrfToken": {
+            "type": "string"
+          },
+          "sessionId": {
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/components/schemas/UserView"
+          },
+          "idleExpiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "absoluteExpiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "sessionPolicyVersion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "serverTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "UserView": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "username": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          }
+        }
+      },
+      "HostIntentRequest": {
+        "type": "object",
+        "properties": {
+          "mutationId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+          },
+          "expectedGeneration": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "PASSWORD",
+              "EMAIL_CODE",
+              "PASSKEY",
+              "OAUTH",
+              "TELEGRAM",
+              "WALLET",
+              "MIGRATE",
+              "LOGOUT",
+              "CANCEL"
+            ]
+          },
+          "persistent": {
+            "type": "boolean"
+          },
+          "deviceLabel": {
+            "type": "string",
+            "maxLength": 240,
+            "minLength": 0
+          },
+          "initData": {
+            "type": "string",
+            "maxLength": 8192,
+            "minLength": 0
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "Mutation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "contextId": {
+            "type": "string"
+          },
+          "generation": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "PASSWORD",
+              "EMAIL_CODE",
+              "PASSKEY",
+              "OAUTH",
+              "TELEGRAM",
+              "WALLET",
+              "MIGRATE",
+              "LOGOUT",
+              "CANCEL"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "PREPARED",
+              "VERIFIED_PENDING_DELIVERY",
+              "CONFIRMED",
+              "LEGACY_ISSUED",
+              "CANCELLED",
+              "EXPIRED"
+            ]
+          },
+          "persistent": {
+            "type": "boolean"
+          },
+          "deviceLabel": {
+            "type": "string"
+          },
+          "sessionId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "completedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "targetMutationId": {
+            "type": "string"
+          }
+        }
+      },
+      "Candidate": {
+        "type": "object",
+        "properties": {
+          "context": {
+            "$ref": "#/components/schemas/Context"
+          },
+          "choice": {
+            "$ref": "#/components/schemas/Choice"
+          },
+          "contextProofPresent": {
+            "type": "boolean"
+          },
+          "choiceProofPresent": {
+            "type": "boolean"
+          },
+          "issue": {
+            "type": "string"
+          }
+        }
+      },
+      "Choice": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "contextId": {
+            "type": "string"
+          },
+          "generation": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "LEGACY",
+              "V2"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "PENDING_DELIVERY",
+              "CONFIRMED",
+              "CANCELLED",
+              "EXPIRED"
+            ]
+          },
+          "deliveryDeadline": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "credentialExpiresAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Context": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "generation": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "headCommandId": {
+            "type": "string"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "confirmed": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Discovery": {
+        "type": "object",
+        "properties": {
+          "protocolVersion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "state": {
+            "type": "string"
+          },
+          "protocolCookieCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unresolvedCookieCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "v2EvidencePresent": {
+            "type": "boolean"
+          },
+          "candidates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Candidate"
+            }
+          },
+          "serverTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Inspection": {
+        "type": "object",
+        "properties": {
+          "snapshot": {
+            "$ref": "#/components/schemas/Discovery"
+          },
+          "candidate": {
+            "$ref": "#/components/schemas/Candidate"
+          }
+        }
+      },
+      "ContextRequest": {
+        "type": "object",
+        "properties": {
+          "contextId": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "View": {
+        "type": "object",
+        "properties": {
+          "retirement": {
+            "$ref": "#/components/schemas/Receipt"
+          },
+          "cleanupCsrf": {
+            "type": "string"
+          }
+        }
+      },
+      "LegacyRequest": {
+        "type": "object",
+        "properties": {
+          "expectedGeneration": {
+            "type": "integer",
+            "format": "int64",
+            "maximum": 9007199254740990,
+            "minimum": 0
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "ACCESS",
+              "REFRESH",
+              "FRESH"
+            ]
+          },
+          "credential": {
+            "type": "string",
+            "maxLength": 8192,
+            "minLength": 0,
+            "writeOnly": true
+          },
+          "sourceFingerprint": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[a-f0-9]{64}"
+          }
+        },
+        "required": [
+          "expectedGeneration",
+          "kind"
+        ]
+      },
+      "Expected": {
+        "type": "object",
+        "properties": {
+          "generation": {
+            "type": "integer",
+            "format": "int64",
+            "maximum": 9007199254740991,
+            "minimum": 0
+          }
+        },
+        "required": [
+          "generation"
+        ]
+      },
+      "LegacyEvidence": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "ACCESS",
+              "REFRESH",
+              "FRESH"
+            ]
+          },
+          "credential": {
+            "type": "string",
+            "maxLength": 8192,
+            "minLength": 0,
+            "writeOnly": true
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "Classification": {
+        "type": "object",
+        "properties": {
+          "protocolVersion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "candidateMode": {
+            "type": "string",
+            "enum": [
+              "LEGACY",
+              "V2"
+            ]
+          },
+          "requiresSelection": {
+            "type": "boolean"
+          },
+          "sourceFingerprint": {
+            "type": "string"
+          },
+          "credentialExpiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "serverTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "IssueRequest": {
+        "type": "object",
+        "properties": {
+          "mutationId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+          },
+          "selectionContextId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+          },
+          "commandId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+          },
+          "generation": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+          }
+        }
+      },
+      "ValidationRequest": {
+        "type": "object",
+        "properties": {
+          "selectionContextId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+          },
+          "commandId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+          },
+          "generation": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "ACCESS",
+              "REFRESH",
+              "FRESH"
+            ]
+          },
+          "credential": {
+            "type": "string",
+            "maxLength": 8192,
+            "minLength": 0
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "LegacyValidation": {
+        "type": "object",
+        "properties": {
+          "protocolVersion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "state": {
+            "type": "string"
+          },
+          "contextId": {
+            "type": "string"
+          },
+          "commandId": {
+            "type": "string"
+          },
+          "generation": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "credentialExpiresAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "RevokeRequest": {
+        "type": "object",
+        "properties": {
+          "sessionId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+          }
+        }
+      },
+      "Selection": {
+        "type": "object",
+        "properties": {
+          "contextId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+          },
+          "generation": {
+            "type": "integer",
+            "format": "int64",
+            "maximum": 9007199254740991,
+            "minimum": 0
+          },
+          "confirmed": {
+            "type": "boolean"
+          },
+          "currentMutationId": {
+            "type": "string",
+            "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+          },
+          "pendingMutationId": {
+            "type": "string",
+            "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+          },
+          "contextProofPresent": {
+            "type": "boolean"
+          },
+          "currentDeliveryPresent": {
+            "type": "boolean"
+          },
+          "pendingDeliveryPresent": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "confirmed",
+          "contextProofPresent",
+          "currentDeliveryPresent",
+          "generation",
+          "pendingDeliveryPresent"
+        ]
+      },
+      "LoginParam": {
+        "type": "object",
+        "description": "登入參數",
+        "properties": {
+          "username": {
+            "type": "string",
+            "description": "用戶名（用於傳統登入）"
+          },
+          "password": {
+            "type": "string",
+            "description": "密碼（用於傳統登入）"
+          },
+          "email": {
+            "type": "string",
+            "description": "郵箱（用於郵箱驗證碼登入）"
+          },
+          "verificationCode": {
+            "type": "string",
+            "description": "驗證碼（用於郵箱驗證碼登入）"
+          },
+          "rememberMe": {
+            "type": "boolean",
+            "description": "記住我"
+          },
+          "twoFactorCode": {
+            "type": "string",
+            "description": "雙因素認證碼"
+          },
+          "turnstileToken": {
+            "type": "string",
+            "description": "Cloudflare Turnstile 驗證 Token（可選）"
+          }
+        }
+      },
+      "ReauthenticationRequest": {
+        "type": "object",
+        "properties": {
+          "credentials": {
+            "$ref": "#/components/schemas/LoginParam"
+          },
+          "purpose": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "logout-all|bind-google|bind-telegram|withdraw|stake|unstake|change-password|add-passkey|remove-passkey|bind-email|verify-email|remove-login-method|bind-wallet"
+          },
+          "withdrawal": {
+            "$ref": "#/components/schemas/ConfirmedWithdrawRequest"
+          },
+          "passkeyCredentialId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "loginMethod": {
+            "$ref": "#/components/schemas/WebSessionLoginMethodAction"
+          },
+          "staking": {
+            "$ref": "#/components/schemas/WebSessionStakingAction"
+          }
+        },
+        "required": [
+          "credentials"
+        ]
+      },
+      "WebSessionLoginMethodAction": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "bindingId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "provider": {
+            "type": "string",
+            "description": "OAuth第三方登录提供商",
+            "enum": [
+              "GOOGLE",
+              "FACEBOOK",
+              "TELEGRAM_BOT",
+              "WALLET_CONNECT",
+              "TRON"
+            ]
+          },
+          "walletAddress": {
+            "type": "string"
+          }
+        }
+      },
+      "WebSessionStakingAction": {
+        "type": "object",
+        "properties": {
+          "operationId": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "policyRevision": {
+            "type": "string"
+          },
+          "stakingRef": {
+            "type": "string"
+          }
+        }
+      },
+      "RecentAuthentication": {
+        "type": "object",
+        "properties": {
+          "proof": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "actionDigest": {
+            "type": "string"
+          }
+        }
+      },
+      "PasskeyVerifyRequest": {
+        "type": "object",
+        "description": "Passkey WebAuthn verify request",
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "description": "Opaque request id returned by options endpoint.",
+            "minLength": 1
+          },
+          "credential": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "PublicKeyCredential JSON returned by webauthn-json create/get."
+          },
+          "credentialName": {
+            "type": "string",
+            "description": "Optional display name for the registered passkey.",
+            "example": "iPhone 15 Pro"
+          }
+        },
+        "required": [
+          "credential"
+        ]
+      },
+      "VerifyRequest": {
+        "type": "object",
+        "properties": {
+          "purpose": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "logout-all|bind-google|bind-telegram|withdraw|stake|unstake|change-password|add-passkey|remove-passkey|bind-email|verify-email|remove-login-method|bind-wallet"
+          },
+          "assertion": {
+            "$ref": "#/components/schemas/PasskeyVerifyRequest"
+          },
+          "withdrawal": {
+            "$ref": "#/components/schemas/ConfirmedWithdrawRequest"
+          },
+          "passkeyCredentialId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "loginMethod": {
+            "$ref": "#/components/schemas/WebSessionLoginMethodAction"
+          },
+          "staking": {
+            "$ref": "#/components/schemas/WebSessionStakingAction"
+          }
+        },
+        "required": [
+          "assertion"
+        ]
+      },
+      "OptionsRequest": {
+        "type": "object",
+        "properties": {
+          "purpose": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "logout-all|bind-google|bind-telegram|withdraw|stake|unstake|change-password|add-passkey|remove-passkey|bind-email|verify-email|remove-login-method|bind-wallet"
+          },
+          "withdrawal": {
+            "$ref": "#/components/schemas/ConfirmedWithdrawRequest"
+          },
+          "passkeyCredentialId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "loginMethod": {
+            "$ref": "#/components/schemas/WebSessionLoginMethodAction"
+          },
+          "staking": {
+            "$ref": "#/components/schemas/WebSessionStakingAction"
+          }
+        }
+      },
+      "PasskeyOptionsResponse": {
+        "type": "object",
+        "description": "Passkey WebAuthn options response",
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "description": "Opaque request id to send back to verify.",
+            "example": "c1c46e59-9810-4b6e-8d13-dccf2a8cbf3c"
+          },
+          "rpId": {
+            "type": "string",
+            "description": "Selected relying party id.",
+            "example": "purrtechllc.com"
+          },
+          "origin": {
+            "type": "string",
+            "description": "Matched browser origin.",
+            "example": "https://agoramarket.purrtechllc.com"
+          },
+          "publicKey": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "JSON object passed as publicKey options to WebAuthn JS."
+          },
+          "discoverableCredentialLogin": {
+            "type": "boolean",
+            "description": "Whether options are for username-less discoverable credential login.",
+            "example": true
+          },
+          "allowCredentialsEmpty": {
+            "type": "boolean",
+            "description": "Whether allowCredentials is deliberately empty/omitted for account-less passkey selection.",
+            "example": true
+          },
+          "residentKeyRequirement": {
+            "type": "string",
+            "description": "Effective residentKey requirement for registration options.",
+            "example": "required"
+          },
+          "userVerificationRequirement": {
+            "type": "string",
+            "description": "Effective userVerification requirement.",
+            "example": "required"
+          }
+        }
+      },
+      "WebSessionClientObservation": {
+        "type": "object",
+        "properties": {
+          "event": {
+            "type": "string",
+            "enum": [
+              "SESSION_RESTORE_STARTED",
+              "SESSION_RESTORE_TEMPORARY_FAILURE",
+              "SESSION_RESTORE_REAUTH_REQUIRED",
+              "SESSION_RESTORE_REJECTED",
+              "SESSION_RESTORE_ANONYMOUS",
+              "LATE_RESPONSE_DISCARDED",
+              "AUTHENTICATED_SESSION_READY"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "NONE",
+              "TEMPORARY",
+              "AUTHORITY_REJECTED",
+              "RESOLUTION_REQUIRED",
+              "ANONYMOUS",
+              "SUPERSEDED"
+            ]
+          },
+          "durationMillis": {
+            "type": "integer",
+            "format": "int64",
+            "maximum": 600000,
+            "minimum": 0
+          },
+          "standalone": {
+            "type": "boolean"
+          },
+          "sourceVersion": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 0
+          },
+          "expectedSessionId": {
+            "type": "string",
+            "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+          }
+        },
+        "required": [
+          "event",
+          "reason"
+        ]
+      },
+      "PasskeySignupOptionsRequest": {
+        "type": "object",
+        "description": "Passkey first-time signup options request",
+        "properties": {
+          "origin": {
+            "type": "string",
+            "description": "Browser origin. Backend also accepts the Origin header.",
+            "example": "https://redandan.github.io"
+          },
+          "username": {
+            "type": "string",
+            "description": "Optional username. Backend generates one when omitted.",
+            "example": "redan",
+            "maxLength": 20,
+            "minLength": 3
+          },
+          "email": {
+            "type": "string",
+            "description": "Optional email attached to the newly created account.",
+            "example": "user@example.com"
+          },
+          "displayName": {
+            "type": "string",
+            "description": "Optional display name used in the WebAuthn prompt.",
+            "example": "Redan",
+            "maxLength": 120,
+            "minLength": 0
+          },
+          "promoCode": {
+            "type": "string",
+            "description": "Optional promo code.",
+            "maxLength": 50,
+            "minLength": 0
+          },
+          "referrer": {
+            "type": "string",
+            "description": "Optional source page URL for traffic attribution.",
+            "maxLength": 500,
+            "minLength": 0
+          }
+        }
+      },
+      "SignupOptionsRequest": {
+        "type": "object",
+        "properties": {
+          "mutationId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/PasskeySignupOptionsRequest"
+          }
+        },
+        "required": [
+          "profile"
+        ]
+      },
+      "BeginRequest": {
+        "type": "object",
+        "properties": {
+          "mutationId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+          },
+          "expectedGeneration": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "PASSWORD",
+              "EMAIL_CODE",
+              "PASSKEY",
+              "OAUTH",
+              "TELEGRAM",
+              "WALLET",
+              "MIGRATE",
+              "LOGOUT",
+              "CANCEL"
+            ]
+          },
+          "persistent": {
+            "type": "boolean"
+          },
+          "deviceLabel": {
+            "type": "string",
+            "maxLength": 240,
+            "minLength": 0
+          },
+          "targetMutationId": {
+            "type": "string",
+            "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "MigrationRequest": {
+        "type": "object",
+        "properties": {
+          "mutationId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+          },
+          "refreshToken": {
+            "type": "string",
+            "maxLength": 8192,
+            "minLength": 0
+          }
+        }
+      },
+      "LoginRequest": {
+        "type": "object",
+        "properties": {
+          "mutationId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+          },
+          "credentials": {
+            "$ref": "#/components/schemas/LoginParam"
+          }
+        },
+        "required": [
+          "credentials"
+        ]
+      },
+      "ContextCreated": {
+        "type": "object",
+        "properties": {
+          "contextId": {
+            "type": "string"
+          }
+        }
+      },
+      "Bootstrap": {
+        "type": "object",
+        "properties": {
+          "flowId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "csrf": {
+            "type": "string"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "challenge": {
+            "$ref": "#/components/schemas/Challenge"
+          },
+          "cancelCsrf": {
+            "type": "string"
+          }
+        }
+      },
+      "Challenge": {
+        "type": "object",
+        "properties": {
+          "walletAddress": {
+            "type": "string"
+          },
+          "walletType": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "Completed": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "CancelRequest": {
+        "type": "object",
+        "properties": {
+          "flowId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
           }
         }
       },
@@ -52032,30 +56597,29 @@
           }
         }
       },
-      "JsonNode": {
-        "type": "object"
-      },
-      "PasskeyVerifyRequest": {
+      "ChangePasswordParam": {
         "type": "object",
-        "description": "Passkey WebAuthn verify request",
+        "description": "修改/設置密碼參數",
         "properties": {
-          "requestId": {
+          "oldPassword": {
             "type": "string",
-            "description": "Opaque request id returned by options endpoint.",
+            "description": "舊密碼（如果用戶已有密碼則必填，如果沒有密碼則可選）"
+          },
+          "newPassword": {
+            "type": "string",
+            "description": "新密碼",
+            "maxLength": 128,
+            "minLength": 8
+          },
+          "confirmNewPassword": {
+            "type": "string",
+            "description": "確認新密碼",
             "minLength": 1
-          },
-          "credential": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "PublicKeyCredential JSON returned by webauthn-json create/get."
-          },
-          "credentialName": {
-            "type": "string",
-            "description": "Optional display name for the registered passkey.",
-            "example": "iPhone 15 Pro"
           }
         },
         "required": [
-          "credential"
+          "confirmNewPassword",
+          "newPassword"
         ]
       },
       "PasskeySignupVerifyResponse": {
@@ -52094,93 +56658,6 @@
           },
           "passkeySecuritySummary": {
             "$ref": "#/components/schemas/PasskeySecuritySummaryResponse"
-          }
-        }
-      },
-      "PasskeySignupOptionsRequest": {
-        "type": "object",
-        "description": "Passkey first-time signup options request",
-        "properties": {
-          "origin": {
-            "type": "string",
-            "description": "Browser origin. Backend also accepts the Origin header.",
-            "example": "https://redandan.github.io"
-          },
-          "username": {
-            "type": "string",
-            "description": "Optional username. Backend generates one when omitted.",
-            "example": "redan",
-            "maxLength": 20,
-            "minLength": 3
-          },
-          "email": {
-            "type": "string",
-            "description": "Optional email attached to the newly created account.",
-            "example": "user@example.com"
-          },
-          "displayName": {
-            "type": "string",
-            "description": "Optional display name used in the WebAuthn prompt.",
-            "example": "Redan",
-            "maxLength": 120,
-            "minLength": 0
-          },
-          "promoCode": {
-            "type": "string",
-            "description": "Optional promo code.",
-            "maxLength": 50,
-            "minLength": 0
-          },
-          "referrer": {
-            "type": "string",
-            "description": "Optional source page URL for traffic attribution.",
-            "maxLength": 500,
-            "minLength": 0
-          }
-        }
-      },
-      "PasskeyOptionsResponse": {
-        "type": "object",
-        "description": "Passkey WebAuthn options response",
-        "properties": {
-          "requestId": {
-            "type": "string",
-            "description": "Opaque request id to send back to verify.",
-            "example": "c1c46e59-9810-4b6e-8d13-dccf2a8cbf3c"
-          },
-          "rpId": {
-            "type": "string",
-            "description": "Selected relying party id.",
-            "example": "purrtechllc.com"
-          },
-          "origin": {
-            "type": "string",
-            "description": "Matched browser origin.",
-            "example": "https://agoramarket.purrtechllc.com"
-          },
-          "publicKey": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "JSON object passed as publicKey options to WebAuthn JS."
-          },
-          "discoverableCredentialLogin": {
-            "type": "boolean",
-            "description": "Whether options are for username-less discoverable credential login.",
-            "example": true
-          },
-          "allowCredentialsEmpty": {
-            "type": "boolean",
-            "description": "Whether allowCredentials is deliberately empty/omitted for account-less passkey selection.",
-            "example": true
-          },
-          "residentKeyRequirement": {
-            "type": "string",
-            "description": "Effective residentKey requirement for registration options.",
-            "example": "required"
-          },
-          "userVerificationRequirement": {
-            "type": "string",
-            "description": "Effective userVerification requirement.",
-            "example": "required"
           }
         }
       },
@@ -52233,6 +56710,16 @@
             "type": "string",
             "description": "Optional username hint for non-discoverable login flows.",
             "example": "user123"
+          }
+        }
+      },
+      "RegistrationRequest": {
+        "type": "object",
+        "properties": {
+          "credentialName": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 0
           }
         }
       },
@@ -52291,6 +56778,11 @@
             "description": "临时token ID（从回调URL中获取）",
             "example": "abc123xyz",
             "minLength": 1
+          },
+          "twoFactorCode": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 0
           }
         },
         "required": [
@@ -52423,40 +56915,6 @@
           }
         }
       },
-      "LoginParam": {
-        "type": "object",
-        "description": "登入參數",
-        "properties": {
-          "username": {
-            "type": "string",
-            "description": "用戶名（用於傳統登入）"
-          },
-          "password": {
-            "type": "string",
-            "description": "密碼（用於傳統登入）"
-          },
-          "email": {
-            "type": "string",
-            "description": "郵箱（用於郵箱驗證碼登入）"
-          },
-          "verificationCode": {
-            "type": "string",
-            "description": "驗證碼（用於郵箱驗證碼登入）"
-          },
-          "rememberMe": {
-            "type": "boolean",
-            "description": "記住我"
-          },
-          "twoFactorCode": {
-            "type": "string",
-            "description": "雙因素認證碼"
-          },
-          "turnstileToken": {
-            "type": "string",
-            "description": "Cloudflare Turnstile 驗證 Token（可選）"
-          }
-        }
-      },
       "EmailLoginRequest": {
         "type": "object",
         "description": "郵箱登入請求",
@@ -52472,6 +56930,10 @@
             "description": "驗證碼",
             "example": 123456,
             "minLength": 1
+          },
+          "twoFactorCode": {
+            "type": "string",
+            "description": "帳號已啟用雙因素認證時必填的驗證碼"
           }
         },
         "required": [
@@ -52521,29 +56983,41 @@
           }
         }
       },
-      "ChangePasswordParam": {
+      "EmailChangeRequest": {
         "type": "object",
-        "description": "修改/設置密碼參數",
         "properties": {
-          "oldPassword": {
+          "purpose": {
             "type": "string",
-            "description": "舊密碼（如果用戶已有密碼則必填，如果沒有密碼則可選）"
+            "minLength": 1,
+            "pattern": "bind-email|verify-email"
           },
-          "newPassword": {
-            "type": "string",
-            "description": "新密碼",
-            "maxLength": 128,
-            "minLength": 8
+          "target": {
+            "$ref": "#/components/schemas/WebSessionLoginMethodAction"
           },
-          "confirmNewPassword": {
+          "verificationCode": {
             "type": "string",
-            "description": "確認新密碼",
-            "minLength": 1
+            "maxLength": 32,
+            "minLength": 0
           }
         },
         "required": [
-          "confirmNewPassword",
-          "newPassword"
+          "target"
+        ]
+      },
+      "EmailCodeRequest": {
+        "type": "object",
+        "properties": {
+          "purpose": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "bind-email|verify-email"
+          },
+          "target": {
+            "$ref": "#/components/schemas/WebSessionLoginMethodAction"
+          }
+        },
+        "required": [
+          "target"
         ]
       },
       "BindOAuthParam": {
@@ -60092,12 +64566,12 @@
           "minimumAmount": {
             "type": "number",
             "maximum": 999999999.99,
-            "minimum": 10.00
+            "minimum": 10.0
           },
           "fee": {
             "type": "number",
             "maximum": 999999999.99,
-            "minimum": 0.00
+            "minimum": 0.0
           },
           "amountScale": {
             "type": "integer",
@@ -60154,7 +64628,7 @@
           "fee": {
             "type": "number",
             "maximum": 999999999.99,
-            "minimum": 0.00
+            "minimum": 0.0
           },
           "totalDebit": {
             "type": "number",
@@ -64768,6 +69242,51 @@
           }
         }
       },
+      "CreatorSubscriptionAccessResponse": {
+        "type": "object",
+        "description": "創作者訂閱權限狀態",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "buyerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "hasAccess": {
+            "type": "boolean"
+          },
+          "validUntil": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Quote": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "string"
+          },
+          "amountUsdt": {
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "durationDays": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "quoteRevision": {
+            "type": "string"
+          },
+          "access": {
+            "$ref": "#/components/schemas/CreatorSubscriptionAccessResponse"
+          }
+        }
+      },
       "CreatorSubscriptionEntryResponse": {
         "type": "object",
         "description": "創作者訂閱入口回應",
@@ -64815,27 +69334,6 @@
               "DOWNLOAD",
               "ARTICLE_ONLY"
             ]
-          }
-        }
-      },
-      "CreatorSubscriptionAccessResponse": {
-        "type": "object",
-        "description": "創作者訂閱權限狀態",
-        "properties": {
-          "productId": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "buyerId": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "hasAccess": {
-            "type": "boolean"
-          },
-          "validUntil": {
-            "type": "string",
-            "format": "date-time"
           }
         }
       },
@@ -66022,6 +70520,9 @@
           "title": {
             "type": "string"
           },
+          "description": {
+            "type": "string"
+          },
           "status": {
             "type": "string",
             "enum": [
@@ -66295,6 +70796,163 @@
           }
         }
       },
+      "ContextView": {
+        "type": "object",
+        "properties": {
+          "context": {
+            "$ref": "#/components/schemas/Context"
+          },
+          "confirmationCsrf": {
+            "type": "string"
+          },
+          "commandCsrf": {
+            "type": "string"
+          }
+        }
+      },
+      "Preparation": {
+        "type": "object",
+        "properties": {
+          "context": {
+            "$ref": "#/components/schemas/Preparation"
+          },
+          "retirementCsrf": {
+            "type": "string"
+          }
+        }
+      },
+      "Result": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "type": "string"
+          },
+          "protocolCookieCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unresolvedCookieCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "candidates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Candidate"
+            }
+          },
+          "serverTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Device": {
+        "type": "object",
+        "properties": {
+          "sessionId": {
+            "type": "string"
+          },
+          "deviceLabel": {
+            "type": "string"
+          },
+          "current": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastInteractiveAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "idleExpiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "absoluteExpiresAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "DeliveryBootstrap": {
+        "type": "object",
+        "properties": {
+          "contextId": {
+            "type": "string"
+          },
+          "mutationId": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "confirmationCsrf": {
+            "type": "string"
+          },
+          "sessionCsrf": {
+            "type": "string"
+          },
+          "cleanupCsrf": {
+            "type": "string"
+          },
+          "serverTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Capabilities": {
+        "type": "object",
+        "properties": {
+          "webSessionVersion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "creationEnabled": {
+            "type": "boolean"
+          },
+          "migrationEnabled": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ContextBootstrap": {
+        "type": "object",
+        "properties": {
+          "contextId": {
+            "type": "string"
+          },
+          "generation": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "confirmed": {
+            "type": "boolean"
+          },
+          "currentMutationId": {
+            "type": "string"
+          },
+          "pendingMutationId": {
+            "type": "string"
+          },
+          "confirmationCsrf": {
+            "type": "string"
+          },
+          "mutationCsrf": {
+            "type": "string"
+          },
+          "serverTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "capabilities": {
+            "$ref": "#/components/schemas/Capabilities"
+          }
+        }
+      },
       "PasskeyCredentialResponse": {
         "type": "object",
         "description": "Registered passkey credential",
@@ -66528,6 +71186,50 @@
             "type": "string",
             "format": "date-time",
             "description": "綁定時間"
+          }
+        }
+      },
+      "BindingTarget": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "provider": {
+            "type": "string",
+            "description": "OAuth第三方登录提供商",
+            "enum": [
+              "GOOGLE",
+              "FACEBOOK",
+              "TELEGRAM_BOT",
+              "WALLET_CONNECT",
+              "TRON"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "boundAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Overview": {
+        "type": "object",
+        "properties": {
+          "bindings": {
+            "$ref": "#/components/schemas/LoginBindingsResponse"
+          },
+          "email": {
+            "type": "string"
+          },
+          "targets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BindingTarget"
+            }
           }
         }
       },
@@ -69733,6 +74435,145 @@
             "type": "string",
             "format": "date-time",
             "description": "操作時間"
+          }
+        }
+      },
+      "ApiResponseFileUploadResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/FileUploadResponse"
+          }
+        }
+      },
+      "FileUploadResponse": {
+        "type": "object",
+        "description": "文件上传响应",
+        "properties": {
+          "originalFileName": {
+            "type": "string",
+            "description": "原始文件名",
+            "example": "product_image.jpg"
+          },
+          "objectName": {
+            "type": "string",
+            "description": "存储的文件名（按规则生成）",
+            "example": "PRODUCT_1_1703123456789.jpg"
+          },
+          "fileSize": {
+            "type": "integer",
+            "format": "int64",
+            "description": "文件大小（字节）",
+            "example": 1024000
+          },
+          "fileUrl": {
+            "type": "string",
+            "description": "文件访问URL",
+            "example": "https://your-bucket.com/PRODUCT_1_1703123456789.jpg"
+          },
+          "contentType": {
+            "type": "string",
+            "description": "文件类型",
+            "example": "image/jpeg"
+          },
+          "businessType": {
+            "type": "string",
+            "description": "业务类型",
+            "example": "PRODUCT"
+          },
+          "uploaderId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "上传者ID",
+            "example": 1
+          },
+          "uploaderName": {
+            "type": "string",
+            "description": "上传者名称",
+            "example": "张三"
+          },
+          "uploadTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "上传时间"
+          },
+          "fileExtension": {
+            "type": "string",
+            "description": "文件扩展名",
+            "example": ".jpg"
+          },
+          "isPublic": {
+            "type": "boolean",
+            "description": "文件是否公开",
+            "example": true
+          },
+          "fileId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "文件记录ID",
+            "example": 123
+          },
+          "mediaType": {
+            "type": "string",
+            "description": "媒體類型",
+            "example": "IMAGE"
+          },
+          "originalWidth": {
+            "type": "integer",
+            "format": "int32",
+            "description": "原始圖片寬度",
+            "example": 3024
+          },
+          "originalHeight": {
+            "type": "integer",
+            "format": "int32",
+            "description": "原始圖片高度",
+            "example": 4032
+          },
+          "optimizedWidth": {
+            "type": "integer",
+            "format": "int32",
+            "description": "壓縮後圖片寬度",
+            "example": 540
+          },
+          "optimizedHeight": {
+            "type": "integer",
+            "format": "int32",
+            "description": "壓縮後圖片高度",
+            "example": 720
+          },
+          "optimizedSize": {
+            "type": "integer",
+            "format": "int64",
+            "description": "壓縮後檔案大小",
+            "example": 153600
+          },
+          "processingStatus": {
+            "type": "string",
+            "description": "媒體處理狀態",
+            "example": "READY"
+          },
+          "isImage": {
+            "type": "boolean",
+            "description": "是否为图片文件"
+          },
+          "isDocument": {
+            "type": "boolean",
+            "description": "是否为文档文件"
+          },
+          "fileSizeFormatted": {
+            "type": "string",
+            "description": "文件大小（人类可读格式）",
+            "example": 1.0
           }
         }
       }

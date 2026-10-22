@@ -16,6 +16,53 @@ class TelegramWebappAuthApi {
 
   final ApiClient apiClient;
 
+  /// Performs an HTTP 'POST /auth/telegram-webapp/exchange-jwt/second-factor' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [Request] request (required):
+  Future<Response> completeSecondFactor1WithHttpInfo(Request request,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/telegram-webapp/exchange-jwt/second-factor';
+
+    // ignore: prefer_final_locals
+    Object? postBody = request;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [Request] request (required):
+  Future<LoginResult?> completeSecondFactor1(Request request,) async {
+    final response = await completeSecondFactor1WithHttpInfo(request,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => LoginResult.fromJson(value)) as LoginResult;
+    
+    }
+    return null;
+  }
+
   /// Telegram WebApp 交換 JWT
   ///
   /// TG WebApp 直連後端：提交 initData，完成驗簽並返回 JWT。

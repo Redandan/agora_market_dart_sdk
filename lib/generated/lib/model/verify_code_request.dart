@@ -15,6 +15,7 @@ class VerifyCodeRequest {
   VerifyCodeRequest({
     this.loginToken,
     this.verificationCode,
+    this.twoFactorCode,
   });
 
   ///
@@ -33,19 +34,29 @@ class VerifyCodeRequest {
   ///
   String? verificationCode;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? twoFactorCode;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is VerifyCodeRequest &&
     other.loginToken == loginToken &&
-    other.verificationCode == verificationCode;
+    other.verificationCode == verificationCode &&
+    other.twoFactorCode == twoFactorCode;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (loginToken == null ? 0 : loginToken!.hashCode) +
-    (verificationCode == null ? 0 : verificationCode!.hashCode);
+    (verificationCode == null ? 0 : verificationCode!.hashCode) +
+    (twoFactorCode == null ? 0 : twoFactorCode!.hashCode);
 
   @override
-  String toString() => 'VerifyCodeRequest[loginToken=$loginToken, verificationCode=$verificationCode]';
+  String toString() => 'VerifyCodeRequest[loginToken=$loginToken, verificationCode=$verificationCode, twoFactorCode=$twoFactorCode]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -58,6 +69,11 @@ class VerifyCodeRequest {
       json[r'verificationCode'] = this.verificationCode;
     } else {
       json[r'verificationCode'] = null;
+    }
+    if (this.twoFactorCode != null) {
+      json[r'twoFactorCode'] = this.twoFactorCode;
+    } else {
+      json[r'twoFactorCode'] = null;
     }
     return json;
   }
@@ -83,6 +99,7 @@ class VerifyCodeRequest {
       return VerifyCodeRequest(
         loginToken: mapValueOfType<String>(json, r'loginToken'),
         verificationCode: mapValueOfType<String>(json, r'verificationCode'),
+        twoFactorCode: mapValueOfType<String>(json, r'twoFactorCode'),
       );
     }
     return null;

@@ -290,7 +290,7 @@ class CurrentPartnerV2ControllerApi {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<Response> operation5WithHttpInfo(String operationId,) async {
+  Future<Response> operation6WithHttpInfo(String operationId,) async {
     // ignore: prefer_const_declarations
     final path = r'/community-partners/me/v2/operations/{operationId}'
       .replaceAll('{operationId}', operationId);
@@ -321,8 +321,8 @@ class CurrentPartnerV2ControllerApi {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<CurrentPartnerOperationReceiptResponse?> operation5(String operationId,) async {
-    final response = await operation5WithHttpInfo(operationId,);
+  Future<CurrentPartnerOperationReceiptResponse?> operation6(String operationId,) async {
+    final response = await operation6WithHttpInfo(operationId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

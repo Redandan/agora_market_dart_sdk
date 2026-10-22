@@ -16,27 +16,21 @@ class WebrtcApi {
 
   final ApiClient apiClient;
 
-  /// 掛斷 WebRTC 通話
-  ///
-  /// 掛斷通話並通過 SSE 通知對方
+  /// Update the app to use call protocol 2
   ///
   /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [WebRTCHangupDto] webRTCHangupDto (required):
-  Future<Response> hangupCallWithHttpInfo(WebRTCHangupDto webRTCHangupDto,) async {
+  Future<Response> retiredWithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/webrtc/hangup';
 
     // ignore: prefer_final_locals
-    Object? postBody = webRTCHangupDto;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>['application/json'];
+    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -50,15 +44,9 @@ class WebrtcApi {
     );
   }
 
-  /// 掛斷 WebRTC 通話
-  ///
-  /// 掛斷通話並通過 SSE 通知對方
-  ///
-  /// Parameters:
-  ///
-  /// * [WebRTCHangupDto] webRTCHangupDto (required):
-  Future<WebRTCHangupResponseDto?> hangupCall(WebRTCHangupDto webRTCHangupDto,) async {
-    final response = await hangupCallWithHttpInfo(webRTCHangupDto,);
+  /// Update the app to use call protocol 2
+  Future<Map<String, Object>?> retired() async {
+    final response = await retiredWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -66,89 +54,27 @@ class WebrtcApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => WebRTCHangupResponseDto.fromJson(value)) as WebRTCHangupResponseDto;
-    
+      return Map<String, Object>.from(await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ApiClient.decodeGeneratedMap(value, (dynamic item) => item)),);
+
     }
     return null;
   }
 
-  /// 發送 WebRTC Answer
-  ///
-  /// 發送 WebRTC Answer 信令給指定用戶
+  /// Update the app to use call protocol 2
   ///
   /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [WebRTCAnswerDto] webRTCAnswerDto (required):
-  Future<Response> sendAnswerWithHttpInfo(WebRTCAnswerDto webRTCAnswerDto,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/webrtc/answer';
-
-    // ignore: prefer_final_locals
-    Object? postBody = webRTCAnswerDto;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// 發送 WebRTC Answer
-  ///
-  /// 發送 WebRTC Answer 信令給指定用戶
-  ///
-  /// Parameters:
-  ///
-  /// * [WebRTCAnswerDto] webRTCAnswerDto (required):
-  Future<WebRTCAnswerResponseDto?> sendAnswer(WebRTCAnswerDto webRTCAnswerDto,) async {
-    final response = await sendAnswerWithHttpInfo(webRTCAnswerDto,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => WebRTCAnswerResponseDto.fromJson(value)) as WebRTCAnswerResponseDto;
-    
-    }
-    return null;
-  }
-
-  /// 發送 WebRTC ICE Candidate
-  ///
-  /// 發送 WebRTC ICE Candidate 信令給指定用戶
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [WebRTCIceCandidateDto] webRTCIceCandidateDto (required):
-  Future<Response> sendIceCandidateWithHttpInfo(WebRTCIceCandidateDto webRTCIceCandidateDto,) async {
+  Future<Response> retired1WithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/webrtc/ice-candidate';
 
     // ignore: prefer_final_locals
-    Object? postBody = webRTCIceCandidateDto;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>['application/json'];
+    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -162,15 +88,9 @@ class WebrtcApi {
     );
   }
 
-  /// 發送 WebRTC ICE Candidate
-  ///
-  /// 發送 WebRTC ICE Candidate 信令給指定用戶
-  ///
-  /// Parameters:
-  ///
-  /// * [WebRTCIceCandidateDto] webRTCIceCandidateDto (required):
-  Future<WebRTCIceCandidateResponseDto?> sendIceCandidate(WebRTCIceCandidateDto webRTCIceCandidateDto,) async {
-    final response = await sendIceCandidateWithHttpInfo(webRTCIceCandidateDto,);
+  /// Update the app to use call protocol 2
+  Future<Map<String, Object>?> retired1() async {
+    final response = await retired1WithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -178,33 +98,27 @@ class WebrtcApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => WebRTCIceCandidateResponseDto.fromJson(value)) as WebRTCIceCandidateResponseDto;
-    
+      return Map<String, Object>.from(await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ApiClient.decodeGeneratedMap(value, (dynamic item) => item)),);
+
     }
     return null;
   }
 
-  /// 發送 WebRTC Offer
-  ///
-  /// 發送 WebRTC Offer 信令給指定用戶
+  /// Update the app to use call protocol 2
   ///
   /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [WebRTCOfferDto] webRTCOfferDto (required):
-  Future<Response> sendOfferWithHttpInfo(WebRTCOfferDto webRTCOfferDto,) async {
+  Future<Response> retired2WithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/webrtc/offer';
+    final path = r'/webrtc/answer';
 
     // ignore: prefer_final_locals
-    Object? postBody = webRTCOfferDto;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>['application/json'];
+    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -218,15 +132,9 @@ class WebrtcApi {
     );
   }
 
-  /// 發送 WebRTC Offer
-  ///
-  /// 發送 WebRTC Offer 信令給指定用戶
-  ///
-  /// Parameters:
-  ///
-  /// * [WebRTCOfferDto] webRTCOfferDto (required):
-  Future<WebRTCOfferResponseDto?> sendOffer(WebRTCOfferDto webRTCOfferDto,) async {
-    final response = await sendOfferWithHttpInfo(webRTCOfferDto,);
+  /// Update the app to use call protocol 2
+  Future<Map<String, Object>?> retired2() async {
+    final response = await retired2WithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -234,8 +142,52 @@ class WebrtcApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => WebRTCOfferResponseDto.fromJson(value)) as WebRTCOfferResponseDto;
-    
+      return Map<String, Object>.from(await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ApiClient.decodeGeneratedMap(value, (dynamic item) => item)),);
+
+    }
+    return null;
+  }
+
+  /// Update the app to use call protocol 2
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> retired3WithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/webrtc/offer';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Update the app to use call protocol 2
+  Future<Map<String, Object>?> retired3() async {
+    final response = await retired3WithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return Map<String, Object>.from(await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ApiClient.decodeGeneratedMap(value, (dynamic item) => item)),);
+
     }
     return null;
   }

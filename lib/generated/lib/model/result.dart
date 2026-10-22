@@ -10,98 +10,100 @@
 
 part of openapi.api;
 
-class WebRTCResponseDto {
-  /// Returns a new [WebRTCResponseDto] instance.
-  WebRTCResponseDto({
-    this.success,
-    this.message,
-    this.errorCode,
-    this.timestamp,
+class Result {
+  /// Returns a new [Result] instance.
+  Result({
+    this.state,
+    this.protocolCookieCount,
+    this.unresolvedCookieCount,
+    this.candidates = const [],
+    this.serverTime,
   });
 
-  /// 操作是否成功
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? success;
+  String? state;
 
-  /// 響應訊息
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? message;
+  int? protocolCookieCount;
 
-  /// 錯誤代碼（失敗時）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? errorCode;
+  int? unresolvedCookieCount;
 
-  /// 時間戳
+  List<Candidate> candidates;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? timestamp;
+  DateTime? serverTime;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is WebRTCResponseDto &&
-    other.success == success &&
-    other.message == message &&
-    other.errorCode == errorCode &&
-    other.timestamp == timestamp;
+  bool operator ==(Object other) => identical(this, other) || other is Result &&
+    other.state == state &&
+    other.protocolCookieCount == protocolCookieCount &&
+    other.unresolvedCookieCount == unresolvedCookieCount &&
+    _deepEquality.equals(other.candidates, candidates) &&
+    other.serverTime == serverTime;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (success == null ? 0 : success!.hashCode) +
-    (message == null ? 0 : message!.hashCode) +
-    (errorCode == null ? 0 : errorCode!.hashCode) +
-    (timestamp == null ? 0 : timestamp!.hashCode);
+    (state == null ? 0 : state!.hashCode) +
+    (protocolCookieCount == null ? 0 : protocolCookieCount!.hashCode) +
+    (unresolvedCookieCount == null ? 0 : unresolvedCookieCount!.hashCode) +
+    (candidates.hashCode) +
+    (serverTime == null ? 0 : serverTime!.hashCode);
 
   @override
-  String toString() => 'WebRTCResponseDto[success=$success, message=$message, errorCode=$errorCode, timestamp=$timestamp]';
+  String toString() => 'Result[state=$state, protocolCookieCount=$protocolCookieCount, unresolvedCookieCount=$unresolvedCookieCount, candidates=$candidates, serverTime=$serverTime]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.success != null) {
-      json[r'success'] = this.success;
+    if (this.state != null) {
+      json[r'state'] = this.state;
     } else {
-      json[r'success'] = null;
+      json[r'state'] = null;
     }
-    if (this.message != null) {
-      json[r'message'] = this.message;
+    if (this.protocolCookieCount != null) {
+      json[r'protocolCookieCount'] = this.protocolCookieCount;
     } else {
-      json[r'message'] = null;
+      json[r'protocolCookieCount'] = null;
     }
-    if (this.errorCode != null) {
-      json[r'errorCode'] = this.errorCode;
+    if (this.unresolvedCookieCount != null) {
+      json[r'unresolvedCookieCount'] = this.unresolvedCookieCount;
     } else {
-      json[r'errorCode'] = null;
+      json[r'unresolvedCookieCount'] = null;
     }
-    if (this.timestamp != null) {
-      json[r'timestamp'] = this.timestamp;
+      json[r'candidates'] = this.candidates.map((e) => e.toJson()).toList();
+    if (this.serverTime != null) {
+      json[r'serverTime'] = this.serverTime!.toUtc().toIso8601String();
     } else {
-      json[r'timestamp'] = null;
+      json[r'serverTime'] = null;
     }
     return json;
   }
 
-  /// Returns a new [WebRTCResponseDto] instance and imports its values from
+  /// Returns a new [Result] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static WebRTCResponseDto? fromJson(dynamic value) {
+  static Result? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -110,27 +112,28 @@ class WebRTCResponseDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "WebRTCResponseDto[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "WebRTCResponseDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "Result[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "Result[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return WebRTCResponseDto(
-        success: mapValueOfType<bool>(json, r'success'),
-        message: mapValueOfType<String>(json, r'message'),
-        errorCode: mapValueOfType<String>(json, r'errorCode'),
-        timestamp: mapValueOfType<String>(json, r'timestamp'),
+      return Result(
+        state: mapValueOfType<String>(json, r'state'),
+        protocolCookieCount: mapValueOfType<int>(json, r'protocolCookieCount'),
+        unresolvedCookieCount: mapValueOfType<int>(json, r'unresolvedCookieCount'),
+        candidates: Candidate.listFromJson(json[r'candidates']),
+        serverTime: mapDateTime(json, r'serverTime', r''),
       );
     }
     return null;
   }
 
-  static List<WebRTCResponseDto> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <WebRTCResponseDto>[];
+  static List<Result> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <Result>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = WebRTCResponseDto.fromJson(row);
+        final value = Result.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -139,12 +142,12 @@ class WebRTCResponseDto {
     return result.toList(growable: growable);
   }
 
-  static Map<String, WebRTCResponseDto> mapFromJson(dynamic json) {
-    final map = <String, WebRTCResponseDto>{};
+  static Map<String, Result> mapFromJson(dynamic json) {
+    final map = <String, Result>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = WebRTCResponseDto.fromJson(entry.value);
+        final value = Result.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -153,14 +156,14 @@ class WebRTCResponseDto {
     return map;
   }
 
-  // maps a json object with a list of WebRTCResponseDto-objects as value to a dart map
-  static Map<String, List<WebRTCResponseDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<WebRTCResponseDto>>{};
+  // maps a json object with a list of Result-objects as value to a dart map
+  static Map<String, List<Result>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<Result>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = WebRTCResponseDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = Result.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

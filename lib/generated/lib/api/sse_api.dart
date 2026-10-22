@@ -74,7 +74,9 @@ class SseApi {
   ///
   /// * [String] clientId (required):
   ///   客戶端ID
-  Future<Response> connectWithHttpInfo(String clientId,) async {
+  ///
+  /// * [int] callProtocol:
+  Future<Response> connectWithHttpInfo(String clientId, { int? callProtocol, }) async {
     // ignore: prefer_const_declarations
     final path = r'/sse/connect/{clientId}'
       .replaceAll('{clientId}', clientId);
@@ -85,6 +87,10 @@ class SseApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+    if (callProtocol != null) {
+      queryParams.addAll(_queryParams('', 'callProtocol', callProtocol));
+    }
 
     const contentTypes = <String>[];
 
@@ -108,8 +114,10 @@ class SseApi {
   ///
   /// * [String] clientId (required):
   ///   客戶端ID
-  Future<void> connect(String clientId,) async {
-    final response = await connectWithHttpInfo(clientId,);
+  ///
+  /// * [int] callProtocol:
+  Future<void> connect(String clientId, { int? callProtocol, }) async {
+    final response = await connectWithHttpInfo(clientId,  callProtocol: callProtocol, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

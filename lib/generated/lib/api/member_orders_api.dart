@@ -321,7 +321,7 @@ class MemberOrdersApi {
 
   /// 提交購物車多店鋪結帳
   ///
-  /// 後端重新分組 selected cart items，all-or-nothing 為每個可提交 group 建立獨立訂單。V2 應提供 Idempotency-Key；未提供時保留舊版 Flutter 行為。
+  /// 後端重新分組 selected cart items，all-or-nothing 為每個可提交 group 建立獨立訂單。Web Session V2 必須提供 Idempotency-Key；legacy 登入未提供時保留舊版 Flutter 行為。
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -362,7 +362,7 @@ class MemberOrdersApi {
 
   /// 提交購物車多店鋪結帳
   ///
-  /// 後端重新分組 selected cart items，all-or-nothing 為每個可提交 group 建立獨立訂單。V2 應提供 Idempotency-Key；未提供時保留舊版 Flutter 行為。
+  /// 後端重新分組 selected cart items，all-or-nothing 為每個可提交 group 建立獨立訂單。Web Session V2 必須提供 Idempotency-Key；legacy 登入未提供時保留舊版 Flutter 行為。
   ///
   /// Parameters:
   ///

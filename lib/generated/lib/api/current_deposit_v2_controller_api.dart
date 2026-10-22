@@ -137,7 +137,7 @@ class CurrentDepositV2ControllerApi {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<Response> operation2WithHttpInfo(String operationId,) async {
+  Future<Response> operation3WithHttpInfo(String operationId,) async {
     // ignore: prefer_const_declarations
     final path = r'/wallet/me/v2/deposits/operations/{operationId}'
       .replaceAll('{operationId}', operationId);
@@ -168,8 +168,8 @@ class CurrentDepositV2ControllerApi {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<CurrentDepositV2OperationReceiptResponse?> operation2(String operationId,) async {
-    final response = await operation2WithHttpInfo(operationId,);
+  Future<CurrentDepositV2OperationReceiptResponse?> operation3(String operationId,) async {
+    final response = await operation3WithHttpInfo(operationId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

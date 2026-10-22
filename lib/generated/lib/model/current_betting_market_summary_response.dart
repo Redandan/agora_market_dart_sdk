@@ -15,6 +15,7 @@ class CurrentBettingMarketSummaryResponse {
   CurrentBettingMarketSummaryResponse({
     required this.marketId,
     required this.title,
+    this.description,
     required this.status,
     required this.totalPool,
     required this.minBetAmount,
@@ -29,6 +30,14 @@ class CurrentBettingMarketSummaryResponse {
   int marketId;
 
   String title;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? description;
 
   CurrentBettingMarketSummaryResponseStatusEnum status;
 
@@ -64,6 +73,7 @@ class CurrentBettingMarketSummaryResponse {
   bool operator ==(Object other) => identical(this, other) || other is CurrentBettingMarketSummaryResponse &&
     other.marketId == marketId &&
     other.title == title &&
+    other.description == description &&
     other.status == status &&
     other.totalPool == totalPool &&
     other.minBetAmount == minBetAmount &&
@@ -79,6 +89,7 @@ class CurrentBettingMarketSummaryResponse {
     // ignore: unnecessary_parenthesis
     (marketId.hashCode) +
     (title.hashCode) +
+    (description == null ? 0 : description!.hashCode) +
     (status.hashCode) +
     (totalPool.hashCode) +
     (minBetAmount.hashCode) +
@@ -90,12 +101,17 @@ class CurrentBettingMarketSummaryResponse {
     (participantCount.hashCode);
 
   @override
-  String toString() => 'CurrentBettingMarketSummaryResponse[marketId=$marketId, title=$title, status=$status, totalPool=$totalPool, minBetAmount=$minBetAmount, maxBetAmount=$maxBetAmount, startAt=$startAt, endAt=$endAt, category=$category, featured=$featured, participantCount=$participantCount]';
+  String toString() => 'CurrentBettingMarketSummaryResponse[marketId=$marketId, title=$title, description=$description, status=$status, totalPool=$totalPool, minBetAmount=$minBetAmount, maxBetAmount=$maxBetAmount, startAt=$startAt, endAt=$endAt, category=$category, featured=$featured, participantCount=$participantCount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'marketId'] = this.marketId;
       json[r'title'] = this.title;
+    if (this.description != null) {
+      json[r'description'] = this.description;
+    } else {
+      json[r'description'] = null;
+    }
       json[r'status'] = this.status;
       json[r'totalPool'] = this.totalPool;
       json[r'minBetAmount'] = this.minBetAmount;
@@ -137,6 +153,7 @@ class CurrentBettingMarketSummaryResponse {
       return CurrentBettingMarketSummaryResponse(
         marketId: mapValueOfType<int>(json, r'marketId')!,
         title: mapValueOfType<String>(json, r'title')!,
+        description: mapValueOfType<String>(json, r'description'),
         status: CurrentBettingMarketSummaryResponseStatusEnum.fromJson(json[r'status'])!,
         totalPool: num.parse('${json[r'totalPool']}'),
         minBetAmount: num.parse('${json[r'minBetAmount']}'),

@@ -127,7 +127,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**removeCartItem**](doc//DefaultApi.md#removecartitem) | **DELETE** /cart/admin/item/{cartItemId} | 刪除指定購物車項目
 *DefaultApi* | [**removeFromCart**](doc//DefaultApi.md#removefromcart) | **DELETE** /cart/{cartItemId} | 從購物車移除商品
 *DefaultApi* | [**replyIssue**](doc//DefaultApi.md#replyissue) | **POST** /customer-issues/{issueId}/reply | 回覆客戶問題
-*DefaultApi* | [**resolve2**](doc//DefaultApi.md#resolve2) | **POST** /admin/reports/{reportId}/resolve | admin 結案檢舉
+*DefaultApi* | [**resolve3**](doc//DefaultApi.md#resolve3) | **POST** /admin/reports/{reportId}/resolve | admin 結案檢舉
 *DefaultApi* | [**searchCarts**](doc//DefaultApi.md#searchcarts) | **POST** /cart/admin/search | 搜索購物車
 *DefaultApi* | [**searchIssues**](doc//DefaultApi.md#searchissues) | **POST** /customer-issues/search | 管理員搜尋客戶問題記錄
 *DefaultApi* | [**searchPosts**](doc//DefaultApi.md#searchposts) | **GET** /posts/search | 搜索貼文
@@ -156,11 +156,11 @@ Class | Method | HTTP request | Description
 *AdminAiControllerApi* | [**getConversionStats**](doc//AdminAiControllerApi.md#getconversionstats) | **GET** /admin/ai/conversion/stats | 查詢 AI 群組對話轉化效率統計（可按群組 + 日期區間篩選）
 *AdminAiControllerApi* | [**getStats2**](doc//AdminAiControllerApi.md#getstats2) | **GET** /admin/ai/stats | 
 *AdminBettingV2ControllerApi* | [**cancel1**](doc//AdminBettingV2ControllerApi.md#cancel1) | **PUT** /admin/betting-markets/v2/{marketId}/cancel/operations/{operationId} | Cancel one ADMIN betting market and refund atomically with exact replay
-*AdminBettingV2ControllerApi* | [**capabilities8**](doc//AdminBettingV2ControllerApi.md#capabilities8) | **GET** /admin/betting-markets/v2/capabilities | Read fail-closed ADMIN betting capabilities
+*AdminBettingV2ControllerApi* | [**capabilities9**](doc//AdminBettingV2ControllerApi.md#capabilities9) | **GET** /admin/betting-markets/v2/capabilities | Read fail-closed ADMIN betting capabilities
 *AdminBettingV2ControllerApi* | [**close**](doc//AdminBettingV2ControllerApi.md#close) | **PUT** /admin/betting-markets/v2/{marketId}/close/operations/{operationId} | Close one ADMIN betting market with exact replay and receipt recovery
 *AdminBettingV2ControllerApi* | [**create2**](doc//AdminBettingV2ControllerApi.md#create2) | **PUT** /admin/betting-markets/v2/create/operations/{operationId} | Create one ADMIN betting market with exact replay and receipt recovery
 *AdminBettingV2ControllerApi* | [**detail1**](doc//AdminBettingV2ControllerApi.md#detail1) | **GET** /admin/betting-markets/v2/{marketId} | Read identity-minimized ADMIN betting market detail
-*AdminBettingV2ControllerApi* | [**operation11**](doc//AdminBettingV2ControllerApi.md#operation11) | **GET** /admin/betting-markets/v2/operations/{operationId} | Read one owned durable ADMIN betting operation receipt
+*AdminBettingV2ControllerApi* | [**operation12**](doc//AdminBettingV2ControllerApi.md#operation12) | **GET** /admin/betting-markets/v2/operations/{operationId} | Read one owned durable ADMIN betting operation receipt
 *AdminBettingV2ControllerApi* | [**resolve1**](doc//AdminBettingV2ControllerApi.md#resolve1) | **PUT** /admin/betting-markets/v2/{marketId}/resolve/operations/{operationId} | Resolve one ADMIN betting market atomically with exact replay
 *AdminBettingV2ControllerApi* | [**search4**](doc//AdminBettingV2ControllerApi.md#search4) | **POST** /admin/betting-markets/v2/search | Search fixed-size identity-minimized ADMIN betting markets
 *AdminBotControllerApi* | [**refreshBotCommands**](doc//AdminBotControllerApi.md#refreshbotcommands) | **POST** /admin/bot/refresh-commands | 
@@ -201,7 +201,7 @@ Class | Method | HTTP request | Description
 *AdminKnowledgeV2ControllerApi* | [**create1**](doc//AdminKnowledgeV2ControllerApi.md#create1) | **PUT** /admin/knowledge/v2/documents | Create or safely resume one deterministic knowledge document
 *AdminKnowledgeV2ControllerApi* | [**delete**](doc//AdminKnowledgeV2ControllerApi.md#delete) | **PUT** /admin/knowledge/v2/documents/{documentId}/deletion | Delete one expected-version knowledge document with durable recovery
 *AdminKnowledgeV2ControllerApi* | [**ignore**](doc//AdminKnowledgeV2ControllerApi.md#ignore) | **PUT** /admin/knowledge/v2/pending/{questionId}/ignore | Ignore one claimed pending question with a durable reason hash and receipt
-*AdminKnowledgeV2ControllerApi* | [**operation10**](doc//AdminKnowledgeV2ControllerApi.md#operation10) | **GET** /admin/knowledge/v2/operations/{operationId} | Read one durable ADMIN knowledge operation outcome
+*AdminKnowledgeV2ControllerApi* | [**operation11**](doc//AdminKnowledgeV2ControllerApi.md#operation11) | **GET** /admin/knowledge/v2/operations/{operationId} | Read one durable ADMIN knowledge operation outcome
 *AdminKnowledgeV2ControllerApi* | [**overview2**](doc//AdminKnowledgeV2ControllerApi.md#overview2) | **GET** /admin/knowledge/v2/overview | Read bounded identity-minimized ADMIN knowledge workbench state
 *AdminKnowledgeV2ControllerApi* | [**resolve**](doc//AdminKnowledgeV2ControllerApi.md#resolve) | **PUT** /admin/knowledge/v2/pending/{questionId}/resolution | Resolve one claimed pending question with optional deterministic knowledge upsert
 *AdminMarketplaceUiApi* | [**getProductListCarousel**](doc//AdminMarketplaceUiApi.md#getproductlistcarousel) | **GET** /admin/marketplace-ui/product-list-carousel | Get product-list activity banner admin configuration
@@ -217,8 +217,8 @@ Class | Method | HTTP request | Description
 *AdminMembersApi* | [**searchMembers**](doc//AdminMembersApi.md#searchmembers) | **POST** /admin/members/search | 搜索會員
 *AdminMembersApi* | [**updateMemberByAdmin**](doc//AdminMembersApi.md#updatememberbyadmin) | **POST** /admin/members/{memberId}/update | 更新會員信息
 *AdminMembersApi* | [**updateMemberStatus**](doc//AdminMembersApi.md#updatememberstatus) | **POST** /admin/members/{memberId}/status | 更新會員狀態
-*AdminMessagingV2ControllerApi* | [**capabilities7**](doc//AdminMessagingV2ControllerApi.md#capabilities7) | **GET** /admin/messaging/v2/capabilities | Read fail-closed ADMIN messaging V2 capabilities
-*AdminMessagingV2ControllerApi* | [**operation9**](doc//AdminMessagingV2ControllerApi.md#operation9) | **GET** /admin/messaging/v2/operations/{operationId} | Read one durable ADMIN batch-message operation receipt
+*AdminMessagingV2ControllerApi* | [**capabilities8**](doc//AdminMessagingV2ControllerApi.md#capabilities8) | **GET** /admin/messaging/v2/capabilities | Read fail-closed ADMIN messaging V2 capabilities
+*AdminMessagingV2ControllerApi* | [**operation10**](doc//AdminMessagingV2ControllerApi.md#operation10) | **GET** /admin/messaging/v2/operations/{operationId} | Read one durable ADMIN batch-message operation receipt
 *AdminMessagingV2ControllerApi* | [**sendBatch**](doc//AdminMessagingV2ControllerApi.md#sendbatch) | **PUT** /admin/messaging/v2/batches/operations/{operationId} | Atomically send one plain-text ADMIN message to a fixed recipient set
 *AdminNotificationsApi* | [**cleanupExpiredNotifications1**](doc//AdminNotificationsApi.md#cleanupexpirednotifications1) | **POST** /admin/notifications/cleanup | 清理過期通知
 *AdminNotificationsApi* | [**createBatchNotifications1**](doc//AdminNotificationsApi.md#createbatchnotifications1) | **POST** /admin/notifications/batch | 批量創建通知
@@ -303,7 +303,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**getEmailVerificationRemainingTime**](doc//AuthApi.md#getemailverificationremainingtime) | **GET** /auth/email-verification/remaining-time | 查詢郵件驗證碼的剩餘等待時間
 *AuthApi* | [**getLoginBindings**](doc//AuthApi.md#getloginbindings) | **GET** /auth/bindings | 查看登錄方式綁定列表
 *AuthApi* | [**getTwoFactorInfo**](doc//AuthApi.md#gettwofactorinfo) | **GET** /auth/2fa | 獲取雙因素認證信息
-*AuthApi* | [**login1**](doc//AuthApi.md#login1) | **POST** /auth/login | 用戶登入
+*AuthApi* | [**login2**](doc//AuthApi.md#login2) | **POST** /auth/login | 用戶登入
 *AuthApi* | [**loginWithEmailCode**](doc//AuthApi.md#loginwithemailcode) | **POST** /auth/email-login/verify | 使用郵箱驗證碼登入
 *AuthApi* | [**logout**](doc//AuthApi.md#logout) | **POST** /auth/logout | 用戶登出
 *AuthApi* | [**manageTwoFactor**](doc//AuthApi.md#managetwofactor) | **POST** /auth/2fa/manage | 管理雙因素認證
@@ -347,6 +347,7 @@ Class | Method | HTTP request | Description
 *BettingMarketsApi* | [**getMarket**](doc//BettingMarketsApi.md#getmarket) | **GET** /markets/{id} | 獲取市場詳情
 *BettingMarketsApi* | [**resolveMarket**](doc//BettingMarketsApi.md#resolvemarket) | **POST** /markets/{id}/resolve | 結算市場
 *BettingMarketsApi* | [**searchMarkets**](doc//BettingMarketsApi.md#searchmarkets) | **POST** /markets/search | 搜索市場
+*BuyerChatAttachmentControllerApi* | [**upload1**](doc//BuyerChatAttachmentControllerApi.md#upload1) | **POST** /chat/sessions/{sessionId}/attachments | 
 *ChatApi* | [**clearSession**](doc//ChatApi.md#clearsession) | **DELETE** /chat/sessions/{sessionId}/messages | 清空會話
 *ChatApi* | [**deleteMessage**](doc//ChatApi.md#deletemessage) | **DELETE** /chat/messages/{messageId} | 刪除消息
 *ChatApi* | [**deleteSession**](doc//ChatApi.md#deletesession) | **DELETE** /chat/sessions/{sessionId} | 刪除會話
@@ -398,6 +399,10 @@ Class | Method | HTTP request | Description
 *CreatorSubscriptionControllerApi* | [**getEntry**](doc//CreatorSubscriptionControllerApi.md#getentry) | **GET** /creator-subscriptions/products/{productId}/entry | 
 *CreatorSubscriptionControllerApi* | [**listMine1**](doc//CreatorSubscriptionControllerApi.md#listmine1) | **GET** /creator-subscriptions/me | 
 *CreatorSubscriptionControllerApi* | [**subscribe1**](doc//CreatorSubscriptionControllerApi.md#subscribe1) | **POST** /creator-subscriptions/products/{productId}/subscribe | 
+*CreatorSubscriptionWebV2ControllerApi* | [**cancel2**](doc//CreatorSubscriptionWebV2ControllerApi.md#cancel2) | **POST** /creator-subscriptions/products/{productId}/web-v2/operations/{operationId}/cancel | 
+*CreatorSubscriptionWebV2ControllerApi* | [**operation**](doc//CreatorSubscriptionWebV2ControllerApi.md#operation) | **GET** /creator-subscriptions/products/{productId}/web-v2/operations/{operationId} | 
+*CreatorSubscriptionWebV2ControllerApi* | [**purchase1**](doc//CreatorSubscriptionWebV2ControllerApi.md#purchase1) | **PUT** /creator-subscriptions/products/{productId}/web-v2/operations/{operationId} | 
+*CreatorSubscriptionWebV2ControllerApi* | [**quote**](doc//CreatorSubscriptionWebV2ControllerApi.md#quote) | **GET** /creator-subscriptions/products/{productId}/web-v2 | 
 *CurrentAccountWithdrawalV2Api* | [**getOperation4**](doc//CurrentAccountWithdrawalV2Api.md#getoperation4) | **GET** /wallet/me/v2/withdrawals/operations/{operationId} | Read one owned durable withdrawal operation receipt
 *CurrentAccountWithdrawalV2Api* | [**request**](doc//CurrentAccountWithdrawalV2Api.md#request) | **PUT** /wallet/me/v2/withdrawals/requests/{operationId} | Request one USDT/TRC20 withdrawal with exact replay
 *CurrentAccountWithdrawalV2Api* | [**state1**](doc//CurrentAccountWithdrawalV2Api.md#state1) | **GET** /wallet/me/v2/withdrawals/state | Read the current account's withdrawal capability and one ongoing request
@@ -405,8 +410,10 @@ Class | Method | HTTP request | Description
 *CurrentBettingV2ControllerApi* | [**capabilities5**](doc//CurrentBettingV2ControllerApi.md#capabilities5) | **GET** /betting/me/v2/capabilities | Read fail-closed current-member betting capabilities
 *CurrentBettingV2ControllerApi* | [**marketDetail**](doc//CurrentBettingV2ControllerApi.md#marketdetail) | **GET** /betting/me/v2/markets/{marketId} | Read one identity-free betting market and its current options
 *CurrentBettingV2ControllerApi* | [**myRecords**](doc//CurrentBettingV2ControllerApi.md#myrecords) | **GET** /betting/me/v2/records | Read one fixed-size page of the current member's betting records
-*CurrentBettingV2ControllerApi* | [**operation7**](doc//CurrentBettingV2ControllerApi.md#operation7) | **GET** /betting/me/v2/operations/{operationId} | Read one owned durable bet-placement receipt
+*CurrentBettingV2ControllerApi* | [**operation8**](doc//CurrentBettingV2ControllerApi.md#operation8) | **GET** /betting/me/v2/operations/{operationId} | Read one owned durable bet-placement receipt
 *CurrentBettingV2ControllerApi* | [**place**](doc//CurrentBettingV2ControllerApi.md#place) | **PUT** /betting/me/v2/placements/operations/{operationId} | Place one current-member bet with exact replay and receipt recovery
+*CurrentBuyerAvatarUploadControllerApi* | [**upload2**](doc//CurrentBuyerAvatarUploadControllerApi.md#upload2) | **POST** /auth/profile/avatar/upload | 
+*CurrentBuyerEvidenceApi* | [**upload**](doc//CurrentBuyerEvidenceApi.md#upload) | **POST** /orders/me/{orderId}/evidence/{purpose} | 
 *CurrentBuyerOrderMutationsApi* | [**getDisputeResult**](doc//CurrentBuyerOrderMutationsApi.md#getdisputeresult) | **GET** /orders/me/{orderId}/dispute-submissions/{operationId} | 查回目前買家的爭議收據
 *CurrentBuyerOrderMutationsApi* | [**getReturnRequestResult**](doc//CurrentBuyerOrderMutationsApi.md#getreturnrequestresult) | **GET** /orders/me/{orderId}/return-request-submissions/{operationId} | 查回目前買家的退貨申請收據
 *CurrentBuyerOrderMutationsApi* | [**getReturnShippingResult**](doc//CurrentBuyerOrderMutationsApi.md#getreturnshippingresult) | **GET** /orders/me/{orderId}/return-shipping-submissions/{operationId} | 查回目前買家的退貨物流收據
@@ -416,7 +423,7 @@ Class | Method | HTTP request | Description
 *CurrentChatV2ControllerApi* | [**capabilities4**](doc//CurrentChatV2ControllerApi.md#capabilities4) | **GET** /chat/me/v2/capabilities | Read fail-closed current-member chat V2 capabilities
 *CurrentChatV2ControllerApi* | [**getOrCreate**](doc//CurrentChatV2ControllerApi.md#getorcreate) | **PUT** /chat/me/v2/sessions/by-partner/{partnerId}/operations/{operationId} | Idempotently get or create a member chat session
 *CurrentChatV2ControllerApi* | [**markRead1**](doc//CurrentChatV2ControllerApi.md#markread1) | **PUT** /chat/me/v2/sessions/{sessionRef}/read/operations/{operationId} | Advance the current participant read position idempotently
-*CurrentChatV2ControllerApi* | [**operation6**](doc//CurrentChatV2ControllerApi.md#operation6) | **GET** /chat/me/v2/operations/{operationId} | Read one durable current-member chat operation receipt
+*CurrentChatV2ControllerApi* | [**operation7**](doc//CurrentChatV2ControllerApi.md#operation7) | **GET** /chat/me/v2/operations/{operationId} | Read one durable current-member chat operation receipt
 *CurrentChatV2ControllerApi* | [**sendText**](doc//CurrentChatV2ControllerApi.md#sendtext) | **PUT** /chat/me/v2/sessions/{sessionRef}/messages/operations/{operationId} | Send one idempotent plain-text message in an owned session
 *CurrentChatV2ControllerApi* | [**session**](doc//CurrentChatV2ControllerApi.md#session) | **GET** /chat/me/v2/sessions/{sessionRef} | Read one owned chat session and newest-first message page
 *CurrentChatV2ControllerApi* | [**sessions**](doc//CurrentChatV2ControllerApi.md#sessions) | **GET** /chat/me/v2/sessions | List current-member chat sessions without participant IDs
@@ -424,7 +431,7 @@ Class | Method | HTTP request | Description
 *CurrentDeliveryOperationsV2ControllerApi* | [**acceptOrder**](doc//CurrentDeliveryOperationsV2ControllerApi.md#acceptorder) | **PUT** /delivery/me/v2/orders/{orderId}/accept/operations/{operationId} | Atomically accept one available delivery task with exact replay
 *CurrentDeliveryOperationsV2ControllerApi* | [**board**](doc//CurrentDeliveryOperationsV2ControllerApi.md#board) | **GET** /delivery/me/v2/board | Read the current courier work board without customer identity
 *CurrentDeliveryOperationsV2ControllerApi* | [**capabilities2**](doc//CurrentDeliveryOperationsV2ControllerApi.md#capabilities2) | **GET** /delivery/me/v2/capabilities | Read fail-closed current courier operation capabilities
-*CurrentDeliveryOperationsV2ControllerApi* | [**operation4**](doc//CurrentDeliveryOperationsV2ControllerApi.md#operation4) | **GET** /delivery/me/v2/operations/{operationId} | Read one owned durable delivery operation receipt
+*CurrentDeliveryOperationsV2ControllerApi* | [**operation5**](doc//CurrentDeliveryOperationsV2ControllerApi.md#operation5) | **GET** /delivery/me/v2/operations/{operationId} | Read one owned durable delivery operation receipt
 *CurrentDeliveryOperationsV2ControllerApi* | [**transitionOrder**](doc//CurrentDeliveryOperationsV2ControllerApi.md#transitionorder) | **PUT** /delivery/me/v2/orders/{orderId}/transition/operations/{operationId} | Advance one owned delivery task through the guarded state machine
 *CurrentDeliveryOperationsV2ControllerApi* | [**updateLocation**](doc//CurrentDeliveryOperationsV2ControllerApi.md#updatelocation) | **PUT** /delivery/me/v2/location/operations/{operationId} | Update current courier work location with exact replay
 *CurrentDeliveryOperationsV2ControllerApi* | [**updateStatus**](doc//CurrentDeliveryOperationsV2ControllerApi.md#updatestatus) | **PUT** /delivery/me/v2/status/operations/{operationId} | Update current courier working status with exact replay
@@ -432,10 +439,12 @@ Class | Method | HTTP request | Description
 *CurrentDeliveryRegistrationControllerApi* | [**submit2**](doc//CurrentDeliveryRegistrationControllerApi.md#submit2) | **PUT** /delivery/me/registration | Create the current user's singleton courier registration with atomic terms evidence
 *CurrentDepositV2ControllerApi* | [**cancel**](doc//CurrentDepositV2ControllerApi.md#cancel) | **PUT** /wallet/me/v2/deposits/cancellations/{operationId} | Cancel one owned pending deposit with exact replay
 *CurrentDepositV2ControllerApi* | [**create**](doc//CurrentDepositV2ControllerApi.md#create) | **PUT** /wallet/me/v2/deposits/creations/{operationId} | Allocate one current-account deposit address with exact replay
-*CurrentDepositV2ControllerApi* | [**operation2**](doc//CurrentDepositV2ControllerApi.md#operation2) | **GET** /wallet/me/v2/deposits/operations/{operationId} | Read one owned durable deposit operation receipt
+*CurrentDepositV2ControllerApi* | [**operation3**](doc//CurrentDepositV2ControllerApi.md#operation3) | **GET** /wallet/me/v2/deposits/operations/{operationId} | Read one owned durable deposit operation receipt
 *CurrentDepositV2ControllerApi* | [**state3**](doc//CurrentDepositV2ControllerApi.md#state3) | **GET** /wallet/me/v2/deposits/state | Read current-account deposit policy, balance and exact owned pending address
 *CurrentFundsV2ControllerApi* | [**funds**](doc//CurrentFundsV2ControllerApi.md#funds) | **GET** /wallet/me/v2/funds | Read current-account funding state with every V2 funds mutation disabled
+*CurrentNotificationV2ControllerApi* | [**delete1**](doc//CurrentNotificationV2ControllerApi.md#delete1) | **DELETE** /notifications/me/{notificationId} | Idempotently soft-delete one current-user notification
 *CurrentNotificationV2ControllerApi* | [**get1**](doc//CurrentNotificationV2ControllerApi.md#get1) | **GET** /notifications/me/{notificationId} | Read one identity-minimized current-user notification
+*CurrentNotificationV2ControllerApi* | [**markAllRead**](doc//CurrentNotificationV2ControllerApi.md#markallread) | **POST** /notifications/me/read-all | Mark only the current user's unread notifications read
 *CurrentNotificationV2ControllerApi* | [**markRead**](doc//CurrentNotificationV2ControllerApi.md#markread) | **PUT** /notifications/me/{notificationId}/read | Idempotently mark one current-user notification read
 *CurrentNotificationV2ControllerApi* | [**search**](doc//CurrentNotificationV2ControllerApi.md#search) | **POST** /notifications/me/search | Search a bounded identity-minimized current-user notification page
 *CurrentOrderReturnWorkflowApi* | [**callGet**](doc//CurrentOrderReturnWorkflowApi.md#callget) | **GET** /orders/me/{orderId}/return-workflow | 取得目前訂單參與者可見的退貨工作流
@@ -444,7 +453,7 @@ Class | Method | HTTP request | Description
 *CurrentPartnerV2ControllerApi* | [**cancelApplication**](doc//CurrentPartnerV2ControllerApi.md#cancelapplication) | **PUT** /community-partners/me/v2/applications/{applicationRef}/cancel/operations/{operationId} | Cancel an owned pending current partner application with exact replay
 *CurrentPartnerV2ControllerApi* | [**capabilities3**](doc//CurrentPartnerV2ControllerApi.md#capabilities3) | **GET** /community-partners/me/v2/capabilities | Read fail-closed current partner capabilities
 *CurrentPartnerV2ControllerApi* | [**ledgers**](doc//CurrentPartnerV2ControllerApi.md#ledgers) | **POST** /community-partners/me/v2/ledgers/search | Search fixed-size identity-minimized current partner ledgers
-*CurrentPartnerV2ControllerApi* | [**operation5**](doc//CurrentPartnerV2ControllerApi.md#operation5) | **GET** /community-partners/me/v2/operations/{operationId} | Read one owned durable current partner operation receipt
+*CurrentPartnerV2ControllerApi* | [**operation6**](doc//CurrentPartnerV2ControllerApi.md#operation6) | **GET** /community-partners/me/v2/operations/{operationId} | Read one owned durable current partner operation receipt
 *CurrentPartnerV2ControllerApi* | [**overview**](doc//CurrentPartnerV2ControllerApi.md#overview) | **GET** /community-partners/me/v2/overview | Read identity-minimized current partner overview
 *CurrentPartnerV2ControllerApi* | [**previewInvitation**](doc//CurrentPartnerV2ControllerApi.md#previewinvitation) | **POST** /community-partners/me/v2/invitations/preview | Preview an invitation without persisting open or expiry state
 *CurrentPartnerV2ControllerApi* | [**submitApplication**](doc//CurrentPartnerV2ControllerApi.md#submitapplication) | **PUT** /community-partners/me/v2/applications/operations/{operationId} | Submit a current partner application with exact replay
@@ -483,19 +492,21 @@ Class | Method | HTTP request | Description
 *CurrentSellerStorefrontHomeControllerApi* | [**saveDraft1**](doc//CurrentSellerStorefrontHomeControllerApi.md#savedraft1) | **PUT** /stores/me/storefront-home/draft | Save a versioned current-seller storefront draft
 *CurrentSellerStorefrontHomeControllerApi* | [**submitReview**](doc//CurrentSellerStorefrontHomeControllerApi.md#submitreview) | **PUT** /stores/me/storefront-home/review-submission | Submit a versioned current-seller storefront draft for review
 *CurrentStakingV2ControllerApi* | [**apply**](doc//CurrentStakingV2ControllerApi.md#apply) | **PUT** /wallet/me/v2/staking/applications/{operationId} | Apply for current-account staking with exact replay and receipt recovery
-*CurrentStakingV2ControllerApi* | [**operation1**](doc//CurrentStakingV2ControllerApi.md#operation1) | **GET** /wallet/me/v2/staking/operations/{operationId} | Read one owned durable staking operation receipt
+*CurrentStakingV2ControllerApi* | [**operation2**](doc//CurrentStakingV2ControllerApi.md#operation2) | **GET** /wallet/me/v2/staking/operations/{operationId} | Read one owned durable staking operation receipt
 *CurrentStakingV2ControllerApi* | [**state2**](doc//CurrentStakingV2ControllerApi.md#state2) | **GET** /wallet/me/v2/staking/state | Read current-account staking policy, balance and active position
 *CurrentStakingV2ControllerApi* | [**unfreeze**](doc//CurrentStakingV2ControllerApi.md#unfreeze) | **PUT** /wallet/me/v2/staking/unfreezes/{operationId} | Unfreeze one owned staking principal with exact replay and receipt recovery
 *CurrentUserAvatarControllerApi* | [**getOperation**](doc//CurrentUserAvatarControllerApi.md#getoperation) | **GET** /users/me/avatar/operations/{operationId} | Read one current-user avatar operation receipt
 *CurrentUserAvatarControllerApi* | [**getState**](doc//CurrentUserAvatarControllerApi.md#getstate) | **GET** /users/me/avatar | Read the current user's revisioned avatar state
 *CurrentUserAvatarControllerApi* | [**replace**](doc//CurrentUserAvatarControllerApi.md#replace) | **PUT** /users/me/avatar/operations/{operationId} | Normalize, crop and atomically replace the current user's avatar
+*CurrentUserGameAccessWebV2ControllerApi* | [**endSession1**](doc//CurrentUserGameAccessWebV2ControllerApi.md#endsession1) | **POST** /game-access/products/{productId}/web-v2/sessions/{clientSessionId}/end | 
 *CurrentUserGameAccessWebV2ControllerApi* | [**getOperation3**](doc//CurrentUserGameAccessWebV2ControllerApi.md#getoperation3) | **GET** /game-access/products/{productId}/web-v2/operations/{operationId} | Read one owned V2 game-access activation receipt
+*CurrentUserGameAccessWebV2ControllerApi* | [**getSession**](doc//CurrentUserGameAccessWebV2ControllerApi.md#getsession) | **GET** /game-access/products/{productId}/web-v2/sessions/{clientSessionId} | 
 *CurrentUserGameAccessWebV2ControllerApi* | [**getState1**](doc//CurrentUserGameAccessWebV2ControllerApi.md#getstate1) | **GET** /game-access/products/{productId}/web-v2 | Read the current user's V2 refundable game-access state
 *CurrentUserGameAccessWebV2ControllerApi* | [**purchase**](doc//CurrentUserGameAccessWebV2ControllerApi.md#purchase) | **PUT** /game-access/products/{productId}/web-v2/operations/{operationId} | Activate refundable game access once for the mapped product
 *CurrentUserGameAccessWebV2ControllerApi* | [**startLaunch**](doc//CurrentUserGameAccessWebV2ControllerApi.md#startlaunch) | **POST** /game-access/products/{productId}/web-v2/sessions/{clientSessionId} | Issue one short-lived Telegram handoff for the mapped game product
 *CustomerSupportWorkbenchV2ControllerApi* | [**close1**](doc//CustomerSupportWorkbenchV2ControllerApi.md#close1) | **POST** /support/workbench/v2/close | Close or safely replay Telegram operator workbench takeover
 *CustomerSupportWorkbenchV2ControllerApi* | [**open**](doc//CustomerSupportWorkbenchV2ControllerApi.md#open) | **POST** /support/workbench/v2/open | Open or safely replay Telegram operator workbench takeover
-*CustomerSupportWorkbenchV2ControllerApi* | [**operation**](doc//CustomerSupportWorkbenchV2ControllerApi.md#operation) | **POST** /support/workbench/v2/operations/{operationId} | Read one durable Telegram operator workbench outcome
+*CustomerSupportWorkbenchV2ControllerApi* | [**operation1**](doc//CustomerSupportWorkbenchV2ControllerApi.md#operation1) | **POST** /support/workbench/v2/operations/{operationId} | Read one durable Telegram operator workbench outcome
 *CustomerSupportWorkbenchV2ControllerApi* | [**reply**](doc//CustomerSupportWorkbenchV2ControllerApi.md#reply) | **POST** /support/workbench/v2/reply | Send or safely replay one Telegram operator support reply
 *CustomerSupportWorkbenchV2ControllerApi* | [**state**](doc//CustomerSupportWorkbenchV2ControllerApi.md#state) | **POST** /support/workbench/v2/state | Read identity-minimized Telegram operator support state
 *DeliveryApi* | [**acceptOrder1**](doc//DeliveryApi.md#acceptorder1) | **POST** /delivery/accept | 配送員接單
@@ -523,17 +534,19 @@ Class | Method | HTTP request | Description
 *FlutterDeploymentApi* | [**deleteVersion**](doc//FlutterDeploymentApi.md#deleteversion) | **DELETE** /flutter/deployment/versions/{versionId} | 刪除 APP 版本
 *FlutterDeploymentApi* | [**getApps**](doc//FlutterDeploymentApi.md#getapps) | **POST** /flutter/deployment/apps | 獲取可下載的 APP
 *GameAccessControllerApi* | [**getMyAccess1**](doc//GameAccessControllerApi.md#getmyaccess1) | **GET** /game-access/me | 
-*GameAccessControllerApi* | [**purchase1**](doc//GameAccessControllerApi.md#purchase1) | **POST** /game-access/purchase | 
+*GameAccessControllerApi* | [**purchase2**](doc//GameAccessControllerApi.md#purchase2) | **POST** /game-access/purchase | 
 *GameAccessProductControllerApi* | [**getDescriptor**](doc//GameAccessProductControllerApi.md#getdescriptor) | **GET** /game-access/products/{productId} | Get a server-owned refundable game access descriptor
 *GameAccessProductControllerApi* | [**getMyAccess**](doc//GameAccessProductControllerApi.md#getmyaccess) | **GET** /game-access/products/{productId}/me | 
-*GameAccessProductControllerApi* | [**purchase2**](doc//GameAccessProductControllerApi.md#purchase2) | **POST** /game-access/products/{productId}/purchase | 
+*GameAccessProductControllerApi* | [**purchase3**](doc//GameAccessProductControllerApi.md#purchase3) | **POST** /game-access/products/{productId}/purchase | 
 *GuardedAdminWithdrawalV2Api* | [**approveReview**](doc//GuardedAdminWithdrawalV2Api.md#approvereview) | **PUT** /admin/withdraws/v2/{withdrawRef}/review-approvals/{operationId} | Approve a manually reviewed withdrawal back into the pending queue
-*GuardedAdminWithdrawalV2Api* | [**capabilities6**](doc//GuardedAdminWithdrawalV2Api.md#capabilities6) | **GET** /admin/withdraws/v2/capabilities | Read fail-closed admin withdrawal operation gates
+*GuardedAdminWithdrawalV2Api* | [**capabilities7**](doc//GuardedAdminWithdrawalV2Api.md#capabilities7) | **GET** /admin/withdraws/v2/capabilities | Read fail-closed admin withdrawal operation gates
 *GuardedAdminWithdrawalV2Api* | [**claim**](doc//GuardedAdminWithdrawalV2Api.md#claim) | **PUT** /admin/withdraws/v2/{withdrawRef}/claims/{operationId} | Claim a pending withdrawal for external custody processing
-*GuardedAdminWithdrawalV2Api* | [**operation8**](doc//GuardedAdminWithdrawalV2Api.md#operation8) | **GET** /admin/withdraws/v2/operations/{operationId} | Read one actor-owned durable admin withdrawal receipt
+*GuardedAdminWithdrawalV2Api* | [**operation9**](doc//GuardedAdminWithdrawalV2Api.md#operation9) | **GET** /admin/withdraws/v2/operations/{operationId} | Read one actor-owned durable admin withdrawal receipt
 *GuardedAdminWithdrawalV2Api* | [**reject**](doc//GuardedAdminWithdrawalV2Api.md#reject) | **PUT** /admin/withdraws/v2/{withdrawRef}/rejections/{operationId} | Reject and atomically refund a not-yet-processing withdrawal
 *GuardedAdminWithdrawalV2Api* | [**search1**](doc//GuardedAdminWithdrawalV2Api.md#search1) | **POST** /admin/withdraws/v2/summary/search | Search a fixed-size, identity-minimized withdrawal queue
 *GuardedAdminWithdrawalV2Api* | [**verifyCompletion**](doc//GuardedAdminWithdrawalV2Api.md#verifycompletion) | **PUT** /admin/withdraws/v2/{withdrawRef}/verified-completions/{operationId} | Complete only after confirmed TRON USDT evidence matches the withdrawal
+*GuestCartMigrationControllerApi* | [**findCompleted**](doc//GuestCartMigrationControllerApi.md#findcompleted) | **GET** /cart/guest-migrations/{operationId} | 
+*GuestCartMigrationControllerApi* | [**submit3**](doc//GuestCartMigrationControllerApi.md#submit3) | **POST** /cart/guest-migrations/{operationId} | 
 *KnowledgeApi* | [**addKnowledge**](doc//KnowledgeApi.md#addknowledge) | **POST** /admin/knowledge | 新增知識文件
 *KnowledgeApi* | [**countKnowledge**](doc//KnowledgeApi.md#countknowledge) | **GET** /admin/knowledge/count | 查詢知識庫文件數量
 *KnowledgeApi* | [**countPendingKnowledgeQuestions**](doc//KnowledgeApi.md#countpendingknowledgequestions) | **GET** /admin/knowledge/pending/count | 查詢未處理問題數量
@@ -725,6 +738,11 @@ Class | Method | HTTP request | Description
 *SellerDemandPoolApi* | [**submitOffer1**](doc//SellerDemandPoolApi.md#submitoffer1) | **POST** /seller/demands/{demandId}/offers | Seller submit structured offer for demand
 *SellerProductBoardApi* | [**pin**](doc//SellerProductBoardApi.md#pin) | **POST** /seller/product-board/posts/{postId}/pin | Pin a product board post for seller-owned product
 *SellerProductBoardApi* | [**unpin**](doc//SellerProductBoardApi.md#unpin) | **POST** /seller/product-board/posts/{postId}/unpin | Unpin a product board post for seller-owned product
+*SessionCallApi* | [**sessionCallAnswer**](doc//SessionCallApi.md#sessioncallanswer) | **POST** /webrtc/session/answer | 
+*SessionCallApi* | [**sessionCallHangup**](doc//SessionCallApi.md#sessioncallhangup) | **POST** /webrtc/session/hangup | 
+*SessionCallApi* | [**sessionCallIce**](doc//SessionCallApi.md#sessioncallice) | **POST** /webrtc/session/ice-candidate | 
+*SessionCallApi* | [**sessionCallOffer**](doc//SessionCallApi.md#sessioncalloffer) | **POST** /webrtc/session/offer | 
+*SessionCallApi* | [**sessionCallStatus**](doc//SessionCallApi.md#sessioncallstatus) | **POST** /webrtc/session/status | 
 *SevenElevenStoresApi* | [**getAllCities**](doc//SevenElevenStoresApi.md#getallcities) | **GET** /stores/seven-eleven/cities | 取得所有縣市列表
 *SevenElevenStoresApi* | [**getStoresByCity**](doc//SevenElevenStoresApi.md#getstoresbycity) | **GET** /stores/seven-eleven/stores | 根據縣市取得7-11門市列表
 *SlotApi* | [**getMemberOddsTable**](doc//SlotApi.md#getmemberoddstable) | **GET** /slot/rtp | 取得會員賠率展示資料
@@ -735,7 +753,8 @@ Class | Method | HTTP request | Description
 *SlotApi* | [**savePaytable**](doc//SlotApi.md#savepaytable) | **POST** /slot/paytable/{gameId} | 設定 Slot 賠率
 *SlotApi* | [**spin1**](doc//SlotApi.md#spin1) | **POST** /slot/spin | Spin
 *SlotWebV2ControllerApi* | [**capabilities**](doc//SlotWebV2ControllerApi.md#capabilities) | **GET** /slot/games/{gameId}/web-v2/capabilities | Read fail-closed V2 slot runtime capabilities
-*SlotWebV2ControllerApi* | [**operation3**](doc//SlotWebV2ControllerApi.md#operation3) | **GET** /slot/games/{gameId}/web-v2/operations/{operationId} | Recover one owned durable slot outcome
+*SlotWebV2ControllerApi* | [**demo**](doc//SlotWebV2ControllerApi.md#demo) | **POST** /slot/games/{gameId}/web-v2/demo-spins | Simulate one demo spin without changing wallet balance or saving a round
+*SlotWebV2ControllerApi* | [**operation4**](doc//SlotWebV2ControllerApi.md#operation4) | **GET** /slot/games/{gameId}/web-v2/operations/{operationId} | Recover one owned durable slot outcome
 *SlotWebV2ControllerApi* | [**spin**](doc//SlotWebV2ControllerApi.md#spin) | **PUT** /slot/games/{gameId}/web-v2/spins/operations/{operationId} | Execute one explicitly confirmed real slot spin with exact replay
 *SlotWebV2ControllerApi* | [**state4**](doc//SlotWebV2ControllerApi.md#state4) | **GET** /slot/games/{gameId}/web-v2/state | Read the current member's identity-minimized V2 slot state
 *SseApi* | [**broadcastMessage**](doc//SseApi.md#broadcastmessage) | **POST** /sse/broadcast | 廣播消息
@@ -801,6 +820,7 @@ Class | Method | HTTP request | Description
 *TelegramApi* | [**unpinAnnouncement**](doc//TelegramApi.md#unpinannouncement) | **POST** /admin/telegram-monitor/groups/{groupId}/announcements/{announcementId}/unpin | 取消置頂一則 Telegram 群公告
 *TelegramApi* | [**updateRaidMode**](doc//TelegramApi.md#updateraidmode) | **POST** /admin/telegram-monitor/groups/{groupId}/raid-mode | 手動切換群組 Raid Mode；預設只改後端狀態，不呼叫 Telegram 管理 API
 *TelegramApi* | [**upsertJoinReviewListEntry**](doc//TelegramApi.md#upsertjoinreviewlistentry) | **POST** /admin/telegram-monitor/join-review-list | 新增或更新 Telegram 入群審查 allow/block list 項目
+*TelegramWebappAuthApi* | [**completeSecondFactor1**](doc//TelegramWebappAuthApi.md#completesecondfactor1) | **POST** /auth/telegram-webapp/exchange-jwt/second-factor | 
 *TelegramWebappAuthApi* | [**exchangeJwt**](doc//TelegramWebappAuthApi.md#exchangejwt) | **POST** /auth/telegram-webapp/exchange-jwt | Telegram WebApp 交換 JWT
 *TgMiniAppGameSessionControllerApi* | [**endSession**](doc//TgMiniAppGameSessionControllerApi.md#endsession) | **POST** /tg-games/{gameKey}/sessions/{sessionId}/end | 
 *TgMiniAppGameSessionControllerApi* | [**exchangeLaunch**](doc//TgMiniAppGameSessionControllerApi.md#exchangelaunch) | **POST** /tg-games/{gameKey}/launch/exchange | 
@@ -820,8 +840,95 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**trackReferrer**](doc//UsersApi.md#trackreferrer) | **POST** /users/me/track-referrer | 記錄 Mini App / TG 群組來源歸因
 *VerificationCodeLoginApi* | [**generateLoginToken**](doc//VerificationCodeLoginApi.md#generatelogintoken) | **POST** /auth/telegram-bot/generate-login-token | 生成驗證碼登入 Token
 *VerificationCodeLoginApi* | [**verifyCode**](doc//VerificationCodeLoginApi.md#verifycode) | **POST** /auth/telegram-bot/verify-code | 驗證碼登入
+*WalletConnectApi* | [**completeSecondFactor**](doc//WalletConnectApi.md#completesecondfactor) | **POST** /auth/wallet-connect/login/second-factor | 
 *WalletConnectApi* | [**getNonce**](doc//WalletConnectApi.md#getnonce) | **POST** /auth/wallet-connect/nonce | 获取 Nonce（通用）
 *WalletConnectApi* | [**login**](doc//WalletConnectApi.md#login) | **POST** /auth/wallet-connect/login | Web3 钱包登录（通用）
+*WebPushNotificationControllerApi* | [**resolve2**](doc//WebPushNotificationControllerApi.md#resolve2) | **POST** /webpush/me/notifications/resolve | 
+*WebSessionAuthenticationRecoveryControllerApi* | [**discover**](doc//WebSessionAuthenticationRecoveryControllerApi.md#discover) | **GET** /auth/session/v2/selection/authentication/mutations | 
+*WebSessionAuthenticationRecoveryControllerApi* | [**inspect4**](doc//WebSessionAuthenticationRecoveryControllerApi.md#inspect4) | **GET** /auth/session/v2/selection/authentication/mutations/{mutationId} | 
+*WebSessionBindingControllerApi* | [**authorize1**](doc//WebSessionBindingControllerApi.md#authorize1) | **POST** /auth/session/v2/bindings/google/authorize | 
+*WebSessionBindingControllerApi* | [**bootstrap9**](doc//WebSessionBindingControllerApi.md#bootstrap9) | **GET** /auth/session/v2/bindings/bootstrap | 
+*WebSessionBindingControllerApi* | [**cancel6**](doc//WebSessionBindingControllerApi.md#cancel6) | **POST** /auth/session/v2/bindings/cancel | 
+*WebSessionBindingControllerApi* | [**complete6**](doc//WebSessionBindingControllerApi.md#complete6) | **POST** /auth/session/v2/bindings/google/complete | 
+*WebSessionControllerApi* | [**begin2**](doc//WebSessionControllerApi.md#begin2) | **POST** /auth/session/v2/mutations | 
+*WebSessionControllerApi* | [**bootstrap6**](doc//WebSessionControllerApi.md#bootstrap6) | **GET** /auth/session/v2/bootstrap | 
+*WebSessionControllerApi* | [**capabilities6**](doc//WebSessionControllerApi.md#capabilities6) | **GET** /auth/session/v2/capabilities | 
+*WebSessionControllerApi* | [**cleanup1**](doc//WebSessionControllerApi.md#cleanup1) | **POST** /auth/session/v2/delivery/cleanup | 
+*WebSessionControllerApi* | [**clientObservation**](doc//WebSessionControllerApi.md#clientobservation) | **POST** /auth/session/v2/client-observations | 
+*WebSessionControllerApi* | [**confirm1**](doc//WebSessionControllerApi.md#confirm1) | **POST** /auth/session/v2/confirm | 
+*WebSessionControllerApi* | [**confirmContext1**](doc//WebSessionControllerApi.md#confirmcontext1) | **POST** /auth/session/v2/contexts/confirm | 
+*WebSessionControllerApi* | [**delivery**](doc//WebSessionControllerApi.md#delivery) | **GET** /auth/session/v2/delivery/bootstrap | 
+*WebSessionControllerApi* | [**devices**](doc//WebSessionControllerApi.md#devices) | **GET** /auth/session/v2/devices | 
+*WebSessionControllerApi* | [**initialize1**](doc//WebSessionControllerApi.md#initialize1) | **POST** /auth/session/v2/contexts | 
+*WebSessionControllerApi* | [**login1**](doc//WebSessionControllerApi.md#login1) | **POST** /auth/session/v2/login | 
+*WebSessionControllerApi* | [**logoutAll**](doc//WebSessionControllerApi.md#logoutall) | **POST** /auth/session/v2/logout-all | 
+*WebSessionControllerApi* | [**migrate1**](doc//WebSessionControllerApi.md#migrate1) | **POST** /auth/session/v2/migrate | 
+*WebSessionControllerApi* | [**readyObservation**](doc//WebSessionControllerApi.md#readyobservation) | **POST** /auth/session/v2/ready-observation | 
+*WebSessionControllerApi* | [**reauthenticate**](doc//WebSessionControllerApi.md#reauthenticate) | **POST** /auth/session/v2/reauthenticate | 
+*WebSessionControllerApi* | [**restore1**](doc//WebSessionControllerApi.md#restore1) | **POST** /auth/session/v2/restore | 
+*WebSessionControllerApi* | [**result**](doc//WebSessionControllerApi.md#result) | **GET** /auth/session/v2/mutations/result | 
+*WebSessionControllerApi* | [**revoke**](doc//WebSessionControllerApi.md#revoke) | **POST** /auth/session/v2/revoke | 
+*WebSessionLoginMethodManagementControllerApi* | [**email**](doc//WebSessionLoginMethodManagementControllerApi.md#email) | **POST** /auth/bindings/managed/email/confirm | 
+*WebSessionLoginMethodManagementControllerApi* | [**list1**](doc//WebSessionLoginMethodManagementControllerApi.md#list1) | **GET** /auth/bindings/managed | 
+*WebSessionLoginMethodManagementControllerApi* | [**remove**](doc//WebSessionLoginMethodManagementControllerApi.md#remove) | **POST** /auth/bindings/managed/remove | 
+*WebSessionLoginMethodManagementControllerApi* | [**send**](doc//WebSessionLoginMethodManagementControllerApi.md#send) | **POST** /auth/bindings/managed/email/code | 
+*WebSessionMiniAppControllerApi* | [**beginHost**](doc//WebSessionMiniAppControllerApi.md#beginhost) | **POST** /auth/session/v2/telegram-miniapp/mutations | 
+*WebSessionMiniAppControllerApi* | [**bootstrap2**](doc//WebSessionMiniAppControllerApi.md#bootstrap2) | **GET** /auth/session/v2/telegram-miniapp/flows/{flowId} | 
+*WebSessionMiniAppControllerApi* | [**complete2**](doc//WebSessionMiniAppControllerApi.md#complete2) | **POST** /auth/session/v2/telegram-miniapp/complete | 
+*WebSessionMiniAppControllerApi* | [**hostResult**](doc//WebSessionMiniAppControllerApi.md#hostresult) | **POST** /auth/session/v2/telegram-miniapp/mutations/result | 
+*WebSessionMiniAppControllerApi* | [**start2**](doc//WebSessionMiniAppControllerApi.md#start2) | **POST** /auth/session/v2/telegram-miniapp/start | 
+*WebSessionMiniAppRestoreControllerApi* | [**restore**](doc//WebSessionMiniAppRestoreControllerApi.md#restore) | **POST** /auth/session/v2/telegram-miniapp/restore | 
+*WebSessionOAuthControllerApi* | [**authorize**](doc//WebSessionOAuthControllerApi.md#authorize) | **POST** /auth/session/v2/oauth/google/authorize | 
+*WebSessionOAuthControllerApi* | [**bootstrap5**](doc//WebSessionOAuthControllerApi.md#bootstrap5) | **GET** /auth/session/v2/oauth/bootstrap | 
+*WebSessionOAuthControllerApi* | [**complete3**](doc//WebSessionOAuthControllerApi.md#complete3) | **POST** /auth/session/v2/oauth/complete | 
+*WebSessionPasskeyControllerApi* | [**options1**](doc//WebSessionPasskeyControllerApi.md#options1) | **POST** /auth/session/v2/passkey/options | 
+*WebSessionPasskeyControllerApi* | [**signupOptions**](doc//WebSessionPasskeyControllerApi.md#signupoptions) | **POST** /auth/session/v2/passkey/signup/options | 
+*WebSessionPasskeyControllerApi* | [**signupVerify**](doc//WebSessionPasskeyControllerApi.md#signupverify) | **POST** /auth/session/v2/passkey/signup/verify | 
+*WebSessionPasskeyControllerApi* | [**verify1**](doc//WebSessionPasskeyControllerApi.md#verify1) | **POST** /auth/session/v2/passkey/verify | 
+*WebSessionPasskeyManagementControllerApi* | [**finish**](doc//WebSessionPasskeyManagementControllerApi.md#finish) | **POST** /auth/passkey/managed/register/verify | 
+*WebSessionPasskeyManagementControllerApi* | [**list**](doc//WebSessionPasskeyManagementControllerApi.md#list) | **GET** /auth/passkey/managed/credentials | 
+*WebSessionPasskeyManagementControllerApi* | [**revoke1**](doc//WebSessionPasskeyManagementControllerApi.md#revoke1) | **POST** /auth/passkey/managed/credentials/{credentialId}/revoke | 
+*WebSessionPasskeyManagementControllerApi* | [**start5**](doc//WebSessionPasskeyManagementControllerApi.md#start5) | **POST** /auth/passkey/managed/register/options | 
+*WebSessionPasskeyReauthenticationControllerApi* | [**options**](doc//WebSessionPasskeyReauthenticationControllerApi.md#options) | **POST** /auth/session/v2/reauthenticate/passkey/options | 
+*WebSessionPasskeyReauthenticationControllerApi* | [**verify**](doc//WebSessionPasskeyReauthenticationControllerApi.md#verify) | **POST** /auth/session/v2/reauthenticate/passkey/verify | 
+*WebSessionPasswordControllerApi* | [**change**](doc//WebSessionPasswordControllerApi.md#change) | **POST** /auth/password/confirmed | 
+*WebSessionRecoveryControllerApi* | [**candidates**](doc//WebSessionRecoveryControllerApi.md#candidates) | **GET** /auth/session/v2/recovery/candidates | 
+*WebSessionRecoveryControllerApi* | [**inspect2**](doc//WebSessionRecoveryControllerApi.md#inspect2) | **POST** /auth/session/v2/recovery/inspect | 
+*WebSessionSelectedAuthenticationControllerApi* | [**begin1**](doc//WebSessionSelectedAuthenticationControllerApi.md#begin1) | **POST** /auth/session/v2/selection/authentication/mutations | 
+*WebSessionSelectedAuthenticationControllerApi* | [**issueV2**](doc//WebSessionSelectedAuthenticationControllerApi.md#issuev2) | **POST** /auth/session/v2/selection/authentication/v2 | 
+*WebSessionSelectedLegacyControllerApi* | [**issue**](doc//WebSessionSelectedLegacyControllerApi.md#issue) | **POST** /auth/session/v2/selection/authentication/legacy | 
+*WebSessionSelectedLegacyControllerApi* | [**validate**](doc//WebSessionSelectedLegacyControllerApi.md#validate) | **POST** /auth/session/v2/selection/authentication/legacy/validate | 
+*WebSessionSelectedMigrationControllerApi* | [**migrate**](doc//WebSessionSelectedMigrationControllerApi.md#migrate) | **POST** /auth/session/v2/selection/migrate | 
+*WebSessionSelectionCommandsControllerApi* | [**begin**](doc//WebSessionSelectionCommandsControllerApi.md#begin) | **POST** /auth/session/v2/selection/contexts/{context}/commands/{command}/legacy | 
+*WebSessionSelectionCommandsControllerApi* | [**cancel3**](doc//WebSessionSelectionCommandsControllerApi.md#cancel3) | **POST** /auth/session/v2/selection/contexts/{context}/commands/{command}/cancel | 
+*WebSessionSelectionCommandsControllerApi* | [**confirm**](doc//WebSessionSelectionCommandsControllerApi.md#confirm) | **POST** /auth/session/v2/selection/contexts/{context}/commands/{command}/confirm | 
+*WebSessionSelectionCommandsControllerApi* | [**confirmContext**](doc//WebSessionSelectionCommandsControllerApi.md#confirmcontext) | **POST** /auth/session/v2/selection/contexts/{context}/confirm | 
+*WebSessionSelectionCommandsControllerApi* | [**initialize**](doc//WebSessionSelectionCommandsControllerApi.md#initialize) | **POST** /auth/session/v2/selection/contexts | 
+*WebSessionSelectionCommandsControllerApi* | [**inspect3**](doc//WebSessionSelectionCommandsControllerApi.md#inspect3) | **GET** /auth/session/v2/selection/contexts/{context}/commands/{command} | 
+*WebSessionSelectionCommandsControllerApi* | [**inspectContext**](doc//WebSessionSelectionCommandsControllerApi.md#inspectcontext) | **GET** /auth/session/v2/selection/contexts/{context} | 
+*WebSessionSelectionControllerApi* | [**bootstrap3**](doc//WebSessionSelectionControllerApi.md#bootstrap3) | **GET** /auth/session/v2/selection/discover | 
+*WebSessionSelectionControllerApi* | [**bootstrap4**](doc//WebSessionSelectionControllerApi.md#bootstrap4) | **GET** /auth/session/v2/selection/bootstrap | 
+*WebSessionSelectionControllerApi* | [**classify**](doc//WebSessionSelectionControllerApi.md#classify) | **POST** /auth/session/v2/selection/classify-legacy | 
+*WebSessionSelectionControllerApi* | [**inspect**](doc//WebSessionSelectionControllerApi.md#inspect) | **POST** /auth/session/v2/selection/inspect | 
+*WebSessionSelectionRetirementControllerApi* | [**cleanup**](doc//WebSessionSelectionRetirementControllerApi.md#cleanup) | **POST** /auth/session/v2/selection/contexts/{context}/retirements/{id}/cleanup | 
+*WebSessionSelectionRetirementControllerApi* | [**discover1**](doc//WebSessionSelectionRetirementControllerApi.md#discover1) | **GET** /auth/session/v2/selection/contexts/{context}/retirements | 
+*WebSessionSelectionRetirementControllerApi* | [**inspect1**](doc//WebSessionSelectionRetirementControllerApi.md#inspect1) | **GET** /auth/session/v2/selection/contexts/{context}/retirements/{id} | 
+*WebSessionSelectionRetirementControllerApi* | [**prepare**](doc//WebSessionSelectionRetirementControllerApi.md#prepare) | **GET** /auth/session/v2/selection/contexts/{context}/retirements/bootstrap | 
+*WebSessionSelectionRetirementControllerApi* | [**retire**](doc//WebSessionSelectionRetirementControllerApi.md#retire) | **POST** /auth/session/v2/selection/contexts/{context}/retirements/{id} | 
+*WebSessionTelegramBindingControllerApi* | [**bootstrap8**](doc//WebSessionTelegramBindingControllerApi.md#bootstrap8) | **GET** /auth/session/v2/bindings/telegram/bootstrap | 
+*WebSessionTelegramBindingControllerApi* | [**cancel5**](doc//WebSessionTelegramBindingControllerApi.md#cancel5) | **POST** /auth/session/v2/bindings/telegram/cancel | 
+*WebSessionTelegramBindingControllerApi* | [**complete5**](doc//WebSessionTelegramBindingControllerApi.md#complete5) | **POST** /auth/session/v2/bindings/telegram/complete | 
+*WebSessionTelegramBindingControllerApi* | [**start4**](doc//WebSessionTelegramBindingControllerApi.md#start4) | **POST** /auth/session/v2/bindings/telegram/start | 
+*WebSessionTelegramControllerApi* | [**bootstrap1**](doc//WebSessionTelegramControllerApi.md#bootstrap1) | **GET** /auth/session/v2/telegram/flows/{flowId} | 
+*WebSessionTelegramControllerApi* | [**complete1**](doc//WebSessionTelegramControllerApi.md#complete1) | **POST** /auth/session/v2/telegram/complete | 
+*WebSessionTelegramControllerApi* | [**start1**](doc//WebSessionTelegramControllerApi.md#start1) | **POST** /auth/session/v2/telegram/start | 
+*WebSessionWalletBindingControllerApi* | [**bootstrap7**](doc//WebSessionWalletBindingControllerApi.md#bootstrap7) | **GET** /auth/session/v2/bindings/wallet/bootstrap | 
+*WebSessionWalletBindingControllerApi* | [**cancel4**](doc//WebSessionWalletBindingControllerApi.md#cancel4) | **POST** /auth/session/v2/bindings/wallet/cancel | 
+*WebSessionWalletBindingControllerApi* | [**complete4**](doc//WebSessionWalletBindingControllerApi.md#complete4) | **POST** /auth/session/v2/bindings/wallet/complete | 
+*WebSessionWalletBindingControllerApi* | [**start3**](doc//WebSessionWalletBindingControllerApi.md#start3) | **POST** /auth/session/v2/bindings/wallet/start | 
+*WebSessionWalletControllerApi* | [**bootstrap**](doc//WebSessionWalletControllerApi.md#bootstrap) | **GET** /auth/session/v2/wallet/flows/{flowId} | 
+*WebSessionWalletControllerApi* | [**complete**](doc//WebSessionWalletControllerApi.md#complete) | **POST** /auth/session/v2/wallet/complete | 
+*WebSessionWalletControllerApi* | [**start**](doc//WebSessionWalletControllerApi.md#start) | **POST** /auth/session/v2/wallet/start | 
 *WebpushApi* | [**getCurrentDeviceSubscriptionStatus**](doc//WebpushApi.md#getcurrentdevicesubscriptionstatus) | **POST** /webpush/me/subscriptions/status | 檢查目前瀏覽器推送綁定
 *WebpushApi* | [**getHealthStatus**](doc//WebpushApi.md#gethealthstatus) | **GET** /webpush/health | 獲取服務健康狀態
 *WebpushApi* | [**getSchedulerStatus**](doc//WebpushApi.md#getschedulerstatus) | **GET** /webpush/scheduled/status | 獲取定時推送狀態
@@ -835,16 +942,17 @@ Class | Method | HTTP request | Description
 *WebpushApi* | [**triggerScheduledPush**](doc//WebpushApi.md#triggerscheduledpush) | **POST** /webpush/scheduled/trigger | 手動觸發定時推送
 *WebpushApi* | [**unsubscribe**](doc//WebpushApi.md#unsubscribe) | **POST** /webpush/unsubscribe | 取消推送訂閱
 *WebpushApi* | [**unsubscribeCurrentDevice**](doc//WebpushApi.md#unsubscribecurrentdevice) | **POST** /webpush/me/subscriptions/unsubscribe | 停用目前瀏覽器推送
-*WebrtcApi* | [**hangupCall**](doc//WebrtcApi.md#hangupcall) | **POST** /webrtc/hangup | 掛斷 WebRTC 通話
-*WebrtcApi* | [**sendAnswer**](doc//WebrtcApi.md#sendanswer) | **POST** /webrtc/answer | 發送 WebRTC Answer
-*WebrtcApi* | [**sendIceCandidate**](doc//WebrtcApi.md#sendicecandidate) | **POST** /webrtc/ice-candidate | 發送 WebRTC ICE Candidate
-*WebrtcApi* | [**sendOffer**](doc//WebrtcApi.md#sendoffer) | **POST** /webrtc/offer | 發送 WebRTC Offer
+*WebrtcApi* | [**retired**](doc//WebrtcApi.md#retired) | **POST** /webrtc/hangup | Update the app to use call protocol 2
+*WebrtcApi* | [**retired1**](doc//WebrtcApi.md#retired1) | **POST** /webrtc/ice-candidate | Update the app to use call protocol 2
+*WebrtcApi* | [**retired2**](doc//WebrtcApi.md#retired2) | **POST** /webrtc/answer | Update the app to use call protocol 2
+*WebrtcApi* | [**retired3**](doc//WebrtcApi.md#retired3) | **POST** /webrtc/offer | Update the app to use call protocol 2
 *WithdrawalTermsControllerApi* | [**terms**](doc//WithdrawalTermsControllerApi.md#terms) | **GET** /public/withdrawal-terms | Read current account-independent USDT withdrawal terms
 
 
 ## Documentation For Models
 
  - [AcceptOrderParam](doc//AcceptOrderParam.md)
+ - [Access](doc//Access.md)
  - [AccountRecoveryAdvisory](doc//AccountRecoveryAdvisory.md)
  - [Action](doc//Action.md)
  - [ActionRule](doc//ActionRule.md)
@@ -940,6 +1048,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseCodeSupportKnowledgeImportResult](doc//ApiResponseCodeSupportKnowledgeImportResult.md)
  - [ApiResponseColdWallet](doc//ApiResponseColdWallet.md)
  - [ApiResponseFileSyncResponse](doc//ApiResponseFileSyncResponse.md)
+ - [ApiResponseFileUploadResponse](doc//ApiResponseFileUploadResponse.md)
  - [ApiResponseFlutterAppDeploymentResponse](doc//ApiResponseFlutterAppDeploymentResponse.md)
  - [ApiResponseImportResult](doc//ApiResponseImportResult.md)
  - [ApiResponseKnowledgeResponse](doc//ApiResponseKnowledgeResponse.md)
@@ -976,16 +1085,22 @@ Class | Method | HTTP request | Description
  - [BatchReviewPromoCodeParam](doc//BatchReviewPromoCodeParam.md)
  - [BatchReviewResult](doc//BatchReviewResult.md)
  - [BatchUpdatePaytableRequest](doc//BatchUpdatePaytableRequest.md)
+ - [BeginRequest](doc//BeginRequest.md)
  - [BetResponse](doc//BetResponse.md)
  - [BindEmailParam](doc//BindEmailParam.md)
  - [BindOAuthParam](doc//BindOAuthParam.md)
+ - [BindingTarget](doc//BindingTarget.md)
  - [BlockRule](doc//BlockRule.md)
+ - [Bootstrap](doc//Bootstrap.md)
  - [BotModerationReadinessDTO](doc//BotModerationReadinessDTO.md)
  - [BrokenImageAuditRequest](doc//BrokenImageAuditRequest.md)
  - [BrokenImageAuditResponse](doc//BrokenImageAuditResponse.md)
  - [BrokenImageCleanupResponse](doc//BrokenImageCleanupResponse.md)
  - [BrokenImageFinding](doc//BrokenImageFinding.md)
  - [BuyerPreferenceSummaryResponse](doc//BuyerPreferenceSummaryResponse.md)
+ - [CancelRequest](doc//CancelRequest.md)
+ - [Candidate](doc//Candidate.md)
+ - [Capabilities](doc//Capabilities.md)
  - [CartCheckoutItemParam](doc//CartCheckoutItemParam.md)
  - [CartCheckoutParam](doc//CartCheckoutParam.md)
  - [CartCheckoutPlanParam](doc//CartCheckoutPlanParam.md)
@@ -1002,6 +1117,7 @@ Class | Method | HTTP request | Description
  - [CartSummary](doc//CartSummary.md)
  - [CartSummaryDTO](doc//CartSummaryDTO.md)
  - [CategoryCandidate](doc//CategoryCandidate.md)
+ - [Challenge](doc//Challenge.md)
  - [ChangePasswordParam](doc//ChangePasswordParam.md)
  - [ChannelStatDto](doc//ChannelStatDto.md)
  - [ChatMessage](doc//ChatMessage.md)
@@ -1011,6 +1127,8 @@ Class | Method | HTTP request | Description
  - [ChatSession](doc//ChatSession.md)
  - [ChatSessionQueryParam](doc//ChatSessionQueryParam.md)
  - [CheckoutPreflightResponse](doc//CheckoutPreflightResponse.md)
+ - [Choice](doc//Choice.md)
+ - [Classification](doc//Classification.md)
  - [ClassificationSuggestionActionRequest](doc//ClassificationSuggestionActionRequest.md)
  - [ClientLog](doc//ClientLog.md)
  - [ClientLogDto](doc//ClientLogDto.md)
@@ -1031,7 +1149,15 @@ Class | Method | HTTP request | Description
  - [CommunityPartnerMeSummaryResponse](doc//CommunityPartnerMeSummaryResponse.md)
  - [CommunityPartnerResponse](doc//CommunityPartnerResponse.md)
  - [CommunityPartnerUpsertRequest](doc//CommunityPartnerUpsertRequest.md)
+ - [Complete200Response](doc//Complete200Response.md)
+ - [CompleteRequest](doc//CompleteRequest.md)
+ - [Completed](doc//Completed.md)
  - [ConfirmedWithdrawRequest](doc//ConfirmedWithdrawRequest.md)
+ - [Context](doc//Context.md)
+ - [ContextBootstrap](doc//ContextBootstrap.md)
+ - [ContextCreated](doc//ContextCreated.md)
+ - [ContextRequest](doc//ContextRequest.md)
+ - [ContextView](doc//ContextView.md)
  - [CreateActivityRequest](doc//CreateActivityRequest.md)
  - [CreateColdWalletParam](doc//CreateColdWalletParam.md)
  - [CreateIssueParam](doc//CreateIssueParam.md)
@@ -1153,6 +1279,7 @@ Class | Method | HTTP request | Description
  - [CurrentUserAvatarStateResponse](doc//CurrentUserAvatarStateResponse.md)
  - [CurrentUserGameAccessWebV2LaunchResponse](doc//CurrentUserGameAccessWebV2LaunchResponse.md)
  - [CurrentUserGameAccessWebV2OperationReceiptResponse](doc//CurrentUserGameAccessWebV2OperationReceiptResponse.md)
+ - [CurrentUserGameAccessWebV2SessionResponse](doc//CurrentUserGameAccessWebV2SessionResponse.md)
  - [CurrentUserGameAccessWebV2StateResponse](doc//CurrentUserGameAccessWebV2StateResponse.md)
  - [CurrentWithdrawSummaryResponse](doc//CurrentWithdrawSummaryResponse.md)
  - [CurrentWithdrawalV2CapabilitiesResponse](doc//CurrentWithdrawalV2CapabilitiesResponse.md)
@@ -1164,6 +1291,7 @@ Class | Method | HTTP request | Description
  - [CustomerStats](doc//CustomerStats.md)
  - [DailyRow](doc//DailyRow.md)
  - [DailyStatDto](doc//DailyStatDto.md)
+ - [DeliveryBootstrap](doc//DeliveryBootstrap.md)
  - [DeliveryDetail](doc//DeliveryDetail.md)
  - [DeliveryHistoryParam](doc//DeliveryHistoryParam.md)
  - [DeliveryOrderSearchParam](doc//DeliveryOrderSearchParam.md)
@@ -1190,10 +1318,13 @@ Class | Method | HTTP request | Description
  - [DemandSearchParam](doc//DemandSearchParam.md)
  - [DemandStatusHistoryResponse](doc//DemandStatusHistoryResponse.md)
  - [DemandStatusUpdateRequest](doc//DemandStatusUpdateRequest.md)
+ - [Destination](doc//Destination.md)
+ - [Device](doc//Device.md)
  - [DeviceInfo](doc//DeviceInfo.md)
  - [DimensionBreakdown](doc//DimensionBreakdown.md)
  - [DirectCheckoutSubmitParam](doc//DirectCheckoutSubmitParam.md)
  - [DirectCheckoutSubmitResponse](doc//DirectCheckoutSubmitResponse.md)
+ - [Discovery](doc//Discovery.md)
  - [Dispute](doc//Dispute.md)
  - [DisputeAiAnalysisResponse](doc//DisputeAiAnalysisResponse.md)
  - [DisputeAppealParam](doc//DisputeAppealParam.md)
@@ -1206,6 +1337,8 @@ Class | Method | HTTP request | Description
  - [DisputeSearchParam](doc//DisputeSearchParam.md)
  - [DisputeStatisticsDTO](doc//DisputeStatisticsDTO.md)
  - [ElementSnapshot](doc//ElementSnapshot.md)
+ - [EmailChangeRequest](doc//EmailChangeRequest.md)
+ - [EmailCodeRequest](doc//EmailCodeRequest.md)
  - [EmailLoginRequest](doc//EmailLoginRequest.md)
  - [EmailLoginSendCodeRequest](doc//EmailLoginSendCodeRequest.md)
  - [EmailLoginSendCodeResponse](doc//EmailLoginSendCodeResponse.md)
@@ -1214,10 +1347,12 @@ Class | Method | HTTP request | Description
  - [ExchangeRateRange](doc//ExchangeRateRange.md)
  - [ExchangeRateRangeSuggestionDTO](doc//ExchangeRateRangeSuggestionDTO.md)
  - [ExchangeRateRangeUpdateParam](doc//ExchangeRateRangeUpdateParam.md)
+ - [Expected](doc//Expected.md)
  - [FileRecord](doc//FileRecord.md)
  - [FileRecordInfo](doc//FileRecordInfo.md)
  - [FileRecordSearchRequest](doc//FileRecordSearchRequest.md)
  - [FileSyncResponse](doc//FileSyncResponse.md)
+ - [FileUploadResponse](doc//FileUploadResponse.md)
  - [FlutterAppDeploymentResponse](doc//FlutterAppDeploymentResponse.md)
  - [GameAccessProductDescriptorResponse](doc//GameAccessProductDescriptorResponse.md)
  - [GameAccessProductPurchaseRequest](doc//GameAccessProductPurchaseRequest.md)
@@ -1246,20 +1381,29 @@ Class | Method | HTTP request | Description
  - [GroupMessageDTO](doc//GroupMessageDTO.md)
  - [GroupModerationStatusDTO](doc//GroupModerationStatusDTO.md)
  - [GroupRaidModeUpdateRequest](doc//GroupRaidModeUpdateRequest.md)
+ - [GuestCartMigrationReceipt](doc//GuestCartMigrationReceipt.md)
+ - [GuestCartMigrationRequest](doc//GuestCartMigrationRequest.md)
+ - [HostIntentRequest](doc//HostIntentRequest.md)
  - [HourlyStatDto](doc//HourlyStatDto.md)
  - [ImportResult](doc//ImportResult.md)
+ - [Inspection](doc//Inspection.md)
  - [InterestRecordDTO](doc//InterestRecordDTO.md)
  - [InterestRecordSearchParam](doc//InterestRecordSearchParam.md)
+ - [IssueRequest](doc//IssueRequest.md)
  - [IssueSearchParam](doc//IssueSearchParam.md)
  - [Item](doc//Item.md)
  - [ItemState](doc//ItemState.md)
  - [JobTypeInfo](doc//JobTypeInfo.md)
  - [KnowledgeEntry](doc//KnowledgeEntry.md)
  - [KnowledgeResponse](doc//KnowledgeResponse.md)
+ - [LegacyEvidence](doc//LegacyEvidence.md)
+ - [LegacyRequest](doc//LegacyRequest.md)
+ - [LegacyValidation](doc//LegacyValidation.md)
  - [Link](doc//Link.md)
  - [LoginBindingsResponse](doc//LoginBindingsResponse.md)
  - [LoginMethod](doc//LoginMethod.md)
  - [LoginParam](doc//LoginParam.md)
+ - [LoginRequest](doc//LoginRequest.md)
  - [LoginResult](doc//LoginResult.md)
  - [LoginTokenResponse](doc//LoginTokenResponse.md)
  - [LowStockWarningDTO](doc//LowStockWarningDTO.md)
@@ -1292,9 +1436,11 @@ Class | Method | HTTP request | Description
  - [MemberUpdateParam](doc//MemberUpdateParam.md)
  - [MessageSendResponseDTO](doc//MessageSendResponseDTO.md)
  - [MetricsBlock](doc//MetricsBlock.md)
+ - [MigrationRequest](doc//MigrationRequest.md)
  - [ModerationAuditEventDTO](doc//ModerationAuditEventDTO.md)
  - [MonitoredGroupDTO](doc//MonitoredGroupDTO.md)
  - [MultiValueMapStringString](doc//MultiValueMapStringString.md)
+ - [Mutation](doc//Mutation.md)
  - [NaturalSearchRequest](doc//NaturalSearchRequest.md)
  - [NaturalSearchResponse](doc//NaturalSearchResponse.md)
  - [NextInterestEstimateDTO](doc//NextInterestEstimateDTO.md)
@@ -1310,6 +1456,7 @@ Class | Method | HTTP request | Description
  - [OAuthBindingInfo](doc//OAuthBindingInfo.md)
  - [ObservationHealth](doc//ObservationHealth.md)
  - [OffsetStatus](doc//OffsetStatus.md)
+ - [OptionsRequest](doc//OptionsRequest.md)
  - [Order](doc//Order.md)
  - [OrderActionState](doc//OrderActionState.md)
  - [OrderCancelParam](doc//OrderCancelParam.md)
@@ -1325,6 +1472,7 @@ Class | Method | HTTP request | Description
  - [OrderShipPlatformParam](doc//OrderShipPlatformParam.md)
  - [OrderStatisticsDTO](doc//OrderStatisticsDTO.md)
  - [OrderSumbitParam](doc//OrderSumbitParam.md)
+ - [Overview](doc//Overview.md)
  - [PageActivityDTO](doc//PageActivityDTO.md)
  - [PageAdminBetRecordSummaryResponse](doc//PageAdminBetRecordSummaryResponse.md)
  - [PageAdminDeliveryerSummaryResponse](doc//PageAdminDeliveryerSummaryResponse.md)
@@ -1401,6 +1549,7 @@ Class | Method | HTTP request | Description
  - [PaytableDTO](doc//PaytableDTO.md)
  - [PaytableEntryRequest](doc//PaytableEntryRequest.md)
  - [PaytableWithRtpDTO](doc//PaytableWithRtpDTO.md)
+ - [PendingDelivery](doc//PendingDelivery.md)
  - [PendingQuestionResponse](doc//PendingQuestionResponse.md)
  - [Period](doc//Period.md)
  - [PeriodBlock](doc//PeriodBlock.md)
@@ -1418,6 +1567,7 @@ Class | Method | HTTP request | Description
  - [PostUpdateParam](doc//PostUpdateParam.md)
  - [PostalSearchParam](doc//PostalSearchParam.md)
  - [PreferenceScore](doc//PreferenceScore.md)
+ - [Preparation](doc//Preparation.md)
  - [PricingState](doc//PricingState.md)
  - [Product](doc//Product.md)
  - [ProductBoardHideRequest](doc//ProductBoardHideRequest.md)
@@ -1483,7 +1633,11 @@ Class | Method | HTTP request | Description
  - [Quality](doc//Quality.md)
  - [QuickLogisticsRequest](doc//QuickLogisticsRequest.md)
  - [QuickLogisticsResult](doc//QuickLogisticsResult.md)
+ - [Quote](doc//Quote.md)
  - [Reason](doc//Reason.md)
+ - [ReauthenticationRequest](doc//ReauthenticationRequest.md)
+ - [Receipt](doc//Receipt.md)
+ - [RecentAuthentication](doc//RecentAuthentication.md)
  - [RecentOrderBlock](doc//RecentOrderBlock.md)
  - [Recharge](doc//Recharge.md)
  - [RechargeResponse](doc//RechargeResponse.md)
@@ -1493,9 +1647,13 @@ Class | Method | HTTP request | Description
  - [RegisterParam](doc//RegisterParam.md)
  - [RegisterResult](doc//RegisterResult.md)
  - [RegistrationOverviewResponse](doc//RegistrationOverviewResponse.md)
+ - [RegistrationRequest](doc//RegistrationRequest.md)
  - [ReplyIssueParam](doc//ReplyIssueParam.md)
+ - [Request](doc//Request.md)
  - [ResolveMarketRequest](doc//ResolveMarketRequest.md)
  - [ResolveRequest](doc//ResolveRequest.md)
+ - [RestoreRequest](doc//RestoreRequest.md)
+ - [Result](doc//Result.md)
  - [ReturnAddressOption](doc//ReturnAddressOption.md)
  - [ReturnDestination](doc//ReturnDestination.md)
  - [ReturnInfo](doc//ReturnInfo.md)
@@ -1510,6 +1668,7 @@ Class | Method | HTTP request | Description
  - [ReviewSearchParam](doc//ReviewSearchParam.md)
  - [ReviewStatisticsDTO](doc//ReviewStatisticsDTO.md)
  - [ReviewUpdateParam](doc//ReviewUpdateParam.md)
+ - [RevokeRequest](doc//RevokeRequest.md)
  - [RiskState](doc//RiskState.md)
  - [RtpEntry](doc//RtpEntry.md)
  - [RuntimeState](doc//RuntimeState.md)
@@ -1521,6 +1680,8 @@ Class | Method | HTTP request | Description
  - [SchedulerJobRequest](doc//SchedulerJobRequest.md)
  - [SchedulerJobResponse](doc//SchedulerJobResponse.md)
  - [SchedulerStatusResponseDTO](doc//SchedulerStatusResponseDTO.md)
+ - [Selection](doc//Selection.md)
+ - [SelectionPendingDelivery](doc//SelectionPendingDelivery.md)
  - [SellerDashboardDto](doc//SellerDashboardDto.md)
  - [SellerDashboardOverviewDto](doc//SellerDashboardOverviewDto.md)
  - [SellerDemandDetailResponse](doc//SellerDemandDetailResponse.md)
@@ -1529,11 +1690,19 @@ Class | Method | HTTP request | Description
  - [SellerDemandSummaryResponse](doc//SellerDemandSummaryResponse.md)
  - [SellerOrderStatsDTO](doc//SellerOrderStatsDTO.md)
  - [SellerTrustScoreDto](doc//SellerTrustScoreDto.md)
+ - [SessionCallAnswer](doc//SessionCallAnswer.md)
+ - [SessionCallHangup](doc//SessionCallHangup.md)
+ - [SessionCallIce](doc//SessionCallIce.md)
+ - [SessionCallOffer](doc//SessionCallOffer.md)
+ - [SessionCallResult](doc//SessionCallResult.md)
+ - [SessionCallStatus](doc//SessionCallStatus.md)
+ - [SessionCallStatusResult](doc//SessionCallStatusResult.md)
  - [SevenElevenStoreDTO](doc//SevenElevenStoreDTO.md)
  - [ShippingAddress](doc//ShippingAddress.md)
  - [ShippingAddressOption](doc//ShippingAddressOption.md)
  - [ShippingOptions](doc//ShippingOptions.md)
  - [ShippingServiceGroup](doc//ShippingServiceGroup.md)
+ - [SignupOptionsRequest](doc//SignupOptionsRequest.md)
  - [SlotDailyStatDto](doc//SlotDailyStatDto.md)
  - [SlotHourlyStatDto](doc//SlotHourlyStatDto.md)
  - [SlotMemberOddsEntry](doc//SlotMemberOddsEntry.md)
@@ -1547,6 +1716,7 @@ Class | Method | HTTP request | Description
  - [SlotSpinResponse](doc//SlotSpinResponse.md)
  - [SlotSymbolInfo](doc//SlotSymbolInfo.md)
  - [SlotWebV2CapabilitiesResponse](doc//SlotWebV2CapabilitiesResponse.md)
+ - [SlotWebV2DemoRequest](doc//SlotWebV2DemoRequest.md)
  - [SlotWebV2OperationReceiptResponse](doc//SlotWebV2OperationReceiptResponse.md)
  - [SlotWebV2SpinRequest](doc//SlotWebV2SpinRequest.md)
  - [SlotWebV2StateResponse](doc//SlotWebV2StateResponse.md)
@@ -1558,6 +1728,8 @@ Class | Method | HTTP request | Description
  - [StakingInterestDetail](doc//StakingInterestDetail.md)
  - [StakingSearchParam](doc//StakingSearchParam.md)
  - [StakingStatisticsDTO](doc//StakingStatisticsDTO.md)
+ - [StartRequest](doc//StartRequest.md)
+ - [Started](doc//Started.md)
  - [Store](doc//Store.md)
  - [StoreAnalyticsDTO](doc//StoreAnalyticsDTO.md)
  - [StoreBlock](doc//StoreBlock.md)
@@ -1625,8 +1797,12 @@ Class | Method | HTTP request | Description
  - [UserOrderSearchParam](doc//UserOrderSearchParam.md)
  - [UserPostStatistics](doc//UserPostStatistics.md)
  - [UserProfileUpdateParam](doc//UserProfileUpdateParam.md)
+ - [UserView](doc//UserView.md)
+ - [ValidationRequest](doc//ValidationRequest.md)
  - [VapidPublicKeyResponseDTO](doc//VapidPublicKeyResponseDTO.md)
  - [VerifyCodeRequest](doc//VerifyCodeRequest.md)
+ - [VerifyRequest](doc//VerifyRequest.md)
+ - [View](doc//View.md)
  - [ViewportSnapshot](doc//ViewportSnapshot.md)
  - [WalletConnectInfo](doc//WalletConnectInfo.md)
  - [WalletConnectNonceResponse](doc//WalletConnectNonceResponse.md)
@@ -1635,15 +1811,9 @@ Class | Method | HTTP request | Description
  - [Web3LoginRequest](doc//Web3LoginRequest.md)
  - [Web3NonceRequest](doc//Web3NonceRequest.md)
  - [WebPushDetails](doc//WebPushDetails.md)
- - [WebRTCAnswerDto](doc//WebRTCAnswerDto.md)
- - [WebRTCAnswerResponseDto](doc//WebRTCAnswerResponseDto.md)
- - [WebRTCHangupDto](doc//WebRTCHangupDto.md)
- - [WebRTCHangupResponseDto](doc//WebRTCHangupResponseDto.md)
- - [WebRTCIceCandidateDto](doc//WebRTCIceCandidateDto.md)
- - [WebRTCIceCandidateResponseDto](doc//WebRTCIceCandidateResponseDto.md)
- - [WebRTCOfferDto](doc//WebRTCOfferDto.md)
- - [WebRTCOfferResponseDto](doc//WebRTCOfferResponseDto.md)
- - [WebRTCResponseDto](doc//WebRTCResponseDto.md)
+ - [WebSessionClientObservation](doc//WebSessionClientObservation.md)
+ - [WebSessionLoginMethodAction](doc//WebSessionLoginMethodAction.md)
+ - [WebSessionStakingAction](doc//WebSessionStakingAction.md)
  - [Withdraw](doc//Withdraw.md)
  - [WithdrawSearchParam](doc//WithdrawSearchParam.md)
  - [WithdrawalTermsResponse](doc//WithdrawalTermsResponse.md)

@@ -10,18 +10,15 @@
 
 part of openapi.api;
 
-class WebRTCOfferResponseDto {
-  /// Returns a new [WebRTCOfferResponseDto] instance.
-  WebRTCOfferResponseDto({
+class ApiResponseFileUploadResponse {
+  /// Returns a new [ApiResponseFileUploadResponse] instance.
+  ApiResponseFileUploadResponse({
     this.success,
     this.message,
-    this.errorCode,
-    this.timestamp,
-    this.callId,
-    this.toUserId,
+    this.code,
+    this.data,
   });
 
-  /// 操作是否成功
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -30,7 +27,6 @@ class WebRTCOfferResponseDto {
   ///
   bool? success;
 
-  /// 響應訊息
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -39,63 +35,39 @@ class WebRTCOfferResponseDto {
   ///
   String? message;
 
-  /// 錯誤代碼（失敗時）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? errorCode;
+  String? code;
 
-  /// 時間戳
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? timestamp;
-
-  /// 通話唯一識別碼
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? callId;
-
-  /// 目標用戶ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? toUserId;
+  FileUploadResponse? data;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is WebRTCOfferResponseDto &&
+  bool operator ==(Object other) => identical(this, other) || other is ApiResponseFileUploadResponse &&
     other.success == success &&
     other.message == message &&
-    other.errorCode == errorCode &&
-    other.timestamp == timestamp &&
-    other.callId == callId &&
-    other.toUserId == toUserId;
+    other.code == code &&
+    other.data == data;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (success == null ? 0 : success!.hashCode) +
     (message == null ? 0 : message!.hashCode) +
-    (errorCode == null ? 0 : errorCode!.hashCode) +
-    (timestamp == null ? 0 : timestamp!.hashCode) +
-    (callId == null ? 0 : callId!.hashCode) +
-    (toUserId == null ? 0 : toUserId!.hashCode);
+    (code == null ? 0 : code!.hashCode) +
+    (data == null ? 0 : data!.hashCode);
 
   @override
-  String toString() => 'WebRTCOfferResponseDto[success=$success, message=$message, errorCode=$errorCode, timestamp=$timestamp, callId=$callId, toUserId=$toUserId]';
+  String toString() => 'ApiResponseFileUploadResponse[success=$success, message=$message, code=$code, data=$data]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -109,33 +81,23 @@ class WebRTCOfferResponseDto {
     } else {
       json[r'message'] = null;
     }
-    if (this.errorCode != null) {
-      json[r'errorCode'] = this.errorCode;
+    if (this.code != null) {
+      json[r'code'] = this.code;
     } else {
-      json[r'errorCode'] = null;
+      json[r'code'] = null;
     }
-    if (this.timestamp != null) {
-      json[r'timestamp'] = this.timestamp;
+    if (this.data != null) {
+      json[r'data'] = this.data;
     } else {
-      json[r'timestamp'] = null;
-    }
-    if (this.callId != null) {
-      json[r'callId'] = this.callId;
-    } else {
-      json[r'callId'] = null;
-    }
-    if (this.toUserId != null) {
-      json[r'toUserId'] = this.toUserId;
-    } else {
-      json[r'toUserId'] = null;
+      json[r'data'] = null;
     }
     return json;
   }
 
-  /// Returns a new [WebRTCOfferResponseDto] instance and imports its values from
+  /// Returns a new [ApiResponseFileUploadResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static WebRTCOfferResponseDto? fromJson(dynamic value) {
+  static ApiResponseFileUploadResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -144,29 +106,27 @@ class WebRTCOfferResponseDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "WebRTCOfferResponseDto[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "WebRTCOfferResponseDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ApiResponseFileUploadResponse[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ApiResponseFileUploadResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return WebRTCOfferResponseDto(
+      return ApiResponseFileUploadResponse(
         success: mapValueOfType<bool>(json, r'success'),
         message: mapValueOfType<String>(json, r'message'),
-        errorCode: mapValueOfType<String>(json, r'errorCode'),
-        timestamp: mapValueOfType<String>(json, r'timestamp'),
-        callId: mapValueOfType<String>(json, r'callId'),
-        toUserId: mapValueOfType<int>(json, r'toUserId'),
+        code: mapValueOfType<String>(json, r'code'),
+        data: FileUploadResponse.fromJson(json[r'data']),
       );
     }
     return null;
   }
 
-  static List<WebRTCOfferResponseDto> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <WebRTCOfferResponseDto>[];
+  static List<ApiResponseFileUploadResponse> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ApiResponseFileUploadResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = WebRTCOfferResponseDto.fromJson(row);
+        final value = ApiResponseFileUploadResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -175,12 +135,12 @@ class WebRTCOfferResponseDto {
     return result.toList(growable: growable);
   }
 
-  static Map<String, WebRTCOfferResponseDto> mapFromJson(dynamic json) {
-    final map = <String, WebRTCOfferResponseDto>{};
+  static Map<String, ApiResponseFileUploadResponse> mapFromJson(dynamic json) {
+    final map = <String, ApiResponseFileUploadResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = WebRTCOfferResponseDto.fromJson(entry.value);
+        final value = ApiResponseFileUploadResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -189,14 +149,14 @@ class WebRTCOfferResponseDto {
     return map;
   }
 
-  // maps a json object with a list of WebRTCOfferResponseDto-objects as value to a dart map
-  static Map<String, List<WebRTCOfferResponseDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<WebRTCOfferResponseDto>>{};
+  // maps a json object with a list of ApiResponseFileUploadResponse-objects as value to a dart map
+  static Map<String, List<ApiResponseFileUploadResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ApiResponseFileUploadResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = WebRTCOfferResponseDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ApiResponseFileUploadResponse.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

@@ -16,6 +16,57 @@ class CurrentNotificationV2ControllerApi {
 
   final ApiClient apiClient;
 
+  /// Idempotently soft-delete one current-user notification
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [User] currentUser (required):
+  ///
+  /// * [int] notificationId (required):
+  Future<Response> delete1WithHttpInfo(User currentUser, int notificationId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/notifications/me/{notificationId}'
+      .replaceAll('{notificationId}', notificationId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'currentUser', currentUser));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Idempotently soft-delete one current-user notification
+  ///
+  /// Parameters:
+  ///
+  /// * [User] currentUser (required):
+  ///
+  /// * [int] notificationId (required):
+  Future<void> delete1(User currentUser, int notificationId,) async {
+    final response = await delete1WithHttpInfo(currentUser, notificationId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
   /// Read one identity-minimized current-user notification
   ///
   /// Note: This method returns the HTTP [Response].
@@ -71,6 +122,60 @@ class CurrentNotificationV2ControllerApi {
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CurrentNotificationResponse.fromJson(value)) as CurrentNotificationResponse;
     
+    }
+    return null;
+  }
+
+  /// Mark only the current user's unread notifications read
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [User] currentUser (required):
+  Future<Response> markAllReadWithHttpInfo(User currentUser,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/notifications/me/read-all';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_queryParams('', 'currentUser', currentUser));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Mark only the current user's unread notifications read
+  ///
+  /// Parameters:
+  ///
+  /// * [User] currentUser (required):
+  Future<Map<String, int>?> markAllRead(User currentUser,) async {
+    final response = await markAllReadWithHttpInfo(currentUser,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return Map<String, int>.from(await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ApiClient.decodeGeneratedMap(value, (dynamic item) => item is int ? item : int.parse('$item'))),);
+
     }
     return null;
   }

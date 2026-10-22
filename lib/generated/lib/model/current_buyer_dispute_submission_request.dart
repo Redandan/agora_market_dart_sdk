@@ -15,6 +15,7 @@ class CurrentBuyerDisputeSubmissionRequest {
   CurrentBuyerDisputeSubmissionRequest({
     required this.expectedOrderVersion,
     this.description,
+    this.imageUrls = const {},
   });
 
   int expectedOrderVersion;
@@ -27,19 +28,23 @@ class CurrentBuyerDisputeSubmissionRequest {
   ///
   String? description;
 
+  Set<String> imageUrls;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CurrentBuyerDisputeSubmissionRequest &&
     other.expectedOrderVersion == expectedOrderVersion &&
-    other.description == description;
+    other.description == description &&
+    _deepEquality.equals(other.imageUrls, imageUrls);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (expectedOrderVersion.hashCode) +
-    (description == null ? 0 : description!.hashCode);
+    (description == null ? 0 : description!.hashCode) +
+    (imageUrls.hashCode);
 
   @override
-  String toString() => 'CurrentBuyerDisputeSubmissionRequest[expectedOrderVersion=$expectedOrderVersion, description=$description]';
+  String toString() => 'CurrentBuyerDisputeSubmissionRequest[expectedOrderVersion=$expectedOrderVersion, description=$description, imageUrls=$imageUrls]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -49,6 +54,7 @@ class CurrentBuyerDisputeSubmissionRequest {
     } else {
       json[r'description'] = null;
     }
+      json[r'imageUrls'] = this.imageUrls.toList(growable: false);
     return json;
   }
 
@@ -73,6 +79,9 @@ class CurrentBuyerDisputeSubmissionRequest {
       return CurrentBuyerDisputeSubmissionRequest(
         expectedOrderVersion: mapValueOfType<int>(json, r'expectedOrderVersion')!,
         description: mapValueOfType<String>(json, r'description'),
+        imageUrls: json[r'imageUrls'] is Iterable
+            ? (json[r'imageUrls'] as Iterable).cast<String>().toSet()
+            : const {},
       );
     }
     return null;

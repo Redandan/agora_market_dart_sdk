@@ -10,146 +10,126 @@
 
 part of openapi.api;
 
-class WebRTCIceCandidateDto {
-  /// Returns a new [WebRTCIceCandidateDto] instance.
-  WebRTCIceCandidateDto({
-    this.callId,
-    required this.fromUserId,
-    required this.toUserId,
-    this.candidate,
-    this.sdpMid,
-    this.sdpMLineIndex,
-    this.type,
-    this.timestamp,
+class Quote {
+  /// Returns a new [Quote] instance.
+  Quote({
+    this.productId,
+    this.amountUsdt,
+    this.currency,
+    this.durationDays,
+    this.quoteRevision,
+    this.access,
   });
 
-  /// 通話唯一識別碼
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? callId;
+  String? productId;
 
-  /// 發起通話的用戶ID
-  int fromUserId;
-
-  /// 接收通話的用戶ID
-  int toUserId;
-
-  /// ICE Candidate 內容
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? candidate;
+  String? amountUsdt;
 
-  /// SDP Media ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? sdpMid;
+  String? currency;
 
-  /// SDP Media Line Index
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? sdpMLineIndex;
+  int? durationDays;
 
-  /// 信令類型
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? type;
+  String? quoteRevision;
 
-  /// 發送時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  DateTime? timestamp;
+  CreatorSubscriptionAccessResponse? access;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is WebRTCIceCandidateDto &&
-    other.callId == callId &&
-    other.fromUserId == fromUserId &&
-    other.toUserId == toUserId &&
-    other.candidate == candidate &&
-    other.sdpMid == sdpMid &&
-    other.sdpMLineIndex == sdpMLineIndex &&
-    other.type == type &&
-    other.timestamp == timestamp;
+  bool operator ==(Object other) => identical(this, other) || other is Quote &&
+    other.productId == productId &&
+    other.amountUsdt == amountUsdt &&
+    other.currency == currency &&
+    other.durationDays == durationDays &&
+    other.quoteRevision == quoteRevision &&
+    other.access == access;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (callId == null ? 0 : callId!.hashCode) +
-    (fromUserId.hashCode) +
-    (toUserId.hashCode) +
-    (candidate == null ? 0 : candidate!.hashCode) +
-    (sdpMid == null ? 0 : sdpMid!.hashCode) +
-    (sdpMLineIndex == null ? 0 : sdpMLineIndex!.hashCode) +
-    (type == null ? 0 : type!.hashCode) +
-    (timestamp == null ? 0 : timestamp!.hashCode);
+    (productId == null ? 0 : productId!.hashCode) +
+    (amountUsdt == null ? 0 : amountUsdt!.hashCode) +
+    (currency == null ? 0 : currency!.hashCode) +
+    (durationDays == null ? 0 : durationDays!.hashCode) +
+    (quoteRevision == null ? 0 : quoteRevision!.hashCode) +
+    (access == null ? 0 : access!.hashCode);
 
   @override
-  String toString() => 'WebRTCIceCandidateDto[callId=$callId, fromUserId=$fromUserId, toUserId=$toUserId, candidate=$candidate, sdpMid=$sdpMid, sdpMLineIndex=$sdpMLineIndex, type=$type, timestamp=$timestamp]';
+  String toString() => 'Quote[productId=$productId, amountUsdt=$amountUsdt, currency=$currency, durationDays=$durationDays, quoteRevision=$quoteRevision, access=$access]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.callId != null) {
-      json[r'callId'] = this.callId;
+    if (this.productId != null) {
+      json[r'productId'] = this.productId;
     } else {
-      json[r'callId'] = null;
+      json[r'productId'] = null;
     }
-      json[r'fromUserId'] = this.fromUserId;
-      json[r'toUserId'] = this.toUserId;
-    if (this.candidate != null) {
-      json[r'candidate'] = this.candidate;
+    if (this.amountUsdt != null) {
+      json[r'amountUsdt'] = this.amountUsdt;
     } else {
-      json[r'candidate'] = null;
+      json[r'amountUsdt'] = null;
     }
-    if (this.sdpMid != null) {
-      json[r'sdpMid'] = this.sdpMid;
+    if (this.currency != null) {
+      json[r'currency'] = this.currency;
     } else {
-      json[r'sdpMid'] = null;
+      json[r'currency'] = null;
     }
-    if (this.sdpMLineIndex != null) {
-      json[r'sdpMLineIndex'] = this.sdpMLineIndex;
+    if (this.durationDays != null) {
+      json[r'durationDays'] = this.durationDays;
     } else {
-      json[r'sdpMLineIndex'] = null;
+      json[r'durationDays'] = null;
     }
-    if (this.type != null) {
-      json[r'type'] = this.type;
+    if (this.quoteRevision != null) {
+      json[r'quoteRevision'] = this.quoteRevision;
     } else {
-      json[r'type'] = null;
+      json[r'quoteRevision'] = null;
     }
-    if (this.timestamp != null) {
-      json[r'timestamp'] = this.timestamp!.toUtc().toIso8601String();
+    if (this.access != null) {
+      json[r'access'] = this.access;
     } else {
-      json[r'timestamp'] = null;
+      json[r'access'] = null;
     }
     return json;
   }
 
-  /// Returns a new [WebRTCIceCandidateDto] instance and imports its values from
+  /// Returns a new [Quote] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static WebRTCIceCandidateDto? fromJson(dynamic value) {
+  static Quote? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -158,31 +138,29 @@ class WebRTCIceCandidateDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "WebRTCIceCandidateDto[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "WebRTCIceCandidateDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "Quote[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "Quote[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return WebRTCIceCandidateDto(
-        callId: mapValueOfType<String>(json, r'callId'),
-        fromUserId: mapValueOfType<int>(json, r'fromUserId')!,
-        toUserId: mapValueOfType<int>(json, r'toUserId')!,
-        candidate: mapValueOfType<String>(json, r'candidate'),
-        sdpMid: mapValueOfType<String>(json, r'sdpMid'),
-        sdpMLineIndex: mapValueOfType<int>(json, r'sdpMLineIndex'),
-        type: mapValueOfType<String>(json, r'type'),
-        timestamp: mapDateTime(json, r'timestamp', r''),
+      return Quote(
+        productId: mapValueOfType<String>(json, r'productId'),
+        amountUsdt: mapValueOfType<String>(json, r'amountUsdt'),
+        currency: mapValueOfType<String>(json, r'currency'),
+        durationDays: mapValueOfType<int>(json, r'durationDays'),
+        quoteRevision: mapValueOfType<String>(json, r'quoteRevision'),
+        access: CreatorSubscriptionAccessResponse.fromJson(json[r'access']),
       );
     }
     return null;
   }
 
-  static List<WebRTCIceCandidateDto> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <WebRTCIceCandidateDto>[];
+  static List<Quote> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <Quote>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = WebRTCIceCandidateDto.fromJson(row);
+        final value = Quote.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -191,12 +169,12 @@ class WebRTCIceCandidateDto {
     return result.toList(growable: growable);
   }
 
-  static Map<String, WebRTCIceCandidateDto> mapFromJson(dynamic json) {
-    final map = <String, WebRTCIceCandidateDto>{};
+  static Map<String, Quote> mapFromJson(dynamic json) {
+    final map = <String, Quote>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = WebRTCIceCandidateDto.fromJson(entry.value);
+        final value = Quote.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -205,14 +183,14 @@ class WebRTCIceCandidateDto {
     return map;
   }
 
-  // maps a json object with a list of WebRTCIceCandidateDto-objects as value to a dart map
-  static Map<String, List<WebRTCIceCandidateDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<WebRTCIceCandidateDto>>{};
+  // maps a json object with a list of Quote-objects as value to a dart map
+  static Map<String, List<Quote>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<Quote>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = WebRTCIceCandidateDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = Quote.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -220,8 +198,6 @@ class WebRTCIceCandidateDto {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'fromUserId',
-    'toUserId',
   };
 }
 

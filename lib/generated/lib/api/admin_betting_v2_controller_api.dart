@@ -81,7 +81,7 @@ class AdminBettingV2ControllerApi {
   /// Read fail-closed ADMIN betting capabilities
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> capabilities8WithHttpInfo() async {
+  Future<Response> capabilities9WithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/admin/betting-markets/v2/capabilities';
 
@@ -107,8 +107,8 @@ class AdminBettingV2ControllerApi {
   }
 
   /// Read fail-closed ADMIN betting capabilities
-  Future<AdminBettingCapabilitiesResponse?> capabilities8() async {
-    final response = await capabilities8WithHttpInfo();
+  Future<AdminBettingCapabilitiesResponse?> capabilities9() async {
+    final response = await capabilities9WithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -301,7 +301,7 @@ class AdminBettingV2ControllerApi {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<Response> operation11WithHttpInfo(String operationId,) async {
+  Future<Response> operation12WithHttpInfo(String operationId,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/betting-markets/v2/operations/{operationId}'
       .replaceAll('{operationId}', operationId);
@@ -332,8 +332,8 @@ class AdminBettingV2ControllerApi {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<AdminBettingOperationReceiptResponse?> operation11(String operationId,) async {
-    final response = await operation11WithHttpInfo(operationId,);
+  Future<AdminBettingOperationReceiptResponse?> operation12(String operationId,) async {
+    final response = await operation12WithHttpInfo(operationId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -81,7 +81,7 @@ class GuardedAdminWithdrawalV2Api {
   /// Read fail-closed admin withdrawal operation gates
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> capabilities6WithHttpInfo() async {
+  Future<Response> capabilities7WithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/admin/withdraws/v2/capabilities';
 
@@ -107,8 +107,8 @@ class GuardedAdminWithdrawalV2Api {
   }
 
   /// Read fail-closed admin withdrawal operation gates
-  Future<AdminWithdrawalV2CapabilitiesResponse?> capabilities6() async {
-    final response = await capabilities6WithHttpInfo();
+  Future<AdminWithdrawalV2CapabilitiesResponse?> capabilities7() async {
+    final response = await capabilities7WithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -191,7 +191,7 @@ class GuardedAdminWithdrawalV2Api {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<Response> operation8WithHttpInfo(String operationId,) async {
+  Future<Response> operation9WithHttpInfo(String operationId,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/withdraws/v2/operations/{operationId}'
       .replaceAll('{operationId}', operationId);
@@ -222,8 +222,8 @@ class GuardedAdminWithdrawalV2Api {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<AdminWithdrawalV2OperationReceiptResponse?> operation8(String operationId,) async {
-    final response = await operation8WithHttpInfo(operationId,);
+  Future<AdminWithdrawalV2OperationReceiptResponse?> operation9(String operationId,) async {
+    final response = await operation9WithHttpInfo(operationId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

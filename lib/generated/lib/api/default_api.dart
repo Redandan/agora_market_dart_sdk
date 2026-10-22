@@ -3877,7 +3877,7 @@ class DefaultApi {
   /// * [int] reportId (required):
   ///
   /// * [ProductReportResolveParam] productReportResolveParam (required):
-  Future<Response> resolve2WithHttpInfo(int reportId, ProductReportResolveParam productReportResolveParam,) async {
+  Future<Response> resolve3WithHttpInfo(int reportId, ProductReportResolveParam productReportResolveParam,) async {
     // ignore: prefer_const_declarations
     final path = r'/admin/reports/{reportId}/resolve'
       .replaceAll('{reportId}', reportId.toString());
@@ -3912,8 +3912,8 @@ class DefaultApi {
   /// * [int] reportId (required):
   ///
   /// * [ProductReportResolveParam] productReportResolveParam (required):
-  Future<ProductReport?> resolve2(int reportId, ProductReportResolveParam productReportResolveParam,) async {
-    final response = await resolve2WithHttpInfo(reportId, productReportResolveParam,);
+  Future<ProductReport?> resolve3(int reportId, ProductReportResolveParam productReportResolveParam,) async {
+    final response = await resolve3WithHttpInfo(reportId, productReportResolveParam,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

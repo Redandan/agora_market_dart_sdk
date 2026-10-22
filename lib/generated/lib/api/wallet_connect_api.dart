@@ -16,6 +16,53 @@ class WalletConnectApi {
 
   final ApiClient apiClient;
 
+  /// Performs an HTTP 'POST /auth/wallet-connect/login/second-factor' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [Request] request (required):
+  Future<Response> completeSecondFactorWithHttpInfo(Request request,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/auth/wallet-connect/login/second-factor';
+
+    // ignore: prefer_final_locals
+    Object? postBody = request;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [Request] request (required):
+  Future<Map<String, Object>?> completeSecondFactor(Request request,) async {
+    final response = await completeSecondFactorWithHttpInfo(request,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return Map<String, Object>.from(await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => ApiClient.decodeGeneratedMap(value, (dynamic item) => item)),);
+
+    }
+    return null;
+  }
+
   /// 获取 Nonce（通用）
   ///
   /// 根据钱包地址生成 nonce 和签名消息，用于前端签名。支持以太坊地址（0x开头）和 Tron 地址（T开头）

@@ -69,6 +69,63 @@ class SlotWebV2ControllerApi {
     return null;
   }
 
+  /// Simulate one demo spin without changing wallet balance or saving a round
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] gameId (required):
+  ///
+  /// * [SlotWebV2DemoRequest] slotWebV2DemoRequest (required):
+  Future<Response> demoWithHttpInfo(String gameId, SlotWebV2DemoRequest slotWebV2DemoRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/slot/games/{gameId}/web-v2/demo-spins'
+      .replaceAll('{gameId}', gameId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = slotWebV2DemoRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Simulate one demo spin without changing wallet balance or saving a round
+  ///
+  /// Parameters:
+  ///
+  /// * [String] gameId (required):
+  ///
+  /// * [SlotWebV2DemoRequest] slotWebV2DemoRequest (required):
+  Future<SlotSpinResponse?> demo(String gameId, SlotWebV2DemoRequest slotWebV2DemoRequest,) async {
+    final response = await demoWithHttpInfo(gameId, slotWebV2DemoRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => SlotSpinResponse.fromJson(value)) as SlotSpinResponse;
+    
+    }
+    return null;
+  }
+
   /// Recover one owned durable slot outcome
   ///
   /// Note: This method returns the HTTP [Response].
@@ -78,7 +135,7 @@ class SlotWebV2ControllerApi {
   /// * [String] gameId (required):
   ///
   /// * [String] operationId (required):
-  Future<Response> operation3WithHttpInfo(String gameId, String operationId,) async {
+  Future<Response> operation4WithHttpInfo(String gameId, String operationId,) async {
     // ignore: prefer_const_declarations
     final path = r'/slot/games/{gameId}/web-v2/operations/{operationId}'
       .replaceAll('{gameId}', gameId)
@@ -112,8 +169,8 @@ class SlotWebV2ControllerApi {
   /// * [String] gameId (required):
   ///
   /// * [String] operationId (required):
-  Future<SlotWebV2OperationReceiptResponse?> operation3(String gameId, String operationId,) async {
-    final response = await operation3WithHttpInfo(gameId, operationId,);
+  Future<SlotWebV2OperationReceiptResponse?> operation4(String gameId, String operationId,) async {
+    final response = await operation4WithHttpInfo(gameId, operationId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

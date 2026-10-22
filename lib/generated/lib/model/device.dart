@@ -10,149 +10,142 @@
 
 part of openapi.api;
 
-class WebRTCAnswerResponseDto {
-  /// Returns a new [WebRTCAnswerResponseDto] instance.
-  WebRTCAnswerResponseDto({
-    this.success,
-    this.message,
-    this.errorCode,
-    this.timestamp,
-    this.callId,
-    this.toUserId,
-    this.accepted,
+class Device {
+  /// Returns a new [Device] instance.
+  Device({
+    this.sessionId,
+    this.deviceLabel,
+    this.current,
+    this.createdAt,
+    this.lastInteractiveAt,
+    this.idleExpiresAt,
+    this.absoluteExpiresAt,
   });
 
-  /// 操作是否成功
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? success;
+  String? sessionId;
 
-  /// 響應訊息
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? message;
+  String? deviceLabel;
 
-  /// 錯誤代碼（失敗時）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? errorCode;
+  bool? current;
 
-  /// 時間戳
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? timestamp;
+  DateTime? createdAt;
 
-  /// 通話唯一識別碼
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? callId;
+  DateTime? lastInteractiveAt;
 
-  /// 目標用戶ID
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? toUserId;
+  DateTime? idleExpiresAt;
 
-  /// 是否接受通話
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? accepted;
+  DateTime? absoluteExpiresAt;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is WebRTCAnswerResponseDto &&
-    other.success == success &&
-    other.message == message &&
-    other.errorCode == errorCode &&
-    other.timestamp == timestamp &&
-    other.callId == callId &&
-    other.toUserId == toUserId &&
-    other.accepted == accepted;
+  bool operator ==(Object other) => identical(this, other) || other is Device &&
+    other.sessionId == sessionId &&
+    other.deviceLabel == deviceLabel &&
+    other.current == current &&
+    other.createdAt == createdAt &&
+    other.lastInteractiveAt == lastInteractiveAt &&
+    other.idleExpiresAt == idleExpiresAt &&
+    other.absoluteExpiresAt == absoluteExpiresAt;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (success == null ? 0 : success!.hashCode) +
-    (message == null ? 0 : message!.hashCode) +
-    (errorCode == null ? 0 : errorCode!.hashCode) +
-    (timestamp == null ? 0 : timestamp!.hashCode) +
-    (callId == null ? 0 : callId!.hashCode) +
-    (toUserId == null ? 0 : toUserId!.hashCode) +
-    (accepted == null ? 0 : accepted!.hashCode);
+    (sessionId == null ? 0 : sessionId!.hashCode) +
+    (deviceLabel == null ? 0 : deviceLabel!.hashCode) +
+    (current == null ? 0 : current!.hashCode) +
+    (createdAt == null ? 0 : createdAt!.hashCode) +
+    (lastInteractiveAt == null ? 0 : lastInteractiveAt!.hashCode) +
+    (idleExpiresAt == null ? 0 : idleExpiresAt!.hashCode) +
+    (absoluteExpiresAt == null ? 0 : absoluteExpiresAt!.hashCode);
 
   @override
-  String toString() => 'WebRTCAnswerResponseDto[success=$success, message=$message, errorCode=$errorCode, timestamp=$timestamp, callId=$callId, toUserId=$toUserId, accepted=$accepted]';
+  String toString() => 'Device[sessionId=$sessionId, deviceLabel=$deviceLabel, current=$current, createdAt=$createdAt, lastInteractiveAt=$lastInteractiveAt, idleExpiresAt=$idleExpiresAt, absoluteExpiresAt=$absoluteExpiresAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.success != null) {
-      json[r'success'] = this.success;
+    if (this.sessionId != null) {
+      json[r'sessionId'] = this.sessionId;
     } else {
-      json[r'success'] = null;
+      json[r'sessionId'] = null;
     }
-    if (this.message != null) {
-      json[r'message'] = this.message;
+    if (this.deviceLabel != null) {
+      json[r'deviceLabel'] = this.deviceLabel;
     } else {
-      json[r'message'] = null;
+      json[r'deviceLabel'] = null;
     }
-    if (this.errorCode != null) {
-      json[r'errorCode'] = this.errorCode;
+    if (this.current != null) {
+      json[r'current'] = this.current;
     } else {
-      json[r'errorCode'] = null;
+      json[r'current'] = null;
     }
-    if (this.timestamp != null) {
-      json[r'timestamp'] = this.timestamp;
+    if (this.createdAt != null) {
+      json[r'createdAt'] = this.createdAt!.toUtc().toIso8601String();
     } else {
-      json[r'timestamp'] = null;
+      json[r'createdAt'] = null;
     }
-    if (this.callId != null) {
-      json[r'callId'] = this.callId;
+    if (this.lastInteractiveAt != null) {
+      json[r'lastInteractiveAt'] = this.lastInteractiveAt!.toUtc().toIso8601String();
     } else {
-      json[r'callId'] = null;
+      json[r'lastInteractiveAt'] = null;
     }
-    if (this.toUserId != null) {
-      json[r'toUserId'] = this.toUserId;
+    if (this.idleExpiresAt != null) {
+      json[r'idleExpiresAt'] = this.idleExpiresAt!.toUtc().toIso8601String();
     } else {
-      json[r'toUserId'] = null;
+      json[r'idleExpiresAt'] = null;
     }
-    if (this.accepted != null) {
-      json[r'accepted'] = this.accepted;
+    if (this.absoluteExpiresAt != null) {
+      json[r'absoluteExpiresAt'] = this.absoluteExpiresAt!.toUtc().toIso8601String();
     } else {
-      json[r'accepted'] = null;
+      json[r'absoluteExpiresAt'] = null;
     }
     return json;
   }
 
-  /// Returns a new [WebRTCAnswerResponseDto] instance and imports its values from
+  /// Returns a new [Device] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static WebRTCAnswerResponseDto? fromJson(dynamic value) {
+  static Device? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -161,30 +154,30 @@ class WebRTCAnswerResponseDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "WebRTCAnswerResponseDto[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "WebRTCAnswerResponseDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "Device[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "Device[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return WebRTCAnswerResponseDto(
-        success: mapValueOfType<bool>(json, r'success'),
-        message: mapValueOfType<String>(json, r'message'),
-        errorCode: mapValueOfType<String>(json, r'errorCode'),
-        timestamp: mapValueOfType<String>(json, r'timestamp'),
-        callId: mapValueOfType<String>(json, r'callId'),
-        toUserId: mapValueOfType<int>(json, r'toUserId'),
-        accepted: mapValueOfType<bool>(json, r'accepted'),
+      return Device(
+        sessionId: mapValueOfType<String>(json, r'sessionId'),
+        deviceLabel: mapValueOfType<String>(json, r'deviceLabel'),
+        current: mapValueOfType<bool>(json, r'current'),
+        createdAt: mapDateTime(json, r'createdAt', r''),
+        lastInteractiveAt: mapDateTime(json, r'lastInteractiveAt', r''),
+        idleExpiresAt: mapDateTime(json, r'idleExpiresAt', r''),
+        absoluteExpiresAt: mapDateTime(json, r'absoluteExpiresAt', r''),
       );
     }
     return null;
   }
 
-  static List<WebRTCAnswerResponseDto> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <WebRTCAnswerResponseDto>[];
+  static List<Device> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <Device>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = WebRTCAnswerResponseDto.fromJson(row);
+        final value = Device.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -193,12 +186,12 @@ class WebRTCAnswerResponseDto {
     return result.toList(growable: growable);
   }
 
-  static Map<String, WebRTCAnswerResponseDto> mapFromJson(dynamic json) {
-    final map = <String, WebRTCAnswerResponseDto>{};
+  static Map<String, Device> mapFromJson(dynamic json) {
+    final map = <String, Device>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = WebRTCAnswerResponseDto.fromJson(entry.value);
+        final value = Device.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -207,14 +200,14 @@ class WebRTCAnswerResponseDto {
     return map;
   }
 
-  // maps a json object with a list of WebRTCAnswerResponseDto-objects as value to a dart map
-  static Map<String, List<WebRTCAnswerResponseDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<WebRTCAnswerResponseDto>>{};
+  // maps a json object with a list of Device-objects as value to a dart map
+  static Map<String, List<Device>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<Device>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = WebRTCAnswerResponseDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = Device.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

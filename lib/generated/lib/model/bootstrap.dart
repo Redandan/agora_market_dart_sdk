@@ -10,129 +10,126 @@
 
 part of openapi.api;
 
-class WebRTCAnswerDto {
-  /// Returns a new [WebRTCAnswerDto] instance.
-  WebRTCAnswerDto({
-    this.callId,
-    required this.fromUserId,
-    required this.toUserId,
-    this.sdp,
-    this.type,
-    this.timestamp,
-    this.accepted,
+class Bootstrap {
+  /// Returns a new [Bootstrap] instance.
+  Bootstrap({
+    this.flowId,
+    this.status,
+    this.csrf,
+    this.expiresAt,
+    this.challenge,
+    this.cancelCsrf,
   });
 
-  /// 通話唯一識別碼
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? callId;
+  String? flowId;
 
-  /// 發起通話的用戶ID
-  int fromUserId;
-
-  /// 接收通話的用戶ID
-  int toUserId;
-
-  /// WebRTC SDP Answer 內容
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? sdp;
+  String? status;
 
-  /// 信令類型
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? type;
+  String? csrf;
 
-  /// 發送時間
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  DateTime? timestamp;
+  DateTime? expiresAt;
 
-  /// 是否接受通話
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? accepted;
+  Challenge? challenge;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? cancelCsrf;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is WebRTCAnswerDto &&
-    other.callId == callId &&
-    other.fromUserId == fromUserId &&
-    other.toUserId == toUserId &&
-    other.sdp == sdp &&
-    other.type == type &&
-    other.timestamp == timestamp &&
-    other.accepted == accepted;
+  bool operator ==(Object other) => identical(this, other) || other is Bootstrap &&
+    other.flowId == flowId &&
+    other.status == status &&
+    other.csrf == csrf &&
+    other.expiresAt == expiresAt &&
+    other.challenge == challenge &&
+    other.cancelCsrf == cancelCsrf;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (callId == null ? 0 : callId!.hashCode) +
-    (fromUserId.hashCode) +
-    (toUserId.hashCode) +
-    (sdp == null ? 0 : sdp!.hashCode) +
-    (type == null ? 0 : type!.hashCode) +
-    (timestamp == null ? 0 : timestamp!.hashCode) +
-    (accepted == null ? 0 : accepted!.hashCode);
+    (flowId == null ? 0 : flowId!.hashCode) +
+    (status == null ? 0 : status!.hashCode) +
+    (csrf == null ? 0 : csrf!.hashCode) +
+    (expiresAt == null ? 0 : expiresAt!.hashCode) +
+    (challenge == null ? 0 : challenge!.hashCode) +
+    (cancelCsrf == null ? 0 : cancelCsrf!.hashCode);
 
   @override
-  String toString() => 'WebRTCAnswerDto[callId=$callId, fromUserId=$fromUserId, toUserId=$toUserId, sdp=$sdp, type=$type, timestamp=$timestamp, accepted=$accepted]';
+  String toString() => 'Bootstrap[flowId=$flowId, status=$status, csrf=$csrf, expiresAt=$expiresAt, challenge=$challenge, cancelCsrf=$cancelCsrf]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.callId != null) {
-      json[r'callId'] = this.callId;
+    if (this.flowId != null) {
+      json[r'flowId'] = this.flowId;
     } else {
-      json[r'callId'] = null;
+      json[r'flowId'] = null;
     }
-      json[r'fromUserId'] = this.fromUserId;
-      json[r'toUserId'] = this.toUserId;
-    if (this.sdp != null) {
-      json[r'sdp'] = this.sdp;
+    if (this.status != null) {
+      json[r'status'] = this.status;
     } else {
-      json[r'sdp'] = null;
+      json[r'status'] = null;
     }
-    if (this.type != null) {
-      json[r'type'] = this.type;
+    if (this.csrf != null) {
+      json[r'csrf'] = this.csrf;
     } else {
-      json[r'type'] = null;
+      json[r'csrf'] = null;
     }
-    if (this.timestamp != null) {
-      json[r'timestamp'] = this.timestamp!.toUtc().toIso8601String();
+    if (this.expiresAt != null) {
+      json[r'expiresAt'] = this.expiresAt!.toUtc().toIso8601String();
     } else {
-      json[r'timestamp'] = null;
+      json[r'expiresAt'] = null;
     }
-    if (this.accepted != null) {
-      json[r'accepted'] = this.accepted;
+    if (this.challenge != null) {
+      json[r'challenge'] = this.challenge;
     } else {
-      json[r'accepted'] = null;
+      json[r'challenge'] = null;
+    }
+    if (this.cancelCsrf != null) {
+      json[r'cancelCsrf'] = this.cancelCsrf;
+    } else {
+      json[r'cancelCsrf'] = null;
     }
     return json;
   }
 
-  /// Returns a new [WebRTCAnswerDto] instance and imports its values from
+  /// Returns a new [Bootstrap] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static WebRTCAnswerDto? fromJson(dynamic value) {
+  static Bootstrap? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -141,30 +138,29 @@ class WebRTCAnswerDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "WebRTCAnswerDto[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "WebRTCAnswerDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "Bootstrap[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "Bootstrap[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return WebRTCAnswerDto(
-        callId: mapValueOfType<String>(json, r'callId'),
-        fromUserId: mapValueOfType<int>(json, r'fromUserId')!,
-        toUserId: mapValueOfType<int>(json, r'toUserId')!,
-        sdp: mapValueOfType<String>(json, r'sdp'),
-        type: mapValueOfType<String>(json, r'type'),
-        timestamp: mapDateTime(json, r'timestamp', r''),
-        accepted: mapValueOfType<bool>(json, r'accepted'),
+      return Bootstrap(
+        flowId: mapValueOfType<String>(json, r'flowId'),
+        status: mapValueOfType<String>(json, r'status'),
+        csrf: mapValueOfType<String>(json, r'csrf'),
+        expiresAt: mapDateTime(json, r'expiresAt', r''),
+        challenge: Challenge.fromJson(json[r'challenge']),
+        cancelCsrf: mapValueOfType<String>(json, r'cancelCsrf'),
       );
     }
     return null;
   }
 
-  static List<WebRTCAnswerDto> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <WebRTCAnswerDto>[];
+  static List<Bootstrap> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <Bootstrap>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = WebRTCAnswerDto.fromJson(row);
+        final value = Bootstrap.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -173,12 +169,12 @@ class WebRTCAnswerDto {
     return result.toList(growable: growable);
   }
 
-  static Map<String, WebRTCAnswerDto> mapFromJson(dynamic json) {
-    final map = <String, WebRTCAnswerDto>{};
+  static Map<String, Bootstrap> mapFromJson(dynamic json) {
+    final map = <String, Bootstrap>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = WebRTCAnswerDto.fromJson(entry.value);
+        final value = Bootstrap.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -187,14 +183,14 @@ class WebRTCAnswerDto {
     return map;
   }
 
-  // maps a json object with a list of WebRTCAnswerDto-objects as value to a dart map
-  static Map<String, List<WebRTCAnswerDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<WebRTCAnswerDto>>{};
+  // maps a json object with a list of Bootstrap-objects as value to a dart map
+  static Map<String, List<Bootstrap>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<Bootstrap>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = WebRTCAnswerDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = Bootstrap.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -202,8 +198,6 @@ class WebRTCAnswerDto {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'fromUserId',
-    'toUserId',
   };
 }
 

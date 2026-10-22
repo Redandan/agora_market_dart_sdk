@@ -16,6 +16,59 @@ class CurrentUserGameAccessWebV2ControllerApi {
 
   final ApiClient apiClient;
 
+  /// Performs an HTTP 'POST /game-access/products/{productId}/web-v2/sessions/{clientSessionId}/end' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] productId (required):
+  ///
+  /// * [String] clientSessionId (required):
+  Future<Response> endSession1WithHttpInfo(int productId, String clientSessionId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/game-access/products/{productId}/web-v2/sessions/{clientSessionId}/end'
+      .replaceAll('{productId}', productId.toString())
+      .replaceAll('{clientSessionId}', clientSessionId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] productId (required):
+  ///
+  /// * [String] clientSessionId (required):
+  Future<CurrentUserGameAccessWebV2SessionResponse?> endSession1(int productId, String clientSessionId,) async {
+    final response = await endSession1WithHttpInfo(productId, clientSessionId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CurrentUserGameAccessWebV2SessionResponse.fromJson(value)) as CurrentUserGameAccessWebV2SessionResponse;
+    
+    }
+    return null;
+  }
+
   /// Read one owned V2 game-access activation receipt
   ///
   /// Note: This method returns the HTTP [Response].
@@ -69,6 +122,59 @@ class CurrentUserGameAccessWebV2ControllerApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CurrentUserGameAccessWebV2OperationReceiptResponse.fromJson(value)) as CurrentUserGameAccessWebV2OperationReceiptResponse;
+    
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'GET /game-access/products/{productId}/web-v2/sessions/{clientSessionId}' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] productId (required):
+  ///
+  /// * [String] clientSessionId (required):
+  Future<Response> getSessionWithHttpInfo(int productId, String clientSessionId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/game-access/products/{productId}/web-v2/sessions/{clientSessionId}'
+      .replaceAll('{productId}', productId.toString())
+      .replaceAll('{clientSessionId}', clientSessionId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] productId (required):
+  ///
+  /// * [String] clientSessionId (required):
+  Future<CurrentUserGameAccessWebV2SessionResponse?> getSession(int productId, String clientSessionId,) async {
+    final response = await getSessionWithHttpInfo(productId, clientSessionId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeWithAsync(await _decodeBodyBytes(response), (dynamic value) => CurrentUserGameAccessWebV2SessionResponse.fromJson(value)) as CurrentUserGameAccessWebV2SessionResponse;
     
     }
     return null;

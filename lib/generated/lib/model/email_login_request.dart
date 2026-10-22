@@ -15,6 +15,7 @@ class EmailLoginRequest {
   EmailLoginRequest({
     required this.email,
     required this.verificationCode,
+    this.twoFactorCode,
   });
 
   /// 用戶郵箱
@@ -23,24 +24,40 @@ class EmailLoginRequest {
   /// 驗證碼
   String verificationCode;
 
+  /// 帳號已啟用雙因素認證時必填的驗證碼
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? twoFactorCode;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is EmailLoginRequest &&
     other.email == email &&
-    other.verificationCode == verificationCode;
+    other.verificationCode == verificationCode &&
+    other.twoFactorCode == twoFactorCode;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (email.hashCode) +
-    (verificationCode.hashCode);
+    (verificationCode.hashCode) +
+    (twoFactorCode == null ? 0 : twoFactorCode!.hashCode);
 
   @override
-  String toString() => 'EmailLoginRequest[email=$email, verificationCode=$verificationCode]';
+  String toString() => 'EmailLoginRequest[email=$email, verificationCode=$verificationCode, twoFactorCode=$twoFactorCode]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'email'] = this.email;
       json[r'verificationCode'] = this.verificationCode;
+    if (this.twoFactorCode != null) {
+      json[r'twoFactorCode'] = this.twoFactorCode;
+    } else {
+      json[r'twoFactorCode'] = null;
+    }
     return json;
   }
 
@@ -65,6 +82,7 @@ class EmailLoginRequest {
       return EmailLoginRequest(
         email: mapValueOfType<String>(json, r'email')!,
         verificationCode: mapValueOfType<String>(json, r'verificationCode')!,
+        twoFactorCode: mapValueOfType<String>(json, r'twoFactorCode'),
       );
     }
     return null;

@@ -14,26 +14,42 @@ class OAuth2TokenIdRequest {
   /// Returns a new [OAuth2TokenIdRequest] instance.
   OAuth2TokenIdRequest({
     required this.tokenId,
+    this.twoFactorCode,
   });
 
   /// 临时token ID（从回调URL中获取）
   String tokenId;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? twoFactorCode;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is OAuth2TokenIdRequest &&
-    other.tokenId == tokenId;
+    other.tokenId == tokenId &&
+    other.twoFactorCode == twoFactorCode;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (tokenId.hashCode);
+    (tokenId.hashCode) +
+    (twoFactorCode == null ? 0 : twoFactorCode!.hashCode);
 
   @override
-  String toString() => 'OAuth2TokenIdRequest[tokenId=$tokenId]';
+  String toString() => 'OAuth2TokenIdRequest[tokenId=$tokenId, twoFactorCode=$twoFactorCode]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'tokenId'] = this.tokenId;
+    if (this.twoFactorCode != null) {
+      json[r'twoFactorCode'] = this.twoFactorCode;
+    } else {
+      json[r'twoFactorCode'] = null;
+    }
     return json;
   }
 
@@ -57,6 +73,7 @@ class OAuth2TokenIdRequest {
 
       return OAuth2TokenIdRequest(
         tokenId: mapValueOfType<String>(json, r'tokenId')!,
+        twoFactorCode: mapValueOfType<String>(json, r'twoFactorCode'),
       );
     }
     return null;

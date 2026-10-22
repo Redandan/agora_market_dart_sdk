@@ -173,7 +173,7 @@ class CurrentDeliveryOperationsV2ControllerApi {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<Response> operation4WithHttpInfo(String operationId,) async {
+  Future<Response> operation5WithHttpInfo(String operationId,) async {
     // ignore: prefer_const_declarations
     final path = r'/delivery/me/v2/operations/{operationId}'
       .replaceAll('{operationId}', operationId);
@@ -204,8 +204,8 @@ class CurrentDeliveryOperationsV2ControllerApi {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<CurrentDeliveryOperationReceiptResponse?> operation4(String operationId,) async {
-    final response = await operation4WithHttpInfo(operationId,);
+  Future<CurrentDeliveryOperationReceiptResponse?> operation5(String operationId,) async {
+    final response = await operation5WithHttpInfo(operationId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

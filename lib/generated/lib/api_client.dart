@@ -222,6 +222,8 @@ class ApiClient {
           return value is DateTime ? value : DateTime.tryParse(value);
         case 'AcceptOrderParam':
           return AcceptOrderParam.fromJson(value);
+        case 'Access':
+          return Access.fromJson(value);
         case 'AccountRecoveryAdvisory':
           return AccountRecoveryAdvisory.fromJson(value);
         case 'Action':
@@ -412,6 +414,8 @@ class ApiClient {
           return ApiResponseColdWallet.fromJson(value);
         case 'ApiResponseFileSyncResponse':
           return ApiResponseFileSyncResponse.fromJson(value);
+        case 'ApiResponseFileUploadResponse':
+          return ApiResponseFileUploadResponse.fromJson(value);
         case 'ApiResponseFlutterAppDeploymentResponse':
           return ApiResponseFlutterAppDeploymentResponse.fromJson(value);
         case 'ApiResponseImportResult':
@@ -484,14 +488,20 @@ class ApiClient {
           return BatchReviewResult.fromJson(value);
         case 'BatchUpdatePaytableRequest':
           return BatchUpdatePaytableRequest.fromJson(value);
+        case 'BeginRequest':
+          return BeginRequest.fromJson(value);
         case 'BetResponse':
           return BetResponse.fromJson(value);
         case 'BindEmailParam':
           return BindEmailParam.fromJson(value);
         case 'BindOAuthParam':
           return BindOAuthParam.fromJson(value);
+        case 'BindingTarget':
+          return BindingTarget.fromJson(value);
         case 'BlockRule':
           return BlockRule.fromJson(value);
+        case 'Bootstrap':
+          return Bootstrap.fromJson(value);
         case 'BotModerationReadinessDTO':
           return BotModerationReadinessDTO.fromJson(value);
         case 'BrokenImageAuditRequest':
@@ -504,6 +514,12 @@ class ApiClient {
           return BrokenImageFinding.fromJson(value);
         case 'BuyerPreferenceSummaryResponse':
           return BuyerPreferenceSummaryResponse.fromJson(value);
+        case 'CancelRequest':
+          return CancelRequest.fromJson(value);
+        case 'Candidate':
+          return Candidate.fromJson(value);
+        case 'Capabilities':
+          return Capabilities.fromJson(value);
         case 'CartCheckoutItemParam':
           return CartCheckoutItemParam.fromJson(value);
         case 'CartCheckoutParam':
@@ -536,6 +552,8 @@ class ApiClient {
           return CartSummaryDTO.fromJson(value);
         case 'CategoryCandidate':
           return CategoryCandidate.fromJson(value);
+        case 'Challenge':
+          return Challenge.fromJson(value);
         case 'ChangePasswordParam':
           return ChangePasswordParam.fromJson(value);
         case 'ChannelStatDto':
@@ -554,6 +572,10 @@ class ApiClient {
           return ChatSessionQueryParam.fromJson(value);
         case 'CheckoutPreflightResponse':
           return CheckoutPreflightResponse.fromJson(value);
+        case 'Choice':
+          return Choice.fromJson(value);
+        case 'Classification':
+          return Classification.fromJson(value);
         case 'ClassificationSuggestionActionRequest':
           return ClassificationSuggestionActionRequest.fromJson(value);
         case 'ClientLog':
@@ -594,8 +616,24 @@ class ApiClient {
           return CommunityPartnerResponse.fromJson(value);
         case 'CommunityPartnerUpsertRequest':
           return CommunityPartnerUpsertRequest.fromJson(value);
+        case 'Complete200Response':
+          return Complete200Response.fromJson(value);
+        case 'CompleteRequest':
+          return CompleteRequest.fromJson(value);
+        case 'Completed':
+          return Completed.fromJson(value);
         case 'ConfirmedWithdrawRequest':
           return ConfirmedWithdrawRequest.fromJson(value);
+        case 'Context':
+          return Context.fromJson(value);
+        case 'ContextBootstrap':
+          return ContextBootstrap.fromJson(value);
+        case 'ContextCreated':
+          return ContextCreated.fromJson(value);
+        case 'ContextRequest':
+          return ContextRequest.fromJson(value);
+        case 'ContextView':
+          return ContextView.fromJson(value);
         case 'CreateActivityRequest':
           return CreateActivityRequest.fromJson(value);
         case 'CreateColdWalletParam':
@@ -838,6 +876,8 @@ class ApiClient {
           return CurrentUserGameAccessWebV2LaunchResponse.fromJson(value);
         case 'CurrentUserGameAccessWebV2OperationReceiptResponse':
           return CurrentUserGameAccessWebV2OperationReceiptResponse.fromJson(value);
+        case 'CurrentUserGameAccessWebV2SessionResponse':
+          return CurrentUserGameAccessWebV2SessionResponse.fromJson(value);
         case 'CurrentUserGameAccessWebV2StateResponse':
           return CurrentUserGameAccessWebV2StateResponse.fromJson(value);
         case 'CurrentWithdrawSummaryResponse':
@@ -860,6 +900,8 @@ class ApiClient {
           return DailyRow.fromJson(value);
         case 'DailyStatDto':
           return DailyStatDto.fromJson(value);
+        case 'DeliveryBootstrap':
+          return DeliveryBootstrap.fromJson(value);
         case 'DeliveryDetail':
           return DeliveryDetail.fromJson(value);
         case 'DeliveryHistoryParam':
@@ -912,6 +954,10 @@ class ApiClient {
           return DemandStatusHistoryResponse.fromJson(value);
         case 'DemandStatusUpdateRequest':
           return DemandStatusUpdateRequest.fromJson(value);
+        case 'Destination':
+          return Destination.fromJson(value);
+        case 'Device':
+          return Device.fromJson(value);
         case 'DeviceInfo':
           return DeviceInfo.fromJson(value);
         case 'DimensionBreakdown':
@@ -920,6 +966,8 @@ class ApiClient {
           return DirectCheckoutSubmitParam.fromJson(value);
         case 'DirectCheckoutSubmitResponse':
           return DirectCheckoutSubmitResponse.fromJson(value);
+        case 'Discovery':
+          return Discovery.fromJson(value);
         case 'Dispute':
           return Dispute.fromJson(value);
         case 'DisputeAiAnalysisResponse':
@@ -944,6 +992,10 @@ class ApiClient {
           return DisputeStatisticsDTO.fromJson(value);
         case 'ElementSnapshot':
           return ElementSnapshot.fromJson(value);
+        case 'EmailChangeRequest':
+          return EmailChangeRequest.fromJson(value);
+        case 'EmailCodeRequest':
+          return EmailCodeRequest.fromJson(value);
         case 'EmailLoginRequest':
           return EmailLoginRequest.fromJson(value);
         case 'EmailLoginSendCodeRequest':
@@ -960,6 +1012,8 @@ class ApiClient {
           return ExchangeRateRangeSuggestionDTO.fromJson(value);
         case 'ExchangeRateRangeUpdateParam':
           return ExchangeRateRangeUpdateParam.fromJson(value);
+        case 'Expected':
+          return Expected.fromJson(value);
         case 'FileRecord':
           return FileRecord.fromJson(value);
         case 'FileRecordInfo':
@@ -968,6 +1022,8 @@ class ApiClient {
           return FileRecordSearchRequest.fromJson(value);
         case 'FileSyncResponse':
           return FileSyncResponse.fromJson(value);
+        case 'FileUploadResponse':
+          return FileUploadResponse.fromJson(value);
         case 'FlutterAppDeploymentResponse':
           return FlutterAppDeploymentResponse.fromJson(value);
         case 'GameAccessProductDescriptorResponse':
@@ -1024,14 +1080,24 @@ class ApiClient {
           return GroupModerationStatusDTO.fromJson(value);
         case 'GroupRaidModeUpdateRequest':
           return GroupRaidModeUpdateRequest.fromJson(value);
+        case 'GuestCartMigrationReceipt':
+          return GuestCartMigrationReceipt.fromJson(value);
+        case 'GuestCartMigrationRequest':
+          return GuestCartMigrationRequest.fromJson(value);
+        case 'HostIntentRequest':
+          return HostIntentRequest.fromJson(value);
         case 'HourlyStatDto':
           return HourlyStatDto.fromJson(value);
         case 'ImportResult':
           return ImportResult.fromJson(value);
+        case 'Inspection':
+          return Inspection.fromJson(value);
         case 'InterestRecordDTO':
           return InterestRecordDTO.fromJson(value);
         case 'InterestRecordSearchParam':
           return InterestRecordSearchParam.fromJson(value);
+        case 'IssueRequest':
+          return IssueRequest.fromJson(value);
         case 'IssueSearchParam':
           return IssueSearchParam.fromJson(value);
         case 'Item':
@@ -1044,6 +1110,12 @@ class ApiClient {
           return KnowledgeEntry.fromJson(value);
         case 'KnowledgeResponse':
           return KnowledgeResponse.fromJson(value);
+        case 'LegacyEvidence':
+          return LegacyEvidence.fromJson(value);
+        case 'LegacyRequest':
+          return LegacyRequest.fromJson(value);
+        case 'LegacyValidation':
+          return LegacyValidation.fromJson(value);
         case 'Link':
           return Link.fromJson(value);
         case 'LoginBindingsResponse':
@@ -1052,6 +1124,8 @@ class ApiClient {
           return LoginMethod.fromJson(value);
         case 'LoginParam':
           return LoginParam.fromJson(value);
+        case 'LoginRequest':
+          return LoginRequest.fromJson(value);
         case 'LoginResult':
           return LoginResult.fromJson(value);
         case 'LoginTokenResponse':
@@ -1116,12 +1190,16 @@ class ApiClient {
           return MessageSendResponseDTO.fromJson(value);
         case 'MetricsBlock':
           return MetricsBlock.fromJson(value);
+        case 'MigrationRequest':
+          return MigrationRequest.fromJson(value);
         case 'ModerationAuditEventDTO':
           return ModerationAuditEventDTO.fromJson(value);
         case 'MonitoredGroupDTO':
           return MonitoredGroupDTO.fromJson(value);
         case 'MultiValueMapStringString':
           return MultiValueMapStringString.fromJson(value);
+        case 'Mutation':
+          return Mutation.fromJson(value);
         case 'NaturalSearchRequest':
           return NaturalSearchRequest.fromJson(value);
         case 'NaturalSearchResponse':
@@ -1152,6 +1230,8 @@ class ApiClient {
           return ObservationHealth.fromJson(value);
         case 'OffsetStatus':
           return OffsetStatus.fromJson(value);
+        case 'OptionsRequest':
+          return OptionsRequest.fromJson(value);
         case 'Order':
           return Order.fromJson(value);
         case 'OrderActionState':
@@ -1182,6 +1262,8 @@ class ApiClient {
           return OrderStatisticsDTO.fromJson(value);
         case 'OrderSumbitParam':
           return OrderSumbitParam.fromJson(value);
+        case 'Overview':
+          return Overview.fromJson(value);
         case 'PageActivityDTO':
           return PageActivityDTO.fromJson(value);
         case 'PageAdminBetRecordSummaryResponse':
@@ -1334,6 +1416,8 @@ class ApiClient {
           return PaytableEntryRequest.fromJson(value);
         case 'PaytableWithRtpDTO':
           return PaytableWithRtpDTO.fromJson(value);
+        case 'PendingDelivery':
+          return PendingDelivery.fromJson(value);
         case 'PendingQuestionResponse':
           return PendingQuestionResponse.fromJson(value);
         case 'Period':
@@ -1368,6 +1452,8 @@ class ApiClient {
           return PostalSearchParam.fromJson(value);
         case 'PreferenceScore':
           return PreferenceScore.fromJson(value);
+        case 'Preparation':
+          return Preparation.fromJson(value);
         case 'PricingState':
           return PricingState.fromJson(value);
         case 'Product':
@@ -1498,8 +1584,16 @@ class ApiClient {
           return QuickLogisticsRequest.fromJson(value);
         case 'QuickLogisticsResult':
           return QuickLogisticsResult.fromJson(value);
+        case 'Quote':
+          return Quote.fromJson(value);
         case 'Reason':
           return Reason.fromJson(value);
+        case 'ReauthenticationRequest':
+          return ReauthenticationRequest.fromJson(value);
+        case 'Receipt':
+          return Receipt.fromJson(value);
+        case 'RecentAuthentication':
+          return RecentAuthentication.fromJson(value);
         case 'RecentOrderBlock':
           return RecentOrderBlock.fromJson(value);
         case 'Recharge':
@@ -1518,12 +1612,20 @@ class ApiClient {
           return RegisterResult.fromJson(value);
         case 'RegistrationOverviewResponse':
           return RegistrationOverviewResponse.fromJson(value);
+        case 'RegistrationRequest':
+          return RegistrationRequest.fromJson(value);
         case 'ReplyIssueParam':
           return ReplyIssueParam.fromJson(value);
+        case 'Request':
+          return Request.fromJson(value);
         case 'ResolveMarketRequest':
           return ResolveMarketRequest.fromJson(value);
         case 'ResolveRequest':
           return ResolveRequest.fromJson(value);
+        case 'RestoreRequest':
+          return RestoreRequest.fromJson(value);
+        case 'Result':
+          return Result.fromJson(value);
         case 'ReturnAddressOption':
           return ReturnAddressOption.fromJson(value);
         case 'ReturnDestination':
@@ -1552,6 +1654,8 @@ class ApiClient {
           return ReviewStatisticsDTO.fromJson(value);
         case 'ReviewUpdateParam':
           return ReviewUpdateParam.fromJson(value);
+        case 'RevokeRequest':
+          return RevokeRequest.fromJson(value);
         case 'RiskState':
           return RiskState.fromJson(value);
         case 'RtpEntry':
@@ -1574,6 +1678,10 @@ class ApiClient {
           return SchedulerJobResponse.fromJson(value);
         case 'SchedulerStatusResponseDTO':
           return SchedulerStatusResponseDTO.fromJson(value);
+        case 'Selection':
+          return Selection.fromJson(value);
+        case 'SelectionPendingDelivery':
+          return SelectionPendingDelivery.fromJson(value);
         case 'SellerDashboardDto':
           return SellerDashboardDto.fromJson(value);
         case 'SellerDashboardOverviewDto':
@@ -1590,6 +1698,20 @@ class ApiClient {
           return SellerOrderStatsDTO.fromJson(value);
         case 'SellerTrustScoreDto':
           return SellerTrustScoreDto.fromJson(value);
+        case 'SessionCallAnswer':
+          return SessionCallAnswer.fromJson(value);
+        case 'SessionCallHangup':
+          return SessionCallHangup.fromJson(value);
+        case 'SessionCallIce':
+          return SessionCallIce.fromJson(value);
+        case 'SessionCallOffer':
+          return SessionCallOffer.fromJson(value);
+        case 'SessionCallResult':
+          return SessionCallResult.fromJson(value);
+        case 'SessionCallStatus':
+          return SessionCallStatus.fromJson(value);
+        case 'SessionCallStatusResult':
+          return SessionCallStatusResult.fromJson(value);
         case 'SevenElevenStoreDTO':
           return SevenElevenStoreDTO.fromJson(value);
         case 'ShippingAddress':
@@ -1600,6 +1722,8 @@ class ApiClient {
           return ShippingOptions.fromJson(value);
         case 'ShippingServiceGroup':
           return ShippingServiceGroup.fromJson(value);
+        case 'SignupOptionsRequest':
+          return SignupOptionsRequest.fromJson(value);
         case 'SlotDailyStatDto':
           return SlotDailyStatDto.fromJson(value);
         case 'SlotHourlyStatDto':
@@ -1626,6 +1750,8 @@ class ApiClient {
           return SlotSymbolInfo.fromJson(value);
         case 'SlotWebV2CapabilitiesResponse':
           return SlotWebV2CapabilitiesResponse.fromJson(value);
+        case 'SlotWebV2DemoRequest':
+          return SlotWebV2DemoRequest.fromJson(value);
         case 'SlotWebV2OperationReceiptResponse':
           return SlotWebV2OperationReceiptResponse.fromJson(value);
         case 'SlotWebV2SpinRequest':
@@ -1648,6 +1774,10 @@ class ApiClient {
           return StakingSearchParam.fromJson(value);
         case 'StakingStatisticsDTO':
           return StakingStatisticsDTO.fromJson(value);
+        case 'StartRequest':
+          return StartRequest.fromJson(value);
+        case 'Started':
+          return Started.fromJson(value);
         case 'Store':
           return Store.fromJson(value);
         case 'StoreAnalyticsDTO':
@@ -1782,10 +1912,18 @@ class ApiClient {
           return UserPostStatistics.fromJson(value);
         case 'UserProfileUpdateParam':
           return UserProfileUpdateParam.fromJson(value);
+        case 'UserView':
+          return UserView.fromJson(value);
+        case 'ValidationRequest':
+          return ValidationRequest.fromJson(value);
         case 'VapidPublicKeyResponseDTO':
           return VapidPublicKeyResponseDTO.fromJson(value);
         case 'VerifyCodeRequest':
           return VerifyCodeRequest.fromJson(value);
+        case 'VerifyRequest':
+          return VerifyRequest.fromJson(value);
+        case 'View':
+          return View.fromJson(value);
         case 'ViewportSnapshot':
           return ViewportSnapshot.fromJson(value);
         case 'WalletConnectInfo':
@@ -1802,24 +1940,12 @@ class ApiClient {
           return Web3NonceRequest.fromJson(value);
         case 'WebPushDetails':
           return WebPushDetails.fromJson(value);
-        case 'WebRTCAnswerDto':
-          return WebRTCAnswerDto.fromJson(value);
-        case 'WebRTCAnswerResponseDto':
-          return WebRTCAnswerResponseDto.fromJson(value);
-        case 'WebRTCHangupDto':
-          return WebRTCHangupDto.fromJson(value);
-        case 'WebRTCHangupResponseDto':
-          return WebRTCHangupResponseDto.fromJson(value);
-        case 'WebRTCIceCandidateDto':
-          return WebRTCIceCandidateDto.fromJson(value);
-        case 'WebRTCIceCandidateResponseDto':
-          return WebRTCIceCandidateResponseDto.fromJson(value);
-        case 'WebRTCOfferDto':
-          return WebRTCOfferDto.fromJson(value);
-        case 'WebRTCOfferResponseDto':
-          return WebRTCOfferResponseDto.fromJson(value);
-        case 'WebRTCResponseDto':
-          return WebRTCResponseDto.fromJson(value);
+        case 'WebSessionClientObservation':
+          return WebSessionClientObservation.fromJson(value);
+        case 'WebSessionLoginMethodAction':
+          return WebSessionLoginMethodAction.fromJson(value);
+        case 'WebSessionStakingAction':
+          return WebSessionStakingAction.fromJson(value);
         case 'Withdraw':
           return Withdraw.fromJson(value);
         case 'WithdrawSearchParam':

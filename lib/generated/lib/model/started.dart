@@ -10,27 +10,49 @@
 
 part of openapi.api;
 
-class WebRTCIceCandidateResponseDto {
-  /// Returns a new [WebRTCIceCandidateResponseDto] instance.
-  WebRTCIceCandidateResponseDto({
-    this.success,
+class Started {
+  /// Returns a new [Started] instance.
+  Started({
+    this.flowId,
+    this.csrfToken,
+    this.walletAddress,
+    this.walletType,
     this.message,
-    this.errorCode,
-    this.timestamp,
-    this.callId,
-    this.toUserId,
+    this.expiresAt,
   });
 
-  /// 操作是否成功
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? success;
+  String? flowId;
 
-  /// 響應訊息
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? csrfToken;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? walletAddress;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? walletType;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -39,103 +61,75 @@ class WebRTCIceCandidateResponseDto {
   ///
   String? message;
 
-  /// 錯誤代碼（失敗時）
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? errorCode;
-
-  /// 時間戳
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? timestamp;
-
-  /// 通話唯一識別碼
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? callId;
-
-  /// 目標用戶ID
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? toUserId;
+  DateTime? expiresAt;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is WebRTCIceCandidateResponseDto &&
-    other.success == success &&
+  bool operator ==(Object other) => identical(this, other) || other is Started &&
+    other.flowId == flowId &&
+    other.csrfToken == csrfToken &&
+    other.walletAddress == walletAddress &&
+    other.walletType == walletType &&
     other.message == message &&
-    other.errorCode == errorCode &&
-    other.timestamp == timestamp &&
-    other.callId == callId &&
-    other.toUserId == toUserId;
+    other.expiresAt == expiresAt;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (success == null ? 0 : success!.hashCode) +
+    (flowId == null ? 0 : flowId!.hashCode) +
+    (csrfToken == null ? 0 : csrfToken!.hashCode) +
+    (walletAddress == null ? 0 : walletAddress!.hashCode) +
+    (walletType == null ? 0 : walletType!.hashCode) +
     (message == null ? 0 : message!.hashCode) +
-    (errorCode == null ? 0 : errorCode!.hashCode) +
-    (timestamp == null ? 0 : timestamp!.hashCode) +
-    (callId == null ? 0 : callId!.hashCode) +
-    (toUserId == null ? 0 : toUserId!.hashCode);
+    (expiresAt == null ? 0 : expiresAt!.hashCode);
 
   @override
-  String toString() => 'WebRTCIceCandidateResponseDto[success=$success, message=$message, errorCode=$errorCode, timestamp=$timestamp, callId=$callId, toUserId=$toUserId]';
+  String toString() => 'Started[flowId=$flowId, csrfToken=$csrfToken, walletAddress=$walletAddress, walletType=$walletType, message=$message, expiresAt=$expiresAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.success != null) {
-      json[r'success'] = this.success;
+    if (this.flowId != null) {
+      json[r'flowId'] = this.flowId;
     } else {
-      json[r'success'] = null;
+      json[r'flowId'] = null;
+    }
+    if (this.csrfToken != null) {
+      json[r'csrfToken'] = this.csrfToken;
+    } else {
+      json[r'csrfToken'] = null;
+    }
+    if (this.walletAddress != null) {
+      json[r'walletAddress'] = this.walletAddress;
+    } else {
+      json[r'walletAddress'] = null;
+    }
+    if (this.walletType != null) {
+      json[r'walletType'] = this.walletType;
+    } else {
+      json[r'walletType'] = null;
     }
     if (this.message != null) {
       json[r'message'] = this.message;
     } else {
       json[r'message'] = null;
     }
-    if (this.errorCode != null) {
-      json[r'errorCode'] = this.errorCode;
+    if (this.expiresAt != null) {
+      json[r'expiresAt'] = this.expiresAt!.toUtc().toIso8601String();
     } else {
-      json[r'errorCode'] = null;
-    }
-    if (this.timestamp != null) {
-      json[r'timestamp'] = this.timestamp;
-    } else {
-      json[r'timestamp'] = null;
-    }
-    if (this.callId != null) {
-      json[r'callId'] = this.callId;
-    } else {
-      json[r'callId'] = null;
-    }
-    if (this.toUserId != null) {
-      json[r'toUserId'] = this.toUserId;
-    } else {
-      json[r'toUserId'] = null;
+      json[r'expiresAt'] = null;
     }
     return json;
   }
 
-  /// Returns a new [WebRTCIceCandidateResponseDto] instance and imports its values from
+  /// Returns a new [Started] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static WebRTCIceCandidateResponseDto? fromJson(dynamic value) {
+  static Started? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -144,29 +138,29 @@ class WebRTCIceCandidateResponseDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "WebRTCIceCandidateResponseDto[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "WebRTCIceCandidateResponseDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "Started[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "Started[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return WebRTCIceCandidateResponseDto(
-        success: mapValueOfType<bool>(json, r'success'),
+      return Started(
+        flowId: mapValueOfType<String>(json, r'flowId'),
+        csrfToken: mapValueOfType<String>(json, r'csrfToken'),
+        walletAddress: mapValueOfType<String>(json, r'walletAddress'),
+        walletType: mapValueOfType<String>(json, r'walletType'),
         message: mapValueOfType<String>(json, r'message'),
-        errorCode: mapValueOfType<String>(json, r'errorCode'),
-        timestamp: mapValueOfType<String>(json, r'timestamp'),
-        callId: mapValueOfType<String>(json, r'callId'),
-        toUserId: mapValueOfType<int>(json, r'toUserId'),
+        expiresAt: mapDateTime(json, r'expiresAt', r''),
       );
     }
     return null;
   }
 
-  static List<WebRTCIceCandidateResponseDto> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <WebRTCIceCandidateResponseDto>[];
+  static List<Started> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <Started>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = WebRTCIceCandidateResponseDto.fromJson(row);
+        final value = Started.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -175,12 +169,12 @@ class WebRTCIceCandidateResponseDto {
     return result.toList(growable: growable);
   }
 
-  static Map<String, WebRTCIceCandidateResponseDto> mapFromJson(dynamic json) {
-    final map = <String, WebRTCIceCandidateResponseDto>{};
+  static Map<String, Started> mapFromJson(dynamic json) {
+    final map = <String, Started>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = WebRTCIceCandidateResponseDto.fromJson(entry.value);
+        final value = Started.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -189,14 +183,14 @@ class WebRTCIceCandidateResponseDto {
     return map;
   }
 
-  // maps a json object with a list of WebRTCIceCandidateResponseDto-objects as value to a dart map
-  static Map<String, List<WebRTCIceCandidateResponseDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<WebRTCIceCandidateResponseDto>>{};
+  // maps a json object with a list of Started-objects as value to a dart map
+  static Map<String, List<Started>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<Started>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = WebRTCIceCandidateResponseDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = Started.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

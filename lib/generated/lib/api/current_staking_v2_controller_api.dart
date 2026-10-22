@@ -80,7 +80,7 @@ class CurrentStakingV2ControllerApi {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<Response> operation1WithHttpInfo(String operationId,) async {
+  Future<Response> operation2WithHttpInfo(String operationId,) async {
     // ignore: prefer_const_declarations
     final path = r'/wallet/me/v2/staking/operations/{operationId}'
       .replaceAll('{operationId}', operationId);
@@ -111,8 +111,8 @@ class CurrentStakingV2ControllerApi {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<CurrentStakingV2OperationReceiptResponse?> operation1(String operationId,) async {
-    final response = await operation1WithHttpInfo(operationId,);
+  Future<CurrentStakingV2OperationReceiptResponse?> operation2(String operationId,) async {
+    final response = await operation2WithHttpInfo(operationId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -187,7 +187,7 @@ class CurrentChatV2ControllerApi {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<Response> operation6WithHttpInfo(String operationId,) async {
+  Future<Response> operation7WithHttpInfo(String operationId,) async {
     // ignore: prefer_const_declarations
     final path = r'/chat/me/v2/operations/{operationId}'
       .replaceAll('{operationId}', operationId);
@@ -218,8 +218,8 @@ class CurrentChatV2ControllerApi {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<CurrentChatOperationReceiptResponse?> operation6(String operationId,) async {
-    final response = await operation6WithHttpInfo(operationId,);
+  Future<CurrentChatOperationReceiptResponse?> operation7(String operationId,) async {
+    final response = await operation7WithHttpInfo(operationId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

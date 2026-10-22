@@ -129,7 +129,7 @@ class CustomerSupportWorkbenchV2ControllerApi {
   /// * [String] operationId (required):
   ///
   /// * [SupportWorkbenchAuthRequest] supportWorkbenchAuthRequest (required):
-  Future<Response> operationWithHttpInfo(String operationId, SupportWorkbenchAuthRequest supportWorkbenchAuthRequest,) async {
+  Future<Response> operation1WithHttpInfo(String operationId, SupportWorkbenchAuthRequest supportWorkbenchAuthRequest,) async {
     // ignore: prefer_const_declarations
     final path = r'/support/workbench/v2/operations/{operationId}'
       .replaceAll('{operationId}', operationId);
@@ -162,8 +162,8 @@ class CustomerSupportWorkbenchV2ControllerApi {
   /// * [String] operationId (required):
   ///
   /// * [SupportWorkbenchAuthRequest] supportWorkbenchAuthRequest (required):
-  Future<SupportWorkbenchOperationReceiptResponse?> operation(String operationId, SupportWorkbenchAuthRequest supportWorkbenchAuthRequest,) async {
-    final response = await operationWithHttpInfo(operationId, supportWorkbenchAuthRequest,);
+  Future<SupportWorkbenchOperationReceiptResponse?> operation1(String operationId, SupportWorkbenchAuthRequest supportWorkbenchAuthRequest,) async {
+    final response = await operation1WithHttpInfo(operationId, supportWorkbenchAuthRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

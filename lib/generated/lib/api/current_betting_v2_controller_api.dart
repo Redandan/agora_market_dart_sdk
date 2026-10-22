@@ -239,7 +239,7 @@ class CurrentBettingV2ControllerApi {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<Response> operation7WithHttpInfo(String operationId,) async {
+  Future<Response> operation8WithHttpInfo(String operationId,) async {
     // ignore: prefer_const_declarations
     final path = r'/betting/me/v2/operations/{operationId}'
       .replaceAll('{operationId}', operationId);
@@ -270,8 +270,8 @@ class CurrentBettingV2ControllerApi {
   /// Parameters:
   ///
   /// * [String] operationId (required):
-  Future<CurrentBettingOperationReceiptResponse?> operation7(String operationId,) async {
-    final response = await operation7WithHttpInfo(operationId,);
+  Future<CurrentBettingOperationReceiptResponse?> operation8(String operationId,) async {
+    final response = await operation8WithHttpInfo(operationId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
