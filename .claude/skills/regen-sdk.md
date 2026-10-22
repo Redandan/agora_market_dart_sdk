@@ -26,13 +26,16 @@ AgoraMarketAPI 推 main
       └─ commit 為 sdk-sync-bot + push main (透過 github-sdk deploy key)
 ```
 
-**換句話說:API 部署 = SDK 同步**。沒有 GitHub Actions,沒有 PAT,沒有 Cloudflare。
-Server 端 `~/sync-sdk.sh` 是唯一 orchestrator。
+每次 API 部署會嘗試觸發 SDK 同步；部署成功不代表 SDK 同步成功。
+Server 端 `~/sync-sdk.sh` 負責正式規格的生成與推送，GitHub Actions 僅執行 SDK 回歸檢查。
 
 ### 關鍵觀念
 
 - `.swagger-hash` 是上次生成時的正規化 swagger 雜湊 — **不要手動改**。
 - 正規化會剝除 `info`、`servers`、所有 `description`/`summary` — 純文案改動不會誤觸同步。
+- `ci/normalize_hash.sh` 透過 `ci/normalize_swagger.dart` 呼叫共用的 `filterSwagger` 後再正規化；不得另維護一份排除清單。
+- Shell 與 PowerShell 都使用 `ci/filter_swagger.dart`。它只移除兩個既有排除端點；上傳 schema 若仍被保留文件引用，必須保留完整依賴閉包。
+- 所有剩餘 internal JSON Pointer `$ref` 必須可解析；缺少來源 schema 時直接失敗，不建立替代 schema、不退回原始規格，也不使用 `skipValidateSpec`。
 - SDK sync 對部署是 non-blocking — 失敗只留 warning,不中斷部署主流程。
 - Localhost 的 swagger 來源需要 SpringDoc ≥ 2.8.6,早期版有 Spring Security PathPattern 匹配 bug。
 
@@ -40,6 +43,7 @@ Server 端 `~/sync-sdk.sh` 是唯一 orchestrator。
 
 本機 (Windows):
 ```powershell
+# 先進入這份 SDK checkout 的根目錄；其他 CWD 會在安裝或寫檔前被拒絕。
 .\generate_api.ps1
 ```
 
@@ -59,11 +63,13 @@ SWAGGER_SOURCE=/tmp/swagger.json bash generate_api.sh
 1. 驗 Java / dart / jq / sha256sum
 2. 確保 `openapi-generator-cli-7.20.0.jar` 存在(缺的話下載)
 3. 取 swagger — `SWAGGER_SOURCE` env 給檔則跳過 curl;否則從 prod URL 抓(server 端永遠給預抓的 localhost 版)
-4. `ci/filter_swagger.sh` 刪除 `/files/upload`、`/flutter/deployment/deploy` 及對應 schema → 寫入 `lib/api/swagger.yaml`
-5. 清空 `lib/generated/`
-6. `java -jar` 跑 openapi-generator
-7. `ci/repair_models.sh` 修補 `List<T>.toJson()` 序列化
-8. `dart pub get` + `build_runner`(若 pubspec 有 build_runner 才跑 — 目前版本不需要)
+4. `ci/filter_swagger.sh` 呼叫共用 Dart filter，刪除 `/files/upload`、`/flutter/deployment/deploy`；只在沒有保留引用時移除 `FileUploadResponse`、`ApiResponseFileUploadResponse`、`UploadFileRequest`，並驗證全部剩餘 internal refs → 寫入 `lib/api/swagger.yaml`
+5. `java -jar ... validate -i lib/api/swagger.yaml` 成功後，才清空 `lib/generated/`；PowerShell 同時核對清理目標位於本 checkout 且不經過 reparse point
+6. `java -jar` 跑 openapi-generator，維持預設規格驗證
+7. 執行模型修補、required-parameter 修補與 typed endpoint deserializer rewrite
+8. `dart pub get` + `build_runner`(若 pubspec 有 build_runner 才跑 — 目前版本不需要)，再執行完整 generated SDK `dart analyze` 與 typed deserializer 驗證
+
+合成規格的回歸檢查：`dart ci/filter_swagger_test.dart`、`dart ci/normalize_swagger_test.dart`、`dart ci/generate_api_ps1_contract_test.dart`。正式同步成功還須確認完整生成退出碼、SDK GitHub 提交讀回與 `.swagger-hash`；若沒有 diff，則記錄重產前後相同提交與工作樹一致性證據。
 
 ## 客製檔案保護機制
 
@@ -86,13 +92,13 @@ lib/api/custom_*.dart
 4. SSH config `github-sdk` alias 是否被改掉?`ssh -T git@github-sdk`
 
 ### hash 一直 mismatch(重複產生空 commit)
-`ci/normalize_hash.sh` 與 `ci/filter_swagger.sh` 的過濾清單必須一致。兩邊都刪的東西要對齊。
+`ci/normalize_hash.sh` 與生成器必須經由同一個 `filterSwagger` 處理文件。檢查 `ci/normalize_swagger_test.dart`；不要重新引入獨立的 schema／endpoint 刪除清單。
 
 ### `ci/repair_models.sh` 在做什麼
 OpenAPI Generator 7.20.0 對 `List<CustomModel>` 產生的 `toJson()` 直接賦值物件、不呼叫 `.map((e) => e.toJson()).toList()`。腳本用 sed 修補。升級生成器時要重驗。
 
 ### `/files/upload` 為何被過濾
-multipart/form-data 端點,Dart 生成器型別處理不一致。改用手寫的 `lib/api/file_upload_api.dart`。新增 multipart 端點時,把路徑加到 `ci/filter_swagger.sh` + `ci/normalize_hash.sh`。
+該舊 multipart/form-data 端點使用手寫的 `lib/api/file_upload_api.dart`。其他上傳端點可能共用同一組 response schemas，不能因排除此路徑就刪除共用模型。需要修改排除政策時，只改 `ci/filter_swagger.dart` 並補合成回歸；Shell、PowerShell 與 hash 會共用結果，不應直接把所有新 multipart 端點排除。
 
 ## Server 端配置(只做一次)
 

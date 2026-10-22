@@ -1,5 +1,13 @@
 $ErrorActionPreference = "Stop"
 
+# Relative inputs and cleanup must belong to this same SDK checkout.
+# Reject another working directory before installing tools or changing files.
+$sdkRepoRoot = (Resolve-Path -LiteralPath $PSScriptRoot).Path
+$sdkCurrentDirectory = (Resolve-Path -LiteralPath ".").Path
+if (-not [System.String]::Equals($sdkCurrentDirectory, $sdkRepoRoot, [System.StringComparison]::OrdinalIgnoreCase)) {
+    throw "Run generate_api.ps1 from its SDK repository directory."
+}
+
 Write-Host "Starting API code generation process..." -ForegroundColor Green
 
 # 檢查 Jabba 是否安裝
@@ -91,55 +99,18 @@ try {
     $webClient.Encoding = [System.Text.Encoding]::UTF8
     $jsonContent = $webClient.DownloadString($apiUrl)
 
-    # 過濾掉 files/upload 端點
-    Write-Host "Filtering out files/upload endpoint..." -ForegroundColor Yellow
+    # Use the same reference-safe filter as server generation.
+    Write-Host "Filtering API documentation with the shared Dart filter..." -ForegroundColor Yellow
+    $swaggerRawPath = [System.IO.Path]::GetTempFileName()
     try {
-        $apiDoc = $jsonContent | ConvertFrom-Json
-
-        # 檢查並移除 files/upload 端點
-        if ($apiDoc.paths.PSObject.Properties.Name -contains "/files/upload") {
-            Write-Host "Found /files/upload endpoint, removing it..." -ForegroundColor Yellow
-            $apiDoc.paths.PSObject.Properties.Remove("/files/upload")
-            Write-Host "Successfully removed /files/upload endpoint" -ForegroundColor Green
-        } else {
-            Write-Host "No /files/upload endpoint found in current API documentation" -ForegroundColor Green
+        [System.IO.File]::WriteAllText($swaggerRawPath, $jsonContent, [System.Text.UTF8Encoding]::new($false))
+        dart ci/filter_swagger.dart $swaggerRawPath $swaggerPath
+        if ($LASTEXITCODE -ne 0) {
+            throw "Swagger filtering failed with exit code $LASTEXITCODE"
         }
-
-        # 檢查並移除 flutter/deployment/deploy 端點
-        if ($apiDoc.paths.PSObject.Properties.Name -contains "/flutter/deployment/deploy") {
-            Write-Host "Found /flutter/deployment/deploy endpoint, removing it..." -ForegroundColor Yellow
-            $apiDoc.paths.PSObject.Properties.Remove("/flutter/deployment/deploy")
-            Write-Host "Successfully removed /flutter/deployment/deploy endpoint" -ForegroundColor Green
-        } else {
-            Write-Host "No /flutter/deployment/deploy endpoint found in current API documentation" -ForegroundColor Green
-        }
-
-        # 移除相關的文件上傳模型
-        Write-Host "Removing file upload related models..." -ForegroundColor Yellow
-        if ($apiDoc.components.schemas.PSObject.Properties.Name -contains "FileUploadResponse") {
-            $apiDoc.components.schemas.PSObject.Properties.Remove("FileUploadResponse")
-            Write-Host "Removed FileUploadResponse model" -ForegroundColor Green
-        }
-        if ($apiDoc.components.schemas.PSObject.Properties.Name -contains "ApiResponseFileUploadResponse") {
-            $apiDoc.components.schemas.PSObject.Properties.Remove("ApiResponseFileUploadResponse")
-            Write-Host "Removed ApiResponseFileUploadResponse model" -ForegroundColor Green
-        }
-        if ($apiDoc.components.schemas.PSObject.Properties.Name -contains "UploadFileRequest") {
-            $apiDoc.components.schemas.PSObject.Properties.Remove("UploadFileRequest")
-            Write-Host "Removed UploadFileRequest model" -ForegroundColor Green
-        }
-
-        # 將過濾後的文檔轉換回JSON
-        $filteredJsonContent = $apiDoc | ConvertTo-Json -Depth 100 -Compress
-
-        # 寫入過濾後的文件
-        [System.IO.File]::WriteAllText($swaggerPath, $filteredJsonContent, [System.Text.Encoding]::UTF8)
         Write-Host "Successfully filtered and saved API documentation to $swaggerPath" -ForegroundColor Green
-    } catch {
-        Write-Host "Warning: Failed to filter API documentation, using original content: $_" -ForegroundColor Yellow
-        # 如果過濾失敗，使用原始內容
-        [System.IO.File]::WriteAllText($swaggerPath, $jsonContent, [System.Text.Encoding]::UTF8)
-        Write-Host "Saved original API documentation to $swaggerPath" -ForegroundColor Green
+    } finally {
+        Remove-Item -LiteralPath $swaggerRawPath -Force
     }
 } catch {
     Write-Host "Error downloading API documentation: $_" -ForegroundColor Red
@@ -322,16 +293,37 @@ function Repair-GeneratedModelNullableNumericParsing {
     }
 }
 
+# Validate before removing the last generated SDK. Never bypass spec validation.
+Write-Host "Validating filtered OpenAPI specification..." -ForegroundColor Yellow
+java -jar $generatorPath validate -i $swaggerPath
+if ($LASTEXITCODE -ne 0) {
+    throw "OpenAPI validation failed with exit code $LASTEXITCODE"
+}
+
+# Resolve and guard the recursive deletion target within this repository.
+$generatedPath = [System.IO.Path]::GetFullPath((Join-Path $sdkRepoRoot "lib/generated"))
+$sdkRootPrefix = $sdkRepoRoot.TrimEnd([System.IO.Path]::DirectorySeparatorChar, [System.IO.Path]::AltDirectorySeparatorChar) + [System.IO.Path]::DirectorySeparatorChar
+if (-not $generatedPath.StartsWith($sdkRootPrefix, [System.StringComparison]::OrdinalIgnoreCase)) {
+    throw "Generated SDK cleanup target is outside the repository"
+}
+foreach ($sdkCleanupPart in @((Join-Path $sdkRepoRoot "lib"), $generatedPath)) {
+    if (Test-Path -LiteralPath $sdkCleanupPart) {
+        $sdkCleanupItem = Get-Item -LiteralPath $sdkCleanupPart -Force
+        if (($sdkCleanupItem.Attributes -band [System.IO.FileAttributes]::ReparsePoint) -ne 0) {
+            throw "Generated SDK cleanup cannot traverse a reparse point"
+        }
+    }
+}
+
 # 清理舊的生成文件
 Write-Host "Cleaning old generated files..." -ForegroundColor Yellow
-try {
-    if (Test-Path "lib/generated") {
-        # 删除生成的代码
-        Remove-Item -Path "lib/generated" -Recurse -Force
-        Write-Host "Cleaned old generated files" -ForegroundColor Green
+if (Test-Path -LiteralPath $generatedPath) {
+    $resolvedGeneratedPath = (Resolve-Path -LiteralPath $generatedPath).Path
+    if (-not $resolvedGeneratedPath.StartsWith($sdkRootPrefix, [System.StringComparison]::OrdinalIgnoreCase)) {
+        throw "Resolved generated SDK cleanup target is outside the repository"
     }
-} catch {
-    Write-Host "Warning: Could not clean old generated files: $_" -ForegroundColor Yellow
+    Remove-Item -LiteralPath $resolvedGeneratedPath -Recurse -Force
+    Write-Host "Cleaned old generated files" -ForegroundColor Green
 }
 
 # 執行代碼生成
